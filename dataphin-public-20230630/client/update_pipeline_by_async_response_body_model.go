@@ -30,7 +30,7 @@ type UpdatePipelineByAsyncResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The query ID for the asynchronous execution.
+	// The query ID for asynchronous execution.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdatePipelineByAsyncResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdatePipelineByAsyncResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

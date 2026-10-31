@@ -20,17 +20,17 @@ type iGetProjectRequest interface {
 }
 
 type GetProjectRequest struct {
-	// Project environment. Valid values:
+	// The project environment. Valid values:
 	//
-	//  - DEV: development environment.
+	// - DEV: development environment
 	//
-	//  - PROD: production environment.
+	// - PROD: production environment
 	//
 	// example:
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetProjectRequest struct {
 	//
 	// 12356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -46,6 +46,8 @@ type GetProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

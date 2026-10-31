@@ -24,7 +24,7 @@ type OfflinePipelineRequest struct {
 	//
 	// This parameter is required.
 	Context *OfflinePipelineRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
-	// The offline command for the pipeline node.
+	// The command to take the pipeline task offline.
 	//
 	// This parameter is required.
 	OfflineCommand *OfflinePipelineRequestOfflineCommand `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty" type:"Struct"`
@@ -36,6 +36,8 @@ type OfflinePipelineRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -101,11 +103,7 @@ func (s *OfflinePipelineRequest) Validate() error {
 }
 
 type OfflinePipelineRequestContext struct {
-	// The current operating environment. Valid values:
-	//
-	// - DEV: the development environment.
-	//
-	// - PROD: the production environment.
+	// The current operation environment. Valid values: DEV: development environment. PROD: production environment.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +111,7 @@ type OfflinePipelineRequestContext struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The ID of the project to which the integration pipeline node belongs.
+	// The ID of the project to which the integration pipeline task belongs.
 	//
 	// This parameter is required.
 	//
@@ -154,29 +152,29 @@ func (s *OfflinePipelineRequestContext) Validate() error {
 }
 
 type OfflinePipelineRequestOfflineCommand struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether to delete the node.
+	// Specifies whether to delete the task.
 	//
 	// This parameter is required.
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// The file ID of the integration node. You can specify any one of PipelineId, FileId, or NodeId.
+	// The ID of the integration task file. You can specify pipelineId, fileId, or nodeId.
 	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The scheduling node ID of the integration node. You can specify any one of PipelineId, FileId, or NodeId.
+	// The ID of the scheduling node for the integration task. You can specify pipelineId, fileId, or nodeId.
 	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The primary key of the integration pipeline. You can specify any one of PipelineId, FileId, or NodeId.
+	// The primary key of the integration pipeline. You can specify pipelineId, fileId, or nodeId.
 	//
 	// example:
 	//

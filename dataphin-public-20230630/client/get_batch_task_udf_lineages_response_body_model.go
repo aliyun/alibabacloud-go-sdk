@@ -24,15 +24,15 @@ type iGetBatchTaskUdfLineagesResponseBody interface {
 }
 
 type GetBatchTaskUdfLineagesResponseBody struct {
-	// The error code. The value OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The request result.
 	Data *GetBatchTaskUdfLineagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetBatchTaskUdfLineagesResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -216,19 +216,19 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList) Validate() err
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList struct {
-	// The business unit ID.
+	// The ID of the business unit.
 	//
 	// example:
 	//
 	// 103111231
 	BizUnitId *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The business unit name.
+	// The name of the business unit.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The list of lineage columns.
+	// The list of lineage fields.
 	ColumnList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -248,15 +248,15 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList str
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Indicates whether the full table is selected.
+	// Indicates whether the entire table is selected.
 	FullTable *bool `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
-	// The globally unique ID.
+	// The global ID.
 	//
 	// example:
 	//
 	// Guid_101121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList str
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The owner of the table.
 	//
@@ -286,7 +286,7 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList str
 	//
 	// prj_test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The table subtype. For example, dim indicates a dimension logical table.
+	// The subtype of the table. For example, dim indicates a logical dimension table.
 	//
 	// example:
 	//
@@ -454,21 +454,21 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListColu
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The column ID.
+	// The ID of the field.
 	//
 	// example:
 	//
 	// c011
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The column name.
+	// The name of the field.
 	//
 	// example:
 	//
 	// c011
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the column is a partition key.
+	// Indicates whether the field is a partition key.
 	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	// Indicates whether the column is a primary key.
+	// Indicates whether the field is a primary key.
 	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 }
 
@@ -539,19 +539,19 @@ func (s *GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList
 }
 
 type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList struct {
-	// The business unit ID.
+	// The ID of the business unit.
 	//
 	// example:
 	//
 	// 103111231
 	BizUnitId *string `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The business unit name.
+	// The name of the business unit.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The list of lineage columns.
+	// The list of lineage fields.
 	ColumnList []*GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -571,15 +571,15 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList st
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Indicates whether the full table is selected.
+	// Indicates whether the entire table is selected.
 	FullTable *bool `json:"FullTable,omitempty" xml:"FullTable,omitempty"`
-	// The globally unique ID.
+	// The global ID.
 	//
 	// example:
 	//
 	// Guid_101121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// example:
 	//
@@ -589,7 +589,7 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList st
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The owner of the table.
 	//
@@ -609,7 +609,7 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList st
 	//
 	// prj_test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The table subtype. For example, dim indicates a dimension logical table.
+	// The subtype of the table. For example, dim indicates a logical dimension table.
 	//
 	// example:
 	//
@@ -777,21 +777,21 @@ type GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListCol
 	//
 	// xx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The column ID.
+	// The ID of the field.
 	//
 	// example:
 	//
 	// c011
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The column name.
+	// The name of the field.
 	//
 	// example:
 	//
 	// c011
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the column is a partition key.
+	// Indicates whether the field is a partition key.
 	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
-	// Indicates whether the column is a primary key.
+	// Indicates whether the field is a primary key.
 	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
 }
 

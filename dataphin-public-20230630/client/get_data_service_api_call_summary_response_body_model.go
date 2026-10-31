@@ -30,7 +30,7 @@ type GetDataServiceApiCallSummaryResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The aggregate statistics of API calls.
+	// The call summary.
 	Data *GetDataServiceApiCallSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type GetDataServiceApiCallSummaryResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -132,19 +132,19 @@ type GetDataServiceApiCallSummaryResponseBodyData struct {
 	//
 	// 1021
 	CallCount *int64 `json:"CallCount,omitempty" xml:"CallCount,omitempty"`
-	// The number of APIs with call errors.
+	// The number of APIs that have call exceptions.
 	//
 	// example:
 	//
 	// 8
 	ErrorApiCount *int64 `json:"ErrorApiCount,omitempty" xml:"ErrorApiCount,omitempty"`
-	// The number of applications affected by errors.
+	// The number of apps affected by exceptions.
 	//
 	// example:
 	//
 	// 2
 	ErrorAppCount *int64 `json:"ErrorAppCount,omitempty" xml:"ErrorAppCount,omitempty"`
-	// The number of failed calls.
+	// The number of call exceptions.
 	//
 	// example:
 	//

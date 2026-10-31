@@ -42,7 +42,7 @@ type ListDataServiceAuthorizedAppsResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paging query result.
+	// The paging query results.
 	PageResult *ListDataServiceAuthorizedAppsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type ListDataServiceAuthorizedAppsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -182,37 +182,37 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// 1022
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the permission account, which is the applicant ID.
+	// The ID of the authorized account, which is the ID of the applicant.
 	//
 	// example:
 	//
 	// 30012101
 	ApplyUserId *string `json:"ApplyUserId,omitempty" xml:"ApplyUserId,omitempty"`
-	// The permission account, which is the applicant.
+	// The name of the authorized account, which is the name of the applicant.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	ApplyUserName *string `json:"ApplyUserName,omitempty" xml:"ApplyUserName,omitempty"`
-	// The expiration date in the format of yyyy-MM-dd.
+	// The expiration date. Format: yyyy-MM-dd.
 	//
 	// example:
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The application ID.
+	// The ID of the authorization request.
 	//
 	// example:
 	//
 	// 1121
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the current user is a project administrator.
+	// Indicates whether the current user is a project manager.
 	IsProjectManager *bool `json:"IsProjectManager,omitempty" xml:"IsProjectManager,omitempty"`
 	// The ID of the owner.
 	//
@@ -226,13 +226,19 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// test
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
-	// The permission account. Valid values: 0: individual account.
+	// The authorized account type. Valid values:
+	//
+	// - 0: Individual account.
 	//
 	// example:
 	//
 	// 0
 	PrivilegeAccount *int32 `json:"PrivilegeAccount,omitempty" xml:"PrivilegeAccount,omitempty"`
-	// The permission type. Valid values: 0: usage permission. 1: development permission.
+	// The permission type. Valid values:
+	//
+	// - 0: Usage permissions.
+	//
+	// - 1: Development permissions.
 	//
 	// example:
 	//
@@ -250,15 +256,27 @@ type ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList struct
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// Indicates whether the user actually has owner permissions on this application. The user may lack permissions because of expiration or other reasons.
+	// Indicates whether the user actually has the owner permissions for the application. The user may not have the permissions due to expiration or other reasons.
 	RealHasOwnerPrivilege *bool `json:"RealHasOwnerPrivilege,omitempty" xml:"RealHasOwnerPrivilege,omitempty"`
-	// Indicates whether the user actually has permissions.
+	// Indicates whether the user actually has the permissions.
 	RealHasPrivilege *bool `json:"RealHasPrivilege,omitempty" xml:"RealHasPrivilege,omitempty"`
-	// The descriptions used for troubleshooting.
+	// The description used for troubleshooting.
 	RemarkForDebugList []*ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList `json:"RemarkForDebugList,omitempty" xml:"RemarkForDebugList,omitempty" type:"Repeated"`
-	// Indicates whether the permissions can be returned or revoked.
+	// Indicates whether the permission can be returned or revoked.
 	Revocable *bool `json:"Revocable,omitempty" xml:"Revocable,omitempty"`
-	// The detailed status of the revoke button. Valid values: -1: super administrators cannot revoke. -2: owners cannot revoke. -3: project administrators without actual permissions are grayed out. -4: regular users without permissions cannot revoke. 1: project administrators with actual permissions can revoke. 2: regular users with permissions can revoke.
+	// The detailed status of the revocation button. Valid values:
+	//
+	// - -1: Super administrators cannot relinquish the permission.
+	//
+	// - -2: Owners cannot relinquish the permission.
+	//
+	// - -3: Project managers without actual permissions (grayed out).
+	//
+	// - -4: Regular users without permissions cannot relinquish the permission.
+	//
+	// - 1: Project managers with actual permissions can relinquish the permission.
+	//
+	// - 2: Regular users with permissions can relinquish the permission.
 	//
 	// example:
 	//

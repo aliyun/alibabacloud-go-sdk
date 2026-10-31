@@ -24,7 +24,7 @@ type iGetUsersResponseBody interface {
 }
 
 type GetUsersResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetUsersResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// 123@xx.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The DingTalk number.
+	// The DingTalk ID.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The display name of the user without status.
+	// The display name of the user without the status.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	DisplayNameWithoutStatus *string `json:"DisplayNameWithoutStatus,omitempty" xml:"DisplayNameWithoutStatus,omitempty"`
 	// Indicates whether the IP whitelist is enabled.
 	//
@@ -164,13 +164,13 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// true
 	EnableWhiteIp *string `json:"EnableWhiteIp,omitempty" xml:"EnableWhiteIp,omitempty"`
-	// The Lark chatbot.
+	// The Lark bot.
 	//
 	// example:
 	//
 	// xx
 	FeiShuRobot *string `json:"FeiShuRobot,omitempty" xml:"FeiShuRobot,omitempty"`
-	// The creation time.
+	// The time when the user was created.
 	//
 	// example:
 	//
@@ -204,15 +204,15 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The nickname of the user.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The ID of the primary account to which the user belongs.
+	// The ID of the Alibaba Cloud account to which the user belongs.
 	//
 	// example:
 	//
@@ -222,27 +222,27 @@ type GetUsersResponseBodyUserList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	// The source ID of the user.
+	// The ID of the user source.
 	//
 	// example:
 	//
 	// 123@xx.com
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type of the user.
+	// The source of the user.
 	//
 	// example:
 	//
 	// ALIYUN
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The WeCom chatbot.
+	// The WeCom bot.
 	//
 	// example:
 	//
 	// xx
 	WeChatRobot *string `json:"WeChatRobot,omitempty" xml:"WeChatRobot,omitempty"`
-	// The IP whitelist.
+	// The whitelist.
 	//
 	// example:
 	//

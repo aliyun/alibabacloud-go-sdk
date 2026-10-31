@@ -18,7 +18,7 @@ type iDeleteDataSourceShrinkRequest interface {
 }
 
 type DeleteDataSourceShrinkRequest struct {
-	// The request for deleting a data source.
+	// The data source deletion request.
 	//
 	// This parameter is required.
 	DeleteCommandShrink *string `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty"`
@@ -30,6 +30,8 @@ type DeleteDataSourceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

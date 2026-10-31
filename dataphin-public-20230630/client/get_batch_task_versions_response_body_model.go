@@ -24,13 +24,13 @@ type iGetBatchTaskVersionsResponseBody interface {
 }
 
 type GetBatchTaskVersionsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The request result.
+	// The response data.
 	Data *GetBatchTaskVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned by the backend.
 	//
@@ -50,7 +50,7 @@ type GetBatchTaskVersionsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *GetBatchTaskVersionsResponseBody) Validate() error {
 }
 
 type GetBatchTaskVersionsResponseBodyData struct {
-	// The list of batch task versions.
+	// The list of batch taskfile versions.
 	BatchTaskVersionList []*GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList `json:"BatchTaskVersionList,omitempty" xml:"BatchTaskVersionList,omitempty" type:"Repeated"`
 }
 
@@ -161,7 +161,7 @@ func (s *GetBatchTaskVersionsResponseBodyData) Validate() error {
 }
 
 type GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList struct {
-	// The comment for the submission.
+	// The submission comment.
 	//
 	// example:
 	//
@@ -193,17 +193,17 @@ type GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// Indicates whether the version has been published to the production environment.
 	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
-	// The ID of the user who submitted the version.
+	// The ID of the submitter.
 	//
 	// example:
 	//
 	// 20110110
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The ID of the user who submitted the version.
+	// The ID of the submitter.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The version number.
 	//

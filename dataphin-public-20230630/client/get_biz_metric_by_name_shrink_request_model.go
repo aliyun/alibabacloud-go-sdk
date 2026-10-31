@@ -18,11 +18,11 @@ type iGetBizMetricByNameShrinkRequest interface {
 }
 
 type GetBizMetricByNameShrinkRequest struct {
-	// Query request.
+	// The query request.
 	//
 	// This parameter is required.
 	BizMetricByNameQueryShrink *string `json:"BizMetricByNameQuery,omitempty" xml:"BizMetricByNameQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type GetBizMetricByNameShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

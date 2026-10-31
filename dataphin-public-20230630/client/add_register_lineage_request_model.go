@@ -18,7 +18,7 @@ type iAddRegisterLineageRequest interface {
 }
 
 type AddRegisterLineageRequest struct {
-	// The command for registering and adding data lineage.
+	// The command to register data lineage.
 	//
 	// This parameter is required.
 	AddRegisterLineageCommand *AddRegisterLineageRequestAddRegisterLineageCommand `json:"AddRegisterLineageCommand,omitempty" xml:"AddRegisterLineageCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type AddRegisterLineageRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,9 +83,9 @@ func (s *AddRegisterLineageRequest) Validate() error {
 }
 
 type AddRegisterLineageRequestAddRegisterLineageCommand struct {
-	// Specifies whether to check the existence of the asset. By default, the existence is not checked.
+	// Specifies whether to check the existence of the asset itself. Default value: false.
 	CheckAssetExist *bool `json:"CheckAssetExist,omitempty" xml:"CheckAssetExist,omitempty"`
-	// The detailed lineage relationships. For tables, these are field-level lineage relationships. If you do not want to add field-level lineage, leave this parameter empty.
+	// The detailed lineages. For tables, the detailed lineages refer to field lineages. Leave this parameter empty if you do not want to add field lineages.
 	DetailedLineages []*AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages `json:"DetailedLineages,omitempty" xml:"DetailedLineages,omitempty" type:"Repeated"`
 	// The lineage relationship properties.
 	RelationProperties map[string]interface{} `json:"RelationProperties,omitempty" xml:"RelationProperties,omitempty"`
@@ -101,7 +103,7 @@ type AddRegisterLineageRequestAddRegisterLineageCommand struct {
 	//
 	// 300001234
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the current user.
+	// The current user ID.
 	//
 	// example:
 	//
@@ -204,7 +206,7 @@ func (s *AddRegisterLineageRequestAddRegisterLineageCommand) Validate() error {
 }
 
 type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages struct {
-	// Specifies whether this is a direct lineage relationship. Default value: true.
+	// Specifies whether the lineage is direct. Default value: true.
 	IsDirect *bool `json:"IsDirect,omitempty" xml:"IsDirect,omitempty"`
 	// The source asset reference.
 	//
@@ -266,13 +268,13 @@ func (s *AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages) Val
 }
 
 type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource struct {
-	// The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog of the asset. For tables, the catalog of compute source tables or logical tables is uniformly set to Dataphin. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -280,25 +282,25 @@ type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource st
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The GUID of the asset. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1.column1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The asset type. Specify this parameter based on the actual scenario.
 	//
 	// example:
 	//
 	// COLUMN
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The name of the asset. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// column1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The GUID of the parent asset. If the current object is a field, parentGuid is the GUID of the table to which the field belongs.
+	// The GUID of the parent asset. If the current object is a field, the parentGuid is the GUID of the table to which the field belongs.
 	//
 	// example:
 	//
@@ -310,7 +312,7 @@ type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource st
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema of the asset. For tables, this is generally a project or a business unit. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -412,13 +414,13 @@ func (s *AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSourc
 }
 
 type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget struct {
-	// The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog of the asset. For tables, the catalog of compute source tables or logical tables is uniformly set to Dataphin. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -426,25 +428,25 @@ type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget st
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The GUID of the asset. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1.column1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The asset type. Specify this parameter based on the actual scenario.
 	//
 	// example:
 	//
 	// COLUMN
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The name of the asset. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// column1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The GUID of the parent asset. If the current object is a field, parentGuid is the GUID of the table to which the field belongs.
+	// The GUID of the parent asset. If the current object is a field, the parentGuid is the GUID of the table to which the field belongs.
 	//
 	// example:
 	//
@@ -456,7 +458,7 @@ type AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget st
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema of the asset. For tables, this is generally a project or a business unit. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -558,13 +560,13 @@ func (s *AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarge
 }
 
 type AddRegisterLineageRequestAddRegisterLineageCommandSource struct {
-	// The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog of the asset. For tables, the catalog of compute source tables or logical tables is uniformly set to Dataphin. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -572,19 +574,19 @@ type AddRegisterLineageRequestAddRegisterLineageCommandSource struct {
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The GUID of the asset. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset subtype. Specify this parameter only when metadataType is set to TABLE and referenceType is not set to BY_GUID.
+	// The subtype of the asset. Specify this parameter only when MetadataType is set to TABLE and ReferenceType is not set to BY_GUID.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE, PHYSICAL_VIEW, PHYSICAL_MATERIALIZED_VIEW, DATASOURCE_TABLE, DATASOURCE_VIEW, DATASOURCE_MATERIALIZED_VIEW, DIM_NORMAL, DIM_LEVEL, DIM_ENUM, DIM_VIRTUAL, FACT_EVENT, FACT_PROCESS, FACT_SNAPSHOT, SUM_BIZ_UNIT
 	MetadataSubType *string `json:"MetadataSubType,omitempty" xml:"MetadataSubType,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The Asset Type. Specify this parameter as needed.
 	//
 	// This parameter is required.
 	//
@@ -592,13 +594,13 @@ type AddRegisterLineageRequestAddRegisterLineageCommandSource struct {
 	//
 	// TABLE
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The name of the asset. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
+	// The reference data type of the asset. Valid values: BY_GUID and BY_PROPERTY.
 	//
 	// This parameter is required.
 	//
@@ -606,7 +608,7 @@ type AddRegisterLineageRequestAddRegisterLineageCommandSource struct {
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema of the asset. For tables, this is generally a project or a business unit. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -708,13 +710,13 @@ func (s *AddRegisterLineageRequestAddRegisterLineageCommandSource) Validate() er
 }
 
 type AddRegisterLineageRequestAddRegisterLineageCommandTarget struct {
-	// The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog of the asset. For tables, the catalog of compute source tables or logical tables is uniformly set to Dataphin. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
@@ -722,19 +724,19 @@ type AddRegisterLineageRequestAddRegisterLineageCommandTarget struct {
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The GUID of the asset. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset subtype. Specify this parameter only when metadataType is set to TABLE and referenceType is not set to BY_GUID.
+	// The subtype of the asset. Specify this parameter only when MetadataType is set to TABLE and ReferenceType is not set to BY_GUID.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE, PHYSICAL_VIEW, PHYSICAL_MATERIALIZED_VIEW, DATASOURCE_TABLE, DATASOURCE_VIEW, DATASOURCE_MATERIALIZED_VIEW, DIM_NORMAL, DIM_LEVEL, DIM_ENUM, DIM_VIRTUAL, FACT_EVENT, FACT_PROCESS, FACT_SNAPSHOT, SUM_BIZ_UNIT
 	MetadataSubType *string `json:"MetadataSubType,omitempty" xml:"MetadataSubType,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The Asset Type. Specify this parameter as needed.
 	//
 	// This parameter is required.
 	//
@@ -742,13 +744,13 @@ type AddRegisterLineageRequestAddRegisterLineageCommandTarget struct {
 	//
 	// TABLE
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The name of the asset. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//
 	// table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
+	// The reference data type of the asset. Valid values: BY_GUID and BY_PROPERTY.
 	//
 	// This parameter is required.
 	//
@@ -756,7 +758,7 @@ type AddRegisterLineageRequestAddRegisterLineageCommandTarget struct {
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema of the asset. For tables, this is generally a project or a business unit. This property is used to identify the corresponding asset based on properties when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property is not required.
 	//
 	// example:
 	//

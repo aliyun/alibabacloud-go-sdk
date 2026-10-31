@@ -36,11 +36,13 @@ type GetBizEntityInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The business entity type. For more information, refer to the create business entity operation.
+	// The business entity type. For more information, see the Create business entity operation.
 	//
 	// This parameter is required.
 	//

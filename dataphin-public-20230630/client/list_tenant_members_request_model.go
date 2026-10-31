@@ -30,6 +30,8 @@ type ListTenantMembersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,7 +91,7 @@ type ListTenantMembersRequestListQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// This parameter is required.
 	//
@@ -97,49 +99,49 @@ type ListTenantMembersRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The member roles:
+	// The member roles. Valid values:
 	//
-	// - SUPER_ADMIN: Dataphin super administrator
+	// - SUPER_ADMIN: Dataphin super administrator.
 	//
-	// - SYSTEM_ADMIN: system administrator
+	// - SYSTEM_ADMIN: System administrator.
 	//
-	// - COMMON_USER: Dataphin user
+	// - COMMON_USER: Dataphin user.
 	//
-	// - DATA_ADMIN: Dataphin data administrator
+	// - DATA_ADMIN: Dataphin data administrator.
 	//
-	// - EXPORT_ADMIN: export administrator
+	// - EXPORT_ADMIN: Export administrator.
 	//
-	// - SECURITY_ADMIN: security administrator
+	// - SECURITY_ADMIN: Security administrator.
 	//
-	// - DATASOURCE_MANAGER: data source administrator
+	// - DATASOURCE_MANAGER: Data source administrator.
 	//
-	// - QUALITY_MANAGER: asset quality manager
+	// - QUALITY_MANAGER: Asset quality owner.
 	//
-	// - DATA_STANDARD_MANAGER: data standard administrator
+	// - DATA_STANDARD_MANAGER: Data standard administrator.
 	//
-	// - LABELS_BUSINESS_PLANNER: tag business planner
+	// - LABELS_BUSINESS_PLANNER: Label business planner.
 	//
-	// - BUSINESS_MEMBER: general business user
+	// - BUSINESS_MEMBER: Regular business user.
 	//
-	// - DATAPRO_OPERATE_SUPER_ADMIN: operations super administrator
+	// - DATAPRO_OPERATE_SUPER_ADMIN: Operations super administrator.
 	//
-	// - DATAPRO_OPERATE_ADMIN: operations administrator
+	// - DATAPRO_OPERATE_ADMIN: Operations administrator.
 	//
-	// - DATAPRO_OPERATE_MEMBER: operations member
+	// - DATAPRO_OPERATE_MEMBER: Operations staff.
 	//
-	// - DATAPRO_BUSINESS_ANALYST: business analyst
+	// - DATAPRO_BUSINESS_ANALYST: Business analyst.
 	//
-	// - LABELS_BUSINESS_MEMBER: tag business member
+	// - LABELS_BUSINESS_MEMBER: Label business staff.
 	//
-	// - DATAPRO_BUSINESS_MEMBER: DATAPRO general business user
+	// - DATAPRO_BUSINESS_MEMBER: Datapro regular business user.
 	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 	// The search keyword.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
-	// The IDs of the user groups to which the member belongs.
+	// The IDs of the user groups to which the members belong.
 	UserGroupIdList []*string `json:"UserGroupIdList,omitempty" xml:"UserGroupIdList,omitempty" type:"Repeated"`
 }
 

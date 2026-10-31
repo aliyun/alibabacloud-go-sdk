@@ -38,7 +38,7 @@ type GetPipelineAsyncResultResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The details of the backend response exception.
 	//
 	// example:
 	//
@@ -132,25 +132,31 @@ type GetPipelineAsyncResultResponseBodyData struct {
 	//
 	// 123
 	AsyncId *int64 `json:"AsyncId,omitempty" xml:"AsyncId,omitempty"`
-	// The error code returned when the execution fails.
+	// The check result of the commit details. The value is a JSON character string and is returned only for asynchronous commit links. The structure is consistent with the commit details on the product page.
+	//
+	// example:
+	//
+	// {"success":true}
+	CheckDetail *string `json:"CheckDetail,omitempty" xml:"CheckDetail,omitempty"`
+	// The error code returned when an execution exception occurs.
 	//
 	// example:
 	//
 	// DPN.Pipeline.InnerError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the execution fails.
+	// The error message returned when an execution exception occurs.
 	//
 	// example:
 	//
 	// NullPointException
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The information about the server host that processes the execution request.
+	// The server host information for request execution.
 	//
 	// example:
 	//
 	// hostName:hostIp
 	HostMachine *string `json:"HostMachine,omitempty" xml:"HostMachine,omitempty"`
-	// The scheduling node ID of the pipeline task.
+	// The ID of the scheduling node for the pipeline task.
 	//
 	// example:
 	//
@@ -162,13 +168,7 @@ type GetPipelineAsyncResultResponseBodyData struct {
 	//
 	// 123
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The current execution status. Valid values:
-	//
-	// - SUCCESS: execution succeeded.
-	//
-	// - FAILED: execution failed.
-	//
-	// - RUNNING: execution in progress.
+	// The current execution status. Valid values: SUCCESS: The execution is successful. FAILED: The execution fails. RUNNING: The execution is in progress.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type GetPipelineAsyncResultResponseBodyData struct {
 	//
 	// 123
 	SubmitId *int64 `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	// The version number generated when the pipeline task is submitted.
+	// The version number generated after the pipeline task is submitted.
 	//
 	// example:
 	//
@@ -198,6 +198,10 @@ func (s GetPipelineAsyncResultResponseBodyData) GoString() string {
 
 func (s *GetPipelineAsyncResultResponseBodyData) GetAsyncId() *int64 {
 	return s.AsyncId
+}
+
+func (s *GetPipelineAsyncResultResponseBodyData) GetCheckDetail() *string {
+	return s.CheckDetail
 }
 
 func (s *GetPipelineAsyncResultResponseBodyData) GetErrorCode() *string {
@@ -234,6 +238,11 @@ func (s *GetPipelineAsyncResultResponseBodyData) GetVersion() *string {
 
 func (s *GetPipelineAsyncResultResponseBodyData) SetAsyncId(v int64) *GetPipelineAsyncResultResponseBodyData {
 	s.AsyncId = &v
+	return s
+}
+
+func (s *GetPipelineAsyncResultResponseBodyData) SetCheckDetail(v string) *GetPipelineAsyncResultResponseBodyData {
+	s.CheckDetail = &v
 	return s
 }
 

@@ -24,7 +24,7 @@ type iGetInstanceUpDownStreamResponseBody interface {
 }
 
 type GetInstanceUpDownStreamResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetInstanceUpDownStreamResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The instance dag data, including the current instance and its upstream and downstream instances.
+	// The DAG of the instance, including the current instance and its upstream and downstream instances.
 	InstanceDagInfo *GetInstanceUpDownStreamResponseBodyInstanceDagInfo `json:"InstanceDagInfo,omitempty" xml:"InstanceDagInfo,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -50,7 +50,7 @@ type GetInstanceUpDownStreamResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ func (s *GetInstanceUpDownStreamResponseBody) Validate() error {
 type GetInstanceUpDownStreamResponseBodyInstanceDagInfo struct {
 	// The downstream instances.
 	DownInstanceList []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList `json:"DownInstanceList,omitempty" xml:"DownInstanceList,omitempty" type:"Repeated"`
-	// The center instances.
+	// The central instances.
 	StartInstanceList []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList `json:"StartInstanceList,omitempty" xml:"StartInstanceList,omitempty" type:"Repeated"`
 	// The upstream instances.
 	UpInstanceList []*GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList `json:"UpInstanceList,omitempty" xml:"UpInstanceList,omitempty" type:"Repeated"`
@@ -217,7 +217,7 @@ type GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node ID.
 	//
@@ -303,7 +303,7 @@ type GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList struct 
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node ID.
 	//
@@ -313,11 +313,11 @@ type GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList struct 
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The node type. Valid values:
 	//
-	// - DATA_PROCESS: code node.
+	// - DATA_PROCESS: Code task.
 	//
-	// - BBOX_LOGIC_TABLE_NODE: logical table node.
+	// - BBOX_LOGIC_TABLE_NODE: Logical table node.
 	//
-	// - PIPELINE_NODE: pipeline node.
+	// - PIPELINE_NODE: Pipeline node.
 	//
 	// example:
 	//
@@ -395,7 +395,7 @@ type GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node ID.
 	//

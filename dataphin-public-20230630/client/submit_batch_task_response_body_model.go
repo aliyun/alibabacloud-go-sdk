@@ -24,7 +24,7 @@ type iSubmitBatchTaskResponseBody interface {
 }
 
 type SubmitBatchTaskResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code returned for the request. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -36,21 +36,21 @@ type SubmitBatchTaskResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned for the request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The submit result.
+	// The edit result.
 	SubmitResult *SubmitBatchTaskResponseBodySubmitResult `json:"SubmitResult,omitempty" xml:"SubmitResult,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,13 +126,13 @@ func (s *SubmitBatchTaskResponseBody) Validate() error {
 }
 
 type SubmitBatchTaskResponseBodySubmitResult struct {
-	// The ID of the scheduling node.
+	// The ID of the task scheduling node.
 	//
 	// example:
 	//
 	// n_12113111
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the object pending publish.
+	// The ID of the object to be published.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateStandardWordRootRequest interface {
 }
 
 type CreateStandardWordRootRequest struct {
-	// The create instruction.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateStandardWordRootRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -109,7 +111,7 @@ type CreateStandardWordRootRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

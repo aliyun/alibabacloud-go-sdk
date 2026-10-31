@@ -83,24 +83,38 @@ func (s *CreateBatchTaskRequest) Validate() error {
 }
 
 type CreateBatchTaskRequestCreateCommand struct {
-	// The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
+	// The ID of the offline code template.
+	//
+	// example:
+	//
+	// st_123456
+	CodeTemplateId *string `json:"CodeTemplateId,omitempty" xml:"CodeTemplateId,omitempty"`
+	// The version of the offline code template.
+	//
+	// example:
+	//
+	// 1
+	CodeTemplateVersion *int32 `json:"CodeTemplateVersion,omitempty" xml:"CodeTemplateVersion,omitempty"`
+	// The catalog for database SQL tasks. This parameter takes effect only for data source types that require a catalog, such as Presto.
 	//
 	// example:
 	//
 	// mysql_catalog
 	DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
-	// The data source ID for database SQL nodes.
+	// The ID of the data source for database SQL tasks.
 	//
 	// example:
 	//
 	// 12131111
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
+	// The schema for database SQL tasks. This parameter takes effect only for data source types that require a schema, such as Oracle.
 	//
 	// example:
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
+	// The Python connection configuration.
+	DatabricksPythonConnectInfo *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo `json:"DatabricksPythonConnectInfo,omitempty" xml:"DatabricksPythonConnectInfo,omitempty" type:"Struct"`
 	// The description.
 	//
 	// This parameter is required.
@@ -109,9 +123,9 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// xx test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of development owner IDs.
+	// The IDs of the development owners.
 	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
-	// The folder path in the menu tree to which the node belongs.
+	// The directory in the menu tree to which the task belongs.
 	//
 	// This parameter is required.
 	//
@@ -119,19 +133,19 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// /a/b
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The execution engine for the node, such as for Python nodes. Valid values:
+	// The task execution engine, such as Python tasks. Valid values:
 	//
-	// - 1. PYTHON2_7
+	// - PYTHON2_7
 	//
-	// - 2. PYTHON3_7
+	// - PYTHON3_7
 	//
-	// - 3. PYTHON3_11
+	// - PYTHON3_11
 	//
 	// example:
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The name of the batch task.
+	// The name of the offline task.
 	//
 	// This parameter is required.
 	//
@@ -139,9 +153,11 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// test111
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of O&M owner IDs.
+	// The IDs of the O&M owners.
 	OpsOwnerIdList []*string `json:"OpsOwnerIdList,omitempty" xml:"OpsOwnerIdList,omitempty" type:"Repeated"`
-	// The ID of the project to which the node belongs.
+	// The PAI configuration.
+	PaiConfig *CreateBatchTaskRequestCreateCommandPaiConfig `json:"PaiConfig,omitempty" xml:"PaiConfig,omitempty" type:"Struct"`
+	// The ID of the project to which the task belongs.
 	//
 	// This parameter is required.
 	//
@@ -149,13 +165,9 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// 10121101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of Python third-party packages that the node depends on.
+	// The third-party Python packages that the task depends on.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
-	// The schedule type. Valid values:
-	//
-	// - 1: periodic node.
-	//
-	// - 3: manual node.
+	// The scheduling type. Valid values: 1 (periodic task) and 3 (manual task).
 	//
 	// This parameter is required.
 	//
@@ -163,95 +175,119 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// 3
 	ScheduleType *int32 `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The node type. Valid values:
+	// Specifies whether to enable dynamic resource configuration for Spark. This parameter takes effect only for Spark SQL tasks. If you do not specify this parameter, dynamic resource configuration is enabled by default for Spark SQL tasks.
 	//
-	// - Hive_SQL: 1
+	// example:
 	//
-	// - Hive_SQL_23X: 101
+	// true
+	SparkDynamicResourceSwitch *bool `json:"SparkDynamicResourceSwitch,omitempty" xml:"SparkDynamicResourceSwitch,omitempty"`
+	// The effective scope of Spark resources. Valid values: ONLY_PROD and PROD_AND_DEV. If you do not specify this parameter, the default value ONLY_PROD is used for Spark SQL tasks.
 	//
-	// - HIVE_SQL_FUSION_INSIGHT_80X: 111
+	// example:
 	//
-	// - COMMON_HIVE_SQL: 131
+	// ONLY_PROD
+	SparkResourceEffectScope *string `json:"SparkResourceEffectScope,omitempty" xml:"SparkResourceEffectScope,omitempty"`
+	// The resource configuration for the Spark task. The value is a JSON string, such as {"spark.executor.memory":"2g"}.
 	//
-	// - HADOOP_MR: 2
+	// example:
 	//
-	// - MaxCompute_SQL: 5
+	// {"spark.executor.memory":"2g"}
+	SparkSqlResourceConfigMap *string `json:"SparkSqlResourceConfigMap,omitempty" xml:"SparkSqlResourceConfigMap,omitempty"`
+	// The MaxCompute Spark version. Valid values: MAX_COMPUTE_23X, MAX_COMPUTE_245X, and MAX_COMPUTE_311X. For Apsara Stack, only MAX_COMPUTE_APSARA is supported. Display names such as Spark 2.3.0, Spark 2.4.5, and Spark 3.1.1 are also accepted.
 	//
-	// - MaxCompute_MR: 6
+	// example:
 	//
-	// - SPARK_SQL_ON_MAX_COMPUTE: 7
+	// Spark 3.1.1
+	SparkVersion *string `json:"SparkVersion,omitempty" xml:"SparkVersion,omitempty"`
+	// The task type. Valid values:
 	//
-	// - SPARK_JAR_ON_MAX_COMPUTE: 8
+	// - 1: Hive_SQL.
 	//
-	// - SPARK_SQL_ON_HIVE: 17
+	// - 101: Hive_SQL_23X.
 	//
-	// - Spark_JAR_ON_HIVE: 18
+	// - 111: HIVE_SQL_FUSION_INSIGHT_80X.
 	//
-	// - Shell: 10
+	// - 131: COMMON_HIVE_SQL.
 	//
-	// - PAI_DESIGNER: 71
+	// - 2: HADOOP_MR.
 	//
-	// - DataX: 15
+	// - 5: MaxCompute_SQL.
 	//
-	// - Merge: 16
+	// - 6: MaxCompute_MR.
 	//
-	// - Python: 21
+	// - 7: SPARK_SQL_ON_MAX_COMPUTE.
 	//
-	// - Python37x: 22
+	// - 8: SPARK_JAR_ON_MAX_COMPUTE.
 	//
-	// - Perl: 23
+	// - 17: SPARK_SQL_ON_HIVE.
 	//
-	// - Python311x: 24
+	// - 18: Spark_JAR_ON_HIVE.
 	//
-	// - OneService_SQL: 25
+	// - 10: Shell.
 	//
-	// - ONE_SERVICE_SQL_ADB_FOR_PG: 26
+	// - 71: PAI_DESIGNER.
 	//
-	// - OneService_SQL_Hive11x: 27
+	// - 15: DataX.
 	//
-	// - OneService_SQL_Hive23x: 29
+	// - 16: Merge.
 	//
-	// - ONE_SERVICE_SQL_TDH_INCEPTOR: 75
+	// - 21: Python.
 	//
-	// - ONE_SERVICE_SQL_HIVE_CDP: 91
+	// - 22: Python37x.
 	//
-	// - ONE_SERVICE_SQL_HIVE_ASIA_INFO_DP_53X: 92
+	// - 23: Perl.
 	//
-	// - Dlink: 30
+	// - 24: Python311x.
 	//
-	// - ONE_SERVICE_SQL_ADB_FOR_MYSQL: 33
+	// - 25: OneService_SQL.
 	//
-	// - Logical: 31
+	// - 26: ONE_SERVICE_SQL_ADB_FOR_PG.
 	//
-	// - Flink_Streaming: 41
+	// - 27: OneService_SQL_Hive11x.
 	//
-	// - Flink_Batch: 42
+	// - 29: OneService_SQL_Hive23x.
 	//
-	// - ADB_FOR_PG: 51
+	// - 75: ONE_SERVICE_SQL_TDH_INCEPTOR.
 	//
-	// - DryRun: 100
+	// - 91: ONE_SERVICE_SQL_HIVE_CDP.
 	//
-	// - CHECK: 902
+	// - 92: ONE_SERVICE_SQL_HIVE_ASIA_INFO_DP_53X.
 	//
-	// - VIRTUAL: 999
+	// - 30: Dlink.
 	//
-	// - INCEPTOR_SQL: 10000
+	// - 33: ONE_SERVICE_SQL_ADB_FOR_MYSQL.
 	//
-	// - HOLOGRES_SQL: 28
+	// - 31: Logical.
 	//
-	// - ARGODB_SQL: 76
+	// - 41: Flink_Streaming.
 	//
-	// - IMPALA_SQL: 78
+	// - 42: Flink_Batch.
 	//
-	// - STARROCKS_SQL: 79
+	// - 51: ADB_FOR_PG.
 	//
-	// - SPARK_SQL: 80
+	// - 100: DryRun.
 	//
-	// - GAUSS_SQL: 81
+	// - 902: CHECK.
 	//
-	// - DATABASE_SQL: 998
+	// - 999: VIRTUAL.
 	//
-	// - EXTERNAL_TRIGGER: 997
+	// - 10000: INCEPTOR_SQL.
+	//
+	// - 28: HOLOGRES_SQL.
+	//
+	// - 76: ARGODB_SQL.
+	//
+	// - 78: IMPALA_SQL.
+	//
+	// - 79: STARROCKS_SQL.
+	//
+	// - 80: SPARK_SQL.
+	//
+	// - 81: GAUSS_SQL.
+	//
+	// - 998: DATABASE_SQL.
+	//
+	// - 997: EXTERNAL_TRIGGER.
 	//
 	// This parameter is required.
 	//
@@ -269,6 +305,14 @@ func (s CreateBatchTaskRequestCreateCommand) GoString() string {
 	return s.String()
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) GetCodeTemplateId() *string {
+	return s.CodeTemplateId
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) GetCodeTemplateVersion() *int32 {
+	return s.CodeTemplateVersion
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) GetDataSourceCatalog() *string {
 	return s.DataSourceCatalog
 }
@@ -279,6 +323,10 @@ func (s *CreateBatchTaskRequestCreateCommand) GetDataSourceId() *string {
 
 func (s *CreateBatchTaskRequestCreateCommand) GetDataSourceSchema() *string {
 	return s.DataSourceSchema
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) GetDatabricksPythonConnectInfo() *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo {
+	return s.DatabricksPythonConnectInfo
 }
 
 func (s *CreateBatchTaskRequestCreateCommand) GetDescription() *string {
@@ -305,6 +353,10 @@ func (s *CreateBatchTaskRequestCreateCommand) GetOpsOwnerIdList() []*string {
 	return s.OpsOwnerIdList
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) GetPaiConfig() *CreateBatchTaskRequestCreateCommandPaiConfig {
+	return s.PaiConfig
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -317,8 +369,34 @@ func (s *CreateBatchTaskRequestCreateCommand) GetScheduleType() *int32 {
 	return s.ScheduleType
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) GetSparkDynamicResourceSwitch() *bool {
+	return s.SparkDynamicResourceSwitch
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) GetSparkResourceEffectScope() *string {
+	return s.SparkResourceEffectScope
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) GetSparkSqlResourceConfigMap() *string {
+	return s.SparkSqlResourceConfigMap
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) GetSparkVersion() *string {
+	return s.SparkVersion
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) GetTaskType() *int32 {
 	return s.TaskType
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetCodeTemplateId(v string) *CreateBatchTaskRequestCreateCommand {
+	s.CodeTemplateId = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetCodeTemplateVersion(v int32) *CreateBatchTaskRequestCreateCommand {
+	s.CodeTemplateVersion = &v
+	return s
 }
 
 func (s *CreateBatchTaskRequestCreateCommand) SetDataSourceCatalog(v string) *CreateBatchTaskRequestCreateCommand {
@@ -333,6 +411,11 @@ func (s *CreateBatchTaskRequestCreateCommand) SetDataSourceId(v string) *CreateB
 
 func (s *CreateBatchTaskRequestCreateCommand) SetDataSourceSchema(v string) *CreateBatchTaskRequestCreateCommand {
 	s.DataSourceSchema = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetDatabricksPythonConnectInfo(v *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) *CreateBatchTaskRequestCreateCommand {
+	s.DatabricksPythonConnectInfo = v
 	return s
 }
 
@@ -366,6 +449,11 @@ func (s *CreateBatchTaskRequestCreateCommand) SetOpsOwnerIdList(v []*string) *Cr
 	return s
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) SetPaiConfig(v *CreateBatchTaskRequestCreateCommandPaiConfig) *CreateBatchTaskRequestCreateCommand {
+	s.PaiConfig = v
+	return s
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) SetProjectId(v int64) *CreateBatchTaskRequestCreateCommand {
 	s.ProjectId = &v
 	return s
@@ -381,11 +469,161 @@ func (s *CreateBatchTaskRequestCreateCommand) SetScheduleType(v int32) *CreateBa
 	return s
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) SetSparkDynamicResourceSwitch(v bool) *CreateBatchTaskRequestCreateCommand {
+	s.SparkDynamicResourceSwitch = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetSparkResourceEffectScope(v string) *CreateBatchTaskRequestCreateCommand {
+	s.SparkResourceEffectScope = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetSparkSqlResourceConfigMap(v string) *CreateBatchTaskRequestCreateCommand {
+	s.SparkSqlResourceConfigMap = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetSparkVersion(v string) *CreateBatchTaskRequestCreateCommand {
+	s.SparkVersion = &v
+	return s
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) SetTaskType(v int32) *CreateBatchTaskRequestCreateCommand {
 	s.TaskType = &v
 	return s
 }
 
 func (s *CreateBatchTaskRequestCreateCommand) Validate() error {
+	if s.DatabricksPythonConnectInfo != nil {
+		if err := s.DatabricksPythonConnectInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PaiConfig != nil {
+		if err := s.PaiConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo struct {
+	// The HTTP path for the development environment.
+	//
+	// example:
+	//
+	// /sql/1.0/warehouses/dev
+	DevHttpPath *string `json:"DevHttpPath,omitempty" xml:"DevHttpPath,omitempty"`
+	// Specifies whether to enable Databricks Python connect.
+	//
+	// example:
+	//
+	// true
+	EnableDatabricksPythonConnect *bool `json:"EnableDatabricksPythonConnect,omitempty" xml:"EnableDatabricksPythonConnect,omitempty"`
+	// The HTTP path for the production environment.
+	//
+	// example:
+	//
+	// /sql/1.0/warehouses/prod
+	ProdHttpPath *string `json:"ProdHttpPath,omitempty" xml:"ProdHttpPath,omitempty"`
+}
+
+func (s CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) GetDevHttpPath() *string {
+	return s.DevHttpPath
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) GetEnableDatabricksPythonConnect() *bool {
+	return s.EnableDatabricksPythonConnect
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) GetProdHttpPath() *string {
+	return s.ProdHttpPath
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) SetDevHttpPath(v string) *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo {
+	s.DevHttpPath = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) SetEnableDatabricksPythonConnect(v bool) *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo {
+	s.EnableDatabricksPythonConnect = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) SetProdHttpPath(v string) *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo {
+	s.ProdHttpPath = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommandDatabricksPythonConnectInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateBatchTaskRequestCreateCommandPaiConfig struct {
+	// The ID of the PAI experiment.
+	//
+	// example:
+	//
+	// 789012
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The PAI region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the PAI workspace.
+	//
+	// example:
+	//
+	// 123456
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" xml:"WorkSpaceId,omitempty"`
+}
+
+func (s CreateBatchTaskRequestCreateCommandPaiConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateBatchTaskRequestCreateCommandPaiConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) GetExperimentId() *string {
+	return s.ExperimentId
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) GetRegion() *string {
+	return s.Region
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) GetWorkSpaceId() *string {
+	return s.WorkSpaceId
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) SetExperimentId(v string) *CreateBatchTaskRequestCreateCommandPaiConfig {
+	s.ExperimentId = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) SetRegion(v string) *CreateBatchTaskRequestCreateCommandPaiConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) SetWorkSpaceId(v string) *CreateBatchTaskRequestCreateCommandPaiConfig {
+	s.WorkSpaceId = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommandPaiConfig) Validate() error {
 	return dara.Validate(s)
 }

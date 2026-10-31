@@ -24,9 +24,9 @@ type iGetBizUnitInfoResponseBody interface {
 }
 
 type GetBizUnitInfoResponseBody struct {
-	// The details of the data domain.
+	// The business unit details.
 	BizUnitInfo *GetBizUnitInfoResponseBodyBizUnitInfo `json:"BizUnitInfo,omitempty" xml:"BizUnitInfo,omitempty" type:"Struct"`
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetBizUnitInfoResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *GetBizUnitInfoResponseBody) Validate() error {
 }
 
 type GetBizUnitInfoResponseBodyBizUnitInfo struct {
-	// The architects of the data domain.
+	// The business unit architects.
 	AccountList []*GetBizUnitInfoResponseBodyBizUnitInfoAccountList `json:"AccountList,omitempty" xml:"AccountList,omitempty" type:"Repeated"`
 	// The number of business objects.
 	//
@@ -142,7 +142,7 @@ type GetBizUnitInfoResponseBodyBizUnitInfo struct {
 	BizProcessCount *int32 `json:"BizProcessCount,omitempty" xml:"BizProcessCount,omitempty"`
 	// The business owners.
 	BusinessLeaderList []*GetBizUnitInfoResponseBodyBizUnitInfoBusinessLeaderList `json:"BusinessLeaderList,omitempty" xml:"BusinessLeaderList,omitempty" type:"Repeated"`
-	// The number of subject domains.
+	// The number of data domains.
 	//
 	// example:
 	//
@@ -160,9 +160,9 @@ type GetBizUnitInfoResponseBodyBizUnitInfo struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The English names of the data domain for the two environments: production and development.
+	// The English names of the business unit in the production and development environments.
 	EnvList []*GetBizUnitInfoResponseBodyBizUnitInfoEnvList `json:"EnvList,omitempty" xml:"EnvList,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -176,35 +176,31 @@ type GetBizUnitInfoResponseBodyBizUnitInfo struct {
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The icon of the data domain.
+	// The icon of the business unit.
 	//
 	// example:
 	//
 	// icon-e-commerce
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The data domain ID.
+	// The data sector ID.
 	//
 	// example:
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the data domain.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 30010010
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The name of the user who last modified the data domain.
+	// The name of the last modifier.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// The production mode. Valid values:
-	//
-	// - BASIC: single-environment mode.
-	//
-	// - DEV_PROD: development/production dual-environment mode.
+	// The production mode. Valid values: BASIC (single-environment mode) and DEV_PROD (development and production dual-environment mode).
 	//
 	// example:
 	//
@@ -216,13 +212,13 @@ type GetBizUnitInfoResponseBodyBizUnitInfo struct {
 	//
 	// test01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner of the business object.
+	// The ID of the business object owner.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The owner of the business object.
+	// The ID of the business object owner.
 	//
 	// example:
 	//
@@ -544,7 +540,7 @@ type GetBizUnitInfoResponseBodyBizUnitInfoEnvList struct {
 	//
 	// example:
 	//
-	// 测试数据板块001_开发
+	// Test business unit 001_Development
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The environment identifier. Valid values: PROD and DEV.
 	//

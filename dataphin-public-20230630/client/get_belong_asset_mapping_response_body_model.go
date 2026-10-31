@@ -30,7 +30,7 @@ type GetBelongAssetMappingResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP response code.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetBelongAssetMappingResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The list of mapping relationships.
 	MappingRelationList []*GetBelongAssetMappingResponseBodyMappingRelationList `json:"MappingRelationList,omitempty" xml:"MappingRelationList,omitempty" type:"Repeated"`
-	// The details of the backend response exception.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetBelongAssetMappingResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,7 +130,7 @@ func (s *GetBelongAssetMappingResponseBody) Validate() error {
 }
 
 type GetBelongAssetMappingResponseBodyMappingRelationList struct {
-	// The type of the asset. Valid values: COLUMN (field) and INDEX (metric).
+	// The asset type. Valid values: COLUMN (field) and INDEX (metric).
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type GetBelongAssetMappingResponseBodyMappingRelationList struct {
 	//
 	// 1122
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The update time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type GetBelongAssetMappingResponseBodyMappingRelationList struct {
 	//
 	// test
 	StandardName *string `json:"StandardName,omitempty" xml:"StandardName,omitempty"`
-	// The directory where the standard set is located.
+	// The folder where the standard set is located.
 	//
 	// example:
 	//

@@ -28,11 +28,13 @@ type GetQualityWatchByObjectIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The object ID, such as a table ID, datasource ID, or metric ID.
+	// The ID of the object, such as the table ID, data source ID, or metric ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +46,13 @@ type GetQualityWatchByObjectIdRequest struct {
 	//
 	// - TABLE: Dataphin table.
 	//
-	// - DATASOURCE_TABLE: global table.
+	// - DATASOURCE_TABLE: Global table.
 	//
-	// - DATASOURCE: datasource.
+	// - DATASOURCE: Data source.
 	//
-	// - INDEX: metric.
+	// - INDEX: Metric.
 	//
-	// - REALTIME_LOGICAL_TABLE: real-time meta table.
+	// - REALTIME_LOGICAL_TABLE: Real-time metatable.
 	//
 	// This parameter is required.
 	//

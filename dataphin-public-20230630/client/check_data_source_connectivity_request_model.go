@@ -18,7 +18,7 @@ type iCheckDataSourceConnectivityRequest interface {
 }
 
 type CheckDataSourceConnectivityRequest struct {
-	// The object to check.
+	// The check target.
 	//
 	// This parameter is required.
 	CheckCommand *CheckDataSourceConnectivityRequestCheckCommand `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CheckDataSourceConnectivityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -85,7 +87,7 @@ type CheckDataSourceConnectivityRequestCheckCommand struct {
 	//
 	// This parameter is required.
 	ConfigItemList []*CheckDataSourceConnectivityRequestCheckCommandConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
-	// The data source type. For supported data source types, see the documentation for creating a data source.
+	// The datasource type. For supported datasources, see Create a datasource.
 	//
 	// This parameter is required.
 	//

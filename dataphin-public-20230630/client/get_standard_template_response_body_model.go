@@ -36,7 +36,7 @@ type GetStandardTemplateResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetStandardTemplateResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The template details.
 	TemplateInfo *GetStandardTemplateResponseBodyTemplateInfo `json:"TemplateInfo,omitempty" xml:"TemplateInfo,omitempty" type:"Struct"`
@@ -128,15 +128,15 @@ func (s *GetStandardTemplateResponseBody) Validate() error {
 type GetStandardTemplateResponseBodyTemplateInfo struct {
 	// The attribute configuration.
 	AttributesConfig *GetStandardTemplateResponseBodyTemplateInfoAttributesConfig `json:"AttributesConfig,omitempty" xml:"AttributesConfig,omitempty" type:"Struct"`
-	// The code of the standard template. This value is globally unique and cannot be modified when references exist.
+	// The code of the standard template. It is globally unique and cannot be modified when referenced.
 	//
 	// example:
 	//
 	// test01
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The auto-generation rule configuration for the standard code.
+	// The configuration of the automatic generation rule for standard codes.
 	CodeRuleConfig *GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfig `json:"CodeRuleConfig,omitempty" xml:"CodeRuleConfig,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetStandardTemplateResponseBodyTemplateInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The standard template ID.
+	// The ID of the standard template.
 	//
 	// example:
 	//
@@ -158,9 +158,9 @@ type GetStandardTemplateResponseBodyTemplateInfo struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The last modifier.
 	LastModifier *GetStandardTemplateResponseBodyTemplateInfoLastModifier `json:"LastModifier,omitempty" xml:"LastModifier,omitempty" type:"Struct"`
-	// The list of maintainers.
+	// The maintainers.
 	MaintainerList []*GetStandardTemplateResponseBodyTemplateInfoMaintainerList `json:"MaintainerList,omitempty" xml:"MaintainerList,omitempty" type:"Repeated"`
-	// The modification time.
+	// The modification time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -170,13 +170,9 @@ type GetStandardTemplateResponseBodyTemplateInfo struct {
 	//
 	// example:
 	//
-	// 测试模板
+	// Test template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The source of the standard template. Valid values:
-	//
-	// - CUSTOM: custom standard template.
-	//
-	// - SYSTEM: system built-in standard template.
+	// The source of the standard template. Valid values: CUSTOM: custom standard template. SYSTEM: built-in standard template.
 	//
 	// example:
 	//
@@ -364,7 +360,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfo) Validate() error {
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfig struct {
-	// The list of attributes.
+	// The attribute list.
 	AttributeList []*GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeList `json:"AttributeList,omitempty" xml:"AttributeList,omitempty" type:"Repeated"`
 }
 
@@ -411,9 +407,9 @@ type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeList st
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether monitoring configuration is enabled.
+	// Specifies whether to enable the monitoring configuration.
 	EnableMonitorConfig *bool `json:"EnableMonitorConfig,omitempty" xml:"EnableMonitorConfig,omitempty"`
-	// The attribute ID.
+	// The ID of the attribute.
 	//
 	// example:
 	//
@@ -429,23 +425,9 @@ type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeList st
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The referenced attribute information.
 	RefAttribute *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttribute `json:"RefAttribute,omitempty" xml:"RefAttribute,omitempty" type:"Struct"`
-	// Indicates whether the attribute is required.
+	// Specifies whether the attribute is required.
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// The attribute type. Valid values:
-	//
-	// - BIZ_ATTRIBUTE: business attribute.
-	//
-	// - TECH_ATTRIBUTE: technical attribute.
-	//
-	// - MANAGEMENT_ATTRIBUTE: management attribute.
-	//
-	// - QUALITY_ATTRIBUTE: quality attribute.
-	//
-	// - MASTER_DATA_ATTRIBUTE: master data attribute.
-	//
-	// - LIFECYCLE_ATTRIBUTE: lifecycle attribute.
-	//
-	// - SECURITY_ATTRIBUTE: security attribute.
+	// The attribute type. Valid values: BIZ_ATTRIBUTE: business attribute. TECH_ATTRIBUTE: technical attribute. MANAGEMENT_ATTRIBUTE: management attribute. QUALITY_ATTRIBUTE: quality attribute. MASTER_DATA_ATTRIBUTE: master data attribute. LIFECYCLE_ATTRIBUTE: lifecycle attribute. SECURITY_ATTRIBUTE: security attribute.
 	//
 	// example:
 	//
@@ -573,19 +555,15 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListMonitorConfig struct {
-	// The field to check.
+	// The column to be checked.
 	//
 	// example:
 	//
 	// column1
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// Indicates whether the check is case-sensitive.
+	// Specifies whether the check is case-sensitive.
 	IsCaseSensitive *bool `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
-	// The monitoring method. Valid values:
-	//
-	// - METADATA: metadata monitoring.
-	//
-	// - QUALITY: data quality monitoring.
+	// The monitoring method. Valid values: METADATA (metadata monitoring) and QUALITY (data quality monitoring).
 	//
 	// example:
 	//
@@ -633,9 +611,9 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttribute struct {
-	// The attribute source.
+	// The source of the attribute.
 	AttributeFromInfo *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttributeAttributeFromInfo `json:"AttributeFromInfo,omitempty" xml:"AttributeFromInfo,omitempty" type:"Struct"`
-	// The attribute ID.
+	// The ID of the attribute.
 	//
 	// example:
 	//
@@ -679,13 +657,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttributeAttributeFromInfo struct {
-	// The attribute source. Valid values:
-	//
-	// - SYSTEM: system attribute.
-	//
-	// - CUSTOM: custom attribute.
-	//
-	// - STANDARD: standard.
+	// The source of the attribute. Valid values: SYSTEM (system attribute), CUSTOM (custom attribute), and STANDARD (standard).
 	//
 	// example:
 	//
@@ -731,7 +703,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttributeAttributeFromInfoStandardReference struct {
-	// The standard ID.
+	// The ID of the standard.
 	//
 	// example:
 	//
@@ -776,19 +748,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfig struct {
-	// The data type of the attribute value. Valid values:
-	//
-	// - STRING: string.
-	//
-	// - BIGINT: numeric.
-	//
-	// - DOUBLE: floating-point.
-	//
-	// - DATE: date, accurate to the day.
-	//
-	// - DATETIME: date, accurate to the millisecond.
-	//
-	// - BOOLEAN: Boolean.
+	// The data type of the attribute value. Valid values: STRING: string. BIGINT: integer. DOUBLE: floating-point number. DATE: date accurate to day. DATETIME: date accurate to millisecond. BOOLEAN: Boolean.
 	//
 	// example:
 	//
@@ -800,21 +760,13 @@ type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListVal
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// The length of the attribute value. If this parameter is left empty or set to -1, the length is not limited. Typically, only string types have a length limit for attribute values.
+	// The length of the attribute value. An empty value or -1 indicates no length limit. Typically, only string types have a length limit for attribute values.
 	//
 	// example:
 	//
 	// 1
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The attribute value type. Valid values:
-	//
-	// - CUSTOMIZED: custom input.
-	//
-	// - SINGLE_ENUM: single enumeration value.
-	//
-	// - MULTIPLE_ENUMS: multiple enumeration values.
-	//
-	// - RANGE: range value.
+	// The attribute value type. Valid values: CUSTOMIZED: custom input. SINGLE_ENUM: single enum value. MULTIPLE_ENUMS: multiple enum values. RANGE: range value.
 	//
 	// example:
 	//
@@ -887,15 +839,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfigValueRange struct {
-	// The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values:
-	//
-	// - BIZ_UNIT: data domain.
-	//
-	// - PROJECT: project.
-	//
-	// - USER: user.
-	//
-	// - USER_GROUP: user group.
+	// The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values: BIZ_UNIT (business unit), PROJECT (project), USER (user), and USER_GROUP (user group).
 	//
 	// example:
 	//
@@ -905,23 +849,7 @@ type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListVal
 	LookupTableReference *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfigValueRangeLookupTableReference `json:"LookupTableReference,omitempty" xml:"LookupTableReference,omitempty" type:"Struct"`
 	// The value range. This parameter takes effect when the value source is set to MIN_MAX.
 	MinMaxValueConfig *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfigValueRangeMinMaxValueConfig `json:"MinMaxValueConfig,omitempty" xml:"MinMaxValueConfig,omitempty" type:"Struct"`
-	// The value source. Valid values:
-	//
-	// - NONE: no constraint.
-	//
-	// - LIST: obtained from a list.
-	//
-	// - LOOKUP_TABLE: lookup table.
-	//
-	// - MIN_MAX: value between the minimum and maximum.
-	//
-	// - DATAPHIN_ATTRIBUTE: Dataphin system property.
-	//
-	// - BUILT_IN_DATA_TYPES: built-in data types.
-	//
-	// - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization.
-	//
-	// - BUILT_IN_DATA_LEVEL: built-in data security classification.
+	// The value source. Valid values: NONE: no constraint. LIST: obtained from a list. LOOKUP_TABLE: lookup table. MIN_MAX: value between the minimum and maximum values. DATAPHIN_ATTRIBUTE: Dataphin system property. BUILT_IN_DATA_TYPES: built-in data type. BUILT_IN_DATA_CLASSIFICATION: built-in data categorization. BUILT_IN_DATA_LEVEL: built-in data security classification.
 	//
 	// example:
 	//
@@ -999,13 +927,13 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfigValueRangeLookupTableReference struct {
-	// The referenced lookup table field.
+	// The referenced field in the lookup table.
 	//
 	// example:
 	//
 	// col1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The lookup table ID.
+	// The ID of the lookup table.
 	//
 	// example:
 	//
@@ -1044,9 +972,9 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfigValueRangeMinMaxValueConfig struct {
-	// Indicates whether the maximum value is included.
+	// Specifies whether the maximum value is included.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
-	// Indicates whether the minimum value is included.
+	// Specifies whether to include the minimum value.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
 	// The maximum value.
 	//
@@ -1111,13 +1039,9 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeLis
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfig struct {
-	// The auto-generation configuration for the standard code rule. This parameter takes effect when the generation method is set to AUTO_GENERATE.
+	// The automatic generation configuration for standard code rules. This parameter takes effect when the generation method is set to AUTO_GENERATE.
 	AutoConfig *GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfig `json:"AutoConfig,omitempty" xml:"AutoConfig,omitempty" type:"Struct"`
-	// The standard code generation method. Valid values:
-	//
-	// - CUSTOMIZED: custom.
-	//
-	// - AUTO_GENERATE: automatically generated based on the standard code rule.
+	// The generation method for standard codes. Valid values: CUSTOMIZED (custom) and AUTO_GENERATE (automatically generated based on standard code rules).
 	//
 	// example:
 	//
@@ -1163,7 +1087,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfig) Validate() e
 type GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfig struct {
 	// The standard code rules.
 	CodeRuleList []*GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRuleList `json:"CodeRuleList,omitempty" xml:"CodeRuleList,omitempty" type:"Repeated"`
-	// Indicates whether strong validation is required.
+	// Specifies whether to enable strict validation.
 	NeedStrongValidate *bool `json:"NeedStrongValidate,omitempty" xml:"NeedStrongValidate,omitempty"`
 }
 
@@ -1207,7 +1131,7 @@ func (s *GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfig) Va
 }
 
 type GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRuleList struct {
-	// The auto-increment sequence configuration.
+	// The configuration of the auto-increment sequence.
 	AutoIncrementSequenceConfig *GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRuleListAutoIncrementSequenceConfig `json:"AutoIncrementSequenceConfig,omitempty" xml:"AutoIncrementSequenceConfig,omitempty" type:"Struct"`
 	// The position index of the code rule.
 	//
@@ -1215,13 +1139,7 @@ type GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRule
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The code rule type. Valid values:
-	//
-	// - FIXED_STRING: fixed string.
-	//
-	// - AUTO_INCREMENT: auto-increment sequence.
-	//
-	// - STANDARD_SET_CODE: standard set code.
+	// The type of the code rule. Valid values: FIXED_STRING (fixed string), AUTO_INCREMENT (auto-increment sequence), and STANDARD_SET_CODE (standard set code).
 	//
 	// example:
 	//
@@ -1295,7 +1213,7 @@ type GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRule
 	//
 	// 3
 	Digit *int32 `json:"Digit,omitempty" xml:"Digit,omitempty"`
-	// Indicates whether zero-padding is required.
+	// Specifies whether to pad the sequence with zeros.
 	NeedPaddingZero *bool `json:"NeedPaddingZero,omitempty" xml:"NeedPaddingZero,omitempty"`
 	// The start value.
 	//

@@ -36,6 +36,8 @@ type UpdateProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -108,7 +110,7 @@ type UpdateProjectMemberRequestUpdateCommand struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The list of user members.
+	// The user members.
 	//
 	// This parameter is required.
 	UserList []*UpdateProjectMemberRequestUpdateCommandUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
@@ -154,9 +156,9 @@ func (s *UpdateProjectMemberRequestUpdateCommand) Validate() error {
 }
 
 type UpdateProjectMemberRequestUpdateCommandUserList struct {
-	// The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
-	//
-	// This parameter is required.
+	// The list of role codes for the member. Supports system and custom project roles obtained from ListProjectRoles. Only one role is supported. If this list is not empty, it takes precedence over RoleList. You must specify at least one of RoleList and RoleCodeList.
+	RoleCodeList []*string `json:"RoleCodeList,omitempty" xml:"RoleCodeList,omitempty" type:"Repeated"`
+	// The member role. Valid values: 1: project administrator. 2: developer. 3: guest. 4: analyst. 5: O&M engineer.
 	RoleList []*int32 `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -176,12 +178,21 @@ func (s UpdateProjectMemberRequestUpdateCommandUserList) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateProjectMemberRequestUpdateCommandUserList) GetRoleCodeList() []*string {
+	return s.RoleCodeList
+}
+
 func (s *UpdateProjectMemberRequestUpdateCommandUserList) GetRoleList() []*int32 {
 	return s.RoleList
 }
 
 func (s *UpdateProjectMemberRequestUpdateCommandUserList) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *UpdateProjectMemberRequestUpdateCommandUserList) SetRoleCodeList(v []*string) *UpdateProjectMemberRequestUpdateCommandUserList {
+	s.RoleCodeList = v
+	return s
 }
 
 func (s *UpdateProjectMemberRequestUpdateCommandUserList) SetRoleList(v []*int32) *UpdateProjectMemberRequestUpdateCommandUserList {

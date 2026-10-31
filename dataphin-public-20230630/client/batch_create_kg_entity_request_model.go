@@ -32,7 +32,7 @@ type BatchCreateKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type BatchCreateKgEntityRequestCreateCommandEntityList struct {
 	//
 	// Company
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The list of entity record properties.
+	// The list of properties for the entity record.
 	//
 	// This parameter is required.
 	PropertyList []*BatchCreateKgEntityRequestCreateCommandEntityListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`

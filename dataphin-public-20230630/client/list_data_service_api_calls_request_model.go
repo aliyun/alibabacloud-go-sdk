@@ -20,11 +20,11 @@ type iListDataServiceApiCallsRequest interface {
 }
 
 type ListDataServiceApiCallsRequest struct {
-	// The query conditions.
+	// The search conditions.
 	//
 	// This parameter is required.
 	ListQuery *ListDataServiceApiCallsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -32,6 +32,8 @@ type ListDataServiceApiCallsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -100,7 +102,7 @@ func (s *ListDataServiceApiCallsRequest) Validate() error {
 }
 
 type ListDataServiceApiCallsRequestListQuery struct {
-	// The ID of the API.
+	// The code of the API.
 	//
 	// example:
 	//
@@ -116,7 +118,7 @@ type ListDataServiceApiCallsRequestListQuery struct {
 	//
 	// The application key.
 	//
-	// 	Notice: This parameter is deprecated. Use AppKeyStr instead.
+	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>
 	//
 	// example:
 	//
@@ -148,7 +150,7 @@ type ListDataServiceApiCallsRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The number of records per page. Default value: 20.
 	//
 	// example:
 	//
@@ -162,7 +164,7 @@ type ListDataServiceApiCallsRequestListQuery struct {
 	//
 	// 2025-06-30 08:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Indicates whether the call was successful.
+	// Specifies whether the call is successful.
 	Successful *bool `json:"Successful,omitempty" xml:"Successful,omitempty"`
 }
 

@@ -26,6 +26,8 @@ type UpdateBizUnitRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user that performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,11 +83,11 @@ func (s *UpdateBizUnitRequest) Validate() error {
 }
 
 type UpdateBizUnitRequestUpdateCommand struct {
-	// The domain architects.
+	// The business unit architects.
 	//
 	// This parameter is required.
 	BizUnitAccountList []*UpdateBizUnitRequestUpdateCommandBizUnitAccountList `json:"BizUnitAccountList,omitempty" xml:"BizUnitAccountList,omitempty" type:"Repeated"`
-	// The data domain ID.
+	// The business unit ID.
 	//
 	// This parameter is required.
 	//
@@ -99,15 +101,15 @@ type UpdateBizUnitRequestUpdateCommand struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the data domain.
+	// The display name of the business unit.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The preset icon. For more information, refer to the create data domain operation.
+	// The preset icon. For more information, refer to the Create business unit operation.
 	//
 	// This parameter is required.
 	//
@@ -115,7 +117,7 @@ type UpdateBizUnitRequestUpdateCommand struct {
 	//
 	// icon-environment
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The data domain code.
+	// The business unit code.
 	//
 	// This parameter is required.
 	//

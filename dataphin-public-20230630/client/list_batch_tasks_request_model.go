@@ -18,14 +18,20 @@ type iListBatchTasksRequest interface {
 }
 
 type ListBatchTasksRequest struct {
+	// The task query conditions.
+	//
 	// This parameter is required.
 	BatchTaskQuery *ListBatchTasksRequestBatchTaskQuery `json:"BatchTaskQuery,omitempty" xml:"BatchTaskQuery,omitempty" type:"Struct"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -77,58 +83,90 @@ func (s *ListBatchTasksRequest) Validate() error {
 }
 
 type ListBatchTasksRequestBatchTaskQuery struct {
+	// Specifies whether to enable conditional scheduling. If not specified, no filtering is applied.
 	ConditionScheduleEnable *bool `json:"ConditionScheduleEnable,omitempty" xml:"ConditionScheduleEnable,omitempty"`
+	// The start time of the creation time range, in milliseconds. Must be specified together with CreateEndTime.
+	//
 	// example:
 	//
 	// 1785930337435
 	CreateBeginTime *int64 `json:"CreateBeginTime,omitempty" xml:"CreateBeginTime,omitempty"`
+	// The end time of the creation time range, in milliseconds. Must be specified together with CreateBeginTime.
+	//
 	// example:
 	//
 	// 1788608737435
-	CreateEndTime       *int64    `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	DevelopOwnerList    []*string `json:"DevelopOwnerList,omitempty" xml:"DevelopOwnerList,omitempty" type:"Repeated"`
-	DirectoryList       []*string `json:"DirectoryList,omitempty" xml:"DirectoryList,omitempty" type:"Repeated"`
-	IncludeSubDirectory *bool     `json:"IncludeSubDirectory,omitempty" xml:"IncludeSubDirectory,omitempty"`
+	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
+	// The list of developer IDs. If multiple IDs are specified, the union is used. If empty or not specified, no filtering is applied.
+	DevelopOwnerList []*string `json:"DevelopOwnerList,omitempty" xml:"DevelopOwnerList,omitempty" type:"Repeated"`
+	// The list of task directories, such as ["/"]. If empty or not specified, no filtering is applied.
+	DirectoryList []*string `json:"DirectoryList,omitempty" xml:"DirectoryList,omitempty" type:"Repeated"`
+	// Specifies whether to include tasks in the subdirectories of the directories specified in DirectoryList. Default value: false.
+	IncludeSubDirectory *bool `json:"IncludeSubDirectory,omitempty" xml:"IncludeSubDirectory,omitempty"`
+	// The search keyword for fuzzy matching by task name or node ID. If empty or not specified, no filtering is applied.
+	//
 	// example:
 	//
 	// dwd_order
-	Keyword              *string   `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The list of recent submit statuses. Valid values: SUBMITTING, SUCCESS, FAILED, and WARNING. If empty or not specified, no filtering is applied.
 	LastSubmitStatusList []*string `json:"LastSubmitStatusList,omitempty" xml:"LastSubmitStatusList,omitempty" type:"Repeated"`
-	LockUserList         []*string `json:"LockUserList,omitempty" xml:"LockUserList,omitempty" type:"Repeated"`
+	// The list of locker IDs. If multiple IDs are specified, the union is used. If empty or not specified, no filtering by locker is applied.
+	LockUserList []*string `json:"LockUserList,omitempty" xml:"LockUserList,omitempty" type:"Repeated"`
+	// The start time of the last modification time range, in milliseconds. Must be specified together with ModifiedEndTime.
+	//
 	// example:
 	//
 	// 1785930337435
 	ModifiedBeginTime *int64 `json:"ModifiedBeginTime,omitempty" xml:"ModifiedBeginTime,omitempty"`
+	// The end time of the last modification time range, in milliseconds. Must be specified together with ModifiedBeginTime.
+	//
 	// example:
 	//
 	// 1788608737435
-	ModifiedEndTime     *int64    `json:"ModifiedEndTime,omitempty" xml:"ModifiedEndTime,omitempty"`
-	NodeStatusList      []*int32  `json:"NodeStatusList,omitempty" xml:"NodeStatusList,omitempty" type:"Repeated"`
-	OpsOwnerList        []*string `json:"OpsOwnerList,omitempty" xml:"OpsOwnerList,omitempty" type:"Repeated"`
+	ModifiedEndTime *int64 `json:"ModifiedEndTime,omitempty" xml:"ModifiedEndTime,omitempty"`
+	// The list of scheduling types. Valid values: 0 (Manual), 1 (Normal), 2 (Paused), and 3 (Dry run). If empty or not specified, no filtering is applied.
+	NodeStatusList []*int32 `json:"NodeStatusList,omitempty" xml:"NodeStatusList,omitempty" type:"Repeated"`
+	// The list of O&M owner IDs. If multiple IDs are specified, the union is used. If empty or not specified, no filtering is applied.
+	OpsOwnerList []*string `json:"OpsOwnerList,omitempty" xml:"OpsOwnerList,omitempty" type:"Repeated"`
+	// The list of output table names for exact matching. If multiple table names are specified, the OR logical operator is used. If empty or not specified, no filtering is applied.
 	OutputTableNameList []*string `json:"OutputTableNameList,omitempty" xml:"OutputTableNameList,omitempty" type:"Repeated"`
+	// The page number. Pages start from 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID. The query scope is limited to this project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 7086194564164288
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Published *bool  `json:"Published,omitempty" xml:"Published,omitempty"`
+	// Specifies whether the task is published to the production environment. If not specified, no filtering is applied.
+	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
+	// The ID of the referenced offline code template. If empty or not specified, no filtering is applied.
+	//
 	// example:
 	//
 	// 7305621095333696
-	RefCodeTemplateId        *string   `json:"RefCodeTemplateId,omitempty" xml:"RefCodeTemplateId,omitempty"`
+	RefCodeTemplateId *string `json:"RefCodeTemplateId,omitempty" xml:"RefCodeTemplateId,omitempty"`
+	// The list of scheduling intervals. Valid values: MINUTELY, HOURLY, DAILY, WEEKLY, and MONTHLY. If empty or not specified, no filtering is applied.
 	ScheduleIntervalTypeList []*string `json:"ScheduleIntervalTypeList,omitempty" xml:"ScheduleIntervalTypeList,omitempty" type:"Repeated"`
-	TaskStatusList           []*int32  `json:"TaskStatusList,omitempty" xml:"TaskStatusList,omitempty" type:"Repeated"`
-	TaskTagList              []*string `json:"TaskTagList,omitempty" xml:"TaskTagList,omitempty" type:"Repeated"`
-	TaskTypeList             []*int32  `json:"TaskTypeList,omitempty" xml:"TaskTypeList,omitempty" type:"Repeated"`
+	// The list of task statuses. Valid values: 0 (Draft), 1 (Submitting), 2 (Submitted), and 100 (In development). If empty or not specified, no filtering is applied.
+	TaskStatusList []*int32 `json:"TaskStatusList,omitempty" xml:"TaskStatusList,omitempty" type:"Repeated"`
+	// The list of task tag names. If empty or not specified, no filtering is applied.
+	TaskTagList []*string `json:"TaskTagList,omitempty" xml:"TaskTagList,omitempty" type:"Repeated"`
+	// The list of task type codes. If empty or not specified, no filtering is applied.
+	TaskTypeList []*int32 `json:"TaskTypeList,omitempty" xml:"TaskTypeList,omitempty" type:"Repeated"`
 }
 
 func (s ListBatchTasksRequestBatchTaskQuery) String() string {

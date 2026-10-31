@@ -36,8 +36,6 @@ type ListDataServicePublishedApisRequest struct {
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Data service project ID.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 102102

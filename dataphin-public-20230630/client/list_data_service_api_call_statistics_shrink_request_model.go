@@ -20,11 +20,11 @@ type iListDataServiceApiCallStatisticsShrinkRequest interface {
 }
 
 type ListDataServiceApiCallStatisticsShrinkRequest struct {
-	// Search conditions.
+	// The search conditions.
 	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,19 @@ type ListDataServiceApiCallStatisticsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data service project ID.
+	// The data service project ID.
 	//
-	// This parameter is required.
+	// > If this parameter is not specified:
+	//
+	// > - Super administrators can query data of all service projects.
+	//
+	// > - Users other than super administrators can query data of service projects where they have the service project administrator or O&M user permissions.
 	//
 	// example:
 	//

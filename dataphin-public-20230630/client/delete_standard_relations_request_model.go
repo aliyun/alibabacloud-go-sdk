@@ -18,7 +18,7 @@ type iDeleteStandardRelationsRequest interface {
 }
 
 type DeleteStandardRelationsRequest struct {
-	// The delete instruction.
+	// The delete command.
 	//
 	// This parameter is required.
 	DeleteCommand *DeleteStandardRelationsRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteStandardRelationsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *DeleteStandardRelationsRequest) Validate() error {
 }
 
 type DeleteStandardRelationsRequestDeleteCommand struct {
-	// The standard association type: RELATIVE.
+	// The standard association type. Valid value: RELATIVE.
 	//
 	// This parameter is required.
 	//

@@ -36,7 +36,7 @@ type SubmitQualityWatchTasksResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type SubmitQualityWatchTasksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution result.
 	SubmitResult *SubmitQualityWatchTasksResponseBodySubmitResult `json:"SubmitResult,omitempty" xml:"SubmitResult,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *SubmitQualityWatchTasksResponseBody) Validate() error {
 }
 
 type SubmitQualityWatchTasksResponseBodySubmitResult struct {
-	// The list of quality watchtask IDs.
+	// The IDs of the monitoring object check nodes.
 	WatchTaskIdList []*int64 `json:"WatchTaskIdList,omitempty" xml:"WatchTaskIdList,omitempty" type:"Repeated"`
 }
 

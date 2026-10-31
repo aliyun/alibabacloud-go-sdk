@@ -26,6 +26,8 @@ type UpdateBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -83,9 +85,9 @@ func (s *UpdateBizEntityRequest) Validate() error {
 type UpdateBizEntityRequestUpdateCommand struct {
 	// The business object.
 	BizObject *UpdateBizEntityRequestUpdateCommandBizObject `json:"BizObject,omitempty" xml:"BizObject,omitempty" type:"Struct"`
-	// The business process.
+	// The business activity.
 	BizProcess *UpdateBizEntityRequestUpdateCommandBizProcess `json:"BizProcess,omitempty" xml:"BizProcess,omitempty" type:"Struct"`
-	// The ID of the business unit to which the business process belongs.
+	// The ID of the business unit to which the business activity belongs.
 	//
 	// This parameter is required.
 	//
@@ -93,7 +95,7 @@ type UpdateBizEntityRequestUpdateCommand struct {
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The ID of the data domain to which the business process belongs.
+	// The ID of the subject domain to which the business activity belongs.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +111,7 @@ type UpdateBizEntityRequestUpdateCommand struct {
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the business entity. For more information, refer to the create business entity operation.
+	// The type of the business entity. For more information, see the Create a business entity operation.
 	//
 	// This parameter is required.
 	//
@@ -202,7 +204,7 @@ type UpdateBizEntityRequestUpdateCommandBizObject struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+	// The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -210,7 +212,7 @@ type UpdateBizEntityRequestUpdateCommandBizObject struct {
 	//
 	// create_object_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
+	// The coded name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores (_). If the ADB_PG engine is used, the coded name can be up to 40 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -218,7 +220,7 @@ type UpdateBizEntityRequestUpdateCommandBizObject struct {
 	//
 	// create_object_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID of the business object owner.
+	// The ID of the user who is the owner of the business object.
 	//
 	// This parameter is required.
 	//
@@ -226,13 +228,13 @@ type UpdateBizEntityRequestUpdateCommandBizObject struct {
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The inherited entity of the business object. Only common business objects support inherited entity configuration, and only online business objects can be inherited.
+	// The ID of the parent entity inherited by the business object. Only common business objects can be configured to inherit entities, and they can only inherit online business objects.
 	//
 	// example:
 	//
 	// 116306
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The list of associated online business entity IDs. If this parameter is not specified, the existing values are cleared.
+	// The list of IDs of associated online business entities. If you do not specify this parameter, the original values are cleared.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
 }
 
@@ -303,15 +305,15 @@ func (s *UpdateBizEntityRequestUpdateCommandBizObject) Validate() error {
 }
 
 type UpdateBizEntityRequestUpdateCommandBizProcess struct {
-	// The list of business event activity IDs contained in the business flow activity. This parameter is valid only when the current entity is a business flow activity.
+	// The list of IDs of business event activities included in the business process activity. This parameter is valid only when the current activity is a business process activity.
 	BizEventEntityIdList []*int64 `json:"BizEventEntityIdList,omitempty" xml:"BizEventEntityIdList,omitempty" type:"Repeated"`
-	// The description of the business process. The description can be up to 128 characters in length.
+	// The description of the business activity. The description can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the business process. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+	// The display name of the business activity. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -319,7 +321,7 @@ type UpdateBizEntityRequestUpdateCommandBizProcess struct {
 	//
 	// create_process_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The code name of the business process. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
+	// The coded name of the business activity. The name can be up to 64 characters in length and can contain only letters, digits, and underscores (_). If the ADB_PG engine is used, the coded name can be up to 40 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -327,7 +329,7 @@ type UpdateBizEntityRequestUpdateCommandBizProcess struct {
 	//
 	// create_process_code_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID of the business process owner.
+	// The ID of the user who is the owner of the business activity.
 	//
 	// This parameter is required.
 	//
@@ -335,9 +337,9 @@ type UpdateBizEntityRequestUpdateCommandBizProcess struct {
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The preceding business flow activities of the business flow activity.
+	// The preceding business process activities of the business process activity.
 	PreBizProcessIdList []*int64 `json:"PreBizProcessIdList,omitempty" xml:"PreBizProcessIdList,omitempty" type:"Repeated"`
-	// The list of associated online business entity IDs. If this parameter is not specified, the existing values are cleared.
+	// The list of IDs of associated online business entities. If you do not specify this parameter, the original values are cleared.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
 }
 

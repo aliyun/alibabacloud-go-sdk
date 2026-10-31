@@ -26,9 +26,9 @@ type CreateNodeSupplementShrinkRequest struct {
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: Development environment.
+	// - DEV: development environment
 	//
-	// - PROD (default): Production environment.
+	// - PROD: production environment (default)
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateNodeSupplementShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//

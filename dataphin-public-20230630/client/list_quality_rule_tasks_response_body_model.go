@@ -24,7 +24,7 @@ type iListQualityRuleTasksResponseBody interface {
 }
 
 type ListQualityRuleTasksResponseBody struct {
-	// The response code.
+	// The backend response code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListQualityRuleTasksResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListQualityRuleTasksResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListQualityRuleTasksResponseBody) Validate() error {
 }
 
 type ListQualityRuleTasksResponseBodyPageResult struct {
-	// The list of quality rule tasks.
+	// The paged quality rule task list.
 	QualityRuleTaskList []*ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList `json:"QualityRuleTaskList,omitempty" xml:"QualityRuleTaskList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -206,7 +206,7 @@ type ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList struct {
 	//
 	// 2025-06-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the rule task.
+	// The rule task ID.
 	//
 	// example:
 	//
@@ -254,27 +254,27 @@ type ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList struct {
 	//
 	// test
 	ValidateObjectName *string `json:"ValidateObjectName,omitempty" xml:"ValidateObjectName,omitempty"`
-	// The object type of the validated object.
+	// The validated object type.
 	//
 	// example:
 	//
 	// column
 	ValidateObjectType *string `json:"ValidateObjectType,omitempty" xml:"ValidateObjectType,omitempty"`
-	// The validation partition.
+	// The validated partition.
 	//
 	// example:
 	//
 	// 20251011
 	ValidatePartition *string `json:"ValidatePartition,omitempty" xml:"ValidatePartition,omitempty"`
-	// Indicates whether the validation passed.
+	// Indicates whether the validation is successful.
 	ValidateSuccess *bool `json:"ValidateSuccess,omitempty" xml:"ValidateSuccess,omitempty"`
-	// The ID of the associated quality watchtask.
+	// The watch ID.
 	//
 	// example:
 	//
 	// 1
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
-	// The ID of the quality watchtask. This ID is empty for trial-run rule tasks.
+	// The watch task ID. This ID is empty for trial run tasks.
 	//
 	// example:
 	//

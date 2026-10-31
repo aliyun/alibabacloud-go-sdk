@@ -28,7 +28,7 @@ type ListBatchTemplatesRequest struct {
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The paged query conditions.
+	// The paging query conditions.
 	ListQuery *ListBatchTemplatesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -38,6 +38,8 @@ type ListBatchTemplatesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -115,11 +117,11 @@ func (s *ListBatchTemplatesRequest) Validate() error {
 }
 
 type ListBatchTemplatesRequestListQuery struct {
-	// The template name keyword.
+	// The keyword in the template name.
 	//
 	// example:
 	//
-	// 数据处理模板
+	// Data processing template
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -133,6 +135,12 @@ type ListBatchTemplatesRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The template ID. The query is based on the template ID.
+	//
+	// example:
+	//
+	// 123456
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListBatchTemplatesRequestListQuery) String() string {
@@ -155,6 +163,10 @@ func (s *ListBatchTemplatesRequestListQuery) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListBatchTemplatesRequestListQuery) GetTemplateId() *int64 {
+	return s.TemplateId
+}
+
 func (s *ListBatchTemplatesRequestListQuery) SetKeyword(v string) *ListBatchTemplatesRequestListQuery {
 	s.Keyword = &v
 	return s
@@ -167,6 +179,11 @@ func (s *ListBatchTemplatesRequestListQuery) SetPageNum(v int32) *ListBatchTempl
 
 func (s *ListBatchTemplatesRequestListQuery) SetPageSize(v int32) *ListBatchTemplatesRequestListQuery {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListBatchTemplatesRequestListQuery) SetTemplateId(v int64) *ListBatchTemplatesRequestListQuery {
+	s.TemplateId = &v
 	return s
 }
 

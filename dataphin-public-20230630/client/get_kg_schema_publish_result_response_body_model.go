@@ -50,7 +50,7 @@ type GetKgSchemaPublishResultResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -134,21 +134,21 @@ type GetKgSchemaPublishResultResponseBodyData struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The publish status. Valid values:
 	//
-	// - Publishing: Publishing in progress.
+	// - Publishing: The publish task is in progress.
 	//
-	// - Published: Published successfully.
+	// - Published: The publish task is successful.
 	//
-	// - Partial: Partially completed.
+	// - Partial: The publish task is partially completed.
 	//
-	// - Failed: Failed.
+	// - Failed: The publish task failed.
 	//
-	// - RollbackFailed: Publish failed and rollback failed.
+	// - RollbackFailed: The publish task failed and the rollback failed.
 	//
 	// example:
 	//
 	// Published
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version number.
+	// The version ID.
 	//
 	// example:
 	//

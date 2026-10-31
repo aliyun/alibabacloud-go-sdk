@@ -24,13 +24,13 @@ type iListTenantMembersResponseBody interface {
 }
 
 type ListTenantMembersResponseBody struct {
-	// The error code. OK indicates a successful request.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTenantMembersResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paginated query result.
+	// The paged query result.
 	PageResult *ListTenantMembersResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type ListTenantMembersResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *ListTenantMembersResponseBody) Validate() error {
 }
 
 type ListTenantMembersResponseBodyPageResult struct {
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
 	// 110
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of users.
+	// The user list.
 	UserList []*ListTenantMembersResponseBodyPageResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -186,7 +186,7 @@ type ListTenantMembersResponseBodyPageResultUserList struct {
 	//
 	// zhangsan
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The DingTalk number.
+	// The DingTalk ID.
 	//
 	// example:
 	//
@@ -198,25 +198,25 @@ type ListTenantMembersResponseBodyPageResultUserList struct {
 	//
 	// zhangsan
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The display name of the user without status.
+	// The display name of the user without the status.
 	//
 	// example:
 	//
 	// zhangsan
 	DisplayNameWithoutStatus *string `json:"DisplayNameWithoutStatus,omitempty" xml:"DisplayNameWithoutStatus,omitempty"`
-	// Indicates whether the IP address whitelist is enabled.
+	// Indicates whether the IP whitelist is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableWhiteIp *string `json:"EnableWhiteIp,omitempty" xml:"EnableWhiteIp,omitempty"`
-	// The time when the user was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1730000000000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the user was last modified.
+	// The modification time.
 	//
 	// example:
 	//
@@ -256,23 +256,23 @@ type ListTenantMembersResponseBodyPageResultUserList struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	// The list of member roles.
+	// The member role.
 	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
-	// The user source ID.
+	// The ID of the user source.
 	//
 	// example:
 	//
 	// 213213232422222
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The user source.
+	// The source of the user.
 	//
 	// example:
 	//
 	// aliyun
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The list of user groups to which the user belongs.
+	// The resource groups to which the user belongs.
 	UserGroupList []*ListTenantMembersResponseBodyPageResultUserListUserGroupList `json:"UserGroupList,omitempty" xml:"UserGroupList,omitempty" type:"Repeated"`
 	// The IP address whitelist.
 	//
@@ -476,7 +476,7 @@ type ListTenantMembersResponseBodyPageResultUserListUserGroupList struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The user group ID.
 	//
@@ -488,7 +488,7 @@ type ListTenantMembersResponseBodyPageResultUserListUserGroupList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

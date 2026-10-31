@@ -124,6 +124,12 @@ type UpdateComputeClusterRequestClusterConfig struct {
 	//
 	// cluster_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 时区名称，例如 Asia/Shanghai。更新时不传则保留原值。
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 	// The cluster type.
 	//
 	// This parameter is required.
@@ -168,6 +174,10 @@ func (s *UpdateComputeClusterRequestClusterConfig) GetName() *string {
 	return s.Name
 }
 
+func (s *UpdateComputeClusterRequestClusterConfig) GetTimeZone() *string {
+	return s.TimeZone
+}
+
 func (s *UpdateComputeClusterRequestClusterConfig) GetType() *string {
 	return s.Type
 }
@@ -198,6 +208,11 @@ func (s *UpdateComputeClusterRequestClusterConfig) SetDes(v string) *UpdateCompu
 
 func (s *UpdateComputeClusterRequestClusterConfig) SetName(v string) *UpdateComputeClusterRequestClusterConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateComputeClusterRequestClusterConfig) SetTimeZone(v string) *UpdateComputeClusterRequestClusterConfig {
+	s.TimeZone = &v
 	return s
 }
 

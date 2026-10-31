@@ -18,7 +18,7 @@ type iUpsertQualityTemplateShrinkRequest interface {
 }
 
 type UpsertQualityTemplateShrinkRequest struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type UpsertQualityTemplateShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Upsert command.
+	// The upsert command.
 	//
 	// This parameter is required.
 	UpsertCommandShrink *string `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty"`

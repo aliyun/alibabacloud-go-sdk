@@ -18,11 +18,11 @@ type iListStandardsRequest interface {
 }
 
 type ListStandardsRequest struct {
-	// Search conditions.
+	// The search conditions.
 	//
 	// This parameter is required.
 	ListQuery *ListStandardsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListStandardsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,33 +83,33 @@ func (s *ListStandardsRequest) Validate() error {
 }
 
 type ListStandardsRequestListQuery struct {
-	// Directory of the standard.
+	// The folder to which the standard belongs.
 	//
 	// example:
 	//
 	// /dir1/dir2
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// Search keyword: fuzzy search by standard name, English name, or code. Case-insensitive, sorted by relevance.
+	// The search keyword. Supports case-insensitive fuzzy search by standard name, English name, or code, and sorts results by relevance.
 	//
 	// example:
 	//
 	// Test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Standard set ID list.
+	// The IDs of the standard sets to which the standards belong.
 	StandardSetIdList []*int64 `json:"StandardSetIdList,omitempty" xml:"StandardSetIdList,omitempty" type:"Repeated"`
-	// Stage of the standard: DEV or PROD.
+	// The stages of the standards. Valid values: DEV and PROD.
 	//
 	// This parameter is required.
 	//
@@ -115,13 +117,13 @@ type ListStandardsRequestListQuery struct {
 	//
 	// DEV
 	StandardStage *string `json:"StandardStage,omitempty" xml:"StandardStage,omitempty"`
-	// Standard status list. Standard statuses under DEV stage: DRAFT, UNDER_REVISION, UNDER_REVIEW, REVIEW_PASSED, IN_PUBLISH. Standard statuses under PROD stage: NOT_ACTIVATED, ACTIVE, EXPIRED.
+	// The list of standard statuses. For the DEV stage, the standard statuses are: DRAFT (Draft), UNDER_REVISION (Under Revision), UNDER_REVIEW (Under Review), REVIEW_PASSED (Approved), and IN_PUBLISH (Publishing). For the PROD stage, the standard statuses are: NOT_ACTIVATED (Not Activated), ACTIVE (Active), and EXPIRED (Expired).
 	StandardStatusList []*string `json:"StandardStatusList,omitempty" xml:"StandardStatusList,omitempty" type:"Repeated"`
-	// Standard template ID list.
+	// The IDs of the standard templates to which the standards belong.
 	StandardTemplateIdList []*int64 `json:"StandardTemplateIdList,omitempty" xml:"StandardTemplateIdList,omitempty" type:"Repeated"`
-	// Standard type: Basic, EMPTY indicates the standard type is empty.
+	// The list of standard types. Valid values: Basic, and EMPTY (the standard type is empty).
 	StandardTypeList []*string `json:"StandardTypeList,omitempty" xml:"StandardTypeList,omitempty" type:"Repeated"`
-	// User ID: only queries standards visible to this user ID. If empty, queries standards visible to the current user.
+	// The user ID. If specified, only standards visible to this user are queried. If left empty, standards visible to the current user are queried.
 	//
 	// example:
 	//

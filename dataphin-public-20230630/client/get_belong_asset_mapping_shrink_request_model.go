@@ -18,9 +18,9 @@ type iGetBelongAssetMappingShrinkRequest interface {
 }
 
 type GetBelongAssetMappingShrinkRequest struct {
-	// Query command.
+	// The query command.
 	AssetMappingQueryShrink *string `json:"AssetMappingQuery,omitempty" xml:"AssetMappingQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -28,6 +28,8 @@ type GetBelongAssetMappingShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

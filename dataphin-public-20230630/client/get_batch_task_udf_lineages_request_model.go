@@ -20,7 +20,7 @@ type iGetBatchTaskUdfLineagesRequest interface {
 }
 
 type GetBatchTaskUdfLineagesRequest struct {
-	// The node ID of the task directory tree.
+	// The ID of the node in the task directory tree.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type GetBatchTaskUdfLineagesRequest struct {
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +36,8 @@ type GetBatchTaskUdfLineagesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

@@ -18,7 +18,7 @@ type iGetStandardStatisticsRequest interface {
 }
 
 type GetStandardStatisticsRequest struct {
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type GetStandardStatisticsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The statistical query instruction.
+	// The statistics query instruction.
 	//
 	// This parameter is required.
 	StatisticsQuery *GetStandardStatisticsRequestStatisticsQuery `json:"StatisticsQuery,omitempty" xml:"StatisticsQuery,omitempty" type:"Struct"`
@@ -81,9 +83,9 @@ func (s *GetStandardStatisticsRequest) Validate() error {
 }
 
 type GetStandardStatisticsRequestStatisticsQuery struct {
-	// The creation time period.
+	// The time period during which the standards were created.
 	CreateTimePeriod *GetStandardStatisticsRequestStatisticsQueryCreateTimePeriod `json:"CreateTimePeriod,omitempty" xml:"CreateTimePeriod,omitempty" type:"Struct"`
-	// The folder to which the standards belong. The search includes all subfolders under this folder.
+	// The directory to query. Standards in this directory and all its subdirectories are included in the statistics.
 	//
 	// This parameter is required.
 	//
@@ -91,7 +93,7 @@ type GetStandardStatisticsRequestStatisticsQuery struct {
 	//
 	// /dir1
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The stages to which the standards belong.
+	// The list of stages to which the standards belong.
 	StandardStageList []*string `json:"StandardStageList,omitempty" xml:"StandardStageList,omitempty" type:"Repeated"`
 }
 
@@ -140,15 +142,15 @@ func (s *GetStandardStatisticsRequestStatisticsQuery) Validate() error {
 }
 
 type GetStandardStatisticsRequestStatisticsQueryCreateTimePeriod struct {
-	// The end time.
+	// The end time, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to include the end time. Default value: false.
+	// Specifies whether to include the end time. Default: false.
 	IncludeEndTime *bool `json:"IncludeEndTime,omitempty" xml:"IncludeEndTime,omitempty"`
-	// The start time.
+	// The start time, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//

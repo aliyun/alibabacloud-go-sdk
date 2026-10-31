@@ -20,7 +20,7 @@ type iAddDataServiceProjectMemberRequest interface {
 }
 
 type AddDataServiceProjectMemberRequest struct {
-	// The command to add project members.
+	// The command to add a project member.
 	//
 	// This parameter is required.
 	AddCommand *AddDataServiceProjectMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
@@ -32,11 +32,13 @@ type AddDataServiceProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The data service project ID.
+	// The Data Service project ID.
 	//
 	// This parameter is required.
 	//
@@ -137,7 +139,7 @@ func (s *AddDataServiceProjectMemberRequestAddCommand) Validate() error {
 }
 
 type AddDataServiceProjectMemberRequestAddCommandProjectMemberList struct {
-	// The username of the user.
+	// The user account.
 	//
 	// This parameter is required.
 	//
@@ -145,7 +147,7 @@ type AddDataServiceProjectMemberRequestAddCommandProjectMemberList struct {
 	//
 	// xx@aliyuncs.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The nickname of the user.
+	// The nickname.
 	//
 	// This parameter is required.
 	//
@@ -153,13 +155,13 @@ type AddDataServiceProjectMemberRequestAddCommandProjectMemberList struct {
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The role of the user. Valid values:
+	// The user role. Valid values:
 	//
-	// - 2: development user
+	// - 2: Developer.
 	//
-	// - 3: application member
+	// - 3: Application member.
 	//
-	// - 4: service project administrator
+	// - 4: Service project administrator.
 	//
 	// - 5: O&M user.
 	//

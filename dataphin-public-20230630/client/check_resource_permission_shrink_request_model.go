@@ -18,11 +18,11 @@ type iCheckResourcePermissionShrinkRequest interface {
 }
 
 type CheckResourcePermissionShrinkRequest struct {
-	// Check user resource permission
+	// The user resource permission check command.
 	//
 	// This parameter is required.
 	CheckCommandShrink *string `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type CheckResourcePermissionShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

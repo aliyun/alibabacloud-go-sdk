@@ -22,15 +22,15 @@ type iExecuteManualNodeRequest interface {
 type ExecuteManualNodeRequest struct {
   // The environment identifier. Valid values:
   // 
-  // - DEV: development environment 
+  // - DEV: Development environment. 
   // 
-  // - PROD (default): production environment.
+  // - PROD: Production environment. This is the default value.
   // 
   // example:
   // 
   // PROD
   Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-  // The request for running a manual task.
+  // The request to run a manual task.
   // 
   // This parameter is required.
   ExecuteCommand *ExecuteManualNodeRequestExecuteCommand `json:"ExecuteCommand,omitempty" xml:"ExecuteCommand,omitempty" type:"Struct"`
@@ -42,6 +42,8 @@ type ExecuteManualNodeRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The operator ID.
+  // 
   // example:
   // 
   // 30001011
@@ -102,7 +104,7 @@ func (s *ExecuteManualNodeRequest) Validate() error {
 }
 
 type ExecuteManualNodeRequestExecuteCommand struct {
-  // The end business date.
+  // The end business date, in the YYYY-MM-DD format.
   // 
   // This parameter is required.
   // 
@@ -114,7 +116,7 @@ type ExecuteManualNodeRequestExecuteCommand struct {
   // 
   // example:
   // 
-  // xx测试
+  // xx test
   FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
   // The node ID.
   // 
@@ -124,7 +126,7 @@ type ExecuteManualNodeRequestExecuteCommand struct {
   // 
   // n_12132
   NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-  // The runtime parameters.
+  // The run parameters.
   ParamList []*ExecuteManualNodeRequestExecuteCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
   // The project ID.
   // 
@@ -134,7 +136,7 @@ type ExecuteManualNodeRequestExecuteCommand struct {
   // 
   // 123324
   ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-  // The start business date.
+  // The start business date, in the YYYY-MM-DD format.
   // 
   // This parameter is required.
   // 

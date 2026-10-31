@@ -26,6 +26,8 @@ type UpdateBasicProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -87,7 +89,7 @@ type UpdateBasicProjectRequestUpdateCommand struct {
 	//
 	// 1001
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The ID of the offline compute source.
+	// The offline compute source ID.
 	//
 	// example:
 	//
@@ -103,7 +105,7 @@ type UpdateBasicProjectRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// MyProject.
+	// My Project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The project ID.
 	//
@@ -113,7 +115,7 @@ type UpdateBasicProjectRequestUpdateCommand struct {
 	//
 	// 102311
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The project name. This value cannot be modified. Pass in the current project name.
+	// The project name. This parameter cannot be modified. Specify the current project name.
 	//
 	// This parameter is required.
 	//
@@ -127,7 +129,7 @@ type UpdateBasicProjectRequestUpdateCommand struct {
 	//
 	// dev
 	NameSpaceTag *string `json:"NameSpaceTag,omitempty" xml:"NameSpaceTag,omitempty"`
-	// The ID of the real-time compute source.
+	// The real-time compute source ID.
 	//
 	// example:
 	//

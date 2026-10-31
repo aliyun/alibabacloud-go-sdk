@@ -30,6 +30,8 @@ type CheckComputeSourceConnectivityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operating user.
+	//
 	// example:
 	//
 	// 30001011
@@ -143,7 +145,7 @@ type CheckComputeSourceConnectivityRequestCheckCommandConfigList struct {
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the configuration item.
+	// The configuration item value.
 	//
 	// This parameter is required.
 	//

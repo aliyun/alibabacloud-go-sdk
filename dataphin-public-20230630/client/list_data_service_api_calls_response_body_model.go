@@ -24,7 +24,7 @@ type iListDataServiceApiCallsResponseBody interface {
 }
 
 type ListDataServiceApiCallsResponseBody struct {
-	// The response code.
+	// The backend response code.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ListDataServiceApiCallsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The backend exception details.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paginated query result.
+	// The paged query results.
 	PageResult *ListDataServiceApiCallsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type ListDataServiceApiCallsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListDataServiceApiCallsResponseBody) Validate() error {
 }
 
 type ListDataServiceApiCallsResponseBodyPageResult struct {
-	// The list of API call logs.
+	// The paged list of API calls.
 	CallLogList []*ListDataServiceApiCallsResponseBodyPageResultCallLogList `json:"CallLogList,omitempty" xml:"CallLogList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -176,7 +176,7 @@ func (s *ListDataServiceApiCallsResponseBodyPageResult) Validate() error {
 }
 
 type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
-	// The ID of the API.
+	// The API ID.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// The application key.
 	//
-	// 	Notice: This parameter is deprecated. Use AppKeyStr instead.
+	// 	Notice: Deprecated. Use AppKeyStr instead.</notice>
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// OK
 	BizCodeDescription *string `json:"BizCodeDescription,omitempty" xml:"BizCodeDescription,omitempty"`
-	// The IP address of the request.
+	// The client IP address.
 	//
 	// example:
 	//
@@ -240,7 +240,7 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// 2024-11-01 01:01:03.000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The environment. Valid values: 0 (dev) and 1 (prod).
+	// The environment. Valid values: 0: Development. 1: Production.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// 1000
 	ExecuteCostTime *int32 `json:"ExecuteCostTime,omitempty" xml:"ExecuteCostTime,omitempty"`
-	// The execution mode. Valid values: 1 (synchronous) and 2 (asynchronous).
+	// The execution mode. Valid values: 1: Synchronous. 2: Asynchronous.
 	//
 	// example:
 	//
@@ -318,7 +318,7 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// 1024
 	ResponseSize *int32 `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
-	// The number of returned data records.
+	// The number of returned records.
 	//
 	// example:
 	//
@@ -330,19 +330,19 @@ type ListDataServiceApiCallsResponseBodyPageResultCallLogList struct {
 	//
 	// select col1 from t_test1 limit 100;
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The start time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
+	// The time when the request is initiated. Format: yyyy-MM-dd HH:mm:ss.SSS.
 	//
 	// example:
 	//
 	// 2024-11-01 01:01:01.000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The call status of the job.
+	// The invocation status of the job.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Successful *bool `json:"Successful,omitempty" xml:"Successful,omitempty"`
 }
 

@@ -26,6 +26,8 @@ type PublishObjectListRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,13 +83,13 @@ func (s *PublishObjectListRequest) Validate() error {
 }
 
 type PublishObjectListRequestPublishCommand struct {
-	// The publish comment. The string can be up to 1024 characters in length.
+	// The publish comment. The maximum length is 1,024 characters.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 发布
+	// Publish
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The project ID.
 	//
@@ -97,7 +99,7 @@ type PublishObjectListRequestPublishCommand struct {
 	//
 	// 1234567
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of pending publish record IDs to be published. A maximum of 50 submit IDs can be specified.
+	// The list of submit record IDs for the items to be published. A maximum of 50 submit IDs are supported.
 	//
 	// This parameter is required.
 	SubmitIdList []*int64 `json:"SubmitIdList,omitempty" xml:"SubmitIdList,omitempty" type:"Repeated"`

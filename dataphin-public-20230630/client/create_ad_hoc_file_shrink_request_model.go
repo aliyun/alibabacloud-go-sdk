@@ -18,7 +18,7 @@ type iCreateAdHocFileShrinkRequest interface {
 }
 
 type CreateAdHocFileShrinkRequest struct {
-	// The request for creating an ad hoc query file.
+	// The request to create an ad hoc query file.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreateAdHocFileShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

@@ -30,7 +30,7 @@ type CreateComputeSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator.
+	// The ID of the operating user.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *CreateComputeSourceRequest) Validate() error {
 }
 
 type CreateComputeSourceRequestCreateCommand struct {
-	// The ID of the associated cluster. This parameter takes effect only when CreateType is not specified or is set to COMPUTE_SOURCE, which creates a compute source that references a cluster. This parameter is mutually exclusive with CreateType=CLUSTER.
+	// The ID of the associated cluster. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE, which indicates that a compute source referencing a cluster is created. This parameter is mutually exclusive with CreateType set to CLUSTER.
 	//
 	// example:
 	//
@@ -93,11 +93,11 @@ type CreateComputeSourceRequestCreateCommand struct {
 	//
 	// This parameter is required.
 	ConfigList []*CreateComputeSourceRequestCreateCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The type of entity to create. Valid values:
+	// The type of the entity to create. Valid values:
 	//
-	// - CLUSTER: Creates a cluster. ClusterId cannot be specified.
+	// - CLUSTER: creates a cluster. You cannot specify ClusterId.
 	//
-	// - COMPUTE_SOURCE: Creates a compute source. This is the default value.
+	// - COMPUTE_SOURCE: creates a compute source. This is the default value.
 	//
 	// example:
 	//
@@ -117,6 +117,12 @@ type CreateComputeSourceRequestCreateCommand struct {
 	//
 	// test1011
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the time zone, such as Asia/Shanghai. If this parameter is not specified during an update, the original value is retained.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 	// The type of the compute source.
 	//
 	// This parameter is required.
@@ -161,6 +167,10 @@ func (s *CreateComputeSourceRequestCreateCommand) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateComputeSourceRequestCreateCommand) GetTimeZone() *string {
+	return s.TimeZone
+}
+
 func (s *CreateComputeSourceRequestCreateCommand) GetType() *string {
 	return s.Type
 }
@@ -191,6 +201,11 @@ func (s *CreateComputeSourceRequestCreateCommand) SetDescription(v string) *Crea
 
 func (s *CreateComputeSourceRequestCreateCommand) SetName(v string) *CreateComputeSourceRequestCreateCommand {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateComputeSourceRequestCreateCommand) SetTimeZone(v string) *CreateComputeSourceRequestCreateCommand {
+	s.TimeZone = &v
 	return s
 }
 

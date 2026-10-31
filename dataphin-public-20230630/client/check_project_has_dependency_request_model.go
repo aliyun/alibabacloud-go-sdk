@@ -18,7 +18,7 @@ type iCheckProjectHasDependencyRequest interface {
 }
 
 type CheckProjectHasDependencyRequest struct {
-	// Project ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CheckProjectHasDependencyRequest struct {
 	//
 	// 12356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +34,8 @@ type CheckProjectHasDependencyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

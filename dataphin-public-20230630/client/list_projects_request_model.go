@@ -22,7 +22,7 @@ type ListProjectsRequest struct {
 	//
 	// This parameter is required.
 	ListQuery *ListProjectsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// The tenant ID.
+	// The operator tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListProjectsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -87,7 +89,7 @@ type ListProjectsRequestListQuery struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The keyword for fuzzy match.
+	// The keyword for fuzzy matching.
 	//
 	// example:
 	//

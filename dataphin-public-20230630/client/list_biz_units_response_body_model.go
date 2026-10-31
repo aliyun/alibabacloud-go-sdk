@@ -24,7 +24,7 @@ type iListBizUnitsResponseBody interface {
 }
 
 type ListBizUnitsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListBizUnitsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListBizUnitsResponseBody) Validate() error {
 }
 
 type ListBizUnitsResponseBodyData struct {
-	// The business unit details.
+	// The details of the business units.
 	BizUnitList []*ListBizUnitsResponseBodyDataBizUnitList `json:"BizUnitList,omitempty" xml:"BizUnitList,omitempty" type:"Repeated"`
 }
 
@@ -173,13 +173,9 @@ type ListBizUnitsResponseBodyDataBizUnitList struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The environment identifier. Valid values:
-	//
-	// - DEV: development environment.
-	//
-	// - PROD: production environment.
+	// The environment identifier. Valid values: DEV (development environment) and PROD (production environment).
 	//
 	// example:
 	//
@@ -197,35 +193,31 @@ type ListBizUnitsResponseBodyDataBizUnitList struct {
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The business unit icon.
+	// The icon of the business unit.
 	//
 	// example:
 	//
 	// icon-e-commerce
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The business unit ID.
+	// The ID of the business unit.
 	//
 	// example:
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the business unit.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 30010010
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The name of the user who last modified the business unit.
+	// The name of the last modifier.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// The production mode. Valid values:
-	//
-	// - BASIC: single-environment mode.
-	//
-	// - DEV_PROD: development/production dual-environment mode.
+	// The production mode. Valid values: BASIC (single-environment mode) and DEV_PROD (development and production dual-environment mode).
 	//
 	// example:
 	//
@@ -237,13 +229,13 @@ type ListBizUnitsResponseBodyDataBizUnitList struct {
 	//
 	// test01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner of the business object.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The owner of the business object.
+	// The ID of the owner of the business object.
 	//
 	// example:
 	//

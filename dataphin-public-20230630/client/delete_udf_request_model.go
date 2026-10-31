@@ -28,9 +28,9 @@ type DeleteUdfRequest struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The ID of the user-defined function.
+	// The ID of the custom function.
 	//
 	// This parameter is required.
 	//
@@ -46,6 +46,8 @@ type DeleteUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
 	// example:
 	//
 	// 30001011

@@ -24,7 +24,7 @@ type iOperateInstanceResponseBody interface {
 }
 
 type OperateInstanceResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type OperateInstanceResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type OperateInstanceResponseBodyInstanceStatusList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The error message returned when the operation fails.
 	//
@@ -156,7 +156,7 @@ type OperateInstanceResponseBodyInstanceStatusList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The owner of the instance.
 	//
@@ -168,7 +168,7 @@ type OperateInstanceResponseBodyInstanceStatusList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The result of the operation, which indicates success or failure.
 	//

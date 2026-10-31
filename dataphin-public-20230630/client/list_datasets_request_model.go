@@ -28,6 +28,8 @@ type ListDatasetsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -85,13 +87,13 @@ type ListDatasetsRequestDatasetQuery struct {
 	//
 	// GENERAL
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The data domain ID.
+	// The subject domain ID.
 	//
 	// example:
 	//
 	// 74280
 	DataUnit *string `json:"DataUnit,omitempty" xml:"DataUnit,omitempty"`
-	// Specifies whether to include version details. Default value: FALSE.
+	// Specifies whether to include version details. Default value: false.
 	IncludeVersionList *bool `json:"IncludeVersionList,omitempty" xml:"IncludeVersionList,omitempty"`
 	// The keyword.
 	//
@@ -111,7 +113,7 @@ type ListDatasetsRequestDatasetQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
@@ -125,11 +127,7 @@ type ListDatasetsRequestDatasetQuery struct {
 	//
 	// 7273382541481536
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The dataset scenario. Valid values:
-	//
-	// - OFFLINE: offline.
-	//
-	// - REALTIME: real-time.
+	// The dataset scenario. Valid values: OFFLINE (offline) and REALTIME (real-time).
 	//
 	// example:
 	//
@@ -147,7 +145,7 @@ type ListDatasetsRequestDatasetQuery struct {
 	//
 	// 30001011
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The dataset type. If left empty, all types are queried.
+	// The dataset types. If this parameter is left empty, all types are queried.
 	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 

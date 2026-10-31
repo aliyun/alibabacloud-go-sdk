@@ -18,7 +18,7 @@ type iDeleteSecurityIdentifyResultsRequest interface {
 }
 
 type DeleteSecurityIdentifyResultsRequest struct {
-	// The delete instruction.
+	// The delete command.
 	//
 	// This parameter is required.
 	DeleteCommand *DeleteSecurityIdentifyResultsRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteSecurityIdentifyResultsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operating user.
+	//
 	// example:
 	//
 	// 30001011

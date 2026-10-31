@@ -30,6 +30,8 @@ type ListOperationRecordRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,13 +83,13 @@ func (s *ListOperationRecordRequest) Validate() error {
 }
 
 type ListOperationRecordRequestListCommand struct {
-	// The end of the start time range. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time of the time range. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-12-31 23:59:59
 	BeginTimeEnd *string `json:"BeginTimeEnd,omitempty" xml:"BeginTimeEnd,omitempty"`
-	// The beginning of the start time range. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time of the time range. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -101,13 +103,13 @@ type ListOperationRecordRequestListCommand struct {
 	CodeContent *string `json:"CodeContent,omitempty" xml:"CodeContent,omitempty"`
 	// The list of code types.
 	CodeType []*int32 `json:"CodeType,omitempty" xml:"CodeType,omitempty" type:"Repeated"`
-	// The list of duration ranges.
+	// The list of durations.
 	Duration []*int32 `json:"Duration,omitempty" xml:"Duration,omitempty" type:"Repeated"`
 	// The script name.
 	//
 	// example:
 	//
-	// 测试脚本
+	// Test script
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The list of object types.
 	ObjectType []*string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty" type:"Repeated"`
@@ -135,7 +137,7 @@ type ListOperationRecordRequestListCommand struct {
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sort type. Valid values: 0 (start time ascending), 1 (start time descending), 2 (object name).
+	// The sort type. Valid values: 0: Ascending order by start time. 1: Descending order by start time. 2: Object name.
 	//
 	// example:
 	//

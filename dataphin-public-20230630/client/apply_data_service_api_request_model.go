@@ -20,7 +20,7 @@ type iApplyDataServiceApiRequest interface {
 }
 
 type ApplyDataServiceApiRequest struct {
-	// The apply command.
+	// The application command.
 	//
 	// This parameter is required.
 	ApplyCommand *ApplyDataServiceApiRequestApplyCommand `json:"ApplyCommand,omitempty" xml:"ApplyCommand,omitempty" type:"Struct"`
@@ -32,6 +32,8 @@ type ApplyDataServiceApiRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -114,13 +116,13 @@ type ApplyDataServiceApiRequestApplyCommand struct {
 	//
 	// 1203
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to apply for permissions on operation-type APIs in the development environment.
+	// Specifies whether to apply for permissions in the development environment for operation APIs.
 	//
 	// example:
 	//
 	// true
 	ApplyDev *bool `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
-	// Specifies whether to apply for permissions on operation-type APIs in the production environment.
+	// Specifies whether to apply for permissions in the production environment for operation APIs.
 	//
 	// example:
 	//
@@ -128,9 +130,9 @@ type ApplyDataServiceApiRequestApplyCommand struct {
 	ApplyProd *bool `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
 	// The application type. Valid values:
 	//
-	// - APP: application.
+	// - APP: application
 	//
-	// - USER: individual account.
+	// - USER: individual account
 	//
 	// example:
 	//
@@ -138,19 +140,19 @@ type ApplyDataServiceApiRequestApplyCommand struct {
 	ApplyType *string `json:"ApplyType,omitempty" xml:"ApplyType,omitempty"`
 	// The list of permission types.
 	//
-	// - When the principal is an application, the following permission types are supported. To apply for delegation permissions, you must also apply for usage permissions.
+	// - If the applicant is an application, the following permission types are supported. When applying for the delegation permission, you must also apply for the use permission:
 	//
-	//   - USE: usage permission.
+	//   - USE: use permission
 	//
-	//   - DELEGATION: delegation permission.
+	//   - DELEGATION: delegation permission
 	//
-	// - When the principal is an individual, only USE (usage) permission is supported.
+	// - If the applicant is an individual, only the USE permission is supported.
 	//
-	// - If this parameter is not specified, the default value is USE (usage) permission.
+	// - If this parameter is not specified, the default value is USE.
 	AuthTypes []*string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
-	// The list of permission fields for query-type APIs in the development environment. This parameter is required in dev-prod mode. DevFieldList and ProdFieldList cannot both be empty.
+	// The list of permission fields in the development environment for query APIs. This parameter is required in dev-prod mode. Either devFieldList or prodFieldList must be specified.
 	DevFieldList []*ApplyDataServiceApiRequestApplyCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
-	// The expiration date in the format of yyyy-MM-dd.
+	// The expiration date. Format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +160,7 @@ type ApplyDataServiceApiRequestApplyCommand struct {
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The list of permission fields for query-type APIs in the production environment. This parameter is required in basic mode.
+	// The list of permission fields in the production environment for query APIs. This parameter is required in basic mode.
 	ProdFieldList []*ApplyDataServiceApiRequestApplyCommandProdFieldList `json:"ProdFieldList,omitempty" xml:"ProdFieldList,omitempty" type:"Repeated"`
 	// The reason for the application.
 	//
@@ -291,7 +293,7 @@ func (s *ApplyDataServiceApiRequestApplyCommand) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommandDevFieldList struct {
-	// The API permission field ID.
+	// The ID of the API permission field.
 	//
 	// example:
 	//
@@ -321,7 +323,7 @@ func (s *ApplyDataServiceApiRequestApplyCommandDevFieldList) Validate() error {
 }
 
 type ApplyDataServiceApiRequestApplyCommandProdFieldList struct {
-	// The API permission field ID.
+	// The ID of the API permission field.
 	//
 	// example:
 	//

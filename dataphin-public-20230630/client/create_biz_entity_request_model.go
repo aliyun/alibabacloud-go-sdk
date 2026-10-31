@@ -18,7 +18,7 @@ type iCreateBizEntityRequest interface {
 }
 
 type CreateBizEntityRequest struct {
-	// The create request.
+	// The creation request.
 	//
 	// This parameter is required.
 	CreateCommand *CreateBizEntityRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -103,9 +105,9 @@ type CreateBizEntityRequestCreateCommand struct {
 	DataDomainId *int64 `json:"DataDomainId,omitempty" xml:"DataDomainId,omitempty"`
 	// The business type. Valid values:
 	//
-	// - BIZ_OBJECT: business object.
+	// - BIZ_OBJECT: Business object.
 	//
-	// - BIZ_PROCESS: business activity.
+	// - BIZ_PROCESS: Business activity.
 	//
 	// This parameter is required.
 	//
@@ -197,7 +199,7 @@ type CreateBizEntityRequestCreateCommandBizObject struct {
 	//
 	// create_object_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+	// The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -211,23 +213,23 @@ type CreateBizEntityRequestCreateCommandBizObject struct {
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The parent entity from which the business object inherits. Only common business objects support inheritance, and the parent entity must be an online business object.
+	// The ID of the parent entity to be inherited by the business object. Only normal business objects can be configured to inherit an entity, and they can only inherit online business objects.
 	//
 	// example:
 	//
 	// 116306
 	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The list of associated online business entity IDs.
+	// The list of IDs of the associated online business entities.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
 	// The object type of the business object. Valid values:
 	//
-	// - NORMAL: common object.
+	// - NORMAL: Normal object.
 	//
-	// - ENUM: enumeration object.
+	// - ENUM: Enumeration object.
 	//
-	// - VIRTUAL: virtual object.
+	// - VIRTUAL: Virtual object.
 	//
-	// - HIERARCHY: hierarchy object.
+	// - HIERARCHY: Hierarchy object.
 	//
 	// This parameter is required.
 	//
@@ -313,7 +315,7 @@ func (s *CreateBizEntityRequestCreateCommandBizObject) Validate() error {
 }
 
 type CreateBizEntityRequestCreateCommandBizProcess struct {
-	// The list of business event activity IDs included in the business process activity. This parameter takes effect only when the current activity is a business process activity.
+	// The list of IDs of the business event activities included in the business process activity. This parameter is valid only when the current activity is a business process activity.
 	BizEventEntityIdList []*int64 `json:"BizEventEntityIdList,omitempty" xml:"BizEventEntityIdList,omitempty" type:"Repeated"`
 	// The description of the business activity. The description can be up to 128 characters in length.
 	//
@@ -329,7 +331,7 @@ type CreateBizEntityRequestCreateCommandBizProcess struct {
 	//
 	// create_process_name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The code name of the business activity. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+	// The code name of the business activity. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -343,17 +345,17 @@ type CreateBizEntityRequestCreateCommandBizProcess struct {
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The list of preceding business process activity IDs for the business process activity.
+	// The preceding business process activities of the business process activity.
 	PreBizProcessIdList []*int64 `json:"PreBizProcessIdList,omitempty" xml:"PreBizProcessIdList,omitempty" type:"Repeated"`
-	// The list of associated online business entity IDs.
+	// The list of IDs of the associated online business entities.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
 	// The type of the business activity. Valid values:
 	//
-	// - BIZ_EVENT: business event.
+	// - BIZ_EVENT: Business event.
 	//
-	// - BIZ_SNAPSHOT: business snapshot.
+	// - BIZ_SNAPSHOT: Business snapshot.
 	//
-	// - BIZ_PROCESS: business process.
+	// - BIZ_PROCESS: Business process.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type OfflinePipelineByAsyncRequest struct {
 	//
 	// This parameter is required.
 	Context *OfflinePipelineByAsyncRequestContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
-	// The offline pipeline node command.
+	// The command to take the pipeline task offline.
 	//
 	// This parameter is required.
 	OfflineCommand *OfflinePipelineByAsyncRequestOfflineCommand `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty" type:"Struct"`
@@ -36,6 +36,8 @@ type OfflinePipelineByAsyncRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -101,11 +103,7 @@ func (s *OfflinePipelineByAsyncRequest) Validate() error {
 }
 
 type OfflinePipelineByAsyncRequestContext struct {
-	// The environment for the current operation. Valid values:
-	//
-	// - DEV: the development environment.
-	//
-	// - PROD: the production environment.
+	// The current operation environment. Valid values: DEV: development environment. PROD: production environment.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +111,7 @@ type OfflinePipelineByAsyncRequestContext struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The ID of the project to which the integration pipeline node belongs.
+	// The ID of the project to which the integration pipeline task belongs.
 	//
 	// This parameter is required.
 	//
@@ -154,29 +152,29 @@ func (s *OfflinePipelineByAsyncRequestContext) Validate() error {
 }
 
 type OfflinePipelineByAsyncRequestOfflineCommand struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// Specifies whether to delete the node.
+	// Specifies whether to delete the task.
 	//
 	// This parameter is required.
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// The file ID of the integration node. You can use this parameter to query the node.
+	// The ID of the integration task file.
 	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The schedule node ID of the integration node. You can use this parameter to query the node.
+	// The ID of the scheduling node for the integration task.
 	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The primary key ID of the integration pipeline. You can use this parameter to query the node.
+	// The primary key of the integration pipeline.
 	//
 	// example:
 	//

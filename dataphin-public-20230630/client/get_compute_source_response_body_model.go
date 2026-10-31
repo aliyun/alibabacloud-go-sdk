@@ -24,7 +24,7 @@ type iGetComputeSourceResponseBody interface {
 }
 
 type GetComputeSourceResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetComputeSourceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetComputeSourceResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *GetComputeSourceResponseBody) Validate() error {
 }
 
 type GetComputeSourceResponseBodyComputeSourceInfo struct {
-	// Indicates whether a project is associated.
+	// Indicates whether the compute source is bound to a project.
 	//
 	// example:
 	//
 	// true
 	BindProject *bool `json:"BindProject,omitempty" xml:"BindProject,omitempty"`
-	// The ID of the associated project.
+	// The ID of the bound project.
 	//
 	// example:
 	//
 	// 10101101
 	BindProjectId *int64 `json:"BindProjectId,omitempty" xml:"BindProjectId,omitempty"`
-	// The name of the associated project.
+	// The name of the bound project.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type GetComputeSourceResponseBodyComputeSourceInfo struct {
 	//
 	// 1681881607000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//

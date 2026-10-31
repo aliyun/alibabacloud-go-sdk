@@ -42,7 +42,7 @@ type ListDatasetsResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paged result.
+	// The paginated result.
 	PageResult *ListDatasetsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type ListDatasetsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *ListDatasetsResponseBody) Validate() error {
 }
 
 type ListDatasetsResponseBodyPageResult struct {
-	// The total count.
+	// The actual total count.
 	//
 	// example:
 	//
 	// 12
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The object.
+	// The objects.
 	ResultData []*ListDatasetsResponseBodyPageResultResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Repeated"`
 }
 
@@ -186,37 +186,37 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// GENERAL
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 300001391
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The data domain ID.
+	// The subject area ID.
 	//
 	// example:
 	//
 	// 74280
 	DataCellId *string `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
-	// **The data domain name.**
+	// **The subject area name.**
 	//
 	// example:
 	//
-	// 离线数据主题域
+	// Offline data subject area
 	DataCellName *string `json:"DataCellName,omitempty" xml:"DataCellName,omitempty"`
 	// The description.
 	//
 	// example:
 	//
-	// 测试数据集
+	// Test dataset
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory (retrieved from the file service by fileId).
+	// The directory, which is obtained from the file service by using the file ID.
 	//
 	// example:
 	//
@@ -234,29 +234,29 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// 2026-05-18 17:07:54.237771
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2026-05-18 17:07:54.237771
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The dataset ID (business primary key).
+	// The dataset ID, which is the business primary key.
 	//
 	// example:
 	//
 	// 7128268454335680
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The development owner ID.
+	// The ID of the development owner.
 	//
 	// example:
 	//
 	// 300001391
 	LockOwner *string `json:"LockOwner,omitempty" xml:"LockOwner,omitempty"`
-	// The name of the development owner (interface Displayed Fields).
+	// The name of the development owner (interface display field).
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LockOwnerName *string `json:"LockOwnerName,omitempty" xml:"LockOwnerName,omitempty"`
 	// **The metastore type.**
 	//
@@ -264,31 +264,27 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// POSTGRESQL
 	MetadataStorageType *string `json:"MetadataStorageType,omitempty" xml:"MetadataStorageType,omitempty"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// audio_dataset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owner list.
+	// The list of owners.
 	OwnerList []*ListDatasetsResponseBodyPageResultResultDataOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	// The project ID.
+	// The ID of the project to which the dataset belongs.
 	//
 	// example:
 	//
 	// 7290731813137728
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project to which the dataset belongs.
 	//
 	// example:
 	//
 	// ds_tm
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The dataset scenarios. Valid values:
-	//
-	// - OFFLINE: offline (default).
-	//
-	// - REALTIME: real-time.
+	// The scenarios of the dataset. Valid values: OFFLINE (offline, default) and REALTIME (real-time).
 	//
 	// example:
 	//
@@ -312,7 +308,7 @@ type ListDatasetsResponseBodyPageResultResultData struct {
 	//
 	// HYBRID
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version list.
+	// The list of versions.
 	VersionList []*ListDatasetsResponseBodyPageResultResultDataVersionList `json:"VersionList,omitempty" xml:"VersionList,omitempty" type:"Repeated"`
 }
 
@@ -564,7 +560,7 @@ type ListDatasetsResponseBodyPageResultResultDataOwnerList struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -599,8 +595,9 @@ func (s *ListDatasetsResponseBodyPageResultResultDataOwnerList) Validate() error
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionList struct {
+	// The API information of the online dataset.
 	ApiInfo *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
@@ -620,7 +617,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionList struct {
 	//
 	// 2026-04-28 10:03:49
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -735,57 +732,80 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) Validate() err
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo struct {
+	// The business ID.
+	//
 	// example:
 	//
 	// 1012
 	ApiNo *int64 `json:"ApiNo,omitempty" xml:"ApiNo,omitempty"`
+	// The execution timeout period in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 60
 	ExecTimeout *int32 `json:"ExecTimeout,omitempty" xml:"ExecTimeout,omitempty"`
+	// The execution mode. Valid values: 1: Synchronous, 2: Asynchronous.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ExecuteMode *int32 `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// The data service API group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1011
 	OsApiGroup *int32 `json:"OsApiGroup,omitempty" xml:"OsApiGroup,omitempty"`
+	// The name of the data service API group.
+	//
 	// example:
 	//
 	// test
 	OsApiGroupName *string `json:"OsApiGroupName,omitempty" xml:"OsApiGroupName,omitempty"`
+	// The data service project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1012
 	OsProject *int32 `json:"OsProject,omitempty" xml:"OsProject,omitempty"`
+	// The name of the data service project.
+	//
 	// example:
 	//
 	// test
 	OsProjectName *string `json:"OsProjectName,omitempty" xml:"OsProjectName,omitempty"`
+	// The protocol type. Valid values: 1: HTTPS, 2: HTTP, 3: HTTP and HTTPS.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The request method. Valid values: 1: GET, 2: LIST.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// The list of request parameters.
+	//
 	// This parameter is required.
-	RequestParamList  []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList  `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	RequestParamList []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	// The list of response parameters.
 	ResponseParamList []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
+	// The timeout period in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -933,45 +953,68 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) Validat
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList struct {
+	// The date format.
+	//
 	// example:
 	//
 	// yyyyMMdd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// The default value.
+	//
 	// example:
 	//
 	// test
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
-	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// Specifies whether the parameter is a URL parameter.
+	IsUrl *bool `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// The mapping column.
+	//
 	// example:
 	//
 	// col02
 	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
-	Must          *bool   `json:"Must,omitempty" xml:"Must,omitempty"`
+	// Specifies whether the parameter is required.
+	Must *bool `json:"Must,omitempty" xml:"Must,omitempty"`
+	// The operator.
+	//
 	// example:
 	//
 	// =
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Optional *bool   `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// Specifies whether the parameter is optional.
+	Optional *bool `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The original column name.
+	//
 	// example:
 	//
 	// colx
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// p1
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// int
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The example value.
+	//
 	// example:
 	//
 	// test
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The sequence number.
+	//
 	// example:
 	//
 	// 1
@@ -1108,35 +1151,52 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestPa
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList struct {
+	// The date format.
+	//
 	// example:
 	//
 	// yyyyMMdd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
-	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// Specifies whether the parameter is a URL parameter.
+	IsUrl *bool `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// The mapping column.
+	//
 	// example:
 	//
 	// col1
 	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	// The original column name.
+	//
 	// example:
 	//
 	// colx
 	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// The parameter name.
+	//
 	// example:
 	//
 	// p2
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// int
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// The example value.
+	//
 	// example:
 	//
 	// test
 	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The sequence number.
+	//
 	// example:
 	//
 	// 1
@@ -1241,13 +1301,13 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfig st
 	FileStorageConfig *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigFileStorageConfig `json:"FileStorageConfig,omitempty" xml:"FileStorageConfig,omitempty" type:"Struct"`
 	// The metastore configuration.
 	MetadataStorageConfig *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfig `json:"MetadataStorageConfig,omitempty" xml:"MetadataStorageConfig,omitempty" type:"Struct"`
-	// The real-time meta table configuration (takes effect only when `metadataStorageType=REALTIME_META_TABLE`).
+	// The real-time metatable configuration. This configuration is valid only when `metadataStorageType` is `REALTIME_META_TABLE`.
 	RealtimeMetaTableConfig *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfig `json:"RealtimeMetaTableConfig,omitempty" xml:"RealtimeMetaTableConfig,omitempty" type:"Struct"`
 	// The version description.
 	//
 	// example:
 	//
-	// 测试数据集版本
+	// Test dataset version
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 }
 
@@ -1327,13 +1387,13 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigFil
 	//
 	// example:
 	//
-	// 测试数据源
+	// Test data source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
 	// The development path (not required for basic projects).
 	//
 	// example:
 	//
-	// HTML正文提取/test423/
+	// HTML content extraction/test423/
 	DevPath *string `json:"DevPath,omitempty" xml:"DevPath,omitempty"`
 	// The mount path.
 	//
@@ -1349,7 +1409,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigFil
 	//
 	// example:
 	//
-	// HTML正文提取/test423/
+	// HTML content extraction/test423/
 	ProdPath *string `json:"ProdPath,omitempty" xml:"ProdPath,omitempty"`
 }
 
@@ -1423,13 +1483,13 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// example:
 	//
-	// 测试数据源
+	// Test data source
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The development database/schema.
+	// The development database or schema.
 	//
 	// example:
 	//
-	// HTML正文提取/test423/
+	// HTML content extraction/test423/
 	DevSchema *string `json:"DevSchema,omitempty" xml:"DevSchema,omitempty"`
 	// The storage destination (new table or existing table).
 	//
@@ -1445,13 +1505,13 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// MILVUS
 	MetadataStorageType *string `json:"MetadataStorageType,omitempty" xml:"MetadataStorageType,omitempty"`
-	// The production database/schema.
+	// The production database or schema.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// HTML正文提取/test423/
+	// HTML content extraction/test423/
 	ProdSchema *string `json:"ProdSchema,omitempty" xml:"ProdSchema,omitempty"`
 	// The table name.
 	//
@@ -1555,7 +1615,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchema struct {
-	// The field list.
+	// The list of columns.
 	Columns []*ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -1590,25 +1650,25 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns struct {
-	// The field description.
+	// The column description.
 	//
 	// example:
 	//
-	// 主键
+	// Primary key
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The array element subtype. This parameter takes effect only when type is set to ARRAY.
+	// The subtype of the array element. Valid only when type is ARRAY.
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// The maximum array capacity. This parameter takes effect only when type is set to ARRAY. Default value: 4096.
+	// The maximum capacity of the array. Valid only when type is ARRAY. Default value: 4096.
 	//
 	// example:
 	//
 	// 20
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// The field name.
+	// The column name.
 	//
 	// This parameter is required.
 	//
@@ -1616,7 +1676,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// id
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the field is a primary key.
+	// Specifies whether the column is a primary key.
 	//
 	// This parameter is required.
 	//
@@ -1624,7 +1684,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// true
 	Pk *bool `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	// The field type.
+	// The column type.
 	//
 	// This parameter is required.
 	//
@@ -1632,7 +1692,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// int8
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Indicates whether the field is a URL.
+	// Specifies whether the column is a URL.
 	//
 	// example:
 	//
@@ -1748,9 +1808,9 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMet
 	//
 	// MultiModal-Embedding
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index build parameters.
+	// The index building parameters.
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
-	// The index type. PG supports IVFFlat and HNSW. Milvus supports all index types.
+	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
 	//
 	// This parameter is required.
 	//
@@ -1826,7 +1886,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfig struct {
-	// The meta table data source type (only KAFKA is available in this release).
+	// The data source type of the metatable. Only KAFKA is supported in the current release.
 	//
 	// This parameter is required.
 	//
@@ -1834,15 +1894,15 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// KAFKA
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// The meta table name.
+	// The metatable name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 测试元表
+	// Test metatable
 	MetaTableName *string `json:"MetaTableName,omitempty" xml:"MetaTableName,omitempty"`
-	// The project ID of the meta table (cross-project access is supported).
+	// The ID of the project to which the metatable belongs. Cross-project access is supported.
 	//
 	// This parameter is required.
 	//
@@ -1850,7 +1910,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// 7128268454335680
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The table schema configuration (reuses `MetadataStorageConfigDTO.TableSchemaDTO`).
+	// The table schema configuration. This configuration reuses `MetadataStorageConfigDTO.TableSchemaDTO`.
 	TableSchema *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
 
@@ -1908,7 +1968,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfi
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema struct {
-	// The field list.
+	// The list of columns.
 	Columns []*ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 }
 
@@ -1947,21 +2007,21 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// example:
 	//
-	// 录入时间
+	// Entry time
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// **The array element subtype. This parameter takes effect only when type is set to ARRAY.**
+	// **The subtype of the array element. Valid only when type is ARRAY.**
 	//
 	// example:
 	//
 	// INT64
 	ElementType *string `json:"ElementType,omitempty" xml:"ElementType,omitempty"`
-	// **The maximum array capacity. This parameter takes effect only when type is set to ARRAY. Default value: 4096.**
+	// **The maximum capacity of the array. Valid only when type is ARRAY. Default value: 4096.**
 	//
 	// example:
 	//
 	// 35
 	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	// **The field name.**
+	// **The column name.**
 	//
 	// This parameter is required.
 	//
@@ -1969,7 +2029,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// happen_time
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the field is a primary key.
+	// Specifies whether the column is a primary key.
 	//
 	// This parameter is required.
 	//
@@ -1977,7 +2037,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// false
 	Pk *bool `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	// **The field type.**
+	// **The column type.**
 	//
 	// This parameter is required.
 	//
@@ -1985,7 +2045,7 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// date
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Indicates whether the field is a URL.
+	// Specifies whether the column is a URL.
 	//
 	// example:
 	//
@@ -2101,9 +2161,9 @@ type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRea
 	//
 	// multimodal-embedding-v1
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// The index build parameters.
+	// The index building parameters.
 	IndexParams map[string]interface{} `json:"IndexParams,omitempty" xml:"IndexParams,omitempty"`
-	// The index type. PG supports IVFFlat and HNSW. Milvus supports all index types.
+	// The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
 	//
 	// This parameter is required.
 	//

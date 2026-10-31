@@ -18,11 +18,11 @@ type iListPublishRecordsRequest interface {
 }
 
 type ListPublishRecordsRequest struct {
-	// Query command.
+	// The query command.
 	//
 	// This parameter is required.
 	ListQuery *ListPublishRecordsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListPublishRecordsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,13 +83,13 @@ func (s *ListPublishRecordsRequest) Validate() error {
 }
 
 type ListPublishRecordsRequestListQuery struct {
-	// Search keyword.
+	// The search keyword.
 	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Publish record filter.
+	// The publish record filter.
 	//
 	// This parameter is required.
 	SearchFilter *ListPublishRecordsRequestListQuerySearchFilter `json:"SearchFilter,omitempty" xml:"SearchFilter,omitempty" type:"Struct"`
@@ -129,9 +131,9 @@ func (s *ListPublishRecordsRequestListQuery) Validate() error {
 }
 
 type ListPublishRecordsRequestListQuerySearchFilter struct {
-	// List of change types (0: Create, 1: Update, 2: Delete).
+	// The list of change types (0: Create, 1: Update, 2: Delete).
 	ChangeTypeList []*int32 `json:"ChangeTypeList,omitempty" xml:"ChangeTypeList,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +141,7 @@ type ListPublishRecordsRequestListQuerySearchFilter struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -147,25 +149,25 @@ type ListPublishRecordsRequestListQuerySearchFilter struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of project IDs.
+	// The list of project IDs.
 	//
 	// This parameter is required.
 	ProjectIdList []*int64 `json:"ProjectIdList,omitempty" xml:"ProjectIdList,omitempty" type:"Repeated"`
-	// Publish end time in the yyyy-MM-dd HH:mm:ss format.
+	// The publish end time in yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	PublishEndTime *string `json:"PublishEndTime,omitempty" xml:"PublishEndTime,omitempty"`
-	// Publish start time in the yyyy-MM-dd HH:mm:ss format.
+	// The publish start time in yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	PublishStartTime *string `json:"PublishStartTime,omitempty" xml:"PublishStartTime,omitempty"`
-	// List of publish statuses (0: Failed, 1: Succeeded, 2: Publishing).
+	// The list of publish statuses (0: Failed, 1: Successful, 2: Publishing).
 	PublishStatusList []*int32 `json:"PublishStatusList,omitempty" xml:"PublishStatusList,omitempty" type:"Repeated"`
-	// List of submitter IDs.
+	// The list of submitter IDs.
 	SubmitterList []*string `json:"SubmitterList,omitempty" xml:"SubmitterList,omitempty" type:"Repeated"`
 }
 

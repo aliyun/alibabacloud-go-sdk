@@ -20,7 +20,7 @@ type iListDataServiceMyAppPermissionsRequest interface {
 }
 
 type ListDataServiceMyAppPermissionsRequest struct {
-	// The query conditions.
+	// The search conditions.
 	//
 	// This parameter is required.
 	ListQuery *ListDataServiceMyAppPermissionsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
@@ -32,11 +32,13 @@ type ListDataServiceMyAppPermissionsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The ID of the data service project.
+	// The data service project ID.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iCreateBizMetricShrinkRequest interface {
 }
 
 type CreateBizMetricShrinkRequest struct {
-	// The create request.
+	// The creation request.
 	//
 	// This parameter is required.
 	CreateBizMetricCommandShrink *string `json:"CreateBizMetricCommand,omitempty" xml:"CreateBizMetricCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreateBizMetricShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

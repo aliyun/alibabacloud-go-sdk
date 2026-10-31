@@ -36,13 +36,13 @@ type GetQualityTemplateResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the template object.
+	// The template object details.
 	QualityTemplateInfo *GetQualityTemplateResponseBodyQualityTemplateInfo `json:"QualityTemplateInfo,omitempty" xml:"QualityTemplateInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type GetQualityTemplateResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,23 +126,7 @@ func (s *GetQualityTemplateResponseBody) Validate() error {
 }
 
 type GetQualityTemplateResponseBodyQualityTemplateInfo struct {
-	// The template category. Valid values:
-	//
-	// - CONSISTENT: consistency.
-	//
-	// - EFFECTIVE: validity.
-	//
-	// - TIMELINESE: timeliness.
-	//
-	// - ACCURATE: accuracy.
-	//
-	// - UNIQUENESS: uniqueness.
-	//
-	// - COMPLETENESS: completeness.
-	//
-	// - STABILITY: stability.
-	//
-	// - CUSTOM: custom.
+	// The template category. Valid values: CONSISTENT: consistency, EFFECTIVE: effectiveness, TIMELINESE: timeliness, ACCURATE: accuracy, UNIQUENESS: uniqueness, COMPLETENESS: completeness, STABILITY: stability, and CUSTOM: custom.
 	//
 	// example:
 	//
@@ -152,9 +136,9 @@ type GetQualityTemplateResponseBodyQualityTemplateInfo struct {
 	//
 	// example:
 	//
-	// 一致性
+	// Consistency
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -178,7 +162,7 @@ type GetQualityTemplateResponseBodyQualityTemplateInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The key-value pairs of the rule configuration.
+	// The rule configuration key-value pairs.
 	FormPropertyList []*GetQualityTemplateResponseBodyQualityTemplateInfoFormPropertyList `json:"FormPropertyList,omitempty" xml:"FormPropertyList,omitempty" type:"Repeated"`
 	// The template ID.
 	//
@@ -200,7 +184,7 @@ type GetQualityTemplateResponseBodyQualityTemplateInfo struct {
 	//
 	// test
 	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
-	// The modification time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -226,71 +210,9 @@ type GetQualityTemplateResponseBodyQualityTemplateInfo struct {
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Indicates whether all data source types are supported.
 	SupportAllDataSourceType *bool `json:"SupportAllDataSourceType,omitempty" xml:"SupportAllDataSourceType,omitempty"`
-	// The list of supported data source types, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
+	// The supported specific data source types, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
 	SupportDataSourceTypeList []*string `json:"SupportDataSourceTypeList,omitempty" xml:"SupportDataSourceTypeList,omitempty" type:"Repeated"`
-	// The templatetype. Valid values:
-	//
-	// - FIELD_NULL_VALUE_VALIDATE: field null value check.
-	//
-	// - FIELD_EMPTY_STRING_VALIDATE: field empty character string check.
-	//
-	// - FIELD_UNIQUE_VALIDATE: field uniqueness check.
-	//
-	// - FIELD_GROUP_COUNT_VALIDATE: field unique value count check.
-	//
-	// - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check.
-	//
-	// - FUNCTION_TIME_COMPARE: time function comparison.
-	//
-	// - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison.
-	//
-	// - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison.
-	//
-	// - FIELD_FORMAT_VALIDATE: field format check.
-	//
-	// - FIELD_LENGTH_VALIDATE: field length check.
-	//
-	// - FIELD_VALUE_RANGE_VALIDATE: field value range check.
-	//
-	// - CODE_TABLE_COMPARE: lookup table reference comparison.
-	//
-	// - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison.
-	//
-	// - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison.
-	//
-	// - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison.
-	//
-	// - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison.
-	//
-	// - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison.
-	//
-	// - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison.
-	//
-	// - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison.
-	//
-	// - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison.
-	//
-	// - TABLE_STABILITY_VALIDATE: table stability check.
-	//
-	// - TABLE_FLUCTUATION_VALIDATE: table fluctuation check.
-	//
-	// - FIELD_STABILITY_VALIDATE: field stability check.
-	//
-	// - FIELD_FLUCTUATION_VALIDATE: field fluctuation check.
-	//
-	// - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check.
-	//
-	// - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check.
-	//
-	// - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring.
-	//
-	// - TABLE_SCHEMA_CHECK: table schema change monitoring.
-	//
-	// - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison.
-	//
-	// - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring.
-	//
-	// - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
+	// The templatetype. Valid values: FIELD_NULL_VALUE_VALIDATE: field null value check, FIELD_EMPTY_STRING_VALIDATE: field empty character string check, FIELD_UNIQUE_VALIDATE: field uniqueness check, FIELD_GROUP_COUNT_VALIDATE: field unique value count check, FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check, FUNCTION_TIME_COMPARE: time function comparison, SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison, DOUBLE_TABLE_TIME_COMPARE: double-table time field comparison, FIELD_FORMAT_VALIDATE: field format check, FIELD_LENGTH_VALIDATE: field length check, FIELD_VALUE_RANGE_VALIDATE: field value range check, CODE_TABLE_COMPARE: lookup table reference comparison, STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison, SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison, SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison, SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison, DOUBLE_TABLE_FIELD_VALUE_COMPARE: double-table field value consistency comparison, DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: double-table field statistical value consistency comparison, CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source double-table field statistical value consistency comparison, DOUBLE_TABLE_FIELD_EXP_COMPARE: double-table field business logic consistency comparison, TABLE_STABILITY_VALIDATE: table stability check, TABLE_FLUCTUATION_VALIDATE: table fluctuation check, FIELD_STABILITY_VALIDATE: field stability check, FIELD_FLUCTUATION_VALIDATE: field fluctuation check, CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check, CUSTOM_DATA_DETAILS_VALIDATE: custom data details check, DATASOURCE_AVAILABLE_CHECK: data source connectivity check, TABLE_SCHEMA_CHECK: table schema change check, REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison, REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value check, and REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
 	//
 	// example:
 	//
@@ -300,7 +222,7 @@ type GetQualityTemplateResponseBodyQualityTemplateInfo struct {
 	//
 	// example:
 	//
-	// 字段空值校验
+	// Field null value check
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
@@ -497,7 +419,7 @@ func (s *GetQualityTemplateResponseBodyQualityTemplateInfo) Validate() error {
 }
 
 type GetQualityTemplateResponseBodyQualityTemplateInfoFormPropertyList struct {
-	// The control type.
+	// The component type.
 	//
 	// example:
 	//

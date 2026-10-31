@@ -18,7 +18,7 @@ type iGetStandardStatisticsShrinkRequest interface {
 }
 
 type GetStandardStatisticsShrinkRequest struct {
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,13 @@ type GetStandardStatisticsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The statistical query instruction.
+	// The statistics query instruction.
 	//
 	// This parameter is required.
 	StatisticsQueryShrink *string `json:"StatisticsQuery,omitempty" xml:"StatisticsQuery,omitempty"`

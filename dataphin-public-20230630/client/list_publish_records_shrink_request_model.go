@@ -18,11 +18,11 @@ type iListPublishRecordsShrinkRequest interface {
 }
 
 type ListPublishRecordsShrinkRequest struct {
-	// Query command.
+	// The query command.
 	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListPublishRecordsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

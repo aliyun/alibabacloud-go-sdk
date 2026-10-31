@@ -26,11 +26,13 @@ type UpdateSecurityIdentifyResultStatusRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The update instruction.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateSecurityIdentifyResultStatusRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -81,7 +83,7 @@ func (s *UpdateSecurityIdentifyResultStatusRequest) Validate() error {
 }
 
 type UpdateSecurityIdentifyResultStatusRequestUpdateCommand struct {
-	// Specifies whether the result is effective.
+	// Specifies whether the result takes effect.
 	//
 	// This parameter is required.
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`

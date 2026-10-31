@@ -20,29 +20,29 @@ type iGetDirectoryTreeRequest interface {
 }
 
 type GetDirectoryTreeRequest struct {
-	// Directory type.
+	// The directory type. Valid values:
 	//
-	// - Ad-hoc Query: tempCode
+	// - tempCode: Ad hoc query.
 	//
-	// - Code Task: codeManage
+	// - codeManage: Code task.
 	//
-	// - Offline Pipeline: offlinePipeline
+	// - offlinePipeline: Offline pipeline.
 	//
-	// - Pipeline Custom Component: offlinePipelineCustomPlugin
+	// - offlinePipelineCustomPlugin: Custom pipeline component.
 	//
-	// - Sync Task: dataX
+	// - dataX: Synchronization task.
 	//
-	// - Real-time Meta Table: streamMeta
+	// - streamMeta: Real-time metadata table.
 	//
-	// - Real-time Custom Source: streamCustomDataSource
+	// - streamCustomDataSource: Real-time custom source.
 	//
-	// - Real-time Compute Template: streamTemplate
+	// - streamTemplate: Real-time computing template.
 	//
-	// - Resource Management: resourceManage
+	// - resourceManage: Resource management.
 	//
-	// - Offline Function: udfResource
+	// - udfResource: Offline function.
 	//
-	// - Real-time Function: streamFunction
+	// - streamFunction: Real-time function.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type GetDirectoryTreeRequest struct {
 	//
 	// codeManage
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,13 @@ type GetDirectoryTreeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operating user.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//

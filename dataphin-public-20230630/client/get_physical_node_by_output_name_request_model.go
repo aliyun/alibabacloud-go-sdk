@@ -20,17 +20,17 @@ type iGetPhysicalNodeByOutputNameRequest interface {
 }
 
 type GetPhysicalNodeByOutputNameRequest struct {
-	// Environment identifier
+	// The environment identifier. Valid values:
 	//
-	// - DEV: Development environment
+	// - DEV: development environment
 	//
-	// - PROD (default): Production environment
+	// - PROD: production environment. This is the default value.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,13 @@ type GetPhysicalNodeByOutputNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Node output name
+	// The output name of the node.
 	//
 	// This parameter is required.
 	//

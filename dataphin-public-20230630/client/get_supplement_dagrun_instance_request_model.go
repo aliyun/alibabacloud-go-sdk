@@ -20,7 +20,7 @@ type iGetSupplementDagrunInstanceRequest interface {
 }
 
 type GetSupplementDagrunInstanceRequest struct {
-	// The dagrun ID.
+	// Dagrun ID
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,11 @@ type GetSupplementDagrunInstanceRequest struct {
 	DagrunId *string `json:"DagrunId,omitempty" xml:"DagrunId,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: development environment
 	//
-	// - PROD (default): production environment.
+	// - PROD: production environment
+	//
+	// Default value: PROD.
 	//
 	// example:
 	//
@@ -46,6 +48,8 @@ type GetSupplementDagrunInstanceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

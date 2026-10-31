@@ -42,7 +42,7 @@ type GetOperationRecordRunCodeResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The operation log code response.
+	// The operation record code response.
 	OperationLogCodeResponse *GetOperationRecordRunCodeResponseBodyOperationLogCodeResponse `json:"OperationLogCodeResponse,omitempty" xml:"OperationLogCodeResponse,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type GetOperationRecordRunCodeResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -142,7 +142,7 @@ type GetOperationRecordRunCodeResponseBodyOperationLogCodeResponse struct {
 	//
 	// example:
 	//
-	// SQL查询节点
+	// SQL query node
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 	// The number of SQL statements.
 	//

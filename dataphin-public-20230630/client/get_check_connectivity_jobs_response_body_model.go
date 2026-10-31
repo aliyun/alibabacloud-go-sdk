@@ -24,7 +24,7 @@ type iGetCheckConnectivityJobsResponseBody interface {
 }
 
 type GetCheckConnectivityJobsResponseBody struct {
-	// The response code returned by the backend.
+	// The backend response code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetCheckConnectivityJobsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The details of the backend response error.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetCheckConnectivityJobsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetCheckConnectivityJobsResponseBodyData struct {
 	//
 	// 192
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The error message that provides a detailed error description when the task fails.
+	// The error message that provides a detailed description when a task fails.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetCheckConnectivityJobsResponseBodyData struct {
 	//
 	// 123123
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task type, such as application-level or cluster-level.
+	// The task type (application-level or cluster-level).
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type GetCheckConnectivityJobsResponseBodyData struct {
 	//
 	// 30001011
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The Voldemort task ID, which is used to associate with the underlying execution task.
+	// The Voldemort task ID used to associate the underlying execution task.
 	//
 	// example:
 	//

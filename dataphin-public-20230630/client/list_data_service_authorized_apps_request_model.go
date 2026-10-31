@@ -30,6 +30,8 @@ type ListDataServiceAuthorizedAppsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -110,7 +112,7 @@ type ListDataServiceAuthorizedAppsRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//

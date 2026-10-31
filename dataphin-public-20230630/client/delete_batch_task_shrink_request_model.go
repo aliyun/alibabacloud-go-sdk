@@ -18,7 +18,7 @@ type iDeleteBatchTaskShrinkRequest interface {
 }
 
 type DeleteBatchTaskShrinkRequest struct {
-	// The delete request.
+	// The deletion request.
 	//
 	// This parameter is required.
 	DeleteCommandShrink *string `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty"`
@@ -30,6 +30,8 @@ type DeleteBatchTaskShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

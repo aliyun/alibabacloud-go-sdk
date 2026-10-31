@@ -18,14 +18,20 @@ type iListBatchTasksShrinkRequest interface {
 }
 
 type ListBatchTasksShrinkRequest struct {
+	// The task query conditions.
+	//
 	// This parameter is required.
 	BatchTaskQueryShrink *string `json:"BatchTaskQuery,omitempty" xml:"BatchTaskQuery,omitempty"`
+	// The tenant ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

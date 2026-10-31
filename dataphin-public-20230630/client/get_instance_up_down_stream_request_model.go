@@ -26,7 +26,7 @@ type iGetInstanceUpDownStreamRequest interface {
 }
 
 type GetInstanceUpDownStreamRequest struct {
-	// The number of downstream node levels. Default value: 1.
+	// The depth of downstream nodes. Default value: 1.
 	//
 	// example:
 	//
@@ -34,15 +34,17 @@ type GetInstanceUpDownStreamRequest struct {
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: development environment
 	//
-	// - PROD (default): production environment.
+	// - PROD: production environment
+	//
+	// Default value: PROD.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The center node.
+	// The central node.
 	//
 	// This parameter is required.
 	InstanceId *GetInstanceUpDownStreamRequestInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
@@ -54,6 +56,8 @@ type GetInstanceUpDownStreamRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -66,7 +70,7 @@ type GetInstanceUpDownStreamRequest struct {
 	//
 	// 1001121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The number of upstream node levels. Default value: 1.
+	// The depth of upstream nodes. Default value: 1.
 	//
 	// example:
 	//
@@ -155,7 +159,7 @@ func (s *GetInstanceUpDownStreamRequest) Validate() error {
 }
 
 type GetInstanceUpDownStreamRequestInstanceId struct {
-	// The list of field IDs. This parameter can be specified when the node is a logical table instance ID. If this parameter is not specified, the full table is used by default.
+	// The list of field IDs. You can specify this parameter when the node is a logical table instance ID. If you do not specify this parameter, the entire table is used by default.
 	FieldInstanceIdList []*string `json:"FieldInstanceIdList,omitempty" xml:"FieldInstanceIdList,omitempty" type:"Repeated"`
 	// The instance ID.
 	//

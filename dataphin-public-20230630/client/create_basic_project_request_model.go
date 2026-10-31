@@ -18,7 +18,7 @@ type iCreateBasicProjectRequest interface {
 }
 
 type CreateBasicProjectRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateBasicProjectRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateBasicProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -99,11 +101,11 @@ type CreateBasicProjectRequestCreateCommand struct {
 	//
 	// test project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project display name.
+	// The display name of the project.
 	//
 	// example:
 	//
-	// My project.
+	// My project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The project name.
 	//
@@ -125,7 +127,7 @@ type CreateBasicProjectRequestCreateCommand struct {
 	//
 	// 2002
 	StreamComputeSourceId *int64 `json:"StreamComputeSourceId,omitempty" xml:"StreamComputeSourceId,omitempty"`
-	// The project type. If this parameter is left empty, the default value GENERAL is used.
+	// The project type. Default value: GENERAL.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type ListDataServiceMyAppPermissionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListDataServiceMyAppPermissionsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -200,13 +200,13 @@ type ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList struct 
 	//
 	// 1121
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The role of the current logon user relative to this record. Valid values:
+	// The role of the current logged-on user for this record. Valid values:
 	//
-	// - SuperAdmin: the current user is a super administrator.
+	// - SuperAdmin: The current user is a super administrator.
 	//
-	// - ProjMan: the current user is a project administrator for this record.
+	// - ProjMan: The current user is a project manager for this record.
 	//
-	// - NormalUser: the current user is a regular user for this record, meaning the user is neither a super administrator nor a project administrator.
+	// - NormalUser: The current user is a regular user for this record, meaning the user is neither a super administrator nor a project manager.
 	//
 	// example:
 	//
@@ -224,15 +224,15 @@ type ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList struct 
 	//
 	// test
 	OwnerUserName *string `json:"OwnerUserName,omitempty" xml:"OwnerUserName,omitempty"`
-	// The user to whom the permission belongs.
+	// The permission owner.
 	//
 	// example:
 	//
 	// 1121
 	PrivilegeBelongTo *string `json:"PrivilegeBelongTo,omitempty" xml:"PrivilegeBelongTo,omitempty"`
-	// The source of the authorization. Valid values:
+	// The authorization source. Valid values:
 	//
-	// - 0: owner.
+	// - 0: Owner.
 	//
 	// example:
 	//
@@ -250,11 +250,11 @@ type ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList struct 
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The description, used for troubleshooting.
+	// The description used for troubleshooting.
 	RemarkForDebugList []*ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionListRemarkForDebugList `json:"RemarkForDebugList,omitempty" xml:"RemarkForDebugList,omitempty" type:"Repeated"`
 	// The role. Valid values:
 	//
-	// - 0: owner.
+	// - 0: Owner.
 	//
 	// example:
 	//
@@ -407,7 +407,7 @@ type ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionListRemarkFo
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The configuration item value.
+	// The value of the configuration item.
 	//
 	// example:
 	//

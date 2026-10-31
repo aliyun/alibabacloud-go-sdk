@@ -18,7 +18,7 @@ type iCreateDevProdProjectRequest interface {
 }
 
 type CreateDevProdProjectRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateDevProdProjectRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateDevProdProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -99,7 +101,7 @@ type CreateDevProdProjectRequestCreateCommand struct {
 	//
 	// dev desc
 	DevDescription *string `json:"DevDescription,omitempty" xml:"DevDescription,omitempty"`
-	// The ID of the real-time compute source in the development environment.
+	// The ID of the streaming compute source in the development environment.
 	//
 	// example:
 	//
@@ -109,7 +111,7 @@ type CreateDevProdProjectRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// My project.
+	// My project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The project name.
 	//
@@ -119,7 +121,7 @@ type CreateDevProdProjectRequestCreateCommand struct {
 	//
 	// my_project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace identifier.
+	// The namespace tag.
 	//
 	// example:
 	//
@@ -137,7 +139,7 @@ type CreateDevProdProjectRequestCreateCommand struct {
 	//
 	// prod desc
 	ProdDescription *string `json:"ProdDescription,omitempty" xml:"ProdDescription,omitempty"`
-	// The ID of the real-time compute source in the production environment.
+	// The ID of the streaming compute source in the production environment.
 	//
 	// example:
 	//

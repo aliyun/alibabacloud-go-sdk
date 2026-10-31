@@ -30,11 +30,13 @@ type GetKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The relationship record ID.
+	// The relation record ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,7 @@ type GetKgRelationRequest struct {
 	//
 	// abc-xxx
 	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The relationship type code.
+	// The relation type code.
 	//
 	// This parameter is required.
 	//

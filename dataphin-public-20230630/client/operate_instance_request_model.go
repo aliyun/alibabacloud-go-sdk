@@ -22,9 +22,9 @@ type iOperateInstanceRequest interface {
 type OperateInstanceRequest struct {
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD: Production environment. This is the default value.
 	//
 	// example:
 	//
@@ -38,6 +38,8 @@ type OperateInstanceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -102,21 +104,21 @@ func (s *OperateInstanceRequest) Validate() error {
 }
 
 type OperateInstanceRequestOperateCommand struct {
-	// The list of instances to operate on.
+	// The O&M instance list.
 	//
 	// This parameter is required.
 	InstanceIdList []*OperateInstanceRequestOperateCommandInstanceIdList `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	// The operation to perform. Valid values:
+	// The operation. Valid values:
 	//
-	// - RERUN: Reruns the instance.
+	// - RERUN: Rerun.
 	//
-	// - PAUSE: Pauses the instance.
+	// - PAUSE: Pause.
 	//
-	// - RESUME: Resumes the instance.
+	// - RESUME: Resume.
 	//
-	// - TERMINATE: Stops the instance.
+	// - TERMINATE: Stop.
 	//
-	// - SET_SUCCESS: Sets the instance status to successful.
+	// - SET_SUCCESS: Set to success.
 	//
 	// This parameter is required.
 	//

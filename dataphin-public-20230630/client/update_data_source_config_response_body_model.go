@@ -24,13 +24,13 @@ type iUpdateDataSourceConfigResponseBody interface {
 }
 
 type UpdateDataSourceConfigResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of editing the data source connection configuration items.
+	// The modification result of the datasource connection configuration items.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateDataSourceConfigResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iGetDevObjectDependencyRequest interface {
 }
 
 type GetDevObjectDependencyRequest struct {
-	// Development object source.
+	// The object source. Valid values:
 	//
-	// - BLACK_BOX: Logical table
+	// - BLACK_BOX: logical table
 	//
-	// - DATA_PROCESS: Compute task
+	// - DATA_PROCESS: computing node
 	//
-	// - PIPELINE: Integration task
+	// - PIPELINE: integration node
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type GetDevObjectDependencyRequest struct {
 	//
 	// DATA_PROCESS
 	ObjectFrom *string `json:"ObjectFrom,omitempty" xml:"ObjectFrom,omitempty"`
-	// Object ID.
+	// The object ID.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type GetDevObjectDependencyRequest struct {
 	//
 	// 7026498387616064
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// Development object type.
+	// The object type. Valid values:
 	//
-	// - FILE_ID: Task FileId
+	// - FILE_ID: file ID of a node
 	//
-	// - MODEL_ID: Logical table
+	// - MODEL_ID: logical table
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetDevObjectDependencyRequest struct {
 	//
 	// 7026498387616064
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -66,11 +66,13 @@ type GetDevObjectDependencyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// This parameter is required.
 	//

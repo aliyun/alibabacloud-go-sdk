@@ -42,7 +42,7 @@ type GetOperationRecordByIdResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The operation log details.
+	// The execution record details.
 	OperationLogDTO *GetOperationRecordByIdResponseBodyOperationLogDTO `json:"OperationLogDTO,omitempty" xml:"OperationLogDTO,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type GetOperationRecordByIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -132,23 +132,13 @@ type GetOperationRecordByIdResponseBodyOperationLogDTO struct {
 	//
 	// 2025-01-15 10:30:00
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The code type. Valid values:
-	//
-	// - SQL0: SQL
-	//
-	// - shell1: Shell
-	//
-	// - Python2: Python
-	//
-	// - MR3: MR
-	//
-	// - Spark4: Spark
+	// The code type. Valid values: SQL0, shell1, Python2, MR3, and Spark4.
 	//
 	// example:
 	//
 	// 0
 	CodeType *int32 `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	// The execution duration, in milliseconds.
+	// The execution duration in milliseconds.
 	//
 	// example:
 	//
@@ -164,7 +154,7 @@ type GetOperationRecordByIdResponseBodyOperationLogDTO struct {
 	//
 	// example:
 	//
-	// 测试任务
+	// Test task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The object type.
 	//
@@ -172,7 +162,7 @@ type GetOperationRecordByIdResponseBodyOperationLogDTO struct {
 	//
 	// onedata-ide
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The operation log ID.
+	// The operation record ID.
 	//
 	// example:
 	//
@@ -184,27 +174,21 @@ type GetOperationRecordByIdResponseBodyOperationLogDTO struct {
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of related tables.
+	// The associated tables.
 	RelationTables []*string `json:"RelationTables,omitempty" xml:"RelationTables,omitempty" type:"Repeated"`
-	// The ID of the runner.
+	// The executor ID.
 	//
 	// example:
 	//
 	// 30231123
 	Runner *string `json:"Runner,omitempty" xml:"Runner,omitempty"`
-	// The name of the runner.
+	// The executor name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	RunnerName *string `json:"RunnerName,omitempty" xml:"RunnerName,omitempty"`
-	// The node status. Valid values:
-	//
-	// - 4: Running.
-	//
-	// - 5: Succeeded.
-	//
-	// - 6: Failed.
+	// The task status. Valid values: 4 (Running), 5 (Successful), and 6 (Failed).
 	//
 	// example:
 	//

@@ -26,6 +26,8 @@ type ListRowPermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -85,7 +87,7 @@ type ListRowPermissionRequestPageRowPermissionQuery struct {
 	//
 	// example:
 	//
-	// 业务
+	// Business
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//

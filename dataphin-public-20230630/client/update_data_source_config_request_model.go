@@ -26,11 +26,13 @@ type UpdateDataSourceConfigRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The data source configuration item change.
+	// The changes to the datasource configuration items.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateDataSourceConfigRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -85,7 +87,7 @@ type UpdateDataSourceConfigRequestUpdateCommand struct {
 	//
 	// This parameter is required.
 	ConfigItemList []*UpdateDataSourceConfigRequestUpdateCommandConfigItemList `json:"ConfigItemList,omitempty" xml:"ConfigItemList,omitempty" type:"Repeated"`
-	// The data source ID.
+	// The datasource ID.
 	//
 	// This parameter is required.
 	//
@@ -135,7 +137,7 @@ func (s *UpdateDataSourceConfigRequestUpdateCommand) Validate() error {
 }
 
 type UpdateDataSourceConfigRequestUpdateCommandConfigItemList struct {
-	// The key ID of the configuration item.
+	// The configuration item key ID.
 	//
 	// This parameter is required.
 	//

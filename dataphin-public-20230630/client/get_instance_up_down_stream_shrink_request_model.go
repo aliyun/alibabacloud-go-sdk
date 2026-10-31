@@ -26,7 +26,7 @@ type iGetInstanceUpDownStreamShrinkRequest interface {
 }
 
 type GetInstanceUpDownStreamShrinkRequest struct {
-	// The number of downstream node levels. Default value: 1.
+	// The depth of downstream nodes. Default value: 1.
 	//
 	// example:
 	//
@@ -34,15 +34,17 @@ type GetInstanceUpDownStreamShrinkRequest struct {
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: development environment
 	//
-	// - PROD (default): production environment.
+	// - PROD: production environment
+	//
+	// Default value: PROD.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The center node.
+	// The central node.
 	//
 	// This parameter is required.
 	InstanceIdShrink *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -54,6 +56,8 @@ type GetInstanceUpDownStreamShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -66,7 +70,7 @@ type GetInstanceUpDownStreamShrinkRequest struct {
 	//
 	// 1001121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The number of upstream node levels. Default value: 1.
+	// The depth of upstream nodes. Default value: 1.
 	//
 	// example:
 	//

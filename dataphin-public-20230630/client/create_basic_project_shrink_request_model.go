@@ -18,7 +18,7 @@ type iCreateBasicProjectShrinkRequest interface {
 }
 
 type CreateBasicProjectShrinkRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreateBasicProjectShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

@@ -28,7 +28,7 @@ type GetBatchTemplateVersionsRequest struct {
 	//
 	// - PROD: production environment.
 	//
-	// Default value for dev_prod projects: DEV.
+	// Default value: DEV for dev_prod projects.
 	//
 	// example:
 	//
@@ -42,6 +42,8 @@ type GetBatchTemplateVersionsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

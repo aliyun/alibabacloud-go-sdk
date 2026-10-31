@@ -32,6 +32,8 @@ type BatchCreateKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -100,7 +102,7 @@ func (s *BatchCreateKgRelationRequest) Validate() error {
 }
 
 type BatchCreateKgRelationRequestCreateCommand struct {
-	// The list of relationships.
+	// The relationship list.
 	//
 	// This parameter is required.
 	RelationList []*BatchCreateKgRelationRequestCreateCommandRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
@@ -137,7 +139,7 @@ func (s *BatchCreateKgRelationRequestCreateCommand) Validate() error {
 }
 
 type BatchCreateKgRelationRequestCreateCommandRelationList struct {
-	// The list of relationship record properties.
+	// The relationship record property list.
 	PropertyList []*BatchCreateKgRelationRequestCreateCommandRelationListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
 	// The relationship type code.
 	//
@@ -147,7 +149,7 @@ type BatchCreateKgRelationRequestCreateCommandRelationList struct {
 	//
 	// Company
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	// The ID of the source entity record.
+	// The source entity record ID.
 	//
 	// This parameter is required.
 	//
@@ -155,7 +157,7 @@ type BatchCreateKgRelationRequestCreateCommandRelationList struct {
 	//
 	// e1d4559a4db044158305e2d89bccf81f
 	SourceEntityId *string `json:"SourceEntityId,omitempty" xml:"SourceEntityId,omitempty"`
-	// The ID of the target entity record.
+	// The target entity record ID.
 	//
 	// This parameter is required.
 	//

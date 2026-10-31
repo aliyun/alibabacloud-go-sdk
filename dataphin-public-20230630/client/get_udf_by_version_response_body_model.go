@@ -36,7 +36,7 @@ type GetUdfByVersionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type GetUdfByVersionResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the user-defined function.
+	// The custom function details.
 	UdfInfo *GetUdfByVersionResponseBodyUdfInfo `json:"UdfInfo,omitempty" xml:"UdfInfo,omitempty" type:"Struct"`
 }
 
@@ -126,27 +126,27 @@ func (s *GetUdfByVersionResponseBody) Validate() error {
 }
 
 type GetUdfByVersionResponseBodyUdfInfo struct {
-	// The udf type. Valid values:
+	// The category. Valid values:
 	//
-	// - 1: window function.
+	// - 1: Window function.
 	//
-	// - 2: statistical function.
+	// - 2: Statistical function.
 	//
-	// - 3: numerical function.
+	// - 3: Numerical function.
 	//
-	// - 4: string function.
+	// - 4: String function.
 	//
-	// - 5: time function.
+	// - 5: Time function.
 	//
-	// - 6: IP address utility function.
+	// - 6: IP address helper function.
 	//
 	// - 7: URL-related function.
 	//
-	// - 8: encoding and decoding function.
+	// - 8: Encoding and decoding function.
 	//
-	// - 9: business-related function.
+	// - 9: Business-related function.
 	//
-	// - 10: other.
+	// - 10: Other.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetUdfByVersionResponseBodyUdfInfo struct {
 	//
 	// com.lydaas.dataphin.UdfTest
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The command help.
+	// The command help information.
 	//
 	// example:
 	//
@@ -182,25 +182,25 @@ type GetUdfByVersionResponseBodyUdfInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory where the function is stored.
+	// The storage directory.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The creation time, in the yyyy-MM-d HH:mm:ss format.
+	// The creation time. Format: yyyy-MM-d HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time, in the yyyy-MM-d HH:mm:ss format.
+	// The update time. Format: yyyy-MM-d HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the user-defined function.
+	// The custom function ID.
 	//
 	// example:
 	//

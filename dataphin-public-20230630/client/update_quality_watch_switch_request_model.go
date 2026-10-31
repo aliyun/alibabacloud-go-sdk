@@ -26,6 +26,8 @@ type UpdateQualityWatchSwitchRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,11 +83,11 @@ func (s *UpdateQualityWatchSwitchRequest) Validate() error {
 }
 
 type UpdateQualityWatchSwitchRequestUpdateCommand struct {
-	// Specifies whether to enable the monitored object.
+	// Specifies whether to enable the feature.
 	//
 	// This parameter is required.
 	Open *bool `json:"Open,omitempty" xml:"Open,omitempty"`
-	// The list of monitoring IDs.
+	// The list of watch IDs.
 	//
 	// This parameter is required.
 	WatchIdList []*int64 `json:"WatchIdList,omitempty" xml:"WatchIdList,omitempty" type:"Repeated"`

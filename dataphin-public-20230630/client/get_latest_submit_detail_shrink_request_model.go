@@ -26,11 +26,13 @@ type GetLatestSubmitDetailShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The pending submit query request.
+	// The pending release query request.
 	//
 	// This parameter is required.
 	SubmitDetailQueryShrink *string `json:"SubmitDetailQuery,omitempty" xml:"SubmitDetailQuery,omitempty"`

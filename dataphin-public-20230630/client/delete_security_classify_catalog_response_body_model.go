@@ -50,7 +50,7 @@ type DeleteSecurityClassifyCatalogResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,11 +126,11 @@ func (s *DeleteSecurityClassifyCatalogResponseBody) Validate() error {
 }
 
 type DeleteSecurityClassifyCatalogResponseBodyData struct {
-	// The list of full paths of child catalogs that were deleted as a result of the cascading deletion.
+	// The list of full paths of the subdirectories that are cascade-deleted.
 	ChildCatalogFullPathList []*string `json:"ChildCatalogFullPathList,omitempty" xml:"ChildCatalogFullPathList,omitempty" type:"Repeated"`
-	// The list of classification IDs that were deleted as a result of the cascading deletion.
+	// The list of IDs of the classifications that are cascade-deleted.
 	ClassifyIdList []*int64 `json:"ClassifyIdList,omitempty" xml:"ClassifyIdList,omitempty" type:"Repeated"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the deletion is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

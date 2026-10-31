@@ -18,7 +18,7 @@ type iCreateStandardRequest interface {
 }
 
 type CreateStandardRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateStandardRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateStandardRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,9 +91,9 @@ type CreateStandardRequestCreateCommand struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The effective period configuration.
 	EffectiveTimeConfig *CreateStandardRequestCreateCommandEffectiveTimeConfig `json:"EffectiveTimeConfig,omitempty" xml:"EffectiveTimeConfig,omitempty" type:"Struct"`
-	// Specifies whether to generate a standard code based on rules. If this parameter is set to true, the standard code specified in the attribute values is ignored and a new standard code is generated.
+	// Specifies whether to generate a standard code based on rules. If this parameter is set to true and the standard code entered in the attribute value is invalid, a new standard code is generated.
 	NeedGenerateStandardCode *bool `json:"NeedGenerateStandardCode,omitempty" xml:"NeedGenerateStandardCode,omitempty"`
-	// The owner. If this parameter is not specified, the current user is used.
+	// The owner. If not specified, the current user is used.
 	//
 	// example:
 	//
@@ -99,7 +101,7 @@ type CreateStandardRequestCreateCommand struct {
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The standard monitoring configuration.
 	StandardGeneralMonitorConfig *CreateStandardRequestCreateCommandStandardGeneralMonitorConfig `json:"StandardGeneralMonitorConfig,omitempty" xml:"StandardGeneralMonitorConfig,omitempty" type:"Struct"`
-	// The reference to the standard set.
+	// The standard set reference.
 	//
 	// This parameter is required.
 	StandardSetReference *CreateStandardRequestCreateCommandStandardSetReference `json:"StandardSetReference,omitempty" xml:"StandardSetReference,omitempty" type:"Struct"`
@@ -205,23 +207,19 @@ func (s *CreateStandardRequestCreateCommand) Validate() error {
 }
 
 type CreateStandardRequestCreateCommandEffectiveTimeConfig struct {
-	// The end of the effective period.
+	// The end time of the effective period. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-12-30 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start of the effective period.
+	// The start time of the effective period. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The effective period type. Valid values:
-	//
-	// - FOREVER: permanent.
-	//
-	// - TIME_PERIOD: time period.
+	// The effective period type. Valid values: FOREVER (permanent) and TIME_PERIOD (time period).
 	//
 	// This parameter is required.
 	//
@@ -271,7 +269,7 @@ func (s *CreateStandardRequestCreateCommandEffectiveTimeConfig) Validate() error
 }
 
 type CreateStandardRequestCreateCommandStandardGeneralMonitorConfig struct {
-	// The list of standard monitoring configurations.
+	// The standard monitoring configuration list.
 	//
 	// This parameter is required.
 	StandardMonitorConfigList []*CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigList `json:"StandardMonitorConfigList,omitempty" xml:"StandardMonitorConfigList,omitempty" type:"Repeated"`
@@ -308,7 +306,7 @@ func (s *CreateStandardRequestCreateCommandStandardGeneralMonitorConfig) Validat
 }
 
 type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigList struct {
-	// The associated attribute ID.
+	// The ID of the associated attribute.
 	//
 	// example:
 	//
@@ -328,17 +326,17 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The monitoring configuration ID. If this parameter is left empty, a new monitoring configuration is created. If an existing monitoring configuration ID is specified, the corresponding monitoring configuration is updated.
+	// The monitoring configuration ID. If this parameter is left empty, a new monitoring configuration is created. If an existing monitoring configuration ID is provided, the corresponding monitoring configuration is updated.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The method used to add the monitoring configuration. Valid values:
+	// The addition method. Valid values:
 	//
-	// - BY_USER: manually added.
+	// - BY_USER: manual addition
 	//
-	// - BY_SYSTEM_ATTRIBUTE: preset by system attribute.
+	// - BY_SYSTEM_ATTRIBUTE: preset by system attributes
 	//
 	// This parameter is required.
 	//
@@ -348,7 +346,7 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	MonitorFrom *string `json:"MonitorFrom,omitempty" xml:"MonitorFrom,omitempty"`
 	// The rule template. This parameter is required when the monitoring type is QUALITY.
 	QualityRuleTemplate *CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigListQualityRuleTemplate `json:"QualityRuleTemplate,omitempty" xml:"QualityRuleTemplate,omitempty" type:"Struct"`
-	// The rule configurations. This parameter is required when the monitoring type is QUALITY.
+	// The rule configuration. This parameter is required when the monitoring type is QUALITY.
 	RuleConfigList []*CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigListRuleConfigList `json:"RuleConfigList,omitempty" xml:"RuleConfigList,omitempty" type:"Repeated"`
 	// The rule name.
 	//
@@ -360,21 +358,21 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The rule subtype. This parameter is required when the monitoring type is QUALITY. Valid values:
 	//
-	// - BY_ATTRIBUTE: configured based on attributes.
+	// - BY_ATTRIBUTE: configured based on attributes
 	//
-	// - CUSTOMIZED: custom configuration.
+	// - CUSTOMIZED: custom configuration
 	//
 	// example:
 	//
 	// CUSTOMIZED
 	RuleSubType *string `json:"RuleSubType,omitempty" xml:"RuleSubType,omitempty"`
-	// The rule validation configurations. This parameter is required when the monitoring type is QUALITY.
+	// The rule validation configuration. This parameter is required when the monitoring type is QUALITY.
 	RuleValidateConfigList []*CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList `json:"RuleValidateConfigList,omitempty" xml:"RuleValidateConfigList,omitempty" type:"Repeated"`
 	// The monitoring type. Valid values:
 	//
-	// - METADATA: metadata monitoring.
+	// - METADATA: metadata monitoring
 	//
-	// - QUALITY: data quality monitoring.
+	// - QUALITY: data quality monitoring
 	//
 	// This parameter is required.
 	//
@@ -545,9 +543,9 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	IsCaseSensitive *bool `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
 	// The monitoring method. Valid values:
 	//
-	// - METADATA: metadata monitoring.
+	// - METADATA: metadata monitoring
 	//
-	// - QUALITY: data quality monitoring.
+	// - QUALITY: data quality monitoring
 	//
 	// This parameter is required.
 	//
@@ -615,9 +613,9 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The template source. Valid values:
 	//
-	// - FROM_SYSTEM: system template.
+	// - FROM_SYSTEM: system template
 	//
-	// - CUSTOMIZED: custom template.
+	// - CUSTOMIZED: custom template
 	//
 	// This parameter is required.
 	//
@@ -675,7 +673,7 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The configuration item value.
+	// The value of the configuration item.
 	//
 	// This parameter is required.
 	//
@@ -716,7 +714,7 @@ func (s *CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardM
 }
 
 type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList struct {
-	// The validation configuration ID. This ID is randomly generated by the business and must be unique.
+	// The validation configuration ID. The ID is randomly generated by the business system and must be unique.
 	//
 	// This parameter is required.
 	//
@@ -736,25 +734,7 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	//
 	// test
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// If the validation type is EXPRESSION, valid values:
-	//
-	// - EQUAL: equal to.
-	//
-	// - NOT_EQUAL: not equal to.
-	//
-	// - LARGER: greater than.
-	//
-	// - LARGE_OR_EQUAL: greater than or equal to.
-	//
-	// - SMALLER: less than.
-	//
-	// - SMALLER_OR_EQUAL: less than or equal to.
-	//
-	// If the validation type is RELATION, valid values:
-	//
-	// - AND: and.
-	//
-	// - OR: or.
+	// The operator. If the validation type is EXPRESSION, valid values are EQUAL (equal to), NOT_EQUAL (not equal to), LARGER (greater than), LARGE_OR_EQUAL (greater than or equal to), SMALLER (less than), and SMALLER_OR_EQUAL (less than or equal to). If the validation type is RELATION, valid values are AND (and) and OR (or).
 	//
 	// This parameter is required.
 	//
@@ -762,7 +742,7 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	//
 	// AND
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The parent validation configuration ID. The parent rule validation type can only be RELATION.
+	// The ID of the parent validation configuration. The parent rule validation type can only be RELATION.
 	//
 	// example:
 	//
@@ -770,9 +750,9 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The rule validation type. Valid values:
 	//
-	// - RELATION: relation.
+	// - RELATION: relation
 	//
-	// - EXPRESSION: expression.
+	// - EXPRESSION: expression
 	//
 	// This parameter is required.
 	//
@@ -780,7 +760,7 @@ type CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonit
 	//
 	// RELATION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value to compare.
+	// The value used for comparison.
 	//
 	// example:
 	//
@@ -896,7 +876,7 @@ func (s *CreateStandardRequestCreateCommandStandardSetReference) Validate() erro
 }
 
 type CreateStandardRequestCreateCommandStandardTemplateReference struct {
-	// The attribute values corresponding to the attributes in the referenced template. If this parameter is left empty, default values are used.
+	// The attribute values for the attribute list in the referenced template. If not specified, the default values are used.
 	AttributeValueList []*CreateStandardRequestCreateCommandStandardTemplateReferenceAttributeValueList `json:"AttributeValueList,omitempty" xml:"AttributeValueList,omitempty" type:"Repeated"`
 	// The standard template ID.
 	//
@@ -906,7 +886,7 @@ type CreateStandardRequestCreateCommandStandardTemplateReference struct {
 	//
 	// 11
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The standard template version number. The latest version is used by default.
+	// The standard template version. By default, the latest version is used.
 	//
 	// example:
 	//

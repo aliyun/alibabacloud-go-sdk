@@ -71,7 +71,7 @@ func (client *Client) AddDataServiceAppMemberWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Adds users to a data service project and assigns roles to them.
+// Adds a user to a Data Service project and assigns a role.
 //
 // @param tmpReq - AddDataServiceProjectMemberRequest
 //
@@ -135,7 +135,7 @@ func (client *Client) AddDataServiceProjectMemberWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds members to a project.
+// Adds project members.
 //
 // @param tmpReq - AddProjectMemberRequest
 //
@@ -199,7 +199,7 @@ func (client *Client) AddProjectMemberWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// Registers data lineage. Available since version v5.4.0.
+// Registers data lineage. Released in version 5.4.0.
 //
 // @param tmpReq - AddRegisterLineageRequest
 //
@@ -259,7 +259,7 @@ func (client *Client) AddRegisterLineageWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Adds users to a tenant in batches. Only super administrators (SuperAdmin) and system administrators can invoke this API operation.
+// Adds users to a tenant in batches. This API operation can be invoked only by super administrators and system administration.
 //
 // @param tmpReq - AddTenantMembersRequest
 //
@@ -563,6 +563,66 @@ func (client *Client) ApplyDataServiceAppWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// Applies for resource permissions at the table or column level. Available since version 6.4.0.
+//
+// @param tmpReq - ApplyResourcePermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyResourcePermissionResponse
+func (client *Client) ApplyResourcePermissionWithContext(ctx context.Context, tmpReq *ApplyResourcePermissionRequest, runtime *dara.RuntimeOptions) (_result *ApplyResourcePermissionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ApplyResourcePermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ApplyCommand) {
+		request.ApplyCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplyCommand, dara.String("ApplyCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApplyCommandShrink) {
+		body["ApplyCommand"] = request.ApplyCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ApplyResourcePermission"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ApplyResourcePermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Binds specified quality rules to schedule settings.
 //
 // Release version: v5.4.2.
@@ -625,7 +685,7 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithContext(ctx co
 
 // Summary:
 //
-// Creates knowledge graph entity records in batches. Available since version v6.1.1.
+// Creates knowledge graph entity records in batches. Released in version v6.1.1.
 //
 // @param tmpReq - BatchCreateKgEntityRequest
 //
@@ -689,7 +749,7 @@ func (client *Client) BatchCreateKgEntityWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Creates knowledge graph relationship records in batches. Online version: v6.1.1.
+// Creates knowledge graph relationship records in batches. Released in version v6.1.1.
 //
 // @param tmpReq - BatchCreateKgRelationRequest
 //
@@ -813,7 +873,59 @@ func (client *Client) BatchHandoverAssetWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Checks the connectivity of a compute source.
+// Checks the connectivity of a saved cluster. Available since v6.4.0.
+//
+// @param request - CheckComputeClusterConnectivityByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckComputeClusterConnectivityByIdResponse
+func (client *Client) CheckComputeClusterConnectivityByIdWithContext(ctx context.Context, request *CheckComputeClusterConnectivityByIdRequest, runtime *dara.RuntimeOptions) (_result *CheckComputeClusterConnectivityByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckComputeClusterConnectivityById"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckComputeClusterConnectivityByIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Validates the connectivity.
 //
 // @param tmpReq - CheckComputeSourceConnectivityRequest
 //
@@ -873,7 +985,7 @@ func (client *Client) CheckComputeSourceConnectivityWithContext(ctx context.Cont
 
 // Summary:
 //
-// Checks the connectivity of an existing compute source by compute source ID.
+// Verifies the connectivity of an existing compute source by using the compute source ID.
 //
 // @param request - CheckComputeSourceConnectivityByIdRequest
 //
@@ -925,7 +1037,7 @@ func (client *Client) CheckComputeSourceConnectivityByIdWithContext(ctx context.
 
 // Summary:
 //
-// Checks the connectivity of a data source.
+// Checks the connectivity of a datasource.
 //
 // @param tmpReq - CheckDataSourceConnectivityRequest
 //
@@ -1101,7 +1213,7 @@ func (client *Client) CheckDataSourceConnectivityOnResourceGroupWithContext(ctx 
 
 // Summary:
 //
-// Checks whether a project has data dependencies such as tasks.
+// Checks whether the project is depended on by data dependencies such as nodes.
 //
 // @param request - CheckProjectHasDependencyRequest
 //
@@ -1153,7 +1265,7 @@ func (client *Client) CheckProjectHasDependencyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Checks whether a user has the permission on a specified resource.
+// Checks whether a user has the specified resource permissions.
 //
 // @param tmpReq - CheckResourcePermissionRequest
 //
@@ -1333,7 +1445,7 @@ func (client *Client) CreateBasicProjectWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Creates a batch task.
+// Creates an offline computing task.
 //
 // @param tmpReq - CreateBatchTaskRequest
 //
@@ -1383,6 +1495,70 @@ func (client *Client) CreateBatchTaskWithContext(ctx context.Context, tmpReq *Cr
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateBatchTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an offline computing template. Available since version 6.4.0.
+//
+// @param tmpReq - CreateBatchTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBatchTemplateResponse
+func (client *Client) CreateBatchTemplateWithContext(ctx context.Context, tmpReq *CreateBatchTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateBatchTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateBatchTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBatchTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBatchTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1453,9 +1629,7 @@ func (client *Client) CreateBizEntityWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Creates a business metric.
-//
-// Release version: v5.5.0.
+// Creates a business metric. Release version: v5.5.0.
 //
 // @param tmpReq - CreateBizMetricRequest
 //
@@ -1575,7 +1749,7 @@ func (client *Client) CreateBizUnitWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Creates a cluster. Online since version v6.3.0.
+// Creates a cluster. Release version: v6.3.0.
 //
 // @param tmpReq - CreateComputeClusterRequest
 //
@@ -1635,7 +1809,7 @@ func (client *Client) CreateComputeClusterWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a compute source. Business unit administrators and project administrators have permissions to perform this operation.
+// Creates a compute source. Only business unit administrators and project administrators are authorized to perform this operation.
 //
 // @param tmpReq - CreateComputeSourceRequest
 //
@@ -1991,25 +2165,25 @@ func (client *Client) CreateDataSourceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a new dataset in the specified project. Available since v6.2.0.
+// Creates a dataset in a specified project. Available since v6.2.0.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API creates a new dataset in the specified project.
+// - This API operation creates a dataset in a specified project.
 //
-// - `ProjectId` is a required parameter that specifies the ID of the project in which to create the dataset.
+// - ProjectId is a required parameter that specifies the ID of the project in which to create the dataset.
 //
-// - `CreateCommand` is a complex object that contains the configuration information required to create the dataset.
+// - CreateCommand is a complex object that contains various configuration information required to create the dataset.
 //
-// - `Name`, `Type`, `ContentType`, and `Scenario` are required fields that specify the dataset name, type, content type, and scenarios.
+// - Name, Type, ContentType, and Scenario are required fields that specify the dataset name, type, content type, and Scenarios, respectively.
 //
-// - `FileStorageConfig` and `MetadataStorageConfig` in `VersionConfig` can be configured as needed.
+// - You can configure FileStorageConfig and MetadataStorageConfig in VersionConfig as needed.
 //
-// - If you need real-time meta-table configuration, provide the `RealtimeMetaTableConfig` information.
+// - If real-time metatable configuration is required, provide the RealtimeMetaTableConfig information.
 //
-// - Make sure all required fields are correctly filled in. Otherwise, the request failed.
+// - Make sure that all required fields are correctly filled in. Otherwise, the request will be failed.
 //
 // @param tmpReq - CreateDatasetRequest
 //
@@ -2321,11 +2495,7 @@ func (client *Client) CreateKgRelationWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// General-purpose data backfill operation that supports both list mode and batch mode data backfill:
-//
-// 1. Generates data backfill instances that run and affect data output of related tables.
-//
-// 2. Triggers node execution, which incurs compute and storage costs.
+// Backfills data in list mode or massive mode. Take note of the following items: 1. Data backfill instances are generated and run, which affects the data output of related tables. 2. Nodes are run, which incurs computing and storage costs.
 //
 // @param tmpReq - CreateNodeSupplementRequest
 //
@@ -2585,6 +2755,66 @@ func (client *Client) CreatePipelineNodeWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// Creates a quality rectification process. Released in version 6.4.0.
+//
+// @param tmpReq - CreateRectifyFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRectifyFlowResponse
+func (client *Client) CreateRectifyFlowWithContext(ctx context.Context, tmpReq *CreateRectifyFlowRequest, runtime *dara.RuntimeOptions) (_result *CreateRectifyFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateRectifyFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRectifyFlow"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRectifyFlowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a resource file.
 //
 // @param tmpReq - CreateResourceRequest
@@ -2699,6 +2929,66 @@ func (client *Client) CreateRowPermissionWithContext(ctx context.Context, tmpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateRowPermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a scheduling monitoring alerting configuration by specifying a monitored object and one or more alerting rules. Online version: v6.4.0.
+//
+// @param tmpReq - CreateScheduleMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScheduleMonitorResponse
+func (client *Client) CreateScheduleMonitorWithContext(ctx context.Context, tmpReq *CreateScheduleMonitorRequest, runtime *dara.RuntimeOptions) (_result *CreateScheduleMonitorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateScheduleMonitorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CreateCommand) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, dara.String("CreateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CreateCommandShrink) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateScheduleMonitor"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateScheduleMonitorResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2951,9 +3241,7 @@ func (client *Client) CreateSecurityLevelWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Creates a standard.
-//
-// Release version: v5.4.2.
+// Creates a standard. Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRequest
 //
@@ -3013,9 +3301,7 @@ func (client *Client) CreateStandardWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a data standard lookup table.
-//
-// Release version: v5.4.2.
+// Creates a data standard lookup table. Released in version v5.4.2.
 //
 // @param tmpReq - CreateStandardLookupTableRequest
 //
@@ -3261,9 +3547,7 @@ func (client *Client) CreateStandardSetWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Create a data standard template.
-//
-// Release version: v5.4.2.
+// Creates a data standard template. Release version: v5.4.2.
 //
 // @param tmpReq - CreateStandardTemplateRequest
 //
@@ -3323,9 +3607,7 @@ func (client *Client) CreateStandardTemplateWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a data standard root word.
-//
-// Release version: v5.4.2.
+// Creates a data standard root word. Released in version v5.4.2.
 //
 // @param tmpReq - CreateStandardWordRootRequest
 //
@@ -3385,7 +3667,7 @@ func (client *Client) CreateStandardWordRootWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a stream-batch integrated node.
+// Creates a stream-batch integrated task.
 //
 // @param tmpReq - CreateStreamBatchJobMappingRequest
 //
@@ -3689,7 +3971,7 @@ func (client *Client) DeleteAdHocFileWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a batch task. If the node has not been offlined, you must offline it before deleting it.
+// Deletes an offline computing task. If the task is not offline, you must take it offline before deleting it.
 //
 // @param tmpReq - DeleteBatchTaskRequest
 //
@@ -4483,7 +4765,7 @@ func (client *Client) DeleteKgRelationWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes a project (applicable to both Basic and Dev-Prod projects).
+// Deletes a project. This applies to both Basic and Dev-Prod projects.
 //
 // @param request - DeleteProjectRequest
 //
@@ -4535,9 +4817,7 @@ func (client *Client) DeleteProjectWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes quality rule objects in batches.
-//
-// Release version: v5.4.2.
+// Deletes quality rule objects in batches. Released in version 5.4.2.
 //
 // @param tmpReq - DeleteQualityRulesRequest
 //
@@ -4597,9 +4877,7 @@ func (client *Client) DeleteQualityRulesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Deletes quality scheduling objects in batches.
-//
-// Release version: v5.4.2.
+// Deletes multiple quality scheduling objects. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualitySchedulesRequest
 //
@@ -4659,9 +4937,7 @@ func (client *Client) DeleteQualitySchedulesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Deletes quality template objects in batches.
-//
-// Online version: v5.4.2.
+// Deletes quality template objects in batches. Available since version v5.4.2.
 //
 // @param tmpReq - DeleteQualityTemplatesRequest
 //
@@ -4721,9 +4997,7 @@ func (client *Client) DeleteQualityTemplatesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Deletes monitored objects in batches.
-//
-// Release version: v5.4.2.
+// Deletes quality monitored objects in batches. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteQualityWatchesRequest
 //
@@ -4843,7 +5117,7 @@ func (client *Client) DeleteRegisterLineageWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Delete a resource file.
+// Deletes a resource file.
 //
 // @param request - DeleteResourceRequest
 //
@@ -4903,7 +5177,7 @@ func (client *Client) DeleteResourceWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a row-level permission.
+// Deletes row-level permissions.
 //
 // @param tmpReq - DeleteRowPermissionRequest
 //
@@ -4963,7 +5237,7 @@ func (client *Client) DeleteRowPermissionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Deletes a data categorization. Available since v5.4.2.
+// Deletes a data category. Released in version v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyRequest
 //
@@ -5023,7 +5297,7 @@ func (client *Client) DeleteSecurityClassifyWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Deletes a data classification catalog. Available since v5.4.2.
+// Deletes a data classification catalog. Available since version v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyCatalogRequest
 //
@@ -5083,7 +5357,7 @@ func (client *Client) DeleteSecurityClassifyCatalogWithContext(ctx context.Conte
 
 // Summary:
 //
-// Deletes security identification results in batches. Release version: v5.4.2.
+// Deletes security identification results in batches. Released in version 5.4.2.
 //
 // @param tmpReq - DeleteSecurityIdentifyResultsRequest
 //
@@ -5203,9 +5477,7 @@ func (client *Client) DeleteSecurityLevelWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Deletes a standard.
-//
-// Online version: v5.4.2.
+// Deletes a standard. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardRequest
 //
@@ -5265,9 +5537,7 @@ func (client *Client) DeleteStandardWithContext(ctx context.Context, tmpReq *Del
 
 // Summary:
 //
-// Deletes invalid mapping relationships.
-//
-// Online version: v5.4.2.
+// Deletes invalid mapping relationships. Released in version v5.4.2.
 //
 // @param tmpReq - DeleteStandardInValidMappingRequest
 //
@@ -5327,7 +5597,7 @@ func (client *Client) DeleteStandardInValidMappingWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a data standard lookup table. Release version: v5.4.2.
+// Deletes a data standard lookup table. Released in version 5.4.2.
 //
 // @param request - DeleteStandardLookupTableRequest
 //
@@ -5379,9 +5649,7 @@ func (client *Client) DeleteStandardLookupTableWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes standard associations in batches.
-//
-// Release version: v5.4.2.
+// Deletes standard associations in batches. Available since version 5.4.2.
 //
 // @param tmpReq - DeleteStandardRelationsRequest
 //
@@ -5495,9 +5763,7 @@ func (client *Client) DeleteStandardSetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes valid mapping relationships.
-//
-// Release version: v5.4.2.
+// Deletes valid mapping relationships. Release version: v5.4.2.
 //
 // @param tmpReq - DeleteStandardValidMappingRequest
 //
@@ -5611,7 +5877,7 @@ func (client *Client) DeleteStandardWordRootWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a user-defined function.
+// Deletes a custom function.
 //
 // @param request - DeleteUdfRequest
 //
@@ -6039,7 +6305,7 @@ func (client *Client) ExecuteManualNodeWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Runs a trigger-based node.
+// Runs a trigger node.
 //
 // @param request - ExecuteTriggerNodeRequest
 //
@@ -6231,7 +6497,7 @@ func (client *Client) FixDataWithContext(ctx context.Context, tmpReq *FixDataReq
 
 // Summary:
 //
-// Retrieves all authorized accounts under a specific row-level permission by row-level permission ID.
+// Retrieves all authorized accounts for a row-level permission by using the row-level permission ID.
 //
 // @param tmpReq - GetAccountByRowPermissionIdRequest
 //
@@ -6347,7 +6613,7 @@ func (client *Client) GetAdHocFileWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Retrieves the runtime logs of an ad hoc query task.
+// Retrieves the execution logs of an ad-hoc query task.
 //
 // @param request - GetAdHocTaskLogRequest
 //
@@ -6411,7 +6677,7 @@ func (client *Client) GetAdHocTaskLogWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Retrieves the task execution result of an ad hoc query.
+// Retrieves the execution results of an ad hoc query task.
 //
 // @param request - GetAdHocTaskResultRequest
 //
@@ -6523,6 +6789,58 @@ func (client *Client) GetAlertEventWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
+// Queries the details of an approval task based on the approval flow ID, including the approval process steps. Available from version 6.4.0.
+//
+// @param request - GetApprovalTaskDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApprovalTaskDetailResponse
+func (client *Client) GetApprovalTaskDetailWithContext(ctx context.Context, request *GetApprovalTaskDetailRequest, runtime *dara.RuntimeOptions) (_result *GetApprovalTaskDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FlowId) {
+		query["FlowId"] = request.FlowId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetApprovalTaskDetail"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetApprovalTaskDetailResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries asset property values. Online version: v6.3.0.
 //
 // @param tmpReq - GetAssetAttributesRequest
@@ -6583,9 +6901,7 @@ func (client *Client) GetAssetAttributesWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries mapping relationships by asset object GUID.
-//
-// Available since: v5.4.2.
+// Queries the mapping relationships based on the asset object GUID. Released in version 5.4.2.
 //
 // @param tmpReq - GetAssetMappingRelationsRequest
 //
@@ -6821,7 +7137,7 @@ func (client *Client) GetBatchTaskInfoByVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Obtains the custom lineage of an offline task.
+// Retrieves the custom lineage of an offline task.
 //
 // @param request - GetBatchTaskUdfLineagesRequest
 //
@@ -6877,7 +7193,7 @@ func (client *Client) GetBatchTaskUdfLineagesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the version list of a batch task.
+// Queries a list of batch taskfile versions.
 //
 // @param request - GetBatchTaskVersionsRequest
 //
@@ -6933,7 +7249,7 @@ func (client *Client) GetBatchTaskVersionsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the version list of a specified offline template ID. Online version: v6.2.0.
+// Retrieves the versions of a specified offline template. Available since v6.2.0.
 //
 // @param request - GetBatchTemplateVersionsRequest
 //
@@ -6993,9 +7309,7 @@ func (client *Client) GetBatchTemplateVersionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Query mapping relationships by belonging asset GUID.
-//
-// Release version: v5.4.2.
+// Queries the mapping relationships based on the GUID of the owning asset. Released in v5.4.2.
 //
 // @param tmpReq - GetBelongAssetMappingRequest
 //
@@ -7171,9 +7485,7 @@ func (client *Client) GetBizEntityInfoByVersionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Query business metric details by name.
-//
-// Release version: v5.5.0.
+// Queries the details of a business metric by name. Release version: v5.5.0.
 //
 // @param tmpReq - GetBizMetricByNameRequest
 //
@@ -7233,7 +7545,7 @@ func (client *Client) GetBizMetricByNameWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Retrieves the details of a data domain.
+// Retrieves the details of a data sector.
 //
 // @param request - GetBizUnitInfoRequest
 //
@@ -7401,13 +7713,11 @@ func (client *Client) GetCheckConnectivityJobByJobIdWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the list of connectivity check tasks for a specified data source ID. This operation includes null value validation and tenant permission verification to prevent cross-tenant access.
-//
-// Release version: v5.5.0.
+// Queries a list of connectivity check tasks based on the specified data source ID, including null value validation and tenant permission verification to prevent cross-tenant access. Release version: v5.5.0.
 //
 // Description:
 //
-// Queries the details of connectivity tasks that have been tested for a specified data source ID.
+// Queries the details of tested connectivity tasks based on the data source ID.
 //
 // @param request - GetCheckConnectivityJobsRequest
 //
@@ -7575,7 +7885,7 @@ func (client *Client) GetComputeClusterWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the details of a compute source by compute source ID.
+// Retrieves the details of a compute source by its ID.
 //
 // @param request - GetComputeSourceRequest
 //
@@ -7743,7 +8053,7 @@ func (client *Client) GetDataDomainInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Service Monitoring: Retrieves the aggregate statistics of API calls.
+// Retrieves the summary statistics of API calls for Service Monitoring.
 //
 // @param request - GetDataServiceApiCallSummaryRequest
 //
@@ -7863,7 +8173,7 @@ func (client *Client) GetDataServiceApiCallTrendWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves API documentation.
+// Retrieves the API documentation.
 //
 // @param request - GetDataServiceApiDocumentRequest
 //
@@ -8031,9 +8341,7 @@ func (client *Client) GetDataServiceApiGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of a data service application, including the project, application name, authentication information, and IP whitelist. Only application members can view the details.
-//
-// Release version: v6.0.0.
+// Queries the details of a data service application, including the project, application name, authentication information, and IP address whitelist. Only application members can view this information. Released in v6.0.0.
 //
 // @param request - GetDataServiceAppRequest
 //
@@ -8085,7 +8393,7 @@ func (client *Client) GetDataServiceAppWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the list of users who have permissions on an application.
+// Retrieves the list of users who have permissions for the application.
 //
 // @param request - GetDataServiceAppAuthorizedUsersRequest
 //
@@ -8247,7 +8555,7 @@ func (client *Client) GetDataServiceAppMembersWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the list of applications in a group.
+// Queries the applications in a group.
 //
 // @param request - GetDataServiceAppsByGroupIdRequest
 //
@@ -8359,7 +8667,7 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupIdWithContext(ctx conte
 
 // Summary:
 //
-// Queries the list of projects that the current user has permissions to access.
+// Queries the list of projects that the user has access to.
 //
 // @param request - GetDataServiceAuthorizedProjectsRequest
 //
@@ -8455,7 +8763,7 @@ func (client *Client) GetDataServiceMyProjectsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the list of users who can be added as project members.
+// Retrieves a list of users that can be added as project members.
 //
 // @param request - GetDataServiceProjectAddableUsersRequest
 //
@@ -8619,7 +8927,7 @@ func (client *Client) GetDatasetWithContext(ctx context.Context, request *GetDat
 
 // Summary:
 //
-// Query upstream dependencies of development objects.
+// Queries the upstream dependencies of a development object.
 //
 // @param request - GetDevObjectDependencyRequest
 //
@@ -8739,7 +9047,7 @@ func (client *Client) GetDirectoryTreeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Obtains temporary read/write authorization for file storage.
+// Retrieves temporary read and write authorization for file storage.
 //
 // @param request - GetFileStorageCredentialRequest
 //
@@ -8789,6 +9097,74 @@ func (client *Client) GetFileStorageCredentialWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetFileStorageCredentialResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the statistical granularity information of an aggregate logical table. Available from version 6.4.0.
+//
+// Description:
+//
+// Queries the statistical granularity of an aggregate logical table. Recursive objects are referenced by ID. Logical tree node IDs are valid only within the currently returned tree.
+//
+// @param request - GetGranularityBySummaryIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGranularityBySummaryIdResponse
+func (client *Client) GetGranularityBySummaryIdWithContext(ctx context.Context, request *GetGranularityBySummaryIdRequest, runtime *dara.RuntimeOptions) (_result *GetGranularityBySummaryIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.QueryDraft) {
+		query["QueryDraft"] = request.QueryDraft
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGranularityBySummaryId"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGranularityBySummaryIdResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8871,7 +9247,7 @@ func (client *Client) GetInstanceDownStreamWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Queries the dag of an instance. Logical tables and code nodes are supported.
+// Queries the upstream and downstream nodes of an instance. Supports logical tables and code nodes.
 //
 // @param tmpReq - GetInstanceUpDownStreamRequest
 //
@@ -8947,7 +9323,7 @@ func (client *Client) GetInstanceUpDownStreamWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Retrieves the list of workspaces with authorized knowledge graphs. Online version: v6.3.0.
+// Retrieves a list of workspaces with authorized knowledge graphs. Release version: v6.3.0.
 //
 // @param request - GetKgAuthorizedWorkspacesRequest
 //
@@ -8995,7 +9371,7 @@ func (client *Client) GetKgAuthorizedWorkspacesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the details of a knowledge graph entity record. Online version: v6.1.1.
+// Retrieves the details of a knowledge graph entity record. Available since version 6.1.1.
 //
 // @param request - GetKgEntityRequest
 //
@@ -9127,7 +9503,7 @@ func (client *Client) GetKgNeighborWithContext(ctx context.Context, tmpReq *GetK
 
 // Summary:
 //
-// Retrieves the details of a knowledge graph relationship record. Online version: v6.1.1.
+// Retrieves the details of a knowledge graph relation record. Released in version v6.1.1.
 //
 // @param request - GetKgRelationRequest
 //
@@ -9187,7 +9563,7 @@ func (client *Client) GetKgRelationWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Retrieves the publish result of a knowledge graph model. Online version: v6.2.0.
+// Retrieves the publish result of a graph model. Online version: v6.2.0.
 //
 // @param request - GetKgSchemaPublishResultRequest
 //
@@ -9243,7 +9619,7 @@ func (client *Client) GetKgSchemaPublishResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of the latest pending submit record.
+// Retrieves the details of the latest pending release record.
 //
 // @param tmpReq - GetLatestSubmitDetailRequest
 //
@@ -9403,7 +9779,7 @@ func (client *Client) GetLlmModelProvidersWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the list of roles for the current user.
+// Retrieves the list of user roles.
 //
 // @param request - GetMyRolesRequest
 //
@@ -9511,7 +9887,7 @@ func (client *Client) GetMyTenantsWithContext(ctx context.Context, tmpReq *GetMy
 
 // Summary:
 //
-// Queries the dag of a node. This is a general-purpose operation.
+// Queries the upstream and downstream nodes of a node.
 //
 // @param tmpReq - GetNodeUpDownStreamRequest
 //
@@ -9587,7 +9963,7 @@ func (client *Client) GetNodeUpDownStreamWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries an operation log by ID. Available since v6.2.0.
+// Queries an execution record by ID. Available since version 6.2.0.
 //
 // @param tmpReq - GetOperationRecordByIdRequest
 //
@@ -9647,7 +10023,7 @@ func (client *Client) GetOperationRecordByIdWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries the details of an execution record. Released in version v6.2.0.
+// Queries the details of an operation record. Available since version 6.2.0.
 //
 // @param tmpReq - GetOperationRecordDetailRequest
 //
@@ -9707,7 +10083,7 @@ func (client *Client) GetOperationRecordDetailWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Queries the execution code of an operation log. Online version: v6.2.0.
+// Queries the executed code of operation records. Release version: v6.2.0.
 //
 // @param tmpReq - GetOperationRecordRunCodeRequest
 //
@@ -9767,7 +10143,7 @@ func (client *Client) GetOperationRecordRunCodeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the submit status of a data backfill request.
+// Queries the submit status of data backfill.
 //
 // @param request - GetOperationSubmitStatusRequest
 //
@@ -9823,7 +10199,7 @@ func (client *Client) GetOperationSubmitStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Gets instance information.
+// Retrieves instance information.
 //
 // @param request - GetPhysicalInstanceRequest
 //
@@ -9943,7 +10319,7 @@ func (client *Client) GetPhysicalInstanceLogWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a physical schedule resource.
+// Queries physical scheduling nodes.
 //
 // @param request - GetPhysicalNodeRequest
 //
@@ -9999,7 +10375,7 @@ func (client *Client) GetPhysicalNodeWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries a physical node by output name. Only offline code nodes and integration task nodes are supported.
+// Queries physical nodes by output name. Only offline code nodes and integration task nodes are supported.
 //
 // @param request - GetPhysicalNodeByOutputNameRequest
 //
@@ -10055,7 +10431,7 @@ func (client *Client) GetPhysicalNodeByOutputNameWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the code content of a schedule resource node.
+// Queries the code content of a scheduling node.
 //
 // @param request - GetPhysicalNodeContentRequest
 //
@@ -10111,7 +10487,7 @@ func (client *Client) GetPhysicalNodeContentWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the operation logs of a node.
+// Queries the node operation logs.
 //
 // @param request - GetPhysicalNodeOperationLogRequest
 //
@@ -10299,7 +10675,7 @@ func (client *Client) GetPipelineByIdWithContext(ctx context.Context, tmpReq *Ge
 
 // Summary:
 //
-// Get project details by project ID.
+// Retrieves the details of a project by project ID.
 //
 // @param request - GetProjectRequest
 //
@@ -10407,7 +10783,7 @@ func (client *Client) GetProjectByNameWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the production account of a project. Only a super administrator (SuperAdmin) can call this API operation.
+// Retrieves the production account for a project. Only super administrators can call this API operation.
 //
 // @param request - GetProjectProduceUserRequest
 //
@@ -10459,7 +10835,7 @@ func (client *Client) GetProjectProduceUserWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the whitelist of a project.
+// Retrieves the project whitelist.
 //
 // @param request - GetProjectWhiteListsRequest
 //
@@ -10615,9 +10991,7 @@ func (client *Client) GetQualityArchiveTableProgressWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves a quality rule object.
-//
-// Release version: v5.4.2.
+// Retrieves the quality rule object. Release version: v5.4.2.
 //
 // @param request - GetQualityRuleRequest
 //
@@ -10669,7 +11043,7 @@ func (client *Client) GetQualityRuleWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves the details of a quality node task object. Online version: v5.4.2.
+// Retrieves the details of a quality task object. Released in version 5.4.2.
 //
 // @param request - GetQualityRuleTaskRequest
 //
@@ -10775,9 +11149,7 @@ func (client *Client) GetQualityRuleTaskLogWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves a quality schedule object.
-//
-// Release version: v5.4.2.
+// Retrieves the quality scheduling object. Available since v5.4.2.
 //
 // @param request - GetQualityScheduleRequest
 //
@@ -10829,9 +11201,7 @@ func (client *Client) GetQualityScheduleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves a list of schedule settings by monitored object ID.
-//
-// Release version: v5.4.2.
+// Retrieves a list of scheduling settings by monitored object ID. Available since v5.4.2.
 //
 // @param request - GetQualitySchedulesByWatchIdRequest
 //
@@ -10883,9 +11253,7 @@ func (client *Client) GetQualitySchedulesByWatchIdWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves a quality template object.
-//
-// Release version: v5.4.2.
+// Retrieves a quality template object. Released in version 5.4.2.
 //
 // @param request - GetQualityTemplateRequest
 //
@@ -10991,9 +11359,7 @@ func (client *Client) GetQualityWatchWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a datasource, table, or metric.
-//
-// Release version: v5.4.2.
+// Retrieves a quality watchtask record by the original ID of the monitored object, such as the ID of a data source, table, or metric. Release version: v5.4.2.
 //
 // @param request - GetQualityWatchByObjectIdRequest
 //
@@ -11049,9 +11415,7 @@ func (client *Client) GetQualityWatchByObjectIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves a monitoring node task object.
-//
-// Online version: v5.4.2.
+// Retrieves a monitoring node object. Online version: v5.4.2.
 //
 // @param request - GetQualityWatchTaskRequest
 //
@@ -11225,6 +11589,66 @@ func (client *Client) GetQueueEngineVersionByEnvWithContext(ctx context.Context,
 
 // Summary:
 //
+// Retrieves the quality rectification process. Released in version 6.4.0.
+//
+// @param tmpReq - GetRectifyFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRectifyFlowResponse
+func (client *Client) GetRectifyFlowWithContext(ctx context.Context, tmpReq *GetRectifyFlowRequest, runtime *dara.RuntimeOptions) (_result *GetRectifyFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetRectifyFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.GetQuery) {
+		request.GetQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GetQuery, dara.String("GetQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GetQueryShrink) {
+		body["GetQuery"] = request.GetQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRectifyFlow"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRectifyFlowResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a resource file.
 //
 // @param request - GetResourceRequest
@@ -11341,7 +11765,7 @@ func (client *Client) GetResourceByVersionWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves row permissions by table GUIDs. Online version: v5.4.2.
+// Online version: v5.4.2.
 //
 // @param tmpReq - GetRowPermissionByTableGuidsRequest
 //
@@ -11453,9 +11877,7 @@ func (client *Client) GetSecurityClassifyWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of an identification result.
-//
-// Release version: v5.4.2.
+// Retrieves the details of a recognition result. Release version: v5.4.2.
 //
 // @param request - GetSecurityIdentifyResultRequest
 //
@@ -11615,7 +12037,7 @@ func (client *Client) GetSecuritySecretKeyWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries the details of a published API based on the AppKey.
+// Queries the details of published APIs based on the appKey.
 //
 // @param request - GetServerVersionRequest
 //
@@ -11735,7 +12157,7 @@ func (client *Client) GetSourceTableMetaWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Retrieves the Spark client information of the cluster associated with a compute source.
+// Retrieves the Spark client information for the cluster associated with the compute source.
 //
 // @param request - GetSparkLocalClientInfoRequest
 //
@@ -11791,9 +12213,7 @@ func (client *Client) GetSparkLocalClientInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the details of a standard.
-//
-// Release version: v5.4.2.
+// Retrieves the details of a standard. Released in v5.4.2.
 //
 // @param tmpReq - GetStandardRequest
 //
@@ -11853,9 +12273,7 @@ func (client *Client) GetStandardWithContext(ctx context.Context, tmpReq *GetSta
 
 // Summary:
 //
-// Retrieves the details of a data standard lookup table.
-//
-// Online version: v5.4.2.
+// Retrieves the details of a data standard lookup table. Released in version 5.4.2.
 //
 // @param request - GetStandardLookupTableRequest
 //
@@ -11911,9 +12329,7 @@ func (client *Client) GetStandardLookupTableWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves the details of a standard set.
-//
-// Release version: v5.4.2.
+// Retrieves the details of a standard set. Release version: v5.4.2.
 //
 // @param request - GetStandardSetRequest
 //
@@ -11969,9 +12385,9 @@ func (client *Client) GetStandardSetWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the number of standards grouped by standard type under a specified folder.
+// Queries the statistics of standards by standard type under a directory.
 //
-// Online version: v5.4.2.
+// Available since: v5.4.2.
 //
 // @param tmpReq - GetStandardStatisticsRequest
 //
@@ -12031,9 +12447,7 @@ func (client *Client) GetStandardStatisticsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Retrieves the details of a data standard template.
-//
-// Online version: v5.4.2.
+// Retrieves the details of a data standard template. Released in version v5.4.2.
 //
 // @param tmpReq - GetStandardTemplateRequest
 //
@@ -12101,9 +12515,7 @@ func (client *Client) GetStandardTemplateWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Retrieves the details of a data standard word root.
-//
-// Online version: v5.4.2.
+// Queries the details of a data standard word root. Release version: v5.4.2.
 //
 // @param request - GetStandardWordRootRequest
 //
@@ -12215,6 +12627,198 @@ func (client *Client) GetStreamJobsWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
+// Retrieves the full text of JobManager or TaskManager logs. Available since version 6.4.0.
+//
+// Description:
+//
+// Retrieves the full text of JobManager or TaskManager logs in the production environment.
+//
+// @param request - GetStreamLogContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStreamLogContentResponse
+func (client *Client) GetStreamLogContentWithContext(ctx context.Context, request *GetStreamLogContentRequest, runtime *dara.RuntimeOptions) (_result *GetStreamLogContentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentInstanceId) {
+		query["DeploymentInstanceId"] = request.DeploymentInstanceId
+	}
+
+	if !dara.IsNil(request.LogName) {
+		query["LogName"] = request.LogName
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TaskmanagerId) {
+		query["TaskmanagerId"] = request.TaskmanagerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStreamLogContent"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStreamLogContentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a single start or stop operation record and the log content. Available since version 6.4.0.
+//
+// Description:
+//
+// Retrieves a single start or stop operation record and the log content by querying the production environment.
+//
+// @param request - GetStreamOpsRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStreamOpsRecordResponse
+func (client *Client) GetStreamOpsRecordWithContext(ctx context.Context, request *GetStreamOpsRecordRequest, runtime *dara.RuntimeOptions) (_result *GetStreamOpsRecordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.OpsRecordId) {
+		query["OpsRecordId"] = request.OpsRecordId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStreamOpsRecord"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStreamOpsRecordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic information and running status of a real-time task. Available since v6.4.0.
+//
+// Description:
+//
+// Queries the basic information and running status of a real-time task. The DEV and PROD environments are supported.
+//
+// @param request - GetStreamTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStreamTaskResponse
+func (client *Client) GetStreamTaskWithContext(ctx context.Context, request *GetStreamTaskRequest, runtime *dara.RuntimeOptions) (_result *GetStreamTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Env) {
+		query["Env"] = request.Env
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetStreamTask"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetStreamTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves dagrun information for all business dates of a data backfill instance workflow.
 //
 // @param request - GetSupplementDagrunRequest
@@ -12271,7 +12875,7 @@ func (client *Client) GetSupplementDagrunWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Lists the instances of all nodes for a specific business date in a data backfill workflow.
+// Lists all node instances for a specific business date in a data backfill workflow.
 //
 // @param request - GetSupplementDagrunInstanceRequest
 //
@@ -12505,7 +13109,7 @@ func (client *Client) GetTableColumnLineagesWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries the columns of a Dataphin table in the asset inventory. Supported table types: logical dimension table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view table. Release version: v5.4.2.
+// Queries the fields of Dataphin tables in the asset inventory. Supported table types include logical dimension tables, logical fact tables, logical aggregate tables, logical tag tables, logical table views, physical tables, physical views, and materialized views. Released in version 5.4.2.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -12530,6 +13134,10 @@ func (client *Client) GetTableColumnsWithContext(ctx context.Context, request *G
 
 	if !dara.IsNil(request.OpUserId) {
 		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.TableGuid) {
+		query["TableGuid"] = request.TableGuid
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -12795,7 +13403,7 @@ func (client *Client) GetUdfWithContext(ctx context.Context, request *GetUdfRequ
 
 // Summary:
 //
-// Queries the details of a specific version of a user-defined function.
+// Queries the details of a custom function version.
 //
 // @param request - GetUdfByVersionRequest
 //
@@ -13071,7 +13679,7 @@ func (client *Client) GetUsersWithContext(ctx context.Context, tmpReq *GetUsersR
 
 // Summary:
 //
-// Grants API authorization.
+// Grants permissions for an API.
 //
 // @param tmpReq - GrantDataServiceApiRequest
 //
@@ -13135,7 +13743,7 @@ func (client *Client) GrantDataServiceApiWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Grants permissions on resources to users by resource point.
+// Grants resource permissions to users.
 //
 // @param tmpReq - GrantResourcePermissionRequest
 //
@@ -13195,7 +13803,7 @@ func (client *Client) GrantResourcePermissionWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Imports a knowledge graph model definition. Online version: v6.1.1.
+// Imports the knowledge graph model definition. Release version: v6.1.1.
 //
 // @param tmpReq - ImportKgSchemaRequest
 //
@@ -13307,7 +13915,7 @@ func (client *Client) ListAddableRolesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries users that can be added to a tenant. Only the super administrator (SuperAdmin) and system administrator can call this operation. The users must already exist in the Dataphin instance member list but have not yet been added to the tenant member list.
+// Queries the users that can be added to a tenant. Only super administrators and system administrators can invoke this operation. The users must be added to the member list of the Dataphin instance but have not yet been added to the tenant member list.
 //
 // @param tmpReq - ListAddableUsersRequest
 //
@@ -13487,11 +14095,11 @@ func (client *Client) ListAlertNotificationsWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries the list of APIs by application.
+// Queries the API list for an application.
 //
 // Description:
 //
-// Queries the detailed information of published APIs by appKey.
+// Queries the details of published APIs by AppKey.
 //
 // @param tmpReq - ListApiByAppRequest
 //
@@ -13731,11 +14339,13 @@ func (client *Client) ListAssetTopicsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Queries the specific field list of APIs that an application has requested.
+// Queries the specific field list of the APIs that an application has applied for.
 //
 // Description:
 //
-// ## Request description.
+// ## Request description
+//
+// This API allows you to query the APIs authorized to an application by providing the tenant ID, the AppKey of the data service application, or a keyword of the application name. Pagination is supported. The returned data includes the API ID, name, project, authorization validity period (for development and production environments), permission type, and field lists for production and development environments (including field or parameter name, parameter type, description, example value, and authorization status). Note that pagination parameters are required.
 //
 // @param tmpReq - ListAuthorizedDataServiceApiDetailsRequest
 //
@@ -13795,7 +14405,7 @@ func (client *Client) ListAuthorizedDataServiceApiDetailsWithContext(ctx context
 
 // Summary:
 //
-// 查询离线计算任务列表，支持按任务名称模糊检索、按产出表名精确定位构建该表的任务并获取其文件ID
+// Queries a list of offline computing tasks. Supports fuzzy search by task name and exact matching by output table name to locate the task that generates the table and retrieve its file ID. Available since version 6.3.2.
 //
 // @param tmpReq - ListBatchTasksRequest
 //
@@ -13855,7 +14465,7 @@ func (client *Client) ListBatchTasksWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// Queries offline computing templates by paging. Online version: v6.2.0.
+// Performs a paging query on offline computing templates. Released in version v6.2.0.
 //
 // @param tmpReq - ListBatchTemplatesRequest
 //
@@ -13983,7 +14593,7 @@ func (client *Client) ListBizEntitiesWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Retrieves all business units under the current tenant.
+// Queries all business units under the current tenant.
 //
 // @param request - ListBizUnitsRequest
 //
@@ -14283,7 +14893,7 @@ func (client *Client) ListDataDomainsWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// O&M analysis: API call statistics.
+// Queries API invoke statistics information for O&M analysis.
 //
 // @param tmpReq - ListDataServiceApiCallStatisticsRequest
 //
@@ -14347,7 +14957,7 @@ func (client *Client) ListDataServiceApiCallStatisticsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries data service call logs with pagination.
+// Performs a paging query on data service invoke logs.
 //
 // @param tmpReq - ListDataServiceApiCallsRequest
 //
@@ -14793,7 +15403,7 @@ func (client *Client) ListDataServicePublishedApisWithContext(ctx context.Contex
 
 // Summary:
 //
-// Search for data sources. The results include data source configuration items.
+// Searches for data sources and returns results that include datasource config items.
 //
 // @param tmpReq - ListDataSourceWithConfigRequest
 //
@@ -14853,13 +15463,13 @@ func (client *Client) ListDataSourceWithConfigWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Lists datasets in a project based on specified conditional query criteria. Online version: v6.2.0.
+// Performs a conditional query to retrieve a list of datasets in a project. Online version: v6.2.0.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API allows you to retrieve dataset information for a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. ProjectId is required. Other parameters are optional and can be configured as needed to filter results.
+// This API allows you to retrieve dataset information for a specific project by providing the tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported for paged query, and the returned packet includes the basic information of the datasets and their version details. Note that ProjectId is required, while other parameters are options that you can configure in Settings as needed to filter the results.
 //
 // @param tmpReq - ListDatasetsRequest
 //
@@ -15099,6 +15709,54 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, tmpReq *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of custom Kubernetes resource groups under a tenant. Released in version 6.4.0.
+//
+// @param request - ListK8SResourceGroupIdsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListK8SResourceGroupIdsResponse
+func (client *Client) ListK8SResourceGroupIdsWithContext(ctx context.Context, request *ListK8SResourceGroupIdsRequest, runtime *dara.RuntimeOptions) (_result *ListK8SResourceGroupIdsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListK8SResourceGroupIds"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListK8SResourceGroupIdsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15373,7 +16031,7 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 
 // Summary:
 //
-// Performs a paged query on the list of operation records. Online version: v6.2.0.
+// Performs a paging query on the list of execution records. Online version: v6.2.0.
 //
 // @param tmpReq - ListOperationRecordRequest
 //
@@ -15565,17 +16223,25 @@ func (client *Client) ListProjectMembersWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 获取项目角色列表
+// Retrieves a list of project roles. Release version: v6.3.2.
 //
 // Description:
 //
-// 获取租户指定项目类型下的项目角色列表。返回角色列表中 roleType 字段标识角色类型：
+// Retrieves the list of project roles for a specified project type under a tenant. The roleType field in the returned role list indicates the role type:
 //
-// - BUILD_IN：内置角色
+// - BUILD_IN: built-in role.
 //
-// - CUSTOM：自定义角色
+// - CUSTOM: custom role.
 //
-// 请求参数 ProjectType 必填，可选值为：BASIC（基础模式项目）、DEV（开发环境项目）、PROD（生产环境项目）、TAG（标签平台项目）。
+// The ProjectType request parameter is required. Valid values:
+//
+// - BASIC: basic mode project.
+//
+// - DEV: development environment project.
+//
+// - PROD: production environment project.
+//
+// - TAG: tag platform project.
 //
 // @param request - ListProjectRolesRequest
 //
@@ -15747,6 +16413,66 @@ func (client *Client) ListPublishRecordsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// Performs a paged query on Python third-party packages with paging. Online version: v6.4.0.
+//
+// @param tmpReq - ListPythonModulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPythonModulesResponse
+func (client *Client) ListPythonModulesWithContext(ctx context.Context, tmpReq *ListPythonModulesRequest, runtime *dara.RuntimeOptions) (_result *ListPythonModulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListPythonModulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPythonModules"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPythonModulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of anomaly archived tables under a specified monitored object. Online version: v6.3.0.
 //
 // @param tmpReq - ListQualityArchiveTablesRequest
@@ -15807,9 +16533,7 @@ func (client *Client) ListQualityArchiveTablesWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Queries quality rule tasks by paging.
-//
-// Online version: v5.4.2.
+// Performs a paging query of quality rule nodes. Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityRuleTasksRequest
 //
@@ -15869,9 +16593,7 @@ func (client *Client) ListQualityRuleTasksWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Queries quality rules by paging.
-//
-// Online version: v5.4.2.
+// Performs a paged query of quality rules. Supports paging. Available online in version 5.4.2.
 //
 // @param tmpReq - ListQualityRulesRequest
 //
@@ -15931,9 +16653,7 @@ func (client *Client) ListQualityRulesWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Queries quality templates by paging.
-//
-// Online version: v5.4.2.
+// Performs a paging query on quality templates. Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityTemplatesRequest
 //
@@ -16055,9 +16775,7 @@ func (client *Client) ListQualityWatchTasksWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Performs a paged query of quality monitored objects.
-//
-// Online version: v5.4.2.
+// Queries quality monitoring objects by using a paging query. Online version: v5.4.2.
 //
 // @param tmpReq - ListQualityWatchesRequest
 //
@@ -16107,6 +16825,66 @@ func (client *Client) ListQualityWatchesWithContext(ctx context.Context, tmpReq 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListQualityWatchesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries quality rectification processes. Released in version v6.4.0.
+//
+// @param tmpReq - ListRectifyFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRectifyFlowResponse
+func (client *Client) ListRectifyFlowWithContext(ctx context.Context, tmpReq *ListRectifyFlowRequest, runtime *dara.RuntimeOptions) (_result *ListRectifyFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListRectifyFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRectifyFlow"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRectifyFlowResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16229,7 +17007,7 @@ func (client *Client) ListResourcePermissionsWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Performs a paged query of row-level permissions.
+// Performs a paging query on row-level permissions.
 //
 // @param tmpReq - ListRowPermissionRequest
 //
@@ -16289,7 +17067,7 @@ func (client *Client) ListRowPermissionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Queries row-level permissions of a specified user by paging.
+// Performs a paging query on the row-level permissions of a specified user.
 //
 // @param tmpReq - ListRowPermissionByUserIdRequest
 //
@@ -16339,6 +17117,66 @@ func (client *Client) ListRowPermissionByUserIdWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListRowPermissionByUserIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query on the scheduling monitoring and alerting configuration list. Supports filtering by project, monitored object type, alerting cause, notification method, recipient, creator, on-call schedule, logical table or field, and keyword. Online version: v6.4.0.
+//
+// @param tmpReq - ListScheduleMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListScheduleMonitorResponse
+func (client *Client) ListScheduleMonitorWithContext(ctx context.Context, tmpReq *ListScheduleMonitorRequest, runtime *dara.RuntimeOptions) (_result *ListScheduleMonitorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListScheduleMonitorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListScheduleMonitor"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListScheduleMonitorResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16527,9 +17365,7 @@ func (client *Client) ListSecurityIdentifyRecordsWithContext(ctx context.Context
 
 // Summary:
 //
-// Query security identification results by page.
-//
-// Release version: v5.4.2.
+// Performs a paged query on security identification results with paging. The online version is v5.4.2.
 //
 // @param tmpReq - ListSecurityIdentifyResultsRequest
 //
@@ -16589,9 +17425,7 @@ func (client *Client) ListSecurityIdentifyResultsWithContext(ctx context.Context
 
 // Summary:
 //
-// Query the standard list by page.
-//
-// Release version: v5.4.2.
+// Performs a paging query on the standard list. Released in version v5.4.2.
 //
 // @param tmpReq - ListStandardsRequest
 //
@@ -16651,7 +17485,311 @@ func (client *Client) ListStandardsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Paginate and retrieve the list of pending deployment records.
+// Retrieves a list of historical running instances for a real-time task. Available since v6.4.0.
+//
+// Description:
+//
+// Retrieves the list of historical running instances for a real-time task in the production environment.
+//
+// @param request - ListStreamInstanceRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamInstanceRecordsResponse
+func (client *Client) ListStreamInstanceRecordsWithContext(ctx context.Context, request *ListStreamInstanceRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListStreamInstanceRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStreamInstanceRecords"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStreamInstanceRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of JobManager log files for a real-time task. Available since version 6.4.0.
+//
+// Description:
+//
+// Retrieves the list of JobManager log files for a real-time task in the production environment.
+//
+// @param request - ListStreamJobManagerLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamJobManagerLogsResponse
+func (client *Client) ListStreamJobManagerLogsWithContext(ctx context.Context, request *ListStreamJobManagerLogsRequest, runtime *dara.RuntimeOptions) (_result *ListStreamJobManagerLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentInstanceId) {
+		query["DeploymentInstanceId"] = request.DeploymentInstanceId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStreamJobManagerLogs"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStreamJobManagerLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the start and stop operation records of real-time tasks. Available since v6.4.0.
+//
+// Description:
+//
+// Retrieves the start and stop operation records of real-time tasks in the production environment.
+//
+// @param request - ListStreamOpsRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamOpsRecordsResponse
+func (client *Client) ListStreamOpsRecordsWithContext(ctx context.Context, request *ListStreamOpsRecordsRequest, runtime *dara.RuntimeOptions) (_result *ListStreamOpsRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStreamOpsRecords"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStreamOpsRecordsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of log files for a specified TaskManager. Available since v6.4.0.
+//
+// Description:
+//
+// Retrieves the list of log files for a specified TaskManager in the production environment.
+//
+// @param request - ListStreamTaskManagerLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamTaskManagerLogsResponse
+func (client *Client) ListStreamTaskManagerLogsWithContext(ctx context.Context, request *ListStreamTaskManagerLogsRequest, runtime *dara.RuntimeOptions) (_result *ListStreamTaskManagerLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentInstanceId) {
+		query["DeploymentInstanceId"] = request.DeploymentInstanceId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.TaskmanagerId) {
+		query["TaskmanagerId"] = request.TaskmanagerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStreamTaskManagerLogs"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStreamTaskManagerLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of TaskManagers for a real-time task. Available since v6.4.0.
+//
+// Description:
+//
+// Retrieves the list of TaskManagers for a real-time task in the production environment.
+//
+// @param request - ListStreamTaskManagersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStreamTaskManagersResponse
+func (client *Client) ListStreamTaskManagersWithContext(ctx context.Context, request *ListStreamTaskManagersRequest, runtime *dara.RuntimeOptions) (_result *ListStreamTaskManagersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeploymentInstanceId) {
+		query["DeploymentInstanceId"] = request.DeploymentInstanceId
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListStreamTaskManagers"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListStreamTaskManagersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a paginated list of pending release records.
 //
 // @param tmpReq - ListSubmitRecordsRequest
 //
@@ -16773,7 +17911,7 @@ func (client *Client) ListTablesWithContext(ctx context.Context, tmpReq *ListTab
 
 // Summary:
 //
-// Queries the list of tenant members.
+// Retrieves a list of tenant members.
 //
 // @param tmpReq - ListTenantMembersRequest
 //
@@ -16891,7 +18029,7 @@ func (client *Client) ListTenantRolesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Performs a paging query of user group members.
+// Performs a paging query on the members of a user group.
 //
 // @param tmpReq - ListUserGroupMembersRequest
 //
@@ -16951,7 +18089,7 @@ func (client *Client) ListUserGroupMembersWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Queries user groups by paging.
+// Performs a paging query on the user group list.
 //
 // @param tmpReq - ListUserGroupsRequest
 //
@@ -17011,7 +18149,127 @@ func (client *Client) ListUserGroupsWithContext(ctx context.Context, tmpReq *Lis
 
 // Summary:
 //
-// Offlines a batch task.
+// Queries the list of projects that a specified user participates in. Released in version v6.4.0.
+//
+// @param tmpReq - ListUserProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserProjectsResponse
+func (client *Client) ListUserProjectsWithContext(ctx context.Context, tmpReq *ListUserProjectsRequest, runtime *dara.RuntimeOptions) (_result *ListUserProjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListUserProjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserProjects"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserProjectsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paged query for paging the user list. Online version: v6.4.0.
+//
+// @param tmpReq - ListUsersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersResponse
+func (client *Client) ListUsersWithContext(ctx context.Context, tmpReq *ListUsersRequest, runtime *dara.RuntimeOptions) (_result *ListUsersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListUsersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUsers"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Takes an offline computing task offline.
 //
 // @param request - OfflineBatchTaskRequest
 //
@@ -17131,7 +18389,7 @@ func (client *Client) OfflineBizEntityWithContext(ctx context.Context, tmpReq *O
 
 // Summary:
 //
-// Offlines an integration pipeline node.
+// Takes an integration pipeline task offline.
 //
 // @param tmpReq - OfflinePipelineRequest
 //
@@ -17199,7 +18457,7 @@ func (client *Client) OfflinePipelineWithContext(ctx context.Context, tmpReq *Of
 
 // Summary:
 //
-// Asynchronously offlines an integration pipeline node.
+// Asynchronously takes an integration pipeline task offline.
 //
 // @param tmpReq - OfflinePipelineByAsyncRequest
 //
@@ -17267,9 +18525,7 @@ func (client *Client) OfflinePipelineByAsyncWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Offlines a standard.
-//
-// Online version: v5.4.2.
+// Takes a standard offline. Introduced in version v5.4.2.
 //
 // @param tmpReq - OfflineStandardRequest
 //
@@ -17389,7 +18645,7 @@ func (client *Client) OnlineBizEntityWithContext(ctx context.Context, tmpReq *On
 
 // Summary:
 //
-// Performs batch O&M operations on instances. Both physical instances and logical table instances are supported.
+// Performs batch O&M operations on instances, supporting physical instances and logical table instances.
 //
 // @param tmpReq - OperateInstanceRequest
 //
@@ -17637,7 +18893,7 @@ func (client *Client) PublishDataServiceApiWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Publishes a knowledge graph model. Online version: v6.2.0.
+// Publishes a graph model. The online version is v6.2.0.
 //
 // @param tmpReq - PublishKgSchemaRequest
 //
@@ -17823,6 +19079,70 @@ func (client *Client) PublishStandardWithContext(ctx context.Context, tmpReq *Pu
 
 // Summary:
 //
+// Queries the submit result of a real-time integration task based on the submit detail ID. Available since v6.4.0.
+//
+// @param tmpReq - QueryPipelineSubmitResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPipelineSubmitResultResponse
+func (client *Client) QueryPipelineSubmitResultWithContext(ctx context.Context, tmpReq *QueryPipelineSubmitResultRequest, runtime *dara.RuntimeOptions) (_result *QueryPipelineSubmitResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &QueryPipelineSubmitResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.SubmitId) {
+		query["SubmitId"] = request.SubmitId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryPipelineSubmitResult"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryPipelineSubmitResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Remove regular members from a data service application. Only the application owner can perform this operation.
 //
 // Released version: v6.0.0.
@@ -17885,7 +19205,7 @@ func (client *Client) RemoveDataServiceAppMemberWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a project member.
+// Removes a project member.
 //
 // @param tmpReq - RemoveProjectMemberRequest
 //
@@ -18001,6 +19321,66 @@ func (client *Client) RemoveQualityRuleSchedulesWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &RemoveQualityRuleSchedulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes one or more scheduling monitoring alert configurations. Available since v6.4.0.
+//
+// @param tmpReq - RemoveScheduleMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveScheduleMonitorResponse
+func (client *Client) RemoveScheduleMonitorWithContext(ctx context.Context, tmpReq *RemoveScheduleMonitorRequest, runtime *dara.RuntimeOptions) (_result *RemoveScheduleMonitorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveScheduleMonitorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RemoveCommand) {
+		request.RemoveCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RemoveCommand, dara.String("RemoveCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RemoveCommandShrink) {
+		body["RemoveCommand"] = request.RemoveCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveScheduleMonitor"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveScheduleMonitorResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18195,9 +19575,7 @@ func (client *Client) ReplaceProjectWhiteListsWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Reset the Data Service application key. Only the application owner can perform this operation.
-//
-// Release version: v6.0.0.
+// Resets the application key of a data service. Only the application owner can perform this operation. Released in v6.0.0.
 //
 // @param tmpReq - ResetDataServiceAppSecretRequest
 //
@@ -18257,7 +19635,7 @@ func (client *Client) ResetDataServiceAppSecretWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Resume physical node scheduling.
+// Resumes the scheduling of physical nodes.
 //
 // @param tmpReq - ResumePhysicalNodeRequest
 //
@@ -18371,6 +19749,66 @@ func (client *Client) RetryTransferOwnershipWithContext(ctx context.Context, tmp
 		BodyType:    dara.String("json"),
 	}
 	_result = &RetryTransferOwnershipResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Reviews the quality rectification process. Release version: v6.4.0.
+//
+// @param tmpReq - ReviewRectifyFlowRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReviewRectifyFlowResponse
+func (client *Client) ReviewRectifyFlowWithContext(ctx context.Context, tmpReq *ReviewRectifyFlowRequest, runtime *dara.RuntimeOptions) (_result *ReviewRectifyFlowResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ReviewRectifyFlowShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ReviewCommand) {
+		request.ReviewCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReviewCommand, dara.String("ReviewCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ReviewCommandShrink) {
+		body["ReviewCommand"] = request.ReviewCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ReviewRectifyFlow"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ReviewRectifyFlowResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18877,7 +20315,7 @@ func (client *Client) SubmitAssetsOnShelveWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Submits a batch task.
+// Submits an offline computing task.
 //
 // @param tmpReq - SubmitBatchTaskRequest
 //
@@ -18927,6 +20365,138 @@ func (client *Client) SubmitBatchTaskWithContext(ctx context.Context, tmpReq *Su
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitBatchTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an offline computing template. Available since v6.4.0.
+//
+// @param tmpReq - SubmitBatchTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitBatchTemplateResponse
+func (client *Client) SubmitBatchTemplateWithContext(ctx context.Context, tmpReq *SubmitBatchTemplateRequest, runtime *dara.RuntimeOptions) (_result *SubmitBatchTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitBatchTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitCommand) {
+		request.SubmitCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitCommand, dara.String("SubmitCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SubmitCommandShrink) {
+		body["SubmitCommand"] = request.SubmitCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitBatchTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitBatchTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs an asynchronous commit of a real-time integration pipeline task based on the OAQueryId. Online version: v6.4.0.
+//
+// @param tmpReq - SubmitPipelineAsyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitPipelineAsyncResponse
+func (client *Client) SubmitPipelineAsyncWithContext(ctx context.Context, tmpReq *SubmitPipelineAsyncRequest, runtime *dara.RuntimeOptions) (_result *SubmitPipelineAsyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitPipelineAsyncShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Context) {
+		request.ContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Context, dara.String("Context"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.QueryId) {
+		request.QueryIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryId, dara.String("QueryId"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ContextShrink) {
+		body["Context"] = request.ContextShrink
+	}
+
+	if !dara.IsNil(request.QueryIdShrink) {
+		body["QueryId"] = request.QueryIdShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitPipelineAsync"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitPipelineAsyncResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19001,9 +20571,7 @@ func (client *Client) SubmitPipelineByIdWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Batch submit rule tasks with support for test runs.
-//
-// Release version: v5.4.2.
+// Submits rule tasks in batches and supports test runs. Available since version 5.4.2.
 //
 // @param tmpReq - SubmitQualityRuleTasksRequest
 //
@@ -19063,9 +20631,7 @@ func (client *Client) SubmitQualityRuleTasksWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Submits quality watchtask check tasks in batches.
-//
-// Online version: v5.4.2.
+// Submits multiple monitoring object check nodes in batches. Released in version v5.4.2.
 //
 // @param tmpReq - SubmitQualityWatchTasksRequest
 //
@@ -19115,6 +20681,66 @@ func (client *Client) SubmitQualityWatchTasksWithContext(ctx context.Context, tm
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitQualityWatchTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a quality rectification process for review. Released in v6.4.0.
+//
+// @param tmpReq - SubmitRectifyFlowForReviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitRectifyFlowForReviewResponse
+func (client *Client) SubmitRectifyFlowForReviewWithContext(ctx context.Context, tmpReq *SubmitRectifyFlowForReviewRequest, runtime *dara.RuntimeOptions) (_result *SubmitRectifyFlowForReviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitRectifyFlowForReviewShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitCommand) {
+		request.SubmitCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitCommand, dara.String("SubmitCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SubmitCommandShrink) {
+		body["SubmitCommand"] = request.SubmitCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitRectifyFlowForReview"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitRectifyFlowForReviewResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19261,7 +20887,7 @@ func (client *Client) SyncDepartmentUserWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Transfers ownership to a new owner in one click.
+// Transfers the ownership with one click.
 //
 // @param tmpReq - TransferOwnershipForAllObjectRequest
 //
@@ -19441,7 +21067,7 @@ func (client *Client) UpdateAssetAttributesWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Edits a Basic (single-environment) project. The project name cannot be modified. You must pass in the current project name.
+// Updates a Basic (single-environment) project. The project name cannot be modified. You must specify the current project name.
 //
 // @param tmpReq - UpdateBasicProjectRequest
 //
@@ -19621,6 +21247,70 @@ func (client *Client) UpdateBatchTaskUdfLineagesWithContext(ctx context.Context,
 
 // Summary:
 //
+// Modifies an offline computing template. Available since v6.4.0.
+//
+// @param tmpReq - UpdateBatchTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBatchTemplateResponse
+func (client *Client) UpdateBatchTemplateWithContext(ctx context.Context, tmpReq *UpdateBatchTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateBatchTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateBatchTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateBatchTemplate"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateBatchTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a business entity.
 //
 // @param tmpReq - UpdateBizEntityRequest
@@ -19681,9 +21371,7 @@ func (client *Client) UpdateBizEntityWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// Update a business metric.
-//
-// Release version: v5.5.0.
+// Updates a business metric. Release version: v5.5.0.
 //
 // @param tmpReq - UpdateBizMetricRequest
 //
@@ -19743,7 +21431,7 @@ func (client *Client) UpdateBizMetricWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// Updates a data domain.
+// Updates a business unit.
 //
 // @param tmpReq - UpdateBizUnitRequest
 //
@@ -19867,7 +21555,7 @@ func (client *Client) UpdateComputeClusterWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Edits a compute source. Business unit administrators and project administrators have permissions to perform this operation.
+// Updates a compute source. Only business unit administrators and project administrators have the permissions to perform this operation.
 //
 // @param tmpReq - UpdateComputeSourceRequest
 //
@@ -20115,9 +21803,7 @@ func (client *Client) UpdateDataServiceAppWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Updates a data service application group. Only superusers and system administrators can perform this operation.
-//
-// Online version: v6.0.0.
+// Updates an application group for the data service. Only super administrators and system administrators can perform this operation. Online version: v6.0.0.
 //
 // @param tmpReq - UpdateDataServiceAppGroupRequest
 //
@@ -20299,7 +21985,7 @@ func (client *Client) UpdateDataSourceBasicInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Edits the connection configuration items of a data source. Tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators have permissions to perform this operation.
+// Modifies the connection configuration items of a datasource. Only tenant administrators, data administrators, business unit administrators, project administrators, and operations administrators are authorized to perform this operation.
 //
 // @param tmpReq - UpdateDataSourceConfigRequest
 //
@@ -20359,11 +22045,23 @@ func (client *Client) UpdateDataSourceConfigWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Updates the information of a dataset in a specified project. Available since v6.2.0.
+// Updates the information of a dataset in a specified project. Available since version 6.2.0.
 //
 // Description:
 //
-// ## Request description.
+// ## Request description
+//
+// - This API operation updates the details of an existing dataset in a specific project.
+//
+// - You must specify the `ProjectId` and `UpdateCommand` parameters. The `UpdateCommand` parameter contains the specific fields of the dataset to be updated.
+//
+// - The `Id` field in `UpdateCommand` is required to identify the dataset to be updated.
+//
+// - Other fields such as `Name`, `Type`, and `DataCellId` are optional. Specify them based on your actual requirements.
+//
+// - Version configuration (`VersionConfig`) and real-time metatable configuration (`RealtimeMetaTableConfig`) provide more detailed setting options, including storage paths and table schemas. These are also optional.
+//
+// - Make sure that all provided ID values, such as `ProjectId`, `Id`, and `DataSourceId`, are valid and correctly associated in the system.
 //
 // @param tmpReq - UpdateDatasetRequest
 //
@@ -20427,7 +22125,7 @@ func (client *Client) UpdateDatasetWithContext(ctx context.Context, tmpReq *Upda
 
 // Summary:
 //
-// Edits a Dev-Prod (dual-environment) project.
+// Modifies a Dev-Prod (dual-environment) project.
 //
 // @param tmpReq - UpdateDevProdProjectRequest
 //
@@ -20863,7 +22561,7 @@ func (client *Client) UpdatePipelineWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// Asynchronously updates a pipeline or unstructured workflow node.
+// Asynchronously updates a pipeline or unstructured workflow task.
 //
 // @param tmpReq - UpdatePipelineByAsyncRequest
 //
@@ -20931,7 +22629,7 @@ func (client *Client) UpdatePipelineByAsyncWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Edits project members.
+// Modifies the members of a project.
 //
 // @param tmpReq - UpdateProjectMemberRequest
 //
@@ -20995,9 +22693,7 @@ func (client *Client) UpdateProjectMemberWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Enables or disables quality rules in batches.
-//
-// Release version: v5.4.2.
+// Enables or disables quality rules in batches. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateQualityRuleSwitchRequest
 //
@@ -21057,9 +22753,7 @@ func (client *Client) UpdateQualityRuleSwitchWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Starts or stops quality monitored objects in batches.
-//
-// Release version: v5.4.2.
+// Enables or disables quality monitored objects in batches. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateQualityWatchSwitchRequest
 //
@@ -21119,7 +22813,7 @@ func (client *Client) UpdateQualityWatchSwitchWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Edits a resource file.
+// Updates a resource file.
 //
 // @param tmpReq - UpdateResourceRequest
 //
@@ -21229,6 +22923,66 @@ func (client *Client) UpdateRowPermissionWithContext(ctx context.Context, tmpReq
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateRowPermissionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates existing scheduling monitoring and alert configurations by modifying monitored objects or alert rules. Available since version 6.4.0.
+//
+// @param tmpReq - UpdateScheduleMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScheduleMonitorResponse
+func (client *Client) UpdateScheduleMonitorWithContext(ctx context.Context, tmpReq *UpdateScheduleMonitorRequest, runtime *dara.RuntimeOptions) (_result *UpdateScheduleMonitorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateScheduleMonitorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateScheduleMonitor"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateScheduleMonitorResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -21361,9 +23115,7 @@ func (client *Client) UpdateSecurityClassifyCatalogWithContext(ctx context.Conte
 
 // Summary:
 //
-// Updates the effective status of security identification results.
-//
-// Release version: v5.4.2.
+// Updates the effective status of security identification results. Released in version 5.4.2.
 //
 // @param tmpReq - UpdateSecurityIdentifyResultStatusRequest
 //
@@ -21485,9 +23237,7 @@ func (client *Client) UpdateSecurityLevelWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Updates a standard.
-//
-// Release version: v5.4.2.
+// Updates a standard. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardRequest
 //
@@ -21547,9 +23297,7 @@ func (client *Client) UpdateStandardWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// Updates a data standard lookup table.
-//
-// Release version: v5.4.2.
+// Updates a data standard lookup table. Release version: v5.4.2.
 //
 // @param tmpReq - UpdateStandardLookupTableRequest
 //
@@ -21609,9 +23357,7 @@ func (client *Client) UpdateStandardLookupTableWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Sets the standard mapping relationship to invalid mapping.
-//
-// Release version: v5.4.2.
+// Invalidates standard mapping relationships. Released in version 5.4.2.
 //
 // @param tmpReq - UpdateStandardMappingToInvalidRequest
 //
@@ -21857,7 +23603,7 @@ func (client *Client) UpdateStandardWordRootWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Modifies the compute settings of a tenant.
+// Modifies the computing settings of a tenant.
 //
 // @param tmpReq - UpdateTenantComputeEngineRequest
 //
@@ -21917,7 +23663,7 @@ func (client *Client) UpdateTenantComputeEngineWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Edits tenant members.
+// Modifies tenant members.
 //
 // @param tmpReq - UpdateTenantMemberRequest
 //
@@ -22097,7 +23843,7 @@ func (client *Client) UpdateUserGroupWithContext(ctx context.Context, tmpReq *Up
 
 // Summary:
 //
-// Modifies the enabled status of a user group.
+// Updates the enabled status of a user group.
 //
 // @param request - UpdateUserGroupSwitchRequest
 //
@@ -22335,9 +24081,7 @@ func (client *Client) UpsertQualityRuleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Creates or updates a schedule setting.
-//
-// Release version: v5.4.2.
+// Creates or modifies scheduling settings. Released in version 5.4.2.
 //
 // @param tmpReq - UpsertQualityScheduleRequest
 //
@@ -22397,9 +24141,7 @@ func (client *Client) UpsertQualityScheduleWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates or updates a quality template.
-//
-// Release version: v5.4.2.
+// Creates or updates a quality template. Released in version 5.4.2.
 //
 // @param tmpReq - UpsertQualityTemplateRequest
 //
@@ -22459,9 +24201,7 @@ func (client *Client) UpsertQualityTemplateWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates or updates a quality monitored object. You can add multiple types of quality monitored objects, including Dataphin tables, global tables, data sources, metrics, and real-time meta tables.
-//
-// Release version: v5.4.2.
+// Creates or updates a quality monitored object. You can add multiple types of quality monitored objects, including Dataphin tables, global tables, data sources, metrics, and real-time metatables. Release version: v5.4.2.
 //
 // @param tmpReq - UpsertQualityWatchRequest
 //

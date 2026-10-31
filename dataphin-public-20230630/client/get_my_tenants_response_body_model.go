@@ -24,7 +24,7 @@ type iGetMyTenantsResponseBody interface {
 }
 
 type GetMyTenantsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetMyTenantsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *GetMyTenantsResponseBody) Validate() error {
 }
 
 type GetMyTenantsResponseBodyTenantList struct {
-	// The time when the tenant was deleted.
+	// The deletion time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetMyTenantsResponseBodyTenantList struct {
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tenant ID.
 	//
@@ -162,7 +162,7 @@ type GetMyTenantsResponseBodyTenantList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the tenant is an O&M tenant.
 	//
@@ -170,7 +170,7 @@ type GetMyTenantsResponseBodyTenantList struct {
 	//
 	// false
 	OpsTenant *bool `json:"OpsTenant,omitempty" xml:"OpsTenant,omitempty"`
-	// The ID of the user to whom the tenant belongs.
+	// The ID of the tenant owner.
 	//
 	// example:
 	//

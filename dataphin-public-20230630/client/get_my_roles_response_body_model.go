@@ -24,7 +24,7 @@ type iGetMyRolesResponseBody interface {
 }
 
 type GetMyRolesResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetMyRolesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of roles.
 	RoleList []*GetMyRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type GetMyRolesResponseBodyRoleList struct {
 	//
 	// example:
 	//
-	// dataphin管理员
+	// Dataphin administrator
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The role ID.
 	//

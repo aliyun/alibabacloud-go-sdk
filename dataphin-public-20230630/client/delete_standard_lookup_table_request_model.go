@@ -18,7 +18,7 @@ type iDeleteStandardLookupTableRequest interface {
 }
 
 type DeleteStandardLookupTableRequest struct {
-	// The lookup table ID.
+	// The ID of the lookup table.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +34,8 @@ type DeleteStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

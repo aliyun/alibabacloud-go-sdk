@@ -26,6 +26,8 @@ type UpdateTenantComputeEngineRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *UpdateTenantComputeEngineRequest) Validate() error {
 }
 
 type UpdateTenantComputeEngineRequestUpdateCommand struct {
-	// The list of cluster node endpoints.
+	// The cluster node connection list.
 	//
 	// This parameter is required.
 	ClusterUrlList []*string `json:"ClusterUrlList,omitempty" xml:"ClusterUrlList,omitempty" type:"Repeated"`

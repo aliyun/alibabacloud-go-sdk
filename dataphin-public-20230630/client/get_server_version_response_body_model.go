@@ -24,13 +24,13 @@ type iGetServerVersionResponseBody interface {
 }
 
 type GetServerVersionResponseBody struct {
-	// The error code. A value of OK indicates that the request is successful.
+	// The request error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The Dataphin server version number.
+	// The version number of the Dataphin server.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetServerVersionResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message of the request.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetServerVersionResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

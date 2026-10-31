@@ -30,7 +30,7 @@ type BatchCreateKgRelationResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of batch relationship record creation.
+	// The result of creating relationship records in batches.
 	CreateResult *BatchCreateKgRelationResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type BatchCreateKgRelationResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

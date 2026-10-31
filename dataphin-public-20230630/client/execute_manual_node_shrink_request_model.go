@@ -22,15 +22,15 @@ type iExecuteManualNodeShrinkRequest interface {
 type ExecuteManualNodeShrinkRequest struct {
   // The environment identifier. Valid values:
   // 
-  // - DEV: development environment 
+  // - DEV: Development environment. 
   // 
-  // - PROD (default): production environment.
+  // - PROD: Production environment. This is the default value.
   // 
   // example:
   // 
   // PROD
   Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-  // The request for running a manual task.
+  // The request to run a manual task.
   // 
   // This parameter is required.
   ExecuteCommandShrink *string `json:"ExecuteCommand,omitempty" xml:"ExecuteCommand,omitempty"`
@@ -42,6 +42,8 @@ type ExecuteManualNodeShrinkRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The operator ID.
+  // 
   // example:
   // 
   // 30001011

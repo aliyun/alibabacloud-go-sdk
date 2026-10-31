@@ -18,7 +18,7 @@ type iCreatePipelineNodeRequest interface {
 }
 
 type CreatePipelineNodeRequest struct {
-	// The command to create a pipeline. Both offline and real-time pipelines are supported.
+	// Creates a pipeline, which supports offline and real-time pipelines.
 	//
 	// This parameter is required.
 	CreatePipelineNodeCommand *CreatePipelineNodeRequestCreatePipelineNodeCommand `json:"CreatePipelineNodeCommand,omitempty" xml:"CreatePipelineNodeCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreatePipelineNodeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -85,7 +87,7 @@ type CreatePipelineNodeRequestCreatePipelineNodeCommand struct {
 	//
 	// This parameter is required.
 	FileInfo *CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo `json:"FileInfo,omitempty" xml:"FileInfo,omitempty" type:"Struct"`
-	// The node type. Valid values: NORMAL, MANUAL, and REAL_TIME.
+	// The node type.
 	//
 	// This parameter is required.
 	//
@@ -101,7 +103,7 @@ type CreatePipelineNodeRequestCreatePipelineNodeCommand struct {
 	//
 	// test_pipeline
 	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
-	// The pipeline type. Valid values: OFFLINE_PIPELINE and REAL_TIME_PIPELINE.
+	// The pipeline type.
 	//
 	// This parameter is required.
 	//
@@ -188,7 +190,7 @@ type CreatePipelineNodeRequestCreatePipelineNodeCommandFileInfo struct {
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The full path of the parent directory of the file. If this parameter is left empty, the root path (/) is used.
+	// The full path of the parent directory of the file. If this parameter is left empty, the root directory \\"/\\" is used.
 	//
 	// example:
 	//

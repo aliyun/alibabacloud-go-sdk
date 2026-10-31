@@ -18,7 +18,7 @@ type iCheckDataSourceConnectivityShrinkRequest interface {
 }
 
 type CheckDataSourceConnectivityShrinkRequest struct {
-	// The object to check.
+	// The check target.
 	//
 	// This parameter is required.
 	CheckCommandShrink *string `json:"CheckCommand,omitempty" xml:"CheckCommand,omitempty"`
@@ -30,6 +30,8 @@ type CheckDataSourceConnectivityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

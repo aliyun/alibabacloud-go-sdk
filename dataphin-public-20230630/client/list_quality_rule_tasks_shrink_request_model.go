@@ -18,7 +18,7 @@ type iListQualityRuleTasksShrinkRequest interface {
 }
 
 type ListQualityRuleTasksShrinkRequest struct {
-	// The paged query conditions.
+	// The paging query conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
 	// The tenant ID.
 	//
@@ -28,6 +28,8 @@ type ListQualityRuleTasksShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

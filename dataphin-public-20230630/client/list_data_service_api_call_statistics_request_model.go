@@ -20,11 +20,11 @@ type iListDataServiceApiCallStatisticsRequest interface {
 }
 
 type ListDataServiceApiCallStatisticsRequest struct {
-	// Search conditions.
+	// The search conditions.
 	//
 	// This parameter is required.
 	ListQuery *ListDataServiceApiCallStatisticsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,19 @@ type ListDataServiceApiCallStatisticsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// Data service project ID.
+	// The data service project ID.
 	//
-	// This parameter is required.
+	// > If this parameter is not specified:
+	//
+	// > - Super administrators can query data of all service projects.
+	//
+	// > - Users other than super administrators can query data of service projects where they have the service project administrator or O&M user permissions.
 	//
 	// example:
 	//
@@ -100,7 +106,7 @@ func (s *ListDataServiceApiCallStatisticsRequest) Validate() error {
 }
 
 type ListDataServiceApiCallStatisticsRequestListQuery struct {
-	// End time. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -108,37 +114,55 @@ type ListDataServiceApiCallStatisticsRequestListQuery struct {
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Search keyword.
+	// The search keyword.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Sort column. Valid values: CALL_COUNT (call count), ERROR_COUNT (error count), ERROR_RATE (error rate), AVG_RESPONSE_TIME (average response time), and OFFLINE_RATE (offline percentage). Default value: CALL_COUNT.
+	// The column by which to sort the results. Valid values:
+	//
+	// - CALL_COUNT: the number of calls.
+	//
+	// - ERROR_COUNT: the number of exceptions.
+	//
+	// - ERROR_RATE: the error rate.
+	//
+	// - AVG_RESPONSE_TIME: the average response time.
+	//
+	// - OFFLINE_RATE: the offline percentage.
+	//
+	// Default value: CALL_COUNT.
 	//
 	// example:
 	//
 	// CALL_COUNT
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// Sort order. Valid values: 1 (ascending) and 2 (descending). Default value: 1.
+	// The sort order. Valid values:
+	//
+	// - 1: ascending order.
+	//
+	// - 2: descending order.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	OrderType *int32 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// Page number. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// Number of entries per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Start time. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//

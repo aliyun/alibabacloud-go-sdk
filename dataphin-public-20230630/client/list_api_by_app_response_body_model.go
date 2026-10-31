@@ -38,7 +38,7 @@ type ListApiByAppResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The query result.
 	ListResult *ListApiByAppResponseBodyListResult `json:"ListResult,omitempty" xml:"ListResult,omitempty" type:"Struct"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListApiByAppResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ func (s *ListApiByAppResponseBody) Validate() error {
 type ListApiByAppResponseBodyListResult struct {
 	// The API list.
 	Data []*ListApiByAppResponseBodyListResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total count.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// 1
 	CacheSwitch *string `json:"CacheSwitch,omitempty" xml:"CacheSwitch,omitempty"`
-	// The cache duration, in seconds.
+	// The cache duration in seconds.
 	//
 	// example:
 	//
@@ -220,15 +220,15 @@ type ListApiByAppResponseBodyListResultData struct {
 	CacheTime *string `json:"CacheTime,omitempty" xml:"CacheTime,omitempty"`
 	// The creation type. Valid values:
 	//
-	// SQL_MODE(0, "Logical table API - SQL mode"),
+	// - SQL_MODE: Logical table API - SQL mode.
 	//
-	// WIZARD_MODE(1, "Logical table API - wizard mode"),
+	// - WIZARD_MODE: Logical table API - wizard mode.
 	//
-	// DIRECT_API_MODE(2, "Direct datasource - SQL mode"),
+	// - DIRECT_API_MODE: Direct connection data source - SQL mode.
 	//
-	// REGISTER_API_MODE(3, "Registered API mode"),
+	// - REGISTER_API_MODE: Registered API mode.
 	//
-	// COMPOSITE_API_MODE(4, "Composite API mode").
+	// - COMPOSITE_API_MODE: Composite API mode.
 	//
 	// example:
 	//
@@ -244,15 +244,15 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// example:
 	//
-	// 这是一个示例API
+	// This is a sample API
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The datasource ID of the direct API.
+	// The data source ID of the direct connection API.
 	//
 	// example:
 	//
 	// 54321
 	DirectDatasourceId *int64 `json:"DirectDatasourceId,omitempty" xml:"DirectDatasourceId,omitempty"`
-	// The datasource name of the direct API.
+	// The data source name of the direct connection API.
 	//
 	// example:
 	//
@@ -276,9 +276,9 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the table is a logical table.
+	// Indicates whether it is a logical table.
 	IsLogicalTable *bool `json:"IsLogicalTable,omitempty" xml:"IsLogicalTable,omitempty"`
-	// Indicates whether the query is a paged query.
+	// Indicates whether it is a paging query.
 	//
 	// example:
 	//
@@ -290,7 +290,7 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// 100
 	MaxReturnNum *int64 `json:"MaxReturnNum,omitempty" xml:"MaxReturnNum,omitempty"`
-	// The model type.
+	// The mode.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// example:
 	//
-	// HTTP和HTTPS
+	// HTTP and HTTPS
 	ProtocolName *string `json:"ProtocolName,omitempty" xml:"ProtocolName,omitempty"`
 	// -
 	PublicParamList []*ListApiByAppResponseBodyListResultDataPublicParamList `json:"PublicParamList,omitempty" xml:"PublicParamList,omitempty" type:"Repeated"`
@@ -352,7 +352,7 @@ type ListApiByAppResponseBodyListResultData struct {
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// -
 	ResponseParamList []*ListApiByAppResponseBodyListResultDataResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
-	// The sample call result.
+	// The call result sample.
 	//
 	// example:
 	//
@@ -400,7 +400,7 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// exampleTable
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The timeout duration, in seconds.
+	// The timeout duration in seconds.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ type ListApiByAppResponseBodyListResultData struct {
 	//
 	// example:
 	//
-	// 每日更新
+	// Daily update
 	UpdateRateName *string `json:"UpdateRateName,omitempty" xml:"UpdateRateName,omitempty"`
 	// The API version.
 	//
@@ -864,7 +864,7 @@ type ListApiByAppResponseBodyListResultDataPublicParamList struct {
 	//
 	// yyyy-MM-dd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
-	// The default value for registered APIs.
+	// The default value for the registered API.
 	//
 	// example:
 	//
@@ -874,7 +874,7 @@ type ListApiByAppResponseBodyListResultDataPublicParamList struct {
 	//
 	// example:
 	//
-	// 这是一个示例公共参数
+	// This is a sample common parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter description code.
 	//
@@ -936,7 +936,7 @@ type ListApiByAppResponseBodyListResultDataPublicParamList struct {
 	//
 	// String
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The request parameter location for registered APIs or the value path for response parameters.
+	// The request parameter location or response parameter value path for the registered API.
 	//
 	// example:
 	//
@@ -1214,19 +1214,19 @@ type ListApiByAppResponseBodyListResultDataRegisterApi struct {
 	//
 	// 67890
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API datasource authentication mode.
+	// The API data source authentication method.
 	//
 	// example:
 	//
 	// OAuth2
 	AuthenticationMode *string `json:"AuthenticationMode,omitempty" xml:"AuthenticationMode,omitempty"`
-	// The API datasource ID.
+	// The API data source ID.
 	//
 	// example:
 	//
 	// ds67890
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The API datasource name.
+	// The API data source name.
 	//
 	// example:
 	//
@@ -1238,13 +1238,13 @@ type ListApiByAppResponseBodyListResultDataRegisterApi struct {
 	//
 	// {"status":"error","message":"Invalid request"}
 	FailExample *string `json:"FailExample,omitempty" xml:"FailExample,omitempty"`
-	// The HTTP method of the registered API.
+	// The request method of the registered API.
 	//
 	// example:
 	//
 	// 1
 	HttpMethod *int64 `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The model type.
+	// The mode.
 	//
 	// example:
 	//
@@ -1256,7 +1256,7 @@ type ListApiByAppResponseBodyListResultDataRegisterApi struct {
 	//
 	// /api/v1/register
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The API datasource request protocol.
+	// The API data source request protocol.
 	//
 	// example:
 	//
@@ -1274,7 +1274,7 @@ type ListApiByAppResponseBodyListResultDataRegisterApi struct {
 	//
 	// 30
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The API datasource URL.
+	// The URL of the API data source.
 	//
 	// example:
 	//
@@ -1409,7 +1409,7 @@ type ListApiByAppResponseBodyListResultDataRequestParamList struct {
 	//
 	// yyyy-MM-dd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
-	// The default value for registered APIs.
+	// The default value for the registered API.
 	//
 	// example:
 	//
@@ -1419,7 +1419,7 @@ type ListApiByAppResponseBodyListResultDataRequestParamList struct {
 	//
 	// example:
 	//
-	// 这是一个示例参数
+	// This is a sample parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter description code.
 	//
@@ -1481,7 +1481,7 @@ type ListApiByAppResponseBodyListResultDataRequestParamList struct {
 	//
 	// String
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The request parameter location for registered APIs or the value path for response parameters.
+	// The request parameter location or response parameter value path for the registered API.
 	//
 	// example:
 	//
@@ -1759,7 +1759,7 @@ type ListApiByAppResponseBodyListResultDataResponseParamList struct {
 	//
 	// yyyy-MM-dd
 	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
-	// The default value for registered APIs.
+	// The default value for the registered API.
 	//
 	// example:
 	//
@@ -1769,7 +1769,7 @@ type ListApiByAppResponseBodyListResultDataResponseParamList struct {
 	//
 	// example:
 	//
-	// 这是一个示例响应参数
+	// This is a sample response parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The parameter description code.
 	//
@@ -1831,7 +1831,7 @@ type ListApiByAppResponseBodyListResultDataResponseParamList struct {
 	//
 	// String
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The request parameter location for registered APIs or the value path for response parameters.
+	// The request parameter location or response parameter value path for the registered API.
 	//
 	// example:
 	//

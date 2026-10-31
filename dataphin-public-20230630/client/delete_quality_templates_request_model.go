@@ -18,7 +18,7 @@ type iDeleteQualityTemplatesRequest interface {
 }
 
 type DeleteQualityTemplatesRequest struct {
-	// The delete instruction.
+	// The delete command.
 	//
 	// This parameter is required.
 	DeleteCommand *DeleteQualityTemplatesRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteQualityTemplatesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

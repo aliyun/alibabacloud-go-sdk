@@ -30,7 +30,7 @@ type CreateComputeClusterRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -105,6 +105,12 @@ type CreateComputeClusterRequestClusterConfig struct {
 	//
 	// cluster_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The time zone name, such as Asia/Shanghai. If this parameter is not specified during an update, the original value is retained.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 	// The cluster type.
 	//
 	// This parameter is required.
@@ -149,6 +155,10 @@ func (s *CreateComputeClusterRequestClusterConfig) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateComputeClusterRequestClusterConfig) GetTimeZone() *string {
+	return s.TimeZone
+}
+
 func (s *CreateComputeClusterRequestClusterConfig) GetType() *string {
 	return s.Type
 }
@@ -179,6 +189,11 @@ func (s *CreateComputeClusterRequestClusterConfig) SetDes(v string) *CreateCompu
 
 func (s *CreateComputeClusterRequestClusterConfig) SetName(v string) *CreateComputeClusterRequestClusterConfig {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateComputeClusterRequestClusterConfig) SetTimeZone(v string) *CreateComputeClusterRequestClusterConfig {
+	s.TimeZone = &v
 	return s
 }
 
@@ -217,9 +232,9 @@ type CreateComputeClusterRequestClusterConfigClusterSafetyControl struct {
 	//
 	// CREATE_COMPUTE_SOURCE
 	ClusterSafetyAuthType *string `json:"ClusterSafetyAuthType,omitempty" xml:"ClusterSafetyAuthType,omitempty"`
-	// The list of whitelist user group IDs.
+	// The list of whitelisted user group IDs.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The list of whitelist user IDs.
+	// The list of whitelisted user IDs.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -263,7 +278,7 @@ func (s *CreateComputeClusterRequestClusterConfigClusterSafetyControl) Validate(
 }
 
 type CreateComputeClusterRequestClusterConfigConfigList struct {
-	// The configuration item.
+	// The configuration key.
 	//
 	// This parameter is required.
 	//
@@ -271,7 +286,7 @@ type CreateComputeClusterRequestClusterConfigConfigList struct {
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the configuration item.
+	// The configuration value.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iGetUserGroupResponseBody interface {
 }
 
 type GetUserGroupResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetUserGroupResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type GetUserGroupResponseBodyUserGroupInfo struct {
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The administrators of the user group.
 	AdminList []*GetUserGroupResponseBodyUserGroupInfoAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
-	// The description of the user group.
+	// The user group description.
 	//
 	// example:
 	//
@@ -156,11 +156,11 @@ type GetUserGroupResponseBodyUserGroupInfo struct {
 	//
 	// xx
 	MyRole *string `json:"MyRole,omitempty" xml:"MyRole,omitempty"`
-	// The name of the user group.
+	// The user group name.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -240,7 +240,7 @@ func (s *GetUserGroupResponseBodyUserGroupInfo) Validate() error {
 }
 
 type GetUserGroupResponseBodyUserGroupInfoAdminList struct {
-	// The account name of the user.
+	// The user account name.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type GetUserGroupResponseBodyUserGroupInfoAdminList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The user ID.
 	//

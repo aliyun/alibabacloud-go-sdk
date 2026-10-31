@@ -18,9 +18,9 @@ type iGetBelongAssetMappingRequest interface {
 }
 
 type GetBelongAssetMappingRequest struct {
-	// Query command.
+	// The query command.
 	AssetMappingQuery *GetBelongAssetMappingRequestAssetMappingQuery `json:"AssetMappingQuery,omitempty" xml:"AssetMappingQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -28,6 +28,8 @@ type GetBelongAssetMappingRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -79,7 +81,7 @@ func (s *GetBelongAssetMappingRequest) Validate() error {
 }
 
 type GetBelongAssetMappingRequestAssetMappingQuery struct {
-	// The GUID of the belonging asset.
+	// The GUID of the owning asset.
 	//
 	// This parameter is required.
 	//
@@ -87,7 +89,7 @@ type GetBelongAssetMappingRequestAssetMappingQuery struct {
 	//
 	// 1121
 	BelongGuid *string `json:"BelongGuid,omitempty" xml:"BelongGuid,omitempty"`
-	// The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
+	// The type of the mapping relationship. Valid values: VALID (mapped) and INVALID (invalid mapping).
 	//
 	// example:
 	//

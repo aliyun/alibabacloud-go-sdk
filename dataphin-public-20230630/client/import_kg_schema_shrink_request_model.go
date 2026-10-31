@@ -20,7 +20,7 @@ type iImportKgSchemaShrinkRequest interface {
 }
 
 type ImportKgSchemaShrinkRequest struct {
-	// The command for importing the knowledge graph definition.
+	// The import command for the knowledge graph definition.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ImportKgSchemaShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//

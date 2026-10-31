@@ -24,7 +24,7 @@ type iListAuthorizedDataServiceApiDetailsResponseBody interface {
 }
 
 type ListAuthorizedDataServiceApiDetailsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListAuthorizedDataServiceApiDetailsResponseBody struct {
 	//
 	// example:
 	//
-	// Invalid parameter.
+	// Invalid parameter
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListAuthorizedDataServiceApiDetailsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The query result.
 	Result *ListAuthorizedDataServiceApiDetailsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ func (s *ListAuthorizedDataServiceApiDetailsResponseBody) Validate() error {
 type ListAuthorizedDataServiceApiDetailsResponseBodyResult struct {
 	// The list of authorized API details.
 	Data []*ListAuthorizedDataServiceApiDetailsResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -186,47 +186,47 @@ type ListAuthorizedDataServiceApiDetailsResponseBodyResultData struct {
 	//
 	// 12345
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The API name.
+	// The name of the API.
 	//
 	// example:
 	//
 	// GetData
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 12345
 	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The permission type.
+	// The type of the permission.
 	//
 	// example:
 	//
-	// Usage permission.
+	// Usage permission
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The list of fields authorized for the API in the development environment.
+	// The list of authorized fields for the API in the development environment.
 	AuthorizedDevReturnParameters []*ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevReturnParameters `json:"AuthorizedDevReturnParameters,omitempty" xml:"AuthorizedDevReturnParameters,omitempty" type:"Repeated"`
-	// The list of fields authorized for the API in the production environment.
+	// The list of authorized fields for the API in the production environment.
 	AuthorizedProdReturnParameters []*ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters `json:"AuthorizedProdReturnParameters,omitempty" xml:"AuthorizedProdReturnParameters,omitempty" type:"Repeated"`
-	// The API description.
+	// The description of the API.
 	//
 	// example:
 	//
 	// Description1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The validity period of the API permission in the development environment.
+	// The validity period of API permissions in the development environment.
 	//
 	// example:
 	//
 	// 2035-12-31
 	DevAuthPeriod *string `json:"DevAuthPeriod,omitempty" xml:"DevAuthPeriod,omitempty"`
-	// The validity period of the API permission in the production environment.
+	// The validity period of API permissions in the production environment.
 	//
 	// example:
 	//
 	// 2035-12-31
 	ProdAuthPeriod *string `json:"ProdAuthPeriod,omitempty" xml:"ProdAuthPeriod,omitempty"`
-	// The data service project ID.
+	// The ID of the data service project.
 	//
 	// example:
 	//
@@ -361,25 +361,25 @@ type ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedDevRetur
 	//
 	// example1
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	// The field authorization status.
+	// The authorization status of the field.
 	//
 	// example:
 	//
 	// 1
 	IsAuthorized *int32 `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// The parameter type.
+	// The data type of the parameter.
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The description.
+	// The description of the parameter.
 	//
 	// example:
 	//
 	// description1
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
@@ -451,25 +451,25 @@ type ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdRetu
 	//
 	// example1
 	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
-	// The field authorization status.
+	// The authorization status of the field.
 	//
 	// example:
 	//
 	// 1
 	IsAuthorized *int32 `json:"IsAuthorized,omitempty" xml:"IsAuthorized,omitempty"`
-	// The parameter type.
+	// The data type of the parameter.
 	//
 	// example:
 	//
 	// 0
 	ParameterDataType *int32 `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
-	// The description.
+	// The description of the parameter.
 	//
 	// example:
 	//
 	// description1
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//

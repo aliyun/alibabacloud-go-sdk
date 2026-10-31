@@ -24,33 +24,33 @@ type iListSubmitRecordsResponseBody interface {
 }
 
 type ListSubmitRecordsResponseBody struct {
-	// Error code. OK indicates a successful request.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code returned by the backend.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Query result.
+	// The query result.
 	ListResult *ListSubmitRecordsResponseBodyListResult `json:"ListResult,omitempty" xml:"ListResult,omitempty" type:"Struct"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request is successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *ListSubmitRecordsResponseBody) Validate() error {
 }
 
 type ListSubmitRecordsResponseBodyListResult struct {
-	// List of pending deployment records.
+	// The list of pending publish records.
 	Data []*ListSubmitRecordsResponseBodyListResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Total count.
+	// The total count.
 	//
 	// example:
 	//
@@ -176,173 +176,179 @@ func (s *ListSubmitRecordsResponseBodyListResult) Validate() error {
 }
 
 type ListSubmitRecordsResponseBodyListResultData struct {
-	// Change type. 0: Create / 1: Update / 2: Delete.
+	// The change type. Valid values:
+	//
+	// - 0: create
+	//
+	// - 1: update
+	//
+	// - 2: delete
 	//
 	// example:
 	//
 	// 0
 	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// Creation time in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the record was created. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the record was updated. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModify *string `json:"GmtModify,omitempty" xml:"GmtModify,omitempty"`
-	// Pending deployment record ID.
+	// The ID of the pending publish record.
 	//
 	// example:
 	//
 	// 1241844456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// n_123456
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Object ID.
+	// The ID of the object.
 	//
 	// example:
 	//
 	// 1234567
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// Object name.
+	// The name of the object.
 	//
 	// example:
 	//
-	// 对象A
+	// Object A
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// Object type. Valid values:
+	// The object type. Valid values:
 	//
-	// - MaxCompute SQL task: MAX_COMPUTE_SQL
+	// - MAX_COMPUTE_SQL: MaxCompute SQL node
 	//
-	// - MaxCompute MR task: MAX_COMPUTE_MR
+	// - MAX_COMPUTE_MR: MaxCompute MR node
 	//
-	// - Spark JAR on MaxCompute: SPARK_JAR_ON_MAX_COMPUTE
+	// - SPARK_JAR_ON_MAX_COMPUTE: Spark JAR on MaxCompute node
 	//
-	// - Shell task: SHELL
+	// - SHELL: Shell node
 	//
-	// - Python task: PYTHON
+	// - PYTHON: Python node
 	//
-	// - Perl script: PERL
+	// - PERL: Perl script
 	//
-	// - Check: CHECK
+	// - CHECK: Check node
 	//
-	// - Sync task: DATA_X
+	// - DATA_X: Data synchronization node
 	//
-	// - Virtual node: VIRTUAL
+	// - VIRTUAL: Virtual node
 	//
-	// - Resource: IDE_RESOURCE
+	// - IDE_RESOURCE: Resource
 	//
-	// - Function: UDF
+	// - UDF: Function
 	//
-	// - Hive SQL task: HIVE_SQL
+	// - HIVE_SQL: Hive SQL node
 	//
-	// - Hadoop MR task: HADOOP_MR
+	// - HADOOP_MR: Hadoop MR node
 	//
-	// - Spark JAR on Hive task: SPARK_JAR_ON_HIVE
+	// - SPARK_JAR_ON_HIVE: Spark JAR on Hive node
 	//
-	// - Flink SQL task: FLINK_SQL
+	// - FLINK_SQL: Flink SQL node
 	//
-	// - Flink SQL template task: FLINK_TEMPLATE_SQL
+	// - FLINK_TEMPLATE_SQL: Flink SQL template node
 	//
-	// - Stream computing template: STREAM_TEMPLATE
+	// - STREAM_TEMPLATE: Stream computing template
 	//
-	// - Metatable: META_TABLE
+	// - META_TABLE: Metatable
 	//
-	// - Stream computing function: STREAM_UDF
+	// - STREAM_UDF: Stream computing function
 	//
-	// - Real-time Flink DataStream: FLINK_DATASTREAM
+	// - FLINK_DATASTREAM: Real-time Flink DataStream node
 	//
-	// - Real-time custom data source: STREAM_CUSTOM_DATASOURCE
+	// - STREAM_CUSTOM_DATASOURCE: Real-time custom data source
 	//
-	// - AnalyticDB for PostgreSQL task: ADB_FOR_PG
+	// - ADB_FOR_PG: AnalyticDB for PostgreSQL node
 	//
-	// - TDH SQL task: INCEPTOR_SQL
+	// - INCEPTOR_SQL: Inceptor SQL node
 	//
-	// - Mirror table: MIRROR_TABLE
+	// - MIRROR_TABLE: Mirror table
 	//
-	// - Intermediate table: MIDDLE_TABLE
+	// - MIDDLE_TABLE: Intermediate table
 	//
-	// - Application table: APPLICATION_TABLE
+	// - APPLICATION_TABLE: Application table
 	//
-	// - Impala SQL task: IMPALA_SQL
+	// - IMPALA_SQL: Impala SQL node
 	//
-	// - Offline pipeline task: OFFLINE_PIPELINE
+	// - OFFLINE_PIPELINE: Offline pipeline node
 	//
-	// - Real-time pipeline task: REAL_TIME_PIPELINE
+	// - REAL_TIME_PIPELINE: Real-time pipeline node
 	//
-	// - Dimension logical table: DIM_LOGICAL_TABLE
+	// - DIM_LOGICAL_TABLE: Logical dimension table
 	//
-	// - Fact logical table: FCT_LOGICAL_TABLE
+	// - FCT_LOGICAL_TABLE: Logical fact table
 	//
-	// - Business condition: BIZ_CONDITION
+	// - BIZ_CONDITION: Business filter
 	//
-	// - Atomic metric: ATOM_INDEX
+	// - ATOM_INDEX: Atomic metric
 	//
-	// - Derived metric: DERIVED_INDEX
+	// - DERIVED_INDEX: Derived metric
 	//
-	// - Calculated derived metric: CALC_DERIVED_INDEX
+	// - CALC_DERIVED_INDEX: Derivative metric
 	//
-	// - PAI task: PAI_DESIGNER
+	// - PAI_DESIGNER: PAI Designer node
 	//
-	// - ArgoDB SQL task: ARGODB_SQL
+	// - ARGODB_SQL: ArgoDB SQL node
 	//
-	// - Hologres SQL task: HOLOGRES_SQL
+	// - HOLOGRES_SQL: Hologres SQL node
 	//
-	// - Impala SQL task: IMPALA_SQL
+	// - IMPALA_SQL: Impala SQL node
 	//
-	// - StarRocks SQL task: STARROCKS_SQL
+	// - STARROCKS_SQL: StarRocks SQL node
 	//
-	// - Database SQL task: DATABASE_SQL
+	// - DATABASE_SQL: Database SQL node
 	//
-	// - Spark SQL task: SPARK_SQL
+	// - SPARK_SQL: Spark SQL node
 	//
-	// - Compute template: TASK_TEMPLATE
+	// - TASK_TEMPLATE: Task template
 	//
-	// - External trigger node: EXTERNAL_TRIGGER
+	// - EXTERNAL_TRIGGER: External trigger node
 	//
-	// - Gauss SQL task: GAUSS_SQL
+	// - GAUSS_SQL: Gauss SQL node
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// Object version.
+	// The version of the object.
 	//
 	// example:
 	//
 	// 1
 	ObjectVersion *string `json:"ObjectVersion,omitempty" xml:"ObjectVersion,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 1241844456
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Submission comment.
+	// The submission comment.
 	//
 	// example:
 	//
-	// 提交信息
+	// Submission comment
 	SubmitComment *string `json:"SubmitComment,omitempty" xml:"SubmitComment,omitempty"`
-	// Submitter ID.
+	// The ID of the submitter.
 	//
 	// example:
 	//
 	// 307999999
 	Submitter *string `json:"Submitter,omitempty" xml:"Submitter,omitempty"`
-	// Submitter name.
+	// The name of the submitter.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	SubmitterName *string `json:"SubmitterName,omitempty" xml:"SubmitterName,omitempty"`
 }
 

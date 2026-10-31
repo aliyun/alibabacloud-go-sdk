@@ -30,6 +30,8 @@ type GetOperationRecordRunCodeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *GetOperationRecordRunCodeRequest) Validate() error {
 }
 
 type GetOperationRecordRunCodeRequestCodeCommand struct {
-	// The operation log ID.
+	// The operation record ID.
 	//
 	// This parameter is required.
 	//

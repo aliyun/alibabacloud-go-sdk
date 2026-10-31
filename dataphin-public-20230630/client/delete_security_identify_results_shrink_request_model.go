@@ -18,7 +18,7 @@ type iDeleteSecurityIdentifyResultsShrinkRequest interface {
 }
 
 type DeleteSecurityIdentifyResultsShrinkRequest struct {
-	// The delete instruction.
+	// The delete command.
 	//
 	// This parameter is required.
 	DeleteCommandShrink *string `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty"`
@@ -30,6 +30,8 @@ type DeleteSecurityIdentifyResultsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operating user.
+	//
 	// example:
 	//
 	// 30001011

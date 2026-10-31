@@ -26,13 +26,13 @@ type UpdateComputeSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator user ID.
+	// The ID of the operator.
 	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The edit command.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateComputeSourceRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -83,21 +83,21 @@ func (s *UpdateComputeSourceRequest) Validate() error {
 }
 
 type UpdateComputeSourceRequestUpdateCommand struct {
-	// The associated cluster ID. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE (to create a compute source that references a cluster). This parameter is mutually exclusive with CreateType=CLUSTER.
+	// The ID of the associated cluster. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE, which means creating a compute source that references a cluster. This parameter is mutually exclusive with CreateType=CLUSTER.
 	//
 	// example:
 	//
 	// 102311
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The connection configuration items.
+	// The connection configurations.
 	//
 	// This parameter is required.
 	ConfigList []*UpdateComputeSourceRequestUpdateCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
-	// The creation entity type. Valid values:
+	// The type of the entity to create. Valid values:
 	//
-	// - CLUSTER: Creates the entity as a cluster. ClusterId cannot be specified.
+	// - CLUSTER: creates a cluster. You cannot specify ClusterId.
 	//
-	// - COMPUTE_SOURCE: Creates the entity as a compute source. This is the default value.
+	// - COMPUTE_SOURCE: creates a compute source. This is the default value.
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The compute source ID.
+	// The ID of the compute source.
 	//
 	// This parameter is required.
 	//
@@ -119,7 +119,7 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// 102311
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The compute source name.
+	// The name of the compute source.
 	//
 	// This parameter is required.
 	//
@@ -127,7 +127,13 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// test1021
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The compute source type.
+	// The name of the time zone, such as Asia/Shanghai. If you do not specify this parameter when you update the compute source, the original value is retained.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The type of the compute source.
 	//
 	// This parameter is required.
 	//
@@ -135,7 +141,7 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// MacCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The compute source type version.
+	// The version of the compute source type.
 	//
 	// example:
 	//
@@ -173,6 +179,10 @@ func (s *UpdateComputeSourceRequestUpdateCommand) GetId() *int64 {
 
 func (s *UpdateComputeSourceRequestUpdateCommand) GetName() *string {
 	return s.Name
+}
+
+func (s *UpdateComputeSourceRequestUpdateCommand) GetTimeZone() *string {
+	return s.TimeZone
 }
 
 func (s *UpdateComputeSourceRequestUpdateCommand) GetType() *string {
@@ -213,6 +223,11 @@ func (s *UpdateComputeSourceRequestUpdateCommand) SetName(v string) *UpdateCompu
 	return s
 }
 
+func (s *UpdateComputeSourceRequestUpdateCommand) SetTimeZone(v string) *UpdateComputeSourceRequestUpdateCommand {
+	s.TimeZone = &v
+	return s
+}
+
 func (s *UpdateComputeSourceRequestUpdateCommand) SetType(v string) *UpdateComputeSourceRequestUpdateCommand {
 	s.Type = &v
 	return s
@@ -245,7 +260,7 @@ type UpdateComputeSourceRequestUpdateCommandConfigList struct {
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The configuration item value.
+	// The value of the configuration item.
 	//
 	// This parameter is required.
 	//

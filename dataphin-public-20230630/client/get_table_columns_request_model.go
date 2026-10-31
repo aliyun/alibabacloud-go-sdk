@@ -15,14 +15,14 @@ type iGetTableColumnsRequest interface {
 	GetOpTenantId() *int64
 	SetOpUserId(v string) *GetTableColumnsRequest
 	GetOpUserId() *string
+	SetTableGuid(v string) *GetTableColumnsRequest
+	GetTableGuid() *string
 	SetTableName(v string) *GetTableColumnsRequest
 	GetTableName() *string
 }
 
 type GetTableColumnsRequest struct {
-	// The asset table catalog, which is the name of the business unit or workspace.
-	//
-	// This parameter is required.
+	// The catalog of the asset table, which is the name of the business unit or project workspace.
 	//
 	// example:
 	//
@@ -36,13 +36,19 @@ type GetTableColumnsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The table name.
+	// The GUID of the table. If this parameter is specified, it takes precedence in the query, and the Catalog and TableName parameters are ignored even if they are provided.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// dp_ds_table_xxx
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+	// The name of the table.
 	//
 	// example:
 	//
@@ -70,6 +76,10 @@ func (s *GetTableColumnsRequest) GetOpUserId() *string {
 	return s.OpUserId
 }
 
+func (s *GetTableColumnsRequest) GetTableGuid() *string {
+	return s.TableGuid
+}
+
 func (s *GetTableColumnsRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -86,6 +96,11 @@ func (s *GetTableColumnsRequest) SetOpTenantId(v int64) *GetTableColumnsRequest 
 
 func (s *GetTableColumnsRequest) SetOpUserId(v string) *GetTableColumnsRequest {
 	s.OpUserId = &v
+	return s
+}
+
+func (s *GetTableColumnsRequest) SetTableGuid(v string) *GetTableColumnsRequest {
+	s.TableGuid = &v
 	return s
 }
 

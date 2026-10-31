@@ -24,7 +24,7 @@ type iListBizEntitiesResponseBody interface {
 }
 
 type ListBizEntitiesResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListBizEntitiesResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -176,7 +176,7 @@ func (s *ListBizEntitiesResponseBodyPageResult) Validate() error {
 }
 
 type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
-	// The list of parent business process IDs. This parameter is valid only when the entity type is business process.
+	// The list of IDs of the business processes to which the business entity belongs. This parameter is valid only when the business entity type is business process.
 	BelongToBizEntityIdList []*int64 `json:"BelongToBizEntityIdList,omitempty" xml:"BelongToBizEntityIdList,omitempty" type:"Repeated"`
 	// The ID of the business unit to which the business process belongs.
 	//
@@ -184,7 +184,7 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The list of child business object IDs. This parameter is valid only when the entity type is business object.
+	// The list of child business object IDs. This parameter is valid only when the business entity type is business object.
 	ChildBizEntityIdList []*int64 `json:"ChildBizEntityIdList,omitempty" xml:"ChildBizEntityIdList,omitempty" type:"Repeated"`
 	// The ID of the data domain to which the business process belongs.
 	//
@@ -202,7 +202,7 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// example:
 	//
-	// 业务活动测试
+	// Business process test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The time when the business entity was created.
 	//
@@ -210,13 +210,13 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// 2024-10-10 10:00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the business entity was last modified.
+	// The time when the business entity was last updated.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the entity is a child business object.
+	// Indicates whether the business entity has child business objects.
 	HasChildBizEntity *bool `json:"HasChildBizEntity,omitempty" xml:"HasChildBizEntity,omitempty"`
 	// The ID of the business entity.
 	//
@@ -234,9 +234,9 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// Indicates whether the entity is a sublevel of a hierarchy dimension.
+	// Indicates whether the business entity is a sub-level of a hierarchy dimension.
 	LevelSubBizObject *bool `json:"LevelSubBizObject,omitempty" xml:"LevelSubBizObject,omitempty"`
 	// The name of the business entity.
 	//
@@ -248,11 +248,11 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// - SUBMITTED: not online.
 	//
-	// - APPROVING: pending approval.
+	// - APPROVING: under approval.
 	//
 	// - PUBLISHED: online.
 	//
-	// - REJECT: failed to go online.
+	// - REJECT: rejected.
 	//
 	// example:
 	//
@@ -262,7 +262,7 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The ID of the business entity owner.
 	//
@@ -270,7 +270,7 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// 30010010
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The list of associated central business entity IDs.
+	// The list of IDs of the associated central business entities.
 	RefBizEntityIdList []*int64 `json:"RefBizEntityIdList,omitempty" xml:"RefBizEntityIdList,omitempty" type:"Repeated"`
 	// The number of associated logical tables.
 	//
@@ -282,13 +282,13 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// - DRAFT: draft or not online.
 	//
-	// - SUBMITTING: being submitted.
+	// - SUBMITTING: submitting.
 	//
 	// - SUBMITTED: submitted.
 	//
-	// - DEVELOPING: under development.
+	// - DEVELOPING: in development.
 	//
-	// - PUBLISHING: being published.
+	// - PUBLISHING: publishing.
 	//
 	// - PUBLISHED: published.
 	//
@@ -302,7 +302,7 @@ type ListBizEntitiesResponseBodyPageResultBizEntityList struct {
 	//
 	// NORMAL
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The list of subsequent business process IDs. This parameter is valid only when the entity type is business process.
+	// The list of IDs of the subsequent business processes. This parameter is valid only when the business entity type is business process.
 	SuffixBizEntityIdList []*int64 `json:"SuffixBizEntityIdList,omitempty" xml:"SuffixBizEntityIdList,omitempty" type:"Repeated"`
 	// The type of the business entity. Valid values:
 	//

@@ -24,7 +24,7 @@ type iListProjectMembersResponseBody interface {
 }
 
 type ListProjectMembersResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The request error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListProjectMembersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The request error message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListProjectMembersResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type ListProjectMembersResponseBodyPageResultProjectMemberList struct {
 	//
 	// 1702692675000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modified timestamp.
+	// The update timestamp.
 	//
 	// example:
 	//
@@ -198,18 +198,20 @@ type ListProjectMembersResponseBodyPageResultProjectMemberList struct {
 	//
 	// 12356
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the record.
+	// The ID of the editor.
 	//
 	// example:
 	//
 	// 101111
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The name of the user who last modified the record.
+	// The name of the editor.
 	//
 	// example:
 	//
-	// 测试用户
+	// Test User
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
+	// The list of role codes bound to the member, including system and custom project roles. This list can be used to add or edit project members.
+	RoleCodeList []*string `json:"RoleCodeList,omitempty" xml:"RoleCodeList,omitempty" type:"Repeated"`
 	// The roles.
 	RoleIdList []*int32 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The user ID of the member.
@@ -222,7 +224,7 @@ type ListProjectMembersResponseBodyPageResultProjectMemberList struct {
 	//
 	// example:
 	//
-	// 测试用户
+	// Test User
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -252,6 +254,10 @@ func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) GetLastModif
 
 func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) GetLastModifierName() *string {
 	return s.LastModifierName
+}
+
+func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) GetRoleCodeList() []*string {
+	return s.RoleCodeList
 }
 
 func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) GetRoleIdList() []*int32 {
@@ -288,6 +294,11 @@ func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) SetLastModif
 
 func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) SetLastModifierName(v string) *ListProjectMembersResponseBodyPageResultProjectMemberList {
 	s.LastModifierName = &v
+	return s
+}
+
+func (s *ListProjectMembersResponseBodyPageResultProjectMemberList) SetRoleCodeList(v []*string) *ListProjectMembersResponseBodyPageResultProjectMemberList {
+	s.RoleCodeList = v
 	return s
 }
 

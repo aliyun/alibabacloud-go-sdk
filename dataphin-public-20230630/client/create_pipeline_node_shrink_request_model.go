@@ -18,7 +18,7 @@ type iCreatePipelineNodeShrinkRequest interface {
 }
 
 type CreatePipelineNodeShrinkRequest struct {
-	// The command to create a pipeline. Both offline and real-time pipelines are supported.
+	// Creates a pipeline, which supports offline and real-time pipelines.
 	//
 	// This parameter is required.
 	CreatePipelineNodeCommandShrink *string `json:"CreatePipelineNodeCommand,omitempty" xml:"CreatePipelineNodeCommand,omitempty"`
@@ -30,6 +30,8 @@ type CreatePipelineNodeShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

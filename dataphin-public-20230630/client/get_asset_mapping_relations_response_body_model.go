@@ -38,7 +38,7 @@ type GetAssetMappingRelationsResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The list of mapping relationships.
 	MappingRelationList []*GetAssetMappingRelationsResponseBodyMappingRelationList `json:"MappingRelationList,omitempty" xml:"MappingRelationList,omitempty" type:"Repeated"`
-	// The error details from the backend response.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAssetMappingRelationsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,11 +130,7 @@ func (s *GetAssetMappingRelationsResponseBody) Validate() error {
 }
 
 type GetAssetMappingRelationsResponseBodyMappingRelationList struct {
-	// The Asset Type. Valid values:
-	//
-	// - COLUMN: field.
-	//
-	// - INDEX: metric.
+	// The asset type. Valid values: COLUMN (field) and INDEX (metric).
 	//
 	// example:
 	//
@@ -146,7 +142,7 @@ type GetAssetMappingRelationsResponseBodyMappingRelationList struct {
 	//
 	// 1122
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The update time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -176,7 +172,7 @@ type GetAssetMappingRelationsResponseBodyMappingRelationList struct {
 	//
 	// test
 	StandardName *string `json:"StandardName,omitempty" xml:"StandardName,omitempty"`
-	// The folder in which the standard set resides.
+	// The folder where the standard set is located.
 	//
 	// example:
 	//

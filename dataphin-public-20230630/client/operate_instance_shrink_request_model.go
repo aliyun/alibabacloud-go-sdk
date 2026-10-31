@@ -22,9 +22,9 @@ type iOperateInstanceShrinkRequest interface {
 type OperateInstanceShrinkRequest struct {
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD: Production environment. This is the default value.
 	//
 	// example:
 	//
@@ -38,6 +38,8 @@ type OperateInstanceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

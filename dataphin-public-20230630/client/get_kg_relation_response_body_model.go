@@ -42,7 +42,7 @@ type GetKgRelationResponseBody struct {
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The relationship record details.
+	// The relation record details.
 	RelationInfo *GetKgRelationResponseBodyRelationInfo `json:"RelationInfo,omitempty" xml:"RelationInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type GetKgRelationResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,15 +126,15 @@ func (s *GetKgRelationResponseBody) Validate() error {
 }
 
 type GetKgRelationResponseBodyRelationInfo struct {
-	// The list of relationship record properties.
+	// The property list of the relation record.
 	PropertyList []*GetKgRelationResponseBodyRelationInfoPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
-	// The relationship record ID.
+	// The relation record ID.
 	//
 	// example:
 	//
 	// abc-xxx
 	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
-	// The relationship type code.
+	// The relation type code.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type GetKgRelationResponseBodyRelationInfoPropertyList struct {
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), LIST (list), and others.
+	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type GetDataServiceApiDocumentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetDataServiceApiDocumentResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -134,13 +134,13 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The API registration information.
 	ApiRegisterInfo *GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo `json:"ApiRegisterInfo,omitempty" xml:"ApiRegisterInfo,omitempty" type:"Struct"`
-	// The timeout period of the direct API, in seconds.
+	// The timeout period for the direct API, in seconds.
 	//
 	// example:
 	//
 	// 60
 	ApiTimeout *int32 `json:"ApiTimeout,omitempty" xml:"ApiTimeout,omitempty"`
-	// The business unit name. This parameter has a value only for logical tables.
+	// The business unit name. This value is available only for logical tables.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	//
 	// - 1: wizard mode
 	//
-	// - 2: direct API.
+	// - 2: direct API connection
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	//
 	// - 0: dev
 	//
-	// - 1: prod.
+	// - 1: prod
 	//
 	// example:
 	//
@@ -206,23 +206,23 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// Indicates whether the table is a logical table.
 	IsLogicalTable *bool `json:"IsLogicalTable,omitempty" xml:"IsLogicalTable,omitempty"`
-	// Indicates whether the query is a paged query. Valid values:
+	// Specifies whether the query is a paged query. Valid values:
 	//
-	// - 1: Yes.
+	// - 1: yes.
 	//
-	// - 0: No.
+	// - 0: no.
 	IsPagedQuery *bool `json:"IsPagedQuery,omitempty" xml:"IsPagedQuery,omitempty"`
-	// Specifies whether the SQL is special. Valid values:
+	// Indicates whether the SQL is special. Valid values:
 	//
-	// - 0: No.
+	// - 0: no
 	//
-	// - 1: Yes.
+	// - 1: yes
 	IsSpecialSql *bool `json:"IsSpecialSql,omitempty" xml:"IsSpecialSql,omitempty"`
 	// The mode. Valid values:
 	//
 	// - 0: basic
 	//
-	// - 1: dev_prod.
+	// - 1: dev_prod
 	//
 	// example:
 	//
@@ -232,21 +232,21 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether caching is enabled. Valid values:
+	// Specifies whether the cache is enabled. Valid values:
 	//
-	// - 0: Disabled.
+	// - 0: disabled.
 	//
-	// - 1: Enabled.
+	// - 1: enabled.
 	OpenCache *bool `json:"OpenCache,omitempty" xml:"OpenCache,omitempty"`
-	// The data service project ID.
+	// The ID of the data service project.
 	//
 	// example:
 	//
 	// 10201
 	ProjectId *int32 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The data service project name.
+	// The name of the data service project.
 	//
 	// example:
 	//
@@ -254,45 +254,45 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The protocol. Valid values:
 	//
-	// - 1: HTTPS
+	// - 1: https
 	//
-	// - 2: HTTP
+	// - 2: http
 	//
-	// - 3: both HTTP and HTTPS.
+	// - 3: http and https
 	//
 	// example:
 	//
 	// 1
 	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The list of common parameters.
+	// The common parameter list.
 	PublicParamList []*GetDataServiceApiDocumentResponseBodyDataPublicParamList `json:"PublicParamList,omitempty" xml:"PublicParamList,omitempty" type:"Repeated"`
 	// The request method. Valid values:
 	//
 	// - 1: get
 	//
-	// - 2: list.
+	// - 2: list
 	//
 	// example:
 	//
 	// 1
 	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
-	// The list of request parameters.
+	// The request parameter list.
 	RequestParamList []*GetDataServiceApiDocumentResponseBodyDataRequestParamList `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// 10021
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
 	// test
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The list of response parameters.
+	// The response parameter list.
 	ResponseParamList []*GetDataServiceApiDocumentResponseBodyDataResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
-	// The sample invocation result.
+	// The call result sample.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	ReturnLimit *int32 `json:"ReturnLimit,omitempty" xml:"ReturnLimit,omitempty"`
 	// The return data type. Valid values:
 	//
-	// - 1: JSON.
+	// - 1: JSON
 	//
 	// example:
 	//
@@ -314,9 +314,9 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	ReturnType *int32 `json:"ReturnType,omitempty" xml:"ReturnType,omitempty"`
 	// The script type. Valid values:
 	//
-	// - NORMAL_SQL: basic SQL
+	// - NORMAL_SQL: basic SQL.
 	//
-	// - MYBATIS_SQL: advanced SQL
+	// - MYBATIS_SQL: advanced SQL.
 	//
 	// - AVIATOR: Aviator expression.
 	//
@@ -330,7 +330,7 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	//
 	// select col1 from table1;
 	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	// The logical table name. This parameter has a value only for logical tables.
+	// The logical table name. This value is available only for logical tables.
 	//
 	// example:
 	//
@@ -350,7 +350,7 @@ type GetDataServiceApiDocumentResponseBodyData struct {
 	//
 	// - 2: hourly
 	//
-	// - 3: every minute.
+	// - 3: every minute
 	//
 	// example:
 	//
@@ -733,15 +733,15 @@ func (s *GetDataServiceApiDocumentResponseBodyData) Validate() error {
 }
 
 type GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo struct {
-	// The authentication method for the API data source. Valid values:
+	// The authentication method of the API data source. Valid values:
 	//
-	// - 1: BearToken
+	// - 1: BearToken.
 	//
-	// - 2: ApiKey
+	// - 2: ApiKey.
 	//
-	// - 3: None
+	// - 3: None.
 	//
-	// - 4: AppKeyAuth
+	// - 4: AppKeyAuth.
 	//
 	// - 5: BasicAuth.
 	//
@@ -749,21 +749,21 @@ type GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo struct {
 	//
 	// 3
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The API data source ID.
+	// The ID of the API data source.
 	//
 	// example:
 	//
 	// 102311
 	DatasourceId *string `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The API data source name.
+	// The name of the API data source.
 	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The HTTP method for the registered API. Valid values:
+	// The HTTP method of the registered API. Valid values:
 	//
-	// - 1: GET
+	// - 1: GET.
 	//
 	// - 2: POST.
 	//
@@ -775,19 +775,19 @@ type GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo struct {
 	//
 	// - 0: basic
 	//
-	// - 1: dev_prod.
+	// - 1: dev_prod
 	//
 	// example:
 	//
 	// 1
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The service path.
+	// The path of the service.
 	//
 	// example:
 	//
 	// /api/test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The request protocol for the API data source.
+	// The request protocol of the API data source.
 	//
 	// example:
 	//
@@ -799,7 +799,7 @@ type GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo struct {
 	//
 	// 60
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The API data source URL.
+	// The URL of the API data source.
 	//
 	// example:
 	//
@@ -905,13 +905,13 @@ type GetDataServiceApiDocumentResponseBodyDataPublicParamList struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the request parameter is required. Valid values:
+	// Indicates whether the request parameter is required. Valid values:
 	//
-	// - 1: Required.
+	// - 1: required
 	//
-	// - 0: Optional.
+	// - 0: optional
 	IsRequired *bool `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
 	// The frontend parameter name.
 	//
@@ -1001,13 +1001,13 @@ type GetDataServiceApiDocumentResponseBodyDataRequestParamList struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the request parameter is required. Valid values:
+	// Indicates whether the request parameter is required. Valid values:
 	//
-	// - 1: Required.
+	// - 1: required
 	//
-	// - 0: Optional.
+	// - 0: optional
 	IsRequired *bool `json:"IsRequired,omitempty" xml:"IsRequired,omitempty"`
 	// The frontend parameter name.
 	//
@@ -1100,7 +1100,7 @@ type GetDataServiceApiDocumentResponseBodyDataResponseParamList struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The frontend parameter name.
 	//

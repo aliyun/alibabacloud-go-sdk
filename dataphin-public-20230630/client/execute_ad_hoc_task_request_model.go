@@ -30,6 +30,8 @@ type ExecuteAdHocTaskRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The operator ID.
+  // 
   // example:
   // 
   // 30001011
@@ -81,7 +83,7 @@ func (s *ExecuteAdHocTaskRequest) Validate() error {
 }
 
 type ExecuteAdHocTaskRequestExecuteCommand struct {
-  // The node script.
+  // The task script.
   // 
   // This parameter is required.
   // 
@@ -89,25 +91,25 @@ type ExecuteAdHocTaskRequestExecuteCommand struct {
   // 
   // show tables;
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The catalog for a database SQL task. This parameter takes effect only for data source types that require a catalog, such as Presto.
+  // The data source catalog for database SQL tasks. This parameter takes effect only for data source types that require a catalog, such as Presto.
   // 
   // example:
   // 
   // mysql_catalog
   DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
-  // The data source ID for a database SQL task.
+  // The data source ID for database SQL tasks.
   // 
   // example:
   // 
   // 12131111
   DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-  // The schema for a database SQL task. This parameter takes effect only for data source types that require a schema, such as Oracle.
+  // The data source schema for database SQL tasks. This parameter takes effect only for data source types that require a schema, such as Oracle.
   // 
   // example:
   // 
   // erp
   DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
-  // The node type.
+  // The task type.
   // 
   // This parameter is required.
   // 

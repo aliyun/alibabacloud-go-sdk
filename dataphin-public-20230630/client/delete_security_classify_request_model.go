@@ -18,7 +18,7 @@ type iDeleteSecurityClassifyRequest interface {
 }
 
 type DeleteSecurityClassifyRequest struct {
-	// The delete instruction.
+	// The update command.
 	//
 	// This parameter is required.
 	DeleteCommand *DeleteSecurityClassifyRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteSecurityClassifyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,19 +83,19 @@ func (s *DeleteSecurityClassifyRequest) Validate() error {
 }
 
 type DeleteSecurityClassifyRequestDeleteCommand struct {
-	// The categorization ID. If this parameter is not specified, the categorization is matched and deleted based on the categorization name and parent path.
+	// The category ID. If this parameter is not provided, the category is matched and deleted based on the category name and parent path.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The categorization name.
+	// The category name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The categorization path. Default value: /.
+	// The category path. Default value: /.
 	//
 	// example:
 	//

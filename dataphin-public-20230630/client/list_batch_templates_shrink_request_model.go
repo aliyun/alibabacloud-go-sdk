@@ -28,7 +28,7 @@ type ListBatchTemplatesShrinkRequest struct {
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The paged query conditions.
+	// The paging query conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
 	// The tenant ID.
 	//
@@ -38,6 +38,8 @@ type ListBatchTemplatesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

@@ -24,7 +24,7 @@ type iCreatePipelineNodeResponseBody interface {
 }
 
 type CreatePipelineNodeResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreatePipelineNodeResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -130,7 +130,7 @@ type CreatePipelineNodeResponseBodyData struct {
 	ErrorCodeList []*string `json:"ErrorCodeList,omitempty" xml:"ErrorCodeList,omitempty" type:"Repeated"`
 	// The error messages.
 	ErrorMessageList []*string `json:"ErrorMessageList,omitempty" xml:"ErrorMessageList,omitempty" type:"Repeated"`
-	// The ID of the pipeline created.
+	// The ID of the created pipeline.
 	//
 	// example:
 	//

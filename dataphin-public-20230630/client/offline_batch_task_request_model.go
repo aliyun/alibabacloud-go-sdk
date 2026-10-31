@@ -30,7 +30,7 @@ type OfflineBatchTaskRequest struct {
 	//
 	// test xx
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The node ID in the node directory tree.
+	// The node ID in the task directory tree.
 	//
 	// This parameter is required.
 	//
@@ -46,6 +46,8 @@ type OfflineBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

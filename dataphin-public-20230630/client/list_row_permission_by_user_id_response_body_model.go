@@ -24,7 +24,7 @@ type iListRowPermissionByUserIdResponseBody interface {
 }
 
 type ListRowPermissionByUserIdResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListRowPermissionByUserIdResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -306,9 +306,9 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultData) Validate() error {
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataRules struct {
-	// The rule expressions.
+	// The expressions of the rule.
 	Expressions []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -320,11 +320,11 @@ type ListRowPermissionByUserIdResponseBodyPageResultDataRules struct {
 	//
 	// 0
 	IsDelete *bool `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//
-	// 业务管控
+	// Business control
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The scope type of the rule.
 	//
@@ -332,7 +332,7 @@ type ListRowPermissionByUserIdResponseBodyPageResultDataRules struct {
 	//
 	// SELECT_COLUMN
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The rule status.
+	// The status of the rule.
 	//
 	// example:
 	//
@@ -436,13 +436,13 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) Validate() er
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions struct {
-	// The mapping field name.
+	// The name of the mapped field.
 	//
 	// example:
 	//
 	// business_id
 	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
-	// The expression operator.
+	// The operator of the expression.
 	//
 	// example:
 	//
@@ -450,13 +450,13 @@ type ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions struct 
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The sub-expressions.
 	SubConditions []interface{} `json:"SubConditions,omitempty" xml:"SubConditions,omitempty" type:"Repeated"`
-	// The expression type.
+	// The type of the expression.
 	//
 	// example:
 	//
 	// EXPRESSION
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The expression operation values.
+	// The operand values of the expression.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -598,19 +598,19 @@ func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList
 }
 
 type ListRowPermissionByUserIdResponseBodyPageResultDataTables struct {
-	// The table field.
+	// The field of the table.
 	//
 	// example:
 	//
 	// business_id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	// The mapping field name.
+	// The name of the mapped field.
 	//
 	// example:
 	//
-	// 拦截规则
+	// Interception rule
 	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
-	// The table GUID.
+	// The GUID of the table.
 	//
 	// example:
 	//

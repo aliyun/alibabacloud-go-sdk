@@ -26,6 +26,8 @@ type UpdateDevProdProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -87,7 +89,7 @@ type UpdateDevProdProjectRequestUpdateCommand struct {
 	//
 	// 1001
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The ID of the offline compute source in the development environment.
+	// The ID of the offline compute source for the development environment.
 	//
 	// example:
 	//
@@ -99,17 +101,17 @@ type UpdateDevProdProjectRequestUpdateCommand struct {
 	//
 	// dev desc
 	DevDescription *string `json:"DevDescription,omitempty" xml:"DevDescription,omitempty"`
-	// The ID of the real-time compute source in the development environment.
+	// The ID of the real-time compute source for the development environment.
 	//
 	// example:
 	//
 	// 2002
 	DevStreamComputeSourceId *int64 `json:"DevStreamComputeSourceId,omitempty" xml:"DevStreamComputeSourceId,omitempty"`
-	// The display name of the project.
+	// The project display name.
 	//
 	// example:
 	//
-	// My project.
+	// My project
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The project ID.
 	//
@@ -125,13 +127,13 @@ type UpdateDevProdProjectRequestUpdateCommand struct {
 	//
 	// my_project
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace identifier.
+	// The namespace tag.
 	//
 	// example:
 	//
 	// dev
 	NameSpaceTag *string `json:"NameSpaceTag,omitempty" xml:"NameSpaceTag,omitempty"`
-	// The ID of the offline compute source in the production environment.
+	// The ID of the offline compute source for the production environment.
 	//
 	// example:
 	//
@@ -143,13 +145,13 @@ type UpdateDevProdProjectRequestUpdateCommand struct {
 	//
 	// prod desc
 	ProdDescription *string `json:"ProdDescription,omitempty" xml:"ProdDescription,omitempty"`
-	// The ID of the real-time compute source in the production environment.
+	// The ID of the real-time compute source for the production environment.
 	//
 	// example:
 	//
 	// 2004
 	ProdStreamComputeSourceId *int64 `json:"ProdStreamComputeSourceId,omitempty" xml:"ProdStreamComputeSourceId,omitempty"`
-	// The sandbox whitelist.
+	// The sandbox whitelists.
 	WhiteLists []*UpdateDevProdProjectRequestUpdateCommandWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
 }
 

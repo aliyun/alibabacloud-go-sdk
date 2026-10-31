@@ -24,7 +24,7 @@ type iListUserGroupsResponseBody interface {
 }
 
 type ListUserGroupsResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListUserGroupsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paged query result.
+	// The paging query result.
 	PageResult *ListUserGroupsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type ListUserGroupsResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type ListUserGroupsResponseBodyPageResult struct {
 	//
 	// 49
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The paged list.
+	// The paginated list.
 	UserGroupList []*ListUserGroupsResponseBodyPageResultUserGroupList `json:"UserGroupList,omitempty" xml:"UserGroupList,omitempty" type:"Repeated"`
 }
 
@@ -192,9 +192,9 @@ type ListUserGroupsResponseBodyPageResultUserGroupList struct {
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
@@ -206,11 +206,11 @@ type ListUserGroupsResponseBodyPageResultUserGroupList struct {
 	//
 	// SECURITY_ADMIN
 	MyRole *string `json:"MyRole,omitempty" xml:"MyRole,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -296,13 +296,13 @@ type ListUserGroupsResponseBodyPageResultUserGroupListAdminList struct {
 	//
 	// zhangsan
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The username.
+	// The display name of the user.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

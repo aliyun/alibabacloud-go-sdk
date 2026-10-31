@@ -18,7 +18,7 @@ type iListUserGroupMembersRequest interface {
 }
 
 type ListUserGroupMembersRequest struct {
-	// The paged query parameters.
+	// The paging query.
 	//
 	// This parameter is required.
 	ListQuery *ListUserGroupMembersRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type ListUserGroupMembersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -95,7 +97,7 @@ type ListUserGroupMembersRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +111,7 @@ type ListUserGroupMembersRequestListQuery struct {
 	//
 	// 232231
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The user ID.
+	// The user IDs.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 

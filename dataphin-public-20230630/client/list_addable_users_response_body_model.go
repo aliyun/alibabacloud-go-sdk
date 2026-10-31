@@ -24,7 +24,7 @@ type iListAddableUsersResponseBody interface {
 }
 
 type ListAddableUsersResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAddableUsersResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paging query result.
+	// The paged query result.
 	PageResult *ListAddableUsersResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type ListAddableUsersResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -132,7 +132,7 @@ type ListAddableUsersResponseBodyPageResult struct {
 	//
 	// 66
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of users.
+	// The user list.
 	UserList []*ListAddableUsersResponseBodyPageResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -206,7 +206,7 @@ type ListAddableUsersResponseBodyPageResultUserList struct {
 	//
 	// true
 	EnableWhiteIp *string `json:"EnableWhiteIp,omitempty" xml:"EnableWhiteIp,omitempty"`
-	// The Lark chatbot.
+	// The Lark bot.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type ListAddableUsersResponseBodyPageResultUserList struct {
 	//
 	// 1717343597000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the user was last modified.
+	// The time when the user was modified.
 	//
 	// example:
 	//
@@ -266,25 +266,25 @@ type ListAddableUsersResponseBodyPageResultUserList struct {
 	//
 	// xx
 	RealName *string `json:"RealName,omitempty" xml:"RealName,omitempty"`
-	// The source ID of the user.
+	// The ID of the user source.
 	//
 	// example:
 	//
 	// 123@xx.com
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type of the user.
+	// The source of the user.
 	//
 	// example:
 	//
 	// aliyun
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The WeCom chatbot.
+	// The WeCom bot.
 	//
 	// example:
 	//
 	// xx
 	WeChatRobot *string `json:"WeChatRobot,omitempty" xml:"WeChatRobot,omitempty"`
-	// The IP whitelist.
+	// The IP address whitelist.
 	//
 	// example:
 	//

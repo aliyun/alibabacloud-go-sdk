@@ -30,6 +30,8 @@ type OnlineBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,7 +91,7 @@ type OnlineBizEntityRequestOnlineCommand struct {
 	//
 	// 6798087749072704
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The remarks for the offline operation.
+	// The offline comment.
 	//
 	// This parameter is required.
 	//
@@ -105,11 +107,7 @@ type OnlineBizEntityRequestOnlineCommand struct {
 	//
 	// 101001201
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The business type. Valid values:
-	//
-	// - BIZ_OBJECT
-	//
-	// - BIZ_PROCESS.
+	// The business type. Valid values: BIZ_OBJECT and BIZ_PROCESS.
 	//
 	// This parameter is required.
 	//

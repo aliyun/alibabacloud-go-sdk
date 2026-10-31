@@ -18,7 +18,7 @@ type iGetUsersShrinkRequest interface {
 }
 
 type GetUsersShrinkRequest struct {
-	// The tenant ID.
+	// The operator tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -26,6 +26,8 @@ type GetUsersShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

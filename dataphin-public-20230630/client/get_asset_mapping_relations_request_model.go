@@ -18,7 +18,7 @@ type iGetAssetMappingRelationsRequest interface {
 }
 
 type GetAssetMappingRelationsRequest struct {
-	// The query instruction.
+	// The query command.
 	AssetMappingQuery *GetAssetMappingRelationsRequestAssetMappingQuery `json:"AssetMappingQuery,omitempty" xml:"AssetMappingQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -28,6 +28,8 @@ type GetAssetMappingRelationsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -79,11 +81,7 @@ func (s *GetAssetMappingRelationsRequest) Validate() error {
 }
 
 type GetAssetMappingRelationsRequestAssetMappingQuery struct {
-	// The object type of the asset. Valid values:
-	//
-	// - COLUMN: field.
-	//
-	// - INDEX: metric.
+	// The asset object type. Valid values: COLUMN (field) and INDEX (metric).
 	//
 	// This parameter is required.
 	//
@@ -99,11 +97,7 @@ type GetAssetMappingRelationsRequestAssetMappingQuery struct {
 	//
 	// 1121
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The type of the mapping relationship. Valid values:
-	//
-	// - VALID: mapped.
-	//
-	// - INVALID: invalid mapping.
+	// The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
 	//
 	// This parameter is required.
 	//

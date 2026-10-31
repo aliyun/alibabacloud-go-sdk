@@ -24,7 +24,7 @@ type iGetPhysicalNodeResponseBody interface {
 }
 
 type GetPhysicalNodeResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetPhysicalNodeResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// 1717343597000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The node creator.
+	// The creator of the node.
 	Creator *GetPhysicalNodeResponseBodyNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	// The cron expression used to calculate the scheduling time.
+	// The cron expression, which is used to calculate the trigger time.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// 123456789
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source schema. This parameter takes effect only for data source types that require a schema, such as Oracle. If set to "default", the value is null.
+	// The schema of the data source. This parameter takes effect only for data source types that require a schema, such as Oracle. If it is set to "default", the value is null.
 	//
 	// example:
 	//
@@ -160,15 +160,15 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The node source. Valid values:
+	// The source of the node. Valid values:
 	//
-	// - DATA_PROCESS: code development.
+	// - DATA_PROCESS: code development
 	//
-	// - BLACK_BOX: modeling development.
+	// - BLACK_BOX: modeling development
 	//
-	// - PIPELINE: pipeline.
+	// - PIPELINE: PIPELINE
 	//
 	// example:
 	//
@@ -180,19 +180,19 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// n_232132
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time of the last modification.
+	// The last update time.
 	//
 	// example:
 	//
 	// 1717343597000
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// The user who last modified the node.
+	// The user who last updated the node.
 	Modifier *GetPhysicalNodeResponseBodyNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
 	// The node name.
 	//
 	// example:
 	//
-	// 节点名称
+	// Node name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node subtype. Valid values:
 	//
@@ -206,7 +206,7 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// - ONE_SERVICE_SQL
 	//
-	// - DATABASE_SQL and others.
+	// - DATABASE_SQL, etc.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
 	// The list of output names.
 	OutputNameList []*string `json:"OutputNameList,omitempty" xml:"OutputNameList,omitempty" type:"Repeated"`
-	// The node owner.
+	// The owner of the node.
 	Owner *GetPhysicalNodeResponseBodyNodeInfoOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
 	// The scheduling priority. Valid values:
 	//
@@ -226,7 +226,7 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// - LOW
 	//
-	// - LOWEST.
+	// - LOWEST
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// - MONTHLY
 	//
-	// - QUARTERLY.
+	// - QUARTERLY
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ type GetPhysicalNodeResponseBodyNodeInfo struct {
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The trigger configuration, which is used to implement field-level dependencies on logical tables.
+	// The trigger configuration, which is used to implement field dependencies for logical tables.
 	//
 	// example:
 	//
@@ -480,7 +480,7 @@ type GetPhysicalNodeResponseBodyNodeInfoCreator struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -525,7 +525,7 @@ type GetPhysicalNodeResponseBodyNodeInfoModifier struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -570,7 +570,7 @@ type GetPhysicalNodeResponseBodyNodeInfoOwner struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -615,7 +615,7 @@ type GetPhysicalNodeResponseBodyNodeInfoProjectInfo struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

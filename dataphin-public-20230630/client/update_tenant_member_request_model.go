@@ -26,6 +26,8 @@ type UpdateTenantMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *UpdateTenantMemberRequest) Validate() error {
 }
 
 type UpdateTenantMemberRequestUpdateCommand struct {
-	// The list of members.
+	// The member list.
 	//
 	// This parameter is required.
 	MemberList []*UpdateTenantMemberRequestUpdateCommandMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
@@ -118,12 +120,18 @@ func (s *UpdateTenantMemberRequestUpdateCommand) Validate() error {
 }
 
 type UpdateTenantMemberRequestUpdateCommandMemberList struct {
-	// The DingTalk number.
+	// The DingTalk ID.
 	//
 	// example:
 	//
 	// 123@dingding
 	DingNumber *string `json:"DingNumber,omitempty" xml:"DingNumber,omitempty"`
+	// The display name of the user.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address.
 	//
 	// example:
@@ -136,7 +144,7 @@ type UpdateTenantMemberRequestUpdateCommandMemberList struct {
 	//
 	// 13888888888
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The list of roles.
+	// The role list.
 	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -158,6 +166,10 @@ func (s *UpdateTenantMemberRequestUpdateCommandMemberList) GetDingNumber() *stri
 	return s.DingNumber
 }
 
+func (s *UpdateTenantMemberRequestUpdateCommandMemberList) GetDisplayName() *string {
+	return s.DisplayName
+}
+
 func (s *UpdateTenantMemberRequestUpdateCommandMemberList) GetMail() *string {
 	return s.Mail
 }
@@ -176,6 +188,11 @@ func (s *UpdateTenantMemberRequestUpdateCommandMemberList) GetUserId() *string {
 
 func (s *UpdateTenantMemberRequestUpdateCommandMemberList) SetDingNumber(v string) *UpdateTenantMemberRequestUpdateCommandMemberList {
 	s.DingNumber = &v
+	return s
+}
+
+func (s *UpdateTenantMemberRequestUpdateCommandMemberList) SetDisplayName(v string) *UpdateTenantMemberRequestUpdateCommandMemberList {
+	s.DisplayName = &v
 	return s
 }
 

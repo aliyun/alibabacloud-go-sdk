@@ -18,7 +18,7 @@ type iListUserGroupsRequest interface {
 }
 
 type ListUserGroupsRequest struct {
-	// The paged query parameters.
+	// The paging query.
 	//
 	// This parameter is required.
 	ListQuery *ListUserGroupsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type ListUserGroupsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,7 +91,7 @@ type ListUserGroupsRequestListQuery struct {
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
 	// The user IDs of the user group administrators.
 	AdminIdList []*string `json:"AdminIdList,omitempty" xml:"AdminIdList,omitempty" type:"Repeated"`
-	// Specifies whether to filter user groups that the current user belongs to.
+	// Specifies whether to filter out the user groups to which the current user belongs.
 	//
 	// example:
 	//
@@ -99,7 +101,7 @@ type ListUserGroupsRequestListQuery struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//

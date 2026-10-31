@@ -18,7 +18,7 @@ type iDeleteDataSourceRequest interface {
 }
 
 type DeleteDataSourceRequest struct {
-	// The request for deleting a data source.
+	// The data source deletion request.
 	//
 	// This parameter is required.
 	DeleteCommand *DeleteDataSourceRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteDataSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,11 +83,11 @@ func (s *DeleteDataSourceRequest) Validate() error {
 }
 
 type DeleteDataSourceRequestDeleteCommand struct {
-	// The deletion mode selection. Valid values:
+	// The deletion mode. Valid values:
 	//
-	// - DEV: deletes the data source only in the development environment.
+	// - DEV: Deletes only the data source in the development environment.
 	//
-	// - DEV_PROD: deletes the data source in both the development and production environments.
+	// - DEV_PROD: Deletes the data sources in both the development and production environments.
 	//
 	// This parameter is required.
 	//

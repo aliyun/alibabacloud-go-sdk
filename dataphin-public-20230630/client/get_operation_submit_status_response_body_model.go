@@ -24,13 +24,13 @@ type iGetOperationSubmitStatusResponseBody interface {
 }
 
 type GetOperationSubmitStatusResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned by the backend.
+	// The backend HTTP status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetOperationSubmitStatusResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The submit status of the operation.
+	// The operation submit status.
 	OperationSubmitJob *GetOperationSubmitStatusResponseBodyOperationSubmitJob `json:"OperationSubmitJob,omitempty" xml:"OperationSubmitJob,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type GetOperationSubmitStatusResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *GetOperationSubmitStatusResponseBody) Validate() error {
 }
 
 type GetOperationSubmitStatusResponseBodyOperationSubmitJob struct {
-	// The business ID. If the operation is a data backfill, this value is the data backfill workflow ID.
+	// The business ID. If the operation is data backfill, this parameter indicates the data backfill workflow.
 	//
 	// example:
 	//
 	// f_122_232342
 	ExternalBizId *string `json:"ExternalBizId,omitempty" xml:"ExternalBizId,omitempty"`
-	// The submit ID of the data backfill request.
+	// The submit ID of the data backfill.
 	//
 	// example:
 	//
@@ -144,7 +144,21 @@ type GetOperationSubmitStatusResponseBodyOperationSubmitJob struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - SUPPLY_DATA: data backfill.
+	// - SUPPLY_DATA: data backfill
+	//
+	// - UPDATE_OWNER: update owner
+	//
+	// - UPDATE_PRIORITY: update priority
+	//
+	// - UPDATE_TASK_GROUP: update task group
+	//
+	// - UPDATE_RESOURCE_GROUP: update resource group
+	//
+	// - PAUSE: pause
+	//
+	// - RESUME: resume
+	//
+	// - TRIGGER_EXECUTE: trigger execution
 	//
 	// example:
 	//
@@ -156,7 +170,7 @@ type GetOperationSubmitStatusResponseBodyOperationSubmitJob struct {
 	//
 	// SUCCESS
 	OperationStatus *string `json:"OperationStatus,omitempty" xml:"OperationStatus,omitempty"`
-	// The user ID of the submitter.
+	// The ID of the user who submitted the request.
 	//
 	// example:
 	//

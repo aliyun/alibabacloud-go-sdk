@@ -24,24 +24,34 @@ type iListBatchTasksResponseBody interface {
 }
 
 type ListBatchTasksResponseBody struct {
+	// The error code. A value of OK indicates that the request is successful.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code returned by the backend.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// successful
-	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The paginated result of the task query.
 	PageResult *ListBatchTasksResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListBatchTasksResponseBody) String() string {
@@ -116,18 +126,25 @@ func (s *ListBatchTasksResponseBody) Validate() error {
 }
 
 type ListBatchTasksResponseBodyPageResult struct {
+	// The total number of tasks that meet the query conditions, regardless of pagination.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of tasks on the current page.
 	ResultData []*ListBatchTasksResponseBodyPageResultResultData `json:"ResultData,omitempty" xml:"ResultData,omitempty" type:"Repeated"`
 }
 
@@ -189,57 +206,86 @@ func (s *ListBatchTasksResponseBodyPageResult) Validate() error {
 }
 
 type ListBatchTasksResponseBodyPageResultResultData struct {
+	// The description of the task.
+	//
 	// example:
 	//
-	// 订单明细加工任务
+	// Order detail processing task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The folder where the task is located.
+	//
 	// example:
 	//
 	// /dwd
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
+	// The ID of the task file. You can use this ID as the input parameter for the GetBatchTaskInfo operation.
+	//
 	// example:
 	//
 	// 7090125821589888
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The latest submit status. Valid values: SUBMITTING, SUCCESS, and FAILED.
+	//
 	// example:
 	//
 	// SUCCESS
 	LastSubmitStatus *string `json:"LastSubmitStatus,omitempty" xml:"LastSubmitStatus,omitempty"`
+	// The latest submitted version number.
+	//
 	// example:
 	//
 	// 3
 	LastVersion *int32 `json:"LastVersion,omitempty" xml:"LastVersion,omitempty"`
+	// The name of the task.
+	//
 	// example:
 	//
 	// dwd_order_detail
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the node.
+	//
 	// example:
 	//
 	// n_123456
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the node.
+	//
 	// example:
 	//
 	// dwd_order_detail
-	NodeName           *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// The list of output table names for the node.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
+	// The type of the node. Valid values: 1 (periodic task) and 3 (manual task).
+	//
 	// example:
 	//
 	// 1
 	NodeType *int32 `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The task type code.
+	//
 	// example:
 	//
 	// 10
 	OperatorType *int32 `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// The name of the task owner.
+	//
 	// example:
 	//
-	// 张三
+	// John Doe
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	// The ID of the task owner.
+	//
 	// example:
 	//
 	// 30001011
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	Published   *bool   `json:"Published,omitempty" xml:"Published,omitempty"`
-	Released    *bool   `json:"Released,omitempty" xml:"Released,omitempty"`
+	// Indicates whether the task has been published to the production environment.
+	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
+	// Indicates whether the task has been submitted.
+	Released *bool `json:"Released,omitempty" xml:"Released,omitempty"`
+	// The status of the task. Valid values: DRAFT, DEVELOP, and SUBMITTED.
+	//
 	// example:
 	//
 	// SUBMITTED

@@ -36,13 +36,13 @@ type GetQualityScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the schedule object.
+	// The details of the scheduling object.
 	QualityScheduleInfo *GetQualityScheduleResponseBodyQualityScheduleInfo `json:"QualityScheduleInfo,omitempty" xml:"QualityScheduleInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type GetQualityScheduleResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,13 +126,13 @@ func (s *GetQualityScheduleResponseBody) Validate() error {
 }
 
 type GetQualityScheduleResponseBodyQualityScheduleInfo struct {
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID of the creator.
+	// The ID of the creator.
 	//
 	// example:
 	//
@@ -144,27 +144,27 @@ type GetQualityScheduleResponseBodyQualityScheduleInfo struct {
 	//
 	// 	- 	- 1/	- 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The ID of the schedule object.
+	// The ID of the scheduling object.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the schedule object is referenced by a rule.
+	// Indicates whether the scheduling object is referenced by a rule.
 	IsRefByRule *bool `json:"IsRefByRule,omitempty" xml:"IsRefByRule,omitempty"`
-	// The user ID of the last modifier.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The modification time.
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the schedule object.
+	// The name of the scheduling object.
 	//
 	// example:
 	//
@@ -178,73 +178,73 @@ type GetQualityScheduleResponseBodyQualityScheduleInfo struct {
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
 	// The partition type. Valid values:
 	//
-	// - EVERY_DAY: every day.
+	// - EVERY_DAY: Every day.
 	//
-	// - PRE_DAY: yesterday.
+	// - PRE_DAY: Previous day.
 	//
-	// - TODAY: today.
+	// - TODAY: Current day.
 	//
-	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+	// - FIRST_DAY_OF_WEEK: First day of the week (Sunday).
 	//
-	// - CUSTOM: custom.
+	// - CUSTOM: Custom.
 	//
 	// example:
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The interval type for timed scheduling. Valid values:
+	// The scheduling epoch type for timed scheduling. Valid values:
 	//
-	// - DAILY: day.
+	// - DAILY: Daily.
 	//
-	// - WEEKLY: week.
+	// - WEEKLY: Weekly.
 	//
-	// - MONTHLY: month.
+	// - MONTHLY: Monthly.
 	//
-	// - HOURLY: hour.
+	// - HOURLY: Hourly.
 	//
-	// - MINUTELY: minute.
+	// - MINUTELY: Minutely.
 	//
 	// example:
 	//
 	// DAILY
 	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	// The interval values for timed scheduling.
+	// The scheduling epoch values for timed scheduling.
 	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
-	// The trigger type for fixed task triggers. Valid values:
+	// The trigger method for fixed task triggers. Valid values:
 	//
-	// - ALL_TASKS_FINISHED: triggered when all tasks are finished.
+	// - ALL_TASKS_FINISHED: All tasks finished.
 	//
-	// - ONE_TASKS_FINISHED: triggered when one task is finished.
+	// - ONE_TASKS_FINISHED: One task finished.
 	//
-	// - PRE_ONE_TASKS_START: triggered when the previous task starts.
+	// - PRE_ONE_TASKS_START: Previous task started.
 	//
 	// example:
 	//
 	// ONE_TASKS_FINISHED
 	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
-	// The list of trigger nodes for trigger-based scheduling.
+	// The list of trigger tasks for trigger scheduling.
 	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
-	// The trigger type for trigger-based scheduling. Valid values:
+	// The trigger method for trigger scheduling. Valid values:
 	//
-	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	// - STATIC_TASK_TRIGGER: Fixed task trigger.
 	//
-	// - CODE_CHECK_TRIGGER: code check trigger.
+	// - CODE_CHECK_TRIGGER: Code check trigger.
 	//
 	// example:
 	//
 	// STATIC_TASK_TRIGGER
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The schedule type. Valid values:
+	// The scheduling type. Valid values:
 	//
-	// - PERIOD_SCHEDULE: timed scheduling.
+	// - PERIOD_SCHEDULE: Timed scheduling.
 	//
-	// - MANUAL_SCHEDULE: manual trigger.
+	// - MANUAL_SCHEDULE: Manual trigger.
 	//
-	// - CODE_CHECK_TRIGGER: code check trigger.
+	// - CODE_CHECK_TRIGGER: Code check trigger.
 	//
-	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	// - STATIC_TASK_TRIGGER: Fixed node trigger.
 	//
-	// - DEPENDENCY_SCHEDULE: dependency scheduling.
+	// - DEPENDENCY_SCHEDULE: Dependency scheduling.
 	//
 	// example:
 	//
@@ -252,9 +252,9 @@ type GetQualityScheduleResponseBodyQualityScheduleInfo struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The validation scope. Valid values:
 	//
-	// - TASK_REFERRED_PARTITION: partition updated by the task.
+	// - TASK_REFERRED_PARTITION: Task updated partition.
 	//
-	// - USER_DEFINED_PARTITION: custom partition.
+	// - USER_DEFINED_PARTITION: User-defined partition.
 	//
 	// example:
 	//

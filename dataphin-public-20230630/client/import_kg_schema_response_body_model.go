@@ -50,7 +50,7 @@ type ImportKgSchemaResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,13 +126,13 @@ func (s *ImportKgSchemaResponseBody) Validate() error {
 }
 
 type ImportKgSchemaResponseBodyImportResult struct {
-	// The number of entity types that were changed.
+	// The number of changed entity types.
 	//
 	// example:
 	//
 	// 1032591
 	EntityTypeCount *int32 `json:"EntityTypeCount,omitempty" xml:"EntityTypeCount,omitempty"`
-	// The number of relation types that were changed.
+	// The number of changed relation types.
 	//
 	// example:
 	//

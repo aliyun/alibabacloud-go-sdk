@@ -40,6 +40,8 @@ type GetPipelineAsyncResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011
@@ -100,11 +102,7 @@ func (s *GetPipelineAsyncResultRequest) Validate() error {
 }
 
 type GetPipelineAsyncResultRequestContext struct {
-	// The current operation environment. Valid values:
-	//
-	// - DEV: development environment.
-	//
-	// - PROD: production environment.
+	// The current operation environment. Valid values: DEV: development environment. PROD: production environment.
 	//
 	// This parameter is required.
 	//

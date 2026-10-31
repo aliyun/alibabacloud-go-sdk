@@ -24,7 +24,7 @@ type iGetPhysicalNodeOperationLogResponseBody interface {
 }
 
 type GetPhysicalNodeOperationLogResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetPhysicalNodeOperationLogResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetPhysicalNodeOperationLogResponseBodyOperationLogList struct {
 	//
 	// xx
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The operation time.
+	// The operation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -148,37 +148,37 @@ type GetPhysicalNodeOperationLogResponseBodyOperationLogList struct {
 	OperationTime *string `json:"OperationTime,omitempty" xml:"OperationTime,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - TASK_UPDATE_PRIORITY: updates the node priority.
+	// - TASK_UPDATE_PRIORITY: modifies the node priority
 	//
-	// - PAUSE_TASK: pauses scheduling.
+	// - PAUSE_TASK: pauses scheduling
 	//
-	// - RESUME_TASK: resumes scheduling.
+	// - RESUME_TASK: resumes scheduling
 	//
-	// - CREATE_NODE: creates a node.
+	// - CREATE_NODE: creates a node
 	//
-	// - FORCE_DELETE_NODE: force deletes a node.
+	// - FORCE_DELETE_NODE: force deletes a node
 	//
-	// - UPDATE_NODE: updates a node.
+	// - UPDATE_NODE: updates a node
 	//
-	// - DELETE_NODE: deletes a node.
+	// - DELETE_NODE: deletes a node
 	//
-	// - CHANGE_NODE_OWNER: changes the node owner.
+	// - CHANGE_NODE_OWNER: changes the node owner
 	//
 	// example:
 	//
 	// PAUSE_TASK
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The operator ID.
+	// The ID of the operator.
 	//
 	// example:
 	//
 	// 132222
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The operator name.
+	// The name of the operator.
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
 }
 

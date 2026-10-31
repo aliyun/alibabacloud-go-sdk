@@ -20,7 +20,7 @@ type iAddProjectMemberShrinkRequest interface {
 }
 
 type AddProjectMemberShrinkRequest struct {
-	// The command for adding members.
+	// The command to add members.
 	//
 	// This parameter is required.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
@@ -40,7 +40,7 @@ type AddProjectMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The operator user ID.
 	//
 	// example:
 	//

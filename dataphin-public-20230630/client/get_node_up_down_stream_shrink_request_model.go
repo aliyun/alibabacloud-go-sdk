@@ -34,9 +34,11 @@ type GetNodeUpDownStreamShrinkRequest struct {
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD: Production environment.
+	//
+	// Default value: PROD.
 	//
 	// example:
 	//
@@ -54,6 +56,8 @@ type GetNodeUpDownStreamShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

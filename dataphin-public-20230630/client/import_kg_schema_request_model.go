@@ -20,7 +20,7 @@ type iImportKgSchemaRequest interface {
 }
 
 type ImportKgSchemaRequest struct {
-	// The command for importing the knowledge graph definition.
+	// The import command for the knowledge graph definition.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ImportKgSchemaRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ func (s *ImportKgSchemaRequest) Validate() error {
 }
 
 type ImportKgSchemaRequestImportCommand struct {
-	// The knowledge graph definition content converted based on the specified format.
+	// The knowledge graph definition content converted based on the format.
 	//
 	// example:
 	//

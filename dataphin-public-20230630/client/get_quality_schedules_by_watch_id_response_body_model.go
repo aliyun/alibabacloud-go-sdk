@@ -36,13 +36,13 @@ type GetQualitySchedulesByWatchIdResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of schedule objects.
+	// The list of scheduling objects.
 	QualityScheduleList []*GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList `json:"QualityScheduleList,omitempty" xml:"QualityScheduleList,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -50,7 +50,7 @@ type GetQualitySchedulesByWatchIdResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -148,13 +148,13 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	//
 	// 	- 	- 1/	- 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The schedule object ID.
+	// The scheduling object ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the schedule is referenced by a rule.
+	// Indicates whether the scheduling object is referenced by a rule.
 	IsRefByRule *bool `json:"IsRefByRule,omitempty" xml:"IsRefByRule,omitempty"`
 	// The user ID of the last modifier.
 	//
@@ -162,19 +162,19 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The schedule object name.
+	// The name of the scheduling object.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The partition expression. A custom expression.
+	// The custom partition expression.
 	//
 	// example:
 	//
@@ -182,73 +182,73 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	PartitionExpression *string `json:"PartitionExpression,omitempty" xml:"PartitionExpression,omitempty"`
 	// The partition type. Valid values:
 	//
-	// - EVERY_DAY: every day.
+	// - EVERY_DAY: every day
 	//
-	// - PRE_DAY: yesterday.
+	// - PRE_DAY: previous day
 	//
-	// - TODAY: today.
+	// - TODAY: current day
 	//
-	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday)
 	//
-	// - CUSTOM: custom.
+	// - CUSTOM: custom
 	//
 	// example:
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The interval type for timed scheduling. Valid values:
+	// The schedule interval type for timed scheduling. Valid values:
 	//
-	// - DAILY: day.
+	// - DAILY: day
 	//
-	// - WEEKLY: week.
+	// - WEEKLY: week
 	//
-	// - MONTHLY: month.
+	// - MONTHLY: month
 	//
-	// - HOURLY: hour.
+	// - HOURLY: hour
 	//
-	// - MINUTELY: minute.
+	// - MINUTELY: minute
 	//
 	// example:
 	//
 	// DAILY
 	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	// The interval values for timed scheduling.
+	// The schedule interval values for timed scheduling.
 	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
-	// The trigger method for fixed task triggers. Valid values:
+	// The trigger method for static task triggers. Valid values:
 	//
-	// - ALL_TASKS_FINISHED
+	// - ALL_TASKS_FINISHED: all tasks finished
 	//
-	// - ONE_TASKS_FINISHED
+	// - ONE_TASKS_FINISHED: one task finished
 	//
-	// - PRE_ONE_TASKS_START.
+	// - PRE_ONE_TASKS_START: previous one task started
 	//
 	// example:
 	//
 	// ONE_TASKS_FINISHED
 	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
-	// The list of trigger nodes for trigger-based scheduling.
+	// The list of trigger tasks for trigger scheduling.
 	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
-	// The trigger method for trigger-based scheduling. Valid values:
+	// The trigger type for trigger scheduling. Valid values:
 	//
-	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	// - STATIC_TASK_TRIGGER: static task trigger
 	//
-	// - CODE_CHECK_TRIGGER: code check trigger.
+	// - CODE_CHECK_TRIGGER: code check trigger
 	//
 	// example:
 	//
 	// STATIC_TASK_TRIGGER
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The schedule type. Valid values:
+	// The scheduling type. Valid values:
 	//
-	// - PERIOD_SCHEDULE: timed scheduling.
+	// - PERIOD_SCHEDULE: timed scheduling
 	//
-	// - MANUAL_SCHEDULE: manual trigger.
+	// - MANUAL_SCHEDULE: manual trigger
 	//
-	// - CODE_CHECK_TRIGGER: code check trigger.
+	// - CODE_CHECK_TRIGGER: code check trigger
 	//
-	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	// - STATIC_TASK_TRIGGER: static task trigger
 	//
-	// - DEPENDENCY_SCHEDULE: dependency scheduling.
+	// - DEPENDENCY_SCHEDULE: dependency scheduling
 	//
 	// example:
 	//
@@ -256,9 +256,9 @@ type GetQualitySchedulesByWatchIdResponseBodyQualityScheduleList struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The validation scope. Valid values:
 	//
-	// - TASK_REFERRED_PARTITION: task-updated partition.
+	// - TASK_REFERRED_PARTITION: task updated partition
 	//
-	// - USER_DEFINED_PARTITION: custom partition.
+	// - USER_DEFINED_PARTITION: user-defined partition
 	//
 	// example:
 	//

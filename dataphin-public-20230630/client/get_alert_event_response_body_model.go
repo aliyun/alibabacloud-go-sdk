@@ -26,7 +26,7 @@ type iGetAlertEventResponseBody interface {
 type GetAlertEventResponseBody struct {
 	// The alert event information.
 	AlertEventInfo *GetAlertEventResponseBodyAlertEventInfo `json:"AlertEventInfo,omitempty" xml:"AlertEventInfo,omitempty" type:"Struct"`
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAlertEventResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ func (s *GetAlertEventResponseBody) Validate() error {
 type GetAlertEventResponseBodyAlertEventInfo struct {
 	// The alert frequency. Valid values:
 	//
-	// - ONCE: Instant alert.
+	// - ONCE: immediate alert
 	//
-	// - PERIOD: Periodic alert. Format: 1HOUR, 1MINUTE, 1SECOND.
+	// - PERIOD: periodic alert. Format: 1HOUR, 1MINUTE, or 1SECOND
 	//
 	// example:
 	//
@@ -142,31 +142,31 @@ type GetAlertEventResponseBodyAlertEventInfo struct {
 	AlertFrequency *string `json:"AlertFrequency,omitempty" xml:"AlertFrequency,omitempty"`
 	// The alert object.
 	AlertObject *GetAlertEventResponseBodyAlertEventInfoAlertObject `json:"AlertObject,omitempty" xml:"AlertObject,omitempty" type:"Struct"`
-	// The alert reason.
+	// The cause of the alert.
 	AlertReason *GetAlertEventResponseBodyAlertEventInfoAlertReason `json:"AlertReason,omitempty" xml:"AlertReason,omitempty" type:"Struct"`
-	// The list of alert receivers.
+	// The list of alert recipients.
 	AlertReceiverList []*GetAlertEventResponseBodyAlertEventInfoAlertReceiverList `json:"AlertReceiverList,omitempty" xml:"AlertReceiverList,omitempty" type:"Repeated"`
-	// The project to which the alert event belongs.
+	// The associated project.
 	BelongProject *GetAlertEventResponseBodyAlertEventInfoBelongProject `json:"BelongProject,omitempty" xml:"BelongProject,omitempty" type:"Struct"`
-	// The expiration time of the do-not-disturb period.
+	// The expiration time of the do not disturb mode.
 	//
 	// example:
 	//
 	// 2024-11-05 00:00:00
 	DoNotDisturbEndTime *string `json:"DoNotDisturbEndTime,omitempty" xml:"DoNotDisturbEndTime,omitempty"`
-	// The time of the first alert.
+	// The time when the first alert was triggered.
 	//
 	// example:
 	//
 	// 2024-11-05 16:19:33
 	FirstAlertTime *string `json:"FirstAlertTime,omitempty" xml:"FirstAlertTime,omitempty"`
-	// The alert event ID.
+	// The ID of the alert event.
 	//
 	// example:
 	//
 	// 12345
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time of the latest alert.
+	// The time when the latest alert was triggered.
 	//
 	// example:
 	//
@@ -174,13 +174,13 @@ type GetAlertEventResponseBodyAlertEventInfo struct {
 	LatestAlertTime *string `json:"LatestAlertTime,omitempty" xml:"LatestAlertTime,omitempty"`
 	// The alert status. Valid values:
 	//
-	// - ALERTING: Alerting.
+	// - ALERTING: alerting
 	//
-	// - DO_NOT_DISTURB: Do not disturb.
+	// - DO_NOT_DISTURB: do not disturb
 	//
-	// - SILENCING: Alerting (cool-down period).
+	// - SILENCING: alerting (silence period)
 	//
-	// - FINISH: Alert completed.
+	// - FINISH: alert completed
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type GetAlertEventResponseBodyAlertEventInfo struct {
 	//
 	// 1
 	TotalAlertTimes *int64 `json:"TotalAlertTimes,omitempty" xml:"TotalAlertTimes,omitempty"`
-	// The URL configuration.
+	// The URL information.
 	UrlConfig *GetAlertEventResponseBodyAlertEventInfoUrlConfig `json:"UrlConfig,omitempty" xml:"UrlConfig,omitempty" type:"Struct"`
 }
 
@@ -352,7 +352,7 @@ type GetAlertEventResponseBodyAlertEventInfoAlertObject struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The source system type. Valid values:
+	// The source system. Valid values:
 	//
 	// - ALL: all systems
 	//
@@ -362,7 +362,7 @@ type GetAlertEventResponseBodyAlertEventInfoAlertObject struct {
 	//
 	// - STREAM: real-time computing
 	//
-	// - VDM_BATCH: batch computing
+	// - VDM_BATCH: offline computing
 	//
 	// - SOP: O&M platform
 	//
@@ -370,13 +370,11 @@ type GetAlertEventResponseBodyAlertEventInfoAlertObject struct {
 	//
 	// - KGB: baseline monitoring
 	//
-	// and more.
-	//
 	// example:
 	//
 	// ALL
 	SourceSystemType *string `json:"SourceSystemType,omitempty" xml:"SourceSystemType,omitempty"`
-	// The alerting object type. Valid values:
+	// The alert object type. Valid values:
 	//
 	// - OS_API: API operation
 	//
@@ -430,8 +428,6 @@ type GetAlertEventResponseBodyAlertEventInfoAlertObject struct {
 	//
 	// - BASELINE: baseline
 	//
-	// and more.
-	//
 	// example:
 	//
 	// VDM_BATCH_PYTHON37
@@ -478,7 +474,7 @@ func (s *GetAlertEventResponseBodyAlertEventInfoAlertObject) Validate() error {
 }
 
 type GetAlertEventResponseBodyAlertEventInfoAlertReason struct {
-	// The list of alert reason parameters.
+	// The list of alert cause parameters.
 	AlertReasonParamList []*GetAlertEventResponseBodyAlertEventInfoAlertReasonAlertReasonParamList `json:"AlertReasonParamList,omitempty" xml:"AlertReasonParamList,omitempty" type:"Repeated"`
 	// The business date.
 	//
@@ -486,7 +482,7 @@ type GetAlertEventResponseBodyAlertEventInfoAlertReason struct {
 	//
 	// 2024-11-05 16:19:32
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The type of the alert reason. Valid values:
+	// The type of the alert cause. Valid values:
 	//
 	// - DQE_COLUMN: field rule exception
 	//
@@ -506,31 +502,31 @@ type GetAlertEventResponseBodyAlertEventInfoAlertReason struct {
 	//
 	// - OS_ERROR_RATE: error rate exception
 	//
-	// - OS_OFFLINE: Offline percentage exception
+	// - OS_OFFLINE: offline percentage exception
 	//
-	// - STREAM_BIZ_DELAY: business delay too high
+	// - STREAM_BIZ_DELAY: high business latency
 	//
-	// - STREAM_DATA_RETENTION: data retention exceeds configuration
+	// - STREAM_DATA_RETENTION: data retention exceeds the configuration
 	//
-	// - STREAM_MORE_THAN_FAILURE: failure frequency exceeds configuration
+	// - STREAM_MORE_THAN_FAILURE: failure frequency exceeds the configuration
 	//
 	// - STREAM_TPS_OUT_RANGE: TPS out of range
 	//
-	// - STREAM_CHECKPOINT_FAILURE: checkpoint failures exceed configuration
+	// - STREAM_CHECKPOINT_FAILURE: checkpoint failures exceed the configuration
 	//
-	// - STREAM_BACKPRESSURE: backpressure duration exceeds configuration
+	// - STREAM_BACKPRESSURE: backpressure duration exceeds the configuration
 	//
-	// - STREAM_JOB_FAILURE: job failure
+	// - STREAM_JOB_FAILURE: job execution failed
 	//
-	// - VDM_BATCH_ERROR: error
+	// - VDM_BATCH_ERROR: batch task error
 	//
-	// - VDM_BATCH_FINISH: completed
+	// - VDM_BATCH_FINISH: batch task completed
 	//
-	// - VDM_BATCH_TIME_OUT: execution timeout
+	// - VDM_BATCH_TIME_OUT: batch task timed out
 	//
-	// - VDM_BATCH_UNDONE: incomplete
+	// - VDM_BATCH_UNDONE: batch task unfinished
 	//
-	// - VDM_BATCH_LOGIC_DATA_DELAY: data delay
+	// - VDM_BATCH_LOGIC_DATA_DELAY: data latency
 	//
 	// - QD_DECISION_CALL_TIMES: decision call count exception
 	//
@@ -554,9 +550,7 @@ type GetAlertEventResponseBodyAlertEventInfoAlertReason struct {
 	//
 	// - KGB_EARLY_WARNING: baseline early warning
 	//
-	// - KGB_BROKEN_LINE: baseline breach
-	//
-	// and more.
+	// - KGB_BROKEN_LINE: baseline broken
 	//
 	// example:
 	//
@@ -628,13 +622,13 @@ func (s *GetAlertEventResponseBodyAlertEventInfoAlertReason) Validate() error {
 }
 
 type GetAlertEventResponseBodyAlertEventInfoAlertReasonAlertReasonParamList struct {
-	// The name of the alert reason parameter.
+	// The name of the alert cause parameter.
 	//
 	// example:
 	//
 	// biz_date
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the alert reason parameter.
+	// The value of the alert cause parameter.
 	//
 	// example:
 	//
@@ -683,13 +677,13 @@ type GetAlertEventResponseBodyAlertEventInfoAlertReceiverList struct {
 	//
 	// test
 	OnCallTableName *string `json:"OnCallTableName,omitempty" xml:"OnCallTableName,omitempty"`
-	// The type of the alert receiver. Valid values:
+	// The type of the alert recipient. Valid values:
 	//
 	// - ON_CALL_TABLE: on-call schedule
 	//
 	// - USER_DEFINED: custom user
 	//
-	// - OWNER: owner.
+	// - OWNER: owner
 	//
 	// example:
 	//
@@ -802,7 +796,7 @@ type GetAlertEventResponseBodyAlertEventInfoBelongProject struct {
 	//
 	// biz_1
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The name of the project.
+	// The name of the associated project.
 	//
 	// example:
 	//

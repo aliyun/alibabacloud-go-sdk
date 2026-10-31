@@ -30,7 +30,7 @@ type GetStandardStatisticsResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The statistical results.
+	// The statistics result.
 	Data *GetStandardStatisticsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type GetStandardStatisticsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The exception details returned by the backend.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *GetStandardStatisticsResponseBody) Validate() error {
 }
 
 type GetStandardStatisticsResponseBodyData struct {
-	// The mapping between standard types and the number of standards for each type. If the standard type is empty, the key is EMPTY.
+	// The mapping between each standard type and the number of standards of that type. If the standard type is empty, the key is EMPTY.
 	StandardTypeCountList []*GetStandardStatisticsResponseBodyDataStandardTypeCountList `json:"StandardTypeCountList,omitempty" xml:"StandardTypeCountList,omitempty" type:"Repeated"`
 	// The total number of standards.
 	//
@@ -182,7 +182,7 @@ type GetStandardStatisticsResponseBodyDataStandardTypeCountList struct {
 	//
 	// 11
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The standard type.
+	// The type of the standard.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iGetSupplementDagrunInstanceResponseBody interface {
 }
 
 type GetSupplementDagrunInstanceResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetSupplementDagrunInstanceResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *GetSupplementDagrunInstanceResponseBody) Validate() error {
 }
 
 type GetSupplementDagrunInstanceResponseBodyInstanceList struct {
-	// The business date.
+	// The business date. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-04-01
 	BizDate *int64 `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The scheduled date.
+	// The scheduled date. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -152,13 +152,13 @@ type GetSupplementDagrunInstanceResponseBodyInstanceList struct {
 	//
 	// 60
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end time of the execution.
+	// The time when the execution ended.
 	//
 	// example:
 	//
 	// 2024-04-12 00:25:02
 	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
-	// The extended information. This field contains information specific to instances of different business systems, such as the fileId of a pipeline, whether a logical table is a hierarchy dimension table, mid-node information, and instance output names.
+	// The extended information. This includes specific information for instances of different business systems, such as the fileId of a pipeline, whether a logical table is a hierarchy dimension table, mid node information, and the instance output name.
 	//
 	// example:
 	//
@@ -170,15 +170,15 @@ type GetSupplementDagrunInstanceResponseBodyInstanceList struct {
 	//
 	// t_239496_20210411_246982077481
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The sequence number of the hourly or minutely instance.
+	// The instance index for hourly or minutely instances.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The details of the node associated with the instance.
+	// The node details corresponding to the instance.
 	NodeInfo *GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
-	// The start time of the execution.
+	// The time when the execution started.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type GetSupplementDagrunInstanceResponseBodyInstanceList struct {
 	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
 	// The list of instance statuses. A physical instance list contains only one status. Valid values:
 	//
-	// - NIT: init.
+	// - NIT: initialized.
 	//
-	// - WATING: waiting.
+	// - WATING: pending.
 	//
 	// - RUNNING: running.
 	//
-	// - SUCCESS: succeeded.
+	// - SUCCESS: successful.
 	//
 	// - FAILED: failed.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
@@ -331,23 +331,23 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2024-01-30 10:08:49
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator of the node.
+	// The node creator.
 	Creator *GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
 	// The node description.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the node is a dry run.
+	// Indicates whether the node runs in dry-run mode.
 	//
 	// example:
 	//
@@ -367,13 +367,13 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// Indicates whether the node exists in the development environment.
+	// Indicates whether a development environment exists.
 	//
 	// example:
 	//
 	// true
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
-	// Indicates whether the node exists in the production environment.
+	// Indicates whether a production environment exists.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	//
 	// n_239496
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The last modification time.
+	// The last modified time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -397,9 +397,9 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The owners of the node.
+	// The node owners.
 	OwnerList []*GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
 	// The priority. Valid values:
 	//
@@ -411,17 +411,17 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	//
 	// - LOW
 	//
-	// - LOWEST.
+	// - LOWEST
 	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
-	// The schedule resource groups.
+	// The list of resource groups.
 	ResourceGroupList []*string `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
-	// Indicates whether the node is paused.
+	// Indicates whether the schedule is paused.
 	//
 	// example:
 	//
 	// true
 	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
-	// The scheduling period. Valid values:
+	// The schedule cycle. Valid values:
 	//
 	// - MINUTELY
 	//
@@ -433,7 +433,7 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	//
 	// - MONTHLY
 	//
-	// - QUARTERLY.
+	// - QUARTERLY
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
 	// The node subtype.
 	//
@@ -443,7 +443,7 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo struct {
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
 	// The node type. Valid values:
 	//
-	// - DATA_PROCESS: code node.
+	// - DATA_PROCESS: code task.
 	//
 	// - BBOX_LOGIC_TABLE_NODE: black box logical table node.
 	//
@@ -672,7 +672,7 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoCreator struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -717,7 +717,7 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoModifier struct 
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -762,7 +762,7 @@ type GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoOwnerList struct
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

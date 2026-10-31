@@ -18,7 +18,7 @@ type iOfflineStandardRequest interface {
 }
 
 type OfflineStandardRequest struct {
-	// The offline instruction.
+	// The offline command.
 	//
 	// This parameter is required.
 	OfflineCommand *OfflineStandardRequestOfflineCommand `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type OfflineStandardRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *OfflineStandardRequest) Validate() error {
 }
 
 type OfflineStandardRequestOfflineCommand struct {
-	// The review remarks. The value can be up to 128 characters in length.
+	// The review comment. Maximum length: 128 characters.
 	//
 	// This parameter is required.
 	//

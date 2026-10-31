@@ -48,9 +48,9 @@ type GetFileStorageCredentialResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the temporary read/write authorization.
+	// The details of the temporary read and write authorization.
 	StorageCredential *GetFileStorageCredentialResponseBodyStorageCredential `json:"StorageCredential,omitempty" xml:"StorageCredential,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -168,13 +168,13 @@ type GetFileStorageCredentialResponseBodyStorageCredential struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The temporary security token.
+	// The security token.
 	//
 	// example:
 	//
 	// temp.token
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The storage cluster type. Valid values: oss and ceph.
+	// The type of the storage cluster. Valid values: oss and ceph.
 	//
 	// example:
 	//

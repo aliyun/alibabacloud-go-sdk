@@ -22,9 +22,9 @@ type iGetPhysicalNodeContentRequest interface {
 type GetPhysicalNodeContentRequest struct {
 	// The environment identifier. Valid values:
 	//
-	// - DEV: Development environment.
+	// - DEV: development environment.
 	//
-	// - PROD (default): Production environment.
+	// - PROD: production environment. This is the default value.
 	//
 	// example:
 	//
@@ -46,6 +46,8 @@ type GetPhysicalNodeContentRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

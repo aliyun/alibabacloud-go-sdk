@@ -18,7 +18,7 @@ type iListUserGroupMembersShrinkRequest interface {
 }
 
 type ListUserGroupMembersShrinkRequest struct {
-	// The paged query parameters.
+	// The paging query.
 	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
@@ -30,6 +30,8 @@ type ListUserGroupMembersShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

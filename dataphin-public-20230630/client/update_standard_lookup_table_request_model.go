@@ -26,6 +26,8 @@ type UpdateStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *UpdateStandardLookupTableRequest) Validate() error {
 }
 
 type UpdateStandardLookupTableRequestUpdateCommand struct {
-	// The lookup table code.
+	// The code of the lookup table.
 	//
 	// This parameter is required.
 	//
@@ -89,15 +91,15 @@ type UpdateStandardLookupTableRequestUpdateCommand struct {
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The lookup table description.
+	// The description of the lookup table.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory to which the lookup table belongs.
+	// The parent folder.
 	DirectoryReference *UpdateStandardLookupTableRequestUpdateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
-	// The lookup table ID.
+	// The ID of the lookup table.
 	//
 	// This parameter is required.
 	//
@@ -107,15 +109,15 @@ type UpdateStandardLookupTableRequestUpdateCommand struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The list of lookup table values.
 	LookupTableValueList []*UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList `json:"LookupTableValueList,omitempty" xml:"LookupTableValueList,omitempty" type:"Repeated"`
-	// The lookup table name.
+	// The name of the lookup table.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 城市码表
+	// City lookup table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the lookup table owner. Default value: the user ID of the caller.
+	// The ID of the lookup table owner. Default value: the ID of the caller.
 	//
 	// example:
 	//
@@ -213,7 +215,7 @@ func (s *UpdateStandardLookupTableRequestUpdateCommand) Validate() error {
 }
 
 type UpdateStandardLookupTableRequestUpdateCommandDirectoryReference struct {
-	// The directory to which the lookup table belongs.
+	// The parent folder.
 	//
 	// This parameter is required.
 	//
@@ -245,7 +247,7 @@ func (s *UpdateStandardLookupTableRequestUpdateCommandDirectoryReference) Valida
 }
 
 type UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList struct {
-	// The code description.
+	// The description of the code.
 	//
 	// example:
 	//
@@ -257,7 +259,7 @@ type UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList struct {
 	//
 	// HZ
 	EnglishName *string `json:"EnglishName,omitempty" xml:"EnglishName,omitempty"`
-	// The code name.
+	// The name of the code.
 	//
 	// This parameter is required.
 	//
@@ -271,7 +273,7 @@ type UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList struct {
 	//
 	// example:
 	//
-	// 杭州
+	// Hangzhou
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

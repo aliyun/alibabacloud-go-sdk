@@ -26,11 +26,13 @@ type UpdateResourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The edit command.
+	// The update command.
 	//
 	// This parameter is required.
 	UpdateCommand *UpdateResourceRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
@@ -81,19 +83,15 @@ func (s *UpdateResourceRequest) Validate() error {
 }
 
 type UpdateResourceRequestUpdateCommand struct {
-	// The commit remarks.
+	// The submission comment.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The compute engine type. Valid values:
-	//
-	// - MAX_COMPUTE
-	//
-	// - HADOOP.
+	// The compute engine type. Valid values: MAX_COMPUTE and HADOOP.
 	//
 	// This parameter is required.
 	//
@@ -107,7 +105,7 @@ type UpdateResourceRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The resource ID.
 	//
@@ -133,7 +131,7 @@ type UpdateResourceRequestUpdateCommand struct {
 	//
 	// 711833
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The storage address of the resource.
+	// The resource storage address.
 	//
 	// This parameter is required.
 	//

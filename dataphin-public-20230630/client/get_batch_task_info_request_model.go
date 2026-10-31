@@ -30,7 +30,7 @@ type GetBatchTaskInfoRequest struct {
 	//
 	// dev
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The node ID in the task directory tree.
+	// The ID of the node in the task directory tree.
 	//
 	// This parameter is required.
 	//

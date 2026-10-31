@@ -38,7 +38,7 @@ type BatchCreateKgEntityResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ func (s *BatchCreateKgEntityResponseBody) Validate() error {
 }
 
 type BatchCreateKgEntityResponseBodyCreateResult struct {
-	// The number of entity records that failed to be created.
+	// The number of failed records.
 	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The number of successfully created entity records.
+	// The number of successfully created records.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ func (s *BatchCreateKgEntityResponseBodyCreateResult) Validate() error {
 }
 
 type BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList struct {
-	// The entity record ID.
+	// The ID of the entity record.
 	//
 	// example:
 	//

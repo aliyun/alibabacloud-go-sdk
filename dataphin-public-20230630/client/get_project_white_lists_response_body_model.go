@@ -36,7 +36,7 @@ type GetProjectWhiteListsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetProjectWhiteListsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The project whitelist.
 	WhiteLists []*GetProjectWhiteListsResponseBodyWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
@@ -134,7 +134,7 @@ type GetProjectWhiteListsResponseBodyWhiteLists struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// ip
 	//

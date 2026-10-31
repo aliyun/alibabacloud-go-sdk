@@ -26,9 +26,9 @@ type CreateNodeSupplementRequest struct {
 	CreateCommand *CreateNodeSupplementRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: Development environment.
+	// - DEV: development environment
 	//
-	// - PROD (default): Production environment.
+	// - PROD: production environment (default)
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateNodeSupplementRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The ID of the operator.
 	//
 	// example:
 	//
@@ -104,15 +104,15 @@ func (s *CreateNodeSupplementRequest) Validate() error {
 }
 
 type CreateNodeSupplementRequestCreateCommand struct {
-	// Specifies whether to include all downstream nodes in batch mode. Default value: false.
+	// Specifies whether to include all downstream nodes in massive mode. Default value: false.
 	//
 	// example:
 	//
 	// false
 	ContainAllDownStream *bool `json:"ContainAllDownStream,omitempty" xml:"ContainAllDownStream,omitempty"`
-	// The IDs of downstream nodes to run. This parameter takes effect only when ContainAllDownStream is set to false.
+	// The IDs of the downstream nodes to run. This parameter takes effect only when ContainAllDownStream is set to false.
 	DownStreamNodeIdList []*CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList `json:"DownStreamNodeIdList,omitempty" xml:"DownStreamNodeIdList,omitempty" type:"Repeated"`
-	// The end business date.
+	// The end business date. Format: YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -120,33 +120,45 @@ type CreateNodeSupplementRequestCreateCommand struct {
 	//
 	// 2024-05-21
 	EndBizDate *string `json:"EndBizDate,omitempty" xml:"EndBizDate,omitempty"`
-	// The list of filters. This parameter is used together with ContainAllDownStream to include or exclude nodes based on criteria such as project or node. Default value: empty.
+	// The execution status of idle nodes. Valid values: NORMAL, PAUSED, and IDLE.
+	//
+	// example:
+	//
+	// NORMAL
+	ExecuteStatusOfIdleNode *string `json:"ExecuteStatusOfIdleNode,omitempty" xml:"ExecuteStatusOfIdleNode,omitempty"`
+	// The execution status of paused nodes. Valid values: NORMAL, PAUSED, and IDLE.
+	//
+	// example:
+	//
+	// NORMAL
+	ExecuteStatusOfPauseNode *string `json:"ExecuteStatusOfPauseNode,omitempty" xml:"ExecuteStatusOfPauseNode,omitempty"`
+	// The filter list. This parameter is used together with ContainAllDownStream to include or exclude items such as projects and nodes. Default value: empty.
 	FilterList []*CreateNodeSupplementRequestCreateCommandFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
-	// The runtime global parameters.
+	// The global parameters at runtime.
 	GlobalParamList []*CreateNodeSupplementRequestCreateCommandGlobalParamList `json:"GlobalParamList,omitempty" xml:"GlobalParamList,omitempty" type:"Repeated"`
-	// The latest trigger time in the HH:MM format. This parameter is applicable only to hourly nodes.
+	// The latest trigger time. Format: HH:MM. This parameter is dedicated to hourly nodes.
 	//
 	// example:
 	//
 	// 20:59
 	MaxDueTime *string `json:"MaxDueTime,omitempty" xml:"MaxDueTime,omitempty"`
-	// The earliest trigger time in the HH:MM format. This parameter is applicable only to hourly nodes.
+	// The earliest trigger time. Format: HH:MM. This parameter is dedicated to hourly nodes.
 	//
 	// example:
 	//
 	// 00:00
 	MinDueTime *string `json:"MinDueTime,omitempty" xml:"MinDueTime,omitempty"`
-	// The name of the data backfill. If this parameter is not specified, the system automatically generates a name.
+	// The name of the data backfill task. If you do not specify this parameter, the system generates a name.
 	//
 	// example:
 	//
-	// TestBackfill
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The root nodes for data backfill. Multiple root nodes are supported.
+	// The IDs of the root nodes for data backfill. Multiple root nodes are supported.
 	//
 	// This parameter is required.
 	NodeIdList []*CreateNodeSupplementRequestCreateCommandNodeIdList `json:"NodeIdList,omitempty" xml:"NodeIdList,omitempty" type:"Repeated"`
-	// The runtime custom parameters configured by node.
+	// The custom parameters at runtime, configured by node.
 	NodeParamsList []*CreateNodeSupplementRequestCreateCommandNodeParamsList `json:"NodeParamsList,omitempty" xml:"NodeParamsList,omitempty" type:"Repeated"`
 	// The concurrency. Default value: 1.
 	//
@@ -162,9 +174,21 @@ type CreateNodeSupplementRequestCreateCommand struct {
 	//
 	// 101121
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Corresponds to the "Task Run Time" option in the data backfill dialog box. If this parameter is set to true, the scheduled run time of instances is ignored and all instances run immediately. If this parameter is set to false, instances wait for their scheduled run time before running. Default value: true.
+	// Corresponds to the Task Run Time option in the data backfill dialog box on the page. Valid values:
+	//
+	// - true: ignores the scheduled run time of instances and runs all instances immediately.
+	//
+	// - false: waits for the scheduled run time of instances and runs each instance only when its scheduled time is reached.
+	//
+	// Default value: true.
 	RunImmediately *bool `json:"RunImmediately,omitempty" xml:"RunImmediately,omitempty"`
-	// The start business date.
+	// The ID of the schedule resource group.
+	//
+	// example:
+	//
+	// 123
+	ScheduleResourceGroupId *string `json:"ScheduleResourceGroupId,omitempty" xml:"ScheduleResourceGroupId,omitempty"`
+	// The start business date. Format: YYYY-MM-DD.
 	//
 	// This parameter is required.
 	//
@@ -192,6 +216,14 @@ func (s *CreateNodeSupplementRequestCreateCommand) GetDownStreamNodeIdList() []*
 
 func (s *CreateNodeSupplementRequestCreateCommand) GetEndBizDate() *string {
 	return s.EndBizDate
+}
+
+func (s *CreateNodeSupplementRequestCreateCommand) GetExecuteStatusOfIdleNode() *string {
+	return s.ExecuteStatusOfIdleNode
+}
+
+func (s *CreateNodeSupplementRequestCreateCommand) GetExecuteStatusOfPauseNode() *string {
+	return s.ExecuteStatusOfPauseNode
 }
 
 func (s *CreateNodeSupplementRequestCreateCommand) GetFilterList() []*CreateNodeSupplementRequestCreateCommandFilterList {
@@ -234,6 +266,10 @@ func (s *CreateNodeSupplementRequestCreateCommand) GetRunImmediately() *bool {
 	return s.RunImmediately
 }
 
+func (s *CreateNodeSupplementRequestCreateCommand) GetScheduleResourceGroupId() *string {
+	return s.ScheduleResourceGroupId
+}
+
 func (s *CreateNodeSupplementRequestCreateCommand) GetStartBizDate() *string {
 	return s.StartBizDate
 }
@@ -250,6 +286,16 @@ func (s *CreateNodeSupplementRequestCreateCommand) SetDownStreamNodeIdList(v []*
 
 func (s *CreateNodeSupplementRequestCreateCommand) SetEndBizDate(v string) *CreateNodeSupplementRequestCreateCommand {
 	s.EndBizDate = &v
+	return s
+}
+
+func (s *CreateNodeSupplementRequestCreateCommand) SetExecuteStatusOfIdleNode(v string) *CreateNodeSupplementRequestCreateCommand {
+	s.ExecuteStatusOfIdleNode = &v
+	return s
+}
+
+func (s *CreateNodeSupplementRequestCreateCommand) SetExecuteStatusOfPauseNode(v string) *CreateNodeSupplementRequestCreateCommand {
+	s.ExecuteStatusOfPauseNode = &v
 	return s
 }
 
@@ -300,6 +346,11 @@ func (s *CreateNodeSupplementRequestCreateCommand) SetProjectId(v int64) *Create
 
 func (s *CreateNodeSupplementRequestCreateCommand) SetRunImmediately(v bool) *CreateNodeSupplementRequestCreateCommand {
 	s.RunImmediately = &v
+	return s
+}
+
+func (s *CreateNodeSupplementRequestCreateCommand) SetScheduleResourceGroupId(v string) *CreateNodeSupplementRequestCreateCommand {
+	s.ScheduleResourceGroupId = &v
 	return s
 }
 
@@ -358,7 +409,7 @@ func (s *CreateNodeSupplementRequestCreateCommand) Validate() error {
 }
 
 type CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList struct {
-	// The field ID.
+	// The field IDs.
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
 	// The node ID.
 	//
@@ -415,9 +466,9 @@ type CreateNodeSupplementRequestCreateCommandFilterList struct {
 	//
 	// - NODE_ID: node ID
 	//
-	// - TARGETS: specified endpoints
+	// - TARGETS: specified destination
 	//
-	// - SOURCES: specified start points
+	// - SOURCES: specified source
 	//
 	// example:
 	//
@@ -512,7 +563,7 @@ func (s *CreateNodeSupplementRequestCreateCommandGlobalParamList) Validate() err
 }
 
 type CreateNodeSupplementRequestCreateCommandNodeIdList struct {
-	// The list of field IDs. This parameter is applicable when the node ID is a logical table node ID. If this parameter is not specified, all fields in the table are used by default.
+	// The list of field IDs. This parameter can be specified when the node is a logical table node. If you do not specify this parameter, all fields in the table are used by default.
 	FieldIdList []*string `json:"FieldIdList,omitempty" xml:"FieldIdList,omitempty" type:"Repeated"`
 	// The node ID.
 	//
@@ -561,7 +612,7 @@ type CreateNodeSupplementRequestCreateCommandNodeParamsList struct {
 	//
 	// n_23324
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The parameter list.
+	// The list of parameters.
 	ParamList []*CreateNodeSupplementRequestCreateCommandNodeParamsListParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
 }
 

@@ -24,33 +24,33 @@ type iResumePhysicalNodeResponseBody interface {
 }
 
 type ResumePhysicalNodeResponseBody struct {
-	// Error code. A value of OK indicates a successful request.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code returned by the backend.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Results of the node resume scheduling operation.
+	// The results of the node scheduling resumption operations.
 	NodeOperateResultList []*ResumePhysicalNodeResponseBodyNodeOperateResultList `json:"NodeOperateResultList,omitempty" xml:"NodeOperateResultList,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ func (s *ResumePhysicalNodeResponseBody) Validate() error {
 }
 
 type ResumePhysicalNodeResponseBodyNodeOperateResultList struct {
-	// Error message returned when the operation fails.
+	// The error message returned when the operation fails.
 	//
 	// example:
 	//
 	// xx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Node ID.
+	// The node ID.
 	//
 	// example:
 	//
 	// n_123456
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Operation result.
+	// The operation result.
 	//
 	// example:
 	//

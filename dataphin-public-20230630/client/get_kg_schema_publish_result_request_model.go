@@ -28,11 +28,13 @@ type GetKgSchemaPublishResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The version number. If this parameter is left empty, the most recent publish record is returned.
+	// The version ID. If this parameter is left empty, the latest publish record is retrieved.
 	//
 	// example:
 	//

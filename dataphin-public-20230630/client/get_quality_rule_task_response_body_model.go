@@ -36,7 +36,7 @@ type GetQualityRuleTaskResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetQualityRuleTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The rule task details.
 	RuleTaskInfo *GetQualityRuleTaskResponseBodyRuleTaskInfo `json:"RuleTaskInfo,omitempty" xml:"RuleTaskInfo,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,19 +126,19 @@ func (s *GetQualityRuleTaskResponseBody) Validate() error {
 }
 
 type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
-	// The business date.
+	// The business date. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2025-06-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// The business date format.
+	// The format of the business date.
 	//
 	// example:
 	//
 	// yyyy-MM-dd
 	BizDateFormat *string `json:"BizDateFormat,omitempty" xml:"BizDateFormat,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The end time.
+	// The end time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the task.
+	// The ID of the user who last updated the task.
 	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The modification time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 11
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The start time.
+	// The start time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -198,33 +198,33 @@ type GetQualityRuleTaskResponseBodyRuleTaskInfo struct {
 	//
 	// 11
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The validation object name.
+	// The name of the validated object.
 	//
 	// example:
 	//
 	// test
 	ValidateObjectName *string `json:"ValidateObjectName,omitempty" xml:"ValidateObjectName,omitempty"`
-	// The validation object type.
+	// The validated object type.
 	//
 	// example:
 	//
 	// column
 	ValidateObjectType *string `json:"ValidateObjectType,omitempty" xml:"ValidateObjectType,omitempty"`
-	// The validation partition.
+	// The validated partition.
 	//
 	// example:
 	//
 	// 20251011
 	ValidatePartition *string `json:"ValidatePartition,omitempty" xml:"ValidatePartition,omitempty"`
-	// Indicates whether the validation passed.
+	// Indicates whether the validation is successful.
 	ValidateSuccess *bool `json:"ValidateSuccess,omitempty" xml:"ValidateSuccess,omitempty"`
-	// The ID of the associated monitor.
+	// The watch ID.
 	//
 	// example:
 	//
 	// 1
 	WatchId *int64 `json:"WatchId,omitempty" xml:"WatchId,omitempty"`
-	// The monitor task ID. This ID is empty for trial-run rule tasks.
+	// The watch task ID. This ID is empty for rule tasks in a trial run.
 	//
 	// example:
 	//

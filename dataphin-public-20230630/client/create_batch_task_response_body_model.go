@@ -24,7 +24,7 @@ type iCreateBatchTaskResponseBody interface {
 }
 
 type CreateBatchTaskResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateBatchTaskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The creation result.
 	CreateResult *CreateBatchTaskResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
-	// The HTTP status code returned by the backend.
+	// The HTTP status code of the backend response.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateBatchTaskResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *CreateBatchTaskResponseBody) Validate() error {
 }
 
 type CreateBatchTaskResponseBodyCreateResult struct {
-	// The node ID in the folder tree.
+	// The node ID in the task directory tree.
 	//
 	// example:
 	//

@@ -18,11 +18,11 @@ type iListDataSourceWithConfigRequest interface {
 }
 
 type ListDataSourceWithConfigRequest struct {
-	// Paginated query
+	// The paged query parameters.
 	//
 	// This parameter is required.
 	ListQuery *ListDataSourceWithConfigRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListDataSourceWithConfigRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,15 +83,15 @@ func (s *ListDataSourceWithConfigRequest) Validate() error {
 }
 
 type ListDataSourceWithConfigRequestListQuery struct {
-	// Data source name
+	// The name of the data source.
 	//
 	// example:
 	//
 	// vcns-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Data source owner
+	// The owners of the data sources.
 	OwnerList []*string `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	// Page number. The value starts from 1.
+	// The page number. The starting page is 1.
 	//
 	// This parameter is required.
 	//
@@ -97,7 +99,7 @@ type ListDataSourceWithConfigRequestListQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Number of records per page
+	// The number of records per page.
 	//
 	// This parameter is required.
 	//
@@ -105,29 +107,29 @@ type ListDataSourceWithConfigRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Data source scope. Valid values:
+	// The usage scopes of the data sources. Valid values:
 	//
-	// - STREAMING: Real-time
+	// - STREAMING: Real-time.
 	//
-	// - OFFLINE: Offline
+	// - OFFLINE: Offline.
 	//
-	// - DIP_META_SYNC: Meta warehouse initialization
+	// - DIP_META_SYNC: Metadata warehouse initialization.
 	//
-	// - DATA_DISTILL: Data distillation
+	// - DATA_DISTILL: Data distillation.
 	//
-	// - CUMPUTE_SOURCE_SHADOW: Shadow compute source
+	// - CUMPUTE_SOURCE_SHADOW: Shadow compute source.
 	//
-	// - LABEL: Label
+	// - LABEL: Label.
 	//
-	// - ALL: Offline + Real-time
+	// - ALL: Offline and real-time.
 	ScopeList []*string `json:"ScopeList,omitempty" xml:"ScopeList,omitempty" type:"Repeated"`
-	// Tag marked when creating the data source
+	// The tag specified during data source creation.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// Data source type
+	// The data source types.
 	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
 

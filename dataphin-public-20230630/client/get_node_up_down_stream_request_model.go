@@ -34,9 +34,11 @@ type GetNodeUpDownStreamRequest struct {
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD: Production environment.
+	//
+	// Default value: PROD.
 	//
 	// example:
 	//
@@ -54,6 +56,8 @@ type GetNodeUpDownStreamRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -153,7 +157,7 @@ func (s *GetNodeUpDownStreamRequest) Validate() error {
 }
 
 type GetNodeUpDownStreamRequestNodeId struct {
-	// This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, the full table is used by default.
+	// The list of field IDs. This parameter is applicable when the node is a logical table node. If you do not specify this parameter, all fields in the table are queried by default.
 	//
 	// example:
 	//

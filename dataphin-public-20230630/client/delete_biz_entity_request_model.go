@@ -22,7 +22,7 @@ type iDeleteBizEntityRequest interface {
 }
 
 type DeleteBizEntityRequest struct {
-	// The ID of the business unit to which the entity belongs.
+	// The ID of the business unit.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,13 @@ type DeleteBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The type of the business entity. For more information, refer to the create business entity operation.
+	// The type of the business entity. For more information, see the Create a business entity operation.
 	//
 	// This parameter is required.
 	//

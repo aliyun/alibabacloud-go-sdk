@@ -18,11 +18,11 @@ type iGetServerVersionRequest interface {
 }
 
 type GetServerVersionRequest struct {
-	// **[Deprecated]*	- The environment identifier. Valid values:
+	// The environment identifier. **[Deprecated]*	- Valid values:
 	//
-	// - DEV: Development environment.
+	// - DEV: development environment.
 	//
-	// - PROD (default): Production environment.
+	// - PROD: production environment. This is the default value.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type GetServerVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operation user.
+	// The ID of the operating user.
 	//
 	// example:
 	//

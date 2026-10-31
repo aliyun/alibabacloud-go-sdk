@@ -18,7 +18,7 @@ type iDeleteSecurityClassifyCatalogRequest interface {
 }
 
 type DeleteSecurityClassifyCatalogRequest struct {
-	// The delete instruction.
+	// The delete command.
 	//
 	// This parameter is required.
 	DeleteCommand *DeleteSecurityClassifyCatalogRequestDeleteCommand `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type DeleteSecurityClassifyCatalogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *DeleteSecurityClassifyCatalogRequest) Validate() error {
 }
 
 type DeleteSecurityClassifyCatalogRequestDeleteCommand struct {
-	// The full path of the original catalog.
+	// The full path of the original folder.
 	//
 	// This parameter is required.
 	//
@@ -89,7 +91,7 @@ type DeleteSecurityClassifyCatalogRequestDeleteCommand struct {
 	//
 	// /d1/d2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// Specifies whether to return deletion details. Default value: true.
+	// Specifies whether to return the deletion details. Default value: true.
 	ReturnRemovedDetails *bool `json:"ReturnRemovedDetails,omitempty" xml:"ReturnRemovedDetails,omitempty"`
 }
 

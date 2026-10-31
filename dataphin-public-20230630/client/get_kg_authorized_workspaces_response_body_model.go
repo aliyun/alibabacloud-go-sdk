@@ -50,7 +50,7 @@ type GetKgAuthorizedWorkspacesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,13 +126,13 @@ func (s *GetKgAuthorizedWorkspacesResponseBody) Validate() error {
 }
 
 type GetKgAuthorizedWorkspacesResponseBodyData struct {
-	// The total number of knowledge graph workspaces that the user has permissions on.
+	// The total number of authorized graph workspaces.
 	//
 	// example:
 	//
 	// 3
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of knowledge graph workspaces that the user has permissions on.
+	// The list of authorized graph workspaces.
 	WorkspaceList []*GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceList `json:"WorkspaceList,omitempty" xml:"WorkspaceList,omitempty" type:"Repeated"`
 }
 
@@ -176,39 +176,39 @@ func (s *GetKgAuthorizedWorkspacesResponseBodyData) Validate() error {
 }
 
 type GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceList struct {
-	// The description of the knowledge graph workspace.
+	// The description of the graph workspace.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time of the knowledge graph workspace.
+	// The time when the graph workspace was created.
 	//
 	// example:
 	//
 	// 2026-08-25 12:34:56
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The latest publish time of the knowledge graph workspace. This value is empty if the workspace has never been published successfully.
+	// The latest publish time of the graph workspace. This parameter is empty if the workspace has never been successfully published.
 	//
 	// example:
 	//
 	// 2026-08-25 12:34:56
 	LastPublishTime *string `json:"LastPublishTime,omitempty" xml:"LastPublishTime,omitempty"`
-	// The latest publish version number of the knowledge graph workspace. This value is empty if the workspace has never been published successfully.
+	// The latest publish version of the graph workspace. This parameter is empty if the workspace has never been successfully published.
 	//
 	// example:
 	//
 	// 10
 	LastPublishVersion *int32 `json:"LastPublishVersion,omitempty" xml:"LastPublishVersion,omitempty"`
-	// The name of the knowledge graph workspace.
+	// The name of the graph workspace.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of roles assigned to the specified user in the workspace. This is an empty list if the user is not a member of the workspace.
+	// The list of roles of the specified user in the workspace. This list is empty if the user is not a member of the workspace.
 	RoleList []*GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceListRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
-	// The ID of the knowledge graph workspace.
+	// The ID of the graph workspace.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ type GetKgAuthorizedWorkspacesResponseBodyDataWorkspaceListRoleList struct {
 	//
 	// example:
 	//
-	// Storage management
+	// Storage management administrator
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

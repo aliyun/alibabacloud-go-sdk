@@ -18,7 +18,7 @@ type iCreateSecurityClassifyCatalogRequest interface {
 }
 
 type CreateSecurityClassifyCatalogRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateSecurityClassifyCatalogRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateSecurityClassifyCatalogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -89,21 +91,21 @@ type CreateSecurityClassifyCatalogRequestCreateCommand struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of administrator IDs. This parameter takes effect only when the parent folder is the root folder.
+	// The list of administrator IDs. This parameter is valid only when the parent folder is the root folder.
 	OwnerList []*string `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	// The full path of the parent folder. Default value: /.
+	// The full path of the parent classification folder. Default value: /.
 	//
 	// example:
 	//
 	// /d1/
 	ParentPath *string `json:"ParentPath,omitempty" xml:"ParentPath,omitempty"`
-	// The visibility scope of the classification folder. Valid values:
+	// The visibility scope of the classification. This parameter is valid only when the parent folder is the root folder. Valid values:
 	//
-	// - PUBLIC: visible to all users.
+	// - PUBLIC: Public.
 	//
-	// - PRIVATE: visible only to administrators.
+	// - PRIVATE: Visible only to administrators.
 	//
-	// Default value: PUBLIC. This parameter takes effect only when the parent folder is the root folder.
+	// Default value: PUBLIC.
 	//
 	// example:
 	//

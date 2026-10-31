@@ -38,7 +38,7 @@ type GetBatchTaskInfoByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The operator user ID.
+	// The operator ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetBatchTaskInfoByVersionRequest struct {
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The version number.
+	// The version ID.
 	//
 	// This parameter is required.
 	//

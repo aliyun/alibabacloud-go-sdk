@@ -24,33 +24,33 @@ type iGetPhysicalInstanceResponseBody interface {
 }
 
 type GetPhysicalInstanceResponseBody struct {
-	// Error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Instance details
+	// The instance details.
 	Instance *GetPhysicalInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,57 +130,57 @@ func (s *GetPhysicalInstanceResponseBody) Validate() error {
 }
 
 type GetPhysicalInstanceResponseBodyInstance struct {
-	// Business date
+	// The business date.
 	//
 	// example:
 	//
 	// 2023-06-25
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// Scheduled time
+	// The scheduled time.
 	//
 	// example:
 	//
 	// 2023-06-27 00:30:00
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
-	// Execution duration
+	// The execution duration.
 	//
 	// example:
 	//
 	// 3600s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// End execution time
+	// The end time of the execution.
 	//
 	// example:
 	//
 	// 2023-06-27 02:30:00
 	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
-	// Extended information
+	// The extended information.
 	//
 	// example:
 	//
 	// xx
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// t_23231
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Running instance index
+	// The sequence number of the instance.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Node details
+	// The node details.
 	NodeInfo *GetPhysicalInstanceResponseBodyInstanceNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
-	// Start execution time
+	// The start time of the execution.
 	//
 	// example:
 	//
 	// 2023-06-27 01:30:00
 	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
-	// Status list
+	// The status list.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -292,73 +292,73 @@ func (s *GetPhysicalInstanceResponseBodyInstance) Validate() error {
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
-	// Business unit name
+	// The business unit name.
 	//
 	// example:
 	//
 	// xx
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-02-02 23:53:17
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Creator
+	// The creator.
 	Creator *GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	// Description
+	// The description.
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether this is a dry run.
+	// Indicates whether a dry run is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Source system of the node
+	// The source system of the node.
 	//
 	// example:
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// Indicates whether the development environment exists.
+	// Indicates whether a development environment is available.
 	//
 	// example:
 	//
 	// true
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
-	// Indicates whether the production environment exists.
+	// Indicates whether a production environment is available.
 	//
 	// example:
 	//
 	// true
 	HasProd *bool `json:"HasProd,omitempty" xml:"HasProd,omitempty"`
-	// Node ID
+	// The node ID.
 	//
 	// example:
 	//
 	// n_3232312
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Last modified time
+	// The last modified time.
 	//
 	// example:
 	//
 	// 2024-02-02 23:53:17
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// Modifier
+	// The modifier.
 	Modifier *GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	// Node name
+	// The node name.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Owner list
+	// The owners.
 	OwnerList []*GetPhysicalInstanceResponseBodyInstanceNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	// Priority
+	// The priority. Valid values:
 	//
 	// - HIGHEST
 	//
@@ -370,7 +370,7 @@ type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
 	//
 	// - LOWEST
 	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
-	// Resource group list
+	// The resource group.
 	ResourceGroupList []*string `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
 	// Indicates whether scheduling is paused.
 	//
@@ -378,7 +378,7 @@ type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
 	//
 	// false
 	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
-	// Scheduling period
+	// The scheduling cycle. Valid values:
 	//
 	// - YEARLY
 	//
@@ -392,7 +392,7 @@ type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
 	//
 	// - MINUTELY
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
-	// Sub-business type
+	// The sub-business type. Valid values:
 	//
 	// - MAX_COMPUTE_SQL
 	//
@@ -410,21 +410,21 @@ type GetPhysicalInstanceResponseBodyInstanceNodeInfo struct {
 	//
 	// SHELL
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
-	// Node type
+	// The node type. Valid values:
 	//
-	// - BBOX_LOGIC_TABLE_NODE: Logical table node
+	// - BBOX_LOGIC_TABLE_NODE: logical table node
 	//
-	// - BBOX_LOGIC_FIELD_NODE: Logical field node
+	// - BBOX_LOGIC_FIELD_NODE: logical field node
 	//
-	// - BBOX_LOGIC_FIELD_GROUP_NODE: Field group node
+	// - BBOX_LOGIC_FIELD_GROUP_NODE: field group node
 	//
-	// - BBOX_INNER_TEMP_NODE: Logical table temp node
+	// - BBOX_INNER_TEMP_NODE: logical table temporary node
 	//
-	// - DATA_PROCESS: Code task
+	// - DATA_PROCESS: code task
 	//
-	// - STREAM_TASK_NODE: Real-time task
+	// - STREAM_TASK_NODE: real-time task
 	//
-	// - PIPELINE_NODE: Pipeline node
+	// - PIPELINE_NODE: pipeline node
 	//
 	// - FLINK_BATCH: Flink batch task
 	//
@@ -639,13 +639,13 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfo) Validate() error {
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator struct {
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 2323111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//
@@ -684,13 +684,13 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator) Validate() erro
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier struct {
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 2323111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//
@@ -729,13 +729,13 @@ func (s *GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier) Validate() err
 }
 
 type GetPhysicalInstanceResponseBodyInstanceNodeInfoOwnerList struct {
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 2323111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//

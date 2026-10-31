@@ -20,7 +20,7 @@ type iApplyDataServiceApiShrinkRequest interface {
 }
 
 type ApplyDataServiceApiShrinkRequest struct {
-	// The apply command.
+	// The application command.
 	//
 	// This parameter is required.
 	ApplyCommandShrink *string `json:"ApplyCommand,omitempty" xml:"ApplyCommand,omitempty"`
@@ -32,6 +32,8 @@ type ApplyDataServiceApiShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

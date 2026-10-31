@@ -30,7 +30,7 @@ type CreateDatasetResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The dataset ID (business primary key).
+	// The ID of the newly created dataset, which is the business primary key.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateDatasetResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateDatasetResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

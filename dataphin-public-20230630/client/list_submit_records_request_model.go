@@ -18,11 +18,11 @@ type iListSubmitRecordsRequest interface {
 }
 
 type ListSubmitRecordsRequest struct {
-	// Query command.
+	// The query command.
 	//
 	// This parameter is required.
 	ListQuery *ListSubmitRecordsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListSubmitRecordsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,13 +83,13 @@ func (s *ListSubmitRecordsRequest) Validate() error {
 }
 
 type ListSubmitRecordsRequestListQuery struct {
-	// Search keyword.
+	// The search keyword.
 	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Pending deployment record filter.
+	// The filter for pending release records.
 	//
 	// This parameter is required.
 	SearchFilter *ListSubmitRecordsRequestListQuerySearchFilter `json:"SearchFilter,omitempty" xml:"SearchFilter,omitempty" type:"Struct"`
@@ -129,9 +131,9 @@ func (s *ListSubmitRecordsRequestListQuery) Validate() error {
 }
 
 type ListSubmitRecordsRequestListQuerySearchFilter struct {
-	// List of change types (0: Create / 1: Update / 2: Delete).
+	// The list of change types (0: Create, 1: Update, 2: Delete).
 	ChangeTypeList []*int32 `json:"ChangeTypeList,omitempty" xml:"ChangeTypeList,omitempty" type:"Repeated"`
-	// Page number.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +141,7 @@ type ListSubmitRecordsRequestListQuerySearchFilter struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// Page size.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -147,23 +149,23 @@ type ListSubmitRecordsRequestListQuerySearchFilter struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Project ID.
+	// The project IDs.
 	//
 	// This parameter is required.
 	ProjectIdList []*int64 `json:"ProjectIdList,omitempty" xml:"ProjectIdList,omitempty" type:"Repeated"`
-	// Submission end time in the yyyy-MM-dd HH:mm:ss format.
+	// The submission end time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	SubmitEndTime *string `json:"SubmitEndTime,omitempty" xml:"SubmitEndTime,omitempty"`
-	// Submission start time in the yyyy-MM-dd HH:mm:ss format.
+	// The submission start time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-10-10 10:00:00
 	SubmitStartTime *string `json:"SubmitStartTime,omitempty" xml:"SubmitStartTime,omitempty"`
-	// Submitter.
+	// The submitters.
 	SubmitterList []*string `json:"SubmitterList,omitempty" xml:"SubmitterList,omitempty" type:"Repeated"`
 }
 

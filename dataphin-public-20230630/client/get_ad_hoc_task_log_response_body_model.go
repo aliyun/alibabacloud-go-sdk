@@ -24,7 +24,7 @@ type iGetAdHocTaskLogResponseBody interface {
 }
 
 type GetAdHocTaskLogResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is normal.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAdHocTaskLogResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,17 +126,17 @@ func (s *GetAdHocTaskLogResponseBody) Validate() error {
 }
 
 type GetAdHocTaskLogResponseBodyLogInfo struct {
-	// The runtime log content.
+	// The execution log.
 	//
 	// example:
 	//
 	// test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indicates whether the next log entry exists.
+	// Indicates whether more log entries exist.
 	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
-	// Indicates whether the current query produces a result.
+	// Indicates whether the current query will generate results.
 	HasResult *bool `json:"HasResult,omitempty" xml:"HasResult,omitempty"`
-	// The start position of the next log entry.
+	// The starting position of the next log entry.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type GetAdHocTaskLogResponseBodyLogInfo struct {
 	//
 	// MaxCompute_SQL_300000843_1611548758327
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task running status. Example: WAIT_RESOURCE indicates that the task is waiting for resources.
+	// The execution status of the task. Valid values: WAIT_RESOURCE (waiting for resources).
 	//
 	// example:
 	//

@@ -26,6 +26,8 @@ type UpdateDataServiceAppGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -95,7 +97,7 @@ type UpdateDataServiceAppGroupRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// 默认应用分组
+	// Default application group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 

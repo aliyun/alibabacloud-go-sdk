@@ -26,9 +26,9 @@ type GetStandardWordRootRequest struct {
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to allow a null value to be returned when the word root does not exist. If set to false, an exception is thrown. Default value: true.
+	// Specifies whether to allow a null value to be returned when the word root does not exist. If this parameter is set to false, an exception is thrown. Default value: true.
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 	// The tenant ID.
 	//
@@ -38,6 +38,8 @@ type GetStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

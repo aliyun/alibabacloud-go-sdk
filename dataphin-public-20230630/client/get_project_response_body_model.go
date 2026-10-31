@@ -24,13 +24,13 @@ type iGetProjectResponseBody interface {
 }
 
 type GetProjectResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetProjectResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,29 +130,29 @@ func (s *GetProjectResponseBody) Validate() error {
 }
 
 type GetProjectResponseBodyProjectInfo struct {
-	// The dependent data module display name.
+	// The display name of the dependent data module.
 	//
 	// example:
 	//
-	// 业务板块显示名
+	// Business unit display name
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
-	// The dependent data module ID.
+	// The ID of the dependent data module.
 	//
 	// example:
 	//
-	// 业务板块Id
+	// Business unit ID
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
 	// The compute source ID.
 	//
 	// example:
 	//
-	// 项目依赖计算源Id
+	// Dependent compute source ID
 	ComputeSourceId *int64 `json:"ComputeSourceId,omitempty" xml:"ComputeSourceId,omitempty"`
 	// The compute source name.
 	//
 	// example:
 	//
-	// 项目依赖计算源名
+	// Dependent compute source name
 	ComputeSourceName *string `json:"ComputeSourceName,omitempty" xml:"ComputeSourceName,omitempty"`
 	// The project description.
 	//
@@ -164,7 +164,7 @@ type GetProjectResponseBodyProjectInfo struct {
 	//
 	// example:
 	//
-	// 项目显示名
+	// Project display name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The environment.
 	//
@@ -212,7 +212,7 @@ type GetProjectResponseBodyProjectInfo struct {
 	//
 	// GENERAL
 	NameSpaceTag *string `json:"NameSpaceTag,omitempty" xml:"NameSpaceTag,omitempty"`
-	// The project owner ID.
+	// The ID of the project owner.
 	//
 	// example:
 	//
@@ -222,19 +222,19 @@ type GetProjectResponseBodyProjectInfo struct {
 	//
 	// example:
 	//
-	// 测试用户
+	// Test user
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The stream compute source ID.
+	// The real-time compute source ID.
 	//
 	// example:
 	//
-	// 项目依赖实时计算源Id
+	// Dependent real-time compute source ID
 	StreamComputeSourceId *int64 `json:"StreamComputeSourceId,omitempty" xml:"StreamComputeSourceId,omitempty"`
-	// The stream compute source name.
+	// The real-time compute source name.
 	//
 	// example:
 	//
-	// 项目依赖实时计算源名
+	// Dependent real-time compute source name
 	StreamComputeSourceName *string `json:"StreamComputeSourceName,omitempty" xml:"StreamComputeSourceName,omitempty"`
 	// The project type.
 	//
@@ -242,7 +242,7 @@ type GetProjectResponseBodyProjectInfo struct {
 	//
 	// GENERAL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The whitelists.
+	// The whitelist.
 	WhiteLists []*GetProjectResponseBodyProjectInfoWhiteLists `json:"WhiteLists,omitempty" xml:"WhiteLists,omitempty" type:"Repeated"`
 }
 
@@ -445,7 +445,7 @@ type GetProjectResponseBodyProjectInfoWhiteLists struct {
 	//
 	// whitelist for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IP address.
+	// ip
 	//
 	// example:
 	//

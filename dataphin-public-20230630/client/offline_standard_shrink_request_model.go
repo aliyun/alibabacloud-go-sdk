@@ -18,7 +18,7 @@ type iOfflineStandardShrinkRequest interface {
 }
 
 type OfflineStandardShrinkRequest struct {
-	// The offline instruction.
+	// The offline command.
 	//
 	// This parameter is required.
 	OfflineCommandShrink *string `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty"`
@@ -30,6 +30,8 @@ type OfflineStandardShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

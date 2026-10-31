@@ -30,6 +30,8 @@ type GrantResourcePermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *GrantResourcePermissionRequest) Validate() error {
 }
 
 type GrantResourcePermissionRequestGrantCommand struct {
-	// The expiration timestamp, in milliseconds.
+	// The timestamp for the end of the validity period, in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -93,13 +95,13 @@ type GrantResourcePermissionRequestGrantCommand struct {
 	//
 	// This parameter is required.
 	OperateList []*string `json:"OperateList,omitempty" xml:"OperateList,omitempty" type:"Repeated"`
-	// The reason for the authorization.
+	// The reason for authorization.
 	//
 	// example:
 	//
 	// xx
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The list of resources.
+	// The resources.
 	//
 	// This parameter is required.
 	ResourceList []*GrantResourcePermissionRequestGrantCommandResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
@@ -111,7 +113,7 @@ type GrantResourcePermissionRequestGrantCommand struct {
 	//
 	// PHYSICAL_TABLE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The authorized users pending authorization.
+	// The users pending authorization.
 	//
 	// This parameter is required.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`

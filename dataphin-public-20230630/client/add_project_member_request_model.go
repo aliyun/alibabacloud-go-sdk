@@ -20,7 +20,7 @@ type iAddProjectMemberRequest interface {
 }
 
 type AddProjectMemberRequest struct {
-	// The command for adding members.
+	// The command to add members.
 	//
 	// This parameter is required.
 	AddCommand *AddProjectMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
@@ -40,7 +40,7 @@ type AddProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The ID of the operator user.
+	// The operator user ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ func (s *AddProjectMemberRequest) Validate() error {
 }
 
 type AddProjectMemberRequestAddCommand struct {
-	// The environment identifier. Valid values: DEV, PROD.
+	// The environment identifier. Valid values: DEV and PROD.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type AddProjectMemberRequestAddCommand struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The list of user members.
+	// The user members.
 	//
 	// This parameter is required.
 	UserList []*AddProjectMemberRequestAddCommandUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
@@ -156,9 +156,9 @@ func (s *AddProjectMemberRequestAddCommand) Validate() error {
 }
 
 type AddProjectMemberRequestAddCommandUserList struct {
-	// The member roles. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
-	//
-	// This parameter is required.
+	// The list of role codes for members. System and custom project roles are supported and can be obtained from ListProjectRoles. Only one role is supported. If this parameter is not empty, it takes precedence over RoleList. You must specify at least one of RoleList and RoleCodeList.
+	RoleCodeList []*string `json:"RoleCodeList,omitempty" xml:"RoleCodeList,omitempty" type:"Repeated"`
+	// The member role. Valid values: 1 (Project administrator), 2 (Developer), 3 (Guest), 4 (Analyst), and 5 (O&M engineer).
 	RoleList []*int32 `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -178,12 +178,21 @@ func (s AddProjectMemberRequestAddCommandUserList) GoString() string {
 	return s.String()
 }
 
+func (s *AddProjectMemberRequestAddCommandUserList) GetRoleCodeList() []*string {
+	return s.RoleCodeList
+}
+
 func (s *AddProjectMemberRequestAddCommandUserList) GetRoleList() []*int32 {
 	return s.RoleList
 }
 
 func (s *AddProjectMemberRequestAddCommandUserList) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *AddProjectMemberRequestAddCommandUserList) SetRoleCodeList(v []*string) *AddProjectMemberRequestAddCommandUserList {
+	s.RoleCodeList = v
+	return s
 }
 
 func (s *AddProjectMemberRequestAddCommandUserList) SetRoleList(v []*int32) *AddProjectMemberRequestAddCommandUserList {

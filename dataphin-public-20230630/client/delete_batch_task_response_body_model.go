@@ -22,13 +22,13 @@ type iDeleteBatchTaskResponseBody interface {
 }
 
 type DeleteBatchTaskResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. OK indicates that the request is normal.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned by the backend.
+	// The HTTP status code of the backend response.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteBatchTaskResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type ListProjectsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListProjectsResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListProjectsResponseBody) Validate() error {
 }
 
 type ListProjectsResponseBodyPageResult struct {
-	// The paginated list of projects.
+	// The paginated project list.
 	ProjectList []*ListProjectsResponseBodyPageResultProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -188,7 +188,7 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// 1121
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The name of the compute source.
+	// The compute source name.
 	//
 	// example:
 	//
@@ -198,13 +198,13 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the project.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The environment identifier.
 	//
@@ -212,13 +212,13 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The time when the project was created, in the yyyy-MM-dd HH:mm:ss format.
+	// The creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the project was last modified, in the yyyy-MM-dd HH:mm:ss format.
+	// The update time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The real-time compute source ID.
 	//
@@ -260,7 +260,7 @@ type ListProjectsResponseBodyPageResultProjectList struct {
 	//
 	// 1122
 	RealtimeDataSourceId *int64 `json:"RealtimeDataSourceId,omitempty" xml:"RealtimeDataSourceId,omitempty"`
-	// The name of the real-time compute source.
+	// The real-time compute source name.
 	//
 	// example:
 	//

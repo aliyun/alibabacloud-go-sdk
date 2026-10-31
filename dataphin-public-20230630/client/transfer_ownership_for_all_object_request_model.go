@@ -26,6 +26,8 @@ type TransferOwnershipForAllObjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -95,7 +97,7 @@ type TransferOwnershipForAllObjectRequestPrivilegeTransferRecord struct {
 	//
 	// 30000001
 	OldOwner *string `json:"OldOwner,omitempty" xml:"OldOwner,omitempty"`
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//

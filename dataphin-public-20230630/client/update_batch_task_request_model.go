@@ -113,6 +113,12 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	ConditionScheduleTemplateId *int64 `json:"ConditionScheduleTemplateId,omitempty" xml:"ConditionScheduleTemplateId,omitempty"`
 	// The cross-node parameters. These are output parameters declared by the current node for downstream nodes to reference. This parameter overwrites the existing parameters. If this parameter is not specified, the original parameters are retained.
 	ContextParamList []*UpdateBatchTaskRequestUpdateCommandContextParamList `json:"ContextParamList,omitempty" xml:"ContextParamList,omitempty" type:"Repeated"`
+	// 不传时保留任务当前配置。
+	//
+	// example:
+	//
+	// 0.5
+	CpuResource *string `json:"CpuResource,omitempty" xml:"CpuResource,omitempty"`
 	// The cron expression for automatic scheduling. You can refer to Linux cron expressions.
 	//
 	// example:
@@ -165,6 +171,10 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	ExecuteRerunConfig *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig `json:"ExecuteRerunConfig,omitempty" xml:"ExecuteRerunConfig,omitempty" type:"Struct"`
+	// 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	ExecuteTimeOutConfig *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig `json:"ExecuteTimeOutConfig,omitempty" xml:"ExecuteTimeOutConfig,omitempty" type:"Struct"`
 	// The ID of the task directory tree node.
 	//
 	// This parameter is required.
@@ -173,6 +183,12 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// 不传时保留任务当前配置。
+	//
+	// example:
+	//
+	// 1024
+	MemoryResource *string `json:"MemoryResource,omitempty" xml:"MemoryResource,omitempty"`
 	// The name of the offline task.
 	//
 	// This parameter is required.
@@ -232,7 +248,14 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	// example:
 	//
 	// rg-abc123
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId       *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceReferenceList []*string `json:"ResourceReferenceList,omitempty" xml:"ResourceReferenceList,omitempty" type:"Repeated"`
+	// 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+	//
+	// example:
+	//
+	// false
+	RetryOnTimeoutEnable *bool `json:"RetryOnTimeoutEnable,omitempty" xml:"RetryOnTimeoutEnable,omitempty"`
 	// The scheduling cycle. Valid values:
 	//
 	// - YEARLY: Yearly.
@@ -253,6 +276,24 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
 	// The Spark client.
 	SparkClientInfo *UpdateBatchTaskRequestUpdateCommandSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
+	// 不传时保留任务当前配置。显式传入false时关闭。
+	//
+	// example:
+	//
+	// false
+	SparkDynamicResourceSwitch *bool `json:"SparkDynamicResourceSwitch,omitempty" xml:"SparkDynamicResourceSwitch,omitempty"`
+	// ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+	//
+	// example:
+	//
+	// ONLY_PROD
+	SparkResourceEffectScope *string `json:"SparkResourceEffectScope,omitempty" xml:"SparkResourceEffectScope,omitempty"`
+	// Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置；传入空JSON对象{}时清空配置。
+	//
+	// example:
+	//
+	// {"spark.executor.memory":"2g"}
+	SparkSqlResourceConfigMap *string `json:"SparkSqlResourceConfigMap,omitempty" xml:"SparkSqlResourceConfigMap,omitempty"`
 	// The list of node tags. This parameter overwrites all existing tags. If you do not specify this parameter, the original tags remain unchanged.
 	TaskTagList []*string `json:"TaskTagList,omitempty" xml:"TaskTagList,omitempty" type:"Repeated"`
 	// The type of the node. Valid values:
@@ -319,6 +360,10 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetContextParamList() []*UpdateBat
 	return s.ContextParamList
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetCpuResource() *string {
+	return s.CpuResource
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) GetCronExpression() *string {
 	return s.CronExpression
 }
@@ -355,8 +400,20 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetExecuteRerunConfig() *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig {
+	return s.ExecuteRerunConfig
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetExecuteTimeOutConfig() *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig {
+	return s.ExecuteTimeOutConfig
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) GetFileId() *int64 {
 	return s.FileId
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetMemoryResource() *string {
+	return s.MemoryResource
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetName() *string {
@@ -403,12 +460,32 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetResourceGroupId() *string {
 	return s.ResourceGroupId
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) GetResourceReferenceList() []*string {
+	return s.ResourceReferenceList
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetRetryOnTimeoutEnable() *bool {
+	return s.RetryOnTimeoutEnable
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) GetSchedulePeriod() *string {
 	return s.SchedulePeriod
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetSparkClientInfo() *UpdateBatchTaskRequestUpdateCommandSparkClientInfo {
 	return s.SparkClientInfo
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetSparkDynamicResourceSwitch() *bool {
+	return s.SparkDynamicResourceSwitch
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetSparkResourceEffectScope() *string {
+	return s.SparkResourceEffectScope
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetSparkSqlResourceConfigMap() *string {
+	return s.SparkSqlResourceConfigMap
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetTaskTagList() []*string {
@@ -461,6 +538,11 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetContextParamList(v []*UpdateBat
 	return s
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) SetCpuResource(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.CpuResource = &v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) SetCronExpression(v string) *UpdateBatchTaskRequestUpdateCommand {
 	s.CronExpression = &v
 	return s
@@ -506,8 +588,23 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetEngine(v string) *UpdateBatchTa
 	return s
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) SetExecuteRerunConfig(v *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) *UpdateBatchTaskRequestUpdateCommand {
+	s.ExecuteRerunConfig = v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetExecuteTimeOutConfig(v *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) *UpdateBatchTaskRequestUpdateCommand {
+	s.ExecuteTimeOutConfig = v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) SetFileId(v int64) *UpdateBatchTaskRequestUpdateCommand {
 	s.FileId = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetMemoryResource(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.MemoryResource = &v
 	return s
 }
 
@@ -566,6 +663,16 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetResourceGroupId(v string) *Upda
 	return s
 }
 
+func (s *UpdateBatchTaskRequestUpdateCommand) SetResourceReferenceList(v []*string) *UpdateBatchTaskRequestUpdateCommand {
+	s.ResourceReferenceList = v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetRetryOnTimeoutEnable(v bool) *UpdateBatchTaskRequestUpdateCommand {
+	s.RetryOnTimeoutEnable = &v
+	return s
+}
+
 func (s *UpdateBatchTaskRequestUpdateCommand) SetSchedulePeriod(v string) *UpdateBatchTaskRequestUpdateCommand {
 	s.SchedulePeriod = &v
 	return s
@@ -573,6 +680,21 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetSchedulePeriod(v string) *Updat
 
 func (s *UpdateBatchTaskRequestUpdateCommand) SetSparkClientInfo(v *UpdateBatchTaskRequestUpdateCommandSparkClientInfo) *UpdateBatchTaskRequestUpdateCommand {
 	s.SparkClientInfo = v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetSparkDynamicResourceSwitch(v bool) *UpdateBatchTaskRequestUpdateCommand {
+	s.SparkDynamicResourceSwitch = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetSparkResourceEffectScope(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.SparkResourceEffectScope = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetSparkSqlResourceConfigMap(v string) *UpdateBatchTaskRequestUpdateCommand {
+	s.SparkSqlResourceConfigMap = &v
 	return s
 }
 
@@ -622,6 +744,16 @@ func (s *UpdateBatchTaskRequestUpdateCommand) Validate() error {
 	}
 	if s.CustomScheduleConfig != nil {
 		if err := s.CustomScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExecuteRerunConfig != nil {
+		if err := s.ExecuteRerunConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExecuteTimeOutConfig != nil {
+		if err := s.ExecuteTimeOutConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -950,6 +1082,111 @@ func (s *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig) SetStartTime(v
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig struct {
+	// 自定义失败重试间隔。
+	//
+	// example:
+	//
+	// 60
+	CustomRerunInterval *string `json:"CustomRerunInterval,omitempty" xml:"CustomRerunInterval,omitempty"`
+	// 自定义失败重试次数。
+	//
+	// example:
+	//
+	// 3
+	CustomRerunTimes *string `json:"CustomRerunTimes,omitempty" xml:"CustomRerunTimes,omitempty"`
+	// 是否跟随系统配置。
+	//
+	// example:
+	//
+	// false
+	FollowSystem *bool `json:"FollowSystem,omitempty" xml:"FollowSystem,omitempty"`
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) GetCustomRerunInterval() *string {
+	return s.CustomRerunInterval
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) GetCustomRerunTimes() *string {
+	return s.CustomRerunTimes
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) GetFollowSystem() *bool {
+	return s.FollowSystem
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) SetCustomRerunInterval(v string) *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig {
+	s.CustomRerunInterval = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) SetCustomRerunTimes(v string) *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig {
+	s.CustomRerunTimes = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) SetFollowSystem(v bool) *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig {
+	s.FollowSystem = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteRerunConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig struct {
+	// 自定义超时时间。
+	//
+	// example:
+	//
+	// 1800
+	CustomValues *string `json:"CustomValues,omitempty" xml:"CustomValues,omitempty"`
+	// 是否跟随系统配置。
+	//
+	// example:
+	//
+	// false
+	FollowSystem *bool `json:"FollowSystem,omitempty" xml:"FollowSystem,omitempty"`
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) GetCustomValues() *string {
+	return s.CustomValues
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) GetFollowSystem() *bool {
+	return s.FollowSystem
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) SetCustomValues(v string) *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig {
+	s.CustomValues = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) SetFollowSystem(v bool) *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig {
+	s.FollowSystem = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommandExecuteTimeOutConfig) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -18,7 +18,7 @@ type iDeleteSecurityClassifyShrinkRequest interface {
 }
 
 type DeleteSecurityClassifyShrinkRequest struct {
-	// The delete instruction.
+	// The update command.
 	//
 	// This parameter is required.
 	DeleteCommandShrink *string `json:"DeleteCommand,omitempty" xml:"DeleteCommand,omitempty"`
@@ -30,6 +30,8 @@ type DeleteSecurityClassifyShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

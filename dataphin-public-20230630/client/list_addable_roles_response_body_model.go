@@ -24,7 +24,7 @@ type iListAddableRolesResponseBody interface {
 }
 
 type ListAddableRolesResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListAddableRolesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of roles.
 	RoleList []*ListAddableRolesResponseBodyRoleList `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListAddableRolesResponseBodyRoleList struct {
 	//
 	// example:
 	//
-	// 安全管理员
+	// Security Administrator
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -38,7 +38,7 @@ type CreateBizMetricResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details from the backend.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreateBizMetricResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,15 +130,15 @@ func (s *CreateBizMetricResponseBody) Validate() error {
 }
 
 type CreateBizMetricResponseBodyData struct {
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the creation was successful. Valid values:
+	// Indicates whether the creation is successful. Valid values:
 	//
-	// - true: Succeeded.
+	// - true: Successful.
 	//
 	// - false: Failed.
 	//

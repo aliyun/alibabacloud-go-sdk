@@ -24,7 +24,7 @@ type iGetNodeUpDownStreamResponseBody interface {
 }
 
 type GetNodeUpDownStreamResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetNodeUpDownStreamResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The dag data of the node.
+	// The dag information of the node.
 	NodeDagInfo *GetNodeUpDownStreamResponseBodyNodeDagInfo `json:"NodeDagInfo,omitempty" xml:"NodeDagInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -50,7 +50,7 @@ type GetNodeUpDownStreamResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ func (s *GetNodeUpDownStreamResponseBody) Validate() error {
 type GetNodeUpDownStreamResponseBodyNodeDagInfo struct {
 	// The downstream nodes.
 	DownStreamNodeList []*GetNodeUpDownStreamResponseBodyNodeDagInfoDownStreamNodeList `json:"DownStreamNodeList,omitempty" xml:"DownStreamNodeList,omitempty" type:"Repeated"`
-	// The center nodes.
+	// The central nodes.
 	StartNodeList []*GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList `json:"StartNodeList,omitempty" xml:"StartNodeList,omitempty" type:"Repeated"`
 	// The upstream nodes.
 	UpStreamNodeList []*GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList `json:"UpStreamNodeList,omitempty" xml:"UpStreamNodeList,omitempty" type:"Repeated"`
@@ -217,15 +217,15 @@ type GetNodeUpDownStreamResponseBodyNodeDagInfoDownStreamNodeList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node type. Valid values:
 	//
-	// - DATA_PROCESS: code task.
+	// - DATA_PROCESS: Code task.
 	//
-	// - BBOX_LOGIC_TABLE_NODE: logical table node.
+	// - BBOX_LOGIC_TABLE_NODE: Logical table node.
 	//
-	// - PIPELINE_NODE: pipeline node.
+	// - PIPELINE_NODE: Pipeline node.
 	//
 	// example:
 	//
@@ -294,15 +294,15 @@ type GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node type. Valid values:
 	//
-	// - DATA_PROCESS: code task.
+	// - DATA_PROCESS: Code task.
 	//
-	// - BBOX_LOGIC_TABLE_NODE: logical table node.
+	// - BBOX_LOGIC_TABLE_NODE: Logical table node.
 	//
-	// - PIPELINE_NODE: pipeline node.
+	// - PIPELINE_NODE: Pipeline node.
 	//
 	// example:
 	//
@@ -371,15 +371,15 @@ type GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node type. Valid values:
 	//
-	// - DATA_PROCESS: code task.
+	// - DATA_PROCESS: Code task.
 	//
-	// - BBOX_LOGIC_TABLE_NODE: black box logical table node.
+	// - BBOX_LOGIC_TABLE_NODE: Black box logical table node.
 	//
-	// - PIPELINE_NODE: pipeline node.
+	// - PIPELINE_NODE: Pipeline node.
 	//
 	// example:
 	//

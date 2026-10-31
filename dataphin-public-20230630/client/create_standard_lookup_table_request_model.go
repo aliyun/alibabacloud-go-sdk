@@ -18,7 +18,7 @@ type iCreateStandardLookupTableRequest interface {
 }
 
 type CreateStandardLookupTableRequest struct {
-	// The create command.
+	// The creation command.
 	//
 	// This parameter is required.
 	CreateCommand *CreateStandardLookupTableRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +30,8 @@ type CreateStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -95,7 +97,7 @@ type CreateStandardLookupTableRequestCreateCommand struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory to which the lookup table belongs.
+	// The parent folder.
 	DirectoryReference *CreateStandardLookupTableRequestCreateCommandDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
 	// The list of lookup table values.
 	LookupTableValueList []*CreateStandardLookupTableRequestCreateCommandLookupTableValueList `json:"LookupTableValueList,omitempty" xml:"LookupTableValueList,omitempty" type:"Repeated"`
@@ -105,9 +107,9 @@ type CreateStandardLookupTableRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// 城市码表
+	// City lookup table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the lookup table owner. Default value: the user ID of the caller.
+	// The ID of the lookup table owner. Default value: the ID of the caller.
 	//
 	// example:
 	//
@@ -196,7 +198,7 @@ func (s *CreateStandardLookupTableRequestCreateCommand) Validate() error {
 }
 
 type CreateStandardLookupTableRequestCreateCommandDirectoryReference struct {
-	// The directory to which the lookup table belongs.
+	// The parent folder.
 	//
 	// This parameter is required.
 	//
@@ -254,7 +256,7 @@ type CreateStandardLookupTableRequestCreateCommandLookupTableValueList struct {
 	//
 	// example:
 	//
-	// 杭州
+	// Hangzhou
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

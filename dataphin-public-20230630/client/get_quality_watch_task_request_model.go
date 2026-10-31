@@ -26,11 +26,13 @@ type GetQualityWatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The quality watchtask ID.
+	// The watchtask ID.
 	//
 	// This parameter is required.
 	//

@@ -24,33 +24,33 @@ type iCheckResourcePermissionResponseBody interface {
 }
 
 type CheckResourcePermissionResponseBody struct {
-	// Error code. OK indicates a successful request
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code returned by the backend
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Resource permission list
+	// The resource permission list.
 	ResourcePermissionList []*CheckResourcePermissionResponseBodyResourcePermissionList `json:"ResourcePermissionList,omitempty" xml:"ResourcePermissionList,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -134,13 +134,13 @@ func (s *CheckResourcePermissionResponseBody) Validate() error {
 }
 
 type CheckResourcePermissionResponseBodyResourcePermissionList struct {
-	// Indicates whether the user has the permission on the specified resource
+	// Indicates whether the user has the specified resource permissions.
 	//
 	// example:
 	//
 	// true
 	HasPermission *bool `json:"HasPermission,omitempty" xml:"HasPermission,omitempty"`
-	// Resource ID
+	// The resource ID.
 	//
 	// example:
 	//

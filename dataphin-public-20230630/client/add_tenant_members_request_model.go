@@ -30,6 +30,8 @@ type AddTenantMembersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -81,7 +83,7 @@ func (s *AddTenantMembersRequest) Validate() error {
 }
 
 type AddTenantMembersRequestAddCommand struct {
-	// The list of members.
+	// The member list.
 	//
 	// This parameter is required.
 	UserList []*AddTenantMembersRequestAddCommandUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
@@ -124,7 +126,7 @@ type AddTenantMembersRequestAddCommandUserList struct {
 	//
 	// 1323241
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list of roles. Valid values:
+	// The role list. Valid values:
 	//
 	// - SYSTEM_ADMIN
 	//
@@ -140,7 +142,7 @@ type AddTenantMembersRequestAddCommandUserList struct {
 	//
 	// - LABELS_BUSINESS_PLANNER
 	//
-	// - BUSINESS_MEMBER.
+	// - BUSINESS_MEMBER
 	RoleList []*string `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`
 }
 

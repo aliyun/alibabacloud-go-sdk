@@ -36,11 +36,13 @@ type RemoveProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The command to remove a member.
+	// The member removal command.
 	//
 	// This parameter is required.
 	RemoveCommand *RemoveProjectMemberRequestRemoveCommand `json:"RemoveCommand,omitempty" xml:"RemoveCommand,omitempty" type:"Struct"`
@@ -108,7 +110,7 @@ type RemoveProjectMemberRequestRemoveCommand struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The user IDs.
+	// The list of user IDs.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`
 }
 

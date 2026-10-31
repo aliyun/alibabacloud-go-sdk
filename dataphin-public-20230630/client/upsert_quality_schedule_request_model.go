@@ -26,11 +26,13 @@ type UpsertQualityScheduleRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The update instruction.
+	// The upsert command.
 	//
 	// This parameter is required.
 	UpsertCommand *UpsertQualityScheduleRequestUpsertCommand `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty" type:"Struct"`
@@ -87,7 +89,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// 	- 	- 1/	- 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The schedule object ID. If this parameter is specified, the schedule is updated. If this parameter is not specified, a schedule is created.
+	// The ID of the schedule object. Pass this parameter to update the object, or omit it to create a new object.
 	//
 	// example:
 	//
@@ -115,7 +117,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// - TODAY: today.
 	//
-	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+	// - FIRST_DAY_OF_WEEK: the first day of the week (Sunday).
 	//
 	// - CUSTOM: custom.
 	//
@@ -123,41 +125,41 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The schedule interval type for timed scheduling. Valid values:
+	// The scheduling epoch type for timed scheduling. Valid values:
 	//
-	// - DAILY: day.
+	// - DAILY: daily.
 	//
-	// - WEEKLY: week.
+	// - WEEKLY: weekly.
 	//
-	// - MONTHLY: month.
+	// - MONTHLY: monthly.
 	//
-	// - HOURLY: hour.
+	// - HOURLY: hourly.
 	//
-	// - MINUTELY: minute.
+	// - MINUTELY: minutely.
 	//
 	// example:
 	//
 	// DAILY
 	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	// The schedule interval values for timed scheduling.
+	// The scheduling epoch values for timed scheduling.
 	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
-	// The trigger method for fixed task triggers. Valid values:
+	// The trigger method for static task triggers. Valid values:
 	//
-	// - ALL_TASKS_FINISHED: triggered when all tasks are finished.
+	// - ALL_TASKS_FINISHED: All tasks are finished.
 	//
-	// - ONE_TASKS_FINISHED: triggered when one task is finished.
+	// - ONE_TASKS_FINISHED: One task is finished.
 	//
-	// - PRE_ONE_TASKS_START: triggered when the previous task starts.
+	// - PRE_ONE_TASKS_START: The previous task is started.
 	//
 	// example:
 	//
 	// ONE_TASKS_FINISHED
 	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
-	// The list of trigger nodes for trigger scheduling.
+	// The list of trigger tasks for the trigger schedule.
 	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
-	// The trigger method for trigger scheduling. Valid values:
+	// The trigger method for the trigger schedule. Valid values:
 	//
-	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	// - STATIC_TASK_TRIGGER: static task trigger.
 	//
 	// - CODE_CHECK_TRIGGER: code check trigger.
 	//
@@ -173,7 +175,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// - CODE_CHECK_TRIGGER: code check trigger.
 	//
-	// - STATIC_TASK_TRIGGER: fixed task trigger.
+	// - STATIC_TASK_TRIGGER: static task trigger.
 	//
 	// - DEPENDENCY_SCHEDULE: dependency scheduling.
 	//
@@ -185,7 +187,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The validation scope. Valid values:
 	//
-	// - TASK_REFERRED_PARTITION: task update partition.
+	// - TASK_REFERRED_PARTITION: task updated partition.
 	//
 	// - USER_DEFINED_PARTITION: custom partition.
 	//
@@ -193,7 +195,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// TASK_REFERRED_PARTITION
 	ValidatePartitionType *string `json:"ValidatePartitionType,omitempty" xml:"ValidatePartitionType,omitempty"`
-	// The monitored object ID.
+	// The ID of the monitored object.
 	//
 	// This parameter is required.
 	//

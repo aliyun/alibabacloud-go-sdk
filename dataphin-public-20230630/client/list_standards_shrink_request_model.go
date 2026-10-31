@@ -18,11 +18,11 @@ type iListStandardsShrinkRequest interface {
 }
 
 type ListStandardsShrinkRequest struct {
-	// Search conditions.
+	// The search conditions.
 	//
 	// This parameter is required.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -30,6 +30,8 @@ type ListStandardsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

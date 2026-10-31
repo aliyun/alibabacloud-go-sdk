@@ -24,7 +24,7 @@ type iCreateNodeSupplementResponseBody interface {
 }
 
 type CreateNodeSupplementResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type CreateNodeSupplementResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The submit ID.
 	//
-	// - List mode: Returns the FlowId.
+	// - Normal mode: The flow ID is returned.
 	//
-	// - Batch mode: Returns the JobId. You can call the GetOperationSubmitStatus operation to query the submit status. After the submission succeeds, the FlowId is returned.
+	// - Massive mode: The submitted job ID is returned. You can call GetOperationSubmitStatus to query the submission status. After the submission succeeds, the flow ID is returned.
 	//
 	// example:
 	//
 	// f_2264518792396800000_20210223_2329354897145659392
 	SubmitId *string `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

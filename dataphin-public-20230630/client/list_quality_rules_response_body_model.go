@@ -50,7 +50,7 @@ type ListQualityRulesResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *ListQualityRulesResponseBody) Validate() error {
 }
 
 type ListQualityRulesResponseBodyPageResult struct {
-	// The list of quality rules returned by page.
+	// The paged quality rule task list.
 	QualityRuleList []*ListQualityRulesResponseBodyPageResultQualityRuleList `json:"QualityRuleList,omitempty" xml:"QualityRuleList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -176,27 +176,11 @@ func (s *ListQualityRulesResponseBodyPageResult) Validate() error {
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleList struct {
-	// The rule business attribute configurations.
+	// The business attribute configuration of the rule.
 	AttributeWithValueList []*ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueList `json:"AttributeWithValueList,omitempty" xml:"AttributeWithValueList,omitempty" type:"Repeated"`
-	// The rule category. Valid values:
-	//
-	// - CONSISTENT: consistency.
-	//
-	// - EFFECTIVE: validity.
-	//
-	// - TIMELINESE: timeliness.
-	//
-	// - ACCURATE: accuracy.
-	//
-	// - UNIQUENESS: uniqueness.
-	//
-	// - COMPLETENESS: completeness.
-	//
-	// - STABILITY: stability.
-	//
-	// - CUSTOM: custom.
+	// The rule category. Valid values: CONSISTENT (consistency), EFFECTIVE (validity), TIMELINESE (timeliness), ACCURATE (accuracy), UNIQUENESS (uniqueness), COMPLETENESS (completeness), STABILITY (stability), and CUSTOM (custom).
 	CatalogList []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -220,35 +204,35 @@ type ListQualityRulesResponseBodyPageResultQualityRuleList struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether exception archiving is enabled.
+	// Specifies whether error archiving is enabled.
 	EnableErrorArchive *bool `json:"EnableErrorArchive,omitempty" xml:"EnableErrorArchive,omitempty"`
-	// The rule configuration key-value pairs. These vary by templatetype: different templatetypes return different form key-value pair configurations.
+	// The rule configuration key-value pairs. Different template types return different form key-value pair configurations.
 	FormPropertyList []*ListQualityRulesResponseBodyPageResultQualityRuleListFormPropertyList `json:"FormPropertyList,omitempty" xml:"FormPropertyList,omitempty" type:"Repeated"`
-	// The quality rule ID.
+	// The ID of the quality rule.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the user who last modified the rule.
+	// The ID of the user who last modified the quality rule.
 	//
 	// example:
 	//
 	// 30012011
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The name of the user who last modified the rule.
+	// The name of the user who last modified the quality rule.
 	//
 	// example:
 	//
 	// test
 	ModifierName *string `json:"ModifierName,omitempty" xml:"ModifierName,omitempty"`
-	// The modification time.
+	// The modification time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The quality rule name.
+	// The name of the quality rule.
 	//
 	// example:
 	//
@@ -256,139 +240,155 @@ type ListQualityRulesResponseBodyPageResultQualityRuleList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of schedules bound to the rule.
 	ScheduleBindList []*ListQualityRulesResponseBodyPageResultQualityRuleListScheduleBindList `json:"ScheduleBindList,omitempty" xml:"ScheduleBindList,omitempty" type:"Repeated"`
-	// The quality rule status. Valid values:
+	// The SQL preview text of the saved rule. The text may contain multiple SQL statements. If preview is not supported or generation fails, null is returned.
 	//
-	// - ENABLE
+	// example:
 	//
-	// - DISABLE.
+	// select count(*) from test_table;
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The status of the quality rule. Valid values:
+	//
+	// - ENABLE: Enabled.
+	//
+	// - DISABLE: Disabled.
 	//
 	// example:
 	//
 	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The rule strength. Valid values:
+	// The strength of the rule. Valid values:
 	//
-	// - STRONG
+	// - STRONG: Strong rule.
 	//
-	// - WEAK.
+	// - WEAK: Weak rule.
 	//
 	// example:
 	//
 	// STRONG
 	Strength *string `json:"Strength,omitempty" xml:"Strength,omitempty"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
 	// 1
 	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
 	// 1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The templatetype group. Valid values:
+	// The template type group. Valid values:
 	//
-	// - SYSTEM: system preset.
+	// - SYSTEM: System preset template.
 	//
-	// - CUSTOM: custom template.
+	// - CUSTOM: Custom template.
 	//
-	// - TEMPLATE: union of SYSTEM and CUSTOM.
+	// - TEMPLATE: Union of SYSTEM and CUSTOM.
 	//
-	// - CUSTOM_SQL: custom SQL template.
+	// - CUSTOM_SQL: Custom SQL template.
 	//
 	// example:
 	//
 	// CUSTOM
 	TemplateScope *string `json:"TemplateScope,omitempty" xml:"TemplateScope,omitempty"`
-	// The templatetype. Valid values:
+	// The template type. Valid values:
 	//
-	//   - FIELD_NULL_VALUE_VALIDATE: field null value validation.
+	// - FIELD_NULL_VALUE_VALIDATE: Field null value check.
 	//
-	//   - FIELD_EMPTY_STRING_VALIDATE: field empty character string validation.
+	// - FIELD_EMPTY_STRING_VALIDATE: Field empty character string check.
 	//
-	//   - FIELD_UNIQUE_VALIDATE: field uniqueness validation.
+	// - FIELD_UNIQUE_VALIDATE: Field uniqueness check.
 	//
-	//   - FIELD_GROUP_COUNT_VALIDATE: field unique value count validation.
+	// - FIELD_GROUP_COUNT_VALIDATE: Field unique value count check.
 	//
-	//   - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count validation.
+	// - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: Field duplicate value count check.
 	//
-	//   - FUNCTION_TIME_COMPARE: time function comparison.
+	// - FUNCTION_TIME_COMPARE: Time function comparison.
 	//
-	//   - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison.
+	// - SINGLE_TABLE_TIME_COMPARE: Non-partitioned table time field comparison.
 	//
-	//   - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison.
+	// - DOUBLE_TABLE_TIME_COMPARE: Two-table time field comparison.
 	//
-	//   - FIELD_FORMAT_VALIDATE: field format validation.
+	// - FIELD_FORMAT_VALIDATE: Field format check.
 	//
-	//   - FIELD_LENGTH_VALIDATE: field length validation.
+	// - FIELD_LENGTH_VALIDATE: Field length check.
 	//
-	//   - FIELD_VALUE_RANGE_VALIDATE: field value range validation.
+	// - FIELD_VALUE_RANGE_VALIDATE: Field value range check.
 	//
-	//   - CODE_TABLE_COMPARE: lookup table reference comparison.
+	// - CODE_TABLE_COMPARE: Lookup table reference comparison.
 	//
-	//   - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison.
+	// - STANDARD_CODE_TABLE_COMPARE: Data standard lookup table reference comparison.
 	//
-	//   - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison.
+	// - SINGLE_TABLE_FIELD_VALUE_COMPARE: Non-partitioned table field value consistency comparison.
 	//
-	//   - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison.
+	// - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: Non-partitioned table field statistical value consistency comparison.
 	//
-	//   - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison.
+	// - SINGLE_TABLE_FIELD_EXP_COMPARE: Non-partitioned table field business logic consistency comparison.
 	//
-	//   - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison.
+	// - DOUBLE_TABLE_FIELD_VALUE_COMPARE: Two-table field value consistency comparison.
 	//
-	//   - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison.
+	// - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Two-table field statistical value consistency comparison.
 	//
-	//   - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison.
+	// - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-source two-table field statistical value consistency comparison.
 	//
-	//   - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison.
+	// - DOUBLE_TABLE_FIELD_EXP_COMPARE: Two-table field business logic consistency comparison.
 	//
-	//   - TABLE_STABILITY_VALIDATE: table stability validation.
+	// - TABLE_STABILITY_VALIDATE: Table stability check.
 	//
-	//   - TABLE_FLUCTUATION_VALIDATE: table fluctuation validation.
+	// - TABLE_FLUCTUATION_VALIDATE: Table fluctuation check.
 	//
-	//   - FIELD_STABILITY_VALIDATE: field stability validation.
+	// - FIELD_STABILITY_VALIDATE: Field stability check.
 	//
-	//   - FIELD_FLUCTUATION_VALIDATE: field fluctuation validation.
+	// - FIELD_FLUCTUATION_VALIDATE: Field fluctuation check.
 	//
-	//   - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric validation.
+	// - CUSTOM_STATISTICAL_VALIDATE: Custom statistical metric check.
 	//
-	//   - CUSTOM_DATA_DETAILS_VALIDATE: custom data details validation.
+	// - CUSTOM_DATA_DETAILS_VALIDATE: Custom data details check.
 	//
-	//   - DATASOURCE_AVAILABLE_CHECK: data source connectivity check.
+	// - DATASOURCE_AVAILABLE_CHECK: Data source connectivity check.
 	//
-	//   - TABLE_SCHEMA_CHECK: table schema change detection.
+	// - TABLE_SCHEMA_CHECK: Table schema change check.
 	//
-	//   - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison.
+	// - REAL_TIME_OFFLINE_COMPARE: Real-time and offline comparison.
 	//
-	//   - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring.
+	// - REAL_TIME_STATISTICAL_VALIDATE: Real-time statistical value check.
 	//
-	//   - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison, and more.
+	// - REAL_TIME_MULTI_CHAIN_COMPARE: Real-time multi-link comparison.
 	//
 	// example:
 	//
 	// FIELD_NULL_VALUE_VALIDATE
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The ID of the most recent trial run task.
+	// The ID of the last test run task.
 	//
 	// example:
 	//
 	// 22
 	TestRunRuleTaskId *int64 `json:"TestRunRuleTaskId,omitempty" xml:"TestRunRuleTaskId,omitempty"`
-	// The status of the most recent trial run task. Valid values: NOT_RUN, WAITING, RUNNING, SUCCESS, FAILED.
+	// The status of the last test run task. Valid values:
+	//
+	// - NOT_RUN: Not run.
+	//
+	// - WAITING: Waiting.
+	//
+	// - RUNNING: Running.
+	//
+	// - SUCCESS: Succeeded.
+	//
+	// - FAILED: Failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	TestRunRuleTaskStatus *string `json:"TestRunRuleTaskStatus,omitempty" xml:"TestRunRuleTaskStatus,omitempty"`
-	// Indicates whether the trial run validation passed.
+	// Indicates whether the test run validation passed.
 	TestRunRuleValidateResult *bool `json:"TestRunRuleValidateResult,omitempty" xml:"TestRunRuleValidateResult,omitempty"`
 	// The list of validation conditions.
 	ValidateConditionList []*ListQualityRulesResponseBodyPageResultQualityRuleListValidateConditionList `json:"ValidateConditionList,omitempty" xml:"ValidateConditionList,omitempty" type:"Repeated"`
 	// The validation object.
 	ValidateObject *ListQualityRulesResponseBodyPageResultQualityRuleListValidateObject `json:"ValidateObject,omitempty" xml:"ValidateObject,omitempty" type:"Struct"`
-	// The ID of the monitoring to which the rule belongs.
+	// The ID of the quality watchtask to which the rule belongs.
 	//
 	// example:
 	//
@@ -458,6 +458,10 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) GetName() *strin
 
 func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) GetScheduleBindList() []*ListQualityRulesResponseBodyPageResultQualityRuleListScheduleBindList {
 	return s.ScheduleBindList
+}
+
+func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) GetSql() *string {
+	return s.Sql
 }
 
 func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) GetStatus() *string {
@@ -578,6 +582,11 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) SetScheduleBindL
 	return s
 }
 
+func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) SetSql(v string) *ListQualityRulesResponseBodyPageResultQualityRuleList {
+	s.Sql = &v
+	return s
+}
+
 func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) SetStatus(v string) *ListQualityRulesResponseBodyPageResultQualityRuleList {
 	s.Status = &v
 	return s
@@ -686,7 +695,7 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleList) Validate() error
 type ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueList struct {
 	// The attribute details.
 	AttributeInfo *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeInfo `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty" type:"Struct"`
-	// The property value.
+	// The attribute value.
 	AttributeValue *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeValue `json:"AttributeValue,omitempty" xml:"AttributeValue,omitempty" type:"Struct"`
 }
 
@@ -737,7 +746,7 @@ type ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueList
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the attribute is enabled.
+	// Specifies whether the attribute is enabled.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The attribute ID.
 	//
@@ -751,9 +760,9 @@ type ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueList
 	//
 	// attr01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the attribute is required.
+	// Specifies whether the attribute is required.
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
-	// Indicates whether the attribute is searchable.
+	// Specifies whether the attribute is searchable.
 	Searchable *bool `json:"Searchable,omitempty" xml:"Searchable,omitempty"`
 	// The attribute value configuration details.
 	ValueConfig *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeInfoValueConfig `json:"ValueConfig,omitempty" xml:"ValueConfig,omitempty" type:"Struct"`
@@ -840,47 +849,27 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValue
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeInfoValueConfig struct {
-	// The attribute field type. Valid values:
-	//
-	// - STRING: text.
-	//
-	// - BIGINT: integer.
-	//
-	// - DOUBLE: floating-point.
-	//
-	// - BOOLEAN: Boolean.
-	//
-	// - DATE: date.
-	//
-	// - DATETIME: datetime.
+	// The attribute field type. Valid values: STRING (text), BIGINT (integer), DOUBLE (floating-point number), BOOLEAN (boolean), DATE (date), and DATETIME (datetime).
 	//
 	// example:
 	//
 	// STRING
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The attribute default value.
+	// The default value of the attribute.
 	DefaultValue *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeInfoValueConfigDefaultValue `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty" type:"Struct"`
-	// The attribute field length. This constrains the maximum length of text-type attribute values.
+	// The attribute field length. You can use this parameter to constrain the maximum length of text attribute values.
 	//
 	// example:
 	//
 	// 6997283
 	Length *int32 `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The attribute value input method. Valid values:
-	//
-	// - CUSTOMIZED: custom input.
-	//
-	// - SINGLE_ENUM: single-select dropdown.
-	//
-	// - MULTIPLE_ENUMS: multi-select dropdown.
-	//
-	// - RANGE: range interval.
+	// The attribute value input method. Valid values: CUSTOMIZED (custom input), SINGLE_ENUM (single-select drop-down list), MULTIPLE_ENUMS (multi-select drop-down list), and RANGE (range).
 	//
 	// example:
 	//
 	// CUSTOMIZED
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The attribute option values. This applies only to attributes with the input method set to single-select dropdown or multi-select dropdown.
+	// The attribute option values. This parameter applies only to attributes whose input method is a single-select or multi-select drop-down list.
 	ValueEnumList []*string `json:"ValueEnumList,omitempty" xml:"ValueEnumList,omitempty" type:"Repeated"`
 }
 
@@ -947,23 +936,23 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValue
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeInfoValueConfigDefaultValue struct {
-	// Indicates whether the maximum value is included.
+	// Specifies whether the maximum value is included.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
-	// Indicates whether the minimum value is included.
+	// Specifies whether the minimum value is included.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
-	// The maximum value. This applies to range interval attributes.
+	// The maximum value. This parameter applies to range attributes.
 	//
 	// example:
 	//
 	// 100
 	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum value. This applies to range interval attributes.
+	// The minimum value. This parameter applies to range attributes.
 	//
 	// example:
 	//
 	// 1
 	MinValue *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The list of attribute values. This applies to attributes with the input method set to custom input, single-select dropdown, or multi-select dropdown.
+	// The attribute value list. This parameter applies to attributes whose input method is custom input, single-select drop-down list, or multi-select drop-down list.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -1025,23 +1014,23 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValue
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValueListAttributeValue struct {
-	// Indicates whether the maximum value is included.
+	// Specifies whether the maximum value is included.
 	IncludeMaxValue *bool `json:"IncludeMaxValue,omitempty" xml:"IncludeMaxValue,omitempty"`
-	// Indicates whether the minimum value is included.
+	// Specifies whether the minimum value is included.
 	IncludeMinValue *bool `json:"IncludeMinValue,omitempty" xml:"IncludeMinValue,omitempty"`
-	// The maximum value. This applies to range interval attributes.
+	// The maximum value. This parameter applies to range attributes.
 	//
 	// example:
 	//
 	// 100
 	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum value. This applies to range interval attributes.
+	// The minimum value. This parameter applies to range attributes.
 	//
 	// example:
 	//
 	// 1
 	MinValue *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The list of attribute values. This applies to attributes with the input method set to custom input, single-select dropdown, or multi-select dropdown.
+	// The attribute value list. This parameter applies to attributes whose input method is custom input, single-select drop-down list, or multi-select drop-down list.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -1103,7 +1092,7 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListAttributeWithValue
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListFormPropertyList struct {
-	// The control type.
+	// The component type.
 	//
 	// example:
 	//
@@ -1115,7 +1104,7 @@ type ListQualityRulesResponseBodyPageResultQualityRuleListFormPropertyList struc
 	//
 	// col
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The property value.
+	// The attribute value.
 	//
 	// example:
 	//
@@ -1163,13 +1152,13 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListFormPropertyList) 
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListScheduleBindList struct {
-	// The schedule ID.
+	// The ID of the schedule.
 	//
 	// example:
 	//
 	// 1
 	ScheduleId *int64 `json:"ScheduleId,omitempty" xml:"ScheduleId,omitempty"`
-	// The schedule name.
+	// The name of the schedule.
 	//
 	// example:
 	//
@@ -1208,7 +1197,7 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListScheduleBindList) 
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListValidateConditionList struct {
-	// The condition node ID.
+	// The ID of the condition node.
 	//
 	// example:
 	//
@@ -1220,25 +1209,41 @@ type ListQualityRulesResponseBodyPageResultQualityRuleListValidateConditionList 
 	//
 	// test
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
 	// test
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The operator. Valid values: EQUAL, NOT_EQUAL, LARGER, SMALLER, LARGE_OR_EQUAL, SMALLER_OR_EQUAL, AND, OR.
+	// The operator. Valid values:
+	//
+	// - EQUAL: Equal to.
+	//
+	// - NOT_EQUAL: Not equal to.
+	//
+	// - LARGER: Greater than.
+	//
+	// - SMALLER: Less than.
+	//
+	// - LARGE_OR_EQUAL: Greater than or equal to.
+	//
+	// - SMALLER_OR_EQUAL: Less than or equal to.
+	//
+	// - AND: AND.
+	//
+	// - OR: OR.
 	//
 	// example:
 	//
 	// AND
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The operator name.
+	// The name of the operator.
 	//
 	// example:
 	//
-	// 且
+	// AND
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	// The parent condition node ID.
+	// The ID of the parent condition node.
 	//
 	// example:
 	//
@@ -1246,9 +1251,9 @@ type ListQualityRulesResponseBodyPageResultQualityRuleListValidateConditionList 
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	// The condition type. Valid values:
 	//
-	// - RELATION: relation.
+	// - RELATION: Relation.
 	//
-	// - EXPRESSION: expression.
+	// - EXPRESSION: Expression.
 	//
 	// example:
 	//
@@ -1347,13 +1352,29 @@ func (s *ListQualityRulesResponseBodyPageResultQualityRuleListValidateConditionL
 }
 
 type ListQualityRulesResponseBodyPageResultQualityRuleListValidateObject struct {
-	// The validation object name.
+	// The name of the validation object.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The validation object type. Valid values: UNKNOWN, TABLE, COLUMN, DATASOURCE, DATASOURCE_TABLE, REALTIME, INDEX, CHAIN.
+	// The validation object type. Valid values:
+	//
+	// - UNKNOWN: Unknown.
+	//
+	// - TABLE: Table.
+	//
+	// - COLUMN: Column.
+	//
+	// - DATASOURCE: Data source.
+	//
+	// - DATASOURCE_TABLE: Data source table.
+	//
+	// - REALTIME: Real-time.
+	//
+	// - INDEX: Index.
+	//
+	// - CHAIN: Chain.
 	//
 	// example:
 	//

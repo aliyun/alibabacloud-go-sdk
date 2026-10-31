@@ -18,7 +18,7 @@ type iAddRegisterLineageShrinkRequest interface {
 }
 
 type AddRegisterLineageShrinkRequest struct {
-	// The command for registering and adding data lineage.
+	// The command to register data lineage.
 	//
 	// This parameter is required.
 	AddRegisterLineageCommandShrink *string `json:"AddRegisterLineageCommand,omitempty" xml:"AddRegisterLineageCommand,omitempty"`
@@ -30,6 +30,8 @@ type AddRegisterLineageShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011

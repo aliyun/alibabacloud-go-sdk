@@ -30,6 +30,8 @@ type ListAddableUsersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -87,7 +89,7 @@ type ListAddableUsersRequestListQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

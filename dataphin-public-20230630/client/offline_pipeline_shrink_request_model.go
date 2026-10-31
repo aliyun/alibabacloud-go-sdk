@@ -24,7 +24,7 @@ type OfflinePipelineShrinkRequest struct {
 	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The offline command for the pipeline node.
+	// The command to take the pipeline task offline.
 	//
 	// This parameter is required.
 	OfflineCommandShrink *string `json:"OfflineCommand,omitempty" xml:"OfflineCommand,omitempty"`
@@ -36,6 +36,8 @@ type OfflinePipelineShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the user who performs the operation.
+	//
 	// example:
 	//
 	// 30001011

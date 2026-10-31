@@ -24,13 +24,13 @@ type iCreateStreamBatchJobMappingResponseBody interface {
 }
 
 type CreateStreamBatchJobMappingResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result returned when the node is created.
+	// The return result of a successful task creation.
 	Data *CreateStreamBatchJobMappingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned by the backend.
 	//
@@ -50,7 +50,7 @@ type CreateStreamBatchJobMappingResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -138,7 +138,7 @@ type CreateStreamBatchJobMappingResponseBodyData struct {
 	//
 	// 123123
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The redirect relative path.
+	// The relative path for redirection.
 	//
 	// example:
 	//

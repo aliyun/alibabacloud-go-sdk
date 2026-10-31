@@ -30,6 +30,8 @@ type ListBizEntitiesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
@@ -157,21 +159,21 @@ func (s *ListBizEntitiesRequestListQuery) Validate() error {
 }
 
 type ListBizEntitiesRequestListQueryFilterCriteria struct {
-	// The list of business unit IDs.
+	// The IDs of the business units.
 	BizUnitIdList []*int64 `json:"BizUnitIdList,omitempty" xml:"BizUnitIdList,omitempty" type:"Repeated"`
-	// The list of business unit IDs.
+	// The IDs of the business units.
 	BizUnitNameList []*string `json:"BizUnitNameList,omitempty" xml:"BizUnitNameList,omitempty" type:"Repeated"`
-	// The list of data domain IDs.
+	// The IDs of the data domains.
 	DataDomainIdList []*int64 `json:"DataDomainIdList,omitempty" xml:"DataDomainIdList,omitempty" type:"Repeated"`
-	// The list of data domain IDs.
+	// The IDs of the data domains.
 	DataDomainNameList []*string `json:"DataDomainNameList,omitempty" xml:"DataDomainNameList,omitempty" type:"Repeated"`
 	// Specifies whether the business entity is associated with a logical table.
 	HasTableRef *bool `json:"HasTableRef,omitempty" xml:"HasTableRef,omitempty"`
-	// The list of owner user IDs.
+	// The IDs of the owners.
 	OwnerUserIdList []*string `json:"OwnerUserIdList,omitempty" xml:"OwnerUserIdList,omitempty" type:"Repeated"`
-	// The list of business entity statuses. For more information, refer to the API operation for querying business entity details.
+	// The status of the business entity. For more information, refer to the "Get business entity details" API operation.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The list of business entity subtypes. For more information, refer to the API operation for querying business entity details.
+	// The subtypes of the business entity. For more information, refer to the "Get business entity details" API operation.
 	SubTypeList []*string `json:"SubTypeList,omitempty" xml:"SubTypeList,omitempty" type:"Repeated"`
 }
 

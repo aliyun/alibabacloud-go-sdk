@@ -26,11 +26,13 @@ type SubmitBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The submit request.
+	// The edit request.
 	//
 	// This parameter is required.
 	SubmitCommand *SubmitBatchTaskRequestSubmitCommand `json:"SubmitCommand,omitempty" xml:"SubmitCommand,omitempty" type:"Struct"`
@@ -81,7 +83,7 @@ func (s *SubmitBatchTaskRequest) Validate() error {
 }
 
 type SubmitBatchTaskRequestSubmitCommand struct {
-	// The code of the node.
+	// The code of the task.
 	//
 	// This parameter is required.
 	//
@@ -89,6 +91,8 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The version number of the code template.
+	//
 	// example:
 	//
 	// 1
@@ -101,7 +105,15 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+	// 条件调度；不传保留，Enable=false关闭并清除原条件，仅周期任务支持
+	ConditionScheduleConfig *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig `json:"ConditionScheduleConfig,omitempty" xml:"ConditionScheduleConfig,omitempty" type:"Struct"`
+	// 不传时保留任务当前配置。
+	//
+	// example:
+	//
+	// 0.5
+	CpuResource *string `json:"CpuResource,omitempty" xml:"CpuResource,omitempty"`
+	// The cron expression for automatic scheduling. You can refer to Linux cron expressions.
 	//
 	// example:
 	//
@@ -109,7 +121,7 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// The custom schedule interval configuration.
 	CustomScheduleConfig *SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig `json:"CustomScheduleConfig,omitempty" xml:"CustomScheduleConfig,omitempty" type:"Struct"`
-	// The execution engine for the node, such as for Python tasks. Valid values:
+	// The execution engine of the task. Valid values for Python tasks:
 	//
 	// - PYTHON2_7
 	//
@@ -121,7 +133,11 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The node ID in the directory tree.
+	// 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	ExecuteRerunConfig *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig `json:"ExecuteRerunConfig,omitempty" xml:"ExecuteRerunConfig,omitempty" type:"Struct"`
+	// 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+	ExecuteTimeOutConfig *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig `json:"ExecuteTimeOutConfig,omitempty" xml:"ExecuteTimeOutConfig,omitempty" type:"Struct"`
+	// The ID of the node in the task directory tree.
 	//
 	// This parameter is required.
 	//
@@ -129,7 +145,13 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The name of the batch task.
+	// 不传时保留任务当前配置。
+	//
+	// example:
+	//
+	// 1024
+	MemoryResource *string `json:"MemoryResource,omitempty" xml:"MemoryResource,omitempty"`
+	// The name of the offline task.
 	//
 	// This parameter is required.
 	//
@@ -137,15 +159,15 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// test111
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the node.
+	// The description of the task.
 	//
 	// example:
 	//
-	// xx测试
+	// xx test
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The list of node output names.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
-	// The node status. Valid values:
+	// The status of the node. Valid values:
 	//
 	// - 1: Normal.
 	//
@@ -157,20 +179,23 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// 1
 	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// The ID of the offline code template.
+	//
 	// example:
 	//
 	// template_123456
-	OfflineCodeTemplateId     *string                                                         `json:"OfflineCodeTemplateId,omitempty" xml:"OfflineCodeTemplateId,omitempty"`
+	OfflineCodeTemplateId *string `json:"OfflineCodeTemplateId,omitempty" xml:"OfflineCodeTemplateId,omitempty"`
+	// The list of parameters for the offline code template.
 	OfflineCodeTemplateParams []*SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams `json:"OfflineCodeTemplateParams,omitempty" xml:"OfflineCodeTemplateParams,omitempty" type:"Repeated"`
 	// The list of custom parameters.
 	ParamList []*SubmitBatchTaskRequestSubmitCommandParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
-	// The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
+	// The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the project to which the node belongs.
+	// The ID of the project to which the task belongs.
 	//
 	// This parameter is required.
 	//
@@ -178,28 +203,52 @@ type SubmitBatchTaskRequestSubmitCommand struct {
 	//
 	// 10121101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The Python third-party packages that the node depends on.
+	// The Python third-party packages required by the task.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
+	// 资源引用列表，元素为资源名称。不传时使用原有任务的资源引用；传入列表时整体替换，空列表表示清空引用。
+	ResourceReferenceList []*string `json:"ResourceReferenceList,omitempty" xml:"ResourceReferenceList,omitempty" type:"Repeated"`
+	// 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+	//
+	// example:
+	//
+	// false
+	RetryOnTimeoutEnable *bool `json:"RetryOnTimeoutEnable,omitempty" xml:"RetryOnTimeoutEnable,omitempty"`
 	// The schedule period. Valid values:
 	//
-	// - YEARLY
+	// - YEARLY: Yearly.
 	//
-	// - MONTHLY
+	// - MONTHLY: Monthly.
 	//
-	// - WEEKLY
+	// - WEEKLY: Weekly.
 	//
-	// - DAILY
+	// - DAILY: Daily.
 	//
-	// - HOURLY
+	// - HOURLY: Hourly.
 	//
-	// - MINUTELY
+	// - MINUTELY: Minutely.
 	//
 	// example:
 	//
 	// DAILY
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
-	// The Spark client information.
+	// 基础调度模板；不传保留，空对象解除绑定，仅周期任务支持
+	ScheduleTemplate *SubmitBatchTaskRequestSubmitCommandScheduleTemplate `json:"ScheduleTemplate,omitempty" xml:"ScheduleTemplate,omitempty" type:"Struct"`
+	// The Spark client.
 	SparkClientInfo *SubmitBatchTaskRequestSubmitCommandSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
+	// 不传时保留任务当前配置。显式传入false时关闭。
+	//
+	// example:
+	//
+	// false
+	SparkDynamicResourceSwitch *bool `json:"SparkDynamicResourceSwitch,omitempty" xml:"SparkDynamicResourceSwitch,omitempty"`
+	// ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+	//
+	// example:
+	//
+	// ONLY_PROD
+	SparkResourceEffectScope *string `json:"SparkResourceEffectScope,omitempty" xml:"SparkResourceEffectScope,omitempty"`
+	// Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置。传入空Map时清空配置。
+	SparkSqlResourceConfigMap map[string]*string `json:"SparkSqlResourceConfigMap,omitempty" xml:"SparkSqlResourceConfigMap,omitempty"`
 	// The upstream dependencies.
 	UpStreamList []*SubmitBatchTaskRequestSubmitCommandUpStreamList `json:"UpStreamList,omitempty" xml:"UpStreamList,omitempty" type:"Repeated"`
 }
@@ -224,6 +273,14 @@ func (s *SubmitBatchTaskRequestSubmitCommand) GetComment() *string {
 	return s.Comment
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) GetConditionScheduleConfig() *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig {
+	return s.ConditionScheduleConfig
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetCpuResource() *string {
+	return s.CpuResource
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) GetCronExpression() *string {
 	return s.CronExpression
 }
@@ -236,8 +293,20 @@ func (s *SubmitBatchTaskRequestSubmitCommand) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) GetExecuteRerunConfig() *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig {
+	return s.ExecuteRerunConfig
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetExecuteTimeOutConfig() *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig {
+	return s.ExecuteTimeOutConfig
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) GetFileId() *int64 {
 	return s.FileId
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetMemoryResource() *string {
+	return s.MemoryResource
 }
 
 func (s *SubmitBatchTaskRequestSubmitCommand) GetName() *string {
@@ -280,12 +349,36 @@ func (s *SubmitBatchTaskRequestSubmitCommand) GetPythonModuleList() []*string {
 	return s.PythonModuleList
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) GetResourceReferenceList() []*string {
+	return s.ResourceReferenceList
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetRetryOnTimeoutEnable() *bool {
+	return s.RetryOnTimeoutEnable
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) GetSchedulePeriod() *string {
 	return s.SchedulePeriod
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) GetScheduleTemplate() *SubmitBatchTaskRequestSubmitCommandScheduleTemplate {
+	return s.ScheduleTemplate
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) GetSparkClientInfo() *SubmitBatchTaskRequestSubmitCommandSparkClientInfo {
 	return s.SparkClientInfo
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetSparkDynamicResourceSwitch() *bool {
+	return s.SparkDynamicResourceSwitch
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetSparkResourceEffectScope() *string {
+	return s.SparkResourceEffectScope
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) GetSparkSqlResourceConfigMap() map[string]*string {
+	return s.SparkSqlResourceConfigMap
 }
 
 func (s *SubmitBatchTaskRequestSubmitCommand) GetUpStreamList() []*SubmitBatchTaskRequestSubmitCommandUpStreamList {
@@ -307,6 +400,16 @@ func (s *SubmitBatchTaskRequestSubmitCommand) SetComment(v string) *SubmitBatchT
 	return s
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) SetConditionScheduleConfig(v *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) *SubmitBatchTaskRequestSubmitCommand {
+	s.ConditionScheduleConfig = v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetCpuResource(v string) *SubmitBatchTaskRequestSubmitCommand {
+	s.CpuResource = &v
+	return s
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) SetCronExpression(v string) *SubmitBatchTaskRequestSubmitCommand {
 	s.CronExpression = &v
 	return s
@@ -322,8 +425,23 @@ func (s *SubmitBatchTaskRequestSubmitCommand) SetEngine(v string) *SubmitBatchTa
 	return s
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) SetExecuteRerunConfig(v *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) *SubmitBatchTaskRequestSubmitCommand {
+	s.ExecuteRerunConfig = v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetExecuteTimeOutConfig(v *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) *SubmitBatchTaskRequestSubmitCommand {
+	s.ExecuteTimeOutConfig = v
+	return s
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) SetFileId(v int64) *SubmitBatchTaskRequestSubmitCommand {
 	s.FileId = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetMemoryResource(v string) *SubmitBatchTaskRequestSubmitCommand {
+	s.MemoryResource = &v
 	return s
 }
 
@@ -377,13 +495,43 @@ func (s *SubmitBatchTaskRequestSubmitCommand) SetPythonModuleList(v []*string) *
 	return s
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) SetResourceReferenceList(v []*string) *SubmitBatchTaskRequestSubmitCommand {
+	s.ResourceReferenceList = v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetRetryOnTimeoutEnable(v bool) *SubmitBatchTaskRequestSubmitCommand {
+	s.RetryOnTimeoutEnable = &v
+	return s
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) SetSchedulePeriod(v string) *SubmitBatchTaskRequestSubmitCommand {
 	s.SchedulePeriod = &v
 	return s
 }
 
+func (s *SubmitBatchTaskRequestSubmitCommand) SetScheduleTemplate(v *SubmitBatchTaskRequestSubmitCommandScheduleTemplate) *SubmitBatchTaskRequestSubmitCommand {
+	s.ScheduleTemplate = v
+	return s
+}
+
 func (s *SubmitBatchTaskRequestSubmitCommand) SetSparkClientInfo(v *SubmitBatchTaskRequestSubmitCommandSparkClientInfo) *SubmitBatchTaskRequestSubmitCommand {
 	s.SparkClientInfo = v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetSparkDynamicResourceSwitch(v bool) *SubmitBatchTaskRequestSubmitCommand {
+	s.SparkDynamicResourceSwitch = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetSparkResourceEffectScope(v string) *SubmitBatchTaskRequestSubmitCommand {
+	s.SparkResourceEffectScope = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommand) SetSparkSqlResourceConfigMap(v map[string]*string) *SubmitBatchTaskRequestSubmitCommand {
+	s.SparkSqlResourceConfigMap = v
 	return s
 }
 
@@ -393,8 +541,23 @@ func (s *SubmitBatchTaskRequestSubmitCommand) SetUpStreamList(v []*SubmitBatchTa
 }
 
 func (s *SubmitBatchTaskRequestSubmitCommand) Validate() error {
+	if s.ConditionScheduleConfig != nil {
+		if err := s.ConditionScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.CustomScheduleConfig != nil {
 		if err := s.CustomScheduleConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExecuteRerunConfig != nil {
+		if err := s.ExecuteRerunConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ExecuteTimeOutConfig != nil {
+		if err := s.ExecuteTimeOutConfig.Validate(); err != nil {
 			return err
 		}
 	}
@@ -416,6 +579,11 @@ func (s *SubmitBatchTaskRequestSubmitCommand) Validate() error {
 			}
 		}
 	}
+	if s.ScheduleTemplate != nil {
+		if err := s.ScheduleTemplate.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SparkClientInfo != nil {
 		if err := s.SparkClientInfo.Validate(); err != nil {
 			return err
@@ -433,8 +601,193 @@ func (s *SubmitBatchTaskRequestSubmitCommand) Validate() error {
 	return nil
 }
 
+type SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig struct {
+	// 是否启用条件调度。传入ConditionScheduleConfig对象时必须提供，由后端校验；false关闭并清除旧配置。
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// 自定义条件列表；与TemplateId互斥，空列表清除旧条件
+	ParamList []*SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	// 条件调度模板ID，与ParamList互斥
+	//
+	// example:
+	//
+	// 1002
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) GetParamList() []*SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	return s.ParamList
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) GetTemplateId() *int64 {
+	return s.TemplateId
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) SetEnable(v bool) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) SetParamList(v []*SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig {
+	s.ParamList = v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) SetTemplateId(v int64) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig) Validate() error {
+	if s.ParamList != nil {
+		for _, item := range s.ParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList struct {
+	// 条件名称
+	//
+	// example:
+	//
+	// workday
+	ConditionName *string `json:"ConditionName,omitempty" xml:"ConditionName,omitempty"`
+	// 命中后的cron表达式
+	//
+	// example:
+	//
+	// 0 0 5 	- 	- ?
+	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// 是否启用该条件
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// 是否跟随主调度参数
+	//
+	// example:
+	//
+	// true
+	FollowScheduleParam *bool `json:"FollowScheduleParam,omitempty" xml:"FollowScheduleParam,omitempty"`
+	// 命中后的调度状态：1正常，2暂停，3空跑
+	//
+	// example:
+	//
+	// 1
+	NodeStatus *int32 `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// 条件表达式树JSON字符串，内部键名使用小驼峰
+	//
+	// example:
+	//
+	// {}
+	ScheduleConditionJson *string `json:"ScheduleConditionJson,omitempty" xml:"ScheduleConditionJson,omitempty"`
+	// 命中后的调度时间
+	//
+	// example:
+	//
+	// 05:00
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetConditionName() *string {
+	return s.ConditionName
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetCronExpression() *string {
+	return s.CronExpression
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetEnable() *bool {
+	return s.Enable
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetFollowScheduleParam() *bool {
+	return s.FollowScheduleParam
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetNodeStatus() *int32 {
+	return s.NodeStatus
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetScheduleConditionJson() *string {
+	return s.ScheduleConditionJson
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) GetScheduleTime() *string {
+	return s.ScheduleTime
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetConditionName(v string) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.ConditionName = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetCronExpression(v string) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetEnable(v bool) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.Enable = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetFollowScheduleParam(v bool) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.FollowScheduleParam = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetNodeStatus(v int32) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetScheduleConditionJson(v string) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.ScheduleConditionJson = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) SetScheduleTime(v string) *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList) Validate() error {
+	return dara.Validate(s)
+}
+
 type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
-	// The end time in the format of HH:mm.
+	// The end time in the HH:mm format.
 	//
 	// This parameter is required.
 	//
@@ -452,9 +805,9 @@ type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The interval unit. Valid values:
 	//
-	// - MINUTE: minute
+	// - MINUTE: Minute.
 	//
-	// - HOUR: hour
+	// - HOUR: Hour.
 	//
 	// This parameter is required.
 	//
@@ -464,17 +817,17 @@ type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
 	// The schedule period. Valid values:
 	//
-	// - YEARLY
+	// - YEARLY: Yearly.
 	//
-	// - MONTHLY
+	// - MONTHLY: Monthly.
 	//
-	// - WEEKLY
+	// - WEEKLY: Weekly.
 	//
-	// - DAILY
+	// - DAILY: Daily.
 	//
-	// - HOURLY
+	// - HOURLY: Hourly.
 	//
-	// - MINUTELY
+	// - MINUTELY: Minutely.
 	//
 	// This parameter is required.
 	//
@@ -482,7 +835,7 @@ type SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig struct {
 	//
 	// DAILY
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
-	// The start time in the format of HH:mm.
+	// The start time in the HH:mm format.
 	//
 	// This parameter is required.
 	//
@@ -549,16 +902,128 @@ func (s *SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig) Validate() err
 	return dara.Validate(s)
 }
 
-type SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams struct {
+type SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig struct {
+	// 自定义失败重试间隔。
+	//
 	// example:
 	//
-	// 参数说明
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EncryptEnabled *bool   `json:"EncryptEnabled,omitempty" xml:"EncryptEnabled,omitempty"`
+	// 60
+	CustomRerunInterval *string `json:"CustomRerunInterval,omitempty" xml:"CustomRerunInterval,omitempty"`
+	// 自定义失败重试次数。
+	//
+	// example:
+	//
+	// 3
+	CustomRerunTimes *string `json:"CustomRerunTimes,omitempty" xml:"CustomRerunTimes,omitempty"`
+	// 是否跟随系统配置。
+	//
+	// example:
+	//
+	// false
+	FollowSystem *bool `json:"FollowSystem,omitempty" xml:"FollowSystem,omitempty"`
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) GetCustomRerunInterval() *string {
+	return s.CustomRerunInterval
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) GetCustomRerunTimes() *string {
+	return s.CustomRerunTimes
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) GetFollowSystem() *bool {
+	return s.FollowSystem
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) SetCustomRerunInterval(v string) *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig {
+	s.CustomRerunInterval = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) SetCustomRerunTimes(v string) *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig {
+	s.CustomRerunTimes = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) SetFollowSystem(v bool) *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig {
+	s.FollowSystem = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig struct {
+	// 自定义超时时间。
+	//
+	// example:
+	//
+	// 1800
+	CustomValues *string `json:"CustomValues,omitempty" xml:"CustomValues,omitempty"`
+	// 是否跟随系统配置。
+	//
+	// example:
+	//
+	// false
+	FollowSystem *bool `json:"FollowSystem,omitempty" xml:"FollowSystem,omitempty"`
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) GetCustomValues() *string {
+	return s.CustomValues
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) GetFollowSystem() *bool {
+	return s.FollowSystem
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) SetCustomValues(v string) *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig {
+	s.CustomValues = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) SetFollowSystem(v bool) *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig {
+	s.FollowSystem = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams struct {
+	// The description of the parameter.
+	//
+	// example:
+	//
+	// Parameter description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether encryption is enabled.
+	EncryptEnabled *bool `json:"EncryptEnabled,omitempty" xml:"EncryptEnabled,omitempty"`
+	// The key of the parameter.
+	//
 	// example:
 	//
 	// paramKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the parameter.
+	//
 	// example:
 	//
 	// paramValue
@@ -614,7 +1079,7 @@ func (s *SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams) Validate(
 }
 
 type SubmitBatchTaskRequestSubmitCommandParamList struct {
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// This parameter is required.
 	//
@@ -622,7 +1087,7 @@ type SubmitBatchTaskRequestSubmitCommandParamList struct {
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The parameter value.
+	// The value of the parameter.
 	//
 	// This parameter is required.
 	//
@@ -659,6 +1124,36 @@ func (s *SubmitBatchTaskRequestSubmitCommandParamList) SetValue(v string) *Submi
 }
 
 func (s *SubmitBatchTaskRequestSubmitCommandParamList) Validate() error {
+	return dara.Validate(s)
+}
+
+type SubmitBatchTaskRequestSubmitCommandScheduleTemplate struct {
+	// 基础调度模板ID，必须为正数
+	//
+	// example:
+	//
+	// 1001
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandScheduleTemplate) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SubmitBatchTaskRequestSubmitCommandScheduleTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandScheduleTemplate) GetTemplateId() *int64 {
+	return s.TemplateId
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandScheduleTemplate) SetTemplateId(v int64) *SubmitBatchTaskRequestSubmitCommandScheduleTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *SubmitBatchTaskRequestSubmitCommandScheduleTemplate) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -699,13 +1194,13 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamList struct {
 	DependPeriod *SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod `json:"DependPeriod,omitempty" xml:"DependPeriod,omitempty" type:"Struct"`
 	// The dependency strategy. Valid values:
 	//
-	// - ALL: all
+	// - ALL: All.
 	//
-	// - FIRST: first
+	// - FIRST: First.
 	//
-	// - LAST: last
+	// - LAST: Last.
 	//
-	// - NEAR: nearest
+	// - NEAR: Nearest.
 	//
 	// example:
 	//
@@ -713,17 +1208,17 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamList struct {
 	DependStrategy *string `json:"DependStrategy,omitempty" xml:"DependStrategy,omitempty"`
 	// The dependent logical table fields.
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
-	// The type of the upstream dependency node. Valid values:
+	// The upstream dependency node type. Valid values:
 	//
-	// - PHYSICAL: physical node
+	// - PHYSICAL: Physical node.
 	//
-	// - LOGICAL: logical table dependency
+	// - LOGICAL: Logical table dependency.
 	//
 	// example:
 	//
 	// PHYSICAL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
+	// The period difference. A value of 0 indicates a dependency on the same period. A positive number indicates a dependency on the previous N periods.
 	//
 	// This parameter is required.
 	//
@@ -731,7 +1226,7 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamList struct {
 	//
 	// 1
 	PeriodDiff *int32 `json:"PeriodDiff,omitempty" xml:"PeriodDiff,omitempty"`
-	// Indicates whether the upstream node is enabled.
+	// Specifies whether the upstream node is enabled.
 	SourceNodeEnabled *bool `json:"SourceNodeEnabled,omitempty" xml:"SourceNodeEnabled,omitempty"`
 	// The ID of the upstream node.
 	//
@@ -740,8 +1235,6 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamList struct {
 	// n_2001
 	SourceNodeId *string `json:"SourceNodeId,omitempty" xml:"SourceNodeId,omitempty"`
 	// The output name of the upstream node.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -862,13 +1355,13 @@ type SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod struct {
 	PeriodOffset *int32 `json:"PeriodOffset,omitempty" xml:"PeriodOffset,omitempty"`
 	// The dependency period type. Valid values:
 	//
-	// - CURRENT_PERIOD: current period
+	// - CURRENT_PERIOD: Current period.
 	//
-	// - LAST_PERIOD: previous period
+	// - LAST_PERIOD: Last period.
 	//
-	// - LAST_N_PERIOD: last N days
+	// - LAST_N_PERIOD: Last N days.
 	//
-	// - LAST_24_HOUR: last 24 hours
+	// - LAST_24_HOUR: Last 24 hours.
 	//
 	// This parameter is required.
 	//

@@ -50,7 +50,7 @@ type GetStandardLookupTableResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -132,19 +132,19 @@ type GetStandardLookupTableResponseBodyLookupTableInfo struct {
 	//
 	// CITY
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID of the creator.
+	// The ID of the user who created the lookup table.
 	//
 	// example:
 	//
 	// 30012021
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The username of the creator.
+	// The username of the user who created the lookup table.
 	//
 	// example:
 	//
@@ -156,21 +156,21 @@ type GetStandardLookupTableResponseBodyLookupTableInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory to which the lookup table belongs.
+	// The parent folder.
 	DirectoryReference *GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference `json:"DirectoryReference,omitempty" xml:"DirectoryReference,omitempty" type:"Struct"`
-	// The lookup table ID.
+	// The ID of the lookup table.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The user ID of the last modifier.
+	// The ID of the user who last modified the lookup table.
 	//
 	// example:
 	//
 	// 30012021
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// The username of the last modifier.
+	// The username of the user who last modified the lookup table.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type GetStandardLookupTableResponseBodyLookupTableInfo struct {
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
 	// The list of lookup table values.
 	LookupTableValueList []*GetStandardLookupTableResponseBodyLookupTableInfoLookupTableValueList `json:"LookupTableValueList,omitempty" xml:"LookupTableValueList,omitempty" type:"Repeated"`
-	// The modification time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -188,9 +188,9 @@ type GetStandardLookupTableResponseBodyLookupTableInfo struct {
 	//
 	// example:
 	//
-	// 城市码表
+	// City lookup table
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user ID of the owner.
+	// The ID of the owner.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ func (s *GetStandardLookupTableResponseBodyLookupTableInfo) Validate() error {
 }
 
 type GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference struct {
-	// The directory to which the lookup table belongs.
+	// The parent folder.
 	//
 	// example:
 	//
@@ -387,7 +387,7 @@ func (s *GetStandardLookupTableResponseBodyLookupTableInfoDirectoryReference) Va
 }
 
 type GetStandardLookupTableResponseBodyLookupTableInfoLookupTableValueList struct {
-	// The code description.
+	// The description of the code.
 	//
 	// example:
 	//
@@ -409,7 +409,7 @@ type GetStandardLookupTableResponseBodyLookupTableInfoLookupTableValueList struc
 	//
 	// example:
 	//
-	// 杭州
+	// Hangzhou
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -26,7 +26,7 @@ type iExecuteTriggerNodeRequest interface {
 }
 
 type ExecuteTriggerNodeRequest struct {
-  // The business date.
+  // The business date. The format is YYYY-MM-DD.
   // 
   // This parameter is required.
   // 
@@ -34,19 +34,13 @@ type ExecuteTriggerNodeRequest struct {
   // 
   // 2025-06-01
   BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-  // The environment. Valid values:
-  // 
-  // - DEV: development environment.
-  // 
-  // - PROD: production environment.
-  // 
-  // Default value: PROD.
+  // The environment. Valid values: DEV for the development environment, and PROD for the production environment. Default value: PROD.
   // 
   // example:
   // 
   // DEV
   Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-  // If the node is an hourly or minutely node, multiple instances are generated per day. This parameter specifies the ordinal number of the instance.
+  // The instance index. If the node is scheduled by hour or minute, multiple instances are generated per day. This parameter specifies the sequence number of the instance.
   // 
   // example:
   // 
@@ -68,6 +62,8 @@ type ExecuteTriggerNodeRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // The ID of the operator.
+  // 
   // example:
   // 
   // 30001011

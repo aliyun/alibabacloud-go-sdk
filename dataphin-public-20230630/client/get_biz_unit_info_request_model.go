@@ -18,7 +18,7 @@ type iGetBizUnitInfoRequest interface {
 }
 
 type GetBizUnitInfoRequest struct {
-	// The data domain ID.
+	// The data sector ID.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +34,8 @@ type GetBizUnitInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
 	// example:
 	//
 	// 30001011

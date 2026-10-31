@@ -36,7 +36,7 @@ type GetStandardWordRootResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetStandardWordRootResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The word root details.
 	WordRootInfo *GetStandardWordRootResponseBodyWordRootInfo `json:"WordRootInfo,omitempty" xml:"WordRootInfo,omitempty" type:"Struct"`
@@ -132,7 +132,7 @@ type GetStandardWordRootResponseBodyWordRootInfo struct {
 	//
 	// avg
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type GetStandardWordRootResponseBodyWordRootInfo struct {
 	//
 	// test
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// The modification time.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type GetStandardWordRootResponseBodyWordRootInfo struct {
 	//
 	// example:
 	//
-	// 平均值
+	// Average
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

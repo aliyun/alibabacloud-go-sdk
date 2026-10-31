@@ -32,11 +32,13 @@ type GrantDataServiceApiRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The data service project ID.
+	// The Data Service project ID.
 	//
 	// This parameter is required.
 	//
@@ -114,33 +116,33 @@ type GrantDataServiceApiRequestGrantCommand struct {
 	//
 	// 1201
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to request development environment permissions for operation-type APIs.
+	// Specifies whether to apply for development environment permissions for operation APIs.
 	//
 	// example:
 	//
 	// true
 	ApplyDev *bool `json:"ApplyDev,omitempty" xml:"ApplyDev,omitempty"`
-	// Specifies whether to request production environment permissions for operation-type APIs.
+	// Specifies whether to apply for production environment permissions for operation APIs.
 	//
 	// example:
 	//
 	// true
 	ApplyProd *bool `json:"ApplyProd,omitempty" xml:"ApplyProd,omitempty"`
-	// The list of authorization permission types. Valid values:
+	// The list of authorized permission types:
 	//
-	// - When the grantee is an application, the following permission types are supported. To grant delegation permissions, you must also grant usage permissions.
+	// - When the authorized subject is an application, the following permission types are supported. If you grant the delegation permission, you must also grant the use permission:
 	//
-	//   - USE: usage permission.
+	//   - USE: use permission.
 	//
 	//   - DELEGATION: delegation permission.
 	//
-	// - When the grantee is an individual, only USE (usage) permission is supported.
+	// - When the authorized subject is an individual, only the USE permission is supported.
 	//
-	// - If this parameter is not specified, the default value is USE (usage) permission.
+	// - If this parameter is not specified, the default value is USE.
 	AuthTypes []*string `json:"AuthTypes,omitempty" xml:"AuthTypes,omitempty" type:"Repeated"`
-	// The list of development environment permission fields for query-type APIs. This parameter is required in dev-prod mode. DevFieldList and ProdFieldList cannot both be empty. This parameter is not required for operation-type APIs.
+	// The list of development environment permission fields for query APIs. This parameter is required in dev-prod mode. At least one of DevFieldList and ProdFieldList must be specified. This parameter is not required for operation APIs.
 	DevFieldList []*GrantDataServiceApiRequestGrantCommandDevFieldList `json:"DevFieldList,omitempty" xml:"DevFieldList,omitempty" type:"Repeated"`
-	// The expiration date in the format of yyyy-MM-dd.
+	// The validity period. Date format: yyyy-MM-dd.
 	//
 	// This parameter is required.
 	//
@@ -148,7 +150,7 @@ type GrantDataServiceApiRequestGrantCommand struct {
 	//
 	// 2025-06-30
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
-	// The authorization object type. Valid values:
+	// The object type of the authorization grantee. Valid values:
 	//
 	// - APP: application.
 	//
@@ -158,7 +160,7 @@ type GrantDataServiceApiRequestGrantCommand struct {
 	//
 	// APP
 	GranteeType *string `json:"GranteeType,omitempty" xml:"GranteeType,omitempty"`
-	// The list of production environment permission fields for query-type APIs. This parameter is required in basic mode. This parameter is not required for operation-type APIs.
+	// The list of production environment permission fields for query APIs. This parameter is required in basic mode and is not required for operation APIs.
 	ProdFieldList []*GrantDataServiceApiRequestGrantCommandProdFieldList `json:"ProdFieldList,omitempty" xml:"ProdFieldList,omitempty" type:"Repeated"`
 	// The reason for the authorization request.
 	//

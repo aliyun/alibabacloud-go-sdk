@@ -24,27 +24,27 @@ type iGetDirectoryTreeResponseBody interface {
 }
 
 type GetDirectoryTreeResponseBody struct {
-	// Error code. OK indicates a successful request.
+	// The error code. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Directory tree information. Returns the directory tree with all edge information, traversed level by level from the root node.
+	// The directory tree information. The directory tree and all edge information are returned through a level-order traversal starting from the root node.
 	Data []*GetDirectoryTreeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP status code.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ func (s *GetDirectoryTreeResponseBody) Validate() error {
 }
 
 type GetDirectoryTreeResponseBodyData struct {
-	// Child node.
+	// The child nodes.
 	Children *GetDirectoryTreeResponseBodyDataChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Struct"`
-	// Parent node.
+	// The parent node.
 	Parent *GetDirectoryTreeResponseBodyDataParent `json:"Parent,omitempty" xml:"Parent,omitempty" type:"Struct"`
 }
 
@@ -177,85 +177,85 @@ func (s *GetDirectoryTreeResponseBodyData) Validate() error {
 }
 
 type GetDirectoryTreeResponseBodyDataChildren struct {
-	// Directory type.
+	// The directory type.
 	//
 	// example:
 	//
 	// codeManage
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// Creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 300000907
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// John
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// Data cell ID.
+	// The data cell ID.
 	//
 	// example:
 	//
 	// 41342
 	DataCellId *int64 `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
-	// Directory path. Valid only for file or resource nodes.
+	// The directory path. This parameter is valid only for file or resource nodes.
 	//
 	// example:
 	//
 	// /
 	DirName *string `json:"DirName,omitempty" xml:"DirName,omitempty"`
-	// Creation time. Empty for non-entity object nodes.
+	// The creation time. This parameter is empty for non-entity object nodes.
 	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time. Empty for non-entity object nodes.
+	// The modification time. This parameter is empty for non-entity object nodes.
 	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Directory ID.
+	// The directory ID.
 	//
 	// example:
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Last modifier ID.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 300000907
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// Last modifier name.
+	// The name of the last modifier.
 	//
 	// example:
 	//
 	// John
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// Display name of the object.
+	// The display name of the object.
 	//
 	// example:
 	//
-	// 代码管理
+	// Code management
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Directory string ID.
+	// The string ID of the directory.
 	//
 	// example:
 	//
 	// 3
 	StringId *string `json:"StringId,omitempty" xml:"StringId,omitempty"`
-	// Object type.
+	// The object type.
 	//
 	// example:
 	//
@@ -402,85 +402,85 @@ func (s *GetDirectoryTreeResponseBodyDataChildren) Validate() error {
 }
 
 type GetDirectoryTreeResponseBodyDataParent struct {
-	// Directory type.
+	// The directory type.
 	//
 	// example:
 	//
 	// codeManage
 	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	// Creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// 300000907
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// John
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// Data cell ID.
+	// The data cell ID.
 	//
 	// example:
 	//
 	// 3213
 	DataCellId *int64 `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
-	// Directory path. Valid only for file or resource nodes.
+	// The directory path. This parameter is valid only for file or resource nodes.
 	//
 	// example:
 	//
 	// /
 	DirName *string `json:"DirName,omitempty" xml:"DirName,omitempty"`
-	// Creation time. Empty for non-entity object nodes.
+	// The creation time. This parameter is empty for non-entity object nodes.
 	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time. Empty for non-entity object nodes.
+	// The modification time. This parameter is empty for non-entity object nodes.
 	//
 	// example:
 	//
 	// 2024-11-01 18:08:17
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Directory ID.
+	// The directory ID.
 	//
 	// example:
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Last modifier ID.
+	// The ID of the last modifier.
 	//
 	// example:
 	//
 	// 300000907
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// Last modifier name.
+	// The name of the last modifier.
 	//
 	// example:
 	//
 	// John
 	LastModifierName *string `json:"LastModifierName,omitempty" xml:"LastModifierName,omitempty"`
-	// Display name of the object.
+	// The display name of the object.
 	//
 	// example:
 	//
-	// 代码管理
+	// Code management
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 7081229106458752
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Directory string ID.
+	// The string ID of the directory.
 	//
 	// example:
 	//
 	// 3
 	StringId *string `json:"StringId,omitempty" xml:"StringId,omitempty"`
-	// Object type.
+	// The object type.
 	//
 	// example:
 	//

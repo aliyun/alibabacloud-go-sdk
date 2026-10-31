@@ -22,9 +22,9 @@ type iGetStandardTemplateShrinkRequest interface {
 }
 
 type GetStandardTemplateShrinkRequest struct {
-	// The filter condition.
+	// The filter conditions.
 	FilterQueryShrink *string `json:"FilterQuery,omitempty" xml:"FilterQuery,omitempty"`
-	// The standard template ID.
+	// The ID of the standard template.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetStandardTemplateShrinkRequest struct {
 	//
 	// 22
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to allow a null value to be returned when the template does not exist. If set to false, an exception is thrown. Default value: true.
+	// Specifies whether to allow a null value to be returned when the template does not exist. If this parameter is set to false, an exception is thrown. Default value: true.
 	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
 	// The tenant ID.
 	//
@@ -42,6 +42,8 @@ type GetStandardTemplateShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

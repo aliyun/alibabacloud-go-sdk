@@ -18,7 +18,7 @@ type iGetMyTenantsRequest interface {
 }
 
 type GetMyTenantsRequest struct {
-	// The feature codes owned by the tenant.
+	// The feature codes of the tenant.
 	FeatureCodeList []*string `json:"FeatureCodeList,omitempty" xml:"FeatureCodeList,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
@@ -28,6 +28,8 @@ type GetMyTenantsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011

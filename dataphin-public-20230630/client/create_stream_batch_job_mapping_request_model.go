@@ -26,11 +26,13 @@ type CreateStreamBatchJobMappingRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
 	// example:
 	//
 	// 30001011
 	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
-	// The stream-batch integrated node information.
+	// The stream-batch integrated task information.
 	//
 	// This parameter is required.
 	StreamBatchJobMappingCreateCommand *CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand `json:"StreamBatchJobMappingCreateCommand,omitempty" xml:"StreamBatchJobMappingCreateCommand,omitempty" type:"Struct"`
@@ -93,9 +95,9 @@ type CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand struct
 	//
 	// example:
 	//
-	// 这是一段任务的描述信息
+	// This is a sample description for the task
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The folder in which the node is generated.
+	// The directory where the task is generated.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +105,7 @@ type CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand struct
 	//
 	// /karel
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The Flink DPI engine version.
+	// The database engine version of the Flink DPI engine.
 	//
 	// This parameter is required.
 	//
@@ -151,7 +153,7 @@ type CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand struct
 	//
 	// default-queue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The VVP cluster type. Valid values: SESSION and PREJOB. This parameter is specific to VVP. If not applicable, leave this parameter empty or do not pass it.
+	// The VVP cluster type. This parameter is specific to VVP. Valid values: SESSION and PREJOB. If it is not applicable, leave it empty or do not specify it.
 	//
 	// This parameter is required.
 	//

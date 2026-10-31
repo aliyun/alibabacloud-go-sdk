@@ -24,13 +24,13 @@ type iGetClusterQueueInfoByEnvResponseBody interface {
 }
 
 type GetClusterQueueInfoByEnvResponseBody struct {
-	// The error code. A value of OK indicates that the request was successful.
+	// The error code of the request. A value of OK indicates that the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data []*GetClusterQueueInfoByEnvResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code returned by the backend.
 	//
@@ -38,7 +38,7 @@ type GetClusterQueueInfoByEnvResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetClusterQueueInfoByEnvResponseBody struct {
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -148,7 +148,7 @@ type GetClusterQueueInfoByEnvResponseBodyData struct {
 	//
 	// 2024-10-31 10:29:17
 	CreateAt *string `json:"CreateAt,omitempty" xml:"CreateAt,omitempty"`
-	// The Flink image registry address.
+	// The Flink image registry.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type GetClusterQueueInfoByEnvResponseBodyData struct {
 	//
 	// cdh
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The maximum number of vCores provided by each queue.
+	// The maximum number of vCores provided for each queue.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type GetClusterQueueInfoByEnvResponseBodyData struct {
 	//
 	// dataphinv45prod
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The queue name, which serves as a unique identifier. For Kubernetes, this is the resource group name.
+	// The queue name, which is a unique identifier. In Kubernetes, it is the resource group name.
 	//
 	// example:
 	//

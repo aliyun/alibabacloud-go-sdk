@@ -18,7 +18,7 @@ type iListQualityRulesRequest interface {
 }
 
 type ListQualityRulesRequest struct {
-	// The paged query conditions.
+	// The paged query conditions, including paging parameters.
 	ListQuery *ListQualityRulesRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -28,6 +28,8 @@ type ListQualityRulesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator ID.
+	//
 	// example:
 	//
 	// 30001011
@@ -79,25 +81,9 @@ func (s *ListQualityRulesRequest) Validate() error {
 }
 
 type ListQualityRulesRequestListQuery struct {
-	// The rule type. Valid values:
-	//
-	// - CONSISTENT: consistency.
-	//
-	// - EFFECTIVE: validity.
-	//
-	// - TIMELINESE: timeliness.
-	//
-	// - ACCURATE: accuracy.
-	//
-	// - UNIQUENESS: uniqueness.
-	//
-	// - COMPLETENESS: completeness.
-	//
-	// - STABILITY: stability.
-	//
-	// - CUSTOM: custom.
+	// The rule type. Valid values: CONSISTENT (Consistency), EFFECTIVE (Effectiveness), TIMELINESE (Timeliness), ACCURATE (Accuracy), UNIQUENESS (Uniqueness), COMPLETENESS (Completeness), STABILITY (Stability), and CUSTOM (Custom).
 	CatalogList []*string `json:"CatalogList,omitempty" xml:"CatalogList,omitempty" type:"Repeated"`
-	// The search keyword for filtering. Supports searching by rule name and validation object.
+	// The search keyword. Supports searching by rule name and validation object.
 	//
 	// example:
 	//
@@ -109,63 +95,21 @@ type ListQualityRulesRequestListQuery struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of records per page. Default value: 20.
+	// The number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule strength. Valid values:
-	//
-	// - STRONG: strong.
-	//
-	// - WEAK: weak.
+	// The rule strength. Valid values: STRONG (Strong) and WEAK (Weak).
 	RuleStrengthList []*string `json:"RuleStrengthList,omitempty" xml:"RuleStrengthList,omitempty" type:"Repeated"`
-	// The rule effective status. Valid values:
-	//
-	// - ENABLE: enabled.
-	//
-	// - DISABLE: disabled.
+	// The effective status of the rule. Valid values: ENABLE (Enabled) and DISABLE (Disabled).
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 	// The rule template.
 	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" xml:"TemplateIdList,omitempty" type:"Repeated"`
-	// The task status. Valid values:
-	//
-	// - NOT_RUN: not executed.
-	//
-	// - WAITING: waiting.
-	//
-	// - RUNNING: executing.
-	//
-	// - SUCCESS: execution succeeded.
-	//
-	// - FAILED: execution failed.
-	//
-	// - CANCEL: canceled.
-	//
-	// - TIMEOUT: timed out.
-	//
-	// - OFFLINE: offline.
+	// The task status. Valid values: NOT_RUN (Not run), WAITING (Waiting), RUNNING (Running), SUCCESS (Succeeded), FAILED (Failed), CANCEL (Canceled), TIMEOUT (Timed out), and OFFLINE (Offline).
 	TestRunTaskStatusList []*string `json:"TestRunTaskStatusList,omitempty" xml:"TestRunTaskStatusList,omitempty" type:"Repeated"`
-	// The trial run validation result. Valid values:
-	//
-	// - NOT_RUN: not executed.
-	//
-	// - WAITING: waiting for execution.
-	//
-	// - RUNNING: executing.
-	//
-	// - PASS: passed.
-	//
-	// - NOT_PASS: not passed.
-	//
-	// - FAILED: execution failed.
-	//
-	// - OFFLINE: offline. The task needs to be restarted.
-	//
-	// - CANCEL: task canceled.
-	//
-	// - TIMEOUT: task timed out.
+	// The validation result of the rule test run. Valid values: NOT_RUN (Not run), WAITING (Waiting), RUNNING (Running), PASS (Passed), NOT_PASS (Not passed), FAILED (Failed), OFFLINE (Offline, requires restart), CANCEL (Canceled), and TIMEOUT (Timed out).
 	TestRunTaskValidateResultList []*string `json:"TestRunTaskValidateResultList,omitempty" xml:"TestRunTaskValidateResultList,omitempty" type:"Repeated"`
 	// The monitoring ID.
 	//
