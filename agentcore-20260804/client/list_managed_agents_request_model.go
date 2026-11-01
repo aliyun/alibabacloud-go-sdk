@@ -22,7 +22,7 @@ type ListManagedAgentsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the nextToken value returned in the previous response.
+	// The pagination token. Leave this parameter empty for the first call. For subsequent calls, use the nextToken value returned in the previous response.
 	//
 	// example:
 	//

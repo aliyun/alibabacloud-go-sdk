@@ -130,6 +130,18 @@ func (s *DeleteManagedAgentResponseBody) Validate() error {
 }
 
 type DeleteManagedAgentResponseBodyData struct {
+	// API_KEY 表示使用 API Key；USER 表示使用用户身份。
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+	//
+	// example:
+	//
+	// SPECIFIED
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
 	// The managed agent ID.
 	//
 	// example:
@@ -206,6 +218,14 @@ func (s DeleteManagedAgentResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteManagedAgentResponseBodyData) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *DeleteManagedAgentResponseBodyData) GetAccessScope() *string {
+	return s.AccessScope
+}
+
 func (s *DeleteManagedAgentResponseBodyData) GetAgentId() *string {
 	return s.AgentId
 }
@@ -248,6 +268,16 @@ func (s *DeleteManagedAgentResponseBodyData) GetUpdatedAt() *string {
 
 func (s *DeleteManagedAgentResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *DeleteManagedAgentResponseBodyData) SetAccessMode(v string) *DeleteManagedAgentResponseBodyData {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *DeleteManagedAgentResponseBodyData) SetAccessScope(v string) *DeleteManagedAgentResponseBodyData {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *DeleteManagedAgentResponseBodyData) SetAgentId(v string) *DeleteManagedAgentResponseBodyData {

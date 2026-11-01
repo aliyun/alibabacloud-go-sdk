@@ -36,7 +36,7 @@ type ListCustomAgentsResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code of the request. The value is 200 if the request is successful.
+	// The HTTP status code of the current request. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -44,31 +44,31 @@ type ListCustomAgentsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of custom agent summaries on the current page. To query the complete configuration and the execution result of the latest version, call the GetCustomAgent operation.
 	Items []*ListCustomAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of results returned per page for the current query.
+	// The maximum number of items to return per page in this query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The message that describes the result of the request. The value is success if the request is successful.
+	// The processing result message for this request. The value is success if the request succeeds.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as-is in subsequent requests.
+	// The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as is in subsequent requests.
 	//
 	// example:
 	//
 	// djE6YWdlbnRjb3JlLmFnZW50Lmxpc3QuY3VzdG9tOjIw
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
+	// The unique identifier of the request, used to locate and troubleshoot issues.
 	//
 	// example:
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was successful. A successful creation, update, or deletion response does not mean that the background operation is complete.
+	// Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// The total number of custom agents that meet the query conditions in the specified workspace.
 	//
@@ -181,6 +181,18 @@ func (s *ListCustomAgentsResponseBody) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItems struct {
+	// The inbound access mode.
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// The user access scope.
+	//
+	// example:
+	//
+	// ALL
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
 	// The unique identifier of the custom agent. You can obtain this ID from the response of the CreateCustomAgent or ListCustomAgents operation.
 	//
 	// example:
@@ -191,19 +203,19 @@ type ListCustomAgentsResponseBodyItems struct {
 	Artifact *ListCustomAgentsResponseBodyItemsArtifact `json:"artifact,omitempty" xml:"artifact,omitempty" type:"Struct"`
 	// The currently saved code package information.
 	CodePackageInfo *ListCustomAgentsResponseBodyItemsCodePackageInfo `json:"codePackageInfo,omitempty" xml:"codePackageInfo,omitempty" type:"Struct"`
-	// The creation method of the agent. The value is CUSTOM for custom agents.
+	// The creation mode of the agent. The value is CUSTOM for custom agents.
 	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
+	// The deployment mode of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
 	//
 	// example:
 	//
@@ -255,7 +267,7 @@ type ListCustomAgentsResponseBodyItems struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the agent was last updated. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was last updated. The time follows the ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds are supported.
 	//
 	// example:
 	//
@@ -275,6 +287,14 @@ func (s ListCustomAgentsResponseBodyItems) String() string {
 
 func (s ListCustomAgentsResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListCustomAgentsResponseBodyItems) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *ListCustomAgentsResponseBodyItems) GetAccessScope() *string {
+	return s.AccessScope
 }
 
 func (s *ListCustomAgentsResponseBodyItems) GetAgentId() *string {
@@ -331,6 +351,16 @@ func (s *ListCustomAgentsResponseBodyItems) GetUpdatedAt() *string {
 
 func (s *ListCustomAgentsResponseBodyItems) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListCustomAgentsResponseBodyItems) SetAccessMode(v string) *ListCustomAgentsResponseBodyItems {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *ListCustomAgentsResponseBodyItems) SetAccessScope(v string) *ListCustomAgentsResponseBodyItems {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *ListCustomAgentsResponseBodyItems) SetAgentId(v string) *ListCustomAgentsResponseBodyItems {
@@ -491,7 +521,7 @@ func (s *ListCustomAgentsResponseBodyItemsArtifact) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItemsArtifactCode struct {
-	// The startup command for the code package. This parameter is required in code package mode. The working directory is the root directory of the extracted code, which is /code. Example: python main.py. Quotes and escape characters are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use a script within the package.
+	// The startup command for the code package. This parameter is required in code package mode. The working directory is the root directory of the extracted code, which is /code. Example: python main.py. Quotes and escapes are supported. Environment variables, pipes, and logical operations are not automatically expanded. For complex commands, use a script within the package.
 	//
 	// This parameter is required.
 	//
@@ -569,13 +599,13 @@ type ListCustomAgentsResponseBodyItemsArtifactContainer struct {
 	//
 	// cri-example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The ACR namespace.
+	// The namespace of Container Registry.
 	//
 	// example:
 	//
 	// team
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The name of the ACR image repository.
+	// The name of the Container Registry image repository.
 	//
 	// example:
 	//
@@ -754,7 +784,7 @@ func (s *ListCustomAgentsResponseBodyItemsCodePackageInfo) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItemsProtocol struct {
-	// The request header configuration of the current protocol. The key is the header name and the value is a string.
+	// The request header configuration for the current protocol. The key is the header name and the value is a string.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The list of API paths corresponding to the current protocol.
 	Paths []*ListCustomAgentsResponseBodyItemsProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
@@ -823,7 +853,7 @@ func (s *ListCustomAgentsResponseBodyItemsProtocol) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItemsProtocolPaths struct {
-	// The purpose description of the current API path.
+	// The description of the purpose for the current API path.
 	//
 	// example:
 	//

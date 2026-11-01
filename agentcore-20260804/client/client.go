@@ -714,21 +714,21 @@ func (client *Client) CreateCredential(workspaceId *string, request *CreateCrede
 
 // Summary:
 //
-// Creates a custom agent in a specified workspace by using a container image or a code package. The creation process is asynchronous. You can call GetCustomAgent to query the deployment result.
+// Creates a custom agent in a specified workspace, which supports deployment by using a container image or a code package. The creation process is asynchronous. You can call GetCustomAgent to query the deployment result.
 //
 // Description:
 //
 // Before you call this operation, prepare a writable workspace, a RAM role ARN, a container image or code package, and runtime configurations. You must specify name, artifact, roleArn, and runtime. The runtime parameter must include both compute and sessionPolicy.
 //
-// To use the container mode, configure artifact.container and specify artifact.port. The image must have the required access permissions and be accessible over the network allowed by the workspace.
+// In container mode, use artifact.container and specify artifact.port. The image must have the required access permissions and be accessible over the network allowed by the workspace.
 //
-// To use the code package pattern, specify artifact.port, and configure sourceUri, languageRuntime, and entrypoint in artifact.code. Do not configure container at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported. The compressed package size cannot exceed 500,000,000 bytes. You can call ListAgentCodeRuntimes to query the runtime environment identity. The sourceUri parameter supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. To upload a local file, call GetAgentCodePackageUploadUrl to obtain the upload URL, upload the file directly, and then commit the returned sourceUri.
+// In code package pattern, specify artifact.port, and the sourceUri, languageRuntime, and entrypoint parameters of artifact.code. Do not specify container at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported. The compressed package size cannot exceed 500,000,000 bytes. You can call ListAgentCodeRuntimes to query the runtime environment identity. The sourceUri parameter supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. For local files, call GetAgentCodePackageUploadUrl to obtain the upload URL, upload the file directly, and then commit the returned sourceUri.
 //
-// When you submit a new code package source, the backend rechecks the read permissions, object, and size. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. Set the client timeout to 210 seconds for code package requests. Archive integrity and secure decompression are checked at startup. A successful acceptance does not indicate that the agent is ready to run.
+// When you submit a new code package source, the backend rechecks the read permissions, object, and size. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. For code package requests, set the client timeout to 210 seconds. Archive integrity and secure decompression are checked at startup. A successful acceptance does not mean that the agent is ready to run.
 //
-// The creation process is asynchronous. A successful response indicates that the request is accepted. Use the returned agentId to call GetCustomAgent and check latestVersionStatus, latestExecutionError, and status corresponding to latestSpecVersion to confirm the deployment result. After the deployment is ready, you can call CreateServiceEndpoint to configure the access endpoint.
+// The creation process is asynchronous. A successful response indicates that the request is accepted. You can use the returned agentId to call GetCustomAgent and check the latestVersionStatus, latestExecutionError, and status parameters corresponding to latestSpecVersion to confirm the deployment result. After the deployment is ready, you can call CreateServiceEndpoint to configure the access endpoint.
 //
-// The clientToken parameter does not provide idempotence guarantees. Do not rely on this parameter to prevent duplicate requests. The healthyThreshold parameter for health checks does not take effect. Omit this parameter.
+// The clientToken parameter does not currently provide idempotency guarantees. Do not rely on this parameter to prevent duplicate requests. The healthyThreshold parameter for health checks does not currently take effect. Omit this parameter.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -787,21 +787,21 @@ func (client *Client) CreateCustomAgentWithOptions(workspaceId *string, tmpReq *
 
 // Summary:
 //
-// Creates a custom agent in a specified workspace by using a container image or a code package. The creation process is asynchronous. You can call GetCustomAgent to query the deployment result.
+// Creates a custom agent in a specified workspace, which supports deployment by using a container image or a code package. The creation process is asynchronous. You can call GetCustomAgent to query the deployment result.
 //
 // Description:
 //
 // Before you call this operation, prepare a writable workspace, a RAM role ARN, a container image or code package, and runtime configurations. You must specify name, artifact, roleArn, and runtime. The runtime parameter must include both compute and sessionPolicy.
 //
-// To use the container mode, configure artifact.container and specify artifact.port. The image must have the required access permissions and be accessible over the network allowed by the workspace.
+// In container mode, use artifact.container and specify artifact.port. The image must have the required access permissions and be accessible over the network allowed by the workspace.
 //
-// To use the code package pattern, specify artifact.port, and configure sourceUri, languageRuntime, and entrypoint in artifact.code. Do not configure container at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported. The compressed package size cannot exceed 500,000,000 bytes. You can call ListAgentCodeRuntimes to query the runtime environment identity. The sourceUri parameter supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. To upload a local file, call GetAgentCodePackageUploadUrl to obtain the upload URL, upload the file directly, and then commit the returned sourceUri.
+// In code package pattern, specify artifact.port, and the sourceUri, languageRuntime, and entrypoint parameters of artifact.code. Do not specify container at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported. The compressed package size cannot exceed 500,000,000 bytes. You can call ListAgentCodeRuntimes to query the runtime environment identity. The sourceUri parameter supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. For local files, call GetAgentCodePackageUploadUrl to obtain the upload URL, upload the file directly, and then commit the returned sourceUri.
 //
-// When you submit a new code package source, the backend rechecks the read permissions, object, and size. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. Set the client timeout to 210 seconds for code package requests. Archive integrity and secure decompression are checked at startup. A successful acceptance does not indicate that the agent is ready to run.
+// When you submit a new code package source, the backend rechecks the read permissions, object, and size. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. For code package requests, set the client timeout to 210 seconds. Archive integrity and secure decompression are checked at startup. A successful acceptance does not mean that the agent is ready to run.
 //
-// The creation process is asynchronous. A successful response indicates that the request is accepted. Use the returned agentId to call GetCustomAgent and check latestVersionStatus, latestExecutionError, and status corresponding to latestSpecVersion to confirm the deployment result. After the deployment is ready, you can call CreateServiceEndpoint to configure the access endpoint.
+// The creation process is asynchronous. A successful response indicates that the request is accepted. You can use the returned agentId to call GetCustomAgent and check the latestVersionStatus, latestExecutionError, and status parameters corresponding to latestSpecVersion to confirm the deployment result. After the deployment is ready, you can call CreateServiceEndpoint to configure the access endpoint.
 //
-// The clientToken parameter does not provide idempotence guarantees. Do not rely on this parameter to prevent duplicate requests. The healthyThreshold parameter for health checks does not take effect. Omit this parameter.
+// The clientToken parameter does not currently provide idempotency guarantees. Do not rely on this parameter to prevent duplicate requests. The healthyThreshold parameter for health checks does not currently take effect. Omit this parameter.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -2004,6 +2004,92 @@ func (client *Client) CreateModelConnection(workspaceId *string, request *Create
 
 // Summary:
 //
+// Creates permission rules.
+//
+// Description:
+//
+// Creates permission rules in batches for resources in a specified workspace.
+//
+// @param tmpReq - CreatePermissionRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePermissionRulesResponse
+func (client *Client) CreatePermissionRulesWithOptions(workspaceId *string, tmpReq *CreatePermissionRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePermissionRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePermissionRulesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePermissionRules"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/permission-rules"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePermissionRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates permission rules.
+//
+// Description:
+//
+// Creates permission rules in batches for resources in a specified workspace.
+//
+// @param request - CreatePermissionRulesRequest
+//
+// @return CreatePermissionRulesResponse
+func (client *Client) CreatePermissionRules(workspaceId *string, request *CreatePermissionRulesRequest) (_result *CreatePermissionRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePermissionRulesResponse{}
+	_body, _err := client.CreatePermissionRulesWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Skill in the specified workspace and generates a draft version that can be further edited. You can derive a draft from an existing version or specify a target version and commit message.
 //
 // Description:
@@ -2402,6 +2488,74 @@ func (client *Client) DebugModel(workspaceId *string, modelId *string, request *
 
 // Summary:
 //
+// Deletes an access application.
+//
+// Description:
+//
+// Deletes an access application. The secret key is returned only upon creation and is not returned by query operations.
+//
+// @param request - DeleteAccessApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessApplicationResponse
+func (client *Client) DeleteAccessApplicationWithOptions(workspaceId *string, applicationId *string, request *DeleteAccessApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAccessApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAccessApplication"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/access-applications/" + dara.PercentEncode(dara.StringValue(applicationId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAccessApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an access application.
+//
+// Description:
+//
+// Deletes an access application. The secret key is returned only upon creation and is not returned by query operations.
+//
+// @param request - DeleteAccessApplicationRequest
+//
+// @return DeleteAccessApplicationResponse
+func (client *Client) DeleteAccessApplication(workspaceId *string, applicationId *string, request *DeleteAccessApplicationRequest) (_result *DeleteAccessApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAccessApplicationResponse{}
+	_body, _err := client.DeleteAccessApplicationWithOptions(workspaceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an IM channel of a specified agent.
 //
 // Description:
@@ -2694,13 +2848,13 @@ func (client *Client) DeleteCredential(workspaceId *string, credentialId *string
 
 // Summary:
 //
-// Deletes a custom agent from a specified workspace. A successful request indicates that the deletion is accepted. The runtime resources are subsequently cleaned up in the background.
+// Deletes a custom agent in a specified workspace. A successful request indicates that the deletion is accepted, and the runtime resources are subsequently cleaned up in the background.
 //
 // Description:
 //
-// Before calling this operation, ensure that the workspace is writable. If the agent is still associated with a team, you must dissociate it from the team first.
+// Before calling this operation, ensure that the workspace is writable. If the agent is still associated with a team, dissociate the agent from the team first.
 //
-// Deletion is an asynchronous process. After the request is accepted, the associated invocation endpoints become unavailable, and the runtime resources are subsequently cleaned up. The status in the response is typically Deleting. If the agent is already in the deletion process, a subsequent request returns the current summary.
+// Deletion is an asynchronous process. After the request is accepted, the associated invocation endpoints become unavailable, and the runtime resources are subsequently cleaned up. The status in the response is typically Deleting. If the agent is already being deleted, a subsequent request returns the current summary.
 //
 // You can call GetCustomAgent to check the deletion progress. After the deletion is complete, a detail query returns a resource not found error.
 //
@@ -2743,13 +2897,13 @@ func (client *Client) DeleteCustomAgentWithOptions(workspaceId *string, agentId 
 
 // Summary:
 //
-// Deletes a custom agent from a specified workspace. A successful request indicates that the deletion is accepted. The runtime resources are subsequently cleaned up in the background.
+// Deletes a custom agent in a specified workspace. A successful request indicates that the deletion is accepted, and the runtime resources are subsequently cleaned up in the background.
 //
 // Description:
 //
-// Before calling this operation, ensure that the workspace is writable. If the agent is still associated with a team, you must dissociate it from the team first.
+// Before calling this operation, ensure that the workspace is writable. If the agent is still associated with a team, dissociate the agent from the team first.
 //
-// Deletion is an asynchronous process. After the request is accepted, the associated invocation endpoints become unavailable, and the runtime resources are subsequently cleaned up. The status in the response is typically Deleting. If the agent is already in the deletion process, a subsequent request returns the current summary.
+// Deletion is an asynchronous process. After the request is accepted, the associated invocation endpoints become unavailable, and the runtime resources are subsequently cleaned up. The status in the response is typically Deleting. If the agent is already being deleted, a subsequent request returns the current summary.
 //
 // You can call GetCustomAgent to check the deletion progress. After the deletion is complete, a detail query returns a resource not found error.
 //
@@ -3630,6 +3784,80 @@ func (client *Client) DeleteModelConnection(workspaceId *string, connectionId *s
 
 // Summary:
 //
+// Deletes a permission rule.
+//
+// Description:
+//
+// Deletes a permission rule in a specified workspace. Repeated deletions still return a success response.
+//
+// @param request - DeletePermissionRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePermissionRuleResponse
+func (client *Client) DeletePermissionRuleWithOptions(workspaceId *string, permissionRuleId *string, request *DeletePermissionRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeletePermissionRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePermissionRule"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/permission-rules/" + dara.PercentEncode(dara.StringValue(permissionRuleId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePermissionRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a permission rule.
+//
+// Description:
+//
+// Deletes a permission rule in a specified workspace. Repeated deletions still return a success response.
+//
+// @param request - DeletePermissionRuleRequest
+//
+// @return DeletePermissionRuleResponse
+func (client *Client) DeletePermissionRule(workspaceId *string, permissionRuleId *string, request *DeletePermissionRuleRequest) (_result *DeletePermissionRuleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePermissionRuleResponse{}
+	_body, _err := client.DeletePermissionRuleWithOptions(workspaceId, permissionRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a skill and its related version data from a specified workspace. This operation is irreversible.
 //
 // Description:
@@ -4430,6 +4658,74 @@ func (client *Client) ForcePublishSkillVersion(workspaceId *string, skillName *s
 
 // Summary:
 //
+// Queries an access application.
+//
+// Description:
+//
+// Queries an access application. The secret is returned only when the application is created and is not returned by query operations.
+//
+// @param request - GetAccessApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessApplicationResponse
+func (client *Client) GetAccessApplicationWithOptions(workspaceId *string, applicationId *string, request *GetAccessApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAccessApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAccessApplication"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/access-applications/" + dara.PercentEncode(dara.StringValue(applicationId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAccessApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries an access application.
+//
+// Description:
+//
+// Queries an access application. The secret is returned only when the application is created and is not returned by query operations.
+//
+// @param request - GetAccessApplicationRequest
+//
+// @return GetAccessApplicationResponse
+func (client *Client) GetAccessApplication(workspaceId *string, applicationId *string, request *GetAccessApplicationRequest) (_result *GetAccessApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAccessApplicationResponse{}
+	_body, _err := client.GetAccessApplicationWithOptions(workspaceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the download URL for the saved code package of an agent.
 //
 // Description:
@@ -5090,13 +5386,13 @@ func (client *Client) GetCredential(workspaceId *string, credentialId *string, r
 
 // Summary:
 //
-// Queries the details of a custom agent in a specified workspace, including the deployment configuration, the execute status of the latest configuration version, and the instance status statistics of running instances.
+// Queries the details of a custom agent in a specified workspace, including the deployment configuration, the execute status of the latest configuration version, and the running instance status statistics.
 //
 // Description:
 //
-// After creating or updating a custom agent, you can poll this operation to query the execution result of the latest configuration version. latestVersionStatus corresponds to latestSpecVersion. latestExecutionError indicates the cause of the pending or failed state for the version. If retryable is true, you can query again later.
+// After you create or update a custom agent, you can poll this operation to query the execution result of the latest configuration version. latestVersionStatus corresponds to latestSpecVersion. latestExecutionError indicates the cause of the pending or failed status for the version. If retryable is true, you can query again later.
 //
-// The returned configuration is the most recently submitted one and may not have taken effect yet. Verify the deployment and running status by combining latestVersionStatus, the overall agent status, and the sandboxPhaseCounts running instance statistics.
+// The returned configuration is the latest submitted configuration and may not have taken effect. Verify the deployment and running status by checking latestVersionStatus, the overall agent status, and the sandboxPhaseCounts running instance statistics.
 //
 // If the queried custom agent does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
@@ -5139,13 +5435,13 @@ func (client *Client) GetCustomAgentWithOptions(workspaceId *string, agentId *st
 
 // Summary:
 //
-// Queries the details of a custom agent in a specified workspace, including the deployment configuration, the execute status of the latest configuration version, and the instance status statistics of running instances.
+// Queries the details of a custom agent in a specified workspace, including the deployment configuration, the execute status of the latest configuration version, and the running instance status statistics.
 //
 // Description:
 //
-// After creating or updating a custom agent, you can poll this operation to query the execution result of the latest configuration version. latestVersionStatus corresponds to latestSpecVersion. latestExecutionError indicates the cause of the pending or failed state for the version. If retryable is true, you can query again later.
+// After you create or update a custom agent, you can poll this operation to query the execution result of the latest configuration version. latestVersionStatus corresponds to latestSpecVersion. latestExecutionError indicates the cause of the pending or failed status for the version. If retryable is true, you can query again later.
 //
-// The returned configuration is the most recently submitted one and may not have taken effect yet. Verify the deployment and running status by combining latestVersionStatus, the overall agent status, and the sandboxPhaseCounts running instance statistics.
+// The returned configuration is the latest submitted configuration and may not have taken effect. Verify the deployment and running status by checking latestVersionStatus, the overall agent status, and the sandboxPhaseCounts running instance statistics.
 //
 // If the queried custom agent does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
@@ -6422,13 +6718,13 @@ func (client *Client) GetManagedAgent(workspaceId *string, agentId *string, requ
 
 // Summary:
 //
-// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, such as the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, such as the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -6469,13 +6765,13 @@ func (client *Client) GetMcpWithOptions(workspaceId *string, mcpServerId *string
 
 // Summary:
 //
-// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, such as the address, type, status, authentication configuration, and protocol.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// Queries the details of a specified MCP server, including the address, type, status, authentication configuration, and protocol.
+// Queries the details of a specified MCP service, such as the address, type, status, authentication configuration, and protocol.
 //
 // @param request - GetMcpRequest
 //
@@ -7596,11 +7892,11 @@ func (client *Client) GetWorkspaceAgenticFsMountRamAuthorizeUrl(workspaceId *str
 
 // Summary:
 //
-// Queries the plug-in status of a specified workspace.
+// Queries the plugin status of a specified workspace.
 //
 // Description:
 //
-// ## Operation description\\nQueries the plug-in status of a specified workspace. Returns whether the plug-in is enabled, its lifecycle status, and the currently effective configuration. Currently, two types of plug-ins are supported: collaboration and agentloop. If a plug-in is not installed, its status is DISABLED.\\n.
+// ## Request description\\nQueries the plugin status of a specified workspace. Returns whether the plugin is enabled, its lifecycle status, and the currently effective configuration. Currently, two types of plugins are supported: collaboration and agentloop. If a plugin is not installed, its status is DISABLED.\\n.
 //
 // @param request - GetWorkspacePluginRequest
 //
@@ -7641,11 +7937,11 @@ func (client *Client) GetWorkspacePluginWithOptions(workspaceId *string, pluginN
 
 // Summary:
 //
-// Queries the plug-in status of a specified workspace.
+// Queries the plugin status of a specified workspace.
 //
 // Description:
 //
-// ## Operation description\\nQueries the plug-in status of a specified workspace. Returns whether the plug-in is enabled, its lifecycle status, and the currently effective configuration. Currently, two types of plug-ins are supported: collaboration and agentloop. If a plug-in is not installed, its status is DISABLED.\\n.
+// ## Request description\\nQueries the plugin status of a specified workspace. Returns whether the plugin is enabled, its lifecycle status, and the currently effective configuration. Currently, two types of plugins are supported: collaboration and agentloop. If a plugin is not installed, its status is DISABLED.\\n.
 //
 // @param request - GetWorkspacePluginRequest
 //
@@ -8440,15 +8736,15 @@ func (client *Client) ListCredentials(workspaceId *string, request *ListCredenti
 
 // Summary:
 //
-// Performs a paged query to retrieve the custom agent summary in a specified workspace. Use paging to navigate through the results. To obtain the complete configuration and execute the latest version to get the results, call GetCustomAgent.
+// Performs a paging query to retrieve the summaries of custom agents in a specified workspace. To obtain the complete configuration and the execution results of the latest version, call GetCustomAgent.
 //
 // Description:
 //
 // The default value of maxResults is 20, and the maximum value is 100. If this parameter is omitted or set to 0, the default value is used.
 //
-// Omit nextToken in the first request. For subsequent requests, pass the nextToken returned in the previous response as is, and keep the same workspace. The nextToken is an opaque token. Do not parse or construct it. An empty token in the response indicates that there are no more pages.
+// For the first request, omit nextToken. For subsequent requests, pass the nextToken value returned in the previous response as is, and keep the same workspace. The nextToken is an opaque token. Do not parse or construct it yourself. An empty token in the response indicates that there are no more pages.
 //
-// This operation returns the summaries for the current page and does not return the complete deployment configurations or the execution errors of the latest version. To obtain this information, call GetCustomAgent by using the agentId from items.
+// This operation returns the summaries for the current page and does not return the complete deployment configuration or the execution errors of the latest version. To obtain this information, call GetCustomAgent by using the agentId in the items.
 //
 // @param request - ListCustomAgentsRequest
 //
@@ -8499,15 +8795,15 @@ func (client *Client) ListCustomAgentsWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// Performs a paged query to retrieve the custom agent summary in a specified workspace. Use paging to navigate through the results. To obtain the complete configuration and execute the latest version to get the results, call GetCustomAgent.
+// Performs a paging query to retrieve the summaries of custom agents in a specified workspace. To obtain the complete configuration and the execution results of the latest version, call GetCustomAgent.
 //
 // Description:
 //
 // The default value of maxResults is 20, and the maximum value is 100. If this parameter is omitted or set to 0, the default value is used.
 //
-// Omit nextToken in the first request. For subsequent requests, pass the nextToken returned in the previous response as is, and keep the same workspace. The nextToken is an opaque token. Do not parse or construct it. An empty token in the response indicates that there are no more pages.
+// For the first request, omit nextToken. For subsequent requests, pass the nextToken value returned in the previous response as is, and keep the same workspace. The nextToken is an opaque token. Do not parse or construct it yourself. An empty token in the response indicates that there are no more pages.
 //
-// This operation returns the summaries for the current page and does not return the complete deployment configurations or the execution errors of the latest version. To obtain this information, call GetCustomAgent by using the agentId from items.
+// This operation returns the summaries for the current page and does not return the complete deployment configuration or the execution errors of the latest version. To obtain this information, call GetCustomAgent by using the agentId in the items.
 //
 // @param request - ListCustomAgentsRequest
 //
@@ -9274,7 +9570,7 @@ func (client *Client) ListImageCaches(request *ListImageCachesRequest) (_result 
 //
 // Description:
 //
-// Queries the list of managed agents in a specified workspace by using paging. Returns summary information for each agent, including the identity, name, status, template, and specifications.
+// Queries the list of managed agents in a specified workspace by using paging and returns summary information for each agent, including the identity, name, status, template, and specifications.
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -9329,7 +9625,7 @@ func (client *Client) ListManagedAgentsWithOptions(workspaceId *string, request 
 //
 // Description:
 //
-// Queries the list of managed agents in a specified workspace by using paging. Returns summary information for each agent, including the identity, name, status, template, and specifications.
+// Queries the list of managed agents in a specified workspace by using paging and returns summary information for each agent, including the identity, name, status, template, and specifications.
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -10133,6 +10429,112 @@ func (client *Client) ListModels(workspaceId *string, request *ListModelsRequest
 	headers := make(map[string]*string)
 	_result = &ListModelsResponse{}
 	_body, _err := client.ListModelsWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries permission rules.
+//
+// Description:
+//
+// Queries permission rules by resource with paging.
+//
+// @param request - ListPermissionRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPermissionRulesResponse
+func (client *Client) ListPermissionRulesWithOptions(workspaceId *string, request *ListPermissionRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPermissionRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PrincipalId) {
+		query["principalId"] = request.PrincipalId
+	}
+
+	if !dara.IsNil(request.PrincipalName) {
+		query["principalName"] = request.PrincipalName
+	}
+
+	if !dara.IsNil(request.PrincipalType) {
+		query["principalType"] = request.PrincipalType
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["source"] = request.Source
+	}
+
+	if !dara.IsNil(request.Target) {
+		query["target"] = request.Target
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPermissionRules"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/permission-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPermissionRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries permission rules.
+//
+// Description:
+//
+// Queries permission rules by resource with paging.
+//
+// @param request - ListPermissionRulesRequest
+//
+// @return ListPermissionRulesResponse
+func (client *Client) ListPermissionRules(workspaceId *string, request *ListPermissionRulesRequest) (_result *ListPermissionRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPermissionRulesResponse{}
+	_body, _err := client.ListPermissionRulesWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11980,6 +12382,86 @@ func (client *Client) SubmitSkillVersion(workspaceId *string, skillName *string,
 
 // Summary:
 //
+// Updates an access application.
+//
+// Description:
+//
+// Updates an access application. The secret is returned only upon creation and is not returned by query operations.
+//
+// @param tmpReq - UpdateAccessApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAccessApplicationResponse
+func (client *Client) UpdateAccessApplicationWithOptions(workspaceId *string, applicationId *string, tmpReq *UpdateAccessApplicationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAccessApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAccessApplicationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAccessApplication"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/access-applications/" + dara.PercentEncode(dara.StringValue(applicationId))),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAccessApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an access application.
+//
+// Description:
+//
+// Updates an access application. The secret is returned only upon creation and is not returned by query operations.
+//
+// @param request - UpdateAccessApplicationRequest
+//
+// @return UpdateAccessApplicationResponse
+func (client *Client) UpdateAccessApplication(workspaceId *string, applicationId *string, request *UpdateAccessApplicationRequest) (_result *UpdateAccessApplicationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAccessApplicationResponse{}
+	_body, _err := client.UpdateAccessApplicationWithOptions(workspaceId, applicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the ServiceEndpoint, enablement status, or channel behavior configuration bound to an IM channel. At least one updatable field must be provided.
 //
 // Description:
@@ -12402,21 +12884,21 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 
 // Summary:
 //
-// Updates the configuration of a custom agent in a specified workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call GetCustomAgent to query the update result.
+// Updates the configuration of a specified custom agent in a workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call the GetCustomAgent operation to query the update result.
 //
 // Description:
 //
-// Specify at least one top-level field to update. Omitted top-level fields retain their original configurations. When you provide a configuration object, you must also specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole. Pass an empty array [] to clear a list. The agenticFsMounts field does not accept null. Pass null for the description field to clear the description, and pass null for the healthCheck field to remove the health check.
+// Provide at least one top-level field to update. Omitted top-level fields retain their original configurations. When providing a configuration object, specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole. Pass an empty array [] to clear a list. The agenticFsMounts field does not accept null. Pass null for the description field to clear the description, and pass null for the healthCheck field to remove the health check.
 //
-// When you update an image, you must specify artifact.port and the type, instanceId, namespace, repo, and tag fields of artifact.container. To retain a custom startup command, you must also provide the entrypoint field.
+// When updating an image, you must specify artifact.port and the type, instanceId, namespace, repo, and tag fields of artifact.container. To retain a custom startup command, also provide the entrypoint field.
 //
-// In code package pattern, specify artifact.port and the sourceUri, languageRuntime, and entrypoint fields of artifact.code. Do not specify the container field at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported. The compressed package size cannot exceed 500,000,000 bytes. You can call ListAgentCodeRuntimes to query the runtime environment identity. The sourceUri field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. For local files, call GetAgentCodePackageUploadUrl to obtain an upload URL, upload the file directly, and then commit the returned sourceUri.
+// In the code package pattern, specify artifact.port and the sourceUri, languageRuntime, and entrypoint fields of artifact.code. Do not specify the container field at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported, and the compressed package size cannot exceed 500,000,000 bytes. Query the runtime environment identity by calling the ListAgentCodeRuntimes operation. The sourceUri field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. For local files, first call the GetAgentCodePackageUploadUrl operation to obtain an upload URL, upload the file directly, and then commit the returned sourceUri.
 //
-// When you submit a new code package source, the backend rechecks the read permissions, object, and size. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. Set the client timeout to 210 seconds for code package requests. Archive integrity and secure decompression are checked at startup. A successful acceptance does not indicate that the agent is ready to run.
+// When submitting a new code package source, the backend rechecks read permissions, objects, and sizes. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. Set the client timeout to 210 seconds for code package requests. Archive integrity and secure decompression are checked at startup. A successful acceptance does not indicate that the agent is ready to run.
 //
-// When you provide the runtime field, the compute and sessionPolicy fields must also be provided. If you omit the hpa field or its subfields, unspecified elastic configurations use default values. To retain the original elastic configurations, you must provide them together. When you provide the network field, omitted access items are treated as allowed, but actual access is still restricted by the workspace network. To retain the original restrictions, provide both accessInternet and accessVpc. When you provide the healthCheck field, you must specify the port field. Other unspecified items use default values. When you provide the logging.sls field, you must specify both the project and logstore fields.
+// When providing the runtime field, the compute and sessionPolicy fields must be provided at the same time. If the hpa field or its subfields are omitted, unspecified elastic configurations use default values. To retain the original elastic configurations, provide them together. When providing the network field, omitted access items are treated as allowed, but actual access is still restricted by the workspace network limits. To retain the original limits, provide both accessInternet and accessVpc. When providing the healthCheck field, the port field is required, and other unspecified items use default values. When providing the logging.sls field, both the project and logstore fields are required.
 //
-// The update is an asynchronous process. A successful response indicates that the request is accepted. You can call GetCustomAgent to query latestSpecVersion, latestVersionStatus, and latestExecutionError, and check the status field to confirm the update result.
+// The update is an asynchronous process. A successful response indicates that the request is accepted. Call the GetCustomAgent operation to query latestSpecVersion, latestVersionStatus, and latestExecutionError, and check the status field to confirm the update result.
 //
 // The clientToken field does not currently provide idempotency guarantees. Do not rely on this parameter to prevent duplicate requests. The healthyThreshold field for health checks does not currently take effect. Omit this field.
 //
@@ -12477,21 +12959,21 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 
 // Summary:
 //
-// Updates the configuration of a custom agent in a specified workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call GetCustomAgent to query the update result.
+// Updates the configuration of a specified custom agent in a workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call the GetCustomAgent operation to query the update result.
 //
 // Description:
 //
-// Specify at least one top-level field to update. Omitted top-level fields retain their original configurations. When you provide a configuration object, you must also specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole. Pass an empty array [] to clear a list. The agenticFsMounts field does not accept null. Pass null for the description field to clear the description, and pass null for the healthCheck field to remove the health check.
+// Provide at least one top-level field to update. Omitted top-level fields retain their original configurations. When providing a configuration object, specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole. Pass an empty array [] to clear a list. The agenticFsMounts field does not accept null. Pass null for the description field to clear the description, and pass null for the healthCheck field to remove the health check.
 //
-// When you update an image, you must specify artifact.port and the type, instanceId, namespace, repo, and tag fields of artifact.container. To retain a custom startup command, you must also provide the entrypoint field.
+// When updating an image, you must specify artifact.port and the type, instanceId, namespace, repo, and tag fields of artifact.container. To retain a custom startup command, also provide the entrypoint field.
 //
-// In code package pattern, specify artifact.port and the sourceUri, languageRuntime, and entrypoint fields of artifact.code. Do not specify the container field at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported. The compressed package size cannot exceed 500,000,000 bytes. You can call ListAgentCodeRuntimes to query the runtime environment identity. The sourceUri field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. For local files, call GetAgentCodePackageUploadUrl to obtain an upload URL, upload the file directly, and then commit the returned sourceUri.
+// In the code package pattern, specify artifact.port and the sourceUri, languageRuntime, and entrypoint fields of artifact.code. Do not specify the container field at the same time. Dependencies must be packaged by the user. ZIP and TAR.GZ formats are supported, and the compressed package size cannot exceed 500,000,000 bytes. Query the runtime environment identity by calling the ListAgentCodeRuntimes operation. The sourceUri field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs. For local files, first call the GetAgentCodePackageUploadUrl operation to obtain an upload URL, upload the file directly, and then commit the returned sourceUri.
 //
-// When you submit a new code package source, the backend rechecks the read permissions, object, and size. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. Set the client timeout to 210 seconds for code package requests. Archive integrity and secure decompression are checked at startup. A successful acceptance does not indicate that the agent is ready to run.
+// When submitting a new code package source, the backend rechecks read permissions, objects, and sizes. The configuration is saved only after the transfer succeeds. If the transfer fails, the current configuration is not saved. Saved fixed packages can be reused. Set the client timeout to 210 seconds for code package requests. Archive integrity and secure decompression are checked at startup. A successful acceptance does not indicate that the agent is ready to run.
 //
-// When you provide the runtime field, the compute and sessionPolicy fields must also be provided. If you omit the hpa field or its subfields, unspecified elastic configurations use default values. To retain the original elastic configurations, you must provide them together. When you provide the network field, omitted access items are treated as allowed, but actual access is still restricted by the workspace network. To retain the original restrictions, provide both accessInternet and accessVpc. When you provide the healthCheck field, you must specify the port field. Other unspecified items use default values. When you provide the logging.sls field, you must specify both the project and logstore fields.
+// When providing the runtime field, the compute and sessionPolicy fields must be provided at the same time. If the hpa field or its subfields are omitted, unspecified elastic configurations use default values. To retain the original elastic configurations, provide them together. When providing the network field, omitted access items are treated as allowed, but actual access is still restricted by the workspace network limits. To retain the original limits, provide both accessInternet and accessVpc. When providing the healthCheck field, the port field is required, and other unspecified items use default values. When providing the logging.sls field, both the project and logstore fields are required.
 //
-// The update is an asynchronous process. A successful response indicates that the request is accepted. You can call GetCustomAgent to query latestSpecVersion, latestVersionStatus, and latestExecutionError, and check the status field to confirm the update result.
+// The update is an asynchronous process. A successful response indicates that the request is accepted. Call the GetCustomAgent operation to query latestSpecVersion, latestVersionStatus, and latestExecutionError, and check the status field to confirm the update result.
 //
 // The clientToken field does not currently provide idempotency guarantees. Do not rely on this parameter to prevent duplicate requests. The healthyThreshold field for health checks does not currently take effect. Omit this field.
 //
@@ -13004,13 +13486,13 @@ func (client *Client) UpdateManagedAgent(workspaceId *string, agentId *string, r
 
 // Summary:
 //
-// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update is an asynchronous process.
+// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update process is asynchronous.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update is an asynchronous process.
+// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update process is asynchronous.
 //
 // @param tmpReq - UpdateMcpRequest
 //
@@ -13069,13 +13551,13 @@ func (client *Client) UpdateMcpWithOptions(workspaceId *string, mcpServerId *str
 
 // Summary:
 //
-// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update is an asynchronous process.
+// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update process is asynchronous.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update is an asynchronous process.
+// Updates the address, description, authentication, or Swagger configuration of a specified MCP service. The MCP type and protocol cannot be modified after creation. The update process is asynchronous.
 //
 // @param request - UpdateMcpRequest
 //

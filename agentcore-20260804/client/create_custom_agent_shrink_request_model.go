@@ -16,7 +16,7 @@ type iCreateCustomAgentShrinkRequest interface {
 }
 
 type CreateCustomAgentShrinkRequest struct {
-	// The JSON configuration of the custom agent. You must specify name, artifact, roleArn, and runtime.
+	// The JSON configuration of the custom agent. You must specify the name, artifact, roleArn, and runtime parameters.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 	// Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
 	//

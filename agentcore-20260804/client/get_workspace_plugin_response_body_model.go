@@ -30,7 +30,7 @@ type GetWorkspacePluginResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The plug-in details.
+	// The plugin details.
 	Data *GetWorkspacePluginResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type GetWorkspacePluginResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,17 +126,17 @@ func (s *GetWorkspacePluginResponseBody) Validate() error {
 }
 
 type GetWorkspacePluginResponseBodyData struct {
-	// The user-configurable properties currently in effect for the plug-in. This field is empty if the plug-in is not installed.
+	// The user-configurable properties that are currently in effect for the plugin. This field is empty if the plugin is not installed.
 	Config *GetWorkspacePluginResponseBodyDataConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// Indicates whether the plug-in is enabled. The value is true when the status is ENABLED.
+	// Indicates whether the plugin is enabled. The value is true if the status is ENABLED.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The plug-in name.
+	// The plugin name.
 	//
 	// example:
 	//
 	// collaboration
 	PluginName *string `json:"pluginName,omitempty" xml:"pluginName,omitempty"`
-	// The plug-in status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, DISABLE_FAILED.
+	// The plugin status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
 	//
 	// example:
 	//
@@ -213,9 +213,9 @@ func (s *GetWorkspacePluginResponseBodyData) Validate() error {
 }
 
 type GetWorkspacePluginResponseBodyDataConfig struct {
-	// The AgentLoop plug-in configuration.
+	// The AgentLoop plugin configuration.
 	AgentLoop *GetWorkspacePluginResponseBodyDataConfigAgentLoop `json:"agentLoop,omitempty" xml:"agentLoop,omitempty" type:"Struct"`
-	// The network configuration of the plug-in, including public network access configuration and VPC configuration.
+	// The network configuration of the plugin, including the public network access configuration and VPC configuration.
 	Network *GetWorkspacePluginResponseBodyDataConfigNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
 }
 
@@ -260,19 +260,19 @@ func (s *GetWorkspacePluginResponseBodyDataConfig) Validate() error {
 }
 
 type GetWorkspacePluginResponseBodyDataConfigAgentLoop struct {
-	// The AgentSpace name associated with the AgentLoop plug-in.
+	// The name of the AgentSpace associated with the AgentLoop plugin.
 	//
 	// example:
 	//
 	// agentcore-ws-123456
 	AgentSpaceName *string `json:"agentSpaceName,omitempty" xml:"agentSpaceName,omitempty"`
-	// The creation time of the AgentSpace in UTC in RFC 3339 format.
+	// The creation time of the AgentSpace, in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The region ID where the AgentSpace resides.
+	// The region ID of the AgentSpace.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ func (s *GetWorkspacePluginResponseBodyDataConfigNetwork) Validate() error {
 }
 
 type GetWorkspacePluginResponseBodyDataConfigNetworkInternet struct {
-	// Indicates whether public network access is enabled.
+	// Specifies whether public network access is enabled.
 	//
 	// example:
 	//
@@ -397,15 +397,15 @@ func (s *GetWorkspacePluginResponseBodyDataConfigNetworkInternet) Validate() err
 }
 
 type GetWorkspacePluginResponseBodyDataConfigNetworkVpc struct {
-	// Indicates whether VPC network access is enabled for the collaboration plug-in.
+	// Indicates whether VPC networking is currently enabled for the collaboration plugin.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The list of vSwitch IDs used for plug-in deployment.
+	// The list of vSwitch IDs used for plugin deployment.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID used for plug-in deployment.
+	// The VPC ID used for plugin deployment.
 	//
 	// example:
 	//

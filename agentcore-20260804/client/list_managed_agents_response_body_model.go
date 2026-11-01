@@ -30,13 +30,13 @@ type iListManagedAgentsResponseBody interface {
 }
 
 type ListManagedAgentsResponseBody struct {
-	// The business status code. A value of SUCCESS indicates success.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. A value of 200 indicates success.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListManagedAgentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The result message of the request.
+	// The message about the request processing result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates the last page.
+	// The token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListManagedAgentsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -189,7 +189,19 @@ func (s *ListManagedAgentsResponseBody) Validate() error {
 }
 
 type ListManagedAgentsResponseBodyItems struct {
-	// The managed agent ID.
+	// API_KEY 表示使用 API Key；USER 表示使用用户身份。
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+	//
+	// example:
+	//
+	// ALL
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
+	// The ID of the managed agent.
 	//
 	// example:
 	//
@@ -217,7 +229,7 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// An agent for code review
+	// Agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The agent runtime framework.
 	Harness *ListManagedAgentsResponseBodyItemsHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
@@ -267,6 +279,14 @@ func (s ListManagedAgentsResponseBodyItems) GoString() string {
 	return s.String()
 }
 
+func (s *ListManagedAgentsResponseBodyItems) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *ListManagedAgentsResponseBodyItems) GetAccessScope() *string {
+	return s.AccessScope
+}
+
 func (s *ListManagedAgentsResponseBodyItems) GetAgentId() *string {
 	return s.AgentId
 }
@@ -313,6 +333,16 @@ func (s *ListManagedAgentsResponseBodyItems) GetUpdatedAt() *string {
 
 func (s *ListManagedAgentsResponseBodyItems) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *ListManagedAgentsResponseBodyItems) SetAccessMode(v string) *ListManagedAgentsResponseBodyItems {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *ListManagedAgentsResponseBodyItems) SetAccessScope(v string) *ListManagedAgentsResponseBodyItems {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *ListManagedAgentsResponseBodyItems) SetAgentId(v string) *ListManagedAgentsResponseBodyItems {
@@ -385,9 +415,9 @@ func (s *ListManagedAgentsResponseBodyItems) Validate() error {
 }
 
 type ListManagedAgentsResponseBodyItemsHarness struct {
-	// The Connector binding configuration for the qodercli framework.
+	// The runtime framework configuration.
 	Configuration *ListManagedAgentsResponseBodyItemsHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The runtime framework type. Valid values: qwenpaw and qodercli. The qodercli type binds by configuration.connectorServiceAccountKey, and the name is also populated during queries.
+	// The runtime framework type.
 	//
 	// example:
 	//
@@ -431,13 +461,13 @@ func (s *ListManagedAgentsResponseBodyItemsHarness) Validate() error {
 }
 
 type ListManagedAgentsResponseBodyItemsHarnessConfiguration struct {
-	// Binds a Service Account Key of the QoderCLI Connector by Key ID. This parameter can be omitted when only one key exists, but is required when multiple keys exist.
+	// Connector Service Account Key
 	//
 	// example:
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The Connector Key name populated during queries. This value is not used as a binding reference during writes.
+	// Connector Service Account Name
 	//
 	// example:
 	//

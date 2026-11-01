@@ -84,6 +84,12 @@ type CreateMcpRequestBody struct {
 	//
 	// my-mcp-server
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// PUBLIC 表示公开访问；CONTROLLED 表示根据权限规则控制访问。
+	//
+	// example:
+	//
+	// CONTROLLED
+	PermissionMode *string `json:"permissionMode,omitempty" xml:"permissionMode,omitempty"`
 	// The MCP protocol.
 	//
 	// example:
@@ -138,6 +144,10 @@ func (s *CreateMcpRequestBody) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateMcpRequestBody) GetPermissionMode() *string {
+	return s.PermissionMode
+}
+
 func (s *CreateMcpRequestBody) GetProtocol() *string {
 	return s.Protocol
 }
@@ -177,6 +187,11 @@ func (s *CreateMcpRequestBody) SetDescription(v string) *CreateMcpRequestBody {
 
 func (s *CreateMcpRequestBody) SetName(v string) *CreateMcpRequestBody {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateMcpRequestBody) SetPermissionMode(v string) *CreateMcpRequestBody {
+	s.PermissionMode = &v
 	return s
 }
 

@@ -62,7 +62,19 @@ func (s *CreateManagedAgentRequest) Validate() error {
 }
 
 type CreateManagedAgentRequestBody struct {
-	// The AgenticFS mounts. Omitting this parameter or passing an empty array indicates no AgenticFS mounts. Null values are rejected. The total number of AgenticFS and OSS mounts cannot exceed 10.
+	// The inbound access mode.
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// The user access scope.
+	//
+	// example:
+	//
+	// ALL
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
+	// The list of AgenticFS mounts. If omitted or set to an empty array during creation, no AgenticFS mounts are configured. A null value is rejected. The total number of AgenticFS and OSS mounts cannot exceed 10.
 	AgenticFsMounts []*CreateManagedAgentRequestBodyAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
 	// The description of the managed agent.
 	//
@@ -118,6 +130,14 @@ func (s CreateManagedAgentRequestBody) String() string {
 
 func (s CreateManagedAgentRequestBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateManagedAgentRequestBody) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *CreateManagedAgentRequestBody) GetAccessScope() *string {
+	return s.AccessScope
 }
 
 func (s *CreateManagedAgentRequestBody) GetAgenticFsMounts() []*CreateManagedAgentRequestBodyAgenticFsMounts {
@@ -178,6 +198,16 @@ func (s *CreateManagedAgentRequestBody) GetTemplate() *CreateManagedAgentRequest
 
 func (s *CreateManagedAgentRequestBody) GetTools() []*CreateManagedAgentRequestBodyTools {
 	return s.Tools
+}
+
+func (s *CreateManagedAgentRequestBody) SetAccessMode(v string) *CreateManagedAgentRequestBody {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *CreateManagedAgentRequestBody) SetAccessScope(v string) *CreateManagedAgentRequestBody {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *CreateManagedAgentRequestBody) SetAgenticFsMounts(v []*CreateManagedAgentRequestBodyAgenticFsMounts) *CreateManagedAgentRequestBody {
@@ -356,7 +386,7 @@ type CreateManagedAgentRequestBodyAgenticFsMounts struct {
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. Default value: false. This parameter does not represent a read-only policy for a RAM role.
+	// Specifies whether the mount is read-only. If omitted, the default value is false. This parameter does not represent a read-only policy for a RAM role.
 	//
 	// example:
 	//
@@ -654,7 +684,7 @@ type CreateManagedAgentRequestBodyModel struct {
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
-	// The upstream model name.
+	// The name of the upstream model.
 	//
 	// example:
 	//
@@ -709,7 +739,7 @@ func (s *CreateManagedAgentRequestBodyModel) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
+	// Specifies whether to enable the token quota. If not specified, the default value is true. A value of false disables the quota and deletes existing quota rules.
 	//
 	// example:
 	//
@@ -727,7 +757,7 @@ type CreateManagedAgentRequestBodyModelQuota struct {
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens that can be consumed within a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
+	// The maximum number of tokens allowed to be consumed in a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
 	//
 	// example:
 	//
@@ -831,7 +861,7 @@ func (s *CreateManagedAgentRequestBodyNetwork) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyNetworkAccessInternet struct {
-	// Specifies whether to allow Internet access.
+	// Specifies whether to allow access to the Internet.
 	//
 	// example:
 	//
@@ -861,7 +891,7 @@ func (s *CreateManagedAgentRequestBodyNetworkAccessInternet) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyNetworkAccessVpc struct {
-	// Specifies whether to allow VPC access.
+	// Specifies whether to allow access to the VPC.
 	//
 	// example:
 	//
@@ -903,13 +933,13 @@ type CreateManagedAgentRequestBodyOssMounts struct {
 	//
 	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix in the bucket. If this parameter is not specified, the entire bucket is mounted.
+	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
 	//
 	// example:
 	//
 	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. Default value: false.
+	// Specifies whether the mount is read-only. If not specified, the default value is false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1121,15 +1151,15 @@ func (s *CreateManagedAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether auto-scaling is enabled. This parameter is required and validated by the backend when HPA is present.
+	// Specifies whether to enable auto-scaling. This parameter is required and validated by the backend when HPA is specified.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of active sessions per sandbox. This parameter is required and validated by the backend when HPA is present.
+	// The maximum number of active sessions per sandbox. This parameter is required and validated by the backend when HPA is specified.
 	//
 	// example:
 	//
 	// 5
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of sandboxes. This parameter is required and must not be less than the minimum value when HPA is enabled.
+	// The maximum number of sandboxes. This parameter is required when HPA is enabled and must not be less than the minimum value.
 	//
 	// example:
 	//
@@ -1141,7 +1171,7 @@ type CreateManagedAgentRequestBodyRuntimeHpa struct {
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The timeout period in seconds for reclaiming an inactive session. This parameter is required and validated by the backend when HPA is present.
+	// The idle timeout period for a session before it is reclaimed, in seconds. This parameter is required and validated by the backend when HPA is specified.
 	//
 	// example:
 	//
@@ -1262,7 +1292,11 @@ type CreateManagedAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. Valid values: REFERENCE: references the AI registry. STATIC: statically provided with the package.
+	// The skill source type. Valid values:
+	//
+	// - REFERENCE: references the AI Registry
+	//
+	// - STATIC: statically provided with the package
 	//
 	// example:
 	//
@@ -1332,13 +1366,17 @@ func (s *CreateManagedAgentRequestBodySkills) Validate() error {
 }
 
 type CreateManagedAgentRequestBodySkillsVersionSelector struct {
-	// The version selector type. Valid values: LABEL: selects by label. VERSION: selects by specific version.
+	// The version selector type. Valid values:
+	//
+	// - LABEL: selects by label
+	//
+	// - VERSION: selects by specific version
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The selector value. When the type is LABEL, this is the label name, such as latest. When the type is VERSION, this is the specific version number.
+	// The selector value. When the type is LABEL, this value is the label name, such as latest. When the type is VERSION, this value is the specific version number.
 	//
 	// example:
 	//
@@ -1383,7 +1421,7 @@ type CreateManagedAgentRequestBodySubAgents struct {
 	//
 	// example:
 	//
-	// Please review the code
+	// Review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The sub-agent name.
 	//

@@ -16,9 +16,9 @@ type iUpdateCustomAgentRequest interface {
 }
 
 type UpdateCustomAgentRequest struct {
-	// The update configuration for the custom agent. Specify at least one top-level field. Omitted top-level fields retain their original values. When you provide a configuration object, you must specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole.
+	// The update configuration for the custom agent. Provide at least one top-level field. Omitted top-level fields retain their original values. When providing a configuration object, specify its required subfields and include any optional configurations that you want to retain. Arrays are replaced as a whole.
 	Body *UpdateCustomAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// Idempotence is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
+	// Idempotency is not currently guaranteed. Do not rely on this parameter to prevent duplicate requests.
 	//
 	// example:
 	//
@@ -62,13 +62,25 @@ func (s *UpdateCustomAgentRequest) Validate() error {
 }
 
 type UpdateCustomAgentRequestBody struct {
-	// The list of additional AgenticFS mounts. The total number of AgenticFS mounts and OSS mounts cannot exceed 10. If you omit this field or pass an empty array [] during creation, no additional mounts are configured. During an update, omitting this field retains the original value, and passing an empty array [] clears the list. You cannot pass null.
+	// The inbound access mode.
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// The user access scope.
+	//
+	// example:
+	//
+	// ALL
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
+	// The list of additional AgenticFS mounts. The total number of AgenticFS and OSS mounts cannot exceed 10. During creation, omitting this field or passing an empty array [] indicates no additional mounts. During an update, omitting this field retains the original value, and passing an empty array [] clears the list. This field cannot be null.
 	AgenticFsMounts []*UpdateCustomAgentRequestBodyAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
-	// The deployment artifact configuration. You must specify the service listening port and choose either code or container as the deployment method. During an update, you must provide the required fields for the selected method.
+	// The deployment artifact configuration. You must specify the service listening port and choose either the code or container deployment method. During an update, you must provide the required fields for the selected method.
 	Artifact *UpdateCustomAgentRequestBodyArtifact `json:"artifact,omitempty" xml:"artifact,omitempty" type:"Struct"`
 	// The custom image configuration. Omitting this field retains the original source. Submitting the complete configuration indicates an active update of the custom image. You do not need to submit this field if only the port and startup command change.
 	CustomImage *UpdateCustomAgentRequestBodyCustomImage `json:"customImage,omitempty" xml:"customImage,omitempty" type:"Struct"`
-	// The description of the agent purpose. The description can be up to 1,024 characters in length after leading and trailing spaces are removed. If omitted, the original value is retained. Pass null to clear the description.
+	// The description of the agent purpose. The maximum length is 1,024 characters after leading and trailing whitespaces are removed. Omitting this field retains the original value. Pass null to clear the description.
 	//
 	// example:
 	//
@@ -76,33 +88,33 @@ type UpdateCustomAgentRequestBody struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The environment variable configuration for the agent process. Omitting this top-level field retains the original value. Providing this object but omitting the variables field clears the custom environment variables. To retain the variables, provide the complete list.
 	Environment *UpdateCustomAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The optional HTTP health check configuration. When this object is provided, the port field is required, and other unspecified fields use default values. Omitting this object during creation means no health check is configured. During an update, omitting this top-level field retains the original configuration, and passing null removes the health check.
+	// The optional HTTP health check configuration. When this object is provided, port is required, and unspecified items use default values. Omitting this object during creation means no configuration is applied. During an update, omitting this top-level field retains the original configuration, while passing null removes the health check.
 	HealthCheck *UpdateCustomAgentRequestBodyHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty" type:"Struct"`
-	// The log delivery configuration for the agent. You can specify the Simple Log Service (SLS) project and Logstore. After a successful creation or update, verify that logs are delivered as expected.
+	// The log delivery configuration for the agent. You can specify the Simple Log Service (SLS) project and Logstore. After a successful creation or update, verify that logs are delivered properly.
 	Logging *UpdateCustomAgentRequestBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
-	// The custom name of the agent. The name must be 1 to 128 characters in length after leading and trailing spaces are removed, and must be unique within the same workspace. Omitting this field retains the original value. You cannot pass null or an empty name.
+	// The custom name of the agent. The length must be 1 to 128 characters after trimming leading and trailing whitespace. The name must be unique within the same workspace. If omitted, the original value is retained. You cannot pass null or a blank name.
 	//
 	// example:
 	//
 	// my-custom-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration for the agent. When this object is provided, omitted access items are treated as allowed. The actual accessible scope is still restricted by the network configuration of the workspace. To retain the original restrictions during an update, specify both accessInternet and accessVpc.
+	// The network access configuration for the agent. When this object is provided, omitted access items are treated as allowed. The actual accessible scope is still restricted by the workspace network configuration. To retain the original restrictions during an update, provide both accessInternet and accessVpc.
 	Network *UpdateCustomAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
 	// The high-code agent observability configuration.
 	Observability *UpdateCustomAgentRequestBodyObservability `json:"observability,omitempty" xml:"observability,omitempty" type:"Struct"`
-	// The list of Object Storage Service (OSS) mounts. The total number of OSS mounts and agenticFsMounts cannot exceed 10. For each item, you must specify bucketName, path, and mountPath. Mount targets cannot be duplicated or overlap with each other. During an update, this list is replaced entirely. Pass an empty array to clear all mounts.
+	// The OSS mount list. The total number of items in this list and agenticFsMounts cannot exceed 10. Each item must include bucketName, path, and mountPath. Mount targets must not be duplicated or overlap with each other. During an update, this list is replaced entirely. Pass an empty array [] to clear the mounts.
 	OssMounts []*UpdateCustomAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The list of invocation protocols supported by the agent. Each item includes the protocol type and optional paths and request headers. During an update, this list is replaced entirely.
 	Protocol []*UpdateCustomAgentRequestBodyProtocol `json:"protocol,omitempty" xml:"protocol,omitempty" type:"Repeated"`
-	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role used by the agent to access user cloud resources. The role must have the required permissions for the accessed cloud resources.
+	// The ARN of the RAM role used when the agent accesses user cloud resources. The role must have permissions for the accessed cloud resources.
 	//
 	// example:
 	//
 	// acs:ram::1234567890123456:role/agentcore-runtime-role
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The runtime configuration. When this object is provided, both compute and sessionPolicy must be present. To retain the original elastic policy, provide the complete hpa configuration. Omitting the top-level runtime field retains the original configuration.
+	// The runtime configuration. When this object is provided, both compute and sessionPolicy must be present. To retain the original elastic policy, provide the complete hpa configuration as well. Omitting the top-level runtime field retains the original configuration.
 	Runtime *UpdateCustomAgentRequestBodyRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// If this field is not passed during an update, the original value is retained. Explicitly set this field to true or false. The system does not automatically append false. The new contract rejects null and invalid types. Existing compatibility endpoints are processed according to migration agreements.
+	// If omitted during an update, the original value is retained. Explicit true or false settings are applied, and false is not automatically appended. The new contract rejects null and invalid types. Existing compatibility endpoints are handled according to migration agreements.
 	//
 	// example:
 	//
@@ -116,6 +128,14 @@ func (s UpdateCustomAgentRequestBody) String() string {
 
 func (s UpdateCustomAgentRequestBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCustomAgentRequestBody) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *UpdateCustomAgentRequestBody) GetAccessScope() *string {
+	return s.AccessScope
 }
 
 func (s *UpdateCustomAgentRequestBody) GetAgenticFsMounts() []*UpdateCustomAgentRequestBodyAgenticFsMounts {
@@ -176,6 +196,16 @@ func (s *UpdateCustomAgentRequestBody) GetRuntime() *UpdateCustomAgentRequestBod
 
 func (s *UpdateCustomAgentRequestBody) GetUseImageCache() *bool {
 	return s.UseImageCache
+}
+
+func (s *UpdateCustomAgentRequestBody) SetAccessMode(v string) *UpdateCustomAgentRequestBody {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *UpdateCustomAgentRequestBody) SetAccessScope(v string) *UpdateCustomAgentRequestBody {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *UpdateCustomAgentRequestBody) SetAgenticFsMounts(v []*UpdateCustomAgentRequestBodyAgenticFsMounts) *UpdateCustomAgentRequestBody {
@@ -325,7 +355,7 @@ func (s *UpdateCustomAgentRequestBody) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyAgenticFsMounts struct {
-	// The subdirectory under /mnt/agenticfs/ in the container. This field is required for each mount item and is validated by the backend. Mount targets cannot be duplicated or overlap in a parent-child relationship.
+	// The subdirectory under /mnt/agenticfs/ in the container. This field is required for each mount item and is validated by the backend. Mount targets cannot be duplicated or form parent-child overrides.
 	//
 	// example:
 	//
@@ -343,7 +373,7 @@ type UpdateCustomAgentRequestBodyAgenticFsMounts struct {
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The domain name of the access point. This field is required for each mount item and is validated by the backend. Use the DomainName value from the ListAccessPoints response of NAS. Do not include the protocol, port, or path.
+	// The domain name of the access point. This field is required for each mount item and is validated by the backend. Use the DomainName value from the response of the NAS ListAccessPoints operation. Do not include the protocol, port, or path.
 	//
 	// example:
 	//
@@ -402,9 +432,9 @@ func (s *UpdateCustomAgentRequestBodyAgenticFsMounts) Validate() error {
 type UpdateCustomAgentRequestBodyArtifact struct {
 	// The code package deployment configuration. This field is mutually exclusive with the container field. Code packages use the ZIP or TAR.GZ format. Dependencies must be packaged by the user. The platform does not install dependencies or perform online builds.
 	Code *UpdateCustomAgentRequestBodyArtifactCode `json:"code,omitempty" xml:"code,omitempty" type:"Struct"`
-	// The ACR container image configuration. You must specify the type, instanceId, namespace, repo, and tag fields. Do not configure the code field at the same time.
+	// The Alibaba Cloud Container Registry (ACR) container image configuration. You must specify the type, instanceId, namespace, repo, and tag fields. Do not configure the code field at the same time.
 	Container *UpdateCustomAgentRequestBodyArtifactContainer `json:"container,omitempty" xml:"container,omitempty" type:"Struct"`
-	// The TCP port listened by the agent service. Valid values: 1 to 65535.
+	// The TCP port on which the agent service listens. Valid values: 1 to 65535.
 	//
 	// example:
 	//
@@ -468,13 +498,13 @@ type UpdateCustomAgentRequestBodyArtifactCode struct {
 	//
 	// python main.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The code runtime environment identifier, such as python3.12. When you create or switch environments, use the identifier returned by ListAgentCodeRuntimes. The identifier is validated by the current version catalog and is not a fixed enumeration.
+	// The code runtime environment identifier, such as python3.12. When creating or switching environments, use the identifier returned by the ListAgentCodeRuntimes operation. The identifier is validated by the current version catalog and is not a fixed enumeration.
 	//
 	// example:
 	//
 	// python3.12
 	LanguageRuntime *string `json:"languageRuntime,omitempty" xml:"languageRuntime,omitempty"`
-	// The source address of the code package. This field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including OSS signed URLs. External sites, custom domain names, and additional authentication request headers are not supported. For local uploads, use the sourceUri returned by GetAgentCodePackageUploadUrl. The address is revalidated and transferred during creation or update. After the address is saved, a fixed oss:// address of the platform is returned. You can reuse this fixed address for regular updates.
+	// The source URI of the code package. This field supports oss:// addresses or HTTPS object addresses of standard OSS public domain names, including OSS signed URLs. Arbitrary external sites, custom domain names, and additional authentication request headers are not supported. For local uploads, use the sourceUri returned by the GetAgentCodePackageUploadUrl operation. The URI is revalidated and transferred during creation or updates. After saving, the platform returns a fixed oss:// address, which can be reused for regular updates.
 	//
 	// example:
 	//
@@ -522,7 +552,7 @@ func (s *UpdateCustomAgentRequestBodyArtifactCode) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyArtifactContainer struct {
-	// The optional executable program and startup parameters. If specified, this field must be a non-empty string. When you update the artifact, omitting this field uses the default startup method of the image. To retain the original custom startup command, you must provide this field.
+	// The optional executable program and startup parameters. If specified, this field must be a non-empty string. When updating the artifact, omitting this field uses the default startup method of the image. To retain the original custom startup command, provide this field together.
 	//
 	// example:
 	//
@@ -546,13 +576,13 @@ type UpdateCustomAgentRequestBodyArtifactContainer struct {
 	//
 	// chat-agent
 	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
-	// The image tag used for deployment. This field cannot be empty. When you update the tag, you must also provide artifact.port and other required image fields.
+	// The image tag used for deployment. This field cannot be empty. When updating the tag, you must also provide artifact.port and other required image fields.
 	//
 	// example:
 	//
 	// v1.0.0
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The image source type. Only acr is supported, which indicates Container Registry.
+	// The image source type. Currently, only acr is supported, which indicates Alibaba Cloud Container Registry (ACR).
 	//
 	// example:
 	//
@@ -627,27 +657,27 @@ func (s *UpdateCustomAgentRequestBodyArtifactContainer) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyCustomImage struct {
-	// The custom image address. This field is required when you submit customImage and is validated by the backend. Specify the full registry[:port]/repository:tag or registry[:port]/repository@sha256:digest format. Multi-level paths are supported. Do not include the protocol or user information.
+	// The custom image address. This field is required when submitting customImage and is validated by the backend. Use the complete registry[:port]/repository:tag or registry[:port]/repository@sha256:digest format. Multi-level paths are supported. Do not include the protocol or user information.
 	//
 	// example:
 	//
 	// registry.example.com/team/agent:v1
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// The repository password or token for the current task. Submit a non-empty value in pairs with the username field. The value is not trimmed and cannot be null, an empty string, or a masked value. This field is used only for the current task and is not permanently saved or returned. To use anonymous access, omit both fields.
+	// The password or token for the repository.
 	//
 	// example:
 	//
 	// example-registry-token
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The independent network configuration for pulling images. This field is required when you submit customImage and is validated by the backend. For public networks, only pass type=public.
+	// The image pull network configuration. This field is required when submitting customImage and is validated by the backend. Provide the complete independent pull network configuration. For public networks, only pass type=public.
 	PullNetwork *UpdateCustomAgentRequestBodyCustomImagePullNetwork `json:"pullNetwork,omitempty" xml:"pullNetwork,omitempty" type:"Struct"`
-	// Specifies whether to skip HTTPS certificate verification. If omitted, the default value is false. This field does not accept null. HTTP fallback semantics are still under discussion and do not affect the current field definition. The image address does not include a protocol.
+	// Specifies whether to skip HTTPS certificate verification.
 	//
 	// example:
 	//
 	// false
 	SkipTlsVerify *bool `json:"skipTlsVerify,omitempty" xml:"skipTlsVerify,omitempty"`
-	// The repository username for the current task. When you create or explicitly update a private source, resubmit this field in pairs with the password field. Existing copies also require verification. To use anonymous access, omit both fields. A read-only username is not automatically used as the input for the current task.
+	// The username for the repository.
 	//
 	// example:
 	//
@@ -718,25 +748,25 @@ func (s *UpdateCustomAgentRequestBodyCustomImage) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyCustomImagePullNetwork struct {
-	// The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+	// The security group ID. This field is required when type is set to vpc and must belong to the selected VPC.
 	//
 	// example:
 	//
 	// sg-example
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	// The type of the pull network. This field is required when you submit pullNetwork and is validated by the backend. The default value for a new configuration is public network, which is independent of the agent runtime network.
+	// The pull network type. This field is required when submitting pullNetwork and is validated by the backend. The default is a public network, which is independent of the agent runtime network.
 	//
 	// example:
 	//
 	// public
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The ID of the security group. This field is required when type is set to vpc and must belong to the selected VPC.
+	// The security group ID. This field is required when type is set to vpc and must belong to the selected VPC.
 	//
 	// example:
 	//
 	// vsw-example
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the VPC. This field is required when type is set to vpc. The associated account and region are validated by the backend.
+	// The VPC ID. This field is required when type is set to vpc. The associated account and region are validated by the backend.
 	//
 	// example:
 	//
@@ -828,7 +858,7 @@ func (s *UpdateCustomAgentRequestBodyEnvironment) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyEnvironmentVariables struct {
-	// The name of the environment variable. This field cannot be empty and must be unique in the current environment variable list.
+	// The name of the environment variable. This field cannot be empty and must be unique within the current environment variable list.
 	//
 	// This parameter is required.
 	//
@@ -879,37 +909,37 @@ func (s *UpdateCustomAgentRequestBodyEnvironmentVariables) Validate() error {
 type UpdateCustomAgentRequestBodyHealthCheck struct {
 	// Deprecated
 	//
-	// This parameter does not take effect. Omit this parameter.
+	// This parameter is currently invalid. Omit it.
 	//
 	// example:
 	//
 	// 1
 	HealthyThreshold *int32 `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
-	// The interval between two consecutive health checks, in seconds. The value must be a positive integer. Default value: 10.
+	// The interval between two health checks, in seconds. The value must be a positive integer. If omitted, the default value is 10.
 	//
 	// example:
 	//
 	// 10
 	IntervalSeconds *int32 `json:"intervalSeconds,omitempty" xml:"intervalSeconds,omitempty"`
-	// The HTTP health check path. The path must start with a forward slash (/). Default value: /healthz.
+	// The HTTP health check path. The path must start with a forward slash (/). If omitted, the default value is /healthz.
 	//
 	// example:
 	//
 	// /healthz
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The port used for health checks. This field is required when you configure a health check. Valid values: 1 to 65535.
+	// The port accessed for health checks. This field is required when configuring health checks. Valid values: 1 to 65535.
 	//
 	// example:
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The timeout period for a single health check, in seconds. The value must be a positive integer and less than the value of intervalSeconds. Default value: 2.
+	// The timeout duration for a single health check, in seconds. The value must be a positive integer and less than intervalSeconds. If omitted, the default value is 2.
 	//
 	// example:
 	//
 	// 2
 	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
-	// The number of consecutive health check failures required to mark the target as unhealthy. The value must be a positive integer. Default value: 3.
+	// The number of consecutive health check failures required to mark the instance as unhealthy. The value must be a positive integer. If omitted, the default value is 3.
 	//
 	// example:
 	//
@@ -984,7 +1014,7 @@ func (s *UpdateCustomAgentRequestBodyHealthCheck) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyLogging struct {
-	// The SLS log delivery destination. When you update this object, you must provide both the project and logstore fields, and they cannot be empty.
+	// The SLS log delivery destination. When updating this object, both project and logstore must be provided and cannot be empty.
 	Sls *UpdateCustomAgentRequestBodyLoggingSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -1060,9 +1090,9 @@ func (s *UpdateCustomAgentRequestBodyLoggingSls) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyNetwork struct {
-	// The Internet access configuration. If this access item is omitted, the agent does not restrict Internet access. However, Internet access must still be allowed by the workspace.
+	// The Internet access configuration. If this access item is omitted, Internet access is not restricted on the agent side. However, the workspace must still allow Internet access.
 	AccessInternet *UpdateCustomAgentRequestBodyNetworkAccessInternet `json:"accessInternet,omitempty" xml:"accessInternet,omitempty" type:"Struct"`
-	// The user VPC access configuration. If this access item is omitted, the agent does not restrict VPC access. However, the workspace must be configured to allow access to the user VPC.
+	// The user VPC access configuration. If this access item is omitted, VPC access is not restricted on the agent side. However, the workspace must still be configured to allow access to the user VPC.
 	AccessVpc *UpdateCustomAgentRequestBodyNetworkAccessVpc `json:"accessVpc,omitempty" xml:"accessVpc,omitempty" type:"Struct"`
 }
 
@@ -1107,7 +1137,7 @@ func (s *UpdateCustomAgentRequestBodyNetwork) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyNetworkAccessInternet struct {
-	// Specifies whether to allow the agent to access the Internet. A Boolean value is required when you configure accessInternet. For this setting to take effect, Internet access must also be allowed by the workspace.
+	// Specifies whether to allow the agent to access the Internet. A Boolean value must be provided when configuring accessInternet. For this to take effect, the workspace must also allow Internet access.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1133,7 +1163,7 @@ func (s *UpdateCustomAgentRequestBodyNetworkAccessInternet) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyNetworkAccessVpc struct {
-	// Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value is required when you configure accessVpc. For this setting to take effect, VPC access must also be allowed by the workspace.
+	// Specifies whether to allow the agent to access the user VPC configured for the workspace. A Boolean value must be provided when configuring accessVpc. For this to take effect, the workspace must also allow VPC access.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1185,13 +1215,13 @@ func (s *UpdateCustomAgentRequestBodyObservability) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyOssMounts struct {
-	// The name of the OSS bucket. This field is required for each mount item. The name must be 3 to 63 characters in length and can contain only lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen.
+	// The name of the OSS bucket. This field is required for each mount item. The length must be 3 to 63 characters. It can contain only lowercase letters, digits, and hyphens, and cannot start or end with a hyphen.
 	//
 	// example:
 	//
 	// my-agent-data
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The subdirectory under /mnt/oss/ in the container. This field is required for each mount item. Mount targets cannot be duplicated or form parent-child overlaps.
+	// The subdirectory under /mnt/oss/ in the container. This field is required for each mount item. Mount targets must not be duplicated or form parent-child overlaps.
 	//
 	// example:
 	//
@@ -1260,13 +1290,7 @@ type UpdateCustomAgentRequestBodyProtocol struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The list of API paths corresponding to the current protocol.
 	Paths []*UpdateCustomAgentRequestBodyProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The invocation protocol type. Valid values:
-	//
-	// - agui: AG-UI protocol.
-	//
-	// - openai-chat-completion: OpenAI Chat Completions compatible protocol.
-	//
-	// - custom: Custom protocol.
+	// The invocation protocol type. Valid values: agui: AG-UI protocol; openai-chat-completion: OpenAI Chat Completions compatible protocol; custom: custom protocol.
 	//
 	// This parameter is required.
 	//
@@ -1376,7 +1400,7 @@ type UpdateCustomAgentRequestBodyRuntime struct {
 	//
 	// This parameter is required.
 	Compute *UpdateCustomAgentRequestBodyRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
-	// The optional elastic policy. When runtime is provided, omitting hpa or its fields uses the following default values: enabled is false, the minimum number of instances is 1, the maximum number of instances is 10, the maximum number of concurrent sessions per instance is 100, and the session idle timeout is 600 seconds. To retain the original policy during an update, provide the complete hpa configuration.
+	// The optional elastic policy. When runtime is provided, omitting hpa or its fields uses the default values: enabled is false, the minimum number of instances is 1, the maximum number of instances is 10, the maximum number of concurrent sessions per instance is 100, and the session idle timeout is 600 seconds. To retain the original elastic policy during an update, provide the complete hpa configuration.
 	Hpa *UpdateCustomAgentRequestBodyRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration used to set the session affinity method for requests.
 	//
@@ -1439,13 +1463,7 @@ func (s *UpdateCustomAgentRequestBodyRuntime) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyRuntimeCompute struct {
-	// The computing specification. Valid values:
-	//
-	// - INTERACTIVE: 1 vCPU and 2 GiB of memory.
-	//
-	// - STANDARD: 2 vCPUs and 4 GiB of memory.
-	//
-	// - HEAVY: 4 vCPUs and 8 GiB of memory.
+	// The compute specification. Valid values: INTERACTIVE: 1 vCPU and 2 GiB of memory; STANDARD: 2 vCPUs and 4 GiB of memory; HEAVY: 4 vCPUs and 8 GiB of memory.
 	//
 	// This parameter is required.
 	//
@@ -1477,7 +1495,7 @@ func (s *UpdateCustomAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether to enable elastic scaling. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. When runtime is provided, omitting this field defaults to false.
+	// Specifies whether to enable elastic scaling. A value of true indicates enabled, and false indicates disabled. When runtime is provided, omitting this field defaults to false.
 	//
 	// This parameter is required.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
@@ -1487,13 +1505,13 @@ type UpdateCustomAgentRequestBodyRuntimeHpa struct {
 	//
 	// 100
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than the value of minSandboxCount. When runtime is provided, omitting this field uses the default value of 10.
+	// The maximum number of runtime instances. Valid values: 1 to 100. The value cannot be less than minSandboxCount. When runtime is provided, omitting this field uses the default value of 10.
 	//
 	// example:
 	//
 	// 10
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than the value of maxSandboxCount. When runtime is provided, omitting this field uses the default value of 1.
+	// The minimum number of runtime instances. Valid values: 1 to 100. The value cannot be greater than maxSandboxCount. When runtime is provided, omitting this field uses the default value of 1.
 	//
 	// example:
 	//
@@ -1565,21 +1583,13 @@ func (s *UpdateCustomAgentRequestBodyRuntimeHpa) Validate() error {
 }
 
 type UpdateCustomAgentRequestBodyRuntimeSessionPolicy struct {
-	// The name of the HTTP request header used by the session policy. This field is required when type is set to ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Omit this field for other policies.
+	// The name of the HTTP request header used by the session policy. This field is required when type is ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Omit this field for other policies.
 	//
 	// example:
 	//
 	// X-Session-Id
 	HeaderName *string `json:"headerName,omitempty" xml:"headerName,omitempty"`
-	// The session policy type. Valid values:
-	//
-	// - AFFINITY: Session affinity.
-	//
-	// - ISOLATED_HEADER_FIELD: Associates sessions by using the request header specified in headerName.
-	//
-	// - ISOLATED_COOKIE: Not recommended.
-	//
-	// - DISABLED: A compatibility option. The response returns AFFINITY.
+	// The session policy type. Valid values: AFFINITY: session affinity; ISOLATED_HEADER_FIELD: uses the request header specified by headerName to associate sessions; ISOLATED_COOKIE: not recommended for use at this time; DISABLED: a compatibility option, and the response returns AFFINITY.
 	//
 	// This parameter is required.
 	//

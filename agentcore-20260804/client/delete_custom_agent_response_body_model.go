@@ -50,7 +50,7 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
+	// Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operations are complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,13 +126,25 @@ func (s *DeleteCustomAgentResponseBody) Validate() error {
 }
 
 type DeleteCustomAgentResponseBodyData struct {
+	// The inbound access mode.
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// The user access scope.
+	//
+	// example:
+	//
+	// ALL
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
 	// The unique identifier of the custom agent. You can obtain it from the response of CreateCustomAgent or ListCustomAgents.
 	//
 	// example:
 	//
 	// agent-550e8400e29b41d4a716446655440000
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The creation method of the agent. The value is CUSTOM for custom agents.
+	// The creation mode of the agent. The value is CUSTOM for custom agents.
 	//
 	// example:
 	//
@@ -144,13 +156,13 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment method of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED.
+	// The deployment mode of the agent. Custom agents are deployed and managed by the platform, so the value is MANAGED.
 	//
 	// example:
 	//
 	// MANAGED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the agent\\"s purpose.
+	// The description of the agent.
 	//
 	// example:
 	//
@@ -180,15 +192,15 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// - Running: The agent is running.
 	//
-	// - Failed: The agent is in a failed state.
+	// - Failed: The agent failed.
 	//
 	// - Updating: The agent is being updated.
 	//
 	// - Deleting: The agent is being deleted.
 	//
-	// - Deleted: The agent has been deleted.
+	// - Deleted: The agent is deleted.
 	//
-	// Call GetCustomAgent to retrieve the latest configuration execution progress.
+	// Call GetCustomAgent to query the execution progress of the latest configuration.
 	//
 	// example:
 	//
@@ -214,6 +226,14 @@ func (s DeleteCustomAgentResponseBodyData) String() string {
 
 func (s DeleteCustomAgentResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteCustomAgentResponseBodyData) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *DeleteCustomAgentResponseBodyData) GetAccessScope() *string {
+	return s.AccessScope
 }
 
 func (s *DeleteCustomAgentResponseBodyData) GetAgentId() *string {
@@ -258,6 +278,16 @@ func (s *DeleteCustomAgentResponseBodyData) GetUpdatedAt() *string {
 
 func (s *DeleteCustomAgentResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *DeleteCustomAgentResponseBodyData) SetAccessMode(v string) *DeleteCustomAgentResponseBodyData {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *DeleteCustomAgentResponseBodyData) SetAccessScope(v string) *DeleteCustomAgentResponseBodyData {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *DeleteCustomAgentResponseBodyData) SetAgentId(v string) *DeleteCustomAgentResponseBodyData {

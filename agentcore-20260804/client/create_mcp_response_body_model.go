@@ -178,6 +178,12 @@ type CreateMcpResponseBodyData struct {
 	//
 	// KNOWLEDGE_BASE
 	OfficialTag *string `json:"officialTag,omitempty" xml:"officialTag,omitempty"`
+	// PUBLIC 表示公开访问；CONTROLLED 表示根据权限规则控制访问。
+	//
+	// example:
+	//
+	// CONTROLLED
+	PermissionMode *string `json:"permissionMode,omitempty" xml:"permissionMode,omitempty"`
 	// The MCP protocol.
 	//
 	// example:
@@ -270,6 +276,10 @@ func (s *CreateMcpResponseBodyData) GetOfficialTag() *string {
 	return s.OfficialTag
 }
 
+func (s *CreateMcpResponseBodyData) GetPermissionMode() *string {
+	return s.PermissionMode
+}
+
 func (s *CreateMcpResponseBodyData) GetProtocol() *string {
 	return s.Protocol
 }
@@ -355,6 +365,11 @@ func (s *CreateMcpResponseBodyData) SetName(v string) *CreateMcpResponseBodyData
 
 func (s *CreateMcpResponseBodyData) SetOfficialTag(v string) *CreateMcpResponseBodyData {
 	s.OfficialTag = &v
+	return s
+}
+
+func (s *CreateMcpResponseBodyData) SetPermissionMode(v string) *CreateMcpResponseBodyData {
+	s.PermissionMode = &v
 	return s
 }
 

@@ -233,6 +233,12 @@ type ListMcpsResponseBodyItems struct {
 	//
 	// KNOWLEDGE_BASE
 	OfficialTag *string `json:"officialTag,omitempty" xml:"officialTag,omitempty"`
+	// PUBLIC 表示公开访问；CONTROLLED 表示根据权限规则控制访问。
+	//
+	// example:
+	//
+	// CONTROLLED
+	PermissionMode *string `json:"permissionMode,omitempty" xml:"permissionMode,omitempty"`
 	// The MCP protocol.
 	//
 	// example:
@@ -329,6 +335,10 @@ func (s *ListMcpsResponseBodyItems) GetOfficialTag() *string {
 	return s.OfficialTag
 }
 
+func (s *ListMcpsResponseBodyItems) GetPermissionMode() *string {
+	return s.PermissionMode
+}
+
 func (s *ListMcpsResponseBodyItems) GetProtocol() *string {
 	return s.Protocol
 }
@@ -414,6 +424,11 @@ func (s *ListMcpsResponseBodyItems) SetName(v string) *ListMcpsResponseBodyItems
 
 func (s *ListMcpsResponseBodyItems) SetOfficialTag(v string) *ListMcpsResponseBodyItems {
 	s.OfficialTag = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItems) SetPermissionMode(v string) *ListMcpsResponseBodyItems {
+	s.PermissionMode = &v
 	return s
 }
 

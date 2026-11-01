@@ -24,7 +24,7 @@ type iDeleteExternalAgentResponseBody interface {
 }
 
 type DeleteExternalAgentResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteExternalAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The summary information of the deleted external agent.
 	Data *DeleteExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -126,6 +126,18 @@ func (s *DeleteExternalAgentResponseBody) Validate() error {
 }
 
 type DeleteExternalAgentResponseBodyData struct {
+	// The inbound access mode.
+	//
+	// example:
+	//
+	// API_KEY
+	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
+	// The user access scope.
+	//
+	// example:
+	//
+	// ALL
+	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
 	// The external agent ID.
 	//
 	// example:
@@ -202,6 +214,14 @@ func (s DeleteExternalAgentResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteExternalAgentResponseBodyData) GetAccessMode() *string {
+	return s.AccessMode
+}
+
+func (s *DeleteExternalAgentResponseBodyData) GetAccessScope() *string {
+	return s.AccessScope
+}
+
 func (s *DeleteExternalAgentResponseBodyData) GetAgentId() *string {
 	return s.AgentId
 }
@@ -244,6 +264,16 @@ func (s *DeleteExternalAgentResponseBodyData) GetUpdatedAt() *string {
 
 func (s *DeleteExternalAgentResponseBodyData) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *DeleteExternalAgentResponseBodyData) SetAccessMode(v string) *DeleteExternalAgentResponseBodyData {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *DeleteExternalAgentResponseBodyData) SetAccessScope(v string) *DeleteExternalAgentResponseBodyData {
+	s.AccessScope = &v
+	return s
 }
 
 func (s *DeleteExternalAgentResponseBodyData) SetAgentId(v string) *DeleteExternalAgentResponseBodyData {
