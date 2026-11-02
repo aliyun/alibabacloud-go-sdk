@@ -1,3 +1,10 @@
+2026-11-02 Version: v1.0.3
+- Update API SearchKnowledgeBase: add request parameters body.evidencePageToken.
+- Update API SearchKnowledgeBase: add request parameters body.includeWiki.
+- Update API SearchKnowledgeBase: add response parameters Body.evidenceNextToken.
+- Update API SearchKnowledgeBase: add response parameters Body.evidenceResults.
+
+
 2026-09-03 Version: v1.0.2
 - Update API AddDocuments: add request parameters body.Documents.$.StrategyId.
 - Update API SearchKnowledgeBase: add response parameters Body.results.$.mediaEndMs.

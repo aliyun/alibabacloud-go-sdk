@@ -13,8 +13,12 @@ type iSearchKnowledgeBaseRequest interface {
 	GetDocumentIds() []*string
 	SetEnableKnowledgeGraph(v bool) *SearchKnowledgeBaseRequest
 	GetEnableKnowledgeGraph() *bool
+	SetEvidencePageToken(v string) *SearchKnowledgeBaseRequest
+	GetEvidencePageToken() *string
 	SetImage(v *SearchKnowledgeBaseRequestImage) *SearchKnowledgeBaseRequest
 	GetImage() *SearchKnowledgeBaseRequestImage
+	SetIncludeWiki(v bool) *SearchKnowledgeBaseRequest
+	GetIncludeWiki() *bool
 	SetPageNumber(v int32) *SearchKnowledgeBaseRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *SearchKnowledgeBaseRequest
@@ -42,33 +46,45 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// false
 	EnableKnowledgeGraph *bool `json:"enableKnowledgeGraph,omitempty" xml:"enableKnowledgeGraph,omitempty"`
-	// The image retrieval input.
+	// Optional. This parameter is returned conditionally and can be passed only when includeWiki is set to true. Omit this parameter for the first evidence page. For subsequent pages, pass the evidenceNextToken from the previous page as is. The candidate pool, subject, parameters, and page size are fixed and expire after 5 minutes without renewal. If the token expires, a 409 error is returned and no automatic re-search is performed. The pageNumber parameter only controls the legacy results. Constraints: {"minLength":1,"maxLength":4096}.
+	//
+	// example:
+	//
+	// example-opaque-next-token
+	EvidencePageToken *string `json:"evidencePageToken,omitempty" xml:"evidencePageToken,omitempty"`
+	// The image search input.
 	Image *SearchKnowledgeBaseRequestImage `json:"image,omitempty" xml:"image,omitempty" type:"Struct"`
+	// Optional. This parameter is returned conditionally and is added for compatibility. Default value: false. If set to true, the unified evidenceResults are additionally returned, and Wiki content is not disguised as original text. Constraints: {"default":false}.
+	//
+	// example:
+	//
+	// true
+	IncludeWiki *bool `json:"includeWiki,omitempty" xml:"includeWiki,omitempty"`
 	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The retrieval query.
+	// The search query.
 	//
 	// example:
 	//
 	// What is the tax amount on the invoice?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The reranking model ID.
+	// The ID of the rerank model.
 	//
 	// example:
 	//
 	// 123
 	RerankModelId *int64 `json:"rerankModelId,omitempty" xml:"rerankModelId,omitempty"`
-	// The name of a reranking model that the tenant has activated. If both rerankModelName and rerankModelId are specified, this parameter takes precedence.
+	// The name of the rerank model activated for the tenant. If both rerankModelId and this parameter are specified, this parameter takes precedence.
 	//
 	// example:
 	//
@@ -78,7 +94,7 @@ type SearchKnowledgeBaseRequest struct {
 	RetrievalConfig *SearchKnowledgeBaseRequestRetrievalConfig `json:"retrievalConfig,omitempty" xml:"retrievalConfig,omitempty" type:"Struct"`
 	// The tag filter.
 	TagFilter *SearchKnowledgeBaseRequestTagFilter `json:"tagFilter,omitempty" xml:"tagFilter,omitempty" type:"Struct"`
-	// The knowledge base version.
+	// The version of the knowledge base.
 	//
 	// example:
 	//
@@ -102,8 +118,16 @@ func (s *SearchKnowledgeBaseRequest) GetEnableKnowledgeGraph() *bool {
 	return s.EnableKnowledgeGraph
 }
 
+func (s *SearchKnowledgeBaseRequest) GetEvidencePageToken() *string {
+	return s.EvidencePageToken
+}
+
 func (s *SearchKnowledgeBaseRequest) GetImage() *SearchKnowledgeBaseRequestImage {
 	return s.Image
+}
+
+func (s *SearchKnowledgeBaseRequest) GetIncludeWiki() *bool {
+	return s.IncludeWiki
 }
 
 func (s *SearchKnowledgeBaseRequest) GetPageNumber() *int32 {
@@ -148,8 +172,18 @@ func (s *SearchKnowledgeBaseRequest) SetEnableKnowledgeGraph(v bool) *SearchKnow
 	return s
 }
 
+func (s *SearchKnowledgeBaseRequest) SetEvidencePageToken(v string) *SearchKnowledgeBaseRequest {
+	s.EvidencePageToken = &v
+	return s
+}
+
 func (s *SearchKnowledgeBaseRequest) SetImage(v *SearchKnowledgeBaseRequestImage) *SearchKnowledgeBaseRequest {
 	s.Image = v
+	return s
+}
+
+func (s *SearchKnowledgeBaseRequest) SetIncludeWiki(v bool) *SearchKnowledgeBaseRequest {
+	s.IncludeWiki = &v
 	return s
 }
 
@@ -225,7 +259,7 @@ type SearchKnowledgeBaseRequestImage struct {
 	//
 	// uploaded/invoice.png
 	ObjectKey *string `json:"objectKey,omitempty" xml:"objectKey,omitempty"`
-	// The image URL.
+	// The URL of the image.
 	//
 	// example:
 	//
@@ -273,7 +307,7 @@ func (s *SearchKnowledgeBaseRequestImage) Validate() error {
 }
 
 type SearchKnowledgeBaseRequestRetrievalConfig struct {
-	// The number of candidate recall results.
+	// The number of recalled candidates.
 	//
 	// example:
 	//

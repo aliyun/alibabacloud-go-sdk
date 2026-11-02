@@ -13,6 +13,10 @@ type iSearchKnowledgeBaseResponseBody interface {
 	GetAccessDeniedDetail() *string
 	SetCode(v int32) *SearchKnowledgeBaseResponseBody
 	GetCode() *int32
+	SetEvidenceNextToken(v string) *SearchKnowledgeBaseResponseBody
+	GetEvidenceNextToken() *string
+	SetEvidenceResults(v []*SearchKnowledgeBaseResponseBodyEvidenceResults) *SearchKnowledgeBaseResponseBody
+	GetEvidenceResults() []*SearchKnowledgeBaseResponseBodyEvidenceResults
 	SetHttpStatusCode(v int32) *SearchKnowledgeBaseResponseBody
 	GetHttpStatusCode() *int32
 	SetMessage(v string) *SearchKnowledgeBaseResponseBody
@@ -34,25 +38,37 @@ type iSearchKnowledgeBaseResponseBody interface {
 }
 
 type SearchKnowledgeBaseResponseBody struct {
-	// The details of the access denial due to a permission verification failure.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:SearchKnowledgeBase"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The return code.
+	// The status code.
 	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// Optional. Conditionally returned. Required when includeWiki is set to true. The cursor for the next page of evidence. Null for the last page. Not used for legacy results pagination. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":4096}.
+	//
+	// example:
+	//
+	// example-opaque-next-token
+	EvidenceNextToken *string `json:"evidenceNextToken,omitempty" xml:"evidenceNextToken,omitempty"`
+	// Optional. Conditionally returned. Returned only when includeWiki is set to true. The current page of unified and merged evidence. Constraints: {"minItems":0,"maxItems":100}.
+	//
+	// example:
+	//
+	// [{"evidenceId":"wiki_section_page_1_sec_1_rev_7","kind":"wiki_section","knowledgeBaseId":"example_kb","documentId":null,"chunkId":null,"pageId":"page_1","sectionId":"sec_1","entityId":null,"relationId":null,"revisionId":"rev_7","batchId":"batch_7","title":"Warranty instructions","content":"The warranty period for Product A is 18 months.","score":0.62,"sourceRefs":[{"documentId":"doc_manual","chunkId":"chunk_1","sourceRevisionId":"source_rev_7","version":"DRAFT"}],"sourceRefCount":1,"sourceRefsTruncated":false,"sourceTaskId":"11111111111111111111111111111111"}]
+	EvidenceResults []*SearchKnowledgeBaseResponseBodyEvidenceResults `json:"evidenceResults,omitempty" xml:"evidenceResults,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
 	// example:
 	//
 	// 0
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -64,7 +80,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
@@ -80,7 +96,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The list of retrieval results.
 	Results []*SearchKnowledgeBaseResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -108,6 +124,14 @@ func (s *SearchKnowledgeBaseResponseBody) GetAccessDeniedDetail() *string {
 
 func (s *SearchKnowledgeBaseResponseBody) GetCode() *int32 {
 	return s.Code
+}
+
+func (s *SearchKnowledgeBaseResponseBody) GetEvidenceNextToken() *string {
+	return s.EvidenceNextToken
+}
+
+func (s *SearchKnowledgeBaseResponseBody) GetEvidenceResults() []*SearchKnowledgeBaseResponseBodyEvidenceResults {
+	return s.EvidenceResults
 }
 
 func (s *SearchKnowledgeBaseResponseBody) GetHttpStatusCode() *int32 {
@@ -153,6 +177,16 @@ func (s *SearchKnowledgeBaseResponseBody) SetAccessDeniedDetail(v string) *Searc
 
 func (s *SearchKnowledgeBaseResponseBody) SetCode(v int32) *SearchKnowledgeBaseResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBody) SetEvidenceNextToken(v string) *SearchKnowledgeBaseResponseBody {
+	s.EvidenceNextToken = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBody) SetEvidenceResults(v []*SearchKnowledgeBaseResponseBodyEvidenceResults) *SearchKnowledgeBaseResponseBody {
+	s.EvidenceResults = v
 	return s
 }
 
@@ -202,6 +236,15 @@ func (s *SearchKnowledgeBaseResponseBody) SetTotalCount(v int64) *SearchKnowledg
 }
 
 func (s *SearchKnowledgeBaseResponseBody) Validate() error {
+	if s.EvidenceResults != nil {
+		for _, item := range s.EvidenceResults {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Results != nil {
 		for _, item := range s.Results {
 			if item != nil {
@@ -212,6 +255,479 @@ func (s *SearchKnowledgeBaseResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type SearchKnowledgeBaseResponseBodyEvidenceResults struct {
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// null
+	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// null
+	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Required. Always returned. The readable evidence text. Constraints: {"maxLength":65535}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// The warranty period for Product A is 18 months
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// null
+	DocumentId *string `json:"documentId,omitempty" xml:"documentId,omitempty"`
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// null
+	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
+	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wiki_section_page_1_sec_1_rev_7
+	EvidenceId *string `json:"evidenceId,omitempty" xml:"evidenceId,omitempty"`
+	// Required. Always returned. The actual evidence object type. Constraints: {"enum":["raw","wiki_page","wiki_section","graph_fact"],"maxLength":64}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// wiki_section
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example_kb
+	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// page_1
+	PageId *string `json:"pageId,omitempty" xml:"pageId,omitempty"`
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// null
+	RelationId *string `json:"relationId,omitempty" xml:"relationId,omitempty"`
+	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example_value
+	RevisionId *string `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
+	// Required. Always returned. The finite numerical value used for unified ranking. For hybrid, it is the relevance of the existing Dealer.rerank. For rerank, it is the text and model hybrid relevance of the existing Dealer.rerank_by_model, along the semanticWeight and rank feature, which is not a relevance probability. The minScore is applied according to the existing unified scoring rules. Can be null for non-ranking fact evidence. Null is allowed. The not-equal-to condition can be omitted.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.62
+	Score *float64 `json:"score,omitempty" xml:"score,omitempty"`
+	// Required. Always returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sec_1
+	SectionId *string `json:"sectionId,omitempty" xml:"sectionId,omitempty"`
+	// Required. Always returned. The total number of source chunk references. Authorization is performed on the full set. Constraints: {"minimum":1,"maximum":9223372036854775807}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SourceRefCount *int64 `json:"sourceRefCount,omitempty" xml:"sourceRefCount,omitempty"`
+	// Required. Always returned. The actually supported sources. Constraints: {"minItems":1,"maxItems":1000}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"documentId":"doc_manual","chunkId":"chunk_1","sourceRevisionId":"source_rev_7","version":"DRAFT","contentHash":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}]
+	SourceRefs []*SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs `json:"sourceRefs,omitempty" xml:"sourceRefs,omitempty" type:"Repeated"`
+	// Required. Always returned. True when a single sourceRefs contains only the first 1000 items. You can paginate and verify by using sourceTaskId.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	SourceRefsTruncated *bool `json:"sourceRefsTruncated,omitempty" xml:"sourceRefsTruncated,omitempty"`
+	// Required. Always returned. The entry point for complete sources. Must be a non-null locator when sourceRefsTruncated is true. The source operation references held by the artifact or revision remain readable, and archiving task details does not delete this source manifest. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minLength":32,"maxLength":32,"pattern":"^[0-9a-f]{32}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// null
+	SourceTaskId *string `json:"sourceTaskId,omitempty" xml:"sourceTaskId,omitempty"`
+	// Required. Always returned. The display title after authorization. Constraints: {"maxLength":1024}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Warranty instructions
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s SearchKnowledgeBaseResponseBodyEvidenceResults) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SearchKnowledgeBaseResponseBodyEvidenceResults) GoString() string {
+	return s.String()
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetBatchId() *string {
+	return s.BatchId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetChunkId() *string {
+	return s.ChunkId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetContent() *string {
+	return s.Content
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetDocumentId() *string {
+	return s.DocumentId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetEntityId() *string {
+	return s.EntityId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetEvidenceId() *string {
+	return s.EvidenceId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetKind() *string {
+	return s.Kind
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetKnowledgeBaseId() *string {
+	return s.KnowledgeBaseId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetPageId() *string {
+	return s.PageId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetRelationId() *string {
+	return s.RelationId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetRevisionId() *string {
+	return s.RevisionId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetScore() *float64 {
+	return s.Score
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetSectionId() *string {
+	return s.SectionId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetSourceRefCount() *int64 {
+	return s.SourceRefCount
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetSourceRefs() []*SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	return s.SourceRefs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetSourceRefsTruncated() *bool {
+	return s.SourceRefsTruncated
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetSourceTaskId() *string {
+	return s.SourceTaskId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) GetTitle() *string {
+	return s.Title
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetBatchId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.BatchId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetChunkId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.ChunkId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetContent(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.Content = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetDocumentId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetEntityId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.EntityId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetEvidenceId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.EvidenceId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetKind(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.Kind = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetKnowledgeBaseId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetPageId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.PageId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetRelationId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.RelationId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetRevisionId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.RevisionId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetScore(v float64) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetSectionId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.SectionId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetSourceRefCount(v int64) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.SourceRefCount = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetSourceRefs(v []*SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.SourceRefs = v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetSourceRefsTruncated(v bool) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.SourceRefsTruncated = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetSourceTaskId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.SourceTaskId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) SetTitle(v string) *SearchKnowledgeBaseResponseBodyEvidenceResults {
+	s.Title = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResults) Validate() error {
+	if s.SourceRefs != nil {
+		for _, item := range s.SourceRefs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs struct {
+	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example_value
+	ChunkId *string `json:"chunkId,omitempty" xml:"chunkId,omitempty"`
+	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example_value
+	DocumentId *string `json:"documentId,omitempty" xml:"documentId,omitempty"`
+	// Optional. Conditionally returned. The document name returned only after authorization. Constraints: {"maxLength":1024}.
+	//
+	// example:
+	//
+	// example_value
+	DocumentName *string `json:"documentName,omitempty" xml:"documentName,omitempty"`
+	// Optional. Conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minimum":0,"maximum":9223372036854775807}.
+	//
+	// example:
+	//
+	// 0
+	MediaEndMs *int64 `json:"mediaEndMs,omitempty" xml:"mediaEndMs,omitempty"`
+	// Optional. Conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minimum":0,"maximum":9223372036854775807}.
+	//
+	// example:
+	//
+	// 0
+	MediaStartMs *int64 `json:"mediaStartMs,omitempty" xml:"mediaStartMs,omitempty"`
+	// Optional. Conditionally returned. Null is allowed. The semantics of null values follow the field description. Null is allowed. The not-equal-to condition can be omitted. Constraints: {"minimum":1,"maximum":9223372036854775807}.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Required. Always returned. The opaque business ID generated by the server. Validates ownership and does not accept arbitrary paths. Constraints: {"minLength":1,"maxLength":128,"pattern":"^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example_value
+	SourceRevisionId *string `json:"sourceRevisionId,omitempty" xml:"sourceRevisionId,omitempty"`
+	// Required. Always returned. The display name of the version. Does not fall back to draft if invalid or unavailable. Constraints: {"maxLength":64,"pattern":"^(DRAFT|LATEST_PUBLISHED|v[1-9][0-9]*)$","default":"DRAFT"}.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DRAFT
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GoString() string {
+	return s.String()
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetChunkId() *string {
+	return s.ChunkId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetDocumentId() *string {
+	return s.DocumentId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetDocumentName() *string {
+	return s.DocumentName
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetMediaEndMs() *int64 {
+	return s.MediaEndMs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetMediaStartMs() *int64 {
+	return s.MediaStartMs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetPageNumber() *int64 {
+	return s.PageNumber
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetSourceRevisionId() *string {
+	return s.SourceRevisionId
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) GetVersion() *string {
+	return s.Version
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetChunkId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.ChunkId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetDocumentId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetDocumentName(v string) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.DocumentName = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetMediaEndMs(v int64) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.MediaEndMs = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetMediaStartMs(v int64) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.MediaStartMs = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetPageNumber(v int64) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetSourceRevisionId(v string) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.SourceRevisionId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) SetVersion(v string) *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs {
+	s.Version = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs) Validate() error {
+	return dara.Validate(s)
 }
 
 type SearchKnowledgeBaseResponseBodyResults struct {
@@ -247,7 +763,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	DocumentName *string `json:"documentName,omitempty" xml:"documentName,omitempty"`
 	// The list of associated images.
 	Images []*SearchKnowledgeBaseResponseBodyResultsImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// The knowledge base ID.
+	// The ID of the knowledge base.
 	//
 	// example:
 	//
@@ -255,19 +771,19 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
 	// The list of document locations.
 	Locations []*SearchKnowledgeBaseResponseBodyResultsLocations `json:"locations,omitempty" xml:"locations,omitempty" type:"Repeated"`
-	// The end time of the audio or video chunk in the original media, in milliseconds. This field is not returned for non-media chunks.
+	// The end time of the audio or video chunk in the original media, in milliseconds. This parameter is not returned for non-media chunks.
 	//
 	// example:
 	//
 	// 8400
 	MediaEndMs *int64 `json:"mediaEndMs,omitempty" xml:"mediaEndMs,omitempty"`
-	// The start time of the audio or video chunk in the original media, in milliseconds. This field is not returned for non-media chunks.
+	// The start time of the audio or video chunk in the original media, in milliseconds. This parameter is not returned for non-media chunks.
 	//
 	// example:
 	//
 	// 1250
 	MediaStartMs *int64 `json:"mediaStartMs,omitempty" xml:"mediaStartMs,omitempty"`
-	// The time ranges of sentence-level or paragraph-level content within the chunk in the original media. This field is not returned for non-audio chunks.
+	// The time range of each sentence or paragraph within the chunk in the original media. This parameter is not returned for non-audio chunks.
 	MediaTimeline []*SearchKnowledgeBaseResponseBodyResultsMediaTimeline `json:"mediaTimeline,omitempty" xml:"mediaTimeline,omitempty" type:"Repeated"`
 	// The parent chunk ID.
 	//
@@ -275,7 +791,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	//
 	// parent-chunk-id
 	ParentChunkId *string `json:"parentChunkId,omitempty" xml:"parentChunkId,omitempty"`
-	// The scalar columns of the structured knowledge base. The columns are returned by their original column names and are not used in retrieval.
+	// The scalar columns of the structured knowledge base. The columns are returned by their original names and are not used for retrieval.
 	//
 	// example:
 	//
@@ -289,7 +805,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
 	// The relevance score details.
 	ScoreDetails *SearchKnowledgeBaseResponseBodyResultsScoreDetails `json:"scoreDetails,omitempty" xml:"scoreDetails,omitempty" type:"Struct"`
-	// The list of labels.
+	// The list of tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -527,13 +1043,13 @@ func (s *SearchKnowledgeBaseResponseBodyResultsImages) Validate() error {
 }
 
 type SearchKnowledgeBaseResponseBodyResultsLocations struct {
-	// The bottom boundary.
+	// The bottom edge.
 	//
 	// example:
 	//
 	// 364
 	Bottom *int32 `json:"bottom,omitempty" xml:"bottom,omitempty"`
-	// The left boundary.
+	// The left edge.
 	//
 	// example:
 	//
@@ -545,13 +1061,13 @@ type SearchKnowledgeBaseResponseBodyResultsLocations struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The right boundary.
+	// The right edge.
 	//
 	// example:
 	//
 	// 566
 	Right *int32 `json:"right,omitempty" xml:"right,omitempty"`
-	// The top boundary.
+	// The top edge.
 	//
 	// example:
 	//
@@ -629,7 +1145,7 @@ type SearchKnowledgeBaseResponseBodyResultsMediaTimeline struct {
 	//
 	// 1250
 	StartMs *int64 `json:"startMs,omitempty" xml:"startMs,omitempty"`
-	// The segment text.
+	// The text of the segment.
 	//
 	// example:
 	//

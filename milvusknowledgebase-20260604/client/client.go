@@ -238,11 +238,11 @@ func (client *Client) GetKnowledgeBasePreSignedUrl(datasetId *string, request *G
 
 // Summary:
 //
-// Retrieves documents from a knowledge base.
+// Searches a knowledge base.
 //
 // Description:
 //
-// Retrieves documents from a specified knowledge base by question or image. Use DRAFT, LATEST_PUBLISHED, or vN display names for the version. Pass tag filter conditions using the actual backend operators.
+// Searches a specified knowledge base by using a query or an image. For the version, use the display name DRAFT, LATEST_PUBLISHED, or vN. Pass tag filter conditions based on the actual operators used by the backend.
 //
 // @param request - SearchKnowledgeBaseRequest
 //
@@ -267,8 +267,16 @@ func (client *Client) SearchKnowledgeBaseWithOptions(knowledgeBaseId *string, re
 		body["enableKnowledgeGraph"] = request.EnableKnowledgeGraph
 	}
 
+	if !dara.IsNil(request.EvidencePageToken) {
+		body["evidencePageToken"] = request.EvidencePageToken
+	}
+
 	if !dara.IsNil(request.Image) {
 		body["image"] = request.Image
+	}
+
+	if !dara.IsNil(request.IncludeWiki) {
+		body["includeWiki"] = request.IncludeWiki
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -329,11 +337,11 @@ func (client *Client) SearchKnowledgeBaseWithOptions(knowledgeBaseId *string, re
 
 // Summary:
 //
-// Retrieves documents from a knowledge base.
+// Searches a knowledge base.
 //
 // Description:
 //
-// Retrieves documents from a specified knowledge base by question or image. Use DRAFT, LATEST_PUBLISHED, or vN display names for the version. Pass tag filter conditions using the actual backend operators.
+// Searches a specified knowledge base by using a query or an image. For the version, use the display name DRAFT, LATEST_PUBLISHED, or vN. Pass tag filter conditions based on the actual operators used by the backend.
 //
 // @param request - SearchKnowledgeBaseRequest
 //
