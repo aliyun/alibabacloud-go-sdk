@@ -24,7 +24,7 @@ type ListIntegrationPolicyStorageRequirementsRequest struct {
 	//
 	// release-1234357
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The name of the AddonRelease.
+	// The name of the add-on release.
 	//
 	// example:
 	//

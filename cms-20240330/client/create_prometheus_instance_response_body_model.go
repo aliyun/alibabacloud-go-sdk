@@ -16,7 +16,7 @@ type iCreatePrometheusInstanceResponseBody interface {
 }
 
 type CreatePrometheusInstanceResponseBody struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//

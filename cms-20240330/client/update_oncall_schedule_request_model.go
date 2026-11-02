@@ -28,7 +28,7 @@ type UpdateOncallScheduleRequest struct {
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
 	// The list of rotations.
 	Rotations []*UpdateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the shift reminder chatbot.
+	// The ID of the chatbot for shift reminders.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type UpdateOncallScheduleRequestRotations struct {
 	//
 	// This parameter is required.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
-	// The IDs of the contacts.
+	// The contact IDs.
 	//
 	// This parameter is required.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
@@ -137,13 +137,13 @@ type UpdateOncallScheduleRequestRotations struct {
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift cycle. Used in conjunction with shiftRecurrenceFrequency, such as switching to the next on-call person every 3 days.
+	// The length of the shift cycle. Used in conjunction with shiftRecurrenceFrequency. For example, a value of 3 indicates that the on-call contact rotates every 3 days.
 	//
 	// example:
 	//
 	// 3
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift cycle. Used in conjunction with shiftRecurrenceFrequency, such as switching to the next on-call person every week.
+	// The unit of the shift cycle. Used in conjunction with shiftLength. For example, a value of week indicates that the on-call contact rotates every week.
 	//
 	// This parameter is required.
 	//
@@ -159,7 +159,7 @@ type UpdateOncallScheduleRequestRotations struct {
 	//
 	// 2024-04-04
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// The time zone name. Uses the IANA Time Zone Database standard, such as Asia/Shanghai.
+	// The name of the time zone. The IANA Time Zone Database standard is used. Example: Asia/Shanghai.
 	//
 	// This parameter is required.
 	//
@@ -275,7 +275,7 @@ type UpdateOncallScheduleRequestSubstitudes struct {
 	//
 	// 2024-10-15 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The contact ID of the replaced person.
+	// The contact ID of the replaced contact.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ func (s *ListIntegrationPolicyStorageRequirementsResponseBody) Validate() error 
 }
 
 type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements struct {
-	// A collection of AddonRelease names.
+	// The collection of add-on releases.
 	AddonReleaseNames []*string `json:"addonReleaseNames,omitempty" xml:"addonReleaseNames,omitempty" type:"Repeated"`
 	// The version number.
 	//
@@ -74,7 +74,7 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements str
 	//
 	// v1
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The kind of the resource.
+	// The resource kind.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements str
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
 	// The metadata.
 	Metadata *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The spec of the resource.
+	// The specification of the resource.
 	Spec *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec `json:"spec,omitempty" xml:"spec,omitempty" type:"Struct"`
-	// The status of the storage requirement.
+	// The storage requirement status.
 	Status *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
 }
 
@@ -237,25 +237,25 @@ func (s *ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
 }
 
 type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec struct {
-	// The instance ID. Specify this parameter to query data at the instance level. This parameter depends on data in EntityStore.
+	// The instance ID. This field can be specified to narrow the scope to the instance level. It depends on the data in EntityStore.
 	//
 	// example:
 	//
 	// es-xxxxx
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The ID of the Prometheus instance.
+	// The Prometheus instance ID.
 	//
 	// example:
 	//
 	// i-bp122p85gthbniw8rsu9
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// The name of the Prometheus instance.
+	// The Prometheus instance name.
 	//
 	// example:
 	//
 	// category_predict
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// Optional. The project is determined based on the current environment type.
+	// The project. This optional field is determined based on the current environment type.
 	//
 	// example:
 	//
@@ -267,21 +267,21 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec
 	//
 	// cn-shenzhen
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The scope of storage sharing. Valid values: Environment, Region, Workspace, and Custom.
+	// The storage sharing scope. Valid values: Environment, Region, Workspace, and Custom.
 	//
 	// example:
 	//
 	// Region
 	ShareScope *string `json:"shareScope,omitempty" xml:"shareScope,omitempty"`
-	// The storage type of the instance.
+	// The instance storage type.
 	//
 	// example:
 	//
 	// Prometheus
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The tags that need to be added to the destination storage. The tags are injected as system tags.
+	// The tags to be added to the destination storage. These tags are injected as system tags.
 	SystemTags map[string]*string `json:"systemTags,omitempty" xml:"systemTags,omitempty"`
-	// The tags that need to be added to the destination storage. The tags are injected as common tags.
+	// The tags to be added to the destination storage. These tags are injected as regular tags.
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The user ID.
 	//
@@ -421,25 +421,25 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStat
 	//
 	// http://192.168.xxxxxx
 	InterUrl *string `json:"interUrl,omitempty" xml:"interUrl,omitempty"`
-	// The internal URL.
+	// The external URL.
 	//
 	// example:
 	//
 	// http://100.100.xxxxxx
 	IntraUrl *string `json:"intraUrl,omitempty" xml:"intraUrl,omitempty"`
-	// The name of the storage requirement.
+	// The storage requirement name.
 	//
 	// example:
 	//
 	// sr-xxxx
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The project for the storage requirement.
+	// The storage requirement project.
 	//
 	// example:
 	//
 	// jiuwu_algo
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The metric store of Prometheus.
+	// The Prometheus metric center.
 	//
 	// example:
 	//
@@ -451,7 +451,7 @@ type ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStat
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The storage type of the instance.
+	// The instance storage type.
 	//
 	// example:
 	//

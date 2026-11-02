@@ -36,9 +36,9 @@ type iTransformerForView interface {
 }
 
 type TransformerForView struct {
-	// The transform operations.
+	// The transform actions.
 	Actions []*TransformAction `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
-	// The time when the converter was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type TransformerForView struct {
 	//
 	// workspace test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the converter is enabled.
+	// Indicates whether it is enabled.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type TransformerForView struct {
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The filter settings.
 	FilterSetting *FilterSetting `json:"filterSetting,omitempty" xml:"filterSetting,omitempty"`
-	// Indicates whether to exit after a match is processed.
+	// Specifies whether to exit after a match is processed.
 	//
 	// example:
 	//
 	// false
 	QuitAfterMatch *bool `json:"quitAfterMatch,omitempty" xml:"quitAfterMatch,omitempty"`
-	// The sort ID.
+	// The sort order.
 	//
 	// example:
 	//
 	// 1
 	SortId *int32 `json:"sortId,omitempty" xml:"sortId,omitempty"`
-	// The transformer ID.
+	// transformer Id
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type TransformerForView struct {
 	//
 	// example:
 	//
-	// Test processing flow.
+	// 测试处理流
 	TransformerName *string `json:"transformerName,omitempty" xml:"transformerName,omitempty"`
-	// The time when the converter was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type TransformerForView struct {
 	//
 	// 123123123**
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The workspace.
+	// workspace
 	//
 	// example:
 	//

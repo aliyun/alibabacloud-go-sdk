@@ -120,19 +120,13 @@ func (s *ListPrometheusInstancesResponseBody) Validate() error {
 }
 
 type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
-	// The access type. Valid values:
-	//
-	// - readWrite
-	//
-	// - readOnly
-	//
-	// - httpReadOnly
+	// The access type. Valid values: readWrite, readOnly, and httpReadOnly.
 	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
+	// The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
@@ -144,15 +138,15 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// remote-write
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The payment type. Valid values:
+	// The billing method. Valid values:
 	//
-	// - POSTPAY: Pay-as-you-go by metric volume.
+	// - POSTPAY: pay-as-you-go based on the number of metrics.
 	//
-	// - POSTPAY_GB: Pay-as-you-go by write volume.
+	// - POSTPAY_GB: pay-as-you-go based on the amount of written data.
 	//
-	// - PREPAY: Subscription.
+	// - PREPAY: subscription.
 	//
-	// - FREE: Free.
+	// - FREE: free.
 	//
 	// example:
 	//
@@ -194,7 +188,7 @@ type ListPrometheusInstancesResponseBodyPrometheusInstances struct {
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The backend data storage status.
+	// The status of the backend data storage.
 	//
 	// example:
 	//

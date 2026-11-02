@@ -24,7 +24,7 @@ type iListServicesShrinkRequest interface {
 }
 
 type ListServicesShrinkRequest struct {
-	// The maximum number of entries to return in this request.
+	// The maximum number of records to return for the current request.
 	//
 	// example:
 	//
@@ -36,25 +36,25 @@ type ListServicesShrinkRequest struct {
 	//
 	// 7-b81a-4bc9-bbfa-a50cc6988667
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekxxzuad5zzzz
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The application service name.
+	// The service name.
 	//
 	// example:
 	//
 	// app-demo
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The service type.
+	// The type of the service.
 	//
 	// example:
 	//
 	// TRACE
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
-	// The tags.
+	// The array of tags.
 	//
 	// if can be null:
 	// true

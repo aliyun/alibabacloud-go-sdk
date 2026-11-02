@@ -19,6 +19,8 @@ type iUpdateContactRequest interface {
 	GetName() *string
 	SetPhone(v string) *UpdateContactRequest
 	GetPhone() *string
+	SetPhoneCode(v string) *UpdateContactRequest
+	GetPhoneCode() *string
 }
 
 type UpdateContactRequest struct {
@@ -28,7 +30,7 @@ type UpdateContactRequest struct {
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The IM user ID mappings. Multiple instant messaging tools are supported.
+	// The mapping of IM user IDs. Multiple instant messaging tools are supported.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
 	// The language.
 	//
@@ -42,12 +44,18 @@ type UpdateContactRequest struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The mobile phone number of the contact. Only mobile phone numbers in the Chinese mainland are supported.
+	// The mobile phone number of the contact. Currently, only Chinese mobile phone numbers are supported.
 	//
 	// example:
 	//
 	// 150123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// 号码国家码，可带前导 +，如 86、+86。传入后 phone 必须是纯数字，服务端按 <phoneCode>-<phone> 拼号发送，因此 phone 内不能再带 +、00 或区号。不传时按手机号码原样发送。
+	//
+	// example:
+	//
+	// +86
+	PhoneCode *string `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
 }
 
 func (s UpdateContactRequest) String() string {
@@ -78,6 +86,10 @@ func (s *UpdateContactRequest) GetPhone() *string {
 	return s.Phone
 }
 
+func (s *UpdateContactRequest) GetPhoneCode() *string {
+	return s.PhoneCode
+}
+
 func (s *UpdateContactRequest) SetEmail(v string) *UpdateContactRequest {
 	s.Email = &v
 	return s
@@ -100,6 +112,11 @@ func (s *UpdateContactRequest) SetName(v string) *UpdateContactRequest {
 
 func (s *UpdateContactRequest) SetPhone(v string) *UpdateContactRequest {
 	s.Phone = &v
+	return s
+}
+
+func (s *UpdateContactRequest) SetPhoneCode(v string) *UpdateContactRequest {
+	s.PhoneCode = &v
 	return s
 }
 

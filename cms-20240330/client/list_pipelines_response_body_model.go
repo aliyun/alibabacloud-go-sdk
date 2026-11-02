@@ -114,7 +114,7 @@ type ListPipelinesResponseBodyPipelines struct {
 	//
 	// test pipeline
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the pipeline.
+	// The pipeline name.
 	//
 	// example:
 	//

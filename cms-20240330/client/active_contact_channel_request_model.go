@@ -16,7 +16,7 @@ type iActiveContactChannelRequest interface {
 }
 
 type ActiveContactChannelRequest struct {
-	// The activation verification code. This 32-character string is sent by the system to the mobile phone number or email address of the contact.
+	// The activation verification code. The system sends this 32-character string to the mobile phone number or email address of the contact.
 	//
 	// example:
 	//

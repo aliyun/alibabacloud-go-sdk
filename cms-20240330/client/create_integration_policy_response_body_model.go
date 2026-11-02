@@ -24,7 +24,7 @@ type CreateIntegrationPolicyResponseBody struct {
 	//
 	// true
 	Created *bool `json:"created,omitempty" xml:"created,omitempty"`
-	// The uploaded policy.
+	// The policy.
 	Policy *CreateIntegrationPolicyResponseBodyPolicy `json:"policy,omitempty" xml:"policy,omitempty" type:"Struct"`
 	// The request ID.
 	//

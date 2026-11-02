@@ -42,25 +42,25 @@ type MergeContact struct {
 	//
 	// zhangsan@company.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// Specifies whether the email address is authenticated.
+	// Indicates whether the email address is verified.
 	//
 	// example:
 	//
 	// true
 	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	// An extension field used to store additional information.
+	// The extension field used to store additional information.
 	//
 	// example:
 	//
-	// { "department": "运维部", "role": "工程师" }
+	// { "department": "Operations Department", "role": "Engineer" }
 	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
-	// The time when the contact was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-03-11T08:21:58.789Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the contact was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type MergeContact struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The mobile phone number.
 	//
@@ -90,13 +90,13 @@ type MergeContact struct {
 	//
 	// 13800138000
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// The country code for the mobile phone number.
+	// The country code of the mobile phone number.
 	//
 	// example:
 	//
 	// 86
 	PhoneCode *string `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
-	// Specifies whether the mobile phone number is authenticated.
+	// Indicates whether the mobile phone number is verified.
 	//
 	// example:
 	//

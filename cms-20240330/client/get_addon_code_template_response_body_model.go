@@ -18,7 +18,7 @@ type iGetAddonCodeTemplateResponseBody interface {
 type GetAddonCodeTemplateResponseBody struct {
 	// The list of code templates.
 	Codes []*GetAddonCodeTemplateResponseBodyCodes `json:"codes,omitempty" xml:"codes,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

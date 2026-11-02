@@ -22,7 +22,7 @@ type CreateOncallScheduleResponseBody struct {
 	//
 	// testOncallScheduleId
 	OncallScheduleId *string `json:"oncallScheduleId,omitempty" xml:"oncallScheduleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

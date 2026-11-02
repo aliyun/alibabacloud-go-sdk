@@ -22,7 +22,7 @@ type iListContactsResponseBody interface {
 }
 
 type ListContactsResponseBody struct {
-	// The list of contacts.
+	// The list of alert contacts.
 	Contacts []*ListContactsResponseBodyContacts `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -117,27 +117,27 @@ func (s *ListContactsResponseBody) Validate() error {
 }
 
 type ListContactsResponseBodyContacts struct {
-	// The ID of the on-duty contact.
+	// The ID of the alert contact.
 	//
 	// example:
 	//
 	// test
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// The email address of the contact.
+	// The email address of the alert contact.
 	//
 	// example:
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// Indicates whether the email address is activated.
+	// Indicates whether the email address is verified.
 	//
 	// example:
 	//
 	// true
 	EmailVerify *bool `json:"emailVerify,omitempty" xml:"emailVerify,omitempty"`
-	// The contact groups to which the contact belongs.
+	// The alert contact groups to which the alert contact belongs.
 	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
-	// The IM user ID mapping. Multiple instant messaging tools are supported.
+	// The mapping of IM user IDs. Multiple instant messaging tools are supported.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
 	// The language.
 	//
@@ -145,19 +145,19 @@ type ListContactsResponseBodyContacts struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the contact.
+	// The name of the alert contact.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The mobile phone number of the contact.
+	// The mobile phone number of the alert contact.
 	//
 	// example:
 	//
 	// 130123456789
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
-	// Indicates whether the mobile phone number of the contact is activated.
+	// Indicates whether the mobile phone number is verified.
 	//
 	// example:
 	//

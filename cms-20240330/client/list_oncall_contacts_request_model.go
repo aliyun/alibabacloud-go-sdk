@@ -14,7 +14,7 @@ type iListOncallContactsRequest interface {
 }
 
 type ListOncallContactsRequest struct {
-	// The timestamp of the on-call shift to query. Unit: milliseconds.
+	// The timestamp for which to query the on-call personnel. Unit: milliseconds.
 	//
 	// example:
 	//

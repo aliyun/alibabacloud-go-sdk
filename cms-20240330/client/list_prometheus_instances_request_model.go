@@ -34,7 +34,7 @@ type iListPrometheusInstancesRequest interface {
 type ListPrometheusInstancesRequest struct {
 	// Deprecated
 	//
-	// The region IDs for filtering, separated by commas. Currently, only a single region ID is supported.
+	// The list of region IDs used for filtering, separated by commas.
 	//
 	// if can be null:
 	// true
@@ -61,7 +61,7 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// xxxxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The instance IDs, separated by commas.
+	// The list of instance IDs, separated by commas.
 	//
 	// if can be null:
 	// true
@@ -70,7 +70,7 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// rw-00001,rw-00002,rw-00003
 	PrometheusInstanceIds *string `json:"prometheusInstanceIds,omitempty" xml:"prometheusInstanceIds,omitempty"`
-	// The instance name. Fuzzy match is supported.
+	// The name of the instance. Partial matching is supported.
 	//
 	// if can be null:
 	// true
@@ -96,9 +96,9 @@ type ListPrometheusInstancesRequest struct {
 	//
 	// Prometheus
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*ListPrometheusInstancesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The instance version. Valid values: V1 and V2.
+	// The version of the instance.
 	//
 	// if can be null:
 	// true

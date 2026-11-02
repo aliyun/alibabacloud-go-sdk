@@ -32,13 +32,13 @@ type iUpdateAlertActionRequest interface {
 }
 
 type UpdateAlertActionRequest struct {
-	// The name of the alert action integration.
+	// The name of the action integration.
 	//
 	// example:
 	//
 	// testName
 	AlertActionName *string `json:"alertActionName,omitempty" xml:"alertActionName,omitempty"`
-	// The event bus.
+	// The event bus parameters.
 	EbParam *UpdateAlertActionRequestEbParam `json:"ebParam,omitempty" xml:"ebParam,omitempty" type:"Struct"`
 	// The elastic scaling parameters.
 	EssParam *UpdateAlertActionRequestEssParam `json:"essParam,omitempty" xml:"essParam,omitempty" type:"Struct"`
@@ -52,7 +52,7 @@ type UpdateAlertActionRequest struct {
 	PagerDutyParam *UpdateAlertActionRequestPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *UpdateAlertActionRequestSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the alert action integration.
+	// The type of the action integration.
 	//
 	// example:
 	//
@@ -530,7 +530,7 @@ type UpdateAlertActionRequestPagerDutyParam struct {
 	//
 	// fwe4rwr543t543t43t43t43
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook of PagerDuty. V1 and V2 are supported.
+	// The integration webhook URL of PagerDuty. V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -569,13 +569,13 @@ func (s *UpdateAlertActionRequestPagerDutyParam) Validate() error {
 }
 
 type UpdateAlertActionRequestSlsParam struct {
-	// The name of the Simple Log Service Logstore.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// testLogstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the project.
 	//
 	// example:
 	//
@@ -643,7 +643,7 @@ type UpdateAlertActionRequestWebhookParam struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The alert callback URL.
+	// The URL of the alert callback.
 	//
 	// example:
 	//

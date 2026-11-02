@@ -18,7 +18,7 @@ type iSearchMemoriesResponseBody interface {
 }
 
 type SearchMemoriesResponseBody struct {
-	// The relations.
+	// The relationships.
 	Relations []*SearchMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type SearchMemoriesResponseBody struct {
 	//
 	// 0CEC5375-C554-562B-A65F-9A629907C1F0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned results.
+	// The return values.
 	Results []*SearchMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -94,7 +94,7 @@ type SearchMemoriesResponseBodyRelations struct {
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
-	// The relations.
+	// The relationships.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// 1762773128968
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The memory hash value.
+	// The hash value of the memory.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The memory content.
+	// The memory.
 	//
 	// example:
 	//

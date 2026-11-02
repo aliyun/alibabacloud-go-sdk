@@ -100,7 +100,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Activates the contact channel.
+// Activates a contact channel.
 //
 // @param request - ActiveContactChannelRequest
 //
@@ -151,7 +151,7 @@ func (client *Client) ActiveContactChannelWithOptions(request *ActiveContactChan
 
 // Summary:
 //
-// Activates the contact channel.
+// Activates a contact channel.
 //
 // @param request - ActiveContactChannelRequest
 //
@@ -1223,6 +1223,10 @@ func (client *Client) CreateContactWithOptions(request *CreateContactRequest, he
 		body["phone"] = request.Phone
 	}
 
+	if !dara.IsNil(request.PhoneCode) {
+		body["phoneCode"] = request.PhoneCode
+	}
+
 	if !dara.IsNil(request.Workspace) {
 		body["workspace"] = request.Workspace
 	}
@@ -1832,7 +1836,7 @@ func (client *Client) CreateEntityStore(workspaceName *string, request *CreateEn
 //
 // Description:
 //
-// This operation creates an event integration.
+// Creates an event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -1907,7 +1911,7 @@ func (client *Client) CreateIntegrationPolicyWithOptions(request *CreateIntegrat
 //
 // Description:
 //
-// This operation creates an event integration.
+// Creates an event integration.
 //
 // @param request - CreateIntegrationPolicyRequest
 //
@@ -1930,7 +1934,9 @@ func (client *Client) CreateIntegrationPolicy(request *CreateIntegrationPolicyRe
 //
 // Description:
 //
-// Creates a silence policy in a specified workspace. A silence policy filters events by using filterSetting. When the policy is enabled and the current time hits the configured effective period, the hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications, but the events are still stored normally. When you create a policy, maintainWindowName and filterSetting are required, and filterSetting must contain at least one condition. You can leave the effective period unconfigured, in which case the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, the validation failed. If the policy name already exists in the same workspace, InvalidParameterValue is returned. After the policy is created, the silence policy ID is returned.
+// Creates a silence policy in a specified workspace. A silence policy filters events by using filterSetting. When the policy is enabled and the current time hits the configured effective period, the hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications, but the events are still stored normally.
+//
+// When you create a silence policy, maintainWindowName and filterSetting are required, and filterSetting must contain at least one condition. You can leave the effective period unconfigured, in which case the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, validation failed. If the policy name already exists in the same workspace, InvalidParameterValue is returned. After the policy is created, the silence policy ID is returned.
 //
 // @param request - CreateMaintainWindowRequest
 //
@@ -1982,7 +1988,9 @@ func (client *Client) CreateMaintainWindowWithOptions(request *CreateMaintainWin
 //
 // Description:
 //
-// Creates a silence policy in a specified workspace. A silence policy filters events by using filterSetting. When the policy is enabled and the current time hits the configured effective period, the hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications, but the events are still stored normally. When you create a policy, maintainWindowName and filterSetting are required, and filterSetting must contain at least one condition. You can leave the effective period unconfigured, in which case the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, the validation failed. If the policy name already exists in the same workspace, InvalidParameterValue is returned. After the policy is created, the silence policy ID is returned.
+// Creates a silence policy in a specified workspace. A silence policy filters events by using filterSetting. When the policy is enabled and the current time hits the configured effective period, the hit events do not trigger subscribe notifications, direct notifications, or global subscribe notifications, but the events are still stored normally.
+//
+// When you create a silence policy, maintainWindowName and filterSetting are required, and filterSetting must contain at least one condition. You can leave the effective period unconfigured, in which case the policy does not hit any events. If you configure effective, you must also configure at least one of startTime, endTime, or effectTimeRange. Otherwise, validation failed. If the policy name already exists in the same workspace, InvalidParameterValue is returned. After the policy is created, the silence policy ID is returned.
 //
 // @param request - CreateMaintainWindowRequest
 //
@@ -2262,7 +2270,7 @@ func (client *Client) CreateOncallSchedule(request *CreateOncallScheduleRequest)
 
 // Summary:
 //
-// Create a pipeline.
+// Creates a pipeline.
 //
 // @param request - CreatePipelineRequest
 //
@@ -2329,7 +2337,7 @@ func (client *Client) CreatePipelineWithOptions(workspace *string, request *Crea
 
 // Summary:
 //
-// Create a pipeline.
+// Creates a pipeline.
 //
 // @param request - CreatePipelineRequest
 //
@@ -2348,7 +2356,7 @@ func (client *Client) CreatePipeline(workspace *string, request *CreatePipelineR
 
 // Summary:
 //
-// Creates a Managed Service for Prometheus instance.
+// Creates a Prometheus monitoring instance.
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -2443,7 +2451,7 @@ func (client *Client) CreatePrometheusInstanceWithOptions(request *CreatePrometh
 
 // Summary:
 //
-// Creates a Managed Service for Prometheus instance.
+// Creates a Prometheus monitoring instance.
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -2748,7 +2756,7 @@ func (client *Client) CreateService(workspace *string, request *CreateServiceReq
 
 // Summary:
 //
-// Creates application observability and prepares the prerequisite resources required for integration.
+// Creates application observability and completes prerequisite resource preparations for integration.
 //
 // @param request - CreateServiceObservabilityRequest
 //
@@ -2789,7 +2797,7 @@ func (client *Client) CreateServiceObservabilityWithOptions(workspace *string, _
 
 // Summary:
 //
-// Creates application observability and prepares the prerequisite resources required for integration.
+// Creates application observability and completes prerequisite resource preparations for integration.
 //
 // @param request - CreateServiceObservabilityRequest
 //
@@ -2808,7 +2816,7 @@ func (client *Client) CreateServiceObservability(workspace *string, _type *strin
 
 // Summary:
 //
-// Creates a service-linked entry for associating configurations with the application monitoring service, such as log association.
+// Creates a service association entry to configure associations for the application monitoring service, such as log associations.
 //
 // @param request - CreateServiceRecordRequest
 //
@@ -2859,7 +2867,7 @@ func (client *Client) CreateServiceRecordWithOptions(workspace *string, serviceI
 
 // Summary:
 //
-// Creates a service-linked entry for associating configurations with the application monitoring service, such as log association.
+// Creates a service association entry to configure associations for the application monitoring service, such as log associations.
 //
 // @param request - CreateServiceRecordRequest
 //
@@ -2888,13 +2896,13 @@ func (client *Client) CreateServiceRecord(workspace *string, serviceId *string, 
 //
 // - heapdump: Triggers a JVM heap dump.
 //
-// - LiveDebug Probe: Dynamically instruments a target method (log, snapshot, metric, span, etc.).
+// - LiveDebug Probe: Dynamically instruments target methods (logs, snapshots, metrics, spans, etc.).
 //
-// - LiveDebug Command: Performs a one-time active inspection (OGNL, decompilation, thread/memory information, etc.).
+// - LiveDebug Command: One-time proactive inspection (OGNL, decompilation, thread or memory information, etc.).
 //
-// - LiveDebug Code Replace: Performs hot code replacement.
+// - LiveDebug Code Replace: Hot code replacement.
 //
-// After successful creation, a taskId is returned. You can manage the task by using GetServiceTask, ListServiceTask, or DeleteServiceTask. After a LiveDebug task is created, the configuration is synchronously delivered to ConfigServer.
+// After the task is created, a taskId is returned. You can subsequently manage the task by using GetServiceTask, ListServiceTask, or DeleteServiceTask. After a LiveDebug task is created, the configuration is synchronized to ConfigServer.
 //
 // @param request - CreateServiceTaskRequest
 //
@@ -2959,13 +2967,13 @@ func (client *Client) CreateServiceTaskWithOptions(workspace *string, serviceId 
 //
 // - heapdump: Triggers a JVM heap dump.
 //
-// - LiveDebug Probe: Dynamically instruments a target method (log, snapshot, metric, span, etc.).
+// - LiveDebug Probe: Dynamically instruments target methods (logs, snapshots, metrics, spans, etc.).
 //
-// - LiveDebug Command: Performs a one-time active inspection (OGNL, decompilation, thread/memory information, etc.).
+// - LiveDebug Command: One-time proactive inspection (OGNL, decompilation, thread or memory information, etc.).
 //
-// - LiveDebug Code Replace: Performs hot code replacement.
+// - LiveDebug Code Replace: Hot code replacement.
 //
-// After successful creation, a taskId is returned. You can manage the task by using GetServiceTask, ListServiceTask, or DeleteServiceTask. After a LiveDebug task is created, the configuration is synchronously delivered to ConfigServer.
+// After the task is created, a taskId is returned. You can subsequently manage the task by using GetServiceTask, ListServiceTask, or DeleteServiceTask. After a LiveDebug task is created, the configuration is synchronized to ConfigServer.
 //
 // @param request - CreateServiceTaskRequest
 //
@@ -3051,7 +3059,7 @@ func (client *Client) CreateSubscription(request *CreateSubscriptionRequest) (_r
 
 // Summary:
 //
-// Generates a ticket for passwordless access if you need to share console pages with others without requiring logon or embed them in third-party systems. After generating the ticket by calling CreateTicket, you can construct a passwordless access link.
+// Creates a ticket for password-free access. You can use the ticket to construct a password-free URL to share console pages with other users or embed them into third-party systems.
 //
 // @param request - CreateTicketRequest
 //
@@ -3102,7 +3110,7 @@ func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, head
 
 // Summary:
 //
-// Generates a ticket for passwordless access if you need to share console pages with others without requiring logon or embed them in third-party systems. After generating the ticket by calling CreateTicket, you can construct a passwordless access link.
+// Creates a ticket for password-free access. You can use the ticket to construct a password-free URL to share console pages with other users or embed them into third-party systems.
 //
 // @param request - CreateTicketRequest
 //
@@ -3329,7 +3337,7 @@ func (client *Client) DeleteAggTaskGroup(instanceId *string, groupId *string, re
 
 // Summary:
 //
-// Deletes an alert action integration.
+// Deletes alert action integrations.
 //
 // @param tmpReq - DeleteAlertActionsRequest
 //
@@ -3382,7 +3390,7 @@ func (client *Client) DeleteAlertActionsWithOptions(tmpReq *DeleteAlertActionsRe
 
 // Summary:
 //
-// Deletes an alert action integration.
+// Deletes alert action integrations.
 //
 // @param request - DeleteAlertActionsRequest
 //
@@ -3731,7 +3739,7 @@ func (client *Client) DeleteCloudResource() (_result *DeleteCloudResourceRespons
 
 // Summary:
 //
-// Deletes contact groups.
+// Deletes a contact group.
 //
 // @param tmpReq - DeleteContactGroupsRequest
 //
@@ -3784,7 +3792,7 @@ func (client *Client) DeleteContactGroupsWithOptions(tmpReq *DeleteContactGroups
 
 // Summary:
 //
-// Deletes contact groups.
+// Deletes a contact group.
 //
 // @param request - DeleteContactGroupsRequest
 //
@@ -4253,7 +4261,7 @@ func (client *Client) DeleteDataset(workspace *string, datasetName *string, requ
 
 // Summary:
 //
-// Deletes a delivery task.
+// Deletes a data delivery task.
 //
 // @param request - DeleteDeliveryTaskRequest
 //
@@ -4294,7 +4302,7 @@ func (client *Client) DeleteDeliveryTaskWithOptions(taskId *string, request *Del
 
 // Summary:
 //
-// Deletes a delivery task.
+// Deletes a data delivery task.
 //
 // @param request - DeleteDeliveryTaskRequest
 //
@@ -5065,7 +5073,7 @@ func (client *Client) DeletePrometheusView(prometheusViewId *string, request *De
 
 // Summary:
 //
-// Deletes a Prometheus virtual instance by its ID.
+// Deletes a Prometheus virtual instance by virtual instance ID.
 //
 // @param request - DeletePrometheusVirtualInstanceRequest
 //
@@ -5106,7 +5114,7 @@ func (client *Client) DeletePrometheusVirtualInstanceWithOptions(prometheusInsta
 
 // Summary:
 //
-// Deletes a Prometheus virtual instance by its ID.
+// Deletes a Prometheus virtual instance by virtual instance ID.
 //
 // @param request - DeletePrometheusVirtualInstanceRequest
 //
@@ -6223,7 +6231,7 @@ func (client *Client) EnableNotifyPolicy(uuid *string, request *EnableNotifyPoli
 
 // Summary:
 //
-// Activates a subscription.
+// Starts a subscription.
 //
 // @param request - EnableSubscriptionRequest
 //
@@ -6270,7 +6278,7 @@ func (client *Client) EnableSubscriptionWithOptions(subscriptionId *string, requ
 
 // Summary:
 //
-// Activates a subscription.
+// Starts a subscription.
 //
 // @param request - EnableSubscriptionRequest
 //
@@ -6437,11 +6445,11 @@ func (client *Client) GetAddon(addonName *string, request *GetAddonRequest) (_re
 
 // Summary:
 //
-// Details of an add-on schema.
+// Retrieves the schema details of an add-on.
 //
 // Description:
 //
-// This topic provides an example of how to modify version `1` of alert template `123456`. In this example, the alert level is set to `Critical`, the statistical method is set to `Average`, the comparison operator for the alert threshold is set to `GreaterThanOrEqualToThreshold`, the alert threshold is set to `90`, and the number of retries is set to `3`. The response indicates that the alert template was successfully modified.
+// This topic provides an example of modifying alert template `123456` of version `1`. The alert level is changed to `Critical`, the statistical method to `Average`, the threshold comparison operator to `GreaterThanOrEqualToThreshold`, the threshold to `90`, and the number of retries to `3`. The response indicates that the alert template was modified successfully.
 //
 // @param request - GetAddonCodeTemplateRequest
 //
@@ -6496,11 +6504,11 @@ func (client *Client) GetAddonCodeTemplateWithOptions(addonName *string, request
 
 // Summary:
 //
-// Details of an add-on schema.
+// Retrieves the schema details of an add-on.
 //
 // Description:
 //
-// This topic provides an example of how to modify version `1` of alert template `123456`. In this example, the alert level is set to `Critical`, the statistical method is set to `Average`, the comparison operator for the alert threshold is set to `GreaterThanOrEqualToThreshold`, the alert threshold is set to `90`, and the number of retries is set to `3`. The response indicates that the alert template was successfully modified.
+// This topic provides an example of modifying alert template `123456` of version `1`. The alert level is changed to `Critical`, the statistical method to `Average`, the threshold comparison operator to `GreaterThanOrEqualToThreshold`, the threshold to `90`, and the number of retries to `3`. The response indicates that the alert template was modified successfully.
 //
 // @param request - GetAddonCodeTemplateRequest
 //
@@ -6519,7 +6527,7 @@ func (client *Client) GetAddonCodeTemplate(addonName *string, request *GetAddonC
 
 // Summary:
 //
-// Queries the details and accessed state of an add-on release.
+// Queries the details of an add-on release to check the accessed state.
 //
 // @param request - GetAddonReleaseRequest
 //
@@ -6560,7 +6568,7 @@ func (client *Client) GetAddonReleaseWithOptions(releaseName *string, policyId *
 
 // Summary:
 //
-// Queries the details and accessed state of an add-on release.
+// Queries the details of an add-on release to check the accessed state.
 //
 // @param request - GetAddonReleaseRequest
 //
@@ -6665,7 +6673,7 @@ func (client *Client) GetAddonSchema(addonName *string, request *GetAddonSchemaR
 
 // Summary:
 //
-// Queries an aggregation task group.
+// Queries the details of an aggregation task group.
 //
 // @param request - GetAggTaskGroupRequest
 //
@@ -6706,7 +6714,7 @@ func (client *Client) GetAggTaskGroupWithOptions(instanceId *string, groupId *st
 
 // Summary:
 //
-// Queries an aggregation task group.
+// Queries the details of an aggregation task group.
 //
 // @param request - GetAggTaskGroupRequest
 //
@@ -8322,7 +8330,7 @@ func (client *Client) GetPrometheusInstance(prometheusInstanceId *string, reques
 
 // Summary:
 //
-// Retrieves the user settings for Prometheus.
+// Queries the Prometheus user settings.
 //
 // @param request - GetPrometheusUserSettingRequest
 //
@@ -8369,7 +8377,7 @@ func (client *Client) GetPrometheusUserSettingWithOptions(request *GetPrometheus
 
 // Summary:
 //
-// Retrieves the user settings for Prometheus.
+// Queries the Prometheus user settings.
 //
 // @param request - GetPrometheusUserSettingRequest
 //
@@ -8660,13 +8668,11 @@ func (client *Client) GetServiceRecord(workspace *string, serviceId *string, req
 
 // Summary:
 //
-// Queries the details of a single ServiceTask under a specified application.
+// Queries the details of a single service task for a specified application.
 //
 // Description:
 //
-// Queries the details of a single service task based on the taskId.
-//
-// The response content varies depending on the type: heapdump returns heap dump task information; LiveDebug returns task records and fields such as taskConfig (extraInfo).
+// Queries the details of a single service task based on the task ID. The response content varies based on the task type. For heapdump, the heap dump task information is returned. For LiveDebug, the task records and fields such as taskConfig (extraInfo) are returned.
 //
 // @param request - GetServiceTaskRequest
 //
@@ -8713,13 +8719,11 @@ func (client *Client) GetServiceTaskWithOptions(workspace *string, serviceId *st
 
 // Summary:
 //
-// Queries the details of a single ServiceTask under a specified application.
+// Queries the details of a single service task for a specified application.
 //
 // Description:
 //
-// Queries the details of a single service task based on the taskId.
-//
-// The response content varies depending on the type: heapdump returns heap dump task information; LiveDebug returns task records and fields such as taskConfig (extraInfo).
+// Queries the details of a single service task based on the task ID. The response content varies based on the task type. For heapdump, the heap dump task information is returned. For LiveDebug, the task records and fields such as taskConfig (extraInfo) are returned.
 //
 // @param request - GetServiceTaskRequest
 //
@@ -9072,11 +9076,11 @@ func (client *Client) GetWorkspace(workspaceName *string, request *GetWorkspaceR
 
 // Summary:
 //
-// Lists add-on releases.
+// Lists the releases of an add-on.
 //
 // Description:
 //
-// Queries the list of add-on configurations.
+// Queries the list of integration configurations.
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -9135,11 +9139,11 @@ func (client *Client) ListAddonReleasesWithOptions(policyId *string, request *Li
 
 // Summary:
 //
-// Lists add-on releases.
+// Lists the releases of an add-on.
 //
 // Description:
 //
-// Queries the list of add-on configurations.
+// Queries the list of integration configurations.
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -9436,11 +9440,11 @@ func (client *Client) ListAlertActions(request *ListAlertActionsRequest) (_resul
 
 // Summary:
 //
-// Queries CloudMonitor 2.0 alert history records.
+// Queries the list of alert history records for the CloudMonitor 2.0 monitoring service by using paging.
 //
 // Description:
 //
-// Queries CloudMonitor 2.0 alert history records. You can filter the records by multiple dimensions such as alert rule, alert status, alert level, alert object, workspace, time range, label, notification recipient, observed object type, and data source type. You can also use the structured filter parameter to implement more flexible combined queries.
+// Uses paging to retrieve the list of alert history records for the CloudMonitor 2.0 monitoring service. You can filter the records by multiple dimensions such as alert rule, alert status, alert level, alert object, workspace, time range, label, notification recipient, observed object type, and data source type. You can also use the structured filter parameter to implement more flexible combined queries.
 //
 // @param tmpReq - ListAlertHistoriesRequest
 //
@@ -9597,11 +9601,11 @@ func (client *Client) ListAlertHistoriesWithOptions(tmpReq *ListAlertHistoriesRe
 
 // Summary:
 //
-// Queries CloudMonitor 2.0 alert history records.
+// Queries the list of alert history records for the CloudMonitor 2.0 monitoring service by using paging.
 //
 // Description:
 //
-// Queries CloudMonitor 2.0 alert history records. You can filter the records by multiple dimensions such as alert rule, alert status, alert level, alert object, workspace, time range, label, notification recipient, observed object type, and data source type. You can also use the structured filter parameter to implement more flexible combined queries.
+// Uses paging to retrieve the list of alert history records for the CloudMonitor 2.0 monitoring service. You can filter the records by multiple dimensions such as alert rule, alert status, alert level, alert object, workspace, time range, label, notification recipient, observed object type, and data source type. You can also use the structured filter parameter to implement more flexible combined queries.
 //
 // @param request - ListAlertHistoriesRequest
 //
@@ -9712,11 +9716,11 @@ func (client *Client) ListAlertNotifyTemplates(request *ListAlertNotifyTemplates
 
 // Summary:
 //
-// Queries chatbots.
+// Queries robots.
 //
 // Description:
 //
-// Queries the list of alert chatbots under the current account. Alert chatbots serve as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by chatbot ID, name, type, and workspace.
+// Queries the alert robots under the current account. Alert robots act as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by robot ID, name, type, and workspace.
 //
 // @param tmpReq - ListAlertRobotsRequest
 //
@@ -9793,11 +9797,11 @@ func (client *Client) ListAlertRobotsWithOptions(tmpReq *ListAlertRobotsRequest,
 
 // Summary:
 //
-// Queries chatbots.
+// Queries robots.
 //
 // Description:
 //
-// Queries the list of alert chatbots under the current account. Alert chatbots serve as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by chatbot ID, name, type, and workspace.
+// Queries the alert robots under the current account. Alert robots act as webhook endpoints for alert notifications and support types such as DingTalk, DingTalk Cool App, Lark, Slack, and WeChat. You can filter the results by robot ID, name, type, and workspace.
 //
 // @param request - ListAlertRobotsRequest
 //
@@ -10074,7 +10078,7 @@ func (client *Client) ListContactGroups(request *ListContactGroupsRequest) (_res
 
 // Summary:
 //
-// Queries contacts.
+// Queries alert contacts.
 //
 // Description:
 //
@@ -10163,7 +10167,7 @@ func (client *Client) ListContactsWithOptions(tmpReq *ListContactsRequest, heade
 
 // Summary:
 //
-// Queries contacts.
+// Queries alert contacts.
 //
 // Description:
 //
@@ -10334,11 +10338,11 @@ func (client *Client) ListContextStores(workspace *string, request *ListContextS
 
 // Summary:
 //
-// Queries data pipelines.
+// Queries a list of data pipelines.
 //
 // Description:
 //
-// Queries data pipelines in a specified workspace by using paging.
+// Performs a paged query of data streams in a specified workspace. Supports paging.
 //
 // @param request - ListDataPipelinesRequest
 //
@@ -10389,11 +10393,11 @@ func (client *Client) ListDataPipelinesWithOptions(workspace *string, request *L
 
 // Summary:
 //
-// Queries data pipelines.
+// Queries a list of data pipelines.
 //
 // Description:
 //
-// Queries data pipelines in a specified workspace by using paging.
+// Performs a paged query of data streams in a specified workspace. Supports paging.
 //
 // @param request - ListDataPipelinesRequest
 //
@@ -10486,7 +10490,7 @@ func (client *Client) ListDatasets(workspace *string, request *ListDatasetsReque
 
 // Summary:
 //
-// Retrieves a list of data delivery tasks.
+// Queries the list of data delivery tasks.
 //
 // @param tmpReq - ListDeliveryTasksRequest
 //
@@ -10555,7 +10559,7 @@ func (client *Client) ListDeliveryTasksWithOptions(tmpReq *ListDeliveryTasksRequ
 
 // Summary:
 //
-// Retrieves a list of data delivery tasks.
+// Queries the list of data delivery tasks.
 //
 // @param request - ListDeliveryTasksRequest
 //
@@ -10848,7 +10852,7 @@ func (client *Client) ListIntegrationPolicyCollectors(policyId *string, request 
 
 // Summary:
 //
-// Retrieves the custom service discovery rules of a Provisioning policy.
+// Retrieves the custom service discovery rules for an integration center policy.
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -10907,7 +10911,7 @@ func (client *Client) ListIntegrationPolicyCustomScrapeJobRulesWithOptions(polic
 
 // Summary:
 //
-// Retrieves the custom service discovery rules of a Provisioning policy.
+// Retrieves the custom service discovery rules for an integration center policy.
 //
 // @param request - ListIntegrationPolicyCustomScrapeJobRulesRequest
 //
@@ -11172,13 +11176,13 @@ func (client *Client) ListIntegrationPolicyServiceMonitors(policyId *string, req
 
 // Summary:
 //
-// Lists the storage requirements for an Integration Center policy.
+// Retrieves the storage requirements of an Integration Center policy.
 //
 // Description:
 //
-// When a policy is active, alert notifications are not sent for alerts that occur in the application group.
+// During the effective period of the policy, no notifications are sent for alerts triggered in the application group.
 //
-// This topic provides an example of creating a policy named `PauseNotify`. This policy pauses alert notifications for application group `7301****` from `1622949300000` to `1623208500000` (from `2021-06-06 11:15:00` to `2021-06-09 11:15:00` UTC+8).
+// This topic provides an example of creating a policy named `PauseNotify` to pause alert notifications for the application group `7301****`. Alerts for this application group are paused from `1622949300000` to `1623208500000` (UTC+8 `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -11233,13 +11237,13 @@ func (client *Client) ListIntegrationPolicyStorageRequirementsWithOptions(policy
 
 // Summary:
 //
-// Lists the storage requirements for an Integration Center policy.
+// Retrieves the storage requirements of an Integration Center policy.
 //
 // Description:
 //
-// When a policy is active, alert notifications are not sent for alerts that occur in the application group.
+// During the effective period of the policy, no notifications are sent for alerts triggered in the application group.
 //
-// This topic provides an example of creating a policy named `PauseNotify`. This policy pauses alert notifications for application group `7301****` from `1622949300000` to `1623208500000` (from `2021-06-06 11:15:00` to `2021-06-09 11:15:00` UTC+8).
+// This topic provides an example of creating a policy named `PauseNotify` to pause alert notifications for the application group `7301****`. Alerts for this application group are paused from `1622949300000` to `1623208500000` (UTC+8 `2021-06-06 11:15:00` to `2021-06-09 11:15:00`).
 //
 // @param request - ListIntegrationPolicyStorageRequirementsRequest
 //
@@ -11438,11 +11442,11 @@ func (client *Client) ListMemoryStores(workspace *string, request *ListMemorySto
 
 // Summary:
 //
-// Lists notify policies.
+// Lists notification policies.
 //
 // Description:
 //
-// Queries the list of notify policies in a specified workspace with paging. You can filter results by name using fuzzy match. The response contains a list of NotifyPolicySummary lightweight views.
+// Queries the list of notification policies in a specified workspace by using paging. Supports fuzzy filtering by name. Returns a list of NotifyPolicySummary lightweight views.
 //
 // @param request - ListNotifyPoliciesRequest
 //
@@ -11509,11 +11513,11 @@ func (client *Client) ListNotifyPoliciesWithOptions(request *ListNotifyPoliciesR
 
 // Summary:
 //
-// Lists notify policies.
+// Lists notification policies.
 //
 // Description:
 //
-// Queries the list of notify policies in a specified workspace with paging. You can filter results by name using fuzzy match. The response contains a list of NotifyPolicySummary lightweight views.
+// Queries the list of notification policies in a specified workspace by using paging. Supports fuzzy filtering by name. Returns a list of NotifyPolicySummary lightweight views.
 //
 // @param request - ListNotifyPoliciesRequest
 //
@@ -11532,7 +11536,7 @@ func (client *Client) ListNotifyPolicies(request *ListNotifyPoliciesRequest) (_r
 
 // Summary:
 //
-// Queries the on-call contacts at a specified time.
+// Queries the on-call personnel at a specified time.
 //
 // Description:
 //
@@ -11583,7 +11587,7 @@ func (client *Client) ListOncallContactsWithOptions(oncallScheduleId *string, re
 
 // Summary:
 //
-// Queries the on-call contacts at a specified time.
+// Queries the on-call personnel at a specified time.
 //
 // Description:
 //
@@ -11606,7 +11610,7 @@ func (client *Client) ListOncallContacts(oncallScheduleId *string, request *List
 
 // Summary:
 //
-// Queries on-call schedules.
+// Queries the on-call schedules.
 //
 // @param tmpReq - ListOncallSchedulesRequest
 //
@@ -11675,7 +11679,7 @@ func (client *Client) ListOncallSchedulesWithOptions(tmpReq *ListOncallSchedules
 
 // Summary:
 //
-// Queries on-call schedules.
+// Queries the on-call schedules.
 //
 // @param request - ListOncallSchedulesRequest
 //
@@ -11846,11 +11850,11 @@ func (client *Client) ListPrometheusDashboards(prometheusInstanceId *string, req
 
 // Summary:
 //
-// Retrieves a list of Managed Service for Prometheus instances.
+// Retrieves a list of Prometheus instances.
 //
 // Description:
 //
-// Retrieves a list of Managed Service for Prometheus instances.
+// Retrieves a list of Prometheus instances.
 //
 // @param tmpReq - ListPrometheusInstancesRequest
 //
@@ -11939,11 +11943,11 @@ func (client *Client) ListPrometheusInstancesWithOptions(tmpReq *ListPrometheusI
 
 // Summary:
 //
-// Retrieves a list of Managed Service for Prometheus instances.
+// Retrieves a list of Prometheus instances.
 //
 // Description:
 //
-// Retrieves a list of Managed Service for Prometheus instances.
+// Retrieves a list of Prometheus instances.
 //
 // @param request - ListPrometheusInstancesRequest
 //
@@ -11962,11 +11966,11 @@ func (client *Client) ListPrometheusInstances(request *ListPrometheusInstancesRe
 
 // Summary:
 //
-// Queries a list of Prometheus view instances.
+// Retrieves a list of Prometheus view instances.
 //
 // Description:
 //
-// Queries a list of Prometheus view instances.
+// Retrieves a list of Prometheus view instances.
 //
 // @param tmpReq - ListPrometheusViewsRequest
 //
@@ -12055,11 +12059,11 @@ func (client *Client) ListPrometheusViewsWithOptions(tmpReq *ListPrometheusViews
 
 // Summary:
 //
-// Queries a list of Prometheus view instances.
+// Retrieves a list of Prometheus view instances.
 //
 // Description:
 //
-// Queries a list of Prometheus view instances.
+// Retrieves a list of Prometheus view instances.
 //
 // @param request - ListPrometheusViewsRequest
 //
@@ -12638,7 +12642,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the alert notification delivery history in a specified workspace by using paging, and supports filtering by conditions such as notification channel, alert severity, subscription, alert rule, recipient, delivery result, and time range.
+// Performs a paging query on the alert notification delivery history in a specified workspace. Supports filtering by notification channel, alert severity, subscription, alert rule, recipient, delivery result, and time range.
 //
 // @param request - ListUserNotifyHistoriesRequest
 //
@@ -12777,7 +12781,7 @@ func (client *Client) ListUserNotifyHistoriesWithOptions(request *ListUserNotify
 
 // Summary:
 //
-// Queries the alert notification delivery history in a specified workspace by using paging, and supports filtering by conditions such as notification channel, alert severity, subscription, alert rule, recipient, delivery result, and time range.
+// Performs a paging query on the alert notification delivery history in a specified workspace. Supports filtering by notification channel, alert severity, subscription, alert rule, recipient, delivery result, and time range.
 //
 // @param request - ListUserNotifyHistoriesRequest
 //
@@ -13140,11 +13144,11 @@ func (client *Client) PreviewDataPipeline(workspace *string, request *PreviewDat
 
 // Summary:
 //
-// Renders templates written in Go template syntax by using the provided context data and returns the rendering results. This operation supports the simultaneous preview of multiple templates, such as title and content, to enable real-time preview in frontend template editors.
+// Renders template content in Go template syntax with the provided context data and returns the rendering results for each template. It supports previewing multiple templates, such as title and content, simultaneously to enable real-time preview in frontend template editors.
 //
 // Description:
 //
-// Renders templates written in Go template syntax by using the provided context data and returns the rendering results. This operation supports the simultaneous preview of multiple templates, such as title and content, to enable real-time preview in frontend template editors.
+// Renders template content in Go template syntax with the provided context data and returns the rendering results for each template. It supports previewing multiple templates, such as title and content, simultaneously to enable real-time preview in frontend template editors.
 //
 // @param request - PreviewNotifyTemplateRequest
 //
@@ -13195,11 +13199,11 @@ func (client *Client) PreviewNotifyTemplateWithOptions(request *PreviewNotifyTem
 
 // Summary:
 //
-// Renders templates written in Go template syntax by using the provided context data and returns the rendering results. This operation supports the simultaneous preview of multiple templates, such as title and content, to enable real-time preview in frontend template editors.
+// Renders template content in Go template syntax with the provided context data and returns the rendering results for each template. It supports previewing multiple templates, such as title and content, simultaneously to enable real-time preview in frontend template editors.
 //
 // Description:
 //
-// Renders templates written in Go template syntax by using the provided context data and returns the rendering results. This operation supports the simultaneous preview of multiple templates, such as title and content, to enable real-time preview in frontend template editors.
+// Renders template content in Go template syntax with the provided context data and returns the rendering results for each template. It supports previewing multiple templates, such as title and content, simultaneously to enable real-time preview in frontend template editors.
 //
 // @param request - PreviewNotifyTemplateRequest
 //
@@ -13304,7 +13308,7 @@ func (client *Client) PutWorkspace(workspaceName *string, request *PutWorkspaceR
 //
 // Description:
 //
-// This topic provides an example of querying the list of alert templates. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying the alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param tmpReq - QueryAlertRulesRequest
 //
@@ -13379,7 +13383,7 @@ func (client *Client) QueryAlertRulesWithOptions(tmpReq *QueryAlertRulesRequest,
 //
 // Description:
 //
-// This topic provides an example of querying the list of alert templates. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
+// This topic provides an example of querying the alert template list. The response shows that the list contains two alert templates: `ECS_Template1` and `ECS_Template2`.
 //
 // @param request - QueryAlertRulesRequest
 //
@@ -13554,9 +13558,9 @@ func (client *Client) SearchContext(workspace *string, contextStoreName *string,
 //
 // Description:
 //
-// This topic provides an example on how to create a threshold alert rule for the cpu_total metric of the Elastic Computing Service `acs_ecs_dashboard` instance `i-uf6j91r34rnwawoo****`. The alert contact group of the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the retry count for the Critical level is `3`.
+// This topic provides an example of setting a threshold alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo****` instance in the `acs_ecs_dashboard` namespace of Elastic Compute Service. The alert contact group for the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the number of alert retries for the Critical level is `3`.
 //
-// > 2024-08-15: Statistics validation is added. Only the Statistics value that corresponds to the metric can be specified. For information about how to obtain the value of this parameter, see [Cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
+// > On August 15, 2024, Statistics validation was added. The statistical value can only be the Statistics corresponding to the metric. For more information about how to obtain the value of this parameter, see [cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
 //
 // @param request - SearchMemoriesRequest
 //
@@ -13647,9 +13651,9 @@ func (client *Client) SearchMemoriesWithOptions(workspace *string, memoryStoreNa
 //
 // Description:
 //
-// This topic provides an example on how to create a threshold alert rule for the cpu_total metric of the Elastic Computing Service `acs_ecs_dashboard` instance `i-uf6j91r34rnwawoo****`. The alert contact group of the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the retry count for the Critical level is `3`.
+// This topic provides an example of setting a threshold alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo****` instance in the `acs_ecs_dashboard` namespace of Elastic Compute Service. The alert contact group for the alert rule is `ECS_Group`, the alert rule name is `test123`, the alert rule ID is `a151cd6023eacee2f0978e03863cc1697c89508****`, the statistical method for the Critical level is `Average`, the comparison operator for the Critical level is `GreaterThanOrEqualToThreshold`, the threshold for the Critical level is `90`, and the number of alert retries for the Critical level is `3`.
 //
-// > 2024-08-15: Statistics validation is added. Only the Statistics value that corresponds to the metric can be specified. For information about how to obtain the value of this parameter, see [Cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
+// > On August 15, 2024, Statistics validation was added. The statistical value can only be the Statistics corresponding to the metric. For more information about how to obtain the value of this parameter, see [cloud service monitoring metrics](https://www.alibabacloud.com/help/en/cms/support/appendix-1-metrics).
 //
 // @param request - SearchMemoriesRequest
 //
@@ -13668,7 +13672,7 @@ func (client *Client) SearchMemories(workspace *string, memoryStoreName *string,
 
 // Summary:
 //
-// Attaches labels to resources.
+// Attaches tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -13723,7 +13727,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Attaches labels to resources.
+// Attaches tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -14272,7 +14276,7 @@ func (client *Client) UpdateAlertNotifyTemplate(alertNotifyTemplateId *string, r
 
 // Summary:
 //
-// Updates an alert robot.
+// Updates a chatbot.
 //
 // @param request - UpdateAlertRobotRequest
 //
@@ -14339,7 +14343,7 @@ func (client *Client) UpdateAlertRobotWithOptions(robotId *string, request *Upda
 
 // Summary:
 //
-// Updates an alert robot.
+// Updates a chatbot.
 //
 // @param request - UpdateAlertRobotRequest
 //
@@ -14559,6 +14563,10 @@ func (client *Client) UpdateContactWithOptions(contactId *string, request *Updat
 		body["phone"] = request.Phone
 	}
 
+	if !dara.IsNil(request.PhoneCode) {
+		body["phoneCode"] = request.PhoneCode
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -14674,7 +14682,7 @@ func (client *Client) UpdateContactGroup(contactGroupId *string, request *Update
 
 // Summary:
 //
-// Updates a context.
+// Updates the context.
 //
 // @param request - UpdateContextRequest
 //
@@ -14737,7 +14745,7 @@ func (client *Client) UpdateContextWithOptions(workspace *string, contextStoreNa
 
 // Summary:
 //
-// Updates a context.
+// Updates the context.
 //
 // @param request - UpdateContextRequest
 //
@@ -16302,7 +16310,7 @@ func (client *Client) UpdateUmodel(workspace *string, request *UpdateUmodelReque
 
 // Summary:
 //
-// Upserts a common Umodel schema reference.
+// Updates the referenced public Umodel schema.
 //
 // @param request - UpsertUmodelCommonSchemaRefRequest
 //
@@ -16353,7 +16361,7 @@ func (client *Client) UpsertUmodelCommonSchemaRefWithOptions(workspace *string, 
 
 // Summary:
 //
-// Upserts a common Umodel schema reference.
+// Updates the referenced public Umodel schema.
 //
 // @param request - UpsertUmodelCommonSchemaRefRequest
 //
@@ -16444,11 +16452,11 @@ func (client *Client) UpsertUmodelData(workspace *string, request *UpsertUmodelD
 
 // Summary:
 //
-// Queries the on-call calendar of a specified on-call schedule within a given date range, and returns the contacts and start and end times of each on-call shift grouped by shift name.
+// Queries the on-call calendar of a specified on-call schedule within a specified date range and returns the contacts and start and end times of each on-call shift grouped by shift name.
 //
 // Description:
 //
-// Retrieves the on-call calendar. Returns the on-call arrangements of a specified on-call schedule within the queried date range. The response is grouped by shift name, where the key is the shift name and the value is a list of on-call shifts. Each shift includes the on-call contact and the start and end times.
+// Views the on-call calendar and returns the on-call schedule for a specified on-call schedule within a specified date range. The response is grouped by shift name, where each key is a shift name and the value is a list of on-call shifts. Each shift includes the on-call contact and the start and end times.
 //
 // @param request - ViewOncallScheduleRequest
 //
@@ -16499,11 +16507,11 @@ func (client *Client) ViewOncallScheduleWithOptions(oncallScheduleId *string, re
 
 // Summary:
 //
-// Queries the on-call calendar of a specified on-call schedule within a given date range, and returns the contacts and start and end times of each on-call shift grouped by shift name.
+// Queries the on-call calendar of a specified on-call schedule within a specified date range and returns the contacts and start and end times of each on-call shift grouped by shift name.
 //
 // Description:
 //
-// Retrieves the on-call calendar. Returns the on-call arrangements of a specified on-call schedule within the queried date range. The response is grouped by shift name, where the key is the shift name and the value is a list of on-call shifts. Each shift includes the on-call contact and the start and end times.
+// Views the on-call calendar and returns the on-call schedule for a specified on-call schedule within a specified date range. The response is grouped by shift name, where each key is a shift name and the value is a list of on-call shifts. Each shift includes the on-call contact and the start and end times.
 //
 // @param request - ViewOncallScheduleRequest
 //

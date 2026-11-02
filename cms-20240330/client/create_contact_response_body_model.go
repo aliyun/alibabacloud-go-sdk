@@ -22,7 +22,7 @@ type CreateContactResponseBody struct {
 	//
 	// testId
 	ContactId *string `json:"contactId,omitempty" xml:"contactId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

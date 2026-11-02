@@ -20,9 +20,9 @@ type iListAddonReleasesResponseBody interface {
 }
 
 type ListAddonReleasesResponseBody struct {
-	// The next page token.
+	// The token for the next page.
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The collection of onboarded component information.
+	// The collection of integrated component information.
 	Releases []*ListAddonReleasesResponseBodyReleases `json:"releases,omitempty" xml:"releases,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -96,7 +96,7 @@ func (s *ListAddonReleasesResponseBody) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyReleases struct {
-	// The addon name.
+	// The name of the add-on.
 	//
 	// example:
 	//
@@ -114,31 +114,15 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 2023-03-30
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The summary of installation phase conditions.
-	//
-	// Type includes four values: Loaded (loads configurations), Installed (executes installation), Ready (performs a readiness check after installation), and UnInstalled (executes uninstallation). These four conditions theoretically occur in sequence.
-	//
-	// Status. Valid values:
-	//
-	// - Unknown: The current phase is being executed.
-	//
-	// - True: The execution is ready.
-	//
-	// - False: The execution failed.
-	//
-	// Complete status determination rules:
-	//
-	// If the Status of Loaded, Installed, or Ready is False, the installation fails. If the Status of Ready is True, the installation succeeds. In other cases, the installation is in progress.
-	//
-	// If UnInstalled exists, an uninstallation is in progress. If Status is True, the uninstallation succeeds. If Status is Unknown, the uninstallation is in progress. If Status is False, the uninstallation fails.
+	// The installation phase information.
 	Conditions []*ListAddonReleasesResponseBodyReleasesConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
-	// The component configuration information.
+	// The configuration information of the component.
 	//
 	// example:
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The onboarding time.
+	// The integration time.
 	//
 	// example:
 	//
@@ -152,31 +136,31 @@ type ListAddonReleasesResponseBodyReleases struct {
 	DashboardCount *int64 `json:"dashboardCount,omitempty" xml:"dashboardCount,omitempty"`
 	// The entity details.
 	EntityRules *EntityGroupBase `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// The environment type.
+	// The type of the environment.
 	//
 	// example:
 	//
 	// CS
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
-	// The environment ID.
+	// The ID of the environment.
 	//
 	// example:
 	//
 	// policy-xxxxxxxxxxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The number of exporters.
+	// The number of plugins.
 	//
 	// example:
 	//
 	// 2
 	ExporterCount *int64 `json:"exporterCount,omitempty" xml:"exporterCount,omitempty"`
-	// Indicates whether a configuration is available.
+	// Indicates whether configurations exist.
 	//
 	// example:
 	//
 	// true
 	HaveConfig *bool `json:"haveConfig,omitempty" xml:"haveConfig,omitempty"`
-	// The ID of the onboarding user.
+	// The ID of the integration user.
 	//
 	// example:
 	//
@@ -188,13 +172,13 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Indicates whether the component is managed.
+	// Indicates whether the component is a managed component.
 	//
 	// example:
 	//
 	// true
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The starting version number for the remaining list.
+	// The starting version number of the remaining list.
 	//
 	// example:
 	//
@@ -206,7 +190,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// policy-xxxxxxxxxxxxxx
 	ParentAddonReleaseId *string `json:"parentAddonReleaseId,omitempty" xml:"parentAddonReleaseId,omitempty"`
-	// The policy ID.
+	// The ID of the policy.
 	//
 	// example:
 	//
@@ -224,13 +208,13 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 7339d808-66f9-4d40-83fa-xxxxxxxxxxx
 	ReleaseId *string `json:"releaseId,omitempty" xml:"releaseId,omitempty"`
-	// The release name.
+	// The name of the release.
 	//
 	// example:
 	//
 	// test-gpu-integration-name
 	ReleaseName *string `json:"releaseName,omitempty" xml:"releaseName,omitempty"`
-	// The component scenario.
+	// The scenario of the component.
 	//
 	// example:
 	//
@@ -242,7 +226,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The statistics information of sub-addon releases.
+	// The statistics information of the sub-add-on release.
 	SubAddonRelease *ListAddonReleasesResponseBodyReleasesSubAddonRelease `json:"subAddonRelease,omitempty" xml:"subAddonRelease,omitempty" type:"Struct"`
 	// The update time.
 	//
@@ -256,7 +240,7 @@ type ListAddonReleasesResponseBodyReleases struct {
 	//
 	// 175xxxxxxxxxxxxx
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
-	// The component version.
+	// The version of the component.
 	//
 	// example:
 	//
@@ -554,31 +538,31 @@ func (s *ListAddonReleasesResponseBodyReleases) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyReleasesConditions struct {
-	// The first transition time.
+	// The time of the first transition.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The last transition time.
+	// The time of the last transition.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// The details.
+	// The detailed information.
 	//
 	// example:
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The phase status.
+	// The status of the phase.
 	//
 	// example:
 	//
 	// True
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The phase type.
+	// The type of the phase.
 	//
 	// example:
 	//

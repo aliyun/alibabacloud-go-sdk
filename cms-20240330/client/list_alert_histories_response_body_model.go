@@ -26,7 +26,7 @@ type iListAlertHistoriesResponseBody interface {
 }
 
 type ListAlertHistoriesResponseBody struct {
-	// The list of alert histories that match the query conditions.
+	// The list of alert history records that match the query conditions.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ func (s *ListAlertHistoriesResponseBody) Validate() error {
 }
 
 type ListAlertHistoriesResponseBodyData struct {
-	// The unique identifier of the alert history.
+	// The unique identifier of the alert history record.
 	//
 	// example:
 	//
 	// u1oe4i7c197uucfmvscum4u797
 	AlertHistoryId *string `json:"alertHistoryId,omitempty" xml:"alertHistoryId,omitempty"`
-	// The unique identifier of the alert rule that generated the alert history.
+	// The unique identifier of the alert rule that generated the alert history record.
 	//
 	// example:
 	//
 	// 51d0da46-bb65-4a14-8d65-de73f41e495f
 	AlertRuleId *string `json:"alertRuleId,omitempty" xml:"alertRuleId,omitempty"`
-	// The snapshot of the annotations of the alert rule. The annotations are stored as key-value pairs and copied from the rule when the alert is triggered.
+	// The snapshot of the annotations of the alert rule, stored as key-value pairs and copied from the rule when the alert is triggered.
 	//
 	// example:
 	//
@@ -179,13 +179,13 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// managed_service_for_prometheus
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	// The cumulative number of alerts (alert events) during the alert duration.
+	// The cumulative number of alert events during the alert duration.
 	//
 	// example:
 	//
 	// 200
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The end time (recovery time) of the alert. This field has a value only when the alert history enters the OK state. The value is a UNIX timestamp in milliseconds.
+	// The end time of the alert, which is the recovery time. This field has a value only when the alert history enters the OK state. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -203,19 +203,19 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// 1751608363000
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The detailed information of the alert object. The information is stored as key-value pairs.
+	// The detailed information of the alert object, stored as key-value pairs.
 	//
 	// example:
 	//
 	// {"datasourceInfo":{"type":"SLS_MULTI_DS"}}
 	InstanceDetail map[string]*string `json:"instanceDetail,omitempty" xml:"instanceDetail,omitempty"`
-	// The unique key (instanceKey) used to identify the alert object instance.
+	// The unique key value (instanceKey) that identifies the alert object instance.
 	//
 	// example:
 	//
 	// entity/apm/apm.service/6dc9e46fda6d012537b48c3250ff806b
 	InstanceKey *string `json:"instanceKey,omitempty" xml:"instanceKey,omitempty"`
-	// The snapshot of the labels of the alert rule. The labels are stored as key-value pairs and copied from the rule when the alert is triggered.
+	// The snapshot of the labels of the alert rule, stored as key-value pairs and copied from the rule when the alert is triggered.
 	//
 	// example:
 	//
@@ -239,25 +239,25 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// The number of zombie child processes of the process {{$tags.comm}} running on the instance {{$tags.instanceId}} is greater than 128
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Indicates whether the observed object is in the global scope. The value is copied from the rule when the alert history is created.
+	// Indicates whether the observed object is in the global scope. This value is copied from the rule when the alert history record is created.
 	//
 	// example:
 	//
 	// false
 	ObserveResourceGlobalScope *bool `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
-	// The serialized string of the observed object list. The value is copied from the rule when the alert history is created.
+	// The serialized string of the observed object list. This value is copied from the rule when the alert history record is created.
 	//
 	// example:
 	//
 	// [{"resourceId":"i-bp1234567890abcdef","resourceType":"ACS::ECS::Instance"}]
 	ObserveResourceList *string `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
-	// The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. The value is copied from the rule when the alert history is created.
+	// The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. This value is copied from the rule when the alert history record is created.
 	//
 	// example:
 	//
 	// PROMETHEUS
 	ObserveResourceType *string `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
-	// The ID of the region to which the alert history belongs.
+	// The ID of the region to which the alert history record belongs.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// myTestRule
 	RuleDisplayName *string `json:"ruleDisplayName,omitempty" xml:"ruleDisplayName,omitempty"`
-	// The notification sending configuration information corresponding to the alert history.
+	// The notification sending configuration information corresponding to the alert history record.
 	//
 	// example:
 	//
 	// {"notification":{"contacts":["ops-team"],"silenceTime":3600}}
 	Send *AlertRuleSend `json:"send,omitempty" xml:"send,omitempty"`
-	// The start time of the alert history. The value is a UNIX timestamp in milliseconds.
+	// The start time of the alert history record. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -287,7 +287,7 @@ type ListAlertHistoriesResponseBodyData struct {
 	//
 	// ALARM
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The identifier of the workspace to which the alert history belongs.
+	// The identifier of the workspace to which the alert history record belongs.
 	//
 	// example:
 	//

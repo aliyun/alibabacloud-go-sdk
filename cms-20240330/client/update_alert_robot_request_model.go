@@ -36,25 +36,25 @@ type UpdateAlertRobotRequest struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the robot.
+	// The name of the chatbot.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The signature key of the robot.
+	// The signing key of the chatbot.
 	//
 	// example:
 	//
 	// abc123
 	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
-	// The type of the robot.
+	// The type of the chatbot.
 	//
 	// example:
 	//
 	// DING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook URL of the robot.
+	// The webhook URL of the chatbot.
 	//
 	// example:
 	//

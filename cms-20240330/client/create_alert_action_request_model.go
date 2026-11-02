@@ -56,13 +56,13 @@ type CreateAlertActionRequest struct {
 	Fc3Param *CreateAlertActionRequestFc3Param `json:"fc3Param,omitempty" xml:"fc3Param,omitempty" type:"Struct"`
 	// The Function Compute parameters.
 	FcParam *CreateAlertActionRequestFcParam `json:"fcParam,omitempty" xml:"fcParam,omitempty" type:"Struct"`
-	// The Simple Message Queue (formerly MNS) (MSMQ) parameters.
+	// The Simple Message Queue (formerly MNS) parameters.
 	MnsParam *CreateAlertActionRequestMnsParam `json:"mnsParam,omitempty" xml:"mnsParam,omitempty" type:"Struct"`
 	// The PagerDuty parameters.
 	PagerDutyParam *CreateAlertActionRequestPagerDutyParam `json:"pagerDutyParam,omitempty" xml:"pagerDutyParam,omitempty" type:"Struct"`
 	// The Simple Log Service parameters.
 	SlsParam *CreateAlertActionRequestSlsParam `json:"slsParam,omitempty" xml:"slsParam,omitempty" type:"Struct"`
-	// The type of the alert action integration.
+	// The alert action integration type.
 	//
 	// This parameter is required.
 	//
@@ -238,7 +238,7 @@ type CreateAlertActionRequestEbParam struct {
 	//
 	// test
 	EventBusName *string `json:"eventBusName,omitempty" xml:"eventBusName,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -481,13 +481,13 @@ func (s *CreateAlertActionRequestFcParam) Validate() error {
 }
 
 type CreateAlertActionRequestMnsParam struct {
-	// The resource type of Simple Message Queue (formerly MNS) (MSMQ).
+	// The Simple Message Queue (formerly MNS) resource type.
 	//
 	// example:
 	//
 	// queue
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// - If the resource type is queue, the resource name is the queue name.
 	//
@@ -545,13 +545,13 @@ func (s *CreateAlertActionRequestMnsParam) Validate() error {
 }
 
 type CreateAlertActionRequestPagerDutyParam struct {
-	// The integration key of PagerDuty.
+	// The integration key for PagerDuty.
 	//
 	// example:
 	//
 	// fds3wr54rvcxfr4543t6435
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook URL of PagerDuty. Both V1 and V2 are supported.
+	// The integration webhook for PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -590,13 +590,13 @@ func (s *CreateAlertActionRequestPagerDutyParam) Validate() error {
 }
 
 type CreateAlertActionRequestSlsParam struct {
-	// The name of the Logstore in Simple Log Service.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// testLogstore。
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the project in Simple Log Service.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -656,7 +656,7 @@ type CreateAlertActionRequestWebhookParam struct {
 	//
 	// JSON
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The request header information.
+	// The request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The webhook request method.
 	//

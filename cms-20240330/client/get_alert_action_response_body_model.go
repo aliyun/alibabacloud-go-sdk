@@ -250,7 +250,7 @@ func (s *GetAlertActionResponseBodyAlertActions) Validate() error {
 }
 
 type GetAlertActionResponseBodyAlertActionsEbParam struct {
-	// The event source.
+	// The event provider.
 	//
 	// example:
 	//
@@ -513,9 +513,9 @@ type GetAlertActionResponseBodyAlertActionsMnsParam struct {
 	MnsType *string `json:"mnsType,omitempty" xml:"mnsType,omitempty"`
 	// The name of the resource.
 	//
-	// - If the resource type is queue, the resource name is the name of the queue.
+	// - If the resource type is queue, the resource name is the queue name.
 	//
-	// - If the resource type is topic, the resource name is the name of the topic.
+	// - If the resource type is topic, the resource name is the topic name.
 	//
 	// example:
 	//
@@ -575,7 +575,7 @@ type GetAlertActionResponseBodyAlertActionsPagerDutyParam struct {
 	//
 	// EWR4WR4T4GREG4ET453T5Y
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook URL for PagerDuty. V1 and V2 are supported.
+	// The PagerDuty integration webhook. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -688,7 +688,7 @@ type GetAlertActionResponseBodyAlertActionsWebhookParam struct {
 	//
 	// POST
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The URL for the alert callback.
+	// The alert callback URL.
 	//
 	// example:
 	//

@@ -22,31 +22,31 @@ type iListNotifyPoliciesResponseBody interface {
 }
 
 type ListNotifyPoliciesResponseBody struct {
-	// The maximum number of entries returned in this request.
+	// The maximum number of records returned for this request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. This parameter is empty if no more data is available.
+	// The pagination token for the next page. Empty if no more data is available.
 	//
 	// example:
 	//
 	// eyJjdXJzb3IiOjEwfQ==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of notify policies. Each entry is of the NotifyPolicySummary type (lightweight view).
+	// The list of notification policies. Each item is of the NotifyPolicySummary type, which is a lightweight view.
 	//
 	// example:
 	//
-	// [{"uuid":"np-12345678-1234-1234-1234-123456789012","name":"prod-alert","description":"生产环境告警策略","enabled":true,"version":1,"workspace":"default-cms-xxxx-cn-hangzhou","userId":"107640","createTime":"1711792800000","updateTime":"1711792800000"}]
+	// [{"uuid":"np-12345678-1234-1234-1234-123456789012","name":"prod-alert","description":"Production environment alert policy","enabled":true,"version":1,"workspace":"default-cms-xxxx-cn-hangzhou","userId":"107640","createTime":"1711792800000","updateTime":"1711792800000"}]
 	NotifyPolicyList []*NotifyPolicySummary `json:"notifyPolicyList,omitempty" xml:"notifyPolicyList,omitempty" type:"Repeated"`
-	// The request ID. You can use this ID for troubleshooting and ticket submission.
+	// The unique ID of the request, used for troubleshooting and ticket tracking.
 	//
 	// example:
 	//
 	// 0B9377D9-C56B-5C2E-A8A4-A01D6CC3F4B8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries. The actual total is returned on the first page. A fixed value of -1 is returned on subsequent pages.
+	// The total number of records. The actual total is returned for the first page, and -1 is returned for subsequent pages.
 	//
 	// example:
 	//

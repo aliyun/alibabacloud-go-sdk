@@ -30,7 +30,7 @@ type iMergeRobot interface {
 }
 
 type MergeRobot struct {
-	// The time when the bot was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type MergeRobot struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The extension fields.
 	Extend *MergeRobotExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
-	// The time when the bot was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type MergeRobot struct {
 	//
 	// example:
 	//
-	// 运维告警机器人
+	// O&M Alert Bot
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The source system of the bot.
 	//
@@ -187,25 +187,25 @@ type MergeRobotExtend struct {
 	//
 	// incident-card-template
 	CardTemplate *string `json:"cardTemplate,omitempty" xml:"cardTemplate,omitempty"`
-	// Specifies whether to enable the daily on-duty report.
+	// Specifies whether the daily on-call report is enabled.
 	//
 	// example:
 	//
 	// true
 	DailyNoc *bool `json:"dailyNoc,omitempty" xml:"dailyNoc,omitempty"`
-	// The time for the daily on-duty report.
+	// The time for the daily on-call report.
 	//
 	// example:
 	//
 	// 09:00
 	DailyNocTime *string `json:"dailyNocTime,omitempty" xml:"dailyNocTime,omitempty"`
-	// The signature key for DingTalk.
+	// The DingTalk signing key.
 	//
 	// example:
 	//
 	// abc123
 	DingSignKey *string `json:"dingSignKey,omitempty" xml:"dingSignKey,omitempty"`
-	// Specifies whether to enable outbound requests.
+	// Specifies whether outgoing requests are enabled.
 	//
 	// example:
 	//

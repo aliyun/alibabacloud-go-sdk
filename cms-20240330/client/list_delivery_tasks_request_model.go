@@ -22,7 +22,7 @@ type iListDeliveryTasksRequest interface {
 }
 
 type ListDeliveryTasksRequest struct {
-	// Specifies the keywords used to perform a fuzzy search by task name or task ID.
+	// The keywords used to perform a fuzzy search by task name or task ID.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListDeliveryTasksRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass the nextToken value returned in the previous response.
+	// The pagination token. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned from the previous request.
 	//
 	// example:
 	//

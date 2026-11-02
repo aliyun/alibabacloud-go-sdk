@@ -22,7 +22,7 @@ type ViewOncallScheduleResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The on-call calendar. The key is the shift name, and the value is a list of on-call shifts for the shift within the queried date range.
+	// The on-call calendar. The key is the shift name, and the value is a list of on-call shifts for the shift within the query date range.
 	//
 	// example:
 	//

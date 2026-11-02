@@ -16,7 +16,7 @@ type iUpdateContactGroupRequest interface {
 }
 
 type UpdateContactGroupRequest struct {
-	// The ID of the contact.
+	// The IDs of the contacts.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
 	// The name of the contact.
 	//

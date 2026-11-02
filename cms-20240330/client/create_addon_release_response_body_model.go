@@ -62,7 +62,7 @@ func (s *CreateAddonReleaseResponseBody) Validate() error {
 }
 
 type CreateAddonReleaseResponseBodyRelease struct {
-	// The name of the addon for the integrated monitoring component.
+	// The name of the add-on integrated for monitoring.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// 6
 	AlertRuleCount *int64 `json:"alertRuleCount,omitempty" xml:"alertRuleCount,omitempty"`
-	// The component installation stage information.
+	// The component installation phase information.
 	Conditions []*CreateAddonReleaseResponseBodyReleaseConditions `json:"conditions,omitempty" xml:"conditions,omitempty" type:"Repeated"`
 	// The component configuration.
 	//
@@ -82,7 +82,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The integration time in ISO 8601 format, including the UTC identifier or time zone offset.
+	// The integration time in ISO 8601 format, including the UTC designator or time zone offset.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// policy-xxxxxxxxxxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The number of plugins.
+	// The number of exporters.
 	//
 	// example:
 	//
 	// 2
 	ExporterCount *int64 `json:"exporterCount,omitempty" xml:"exporterCount,omitempty"`
-	// Indicates whether a configuration exists.
+	// Indicates whether a configuration is available.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// zh
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// Indicates whether the component is managed.
+	// Indicates whether the component is a managed component.
 	//
 	// example:
 	//
 	// true
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The ID of the parent add-on release.
+	// The parent AddonReleaseId.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// 2e898e60-5e6a-46d1-a994-xxxxxxxxxx
 	ReleaseId *string `json:"releaseId,omitempty" xml:"releaseId,omitempty"`
-	// The name of the release.
+	// The release name.
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ type CreateAddonReleaseResponseBodyRelease struct {
 	//
 	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time in ISO 8601 format, including the UTC identifier or time zone offset.
+	// The update time in ISO 8601 format, including the UTC designator or time zone offset.
 	//
 	// example:
 	//
 	// 2024-09-13T02:21:02Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the owner.
+	// The ID of the owner user.
 	//
 	// example:
 	//
@@ -458,31 +458,31 @@ func (s *CreateAddonReleaseResponseBodyRelease) Validate() error {
 }
 
 type CreateAddonReleaseResponseBodyReleaseConditions struct {
-	// The first transition time in ISO 8601 format, including the UTC identifier or time zone offset.
+	// The first transition time in ISO 8601 format, including the UTC designator or time zone offset.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	FirstTransitionTime *string `json:"firstTransitionTime,omitempty" xml:"firstTransitionTime,omitempty"`
-	// The last transition time in ISO 8601 format, including the UTC identifier or time zone offset.
+	// The last transition time in ISO 8601 format, including the UTC designator or time zone offset.
 	//
 	// example:
 	//
 	// 2024-11-04T16:10:22+08:00
 	LastTransitionTime *string `json:"lastTransitionTime,omitempty" xml:"lastTransitionTime,omitempty"`
-	// The details.
+	// The detailed information.
 	//
 	// example:
 	//
 	// The addon loaded successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The stage status.
+	// The phase status.
 	//
 	// example:
 	//
 	// {\\"phase\\": \\"Created\\", \\"executionDetails\\": [], \\"invocations\\": [], \\"latestExecError\\": {\\"message\\": \\"\\", \\"code\\": \\"\\", \\"requestId\\": \\"\\", \\"extraInfo\\": \\"\\", \\"title\\": \\"\\"}}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The stage type.
+	// The phase type.
 	//
 	// example:
 	//

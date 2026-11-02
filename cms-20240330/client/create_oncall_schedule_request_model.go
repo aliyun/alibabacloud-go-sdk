@@ -38,7 +38,7 @@ type CreateOncallScheduleRequest struct {
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
 	// The list of rotations.
 	Rotations []*CreateOncallScheduleRequestRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the chatbot for shift reminders.
+	// The ID of the shift reminder chatbot.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateOncallScheduleRequest struct {
 	ShiftRobotId *string `json:"shiftRobotId,omitempty" xml:"shiftRobotId,omitempty"`
 	// The list of substitution rules.
 	Substitudes []*CreateOncallScheduleRequestSubstitudes `json:"substitudes,omitempty" xml:"substitudes,omitempty" type:"Repeated"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ func (s *CreateOncallScheduleRequest) Validate() error {
 }
 
 type CreateOncallScheduleRequestRotations struct {
-	// The days of the week when the rotation is active.
+	// The days of the week when the rotation takes effect.
 	//
 	// This parameter is required.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
@@ -171,13 +171,13 @@ type CreateOncallScheduleRequestRotations struct {
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift interval. Use this parameter in conjunction with shiftRecurrenceFrequency. For example, set this parameter to 3 to rotate to the next on-call contact every 3 days.
+	// The length of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 3 days.
 	//
 	// example:
 	//
 	// 1
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift interval. Use this parameter in conjunction with shiftRecurrenceFrequency. For example, set this parameter to week to rotate to the next on-call contact every week.
+	// The unit of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every week.
 	//
 	// This parameter is required.
 	//
@@ -193,7 +193,7 @@ type CreateOncallScheduleRequestRotations struct {
 	//
 	// 2024-08-14
 	StartDate *string `json:"startDate,omitempty" xml:"startDate,omitempty"`
-	// The name of the time zone. The time zone must follow the **IANA Time Zone Database*	- standard, such as `Asia/Shanghai`.
+	// The time zone name. Uses the **IANA Time Zone Database*	- standard. Example: `Asia/Shanghai`.
 	//
 	// This parameter is required.
 	//
@@ -297,7 +297,7 @@ func (s *CreateOncallScheduleRequestRotations) Validate() error {
 }
 
 type CreateOncallScheduleRequestSubstitudes struct {
-	// The ID of the substitute contact.
+	// The contact ID of the substitute.
 	//
 	// example:
 	//
@@ -309,7 +309,7 @@ type CreateOncallScheduleRequestSubstitudes struct {
 	//
 	// 2024-10-15 18:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The ID of the replaced contact.
+	// The contact ID of the replaced contact.
 	//
 	// example:
 	//

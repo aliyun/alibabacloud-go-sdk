@@ -24,8 +24,6 @@ type iCreateAlertNotifyTemplateRequest interface {
 type CreateAlertNotifyTemplateRequest struct {
 	// The ID of the notification template.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// test

@@ -30,7 +30,7 @@ type ListPipelinesRequest struct {
 	//
 	// fff3442dac1de7950f44d5afc0c735ebd12e27f603b21d17ec30cb1d5c735b1ba7c4fb3a1c124bce
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The name of the pipeline.
+	// The pipeline name.
 	//
 	// example:
 	//

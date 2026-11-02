@@ -60,7 +60,7 @@ type iListUserNotifyHistoriesRequest interface {
 }
 
 type ListUserNotifyHistoriesRequest struct {
-	// The notification batch ID. Used to filter the notification history for notifications delivered in the same batch.
+	// The notification batch ID. Used to filter the notification history for the same delivery batch.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListUserNotifyHistoriesRequest struct {
 	BatchId *string `json:"batchId,omitempty" xml:"batchId,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- This is an internal reserved parameter used only for business source filtering in internal platform scenarios. Do not pass this parameter in external calls.
+	// **[Deprecated]*	- The internal reserved parameter. It is used only for business source filtering in internal platform scenarios. Do not pass this parameter in external calls.
 	//
 	// example:
 	//
@@ -76,45 +76,45 @@ type ListUserNotifyHistoriesRequest struct {
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
 	// The notification channel. Valid values:
 	//
-	// - ALI_YUNGE_SMS: text message
+	// - ALI_YUNGE_SMS: Text message.
 	//
-	// - ALI_YUNGE_CALL: voice call
+	// - ALI_YUNGE_CALL: Phone call.
 	//
-	// - ALI_YUNGE_MAIL: email
+	// - ALI_YUNGE_MAIL: Email.
 	//
-	// - ALI_YUNGE_ALIUID: internal message
+	// - ALI_YUNGE_ALIUID: Internal message.
 	//
-	// - DING: DingTalk
+	// - DING: DingTalk.
 	//
-	// - DING_COOL_APP: DingTalk Cool App
+	// - DING_COOL_APP: DingTalk Cool App.
 	//
-	// - FEISHU: Lark
+	// - FEISHU: Lark.
 	//
-	// - WEIXIN: WeCom
+	// - WEIXIN: WeCom.
 	//
-	// - SLACK: Slack
+	// - SLACK: Slack.
 	//
-	// - TEAMS: Teams
+	// - TEAMS: Teams.
 	//
-	// - PAGERDUTY: PagerDuty
+	// - PAGERDUTY: PagerDuty.
 	//
-	// - WEBHOOK: custom webhook
+	// - WEBHOOK: Custom webhook.
 	//
-	// - ALIYUN_SLS: Simple Log Service
+	// - ALIYUN_SLS: Simple Log Service.
 	//
-	// - ALIYUN_FC: Function Compute
+	// - ALIYUN_FC: Function Compute.
 	//
-	// - ALIYUN_FC3: Function Compute 3.0
+	// - ALIYUN_FC3: Function Compute 3.0.
 	//
-	// - ALIYUN_MNS: Message Service
+	// - ALIYUN_MNS: Message Service.
 	//
-	// - ALIYUN_OOS: CloudOps Orchestration Service
+	// - ALIYUN_OOS: CloudOps Orchestration Service.
 	//
-	// - ALIYUN_ESS: elastic scaling
+	// - ALIYUN_ESS: Elastic scaling.
 	//
-	// - ALIYUN_EB: event bus
+	// - ALIYUN_EB: Event bus.
 	//
-	// - ALIYUN_OPENAPI: OpenAPI
+	// - ALIYUN_OPENAPI: OpenAPI.
 	//
 	// example:
 	//
@@ -122,15 +122,15 @@ type ListUserNotifyHistoriesRequest struct {
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
 	// The channel category. Valid values:
 	//
-	// - WEBHOOK: webhook-based channels, such as DingTalk, Lark, WeCom, Slack, Teams, and custom webhooks
+	// - WEBHOOK: Webhook channels, such as DingTalk, Lark, WeCom, Slack, Teams, and custom webhooks.
 	//
-	// - YUNGE: Yunge communication channels, such as text messages, voice calls, and emails
+	// - YUNGE: Yunge communication channels, such as text messages, phone calls, and emails.
 	//
 	// example:
 	//
 	// WEBHOOK
 	ChannelCategory *string `json:"channelCategory,omitempty" xml:"channelCategory,omitempty"`
-	// The start time of the query. The value is a UNIX timestamp in seconds. Default value: 6 hours before the `to` parameter value.
+	// The start time of the query. The value is a UNIX timestamp in seconds. Default value: 6 hours before the to parameter.
 	//
 	// example:
 	//
@@ -148,23 +148,23 @@ type ListUserNotifyHistoriesRequest struct {
 	//
 	// 5d41402abc4b2a76b9719d911017c592
 	IncidentId *string `json:"incidentId,omitempty" xml:"incidentId,omitempty"`
-	// Specifies whether to include notification records that have no actual delivery channel. Valid values:
+	// Specifies whether to include notification records without an actual delivery channel. Valid values:
 	//
-	// - true: The records are included.
+	// - true: Included.
 	//
-	// - false: The records are not included. Only records that were actually delivered through a channel are returned.
+	// - false: Not included. Only records that were actually delivered through a channel are returned.
 	//
 	// Default value: true.
 	IncludeNoChannel *bool `json:"includeNoChannel,omitempty" xml:"includeNoChannel,omitempty"`
-	// Specifies whether to sort the results in descending order of time. Valid values:
+	// Specifies whether to sort the results in descending order by time. Valid values:
 	//
-	// - true: The results are sorted in descending order, with the latest records appearing first.
+	// - true: Descending order. The latest records are displayed first.
 	//
-	// - false: The results are sorted in ascending order.
+	// - false: Ascending order.
 	//
 	// Default value: true.
 	IsDesc *bool `json:"isDesc,omitempty" xml:"isDesc,omitempty"`
-	// The maximum number of entries to return per page. Default value: 20.
+	// The maximum number of records to return per page. Default value: 20.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type ListUserNotifyHistoriesRequest struct {
 	NotifyStrategyName *string `json:"notifyStrategyName,omitempty" xml:"notifyStrategyName,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- This is an internal reserved parameter used only for dedicated notification history query paths in internal platform scenarios. Do not pass this parameter in external calls.
+	// **[Deprecated]*	- The internal reserved parameter. It is used only for the dedicated notification history query path in internal platform scenarios. Do not pass this parameter in external calls.
 	//
 	// example:
 	//
 	// 1234567890123456
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
-	// The recipient. Used to filter the notification history by recipient address, such as a phone number, email address, or webhook URL.
+	// The recipient. Used to filter the notification history by recipient address, such as a phone number, email address, or webhook address.
 	//
 	// example:
 	//
@@ -216,11 +216,11 @@ type ListUserNotifyHistoriesRequest struct {
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
 	// The notification delivery type. Valid values:
 	//
-	// - SUBSCRIBE: subscription notifications
+	// - SUBSCRIBE: Subscription notification.
 	//
-	// - DIRECT: direct event notifications
+	// - DIRECT: Direct event notification.
 	//
-	// - ITSM: ticket or action notifications
+	// - ITSM: Ticket or action notification.
 	//
 	// example:
 	//
@@ -228,13 +228,13 @@ type ListUserNotifyHistoriesRequest struct {
 	SendType *string `json:"sendType,omitempty" xml:"sendType,omitempty"`
 	// The alert severity. Valid values:
 	//
-	// - CRITICAL: critical
+	// - CRITICAL: Critical.
 	//
-	// - ERROR: error
+	// - ERROR: Error.
 	//
-	// - WARNING: warning
+	// - WARNING: Warning.
 	//
-	// - INFO: information
+	// - INFO: Info.
 	//
 	// example:
 	//
@@ -254,9 +254,9 @@ type ListUserNotifyHistoriesRequest struct {
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
 	// Specifies whether to filter by delivery result. Valid values:
 	//
-	// - true: Only successfully delivered records are returned.
+	// - true: Returns only successfully delivered records.
 	//
-	// - false: Only failed delivery records are returned.
+	// - false: Returns only failed delivery records.
 	//
 	// If you do not specify this parameter, the results are not filtered by delivery result.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`

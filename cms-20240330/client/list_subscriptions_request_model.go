@@ -36,7 +36,7 @@ type iListSubscriptionsRequest interface {
 }
 
 type ListSubscriptionsRequest struct {
-	// The UUID of the AI agent. This parameter is used to filter subscriptions of a specified AI agent.
+	// The UUID of the AI agent. This parameter is used to filter subscriptions for a specified AI agent.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListSubscriptionsRequest struct {
 	//
 	// 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d
 	NotifyStrategyUuid *string `json:"notifyStrategyUuid,omitempty" xml:"notifyStrategyUuid,omitempty"`
-	// The field by which to sort the results.
+	// The sort field.
 	//
 	// example:
 	//
@@ -94,11 +94,7 @@ type ListSubscriptionsRequest struct {
 	//
 	// Test subscription
 	SubscriptionName *string `json:"subscriptionName,omitempty" xml:"subscriptionName,omitempty"`
-	// The type of the subscription. Valid values:
-	//
-	// - NORMAL: Standard subscription.
-	//
-	// - AI_AGENT: AI agent subscription.
+	// The type of the subscription. Valid values: NORMAL (standard subscription) and AI_AGENT (AI agent subscription).
 	//
 	// example:
 	//

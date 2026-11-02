@@ -22,7 +22,7 @@ type GetServiceTaskResponseBody struct {
 	//
 	// A1B2C3D4-E5F6-7890-ABCD-EF1234567890
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The task details object. Common fields include taskId, serviceId, workspace, regionId, ip, taskType, extraInfo (taskConfig JSON for LiveDebug), createTime, and updateTime.
+	// The task details object. Common fields include taskId, serviceId, workspace, regionId, ip, taskType, extraInfo (the taskConfig JSON for LiveDebug), createTime, and updateTime.
 	//
 	// example:
 	//

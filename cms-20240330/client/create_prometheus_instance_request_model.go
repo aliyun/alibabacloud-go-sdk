@@ -38,11 +38,11 @@ type iCreatePrometheusInstanceRequest interface {
 }
 
 type CreatePrometheusInstanceRequest struct {
-	// The number of days that data is automatically archived after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive duration:
+	// The number of days to automatically archive data after the storage period expires. A value of 0 indicates that data is not archived. Valid values:
 	//
 	// 	- V1: 60 to 365 days.
 	//
-	// 	- V2: 60 to 3650 days (3650 indicates permanent retention).
+	// 	- V2: 60 to 3650 days. A value of 3650 indicates permanent retention.
 	//
 	// if can be null:
 	// true
@@ -51,7 +51,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// 60
 	ArchiveDuration *int32 `json:"archiveDuration,omitempty" xml:"archiveDuration,omitempty"`
-	// The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
+	// The authentication-free read policy, which supports IP address ranges and VPC IDs.
 	//
 	// example:
 	//
@@ -99,37 +99,37 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// Specifies whether to enable authentication-free read. This parameter is supported only for V2 instances.
+	// Specifies whether to enable authentication-free read access. Supported only in V2.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeRead *bool `json:"enableAuthFreeRead,omitempty" xml:"enableAuthFreeRead,omitempty"`
-	// Specifies whether to enable authentication-free write. This parameter is supported only for V2 instances.
+	// Specifies whether to enable authentication-free write access. Supported only in V2.
 	//
 	// example:
 	//
 	// true
 	EnableAuthFreeWrite *bool `json:"enableAuthFreeWrite,omitempty" xml:"enableAuthFreeWrite,omitempty"`
-	// Specifies whether to enable the authorization token. This parameter is supported only for V1 instances.
+	// Specifies whether to enable the authorization token. Supported only in V1.
 	//
 	// example:
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The billable methods. Valid values:
+	// The Billable methods. Valid values:
 	//
-	// 	- POSTPAY: pay-as-you-go by metric reporting volume.
+	// 	- POSTPAY: pay-as-you-go by reported metric volume.
 	//
-	// 	- POSTPAY_GB: pay-as-you-go by metric write volume.
+	// 	- POSTPAY_GB: pay-as-you-go by ingested data volume.
 	//
-	// If this parameter is left empty, the default billing method configured by the user is used. If the user has not configured a default billing method, the system uses pay-as-you-go by metric reporting volume.
+	// Note: An empty value uses the default Billable methods configured for the user. If no default is configured, the system defaults to billing by reported metric volume.
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -137,7 +137,7 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// name1
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -149,17 +149,17 @@ type CreatePrometheusInstanceRequest struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The storage duration (in days):
+	// The storage duration in days. Valid values:
 	//
-	// 	- By write volume: 90 or 180.
+	// 	- Pay-by-ingested-data: 90 and 180.
 	//
-	// 	- By metric reporting volume: 15, 30, 60, 90, or 180.
+	// 	- Pay-by-reported-metrics: 15, 30, 60, 90, and 180.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
-	// The tags.
+	// The tag values.
 	Tags []*CreatePrometheusInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The workspace to which the instance belongs. Default value: default-cms-{userId}-{regionId}.
 	//

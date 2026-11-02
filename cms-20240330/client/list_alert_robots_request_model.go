@@ -24,7 +24,7 @@ type iListAlertRobotsRequest interface {
 }
 
 type ListAlertRobotsRequest struct {
-	// The name of the chatbot. Prefix-based fuzzy match is supported.
+	// The robot name. Prefix-based fuzzy search is supported.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type ListAlertRobotsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The chatbot IDs.
+	// The robot IDs.
 	RobotIds []*string `json:"robotIds,omitempty" xml:"robotIds,omitempty" type:"Repeated"`
-	// The chatbot types.
+	// The robot types.
 	Types []*string `json:"types,omitempty" xml:"types,omitempty" type:"Repeated"`
-	// The name of the workspace.
+	// The workspace name.
 	//
 	// example:
 	//

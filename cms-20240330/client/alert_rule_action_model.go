@@ -14,7 +14,7 @@ type iAlertRuleAction interface {
 }
 
 type AlertRuleAction struct {
-	// A list of action integration IDs.
+	// The list of action integration IDs.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
 }
 

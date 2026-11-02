@@ -14,7 +14,7 @@ type iDeleteDeliveryTaskResponseBody interface {
 }
 
 type DeleteDeliveryTaskResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

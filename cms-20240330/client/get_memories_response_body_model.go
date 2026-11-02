@@ -18,7 +18,7 @@ type iGetMemoriesResponseBody interface {
 }
 
 type GetMemoriesResponseBody struct {
-	// A list of relations.
+	// The relationships.
 	Relations []*GetMemoriesResponseBodyRelations `json:"relations,omitempty" xml:"relations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type GetMemoriesResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// A list of results.
+	// The results.
 	Results []*GetMemoriesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -88,19 +88,19 @@ func (s *GetMemoriesResponseBody) Validate() error {
 }
 
 type GetMemoriesResponseBodyRelations struct {
-	// The destination of the relation.
+	// The destination.
 	//
 	// example:
 	//
 	// test
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
-	// The type of the relation.
+	// The relationships.
 	//
 	// example:
 	//
 	// test
 	Relationship *string `json:"relationship,omitempty" xml:"relationship,omitempty"`
-	// The source of the relation.
+	// The source.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type GetMemoriesResponseBodyResults struct {
 	//
 	// test_session_001
 	ActorId *string `json:"actorId,omitempty" xml:"actorId,omitempty"`
-	// The agent ID.
+	// The agent ID of the application.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type GetMemoriesResponseBodyResults struct {
 	//
 	// 1747623093939
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The memory hash.
+	// The memory hash value.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type GetMemoriesResponseBodyResults struct {
 	//
 	// 019ca1e5-7307-7d50-b943-5e628326a8ed
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The memory content.
+	// The memory.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type GetMemoriesResponseBodyResults struct {
 	//
 	// {"__strategy_type__":"Fact"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The role that sent the message.
+	// The role of the message initiator.
 	//
 	// example:
 	//

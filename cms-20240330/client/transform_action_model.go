@@ -64,7 +64,7 @@ type TransformAction struct {
 	//
 	// SET_FIELD
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value to set.
+	// The configured value.
 	//
 	// example:
 	//

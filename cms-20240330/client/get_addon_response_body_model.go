@@ -62,13 +62,13 @@ func (s *GetAddonResponseBody) Validate() error {
 }
 
 type GetAddonResponseBodyData struct {
-	// The alias of the integrated component.
+	// The alias of the component.
 	//
 	// example:
 	//
 	// resume_vector_alias
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The list of categories for the integrated component.
+	// The list of category directories for the component.
 	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
 	// The list of dashboards.
 	Dashboards []*GetAddonResponseBodyDataDashboards `json:"dashboards,omitempty" xml:"dashboards,omitempty" type:"Repeated"`
@@ -106,19 +106,19 @@ type GetAddonResponseBodyData struct {
 	//
 	// rum_api_dashboard_explorer_link_metric_set
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Indicates whether the add-on can be installed only once.
+	// Specifies whether the add-on can be installed only once.
 	//
 	// example:
 	//
 	// true
 	Once *bool `json:"once,omitempty" xml:"once,omitempty"`
-	// The scenario of the component.
+	// The component scenario.
 	//
 	// example:
 	//
 	// middleware
 	Scene *string `json:"scene,omitempty" xml:"scene,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// example:
 	//
@@ -351,7 +351,7 @@ func (s *GetAddonResponseBodyDataDashboards) Validate() error {
 type GetAddonResponseBodyDataEnvironments struct {
 	// The list of associated common schemas.
 	CommonSchemaRefs []*GetAddonResponseBodyDataEnvironmentsCommonSchemaRefs `json:"commonSchemaRefs,omitempty" xml:"commonSchemaRefs,omitempty" type:"Repeated"`
-	// The additional dependencies.
+	// The additional dependency files.
 	Dependencies *GetAddonResponseBodyDataEnvironmentsDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -359,7 +359,7 @@ type GetAddonResponseBodyDataEnvironments struct {
 	//
 	// Observability integration.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the environment is enabled.
+	// Specifies whether the environment is enabled.
 	//
 	// example:
 	//
@@ -584,19 +584,19 @@ func (s *GetAddonResponseBodyDataEnvironmentsDependencies) Validate() error {
 }
 
 type GetAddonResponseBodyDataEnvironmentsPolicies struct {
-	// The enabled status of the default alert rule policy.
+	// The enabling status of the default policy for alert rules.
 	//
 	// example:
 	//
 	// true
 	AlertDefaultStatus *string `json:"alertDefaultStatus,omitempty" xml:"alertDefaultStatus,omitempty"`
-	// Indicates whether the add-on is installed by default.
+	// Specifies whether the add-on is installed by default.
 	//
 	// example:
 	//
 	// true
 	DefaultInstall *bool `json:"defaultInstall,omitempty" xml:"defaultInstall,omitempty"`
-	// Indicates whether a service account is assigned to communicate with the Console API.
+	// Specifies whether a service account is assigned for communication with the console API.
 	//
 	// example:
 	//
@@ -604,7 +604,7 @@ type GetAddonResponseBodyDataEnvironmentsPolicies struct {
 	EnableServiceAccount *bool `json:"enableServiceAccount,omitempty" xml:"enableServiceAccount,omitempty"`
 	// The metric check rule.
 	MetricCheckRule *GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule `json:"metricCheckRule,omitempty" xml:"metricCheckRule,omitempty" type:"Struct"`
-	// Indicates whether a pod restart is triggered immediately after the add-on is installed during integration.
+	// Specifies whether to initiate a pod restart guide immediately after the add-on installation is completed during integration.
 	//
 	// example:
 	//
@@ -612,7 +612,7 @@ type GetAddonResponseBodyDataEnvironmentsPolicies struct {
 	NeedRestartAfterIntegration *bool `json:"needRestartAfterIntegration,omitempty" xml:"needRestartAfterIntegration,omitempty"`
 	// The protocols.
 	Protocols []*GetAddonResponseBodyDataEnvironmentsPoliciesProtocols `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// The name of the target add-on for redirection.
+	// The name of the target add-on to redirect to.
 	//
 	// example:
 	//
@@ -710,7 +710,7 @@ func (s *GetAddonResponseBodyDataEnvironmentsPolicies) Validate() error {
 }
 
 type GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule struct {
-	// The data check rule after installation.
+	// The data check rule executed after installation.
 	PromQL []*string `json:"promQL,omitempty" xml:"promQL,omitempty" type:"Repeated"`
 }
 

@@ -9,11 +9,19 @@ type iDeleteContactGroupsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDeletedCount(v int32) *DeleteContactGroupsResponseBody
+	GetDeletedCount() *int32
 	SetRequestId(v string) *DeleteContactGroupsResponseBody
 	GetRequestId() *string
 }
 
 type DeleteContactGroupsResponseBody struct {
+	// The actual number of deleted records.
+	//
+	// example:
+	//
+	// 0
+	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -30,8 +38,17 @@ func (s DeleteContactGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteContactGroupsResponseBody) GetDeletedCount() *int32 {
+	return s.DeletedCount
+}
+
 func (s *DeleteContactGroupsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DeleteContactGroupsResponseBody) SetDeletedCount(v int32) *DeleteContactGroupsResponseBody {
+	s.DeletedCount = &v
+	return s
 }
 
 func (s *DeleteContactGroupsResponseBody) SetRequestId(v string) *DeleteContactGroupsResponseBody {

@@ -22,7 +22,7 @@ type iListServicesResponseBody interface {
 }
 
 type ListServicesResponseBody struct {
-	// The maximum number of entries returned. Maximum value: 200.
+	// The maximum number of results to return. Maximum value: 200.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListServicesResponseBodyServices struct {
 	//
 	// {"language":"java"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// The creation time.
+	// The time when the service was created.
 	//
 	// example:
 	//
 	// 2025-07-01T02:23:59Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The service description. This parameter is valid only when serviceType is set to RUM.
+	// The description of the service. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
@@ -141,19 +141,19 @@ type ListServicesResponseBodyServices struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The ARMS application ID for backward compatibility.
+	// The legacy ARMS application ID for backward compatibility.
 	//
 	// example:
 	//
 	// kgcsf@192197e828d51aa
 	Pid *string `json:"pid,omitempty" xml:"pid,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekxxzuad5zzzz
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
@@ -165,13 +165,13 @@ type ListServicesResponseBodyServices struct {
 	//
 	// demo-app
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The service status. This parameter is valid only when serviceType is set to RUM.
+	// The status of the service. This parameter is valid only when serviceType is set to RUM.
 	//
 	// example:
 	//
 	// Running
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
-	// The service type.
+	// The type of the service.
 	//
 	// example:
 	//

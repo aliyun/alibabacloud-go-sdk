@@ -34,13 +34,13 @@ type iListPrometheusViewsRequest interface {
 type ListPrometheusViewsRequest struct {
 	// Deprecated
 	//
-	// Filters the results by region ID. Currently, only a single region ID is supported.
+	// The region IDs used for filtering. Currently, only a single region ID is supported.
 	//
 	// example:
 	//
 	// cn-zhangjiakou,cn-beijing
 	FilterRegionIds *string `json:"filterRegionIds,omitempty" xml:"filterRegionIds,omitempty"`
-	// The maximum number of records to return.
+	// The maximum number of entries to return.
 	//
 	// if can be null:
 	// true
@@ -49,7 +49,7 @@ type ListPrometheusViewsRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The query token.
+	// The pagination token.
 	//
 	// if can be null:
 	// true
@@ -84,7 +84,7 @@ type ListPrometheusViewsRequest struct {
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The list of tags.
 	Tag []*ListPrometheusViewsRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The instance version.
+	// The instance version. Valid values: V1 and V2.
 	//
 	// example:
 	//

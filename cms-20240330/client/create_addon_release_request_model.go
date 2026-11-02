@@ -34,7 +34,7 @@ type iCreateAddonReleaseRequest interface {
 }
 
 type CreateAddonReleaseRequest struct {
-	// The name of the add-on that requires monitoring integration.
+	// The name of the add-on to be integrated for monitoring.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateAddonReleaseRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"aliyunLang,omitempty" xml:"aliyunLang,omitempty"`
-	// The catalog version of the add-on. Valid values: v1 and v2.
+	// The add-on catalog version. Valid values: v1 and v2.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type CreateAddonReleaseRequest struct {
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 	// The field rules.
 	EntityRules *EntityDiscoverRule `json:"entityRules,omitempty" xml:"entityRules,omitempty"`
-	// The environment type. If the policy type is CS or ECS, the corresponding environment type is used. For other policy types, the environment type is uniformly set to Cloud.
+	// The environment type. If the policy type is CS or ECS, the corresponding environment type is used. For other types, the environment type is uniformly set to Cloud.
 	//
 	// example:
 	//
 	// CS
 	EnvType *string `json:"envType,omitempty" xml:"envType,omitempty"`
-	// The ID of the parent add-on release.
+	// The parent AddonReleaseId.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateAddonReleaseRequest struct {
 	//
 	// {"install":{"mode":"auto-install","listenPort":"9400"},"discoverMode":"instances","discover":{"instances":"worker-k8s-for-cs-c126d87c76218487e83ab322017f11b44"},"scrapeInterval":"15","enableSecuritecs-nodeyGroupInjection":"true","metricTags":""}
 	Values *string `json:"values,omitempty" xml:"values,omitempty"`
-	// The version of the add-on that requires monitoring integration.
+	// The version of the add-on to be integrated for monitoring.
 	//
 	// This parameter is required.
 	//

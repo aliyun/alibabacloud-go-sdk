@@ -20,13 +20,13 @@ type iListIntegrationPolicyCustomScrapeJobRulesRequest interface {
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesRequest struct {
-	// The name of the addon release.
+	// The name of the add-on release.
 	//
 	// example:
 	//
 	// release12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The probe identifier. If a release exists, pass the release name. If no release exists, pass the component name.
+	// The collector identifier. If a release exists, pass the release name. Otherwise, pass the component name.
 	//
 	// example:
 	//

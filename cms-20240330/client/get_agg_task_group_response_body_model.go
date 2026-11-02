@@ -26,7 +26,7 @@ type GetAggTaskGroupResponseBody struct {
 	//
 	// 68DAF543-35DF-5762-BE90-F5C00B5DC036
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type GetAggTaskGroupResponseBodyAggTaskGroup struct {
 	//
 	//       }, \\"pod\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (node, namespace, pod, cluster)"
 	AggTaskGroupConfig *string `json:"aggTaskGroupConfig,omitempty" xml:"aggTaskGroupConfig,omitempty"`
-	// The summary of the aggregation task group configuration.
+	// The hash of the aggregation task group configuration.
 	//
 	// example:
 	//
@@ -133,25 +133,25 @@ type GetAggTaskGroupResponseBodyAggTaskGroup struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The UNIX timestamp in seconds that corresponds to the start time of the scheduling. This parameter is not yet in effect.
+	// The UNIX timestamp in seconds for the scheduling start time. This parameter is not yet in effect.
 	//
 	// example:
 	//
 	// 1757409495
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The maximum number of retries to execute the aggregation task.
+	// The maximum number of retries for executing the aggregation task.
 	//
 	// example:
 	//
 	// 2
 	MaxRetries *int32 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
-	// The maximum runtime of the aggregation task, in seconds.
+	// The maximum retry time to execute the aggregation task.
 	//
 	// example:
 	//
 	// 50
 	MaxRunTimeInSeconds *int32 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
-	// The dry run configuration.
+	// The precheck configuration.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type GetAggTaskGroupResponseBodyAggTaskGroup struct {
 	//
 	// @m
 	ScheduleTimeExpr *string `json:"scheduleTimeExpr,omitempty" xml:"scheduleTimeExpr,omitempty"`
-	// The ID of the source Prometheus instance for the aggregation task group.
+	// The source Prometheus instance ID for the aggregation task group.
 	//
 	// example:
 	//
@@ -189,19 +189,19 @@ type GetAggTaskGroupResponseBodyAggTaskGroup struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The tags of the resource group.
 	Tags []*GetAggTaskGroupResponseBodyAggTaskGroupTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the target Prometheus instance for the aggregation task group.
+	// The target Prometheus instance ID for the aggregation task group.
 	//
 	// example:
 	//
 	// rw-xxx
 	TargetPrometheusId *string `json:"targetPrometheusId,omitempty" xml:"targetPrometheusId,omitempty"`
-	// The UNIX timestamp in seconds that corresponds to the end time of the scheduling.
+	// The UNIX timestamp in seconds for the scheduling end time.
 	//
 	// example:
 	//
 	// 1757409495
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
-	// The time when the aggregation task group was updated. This is a timestamp.
+	// The update time of the aggregation task group. The value is a UNIX timestamp.
 	//
 	// example:
 	//

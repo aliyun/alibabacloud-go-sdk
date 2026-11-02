@@ -21,6 +21,8 @@ type iCreateContactRequest interface {
 	GetName() *string
 	SetPhone(v string) *CreateContactRequest
 	GetPhone() *string
+	SetPhoneCode(v string) *CreateContactRequest
+	GetPhoneCode() *string
 	SetWorkspace(v string) *CreateContactRequest
 	GetWorkspace() *string
 }
@@ -38,7 +40,7 @@ type CreateContactRequest struct {
 	//
 	// test@aliyun.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The instant messaging (IM) user ID mapping, which supports multi-platform integration. The key is the IM type (such as DING or WEIXIN), and the value is the corresponding user ID.
+	// The instant messaging (IM) user ID mapping, which supports multi-platform integration. The key is the IM type, such as DING or WEIXIN, and the value is the corresponding user ID.
 	ImUserIds map[string]*string `json:"imUserIds,omitempty" xml:"imUserIds,omitempty"`
 	// The language.
 	//
@@ -52,12 +54,18 @@ type CreateContactRequest struct {
 	//
 	// test_07
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The mobile phone number. Currently, only mobile phone numbers in the Chinese mainland are supported.
+	// The mobile phone number. Currently, only Chinese mobile phone numbers are supported.
 	//
 	// example:
 	//
 	// 13012345678
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// 号码国家码，可带前导 +，如 86、+86。传入后 phone 必须是纯数字，服务端按 <phoneCode>-<phone> 拼号发送，因此 phone 内不能再带 +、00 或区号。不传时按手机号码原样发送。
+	//
+	// example:
+	//
+	// 0086
+	PhoneCode *string `json:"phoneCode,omitempty" xml:"phoneCode,omitempty"`
 	// The name of the workspace.
 	//
 	// example:
@@ -98,6 +106,10 @@ func (s *CreateContactRequest) GetPhone() *string {
 	return s.Phone
 }
 
+func (s *CreateContactRequest) GetPhoneCode() *string {
+	return s.PhoneCode
+}
+
 func (s *CreateContactRequest) GetWorkspace() *string {
 	return s.Workspace
 }
@@ -129,6 +141,11 @@ func (s *CreateContactRequest) SetName(v string) *CreateContactRequest {
 
 func (s *CreateContactRequest) SetPhone(v string) *CreateContactRequest {
 	s.Phone = &v
+	return s
+}
+
+func (s *CreateContactRequest) SetPhoneCode(v string) *CreateContactRequest {
+	s.PhoneCode = &v
 	return s
 }
 

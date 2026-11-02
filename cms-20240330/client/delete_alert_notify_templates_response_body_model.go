@@ -9,11 +9,17 @@ type iDeleteAlertNotifyTemplatesResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDeletedCount(v int32) *DeleteAlertNotifyTemplatesResponseBody
+	GetDeletedCount() *int32
 	SetRequestId(v string) *DeleteAlertNotifyTemplatesResponseBody
 	GetRequestId() *string
 }
 
 type DeleteAlertNotifyTemplatesResponseBody struct {
+	// example:
+	//
+	// 0
+	DeletedCount *int32 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -30,8 +36,17 @@ func (s DeleteAlertNotifyTemplatesResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteAlertNotifyTemplatesResponseBody) GetDeletedCount() *int32 {
+	return s.DeletedCount
+}
+
 func (s *DeleteAlertNotifyTemplatesResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DeleteAlertNotifyTemplatesResponseBody) SetDeletedCount(v int32) *DeleteAlertNotifyTemplatesResponseBody {
+	s.DeletedCount = &v
+	return s
 }
 
 func (s *DeleteAlertNotifyTemplatesResponseBody) SetRequestId(v string) *DeleteAlertNotifyTemplatesResponseBody {

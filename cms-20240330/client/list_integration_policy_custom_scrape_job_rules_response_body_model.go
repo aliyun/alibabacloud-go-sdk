@@ -100,25 +100,25 @@ func (s *ListIntegrationPolicyCustomScrapeJobRulesResponseBody) Validate() error
 }
 
 type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules struct {
-	// The addon name.
+	// The add-on name.
 	//
 	// example:
 	//
 	// cloud-ecs
 	AddonName *string `json:"addonName,omitempty" xml:"addonName,omitempty"`
-	// The addon release name.
+	// The add-on release name.
 	//
 	// example:
 	//
 	// release-12345678
 	AddonReleaseName *string `json:"addonReleaseName,omitempty" xml:"addonReleaseName,omitempty"`
-	// The addon version.
+	// The add-on version.
 	//
 	// example:
 	//
 	// 0.0.1
 	AddonVersion *string `json:"addonVersion,omitempty" xml:"addonVersion,omitempty"`
-	// The configuration YAML.
+	// The YAML configuration.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ type ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesSc
 	//
 	// /metrics
 	MetricsPath *string `json:"metricsPath,omitempty" xml:"metricsPath,omitempty"`
-	// The invocation method.
+	// The scheme.
 	//
 	// example:
 	//

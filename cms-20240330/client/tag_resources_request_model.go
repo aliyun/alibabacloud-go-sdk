@@ -30,9 +30,9 @@ type TagResourcesRequest struct {
 	//
 	// Service
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The labels.
+	// The tags.
 	//
-	// You can attach up to 20 labels.
+	// You can attach up to 20 tags.
 	Tag []*Tag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 

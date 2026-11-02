@@ -40,7 +40,7 @@ type ListAlertRobotsResponseBody struct {
 	//
 	// 8FDE2569-626B-5176-9844-28877A*****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The chatbot IDs.
+	// The robot IDs.
 	Robots []*ListAlertRobotsResponseBodyRobots `json:"robots,omitempty" xml:"robots,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -117,7 +117,7 @@ func (s *ListAlertRobotsResponseBody) Validate() error {
 }
 
 type ListAlertRobotsResponseBodyRobots struct {
-	// The name of the digital employee.
+	// The digital employee name.
 	//
 	// example:
 	//
@@ -129,31 +129,31 @@ type ListAlertRobotsResponseBodyRobots struct {
 	//
 	// zh_CN
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
-	// The name of the chatbot.
+	// The robot name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The unique ID of the chatbot.
+	// The unique ID of the robot.
 	//
 	// example:
 	//
 	// test
 	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
-	// The signature key of the chatbot.
+	// The signing key of the robot.
 	//
 	// example:
 	//
 	// abc123
 	RobotSignKey *string `json:"robotSignKey,omitempty" xml:"robotSignKey,omitempty"`
-	// The chatbot types.
+	// The robot types.
 	//
 	// example:
 	//
 	// DING
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The webhook URL of the chatbot.
+	// The webhook URL of the robot.
 	//
 	// example:
 	//

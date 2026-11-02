@@ -52,7 +52,7 @@ type CreateAlertRobotRequest struct {
 	//
 	// test
 	RobotId *string `json:"robotId,omitempty" xml:"robotId,omitempty"`
-	// The signature key of the robot.
+	// The signing key of the robot.
 	//
 	// example:
 	//

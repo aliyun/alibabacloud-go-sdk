@@ -22,13 +22,13 @@ type iUpdateContextRequest interface {
 }
 
 type UpdateContextRequest struct {
-	// The updated text for the long-term memory.
+	// The updated long-term memory text.
 	//
 	// example:
 	//
 	// Users prefer to first view the SLS error logs, index configuration, and the most recent Agent execution trace.
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The experience object.
+	// The experience.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type UpdateContextRequest struct {
 	//
 	// }
 	Experience map[string]interface{} `json:"experience,omitempty" xml:"experience,omitempty"`
-	// A set of key-value pairs to attach to an object for storing custom information.
+	// The metadata.
 	//
 	// example:
 	//
 	// {"sessionId":"test_session_001"}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The payload to update.
+	// The updated payload.
 	//
 	// example:
 	//

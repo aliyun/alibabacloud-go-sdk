@@ -34,11 +34,7 @@ type PreviewNotifyTemplateResponseBody struct {
 	//
 	// 452faed9-ab3b-4340-8a92-bc7d9b98f17a
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// - true: The request is successful.
-	//
-	// - false: The request fails.
+	// Indicates whether the request is successful. Valid values: true and false.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iListOncallSchedulesResponseBody interface {
 type ListOncallSchedulesResponseBody struct {
 	// The list of on-call schedules.
 	OncallSchedules []*ListOncallSchedulesResponseBodyOncallSchedules `json:"oncallSchedules,omitempty" xml:"oncallSchedules,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type ListOncallSchedulesResponseBodyOncallSchedules struct {
 	OncallScheduleName *string `json:"oncallScheduleName,omitempty" xml:"oncallScheduleName,omitempty"`
 	// The list of rotations.
 	Rotations []*ListOncallSchedulesResponseBodyOncallSchedulesRotations `json:"rotations,omitempty" xml:"rotations,omitempty" type:"Repeated"`
-	// The ID of the chatbot that sends shift reminders.
+	// The ID of the robot that sends shift change reminders.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ func (s *ListOncallSchedulesResponseBodyOncallSchedules) Validate() error {
 }
 
 type ListOncallSchedulesResponseBodyOncallSchedulesRotations struct {
-	// The days of the week when the rotation is active.
+	// The days of the week when the rotation takes effect.
 	ActiveDays []*int32 `json:"activeDays,omitempty" xml:"activeDays,omitempty" type:"Repeated"`
 	// The IDs of the contacts.
 	Contacts []*string `json:"contacts,omitempty" xml:"contacts,omitempty" type:"Repeated"`
@@ -220,13 +220,13 @@ type ListOncallSchedulesResponseBodyOncallSchedulesRotations struct {
 	//
 	// 00:00
 	RotationStartTime *string `json:"rotationStartTime,omitempty" xml:"rotationStartTime,omitempty"`
-	// The length of the shift interval. Used in conjunction with shiftRecurrenceFrequency. For example, a value of 3 indicates that the on-call personnel rotates every 3 days.
+	// The length of the shift cycle. This parameter is used together with shiftRecurrenceFrequency. For example, a value of 3 indicates that the on-call personnel changes every 3 days.
 	//
 	// example:
 	//
 	// 3
 	ShiftLength *int32 `json:"shiftLength,omitempty" xml:"shiftLength,omitempty"`
-	// The unit of the shift interval. Used in conjunction with shiftLength. For example, a value of Week indicates that the on-call personnel rotates every week.
+	// The unit of the shift cycle. This parameter is used together with shiftLength. For example, a value of Week indicates that the on-call personnel changes every week.
 	//
 	// example:
 	//

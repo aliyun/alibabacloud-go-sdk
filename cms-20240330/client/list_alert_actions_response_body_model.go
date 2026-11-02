@@ -512,7 +512,7 @@ type ListAlertActionsResponseBodyAlertActionsFcParam struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The service name of Function Compute.
+	// The service name in Function Compute.
 	//
 	// example:
 	//
@@ -624,13 +624,13 @@ func (s *ListAlertActionsResponseBodyAlertActionsMnsParam) Validate() error {
 }
 
 type ListAlertActionsResponseBodyAlertActionsPagerDutyParam struct {
-	// The integration key for PagerDuty.
+	// The integration key of PagerDuty.
 	//
 	// example:
 	//
 	// fsfer4543t5t65g4t4
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
+	// The integration webhook URL of PagerDuty. Both V1 and V2 are supported.
 	//
 	// example:
 	//
@@ -743,7 +743,7 @@ type ListAlertActionsResponseBodyAlertActionsWebhookParam struct {
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The alert callback URL.
+	// The URL of the alert callback.
 	//
 	// example:
 	//

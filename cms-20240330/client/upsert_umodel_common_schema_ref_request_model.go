@@ -16,7 +16,7 @@ type iUpsertUmodelCommonSchemaRefRequest interface {
 }
 
 type UpsertUmodelCommonSchemaRefRequest struct {
-	// The group of the common Umodel schema.
+	// The public Umodel schema group.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iGetAddonRequest interface {
 }
 
 type GetAddonRequest struct {
-	// The locale. Default value: zh. Valid values: zh, en.
+	// The language. Default value: zh. Valid values: zh, en.
 	//
 	// example:
 	//

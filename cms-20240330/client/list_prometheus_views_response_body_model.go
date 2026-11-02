@@ -22,7 +22,7 @@ type iListPrometheusViewsResponseBody interface {
 }
 
 type ListPrometheusViewsResponseBody struct {
-	// The maximum number of records to return.
+	// The maximum number of entries to return.
 	//
 	// if can be null:
 	// true
@@ -31,7 +31,7 @@ type ListPrometheusViewsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -128,15 +128,15 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - prom-view: new version of the aggregate view
+	// - prom-view: New version aggregate view.
 	//
-	// - global-view: legacy version of the aggregate view
+	// - global-view: Legacy version aggregate view.
 	//
 	// example:
 	//
 	// prom-view
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// The billing method. The value is fixed to FREE.
+	// The billing method. Currently, the value is fixed to FREE.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ListPrometheusViewsResponseBodyPrometheusViews struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
