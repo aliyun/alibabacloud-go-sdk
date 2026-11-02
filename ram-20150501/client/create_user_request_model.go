@@ -24,7 +24,7 @@ type iCreateUserRequest interface {
 type CreateUserRequest struct {
 	// The description of the RAM user.
 	//
-	// The description must be 1 to 128 characters in length.
+	// It must be 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateUserRequest struct {
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The display name of the RAM user.
 	//
-	// The name must be 1 to 128 characters in length.
+	// It must be 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateUserRequest struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the RAM user.
 	//
-	// >  This parameter applies only to the China site (aliyun.com).
+	// > This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type CreateUserRequest struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// Format: \\<Country code>-\\<Mobile phone number>.
+	// Format: \\<Country code>-\\<Phone number>.
 	//
-	// >  This parameter applies only to the China site (aliyun.com).
+	// > This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateUserRequest struct {
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
 	// The name of the RAM user.
 	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	// It must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
 	//
 	// example:
 	//

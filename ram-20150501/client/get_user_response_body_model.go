@@ -22,7 +22,7 @@ type GetUserResponseBody struct {
 	//
 	// 2D69A58F-345C-4FDE-88E4-BF5189484043
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM user.
+	// The Resource Access Management (RAM) user information.
 	User *GetUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -62,59 +62,59 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyUser struct {
-	// The description of the RAM user.
+	// The comments.
 	//
 	// example:
 	//
-	// Cloud computing engineer
+	// This is a cloud computing engineer.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The point in time when the RAM user was created. The time is displayed in UTC.
+	// The time when the Resource Access Management (RAM) user was created (UTC).
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The display name of the RAM user.
+	// The display name.
 	//
 	// example:
 	//
 	// alice
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address of the RAM user.
+	// The electron mailbox of the Resource Access Management (RAM) user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// > This parameter applies only to the China site.
 	//
 	// example:
 	//
 	// alice@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The point in time when the RAM user last logged on to the Alibaba Cloud Management Console by using the password. The time is displayed in UTC.
+	// The time when the user last logged on with a password (UTC).
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	LastLoginDate *string `json:"LastLoginDate,omitempty" xml:"LastLoginDate,omitempty"`
-	// The mobile phone number of the RAM user.
+	// The mobile phone number of the Resource Access Management (RAM) user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// > This parameter applies only to the China site.
 	//
 	// example:
 	//
 	// 86-1860000****
 	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
-	// The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
+	// The time when the Resource Access Management (RAM) user was updated (UTC).
 	//
 	// example:
 	//
 	// 2015-02-11T03:15:21Z
 	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
-	// The ID of the RAM user.
+	// The unique identity of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//
 	// 222748924538****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the RAM user.
+	// The name of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//

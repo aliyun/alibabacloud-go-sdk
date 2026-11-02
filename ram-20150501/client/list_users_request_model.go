@@ -16,13 +16,13 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	// If the response is truncated, you can use the Marker parameter to retrieve the remaining items.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The number of entries per page. If a response is truncated because it reaches the value of MaxItems, the value of `IsTruncatedg` will be `true`.
+	// The maximum number of entries to return. If the response is truncated because the maximum number of entries is reached, the IsTruncated response parameter is set to true.
 	//
 	// Valid values: 1 to 1000. Default value: 100.
 	//

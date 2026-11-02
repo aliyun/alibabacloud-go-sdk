@@ -26,7 +26,7 @@ type ListRolesResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.````
+	// This parameter is returned only when `IsTruncated` is set to `true`. If `true` is returned, you must call this operation again and use the `Marker` parameter to retrieve the remaining results.
 	//
 	// example:
 	//
@@ -129,6 +129,7 @@ func (s *ListRolesResponseBodyRoles) Validate() error {
 }
 
 type ListRolesResponseBodyRolesRole struct {
+	AllowConsoleLogin  *bool                               `json:"AllowConsoleLogin,omitempty" xml:"AllowConsoleLogin,omitempty"`
 	Arn                *string                             `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	CreateDate         *string                             `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description        *string                             `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -145,6 +146,10 @@ func (s ListRolesResponseBodyRolesRole) String() string {
 
 func (s ListRolesResponseBodyRolesRole) GoString() string {
 	return s.String()
+}
+
+func (s *ListRolesResponseBodyRolesRole) GetAllowConsoleLogin() *bool {
+	return s.AllowConsoleLogin
 }
 
 func (s *ListRolesResponseBodyRolesRole) GetArn() *string {
@@ -177,6 +182,11 @@ func (s *ListRolesResponseBodyRolesRole) GetTags() *ListRolesResponseBodyRolesRo
 
 func (s *ListRolesResponseBodyRolesRole) GetUpdateDate() *string {
 	return s.UpdateDate
+}
+
+func (s *ListRolesResponseBodyRolesRole) SetAllowConsoleLogin(v bool) *ListRolesResponseBodyRolesRole {
+	s.AllowConsoleLogin = &v
+	return s
 }
 
 func (s *ListRolesResponseBodyRolesRole) SetArn(v string) *ListRolesResponseBodyRolesRole {

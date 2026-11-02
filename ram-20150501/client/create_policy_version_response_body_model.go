@@ -16,7 +16,7 @@ type iCreatePolicyVersionResponseBody interface {
 }
 
 type CreatePolicyVersionResponseBody struct {
-	// The information about the policy version.
+	// The information about the newly created permission access policy version.
 	PolicyVersion *CreatePolicyVersionResponseBodyPolicyVersion `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,25 @@ func (s *CreatePolicyVersionResponseBody) Validate() error {
 }
 
 type CreatePolicyVersionResponseBodyPolicyVersion struct {
-	// The time when the policy version was created.
+	// The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether the policy version is the default version.
+	// Indicates whether the version is the default version.
 	//
 	// example:
 	//
 	// false
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The document of the policy.
+	// The policy document of the permission access policy.
 	//
 	// example:
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the policy version.
+	// The identity of the permission access policy.
 	//
 	// example:
 	//

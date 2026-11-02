@@ -14,7 +14,7 @@ type iGetLoginProfileRequest interface {
 }
 
 type GetLoginProfileRequest struct {
-	// The name of the RAM user.
+	// The username.
 	//
 	// example:
 	//

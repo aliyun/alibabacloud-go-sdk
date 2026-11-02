@@ -16,17 +16,13 @@ type iCreateGroupRequest interface {
 }
 
 type CreateGroupRequest struct {
-	// The description.
-	//
-	// The value can be up to 128 characters in length.
+	// The description. The description can be up to 128 characters in length.
 	//
 	// example:
 	//
-	// Dev-Team
+	// Development team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The name of the user group.
-	//
-	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	// The name of the user group. The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//

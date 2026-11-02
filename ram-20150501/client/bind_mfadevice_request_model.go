@@ -20,25 +20,25 @@ type iBindMFADeviceRequest interface {
 }
 
 type BindMFADeviceRequest struct {
-	// The first authentication code.
+	// The first dynamic password for authentication.
 	//
 	// example:
 	//
 	// 11****
 	AuthenticationCode1 *string `json:"AuthenticationCode1,omitempty" xml:"AuthenticationCode1,omitempty"`
-	// The second authentication code.
+	// The second dynamic password for authentication.
 	//
 	// example:
 	//
 	// 33****
 	AuthenticationCode2 *string `json:"AuthenticationCode2,omitempty" xml:"AuthenticationCode2,omitempty"`
-	// The serial number of the MFA device.
+	// The serial number of the multi-factor authentication device.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:mfa/device002
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The name of the RAM user.
+	// The username.
 	//
 	// example:
 	//

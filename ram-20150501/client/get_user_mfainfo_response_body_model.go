@@ -70,9 +70,9 @@ type GetUserMFAInfoResponseBodyMFADevice struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The type of the MFA device. Valid values:
 	//
-	// 	- VMFA: virtual MFA device.
+	// - VMFA: virtual MFA device.
 	//
-	// 	- U2F: Universal 2nd Factor (U2F) security key.
+	// - U2F: Universal 2nd Factor (U2F) security key.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type UpdateUserRequest struct {
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
 	// The new email address of the RAM user.
 	//
-	// >  This parameter applies only to the China site (aliyun.com).
+	// > This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type UpdateUserRequest struct {
 	//
 	// Format: \\<Country code>-\\<Mobile phone number>.
 	//
-	// >  This parameter applies only to the China site (aliyun.com).
+	// > This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//

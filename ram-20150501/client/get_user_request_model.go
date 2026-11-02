@@ -14,9 +14,9 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
-	// The username of the RAM user.
+	// The name of the Resource Access Management (RAM) user.
 	//
-	// The username must be 1 to 64 characters in length, and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
+	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_).
 	//
 	// example:
 	//

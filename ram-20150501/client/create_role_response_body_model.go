@@ -22,7 +22,7 @@ type CreateRoleResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM role.
+	// The RAM role information.
 	Role *CreateRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,25 @@ func (s *CreateRoleResponseBody) Validate() error {
 }
 
 type CreateRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// Indicates whether the RAM role is allowed to log on to the console.
+	//
+	// example:
+	//
+	// true
+	AllowConsoleLogin *bool `json:"AllowConsoleLogin,omitempty" xml:"AllowConsoleLogin,omitempty"`
+	// The resource descriptor of the RAM role.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The trust policy that specifies the trusted entity to assume the RAM role.
+	// The trust policy of the RAM role.
 	//
 	// example:
 	//
 	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::123456789012****:root" } } ], "Version": "1" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the RAM role was created.
+	// The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -84,9 +90,9 @@ type CreateRoleResponseBodyRole struct {
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session time of the RAM role.
+	// The maximum session duration of the RAM role.
 	//
 	// example:
 	//
@@ -112,6 +118,10 @@ func (s CreateRoleResponseBodyRole) String() string {
 
 func (s CreateRoleResponseBodyRole) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRoleResponseBodyRole) GetAllowConsoleLogin() *bool {
+	return s.AllowConsoleLogin
 }
 
 func (s *CreateRoleResponseBodyRole) GetArn() *string {
@@ -140,6 +150,11 @@ func (s *CreateRoleResponseBodyRole) GetRoleId() *string {
 
 func (s *CreateRoleResponseBodyRole) GetRoleName() *string {
 	return s.RoleName
+}
+
+func (s *CreateRoleResponseBodyRole) SetAllowConsoleLogin(v bool) *CreateRoleResponseBodyRole {
+	s.AllowConsoleLogin = &v
+	return s
 }
 
 func (s *CreateRoleResponseBodyRole) SetArn(v string) *CreateRoleResponseBodyRole {

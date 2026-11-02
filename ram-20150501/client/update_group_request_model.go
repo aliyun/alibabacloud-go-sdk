@@ -30,7 +30,7 @@ type UpdateGroupRequest struct {
 	//
 	// example:
 	//
-	// NewDev-Team
+	// Development team
 	NewComments *string `json:"NewComments,omitempty" xml:"NewComments,omitempty"`
 	// The new name of the RAM user group.
 	//

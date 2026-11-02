@@ -16,7 +16,7 @@ type iCreateLoginProfileResponseBody interface {
 }
 
 type CreateLoginProfileResponseBody struct {
-	// The logon configurations of the RAM user.
+	// The logon profile.
 	LoginProfile *CreateLoginProfileResponseBodyLoginProfile `json:"LoginProfile,omitempty" xml:"LoginProfile,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,25 @@ func (s *CreateLoginProfileResponseBody) Validate() error {
 }
 
 type CreateLoginProfileResponseBodyLoginProfile struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// Indicates whether an MFA device must be bound to the RAM user.
+	// Indicates whether the user is required to attach a multi-factor authentication device.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// Indicates whether the RAM user must change the password upon logon.
+	// Indicates whether the user is required to reset the password upon next logon.
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The name of the RAM user.
+	// The username.
 	//
 	// example:
 	//

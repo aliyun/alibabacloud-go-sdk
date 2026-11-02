@@ -22,7 +22,7 @@ type GetRoleResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM role.
+	// The role information.
 	Role *GetRoleResponseBodyRole `json:"Role,omitempty" xml:"Role,omitempty" type:"Struct"`
 }
 
@@ -62,49 +62,69 @@ func (s *GetRoleResponseBody) Validate() error {
 }
 
 type GetRoleResponseBodyRole struct {
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	// Indicates whether console logon is allowed for the RAM role.
+	//
+	// example:
+	//
+	// true
+	AllowConsoleLogin *bool `json:"AllowConsoleLogin,omitempty" xml:"AllowConsoleLogin,omitempty"`
+	// The resource descriptor of the role.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/ECSAdmin
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The policy that specifies the trusted entity to assume the RAM role.
+	// The access policy that specifies the permission to assume the role.
 	//
 	// example:
 	//
 	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::123456789012****:root" } } ], "Version": "1" }
 	AssumeRolePolicyDocument *string `json:"AssumeRolePolicyDocument,omitempty" xml:"AssumeRolePolicyDocument,omitempty"`
-	// The time when the RAM role was created.
+	// The time when the role was created. The time is in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The description of the RAM role.
+	// The description of the role.
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session duration of the RAM role.
+	// Indicates whether the role is a service-linked role.
+	//
+	// example:
+	//
+	// true
+	IsServiceLinkedRole *bool `json:"IsServiceLinkedRole,omitempty" xml:"IsServiceLinkedRole,omitempty"`
+	// The information about the most recent deletion task.
+	LatestDeletionTask *GetRoleResponseBodyRoleLatestDeletionTask `json:"LatestDeletionTask,omitempty" xml:"LatestDeletionTask,omitempty" type:"Struct"`
+	// The maximum session duration of the role.
 	//
 	// example:
 	//
 	// 3600
 	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
-	// The ID of the RAM role.
+	// The ID of the role.
 	//
 	// example:
 	//
 	// 901234567890****
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
-	// The name of the RAM role.
+	// The name of the role.
 	//
 	// example:
 	//
 	// ECSAdmin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The time when the RAM role was modified.
+	// The name of the role with the domain name suffix.
+	//
+	// example:
+	//
+	// ECSAdmin@role.123456.onaliyunservice.com
+	RolePrincipalName *string `json:"RolePrincipalName,omitempty" xml:"RolePrincipalName,omitempty"`
+	// The time when the role was last updated. The time is in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
@@ -118,6 +138,10 @@ func (s GetRoleResponseBodyRole) String() string {
 
 func (s GetRoleResponseBodyRole) GoString() string {
 	return s.String()
+}
+
+func (s *GetRoleResponseBodyRole) GetAllowConsoleLogin() *bool {
+	return s.AllowConsoleLogin
 }
 
 func (s *GetRoleResponseBodyRole) GetArn() *string {
@@ -136,6 +160,14 @@ func (s *GetRoleResponseBodyRole) GetDescription() *string {
 	return s.Description
 }
 
+func (s *GetRoleResponseBodyRole) GetIsServiceLinkedRole() *bool {
+	return s.IsServiceLinkedRole
+}
+
+func (s *GetRoleResponseBodyRole) GetLatestDeletionTask() *GetRoleResponseBodyRoleLatestDeletionTask {
+	return s.LatestDeletionTask
+}
+
 func (s *GetRoleResponseBodyRole) GetMaxSessionDuration() *int64 {
 	return s.MaxSessionDuration
 }
@@ -148,8 +180,17 @@ func (s *GetRoleResponseBodyRole) GetRoleName() *string {
 	return s.RoleName
 }
 
+func (s *GetRoleResponseBodyRole) GetRolePrincipalName() *string {
+	return s.RolePrincipalName
+}
+
 func (s *GetRoleResponseBodyRole) GetUpdateDate() *string {
 	return s.UpdateDate
+}
+
+func (s *GetRoleResponseBodyRole) SetAllowConsoleLogin(v bool) *GetRoleResponseBodyRole {
+	s.AllowConsoleLogin = &v
+	return s
 }
 
 func (s *GetRoleResponseBodyRole) SetArn(v string) *GetRoleResponseBodyRole {
@@ -172,6 +213,16 @@ func (s *GetRoleResponseBodyRole) SetDescription(v string) *GetRoleResponseBodyR
 	return s
 }
 
+func (s *GetRoleResponseBodyRole) SetIsServiceLinkedRole(v bool) *GetRoleResponseBodyRole {
+	s.IsServiceLinkedRole = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRole) SetLatestDeletionTask(v *GetRoleResponseBodyRoleLatestDeletionTask) *GetRoleResponseBodyRole {
+	s.LatestDeletionTask = v
+	return s
+}
+
 func (s *GetRoleResponseBodyRole) SetMaxSessionDuration(v int64) *GetRoleResponseBodyRole {
 	s.MaxSessionDuration = &v
 	return s
@@ -187,11 +238,66 @@ func (s *GetRoleResponseBodyRole) SetRoleName(v string) *GetRoleResponseBodyRole
 	return s
 }
 
+func (s *GetRoleResponseBodyRole) SetRolePrincipalName(v string) *GetRoleResponseBodyRole {
+	s.RolePrincipalName = &v
+	return s
+}
+
 func (s *GetRoleResponseBodyRole) SetUpdateDate(v string) *GetRoleResponseBodyRole {
 	s.UpdateDate = &v
 	return s
 }
 
 func (s *GetRoleResponseBodyRole) Validate() error {
+	if s.LatestDeletionTask != nil {
+		if err := s.LatestDeletionTask.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetRoleResponseBodyRoleLatestDeletionTask struct {
+	// The time when the deletion task was created. The time is in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
+	//
+	// example:
+	//
+	// 2018-10-23T12:33:18Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The ID of the deletion task.
+	//
+	// example:
+	//
+	// task/acs-service-role/sas.aliyuncs.com/AliyunServiceRoleForSas/20843430-bb43-44fe-a7ff-02ab09183436
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
+}
+
+func (s GetRoleResponseBodyRoleLatestDeletionTask) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetRoleResponseBodyRoleLatestDeletionTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) GetCreateDate() *string {
+	return s.CreateDate
+}
+
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) GetDeletionTaskId() *string {
+	return s.DeletionTaskId
+}
+
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) SetCreateDate(v string) *GetRoleResponseBodyRoleLatestDeletionTask {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) SetDeletionTaskId(v string) *GetRoleResponseBodyRoleLatestDeletionTask {
+	s.DeletionTaskId = &v
+	return s
+}
+
+func (s *GetRoleResponseBodyRoleLatestDeletionTask) Validate() error {
 	return dara.Validate(s)
 }

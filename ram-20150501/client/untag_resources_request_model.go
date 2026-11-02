@@ -22,31 +22,19 @@ type iUntagResourcesRequest interface {
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resources.
 	//
-	// Enumerated values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The names of the resources. You can specify up to 50 resource names.
+	// The list of resource names. You can specify up to 50 resource names at a time.
 	ResourceNames []*string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty" type:"Repeated"`
 	// The resource type.
-	//
-	// Enumerated values:
-	//
-	// 	- role: RAM roles.
-	//
-	// 	- policy: policies.
 	//
 	// example:
 	//
 	// role
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The keys of the tags. You can specify up to 20 tag keys.
+	// The list of tag keys for the resources. You can specify up to 20 tag keys at a time.
 	TagKeys []*string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 }
 

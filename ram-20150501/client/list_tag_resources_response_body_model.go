@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The pagination token used to retrieve the next page.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 5CCE804C-6450-49A7-B1DB-2460F7A97416
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags that are added to the cloud resources.
+	// The list of tags bound to the cloud resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
@@ -91,23 +91,17 @@ type ListTagResourcesResponseBodyTagResources struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The resource type.
 	//
-	// Enumerated values:
-	//
-	// 	- role: RAM roles.
-	//
-	// 	- policy: policies.
-	//
 	// example:
 	//
 	// role
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// t1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

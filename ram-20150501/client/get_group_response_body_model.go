@@ -16,7 +16,7 @@ type iGetGroupResponseBody interface {
 }
 
 type GetGroupResponseBody struct {
-	// The information about the RAM user group.
+	// The user group information.
 	Group *GetGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,31 +62,31 @@ func (s *GetGroupResponseBody) Validate() error {
 }
 
 type GetGroupResponseBodyGroup struct {
-	// The description of the RAM user group.
+	// The remarks.
 	//
 	// example:
 	//
-	// Dev-Team
+	// Development team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The time when the RAM user group was created.
+	// The creation time in UTC. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The ID of the RAM user group.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// g-FpMEHiMysofp****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the RAM user group.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The modification time.
+	// The update time in UTC. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//

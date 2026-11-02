@@ -16,15 +16,15 @@ type iChangePasswordRequest interface {
 }
 
 type ChangePasswordRequest struct {
-	// The new password that is used to log on to the console.
+	// The new console logon password of the Resource Access Management (RAM) user.
 	//
-	// The password must meet the complexity requirements. For more information, see [SetPasswordPolicy](https://help.aliyun.com/document_detail/28739.html).
+	// The password must meet the password strength requirements. For more information, see [SetPasswordPolicy](https://help.aliyun.com/document_detail/28739.html).
 	//
 	// example:
 	//
 	// aw$2****
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
-	// The old password that is used to log on to the console.
+	// The old console logon password of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//

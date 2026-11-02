@@ -70,7 +70,7 @@ type GetSecurityPreferenceResponseBodySecurityPreference struct {
 	MFAPreference *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
 	// The public key preference.
 	//
-	// >  This parameter is valid only for the Japan site.
+	// > This parameter is valid only for the Japan site.
 	PublicKeyPreference *GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference `json:"PublicKeyPreference,omitempty" xml:"PublicKeyPreference,omitempty" type:"Struct"`
 }
 
@@ -145,9 +145,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) Validate() error {
 type GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference struct {
 	// Indicates whether Resource Access Management (RAM) users can manage their AccessKey pairs. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -179,9 +179,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference)
 type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference struct {
 	// Indicates whether RAM users can change their passwords. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
 	// Indicates whether RAM users can save security codes for MFA during logon. Each security code is valid for seven days. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -199,9 +199,9 @@ type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	EnableSaveMFATicket *bool `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
 	// The subnet mask that indicates the IP addresses from which logon to the Alibaba Cloud Management Console is allowed. This parameter applies to password-based logon and single sign-on (SSO). However, this parameter does not apply to API calls that are authenticated based on AccessKey pairs.
 	//
-	// 	- If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
+	// - If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
 	//
-	// 	- If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
+	// - If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
 	//
 	// If you want to specify more than one subnet mask, separate the masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
 	//
@@ -268,9 +268,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreferen
 type GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference struct {
 	// Indicates whether RAM users can manage their MFA devices. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -302,9 +302,9 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) Valid
 type GetSecurityPreferenceResponseBodySecurityPreferencePublicKeyPreference struct {
 	// Indicates whether RAM users can manage their public keys. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//

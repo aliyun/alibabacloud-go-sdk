@@ -20,27 +20,27 @@ type iCreatePolicyRequest interface {
 }
 
 type CreatePolicyRequest struct {
-	// The description of the policy.
+	// The description of the access policy.
 	//
 	// The description must be 1 to 1,024 characters in length.
 	//
 	// example:
 	//
-	// Query ECS instances in a specific region
+	// View ECS instances in a specified region
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The document of the policy.
+	// Access policy document.
 	//
-	// The document must be 1 to 6,144 characters in length.
+	// Access policy document must be 1 to 6,144 characters in length.
 	//
-	// For more information about policy elements and sample policies, see [Policy elements](https://help.aliyun.com/document_detail/93738.html) and [Overview of sample policies](https://help.aliyun.com/document_detail/210969.html).
+	// For more information about policy document elements and examples, see [Policy document elements](https://help.aliyun.com/document_detail/93738.html) and [Policy document examples](https://help.aliyun.com/document_detail/210969.html).
 	//
 	// example:
 	//
 	// {"Statement": [{"Effect": "Allow","Action": "ecs:Describe*","Resource": "acs:ecs:cn-qingdao:*:instance/*"}],"Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the policy.
+	// Policy Name of the access policy.
 	//
-	// The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
+	// Policy Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ func (s *CreatePolicyRequest) Validate() error {
 }
 
 type CreatePolicyRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// owner
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

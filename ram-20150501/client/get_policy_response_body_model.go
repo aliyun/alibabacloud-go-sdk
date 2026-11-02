@@ -18,9 +18,9 @@ type iGetPolicyResponseBody interface {
 }
 
 type GetPolicyResponseBody struct {
-	// The information about the default policy version.
+	// The default version of the access policy.
 	DefaultPolicyVersion *GetPolicyResponseBodyDefaultPolicyVersion `json:"DefaultPolicyVersion,omitempty" xml:"DefaultPolicyVersion,omitempty" type:"Struct"`
-	// The basic information about the policy.
+	// The basic information of the access policy.
 	Policy *GetPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,25 +80,25 @@ func (s *GetPolicyResponseBody) Validate() error {
 }
 
 type GetPolicyResponseBodyDefaultPolicyVersion struct {
-	// The time when the default policy version was created.
+	// The time when the policy was created. The time is in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// An attribute in the `DefaultPolicyVersion` parameter. The value of the `IsDefaultVersion` parameter is `true`.
+	// The data structure returned by `DefaultPolicyVersion` is always the default version. Therefore, the value of `IsDefaultVersion` is always `true`.
 	//
 	// example:
 	//
 	// true
 	IsDefaultVersion *bool `json:"IsDefaultVersion,omitempty" xml:"IsDefaultVersion,omitempty"`
-	// The document of the policy.
+	// The policy document of the access policy.
 	//
 	// example:
 	//
 	// { "Statement": [{ "Action": ["oss:*"], "Effect": "Allow", "Resource": ["acs:oss:*:*:*"]}], "Version": "1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The ID of the default policy version.
+	// The version of the access policy.
 	//
 	// example:
 	//
@@ -155,49 +155,49 @@ func (s *GetPolicyResponseBodyDefaultPolicyVersion) Validate() error {
 }
 
 type GetPolicyResponseBodyPolicy struct {
-	// The number of references to the policy.
+	// The number of references.
 	//
 	// example:
 	//
 	// 0
 	AttachmentCount *int32 `json:"AttachmentCount,omitempty" xml:"AttachmentCount,omitempty"`
-	// The time when the policy was created.
+	// The time when the policy was created. The time is in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2015-01-23T12:33:18Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The default version of the policy.
+	// The default version.
 	//
 	// example:
 	//
 	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the policy.
+	// The description of the access policy.
 	//
 	// example:
 	//
-	// OSS administrator
+	// OSS administrator permissions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
 	// N/A
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the policy.
+	// The name of the access policy.
 	//
 	// example:
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the policy.
+	// The type of the access policy.
 	//
 	// example:
 	//
 	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The time when the policy was modified.
+	// The time when the policy was last modified. The time is in UTC. Format: `YYYY-MM-DDThh:mm:ssZ`.
 	//
 	// example:
 	//

@@ -18,21 +18,15 @@ type iTagResourcesShrinkRequest interface {
 }
 
 type TagResourcesShrinkRequest struct {
-	// The names of the resources. You can specify up to 50 resource names.
+	// The list of resource names. You can specify up to 50 resource names at a time.
 	ResourceNamesShrink *string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty"`
 	// The resource type.
-	//
-	// Enumerated values:
-	//
-	// 	- role: RAM roles.
-	//
-	// 	- policy: policies.
 	//
 	// example:
 	//
 	// role
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The list of tags. You can specify up to 20 tags at a time.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

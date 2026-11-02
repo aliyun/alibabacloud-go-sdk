@@ -18,21 +18,15 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The names of the resources. You can specify up to 50 resource names.
+	// The list of resource names. You can specify up to 50 resource names at a time.
 	ResourceNames []*string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty" type:"Repeated"`
 	// The resource type.
-	//
-	// Enumerated values:
-	//
-	// 	- role: RAM roles.
-	//
-	// 	- policy: policies.
 	//
 	// example:
 	//
 	// role
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The list of tags. You can specify up to 20 tags at a time.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -85,13 +79,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag. The tag key can be up to 128 characters in length.
+	// The tag key. The key can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value can be up to 256 characters in length.
+	// The tag value. The value can be up to 256 characters in length.
 	//
 	// example:
 	//

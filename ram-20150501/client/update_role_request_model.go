@@ -9,6 +9,8 @@ type iUpdateRoleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetNewAllowConsoleLogin(v bool) *UpdateRoleRequest
+	GetNewAllowConsoleLogin() *bool
 	SetNewAssumeRolePolicyDocument(v string) *UpdateRoleRequest
 	GetNewAssumeRolePolicyDocument() *string
 	SetNewDescription(v string) *UpdateRoleRequest
@@ -20,33 +22,31 @@ type iUpdateRoleRequest interface {
 }
 
 type UpdateRoleRequest struct {
-	// The trust policy that specifies the trusted entity to assume the RAM role.
+	// Specifies whether to allow the RAM role to log on to the console.
+	//
+	// example:
+	//
+	// true
+	NewAllowConsoleLogin *bool `json:"NewAllowConsoleLogin,omitempty" xml:"NewAllowConsoleLogin,omitempty"`
+	// The trust policy of the RAM role.
 	//
 	// example:
 	//
 	// { "Statement": [ { "Action": "sts:AssumeRole", "Effect": "Allow", "Principal": { "RAM": "acs:ram::12345678901234****:root" } } ], "Version": "1" }
 	NewAssumeRolePolicyDocument *string `json:"NewAssumeRolePolicyDocument,omitempty" xml:"NewAssumeRolePolicyDocument,omitempty"`
-	// The new description of the RAM role.
-	//
-	// The description must be 1 to 1,024 characters in length.
+	// The description of the RAM role. The description must be 1 to 1,024 characters in length.
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	// The maximum session time of the RAM role.
-	//
-	// Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
-	//
-	// If you do not specify this parameter, the default value is used.
+	// The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
 	//
 	// example:
 	//
 	// 3600
 	NewMaxSessionDuration *int64 `json:"NewMaxSessionDuration,omitempty" xml:"NewMaxSessionDuration,omitempty"`
-	// The name of the RAM role.
-	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	// The name of the RAM role. The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -60,6 +60,10 @@ func (s UpdateRoleRequest) String() string {
 
 func (s UpdateRoleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRoleRequest) GetNewAllowConsoleLogin() *bool {
+	return s.NewAllowConsoleLogin
 }
 
 func (s *UpdateRoleRequest) GetNewAssumeRolePolicyDocument() *string {
@@ -76,6 +80,11 @@ func (s *UpdateRoleRequest) GetNewMaxSessionDuration() *int64 {
 
 func (s *UpdateRoleRequest) GetRoleName() *string {
 	return s.RoleName
+}
+
+func (s *UpdateRoleRequest) SetNewAllowConsoleLogin(v bool) *UpdateRoleRequest {
+	s.NewAllowConsoleLogin = &v
+	return s
 }
 
 func (s *UpdateRoleRequest) SetNewAssumeRolePolicyDocument(v string) *UpdateRoleRequest {

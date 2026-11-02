@@ -20,20 +20,25 @@ type iAttachPolicyToRoleRequest interface {
 }
 
 type AttachPolicyToRoleRequest struct {
-	// The name of the policy.
+	// The name of the access policy.
 	//
 	// example:
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the policy. Valid values: `System` and `Custom`.
+	// The type of the access policy. Valid values: `System` or `Custom`.
 	//
 	// example:
 	//
 	// Custom
-	PolicyType      *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-9gLOoK****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the RAM role.
+	// The name of the role.
 	//
 	// example:
 	//

@@ -124,7 +124,7 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 
 // Summary:
 //
-// Attaches a policy to a Resource Access Management (RAM) user group.
+// Calls the AttachPolicyToGroup operation to attach a permission to a specified user group.
 //
 // @param request - AttachPolicyToGroupRequest
 //
@@ -180,7 +180,7 @@ func (client *Client) AttachPolicyToGroupWithOptions(request *AttachPolicyToGrou
 
 // Summary:
 //
-// Attaches a policy to a Resource Access Management (RAM) user group.
+// Calls the AttachPolicyToGroup operation to attach a permission to a specified user group.
 //
 // @param request - AttachPolicyToGroupRequest
 //
@@ -198,7 +198,7 @@ func (client *Client) AttachPolicyToGroup(request *AttachPolicyToGroupRequest) (
 
 // Summary:
 //
-// Attaches a policy to a Resource Access Management (RAM) role.
+// Calls the AttachPolicyToRole operation to add a permission to a specified role.
 //
 // @param request - AttachPolicyToRoleRequest
 //
@@ -254,7 +254,7 @@ func (client *Client) AttachPolicyToRoleWithOptions(request *AttachPolicyToRoleR
 
 // Summary:
 //
-// Attaches a policy to a Resource Access Management (RAM) role.
+// Calls the AttachPolicyToRole operation to add a permission to a specified role.
 //
 // @param request - AttachPolicyToRoleRequest
 //
@@ -272,7 +272,7 @@ func (client *Client) AttachPolicyToRole(request *AttachPolicyToRoleRequest) (_r
 
 // Summary:
 //
-// Attaches a policy to a Resource Access Management (RAM) user.
+// Attaches an access policy to a specified user.
 //
 // @param request - AttachPolicyToUserRequest
 //
@@ -328,7 +328,7 @@ func (client *Client) AttachPolicyToUserWithOptions(request *AttachPolicyToUserR
 
 // Summary:
 //
-// Attaches a policy to a Resource Access Management (RAM) user.
+// Attaches an access policy to a specified user.
 //
 // @param request - AttachPolicyToUserRequest
 //
@@ -346,7 +346,7 @@ func (client *Client) AttachPolicyToUser(request *AttachPolicyToUserRequest) (_r
 
 // Summary:
 //
-// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+// Binds a multi-factor authentication device.
 //
 // @param request - BindMFADeviceRequest
 //
@@ -402,7 +402,7 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 
 // Summary:
 //
-// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
+// Binds a multi-factor authentication device.
 //
 // @param request - BindMFADeviceRequest
 //
@@ -420,11 +420,13 @@ func (client *Client) BindMFADevice(request *BindMFADeviceRequest) (_result *Bin
 
 // Summary:
 //
-// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+// Allows a Resource Access Management (RAM) user to invoke ChangePassword to change their own console logon password.
 //
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
+// > This API operation can be invoked only by Resource Access Management (RAM) users. Before invoking this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True` in Settings, which allows RAM users to manage their own passwords.
+//
+// This operation is used only by the current RAM user to change their own console logon password. The `OldPassword` parameter must be provided when invoking this operation. If an administrator needs to set or reset the password for another RAM user, invoke `UpdateLoginProfile`.
 //
 // @param request - ChangePasswordRequest
 //
@@ -472,11 +474,13 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 
 // Summary:
 //
-// Changes the password that is used to log on to the console for a Resource Access Management (RAM) user.
+// Allows a Resource Access Management (RAM) user to invoke ChangePassword to change their own console logon password.
 //
 // Description:
 //
-// >  This operation is available only for RAM users. Before you call this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True`. The value True indicates that RAM users can manage their passwords.
+// > This API operation can be invoked only by Resource Access Management (RAM) users. Before invoking this operation, make sure that `AllowUserToChangePassword` in [SetSecurityPreference](https://help.aliyun.com/document_detail/43765.html) is set to `True` in Settings, which allows RAM users to manage their own passwords.
+//
+// This operation is used only by the current RAM user to change their own console logon password. The `OldPassword` parameter must be provided when invoking this operation. If an administrator needs to set or reset the password for another RAM user, invoke `UpdateLoginProfile`.
 //
 // @param request - ChangePasswordRequest
 //
@@ -495,8 +499,6 @@ func (client *Client) ChangePassword(request *ChangePasswordRequest) (_result *C
 // Summary:
 //
 // Deletes the alias of an Alibaba Cloud account.
-//
-// @param request - ClearAccountAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -541,7 +543,11 @@ func (client *Client) ClearAccountAlias() (_result *ClearAccountAliasResponse, _
 
 // Summary:
 //
-// Creates an AccessKey pair for a Resource Access Management (RAM) user.
+// Invokes the CreateAccessKey operation to create an AccessKey pair for a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// Each RAM user can have a maximum of two AccessKey pairs.
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -585,7 +591,11 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 
 // Summary:
 //
-// Creates an AccessKey pair for a Resource Access Management (RAM) user.
+// Invokes the CreateAccessKey operation to create an AccessKey pair for a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// Each RAM user can have a maximum of two AccessKey pairs.
 //
 // @param request - CreateAccessKeyRequest
 //
@@ -603,7 +613,7 @@ func (client *Client) CreateAccessKey(request *CreateAccessKeyRequest) (_result 
 
 // Summary:
 //
-// Creates a RAM user group.
+// Creates a user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -651,7 +661,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 // Summary:
 //
-// Creates a RAM user group.
+// Creates a user group.
 //
 // @param request - CreateGroupRequest
 //
@@ -669,7 +679,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Enables console logon for a Resource Access Management (RAM) user.
+// Invokes the CreateLoginProfile operation to enable web console logon for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -725,7 +735,7 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 
 // Summary:
 //
-// Enables console logon for a Resource Access Management (RAM) user.
+// Invokes the CreateLoginProfile operation to enable web console logon for a Resource Access Management (RAM) user.
 //
 // @param request - CreateLoginProfileRequest
 //
@@ -743,13 +753,13 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 
 // Summary:
 //
-// Creates a custom policy.
+// Creates a custom access policy.
 //
 // Description:
 //
-// For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+// For more information about access policies, see [Access policy overview](https://help.aliyun.com/document_detail/93732.html).
 //
-// This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+// This topic provides an example of creating an access policy to view ECS instances in a specified region.
 //
 // @param tmpReq - CreatePolicyRequest
 //
@@ -811,13 +821,13 @@ func (client *Client) CreatePolicyWithOptions(tmpReq *CreatePolicyRequest, runti
 
 // Summary:
 //
-// Creates a custom policy.
+// Creates a custom access policy.
 //
 // Description:
 //
-// For more information about policies, see [Policy overview](https://help.aliyun.com/document_detail/93732.html).
+// For more information about access policies, see [Access policy overview](https://help.aliyun.com/document_detail/93732.html).
 //
-// This topic provides an example on how to create a custom policy to query Elastic Compute Service (ECS) instances in a specific region.
+// This topic provides an example of creating an access policy to view ECS instances in a specified region.
 //
 // @param request - CreatePolicyRequest
 //
@@ -835,7 +845,7 @@ func (client *Client) CreatePolicy(request *CreatePolicyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a version for a policy.
+// Invokes the CreatePolicyVersion operation to create a new version for a permission access policy.
 //
 // @param request - CreatePolicyVersionRequest
 //
@@ -891,7 +901,7 @@ func (client *Client) CreatePolicyVersionWithOptions(request *CreatePolicyVersio
 
 // Summary:
 //
-// Creates a version for a policy.
+// Invokes the CreatePolicyVersion operation to create a new version for a permission access policy.
 //
 // @param request - CreatePolicyVersionRequest
 //
@@ -909,13 +919,13 @@ func (client *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (
 
 // Summary:
 //
-// Creates a Resource Access Management (RAM) role.
+// Creates a RAM role.
 //
 // Description:
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+// For more information about RAM roles, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
 //
 // @param tmpReq - CreateRoleRequest
 //
@@ -936,6 +946,10 @@ func (client *Client) CreateRoleWithOptions(tmpReq *CreateRoleRequest, runtime *
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowConsoleLogin) {
+		query["AllowConsoleLogin"] = request.AllowConsoleLogin
+	}
+
 	if !dara.IsNil(request.AssumeRolePolicyDocument) {
 		query["AssumeRolePolicyDocument"] = request.AssumeRolePolicyDocument
 	}
@@ -981,13 +995,13 @@ func (client *Client) CreateRoleWithOptions(tmpReq *CreateRoleRequest, runtime *
 
 // Summary:
 //
-// Creates a Resource Access Management (RAM) role.
+// Creates a RAM role.
 //
 // Description:
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// For more information about RAM roles, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+// For more information about RAM roles, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
 //
 // @param request - CreateRoleRequest
 //
@@ -1005,11 +1019,81 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 
 // Summary:
 //
+// Creates a service-linked role.
+//
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceLinkedRoleResponse
+func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomSuffix) {
+		query["CustomSuffix"] = request.CustomSuffix
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServiceLinkedRole"),
+		Version:     dara.String("2015-05-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServiceLinkedRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a service-linked role.
+//
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @return CreateServiceLinkedRoleResponse
+func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (_result *CreateServiceLinkedRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateServiceLinkedRoleResponse{}
+	_body, _err := client.CreateServiceLinkedRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// This topic provides an example on how to create a RAM user named `alice`.
+// This topic provides an example on how to create a RAM user named `alice`.
 //
 // @param request - CreateUserRequest
 //
@@ -1073,7 +1157,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 //
 // Description:
 //
-// This topic provides an example on how to create a RAM user named `alice`.
+// This topic provides an example on how to create a RAM user named `alice`.
 //
 // @param request - CreateUserRequest
 //
@@ -1153,7 +1237,7 @@ func (client *Client) CreateVirtualMFADevice(request *CreateVirtualMFADeviceRequ
 
 // Summary:
 //
-// Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+// Decodes the diagnostic information from the response body of a request that is denied due to insufficient RAM permissions.
 //
 // @param request - DecodeDiagnosticMessageRequest
 //
@@ -1197,7 +1281,7 @@ func (client *Client) DecodeDiagnosticMessageWithOptions(request *DecodeDiagnost
 
 // Summary:
 //
-// Decodes the diagnostic information in the response that contains an access denied error. The error is caused by no RAM permissions.
+// Decodes the diagnostic information from the response body of a request that is denied due to insufficient RAM permissions.
 //
 // @param request - DecodeDiagnosticMessageRequest
 //
@@ -1619,6 +1703,68 @@ func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRol
 
 // Summary:
 //
+// Deletes a service-linked role.
+//
+// @param request - DeleteServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceLinkedRoleResponse
+func (client *Client) DeleteServiceLinkedRoleWithOptions(request *DeleteServiceLinkedRoleRequest, runtime *dara.RuntimeOptions) (_result *DeleteServiceLinkedRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RoleName) {
+		query["RoleName"] = request.RoleName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServiceLinkedRole"),
+		Version:     dara.String("2015-05-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServiceLinkedRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a service-linked role.
+//
+// @param request - DeleteServiceLinkedRoleRequest
+//
+// @return DeleteServiceLinkedRoleResponse
+func (client *Client) DeleteServiceLinkedRole(request *DeleteServiceLinkedRoleRequest) (_result *DeleteServiceLinkedRoleResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteServiceLinkedRoleResponse{}
+	_body, _err := client.DeleteServiceLinkedRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a Resource Access Management (RAM) user.
 //
 // Description:
@@ -1751,7 +1897,7 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 
 // Summary:
 //
-// Detaches a policy from a Resource Access Management (RAM) user group.
+// Calls the DetachPolicyFromGroup operation to revoke a specified permission from a user group.
 //
 // @param request - DetachPolicyFromGroupRequest
 //
@@ -1807,7 +1953,7 @@ func (client *Client) DetachPolicyFromGroupWithOptions(request *DetachPolicyFrom
 
 // Summary:
 //
-// Detaches a policy from a Resource Access Management (RAM) user group.
+// Calls the DetachPolicyFromGroup operation to revoke a specified permission from a user group.
 //
 // @param request - DetachPolicyFromGroupRequest
 //
@@ -1825,7 +1971,7 @@ func (client *Client) DetachPolicyFromGroup(request *DetachPolicyFromGroupReques
 
 // Summary:
 //
-// Detaches a policy from a Resource Access Management (RAM) role.
+// Revokes a specified access policy from a role.
 //
 // @param request - DetachPolicyFromRoleRequest
 //
@@ -1881,7 +2027,7 @@ func (client *Client) DetachPolicyFromRoleWithOptions(request *DetachPolicyFromR
 
 // Summary:
 //
-// Detaches a policy from a Resource Access Management (RAM) role.
+// Revokes a specified access policy from a role.
 //
 // @param request - DetachPolicyFromRoleRequest
 //
@@ -1899,7 +2045,7 @@ func (client *Client) DetachPolicyFromRole(request *DetachPolicyFromRoleRequest)
 
 // Summary:
 //
-// Detaches a policy from a Resource Access Management (RAM) user.
+// Revokes a specified permission from a user by calling the DetachPolicyFromUser operation.
 //
 // @param request - DetachPolicyFromUserRequest
 //
@@ -1955,7 +2101,7 @@ func (client *Client) DetachPolicyFromUserWithOptions(request *DetachPolicyFromU
 
 // Summary:
 //
-// Detaches a policy from a Resource Access Management (RAM) user.
+// Revokes a specified permission from a user by calling the DetachPolicyFromUser operation.
 //
 // @param request - DetachPolicyFromUserRequest
 //
@@ -1971,6 +2117,84 @@ func (client *Client) DetachPolicyFromUser(request *DetachPolicyFromUserRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Generates a permission audit report for a Resource Access Management (RAM) identity to identify the permissions granted to the RAM identity and the most recent access time for each permission.
+//
+// Description:
+//
+// Before using the permission audit feature to modify the permissions of a RAM identity, read [Usage notes for permission audit overview](https://www.alibabacloud.com/help/en/ram/overview-of-permissions-audit#25de984dc9dja).
+//
+// @param request - GenerateServiceLastAccessedDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateServiceLastAccessedDetailsResponse
+func (client *Client) GenerateServiceLastAccessedDetailsWithOptions(request *GenerateServiceLastAccessedDetailsRequest, runtime *dara.RuntimeOptions) (_result *GenerateServiceLastAccessedDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Arn) {
+		query["Arn"] = request.Arn
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["Granularity"] = request.Granularity
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateServiceLastAccessedDetails"),
+		Version:     dara.String("2015-05-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateServiceLastAccessedDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates a permission audit report for a Resource Access Management (RAM) identity to identify the permissions granted to the RAM identity and the most recent access time for each permission.
+//
+// Description:
+//
+// Before using the permission audit feature to modify the permissions of a RAM identity, read [Usage notes for permission audit overview](https://www.alibabacloud.com/help/en/ram/overview-of-permissions-audit#25de984dc9dja).
+//
+// @param request - GenerateServiceLastAccessedDetailsRequest
+//
+// @return GenerateServiceLastAccessedDetailsResponse
+func (client *Client) GenerateServiceLastAccessedDetails(request *GenerateServiceLastAccessedDetailsRequest) (_result *GenerateServiceLastAccessedDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateServiceLastAccessedDetailsResponse{}
+	_body, _err := client.GenerateServiceLastAccessedDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the last time when an AccessKey pair was used.
+//
 // @param request - GetAccessKeyLastUsedRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2015,6 +2239,10 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the last time when an AccessKey pair was used.
+//
 // @param request - GetAccessKeyLastUsedRequest
 //
 // @return GetAccessKeyLastUsedResponse
@@ -2032,8 +2260,6 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 // Summary:
 //
 // Queries the alias of an Alibaba Cloud account.
-//
-// @param request - GetAccountAliasRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2078,7 +2304,7 @@ func (client *Client) GetAccountAlias() (_result *GetAccountAliasResponse, _err 
 
 // Summary:
 //
-// Queries information about a Resource Access Management (RAM) user group.
+// Queries the information of a user group by calling the GetGroup operation.
 //
 // @param request - GetGroupRequest
 //
@@ -2122,7 +2348,7 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *dar
 
 // Summary:
 //
-// Queries information about a Resource Access Management (RAM) user group.
+// Queries the information of a user group by calling the GetGroup operation.
 //
 // @param request - GetGroupRequest
 //
@@ -2140,7 +2366,7 @@ func (client *Client) GetGroup(request *GetGroupRequest) (_result *GetGroupRespo
 
 // Summary:
 //
-// Queries the logon configurations of a Resource Access Management (RAM) user.
+// Invokes the GetLoginProfile operation to view the logon configuration of a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -2184,7 +2410,7 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 
 // Summary:
 //
-// Queries the logon configurations of a Resource Access Management (RAM) user.
+// Invokes the GetLoginProfile operation to view the logon configuration of a Resource Access Management (RAM) user.
 //
 // @param request - GetLoginProfileRequest
 //
@@ -2203,8 +2429,6 @@ func (client *Client) GetLoginProfile(request *GetLoginProfileRequest) (_result 
 // Summary:
 //
 // Queries the password policy of Resource Access Management (RAM) users, including the password strength.
-//
-// @param request - GetPasswordPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2249,7 +2473,7 @@ func (client *Client) GetPasswordPolicy() (_result *GetPasswordPolicyResponse, _
 
 // Summary:
 //
-// Queries information about a policy.
+// Retrieves the information of a specified access policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -2297,7 +2521,7 @@ func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *d
 
 // Summary:
 //
-// Queries information about a policy.
+// Retrieves the information of a specified access policy.
 //
 // @param request - GetPolicyRequest
 //
@@ -2315,7 +2539,7 @@ func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyRe
 
 // Summary:
 //
-// Queries the information about a policy version.
+// Retrieves a specific version of an access policy.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -2367,7 +2591,7 @@ func (client *Client) GetPolicyVersionWithOptions(request *GetPolicyVersionReque
 
 // Summary:
 //
-// Queries the information about a policy version.
+// Retrieves a specific version of an access policy.
 //
 // @param request - GetPolicyVersionRequest
 //
@@ -2385,7 +2609,7 @@ func (client *Client) GetPolicyVersion(request *GetPolicyVersionRequest) (_resul
 
 // Summary:
 //
-// Queries information about a Resource Access Management (RAM) role.
+// Retrieves the information about a role.
 //
 // @param request - GetRoleRequest
 //
@@ -2429,7 +2653,7 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, runtime *dara.
 
 // Summary:
 //
-// Queries information about a Resource Access Management (RAM) role.
+// Retrieves the information about a role.
 //
 // @param request - GetRoleRequest
 //
@@ -2448,8 +2672,6 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 // Summary:
 //
 // Queries the security preferences.
-//
-// @param request - GetSecurityPreferenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -2494,11 +2716,151 @@ func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceRes
 
 // Summary:
 //
-// Queries information about a Resource Access Management (RAM) user.
+// Queries the details of a permission audit report based on the JobId returned by the GenerateServiceLastAccessedDetails operation. The report includes the services accessible to RAM entities and the time of the last access attempt to each service.
 //
 // Description:
 //
-// This topic provides an example on how to query information about the RAM user `alice`.
+// Before you use the permission audit feature to change the permissions of a RAM identity, read [Overview and usage notes of permission audit](https://www.alibabacloud.com/help/en/ram/overview-of-permissions-audit#25de984dc9dja).
+//
+// @param request - GetServiceLastAccessedDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceLastAccessedDetailsResponse
+func (client *Client) GetServiceLastAccessedDetailsWithOptions(request *GetServiceLastAccessedDetailsRequest, runtime *dara.RuntimeOptions) (_result *GetServiceLastAccessedDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.Marker) {
+		query["Marker"] = request.Marker
+	}
+
+	if !dara.IsNil(request.MaxItems) {
+		query["MaxItems"] = request.MaxItems
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceLastAccessedDetails"),
+		Version:     dara.String("2015-05-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceLastAccessedDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a permission audit report based on the JobId returned by the GenerateServiceLastAccessedDetails operation. The report includes the services accessible to RAM entities and the time of the last access attempt to each service.
+//
+// Description:
+//
+// Before you use the permission audit feature to change the permissions of a RAM identity, read [Overview and usage notes of permission audit](https://www.alibabacloud.com/help/en/ram/overview-of-permissions-audit#25de984dc9dja).
+//
+// @param request - GetServiceLastAccessedDetailsRequest
+//
+// @return GetServiceLastAccessedDetailsResponse
+func (client *Client) GetServiceLastAccessedDetails(request *GetServiceLastAccessedDetailsRequest) (_result *GetServiceLastAccessedDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetServiceLastAccessedDetailsResponse{}
+	_body, _err := client.GetServiceLastAccessedDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the template of a service-linked role.
+//
+// @param request - GetServiceLinkedRoleTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceLinkedRoleTemplateResponse
+func (client *Client) GetServiceLinkedRoleTemplateWithOptions(request *GetServiceLinkedRoleTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetServiceLinkedRoleTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ServiceName) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServiceLinkedRoleTemplate"),
+		Version:     dara.String("2015-05-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServiceLinkedRoleTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the template of a service-linked role.
+//
+// @param request - GetServiceLinkedRoleTemplateRequest
+//
+// @return GetServiceLinkedRoleTemplateResponse
+func (client *Client) GetServiceLinkedRoleTemplate(request *GetServiceLinkedRoleTemplateRequest) (_result *GetServiceLinkedRoleTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetServiceLinkedRoleTemplateResponse{}
+	_body, _err := client.GetServiceLinkedRoleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Invokes the GetUser API operation to query the details of a Resource Access Management (RAM) user.
+//
+// Description:
+//
+// This topic provides an example of querying the details of the Resource Access Management (RAM) user `alice`.
 //
 // @param request - GetUserRequest
 //
@@ -2542,11 +2904,11 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.
 
 // Summary:
 //
-// Queries information about a Resource Access Management (RAM) user.
+// Invokes the GetUser API operation to query the details of a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// This topic provides an example on how to query information about the RAM user `alice`.
+// This topic provides an example of querying the details of the Resource Access Management (RAM) user `alice`.
 //
 // @param request - GetUserRequest
 //
@@ -2626,7 +2988,7 @@ func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *G
 
 // Summary:
 //
-// Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
+// Lists the AccessKey pairs of a specified user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -2670,7 +3032,7 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 
 // Summary:
 //
-// Queries all AccessKey pairs that belong to a Resource Access Management (RAM) user.
+// Lists the AccessKey pairs of a specified user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -2688,7 +3050,7 @@ func (client *Client) ListAccessKeys(request *ListAccessKeysRequest) (_result *L
 
 // Summary:
 //
-// Queries the entities to which a policy is attached.
+// Lists the entities that reference an access policy.
 //
 // @param request - ListEntitiesForPolicyRequest
 //
@@ -2736,7 +3098,7 @@ func (client *Client) ListEntitiesForPolicyWithOptions(request *ListEntitiesForP
 
 // Summary:
 //
-// Queries the entities to which a policy is attached.
+// Lists the entities that reference an access policy.
 //
 // @param request - ListEntitiesForPolicyRequest
 //
@@ -2754,7 +3116,7 @@ func (client *Client) ListEntitiesForPolicy(request *ListEntitiesForPolicyReques
 
 // Summary:
 //
-// Queries Resource Access Management (RAM) user groups.
+// Queries the list of user groups by calling the ListGroups operation.
 //
 // @param request - ListGroupsRequest
 //
@@ -2802,7 +3164,7 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 
 // Summary:
 //
-// Queries Resource Access Management (RAM) user groups.
+// Queries the list of user groups by calling the ListGroups operation.
 //
 // @param request - ListGroupsRequest
 //
@@ -2820,13 +3182,13 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+// Invokes the ListGroupsForUser operation to query the information about the groups to which a specified Resource Access Management (RAM) user is added.
 //
 // Description:
 //
-// ### [](#)
+// ### Usage notes
 //
-// This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+// This topic provides an example on how to query the information about the groups to which the Resource Access Management (RAM) user `Alice` is added. The response shows that `Alice` is added to the group named `Dev-Team`.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -2870,13 +3232,13 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 
 // Summary:
 //
-// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
+// Invokes the ListGroupsForUser operation to query the information about the groups to which a specified Resource Access Management (RAM) user is added.
 //
 // Description:
 //
-// ### [](#)
+// ### Usage notes
 //
-// This topic provides an example on how to query the RAM user groups to which the RAM user `Alice` belongs. The response shows that `Alice` belongs to the RAM user group named `Dev-Team`.
+// This topic provides an example on how to query the information about the groups to which the Resource Access Management (RAM) user `Alice` is added. The response shows that `Alice` is added to the group named `Dev-Team`.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -2894,7 +3256,7 @@ func (client *Client) ListGroupsForUser(request *ListGroupsForUserRequest) (_res
 
 // Summary:
 //
-// Queries a list of policies.
+// Invokes the ListPolicies operation to list access policies.
 //
 // @param tmpReq - ListPoliciesRequest
 //
@@ -2956,7 +3318,7 @@ func (client *Client) ListPoliciesWithOptions(tmpReq *ListPoliciesRequest, runti
 
 // Summary:
 //
-// Queries a list of policies.
+// Invokes the ListPolicies operation to list access policies.
 //
 // @param request - ListPoliciesRequest
 //
@@ -2974,7 +3336,7 @@ func (client *Client) ListPolicies(request *ListPoliciesRequest) (_result *ListP
 
 // Summary:
 //
-// Queries the policies that are attached to a Resource Access Management (RAM) user group.
+// Lists the permission policies attached to a user group.
 //
 // @param request - ListPoliciesForGroupRequest
 //
@@ -3018,7 +3380,7 @@ func (client *Client) ListPoliciesForGroupWithOptions(request *ListPoliciesForGr
 
 // Summary:
 //
-// Queries the policies that are attached to a Resource Access Management (RAM) user group.
+// Lists the permission policies attached to a user group.
 //
 // @param request - ListPoliciesForGroupRequest
 //
@@ -3036,7 +3398,7 @@ func (client *Client) ListPoliciesForGroup(request *ListPoliciesForGroupRequest)
 
 // Summary:
 //
-// Queries the policies that are attached to a Resource Access Management (RAM) role.
+// Lists the access policies attached to a role.
 //
 // @param request - ListPoliciesForRoleRequest
 //
@@ -3080,7 +3442,7 @@ func (client *Client) ListPoliciesForRoleWithOptions(request *ListPoliciesForRol
 
 // Summary:
 //
-// Queries the policies that are attached to a Resource Access Management (RAM) role.
+// Lists the access policies attached to a role.
 //
 // @param request - ListPoliciesForRoleRequest
 //
@@ -3098,11 +3460,11 @@ func (client *Client) ListPoliciesForRole(request *ListPoliciesForRoleRequest) (
 
 // Summary:
 //
-// Queries the policies that are attached to a RAM user.
+// Queries the list of policies attached to a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+// > This operation queries only the policies attached at the Alibaba Cloud account level. It does not return policies attached at the resource group level.
 //
 // @param request - ListPoliciesForUserRequest
 //
@@ -3146,11 +3508,11 @@ func (client *Client) ListPoliciesForUserWithOptions(request *ListPoliciesForUse
 
 // Summary:
 //
-// Queries the policies that are attached to a RAM user.
+// Queries the list of policies attached to a Resource Access Management (RAM) user.
 //
 // Description:
 //
-// > You can call this operation to query only the policies that are attached to Alibaba Cloud accounts. You cannot query the policies that are attached to resource groups.
+// > This operation queries only the policies attached at the Alibaba Cloud account level. It does not return policies attached at the resource group level.
 //
 // @param request - ListPoliciesForUserRequest
 //
@@ -3168,7 +3530,7 @@ func (client *Client) ListPoliciesForUser(request *ListPoliciesForUserRequest) (
 
 // Summary:
 //
-// Queries the versions of a policy.
+// Lists the versions of an access policy.
 //
 // @param request - ListPolicyVersionsRequest
 //
@@ -3216,7 +3578,7 @@ func (client *Client) ListPolicyVersionsWithOptions(request *ListPolicyVersionsR
 
 // Summary:
 //
-// Queries the versions of a policy.
+// Lists the versions of an access policy.
 //
 // @param request - ListPolicyVersionsRequest
 //
@@ -3234,7 +3596,7 @@ func (client *Client) ListPolicyVersions(request *ListPolicyVersionsRequest) (_r
 
 // Summary:
 //
-// Queries all Resource Access Management (RAM) roles.
+// Lists roles.
 //
 // @param tmpReq - ListRolesRequest
 //
@@ -3292,7 +3654,7 @@ func (client *Client) ListRolesWithOptions(tmpReq *ListRolesRequest, runtime *da
 
 // Summary:
 //
-// Queries all Resource Access Management (RAM) roles.
+// Lists roles.
 //
 // @param request - ListRolesRequest
 //
@@ -3310,7 +3672,7 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 
 // Summary:
 //
-// Queries the tags that are added to cloud resources which are Resource Access Management (RAM) roles and policies.
+// Queries the tags attached to cloud resources (RAM roles and access policies).
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -3380,7 +3742,7 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 
 // Summary:
 //
-// Queries the tags that are added to cloud resources which are Resource Access Management (RAM) roles and policies.
+// Queries the tags attached to cloud resources (RAM roles and access policies).
 //
 // @param request - ListTagResourcesRequest
 //
@@ -3398,7 +3760,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the information about all RAM users.
+// Queries the details of all Resource Access Management (RAM) users.
 //
 // @param request - ListUsersRequest
 //
@@ -3446,7 +3808,7 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 
 // Summary:
 //
-// Queries the information about all RAM users.
+// Queries the details of all Resource Access Management (RAM) users.
 //
 // @param request - ListUsersRequest
 //
@@ -3464,7 +3826,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// Queries Resource Access Management (RAM) users in a RAM user group.
+// Lists the Resource Access Management (RAM) users in a specified user group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -3516,7 +3878,7 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 
 // Summary:
 //
-// Queries Resource Access Management (RAM) users in a RAM user group.
+// Lists the Resource Access Management (RAM) users in a specified user group.
 //
 // @param request - ListUsersForGroupRequest
 //
@@ -3535,8 +3897,6 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 // Summary:
 //
 // Queries multi-factor authentication (MFA) devices.
-//
-// @param request - ListVirtualMFADevicesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3955,7 +4315,7 @@ func (client *Client) SetSecurityPreference(request *SetSecurityPreferenceReques
 
 // Summary:
 //
-// Adds tags to cloud resources which are Resource Access Management (RAM) roles and policies.
+// Invokes TagResources to create and attach tags to cloud resources, such as a RAM role or an access policy.
 //
 // @param tmpReq - TagResourcesRequest
 //
@@ -4017,7 +4377,7 @@ func (client *Client) TagResourcesWithOptions(tmpReq *TagResourcesRequest, runti
 
 // Summary:
 //
-// Adds tags to cloud resources which are Resource Access Management (RAM) roles and policies.
+// Invokes TagResources to create and attach tags to cloud resources, such as a RAM role or an access policy.
 //
 // @param request - TagResourcesRequest
 //
@@ -4097,7 +4457,7 @@ func (client *Client) UnbindMFADevice(request *UnbindMFADeviceRequest) (_result 
 
 // Summary:
 //
-// Removes tags from cloud resources that are Resource Access Management (RAM) roles and policies.
+// Removes tags from cloud resources (RAM roles and access policies).
 //
 // @param tmpReq - UntagResourcesRequest
 //
@@ -4163,7 +4523,7 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, r
 
 // Summary:
 //
-// Removes tags from cloud resources that are Resource Access Management (RAM) roles and policies.
+// Removes tags from cloud resources (RAM roles and access policies).
 //
 // @param request - UntagResourcesRequest
 //
@@ -4473,11 +4833,11 @@ func (client *Client) UpdatePolicyDescription(request *UpdatePolicyDescriptionRe
 
 // Summary:
 //
-// Modifies information about a Resource Access Management (RAM) role.
+// Updates the information of a RAM role.
 //
 // Description:
 //
-// This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
+// This topic provides an example of updating the description of the RAM role `ECSAdmin` to `ECS administrator`.
 //
 // @param request - UpdateRoleRequest
 //
@@ -4492,6 +4852,10 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.NewAllowConsoleLogin) {
+		query["NewAllowConsoleLogin"] = request.NewAllowConsoleLogin
+	}
+
 	if !dara.IsNil(request.NewAssumeRolePolicyDocument) {
 		query["NewAssumeRolePolicyDocument"] = request.NewAssumeRolePolicyDocument
 	}
@@ -4533,11 +4897,11 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, runtime 
 
 // Summary:
 //
-// Modifies information about a Resource Access Management (RAM) role.
+// Updates the information of a RAM role.
 //
 // Description:
 //
-// This topic provides an example on how to change the description of `ECSAdmin` to `ECS administrator`.
+// This topic provides an example of updating the description of the RAM role `ECSAdmin` to `ECS administrator`.
 //
 // @param request - UpdateRoleRequest
 //

@@ -16,7 +16,7 @@ type iCreatePolicyResponseBody interface {
 }
 
 type CreatePolicyResponseBody struct {
-	// The information about the policy.
+	// The access policy information.
 	Policy *CreatePolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,35 +62,35 @@ func (s *CreatePolicyResponseBody) Validate() error {
 }
 
 type CreatePolicyResponseBodyPolicy struct {
-	// The time when the policy was created.
+	// The time when the access policy was created. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2021-10-13T02:46:57Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The version of the policy. Default value: v1.
+	// The version of the access policy. Default value: v1.
 	//
 	// example:
 	//
 	// v1
 	DefaultVersion *string `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
-	// The description of the policy.
+	// The description of the access policy.
 	//
 	// example:
 	//
-	// Query ECS instances in a specific region
+	// View ECS instances in a specified region
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the policy.
+	// The name of the access policy.
 	//
 	// example:
 	//
 	// View-ECS-instances-in-a-specific-region
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the policy. Valid values:
+	// The type of the access policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom: custom policy
 	//
-	// 	- System
+	// - System: system policy
 	//
 	// example:
 	//

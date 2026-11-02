@@ -82,7 +82,7 @@ type UpdateUserResponseBodyUser struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the RAM user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// > This parameter can be returned only on the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type UpdateUserResponseBodyUser struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// >  This parameter can be returned only on the China site (aliyun.com).
+	// > This parameter can be returned only on the China site (aliyun.com).
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iCreateLoginProfileRequest interface {
 }
 
 type CreateLoginProfileRequest struct {
-	// Specifies whether the RAM user must bind a multi-factor authentication (MFA) device upon the next logon. Default value: `false`.
+	// Specifies whether the user must bind a multi-factor authentication (MFA) device upon next logon. Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	MFABindRequired *bool `json:"MFABindRequired,omitempty" xml:"MFABindRequired,omitempty"`
-	// The logon password of the RAM user. The password must meet the password strength requirements. For more information, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
+	// The password. The password must meet the password strength requirements. For more information about password strength requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
 	//
 	// example:
 	//
 	// mypassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the RAM user has to change the password upon logon. Default value: `false`.
+	// Specifies whether the user is required to reset the password upon logon. Default value: `false`.
 	//
 	// example:
 	//
 	// false
 	PasswordResetRequired *bool `json:"PasswordResetRequired,omitempty" xml:"PasswordResetRequired,omitempty"`
-	// The name of the RAM user.
+	// The username.
 	//
 	// example:
 	//

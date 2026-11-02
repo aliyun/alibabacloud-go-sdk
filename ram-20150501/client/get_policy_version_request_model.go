@@ -18,19 +18,19 @@ type iGetPolicyVersionRequest interface {
 }
 
 type GetPolicyVersionRequest struct {
-	// The name of the policy.
+	// The access policy name.
 	//
 	// example:
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The type of the policy. Valid values: `System` and `Custom`.
+	// The type of the access policy. Valid values: `System`, `Custom`.
 	//
 	// example:
 	//
 	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The ID of the policy version.
+	// The ID of the target version.
 	//
 	// example:
 	//

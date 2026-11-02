@@ -20,25 +20,23 @@ type iCreatePolicyVersionRequest interface {
 }
 
 type CreatePolicyVersionRequest struct {
-	// The document of the policy. The document can be up to 6,144 bytes in length.
+	// The policy document of the permission access policy. The maximum length is 6,144 bytes.
 	//
 	// example:
 	//
 	// {"Statement":[{"Action":["oss:*"],"Effect":"Allow","Resource":["acs:oss:*:*:*"]}],"Version":"1"}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// The name of the policy.
+	// The Policy Name of the permission access policy.
 	//
 	// example:
 	//
 	// OSS-Administrator
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The rotation strategy of the policy. The rotation strategy can be used to delete an early policy version.
+	// The automatic rotation mechanism for permission access policy versions, which can delete historical permission access policy versions. Valid values:
 	//
-	// Valid values:
+	// - `None`: Indicates the shutdown of the rotation mechanism.
 	//
-	// 	- `None`: disables the rotation strategy.
-	//
-	// 	- `DeleteOldestNonDefaultVersionWhenLimitExceeded`: deletes the earliest non-active version if the number of versions exceeds the limit.
+	// - `DeleteOldestNonDefaultVersionWhenLimitExceeded`: Deletes the oldest inactive version when the number of permission access policy versions exceeds the limit.
 	//
 	// Default value: `None`.
 	//
@@ -46,7 +44,7 @@ type CreatePolicyVersionRequest struct {
 	//
 	// None
 	RotateStrategy *string `json:"RotateStrategy,omitempty" xml:"RotateStrategy,omitempty"`
-	// Specifies whether to set this policy as the default policy. Default value: `false`.
+	// Specifies if it is set as the default Settings for the permission access policy. Default value: `false`.
 	//
 	// example:
 	//

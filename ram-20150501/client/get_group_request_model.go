@@ -14,7 +14,7 @@ type iGetGroupRequest interface {
 }
 
 type GetGroupRequest struct {
-	// The name of the RAM user group.
+	// The name of the user group.
 	//
 	// example:
 	//

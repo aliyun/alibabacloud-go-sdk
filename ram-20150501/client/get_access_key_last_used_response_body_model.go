@@ -16,7 +16,7 @@ type iGetAccessKeyLastUsedResponseBody interface {
 }
 
 type GetAccessKeyLastUsedResponseBody struct {
-	// The details of the time when the AccessKey pair was used for the last time.
+	// Information about the last time the AccessKey pair was used.
 	AccessKeyLastUsed *GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed `json:"AccessKeyLastUsed,omitempty" xml:"AccessKeyLastUsed,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *GetAccessKeyLastUsedResponseBody) Validate() error {
 }
 
 type GetAccessKeyLastUsedResponseBodyAccessKeyLastUsed struct {
-	// The time when the AccessKey pair was used for the last time.
+	// The last time the AccessKey pair was used.
 	//
 	// example:
 	//

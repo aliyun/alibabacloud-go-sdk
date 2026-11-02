@@ -26,13 +26,13 @@ type ListUsersResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The marker. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set `Marker` to obtain the truncated part.``
+	// The marker. This parameter is returned only when IsTruncated is true. If IsTruncated is true, you must call this operation again and use the Marker value to retrieve the remaining items.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

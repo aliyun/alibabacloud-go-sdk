@@ -18,13 +18,13 @@ type iListRolesRequest interface {
 }
 
 type ListRolesRequest struct {
-	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	// The marker used to retrieve the remaining results when the response is truncated.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	// The maximum number of entries to return. If the number of entries exceeds this value, the response is truncated and the `IsTruncated` parameter is set to `true`.
 	//
 	// Valid values: 1 to 1000. Default value: 100.
 	//
@@ -85,13 +85,13 @@ func (s *ListRolesRequest) Validate() error {
 }
 
 type ListRolesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// owner
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

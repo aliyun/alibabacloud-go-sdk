@@ -62,49 +62,31 @@ func (s *DecodeDiagnosticMessageResponseBody) Validate() error {
 }
 
 type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage struct {
-	// The operation that is used for authentication in the request.
+	// The action used for authentication in the user request.
 	//
 	// example:
 	//
 	// ram:DecodeDiagnosticMessage
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The conditions that are used for authentication in the request.
+	// The list of conditions used for authentication in the user request.
 	AuthConditions []*DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions `json:"AuthConditions,omitempty" xml:"AuthConditions,omitempty" type:"Repeated"`
-	// The operator that is used for authentication in the request.
+	// The principal used for authentication in the user request.
 	AuthPrincipal *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal `json:"AuthPrincipal,omitempty" xml:"AuthPrincipal,omitempty" type:"Struct"`
-	// The resource that is used for authentication in the request.
+	// The resource used for authentication in the user request.
 	//
 	// example:
 	//
 	// *
 	AuthResource *string `json:"AuthResource,omitempty" xml:"AuthResource,omitempty"`
-	// Indicates whether the access denied error is caused by an explicit deny.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// Indicates whether the request is explicitly denied.
 	//
 	// example:
 	//
 	// true
 	ExplicitDeny *bool `json:"ExplicitDeny,omitempty" xml:"ExplicitDeny,omitempty"`
-	// The policies that are matched.
+	// The list of policies matched during authentication.
 	MatchedPolicies []*DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies `json:"MatchedPolicies,omitempty" xml:"MatchedPolicies,omitempty" type:"Repeated"`
-	// The type of the policy that causes the access denied error.
-	//
-	// Valid values:
-	//
-	// 	- AssumeRolePolicy: role-specific trust policy
-	//
-	// 	- ControlPolicy: control policy
-	//
-	// 	- AccountLevelIdentityBasedPolicy: identity-based policy at the account level
-	//
-	// 	- ResourceGroupLevelIdentityBasedPolicy: identity-based policy at the resource group level
-	//
-	// 	- SessionPolicy: session policy
+	// The type of the policy that results in the access denied error.
 	//
 	// example:
 	//
@@ -211,13 +193,13 @@ func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessage) Validate()
 }
 
 type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditions struct {
-	// The key of the condition.
+	// The condition key.
 	//
 	// example:
 	//
 	// acs:SourceIp
 	ConditionKey *string `json:"ConditionKey,omitempty" xml:"ConditionKey,omitempty"`
-	// The values that correspond to the key.
+	// The list of values corresponding to the condition key.
 	ConditionValues []*string `json:"ConditionValues,omitempty" xml:"ConditionValues,omitempty" type:"Repeated"`
 }
 
@@ -252,33 +234,25 @@ func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthConditio
 }
 
 type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipal struct {
-	// The identity.
+	// The identity identifier used for authentication in the user request. The value varies based on the identity type:
 	//
-	// 	- If the operator is a RAM user, the ID of the user is displayed.
+	// - Resource Access Management (RAM) user: the UID of the RAM user.
 	//
-	// 	- If the operator is a RAM role, the name and session name of the role are displayed. Example: RoleName:RoleSessionName.
+	// - RAM role: the role name and role session name (example: RoleName:RoleSessionName).
 	//
-	// 	- If the operator is an SSO federated identity, the type and name of the identity provider (IdP) are displayed. Example: saml-provider/AzureAD.
+	// - SSO federated identity: the identity provider type and identity provider name (example: saml-provider/AzureAD).
 	//
 	// example:
 	//
 	// 28877424437521****
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the identity belongs.
+	// The UID of the Alibaba Cloud account to which the identity used for authentication in the user request belongs.
 	//
 	// example:
 	//
 	// 196813200012****
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The identity type that is used for authentication in the request.
-	//
-	// Valid values:
-	//
-	// 	- SubUser: RAM user
-	//
-	// 	- AssumedRoleUser: RAM role
-	//
-	// 	- Federated: SSO federated identity
+	// The identity type used for authentication in the user request.
 	//
 	// example:
 	//
@@ -328,83 +302,41 @@ func (s *DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageAuthPrincipa
 type DecodeDiagnosticMessageResponseBodyDecodedDiagnosticMessageMatchedPolicies struct {
 	// The type of the entity to which the policy is attached.
 	//
-	// Valid values:
-	//
-	// 	- RamUser: RAM user
-	//
-	// 	- RamRole: RAM role
-	//
-	// 	- ResourceDirectoryTarget: entity in a resource directory
-	//
-	// 	- RamGroup: RAM user group
-	//
 	// example:
 	//
 	// RamUser
 	AttachedEntityType *string `json:"AttachedEntityType,omitempty" xml:"AttachedEntityType,omitempty"`
-	// The authorization scope of the policy.
-	//
-	// Valid values:
-	//
-	// 	- Account: Alibaba Cloud account
-	//
-	// 	- Folder: folder in the resource directory
-	//
-	// 	- ResourceGroup: resource group
+	// The scope to which the policy is attached.
 	//
 	// example:
 	//
 	// Account
 	AttachedScope *string `json:"AttachedScope,omitempty" xml:"AttachedScope,omitempty"`
-	// The effect of the policy.
-	//
-	// Valid values:
-	//
-	// 	- Deny
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Allow
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The policy effect.
 	//
 	// example:
 	//
 	// Deny
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// The identifier of the policy.
+	// The policy name information. The value varies based on the policy type:
 	//
-	// 	- Control policy: the ID of the control policy
+	// - Control policy: the ID of the control policy.
 	//
-	// 	- RAM policy: the name of the policy
+	// - RAM access policy: the name of the access policy.
 	//
 	// example:
 	//
 	// MyPolicyName
 	PolicyIdentifier *string `json:"PolicyIdentifier,omitempty" xml:"PolicyIdentifier,omitempty"`
-	// The type of the policy.
-	//
-	// Valid values:
-	//
-	// 	- Custom: custom policy
-	//
-	// 	- System: system policy
+	// The policy type.
 	//
 	// example:
 	//
 	// Custom
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The version number of the policy.
+	// The policy version number.
 	//
-	// > Only custom policies have version numbers.
+	// > Only a custom policy has a version number.
 	//
 	// example:
 	//

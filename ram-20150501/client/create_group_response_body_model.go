@@ -16,9 +16,9 @@ type iCreateGroupResponseBody interface {
 }
 
 type CreateGroupResponseBody struct {
-	// The information about the group.
+	// The user group information.
 	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type CreateGroupResponseBodyGroup struct {
 	//
 	// example:
 	//
-	// Dev-Team
+	// Development team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
 	// example:
 	//

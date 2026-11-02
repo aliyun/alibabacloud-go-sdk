@@ -14,7 +14,7 @@ type iListPoliciesForRoleRequest interface {
 }
 
 type ListPoliciesForRoleRequest struct {
-	// The name of the RAM role.
+	// The name of the role.
 	//
 	// example:
 	//

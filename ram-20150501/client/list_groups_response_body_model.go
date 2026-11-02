@@ -21,25 +21,25 @@ type iListGroupsResponseBody interface {
 
 type ListGroupsResponseBody struct {
 	Groups *ListGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	// Indicates whether the response is truncated. Valid values:
+	// Indicates whether the returned results are truncated. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The token for querying the next page of results.
 	//
-	// >  This parameter is returned only when `IsTruncated` is `true`.
+	// > This parameter is returned only when `IsTruncated` is `true`.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

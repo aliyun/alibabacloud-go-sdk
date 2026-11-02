@@ -18,19 +18,19 @@ type iListUsersForGroupRequest interface {
 }
 
 type ListUsersForGroupRequest struct {
-	// The name of the RAM user group.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// Dev-Team
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	// The marker. If the response is truncated, you can use this parameter to obtain the content that starts from the position after the truncation.
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be `true`.
+	// The maximum number of entries to return. If the response is truncated because it reaches the `MaxItems` limit, the `IsTruncated` response parameter is set to `true`.
 	//
 	// Valid values: 1 to 1000. Default value: 100.
 	//

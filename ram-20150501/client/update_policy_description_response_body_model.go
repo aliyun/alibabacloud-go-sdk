@@ -88,9 +88,9 @@ type UpdatePolicyDescriptionResponseBodyPolicy struct {
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The type of the policy. Valid values:
 	//
-	// 	- Custom
+	// - Custom
 	//
-	// 	- System
+	// - System
 	//
 	// example:
 	//

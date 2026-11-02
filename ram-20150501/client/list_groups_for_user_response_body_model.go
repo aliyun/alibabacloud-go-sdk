@@ -17,7 +17,7 @@ type iListGroupsForUserResponseBody interface {
 
 type ListGroupsForUserResponseBody struct {
 	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

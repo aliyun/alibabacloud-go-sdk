@@ -68,7 +68,7 @@ type CreateUserResponseBodyUser struct {
 	//
 	// This is a cloud computing engineer.
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The point in time when the RAM user was created. The time is displayed in UTC.
+	// The point in time when the RAM user was created. It is displayed in UTC.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateUserResponseBodyUser struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the RAM user.
 	//
-	// >  This parameter applies only to the China site (aliyun.com).
+	// > This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateUserResponseBodyUser struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The mobile phone number of the RAM user.
 	//
-	// >  This parameter applies only to the China site (aliyun.com).
+	// > This parameter applies only to the China site (aliyun.com).
 	//
 	// example:
 	//

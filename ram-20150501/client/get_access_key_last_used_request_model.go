@@ -16,10 +16,14 @@ type iGetAccessKeyLastUsedRequest interface {
 }
 
 type GetAccessKeyLastUsedRequest struct {
+	// The ID of the AccessKey pair.
+	//
 	// example:
 	//
 	// LTAI4GFTgcR8m8cZQDTH****
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The name of the RAM user.
+	//
 	// example:
 	//
 	// test

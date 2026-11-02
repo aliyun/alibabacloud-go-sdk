@@ -66,7 +66,7 @@ type UpdateGroupResponseBodyGroup struct {
 	//
 	// example:
 	//
-	// NewDev-Team
+	// Development team
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	// The creation time.
 	//

@@ -14,7 +14,7 @@ type iCreateAccessKeyRequest interface {
 }
 
 type CreateAccessKeyRequest struct {
-	// The name of the RAM user. If a RAM user calls this operation and does not specify this parameter, an AccessKey pair is created for the RAM user.
+	// The username. When a Resource Access Management (RAM) user invokes this operation, an AccessKey pair is created for the RAM user by default.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iCreateRoleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowConsoleLogin(v bool) *CreateRoleRequest
+	GetAllowConsoleLogin() *bool
 	SetAssumeRolePolicyDocument(v string) *CreateRoleRequest
 	GetAssumeRolePolicyDocument() *string
 	SetDescription(v string) *CreateRoleRequest
@@ -22,9 +24,22 @@ type iCreateRoleRequest interface {
 }
 
 type CreateRoleRequest struct {
-	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
+	// Specifies whether the RAM role is allowed to log on to the console. Valid values:
 	//
-	// >  RAM users cannot assume the RAM roles of trusted Alibaba Cloud services.
+	// - true: allowed
+	//
+	// - false: not allowed
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
+	AllowConsoleLogin *bool `json:"AllowConsoleLogin,omitempty" xml:"AllowConsoleLogin,omitempty"`
+	// The trust policy. Specifies one or more principals that are allowed to assume the RAM role. The principals can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers.
+	//
+	// >Resource Access Management (RAM) users cannot assume RAM roles whose trusted entity is an Alibaba Cloud service.
 	//
 	// example:
 	//
@@ -36,13 +51,13 @@ type CreateRoleRequest struct {
 	//
 	// example:
 	//
-	// ECS administrator
+	// ECS management role
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum session time of the RAM role.
+	// The maximum session duration of the RAM role.
 	//
 	// Valid values: 3600 to 43200. Unit: seconds. Default value: 3600.
 	//
-	// If you do not specify this parameter, the default value is used.
+	// If this parameter is left empty, the default value is used.
 	//
 	// example:
 	//
@@ -50,7 +65,7 @@ type CreateRoleRequest struct {
 	MaxSessionDuration *int64 `json:"MaxSessionDuration,omitempty" xml:"MaxSessionDuration,omitempty"`
 	// The name of the RAM role.
 	//
-	// The name must be 1 to 64 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
+	// The name must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -66,6 +81,10 @@ func (s CreateRoleRequest) String() string {
 
 func (s CreateRoleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRoleRequest) GetAllowConsoleLogin() *bool {
+	return s.AllowConsoleLogin
 }
 
 func (s *CreateRoleRequest) GetAssumeRolePolicyDocument() *string {
@@ -86,6 +105,11 @@ func (s *CreateRoleRequest) GetRoleName() *string {
 
 func (s *CreateRoleRequest) GetTag() []*CreateRoleRequestTag {
 	return s.Tag
+}
+
+func (s *CreateRoleRequest) SetAllowConsoleLogin(v bool) *CreateRoleRequest {
+	s.AllowConsoleLogin = &v
+	return s
 }
 
 func (s *CreateRoleRequest) SetAssumeRolePolicyDocument(v string) *CreateRoleRequest {
@@ -127,13 +151,13 @@ func (s *CreateRoleRequest) Validate() error {
 }
 
 type CreateRoleRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

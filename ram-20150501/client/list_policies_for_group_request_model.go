@@ -14,7 +14,7 @@ type iListPoliciesForGroupRequest interface {
 }
 
 type ListPoliciesForGroupRequest struct {
-	// The name of the RAM user group.
+	// The name of the user group.
 	//
 	// example:
 	//

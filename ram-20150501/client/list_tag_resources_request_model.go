@@ -22,33 +22,27 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token used to retrieve the next page.
 	//
 	// example:
 	//
 	// GY/oWREsOP1bPHGcHGrXfYX7UG1k9KqWFYThNDPx1UX26PbWOIu2CMqqiMr68H/K
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The names of the resources. You can specify up to 50 resource names.
+	// The list of resource names. You can specify up to 50 resource names at a time.
 	ResourceNames []*string `json:"ResourceNames,omitempty" xml:"ResourceNames,omitempty" type:"Repeated"`
 	// The resource type.
-	//
-	// Enumerated values:
-	//
-	// 	- role: RAM roles.
-	//
-	// 	- policy: policies.
 	//
 	// example:
 	//
 	// role
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The list of tags. You can specify up to 20 tags at a time.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -119,13 +113,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag. The tag key can be up to 128 characters in length.
+	// The tag key. The key can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// t1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The tag value can be up to 256 characters in length.
+	// The tag value. The value can be up to 256 characters in length.
 	//
 	// example:
 	//
