@@ -481,6 +481,318 @@ func (client *Client) CopyMcdpGroupWithContext(ctx context.Context, request *Cop
 
 // Summary:
 //
+// 创建网关 API
+//
+// @param tmpReq - CreateGatewayApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayApiResponse
+func (client *Client) CreateGatewayApiWithContext(ctx context.Context, tmpReq *CreateGatewayApiRequest, runtime *dara.RuntimeOptions) (_result *CreateGatewayApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateGatewayApiShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CacheRule) {
+		request.CacheRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheRule, dara.String("CacheRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DefaultLimitRule) {
+		request.DefaultLimitRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultLimitRule, dara.String("DefaultLimitRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.HeaderRules) {
+		request.HeaderRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HeaderRules, dara.String("HeaderRules"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.LimitRule) {
+		request.LimitRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LimitRule, dara.String("LimitRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MigrateRule) {
+		request.MigrateRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MigrateRule, dara.String("MigrateRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MockRule) {
+		request.MockRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MockRule, dara.String("MockRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RequestParams) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestParams, dara.String("RequestParams"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RpcParameterTypes) {
+		request.RpcParameterTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RpcParameterTypes, dara.String("RpcParameterTypes"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiName) {
+		body["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.ApiStatus) {
+		body["ApiStatus"] = request.ApiStatus
+	}
+
+	if !dara.IsNil(request.ApiType) {
+		body["ApiType"] = request.ApiType
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthRuleName) {
+		body["AuthRuleName"] = request.AuthRuleName
+	}
+
+	if !dara.IsNil(request.CacheRuleShrink) {
+		body["CacheRule"] = request.CacheRuleShrink
+	}
+
+	if !dara.IsNil(request.Charset) {
+		body["Charset"] = request.Charset
+	}
+
+	if !dara.IsNil(request.ContentType) {
+		body["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.DefaultLimitRuleShrink) {
+		body["DefaultLimitRule"] = request.DefaultLimitRuleShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HeaderRulesShrink) {
+		body["HeaderRules"] = request.HeaderRulesShrink
+	}
+
+	if !dara.IsNil(request.InterfaceType) {
+		body["InterfaceType"] = request.InterfaceType
+	}
+
+	if !dara.IsNil(request.LimitRuleShrink) {
+		body["LimitRule"] = request.LimitRuleShrink
+	}
+
+	if !dara.IsNil(request.Method) {
+		body["Method"] = request.Method
+	}
+
+	if !dara.IsNil(request.MethodName) {
+		body["MethodName"] = request.MethodName
+	}
+
+	if !dara.IsNil(request.MigrateRuleShrink) {
+		body["MigrateRule"] = request.MigrateRuleShrink
+	}
+
+	if !dara.IsNil(request.MockRuleShrink) {
+		body["MockRule"] = request.MockRuleShrink
+	}
+
+	if !dara.IsNil(request.NeedEncrypt) {
+		body["NeedEncrypt"] = request.NeedEncrypt
+	}
+
+	if !dara.IsNil(request.NeedJsonp) {
+		body["NeedJsonp"] = request.NeedJsonp
+	}
+
+	if !dara.IsNil(request.NeedSign) {
+		body["NeedSign"] = request.NeedSign
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		body["OperationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.Path) {
+		body["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.RequestBodyModel) {
+		body["RequestBodyModel"] = request.RequestBodyModel
+	}
+
+	if !dara.IsNil(request.RequestParamsShrink) {
+		body["RequestParams"] = request.RequestParamsShrink
+	}
+
+	if !dara.IsNil(request.ResponseBodyModel) {
+		body["ResponseBodyModel"] = request.ResponseBodyModel
+	}
+
+	if !dara.IsNil(request.RpcParameterTypesShrink) {
+		body["RpcParameterTypes"] = request.RpcParameterTypesShrink
+	}
+
+	if !dara.IsNil(request.Serialization) {
+		body["Serialization"] = request.Serialization
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGatewayApi"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGatewayApiResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关 API 分组
+//
+// @param tmpReq - CreateGatewayApiGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayApiGroupResponse
+func (client *Client) CreateGatewayApiGroupWithContext(ctx context.Context, tmpReq *CreateGatewayApiGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateGatewayApiGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateGatewayApiGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Centers) {
+		request.CentersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Centers, dara.String("Centers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CentersShrink) {
+		body["Centers"] = request.CentersShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EnableMTLS) {
+		body["EnableMTLS"] = request.EnableMTLS
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Host) {
+		body["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.HttpsModel) {
+		body["HttpsModel"] = request.HttpsModel
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstancePort) {
+		body["InstancePort"] = request.InstancePort
+	}
+
+	if !dara.IsNil(request.RegionMode) {
+		body["RegionMode"] = request.RegionMode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !dara.IsNil(request.UpstreamType) {
+		body["UpstreamType"] = request.UpstreamType
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VpcModel) {
+		body["VpcModel"] = request.VpcModel
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGatewayApiGroup"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGatewayApiGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建短链
 //
 // @param request - CreateLinkRequest
@@ -2557,6 +2869,118 @@ func (client *Client) DeleteCubecardWhitelistContentWithContext(ctx context.Cont
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除网关 API
+//
+// @param request - DeleteGatewayApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayApiResponse
+func (client *Client) DeleteGatewayApiWithContext(ctx context.Context, request *DeleteGatewayApiRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewayApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiId) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGatewayApi"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGatewayApiResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除网关 API 分组
+//
+// @param request - DeleteGatewayApiGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayApiGroupResponse
+func (client *Client) DeleteGatewayApiGroupWithContext(ctx context.Context, request *DeleteGatewayApiGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteGatewayApiGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGatewayApiGroup"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGatewayApiGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - DeleteMcdpAimRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3201,6 +3625,68 @@ func (client *Client) ExistMcubeRsaKeyWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 导出网关 API
+//
+// @param tmpReq - ExportGatewayApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportGatewayApisResponse
+func (client *Client) ExportGatewayApisWithContext(ctx context.Context, tmpReq *ExportGatewayApisRequest, runtime *dara.RuntimeOptions) (_result *ExportGatewayApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExportGatewayApisShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ApiIds) {
+		request.ApiIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApiIds, dara.String("ApiIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiIdsShrink) {
+		body["ApiIds"] = request.ApiIdsShrink
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExportGatewayApis"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExportGatewayApisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - ExportMappCenterAppConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3445,6 +3931,118 @@ func (client *Client) GetGameReviewByStatusWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetGameReviewByStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关 API 详情
+//
+// @param request - GetGatewayApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayApiResponse
+func (client *Client) GetGatewayApiWithContext(ctx context.Context, request *GetGatewayApiRequest, runtime *dara.RuntimeOptions) (_result *GetGatewayApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiId) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayApi"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayApiResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关 API 分组详情
+//
+// @param request - GetGatewayApiGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayApiGroupResponse
+func (client *Client) GetGatewayApiGroupWithContext(ctx context.Context, request *GetGatewayApiGroupRequest, runtime *dara.RuntimeOptions) (_result *GetGatewayApiGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayApiGroup"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayApiGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4035,6 +4633,66 @@ func (client *Client) GetUserAppUploadProcessInMsaWithContext(ctx context.Contex
 
 // Summary:
 //
+// 导入网关 API
+//
+// @param request - ImportGatewayApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportGatewayApisResponse
+func (client *Client) ImportGatewayApisWithContext(ctx context.Context, request *ImportGatewayApisRequest, runtime *dara.RuntimeOptions) (_result *ImportGatewayApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.FileUrl) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !dara.IsNil(request.ImportMode) {
+		body["ImportMode"] = request.ImportMode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportGatewayApis"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportGatewayApisResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询报表
 //
 // @param request - ListAnalysisCoreIndexRequest
@@ -4134,6 +4792,154 @@ func (client *Client) ListCubecardAppsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCubecardAppsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关 API 分组列表
+//
+// @param request - ListGatewayApiGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayApiGroupsResponse
+func (client *Client) ListGatewayApiGroupsWithContext(ctx context.Context, request *ListGatewayApiGroupsRequest, runtime *dara.RuntimeOptions) (_result *ListGatewayApiGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.UpstreamType) {
+		body["UpstreamType"] = request.UpstreamType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayApiGroups"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayApiGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询网关 API 列表
+//
+// @param request - ListGatewayApisRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayApisResponse
+func (client *Client) ListGatewayApisWithContext(ctx context.Context, request *ListGatewayApisRequest, runtime *dara.RuntimeOptions) (_result *ListGatewayApisResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiStatus) {
+		body["ApiStatus"] = request.ApiStatus
+	}
+
+	if !dara.IsNil(request.ApiType) {
+		body["ApiType"] = request.ApiType
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SysName) {
+		body["SysName"] = request.SysName
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayApis"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayApisResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7062,6 +7868,62 @@ func (client *Client) QueryMiniGameInfoByAppWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询小游戏已审核通过的资质信息
+//
+// @param request - QueryMiniGameQualificationByAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMiniGameQualificationByAppResponse
+func (client *Client) QueryMiniGameQualificationByAppWithContext(ctx context.Context, request *QueryMiniGameQualificationByAppRequest, runtime *dara.RuntimeOptions) (_result *QueryMiniGameQualificationByAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.MiniProgramCode) {
+		body["MiniProgramCode"] = request.MiniProgramCode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMiniGameQualificationByApp"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMiniGameQualificationByAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - QueryMpsSchedulerListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8008,6 +8870,326 @@ func (client *Client) StartUserAppAsyncEnhanceInMsaWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartUserAppAsyncEnhanceInMsaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关 API
+//
+// @param tmpReq - UpdateGatewayApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayApiResponse
+func (client *Client) UpdateGatewayApiWithContext(ctx context.Context, tmpReq *UpdateGatewayApiRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayApiResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateGatewayApiShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CacheRule) {
+		request.CacheRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CacheRule, dara.String("CacheRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DefaultLimitRule) {
+		request.DefaultLimitRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultLimitRule, dara.String("DefaultLimitRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.HeaderRules) {
+		request.HeaderRulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HeaderRules, dara.String("HeaderRules"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.LimitRule) {
+		request.LimitRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LimitRule, dara.String("LimitRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MigrateRule) {
+		request.MigrateRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MigrateRule, dara.String("MigrateRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MockRule) {
+		request.MockRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MockRule, dara.String("MockRule"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RequestParams) {
+		request.RequestParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestParams, dara.String("RequestParams"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RpcParameterTypes) {
+		request.RpcParameterTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RpcParameterTypes, dara.String("RpcParameterTypes"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApiId) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !dara.IsNil(request.ApiName) {
+		body["ApiName"] = request.ApiName
+	}
+
+	if !dara.IsNil(request.ApiStatus) {
+		body["ApiStatus"] = request.ApiStatus
+	}
+
+	if !dara.IsNil(request.ApiType) {
+		body["ApiType"] = request.ApiType
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AuthRuleName) {
+		body["AuthRuleName"] = request.AuthRuleName
+	}
+
+	if !dara.IsNil(request.CacheRuleShrink) {
+		body["CacheRule"] = request.CacheRuleShrink
+	}
+
+	if !dara.IsNil(request.Charset) {
+		body["Charset"] = request.Charset
+	}
+
+	if !dara.IsNil(request.ContentType) {
+		body["ContentType"] = request.ContentType
+	}
+
+	if !dara.IsNil(request.DefaultLimitRuleShrink) {
+		body["DefaultLimitRule"] = request.DefaultLimitRuleShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HeaderRulesShrink) {
+		body["HeaderRules"] = request.HeaderRulesShrink
+	}
+
+	if !dara.IsNil(request.InterfaceType) {
+		body["InterfaceType"] = request.InterfaceType
+	}
+
+	if !dara.IsNil(request.LimitRuleShrink) {
+		body["LimitRule"] = request.LimitRuleShrink
+	}
+
+	if !dara.IsNil(request.Method) {
+		body["Method"] = request.Method
+	}
+
+	if !dara.IsNil(request.MethodName) {
+		body["MethodName"] = request.MethodName
+	}
+
+	if !dara.IsNil(request.MigrateRuleShrink) {
+		body["MigrateRule"] = request.MigrateRuleShrink
+	}
+
+	if !dara.IsNil(request.MockRuleShrink) {
+		body["MockRule"] = request.MockRuleShrink
+	}
+
+	if !dara.IsNil(request.NeedEncrypt) {
+		body["NeedEncrypt"] = request.NeedEncrypt
+	}
+
+	if !dara.IsNil(request.NeedJsonp) {
+		body["NeedJsonp"] = request.NeedJsonp
+	}
+
+	if !dara.IsNil(request.NeedSign) {
+		body["NeedSign"] = request.NeedSign
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		body["OperationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.Path) {
+		body["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.RequestBodyModel) {
+		body["RequestBodyModel"] = request.RequestBodyModel
+	}
+
+	if !dara.IsNil(request.RequestParamsShrink) {
+		body["RequestParams"] = request.RequestParamsShrink
+	}
+
+	if !dara.IsNil(request.ResponseBodyModel) {
+		body["ResponseBodyModel"] = request.ResponseBodyModel
+	}
+
+	if !dara.IsNil(request.RpcParameterTypesShrink) {
+		body["RpcParameterTypes"] = request.RpcParameterTypesShrink
+	}
+
+	if !dara.IsNil(request.Serialization) {
+		body["Serialization"] = request.Serialization
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayApi"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayApiResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关 API 分组
+//
+// @param tmpReq - UpdateGatewayApiGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayApiGroupResponse
+func (client *Client) UpdateGatewayApiGroupWithContext(ctx context.Context, tmpReq *UpdateGatewayApiGroupRequest, runtime *dara.RuntimeOptions) (_result *UpdateGatewayApiGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateGatewayApiGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Centers) {
+		request.CentersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Centers, dara.String("Centers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.CentersShrink) {
+		body["Centers"] = request.CentersShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DomainName) {
+		body["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.EnableMTLS) {
+		body["EnableMTLS"] = request.EnableMTLS
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.GroupName) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !dara.IsNil(request.Host) {
+		body["Host"] = request.Host
+	}
+
+	if !dara.IsNil(request.HttpsModel) {
+		body["HttpsModel"] = request.HttpsModel
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstancePort) {
+		body["InstancePort"] = request.InstancePort
+	}
+
+	if !dara.IsNil(request.RegionMode) {
+		body["RegionMode"] = request.RegionMode
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !dara.IsNil(request.UpstreamType) {
+		body["UpstreamType"] = request.UpstreamType
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		body["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VpcModel) {
+		body["VpcModel"] = request.VpcModel
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayApiGroup"),
+		Version:     dara.String("2020-10-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayApiGroupResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

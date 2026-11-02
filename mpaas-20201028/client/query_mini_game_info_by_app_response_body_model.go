@@ -108,20 +108,21 @@ func (s *QueryMiniGameInfoByAppResponseBody) Validate() error {
 }
 
 type QueryMiniGameInfoByAppResponseBodyContent struct {
-	GameEngine      *string `json:"GameEngine,omitempty" xml:"GameEngine,omitempty"`
-	GameMaker       *string `json:"GameMaker,omitempty" xml:"GameMaker,omitempty"`
-	GameTypeLevel1  *string `json:"GameTypeLevel1,omitempty" xml:"GameTypeLevel1,omitempty"`
-	GameTypeLevel2  *string `json:"GameTypeLevel2,omitempty" xml:"GameTypeLevel2,omitempty"`
-	GameTypeLevel3  *string `json:"GameTypeLevel3,omitempty" xml:"GameTypeLevel3,omitempty"`
-	GameVersionId   *string `json:"GameVersionId,omitempty" xml:"GameVersionId,omitempty"`
-	GmtModified     *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Icon            *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	Introduction    *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	MiniProgramCode *string `json:"MiniProgramCode,omitempty" xml:"MiniProgramCode,omitempty"`
-	MiniProgramId   *int64  `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
-	MiniProgramName *string `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
-	Slogan          *string `json:"Slogan,omitempty" xml:"Slogan,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	GameEngine      *string                                                   `json:"GameEngine,omitempty" xml:"GameEngine,omitempty"`
+	GameMaker       *string                                                   `json:"GameMaker,omitempty" xml:"GameMaker,omitempty"`
+	GameTypeLevel1  *string                                                   `json:"GameTypeLevel1,omitempty" xml:"GameTypeLevel1,omitempty"`
+	GameTypeLevel2  *string                                                   `json:"GameTypeLevel2,omitempty" xml:"GameTypeLevel2,omitempty"`
+	GameTypeLevel3  *string                                                   `json:"GameTypeLevel3,omitempty" xml:"GameTypeLevel3,omitempty"`
+	GameVersionId   *string                                                   `json:"GameVersionId,omitempty" xml:"GameVersionId,omitempty"`
+	GmtModified     *int64                                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Icon            *string                                                   `json:"Icon,omitempty" xml:"Icon,omitempty"`
+	Introduction    *string                                                   `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	MiniProgramCode *string                                                   `json:"MiniProgramCode,omitempty" xml:"MiniProgramCode,omitempty"`
+	MiniProgramId   *int64                                                    `json:"MiniProgramId,omitempty" xml:"MiniProgramId,omitempty"`
+	MiniProgramName *string                                                   `json:"MiniProgramName,omitempty" xml:"MiniProgramName,omitempty"`
+	Slogan          *string                                                   `json:"Slogan,omitempty" xml:"Slogan,omitempty"`
+	UserProfileData *QueryMiniGameInfoByAppResponseBodyContentUserProfileData `json:"UserProfileData,omitempty" xml:"UserProfileData,omitempty" type:"Struct"`
+	Version         *string                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s QueryMiniGameInfoByAppResponseBodyContent) String() string {
@@ -182,6 +183,10 @@ func (s *QueryMiniGameInfoByAppResponseBodyContent) GetMiniProgramName() *string
 
 func (s *QueryMiniGameInfoByAppResponseBodyContent) GetSlogan() *string {
 	return s.Slogan
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContent) GetUserProfileData() *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	return s.UserProfileData
 }
 
 func (s *QueryMiniGameInfoByAppResponseBodyContent) GetVersion() *string {
@@ -253,11 +258,146 @@ func (s *QueryMiniGameInfoByAppResponseBodyContent) SetSlogan(v string) *QueryMi
 	return s
 }
 
+func (s *QueryMiniGameInfoByAppResponseBodyContent) SetUserProfileData(v *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) *QueryMiniGameInfoByAppResponseBodyContent {
+	s.UserProfileData = v
+	return s
+}
+
 func (s *QueryMiniGameInfoByAppResponseBodyContent) SetVersion(v string) *QueryMiniGameInfoByAppResponseBodyContent {
 	s.Version = &v
 	return s
 }
 
 func (s *QueryMiniGameInfoByAppResponseBodyContent) Validate() error {
+	if s.UserProfileData != nil {
+		if err := s.UserProfileData.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type QueryMiniGameInfoByAppResponseBodyContentUserProfileData struct {
+	ActiveRegionCodes   *string `json:"ActiveRegionCodes,omitempty" xml:"ActiveRegionCodes,omitempty"`
+	ActiveRegions       *string `json:"ActiveRegions,omitempty" xml:"ActiveRegions,omitempty"`
+	AgeSegment          *string `json:"AgeSegment,omitempty" xml:"AgeSegment,omitempty"`
+	AndroidActiveModels *string `json:"AndroidActiveModels,omitempty" xml:"AndroidActiveModels,omitempty"`
+	AndroidRatio        *int32  `json:"AndroidRatio,omitempty" xml:"AndroidRatio,omitempty"`
+	FemaleRatio         *int32  `json:"FemaleRatio,omitempty" xml:"FemaleRatio,omitempty"`
+	HarmonyRatio        *int32  `json:"HarmonyRatio,omitempty" xml:"HarmonyRatio,omitempty"`
+	IosActiveModels     *string `json:"IosActiveModels,omitempty" xml:"IosActiveModels,omitempty"`
+	IosRatio            *int32  `json:"IosRatio,omitempty" xml:"IosRatio,omitempty"`
+	MaleRatio           *int32  `json:"MaleRatio,omitempty" xml:"MaleRatio,omitempty"`
+	ProfileRemark       *string `json:"ProfileRemark,omitempty" xml:"ProfileRemark,omitempty"`
+}
+
+func (s QueryMiniGameInfoByAppResponseBodyContentUserProfileData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetActiveRegionCodes() *string {
+	return s.ActiveRegionCodes
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetActiveRegions() *string {
+	return s.ActiveRegions
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetAgeSegment() *string {
+	return s.AgeSegment
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetAndroidActiveModels() *string {
+	return s.AndroidActiveModels
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetAndroidRatio() *int32 {
+	return s.AndroidRatio
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetFemaleRatio() *int32 {
+	return s.FemaleRatio
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetHarmonyRatio() *int32 {
+	return s.HarmonyRatio
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetIosActiveModels() *string {
+	return s.IosActiveModels
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetIosRatio() *int32 {
+	return s.IosRatio
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetMaleRatio() *int32 {
+	return s.MaleRatio
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) GetProfileRemark() *string {
+	return s.ProfileRemark
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetActiveRegionCodes(v string) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.ActiveRegionCodes = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetActiveRegions(v string) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.ActiveRegions = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetAgeSegment(v string) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.AgeSegment = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetAndroidActiveModels(v string) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.AndroidActiveModels = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetAndroidRatio(v int32) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.AndroidRatio = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetFemaleRatio(v int32) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.FemaleRatio = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetHarmonyRatio(v int32) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.HarmonyRatio = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetIosActiveModels(v string) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.IosActiveModels = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetIosRatio(v int32) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.IosRatio = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetMaleRatio(v int32) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.MaleRatio = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) SetProfileRemark(v string) *QueryMiniGameInfoByAppResponseBodyContentUserProfileData {
+	s.ProfileRemark = &v
+	return s
+}
+
+func (s *QueryMiniGameInfoByAppResponseBodyContentUserProfileData) Validate() error {
 	return dara.Validate(s)
 }
