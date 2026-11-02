@@ -14,7 +14,7 @@ type iCreateSCIMServerCredentialRequest interface {
 }
 
 type CreateSCIMServerCredentialRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//

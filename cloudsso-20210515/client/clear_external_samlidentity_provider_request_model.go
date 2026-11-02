@@ -14,7 +14,7 @@ type iClearExternalSAMLIdentityProviderRequest interface {
 }
 
 type ClearExternalSAMLIdentityProviderRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//

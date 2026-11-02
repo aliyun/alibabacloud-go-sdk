@@ -16,13 +16,13 @@ type iDeleteUserRequest interface {
 }
 
 type DeleteUserRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

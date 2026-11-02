@@ -16,7 +16,7 @@ type iGetDirectoryResponseBody interface {
 }
 
 type GetDirectoryResponseBody struct {
-	// The information about the directory.
+	// The directory information.
 	Directory *GetDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *GetDirectoryResponseBody) Validate() error {
 }
 
 type GetDirectoryResponseBodyDirectory struct {
-	// The time when the directory was created.
+	// The time when the directory was created. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-06-30T08:35:26Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetDirectoryResponseBodyDirectory struct {
 	//
 	// example
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The region ID of the directory.
+	// The ID of the region where the directory is located.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the directory was modified.
+	// The time when the directory was updated. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

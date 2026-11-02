@@ -26,49 +26,51 @@ type iCreateAccessAssignmentRequest interface {
 }
 
 type CreateAccessAssignmentRequest struct {
-	// The ID of the access configuration.
+	// The access configuration ID.
 	//
 	// example:
 	//
 	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The Alibaba Cloud account ID of the authorization target.
+	//
 	// example:
 	//
 	// 114240524784****
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
-	// The ID of the CloudSSO identity.
+	// The CloudSSO identity ID. Details:
 	//
-	// - If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	// - If PrincipalType is set to User, PrincipalId is the CloudSSO user ID.
 	//
-	// - If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	// - If PrincipalType is set to Group, PrincipalId is the CloudSSO group ID.
 	//
 	// example:
 	//
 	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The type of the CloudSSO identity. Valid values:
+	// The CloudSSO identity type. Valid values:
 	//
-	// - User
+	// - User: user
 	//
-	// - Group
+	// - Group: group
 	//
 	// example:
 	//
 	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The ID of the task object.
+	// The ID of the deployment target.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	// The target type of the task. Valid value: RD-Account, which indicates that the task target is an account in a resource directory.
 	//
 	// example:
 	//

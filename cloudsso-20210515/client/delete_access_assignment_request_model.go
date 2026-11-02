@@ -28,59 +28,63 @@ type iDeleteAccessAssignmentRequest interface {
 }
 
 type DeleteAccessAssignmentRequest struct {
-	// The ID of the access configuration.
+	// The access configuration ID.
 	//
 	// example:
 	//
 	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	// Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. The access configuration is used to assign the access permissions, and the identity is the only one that uses the access configuration and is associated with the account. Valid values:
+	// Specifies whether to remove the access configuration deployment when you remove the last authorization that uses the access configuration on an account in a resource directory. Valid values:
 	//
-	// - DeprovisionForLastAccessAssignmentOnAccount: de-provisions the access configuration.
+	// - DeprovisionForLastAccessAssignmentOnAccount: Removes the access configuration deployment.
 	//
-	// - None: does not de-provision the access configuration. This is the default value.
+	// - None: Does not remove the access configuration deployment. This is the default value.
 	//
 	// example:
 	//
 	// None
 	DeprovisionStrategy *string `json:"DeprovisionStrategy,omitempty" xml:"DeprovisionStrategy,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The Alibaba Cloud account ID of the authorization target.
+	//
 	// example:
 	//
 	// 114240524784****
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
-	// The ID of the CloudSSO identity.
+	// The CloudSSO identity ID. The value varies based on the principal type:
 	//
-	// - If you set `PrincipalType` to `User`, set `PrincipalId` to the ID of the CloudSSO user.
+	// - If `PrincipalType` is `User`, `PrincipalId` is the CloudSSO user ID.
 	//
-	// - If you set `PrincipalType` to `Group`, set `PrincipalId` to the ID of the CloudSSO group.
+	// - If `PrincipalType` is `Group`, `PrincipalId` is the CloudSSO group ID.
 	//
 	// example:
 	//
 	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The type of the CloudSSO identity. Valid values:
+	// The CloudSSO identity type. Valid values:
 	//
-	// - User
+	// - User: user
 	//
-	// - Group
+	// - Group: group
 	//
 	// example:
 	//
 	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The ID of the task object.
+	// The target ID of the task.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	// The target type of the task. Valid values:
+	//
+	// - RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//

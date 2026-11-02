@@ -16,15 +16,15 @@ type iAddExternalSAMLIdPCertificateRequest interface {
 }
 
 type AddExternalSAMLIdPCertificateRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The X.509 certificate in the PEM format.
+	// The X.509 certificate in PEM format.
 	//
-	// The certificate is provided by the SAML identity provider (IdP).
+	// The certificate is provided by the SAML IdP.
 	//
 	// example:
 	//

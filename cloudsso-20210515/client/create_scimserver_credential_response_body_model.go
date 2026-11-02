@@ -22,7 +22,7 @@ type CreateSCIMServerCredentialResponseBody struct {
 	//
 	// 2D2E5180-7ACF-57FF-A56C-26A49ABEBFF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the SCIM credential.
+	// The SCIM credential information.
 	SCIMServerCredential *CreateSCIMServerCredentialResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *CreateSCIMServerCredentialResponseBody) Validate() error {
 }
 
 type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
-	// The time when the SCIM credential was created.
+	// The time when the SCIM credential was created. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
 	//
 	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The SCIM credential.
+	// The SCIM credential secret.
 	//
-	// > The SCIM credential is returned only when it is created. After the SCIM credential is created, you cannot query it. Keep the SCIM credential confidential.
+	// > The SCIM credential secret is returned only when the credential is created and cannot be queried later. Keep it secure.
 	//
 	// example:
 	//
@@ -88,19 +88,21 @@ type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
 	//
 	// BearerToken
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The time when the SCIM credential expires.
+	// The time when the SCIM credential expires. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-11-09T08:12:52Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The status of the SCIM credential. The value is fixed as Enabled, which indicates that the SCIM credential is enabled.
+	// The status of the SCIM credential. Valid values:
+	//
+	// - Enabled: The SCIM credential is enabled.
 	//
 	// example:
 	//

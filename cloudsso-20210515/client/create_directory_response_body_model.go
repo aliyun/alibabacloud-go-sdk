@@ -16,7 +16,7 @@ type iCreateDirectoryResponseBody interface {
 }
 
 type CreateDirectoryResponseBody struct {
-	// The information about the directory.
+	// The directory information.
 	Directory *CreateDirectoryResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,7 +68,7 @@ type CreateDirectoryResponseBodyDirectory struct {
 	//
 	// 2021-10-10T04:04:04Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreateDirectoryResponseBodyDirectory struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the directory was modified. The time is displayed in UTC.
+	// The time when the directory was updated. The time is displayed in UTC.
 	//
 	// example:
 	//

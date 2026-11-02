@@ -14,7 +14,7 @@ type iGetDirectoryRequest interface {
 }
 
 type GetDirectoryRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//

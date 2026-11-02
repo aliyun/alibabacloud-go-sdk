@@ -24,39 +24,39 @@ type iListTasksResponseBody interface {
 }
 
 type ListTasksResponseBody struct {
-	// Indicates whether the queried entries are truncated. Valid values:
+	// Indicates whether the returned results are truncated. Valid values:
 	//
-	// - true
+	// - true: The returned results are truncated.
 	//
-	// - false
+	// - false: The returned results are not truncated.
 	//
 	// example:
 	//
 	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token used to return the next page of the query results.
 	//
-	// > This parameter is returned only when the value of `IsTruncated` is `true`.
+	// > This parameter is returned only if IsTruncated is set to true.
 	//
 	// example:
 	//
 	// K1c3o9K7pFxoTtxH1Nm7MMLb7zrDGvftYBQBPDVv7AD3a8yhRb3Mk8L9ivmN6bFSjfkZNTAg3h4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// C0DA2DFC-EB18-59EF-BD82-C30862EBA3A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// The list of tasks.
 	Tasks []*ListTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries that meet the conditional request parameter.
 	//
 	// example:
 	//
@@ -152,20 +152,22 @@ type ListTasksResponseBodyTasks struct {
 	//
 	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The end time of the task.
+	// The end time of the task. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-11-09T05:50:50Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cause of the task failure.
+	// The reason why the task failed.
 	//
-	// > This parameter is returned only when the value of `Status` is `Failed`.
+	// > This parameter is returned only if Status is set to Failed.
 	//
 	// example:
 	//
 	// No Permission.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The ID of the Alibaba Cloud account to which the authorization target belongs.
+	//
 	// example:
 	//
 	// 114240524784****
@@ -184,25 +186,25 @@ type ListTasksResponseBodyTasks struct {
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The type of the CloudSSO identity. Valid values:
 	//
-	// - User
+	// - User: The CloudSSO user.
 	//
-	// - Group
+	// - Group: The CloudSSO group.
 	//
 	// example:
 	//
 	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The start time of the task.
+	// The start time of the task. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-11-09T05:50:50Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
 	// - InProgress: The task is running.
 	//
-	// - Success: The task is successful.
+	// - Success: The task succeeded.
 	//
 	// - Failed: The task failed.
 	//
@@ -210,45 +212,47 @@ type ListTasksResponseBodyTasks struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task object.
+	// The ID of the task target.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the task target.
 	//
 	// example:
 	//
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in the resource directory.
+	// The path ID of the task target in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in the resource directory.
+	// The path name of the task target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object.
+	// The type of the task target.
 	//
-	// The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	// Valid values:
+	//
+	// - RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//
 	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the job.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// t-sh5k4gesm6twlrqb****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. Valid values:
+	// The type of the node. Valid values:
 	//
-	// - ProvisionAccessConfiguration: An access configuration is provisioned.
+	// - ProvisionAccessConfiguration: Access configuration deployment.
 	//
-	// - DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	// - DeprovisionAccessConfiguration: Removes access configuration provisioning.
 	//
-	// - CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	// - CreateAccessAssignment: Grants authorization to an account in a resource directory.
 	//
-	// - DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	// - DeleteAccessAssignment: Removes authorization from an account in a resource directory.
 	//
 	// example:
 	//

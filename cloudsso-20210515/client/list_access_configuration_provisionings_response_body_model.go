@@ -24,27 +24,27 @@ type iListAccessConfigurationProvisioningsResponseBody interface {
 }
 
 type ListAccessConfigurationProvisioningsResponseBody struct {
-	// The accounts for which the access configuration is provisioned.
+	// The list of access configuration provisionings.
 	AccessConfigurationProvisionings []*ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings `json:"AccessConfigurationProvisionings,omitempty" xml:"AccessConfigurationProvisionings,omitempty" type:"Repeated"`
-	// Indicates whether the queried entries are truncated. Valid values:
+	// Indicates whether the returned results are truncated. Valid values:
 	//
-	// - true
+	// - true: The results are truncated.
 	//
-	// - false
+	// - false: The results are not truncated.
 	//
 	// example:
 	//
 	// false
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token used to return the next page of query results.
 	//
-	// > This parameter is returned only when the value of `IsTruncated` is `true`.
+	// > This parameter is returned only when IsTruncated is set to true.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListAccessConfigurationProvisioningsResponseBody struct {
 	//
 	// 6BA1BDF1-D845-5D2C-B742-74BE2970E4C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that meet the filter conditions specified in the request parameters.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ func (s *ListAccessConfigurationProvisioningsResponseBody) Validate() error {
 }
 
 type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisionings struct {
-	// The ID of the access configuration.
+	// The access configuration ID.
 	//
 	// example:
 	//
@@ -152,69 +152,73 @@ type ListAccessConfigurationProvisioningsResponseBodyAccessConfigurationProvisio
 	//
 	// VPC-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The first time when the access configuration was provisioned.
+	// The time when the first provisioning succeeded. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-07-26T08:54:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The Alibaba Cloud account ID of the provisioning target.
+	//
 	// example:
 	//
 	// 114240524784****
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
-	// The name of the custom policy that is created for an account in the resource directory.
+	// The Policy Name of the custom policy created in the account in a resource directory.
 	RAMPolicyNames []*string `json:"RAMPolicyNames,omitempty" xml:"RAMPolicyNames,omitempty" type:"Repeated"`
-	// The name of the RAM role that is created for an account in the resource directory.
+	// The name of the RAM role created in the account in a resource directory.
 	//
 	// example:
 	//
 	// AliyunReservedSSO-VPC-Admin
 	RAMRoleName *string `json:"RAMRoleName,omitempty" xml:"RAMRoleName,omitempty"`
-	// The name of the Security Assertion Markup Language (SAML) identity provider (IdP) that is created within an account in the resource directory.
+	// The name of the SAML IdP created in the account in a resource directory.
 	//
 	// example:
 	//
 	// AliyunReservedSSO-d-00fc2p61****
 	SAMLProviderName *string `json:"SAMLProviderName,omitempty" xml:"SAMLProviderName,omitempty"`
-	// The status of the access configuration. Valid values:
+	// The provisioning status. Valid values:
 	//
-	// - Provisioned: The access configuration is provisioned.
+	// - Provisioned: The provisioning succeeded.
 	//
-	// - ReprovisionRequired: The access configuration needs to be re-provisioned.
+	// - ReprovisionRequired: Reprovisioning is required.
 	//
-	// - DeprovisionFailed: The access configuration failed to be provisioned.
+	// - DeprovisionFailed: The provisioning failed.
 	//
 	// example:
 	//
 	// Provisioned
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task object.
+	// The target ID.
 	//
-	// If the value of TargetType is `RD-Account`, the value of this parameter is the UID of an account in the resource directory.
+	// If the target type is RD-Account, this parameter indicates the UID of the account in a resource directory.
 	//
 	// example:
 	//
 	// 101522521960****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the target.
 	//
 	// example:
 	//
 	// SharedServices_5009****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in the resource directory.
+	// The path ID of the target in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in the resource directory.
+	// The path name of the target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object.
+	// The target type.
 	//
-	// Set the value to RD-Account, which specifies the accounts in the resource directory.
+	// Valid values:
+	//
+	// - RD-Account: The target is an account in a resource directory.
 	//
 	// example:
 	//
 	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The last time when the access configuration was provisioned.
+	// The time when the latest provisioning succeeded. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

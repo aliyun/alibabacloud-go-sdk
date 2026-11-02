@@ -66,7 +66,7 @@ func (s *ProvisionAccessConfigurationResponseBody) Validate() error {
 }
 
 type ProvisionAccessConfigurationResponseBodyTasks struct {
-	// The ID of the access configuration.
+	// The access configuration ID.
 	//
 	// example:
 	//
@@ -78,15 +78,17 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	//
 	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The ID of the Alibaba Cloud account to which the deployment target belongs.
+	//
 	// example:
 	//
 	// 114240524784****
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// - InProgress: The task is running.
+	// - InProgress: The task is in progress.
 	//
-	// - Success: The task is successful.
+	// - Success: The task succeeded.
 	//
 	// - Failed: The task failed.
 	//
@@ -94,23 +96,25 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task object.
+	// The ID of the deployment target.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the task target.
 	//
 	// example:
 	//
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in the resource directory.
+	// The path ID of the task target in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in the resource directory.
+	// The path name of the task target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	// The target type of the task. Valid values:
+	//
+	// - RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//
@@ -122,7 +126,9 @@ type ProvisionAccessConfigurationResponseBodyTasks struct {
 	//
 	// t-shqlhd8uvt280rtm****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. The value is fixed as ProvisionAccessConfiguration, which indicates that an access configuration is provisioned.
+	// The task type. Valid values:
+	//
+	// - ProvisionAccessConfiguration: The task provisions an access configuration.
 	//
 	// example:
 	//

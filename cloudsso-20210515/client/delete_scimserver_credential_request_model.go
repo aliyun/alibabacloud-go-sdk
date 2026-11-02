@@ -22,7 +22,7 @@ type DeleteSCIMServerCredentialRequest struct {
 	//
 	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iProvisionAccessConfigurationRequest interface {
 }
 
 type ProvisionAccessConfigurationRequest struct {
-	// The ID of the access configuration.
+	// The access configuration ID.
 	//
 	// example:
 	//
@@ -34,17 +34,21 @@ type ProvisionAccessConfigurationRequest struct {
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the deployment target belongs.
+	//
 	// example:
 	//
 	// 114240524784****
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
-	// The ID of the task object.
+	// The ID of the task target.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The type of the task object. Set the value to RD-Account, which specifies the accounts in the resource directory.
+	// The target type of the task. Valid values:
+	//
+	// - RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//

@@ -24,17 +24,17 @@ type UpdateSCIMServerCredentialStatusRequest struct {
 	//
 	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The new status of the SCIM credential. Valid values:
+	// The status of the SCIM credential. Valid values:
 	//
-	// - Enabled: The SCIM credential is enabled.
+	// - Enabled: Enabled.
 	//
-	// - Disabled: The SCIM credential is disabled.
+	// - Disabled: Disabled.
 	//
 	// example:
 	//

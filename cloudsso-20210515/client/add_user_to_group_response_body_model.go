@@ -14,7 +14,7 @@ type iAddUserToGroupResponseBody interface {
 }
 
 type AddUserToGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

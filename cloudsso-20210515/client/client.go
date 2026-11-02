@@ -58,13 +58,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a Security Assertion Markup Language (SAML) signing certificate.
+// Adds a SAML signing certificate.
 //
 // Description:
 //
 // You can add up to two SAML signing certificates.
 //
-// This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
+// This topic provides an example of adding a new SAML signing certificate to the `d-00fc2p61****` directory.
 //
 // @param request - AddExternalSAMLIdPCertificateRequest
 //
@@ -112,13 +112,13 @@ func (client *Client) AddExternalSAMLIdPCertificateWithOptions(request *AddExter
 
 // Summary:
 //
-// Adds a Security Assertion Markup Language (SAML) signing certificate.
+// Adds a SAML signing certificate.
 //
 // Description:
 //
 // You can add up to two SAML signing certificates.
 //
-// This topic provides an example on how to add a SAML signing certificate to the directory `d-00fc2p61****`.
+// This topic provides an example of adding a new SAML signing certificate to the `d-00fc2p61****` directory.
 //
 // @param request - AddExternalSAMLIdPCertificateRequest
 //
@@ -136,11 +136,11 @@ func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPC
 
 // Summary:
 //
-// Adds a policy to an access configuration.
+// Adds an access policy to an access configuration.
 //
 // Description:
 //
-// This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+// This topic provides an example of adding a system policy named `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
 //
 // @param request - AddPermissionPolicyToAccessConfigurationRequest
 //
@@ -200,11 +200,11 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 
 // Summary:
 //
-// Adds a policy to an access configuration.
+// Adds an access policy to an access configuration.
 //
 // Description:
 //
-// This topic provides an example on how to add the system policy `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+// This topic provides an example of adding a system policy named `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
 //
 // @param request - AddPermissionPolicyToAccessConfigurationRequest
 //
@@ -226,9 +226,9 @@ func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermi
 //
 // Description:
 //
-// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
+// After SCIM synchronization is enabled, you cannot add users to SCIM-synchronized groups.
 //
-// This topic provides an example on how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+// This topic provides an example of adding the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -284,9 +284,9 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 //
 // Description:
 //
-// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot add a user to a group that is synchronized by using SCIM.
+// After SCIM synchronization is enabled, you cannot add users to SCIM-synchronized groups.
 //
-// This topic provides an example on how to add the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+// This topic provides an example of adding the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -304,13 +304,13 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 
 // Summary:
 //
-// Clears the configurations of a Security Assertion Markup Language (SAML) identity provider (IdP).
+// Clears the configuration of the SAML IdP.
 //
 // Description:
 //
-// If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
+// You can clear the SAML IdP information only when SSO logon is disabled. Otherwise, you cannot perform this operation.
 //
-// This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+// This topic provides an example of clearing the configuration of the SAML IdP for the `d-00fc2p61****` directory.
 //
 // @param request - ClearExternalSAMLIdentityProviderRequest
 //
@@ -354,13 +354,13 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 
 // Summary:
 //
-// Clears the configurations of a Security Assertion Markup Language (SAML) identity provider (IdP).
+// Clears the configuration of the SAML IdP.
 //
 // Description:
 //
-// If single sign-on (SSO) logon is disabled, you can clear the configurations of a SAML IdP. If SSO logon is enabled, you cannot clear the configurations.
+// You can clear the SAML IdP information only when SSO logon is disabled. Otherwise, you cannot perform this operation.
 //
-// This topic provides an example on how to clear the configurations of the SAML IdP within the directory `d-00fc2p61****`.
+// This topic provides an example of clearing the configuration of the SAML IdP for the `d-00fc2p61****` directory.
 //
 // @param request - ClearExternalSAMLIdentityProviderRequest
 //
@@ -378,15 +378,15 @@ func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSA
 
 // Summary:
 //
-// Assigns access permissions on an account in your resource directory to a user or a group by using an access configuration.
+// Configures the settings for the users or groups allowed to access an account in a resource directory, and the corresponding access permissions (access configurations).
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the TaskId returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
 //
-// For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](https://help.aliyun.com/document_detail/266726.html).
+// For more information about granting access to an account in a resource directory, see [Multi-account authorization overview](https://help.aliyun.com/document_detail/266726.html).
 //
-// This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
+// This topic provides an example on how to assign the access configuration `ac-00jhtfl8thteu6uj****` to the CloudSSO user `u-00q8wbq42wiltcrk****` for the account `114240524784****` in a resource directory. This allows the CloudSSO user to access authorized resources in the account.
 //
 // @param request - CreateAccessAssignmentRequest
 //
@@ -454,15 +454,15 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 
 // Summary:
 //
-// Assigns access permissions on an account in your resource directory to a user or a group by using an access configuration.
+// Configures the settings for the users or groups allowed to access an account in a resource directory, and the corresponding access permissions (access configurations).
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the TaskId returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
 //
-// For more information about how to assign permissions on an account in your resource directory, see [Overview of multi-account authorization](https://help.aliyun.com/document_detail/266726.html).
+// For more information about granting access to an account in a resource directory, see [Multi-account authorization overview](https://help.aliyun.com/document_detail/266726.html).
 //
-// This topic provides an example on how to assign access permissions on the account `114240524784****` in your resource directory to the CloudSSO user `u-00q8wbq42wiltcrk****` by using the access configuration `ac-00jhtfl8thteu6uj****`. After the call is successful, the CloudSSO user can access resources within the account in the resource directory.
+// This topic provides an example on how to assign the access configuration `ac-00jhtfl8thteu6uj****` to the CloudSSO user `u-00q8wbq42wiltcrk****` for the account `114240524784****` in a resource directory. This allows the CloudSSO user to access authorized resources in the account.
 //
 // @param request - CreateAccessAssignmentRequest
 //
@@ -578,19 +578,19 @@ func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurati
 //
 // Description:
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+// A directory is an instance in CloudSSO. You must create a directory before you use CloudSSO. All CloudSSO resources must be maintained in the directory.
 //
-// To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
+// You must select a region for the CloudSSO directory. Alibaba Cloud ensures that all CloudSSO-related data is stored only in this region. This is independent of where you deploy cloud resources such as ECS and ApsaraDB RDS. You can log on to and access cloud resources in any region from anywhere in the world. You can select a region based on your security and compliance requirements and the geographic location of your target users. If you do not have special security and compliance requirements, select the region closest to your target users to improve access speed. Currently, you can create directories in the following four regions: China (Shanghai), China (Hong Kong), US (Silicon Valley), and Germany (Frankfurt).
 //
 // This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
 //
-// ### [](#)Limits
+// ### Limits
 //
-//   - You can create only one directory for a management account.
+// - A management account can create only one directory.
 //
-//   - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+// - To change the region of the directory, you must delete the existing directory and create a new one in another region.
 //
 // @param request - CreateDirectoryRequest
 //
@@ -638,19 +638,19 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 //
 // Description:
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// A directory is a CloudSSO instance. Before you can use CloudSSO, you must create a directory. The directory is used to manage all CloudSSO resources.
+// A directory is an instance in CloudSSO. You must create a directory before you use CloudSSO. All CloudSSO resources must be maintained in the directory.
 //
-// To create a directory, you must select a region. Alibaba Cloud stores data in the directory only in the region that you select. However, you can deploy Alibaba Cloud resources including Elastic Compute Service (ECS) instances and ApsaraDB RDS instances in other regions. You can also use your cloud account for logons and access the Alibaba Cloud resources in other regions. You can select a region to create a directory based on your security compliance requirements and the geographic location of specific users. If you do not have strict security compliance requirements, we recommend that you select a region that is the closest to the geographical location of the specific users. This way, access to cloud resources is accelerated. You can create the CloudSSO directory in the China (Shanghai), China (Hong Kong), US (Silicon Valley), or Germany (Frankfurt) region.
+// You must select a region for the CloudSSO directory. Alibaba Cloud ensures that all CloudSSO-related data is stored only in this region. This is independent of where you deploy cloud resources such as ECS and ApsaraDB RDS. You can log on to and access cloud resources in any region from anywhere in the world. You can select a region based on your security and compliance requirements and the geographic location of your target users. If you do not have special security and compliance requirements, select the region closest to your target users to improve access speed. Currently, you can create directories in the following four regions: China (Shanghai), China (Hong Kong), US (Silicon Valley), and Germany (Frankfurt).
 //
 // This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
 //
-// ### [](#)Limits
+// ### Limits
 //
-//   - You can create only one directory for a management account.
+// - A management account can create only one directory.
 //
-//   - If you want to change the region of a directory, you must delete the directory and then create a directory in a different region.
+// - To change the region of the directory, you must delete the existing directory and create a new one in another region.
 //
 // @param request - CreateDirectoryRequest
 //
@@ -668,11 +668,11 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 
 // Summary:
 //
-// Creates a group.
+// Creates a user group.
 //
 // Description:
 //
-// This topic provides an example on how to create a group named `TestGroup`.
+// This topic provides an example of creating a user group named `TestGroup`.
 //
 // @param request - CreateGroupRequest
 //
@@ -724,11 +724,11 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 
 // Summary:
 //
-// Creates a group.
+// Creates a user group.
 //
 // Description:
 //
-// This topic provides an example on how to create a group named `TestGroup`.
+// This topic provides an example of creating a user group named `TestGroup`.
 //
 // @param request - CreateGroupRequest
 //
@@ -746,13 +746,13 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Creates a System for Cross-domain Identity Management (SCIM) credential.
+// Creates a SCIM credential.
 //
 // Description:
 //
-// SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
+// A SCIM credential is required for SCIM synchronization. You can create up to two SCIM credentials.
 //
-// This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
+// This topic provides an example on how to create a SCIM credential in the directory `d-00fc2p61****`.
 //
 // @param request - CreateSCIMServerCredentialRequest
 //
@@ -796,13 +796,13 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 
 // Summary:
 //
-// Creates a System for Cross-domain Identity Management (SCIM) credential.
+// Creates a SCIM credential.
 //
 // Description:
 //
-// SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
+// A SCIM credential is required for SCIM synchronization. You can create up to two SCIM credentials.
 //
-// This topic provides an example on how to create a SCIM credential within the directory `d-00fc2p61****`.
+// This topic provides an example on how to create a SCIM credential in the directory `d-00fc2p61****`.
 //
 // @param request - CreateSCIMServerCredentialRequest
 //
@@ -914,11 +914,11 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 
 // Summary:
 //
-// Creates a Resource Access Management (RAM) user provisioning.
+// Invokes CreateUserProvisioning to create a Resource Access Management (RAM) user synchronization.
 //
 // Description:
 //
-// You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
+// You can create a Resource Access Management (RAM) user synchronization to synchronously create a Resource Access Management (RAM) user that has the same name as a CloudSSO user in a destination account in a resource directory. You can then use the Resource Access Management (RAM) user to access resources in the account.
 //
 // @param request - CreateUserProvisioningRequest
 //
@@ -990,11 +990,11 @@ func (client *Client) CreateUserProvisioningWithOptions(request *CreateUserProvi
 
 // Summary:
 //
-// Creates a Resource Access Management (RAM) user provisioning.
+// Invokes CreateUserProvisioning to create a Resource Access Management (RAM) user synchronization.
 //
 // Description:
 //
-// You can create a RAM user provisioning for a member in your resource directory to create a RAM user that has the same username as a CloudSSO user. This way, the CloudSSO user can access the resources of the member as the RAM user.
+// You can create a Resource Access Management (RAM) user synchronization to synchronously create a Resource Access Management (RAM) user that has the same name as a CloudSSO user in a destination account in a resource directory. You can then use the Resource Access Management (RAM) user to access resources in the account.
 //
 // @param request - CreateUserProvisioningRequest
 //
@@ -1012,13 +1012,13 @@ func (client *Client) CreateUserProvisioning(request *CreateUserProvisioningRequ
 
 // Summary:
 //
-// Removes the access permissions on an account in a resource directory.
+// Removes the authorization from an account in a resource directory.
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the `TaskId` returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
 //
-// This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
+// This topic provides an example of removing the authorization for the CloudSSO user `u-00q8wbq42wiltcrk****` to use the access configuration `ac-00jhtfl8thteu6uj****` on the account in a resource directory `114240524784****`.
 //
 // @param request - DeleteAccessAssignmentRequest
 //
@@ -1090,13 +1090,13 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 
 // Summary:
 //
-// Removes the access permissions on an account in a resource directory.
+// Removes the authorization from an account in a resource directory.
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the `TaskId` returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
 //
-// This topic provides an example on how to remove the access permissions on the account `114240524784****` in the resource directory from the CloudSSO user `u-00q8wbq42wiltcrk****`. The access permissions are assigned by using the access configuration `ac-00jhtfl8thteu6uj****`.
+// This topic provides an example of removing the authorization for the CloudSSO user `u-00q8wbq42wiltcrk****` to use the access configuration `ac-00jhtfl8thteu6uj****` on the account in a resource directory `114240524784****`.
 //
 // @param request - DeleteAccessAssignmentRequest
 //
@@ -1118,13 +1118,13 @@ func (client *Client) DeleteAccessAssignment(request *DeleteAccessAssignmentRequ
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+// Before you delete an access configuration, you must deprovision the access configuration from the members of the resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
+// This topic provides an example on how to delete an access configuration whose ID is `ac-001j9mcm3k7335bc****`.
 //
 // @param request - DeleteAccessConfigurationRequest
 //
@@ -1180,13 +1180,13 @@ func (client *Client) DeleteAccessConfigurationWithOptions(request *DeleteAccess
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// The access configuration that you want to delete is de-provisioned from the accounts in your resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
+// Before you delete an access configuration, you must deprovision the access configuration from the members of the resource directory. For more information, see [DeprovisionAccessConfiguration](https://help.aliyun.com/document_detail/338352.html).
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// This topic provides an example on how to delete the access configuration whose ID is `ac-001j9mcm3k7335bc****`.
+// This topic provides an example on how to delete an access configuration whose ID is `ac-001j9mcm3k7335bc****`.
 //
 // @param request - DeleteAccessConfigurationRequest
 //
@@ -1208,25 +1208,25 @@ func (client *Client) DeleteAccessConfiguration(request *DeleteAccessConfigurati
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// No resources are contained in the directory that you want to delete.
+// Before you delete a directory, make sure that the directory does not contain any resources. Specifically:
 //
-//   - Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Remove all authorizations for users and groups on an account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
-//   - Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
+// - Delete users. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
 //
-//   - Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
+// - Delete groups. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
 //
-//   - Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
+// - Delete access configurations. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
 //
-//   - System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
+// - Delete SCIM credentials. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
 //
-//   - Single sign-on (SSO) logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+// - Delete single sign-on configurations. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
+// This topic provides an example on how to delete a directory with the ID `d-00fc2p61****`.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -1274,25 +1274,25 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// No resources are contained in the directory that you want to delete.
+// Before you delete a directory, make sure that the directory does not contain any resources. Specifically:
 //
-//   - Access permissions on the accounts in your resource directory are removed from all users and groups. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Remove all authorizations for users and groups on an account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
-//   - Users are deleted. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
+// - Delete users. For more information, see [DeleteUser](https://help.aliyun.com/document_detail/341671.html).
 //
-//   - Groups are deleted. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
+// - Delete groups. For more information, see [DeleteGroup](https://help.aliyun.com/document_detail/341821.html).
 //
-//   - Access configurations are deleted. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
+// - Delete access configurations. For more information, see [DeleteAccessConfiguration](https://help.aliyun.com/document_detail/336907.html).
 //
-//   - System for Cross-domain Identity Management (SCIM) credentials are deleted. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
+// - Delete SCIM credentials. For more information, see [DeleteSCIMServerCredential](https://help.aliyun.com/document_detail/341842.html).
 //
-//   - Single sign-on (SSO) logon configurations are deleted. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
+// - Delete single sign-on configurations. For more information, see [ClearExternalSAMLIdentityProvider](https://help.aliyun.com/document_detail/341573.html).
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// This topic provides an example on how to delete a directory whose ID is `d-00fc2p61****`.
+// This topic provides an example on how to delete a directory with the ID `d-00fc2p61****`.
 //
 // @param request - DeleteDirectoryRequest
 //
@@ -1310,23 +1310,23 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
-// Deletes a group.
+// Deletes a specified group.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
+// Before you delete a user group, make sure that the user group is not associated with the following resources. Otherwise, the deletion failed.
 //
-// - Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+// - Users: You must remove users from the user group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
 //
-// - Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Authorization: You must remove the authorization of the user group on the account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+// If SCIM synchronization is enabled, you cannot delete user groups that are synchronized by using SCIM.
 //
-// This topic provides an example on how to delete the group `g-00jqzghi2n3o5hkh****`.
+// This topic provides an example on how to delete the user group `g-00jqzghi2n3o5hkh****`.
 //
 // @param request - DeleteGroupRequest
 //
@@ -1374,23 +1374,23 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 
 // Summary:
 //
-// Deletes a group.
+// Deletes a specified group.
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// The group that you want to delete is not associated with the following resources. If the group is associated with the resources, the deletion fails.
+// Before you delete a user group, make sure that the user group is not associated with the following resources. Otherwise, the deletion failed.
 //
-// - Users: You must remove users from the group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+// - Users: You must remove users from the user group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
 //
-// - Access permissions: You must remove the access permissions on the accounts in your resource directory from the group. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Authorization: You must remove the authorization of the user group on the account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
-// ### [](#)Operation description
+// ### Usage notes
 //
-// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a group that is synchronized by using SCIM.
+// If SCIM synchronization is enabled, you cannot delete user groups that are synchronized by using SCIM.
 //
-// This topic provides an example on how to delete the group `g-00jqzghi2n3o5hkh****`.
+// This topic provides an example on how to delete the user group `g-00jqzghi2n3o5hkh****`.
 //
 // @param request - DeleteGroupRequest
 //
@@ -1490,13 +1490,13 @@ func (client *Client) DeleteMFADeviceForUser(request *DeleteMFADeviceForUserRequ
 
 // Summary:
 //
-// Deletes a System for Cross-domain Identity Management (SCIM) credential.
+// Deletes a SCIM credential.
 //
 // Description:
 //
-// After a SCIM credential is deleted, the synchronization task that uses the SCIM 
+// After a SCIM credential is deleted, synchronization tasks that use the SCIM credential will fail.
 //
-// This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
+// This topic provides an example of deleting a SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
 //
 // @param request - DeleteSCIMServerCredentialRequest
 //
@@ -1544,13 +1544,13 @@ func (client *Client) DeleteSCIMServerCredentialWithOptions(request *DeleteSCIMS
 
 // Summary:
 //
-// Deletes a System for Cross-domain Identity Management (SCIM) credential.
+// Deletes a SCIM credential.
 //
 // Description:
 //
-// After a SCIM credential is deleted, the synchronization task that uses the SCIM credential fails.
+// After a SCIM credential is deleted, synchronization tasks that use the SCIM credential will fail.
 //
-// This topic provides an example on how to delete the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
+// This topic provides an example of deleting a SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`.
 //
 // @param request - DeleteSCIMServerCredentialRequest
 //
@@ -1572,21 +1572,21 @@ func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCreden
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// Before you delete a user, make sure that the user is not associated with the following resources. Otherwise, the deletion fails.
+// Before you delete a user, ensure that the user is not associated with the following resources. Otherwise, the deletion will result in a failed state:
 //
-//   - Multi-factor authentication (MFA) devices: You must delete the MFA devices bound to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+// - MFA devices: You must delete the MFA device attached to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
 //
-//   - Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Authorization: You must remove the authorization of the user on the account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
-//   - Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+// - Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
 //
-// ### [](#)Precautions
+// ### Usage notes
 //
-// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+// You cannot delete a SCIM-synchronized user when SCIM synchronization is enabled.
 //
-// This topic provides an example on how to delete the user whose ID is `u-00q8wbq42wiltcrk****`.
+// This topic provides an example of deleting a user whose ID is `u-00q8wbq42wiltcrk****`.
 //
 // @param request - DeleteUserRequest
 //
@@ -1638,21 +1638,21 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 //
 // Description:
 //
-// ### [](#)Prerequisites
+// ### Before you begin
 //
-// Before you delete a user, make sure that the user is not associated with the following resources. Otherwise, the deletion fails.
+// Before you delete a user, ensure that the user is not associated with the following resources. Otherwise, the deletion will result in a failed state:
 //
-//   - Multi-factor authentication (MFA) devices: You must delete the MFA devices bound to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
+// - MFA devices: You must delete the MFA device attached to the user. For more information, see [DeleteMFADeviceForUser](https://help.aliyun.com/document_detail/341675.html).
 //
-//   - Access permissions: You must remove the access permissions on the accounts in your resource directory from the user. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Authorization: You must remove the authorization of the user on the account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
-//   - Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
+// - Groups: You must remove the user from groups. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
 //
-// ### [](#)Precautions
+// ### Usage notes
 //
-// If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot delete a user that is synchronized by using SCIM.
+// You cannot delete a SCIM-synchronized user when SCIM synchronization is enabled.
 //
-// This topic provides an example on how to delete the user whose ID is `u-00q8wbq42wiltcrk****`.
+// This topic provides an example of deleting a user whose ID is `u-00q8wbq42wiltcrk****`.
 //
 // @param request - DeleteUserRequest
 //
@@ -1670,7 +1670,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// Deletes a Resource Access Management (RAM) user provisioning.
+// Invokes DeleteUserProvisioning to delete a Resource Access Management (RAM) user synchronization.
 //
 // @param request - DeleteUserProvisioningRequest
 //
@@ -1722,7 +1722,7 @@ func (client *Client) DeleteUserProvisioningWithOptions(request *DeleteUserProvi
 
 // Summary:
 //
-// Deletes a Resource Access Management (RAM) user provisioning.
+// Invokes DeleteUserProvisioning to delete a Resource Access Management (RAM) user synchronization.
 //
 // @param request - DeleteUserProvisioningRequest
 //
@@ -1740,7 +1740,7 @@ func (client *Client) DeleteUserProvisioning(request *DeleteUserProvisioningRequ
 
 // Summary:
 //
-// Deletes a Resource Access Management (RAM) user provisioning event.
+// Invokes DeleteUserProvisioningEvent to delete a Resource Access Management (RAM) user synchronization event that failed to execute.
 //
 // @param request - DeleteUserProvisioningEventRequest
 //
@@ -1792,7 +1792,7 @@ func (client *Client) DeleteUserProvisioningEventWithOptions(request *DeleteUser
 
 // Summary:
 //
-// Deletes a Resource Access Management (RAM) user provisioning event.
+// Invokes DeleteUserProvisioningEvent to delete a Resource Access Management (RAM) user synchronization event that failed to execute.
 //
 // @param request - DeleteUserProvisioningEventRequest
 //
@@ -1810,13 +1810,13 @@ func (client *Client) DeleteUserProvisioningEvent(request *DeleteUserProvisionin
 
 // Summary:
 //
-// De-provisions an access configuration from an account in your resource directory.
+// Deprovisions an access configuration from an account in a resource directory.
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the `TaskId` returned in the response parameters to call [GetTask](https://help.aliyun.com/document_detail/340670.html) and query the task execution status.
 //
-// This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
+// This topic provides an example of deprovisioning the access configuration `ac-00jhtfl8thteu6uj****` from the account in a resource directory `114240524784****`.
 //
 // @param request - DeprovisionAccessConfigurationRequest
 //
@@ -1876,13 +1876,13 @@ func (client *Client) DeprovisionAccessConfigurationWithOptions(request *Deprovi
 
 // Summary:
 //
-// De-provisions an access configuration from an account in your resource directory.
+// Deprovisions an access configuration from an account in a resource directory.
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the `TaskId` returned in the response parameters to call [GetTask](https://help.aliyun.com/document_detail/340670.html) and query the task execution status.
 //
-// This topic provides an example on how to de-provision the access configuration `ac-00jhtfl8thteu6uj****` from the account `114240524784****` in your resource directory.
+// This topic provides an example of deprovisioning the access configuration `ac-00jhtfl8thteu6uj****` from the account in a resource directory `114240524784****`.
 //
 // @param request - DeprovisionAccessConfigurationRequest
 //
@@ -2015,13 +2015,13 @@ func (client *Client) DisableService() (_result *DisableServiceResponse, _err er
 
 // Summary:
 //
-// Enables the delegated administrator account of CloudSSO.
+// Enables a CloudSSO delegated administrator account.
 //
 // Description:
 //
-// You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+// The management account of a resource directory can set a member of the resource directory as a CloudSSO delegated administrator account. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
 //
-// After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
+// After the configuration is complete, you can call this operation to enable the CloudSSO delegated administrator account to manage CloudSSO.
 //
 // @param request - EnableDelegateAccountRequest
 //
@@ -2065,13 +2065,13 @@ func (client *Client) EnableDelegateAccountWithOptions(request *EnableDelegateAc
 
 // Summary:
 //
-// Enables the delegated administrator account of CloudSSO.
+// Enables a CloudSSO delegated administrator account.
 //
 // Description:
 //
-// You can use the management account of a resource directory to specify a member of the resource directory as the delegated administrator account of CloudSSO. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
+// The management account of a resource directory can set a member of the resource directory as a CloudSSO delegated administrator account. For more information, see [Add a delegated administrator account](https://help.aliyun.com/document_detail/208117.html).
 //
-// After the delegated administrator account of CloudSSO is specified, you can call this operation to enable the delegated administrator account of CloudSSO to manage CloudSSO resources.
+// After the configuration is complete, you can call this operation to enable the CloudSSO delegated administrator account to manage CloudSSO.
 //
 // @param request - EnableDelegateAccountRequest
 //
@@ -2290,11 +2290,11 @@ func (client *Client) GetAttributePassingSetting(request *GetAttributePassingSet
 
 // Summary:
 //
-// Queries information about a directory.
+// Queries the details of a directory.
 //
 // Description:
 //
-// This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
+// This topic provides an example of querying the details of a directory whose ID is `d-00fc2p61****`.
 //
 // @param request - GetDirectoryRequest
 //
@@ -2338,11 +2338,11 @@ func (client *Client) GetDirectoryWithOptions(request *GetDirectoryRequest, runt
 
 // Summary:
 //
-// Queries information about a directory.
+// Queries the details of a directory.
 //
 // Description:
 //
-// This topic provides an example on how to query information about the directory whose ID is `d-00fc2p61****`.
+// This topic provides an example of querying the details of a directory whose ID is `d-00fc2p61****`.
 //
 // @param request - GetDirectoryRequest
 //
@@ -3105,11 +3105,11 @@ func (client *Client) GetServiceStatus() (_result *GetServiceStatusResponse, _er
 
 // Summary:
 //
-// Queries information about an asynchronous task.
+// Queries the details of an asynchronous task.
 //
 // Description:
 //
-// This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+// This topic provides an example of querying the details of a task whose ID is `t-shfqw1u1edszvxw5****`.
 //
 // @param request - GetTaskRequest
 //
@@ -3157,11 +3157,11 @@ func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *dara.
 
 // Summary:
 //
-// Queries information about an asynchronous task.
+// Queries the details of an asynchronous task.
 //
 // Description:
 //
-// This topic provides an example on how to query the information about the task whose ID is `t-shfqw1u1edszvxw5****`.
+// This topic provides an example of querying the details of a task whose ID is `t-shfqw1u1edszvxw5****`.
 //
 // @param request - GetTaskRequest
 //
@@ -3795,11 +3795,11 @@ func (client *Client) GetUserProvisioningStatistics(request *GetUserProvisioning
 
 // Summary:
 //
-// Queries the access permissions that are assigned.
+// Queries access assignments.
 //
 // Description:
 //
-// This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+// This topic provides an example of querying the access assignments on the account in a resource directory `114240524784****`. The response shows that one access assignment record exists on the account.
 //
 // @param request - ListAccessAssignmentsRequest
 //
@@ -3875,11 +3875,11 @@ func (client *Client) ListAccessAssignmentsWithOptions(request *ListAccessAssign
 
 // Summary:
 //
-// Queries the access permissions that are assigned.
+// Queries access assignments.
 //
 // Description:
 //
-// This topic provides an example on how to query the assigned access permissions on the account `114240524784****` in your resource directory. The returned result shows that access permissions on the account in your resource directory is assigned to one user.
+// This topic provides an example of querying the access assignments on the account in a resource directory `114240524784****`. The response shows that one access assignment record exists on the account.
 //
 // @param request - ListAccessAssignmentsRequest
 //
@@ -3897,11 +3897,11 @@ func (client *Client) ListAccessAssignments(request *ListAccessAssignmentsReques
 
 // Summary:
 //
-// Queries the access configurations that are provisioned.
+// Queries access configuration provisionings.
 //
 // Description:
 //
-// This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
+// This topic provides an example of querying the deployment list of the access configuration `ac-00ccule7tadaijxc****`. The response shows that the access configuration is deployed in two accounts, each being an account in a resource directory.
 //
 // @param request - ListAccessConfigurationProvisioningsRequest
 //
@@ -3973,11 +3973,11 @@ func (client *Client) ListAccessConfigurationProvisioningsWithOptions(request *L
 
 // Summary:
 //
-// Queries the access configurations that are provisioned.
+// Queries access configuration provisionings.
 //
 // Description:
 //
-// This topic provides an example on how to query the accounts for which the access permission `ac-00ccule7tadaijxc****` is provisioned. The returned result shows that the access configuration is provisioned for two accounts in your resource directory.
+// This topic provides an example of querying the deployment list of the access configuration `ac-00ccule7tadaijxc****`. The response shows that the access configuration is deployed in two accounts, each being an account in a resource directory.
 //
 // @param request - ListAccessConfigurationProvisioningsRequest
 //
@@ -4680,13 +4680,89 @@ func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentia
 
 // Summary:
 //
-// Queries asynchronous tasks.
+// Queries the relationships between resources and tags.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagResources"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the relationships between resources and tags.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of asynchronous tasks.
 //
 // Description:
 //
-// By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
-//
-// This topic provides an example on how to query the tasks within the previous 24 hours.
+// By default, this operation queries the list of tasks created within the last 24 hours. You can query tasks created within the last 7 days at most. You can use the Filter parameter to specify the start time of the query. This topic provides an example on how to query the list of tasks created within the last 24 hours.
 //
 // @param request - ListTasksRequest
 //
@@ -4770,13 +4846,11 @@ func (client *Client) ListTasksWithOptions(request *ListTasksRequest, runtime *d
 
 // Summary:
 //
-// Queries asynchronous tasks.
+// Queries a list of asynchronous tasks.
 //
 // Description:
 //
-// By default, this operation queries the tasks within the previous 24 hours. This operation allows you to query the tasks within a maximum of 7 days. You can specify the start time of the query by using `Filter`.
-//
-// This topic provides an example on how to query the tasks within the previous 24 hours.
+// By default, this operation queries the list of tasks created within the last 24 hours. You can query tasks created within the last 7 days at most. You can use the Filter parameter to specify the start time of the query. This topic provides an example on how to query the list of tasks created within the last 24 hours.
 //
 // @param request - ListTasksRequest
 //
@@ -5040,13 +5114,13 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// Provisions an access configuration for an account in your resource directory.
+// Invokes ProvisionAccessConfiguration to perform access configuration provisioning and deployment for an account in a resource directory.
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the `TaskId` returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) and query the task execution status.
 //
-// This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
+// This topic provides an example of provisioning the access configuration `ac-00jhtfl8thteu6uj****` to the account in a resource directory `114240524784****`.
 //
 // @param request - ProvisionAccessConfigurationRequest
 //
@@ -5106,13 +5180,13 @@ func (client *Client) ProvisionAccessConfigurationWithOptions(request *Provision
 
 // Summary:
 //
-// Provisions an access configuration for an account in your resource directory.
+// Invokes ProvisionAccessConfiguration to perform access configuration provisioning and deployment for an account in a resource directory.
 //
 // Description:
 //
-// When you call this operation, an asynchronous task is automatically created. You can call the [GetTask](https://help.aliyun.com/document_detail/340670.html) operation to query the progress of the task based on the value of the `TaskId` response parameter.
+// This API operation is asynchronous. You can use the `TaskId` returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) and query the task execution status.
 //
-// This topic provides an example on how to provision the access configuration `ac-00jhtfl8thteu6uj****` for the account `114240524784****` in your resource directory.
+// This topic provides an example of provisioning the access configuration `ac-00jhtfl8thteu6uj****` to the account in a resource directory `114240524784****`.
 //
 // @param request - ProvisionAccessConfigurationRequest
 //
@@ -5376,11 +5450,11 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 //
 // Description:
 //
-// If a user forgets the password, the password expires, or the password poses security risks, a CloudSSO administrator can reset the password for the user.
+// A CloudSSO administrator can reset the password of a user when the user forgets the password, the password expires, or the password poses a security risk.
 //
-// > After you enable single sign-on (SSO) logon, the password of a user cannot be reset.
+// > You cannot reset user passwords after single sign-on (SSO) is enabled.
 //
-// This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
+// This topic provides an example of resetting the password of the user u-00q8wbq42wiltcrk***	- by using a system-generated password.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -5444,11 +5518,11 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 //
 // Description:
 //
-// If a user forgets the password, the password expires, or the password poses security risks, a CloudSSO administrator can reset the password for the user.
+// A CloudSSO administrator can reset the password of a user when the user forgets the password, the password expires, or the password poses a security risk.
 //
-// > After you enable single sign-on (SSO) logon, the password of a user cannot be reset.
+// > You cannot reset user passwords after single sign-on (SSO) is enabled.
 //
-// This topic provides an example on how to reset the password of the user `u-00q8wbq42wiltcrk****`. The new password is automatically generated by the system.
+// This topic provides an example of resetting the password of the user u-00q8wbq42wiltcrk***	- by using a system-generated password.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -5986,6 +6060,158 @@ func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizati
 
 // Summary:
 //
+// Tags resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Tags resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Untags resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKey) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Untags resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies information about an access configuration.
 //
 // Description:
@@ -6492,11 +6718,11 @@ func (client *Client) UpdateMFAAuthenticationSettings(request *UpdateMFAAuthenti
 
 // Summary:
 //
-// Enables or disables a System for Cross-domain Identity Management (SCIM) credential.
+// Enables or disables a SCIM credential.
 //
 // Description:
 //
-// This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
+// This topic provides an example of disabling the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the credential is disabled, synchronization tasks that use this SCIM credential will fail. You can call this operation again to enable the SCIM credential.
 //
 // @param request - UpdateSCIMServerCredentialStatusRequest
 //
@@ -6548,11 +6774,11 @@ func (client *Client) UpdateSCIMServerCredentialStatusWithOptions(request *Updat
 
 // Summary:
 //
-// Enables or disables a System for Cross-domain Identity Management (SCIM) credential.
+// Enables or disables a SCIM credential.
 //
 // Description:
 //
-// This topic provides an example on how to disable the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the SCIM credential is disabled, the synchronization task that uses the SCIM credential fails. You can call this operation again to enable the SCIM credential.
+// This topic provides an example of disabling the SCIM credential whose ID is `scimcred-004whl0kvfwcypbi****`. After the credential is disabled, synchronization tasks that use this SCIM credential will fail. You can call this operation again to enable the SCIM credential.
 //
 // @param request - UpdateSCIMServerCredentialStatusRequest
 //

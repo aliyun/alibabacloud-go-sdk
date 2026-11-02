@@ -62,39 +62,41 @@ func (s *DeleteAccessAssignmentResponseBody) Validate() error {
 }
 
 type DeleteAccessAssignmentResponseBodyTask struct {
-	// The ID of the access configuration.
+	// The access configuration ID.
 	//
 	// example:
 	//
 	// ac-00jhtfl8thteu6uj****
 	AccessConfigurationId *string `json:"AccessConfigurationId,omitempty" xml:"AccessConfigurationId,omitempty"`
-	// The name of the access configuration.
+	// The access configuration name.
 	//
 	// example:
 	//
 	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
+	// The Alibaba Cloud account ID of the authorization target.
+	//
 	// example:
 	//
 	// 114240524784****
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
-	// The ID of the CloudSSO identity.
+	// The CloudSSO identity ID.
 	//
 	// example:
 	//
 	// u-00q8wbq42wiltcrk****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The name of the CloudSSO identity.
+	// The CloudSSO identity name.
 	//
 	// example:
 	//
 	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The type of the CloudSSO identity. Valid values:
+	// The CloudSSO identity type. Valid values:
 	//
-	// - User
+	// - User: user
 	//
-	// - Group
+	// - Group: group
 	//
 	// example:
 	//
@@ -102,7 +104,7 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
 	// The task status. Valid values:
 	//
-	// - InProgress: The task is running.
+	// - InProgress: The task is in progress.
 	//
 	// - Success: The task is successful.
 	//
@@ -112,23 +114,25 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task object.
+	// The target ID of the task.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the task target.
 	//
 	// example:
 	//
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in the resource directory.
+	// The path ID of the task target in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in the resource directory.
+	// The path name of the task target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	// The target type of the task. Valid values:
+	//
+	// - RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//
@@ -140,7 +144,9 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	//
 	// t-shfqw1u1edszvxw5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. The value is fixed as DeleteAccessAssignment, which indicates that access permissions on an account in your resource directory are removed.
+	// The task type. Valid values:
+	//
+	// - DeleteAccessAssignment: The task removes an authorization from an account in a resource directory.
 	//
 	// example:
 	//

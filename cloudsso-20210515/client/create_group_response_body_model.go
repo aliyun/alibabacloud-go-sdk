@@ -16,7 +16,7 @@ type iCreateGroupResponseBody interface {
 }
 
 type CreateGroupResponseBody struct {
-	// The information about the group.
+	// The user group information.
 	Group *CreateGroupResponseBodyGroup `json:"Group,omitempty" xml:"Group,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,37 +62,39 @@ func (s *CreateGroupResponseBody) Validate() error {
 }
 
 type CreateGroupResponseBodyGroup struct {
-	// The time when the group was created.
+	// The time when the user group was created. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the group.
+	// The description of the user group.
 	//
 	// example:
 	//
 	// This is a group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the group.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// g-00jqzghi2n3o5hkh****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the group.
+	// The name of the user group.
 	//
 	// example:
 	//
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the group. The value is fixed as Manual, which indicates that the group is manually created.
+	// The type of the user group. Valid values:
+	//
+	// - Manual: The user group is manually created.
 	//
 	// example:
 	//
 	// Manual
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	// The time when the information about the group was modified.
+	// The time when the user group was updated. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

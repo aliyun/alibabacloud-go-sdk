@@ -14,7 +14,7 @@ type iEnableDelegateAccountRequest interface {
 }
 
 type EnableDelegateAccountRequest struct {
-  // The ID of the delegated administrator account of CloudSSO.
+  // The ID of the CloudSSO delegated administrator account.
   // 
   // example:
   // 

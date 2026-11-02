@@ -18,21 +18,21 @@ type iDeleteUserProvisioningEventRequest interface {
 }
 
 type DeleteUserProvisioningEventRequest struct {
-	// The ID of the resource directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the RAM user provisioning event.
+	// The ID of the Resource Access Management (RAM) user synchronization event.
 	//
-	// You can call the [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) operation to query the value of `EventId`.
+	// You can invoke [ListUserProvisioningEvents](https://help.aliyun.com/document_detail/2636305.html) to retrieve the `EventId`.
 	//
 	// example:
 	//
 	// upe-wjKyNDmZvyZOiRcJ****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The ID of the RAM user provisioning.
+	// The ID of the Resource Access Management (RAM) user synchronization.
 	//
 	// example:
 	//

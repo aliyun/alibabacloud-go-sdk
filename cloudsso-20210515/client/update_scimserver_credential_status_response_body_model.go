@@ -22,7 +22,7 @@ type UpdateSCIMServerCredentialStatusResponseBody struct {
 	//
 	// 7C086C2F-1C66-57B3-B14E-2C1DA70727CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the SCIM credential.
+	// The SCIM credential information.
 	SCIMServerCredential *UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpdateSCIMServerCredentialStatusResponseBody) Validate() error {
 }
 
 type UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential struct {
-	// The time when the SCIM credential was created.
+	// The creation time of the SCIM credential. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential struct {
 	//
 	// BearerToken
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The time when the SCIM credential expires.
+	// The expiration time of the SCIM credential. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type UpdateSCIMServerCredentialStatusResponseBodySCIMServerCredential struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The status of the SCIM credential. Valid values:
 	//
-	// - Enabled: The SCIM credential is enabled.
+	// - Enabled: Enabled.
 	//
-	// - Disabled: The SCIM credential is disabled.
+	// - Disabled: Disabled.
 	//
 	// example:
 	//

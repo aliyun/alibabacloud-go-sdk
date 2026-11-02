@@ -74,20 +74,22 @@ type GetTaskResponseBodyTask struct {
 	//
 	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The end time of the task.
+	// The end time of the task. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-11-05T02:58:08Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cause of the task failure.
+	// The reason why the task failed.
 	//
-	// >  This parameter is returned only when the value of `Status` is `Failed`.
+	// > This parameter is returned only when `Status` is `Failed`.
 	//
 	// example:
 	//
 	// No Permission.
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// The ID of the Alibaba Cloud account to which the target belongs.
+	//
 	// example:
 	//
 	// 17xxxxxxxxxxxx73
@@ -104,17 +106,17 @@ type GetTaskResponseBodyTask struct {
 	//
 	// Alice
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The type of the CloudSSO identity. Valid values:
+	// The CloudSSO identity type. Valid values:
 	//
-	// 	- User
+	// - User: user.
 	//
-	// 	- Group
+	// - Group: user group.
 	//
 	// example:
 	//
 	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The start time of the task.
+	// The start time of the task. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -122,33 +124,33 @@ type GetTaskResponseBodyTask struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- InProgress: The task is running.
+	// - InProgress: The task is in progress.
 	//
-	// 	- Success: The task is successful.
+	// - Success: The task succeeded.
 	//
-	// 	- Failed: The task failed.
+	// - Failed: The task failed.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task object.
+	// The ID of the task target.
 	//
 	// example:
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the task object.
+	// The name of the task target.
 	//
 	// example:
 	//
 	// dev-test
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path ID of the task object in the resource directory.
+	// The path ID of the task target in the resource directory.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The path name of the task object in the resource directory.
+	// The path name of the task target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The type of the task object. The value is fixed as RD-Account, which indicates the accounts in the resource directory.
+	// The task target type. Valid values: RD-Account, which indicates that the task target is an account in a resource directory.
 	//
 	// example:
 	//
@@ -162,13 +164,13 @@ type GetTaskResponseBodyTask struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- ProvisionAccessConfiguration: An access configuration is provisioned.
+	// - ProvisionAccessConfiguration: Deploys the access configuration.
 	//
-	// 	- DeprovisionAccessConfiguration: An access configuration is de-provisioned.
+	// - DeprovisionAccessConfiguration: Removes the access configuration deployment.
 	//
-	// 	- CreateAccessAssignment: Access permissions on an account in the resource directory are assigned.
+	// - CreateAccessAssignment: Grants authorization to an account in a resource directory.
 	//
-	// 	- DeleteAccessAssignment: Access permissions on an account in the resource directory are removed.
+	// - DeleteAccessAssignment: Revokes authorization from an account in a resource directory.
 	//
 	// example:
 	//
