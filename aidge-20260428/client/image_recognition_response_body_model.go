@@ -22,7 +22,7 @@ type iImageRecognitionResponseBody interface {
 }
 
 type ImageRecognitionResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ImageRecognitionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The intelligent element recognition result.
 	Data *ImageRecognitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ImageRecognitionResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ImageRecognitionResponseBody) Validate() error {
 }
 
 type ImageRecognitionResponseBodyData struct {
-	// The border pixel information, returned as a comma-separated string.
+	// The border pixel information, which is a comma-separated string.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ type ImageRecognitionResponseBodyData struct {
 	//
 	// false
 	ObjWatermark *bool `json:"ObjWatermark,omitempty" xml:"ObjWatermark,omitempty"`
-	// The number of products.
+	// The product quantity.
 	//
 	// example:
 	//
 	// 2
 	PdNum *int32 `json:"PdNum,omitempty" xml:"PdNum,omitempty"`
-	// The proportion of the product in the image.
+	// The product proportion.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type ImageRecognitionResponseBodyData struct {
 	PdProp *string `json:"PdProp,omitempty" xml:"PdProp,omitempty"`
 	// The list of recognized text.
 	RecText []*string `json:"RecText,omitempty" xml:"RecText,omitempty" type:"Repeated"`
-	// The proportion of text in the image.
+	// The text proportion.
 	//
 	// example:
 	//

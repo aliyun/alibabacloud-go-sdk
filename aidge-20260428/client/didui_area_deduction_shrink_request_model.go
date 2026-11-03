@@ -20,17 +20,17 @@ type iDiduiAreaDeductionShrinkRequest interface {
 }
 
 type DiduiAreaDeductionShrinkRequest struct {
-	// The list of products and their detection boxes.
+	// The list of products and bounding boxes.
 	//
 	// This parameter is required.
 	ProductsShrink *string `json:"Products,omitempty" xml:"Products,omitempty"`
-	// The ID of the customer-specific SKU vector database that determines which database is used for recall. The database must be created in advance through the database creation process.
+	// The ID of the customer\\"s dedicated SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
 	//
 	// example:
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The optional business request ID used for Tracing Analysis.
+	// The optional business request ID, used for end-to-end Tracing Analysis.
 	//
 	// example:
 	//

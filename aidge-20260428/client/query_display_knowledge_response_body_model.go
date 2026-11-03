@@ -36,7 +36,7 @@ type QueryDisplayKnowledgeResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type QueryDisplayKnowledgeResponseBodyData struct {
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The knowledge base status.
+	// The status of the knowledge base.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type QueryDisplayKnowledgeResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The knowledge base ID.
+	// The ID of the knowledge base.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type QueryDisplayKnowledgeResponseBodyData struct {
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The asynchronous task ID. This parameter is empty for synchronous API operations.
+	// The ID of the asynchronous task. This parameter is empty for synchronous API operations.
 	//
 	// example:
 	//
@@ -309,17 +309,17 @@ func (s *QueryDisplayKnowledgeResponseBodyData) Validate() error {
 }
 
 type QueryDisplayKnowledgeResponseBodyDataRecords struct {
-	// The description of the failure cause. This parameter is returned only when the status is FAILED.
+	// The description of the failure reason. This parameter is returned only when the status is FAILED.
 	//
 	// example:
 	//
-	// Image is inaccessible
+	// Image not accessible
 	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
-	// The code of the failure cause. This parameter is returned only when the status is FAILED.
+	// The code of the failure reason. This parameter is returned only when the status is FAILED.
 	//
 	// example:
 	//
-	// Image is inaccessible
+	// Image not accessible
 	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
 	// The last modified time.
 	//
@@ -339,7 +339,7 @@ type QueryDisplayKnowledgeResponseBodyDataRecords struct {
 	//
 	// Date
 	ImageUrlExpireTime *string `json:"ImageUrlExpireTime,omitempty" xml:"ImageUrlExpireTime,omitempty"`
-	// The record ID.
+	// The ID of the record.
 	//
 	// example:
 	//
@@ -351,13 +351,13 @@ type QueryDisplayKnowledgeResponseBodyDataRecords struct {
 	//
 	// sku-001
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The SKU name.
+	// The name of the SKU.
 	//
 	// example:
 	//
 	// Product side image
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
-	// The record status.
+	// The status of the record.
 	//
 	// example:
 	//

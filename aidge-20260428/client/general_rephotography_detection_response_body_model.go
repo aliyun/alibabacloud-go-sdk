@@ -30,7 +30,7 @@ type GeneralRephotographyDetectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The recapture detection result.
 	Data *GeneralRephotographyDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The return message or failure description.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *GeneralRephotographyDetectionResponseBody) Validate() error {
 }
 
 type GeneralRephotographyDetectionResponseBodyData struct {
-	// The business result. This value is an empty object if the request fails.
+	// The business result. This is an empty object if the call fails.
 	Result *GeneralRephotographyDetectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The usage information. The value is `{"ProcessingCount":1}` on success, or an empty object on failure.
+	// The usage information. The value is `{"ProcessingCount":1}` if the call is successful, or an empty object if the call fails.
 	//
 	// example:
 	//
@@ -161,13 +161,13 @@ func (s *GeneralRephotographyDetectionResponseBodyData) Validate() error {
 type GeneralRephotographyDetectionResponseBodyDataResult struct {
 	// The supplementary element localization result.
 	Grounding *GeneralRephotographyDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
-	// Indicates whether the image is a recaptured photo.
+	// Indicates whether the image is recaptured.
 	//
 	// example:
 	//
 	// true
 	IsFake *bool `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
-	// The detection type. The value is fixed as general.
+	// The detection type. The value is fixed to general.
 	//
 	// example:
 	//
@@ -220,17 +220,17 @@ func (s *GeneralRephotographyDetectionResponseBodyDataResult) Validate() error {
 }
 
 type GeneralRephotographyDetectionResponseBodyDataResultGrounding struct {
-	// The coverage of the localization. Valid values:
+	// The coverage. Valid values:
 	//
-	// - complete: All relevant visible targets are fully covered.
+	// - `complete`: The relevant visible targets are complete.
 	//
-	// - partial: Only some targets are valid or recognizable.
+	// - `partial`: Only some targets are valid or recognizable.
 	//
 	// example:
 	//
 	// complete
 	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The array of targets. A maximum of 12 items are returned. This value can be empty if no relevant targets exist.
+	// The target array. It contains up to 12 items and can be empty if no relevant targets are found.
 	Regions []*GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -276,13 +276,13 @@ func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) Validate(
 type GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions struct {
 	// The bounding box coordinates.
 	Bbox2d []*float32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The target category. For valid values, see the table below.
+	// The target category. For enumerations, see the following table.
 	//
 	// example:
 	//
 	// product
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The confirmed short name or text of up to 24 characters. This value is an empty string if the text is unreadable.
+	// The confirmed short name or text of up to 24 characters. This is an empty string if the text is unclear.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iAssetOptimizeLiteRequest interface {
 }
 
 type AssetOptimizeLiteRequest struct {
-	// The custom glossary for term intervention.
+	// The intervention glossary.
 	//
 	// example:
 	//

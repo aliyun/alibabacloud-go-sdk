@@ -18,7 +18,7 @@ type iImageCroppingRequest interface {
 }
 
 type ImageCroppingRequest struct {
-	// The URL of the image to process.
+	// The URL of the image to be processed.
 	//
 	// This parameter is required.
 	//

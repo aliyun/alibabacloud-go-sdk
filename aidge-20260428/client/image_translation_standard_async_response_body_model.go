@@ -22,15 +22,15 @@ type iImageTranslationStandardAsyncResponseBody interface {
 }
 
 type ImageTranslationStandardAsyncResponseBody struct {
-	// The error code. This parameter is not returned for normal calls.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task submission result of Image Translation Standard Edition.
+	// The submission result of the asynchronous task for Image Translation Standard Edition.
 	Data *ImageTranslationStandardAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for normal calls.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//

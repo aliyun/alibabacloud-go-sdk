@@ -70,13 +70,13 @@ func (s *AddDisplayKnowledgeRequest) Validate() error {
 }
 
 type AddDisplayKnowledgeRequestRecords struct {
-	// The HTTP(S) URL of the product image.
+	// The HTTP or HTTPS URL of the product image.
 	//
 	// example:
 	//
 	// https://xxxx/img_1784599244373_9c2309a0.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The SKU ID. If this parameter is left empty, the platform generates the ID.
+	// The SKU ID. If this parameter is left empty, the platform generates an ID.
 	//
 	// example:
 	//

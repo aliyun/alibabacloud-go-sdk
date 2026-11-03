@@ -22,13 +22,13 @@ type iImageMattingAsyncResponseBody interface {
 }
 
 type ImageMattingAsyncResponseBody struct {
-	// The status code, such as "success". This parameter is not returned for normal calls.
+	// The status code, such as success.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the asynchronous task for intelligent image matting.
+	// The submission result of the intelligent image matting asynchronous task.
 	Data *ImageMattingAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. This parameter is not returned for normal calls.
 	//
@@ -36,17 +36,13 @@ type ImageMattingAsyncResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request. It is used to identify a unique request.
+	// The request ID, which is used to identify a unique request.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: The call is successful.
-	//
-	// - false: The call fails.
+	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//

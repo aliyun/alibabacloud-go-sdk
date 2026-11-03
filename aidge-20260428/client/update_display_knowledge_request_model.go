@@ -24,7 +24,7 @@ type UpdateDisplayKnowledgeRequest struct {
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The records to update. A maximum of 500 records can be specified.
+	// The records to be modified. A maximum of 500 records can be specified.
 	//
 	// This parameter is required.
 	Records []*UpdateDisplayKnowledgeRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`

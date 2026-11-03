@@ -22,7 +22,7 @@ type iDocumentTranslateResponseBody interface {
 }
 
 type DocumentTranslateResponseBody struct {
-	// The response code.
+	// The response code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -30,21 +30,25 @@ type DocumentTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The asynchronous task information.
 	Data *DocumentTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, such as "The parameters contain sensitive information. Try other input."
+	// The error message, such as "The parameter contains sensitive information. Try another input."
 	//
-	// This parameter is not returned if the call is successful.
+	// This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identity of the request. Use this ID for troubleshooting and Tracing Analysis.
+	// The unique identifier of the request, used for troubleshooting and tracing analysis.
 	//
 	// example:
 	//
 	// 39E8A74B-F99E-1195-A5FF-3ECC5F94F304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. true: The call is successful. false: The call failed.
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -115,7 +119,7 @@ func (s *DocumentTranslateResponseBody) Validate() error {
 }
 
 type DocumentTranslateResponseBodyData struct {
-	// The unique identifier of the asynchronous task. Use this ID to query the task status and result.
+	// The unique identifier of the asynchronous task, which is used to query the task status and results later.
 	//
 	// example:
 	//

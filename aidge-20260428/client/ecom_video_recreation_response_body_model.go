@@ -42,7 +42,7 @@ type EcomVideoRecreationResponseBody struct {
   // 
   // 70CBEFDF-BB17-1EB3-8A21-569F3124738F
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the submission is successful.
+  // Indicates whether the submission was successful.
   // 
   // example:
   // 

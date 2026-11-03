@@ -28,7 +28,7 @@ type iImageTranslationProAsyncRequest interface {
 }
 
 type ImageTranslationProAsyncRequest struct {
-	// The business ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+	// The business order ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ImageTranslationProAsyncRequest struct {
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// • Image URL: The URL must be publicly accessible over the Internet.
+	// 	- Image URL: Must be accessible over the Internet.
 	//
-	// • Formats: PNG, JPEG, JPG, BMP, and WEBP.
+	// 	- Format: PNG, JPEG, JPG, BMP, and WebP.
 	//
-	// • Pixels: The width and height cannot exceed 4,000 pixels.
+	// 	- Pixels: The width and height must not exceed 4,000.
 	//
-	// • File size: The original file size cannot exceed 10 MB.
+	// 	- File size: The original file must be less than or equal to 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ImageTranslationProAsyncRequest struct {
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which can be used for secondary editing when you integrate an image editor. Default value: false.
+	// Specifies whether to return layout information such as the position, font, and color of the text. When this parameter is set to true, layer information is returned, which can be used for secondary editing in an image editor. Default value: false.
 	//
 	// example:
 	//

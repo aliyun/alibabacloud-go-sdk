@@ -28,9 +28,9 @@ type DeleteDisplayKnowledgeResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The deletion results for the display knowledge base content.
+	// The result of deleting content from the display knowledge base.
 	Data *DeleteDisplayKnowledgeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The returned message or failure description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteDisplayKnowledgeResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	//
 	// rag_001
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The number of visible records after the deletion.
+	// The number of visible records after deletion.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	RemainingCount *int32 `json:"RemainingCount,omitempty" xml:"RemainingCount,omitempty"`
 	// The processing results for each record.
 	Results []*DeleteDisplayKnowledgeResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// Indicates whether the business processing is successful.
+	// Indicates whether the business processing was successful.
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ type DeleteDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The cause of the failure.
+	// The reason for the failure.
 	//
 	// example:
 	//
@@ -328,9 +328,9 @@ type DeleteDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// example:
 	//
-	// Empty for the deletion API
+	// Empty for deletion API operations
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the deletion is successful.
+	// Indicates whether the deletion was successful.
 	//
 	// example:
 	//

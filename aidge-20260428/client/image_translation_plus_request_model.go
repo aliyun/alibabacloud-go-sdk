@@ -40,7 +40,7 @@ type ImageTranslationPlusRequest struct {
 	//
 	// https://img.alicdn.com/example.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate text on the product body. This parameter is optional. Default value: false.
+	// Specifies whether to translate the text on the product subject. This parameter is optional. Default value: false.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ImageTranslationPlusRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand text on the product. This parameter is optional. Default value: false.
+	// Specifies whether to translate the text on the brand. This parameter is optional. Default value: false.
 	//
 	// example:
 	//

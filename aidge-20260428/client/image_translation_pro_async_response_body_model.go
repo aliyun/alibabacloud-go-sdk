@@ -22,7 +22,7 @@ type iImageTranslationProAsyncResponseBody interface {
 }
 
 type ImageTranslationProAsyncResponseBody struct {
-	// The response code. A value of success indicates that the task is submitted.
+	// The response code. A value of success indicates that the task is submitted successfully.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type ImageTranslationProAsyncResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The submission result of the Image Translation Pro asynchronous task.
 	Data *ImageTranslationProAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The call description. A value of Success indicates a successful call. If the call fails, read the actual error message.
+	// The call description. A successful call returns Success. For a failed call, read the actual error message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the submission request. This ID is used for troubleshooting.
+	// The ID of the submission request, which is used for troubleshooting.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the submission call is successful. This does not indicate that the translation is complete.
+	// Indicates whether the submission call is successful. This does not mean that the translation is completed.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ImageTranslationProAsyncResponseBody) Validate() error {
 }
 
 type ImageTranslationProAsyncResponseBodyData struct {
-	// The ID of the asynchronous task. This ID is used to query results and associate notifications. Do not use the example prefix as a business validation rule.
+	// The identifier of the asynchronous task, which is used for result queries and notification association. Do not use the example prefix as a business validation rule.
 	//
 	// example:
 	//

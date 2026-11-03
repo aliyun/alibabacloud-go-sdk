@@ -28,7 +28,7 @@ type DiduiAreaDeductionResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The floor display area inference result.
+	// The inference result of the floor display area.
 	Data *DiduiAreaDeductionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -131,7 +131,7 @@ type DiduiAreaDeductionResponseBodyData struct {
 	//
 	// OK
 	HttpStatus *int32 `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
-	// The downstream call latency, in milliseconds.
+	// The duration of the downstream call, in milliseconds.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DiduiAreaDeductionResponseBodyData struct {
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the workflow execution is successful.
+	// The business status of the workflow.
 	//
 	// example:
 	//
@@ -294,7 +294,7 @@ func (s *DiduiAreaDeductionResponseBodyData) Validate() error {
 }
 
 type DiduiAreaDeductionResponseBodyDataResult struct {
-	// The stage 4 area label.
+	// The Stage 4 area label.
 	Stage4AreaLabel *DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel `json:"Stage4AreaLabel,omitempty" xml:"Stage4AreaLabel,omitempty" type:"Struct"`
 }
 
@@ -331,13 +331,13 @@ type DiduiAreaDeductionResponseBodyDataResultStage4AreaLabel struct {
 	//
 	// 1.5334
 	AreaM2 *float64 `json:"AreaM2,omitempty" xml:"AreaM2,omitempty"`
-	// The left edge length, in meters.
+	// The length of the left boundary, in meters.
 	//
 	// example:
 	//
 	// 1.025
 	LeftEdgeM *float64 `json:"LeftEdgeM,omitempty" xml:"LeftEdgeM,omitempty"`
-	// The right edge length, in meters.
+	// The length of the right boundary, in meters.
 	//
 	// example:
 	//

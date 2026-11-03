@@ -20,17 +20,17 @@ type iDiduiAreaDeductionRequest interface {
 }
 
 type DiduiAreaDeductionRequest struct {
-	// The list of products and their detection boxes.
+	// The list of products and bounding boxes.
 	//
 	// This parameter is required.
 	Products []*DiduiAreaDeductionRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
-	// The ID of the customer-specific SKU vector database that determines which database is used for recall. The database must be created in advance through the database creation process.
+	// The ID of the customer\\"s dedicated SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
 	//
 	// example:
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The optional business request ID used for Tracing Analysis.
+	// The optional business request ID, used for end-to-end Tracing Analysis.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *DiduiAreaDeductionRequest) Validate() error {
 }
 
 type DiduiAreaDeductionRequestProducts struct {
-	// The instance boxes for the current SKU. The coordinate range is 0 to 1000.
+	// The bounding boxes of the current SKU, with coordinate values ranging from 0 to 1000.
 	//
 	// This parameter is required.
 	Boxes []*DiduiAreaDeductionRequestProductsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
@@ -158,7 +158,7 @@ func (s *DiduiAreaDeductionRequestProducts) Validate() error {
 }
 
 type DiduiAreaDeductionRequestProductsBoxes struct {
-	// The bottom boundary of the detection box.
+	// The bottom boundary of the bounding box.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +166,7 @@ type DiduiAreaDeductionRequestProductsBoxes struct {
 	//
 	// 689
 	Bottom *float64 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
-	// The left boundary of the detection box.
+	// The left boundary of the bounding box.
 	//
 	// This parameter is required.
 	//
@@ -174,7 +174,7 @@ type DiduiAreaDeductionRequestProductsBoxes struct {
 	//
 	// 763
 	Left *float64 `json:"Left,omitempty" xml:"Left,omitempty"`
-	// The right boundary of the detection box.
+	// The right boundary of the bounding box.
 	//
 	// This parameter is required.
 	//
@@ -182,7 +182,7 @@ type DiduiAreaDeductionRequestProductsBoxes struct {
 	//
 	// 904
 	Right *float64 `json:"Right,omitempty" xml:"Right,omitempty"`
-	// The top boundary of the detection box.
+	// The top boundary of the bounding box.
 	//
 	// This parameter is required.
 	//

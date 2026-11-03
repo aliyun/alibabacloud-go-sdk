@@ -1,3 +1,9 @@
+2026-11-03 Version: v5.10.0
+- Support API GenerateProductContent.
+- Support API ImageUpscale.
+- Update API ImageMatting: add response parameters Body.Data.StructData.
+
+
 2026-10-21 Version: v5.9.1
 - Update API ImageMattingAsync: add request parameters BizId.
 - Update API ImageRecognitionAsync: add request parameters BizId.

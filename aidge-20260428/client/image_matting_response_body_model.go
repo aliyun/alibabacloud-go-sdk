@@ -28,7 +28,7 @@ type ImageMattingResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The matting result.
+	// The image matting result.
 	Data *ImageMattingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,9 +44,9 @@ type ImageMattingResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The call is successful.
 	//
-	// - false: Failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -117,31 +117,59 @@ func (s *ImageMattingResponseBody) Validate() error {
 }
 
 type ImageMattingResponseBodyData struct {
-	// The height of the result image in pixels.
+	// The height of the result image. Unit: pixels.
 	//
 	// example:
 	//
 	// 800
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The URL of the image matting result.
+	// The URL of the result image.
 	//
 	// example:
 	//
 	// http://dashscope-7c2c.oss-cn-shanghai.aliyuncs.com/xxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The quality score of the image matting result.
+	// The matting quality score.
 	//
 	// example:
 	//
 	// 0.11
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The returned layer information. This includes the URL of the original image, the URL of the matting result, and the matting area information.
+	//
+	// example:
+	//
+	// "origin_url": "xxx",
+	//
+	//                     "score": "xxx",
+	//
+	//                     "file": "xxxx",
+	//
+	//                     "extra_info": "",
+	//
+	//                     "pass": "xx",
+	//
+	//                     "bbox": "xxx",
+	//
+	//                     "plain_url": "xxxxxx",
+	//
+	//                     "image_shape": [
+	//
+	//                         xxx,
+	//
+	//                         xxx
+	//
+	//                     ],
+	//
+	//                     "url": "xxx"
+	StructData interface{} `json:"StructData,omitempty" xml:"StructData,omitempty"`
 	// The usage information.
 	//
 	// example:
 	//
 	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
-	// The width of the result image in pixels.
+	// The width of the result image. Unit: pixels.
 	//
 	// example:
 	//
@@ -169,6 +197,10 @@ func (s *ImageMattingResponseBodyData) GetScore() *float64 {
 	return s.Score
 }
 
+func (s *ImageMattingResponseBodyData) GetStructData() interface{} {
+	return s.StructData
+}
+
 func (s *ImageMattingResponseBodyData) GetUsageMap() map[string]*int64 {
 	return s.UsageMap
 }
@@ -189,6 +221,11 @@ func (s *ImageMattingResponseBodyData) SetImageUrl(v string) *ImageMattingRespon
 
 func (s *ImageMattingResponseBodyData) SetScore(v float64) *ImageMattingResponseBodyData {
 	s.Score = &v
+	return s
+}
+
+func (s *ImageMattingResponseBodyData) SetStructData(v interface{}) *ImageMattingResponseBodyData {
+	s.StructData = v
 	return s
 }
 

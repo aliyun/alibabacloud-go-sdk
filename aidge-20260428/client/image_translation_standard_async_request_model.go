@@ -48,7 +48,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// https://example.com/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to include the translation of the product area.
+	// Specifies whether to include translation for the product area.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate the brand text in the product area.
+	// Specifies whether to translate brand text in the product area.
 	//
 	// example:
 	//

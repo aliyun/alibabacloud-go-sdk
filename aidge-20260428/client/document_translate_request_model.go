@@ -20,15 +20,13 @@ type iDocumentTranslateRequest interface {
 }
 
 type DocumentTranslateRequest struct {
-	// The type of the document. Valid values: PDF and word.
+	// The type of the document. Valid values: PDF and word. Size limits:
 	//
-	// Supported capacity limits:
+	// - Word: 200 MB or 100 pages.
 	//
-	// - Word: 200 MB or 100 pages
+	// - PDF: 200 MB or 100 pages.
 	//
-	// - PDF: 200 MB or 100 pages
-	//
-	// - Maximum size per file: 200 MB
+	// - Maximum size of a single file: 200 MB.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +34,13 @@ type DocumentTranslateRequest struct {
 	//
 	// PDF
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The glossary ID. Specify this parameter when you need the glossary feature. Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for brand name protection and similar scenarios.
+	// The ID of the intervention glossary. Specify this parameter when the intervention feature is required. This parameter supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and no translation (ABC-null value). It is commonly used in scenarios such as brand word protection.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The target language. The language code uses the two-letter ISO 639-1 standard.
+	// The target language. The language code uses the two-letter representation of the ISO 639-1 standard.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iImageRemovalProRequest interface {
 }
 
 type ImageRemovalProRequest struct {
-	// The call type. Valid values:
+	// Specifies the call type. Valid values:
 	//
 	// - true: Asynchronous.
 	//
@@ -28,7 +28,7 @@ type ImageRemovalProRequest struct {
 	//
 	// false
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The URL of the image to process.
+	// The URL of the image to be processed.
 	//
 	// This parameter is required.
 	//

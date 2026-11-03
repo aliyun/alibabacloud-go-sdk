@@ -36,7 +36,7 @@ type QueryDisplayKnowledgeShrinkRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The knowledge base ID.
+	// The ID of the knowledge base.
 	//
 	// This parameter is required.
 	//

@@ -28,9 +28,9 @@ type DiduiAreaDeductionProResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submit status of the asynchronous task.
+	// The submission result of the asynchronous task.
 	Data *DiduiAreaDeductionProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The returned message or failure description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DiduiAreaDeductionProResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *DiduiAreaDeductionProResponseBody) Validate() error {
 }
 
 type DiduiAreaDeductionProResponseBodyData struct {
-	// The ID of the asynchronous task, which is used to call QueryAsyncTaskResult to query the task result.
+	// The ID of the asynchronous task used to query the result by calling QueryAsyncTaskResult.
 	//
 	// example:
 	//

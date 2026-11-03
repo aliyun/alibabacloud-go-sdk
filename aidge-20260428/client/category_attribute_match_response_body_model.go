@@ -22,7 +22,7 @@ type iCategoryAttributeMatchResponseBody interface {
 }
 
 type CategoryAttributeMatchResponseBody struct {
-	// The error code. This parameter is not returned for successful calls.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CategoryAttributeMatchResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *CategoryAttributeMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -125,21 +125,21 @@ type CategoryAttributeMatchResponseBodyData struct {
 	//
 	// example:
 	//
-	// Cat Collars
+	// Cat collar
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The full path of the category, separated by "/".
+	// The full path of the category, separated by forward slashes (/).
 	//
 	// example:
 	//
-	// Pet Supplies/Cat Supplies/Cat Charms, Collars & Leashes/Cat Collars
+	// Pet Supplies/Cat Supplies/Cat Pendants, Collars, Leashes/Cat Collar
 	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
-	// The number of attributes that are successfully filled.
+	// The number of successfully filled attributes.
 	//
 	// example:
 	//
 	// 7
 	FilledCount *int32 `json:"FilledCount,omitempty" xml:"FilledCount,omitempty"`
-	// Indicates whether the attribute is successfully matched. Valid values: true and false.
+	// Indicates whether the attribute is matched successfully. Valid values: true and false.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// 682439
 	AttrId *int32 `json:"AttrId,omitempty" xml:"AttrId,omitempty"`
-	// The matching confidence score, ranging from 0 to 100.
+	// The matching confidence level. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// Single-select dropdown
 	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
-	// Indicates whether the attribute is successfully matched. Valid values: true and false.
+	// Indicates whether the attribute is matched successfully. Valid values: true and false.
 	//
 	// example:
 	//
@@ -290,15 +290,15 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// ABC Private POP
 	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
-	// The explanation for the matching result.
+	// The description of the matching reason.
 	//
 	// example:
 	//
 	// a_reason
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The list of selected attribute value texts, such as ["iOS","Android"\\].
+	// The list of selected attribute value texts, such as ["iOS","Android"].
 	SelectedValues []*string `json:"SelectedValues,omitempty" xml:"SelectedValues,omitempty" type:"Repeated"`
-	// The list of selected attribute value IDs, such as [30127,30128\\].
+	// The list of selected attribute value IDs, such as [30127,30128].
 	SelectedVids []*int32 `json:"SelectedVids,omitempty" xml:"SelectedVids,omitempty" type:"Repeated"`
 }
 
@@ -396,7 +396,7 @@ func (s *CategoryAttributeMatchResponseBodyDataAttributes) Validate() error {
 }
 
 type CategoryAttributeMatchResponseBodyDataUsageMap struct {
-	// The number of processing times.
+	// The processing count.
 	//
 	// example:
 	//

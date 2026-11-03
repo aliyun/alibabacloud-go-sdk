@@ -26,27 +26,27 @@ type iCategoryMatchRequest interface {
 }
 
 type CategoryMatchRequest struct {
-	// The product description.
+	// The product details.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Silk, Spring New Arrival
+	// Silk, new spring arrival
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The product attributes that describe the characteristics of the product, such as material. Provide the attribute names and values.
+	// The product attributes and feature descriptions, such as the material of the product. Enter the product attribute name and attribute value.
 	//
 	// example:
 	//
-	// Material:Polyester,Target Audience:General,Brand:AMASON PET
+	// Material:Polyester,Target user:Universal,Brand:AMASON PET
 	ItemSpec *string `json:"ItemSpec,omitempty" xml:"ItemSpec,omitempty"`
-	// The SKU title of the product.
+	// The product SKU title.
 	//
 	// example:
 	//
-	// 0:0:Color:Black(without locator);0:1:Color:Smart Locator(without collar);0:2:Color:Range Locator(without collar);0:3:Color:Blue(without locator);0:4:Color:Orange(without locator);0:5:Color:Pink(without locator);0:6:Color:Red(without locator);0:7:Color:Yellow(without locator);0:8:Color:Purple(without locator)
+	// 0:0:Color:Black (without tracker);0:1:Color:Smart tracking (without collar);0:2:Color:Range tracking (without collar);0:3:Color:Blue (without tracker);0:4:Color:Orange (without tracker);0:5:Color:Pink (without tracker);0:6:Color:Red (without tracker);0:7:Color:Yellow (without tracker);0:8:Color:Purple (without tracker)
 	Sku *string `json:"Sku,omitempty" xml:"Sku,omitempty"`
-	// The product category on the source platform.
+	// The product category.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CategoryMatchRequest struct {
 	//
 	// Clothing
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The source platform from which products are sourced.
+	// The source platform.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CategoryMatchRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target listing platform. Currently, only temu is supported.
+	// The target platform. Currently, only TEMU is supported.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// Women\\"s Spring New Arrival Clothing
+	// Women\\"s new spring clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

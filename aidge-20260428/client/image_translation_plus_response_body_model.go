@@ -22,15 +22,15 @@ type iImageTranslationPlusResponseBody interface {
 }
 
 type ImageTranslationPlusResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task submit status.
+	// The submission result of the asynchronous task.
 	Data *ImageTranslationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ImageTranslationPlusResponseBody struct {
 	//
 	// - true: The call is successful.
 	//
-	// - false: The call failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ImageTranslationPlusResponseBody) Validate() error {
 }
 
 type ImageTranslationPlusResponseBodyData struct {
-	// The asynchronous task ID. Use this ID to poll for results through the queryTaskResult operation.
+	// The ID of the asynchronous task. You can use this ID to poll the result by calling the queryTaskResult operation.
 	//
 	// example:
 	//

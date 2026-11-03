@@ -24,7 +24,7 @@ type DeleteDisplayKnowledgeRequest struct {
 	//
 	// rag_x x x
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The IDs of the records to delete. You can specify up to 500 record IDs.
+	// The IDs of the records to be deleted. A maximum of 500 records can be specified.
 	//
 	// This parameter is required.
 	RecordIds []*int64 `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
