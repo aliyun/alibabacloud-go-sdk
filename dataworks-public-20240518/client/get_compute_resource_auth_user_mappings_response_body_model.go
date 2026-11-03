@@ -26,7 +26,7 @@ type GetComputeResourceAuthUserMappingsResponseBody struct {
 	//
 	// 0000-ABCD-EF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ func (s *GetComputeResourceAuthUserMappingsResponseBodyData) Validate() error {
 }
 
 type GetComputeResourceAuthUserMappingsResponseBodyDataAccounts struct {
-	// The Alibaba Cloud UID.
+	// The Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 12747300953xxx62
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username in the target system, such as an LDAP account.
+	// The username in the destination system, such as an LDAP account.
 	//
 	// example:
 	//

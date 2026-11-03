@@ -16,7 +16,7 @@ type iGetCrossProjectPipelineRunRequest interface {
 }
 
 type GetCrossProjectPipelineRunRequest struct {
-	// The cross-workspace deployment flow ID.
+	// The cross-workspace deployment pipeline run ID.
 	//
 	// This parameter is required.
 	//

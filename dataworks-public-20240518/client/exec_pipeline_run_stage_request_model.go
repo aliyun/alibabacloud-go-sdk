@@ -18,7 +18,7 @@ type iExecPipelineRunStageRequest interface {
 }
 
 type ExecPipelineRunStageRequest struct {
-  // The code of the deployment process stage. For the specific value, see the response of the GetPipelineRun operation.
+  // The code of the stage in the deployment pipeline. For the specific value, refer to the return values of the GetPipelineRun operation.
   // 
   // This parameter is required.
   // 
@@ -26,7 +26,7 @@ type ExecPipelineRunStageRequest struct {
   // 
   // DEV_CHECK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The unique identifier of the deployment process.
+  // The unique identifier of the deployment pipeline.
   // 
   // This parameter is required.
   // 
@@ -34,7 +34,7 @@ type ExecPipelineRunStageRequest struct {
   // 
   // a7ef0634-20ec-4a7c-a214-54020f91XXXX
   Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-  // The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace settings page to obtain the workspace ID.
+  // The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Configuration page to obtain the workspace ID.
   // 
   // This parameter is required.
   // 

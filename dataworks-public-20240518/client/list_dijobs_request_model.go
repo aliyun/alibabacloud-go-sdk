@@ -28,7 +28,7 @@ type iListDIJobsRequest interface {
 }
 
 type ListDIJobsRequest struct {
-	// The type of the destination data source. If you do not specify this parameter, jobs are not filtered by this criterion. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `LogHub`, `StarRocks`, `DataHub`, `AnalyticDB_For_MySQL`, `Kafka`, and `Hive`.
+	// The type of the destination data source. If you do not specify this parameter, no limit is applied. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, LogHub, StarRocks, DataHub, AnalyticDB_For_MySQL, Kafka, and Hive.
 	//
 	// example:
 	//
@@ -36,41 +36,41 @@ type ListDIJobsRequest struct {
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// - `FullAndRealtimeIncremental`: full and real-time incremental synchronization
+	// - FullAndRealtimeIncremental: full and real-time incremental synchronization
 	//
-	// - `RealtimeIncremental`: real-time incremental synchronization
+	// - RealtimeIncremental: real-time incremental synchronization
 	//
-	// - `Full`: full synchronization
+	// - Full: full synchronization
 	//
-	// - `OfflineIncremental`: offline incremental synchronization
+	// - OfflineIncremental: batch incremental synchronization
 	//
-	// - `FullAndOfflineIncremental`: full and offline incremental synchronization
+	// - FullAndOfflineIncremental: full and batch incremental synchronization
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
-	// The name of the Data Integration job.
+	// The name of the export task.
 	//
-	// The name must be unique within the DataWorks workspace.
+	// The name must be unique within the current DataWorks workspace. Duplicate names are not allowed.
 	//
 	// example:
 	//
 	// test_export_01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number. Pages are numbered starting from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default: 10. Maximum: 100.
+	// The number of entries to return on each page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the DataWorks workspace.
+	// The ID of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +78,17 @@ type ListDIJobsRequest struct {
 	//
 	// 1967
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the source data source. If you do not specify this parameter, jobs are not filtered by this criterion. Valid values: `PolarDB`, `MySQL`, `Kafka`, `LogHub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SQLServer`, `Doris`, and `ClickHouse`.
+	// The type of the source data source. If you do not specify this parameter, no limit is applied. Valid values: PolarDB, MySQL, Kafka, LogHub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SQLServer, Doris, and ClickHouse.
 	//
 	// example:
 	//
 	// MySQL
 	SourceDataSourceType *string `json:"SourceDataSourceType,omitempty" xml:"SourceDataSourceType,omitempty"`
-	// The configuration type of the job. Valid values: `FILESPEC`, `CLASSIC`, and `ALL`. `FILESPEC` indicates a new job type configured based on a structured file specification. `CLASSIC` indicates a job configured in the traditional mode. If you set this parameter to `ALL`, jobs of both types are returned.
+	// The task configuration specification type. Valid values: FILESPEC, CLASSIC, and ALL. FILESPEC: new-version tasks based on structured filespec. CLASSIC: tasks in the traditional configuration mode.
+	//
+	// example:
+	//
+	// FILESPEC
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 }
 

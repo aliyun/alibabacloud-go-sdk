@@ -16,9 +16,9 @@ type iListDataQualityEvaluationTasksResponseBody interface {
 }
 
 type ListDataQualityEvaluationTasksResponseBody struct {
-	// The paged query result of quality evaluation tasks.
+	// The paging query results of the data quality evaluation tasks.
 	PagingInfo *ListDataQualityEvaluationTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The API request ID.
+	// The ID of the API request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListDataQualityEvaluationTasksResponseBody) Validate() error {
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfo struct {
-	// The quality evaluation tasks.
+	// The data quality evaluation tasks.
 	DataQualityEvaluationTasks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks `json:"DataQualityEvaluationTasks,omitempty" xml:"DataQualityEvaluationTasks,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -70,13 +70,13 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfo struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// This is a daily run data quality evaluation plan
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The callback settings during the lifecycle of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
+	// The callback settings in the instance lifecycle epoch of the data quality evaluation task. Currently, only one hook that blocks scheduling tasks is supported.
 	Hooks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
 	// The ID of the data quality evaluation task.
 	//
@@ -160,7 +160,7 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the data quality evaluation task. The name can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
+	// The name of the data quality evaluation task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 255 characters in length.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The alert configuration.
 	Notifications *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// The DataWorks workspace ID.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The runtime settings for data sources. Currently, only specifying the EMR YARN queue and the SQL engine for collecting EMR tables is supported. Valid SQL engine values: SPARK_SQL, KYUUBI, PRESTO_SQL, and HIVE_SQL.
+	// The settings for using the data source. Currently, you can only specify the YARN queue for EMR and set the SQL engine to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL when collecting EMR tables.
 	//
 	// example:
 	//
@@ -313,15 +313,15 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks struct {
-	// The condition that triggers the hook.
+	// The trigger condition of the hook.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The type of the follow-up action. Valid values:
+	// The type of the subsequent action. Valid values:
 	//
-	// - BlockTaskInstance: Blocks the execution of a DataWorks node instance.
+	// - BlockTaskInstance: Blocks the execution of the DataWorks task instance.
 	//
 	// example:
 	//
@@ -360,13 +360,13 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications struct {
-	// The condition that triggers the notification.
+	// The trigger condition of the notification.
 	//
 	// example:
 	//
 	// ${severity} == "High"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The alert settings.
+	// The specific alert settings.
 	Notifications []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -410,9 +410,9 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications struct {
-	// The alert channel configurations.
+	// The notification channel configuration.
 	NotificationChannels []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// The alert recipient configurations.
+	// The notification recipient configuration.
 	NotificationReceivers []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -465,7 +465,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels struct {
-	// The alert channel.
+	// The notification channel.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -491,29 +491,29 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers struct {
-	// The extension information in JSON format. For example, DingTalk chatbots support mentioning all members.
+	// The extended information in JSON format. For example, DingTalk chatbots support mentioning all members.
 	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The type of the alert recipient. Valid values:
+	// The type of the notification recipient. Valid values:
 	//
-	// - AliUid: Alibaba Cloud account UID.
+	// - AliUid: the UID of the Alibaba Cloud account
 	//
-	// - WebhookUrl: custom webhook URL.
+	// - WebhookUrl: the custom webhook URL
 	//
-	// - DingdingUrl: DingTalk chatbot URL.
+	// - DingdingUrl: the DingTalk chatbot URL
 	//
-	// - FeishuUrl: Lark chatbot URL.
+	// - FeishuUrl: the Lark chatbot URL
 	//
-	// - WeixinUrl: WeCom chatbot URL.
+	// - WeixinUrl: the WeCom chatbot URL
 	//
 	// example:
 	//
 	// AliUid
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The specific values of the alert recipients.
+	// The specific value of the notification recipient.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -583,7 +583,7 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// The unique ID of the table in DataWorks Data Map.
+	// The unique ID of the table in Data Map.
 	//
 	// example:
 	//
@@ -648,11 +648,11 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger struct {
-	// This parameter takes effect when type is set to ByScheduledTaskInstance. Specifies the scheduled node IDs whose successful instance execution can trigger the task.
+	// The IDs of the scheduled nodes. This parameter takes effect only when Type is set to ByScheduledTaskInstance. It specifies the scheduled nodes whose successful instance execution triggers the task.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// The type of event that triggers the quality evaluation task. Valid values:
+	// The event that triggers the execution of the data quality evaluation task. Valid values:
 	//
-	// - ByScheduledTaskInstance: Triggered when a scheduled node instance runs successfully.
+	// - ByScheduledTaskInstance: The scheduled instance runs successfully.
 	//
 	// example:
 	//

@@ -62,9 +62,9 @@ func (s *CreateAgentResponseBody) Validate() error {
 }
 
 type CreateAgentResponseBodyAgent struct {
-	// 已保存的套件引用。官方资源返回来源及目录 ID；发布后的制品版本由 PackageVersion 表示。
+	// The saved suite references. Official resources return the source and directory ID. The published artifact version is represented by PackageVersion.
 	ExpertSuites []*CreateAgentResponseBodyAgentExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The creation time. The value is a UNIX timestamp in milliseconds.
+	// The creation time, in milliseconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -72,7 +72,7 @@ type CreateAgentResponseBodyAgent struct {
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time. The value is a UNIX timestamp in milliseconds.
+	// The last modification time, in milliseconds.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -86,7 +86,7 @@ type CreateAgentResponseBodyAgent struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 已保存的 Skill 引用；官方 Skill 在 Agent 发布后返回固定的 PackageVersion。
+	// The saved skill references. For official skills, a fixed PackageVersion is returned after the agent is published.
 	Skills []*CreateAgentResponseBodyAgentSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 }
 
@@ -166,24 +166,36 @@ func (s *CreateAgentResponseBodyAgent) Validate() error {
 }
 
 type CreateAgentResponseBodyAgentExpertSuites struct {
-	// 创建时不返回；请使用 GetAgent 显式查询已发布版本获取固定的官方套件制品版本。
+	// This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official suite artifact version.
 	//
 	// example:
 	//
 	// 0.1.0.202610211408
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The source of the expert suite.
+	//
 	// example:
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the expert suite.
+	//
 	// example:
 	//
 	// dataworks-data-analysis-extension
 	SuiteId *string `json:"SuiteId,omitempty" xml:"SuiteId,omitempty"`
+	// The release version number of the custom suite.
+	//
 	// example:
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+	//
+	// example:
+	//
+	// ^1.2.3
+	VersionSelector *string `json:"VersionSelector,omitempty" xml:"VersionSelector,omitempty"`
 }
 
 func (s CreateAgentResponseBodyAgentExpertSuites) String() string {
@@ -210,6 +222,10 @@ func (s *CreateAgentResponseBodyAgentExpertSuites) GetVersion() *int32 {
 	return s.Version
 }
 
+func (s *CreateAgentResponseBodyAgentExpertSuites) GetVersionSelector() *string {
+	return s.VersionSelector
+}
+
 func (s *CreateAgentResponseBodyAgentExpertSuites) SetPackageVersion(v string) *CreateAgentResponseBodyAgentExpertSuites {
 	s.PackageVersion = &v
 	return s
@@ -230,33 +246,52 @@ func (s *CreateAgentResponseBodyAgentExpertSuites) SetVersion(v int32) *CreateAg
 	return s
 }
 
+func (s *CreateAgentResponseBodyAgentExpertSuites) SetVersionSelector(v string) *CreateAgentResponseBodyAgentExpertSuites {
+	s.VersionSelector = &v
+	return s
+}
+
 func (s *CreateAgentResponseBodyAgentExpertSuites) Validate() error {
 	return dara.Validate(s)
 }
 
 type CreateAgentResponseBodyAgentSkills struct {
+	// The name of the custom skill.
+	//
 	// example:
 	//
 	// my-business-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 创建时不返回；请使用 GetAgent 显式查询已发布版本获取固定的官方制品版本。
+	// This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official artifact version.
 	//
 	// example:
 	//
 	// 0.6.0.202608201110
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The ID of the official skill.
+	//
 	// example:
 	//
 	// dataworks-semantic
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
+	// The source of the skill.
+	//
 	// example:
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The release version number of the custom skill.
+	//
 	// example:
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+	//
+	// example:
+	//
+	// ^1.2.3
+	VersionSelector *string `json:"VersionSelector,omitempty" xml:"VersionSelector,omitempty"`
 }
 
 func (s CreateAgentResponseBodyAgentSkills) String() string {
@@ -287,6 +322,10 @@ func (s *CreateAgentResponseBodyAgentSkills) GetVersion() *int32 {
 	return s.Version
 }
 
+func (s *CreateAgentResponseBodyAgentSkills) GetVersionSelector() *string {
+	return s.VersionSelector
+}
+
 func (s *CreateAgentResponseBodyAgentSkills) SetName(v string) *CreateAgentResponseBodyAgentSkills {
 	s.Name = &v
 	return s
@@ -309,6 +348,11 @@ func (s *CreateAgentResponseBodyAgentSkills) SetSource(v string) *CreateAgentRes
 
 func (s *CreateAgentResponseBodyAgentSkills) SetVersion(v int32) *CreateAgentResponseBodyAgentSkills {
 	s.Version = &v
+	return s
+}
+
+func (s *CreateAgentResponseBodyAgentSkills) SetVersionSelector(v string) *CreateAgentResponseBodyAgentSkills {
+	s.VersionSelector = &v
 	return s
 }
 

@@ -62,7 +62,7 @@ func (s *GetSnapshotResponseBody) Validate() error {
 }
 
 type GetSnapshotResponseBodySnapshot struct {
-	// The submit comment.
+	// The submission comment.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type GetSnapshotResponseBodySnapshot struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The structured snapshot content. This parameter is mutually exclusive with ContentUrl.
 	Content *GetSnapshotResponseBodySnapshotContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// The OSS pre-signed download URL. This parameter is mutually exclusive with Content.
+	// The pre-signed OSS download URL. This parameter is mutually exclusive with Content.
 	//
 	// example:
 	//
 	// https://oss.example.com/presigned
 	ContentUrl *string `json:"ContentUrl,omitempty" xml:"ContentUrl,omitempty"`
-	// The snapshot creation time in millisecond timestamp.
+	// The timestamp when the snapshot was generated, in milliseconds.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type GetSnapshotResponseBodySnapshot struct {
 	//
 	// 1389623
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The unique ID of the object to which the snapshot belongs.
+	// The unique ID of the parent object.
 	//
 	// example:
 	//

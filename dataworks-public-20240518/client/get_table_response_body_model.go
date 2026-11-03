@@ -24,7 +24,7 @@ type GetTableResponseBody struct {
 	//
 	// 7B3435F4-2D91-XXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

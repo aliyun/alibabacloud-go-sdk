@@ -62,14 +62,15 @@ func (s *CreateAgentSessionResponseBody) Validate() error {
 }
 
 type CreateAgentSessionResponseBodyJsonRpcResponse struct {
+	// The JSON-RPC error message. This field is not returned if the request is successful.
 	Error *CreateAgentSessionResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The request ID passed by the caller. The value is returned as-is.
+	// The ID passed by the requester. The value is returned as is.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed value: 2.0.
+	// The JSON-RPC version. This value is always 2.0.
 	//
 	// example:
 	//
@@ -77,6 +78,8 @@ type CreateAgentSessionResponseBodyJsonRpcResponse struct {
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
 	// The business data. The value is null if an error occurs.
 	Result *CreateAgentSessionResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The response time. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1789549200000
@@ -151,21 +154,29 @@ func (s *CreateAgentSessionResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type CreateAgentSessionResponseBodyJsonRpcResponseError struct {
+	// The JSON-RPC error code.
+	//
 	// example:
 	//
 	// 500
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The optional additional error information. The content depends on the error type.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The business error code.
+	//
 	// example:
 	//
 	// 0x4883300000000019
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 创建 DataAgent 实例必须指定资源组，请在请求的 _meta.dataAgent.resourceGroupId 中传入资源组 ID
+	// To create a DataAgent instance, you must specify a resource group. Pass the resource group ID in _meta.dataAgent.resourceGroupId of the request
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -218,7 +229,7 @@ func (s *CreateAgentSessionResponseBodyJsonRpcResponseError) Validate() error {
 }
 
 type CreateAgentSessionResponseBodyJsonRpcResponseResult struct {
-	// The ID of the created session.
+	// The ID of the newly created session.
 	//
 	// example:
 	//

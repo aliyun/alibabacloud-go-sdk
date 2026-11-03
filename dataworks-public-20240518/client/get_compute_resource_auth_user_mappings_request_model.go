@@ -24,7 +24,7 @@ type GetComputeResourceAuthUserMappingsRequest struct {
 	//
 	// 100000
 	ComputeResourceId *int64 `json:"ComputeResourceId,omitempty" xml:"ComputeResourceId,omitempty"`
-	// The DataWorks workspace to which the data source belongs.
+	// The ID of the DataWorks workspace to which the data source belongs.
 	//
 	// This parameter is required.
 	//

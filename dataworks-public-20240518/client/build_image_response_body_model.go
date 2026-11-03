@@ -18,19 +18,19 @@ type iBuildImageResponseBody interface {
 }
 
 type BuildImageResponseBody struct {
-	// The result of the API request.
+	// The API request result.
 	//
 	// example:
 	//
 	// true
 	Data *BuildImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used for locating logs and troubleshooting issues.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type BuildImageResponseBodyData struct {
 	//
 	// 582d4896-d224-413b-b883-239eeebe0bc5
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// Indicates whether the build was triggered successfully.
+	// Indicates whether the build was successfully triggered.
 	//
 	// example:
 	//

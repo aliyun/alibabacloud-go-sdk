@@ -24,13 +24,13 @@ type AbolishCrossProjectPipelineRunResponseBody struct {
 	//
 	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23"}
 	Data *AbolishCrossProjectPipelineRunResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot this API call.
+	// The request ID, which is used to locate and troubleshoot the API call.
 	//
 	// example:
 	//
 	// 735894D1-D5E5-50B8-8A6D-041C90A98B23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -16,7 +16,10 @@ type iUpdateAgentSessionTitleResponseBody interface {
 }
 
 type UpdateAgentSessionTitleResponseBody struct {
+	// The JSON-RPC response. Result is returned upon success, and Error is returned upon a protocol error.
 	JsonRpcResponse *UpdateAgentSessionTitleResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
+	// The unique ID of the current OpenAPI request. You can use it to troubleshoot request issues.
+	//
 	// example:
 	//
 	// 01A0B6E0-E005-1465-B5DE-5CD17677426F
@@ -59,16 +62,24 @@ func (s *UpdateAgentSessionTitleResponseBody) Validate() error {
 }
 
 type UpdateAgentSessionTitleResponseBodyJsonRpcResponse struct {
+	// The JSON-RPC error message. This field is not returned upon success.
 	Error *UpdateAgentSessionTitleResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
+	// The JSON-RPC correlation ID for the current request. It is passed by the caller and returned as is.
+	//
 	// example:
 	//
 	// updateagentsessiontitle-rpc-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC protocol version.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                                                   `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Result  *UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The operation result.
+	Result *UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// The response time. It is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1789549200000
@@ -143,21 +154,29 @@ func (s *UpdateAgentSessionTitleResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type UpdateAgentSessionTitleResponseBodyJsonRpcResponseError struct {
+	// The JSON-RPC error code.
+	//
 	// example:
 	//
 	// 500
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The optional additional error information. The content depends on the error type.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The business error code.
+	//
 	// example:
 	//
 	// 0x4883300000000019
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// 会话不存在或当前账号无权访问，请返回会话列表重新选择
+	// The session does not exist or the current account is not authorized to access it. Return to the session list and select another session
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -210,10 +229,14 @@ func (s *UpdateAgentSessionTitleResponseBodyJsonRpcResponseError) Validate() err
 }
 
 type UpdateAgentSessionTitleResponseBodyJsonRpcResponseResult struct {
+	// The ID of the agent session whose title is modified. It corresponds to the SessionId in the request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-42d3-a456-426614174000
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The saved session title after modification. Leading and trailing whitespace characters are removed.
+	//
 	// example:
 	//
 	// New title

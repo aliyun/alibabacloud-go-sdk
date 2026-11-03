@@ -18,13 +18,13 @@ type iPromptAgentSessionRequest interface {
 }
 
 type PromptAgentSessionRequest struct {
-	// The ID passed by the requester. The value is returned as-is.
+	// The ID passed by the requester. The value is returned as is.
 	//
 	// example:
 	//
 	// 1021418411
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed value: 2.0.
+	// The JSON-RPC version. Set the value to 2.0.
 	//
 	// example:
 	//
@@ -79,13 +79,13 @@ func (s *PromptAgentSessionRequest) Validate() error {
 }
 
 type PromptAgentSessionRequestParams struct {
-	// The extended meta information.
+	// The extended metadata.
 	//
-	// 	Notice: If the Agent bound to the specified session is named dataworks_ai_assistant_agent (AI Assistant Service), provide the instance ID of the AI Assistant Service in the Context.agent.instanceId field of the extended meta information.
+	// 	Notice: If the name of the agent bound to the specified session is dataworks_ai_assistant_agent (AI Assistant), you must provide the instance ID of the AI Assistant in the Context.agent.instanceId field of the extended metadata.</notice>
 	Meta *PromptAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
-	// The array of user message content blocks. For more information, visit: https://agentclientprotocol.com/protocol/content.
+	// The array of user message content blocks. For more information, see https://agentclientprotocol.com/protocol/content.
 	Prompt []*PromptAgentSessionRequestParamsPrompt `json:"Prompt,omitempty" xml:"Prompt,omitempty" type:"Repeated"`
-	// The target session ID. If the session does not exist, an SSE error frame is returned.
+	// The ID of the target session. If the session does not exist, an SSE error frame is returned.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ func (s *PromptAgentSessionRequestParams) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsMeta struct {
-	// A Map type. In custom Agent scenarios, some placeholder parameters can be replaced through this value.
+	// The map-type context. In custom agent scenarios, you can use this value to replace specific placeholder parameters.
 	//
 	// example:
 	//
@@ -187,51 +187,53 @@ type PromptAgentSessionRequestParamsPrompt struct {
 	//
 	// example:
 	//
-	// Effective when Type=resource_link. Example: SalesOrderDetails.csv.
+	// Valid when Type is set to resource_link. Example: Sales order details.csv
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The DataWorks extended prompt meta information.
+	// The DataWorks extended prompt metadata.
 	Meta *PromptAgentSessionRequestParamsPromptMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	// The MIME type of the file.
 	//
 	// example:
 	//
-	// Effective when Type=resource_link. Example: text/csv.
+	// Valid when Type is set to resource_link. Example: text/csv
 	MimeType *string `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
 	// The file name.
 	//
 	// example:
 	//
-	// Effective when Type=resource_link. Example: xxx.csv.
+	// Valid when Type is set to resource_link. Example: xxx.csv
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The size of the file. Unit: bytes.
 	//
+	// Valid only when Type is set to resource_link.
+	//
 	// example:
 	//
-	// Effective when Type=resource_link. Example: 1231231
+	// 1231231
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// **The text content.**
+	// **Text content**
 	//
 	// example:
 	//
-	// Effective when Type=text. Example: Sales amount in the last 7 days.
+	// Valid when Type is set to text. Example: Sales amount in the last 7 days
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The title of the file.
+	// The file title.
 	//
 	// example:
 	//
-	// Effective when Type=resource_link. Example: SalesOrderDetails.csv.
+	// Valid when Type is set to resource_link. Example: Sales order details.csv
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// **The content block type.**
+	// **Content block type**
 	//
 	// example:
 	//
-	// Currently supported: text, resource_link.
+	// Valid values: text and resource_link
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The URI of the file.
 	//
 	// example:
 	//
-	// Effective when Type=resource_link. Example: oss://${bucket}/${ossKey}
+	// Valid when Type is set to resource_link. Example: oss://${bucket}/${ossKey}
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -334,11 +336,11 @@ func (s *PromptAgentSessionRequestParamsPrompt) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsPromptMeta struct {
-	// Specifies whether to hide this prompt from the user. For example, in a chat dialog box, the user asks a question such as "Sales amount in the last 7 days". Before calling the OpenAPI, the calling system retrieves some business domain knowledge through RAG that needs to be added to the Agent context but should not be displayed to the user. In this case, set this value to true.
+	// Specifies whether to hide the prompt from the user. For example, if a user asks a question in the chat dialog box, such as "Sales amount in the last 7 days", and the calling system retrieves some business domain knowledge through RAG before calling the API operation, the knowledge needs to be added to the agent context but not displayed to the user. In this case, you can set this parameter to true.
 	//
 	// example:
 	//
-	// true or false
+	// true
 	Hide *bool `json:"Hide,omitempty" xml:"Hide,omitempty"`
 }
 

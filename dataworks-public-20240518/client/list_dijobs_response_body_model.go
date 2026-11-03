@@ -16,9 +16,9 @@ type iListDIJobsResponseBody interface {
 }
 
 type ListDIJobsResponseBody struct {
-	// The paging information.
+	// The pagination information.
 	PagingInfo *ListDIJobsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListDIJobsResponseBody) Validate() error {
 }
 
 type ListDIJobsResponseBodyPagingInfo struct {
-	// A list of Data Integration jobs.
+	// The data integration tasks.
 	DIJobs []*ListDIJobsResponseBodyPagingInfoDIJobs `json:"DIJobs,omitempty" xml:"DIJobs,omitempty" type:"Repeated"`
-	// The returned page number.
+	// The page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries that meet the filter criteria.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -144,43 +144,43 @@ func (s *ListDIJobsResponseBodyPagingInfo) Validate() error {
 type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	// Deprecated
 	//
-	// This parameter is deprecated. Use the `Id` parameter instead.
+	// **[Deprecated]*	- This field is deprecated. Use the Id field instead.
 	//
 	// example:
 	//
 	// 32599
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The type of the destination data source. Valid values: `Hologres`, `OSS-HDFS`, `OSS`, `MaxCompute`, `Loghub`, `STARROCKS`, `DataHub`, `ANALYTICDB_FOR_MYSQL`, `Kafka`, and `Hive`.
+	// The type of the destination data source. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, DataHub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive.
 	//
 	// example:
 	//
 	// Hologres
 	DestinationDataSourceType *string `json:"DestinationDataSourceType,omitempty" xml:"DestinationDataSourceType,omitempty"`
-	// The ID of the Data Integration job.
+	// The ID of the data integration task.
 	//
 	// example:
 	//
 	// 32599
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the job.
+	// The name of the task.
 	//
 	// example:
 	//
 	// mysql_to_holo_sync_35197
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The job status. Valid values:
+	// The synchronization status. Valid values:
 	//
-	// - `Finished`: The job completed successfully.
+	// - Finished: finished successfully
 	//
-	// - `Initialized`: The job is initialized.
+	// - Initialized: initialized
 	//
-	// - `Stopped`: The job is stopped.
+	// - Stopped: stopped
 	//
-	// - `Failed`: The job failed.
+	// - Failed: failed
 	//
-	// - `Running`: The job is running.
+	// - Running: running
 	//
-	// - `Stopping`: The job is being stopped.
+	// - Stopping: stopping
 	//
 	// example:
 	//
@@ -188,28 +188,33 @@ type ListDIJobsResponseBodyPagingInfoDIJobs struct {
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// - `FullAndRealtimeIncremental`: full and real-time incremental synchronization
+	// - FullAndRealtimeIncremental: full and real-time incremental synchronization
 	//
-	// - `RealtimeIncremental`: real-time incremental synchronization
+	// - RealtimeIncremental: real-time incremental synchronization
 	//
-	// - `Full`: full synchronization
+	// - Full: full synchronization
 	//
-	// - `OfflineIncremental`: offline incremental synchronization
+	// - OfflineIncremental: batch incremental synchronization
 	//
-	// - `FullAndOfflineIncremental`: full and offline incremental synchronization
+	// - FullAndOfflineIncremental: full and batch incremental synchronization
 	//
 	// example:
 	//
 	// FullAndRealtimeIncremental
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
-	Owner         *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The ID of the DataWorks workspace that contains the job.
+	// The owner of the task.
+	//
+	// example:
+	//
+	// 3726346
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The ID of the DataWorks workspace to which the task belongs.
 	//
 	// example:
 	//
 	// 26442
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the source data source. Valid values: `PolarDB`, `MySQL`, `Kafka`, `Loghub`, `Hologres`, `Oracle`, `OceanBase`, `MongoDB`, `RedShift`, `Hive`, `SqlServer`, `Doris`, and `ClickHouse`.
+	// The type of the source data source. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse.
 	//
 	// example:
 	//

@@ -62,14 +62,15 @@ func (s *ListAgentSessionsResponseBody) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponse struct {
+	// The JSON-RPC error message. This parameter is returned when the call fails and is not returned when the call succeeds.
 	Error *ListAgentSessionsResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The ID passed in by the requester. The value is returned as-is.
+	// The ID passed by the requester, which is returned as is.
 	//
 	// example:
 	//
 	// 29d9a29c-a284-48c1-9eaa-4a42c7c616d5
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed value: 2.0.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//
@@ -138,18 +139,26 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponse) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseError struct {
+	// The JSON-RPC error code.
+	//
 	// example:
 	//
 	// 400
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The optional additional error information. The content depends on the error type.
+	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The business error code.
+	//
 	// example:
 	//
 	// SESSION_FILTER_REQUIRED
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SESSION_FILTER_REQUIRED
@@ -285,9 +294,9 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResult) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions struct {
-	// The extended session information from DataWorks, which is not part of the ACP standard protocol.
+	// The session information extended by DataWorks, which is not part of the standard ACP protocol.
 	Meta *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
-	// The time when the session was created.
+	// The session creation time.
 	//
 	// example:
 	//
@@ -311,7 +320,7 @@ type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions struct {
 	//
 	// Sales analysis for the last 30 days
 	SessionTitle *string `json:"SessionTitle,omitempty" xml:"SessionTitle,omitempty"`
-	// The time when the session was last modified.
+	// The session update time.
 	//
 	// example:
 	//
@@ -391,6 +400,7 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions) Valida
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta struct {
+	// Indicates whether the session is archived.
 	Archived *bool `json:"Archived,omitempty" xml:"Archived,omitempty"`
 	// The session source.
 	//
@@ -404,13 +414,13 @@ type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta struct 
 	//
 	// 	- NORMAL: Stateless session
 	//
-	// 	- INIT: Initialization state
+	// 	- INIT: Initialized
 	//
 	// 	- RUNNING: Running
 	//
-	// 	- RELEASED: Released state
+	// 	- RELEASED: Released
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The list of session tags.
+	// The session tag list.
 	SessionTagList []*ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList `json:"SessionTagList,omitempty" xml:"SessionTagList,omitempty" type:"Repeated"`
 }
 
@@ -472,7 +482,7 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) Va
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList struct {
-	// The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI but the calling system has its own account system, you can filter the session list based on an account ID. In this case, set this parameter to the account ID of the calling system.
+	// The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI operations but the calling system has its own account system, you need to filter the session list based on the account ID. In this case, you can pass the account ID of the calling system as this tag.
 	//
 	// example:
 	//

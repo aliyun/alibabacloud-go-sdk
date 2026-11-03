@@ -20,13 +20,13 @@ type iListTaskInstanceOperationLogsRequest interface {
 }
 
 type ListTaskInstanceOperationLogsRequest struct {
-	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days. This value is a UNIX timestamp.
+	// The date of the operation, accurate to the day. The default value is the current day. You can query operation logs from the past 31 days. Specify the value as a timestamp.
 	//
 	// example:
 	//
 	// 1710239005403
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The instance ID.
+	// The node instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListTaskInstanceOperationLogsRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//

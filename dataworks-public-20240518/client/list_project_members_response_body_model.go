@@ -16,9 +16,9 @@ type iListProjectMembersResponseBody interface {
 }
 
 type ListProjectMembersResponseBody struct {
-	// The paging information.
+	// The pagination information.
 	PagingInfo *ListProjectMembersResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The unique ID of the request, used to track logs and troubleshoot issues.
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListProjectMembersResponseBody) Validate() error {
 }
 
 type ListProjectMembersResponseBodyPagingInfo struct {
-	// The page number.
+	// The page number of the requested data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of Workspace members.
+	// The list of workspace members.
 	ProjectMembers []*ListProjectMembersResponseBodyPagingInfoProjectMembers `json:"ProjectMembers,omitempty" xml:"ProjectMembers,omitempty" type:"Repeated"`
-	// The total number of matching entries.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -142,31 +142,35 @@ func (s *ListProjectMembersResponseBodyPagingInfo) Validate() error {
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembers struct {
-	// The ID of the DataWorks Workspace.
+	// The ID of the DataWorks workspace.
 	//
 	// example:
 	//
 	// 62136
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The roles assigned to the Workspace member.
+	// The list of workspace roles assigned to the workspace member.
 	Roles []*ListProjectMembersResponseBodyPagingInfoProjectMembersRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The status of the Workspace member.
+	// The status of the workspace member. Valid values:
 	//
-	// - `Normal`: The member is active.
+	// - Normal: Normal.
 	//
-	// - `Forbidden`: The member is disabled.
+	// - Forbidden: Disabled.
 	//
 	// example:
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the DataWorks user.
+	// The DataWorks account ID.
 	//
 	// example:
 	//
 	// 123422344899
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The name of the DataWorks user.
+	// The cloud account name of the member.
+	//
+	// example:
+	//
+	// liusan
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -237,23 +241,23 @@ func (s *ListProjectMembersResponseBodyPagingInfoProjectMembers) Validate() erro
 }
 
 type ListProjectMembersResponseBodyPagingInfoProjectMembersRoles struct {
-	// The code of the role.
+	// The code of the workspace role.
 	//
 	// example:
 	//
 	// role_project_guest
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the role.
+	// The name of the workspace role.
 	//
 	// example:
 	//
 	// Visitors
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the role.
+	// The type of the workspace role. Valid values:
 	//
-	// - `UserCustom`: A user-defined role.
+	// - UserCustom: Custom role.
 	//
-	// - `System`: A system role.
+	// - System: System role.
 	//
 	// example:
 	//

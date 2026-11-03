@@ -22,15 +22,15 @@ type GetCrossProjectPipelineRunResponseBody struct {
 	//
 	// example:
 	//
-	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23","PipelineRunId":"fcfd4160-e2ff-4603-9719-09128fe733df","DeploymentEnvironmentId":101,"ObjectId":"1","ObjectType":"ODPS_SQL","ObjectName":"object-1","ObjectVersion":"7","ChangeType":"ADD","Status":"Ready","Description":"Publish objects that are published in the source project to the target project","Creator":"creator","CreateTime":1788739200000}
+	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23","PipelineRunId":"fcfd4160-e2ff-4603-9719-09128fe733df","DeploymentEnvironmentId":101,"ObjectId":"1","ObjectType":"ODPS_SQL","ObjectName":"object-1","ObjectVersion":"7","ChangeType":"ADD","Status":"Ready","Description":"Deploy objects already deployed in the source project to the target project","Creator":"creator","CreateTime":1788739200000}
 	Data *GetCrossProjectPipelineRunResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot this API call.
+	// The request ID, which is used to locate and troubleshoot the current API call.
 	//
 	// example:
 	//
 	// 735894D1-D5E5-50B8-8A6D-041C90A98B23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *GetCrossProjectPipelineRunResponseBody) Validate() error {
 }
 
 type GetCrossProjectPipelineRunResponseBodyData struct {
-	// The termination time. This value is a UNIX timestamp in milliseconds. This parameter is returned only after the flow is terminated.
+	// The termination time. The value is a UNIX timestamp in milliseconds. This parameter is returned only after the pipeline run is terminated.
 	//
 	// example:
 	//
 	// 1788739260000
 	AbolishTime *int64 `json:"AbolishTime,omitempty" xml:"AbolishTime,omitempty"`
-	// The user who terminated the flow.
+	// The user who terminated the pipeline run.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// ADD
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The creation time. This value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// example:
 	//
-	// Publish objects that are published in the source project to the target project
+	// Deploy objects already deployed in the source project to the target project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The error code.
 	//
@@ -137,7 +137,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// Deployment failed
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The execution time. This value is a UNIX timestamp in milliseconds.
+	// The execution time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// executor
 	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
-	// The completion time. This value is a UNIX timestamp in milliseconds.
+	// The completion time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -179,7 +179,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// 7
 	ObjectVersion *string `json:"ObjectVersion,omitempty" xml:"ObjectVersion,omitempty"`
-	// The cross-workspace deployment flow ID.
+	// The cross-workspace deployment pipeline run ID.
 	//
 	// example:
 	//
@@ -191,19 +191,7 @@ type GetCrossProjectPipelineRunResponseBodyData struct {
 	//
 	// 735894D1-D5E5-50B8-8A6D-041C90A98B23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the deployment flow. Valid values:
-	//
-	// - Building: Building.
-	//
-	// - Ready: Ready and waiting for execution.
-	//
-	// - Running: Running.
-	//
-	// - Termination: Terminated.
-	//
-	// - Success: Execution succeeded.
-	//
-	// - Fail: Execution failed.
+	// The status of the deployment pipeline run.
 	//
 	// example:
 	//

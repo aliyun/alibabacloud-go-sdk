@@ -18,13 +18,13 @@ type iListAgentSessionsRequest interface {
 }
 
 type ListAgentSessionsRequest struct {
-	// The ID passed in by the requester. The value is returned as-is.
+	// The ID passed by the requester, which is returned as is.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed value: 2.0.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//
@@ -79,13 +79,17 @@ func (s *ListAgentSessionsRequest) Validate() error {
 }
 
 type ListAgentSessionsRequestParams struct {
-	// **Agent name*	- for exact filtering. At least one of this parameter and `SessionSourceList` must be specified.
+	// The exact filter for the **agent name**. You must specify at least one of this parameter and SessionSourceList.
 	//
 	// example:
 	//
 	// chat_cli_chatbi
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// true仅返回归档会话；false或省略仅返回未归档会话。
+	// Specifies whether to return only archived sessions. Valid values:
+	//
+	// - true: Only archived sessions are returned.
+	//
+	// - false or not specified: Only unarchived sessions are returned.
 	Archived *bool `json:"Archived,omitempty" xml:"Archived,omitempty"`
 	// The number of entries per page. Default value: 50.
 	//
@@ -99,21 +103,21 @@ type ListAgentSessionsRequestParams struct {
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The session ID for exact matching.
+	// The exact match for the session ID.
 	//
 	// example:
 	//
 	// sess_0f12abc34
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// **Session source list*	- for filtering. At least one of this parameter and `AgentName` must be specified.
+	// The filter for the **session source list**. You must specify at least one of this parameter and AgentName.
 	SessionSourceList []*string `json:"SessionSourceList,omitempty" xml:"SessionSourceList,omitempty" type:"Repeated"`
-	// The session title for fuzzy match filtering.
+	// The fuzzy filter for the session title.
 	//
 	// example:
 	//
 	// Sales in the last 30 days
 	SessionTitle *string `json:"SessionTitle,omitempty" xml:"SessionTitle,omitempty"`
-	// The list of session tag codes for filtering.
+	// The filter for the session tag code list.
 	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 

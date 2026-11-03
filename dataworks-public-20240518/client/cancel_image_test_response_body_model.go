@@ -18,7 +18,7 @@ type iCancelImageTestResponseBody interface {
 }
 
 type CancelImageTestResponseBody struct {
-	// The result of the API request.
+	// The API request result.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *CancelImageTestResponseBody) Validate() error {
 }
 
 type CancelImageTestResponseBodyData struct {
-	// The ID of the canceled image test execution.
+	// The execution ID of the canceled image test.
 	//
 	// example:
 	//
 	// 582d4896-d224-413b-b883-239eeebe0bc5
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// Indicates whether the cancellation was triggered successfully.
+	// Indicates whether the trigger was successful.
 	//
 	// example:
 	//

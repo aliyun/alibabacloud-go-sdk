@@ -16,7 +16,7 @@ type iDeleteTaskRequest interface {
 }
 
 type DeleteTaskRequest struct {
-	// The task ID.
+	// The ID of the task.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,7 @@ type DeleteTaskRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The environment of the workspace.
-	//
-	// Valid values:
-	//
-	// - Prod: production environment
-	//
-	// - Dev: development environment
+	// The project environment.
 	//
 	// example:
 	//

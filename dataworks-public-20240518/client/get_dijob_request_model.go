@@ -22,25 +22,25 @@ type iGetDIJobRequest interface {
 type GetDIJobRequest struct {
 	// Deprecated
 	//
-	// This field is deprecated. Use the `Id` field instead.
+	// **[Deprecated]*	- This field is deprecated. Use the Id field instead.
 	//
 	// example:
 	//
 	// 11588
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// The ID of the DI job.
+	// The instance ID.
 	//
 	// example:
 	//
 	// 11588
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The DataWorks workspace ID. You can call the `ListProjects` operation to obtain the workspace ID.
+	// The DataWorks workspace ID. You can call the ListProjects operation to obtain the workspace ID.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Specifies whether to return the detailed configuration, including `TransformationRules`, `TableMappings`, and `JobSettings`. This configuration is returned by default.
+	// Specifies whether to return detailed configuration information, which includes TransformationRules, TableMappings, and JobSettings. Default value: true.
 	//
 	// example:
 	//

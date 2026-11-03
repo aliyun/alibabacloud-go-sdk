@@ -16,17 +16,13 @@ type iGetWorkflowRequest interface {
 }
 
 type GetWorkflowRequest struct {
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod: production environment
-	//
-	// - Dev: development environment
+	// The project environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The workflow ID.
+	// The unique identifier of the workflow.
 	//
 	// This parameter is required.
 	//

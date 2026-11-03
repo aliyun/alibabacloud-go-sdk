@@ -38,7 +38,7 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	// The list of child agents that can be called by this agent.
+	// The list of sub-agents that can be called by this agent.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type CreateAgentRequest struct {
 	//
 	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Agent 绑定的已发布专家套件。个人或企业套件使用 SuiteId，可选 Version；官方套件必须显式指定 Source=OFFICIAL 和官方目录中的 SuiteId，不传 Version。未传时创建为空，不会默认加载所有官方套件。
+	// The released expert suites bound to the agent. For personal or enterprise suites, use SuiteId and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly set Source to OFFICIAL and specify the SuiteId from the official catalog. Do not specify Version or VersionSelector. If this parameter is not specified, an empty list is created, and official suites are not loaded by default.
 	//
 	// example:
 	//
 	// [{"Source":"OFFICIAL","SuiteId":"dataworks-data-analysis-extension"},{"SuiteId":"suite_example","Version":1}]
 	ExpertSuites []*CreateAgentRequestExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The extended metadata in key-value pairs.
+	// The extended metadata as key-value pairs.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CreateAgentRequest struct {
 	//
 	//         }
 	Model map[string]interface{} `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the agent. The name must be unique within the current account.
+	// The name of the agent. It must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,13 @@ type CreateAgentRequest struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 是否在创建 Agent 后立即发布。true 发布创建的版本；false 或省略保持原有仅创建草稿行为。保存与发布不是原子操作，发布失败时草稿可能已存在；重试前应先查询 Agent，避免重复创建。
+	// Specifies whether to publish the agent immediately after creation. Valid values:
+	//
+	// - true: Publishes the created version.
+	//
+	// - false or omitted: Retains the original behavior of creating a draft only.
+	//
+	// Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Query the agent before retrying to avoid duplicate creation.
 	//
 	// example:
 	//
@@ -102,7 +108,7 @@ type CreateAgentRequest struct {
 	//
 	// example:
 	//
-	// You are a data analytics assistant
+	// You are a data analytics assistant.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The list of tools.
 	//
@@ -110,7 +116,7 @@ type CreateAgentRequest struct {
 	//
 	// -
 	Tools []*CreateAgentRequestTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	// The visibility level.<br>
+	// The visibility level. Valid values:<br>
 	//
 	// `TENANT`: Visible within the account.<br>
 	//
@@ -122,7 +128,7 @@ type CreateAgentRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding field is used based on the visibility level.
+	// The visibility scope. The corresponding fields are used based on the Visibility parameter.
 	VisibilityScope *CreateAgentRequestVisibilityScope `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty" type:"Struct"`
 }
 
@@ -327,24 +333,30 @@ func (s *CreateAgentRequestCallableAgents) Validate() error {
 }
 
 type CreateAgentRequestExpertSuites struct {
-	// OFFICIAL 表示官方目录资源；DB 表示个人或企业资源。省略时保持原有数据库资源查询语义。官方资源在 Agent 发布时固定制品版本。
+	// The source of the expert suite. Valid values: OFFICIAL: official catalog resources. DB: personal or enterprise resources. If this parameter is omitted, the original database resource query semantics are retained. For official resources, the artifact version is fixed when the agent is released.
 	//
 	// example:
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 传入专家套件引用时，每项需提供 SuiteId，由服务端校验。Source=OFFICIAL 时为官方目录 ID；其他情况为专家套件管理返回的 ID。引用资源必须对调用者可见。
+	// The ID of the expert suite. When you specify expert suite references, each item must include a SuiteId, which is verified by the server. When Source is set to OFFICIAL, this is the official catalog ID. Otherwise, this is the ID returned by expert suite management. The referenced resource must be visible to the caller.
 	//
 	// example:
 	//
 	// dataworks-data-analysis-extension
 	SuiteId *string `json:"SuiteId,omitempty" xml:"SuiteId,omitempty"`
-	// 仅用于个人或企业套件，必须为已发布快照的整数版本号。省略时在 Agent 发布时固定当前已发布版本。Source=OFFICIAL 时不传此字段。
+	// The fixed integer revision number of a released snapshot. This parameter applies only to personal or enterprise suites and is mutually exclusive with VersionSelector. Releasing a new version does not change the fixed reference. If both parameters are omitted, the latest version is used for each new session. Do not specify this parameter when Source is set to OFFICIAL.
 	//
 	// example:
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version selection expression. This parameter applies only to personal or enterprise resources and is mutually exclusive with Version. It supports exact semantic versions, latest, and the full npm/node-semver range syntax, such as 1.2.*, ^1.2.3, ~1.2.3, >=1.0.0 <2.0.0, and 1.x || 2.x. If both parameters are omitted, latest is used, and the highest matching released version is selected for each new session. Existing fixed integer references remain unchanged. Do not specify this parameter when Source is set to OFFICIAL.
+	//
+	// example:
+	//
+	// ^1.2.3
+	VersionSelector *string `json:"VersionSelector,omitempty" xml:"VersionSelector,omitempty"`
 }
 
 func (s CreateAgentRequestExpertSuites) String() string {
@@ -367,6 +379,10 @@ func (s *CreateAgentRequestExpertSuites) GetVersion() *int32 {
 	return s.Version
 }
 
+func (s *CreateAgentRequestExpertSuites) GetVersionSelector() *string {
+	return s.VersionSelector
+}
+
 func (s *CreateAgentRequestExpertSuites) SetSource(v string) *CreateAgentRequestExpertSuites {
 	s.Source = &v
 	return s
@@ -382,6 +398,11 @@ func (s *CreateAgentRequestExpertSuites) SetVersion(v int32) *CreateAgentRequest
 	return s
 }
 
+func (s *CreateAgentRequestExpertSuites) SetVersionSelector(v string) *CreateAgentRequestExpertSuites {
+	s.VersionSelector = &v
+	return s
+}
+
 func (s *CreateAgentRequestExpertSuites) Validate() error {
 	return dara.Validate(s)
 }
@@ -393,24 +414,30 @@ type CreateAgentRequestSkills struct {
 	//
 	// skill-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Source=OFFICIAL 时传官方目录 ID，不传 Name 或 Version。个人或企业 Skill 不传此字段。
+	// The official catalog ID. Specify this parameter when Source is set to OFFICIAL. Do not specify Name, Version, or VersionSelector. Do not specify this parameter for personal or enterprise skills.
 	//
 	// example:
 	//
 	// dataworks-semantic
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// OFFICIAL 表示官方目录资源；DB 表示个人或企业资源，省略时保持原有按名称查询语义。
+	// The source of the skill. Valid values: OFFICIAL: official catalog resources. DB: personal or enterprise resources. If this parameter is omitted, the original query-by-name semantics are retained.
 	//
 	// example:
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 仅用于个人或企业 Skill，必须为已发布快照的整数版本。省略时在 Agent 发布时固定当前已发布版本；Source=OFFICIAL 时不传。
+	// The fixed integer revision number of a released snapshot. This parameter applies only to personal or enterprise skills and is mutually exclusive with VersionSelector. Releasing a new version does not change the fixed reference. If both parameters are omitted, the latest version is used for each new session. Do not specify this parameter when Source is set to OFFICIAL.
 	//
 	// example:
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version selection expression. This parameter applies only to personal or enterprise resources and is mutually exclusive with Version. It supports exact semantic versions, latest, and the full npm/node-semver range syntax, such as 1.2.*, ^1.2.3, ~1.2.3, >=1.0.0 <2.0.0, and 1.x || 2.x. If both parameters are omitted, latest is used, and the highest matching released version is selected for each new session. Existing fixed integer references remain unchanged. Do not specify this parameter when Source is set to OFFICIAL.
+	//
+	// example:
+	//
+	// ^1.2.3
+	VersionSelector *string `json:"VersionSelector,omitempty" xml:"VersionSelector,omitempty"`
 }
 
 func (s CreateAgentRequestSkills) String() string {
@@ -437,6 +464,10 @@ func (s *CreateAgentRequestSkills) GetVersion() *int32 {
 	return s.Version
 }
 
+func (s *CreateAgentRequestSkills) GetVersionSelector() *string {
+	return s.VersionSelector
+}
+
 func (s *CreateAgentRequestSkills) SetName(v string) *CreateAgentRequestSkills {
 	s.Name = &v
 	return s
@@ -457,12 +488,17 @@ func (s *CreateAgentRequestSkills) SetVersion(v int32) *CreateAgentRequestSkills
 	return s
 }
 
+func (s *CreateAgentRequestSkills) SetVersionSelector(v string) *CreateAgentRequestSkills {
+	s.VersionSelector = &v
+	return s
+}
+
 func (s *CreateAgentRequestSkills) Validate() error {
 	return dara.Validate(s)
 }
 
 type CreateAgentRequestTools struct {
-	// The name of the McpServer.
+	// The name of the MCP server.
 	//
 	// example:
 	//

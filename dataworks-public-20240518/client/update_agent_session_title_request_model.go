@@ -18,15 +18,20 @@ type iUpdateAgentSessionTitleRequest interface {
 }
 
 type UpdateAgentSessionTitleRequest struct {
+	// The JSON-RPC correlation ID for the current request. It is specified by the caller and used to correlate the request and response.
+	//
 	// example:
 	//
 	// updateagentsessiontitle-rpc-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC protocol version. Set the value to 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc *string                               `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	Params  *UpdateAgentSessionTitleRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The request parameters for modifying the session title, including the target session ID and the new title.
+	Params *UpdateAgentSessionTitleRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Struct"`
 }
 
 func (s UpdateAgentSessionTitleRequest) String() string {
@@ -74,12 +79,16 @@ func (s *UpdateAgentSessionTitleRequest) Validate() error {
 }
 
 type UpdateAgentSessionTitleRequestParams struct {
+	// The ID of the agent session that belongs to the current account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123e4567-e89b-42d3-a456-426614174000
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The new title. The length must be 1 to 512 characters after leading and trailing whitespaces are removed.
+	//
 	// This parameter is required.
 	//
 	// example:

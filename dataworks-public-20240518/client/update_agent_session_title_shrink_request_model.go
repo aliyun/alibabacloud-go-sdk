@@ -18,14 +18,19 @@ type iUpdateAgentSessionTitleShrinkRequest interface {
 }
 
 type UpdateAgentSessionTitleShrinkRequest struct {
+	// The JSON-RPC correlation ID for the current request. It is specified by the caller and used to correlate the request and response.
+	//
 	// example:
 	//
 	// updateagentsessiontitle-rpc-001
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The JSON-RPC protocol version. Set the value to 2.0.
+	//
 	// example:
 	//
 	// 2.0
-	Jsonrpc      *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
+	// The request parameters for modifying the session title, including the target session ID and the new title.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 

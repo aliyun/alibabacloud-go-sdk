@@ -18,7 +18,7 @@ type iListTaskInstanceOperationLogsResponseBody interface {
 type ListTaskInstanceOperationLogsResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListTaskInstanceOperationLogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID. You can locate logs and troubleshoot issues based on the ID.
+	// The ID of the request. You can use the ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListTaskInstanceOperationLogsResponseBody) Validate() error {
 }
 
 type ListTaskInstanceOperationLogsResponseBodyPagingInfo struct {
-	// The operation logs.
+	// The list of operation logs.
 	OperationLogs []*ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs `json:"OperationLogs,omitempty" xml:"OperationLogs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -142,31 +142,33 @@ func (s *ListTaskInstanceOperationLogsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListTaskInstanceOperationLogsResponseBodyPagingInfoOperationLogs struct {
-	// The time when the operation log was generated.
+	// The generation time of Operation logs.
+	//
+	// The format is a 13-digit number, such as `1710239005403`.
 	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The operation content.
+	// The content of the operation.
 	//
 	// example:
 	//
 	// Freeze tasks
 	OperationContent *string `json:"OperationContent,omitempty" xml:"OperationContent,omitempty"`
-	// The serial number of the operation.
+	// The sequence number of the operation.
 	//
 	// example:
 	//
 	// 1111
 	OperationSeq *int64 `json:"OperationSeq,omitempty" xml:"OperationSeq,omitempty"`
-	// The ID of the instance on which the operation was performed.
+	// The ID of the node instance on which the operation was performed.
 	//
 	// example:
 	//
 	// 1234
 	TaskInstanceId *int64 `json:"TaskInstanceId,omitempty" xml:"TaskInstanceId,omitempty"`
-	// The account ID of the operator.
+	// The account ID of the user who performed the operation.
 	//
 	// example:
 	//

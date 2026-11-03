@@ -26,7 +26,7 @@ type GetBatchChangeTableOwnerStatusResponseBody struct {
 	//
 	// 01A017D3-207E-582C-A683-BE991E54051D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *GetBatchChangeTableOwnerStatusResponseBody) Validate() error {
 }
 
 type GetBatchChangeTableOwnerStatusResponseBodyData struct {
-	// The batch transfer task ID.
+	// The ID of the batch transfer task.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type GetBatchChangeTableOwnerStatusResponseBodyData struct {
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The transfer result details for each table.
 	Details []*GetBatchChangeTableOwnerStatusResponseBodyDataDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The number of tables that failed to transfer.
+	// The number of tables that fail to be transferred.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type GetBatchChangeTableOwnerStatusResponseBodyData struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of tables that were successfully transferred.
+	// The number of tables that are successfully transferred.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ func (s *GetBatchChangeTableOwnerStatusResponseBodyData) Validate() error {
 }
 
 type GetBatchChangeTableOwnerStatusResponseBodyDataDetails struct {
-	// The error message returned when the table transfer fails.
+	// The error message returned when the table fails to be transferred.
 	//
 	// example:
 	//

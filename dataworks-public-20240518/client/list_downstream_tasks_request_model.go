@@ -20,7 +20,7 @@ type iListDownstreamTasksRequest interface {
 }
 
 type ListDownstreamTasksRequest struct {
-	// The task ID.
+	// The node ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListDownstreamTasksRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -40,13 +40,7 @@ type ListDownstreamTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The environment of the workspace.
-	//
-	// Valid values:
-	//
-	// - Prod: production environment
-	//
-	// - Dev: development environment
+	// The project environment.
 	//
 	// example:
 	//

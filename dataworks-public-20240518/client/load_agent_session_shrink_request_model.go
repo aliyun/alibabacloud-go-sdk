@@ -18,19 +18,19 @@ type iLoadAgentSessionShrinkRequest interface {
 }
 
 type LoadAgentSessionShrinkRequest struct {
-	// The client-generated request ID, which is returned in the response.
+	// The ID provided by the requester. This ID is echoed back as is.
 	//
 	// example:
 	//
 	// 4as3dasf654a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. The value must be `2.0`.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// Business parameters.
+	// The business parameters.
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
 }
 

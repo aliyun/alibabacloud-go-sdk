@@ -18,19 +18,19 @@ type iEnableImageResponseBody interface {
 }
 
 type EnableImageResponseBody struct {
-  // The result of the API request.
+  // The API request result.
   // 
   // example:
   // 
   // true
   Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The request ID, which is used to locate logs and troubleshoot issues.
+  // The ID of the request. You can use the ID to query logs and troubleshoot issues.
   // 
   // example:
   // 
   // 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful.
+  // Indicates whether the request is successful.
   // 
   // example:
   // 

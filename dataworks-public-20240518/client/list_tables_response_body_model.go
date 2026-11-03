@@ -18,7 +18,7 @@ type iListTablesResponseBody interface {
 }
 
 type ListTablesResponseBody struct {
-	// The paging information.
+	// The pagination information.
 	PagingInfo *ListTablesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -91,7 +91,7 @@ type ListTablesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of tables.
+	// The list of data tables.
 	Tables []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//

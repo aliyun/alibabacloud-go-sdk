@@ -16,7 +16,7 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
-	// The agent details.
+	// The details of the created agent.
 	Agent *GetAgentResponseBodyAgent `json:"Agent,omitempty" xml:"Agent,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,15 +62,15 @@ func (s *GetAgentResponseBody) Validate() error {
 }
 
 type GetAgentResponseBodyAgent struct {
-	// 本次读取的定义版本。更新当前定义时，将该值作为 UpdateAgent 的 ExpectedVersion，可拒绝覆盖其他调用者已提交的新版本。读取历史快照的版本不代表当前版本。
+	// The definition version read in this request. When updating the current definition, use this value as the ExpectedVersion for UpdateAgent to prevent overwriting new versions submitted by other callers. The version read from a historical snapshot does not represent the current version.
 	//
 	// example:
 	//
 	// 2
 	AgentVersion *int32 `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// A list of callable sub-agents.
+	// The list of callable sub-agents.
 	CallableAgents []*GetAgentResponseBodyAgentCallableAgents `json:"CallableAgents,omitempty" xml:"CallableAgents,omitempty" type:"Repeated"`
-	// The creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// example:
 	//
-	// Data analysis assistant
+	// Data analytics assistant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// **The display name.**
 	//
@@ -88,9 +88,9 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// My assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Agent 定义绑定的专家套件及固定发布版本。
+	// The expert suites associated with the agent definition, including a fixed integer revision number or a version selection strategy. Official resources continue to use PackageVersion to indicate the artifact version.
 	ExpertSuites []*GetAgentResponseBodyAgentExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The creation time, as a Unix timestamp in milliseconds.
+	// The creation time (millisecond timestamp).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -98,7 +98,7 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// 1780555634000
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time, as a Unix timestamp in milliseconds.
+	// The last modification time (millisecond timestamp).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -106,7 +106,7 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// 1780555634000
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// **Additional metadata.**
+	// **The extended metadata.**
 	//
 	// example:
 	//
@@ -126,17 +126,17 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The runtime dependencies.
+	// The environment dependencies required for execution.
 	RequiredRuntime []*string `json:"RequiredRuntime,omitempty" xml:"RequiredRuntime,omitempty" type:"Repeated"`
-	// A list of skills.
+	// The list of skills.
 	Skills []*GetAgentResponseBodyAgentSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// **The system prompt.**
 	//
 	// example:
 	//
-	// You are a data analysis assistant.
+	// You are a data analytics assistant.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// **A list of tools.**
+	// **The list of tools.**
 	Tools []*GetAgentResponseBodyAgentTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
 	// **The visibility level.**
 	//
@@ -369,25 +369,25 @@ func (s *GetAgentResponseBodyAgent) Validate() error {
 }
 
 type GetAgentResponseBodyAgentCallableAgents struct {
-	// The sub-agent display name.
+	// The display name of the sub-agent.
 	//
 	// example:
 	//
 	// Sub-assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The sub-agent name.
+	// The name of the sub-agent.
 	//
 	// example:
 	//
 	// sub-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sub-agent source.
+	// The source of the sub-agent.
 	//
 	// example:
 	//
 	// custom
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The sub-agent version.
+	// The version number of the sub-agent.
 	//
 	// example:
 	//
@@ -444,48 +444,60 @@ func (s *GetAgentResponseBodyAgentCallableAgents) Validate() error {
 }
 
 type GetAgentResponseBodyAgentExpertSuites struct {
-	// 套件已删除、发布快照缺失或调用者无权查看时，不返回套件摘要，仅保留 ID 和版本号。
+	// If the suite is deleted, the release snapshot is missing, or the caller does not have permission to view it, the suite summary is not returned, and only the ID and version number are retained.
 	//
 	// example:
 	//
-	// 数据分析专家能力集合
+	// Data analytics expert capability set
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the bound version.
+	//
 	// example:
 	//
-	// 数据分析专家套件
+	// Data analytics expert suite
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The suite name of the bound version.
+	//
 	// example:
 	//
 	// analysis-suite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 显式查询 Agent 已发布版本时返回固定的官方制品版本；查询草稿或自定义套件时不返回。
+	// The fixed official artifact version returned when explicitly querying a released version of the agent. This is not returned when querying a draft or a custom suite.
 	//
 	// example:
 	//
 	// 0.1.0.202610211408
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// 可选套件摘要字段，当前新 DataAgent 应用不返回；缺省不表示版本 0。不可作为 UpdateAgent 的 Version，回写引用时必须省略。官方制品的固定版本请读取 PackageVersion。
+	// An optional suite summary field that is not returned by current new DataAgent applications. A default value does not indicate version 0. This cannot be used as the Version for UpdateAgent and must be omitted when writing back references. For the fixed version of official artifacts, read PackageVersion.
 	//
 	// example:
 	//
 	// 1.2.0
 	SemanticVersion *string `json:"SemanticVersion,omitempty" xml:"SemanticVersion,omitempty"`
-	// OFFICIAL 表示官方目录资源；省略或 DB 表示个人或企业资源。
+	// OFFICIAL indicates an official catalog resource. Omitted or DB indicates a personal or enterprise resource.
 	//
 	// example:
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The expert suite ID.
+	//
 	// example:
 	//
 	// suite_example
 	SuiteId *string `json:"SuiteId,omitempty" xml:"SuiteId,omitempty"`
-	// 仅个人或企业套件在引用明确指定版本或读取发布快照时返回；官方套件不返回。未返回不是 0；SDK 若将缺省整数初始化为 0，回写时必须省略。官方项只回写 Source 和 SuiteId，不传 Version、SemanticVersion 或 PackageVersion。
+	// Returned only when a personal or enterprise suite explicitly specifies a fixed integer version in the reference. This is not returned for official suites. An unreturned value is not 0. If the SDK initializes the default integer to 0, it must be omitted when writing back. For official items, only Source and SuiteId are written back, and Version, VersionSelector, SemanticVersion, or PackageVersion are not passed.
 	//
 	// example:
 	//
 	// 3
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+	//
+	// example:
+	//
+	// ^1.2.3
+	VersionSelector *string `json:"VersionSelector,omitempty" xml:"VersionSelector,omitempty"`
 }
 
 func (s GetAgentResponseBodyAgentExpertSuites) String() string {
@@ -528,6 +540,10 @@ func (s *GetAgentResponseBodyAgentExpertSuites) GetVersion() *int32 {
 	return s.Version
 }
 
+func (s *GetAgentResponseBodyAgentExpertSuites) GetVersionSelector() *string {
+	return s.VersionSelector
+}
+
 func (s *GetAgentResponseBodyAgentExpertSuites) SetDescription(v string) *GetAgentResponseBodyAgentExpertSuites {
 	s.Description = &v
 	return s
@@ -568,18 +584,23 @@ func (s *GetAgentResponseBodyAgentExpertSuites) SetVersion(v int32) *GetAgentRes
 	return s
 }
 
+func (s *GetAgentResponseBodyAgentExpertSuites) SetVersionSelector(v string) *GetAgentResponseBodyAgentExpertSuites {
+	s.VersionSelector = &v
+	return s
+}
+
 func (s *GetAgentResponseBodyAgentExpertSuites) Validate() error {
 	return dara.Validate(s)
 }
 
 type GetAgentResponseBodyAgentModel struct {
-	// Additional configuration for the model.
+	// The additional configuration of the model.
 	//
 	// example:
 	//
 	// {}
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The maximum number of tokens to generate in one response.
+	// The maximum number of output tokens per generation.
 	//
 	// example:
 	//
@@ -591,19 +612,19 @@ type GetAgentResponseBodyAgentModel struct {
 	//
 	// qwen3-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// Indicates whether streaming output is enabled.
+	// Specifies whether streaming output is enabled.
 	//
 	// example:
 	//
 	// true
 	Stream *bool `json:"Stream,omitempty" xml:"Stream,omitempty"`
-	// The temperature.
+	// The sampling temperature.
 	//
 	// example:
 	//
 	// 1
 	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	// The top-p.
+	// The nucleus sampling Top-P value.
 	//
 	// example:
 	//
@@ -684,28 +705,36 @@ type GetAgentResponseBodyAgentSkills struct {
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 指定 AgentVersion 查询已发布快照时返回固定的官方制品版本；查询草稿或自定义 Skill 时不返回。
+	// The fixed official artifact version returned when querying a released snapshot with a specified AgentVersion. This is not returned when querying a draft or a custom skill.
 	//
 	// example:
 	//
 	// 0.6.0.202608201110
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	// The official skill ID.
+	//
 	// example:
 	//
 	// dataworks-semantic
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// OFFICIAL 表示官方目录资源；省略或 DB 表示原有个人或企业资源。
+	// OFFICIAL indicates an official catalog resource. Omitted or DB indicates an original personal or enterprise resource.
 	//
 	// example:
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The skill version.
+	// The skill version number.
 	//
 	// example:
 	//
 	// -
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+	//
+	// example:
+	//
+	// ^1.2.3
+	VersionSelector *string `json:"VersionSelector,omitempty" xml:"VersionSelector,omitempty"`
 }
 
 func (s GetAgentResponseBodyAgentSkills) String() string {
@@ -736,6 +765,10 @@ func (s *GetAgentResponseBodyAgentSkills) GetVersion() *int32 {
 	return s.Version
 }
 
+func (s *GetAgentResponseBodyAgentSkills) GetVersionSelector() *string {
+	return s.VersionSelector
+}
+
 func (s *GetAgentResponseBodyAgentSkills) SetName(v string) *GetAgentResponseBodyAgentSkills {
 	s.Name = &v
 	return s
@@ -761,12 +794,17 @@ func (s *GetAgentResponseBodyAgentSkills) SetVersion(v int32) *GetAgentResponseB
 	return s
 }
 
+func (s *GetAgentResponseBodyAgentSkills) SetVersionSelector(v string) *GetAgentResponseBodyAgentSkills {
+	s.VersionSelector = &v
+	return s
+}
+
 func (s *GetAgentResponseBodyAgentSkills) Validate() error {
 	return dara.Validate(s)
 }
 
 type GetAgentResponseBodyAgentTools struct {
-	// **The name of the built-in tool. This parameter applies only when `Kind` is set to `builtin`.**
+	// **The built-in tool name. Valid when Kind is `builtin`.**
 	//
 	// example:
 	//
@@ -778,9 +816,9 @@ type GetAgentResponseBodyAgentTools struct {
 	//
 	// builtin
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// **The selected MCP tool items. This parameter applies only when `Kind` is set to `mcp`.**
+	// **The selected MCP tool items. Valid when Kind is `mcp`.**
 	McpItems []*string `json:"McpItems,omitempty" xml:"McpItems,omitempty" type:"Repeated"`
-	// **The name of the associated MCP server. This parameter applies only when `Kind` is set to `mcp`.**
+	// **The associated MCP server name. Valid when Kind is `mcp`.**
 	//
 	// example:
 	//
@@ -837,9 +875,9 @@ func (s *GetAgentResponseBodyAgentTools) Validate() error {
 }
 
 type GetAgentResponseBodyAgentVisibilityScope struct {
-	// A list of project IDs that can view the agent.
+	// The list of visible project IDs.
 	ProjectIds []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
-	// A list of user IDs that can view the agent.
+	// The list of visible user IDs.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 

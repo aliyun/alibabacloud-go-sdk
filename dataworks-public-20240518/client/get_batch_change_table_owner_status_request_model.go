@@ -14,7 +14,7 @@ type iGetBatchChangeTableOwnerStatusRequest interface {
 }
 
 type GetBatchChangeTableOwnerStatusRequest struct {
-	// The batch transfer task ID returned by SubmitBatchChangeTableOwner.
+	// The ID of the batch transfer task returned by SubmitBatchChangeTableOwner.
 	//
 	// This parameter is required.
 	//

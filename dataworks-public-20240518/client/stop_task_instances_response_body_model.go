@@ -16,13 +16,13 @@ type iStopTaskInstancesResponseBody interface {
 }
 
 type StopTaskInstancesResponseBody struct {
-	// The request ID, which is used to locate logs and troubleshoot issues.
+	// The request ID. You can use this ID to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 22C97E95-F023-56B5-8852-B1A77A17****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information of the batch operation. The structure is a map where the task instance ID is the key and the result information is the value.
+	// The result information of the batch operation. The structure is a map where the key is the task instance ID and the value is the result information.
 	SuccessInfo map[string]*SuccessInfoValue `json:"SuccessInfo,omitempty" xml:"SuccessInfo,omitempty"`
 }
 

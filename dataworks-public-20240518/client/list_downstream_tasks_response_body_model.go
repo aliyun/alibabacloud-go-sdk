@@ -18,7 +18,7 @@ type iListDownstreamTasksResponseBody interface {
 type ListDownstreamTasksResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListDownstreamTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListDownstreamTasksResponseBody) Validate() error {
 }
 
 type ListDownstreamTasksResponseBodyPagingInfo struct {
-	// The descendant tasks.
+	// The list of downstream nodes.
 	DownstreamTasks []*ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks `json:"DownstreamTasks,omitempty" xml:"DownstreamTasks,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -76,9 +76,9 @@ type ListDownstreamTasksResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tasks. This parameter is deprecated and replaced by the DownstreamTasks parameter.
+	// **[Deprecated]*	- The list of nodes. Use DownstreamTasks instead.
 	Tasks []*ListDownstreamTasksResponseBodyPagingInfoTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -162,17 +162,17 @@ func (s *ListDownstreamTasksResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks struct {
-	// The scheduling dependency type. Valid values:
+	// The dependency type. Valid values:
 	//
-	// - Normal: same-cycle scheduling dependency
+	// - Normal: Same-cycle dependency.
 	//
-	// - CrossCycle: cross-cycle scheduling dependency
+	// - CrossCycle: Cross-cycle dependency.
 	//
 	// example:
 	//
 	// Normal
 	DependencyType *string `json:"DependencyType,omitempty" xml:"DependencyType,omitempty"`
-	// The information about the task.
+	// The detailed information of the node.
 	Task *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -220,17 +220,19 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The creation time.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the node.
 	//
 	// example:
 	//
 	// 1000
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The information about the associated data source.
+	// The associated data source information.
 	DataSource *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -238,19 +240,27 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
+	// The project environment. Valid values:
+	//
+	// - Prod: Production environment.
+	//
+	// - Dev: Development environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The task ID.
+	// The unique identifier of the node.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
+	// The instance generation mode. Valid values:
+	//
+	// - T+1: Generated on the next day.
+	//
+	// - Immediately: Generated immediately.
 	//
 	// example:
 	//
@@ -258,81 +268,83 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask struct {
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The modification time.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who modified the node.
 	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The name of the task.
+	// The name.
 	//
 	// example:
 	//
 	// SQL node
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account ID of the task owner.
+	// The account ID of the node owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the task. Valid values: 1 to 8.
+	// The node priority. Valid values: 1 to 8.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun interval. Unit: seconds.
+	// The retry time interval, in seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The rerun mode. Valid values:
+	// The rerun configuration of the node. Valid values:
 	//
-	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: The node cannot be rerun regardless of success or failure.
 	//
-	// - FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The node can be rerun only when it fails.
 	//
-	// - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The configurations of the runtime environment, such as the resource group information.
+	// The runtime environment configuration, such as the resource group information.
 	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The timeout period of task running. Unit: seconds.
+	// The node execution timeout period, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The trigger method.
+	// The trigger method of the node.
 	Trigger *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	// The type of the task.
+	// The node type.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the task belongs.
+	// The ID of the workflow to which the node belongs.
 	//
 	// example:
 	//
@@ -596,19 +608,19 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskDataSource)
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeResource struct {
-	// The number of compute units (CUs) configured for task running.
+	// The compute unit (CU) consumption configured for node execution.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The ID of the image configured for node execution.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the schedule resource group configured for node execution.
 	//
 	// example:
 	//
@@ -656,25 +668,35 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskRuntimeReso
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger struct {
-	// The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The cron expression. This parameter takes effect only when Type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The expiration time of periodic triggering. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values: Pause (paused), Skip (dry run), and Normal (normal execution).
+	// The execution mode when triggered. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// - Pause: Paused.
+	//
+	// - Skip: Dry run.
+	//
+	// - Normal: Normal execution.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The effective period for epoch triggers. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. This example does not include a time zone identity.
 	//
 	// example:
 	//
@@ -686,11 +708,11 @@ type ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger struct 
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The trigger type. Valid values:
+	// The trigger type.
 	//
-	// - Scheduler: scheduling cycle-based trigger
+	// - Scheduler: Triggered by a scheduling cycle.
 	//
-	// - Manual: manual trigger
+	// - Manual: Triggered manually.
 	//
 	// example:
 	//
@@ -773,37 +795,47 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The creation time.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the node.
 	//
 	// example:
 	//
 	// 1000
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The information about the associated data source.
+	// The associated data source information.
 	DataSource *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values: Prod (production) and Dev (development).
+	// The project environment. Valid values:
+	//
+	// - Prod: Production environment.
+	//
+	// - Dev: Development environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The task ID.
+	// The unique identifier of the node.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance generation mode. Valid values: T+1 (generate the next day) and Immediately (generate immediately).
+	// The instance generation mode. Valid values:
+	//
+	// - T+1: Generated on the next day.
+	//
+	// - Immediately: Generated immediately.
 	//
 	// example:
 	//
@@ -811,29 +843,31 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The modification time.
 	//
+	// The value is a 13-digit number, such as `1710239005403`.
+	//
 	// example:
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who modified the node.
 	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The name of the task.
+	// The name.
 	//
 	// example:
 	//
 	// SQL node
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account ID of the task owner.
+	// The account ID of the node owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	// The node priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
@@ -841,77 +875,63 @@ type ListDownstreamTasksResponseBodyPagingInfoTasks struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// Deprecated
 	//
-	// The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter.
-	//
-	// Valid values:
-	//
-	// - Prod
-	//
-	// - Dev
+	// **[Deprecated]*	- The project environment. Use EnvType instead.
 	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun interval. Unit: seconds.
+	// The retry time interval, in seconds.
 	//
 	// example:
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The rerun mode.
-	//
-	// Valid values:
-	//
-	// - AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
-	//
-	// - FailureAllowed: The task can be rerun only after it fails to run.
-	//
-	// - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// The rerun configuration of the node.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+	// The number of retries. This parameter takes effect only when the node is configured to allow reruns.
 	//
 	// example:
 	//
 	// 3
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
-	// The configurations of the runtime environment, such as the resource group information.
+	// The runtime environment configuration, such as the resource group information.
 	RuntimeResource *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The scheduling dependency type. Valid values:
+	// The dependency type. Valid values:
 	//
-	// - Normal: same-cycle scheduling dependency
+	// - Normal: Same-cycle dependency.
 	//
-	// - CrossCycle: cross-cycle scheduling dependency
+	// - CrossCycle: Cross-cycle dependency.
 	//
 	// example:
 	//
 	// Normal
 	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
-	// The timeout period of task running. Unit: seconds.
+	// The node execution timeout period, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The method to trigger task scheduling.
+	// The trigger method of the node.
 	Trigger *ListDownstreamTasksResponseBodyPagingInfoTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
-	// The type of the task.
+	// The node type.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the task belongs.
+	// The ID of the workflow to which the node belongs.
 	//
 	// example:
 	//
@@ -1193,19 +1213,19 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasksDataSource) Validate() er
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource struct {
-	// The number of compute units (CUs) configured for task running.
+	// The compute unit (CU) consumption configured for node execution.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The ID of the image configured for node execution.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the schedule resource group configured for node execution.
 	//
 	// example:
 	//
@@ -1253,33 +1273,29 @@ func (s *ListDownstreamTasksResponseBodyPagingInfoTasksRuntimeResource) Validate
 }
 
 type ListDownstreamTasksResponseBodyPagingInfoTasksTrigger struct {
-	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The cron expression. This parameter takes effect only when Type is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The expiration time of periodic triggering. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
-	//
-	// Valid values:
-	//
-	// - Pause
-	//
-	// - Skip
-	//
-	// - Normal
+	// The running mode upon triggering. This parameter takes effect only when Type is set to Scheduler.
 	//
 	// example:
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The effective period of epoch triggering. This parameter takes effect only when Type is set to Scheduler.
+	//
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
 	//
 	// example:
 	//
@@ -1292,12 +1308,6 @@ type ListDownstreamTasksResponseBodyPagingInfoTasksTrigger struct {
 	// Asia/Shanghai
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
 	// The trigger type.
-	//
-	// Valid values:
-	//
-	// - Scheduler: scheduling cycle-based trigger
-	//
-	// - Manual: manual trigger
 	//
 	// example:
 	//
