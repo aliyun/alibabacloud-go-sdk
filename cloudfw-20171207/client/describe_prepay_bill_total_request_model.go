@@ -24,25 +24,25 @@ type iDescribePrepayBillTotalRequest interface {
 }
 
 type DescribePrepayBillTotalRequest struct {
-	// The bill type of the user. This parameter is required in practice. An error is returned if this parameter is not specified. Valid values:
+	// The bill type. This parameter is required. If it is not specified, an error is returned. Valid values:
 	//
-	// - elastic_traffic: elastic traffic
+	// - elastic_traffic: elastic traffic.
 	//
-	// - sdl: sensitive data leak detection traffic
+	// - sdl: sensitive data leak detection traffic.
 	//
 	// example:
 	//
 	// sdl
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The page number in a paged query. Default value: 1.
+	// The page number for paging. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time. Specify a UNIX timestamp in seconds.
+	// The end time. Use a UNIX timestamp accurate to seconds.
 	//
-	// > Because billing data is aggregated at the daily granularity, the timestamp must correspond to 00:00:00 of the day in CST (UTC+8). If the timestamp is not aligned to the start of the day, no data may be returned.
+	// > Because billing data is aggregated on a daily basis, this timestamp must correspond to 00:00:00 of the day in the CST (UTC+8) time zone. If the time is not aligned with midnight, no data may be returned.
 	//
 	// This parameter is required.
 	//
@@ -50,25 +50,27 @@ type DescribePrepayBillTotalRequest struct {
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language. Enumerated value.
+	// The language. Valid values:
+	//
+	// - zh
+	//
+	// - en
 	//
 	// Default value: zh.
-	//
-	// Valid value: en.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The number of entries to return on each page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query. Specify a UNIX timestamp in seconds.
+	// The start time of the query. Use a UNIX timestamp accurate to seconds.
 	//
-	// > Because billing data is aggregated at the daily granularity, the timestamp must correspond to 00:00:00 of the day in CST (UTC+8). If the timestamp is not aligned to the start of the day, no data may be returned.
+	// > Because billing data is aggregated on a daily basis, this timestamp must correspond to 00:00:00 of the day in the CST (UTC+8) time zone. If the time is not aligned with midnight, no data may be returned.
 	//
 	// This parameter is required.
 	//

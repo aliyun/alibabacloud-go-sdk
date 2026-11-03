@@ -16,7 +16,7 @@ type iCreateTrFirewallV2RoutePolicyResponseBody interface {
 }
 
 type CreateTrFirewallV2RoutePolicyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

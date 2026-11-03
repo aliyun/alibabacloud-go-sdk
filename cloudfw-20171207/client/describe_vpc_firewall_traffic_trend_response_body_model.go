@@ -42,13 +42,13 @@ type iDescribeVpcFirewallTrafficTrendResponseBody interface {
 }
 
 type DescribeVpcFirewallTrafficTrendResponseBody struct {
-	// The average inbound network throughput. Unit: bit/s.
+	// The average network throughput in the inbound direction. Unit: bit/s.
 	//
 	// example:
 	//
 	// 1264110
 	AvgInBps *int64 `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
-	// The average outbound network throughput. Unit: bit/s.
+	// The average network throughput in the outbound direction. Unit: bit/s.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ type DescribeVpcFirewallTrafficTrendResponseBody struct {
 	//
 	// 34291
 	AvgTotalBps *int64 `json:"AvgTotalBps,omitempty" xml:"AvgTotalBps,omitempty"`
-	// The data list.
+	// The list of returned data.
 	DataList []*DescribeVpcFirewallTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The timestamp when the peak bandwidth occurred. The value is a UNIX timestamp. Unit: seconds.
+	// The timestamp when the peak bandwidth was reached. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1768008060
 	MaxBandwidthTime *int64 `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
-	// The peak inbound network throughput. Unit: bit/s.
+	// The peak network throughput in the inbound direction. Unit: bit/s.
 	//
 	// example:
 	//
 	// 1436
 	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	// The peak outbound network throughput. Unit: bit/s.
+	// The peak network throughput in the outbound direction. Unit: bit/s.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type DescribeVpcFirewallTrafficTrendResponseBody struct {
 	//
 	// 141688156232
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The total inbound network throughput. Unit: bytes.
+	// The total network traffic in the inbound direction. Unit: bytes.
 	//
 	// example:
 	//
 	// 2659635037
 	TotalInBytes *int64 `json:"TotalInBytes,omitempty" xml:"TotalInBytes,omitempty"`
-	// The total outbound network throughput. Unit: bytes.
+	// The total network traffic in the outbound direction. Unit: bytes.
 	//
 	// example:
 	//
@@ -317,7 +317,7 @@ type DescribeVpcFirewallTrafficTrendResponseBodyDataList struct {
 	//
 	// 45
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// The total outbound network throughput. Unit: bytes.
+	// The total network traffic in the outbound direction. Unit: bytes.
 	//
 	// example:
 	//
@@ -335,7 +335,7 @@ type DescribeVpcFirewallTrafficTrendResponseBodyDataList struct {
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The time when the traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the traffic was generated. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

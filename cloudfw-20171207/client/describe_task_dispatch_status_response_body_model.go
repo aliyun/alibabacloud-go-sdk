@@ -16,23 +16,23 @@ type iDescribeTaskDispatchStatusResponseBody interface {
 }
 
 type DescribeTaskDispatchStatusResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 71209DFE-XXX-XXX-52B4A4E9DA3B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution status of the task. Valid values:
+	// The status of the task. Valid values:
 	//
-	// - PENDING: pending execution.
+	// - PENDING: Pending.
 	//
-	// - RUNNING: running.
+	// - RUNNING: Running.
 	//
-	// - SUCCESS: succeeded.
+	// - SUCCESS: Successful.
 	//
-	// - FAILED: failed.
+	// - FAILED: Failed.
 	//
-	// - CANCELLED: cancelled.
+	// - CANCELLED: Cancelled.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeRegionResourceTypeAutoEnableRequest interface {
 }
 
 type DescribeRegionResourceTypeAutoEnableRequest struct {
-	// The language of the response message.
+	// The language type for receiving messages.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type UpdateAclCheckDetailStatusRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The modified status.
+	// The new status.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateAclCheckDetailStatusRequest struct {
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ACL check task ID.
+	// The ID of the ACL check task.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateAclCheckDetailStatusRequest struct {
 	//
 	// task-c92d4544ef7b6a42
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The unique identifier ID of the ACL policy in the ACL check details.
+	// The UUID of the ACL policy in the ACL check detail.
 	//
 	// This parameter is required.
 	//

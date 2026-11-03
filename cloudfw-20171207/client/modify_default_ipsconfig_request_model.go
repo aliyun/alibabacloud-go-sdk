@@ -26,9 +26,9 @@ type iModifyDefaultIPSConfigRequest interface {
 }
 
 type ModifyDefaultIPSConfigRequest struct {
-	// Specifies whether to enable Basic Policies. Valid values:
+	// Specifies whether Basic Policies are enabled. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: Enabled.
 	//
 	// - **0**: shutdown.
 	//
@@ -36,17 +36,17 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// 1
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// Specifies whether to enable threat intelligence. Valid values:
+	// Specifies whether threat intelligence is enabled. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: Enabled.
 	//
-	// - **0**: Disable.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 0
 	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
-	// The language type of the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -56,17 +56,17 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The daily traffic limit for sensitive data detection.
+	// The maximum daily traffic limit for sensitive data detection.
 	//
 	// example:
 	//
 	// 100
 	MaxSdl *int64 `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
-	// Specifies whether to enable virtual patches. Valid values:
+	// Specifies whether virtual patches are enabled. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: Enabled.
 	//
-	// - **0**: Disable.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type ModifyDefaultIPSConfigRequest struct {
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The IPS defense mode. Valid values:
 	//
-	// - **1**: Block Mode.
+	// - **1**: Block mode.
 	//
-	// - **0**: monitor mode.
+	// - **0**: Monitor mode.
 	//
 	// This parameter is required.
 	//

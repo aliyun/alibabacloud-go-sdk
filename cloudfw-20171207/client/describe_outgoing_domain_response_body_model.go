@@ -18,15 +18,15 @@ type iDescribeOutgoingDomainResponseBody interface {
 }
 
 type DescribeOutgoingDomainResponseBody struct {
-	// The list of outbound domains.
+	// The list of outbound domain names.
 	DomainList []*DescribeOutgoingDomainResponseBodyDomainList `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of outbound domains.
+	// The total number of outbound domain names.
 	//
 	// example:
 	//
@@ -83,19 +83,27 @@ func (s *DescribeOutgoingDomainResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDomainResponseBodyDomainList struct {
-	// Indicates whether the access control policy provides coverage. Valid values:
+	// Indicates whether the domain name is covered by an access control policy. Valid values:
+	//
+	// - **Uncovered**: Not covered.
+	//
+	// - **FullCoverage**: Covered.
 	//
 	// example:
 	//
 	// Uncovered
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The ACL recommendation details.
+	// The details of the ACL recommendation.
 	//
 	// example:
 	//
 	// RecommendedRelease
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
 	// The health status of the access control policy. Valid values:
+	//
+	// - **Normal**: Healthy.
+	//
+	// - **Abnormal**: Unhealthy.
 	//
 	// example:
 	//
@@ -116,26 +124,38 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	// The application names.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
 	// The list of application ports.
+	//
+	// > The list displays only the first 99 application ports. If there are more than 99 ports, only the first 99 are returned.
 	ApplicationPortList []*DescribeOutgoingDomainResponseBodyDomainListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
-	// The total number of assets with outbound connections.
+	// The total number of assets that initiate outbound connections.
 	//
 	// example:
 	//
 	// 20
 	AssetCount *int64 `json:"AssetCount,omitempty" xml:"AssetCount,omitempty"`
-	// The website business.
+	// The website service.
 	//
 	// example:
 	//
 	// Aliyun
 	Business *string `json:"Business,omitempty" xml:"Business,omitempty"`
-	// The categorization of the intelligence label. Valid values:
+	// The category of the intelligence label. Valid values:
+	//
+	// - **Suspicious**: Suspicious.
+	//
+	// - **Malicious**: Malicious.
+	//
+	// - **Trusted**: Trusted.
 	//
 	// example:
 	//
 	// Trusted
 	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
-	// The product category ID. Valid values:
+	// The category ID of the product. Valid values:
+	//
+	// - **Aliyun**: Alibaba Cloud product.
+	//
+	// - **NotAliyun**: Non-Alibaba Cloud product.
 	//
 	// example:
 	//
@@ -143,17 +163,21 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The category name of the product. Valid values:
 	//
+	// - **Alibaba Cloud product**
+	//
+	// - **Non-Alibaba Cloud product**
+	//
 	// example:
 	//
-	// Alibaba Cloud Product
+	// Alibaba Cloud product
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The domain name of the outbound connections.
+	// The domain name for outbound connections.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The group name of the rule.
+	// The name of the group in the rule.
 	//
 	// example:
 	//
@@ -161,11 +185,19 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// Indicates whether an ACL covers the management of this domain name. Valid values:
 	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
 	// example:
 	//
 	// true
 	HasAcl *string `json:"HasAcl,omitempty" xml:"HasAcl,omitempty"`
-	// Indicates whether an ACL recommendation exists. Valid values:
+	// Indicates whether an ACL is recommended. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -177,13 +209,17 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	//
 	// 3214
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// Indicates whether the outbound domain is marked as normal. Valid values:
+	// Indicates whether the outbound domain name is marked as normal. Valid values:
+	//
+	// - **true**: Normal.
+	//
+	// - **false**: Abnormal.
 	//
 	// example:
 	//
 	// true
 	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
-	// The organization name.
+	// The name of the organization.
 	//
 	// example:
 	//
@@ -195,19 +231,19 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	//
 	// 4582
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The total number of private network assets with outbound connections.
+	// The total number of private network assets that initiate outbound connections.
 	//
 	// example:
 	//
 	// 20
 	PrivateAssetCount *int64 `json:"PrivateAssetCount,omitempty" xml:"PrivateAssetCount,omitempty"`
-	// The ACL rule ID.
+	// The ID of the ACL rule.
 	//
 	// example:
 	//
 	// add-dfadf-f****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ACL rule name.
+	// The name of the ACL rule.
 	//
 	// example:
 	//
@@ -219,7 +255,13 @@ type DescribeOutgoingDomainResponseBodyDomainList struct {
 	//
 	// Smart policy: The target domain name belongs to Aliyun Computing Co., Ltd., and its main business is Aliyun. No security risks have been found. It can be used to configure an outreach whitelist.
 	SecurityReason *string `json:"SecurityReason,omitempty" xml:"SecurityReason,omitempty"`
-	// The security policy for the Outbound Domain. Valid values:
+	// The security policy for outbound domains. Valid values:
+	//
+	// - **pass**: Allow.
+	//
+	// - **alert**: Monitor.
+	//
+	// - **drop**: Deny.
 	//
 	// example:
 	//
@@ -569,7 +611,13 @@ func (s *DescribeOutgoingDomainResponseBodyDomainListApplicationPortList) Valida
 }
 
 type DescribeOutgoingDomainResponseBodyDomainListTagList struct {
-	// The categorization of the intelligence label. Valid values:
+	// The category of the intelligence label. Valid values:
+	//
+	// - **Suspicious**: Suspicious.
+	//
+	// - **Malicious**: Malicious.
+	//
+	// - **Trusted**: Trusted.
 	//
 	// example:
 	//
@@ -577,23 +625,29 @@ type DescribeOutgoingDomainResponseBodyDomainListTagList struct {
 	ClassId *string `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
 	// The risk assessment level. Valid values:
 	//
+	// - **1**: Low risk.
+	//
+	// - **2**: Medium risk.
+	//
+	// - **3**: High risk.
+	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The tag description.
+	// The description of the tag.
 	//
 	// example:
 	//
 	// tag-describe
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
-	// The intelligence label ID.
+	// The ID of the intelligence label.
 	//
 	// example:
 	//
 	// AliYun
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// The tag name.
+	// The name of the tag.
 	//
 	// example:
 	//

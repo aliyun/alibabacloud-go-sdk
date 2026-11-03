@@ -122,7 +122,7 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcList struct {
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcList struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The list of NAT gateways.
 	NatGateways []*DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Repeated"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
 	// vpc-8vbuzirdl3w1r7exw****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the VPC.
+	// The name of the VPC-connected instance.
 	//
 	// example:
 	//
@@ -211,19 +211,19 @@ func (s *DescribeSecurityProxyResourcesResponseBodyResourceListVpcList) Validate
 }
 
 type DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways struct {
-	// The status of the NAT Gateway.
+	// The status of the NAT gateway.
 	//
 	// example:
 	//
 	// Available
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The ID of the NAT Gateway.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// ngw-bp1bm0k2t8i6ooxu****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT Gateway.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways st
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
 	// The list of NAT route tables.
 	NatRouteEntryList []*DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList `json:"NatRouteEntryList,omitempty" xml:"NatRouteEntryList,omitempty" type:"Repeated"`
-	// The status of the NAT Gateway.
+	// The status of the NAT gateway.
 	//
 	// example:
 	//
@@ -312,7 +312,7 @@ type DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNat
 	//
 	// 10.0.70.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The ID of the next hop.
+	// The next hop instance ID.
 	//
 	// example:
 	//

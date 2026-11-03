@@ -16,7 +16,7 @@ type iDescribeControlPolicyDomainResolveResponseBody interface {
 }
 
 type DescribeControlPolicyDomainResolveResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeControlPolicyDomainResolveResponseBodyResolveResult struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The IP address list.
+	// The list of IP addresses.
 	IpAddrList []*string `json:"IpAddrList,omitempty" xml:"IpAddrList,omitempty" type:"Repeated"`
 	// The supported IP address version.
 	//
@@ -80,7 +80,7 @@ type DescribeControlPolicyDomainResolveResponseBodyResolveResult struct {
 	//
 	// 4
 	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The update time. The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970 (UTC).
+	// The update time. The value is a UNIX timestamp in seconds, which indicates the number of seconds that have elapsed since January 1, 1970 (UTC).
 	//
 	// example:
 	//

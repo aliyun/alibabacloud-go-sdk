@@ -18,7 +18,7 @@ type iListTlsInspectCACertificatesRequest interface {
 }
 
 type ListTlsInspectCACertificatesRequest struct {
-	// The CA certificate ID.
+	// The ID of the CA certificate.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTlsInspectCACertificatesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page for paging. Default value: 20.
+	// The maximum number of entries to return on each page during paging. Default value: 20.
 	//
 	// example:
 	//

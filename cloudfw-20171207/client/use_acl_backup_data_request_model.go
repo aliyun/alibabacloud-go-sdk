@@ -18,7 +18,7 @@ type iUseAclBackupDataRequest interface {
 }
 
 type UseAclBackupDataRequest struct {
-	// The backup time. This value is a Unix timestamp in seconds. For example: 1672502400.
+	// The backup time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UseAclBackupDataRequest struct {
 	//
 	// 1743683400
 	BackUpTime *string `json:"BackUpTime,omitempty" xml:"BackUpTime,omitempty"`
-	// The language of the response.
+	// The language in which you want to receive messages.
 	//
 	// example:
 	//

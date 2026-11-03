@@ -30,7 +30,7 @@ type iDescribeIPSRulesResponseBody interface {
 }
 
 type DescribeIPSRulesResponseBody struct {
-	// The number of rules that have the `drop` action.
+	// The total number of rules with the block action.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeIPSRulesResponseBody struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeIPSRulesResponseBody struct {
 	//
 	// 20
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total number of user-defined rules.
+	// The total number of rules with custom actions.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *DescribeIPSRulesResponseBody) Validate() error {
 }
 
 type DescribeIPSRulesResponseBodyRules struct {
-	// The target application.
+	// The attacked application.
 	//
 	// example:
 	//
@@ -215,15 +215,15 @@ type DescribeIPSRulesResponseBodyRules struct {
 	//
 	// alert
 	DefaultMode *string `json:"DefaultMode,omitempty" xml:"DefaultMode,omitempty"`
-	// A description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine mode.
+	// The supported engine mode.
 	//
-	// This parameter takes effect only when `DefaultMode` is set to `drop`.
+	// This value is valid only when DefaultMode is set to drop (Block). In other modes, this value is meaningless.
 	//
 	// example:
 	//
@@ -245,27 +245,27 @@ type DescribeIPSRulesResponseBodyRules struct {
 	//
 	// example:
 	//
-	// Nmap扫描探测
+	// Nmap scan detection
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule UUID.
+	// The UUID of the rule.
 	//
 	// example:
 	//
 	// d401b0cb-dc64-4bbe-bba0-3e7c744****
 	RuleUuid *string `json:"RuleUuid,omitempty" xml:"RuleUuid,omitempty"`
-	// The UNIX timestamp for when the rule was last updated.
+	// The timestamp when the rule was modified.
 	//
 	// example:
 	//
 	// 1775101028
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Specifies whether the rule is user-defined.
+	// Specifies whether the rule is a custom rule.
 	//
 	// example:
 	//
 	// 1
 	UserDefined *string `json:"UserDefined,omitempty" xml:"UserDefined,omitempty"`
-	// The user-defined status of the rule.
+	// The user status.
 	//
 	// example:
 	//

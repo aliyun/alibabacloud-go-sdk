@@ -28,7 +28,7 @@ type DescribePostpayEnabledProtectionResponseBody struct {
 	//
 	// 6
 	DisabledDays *int64 `json:"DisabledDays,omitempty" xml:"DisabledDays,omitempty"`
-	// The type of asset for which protection is disabled.
+	// The type of protection that is disabled.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribePostpayEnabledProtectionResponseBody struct {
 	//
 	// false
 	IsEnabledProtection *bool `json:"IsEnabledProtection,omitempty" xml:"IsEnabledProtection,omitempty"`
-	// Indicates whether the protection feature is activated but currently disabled.
+	// Indicates whether the protection feature is activated but disabled.
 	//
 	// example:
 	//

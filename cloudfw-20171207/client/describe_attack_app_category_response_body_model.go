@@ -18,7 +18,7 @@ type iDescribeAttackAppCategoryResponseBody interface {
 type DescribeAttackAppCategoryResponseBody struct {
 	// The list of attack application categories.
 	AppCategories []*DescribeAttackAppCategoryResponseBodyAppCategories `json:"AppCategories,omitempty" xml:"AppCategories,omitempty" type:"Repeated"`
-	// The request ID of the returned result.
+	// The ID of the request.
 	//
 	// example:
 	//

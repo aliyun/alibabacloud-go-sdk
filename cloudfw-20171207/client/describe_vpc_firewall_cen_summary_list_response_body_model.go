@@ -18,7 +18,7 @@ type iDescribeVpcFirewallCenSummaryListResponseBody interface {
 }
 
 type DescribeVpcFirewallCenSummaryListResponseBody struct {
-	// The list of CEN instances.
+	// The list of Cloud Enterprise Network (CEN) instances.
 	CenList []*DescribeVpcFirewallCenSummaryListResponseBodyCenList `json:"CenList,omitempty" xml:"CenList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -26,7 +26,7 @@ type DescribeVpcFirewallCenSummaryListResponseBody struct {
 	//
 	// 432D6CCA-5186-5B91-A2B8-10C8994B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeVpcFirewallCenSummaryListResponseBodyCenList struct {
 	//
 	// test
 	CenName *string `json:"CenName,omitempty" xml:"CenName,omitempty"`
-	// The list of region IDs for the VPC border firewall.
+	// The list of region IDs for the VPC firewall.
 	RegionNoList []*string `json:"RegionNoList,omitempty" xml:"RegionNoList,omitempty" type:"Repeated"`
 }
 

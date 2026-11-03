@@ -20,7 +20,7 @@ type iListTlsInspectCACertificatesResponseBody interface {
 type ListTlsInspectCACertificatesResponseBody struct {
 	// The list of certificates.
 	Certificates []*ListTlsInspectCACertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -89,19 +89,19 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	//
 	// - **ECC**: ECC algorithm.
 	//
-	// - **SM2**: SM2 (Chinese national cryptographic) algorithm.
+	// - **SM2**: SM2 algorithm.
 	//
 	// example:
 	//
 	// RSA
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The certificate alias.
+	// The alias of the certificate.
 	//
 	// example:
 	//
 	// rsa_ml_***_root
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The CA certificate ID.
+	// The ID of the CA certificate.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	//
 	// ROOT
 	CaCertType *string `json:"CaCertType,omitempty" xml:"CaCertType,omitempty"`
-	// The certificate chain expiration timestamp.
+	// The expiration timestamp of the certificate chain.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	//
 	// 2048
 	KeySize *int32 `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
-	// The parent CA certificate ID.
+	// The ID of the parent CA certificate.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListTlsInspectCACertificatesResponseBodyCertificates struct {
 	//
 	// SHA256WITHRSA
 	SignAlgorithm *string `json:"SignAlgorithm,omitempty" xml:"SignAlgorithm,omitempty"`
-	// The certificate status. Valid values:
+	// The status of the certificate. Valid values:
 	//
 	// - **ISSUE**: Enabled.
 	//

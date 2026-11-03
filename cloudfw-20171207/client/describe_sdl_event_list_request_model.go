@@ -38,7 +38,7 @@ type iDescribeSdlEventListRequest interface {
 }
 
 type DescribeSdlEventListRequest struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type DescribeSdlEventListRequest struct {
 	//
 	// 47.100.102.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp representing seconds.
+	// The end time. Specify a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1756433077
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language in which messages are received.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type DescribeSdlEventListRequest struct {
 	//
 	// Zhangjiakou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// Specifies whether to return only events detected by AI.
+	// Specifies whether to query only AI events.
 	//
 	// example:
 	//
 	// 0
 	OnlyAiEvt *int32 `json:"OnlyAiEvt,omitempty" xml:"OnlyAiEvt,omitempty"`
-	// The sort order. Valid values: `asc` (ascending) and `desc` (descending).
+	// The sort order.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type DescribeSdlEventListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sensitivity level of the data in the event.
+	// The sensitive data level.
 	//
 	// example:
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The field to sort by.
+	// The sort field.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type DescribeSdlEventListRequest struct {
 	//
 	// 172.16.0.XXX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The start of the time range to query. This value is a UNIX timestamp representing seconds.
+	// The start time. Specify a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1759198702
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The unique ID of the event.
+	// The unique identifier.
 	//
 	// example:
 	//

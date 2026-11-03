@@ -46,9 +46,9 @@ type ModifyTrFirewallV2RoutePolicyScopeRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Specifies whether to restore the traffic redirection configuration. Valid values:
 	//
-	// - true: Route rollback.
+	// - true: Rolls back the route.
 	//
-	// - false: Route withdrawal.
+	// - false: Revokes the route.
 	//
 	// example:
 	//

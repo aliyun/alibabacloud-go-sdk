@@ -16,9 +16,13 @@ type iDescribeRegionResourceTypeAutoEnableResponseBody interface {
 }
 
 type DescribeRegionResourceTypeAutoEnableResponseBody struct {
-	// The traffic redirection settings for asset types in each region.
+	// The traffic redirection switch for asset types in a region.
+	//
+	// example:
+	//
+	// {"cn-shenzhen":{"SlbEIP":false,"EIP":true}}
 	RegionResourceAutoEnable map[string]map[string]interface{} `json:"RegionResourceAutoEnable,omitempty" xml:"RegionResourceAutoEnable,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

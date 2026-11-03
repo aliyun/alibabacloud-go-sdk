@@ -24,7 +24,7 @@ type DescribeSdlEventListResponseBody struct {
 	//
 	// F06DE24D-6EB9-5F55-B588-7BB946DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array of data leakage events.
+	// The list of data leak events.
 	SdlEventDetailList []*DescribeSdlEventListResponseBodySdlEventDetailList `json:"SdlEventDetailList,omitempty" xml:"SdlEventDetailList,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeSdlEventListResponseBody) Validate() error {
 }
 
 type DescribeSdlEventListResponseBodySdlEventDetailList struct {
-	// The asset name.
+	// The name of the asset.
 	//
 	// example:
 	//
@@ -101,31 +101,31 @@ type DescribeSdlEventListResponseBodySdlEventDetailList struct {
 	//
 	// EIP
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The intelligence tag category. Valid values:
+	// The categorization of intelligence labels. Valid values:
 	//
-	// - **Suspicious**: suspicious
+	// - **Suspicious**: Suspicious.
 	//
-	// - **Malicious**: malicious
+	// - **Malicious**: Malicious.
 	//
-	// - **Trusted**: trusted
+	// - **Trusted**: Trusted.
 	//
 	// example:
 	//
 	// Trusted
 	CategoryClassId *string `json:"CategoryClassId,omitempty" xml:"CategoryClassId,omitempty"`
-	// The category name.
+	// The name of the category.
 	//
 	// example:
 	//
 	// Trusted
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The city ID.
+	// The ID of the city.
 	//
 	// example:
 	//
 	// 000
 	CityId *string `json:"CityId,omitempty" xml:"CityId,omitempty"`
-	// The country ID.
+	// The ID of the country.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeSdlEventListResponseBodySdlEventDetailList struct {
 	//
 	// 106.14.74.XXX
 	DstIp *string `json:"DstIp,omitempty" xml:"DstIp,omitempty"`
-	// The destination port.
+	// The destination ports.
 	//
 	// example:
 	//
@@ -149,43 +149,43 @@ type DescribeSdlEventListResponseBodySdlEventDetailList struct {
 	//
 	// 1
 	EventCnt *int64 `json:"EventCnt,omitempty" xml:"EventCnt,omitempty"`
-	// The event\\"s risk level.
+	// The risk level of the event.
 	//
 	// example:
 	//
 	// high
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event name.
+	// The name of the event.
 	//
 	// example:
 	//
 	// Sensitive ID card data leakage
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The first time the event occurred, as a Unix timestamp in seconds.
+	// The time when the event first occurred. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735697768
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// The last time the event occurred, as a Unix timestamp in seconds.
+	// The time when the event last occurred. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1738636157
 	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The location of the destination IP address.
+	// The name of the region to which the destination IP address belongs.
 	//
 	// example:
 	//
 	// Yuhang District, Hangzhou City, Zhejiang Province
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	// The payload of the intrusion prevention event.
+	// The attack payload of the intrusion prevention event.
 	//
 	// example:
 	//
 	// 3082002f02010004067075626c6963a082002002044c33a756020100020100308200103082000c06082b060102010105000500
 	Payload *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
-	// The protocol.
+	// The protocols.
 	//
 	// example:
 	//
@@ -209,13 +209,13 @@ type DescribeSdlEventListResponseBodySdlEventDetailList struct {
 	//
 	// 0
 	ResourceIdType *int32 `json:"ResourceIdType,omitempty" xml:"ResourceIdType,omitempty"`
-	// The number of sensitive data items.
+	// The amount of sensitive data.
 	//
 	// example:
 	//
 	// 10
 	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitempty" xml:"SensitiveDataCnt,omitempty"`
-	// An array of sensitive data.
+	// The list of sensitive data.
 	SensitiveDataList []*string `json:"SensitiveDataList,omitempty" xml:"SensitiveDataList,omitempty" type:"Repeated"`
 	// The sensitive data level.
 	//
@@ -223,7 +223,7 @@ type DescribeSdlEventListResponseBodySdlEventDetailList struct {
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The sensitive data type.
+	// The type of sensitive data.
 	//
 	// example:
 	//
@@ -235,19 +235,19 @@ type DescribeSdlEventListResponseBodySdlEventDetailList struct {
 	//
 	// 104.28.226.XX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// The source port.
+	// The source ports.
 	//
 	// example:
 	//
 	// 443
 	SrcPortList *string `json:"SrcPortList,omitempty" xml:"SrcPortList,omitempty"`
-	// The traffic volume in bytes.
+	// The traffic volume.
 	//
 	// example:
 	//
 	// 0
 	TrafficBytes *int64 `json:"TrafficBytes,omitempty" xml:"TrafficBytes,omitempty"`
-	// The unique identifier for the event.
+	// The UUID.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeCfwRiskLevelSummaryRequest interface {
 }
 
 type DescribeCfwRiskLevelSummaryRequest struct {
-	// The instance type. Valid value:
+	// The instance type. Valid values:
 	//
 	// - **ecs**
 	//
@@ -26,9 +26,7 @@ type DescribeCfwRiskLevelSummaryRequest struct {
 	//
 	// EcsEIP
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The language of the response.
-	//
-	// Valid values:
+	// The language in which messages are received. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -38,9 +36,9 @@ type DescribeCfwRiskLevelSummaryRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the region where Cloud Firewall is deployed.
+	// The region ID of Cloud Firewall.
 	//
-	// > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// example:
 	//

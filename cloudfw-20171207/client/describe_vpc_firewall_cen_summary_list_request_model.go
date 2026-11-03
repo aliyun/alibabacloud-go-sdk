@@ -22,13 +22,13 @@ type iDescribeVpcFirewallCenSummaryListRequest interface {
 }
 
 type DescribeVpcFirewallCenSummaryListRequest struct {
-	// The page number for a paged query. The default value is 1.
+	// The page number of the current page in a paging query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content. Valid values:
+	// The language. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -38,13 +38,13 @@ type DescribeVpcFirewallCenSummaryListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The UID of the member account of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DescribeVpcFirewallCenSummaryListRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the CEN transit router. Valid values:
 	//
-	// **Basic**: Basic Edition
+	// **Basic**: Basic Edition.
 	//
-	// **Enterprise**: Enterprise Edition
+	// **Enterprise**: Enterprise Edition.
 	//
 	// example:
 	//

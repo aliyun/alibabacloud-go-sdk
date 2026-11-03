@@ -24,7 +24,7 @@ type iDescribeVpcFirewallTrafficTrendRequest interface {
 }
 
 type DescribeVpcFirewallTrafficTrendRequest struct {
-	// The end time. The value is a UNIX timestamp. Unit: seconds.
+	// The end time. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,15 @@ type DescribeVpcFirewallTrafficTrendRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language of the request and response. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The instance ID of the peer VPC instance.
+	// The instance ID of the peer VPC.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeVpcFirewallTrafficTrendRequest struct {
 	//
 	// 10.21.186.XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	// The start time. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

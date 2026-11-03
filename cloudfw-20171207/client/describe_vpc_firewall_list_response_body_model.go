@@ -18,19 +18,19 @@ type iDescribeVpcFirewallListResponseBody interface {
 }
 
 type DescribeVpcFirewallListResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 850A84D6-0DE4-4797-A1E8-00090125k8g2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of VPC firewalls.
+	// The total number of virtual private cloud (VPC) border firewalls.
 	//
 	// example:
 	//
 	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of the VPC firewalls.
+	// The details of the virtual private cloud (VPC) border firewalls.
 	VpcFirewalls []*DescribeVpcFirewallListResponseBodyVpcFirewalls `json:"VpcFirewalls,omitempty" xml:"VpcFirewalls,omitempty" type:"Repeated"`
 }
 
@@ -83,47 +83,47 @@ func (s *DescribeVpcFirewallListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
-	// The mode of the access control list (ACL) engine.
+	// The ACL engine mode.
 	AclConfig *DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
-	// The bandwidth of the Express Connect circuit. Unit: Mbps.
+	// The bandwidth of the Express Connect circuit. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The subtype of the connection. Valid values:
+	// The connection subtype. Valid values:
 	//
 	// - **vpc2vpc**: Express Connect.
 	//
-	// - **vpcpeer**: peering connection.
+	// - **vpcpeer**: VPC peering connection.
 	//
 	// example:
 	//
 	// vpcpeer
 	ConnectSubType *string `json:"ConnectSubType,omitempty" xml:"ConnectSubType,omitempty"`
-	// The type of connection for the VPC firewall. The value is fixed as **expressconnect**, which indicates an Express Connect circuit.
+	// The interconnection type of the virtual private cloud (VPC) border firewall. Valid values: **expressconnect**, which indicates Express Connect.
 	//
 	// example:
 	//
 	// expressconnect
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	// The status of the VPC firewall. Valid values:
+	// The switch status of the virtual private cloud (VPC) border firewall. Valid values:
 	//
-	// - **opened**: The firewall is enabled.
+	// - **opened**: Enabled.
 	//
-	// - **closed**: The firewall is disabled.
+	// - **closed**: Disabled.
 	//
-	// - **notconfigured**: The firewall is not configured.
+	// - **notconfigured**: The virtual private cloud (VPC) border firewall is not configured.
 	//
 	// example:
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The configuration of the intrusion prevention system (IPS).
+	// The IPS configuration.
 	IpsConfig *DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig `json:"IpsConfig,omitempty" xml:"IpsConfig,omitempty" type:"Struct"`
 	// The details of the local VPC.
 	LocalVpc *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
-	// The UID of the member account.
+	// The UID of the member accounts.
 	//
 	// example:
 	//
@@ -131,35 +131,35 @@ type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// The details of the peer VPC.
 	PeerVpc *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc `json:"PeerVpc,omitempty" xml:"PeerVpc,omitempty" type:"Struct"`
-	// The status of the region. Valid values:
+	// The availability status of the region. Valid values:
 	//
-	// - **enable**: The region is available. You can create a VPC firewall in this region.
+	// - **enable**: Available. The region supports virtual private cloud (VPC) border firewalls.
 	//
-	// - **disable**: The region is unavailable. You cannot create a VPC firewall in this region.
+	// - **disable**: Unavailable. The region does not support virtual private cloud (VPC) border firewalls.
 	//
 	// example:
 	//
 	// enable
 	RegionStatus *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
-	// The result code of the VPC firewall creation. Valid values:
+	// The operation result code when you create a VPC border firewall. Valid values:
 	//
-	// - **Unauthorized**: An unauthorized VPC exists. You cannot create a VPC firewall.
+	// - **Unauthorized**: Indicates that a VPC without authorization exists, and you are not allowed to create a VPC border firewall.
 	//
-	// - **RegionDisable**: The VPC is in a region where VPC firewalls are not supported. You cannot create a VPC firewall.
+	// - **RegionDisable**: Indicates that the region where the VPC resides does not support VPC border firewalls, and you are not allowed to create a VPC border firewall.
 	//
-	// - **An empty string**: You can create a VPC firewall for the network instance.
+	// - **Empty string**: Indicates that you can normally create a VPC border firewall for this network instance.
 	//
 	// example:
 	//
 	// Unauthorized
 	ResultCode *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the virtual private cloud (VPC) border firewall.
 	//
 	// example:
 	//
 	// vfw-m5e7dbc4y****
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
-	// The instance name of the VPC firewall.
+	// The instance name of the virtual private cloud (VPC) border firewall.
 	//
 	// example:
 	//
@@ -317,11 +317,11 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) Validate() error {
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig struct {
-	// Indicates whether to enable strict mode. Valid values:
+	// Specifies whether strict mode is enabled. Valid values:
 	//
-	// - 1: enabled
+	// - **1**: Enabled.
 	//
-	// - 0: disabled
+	// - **0**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -353,41 +353,41 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig) Validate() er
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig struct {
-	// The status of the basic policies. Valid values:
+	// The switch for Basic Policies. Valid values:
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
-	// The status of virtual patching. Valid values:
+	// The switch for virtual patches. Valid values:
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	EnableAllPatch *int32 `json:"EnableAllPatch,omitempty" xml:"EnableAllPatch,omitempty"`
-	// The IPS rule group. Valid values:
+	// The IPS rules group. Valid values:
 	//
-	// - **1**: Loose.
+	// - **1**: Loose rule group.
 	//
-	// - **2**: Medium.
+	// - **2**: Medium rule group.
 	//
-	// - **3**: Strict.
+	// - **3**: Strict rule group.
 	//
 	// example:
 	//
 	// 1
 	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
-	// The IPS mode. Valid values:
+	// The IPS defense mode. Valid values:
 	//
-	// - **1**: Block Mode.
+	// - **1**: Block mode.
 	//
 	// - **0**: Monitor mode.
 	//
@@ -446,7 +446,7 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsIpsConfig) Validate() er
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc struct {
-	// The authorization status of the local VPC. The value is fixed as authorized.
+	// The authorization status of the local VPC. Valid values: **authorized**, which indicates that the VPC is authorized.
 	//
 	// example:
 	//
@@ -464,7 +464,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The CIDR blocks of the local VPC.
+	// The CIDR block list of the local VPC.
 	VpcCidrTableList []*DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
 	// The instance ID of the local VPC.
 	//
@@ -472,7 +472,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc struct {
 	//
 	// vpc-8vbwbo90rq0anm6t****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The instance name of the local VPC.
+	// The name of the local VPC.
 	//
 	// example:
 	//
@@ -556,9 +556,9 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpc) Validate() err
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList struct {
-	// The route entries of the local VPC.
+	// The routing entry list of the local VPC.
 	RouteEntryList []*DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
-	// The ID of the route table for the local VPC.
+	// The ID of the route table of the local VPC.
 	//
 	// example:
 	//
@@ -612,7 +612,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableListRout
 	//
 	// 192.168.XX.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The ID of the next hop instance for the local VPC.
+	// The next hop instance ID of the local VPC.
 	//
 	// example:
 	//
@@ -651,7 +651,7 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsLocalVpcVpcCidrTableList
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc struct {
-	// The authorization status of the peer VPC. The value is fixed as **authorized**.
+	// The authorization status of the peer VPC. Valid values: **authorized**, which indicates that the VPC is authorized.
 	//
 	// example:
 	//
@@ -669,7 +669,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The CIDR blocks of the peer VPC.
+	// The CIDR block list of the peer VPC.
 	VpcCidrTableList []*DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList `json:"VpcCidrTableList,omitempty" xml:"VpcCidrTableList,omitempty" type:"Repeated"`
 	// The instance ID of the peer VPC.
 	//
@@ -677,7 +677,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc struct {
 	//
 	// vpc-8vbwbo90rq0anm6t****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The instance name of the peer VPC.
+	// The name of the peer VPC.
 	//
 	// example:
 	//
@@ -761,9 +761,9 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpc) Validate() erro
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableList struct {
-	// The route entries of the peer VPC.
+	// The routing entry list of the peer VPC.
 	RouteEntryList []*DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRouteEntryList `json:"RouteEntryList,omitempty" xml:"RouteEntryList,omitempty" type:"Repeated"`
-	// The ID of the route table for the peer VPC.
+	// The ID of the route table of the peer VPC.
 	//
 	// example:
 	//
@@ -817,7 +817,7 @@ type DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListRoute
 	//
 	// 192.168.XX.XX/24
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The ID of the next hop instance for the peer VPC.
+	// The next hop instance ID of the peer VPC.
 	//
 	// example:
 	//

@@ -24,23 +24,23 @@ type iDescribeLocationInfoResponseBody interface {
 }
 
 type DescribeLocationInfoResponseBody struct {
-	// The number of regions in China.
+	// The number of regions in the Chinese mainland.
 	//
 	// example:
 	//
 	// 340
 	CnCount *int32 `json:"CnCount,omitempty" xml:"CnCount,omitempty"`
-	// The list of regions in China.
+	// The list of regions in the Chinese mainland.
 	CnList []*DescribeLocationInfoResponseBodyCnList `json:"CnList,omitempty" xml:"CnList,omitempty" type:"Repeated"`
-	// The information about provinces and cities in China.
+	// The province and city information in the Chinese mainland.
 	CnProvinceList []*DescribeLocationInfoResponseBodyCnProvinceList `json:"CnProvinceList,omitempty" xml:"CnProvinceList,omitempty" type:"Repeated"`
-	// The number of regions outside China.
+	// The number of regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// 238
 	OverseasCount *int32 `json:"OverseasCount,omitempty" xml:"OverseasCount,omitempty"`
-	// The list of regions outside China.
+	// The list of regions outside the Chinese mainland.
 	OverseasList []*DescribeLocationInfoResponseBodyOverseasList `json:"OverseasList,omitempty" xml:"OverseasList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -144,13 +144,13 @@ func (s *DescribeLocationInfoResponseBody) Validate() error {
 }
 
 type DescribeLocationInfoResponseBodyCnList struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// 3301
 	LocId *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ func (s *DescribeLocationInfoResponseBodyCnList) Validate() error {
 type DescribeLocationInfoResponseBodyCnProvinceList struct {
 	// The list of city codes.
 	Cities []*DescribeLocationInfoResponseBodyCnProvinceListCities `json:"Cities,omitempty" xml:"Cities,omitempty" type:"Repeated"`
-	// The name of the province.
+	// The province name.
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ func (s *DescribeLocationInfoResponseBodyCnProvinceList) Validate() error {
 }
 
 type DescribeLocationInfoResponseBodyCnProvinceListCities struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// 123
 	LocId *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ func (s *DescribeLocationInfoResponseBodyCnProvinceListCities) Validate() error 
 }
 
 type DescribeLocationInfoResponseBodyOverseasList struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// US
 	LocId *string `json:"LocId,omitempty" xml:"LocId,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//

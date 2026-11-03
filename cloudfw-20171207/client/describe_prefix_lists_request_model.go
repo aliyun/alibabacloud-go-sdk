@@ -16,7 +16,7 @@ type iDescribePrefixListsRequest interface {
 }
 
 type DescribePrefixListsRequest struct {
-	// The region ID.
+	// The ID of the region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribePrefixListsRequest struct {
 	//
 	// cn-shenzhen
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The source IP address.
+	// The source IP address of the caller.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DescribeCfwRiskLevelSummaryResponseBody struct {
 	//
 	// F1F30435-FA0A-52DA-A5DE-C16FD6C171DA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of threats.
+	// The risk list.
 	RiskList []*DescribeCfwRiskLevelSummaryResponseBodyRiskList `json:"RiskList,omitempty" xml:"RiskList,omitempty" type:"Repeated"`
 }
 
@@ -66,15 +66,15 @@ func (s *DescribeCfwRiskLevelSummaryResponseBody) Validate() error {
 }
 
 type DescribeCfwRiskLevelSummaryResponseBodyRiskList struct {
-	// The threat level. Valid value:
+	// The risk level. Valid values:
 	//
-	// - **medium**: medium
+	// - **medium**: Medium
 	//
 	// example:
 	//
 	// medium
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The number of ECS instances at risk.
+	// The number of at-risk ECS instances.
 	//
 	// example:
 	//

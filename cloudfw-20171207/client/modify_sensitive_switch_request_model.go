@@ -28,7 +28,7 @@ type ModifySensitiveSwitchRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type.
+	// The category.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type ModifySensitiveSwitchRequest struct {
 	SensitiveCategory *string `json:"SensitiveCategory,omitempty" xml:"SensitiveCategory,omitempty"`
 	// The status. Valid values:
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
 	// example:
 	//

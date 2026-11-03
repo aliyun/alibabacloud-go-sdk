@@ -18,23 +18,23 @@ type iModifyTrFirewallV2ConfigurationRequest interface {
 }
 
 type ModifyTrFirewallV2ConfigurationRequest struct {
-	// The instance ID of the VPC firewall. You can call DescribeTrFirewallsV2List to obtain the ID.
+	// The ID of the VPC firewall instance. You can obtain the ID by calling DescribeTrFirewallsV2List.
 	//
-	// > Note: FirewallId and FirewallName are jointly required. Both parameters must be provided at the same time. If either parameter is missing, the operation returns a 400 error.
+	// > Note: FirewallId and FirewallName are jointly required. You must specify both parameters. If either parameter is missing, the API operation returns a 400 error.
 	//
 	// example:
 	//
 	// vfw-tr-bcdf89d405ce4bd2****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The instance name of the VPC firewall.
+	// The name of the VPC firewall instance.
 	//
-	// > Note: FirewallId and FirewallName are jointly required. Both parameters must be provided at the same time. If either parameter is missing, the operation returns a 400 error.
+	// > Note: FirewallId and FirewallName are jointly required. You must specify both parameters. If either parameter is missing, the API operation returns a 400 error.
 	//
 	// example:
 	//
 	// vpc-firewall
 	FirewallName *string `json:"FirewallName,omitempty" xml:"FirewallName,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//

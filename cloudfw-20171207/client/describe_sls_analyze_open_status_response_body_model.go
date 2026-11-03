@@ -16,11 +16,11 @@ type iDescribeSlsAnalyzeOpenStatusResponseBody interface {
 }
 
 type DescribeSlsAnalyzeOpenStatusResponseBody struct {
-	// The enabled status of SLS. Valid values:
+	// The enabling status of SLS. Valid values:
 	//
-	// **true**: enabled.
+	// **true**: Enabled.
 	//
-	// **false**: disabled.
+	// **false**: Disabled.
 	//
 	// example:
 	//

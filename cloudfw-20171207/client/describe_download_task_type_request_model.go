@@ -20,13 +20,15 @@ type iDescribeDownloadTaskTypeRequest interface {
 }
 
 type DescribeDownloadTaskTypeRequest struct {
-	// The page number. The default value is **1**.
+	// The page number of the page to return in a paged query.
+	//
+	// Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the response. Valid values:
+	// The language in which messages are received. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -36,13 +38,13 @@ type DescribeDownloadTaskTypeRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. Default value: 10. Maximum value: 50.
+	// The maximum number of entries to return on each page in a paged query. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//

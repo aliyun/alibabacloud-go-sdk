@@ -18,13 +18,13 @@ type iDescribeIspInfoRequest interface {
 }
 
 type DescribeIspInfoRequest struct {
-	// The language of the response message.
+	// The language type for receiving messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source tracking code.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//

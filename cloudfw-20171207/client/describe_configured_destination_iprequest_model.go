@@ -32,7 +32,7 @@ type iDescribeConfiguredDestinationIPRequest interface {
 }
 
 type DescribeConfiguredDestinationIPRequest struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type DescribeConfiguredDestinationIPRequest struct {
 	//
 	// ignore
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The language of the response.
+	// The language for receiving messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The trace code.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//

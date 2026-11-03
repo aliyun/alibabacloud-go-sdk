@@ -18,7 +18,7 @@ type iDescribeOutgoingAssetListResponseBody interface {
 }
 
 type DescribeOutgoingAssetListResponseBody struct {
-	// The list of assets.
+	// The asset list.
 	AssetList []*DescribeOutgoingAssetListResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -95,7 +95,7 @@ type DescribeOutgoingAssetListResponseBodyAssetList struct {
 	//
 	// test
 	AssetInstanceName *string `json:"AssetInstanceName,omitempty" xml:"AssetInstanceName,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -119,13 +119,13 @@ type DescribeOutgoingAssetListResponseBodyAssetList struct {
 	//
 	// 12
 	IpsHitCnt *int64 `json:"IpsHitCnt,omitempty" xml:"IpsHitCnt,omitempty"`
-	// The ID of the NAT Gateway.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT Gateway.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
@@ -137,13 +137,13 @@ type DescribeOutgoingAssetListResponseBodyAssetList struct {
 	//
 	// 100
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The number of outbound domains.
+	// The number of outbound domain names.
 	//
 	// example:
 	//
 	// 10
 	OutgoingDomainCnt *int64 `json:"OutgoingDomainCnt,omitempty" xml:"OutgoingDomainCnt,omitempty"`
-	// The number of outbound destination IP addresses.
+	// The number of outbound IP addresses.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type DescribeOutgoingAssetListResponseBodyAssetList struct {
 	//
 	// 10.21.242XXX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The list of private IP addresses.
+	// The private IP address list.
 	PrivateIPList []*string `json:"PrivateIPList,omitempty" xml:"PrivateIPList,omitempty" type:"Repeated"`
 	// The public IP address.
 	//
@@ -175,7 +175,7 @@ type DescribeOutgoingAssetListResponseBodyAssetList struct {
 	//
 	// risk
 	SecurityRisk *string `json:"SecurityRisk,omitempty" xml:"SecurityRisk,omitempty"`
-	// The number of sessions.
+	// The number of accesses.
 	//
 	// example:
 	//

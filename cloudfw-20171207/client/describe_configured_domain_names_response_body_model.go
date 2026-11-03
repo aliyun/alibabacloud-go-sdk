@@ -28,7 +28,7 @@ type DescribeConfiguredDomainNamesResponseBody struct {
 	//
 	// sg_server
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type DescribeConfiguredDomainNamesResponseBodyDomainNames struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether the domain name is malicious. Valid values: `0` (not malicious) and `1` (malicious).
+	// Indicates whether the domain name is one of the malicious domain names. Valid values: 0: Not malicious. 1: Malicious.
 	//
 	// example:
 	//
 	// 0
 	IsMalicious *bool `json:"IsMalicious,omitempty" xml:"IsMalicious,omitempty"`
-	// The time of the operation, specified as a Unix timestamp in seconds. Example: `1672502400`.
+	// The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeResourceTypeAutoEnableRequest interface {
 }
 
 type DescribeResourceTypeAutoEnableRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//

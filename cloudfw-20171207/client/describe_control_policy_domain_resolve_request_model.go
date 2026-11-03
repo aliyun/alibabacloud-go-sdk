@@ -22,21 +22,21 @@ type iDescribeControlPolicyDomainResolveRequest interface {
 }
 
 type DescribeControlPolicyDomainResolveRequest struct {
-	// The domain name. This parameter is required and must be specified when you call this operation.
+	// The domain name. This parameter is required and must be provided when you call the operation.
 	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The type of the cloud firewall.
+	// The Cloud Firewall type.
 	//
 	// example:
 	//
 	// internet
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The IP address version. Valid values: **4*	- (IPv4) and **6*	- (IPv6).
+	// The IP address version. Valid values: **4*	- (IPv4) or **6*	- (IPv6).
 	//
-	// > This parameter is unconditionally required and has no dependency on RegionNo. If this parameter is not specified, the error MissingParameter.IpVersion is returned (-200157). If the value is invalid, the error ErrorParameterIpVersion is returned (-200135).
+	// > This parameter is unconditionally required and has no dependency on RegionNo. If this parameter is missing, the MissingParameter.IpVersion (-200157) error is returned. If the value is invalid, the ErrorParameterIpVersion (-200135) error is returned.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeControlPolicyDomainResolveRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region ID. This parameter is required. If this parameter is not specified, the error MissingParameter.RegionNo is returned (-200155, The required parameter \\"RegionNo\\" is not provided.).
+	// The region ID. This parameter is required. If this parameter is missing, the MissingParameter.RegionNo (-200155, The required parameter \\"RegionNo\\" is not provided.) error is returned.
 	//
 	// example:
 	//

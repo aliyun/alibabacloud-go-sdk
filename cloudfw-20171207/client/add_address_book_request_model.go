@@ -40,9 +40,9 @@ type iAddAddressBookRequest interface {
 }
 
 type AddAddressBookRequest struct {
-	// The ACK cluster connector ID. You can obtain the value from the following operation:
+	// The ID of the ACK cluster connector. You can obtain the value from the following operation:
 	//
-	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries the list of ACK cluster connectors.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type AddAddressBookRequest struct {
 	//
 	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The addresses in the address book. Separate multiple addresses with commas (,). Use a space to separate an address from its description within a single address element.
+	// The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space.
 	//
 	// > This parameter is required when GroupType is set to `ip`, `port`, or `domain`.
 	//
@@ -72,9 +72,9 @@ type AddAddressBookRequest struct {
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	// The list of member accounts for the asset address book.
 	AssetMemberUids []*int64 `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty" type:"Repeated"`
-	// The list of regions and resource types for the asset address book.
+	// The asset address book, region, and resource type list.
 	AssetRegionResourceTypes []*AddAddressBookRequestAssetRegionResourceTypes `json:"AssetRegionResourceTypes,omitempty" xml:"AssetRegionResourceTypes,omitempty" type:"Repeated"`
-	// Indicates whether to automatically add the public IP addresses of Elastic Compute Service (ECS) instances that match the specified tags to the address book.
+	// Specifies whether the address book is automatically updated to include the public IP addresses of Elastic Compute Service (ECS) instances that match new labels.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type AddAddressBookRequest struct {
 	//
 	// ip
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The language type of the address book description.
+	// The language of the address book description.
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type AddAddressBookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The ECS tag list.
+	// The list of ECS tags.
 	TagList []*AddAddressBookRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship among multiple ECS tags to match.
+	// The relationship between multiple ECS tags to be matched.
 	//
 	// example:
 	//
@@ -339,7 +339,7 @@ func (s *AddAddressBookRequestAckLabels) Validate() error {
 }
 
 type AddAddressBookRequestAssetRegionResourceTypes struct {
-	// The region ID of the asset.
+	// The asset region ID.
 	//
 	// example:
 	//
@@ -702,49 +702,49 @@ func (s *AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) Validate
 }
 
 type AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 struct {
-	// The asset type: AIGatewayEIPv6.
+	// The AIGatewayEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	AiGatewayEIPv6 *bool `json:"AiGatewayEIPv6,omitempty" xml:"AiGatewayEIPv6,omitempty"`
-	// The asset type: AlbIPv6.
+	// The AlbIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	AlbIPv6 *bool `json:"AlbIPv6,omitempty" xml:"AlbIPv6,omitempty"`
-	// The asset type: ApigEIPv6.
+	// The ApigEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	ApiGatewayEIPv6 *bool `json:"ApiGatewayEIPv6,omitempty" xml:"ApiGatewayEIPv6,omitempty"`
-	// The asset type: EcsIPv6.
+	// The EcsIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	EcsIPv6 *bool `json:"EcsIPv6,omitempty" xml:"EcsIPv6,omitempty"`
-	// The asset type: EniEIPv6.
+	// The EniEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	EniEIPv6 *bool `json:"EniEIPv6,omitempty" xml:"EniEIPv6,omitempty"`
-	// The asset type: GaEIPv6.
+	// The GaEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	GaEIPv6 *bool `json:"GaEIPv6,omitempty" xml:"GaEIPv6,omitempty"`
-	// The asset type: NlbIPv6.
+	// The NlbIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	NlbIPv6 *bool `json:"NlbIPv6,omitempty" xml:"NlbIPv6,omitempty"`
-	// The asset type: SlbIPv6.
+	// The SlbIPv6 asset type.
 	//
 	// example:
 	//

@@ -24,19 +24,19 @@ type UpdatePostpayUserInternetStatusRequest struct {
 	//
 	// cfw_elasticity_public_cn-zsk39m******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response message. Valid values:
+	// The language of the message. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation type. Currently, only the activation operation is supported.
+	// The operation type. Currently, only the activation operation is supported. Valid values:
 	//
-	// - open: activation.
+	// - open: activate
 	//
 	// example:
 	//

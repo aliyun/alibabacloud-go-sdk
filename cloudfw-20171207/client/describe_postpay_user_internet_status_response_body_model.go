@@ -18,25 +18,25 @@ type iDescribePostpayUserInternetStatusResponseBody interface {
 }
 
 type DescribePostpayUserInternetStatusResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 0DC783F1-B3A7-578D-8A63-*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the Internet Border firewall. Valid values:
+	// The status of the Internet Border switch module in Cloud Firewall. Valid values:
 	//
-	// - **open**: The firewall is enabled.
+	// - **open**: The module is enabled.
 	//
-	// - **init**: The firewall is being enabled.
+	// - **init**: The module is being enabled.
 	//
-	// - **closed**: The firewall is disabled.
+	// - **closed**: The module is disabled.
 	//
 	// example:
 	//
 	// open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of days that the firewall was disabled. This parameter is returned only if the value of the Status parameter is open.
+	// The number of days that protection is not enabled. This parameter is valid only when the module is enabled.
 	//
 	// example:
 	//

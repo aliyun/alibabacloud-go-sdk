@@ -42,9 +42,9 @@ type iCreateSecurityProxyRequest interface {
 type CreateSecurityProxyRequest struct {
 	// The deployment mode of the firewall service. Valid values:
 	//
-	// - **PrimaryStandby**: primary/standby mode.
+	// - PrimaryStandby: primary/secondary mode
 	//
-	// - **MultiPrimary**: active-active mode.
+	// - MultiPrimary: active-active mode
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateSecurityProxyRequest struct {
 	FirewallServiceZones []*string `json:"FirewallServiceZones,omitempty" xml:"FirewallServiceZones,omitempty" type:"Repeated"`
 	// The security protection switch. Valid values:
 	//
-	// - **open**: Enabled.
+	// - **open**: enable
 	//
-	// - **close**: Disabled.
+	// - **close**: disable
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type CreateSecurityProxyRequest struct {
 	//
 	// 0
 	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//
@@ -308,7 +308,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// 0.0.0.0/0
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
-	// The next hop of the original NAT gateway.
+	// The next hop address of the original NAT gateway.
 	//
 	// This parameter is required.
 	//
@@ -316,7 +316,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// ngw-bp1okz6******
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The network type of the next hop. Valid value: NatGateway.
+	// The network type of the next hop. Valid values: NatGateway.
 	//
 	// This parameter is required.
 	//
@@ -324,7 +324,7 @@ type CreateSecurityProxyRequestNatRouteEntryList struct {
 	//
 	// NatGateway
 	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
-	// The ID of the route table to which the default route of the NAT gateway belongs.
+	// The route table to which the default route of the NAT gateway belongs.
 	//
 	// This parameter is required.
 	//

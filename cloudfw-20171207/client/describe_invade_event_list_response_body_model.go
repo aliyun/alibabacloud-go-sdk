@@ -24,21 +24,21 @@ type iDescribeInvadeEventListResponseBody interface {
 }
 
 type DescribeInvadeEventListResponseBody struct {
-	// The list of compromise awareness events.
+	// The list of compromised host events.
 	EventList []*DescribeInvadeEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
-	// The percentage of high-risk level events.
+	// The proportion of high-risk levels.
 	//
 	// example:
 	//
 	// 40
 	HighLevelPercent *int32 `json:"HighLevelPercent,omitempty" xml:"HighLevelPercent,omitempty"`
-	// The percentage of low-risk level events.
+	// The proportion of low-risk levels.
 	//
 	// example:
 	//
 	// 20
 	LowLevelPercent *int32 `json:"LowLevelPercent,omitempty" xml:"LowLevelPercent,omitempty"`
-	// The percentage of medium-risk level events.
+	// The proportion of medium-risk levels.
 	//
 	// example:
 	//
@@ -147,49 +147,79 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	//
 	// ECS_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// The type of the affected asset. Valid values:
+	// The affected asset type. Valid values:
+	//
+	// - **BastionHostIP**: the egress IP address of Bastionhost.
+	//
+	// - **BastionHostIngressIP**: the ingress IP address of Bastionhost.
+	//
+	// - **EcsEIP**: the EIP of an ECS instance.
+	//
+	// - **EcsPublicIP**: the public IP addresses of Elastic Compute Service (ECS) instances.
+	//
+	// - **EIP**: an EIP.
+	//
+	// - **EniEIP**: the EIP of an elastic network interface controller (NIC).
+	//
+	// - **NatEIP**: the EIP of a NAT gateway.
+	//
+	// - **SlbEIP**: the EIP of an SLB instance.
+	//
+	// - **SlbPublicIP**: the public IP address of an SLB instance.
+	//
+	// - **NatPublicIP**: the public IP address of a NAT gateway.
+	//
+	// - **HAVIP**: a high-availability (active) virtual IP address.
 	//
 	// example:
 	//
 	// EcsPublicIp
 	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
-	// The ID of the compromise awareness event.
+	// The ID of the breach awareness event.
 	//
 	// example:
 	//
 	// 69d189e2-ec17-4676-a2fe-02969234****
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the compromise awareness event.
+	// The name of the breach awareness event.
 	//
 	// example:
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The source of the compromise awareness event. Valid values:
+	// The source of the compromised host event. Valid values:
+	//
+	// - **IPS**: intrusion prevention event.
+	//
+	// - **offline**: offline event.
 	//
 	// example:
 	//
 	// IPS
 	EventSrc *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
-	// The UUID of the compromise awareness event.
+	// The UUID of the breach awareness event.
 	//
 	// example:
 	//
 	// fadd-dfdd-****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// The time when the compromise awareness event first occurred. The value is a UNIX timestamp in seconds.
+	// The time when the compromised host event first occurred. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
 	// 1656750960
 	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// Indicates whether the compromise awareness event is ignored. Valid values:
+	// Indicates whether the compromised host event is ignored. Valid values:
+	//
+	// - **true**: ignored.
+	//
+	// - **false**: not ignored.
 	//
 	// example:
 	//
 	// true
 	IsIgnore *bool `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// The time when the compromise awareness event last occurred. The value is a UNIX timestamp in seconds.
+	// The time when the compromised host event last occurred. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
@@ -207,7 +237,11 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	//
 	// 192.168.XX.XX
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
-	// The processing status of the compromise awareness event. Valid values:
+	// The processing status of the compromised host event. Valid values:
+	//
+	// - **0**: unhandled.
+	//
+	// - **20**: resolved.
 	//
 	// example:
 	//
@@ -219,13 +253,42 @@ type DescribeInvadeEventListResponseBodyEventList struct {
 	//
 	// 198.51.XX.XX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The type of the affected asset. Valid values:
+	// The affected asset type. Valid values:
+	//
+	// - **BastionHostIP**: the egress IP address of Bastionhost.
+	//
+	// - **BastionHostIngressIP**: the ingress IP address of Bastionhost.
+	//
+	// - **EcsEIP**: the EIP of an ECS instance.
+	//
+	// - **EcsPublicIP**: the public IP addresses of Elastic Compute Service (ECS) instances.
+	//
+	// - **EIP**: an EIP.
+	//
+	// - **EniEIP**: the EIP of an elastic network interface controller (NIC).
+	//
+	// - **NatEIP**: the EIP of a NAT gateway.
+	//
+	// - **SlbEIP**: the EIP of an SLB instance.
+	//
+	// - **SlbPublicIP**: the public IP address of an SLB instance.
+	//
+	// - **NatPublicIP**: the public IP address of a NAT gateway.
+	//
+	// - **HAVIP**: a high-availability (active) virtual IP address.
 	//
 	// example:
 	//
 	// EcsPublicIp
 	PublicIpType *string `json:"PublicIpType,omitempty" xml:"PublicIpType,omitempty"`
 	// The risk assessment level. Valid values:
+	//
+	//
+	// - **1**: Low risk.
+	//
+	// - **2**: Medium risk.
+	//
+	// - **3**: High risk.
 	//
 	// example:
 	//
@@ -390,19 +453,19 @@ func (s *DescribeInvadeEventListResponseBodyEventList) Validate() error {
 }
 
 type DescribeInvadeEventListResponseBodyPageInfo struct {
-	// The page number of the current page in a paging query.
+	// The current page number returned for a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries returned per page for a paging query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of compromise awareness events.
+	// The total number of compromised host events.
 	//
 	// example:
 	//

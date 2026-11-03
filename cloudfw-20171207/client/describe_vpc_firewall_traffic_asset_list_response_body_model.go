@@ -18,9 +18,9 @@ type iDescribeVpcFirewallTrafficAssetListResponseBody interface {
 }
 
 type DescribeVpcFirewallTrafficAssetListResponseBody struct {
-	// The data list.
+	// The list of returned data.
 	DataList []*DescribeVpcFirewallTrafficAssetListResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeVpcFirewallTrafficAssetListResponseBodyDataList struct {
 	//
 	// a.com
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The number of IPS hits.
+	// The number of Intrusion Prevention System (IPS) hits.
 	//
 	// example:
 	//

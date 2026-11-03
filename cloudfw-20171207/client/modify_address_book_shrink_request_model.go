@@ -52,13 +52,13 @@ type ModifyAddressBookShrinkRequest struct {
 	//
 	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space. You must specify this parameter when GroupType is set to **ip**, **port**, or **domain**.
+	// The list of addresses in the address book. Separate multiple addresses with commas (,). Separate the address and description of an address element with a space. You must configure this parameter when GroupType is set to **ip**, **port**, or **domain**.
 	//
-	// - If GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
+	// - When GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
 	//
-	// - If GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
+	// - When GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
 	//
-	// - If GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
+	// - When GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type ModifyAddressBookShrinkRequest struct {
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	// The list of member accounts in the asset address book.
 	AssetMemberUidsShrink *string `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty"`
-	// The asset address book, region, and resource type list.
+	// The asset address book, regions, and resource types.
 	AssetRegionResourceTypesShrink *string `json:"AssetRegionResourceTypes,omitempty" xml:"AssetRegionResourceTypes,omitempty"`
-	// Specifies if the automatic addition of the public IP addresses of Elastic Compute Service (ECS) instances that match the new labels to the address book is enabled.
+	// Specifies whether the public IP addresses of Elastic Compute Service (ECS) instances that match a new tag are automatically added to the address book.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type ModifyAddressBookShrinkRequest struct {
 	//
 	// bj-001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The UUID of the address book.
+	// The unique ID of the address book.
 	//
-	// > To obtain the value, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
+	// > Value source: [List address books](~~DescribeAddressBook~~).
 	//
 	// This parameter is required.
 	//
@@ -116,9 +116,9 @@ type ModifyAddressBookShrinkRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The modification mode.
 	//
-	// > If GroupType is set to **ip**, **ipv6**, **port**, or **domain*	- and this parameter is not specified, the **Cover*	- mode is used by default to modify the address book.
+	// > When GroupType is set to **ip**, **ipv6**, **port**, or **domain**, if you do not configure this parameter, the **Cover*	- mode is used by default to modify the address book.
 	//
-	// 	Notice: If GroupType is set to **tag**, this parameter must be left empty.</notice>
+	// > <notice>When GroupType is set to **tag**, this parameter must be left empty.</notice>
 	//
 	// example:
 	//

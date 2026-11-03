@@ -14,7 +14,7 @@ type iModifyVpcFirewallSwitchStatusResponseBody interface {
 }
 
 type ModifyVpcFirewallSwitchStatusResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

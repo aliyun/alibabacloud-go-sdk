@@ -24,9 +24,9 @@ type DescribeVpcFirewallPrecheckDetailResponseBody struct {
 	//
 	// false
 	IsFound *bool `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
-	// The precheck details.
+	// The details of the precheck.
 	PrecheckDetail *DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail `json:"PrecheckDetail,omitempty" xml:"PrecheckDetail,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail struct {
 	//
 	// - **running**: The precheck is in progress.
 	//
-	// - **passed**: The precheck passed.
+	// - **passed**: The precheck is passed.
 	//
 	// - **failed**: The precheck failed.
 	//
@@ -105,13 +105,13 @@ type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail struct {
 	//
 	// failed
 	PrecheckStatus *string `json:"PrecheckStatus,omitempty" xml:"PrecheckStatus,omitempty"`
-	// The precheck timestamp.
+	// The timestamp of the precheck.
 	//
 	// example:
 	//
 	// 1715136000
 	PrecheckTimestamp *string `json:"PrecheckTimestamp,omitempty" xml:"PrecheckTimestamp,omitempty"`
-	// The region ID.
+	// The ID of the region.
 	//
 	// example:
 	//
@@ -195,21 +195,21 @@ func (s *DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail) Validate()
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroups struct {
-	// The number of precheck rules that failed.
+	// The number of rules that failed the precheck.
 	//
 	// example:
 	//
 	// 3
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The precheck instance name.
+	// The name of the precheck instance.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The execution details of each precheck item.
+	// The execution status of each precheck item.
 	PrecheckEntities []*DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities `json:"PrecheckEntities,omitempty" xml:"PrecheckEntities,omitempty" type:"Repeated"`
-	// The precheck status. Valid values:
+	// The status of the precheck. Valid values:
 	//
 	// - **running**
 	//
@@ -281,23 +281,23 @@ func (s *DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEnti
 }
 
 type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroupsPrecheckEntities struct {
-	// The information about the precheck failure.
+	// The information about the failed check.
 	//
 	// example:
 	//
 	// VPC Firewall Quota Full
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
-	// The precheck item name.
+	// The name of the precheck item.
 	//
 	// example:
 	//
 	// Precheck test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of each precheck item. Valid values:
+	// The status of the precheck item. Valid values:
 	//
 	// - **running**: The precheck is in progress.
 	//
-	// - **passed**: The precheck passed.
+	// - **passed**: The precheck is passed.
 	//
 	// - **failed**: The precheck failed.
 	//
@@ -305,7 +305,7 @@ type DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGr
 	//
 	// passed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The suggested action.
+	// The troubleshooting suggestion.
 	//
 	// example:
 	//

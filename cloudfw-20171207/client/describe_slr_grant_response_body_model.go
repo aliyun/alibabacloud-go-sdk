@@ -18,7 +18,7 @@ type iDescribeSlrGrantResponseBody interface {
 }
 
 type DescribeSlrGrantResponseBody struct {
-	// Indicates whether the authorization is successful.
+	// Indicates whether the authorization was successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeSlrGrantResponseBody struct {
 	//
 	// 1BD3D277-AE2F-5609-893F-FF7A72A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the account.
+	// The account type.
 	//
 	// example:
 	//

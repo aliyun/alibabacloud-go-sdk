@@ -18,13 +18,13 @@ type iDescribeClearAuthInfoResponseBody interface {
 }
 
 type DescribeClearAuthInfoResponseBody struct {
-	// The UNIX timestamp when the authorization expires.
+	// The expiration timestamp.
 	//
 	// example:
 	//
 	// 1755964800
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of remaining clears.
+	// The number of remaining clearances.
 	//
 	// example:
 	//

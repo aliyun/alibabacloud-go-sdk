@@ -14,7 +14,7 @@ type iAddInstanceMembersResponseBody interface {
 }
 
 type AddInstanceMembersResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -83,7 +83,7 @@ func (s *DescribeOutgoingDestinationResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationResponseBodyDstList struct {
-	// The recommended ACL content.
+	// The ACL recommendation details.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// Normal
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
-	// The domain name business.
+	// The business of the domain name.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// group-name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether a recommended ACL exists.
+	// Indicates whether an ACL is recommended.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribeOutgoingDestinationResponseBodyDstList struct {
 	//
 	// 0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// Indicates whether the entry is manually marked as normal by the user.
+	// Indicates whether the destination is manually marked as normal by the user.
 	//
 	// example:
 	//

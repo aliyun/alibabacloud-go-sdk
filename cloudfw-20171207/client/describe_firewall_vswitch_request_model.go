@@ -28,13 +28,13 @@ type iDescribeFirewallVSwitchRequest interface {
 }
 
 type DescribeFirewallVSwitchRequest struct {
-	// The instance ID of the VPC border firewall.
+	// The instance ID of the virtual private cloud (VPC) firewall.
 	//
 	// example:
 	//
 	// vfw-tr-5b202e7f0be64611****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the response. Valid values:
+	// The language type.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeFirewallVSwitchRequest struct {
 	//
 	// 102910763545****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeFirewallVSwitchRequest struct {
 	//
 	// cn-beijing
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

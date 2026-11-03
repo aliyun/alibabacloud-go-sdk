@@ -36,7 +36,7 @@ type PutDisableAllFwSwitchRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

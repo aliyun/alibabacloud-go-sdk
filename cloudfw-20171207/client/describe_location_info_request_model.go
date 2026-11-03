@@ -18,13 +18,13 @@ type iDescribeLocationInfoRequest interface {
 }
 
 type DescribeLocationInfoRequest struct {
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source tracking code.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//

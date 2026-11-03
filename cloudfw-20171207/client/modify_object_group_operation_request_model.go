@@ -26,15 +26,13 @@ type iModifyObjectGroupOperationRequest interface {
 }
 
 type ModifyObjectGroupOperationRequest struct {
-	// The remarks for the operation.
+	// The comment for the operation.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The traffic direction that is controlled by the access control policy.
-	//
-	// Valid values:
+	// The traffic direction controlled by the access control policy. Valid values:
 	//
 	// - **in**: Inbound traffic.
 	//
@@ -46,7 +44,7 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The language of the response. Valid values:
+	// The language for receiving messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -56,15 +54,15 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The list of objects.
+	// The list of objects to operate on.
 	//
 	// This parameter is required.
 	ObjectList []*string `json:"ObjectList,omitempty" xml:"ObjectList,omitempty" type:"Repeated"`
-	// The operation to perform. Valid values:
+	// The operation to perform on the object, such as adding to or removing from a whitelist, or subscribing to or unsubscribing from the object. Valid values:
 	//
-	// - **subscribe**: Follows the object.
+	// - **subscribe**: Subscribes to the object.
 	//
-	// - **unsubscribe**: Unfollows the object.
+	// - **unsubscribe**: Unsubscribes from the object.
 	//
 	// - **ignore**: Adds the object to the whitelist.
 	//
@@ -76,9 +74,7 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// ignore
 	ObjectOperation *string `json:"ObjectOperation,omitempty" xml:"ObjectOperation,omitempty"`
-	// The type of object to add to the whitelist or follow.
-	//
-	// Valid values:
+	// The type of the outbound connection whitelist or subscription. Valid values:
 	//
 	// - **assetsIp**: Asset IP address.
 	//

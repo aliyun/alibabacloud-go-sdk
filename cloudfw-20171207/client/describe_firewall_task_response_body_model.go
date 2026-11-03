@@ -36,7 +36,7 @@ type DescribeFirewallTaskResponseBody struct {
 	//
 	// false
 	IsFound *bool `json:"IsFound,omitempty" xml:"IsFound,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeFirewallTaskResponseBody struct {
 	//
 	// 17151381075
 	TaskFinishTimestamp *string `json:"TaskFinishTimestamp,omitempty" xml:"TaskFinishTimestamp,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 189997648
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeFirewallTaskResponseBody struct {
 	//
 	// 17151361285
 	TaskStartTimestamp *string `json:"TaskStartTimestamp,omitempty" xml:"TaskStartTimestamp,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
 	// - **init**
 	//
@@ -84,7 +84,7 @@ type DescribeFirewallTaskResponseBody struct {
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The task steps.
 	TaskSteps []*DescribeFirewallTaskResponseBodyTaskSteps `json:"TaskSteps,omitempty" xml:"TaskSteps,omitempty" type:"Repeated"`
-	// The waiting time, in minutes.
+	// The waiting time. Unit: minutes.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeFirewallTaskResponseBodyTaskSteps struct {
 	//
 	// abcd
 	StepInfo *string `json:"StepInfo,omitempty" xml:"StepInfo,omitempty"`
-	// The name of the Cloud Firewall security step.
+	// Creating Cloud Firewall security.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type DescribeFirewallTaskResponseBodyTaskSteps struct {
 	//
 	// 80
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
-	// The task step status. Valid values:
+	// The status of the task step. Valid values:
 	//
 	// - **init*	-
 	//

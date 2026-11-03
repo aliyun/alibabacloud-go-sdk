@@ -22,39 +22,39 @@ type iDescribeVpcFirewallAclGroupListRequest interface {
 }
 
 type DescribeVpcFirewallAclGroupListRequest struct {
-	// The number of the page to return. Default value: 1.
+	// The page number of the current page returned for a paged query. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The configuration status of the VPC boundary firewall. Valid values:
+	// The configuration status of the VPC firewall. Valid values:
 	//
-	// - **configured**: The VPC boundary firewall is configured.
+	// - **configured**: The virtual private cloud (VPC) firewalls at the border are configured (that is, the firewalls are created).
 	//
-	// - If you omit this parameter, the operation queries the access control policies for all VPC boundary firewalls.
+	// - Empty: queries the access control policy of all virtual private cloud (VPC) firewalls at the border.
 	//
 	// example:
 	//
 	// configured
 	FirewallConfigureStatus *string `json:"FirewallConfigureStatus,omitempty" xml:"FirewallConfigureStatus,omitempty"`
-	// The instance ID of the VPC boundary firewall.
+	// The instance ID of the virtual private cloud (VPC) firewalls at the border.
 	//
 	// example:
 	//
 	// vfw-tr-5b202e7f0be64611****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries to return on each page. The maximum value is 50.
+	// The maximum number of entries to return on each page for a paged query. Maximum value: 50.
 	//
 	// example:
 	//

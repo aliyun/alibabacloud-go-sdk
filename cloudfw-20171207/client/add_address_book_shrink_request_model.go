@@ -40,9 +40,9 @@ type iAddAddressBookShrinkRequest interface {
 }
 
 type AddAddressBookShrinkRequest struct {
-	// The ACK cluster connector ID. You can obtain the value from the following operation:
+	// The ID of the ACK cluster connector. You can obtain the value from the following operation:
 	//
-	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
+	// - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Queries the list of ACK cluster connectors.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type AddAddressBookShrinkRequest struct {
 	//
 	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The addresses in the address book. Separate multiple addresses with commas (,). Use a space to separate an address from its description within a single address element.
+	// The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space.
 	//
 	// > This parameter is required when GroupType is set to `ip`, `port`, or `domain`.
 	//
@@ -72,9 +72,9 @@ type AddAddressBookShrinkRequest struct {
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	// The list of member accounts for the asset address book.
 	AssetMemberUidsShrink *string `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty"`
-	// The list of regions and resource types for the asset address book.
+	// The asset address book, region, and resource type list.
 	AssetRegionResourceTypesShrink *string `json:"AssetRegionResourceTypes,omitempty" xml:"AssetRegionResourceTypes,omitempty"`
-	// Indicates whether to automatically add the public IP addresses of Elastic Compute Service (ECS) instances that match the specified tags to the address book.
+	// Specifies whether the address book is automatically updated to include the public IP addresses of Elastic Compute Service (ECS) instances that match new labels.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type AddAddressBookShrinkRequest struct {
 	//
 	// ip
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The language type of the address book description.
+	// The language of the address book description.
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type AddAddressBookShrinkRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The ECS tag list.
+	// The list of ECS tags.
 	TagList []*AddAddressBookShrinkRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The logical relationship among multiple ECS tags to match.
+	// The relationship between multiple ECS tags to be matched.
 	//
 	// example:
 	//

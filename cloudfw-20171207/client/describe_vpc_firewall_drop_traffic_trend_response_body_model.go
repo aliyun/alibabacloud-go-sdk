@@ -83,31 +83,31 @@ func (s *DescribeVpcFirewallDropTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallDropTrafficTrendResponseBodyDataList struct {
-	// The number of sessions blocked by the access control list (ACL).
+	// The number of ACL blocks.
 	//
 	// example:
 	//
 	// 12
 	AclDrop *int64 `json:"AclDrop,omitempty" xml:"AclDrop,omitempty"`
-	// The data timestamp. The value is a string in the YYYY-MM-DD HH:mm:ss format.
+	// The data timestamp. The value is a character string in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2018-08-25 12:00:00
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	// The number of blocked sessions.
+	// The number of blocks.
 	//
 	// example:
 	//
 	// 10
 	DropSession *int64 `json:"DropSession,omitempty" xml:"DropSession,omitempty"`
-	// The number of sessions blocked by the intrusion prevention system (IPS).
+	// The number of IPS blocks.
 	//
 	// example:
 	//
 	// 5
 	IpsDrop *int64 `json:"IpsDrop,omitempty" xml:"IpsDrop,omitempty"`
-	// The data timestamp. This value is a UNIX timestamp. Unit: seconds.
+	// The data timestamp. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

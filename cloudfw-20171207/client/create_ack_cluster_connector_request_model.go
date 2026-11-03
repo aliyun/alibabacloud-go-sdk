@@ -30,9 +30,9 @@ type iCreateAckClusterConnectorRequest interface {
 }
 
 type CreateAckClusterConnectorRequest struct {
-	// The ACK cluster ID. You can call the following operation to obtain the value:
+	// The ID of the ACK cluster. Value sources:
 	//
-	// - [DescribeAckClusters](~~DescribeAckClusters~~): Queries the list of ACK clusters.
+	// - [DescribeAckClusters](~~DescribeAckClusters~~): Lists ACK clusters.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// cb0f5640b1b2d404cad6ba21509d7847b
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the ACK cluster connector. The name must be 1 to 64 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// ack-cluster-connector-name
 	ConnectorName *string `json:"ConnectorName,omitempty" xml:"ConnectorName,omitempty"`
-	// The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
+	// The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
 	//
 	// example:
 	//
 	// 135809047715****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The primary vSwitch of the ACK cluster connector. Value sources:
 	//
-	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of synchronization node vSwitches.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
 	//
 	// This parameter is required.
 	//
@@ -70,11 +70,11 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// 10.100.1.1
 	PrimaryVswitchIp *string `json:"PrimaryVswitchIp,omitempty" xml:"PrimaryVswitchIp,omitempty"`
-	// The region ID of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The region ID of the ACK cluster connector. Value sources:
 	//
-	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of synchronization node regions.
+	// - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of regions for synchronization nodes.
 	//
-	// > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
+	// > For more information about the regions where Cloud Firewall supports ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
 	//
 	// This parameter is required.
 	//
@@ -82,15 +82,15 @@ type CreateAckClusterConnectorRequest struct {
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
+	// The secondary vSwitch of the ACK cluster connector. Value sources:
 	//
-	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of synchronization node vSwitches.
+	// - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
 	//
 	// example:
 	//
 	// vsw-2ze2gtlfozrab01cfo****
 	StandbyVswitchId *string `json:"StandbyVswitchId,omitempty" xml:"StandbyVswitchId,omitempty"`
-	// The IP address of the standby vSwitch of the ACK cluster connector.
+	// The IP address of the secondary vSwitch of the ACK cluster connector.
 	//
 	// example:
 	//

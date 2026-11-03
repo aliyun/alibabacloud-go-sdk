@@ -18,13 +18,13 @@ type iDescribeNatAclPageStatusResponseBody interface {
 }
 
 type DescribeNatAclPageStatusResponseBody struct {
-	// The details of the exception.
+	// The error details.
 	//
 	// example:
 	//
 	// proxy_not_exist
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Indicates whether a separate page is supported for NAT ACL.
+	// Indicates whether the dedicated page for NAT ACLs is supported.
 	//
 	// example:
 	//

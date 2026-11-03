@@ -16,7 +16,7 @@ type iModifyAddressBookResponseBody interface {
 }
 
 type ModifyAddressBookResponseBody struct {
-	// Indicates whether the request is a successful dry run. A value of true indicates that only the dry run is performed and no actual modifications are made.
+	// Indicates whether the response is a successful dry run. A value of true indicates that only the dry run was completed and no actual modifications were made.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the request.
 	//

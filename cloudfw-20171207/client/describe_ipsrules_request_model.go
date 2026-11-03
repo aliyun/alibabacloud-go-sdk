@@ -54,17 +54,17 @@ type iDescribeIPSRulesRequest interface {
 }
 
 type DescribeIPSRulesRequest struct {
-	// The application targeted by the attack.
+	// The attacked application.
 	//
 	// example:
 	//
 	// SMB
 	AttackApp *string `json:"AttackApp,omitempty" xml:"AttackApp,omitempty"`
-	// The categories of applications targeted by attacks.
+	// The list of categories of the attacked applications. Specify the value in the ["AttackAppCategory1","AttackAppCategory2"] format.
 	AttackAppCategory []*string `json:"AttackAppCategory,omitempty" xml:"AttackAppCategory,omitempty" type:"Repeated"`
-	// The applications targeted by attacks.
+	// The list of attacked applications.
 	AttackApps []*string `json:"AttackApps,omitempty" xml:"AttackApps,omitempty" type:"Repeated"`
-	// The attack type.
+	// The attack application type.
 	//
 	// example:
 	//
@@ -76,31 +76,31 @@ type DescribeIPSRulesRequest struct {
 	//
 	// CVE-2026-25253
 	Cve *string `json:"Cve,omitempty" xml:"Cve,omitempty"`
-	// The status of the rule.
+	// The enabling status.
 	//
 	// example:
 	//
 	// 1
 	DefaultAction *string `json:"DefaultAction,omitempty" xml:"DefaultAction,omitempty"`
-	// The type of firewall.
+	// The Cloud Firewall type.
 	//
 	// example:
 	//
 	// VpcFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The language of the request and response.
+	// The language of the request message.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sort order.
+	// The sorting order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +116,7 @@ type DescribeIPSRulesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether to retrieve only modified rules.
+	// Specifies whether the rule has been modified.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeIPSRulesRequest struct {
 	//
 	// alert
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The inspection mode.
+	// The supported engine mode.
 	//
 	// example:
 	//
@@ -160,19 +160,19 @@ type DescribeIPSRulesRequest struct {
 	//
 	// patchRule
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The field to sort by.
+	// The sorting method.
 	//
 	// example:
 	//
 	// UpdateTime
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the requester.
 	//
 	// example:
 	//
 	// 8.139.222.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the virtual private cloud (VPC) firewalls.
 	//
 	// example:
 	//

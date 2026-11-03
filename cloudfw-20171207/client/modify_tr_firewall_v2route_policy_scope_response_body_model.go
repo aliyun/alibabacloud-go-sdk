@@ -16,7 +16,7 @@ type iModifyTrFirewallV2RoutePolicyScopeResponseBody interface {
 }
 
 type ModifyTrFirewallV2RoutePolicyScopeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

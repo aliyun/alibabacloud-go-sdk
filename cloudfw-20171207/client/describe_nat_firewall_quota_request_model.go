@@ -16,13 +16,13 @@ type iDescribeNatFirewallQuotaRequest interface {
 }
 
 type DescribeNatFirewallQuotaRequest struct {
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DescribeDownloadTaskTypeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of task types.
 	TaskTypeArray []*DescribeDownloadTaskTypeResponseBodyTaskTypeArray `json:"TaskTypeArray,omitempty" xml:"TaskTypeArray,omitempty" type:"Repeated"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeDownloadTaskTypeResponseBodyTaskTypeArray struct {
 	//
 	// Internet Border Firewall Assets
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//

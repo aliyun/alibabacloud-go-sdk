@@ -30,19 +30,19 @@ type iDescribeRiskEventPayloadRequest interface {
 }
 
 type DescribeRiskEventPayloadRequest struct {
-	// The destination IP address to query. If you specify this parameter, all intrusion events with the specified destination IP address are queried.
+	// The destination IP address to query. If you specify this parameter, the query returns intrusion prevention events that involve this destination IP address.
 	//
 	// example:
 	//
 	// 203.0.113.2
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The ID of the destination VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the destination VPC are queried.
+	// The destination VPC ID to query. If you specify this parameter, the query returns intrusion prevention events that involve this destination VPC ID.
 	//
 	// example:
 	//
 	// vpc-uf6jr1klwqb60dyn2****
 	DstVpcId *string `json:"DstVpcId,omitempty" xml:"DstVpcId,omitempty"`
-	// The end of the time range to query. The value is a timestamp. Unit: seconds.
+	// Specifies the end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -50,35 +50,35 @@ type DescribeRiskEventPayloadRequest struct {
 	//
 	// 1681288980
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the firewall. Valid values:
+	// The type of Cloud Firewall. Valid values:
 	//
-	// 	- **VpcFirewall**: virtual private cloud (VPC) firewall
+	// - **VpcFirewall**: virtual private cloud (VPC) firewalls.
 	//
-	// 	- **InternetFirewall*	- (default): Internet firewall
+	// - **InternetFirewall*	- (default): the Internet Border firewall.
 	//
 	// example:
 	//
 	// InternetFirewall
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The public IP address. If you specify this parameter, all intrusion events that contain the specified public IP address are queried.
+	// The IP address of the public asset to query. If you specify this parameter, the query returns compromise detection events that involve this asset IP address.
 	//
 	// example:
 	//
 	// 203.0.113.3
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The source IP address to query. If you specify this parameter, all intrusion events from the specified source IP address are queried.
+	// The source IP address to query. If you specify this parameter, the query returns intrusion prevention events that involve this source IP address.
 	//
 	// example:
 	//
 	// 203.0.113.1
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	// The ID of the source VPC to query. If you specify this parameter, all intrusion events that contain the specified ID of the source VPC are queried.
+	// The source VPC ID to query. If you specify this parameter, the query returns intrusion prevention events that involve this source VPC ID.
 	//
 	// example:
 	//
 	// vpc-wz9j2lqyo15udw5nt****
 	SrcVpcId *string `json:"SrcVpcId,omitempty" xml:"SrcVpcId,omitempty"`
-	// The beginning of the time range to query. The value is a timestamp. Unit: seconds.
+	// Specifies the start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type DescribeRiskEventPayloadRequest struct {
 	//
 	// 1669533617
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The UUID of the intrusion event.
+	// The UUID of the intrusion prevention event.
 	//
 	// This parameter is required.
 	//

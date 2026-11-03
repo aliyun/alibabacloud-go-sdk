@@ -83,13 +83,13 @@ func (s *DescribeIspInfoResponseBody) Validate() error {
 }
 
 type DescribeIspInfoResponseBodyDataList struct {
-	// The ID of the ISP.
+	// The ISP ID.
 	//
 	// example:
 	//
 	// isp-dhyw2lxfpc****
 	IspId *int32 `json:"IspId,omitempty" xml:"IspId,omitempty"`
-	// The name of the ISP.
+	// The ISP name.
 	//
 	// example:
 	//

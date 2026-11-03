@@ -66,7 +66,7 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// AliYun
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type DescribeOutgoingDestinationRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The legacy destination IP parameter.
 	//
-	// > The POP gateway passes this parameter through, but the backend of this operation does not read it. Specifying this parameter has no filtering effect. To filter by IP address, use PublicIP or PrivateIP. If only DstIP is specified, the operation returns MissingParameter.IpFilter (-340415) because no valid IP filtering parameter is provided.
+	// > The POP gateway passes through this parameter, but the backend of this API operation does not read it. Passing this parameter does not produce any filtering effect. To filter by IP address, use PublicIP or PrivateIP. If only DstIP is provided, the MissingParameter.IpFilter (-340415) error is returned because a valid IP filter parameter is missing.
 	//
 	// example:
 	//
 	// 47.100.111XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The end time of the query. The value is a UNIX timestamp in seconds.
+	// Specifies the end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type DescribeOutgoingDestinationRequest struct {
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private IP address.
 	//
-	// > At least one of PublicIP and PrivateIP must be specified.
+	// > You must specify at least one of PublicIP and PrivateIP.
 	//
 	// example:
 	//
@@ -128,13 +128,13 @@ type DescribeOutgoingDestinationRequest struct {
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
 	// The public IP address.
 	//
-	// > At least one of PublicIP and PrivateIP must be specified.
+	// > You must specify at least one of PublicIP and PrivateIP.
 	//
 	// example:
 	//
 	// 47.96.74.XXX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The security policy for the Outbound Domain.
+	// The security policy for the outbound domain.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeOutgoingDestinationRequest struct {
 	//
 	// 106.3.198.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time of the query. The value is a UNIX timestamp in seconds.
+	// Specifies the start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

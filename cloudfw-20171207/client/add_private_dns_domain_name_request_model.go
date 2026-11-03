@@ -18,7 +18,7 @@ type iAddPrivateDnsDomainNameRequest interface {
 }
 
 type AddPrivateDnsDomainNameRequest struct {
-	// The ID of the private DNS resolution instance.
+	// The ID of the Private DNS resolution instance.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type AddPrivateDnsDomainNameRequest struct {
 	//
 	// This parameter is required.
 	DomainNameList []*string `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
-	// The region ID of the instance.
+	// The ID of the region where the instance resides.
 	//
 	// > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//

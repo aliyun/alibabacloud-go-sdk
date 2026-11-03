@@ -16,17 +16,13 @@ type iCreateInstanceSyncTaskRequest interface {
 }
 
 type CreateInstanceSyncTaskRequest struct {
-	// The language type. Valid values:
-	//
-	// - **en**: English.
-	//
-	// - **zh**: Chinese.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The IP address of the access source.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//

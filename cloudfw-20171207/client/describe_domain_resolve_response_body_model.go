@@ -22,7 +22,7 @@ type DescribeDomainResolveResponseBody struct {
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the domain name resolution.
+	// The DNS resolution results for the domain name.
 	ResolveResult *DescribeDomainResolveResponseBodyResolveResult `json:"ResolveResult,omitempty" xml:"ResolveResult,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeDomainResolveResponseBody) Validate() error {
 }
 
 type DescribeDomainResolveResponseBodyResolveResult struct {
-	// The resolution result of the domain name. Multiple IP addresses are separated by commas (,).
+	// The DNS resolution results for the domain name. Multiple IP addresses are separated by commas (,).
 	//
 	// example:
 	//

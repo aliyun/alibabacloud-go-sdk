@@ -18,7 +18,7 @@ type iDescribeFirewallVSwitchResponseBody interface {
 }
 
 type DescribeFirewallVSwitchResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type DescribeFirewallVSwitchResponseBodyVswitchList struct {
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
@@ -253,7 +253,7 @@ func (s *DescribeFirewallVSwitchResponseBodyVswitchList) Validate() error {
 }
 
 type DescribeFirewallVSwitchResponseBodyVswitchListFirewallList struct {
-	// The instance ID of the firewall.
+	// The firewall instance ID.
 	//
 	// example:
 	//

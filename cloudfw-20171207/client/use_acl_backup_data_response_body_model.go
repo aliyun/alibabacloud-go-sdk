@@ -14,7 +14,7 @@ type iUseAclBackupDataResponseBody interface {
 }
 
 type UseAclBackupDataResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iUpdatePostpayUserVpcStatusRequest interface {
 }
 
 type UpdatePostpayUserVpcStatusRequest struct {
-	// The ID of the Cloud Firewall instance.
+	// The ID of the Cloud Firewall instance. This parameter is required. If you do not specify this parameter, the API returns a 400 error. You can call the DescribeUserBuyVersion operation to obtain the Cloud Firewall instance ID of the current account.
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type UpdatePostpayUserVpcStatusRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operation type. Currently, only the activation operation is supported. Valid values:
+	// The operation type. Only the enable operation is supported. Valid values:
 	//
-	// - open: activation
+	// - open: Enables the module.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// test
 	AccessInstanceName *string `json:"AccessInstanceName,omitempty" xml:"AccessInstanceName,omitempty"`
-	// The type of the cloud firewall. Valid values:
+	// The Cloud Firewall type. Valid values:
 	//
 	// - **internet**
 	//
@@ -68,7 +68,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// UDP
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of the Alibaba Cloud member accounts.
+	// The UID of Alibaba Cloud member accounts.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type CreatePrivateDnsEndpointRequest struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The primary DNS server.
 	//
-	// > When PrivateDnsType is set to Custom, you must specify PrimaryDns and StandbyDns.
+	// > If PrivateDnsType is set to Custom, you must provide PrimaryDns and StandbyDns.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	PrimaryDns *string `json:"PrimaryDns,omitempty" xml:"PrimaryDns,omitempty"`
-	// The ID of the primary vSwitch. The zone of PrimaryVSwitchId and StandbyVSwitchId must be a zone that supports private DNS. Otherwise, an error is returned. The region must also be in the supported list.
+	// The ID of the primary vSwitch. This parameter is required. If this parameter is not specified, -200103 is returned. The region and zone of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS firewalls.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 10.1.1.1
 	PrimaryVSwitchIp *string `json:"PrimaryVSwitchIp,omitempty" xml:"PrimaryVSwitchIp,omitempty"`
-	// The type of private DNS. When PrivateDnsType is set to Custom, Port and IpProtocol are required. When PrivateDnsType is set to PrivateZone, the backend automatically sets the port to 53 and uses the default protocol. Valid values:
+	// The private DNS type. If PrivateDnsType is set to Custom, Port and IpProtocol are conditionally required. If PrivateDnsType is set to PrivateZone, the backend automatically populates the values with 53 and the default protocol. Valid values:
 	//
 	// - **PrivateZone**
 	//
@@ -122,13 +122,13 @@ type CreatePrivateDnsEndpointRequest struct {
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The secondary DNS server.
 	//
-	// > When PrivateDnsType is set to Custom, you must specify PrimaryDns and StandbyDns.
+	// > If PrivateDnsType is set to Custom, you must provide PrimaryDns and StandbyDns.
 	//
 	// example:
 	//
 	// 1.1.1.2
 	StandbyDns *string `json:"StandbyDns,omitempty" xml:"StandbyDns,omitempty"`
-	// The ID of the secondary vSwitch. The zone of PrimaryVSwitchId and StandbyVSwitchId must be a zone that supports private DNS. Otherwise, error code -200534 is returned. The region must also be in the supported list.
+	// The ID of the secondary vSwitch. The zones of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS. Otherwise, -200534 is returned. The region must also be in the support list.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type CreatePrivateDnsEndpointRequest struct {
 	//
 	// 10.2.2.2
 	StandbyVSwitchIp *string `json:"StandbyVSwitchIp,omitempty" xml:"StandbyVSwitchIp,omitempty"`
-	// The instance ID of the VPC-connected instance.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//

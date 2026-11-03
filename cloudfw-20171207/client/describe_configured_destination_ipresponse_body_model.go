@@ -22,9 +22,9 @@ type iDescribeConfiguredDestinationIPResponseBody interface {
 }
 
 type DescribeConfiguredDestinationIPResponseBody struct {
-	// The list of destinations.
+	// The list of destinations returned.
 	Destinations []*DescribeConfiguredDestinationIPResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the current page.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeConfiguredDestinationIPResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeConfiguredDestinationIPResponseBody) Validate() error {
 }
 
 type DescribeConfiguredDestinationIPResponseBodyDestinations struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeConfiguredDestinationIPResponseBodyDestinations struct {
 	//
 	// 1.1.1.1
 	DestinationIP *string `json:"DestinationIP,omitempty" xml:"DestinationIP,omitempty"`
-	// The ISP of the destination.
+	// The destination ISP.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type DescribeConfiguredDestinationIPResponseBodyDestinations struct {
 	//
 	// cn-shenzhen
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
-	// The time of the operation. The value is a UNIX timestamp. Unit: seconds.
+	// The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
 	//
 	// example:
 	//

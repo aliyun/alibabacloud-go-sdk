@@ -52,13 +52,13 @@ type ModifyAddressBookRequest struct {
 	//
 	// > A maximum of 10 namespaces are supported.
 	AckNamespaces []*string `json:"AckNamespaces,omitempty" xml:"AckNamespaces,omitempty" type:"Repeated"`
-	// The list of addresses in the address book. Separate multiple addresses with commas (,). For each address element, separate the address and the description with a space. You must specify this parameter when GroupType is set to **ip**, **port**, or **domain**.
+	// The list of addresses in the address book. Separate multiple addresses with commas (,). Separate the address and description of an address element with a space. You must configure this parameter when GroupType is set to **ip**, **port**, or **domain**.
 	//
-	// - If GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
+	// - When GroupType is set to **ip**, enter IP addresses in the address list. Example: 1.2.XX.XX/32 Development CIDR block,10.0.0.X/24,1.2.XX.XX/24 Test CIDR block.
 	//
-	// - If GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
+	// - When GroupType is set to **port**, enter ports or port ranges in the address list. Example: 80/80 HTTP port,100/200,3306 Database port.
 	//
-	// - If GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
+	// - When GroupType is set to **domain**, enter domain names in the address list. Example: demo1.aliyun.com Test domain name,demo2.aliyun.com,www.aliyun.com Alibaba Cloud official website.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type ModifyAddressBookRequest struct {
 	AddressList *string `json:"AddressList,omitempty" xml:"AddressList,omitempty"`
 	// The list of member accounts in the asset address book.
 	AssetMemberUids []*int64 `json:"AssetMemberUids,omitempty" xml:"AssetMemberUids,omitempty" type:"Repeated"`
-	// The asset address book, region, and resource type list.
+	// The asset address book, regions, and resource types.
 	AssetRegionResourceTypes []*ModifyAddressBookRequestAssetRegionResourceTypes `json:"AssetRegionResourceTypes,omitempty" xml:"AssetRegionResourceTypes,omitempty" type:"Repeated"`
-	// Specifies if the automatic addition of the public IP addresses of Elastic Compute Service (ECS) instances that match the new labels to the address book is enabled.
+	// Specifies whether the public IP addresses of Elastic Compute Service (ECS) instances that match a new tag are automatically added to the address book.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type ModifyAddressBookRequest struct {
 	//
 	// bj-001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The UUID of the address book.
+	// The unique ID of the address book.
 	//
-	// > To obtain the value, call the [DescribeAddressBook](~~DescribeAddressBook~~) operation.
+	// > Value source: [List address books](~~DescribeAddressBook~~).
 	//
 	// This parameter is required.
 	//
@@ -116,9 +116,9 @@ type ModifyAddressBookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The modification mode.
 	//
-	// > If GroupType is set to **ip**, **ipv6**, **port**, or **domain*	- and this parameter is not specified, the **Cover*	- mode is used by default to modify the address book.
+	// > When GroupType is set to **ip**, **ipv6**, **port**, or **domain**, if you do not configure this parameter, the **Cover*	- mode is used by default to modify the address book.
 	//
-	// 	Notice: If GroupType is set to **tag**, this parameter must be left empty.</notice>
+	// > <notice>When GroupType is set to **tag**, this parameter must be left empty.</notice>
 	//
 	// example:
 	//
@@ -371,7 +371,7 @@ func (s *ModifyAddressBookRequestAckLabels) Validate() error {
 }
 
 type ModifyAddressBookRequestAssetRegionResourceTypes struct {
-	// The asset region ID.
+	// The ID of the asset region.
 	//
 	// example:
 	//
@@ -464,103 +464,103 @@ func (s *ModifyAddressBookRequestAssetRegionResourceTypesResourceType) Validate(
 }
 
 type ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4 struct {
-	// The asset type: AIGatewayEIP.
+	// The AIGatewayEIP asset type.
 	//
 	// example:
 	//
 	// false
 	AiGatewayEIP *bool `json:"AiGatewayEIP,omitempty" xml:"AiGatewayEIP,omitempty"`
-	// The asset type: AlbEIP.
+	// The AlbEIP asset type.
 	//
 	// example:
 	//
 	// false
 	AlbEIP *bool `json:"AlbEIP,omitempty" xml:"AlbEIP,omitempty"`
-	// The asset type: ApigEIP.
+	// The ApigEIP asset type.
 	//
 	// example:
 	//
 	// false
 	ApiGatewayEIP *bool `json:"ApiGatewayEIP,omitempty" xml:"ApiGatewayEIP,omitempty"`
-	// The asset type: BastionHostEgressIP.
+	// The BastionHostEgressIP asset type.
 	//
 	// example:
 	//
 	// false
 	BastionHostEgressIP *bool `json:"BastionHostEgressIP,omitempty" xml:"BastionHostEgressIP,omitempty"`
-	// The asset type: BastionHostIP.
+	// The BastionHostIP asset type.
 	//
 	// example:
 	//
 	// false
 	BastionHostIP *bool `json:"BastionHostIP,omitempty" xml:"BastionHostIP,omitempty"`
-	// The asset type: BastionHostIngressIP.
+	// The BastionHostIngressIP asset type.
 	//
 	// example:
 	//
 	// false
 	BastionHostIngressIP *bool `json:"BastionHostIngressIP,omitempty" xml:"BastionHostIngressIP,omitempty"`
-	// The asset type: EIP.
+	// The EIP asset type.
 	//
 	// example:
 	//
 	// false
 	EIP *bool `json:"EIP,omitempty" xml:"EIP,omitempty"`
-	// The asset type: EcsEIP.
+	// The EcsEIP asset type.
 	//
 	// example:
 	//
 	// false
 	EcsEIP *bool `json:"EcsEIP,omitempty" xml:"EcsEIP,omitempty"`
-	// The asset type: EcsPublicIP.
+	// The EcsPublicIP asset type.
 	//
 	// example:
 	//
 	// false
 	EcsPublicIP *bool `json:"EcsPublicIP,omitempty" xml:"EcsPublicIP,omitempty"`
-	// The asset type: EniEIP.
+	// The EniEIP asset type.
 	//
 	// example:
 	//
 	// false
 	EniEIP *bool `json:"EniEIP,omitempty" xml:"EniEIP,omitempty"`
-	// The asset type: GaEIP.
+	// The GaEIP asset type.
 	//
 	// example:
 	//
 	// false
 	GaEIP *bool `json:"GaEIP,omitempty" xml:"GaEIP,omitempty"`
-	// The asset type: HAVIP.
+	// The HAVIP asset type.
 	//
 	// example:
 	//
 	// false
 	HAVIP *bool `json:"HAVIP,omitempty" xml:"HAVIP,omitempty"`
-	// The asset type: NatEIP.
+	// The NatEIP asset type.
 	//
 	// example:
 	//
 	// false
 	NatEIP *bool `json:"NatEIP,omitempty" xml:"NatEIP,omitempty"`
-	// The asset type: NatPublicIP.
+	// The NatPublicIP asset type.
 	//
 	// example:
 	//
 	// false
 	NatPublicIP *bool `json:"NatPublicIP,omitempty" xml:"NatPublicIP,omitempty"`
-	// The asset type: NlbEIP.
+	// The NlbEIP asset type.
 	//
 	// example:
 	//
 	// false
 	NlbEIP *bool `json:"NlbEIP,omitempty" xml:"NlbEIP,omitempty"`
-	// The asset type: SlbEIP.
+	// The SlbEIP asset type.
 	//
 	// example:
 	//
 	// true
 	SlbEIP *bool `json:"SlbEIP,omitempty" xml:"SlbEIP,omitempty"`
-	// The asset type: SlbPublicIP.
+	// The SlbPublicIP asset type.
 	//
 	// example:
 	//
@@ -734,49 +734,49 @@ func (s *ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4) Valid
 }
 
 type ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6 struct {
-	// The asset type: AIGatewayEIPv6.
+	// The AIGatewayEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	AiGatewayEIPv6 *bool `json:"AiGatewayEIPv6,omitempty" xml:"AiGatewayEIPv6,omitempty"`
-	// The asset type: AlbIPv6.
+	// The AlbIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	AlbIPv6 *bool `json:"AlbIPv6,omitempty" xml:"AlbIPv6,omitempty"`
-	// The asset type: ApigEIPv6.
+	// The ApigEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	ApiGatewayEIPv6 *bool `json:"ApiGatewayEIPv6,omitempty" xml:"ApiGatewayEIPv6,omitempty"`
-	// The asset type: EcsIPv6.
+	// The EcsIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	EcsIPv6 *bool `json:"EcsIPv6,omitempty" xml:"EcsIPv6,omitempty"`
-	// The asset type: EniEIPv6.
+	// The EniEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	EniEIPv6 *bool `json:"EniEIPv6,omitempty" xml:"EniEIPv6,omitempty"`
-	// The asset type: GaEIPv6.
+	// The GaEIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	GaEIPv6 *bool `json:"GaEIPv6,omitempty" xml:"GaEIPv6,omitempty"`
-	// The asset type: NlbIPv6.
+	// The NlbIPv6 asset type.
 	//
 	// example:
 	//
 	// false
 	NlbIPv6 *bool `json:"NlbIPv6,omitempty" xml:"NlbIPv6,omitempty"`
-	// The asset type: SlbIPv6.
+	// The SlbIPv6 asset type.
 	//
 	// example:
 	//

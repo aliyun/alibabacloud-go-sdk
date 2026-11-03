@@ -36,7 +36,7 @@ type iDescribeInternetTrafficTopRequest interface {
 }
 
 type DescribeInternetTrafficTopRequest struct {
-	// The type of traffic data.
+	// The traffic data type.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end time. The value is a UNIX timestamp. Unit: seconds.
+	// The end time. Specify a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -58,43 +58,43 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// 1734055824
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of top entries to return. The default value is 50. Valid values: 1 to 50.
+	// The maximum number of top entries. Default value: 50. Valid values: 1 to 50.
 	//
 	// example:
 	//
 	// 50
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The action of the rule.
+	// The rule protection result.
 	//
 	// example:
 	//
 	// 1
 	RuleResult *string `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
-	// The source of the rule.
+	// The rule source.
 	//
 	// example:
 	//
 	// 1
 	RuleSource *string `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The name of the country to display.
+	// Specifies whether to display country names.
 	//
 	// example:
 	//
 	// China
 	ShowCountryName *string `json:"ShowCountryName,omitempty" xml:"ShowCountryName,omitempty"`
-	// The sorting method.
+	// The sort method.
 	//
 	// example:
 	//
 	// in_bytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The tracing code for the source.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type DescribeInternetTrafficTopRequest struct {
 	//
 	// 117.82.14.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	// The start time. Specify a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

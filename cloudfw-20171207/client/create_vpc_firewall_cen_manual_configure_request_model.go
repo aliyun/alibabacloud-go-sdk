@@ -24,7 +24,7 @@ type iCreateVpcFirewallCenManualConfigureRequest interface {
 }
 
 type CreateVpcFirewallCenManualConfigureRequest struct {
-	// The ID of the CEN instance.
+	// The ID of the Cloud Enterprise Network (CEN) instance.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateVpcFirewallCenManualConfigureRequest struct {
 	//
 	// cen-37nddhri7jf0d2****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese
 	//
@@ -42,13 +42,13 @@ type CreateVpcFirewallCenManualConfigureRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account of Cloud Firewall.
+	// The UID of the Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The ID of the vSwitch that is used to create the elastic network interface (ENI) of the Cloud Firewall.
+	// The ID of the vSwitch to which the Cloud Firewall interface belongs.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateVpcFirewallCenManualConfigureRequest struct {
 	//
 	// vsw-qzeaol304m***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the VPC border firewall.
+	// The border instance name of the virtual private cloud (VPC) firewalls.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type CreateVpcFirewallCenManualConfigureRequest struct {
 	//
 	// vpc-firewall-test
 	VpcFirewallName *string `json:"VpcFirewallName,omitempty" xml:"VpcFirewallName,omitempty"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//

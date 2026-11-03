@@ -66,19 +66,19 @@ func (s *DescribeVpcListLiteResponseBody) Validate() error {
 }
 
 type DescribeVpcListLiteResponseBodyVpcList struct {
-	// The ID of the region to which the VPC belongs.
+	// The region ID of the VPC.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The instance ID of the VPC.
+	// The instance ID of the VPC-connected instance.
 	//
 	// example:
 	//
 	// vpc-wz9dqhljd10fk0b4eh885
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The instance name of the VPC.
+	// The name of the VPC.
 	//
 	// example:
 	//

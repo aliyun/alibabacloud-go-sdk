@@ -36,13 +36,13 @@ type DescribeOutgoingRiskTrendResponseBody struct {
 	//
 	// 1CA8D98E-A71B-5856-A658-3E8B3152E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of threat domain names.
+	// The total number of risky domain names.
 	//
 	// example:
 	//
 	// 7
 	TotalRiskDomain *int32 `json:"TotalRiskDomain,omitempty" xml:"TotalRiskDomain,omitempty"`
-	// The total number of threat IP addresses.
+	// The total number of risky IP addresses.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeOutgoingRiskTrendResponseBody) Validate() error {
 }
 
 type DescribeOutgoingRiskTrendResponseBodyDataList struct {
-	// The number of threat domain names.
+	// The number of risky domain names.
 	//
 	// example:
 	//
 	// 20
 	RiskDomain *int32 `json:"RiskDomain,omitempty" xml:"RiskDomain,omitempty"`
-	// The number of threat IP addresses.
+	// The number of risky IP addresses.
 	//
 	// example:
 	//

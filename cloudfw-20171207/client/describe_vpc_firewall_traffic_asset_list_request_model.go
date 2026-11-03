@@ -46,7 +46,7 @@ type DescribeVpcFirewallTrafficAssetListRequest struct {
 	//
 	// www.****.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end time. This value is a UNIX timestamp in seconds.
+	// The end time. The value is a UNIX timestamp accurate to seconds.
 	//
 	// This parameter is required.
 	//
@@ -60,47 +60,49 @@ type DescribeVpcFirewallTrafficAssetListRequest struct {
 	//
 	// 47.92.x.x
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// Specifies whether to collect only the traffic that accesses AI services. This parameter is required. Set this parameter to "true". Otherwise, a parameter error is returned.
+	// Specifies whether to query only the traffic that accesses AI services. This parameter is required. You must set this parameter to "true". Otherwise, a parameter error is returned.
 	//
 	// example:
 	//
 	// true
 	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sort field. Valid values:
+	// The field by which to sort the results. Default value: TotalBytes. Valid values:
 	//
-	// - TotalBytes: sorts by total traffic.
+	// - **TotalBytes**: sorts the results by total traffic.
 	//
-	// - SessionCount: sorts by session count.
-	//
-	// Default value: TotalBytes.
+	// - **SessionCount**: sorts the results by the number of sessions.
 	//
 	// example:
 	//
 	// SessionCount
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order. Valid values: asc, desc.
+	// The sort order. Valid values:
+	//
+	// - **asc**: ascending order.
+	//
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// desc
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start time. This value is a UNIX timestamp in seconds.
+	// The start time. The value is a UNIX timestamp accurate to seconds.
 	//
 	// This parameter is required.
 	//

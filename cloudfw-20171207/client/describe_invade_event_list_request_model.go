@@ -62,43 +62,53 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// ECS_test
 	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
-	// Specifies the page number to return in a paged query.
+	// Settings for the paged query. Specifies the page number to return for paging.
+	//
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Specifies the end time of the query. The value is a UNIX timestamp in seconds. If this parameter is not specified, the current time is used.
+	// Specifies the end time of the query. The value is a UNIX timestamp in seconds. If you do not specify this parameter, the query ends at the current time.
 	//
 	// example:
 	//
 	// 1656837360
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the compromise awareness event.
+	// The ID of the breach awareness event.
 	//
 	// example:
 	//
 	// 69d189e2-ec17-4676-a2fe-02969234****
 	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
-	// The name of the compromise awareness event.
+	// The name of the breach awareness event.
 	//
 	// example:
 	//
 	// event_test
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The UUID of the compromise awareness event.
+	// The UUID of the breach awareness event.
 	//
 	// example:
 	//
 	// fadd-dfdd-****
 	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// Specifies whether the compromise awareness event is ignored. Valid values:
+	// Specifies whether the breach awareness event is ignored. Valid values:
+	//
+	// - **true**: Ignored.
+	//
+	// - **false**: Not ignored.
 	//
 	// example:
 	//
 	// true
 	IsIgnore *string `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
-	// The language type of the received message. Valid values:
+	// The language of the response message. Valid values:
+	//
+	// - **zh*	- (default): Chinese.
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -110,7 +120,9 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// 135809047715****
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// Specifies the number of entries per page in a paged query.
+	// Settings for the paged query. Specifies the number of entries to return on each page for paging.
+	//
+	// Default value: 6. Maximum value: 10.
 	//
 	// example:
 	//
@@ -120,7 +132,7 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// example:
 	//
-	// 1358090477156271
+	// [0]
 	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
 	// The risk assessment level.
 	RiskLevel []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
@@ -132,7 +144,7 @@ type DescribeInvadeEventListRequest struct {
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// Specifies the start time of the query. The value is a UNIX timestamp in seconds. If this parameter is not specified, the query starts from the last 30 days.
+	// Specifies the start time of the query. The value is a UNIX timestamp in seconds. If you do not specify this parameter, the query starts from 30 days ago.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type iDescribeOutgoingAssetListRequest interface {
 }
 
 type DescribeOutgoingAssetListRequest struct {
-	// The region ID of the asset.
+	// The region to which the asset belongs.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeOutgoingAssetListRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -70,37 +70,37 @@ type DescribeOutgoingAssetListRequest struct {
 	//
 	// subscribe
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Queries outbound connections routed from a private network through a NAT gateway.
+	// Specifies whether to query outbound connections over the NAT private network.
 	//
 	// example:
 	//
 	// NatPrivate
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The language of the content.
+	// The language type.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
 	// ngw-bp123456g******
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT Gateway.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
 	// ngw-test
 	NatGatewayName *string `json:"NatGatewayName,omitempty" xml:"NatGatewayName,omitempty"`
-	// The sorting order.
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type DescribeOutgoingAssetListRequest struct {
 	//
 	// risk
 	SecurityRisk *string `json:"SecurityRisk,omitempty" xml:"SecurityRisk,omitempty"`
-	// The sorting basis.
+	// The sort field.
 	//
 	// example:
 	//
 	// InBytes
 	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

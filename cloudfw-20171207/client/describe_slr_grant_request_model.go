@@ -22,7 +22,7 @@ type DescribeSlrGrantRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address of the caller.
 	//
 	// example:
 	//

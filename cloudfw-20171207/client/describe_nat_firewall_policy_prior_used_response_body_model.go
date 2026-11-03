@@ -18,7 +18,7 @@ type iDescribeNatFirewallPolicyPriorUsedResponseBody interface {
 }
 
 type DescribeNatFirewallPolicyPriorUsedResponseBody struct {
-	// The lowest priority of the access control policy.
+	// The minimum valid priority value for the access control policy.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeNatFirewallPolicyPriorUsedResponseBody struct {
 	//
 	// BCDF3907-1011-5504-B015-CC7603C0E6B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The highest priority of the access control policy.
+	// The maximum valid priority value for the access control policy.
 	//
 	// example:
 	//

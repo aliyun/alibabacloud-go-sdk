@@ -22,27 +22,27 @@ type iDescribeNatFirewallTrafficTrendResponseBody interface {
 }
 
 type DescribeNatFirewallTrafficTrendResponseBody struct {
-	// A list of traffic statistics.
+	// The list of traffic statistics information.
 	DataList []*DescribeNatFirewallTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The peak inbound network throughput. Unit: bps.
+	// The peak network throughput in the inbound direction. Unit: bit/s.
 	//
 	// example:
 	//
 	// 18038632
 	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	// The peak outbound network throughput. Unit: bps.
+	// The peak network throughput in the outbound direction. Unit: bit/s.
 	//
 	// example:
 	//
 	// 122596487
 	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
-	// The peak total network throughput for inbound and outbound traffic. Unit: bps.
+	// The peak network throughput in both the outbound and inbound directions. Unit: bit/s.
 	//
 	// example:
 	//
 	// 66953194
 	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *DescribeNatFirewallTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeNatFirewallTrafficTrendResponseBodyDataList struct {
-	// The peak inbound network throughput. Unit: bps.
+	// The peak network throughput in the inbound direction. Unit: bit/s.
 	//
 	// example:
 	//
 	// 18038632
 	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	// The peak outbound network throughput. Unit: bps.
+	// The peak network throughput in the outbound direction. Unit: bit/s.
 	//
 	// example:
 	//
 	// 122596487
 	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
-	// The peak total network throughput for inbound and outbound traffic. Unit: bps.
+	// The peak network throughput in both the outbound and inbound directions. Unit: bit/s.
 	//
 	// example:
 	//
 	// 66953194
 	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
-	// The time of the query. This value is a UNIX timestamp. Unit: seconds.
+	// The query time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

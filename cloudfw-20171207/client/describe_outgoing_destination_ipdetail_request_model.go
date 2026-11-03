@@ -42,13 +42,13 @@ type iDescribeOutgoingDestinationIPDetailRequest interface {
 }
 
 type DescribeOutgoingDestinationIPDetailRequest struct {
-	// The status of the access control policy.
+	// The policy coverage status.
 	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeOutgoingDestinationIPDetailRequest struct {
 	//
 	// 34.136.111.XXX
 	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
-	// The end of the time range to query. This is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -70,19 +70,19 @@ type DescribeOutgoingDestinationIPDetailRequest struct {
 	//
 	// 1733710383
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Describes the outbound connections from a private network through a NAT gateway.
+	// Specifies whether to query outbound connections from the private network of a NAT gateway.
 	//
 	// example:
 	//
 	// NatPrivate
 	IPType *string `json:"IPType,omitempty" xml:"IPType,omitempty"`
-	// The language of the response message.
+	// The language type for receiving messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the NAT Gateway.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type DescribeOutgoingDestinationIPDetailRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of the page to return.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeOutgoingDestinationIPDetailRequest struct {
 	//
 	// 192.0.XX.XX
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// The field to use for sorting.
+	// The field by which to sort the results.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeOutgoingDestinationIPDetailRequest struct {
 	//
 	// 1.202.193.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. This is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type DescribeOutgoingDestinationIPDetailRequest struct {
 	//
 	// 1749434787
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the tag.
+	// The tag ID.
 	//
 	// example:
 	//

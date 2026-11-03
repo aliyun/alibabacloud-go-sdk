@@ -28,47 +28,47 @@ type iCreateTrFirewallV2RoutePolicyShrinkRequest interface {
 type CreateTrFirewallV2RoutePolicyShrinkRequest struct {
 	// The list of secondary traffic redirection instances.
 	//
-	// > DestCandidateList is required. If this parameter is not specified, ErrorParameters(400) is returned.
+	// > DestCandidateList is required. If this parameter is not specified, an ErrorParameters(400) error is returned.
 	DestCandidateListShrink *string `json:"DestCandidateList,omitempty" xml:"DestCandidateList,omitempty"`
-	// The instance ID of the virtual private cloud (VPC) firewall.
+	// The instance ID of the virtual private cloud (VPC) firewalls at the border.
 	//
-	// > FirewallId is required. If this parameter is not specified, ErrorParameters(400) is returned. You can call DescribeTrFirewallsV2List to obtain instance ID.
+	// > FirewallId is required. If this parameter is not specified, an ErrorParameters(400) error is returned. You can call the DescribeTrFirewallsV2List operation to obtain instance ID.
 	//
 	// example:
 	//
 	// vfw-tr-f8ce36689b224f77****
 	FirewallId *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language in which you want to receive messages. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The description of the traffic redirection scenario.
+	// The description of the traffic redirection policy.
 	//
 	// example:
 	//
 	// Singapore Point to Multipoint
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the traffic redirection scenario.
+	// The name of the traffic redirection policy.
 	//
 	// example:
 	//
 	// Singapore Point to Multipoint
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The traffic redirection scenario type for the virtual private cloud (VPC) firewall for a CEN Enterprise Edition transit router. Valid values:
+	// The type of the traffic redirection scenario for virtual private cloud (VPC) firewalls at the border in the Enterprise Edition Cloud Enterprise Network (CEN). Valid values:
 	//
-	// - **fullmesh**: multi-point interconnection
+	// - **fullmesh**: Multi-point interconnection.
 	//
-	// - **one_to_one**: point-to-point
+	// - **one_to_one**: Point-to-point.
 	//
-	// - **end_to_end**: point-to-multipoint
+	// - **end_to_end**: Point-to-multipoint.
 	//
-	// > PolicyType is required. If this parameter is not specified, ErrorParameters(400) is returned.
+	// > PolicyType is required. If this parameter is not specified, an ErrorParameters(400) error is returned.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateTrFirewallV2RoutePolicyShrinkRequest struct {
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
 	// The list of primary traffic redirection instances.
 	//
-	// > SrcCandidateList is required. If this parameter is not specified, ErrorParameters(400) is returned.
+	// > SrcCandidateList is required. If this parameter is not specified, an ErrorParameters(400) error is returned.
 	SrcCandidateListShrink *string `json:"SrcCandidateList,omitempty" xml:"SrcCandidateList,omitempty"`
 }
 

@@ -38,19 +38,19 @@ type iDescribeLogStoreInfoResponseBody interface {
 type DescribeLogStoreInfoResponseBody struct {
 	// The information list.
 	InfoList []*DescribeLogStoreInfoResponseBodyInfoList `json:"InfoList,omitempty" xml:"InfoList,omitempty" type:"Repeated"`
-	// The number of times the log storage mode can be changed.
+	// The number of times the user can switch the log mode.
 	//
 	// example:
 	//
 	// 2
 	LogModifyQuota *int32 `json:"LogModifyQuota,omitempty" xml:"LogModifyQuota,omitempty"`
-	// The name of the SLS Logstore.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// xxx-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The log version. 1: indicates one Logstore. 2: indicates two Logstores.
+	// The log version. Valid values: 1: one Logstore. 2: two Logstores.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type DescribeLogStoreInfoResponseBody struct {
 	//
 	// project-xxx-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The available log storage capacity, in bytes.
+	// The available log storage capacity. Unit: bytes.
 	//
 	// example:
 	//
 	// 50000000
 	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
-	// The ID of the region where logs are delivered.
+	// The region ID for log delivery.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -86,21 +86,21 @@ type DescribeLogStoreInfoResponseBody struct {
 	//
 	// 132
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The total purchased log storage capacity, in bytes.
+	// The total log storage capacity purchased by the user.
 	//
 	// example:
 	//
 	// 50000000
 	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	// The storage duration of logs, in days.
+	// The storage duration of logs. Unit: days.
 	//
 	// example:
 	//
 	// 20
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The used storage capacity, in bytes.
+	// The used storage capacity. Unit: bytes.
 	//
-	// > Statistics from Simple Log Service may be delayed by up to two hours.
+	// > The statistics of Simple Log Service have a delay of about two hours.
 	//
 	// example:
 	//
@@ -238,13 +238,13 @@ func (s *DescribeLogStoreInfoResponseBody) Validate() error {
 }
 
 type DescribeLogStoreInfoResponseBodyInfoList struct {
-	// The name of the SLS Logstore.
+	// The name of the Logstore.
 	//
 	// example:
 	//
 	// xxx-logstore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The maximum number of shards supported for scaling.
+	// The maximum number of shards supported for elastic scaling.
 	//
 	// example:
 	//
@@ -256,7 +256,7 @@ type DescribeLogStoreInfoResponseBodyInfoList struct {
 	//
 	// cloudfirewall-project-14151892848****-cn-hangzhou
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The storage capacity threshold, in bytes.
+	// The storage capacity threshold. Unit: bytes.
 	//
 	// example:
 	//
@@ -268,25 +268,25 @@ type DescribeLogStoreInfoResponseBodyInfoList struct {
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of shards in use.
+	// The number of shards currently in use.
 	//
 	// example:
 	//
 	// 2
 	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
-	// The location of the Logstore. Valid values: \\`cn\\` for the Chinese mainland and \\`intl\\` for regions outside the Chinese mainland.
+	// The site to which the Logstore belongs. Valid values: cn: the Chinese mainland. intl: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
-	// The storage duration of logs, in days.
+	// The storage duration of logs. Unit: days.
 	//
 	// example:
 	//
 	// 180
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The amount of stored logs, in bytes.
+	// The volume of stored logs. Unit: bytes.
 	//
 	// example:
 	//

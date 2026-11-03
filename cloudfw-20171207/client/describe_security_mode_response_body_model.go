@@ -32,11 +32,11 @@ type DescribeSecurityModeResponseBody struct {
 	//
 	// C6D68A02-54D5-5F5C-A8AA-6D6C2874****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The security mode. Valid values:
+	// The safe mode pattern. Valid values:
 	//
-	// **0**: disabled.
+	// **0**: shutdown
 	//
-	// **1**: enabled.
+	// **1**: enabled
 	//
 	// example:
 	//

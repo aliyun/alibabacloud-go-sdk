@@ -28,37 +28,37 @@ type iDescribePostpayBillResponseBody interface {
 }
 
 type DescribePostpayBillResponseBody struct {
-	// The aggregated Internet traffic, in GB.
+	// The aggregated Internet traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	AggregateInternetTraffic *float32 `json:"AggregateInternetTraffic,omitempty" xml:"AggregateInternetTraffic,omitempty"`
-	// The aggregated NAT traffic, in GB.
+	// The aggregated NAT traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	AggregateNatTraffic *float32 `json:"AggregateNatTraffic,omitempty" xml:"AggregateNatTraffic,omitempty"`
-	// The aggregated sensitive data detection traffic, in GB.
+	// The aggregated sensitive data detection traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	AggregateSdlTraffic *float32 `json:"AggregateSdlTraffic,omitempty" xml:"AggregateSdlTraffic,omitempty"`
-	// The aggregated total traffic, in GB.
+	// The aggregated total traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 40
 	AggregateTotalTraffic *float32 `json:"AggregateTotalTraffic,omitempty" xml:"AggregateTotalTraffic,omitempty"`
-	// The aggregated VPC traffic, in GB.
+	// The aggregated VPC traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	AggregateVpcTraffic *float32 `json:"AggregateVpcTraffic,omitempty" xml:"AggregateVpcTraffic,omitempty"`
-	// The bill list.
+	// The list of bills.
 	BillList []*DescribePostpayBillResponseBodyBillList `json:"BillList,omitempty" xml:"BillList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -168,7 +168,7 @@ func (s *DescribePostpayBillResponseBody) Validate() error {
 }
 
 type DescribePostpayBillResponseBodyBillList struct {
-	// The end time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
+	// The end time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
 	//
 	// example:
 	//
@@ -180,21 +180,21 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 3
 	InternetInstanceCnt *int64 `json:"InternetInstanceCnt,omitempty" xml:"InternetInstanceCnt,omitempty"`
-	// The Internet traffic, in GB.
+	// The Internet traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	InternetTraffic *float32 `json:"InternetTraffic,omitempty" xml:"InternetTraffic,omitempty"`
-	// Indicates whether the bill is deducted. A value of 0 indicates that the bill is not deducted. Any value greater than 0 indicates that the bill is deducted. If the bill is deducted, it is not charged.
+	// Indicates whether the fee is reduced. A value of 0 indicates that the fee is not reduced. A value greater than 0 indicates that the fee is reduced. If the fee is reduced, no bill is generated.
 	//
-	// > This field is meaningful only when you query hourly data.
+	// > This parameter is valid only when you query hourly data.
 	//
 	// example:
 	//
 	// 0
 	IsDerated *int32 `json:"IsDerated,omitempty" xml:"IsDerated,omitempty"`
-	// The log service usage duration, in T × h.
+	// The usage duration of Simple Log Service. Unit: TB × h.
 	//
 	// example:
 	//
@@ -206,31 +206,31 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 2
 	NatInstanceCnt *int64 `json:"NatInstanceCnt,omitempty" xml:"NatInstanceCnt,omitempty"`
-	// The NAT traffic, in GB.
+	// The NAT traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 2
 	NatTraffic *float32 `json:"NatTraffic,omitempty" xml:"NatTraffic,omitempty"`
-	// The data leak detection usage duration, in hours.
+	// The usage duration of sensitive data leak detection. Unit: h.
 	//
 	// example:
 	//
 	// 0
 	Sdl *int64 `json:"Sdl,omitempty" xml:"Sdl,omitempty"`
-	// The sensitive data detection traffic, in GB.
+	// The sensitive data detection traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 1
 	SdlTraffic *float32 `json:"SdlTraffic,omitempty" xml:"SdlTraffic,omitempty"`
-	// The start time, expressed as a second-level UNIX timestamp. The value is on the hour or on the day.
+	// The start time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
 	//
 	// example:
 	//
 	// 1710206070000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The threat intelligence usage duration, in hours.
+	// The usage duration of threat intelligence. Unit: h.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 2
 	VpcInstanceCnt *int64 `json:"VpcInstanceCnt,omitempty" xml:"VpcInstanceCnt,omitempty"`
-	// The VPC traffic, in GB.
+	// The VPC traffic. Unit: GB.
 	//
 	// example:
 	//

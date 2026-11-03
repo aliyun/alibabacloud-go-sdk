@@ -18,15 +18,15 @@ type iDescribeVpcFirewallAclGroupListResponseBody interface {
 }
 
 type DescribeVpcFirewallAclGroupListResponseBody struct {
-	// The access control policy groups.
+	// The information about the access control policy groups of the VPC firewall.
 	AclGroupList []*DescribeVpcFirewallAclGroupListResponseBodyAclGroupList `json:"AclGroupList,omitempty" xml:"AclGroupList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CBF1E9B7-D6A0-4E9E-AD3E-2B47E6C2837D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of access control policy groups.
+	// The total number of access control policy groups of the VPC firewall.
 	//
 	// example:
 	//
@@ -83,51 +83,49 @@ func (s *DescribeVpcFirewallAclGroupListResponseBody) Validate() error {
 }
 
 type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
-	// The ACL engine mode.
+	// The mode of the access control engine.
 	AclConfig *DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
-	// The ID of the access control policy group for the VPC boundary firewall.
+	// The access control policy group ID of the virtual private cloud (VPC) firewalls at the border. Valid values:
 	//
-	// Valid values:
+	// - If the virtual private cloud (VPC) firewalls at the border protect a Cloud Enterprise Network (CEN) instance, the policy group ID is the instance ID of the CEN instance.
 	//
-	// - If the VPC boundary firewall protects a Cloud Enterprise Network (CEN) instance, the policy group ID is the ID of the CEN instance.
+	//   Example: cen-ervw0g12b5jbw*\\*\\*\\*
 	//
-	//   Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
+	// - If the virtual private cloud (VPC) firewalls at the border protect an Express Connect circuit, the policy group ID is the instance ID of the virtual private cloud (VPC) firewalls at the border.
 	//
-	// - If the VPC boundary firewall protects an Express Connect circuit, the policy group ID is the ID of the VPC boundary firewall instance.
-	//
-	//   Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
+	//   Example: vfw-a42bbb7b887148c9*\\*\\*\\*
 	//
 	// example:
 	//
 	// vfw-a42bbb7b887148c9****
 	AclGroupId *string `json:"AclGroupId,omitempty" xml:"AclGroupId,omitempty"`
-	// The name of the access control policy group for the VPC boundary firewall.
+	// The access control policy group name of the virtual private cloud (VPC) firewalls at the border.
 	//
-	// - If the VPC boundary firewall protects a Cloud Enterprise Network instance, the group name is the name of the CEN instance.
+	// - If the virtual private cloud (VPC) firewalls at the border protect a CEN instance, the policy group name is the name of the CEN instance.
 	//
-	// - If the VPC boundary firewall protects an Express Connect circuit, the group name is the name of the VPC boundary firewall instance.
+	// - If the virtual private cloud (VPC) firewalls at the border protect an Express Connect circuit, the policy group name is the name of the virtual private cloud (VPC) firewalls at the border.
 	//
 	// example:
 	//
 	// group_test
 	AclGroupName *string `json:"AclGroupName,omitempty" xml:"AclGroupName,omitempty"`
-	// The number of policies in the access control policy group.
+	// The number of policies in the access control policy group of the virtual private cloud (VPC) firewalls at the border.
 	//
 	// example:
 	//
 	// 9
 	AclRuleCount *int32 `json:"AclRuleCount,omitempty" xml:"AclRuleCount,omitempty"`
-	// Indicates whether the policy group is a default group. Valid values:
+	// Specifies whether the firewall is the default firewall. Valid values:
 	//
-	// - **true**: The policy group is a default group.
+	// - **true**: The firewall is the default firewall.
 	//
-	// - **false**: The policy group is not a default group.
+	// - **false**: The firewall is not the default firewall.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the member account.
+	// The ID of the member accounts of the current Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -207,7 +205,7 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) Validate() err
 }
 
 type DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig struct {
-	// Indicates whether strict mode is enabled. Valid values:
+	// Specifies whether strict mode is enabled. Valid values:
 	//
 	// - 1: Strict mode is enabled.
 	//

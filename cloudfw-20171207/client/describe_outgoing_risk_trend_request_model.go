@@ -20,25 +20,25 @@ type iDescribeOutgoingRiskTrendRequest interface {
 }
 
 type DescribeOutgoingRiskTrendRequest struct {
-	// The end of the time range to query. Use a UNIX timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1755051062
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the response message.
+	// The language type for receiving messages.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address.
+	// The source IP address of the visitor.
 	//
 	// example:
 	//
 	// 219.145.94.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. Use a UNIX timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

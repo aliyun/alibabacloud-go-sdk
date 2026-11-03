@@ -20,7 +20,7 @@ type iDescribeDomainResolveRequest interface {
 }
 
 type DescribeDomainResolveRequest struct {
-	// The domain name to resolve.
+	// The domain name to be resolved.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeDomainResolveRequest struct {
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The IP version of the asset that is protected by Cloud Firewall. Valid values:
+	// The IP version of the asset protected by Cloud Firewall. Valid values:
 	//
 	// - **4*	- (default): IPv4
 	//
@@ -38,7 +38,7 @@ type DescribeDomainResolveRequest struct {
 	//
 	// 6
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The language of the response message.
+	// The language for receiving messages.
 	//
 	// Valid values:
 	//
@@ -52,7 +52,7 @@ type DescribeDomainResolveRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

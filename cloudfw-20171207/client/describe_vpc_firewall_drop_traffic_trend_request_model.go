@@ -24,7 +24,7 @@ type iDescribeVpcFirewallDropTrafficTrendRequest interface {
 }
 
 type DescribeVpcFirewallDropTrafficTrendRequest struct {
-	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type DescribeVpcFirewallDropTrafficTrendRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **asc**: ascending order.
+	// - **asc**: ascending order
 	//
-	// - **desc**: descending order. This is the default value.
+	// - **desc*	- (default): descending order
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescribeVpcFirewallDropTrafficTrendRequest struct {
 	//
 	// 183.237.161.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The start of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1656664560
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time point of the traffic. This value is a UNIX timestamp. Unit: seconds.
+	// The traffic time point. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

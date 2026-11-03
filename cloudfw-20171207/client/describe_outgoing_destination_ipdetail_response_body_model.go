@@ -24,13 +24,13 @@ type iDescribeOutgoingDestinationIPDetailResponseBody interface {
 type DescribeOutgoingDestinationIPDetailResponseBody struct {
 	// The list of assets.
 	AssetList []*DescribeOutgoingDestinationIPDetailResponseBodyAssetList `json:"AssetList,omitempty" xml:"AssetList,omitempty" type:"Repeated"`
-	// The ISP of the destination IP address.
+	// The ISP to which the destination IP address belongs.
 	//
 	// example:
 	//
 	// telecom
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeOutgoingDestinationIPDetailResponseBody struct {
 	//
 	// F0F82705-CFC7-5F83-86C8-A063892F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeOutgoingDestinationIPDetailResponseBody) Validate() error {
 }
 
 type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
-	// The status of the access control policy.
+	// The policy coverage status.
 	//
 	// example:
 	//
 	// FullCoverage
 	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// The time of the first access. This is a UNIX timestamp. Unit: seconds.
+	// The time of the first visit. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -135,31 +135,31 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
 	//
 	// 0
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The ISP of the destination IP address.
+	// The ISP to which the destination IP address belongs.
 	//
 	// example:
 	//
 	// telecom
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The time of the last access. This is a UNIX timestamp. Unit: seconds.
+	// The time of the last visit. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1739326614
 	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The name of the region where the destination IP address is located.
+	// The name of the region to which the destination IP address belongs.
 	//
 	// example:
 	//
 	// Hangzhou
 	LocationName *string `json:"LocationName,omitempty" xml:"LocationName,omitempty"`
-	// The ID of the NAT Gateway.
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// ngw-bp1utx6wj4x9qu9tl****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The name of the NAT Gateway.
+	// The name of the NAT gateway.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The instance ID of the cloud product.
+	// The instance ID of the cloud service.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
 	//
 	// test
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
-	// The type of the public IP address of the asset.
+	// The public IP address type of the asset.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetList struct {
 	//
 	// 458681
 	TotalBytes *string `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The ID of the VPC instance.
+	// The VPC instance ID.
 	//
 	// example:
 	//
@@ -452,7 +452,7 @@ func (s *DescribeOutgoingDestinationIPDetailResponseBodyAssetList) Validate() er
 }
 
 type DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList struct {
-	// The classification ID.
+	// The category ID.
 	//
 	// example:
 	//
@@ -464,19 +464,19 @@ type DescribeOutgoingDestinationIPDetailResponseBodyAssetListTagList struct {
 	//
 	// 0
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The description of the tag.
+	// The tag description.
 	//
 	// example:
 	//
 	// test
 	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
-	// The ID of the tag.
+	// The tag ID.
 	//
 	// example:
 	//
 	// FirstFlow
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	// The name of the tag.
+	// The tag name.
 	//
 	// example:
 	//

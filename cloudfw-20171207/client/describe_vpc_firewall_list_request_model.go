@@ -34,35 +34,35 @@ type iDescribeVpcFirewallListRequest interface {
 }
 
 type DescribeVpcFirewallListRequest struct {
-	// The subtype of the connection. Valid values:
+	// The connection subtype. Valid values:
 	//
 	// - **vpc2vpc**: Express Connect.
 	//
-	// - **vpcpeer**: peering connection.
+	// - **vpcpeer**: VPC peering connection.
 	//
 	// example:
 	//
 	// vpcpeer
 	ConnectSubType *string `json:"ConnectSubType,omitempty" xml:"ConnectSubType,omitempty"`
-	// The page number.
+	// The page number Settings for a paging query.
 	//
-	// Default value: **1**.
+	// Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The status of the VPC firewall. Valid values:
+	// The status of the virtual private cloud (VPC) border firewall. Valid values:
 	//
-	// - **opened**: The firewall is enabled.
+	// - **opened**: Enabled.
 	//
-	// - **closed**: The firewall is disabled.
+	// - **closed**: Disabled.
 	//
-	// - **notconfigured**: The firewall is not configured.
+	// - **notconfigured**: The virtual private cloud (VPC) border firewall is not configured.
 	//
-	// - **configured**: The firewall is configured.
+	// - **configured**: The virtual private cloud (VPC) border firewall is configured.
 	//
-	// > If you do not specify this parameter, VPC firewalls in all states are queried.
+	// > If you do not specify the Settings for this parameter, virtual private cloud (VPC) border firewalls in all states are queried.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type DescribeVpcFirewallListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of the member account.
+	// The UID of the member accounts of the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The number of entries per page.
+	// The number Settings of virtual private cloud (VPC) border firewalls per page for a paging query.
 	//
 	// Default value: **10**. Maximum value: **50**.
 	//
@@ -100,19 +100,19 @@ type DescribeVpcFirewallListRequest struct {
 	PeerUid *string `json:"PeerUid,omitempty" xml:"PeerUid,omitempty"`
 	// The region ID of the VPC.
 	//
-	// > For more information about the regions where Cloud Firewall is supported, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+	// > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The instance ID of the VPC firewall.
+	// The instance ID of the virtual private cloud (VPC) border firewall.
 	//
 	// example:
 	//
 	// vfw-m5e7dbc4y****
 	VpcFirewallId *string `json:"VpcFirewallId,omitempty" xml:"VpcFirewallId,omitempty"`
-	// The instance name of the VPC firewall.
+	// The instance name of the virtual private cloud (VPC) border firewall.
 	//
 	// example:
 	//
