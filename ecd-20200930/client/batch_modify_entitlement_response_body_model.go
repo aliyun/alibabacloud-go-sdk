@@ -16,7 +16,7 @@ type iBatchModifyEntitlementResponseBody interface {
 }
 
 type BatchModifyEntitlementResponseBody struct {
-	// The entitlements collection.
+	// The entitlement collection.
 	Entitlements *BatchModifyEntitlementResponseBodyEntitlements `json:"Entitlements,omitempty" xml:"Entitlements,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -135,7 +135,7 @@ type BatchModifyEntitlementResponseBodyEntitlementsAssignModels struct {
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	// The IDs of the users authorized to use the cloud desktop, which are the usernames.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The assignment result for a single cloud desktop.
+	// The assignment result of a single cloud desktop.
 	//
 	// example:
 	//

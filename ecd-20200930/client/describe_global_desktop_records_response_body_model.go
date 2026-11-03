@@ -95,31 +95,31 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 2
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
+	// The creation time of the cloud desktop. The time follows the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2020-11-06T08:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The shared cloud desktop ID.
+	// The ID of the shared cloud computer.
 	//
 	// example:
 	//
 	// dg-iaqu3bi2xtie****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The shared cloud desktop name.
+	// The name of the shared cloud computer.
 	//
 	// example:
 	//
 	// DemoCCGroup
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The cloud desktop ID.
+	// The ID of the cloud computer.
 	//
 	// example:
 	//
 	// ecd-g6t1ukbaea****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud desktop name.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The end user ID.
+	// The ID of the end user.
 	//
 	// example:
 	//
@@ -145,19 +145,21 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 8GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The duration of the most recent connection to the cloud desktop. Unit: seconds.
+	// The duration of the most recent connection to the cloud computer. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
-	// The latest end time of the current session. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
+	// The latest end time of the current session. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2026-09-14T05:01:12Z
 	LatestSessionEndTime *string `json:"LatestSessionEndTime,omitempty" xml:"LatestSessionEndTime,omitempty"`
-	// The memory of the cloud desktop. Unit: MiB.
+	// The desktop management status.
+	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
+	// The memory of the cloud computer. Unit: MiB.
 	//
 	// example:
 	//
@@ -169,7 +171,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name.
+	// The name of the office network.
 	//
 	// example:
 	//
@@ -191,7 +193,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The specific operating system version.
+	// The specific operating system model.
 	//
 	// example:
 	//
@@ -213,9 +215,9 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The enterprise resource group names.
+	// The name of the enterprise resource group.
 	ResourceGroups []*DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The session idle duration. Unit: minutes.
+	// The idle duration of the session. Unit: minutes.
 	//
 	// example:
 	//
@@ -223,19 +225,19 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
 	// The session details.
 	Sessions []*DescribeGlobalDesktopRecordsResponseBodySessionsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The UNIX timestamp when the cloud desktop status changed. Unit: milliseconds.
+	// The UNIX timestamp of the time when the cloud computer status changed. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1760583xxxx
 	StatusChangeTime *int64 `json:"StatusChangeTime,omitempty" xml:"StatusChangeTime,omitempty"`
-	// The billing method of the cloud desktop. Valid values:
+	// The billing method of the cloud computer. Valid values:
 	//
-	// - prePaid: monthly subscription with unlimited usage duration.
+	// - prePaid: monthly subscription with unlimited duration
 	//
-	// - postPaid: pay-as-you-go.
+	// - postPaid: pay-as-you-go
 	//
-	// - monthPackage: monthly duration package.
+	// - monthPackage: monthly time package
 	//
 	// example:
 	//
@@ -247,7 +249,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// 240
 	TotalConnectionTime *int64 `json:"TotalConnectionTime,omitempty" xml:"TotalConnectionTime,omitempty"`
-	// The cloud desktop uptime. Unit: seconds.
+	// The uptime of the cloud computer. Unit: seconds.
 	//
 	// example:
 	//
@@ -313,6 +315,10 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetLatestConnectionTi
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetLatestSessionEndTime() *string {
 	return s.LatestSessionEndTime
+}
+
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetManagementFlags() []*string {
+	return s.ManagementFlags
 }
 
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) GetMemory() *int64 {
@@ -440,6 +446,11 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetLatestSessionEndTi
 	return s
 }
 
+func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetManagementFlags(v []*string) *DescribeGlobalDesktopRecordsResponseBodySessions {
+	s.ManagementFlags = v
+	return s
+}
+
 func (s *DescribeGlobalDesktopRecordsResponseBodySessions) SetMemory(v int64) *DescribeGlobalDesktopRecordsResponseBodySessions {
 	s.Memory = &v
 	return s
@@ -538,13 +549,13 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessions) Validate() error {
 }
 
 type DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups struct {
-	// The enterprise resource group ID.
+	// The ID of the enterprise resource group.
 	//
 	// example:
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
@@ -583,13 +594,13 @@ func (s *DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups) Validat
 }
 
 type DescribeGlobalDesktopRecordsResponseBodySessionsSessions struct {
-	// The end user ID.
+	// The ID of the end user.
 	//
 	// example:
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the session was created. The time is in the ISO 8601 standard (UTC): yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time of the session. The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

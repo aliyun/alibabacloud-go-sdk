@@ -24,13 +24,13 @@ type iCreateConfigGroupRequest interface {
 }
 
 type CreateConfigGroupRequest struct {
-	// The configuration information of scheduled tasks. This parameter is a list.
+	// The configuration information of the scheduled tasks. This is a list.
 	ConfigTimers []*CreateConfigGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	//
 	// example:
 	//
-	// Description of the scheduled task
+	// Scheduled task description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the configuration group.
 	//
@@ -38,9 +38,9 @@ type CreateConfigGroupRequest struct {
 	//
 	// example:
 	//
-	// ScheduledTaskGroup
+	// Scheduled task group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The product type used by the configuration group.
+	// The product type of the configuration group.
 	//
 	// This parameter is required.
 	//
@@ -148,13 +148,13 @@ type CreateConfigGroupRequestConfigTimers struct {
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
 	// The cron expression of the scheduled task.
 	//
-	// 	Notice: Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, use 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
+	// 	Notice: You must specify the time in UTC. For example, to specify 00:00:00 every day in UTC+8, pass 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
 	//
 	// example:
 	//
 	// 0 0 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to forcefully execute the task.
+	// Specifies whether to forcibly execute the task.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ type CreateConfigGroupRequestConfigTimers struct {
 	//
 	// 300
 	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	// The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
+	// The operation type of the scheduled task. Currently, only disconnection scheduled tasks are supported.
 	//
 	// example:
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
+	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not executed.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
 	// The reset type of the cloud desktop.
 	//
@@ -325,7 +325,7 @@ func (s *CreateConfigGroupRequestConfigTimers) Validate() error {
 }
 
 type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
-	// The appointment timer used for executing scheduled tasks at specified time points.
+	// Used for executing scheduled tasks at a specific time. After this parameter is specified, the scheduled task is executed at the specified time.
 	//
 	// example:
 	//
@@ -333,13 +333,13 @@ type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
 	AppointmentTimer *int64 `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
 	// Specifies whether to create a snapshot.
 	CreateSnapshot *bool `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
-	// The cron expression for the end of the scheduled task execution.
+	// The cron expression for ending the execution of the scheduled task.
 	//
 	// example:
 	//
 	// 0 0 18 ? 	- 1-5
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	// Specifies whether to forcefully execute the task. If set to true, the scheduled task is forcefully executed regardless of the desktop and connection status.
+	// Specifies whether to forcibly execute the task. A value of true indicates that the desktop and connection status checks are ignored, and the scheduled task is forcibly executed.
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
 	// The image ID.
 	//
@@ -355,7 +355,7 @@ type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The list of effective IP CIDR blocks.
 	IpSegments []*string `json:"IpSegments,omitempty" xml:"IpSegments,omitempty" type:"Repeated"`
-	// The duration of inactivity before the screen is locked, used by the no-operation lock screen feature. Unit: minutes. Only AD cloud desktops are supported.
+	// Used for the no-operation lock screen feature. Specifies the duration of inactivity before the screen is locked. Unit: minutes. Only AD cloud desktops are supported.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
 	//
 	// 300
 	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	// The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
+	// The operation type of the scheduled task. Currently, only disconnection scheduled tasks are supported.
 	//
 	// example:
 	//
@@ -379,21 +379,21 @@ type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
 	//
 	// KB5082063
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
+	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not executed.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	// The reset type, which determines whether to reset and the scope of cloud disks to reset.
+	// The reset type. Specifies whether to reset the cloud desktop and the scope of cloud disks to be reset.
 	//
 	// example:
 	//
 	// 1
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The cron expression for the start of the scheduled task execution.
+	// The cron expression for starting the execution of the scheduled task.
 	//
 	// example:
 	//
 	// 0 0 8 ? 	- 1-5
 	StartCronExpression *string `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
-	// The execution order number of the timer.
+	// The execution sequence number of the timer.
 	//
 	// example:
 	//

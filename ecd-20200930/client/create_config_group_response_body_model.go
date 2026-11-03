@@ -18,7 +18,7 @@ type iCreateConfigGroupResponseBody interface {
 }
 
 type CreateConfigGroupResponseBody struct {
-	// The configuration group ID.
+	// The ID of the configuration group.
 	//
 	// example:
 	//

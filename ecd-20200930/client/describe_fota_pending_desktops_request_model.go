@@ -26,19 +26,19 @@ type iDescribeFotaPendingDesktopsRequest interface {
 }
 
 type DescribeFotaPendingDesktopsRequest struct {
-	// The ID of the cloud computer.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// demo-computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries to return per page when paging in a paged query.
 	//
 	// - Maximum value: 100
 	//
@@ -48,19 +48,19 @@ type DescribeFotaPendingDesktopsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set the value to the `NextToken` value returned from the previous call to this operation. You do not need to specify this parameter for the first call.
+	// The pagination token. Set the value to the `NextToken` value returned from the last call to this operation. You do not need to specify this parameter for the first call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain this parameter.
+	// The office network ID. You can call the [DescribeOfficeSites](https://help.aliyun.com/document_detail/216071.html) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// cn-shanghai+dir-428216****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by cloud computers.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeFotaPendingDesktopsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about the image upgrade task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain this parameter.
+	// The UID of the image upgrade task. You can call the [DescribeFotaTasks](https://help.aliyun.com/document_detail/437001.html) operation to obtain this parameter.
 	//
 	// example:
 	//

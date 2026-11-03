@@ -29,6 +29,8 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 	GetOfficeSiteId() *string
 	SetOrderBy(v string) *DescribeGlobalDesktopRecordsRequest
 	GetOrderBy() *string
+	SetOrgIdList(v []*string) *DescribeGlobalDesktopRecordsRequest
+	GetOrgIdList() []*string
 	SetPageNumber(v int32) *DescribeGlobalDesktopRecordsRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeGlobalDesktopRecordsRequest
@@ -52,31 +54,31 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 type DescribeGlobalDesktopRecordsRequest struct {
 	// The business channel. Valid values:
 	//
-	// - Enterprise: Enterprise Edition.
+	// - Enterprise: Enterprise Edition
 	//
-	// - Business: Business Edition.
+	// - Business: Business Edition
 	//
 	// example:
 	//
 	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// The cloud desktop ID. You can specify 1 to 100 IDs.
+	// The ID of the cloud computer. You can specify 1 to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The cloud desktop name.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The list of cloud desktop statuses to include.
+	// The list of cloud computer statuses to include.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud desktops.
+	// The specifications of the cloud computer. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by cloud computers.
 	//
 	// example:
 	//
 	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The end time. The interval between the start time and end time cannot exceed 30 days. Supported format:
+	// The end time. The maximum interval between the start time and the end time is 30 days. Supported format:
 	//
 	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
@@ -84,13 +86,13 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 2022-08-31T06:56:45Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end user ID.
+	// The ID of the end user.
 	//
 	// example:
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The list of cloud desktop statuses to exclude.
+	// The list of cloud computer statuses to exclude.
 	ExcludeDesktopStatusList []*string `json:"ExcludeDesktopStatusList,omitempty" xml:"ExcludeDesktopStatusList,omitempty" type:"Repeated"`
 	// The office network ID.
 	//
@@ -98,15 +100,17 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The sort field. If this parameter is not specified, results are sorted by creation time in descending order. Valid values:
+	// The sorting field. If not specified, the results are sorted in descending order of creation time. Valid values:
 	//
-	// - uptime: sorts by cloud desktop uptime.
+	// - uptime: Sorts the results by the uptime of the cloud computer.
 	//
 	// example:
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number of the current page in a paged query.
+	// The list of organization IDs.
+	OrgIdList []*string `json:"OrgIdList,omitempty" xml:"OrgIdList,omitempty" type:"Repeated"`
+	// The page number of the current page in a paging query.
 	//
 	// Default value: 1.
 	//
@@ -120,7 +124,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID. Valid values:
+	// The region ID.
 	//
 	// - Shanghai
 	//
@@ -132,25 +136,25 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The query scope. This parameter is empty by default. Valid values:
+	// The query scope. Default value: empty. Valid values:
 	//
-	// - ADVANCED: queries statistical records such as connection duration.
+	// - ADVANCED: Queries statistical records such as connection duration.
 	//
 	// example:
 	//
 	// ADVANCED
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sort order. Default value: Asc. Valid values:
+	// The sorting order. Default value: Asc. Valid values:
 	//
-	// - Asc: ascending order.
+	// - Asc: ascending order
 	//
-	// - Desc: descending order.
+	// - Desc: descending order
 	//
 	// example:
 	//
@@ -164,13 +168,13 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 2022-03-23T04:10:21Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The billing method of the cloud desktop. Valid values:
+	// The billing method of the cloud computer. Valid values:
 	//
-	// - prePaid: monthly subscription with unlimited usage duration.
+	// - prePaid: monthly subscription with unlimited duration
 	//
-	// - postPaid: pay-as-you-go.
+	// - postPaid: pay-as-you-go
 	//
-	// - monthPackage: monthly duration package.
+	// - monthPackage: monthly time package
 	//
 	// example:
 	//
@@ -226,6 +230,10 @@ func (s *DescribeGlobalDesktopRecordsRequest) GetOfficeSiteId() *string {
 
 func (s *DescribeGlobalDesktopRecordsRequest) GetOrderBy() *string {
 	return s.OrderBy
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) GetOrgIdList() []*string {
+	return s.OrgIdList
 }
 
 func (s *DescribeGlobalDesktopRecordsRequest) GetPageNumber() *int32 {
@@ -311,6 +319,11 @@ func (s *DescribeGlobalDesktopRecordsRequest) SetOfficeSiteId(v string) *Describ
 
 func (s *DescribeGlobalDesktopRecordsRequest) SetOrderBy(v string) *DescribeGlobalDesktopRecordsRequest {
 	s.OrderBy = &v
+	return s
+}
+
+func (s *DescribeGlobalDesktopRecordsRequest) SetOrgIdList(v []*string) *DescribeGlobalDesktopRecordsRequest {
+	s.OrgIdList = v
 	return s
 }
 

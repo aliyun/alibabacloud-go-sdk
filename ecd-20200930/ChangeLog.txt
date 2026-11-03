@@ -1,3 +1,10 @@
+2026-11-03 Version: v6.3.4
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.SubnetName.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.DesktopDurationList.$.DisableRemainingNotify.
+- Update API DescribeGlobalDesktopRecords: add request parameters OrgIdList.
+- Update API DescribeGlobalDesktopRecords: add response parameters Body.Sessions.$.ManagementFlags.
+
+
 2026-10-30 Version: v6.3.3
 - Generated golang 2020-09-30 for ecd.
 

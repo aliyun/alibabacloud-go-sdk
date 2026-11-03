@@ -20,7 +20,7 @@ type iDescribePrinterEventsResponseBody interface {
 type DescribePrinterEventsResponseBody struct {
 	// The user events.
 	Events []*DescribePrinterEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The pagination token for the next query. If NextToken is empty, no more results exist.
+	// The token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribePrinterEventsResponseBody) Validate() error {
 }
 
 type DescribePrinterEventsResponseBodyEvents struct {
-	// The cloud computer ID.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-8fupvkhg0aayu****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud computer name.
+	// The cloud desktop name.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribePrinterEventsResponseBodyEvents struct {
 	//
 	// HP LaserJet PCL 6
 	PrinterDriver *string `json:"PrinterDriver,omitempty" xml:"PrinterDriver,omitempty"`
-	// The number of copies to print.
+	// The number of printed copies.
 	//
 	// example:
 	//
@@ -137,13 +137,13 @@ type DescribePrinterEventsResponseBodyEvents struct {
 	//
 	// 1
 	PrinterJobPrintedPages *int32 `json:"PrinterJobPrintedPages,omitempty" xml:"PrinterJobPrintedPages,omitempty"`
-	// The print job size, in bytes.
+	// The print job size in bytes.
 	//
 	// example:
 	//
 	// 2632446
 	PrinterJobSize *int64 `json:"PrinterJobSize,omitempty" xml:"PrinterJobSize,omitempty"`
-	// The print job time, in millisecond-precision UNIX timestamp.
+	// The print job time in milliseconds.
 	//
 	// example:
 	//

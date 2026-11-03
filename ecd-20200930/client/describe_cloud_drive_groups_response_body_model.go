@@ -22,7 +22,7 @@ type iDescribeCloudDriveGroupsResponseBody interface {
 }
 
 type DescribeCloudDriveGroupsResponseBody struct {
-	// The list of cloud drive team spaces.
+	// The list of team workspaces in the cloud drive.
 	CloudDriveGroups []*DescribeCloudDriveGroupsResponseBodyCloudDriveGroups `json:"CloudDriveGroups,omitempty" xml:"CloudDriveGroups,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -30,7 +30,7 @@ type DescribeCloudDriveGroupsResponseBody struct {
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token for the next query. If `NextToken` is empty, no more results exist.
+	// The token for the next query. If `NextToken` is empty, no more results are available.
 	//
 	// example:
 	//
@@ -123,33 +123,33 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
 	//
 	// ["user01"]
 	AdminUserIds *string `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty"`
-	// The team storage management administrator information.
+	// The information about the administrators of the team storage management.
 	AdminUserInfos []*DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos `json:"AdminUserInfos,omitempty" xml:"AdminUserInfos,omitempty" type:"Repeated"`
-	// The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
+	// The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-04-11T07:44:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-959593****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The space ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// sh1234
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
-	// The team space ID.
+	// The ID of the team workspace.
 	//
 	// example:
 	//
 	// cg-e70ga4ixp30ur****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The team space name.
+	// The name of the team workspace.
 	//
 	// example:
 	//
@@ -161,25 +161,25 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
 	//
 	// org-aliyun-wy-org-id
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The size of the team space recycle bin. Unit: bytes.
+	// The size of the recycle bin in the team workspace. Unit: bytes.
 	//
 	// example:
 	//
 	// 1024000
 	RecycleBinSize *string `json:"RecycleBinSize,omitempty" xml:"RecycleBinSize,omitempty"`
-	// The team space status.
+	// The status of the team workspace.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total capacity of the cloud drive team space.
+	// The total capacity of the team workspace.
 	//
 	// example:
 	//
 	// 5368709120
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// The used space size. Unit: bytes.
+	// The size of the used space. Unit: bytes.
 	//
 	// example:
 	//
@@ -323,23 +323,23 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos struct {
 	//
 	// 123@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The administrator username. This value may not be readable when imported from a third party.
+	// The username of the administrator. The username may be unreadable if it is imported from a third-party system.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The employee ID (DingTalk).
+	// The employee ID in DingTalk.
 	//
 	// example:
 	//
 	// 12345
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
-	// The administrator nickname.
+	// The nickname of the administrator.
 	//
 	// example:
 	//
-	// John
+	// John Doe
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The phone number.
 	//
@@ -347,17 +347,17 @@ type DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos struct {
 	//
 	// 12345678
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The administrator nickname.
+	// The nickname of the administrator.
 	//
 	// example:
 	//
-	// John
+	// John Doe
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
 	// The remarks.
 	//
 	// example:
 	//
-	// John
+	// John Doe
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

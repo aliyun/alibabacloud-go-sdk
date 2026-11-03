@@ -28,7 +28,7 @@ type DescribeFotaPendingDesktopsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of cloud computers that can be upgraded to the image version corresponding to `TaskUid` but have not been upgraded.
+	// The list of cloud desktops that can be upgraded to the image version corresponding to `TaskUid` but have not been upgraded.
 	FotaPendingDesktops []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops `json:"FotaPendingDesktops,omitempty" xml:"FotaPendingDesktops,omitempty" type:"Repeated"`
 	// The message.
 	//
@@ -36,7 +36,7 @@ type DescribeFotaPendingDesktopsResponseBody struct {
 	//
 	// Succeeded
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination token for the next query. If NextToken is empty, no more results are available.
+	// The pagination token for the next query. An empty `NextToken` indicates that no more results are available.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeFotaPendingDesktopsResponseBody) Validate() error {
 }
 
 type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
-	// The current image version of the cloud computer.
+	// The current image version of the cloud desktop.
 	//
 	// example:
 	//
 	// 0.0.1-D-20220513.143129
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	// The ID of the cloud computer.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-bvdtu3jn97o1r****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
 	//
 	// windows
 	FotaProject *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
-	// The ID of the office network.
+	// The office network ID.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The list of connected sessions.
 	Sessions []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The status of the cloud computer.
+	// The status of the cloud desktop.
 	//
 	// example:
 	//

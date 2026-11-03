@@ -36,7 +36,7 @@ type iDescribeCloudDriveGroupsRequest interface {
 }
 
 type DescribeCloudDriveGroupsRequest struct {
-	// The enterprise cloud drive ID.
+	// The ID of the enterprise cloud drive.
 	//
 	// This parameter is required.
 	//
@@ -44,25 +44,25 @@ type DescribeCloudDriveGroupsRequest struct {
 	//
 	// cn-shanghai+cds-135515****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The office network name.
+	// The name of the office network.
 	//
 	// example:
 	//
 	// testDirectoryName
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The team space status.
+	// The status of the team workspace.
 	//
 	// example:
 	//
 	// enabled
 	DriveStatus *string `json:"DriveStatus,omitempty" xml:"DriveStatus,omitempty"`
-	// Specifies whether a space is added. Default value: empty, which indicates that all types are queried.
+	// Specifies whether a workspace is added. By default, this parameter is left empty, which indicates that all workspaces are queried.
 	//
 	// if can be null:
 	// true
@@ -71,45 +71,43 @@ type DescribeCloudDriveGroupsRequest struct {
 	//
 	// binding
 	DriveType *string `json:"DriveType,omitempty" xml:"DriveType,omitempty"`
-	// The list of team space IDs.
+	// The IDs of the team workspaces.
 	GroupId []*string `json:"GroupId,omitempty" xml:"GroupId,omitempty" type:"Repeated"`
-	// The team space name. Fuzzy match is supported.
+	// The name of the team workspace. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// TestTeam1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The team type. Default value: empty, which indicates that all types are queried.
+	// The team type. By default, this parameter is left empty, which indicates that all types are queried.
 	//
 	// example:
 	//
 	// org
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries to return on each page during paging in a paged query.
 	//
-	// - Maximum value: 100.
+	// - Maximum value: 100
 	//
-	// - Default value: 20.
+	// - Default value: 20
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of `NextToken` that was returned in the previous call. You do not need to set this parameter for the first request.
+	// The pagination token. Set the value to the `NextToken` value returned from the last call. You do not need to specify this parameter for the first call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6lY3I2VNHLwy+nIoSXh****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the parent node of the object to query. To query the root node, set this parameter to `root`.
-	//
-	// Default value: empty, which indicates that all team spaces are queried.
+	// The ID of the parent node of the object to be queried. To query the root node, set this parameter to `root`. By default, this parameter is left empty, which indicates that all objects are queried.
 	//
 	// example:
 	//
 	// cg-e70ga4ixp30ur****
 	ParentGroupId *string `json:"ParentGroupId,omitempty" xml:"ParentGroupId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

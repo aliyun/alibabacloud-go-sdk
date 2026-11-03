@@ -1350,7 +1350,7 @@ func (client *Client) AttachEndUser(request *AttachEndUserRequest) (_result *Att
 //
 // - The cloud desktop must be in the Running state.
 //
-// - This operation returns a result immediately. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter to determine whether the assignment is complete. A value of `ASSIGNING` indicates that the assignment is in progress. Any other value indicates that the assignment is complete.
+// - This operation returns a result immediately. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the ManagementFlags response parameter to determine whether the assignment is complete. A value of ASSIGNING indicates that the assignment is in progress. Any other value indicates that the assignment is complete.
 //
 // - Check the assignment status every 2 to 5 seconds, up to a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
 //
@@ -1426,7 +1426,7 @@ func (client *Client) BatchModifyEntitlementWithOptions(request *BatchModifyEnti
 //
 // - The cloud desktop must be in the Running state.
 //
-// - This operation returns a result immediately. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the `ManagementFlags` response parameter to determine whether the assignment is complete. A value of `ASSIGNING` indicates that the assignment is in progress. Any other value indicates that the assignment is complete.
+// - This operation returns a result immediately. To check whether the assignment is successful, call [DescribeDesktops](https://help.aliyun.com/document_detail/436815.html) and check the ManagementFlags response parameter to determine whether the assignment is complete. A value of ASSIGNING indicates that the assignment is in progress. Any other value indicates that the assignment is complete.
 //
 // - Check the assignment status every 2 to 5 seconds, up to a maximum of 50 seconds. In most cases, the assignment is completed within 1 to 5 seconds.
 //
@@ -2268,7 +2268,7 @@ func (client *Client) CopyCdsFile(request *CopyCdsFileRequest) (_result *CopyCds
 
 // Summary:
 //
-// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region before sharing it.
+// Copies an image to another region. To share an image across regions, you can call this operation to copy the image to the destination region before sharing it.
 //
 // @param request - CopyImageRequest
 //
@@ -2328,7 +2328,7 @@ func (client *Client) CopyImageWithOptions(request *CopyImageRequest, runtime *d
 
 // Summary:
 //
-// Copies an image to another region. To share an image across regions, call this operation to copy the image to the destination region before sharing it.
+// Copies an image to another region. To share an image across regions, you can call this operation to copy the image to the destination region before sharing it.
 //
 // @param request - CopyImageRequest
 //
@@ -4170,7 +4170,7 @@ func (client *Client) CreateCloudDriveUsers(request *CreateCloudDriveUsersReques
 
 // Summary:
 //
-// Creates a configuration group. A configuration group contains the configuration information of scheduled tasks in a Cloud Desktop center.
+// Creates a configuration group. The configuration group contains the configuration information of scheduled tasks for cloud desktops.
 //
 // @param request - CreateConfigGroupRequest
 //
@@ -4234,7 +4234,7 @@ func (client *Client) CreateConfigGroupWithOptions(request *CreateConfigGroupReq
 
 // Summary:
 //
-// Creates a configuration group. A configuration group contains the configuration information of scheduled tasks in a Cloud Desktop center.
+// Creates a configuration group. The configuration group contains the configuration information of scheduled tasks for cloud desktops.
 //
 // @param request - CreateConfigGroupRequest
 //
@@ -11923,7 +11923,7 @@ func (client *Client) DescribeDesktopTypes(request *DescribeDesktopTypesRequest)
 
 // Summary:
 //
-// Queries the details of a cloud computer.
+// Queries the details of one or more cloud desktops.
 //
 // @param request - DescribeDesktopsRequest
 //
@@ -12127,7 +12127,7 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 
 // Summary:
 //
-// Queries the details of a cloud computer.
+// Queries the details of one or more cloud desktops.
 //
 // @param request - DescribeDesktopsRequest
 //
@@ -12751,7 +12751,7 @@ func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableE
 
 // Summary:
 //
-// Retrieves the information about cloud computers that can be upgraded to a specified image version but have not been upgraded.
+// Retrieves the information about cloud desktops that can be upgraded to the image of a specified version but have not been upgraded.
 //
 // @param request - DescribeFotaPendingDesktopsRequest
 //
@@ -12819,7 +12819,7 @@ func (client *Client) DescribeFotaPendingDesktopsWithOptions(request *DescribeFo
 
 // Summary:
 //
-// Retrieves the information about cloud computers that can be upgraded to a specified image version but have not been upgraded.
+// Retrieves the information about cloud desktops that can be upgraded to the image of a specified version but have not been upgraded.
 //
 // @param request - DescribeFotaPendingDesktopsRequest
 //
@@ -12923,17 +12923,17 @@ func (client *Client) DescribeFotaTasks(request *DescribeFotaTasksRequest) (_res
 
 // Summary:
 //
-// Queries the basic information about all recent cloud desktops and the corresponding usage duration records.
+// Queries the basic information of all recent cloud computers and their corresponding usage duration records.
 //
 // Description:
 //
-// - China site users must select Shanghai as the site. International site users must select Singapore.
+// - Users on the Chinese site select Shanghai, and users on the international site select Singapore.
 //
-// - By default, both deleted and non-deleted cloud desktops are queried.
+// - By default, you can query all cloud computers, including both deleted and undeleted ones.
 //
-// - Deleted cloud desktops can only be queried if they were deleted within the last three months.
+// - For deleted cloud computers, you can only query those that were deleted within the last three months.
 //
-// - Sort conditions cannot be used together with other conditions.
+// - Sorting conditions cannot be used together with other conditions.
 //
 // @param request - DescribeGlobalDesktopRecordsRequest
 //
@@ -12986,6 +12986,10 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 	if !dara.IsNil(request.OrderBy) {
 		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.OrgIdList) {
+		query["OrgIdList"] = request.OrgIdList
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -13049,17 +13053,17 @@ func (client *Client) DescribeGlobalDesktopRecordsWithOptions(request *DescribeG
 
 // Summary:
 //
-// Queries the basic information about all recent cloud desktops and the corresponding usage duration records.
+// Queries the basic information of all recent cloud computers and their corresponding usage duration records.
 //
 // Description:
 //
-// - China site users must select Shanghai as the site. International site users must select Singapore.
+// - Users on the Chinese site select Shanghai, and users on the international site select Singapore.
 //
-// - By default, both deleted and non-deleted cloud desktops are queried.
+// - By default, you can query all cloud computers, including both deleted and undeleted ones.
 //
-// - Deleted cloud desktops can only be queried if they were deleted within the last three months.
+// - For deleted cloud computers, you can only query those that were deleted within the last three months.
 //
-// - Sort conditions cannot be used together with other conditions.
+// - Sorting conditions cannot be used together with other conditions.
 //
 // @param request - DescribeGlobalDesktopRecordsRequest
 //
@@ -15317,7 +15321,7 @@ func (client *Client) DescribePriceForRenewDesktopOversoldGroup(request *Describ
 //
 // Description:
 //
-// Security alerts are classified into two dimensions: alerts and anomalies. A security alert contains multiple anomaly events.
+// Security alerts are divided into two dimensions: alerts and exceptions. A single security alert contains multiple exception events.
 //
 // @param request - DescribePrinterEventsRequest
 //
@@ -15409,7 +15413,7 @@ func (client *Client) DescribePrinterEventsWithOptions(request *DescribePrinterE
 //
 // Description:
 //
-// Security alerts are classified into two dimensions: alerts and anomalies. A security alert contains multiple anomaly events.
+// Security alerts are divided into two dimensions: alerts and exceptions. A single security alert contains multiple exception events.
 //
 // @param request - DescribePrinterEventsRequest
 //
