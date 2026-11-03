@@ -2326,7 +2326,7 @@ func (client *Client) GetAgentSpace(agentSpace *string, request *GetAgentSpaceRe
 
 // Summary:
 //
-// Queries a context store.
+// Queries the context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -2367,7 +2367,7 @@ func (client *Client) GetContextStoreWithOptions(agentSpace *string, contextStor
 
 // Summary:
 //
-// Queries a context store.
+// Queries the context store.
 //
 // @param request - GetContextStoreRequest
 //
@@ -4976,6 +4976,14 @@ func (client *Client) UpdateContextStoreWithOptions(agentSpace *string, contextS
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ExpectedRuntimeRecallRevision) {
+		body["expectedRuntimeRecallRevision"] = request.ExpectedRuntimeRecallRevision
+	}
+
+	if !dara.IsNil(request.Reason) {
+		body["reason"] = request.Reason
 	}
 
 	if !dara.IsNil(request.Status) {

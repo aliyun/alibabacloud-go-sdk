@@ -42,13 +42,13 @@ type SearchContextRequest struct {
 	//
 	// true
 	Formatted *bool `json:"formatted,omitempty" xml:"formatted,omitempty"`
-	// Specifies whether to include memories whose sourceState is inactive. Default value: false.
+	// Specifies whether to include memories with sourceState=inactive. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeInactive *bool `json:"includeInactive,omitempty" xml:"includeInactive,omitempty"`
-	// The maximum number of returned results, which corresponds to the top N results by similarity.
+	// The maximum number of returned results based on the top-N similarity.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type SearchContextRequest struct {
 	//
 	// semantic
 	RetrievalOption *string `json:"retrievalOption,omitempty" xml:"retrievalOption,omitempty"`
-	// The recall scope. If a field with the same name conflicts with the filter, a 400 ScopeFilterConflict error is returned.
+	// The recall scope. If a field with the same name exists in the filter, a 400 ScopeFilterConflict error is returned.
 	Scope *SearchContextRequestScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// Filters results by extraction strategy ID. Multiple IDs in the list are evaluated with an OR condition. If this parameter is not specified, all strategies are recalled. An empty list returns a 400 error. If the format is valid but no matching IDs are found, an empty result is returned. IDs of historically removed strategies are supported.
+	// Filters results by extraction strategy IDs. Multiple IDs in the list are evaluated with an OR logic. If this parameter is not specified, all strategies are recalled. An empty list returns a 400 error. Valid IDs with no matches return empty results. Historical removed strategy IDs are supported.
 	//
 	// example:
 	//
@@ -183,25 +183,25 @@ func (s *SearchContextRequest) Validate() error {
 }
 
 type SearchContextRequestScope struct {
-	// Agent Id
+	// The ID of the agent.
 	//
 	// example:
 	//
 	// sales-copilot
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// crm-service
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The run ID.
+	// The ID of the run.
 	//
 	// example:
 	//
 	// run-001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

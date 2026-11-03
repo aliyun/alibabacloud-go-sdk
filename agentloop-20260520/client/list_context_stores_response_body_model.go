@@ -22,7 +22,7 @@ type iListContextStoresResponseBody interface {
 }
 
 type ListContextStoresResponseBody struct {
-	// The maximum number of results per page specified in the request.
+	// The maximum number of entries per page specified in the request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListContextStoresResponseBody struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID, which can be used to locate the request during troubleshooting.
+	// The request ID, which is used to locate the request during troubleshooting.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// experience
 	ContextType *string `json:"contextType,omitempty" xml:"contextType,omitempty"`
-	// The time when the context store was created, in ISO 8601 UTC format.
+	// The time when the context store was created. The time is in the ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -161,7 +161,7 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// ["order-service","payment-service"]
 	ServiceNames []*string `json:"serviceNames,omitempty" xml:"serviceNames,omitempty" type:"Repeated"`
-	// The memory data source type, such as manual, trajectory, or dataset. This parameter has a value only for the memory type.
+	// The data source type of the memory context store. Valid values: manual, trajectory, and dataset. This parameter has a value only for the memory type.
 	//
 	// example:
 	//
@@ -173,14 +173,15 @@ type ListContextStoresResponseBodyResults struct {
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The memory storage mode, such as event or upsert. This parameter has a value only for the memory type.
+	// The storage mode of the memory context store. Valid values: event and upsert. This parameter has a value only for the memory type.
 	//
 	// example:
 	//
 	// upsert
-	StorageMode  *string   `json:"storageMode,omitempty" xml:"storageMode,omitempty"`
+	StorageMode *string `json:"storageMode,omitempty" xml:"storageMode,omitempty"`
+	// The actual storage modes of each policy. A hybrid context store includes both event and upsert.
 	StorageModes []*string `json:"storageModes,omitempty" xml:"storageModes,omitempty" type:"Repeated"`
-	// The time when the context store was last updated, in ISO 8601 UTC format.
+	// The time when the context store was last updated. The time is in the ISO 8601 UTC format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//

@@ -9,6 +9,8 @@ type iUpdateContextStoreResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfig(v *UpdateContextStoreResponseBodyConfig) *UpdateContextStoreResponseBody
+	GetConfig() *UpdateContextStoreResponseBodyConfig
 	SetRequestId(v string) *UpdateContextStoreResponseBody
 	GetRequestId() *string
 	SetStrategyVersion(v int32) *UpdateContextStoreResponseBody
@@ -16,13 +18,15 @@ type iUpdateContextStoreResponseBody interface {
 }
 
 type UpdateContextStoreResponseBody struct {
-	// The request ID, which is used to locate the request when troubleshooting issues.
+	// The configuration properties after the runtime recall switch is updated. This block is not returned for other library update operations.
+	Config *UpdateContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The request ID, which is used to locate this request during troubleshooting.
 	//
 	// example:
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The strategy version that takes effect after the update for the memory type. If the strategy remains unchanged, the version is the same as the one before the update.
+	// The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version number is the same as before the update.
 	//
 	// example:
 	//
@@ -38,12 +42,21 @@ func (s UpdateContextStoreResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateContextStoreResponseBody) GetConfig() *UpdateContextStoreResponseBodyConfig {
+	return s.Config
+}
+
 func (s *UpdateContextStoreResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
 func (s *UpdateContextStoreResponseBody) GetStrategyVersion() *int32 {
 	return s.StrategyVersion
+}
+
+func (s *UpdateContextStoreResponseBody) SetConfig(v *UpdateContextStoreResponseBodyConfig) *UpdateContextStoreResponseBody {
+	s.Config = v
+	return s
 }
 
 func (s *UpdateContextStoreResponseBody) SetRequestId(v string) *UpdateContextStoreResponseBody {
@@ -57,5 +70,51 @@ func (s *UpdateContextStoreResponseBody) SetStrategyVersion(v int32) *UpdateCont
 }
 
 func (s *UpdateContextStoreResponseBody) Validate() error {
+	if s.Config != nil {
+		if err := s.Config.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type UpdateContextStoreResponseBodyConfig struct {
+	// Indicates whether runtime recall is allowed after the experience library is updated.
+	RuntimeRecallEnabled *bool `json:"runtimeRecallEnabled,omitempty" xml:"runtimeRecallEnabled,omitempty"`
+	// The runtime recall property version that takes effect after this update.
+	//
+	// example:
+	//
+	// 1
+	RuntimeRecallRevision *int64 `json:"runtimeRecallRevision,omitempty" xml:"runtimeRecallRevision,omitempty"`
+}
+
+func (s UpdateContextStoreResponseBodyConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateContextStoreResponseBodyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContextStoreResponseBodyConfig) GetRuntimeRecallEnabled() *bool {
+	return s.RuntimeRecallEnabled
+}
+
+func (s *UpdateContextStoreResponseBodyConfig) GetRuntimeRecallRevision() *int64 {
+	return s.RuntimeRecallRevision
+}
+
+func (s *UpdateContextStoreResponseBodyConfig) SetRuntimeRecallEnabled(v bool) *UpdateContextStoreResponseBodyConfig {
+	s.RuntimeRecallEnabled = &v
+	return s
+}
+
+func (s *UpdateContextStoreResponseBodyConfig) SetRuntimeRecallRevision(v int64) *UpdateContextStoreResponseBodyConfig {
+	s.RuntimeRecallRevision = &v
+	return s
+}
+
+func (s *UpdateContextStoreResponseBodyConfig) Validate() error {
 	return dara.Validate(s)
 }

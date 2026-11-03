@@ -46,7 +46,7 @@ type ListContextStoresRequest struct {
 	//
 	// MTIzNDU2Nzg5MA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The memory data source type used for filtering, such as manual, trajectory, or dataset. If this parameter is not specified, no filtering is performed.
+	// The data source type of the memory context store used for filtering. Valid values: manual, trajectory, and dataset. If this parameter is not specified, no filtering is performed.
 	//
 	// example:
 	//

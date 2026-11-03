@@ -22,7 +22,7 @@ type CreateContextStoreResponseBody struct {
 	//
 	// 9ACFB10A-1B2C-3D4E-5F6G-7H8I9J0K1L2M
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The version number of the currently effective strategy (memory type).
+	// The version number of the effective strategy for the memory type.
 	//
 	// example:
 	//
