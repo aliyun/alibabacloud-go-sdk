@@ -1900,11 +1900,11 @@ func (client *Client) GetSensitiveScanResult(request *GetSensitiveScanResultRequ
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - Call this operation to query the execution status and result of an asynchronous video generation task created by calling `CreateVideoTask`.
+// - You can call this operation to query the execution status and result of an asynchronous video generation task created by calling `CreateVideoTask`.
 //
-// - Poll the task status at an interval of 2 to 5 seconds until the task status changes to `succeeded` or `failed`.
+// - Poll the task at an interval of 2 to 5 seconds until the task status changes to `succeeded` or `failed`.
 //
 // @param request - GetVideoTaskResultRequest
 //
@@ -1952,11 +1952,11 @@ func (client *Client) GetVideoTaskResultWithOptions(request *GetVideoTaskResultR
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - Call this operation to query the execution status and result of an asynchronous video generation task created by calling `CreateVideoTask`.
+// - You can call this operation to query the execution status and result of an asynchronous video generation task created by calling `CreateVideoTask`.
 //
-// - Poll the task status at an interval of 2 to 5 seconds until the task status changes to `succeeded` or `failed`.
+// - Poll the task at an interval of 2 to 5 seconds until the task status changes to `succeeded` or `failed`.
 //
 // @param request - GetVideoTaskResultRequest
 //

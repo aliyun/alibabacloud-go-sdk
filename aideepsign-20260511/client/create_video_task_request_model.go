@@ -47,7 +47,7 @@ type CreateVideoTaskRequest struct {
 	//
 	// f47ac10b-58cc-4372-a567-0e02b2c3d479
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The video duration in seconds. Valid values: an integer from 2 to 30, -1 (intelligent duration), and 0 (server default of 5 seconds).
+	// The video duration in seconds. Valid values: an integer in the range of [2, 30], -1 (intelligent duration), and 0 (the server uses the default value of 5 seconds).
 	//
 	// example:
 	//
@@ -59,7 +59,7 @@ type CreateVideoTaskRequest struct {
 	//
 	// wan3.0-video
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The video description prompt. You must specify either this parameter or Media. For text-to-video generation, only Prompt is required.
+	// The video description prompt. Either this parameter or Media is required. For pure text-to-video generation, only Prompt is required.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ type CreateVideoTaskRequest struct {
 	//
 	// 1080P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The random seed. Valid values: -1 (random), an integer from 0 to 2147483647, and 0 (server default of random).
+	// The random seed. Valid values: -1 (random), an integer in the range of [0, 2147483647], and 0 (the server uses a random seed by default).
 	//
 	// example:
 	//

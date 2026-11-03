@@ -30,7 +30,7 @@ type CreateVideoTaskResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The **HTTP status code**. A value of 200 indicates that the request is successful.
+	// **HTTP status code**. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//

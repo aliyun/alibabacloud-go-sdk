@@ -40,7 +40,7 @@ type GetVideoTaskResultResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The cause of the failure. This field is returned only when the task status is failed.
+	// The cause of the failure. This parameter is returned only when the task status is failed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetVideoTaskResultResponseBody struct {
 	//
 	// A1B2C3D4-E5F6-7890-ABCD-EF1234567890
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status. Valid values: running, succeeded, and failed. Set the polling interval to at least 5 seconds.
+	// The task status. Valid values: `running`, `succeeded`, and `failed`. Set the polling interval to at least 5 seconds.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type GetVideoTaskResultResponseBodyVideos struct {
 	//
 	// ai_deep_sign/1192853035118460/image-generation/2026/06/25/024d6974-1b14-4741-8919-9d02b7e3901b.mp4
 	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	// The presigned download URL of the video stored in OSS after C2PA signing.
+	// The presigned download URL of the C2PA-signed object stored in OSS.
 	//
 	// example:
 	//
