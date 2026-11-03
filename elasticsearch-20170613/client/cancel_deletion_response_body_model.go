@@ -22,11 +22,11 @@ type CancelDeletionResponseBody struct {
 	//
 	// D682B6B3-B425-46DA-A5FC-5F5C60553622
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance is recovered. Valid values:
+	// Indicates whether the instance was successfully restored. Valid values:
 	//
-	// - true: The instance is recovered.
+	// - true: Yes.
 	//
-	// - false: The instance is not recovered.
+	// - false: No.
 	//
 	// example:
 	//

@@ -16,17 +16,17 @@ type iCreatePipelinesResponseBody interface {
 }
 
 type CreatePipelinesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the pipeline is created. Valid values:
+	// Indicates whether the pipeline was created successfully. Valid values:
 	//
-	// - true: Created.
+	// - true: The pipeline was created successfully.
 	//
-	// - false: Failed to create.
+	// - false: The pipeline failed to be created.
 	//
 	// example:
 	//

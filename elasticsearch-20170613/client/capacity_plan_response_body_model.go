@@ -78,11 +78,11 @@ type CapacityPlanResponseBodyResult struct {
 	InstanceCategory *string `json:"InstanceCategory,omitempty" xml:"InstanceCategory,omitempty"`
 	// The node information.
 	NodeConfigurations []*CapacityPlanResponseBodyResultNodeConfigurations `json:"NodeConfigurations,omitempty" xml:"NodeConfigurations,omitempty" type:"Repeated"`
-	// The result calculated based on capacity planning. No default value is available. Valid values:
+	// The result calculated based on capacity planning. No default value is provided. Valid values:
 	//
-	// - true: The cluster is oversized. The number of data nodes calculated by capacity planning exceeds the threshold of 50.
+	// - true: indicates an oversized cluster, which means the number of data nodes calculated by capacity planning exceeds the threshold of 50.
 	//
-	// - false: The number of data nodes calculated by capacity planning is within 50.
+	// - false: indicates that the number of data nodes calculated by capacity planning is 50 or less.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type CapacityPlanResponseBodyResultExtendConfigs struct {
 	//
 	// sharedDisk
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The disk size, in GiB.
+	// The disk size. Unit: GiB.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	//
 	// 1
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The disk size, in GiB.
+	// The disk size. Unit: GiB.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_efficiency: ultra cloud disk.
+	// - cloud_efficiency: ultra disk.
 	//
 	// - local_ssd: local SSD.
 	//
@@ -255,7 +255,7 @@ type CapacityPlanResponseBodyResultNodeConfigurations struct {
 	//
 	// cloud_ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The memory size of the specification for the current node role.
+	// The memory size for the current node role.
 	//
 	// example:
 	//

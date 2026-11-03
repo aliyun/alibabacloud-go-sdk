@@ -52,15 +52,15 @@ type iCreateInstanceRequest interface {
 }
 
 type CreateInstanceRequest struct {
-	// The client node configuration.
+	// The configuration of the client node.
 	ClientNodeConfiguration *ClientNodeConfiguration `json:"clientNodeConfiguration,omitempty" xml:"clientNodeConfiguration,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// es
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The elastic node configuration.
+	// The configuration of the elastic node.
 	ElasticDataNodeConfiguration *ElasticDataNodeConfiguration `json:"elasticDataNodeConfiguration,omitempty" xml:"elasticDataNodeConfiguration,omitempty"`
 	// The access password of the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include !@#$%^&*()_+-=.
 	//
@@ -70,7 +70,7 @@ type CreateInstanceRequest struct {
 	//
 	// Es_password
 	EsAdminPassword *string `json:"esAdminPassword,omitempty" xml:"esAdminPassword,omitempty"`
-	// The instance version. Valid values:
+	// The version of the instance. Valid values:
 	//
 	// - 8.5.1_with_X-Pack
 	//
@@ -96,11 +96,11 @@ type CreateInstanceRequest struct {
 	//
 	// 5.5.3_with_X-Pack
 	EsVersion *string `json:"esVersion,omitempty" xml:"esVersion,omitempty"`
-	// The index node configuration. Only instances with the AI engine type support index node configuration.
+	// Only instances that use the AI engine support the configuration of index nodes.
 	IndexNodeConfiguration *IndexNodeConfiguration `json:"indexNodeConfiguration,omitempty" xml:"indexNodeConfiguration,omitempty"`
 	// The edition type. Valid values:
 	//
-	// - x-pack: Creates a Commercial Edition instance, or an Advanced Edition instance with Indexing Service and OpenStore disabled.
+	// - x-pack: Creates a Commercial Edition instance or an Advanced Edition instance with Indexing Service and OpenStore disabled.
 	//
 	// - IS: Creates an Advanced Edition instance with Indexing Service or OpenStore enabled.
 	//
@@ -108,11 +108,11 @@ type CreateInstanceRequest struct {
 	//
 	// advanced
 	InstanceCategory *string `json:"instanceCategory,omitempty" xml:"instanceCategory,omitempty"`
-	// The Kibana node configuration.
+	// The configuration of the Kibana node.
 	//
-	// > Enable the Kibana node.
+	// > You are strongly advised to enable the Kibana node.
 	KibanaConfiguration *KibanaNodeConfiguration `json:"kibanaConfiguration,omitempty" xml:"kibanaConfiguration,omitempty"`
-	// The dedicated master node configuration.
+	// The configuration of the dedicated master node.
 	//
 	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based dedicated master node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
 	MasterConfiguration *MasterNodeConfiguration `json:"masterConfiguration,omitempty" xml:"masterConfiguration,omitempty"`
@@ -130,11 +130,11 @@ type CreateInstanceRequest struct {
 	//
 	// 3
 	NodeAmount *int32 `json:"nodeAmount,omitempty" xml:"nodeAmount,omitempty"`
-	// The data node configuration.
+	// The configuration of the data node.
 	//
 	// > In the Beijing, Shanghai, Hangzhou, and Shenzhen regions, when you call the createInstance operation to create an instance with a new-generation cloud disk-based data node, you must specify the instance family with the `.new` suffix, such as elasticsearch.sn1ne.large.new.
 	NodeSpec *NodeSpec `json:"nodeSpec,omitempty" xml:"nodeSpec,omitempty"`
-	// The payment details of the subscription instance. This parameter is required when you create a subscription instance.
+	// The billing details of the subscription instance. This parameter is required when you create a subscription instance.
 	PaymentInfo *PaymentInfo `json:"paymentInfo,omitempty" xml:"paymentInfo,omitempty"`
 	// The billing method. Valid values:
 	//
@@ -152,11 +152,11 @@ type CreateInstanceRequest struct {
 	//
 	// rg-aekzu7tsu4n****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The query node configuration. Only instances with the AI engine type support query node configuration.
+	// Only instances that use the AI engine support the configuration of query nodes.
 	SearchNodeConfiguration *SearchNodeConfiguration `json:"searchNodeConfiguration,omitempty" xml:"searchNodeConfiguration,omitempty"`
-	// The instance label group.
+	// The instance tag labels.
 	Tags []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The warm data node configuration.
+	// The configuration of the warm data node.
 	WarmNodeConfiguration *WarmNodeConfiguration `json:"warmNodeConfiguration,omitempty" xml:"warmNodeConfiguration,omitempty"`
 	// The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 	//
@@ -424,13 +424,13 @@ func (s *CreateInstanceRequest) Validate() error {
 }
 
 type CreateInstanceRequestTags struct {
-	// The key of the tag.
+	// The key of the instance tag.
 	//
 	// example:
 	//
 	// KeyTest
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The value of the tag.
+	// The value of the instance tag.
 	//
 	// example:
 	//

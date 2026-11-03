@@ -20,31 +20,33 @@ type iCapacityPlanRequest interface {
 }
 
 type CapacityPlanRequest struct {
-	// Specifies whether complex aggregation query is required. Valid values:
+	// Indicates whether complex aggregation queries are required. Valid values:
 	//
-	// - true: Required.
+	// - true: Yes.
 	//
-	// - false (default): Not required.
+	// - false: No.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// true
 	ComplexQueryAvailable *bool `json:"complexQueryAvailable,omitempty" xml:"complexQueryAvailable,omitempty"`
-	// The disk usage information.
+	// The disk usage.
 	DataInfo []*CapacityPlanRequestDataInfo `json:"dataInfo,omitempty" xml:"dataInfo,omitempty" type:"Repeated"`
-	// The metric information for disk usage, search and write operations, and aggregation requests.
+	// The metric information such as disk usage, search and write performance, and aggregate requests.
 	Metric []*CapacityPlanRequestMetric `json:"metric,omitempty" xml:"metric,omitempty" type:"Repeated"`
 	// Scenarios. Valid values:
 	//
-	// - general: general-purpose scenario
+	// - general: general scenarios.
 	//
-	// - analysisVisualization: data analytics scenario
+	// - analysisVisualization: data analytics scenarios.
 	//
-	// - dbAcceleration: database acceleration scenario
+	// - dbAcceleration: database acceleration scenarios.
 	//
-	// - search: search scenario
+	// - search: search scenarios.
 	//
-	// - log: log scenario
+	// - log: log scenarios.
 	//
 	// example:
 	//
@@ -121,23 +123,23 @@ func (s *CapacityPlanRequest) Validate() error {
 type CapacityPlanRequestDataInfo struct {
 	// The disk data metric code. Valid values:
 	//
-	// - totalRawData: source data information
+	// - totalRawData: source data information.
 	//
-	// - document: data document information, estimated number of documents
+	// - document: document information, which indicates the estimated number of documents.
 	//
-	// - dailyIncrement: daily data growth
+	// - dailyIncrement: daily data increment.
 	//
-	// - dailyIncrement: daily incremental documents
+	// - dailyIncrement: daily document increment.
 	//
-	// - retentionTime: data retention period
+	// - retentionTime: data retention period.
 	//
-	// - replica: replica settings
+	// - replica: replica settings.
 	//
 	// example:
 	//
 	// totalRawData
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The metric value of disk usage.
+	// The metric value for disk usage.
 	//
 	// example:
 	//
@@ -151,9 +153,9 @@ type CapacityPlanRequestDataInfo struct {
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 	// The disk data type. Valid values:
 	//
-	// - hot: hot data
+	// - hot: hot data.
 	//
-	// - warm: warm data
+	// - warm: warm data.
 	//
 	// example:
 	//
@@ -161,9 +163,9 @@ type CapacityPlanRequestDataInfo struct {
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The data unit or time unit. Valid values:
 	//
-	// - Data units: MiB, GiB, TB, PB
+	// - Data units: MiB, GiB, TB, and PB.
 	//
-	// - Time units: DAYS, WEEKS, MONTHS, YEARS
+	// - Time units: DAYS, WEEKS, MONTHS, and YEARS.
 	//
 	// example:
 	//
@@ -237,15 +239,15 @@ type CapacityPlanRequestMetric struct {
 	AverageQps *int32 `json:"averageQps,omitempty" xml:"averageQps,omitempty"`
 	// The search or write metric code. Valid values:
 	//
-	// - write: write
+	// - write: write.
 	//
-	// - search: search
+	// - search: search.
 	//
 	// example:
 	//
 	// write
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of concurrent connections.
+	// The number of concurrent requests.
 	//
 	// example:
 	//
@@ -257,23 +259,23 @@ type CapacityPlanRequestMetric struct {
 	//
 	// 30
 	PeakQps *int32 `json:"peakQps,omitempty" xml:"peakQps,omitempty"`
-	// The expected average response time, in milliseconds.
+	// The expected average response time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 100
 	ResponseTime *int32 `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
-	// The throughput, in MB/s.
+	// The throughput. Unit: MB/s.
 	//
 	// example:
 	//
 	// 100
 	Throughput *int64 `json:"throughput,omitempty" xml:"throughput,omitempty"`
-	// The search or write peak type. Valid values:
+	// The peak type for search or write operations. Valid values:
 	//
-	// - common: normal
+	// - common: normal.
 	//
-	// - peak: peak
+	// - peak: peak.
 	//
 	// example:
 	//

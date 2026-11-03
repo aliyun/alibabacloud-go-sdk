@@ -18,19 +18,19 @@ type iListAckClustersRequest interface {
 }
 
 type ListAckClustersRequest struct {
-	// The page number. (Deprecated)
+	// **[Deprecated]*	- The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of records per page. (Deprecated)
+	// **[Deprecated]*	- The number of entries per page.
 	//
 	// example:
 	//
 	// 15
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The ID of the VPC where the ACK cluster resides.
+	// The ID of the VPC where the ACK cluster is deployed.
 	//
 	// example:
 	//

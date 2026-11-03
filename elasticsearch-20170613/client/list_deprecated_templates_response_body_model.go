@@ -26,7 +26,7 @@ type ListDeprecatedTemplatesResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The result details.
 	Result []*ListDeprecatedTemplatesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -84,7 +84,7 @@ func (s *ListDeprecatedTemplatesResponseBody) Validate() error {
 }
 
 type ListDeprecatedTemplatesResponseBodyHeaders struct {
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -114,11 +114,11 @@ func (s *ListDeprecatedTemplatesResponseBodyHeaders) Validate() error {
 }
 
 type ListDeprecatedTemplatesResponseBodyResult struct {
-	// Indicates whether the template matches a data stream. Valid values:
+	// Indicates whether the data stream is matched. Valid values:
 	//
-	// - true: matched.
+	// - true: Matched.
 	//
-	// - false: not matched.
+	// - false: Not matched.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ListDeprecatedTemplatesResponseBodyResult struct {
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
 	// The index template information.
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
-	// The index template name.
+	// The name of the index template.
 	//
 	// example:
 	//
@@ -220,7 +220,7 @@ func (s *ListDeprecatedTemplatesResponseBodyResult) Validate() error {
 }
 
 type ListDeprecatedTemplatesResponseBodyResultTemplate struct {
-	// The aliases configuration of the template.
+	// The alias configuration of the template.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateLogstashResponseBody interface {
 }
 
 type CreateLogstashResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

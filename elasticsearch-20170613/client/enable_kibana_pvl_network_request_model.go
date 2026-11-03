@@ -24,18 +24,19 @@ type iEnableKibanaPvlNetworkRequest interface {
 }
 
 type EnableKibanaPvlNetworkRequest struct {
-  // The endpoint name.
+  // The name of the endpoint.
   // 
   // example:
   // 
   // es-cn-27a3mul6l000xxx-kibana-endpoint
   EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
+  // Specifies whether to use a managed security group. If you use a managed security group, you do not need to specify the securityGroups parameter, and the system automatically creates a managed security group for you.
   ManagedSecurityGroup *bool `json:"managedSecurityGroup,omitempty" xml:"managedSecurityGroup,omitempty"`
   // The security groups.
   SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
   // The vSwitch and zone information.
   VSwitchIdsZone []*EnableKibanaPvlNetworkRequestVSwitchIdsZone `json:"vSwitchIdsZone,omitempty" xml:"vSwitchIdsZone,omitempty" type:"Repeated"`
-  // The VPC-connected instance ID.
+  // The VPC instance ID.
   // 
   // example:
   // 

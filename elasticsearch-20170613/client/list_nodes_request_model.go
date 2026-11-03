@@ -28,7 +28,7 @@ type ListNodesRequest struct {
 	//
 	// i-bp1ei8ysh7orb6eq****
 	EcsInstanceIds *string `json:"ecsInstanceIds,omitempty" xml:"ecsInstanceIds,omitempty"`
-	// The ECS instance name.
+	// The name of the ECS instance.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListNodesRequest struct {
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of results per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The tag information of the ECS instance. Must include the tag key (tagKey) and tag value (tagValue).
+	// The tags of the ECS instances. Each tag must include a tag key (tagKey) and a tag value (tagValue).
 	//
 	// example:
 	//

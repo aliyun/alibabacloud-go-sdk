@@ -84,7 +84,7 @@ func (s *ListComponentIndicesResponseBody) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyHeaders struct {
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ func (s *ListComponentIndicesResponseBodyHeaders) Validate() error {
 }
 
 type ListComponentIndicesResponseBodyResult struct {
-	// The information about index templates that reference this composable template.
+	// The information about the index templates that reference this composable template.
 	Composed []*string `json:"composed,omitempty" xml:"composed,omitempty" type:"Repeated"`
 	// The content of the composable template.
 	Content *ListComponentIndicesResponseBodyResultContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
@@ -296,9 +296,9 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettings) Validate
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex struct {
 	// The index compression method. Valid values:
 	//
-	// - LZ4: The default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
+	// - LZ4: The default compression algorithm for Elasticsearch. It provides fast decompression and compression speeds but has a lower compression ratio.
 	//
-	// - best_compression: Uses the best_compression algorithm for compression, which provides a higher compression ratio.
+	// - best_compression: The best_compression algorithm, which provides a higher compression ratio.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ func (s *ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex) Val
 }
 
 type ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle struct {
-	// The name of the lifecycle policy.
+	// The Policy Name of the lifecycle epoch.
 	//
 	// example:
 	//

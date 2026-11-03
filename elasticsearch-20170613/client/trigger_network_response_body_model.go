@@ -22,9 +22,9 @@ type TriggerNetworkResponseBody struct {
 	//
 	// 5A5D8E74-565C-43DC-B031-29289FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: The operation succeeded.
 	//
 	// - false: The operation failed.
 	//

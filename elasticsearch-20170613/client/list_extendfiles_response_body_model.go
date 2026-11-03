@@ -16,7 +16,7 @@ type iListExtendfilesResponseBody interface {
 }
 
 type ListExtendfilesResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,15 +66,15 @@ func (s *ListExtendfilesResponseBody) Validate() error {
 }
 
 type ListExtendfilesResponseBodyResult struct {
-	// The extension file path.
+	// The path of the extension file.
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// The extension file size.
+	// The size of the extension file.
 	//
 	// example:
 	//
 	// 968668
 	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
-	// The extension file name.
+	// The name of the extension file.
 	//
 	// example:
 	//

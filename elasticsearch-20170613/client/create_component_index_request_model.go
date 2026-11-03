@@ -16,7 +16,7 @@ type iCreateComponentIndexRequest interface {
 }
 
 type CreateComponentIndexRequest struct {
-	// The metadata, which is used to store remarks and other information.
+	// The metadata used to store information such as remarks.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *CreateComponentIndexRequest) Validate() error {
 }
 
 type CreateComponentIndexRequestTemplate struct {
-	// The aliases configuration of the template.
+	// The template aliases configuration.
 	//
 	// example:
 	//
 	// {}
 	Aliases map[string]interface{} `json:"aliases,omitempty" xml:"aliases,omitempty"`
-	// The mappings configuration of the template.
+	// The template mappings configuration.
 	//
 	// example:
 	//
 	// { 			"properties": { 				"@timestamp": { 					"type": "date" 				} 			} 		}
 	Mappings map[string]interface{} `json:"mappings,omitempty" xml:"mappings,omitempty"`
-	// The settings configuration of the template.
+	// The template settings configuration.
 	//
 	// example:
 	//

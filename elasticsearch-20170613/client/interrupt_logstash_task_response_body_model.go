@@ -20,13 +20,13 @@ type iInterruptLogstashTaskResponseBody interface {
 }
 
 type InterruptLogstashTaskResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// .
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type InterruptLogstashTaskResponseBody struct {
 	//
 	// 0FA05123-745C-42FD-A69B-AFF48EF9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result. Valid values:
 	//
-	// - true: The task is suspended.
+	// - true: The task is suspended successfully.
 	//
-	// - false: The task failed to be suspended.
+	// - false: The task fails to be suspended.
 	//
 	// example:
 	//

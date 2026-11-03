@@ -70,25 +70,25 @@ type ListPipelineIdsResponseBodyResult struct {
 	//
 	// - true: Available.
 	//
-	// - false: Not available.
+	// - false: Unavailable.
 	//
 	// example:
 	//
 	// true
 	Available *bool `json:"available,omitempty" xml:"available,omitempty"`
-	// The error code when the pipeline is unavailable.
+	// The error code returned when the pipeline is unavailable.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message when the pipeline is unavailable.
+	// The error message returned when the pipeline is unavailable.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pipeline ID created on Kibana.
+	// The ID of the pipeline created in Kibana.
 	//
 	// example:
 	//

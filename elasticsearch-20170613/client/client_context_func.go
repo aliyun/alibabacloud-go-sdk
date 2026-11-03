@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// Resumes an offline zone. This operation is valid only for multi-zone instances.
+// Restores offline zones. This operation is valid only for multi-zone instances.
 //
 // @param request - ActivateZonesRequest
 //
@@ -58,7 +58,7 @@ func (client *Client) ActivateZonesWithContext(ctx context.Context, InstanceId *
 
 // Summary:
 //
-// Configures network connectivity to establish a connection between different instances.
+// Configures network connectivity between different instances.
 //
 // @param request - AddConnectableClusterRequest
 //
@@ -106,7 +106,7 @@ func (client *Client) AddConnectableClusterWithContext(ctx context.Context, Inst
 
 // Summary:
 //
-// Creates a reference repository when setting up a cross-cluster OSS repository.
+// Creates a reference repository when configuring a cross-cluster OSS repository.
 //
 // @param request - AddSnapshotRepoRequest
 //
@@ -148,7 +148,7 @@ func (client *Client) AddSnapshotRepoWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// Recovers a frozen Elasticsearch instance that was released.
+// Restores an Elasticsearch instance that was frozen after release.
 //
 // @param request - CancelDeletionRequest
 //
@@ -195,7 +195,7 @@ func (client *Client) CancelDeletionWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// Resumes a frozen Logstash instance that was released.
+// Resumes a Logstash instance that was frozen after release.
 //
 // @param request - CancelLogstashDeletionRequest
 //
@@ -293,7 +293,7 @@ func (client *Client) CancelTaskWithContext(ctx context.Context, InstanceId *str
 
 // Summary:
 //
-// Recommends the optimal cluster capacity planning configuration based on business scenarios, QPS, and log generation volume.
+// Recommends the optimal configuration for cluster capacity planning based on business scenarios, QPS, and log generation volume.
 //
 // @param request - CapacityPlanRequest
 //
@@ -403,7 +403,7 @@ func (client *Client) CloseDiagnosisWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// Disables the HTTPS protocol for a cluster.
+// Disables the HTTPS protocol for the cluster.
 //
 // @param request - CloseHttpsRequest
 //
@@ -450,7 +450,7 @@ func (client *Client) CloseHttpsWithContext(ctx context.Context, InstanceId *str
 
 // Summary:
 //
-// Disables the cloud-managed feature for a specified index in an Indexing Service cluster. This operation is irreversible. After the feature is disabled, it cannot be enabled again.
+// Disables the cloud hosting feature for an index in an Indexing Service cluster. This operation is irreversible and the feature cannot be re-enabled once disabled.
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -582,7 +582,7 @@ func (client *Client) CreateCollectorWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
+// For more information, see [Store massive amounts of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - CreateComponentIndexRequest
 //
@@ -733,7 +733,7 @@ func (client *Client) CreateILMPolicyWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// Creates a cluster index template that can be used for component-based index template settings.
+// Creates a cluster index template for component-based configuration of index templates.
 //
 // @param request - CreateIndexTemplateRequest
 //
@@ -810,11 +810,11 @@ func (client *Client) CreateIndexTemplateWithContext(ctx context.Context, Instan
 //
 // Description:
 //
-// Before calling this operation, note the following:
+// Before you call this operation, note the following items:
 //
-// - Make sure that you are familiar with the billing methods and pricing of Logstash. <props="china"><ph>For more information, see [Billing overview](https://help.aliyun.com/document_detail/260882.html).</ph>
+// - Make sure that you fully understand the billing methods and pricing of Logstash. <props="china"><ph>For more information, see [Billing](https://help.aliyun.com/document_detail/260882.html).</ph>
 //
-// - To create an instance, complete real-name verification. <props="china"><ph>For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>
+// - You must complete real-name verification before creating an instance. <props="china"><ph>For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>
 //
 // @param request - CreateLogstashRequest
 //
@@ -999,7 +999,7 @@ func (client *Client) CreateSnapshotWithContext(ctx context.Context, InstanceId 
 //
 // Description:
 //
-// For more information about this API, see [Configure private network connectivity for an instance](https://help.aliyun.com/document_detail/279559.html).
+// For more information about this API, see [Configure a private connection for an instance](https://help.aliyun.com/document_detail/279559.html).
 //
 // @param request - CreateVpcEndpointRequest
 //
@@ -1155,11 +1155,11 @@ func (client *Client) DeleteCollectorWithContext(ctx context.Context, ResId *str
 
 // Summary:
 //
-// Deletes a composite index template from an Elasticsearch instance.
+// Deletes a composite index template for Elasticsearch.
 //
 // Description:
 //
-// For more information, see [Implement massive data storage through OpenStore](https://help.aliyun.com/document_detail/317694.html).
+// For more information, see [Store massive amounts of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param headers - map
 //
@@ -1247,7 +1247,7 @@ func (client *Client) DeleteConnectedClusterWithContext(ctx context.Context, Ins
 //
 // Description:
 //
-// > - Deleting a data stream also deletes its backing indexes. Proceed with caution.- To delete an index template that has associated data streams, delete the associated data streams first. On the data stream list page, view the data stream details to find the index template that the data stream matches.
+// > - Deleting a data stream also deletes its corresponding backing indexes. Proceed with caution. - If an index template has associated data streams, you must delete the associated data streams before you can delete the index template. On the Data Streams page, view the data stream details to find the matching index template.
 //
 // @param request - DeleteDataStreamRequest
 //
@@ -1672,7 +1672,7 @@ func (client *Client) DeleteSnapshotRepoWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// Calls DeleteVpcEndpoint to delete an endpoint in the service VPC.
+// Deletes an endpoint in the service VPC.
 //
 // @param request - DeleteVpcEndpointRequest
 //
@@ -2555,13 +2555,13 @@ func (client *Client) DisableKibanaPvlNetworkWithContext(ctx context.Context, In
 
 // Summary:
 //
-// Invokes the EnableKibanaPvlNetwork operation to enable private network access for Kibana.
+// Invokes EnableKibanaPvlNetwork to enable private network access to Kibana.
 //
 // Description:
 //
-// 1. This API operation is supported only for cloud-native instances. For legacy architecture instances, use the TriggerNetwork method.
+// 1. This API is supported only for cloud-native instances. For instances of the legacy architecture, use the TriggerNetwork method.
 //
-// 2. The Kibana specifications must be greater than 1 vCPU and 2 GB of memory.
+// 2. The Kibana node specifications must be greater than 1 vCPU and 2 GB.
 //
 // @param request - EnableKibanaPvlNetworkRequest
 //
@@ -3677,7 +3677,7 @@ func (client *Client) InstallUserPluginsWithContext(ctx context.Context, Instanc
 
 // Summary:
 //
-// Interrupts an instance change task. This operation is valid only for instances in the active state. After the interruption, the instance enters the suspended state.
+// Interrupts the instance modification task. This operation is applicable only to instances in the effective state. After the interruption, the instance enters the suspended state.
 //
 // @param request - InterruptElasticsearchTaskRequest
 //
@@ -3724,7 +3724,7 @@ func (client *Client) InterruptElasticsearchTaskWithContext(ctx context.Context,
 
 // Summary:
 //
-// After the interruption, the instance enters the suspended state.
+// Suspends an instance modification task. After the task is suspended, the instance enters the suspended state.
 //
 // @param request - InterruptLogstashTaskRequest
 //
@@ -3771,7 +3771,7 @@ func (client *Client) InterruptLogstashTaskWithContext(ctx context.Context, Inst
 
 // Summary:
 //
-// Calls the Alibaba Cloud Elasticsearch Agent service based on the JSON-RPC 2.0 protocol. Supports creating and managing Agent sessions, sending messages and receiving SSE streaming responses, resuming from breakpoints, canceling in-progress tasks, and handling human-in-the-loop (HITL) interactions initiated by the Agent. Currently available only in the Shanghai region.
+// Invokes the Alibaba Cloud Elasticsearch Agent service based on the JSON-RPC 2.0 protocol. It supports creating and managing agent sessions, sending messages and receiving Server-Sent Events (SSE) streaming responses, resuming connections from breakpoints, canceling running tasks, and handling human-in-the-loop (HITL) interactions initiated by the agent. This service is currently available only in the China (Shanghai) region.
 //
 // @param request - InvokeEsAgentRequest
 //
@@ -3788,7 +3788,7 @@ func (client *Client) InvokeEsAgentWithSSECtx(ctx context.Context, request *Invo
 
 // Summary:
 //
-// Calls the Alibaba Cloud Elasticsearch Agent service based on the JSON-RPC 2.0 protocol. Supports creating and managing Agent sessions, sending messages and receiving SSE streaming responses, resuming from breakpoints, canceling in-progress tasks, and handling human-in-the-loop (HITL) interactions initiated by the Agent. Currently available only in the Shanghai region.
+// Invokes the Alibaba Cloud Elasticsearch Agent service based on the JSON-RPC 2.0 protocol. It supports creating and managing agent sessions, sending messages and receiving Server-Sent Events (SSE) streaming responses, resuming connections from breakpoints, canceling running tasks, and handling human-in-the-loop (HITL) interactions initiated by the agent. This service is currently available only in the China (Shanghai) region.
 //
 // @param request - InvokeEsAgentRequest
 //
@@ -4312,11 +4312,11 @@ func (client *Client) ListCollectorsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Retrieves the list of composable templates for an Elasticsearch instance.
+// Retrieves the list of composable templates in Elasticsearch.
 //
 // Description:
 //
-// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
+// For more information, see [Store massive amounts of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - ListComponentIndicesRequest
 //
@@ -4371,7 +4371,7 @@ func (client *Client) ListComponentIndicesWithContext(ctx context.Context, Insta
 
 // Summary:
 //
-// Retrieves the list of instances that have established private network peering with the current instance.
+// Retrieves a list of instances that have established network connectivity with the current instance.
 //
 // @param headers - map
 //
@@ -4404,7 +4404,7 @@ func (client *Client) ListConnectedClustersWithContext(ctx context.Context, Inst
 
 // Summary:
 //
-// Retrieves the list of index data streams in an Elasticsearch cluster.
+// Queries the list of data streams in an Elasticsearch cluster.
 //
 // @param request - ListDataStreamsRequest
 //
@@ -4543,11 +4543,11 @@ func (client *Client) ListDefaultCollectorConfigurationsWithContext(ctx context.
 
 // Summary:
 //
-// Queries the list of historical index templates.
+// Queries historical index templates.
 //
 // Description:
 //
-// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
+// For more information, see [Implement massive data storage by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - ListDeprecatedTemplatesRequest
 //
@@ -4602,7 +4602,7 @@ func (client *Client) ListDeprecatedTemplatesWithContext(ctx context.Context, In
 
 // Summary:
 //
-// Retrieves the diagnostic indexes from the intelligent O&M module for a specified instance.
+// Retrieves the diagnostic indexes for health diagnosis in the intelligent O&M module of a specified instance.
 //
 // @param request - ListDiagnoseIndicesRequest
 //
@@ -5086,7 +5086,7 @@ func (client *Client) ListEventRecordsWithContext(ctx context.Context, eventType
 
 // Summary:
 //
-// Retrieves the extension file configuration of a Logstash instance.
+// Retrieves the extension file configurations for a Logstash instance.
 //
 // @param headers - map
 //
@@ -5778,7 +5778,7 @@ func (client *Client) ListLogstashPluginsWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// Queries the machine status under a search collector.
+// Queries the list of historical reports for intelligent O&M.
 //
 // @param request - ListNodesRequest
 //
@@ -5896,11 +5896,11 @@ func (client *Client) ListPipelineWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
-// Retrieves the list of pipeline IDs for a Logstash instance.
+// Retrieves a list of pipeline IDs for a Logstash instance.
 //
 // Description:
 //
-// > Pipeline management is divided into configuration file management and Kibana pipeline management. Kibana pipeline management is not available in the console for some regions.
+// > Pipeline management is divided into configuration file management and Kibana pipeline management. Kibana pipeline management is not available in the console of some regions.
 //
 // @param request - ListPipelineIdsRequest
 //
@@ -6647,7 +6647,7 @@ func (client *Client) ModifyInstanceMaintainTimeWithContext(ctx context.Context,
 
 // Summary:
 //
-// For O&M events in the Event Center, you can specify a restart event, and the system restarts the specified node of the relevant instance at the scheduled time.
+// Modifies the scheduled execution time for a restart event in the Event Center. The system restarts the specified node of the associated instance at the scheduled time.
 //
 // @param request - ModifyScheduleExecuteTimeRequest
 //
@@ -7630,13 +7630,13 @@ func (client *Client) RunPipelinesWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
-// Shrinks nodes of a specified role from an Elasticsearch cluster.
+// Removes nodes of a specified role from an Elasticsearch cluster.
 //
 // Description:
 //
-// Note the following when you invoke this operation:
+// Take note of the following items when you invoke this operation:
 //
-// Before shrinking data nodes from a cluster, perform data migration from the nodes to be removed to other nodes. After you confirm that the nodes to be removed contain no data, proceed with the node shrinking operation.
+// Before you remove data nodes from a cluster, you must perform data migration to transfer data from the nodes to be removed to other nodes. Make sure that no data is stored on the nodes to be removed before you remove them.
 //
 // @param request - ShrinkNodeRequest
 //
@@ -7696,7 +7696,7 @@ func (client *Client) ShrinkNodeWithContext(ctx context.Context, InstanceId *str
 
 // Summary:
 //
-// Starts a collector to collect data.
+// Starts the collector to collect data.
 //
 // @param request - StartCollectorRequest
 //
@@ -7945,7 +7945,7 @@ func (client *Client) TransferNodeWithContext(ctx context.Context, InstanceId *s
 
 // Summary:
 //
-// Enables or shuts down public or private network access for an Elasticsearch or Kibana cluster.
+// Enables or performs shutdown of public network or private network access for an Elasticsearch or Kibana cluster.
 //
 // @param request - TriggerNetworkRequest
 //
@@ -8006,11 +8006,11 @@ func (client *Client) TriggerNetworkWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// Disables an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Exercise caution when performing this operation.
+// Closes an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // Description:
 //
-// Disables an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Exercise caution when performing this operation.
+// Closes an existing zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // @param request - TurnOffZoneRequest
 //
@@ -8061,11 +8061,11 @@ func (client *Client) TurnOffZoneWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
-// Reopens a zone that has been taken offline for a multi-zone instance. This operation is intended only for disaster recovery drills. Exercise caution when performing this operation.
+// Reopens an offline zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // Description:
 //
-// Reopens a zone that has been taken offline for a multi-zone instance. This operation is intended only for disaster recovery drills. Exercise caution when performing this operation.
+// Reopens an offline zone for a multi-zone instance. This operation is intended only for disaster recovery drills. Proceed with caution.
 //
 // @param request - TurnOnZoneRequest
 //
@@ -8396,7 +8396,7 @@ func (client *Client) UpdateAdminPasswordWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// Updates the garbage collector configuration for a specified Elasticsearch instance.
+// Updates the garbage collector configuration of a specified Elasticsearch instance.
 //
 // @param request - UpdateAdvancedSettingRequest
 //
@@ -8415,6 +8415,10 @@ func (client *Client) UpdateAdvancedSettingWithContext(ctx context.Context, Inst
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClientToken) {
 		query["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.UpdateStrategy) {
+		query["updateStrategy"] = request.UpdateStrategy
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8647,11 +8651,11 @@ func (client *Client) UpdateCollectorNameWithContext(ctx context.Context, ResId 
 
 // Summary:
 //
-// Updates a composable index template for an Elasticsearch instance.
+// Updates a composite template for Elasticsearch.
 //
 // Description:
 //
-// For more information, see [Store massive amounts of data through OpenStore](https://help.aliyun.com/document_detail/317694.html).
+// For more information, see [Store massive amounts of data by using OpenStore](https://help.aliyun.com/document_detail/317694.html).
 //
 // @param request - UpdateComponentIndexRequest
 //
@@ -8702,7 +8706,7 @@ func (client *Client) UpdateComponentIndexWithContext(ctx context.Context, Insta
 
 // Summary:
 //
-// Changes the name of an Elasticsearch instance.
+// Modifies the name of an Elasticsearch instance.
 //
 // @param request - UpdateDescriptionRequest
 //
@@ -9021,7 +9025,7 @@ func (client *Client) UpdateExtendfilesWithContext(ctx context.Context, Instance
 
 // Summary:
 //
-// Enables or disables the FalconSeek cloud-native kernel feature for instances running version 8.17.
+// Enables or disables the FalconSeek cloud-native kernel feature for instances of version 8.17.
 //
 // @param request - UpdateFalconSeekRequest
 //
@@ -9339,7 +9343,7 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// Transforms the billing method of an Elasticsearch instance from pay-as-you-go to a subscription instance.
+// Changes the billing method of an Elasticsearch instance by converting a pay-as-you-go instance to a subscription instance.
 //
 // @param request - UpdateInstanceChargeTypeRequest
 //
@@ -9402,7 +9406,7 @@ func (client *Client) UpdateInstanceChargeTypeWithContext(ctx context.Context, I
 //
 // When you invoke this operation, note the following:
 //
-// You cannot update the configuration when the instance status is activating, invalid, or inactive (freeze).
+// You cannot update the configurations when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdateInstanceSettingsRequest
 //
@@ -9520,13 +9524,13 @@ func (client *Client) UpdateKeystoresWithContext(ctx context.Context, InstanceId
 
 // Summary:
 //
-// Updates the private network access configuration for Kibana.
+// Updates Kibana private network access.
 //
 // Description:
 //
-// 1. This API operation supports only cloud-native instances. For legacy architecture instances, use the TriggerNetwork method.
+// 1. This API supports only cloud-native instances. For instances of the legacy architecture, use the TriggerNetwork operation.
 //
-// 2. The Kibana specifications must be greater than 1 vCPU and 2 GB of memory.
+// 2. The Kibana node specifications must be 1 vCPU and 2 GiB of memory or higher.
 //
 // @param request - UpdateKibanaPvlNetworkRequest
 //
@@ -10184,9 +10188,9 @@ func (client *Client) UpdatePrivateNetworkWhiteIpsWithContext(ctx context.Contex
 //
 // Description:
 //
-// Note the following when you invoke this operation:
+// When you invoke this operation, note the following:
 //
-// You cannot update the information when the instance status is activating, invalid, or freeze (inactive).
+// You cannot update information when the instance status is activating, invalid, or freeze (inactive).
 //
 // @param request - UpdatePublicNetworkRequest
 //
@@ -10446,7 +10450,7 @@ func (client *Client) UpdateSynonymsDictsWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// Modifies the scenario-specific template configuration of a cluster.
+// Updates the scenario-specific template configuration of a cluster.
 //
 // @param request - UpdateTemplateRequest
 //
@@ -10494,21 +10498,21 @@ func (client *Client) UpdateTemplateWithContext(ctx context.Context, InstanceId 
 
 // Summary:
 //
-// Modifies the VPC private network access whitelist of an Elasticsearch instance.
+// Updates the VPC private network access whitelist of an Elasticsearch instance.
 //
 // Description:
 //
-// ## Before you begin
+// ## Precautions
 //
-// - You cannot update information when the instance status is activating, invalid, or freeze (inactive).
+// - You cannot update the information when the instance status is activating, invalid, or frozen (inactive).
 //
-// - You can update the whitelist in two ways: IP whitelist list and IP whitelist group. The two methods cannot be used simultaneously, and they support different parameters (except for InstanceId and clientToken). The details are as follows:
+// - You can update the whitelist by using an IP whitelist or an IP whitelist group. You cannot use both methods at the same time. Except for InstanceId and clientToken, the parameters supported by the two methods are different. The details are as follows:
 //
-//   - IP whitelist list: esIPWhitelist
+//   - IP whitelist: esIPWhitelist
 //
-//   - IP whitelist group: modifyMode, whiteIpGroup
+//   - IP whitelist group: modifyMode and whiteIpGroup
 //
-// - The public access whitelist does not support private IP addresses, and the private network access whitelist does not support public IP addresses.
+// - You cannot configure private IP addresses in the public access whitelist, and you cannot configure public IP addresses in the private network access whitelist.
 //
 // @param request - UpdateWhiteIpsRequest
 //
@@ -10740,11 +10744,11 @@ func (client *Client) UpgradeInfoWithContext(ctx context.Context, instanceId *st
 
 // Summary:
 //
-// Validates the connectivity of an Elasticsearch instance that provides X-Pack monitoring.
+// Verifies the connectivity of the Elasticsearch instance that provides X-Pack monitoring.
 //
 // Description:
 //
-// > To enable X-Pack monitoring for Logstash, configure an Elasticsearch instance. After the configuration, you can monitor the Logstash instance in the Kibana console of the corresponding Elasticsearch instance.
+// > To enable X-Pack monitoring for Logstash, you must configure an Elasticsearch instance. After the configuration, you can monitor the Logstash instance in Kibana of the corresponding Elasticsearch instance.
 //
 // @param request - ValidateConnectionRequest
 //
@@ -10848,11 +10852,11 @@ func (client *Client) ValidateShrinkNodesWithContext(ctx context.Context, Instan
 
 // Summary:
 //
-// Validates the service-linked role (SLR) permissions for the current account.
+// Verifies the service-linked role permissions of the current account.
 //
 // Description:
 //
-// > Before you use a collector to collect logs from different data sources, you must authorize the creation of a service-linked role. Call this operation to check whether the service-linked role has been created.
+// > When you use a collector to collect logs from different data sources, you must first authorize the creation of a service-linked role. You can call this operation to verify whether the service-linked role has been created.
 //
 // @param request - ValidateSlrPermissionRequest
 //
@@ -10957,7 +10961,7 @@ func (client *Client) ValidateTransferableNodesWithContext(ctx context.Context, 
 //
 // ### Precautions
 //
-// - Before you call this operation, make sure that you fully understand the billing methods and pricing of Elasticsearch. For more information, see [Billing rules of Alibaba Cloud Elasticsearch](https://help.aliyun.com/document_detail/260947.html).
+// - Make sure that you fully understand the billing methods and pricing of Elasticsearch before you call this operation. For more information, see [Billing rules of Alibaba Cloud Elasticsearch](https://help.aliyun.com/document_detail/260947.html).
 //
 // - You must pass real-name verification before you create an instance. <props="china"><ph>For more information, see [Real-name verification](https://help.aliyun.com/document_detail/37175.html).</ph>
 //

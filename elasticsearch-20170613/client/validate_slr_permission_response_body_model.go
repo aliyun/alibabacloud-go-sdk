@@ -24,9 +24,9 @@ type ValidateSlrPermissionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the service-linked role has been created. Valid values:
 	//
-	// - true: Created.
+	// - true: The role has been created.
 	//
-	// - false: Not created.
+	// - false: The role has not been created.
 	//
 	// example:
 	//

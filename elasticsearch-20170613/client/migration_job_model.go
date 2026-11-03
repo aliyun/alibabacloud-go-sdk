@@ -34,17 +34,28 @@ type iMigrationJob interface {
 }
 
 type MigrationJob struct {
-	CurrentState             *string                     `json:"currentState,omitempty" xml:"currentState,omitempty"`
-	DisableSourceClusterAuth *bool                       `json:"disableSourceClusterAuth,omitempty" xml:"disableSourceClusterAuth,omitempty"`
-	DisableTargetClusterAuth *bool                       `json:"disableTargetClusterAuth,omitempty" xml:"disableTargetClusterAuth,omitempty"`
-	EndTime                  *int64                      `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	MigrationJobId           *string                     `json:"migrationJobId,omitempty" xml:"migrationJobId,omitempty"`
-	Phase                    *string                     `json:"phase,omitempty" xml:"phase,omitempty"`
-	SourceCluster            *MigrationJobSourceCluster  `json:"sourceCluster,omitempty" xml:"sourceCluster,omitempty" type:"Struct"`
-	StartTime                *int64                      `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	StatusResult             []*MigrationJobStatusResult `json:"statusResult,omitempty" xml:"statusResult,omitempty" type:"Repeated"`
-	TargetCluster            *MigrationJobTargetCluster  `json:"targetCluster,omitempty" xml:"targetCluster,omitempty" type:"Struct"`
-	UpdateTime               *int64                      `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// currentState
+	CurrentState *string `json:"currentState,omitempty" xml:"currentState,omitempty"`
+	// disableSourceClusterAuth
+	DisableSourceClusterAuth *bool `json:"disableSourceClusterAuth,omitempty" xml:"disableSourceClusterAuth,omitempty"`
+	// disableTargetClusterAuth
+	DisableTargetClusterAuth *bool `json:"disableTargetClusterAuth,omitempty" xml:"disableTargetClusterAuth,omitempty"`
+	// endTime
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// migrationJobId
+	MigrationJobId *string `json:"migrationJobId,omitempty" xml:"migrationJobId,omitempty"`
+	// phase
+	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
+	// sourceCluster
+	SourceCluster *MigrationJobSourceCluster `json:"sourceCluster,omitempty" xml:"sourceCluster,omitempty" type:"Struct"`
+	// startTime
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// statusResult
+	StatusResult []*MigrationJobStatusResult `json:"statusResult,omitempty" xml:"statusResult,omitempty" type:"Repeated"`
+	// targetCluster
+	TargetCluster *MigrationJobTargetCluster `json:"targetCluster,omitempty" xml:"targetCluster,omitempty" type:"Struct"`
+	// updateTime
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s MigrationJob) String() string {
@@ -178,8 +189,10 @@ func (s *MigrationJob) Validate() error {
 }
 
 type MigrationJobSourceCluster struct {
+	// instanceId
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s MigrationJobSourceCluster) String() string {
@@ -213,8 +226,10 @@ func (s *MigrationJobSourceCluster) Validate() error {
 }
 
 type MigrationJobStatusResult struct {
-	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// code
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// success
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s MigrationJobStatusResult) String() string {
@@ -248,8 +263,10 @@ func (s *MigrationJobStatusResult) Validate() error {
 }
 
 type MigrationJobTargetCluster struct {
+	// type
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Type       *string `json:"type,omitempty" xml:"type,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s MigrationJobTargetCluster) String() string {

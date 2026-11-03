@@ -62,7 +62,7 @@ func (s *UpdateDescriptionResponseBody) Validate() error {
 }
 
 type UpdateDescriptionResponseBodyResult struct {
-	// The updated instance name.
+	// The updated name of the instance.
 	//
 	// example:
 	//

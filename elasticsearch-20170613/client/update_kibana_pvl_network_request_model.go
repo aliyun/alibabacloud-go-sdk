@@ -28,13 +28,13 @@ type UpdateKibanaPvlNetworkRequest struct {
 	EndpointName *string `json:"endpointName,omitempty" xml:"endpointName,omitempty"`
 	// The list of security groups.
 	SecurityGroups []*string `json:"securityGroups,omitempty" xml:"securityGroups,omitempty" type:"Repeated"`
-	// A client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// xxxx
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The Kibana private network connection ID.
+	// The ID of the Kibana private network connection.
 	//
 	// example:
 	//

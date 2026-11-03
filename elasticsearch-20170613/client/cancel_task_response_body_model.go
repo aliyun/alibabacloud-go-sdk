@@ -22,11 +22,11 @@ type CancelTaskResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result. Valid values:
+	// The returned result. Valid values:
 	//
 	// - true: The task is canceled.
 	//
-	// - false: The task failed to be canceled.
+	// - false: The task fails to be canceled.
 	//
 	// example:
 	//

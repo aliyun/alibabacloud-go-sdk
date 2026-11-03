@@ -22,11 +22,11 @@ type AddSnapshotRepoResponseBody struct {
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result:
+	// The returned result. Valid values:
 	//
 	// - true: The reference repository is created.
 	//
-	// - false: The reference repository failed to be created.
+	// - false: The reference repository fails to be created.
 	//
 	// example:
 	//

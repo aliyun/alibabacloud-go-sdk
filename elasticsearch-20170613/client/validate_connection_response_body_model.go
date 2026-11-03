@@ -16,17 +16,17 @@ type iValidateConnectionResponseBody interface {
 }
 
 type ValidateConnectionResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The return result. Valid values:
 	//
-	// - true: The validation succeeded.
+	// - true: The verification is successful.
 	//
-	// - false: The validation failed.
+	// - false: The verification fails.
 	//
 	// example:
 	//

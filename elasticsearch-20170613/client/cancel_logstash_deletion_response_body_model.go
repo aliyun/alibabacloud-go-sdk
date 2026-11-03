@@ -22,11 +22,11 @@ type CancelLogstashDeletionResponseBody struct {
 	//
 	// 23EBF56B-2DC0-4507-8BE5-B87395DB0FEB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance is successfully resumed. Valid values:
+	// Indicates whether the instance was successfully resumed. Valid values:
 	//
-	// - true: The instance is successfully resumed.
+	// - true: Yes.
 	//
-	// - false: The instance failed to be resumed.
+	// - false: No.
 	//
 	// example:
 	//

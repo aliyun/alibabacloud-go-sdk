@@ -24,9 +24,9 @@ type CreateComponentIndexResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The returned result. Valid values:
 	//
-	// - true: The template was created successfully.
+	// - true: Created.
 	//
-	// - false: The template failed to be created.
+	// - false: Creation failed.
 	//
 	// example:
 	//

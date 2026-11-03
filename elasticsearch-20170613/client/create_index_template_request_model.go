@@ -26,17 +26,17 @@ type iCreateIndexTemplateRequest interface {
 }
 
 type CreateIndexTemplateRequest struct {
-	// A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// E1136AE9-4E49-4585-9358-6FDD2A6D****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to enable data streams. Valid values:
+	// Specifies whether to enable the data stream. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enables the data stream.
 	//
-	// - false (default): Disabled.
+	// - false: disables the data stream. This is the default value.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +44,17 @@ type CreateIndexTemplateRequest struct {
 	//
 	// false
 	DataStream *bool `json:"dataStream,omitempty" xml:"dataStream,omitempty"`
-	// The lifecycle policy name.
+	// The life epoch Policy Name.
 	//
 	// example:
 	//
 	// policy-1
 	IlmPolicy *string `json:"ilmPolicy,omitempty" xml:"ilmPolicy,omitempty"`
-	// The index matching pattern (regular expression).
+	// The regular expression for the index pattern.
 	//
 	// This parameter is required.
 	IndexPatterns []*string `json:"indexPatterns,omitempty" xml:"indexPatterns,omitempty" type:"Repeated"`
-	// The index template name.
+	// The name of the index template.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateIndexTemplateRequest struct {
 	//
 	// index-template
 	IndexTemplate *string `json:"indexTemplate,omitempty" xml:"indexTemplate,omitempty"`
-	// The priority of the cluster index template.
+	// The priority of the cluster index template. A larger value indicates a higher priority.
 	//
 	// example:
 	//
@@ -153,19 +153,19 @@ func (s *CreateIndexTemplateRequest) Validate() error {
 }
 
 type CreateIndexTemplateRequestTemplate struct {
-	// The aliases configuration.
+	// The aliases.
 	//
 	// example:
 	//
 	// {\\"mydata\\":{}}
 	Aliases *string `json:"aliases,omitempty" xml:"aliases,omitempty"`
-	// The mappings configuration.
+	// The mappings.
 	//
 	// example:
 	//
 	// {\\"properties\\":{\\"created_at\\":{\\"format\\":\\"EEE MMM dd HH:mm:ss Z yyyy\\",\\"type\\":\\"date\\"},\\"host_name\\":{\\"type\\":\\"keyword\\"}}}
 	Mappings *string `json:"mappings,omitempty" xml:"mappings,omitempty"`
-	// The settings configuration.
+	// The settings.
 	//
 	// example:
 	//

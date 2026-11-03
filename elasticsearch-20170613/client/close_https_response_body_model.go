@@ -22,11 +22,11 @@ type CloseHttpsResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result. Valid values:
 	//
 	// - true: The HTTPS protocol is disabled.
 	//
-	// - false: Failed to disable the HTTPS protocol.
+	// - false: Disabling the HTTPS protocol failed.
 	//
 	// example:
 	//

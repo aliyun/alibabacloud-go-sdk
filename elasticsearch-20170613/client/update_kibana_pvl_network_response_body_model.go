@@ -22,11 +22,11 @@ type UpdateKibanaPvlNetworkResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result. Valid values:
+	// The returned result. Valid values:
 	//
 	// - true: The operation is successful.
 	//
-	// - false: The operation failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//

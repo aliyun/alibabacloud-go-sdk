@@ -84,10 +84,22 @@ type ListActionRecordsResponseBodyResult struct {
 	// es-cn-nif24adwc0082****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The instance information after the change, represented as a JSON string.
+	//
+	// example:
+	//
+	// ["192.0.2.1","198.51.100.2","203.0.113.3"]
 	MetaNow *string `json:"metaNow,omitempty" xml:"metaNow,omitempty"`
 	// The instance information before the change, represented as a JSON string.
+	//
+	// example:
+	//
+	// ["192.0.2.1/32","198.51.100.2/32","203.0.113.3/32"]
 	MetaOld *string `json:"metaOld,omitempty" xml:"metaOld,omitempty"`
 	// The ID of the Alibaba Cloud account to which the account that triggered the change belongs.
+	//
+	// example:
+	//
+	// 1234567890123456
 	OwnerId *string `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
 	// The progress of the change, represented as a percentage string.
 	//

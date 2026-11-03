@@ -98,7 +98,7 @@ type Logstash struct {
 	//
 	// - prepaid: subscription
 	//
-	// - postpaid: pay-as-you-go.
+	// - postpaid: pay-as-you-go
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type Logstash struct {
 	//
 	// - ISOLATION: offline
 	//
-	// - NORMAL: Normal.
+	// - NORMAL: normal
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type Logstash struct {
 	//
 	// - 6.7.0_with_X-Pack
 	//
-	// - 7.4.0_with_X-Pack.
+	// - 7.4.0_with_X-Pack
 	//
 	// example:
 	//
@@ -435,7 +435,7 @@ func (s *LogstashEndpointList) Validate() error {
 }
 
 type LogstashNetworkConfig struct {
-	// The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+	// The network type. Only VPC is supported.
 	//
 	// example:
 	//
@@ -447,7 +447,7 @@ type LogstashNetworkConfig struct {
 	//
 	// vpc-abc
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone in which the instance resides.
+	// The zone where the instance is deployed.
 	//
 	// example:
 	//
@@ -619,7 +619,7 @@ type LogstashZoneInfos struct {
 	//
 	// - ISOLATION: offline
 	//
-	// - NORMAL: Normal.
+	// - NORMAL: normal
 	//
 	// example:
 	//

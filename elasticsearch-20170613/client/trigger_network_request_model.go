@@ -22,9 +22,9 @@ type iTriggerNetworkRequest interface {
 type TriggerNetworkRequest struct {
 	// The action type. Valid values:
 	//
-	// - CLOSE: disable.
+	// - CLOSE: disable
 	//
-	// - OPEN: enable.
+	// - OPEN: enable
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type TriggerNetworkRequest struct {
 	ActionType *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
 	// The network type. Valid values:
 	//
-	// - PUBLIC: public network.
+	// - PUBLIC: public network
 	//
-	// - PRIVATE: private network.
+	// - PRIVATE: private network
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type TriggerNetworkRequest struct {
 	//
 	// PUBLIC
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The instance type. Valid values:
+	// The node type. Valid values:
 	//
-	// - KIBANA: Kibana cluster.
+	// - KIBANA: Kibana cluster
 	//
-	// - WORKER: Elasticsearch cluster.
+	// - WORKER: Elasticsearch cluster
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type TriggerNetworkRequest struct {
 	//
 	// KIBANA
 	NodeType *string `json:"nodeType,omitempty" xml:"nodeType,omitempty"`
-	// A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//

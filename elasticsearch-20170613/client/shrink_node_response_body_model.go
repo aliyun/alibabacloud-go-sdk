@@ -22,11 +22,11 @@ type ShrinkNodeResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the operation. Valid values:
+	// The returned result. Valid values:
 	//
-	// - true: The node shrinking succeeded.
+	// - true: The scale-in operation succeeded.
 	//
-	// - false: The node shrinking failed.
+	// - false: The scale-in operation failed.
 	//
 	// example:
 	//

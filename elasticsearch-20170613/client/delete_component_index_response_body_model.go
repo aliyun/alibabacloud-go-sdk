@@ -22,9 +22,9 @@ type DeleteComponentIndexResponseBody struct {
 	//
 	// F99407AB-2FA9-489E-A259-40CF6DCC47D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result. Valid values:
+	// The result of the operation. Valid values:
 	//
-	// - true: The deletion was successful.
+	// - true: The deletion succeeded.
 	//
 	// - false: The deletion failed.
 	//

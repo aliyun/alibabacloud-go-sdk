@@ -16,13 +16,13 @@ type iEnableKibanaPvlNetworkResponseBody interface {
 }
 
 type EnableKibanaPvlNetworkResponseBody struct {
-  // The request ID.
+  // The ID of the request.
   // 
   // example:
   // 
   // 0DC92CFE-62AF-51AF-9D5B-F1078D7C451E
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether private network access for Kibana is created.
+  // Indicates whether private network access to Kibana is successfully created. Valid values:
   // 
   // - true: Succeeded.
   // 

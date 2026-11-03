@@ -16,6 +16,11 @@ type iTurnOffZoneRequest interface {
 }
 
 type TurnOffZoneRequest struct {
+	// Specifies whether to drain traffic from the load balancer. Valid values:
+	//
+	// - false: Uses the default policy.
+	//
+	// - true: Removes traffic from the load balancer.
 	HpAlbZoneDrained *bool `json:"hpAlbZoneDrained,omitempty" xml:"hpAlbZoneDrained,omitempty"`
 	// The zone of the instance.
 	//

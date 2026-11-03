@@ -18,19 +18,19 @@ type iListDeprecatedTemplatesRequest interface {
 }
 
 type ListDeprecatedTemplatesRequest struct {
-	// The index template name.
+	// The name of the index template.
 	//
 	// example:
 	//
 	// component-openstore-index-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number settings for a paged query. This parameter is used for paging.
+	// The page number for a paged query.
 	//
 	// example:
 	//
 	// 5
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page settings for a paged query. This parameter is used for paging.
+	// The number of entries per page for a paged query.
 	//
 	// if can be null:
 	// true

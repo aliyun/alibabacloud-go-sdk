@@ -22,7 +22,7 @@ type iUpdateXpackMonitorConfigRequest interface {
 }
 
 type UpdateXpackMonitorConfigRequest struct {
-	// A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests. The token can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type UpdateXpackMonitorConfigRequest struct {
 	//
 	// - true: Enabled.
 	//
-	// - false: Not enabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The access endpoint of the Elasticsearch instance.
+	// The endpoint of the Elasticsearch instance.
 	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
 	// The password of the Elasticsearch instance.
 	//

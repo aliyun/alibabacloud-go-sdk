@@ -66,11 +66,11 @@ type DescribeCollectorResponseBodyResult struct {
 	CollectorPaths []*string `json:"collectorPaths,omitempty" xml:"collectorPaths,omitempty" type:"Repeated"`
 	// The configuration file information of the collector.
 	Configs []*DescribeCollectorResponseBodyResultConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// Specifies whether to only validate the collector without creating it. Valid values:
+	// Specifies whether to validate and create the collector. Valid values:
 	//
-	// - true: validates the configuration without creating the collector.
+	// - true: Only validates the configuration without creating the collector.
 	//
-	// - false: validates the configuration and creates the collector.
+	// - false: Validates the configuration and creates the collector.
 	//
 	// example:
 	//
@@ -122,15 +122,15 @@ type DescribeCollectorResponseBodyResult struct {
 	ResVersion *string `json:"resVersion,omitempty" xml:"resVersion,omitempty"`
 	// The status of the collector. Valid values:
 	//
-	// - activing: activating.
+	// - activing: Activating.
 	//
-	// - active: activated.
+	// - active: Active.
 	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the virtual private cloud (VPC) where the collector is deployed.
+	// The ID of the virtual private cloud (VPC) where the collector resides.
 	//
 	// example:
 	//
@@ -333,11 +333,11 @@ func (s *DescribeCollectorResponseBodyResultConfigs) Validate() error {
 type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	// The configuration type. Valid values:
 	//
-	// - collectorTargetInstance: the output of the collector.
+	// - collectorTargetInstance: The output of the collector.
 	//
-	// - collectorDeployMachine: the machine on which the collector is deployed.
+	// - collectorDeployMachine: The machine on which the collector is deployed.
 	//
-	// - collectorElasticsearchForKibana: the information about the Elasticsearch instance that supports the Kibana dashboard.
+	// - collectorElasticsearchForKibana: The information about the Elasticsearch instance that supports the Kibana dashboard.
 	//
 	// example:
 	//
@@ -345,9 +345,9 @@ type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
 	// Specifies whether to enable monitoring. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**. Valid values:
 	//
-	// - true: enables monitoring.
+	// - true: Enables monitoring.
 	//
-	// - false: disables monitoring.
+	// - false: Disables monitoring.
 	//
 	// example:
 	//
@@ -365,7 +365,7 @@ type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	//
 	// es-cn-n6w1o1x0w001c****-kibana.internal.elasticsearch.aliyuncs.com:5601
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// The list of host addresses of the target instance for the collector.
+	// The list of host addresses of the target instances for the collector.
 	Hosts []*string `json:"hosts,omitempty" xml:"hosts,omitempty" type:"Repeated"`
 	// Instance ID of the instance associated with the collector. If **configType*	- is set to **collectorTargetInstance**, this parameter indicates instance ID of the instance specified in the collector output. If **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ACKCluster**, this parameter indicates instance ID of the ACK cluster.
 	//
@@ -387,7 +387,7 @@ type DescribeCollectorResponseBodyResultExtendConfigs struct {
 	KibanaHost *string `json:"kibanaHost,omitempty" xml:"kibanaHost,omitempty"`
 	// The list of ECS instances on which the collector is deployed. This parameter is displayed when **configType*	- is set to **collectorDeployMachines*	- and **type*	- is set to **ECSInstanceId**.
 	Machines []*DescribeCollectorResponseBodyResultExtendConfigsMachines `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
-	// The transmission protocol. This protocol must be consistent with the access protocol of the instance specified in the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
+	// The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector output. Valid values: HTTP and HTTPS. This parameter is displayed when **configType*	- is set to **collectorTargetInstance**.
 	//
 	// example:
 	//

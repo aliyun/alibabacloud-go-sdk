@@ -14,7 +14,7 @@ type iAddSnapshotRepoRequest interface {
 }
 
 type AddSnapshotRepoRequest struct {
-	// The cross-cluster backup information, which specifies the reference instance.
+	// Specifies the cross-cluster backup information, namely the reference instance.
 	//
 	// example:
 	//

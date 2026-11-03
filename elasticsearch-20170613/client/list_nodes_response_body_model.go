@@ -114,7 +114,7 @@ func (s *ListNodesResponseBodyHeaders) Validate() error {
 }
 
 type ListNodesResponseBodyResult struct {
-	// The status of each collector on the ECS instance. Valid values:
+	// The status of the collectors on the ECS instance. Valid values:
 	//
 	// - heartOk: Normal heartbeat.
 	//
@@ -128,11 +128,11 @@ type ListNodesResponseBodyResult struct {
 	//
 	// heartOk
 	AgentStatus *string `json:"agentStatus,omitempty" xml:"agentStatus,omitempty"`
-	// Indicates whether Cloud Assistant is enabled. Valid values:
+	// Indicates whether Cloud Assistant is activated. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Activated.
 	//
-	// - false: Not enabled.
+	// - false: Not activated.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type ListNodesResponseBodyResult struct {
 	//
 	// i-bp13y63575oypr****
 	EcsInstanceId *string `json:"ecsInstanceId,omitempty" xml:"ecsInstanceId,omitempty"`
-	// The ECS instance name.
+	// The name of the ECS instance.
 	//
 	// example:
 	//
 	// ECS_beat
 	EcsInstanceName *string `json:"ecsInstanceName,omitempty" xml:"ecsInstanceName,omitempty"`
-	// The list of IP address information for the ECS instance.
+	// The list of IP addresses of the ECS instance.
 	IpAddress []*ListNodesResponseBodyResultIpAddress `json:"ipAddress,omitempty" xml:"ipAddress,omitempty" type:"Repeated"`
 	// The operating system type of the ECS instance. Valid values:
 	//
@@ -162,7 +162,7 @@ type ListNodesResponseBodyResult struct {
 	//
 	// linux
 	OsType *string `json:"osType,omitempty" xml:"osType,omitempty"`
-	// The ECS instance status. Valid values:
+	// The instance status of the ECS instance. Valid values:
 	//
 	// - running: Running.
 	//
@@ -176,7 +176,7 @@ type ListNodesResponseBodyResult struct {
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag information of the ECS instance.
+	// The tags of the ECS instance.
 	Tags []*ListNodesResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -291,9 +291,9 @@ type ListNodesResponseBodyResultIpAddress struct {
 	Host *string `json:"host,omitempty" xml:"host,omitempty"`
 	// The IP address type. Valid values:
 	//
-	// - public: public IP address.
+	// - public: Public IP address.
 	//
-	// - private: private IP address.
+	// - private: Private IP address.
 	//
 	// example:
 	//

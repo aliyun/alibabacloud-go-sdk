@@ -13,6 +13,8 @@ type iUpdateAdvancedSettingRequest interface {
 	GetBody() *string
 	SetClientToken(v string) *UpdateAdvancedSettingRequest
 	GetClientToken() *string
+	SetUpdateStrategy(v string) *UpdateAdvancedSettingRequest
+	GetUpdateStrategy() *string
 }
 
 type UpdateAdvancedSettingRequest struct {
@@ -28,6 +30,12 @@ type UpdateAdvancedSettingRequest struct {
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The garbage collection (GC) update strategy. Valid values: blue_green (blue-green update, default), normal (in-place update), and intelligent (intelligent recommendation).
+	//
+	// example:
+	//
+	// blue_green
+	UpdateStrategy *string `json:"updateStrategy,omitempty" xml:"updateStrategy,omitempty"`
 }
 
 func (s UpdateAdvancedSettingRequest) String() string {
@@ -46,6 +54,10 @@ func (s *UpdateAdvancedSettingRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *UpdateAdvancedSettingRequest) GetUpdateStrategy() *string {
+	return s.UpdateStrategy
+}
+
 func (s *UpdateAdvancedSettingRequest) SetBody(v string) *UpdateAdvancedSettingRequest {
 	s.Body = &v
 	return s
@@ -53,6 +65,11 @@ func (s *UpdateAdvancedSettingRequest) SetBody(v string) *UpdateAdvancedSettingR
 
 func (s *UpdateAdvancedSettingRequest) SetClientToken(v string) *UpdateAdvancedSettingRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAdvancedSettingRequest) SetUpdateStrategy(v string) *UpdateAdvancedSettingRequest {
+	s.UpdateStrategy = &v
 	return s
 }
 

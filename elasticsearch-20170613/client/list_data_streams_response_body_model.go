@@ -129,45 +129,45 @@ func (s *ListDataStreamsResponseBodyHeaders) Validate() error {
 }
 
 type ListDataStreamsResponseBodyResult struct {
-	// The data stream status. Valid values:
+	// The health status of the data stream. Valid values:
 	//
 	// - Green: Healthy.
 	//
 	// - Yellow: Warning.
 	//
-	// - Red: Abnormal.
+	// - Red: Error.
 	//
 	// example:
 	//
 	// Green
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// The index lifecycle policy name.
+	// The life epoch Policy Name.
 	//
 	// example:
 	//
 	// rollver1
 	IlmPolicyName *string `json:"ilmPolicyName,omitempty" xml:"ilmPolicyName,omitempty"`
-	// The index template name.
+	// The name of the index template.
 	//
 	// example:
 	//
 	// template1
 	IndexTemplateName *string `json:"indexTemplateName,omitempty" xml:"indexTemplateName,omitempty"`
-	// The index information under the current data stream.
+	// The information about the indexes in the current data stream.
 	Indices []*ListDataStreamsResponseBodyResultIndices `json:"indices,omitempty" xml:"indices,omitempty" type:"Repeated"`
-	// The total storage space occupied by managed indexes under the current data stream. Unit: bytes.
+	// The total storage space occupied by managed indexes in the current data stream. Unit: bytes.
 	//
 	// example:
 	//
 	// 1788239393298
 	ManagedStorageSize *int64 `json:"managedStorageSize,omitempty" xml:"managedStorageSize,omitempty"`
-	// The index name.
+	// The name of the index.
 	//
 	// example:
 	//
 	// my-index-0001
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The total storage space occupied by all indexes under the current data stream. Unit: bytes.
+	// The total storage space occupied by all indexes in the current data stream. Unit: bytes.
 	//
 	// example:
 	//
@@ -266,25 +266,25 @@ type ListDataStreamsResponseBodyResultIndices struct {
 	//
 	// 2018-07-13T03:58:07.253Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The index status. Valid values:
+	// The health status of the index. Valid values:
 	//
 	// - Green: Healthy.
 	//
 	// - Yellow: Warning.
 	//
-	// - Red: Abnormal.
+	// - Red: Error.
 	//
 	// example:
 	//
 	// Green
 	Health *string `json:"health,omitempty" xml:"health,omitempty"`
-	// This field is deprecated and can be ignored.
+	// **[Deprecated]*	- This field is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// false
 	IsManaged *bool `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
-	// The index managed status. Valid values:
+	// The managed status of the index. Valid values:
 	//
 	// - following: Managed.
 	//
@@ -296,7 +296,7 @@ type ListDataStreamsResponseBodyResultIndices struct {
 	//
 	// following
 	ManagedStatus *string `json:"managedStatus,omitempty" xml:"managedStatus,omitempty"`
-	// The data stream name.
+	// The name of the data stream.
 	//
 	// example:
 	//
