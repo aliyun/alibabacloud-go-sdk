@@ -20,20 +20,28 @@ type iListContextDatabaseSyncRunLogsRequest interface {
 }
 
 type ListContextDatabaseSyncRunLogsRequest struct {
+	// The page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The run ID, which is a system-generated UUID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:

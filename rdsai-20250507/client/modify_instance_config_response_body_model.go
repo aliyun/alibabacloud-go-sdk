@@ -18,6 +18,11 @@ type iModifyInstanceConfigResponseBody interface {
 }
 
 type ModifyInstanceConfigResponseBody struct {
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName   *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Id of the request

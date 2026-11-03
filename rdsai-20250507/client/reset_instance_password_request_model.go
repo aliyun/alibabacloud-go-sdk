@@ -22,8 +22,9 @@ type iResetInstancePasswordRequest interface {
 }
 
 type ResetInstancePasswordRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The Supabase Dashboard password.
+	// The password for the Supabase Dashboard.
 	//
 	// The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
 	//
@@ -31,11 +32,11 @@ type ResetInstancePasswordRequest struct {
 	//
 	// test_Password
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	// The RDS database access password.
+	// The access password for the RDS database.
 	//
 	// The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
 	//
-	// 	Notice: This password change also updates the access passwords of the following accounts on the associated PostgreSQL instance. These accounts are required by Supabase: postgres, supabase_admin, supabase_auth_admin, supabase_functions_admin, supabase_storage_admin, authenticator, pgbouncer.
+	// 	Notice: This password is synchronized to update the access passwords of the following accounts (all required by Supabase) on the associated PostgreSQL instance: postgres, supabase_admin, supabase_auth_admin, supabase_functions_admin, supabase_storage_admin, authenticator, and pgbouncer.
 	//
 	// </notice>
 	//

@@ -22,6 +22,11 @@ type iDescribeInstanceRAGConfigResponseBody interface {
 }
 
 type DescribeInstanceRAGConfigResponseBody struct {
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The list of RAG Agent configurations.
 	ConfigList []*DescribeInstanceRAGConfigResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
@@ -37,7 +42,7 @@ type DescribeInstanceRAGConfigResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The RAG Agent status. Valid values:
+	// The status of the RAG Agent.
 	//
 	// - **true**: Enabled.
 	//

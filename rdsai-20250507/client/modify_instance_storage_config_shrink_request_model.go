@@ -22,8 +22,9 @@ type iModifyInstanceStorageConfigShrinkRequest interface {
 }
 
 type ModifyInstanceStorageConfigShrinkRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, which prevents repeated submissions of requests.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value on the client.
 	//
 	// example:
 	//

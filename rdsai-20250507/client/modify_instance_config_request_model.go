@@ -24,26 +24,27 @@ type iModifyInstanceConfigRequest interface {
 }
 
 type ModifyInstanceConfigRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The idempotence parameter.
+	// The idempotency parameter.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the configuration item to modify. This parameter is used together with ConfigValue.
+	// The name of the configuration item to modify. This parameter must be used together with ConfigValue.
 	//
 	// example:
 	//
 	// eip、nat
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	// The value of the configuration item to modify. This parameter is used together with ConfigName.
+	// The value of the configuration item to modify. This parameter must be used together with ConfigName.
 	//
 	// example:
 	//
 	// on、off
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The instance ID of the AI application.
+	// The ID of the AI application instance.
 	//
 	// This parameter is required.
 	//

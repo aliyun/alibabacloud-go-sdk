@@ -18,6 +18,7 @@ type iDescribeInstanceSSLRequest interface {
 }
 
 type DescribeInstanceSSLRequest struct {
+	// Reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//

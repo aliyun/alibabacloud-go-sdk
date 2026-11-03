@@ -32,17 +32,17 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// true
 	EnableTools *string `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// AgentId。
+	// The agent ID.
 	//
 	// example:
 	//
 	// 82cf3d62-0add-47bd-869f-877131f7****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the dedicated agent.
+	// The name of the custom agent.
 	//
 	// example:
 	//
-	// Query Instance List Agent
+	// Query instance list agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
@@ -56,7 +56,7 @@ type UpdateCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// I am your dedicated Agent for querying instance lists
+	// I am your custom agent for querying the instance list
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
@@ -147,10 +147,30 @@ func (s *UpdateCustomAgentResponseBody) Validate() error {
 }
 
 type UpdateCustomAgentResponseBodySkills struct {
+	// The skill description.
+	//
+	// example:
+	//
+	// SQL query optimization skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The unique identifier of the skill.
+	//
+	// example:
+	//
+	// 82cf3d62-0add-47bd-869f-877131f7****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The skill name.
+	//
+	// example:
+	//
+	// query-optimization
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The skill type.
+	//
+	// example:
+	//
+	// user
+	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
 func (s UpdateCustomAgentResponseBodySkills) String() string {

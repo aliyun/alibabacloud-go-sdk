@@ -18,6 +18,7 @@ type iRestartInstanceRequest interface {
 }
 
 type RestartInstanceRequest struct {
+	// Reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
@@ -27,7 +28,7 @@ type RestartInstanceRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//

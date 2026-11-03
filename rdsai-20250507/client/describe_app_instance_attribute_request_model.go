@@ -18,7 +18,7 @@ type iDescribeAppInstanceAttributeRequest interface {
 }
 
 type DescribeAppInstanceAttributeRequest struct {
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeAppInstanceAttributeRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//

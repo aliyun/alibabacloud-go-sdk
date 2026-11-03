@@ -46,24 +46,25 @@ type CreateCustomAgentResponseBody struct {
 	//
 	// d1b7d639-f34e-44c7-8231-987da14d****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the agent.
+	// The name of the custom agent.
 	//
 	// example:
 	//
-	// QueryInstanceListAgent
+	// Instance List Query Agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skills    []*CreateCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of associated skill details.
+	Skills []*CreateCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The system prompt.
 	//
 	// example:
 	//
-	// I am your dedicated agent for querying instance lists
+	// I am your custom agent for querying the instance list
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
@@ -163,10 +164,30 @@ func (s *CreateCustomAgentResponseBody) Validate() error {
 }
 
 type CreateCustomAgentResponseBodySkills struct {
+	// The skill description.
+	//
+	// example:
+	//
+	// SQL query optimization skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The unique identifier of the skill.
+	//
+	// example:
+	//
+	// 82cf3d62-0add-47bd-869f-877131f7****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the skill.
+	//
+	// example:
+	//
+	// query-optimization
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the skill.
+	//
+	// example:
+	//
+	// user
+	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
 func (s CreateCustomAgentResponseBodySkills) String() string {

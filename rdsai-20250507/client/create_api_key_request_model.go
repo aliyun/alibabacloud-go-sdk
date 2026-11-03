@@ -30,13 +30,13 @@ type iCreateApiKeyRequest interface {
 }
 
 type CreateApiKeyRequest struct {
-	// The daily quota of the API key.
+	// The daily token quota for the API key.
 	//
 	// example:
 	//
 	// 1000000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The instance name.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -48,19 +48,19 @@ type CreateApiKeyRequest struct {
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The quota percentage.
+	// The quota limit percentage.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota limit type. Valid values:
 	//
-	// - ratio: by percentage.
+	// - ratio: Percentage-based.
 	//
-	// - fixed: by fixed value.
+	// - fixed: Fixed value.
 	//
-	// - auto: automatic allocation.
+	// - auto: Automatic allocation.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateApiKeyRequest struct {
 	Quantity *int32  `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	RoleArn  *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The quota limit for the current key.
+	// The token quota for the current key.
 	//
 	// example:
 	//

@@ -28,8 +28,13 @@ type iDescribeInstanceSSLResponseBody interface {
 }
 
 type DescribeInstanceSSLResponseBody struct {
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The certificate type. The value is **custom**, which indicates that a custom certificate is used.
+	// The certificate type. A value of **custom*	- indicates that a custom certificate is used.
 	//
 	// example:
 	//
@@ -58,7 +63,7 @@ type DescribeInstanceSSLResponseBody struct {
 	// 1
 	SSLEnabled     *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	SSLExpiredTime *string `json:"SSLExpiredTime,omitempty" xml:"SSLExpiredTime,omitempty"`
-	// The custom certificate content.
+	// The content of the custom certificate.
 	//
 	// example:
 	//

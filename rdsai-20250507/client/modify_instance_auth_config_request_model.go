@@ -20,6 +20,7 @@ type iModifyInstanceAuthConfigRequest interface {
 }
 
 type ModifyInstanceAuthConfigRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The list of authentication configurations.
 	ConfigList []*ModifyInstanceAuthConfigRequestConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
@@ -29,7 +30,7 @@ type ModifyInstanceAuthConfigRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -95,25 +96,25 @@ func (s *ModifyInstanceAuthConfigRequest) Validate() error {
 }
 
 type ModifyInstanceAuthConfigRequestConfigList struct {
-	// The configuration item name. Valid values:
+	// The name of the configuration item. Valid values:
 	//
-	// - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether to allow external email addresses.
+	// - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Allows external emails.
 	//
 	// - **GOTRUE_SITE_URL**: The website URL displayed when the AI application sends emails.
 	//
-	// - **GOTRUE_SMTP_PORT**: The port of the SMTP provider.
+	// - **GOTRUE_SMTP_PORT**: The port of the SMTP service provider.
 	//
 	// - **GOTRUE_SMTP_SENDER_NAME**: The name of the email sender.
 	//
-	// - **GOTRUE_SMTP_USER**: The username of the SMTP provider.
+	// - **GOTRUE_SMTP_USER**: The username of the SMTP service provider.
 	//
-	// - **GOTRUE_SMTP_PASS**: The secret key of the SMTP provider.
+	// - **GOTRUE_SMTP_PASS**: The password of the SMTP service provider.
 	//
-	// - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP provider.
+	// - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP service provider.
 	//
-	// - **GOTRUE_SMTP_HOST**: The host address of the SMTP provider.
+	// - **GOTRUE_SMTP_HOST**: The host address of the SMTP service provider.
 	//
-	// - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether to enable automatic confirmation.
+	// - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether to enable auto-confirmation.
 	//
 	// - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
 	//

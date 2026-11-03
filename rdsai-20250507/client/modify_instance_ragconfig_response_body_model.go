@@ -20,6 +20,11 @@ type iModifyInstanceRAGConfigResponseBody interface {
 }
 
 type ModifyInstanceRAGConfigResponseBody struct {
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
@@ -33,7 +38,7 @@ type ModifyInstanceRAGConfigResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The RAG Agent status.
+	// The status of the RAG Agent.
 	//
 	// - **true**: Enabled.
 	//

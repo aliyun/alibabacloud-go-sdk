@@ -26,13 +26,13 @@ type iDescribeSandboxTemplatesResponseBody interface {
 }
 
 type DescribeSandboxTemplatesResponseBody struct {
-	// A reserved parameter. You can ignore this parameter.
+	// The backup parameter. You can ignore this parameter.
 	//
 	// example:
 	//
 	// None
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that indicates the position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
+	// The position from which the current read operation starts. An empty value indicates that the read operation starts from the beginning.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSandboxTemplatesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of sandbox templates.
 	SandboxTemplates []*DescribeSandboxTemplatesResponseBodySandboxTemplates `json:"SandboxTemplates,omitempty" xml:"SandboxTemplates,omitempty" type:"Repeated"`
-	// The total number of records that meet the request conditions.
+	// The total number of data entries that meet the current request conditions.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ func (s *DescribeSandboxTemplatesResponseBody) Validate() error {
 
 type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The number of CPUs for the sandbox created by using this template.
+	// The number of CPUs allocated to the sandbox created by using this template.
 	//
 	// example:
 	//
@@ -164,20 +164,20 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	//
 	// 4Gi
 	DefaultMemory *string `json:"DefaultMemory,omitempty" xml:"DefaultMemory,omitempty"`
-	// The sandbox template description.
+	// The description of the sandbox template.
 	//
 	// example:
 	//
 	// code-interpreter-vpc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the sandbox created by using this template can access resources in the VPC where Supabase resides.
+	// Specifies whether the sandbox created by using this template can access resources in the VPC where Supabase is deployed.
 	//
 	// example:
 	//
 	// true
 	EnableVpcAccess *string `json:"EnableVpcAccess,omitempty" xml:"EnableVpcAccess,omitempty"`
 	Image           *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The sandbox template name.
+	// The name of the sandbox template.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type DescribeSandboxTemplatesResponseBodySandboxTemplates struct {
 	Name     *string            `json:"Name,omitempty" xml:"Name,omitempty"`
 	Replicas *int64             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	Tags     map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The sandbox template ID. Specify this ID when you create a sandbox by using this template.
+	// The ID of the sandbox template. Specify this ID when you use the template to create a sandbox.
 	//
 	// example:
 	//

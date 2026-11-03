@@ -22,7 +22,7 @@ type iGetModelOperatorOrderResponseBody interface {
 type GetModelOperatorOrderResponseBody struct {
 	// The query result.
 	Data *GetModelOperatorOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetModelOperatorOrderResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type GetModelOperatorOrderResponseBodyData struct {
 	//
 	// true
 	HasValidOrder *bool `json:"HasValidOrder,omitempty" xml:"HasValidOrder,omitempty"`
-	// The list of instances.
+	// The instance list.
 	InstanceList []*GetModelOperatorOrderResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 }
 
@@ -146,13 +146,13 @@ func (s *GetModelOperatorOrderResponseBodyData) Validate() error {
 }
 
 type GetModelOperatorOrderResponseBodyDataInstanceList struct {
-	// The instance type.
+	// The billing method of the instance.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The end time of the instance. Format: Timestamp.
+	// The end time of the instance (format: timestamp).
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type GetModelOperatorOrderResponseBodyDataInstanceList struct {
 	//
 	// xlarge
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// The instance name.
+	// The instance ID.
 	//
 	// example:
 	//
 	// rds_copilot***_public_cn-*********6
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the instance. Format: Timestamp.
+	// The start time of the instance (format: timestamp).
 	//
 	// example:
 	//

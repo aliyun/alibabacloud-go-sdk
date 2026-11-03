@@ -26,17 +26,26 @@ type iModifyAppInstanceRequest interface {
 }
 
 type ModifyAppInstanceRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The idempotency parameter.
+	// The client token that is used to ensure idempotence.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of modules.
-	Components     []*ModifyAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	DBInstanceName *string                               `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	InstanceClass  *string                               `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	Components []*ModifyAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pgm-2ze49qv594vi****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance type. Currently, only **rdsai.supabase.basic*	- is supported.
+	//
+	// example:
+	//
+	// rdsai.supabase.basic
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// example:

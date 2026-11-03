@@ -24,6 +24,7 @@ type iEnableAgentRuntimeRequest interface {
 }
 
 type EnableAgentRuntimeRequest struct {
+  // The reserved parameter.
   BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
   // The idempotency parameter.
   // 
@@ -45,21 +46,21 @@ type EnableAgentRuntimeRequest struct {
   // 
   // cn-beijing
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The security group ID. This parameter is used to create an endpoint.
+  // The security group ID used to create an endpoint.
   // 
-  // **If this parameter is not specified**: The system performs automatic creation of a security group named **sg-aliyun-rds-created-supabase-sandbox*	- in the VPC where the instance resides. No manual operation is required.
+  // **If not specified**: The system automatically creates a security group named **sg-aliyun-rds-created-supabase-sandbox*	- in the VPC where the instance resides. No manual operation is required.
   // 
-  // **If this parameter is specified**: Make sure that the specified security group allows traffic from the CIDR block of the VPC where the Supabase instance resides in both the inbound and outbound directions. Otherwise, network connectivity issues may occur.
+  // **If manually specified**: Make sure that the specified security group allows traffic from the CIDR block of the VPC where the Supabase instance resides in both the inbound and outbound directions. Otherwise, network connectivity may fail.
   // 
-  // 	Notice: An endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine function capabilities, the system performs automatic creation of the endpoint. When subsequent Supabase instances in the same VPC enable these capabilities, the existing endpoint is reused and no new endpoint is created.
+  // 	Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates an endpoint. When other Supabase instances in the same VPC enable these capabilities later, the existing endpoint is reused and not created again.</notice>
   // 
   // example:
   // 
   // sg-bp179qkbvlj8ym*****
   SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-  // The vSwitch ID. This parameter is used to create an endpoint. If this parameter is not specified, the vSwitch of the Supabase instance is used by default.
+  // The vSwitch ID used to create an endpoint. If this parameter is not specified, the vSwitch of the Supabase instance is used by default.
   // 
-  // 	Notice: An endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine function capabilities, the system performs automatic creation of the endpoint. When subsequent Supabase instances in the same VPC enable these capabilities, the existing endpoint is reused and no new endpoint is created.
+  // 	Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates an endpoint. When other Supabase instances in the same VPC enable these capabilities later, the existing endpoint is reused and not created again.</notice>
   // 
   // example:
   // 

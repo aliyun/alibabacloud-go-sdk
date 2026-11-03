@@ -28,6 +28,7 @@ type iDescribeSandboxTemplatesRequest interface {
 }
 
 type DescribeSandboxTemplatesRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
@@ -37,7 +38,7 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// A reserved parameter. You can ignore this parameter.
+	// The backup parameter. You can ignore this parameter.
 	//
 	// example:
 	//
@@ -55,7 +56,7 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -69,7 +70,7 @@ type DescribeSandboxTemplatesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sandbox template name.
+	// The name of the sandbox template.
 	//
 	// example:
 	//

@@ -20,6 +20,11 @@ type iModifyAppInstanceResponseBody interface {
 }
 
 type ModifyAppInstanceResponseBody struct {
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The list of modules.
 	Components []*ModifyAppInstanceResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`

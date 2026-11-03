@@ -30,7 +30,7 @@ type iGetCustomAgentResponseBody interface {
 }
 
 type GetCustomAgentResponseBody struct {
-	// The time when the dedicated agent was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -52,15 +52,16 @@ type GetCustomAgentResponseBody struct {
 	//
 	// example:
 	//
-	// Query Instance List Agent
+	// Instance list query agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Skills    []*GetCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of associated skill details.
+	Skills []*GetCustomAgentResponseBodySkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 	// The system prompt.
 	//
 	// example:
@@ -69,7 +70,7 @@ type GetCustomAgentResponseBody struct {
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool details.
 	Tools []*string `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	// The time when the dedicated agent was last modified.
+	// The modification time.
 	//
 	// example:
 	//
@@ -180,10 +181,30 @@ func (s *GetCustomAgentResponseBody) Validate() error {
 }
 
 type GetCustomAgentResponseBodySkills struct {
+	// The description of the skill.
+	//
+	// example:
+	//
+	// SQL query optimization skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SkillType   *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// The unique identifier of the skill.
+	//
+	// example:
+	//
+	// 82cf3d62-0add-47bd-869f-877131f7****
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the skill.
+	//
+	// example:
+	//
+	// query-optimization
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The skill type.
+	//
+	// example:
+	//
+	// user
+	SkillType *string `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
 func (s GetCustomAgentResponseBodySkills) String() string {

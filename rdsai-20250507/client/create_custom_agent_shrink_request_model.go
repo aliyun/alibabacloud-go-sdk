@@ -28,11 +28,11 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// true
 	EnableTools *bool `json:"EnableTools,omitempty" xml:"EnableTools,omitempty"`
-	// The name of the agent.
+	// The name of the custom agent.
 	//
 	// example:
 	//
-	// QueryInstanceListAgent
+	// Instance List Query Agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of associated skill IDs.
 	SkillIdsShrink *string `json:"SkillIds,omitempty" xml:"SkillIds,omitempty"`
@@ -42,7 +42,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// I am your dedicated agent for querying instance lists
+	// I am your custom agent for querying the instance list
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
 	// The tool information.
 	ToolsShrink *string `json:"Tools,omitempty" xml:"Tools,omitempty"`

@@ -20,6 +20,11 @@ type iDescribeInstanceStorageConfigResponseBody interface {
 }
 
 type DescribeInstanceStorageConfigResponseBody struct {
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// A reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The list of storage configurations.
 	ConfigList []*DescribeInstanceStorageConfigResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
@@ -97,19 +102,19 @@ func (s *DescribeInstanceStorageConfigResponseBody) Validate() error {
 type DescribeInstanceStorageConfigResponseBodyConfigList struct {
 	// The name of the configuration item. Valid values:
 	//
-	// - **AWS_SESSION_TOKEN**: the temporary access token (Session Token) of OSS.
+	// - **AWS_SESSION_TOKEN**: The temporary access token (session token) for OSS.
 	//
-	// - **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
+	// - **AWS_ACCESS_KEY_ID**: The AccessKey ID for OSS.
 	//
-	// - **AWS_SECRET_ACCESS_KEY**: the AccessKey Secret of OSS.
+	// - **AWS_SECRET_ACCESS_KEY**: The AccessKey secret for OSS.
 	//
-	// - **GLOBAL_S3_BUCKET**: the bucket name of OSS.
+	// - **GLOBAL_S3_BUCKET**: The name of the OSS bucket.
 	//
-	// - **TENANT_ID**: the tenant ID of the OSS prefix (prefix or directory).
+	// - **TENANT_ID**: The tenant ID of the OSS prefix (prefix or directory).
 	//
-	// - **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
+	// - **GLOBAL_S3_ENDPOINT**: The endpoint of OSS.
 	//
-	// - **REGION**: the region of OSS.
+	// - **REGION**: The region of OSS.
 	//
 	// example:
 	//

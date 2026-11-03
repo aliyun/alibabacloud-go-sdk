@@ -24,24 +24,34 @@ type iListContextDatabaseSyncRunLogsResponseBody interface {
 }
 
 type ListContextDatabaseSyncRunLogsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
-	// 示例值
-	Code *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Sample value
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListContextDatabaseSyncRunLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 1
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message.
+	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// id-001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request is successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListContextDatabaseSyncRunLogsResponseBody) String() string {
@@ -116,18 +126,26 @@ func (s *ListContextDatabaseSyncRunLogsResponseBody) Validate() error {
 }
 
 type ListContextDatabaseSyncRunLogsResponseBodyData struct {
+	// The list of logs.
+	//
 	// example:
 	//
-	// [{"Id":1000000000000000, "Level":"info", "Message":"操作成功", "Detail":"同步完成，已上传 12 个文档"}]
+	// [{"Id":1000000000000000, "Level":"info", "Message":"Operation successful", "Detail":"Synchronization completed. 12 documents uploaded."}]
 	Logs []*ListContextDatabaseSyncRunLogsResponseBodyDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -192,25 +210,35 @@ func (s *ListContextDatabaseSyncRunLogsResponseBodyData) Validate() error {
 }
 
 type ListContextDatabaseSyncRunLogsResponseBodyDataLogs struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-09-23T10:00:00+08:00
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The details.
+	//
 	// example:
 	//
-	// 同步完成，已上传 12 个文档
+	// Synchronization completed. 12 documents uploaded
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// 1000000000000000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The log level. Valid values: debug, info, warn, and error.
+	//
 	// example:
 	//
 	// info
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
-	// 操作成功
+	// Operation successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

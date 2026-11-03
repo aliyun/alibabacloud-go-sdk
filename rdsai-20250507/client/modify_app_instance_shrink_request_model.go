@@ -26,8 +26,9 @@ type iModifyAppInstanceShrinkRequest interface {
 }
 
 type ModifyAppInstanceShrinkRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The idempotency parameter.
+	// The client token that is used to ensure idempotence.
 	//
 	// example:
 	//
@@ -35,8 +36,16 @@ type ModifyAppInstanceShrinkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of modules.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	InstanceClass    *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// example:
+	//
+	// pgm-2ze49qv594vi****
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The instance type. Currently, only **rdsai.supabase.basic*	- is supported.
+	//
+	// example:
+	//
+	// rdsai.supabase.basic
+	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	// The instance ID of the AI application.
 	//
 	// example:

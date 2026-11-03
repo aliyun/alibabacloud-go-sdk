@@ -26,8 +26,9 @@ type iModifyInstanceSSLRequest interface {
 }
 
 type ModifyInstanceSSLRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The certificate type. Currently, only **custom*	- is supported, which indicates that a custom certificate is used.
+	// The certificate type. Only **custom*	- is supported, which indicates that a custom certificate is used.
 	//
 	// > This parameter is required when **SSLEnabled*	- is set to **1**.
 	//
@@ -49,11 +50,11 @@ type ModifyInstanceSSLRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable or disable SSL. Valid values:
+	// Specifies whether to enable SSL. Valid values:
 	//
-	// 	- **1**: Enable.
+	// 	- **1**: Enabled.
 	//
-	// 	- **0**: Disable.
+	// 	- **0**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +62,7 @@ type ModifyInstanceSSLRequest struct {
 	//
 	// 1
 	SSLEnabled *int32 `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The custom certificate content.
+	// The content of the custom certificate.
 	//
 	// > This parameter is required when **CAType*	- is set to **custom**.
 	//

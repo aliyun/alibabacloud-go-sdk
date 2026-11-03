@@ -37,6 +37,8 @@ type iDescribeAppInstanceAttributeResponseBody interface {
 	GetLoginToken() *string
 	SetMinorVersionDetail(v string) *DescribeAppInstanceAttributeResponseBody
 	GetMinorVersionDetail() *string
+	SetMinorVersionReleaseNotes(v string) *DescribeAppInstanceAttributeResponseBody
+	GetMinorVersionReleaseNotes() *string
 	SetNatCreatedBy(v string) *DescribeAppInstanceAttributeResponseBody
 	GetNatCreatedBy() *string
 	SetNatGatewayId(v string) *DescribeAppInstanceAttributeResponseBody
@@ -80,27 +82,27 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// supabase
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	BranchingEnabled *string `json:"BranchingEnabled,omitempty" xml:"BranchingEnabled,omitempty"`
-	// The list of components.
+	// The component list.
 	Components []*DescribeAppInstanceAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The instance ID of the RDS PostgreSQL database instance connected to the AI application.
+	// The instance ID of the RDS PostgreSQL database instance associated with the AI application.
 	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The instance ID of the EIP.
+	// The EIP instance ID.
 	//
 	// example:
 	//
@@ -136,25 +138,31 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	// The minor versions of individual components of the RDS AI application instance.
+	// The minor versions of each component in the RDS AI application instance.
 	//
 	// example:
 	//
 	// {\\"studio\\":\\"20260602r1\\",\\"storage\\":\\"v1.48.9\\",\\"auth\\":\\"v2.188.1\\",\\"kong\\":\\"3.9.0\\",\\"rest\\":\\"v12.2.12\\",\\"meta\\":\\"v0.89.3\\",\\"realtime-dev\\":\\"v2.34.47\\",\\"postgres\\":\\"rds_postgres_1700_20260830\\"}
 	MinorVersionDetail *string `json:"MinorVersionDetail,omitempty" xml:"MinorVersionDetail,omitempty"`
+	// The release notes for the minor version of the RDS AI application instance.
+	//
+	// example:
+	//
+	// {\\"20260915\\":\\"realtime：1xxx；auth：2xxx；storage：3xxx\\",\\"20260917\\":\\"studio：4xxx；auth：5xxx\\"}
+	MinorVersionReleaseNotes *string `json:"MinorVersionReleaseNotes,omitempty" xml:"MinorVersionReleaseNotes,omitempty"`
 	// The creator of the NAT gateway.
 	//
 	// example:
 	//
 	// user
 	NatCreatedBy *string `json:"NatCreatedBy,omitempty" xml:"NatCreatedBy,omitempty"`
-	// The NAT gateway ID.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
@@ -184,31 +192,31 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329241C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	RetentionHours *string `json:"RetentionHours,omitempty" xml:"RetentionHours,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	SqlExtendMoInstanceId *string `json:"SqlExtendMoInstanceId,omitempty" xml:"SqlExtendMoInstanceId,omitempty"`
-	// The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
+	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	UploadKey *string `json:"UploadKey,omitempty" xml:"UploadKey,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	UploadKeyList []*DescribeAppInstanceAttributeResponseBodyUploadKeyList `json:"UploadKeyList,omitempty" xml:"UploadKeyList,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
@@ -292,6 +300,10 @@ func (s *DescribeAppInstanceAttributeResponseBody) GetLoginToken() *string {
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetMinorVersionDetail() *string {
 	return s.MinorVersionDetail
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) GetMinorVersionReleaseNotes() *string {
+	return s.MinorVersionReleaseNotes
 }
 
 func (s *DescribeAppInstanceAttributeResponseBody) GetNatCreatedBy() *string {
@@ -417,6 +429,11 @@ func (s *DescribeAppInstanceAttributeResponseBody) SetLoginToken(v string) *Desc
 
 func (s *DescribeAppInstanceAttributeResponseBody) SetMinorVersionDetail(v string) *DescribeAppInstanceAttributeResponseBody {
 	s.MinorVersionDetail = &v
+	return s
+}
+
+func (s *DescribeAppInstanceAttributeResponseBody) SetMinorVersionReleaseNotes(v string) *DescribeAppInstanceAttributeResponseBody {
+	s.MinorVersionReleaseNotes = &v
 	return s
 }
 
@@ -558,31 +575,31 @@ func (s *DescribeAppInstanceAttributeResponseBodyComponents) Validate() error {
 }
 
 type DescribeAppInstanceAttributeResponseBodyUploadKeyList struct {
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	IsSystemKey *bool `json:"IsSystemKey,omitempty" xml:"IsSystemKey,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	SlsStorageBytes *int64 `json:"SlsStorageBytes,omitempty" xml:"SlsStorageBytes,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// Reserved parameter
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//

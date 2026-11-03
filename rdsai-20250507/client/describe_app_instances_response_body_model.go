@@ -26,7 +26,7 @@ type iDescribeAppInstancesResponseBody interface {
 type DescribeAppInstancesResponseBody struct {
 	// The list of instances.
 	Instances []*DescribeAppInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// A reserved parameter. You can ignore this parameter.
+	// A reserved parameter. You can ignore it.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeAppInstancesResponseBody struct {
 	//
 	// 32DEFB4A-861F-5D1D-ADD5-918E4FD7AB8C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -145,9 +145,10 @@ type DescribeAppInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// supabase
-	AppType    *string                                                `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The list of components.
 	Components []*DescribeAppInstancesResponseBodyInstancesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The instance ID of the ApsaraDB RDS for PostgreSQL database that is connected to the AI application.
+	// The instance ID of the RDS PostgreSQL database to which the AI application is connected.
 	//
 	// example:
 	//
@@ -333,8 +334,10 @@ func (s *DescribeAppInstancesResponseBodyInstances) Validate() error {
 }
 
 type DescribeAppInstancesResponseBodyInstancesComponents struct {
+	// The component status.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The component type.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeAppInstancesResponseBodyInstancesComponents) String() string {

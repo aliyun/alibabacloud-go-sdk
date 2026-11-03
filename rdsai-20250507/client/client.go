@@ -27,10 +27,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-wulanchabu": dara.String("rdsai.aliyuncs.com"),
-		"cn-shenzhen":   dara.String("rdsai.aliyuncs.com"),
 		"cn-beijing":    dara.String("rdsai.aliyuncs.com"),
 		"cn-shanghai":   dara.String("rdsai.aliyuncs.com"),
-		"cn-guangzhou":  dara.String("rdsai.aliyuncs.com"),
 		"cn-hangzhou":   dara.String("rdsai.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
@@ -481,7 +479,7 @@ func (client *Client) ChatMessagesTaskStop(request *ChatMessagesTaskStopRequest)
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -563,7 +561,7 @@ func (client *Client) CreateApiKeyWithOptions(request *CreateApiKeyRequest, runt
 //
 // Description:
 //
-// ### Applicable engine
+// ### Applicable engines
 //
 // [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
@@ -583,17 +581,17 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates an RDS AI application instance.
+// Creates an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related feature documentation carefully before you proceed.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -713,17 +711,17 @@ func (client *Client) CreateAppInstanceWithOptions(tmpReq *CreateAppInstanceRequ
 
 // Summary:
 //
-// Creates an RDS AI application instance.
+// Creates an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Warning: This API operation incurs fees. Read the related documentation carefully before you perform this operation.
+//	Warning: This API operation incurs fees. Read the related feature documentation carefully before you proceed.
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -1275,7 +1273,7 @@ func (client *Client) CreateContextDatabaseWorkspace(request *CreateContextDatab
 
 // Summary:
 //
-// Creates a user-specific agent.
+// Creates a custom agent.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -1345,7 +1343,7 @@ func (client *Client) CreateCustomAgentWithOptions(tmpReq *CreateCustomAgentRequ
 
 // Summary:
 //
-// Creates a user-specific agent.
+// Creates a custom agent.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -2743,11 +2741,11 @@ func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteS
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -2805,11 +2803,11 @@ func (client *Client) DescribeAppInstanceAttributeWithOptions(request *DescribeA
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -2829,11 +2827,11 @@ func (client *Client) DescribeAppInstanceAttribute(request *DescribeAppInstanceA
 
 // Summary:
 //
-// Queries a list of RDS AI application instances.
+// Queries the list of RDS AI application instances.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -2899,11 +2897,11 @@ func (client *Client) DescribeAppInstancesWithOptions(request *DescribeAppInstan
 
 // Summary:
 //
-// Queries a list of RDS AI application instances.
+// Queries the list of RDS AI application instances.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -3017,7 +3015,7 @@ func (client *Client) DescribeCommonSandboxTemplates(request *DescribeCommonSand
 
 // Summary:
 //
-// Queries a list of events.
+// Queries the event list.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -3081,7 +3079,7 @@ func (client *Client) DescribeEventsListWithOptions(request *DescribeEventsListR
 
 // Summary:
 //
-// Queries a list of events.
+// Queries the event list.
 //
 // @param request - DescribeEventsListRequest
 //
@@ -3103,11 +3101,11 @@ func (client *Client) DescribeEventsList(request *DescribeEventsListRequest) (_r
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3165,11 +3163,11 @@ func (client *Client) DescribeInstanceAuthInfoWithOptions(request *DescribeInsta
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3443,13 +3441,13 @@ func (client *Client) DescribeInstanceRAGConfig(request *DescribeInstanceRAGConf
 
 // Summary:
 //
-// Queries the SSL configuration of an RDS AI application instance.
+// Retrieves the SSL configuration of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
@@ -3505,13 +3503,13 @@ func (client *Client) DescribeInstanceSSLWithOptions(request *DescribeInstanceSS
 
 // Summary:
 //
-// Queries the SSL configuration of an RDS AI application instance.
+// Retrieves the SSL configuration of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
@@ -3537,11 +3535,11 @@ func (client *Client) DescribeInstanceSSL(request *DescribeInstanceSSLRequest) (
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -3601,11 +3599,11 @@ func (client *Client) DescribeInstanceStorageConfigWithOptions(request *Describe
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -4087,7 +4085,7 @@ func (client *Client) DescribeMonitorData(request *DescribeMonitorDataRequest) (
 
 // Summary:
 //
-// Queries the list of sandbox templates used to create Supabase sandboxes.
+// Queries a list of sandbox templates for creating Supabase sandboxes.
 //
 // Description:
 //
@@ -4169,7 +4167,7 @@ func (client *Client) DescribeSandboxTemplatesWithOptions(request *DescribeSandb
 
 // Summary:
 //
-// Queries the list of sandbox templates used to create Supabase sandboxes.
+// Queries a list of sandbox templates for creating Supabase sandboxes.
 //
 // Description:
 //
@@ -4271,13 +4269,13 @@ func (client *Client) DescribeWhitelistIps(request *DescribeWhitelistIpsRequest)
 
 // Summary:
 //
-// Disables the sandbox and Edge Routine capabilities of a Supabase instance. Note: This operation deletes all sandboxes and Edge Routines of the instance. Fully assess the business risks before performing this operation.
+// Disables the sandbox and Edge Routine capabilities of Supabase. Note: This operation deletes all sandboxes and Edge Routines of the instance. Evaluate business risks before you perform this operation.
 //
 // Description:
 //
-// Disables the sandbox and Edge Routine capabilities of a Supabase instance.
+// Disables the sandbox and Edge Routine capabilities of Supabase.
 //
-//	Notice: This operation deletes all sandboxes and Edge Routines of the Supabase instance. Fully assess the business risks before performing this operation.
+//	Notice: This operation deletes all sandboxes and Edge Routines of the Supabase instance. Evaluate business risks before you perform this operation.
 //
 // @param request - DisableAgentRuntimeRequest
 //
@@ -4333,13 +4331,13 @@ func (client *Client) DisableAgentRuntimeWithOptions(request *DisableAgentRuntim
 
 // Summary:
 //
-// Disables the sandbox and Edge Routine capabilities of a Supabase instance. Note: This operation deletes all sandboxes and Edge Routines of the instance. Fully assess the business risks before performing this operation.
+// Disables the sandbox and Edge Routine capabilities of Supabase. Note: This operation deletes all sandboxes and Edge Routines of the instance. Evaluate business risks before you perform this operation.
 //
 // Description:
 //
-// Disables the sandbox and Edge Routine capabilities of a Supabase instance.
+// Disables the sandbox and Edge Routine capabilities of Supabase.
 //
-//	Notice: This operation deletes all sandboxes and Edge Routines of the Supabase instance. Fully assess the business risks before performing this operation.
+//	Notice: This operation deletes all sandboxes and Edge Routines of the Supabase instance. Evaluate business risks before you perform this operation.
 //
 // @param request - DisableAgentRuntimeRequest
 //
@@ -4357,15 +4355,15 @@ func (client *Client) DisableAgentRuntime(request *DisableAgentRuntimeRequest) (
 
 // Summary:
 //
-// Enables the sandbox and Edge Routine capabilities for a Supabase instance. Read the operation description before you call this operation.
+// Enables the sandbox and Edge Routine capabilities for Supabase. Read the operation description carefully before you call this API operation.
 //
 // Description:
 //
-// During the public preview, the sandbox and Edge Routine features are free of charge.
+// During the public preview, the sandbox and Edge Routine features are provided free of charge.
 //
 // ### Before you begin
 //
-// Before you use this feature, [authorize the service-linked role](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
+// Before you use this feature, you must [authorize the service-linked role](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
 //
 // @param request - EnableAgentRuntimeRequest
 //
@@ -4429,15 +4427,15 @@ func (client *Client) EnableAgentRuntimeWithOptions(request *EnableAgentRuntimeR
 
 // Summary:
 //
-// Enables the sandbox and Edge Routine capabilities for a Supabase instance. Read the operation description before you call this operation.
+// Enables the sandbox and Edge Routine capabilities for Supabase. Read the operation description carefully before you call this API operation.
 //
 // Description:
 //
-// During the public preview, the sandbox and Edge Routine features are free of charge.
+// During the public preview, the sandbox and Edge Routine features are provided free of charge.
 //
 // ### Before you begin
 //
-// Before you use this feature, [authorize the service-linked role](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
+// Before you use this feature, you must [authorize the service-linked role](https://api.aliyun.com/api/ResourceManager/2020-03-31/CreateServiceLinkedRole?spm=api-workbench.API%20Document.0.0.4ea75094rJgPzK&RegionId=cn-beijing&tab=DEBUG&params=%7B%2522ServiceName%2522:%2522supabase.rdsai.aliyuncs.com%2522%7D&sdkStyle=old). The service-linked role used is [AliyunServiceRoleForRDSAISupabase](https://www.alibabacloud.com/help/en/ram/product-overview/services-that-work-with-service-linked-roles).
 //
 // @param request - EnableAgentRuntimeRequest
 //
@@ -5546,7 +5544,7 @@ func (client *Client) GetMessages(request *GetMessagesRequest) (_result *GetMess
 
 // Summary:
 //
-// Retrieves order information for RDS AI Assistant Ultimate Edition.
+// Retrieves the order information for the RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
@@ -5596,7 +5594,7 @@ func (client *Client) GetModelOperatorOrderWithOptions(request *GetModelOperator
 
 // Summary:
 //
-// Retrieves order information for RDS AI Assistant Ultimate Edition.
+// Retrieves the order information for the RDS AI Assistant Ultimate Edition.
 //
 // Description:
 //
@@ -5690,7 +5688,7 @@ func (client *Client) GetScheduledInstances(request *GetScheduledInstancesReques
 
 // Summary:
 //
-// Queries all inspection reports under a specified scheduled task, with support for filtering by time range and pagination.
+// Queries all inspection reports for a specified scheduled task. Supports filtering by time range and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -5750,7 +5748,7 @@ func (client *Client) GetScheduledReportsWithOptions(request *GetScheduledReport
 
 // Summary:
 //
-// Queries all inspection reports under a specified scheduled task, with support for filtering by time range and pagination.
+// Queries all inspection reports for a specified scheduled task. Supports filtering by time range and pagination.
 //
 // @param request - GetScheduledReportsRequest
 //
@@ -6662,13 +6660,13 @@ func (client *Client) ListContextDatabaseSyncRunItems(request *ListContextDataba
 
 // Summary:
 //
-// 列出 Run 日志
+// Lists the run logs.
 //
 // Description:
 //
-// 列表接口默认分页返回，Page 与 PageSize 为可选参数。
+// The list API returns paginated results by default. Page and PageSize are optional parameters.
 //
-// 响应中的 Data 列表字段使用数组返回，Total 表示符合条件的总条数。
+// The Data list field in the response is returned as an array, and Total indicates the total number of matching entries.
 //
 // @param request - ListContextDatabaseSyncRunLogsRequest
 //
@@ -6724,13 +6722,13 @@ func (client *Client) ListContextDatabaseSyncRunLogsWithOptions(request *ListCon
 
 // Summary:
 //
-// 列出 Run 日志
+// Lists the run logs.
 //
 // Description:
 //
-// 列表接口默认分页返回，Page 与 PageSize 为可选参数。
+// The list API returns paginated results by default. Page and PageSize are optional parameters.
 //
-// 响应中的 Data 列表字段使用数组返回，Total 表示符合条件的总条数。
+// The Data list field in the response is returned as an array, and Total indicates the total number of matching entries.
 //
 // @param request - ListContextDatabaseSyncRunLogsRequest
 //
@@ -7429,7 +7427,7 @@ func (client *Client) ListSkill(request *ListSkillRequest) (_result *ListSkillRe
 
 // Summary:
 //
-// Modifies the modules of an RDS AI application instance.
+// Modifies the modules of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
@@ -7513,7 +7511,7 @@ func (client *Client) ModifyAppInstanceWithOptions(tmpReq *ModifyAppInstanceRequ
 
 // Summary:
 //
-// Modifies the modules of an RDS AI application instance.
+// Modifies the modules of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
@@ -7541,13 +7539,13 @@ func (client *Client) ModifyAppInstance(request *ModifyAppInstanceRequest) (_res
 
 // Summary:
 //
-// Modifies the authentication configuration of an RDS AI application instance.
+// Modifies the authentication configuration of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
@@ -7613,13 +7611,13 @@ func (client *Client) ModifyInstanceAuthConfigWithOptions(tmpReq *ModifyInstance
 
 // Summary:
 //
-// Modifies the authentication configuration of an RDS AI application instance.
+// Modifies the authentication configuration of an ApsaraDB RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
 // ### Related documentation
 //
@@ -7641,7 +7639,7 @@ func (client *Client) ModifyInstanceAuthConfig(request *ModifyInstanceAuthConfig
 
 // Summary:
 //
-// Modifies the general configurations of an instance, such as network EIP and NAT configurations.
+// Modifies the general configurations of an instance, such as Elastic IP (EIP) and NAT configurations.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -7705,7 +7703,7 @@ func (client *Client) ModifyInstanceConfigWithOptions(request *ModifyInstanceCon
 
 // Summary:
 //
-// Modifies the general configurations of an instance, such as network EIP and NAT configurations.
+// Modifies the general configurations of an instance, such as Elastic IP (EIP) and NAT configurations.
 //
 // @param request - ModifyInstanceConfigRequest
 //
@@ -7723,11 +7721,11 @@ func (client *Client) ModifyInstanceConfig(request *ModifyInstanceConfigRequest)
 
 // Summary:
 //
-// Modifies the IP whitelist of an RDS AI application instance.
+// Modifies the IP address whitelist of an RDS AI application instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -7801,11 +7799,11 @@ func (client *Client) ModifyInstanceIpWhitelistWithOptions(request *ModifyInstan
 
 // Summary:
 //
-// Modifies the IP whitelist of an RDS AI application instance.
+// Modifies the IP address whitelist of an RDS AI application instance.
 //
 // Description:
 //
-// ### Supported engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -7829,7 +7827,7 @@ func (client *Client) ModifyInstanceIpWhitelist(request *ModifyInstanceIpWhiteli
 
 // Summary:
 //
-// Modifies the RAG Agent configuration of an RDS AI application instance.
+// Modifies the RAG Agent configuration of an ApsaraDB RDS AI application instance.
 //
 // @param tmpReq - ModifyInstanceRAGConfigRequest
 //
@@ -7899,7 +7897,7 @@ func (client *Client) ModifyInstanceRAGConfigWithOptions(tmpReq *ModifyInstanceR
 
 // Summary:
 //
-// Modifies the RAG Agent configuration of an RDS AI application instance.
+// Modifies the RAG Agent configuration of an ApsaraDB RDS AI application instance.
 //
 // @param request - ModifyInstanceRAGConfigRequest
 //
@@ -7921,7 +7919,7 @@ func (client *Client) ModifyInstanceRAGConfig(request *ModifyInstanceRAGConfigRe
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -7999,7 +7997,7 @@ func (client *Client) ModifyInstanceSSLWithOptions(request *ModifyInstanceSSLReq
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -8027,7 +8025,7 @@ func (client *Client) ModifyInstanceSSL(request *ModifyInstanceSSLRequest) (_res
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -8105,7 +8103,7 @@ func (client *Client) ModifyInstanceStorageConfigWithOptions(tmpReq *ModifyInsta
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -8945,7 +8943,7 @@ func (client *Client) ResetInstanceKeys(request *ResetInstanceKeysRequest) (_res
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -8953,7 +8951,7 @@ func (client *Client) ResetInstanceKeys(request *ResetInstanceKeysRequest) (_res
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// > Currently, only the password of the RDS Supabase Dashboard user can be modified.
+// > Currently, only the password of the RDS Supabase Dashboard user can be changed.
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -9017,7 +9015,7 @@ func (client *Client) ResetInstancePasswordWithOptions(request *ResetInstancePas
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
 // # RDS PostgreSQL
 //
@@ -9025,7 +9023,7 @@ func (client *Client) ResetInstancePasswordWithOptions(request *ResetInstancePas
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
-// > Currently, only the password of the RDS Supabase Dashboard user can be modified.
+// > Currently, only the password of the RDS Supabase Dashboard user can be changed.
 //
 // @param request - ResetInstancePasswordRequest
 //
@@ -9043,11 +9041,11 @@ func (client *Client) ResetInstancePassword(request *ResetInstancePasswordReques
 
 // Summary:
 //
-// Restarts an ApsaraDB RDS AI application instance that is in the Running state.
+// Restarts an RDS AI application instance that is in the Running state.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -9105,11 +9103,11 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 
 // Summary:
 //
-// Restarts an ApsaraDB RDS AI application instance that is in the Running state.
+// Restarts an RDS AI application instance that is in the Running state.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engine
 //
 // # RDS PostgreSQL
 //
@@ -9133,11 +9131,11 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// 基于快照重试失败明细
+// Retries failed items based on a snapshot.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。 重试会基于失败项生成新的 Run，原 Run 状态保持不变。
+// For write operations, you can pass a ClientToken to ensure idempotence. If not provided, the backend automatically generates one. The retry generates a new run based on the failed items, and the status of the original run remains unchanged.
 //
 // @param request - RetryFailedContextDatabaseSyncRunRequest
 //
@@ -9189,11 +9187,11 @@ func (client *Client) RetryFailedContextDatabaseSyncRunWithOptions(request *Retr
 
 // Summary:
 //
-// 基于快照重试失败明细
+// Retries failed items based on a snapshot.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。 重试会基于失败项生成新的 Run，原 Run 状态保持不变。
+// For write operations, you can pass a ClientToken to ensure idempotence. If not provided, the backend automatically generates one. The retry generates a new run based on the failed items, and the status of the original run remains unchanged.
 //
 // @param request - RetryFailedContextDatabaseSyncRunRequest
 //
@@ -9449,15 +9447,15 @@ func (client *Client) StartContextDatabaseSyncSourceDiscovery(request *StartCont
 
 // Summary:
 //
-// Starts an RDS AI application instance that is in the Stopped state.
+// Starts an ApsaraDB RDS AI application instance that is in the Stopped state.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -9511,15 +9509,15 @@ func (client *Client) StartInstanceWithOptions(request *StartInstanceRequest, ru
 
 // Summary:
 //
-// Starts an RDS AI application instance that is in the Stopped state.
+// Starts an ApsaraDB RDS AI application instance that is in the Stopped state.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related feature documentation
+// ### Related documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -9633,13 +9631,13 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 
 // Summary:
 //
-// Modifies the quota of an API key.
+// Updates the API key quota.
 //
 // Description:
 //
 // ### Applicable engine
 //
-// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [Ultimate Edition of RDS AI Assistant](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param tmpReq - UpdateApiKeyQuotaRequest
 //
@@ -9693,13 +9691,13 @@ func (client *Client) UpdateApiKeyQuotaWithOptions(tmpReq *UpdateApiKeyQuotaRequ
 
 // Summary:
 //
-// Modifies the quota of an API key.
+// Updates the API key quota.
 //
 // Description:
 //
 // ### Applicable engine
 //
-// [RDS AI Assistant Ultimate Edition](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
+// [Ultimate Edition of RDS AI Assistant](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-mysql/rds-copilot-ultra)
 //
 // @param request - UpdateApiKeyQuotaRequest
 //
@@ -9885,11 +9883,11 @@ func (client *Client) UpdateContextDatabaseMember(request *UpdateContextDatabase
 
 // Summary:
 //
-// 更新连接元数据
+// Updates the metadata of a data source.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+// For write operations, you can specify a ClientToken to ensure idempotence. If you do not specify it, the backend automatically generates one.
 //
 // @param request - UpdateContextDatabaseSyncConnectionRequest
 //
@@ -9945,11 +9943,11 @@ func (client *Client) UpdateContextDatabaseSyncConnectionWithOptions(request *Up
 
 // Summary:
 //
-// 更新连接元数据
+// Updates the metadata of a data source.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+// For write operations, you can specify a ClientToken to ensure idempotence. If you do not specify it, the backend automatically generates one.
 //
 // @param request - UpdateContextDatabaseSyncConnectionRequest
 //
@@ -9967,11 +9965,11 @@ func (client *Client) UpdateContextDatabaseSyncConnection(request *UpdateContext
 
 // Summary:
 //
-// 单独轮换连接凭据
+// Rotates the credentials of a data source individually.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+// You can specify the ClientToken parameter to ensure idempotence for write operations. If you do not specify this parameter, the backend automatically generates one.
 //
 // @param tmpReq - UpdateContextDatabaseSyncConnectionCredentialRequest
 //
@@ -10033,11 +10031,11 @@ func (client *Client) UpdateContextDatabaseSyncConnectionCredentialWithOptions(t
 
 // Summary:
 //
-// 单独轮换连接凭据
+// Rotates the credentials of a data source individually.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+// You can specify the ClientToken parameter to ensure idempotence for write operations. If you do not specify this parameter, the backend automatically generates one.
 //
 // @param request - UpdateContextDatabaseSyncConnectionCredentialRequest
 //
@@ -10055,11 +10053,11 @@ func (client *Client) UpdateContextDatabaseSyncConnectionCredential(request *Upd
 
 // Summary:
 //
-// 更新 Job 元数据
+// Updates the metadata of an import task.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。 Target 为隐含概念，调用方只需传入 KnowledgeBaseId，后端自动创建/匹配 Target。
+// For write operations, you can pass in a ClientToken to ensure idempotency. If it is not provided, the backend automatically generates one. Target is an implicit concept. The invoker only needs to pass in the KnowledgeBaseId, and the backend performs automatic creation or matching of the target.
 //
 // @param tmpReq - UpdateContextDatabaseSyncJobRequest
 //
@@ -10137,11 +10135,11 @@ func (client *Client) UpdateContextDatabaseSyncJobWithOptions(tmpReq *UpdateCont
 
 // Summary:
 //
-// 更新 Job 元数据
+// Updates the metadata of an import task.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。 Target 为隐含概念，调用方只需传入 KnowledgeBaseId，后端自动创建/匹配 Target。
+// For write operations, you can pass in a ClientToken to ensure idempotency. If it is not provided, the backend automatically generates one. Target is an implicit concept. The invoker only needs to pass in the KnowledgeBaseId, and the backend performs automatic creation or matching of the target.
 //
 // @param request - UpdateContextDatabaseSyncJobRequest
 //
@@ -10159,11 +10157,11 @@ func (client *Client) UpdateContextDatabaseSyncJob(request *UpdateContextDatabas
 
 // Summary:
 //
-// 更新 Job 调度配置
+// Updates the scheduling configuration of an import task.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+// You can specify a ClientToken for write operations to ensure idempotence. If no ClientToken is provided, the backend automatically generates one.
 //
 // @param tmpReq - UpdateContextDatabaseSyncJobScheduleRequest
 //
@@ -10237,11 +10235,11 @@ func (client *Client) UpdateContextDatabaseSyncJobScheduleWithOptions(tmpReq *Up
 
 // Summary:
 //
-// 更新 Job 调度配置
+// Updates the scheduling configuration of an import task.
 //
 // Description:
 //
-// 写操作可传入 ClientToken 实现幂等；未传时由后端自动生成。
+// You can specify a ClientToken for write operations to ensure idempotence. If no ClientToken is provided, the backend automatically generates one.
 //
 // @param request - UpdateContextDatabaseSyncJobScheduleRequest
 //
@@ -10517,7 +10515,7 @@ func (client *Client) UpdateContextDatabaseWorkspace(request *UpdateContextDatab
 
 // Summary:
 //
-// Updates a Custom Agent.
+// Updates a custom agent.
 //
 // @param tmpReq - UpdateCustomAgentRequest
 //
@@ -10591,7 +10589,7 @@ func (client *Client) UpdateCustomAgentWithOptions(tmpReq *UpdateCustomAgentRequ
 
 // Summary:
 //
-// Updates a Custom Agent.
+// Updates a custom agent.
 //
 // @param request - UpdateCustomAgentRequest
 //

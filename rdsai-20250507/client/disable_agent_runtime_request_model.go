@@ -20,6 +20,7 @@ type iDisableAgentRuntimeRequest interface {
 }
 
 type DisableAgentRuntimeRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The idempotence parameter.
 	//

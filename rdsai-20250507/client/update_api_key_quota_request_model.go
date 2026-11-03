@@ -16,7 +16,7 @@ type iUpdateApiKeyQuotaRequest interface {
 }
 
 type UpdateApiKeyQuotaRequest struct {
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//
@@ -72,29 +72,31 @@ type UpdateApiKeyQuotaRequestKeys struct {
 	//
 	// sk-rds-xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The daily quota of the API key.
+	//
 	// example:
 	//
 	// 100000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The throttling ratio. This parameter is required when type is set to ratio.
+	// The rate limit ratio. This parameter is required when the limit type is set to ratio.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float64 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota limit type. Valid values:
 	//
-	// - ratio: by ratio.
+	// - ratio: Proportional limit.
 	//
-	// - fixed: by fixed value.
+	// - fixed: Fixed value.
 	//
-	// - auto: automatic allocation of EPS resource.
+	// - auto: Automatic allocation.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The fixed throttling value. This parameter is required when type is set to fixed.
+	// The fixed rate limit value. This parameter is required when the limit type is set to fixed.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iUpdateApiKeyQuotaShrinkRequest interface {
 }
 
 type UpdateApiKeyQuotaShrinkRequest struct {
-	// The instance ID.
+	// The instance name.
 	//
 	// example:
 	//

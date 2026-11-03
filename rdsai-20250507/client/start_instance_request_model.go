@@ -18,6 +18,7 @@ type iStartInstanceRequest interface {
 }
 
 type StartInstanceRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//

@@ -14,6 +14,11 @@ type iGetModelOperatorOrderRequest interface {
 }
 
 type GetModelOperatorOrderRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 

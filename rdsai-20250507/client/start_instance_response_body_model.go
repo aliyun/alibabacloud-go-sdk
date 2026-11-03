@@ -18,6 +18,11 @@ type iStartInstanceResponseBody interface {
 }
 
 type StartInstanceResponseBody struct {
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//

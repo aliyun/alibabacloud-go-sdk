@@ -167,7 +167,11 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	//
 	// sk-rds-*****
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The daily quota of the API key.
+	// The daily token quota for the API key.
+	//
+	// example:
+	//
+	// 0
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
 	// The name of the API key.
 	//
@@ -175,17 +179,17 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	//
 	// api-*****
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The quota percentage.
+	// The quota limit percentage.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota limit type. Valid values:
 	//
-	// - **fixed**: By fixed value.
+	// - **fixed**: Fixed value.
 	//
-	// - **ratio**: By percentage.
+	// - **ratio**: Percentage-based.
 	//
 	// - **auto**: Automatic allocation.
 	//
@@ -194,7 +198,7 @@ type CreateApiKeyResponseBodyDataCustomKeyList struct {
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
 	RoleArn   *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The quota limit for the current key.
+	// The token quota for the current key.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetScheduledReportsRequest interface {
 }
 
 type GetScheduledReportsRequest struct {
-	// The end time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If this parameter is not specified, no end time filter is applied.
+	// The end time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If you do not specify this parameter, no filtering is applied.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetScheduledReportsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The inspection task ID.
+	// The ID of the scheduled task.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type GetScheduledReportsRequest struct {
 	//
 	// 847268a4-196f-416b-aa12-bfe0c115****
 	ScheduledId *string `json:"ScheduledId,omitempty" xml:"ScheduledId,omitempty"`
-	// The start time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If this parameter is not specified, no start time filter is applied.
+	// The start time for filtering. Format: YYYY-MM-DDTHH:mm:ssZ. If you do not specify this parameter, no filtering is applied.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iGetScheduledReportsResponseBody interface {
 }
 
 type GetScheduledReportsResponseBody struct {
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetScheduledReportsResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -157,17 +157,22 @@ type GetScheduledReportsResponseBodyReports struct {
 	//
 	// 2025-01-01T22:59:59Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The inspection end time. Format: YYYY-MM-DDTHH:mm:ssZ.
+	// The end time of the inspection. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2025-01-01T23:59:59Z
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InspectionItems *string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReportLanguage  *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
-	ReportType      *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The inspection start time. Format: YYYY-MM-DDTHH:mm:ssZ.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReportLanguage *string `json:"ReportLanguage,omitempty" xml:"ReportLanguage,omitempty"`
+	ReportType     *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The start time of the inspection. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -179,7 +184,7 @@ type GetScheduledReportsResponseBodyReports struct {
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The inspection report ID.
+	// The ID of the inspection report.
 	//
 	// example:
 	//

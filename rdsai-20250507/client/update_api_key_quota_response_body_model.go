@@ -20,9 +20,9 @@ type iUpdateApiKeyQuotaResponseBody interface {
 }
 
 type UpdateApiKeyQuotaResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *UpdateApiKeyQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type UpdateApiKeyQuotaResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -137,29 +137,31 @@ type UpdateApiKeyQuotaResponseBodyDataCustomKeyList struct {
 	//
 	// sk-rds-xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The daily quota of the API key.
+	//
 	// example:
 	//
 	// 1000000000
 	DailyTokenQuota *int64 `json:"DailyTokenQuota,omitempty" xml:"DailyTokenQuota,omitempty"`
-	// The quota ratio.
+	// The quota limit ratio.
 	//
 	// example:
 	//
 	// 0.2
 	LimitRate *float32 `json:"LimitRate,omitempty" xml:"LimitRate,omitempty"`
-	// The quota type. Valid values:
+	// The quota limit type. Valid values:
 	//
-	// - ratio: by ratio.
+	// - ratio: Proportional limit.
 	//
-	// - fixed: by fixed value.
+	// - fixed: Fixed value.
 	//
-	// - auto: automatic allocation of EPS resource.
+	// - auto: Automatic allocation.
 	//
 	// example:
 	//
 	// fixed
 	LimitType *string `json:"LimitType,omitempty" xml:"LimitType,omitempty"`
-	// The quota of the current key.
+	// The quota limit of the current key.
 	//
 	// example:
 	//

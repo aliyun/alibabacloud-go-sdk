@@ -24,10 +24,15 @@ type iDescribeInstanceAuthInfoResponseBody interface {
 }
 
 type DescribeInstanceAuthInfoResponseBody struct {
-	// API Keys。
-	ApiKeys    *DescribeInstanceAuthInfoResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Struct"`
-	BranchName *string                                      `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The list of authentication configurations.
+	// The API keys.
+	ApiKeys *DescribeInstanceAuthInfoResponseBodyApiKeys `json:"ApiKeys,omitempty" xml:"ApiKeys,omitempty" type:"Struct"`
+	// Reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
+	// The list of authentication information.
 	ConfigList []*DescribeInstanceAuthInfoResponseBodyConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
 	// The instance ID of the AI application.
 	//
@@ -187,27 +192,27 @@ func (s *DescribeInstanceAuthInfoResponseBodyApiKeys) Validate() error {
 type DescribeInstanceAuthInfoResponseBodyConfigList struct {
 	// The name of the configuration item. Valid values:
 	//
-	// - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether external email is allowed.
+	// - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether external emails are allowed.
 	//
 	// - **GOTRUE_SITE_URL**: The website URL displayed when the AI application sends emails.
 	//
-	// - **GOTRUE_SMTP_PORT**: The port of the SMTP provider.
+	// - **GOTRUE_SMTP_PORT**: The port of the SMTP service provider.
 	//
 	// - **GOTRUE_SMTP_SENDER_NAME**: The name of the email sender.
 	//
-	// - **GOTRUE_SMTP_USER**: The username of the SMTP provider.
+	// - **GOTRUE_SMTP_USER**: The username of the SMTP service provider.
 	//
-	// - **GOTRUE_SMTP_PASS**: The secret key of the SMTP provider.
+	// - **GOTRUE_SMTP_PASS**: The password of the SMTP service provider.
 	//
-	// - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP provider.
+	// - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP service provider.
 	//
-	// - **GOTRUE_SMTP_HOST**: The host address of the SMTP provider.
+	// - **GOTRUE_SMTP_HOST**: The host address of the SMTP service provider.
 	//
 	// - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether automatic confirmation is enabled.
 	//
 	// - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
 	//
-	// - **GOTRUE_MAILER_OTP_LENGTH**: The length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
+	// - **GOTRUE_MAILER_OTP_LENGTH**: The length of the one-time password (OTP). The value must be an integer greater than or equal to 6.
 	//
 	// example:
 	//

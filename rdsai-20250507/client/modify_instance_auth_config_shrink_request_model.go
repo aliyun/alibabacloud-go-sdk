@@ -20,6 +20,7 @@ type iModifyInstanceAuthConfigShrinkRequest interface {
 }
 
 type ModifyInstanceAuthConfigShrinkRequest struct {
+	// The reserved parameter.
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The list of authentication configurations.
 	ConfigListShrink *string `json:"ConfigList,omitempty" xml:"ConfigList,omitempty"`
@@ -29,7 +30,7 @@ type ModifyInstanceAuthConfigShrinkRequest struct {
 	//
 	// ra-supabase-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//

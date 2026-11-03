@@ -30,7 +30,7 @@ type DescribeEventsListRequest struct {
 	//
 	// 2025-08-28 18:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of instances.
+	// The list of instance IDs.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeEventsListRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//

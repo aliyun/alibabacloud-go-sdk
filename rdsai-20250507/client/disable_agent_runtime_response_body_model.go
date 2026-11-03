@@ -18,6 +18,11 @@ type iDisableAgentRuntimeResponseBody interface {
 }
 
 type DisableAgentRuntimeResponseBody struct {
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The instance ID of the AI application.
 	//
