@@ -18,13 +18,13 @@ type iBatchStartApplicationsRequest interface {
 }
 
 type BatchStartApplicationsRequest struct {
-	// The IDs of the applications that you want to start. Separate multiple IDs with commas (,).
+	// The application IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// 00893b3a-0e24-45ed-be0c-1f20e07b****
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// The ID of the request.
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//

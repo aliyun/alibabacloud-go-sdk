@@ -26,55 +26,59 @@ type iBatchStopApplicationsResponseBody interface {
 }
 
 type BatchStopApplicationsResponseBody struct {
-	// The HTTP status code. Take note of the following rules:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the change order.
+	// The returned result.
 	Data *BatchStopApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Valid values:
 	//
-	// - The ErrorCode parameter is not returned if the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the call fails, the ErrorCode parameter is returned. For more information, see the "Error codes" section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The additional information. Valid values:
+	//
+	// - If the request is successful, **success*	- is returned.
+	//
+	// - If the request is abnormal, the specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// - **success*	- is returned when the request succeeds.
-	//
-	// - An error code is returned when the request fails.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7BD8F4C7-D84C-4D46-9885-8212997E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is created. Valid values
+	// Indicates whether the applications were stopped successfully. Valid values:
 	//
-	// - **true**
+	// - **true**: The applications were stopped successfully.
 	//
-	// - **false**
+	// - **false**: The applications failed to be stopped.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned data.
+	// The trace ID used to query call information accurately.
 	//
 	// example:
 	//
@@ -163,11 +167,7 @@ func (s *BatchStopApplicationsResponseBody) Validate() error {
 }
 
 type BatchStopApplicationsResponseBodyData struct {
-	// The error code.
-	//
-	// - If the request is successful, this parameter is not returned.\\*\\*\\*\\*
-	//
-	// - This parameter is returned only if the request failed.\\*\\*\\*\\	- For more information, see the "**Error codes**" section in this topic.
+	// The change order ID.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type RescaleApplicationVerticallyRequest struct {
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The CPU specifications, in millicores.
+	// The target CPU specifications, in millicores.
 	//
 	// This parameter is required.
 	//
@@ -49,23 +49,31 @@ type RescaleApplicationVerticallyRequest struct {
 	// 1000
 	Cpu    *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	// The disk size for each node, in GB.
+	// The disk storage size per node, in GB.
 	//
 	// example:
 	//
 	// 20
 	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The memory size, in MB.
+	// The target memory specifications, in MB.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2048
-	Memory       *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The type of resource used for vertical scaling of the application.
+	//
+	// example:
+	//
+	// haiguang9
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Specifies whether to automatically enable the auto scaling rule.
+	// example:
+	//
+	// vsw-bp1abcdefghijklmno
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Specifies whether to automatically enable the elastic scaling rule.
 	//
 	// example:
 	//

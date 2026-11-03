@@ -26,43 +26,55 @@ type iCreateConfigMapResponseBody interface {
 }
 
 type CreateConfigMapResponseBody struct {
-	// Empty
+	// The API status code or POP error code. Valid values:
+	//
+	// - **2xx**: Success.
+	//
+	// - **3xx**: Redirection.
+	//
+	// - **4xx**: Request error.
+	//
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The returned result.
 	Data *CreateConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the ConfigMap that was created.
+	// The error code. Valid values:
+	//
+	// - Successful request: The **ErrorCode*	- parameter is not returned.
+	//
+	// - Failed request: The **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The request ID.
+	// The additional information about the call result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned data.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code. Valid values:
+	// Indicates whether the ConfigMap instance was created successfully. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **true**: Created.
 	//
-	// - **3xx**: The call was redirected.
-	//
-	// - **4xx**: The call failed.
-	//
-	// - **5xx**: A server error occurred.
+	// - **false**: Failed to create.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned message.
+	// The trace ID used to accurately query the call information.
 	//
 	// example:
 	//
@@ -151,7 +163,7 @@ func (s *CreateConfigMapResponseBody) Validate() error {
 }
 
 type CreateConfigMapResponseBodyData struct {
-	// The returned result.
+	// The instance ID of the created ConfigMap.
 	//
 	// example:
 	//

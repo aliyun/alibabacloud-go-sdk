@@ -18,9 +18,24 @@ type iPortProtocol interface {
 }
 
 type PortProtocol struct {
-	Port       *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	Protocol   *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	TargetPort *int32  `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol.
+	//
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The destination port number.
+	//
+	// example:
+	//
+	// 8080
+	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 }
 
 func (s PortProtocol) String() string {

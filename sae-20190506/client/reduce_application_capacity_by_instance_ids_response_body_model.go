@@ -47,6 +47,10 @@ type ReduceApplicationCapacityByInstanceIdsResponseBody struct {
 	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
 	//
 	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information that is returned. Take note of the following rules:
 	//

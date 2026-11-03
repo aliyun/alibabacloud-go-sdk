@@ -26,29 +26,33 @@ type iUpdateGreyTagRouteResponseBody interface {
 }
 
 type UpdateGreyTagRouteResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The grey tag route information.
+	// The canary release rule information.
 	Data *UpdateGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// - The **ErrorCode*	- parameter is not returned for successful requests.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - The **ErrorCode*	- parameter is returned for failed requests. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information about the call result.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,17 +64,17 @@ type UpdateGreyTagRouteResponseBody struct {
 	//
 	// 9D29CBD0-45D3-410B-9826-52F86F90****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the change order information was queried successfully. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The query was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to query the details of a call.
+	// The trace ID, which is used to accurately query call information.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ func (s *UpdateGreyTagRouteResponseBody) Validate() error {
 }
 
 type UpdateGreyTagRouteResponseBodyData struct {
-	// The globally unique grey tag route ID.
+	// The globally unique canary release rule ID.
 	//
 	// example:
 	//

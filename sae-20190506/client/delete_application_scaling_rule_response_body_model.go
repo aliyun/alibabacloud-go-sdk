@@ -24,31 +24,35 @@ type iDeleteApplicationScalingRuleResponseBody interface {
 }
 
 type DeleteApplicationScalingRuleResponseBody struct {
-	// The status of the API call or a POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: success.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: redirection.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: request error.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: server error.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code. The following rules apply:
+	// The error code.
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the list of **error codes*	- in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. The following values may be returned:
+	// The additional information. Valid values:
 	//
-	// - **success*	- is returned if the request is normal.
+	// - **success**: The request is successful.
 	//
-	// - A specific error code is returned if the request is abnormal.
+	// - A specific error code: The request fails.
 	//
 	// example:
 	//
@@ -60,9 +64,9 @@ type DeleteApplicationScalingRuleResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Auto Scaling policy was successfully deleted. Valid values:
+	// Indicates whether the application auto scaling policy is deleted successfully. Valid values:
 	//
-	// - **true**: The deletion was successful.
+	// - **true**: The deletion is successful.
 	//
 	// - **false**: The deletion failed.
 	//
@@ -70,7 +74,7 @@ type DeleteApplicationScalingRuleResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to query the details of a call.
+	// The trace ID used to accurately query invocation information.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type ListWebApplicationRevisionsRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// A2RN
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 

@@ -30,57 +30,57 @@ type iCreateOrUpdateSwimmingLaneRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneRequest struct {
-	// The configuration of the gateway route.
+	// The gateway routing configuration.
 	//
-	// > This parameter is required if the gateway entry application for the swimlane group is a Java application.
+	// > This parameter is required when the gateway entry of the traffic lane group is Java.
 	AppEntryRule *CreateOrUpdateSwimmingLaneRequestAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
-	// The end-to-end canary release mode.
+	// The end-to-end canary release mode. Valid values:
 	//
-	// - `0`: content-based routing
+	// - 0: Routes traffic based on request content.
 	//
-	// - `1`: percentage-based routing
+	// - 1: Routes traffic based on proportion.
 	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	// The status of the swimlane.
+	// Specifies whether the traffic lane is enabled. Valid values:
 	//
-	// - `true`: enabled
+	// - true: Enabled.
 	//
-	// - `false`: disabled
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the swimlane group.
+	// The ID of the traffic lane group to which the traffic lane belongs.
 	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the swimlane.
+	// The ID of the traffic lane.
 	//
 	// example:
 	//
 	// 13857
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// The name of the swimlane.
+	// The name of the traffic lane.
 	//
 	// example:
 	//
 	// test
 	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
-	// The tag of the swimlane.
+	// The tag of the traffic lane.
 	//
 	// example:
 	//
 	// g1
 	LaneTag *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
-	// Configuration for the MSE gateway route.
+	// The MSE gateway routing configuration.
 	//
-	// > This parameter is required if the **EntryAppType*	- parameter is set to **apig*	- or **mse-gw**.
+	// > This parameter is required when **EntryAppType*	- is set to **apig*	- or **mse-gw**.
 	MseGatewayEntryRule *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
 	// The ID of the namespace.
 	//
@@ -194,37 +194,37 @@ func (s *CreateOrUpdateSwimmingLaneRequest) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestAppEntryRule struct {
-	// The logical operator used to combine conditions.
+	// The logical operator between conditions. Valid values:
 	//
-	// - `AND`: All conditions must be met.
+	// - AND: All conditions must be met.
 	//
-	// - `OR`: At least one of the conditions must be met.
+	// - OR: Any condition must be met.
 	//
 	// example:
 	//
 	// AND
 	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	// The match conditions.
+	// The matching conditions.
 	Conditions []*CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// Specifies whether to enable percentage-based routing.
+	// Specifies whether to enable proportion-based canary release. Valid values:
 	//
-	// - `true`: Enables percentage-based routing. You must also configure the `PercentageByPath` parameter.
+	// - true: Enabled. If enabled, you must configure PercentageByPath.
 	//
-	// - `false`: Disables percentage-based routing.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
-	// The request paths to match.
+	// The matched URI of the request paths.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The traffic percentage for percentage-based routing. Valid values: 0 to 100.
+	// The traffic proportion used for proportion-based routing. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 50
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// An object that maps request paths to traffic percentages.
+	// The traffic configuration.
 	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
 }
 
@@ -304,41 +304,41 @@ func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions struct {
-	// The matching rule.
+	// The matching rule. Valid values:
 	//
-	// - `==`: Exact match. The attribute\\"s value must be identical to the value specified.
+	// - ==: Exact match. The traffic value must be exactly equal to the condition value.
 	//
-	// - `!=`: Negated exact match. The attribute\\"s value must not be identical to the value specified.
+	// - !=: Exact match. The traffic value must be exactly equal to the condition value.
 	//
-	// - `in`: Inclusion match. The attribute\\"s value must be present in the specified comma-separated list of values.
+	// - in: Inclusion match. The condition is met when the traffic value is in the specified list.
 	//
-	// - `percentage`: Percentage-based match. The expression `hash(get(key)) % 100 < value` must be true.
+	// - 百分比: Percentage match. The condition is met when `hash(get(key)) % 100 < value` evaluates to true.
 	//
-	// - `regex`: Regular expression match. The attribute\\"s value must match the specified regular expression.
+	// - 正则匹配: Regular expression match. The condition is met when the value matches the regular expression.
 	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The name of the header, parameter, or cookie.
+	// The parameter name.
 	//
 	// example:
 	//
 	// t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the request attribute to match.
+	// The parameter type. Valid values:
 	//
-	// - `header`: A request header.
+	// - header: Header
 	//
-	// - `param`: A request parameter.
+	// - param: Parameter
 	//
-	// - `cookie`: A request cookie.
+	// - cookie: Cookie
 	//
 	// example:
 	//
 	// Header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value to match against the request attribute.
+	// The matching value of the condition.
 	//
 	// example:
 	//
@@ -395,35 +395,35 @@ func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) Validate() err
 }
 
 type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule struct {
-	// The logical operator used to combine conditions.
+	// The logical operator between conditions. Valid values:
 	//
-	// - `AND`: All conditions must be met.
+	// - AND: All conditions must be met.
 	//
-	// - `OR`: At least one of the conditions must be met.
+	// - OR: Any condition must be met.
 	//
 	// example:
 	//
 	// AND
 	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	// The match conditions.
+	// The routing conditions.
 	Conditions []*CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// Specifies whether to enable percentage-based routing.
+	// Specifies whether to enable proportion-based canary release. Valid values:
 	//
-	// - `true`: Enables percentage-based routing. You must also configure the `PercentageByRoute` parameter.
+	// - true: Enabled. If enabled, you must configure PercentageByPath.
 	//
-	// - `false`: Disables percentage-based routing.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
-	// The traffic mirroring percentage. Valid values: 0 to 100.
+	// The traffic replication proportion (%). Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// An object that maps route IDs to traffic percentages.
+	// The traffic configuration.
 	PercentageByRoute map[string]*int32 `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
 	// The route IDs.
 	RouteIds []*int64 `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
@@ -505,41 +505,41 @@ func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) Validate() error 
 }
 
 type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions struct {
-	// The matching rule.
+	// The matching rule. Valid values:
 	//
-	// - `==`: Exact match. The attribute\\"s value must be identical to the value specified.
+	// - ==: Exact match.
 	//
-	// - `!=`: Negated exact match. The attribute\\"s value must not be identical to the value specified.
+	// - !=: Exact match.
 	//
-	// - `in`: Inclusion match. The attribute\\"s value must be present in the specified comma-separated list of values.
+	// - in: Inclusion match.
 	//
-	// - `percentage`: Percentage-based match. The expression `hash(get(key)) % 100 < value` must be true.
+	// - 百分比: Percentage match.
 	//
-	// - `regex`: Regular expression match. The attribute\\"s value must match the specified regular expression.
+	// - 正则匹配: Regular expression match.
 	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The name of the header, parameter, or cookie.
+	// The name of the condition parameter.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the request attribute to match.
+	// The parameter type. Valid values:
 	//
-	// - `header`: A request header.
+	// - header: Header
 	//
-	// - `param`: A request parameter.
+	// - param: Parameter
 	//
-	// - `cookie`: A request cookie.
+	// - cookie: Cookie
 	//
 	// example:
 	//
 	// header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value to match against the request attribute.
+	// The matching value of the condition.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListAllSwimmingLanesRequest interface {
 }
 
 type ListAllSwimmingLanesRequest struct {
-	// The swimming lane group ID.
+	// The traffic lane group ID.
 	//
 	// example:
 	//

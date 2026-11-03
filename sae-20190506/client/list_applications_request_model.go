@@ -83,6 +83,10 @@ type ListApplicationsRequest struct {
 	// demo-app
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
 	// Specifies whether the application is stateful.
+	//
+	// example:
+	//
+	// true
 	IsStateful *string `json:"IsStateful,omitempty" xml:"IsStateful,omitempty"`
 	// The namespace ID.
 	//
@@ -97,6 +101,10 @@ type ListApplicationsRequest struct {
 	// - std: Standard Edition
 	//
 	// - pro: Professional Edition
+	//
+	// example:
+	//
+	// pro
 	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
 	// The field by which to sort applications. Valid values:
 	//
@@ -113,7 +121,10 @@ type ListApplicationsRequest struct {
 	// example:
 	//
 	// 20
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// java
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
 	// Specifies whether to sort application instances by running status. If instances have the same status, they are sorted by instance ID. Valid values:
 	//

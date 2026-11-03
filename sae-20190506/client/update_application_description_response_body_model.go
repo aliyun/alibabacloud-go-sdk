@@ -24,53 +24,57 @@ type iUpdateApplicationDescriptionResponseBody interface {
 }
 
 type UpdateApplicationDescriptionResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The request failed.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code returned if the call failed. Value values:
+	// The error code. Valid values:
 	//
-	// - If the request was successful, **ErrorCode*	- is not returned.
+	// - Successful request: The **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - Failed request: The **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned. The following limits are imposed on the ID:
+	// The additional information. Valid values:
 	//
-	// - If the request was successful, **success*	- is returned.
+	// - **success**: The request is successful.
 	//
-	// - An error code is returned when a request failed.
+	// - Specific error code: The request is abnormal.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application was deployed. Valid values:
+	// Indicates whether the application is deployed successfully. Valid values:
 	//
-	// - **true**: The application was deployed.
+	// - **true**: The deployment is successful.
 	//
-	// - **false**: The application failed to be deployed.
+	// - **false**: The deployment failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to query invocation details.
 	//
 	// example:
 	//

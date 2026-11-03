@@ -47,6 +47,10 @@ type ListAppServicesResponseBody struct {
 	// - Successful requests do not return the **ErrorCode*	- field.
 	//
 	// - Failed requests return the **ErrorCode*	- field. For more information, see the **error code*	- list in this topic.
+	//
+	// example:
+	//
+	// Micro.Service.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The response message.
 	//

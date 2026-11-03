@@ -38,39 +38,39 @@ type ListJobsRequest struct {
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The page number. The value starts from 1.
+	// The current page number. Valid values start from 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The dimension by which to filter job templates. Valid values:
+	// The dimension used to filter job templates. Valid values:
 	//
-	// - **appName**: The name of the job template.
+	// - **appName**: the job template name
 	//
-	// - **appIds**: The ID of the job template.
+	// - **appIds**: the job template ID
 	//
 	// example:
 	//
 	// appName
 	FieldType *string `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	// The name or ID of the target job template. This value corresponds to the dimension specified by **FieldType**.
+	// The value used to filter job templates based on the dimension specified by the **FieldType*	- parameter. Enter the job template name or job template ID.
 	//
 	// example:
 	//
 	// demo-app
 	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
-	// The namespace ID.
+	// The ID of the namespace.
 	//
 	// example:
 	//
 	// cn-beijing:demo
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The sorting method for the job templates. Valid values:
+	// The field used to sort job templates. Valid values:
 	//
-	// - **running**: Sorts by the number of running instances.
+	// - **running**: sort by the current number target instances
 	//
-	// - **instances**: Sorts by the number of destination instances.
+	// - **instances**: sort by the target number target instances
 	//
 	// example:
 	//
@@ -82,27 +82,27 @@ type ListJobsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to sort the results in ascending or descending order based on the field specified by the **OrderBy*	- parameter. Valid values:
+	// Specifies whether to reverse the sort order based on the field specified by the **OrderBy*	- parameter. Valid values:
 	//
-	// - **true**: ascending order.
+	// - **true**: sort in ascending order
 	//
-	// - **false**: descending order.
+	// - **false**: sort in descending order
 	//
 	// example:
 	//
 	// true
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// A list of tags. This is a JSON string. The value consists of the following parts:
+	// The list of tags. The value is a JSON string that contains the following fields:
 	//
-	// - **key**: The tag key.
+	// - **key**: the tag key
 	//
-	// - **value**: The tag value.
+	// - **value**: the tag value
 	//
 	// example:
 	//
 	// [{"key":"key","value":"value"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The workload. Set the value to `job`.
+	// The workload type. Set the value to `job`.
 	//
 	// example:
 	//

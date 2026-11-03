@@ -26,29 +26,33 @@ type iDisableArmsResponseBody interface {
 }
 
 type DisableArmsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *DisableArmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
 	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
 	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,13 +64,13 @@ type DisableArmsResponseBody struct {
 	//
 	// 6DA47906-6070-5A16-896D-67DCF38A6B7B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of a request.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -155,7 +159,11 @@ func (s *DisableArmsResponseBody) Validate() error {
 }
 
 type DisableArmsResponseBodyData struct {
-	// Indicates whether ARMS monitoring is enabled. Valid values:
+	// Specifies whether the feature is enabled. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//

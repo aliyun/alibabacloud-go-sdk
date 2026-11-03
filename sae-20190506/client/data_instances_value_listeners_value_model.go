@@ -28,19 +28,19 @@ type DataInstancesValueListenersValue struct {
 	//
 	// TCPSSL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The listener port.
+	// The load balancing listener port.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The state of the NLB listener. Valid values:
+	// The NLB listener status. Valid values:
 	//
 	// - **Creating**: The listener is being created.
 	//
 	// - **Configuring**: The listener is being configured.
 	//
-	// - **Bounded**: The listener is running as expected.
+	// - **Bounded**: The listener is running normally.
 	//
 	// - **Unbinding**: The listener is being deleted.
 	//
@@ -50,13 +50,13 @@ type DataInstancesValueListenersValue struct {
 	//
 	// Bounded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The target port.
+	// The Open Ports of the instance.
 	//
 	// example:
 	//
 	// 8080
 	TargetPort *int32 `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	// The server certificate ID.
+	// The server certificate.
 	//
 	// example:
 	//

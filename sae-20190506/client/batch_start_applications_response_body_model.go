@@ -26,55 +26,59 @@ type iBatchStartApplicationsResponseBody interface {
 }
 
 type BatchStartApplicationsResponseBody struct {
-	// The HTTP status code. Take note of the following rules:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirect.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
-	//
-	// - If the request is successful, this parameter is not returned.\\*\\*\\*\\*
-	//
-	// - This parameter is returned only if the request failed.\\*\\*\\*\\	- For more information, see **Error codes*	- in this topic.
+	// The returned result.
 	Data *BatchStartApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Valid values:
 	//
-	// - The ErrorCode parameter is not returned if the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the call fails, the ErrorCode parameter is returned. For more information, see the "Error codes" section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned data.
+	// The additional information. Valid values:
+	//
+	// - If the request is successful, **success*	- is returned.
+	//
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application deployment is successful. Take note of the following rules:
+	// Indicates whether the applications were started successfully. Valid values:
 	//
-	// - **true**
+	// - **true**: The applications were started successfully.
 	//
-	// - **false**
+	// - **false**: The applications failed to start.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the change order.
+	// The trace ID used to query call information.
 	//
 	// example:
 	//
@@ -163,15 +167,7 @@ func (s *BatchStartApplicationsResponseBody) Validate() error {
 }
 
 type BatchStartApplicationsResponseBodyData struct {
-	// The HTTP status code. Valid values:
-	//
-	// - **2xx**: indicates that the request was successful.
-	//
-	// - **3xx**: indicates that the request was redirected.
-	//
-	// - **4xx**: indicates that the request was invalid.
-	//
-	// - **5xx**: indicates that a server error occurred.
+	// The change order ID.
 	//
 	// example:
 	//

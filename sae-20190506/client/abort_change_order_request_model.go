@@ -24,7 +24,7 @@ type AbortChangeOrderRequest struct {
 	//
 	// be2e1c76-682b-4897-98d3-1d8d6478****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// Specifies whether to roll back the change order.
+	// Specifies whether to roll back.
 	//
 	// example:
 	//

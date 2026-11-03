@@ -24,7 +24,11 @@ type DescribeApplicationMseServiceRequest struct {
 	//
 	// f7730764-d88f-4b9a-8d8e-cd8efbfe****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to enable traffic limiting and degradation. Set to true to check traffic limiting and degradation permissions when accessing related APIs; set to false otherwise.
+	// Specifies whether the throttling and degradation feature is enabled. Set this parameter to true when you call API operations related to throttling and degradation. Otherwise, set this parameter to false. Valid values:
+	//
+	// - true: Checks the permissions for throttling and degradation.
+	//
+	// - false: Does not check the permissions for throttling and degradation.
 	//
 	// This parameter is required.
 	//

@@ -47,6 +47,10 @@ type DescribeAppServiceDetailResponseBody struct {
 	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
 	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the list of **error codes*	- in this topic.
+	//
+	// example:
+	//
+	// Micro.Service.MetaData.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information returned.
 	//

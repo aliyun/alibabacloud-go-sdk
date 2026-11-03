@@ -24,49 +24,53 @@ type iUpdateAppModeResponseBody interface {
 }
 
 type UpdateAppModeResponseBody struct {
-	// The HTTP status code.
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned for successful requests.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - It is returned for failed requests. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information.
+	// The additional information. Valid values:
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the request fails, an error message is returned.
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values: **true*	- and **false**.
+	// Specifies whether the application was created successfully. Valid values:
+	//
+	// - true: The application was created successfully.
+	//
+	// - false: The application failed to be created.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID for querying request details.
+	// The trace ID used to query invocation details.
 	//
 	// example:
 	//

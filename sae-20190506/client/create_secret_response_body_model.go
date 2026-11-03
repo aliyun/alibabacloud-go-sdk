@@ -26,15 +26,15 @@ type iCreateSecretResponseBody interface {
 }
 
 type CreateSecretResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: redirection.
 	//
-	// - **4xx**: The request failed.
+	// - **4xx**: request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
@@ -42,13 +42,17 @@ type CreateSecretResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *CreateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code. Value values:
+	// The error code. Valid values:
 	//
-	// - If the request was successful, **ErrorCode*	- is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned for the operation.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,17 +64,17 @@ type CreateSecretResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Secret was created. Valid values:
+	// Indicates whether the Secret instance was created successfully. Valid values:
 	//
-	// - **true**: The ConfigMap was created.
+	// - **true**: The creation was successful.
 	//
-	// - **false**: The ConfigMap failed to be created.
+	// - **false**: The creation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to query call information.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ func (s *CreateSecretResponseBody) Validate() error {
 }
 
 type CreateSecretResponseBodyData struct {
-	// The ID of the created Secret.
+	// The instance ID of the created Secret.
 	//
 	// example:
 	//

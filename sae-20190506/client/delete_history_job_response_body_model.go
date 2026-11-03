@@ -26,21 +26,21 @@ type iDeleteHistoryJobResponseBody interface {
 }
 
 type DeleteHistoryJobResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result returned.
+	// The returned result.
 	//
 	// example:
 	//
@@ -48,37 +48,43 @@ type DeleteHistoryJobResponseBody struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code. Valid values:
 	//
-	// - If the call is successful, the **ErrorCode*	- parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidAppId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information. Valid values:
+	// The additional information. Valid values:
 	//
-	// - success: If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code: If the call fails, an error code is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the job was deleted. Valid values:
+	// Indicates whether the job is deleted successfully. Valid values:
 	//
-	// - **true**: The job was deleted.
+	// - **true**: The job is deleted.
 	//
-	// - **false**: The job failed to be deleted.
+	// - **false**: The deletion failed.
+	//
+	// [_single.error.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID used to query invocation details.
 	//
 	// example:
 	//

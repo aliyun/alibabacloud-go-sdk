@@ -25,23 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"us-west-1":      dara.String("sae.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("sae.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("sae.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("sae.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("sae.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("sae.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("sae.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("sae.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan":      dara.String("sae.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("sae.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("sae.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":     dara.String("sae.cn-chengdu.aliyuncs.com"),
-		"cn-beijing":     dara.String("sae.cn-beijing.aliyuncs.com"),
-		"ap-southeast-1": dara.String("sae.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-1": dara.String("sae.ap-northeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -141,7 +124,7 @@ func (client *Client) AbortAndRollbackChangeOrder(request *AbortAndRollbackChang
 
 // Summary:
 //
-// This operation stops a change order.
+// Aborts a change order.
 //
 // @param request - AbortChangeOrderRequest
 //
@@ -192,7 +175,7 @@ func (client *Client) AbortChangeOrderWithOptions(request *AbortChangeOrderReque
 
 // Summary:
 //
-// This operation stops a change order.
+// Aborts a change order.
 //
 // @param request - AbortChangeOrderRequest
 //
@@ -281,7 +264,7 @@ func (client *Client) BatchRestartApplications(request *BatchRestartApplications
 
 // Summary:
 //
-// Starts multiple applications at a time.
+// Starts applications in batches.
 //
 // @param request - BatchStartApplicationsRequest
 //
@@ -336,7 +319,7 @@ func (client *Client) BatchStartApplicationsWithOptions(request *BatchStartAppli
 
 // Summary:
 //
-// Starts multiple applications at a time.
+// Starts applications in batches.
 //
 // @param request - BatchStartApplicationsRequest
 //
@@ -355,7 +338,7 @@ func (client *Client) BatchStartApplications(request *BatchStartApplicationsRequ
 
 // Summary:
 //
-// Stop applications in batches.
+// Stops multiple applications.
 //
 // @param request - BatchStopApplicationsRequest
 //
@@ -410,7 +393,7 @@ func (client *Client) BatchStopApplicationsWithOptions(request *BatchStopApplica
 
 // Summary:
 //
-// Stop applications in batches.
+// Stops multiple applications.
 //
 // @param request - BatchStopApplicationsRequest
 //
@@ -429,7 +412,7 @@ func (client *Client) BatchStopApplications(request *BatchStopApplicationsReques
 
 // Summary:
 //
-// Binds a Network Load Balancer (NLB) instance to an application.
+// Binds a Network Load Balancer (NLB) to an application.
 //
 // @param request - BindNlbRequest
 //
@@ -492,7 +475,7 @@ func (client *Client) BindNlbWithOptions(request *BindNlbRequest, headers map[st
 
 // Summary:
 //
-// Binds a Network Load Balancer (NLB) instance to an application.
+// Binds a Network Load Balancer (NLB) to an application.
 //
 // @param request - BindNlbRequest
 //
@@ -1105,21 +1088,21 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Create an application auto scaling policy.
+// Creates an elastic scaling policy for an application.
 //
 // Description:
 //
-// ## Usage notes
+// ## Before you begin
 //
-// - You can create up to five elasticity policies per application.
+// - You can create up to 5 auto scaling policies for a single application.
 //
-// - For each scheduled elasticity policy, you can create up to 20 trigger points per day.
+// - You can create up to 20 trigger time points within a single day for a single scheduled auto elastic policy.
 //
-// - While an elasticity policy is enabled, do not manually perform operations on the application, such as scaling, deployment, changing specifications, restarting, or stopping. To perform these operations, disable the policy first.
+// - When an auto elastic policy is enabled, do not manually perform application lifecycle management operations, such as scaling the application, deploying the application, changing specifications, restarting the application, or stopping the application. If you need to perform these operations, disable the auto elastic policy first.
 //
-// - You cannot add or enable an elasticity policy for an application that is undergoing a scale-out, scale-in, deployment (single-batch, phased, or canary), specification change, restart, or stop.
+// - If the application is currently being scaled, deployed (in a single batch, multiple batches, or canary release), having its specifications changed, restarted, or stopped, you cannot add or start an auto elastic policy for the application.
 //
-// - To scale out an application to more than 50 instances, contact SAE technical support to be added to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
+// - If a single application needs to scale out to more than 50 instances, contact Serverless App Engine (SAE) technical support and apply for a whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -1198,21 +1181,21 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 
 // Summary:
 //
-// Create an application auto scaling policy.
+// Creates an elastic scaling policy for an application.
 //
 // Description:
 //
-// ## Usage notes
+// ## Before you begin
 //
-// - You can create up to five elasticity policies per application.
+// - You can create up to 5 auto scaling policies for a single application.
 //
-// - For each scheduled elasticity policy, you can create up to 20 trigger points per day.
+// - You can create up to 20 trigger time points within a single day for a single scheduled auto elastic policy.
 //
-// - While an elasticity policy is enabled, do not manually perform operations on the application, such as scaling, deployment, changing specifications, restarting, or stopping. To perform these operations, disable the policy first.
+// - When an auto elastic policy is enabled, do not manually perform application lifecycle management operations, such as scaling the application, deploying the application, changing specifications, restarting the application, or stopping the application. If you need to perform these operations, disable the auto elastic policy first.
 //
-// - You cannot add or enable an elasticity policy for an application that is undergoing a scale-out, scale-in, deployment (single-batch, phased, or canary), specification change, restart, or stop.
+// - If the application is currently being scaled, deployed (in a single batch, multiple batches, or canary release), having its specifications changed, restarted, or stopped, you cannot add or start an auto elastic policy for the application.
 //
-// - To scale out an application to more than 50 instances, contact SAE technical support to be added to the whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
+// - If a single application needs to scale out to more than 50 instances, contact Serverless App Engine (SAE) technical support and apply for a whitelist. For more information, see [Contact us](https://help.aliyun.com/document_detail/146530.html).
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -1231,7 +1214,7 @@ func (client *Client) CreateApplicationScalingRule(request *CreateApplicationSca
 
 // Summary:
 //
-// Create a ConfigMap in a namespace.
+// Creates a ConfigMap instance in a namespace.
 //
 // @param request - CreateConfigMapRequest
 //
@@ -1292,7 +1275,7 @@ func (client *Client) CreateConfigMapWithOptions(request *CreateConfigMapRequest
 
 // Summary:
 //
-// Create a ConfigMap in a namespace.
+// Creates a ConfigMap instance in a namespace.
 //
 // @param request - CreateConfigMapRequest
 //
@@ -1311,11 +1294,11 @@ func (client *Client) CreateConfigMap(request *CreateConfigMapRequest) (_result 
 
 // Summary:
 //
-// Create a canary release rule for a Spring Cloud or Dubbo application.
+// Creates a canary release rule for a Spring Cloud or Dubbo application.
 //
 // Description:
 //
-// > You can currently configure only one canary rule per application.
+// > Currently, you can configure only one canary release rule for an application.
 //
 // @param request - CreateGreyTagRouteRequest
 //
@@ -1382,11 +1365,11 @@ func (client *Client) CreateGreyTagRouteWithOptions(request *CreateGreyTagRouteR
 
 // Summary:
 //
-// Create a canary release rule for a Spring Cloud or Dubbo application.
+// Creates a canary release rule for a Spring Cloud or Dubbo application.
 //
 // Description:
 //
-// > You can currently configure only one canary rule per application.
+// > Currently, you can configure only one canary release rule for an application.
 //
 // @param request - CreateGreyTagRouteRequest
 //
@@ -1405,7 +1388,7 @@ func (client *Client) CreateGreyTagRoute(request *CreateGreyTagRouteRequest) (_r
 
 // Summary:
 //
-// Create a routing rule.
+// Creates a routing rule.
 //
 // @param request - CreateIngressRequest
 //
@@ -1542,7 +1525,7 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 
 // Summary:
 //
-// Create a routing rule.
+// Creates a routing rule.
 //
 // @param request - CreateIngressRequest
 //
@@ -1561,7 +1544,7 @@ func (client *Client) CreateIngress(request *CreateIngressRequest) (_result *Cre
 
 // Summary:
 //
-// This operation creates a job template.
+// Creates a job template.
 //
 // @param request - CreateJobRequest
 //
@@ -1830,7 +1813,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// This operation creates a job template.
+// Creates a job template.
 //
 // @param request - CreateJobRequest
 //
@@ -1931,7 +1914,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// Create or update a swimlane.
+// Creates or updates a traffic lane.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneRequest
 //
@@ -2020,7 +2003,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(tmpReq *CreateOrUpda
 
 // Summary:
 //
-// Create or update a swimlane.
+// Creates or updates a traffic lane.
 //
 // @param request - CreateOrUpdateSwimmingLaneRequest
 //
@@ -2039,7 +2022,7 @@ func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimming
 
 // Summary:
 //
-// Creates or updates a swimming lane group.
+// Creates or updates a traffic lane group.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -2116,7 +2099,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(tmpReq *CreateO
 
 // Summary:
 //
-// Creates or updates a swimming lane group.
+// Creates or updates a traffic lane group.
 //
 // @param request - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -2135,7 +2118,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwi
 
 // Summary:
 //
-// Creates a Secret in a namespace.
+// Creates a Secret instance in a namespace.
 //
 // @param tmpReq - CreateSecretRequest
 //
@@ -2200,7 +2183,7 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, heade
 
 // Summary:
 //
-// Creates a Secret in a namespace.
+// Creates a Secret instance in a namespace.
 //
 // @param request - CreateSecretRequest
 //
@@ -2435,7 +2418,7 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// Deletes an Auto Scaling policy for an application.
+// Deletes an application auto scaling policy by calling the CreateApplicationScalingRule operation.
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -2486,7 +2469,7 @@ func (client *Client) DeleteApplicationScalingRuleWithOptions(request *DeleteApp
 
 // Summary:
 //
-// Deletes an Auto Scaling policy for an application.
+// Deletes an application auto scaling policy by calling the CreateApplicationScalingRule operation.
 //
 // @param request - DeleteApplicationScalingRuleRequest
 //
@@ -2637,7 +2620,7 @@ func (client *Client) DeleteGreyTagRoute(request *DeleteGreyTagRouteRequest) (_r
 
 // Summary:
 //
-// Delete a job.
+// Deletes a job.
 //
 // @param request - DeleteHistoryJobRequest
 //
@@ -2688,7 +2671,7 @@ func (client *Client) DeleteHistoryJobWithOptions(request *DeleteHistoryJobReque
 
 // Summary:
 //
-// Delete a job.
+// Deletes a job.
 //
 // @param request - DeleteHistoryJobRequest
 //
@@ -2773,7 +2756,7 @@ func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *Del
 
 // Summary:
 //
-// Deletes one or more application instances.
+// Deletes application instances.
 //
 // @param request - DeleteInstancesRequest
 //
@@ -2824,7 +2807,7 @@ func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest
 
 // Summary:
 //
-// Deletes one or more application instances.
+// Deletes application instances.
 //
 // @param request - DeleteInstancesRequest
 //
@@ -2843,7 +2826,7 @@ func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result 
 
 // Summary:
 //
-// Delete a job template.
+// Deletes a task template.
 //
 // @param request - DeleteJobRequest
 //
@@ -2890,7 +2873,7 @@ func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, headers ma
 
 // Summary:
 //
-// Delete a job template.
+// Deletes a task template.
 //
 // @param request - DeleteJobRequest
 //
@@ -2979,7 +2962,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
-// Deletes a secret.
+// Deletes a secret instance.
 //
 // @param request - DeleteSecretRequest
 //
@@ -3030,7 +3013,7 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, head
 
 // Summary:
 //
-// Deletes a secret.
+// Deletes a secret instance.
 //
 // @param request - DeleteSecretRequest
 //
@@ -3049,7 +3032,7 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a swimming lane group.
+// Deletes a lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -3100,7 +3083,7 @@ func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimming
 
 // Summary:
 //
-// Deletes a swimming lane group.
+// Deletes a lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -3857,7 +3840,7 @@ func (client *Client) DescribeAppServiceDetail(request *DescribeAppServiceDetail
 
 // Summary:
 //
-// Retrieves the configuration information of an application.
+// Retrieves the application configuration information.
 //
 // @param request - DescribeApplicationConfigRequest
 //
@@ -3908,7 +3891,7 @@ func (client *Client) DescribeApplicationConfigWithOptions(request *DescribeAppl
 
 // Summary:
 //
-// Retrieves the configuration information of an application.
+// Retrieves the application configuration information.
 //
 // @param request - DescribeApplicationConfigRequest
 //
@@ -3927,7 +3910,7 @@ func (client *Client) DescribeApplicationConfig(request *DescribeApplicationConf
 
 // Summary:
 //
-// Use `DescribeApplicationGroups` to retrieve application instance groups.
+// Queries application instance groups.
 //
 // @param request - DescribeApplicationGroupsRequest
 //
@@ -3982,7 +3965,7 @@ func (client *Client) DescribeApplicationGroupsWithOptions(request *DescribeAppl
 
 // Summary:
 //
-// Use `DescribeApplicationGroups` to retrieve application instance groups.
+// Queries application instance groups.
 //
 // @param request - DescribeApplicationGroupsRequest
 //
@@ -4161,7 +4144,7 @@ func (client *Client) DescribeApplicationInstances(request *DescribeApplicationI
 
 // Summary:
 //
-// Queries the information of the associated MSE microservice governance application.
+// Queries the Microservices Engine (MSE) microservice governance application information associated with an application.
 //
 // @param request - DescribeApplicationMseServiceRequest
 //
@@ -4212,7 +4195,7 @@ func (client *Client) DescribeApplicationMseServiceWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the information of the associated MSE microservice governance application.
+// Queries the Microservices Engine (MSE) microservice governance application information associated with an application.
 //
 // @param request - DescribeApplicationMseServiceRequest
 //
@@ -4231,7 +4214,7 @@ func (client *Client) DescribeApplicationMseService(request *DescribeApplication
 
 // Summary:
 //
-// View the NLB configuration for the application.
+// Queries the Network Load Balancer (NLB) configurations bound to an application.
 //
 // @param request - DescribeApplicationNlbsRequest
 //
@@ -4278,7 +4261,7 @@ func (client *Client) DescribeApplicationNlbsWithOptions(request *DescribeApplic
 
 // Summary:
 //
-// View the NLB configuration for the application.
+// Queries the Network Load Balancer (NLB) configurations bound to an application.
 //
 // @param request - DescribeApplicationNlbsRequest
 //
@@ -4433,7 +4416,7 @@ func (client *Client) DescribeApplicationScalingRules(request *DescribeApplicati
 
 // Summary:
 //
-// Queries the configurations of Server Load Balancer (SLB) instances for an application.
+// Retrieves the Server Load Balancer (SLB) configuration of an application.
 //
 // @param request - DescribeApplicationSlbsRequest
 //
@@ -4480,7 +4463,7 @@ func (client *Client) DescribeApplicationSlbsWithOptions(request *DescribeApplic
 
 // Summary:
 //
-// Queries the configurations of Server Load Balancer (SLB) instances for an application.
+// Retrieves the Server Load Balancer (SLB) configuration of an application.
 //
 // @param request - DescribeApplicationSlbsRequest
 //
@@ -4499,7 +4482,7 @@ func (client *Client) DescribeApplicationSlbs(request *DescribeApplicationSlbsRe
 
 // Summary:
 //
-// Call the DescribeApplicationStatus API to get an application\\"s status.
+// Queries the status information of an application.
 //
 // @param request - DescribeApplicationStatusRequest
 //
@@ -4546,7 +4529,7 @@ func (client *Client) DescribeApplicationStatusWithOptions(request *DescribeAppl
 
 // Summary:
 //
-// Call the DescribeApplicationStatus API to get an application\\"s status.
+// Queries the status information of an application.
 //
 // @param request - DescribeApplicationStatusRequest
 //
@@ -4767,7 +4750,7 @@ func (client *Client) DescribeConfigMap(request *DescribeConfigMapRequest) (_res
 
 // Summary:
 //
-// Queries the price of a configuration.
+// Queries the configuration pricing.
 //
 // @param request - DescribeConfigurationPriceRequest
 //
@@ -4842,7 +4825,7 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 
 // Summary:
 //
-// Queries the price of a configuration.
+// Queries the configuration pricing.
 //
 // @param request - DescribeConfigurationPriceRequest
 //
@@ -5167,7 +5150,7 @@ func (client *Client) DescribeInstanceSpecifications() (_result *DescribeInstanc
 
 // Summary:
 //
-// Calls the `DescribeJob` API to retrieve job template configuration.
+// Retrieves the configuration information of a job template.
 //
 // @param request - DescribeJobRequest
 //
@@ -5218,7 +5201,7 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, header
 
 // Summary:
 //
-// Calls the `DescribeJob` API to retrieve job template configuration.
+// Retrieves the configuration information of a job template.
 //
 // @param request - DescribeJobRequest
 //
@@ -5237,7 +5220,7 @@ func (client *Client) DescribeJob(request *DescribeJobRequest) (_result *Describ
 
 // Summary:
 //
-// Query the information about jobs.
+// Queries job history records.
 //
 // @param request - DescribeJobHistoryRequest
 //
@@ -5296,7 +5279,7 @@ func (client *Client) DescribeJobHistoryWithOptions(request *DescribeJobHistoryR
 
 // Summary:
 //
-// Query the information about jobs.
+// Queries job history records.
 //
 // @param request - DescribeJobHistoryRequest
 //
@@ -5525,7 +5508,7 @@ func (client *Client) DescribeNamespaceList(request *DescribeNamespaceListReques
 
 // Summary:
 //
-// Queries the resources in a namespace.
+// Queries the resource information in a namespace.
 //
 // @param request - DescribeNamespaceResourcesRequest
 //
@@ -5576,7 +5559,7 @@ func (client *Client) DescribeNamespaceResourcesWithOptions(request *DescribeNam
 
 // Summary:
 //
-// Queries the resources in a namespace.
+// Queries the resource information in a namespace.
 //
 // @param request - DescribeNamespaceResourcesRequest
 //
@@ -5665,7 +5648,7 @@ func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_r
 
 // Summary:
 //
-// # View batch information
+// Queries batch information.
 //
 // @param request - DescribePipelineRequest
 //
@@ -5712,7 +5695,7 @@ func (client *Client) DescribePipelineWithOptions(request *DescribePipelineReque
 
 // Summary:
 //
-// # View batch information
+// Queries batch information.
 //
 // @param request - DescribePipelineRequest
 //
@@ -5781,7 +5764,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Queries the details of a Secret.
+// Queries the details of a Secret instance.
 //
 // @param request - DescribeSecretRequest
 //
@@ -5832,7 +5815,7 @@ func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, 
 
 // Summary:
 //
-// Queries the details of a Secret.
+// Queries the details of a Secret instance.
 //
 // @param request - DescribeSecretRequest
 //
@@ -5851,7 +5834,7 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 
 // Summary:
 //
-// Retrieves the details of a swimlane.
+// Queries the details of a traffic lane.
 //
 // @param request - DescribeSwimmingLaneRequest
 //
@@ -5906,7 +5889,7 @@ func (client *Client) DescribeSwimmingLaneWithOptions(request *DescribeSwimmingL
 
 // Summary:
 //
-// Retrieves the details of a swimlane.
+// Queries the details of a traffic lane.
 //
 // @param request - DescribeSwimmingLaneRequest
 //
@@ -5923,6 +5906,10 @@ func (client *Client) DescribeSwimmingLane(request *DescribeSwimmingLaneRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries vSwitch information.
+//
 // @param request - DescribeVSwitchesRequest
 //
 // @param headers - map
@@ -5974,6 +5961,10 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries vSwitch information.
+//
 // @param request - DescribeVSwitchesRequest
 //
 // @return DescribeVSwitchesResponse
@@ -6521,7 +6512,7 @@ func (client *Client) DescribeWebInstanceLogs(ApplicationId *string, InstanceId 
 
 // Summary:
 //
-// Disables an Auto Scaling policy for an application.
+// Invokes the DisableApplicationScalingRule API operation to disable an application elastic scaling policy.
 //
 // @param request - DisableApplicationScalingRuleRequest
 //
@@ -6572,7 +6563,7 @@ func (client *Client) DisableApplicationScalingRuleWithOptions(request *DisableA
 
 // Summary:
 //
-// Disables an Auto Scaling policy for an application.
+// Invokes the DisableApplicationScalingRule API operation to disable an application elastic scaling policy.
 //
 // @param request - DisableApplicationScalingRuleRequest
 //
@@ -6657,7 +6648,7 @@ func (client *Client) DisableArms(request *DisableArmsRequest) (_result *Disable
 
 // Summary:
 //
-// Disable ARMS Advanced Edition monitoring.
+// Disables ARMS Premium Edition monitoring.
 //
 // @param request - DowngradeApplicationApmServiceRequest
 //
@@ -6704,7 +6695,7 @@ func (client *Client) DowngradeApplicationApmServiceWithOptions(request *Downgra
 
 // Summary:
 //
-// Disable ARMS Advanced Edition monitoring.
+// Disables ARMS Premium Edition monitoring.
 //
 // @param request - DowngradeApplicationApmServiceRequest
 //
@@ -6723,7 +6714,7 @@ func (client *Client) DowngradeApplicationApmService(request *DowngradeApplicati
 
 // Summary:
 //
-// Enables an auto scaling policy for an application.
+// Enables an elastic scaling policy for an application.
 //
 // @param request - EnableApplicationScalingRuleRequest
 //
@@ -6774,7 +6765,7 @@ func (client *Client) EnableApplicationScalingRuleWithOptions(request *EnableApp
 
 // Summary:
 //
-// Enables an auto scaling policy for an application.
+// Enables an elastic scaling policy for an application.
 //
 // @param request - EnableApplicationScalingRuleRequest
 //
@@ -6793,7 +6784,7 @@ func (client *Client) EnableApplicationScalingRule(request *EnableApplicationSca
 
 // Summary:
 //
-// Call ExecJob to run a job.
+// Executes a job.
 //
 // @param request - ExecJobRequest
 //
@@ -6876,7 +6867,7 @@ func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[st
 
 // Summary:
 //
-// Call ExecJob to run a job.
+// Executes a job.
 //
 // @param request - ExecJobRequest
 //
@@ -7137,7 +7128,7 @@ func (client *Client) GetAvailabilityMetric(request *GetAvailabilityMetricReques
 
 // Summary:
 //
-// To retrieve the top N applications with abnormal change orders, call the `GetChangeOrderMetric` API.
+// Retrieves the top N applications with abnormal change orders.
 //
 // @param request - GetChangeOrderMetricRequest
 //
@@ -7212,7 +7203,7 @@ func (client *Client) GetChangeOrderMetricWithOptions(request *GetChangeOrderMet
 
 // Summary:
 //
-// To retrieve the top N applications with abnormal change orders, call the `GetChangeOrderMetric` API.
+// Retrieves the top N applications with abnormal change orders.
 //
 // @param request - GetChangeOrderMetricRequest
 //
@@ -7535,7 +7526,7 @@ func (client *Client) ListAllSwimmingLaneGroups(request *ListAllSwimmingLaneGrou
 
 // Summary:
 //
-// Lists all swimlanes.
+// Queries all traffic lanes.
 //
 // @param request - ListAllSwimmingLanesRequest
 //
@@ -7586,7 +7577,7 @@ func (client *Client) ListAllSwimmingLanesWithOptions(request *ListAllSwimmingLa
 
 // Summary:
 //
-// Lists all swimlanes.
+// Queries all traffic lanes.
 //
 // @param request - ListAllSwimmingLanesRequest
 //
@@ -7941,7 +7932,7 @@ func (client *Client) ListAppVersions(request *ListAppVersionsRequest) (_result 
 
 // Summary:
 //
-// 查询服务实例列表
+// Queries a list of service instances.
 //
 // @param request - ListApplicationCenterServiceInstancesRequest
 //
@@ -7992,7 +7983,7 @@ func (client *Client) ListApplicationCenterServiceInstancesWithOptions(request *
 
 // Summary:
 //
-// 查询服务实例列表
+// Queries a list of service instances.
 //
 // @param request - ListApplicationCenterServiceInstancesRequest
 //
@@ -8199,7 +8190,7 @@ func (client *Client) ListApplicationsForSwimmingLane(request *ListApplicationsF
 
 // Summary:
 //
-// Lists change orders.
+// Queries the list of change orders.
 //
 // @param request - ListChangeOrdersRequest
 //
@@ -8274,7 +8265,7 @@ func (client *Client) ListChangeOrdersWithOptions(request *ListChangeOrdersReque
 
 // Summary:
 //
-// Lists change orders.
+// Queries the list of change orders.
 //
 // @param request - ListChangeOrdersRequest
 //
@@ -8359,11 +8350,11 @@ func (client *Client) ListConsumedServices(request *ListConsumedServicesRequest)
 
 // Summary:
 //
-// Queries the details of a grayscale rule based on an application ID.
+// Queries the details of a canary release rule based on the application ID.
 //
 // Description:
 //
-// > You can configure only one grayscale rule for each application.
+// > Currently, you can configure only one canary release rule for each application.
 //
 // @param request - ListGreyTagRouteRequest
 //
@@ -8410,11 +8401,11 @@ func (client *Client) ListGreyTagRouteWithOptions(request *ListGreyTagRouteReque
 
 // Summary:
 //
-// Queries the details of a grayscale rule based on an application ID.
+// Queries the details of a canary release rule based on the application ID.
 //
 // Description:
 //
-// > You can configure only one grayscale rule for each application.
+// > Currently, you can configure only one canary release rule for each application.
 //
 // @param request - ListGreyTagRouteRequest
 //
@@ -8433,7 +8424,7 @@ func (client *Client) ListGreyTagRoute(request *ListGreyTagRouteRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of Ingresses.
+// Queries the list of ingresses.
 //
 // @param request - ListIngressesRequest
 //
@@ -8492,7 +8483,7 @@ func (client *Client) ListIngressesWithOptions(request *ListIngressesRequest, he
 
 // Summary:
 //
-// Retrieves a list of Ingresses.
+// Queries the list of ingresses.
 //
 // @param request - ListIngressesRequest
 //
@@ -8511,7 +8502,7 @@ func (client *Client) ListIngresses(request *ListIngressesRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves a list of job templates.
+// Queries a list of job templates.
 //
 // @param request - ListJobsRequest
 //
@@ -8594,7 +8585,7 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, headers map[
 
 // Summary:
 //
-// Retrieves a list of job templates.
+// Queries a list of job templates.
 //
 // @param request - ListJobsRequest
 //
@@ -8687,7 +8678,7 @@ func (client *Client) ListLogConfigs(request *ListLogConfigsRequest) (_result *L
 
 // Summary:
 //
-// Lists deployment orders in a namespace.
+// Queries the change orders in a namespace.
 //
 // @param request - ListNamespaceChangeOrdersRequest
 //
@@ -8754,7 +8745,7 @@ func (client *Client) ListNamespaceChangeOrdersWithOptions(request *ListNamespac
 
 // Summary:
 //
-// Lists deployment orders in a namespace.
+// Queries the change orders in a namespace.
 //
 // @param request - ListNamespaceChangeOrdersRequest
 //
@@ -8773,7 +8764,7 @@ func (client *Client) ListNamespaceChangeOrders(request *ListNamespaceChangeOrde
 
 // Summary:
 //
-// Lists ConfigMap instances in a namespace.
+// Retrieves a list of ConfigMap instances in a namespace.
 //
 // @param request - ListNamespacedConfigMapsRequest
 //
@@ -8820,7 +8811,7 @@ func (client *Client) ListNamespacedConfigMapsWithOptions(request *ListNamespace
 
 // Summary:
 //
-// Lists ConfigMap instances in a namespace.
+// Retrieves a list of ConfigMap instances in a namespace.
 //
 // @param request - ListNamespacedConfigMapsRequest
 //
@@ -8839,7 +8830,7 @@ func (client *Client) ListNamespacedConfigMaps(request *ListNamespacedConfigMaps
 
 // Summary:
 //
-// Queries a list of published microservices.
+// Retrieves the list of published microservices.
 //
 // @param request - ListPublishedServicesRequest
 //
@@ -8886,7 +8877,7 @@ func (client *Client) ListPublishedServicesWithOptions(request *ListPublishedSer
 
 // Summary:
 //
-// Queries a list of published microservices.
+// Retrieves the list of published microservices.
 //
 // @param request - ListPublishedServicesRequest
 //
@@ -8905,7 +8896,7 @@ func (client *Client) ListPublishedServices(request *ListPublishedServicesReques
 
 // Summary:
 //
-// Call ListSecrets to list Secrets in a namespace.
+// Queries the Secret instances in a namespace.
 //
 // @param request - ListSecretsRequest
 //
@@ -8952,7 +8943,7 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, header
 
 // Summary:
 //
-// Call ListSecrets to list Secrets in a namespace.
+// Queries the Secret instances in a namespace.
 //
 // @param request - ListSecretsRequest
 //
@@ -8971,7 +8962,7 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 
 // Summary:
 //
-// Lists the gateway routes that can be associated with a swimming lane.
+// Queries the available gateway routes for a traffic lane.
 //
 // @param request - ListSwimmingLaneGatewayRoutesRequest
 //
@@ -9022,7 +9013,7 @@ func (client *Client) ListSwimmingLaneGatewayRoutesWithOptions(request *ListSwim
 
 // Summary:
 //
-// Lists the gateway routes that can be associated with a swimming lane.
+// Queries the available gateway routes for a traffic lane.
 //
 // @param request - ListSwimmingLaneGatewayRoutesRequest
 //
@@ -9041,7 +9032,7 @@ func (client *Client) ListSwimmingLaneGatewayRoutes(request *ListSwimmingLaneGat
 
 // Summary:
 //
-// Lists all swimming lane tags.
+// Queries all lane tags.
 //
 // @param request - ListSwimmingLaneGroupTagsRequest
 //
@@ -9092,7 +9083,7 @@ func (client *Client) ListSwimmingLaneGroupTagsWithOptions(request *ListSwimming
 
 // Summary:
 //
-// Lists all swimming lane tags.
+// Queries all lane tags.
 //
 // @param request - ListSwimmingLaneGroupTagsRequest
 //
@@ -9111,7 +9102,7 @@ func (client *Client) ListSwimmingLaneGroupTags(request *ListSwimmingLaneGroupTa
 
 // Summary:
 //
-// Call the `ListTagResources` API to list the tags associated with your applications.
+// Queries the mapping between applications and tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -9174,7 +9165,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Call the `ListTagResources` API to list the tags associated with your applications.
+// Queries the mapping between applications and tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -9762,7 +9753,7 @@ func (client *Client) QueryArmsEnable(request *QueryArmsEnableRequest) (_result 
 
 // Summary:
 //
-// Gets the resource usage for an application.
+// Retrieves the resource usage of an application.
 //
 // @param request - QueryResourceStaticsRequest
 //
@@ -9809,7 +9800,7 @@ func (client *Client) QueryResourceStaticsWithOptions(request *QueryResourceStat
 
 // Summary:
 //
-// Gets the resource usage for an application.
+// Retrieves the resource usage of an application.
 //
 // @param request - QueryResourceStaticsRequest
 //
@@ -9980,7 +9971,7 @@ func (client *Client) RescaleApplication(request *RescaleApplicationRequest) (_r
 
 // Summary:
 //
-// Changes the instance type of an application.
+// Modifies the instance specifications of an application.
 //
 // @param request - RescaleApplicationVerticallyRequest
 //
@@ -10063,7 +10054,7 @@ func (client *Client) RescaleApplicationVerticallyWithOptions(request *RescaleAp
 
 // Summary:
 //
-// Changes the instance type of an application.
+// Modifies the instance specifications of an application.
 //
 // @param request - RescaleApplicationVerticallyRequest
 //
@@ -10160,7 +10151,7 @@ func (client *Client) RestartApplication(request *RestartApplicationRequest) (_r
 
 // Summary:
 //
-// Restarts one or more instances in an application.
+// Restarts application instances.
 //
 // @param request - RestartInstancesRequest
 //
@@ -10211,7 +10202,7 @@ func (client *Client) RestartInstancesWithOptions(request *RestartInstancesReque
 
 // Summary:
 //
-// Restarts one or more instances in an application.
+// Restarts application instances.
 //
 // @param request - RestartInstancesRequest
 //
@@ -11122,7 +11113,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates the idle mode for an application.
+// Updates the idle mode of an application.
 //
 // @param request - UpdateAppModeRequest
 //
@@ -11185,7 +11176,7 @@ func (client *Client) UpdateAppModeWithOptions(request *UpdateAppModeRequest, he
 
 // Summary:
 //
-// Updates the idle mode for an application.
+// Updates the idle mode of an application.
 //
 // @param request - UpdateAppModeRequest
 //
@@ -11204,7 +11195,7 @@ func (client *Client) UpdateAppMode(request *UpdateAppModeRequest) (_result *Upd
 
 // Summary:
 //
-// Updates an application security group.
+// Updates the security group of an application.
 //
 // @param request - UpdateAppSecurityGroupRequest
 //
@@ -11255,7 +11246,7 @@ func (client *Client) UpdateAppSecurityGroupWithOptions(request *UpdateAppSecuri
 
 // Summary:
 //
-// Updates an application security group.
+// Updates the security group of an application.
 //
 // @param request - UpdateAppSecurityGroupRequest
 //
@@ -11450,7 +11441,7 @@ func (client *Client) UpdateApplicationScalingRule(request *UpdateApplicationSca
 
 // Summary:
 //
-// Updates the vSwitch configuration for an application.
+// Updates the vSwitch configuration.
 //
 // @param request - UpdateApplicationVswitchesRequest
 //
@@ -11513,7 +11504,7 @@ func (client *Client) UpdateApplicationVswitchesWithOptions(request *UpdateAppli
 
 // Summary:
 //
-// Updates the vSwitch configuration for an application.
+// Updates the vSwitch configuration.
 //
 // @param request - UpdateApplicationVswitchesRequest
 //
@@ -11608,7 +11599,7 @@ func (client *Client) UpdateConfigMap(request *UpdateConfigMapRequest) (_result 
 
 // Summary:
 //
-// Updates a grey tag route.
+// Updates a canary release rule.
 //
 // @param request - UpdateGreyTagRouteRequest
 //
@@ -11671,7 +11662,7 @@ func (client *Client) UpdateGreyTagRouteWithOptions(request *UpdateGreyTagRouteR
 
 // Summary:
 //
-// Updates a grey tag route.
+// Updates a canary release rule.
 //
 // @param request - UpdateGreyTagRouteRequest
 //
@@ -11690,7 +11681,7 @@ func (client *Client) UpdateGreyTagRoute(request *UpdateGreyTagRouteRequest) (_r
 
 // Summary:
 //
-// Update the configuration of an Ingress instance.
+// Updates the configuration of an Ingress instance.
 //
 // @param request - UpdateIngressRequest
 //
@@ -11811,7 +11802,7 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 
 // Summary:
 //
-// Update the configuration of an Ingress instance.
+// Updates the configuration of an Ingress instance.
 //
 // @param request - UpdateIngressRequest
 //
@@ -11830,7 +11821,7 @@ func (client *Client) UpdateIngress(request *UpdateIngressRequest) (_result *Upd
 
 // Summary:
 //
-// Call the UpdateJob API to update a job template.
+// Updates a job template.
 //
 // @param request - UpdateJobRequest
 //
@@ -12063,7 +12054,7 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, headers ma
 
 // Summary:
 //
-// Call the UpdateJob API to update a job template.
+// Updates a job template.
 //
 // @param request - UpdateJobRequest
 //
@@ -12082,7 +12073,7 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 
 // Summary:
 //
-// Update the information about a namespace.
+// Updates namespace information.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -12145,7 +12136,7 @@ func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest
 
 // Summary:
 //
-// Update the information about a namespace.
+// Updates namespace information.
 //
 // @param request - UpdateNamespaceRequest
 //
@@ -12164,7 +12155,7 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 
 // Summary:
 //
-// Updates the namespace-level SLS configuration.
+// Updates the Simple Log Service (SLS) configuration at the namespace level.
 //
 // @param request - UpdateNamespaceSlsConfigsRequest
 //
@@ -12223,7 +12214,7 @@ func (client *Client) UpdateNamespaceSlsConfigsWithOptions(request *UpdateNamesp
 
 // Summary:
 //
-// Updates the namespace-level SLS configuration.
+// Updates the Simple Log Service (SLS) configuration at the namespace level.
 //
 // @param request - UpdateNamespaceSlsConfigsRequest
 //
@@ -12396,7 +12387,7 @@ func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *Updat
 
 // Summary:
 //
-// Updates the enabled status of a swimming lane.
+// Updates the enabled property of a traffic lane.
 //
 // @param request - UpdateSwimmingLaneEnableAttributeRequest
 //
@@ -12455,7 +12446,7 @@ func (client *Client) UpdateSwimmingLaneEnableAttributeWithOptions(request *Upda
 
 // Summary:
 //
-// Updates the enabled status of a swimming lane.
+// Updates the enabled property of a traffic lane.
 //
 // @param request - UpdateSwimmingLaneEnableAttributeRequest
 //

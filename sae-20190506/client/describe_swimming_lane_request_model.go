@@ -18,13 +18,13 @@ type iDescribeSwimmingLaneRequest interface {
 }
 
 type DescribeSwimmingLaneRequest struct {
-	// The lane group ID.
+	// The traffic lane group ID.
 	//
 	// example:
 	//
 	// 2074
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The swimming lane ID.
+	// The traffic lane ID.
 	//
 	// example:
 	//

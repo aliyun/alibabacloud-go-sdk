@@ -24,31 +24,35 @@ type iUpdateAppSecurityGroupResponseBody interface {
 }
 
 type UpdateAppSecurityGroupResponseBody struct {
-	// The HTTP status code that is returned for the request. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information. Valid values:
 	//
-	// - If the request is successful, **success*	- is returned.
+	// - **success**: The request is successful.
 	//
-	// - If the request fails, an error message is returned.
+	// - Specific error code: An exception occurred during the request.
 	//
 	// example:
 	//
@@ -60,9 +64,9 @@ type UpdateAppSecurityGroupResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application security group was successfully updated. Valid values:
+	// Indicates whether the security group of the application is updated. Valid values:
 	//
-	// - **true**: The update was successful.
+	// - **true**: The update is successful.
 	//
 	// - **false**: The update failed.
 	//
@@ -70,7 +74,7 @@ type UpdateAppSecurityGroupResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to query the details of the request.
+	// The trace ID used to accurately query call information.
 	//
 	// example:
 	//

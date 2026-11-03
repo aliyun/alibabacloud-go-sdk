@@ -42,75 +42,95 @@ type iSidecarContainerConfig interface {
 }
 
 type SidecarContainerConfig struct {
-	// The instance ID of the ACR Enterprise Edition. This parameter is required if the `ImageUrl` is from an ACR Enterprise Edition repository.
+	// The ID of the Container Registry ACR Enterprise instance. This parameter is required when ImageUrl is a Container Registry Enterprise instance.
 	//
 	// example:
 	//
 	// cri-xxxxxx
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	// The startup command for the image. This command overrides the `ENTRYPOINT` defined in the image.
+	// The image startup command.
 	//
 	// example:
 	//
 	// python
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The arguments for the startup command. This parameter corresponds to `CMD` in the Dockerfile.
+	// The image startup command arguments.
 	//
 	// example:
 	//
 	// ["a","b"]
 	CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-	// The settings for mounting a ConfigMap. Use this to inject configuration data into the container as files.
+	// The ConfigMap mount description.
 	//
 	// example:
 	//
 	// [{"configMapId":16,"key":"test","mountPath":"/tmp"}]
 	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
-	// The CPU resources allocated to the container, measured in millicores. For example, a value of 1000 represents 1 vCPU.
+	// Cpu
 	//
 	// example:
 	//
 	// 1000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The configuration for an `emptyDir` volume. This creates a temporary directory that persists for the life of the application instance.
+	// The EmptyDir description.
 	//
 	// example:
 	//
 	// [{\\"name\\":\\"workdir\\",\\"mountPath\\":\\"/usr/local/tomcat/webapps\\"}]
 	EmptyDirDesc *string `json:"EmptyDirDesc,omitempty" xml:"EmptyDirDesc,omitempty"`
-	// The environment variables to set in the container. Specify the variables as a JSON array of key-value pairs.
+	// The container environment variable parameters.
 	//
 	// example:
 	//
 	// [{"name":"TEST_ENV_KEY","value":"TEST_ENV_VAR"}]
 	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-	// The container image URL.
+	// The image URL.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The configuration for the liveness probe. The liveness probe checks if the container is running. If the probe fails, the system restarts the container.
+	// The liveness probe configuration.
+	//
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	Liveness *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
-	// The amount of memory allocated to the container, measured in MB.
+	// Memory
 	//
 	// example:
 	//
 	// 1024
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The name of the container.
+	// The container name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configuration for the postStart hook. This hook runs immediately after the container starts to perform initialization tasks.
+	// The PostStart configuration.
+	//
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","echo hello"]}}
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The configuration for the preStop hook. This hook runs immediately before the container is terminated to ensure a graceful shutdown.
+	// The PreStop configuration.
+	//
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","echo hello"]}}
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The configuration for the readiness probe. The readiness probe checks if the container is ready to handle requests. The system will not direct traffic to a container until its readiness probe succeeds.
+	// The readiness probe configuration.
+	//
+	// example:
+	//
+	// {"exec":{"command":["sh","-c","cat /home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}
 	Readiness *string `json:"Readiness,omitempty" xml:"Readiness,omitempty"`
-	// Specifies how to mount a Secret. This lets you securely use sensitive data, such as credentials or keys, in your application.
+	// The Secret mount description.
+	//
+	// example:
+	//
+	// [{"secretId":10,"key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 }
 

@@ -26,13 +26,44 @@ type iListApplicationCenterServiceInstancesResponseBody interface {
 }
 
 type ListApplicationCenterServiceInstancesResponseBody struct {
-	Code      *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListApplicationCenterServiceInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                                `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                                                `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The API status code or POP error code. Valid values: 2xx: Success. 3xx: Redirection. 4xx: Client error. 5xx: Server error.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned results.
+	Data *ListApplicationCenterServiceInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the Error codes section in this topic.
+	//
+	// example:
+	//
+	// Empty
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID.
+	//
+	// example:
+	//
+	// 0a981dd515966966104121683d****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s ListApplicationCenterServiceInstancesResponseBody) String() string {
@@ -116,6 +147,7 @@ func (s *ListApplicationCenterServiceInstancesResponseBody) Validate() error {
 }
 
 type ListApplicationCenterServiceInstancesResponseBodyData struct {
+	// The list of service instances.
 	ServiceInstances []*ListApplicationCenterServiceInstancesResponseBodyDataServiceInstances `json:"ServiceInstances,omitempty" xml:"ServiceInstances,omitempty" type:"Repeated"`
 }
 
@@ -150,11 +182,36 @@ func (s *ListApplicationCenterServiceInstancesResponseBodyData) Validate() error
 }
 
 type ListApplicationCenterServiceInstancesResponseBodyDataServiceInstances struct {
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2025-10-28T02:18:51Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// tftestacc54
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service instance ID.
+	//
+	// example:
+	//
+	// si-2063aea4b23b4781a26b
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
-	ServiceName       *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// user-service
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Dify HA
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s ListApplicationCenterServiceInstancesResponseBodyDataServiceInstances) String() string {

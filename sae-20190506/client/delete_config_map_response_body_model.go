@@ -47,6 +47,10 @@ type DeleteConfigMapResponseBody struct {
 	// - Not returned if the request is successful.
 	//
 	// - Returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The response message.
 	//

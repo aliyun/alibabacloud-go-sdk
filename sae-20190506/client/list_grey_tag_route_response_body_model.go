@@ -26,29 +26,33 @@ type iListGreyTagRouteResponseBody interface {
 }
 
 type ListGreyTagRouteResponseBody struct {
-	// The status of the interface or the POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A request error occurs.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurs.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the grayscale rule.
+	// The canary release rule information.
 	Data *ListGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// The additional information.
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
@@ -64,9 +68,9 @@ type ListGreyTagRouteResponseBody struct {
 	//
 	// 9D29CBD0-45D3-410B-9826-52F86F90****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the query succeeded.
+	// Indicates whether the change order information was queried successfully. Valid values:
 	//
-	// - **true**: The query succeeded.
+	// - **true**: The query was successful.
 	//
 	// - **false**: The query failed.
 	//
@@ -74,7 +78,7 @@ type ListGreyTagRouteResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID, which is used to query the details of a call.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -169,7 +173,7 @@ type ListGreyTagRouteResponseBodyData struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page in a paged query. The value can only be **1**.
+	// The number of entries per page in a paged query. Currently, only **1*	- is supported.
 	//
 	// example:
 	//
@@ -177,7 +181,7 @@ type ListGreyTagRouteResponseBodyData struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The returned result.
 	Result []*ListGreyTagRouteResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries. The value can only be **1**.
+	// The total number of entries. Currently, only **1*	- is supported.
 	//
 	// example:
 	//
@@ -243,7 +247,7 @@ func (s *ListGreyTagRouteResponseBodyData) Validate() error {
 }
 
 type ListGreyTagRouteResponseBodyDataResult struct {
-	// The grayscale rules created for an application for which an Application Load Balancer (ALB) Ingress is configured.
+	// The canary release rules created for applications with configured Application Load Balancer (ALB) gateway routes.
 	AlbRules []*ListGreyTagRouteResponseBodyDataResultAlbRules `json:"AlbRules,omitempty" xml:"AlbRules,omitempty" type:"Repeated"`
 	// The timestamp when the rule was created. Unit: milliseconds.
 	//
@@ -251,13 +255,13 @@ type ListGreyTagRouteResponseBodyDataResult struct {
 	//
 	// 1619007592013
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The grayscale rules for Dubbo services.
+	// The Dubbo service canary release rules.
 	DubboRules []*ListGreyTagRouteResponseBodyDataResultDubboRules `json:"DubboRules,omitempty" xml:"DubboRules,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -271,7 +275,7 @@ type ListGreyTagRouteResponseBodyDataResult struct {
 	//
 	// rule-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The grayscale rules for Spring Cloud.
+	// The Spring Cloud canary release rules.
 	ScRules []*ListGreyTagRouteResponseBodyDataResultScRules `json:"ScRules,omitempty" xml:"ScRules,omitempty" type:"Repeated"`
 	// The timestamp when the rule was updated. Unit: milliseconds.
 	//
@@ -393,19 +397,19 @@ func (s *ListGreyTagRouteResponseBodyDataResult) Validate() error {
 }
 
 type ListGreyTagRouteResponseBodyDataResultAlbRules struct {
-	// The conditional pattern of the grayscale rule. Only AND is supported, which indicates that all conditions in the list must be met.
+	// The condition mode of the canary release rule. Currently, only **AND*	- is supported, which means all conditions in the condition list must be met.
 	//
 	// example:
 	//
 	// AND
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The Ingress ID.
+	// The gateway route ID.
 	//
 	// example:
 	//
 	// 23
 	IngressId *string `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
-	// The list of conditions.
+	// The condition list.
 	Items []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The service name.
 	//
@@ -473,19 +477,19 @@ func (s *ListGreyTagRouteResponseBodyDataResultAlbRules) Validate() error {
 }
 
 type ListGreyTagRouteResponseBodyDataResultAlbRulesItems struct {
-	// Only == is supported.
+	// The comparison operator. Currently, only **==*	- is supported.
 	//
 	// example:
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// This parameter is not applicable to ALB applications.
+	// Not required for ALB applications.
 	//
 	// example:
 	//
 	// N/A
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// This parameter is not applicable to ALB applications.
+	// Not required for ALB applications.
 	//
 	// example:
 	//
@@ -497,7 +501,7 @@ type ListGreyTagRouteResponseBodyDataResultAlbRulesItems struct {
 	//
 	// example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The operator. Valid values: Only rawvalue is supported, which indicates a direct comparison.
+	// The operator. Currently, only **rawvalue*	- (direct comparison) is supported.
 	//
 	// example:
 	//
@@ -505,7 +509,7 @@ type ListGreyTagRouteResponseBodyDataResultAlbRulesItems struct {
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The comparison type. Valid values:
 	//
-	// - **sourceIp**: SourceIp.
+	// - **sourceIp**: Source IP address.
 	//
 	// - **cookie**: Cookie.
 	//
@@ -599,23 +603,23 @@ func (s *ListGreyTagRouteResponseBodyDataResultAlbRulesItems) Validate() error {
 }
 
 type ListGreyTagRouteResponseBodyDataResultDubboRules struct {
-	// The conditional pattern of the grayscale rule. Valid values:
+	// The condition mode of the canary release rule. Valid values:
 	//
-	// - **AND**: All conditions in the list must be met.
+	// - **AND**: The logical AND operation. All conditions in the condition list must be met.
 	//
-	// - **OR**: Any condition in the list can be met.
+	// - **OR**: The logical OR operation. Any condition in the condition list must be met.
 	//
 	// example:
 	//
 	// OR
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The group of the Dubbo service that corresponds to the grayscale rule.
+	// The group of the Dubbo service corresponding to the canary release rule.
 	//
 	// example:
 	//
 	// DUBBO
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The list of conditions.
+	// The condition list.
 	Items []*ListGreyTagRouteResponseBodyDataResultDubboRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The method name of the Dubbo service.
 	//
@@ -623,13 +627,13 @@ type ListGreyTagRouteResponseBodyDataResultDubboRules struct {
 	//
 	// echo
 	MethodName *string `json:"methodName,omitempty" xml:"methodName,omitempty"`
-	// The name of the Dubbo service.
+	// The Dubbo service name.
 	//
 	// example:
 	//
 	// com.alibaba.edas.boot.EchoService
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The version of the Dubbo service.
+	// The Dubbo service version.
 	//
 	// example:
 	//
@@ -719,31 +723,31 @@ type ListGreyTagRouteResponseBodyDataResultDubboRulesItems struct {
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// The expression that is used to obtain the parameter value. The syntax follows the Spring Expression Language (SpEL). Valid values:
+	// The expression used to obtain the parameter value. The syntax follows Spring Expression Language (SpEL). Valid values:
 	//
-	// - **Leave it empty**: Obtains the value of the current parameter.
+	// - **Empty**: Obtains the value of the current parameter directly.
 	//
-	// - **.name**: Obtains the name property of the parameter. This is equivalent to args0.getName().
+	// - **.name**: Obtains the name property of the parameter, which is equivalent to args0.getName().
 	//
-	// - **.isEnabled()**: Obtains the enabled property of the parameter. This is equivalent to args0.isEnabled().
+	// - **.isEnabled()**: Obtains the enabled property of the parameter, which is equivalent to args0.isEnabled().
 	//
-	// - **[0]**: Obtains the first value of the array. This is equivalent to args0[0]. Note that the expression does not start with a period (.).
+	// - **[0]**: Specifies that the current parameter is an array and obtains the first value of the array, which is equivalent to args0[0]. Note that there is no period (.) at the beginning.
 	//
-	// - **.get(0)**: Obtains the first value of the list. This is equivalent to args0.get(0).
+	// - **.get(0)**: Specifies that the current parameter is a list and obtains the first value of the list, which is equivalent to args0.get(0).
 	//
-	// - **.get("key")**: Obtains the value that corresponds to the specified key from the map. This is equivalent to args0.get("key").
+	// - **.get("key")**: Specifies that the current parameter is a map and obtains the value corresponding to the key, which is equivalent to args0.get("key").
 	//
 	// example:
 	//
 	// .name
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// The parameter number. 0 indicates the first parameter.
+	// The parameter index. A value of 0 indicates the first parameter.
 	//
 	// example:
 	//
 	// 0
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// This parameter is not applicable to Dubbo services.
+	// Not applicable to Dubbo services.
 	//
 	// example:
 	//
@@ -755,7 +759,7 @@ type ListGreyTagRouteResponseBodyDataResultDubboRulesItems struct {
 	//
 	// - **list**: Whitelist.
 	//
-	// - **mod**: Modulo 100 operation.
+	// - **mod**: Modulo 100.
 	//
 	// - **deterministic_proportional_steaming_division**: Percentage.
 	//
@@ -763,7 +767,7 @@ type ListGreyTagRouteResponseBodyDataResultDubboRulesItems struct {
 	//
 	// rawvalue
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// This parameter is not applicable to Dubbo services.
+	// Not applicable to Dubbo services.
 	//
 	// example:
 	//
@@ -853,19 +857,19 @@ func (s *ListGreyTagRouteResponseBodyDataResultDubboRulesItems) Validate() error
 }
 
 type ListGreyTagRouteResponseBodyDataResultScRules struct {
-	// The conditional pattern of the grayscale rule. Valid values:
+	// The condition mode of the canary release rule. Valid values:
 	//
-	// - **AND**: All conditions in the list must be met.
+	// - **AND**: The logical AND operation. All conditions in the condition list must be met.
 	//
-	// - **OR**: Any condition in the list can be met.
+	// - **OR**: The logical OR operation. Any condition in the condition list must be met.
 	//
 	// example:
 	//
 	// OR
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The list of conditions.
+	// The condition list.
 	Items []*ListGreyTagRouteResponseBodyDataResultScRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The path that corresponds to the grayscale rule for the Spring Cloud application.
+	// The path corresponding to the canary release rule for the Spring Cloud application.
 	//
 	// example:
 	//
@@ -928,13 +932,13 @@ type ListGreyTagRouteResponseBodyDataResultScRulesItems struct {
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// This parameter is not applicable to Spring Cloud applications.
+	// Not applicable to Spring Cloud applications.
 	//
 	// example:
 	//
 	// N/A
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// This parameter is not applicable to Spring Cloud applications.
+	// Not applicable to Spring Cloud applications.
 	//
 	// example:
 	//
@@ -952,7 +956,7 @@ type ListGreyTagRouteResponseBodyDataResultScRulesItems struct {
 	//
 	// - **list**: Whitelist.
 	//
-	// - **mod**: Modulo 100 operation.
+	// - **mod**: Modulo 100.
 	//
 	// - **deterministic_proportional_steaming_division**: Percentage.
 	//

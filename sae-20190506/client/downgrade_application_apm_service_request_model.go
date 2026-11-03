@@ -14,7 +14,7 @@ type iDowngradeApplicationApmServiceRequest interface {
 }
 
 type DowngradeApplicationApmServiceRequest struct {
-	// The ID of the interactive messaging application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

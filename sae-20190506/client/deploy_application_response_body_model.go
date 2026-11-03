@@ -26,15 +26,15 @@ type iDeployApplicationResponseBody interface {
 }
 
 type DeployApplicationResponseBody struct {
-	// The API status or POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: success.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: redirection.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: request error.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: server error.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type DeployApplicationResponseBody struct {
 	Data *DeployApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code. Valid values:
 	//
-	// - If the request is successful, the **ErrorCode*	- field is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
-	// 空
+	// Application.MissingJdk
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information. Valid values:
 	//
-	// - If the request is successful, **success*	- is returned.
+	// - If the request is normal, **success*	- is returned.
 	//
-	// - If the request fails, a specific error code is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type DeployApplicationResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the application deployment is successful. Valid values:
 	//
-	// - **true**: the deployment is successful.
+	// - **true**: The deployment is successful.
 	//
-	// - **false**: the deployment failed.
+	// - **false**: The deployment fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID, which is used to query the details of a request.
+	// The trace ID, which is used to accurately query call information.
 	//
 	// example:
 	//
@@ -179,11 +179,11 @@ type DeployApplicationResponseBodyData struct {
 	//
 	// 01db03d3-3ee9-48b3-b3d0-dfce2d88****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// Indicates whether the change published by a Resource Access Management (RAM) user requires approval. Valid values:
+	// Specifies whether the change publish by a Resource Access Management (RAM) user requires approval. Valid values:
 	//
-	// - **true**: approval is required.
+	// - **true**: Approval is required.
 	//
-	// - **false**: approval is not required.
+	// - **false**: Approval is not required.
 	//
 	// example:
 	//

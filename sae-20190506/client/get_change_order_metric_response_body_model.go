@@ -22,15 +22,15 @@ type iGetChangeOrderMetricResponseBody interface {
 }
 
 type GetChangeOrderMetricResponseBody struct {
-	// The HTTP status code.
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client-side error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server-side error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type GetChangeOrderMetricResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of application information.
 	Data []*GetChangeOrderMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response message.
+	// The additional information. Valid values:
 	//
-	// - Returns **success*	- if the request is successful.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - Returns an error code if the request fails.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type GetChangeOrderMetricResponseBody struct {
 	//
 	// 3B763F98-0BA2-5C23-B6B8-558568D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the service list was retrieved. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The service list was retrieved.
 	//
-	// - **false**: The request failed.
+	// - **false**: The retrieval failed.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type GetChangeOrderMetricResponseBodyData struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The average duration of a change order, in milliseconds.
+	// The average time consumed, in milliseconds.
 	AvgTimeCostMs *float32 `json:"AvgTimeCostMs,omitempty" xml:"AvgTimeCostMs,omitempty"`
-	// The number of failed change orders.
+	// The number of abnormal change orders.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type GetChangeOrderMetricResponseBodyData struct {
 	//
 	// 0.25
 	ErrorPercent *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
-	// The maximum duration, in milliseconds.
+	// The maximum time consumed, in milliseconds.
 	MaxTimeCostMs *float32 `json:"MaxTimeCostMs,omitempty" xml:"MaxTimeCostMs,omitempty"`
 	// The application name.
 	//
@@ -169,7 +169,7 @@ type GetChangeOrderMetricResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The average task duration, in milliseconds.
+	// The average time consumed by the task, in milliseconds.
 	TaskTimeCostMsAvg *string `json:"TaskTimeCostMsAvg,omitempty" xml:"TaskTimeCostMsAvg,omitempty"`
 	// The total number of change orders.
 	//

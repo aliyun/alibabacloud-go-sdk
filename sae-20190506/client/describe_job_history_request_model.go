@@ -28,27 +28,27 @@ type DescribeJobHistoryRequest struct {
 	//
 	// e1a7a07-abcb-4652-a1d3-2d57f415****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of the page to return.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries to return on each page. Valid values: 0 to 10000.
+	// The number of entries per page in the paging Settings for a paged query. Valid values: 0 to 10000.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the job. Valid values:
+	// The running status of the job. Valid values:
 	//
-	// - **0**: The job is not executed.
+	// - **0**: Not run.
 	//
-	// - **1**: The job is executed.
+	// - **1**: Succeeded.
 	//
-	// - **2**: The job fails to be executed.
+	// - **2**: Failed.
 	//
-	// - **3**: The job is being executed.
+	// - **3**: Running.
 	//
 	// example:
 	//

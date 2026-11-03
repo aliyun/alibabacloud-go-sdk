@@ -14,7 +14,7 @@ type iQueryResourceStaticsRequest interface {
 }
 
 type QueryResourceStaticsRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

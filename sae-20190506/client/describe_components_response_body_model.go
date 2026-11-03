@@ -47,6 +47,10 @@ type DescribeComponentsResponseBody struct {
 	// - If the request is successful, the **ErrorCode*	- parameter is empty.
 	//
 	// - If the request fails, the **ErrorCode*	- parameter indicates an error code. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidComponentType.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information.
 	//

@@ -26,29 +26,33 @@ type iDeleteIngressResponseBody interface {
 }
 
 type DeleteIngressResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client-side error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server-side error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *DeleteIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code that is returned if the request fails.
+	// The error code. Note the following:
 	//
-	// - This parameter is not returned if the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - For a list of error codes, see the **Error codes*	- section.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,9 +64,9 @@ type DeleteIngressResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ingress instance was deleted successfully. Valid values:
+	// Indicates whether the ingress instance was deleted. Valid values:
 	//
-	// - **true**: The deletion was successful.
+	// - **true**: The ingress instance was deleted.
 	//
 	// - **false**: The deletion failed.
 	//
@@ -70,7 +74,7 @@ type DeleteIngressResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID for the request.
+	// The trace ID used to accurately query the call information.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ func (s *DeleteIngressResponseBody) Validate() error {
 }
 
 type DeleteIngressResponseBodyData struct {
-	// The ID of the deleted routing rule.
+	// The ID of the deleted ingress rule.
 	//
 	// example:
 	//

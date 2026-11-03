@@ -26,33 +26,37 @@ type iListSwimmingLaneGroupTagsResponseBody interface {
 }
 
 type ListSwimmingLaneGroupTagsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned results.
 	Data []*ListSwimmingLaneGroupTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request succeeds.
+	// - Successful request: The **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - Failed request: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message.
+	// The additional information. Valid values:
 	//
-	// - If the request is successful, **success*	- is returned.
+	// - **success**: The request is successful.
 	//
-	// - If the request fails, an error message is returned.
+	// - Specific error code: The request is abnormal.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type ListSwimmingLaneGroupTagsResponseBody struct {
 	//
 	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**
+	// - **true**: Successful.
 	//
-	// - **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of a request.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -173,7 +177,7 @@ type ListSwimmingLaneGroupTagsResponseBodyData struct {
 	//
 	// {\\"tag\\":\\"g1\\",\\"priority\\":100,\\"type\\":\\"tag\\",\\"desc\\":\\"sys-label\\"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The swimming lane tag.
+	// The lane tag.
 	//
 	// example:
 	//

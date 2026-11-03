@@ -24,7 +24,7 @@ type DeleteInstancesRequest struct {
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The IDs of the application instances to delete.
+	// The instance IDs to be deleted.
 	//
 	// This parameter is required.
 	//

@@ -24,41 +24,41 @@ type iListNamespaceChangeOrdersRequest interface {
 }
 
 type ListNamespaceChangeOrdersRequest struct {
-	// The change order status. Valid values:
+	// The status of the change order. Valid values:
 	//
-	// - **0**: Preparing.
+	// - **0**: preparing
 	//
-	// - **1**: Executing.
+	// - **1**: executing
 	//
-	// - **2**: Succeeded.
+	// - **2**: succeeded
 	//
-	// - **3**: Failed.
+	// - **3**: failed
 	//
-	// - **6**: Terminated.
+	// - **6**: terminated
 	//
-	// - **10**: System Error.
+	// - **10**: failed due to a system exception
 	//
 	// example:
 	//
 	// 2
 	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
-	// The change order type. Valid values:
+	// The type of the change order. Valid values:
 	//
-	// - **CoBatchStartApplication**: Batch Start Application.
+	// - **CoBatchStartApplication**: Starts applications in batches.
 	//
-	// - **CoBatchStopApplication**: Batch Stop Application.
+	// - **CoBatchStopApplication**: Stops applications in batches.
 	//
 	// example:
 	//
 	// CoBatchStartApplication
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The current page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// A keyword for a fuzzy search of change order descriptions. Change orders whose descriptions contain this **key*	- are returned.
+	// The keyword used for fuzzy matching of the change order description. All change orders whose descriptions contain this **key*	- are returned.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListNamespaceChangeOrdersRequest struct {
 	//
 	// cn-shanghai:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iUpdateNamespaceSlsConfigsRequest interface {
 }
 
 type UpdateNamespaceSlsConfigsRequest struct {
-	// The short ID of the namespace. You do not need to include the region. This parameter is recommended.
+	// The short ID of the namespace. The region is not required. This parameter is recommended.
 	//
 	// example:
 	//
@@ -32,33 +32,37 @@ type UpdateNamespaceSlsConfigsRequest struct {
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The configuration for collecting logs to SLS.
+	// The configuration for collecting logs to Simple Log Service (SLS).
 	//
-	// - To use an SLS resource that is automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
+	// - To use SLS resources automatically created by Serverless App Engine (SAE): `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
 	//
-	// - To use a custom SLS resource: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+	// - To use custom SLS resources: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
 	//
-	// The parameters are described as follows:
+	// The parameter settings are as follows:
 	//
-	// - `projectName`: The name of the SLS project.
+	// - **projectName**: the name of the SLS project.
 	//
-	// - `logDir`: The log path.
+	// - **logDir**: the log path.
 	//
-	// - `logType`: The log type. A value of `stdout` specifies container standard output logs. You can specify only one `stdout` configuration. If you do not set this parameter, file logs are collected.
+	// - **logType**: the log type. **stdout*	- indicates container standard output logs. Only one stdout log can be set. If it is not set, file logs are collected.
 	//
-	// - `logstoreName`: The name of the SLS logstore.
+	// - **logstoreName**: the name of the SLS Logstore.
 	//
-	// - `logtailName`: The name of the Logtail. If you do not specify this parameter, a new Logtail is created.
+	// - **logtailName**: the name of the SLS Logtail. If this parameter is not specified, a new Logtail is created.
 	//
-	// If the SLS configuration remains the same across deployments, you can omit this parameter. To disable log collection to SLS, set the value of `SlsConfigs` to an empty string ("").
+	// If the SLS collection configuration remains unchanged during multiple deployments, you do not need to set this parameter (that is, the **SlsConfigs*	- field is not required in the request). If you no longer need the SLS collection feature, you must set the value of this field to an empty string (that is, set the **SlsConfigs*	- field to "") in the request.
 	//
-	// > SAE automatically deletes a project when you delete the task template used to create it. Therefore, when you select an existing project, do not select a project that was automatically created by SAE.
+	// > A project automatically created with a job template is deleted when the job template is deleted. Therefore, when you select an existing project, you cannot select a project automatically created by SAE.
 	//
 	// example:
 	//
 	// [{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]
 	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
-	// The SLS log tags.
+	// sls log tags
+	//
+	// example:
+	//
+	// []
 	SlsLogEnvTags *string `json:"SlsLogEnvTags,omitempty" xml:"SlsLogEnvTags,omitempty"`
 }
 

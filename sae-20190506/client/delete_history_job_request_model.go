@@ -16,7 +16,7 @@ type iDeleteHistoryJobRequest interface {
 }
 
 type DeleteHistoryJobRequest struct {
-	// The ID of the job template to which the job that you want to delete belongs.
+	// The ID of the job template to delete.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteHistoryJobRequest struct {
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the job.
+	// The job ID.
 	//
 	// This parameter is required.
 	//

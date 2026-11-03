@@ -28,34 +28,50 @@ type iAppStackResource interface {
 }
 
 type AppStackResource struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1706518652000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-78yt
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The product.
+	//
 	// example:
 	//
 	// VPC
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// vsw-qwe112233
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// vsw-palworld-a
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// VSWITCH
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The stack ID.
+	//
 	// example:
 	//
 	// palworld
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// NORMAL

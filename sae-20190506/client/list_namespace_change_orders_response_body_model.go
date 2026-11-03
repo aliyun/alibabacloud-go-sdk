@@ -26,29 +26,33 @@ type iListNamespaceChangeOrdersResponseBody interface {
 }
 
 type ListNamespaceChangeOrdersResponseBody struct {
-	// The HTTP status code or POP error code.
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: success
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: redirection
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: client error
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned results.
+	// The returned result.
 	Data *ListNamespaceChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is returned only when a request fails.
+	// - Request succeeded: The **ErrorCode*	- parameter is not returned.
 	//
-	// - For more information, see the **Error codes*	- section of this topic.
+	// - Request failed: The **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// Resouce.no.permission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message.
+	// The additional information about the API call result.
 	//
 	// example:
 	//
@@ -60,17 +64,17 @@ type ListNamespaceChangeOrdersResponseBody struct {
 	//
 	// 0bc3915638507554994370d****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the change order list was successfully retrieved. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The list was successfully retrieved.
 	//
-	// - **false**: The request failed.
+	// - **false**: The retrieval failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID, which is used to query the details of the request.
+	// The trace ID used to query the exact call information.
 	//
 	// example:
 	//
@@ -239,17 +243,13 @@ func (s *ListNamespaceChangeOrdersResponseBodyData) Validate() error {
 }
 
 type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
-	// The batch count.
+	// The number of batches.
 	//
 	// example:
 	//
 	// 1
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
 	// The batch type.
-	//
-	// example:
-	//
-	// Automatic
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
 	// The change order ID.
 	//
@@ -257,13 +257,13 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// 7fa5c0-9ebb-4bb4-b383-1f885447****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The type of the change order, which corresponds to the `CoTypeCode`.
+	// The type of the change order, which is the description of **CoTypeCode**.
 	//
 	// example:
 	//
 	// msg.docker.app.actions.CoBatchStartApplication
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The type code of the change order. Valid values:
+	// The code of the change order type. Valid values:
 	//
 	// - **CoBatchStartApplication**: Starts applications in batches.
 	//
@@ -273,7 +273,7 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// CoBatchStartApplication
 	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	// The creation time of the change order.
+	// The creation time.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// Batch Start Applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The completion time of the change order.
+	// The end time.
 	//
 	// example:
 	//
@@ -309,13 +309,13 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// cn-shanghai:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The pipeline.
+	// The change pipelines.
 	//
 	// example:
 	//
 	// xxxx
 	Pipelines *string `json:"Pipelines,omitempty" xml:"Pipelines,omitempty"`
-	// The initiation source for the change order.
+	// The source from which the change order was initiated.
 	//
 	// example:
 	//
@@ -323,17 +323,17 @@ type ListNamespaceChangeOrdersResponseBodyDataChangeOrderList struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the change order. Valid values:
 	//
-	// - **0**: Preparing
+	// - **0**: preparing
 	//
-	// - **1**: In progress
+	// - **1**: executing
 	//
-	// - **2**: Succeeded
+	// - **2**: succeeded
 	//
-	// - **3**: Failed
+	// - **3**: failed
 	//
-	// - **6**: Terminated
+	// - **6**: terminated
 	//
-	// - **10**: Failed due to a system exception
+	// - **10**: failed due to a system exception
 	//
 	// example:
 	//

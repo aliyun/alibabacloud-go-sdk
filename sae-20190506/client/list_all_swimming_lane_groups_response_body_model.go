@@ -47,6 +47,10 @@ type ListAllSwimmingLaneGroupsResponseBody struct {
 	// - This parameter is not returned if the request is successful.
 	//
 	// - For a list of error codes, see the "**Error codes**" section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The response message.
 	//

@@ -14,6 +14,8 @@ type iAclEntryConfig interface {
 }
 
 type AclEntryConfig struct {
+	// CIDR
+	//
 	// This parameter is required.
 	//
 	// example:

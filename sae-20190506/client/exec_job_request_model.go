@@ -32,7 +32,7 @@ type iExecJobRequest interface {
 }
 
 type ExecJobRequest struct {
-  // The job template ID.
+  // The ID of the job template.
   // 
   // This parameter is required.
   // 
@@ -40,7 +40,7 @@ type ExecJobRequest struct {
   // 
   // ee1a7a07-abcb-4652-a1d3-2d57f415****
   AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-  // The startup command, which must be an executable that exists in the container. Example:
+  // The image startup command. The command must be an executable object that exists in the container. Example:
   // 
   // ```
   // 
@@ -56,51 +56,51 @@ type ExecJobRequest struct {
   // 
   // ```
   // 
-  // Based on this example, `Command` is `echo` and `CommandArgs` is `["abc", ">", "file0"]`.
+  // Based on the preceding example, Command="echo" and CommandArgs=["abc", ">", "file0"].
   // 
   // example:
   // 
   // echo
   Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-  // The arguments for the **Command*	- parameter. The value must be a string that represents a JSON array. Format:
+  // The arguments for the image startup command. These are the arguments required by the **Command*	- startup command. Format:
   // 
   // `["a","b"]`
   // 
-  // In the preceding example for the `Command` parameter, `CommandArgs` is `["abc", ">", "file0"]`. The JSON array `["abc", ">", "file0"]` must be converted to a string. This parameter is optional.
+  // In the preceding example, CommandArgs=["abc", ">", "file0"]. The ["abc", ">", "file0"] part must be converted to a string in JSON array format. If this parameter is not required, leave it empty.
   // 
   // example:
   // 
   // ["a","b"]
   CommandArgs *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
-  // The container environment variables. You can specify custom environment variables or reference an existing ConfigMap. For more information about creating a ConfigMap, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html).
+  // The environment variables for the container. You can customize environment variables or reference configuration items. To reference a configuration item, you must first create a ConfigMap instance. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
   // 
   // - Custom configuration
   // 
-  //   - **name**: The name of the environment variable.
+  //     - **name**: the name of the environment variable.
   // 
-  //   - **value**: The value of the environment variable.
+  //     - **value**: the value of the environment variable.
   // 
-  // - Reference a ConfigMap
+  // - Referenced configuration items
   // 
-  //   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, use the `sae-sys-configmap-all-<ConfigMap name>` format. Example: `sae-sys-configmap-all-test1`.
+  //     - **name**: the name of the environment variable. You can reference a single key or all keys. To reference all keys, enter sae-sys-configmap-all-<configuration item name>, for example, sae-sys-configmap-all-test1.
   // 
-  //   - **valueFrom**: The source of the environment variable. Set the value to `configMapRef`.
+  //     - **valueFrom**: the reference of the environment variable. Set the value to configMapRef.
   // 
-  //   - **configMapId**: The ID of the ConfigMap.
+  //     - **configMapId**: the ID of the configuration item.
   // 
-  //   - **key**: The key that you want to reference. If you want to reference all key-value pairs, do not specify this parameter.
+  //     - **key**: the key. If you reference all key-value pairs, do not set this field.
   // 
   // example:
   // 
   // [{"name":"envtmp","value":"0"}]
   Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
-  // A customizable event ID that ensures idempotency. The system creates only one job for requests that have the same event ID.
+  // The event ID. This parameter is user-defined and used for idempotence. Only one job is created for the same event ID.
   // 
   // example:
   // 
   // custom
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-  // Arguments for starting a job deployed from a JAR package. The default startup command is:
+  // The startup arguments for the JAR package job. Default job startup command:
   // 
   // `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
   // 
@@ -108,7 +108,7 @@ type ExecJobRequest struct {
   // 
   // custom-args
   JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-  // Options for starting a job deployed from a JAR package. The default startup command is:
+  // The startup options for the JAR package job. Default job startup command:
   // 
   // `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArg`
   // 
@@ -116,19 +116,19 @@ type ExecJobRequest struct {
   // 
   // -Xms4G -Xmx4G
   JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-  // The number of concurrent instances.
+  // The number of concurrent instances for the job.
   // 
   // example:
   // 
   // 3
   Replicas *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-  // The time to trigger the job, specified in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format.
+  // The time when the job is triggered. Format: `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
   // 
   // example:
   // 
   // 2023-09-14T14:25:02Z
   Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-  // The startup command for a job deployed from a WAR package. Configuration is the same as for an image-based deployment. For more information, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
+  // The startup command for the WAR package deployment job. The configuration procedure is the same as that for the image deployment startup command. For more information, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
   // 
   // example:
   // 

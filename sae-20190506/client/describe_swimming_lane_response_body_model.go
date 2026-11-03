@@ -26,13 +26,13 @@ type iDescribeSwimmingLaneResponseBody interface {
 }
 
 type DescribeSwimmingLaneResponseBody struct {
-	// The HTTP status code that is returned.
+	// The API status code or POP error code. Valid values:
 	//
 	// - **2xx**: Success.
 	//
-	// - **3xx**: Redirection.
+	// - **3xx**: Redirect.
 	//
-	// - **4xx**: Client error.
+	// - **4xx**: Request error.
 	//
 	// - **5xx**: Server error.
 	//
@@ -40,19 +40,23 @@ type DescribeSwimmingLaneResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned result.
 	Data *DescribeSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// - This parameter is returned only if the request fails.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned with the response.
+	// The additional information about the call result.
 	//
-	// - **success*	- is returned if the request is successful.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code is returned if the request fails.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type DescribeSwimmingLaneResponseBody struct {
 	//
 	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The query was successful.
+	// - **true**: The query is successful.
 	//
-	// - **false**: The query failed.
+	// - **false**: The query fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to query the details of a call.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -165,23 +169,23 @@ func (s *DescribeSwimmingLaneResponseBody) Validate() error {
 type DescribeSwimmingLaneResponseBodyData struct {
 	// The application entry rule.
 	AppEntryRule *DescribeSwimmingLaneResponseBodyDataAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
-	// A list of associated applications.
+	// The application information.
 	Apps []*DescribeSwimmingLaneResponseBodyDataApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The mode for the end-to-end canary release. Valid values:
+	// The end-to-end canary release mode. Valid values:
 	//
-	// - `0`: content-based routing
+	// - 0: Route by request content.
 	//
-	// - `1`: percentage-based routing
+	// - 1: Route by percentage.
 	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	// Indicates whether the lane is enabled.
+	// The traffic lane status. Valid values:
 	//
-	// - `true`: enabled
+	// - true: Enabled.
 	//
-	// - `false`: disabled
+	// - false: Disabled.
 	//
 	// example:
 	//
@@ -193,25 +197,25 @@ type DescribeSwimmingLaneResponseBodyData struct {
 	//
 	// true
 	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
-	// The ID of the lane.
+	// The traffic lane ID.
 	//
 	// example:
 	//
 	// 9488
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// The name of the lane.
+	// The traffic lane group name.
 	//
 	// example:
 	//
 	// mse-test
 	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
-	// The tag of the lane.
+	// The traffic lane tag.
 	//
 	// example:
 	//
 	// {"alicloud.service.tag":"g1"}
 	LaneTag *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
-	// The entry rule for the MSE Gateway.
+	// The MSE gateway route.
 	MseGatewayEntryRule *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
 }
 
@@ -328,17 +332,17 @@ func (s *DescribeSwimmingLaneResponseBodyData) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyDataAppEntryRule struct {
-	// The logical operator that joins conditions. Valid values:
+	// The logical connector between conditions. Valid values:
 	//
-	// - `AND`: All conditions must be met.
+	// - AND: All conditions must be met.
 	//
-	// - `OR`: At least one of the conditions must be met.
+	// - OR: Any condition must be met.
 	//
 	// example:
 	//
 	// AND
 	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	// The match conditions.
+	// The matching conditions.
 	Conditions []*DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// Indicates whether percentage-based canary release is enabled.
 	//
@@ -348,13 +352,13 @@ type DescribeSwimmingLaneResponseBodyDataAppEntryRule struct {
 	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
 	// The request paths.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	// The traffic percentage for percentage-based routing. Valid values: 0 to 100.
+	// The traffic percentage, which is used for percentage-based routing. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 50
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// An object that maps paths to traffic percentages.
+	// The traffic matching.
 	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
 }
 
@@ -434,31 +438,31 @@ func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions struct {
-	// The match operator.
+	// The matching rule.
 	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the parameter.
+	// The parameter type.
 	//
 	// example:
 	//
 	// Header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value to match.
+	// The matching value of the condition.
 	//
 	// example:
 	//
 	// g1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The values to match.
+	// The matching value of the condition.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -520,31 +524,31 @@ func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) Validate() 
 }
 
 type DescribeSwimmingLaneResponseBodyDataApps struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 6b4c0f64-f679-4580-8105-91eac4******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the MSE instance.
+	// The MSE instance ID.
 	//
 	// example:
 	//
 	// mse-cn-53y49******
 	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
-	// The name of the MSE instance.
+	// The MSE instance name.
 	//
 	// example:
 	//
 	// sae-test
 	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
-	// The ID of the MSE namespace.
+	// The MSE namespace ID.
 	//
 	// example:
 	//
@@ -610,13 +614,13 @@ func (s *DescribeSwimmingLaneResponseBodyDataApps) Validate() error {
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule struct {
-	// The logical operator that joins conditions.
+	// The logical connector between conditions.
 	//
 	// example:
 	//
 	// AND
 	ConditionJoiner *string `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
-	// The match conditions.
+	// The matching conditions.
 	Conditions []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// Indicates whether percentage-based canary release is enabled.
 	//
@@ -624,17 +628,17 @@ type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule struct {
 	//
 	// true
 	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
-	// The traffic percentage for the rule.
+	// The path traffic percentage.
 	//
 	// example:
 	//
 	// 100
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// An object that maps route IDs to traffic percentages.
+	// The traffic configuration.
 	PercentageByRoute map[string]*int32 `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
-	// A list of route IDs.
+	// The list of route IDs.
 	RouteIds []*int64 `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
-	// The route configurations.
+	// The detailed configuration of the route rule.
 	Routes []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 }
 
@@ -732,25 +736,25 @@ func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) Validate() err
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions struct {
-	// The match operator.
+	// The matching rule.
 	//
 	// example:
 	//
 	// ==
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// t
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the parameter.
+	// The parameter type.
 	//
 	// example:
 	//
 	// Header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value to match.
+	// The matching value of the condition.
 	//
 	// example:
 	//
@@ -813,13 +817,13 @@ type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes struct {
 	//
 	// 9504
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// example:
 	//
 	// demo
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
-	// The route predicate.
+	// The route rule.
 	RoutePredicate *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate `json:"RoutePredicate,omitempty" xml:"RoutePredicate,omitempty" type:"Struct"`
 }
 
@@ -868,7 +872,7 @@ func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) Validate
 }
 
 type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate struct {
-	// The path-based match rule.
+	// The path matching rule.
 	PathPredicate *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate `json:"PathPredicate,omitempty" xml:"PathPredicate,omitempty" type:"Struct"`
 }
 
@@ -905,7 +909,7 @@ type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate
 	//
 	// /Path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The match type.
+	// The matching rule.
 	//
 	// example:
 	//

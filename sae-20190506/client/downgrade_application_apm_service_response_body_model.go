@@ -26,43 +26,47 @@ type iDowngradeApplicationApmServiceResponseBody interface {
 }
 
 type DowngradeApplicationApmServiceResponseBody struct {
-	// The HTTP status code or the error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The request failed.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The returned results.
 	Data *DowngradeApplicationApmServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The status code.
+	// The error code.
+	//
+	// example:
+	//
+	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message that is returned.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether ARMS advanced monitoring is disabled. Valid values:
+	// Indicates whether ARMS Premium Edition monitoring is successfully disabled. Valid values:
 	//
-	// - **true**
+	// - **true**: Disabled successfully.
 	//
-	// - **false**
+	// - **false**: Failed to disable.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -151,11 +155,11 @@ func (s *DowngradeApplicationApmServiceResponseBody) Validate() error {
 }
 
 type DowngradeApplicationApmServiceResponseBodyData struct {
-	// Indicates whether ARMS advanced monitoring is disabled. Valid values:
+	// Indicates whether ARMS Premium Edition monitoring is successfully disabled. Valid values:
 	//
-	// - **true**
+	// - **true**: Disabled successfully.
 	//
-	// - **false**
+	// - **false**: Failed to disable.
 	//
 	// example:
 	//

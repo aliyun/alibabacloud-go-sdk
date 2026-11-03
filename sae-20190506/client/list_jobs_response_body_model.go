@@ -30,15 +30,15 @@ type iListJobsResponseBody interface {
 }
 
 type ListJobsResponseBody struct {
-	// The status of the interface or the POP error code. Valid values:
+	// The HTTP status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: success
 	//
-	// - **3xx**: Redirection.
+	// - **3xx**: redirection
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: client error
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: server error
 	//
 	// example:
 	//
@@ -52,13 +52,17 @@ type ListJobsResponseBody struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The list of job templates.
 	Data *ListJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Take note of the following items:
 	//
-	// - If the request is successful, this parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidAppId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information about the call.
+	// The additional information about the operation result.
 	//
 	// example:
 	//
@@ -70,17 +74,17 @@ type ListJobsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of job templates was obtained. Valid values:
+	// Specifies whether the job template list was queried successfully. Valid values:
 	//
-	// - **true**: The list was obtained.
+	// - **true**: The query was successful.
 	//
-	// - **false**: The list failed to be obtained.
+	// - **false**: The query failed.
 	//
 	// example:
 	//
@@ -297,13 +301,13 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the last job was completed.
+	// The completion time of the last job.
 	//
 	// example:
 	//
 	// 1657522839
 	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	// The CPU required for each instance, in millicores. The value cannot be 0. Only the following defined specifications are supported:
+	// The CPU required for each instance. Unit: millicores. The value cannot be 0. Currently, only the following defined specifications are supported:
 	//
 	// - **500**
 	//
@@ -330,70 +334,74 @@ type ListJobsResponseBodyDataApplications struct {
 	// 0
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
 	// The image URL.
+	//
+	// example:
+	//
+	// registry.cn-beijing.aliyuncs.com/sae-dev-test/nginx:stable
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Indicates whether the last release order was successfully executed. Valid values:
+	// Specifies whether the last change order was executed successfully. Valid values:
 	//
-	// - **0**: The release order failed to be executed.
+	// - **0**: The change order failed.
 	//
-	// - **1**: The release order was successfully executed.
+	// - **1**: The change order succeeded.
 	//
 	// example:
 	//
 	// 1
 	LastChangeorderState *string `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
-	// The state of the last job. Valid values:
+	// The running status of the last job. Valid values:
 	//
-	// - **0**: Not executed.
+	// - **0**: not executed
 	//
-	// - **1**: Successful.
+	// - **1**: executed successfully
 	//
-	// - **2**: Failed.
+	// - **2**: execution failed
 	//
-	// - **3**: Running.
+	// - **3**: executing
 	//
 	// example:
 	//
 	// 0
 	LastJobState *string `json:"LastJobState,omitempty" xml:"LastJobState,omitempty"`
-	// The time when the last job was started.
+	// The start time of the last job.
 	//
 	// example:
 	//
 	// 1657522800
 	LastStartTime *int64 `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	// The memory required for each instance, in MB. The value cannot be 0. This parameter corresponds to the CPU parameter. Only the following defined specifications are supported:
+	// The memory required for each instance. Unit: MB. The value cannot be 0. The memory has a one-to-one mapping with the CPU. Currently, only the following defined specifications are supported:
 	//
-	// - **1024**: corresponds to 500 and 1,000 millicores of CPU.
+	// - **1024**: corresponds to 500 and 1000 millicores
 	//
-	// - **2048**: corresponds to 500, 1,000, and 2,000 millicores of CPU.
+	// - **2048**: corresponds to 500, 1000, and 2000 millicores
 	//
-	// - **4096**: corresponds to 1,000, 2,000, and 4,000 millicores of CPU.
+	// - **4096**: corresponds to 1000, 2000, and 4000 millicores
 	//
-	// - **8192**: corresponds to 2,000, 4,000, and 8,000 millicores of CPU.
+	// - **8192**: corresponds to 2000, 4000, and 8000 millicores
 	//
-	// - **12288**: corresponds to 12,000 millicores of CPU.
+	// - **12288**: corresponds to 12000 millicores
 	//
-	// - **16384**: corresponds to 4,000, 8,000, and 16,000 millicores of CPU.
+	// - **16384**: corresponds to 4000, 8000, and 16000 millicores
 	//
-	// - **24576**: corresponds to 12,000 millicores of CPU.
+	// - **24576**: corresponds to 12000 millicores
 	//
-	// - **32768**: corresponds to 16,000 millicores of CPU.
+	// - **32768**: corresponds to 16000 millicores
 	//
-	// - **65536**: corresponds to 8,000, 16,000, and 32,000 millicores of CPU.
+	// - **65536**: corresponds to 8000, 16000, and 32000 millicores
 	//
-	// - **131072**: corresponds to 32,000 millicores of CPU.
+	// - **131072**: corresponds to 32000 millicores
 	//
 	// example:
 	//
 	// 1024
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	// Additional information about the call.
+	// The additional information about the operation result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The namespace ID.
+	// The ID of the namespace.
 	//
 	// example:
 	//
@@ -411,7 +419,7 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// 3
 	Succeeded *int64 `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
-	// Indicates whether the job template is paused.
+	// Specifies whether the job template is paused.
 	//
 	// example:
 	//

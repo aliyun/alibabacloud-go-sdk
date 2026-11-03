@@ -22,7 +22,7 @@ type ListSwimmingLaneGatewayRoutesRequest struct {
 	//
 	// gw-277c0727535f4aae917e48de0f******
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//

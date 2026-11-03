@@ -14,7 +14,7 @@ type iListSecretsRequest interface {
 }
 
 type ListSecretsRequest struct {
-	// The ID of the namespace that contains the Secret. For the default namespace, use the region ID, such as `cn-beijing`.
+	// The ID of the namespace where the Secret instance resides. If the Secret instance resides in the default namespace, specify only the region ID, such as `cn-beijing`.
 	//
 	// This parameter is required.
 	//

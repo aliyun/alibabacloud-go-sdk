@@ -51,6 +51,10 @@ type SuspendJobResponseBody struct {
 	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
 	//
 	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- in this topic.
+	//
+	// example:
+	//
+	// InvalidAppId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information that is returned. Valid values:
 	//

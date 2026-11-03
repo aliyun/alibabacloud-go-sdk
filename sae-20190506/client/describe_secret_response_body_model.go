@@ -26,55 +26,59 @@ type iDescribeSecretResponseBody interface {
 }
 
 type DescribeSecretResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response.
+	// The returned result.
 	Data *DescribeSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Valid values:
+	// The error code.
 	//
-	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see **Error codes*	- in this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned. Valid values:
+	// The additional information.
 	//
-	// - success: If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code: If the call fails, an error code is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the details of the Secret instance are successfully queried. Valid values:
+	// Indicates whether the details of the Secret instance were queried successfully. Valid values:
 	//
-	// - **true**: The information was queried.
+	// - **true**: The query was successful.
 	//
-	// - **false**: The image failed to be found.
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID used to precisely query invocation information.
 	//
 	// example:
 	//
@@ -163,23 +167,23 @@ func (s *DescribeSecretResponseBody) Validate() error {
 }
 
 type DescribeSecretResponseBodyData struct {
-	// The time when the task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1593746835111
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The associated application.
+	// The associated applications.
 	RelateApps []*DescribeSecretResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// Secret key-value pair data.
+	// The key-value pair data of the Secret.
 	SecretData map[string]*string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
-	// The ID of the Secret instance.
+	// The Secret instance ID.
 	//
 	// example:
 	//
@@ -197,7 +201,7 @@ type DescribeSecretResponseBodyData struct {
 	//
 	// kubernetes.io/dockerconfigjson
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The time when the task was updated.
+	// The update time.
 	//
 	// example:
 	//

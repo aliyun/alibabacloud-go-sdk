@@ -47,6 +47,10 @@ type DescribeGreyTagRouteResponseBody struct {
 	// - This parameter is not returned if the request is successful.
 	//
 	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message that indicates the result of the call.
 	//

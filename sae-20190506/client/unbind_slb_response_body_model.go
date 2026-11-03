@@ -47,6 +47,10 @@ type UnbindSlbResponseBody struct {
 	// - This parameter is left empty if the request is successful.
 	//
 	// - If the request fails, this parameter contains an error code. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Valid values:
 	//

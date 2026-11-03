@@ -26,33 +26,37 @@ type iListSwimmingLaneGatewayRoutesResponseBody interface {
 }
 
 type ListSwimmingLaneGatewayRoutesResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: Indicates a client error.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: Indicates a server error.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of gateway routes.
+	// The returned result.
 	Data []*ListSwimmingLaneGatewayRoutesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is returned only if the request fails.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned for the request.
+	// The additional information. Valid values:
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the request fails, an error message is returned.
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type ListSwimmingLaneGatewayRoutesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: Successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID of the request.
+	// The trace ID used to query exact call information.
 	//
 	// example:
 	//
@@ -265,7 +269,7 @@ type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate st
 	//
 	// /Path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The type of the rule.
+	// The rule type.
 	//
 	// example:
 	//

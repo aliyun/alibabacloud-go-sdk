@@ -24,31 +24,35 @@ type iUpdateSwimmingLaneEnableAttributeResponseBody interface {
 }
 
 type UpdateSwimmingLaneEnableAttributeResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: Success
+	// - **2xx**: Success.
 	//
-	// - **3xx**: Redirection
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: Client error
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: Server error
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
+	// The error code. The following rules apply:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information. The following rules apply:
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the request fails, an error message is returned.
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
@@ -60,17 +64,17 @@ type UpdateSwimmingLaneEnableAttributeResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The deletion is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The deletion fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use the trace ID to query the details of a request.
+	// The trace ID used to query invocation details.
 	//
 	// example:
 	//

@@ -26,33 +26,37 @@ type iRestartApplicationResponseBody interface {
 }
 
 type RestartApplicationResponseBody struct {
-	// The HTTP status code. Take note of the following rules:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: redirection.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response.
+	// The returned result.
 	Data *RestartApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Valid values:
 	//
-	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned. Take note of the following rules:
+	// The additional information. Valid values:
 	//
-	// - success: If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code: If the call fails, an error code is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type RestartApplicationResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance is successfully restarted. Take note of the following rules:
+	// Indicates whether the instance was restarted successfully. Valid values:
 	//
-	// - **true**
+	// - **true**: The instance was restarted successfully.
 	//
-	// - **false**
+	// - **false**: The instance failed to be restarted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID, which is used to query invocation details.
 	//
 	// example:
 	//
@@ -163,7 +167,7 @@ func (s *RestartApplicationResponseBody) Validate() error {
 }
 
 type RestartApplicationResponseBodyData struct {
-	// The ID of the change process.
+	// The ID of the change order.
 	//
 	// example:
 	//

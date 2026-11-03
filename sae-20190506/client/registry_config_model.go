@@ -16,7 +16,9 @@ type iRegistryConfig interface {
 }
 
 type RegistryConfig struct {
+	// authConfig
 	AuthConfig *RegistryAuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// certConfig
 	CertConfig *RegistryCertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 }
 

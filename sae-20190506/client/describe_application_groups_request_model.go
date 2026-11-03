@@ -26,13 +26,13 @@ type DescribeApplicationGroupsRequest struct {
 	//
 	// d700e680-aa4d-4ec1-afc2-6566b5ff****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The page number to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

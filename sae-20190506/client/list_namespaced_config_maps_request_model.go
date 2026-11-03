@@ -14,7 +14,7 @@ type iListNamespacedConfigMapsRequest interface {
 }
 
 type ListNamespacedConfigMapsRequest struct {
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//

@@ -28,16 +28,27 @@ type UpdateAppModeRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application IDs.
+	// The application ID.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****,7802c49a-67bc-4167-8369-9a9c003c****
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
 	// Specifies whether to enable the idle mode.
 	//
 	// example:
 	//
 	// true
-	EnableIdle *bool   `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
-	IdleHour   *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
+	EnableIdle *bool `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	// example:
+	//
+	// [{"startTime":"1:00","endTime":"16:00"}]
+	IdleHour *string `json:"IdleHour,omitempty" xml:"IdleHour,omitempty"`
 	// The namespace ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 

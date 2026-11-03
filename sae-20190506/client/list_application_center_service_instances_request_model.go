@@ -16,8 +16,18 @@ type iListApplicationCenterServiceInstancesRequest interface {
 }
 
 type ListApplicationCenterServiceInstancesRequest struct {
+	// The namespace ID.
+	//
+	// example:
+	//
+	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListApplicationCenterServiceInstancesRequest) String() string {

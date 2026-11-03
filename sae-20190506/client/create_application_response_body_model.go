@@ -26,15 +26,15 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The API status or POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: success.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: redirection.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: request error.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: server error.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type CreateApplicationResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *CreateApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Valid values:
+	// The error code.
 	//
-	// - If the request is successful, the **ErrorCode*	- field is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
-	// 空
+	// Application.MissingJdk
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information. Valid values:
+	// The additional information.
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
@@ -68,9 +68,9 @@ type CreateApplicationResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application is created. Valid values:
+	// Specifies whether the application was created. Valid values:
 	//
-	// - **true**: The application is created.
+	// - **true**: The application was created.
 	//
 	// - **false**: The application failed to be created.
 	//
@@ -78,7 +78,7 @@ type CreateApplicationResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID, which is used to query the details of a request.
+	// The trace ID, which is used to accurately query call information.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyData struct {
-	// The ID of the application that is created.
+	// The ID of the created application.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The returned change order ID, which is used to query the task execution status.
+	// The ID of the returned change order, which is used to query the task execution status.
 	//
 	// example:
 	//

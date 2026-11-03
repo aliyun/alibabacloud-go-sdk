@@ -1279,6 +1279,10 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimer
 	// The daily trigger schedule for the policy.
 	Schedules []*DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesTimerSchedules `json:"Schedules,omitempty" xml:"Schedules,omitempty" type:"Repeated"`
 	// The time zone.
+	//
+	// example:
+	//
+	// Asia/Shanghai
 	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 

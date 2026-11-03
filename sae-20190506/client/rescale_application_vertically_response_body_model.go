@@ -26,33 +26,33 @@ type iRescaleApplicationVerticallyResponseBody interface {
 }
 
 type RescaleApplicationVerticallyResponseBody struct {
-	// The HTTP status code.
+	// The HTTP status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirect.
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *RescaleApplicationVerticallyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - If the request is successful, this parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
-	// 空
+	// None
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ type RescaleApplicationVerticallyResponseBody struct {
 	//
 	// AB521DBB-FA78-42E6-803F-A862EA4F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the instance type was successfully changed.
+	// Indicates whether the instance specifications were modified. Valid values:
 	//
-	// - **true**: The change was successful.
+	// - **true**: The modification was successful.
 	//
-	// - **false**: The change failed.
+	// - **false**: The modification failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID of the request. You can use this ID to query the details of the request.
+	// The trace ID used to accurately query call information.
 	//
 	// example:
 	//

@@ -26,55 +26,59 @@ type iDescribeApplicationStatusResponseBody interface {
 }
 
 type DescribeApplicationStatusResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The request was invalid.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *DescribeApplicationStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// - If the request is successful, this parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message.
+	// The additional information.
 	//
-	// - If the call is successful, **success*	- is returned.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the call fails, an error message is returned.
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application status was obtained. Valid values:
+	// Indicates whether the application status information was successfully retrieved. Valid values:
 	//
-	// - **true**
+	// - **true**: The information was successfully retrieved.
 	//
-	// - **false**
+	// - **false**: The information failed to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of a request.
+	// The trace ID used to query invocation information.
 	//
 	// example:
 	//
@@ -163,29 +167,29 @@ func (s *DescribeApplicationStatusResponseBody) Validate() error {
 }
 
 type DescribeApplicationStatusResponseBodyData struct {
-	// The application ID.
+	// The ID of the current application.
 	//
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Indicates whether ARMS Advanced Edition is enabled. Valid values:
+	// Specifies whether Application Real-Time Monitoring Service (ARMS) Pro is activated. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: ARMS Pro is activated.
 	//
-	// - **false**: disabled.
+	// - **false**: ARMS Pro is not activated.
 	//
 	// example:
 	//
 	// false
 	ArmsAdvancedEnabled *string `json:"ArmsAdvancedEnabled,omitempty" xml:"ArmsAdvancedEnabled,omitempty"`
-	// The metadata of the application in ARMS.
+	// The metadata information of the application in ARMS.
 	//
 	// example:
 	//
 	// {"appId":"0099b7be-5f5b-4512-a7fc-56049ef1****","licenseKey":"d5cgdt5pu0@7303f55292a****"}
 	ArmsApmInfo *string `json:"ArmsApmInfo,omitempty" xml:"ArmsApmInfo,omitempty"`
-	// The time when the application was created. This value is a UNIX timestamp.
+	// The time when the application was created.
 	//
 	// example:
 	//
@@ -203,33 +207,33 @@ type DescribeApplicationStatusResponseBodyData struct {
 	//
 	// RUNNING
 	CurrentStatus *string `json:"CurrentStatus,omitempty" xml:"CurrentStatus,omitempty"`
-	// Indicates whether the SAE agent is enabled. Valid values:
+	// Specifies whether the Serverless App Engine (SAE) agent is enabled. Valid values:
 	//
-	// - **true**
+	// - **true**: The agent is enabled.
 	//
-	// - **false**
+	// - **false**: The agent is not enabled.
 	//
 	// example:
 	//
 	// false
 	EnableAgent *bool `json:"EnableAgent,omitempty" xml:"EnableAgent,omitempty"`
-	// The file size limit. Unit: KB. Valid values: 0 to 10240.
+	// The file size limit. Valid values: 0 to 10240. Unit: KB.
 	//
 	// example:
 	//
 	// 10240
 	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" xml:"FileSizeLimit,omitempty"`
-	// The ID of the most recently executed change order. This parameter is empty if no change order was executed or if the information about the change order has expired.
+	// The ID of the most recently executed change order. If no change order has been executed or the change order information has expired, this field is empty.
 	//
 	// example:
 	//
 	// 1ccc2339-fc19-49aa-bda0-1e7b8497****
 	LastChangeOrderId *string `json:"LastChangeOrderId,omitempty" xml:"LastChangeOrderId,omitempty"`
-	// Indicates whether the most recent change order is being executed. Valid values:
+	// Specifies whether the most recent change order is being executed. Valid values:
 	//
-	// - **true**
+	// - **true**: The most recent change order is being executed.
 	//
-	// - **false**
+	// - **false**: The most recent change order is not being executed.
 	//
 	// example:
 	//
@@ -237,41 +241,41 @@ type DescribeApplicationStatusResponseBodyData struct {
 	LastChangeOrderRunning *bool `json:"LastChangeOrderRunning,omitempty" xml:"LastChangeOrderRunning,omitempty"`
 	// The status of the most recent change order. Valid values:
 	//
-	// - **READY**: The change order is ready.
+	// - **READY**: The most recent change order is ready.
 	//
-	// - **RUNNING**: The change order is being executed.
+	// - **RUNNING**: The most recent change order is being executed.
 	//
-	// - **SUCCESS**: The change order was successful.
+	// - **SUCCESS**: The most recent change order is successful.
 	//
-	// - **FAIL**: The change order failed.
+	// - **FAIL**: The most recent change order failed.
 	//
-	// - **ABORT**: The change order was aborted.
+	// - **ABORT**: The most recent change order is aborted.
 	//
-	// - **WAIT_BATCH_CONFIRM**: The change order is waiting for manual confirmation for the next batch.
+	// - **WAIT_BATCH_CONFIRM**: The most recent change order is waiting for manual batch confirmation.
 	//
-	// - **AUTO_BATCH_WAIT**: The change order is in a waiting state for an automatic batch.
+	// - **AUTO_BATCH_WAIT**: The most recent change order is in the automatic batch waiting state.
 	//
-	// - **SYSTEM_FAIL**: A system error occurred.
+	// - **SYSTEM_FAIL**: A system fault occurred.
 	//
-	// - **WAIT_APPROVAL**: The change order is pending approval.
+	// - **WAIT_APPROVAL**: The most recent change order is waiting for approval.
 	//
-	// - **APPROVED**: The change order is approved and is pending execution.
+	// - **APPROVED**: The most recent change order is approved and waiting to be executed.
 	//
 	// example:
 	//
 	// SUCCESS
 	LastChangeOrderStatus *string `json:"LastChangeOrderStatus,omitempty" xml:"LastChangeOrderStatus,omitempty"`
-	// The number of running instances of the application.
+	// The number of running instances of the current application.
 	//
 	// example:
 	//
 	// 1
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// The substatus of the change order. This parameter is used to determine whether an exception occurs during the release process. Valid values:
+	// The sub-status of the change order, which is used to determine whether an exception occurred during the release process. Valid values:
 	//
 	// - **NORMAL**: The release is normal.
 	//
-	// - **RUNNING_BUT_HAS_ERROR**: The release is abnormal. For example, if an error occurs during a phased release, you must manually roll back the release. In this case, the change order cannot be completed and the status of the change order remains **RUNNING**.
+	// - **RUNNING_BUT_HAS_ERROR**: An exception occurred during the release. For example, an error occurs during a batch release and requires a manual rollback. In this case, the change order is still being executed because it cannot be completed despite the error.
 	//
 	// example:
 	//

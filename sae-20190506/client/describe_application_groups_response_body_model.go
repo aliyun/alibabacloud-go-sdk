@@ -26,29 +26,29 @@ type iDescribeApplicationGroupsResponseBody interface {
 }
 
 type DescribeApplicationGroupsResponseBody struct {
-	// The HTTP status code or the POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: success
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: redirection
 	//
-	// - **4xx**: The request is invalid.
+	// - **4xx**: request error
 	//
-	// - **5xx**: A server error occurs.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A list of application groups.
+	// The application group information.
 	Data []*DescribeApplicationGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **error codes*	- section.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type DescribeApplicationGroupsResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application groups were successfully retrieved. Valid values:
+	// Indicates whether the application instance groups were retrieved successfully. Valid values:
 	//
-	// - **true**: The application groups were retrieved.
+	// - **true**: The application instance groups were retrieved successfully.
 	//
-	// - **false**: The application groups were not retrieved.
+	// - **false**: The application instance groups failed to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID used to query the details of a request.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -163,95 +163,99 @@ func (s *DescribeApplicationGroupsResponseBody) Validate() error {
 }
 
 type DescribeApplicationGroupsResponseBodyData struct {
-	// The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
+	// The application runtime environment version in the HSF framework, such as the Ali-Tomcat container.
 	//
 	// example:
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	// The ID of the application group.
+	// The group ID.
 	//
 	// example:
 	//
 	// b2a8a925-477a-eswa-b823-d5e22500****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the application group.
+	// The group name.
 	//
 	// example:
 	//
 	// _DEFAULT_GROUP
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the application group.
+	// The group type.
 	//
 	// example:
 	//
 	// 0
 	GroupType *int32 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The image URL. This parameter is required when **package type*	- is set to **Image**.
+	// The image address. This parameter is required when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The JDK version required by the deployment package. This parameter is not supported when **package type*	- is set to **Image**.
+	// The JDK version on which the deployment package depends. This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//
 	// Open JDK 8
 	Jdk *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
-	// The type of the deployment package. Valid values:
+	// The application package type. Valid values:
 	//
-	// - For Java applications, the supported types are **FatJar**, **War**, and **Image**.
+	// - If you deploy the application by using Java, valid values are **FatJar**, **War**, and **Image**.
 	//
-	// - For PHP applications, the supported types are:
+	// - If you deploy the application by using PHP, valid values are:
 	//
-	//   - **PhpZip**
+	//     - **PhpZip**
 	//
-	//   - **IMAGE_PHP_5_4**
+	//     - **IMAGE_PHP_5_4**
 	//
-	//   - **IMAGE_PHP_5_4_ALPINE**
+	//     - **IMAGE_PHP_5_4_ALPINE**
 	//
-	//   - **IMAGE_PHP_5_5**
+	//     - **IMAGE_PHP_5_5**
 	//
-	//   - **IMAGE_PHP_5_5_ALPINE**
+	//     - **IMAGE_PHP_5_5_ALPINE**
 	//
-	//   - **IMAGE_PHP_5_6**
+	//     - **IMAGE_PHP_5_6**
 	//
-	//   - **IMAGE_PHP_5_6_ALPINE**
+	//     - **IMAGE_PHP_5_6_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_0**
+	//     - **IMAGE_PHP_7_0**
 	//
-	//   - **IMAGE_PHP_7_0_ALPINE**
+	//     - **IMAGE_PHP_7_0_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_1**
+	//     - **IMAGE_PHP_7_1**
 	//
-	//   - **IMAGE_PHP_7_1_ALPINE**
+	//     - **IMAGE_PHP_7_1_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_2**
+	//     - **IMAGE_PHP_7_2**
 	//
-	//   - **IMAGE_PHP_7_2_ALPINE**
+	//     - **IMAGE_PHP_7_2_ALPINE**
 	//
-	//   - **IMAGE_PHP_7_3**
+	//     - **IMAGE_PHP_7_3**
 	//
-	//   - **IMAGE_PHP_7_3_ALPINE**
+	//     - **IMAGE_PHP_7_3_ALPINE**
 	//
 	// example:
 	//
 	// Image
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The URL of the deployment package. This parameter is required when **package type*	- is set to **FatJar**, **War**, or **PhpZip**.
+	// The deployment package address. This parameter is required when **Package Type*	- is set to **FatJar**, **War**, or **PhpZip**.
 	//
 	// example:
 	//
 	// registry-vpc.cn-hangzhou.aliyuncs.com/demo/nginx:latest
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
-	// The deployment package version. This parameter is required when **package type*	- is set to **FatJar**, **War**, or **PhpZip**. This parameter is automatically generated if you deploy the application by using an **image**.
+	// The version number of the deployment package. This parameter is required when **Package Type*	- is set to **FatJar**, **War**, or **PhpZip**. If the application is deployed by using **ImageUrl**, this parameter is automatically generated.
 	//
 	// example:
 	//
 	// 1.0.0
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The ID of the deployment package version.
+	// The version ID of the deployment package.
+	//
+	// example:
+	//
+	// 12345678-1234-4abc-8def-1234567890ab
 	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
 	// The total number of instances.
 	//
@@ -265,7 +269,7 @@ type DescribeApplicationGroupsResponseBodyData struct {
 	//
 	// 1
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// The Tomcat container version required by the deployment package. This parameter is not supported when **package type*	- is set to **Image**.
+	// The Tomcat version on which the deployment package depends. This parameter is not supported when **Package Type*	- is set to **Image**.
 	//
 	// example:
 	//

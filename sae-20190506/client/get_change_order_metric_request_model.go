@@ -28,9 +28,13 @@ type iGetChangeOrderMetricRequest interface {
 }
 
 type GetChangeOrderMetricRequest struct {
-	// The ID of the application.
+	// The application ID.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The type of the SAE application.
+	// The type of the Serverless App Engine (SAE) application.
 	//
 	// - **micro_service**
 	//
@@ -42,19 +46,23 @@ type GetChangeOrderMetricRequest struct {
 	//
 	// micro_service
 	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
-	// The type of the change order.
+	// The change order type.
+	//
+	// example:
+	//
+	// CoCreateApp
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The CPU allocation policy.
+	// The CPU allocation strategy. Valid values:
 	//
-	// - **request**: CPU is allocated only when a request is received.
+	// - **request**: Allocates CPU resources only when requests are received.
 	//
-	// - **always**: A fixed amount of CPU is always allocated.
+	// - **always**: Always allocates a fixed amount of CPU resources.
 	//
 	// example:
 	//
 	// always
 	CpuStrategy *string `json:"CpuStrategy,omitempty" xml:"CpuStrategy,omitempty"`
-	// The start time when the change order was created.
+	// The start time of change order creation.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +78,7 @@ type GetChangeOrderMetricRequest struct {
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The field by which to sort the query results. The value of this parameter must be a field in the response parameters.
+	// The field used to sort the query results.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +86,7 @@ type GetChangeOrderMetricRequest struct {
 	//
 	// errorPercent
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

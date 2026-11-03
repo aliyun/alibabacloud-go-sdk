@@ -22,31 +22,35 @@ type iBindNlbRequest interface {
 }
 
 type BindNlbRequest struct {
-	// The address type of the NLB instance.
+	// The address type. Valid values:
 	//
-	// - `Internet`: a public IP address.
+	// - Internet: public network address.
 	//
-	// - `Intranet`: a private IP address.
+	// - Intranet: private network address.
 	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The ID of the target application.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The listeners, specified as a JSON-formatted string. Each listener object contains the following fields:
+	// The JSON array string of the listeners to be configured. The structure of each listener is as follows:
 	//
-	// - **Port**: Integer. Required. The listener port. Valid values: 0 to 65535.
+	// - **Port**: Integer type, required. The load balancing listener port. Valid values: 0 to 65535.
 	//
-	// - **TargetPort**: Integer. Required. The port on the application instance that receives traffic. Valid values: 0 to 65535.
+	// - **TargetPort**: Integer type, required. The listening port of the container in the instance. Valid values: 0 to 65535.
 	//
-	// - **Protocol**: String. Required. The listener protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
+	// - **Protocol**: String type, required. The listening protocol. Valid values: TCP, UDP, and TCPSSL.
 	//
-	// - **CertIds**: String. Optional. The server certificate IDs. This parameter is required only for `TCPSSL` listeners.
+	// - **CertIds**: String type, optional. The list of server certificates. This parameter takes effect only for TCPSSL listeners.
+	//
+	// example:
+	//
+	// [{"Port":80,"TargetPort":8080,"Protocol":"TCP"}]
 	Listeners *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
 	// The ID of the NLB instance.
 	//
@@ -54,11 +58,11 @@ type BindNlbRequest struct {
 	//
 	// nlb-7z7jjbzz44d82c9***
 	NlbId *string `json:"NlbId,omitempty" xml:"NlbId,omitempty"`
-	// The mappings between zones and vSwitches, specified as a JSON-formatted string. You can add up to 10 zones. If the current region supports two or more zones, you must specify at least two zones. Each `ZoneMapping` object contains the following fields:
+	// The JSON string of the zone and vSwitch mapping list. You can add up to 10 zones. If the current region supports two or more zones, you must add at least two zones. The structure of a ZoneMapping is as follows:
 	//
-	// - **VSwitchId**: String. The ID of the vSwitch in the specified zone. Each zone can have only one vSwitch and one subnet.
+	// - VSwitchId: String type. The vSwitch corresponding to the zone. Each zone can use only one vSwitch and one subnet.
 	//
-	// - ZoneId, String, the zone ID of the Network Load Balancer instance.
+	// - ZoneId: String type. The zone ID of the Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//

@@ -57,6 +57,10 @@ type ListApplicationsResponseBody struct {
 	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
 	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// Illegal.argument
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information about the call result.
 	//
@@ -447,6 +451,10 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// default
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The number of running instances.
 	//
@@ -457,6 +465,10 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// The application tags.
 	Tags []*ListApplicationsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-2ze0i263cnn311nvj****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -844,6 +856,10 @@ type ListApplicationsResponseBodyDataApplicationsChildren struct {
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// default
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The number of running instances.
 	//

@@ -28,27 +28,31 @@ type iDescribeApplicationNlbsResponseBody interface {
 type DescribeApplicationNlbsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned in the response.
+	// The returned data.
 	Data *DescribeApplicationNlbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is returned only if the request fails.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. A value of `success` indicates a successful request; otherwise, an error code is returned.
+	// The additional information. If the request is successful, success is returned. If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -60,17 +64,17 @@ type DescribeApplicationNlbsResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Specifies whether the binding is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The binding is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The binding failed.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID used to query the details of the request.
+	// The trace ID used to query call details.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ func (s *DescribeApplicationNlbsResponseBody) Validate() error {
 }
 
 type DescribeApplicationNlbsResponseBodyData struct {
-	// A collection of instance details.
+	// The instance information.
 	Instances map[string]*DataInstancesValue `json:"Instances,omitempty" xml:"Instances,omitempty"`
 }
 

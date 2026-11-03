@@ -47,6 +47,10 @@ type StartApplicationResponseBody struct {
 	// - If the call is successful, **ErrorCode*	- is not returned.
 	//
 	// - If the call fails, **ErrorCode*	- is returned. For more information, see the "**Error codes**" section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Take note of the following rules:
 	//

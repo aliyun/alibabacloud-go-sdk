@@ -18,14 +18,20 @@ type iRegistryAuthConfig interface {
 }
 
 type RegistryAuthConfig struct {
+	// password
+	//
 	// example:
 	//
 	// abc***
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// role to get c
+	//
 	// example:
 	//
 	// acs:ram::142xxxx:role/xxxxxx
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// userName
+	//
 	// example:
 	//
 	// admin

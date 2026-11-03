@@ -26,31 +26,37 @@ type iUpdateJobResponseBody interface {
 }
 
 type UpdateJobResponseBody struct {
-	// The HTTP status code.
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: success.
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: redirection.
 	//
-	// - **4xx**: The request is invalid.
+	// - **4xx**: client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned result.
 	Data *UpdateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// - This parameter is not returned if the request is successful.
+	// The error code. Valid values:
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
+	//
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// Application.MissingJdk
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message.
+	// The additional information. Valid values:
 	//
-	// - **success*	- if the request is successful.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code if the request fails.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,15 +70,15 @@ type UpdateJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the job template was updated. Valid values:
 	//
-	// - **true**
+	// - **true**: The job template was updated.
 	//
-	// - **false**
+	// - **false**: The job template failed to be updated.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that you can use to query the details of a request.
+	// The trace ID used to accurately query the call information.
 	//
 	// example:
 	//
@@ -161,13 +167,13 @@ func (s *UpdateJobResponseBody) Validate() error {
 }
 
 type UpdateJobResponseBodyData struct {
-	// The job template ID.
+	// The ID of the job template.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The change order ID. You can use this ID to query the execution status of the job.
+	// The ID of the returned change order, which is used to query the job execution status.
 	//
 	// example:
 	//

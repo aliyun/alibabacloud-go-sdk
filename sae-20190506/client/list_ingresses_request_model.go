@@ -27,6 +27,10 @@ type ListIngressesRequest struct {
 	// bbf3a590-6d13-46fe-8ca9-c947a20b****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The namespace ID.
 	//
@@ -36,7 +40,11 @@ type ListIngressesRequest struct {
 	//
 	// cn-beijing
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The page size.
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 

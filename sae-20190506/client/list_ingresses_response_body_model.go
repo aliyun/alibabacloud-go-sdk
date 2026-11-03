@@ -26,33 +26,37 @@ type iListIngressesResponseBody interface {
 }
 
 type ListIngressesResponseBody struct {
-	// The status of the API call or a POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirect.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result.
+	// The returned results.
 	Data *ListIngressesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message.
+	// The additional information. The value is described as follows:
 	//
-	// - **success*	- is returned if the call is successful.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code is returned if the call fails.
+	// - If the request fails, the specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type ListIngressesResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Specifies whether the ingress list was successfully retrieved. Valid values:
 	//
-	// - **true**: The call was successful.
+	// - **true**: The ingress list was successfully retrieved.
 	//
-	// - **false**: The call failed.
+	// - **false**: The ingress list failed to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use it to query the details of a call.
+	// The trace ID used to query call information.
 	//
 	// example:
 	//
@@ -163,13 +167,25 @@ func (s *ListIngressesResponseBody) Validate() error {
 }
 
 type ListIngressesResponseBodyData struct {
-	// The current page.
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The list of routing rules.
 	IngressList []*ListIngressesResponseBodyDataIngressList `json:"IngressList,omitempty" xml:"IngressList,omitempty" type:"Repeated"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries found.
+	// The total number of queried entries.
+	//
+	// example:
+	//
+	// 10
 	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
@@ -231,83 +247,91 @@ func (s *ListIngressesResponseBodyData) Validate() error {
 }
 
 type ListIngressesResponseBodyDataIngressList struct {
-	// The ID of the Classic Load Balancer (CLB) certificate.
+	// The **CLB*	- certificate ID.
 	//
 	// example:
 	//
 	// 13624*****73809_16f8e549a20_1175189789_12****3210
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The IDs of the Application Load Balancer (ALB) certificates.
+	// The **ALB*	- certificate IDs.
 	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
 	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	// The cross-domain configuration.
+	// The CORS configuration.
 	CorsConfig *ListIngressesResponseBodyDataIngressListCorsConfig `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 1593746835111
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The default rule.
 	DefaultRule *ListIngressesResponseBodyDataIngressListDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
-	// The name of the Ingress rule.
+	// The name of the routing rule.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the routing rule.
+	// The routing rule ID.
 	//
 	// example:
 	//
 	// 18
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The connection idle timeout period.
+	// The idle connection timeout period.
+	//
+	// example:
+	//
+	// 3
 	IdleTimeout *int64 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The listening port of the SLB instance.
+	// The SLB listener port.
 	//
 	// example:
 	//
 	// 80
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
-	// The forwarding protocol of the SLB instance. Valid values:
+	// The request forwarding protocol supported by the load balancing SLB. Valid values:
 	//
-	// - **HTTP**: suitable for applications that need to identify data content.
+	// - **HTTP**: Applicable to applications that need to identify data content.
 	//
-	// - **HTTPS**: suitable for applications that require encrypted transmission.
+	// - **HTTPS**: Applicable to applications that require encrypted transmission.
 	//
-	// This parameter is optional for the **CreateIngress*	- and **UpdateIngress*	- operations. If you do not set this parameter when you create or update a gateway routing rule, this parameter is not returned.
+	// This parameter is optional in **CreateIngress*	- and **UpdateIngress**. If you do not specify this parameter when you create or update a gateway routing rule, this parameter is not returned when you invoke this API.
 	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The type of the SLB instance. Valid values:
+	// The type of the load balancing SLB. Valid values:
 	//
-	// - **clb**: Classic Load Balancer.
+	// - **clb**: Classic Load Balancer (CLB), formerly known as SLB.
 	//
-	// - **alb**: Application Load Balancer.
+	// - **alb**: Application Load Balancer (ALB).
 	//
 	// example:
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// The ID of the MSE cloud-native gateway instance.
+	// The MSE cloud-native gateway instance ID.
 	//
 	// example:
 	//
 	// gw-d5df01a1bae748f1a7c4e325d2fd****
 	MseGatewayId *string `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
-	// The port that corresponds to the service.
+	// The port corresponding to the service.
 	//
 	// example:
 	//
 	// 80
 	MseGatewayPort *string `json:"MseGatewayPort,omitempty" xml:"MseGatewayPort,omitempty"`
-	// The forwarding protocol supported by the MSE cloud-native gateway. Valid values:
+	// The request forwarding protocol supported by the MSE cloud-native gateway. Valid values:
 	//
-	// - **HTTP**: suitable for applications that need to identify data content.
+	// - **HTTP**: Applicable to applications that need to identify data content.
 	//
-	// - **HTTPS**: suitable for applications that require encrypted transmission.
+	// - **HTTPS**: Applicable to applications that require encrypted transmission.
 	//
 	// example:
 	//
@@ -326,20 +350,24 @@ type ListIngressesResponseBodyDataIngressList struct {
 	// cn-shanghai
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The request timeout period.
+	//
+	// example:
+	//
+	// 60
 	RequestTimeout *int64 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The rules.
 	Rules []*ListIngressesResponseBodyDataIngressListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The ID of the Server Load Balancer (SLB) instance.
+	// The SLB ID.
 	//
 	// example:
 	//
 	// lb-uf62****6d13tq2u5
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The type of the SLB instance. Valid values:
+	// The SLB type. Valid values:
 	//
-	// - **internet**: public network.
+	// - **internet**: Internet.
 	//
-	// - **intranet**: private network.
+	// - **intranet**: Internal network.
 	//
 	// example:
 	//
@@ -559,19 +587,47 @@ func (s *ListIngressesResponseBodyDataIngressList) Validate() error {
 }
 
 type ListIngressesResponseBodyDataIngressListCorsConfig struct {
-	// Indicates whether credentials can be carried.
+	// Specifies whether credentials are allowed.
+	//
+	// example:
+	//
+	// on
 	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
 	// The allowed headers.
+	//
+	// example:
+	//
+	// test_123
 	AllowHeaders *string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty"`
 	// The allowed methods.
+	//
+	// example:
+	//
+	// GET
 	AllowMethods *string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty"`
 	// The allowed origins.
+	//
+	// example:
+	//
+	// *
 	AllowOrigin *string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty"`
-	// Indicates whether cross-domain access is enabled.
+	// Specifies whether the feature is enabled.
+	//
+	// example:
+	//
+	// false
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The allowed exposed headers.
+	//
+	// example:
+	//
+	// test_123
 	ExposeHeaders *string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty"`
-	// The time-to-live (TTL).
+	// The max age.
+	//
+	// example:
+	//
+	// 1000
 	MaxAge *string `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
 }
 
@@ -652,12 +708,28 @@ func (s *ListIngressesResponseBodyDataIngressListCorsConfig) Validate() error {
 
 type ListIngressesResponseBodyDataIngressListDefaultRule struct {
 	// The application ID.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The backend protocol.
+	//
+	// example:
+	//
+	// http
 	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
 	// The container port.
+	//
+	// example:
+	//
+	// 8080
 	ContainerPort *int32 `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
 }
 
@@ -711,18 +783,46 @@ func (s *ListIngressesResponseBodyDataIngressListDefaultRule) Validate() error {
 
 type ListIngressesResponseBodyDataIngressListRules struct {
 	// The application ID.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The application name.
+	//
+	// example:
+	//
+	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The backend protocol.
+	//
+	// example:
+	//
+	// http
 	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
 	// The container port.
+	//
+	// example:
+	//
+	// 8080
 	ContainerPort *int32 `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
 	// The domain name.
+	//
+	// example:
+	//
+	// edas.site
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The path.
+	//
+	// example:
+	//
+	// /Path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The rewritten path.
+	// The rewrite path.
+	//
+	// example:
+	//
+	// /${1}
 	RewritePath *string `json:"RewritePath,omitempty" xml:"RewritePath,omitempty"`
 	// The list of rule actions.
 	RuleActions []*ListIngressesResponseBodyDataIngressListRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
@@ -823,8 +923,16 @@ func (s *ListIngressesResponseBodyDataIngressListRules) Validate() error {
 
 type ListIngressesResponseBodyDataIngressListRulesRuleActions struct {
 	// The action configuration.
+	//
+	// example:
+	//
+	// {\\"host\\":\\"www.example.com\\",\\"path\\":\\"/example/text\\",\\"query\\":\\"x=1\\"}
 	ActionConfig *string `json:"ActionConfig,omitempty" xml:"ActionConfig,omitempty"`
 	// The action type.
+	//
+	// example:
+	//
+	// rewrite
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
 }
 

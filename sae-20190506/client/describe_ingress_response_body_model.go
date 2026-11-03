@@ -47,6 +47,10 @@ type DescribeIngressResponseBody struct {
 	// - This parameter is returned only if the request fails.
 	//
 	// - For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//

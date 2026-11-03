@@ -26,33 +26,37 @@ type iListNamespacedConfigMapsResponseBody interface {
 }
 
 type ListNamespacedConfigMapsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned by the request.
+	// The returned results.
 	Data *ListNamespacedConfigMapsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// -
+	// - Successful request: The **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned only if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - Failed request: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message. Valid values:
+	// The additional information. Valid values:
 	//
-	// - Returns **success*	- if the request is successful.
+	// - **success**: The request is successful.
 	//
-	// - Returns an error message if the request fails.
+	// - Specific error code: An exception occurred during the request.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type ListNamespacedConfigMapsResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the list of ConfigMap instances is successfully retrieved. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The list is successfully retrieved.
 	//
-	// - **false**: The request failed.
+	// - **false**: The list fails to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to trace the request.
+	// The trace ID used to query call details.
 	//
 	// example:
 	//
@@ -198,7 +202,7 @@ func (s *ListNamespacedConfigMapsResponseBodyData) Validate() error {
 }
 
 type ListNamespacedConfigMapsResponseBodyDataConfigMaps struct {
-	// The ID of the ConfigMap instance.
+	// The ConfigMap instance ID.
 	//
 	// example:
 	//
@@ -210,21 +214,23 @@ type ListNamespacedConfigMapsResponseBodyDataConfigMaps struct {
 	//
 	// 1593760185111
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The key-value pairs of the ConfigMap instance.
+	// The key-value pair data of the ConfigMap instance. The format is as follows:
 	//
-	// For more information about the ConfigMap, see [Manage and use configuration items](https://help.aliyun.com/document_detail/171326.html).
+	// {"k1":"v1", "k2":"v2"}
+	//
+	// k indicates the key, and v indicates the value. For more information about configuration items, see [Manage and use configuration items](https://help.aliyun.com/document_detail/171326.html).
 	//
 	// example:
 	//
 	// {"k1":"v1","k2":"v2"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The description of the instance.
+	// The description.
 	//
 	// example:
 	//
 	// test-desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the instance.
+	// The ConfigMap instance name.
 	//
 	// example:
 	//
@@ -238,7 +244,7 @@ type ListNamespacedConfigMapsResponseBodyDataConfigMaps struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	// The associated applications.
 	RelateApps []*ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// The last update time.
+	// The update time.
 	//
 	// example:
 	//

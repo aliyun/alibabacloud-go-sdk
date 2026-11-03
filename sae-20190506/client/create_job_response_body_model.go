@@ -26,33 +26,37 @@ type iCreateJobResponseBody interface {
 }
 
 type CreateJobResponseBody struct {
-	// The HTTP status code or a POP error code. Valid values:
+	// The HTTP status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: redirection.
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *CreateJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, this parameter is returned. For more information, see the **error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// Application.MissingJdk
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information. Valid values:
+	// The additional information. Valid values:
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the request fails, an error message is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type CreateJobResponseBody struct {
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the job template was created successfully. Valid values:
+	// Indicates whether the job template was created. Valid values:
 	//
-	// - **true**: The job template was created.
+	// - **true**: created.
 	//
-	// - **false**: The job template was not created.
+	// - **false**: failed to create.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The call trace ID. You can use this ID to query detailed information about the call.
+	// The trace ID used to accurately query the call information.
 	//
 	// example:
 	//
@@ -163,13 +167,13 @@ func (s *CreateJobResponseBody) Validate() error {
 }
 
 type CreateJobResponseBodyData struct {
-	// The job template ID.
+	// The ID of the job template.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The change order ID. You can use this ID to check the execution status of the task.
+	// The ID of the returned change order, which is used to query the job execution status.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DisableApplicationScalingRuleRequest struct {
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the Auto Scaling policy.
+	// The elastic scaling policy name.
 	//
 	// This parameter is required.
 	//

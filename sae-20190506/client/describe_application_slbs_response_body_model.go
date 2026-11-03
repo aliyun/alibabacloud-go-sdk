@@ -26,15 +26,15 @@ type iDescribeApplicationSlbsResponseBody interface {
 }
 
 type DescribeApplicationSlbsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - `2xx`: The request is successful.
+	// - **2xx**: Success.
 	//
-	// - `3xx`: The request is redirected.
+	// - **3xx**: Redirection.
 	//
-	// - `4xx`: A client error occurs.
+	// - **4xx**: Client error.
 	//
-	// - `5xx`: A server error occurs.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -42,39 +42,43 @@ type DescribeApplicationSlbsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *DescribeApplicationSlbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Description:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information. Valid values:
 	//
-	// - If the request is successful, `success` is returned.
+	// - **success**: The request is successful.
 	//
-	// - If the request fails, a specific error code is returned.
+	// - Specific error code: The request failed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the configuration of the SLB instance was obtained. Valid values:
+	// Indicates whether the SLB configuration of the application was successfully retrieved. Valid values:
 	//
-	// - `true`: The configuration was obtained.
+	// - **true**: The configuration was successfully retrieved.
 	//
-	// - `false`: The configuration failed to be obtained.
+	// - **false**: The configuration failed to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of a request.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -163,21 +167,33 @@ func (s *DescribeApplicationSlbsResponseBody) Validate() error {
 }
 
 type DescribeApplicationSlbsResponseBodyData struct {
-	// The application ID.
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
+	//
+	// example:
+	//
+	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
+	//
+	// example:
+	//
+	// 495fc79c-ae61-4600-866d-a09d68******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The configurations of the Internet-facing SLB instance.
+	// The Internet-facing SLB configuration.
 	Internet []*DescribeApplicationSlbsResponseBodyDataInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Repeated"`
-	// The public IP address.
+	// The Internet-facing SLB address.
 	//
 	// example:
 	//
 	// ``59.74.**.**``
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The billing method of the Internet-facing SLB instance.
+	// The billing method of Internet-facing load balancing.
 	//
 	// example:
 	//
@@ -195,27 +211,27 @@ type DescribeApplicationSlbsResponseBodyData struct {
 	//
 	// lb-uf6xc7wybefehnv45****
 	InternetSlbId *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	// The configurations of the internal-facing SLB instance.
+	// The internal SLB configuration.
 	Intranet []*DescribeApplicationSlbsResponseBodyDataIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Repeated"`
-	// The private IP address.
+	// The internal IP address of the SLB instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The billing method of the internal-facing SLB instance.
+	// The billing method of internal load balancing.
 	//
 	// example:
 	//
 	// PayBySpec
 	IntranetSlbChargeType *string `json:"IntranetSlbChargeType,omitempty" xml:"IntranetSlbChargeType,omitempty"`
-	// Indicates whether the internal-facing SLB instance has expired.
+	// Indicates whether the internal SLB instance has expired.
 	//
 	// example:
 	//
 	// false
 	IntranetSlbExpired *bool `json:"IntranetSlbExpired,omitempty" xml:"IntranetSlbExpired,omitempty"`
-	// The ID of the internal-facing SLB instance.
+	// The ID of the internal SLB instance.
 	//
 	// example:
 	//
@@ -371,45 +387,48 @@ func (s *DescribeApplicationSlbsResponseBodyData) Validate() error {
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
+	// example:
+	//
+	// 100
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// The cookie that is configured on the server.
+	// The cookie configured on the server.
 	//
-	// The cookie must be 1 to 200 characters in length and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
+	// The cookie must be 1 to 200 characters in length and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces, and cannot start with a dollar sign ($).
 	//
-	// > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `server`.
+	// > This parameter is required and valid only when **StickySession*	- is set to **on*	- and **StickySessionType*	- is set to **server**.
 	//
 	// example:
 	//
 	// wwe
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// The cookie timeout period. Unit: seconds. Valid values: `1` to `86400`.
+	// The cookie timeout period. Unit: seconds. Valid values: **1*	- to **86400**.
 	//
-	// > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `insert`.
+	// > This parameter is required and valid only when **StickySession*	- is set to **on*	- and **StickySessionType*	- is set to **insert**.
 	//
 	// example:
 	//
 	// 56
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The time when the rule was created. This value is a UNIX timestamp.
+	// The timestamp when the rule was created.
 	//
 	// example:
 	//
 	// 1741247308294
 	CreateTime            *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EnableConnectionDrain *bool  `json:"EnableConnectionDrain,omitempty" xml:"EnableConnectionDrain,omitempty"`
-	// The ID of the CA certificate for the HTTPS protocol.
+	// The ID of the Alibaba Cloud CA certificate for the HTTPS protocol.
 	//
 	// example:
 	//
 	// 1513561019707729_16f37aae5f3_-375882821_-169099****
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
-	// The ID of the certificate for the HTTPS protocol.
+	// The ID of the Alibaba Cloud certificate for the HTTPS protocol.
 	//
 	// example:
 	//
 	// 1513561019707729_16f37aae5f3_-375882821_-169099****
 	HttpsCertId *string `json:"HttpsCertId,omitempty" xml:"HttpsCertId,omitempty"`
-	// The listening port of the SLB instance.
+	// The SLB listener port.
 	//
 	// example:
 	//
@@ -427,13 +446,13 @@ type DescribeApplicationSlbsResponseBodyDataInternet struct {
 	//
 	// false
 	StickySession *bool `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The cookie handling method. Valid values:
+	// The cookie processing method. Valid values:
 	//
-	// - `insert`: inserts a cookie. When a client makes the first request, the SLB instance inserts a cookie into the response. The next request from the client contains the cookie, and the SLB instance forwards the request to the same backend server.
+	// - **insert**: Inserts a cookie. When a client accesses the service for the first time, load balancing inserts a cookie into the response. The next time the client accesses the service with this cookie, the load balancing service forwards the request to the previously recorded backend server.
 	//
-	// - `server`: rewrites a cookie. When the SLB instance detects a user-defined cookie, it rewrites the cookie. The next request from the client contains the new cookie, and the SLB instance forwards the request to the same backend server.
+	// - **server**: Rewrites a cookie. When load balancing detects a user-defined cookie, it rewrites the original cookie. The next time the client accesses the service with the new cookie, the load balancing service forwards the request to the previously recorded backend server.
 	//
-	// > This parameter is required when `StickySession` is set to `true`.
+	// > This parameter is required and valid only when **StickySession*	- is set to **on**.
 	//
 	// example:
 	//
@@ -578,45 +597,48 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) Validate() error {
 }
 
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
+	// example:
+	//
+	// 100
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// The cookie that is configured on the server.
+	// The cookie configured on the server.
 	//
-	// The cookie must be 1 to 200 characters in length and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
+	// The cookie must be 1 to 200 characters in length and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces, and cannot start with a dollar sign ($).
 	//
-	// > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `server`.
+	// > This parameter is required and valid only when **StickySession*	- is set to **on*	- and **StickySessionType*	- is set to **server**.
 	//
 	// example:
 	//
 	// wwe
 	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	// The cookie timeout period. Unit: seconds. Valid values: `1` to `86400`.
+	// The cookie timeout period. Unit: seconds. Valid values: **1*	- to **86400**.
 	//
-	// > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `insert`.
+	// > This parameter is required and valid only when **StickySession*	- is set to **on*	- and **StickySessionType*	- is set to **insert**.
 	//
 	// example:
 	//
 	// 56
 	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	// The time when the rule was created. This value is a UNIX timestamp.
+	// The timestamp when the rule was created.
 	//
 	// example:
 	//
 	// 1741247308294
 	CreateTime            *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	EnableConnectionDrain *bool  `json:"EnableConnectionDrain,omitempty" xml:"EnableConnectionDrain,omitempty"`
-	// The ID of the CA certificate for the HTTPS protocol.
+	// The ID of the Alibaba Cloud CA certificate for the HTTPS protocol.
 	//
 	// example:
 	//
 	// 1513561019707729_16f37aae5f3_-375882821_-169099****
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
-	// The ID of the certificate for the HTTPS protocol.
+	// The ID of the Alibaba Cloud certificate for the HTTPS protocol.
 	//
 	// example:
 	//
 	// 1513561019707729_16f37aae5f3_-375882821_-169099****
 	HttpsCertId *string `json:"HttpsCertId,omitempty" xml:"HttpsCertId,omitempty"`
-	// The listening port of the SLB instance.
+	// The SLB listener port.
 	//
 	// example:
 	//
@@ -634,13 +656,13 @@ type DescribeApplicationSlbsResponseBodyDataIntranet struct {
 	//
 	// false
 	StickySession *bool `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
-	// The cookie handling method. Valid values:
+	// The cookie processing method. Valid values:
 	//
-	// - `insert`: inserts a cookie. When a client makes the first request, the SLB instance inserts a cookie into the response. The next request from the client contains the cookie, and the SLB instance forwards the request to the same backend server.
+	// - **insert**: Inserts a cookie. When a client accesses the service for the first time, load balancing inserts a cookie into the response. The next time the client accesses the service with this cookie, the load balancing service forwards the request to the previously recorded backend server.
 	//
-	// - `server`: rewrites a cookie. When the SLB instance detects a user-defined cookie, it rewrites the cookie. The next request from the client contains the new cookie, and the SLB instance forwards the request to the same backend server.
+	// - **server**: Rewrites a cookie. When load balancing detects a user-defined cookie, it rewrites the original cookie. The next time the client accesses the service with the new cookie, the load balancing service forwards the request to the previously recorded backend server.
 	//
-	// > This parameter is required when `StickySession` is set to `true`.
+	// > This parameter is required and valid only when **StickySession*	- is set to **on**.
 	//
 	// example:
 	//

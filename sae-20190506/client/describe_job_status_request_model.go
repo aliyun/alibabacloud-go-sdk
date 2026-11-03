@@ -24,7 +24,7 @@ type DescribeJobStatusRequest struct {
 	//
 	// e1a7a07-abcb-4652-a1d3-2d57f415****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The job ID.
+	// The ID of the job.
 	//
 	// example:
 	//

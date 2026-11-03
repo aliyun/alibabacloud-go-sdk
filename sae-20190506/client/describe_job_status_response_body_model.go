@@ -26,15 +26,15 @@ type iDescribeJobStatusResponseBody interface {
 }
 
 type DescribeJobStatusResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -42,39 +42,43 @@ type DescribeJobStatusResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Take note of the following rules:
+	// The error code. Valid values:
 	//
-	// - **ErrorCode*	- is not returned if the request succeeds.
+	// - Successful request: The **ErrorCode*	- field is not returned.
 	//
-	// - **ErrorCode*	- is returned if the request fails. For more information, see the "**Error codes**" section in this topic.
+	// - Failed request: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidAppId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message. Take note of the following rules:
+	// The additional information. Valid values:
 	//
-	// - If the call is successful, **success*	- is returned.
+	// - **success**: The request is successful.
 	//
-	// - If the call fails, an error code is returned.
+	// - Specific error code: An exception occurred and a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 53F15A18-8079-5992-810C-0211A5AE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the job status was queried successfully. Valid values:
 	//
-	// - **true**
+	// - **true**: The query was successful.
 	//
-	// - **false**
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID used to accurately query call information.
 	//
 	// example:
 	//
@@ -169,55 +173,55 @@ type DescribeJobStatusResponseBodyData struct {
 	//
 	// 0
 	Active *int64 `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The time when the job was executed.
+	// The completion time of the job execution.
 	//
 	// example:
 	//
 	// 1657522839
 	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	// The number of instances that failed to run.
+	// The number of instances that failed.
 	//
 	// example:
 	//
 	// 0
 	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
-	// The job ID.
+	// The ID of the job.
 	//
 	// example:
 	//
 	// event-b798157b-40a2-4388-b578-71fb897103**-**
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The returned message. Take note of the following rules:
+	// The additional information. Valid values:
 	//
-	// - If the call is successful, **success*	- is returned.
+	// - **success**: The request is successful.
 	//
-	// - If the call fails, an error code is returned.
+	// - Specific error code: An exception occurred and a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The time when the job was created.
+	// The creation time of the job.
 	//
 	// example:
 	//
 	// 1657522800
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the job. Valid values:
+	// The running status of the job. Valid values:
 	//
-	// - **0**: The job is not executed.
+	// - **0**: Not executed.
 	//
-	// - **1**: The job was executed.
+	// - **1**: Succeeded.
 	//
-	// - **2**: The job failed to be executed.
+	// - **2**: Failed.
 	//
-	// - **3**: The job is being executed.
+	// - **3**: Running.
 	//
 	// example:
 	//
 	// 1
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The number of instances that are successfully run.
+	// The number of instances that succeeded.
 	//
 	// example:
 	//

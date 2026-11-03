@@ -47,6 +47,10 @@ type DeleteApplicationResponseBody struct {
 	// - This parameter is not returned if the request is successful.
 	//
 	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The response message. If the request is successful, **success*	- is returned. If the request fails, an error code is returned.
 	//

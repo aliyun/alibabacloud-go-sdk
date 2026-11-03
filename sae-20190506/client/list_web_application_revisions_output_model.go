@@ -20,7 +20,7 @@ type ListWebApplicationRevisionsOutput struct {
 	//
 	// example:
 	//
-	// 1
+	// A2RN
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The versions.
 	Revisions []*Revision `json:"Revisions,omitempty" xml:"Revisions,omitempty" type:"Repeated"`

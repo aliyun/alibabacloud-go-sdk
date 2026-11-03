@@ -26,13 +26,58 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	Code      *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*DescribeVSwitchesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                              `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string                              `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	// The API status code or POP error code. Valid values:
+	//
+	// - **2xx**: Success.
+	//
+	// - **3xx**: Redirection.
+	//
+	// - **4xx**: Request error.
+	//
+	// - **5xx**: Server error.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data []*DescribeVSwitchesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code. Valid values:
+	//
+	// - Successful request: The **ErrorCode*	- field is not returned.
+	//
+	// - Failed request: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The additional information. Valid values:
+	//
+	// - **success**: The request is successful.
+	//
+	// - Specific error code: The request is abnormal.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 2D7E6B28-27C9-5EEA-B0A3-FC0D2F5B2263
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Specifies whether the creation or update is successful. Valid values:
+	//
+	// - Successful.
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The trace ID.
+	//
+	// example:
+	//
+	// 0a001a0817594572118465681d2341
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -120,12 +165,44 @@ func (s *DescribeVSwitchesResponseBody) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyData struct {
+	// The number of available IP addresses.
+	//
+	// example:
+	//
+	// 246
 	AvailableIpAddressCount *string `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The batch status. Valid values:
+	//
+	// - Available: Available.
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-2vc18rvxe1hk5dcsyy650
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The name of the vSwitch.
+	//
+	// example:
+	//
+	// test
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-2ze7b7cfxmxypkodyg5io
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-beijing-l
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyData) String() string {

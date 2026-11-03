@@ -26,33 +26,37 @@ type iListSecretsResponseBody interface {
 }
 
 type ListSecretsResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirect.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response object.
+	// The returned result.
 	Data *ListSecretsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - Success: The **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section.
+	// - Failure: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information. Valid values:
 	//
-	// - If the request is successful, **success*	- is returned.
+	// - **success**: The request is successful.
 	//
-	// - If the request fails, an error message is returned.
+	// - Specific error code: The request failed.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type ListSecretsResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the Secret instance list was successfully queried. Valid values:
 	//
-	// - **true**
+	// - **true**: The query was successful.
 	//
-	// - **false**
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to query the details of a call.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
@@ -163,7 +167,7 @@ func (s *ListSecretsResponseBody) Validate() error {
 }
 
 type ListSecretsResponseBodyData struct {
-	// A list of Secret instances.
+	// The list of Secret instances.
 	Secrets []*ListSecretsResponseBodyDataSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
 }
 
@@ -198,7 +202,7 @@ func (s *ListSecretsResponseBodyData) Validate() error {
 }
 
 type ListSecretsResponseBodyDataSecrets struct {
-	// The time when the Secret instance was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -218,21 +222,21 @@ type ListSecretsResponseBodyDataSecrets struct {
 	//
 	// 16
 	SecretId *int64 `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The Secret instance name.
+	// The name of the Secret instance.
 	//
 	// example:
 	//
 	// registry-auth
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The type of the Secret instance. The only valid value is:
+	// The type of the Secret instance. Valid values:
 	//
-	// **kubernetes.io/dockerconfigjson**: a Secret that stores credentials for a container image registry and is used to authenticate image pulls during deployment.
+	// - **kubernetes.io/dockerconfigjson**: A secret that stores the username and password of an image repository. It is used for image pull authentication during deployment.
 	//
 	// example:
 	//
 	// kubernetes.io/dockerconfigjson
 	SecretType *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	// The time when the Secret instance was last updated.
+	// The update time.
 	//
 	// example:
 	//

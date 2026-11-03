@@ -24,7 +24,7 @@ type iUpdateNamespaceSlsConfigsResponseBody interface {
 }
 
 type UpdateNamespaceSlsConfigsResponseBody struct {
-	// The API status code or POP error code. Valid values: 2xx (success), 3xx (redirect), 4xx (client error), 5xx (server error).
+	// The API status code or POP error code. Valid values: 2xx: success. 3xx: redirection. 4xx: request error. 5xx: server error.
 	//
 	// example:
 	//
@@ -32,29 +32,37 @@ type UpdateNamespaceSlsConfigsResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error code. Valid values:
 	//
-	// - If the request is successful, the response does not include the `ErrorCode` parameter.
+	// - Successful request: The **ErrorCode*	- field is not returned.
 	//
-	// - If the request fails, the response includes the `ErrorCode` parameter. For more information, see the **Error codes*	- section of this topic.
+	// - Failed request: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidNamespaceId.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information.
+	// The additional information.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the namespace\\"s SLS configuration was successfully updated. A value of `true` indicates success, while `false` indicates failure.
+	// Indicates whether the SLS configuration for the namespace was updated successfully. Valid values:
+	//
+	// - true: The configuration was updated successfully.
+	//
+	// - false: The configuration failed to be updated.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID for the request. You can use this ID to query the details of the request.
+	// The trace ID used to precisely query call information.
 	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

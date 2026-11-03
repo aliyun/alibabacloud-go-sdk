@@ -26,15 +26,15 @@ type iDescribeConfigurationPriceResponseBody interface {
 }
 
 type DescribeConfigurationPriceResponseBody struct {
-	// The HTTP status code or POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -42,17 +42,21 @@ type DescribeConfigurationPriceResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The pricing information.
 	Data *DescribeConfigurationPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. The value is described as follows:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.Obviously
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information. The value is described as follows:
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the request fails, an error code is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,11 +68,11 @@ type DescribeConfigurationPriceResponseBody struct {
 	//
 	// ADCEC067-86AD-19E2-BD43-E83F3841****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the price of the configuration was obtained.
+	// Indicates whether the configuration pricing information is successfully retrieved. Valid values:
 	//
-	// - **true**: The price was obtained.
+	// - **true**: The pricing information is successfully retrieved.
 	//
-	// - **false**: The price failed to be obtained.
+	// - **false**: The pricing information fails to be retrieved.
 	//
 	// example:
 	//
@@ -165,15 +169,15 @@ func (s *DescribeConfigurationPriceResponseBody) Validate() error {
 type DescribeConfigurationPriceResponseBodyData struct {
 	// The remaining quota of the resource plan.
 	BagUsage *DescribeConfigurationPriceResponseBodyDataBagUsage `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
-	// The price of CPU and memory.
+	// The CPU and memory pricing.
 	CpuMemPrice *DescribeConfigurationPriceResponseBodyDataCpuMemPrice `json:"CpuMemPrice,omitempty" xml:"CpuMemPrice,omitempty" type:"Struct"`
 	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The price per request.
+	// The pricing based on the number of requests.
 	RequestPrice *DescribeConfigurationPriceResponseBodyDataRequestPrice `json:"RequestPrice,omitempty" xml:"RequestPrice,omitempty" type:"Struct"`
-	// The promotion rules.
+	// The campaign rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The price of traffic.
+	// The traffic pricing.
 	TrafficPrice *DescribeConfigurationPriceResponseBodyDataTrafficPrice `json:"TrafficPrice,omitempty" xml:"TrafficPrice,omitempty" type:"Struct"`
 }
 
@@ -278,19 +282,19 @@ func (s *DescribeConfigurationPriceResponseBodyData) Validate() error {
 }
 
 type DescribeConfigurationPriceResponseBodyDataBagUsage struct {
-	// The remaining CPU quota. Unit: core-hours.
+	// The remaining CPU quota, in core-hours.
 	//
 	// example:
 	//
 	// 497570.450009
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The remaining computing units (CUs) of the resource plan.
+	// The remaining CU quota of the resource plan.
 	//
 	// example:
 	//
 	// 10000
 	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The remaining memory quota. Unit: GiB-hours.
+	// The remaining memory quota, in GiB-hours.
 	//
 	// example:
 	//
@@ -340,7 +344,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) Validate() error {
 type DescribeConfigurationPriceResponseBodyDataCpuMemPrice struct {
 	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The promotion rules.
+	// The campaign rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -460,7 +464,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) Validate() 
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules struct {
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -517,9 +521,9 @@ type DescribeConfigurationPriceResponseBodyDataOrder struct {
 	//
 	// 0.0092592
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The promotion ID.
+	// The campaign ID.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
-	// The final price of the order.
+	// The transaction amount of the order.
 	//
 	// example:
 	//
@@ -578,7 +582,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataOrder) Validate() error {
 type DescribeConfigurationPriceResponseBodyDataRequestPrice struct {
 	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The promotion rules.
+	// The campaign rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataRequestPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -698,7 +702,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) Validate()
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPriceRules struct {
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -743,7 +747,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceRules) Validate()
 }
 
 type DescribeConfigurationPriceResponseBodyDataRules struct {
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -790,7 +794,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataRules) Validate() error {
 type DescribeConfigurationPriceResponseBodyDataTrafficPrice struct {
 	// The pricing information.
 	Order *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The promotion rules.
+	// The campaign rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataTrafficPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -851,7 +855,7 @@ type DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder struct {
 	//
 	// 0.0046296
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	// The promotion ID.
+	// The campaign ID.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 	// The actual transaction price of the order.
 	//
@@ -910,7 +914,7 @@ func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) Validate()
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPriceRules struct {
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//

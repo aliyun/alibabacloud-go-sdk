@@ -38,25 +38,25 @@ type ListChangeOrdersRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The status of the change order. Valid values:
 	//
-	// - **0**: Preparing.
+	// - **0**: preparing
 	//
-	// - **1**: In progress.
+	// - **1**: executing
 	//
-	// - **2**: Succeeded.
+	// - **2**: executed successfully
 	//
-	// - **3**: Failed.
+	// - **3**: execution failed
 	//
-	// - **6**: Stopped.
+	// - **6**: terminated
 	//
-	// - **8**: Paused for manual confirmation.
+	// - **8**: waiting for manual batch confirmation
 	//
-	// - **9**: Paused for automatic confirmation.
+	// - **9**: waiting for automatic batch confirmation
 	//
-	// - **10**: Failed due to a system exception.
+	// - **10**: execution failed due to a system exception
 	//
-	// - **11**: Pending approval.
+	// - **11**: waiting for approval
 	//
-	// - **12**: Approved and pending execution.
+	// - **12**: approved and waiting for execution
 	//
 	// example:
 	//
@@ -64,45 +64,45 @@ type ListChangeOrdersRequest struct {
 	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
 	// The type of the change order. Valid values:
 	//
-	// - **CoBindSlb**: Attach an SLB instance.
+	// - **CoBindSlb**: bind an SLB instance
 	//
-	// - **CoUnbindSlb**: Detach an SLB instance.
+	// - **CoUnbindSlb**: unbind an SLB instance
 	//
-	// - **CoCreateApp**: Create an application.
+	// - **CoCreateApp**: create an application
 	//
-	// - **CoDeleteApp**: Delete an application.
+	// - **CoDeleteApp**: delete an application
 	//
-	// - **CoDeploy**: Deploy an application.
+	// - **CoDeploy**: deploy an application
 	//
-	// - **CoRestartApplication**: Restart an application.
+	// - **CoRestartApplication**: restart an application
 	//
-	// - **CoRollback**: Roll back an application.
+	// - **CoRollback**: roll back an application
 	//
-	// - **CoScaleIn**: Scale in an application.
+	// - **CoScaleIn**: scale in an application
 	//
-	// - **CoScaleOut**: Scale out an application.
+	// - **CoScaleOut**: scale out an application
 	//
-	// - **CoStartApplication**: Start an application.
+	// - **CoStartApplication**: start an application
 	//
-	// - **CoStopApplication**: Stop an application.
+	// - **CoStopApplication**: stop an application
 	//
-	// - **CoRescaleApplicationVertically**: Change the instance type.
+	// - **CoRescaleApplicationVertically**: change instance specifications
 	//
-	// - **CoDeployHistroy**: Roll back to a previous version.
+	// - **CoDeployHistroy**: roll back to a historical version
 	//
-	// - **CoBindNas**: Attach a NAS file system.
+	// - **CoBindNas**: bind a NAS file system
 	//
-	// - **CoUnbindNas**: Detach a NAS file system.
+	// - **CoUnbindNas**: unbind a NAS file system
 	//
-	// - **CoBatchStartApplication**: Batch start applications.
+	// - **CoBatchStartApplication**: start applications in batches
 	//
-	// - **CoBatchStopApplication**: Batch stop applications.
+	// - **CoBatchStopApplication**: stop applications in batches
 	//
-	// - **CoRestartInstances**: Restart instances.
+	// - **CoRestartInstances**: restart instances
 	//
-	// - **CoDeleteInstances**: Delete instances.
+	// - **CoDeleteInstances**: delete instances
 	//
-	// - **CoScaleInAppWithInstances**: Scale in an application by specifying instances.
+	// - **CoScaleInAppWithInstances**: scale in specified instances
 	//
 	// example:
 	//
@@ -114,25 +114,29 @@ type ListChangeOrdersRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The keyword for a fuzzy search of change order descriptions. The operation returns only the change orders whose descriptions contain the **keyword**.
+	// The keyword used for fuzzy match of the change order description. Change orders whose descriptions contain the keyword are returned.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The field by which to sort the results.
+	// The sorting condition.
+	//
+	// example:
+	//
+	// create_time
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order for the field specified by the **OrderBy*	- parameter. Valid values:
+	// Specifies whether to sort the results in ascending order based on the field specified by the **OrderBy*	- parameter. Valid values:
 	//
-	// - **true**: The results are sorted in ascending order.
+	//   - **true**: sort in ascending order
 	//
-	// - **false**: The results are sorted in descending order.
+	//   - **false**: sort in descending order
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 }
 

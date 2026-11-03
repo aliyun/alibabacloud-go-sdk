@@ -51,6 +51,10 @@ type UntagResourcesResponseBody struct {
 	// - This parameter is not returned on a successful request.
 	//
 	// - This parameter is returned on a failed request. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// Duplicate.TagKey
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The response message.
 	//

@@ -26,33 +26,37 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The HTTP status code.
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx*	- indicates that the request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx*	- indicates that the request was redirected.
+	// - **3xx**: Redirect.
 	//
-	// - **4xx*	- indicates that a client-side error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx*	- indicates that a server-side error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *ListTagResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
-	// - This parameter is returned only if the request fails.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.Obviously
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned for the request.
+	// The additional information.
 	//
 	// - If the request is successful, **success*	- is returned.
 	//
-	// - If the request fails, an error message is returned.
+	// - If an exception occurs, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 7414187F-4F59-4585-9BCF-5F0804E4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the mapping between applications and tags was successfully queried. Valid values:
 	//
-	// - **true**
+	// - **true**: The query was successful.
 	//
-	// - **false**
+	// - **false**: The query failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of a request.
+	// The trace ID. You can use this ID to precisely query the call information.
 	//
 	// example:
 	//
@@ -163,13 +167,13 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyData struct {
-	// The token that is used to retrieve the next page of results. A query returns a maximum of 50 results. If the results are truncated, you can use this token in a subsequent request to retrieve the next page of results.
+	// The pagination token. A single query returns up to 50 results. If the total number of results exceeds 50, a NextToken is returned. You can use this token in the next query to retrieve the remaining results.
 	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of tags and their associated resources.
+	// The mapping between applications and tags.
 	TagResources []*ListTagResourcesResponseBodyDataTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -213,25 +217,25 @@ func (s *ListTagResourcesResponseBodyData) Validate() error {
 }
 
 type ListTagResourcesResponseBodyDataTagResources struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// d42921c4-5433-4abd-8075-0e536f8b****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. The value is fixed as `application`.
+	// The resource type. Only `application` is supported.
 	//
 	// example:
 	//
 	// ALIYUN::SAE::APPLICATION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// k1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

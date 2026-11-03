@@ -47,6 +47,10 @@ type DeleteGreyTagRouteResponseBody struct {
 	// - This parameter is not returned if the request is successful.
 	//
 	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The response message. Valid values:
 	//

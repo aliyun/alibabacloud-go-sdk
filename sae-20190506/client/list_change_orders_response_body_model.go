@@ -26,29 +26,33 @@ type iListChangeOrdersResponseBody interface {
 }
 
 type ListChangeOrdersResponseBody struct {
-	// The HTTP status code or the POP error code. Valid values:
+	// The HTTP status code or POP error code. Valid values:
 	//
-	// - **2xx**: Success.
+	// - **2xx**: success
 	//
-	// - **3xx**: Redirect.
+	// - **3xx**: redirection
 	//
-	// - **4xx**: Request error.
+	// - **4xx**: client error
 	//
-	// - **5xx**: Server error.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the change orders.
+	// The information about the change order list.
 	Data *ListChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Take note of the following items:
 	//
-	// - This parameter is not returned on successful requests.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - Returned if the request fails. For more information, see the **error code*	- list in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the error codes in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information about the response.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,17 +64,17 @@ type ListChangeOrdersResponseBody struct {
 	//
 	// 65E1F-43BA-4D0C-8E61-E4D1337F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of change orders was retrieved. Valid values:
+	// Indicates whether the change order list was successfully queried. Valid values:
 	//
-	// - **true**: The list was retrieved.
+	// - **true**: the query was successful
 	//
-	// - **false**: The list could not be retrieved.
+	// - **false**: the query failed
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID used to query request details.
+	// The trace ID, which is used to accurately query the call information.
 	//
 	// example:
 	//
@@ -167,7 +171,7 @@ type ListChangeOrdersResponseBodyData struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -253,9 +257,9 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
 	// The batch type. Valid values:
 	//
-	// - **auto**: Automatic.
+	//   - **auto**: automatic
 	//
-	// - **manual**: Manual.
+	//   - **manual**: manual
 	//
 	// example:
 	//
@@ -267,59 +271,61 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// 7fa5c0-9ebb-4bb4-b383-1f885447****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The description of the change type code (**CoTypeCode**).
+	// The change type, which is the description of the **CoTypeCode**.
 	//
 	// example:
 	//
-	// Create application
+	// Create Application
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
 	// The code of the change type. Valid values:
 	//
-	// - **CoBindSlb**: Bind an SLB instance.
 	//
-	// - **CoUnbindSlb**: Unbind an SLB instance.
 	//
-	// - **CoCreateApp**: Create an application.
+	// - **CoBindSlb**: bind an SLB instance
 	//
-	// - **CoDeleteApp**: Delete an application.
+	// - **CoUnbindSlb**: unbind an SLB instance
 	//
-	// - **CoDeploy**: Deploy an application.
+	// - **CoCreateApp**: create an application
 	//
-	// - **CoRestartApplication**: Restart an application.
+	// - **CoDeleteApp**: delete an application
 	//
-	// - **CoRollback**: Roll back an application.
+	// - **CoDeploy**: deploy an application
 	//
-	// - **CoScaleIn**: Scale in an application.
+	// - **CoRestartApplication**: restart an application
 	//
-	// - **CoScaleOut**: Scale out an application.
+	// - **CoRollback**: roll back an application
 	//
-	// - **CoStartApplication**: Start an application.
+	// - **CoScaleIn**: scale in an application
 	//
-	// - **CoStopApplication**: Stop an application.
+	// - **CoScaleOut**: scale out an application
 	//
-	// - **CoRescaleApplicationVertically**: Change the instance type.
+	// - **CoStartApplication**: start an application
 	//
-	// - **CoDeployHistroy**: Roll back to a previous version.
+	// - **CoStopApplication**: stop an application
 	//
-	// - **CoBindNas**: Bind a NAS file system.
+	// - **CoRescaleApplicationVertically**: change instance specifications
 	//
-	// - **CoUnbindNas**: Unbind a NAS file system.
+	// - **CoDeployHistroy**: roll back to a historical version
 	//
-	// - **CoBatchStartApplication**: Start multiple applications.
+	// - **CoBindNas**: bind a NAS file system
 	//
-	// - **CoBatchStopApplication**: Stop multiple applications.
+	// - **CoUnbindNas**: unbind a NAS file system
 	//
-	// - **CoRestartInstances**: Restart instances.
+	// - **CoBatchStartApplication**: start applications in batches
 	//
-	// - **CoDeleteInstances**: Delete instances.
+	// - **CoBatchStopApplication**: stop applications in batches
 	//
-	// - **CoScaleInAppWithInstances**: Scale in an application by specifying instances.
+	// - **CoRestartInstances**: restart instances
+	//
+	// - **CoDeleteInstances**: delete instances
+	//
+	// - **CoScaleInAppWithInstances**: scale in specified instances
 	//
 	// example:
 	//
 	// CoCreateApp
 	CoTypeCode *string `json:"CoTypeCode,omitempty" xml:"CoTypeCode,omitempty"`
-	// The time the change order was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -335,9 +341,9 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// example:
 	//
-	// Version: 1.0 | image name: nginx
+	// Version: 1.0 | Image name: nginx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time the change order was completed.
+	// The end time.
 	//
 	// example:
 	//
@@ -349,7 +355,7 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	//
 	// c9ecd2-cf6c-46c3-9f20-525de202****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The source of the change order.
+	// The source of the change order operation.
 	//
 	// example:
 	//
@@ -357,25 +363,25 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The status of the change order. Valid values:
 	//
-	// - **0**: Preparing.
+	// - **0**: preparing
 	//
-	// - **1**: In progress.
+	// - **1**: executing
 	//
-	// - **2**: Succeeded.
+	// - **2**: executed successfully
 	//
-	// - **3**: Failed.
+	// - **3**: execution failed
 	//
-	// - **6**: Aborted.
+	// - **6**: terminated
 	//
-	// - **8**: Paused for manual confirmation.
+	// - **8**: waiting for manual batch confirmation
 	//
-	// - **9**: Paused for automatic confirmation.
+	// - **9**: waiting for automatic batch confirmation
 	//
-	// - **10**: Failed due to a system exception.
+	// - **10**: execution failed due to a system exception
 	//
-	// - **11**: Pending approval.
+	// - **11**: waiting for approval
 	//
-	// - **12**: Approved and pending execution.
+	// - **12**: approved and waiting for execution
 	//
 	// example:
 	//

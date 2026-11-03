@@ -28,31 +28,46 @@ type iAppStackTask interface {
 }
 
 type AppStackTask struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1706518652
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1706518652
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-789y
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// palworld
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1706518652
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// WAIT
-	Status *string              `json:"Status,omitempty" xml:"Status,omitempty"`
-	Steps  []*AppStackTaskSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The step list.
+	Steps []*AppStackTaskSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
+	// The task ID.
+	//
 	// example:
 	//
 	// t-789y-deploy
@@ -153,34 +168,50 @@ func (s *AppStackTask) Validate() error {
 }
 
 type AppStackTaskSteps struct {
+	// The error code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The step duration.
+	//
 	// example:
 	//
 	// 0
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1706518652
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The step ID.
+	//
 	// example:
 	//
 	// VPC_CREATE_NETWORK
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The step name.
+	//
 	// example:
 	//
-	// 初始化 VPC 网络
+	// Initialize VPC network
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1706518652
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The step status.
+	//
 	// example:
 	//
 	// WAIT

@@ -30,19 +30,27 @@ type UpdateApplicationVswitchesRequest struct {
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Indicates whether to deploy the application immediately. Valid values:
+	// Specifies whether to deploy the application immediately. Valid values:
 	//
-	// - **true**: Deploys the application immediately. This is the default.
+	// - **true**: Deploys the application immediately. This is the default value.
 	//
-	// - **false**: The application is not deployed.
+	// - **false**: Deploys the application later.
 	//
 	// example:
 	//
 	// true
 	Deploy *bool `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
 	// The minimum percentage of ready instances.
+	//
+	// example:
+	//
+	// -1
 	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
 	// The minimum number of ready instances.
+	//
+	// example:
+	//
+	// 1
 	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// The vSwitch ID.
 	//

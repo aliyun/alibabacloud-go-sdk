@@ -47,6 +47,10 @@ type DescribeConfigMapResponseBody struct {
 	// - This parameter is empty if the request succeeds.
 	//
 	// - This parameter contains an error code if the request fails. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//

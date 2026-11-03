@@ -22,7 +22,7 @@ type WebAclEntryConfig struct {
 	//
 	// example:
 	//
-	// 219.145.XX.XX
+	// 1.2.3.4/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 

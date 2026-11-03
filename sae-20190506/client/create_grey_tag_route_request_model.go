@@ -24,7 +24,7 @@ type iCreateGreyTagRouteRequest interface {
 }
 
 type CreateGreyTagRouteRequest struct {
-	// The canary rules for an application that uses an ALB gateway route.
+	// The canary release rules created for an application that has ALB gateway routing configured.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type CreateGreyTagRouteRequest struct {
 	//
 	// 7802c49a-67bc-4167-8369-9a9c003c****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The description of the canary rule. The description can be up to 64 characters long.
+	// The rule description. It can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// Canary Release - Regions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The canary rules for a Dubbo application. This parameter is required for Dubbo applications and cannot be used with the **ScRules*	- parameter.
+	// The canary release rules created for a Dubbo application. This parameter is required when your application uses the Dubbo framework. You do not need to specify the **ScRules*	- parameter.
 	//
 	// example:
 	//
 	// [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
 	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
-	// The name of the canary rule. The name can be up to 64 characters long and can contain only lowercase letters, digits, hyphens (-), and Chinese characters. It must start with a lowercase letter and end with a lowercase letter or a digit.
+	// The rule name. It must start with a lowercase letter, end with a digit or a lowercase letter, and can contain only lowercase letters, Chinese characters, digits, and hyphens (-). It can be up to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateGreyTagRouteRequest struct {
 	//
 	// dubbo-echo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The canary rules for a Spring Cloud application. This parameter is required for Spring Cloud applications and cannot be used with the **DubboRules*	- parameter.
+	// The canary release rules created for a Spring Cloud application. This parameter is required when your application uses the Spring Cloud framework. You do not need to specify the **DubboRules*	- parameter.
 	//
 	// example:
 	//

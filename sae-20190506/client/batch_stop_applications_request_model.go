@@ -18,15 +18,17 @@ type iBatchStopApplicationsRequest interface {
 }
 
 type BatchStopApplicationsRequest struct {
-	// The ID of the application that you want to stop.
+	// The IDs of the applications to be stopped.
 	//
-	// > If you want to stop multiple applications at the same time, separate the IDs with commas (,).
+	// >
+	//
+	// > To stop multiple applications at the same time, separate the application IDs with commas (,).
 	//
 	// example:
 	//
 	// ebf491f0-c1a5-45e2-b2c4-710dbe2a****
 	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	// ebf491f0-c1a5-45e2-b2c4-710dbe2a\\*\\*\\*\\*,ebf491f0-c1a5-45e2-b2c4-71025e2a\\*\\*\\*\\*
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +36,7 @@ type BatchStopApplicationsRequest struct {
 	//
 	// cn-shanghai
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The application version.
+	// The version of the application.
 	//
 	// example:
 	//

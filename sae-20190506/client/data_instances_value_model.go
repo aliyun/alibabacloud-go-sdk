@@ -18,19 +18,19 @@ type iDataInstancesValue interface {
 }
 
 type DataInstancesValue struct {
-	// The DNS name.
+	// The DNS domain name.
 	//
 	// example:
 	//
 	// nlb-wb7r6dlwetvt5j****.cn-hangzhou.nlb.aliyuncs.com
 	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	// A collection of listener details.
+	// The listener information.
 	Listeners map[string]*DataInstancesValueListenersValue `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	// Indicates whether SAE created the instance. Valid values:
+	// Specifies whether the instance is purchased by Serverless App Engine (SAE). Valid values:
 	//
-	// - **true**: SAE created the instance.
+	// - **true**: The instance is created by SAE on your behalf.
 	//
-	// - **false**: SAE reused an existing instance.
+	// - **false**: An existing instance is reused.
 	//
 	// example:
 	//

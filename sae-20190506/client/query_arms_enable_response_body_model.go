@@ -39,6 +39,10 @@ type QueryArmsEnableResponseBody struct {
 	// - If the request was successful, this field is not returned.
 	//
 	// - For more information, see the **Error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidApplication.NotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The additional information. Value description:
 	//

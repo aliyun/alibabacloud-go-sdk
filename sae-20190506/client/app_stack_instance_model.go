@@ -28,28 +28,42 @@ type iAppStackInstance interface {
 }
 
 type AppStackInstance struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1706518652
-	CreateTime *int64                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Endpoints  []*AppStackInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The endpoints.
+	Endpoints []*AppStackInstanceEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// i-789y
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// palworld
-	InstanceName *string                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Parameters   []*AppStackInstanceParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance parameters.
+	Parameters []*AppStackInstanceParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The stack ID.
+	//
 	// example:
 	//
 	// palworld
 	StackId *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// WAIT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 1706518652
@@ -159,14 +173,20 @@ func (s *AppStackInstance) Validate() error {
 }
 
 type AppStackInstanceEndpoints struct {
+	// The address and port.
+	//
 	// example:
 	//
 	// 127.0.0.1:8211
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The endpoint name.
+	//
 	// example:
 	//
 	// game
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The endpoint protocol.
+	//
 	// example:
 	//
 	// UDP
@@ -213,10 +233,14 @@ func (s *AppStackInstanceEndpoints) Validate() error {
 }
 
 type AppStackInstanceParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// regionId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -26,25 +26,29 @@ type iDescribeApplicationMseServiceResponseBody interface {
 }
 
 type DescribeApplicationMseServiceResponseBody struct {
-	// The API status or POP error code. Valid values: 2xx: The request was successful. 3xx: The request was redirected. 4xx: The request was invalid. 5xx: A server error occurred.
+	// The API status code or POP error code. Valid values: 2xx: success. 3xx: redirection. 4xx: request error. 5xx: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The application information.
+	// The MSE microservice governance application information.
 	Data *DescribeApplicationMseServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. Value description:
+	// The error code. Details:
 	//
-	// - If the request succeeds, this field is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// System.Upgrading
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information. Value description:
+	// The additional information. Details:
 	//
-	// - If the request was successful, **success*	- is returned.
+	// - If the request is normal, **success*	- is returned.
 	//
-	// - If the request failed, an error code is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -56,17 +60,17 @@ type DescribeApplicationMseServiceResponseBody struct {
 	//
 	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the application instance groups were obtained successfully. Valid values:
+	// Indicates whether the application instance group was retrieved successfully. Valid values:
 	//
-	// - **true**
+	// - **true**: The application instance group was retrieved successfully.
 	//
-	// - **false**
+	// - **false**: The application instance group failed to be retrieved.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace, which is used to query the exact call information.
+	// The trace ID, which is used to precisely query trace information.
 	//
 	// example:
 	//
@@ -155,35 +159,35 @@ func (s *DescribeApplicationMseServiceResponseBody) Validate() error {
 }
 
 type DescribeApplicationMseServiceResponseBodyData struct {
-	// The application ID.
+	// The MSE microservice governance application ID.
 	//
 	// example:
 	//
 	// mse-cn-hvm47******
 	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
-	// The application name.
+	// The MSE microservice governance application name.
 	//
 	// example:
 	//
 	// test
 	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
-	// The namespace.
+	// The MSE microservice governance namespace.
 	//
 	// example:
 	//
 	// sae-ent
 	MseAppNameSpace *string `json:"MseAppNameSpace,omitempty" xml:"MseAppNameSpace,omitempty"`
-	// The application status. Valid values:
+	// The MSE microservice governance application status. Valid values:
 	//
-	// - EXPIRED
+	// - EXPIRED: The feature has expired or is not activated.
 	//
-	// - REBOOTING
+	// - REBOOTING: The application is restarting.
 	//
-	// - WAITING
+	// - WAITING: Waiting for the application to restart.
 	//
-	// - FAIL
+	// - FAIL: The activation failed.
 	//
-	// - NULL/SUCCESS
+	// - NULL/SUCCESS: The activation succeeded.
 	//
 	// example:
 	//

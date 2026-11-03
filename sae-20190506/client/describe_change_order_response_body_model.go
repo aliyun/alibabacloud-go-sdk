@@ -47,6 +47,10 @@ type DescribeChangeOrderResponseBody struct {
 	// - If the request is successful, this parameter is not returned.
 	//
 	// - If the request fails, this parameter is returned. For more information, see the **error codes*	- section of this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The message returned for the request.
 	//
@@ -174,6 +178,10 @@ type DescribeChangeOrderResponseBodyData struct {
 	// Indicates whether gray tag routing is enabled.
 	ApplicationEnableGreyTagRoute *bool `json:"ApplicationEnableGreyTagRoute,omitempty" xml:"ApplicationEnableGreyTagRoute,omitempty"`
 	// The update strategy for the application.
+	//
+	// example:
+	//
+	// {"type":"GrayBatchUpdate","batchUpdate":{"batch":2,"releaseType":"auto","batchWaitTime":1},"grayUpdate":{"gray":1}}
 	ApplicationUpdateStrategy *string `json:"ApplicationUpdateStrategy,omitempty" xml:"ApplicationUpdateStrategy,omitempty"`
 	// The approval ID for the operation.
 	//

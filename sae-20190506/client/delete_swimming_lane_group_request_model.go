@@ -16,7 +16,7 @@ type iDeleteSwimmingLaneGroupRequest interface {
 }
 
 type DeleteSwimmingLaneGroupRequest struct {
-	// The ID of the swimming lane group.
+	// The lane group ID.
 	//
 	// example:
 	//

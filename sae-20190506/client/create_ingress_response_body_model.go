@@ -26,55 +26,59 @@ type iCreateIngressResponseBody interface {
 }
 
 type CreateIngressResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request is successful.
+	// - **2xx**: successful.
 	//
-	// - **3xx**: The request is redirected.
+	// - **3xx**: redirected.
 	//
-	// - **4xx**: A request error occurs.
+	// - **4xx**: request error.
 	//
-	// - **5xx**: A server error occurs.
+	// - **5xx**: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned results.
+	// The returned result.
 	Data *CreateIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- field is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The additional information. Valid values:
 	//
-	// - If the request is successful, **success*	- is returned.
+	// - If the request is normal, **success*	- is returned.
 	//
-	// - If the request fails, an error code is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the routing rule was created. Valid values:
+	// Indicates whether the routing rule was created successfully. Valid values:
 	//
-	// - **true**: The routing rule was created.
+	// - **true**: created successfully.
 	//
-	// - **false**: The routing rule failed to be created.
+	// - **false**: failed to create.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID, which is used to accurately query the call information.
 	//
 	// example:
 	//

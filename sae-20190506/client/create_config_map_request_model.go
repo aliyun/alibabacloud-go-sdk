@@ -20,7 +20,11 @@ type iCreateConfigMapRequest interface {
 }
 
 type CreateConfigMapRequest struct {
-	// The ConfigMap data.
+	// The key-value pair data of the ConfigMap in JSON format. The format is as follows:
+	//
+	// {"Data":"{\\"k1\\":\\"v1\\", \\"k2\\":\\"v2\\"}"}
+	//
+	// k represents the key, and v represents the value. For more information about ConfigMaps, see [Manage and use ConfigMaps](https://help.aliyun.com/document_detail/171326.html).
 	//
 	// This parameter is required.
 	//
@@ -28,17 +32,13 @@ type CreateConfigMapRequest struct {
 	//
 	// {"env.shell": "/bin/sh"}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The key-value pairs of the ConfigMap in the JSON format. Format:
-	//
-	// {"Data":"{"k1":"v1", "k2":"v2"}"}
-	//
-	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
+	// The description. The description cannot contain spaces and can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// test-desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the ConfigMap. The name can contain digits, letters, and underscores (_). The name must start with a letter.
+	// The name of the ConfigMap instance. The name can contain digits, letters, and underscores (_), and must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateConfigMapRequest struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace to which the ConfigMap instance belongs.
+	// The ID of the namespace where the ConfigMap instance resides.
 	//
 	// This parameter is required.
 	//

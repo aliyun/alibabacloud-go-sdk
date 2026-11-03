@@ -26,51 +26,55 @@ type iUpdateNamespaceResponseBody interface {
 }
 
 type UpdateNamespaceResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The call was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: The call failed.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about a namespace.
+	// The namespace information.
 	Data *UpdateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned. Take note of the following rules:
+	// The error code. The following rules apply:
 	//
-	// - The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidNamespaceName.Format
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned for the operation.
+	// The additional information about the request result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information about the namespace was updated. Valid values:
+	// Indicates whether the namespace information is updated. Valid values:
 	//
-	// - **true**: The instance was updated.
+	// - **true**: The update is successful.
 	//
-	// - **false**: The instance failed to be updated.
+	// - **false**: The update fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID that is used to query the details of the request.
+	// The trace ID. You can use this ID to precisely query invocation information.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ func (s *UpdateNamespaceResponseBody) Validate() error {
 }
 
 type UpdateNamespaceResponseBodyData struct {
-	// Indicates whether to enable SAE built-in registry:
+	// Indicates whether the built-in registry of SAE is enabled. Valid values:
 	//
 	// - **true**
 	//
@@ -169,31 +173,31 @@ type UpdateNamespaceResponseBodyData struct {
 	//
 	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
-	// The short ID of the namespace.
+	// The short namespace ID.
 	//
 	// example:
 	//
 	// test
 	NameSpaceShortId *string `json:"NameSpaceShortId,omitempty" xml:"NameSpaceShortId,omitempty"`
-	// The description of the namespace.
+	// The namespace description.
 	//
 	// example:
 	//
 	// desc
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// name
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The region where the namespace resides.
+	// The region where the namespace is located.
 	//
 	// example:
 	//

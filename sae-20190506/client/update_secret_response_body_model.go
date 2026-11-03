@@ -26,15 +26,15 @@ type iUpdateSecretResponseBody interface {
 }
 
 type UpdateSecretResponseBody struct {
-	// The status of the API call or a POP error code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
@@ -42,13 +42,17 @@ type UpdateSecretResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *UpdateSecretResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. The following list describes the values:
+	// The error code. Take note of the following items:
 	//
-	// - If the request is successful, this parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Additional information about the call result.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -60,9 +64,9 @@ type UpdateSecretResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the Secret instance was updated. Valid values:
+	// Indicates whether the Secret instance was updated successfully. Valid values:
 	//
-	// - **true**: The instance was updated.
+	// - **true**: The update was successful.
 	//
 	// - **false**: The update failed.
 	//
@@ -70,7 +74,7 @@ type UpdateSecretResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the call chain. You can use this ID to query the details of a call.
+	// The trace ID used to query the call information.
 	//
 	// example:
 	//
@@ -159,7 +163,7 @@ func (s *UpdateSecretResponseBody) Validate() error {
 }
 
 type UpdateSecretResponseBodyData struct {
-	// The ID of the Secret instance.
+	// The instance ID of the Secret.
 	//
 	// example:
 	//

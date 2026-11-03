@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// A query can return a maximum of 50 results. If the number of results exceeds this limit, the response includes a NextToken. To retrieve the next page of results, pass this token in your next request.
+	// The pagination token. A single query returns up to 50 results. If the total number of results exceeds 50, a NextToken is returned. You can use this token in the next query to retrieve the remaining results.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs, specified as a JSON array of strings. This parameter is required if the **Tags*	- parameter is not specified.
+	// The resource IDs. You can specify multiple resource IDs separated by commas (,). This parameter is required if you do not specify the **Tags*	- parameter.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type ListTagResourcesRequest struct {
 	//
 	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags used to filter resources. This parameter is required if the **ResourceIds*	- parameter is not specified. A tag is a key-value pair.
+	// The tag key-value pairs. This parameter is required if you do not specify the **ResourceIds*	- parameter.
 	//
-	// - **key**: The tag key. The key can be 1 to 128 characters in length.
+	// - **key**: the tag key. The value must be 1 to 128 characters in length.
 	//
-	// - **value**: The tag value. The value can be 1 to 128 characters in length.
+	// - **value**: the tag value. The value must be 1 to 128 characters in length.
 	//
-	// Tag keys and tag values are case-sensitive. If you specify multiple tags, the operation returns only resources that have all the specified tags.
+	// Tag keys and values are case-sensitive. If you specify multiple tags, multiple tags are created and bound to the specified resource at the same time. A tag key on a resource can map to only one tag value. If you add a tag with an existing key, the tag value is updated to the new value.
 	//
-	// A tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The key and value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

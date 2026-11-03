@@ -24,7 +24,7 @@ type RestartInstancesRequest struct {
 	//
 	// 1daa7236-3844-4f36-b39a-605b0cc0****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the instance to be restarted. Separate multiple instance IDs with commas (,).
+	// The IDs of the instances to be restarted. Separate multiple instance IDs with commas (,).
 	//
 	// This parameter is required.
 	//

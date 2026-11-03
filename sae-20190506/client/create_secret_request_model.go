@@ -20,7 +20,7 @@ type iCreateSecretRequest interface {
 }
 
 type CreateSecretRequest struct {
-	// The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+	// The ID of the namespace where the Secret instance resides. If the namespace is the default namespace, you only need to specify RegionId, such as `cn-beijing`.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type CreateSecretRequest struct {
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The Secret data.
+	// The data of the Secret.
 	//
 	// This parameter is required.
 	SecretData *CreateSecretRequestSecretData `json:"SecretData,omitempty" xml:"SecretData,omitempty" type:"Struct"`
-	// The Secret name. The name can contain digits, letters, and underscores (_). The name must start with a letter.
+	// The name of the Secret instance. The name can contain digits, letters, and underscores (_), and must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,9 @@ type CreateSecretRequest struct {
 	//
 	// registry-auth-acree
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The supported Secret type. Valid values:
+	// The type of the Secret instance. Valid values:
 	//
-	// - **kubernetes.io/dockerconfigjson**: the Secret for the username and password of the image repository. The Secret is used for authentication when images are pulled during application deployment.
-	//
-	// Valid values:
-	//
-	// - Opaque
-	//
-	// - kubernetes.io/dockerconfigjson
-	//
-	// - kubernetes.io/tls
+	// - **kubernetes.io/dockerconfigjson**: stores the username and password of an image repository. It is used for authentication when pulling images during deployment.
 	//
 	// This parameter is required.
 	//
@@ -114,11 +106,11 @@ func (s *CreateSecretRequest) Validate() error {
 }
 
 type CreateSecretRequestSecretData struct {
-	// The information about the key-value pairs of the Secret. This parameter is required. The following formats are supported:
+	// The key-value pair data of the Secret. This parameter is required. Format:
 	//
-	// {"Data":"{"k1":"v1", "k2":"v2"}"}
+	// {"Data":"{\\"k1\\":\\"v1\\", \\"k2\\":\\"v2\\"}"}
 	//
-	// k specifies a key and v specifies a value.
+	// k represents the key, and v represents the value.
 	//
 	// This parameter is required.
 	//

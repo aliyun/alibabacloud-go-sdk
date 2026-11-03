@@ -24,27 +24,31 @@ type iDeleteNamespaceResponseBody interface {
 }
 
 type DeleteNamespaceResponseBody struct {
-	// The HTTP status code. Valid values:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A request error occurred.
+	// - **4xx**: Client error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - If the request is successful, this parameter is not returned.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - If the request fails, this parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidOperation.NamespaceClusterNotDeleted
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional information that is returned.
+	// The additional information about the call result.
 	//
 	// example:
 	//
@@ -56,17 +60,17 @@ type DeleteNamespaceResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the namespace was deleted. Valid values:
+	// Indicates whether the namespace is deleted. Valid values:
 	//
-	// - **true**: The namespace was deleted.
+	// - **true**: The namespace is deleted.
 	//
-	// - **false**: The namespace failed to be deleted.
+	// - **false**: The namespace is not deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID. You can use this ID to query the details of a request.
+	// The trace ID used to accurately query call information.
 	//
 	// example:
 	//

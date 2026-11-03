@@ -16,7 +16,7 @@ type iBatchRestartApplicationsRequest interface {
 }
 
 type BatchRestartApplicationsRequest struct {
-	// The application IDs. Separate multiple IDs with commas (,).
+	// The list of application IDs. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

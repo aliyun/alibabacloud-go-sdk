@@ -26,33 +26,37 @@ type iCreateOrUpdateSwimmingLaneGroupResponseBody interface {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
-	// The HTTP status code:
+	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: The request was successful.
+	// - **2xx**: Success.
 	//
-	// - **3xx**: The request was redirected.
+	// - **3xx**: Redirection.
 	//
-	// - **4xx**: A client error occurred.
+	// - **4xx**: Request error.
 	//
-	// - **5xx**: A server error occurred.
+	// - **5xx**: Server error.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data object returned by the operation.
+	// The application information.
 	Data *CreateOrUpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - This parameter is not returned if the request is successful.
+	// - If the request is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - This parameter is returned if the request fails. For more information, see the **Error codes*	- section of this topic.
+	// - If the request fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	//
+	// example:
+	//
+	// InvalidParameter.NotEmpty
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The response message:
+	// The additional information. Valid values:
 	//
-	// - **success**: The request was successful.
+	// - If the request is successful, **success*	- is returned.
 	//
-	// - An error code is returned if the request fails.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -64,17 +68,17 @@ type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful:
+	// Indicates whether the traffic lane group is created. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The traffic lane group is created.
 	//
-	// - **false**: The request failed.
+	// - **false**: The traffic lane group fails to be created.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The trace ID, which you can use to query the details of the request.
+	// The trace ID used to query invocation details.
 	//
 	// example:
 	//
@@ -163,7 +167,7 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
-	// The ID of the swimming lane group.
+	// The ID of the traffic lane group.
 	//
 	// example:
 	//
