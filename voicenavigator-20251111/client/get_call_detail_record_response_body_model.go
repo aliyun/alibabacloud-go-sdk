@@ -30,7 +30,7 @@ type GetCallDetailRecordResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The call detail record.
+	// The call record.
 	Data *GetCallDetailRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -44,9 +44,9 @@ type GetCallDetailRecordResponseBody struct {
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A list of parameters related to the error.
+	// The list of error parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -126,31 +126,31 @@ func (s *GetCallDetailRecordResponseBody) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyData struct {
-	// The phone number of the callee.
+	// The called number.
 	//
 	// example:
 	//
 	// 15100000001
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	// The phone number of the caller.
+	// The calling number.
 	//
 	// example:
 	//
 	// 15929990193
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	// The disposition code for the call.
+	// The disposition code.
 	//
 	// example:
 	//
 	// Answered
 	DispositionCode *string `json:"DispositionCode,omitempty" xml:"DispositionCode,omitempty"`
-	// The reason for the call\\"s disposition.
+	// The call connection status.
 	//
 	// example:
 	//
 	// ConcurrentLimitExceeded
 	DispositionReason *string `json:"DispositionReason,omitempty" xml:"DispositionReason,omitempty"`
-	// The session duration, in seconds.
+	// The session duration. Unit: seconds.
 	//
 	// example:
 	//
@@ -162,19 +162,19 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// 1752283603978
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the user\\"s issue was resolved.
+	// Indicates whether the customer issue is resolved.
 	//
 	// example:
 	//
 	// false
 	IssueResolved *bool `json:"IssueResolved,omitempty" xml:"IssueResolved,omitempty"`
-	// The party that ended the call.
+	// The hang-up initiator.
 	//
 	// example:
 	//
 	// Customer
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
-	// The basis for the resolution judgment.
+	// The resolution evidence.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// 1774858849987
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The talk time, in seconds.
+	// The talk time. Unit: seconds.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// default@testInstance1
 	TransferTarget *string `json:"TransferTarget,omitempty" xml:"TransferTarget,omitempty"`
-	// The transfer type.
+	// The transfer target.
 	//
 	// example:
 	//
@@ -386,99 +386,103 @@ func (s *GetCallDetailRecordResponseBodyData) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataTranscripts struct {
-	// The bot\\"s response. This parameter is valid when `Role` is `ASSISTANT`.
+	// The assistant response. Valid when the role is ASSISTANT.
 	//
 	// example:
 	//
-	// 不好意思，
+	// Sorry,
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// Indicates whether the user\\"s utterance is a backchannel (for example, "uh-huh" or "okay"). This parameter is valid when `Role` is `USER`.
+	// Indicates whether the backchannel is interactive feedback from the customer to the assistant. Valid when the role is USER.
 	//
 	// example:
 	//
 	// false
 	Backchannels *bool `json:"Backchannels,omitempty" xml:"Backchannels,omitempty"`
-	// The start timestamp of the turn, in milliseconds since the Unix epoch.
+	// The start timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1748945414222
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// A list of control parameters. This parameter is valid when `Role` is `ASSISTANT`.
+	// The list of control parameters. Valid when the role is ASSISTANT.
 	//
 	// example:
 	//
 	// [{"endSilenceTimeout":500,"interruptible":false,"silenceDetectionTimeout":5,"type":"Voice"}]
 	ControlParamsList *string `json:"ControlParamsList,omitempty" xml:"ControlParamsList,omitempty"`
-	// The end timestamp of the turn, in milliseconds since the Unix epoch.
+	// The end timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1767315903531
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The event timestamp, in milliseconds since the Unix epoch.
+	// The timestamp when the event occurred. Format: UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1774859592165
 	EventTime *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	// Additional input from the user other than speech. This parameter is valid when `Role` is `USER`.
+	// The user input other than speech. Valid when the role is USER.
 	//
 	// example:
 	//
 	// [{"dataType":"Silence"}]
 	Extras *string `json:"Extras,omitempty" xml:"Extras,omitempty"`
-	// Indicates whether the turn was interrupted.
+	// Indicates whether the speech was interrupted.
 	//
 	// example:
 	//
 	// false
 	Interrupted *bool `json:"Interrupted,omitempty" xml:"Interrupted,omitempty"`
-	// Indicates whether the bot\\"s response is obsolete. This parameter is valid when `Role` is `ASSISTANT`.
+	// Indicates whether the assistant response is invalidated. Valid when the role is ASSISTANT.
 	//
 	// example:
 	//
 	// false
 	Legacy *bool `json:"Legacy,omitempty" xml:"Legacy,omitempty"`
+	// The playback status.
+	//
 	// example:
 	//
 	// INTERRUPTED
 	PlaybackStatus *string `json:"PlaybackStatus,omitempty" xml:"PlaybackStatus,omitempty"`
+	// The played content.
+	//
 	// example:
 	//
-	// 好的
+	// Okay
 	PlayedAnswer *string `json:"PlayedAnswer,omitempty" xml:"PlayedAnswer,omitempty"`
-	// The number of words played from the bot\\"s response. This parameter is valid when `Role` is `USER`.
+	// The assistant speech heard by the user. Valid when the role is USER.
 	//
 	// example:
 	//
 	// 10
 	PlayedWords *int32 `json:"PlayedWords,omitempty" xml:"PlayedWords,omitempty"`
-	// The role of the speaker.
+	// The role.
 	//
 	// example:
 	//
 	// USER
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// Indicates if this is the final part of a streamed response.
+	// The end identifier for text streaming output.
 	//
 	// example:
 	//
 	// true
 	StreamEnd *bool `json:"StreamEnd,omitempty" xml:"StreamEnd,omitempty"`
-	// The ID of the conversation turn.
+	// The conversation turn ID.
 	//
 	// example:
 	//
 	// 1
 	StreamId *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-	// The user\\"s utterance. This parameter is valid when `Role` is `USER`.
+	// The user speech. Valid when the role is USER.
 	//
 	// example:
 	//
-	// 你要说你快点说不说，我挂了哈。
+	// If you have something to say, say it quickly, otherwise I\\"m hanging up
 	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
-	// Vendor-specific data sent from the client. This parameter is valid when `Role` is `USER`.
+	// The user-side pass-through data. Valid when the role is USER.
 	//
 	// example:
 	//

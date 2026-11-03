@@ -1444,7 +1444,7 @@ func (client *Client) GenerateFileUploadParamsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Get call details.
+// Retrieves the details of a call.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -3036,7 +3036,7 @@ func (client *Client) ListVoiceEnginesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves a list of available voices.
+// Retrieves the details of an instance.
 //
 // @param request - ListVoicesRequest
 //
@@ -3055,12 +3055,20 @@ func (client *Client) ListVoicesWithContext(ctx context.Context, request *ListVo
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
 	if !dara.IsNil(request.NlsAccessType) {
 		body["NlsAccessType"] = request.NlsAccessType
 	}
 
 	if !dara.IsNil(request.NlsEngine) {
 		body["NlsEngine"] = request.NlsEngine
+	}
+
+	if !dara.IsNil(request.OmniModel) {
+		body["OmniModel"] = request.OmniModel
 	}
 
 	if !dara.IsNil(request.PageNumber) {

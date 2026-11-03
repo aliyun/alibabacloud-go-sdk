@@ -16,13 +16,13 @@ type iGetCallDetailRecordRequest interface {
 }
 
 type GetCallDetailRecordRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the session.
+	// The session ID.
 	//
 	// example:
 	//

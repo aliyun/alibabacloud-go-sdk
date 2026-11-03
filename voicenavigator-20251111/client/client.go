@@ -1942,7 +1942,7 @@ func (client *Client) GenerateFileUploadParams(request *GenerateFileUploadParams
 
 // Summary:
 //
-// Get call details.
+// Retrieves the details of a call.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -1990,7 +1990,7 @@ func (client *Client) GetCallDetailRecordWithOptions(request *GetCallDetailRecor
 
 // Summary:
 //
-// Get call details.
+// Retrieves the details of a call.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -4078,7 +4078,7 @@ func (client *Client) ListVoiceEngines(request *ListVoiceEnginesRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of available voices.
+// Retrieves the details of an instance.
 //
 // @param request - ListVoicesRequest
 //
@@ -4097,12 +4097,20 @@ func (client *Client) ListVoicesWithOptions(request *ListVoicesRequest, runtime 
 		body["InstanceId"] = request.InstanceId
 	}
 
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
 	if !dara.IsNil(request.NlsAccessType) {
 		body["NlsAccessType"] = request.NlsAccessType
 	}
 
 	if !dara.IsNil(request.NlsEngine) {
 		body["NlsEngine"] = request.NlsEngine
+	}
+
+	if !dara.IsNil(request.OmniModel) {
+		body["OmniModel"] = request.OmniModel
 	}
 
 	if !dara.IsNil(request.PageNumber) {
@@ -4138,7 +4146,7 @@ func (client *Client) ListVoicesWithOptions(request *ListVoicesRequest, runtime 
 
 // Summary:
 //
-// Retrieves a list of available voices.
+// Retrieves the details of an instance.
 //
 // @param request - ListVoicesRequest
 //

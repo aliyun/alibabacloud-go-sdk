@@ -30,7 +30,7 @@ type ListVoicesResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A paginated list of voices.
+	// The paginated voice results.
 	Data *ListVoicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -46,7 +46,7 @@ type ListVoicesResponseBody struct {
 	//
 	//  does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A list of dynamic parameters related to the error.
+	// The list of dynamic error parameters.
 	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -134,19 +134,19 @@ type ListVoicesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total count of voices.
+	// The total count.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of voices.
+	// The list of voices.
 	Voices []*ListVoicesResponseBodyDataVoices `json:"Voices,omitempty" xml:"Voices,omitempty" type:"Repeated"`
 }
 
@@ -208,17 +208,17 @@ func (s *ListVoicesResponseBodyData) Validate() error {
 }
 
 type ListVoicesResponseBodyDataVoices struct {
-	// The category of the voice.
+	// The category.
 	//
 	// example:
 	//
-	// 千问音色
+	// Qwen voice
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The language supported by the voice.
+	// The supported languages.
 	//
 	// example:
 	//
-	// 中文及中英文混合
+	// Chinese and mixed Chinese-English
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The TTS model.
 	//
@@ -226,11 +226,11 @@ type ListVoicesResponseBodyDataVoices struct {
 	//
 	// Qwen
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the voice.
+	// The voice name.
 	//
 	// example:
 	//
-	// 芊悦
+	// Qianyue
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The TTS engine.
 	//
@@ -238,15 +238,15 @@ type ListVoicesResponseBodyDataVoices struct {
 	//
 	// BAILIAN
 	NlsEngine *string `json:"NlsEngine,omitempty" xml:"NlsEngine,omitempty"`
-	// The style of the voice.
+	// The style.
 	//
 	// example:
 	//
-	// 女声
+	// Female voice
 	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
-	// A list of supported parameters.
+	// The list of supported parameters.
 	SupportedParams []*string `json:"SupportedParams,omitempty" xml:"SupportedParams,omitempty" type:"Repeated"`
-	// The identifier for the voice.
+	// The speaker.
 	//
 	// example:
 	//
