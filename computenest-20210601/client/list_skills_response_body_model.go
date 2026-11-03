@@ -143,6 +143,10 @@ type ListSkillsResponseBodySkills struct {
 	// Create new skills, modify and improve existing skills, and measure skill performance.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
 	// The Skill display name.
+	//
+	// example:
+	//
+	// Java 编程专家
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// Skill ID
 	//
@@ -302,9 +306,18 @@ func (s *ListSkillsResponseBodySkills) Validate() error {
 }
 
 type ListSkillsResponseBodySkillsLocales struct {
-	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud CLI Operation Guide
+	EnValue *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// example:
+	//
+	// Java 编程专家
 	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
-	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+	// example:
+	//
+	// Java 编程专家
+	ZhValue *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
 }
 
 func (s ListSkillsResponseBodySkillsLocales) String() string {

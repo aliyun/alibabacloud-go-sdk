@@ -16,13 +16,13 @@ type iUpdateServiceInstanceSpecResponseBody interface {
 }
 
 type UpdateServiceInstanceSpecResponseBody struct {
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 23396265896****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

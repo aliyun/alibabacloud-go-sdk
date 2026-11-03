@@ -25,10 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou":    dara.String("computenest.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-1": dara.String("computenest.ap-southeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -2380,7 +2376,7 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 //
 // ### Before you begin
 //
-// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -2430,7 +2426,7 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, runtime *dar
 //
 // ### Before you begin
 //
-// Make sure the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
+// Confirm that the service provider has enabled the specification change feature and completed the specification change parameter settings when creating the service.
 //
 // @param request - GetSkillRequest
 //
@@ -4842,13 +4838,13 @@ func (client *Client) UpdateServiceInstanceAttributes(request *UpdateServiceInst
 
 // Summary:
 //
-// You can call the UpdateServiceInstanceSpec operation to upgrade or downgrade a service instance if its parameters or package settings do not meet your requirements.
+// Modifies the specifications of a service instance when the parameter values or plan settings of the service instance do not meet your requirements.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the upgrade/downgrade feature and configured the related parameters when the service was created.
+// Make sure that the service provider has enabled the specification modification feature and configured the modification parameters when creating the service.
 //
 // @param tmpReq - UpdateServiceInstanceSpecRequest
 //
@@ -4926,13 +4922,13 @@ func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateService
 
 // Summary:
 //
-// You can call the UpdateServiceInstanceSpec operation to upgrade or downgrade a service instance if its parameters or package settings do not meet your requirements.
+// Modifies the specifications of a service instance when the parameter values or plan settings of the service instance do not meet your requirements.
 //
 // Description:
 //
-// ### Prerequisites
+// ### Before you begin
 //
-// Ensure that the service provider has enabled the upgrade/downgrade feature and configured the related parameters when the service was created.
+// Make sure that the service provider has enabled the specification modification feature and configured the modification parameters when creating the service.
 //
 // @param request - UpdateServiceInstanceSpecRequest
 //

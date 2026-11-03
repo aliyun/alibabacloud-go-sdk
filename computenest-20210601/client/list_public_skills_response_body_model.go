@@ -143,6 +143,10 @@ type ListPublicSkillsResponseBodySkills struct {
 	// Create new skills, modify and improve existing skills, and measure skill performance.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
 	// The skill display name.
+	//
+	// example:
+	//
+	// ECS 补丁管理
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// Skill ID
 	//
@@ -302,9 +306,18 @@ func (s *ListPublicSkillsResponseBodySkills) Validate() error {
 }
 
 type ListPublicSkillsResponseBodySkillsLocales struct {
-	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// example:
+	//
+	// ECS Patch Management
+	EnValue *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// example:
+	//
+	// ECS 补丁管理
 	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
-	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+	// example:
+	//
+	// ECS 补丁管理
+	ZhValue *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
 }
 
 func (s ListPublicSkillsResponseBodySkillsLocales) String() string {

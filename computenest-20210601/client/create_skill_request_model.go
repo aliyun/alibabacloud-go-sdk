@@ -52,6 +52,9 @@ type CreateSkillRequest struct {
 	//
 	// Create new skills, modify and improve existing skills, and measure skill performance
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
+	// example:
+	//
+	// appflow-chat-skill
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// The set of Skill labels.
 	//

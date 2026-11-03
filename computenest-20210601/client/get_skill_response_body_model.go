@@ -19,6 +19,8 @@ type iGetSkillResponseBody interface {
 	GetRequiredConnections() []*string
 	SetSecurityScanStatus(v string) *GetSkillResponseBody
 	GetSecurityScanStatus() *string
+	SetSecurityScanSuggestions(v string) *GetSkillResponseBody
+	GetSecurityScanSuggestions() *string
 	SetSkillDescription(v string) *GetSkillResponseBody
 	GetSkillDescription() *string
 	SetSkillDisplayName(v string) *GetSkillResponseBody
@@ -51,17 +53,27 @@ type GetSkillResponseBody struct {
 	//
 	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The set of connection types required by the Skill.
+	// The set of connection types that the Skill depends on.
 	RequiredConnections []*string `json:"RequiredConnections,omitempty" xml:"RequiredConnections,omitempty" type:"Repeated"`
 	// The security scan status of the source file.
 	SecurityScanStatus *string `json:"SecurityScanStatus,omitempty" xml:"SecurityScanStatus,omitempty"`
-	// The Skill description.
+	// The security scan remediation suggestions (a Markdown-formatted string containing a set of remediation suggestions). This value is meaningful only when the source file security scan status is BLOCK.
+	//
+	// example:
+	//
+	// #### <span style=\\"color:#2563eb\\"> System Shutdown Command</span>\\n- <span style=\\"color:#16a34a\\">✅</span> Add an explicit user confirmation requirement before executing the `reboot-instance` command, and document that the restart will cause service interruption.\\n\\n#### <span style=\\"color:#2563eb\\"> Privilege Escalation Operation</span>\\n- <span style=\\"color:#16a34a\\">✅</span> Document that `sudo` is required, and provide installation alternatives that do not rely on root privileges (such as user local directories or package managers).\\n\\n#### <span style=\\"color:#2563eb\\"> Hardcoded Access Keys</span>\\n- <span style=\\"color:#16a34a\\">✅</span> Replace realistic example credentials with obvious placeholders (such as `<your-access-key-id>`) to avoid confusion with real credentials.\\n\\n#### <span style=\\"color:#2563eb\\"> User Deception (Direct Execution of Remote Scripts)</span>\\n- <span style=\\"color:#16a34a\\">✅</span> Immediately remove the `curl | bash` pattern. Instead, download the script first, verify its integrity (checksum/signature), and then execute it: `curl -fsSL url -o script.sh && bash script.sh`
+	SecurityScanSuggestions *string `json:"SecurityScanSuggestions,omitempty" xml:"SecurityScanSuggestions,omitempty"`
+	// The description of the Skill.
 	//
 	// example:
 	//
 	// Create new skills, modify and improve existing skills, and measure skill performance.
 	SkillDescription *string `json:"SkillDescription,omitempty" xml:"SkillDescription,omitempty"`
-	// The Skill display name.
+	// The display name of the Skill.
+	//
+	// example:
+	//
+	// AI 技能创建与优化
 	SkillDisplayName *string `json:"SkillDisplayName,omitempty" xml:"SkillDisplayName,omitempty"`
 	// Skill ID
 	//
@@ -69,9 +81,9 @@ type GetSkillResponseBody struct {
 	//
 	// s-xxxxx
 	SkillId *string `json:"SkillId,omitempty" xml:"SkillId,omitempty"`
-	// The set of Skill labels.
+	// The set of labels for the Skill.
 	SkillLabels []*string `json:"SkillLabels,omitempty" xml:"SkillLabels,omitempty" type:"Repeated"`
-	// The Skill name.
+	// The name of the Skill.
 	//
 	// example:
 	//
@@ -117,6 +129,10 @@ func (s *GetSkillResponseBody) GetRequiredConnections() []*string {
 
 func (s *GetSkillResponseBody) GetSecurityScanStatus() *string {
 	return s.SecurityScanStatus
+}
+
+func (s *GetSkillResponseBody) GetSecurityScanSuggestions() *string {
+	return s.SecurityScanSuggestions
 }
 
 func (s *GetSkillResponseBody) GetSkillDescription() *string {
@@ -172,6 +188,11 @@ func (s *GetSkillResponseBody) SetSecurityScanStatus(v string) *GetSkillResponse
 	return s
 }
 
+func (s *GetSkillResponseBody) SetSecurityScanSuggestions(v string) *GetSkillResponseBody {
+	s.SecurityScanSuggestions = &v
+	return s
+}
+
 func (s *GetSkillResponseBody) SetSkillDescription(v string) *GetSkillResponseBody {
 	s.SkillDescription = &v
 	return s
@@ -221,9 +242,18 @@ func (s *GetSkillResponseBody) Validate() error {
 }
 
 type GetSkillResponseBodyLocales struct {
-	EnValue       *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// example:
+	//
+	// AI Skill Creation and Optimization
+	EnValue *string `json:"EnValue,omitempty" xml:"EnValue,omitempty"`
+	// example:
+	//
+	// AI 技能创建与优化
 	OriginalValue *string `json:"OriginalValue,omitempty" xml:"OriginalValue,omitempty"`
-	ZhValue       *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
+	// example:
+	//
+	// AI 技能创建与优化
+	ZhValue *string `json:"ZhValue,omitempty" xml:"ZhValue,omitempty"`
 }
 
 func (s GetSkillResponseBodyLocales) String() string {
