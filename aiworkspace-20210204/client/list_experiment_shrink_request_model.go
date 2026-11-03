@@ -36,13 +36,15 @@ type iListExperimentShrinkRequest interface {
 }
 
 type ListExperimentShrinkRequest struct {
-	// The filter conditions for labels. Separate multiple conditions with commas (,). A single filter condition must be in the `Key=Value` format.
+	// The label filter conditions. Separate multiple conditions with commas (,).
+	//
+	// The format of a single filter condition is `Key=Value`.
 	//
 	// example:
 	//
 	// is_evaluation:true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The maximum number of results to return. The default is 10.
+	// The maximum number of results to return for the request. Default value: 10.
 	//
 	// example:
 	//
@@ -54,19 +56,21 @@ type ListExperimentShrinkRequest struct {
 	//
 	// exp-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Optional parameters.
+	// The optional parameters.
 	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The order in which to sort the results of a paged query. Valid values:
+	// The sort order of the specified field in a paged query. Valid values:
 	//
 	// - ASC: ascending order.
 	//
-	// - DESC (default): descending order.
+	// - DESC: descending order.
+	//
+	// Default value: DESC.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// A list of sorting methods as strings. You can sort by the following fields: GmtCreateTime, Name, GmtModifiedTime, or ExperimentId. The sorting methods are DESC and ASC. The default is ASC.
+	// The list of sort order strings. Supported fields for sorting include GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sort order can be DESC or ASC. Default value: ASC.
 	//
 	// example:
 	//
@@ -84,27 +88,29 @@ type ListExperimentShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The paging token. It starts from 0. The default is 0.
+	// The pagination token. Pages start from 0. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
-	// The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is supported for sorting.
+	// The field by which to sort the results of a paged query. Currently, only the GmtCreateTime field is supported for sorting.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Specifies whether to retrieve the LatestRun information related to the experiment.
+	// Specifies whether to retrieve the LatestRun information associated with the experiment.
 	//
 	// example:
 	//
 	// false
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The ID of the workspace where the experiment resides. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The ID of the workspace to which the experiment belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
-	// > If you do not specify a workspace ID, the system returns the list of experiments in the default workspace.
+	// > If you do not specify the workspace ID, the system returns the list of experiments in the default workspace.
+	//
+	// >
 	//
 	// example:
 	//

@@ -44,13 +44,13 @@ type iGetWorkspaceResponseBody interface {
 type GetWorkspaceResponseBody struct {
 	// The list of administrator account names.
 	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
-	// The ID of the user who created the workspace.
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// 1157******94123
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description of the workspace.
+	// The workspace description.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ type GetWorkspaceResponseBody struct {
 	//
 	// workspace-example
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The environments that the workspace contains. Valid values:
+	// The environments included in the workspace.
 	//
-	// - A workspace in basic mode has only the production environment (prod).
+	// 	- Simple mode includes only the production environment (prod).
 	//
-	// - A workspace in standard mode has both the development environment (dev) and the production environment (prod).
+	// 	- Standard mode includes the development environment (dev) and the production environment (prod).
 	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
-	// Additional information. This parameter currently contains the tenant ID (TenantId).
+	// The extra information, which currently includes TenantId (tenant ID).
 	//
 	// example:
 	//
 	// {"TenantId": "4286******98"}
 	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
-	// The time when the workspace was created. The time is in UTC and follows the ISO 8601 standard.
+	// The time when the workspace was created. The time is displayed in UTC and formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the workspace was last modified. The time is in UTC and follows the ISO 8601 standard.
+	// The time when the workspace was modified. The time is displayed in UTC and formatted in ISO 8601.
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Indicates whether the workspace is the default workspace. Valid values:
+	// Specifies whether the workspace is the default workspace. Valid values:
 	//
 	// - false: The workspace is not the default workspace.
 	//
@@ -96,7 +96,7 @@ type GetWorkspaceResponseBody struct {
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The information about the workspace owner. This parameter is returned only when Verbose is set to true.
+	// The workspace owner information. Displayed when Verbose is set to true.
 	Owner *GetWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -110,19 +110,19 @@ type GetWorkspaceResponseBody struct {
 	//
 	// rg-acfmwp7rkyq****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The status of the workspace. Valid values:
+	// The workspace status. Valid values:
 	//
-	// - ENABLED: The workspace is running as normal.
+	// - ENABLED: Normal.
 	//
-	// - INITIALIZING: The workspace is being initialized.
+	// - INITIALIZING: Initializing.
 	//
-	// - FAILURE: The workspace failed to be created.
+	// - FAILURE: Failed.
 	//
-	// - DISABLED: The workspace is manually disabled.
+	// - DISABLED: Manually disabled.
 	//
-	// - FROZEN: The workspace is frozen due to an overdue payment.
+	// - FROZEN: Frozen due to overdue payment.
 	//
-	// - UPDATING: The workspace is being updated.
+	// - UPDATING: Updating.
 	//
 	// example:
 	//

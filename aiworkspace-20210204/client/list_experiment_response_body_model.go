@@ -22,7 +22,7 @@ type iListExperimentResponseBody interface {
 type ListExperimentResponseBody struct {
 	// The list of experiments.
 	Experiments []*Experiment `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
-	// The token for the next page. Save this token and include it in the next request to retrieve the next page of results.
+	// The token for the next page. Record this token and pass it in the next request.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListExperimentResponseBody struct {
 	//
 	// 5
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

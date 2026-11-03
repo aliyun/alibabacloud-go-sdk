@@ -1630,7 +1630,7 @@ func (client *Client) CreatePromptWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a run. A run belongs to an experiment and can be associated with a specific workload or can be a standalone code execution.
+// Creates a run. A run belongs to an experiment and can be associated with a specific workload or executed as standalone code.
 //
 // @param request - CreateRunRequest
 //
@@ -3858,7 +3858,7 @@ func (client *Client) GetPromptWithContext(ctx context.Context, PromptId *string
 
 // Summary:
 //
-// Retrieves run details.
+// Retrieves the details of a run.
 //
 // @param request - GetRunRequest
 //
@@ -3922,6 +3922,10 @@ func (client *Client) GetWorkspaceWithContext(ctx context.Context, WorkspaceId *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtraVerboseFields) {
+		query["ExtraVerboseFields"] = request.ExtraVerboseFields
+	}
+
 	if !dara.IsNil(request.Verbose) {
 		query["Verbose"] = request.Verbose
 	}
@@ -3993,7 +3997,7 @@ func (client *Client) GetWorkspaceRoleWithContext(ctx context.Context, Workspace
 
 // Summary:
 //
-// Queries a list of code configurations. This operation supports pagination, sorting, and conditional filtering.
+// Queries a list of code configurations with support for pagination, sorting, and conditional filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -5619,7 +5623,7 @@ func (client *Client) ListResourcesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Retrieves a list of metric records for a run.
+// Retrieves the list of metric records for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -5674,7 +5678,7 @@ func (client *Client) ListRunMetricsWithContext(ctx context.Context, RunId *stri
 
 // Summary:
 //
-// Retrieves a list of runs.
+// Queries a list of runs.
 //
 // @param request - ListRunsRequest
 //

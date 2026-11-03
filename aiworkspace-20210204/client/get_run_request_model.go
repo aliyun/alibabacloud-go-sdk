@@ -14,7 +14,7 @@ type iGetRunRequest interface {
 }
 
 type GetRunRequest struct {
-	// Specifies whether to get information about metrics, parameters, and labels. This parameter is optional. The default value is false.
+	// Specifies whether to retrieve metrics, parameters, and labels. Default value: false.
 	//
 	// example:
 	//

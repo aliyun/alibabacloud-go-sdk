@@ -44,7 +44,7 @@ type Experiment struct {
   // 
   // PRIVATE
   Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-  // The default artifact output path for tasks associated with the experiment. Currently, only OSS paths are supported.
+  // The default artifact output path for the jobs associated with the experiment. Only OSS paths are supported.
   // 
   // example:
   // 
@@ -57,20 +57,28 @@ type Experiment struct {
   // exp-1zpfthdx******
   ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
   // The time when the experiment was created.
+  // 
+  // example:
+  // 
+  // 2021-01-30T12:51:33.028Z
   GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
   // The time when the experiment was last modified.
+  // 
+  // example:
+  // 
+  // 2021-01-30T12:51:33.028Z
   GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-  // The list of experiment labels.
+  // The list of labels for the experiment.
   Labels []*ExperimentLabel `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
   // The information about the latest run associated with the experiment.
   LatestRun *Run `json:"LatestRun,omitempty" xml:"LatestRun,omitempty"`
-  // The experiment name.
+  // The name of the experiment.
   // 
   // example:
   // 
   // exp-test
   Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-  // The Alibaba Cloud account ID of the experiment owner.
+  // The Alibaba Cloud account ID of the owner of the experiment.
   // 
   // example:
   // 
@@ -82,13 +90,13 @@ type Experiment struct {
   // 
   // 0C6835C5-A424-5AFB-ACC2-F1E3CA1ABF7C
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The default OSS storage path for TensorBoard logs of each trial in the experiment.
+  // The default OSS storage path for the TensorBoard logs of each trial in the experiment.
   // 
   // example:
   // 
   // oss://test-bucket.oss-cn-hangzhou.aliyuncs.com/tensorboard/
   TensorboardLogUri *string `json:"TensorboardLogUri,omitempty" xml:"TensorboardLogUri,omitempty"`
-  // The user ID of the experiment creator.
+  // The user ID of the creator of the experiment.
   // 
   // example:
   // 

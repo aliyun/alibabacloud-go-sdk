@@ -9,16 +9,26 @@ type iGetWorkspaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetExtraVerboseFields(v string) *GetWorkspaceRequest
+	GetExtraVerboseFields() *string
 	SetVerbose(v bool) *GetWorkspaceRequest
 	GetVerbose() *bool
 }
 
 type GetWorkspaceRequest struct {
-	// Specifies whether to return additional information, such as the workspace owner. Valid values:
+	// A comma-separated string used to specify additional information to return. This field does not take effect.
 	//
-	// - false (default): Does not return additional information.
+	// example:
 	//
-	// - true: Returns additional information.
+	// NotSupport
+	ExtraVerboseFields *string `json:"ExtraVerboseFields,omitempty" xml:"ExtraVerboseFields,omitempty"`
+	// Specifies whether to display supplementary information such as the workspace owner. Valid values:
+	//
+	// - false: Does not display supplementary information.
+	//
+	// - true: Displays supplementary information.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -34,8 +44,17 @@ func (s GetWorkspaceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetWorkspaceRequest) GetExtraVerboseFields() *string {
+	return s.ExtraVerboseFields
+}
+
 func (s *GetWorkspaceRequest) GetVerbose() *bool {
 	return s.Verbose
+}
+
+func (s *GetWorkspaceRequest) SetExtraVerboseFields(v string) *GetWorkspaceRequest {
+	s.ExtraVerboseFields = &v
+	return s
 }
 
 func (s *GetWorkspaceRequest) SetVerbose(v bool) *GetWorkspaceRequest {

@@ -2183,7 +2183,7 @@ func (client *Client) CreatePrompt(request *CreatePromptRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a run. A run belongs to an experiment and can be associated with a specific workload or can be a standalone code execution.
+// Creates a run. A run belongs to an experiment and can be associated with a specific workload or executed as standalone code.
 //
 // @param request - CreateRunRequest
 //
@@ -2250,7 +2250,7 @@ func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers ma
 
 // Summary:
 //
-// Creates a run. A run belongs to an experiment and can be associated with a specific workload or can be a standalone code execution.
+// Creates a run. A run belongs to an experiment and can be associated with a specific workload or executed as standalone code.
 //
 // @param request - CreateRunRequest
 //
@@ -5297,7 +5297,7 @@ func (client *Client) GetPrompt(PromptId *string, request *GetPromptRequest) (_r
 
 // Summary:
 //
-// Retrieves run details.
+// Retrieves the details of a run.
 //
 // @param request - GetRunRequest
 //
@@ -5344,7 +5344,7 @@ func (client *Client) GetRunWithOptions(RunId *string, request *GetRunRequest, h
 
 // Summary:
 //
-// Retrieves run details.
+// Retrieves the details of a run.
 //
 // @param request - GetRunRequest
 //
@@ -5380,6 +5380,10 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ExtraVerboseFields) {
+		query["ExtraVerboseFields"] = request.ExtraVerboseFields
+	}
+
 	if !dara.IsNil(request.Verbose) {
 		query["Verbose"] = request.Verbose
 	}
@@ -5489,7 +5493,7 @@ func (client *Client) GetWorkspaceRole(WorkspaceId *string, RoleId *string, requ
 
 // Summary:
 //
-// Queries a list of code configurations. This operation supports pagination, sorting, and conditional filtering.
+// Queries a list of code configurations with support for pagination, sorting, and conditional filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -5556,7 +5560,7 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 
 // Summary:
 //
-// Queries a list of code configurations. This operation supports pagination, sorting, and conditional filtering.
+// Queries a list of code configurations with support for pagination, sorting, and conditional filtering.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -7495,7 +7499,7 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// Retrieves a list of metric records for a run.
+// Retrieves the list of metric records for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -7550,7 +7554,7 @@ func (client *Client) ListRunMetricsWithOptions(RunId *string, request *ListRunM
 
 // Summary:
 //
-// Retrieves a list of metric records for a run.
+// Retrieves the list of metric records for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -7569,7 +7573,7 @@ func (client *Client) ListRunMetrics(RunId *string, request *ListRunMetricsReque
 
 // Summary:
 //
-// Retrieves a list of runs.
+// Queries a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -7672,7 +7676,7 @@ func (client *Client) ListRunsWithOptions(request *ListRunsRequest, headers map[
 
 // Summary:
 //
-// Retrieves a list of runs.
+// Queries a list of runs.
 //
 // @param request - ListRunsRequest
 //

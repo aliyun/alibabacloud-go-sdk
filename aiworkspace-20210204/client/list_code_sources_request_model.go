@@ -24,29 +24,31 @@ type iListCodeSourcesRequest interface {
 }
 
 type ListCodeSourcesRequest struct {
-	// The display name of the code configuration. Fuzzy match is supported.
+	// The display name of the code configuration. Fuzzy matching is supported.
 	//
 	// example:
 	//
 	// MyDataSource
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The sort order for the specified field in a paged query. Valid values:
+	// The sorting order of the specified field for paging in a paged query. Valid values:
 	//
-	// - ASC (default): ascending order.
+	// - ASC: ascending order.
 	//
 	// - DESC: descending order.
+	//
+	// Default value: ASC.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the code configuration list. Minimum value: 1. Default value: 1.
+	// The page number of the code configuration list. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: 20.
+	// The number of entries per page set in the paging Settings for a paged query. Default value: 20.
 	//
 	// example:
 	//
@@ -54,19 +56,21 @@ type ListCodeSourcesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The field used for sorting. Valid values:
 	//
-	// - GmtModifyTime: the time when the code source was last modified.
+	// - GmtModifyTime: the modification time of the code source
 	//
-	// - DisplayName: the display name.
+	// - DisplayName: the display name
 	//
-	// - CodeSourceId: the code source ID.
+	// - CodeSourceId: the ID of the code source
 	//
-	// - GmtCreateTime (default): the time when the code source was created.
+	// - GmtCreateTime: the creation time of the code source
+	//
+	// Default value: GmtCreateTime.
 	//
 	// example:
 	//
 	// GmtModifyTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The workspace ID. This parameter is required. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The ID of the workspace. This parameter is required. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//

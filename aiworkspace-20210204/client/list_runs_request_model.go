@@ -48,73 +48,73 @@ type ListRunsRequest struct {
 	//
 	// exp-1zpfthdx******
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in UTC. Format: YYYY-MM-DDTHH:mm:ss.sssZ.
+	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ss.sssZ format.
 	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The labels of the task for exact match. Supported formats:
+	// The labels of the task for exact matching. Supported formats:
 	//
 	// - Single-label query: "is_evaluation:true"
 	//
-	// - Multi-label scenario (not recommended except in special cases due to potential performance issues): "is_evaluation:true,LLM_evaluation:true" separated by commas (,), indicating that multiple label key-value pairs must all match.
+	// - Multi-label scenario (not recommended for common scenarios due to potential performance issues): "is_evaluation:true,LLM_evaluation:true". Use commas (,) to separate multiple labels, which means all specified label key-value pairs must be matched at the same time.
 	//
 	// example:
 	//
 	// is_evaluation:true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The maximum number of results to return. Default value: 10.
+	// The maximum number of results to return for the request. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The run name.
+	// The name of the run.
 	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sorting order for the specified field in a paging query. Used together with SortBy. Valid values:
+	// Specifies the sorting of the specified field during a paged query. This parameter is used together with SortBy for paging. Valid values:
 	//
-	// - ASC: Ascending order.
+	// - ASC: ascending order.
 	//
-	// - DESC (default): Descending order.
+	// - DESC (default): descending order.
 	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// A comma-separated list of sorting strings. Supported fields: GmtCreateTime and Name. Supported sorting orders: DESC and ASC. Default: ASC. Separate multiple fields with commas (,).
+	// The list of strings that specify the sort order. Supported fields for sorting include GmtCreateTime and Name. The sort orders include DESC and ASC. Default value: ASC. You can specify multiple fields and separate them with commas (,).
 	//
 	// example:
 	//
 	// GmtCreateTime DESC,Name ASC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Valid values: greater than 0. Default value: 1.
+	// The current page number. Valid values: integers greater than 0. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The pagination token. Starts from 0. Default value: 0.
+	// The pagination token. The value starts from 0. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
-	// The field used for sorting. Valid values:
+	// The name of the field used for sorting. Valid values:
 	//
-	// - Name: The run name.
+	// - Name: the name of the run.
 	//
-	// - GmtCreateTime (default): The run creation time.
+	// - GmtCreateTime (default): the time when the run was created.
 	//
 	// example:
 	//
@@ -134,19 +134,15 @@ type ListRunsRequest struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// Specifies whether to display detailed information, including Metrics, Params, and Labels. Valid values:
 	//
-	// - true: Detailed information is displayed.
+	// - true: Displays detailed information.
 	//
-	// - false (default): Detailed information is not displayed.
+	// - false (default): Does not display detailed information.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// The ID of the workspace where the experiment resides. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
-	//
-	// > If you do not specify a workspace ID, the system returns the run list of the default workspace.
-	//
-	// >
+	// The ID of the workspace to which the experiment belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html). If you do not specify the workspace ID, the system returns the runs in the default workspace.
 	//
 	// example:
 	//

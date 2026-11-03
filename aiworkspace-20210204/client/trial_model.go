@@ -93,6 +93,10 @@ type Trial struct {
 	// trl-v0fw9a0sd8f9af
 	TrialId *string `json:"TrialId,omitempty" xml:"TrialId,omitempty"`
 	// UserId
+	//
+	// example:
+	//
+	// 1557702098******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// WorkspaceId
 	//

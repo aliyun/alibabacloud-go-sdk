@@ -26,13 +26,13 @@ type ListRunMetricsRequest struct {
 	//
 	// loss
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The maximum number of results to return. The default value is 10.
+	// The maximum number of results to return. Default value: 10.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The paging token. The token starts from 0. The default value is 0.
+	// The pagination token, starting from 0. Default value: 0.
 	//
 	// example:
 	//

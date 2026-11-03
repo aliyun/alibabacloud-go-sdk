@@ -22,7 +22,7 @@ type iGetDatasetFileMetaResponseBody interface {
 }
 
 type GetDatasetFileMetaResponseBody struct {
-	// The details of the dataset file metadata.
+	// The details of the retrieved dataset file metadata.
 	DatasetFileMeta *DatasetFileMetaContentGet `json:"DatasetFileMeta,omitempty" xml:"DatasetFileMeta,omitempty"`
 	// The dataset ID.
 	//
@@ -30,7 +30,7 @@ type GetDatasetFileMetaResponseBody struct {
 	//
 	// d-rbvg5wz****c9ks92
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The name of the dataset version.
+	// The dataset version name.
 	//
 	// example:
 	//
