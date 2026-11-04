@@ -100,7 +100,7 @@ func (s *ListNodePoolComponentInstanceNodesResponseBody) Validate() error {
 }
 
 type ListNodePoolComponentInstanceNodesResponseBodyNodeList struct {
-	// The details of the component on the node.
+	// The detailed information about the component on the node.
 	Component *ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent `json:"component,omitempty" xml:"component,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -163,7 +163,7 @@ func (s *ListNodePoolComponentInstanceNodesResponseBodyNodeList) Validate() erro
 type ListNodePoolComponentInstanceNodesResponseBodyNodeListComponent struct {
 	// The configuration of the node component.
 	Config *ListNodePoolComponentInstanceNodesResponseBodyNodeListComponentConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The custom configuration version number of the component on the node.
+	// The custom configuration revision of the component on the node.
 	//
 	// example:
 	//

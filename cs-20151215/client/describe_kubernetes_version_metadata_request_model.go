@@ -21,6 +21,8 @@ type iDescribeKubernetesVersionMetadataRequest interface {
 	GetQueryUpgradableVersion() *bool
 	SetRegion(v string) *DescribeKubernetesVersionMetadataRequest
 	GetRegion() *string
+	SetSupportPolicy(v string) *DescribeKubernetesVersionMetadataRequest
+	GetSupportPolicy() *string
 	SetRuntime(v string) *DescribeKubernetesVersionMetadataRequest
 	GetRuntime() *string
 }
@@ -92,6 +94,10 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// Extended
+	SupportPolicy *string `json:"SupportPolicy,omitempty" xml:"SupportPolicy,omitempty"`
 	// The runtime type. You can specify a runtime type to filter system images supported by the runtime. Valid values:
 	//
 	// - `docker`: Docker runtime.
@@ -142,6 +148,10 @@ func (s *DescribeKubernetesVersionMetadataRequest) GetRegion() *string {
 	return s.Region
 }
 
+func (s *DescribeKubernetesVersionMetadataRequest) GetSupportPolicy() *string {
+	return s.SupportPolicy
+}
+
 func (s *DescribeKubernetesVersionMetadataRequest) GetRuntime() *string {
 	return s.Runtime
 }
@@ -173,6 +183,11 @@ func (s *DescribeKubernetesVersionMetadataRequest) SetQueryUpgradableVersion(v b
 
 func (s *DescribeKubernetesVersionMetadataRequest) SetRegion(v string) *DescribeKubernetesVersionMetadataRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataRequest) SetSupportPolicy(v string) *DescribeKubernetesVersionMetadataRequest {
+	s.SupportPolicy = &v
 	return s
 }
 

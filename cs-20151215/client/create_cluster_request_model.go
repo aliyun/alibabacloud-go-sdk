@@ -173,6 +173,8 @@ type iCreateClusterRequest interface {
 	GetSocEnabled() *bool
 	SetSshFlags(v bool) *CreateClusterRequest
 	GetSshFlags() *bool
+	SetSupportPolicy(v string) *CreateClusterRequest
+	GetSupportPolicy() *string
 	SetTags(v []*Tag) *CreateClusterRequest
 	GetTags() []*Tag
 	SetTaints(v []*Taint) *CreateClusterRequest
@@ -1120,6 +1122,10 @@ type CreateClusterRequest struct {
 	//
 	// true
 	SshFlags *bool `json:"ssh_flags,omitempty" xml:"ssh_flags,omitempty"`
+	// example:
+	//
+	// Extended
+	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The node tags. Tag definition rules:
 	//
 	// - Tags are case-sensitive key-value pairs. You can settings up to 20 tags.
@@ -1679,6 +1685,10 @@ func (s *CreateClusterRequest) GetSshFlags() *bool {
 	return s.SshFlags
 }
 
+func (s *CreateClusterRequest) GetSupportPolicy() *string {
+	return s.SupportPolicy
+}
+
 func (s *CreateClusterRequest) GetTags() []*Tag {
 	return s.Tags
 }
@@ -2174,6 +2184,11 @@ func (s *CreateClusterRequest) SetSocEnabled(v bool) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetSshFlags(v bool) *CreateClusterRequest {
 	s.SshFlags = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetSupportPolicy(v string) *CreateClusterRequest {
+	s.SupportPolicy = &v
 	return s
 }
 

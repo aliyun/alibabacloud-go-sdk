@@ -45,6 +45,8 @@ type iModifyClusterRequest interface {
 	GetResourceGroupId() *string
 	SetSecurityGroupId(v string) *ModifyClusterRequest
 	GetSecurityGroupId() *string
+	SetSupportPolicy(v string) *ModifyClusterRequest
+	GetSupportPolicy() *string
 	SetSystemEventsLogging(v *ModifyClusterRequestSystemEventsLogging) *ModifyClusterRequest
 	GetSystemEventsLogging() *ModifyClusterRequestSystemEventsLogging
 	SetTimezone(v string) *ModifyClusterRequest
@@ -192,6 +194,10 @@ type ModifyClusterRequest struct {
 	//
 	// sg-bp1h6rk3pgct2a08***
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
+	// example:
+	//
+	// Extended
+	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The system event storage configuration.
 	SystemEventsLogging *ModifyClusterRequestSystemEventsLogging `json:"system_events_logging,omitempty" xml:"system_events_logging,omitempty" type:"Struct"`
 	// The cluster time zone. See [Supported time zones](https://help.aliyun.com/document_detail/354879.html).
@@ -298,6 +304,10 @@ func (s *ModifyClusterRequest) GetSecurityGroupId() *string {
 	return s.SecurityGroupId
 }
 
+func (s *ModifyClusterRequest) GetSupportPolicy() *string {
+	return s.SupportPolicy
+}
+
 func (s *ModifyClusterRequest) GetSystemEventsLogging() *ModifyClusterRequestSystemEventsLogging {
 	return s.SystemEventsLogging
 }
@@ -397,6 +407,11 @@ func (s *ModifyClusterRequest) SetResourceGroupId(v string) *ModifyClusterReques
 
 func (s *ModifyClusterRequest) SetSecurityGroupId(v string) *ModifyClusterRequest {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ModifyClusterRequest) SetSupportPolicy(v string) *ModifyClusterRequest {
+	s.SupportPolicy = &v
 	return s
 }
 

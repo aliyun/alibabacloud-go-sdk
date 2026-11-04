@@ -22,7 +22,7 @@ type iListNodePoolComponentInstanceNodesShrinkRequest interface {
 }
 
 type ListNodePoolComponentInstanceNodesShrinkRequest struct {
-	// Filters nodes by the specified configuration version number of the node component.
+	// Filters nodes by the specified configuration revision of the node component.
 	//
 	// example:
 	//

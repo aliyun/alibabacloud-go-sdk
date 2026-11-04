@@ -251,6 +251,10 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// example:
+	//
+	// Extended
+	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The list of tags for the cluster.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The time zone.
@@ -361,6 +365,10 @@ func (s *DescribeClustersForRegionResponseBodyClusters) GetSize() *int64 {
 
 func (s *DescribeClustersForRegionResponseBodyClusters) GetState() *string {
 	return s.State
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) GetSupportPolicy() *string {
+	return s.SupportPolicy
 }
 
 func (s *DescribeClustersForRegionResponseBodyClusters) GetTags() []*Tag {
@@ -480,6 +488,11 @@ func (s *DescribeClustersForRegionResponseBodyClusters) SetSize(v int64) *Descri
 
 func (s *DescribeClustersForRegionResponseBodyClusters) SetState(v string) *DescribeClustersForRegionResponseBodyClusters {
 	s.State = &v
+	return s
+}
+
+func (s *DescribeClustersForRegionResponseBodyClusters) SetSupportPolicy(v string) *DescribeClustersForRegionResponseBodyClusters {
+	s.SupportPolicy = &v
 	return s
 }
 

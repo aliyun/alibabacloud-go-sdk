@@ -84,6 +84,22 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// }
 	Capabilities map[string]interface{} `json:"capabilities,omitempty" xml:"capabilities,omitempty"`
+	// Indicates whether the Kubernetes version can be created.
+	//
+	// example:
+	//
+	// true
+	Creatable *bool `json:"creatable,omitempty" xml:"creatable,omitempty"`
+	// The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
+	//
+	// example:
+	//
+	// 2026-01-30T00:00:00Z
+	ExpirationDate *string `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
+	// example:
+	//
+	// 2026-04-30T00:00:00Z
+	ExtendedExpirationDate *string `json:"extended_expiration_date,omitempty" xml:"extended_expiration_date,omitempty"`
 	// The list of system images.
 	Images []*DescribeKubernetesVersionMetadataResponseBodyImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
 	// The metadata of the Kubernetes version.
@@ -100,34 +116,26 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// }
 	MetaData map[string]interface{} `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
-	// The container runtime configurations.
-	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
-	// The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
-	//
-	// example:
-	//
-	// 1.31.1-aliyun.1
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 	// The release time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//
 	// 2025-01-30T00:00:00Z
 	ReleaseDate *string `json:"release_date,omitempty" xml:"release_date,omitempty"`
-	// The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
-	//
+	// The container runtime configurations.
+	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 2026-01-30T00:00:00Z
-	ExpirationDate *string `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
-	// Indicates whether the Kubernetes version can be created.
-	//
-	// example:
-	//
-	// true
-	Creatable *bool `json:"creatable,omitempty" xml:"creatable,omitempty"`
+	// Extended
+	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The list of upgradable versions.
 	UpgradableVersions []*string `json:"upgradable_versions,omitempty" xml:"upgradable_versions,omitempty" type:"Repeated"`
+	// The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
+	//
+	// example:
+	//
+	// 1.31.1-aliyun.1
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s DescribeKubernetesVersionMetadataResponseBody) String() string {
@@ -142,6 +150,18 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) GetCapabilities() map[st
 	return s.Capabilities
 }
 
+func (s *DescribeKubernetesVersionMetadataResponseBody) GetCreatable() *bool {
+	return s.Creatable
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) GetExpirationDate() *string {
+	return s.ExpirationDate
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) GetExtendedExpirationDate() *string {
+	return s.ExtendedExpirationDate
+}
+
 func (s *DescribeKubernetesVersionMetadataResponseBody) GetImages() []*DescribeKubernetesVersionMetadataResponseBodyImages {
 	return s.Images
 }
@@ -150,32 +170,43 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) GetMetaData() map[string
 	return s.MetaData
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) GetRuntimes() []*Runtime {
-	return s.Runtimes
-}
-
-func (s *DescribeKubernetesVersionMetadataResponseBody) GetVersion() *string {
-	return s.Version
-}
-
 func (s *DescribeKubernetesVersionMetadataResponseBody) GetReleaseDate() *string {
 	return s.ReleaseDate
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) GetExpirationDate() *string {
-	return s.ExpirationDate
+func (s *DescribeKubernetesVersionMetadataResponseBody) GetRuntimes() []*Runtime {
+	return s.Runtimes
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) GetCreatable() *bool {
-	return s.Creatable
+func (s *DescribeKubernetesVersionMetadataResponseBody) GetSupportPolicy() *string {
+	return s.SupportPolicy
 }
 
 func (s *DescribeKubernetesVersionMetadataResponseBody) GetUpgradableVersions() []*string {
 	return s.UpgradableVersions
 }
 
+func (s *DescribeKubernetesVersionMetadataResponseBody) GetVersion() *string {
+	return s.Version
+}
+
 func (s *DescribeKubernetesVersionMetadataResponseBody) SetCapabilities(v map[string]interface{}) *DescribeKubernetesVersionMetadataResponseBody {
 	s.Capabilities = v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetCreatable(v bool) *DescribeKubernetesVersionMetadataResponseBody {
+	s.Creatable = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetExpirationDate(v string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.ExpirationDate = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetExtendedExpirationDate(v string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.ExtendedExpirationDate = &v
 	return s
 }
 
@@ -189,33 +220,28 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) SetMetaData(v map[string
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) SetRuntimes(v []*Runtime) *DescribeKubernetesVersionMetadataResponseBody {
-	s.Runtimes = v
-	return s
-}
-
-func (s *DescribeKubernetesVersionMetadataResponseBody) SetVersion(v string) *DescribeKubernetesVersionMetadataResponseBody {
-	s.Version = &v
-	return s
-}
-
 func (s *DescribeKubernetesVersionMetadataResponseBody) SetReleaseDate(v string) *DescribeKubernetesVersionMetadataResponseBody {
 	s.ReleaseDate = &v
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) SetExpirationDate(v string) *DescribeKubernetesVersionMetadataResponseBody {
-	s.ExpirationDate = &v
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetRuntimes(v []*Runtime) *DescribeKubernetesVersionMetadataResponseBody {
+	s.Runtimes = v
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBody) SetCreatable(v bool) *DescribeKubernetesVersionMetadataResponseBody {
-	s.Creatable = &v
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetSupportPolicy(v string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.SupportPolicy = &v
 	return s
 }
 
 func (s *DescribeKubernetesVersionMetadataResponseBody) SetUpgradableVersions(v []*string) *DescribeKubernetesVersionMetadataResponseBody {
 	s.UpgradableVersions = v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBody) SetVersion(v string) *DescribeKubernetesVersionMetadataResponseBody {
+	s.Version = &v
 	return s
 }
 
@@ -242,6 +268,26 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) Validate() error {
 }
 
 type DescribeKubernetesVersionMetadataResponseBodyImages struct {
+	// The image architecture.
+	//
+	// example:
+	//
+	// x86_64
+	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	// The image category. Some valid values:
+	//
+	// - `system`: public images.
+	//
+	// - `self`: your custom images.
+	//
+	// - `others`: public images from other users.
+	//
+	// - `marketplace`: Alibaba Cloud Marketplace images.
+	//
+	// example:
+	//
+	// system
+	ImageCategory *string `json:"image_category,omitempty" xml:"image_category,omitempty"`
 	// The image ID.
 	//
 	// example:
@@ -254,26 +300,6 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// Alibaba Cloud Linux 3.2104
 	ImageName *string `json:"image_name,omitempty" xml:"image_name,omitempty"`
-	// The operating system platform. Valid values:
-	//
-	// - `AliyunLinux`
-	//
-	// - `CentOS`
-	//
-	// - `Windows`
-	//
-	// - `WindowsCore`
-	//
-	// example:
-	//
-	// AliyunLinux
-	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
-	// The image version.
-	//
-	// example:
-	//
-	// 3.2104
-	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
 	// The operating system distribution type. Use this field to specify the operating system for nodes. Valid values:
 	//
 	// - `CentOS`
@@ -308,26 +334,26 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// Linux
 	OsType *string `json:"os_type,omitempty" xml:"os_type,omitempty"`
-	// The image category. Some valid values:
-	//
-	// - `system`: public images.
-	//
-	// - `self`: your custom images.
-	//
-	// - `others`: public images from other users.
-	//
-	// - `marketplace`: Alibaba Cloud Marketplace images.
+	// The image version.
 	//
 	// example:
 	//
-	// system
-	ImageCategory *string `json:"image_category,omitempty" xml:"image_category,omitempty"`
-	// The image architecture.
+	// 3.2104
+	OsVersion *string `json:"os_version,omitempty" xml:"os_version,omitempty"`
+	// The operating system platform. Valid values:
+	//
+	// - `AliyunLinux`
+	//
+	// - `CentOS`
+	//
+	// - `Windows`
+	//
+	// - `WindowsCore`
 	//
 	// example:
 	//
-	// x86_64
-	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
+	// AliyunLinux
+	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 }
 
 func (s DescribeKubernetesVersionMetadataResponseBodyImages) String() string {
@@ -338,20 +364,20 @@ func (s DescribeKubernetesVersionMetadataResponseBodyImages) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetArchitecture() *string {
+	return s.Architecture
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetImageCategory() *string {
+	return s.ImageCategory
+}
+
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetImageId() *string {
 	return s.ImageId
 }
 
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetImageName() *string {
 	return s.ImageName
-}
-
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetPlatform() *string {
-	return s.Platform
-}
-
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetOsVersion() *string {
-	return s.OsVersion
 }
 
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetImageType() *string {
@@ -362,12 +388,22 @@ func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetOsType() *strin
 	return s.OsType
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetImageCategory() *string {
-	return s.ImageCategory
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetOsVersion() *string {
+	return s.OsVersion
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetArchitecture() *string {
-	return s.Architecture
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) GetPlatform() *string {
+	return s.Platform
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetArchitecture(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
+	s.Architecture = &v
+	return s
+}
+
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageCategory(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
+	s.ImageCategory = &v
+	return s
 }
 
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageId(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
@@ -377,16 +413,6 @@ func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageId(v strin
 
 func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageName(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
 	s.ImageName = &v
-	return s
-}
-
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetPlatform(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
-	s.Platform = &v
-	return s
-}
-
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetOsVersion(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
-	s.OsVersion = &v
 	return s
 }
 
@@ -400,13 +426,13 @@ func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetOsType(v string
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetImageCategory(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
-	s.ImageCategory = &v
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetOsVersion(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
+	s.OsVersion = &v
 	return s
 }
 
-func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetArchitecture(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
-	s.Architecture = &v
+func (s *DescribeKubernetesVersionMetadataResponseBodyImages) SetPlatform(v string) *DescribeKubernetesVersionMetadataResponseBodyImages {
+	s.Platform = &v
 	return s
 }
 

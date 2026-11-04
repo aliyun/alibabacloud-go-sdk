@@ -81,6 +81,8 @@ type iDescribeClusterDetailResponseBody interface {
 	GetState() *string
 	SetSubnetCidr(v string) *DescribeClusterDetailResponseBody
 	GetSubnetCidr() *string
+	SetSupportPolicy(v string) *DescribeClusterDetailResponseBody
+	GetSupportPolicy() *string
 	SetTags(v []*Tag) *DescribeClusterDetailResponseBody
 	GetTags() []*Tag
 	SetTimezone(v string) *DescribeClusterDetailResponseBody
@@ -386,6 +388,10 @@ type DescribeClusterDetailResponseBody struct {
 	//
 	// 172.20.xx.xx/16
 	SubnetCidr *string `json:"subnet_cidr,omitempty" xml:"subnet_cidr,omitempty"`
+	// example:
+	//
+	// Extended
+	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The cluster resource tags.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The time zone.
@@ -582,6 +588,10 @@ func (s *DescribeClusterDetailResponseBody) GetState() *string {
 
 func (s *DescribeClusterDetailResponseBody) GetSubnetCidr() *string {
 	return s.SubnetCidr
+}
+
+func (s *DescribeClusterDetailResponseBody) GetSupportPolicy() *string {
+	return s.SupportPolicy
 }
 
 func (s *DescribeClusterDetailResponseBody) GetTags() []*Tag {
@@ -793,6 +803,11 @@ func (s *DescribeClusterDetailResponseBody) SetState(v string) *DescribeClusterD
 
 func (s *DescribeClusterDetailResponseBody) SetSubnetCidr(v string) *DescribeClusterDetailResponseBody {
 	s.SubnetCidr = &v
+	return s
+}
+
+func (s *DescribeClusterDetailResponseBody) SetSupportPolicy(v string) *DescribeClusterDetailResponseBody {
+	s.SupportPolicy = &v
 	return s
 }
 
