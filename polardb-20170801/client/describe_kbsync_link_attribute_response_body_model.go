@@ -40,9 +40,9 @@ type DescribeKBSyncLinkAttributeResponseBody struct {
 	//
 	// cli_a123456
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The synchronization configuration whitelist returned based on the source type. For DINGTALK, UserId can be returned. For FEISHU, FeishuChatMemberStaleTtlSeconds can be returned.
+	// The synchronization configuration whitelist returned based on the source type. For DingTalk, UserId is returned. For Lark, FeishuChatMemberStaleTtlSeconds is returned.
 	Config *DescribeKBSyncLinkAttributeResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The creation time of the synchronization link.
+	// The time when the synchronization link was created. The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format (UTC time).
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeKBSyncLinkAttributeResponseBody struct {
 	//
 	// 12345678-1234-1234-1234-1234567890ab
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The source directory.
+	// The source directory. For OSS sources, the bucket and object prefix in the oss://<bucket>/<prefix> format are returned. For other sources, the directory identifier or path of the corresponding channel is returned.
 	//
 	// example:
 	//
@@ -215,13 +215,13 @@ func (s *DescribeKBSyncLinkAttributeResponseBody) Validate() error {
 }
 
 type DescribeKBSyncLinkAttributeResponseBodyConfig struct {
-	// The validity period of the successful snapshot of Lark group members for fallback reuse, in seconds. This parameter is returned only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 indicates that snapshot fallback reuse is disabled. A positive integer indicates the maximum age of the snapshot allowed for reuse. The valid value configured for the link is returned. If no value is configured, the default value -1 is returned.
+	// The validity period of the successful snapshot of Lark group members for fallback reuse, in seconds. This parameter is returned only for Lark synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 indicates that snapshot fallback reuse is disabled. A positive integer indicates the maximum age of the snapshot allowed for reuse. The valid value configured for the link is returned. If no value is configured, the default value -1 is returned.
 	//
 	// example:
 	//
 	// -1
 	FeishuChatMemberStaleTtlSeconds *int32 `json:"FeishuChatMemberStaleTtlSeconds,omitempty" xml:"FeishuChatMemberStaleTtlSeconds,omitempty"`
-	// The ID of the DingTalk user who performs the operation. This parameter is returned only for DINGTALK synchronization links.
+	// The ID of the DingTalk user who performs the operation. This parameter is returned only for DingTalk synchronization links.
 	//
 	// example:
 	//

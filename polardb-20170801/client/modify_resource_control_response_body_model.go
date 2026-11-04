@@ -14,7 +14,7 @@ type iModifyResourceControlResponseBody interface {
 }
 
 type ModifyResourceControlResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

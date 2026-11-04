@@ -22,7 +22,7 @@ type iDescribeAgenticDBBranchRestoreWindowRequest interface {
 }
 
 type DescribeAgenticDBBranchRestoreWindowRequest struct {
-	// The ID of the source branch.
+	// The source branch ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeAgenticDBBranchRestoreWindowRequest struct {
 	//
 	// br-1a2b3c4d5e6f
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The ID of the AgenticDB cluster.
+	// The AgenticDB cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeAgenticDBBranchRestoreWindowRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the target project.
+	// The target project ID.
 	//
 	// This parameter is required.
 	//

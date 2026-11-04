@@ -24,13 +24,13 @@ type iDescribeKBSyncLinksResponseBody interface {
 type DescribeKBSyncLinksResponseBody struct {
 	// The list of synchronization links.
 	Items []*DescribeKBSyncLinksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the current results.
+	// The page number of the returned results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page in the current results.
+	// The number of records returned on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeKBSyncLinksResponseBody struct {
 	//
 	// EB07CFF0-D8A4-5C76-AED7-D00E26FC2***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of synchronization links that match the query conditions.
+	// The total number of synchronization links that meet the query conditions.
 	//
 	// example:
 	//
@@ -117,15 +117,13 @@ func (s *DescribeKBSyncLinksResponseBody) Validate() error {
 }
 
 type DescribeKBSyncLinksResponseBodyItems struct {
-	// The client ID.
+	// The client identifier.
 	//
 	// example:
 	//
 	// cli_xxxxxxbe8
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The creation time.
-	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time is in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -143,19 +141,19 @@ type DescribeKBSyncLinksResponseBodyItems struct {
 	//
 	// FEISHU
 	ImPlatform *string `json:"ImPlatform,omitempty" xml:"ImPlatform,omitempty"`
-	// The synchronization link ID.
+	// The ID of the synchronization link.
 	//
 	// example:
 	//
 	// pkbl-xxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	// The link name.
+	// The name of the synchronization link.
 	//
 	// example:
 	//
 	// testName
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	// The source directory address for synchronization.
+	// The address of the source directory for synchronization.
 	//
 	// example:
 	//

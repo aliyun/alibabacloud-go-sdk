@@ -38,7 +38,7 @@ type iRegisterAIDBClusterCustomModelRequest interface {
 }
 
 type RegisterAIDBClusterCustomModelRequest struct {
-	// The container startup environment variables. Variable names cannot be empty or contain whitespace. Variable values can be empty strings.
+	// The startup environment variables of the container. The variable name cannot be empty or contain whitespace, and the variable value can be an empty string.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// my-model-bucket
 	CustomOssBucketName *string `json:"CustomOssBucketName,omitempty" xml:"CustomOssBucketName,omitempty"`
-	// The model path in the OSS bucket.
+	// The path of the model in the OSS bucket.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// models/qwen3
 	CustomOssBucketPath *string `json:"CustomOssBucketPath,omitempty" xml:"CustomOssBucketPath,omitempty"`
-	// The GPU instance type used for model deployment. Required when configuring deployment parameters.
+	// The GPU instance type used for model deployment. This parameter is required when configuring deployment parameters.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// registry.example.com/customer/model:v1
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The inference engine. Required when configuring deployment parameters. Valid values: vllm and sglang.
+	// The inference engine. This parameter is required when configuring deployment parameters. Valid values: vllm and sglang.
 	//
 	// example:
 	//
 	// vllm
 	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
-	// The custom model registration key and model directory name.
+	// The registration key and directory name of the custom model.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// Qwen3-32B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model startup parameters. Parameter keys must start with --.
+	// The startup parameters of the model. The parameter key must start with --.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The password or temporary token for the customer image repository. Required when ImageName is specified.
+	// The password or temporary token for the customer\\"s image repository. This parameter is required when ImageName is specified.
 	//
 	// example:
 	//
 	// temporary-token
 	RegistryPassword *string `json:"RegistryPassword,omitempty" xml:"RegistryPassword,omitempty"`
-	// The username for the customer image repository. Required when ImageName is specified.
+	// The username for the customer\\"s image repository. This parameter is required when ImageName is specified.
 	//
 	// example:
 	//

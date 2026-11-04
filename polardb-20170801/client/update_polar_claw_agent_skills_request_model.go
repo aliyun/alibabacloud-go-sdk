@@ -18,7 +18,7 @@ type iUpdatePolarClawAgentSkillsRequest interface {
 }
 
 type UpdatePolarClawAgentSkillsRequest struct {
-	// PolarClaw Agent ID。
+	// The PolarClaw Agent ID.
 	//
 	// This parameter is required.
 	//

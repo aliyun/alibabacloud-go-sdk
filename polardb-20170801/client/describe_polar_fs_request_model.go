@@ -25,18 +25,20 @@ type iDescribePolarFsRequest interface {
 	GetRegionId() *string
 	SetRelativeDbClusterId(v string) *DescribePolarFsRequest
 	GetRelativeDbClusterId() *string
+	SetResourceGroupId(v string) *DescribePolarFsRequest
+	GetResourceGroupId() *string
 	SetTag(v []*DescribePolarFsRequestTag) *DescribePolarFsRequest
 	GetTag() []*DescribePolarFsRequestTag
 }
 
 type DescribePolarFsRequest struct {
-	// The instance ID of the PolarDB instance on which the application depends.
+	// The PolarDB instance ID that the application depends on.
 	//
 	// example:
 	//
 	// pc-2ze8u21s03******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number. The value must be an integer greater than 0 and not exceeding the maximum value of Integer.
+	// The page number. The value must be a positive integer that does not exceed the maximum integer value.
 	//
 	// example:
 	//
@@ -60,7 +62,7 @@ type DescribePolarFsRequest struct {
 	//
 	// pfs-ins1********
 	PolarFsInstanceDescription *string `json:"PolarFsInstanceDescription,omitempty" xml:"PolarFsInstanceDescription,omitempty"`
-	// The list of PolarFS instance IDs, separated by commas (,).
+	// The PolarFS instance IDs. Separate multiple instance IDs with commas (,).
 	//
 	// example:
 	//
@@ -86,6 +88,12 @@ type DescribePolarFsRequest struct {
 	//
 	// pc-2zejpr41d9xk*****
 	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags.
 	Tag []*DescribePolarFsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -130,6 +138,10 @@ func (s *DescribePolarFsRequest) GetRelativeDbClusterId() *string {
 	return s.RelativeDbClusterId
 }
 
+func (s *DescribePolarFsRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *DescribePolarFsRequest) GetTag() []*DescribePolarFsRequestTag {
 	return s.Tag
 }
@@ -171,6 +183,11 @@ func (s *DescribePolarFsRequest) SetRegionId(v string) *DescribePolarFsRequest {
 
 func (s *DescribePolarFsRequest) SetRelativeDbClusterId(v string) *DescribePolarFsRequest {
 	s.RelativeDbClusterId = &v
+	return s
+}
+
+func (s *DescribePolarFsRequest) SetResourceGroupId(v string) *DescribePolarFsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

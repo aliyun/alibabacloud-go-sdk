@@ -160,7 +160,7 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The IDs of the model APIs.
+	// The model API IDs.
 	//
 	// example:
 	//
@@ -192,19 +192,19 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input points.
+	// The number of input tokens.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output points.
+	// The number of output tokens.
 	//
 	// example:
 	//
 	// 10
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	// The list of routing rules, formatted as a JSON array string.
+	// The list of routing rules, which is a JSON array string.
 	//
 	// example:
 	//

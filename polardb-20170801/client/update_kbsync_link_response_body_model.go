@@ -30,7 +30,7 @@ type UpdateKBSyncLinkResponseBody struct {
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The schedule time of the synchronization task.
+	// The scheduling time of the synchronization task.
 	SyncSchedule *string `json:"SyncSchedule,omitempty" xml:"SyncSchedule,omitempty"`
 }
 

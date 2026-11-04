@@ -16,7 +16,7 @@ type iDeleteAIDBClusterCustomModelRequest interface {
 }
 
 type DeleteAIDBClusterCustomModelRequest struct {
-	// The custom model registration key to delete.
+	// The key of the custom model registration to delete.
 	//
 	// This parameter is required.
 	//

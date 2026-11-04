@@ -45,6 +45,8 @@ type iCreatePolarFsRequest interface {
 	GetPromotionCode() *string
 	SetRegionId(v string) *CreatePolarFsRequest
 	GetRegionId() *string
+	SetResourceGroupId(v string) *CreatePolarFsRequest
+	GetResourceGroupId() *string
 	SetStorageSpace(v int64) *CreatePolarFsRequest
 	GetStorageSpace() *int64
 	SetStorageType(v string) *CreatePolarFsRequest
@@ -60,17 +62,17 @@ type iCreatePolarFsRequest interface {
 }
 
 type CreatePolarFsRequest struct {
-	// The acceleration storage space for the Basic Edition with acceleration enabled. Unit: GB.
+	// The acceleration space for the Basic Edition. Unit: GB.
 	//
 	// example:
 	//
 	// 500
 	AccelerateStorageSize *int64 `json:"AccelerateStorageSize,omitempty" xml:"AccelerateStorageSize,omitempty"`
-	// The acceleration mode. Valid values:
+	// Specifies whether to enable acceleration. Valid values:
 	//
 	// - **ONLY**: enables acceleration only.
 	//
-	// - **ON**: enables cold data storage and acceleration.
+	// - **ON**: enables cold data and acceleration.
 	//
 	// example:
 	//
@@ -86,7 +88,7 @@ type CreatePolarFsRequest struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The list of authorized account IDs for the Cold Storage Edition instance, separated by commas (,).
+	// The list of authorized accounts for the cold storage instance. Separate multiple accounts with commas (`,`).
 	//
 	// example:
 	//
@@ -94,9 +96,9 @@ type CreatePolarFsRequest struct {
 	AuthorizedUserIds *string `json:"AuthorizedUserIds,omitempty" xml:"AuthorizedUserIds,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Auto-renewal is enabled.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: Auto-renewal is disabled.
+	// - **false**: disables auto-renewal.
 	//
 	// Default value: **false**.
 	//
@@ -108,9 +110,9 @@ type CreatePolarFsRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - **true**: Coupons are automatically used (default).
+	// - **true**: uses coupons (default).
 	//
-	// - **false**: Coupons are not used.
+	// - **false**: does not use coupons.
 	//
 	// example:
 	//
@@ -120,9 +122,9 @@ type CreatePolarFsRequest struct {
 	//
 	// - **basic**: Basic Edition (default).
 	//
-	// - **cold**: Cold Storage Edition.
+	// - **cold**: cold storage edition.
 	//
-	// - **high_performance**: High-performance Edition.
+	// - **high_performance**: high-performance edition.
 	//
 	// example:
 	//
@@ -144,9 +146,9 @@ type CreatePolarFsRequest struct {
 	//
 	// /test
 	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
-	// The bucket and path information.
+	// The bucket and corresponding path information.
 	//
-	// > This parameter is required for the transparent acceleration scenario.
+	// > This parameter is required for transparent acceleration.
 	CustomBucketPathList []*CreatePolarFsRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
 	// The custom AccessKey ID.
 	//
@@ -166,7 +168,7 @@ type CreatePolarFsRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine. Valid values:
+	// The database ecosystem. Valid values:
 	//
 	// - **MySQL**
 	//
@@ -186,17 +188,17 @@ type CreatePolarFsRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. This parameter is required if PayType is set to **Prepaid**. Specifies whether the subscription cluster uses a yearly or monthly billing cycle. Valid values:
+	// If **PayType*	- is set to **Prepaid**, you must pass parameter. Specifies the upfront cluster as yearly or monthly. Valid values:
 	//
-	// - **Year**: The subscription duration is measured in years.
+	// - **Year**: yearly. When you select subscription, the unit is year.
 	//
-	// - **Month**: The subscription duration is measured in months.
+	// - **Month**: monthly. When you select subscription, the unit is month.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The coupon code. If this parameter is not specified, the default coupon is used.
+	// The coupon code. If not specified, the default coupon is used.
 	//
 	// example:
 	//
@@ -204,7 +206,7 @@ type CreatePolarFsRequest struct {
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
-	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -212,43 +214,49 @@ type CreatePolarFsRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The storage space. Unit: GB.
 	//
 	// example:
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// Valid values for the high-performance storage type:
+	// The storage type. Valid values for high-performance clusters:
 	//
 	// - **ESSDPL0**
 	//
 	// - **ESSDPL1**
 	//
-	// Valid values for the Basic Edition storage type:
+	// Valid values for Basic Edition clusters:
 	//
-	// - **city_redundancy (zone-redundant)**
+	// - **city_redundancy*	- (zone redundancy)
 	//
-	// Valid values for the Cold Storage Edition storage type:
+	// Valid values for cold storage clusters:
 	//
-	// - **city_redundancy (zone-redundant)**
+	// - **city_redundancy*	- (zone redundancy)
 	//
-	// - **local_redundancy (locally redundant)**
+	// - **local_redundancy*	- (local redundancy)
 	//
 	// example:
 	//
 	// local_redundancy
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The subscription duration. This parameter is required when PayType is set to **Prepaid**.
+	// The subscription duration. This parameter is required when **PayType*	- is set to **Prepaid**.
 	//
-	// - If **Period*	- is set to **Month**, valid values of **UsedTime*	- are integers in the range of `[1-9]`.
+	// - When **Period*	- is set to **Month**, the value of **UsedTime*	- is an integer ranging from `1` to `9`.
 	//
-	// - If **Period*	- is set to **Year**, valid values of **UsedTime*	- are integers in the range of `[1-3]`.
+	// - When **Period*	- is set to **Year**, the value of **UsedTime*	- is an integer ranging from `1` to `3`.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -346,6 +354,10 @@ func (s *CreatePolarFsRequest) GetPromotionCode() *string {
 
 func (s *CreatePolarFsRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreatePolarFsRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *CreatePolarFsRequest) GetStorageSpace() *int64 {
@@ -459,6 +471,11 @@ func (s *CreatePolarFsRequest) SetPromotionCode(v string) *CreatePolarFsRequest 
 
 func (s *CreatePolarFsRequest) SetRegionId(v string) *CreatePolarFsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePolarFsRequest) SetResourceGroupId(v string) *CreatePolarFsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

@@ -17,12 +17,18 @@ type iInstallPolarClawSkillResponseBody interface {
 	GetMessage() *string
 	SetOk(v bool) *InstallPolarClawSkillResponseBody
 	GetOk() *bool
+	SetOperation(v string) *InstallPolarClawSkillResponseBody
+	GetOperation() *string
 	SetRequestId(v string) *InstallPolarClawSkillResponseBody
 	GetRequestId() *string
 	SetSlug(v string) *InstallPolarClawSkillResponseBody
 	GetSlug() *string
+	SetState(v string) *InstallPolarClawSkillResponseBody
+	GetState() *string
 	SetTargetDir(v string) *InstallPolarClawSkillResponseBody
 	GetTargetDir() *string
+	SetTaskId(v string) *InstallPolarClawSkillResponseBody
+	GetTaskId() *string
 	SetVersion(v string) *InstallPolarClawSkillResponseBody
 	GetVersion() *string
 }
@@ -34,43 +40,61 @@ type InstallPolarClawSkillResponseBody struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The response status code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful. This parameter is returned when Async is set to false.
 	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
+	// The operation name. This parameter is returned when Async is set to true.
+	//
+	// example:
+	//
+	// InstallPolarClawSkill
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// F45FFACC-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The identifier of the installed Skill.
+	// The identifier of the installed skill. This parameter is returned during synchronous execution.
 	//
 	// example:
 	//
 	// alibacloud-rds-copilot
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The installation directory.
+	// The initial state of the task. This parameter is returned when Async is set to true.
+	//
+	// example:
+	//
+	// pending
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The installation directory. This parameter is returned during synchronous execution.
 	//
 	// example:
 	//
 	// /home/node/.openclaw/skills/alibacloud-rds-copilot
 	TargetDir *string `json:"TargetDir,omitempty" xml:"TargetDir,omitempty"`
-	// The version number of the installed Skill.
+	// The ID of the asynchronous task. This parameter is returned when Async is set to true.
+	//
+	// example:
+	//
+	// 9f1c2e3d-xxxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The installed version number. This parameter is returned during synchronous execution.
 	//
 	// example:
 	//
@@ -102,6 +126,10 @@ func (s *InstallPolarClawSkillResponseBody) GetOk() *bool {
 	return s.Ok
 }
 
+func (s *InstallPolarClawSkillResponseBody) GetOperation() *string {
+	return s.Operation
+}
+
 func (s *InstallPolarClawSkillResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -110,8 +138,16 @@ func (s *InstallPolarClawSkillResponseBody) GetSlug() *string {
 	return s.Slug
 }
 
+func (s *InstallPolarClawSkillResponseBody) GetState() *string {
+	return s.State
+}
+
 func (s *InstallPolarClawSkillResponseBody) GetTargetDir() *string {
 	return s.TargetDir
+}
+
+func (s *InstallPolarClawSkillResponseBody) GetTaskId() *string {
+	return s.TaskId
 }
 
 func (s *InstallPolarClawSkillResponseBody) GetVersion() *string {
@@ -138,6 +174,11 @@ func (s *InstallPolarClawSkillResponseBody) SetOk(v bool) *InstallPolarClawSkill
 	return s
 }
 
+func (s *InstallPolarClawSkillResponseBody) SetOperation(v string) *InstallPolarClawSkillResponseBody {
+	s.Operation = &v
+	return s
+}
+
 func (s *InstallPolarClawSkillResponseBody) SetRequestId(v string) *InstallPolarClawSkillResponseBody {
 	s.RequestId = &v
 	return s
@@ -148,8 +189,18 @@ func (s *InstallPolarClawSkillResponseBody) SetSlug(v string) *InstallPolarClawS
 	return s
 }
 
+func (s *InstallPolarClawSkillResponseBody) SetState(v string) *InstallPolarClawSkillResponseBody {
+	s.State = &v
+	return s
+}
+
 func (s *InstallPolarClawSkillResponseBody) SetTargetDir(v string) *InstallPolarClawSkillResponseBody {
 	s.TargetDir = &v
+	return s
+}
+
+func (s *InstallPolarClawSkillResponseBody) SetTaskId(v string) *InstallPolarClawSkillResponseBody {
+	s.TaskId = &v
 	return s
 }
 

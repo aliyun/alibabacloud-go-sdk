@@ -50,15 +50,13 @@ type iDescribeGatewayAttributeResponseBody interface {
 }
 
 type DescribeGatewayAttributeResponseBody struct {
-	// The instance type code.
+	// The specification code.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The creation time.
-	//
-	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -78,11 +76,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The list of endpoints.
 	Endpoints []*DescribeGatewayAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The expiration time.
-	//
-	// This parameter is empty when the billing method is Postpaid.
-	//
-	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+	// The expiration time. This parameter is empty when the billing method is pay-as-you-go. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -116,9 +110,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// 2.0.1
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The last modification time.
-	//
-	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+	// The last modification time. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -152,19 +144,19 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// 2.0.0
 	RunningVersion *string `json:"RunningVersion,omitempty" xml:"RunningVersion,omitempty"`
-	// The application-level IP whitelist.
+	// The application-level whitelist.
 	SecurityIPArrays []*DescribeGatewayAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// The application status. Valid values:
 	//
-	// - CREATE: creating
+	// - CREATE: Creating.
 	//
-	// - ACTIVATION: running
+	// - ACTIVATION: Running.
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -398,11 +390,11 @@ type DescribeGatewayAttributeResponseBodyEndpoints struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The endpoint type. Valid values:
 	//
-	// - Private: VPC
+	// - Private: VPC address.
 	//
-	// - Public: Internet
+	// - Public: Internet address.
 	//
 	// example:
 	//
@@ -504,13 +496,13 @@ func (s *DescribeGatewayAttributeResponseBodyEndpoints) Validate() error {
 }
 
 type DescribeGatewayAttributeResponseBodySecurityIPArrays struct {
-	// The name of the IP whitelist. Default value: `default`.
+	// The name of the IP address whitelist. Default value: `default`.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The tag of the IP whitelist.
+	// The tag of the IP address whitelist.
 	//
 	// example:
 	//

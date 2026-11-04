@@ -26,7 +26,7 @@ type iDescribeAgenticDBProjectsRequest interface {
 }
 
 type DescribeAgenticDBProjectsRequest struct {
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type DescribeAgenticDBProjectsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The project ID used for exact matching.
+	// The project ID for exact match.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name used for fuzzy matching.
+	// The project name for fuzzy match.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeAgenticDBProjectsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//

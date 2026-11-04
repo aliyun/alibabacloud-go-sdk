@@ -100,9 +100,9 @@ func (s *RetrievalKnowledgeBaseResponseBody) Validate() error {
 }
 
 type RetrievalKnowledgeBaseResponseBodyResults struct {
-	// The list of captions for the figures or tables associated with the chunk.
+	// The list of figure or table captions associated with the chunk.
 	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
-	// The list of structured element references in the source document associated with the chunk. You can use these references to precisely locate the original elements.
+	// The list of structured element references from the source document associated with the chunk. This can be used to precisely locate the original elements.
 	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
 	// The unique identifier of the file.
 	//
@@ -120,6 +120,12 @@ type RetrievalKnowledgeBaseResponseBodyResults struct {
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
 	// The list of image resources referenced by the chunk.
 	ImageResources []*RetrievalKnowledgeBaseResponseBodyResultsImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
+	// The ID of the knowledge base to which the retrieved chunk belongs. This is used to distinguish the source of results when searching multiple knowledge bases.
+	//
+	// example:
+	//
+	// pkb-xxxxxxxx
+	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
 	// The metadata.
 	//
 	// example:
@@ -186,6 +192,10 @@ func (s *RetrievalKnowledgeBaseResponseBodyResults) GetImageResources() []*Retri
 	return s.ImageResources
 }
 
+func (s *RetrievalKnowledgeBaseResponseBodyResults) GetKnowledgeBaseId() *string {
+	return s.KnowledgeBaseId
+}
+
 func (s *RetrievalKnowledgeBaseResponseBodyResults) GetMetadata() *string {
 	return s.Metadata
 }
@@ -237,6 +247,11 @@ func (s *RetrievalKnowledgeBaseResponseBodyResults) SetHeadings(v []*string) *Re
 
 func (s *RetrievalKnowledgeBaseResponseBodyResults) SetImageResources(v []*RetrievalKnowledgeBaseResponseBodyResultsImageResources) *RetrievalKnowledgeBaseResponseBodyResults {
 	s.ImageResources = v
+	return s
+}
+
+func (s *RetrievalKnowledgeBaseResponseBodyResults) SetKnowledgeBaseId(v string) *RetrievalKnowledgeBaseResponseBodyResults {
+	s.KnowledgeBaseId = &v
 	return s
 }
 

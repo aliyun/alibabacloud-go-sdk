@@ -17,6 +17,8 @@ type iCreateAgenticDBTenantApiKeyRequest interface {
 	GetExpireTime() *string
 	SetRegionId(v string) *CreateAgenticDBTenantApiKeyRequest
 	GetRegionId() *string
+	SetTenantId(v string) *CreateAgenticDBTenantApiKeyRequest
+	GetTenantId() *string
 	SetTenantName(v string) *CreateAgenticDBTenantApiKeyRequest
 	GetTenantName() *string
 }
@@ -30,7 +32,7 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the purpose.
+	// The usage description.
 	//
 	// example:
 	//
@@ -50,9 +52,13 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the tenant. The name must be unique within the same cluster and be 2 to 64 characters in length.
+	// Specifies the ID of an existing tenant. If you specify this parameter, an API key is created only for the existing tenant in the current cluster. If the tenant does not exist, an error is returned and no tenant is created. If TenantName is also specified, the name must match the name of the tenant.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// t-4b83e0da66674951
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The name of the tenant. The name must be unique within the cluster and must be 2 to 64 characters in length.
 	//
 	// example:
 	//
@@ -84,6 +90,10 @@ func (s *CreateAgenticDBTenantApiKeyRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *CreateAgenticDBTenantApiKeyRequest) GetTenantId() *string {
+	return s.TenantId
+}
+
 func (s *CreateAgenticDBTenantApiKeyRequest) GetTenantName() *string {
 	return s.TenantName
 }
@@ -105,6 +115,11 @@ func (s *CreateAgenticDBTenantApiKeyRequest) SetExpireTime(v string) *CreateAgen
 
 func (s *CreateAgenticDBTenantApiKeyRequest) SetRegionId(v string) *CreateAgenticDBTenantApiKeyRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAgenticDBTenantApiKeyRequest) SetTenantId(v string) *CreateAgenticDBTenantApiKeyRequest {
+	s.TenantId = &v
 	return s
 }
 

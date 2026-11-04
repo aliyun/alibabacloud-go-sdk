@@ -40,25 +40,25 @@ type RegisterAIDBClusterCustomModelResponseBody struct {
 	//
 	// my-qwen3
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
-	// The image import status. The initial value is Importing after an image is registered.
+	// The import status of the image. The initial value is Importing after the image is registered.
 	//
 	// example:
 	//
 	// Importing
 	ImageImportStatus *string `json:"ImageImportStatus,omitempty" xml:"ImageImportStatus,omitempty"`
-	// The model registration ID.
+	// The registration ID of the model.
 	//
 	// example:
 	//
 	// 123456
 	ModelId *int64 `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The custom model registration key.
+	// The registration key of the custom model.
 	//
 	// example:
 	//
 	// Qwen3-32B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model type.
+	// The type of the model.
 	//
 	// example:
 	//

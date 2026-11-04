@@ -36,7 +36,7 @@ type iDescribeVSwitchListRequest interface {
 type DescribeVSwitchListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. It cannot exceed the maximum value of the Integer data type.
+	// The page number. The value must be an integer greater than 0 and no greater than the maximum value of the Integer type.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeVSwitchListRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: 30.
 	//
@@ -56,9 +56,9 @@ type DescribeVSwitchListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the vSwitch resides.
+	// The region ID of the vSwitch.
 	//
-	// > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query the IDs of all regions that support vSwitches.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) operation to query all region IDs supported by vSwitches.
 	//
 	// This parameter is required.
 	//
@@ -69,17 +69,17 @@ type DescribeVSwitchListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// A list of vSwitches in the VPC.
+	// The list of vSwitches in the VPC.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
-	// > Call [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to view the details of the VPC.
+	// > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to view VPC details.
 	//
 	// example:
 	//
 	// vpc-25cdvfeq58pl****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone where the vSwitch resides.
+	// The zone ID of the vSwitch.
 	//
 	// example:
 	//

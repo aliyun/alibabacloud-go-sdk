@@ -26,7 +26,7 @@ type iDescribeAgenticDBBranchRestoreWindowResponseBody interface {
 }
 
 type DescribeAgenticDBBranchRestoreWindowResponseBody struct {
-	// The ID of the source branch.
+	// The source branch ID.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeAgenticDBBranchRestoreWindowResponseBody struct {
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The time when the query was completed, in UTC RFC3339 format. This does not represent the latest restorable time.
+	// The time when this query was completed, in UTC RFC3339 format. This does not represent the latest restorable time.
 	//
 	// example:
 	//

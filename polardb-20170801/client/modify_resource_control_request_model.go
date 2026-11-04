@@ -22,7 +22,7 @@ type iModifyResourceControlRequest interface {
 }
 
 type ModifyResourceControlRequest struct {
-	// The updated maximum number of CPU cores. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify exactly one of the MaxCpu and CpuCount parameters.
+	// The updated maximum number of CPU cores. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify either MaxCpu or CpuCount, but not both.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ModifyResourceControlRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The updated maximum CPU quota percentage. Valid values: 1 to 100. You must specify exactly one of the MaxCpu and CpuCount parameters.
+	// The updated maximum CPU quota percentage. Valid values: 1 to 100. You must specify either MaxCpu or CpuCount, but not both.
 	//
 	// example:
 	//
 	// 30
 	MaxCpu *int32 `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
-	// The ID of the region where the PolarDB cluster is deployed.
+	// The region ID of the PolarDB cluster.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
 	//

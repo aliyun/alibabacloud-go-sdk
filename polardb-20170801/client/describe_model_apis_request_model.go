@@ -40,7 +40,7 @@ type DescribeModelApisRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The IDs of the model APIs.
+	// The model API IDs.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DeleteModelApiRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The model API ID.
+	// The ID of the model API.
 	//
 	// This parameter is required.
 	//

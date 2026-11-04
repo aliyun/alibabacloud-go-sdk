@@ -13,6 +13,8 @@ type iCreateBatchTaskRequest interface {
 	GetApplicationType() *string
 	SetInstanceIds(v []*string) *CreateBatchTaskRequest
 	GetInstanceIds() []*string
+	SetInstanceParams(v string) *CreateBatchTaskRequest
+	GetInstanceParams() *string
 	SetParam(v string) *CreateBatchTaskRequest
 	GetParam() *string
 	SetRegionId(v string) *CreateBatchTaskRequest
@@ -30,19 +32,23 @@ type CreateBatchTaskRequest struct {
 	//
 	// polarclaw
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The instance IDs.
+	// The machine instance IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The per-instance parameter overrides (JSON object: instanceId -> param). This parameter is used in scenarios where multiple instances have different targets, such as different agent workspaces.
+	//
+	// example:
+	//
+	// {"pa-xxx1":{"agentId":"test1"},"pa-xxx2":{"scope":"global"}}
+	InstanceParams *string `json:"InstanceParams,omitempty" xml:"InstanceParams,omitempty"`
 	// The archive parameters.
 	//
 	// example:
 	//
 	// [{"skillName":"github","version":"1.0.0"},{"skillName":"skill-vetter","version":"1.0.1"}]
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	// The region ID.
-	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the region information of all clusters under the target account.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the regions of all clusters under the target account.
 	//
 	// This parameter is required.
 	//
@@ -84,6 +90,10 @@ func (s *CreateBatchTaskRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
 
+func (s *CreateBatchTaskRequest) GetInstanceParams() *string {
+	return s.InstanceParams
+}
+
 func (s *CreateBatchTaskRequest) GetParam() *string {
 	return s.Param
 }
@@ -107,6 +117,11 @@ func (s *CreateBatchTaskRequest) SetApplicationType(v string) *CreateBatchTaskRe
 
 func (s *CreateBatchTaskRequest) SetInstanceIds(v []*string) *CreateBatchTaskRequest {
 	s.InstanceIds = v
+	return s
+}
+
+func (s *CreateBatchTaskRequest) SetInstanceParams(v string) *CreateBatchTaskRequest {
+	s.InstanceParams = &v
 	return s
 }
 

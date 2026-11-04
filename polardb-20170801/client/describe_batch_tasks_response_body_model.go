@@ -28,7 +28,7 @@ type DescribeBatchTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeBatchTasksResponseBody struct {
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task information.
+	// The task details.
 	TaskList []*DescribeBatchTasksResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	// The total number of tasks that meet the filter conditions, regardless of pagination.
+	// The total number of tasks that meet the specified conditions, regardless of pagination.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeBatchTasksResponseBody) Validate() error {
 }
 
 type DescribeBatchTasksResponseBodyTaskList struct {
-	// The batch task ID.
+	// The ID of the batch task.
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type DescribeBatchTasksResponseBodyTaskList struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of successful batch tasks.
+	// The number of successful tasks in the batch.
 	//
 	// example:
 	//
 	// 4
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The task start time.
+	// The start time of the task.
 	//
 	// example:
 	//
 	// 2026-04-06 20:51:44
 	TaskBegin *string `json:"TaskBegin,omitempty" xml:"TaskBegin,omitempty"`
-	// The task end time.
+	// The end time of the task.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type DescribeBatchTasksResponseBodyTaskList struct {
 	//
 	// polarclaw_install_skills
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of tasks that meet the filter conditions, regardless of pagination.
+	// The total number of tasks that meet the specified conditions, regardless of pagination.
 	//
 	// example:
 	//

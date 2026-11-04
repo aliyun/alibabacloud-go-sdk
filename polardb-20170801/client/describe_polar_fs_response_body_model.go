@@ -29,7 +29,7 @@ type DescribePolarFsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribePolarFsResponseBody struct {
 	//
 	// 8CD1852F-8176-55E4-891C-4478DC00CC7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -164,13 +164,17 @@ type DescribePolarFsResponseBodyItemsPolarFsPaths struct {
 	PolarFsType                *string                                                          `json:"PolarFsType,omitempty" xml:"PolarFsType,omitempty"`
 	RegionId                   *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RelativeDbClusterId        *string                                                          `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	SecurityGroupId            *string                                                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	StorageSpace               *int64                                                           `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	StorageType                *string                                                          `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	Tags                       *DescribePolarFsResponseBodyItemsPolarFsPathsTags                `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VPCId                      *string                                                          `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	VSwitchId                  *string                                                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId                     *string                                                          `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StorageSpace    *int64                                            `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
+	StorageType     *string                                           `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	Tags            *DescribePolarFsResponseBodyItemsPolarFsPathsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VPCId           *string                                           `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
+	VSwitchId       *string                                           `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId          *string                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribePolarFsResponseBodyItemsPolarFsPaths) String() string {
@@ -251,6 +255,10 @@ func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) GetRegionId() *string {
 
 func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) GetRelativeDbClusterId() *string {
 	return s.RelativeDbClusterId
+}
+
+func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) GetSecurityGroupId() *string {
@@ -368,6 +376,11 @@ func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) SetRegionId(v string) *De
 
 func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) SetRelativeDbClusterId(v string) *DescribePolarFsResponseBodyItemsPolarFsPaths {
 	s.RelativeDbClusterId = &v
+	return s
+}
+
+func (s *DescribePolarFsResponseBodyItemsPolarFsPaths) SetResourceGroupId(v string) *DescribePolarFsResponseBodyItemsPolarFsPaths {
+	s.ResourceGroupId = &v
 	return s
 }
 

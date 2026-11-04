@@ -14,7 +14,7 @@ type iDeleteModelApiResponseBody interface {
 }
 
 type DeleteModelApiResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

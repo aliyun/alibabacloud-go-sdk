@@ -32,7 +32,7 @@ type UpdatePolarClawSkillResponseBody struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The returned status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type UpdatePolarClawSkillResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The updated skill configuration. Sensitive values are masked.
 	Config *UpdatePolarClawSkillResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The returned message.
+	// The message.
 	//
 	// example:
 	//

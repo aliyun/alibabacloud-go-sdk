@@ -30,7 +30,7 @@ type DescribeAgenticDBProjectHistoryRetentionResponseBody struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The effective history data retention period for the project. For the actual recoverable range, query the branch recovery window.
+	// The effective history data retention period of the project. To check the actual recoverable range, query the branch recovery window.
 	//
 	// example:
 	//

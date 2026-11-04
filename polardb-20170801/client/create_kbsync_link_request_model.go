@@ -44,7 +44,7 @@ type iCreateKBSyncLinkRequest interface {
 }
 
 type CreateKBSyncLinkRequest struct {
-	// The client ID.
+	// The client identifier.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The validity period of the Lark group member snapshot for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of the snapshot allowed for reuse. Default value: -1. If this parameter is omitted, -1 takes effect.
+	// The validity period of the successful snapshot of Lark group members for fallback reuse, in seconds. This parameter can be explicitly set only for FEISHU synchronization links. A value of -1 indicates that the snapshot never expires. A value of 0 disables snapshot fallback reuse. A positive integer indicates the maximum age of the snapshot allowed for reuse. Default value: -1. If this parameter is omitted, the default value -1 takes effect.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The name of the link.
+	// The name of the synchronization link.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx567?key=d5e6fxxxxxx543
 	SheetMcpEndpoint *string `json:"SheetMcpEndpoint,omitempty" xml:"SheetMcpEndpoint,omitempty"`
-	// The source directory address for synchronization.
+	// The address of the source directory for synchronization.
 	//
 	// This parameter is required.
 	//
@@ -136,19 +136,19 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// 63eexxxx-xxxx-xxxx-xxxx-xxxxxx090f82
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The Lark user access token. This token is used only when the application identity cannot retrieve group members because the bot is not in the group chat.
+	// The Lark user access token. This token is used only when the application identity cannot expand group members because the bot is not in the group chat.
 	//
 	// example:
 	//
 	// ******
 	UserAccessToken *string `json:"UserAccessToken,omitempty" xml:"UserAccessToken,omitempty"`
-	// The ID of the DingTalk operator.
+	// The ID of the DingTalk user who performs the operation.
 	//
 	// example:
 	//
 	// 123***56
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The Lark user refresh token. This token must be provided together with UserAccessToken to automatically rotate the fallback identity for retrieving group members.
+	// The Lark user refresh token. This token must be provided together with UserAccessToken to automatically rotate the fallback identity for expanding group members.
 	//
 	// example:
 	//

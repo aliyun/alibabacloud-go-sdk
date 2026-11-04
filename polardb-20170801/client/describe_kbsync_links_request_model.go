@@ -28,7 +28,7 @@ type DescribeKBSyncLinksRequest struct {
 	//
 	// FEISHU
 	ImPlatform *string `json:"ImPlatform,omitempty" xml:"ImPlatform,omitempty"`
-	// The unique ID of the knowledge base.
+	// The unique identifier of the knowledge base.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeKBSyncLinksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of synchronization links returned per page. Valid values: 10, 20, 30, 50, 100, 200, and 500. Default value: 30.
+	// The number of synchronization links to return on each page. Valid values: 10, 20, 30, 50, 100, 200, and 500. Default value: 30.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iDescribeBatchTasksShrinkRequest interface {
 }
 
 type DescribeBatchTasksShrinkRequest struct {
-	// The end of the creation time range.
+	// The end time of creation.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is in ISO 8601 format and the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -34,21 +34,21 @@ type DescribeBatchTasksShrinkRequest struct {
 	//
 	// 2026-04-06T20:52:40Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start of the creation time range.
+	// The start time of creation.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is in ISO 8601 format and the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -58,7 +58,7 @@ type DescribeBatchTasksShrinkRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The list of task statuses.
 	//
-	// > If this parameter is left empty, scheduled tasks in all statuses are queried by default.
+	// > If this parameter is left empty, tasks in all statuses are queried by default.
 	StatusShrink *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The batch task type.
 	//

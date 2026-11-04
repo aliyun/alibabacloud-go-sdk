@@ -40,7 +40,7 @@ type CreateApplicationResponseBody struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the generated order.
+	// The generated order ID.
 	//
 	// example:
 	//

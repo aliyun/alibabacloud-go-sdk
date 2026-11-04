@@ -28,13 +28,13 @@ type SearchPolarClawSkillsResponseBody struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The response status code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type SearchPolarClawSkillsResponseBodyResults struct {
 	//
 	// A copilot for RDS
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The UNIX timestamp of the last update, in seconds.
+	// The last update timestamp in UNIX seconds.
 	//
 	// example:
 	//

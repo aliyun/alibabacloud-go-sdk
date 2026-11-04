@@ -117,7 +117,15 @@ func (s *DescribeAgenticDBProjectsResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBProjectsResponseBodyItems struct {
-	// The creation time. The time is in ISO 8601 format and the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The number of all undeleted branches in the project, including hibernated branches and branches not bound to compute nodes. This parameter is empty if not provided by earlier backend versions, which does not indicate zero branches.
+	//
+	// example:
+	//
+	// 3
+	BranchCount *int64 `json:"BranchCount,omitempty" xml:"BranchCount,omitempty"`
+	// The creation time.
+	//
+	// The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -147,7 +155,7 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The retention period for recent records of the project. This field may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+	// The retention period of recent records for the project. This parameter may be empty for earlier projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
 	//
 	// example:
 	//
@@ -165,19 +173,13 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The project status. Valid values:
-	//
-	// - Active: Normal.
-	//
-	// - Destroying: Being destroyed.
-	//
-	// - Destroyed: Destroyed.
+	// The status of the project. Valid values: Active (normal), Destroying (being destroyed), and Destroyed (destroyed).
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -191,6 +193,10 @@ func (s DescribeAgenticDBProjectsResponseBodyItems) String() string {
 
 func (s DescribeAgenticDBProjectsResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAgenticDBProjectsResponseBodyItems) GetBranchCount() *int64 {
+	return s.BranchCount
 }
 
 func (s *DescribeAgenticDBProjectsResponseBodyItems) GetCreateTime() *string {
@@ -231,6 +237,11 @@ func (s *DescribeAgenticDBProjectsResponseBodyItems) GetStatus() *string {
 
 func (s *DescribeAgenticDBProjectsResponseBodyItems) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *DescribeAgenticDBProjectsResponseBodyItems) SetBranchCount(v int64) *DescribeAgenticDBProjectsResponseBodyItems {
+	s.BranchCount = &v
+	return s
 }
 
 func (s *DescribeAgenticDBProjectsResponseBodyItems) SetCreateTime(v string) *DescribeAgenticDBProjectsResponseBodyItems {

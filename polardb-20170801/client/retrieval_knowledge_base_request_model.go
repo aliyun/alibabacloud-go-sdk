@@ -24,7 +24,7 @@ type iRetrievalKnowledgeBaseRequest interface {
 }
 
 type RetrievalKnowledgeBaseRequest struct {
-	// The unique identifier of the knowledge base. You can specify multiple knowledge base IDs separated by commas. A maximum of 50 knowledge bases are supported.
+	// The unique identifier of the knowledge base. You can specify up to 50 knowledge base IDs separated by commas.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type RetrievalKnowledgeBaseRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable reranking. Default value: true.
+	// Specifies whether reranking is enabled. Default value: true.
 	//
 	// example:
 	//

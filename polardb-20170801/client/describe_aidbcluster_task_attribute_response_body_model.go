@@ -56,7 +56,7 @@ type iDescribeAIDBClusterTaskAttributeResponseBody interface {
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBody struct {
-	// The access information of the model in test deployment scenarios.
+	// The access information of the model in the test deployment scenario.
 	//
 	// example:
 	//
@@ -68,9 +68,7 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// The creation time.
-	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -92,11 +90,11 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The training status. Valid values:
 	//
-	// 	- **ACTIVATION**: training in progress
+	// 	- **ACTIVATION**: Training.
 	//
-	// 	- **COMPLETED**: training succeeded
+	// 	- **COMPLETED**: Training succeeded.
 	//
-	// 	- **FAILED**: training failed
+	// 	- **FAILED**: Training failed.
 	//
 	// example:
 	//
@@ -104,11 +102,11 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The training status. Valid values:
 	//
-	// 	- **ACTIVATION**: training in progress
+	// 	- **ACTIVATION**: Training.
 	//
-	// 	- **COMPLETED**: training succeeded
+	// 	- **COMPLETED**: Training succeeded.
 	//
-	// 	- **FAILED**: training failed
+	// 	- **FAILED**: Training failed.
 	//
 	// example:
 	//
@@ -122,7 +120,7 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version. Valid values:
 	//
-	// 	- **3.1**: model operator tuning
+	// 	- **3.1**: Model operator tuning.
 	//
 	// example:
 	//
@@ -134,7 +132,7 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	ExtraInfo []map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Repeated"`
 	// The instance type. Valid values:
 	//
-	// - **18**
+	// - **18**.
 	//
 	// example:
 	//
@@ -142,31 +140,27 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	KindCode *int64 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// 	- **0**: locked
+	// 	- **0**: Locked.
 	//
-	// 	- **1**: unlocked
+	// 	- **1**: Unlocked.
 	//
 	// example:
 	//
 	// 1
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The end time of the maintenance window.
-	//
-	// The time is displayed in UTC in the HH:mmZ format.
+	// The end time of the maintenance window. The time is displayed in UTC in the HH:mmZ format.
 	//
 	// example:
 	//
 	// 12:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window.
-	//
-	// The time is displayed in UTC. Example: 8:00Z.
+	// The start time of the maintenance window. The time is displayed in UTC, for example, 08:00Z.
 	//
 	// example:
 	//
 	// 8:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The list of output model paths in model fine-tuning scenarios.
+	// The list of output model paths in the model fine-tuning scenario.
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
 	// Id of the request
 	//
@@ -480,9 +474,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyDataSets struct {
 	SplitDatasetRatio *string `json:"SplitDatasetRatio,omitempty" xml:"SplitDatasetRatio,omitempty"`
 	// The type. Valid values:
 	//
-	// 	- **train**: training set
+	// 	- **train**: Training set.
 	//
-	// 	- **eval**: validation set
+	// 	- **eval**: Validation set.
 	//
 	// example:
 	//
@@ -539,9 +533,7 @@ func (s *DescribeAIDBClusterTaskAttributeResponseBodyDataSets) Validate() error 
 }
 
 type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
-	// The completion time of the task.
-	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The completion time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -561,9 +553,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
 	// The model source. Valid values:
 	//
-	// 	- **public**: preset model
+	// 	- **public**: Preset model.
 	//
-	// 	- **custom**: custom model
+	// 	- **custom**: Custom model.
 	//
 	// example:
 	//
@@ -575,9 +567,7 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	//
 	// {"split_dataset_ratio": 0.1,"train_mode": "grpo","train_type": "lora","num_epochs": 1,"batch_size": 2,"eval_batch_size": 2, "num_generations": 2, "learning_rate": "1e-6", "data_file_list": "test-00000-of-00001.jsonl#1000", "lora_rank": 8, "lora_alpha": 32, "external_plugins": "/plugin/train/plugin.py", "reward_funcs": "format,external_countdown", "gpu_memory_utilization": 0.4}
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
-	// The start time of the task.
-	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -585,9 +575,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **sft**: SFT - efficient training
+	// 	- **sft**: SFT-efficient training.
 	//
-	// 	- **grpo**: GRPO - reinforcement learning
+	// 	- **grpo**: GRPO-reinforcement learning.
 	//
 	// example:
 	//
@@ -595,9 +585,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	TrainMode *string `json:"TrainMode,omitempty" xml:"TrainMode,omitempty"`
 	// The training method. Valid values:
 	//
-	// 	- **lora**
+	// 	- **lora**: LoRA.
 	//
-	// 	- **full**: full-parameter training
+	// 	- **full**: Full training.
 	//
 	// example:
 	//

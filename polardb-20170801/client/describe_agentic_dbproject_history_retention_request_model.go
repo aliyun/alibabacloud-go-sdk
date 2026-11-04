@@ -20,7 +20,7 @@ type iDescribeAgenticDBProjectHistoryRetentionRequest interface {
 }
 
 type DescribeAgenticDBProjectHistoryRetentionRequest struct {
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeAgenticDBProjectHistoryRetentionRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The target project ID.
+	// The ID of the target project.
 	//
 	// This parameter is required.
 	//

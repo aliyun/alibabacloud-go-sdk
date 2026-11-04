@@ -16,7 +16,7 @@ type iDeleteGatewayRequest interface {
 }
 
 type DeleteGatewayRequest struct {
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteGatewayRequest struct {
 	//
 	// pg-2ze2079ueg20****
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

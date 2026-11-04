@@ -30,7 +30,7 @@ type iDescribeModelServicesRequest interface {
 }
 
 type DescribeModelServicesRequest struct {
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type DescribeModelServicesRequest struct {
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The IDs of the model services. Separate multiple IDs with a comma (,).
+	// The model service IDs.
 	//
 	// example:
 	//
 	// ms-xxx,ms-xxxx
 	ModelServiceIds *string `json:"ModelServiceIds,omitempty" xml:"ModelServiceIds,omitempty"`
-	// The name of the model service.
+	// The model service name.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type DescribeModelServicesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - **openai**
+	// 	- **openai**
 	//
-	// - **anthropic**
+	// 	- **anthropic**
 	//
-	// - **bailian**: Models from Model Studio.
+	// 	- **bailian**
 	//
-	// - **vllm**
+	// 	- **vllm**
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the model service.
+	// The status.
 	//
 	// example:
 	//

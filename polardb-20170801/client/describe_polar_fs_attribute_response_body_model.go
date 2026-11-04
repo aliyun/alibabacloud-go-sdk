@@ -83,6 +83,8 @@ type iDescribePolarFsAttributeResponseBody interface {
 	GetRelativePfsClusterId() *string
 	SetRequestId(v string) *DescribePolarFsAttributeResponseBody
 	GetRequestId() *string
+	SetResourceGroupId(v string) *DescribePolarFsAttributeResponseBody
+	GetResourceGroupId() *string
 	SetSecurityGroupId(v string) *DescribePolarFsAttributeResponseBody
 	GetSecurityGroupId() *string
 	SetStorageSpace(v float64) *DescribePolarFsAttributeResponseBody
@@ -110,7 +112,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The acceleration storage space. Unit: GB.
+	// The accelerated storage space. Unit: GB.
 	//
 	// example:
 	//
@@ -176,7 +178,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	ClientDownloadPath *string `json:"ClientDownloadPath,omitempty" xml:"ClientDownloadPath,omitempty"`
 	// The creation time.
 	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -206,13 +208,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The list of endpoints, including endpoint information for types such as NAS and S3Gateway.
+	// The list of endpoints, including endpoint information for types such as NAS and S3 Gateway.
 	EndpointItems []*DescribePolarFsAttributeResponseBodyEndpointItems `json:"EndpointItems,omitempty" xml:"EndpointItems,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for **Postpaid*	- (pay-as-you-go) clusters.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
 	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -234,7 +236,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: Not locked.
+	// - **Unlock**: Unlocked.
 	//
 	// - **ManualLock**: Manually locked.
 	//
@@ -250,7 +252,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pe-cz9inwqec7ifd98c3
 	MaxscaleEndpointId *string `json:"MaxscaleEndpointId,omitempty" xml:"MaxscaleEndpointId,omitempty"`
-	// The cluster endpoint of the metadata service.
+	// The metadata service cluster endpoint.
 	//
 	// example:
 	//
@@ -262,19 +264,19 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pc-xxxxxxxxxxxxxxxxx
 	MetaInstanceName *string `json:"MetaInstanceName,omitempty" xml:"MetaInstanceName,omitempty"`
-	// The cluster endpoint of the metadata proxy service.
+	// The metadata proxy service cluster endpoint.
 	//
 	// example:
 	//
 	// pc-y3610mp168p3bb740.rwlb.rds.aliyuncs.com
 	MetaMxsConnString *string `json:"MetaMxsConnString,omitempty" xml:"MetaMxsConnString,omitempty"`
-	// The metadata address for Fuse mounting (encrypted).
+	// The metadata address for FUSE mounting (encrypted).
 	//
 	// example:
 	//
 	// e6cc1d2e2a6fa292038d999fda6501*****
 	MetaUrl *string `json:"MetaUrl,omitempty" xml:"MetaUrl,omitempty"`
-	// The minor version of the instance.
+	// The minor version number of the instance.
 	//
 	// example:
 	//
@@ -284,15 +286,15 @@ type DescribePolarFsAttributeResponseBody struct {
 	MountInfo *DescribePolarFsAttributeResponseBodyMountInfo `json:"MountInfo,omitempty" xml:"MountInfo,omitempty" type:"Struct"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: Pay-as-you-go.
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: Subscription.
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The description of the Polarlakebase instance.
+	// The Polarlakebase instance description.
 	//
 	// example:
 	//
@@ -338,7 +340,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pc-2zejpr41d9xk3uk34
 	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	// The instance ID of the associated Polarlakebase instance.
+	// The associated Polarlakebase instance ID.
 	//
 	// example:
 	//
@@ -350,6 +352,12 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 3F9E6A3B-C13E-4064-A010-18582A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-xxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The managed security group ID.
 	//
 	// example:
@@ -362,15 +370,17 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 1000
 	StorageSpace *float64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// Storage types for the High-performance Edition. Valid values:
+	// The storage type.
+	//
+	// For High-performance Edition, valid values are:
 	//
 	// 	- **ESSDPL1**
 	//
 	// 	- **ESSDPL0**
 	//
-	// Storage types for the Basic Edition. Valid values:
+	// For Basic Edition, valid values are:
 	//
-	// 	- **city_redundancy**: zone-redundant storage.
+	// 	- **city_redundancy**: Zone-redundant storage.
 	//
 	// example:
 	//
@@ -388,7 +398,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// lakebase_acc
 	UserDefaultAccName *string `json:"UserDefaultAccName,omitempty" xml:"UserDefaultAccName,omitempty"`
-	// The default user account key for S3 Gateway (encrypted ciphertext).
+	// The default user account secret key for S3 Gateway (encrypted ciphertext).
 	//
 	// example:
 	//
@@ -568,6 +578,10 @@ func (s *DescribePolarFsAttributeResponseBody) GetRelativePfsClusterId() *string
 
 func (s *DescribePolarFsAttributeResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribePolarFsAttributeResponseBody) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *DescribePolarFsAttributeResponseBody) GetSecurityGroupId() *string {
@@ -791,6 +805,11 @@ func (s *DescribePolarFsAttributeResponseBody) SetRequestId(v string) *DescribeP
 	return s
 }
 
+func (s *DescribePolarFsAttributeResponseBody) SetResourceGroupId(v string) *DescribePolarFsAttributeResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *DescribePolarFsAttributeResponseBody) SetSecurityGroupId(v string) *DescribePolarFsAttributeResponseBody {
 	s.SecurityGroupId = &v
 	return s
@@ -917,7 +936,7 @@ type DescribePolarFsAttributeResponseBodyEndpointItems struct {
 	//
 	// ep-xxxxxxxxx
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The endpoint type. Valid values: Nas, S3Gateway, and others.
+	// The endpoint type, such as NAS or S3 Gateway.
 	//
 	// example:
 	//
@@ -988,11 +1007,11 @@ type DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems struct {
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the connection string. Valid values:
 	//
-	// 	- **Public**: public endpoint.
+	// 	- **Public**: Public network address.
 	//
-	// 	- **Private**: private endpoint.
+	// 	- **Private**: Private network address.
 	//
-	// 	- **Inner**: private endpoint (classic network).
+	// 	- **Inner**: Private network address (classic network).
 	//
 	// example:
 	//

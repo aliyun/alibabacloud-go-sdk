@@ -9,10 +9,14 @@ type iInstallPolarClawSkillRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgentId(v string) *InstallPolarClawSkillRequest
+	GetAgentId() *string
 	SetApplicationId(v string) *InstallPolarClawSkillRequest
 	GetApplicationId() *string
 	SetForce(v bool) *InstallPolarClawSkillRequest
 	GetForce() *bool
+	SetScope(v string) *InstallPolarClawSkillRequest
+	GetScope() *string
 	SetSkillVersion(v string) *InstallPolarClawSkillRequest
 	GetSkillVersion() *string
 	SetSlug(v string) *InstallPolarClawSkillRequest
@@ -24,6 +28,12 @@ type iInstallPolarClawSkillRequest interface {
 }
 
 type InstallPolarClawSkillRequest struct {
+	// The target agent in the workspace. If not specified, the default agent is used.
+	//
+	// example:
+	//
+	// test1
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	// The application ID.
 	//
 	// This parameter is required.
@@ -32,25 +42,31 @@ type InstallPolarClawSkillRequest struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Specifies whether to force a reinstallation.
+	// Specifies whether to force reinstallation.
 	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The scope. Valid values: workspace (default) and global (shared directory). This parameter is mutually exclusive with AgentId.
+	//
+	// example:
+	//
+	// global
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The version number.
 	//
 	// example:
 	//
 	// 1.2.0
 	SkillVersion *string `json:"SkillVersion,omitempty" xml:"SkillVersion,omitempty"`
-	// The Skill identifier.
+	// The skill identifier.
 	//
 	// example:
 	//
 	// alibacloud-rds-copilot
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The source.
+	// The source. Default value: polarhub.
 	//
 	// example:
 	//
@@ -72,12 +88,20 @@ func (s InstallPolarClawSkillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *InstallPolarClawSkillRequest) GetAgentId() *string {
+	return s.AgentId
+}
+
 func (s *InstallPolarClawSkillRequest) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
 func (s *InstallPolarClawSkillRequest) GetForce() *bool {
 	return s.Force
+}
+
+func (s *InstallPolarClawSkillRequest) GetScope() *string {
+	return s.Scope
 }
 
 func (s *InstallPolarClawSkillRequest) GetSkillVersion() *string {
@@ -96,6 +120,11 @@ func (s *InstallPolarClawSkillRequest) GetUrl() *string {
 	return s.Url
 }
 
+func (s *InstallPolarClawSkillRequest) SetAgentId(v string) *InstallPolarClawSkillRequest {
+	s.AgentId = &v
+	return s
+}
+
 func (s *InstallPolarClawSkillRequest) SetApplicationId(v string) *InstallPolarClawSkillRequest {
 	s.ApplicationId = &v
 	return s
@@ -103,6 +132,11 @@ func (s *InstallPolarClawSkillRequest) SetApplicationId(v string) *InstallPolarC
 
 func (s *InstallPolarClawSkillRequest) SetForce(v bool) *InstallPolarClawSkillRequest {
 	s.Force = &v
+	return s
+}
+
+func (s *InstallPolarClawSkillRequest) SetScope(v string) *InstallPolarClawSkillRequest {
+	s.Scope = &v
 	return s
 }
 

@@ -22,7 +22,7 @@ type iDescribeVSwitchListResponseBody interface {
 }
 
 type DescribeVSwitchListResponseBody struct {
-	// The page number.
+	// The page number of the returned results.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type DescribeVSwitchListResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: 30.
 	//
@@ -54,7 +54,7 @@ type DescribeVSwitchListResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of vSwitches.
+	// The list of vSwitches.
 	VSwitchs []*DescribeVSwitchListResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 }
 
@@ -153,13 +153,13 @@ type DescribeVSwitchListResponseBodyVSwitchs struct {
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the zone where the vSwitch resides.
+	// The zone ID of the vSwitch.
 	//
 	// example:
 	//
 	// cn-hangzhou-b
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the resource.
+	// The ID of the owner account.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type DescribeVSwitchListResponseBodyVSwitchs struct {
 	//
 	// vSwitch
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//

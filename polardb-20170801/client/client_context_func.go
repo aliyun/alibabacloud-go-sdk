@@ -3029,6 +3029,10 @@ func (client *Client) CreateAgenticDBTenantApiKeyWithContext(ctx context.Context
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
 	if !dara.IsNil(request.TenantName) {
 		query["TenantName"] = request.TenantName
 	}
@@ -3651,6 +3655,10 @@ func (client *Client) CreateBatchTaskWithContext(ctx context.Context, tmpReq *Cr
 
 	if !dara.IsNil(request.InstanceIdsShrink) {
 		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.InstanceParams) {
+		query["InstanceParams"] = request.InstanceParams
 	}
 
 	if !dara.IsNil(request.Param) {
@@ -6807,6 +6815,10 @@ func (client *Client) CreatePolarFsWithContext(ctx context.Context, request *Cre
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !dara.IsNil(request.StorageSpace) {
 		query["StorageSpace"] = request.StorageSpace
 	}
@@ -9706,7 +9718,7 @@ func (client *Client) DeleteModelApiWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Deletes a specified model service.
+// Deletes a model service.
 //
 // @param request - DeleteModelServiceRequest
 //
@@ -12308,7 +12320,7 @@ func (client *Client) DescribeAgenticDBProjectHistoryRetentionWithContext(ctx co
 
 // Summary:
 //
-// Queries a list of AgenticDB projects.
+// Queries the list of AgenticDB projects.
 //
 // @param request - DescribeAgenticDBProjectsRequest
 //
@@ -13312,7 +13324,7 @@ func (client *Client) DescribeAvailableModelsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the download links for redo log backups.
+// Queries the download URLs of redo log backups.
 //
 // @param request - DescribeBackupLogDownloadLinksRequest
 //
@@ -19446,7 +19458,7 @@ func (client *Client) DescribeModelApisWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// # List model services
+// Queries the model service list.
 //
 // @param request - DescribeModelServicesRequest
 //
@@ -20680,7 +20692,7 @@ func (client *Client) DescribePolarClawTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries PolarFS information.
+// Queries the PolarFS information.
 //
 // @param request - DescribePolarFsRequest
 //
@@ -20725,6 +20737,10 @@ func (client *Client) DescribePolarFsWithContext(ctx context.Context, request *D
 
 	if !dara.IsNil(request.RelativeDbClusterId) {
 		query["RelativeDbClusterId"] = request.RelativeDbClusterId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !dara.IsNil(request.Tag) {
@@ -22092,7 +22108,7 @@ func (client *Client) DescribeUserEncryptionKeyListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves information about vSwitches.
+// Queries vSwitch information.
 //
 // @param request - DescribeVSwitchListRequest
 //
@@ -22448,7 +22464,7 @@ func (client *Client) DisableDBClusterDynamoDBWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Disables the relational algebra of a cluster.
+// Closes the cluster relationship.
 //
 // @param request - DisableDBClusterOrcaRequest
 //
@@ -22790,7 +22806,7 @@ func (client *Client) EnableDBClusterDynamoDBWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Enables the Orca (Redis-compatible) feature for a PolarDB cluster.
+// Enables the relational feature for a cluster.
 //
 // @param request - EnableDBClusterOrcaRequest
 //
@@ -24023,7 +24039,7 @@ func (client *Client) InstallPolarClawPluginWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Installs a PolarClaw Skill.
+// Installs a PolarClaw skill.
 //
 // @param request - InstallPolarClawSkillRequest
 //
@@ -24038,12 +24054,20 @@ func (client *Client) InstallPolarClawSkillWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
 	}
 
 	if !dara.IsNil(request.Force) {
 		query["Force"] = request.Force
+	}
+
+	if !dara.IsNil(request.Scope) {
+		query["Scope"] = request.Scope
 	}
 
 	if !dara.IsNil(request.SkillVersion) {
@@ -30001,7 +30025,7 @@ func (client *Client) ModifyRateLimitPolicyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the CPU quota of an existing resource control rule in a specified PolarDB for MySQL cluster. You can modify the current quota value or switch between the maximum CPU quota percentage mode and the maximum CPU core count mode. When modifying the rule, you must specify exactly one of the MaxCpu and CpuCount parameters.
+// Modifies the CPU quota of an existing resource control rule in a specified PolarDB for MySQL cluster. You can modify the current quota value or switch between the maximum CPU quota percentage mode and the maximum CPU core count mode. When modifying the rule, you must specify either MaxCpu or CpuCount, but not both.
 //
 // Description:
 //
@@ -32263,7 +32287,7 @@ func (client *Client) SearchMemoriesWithContext(ctx context.Context, request *Se
 
 // Summary:
 //
-// Searches for PolarClaw Skills.
+// Searches for PolarClaw skills.
 //
 // @param request - SearchPolarClawSkillsRequest
 //
@@ -32282,12 +32306,20 @@ func (client *Client) SearchPolarClawSkillsWithContext(ctx context.Context, requ
 		query["ApplicationId"] = request.ApplicationId
 	}
 
+	if !dara.IsNil(request.Exact) {
+		query["Exact"] = request.Exact
+	}
+
 	if !dara.IsNil(request.Limit) {
 		query["Limit"] = request.Limit
 	}
 
 	if !dara.IsNil(request.Query) {
 		query["Query"] = request.Query
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -33557,7 +33589,7 @@ func (client *Client) UpdatePolarClawAgentWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Updates the skills of a PolarClaw Agent.
+// Updates the skills of a PolarClaw agent.
 //
 // @param tmpReq - UpdatePolarClawAgentSkillsRequest
 //

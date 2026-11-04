@@ -22,7 +22,7 @@ type EnableDBClusterOrcaResponseBody struct {
   // 
   // pc-***************
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-  // The request ID.
+  // Id of the request
   // 
   // example:
   // 

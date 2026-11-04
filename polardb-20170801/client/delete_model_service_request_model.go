@@ -18,7 +18,7 @@ type iDeleteModelServiceRequest interface {
 }
 
 type DeleteModelServiceRequest struct {
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteModelServiceRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The name of the model.
+	// The model name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteModelServiceRequest struct {
 	//
 	// test
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

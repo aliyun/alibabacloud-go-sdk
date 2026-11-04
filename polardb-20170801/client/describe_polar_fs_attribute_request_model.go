@@ -20,7 +20,7 @@ type iDescribePolarFsAttributeRequest interface {
 type DescribePolarFsAttributeRequest struct {
 	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
 	//
 	// example:
 	//
@@ -34,11 +34,11 @@ type DescribePolarFsAttributeRequest struct {
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// Specifies whether to query Fuse mount information. Valid values:
+	// Specifies whether to query FUSE mount information. Valid values:
 	//
 	// - **true**: Yes.
 	//
-	// - **false**: No. This is the default value.
+	// - **false**: No. Default value.
 	//
 	// example:
 	//
