@@ -14,7 +14,7 @@ type iCancelKeyDeletionRequest interface {
 }
 
 type CancelKeyDeletionRequest struct {
-	// The ID of the CMK. The ID must be globally unique.
+	// The globally unique identifier of the master key.
 	//
 	// This parameter is required.
 	//

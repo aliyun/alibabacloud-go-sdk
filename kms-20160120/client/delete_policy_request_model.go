@@ -14,7 +14,7 @@ type iDeletePolicyRequest interface {
 }
 
 type DeletePolicyRequest struct {
-	// The name of the permission policy that you want to delete.
+	// The name of the permission policy to delete.
 	//
 	// This parameter is required.
 	//

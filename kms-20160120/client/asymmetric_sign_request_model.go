@@ -30,11 +30,11 @@ type AsymmetricSignRequest struct {
 	//
 	// RSA_PSS_SHA_256
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The digest of the original message. The digest is generated using the hash algorithm that corresponds to the value of the Algorithm parameter.
+	// The digest generated from the original message by using the hash algorithm that corresponds to the value of the Algorithm parameter.
 	//
 	// > - The value is Base64-encoded.
 	//
-	// - For information about how to calculate a message digest, see the "Pre-signing: calculate a message digest" section of the [Asymmetric digital signature](https://help.aliyun.com/document_detail/148146.html) topic.
+	// - For more information about how to calculate a message digest, see the **Signature preprocessing: Calculate the message digest*	- section in [Asymmetric digital signatures](https://help.aliyun.com/document_detail/148146.html).
 	//
 	// This parameter is required.
 	//
@@ -42,27 +42,27 @@ type AsymmetricSignRequest struct {
 	//
 	// ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiu****=
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// Specifies whether to enable the dry-run feature.
+	// Specifies whether to enable the dry run mode.
 	//
-	// - true: enables the feature.
+	// - true: Enables the dry run mode.
 	//
-	// - false (default): disables the feature.
+	// - false: Disables the dry run mode. This is the default value.
 	//
-	// The dry-run feature is used to test API calls and verify the permissions on the resources that you have and the validity of the request parameters. If you enable the dry-run feature, KMS always returns a failure response and a failure reason. The failure reasons include the following:
+	// The dry run mode is used to test API calls, verify whether you have the required permissions on the resources, and check whether the request parameters are correctly configured. When the dry run mode is enabled, KMS always returns a failure and provides the cause of the failure. The causes include:
 	//
-	// - DryRunOperationError: The request would have succeeded if the DryRun parameter is not configured.
+	// - DryRunOperationError: The request would succeed if the DryRun parameter is not configured.
 	//
 	// - ValidationError: The specified parameters in the request are invalid.
 	//
-	// - AccessDeniedError: You are not authorized to perform the operation on the KMS resource.
+	// - AccessDeniedError: You are not authorized to perform the operation on the KMS resources.
 	//
 	// example:
 	//
 	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The globally unique identifier (GUID) of the customer master key (CMK).
+	// The globally unique identifier of the customer master key (CMK).
 	//
-	// > You can also specify the alias that is bound to the CMK. For more information, see [Overview of aliases](https://help.aliyun.com/document_detail/68522.html).
+	// > You can also set this parameter to the alias that is bound to the CMK. For more information, see [Usage notes for aliases](https://help.aliyun.com/document_detail/68522.html).
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type AsymmetricSignRequest struct {
 	//
 	// 5c438b18-05be-40ad-b6c2-3be6752c****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The ID of the key version. The ID must be the GUID of the key version.
+	// The key version ID, which is the globally unique identifier of the key version.
 	//
 	// This parameter is required.
 	//

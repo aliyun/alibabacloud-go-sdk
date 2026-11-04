@@ -14,7 +14,7 @@ type iGetKmsInstanceRequest interface {
 }
 
 type GetKmsInstanceRequest struct {
-	// The ID of the KMS instance to query.
+	// The ID of the KMS instance.
 	//
 	// This parameter is required.
 	//

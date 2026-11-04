@@ -51,19 +51,19 @@ func (s *BatchGetSecretValueRequest) Validate() error {
 type BatchGetSecretValueRequestSecretsList struct {
 	// Specifies whether to retrieve the extended configuration of the secret. Valid values:
 	//
-	// - true: Retrieve the extended configuration.
+	// - true: Retrieves the extended configuration.
 	//
-	// - false (default): Do not retrieve the extended configuration.
+	// - false: Does not retrieve the extended configuration. This is the default value.
 	//
-	// > Generic secrets do not support extended configurations. This parameter is ignored for generic secrets.
+	// > Generic secrets do not support extended configurations. If you specify this parameter for a generic secret, it is ignored.
 	//
 	// example:
 	//
 	// true
 	FetchExtendedConfig *string `json:"FetchExtendedConfig,omitempty" xml:"FetchExtendedConfig,omitempty"`
-	// The secret name or secret Alibaba Cloud Resource Name (ARN).
+	// The name or Alibaba Cloud Resource Name (ARN) of the secret.
 	//
-	// >When accessing a secret in another Alibaba Cloud account, you must specify the secret ARN. The format of a secret ARN is `acs:kms:${region}:${account}:secret/${secret-name}`.
+	// > To access a secret that belongs to another Alibaba Cloud account, you must specify the ARN of the secret. The ARN is in the `acs:kms:${region}:${account}:secret/${secret-name}` format.
 	//
 	// This parameter is required.
 	//
@@ -71,17 +71,17 @@ type BatchGetSecretValueRequestSecretsList struct {
 	//
 	// secret001
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The version number.
+	// The version ID of the secret.
 	//
 	// example:
 	//
 	// v1
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	// The version stage. Default value: ACSCurrent.
+	// The stage of the secret version. Default value: ACSCurrent.
 	//
 	// If you specify this parameter, the secret value of the specified version stage is returned. If you do not specify this parameter, the secret value of the ACSCurrent version stage is returned.
 	//
-	// > For ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, RAM secrets, and ECS secrets, you can retrieve only the secret values of the ACSPrevious and ACSCurrent versions.
+	// > For ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, RAM secrets, and ECS secrets, you can only retrieve the secret values of the versions marked with ACSPrevious and ACSCurrent.
 	//
 	// example:
 	//

@@ -14,9 +14,7 @@ type iDeleteAliasRequest interface {
 }
 
 type DeleteAliasRequest struct {
-	// The alias that you want to delete.
-	//
-	// The value must be 1 to 255 characters in length and must include the alias/ prefix.
+	// The alias to delete. It must be 1 to 255 characters in length and must include the alias/ prefix.
 	//
 	// This parameter is required.
 	//

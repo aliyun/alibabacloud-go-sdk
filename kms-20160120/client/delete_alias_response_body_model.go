@@ -14,7 +14,7 @@ type iDeleteAliasResponseBody interface {
 }
 
 type DeleteAliasResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -9,14 +9,20 @@ type iGenerateDataKeyShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDataKeyName(v string) *GenerateDataKeyShrinkRequest
+	GetDataKeyName() *string
 	SetDryRun(v string) *GenerateDataKeyShrinkRequest
 	GetDryRun() *string
 	SetEncryptionContextShrink(v string) *GenerateDataKeyShrinkRequest
 	GetEncryptionContextShrink() *string
 	SetKeyId(v string) *GenerateDataKeyShrinkRequest
 	GetKeyId() *string
+	SetKeyMaterial(v string) *GenerateDataKeyShrinkRequest
+	GetKeyMaterial() *string
 	SetKeySpec(v string) *GenerateDataKeyShrinkRequest
 	GetKeySpec() *string
+	SetManagedByKms(v bool) *GenerateDataKeyShrinkRequest
+	GetManagedByKms() *bool
 	SetNumberOfBytes(v int32) *GenerateDataKeyShrinkRequest
 	GetNumberOfBytes() *int32
 	SetRecipient(v string) *GenerateDataKeyShrinkRequest
@@ -24,35 +30,43 @@ type iGenerateDataKeyShrinkRequest interface {
 }
 
 type GenerateDataKeyShrinkRequest struct {
-	// Specifies whether to enable DryRun mode.
+	// The name of the managed data key (DK). This parameter is required only when ManagedByKms is set to true.
 	//
-	// - true: enabled.
+	// example:
 	//
-	// - false (default): disabled.
+	// example-data-key
+	DataKeyName *string `json:"DataKeyName,omitempty" xml:"DataKeyName,omitempty"`
+	// Specifies whether to enable the dry run mode. Valid values:
 	//
-	// DryRun mode is used to test API calls, verify that you have the required permissions on the relevant resources, and check whether request parameters are configured correctly. When DryRun mode is enabled, KMS always returns a failure with a reason. Possible failure reasons include:
+	// - true: Enabled.
 	//
-	// - DryRunOperationError: The request would succeed if the DryRun parameter were not set.
+	// - false: Disabled.
 	//
-	// - ValidationError: A parameter specified in the request is invalid.
+	// Default value: false.
 	//
-	// - AccessDeniedError: You do not have permission to perform the operation on the KMS resource.
+	// The dry run mode is used to test API calls, verify whether you have the required permissions on the resources, and check whether the request parameters are correctly configured. After the dry run mode is enabled, KMS always returns a failure and provides the cause of the failure. The causes include:
+	//
+	// - DryRunOperationError: The request would succeed if the DryRun parameter is not configured.
+	//
+	// - ValidationError: The specified parameters in the request are invalid.
+	//
+	// - AccessDeniedError: You do not have the permissions to perform the operation on the KMS resources.
 	//
 	// example:
 	//
 	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// A JSON string of key-value pairs.
+	// The JSON string of key-value pairs.
 	//
-	// If you specify this parameter, you must provide the same parameter when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
+	// If you specify this parameter, you must provide the same parameter when you call the [Decrypt](https://help.aliyun.com/document_detail/28950.html) API operation. For more information, see [EncryptionContext](https://help.aliyun.com/document_detail/42975.html).
 	//
 	// example:
 	//
 	// {"Example":"Example"}
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	// The ID of the key. You can also specify a key alias or a key Amazon Resource Name (ARN). For more information about aliases, see [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
+	// The ID of the key. You can also specify the alias or Alibaba Cloud Resource Name (ARN) of the key. For more information about aliases, see [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
 	//
-	// >To access a key in another Alibaba Cloud account, you must specify the key ARN. The key ARN format is `acs:kms:${region}:${account}:key/${keyid}`.
+	// >When you access a key that belongs to another Alibaba Cloud account, you must enter the ARN of the key. The ARN of a key is in the `acs:kms:${region}:${account}:key/${keyid}` format.
 	//
 	// This parameter is required.
 	//
@@ -60,32 +74,82 @@ type GenerateDataKeyShrinkRequest struct {
 	//
 	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The length of the data key (DK) to generate. Valid values:
+	// The key material of the managed data key (DK). Specify this parameter only when ManagedByKms is set to true and Bring Your Own Key (BYOK) is used.
+	//
+	// example:
+	//
+	// a2V5LXBoeno2YWNkNTNmOTdmZGQyaXZ5Nzctc3UwaDliOTc4q9QB/5uWbEojCtMh0/Y72nto1RlekkSzhZD9Qkxc+WGBT0pHfOU6+fk1W8MTJNJRaAqOum7Ga+w6aJ/4hJUcJrpmDe2voDjQ
+	KeyMaterial *string `json:"KeyMaterial,omitempty" xml:"KeyMaterial,omitempty"`
+	// Specifies the length of the generated data key (DK). Valid values:
 	//
 	// - AES_256: a 256-bit symmetric key.
 	//
 	// - AES_128: a 128-bit symmetric key.
 	//
-	// > Use KeySpec or NumberOfBytes to specify the DK length. If neither is specified, KMS generates a 256-bit DK. If both are specified, KMS ignores the KeySpec parameter.
+	// >Use KeySpec or NumberOfBytes to specify the length of the data key (DK). If neither parameter is specified, KMS generates a 256-bit data key (DK). If both parameters are specified, KMS ignores the KeySpec parameter.
 	//
 	// example:
 	//
 	// AES_256
 	KeySpec *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	// The length of the data key (DK) to generate, in bytes.
+	// Specifies whether the data key (DK) is managed and generated by KMS.
+	ManagedByKms *bool `json:"ManagedByKms,omitempty" xml:"ManagedByKms,omitempty"`
+	// Specifies the length of the generated data key (DK) in bytes.
 	//
 	// Valid values: 1 to 1024.
 	//
 	// Default value:
 	//
-	// - When KeySpec is set to AES_256, the default value of NumberOfBytes is 32.
+	// - If KeySpec is set to AES_256, the default value is 32.
 	//
-	// - When KeySpec is set to AES_128, the default value of NumberOfBytes is 16.
+	// - If KeySpec is set to AES_128, the default value is 16.
 	//
 	// example:
 	//
 	// 256
 	NumberOfBytes *int32 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
+	// The trusted environment authentication information.
+	//
+	// - AttestationDocument
+	//
+	// // The trusted environment attestation document using Base64 encoding, which includes information such as environment measurements, signatures, and certificates.
+	//
+	// - KeyEncryptionAlgorithm
+	//
+	// // The secret key encryption algorithm. Only RSAES_OAEP_SHA_256 is supported.
+	//
+	// Content structure of AttestationDocument:
+	//
+	// - quoted
+	//
+	//  - extendUserData // The user extension data using Base64 encoding. The decoded structure is as follows:
+	//
+	//    - aud // The fixed value "kms".
+	//
+	//    - iat // The issuance time, which is a UNIX timestamp in seconds.
+	//
+	//    - exp // The expire time, which is a UNIX timestamp in seconds.
+	//
+	//    - pubKey // The RSA2048 public key in SPKI format using Base64 encoding.
+	//
+	//    - digestAlg // The summary algorithm. Only "sha256" is supported.
+	//
+	//    - ver // The protocol version. Only "v1" is supported.
+	//
+	//    - signature // The report signature, which is used to authenticate the integrity of quoted and extendUserData.
+	//
+	//  - pcrInfo:
+	//
+	//    - pcrValues // The Platform Configuration Register (PCR) measurements.
+	//
+	//    - pcrSelectionOut // The PCR selection information.
+	//
+	//    - pcrUpdateCounter // The number of PCR updates.
+	//
+	//  - cert // The platform attestation certificate, which is used to authenticate the validity of the signature.
+	//
+	// 	Notice: This parameter takes effect only when you invoke the API operation through a dedicated gateway.</notice>
+	//
 	// example:
 	//
 	// {
@@ -106,6 +170,10 @@ func (s GenerateDataKeyShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GenerateDataKeyShrinkRequest) GetDataKeyName() *string {
+	return s.DataKeyName
+}
+
 func (s *GenerateDataKeyShrinkRequest) GetDryRun() *string {
 	return s.DryRun
 }
@@ -118,8 +186,16 @@ func (s *GenerateDataKeyShrinkRequest) GetKeyId() *string {
 	return s.KeyId
 }
 
+func (s *GenerateDataKeyShrinkRequest) GetKeyMaterial() *string {
+	return s.KeyMaterial
+}
+
 func (s *GenerateDataKeyShrinkRequest) GetKeySpec() *string {
 	return s.KeySpec
+}
+
+func (s *GenerateDataKeyShrinkRequest) GetManagedByKms() *bool {
+	return s.ManagedByKms
 }
 
 func (s *GenerateDataKeyShrinkRequest) GetNumberOfBytes() *int32 {
@@ -128,6 +204,11 @@ func (s *GenerateDataKeyShrinkRequest) GetNumberOfBytes() *int32 {
 
 func (s *GenerateDataKeyShrinkRequest) GetRecipient() *string {
 	return s.Recipient
+}
+
+func (s *GenerateDataKeyShrinkRequest) SetDataKeyName(v string) *GenerateDataKeyShrinkRequest {
+	s.DataKeyName = &v
+	return s
 }
 
 func (s *GenerateDataKeyShrinkRequest) SetDryRun(v string) *GenerateDataKeyShrinkRequest {
@@ -145,8 +226,18 @@ func (s *GenerateDataKeyShrinkRequest) SetKeyId(v string) *GenerateDataKeyShrink
 	return s
 }
 
+func (s *GenerateDataKeyShrinkRequest) SetKeyMaterial(v string) *GenerateDataKeyShrinkRequest {
+	s.KeyMaterial = &v
+	return s
+}
+
 func (s *GenerateDataKeyShrinkRequest) SetKeySpec(v string) *GenerateDataKeyShrinkRequest {
 	s.KeySpec = &v
+	return s
+}
+
+func (s *GenerateDataKeyShrinkRequest) SetManagedByKms(v bool) *GenerateDataKeyShrinkRequest {
+	s.ManagedByKms = &v
 	return s
 }
 

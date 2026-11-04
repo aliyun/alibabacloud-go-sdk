@@ -20,19 +20,19 @@ type iCreateApplicationAccessPointRequest interface {
 }
 
 type CreateApplicationAccessPointRequest struct {
-	// The authentication method. Currently, only ClientKey is supported.
+	// The authentication method. Only ClientKey is supported.
 	//
 	// example:
 	//
 	// ClientKey
 	AuthenticationMethod *string `json:"AuthenticationMethod,omitempty" xml:"AuthenticationMethod,omitempty"`
-	// The description of the AAP.
+	// The description.
 	//
 	// example:
 	//
 	// aap description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the AAP.
+	// The name of the application access point (AAP).
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type CreateApplicationAccessPointRequest struct {
 	//
 	// aap_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The permission policy.
+	// The attached access policies.
 	//
-	// > You can bind up to three permission policies to each AAP.
+	// > You can attach up to three access policies to each application access point (AAP).
 	//
 	// This parameter is required.
 	//

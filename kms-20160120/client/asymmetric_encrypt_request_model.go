@@ -30,27 +30,27 @@ type AsymmetricEncryptRequest struct {
 	//
 	// RSAES_OAEP_SHA_1
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// Specifies whether to enable the dry run feature.
+	// Specifies whether to enable the dry run mode. Valid values:
 	//
-	// - true: enables the feature.
+	// - true: enables the dry run mode.
 	//
-	// - false (default): disables the feature.
+	// - false: disables the dry run mode. This is the default value.
 	//
-	// The dry run feature is used to test the API call and verify the permissions on the specified resources and the validity of the request parameters. If you enable the dry run feature, KMS always returns a failed result and a failure reason. The failure reasons include the following:
+	// The dry run mode is used to test API calls and verify whether you have the required permissions on the resources and whether the request parameters are correctly configured. When the dry run mode is enabled, KMS always returns a failure and provides the cause of the failure. The causes include:
 	//
-	// - DryRunOperationError: The request would have succeeded if the DryRun parameter was not specified.
+	// - DryRunOperationError: The request would succeed if the DryRun parameter is not configured.
 	//
-	// - ValidationError: The specified parameters in the request are invalid.
+	// - ValidationError: A specified parameter in the request is invalid.
 	//
-	// - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
+	// - AccessDeniedError: You do not have permissions to perform the operation on the KMS resource.
 	//
 	// example:
 	//
 	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the key. You can also specify the alias or the Amazon Resource Name (ARN) of the key. For more information about aliases, see [Manage aliases](https://help.aliyun.com/document_detail/480655.html).
+	// The ID of the key. You can also specify the alias or Alibaba Cloud Resource Name (ARN) of the key. For more information about aliases, see [Manage key aliases](https://help.aliyun.com/document_detail/480655.html).
 	//
-	// > To access a key of another Alibaba Cloud account, you must specify the ARN of the key. The key ARN is in the format of `acs:kms:${region}:${account}:key/${keyid}`.
+	// > To access a key that belongs to another Alibaba Cloud account, you must enter the ARN of the key. The ARN of a key is in the `acs:kms:${region}:${account}:key/${keyid}` format.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type AsymmetricEncryptRequest struct {
 	//
 	// key-hzz630494463ejqjx****
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The ID of the key version. The ID must be a globally unique identifier.
+	// The ID of the key version. The globally unique identifier of the key version.
 	//
-	// > To obtain the key version ID, call the [ListKeyVersions](https://help.aliyun.com/document_detail/133966.html) operation.
+	// > You can call the [ListKeyVersions](https://help.aliyun.com/document_detail/133966.html) operation to obtain the key version ID.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type AsymmetricEncryptRequest struct {
 	//
 	// 2ab1a983-7072-4bbc-a582-584b5bd8****
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	// The plaintext to be encrypted. The value must be Base64-encoded.
+	// The plaintext to be encrypted. The plaintext must be Base64-encoded.
 	//
 	// This parameter is required.
 	//

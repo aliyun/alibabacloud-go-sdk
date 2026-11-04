@@ -66,29 +66,29 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Decrypts data using an asymmetric key.
+// Decrypts data by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For details about the access policies that must be granted to a RAM user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to call this API operation, refer to [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be invoked through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can call this API operation by using a shared gateway or a dedicated gateway. For more information, refer to [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: Access KMS using a public endpoint or a VPC endpoint. This method requires you to enable public network access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the public network or by using a VPC endpoint. To use this method, you must enable public network access. For more information, refer to [Access keys in a KMS instance over the public network](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: Access KMS using a KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS by using the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - Calls through a shared gateway: The QPS limit for a single user is 200 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// - Shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - Calls through a dedicated gateway: The QPS limit for a single user is determined by the performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, refer to [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Details
+// ### Operation description
 //
-// Only asymmetric keys with **Usage*	- set to **ENCRYPT/DECRYPT*	- are supported. The following table lists the supported encryption algorithms:
+// Only asymmetric keys whose **Usage*	- is set to **ENCRYPT/DECRYPT*	- are supported. The following table describes the supported encryption algorithms.
 //
 // | KeySpec        | Algorithm           | Description  |  Ciphertext length (bytes)|
 //
@@ -102,9 +102,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // | RSA_3072 | RSAES_OAEP_SHA_1      | RSAES-OAEP using SHA1 and MGF1 with SHA1 | 384 |
 //
-// | EC_SM2 | SM2PKE | SM2 elliptic curve public key encryption algorithm | Up to 6144 |
+// | EC_SM2 | SM2PKE | SM2 elliptic curve public key encryption algorithm | Up to 6,144 |
 //
-// This topic provides an example of using an asymmetric key with key ID `key-hzz630494463ejqjx****` and key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****` to decrypt the ciphertext `BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM25fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mqdwO0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKhibtQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1W****==` using the decryption algorithm `RSAES_OAEP_SHA_1`.
+// This topic provides an example on how to use the asymmetric key whose ID is `key-hzz630494463ejqjx****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` to decrypt the ciphertext `BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM25fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mqdwO0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKhibtQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1W****==` by using the `RSAES_OAEP_SHA_1` decryption algorithm.
 //
 // @param request - AsymmetricDecryptRequest
 //
@@ -170,29 +170,29 @@ func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptReq
 
 // Summary:
 //
-// Decrypts data using an asymmetric key.
+// Decrypts data by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For details about the access policies that must be granted to a RAM user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to call this API operation, refer to [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be invoked through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can call this API operation by using a shared gateway or a dedicated gateway. For more information, refer to [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: Access KMS using a public endpoint or a VPC endpoint. This method requires you to enable public network access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the public network or by using a VPC endpoint. To use this method, you must enable public network access. For more information, refer to [Access keys in a KMS instance over the public network](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: Access KMS using a KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS by using the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - Calls through a shared gateway: The QPS limit for a single user is 200 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// - Shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - Calls through a dedicated gateway: The QPS limit for a single user is determined by the performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, refer to [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Details
+// ### Operation description
 //
-// Only asymmetric keys with **Usage*	- set to **ENCRYPT/DECRYPT*	- are supported. The following table lists the supported encryption algorithms:
+// Only asymmetric keys whose **Usage*	- is set to **ENCRYPT/DECRYPT*	- are supported. The following table describes the supported encryption algorithms.
 //
 // | KeySpec        | Algorithm           | Description  |  Ciphertext length (bytes)|
 //
@@ -206,9 +206,9 @@ func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptReq
 //
 // | RSA_3072 | RSAES_OAEP_SHA_1      | RSAES-OAEP using SHA1 and MGF1 with SHA1 | 384 |
 //
-// | EC_SM2 | SM2PKE | SM2 elliptic curve public key encryption algorithm | Up to 6144 |
+// | EC_SM2 | SM2PKE | SM2 elliptic curve public key encryption algorithm | Up to 6,144 |
 //
-// This topic provides an example of using an asymmetric key with key ID `key-hzz630494463ejqjx****` and key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****` to decrypt the ciphertext `BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM25fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mqdwO0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKhibtQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1W****==` using the decryption algorithm `RSAES_OAEP_SHA_1`.
+// This topic provides an example on how to use the asymmetric key whose ID is `key-hzz630494463ejqjx****` and version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` to decrypt the ciphertext `BQKP+1zK6+ZEMxTP5qaVzcsgXtWplYBKm0NXdSnB5FzliFxE1bSiu4dnEIlca2JpeH7yz1/S6fed630H+hIH6DoM25fTLNcKj+mFB0Xnh9m2+HN59Mn4qyTfcUeadnfCXSWcGBouhXFwcdd2rJ3n337bzTf4jm659gZu3L0i6PLuxM9p7mqdwO0cKJPfGVfhnfMz+f4alMg79WB/NNyE2lyX7/qxvV49ObNrrJbKSFiz8Djocaf0IESNLMbfYI5bXjWkJlX92DQbKhibtQW8ZOJ//ZC6t0AWcUoKL6QDm/dg5koQalcleRinpB+QadFm894sLbVZ9+N4GVsv1W****==` by using the `RSAES_OAEP_SHA_1` decryption algorithm.
 //
 // @param request - AsymmetricDecryptRequest
 //
@@ -226,45 +226,45 @@ func (client *Client) AsymmetricDecrypt(request *AsymmetricDecryptRequest) (_res
 
 // Summary:
 //
-// Encrypts data by using the public key of an asymmetric CMK.
+// Encrypts data by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For information about the permissions that are required to call this operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be called through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation by using a shared gateway or a dedicated gateway. For details, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: You can access KMS over the Internet or using a VPC domain name. To access KMS over the Internet, you must enable Internet access. For more information, see [Access a key in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS through public network access or a VPC domain name. To use this method, you must enable the public network access switch. For specific operations, see [Access keys in a KMS instance through public network access](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: You can access KMS using the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS by using the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - If you use a shared gateway: The number of queries per second (QPS) for a single user is limited to 200. If the limit is exceeded, API calls are throttled. This may affect your business. We recommend that you plan your API calls to avoid exceeding this limit.
+// - Shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - If you use a dedicated gateway: The QPS limit for a single user depends on the computing performance specifications of your KMS instance. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Description
+// ### Operation description
 //
-// This operation supports only asymmetric keys that have the **Usage*	- parameter set to **ENCRYPT/DECRYPT**. The following table describes the supported encryption algorithms.
+// Only asymmetric keys whose **Usage*	- is set to **ENCRYPT/DECRYPT*	- are supported. The following table describes the supported encryption algorithms.
 //
-// | KeySpec   | Algorithm             | Description                                        | Maximum number of bytes that can be encrypted |
+// | KeySpec        | Algorithm           | Description  |  Maximum number of bytes that can be encrypted |
 //
-// | --------- | --------------------- | -------------------------------------------------- | --------------------------------------------- |
+// | ------------- |------------   | ----- |  ----- |
 //
-// | RSA_2048 | RSAES_OAEP_SHA_256 | RSAES-OAEP using SHA-256 and MGF1 with SHA-256     | 190                                           |
+// | RSA_2048 | RSAES_OAEP_SHA_256  | RSAES-OAEP using SHA-256 and MGF1 with SHA-256| 190 |
 //
-// | RSA_2048 | RSAES_OAEP_SHA_1   | RSAES-OAEP using SHA1 and MGF1 with SHA1           | 214                                           |
+// | RSA_2048 | RSAES_OAEP_SHA_1      | RSAES-OAEP using SHA1 and MGF1 with SHA1 | 214 |
 //
-// | RSA_3072 | RSAES_OAEP_SHA_256 | RSAES-OAEP using SHA-256 and MGF1 with SHA-256     | 318                                           |
+// | RSA_3072 | RSAES_OAEP_SHA_256  | RSAES-OAEP using SHA-256 and MGF1 with SHA-256| 318 |
 //
-// | RSA_3072 | RSAES_OAEP_SHA_1   | RSAES-OAEP using SHA1 and MGF1 with SHA1           | 342                                           |
+// | RSA_3072 | RSAES_OAEP_SHA_1      | RSAES-OAEP using SHA1 and MGF1 with SHA1 | 342 |
 //
-// | EC_SM2   | SM2PKE                | SM2 elliptic curve public key encryption algorithm | 6047                                          |
+// | EC_SM2 | SM2PKE | SM2 elliptic curve public key encryption algorithm | 6047 |
 //
-// In this example, the plaintext `SGVsbG8gd29ybGQ=` is encrypted using an asymmetric key with the key ID `key-hzz630494463ejqjx****`, the key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****`, and the `RSAES_OAEP_SHA_1` encryption algorithm.
+// The following example shows how to use the `RSAES_OAEP_SHA_1` encryption algorithm to encrypt the plaintext `SGVsbG8gd29ybGQ=` by using an asymmetric key whose key ID is `key-hzz630494463ejqjx****` and key version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****`.
 //
 // @param request - AsymmetricEncryptRequest
 //
@@ -324,45 +324,45 @@ func (client *Client) AsymmetricEncryptWithOptions(request *AsymmetricEncryptReq
 
 // Summary:
 //
-// Encrypts data by using the public key of an asymmetric CMK.
+// Encrypts data by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For information about the permissions that are required to call this operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be called through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation by using a shared gateway or a dedicated gateway. For details, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: You can access KMS over the Internet or using a VPC domain name. To access KMS over the Internet, you must enable Internet access. For more information, see [Access a key in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS through public network access or a VPC domain name. To use this method, you must enable the public network access switch. For specific operations, see [Access keys in a KMS instance through public network access](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: You can access KMS using the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS by using the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - If you use a shared gateway: The number of queries per second (QPS) for a single user is limited to 200. If the limit is exceeded, API calls are throttled. This may affect your business. We recommend that you plan your API calls to avoid exceeding this limit.
+// - Shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - If you use a dedicated gateway: The QPS limit for a single user depends on the computing performance specifications of your KMS instance. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Description
+// ### Operation description
 //
-// This operation supports only asymmetric keys that have the **Usage*	- parameter set to **ENCRYPT/DECRYPT**. The following table describes the supported encryption algorithms.
+// Only asymmetric keys whose **Usage*	- is set to **ENCRYPT/DECRYPT*	- are supported. The following table describes the supported encryption algorithms.
 //
-// | KeySpec   | Algorithm             | Description                                        | Maximum number of bytes that can be encrypted |
+// | KeySpec        | Algorithm           | Description  |  Maximum number of bytes that can be encrypted |
 //
-// | --------- | --------------------- | -------------------------------------------------- | --------------------------------------------- |
+// | ------------- |------------   | ----- |  ----- |
 //
-// | RSA_2048 | RSAES_OAEP_SHA_256 | RSAES-OAEP using SHA-256 and MGF1 with SHA-256     | 190                                           |
+// | RSA_2048 | RSAES_OAEP_SHA_256  | RSAES-OAEP using SHA-256 and MGF1 with SHA-256| 190 |
 //
-// | RSA_2048 | RSAES_OAEP_SHA_1   | RSAES-OAEP using SHA1 and MGF1 with SHA1           | 214                                           |
+// | RSA_2048 | RSAES_OAEP_SHA_1      | RSAES-OAEP using SHA1 and MGF1 with SHA1 | 214 |
 //
-// | RSA_3072 | RSAES_OAEP_SHA_256 | RSAES-OAEP using SHA-256 and MGF1 with SHA-256     | 318                                           |
+// | RSA_3072 | RSAES_OAEP_SHA_256  | RSAES-OAEP using SHA-256 and MGF1 with SHA-256| 318 |
 //
-// | RSA_3072 | RSAES_OAEP_SHA_1   | RSAES-OAEP using SHA1 and MGF1 with SHA1           | 342                                           |
+// | RSA_3072 | RSAES_OAEP_SHA_1      | RSAES-OAEP using SHA1 and MGF1 with SHA1 | 342 |
 //
-// | EC_SM2   | SM2PKE                | SM2 elliptic curve public key encryption algorithm | 6047                                          |
+// | EC_SM2 | SM2PKE | SM2 elliptic curve public key encryption algorithm | 6047 |
 //
-// In this example, the plaintext `SGVsbG8gd29ybGQ=` is encrypted using an asymmetric key with the key ID `key-hzz630494463ejqjx****`, the key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****`, and the `RSAES_OAEP_SHA_1` encryption algorithm.
+// The following example shows how to use the `RSAES_OAEP_SHA_1` encryption algorithm to encrypt the plaintext `SGVsbG8gd29ybGQ=` by using an asymmetric key whose key ID is `key-hzz630494463ejqjx****` and key version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****`.
 //
 // @param request - AsymmetricEncryptRequest
 //
@@ -380,51 +380,51 @@ func (client *Client) AsymmetricEncrypt(request *AsymmetricEncryptRequest) (_res
 
 // Summary:
 //
-// Generates a digital signature by using an asymmetric CMK.
+// Signs data by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For information about the access policies that are required for a RAM user or RAM role to call this operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the permission policy required for a RAM user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be called through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can call this API operation through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: You can access KMS over the Internet or a VPC. This method requires you to enable Internet access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the Internet or through a VPC endpoint. To use this method, you must enable Internet access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: You can access KMS using the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS through the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - Shared gateway: This operation is limited to 200 queries per second (QPS) for each user. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
+// - Calls through a shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - Dedicated gateway: The QPS for each user is limited by the performance specifications of your KMS instance. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/480120.html).
+// - Calls through a dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Description
+// ### Details
 //
-// This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
+// Only asymmetric keys whose **Usage*	- is set to **SIGN/VERIFY*	- are supported. The following table lists the supported signature algorithms.
 //
-// | KeySpec   | Algorithm            | Description                                                |
+// | KeySpec        | Algorithm           | Description  |
 //
-// | --------- | -------------------- | ---------------------------------------------------------- |
+// | ------------- |------------   | ----- |
 //
-// | RSA_2048 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_2048 | RSA_PSS_SHA_256  |RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_2048 | RSA_PKCS1_SHA_256   |RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | RSA_3072 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_3072 | RSA_PSS_SHA_256  |RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_3072 | RSA_PKCS1_SHA_256   |RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | EC_P256  | ECDSA_SHA_256      | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest  |
+// | EC_P256 | ECDSA_SHA_256   |ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
 //
-// | EC_P256K | ECDSA_SHA_256      | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
+// | EC_P256K | ECDSA_SHA_256   |ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
 //
-// | EC_SM2   | SM2DSA               | SM2 elliptic curve digital signature algorithm             |
+// | EC_SM2 | SM2DSA |SM2 elliptic curve digital signature algorithm |
 //
-// > According to the GB/T 32918.2 standard "Information security technology - SM2 elliptic curve public key cryptography - Part 2: Digital signature algorithm", when you calculate an SM2 signature, the value of the **Digest*	- parameter is not the SM3 hash value of the original message. Instead, the value is the SM3 hash value of the result of concatenating Z(A) and M. M is the original message to be signed. Z(A) is the hash value of user A, as defined in GB/T 32918.2.
+// > According to the national standard GB/T 32918.2 "Information security technology - Public key cryptographic algorithm SM2 based on elliptic curves - Part 2: Digital signature algorithm", when calculating an SM2 signature, the **Digest*	- parameter is not the SM3 digest calculated directly from the original message. Instead, it is the digest calculated from the concatenation of Z(A) and M, where M is the original message to be signed, and Z(A) is the hash value of User A defined in GB/T 32918.2.
 //
-// This topic provides an example of how to use an asymmetric key with the key ID `5c438b18-05be-40ad-b6c2-3be6752c****` and the key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****` to sign the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=` using the `RSA_PSS_SHA_256` signature algorithm.
+// This topic provides an example on how to use an asymmetric key whose key ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and key version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` to sign the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=` by using the `RSA_PSS_SHA_256` signature algorithm.
 //
 // @param request - AsymmetricSignRequest
 //
@@ -484,51 +484,51 @@ func (client *Client) AsymmetricSignWithOptions(request *AsymmetricSignRequest, 
 
 // Summary:
 //
-// Generates a digital signature by using an asymmetric CMK.
+// Signs data by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For information about the access policies that are required for a RAM user or RAM role to call this operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the permission policy required for a RAM user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be called through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can call this API operation through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: You can access KMS over the Internet or a VPC. This method requires you to enable Internet access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the Internet or through a VPC endpoint. To use this method, you must enable Internet access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: You can access KMS using the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS through the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - Shared gateway: This operation is limited to 200 queries per second (QPS) for each user. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
+// - Calls through a shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - Dedicated gateway: The QPS for each user is limited by the performance specifications of your KMS instance. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/480120.html).
+// - Calls through a dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Description
+// ### Details
 //
-// This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **SIGN/VERIFY**. The following table describes the supported signature algorithms.
+// Only asymmetric keys whose **Usage*	- is set to **SIGN/VERIFY*	- are supported. The following table lists the supported signature algorithms.
 //
-// | KeySpec   | Algorithm            | Description                                                |
+// | KeySpec        | Algorithm           | Description  |
 //
-// | --------- | -------------------- | ---------------------------------------------------------- |
+// | ------------- |------------   | ----- |
 //
-// | RSA_2048 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_2048 | RSA_PSS_SHA_256  |RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_2048 | RSA_PKCS1_SHA_256   |RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | RSA_3072 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_3072 | RSA_PSS_SHA_256  |RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_3072 | RSA_PKCS1_SHA_256   |RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | EC_P256  | ECDSA_SHA_256      | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest  |
+// | EC_P256 | ECDSA_SHA_256   |ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
 //
-// | EC_P256K | ECDSA_SHA_256      | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
+// | EC_P256K | ECDSA_SHA_256   |ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
 //
-// | EC_SM2   | SM2DSA               | SM2 elliptic curve digital signature algorithm             |
+// | EC_SM2 | SM2DSA |SM2 elliptic curve digital signature algorithm |
 //
-// > According to the GB/T 32918.2 standard "Information security technology - SM2 elliptic curve public key cryptography - Part 2: Digital signature algorithm", when you calculate an SM2 signature, the value of the **Digest*	- parameter is not the SM3 hash value of the original message. Instead, the value is the SM3 hash value of the result of concatenating Z(A) and M. M is the original message to be signed. Z(A) is the hash value of user A, as defined in GB/T 32918.2.
+// > According to the national standard GB/T 32918.2 "Information security technology - Public key cryptographic algorithm SM2 based on elliptic curves - Part 2: Digital signature algorithm", when calculating an SM2 signature, the **Digest*	- parameter is not the SM3 digest calculated directly from the original message. Instead, it is the digest calculated from the concatenation of Z(A) and M, where M is the original message to be signed, and Z(A) is the hash value of User A defined in GB/T 32918.2.
 //
-// This topic provides an example of how to use an asymmetric key with the key ID `5c438b18-05be-40ad-b6c2-3be6752c****` and the key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****` to sign the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=` using the `RSA_PSS_SHA_256` signature algorithm.
+// This topic provides an example on how to use an asymmetric key whose key ID is `5c438b18-05be-40ad-b6c2-3be6752c****` and key version ID is `2ab1a983-7072-4bbc-a582-584b5bd8****` to sign the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuy****=` by using the `RSA_PSS_SHA_256` signature algorithm.
 //
 // @param request - AsymmetricSignRequest
 //
@@ -546,51 +546,51 @@ func (client *Client) AsymmetricSign(request *AsymmetricSignRequest) (_result *A
 
 // Summary:
 //
-// Verifies a digital signature by using the public key of an asymmetric CMK.
+// Verifies a signature by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For information about the access policy required for a RAM user or RAM role to call this API operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be called through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation by using a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: You can access KMS over the Internet or through a VPC. To access KMS over the Internet, you must enable the public endpoint. For more information, see [Access KMS instances over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the public network or by using a VPC endpoint. This method requires you to enable public network access. For more information, see [Access keys in a KMS instance over the public network](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: You can access KMS using the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS by using the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - If you use a shared gateway, the queries per second (QPS) limit for this operation is 200 for a single user. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you manage your call frequency to stay within the QPS limit.
+// - Shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Call this API operation at a reasonable frequency.
 //
-// - If you use a dedicated gateway, the QPS limit for this operation for a single user is determined by the computing performance specifications of your KMS instance. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation is subject to the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Description
+// ### Details
 //
-// This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **SIGN/VERIFY**. The following table lists the supported signature algorithms.
+// Only asymmetric keys whose **Usage*	- is **SIGN/VERIFY*	- are supported. The following table lists the supported signature algorithms.
 //
-// | KeySpec   | Algorithm            | Description                                                |
+// | KeySpec        | Algorithm           | Description  |
 //
-// | --------- | -------------------- | ---------------------------------------------------------- |
+// | ------------- |------------   | ----- |
 //
-// | RSA_2048 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_2048 | RSA_PSS_SHA_256  | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_2048 | RSA_PKCS1_SHA_256   | RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | RSA_3072 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_3072  | RSA_PSS_SHA_256  | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_3072  | RSA_PKCS1_SHA_256   | RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | EC_P256  | ECDSA_SHA_256      | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest  |
+// | EC_P256 | ECDSA_SHA_256   | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
 //
-// | EC_P256K | ECDSA_SHA_256      | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
+// | EC_P256K | ECDSA_SHA_256   | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
 //
-// | EC_SM2   | SM2DSA               | SM2 elliptic curve digital signature algorithm             |
+// | EC_SM2 | SM2DSA | SM2 elliptic curve digital signature algorithm |
 //
-// > In accordance with the GBT32918 standard, when an SM2 signature is calculated, the value of the **Digest*	- parameter is not the SM3 hash value of the original message. Instead, the value is the SM3 hash value of the result generated by concatenating Z(A) and M. In this formula, M is the original message to be signed, and Z(A) is the hash value of user A as defined in GBT32918.
+// > According to the national standard GBT32918, when calculating an SM2 signature, the **Digest*	- parameter is not the SM3 digest calculated directly from the original message. Instead, it is the digest calculated from the concatenated value of Z(A) and M, where M is the original message to be signed, and Z(A) is the hash value of User A defined in GBT32918.
 //
-// This topic provides an example of how to use an asymmetric key with the key ID \\`5c438b18-05be-40ad-b6c2-3be6752c\\*\\*\\*\\*\\` and the key version ID \\`2ab1a983-7072-4bbc-a582-584b5bd8\\*\\*\\*\\*\\` to verify the signature \\`M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq\\*\\*\\*\\*==\\` for the digest \\`ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuyjfzw=\\` using the RSA_PSS_SHA_256 signature algorithm.
+// This topic provides an example of verifying the signature `M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq****==` that was generated for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuyjfzw=` by using the RSA_PSS_SHA_256 algorithm and an asymmetric key with the key ID `5c438b18-05be-40ad-b6c2-3be6752c****` and key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****`.
 //
 // @param request - AsymmetricVerifyRequest
 //
@@ -654,51 +654,51 @@ func (client *Client) AsymmetricVerifyWithOptions(request *AsymmetricVerifyReque
 
 // Summary:
 //
-// Verifies a digital signature by using the public key of an asymmetric CMK.
+// Verifies a signature by using an asymmetric key.
 //
 // Description:
 //
 // ### Precautions
 //
-// - For information about the access policy required for a RAM user or RAM role to call this API operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be called through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation by using a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: You can access KMS over the Internet or through a VPC. To access KMS over the Internet, you must enable the public endpoint. For more information, see [Access KMS instances over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the public network or by using a VPC endpoint. This method requires you to enable public network access. For more information, see [Access keys in a KMS instance over the public network](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: You can access KMS using the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS by using the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - If you use a shared gateway, the queries per second (QPS) limit for this operation is 200 for a single user. If you exceed this limit, API calls are throttled, which may impact your business. We recommend that you manage your call frequency to stay within the QPS limit.
+// - Shared gateway: The QPS limit per user for this API operation is 200. If the limit is exceeded, API calls are throttled, which may affect your business. Call this API operation at a reasonable frequency.
 //
-// - If you use a dedicated gateway, the QPS limit for this operation for a single user is determined by the computing performance specifications of your KMS instance. For more information, see [Performance metrics](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation is subject to the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Description
+// ### Details
 //
-// This operation supports only asymmetric keys for which the **Usage*	- parameter is set to **SIGN/VERIFY**. The following table lists the supported signature algorithms.
+// Only asymmetric keys whose **Usage*	- is **SIGN/VERIFY*	- are supported. The following table lists the supported signature algorithms.
 //
-// | KeySpec   | Algorithm            | Description                                                |
+// | KeySpec        | Algorithm           | Description  |
 //
-// | --------- | -------------------- | ---------------------------------------------------------- |
+// | ------------- |------------   | ----- |
 //
-// | RSA_2048 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_2048 | RSA_PSS_SHA_256  | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_2048 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_2048 | RSA_PKCS1_SHA_256   | RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | RSA_3072 | RSA_PSS_SHA_256   | RSASSA-PSS using SHA-256 and MGF1 with SHA-256             |
+// | RSA_3072  | RSA_PSS_SHA_256  | RSASSA-PSS using SHA-256 and MGF1 with SHA-256 |
 //
-// | RSA_3072 | RSA_PKCS1_SHA_256 | RSASSA-PKCS1-v1_5 using SHA-256                           |
+// | RSA_3072  | RSA_PKCS1_SHA_256   | RSASSA-PKCS1-v1_5 using SHA-256 |
 //
-// | EC_P256  | ECDSA_SHA_256      | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest  |
+// | EC_P256 | ECDSA_SHA_256   | ECDSA on the P-256 Curve(secp256r1) with a SHA-256 digest |
 //
-// | EC_P256K | ECDSA_SHA_256      | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
+// | EC_P256K | ECDSA_SHA_256   | ECDSA on the P-256K Curve(secp256k1) with a SHA-256 digest |
 //
-// | EC_SM2   | SM2DSA               | SM2 elliptic curve digital signature algorithm             |
+// | EC_SM2 | SM2DSA | SM2 elliptic curve digital signature algorithm |
 //
-// > In accordance with the GBT32918 standard, when an SM2 signature is calculated, the value of the **Digest*	- parameter is not the SM3 hash value of the original message. Instead, the value is the SM3 hash value of the result generated by concatenating Z(A) and M. In this formula, M is the original message to be signed, and Z(A) is the hash value of user A as defined in GBT32918.
+// > According to the national standard GBT32918, when calculating an SM2 signature, the **Digest*	- parameter is not the SM3 digest calculated directly from the original message. Instead, it is the digest calculated from the concatenated value of Z(A) and M, where M is the original message to be signed, and Z(A) is the hash value of User A defined in GBT32918.
 //
-// This topic provides an example of how to use an asymmetric key with the key ID \\`5c438b18-05be-40ad-b6c2-3be6752c\\*\\*\\*\\*\\` and the key version ID \\`2ab1a983-7072-4bbc-a582-584b5bd8\\*\\*\\*\\*\\` to verify the signature \\`M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq\\*\\*\\*\\*==\\` for the digest \\`ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuyjfzw=\\` using the RSA_PSS_SHA_256 signature algorithm.
+// This topic provides an example of verifying the signature `M2CceNZH00ZgL9ED/ZHFp21YRAvYeZHknJUc207OCZ0N9wNn9As4z2bON3FF3je+1Nu+2+/8Zj50HpMTpzYpMp2R93cYmACCmhaYoKydxylbyGzJR8y9likZRCrkD38lRoS40aBBvv/6iRKzQuo9EGYVcel36cMNg00VmYNBy3pa1rwg3gA4l3cy6kjayZja1WGPkVhrVKsrJMdbpl0ApLjXKuD8rw1n1XLCwCUEL5eLPljTZaAveqdOFQOiZnZEGI27qIiZe7I1fN8tcz6anS/gTM7xRKE++5egEvRWlTQQTJeApnPSiUPA+8ZykNdelQsOQh5SrGoyI4A5pq****==` that was generated for the digest `ZOyIygCyaOW6GjVnihtTFtIS9PNmskdyMlNKiuyjfzw=` by using the RSA_PSS_SHA_256 algorithm and an asymmetric key with the key ID `5c438b18-05be-40ad-b6c2-3be6752c****` and key version ID `2ab1a983-7072-4bbc-a582-584b5bd8****`.
 //
 // @param request - AsymmetricVerifyRequest
 //
@@ -716,19 +716,19 @@ func (client *Client) AsymmetricVerify(request *AsymmetricVerifyRequest) (_resul
 
 // Summary:
 //
-// Retrieves secret values in batches.
+// Retrieves multiple secrets.
 //
 // Description:
 //
-// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked as ACSCurrent by default.
+// - If you do not specify a version ID or version stage, KMS returns the secret value of the version marked with ACSCurrent by default.
 //
-// - The caller must have the `kms:GetSecretValue` permission on all secrets in the batch.
+// - The caller must also have the `kms:GetSecretValue` permission on all secrets in the batch.
 //
-// - If a secret uses a customer master key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If a secret uses a custom master key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides an example of how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
+// This topic provides an example on how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
 //
 // @param tmpReq - BatchGetSecretValueRequest
 //
@@ -778,19 +778,19 @@ func (client *Client) BatchGetSecretValueWithOptions(tmpReq *BatchGetSecretValue
 
 // Summary:
 //
-// Retrieves secret values in batches.
+// Retrieves multiple secrets.
 //
 // Description:
 //
-// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked as ACSCurrent by default.
+// - If you do not specify a version ID or version stage, KMS returns the secret value of the version marked with ACSCurrent by default.
 //
-// - The caller must have the `kms:GetSecretValue` permission on all secrets in the batch.
+// - The caller must also have the `kms:GetSecretValue` permission on all secrets in the batch.
 //
-// - If a secret uses a customer master key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If a secret uses a custom master key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides an example of how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
+// This topic provides an example on how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
 //
 // @param request - BatchGetSecretValueRequest
 //
@@ -808,11 +808,13 @@ func (client *Client) BatchGetSecretValue(request *BatchGetSecretValueRequest) (
 
 // Summary:
 //
-// Cancels the deletion task of a CMK.
+// Cancels the deletion of a key.
 //
 // Description:
 //
-// If the deletion task of a CMK is canceled, the CMK returns to the Enabled state.
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+//
+// - After the request to delete the key is successfully canceled, the key is enabled.
 //
 // @param request - CancelKeyDeletionRequest
 //
@@ -856,11 +858,13 @@ func (client *Client) CancelKeyDeletionWithOptions(request *CancelKeyDeletionReq
 
 // Summary:
 //
-// Cancels the deletion task of a CMK.
+// Cancels the deletion of a key.
 //
 // Description:
 //
-// If the deletion task of a CMK is canceled, the CMK returns to the Enabled state.
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+//
+// - After the request to delete the key is successfully canceled, the key is enabled.
 //
 // @param request - CancelKeyDeletionRequest
 //
@@ -878,13 +882,13 @@ func (client *Client) CancelKeyDeletion(request *CancelKeyDeletionRequest) (_res
 
 // Summary:
 //
-// Enables a Key Management Service (KMS) instance.
+// Enables a KMS instance.
 //
 // Description:
 //
-// ### [](#)Limits
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// You can enable only instances of the software key management type. You cannot enable instances of the hardware key management type.
+// - Only software key management instances can be enabled. Hardware key management instances are not supported.
 //
 // @param request - ConnectKmsInstanceRequest
 //
@@ -944,13 +948,13 @@ func (client *Client) ConnectKmsInstanceWithOptions(request *ConnectKmsInstanceR
 
 // Summary:
 //
-// Enables a Key Management Service (KMS) instance.
+// Enables a KMS instance.
 //
 // Description:
 //
-// ### [](#)Limits
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// You can enable only instances of the software key management type. You cannot enable instances of the hardware key management type.
+// - Only software key management instances can be enabled. Hardware key management instances are not supported.
 //
 // @param request - ConnectKmsInstanceRequest
 //
@@ -968,15 +972,17 @@ func (client *Client) ConnectKmsInstance(request *ConnectKmsInstanceRequest) (_r
 
 // Summary:
 //
-// Creates an alias for a key.
+// Creates an alias for a customer master key (CMK).
 //
 // Description:
 //
-//	  Each alias can be bound to only one CMK at a time.
+// - For details about the access policy that a RAM user or RAM role must be granted to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-//		- The aliases of CMKs in the same region must be unique.
+// - Each alias can represent only one CMK.
 //
-// In this topic, an alias named `alias/example` is created for a CMK named `7906979c-8e06-46a2-be2d-68e3ccbc****`.
+// - The alias of a CMK must be unique within a region.
+//
+// This topic provides an example of creating an alias named `alias/example` for the key `7906979c-8e06-46a2-be2d-68e3ccbc****`.
 //
 // @param request - CreateAliasRequest
 //
@@ -1024,15 +1030,17 @@ func (client *Client) CreateAliasWithOptions(request *CreateAliasRequest, runtim
 
 // Summary:
 //
-// Creates an alias for a key.
+// Creates an alias for a customer master key (CMK).
 //
 // Description:
 //
-//	  Each alias can be bound to only one CMK at a time.
+// - For details about the access policy that a RAM user or RAM role must be granted to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-//		- The aliases of CMKs in the same region must be unique.
+// - Each alias can represent only one CMK.
 //
-// In this topic, an alias named `alias/example` is created for a CMK named `7906979c-8e06-46a2-be2d-68e3ccbc****`.
+// - The alias of a CMK must be unique within a region.
+//
+// This topic provides an example of creating an alias named `alias/example` for the key `7906979c-8e06-46a2-be2d-68e3ccbc****`.
 //
 // @param request - CreateAliasRequest
 //
@@ -1050,19 +1058,21 @@ func (client *Client) CreateAlias(request *CreateAliasRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates an application access point (AAP)
+// Creates an application access point (AAP).
 //
 // Description:
 //
-// To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based AAP:
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
+// - Before a self-managed application performs cryptographic operations or retrieves credential values, it must access the KMS instance by using a ClientKey. The overall flow of creating an application access point (AAP) and a ClientKey is as follows:
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
+//  1. Create a network control rule: Specify the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. This topic describes how to create an AAP.
+//  2. Create an access policy: Specify the keys and credentials that the application is allowed to access, and attach the network control rule. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
+//  3. Create an application access point (AAP): Specify the authentication method and attach the access policy. This is the operation described in this topic.
+//
+//  4. Create a ClientKey: Specify the encryption passphrase and validity period for the ClientKey, and attach the application access point (AAP). For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateApplicationAccessPointRequest
 //
@@ -1118,19 +1128,21 @@ func (client *Client) CreateApplicationAccessPointWithOptions(request *CreateApp
 
 // Summary:
 //
-// Creates an application access point (AAP)
+// Creates an application access point (AAP).
 //
 // Description:
 //
-// To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based AAP:
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// 1.Create a network access rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
+// - Before a self-managed application performs cryptographic operations or retrieves credential values, it must access the KMS instance by using a ClientKey. The overall flow of creating an application access point (AAP) and a ClientKey is as follows:
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind network access rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
+//  1. Create a network control rule: Specify the private IP addresses or private CIDR blocks that are allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. This topic describes how to create an AAP.
+//  2. Create an access policy: Specify the keys and credentials that the application is allowed to access, and attach the network control rule. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
+//  3. Create an application access point (AAP): Specify the authentication method and attach the access policy. This is the operation described in this topic.
+//
+//  4. Create a ClientKey: Specify the encryption passphrase and validity period for the ClientKey, and attach the application access point (AAP). For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateApplicationAccessPointRequest
 //
@@ -1148,23 +1160,25 @@ func (client *Client) CreateApplicationAccessPoint(request *CreateApplicationAcc
 
 // Summary:
 //
-// Creates a client key.
+// Creates an application identity 
 //
 // Description:
 //
-// To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
+// - For details about the permission policies that must be granted to a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
+// - Before a self-managed application can perform cryptographic operations or obtain credential values, it must access the KMS instance by using a ClientKey. The overall process of creating an application access point (AAP) and a ClientKey is as follows:
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
+//  1. Create a network control rule: Configure the private IP or private CIDR block that is allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//  2. Create an access policy: Configure the keys and credentials that the application is allowed to access, and attach the network control rule. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP.
+//  3. Create an application access point: Configure the authentication method, and attach the access policy. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//
+//  4. Create a ClientKey: Configure the encryption passphrase and validity period of the ClientKey, and attach the application access point. This is the content described in this topic.
 //
 // ### Precautions
 //
-// A client key has a validity period. After a client key expires, applications into which the client key is integrated cannot access the required KMS instance. You must replace the client key before the client key expires. We recommend that you delete the expired client key in KMS after the new client key is used.
+// A ClientKey has a validity period. After the ClientKey expires, KMS does not allow applications integrated with the ClientKey to access the KMS instance. Replace the ClientKey before it expires. Delete the expired ClientKey in KMS after the replacement is complete.
 //
 // @param request - CreateClientKeyRequest
 //
@@ -1220,23 +1234,25 @@ func (client *Client) CreateClientKeyWithOptions(request *CreateClientKeyRequest
 
 // Summary:
 //
-// Creates a client key.
+// Creates an application identity credential (ClientKey).
 //
 // Description:
 //
-// To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a Key Management Service (KMS) instance. The following process shows how to create a client key-based application access point (AAP):
+// - For details about the permission policies that must be granted to a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
+// - Before a self-managed application can perform cryptographic operations or obtain credential values, it must access the KMS instance by using a ClientKey. The overall process of creating an application access point (AAP) and a ClientKey is as follows:
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
+//  1. Create a network control rule: Configure the private IP or private CIDR block that is allowed to access KMS. For more information, see [CreateNetworkRule](https://help.aliyun.com/document_detail/2539407.html).
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//  2. Create an access policy: Configure the keys and credentials that the application is allowed to access, and attach the network control rule. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP.
+//  3. Create an application access point: Configure the authentication method, and attach the access policy. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//
+//  4. Create a ClientKey: Configure the encryption passphrase and validity period of the ClientKey, and attach the application access point. This is the content described in this topic.
 //
 // ### Precautions
 //
-// A client key has a validity period. After a client key expires, applications into which the client key is integrated cannot access the required KMS instance. You must replace the client key before the client key expires. We recommend that you delete the expired client key in KMS after the new client key is used.
+// A ClientKey has a validity period. After the ClientKey expires, KMS does not allow applications integrated with the ClientKey to access the KMS instance. Replace the ClientKey before it expires. Delete the expired ClientKey in KMS after the replacement is complete.
 //
 // @param request - CreateClientKeyRequest
 //
@@ -1254,13 +1270,13 @@ func (client *Client) CreateClientKey(request *CreateClientKeyRequest) (_result 
 
 // Summary:
 //
-// Creates a customer master key (CMK) for envelope encryption, digital signatures, or other cryptographic operations.
+// Creates a master key.
 //
 // Description:
 //
-// - For information about the access policies required for a RAM user or RAM role to call this OpenAPI operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for Resource Access Management (RAM) users or RAM roles to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - Alibaba Cloud Key Management Service (KMS) supports common specifications for symmetric and asymmetric keys. For more information, see [Key management types and key specifications](https://help.aliyun.com/document_detail/480161.html).
+// - Alibaba Cloud KMS supports common symmetric and asymmetric key specifications. For more information, see [Key management types and key specifications](https://help.aliyun.com/document_detail/480161.html).
 //
 // @param request - CreateKeyRequest
 //
@@ -1344,13 +1360,13 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *d
 
 // Summary:
 //
-// Creates a customer master key (CMK) for envelope encryption, digital signatures, or other cryptographic operations.
+// Creates a master key.
 //
 // Description:
 //
-// - For information about the access policies required for a RAM user or RAM role to call this OpenAPI operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for Resource Access Management (RAM) users or RAM roles to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - Alibaba Cloud Key Management Service (KMS) supports common specifications for symmetric and asymmetric keys. For more information, see [Key management types and key specifications](https://help.aliyun.com/document_detail/480161.html).
+// - Alibaba Cloud KMS supports common symmetric and asymmetric key specifications. For more information, see [Key management types and key specifications](https://help.aliyun.com/document_detail/480161.html).
 //
 // @param request - CreateKeyRequest
 //
@@ -1368,21 +1384,17 @@ func (client *Client) CreateKey(request *CreateKeyRequest) (_result *CreateKeyRe
 
 // Summary:
 //
-// Creates a version for a customer master key (CMK).
+// Creates a key version for a customer master key (CMK).
 //
 // Description:
 //
-// - You can create a version only for an asymmetric CMK that is in the Enabled state. You can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation to create an asymmetric CMK and the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status of the CMK. The status is specified by the KeyState parameter.
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - The minimum interval for creating a version of the same CMK is seven days. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the time when the last version of a CMK was created. The time is specified by the LastRotationDate parameter.
+// - Only symmetric keys in software-protected key management instances support creating key versions, and the key status must be Enabled. You can invoke the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the key status.
 //
-// - If a CMK is in a private key store, you cannot create a version for the CMK.
+// - Creating a key version consumes one key quota.
 //
-// - You can create a maximum of 50 versions for a CMK in the same region.
-//
-// You can create a version for the CMK whose ID is `0b30658a-ed1a-4922-b8f7-a673ca9c****` by using the parameter settings provided in this topic.
-//
-// For more information about the access policy required by a RAM user or RAM role to call this API, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// This topic provides an example of creating a key version for a key whose ID is `key-hzz62f1cb66fa42qo****`.
 //
 // @param request - CreateKeyVersionRequest
 //
@@ -1426,21 +1438,17 @@ func (client *Client) CreateKeyVersionWithOptions(request *CreateKeyVersionReque
 
 // Summary:
 //
-// Creates a version for a customer master key (CMK).
+// Creates a key version for a customer master key (CMK).
 //
 // Description:
 //
-// - You can create a version only for an asymmetric CMK that is in the Enabled state. You can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation to create an asymmetric CMK and the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the status of the CMK. The status is specified by the KeyState parameter.
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - The minimum interval for creating a version of the same CMK is seven days. You can call the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the time when the last version of a CMK was created. The time is specified by the LastRotationDate parameter.
+// - Only symmetric keys in software-protected key management instances support creating key versions, and the key status must be Enabled. You can invoke the [DescribeKey](https://help.aliyun.com/document_detail/28952.html) operation to query the key status.
 //
-// - If a CMK is in a private key store, you cannot create a version for the CMK.
+// - Creating a key version consumes one key quota.
 //
-// - You can create a maximum of 50 versions for a CMK in the same region.
-//
-// You can create a version for the CMK whose ID is `0b30658a-ed1a-4922-b8f7-a673ca9c****` by using the parameter settings provided in this topic.
-//
-// For more information about the access policy required by a RAM user or RAM role to call this API, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// This topic provides an example of creating a key version for a key whose ID is `key-hzz62f1cb66fa42qo****`.
 //
 // @param request - CreateKeyVersionRequest
 //
@@ -1458,19 +1466,21 @@ func (client *Client) CreateKeyVersion(request *CreateKeyVersionRequest) (_resul
 
 // Summary:
 //
-// Creates a network access rule to configure the private IP addresses or private CIDR blocks that are allowed to access a Key Management Service (KMS) instance.
+// Creates a network control rule to specify the private IP addresses or private CIDR blocks allowed to access KMS.
 //
 // Description:
 //
-// To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a KMS instance. The following process shows how to create a client key-based application access point (AAP):
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance.
+// - Before a self-managed application performs cryptographic operations or retrieves secret values, it must access the KMS instance by using an application identity credential (ClientKey). The overall process of creating an application access point (AAP) and an identity credential (ClientKey) is as follows:
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
+//  1. Create a network control rule: Specify the private IP or private CIDR block allowed to access KMS. This is the content described in this topic.
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//  2. Create an access policy: Specify the keys and secrets that the application is allowed to access, and attach the network control rule. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
+//  3. Create an application access point (AAP): Specify the authentication method and attach the access policy. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//
+//  4. Create an application identity credential (ClientKey): Specify the passphrase used to encrypt the ClientKey and the validity period, and attach the application access point (AAP). For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateNetworkRuleRequest
 //
@@ -1526,19 +1536,21 @@ func (client *Client) CreateNetworkRuleWithOptions(request *CreateNetworkRuleReq
 
 // Summary:
 //
-// Creates a network access rule to configure the private IP addresses or private CIDR blocks that are allowed to access a Key Management Service (KMS) instance.
+// Creates a network control rule to specify the private IP addresses or private CIDR blocks allowed to access KMS.
 //
 // Description:
 //
-// To perform cryptographic operations and retrieve secret values, self-managed applications must use a client key to access a KMS instance. The following process shows how to create a client key-based application access point (AAP):
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// 1.Create an access control rule: You can configure the private IP addresses or private CIDR blocks that are allowed to access a KMS instance.
+// - Before a self-managed application performs cryptographic operations or retrieves secret values, it must access the KMS instance by using an application identity credential (ClientKey). The overall process of creating an application access point (AAP) and an identity credential (ClientKey) is as follows:
 //
-// 2.Create a permission policy: You can configure the keys and secrets that are allowed to access and bind access control rules to the keys and secrets. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
+//  1. Create a network control rule: Specify the private IP or private CIDR block allowed to access KMS. This is the content described in this topic.
 //
-// 3.Create an AAP: You can configure an authentication method and bind a permission policy to an AAP. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//  2. Create an access policy: Specify the keys and secrets that the application is allowed to access, and attach the network control rule. For more information, see [CreatePolicy](https://help.aliyun.com/document_detail/2539454.html).
 //
-// 4.Create a client key: You can configure the encryption password and validity period of a client key and bind the client key to an AAP. For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
+//  3. Create an application access point (AAP): Specify the authentication method and attach the access policy. For more information, see [CreateApplicationAccessPoint](https://help.aliyun.com/document_detail/2539467.html).
+//
+//  4. Create an application identity credential (ClientKey): Specify the passphrase used to encrypt the ClientKey and the validity period, and attach the application access point (AAP). For more information, see [CreateClientKey](https://help.aliyun.com/document_detail/2539509.html).
 //
 // @param request - CreateNetworkRuleRequest
 //
@@ -1814,19 +1826,19 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 //
 // ### Precautions
 //
-// - For details about the access policies that Resource Access Management (RAM) users or RAM roles need to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this API operation, refer to [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be invoked through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation through a shared gateway or a dedicated gateway. For more information, refer to [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: Access KMS through public network access or a VPC endpoint. This method requires you to enable the public network switch. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the public network or through a VPC endpoint. You must enable public network access. For more information, refer to [Access keys in a KMS instance over the public network](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: Access KMS through a KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS through the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
-// ### QPS limits
+// ### Rate limit
 //
-// - Calls through a shared gateway: The QPS limit for a single user is 1,000 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// - Calls through a shared gateway: The queries per second (QPS) limit per user for this API operation is 1,000. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - Calls through a dedicated gateway: The QPS limit for a single user is based on the performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
+// - Calls through a dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, refer to [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
 // @param tmpReq - DecryptRequest
 //
@@ -1896,19 +1908,19 @@ func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *dara.R
 //
 // ### Precautions
 //
-// - For details about the access policies that Resource Access Management (RAM) users or RAM roles need to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this API operation, refer to [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - This operation can be invoked through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation through a shared gateway or a dedicated gateway. For more information, refer to [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: Access KMS through public network access or a VPC endpoint. This method requires you to enable the public network switch. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the public network or through a VPC endpoint. You must enable public network access. For more information, refer to [Access keys in a KMS instance over the public network](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: Access KMS through a KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS through the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
-// ### QPS limits
+// ### Rate limit
 //
-// - Calls through a shared gateway: The QPS limit for a single user is 1,000 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// - Calls through a shared gateway: The queries per second (QPS) limit per user for this API operation is 1,000. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
-// - Calls through a dedicated gateway: The QPS limit for a single user is based on the performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
+// - Calls through a dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, refer to [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
 // @param request - DecryptRequest
 //
@@ -1927,6 +1939,10 @@ func (client *Client) Decrypt(request *DecryptRequest) (_result *DecryptResponse
 // Summary:
 //
 // Deletes an alias.
+//
+// Description:
+//
+// For details about the access policy required for a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
 // @param request - DeleteAliasRequest
 //
@@ -1971,6 +1987,10 @@ func (client *Client) DeleteAliasWithOptions(request *DeleteAliasRequest, runtim
 // Summary:
 //
 // Deletes an alias.
+//
+// Description:
+//
+// For details about the access policy required for a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
 // @param request - DeleteAliasRequest
 //
@@ -2292,11 +2312,13 @@ func (client *Client) DeleteNetworkRule(request *DeleteNetworkRuleRequest) (_res
 
 // Summary:
 //
-// Deletes a permission policy.
+// Deletes an access policy.
 //
 // Description:
 //
-// Before you delete a permission policy, make sure that the permission policy is not associated with application access points (AAPs). Otherwise, related applications cannot access Key Management Service (KMS).
+// For details about the permission policy that must be granted to a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+//
+// Before you delete the permission policy, ensure that it is not attached to any application access point (AAP). Otherwise, the related applications cannot access KMS properly.
 //
 // @param request - DeletePolicyRequest
 //
@@ -2340,11 +2362,13 @@ func (client *Client) DeletePolicyWithOptions(request *DeletePolicyRequest, runt
 
 // Summary:
 //
-// Deletes a permission policy.
+// Deletes an access policy.
 //
 // Description:
 //
-// Before you delete a permission policy, make sure that the permission policy is not associated with application access points (AAPs). Otherwise, related applications cannot access Key Management Service (KMS).
+// For details about the permission policy that must be granted to a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+//
+// Before you delete the permission policy, ensure that it is not attached to any application access point (AAP). Otherwise, the related applications cannot access KMS properly.
 //
 // @param request - DeletePolicyRequest
 //
@@ -3522,41 +3546,41 @@ func (client *Client) GenerateAndExportDataKey(request *GenerateAndExportDataKey
 //
 // Description:
 //
-// - For details about the access policies that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - You can invoke this operation through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: Access KMS over the Internet or through a VPC endpoint. This method requires that you enable public network access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the Internet or through a VPC endpoint. This method requires you to enable public network access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: Access KMS through the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS through the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - Calls through a shared gateway: The QPS limit for a single user is 1,000 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// - Shared gateway: The QPS limit per user for this API operation is 1,000 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
-// - Calls through a dedicated gateway: The QPS limit for a single user is determined by the performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Details
+// ### Description
 //
-// This operation generates a random data key (DK), encrypts it by using the customer master key (CMK) that you specify, and returns both the plaintext and ciphertext of the DK. Use the plaintext DK to encrypt data locally outside of KMS. When you store the encrypted data, also store the ciphertext of the DK. You can retrieve the plaintext DK from the Plaintext field and the ciphertext DK from the CiphertextBlob field in the response.
+// This API operation generates a random data key (DK), encrypts the data key (DK) by using the specified customer master key (CMK), and returns the ciphertext and plaintext of the data key (DK). You can use the plaintext of the returned data key (DK) to encrypt data locally outside KMS. When you store the encrypted data, you must also store the ciphertext of the data key (DK). You can obtain the plaintext of the data key (DK) from the Plaintext field in the response and the ciphertext of the data key (DK) from the CiphertextBlob field.
 //
-// The CMK specified in the request is used only to encrypt the DK and has no effect on DK generation. KMS does not record or store the randomly generated DK. You are responsible for persisting the DK ciphertext.
+// The CMK specified in the request is used only to encrypt the data key (DK) and is not involved in the generation of the data key (DK). KMS does not record or store the randomly generated data key (DK). You are responsible for persisting the ciphertext of the data key (DK).
 //
-// Use the following procedure to encrypt data locally:
+// Use the following method to encrypt data locally:
 //
-// 1. Invoke the GenerateDataKey operation to obtain a DK for data encryption.
+// 1. Invoke the GenerateDataKey API operation to obtain a key for data encryption.
 //
-// 2. Use the plaintext DK (returned in the Plaintext field of the response) to encrypt data locally, then purge the plaintext DK from memory.
+// 2. Use the plaintext of the data key (DK) returned in the Plaintext field of the response to encrypt data locally, and then purge the plaintext of the data key (DK) from memory.
 //
-// 3. Store the DK ciphertext (returned in the CiphertextBlob field of the response) together with the locally encrypted data.
+// 3. Store the ciphertext of the data key (DK) returned in the CiphertextBlob field of the response together with the locally encrypted data.
 //
-// To decrypt data locally:
+// For local data decryption:
 //
-// - Invoke the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the locally stored DK ciphertext. This operation returns the plaintext DK.
+// - Invoke the [Decrypt](https://help.aliyun.com/document_detail/28950.html) API operation to decrypt the ciphertext of the data key (DK) in local storage. This operation returns the plaintext of the data key (DK).
 //
-// - Use the plaintext DK to decrypt data locally, then purge the plaintext DK from memory.
+// - Use the plaintext of the data key (DK) to complete offline data decryption locally, and then purge the plaintext of the data key (DK) from memory.
 //
-// This topic provides an example of generating a random DK for the key with the ID `key-hzz630494463ejqjx****`.
+// This topic provides an example on how to generate a random data key (DK) for a key with the ID `key-hzz630494463ejqjx****`.
 //
 // @param tmpReq - GenerateDataKeyRequest
 //
@@ -3577,6 +3601,10 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DataKeyName) {
+		query["DataKeyName"] = request.DataKeyName
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -3589,8 +3617,16 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 		query["KeyId"] = request.KeyId
 	}
 
+	if !dara.IsNil(request.KeyMaterial) {
+		query["KeyMaterial"] = request.KeyMaterial
+	}
+
 	if !dara.IsNil(request.KeySpec) {
 		query["KeySpec"] = request.KeySpec
+	}
+
+	if !dara.IsNil(request.ManagedByKms) {
+		query["ManagedByKms"] = request.ManagedByKms
 	}
 
 	if !dara.IsNil(request.NumberOfBytes) {
@@ -3632,41 +3668,41 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 //
 // Description:
 //
-// - For details about the access policies that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to Resource Access Management (RAM) users or RAM roles to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - You can invoke this operation through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
+// - You can invoke this API operation through a shared gateway or a dedicated gateway. For more information, see [Alibaba Cloud SDK](https://help.aliyun.com/document_detail/601559.html).
 //
-//   - Shared gateway: Access KMS over the Internet or through a VPC endpoint. This method requires that you enable public network access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
+//   - Shared gateway: Access KMS over the Internet or through a VPC endpoint. This method requires you to enable public network access. For more information, see [Access keys in a KMS instance over the Internet](https://help.aliyun.com/document_detail/2856718.html).
 //
-//   - Dedicated gateway: Access KMS through the KMS private endpoint (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
+//   - Dedicated gateway: Access KMS through the private endpoint of KMS (`<YOUR_KMS_INSTANCE_ID>.cryptoservice.kms.aliyuncs.com`).
 //
 // ### QPS limits
 //
-// - Calls through a shared gateway: The QPS limit for a single user is 1,000 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
+// - Shared gateway: The QPS limit per user for this API operation is 1,000 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
-// - Calls through a dedicated gateway: The QPS limit for a single user is determined by the performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
+// - Dedicated gateway: The QPS limit per user for this API operation depends on the computing performance specifications of your KMS instance. For more information, see [Performance data](https://help.aliyun.com/document_detail/480120.html).
 //
-// ### Details
+// ### Description
 //
-// This operation generates a random data key (DK), encrypts it by using the customer master key (CMK) that you specify, and returns both the plaintext and ciphertext of the DK. Use the plaintext DK to encrypt data locally outside of KMS. When you store the encrypted data, also store the ciphertext of the DK. You can retrieve the plaintext DK from the Plaintext field and the ciphertext DK from the CiphertextBlob field in the response.
+// This API operation generates a random data key (DK), encrypts the data key (DK) by using the specified customer master key (CMK), and returns the ciphertext and plaintext of the data key (DK). You can use the plaintext of the returned data key (DK) to encrypt data locally outside KMS. When you store the encrypted data, you must also store the ciphertext of the data key (DK). You can obtain the plaintext of the data key (DK) from the Plaintext field in the response and the ciphertext of the data key (DK) from the CiphertextBlob field.
 //
-// The CMK specified in the request is used only to encrypt the DK and has no effect on DK generation. KMS does not record or store the randomly generated DK. You are responsible for persisting the DK ciphertext.
+// The CMK specified in the request is used only to encrypt the data key (DK) and is not involved in the generation of the data key (DK). KMS does not record or store the randomly generated data key (DK). You are responsible for persisting the ciphertext of the data key (DK).
 //
-// Use the following procedure to encrypt data locally:
+// Use the following method to encrypt data locally:
 //
-// 1. Invoke the GenerateDataKey operation to obtain a DK for data encryption.
+// 1. Invoke the GenerateDataKey API operation to obtain a key for data encryption.
 //
-// 2. Use the plaintext DK (returned in the Plaintext field of the response) to encrypt data locally, then purge the plaintext DK from memory.
+// 2. Use the plaintext of the data key (DK) returned in the Plaintext field of the response to encrypt data locally, and then purge the plaintext of the data key (DK) from memory.
 //
-// 3. Store the DK ciphertext (returned in the CiphertextBlob field of the response) together with the locally encrypted data.
+// 3. Store the ciphertext of the data key (DK) returned in the CiphertextBlob field of the response together with the locally encrypted data.
 //
-// To decrypt data locally:
+// For local data decryption:
 //
-// - Invoke the [Decrypt](https://help.aliyun.com/document_detail/28950.html) operation to decrypt the locally stored DK ciphertext. This operation returns the plaintext DK.
+// - Invoke the [Decrypt](https://help.aliyun.com/document_detail/28950.html) API operation to decrypt the ciphertext of the data key (DK) in local storage. This operation returns the plaintext of the data key (DK).
 //
-// - Use the plaintext DK to decrypt data locally, then purge the plaintext DK from memory.
+// - Use the plaintext of the data key (DK) to complete offline data decryption locally, and then purge the plaintext of the data key (DK) from memory.
 //
-// This topic provides an example of generating a random DK for the key with the ID `key-hzz630494463ejqjx****`.
+// This topic provides an example on how to generate a random data key (DK) for a key with the ID `key-hzz630494463ejqjx****`.
 //
 // @param request - GenerateDataKeyRequest
 //
@@ -3922,7 +3958,7 @@ func (client *Client) GenerateMac(request *GenerateMacRequest) (_result *Generat
 
 // Summary:
 //
-// 从kms获取挑战
+// Retrieves a challenge from Key Management Service (KMS).
 //
 // @param request - GetChallengeRequest
 //
@@ -3959,7 +3995,7 @@ func (client *Client) GetChallengeWithOptions(request *GetChallengeRequest, runt
 
 // Summary:
 //
-// 从kms获取挑战
+// Retrieves a challenge from Key Management Service (KMS).
 //
 // @param request - GetChallengeRequest
 //
@@ -4178,11 +4214,11 @@ func (client *Client) GetKeyPolicy(request *GetKeyPolicyRequest) (_result *GetKe
 
 // Summary:
 //
-// Retrieves the details of a KMS instance.
+// Queries the details of a KMS instance.
 //
 // Description:
 //
-// Refer to [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html) for the access policy required to call this OpenAPI as a RAM user or RAM role.
+// For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
 // @param request - GetKmsInstanceRequest
 //
@@ -4226,11 +4262,11 @@ func (client *Client) GetKmsInstanceWithOptions(request *GetKmsInstanceRequest, 
 
 // Summary:
 //
-// Retrieves the details of a KMS instance.
+// Queries the details of a KMS instance.
 //
 // Description:
 //
-// Refer to [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html) for the access policy required to call this OpenAPI as a RAM user or RAM role.
+// For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
 // @param request - GetKmsInstanceRequest
 //
@@ -4788,17 +4824,17 @@ func (client *Client) GetSecretPolicy(request *GetSecretPolicyRequest) (_result 
 
 // Summary:
 //
-// Retrieves a secret value.
+// Retrieves the secret value.
 //
 // Description:
 //
-// - For details about the access policy that needs to be granted to a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version status, KMS returns the credential value of the version marked as ACSCurrent by default.
+// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked with ACSCurrent by default.
 //
-// - If the credential uses a custom master key to protect the credential value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If the secret uses a user-specified key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides an example of retrieving the credential value of a credential named `secret001`. The response shows that the credential value `SecretData` is `testdata1`.
+// This topic provides an example of retrieving the secret value of a secret named `secret001`. The response shows that the value of `SecretData` is `testdata1`.
 //
 // @param request - GetSecretValueRequest
 //
@@ -4864,17 +4900,17 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 
 // Summary:
 //
-// Retrieves a secret value.
+// Retrieves the secret value.
 //
 // Description:
 //
-// - For details about the access policy that needs to be granted to a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to call this API operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version status, KMS returns the credential value of the version marked as ACSCurrent by default.
+// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked with ACSCurrent by default.
 //
-// - If the credential uses a custom master key to protect the credential value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If the secret uses a user-specified key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides an example of retrieving the credential value of a credential named `secret001`. The response shows that the credential value `SecretData` is `testdata1`.
+// This topic provides an example of retrieving the secret value of a secret named `secret001`. The response shows that the value of `SecretData` is `testdata1`.
 //
 // @param request - GetSecretValueRequest
 //
