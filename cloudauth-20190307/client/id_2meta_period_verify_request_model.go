@@ -24,9 +24,11 @@ type iId2MetaPeriodVerifyRequest interface {
 type Id2MetaPeriodVerifyRequest struct {
 	// The ID card number.
 	//
-	// - If paramType is set to normal, enter the ID card number in plaintext.
+	// - If paramType is set to normal: Enter the plaintext ID card number.
 	//
-	// - If paramType is set to md5, the value is in the following format: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
+	// - If paramType is set to md5:
+	//
+	// Enter the first 6 digits of the ID card number (plaintext) + the date of birth (ciphertext) + the last 4 digits of the ID card number (plaintext).
 	//
 	// example:
 	//
@@ -34,9 +36,9 @@ type Id2MetaPeriodVerifyRequest struct {
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: not encrypted.
+	// - normal: Not encrypted.
 	//
-	// - md5: MD5-encrypted.
+	// - md5: MD5 encryption.
 	//
 	// example:
 	//
@@ -44,13 +46,13 @@ type Id2MetaPeriodVerifyRequest struct {
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The name.
 	//
-	// - paramType = normal: enter the name in plaintext.
+	// - If paramType is set to normal: Enter the plaintext name.
 	//
-	// - paramType = md5: the first character of the name is MD5-encrypted (32-bit lowercase MD5) + the remaining characters of the name in plaintext.
+	// - If paramType is set to md5: Enter the MD5 hash (32-character lowercase) of the first character of the name + the rest of the name in plaintext.
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The expiration date of the ID card validity period. Format: YYYYMMDD.
 	//

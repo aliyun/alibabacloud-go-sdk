@@ -16,13 +16,13 @@ type iModifyCustomizeFlowStrategyListRequest interface {
 }
 
 type ModifyCustomizeFlowStrategyListRequest struct {
-	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (Financial-grade ID Verification) is supported. All other product types are retired.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The policy list.
+	// The list of policies.
 	StrategyObject []*ModifyCustomizeFlowStrategyListRequestStrategyObject `json:"StrategyObject,omitempty" xml:"StrategyObject,omitempty" type:"Repeated"`
 }
 
@@ -78,7 +78,7 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	//
 	// 60
 	AccumulateWindow *int64 `json:"AccumulateWindow,omitempty" xml:"AccumulateWindow,omitempty"`
-	// The API name, which is the same as **ProductCode**.
+	// The API name. This parameter is the same as **ProductCode**.
 	//
 	// This parameter is required.
 	//
@@ -88,19 +88,19 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The flow type. Valid values:
 	//
-	// - **ACCUMULATE**: repeated occurrence of an ID card.
+	// - **ACCUMULATE**: Duplicate ID cards.
 	//
-	// - **PASSED_RATE**: pass rate is less than.
+	// - **PASSED_RATE**: The pass rate is less than the specified value.
 	//
-	// - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than.
+	// - **SUB_CODE_205**: Authentication fails and the proportion of liveness attack 205 is greater than the specified value.
 	//
-	// - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than.
+	// - **SUB_CODE_206**: Authentication fails and the proportion of liveness attack 206 is greater than the specified value.
 	//
 	// example:
 	//
 	// ACCUMULATE
 	FlowType *string `json:"FlowType,omitempty" xml:"FlowType,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -114,9 +114,9 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The status. Valid values:
 	//
-	// - **disabled**: disabled.
+	// - **disabled**: Disabled.
 	//
-	// - **normal**: enabled.
+	// - **normal**: Enabled.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +132,7 @@ type ModifyCustomizeFlowStrategyListRequestStrategyObject struct {
 	//
 	// 10
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

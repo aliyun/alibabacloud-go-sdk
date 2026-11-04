@@ -24,7 +24,7 @@ type iCredentialProductVerifyV2Request interface {
 }
 
 type CredentialProductVerifyV2Request struct {
-	// The credential name. Only the following value is supported: 0501 (product image).
+	// The credential name. Valid values: 0501 (product image).
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CredentialProductVerifyV2Request struct {
 	//
 	// 0501
 	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
-	// The credential type. Only the following value is supported: 05 (product image).
+	// The credential type. Valid values: 05 (product image).
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type CredentialProductVerifyV2Request struct {
 	//
 	// example:
 	//
-	// 无。
+	// None
 	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
-	// The call mode. Only the following value is supported: ANTI_FAKE_CHECK.
+	// The call mode. Valid values: ANTI_FAKE_CHECK.
 	//
 	// This parameter is required.
 	//

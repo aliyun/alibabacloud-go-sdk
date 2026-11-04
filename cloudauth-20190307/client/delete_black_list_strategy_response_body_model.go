@@ -34,7 +34,7 @@ type DeleteBlackListStrategyResponseBody struct {
 	//
 	// 1
 	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteBlackListStrategyResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

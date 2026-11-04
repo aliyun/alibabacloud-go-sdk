@@ -26,7 +26,7 @@ type Mobile3MetaSimpleStandardVerifyResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type Mobile3MetaSimpleStandardVerifyResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *Mobile3MetaSimpleStandardVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -98,17 +98,17 @@ func (s *Mobile3MetaSimpleStandardVerifyResponseBody) Validate() error {
 type Mobile3MetaSimpleStandardVerifyResponseBodyResultObject struct {
 	// The verification result. Valid values:
 	//
-	// - 1: Consistent (billable).
+	// - 1: Consistent (billed).
 	//
-	// - 2: Inconsistent (billable).
+	// - 2: Inconsistent (billed).
 	//
-	// - 3: No record found (not billable).
+	// - 3: No record found (not billed).
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The carrier name. Valid values:
+	// The name of the Internet service provider (ISP). Valid values:
 	//
 	// - **CMCC**: China Mobile.
 	//

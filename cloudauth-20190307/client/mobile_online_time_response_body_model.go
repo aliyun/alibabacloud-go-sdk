@@ -20,13 +20,13 @@ type iMobileOnlineTimeResponseBody interface {
 }
 
 type MobileOnlineTimeResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type MobileOnlineTimeResponseBody struct {
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result.
 	ResultObject *MobileOnlineTimeResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -108,7 +108,7 @@ type MobileOnlineTimeResponseBodyResultObject struct {
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The name of the telecommunications service provider. Valid values:
+	// The name of the Internet service provider (ISP). Valid values:
 	//
 	// - CMCC: China Mobile.
 	//
@@ -120,17 +120,17 @@ type MobileOnlineTimeResponseBodyResultObject struct {
 	//
 	// CMCC
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
-	// The network duration code. Valid values:
+	// The time code. Valid values:
 	//
-	// - 1: [0,3) indicates a network duration of 0 to 3 months.
+	// - 1: [0,3), indicating a network tenure of 0 to 3 months.
 	//
-	// - 2: [3,6) indicates a network duration of 3 to 6 months.
+	// - 2: [3,6), indicating a network tenure of 3 to 6 months.
 	//
-	// - 3: [6,12) indicates a network duration of 6 to 12 months.
+	// - 3: [6,12), indicating a network tenure of 6 to 12 months.
 	//
-	// - 4: [12,24) indicates a network duration of 12 to 24 months.
+	// - 4: [12,24), indicating a network tenure of 12 to 24 months.
 	//
-	// - 5: [24,+) indicates a network duration of more than 24 months.
+	// - 5: [24,+), indicating a network tenure of more than 24 months.
 	//
 	// example:
 	//

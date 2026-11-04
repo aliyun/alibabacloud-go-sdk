@@ -20,7 +20,7 @@ type iId2MetaVerifyResponseBody interface {
 }
 
 type Id2MetaVerifyResponseBody struct {
-	// The response code. **200*	- indicates that the request was successful.
+	// The return code. **200*	- indicates that the request is successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type Id2MetaVerifyResponseBody struct {
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The response result.
 	ResultObject *Id2MetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -98,11 +98,11 @@ func (s *Id2MetaVerifyResponseBody) Validate() error {
 type Id2MetaVerifyResponseBodyResultObject struct {
 	// The verification result code. Valid values:
 	//
-	// - **1**: Consistent.
+	// - **1**: consistent
 	//
-	// - **2**: Inconsistent.
+	// - **2**: inconsistent
 	//
-	// - **3**: No record found.
+	// - **3**: no record found
 	//
 	// example:
 	//

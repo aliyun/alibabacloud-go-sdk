@@ -18,19 +18,19 @@ type iMobile2MetaVerifyRequest interface {
 }
 
 type Mobile2MetaVerifyRequest struct {
-	// The mobile phone number. Valid values:
+	// The mobile phone number.
 	//
-	// - If ParamType is set to normal, pass in the mobile phone number in plaintext.
+	// - If paramType is set to normal, specify the mobile phone number in plaintext.
 	//
-	// - If ParamType is set to md5, pass in the MD5-encrypted mobile phone number.
+	// - If paramType is set to md5, specify the mobile phone number in ciphertext.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ● 明文：186****2055
+	// ● Plaintext: 186****2055
 	//
-	// ● 密文：
+	// ● Ciphertext:
 	//
 	// 849169cd3b20621c1c78bd61a11a4fc2
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
@@ -38,7 +38,7 @@ type Mobile2MetaVerifyRequest struct {
 	//
 	// - normal: plaintext without encryption
 	//
-	// - md5: MD5 encryption.
+	// - md5: MD5 encryption
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type Mobile2MetaVerifyRequest struct {
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The name. Valid values:
+	// The name.
 	//
-	// - If ParamType is set to normal, pass in the name in plaintext.
+	// - If paramType is set to normal, specify the name in plaintext.
 	//
-	// - If ParamType is set to md5, pass in the MD5-encrypted name.
+	// - If paramType is set to md5, specify the name in ciphertext.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ● 明文：张三
+	// ● Plaintext: Zhang San
 	//
-	// ● 密文：
+	// ● Ciphertext:
 	//
 	// 32fa7bcd874161bea8ec8fd98f390ec9
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`

@@ -26,7 +26,7 @@ type Vehicle5ItemQueryResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type Vehicle5ItemQueryResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *Vehicle5ItemQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -98,9 +98,9 @@ func (s *Vehicle5ItemQueryResponseBody) Validate() error {
 type Vehicle5ItemQueryResponseBodyResultObject struct {
 	// The verification result code. Valid values:
 	//
-	// - **1**: Match found (billable).
+	// - **1**: found (billed)
 	//
-	// - **3**: No record found (not billable).
+	// - **3**: no record found (not billed)
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type Vehicle5ItemQueryResponseBodyResultObject struct {
 	//
 	//         "modelNo": "B********",
 	//
-	//         "type": "小型轿车",
+	//         "type": "Small sedan",
 	//
-	//         "brand": "宝马",
+	//         "brand": "BMW",
 	//
-	//         "usePropertyDesc": "非营运",
+	//         "usePropertyDesc": "Non-commercial",
 	//
-	//         "stateDesc": "正常"
+	//         "stateDesc": "Normal"
 	//
 	//     }
 	VehicleInfo *string `json:"VehicleInfo,omitempty" xml:"VehicleInfo,omitempty"`

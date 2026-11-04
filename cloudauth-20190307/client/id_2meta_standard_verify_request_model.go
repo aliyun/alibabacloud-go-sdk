@@ -20,9 +20,9 @@ type iId2MetaStandardVerifyRequest interface {
 type Id2MetaStandardVerifyRequest struct {
 	// The ID card number.
 	//
-	// - If ParamType is set to normal, enter the ID card number in plaintext.
+	// - If paramType is set to normal: enter the plaintext ID card number.
 	//
-	// - If ParamType is set to md5, the format is: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
+	// - If paramType is set to md5: enter the first 6 digits of the ID card number (plaintext) + the date of birth (ciphertext) + the last 4 digits of the ID card number (plaintext).
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type Id2MetaStandardVerifyRequest struct {
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: not encrypted.
+	// - normal: No encryption.
 	//
-	// - md5: MD5-encrypted.
+	// - md5: MD5 encryption.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type Id2MetaStandardVerifyRequest struct {
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The name.
 	//
-	// - If ParamType is set to normal, enter the name in plaintext.
+	// - If paramType is set to normal: enter the plaintext name.
 	//
-	// - If ParamType is set to md5, the format is: first character of the name (ciphertext) + remaining characters of the name (plaintext).
+	// - If paramType is set to md5: enter the first character of the name (ciphertext) + the rest of the name (plaintext).
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

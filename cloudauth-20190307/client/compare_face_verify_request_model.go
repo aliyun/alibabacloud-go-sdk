@@ -40,11 +40,11 @@ type iCompareFaceVerifyRequest interface {
 }
 
 type CompareFaceVerifyRequest struct {
-	// Specifies whether cropping is allowed. Default value: F.
+	// Specifies whether to allow cropping. Default value: F. Valid values:
 	//
-	// - T: detection is required.
+	// - T: Allowed.
 	//
-	// - F: detection is required. (Default: F).
+	// - F: Not allowed.
 	//
 	// example:
 	//
@@ -52,99 +52,99 @@ type CompareFaceVerifyRequest struct {
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
 	// The unique identifier of the merchant request.
 	//
-	// The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
+	// The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation of the merchant, the middle part can be a period of time, and the last part can be a random or incremental sequence.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Fixed value: PV_FC.
+	// The product code. Fixed value: PV_FC.
 	//
 	// example:
 	//
 	// PV_FC
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The verification scenario ID.
+	// The ID of the verification scenario.
 	//
 	// example:
 	//
 	// 1000000006
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The CertifyId from a previous successful ID Verification. The photo captured during that verification is used as the face comparison photo.
+	// The CertifyId of a previous successful ID Verification. The photo used during the verification is used as the face comparison photo.
 	//
-	// > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// 0bfa7c493f850e5178b9f8613634c9xx
 	SourceCertifyId *string `json:"SourceCertifyId,omitempty" xml:"SourceCertifyId,omitempty"`
-	// The Base64-encoded photo.
+	// The Base64-encoded string of the photo.
 	//
-	// > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	SourceFaceContrastPicture *string `json:"SourceFaceContrastPicture,omitempty" xml:"SourceFaceContrastPicture,omitempty"`
-	// The OSS photo URL. Only authorized OSS photo URLs are supported.
+	// The URL of the photo in OSS. Only authorized OSS photo URLs are supported.
 	//
-	// > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	SourceFaceContrastPictureUrl *string `json:"SourceFaceContrastPictureUrl,omitempty" xml:"SourceFaceContrastPictureUrl,omitempty"`
-	// The bucket name of the authorized OSS space.
+	// The name of the authorized OSS bucket.
 	//
-	// > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-xxxxx
 	SourceOssBucketName *string `json:"SourceOssBucketName,omitempty" xml:"SourceOssBucketName,omitempty"`
-	// The file name in the authorized OSS space.
+	// The name of the object in the authorized OSS bucket.
 	//
-	// > You can use one of the following four methods to submit a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// verify/xxxxx/xxxxxx.jpeg
 	SourceOssObjectName *string `json:"SourceOssObjectName,omitempty" xml:"SourceOssObjectName,omitempty"`
-	// The CertifyId from a previous successful ID Verification. The photo captured during that verification is used as the face comparison photo.
+	// The CertifyId of a previous successful ID Verification. The photo used during the verification is used as the base library face comparison photo.
 	//
-	// > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// 0bfa7c493f850e5178b9f8613634c9xx
 	TargetCertifyId *string `json:"TargetCertifyId,omitempty" xml:"TargetCertifyId,omitempty"`
-	// The Base64-encoded reference photo.
+	// The Base64-encoded string of the base library photo.
 	//
-	// > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	TargetFaceContrastPicture *string `json:"TargetFaceContrastPicture,omitempty" xml:"TargetFaceContrastPicture,omitempty"`
-	// The OSS URL of the reference photo. Only authorized OSS photo URLs are supported.
+	// The URL of the base library photo in OSS. Only authorized OSS photo URLs are supported.
 	//
-	// > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	TargetFaceContrastPictureUrl *string `json:"TargetFaceContrastPictureUrl,omitempty" xml:"TargetFaceContrastPictureUrl,omitempty"`
-	// The bucket name of the authorized OSS space.
+	// The name of the authorized OSS bucket.
 	//
-	// > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-xxxxx
 	TargetOssBucketName *string `json:"TargetOssBucketName,omitempty" xml:"TargetOssBucketName,omitempty"`
-	// The file name in the authorized OSS space.
+	// The name of the object in the authorized OSS bucket.
 	//
-	// > You can use one of the following four methods to submit a reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS. Select one method.
+	// > You can use one of the following four methods to upload the base library face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//

@@ -16,25 +16,25 @@ type iMobileOnlineTimeRequest interface {
 }
 
 type MobileOnlineTimeRequest struct {
-	// The phone number. Valid values:
+	// The mobile phone number.
 	//
-	// - If paramType is set to normal, pass in the phone number in plaintext.
+	// - If paramType is set to normal, enter the mobile phone number in plaintext.
 	//
-	// - If paramType is set to md5, pass in the phone number in ciphertext.
+	// - If paramType is set to md5, enter the mobile phone number in ciphertext.
 	//
 	// example:
 	//
-	// 明文：186****2055
+	// Plaintext: 186****2055
 	//
-	// 密文：
+	// Ciphertext:
 	//
 	// 849169cd3b20621c1c78bd61a11a4fc2
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: not encrypted.
+	// - normal: Not encrypted.
 	//
-	// - md5: MD5-encrypted.
+	// - md5: MD5 encrypted.
 	//
 	// example:
 	//

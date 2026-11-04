@@ -14,7 +14,7 @@ type iQuerySceneConfigsRequest interface {
 }
 
 type QuerySceneConfigsRequest struct {
-	// The scenario type.
+	// The scene type.
 	//
 	// This parameter is required.
 	//

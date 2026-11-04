@@ -20,15 +20,19 @@ type iInitCardVerifyResponseBody interface {
 }
 
 type InitCardVerifyResponseBody struct {
-	// The response code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
-	// > **Important*	- This parameter indicates whether the operation is called correctly. For more information about return codes, see error codes. Check the fields in ResultObject for the business result.
+	// Important:
+	//
+	// - This parameter indicates whether the API is called successfully. For more information about return codes, see Error codes.
+	//
+	// - To view the business result, check the fields in ResultObject.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -98,11 +102,11 @@ func (s *InitCardVerifyResponseBody) Validate() error {
 }
 
 type InitCardVerifyResponseBodyResultObject struct {
-	// The verification request ID, which is the unique identifier of the verification service authentication request.
+	// The verification request ID, which is the unique identifier of the authentication request in the verification service.
 	//
-	// - You must specify the authentication request ID when you query the authentication result.
+	// - When you query the authentication result, you must specify the authentication request ID.
 	//
-	// - The CertifyId field is used for billing statistics. Save this field locally for future bill reconciliation. The CertifyId returned by the initialization operation is valid for 30 minutes and can be submitted for authentication only once. Use it within the validity period and do not reuse it.
+	// - The CertifyId field is used for billing statistics. To facilitate subsequent bill reconciliation, store the field information locally. The CertifyId returned by the initialization API is valid for 30 minutes and can be submitted for authentication only once. Use it within the validity period to avoid repeated use.
 	//
 	// example:
 	//

@@ -16,65 +16,65 @@ type iDownloadVerifyRecordsRequest interface {
 }
 
 type DownloadVerifyRecordsRequest struct {
-	// The query conditions in JSON string format. The following fields are included:
+	// The query conditions in JSON string format. This parameter includes the following fields:
 	//
-	// - **DownloadMode (String)**: the download mode.
+	// - **DownloadMode*	- (String): The download mode.
 	//
-	//   - Example: sync
+	//   - Example value: sync
 	//
-	// - **InvokeType (String)**: the product plan, which corresponds to **ProductType**.
+	// - **InvokeType*	- (String): The product solution, which corresponds to **ProductType**.
 	//
-	// - **SceneIdList (List<Long>)**: the list of scene IDs.
+	// - **SceneIdList*	- (List<Long>): The list of scene IDs.
 	//
-	// - **StatisticsType (String)**: the statistics type. Valid values:
+	// - **StatisticsType*	- (String): The statistics type.
 	//
 	//   - day
 	//
 	//   - month
 	//
-	// - **StartDate (String)**: the query start time.
+	// - **StartDate*	- (String): The start time of the query.
 	//
-	//   - Example: 2025-09-17 00:00:00 +0800
+	//   - Example value: 2025-09-17 00:00:00 +0800
 	//
-	// - **EndDate (String)**: the query end time.
+	// - **EndDate*	- (String): The end time of the query.
 	//
-	//   - Example: 2025-10-16 23:59:59 +0800
+	//   - Example value: 2025-10-16 23:59:59 +0800
 	//
-	// - **ProductProgramList**: the list of product codes under the product plan to query.
+	// - **ProductProgramList**: The list of product codes corresponding to the product solution to be queried.
 	//
-	//   - Example: ["FINANCE_FACE_VERIFY","MFVC"]
+	//   - Example value: ["FINANCE_FACE_VERIFY","MFVC"]
 	//
-	// - **Code (information verification API)**: Valid values:
+	// - **Code*	- (Information verification API):
 	//
-	//   - **ID_CARD_2_META**: ID card two-factor verification
+	//   - **ID_CARD_2_META**: Two-element verification for ID cards
 	//
 	//   - **ID_PERIOD**: ID card validity period verification
 	//
-	//   - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+	//   - **MOBILE_ONLINE_LENGTH**: Mobile phone in-network duration
 	//
-	//   - **MOBILE_ONLINE_STATUS**: mobile number online status
+	//   - **MOBILE_ONLINE_STATUS**: Mobile phone in-network status
 	//
-	//   - **MOBILE_3_META_SIMPLE**: mobile number three-factor verification (basic)
+	//   - **MOBILE_3_META_SIMPLE**: Simplified three-element verification for mobile phone numbers
 	//
-	//   - **MOBILE_3_META**: mobile number three-factor verification (detailed)
+	//   - **MOBILE_3_META**: Detailed three-element verification for mobile phone numbers
 	//
-	//   - **MOBILE_2_META**: mobile number two-factor verification
+	//   - **MOBILE_2_META**: Two-element verification for mobile phone numbers
 	//
-	//   - **BANK_CARD_N_META**: bank card verification (detailed)
+	//   - **BANK_CARD_N_META**: Detailed bank card verification
 	//
-	//   - **MOBILE_DETECT**: phone number detection
+	//   - **MOBILE_DETECT**: Phone number detection
 	//
-	//   - **VEHICLE_N_META**: vehicle element verification (enhanced)
+	//   - **VEHICLE_N_META**: Enhanced vehicle element verification
 	//
-	//   - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+	//   - **VEHICLE_PENTA_INFO**: Five-item vehicle information recognition
 	//
-	//   - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+	//   - **VEHICLE_LICENSE_INFO**: Vehicle information recognition
 	//
-	//   - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+	//   - **VEHICLE_INSURE_DATE**: Vehicle insurance date query
 	//
-	//   - **VEHICLE_CHECK**: vehicle element verification
+	//   - **VEHICLE_CHECK**: Vehicle element verification
 	//
-	// - **ProductCode (information verification)**: same as Code.
+	// - **ProductCode*	- (Information verification): Same as Code.
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DownloadVerifyRecordsRequest struct {
 	BizParam *string `json:"BizParam,omitempty" xml:"BizParam,omitempty"`
 	// The product type. Valid values:
 	//
-	// - **FINANCE_VERIFY**: financial-grade ID Verification
+	// - **FINANCE_VERIFY**: Financial-grade ID Verification
 	//
-	// - **SMART_VERIFY**: enhanced ID Verification (discontinued)
+	// - **SMART_VERIFY**: Enhanced ID Verification (discontinued)
 	//
 	// - **FACE_VERIFY**: ID Verification (discontinued)
 	//
-	// - **INFO_CHECK_STATISTICS**: information verification.
+	// - **INFO_CHECK_STATISTICS**: Information verification
 	//
 	// example:
 	//

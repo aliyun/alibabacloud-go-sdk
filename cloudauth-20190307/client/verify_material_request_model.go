@@ -28,9 +28,9 @@ type iVerifyMaterialRequest interface {
 }
 
 type VerifyMaterialRequest struct {
-	// The unique ID that identifies a verification task. The value can be up to 64 characters in length. For a single verification task, the system supports unlimited submissions until the verification is passed and the task is completed.
+	// The unique ID that identifies an authentication task. The ID cannot exceed 64 characters. For a single authentication task, the system supports unlimited submissions until the authentication is passed and the task is completed.
 	//
-	// > Use a different BizId for each new verification task.
+	// > You must use a different BizId when initiating different authentication tasks.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type VerifyMaterialRequest struct {
 	//
 	// 39ecf51e-2f81-4dc5-90ee-ff86125b****
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The business scenario identifier for the ID Verification service. Create one in the console first. For more information, see [Business settings](https://help.aliyun.com/document_detail/127885.html).
+	// The business scenario identifier for using the ID Verification service. Create it in the console first. For more information, see [Business settings](https://help.aliyun.com/document_detail/127885.html).
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type VerifyMaterialRequest struct {
 	//
 	// RPMinTest
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The HTTP or HTTPS URL of the front-facing facial photo.
+	// The HTTP or HTTPS URL of the front-facing portrait photo.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type VerifyMaterialRequest struct {
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg
 	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
-	// The HTTP or HTTPS URL of the national emblem side of the ID card.
+	// The HTTP or HTTPS URL of the image for the back side of the ID card.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example3.jpg
 	IdCardBackImageUrl *string `json:"IdCardBackImageUrl,omitempty" xml:"IdCardBackImageUrl,omitempty"`
-	// The HTTP or HTTPS URL of the portrait side of the ID card.
+	// The HTTP or HTTPS URL of the image for the front side of the ID card.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type VerifyMaterialRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the end user, such as the account ID of the end user.
 	//

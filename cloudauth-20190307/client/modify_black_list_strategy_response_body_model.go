@@ -22,13 +22,13 @@ type iModifyBlackListStrategyResponseBody interface {
 }
 
 type ModifyBlackListStrategyResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	//
 	// example:
 	//

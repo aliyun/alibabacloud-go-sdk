@@ -20,7 +20,7 @@ type iLivenessFaceVerifyResponseBody interface {
 }
 
 type LivenessFaceVerifyResponseBody struct {
-	// The return code. **200*	- indicates that the API operation is successful.
+	// The response code. **200*	- indicates that the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type LivenessFaceVerifyResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	ResultObject *LivenessFaceVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,13 +96,13 @@ func (s *LivenessFaceVerifyResponseBody) Validate() error {
 }
 
 type LivenessFaceVerifyResponseBodyResultObject struct {
-	// The unique identity of the ID Verification request.
+	// The unique identifier of the ID Verification request.
 	//
 	// example:
 	//
 	// 91707dc296d469ad38e4c5efa6a0f24b
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// The attachment information of the facial verification subject, including face quality, face attack detection, face or OCR images, and intent verification data.
+	// The supplementary information about the face verification subject, including face quality, face attack data, face or OCR images, and willingness verification data.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type LivenessFaceVerifyResponseBodyResultObject struct {
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The verification result code.
+	// The authentication result code.
 	//
 	// example:
 	//

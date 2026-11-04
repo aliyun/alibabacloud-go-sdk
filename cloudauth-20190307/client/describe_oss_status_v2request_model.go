@@ -16,17 +16,17 @@ type iDescribeOssStatusV2Request interface {
 }
 
 type DescribeOssStatusV2Request struct {
-	// The ServiceCode of the ID Verification product. Valid values:
+	// The ServiceCode of the ID Verification cloud service. Valid values:
 	//
-	// - **antcloudauth**: financial-grade ID Verification.
+	// - **antcloudauth**: Financial-grade ID Verification.
 	//
-	// - **cloudauthst (discontinued)**: enhanced ID Verification.
+	// - **cloudauthst*	- (retired): ID Verification Enhanced Edition.
 	//
 	// example:
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The source IP address of the visitor.
+	// The source IP address of the requester.
 	//
 	// example:
 	//

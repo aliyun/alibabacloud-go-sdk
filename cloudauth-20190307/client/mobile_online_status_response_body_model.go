@@ -20,13 +20,13 @@ type iMobileOnlineStatusResponseBody interface {
 }
 
 type MobileOnlineStatusResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type MobileOnlineStatusResponseBody struct {
 	//
 	// B506328A-D84B-4750-82C7-6A207C585CF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *MobileOnlineStatusResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -98,17 +98,17 @@ func (s *MobileOnlineStatusResponseBody) Validate() error {
 type MobileOnlineStatusResponseBodyResultObject struct {
 	// The verification result. Valid values:
 	//
-	// - 1: active and available.
+	// - 1: Available on the network.
 	//
-	// - 2: not in an active and available state. For more information, see subCode.
+	// - 2: Unavailable on the network. For more information, see subCode.
 	//
-	// - 3: no query result.
+	// - 3: No query result.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The name of the telecommunications service provider. Valid values:
+	// The name of the Internet service provider (ISP). Valid values:
 	//
 	// - CMCC: China Mobile.
 	//
@@ -122,17 +122,17 @@ type MobileOnlineStatusResponseBodyResultObject struct {
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 	// The verification details. Valid values:
 	//
-	// - 101: active and available.
+	// - 101: Available on the network.
 	//
-	// - 201: suspended.
+	// - 201: Suspended.
 	//
-	// - 202: canceled.
+	// - 202: Canceled.
 	//
-	// - 203: active but unavailable.
+	// - 203: On the network but unavailable.
 	//
-	// - 204: not active.
+	// - 204: Not on the network.
 	//
-	// - 301: no record found.
+	// - 301: No record found.
 	//
 	// example:
 	//

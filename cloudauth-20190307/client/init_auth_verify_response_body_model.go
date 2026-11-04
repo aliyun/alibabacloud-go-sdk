@@ -20,13 +20,13 @@ type iInitAuthVerifyResponseBody interface {
 }
 
 type InitAuthVerifyResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ func (s *InitAuthVerifyResponseBody) Validate() error {
 }
 
 type InitAuthVerifyResponseBodyResult struct {
-	// The verification request ID, which is the unique identifier of the verification service authentication request.
+	// The verification request ID, which is the unique identifier of the authentication request for the verification service.
 	//
-	// You must pass in the verification request ID when querying the authentication result.
+	// This ID is required when you query the authentication result.
 	//
 	// example:
 	//

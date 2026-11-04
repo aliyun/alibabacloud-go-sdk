@@ -20,13 +20,13 @@ type iDeepfakeDetectResponseBody interface {
 }
 
 type DeepfakeDetectResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DeepfakeDetectResponseBody struct {
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result.
 	ResultObject *DeepfakeDetectResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,27 +96,33 @@ func (s *DeepfakeDetectResponseBody) Validate() error {
 }
 
 type DeepfakeDetectResponseBodyResultObject struct {
+	// The facial attribute output fields.
+	//
+	// example:
+	//
+	// {\\"age\\":49,\\"env\\":\\"other\\",\\"expression\\":0,\\"gender\\":1,\\"glasses\\":1,\\"hat\\":0,\\"mask\\":0,\\"others\\":0,\\"smoking\\":0,\\"tattoo\\":0}
+	FaceAttributeInfo *string `json:"FaceAttributeInfo,omitempty" xml:"FaceAttributeInfo,omitempty"`
 	// The risk result. Valid values:
 	//
-	// - **0**: Low risk.
+	// - **0**: low risk.
 	//
-	// - **1**: High risk.
+	// - **1**: high risk.
 	//
-	// - **2**: Suspicious.
+	// - **2**: suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The risk score map.
+	// The map of risk scores.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk labels. Multiple labels are separated by commas (,). Valid values:
+	// The risk tags. Multiple tags are separated by commas (,). Valid values:
 	//
-	// - SuspectDeepForgery: suspected deepfake
+	// - SuspectDeepForgery: suspected deepfake.
 	//
-	// - SuspectPSFace: suspected synthetic attack
+	// - SuspectPSFace: suspected synthetic attack.
 	//
-	// - SuspectTemple: suspected fraudulent attack
+	// - SuspectTemple: suspected black market attack.
 	//
 	// - SuspectRemake: suspected recaptured face.
 	//
@@ -134,6 +140,10 @@ func (s DeepfakeDetectResponseBodyResultObject) GoString() string {
 	return s.String()
 }
 
+func (s *DeepfakeDetectResponseBodyResultObject) GetFaceAttributeInfo() *string {
+	return s.FaceAttributeInfo
+}
+
 func (s *DeepfakeDetectResponseBodyResultObject) GetResult() *string {
 	return s.Result
 }
@@ -144,6 +154,11 @@ func (s *DeepfakeDetectResponseBodyResultObject) GetRiskScore() map[string]*stri
 
 func (s *DeepfakeDetectResponseBodyResultObject) GetRiskTag() *string {
 	return s.RiskTag
+}
+
+func (s *DeepfakeDetectResponseBodyResultObject) SetFaceAttributeInfo(v string) *DeepfakeDetectResponseBodyResultObject {
+	s.FaceAttributeInfo = &v
+	return s
 }
 
 func (s *DeepfakeDetectResponseBodyResultObject) SetResult(v string) *DeepfakeDetectResponseBodyResultObject {

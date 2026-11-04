@@ -20,13 +20,13 @@ type iDescribeFaceGuardRiskResponseBody interface {
 }
 
 type DescribeFaceGuardRiskResponseBody struct {
-	// The response code. **200*	- indicates that the request was successful.
+	// The return code. A value of **200*	- indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeFaceGuardRiskResponseBody struct {
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result.
 	ResultObject *DescribeFaceGuardRiskResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -102,15 +102,15 @@ type DescribeFaceGuardRiskResponseBodyResultObject struct {
 	//
 	// sha43d9cabd52d370d9f4cca9468f71e
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// The device risk probability predicted by the device assistant algorithm. A higher score indicates a higher device risk.
+	// The device risk probability predicted by the Device Assistant algorithm. A higher score indicates a higher device risk.
 	//
-	// Value range: 0 to 100.
+	// Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 80
 	GuardRiskScore *float64 `json:"GuardRiskScore,omitempty" xml:"GuardRiskScore,omitempty"`
-	// The extended information in JSON format. The returned content is customized based on tenant requirements.
+	// The extended information in JSON format. This information is customized and returned based on tenant requirements.
 	//
 	// example:
 	//
@@ -134,11 +134,11 @@ type DescribeFaceGuardRiskResponseBodyResultObject struct {
 	//
 	// }
 	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
-	// The device risk labels.
+	// The device risk tags.
 	//
-	// - Multiple device risk labels are separated by commas (,), such as "ROOT,VPN,HOOK".
+	// - Multiple device risk tags are separated by commas (,), such as ROOT,VPN,HOOK.
 	//
-	// - For more information about device risk labels and their descriptions, see the Face Guard label description in the official documentation.
+	// - For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
 	//
 	// example:
 	//

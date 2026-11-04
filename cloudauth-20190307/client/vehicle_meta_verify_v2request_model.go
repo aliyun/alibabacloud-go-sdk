@@ -30,9 +30,9 @@ type VehicleMetaVerifyV2Request struct {
 	//
 	// >
 	//
-	// > - If ParamType is set to normal, enter the plaintext value.
+	// > - When paramType is set to normal, enter the plaintext.
 	//
-	// > - If ParamType is set to md5, enter the first 6 digits of the ID card number in plaintext + the MD5-encrypted date of birth (32-bit lowercase MD5) + the last 4 digits of the ID card number.
+	// > - When paramType is set to md5, enter the first 6 digits of the ID card number in plaintext + the 32-bit lowercase MD5 hash of the birth date + the last 4 digits of the ID card number.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type VehicleMetaVerifyV2Request struct {
 	//
 	// - normal: not encrypted.
 	//
-	// - md5: MD5-encrypted.
+	// - md5: MD5 encrypted.
 	//
 	// example:
 	//
@@ -52,25 +52,25 @@ type VehicleMetaVerifyV2Request struct {
 	//
 	// >
 	//
-	// > - If ParamType is set to normal, enter the plaintext value.
+	// > - When paramType is set to normal, enter the plaintext.
 	//
-	// > - If ParamType is set to md5, enter the MD5-encrypted first character of the name (32-bit lowercase MD5) + the remaining characters of the name in plaintext.
+	// > - When paramType is set to md5, enter the 32-bit lowercase MD5 hash of the first character of the name + the rest of the name in plaintext.
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The license plate number.
 	//
 	// >
 	//
-	// > - If ParamType is set to normal, enter the plaintext value.
+	// > - When paramType is set to normal, enter the plaintext.
 	//
-	// > - If ParamType is set to md5, enter the license plate number excluding the last two characters in plaintext + the MD5-encrypted last two characters (32-bit lowercase MD5).
+	// > - When paramType is set to md5, enter the license plate number except the last two characters in plaintext + the 32-bit lowercase MD5 hash of the last two characters of the license plate.
 	//
 	// example:
 	//
-	// 陕A9****
+	// Shaanxi A9****
 	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
 	// The vehicle type.
 	//
@@ -78,13 +78,13 @@ type VehicleMetaVerifyV2Request struct {
 	//
 	// 02
 	VehicleType *string `json:"VehicleType,omitempty" xml:"VehicleType,omitempty"`
-	// The verification type.
+	// The verification type. Valid values:
 	//
 	// >
 	//
-	// > - VEHICLE_2_META: two-element verification. Verifies the name and license plate number.
+	// > - VEHICLE_2_META: two-element verification, which verifies the name and license plate number.
 	//
-	// > - VEHICLE_3_META: three-element verification. Verifies the name, license plate number, and ID card number.
+	// > - VEHICLE_3_META: three-element verification, which verifies the name, license plate number, and ID card number.
 	//
 	// example:
 	//

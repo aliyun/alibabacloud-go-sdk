@@ -20,7 +20,7 @@ type iCompareFaceVerifyResponseBody interface {
 }
 
 type CompareFaceVerifyResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
@@ -102,7 +102,11 @@ type CompareFaceVerifyResponseBodyResultObject struct {
 	//
 	// 08573be80f944d95ac812e019e3655a8
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// Indicates whether the verification passed. A value of T indicates passed. A value of F indicates not passed.
+	// Indicates whether the verification is passed. Valid values:
+	//
+	// - T: Passed.
+	//
+	// - F: Failed.
 	//
 	// example:
 	//

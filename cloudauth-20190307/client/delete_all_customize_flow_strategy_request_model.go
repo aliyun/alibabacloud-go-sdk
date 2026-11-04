@@ -16,7 +16,7 @@ type iDeleteAllCustomizeFlowStrategyRequest interface {
 }
 
 type DeleteAllCustomizeFlowStrategyRequest struct {
-	// The region ID.
+	// regionId
 	//
 	// example:
 	//

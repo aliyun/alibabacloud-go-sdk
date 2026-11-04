@@ -20,7 +20,7 @@ type iContrastFaceVerifyResponseBody interface {
 }
 
 type ContrastFaceVerifyResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
@@ -102,25 +102,25 @@ type ContrastFaceVerifyResponseBodyResultObject struct {
 	//
 	// 91707dc296d469ad38e4c5efa6a0****
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// The subject information of the verification. This is returned as empty in common verification scenarios.
+	// The information of the authenticated subject. This parameter is empty in common authentication scenarios.
 	//
 	// example:
 	//
 	// null
 	IdentityInfo *string `json:"IdentityInfo,omitempty" xml:"IdentityInfo,omitempty"`
-	// The supplementary material information of the verification subject, primarily image-based materials, in JSON format as follows.
+	// The attachment information of the authenticated subject, which mainly includes image materials. The value is in JSON format as follows.
 	//
 	// example:
 	//
 	// {"faceAttack": "F","facialPictureFront": {"qualityScore": 88.3615493774414,"verifyScore": 50.28594166529785}}
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// Indicates whether the verification is passed. A value of T indicates passed. A value of F indicates not passed.
+	// Indicates whether the verification is passed. A value of T indicates that the verification is passed, and a value of F indicates that the verification fails.
 	//
 	// example:
 	//
 	// T
 	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The verification result description. For more information, see the SubCode description below.
+	// The description of the authentication result. For more information, see the SubCode description below.
 	//
 	// example:
 	//

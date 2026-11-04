@@ -20,7 +20,7 @@ type iModifyControlStrategyShrinkRequest interface {
 type ModifyControlStrategyShrinkRequest struct {
 	// The list of security alert rules.
 	ControlStrategyListShrink *string `json:"ControlStrategyList,omitempty" xml:"ControlStrategyList,omitempty"`
-	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (Financial-grade ID Verification) is supported. All other types are retired.
 	//
 	// example:
 	//

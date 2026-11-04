@@ -20,13 +20,13 @@ type iVehicleQueryResponseBody interface {
 }
 
 type VehicleQueryResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type VehicleQueryResponseBodyResultObject struct {
 	//
 	// >
 	//
-	// > - 1: match found (billable).
+	// > - 1: Found (billable).
 	//
-	// > - 3: no record found (not billable).
+	// > - 3: No record found (not billable).
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type VehicleQueryResponseBodyResultObject struct {
 	//
 	// 	"backWheelDistance": 1585,
 	//
-	// 	"brand": "雷克萨斯",
+	// 	"brand": "Lexus",
 	//
 	// 	"compulsoryScrapTo": "****-**-*	- **:**:**",
 	//
@@ -134,7 +134,7 @@ type VehicleQueryResponseBodyResultObject struct {
 	//
 	// 	"frontWheelDistance": 1585,
 	//
-	// 	"fuelType": "汽油",
+	// 	"fuelType": "Gasoline",
 	//
 	// 	"high": 1860,
 	//
@@ -150,7 +150,7 @@ type VehicleQueryResponseBodyResultObject struct {
 	//
 	// 	"state": "0",
 	//
-	// 	"stateDesc": "正常",
+	// 	"stateDesc": "Normal",
 	//
 	// 	"totalMass": 2940,
 	//
@@ -158,7 +158,7 @@ type VehicleQueryResponseBodyResultObject struct {
 	//
 	// 	"useProperty": 0,
 	//
-	// 	"usePropertyDesc": "非营运",
+	// 	"usePropertyDesc": "Non-commercial",
 	//
 	// 	"long": 4890,
 	//

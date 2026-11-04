@@ -36,7 +36,7 @@ type DescribeOssStatusV2ResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeOssStatusV2ResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result information.
 	ResultObject *DescribeOssStatusV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

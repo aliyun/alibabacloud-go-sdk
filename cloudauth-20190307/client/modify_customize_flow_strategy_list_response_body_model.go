@@ -24,7 +24,7 @@ type iModifyCustomizeFlowStrategyListResponseBody interface {
 }
 
 type ModifyCustomizeFlowStrategyListResponseBody struct {
-	// The return code. **200*	- indicates that the request is successful.
+	// The return code. A value of **200*	- indicates that the API request is successful.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyCustomizeFlowStrategyListResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ModifyCustomizeFlowStrategyListResponseBody struct {
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the response is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

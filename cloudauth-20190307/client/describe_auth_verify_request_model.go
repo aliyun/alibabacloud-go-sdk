@@ -16,9 +16,7 @@ type iDescribeAuthVerifyRequest interface {
 }
 
 type DescribeAuthVerifyRequest struct {
-	// The unique identifier for ID Verification.
-	//
-	// Obtain this value by calling InitAuthVerify to initiate an OCR request.
+	// The unique identifier for ID Verification. To obtain this value, call the InitAuthVerify operation to initiate an OCR request.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +24,7 @@ type DescribeAuthVerifyRequest struct {
 	//
 	// shsf57a4e0d9981c3bd66dc754f3d3cd
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// The authentication scenario ID.
+	// The authentication scene ID.
 	//
 	// This parameter is required.
 	//

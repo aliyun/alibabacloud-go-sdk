@@ -20,23 +20,23 @@ type iDescribeCardVerifyResponseBody interface {
 }
 
 type DescribeCardVerifyResponseBody struct {
-	// The response code. 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
-	// > **Important**
+	// Important
 	//
-	// > - This parameter indicates whether the operation is called correctly. For more information about return codes, refer to error codes.
+	// - This parameter indicates whether the operation is called correctly. For more information about return codes, see Error codes.
 	//
-	// > - Check the business verification result by viewing the fields in ResultObject.
+	// - To view the business verification result, check the fields in ResultObject.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message of the operation.
+	// The message returned for the operation call.
 	//
-	// > **Important**
+	// Important
 	//
-	// > - This parameter only indicates whether the operation is abnormal.
+	// - This parameter only indicates whether an exception occurs during the operation call.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ func (s *DescribeCardVerifyResponseBody) Validate() error {
 type DescribeCardVerifyResponseBodyResultObject struct {
 	// The identity verification result. Valid values:
 	//
-	// - 1: consistent
+	// - 1: Consistent.
 	//
-	// - 2: inconsistent
+	// - 2: Inconsistent.
 	//
-	// - 3: no record found.
+	// - 3: No record found.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeCardVerifyResponseBodyResultObject struct {
 	//
 	// example:
 	//
-	// {"address":"浙江省杭州市余杭区文一西路969号","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
+	// {"address":"No. 969 West Wenyi Road, Yuhang District, Hangzhou City, Zhejiang Province","birthDate":"19901226","certName":"Zhang San","certNo":"1234561990122*****","nationality":"Han","authority":"xxx Public Security Bureau","startDate":"20201130","endDate":"20301130"}
 	CardInfo *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
 	// The image comparison score.
 	//
@@ -138,13 +138,13 @@ type DescribeCardVerifyResponseBodyResultObject struct {
 	//
 	// example:
 	//
-	// {"address":"浙江省杭州市余杭区文一西路969号","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}
+	// {"address":"No. 969 West Wenyi Road, Yuhang District, Hangzhou City, Zhejiang Province","birthDate":"19901226","certName":"Zhang San","certNo":"1234561990122*****","nationality":"Han","authority":"xxx Public Security Bureau","startDate":"20201130","endDate":"20301130"}
 	OcrCardInfo *string `json:"OcrCardInfo,omitempty" xml:"OcrCardInfo,omitempty"`
-	// The returned photo URLs.
+	// The URLs of the returned photos.
 	//
-	// - certUrl: front side
+	// - certUrl: Front side.
 	//
-	// - certNationalUrl: national emblem side.
+	// - certNationalUrl: National emblem side.
 	//
 	// example:
 	//

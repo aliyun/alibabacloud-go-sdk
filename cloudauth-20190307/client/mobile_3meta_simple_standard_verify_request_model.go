@@ -20,21 +20,21 @@ type iMobile3MetaSimpleStandardVerifyRequest interface {
 }
 
 type Mobile3MetaSimpleStandardVerifyRequest struct {
-	// The ID card number. Valid values:
+	// The ID card number.
 	//
-	// - If ParamType is set to normal, pass in the ID card number in plaintext.
+	// - If paramType is set to normal, specify the plaintext ID card number.
 	//
-	// - If ParamType is set to md5, pass in the MD5-encrypted ID card number.
+	// - If paramType is set to md5, specify the ciphertext ID card number.
 	//
 	// example:
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The phone number. Valid values:
+	// The mobile phone number.
 	//
-	// - If ParamType is set to normal, pass in the phone number in plaintext.
+	// - If paramType is set to normal, specify the plaintext mobile phone number.
 	//
-	// - If ParamType is set to md5, pass in the MD5-encrypted phone number.
+	// - If paramType is set to md5, specify the ciphertext mobile phone number.
 	//
 	// example:
 	//
@@ -42,23 +42,23 @@ type Mobile3MetaSimpleStandardVerifyRequest struct {
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 	// The parameter type. Valid values:
 	//
-	// - normal: not encrypted.
+	// - normal: No encryption.
 	//
-	// - md5: MD5-encrypted.
+	// - md5: MD5 encryption.
 	//
 	// example:
 	//
 	// normal
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The name. Valid values:
+	// The name.
 	//
-	// - If ParamType is set to normal, pass in the name in plaintext.
+	// - If paramType is set to normal, specify the plaintext name.
 	//
-	// - If ParamType is set to md5, pass in the MD5-encrypted name.
+	// - If paramType is set to md5, specify the ciphertext name.
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

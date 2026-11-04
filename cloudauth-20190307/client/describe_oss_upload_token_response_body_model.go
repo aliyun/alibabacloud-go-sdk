@@ -62,7 +62,7 @@ func (s *DescribeOssUploadTokenResponseBody) Validate() error {
 }
 
 type DescribeOssUploadTokenResponseBodyOssUploadToken struct {
-	// The OSS bucket for file storage.
+	// The OSS bucket.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeOssUploadTokenResponseBodyOssUploadToken struct {
 	//
 	// 1582636610000
 	Expired *int64 `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The key required for file upload.
+	// The key required to upload files.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type DescribeOssUploadTokenResponseBodyOssUploadToken struct {
 	//
 	// prod/RdNLC@Ox2n-1s7NMt
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The secret required for file upload.
+	// The secret required to upload files.
 	//
 	// example:
 	//
 	// FwmnyoqT8dHj7nJLuM67T****
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	// The token required for file upload.
+	// The token required to upload files.
 	//
 	// example:
 	//

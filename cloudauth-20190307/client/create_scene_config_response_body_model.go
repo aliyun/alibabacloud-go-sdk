@@ -14,7 +14,7 @@ type iCreateSceneConfigResponseBody interface {
 }
 
 type CreateSceneConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

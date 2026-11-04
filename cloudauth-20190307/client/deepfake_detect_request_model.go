@@ -9,6 +9,8 @@ type iDeepfakeDetectRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFaceAttributeCheck(v string) *DeepfakeDetectRequest
+	GetFaceAttributeCheck() *string
 	SetFaceBase64(v string) *DeepfakeDetectRequest
 	GetFaceBase64() *string
 	SetFaceInputType(v string) *DeepfakeDetectRequest
@@ -20,35 +22,41 @@ type iDeepfakeDetectRequest interface {
 }
 
 type DeepfakeDetectRequest struct {
-	// The Base64-encoded face image.
+	// Specifies whether to enable facial attribute detection.
 	//
-	// > Specify either FaceUrl or FaceBase64.
+	// example:
+	//
+	// Y
+	FaceAttributeCheck *string `json:"FaceAttributeCheck,omitempty" xml:"FaceAttributeCheck,omitempty"`
+	// The Base64-encoded string of the facial image.
+	//
+	// > You must specify either FaceUrl or FaceBase64.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceBase64 *string `json:"FaceBase64,omitempty" xml:"FaceBase64,omitempty"`
-	// The input type of the face material. Valid values:
+	// The input type of the facial material. Valid values:
 	//
-	// - IMAGE (default): face image
+	// - IMAGE (default): facial image.
 	//
-	// - VIDEO: face video
+	// - VIDEO: facial video.
 	//
-	// > Video processing takes longer. Set the timeout to more than 3 seconds.
+	// > Video processing takes a long time. Set the timeout period to greater than 3 seconds.
 	//
 	// example:
 	//
 	// IMAGE
 	FaceInputType *string `json:"FaceInputType,omitempty" xml:"FaceInputType,omitempty"`
-	// The URL of the face image.
+	// The URL of the facial image.
 	//
-	// > Specify either FaceUrl or FaceBase64.
+	// > You must specify either FaceUrl or FaceBase64.
 	//
 	// example:
 	//
 	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
-	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom merchant abbreviation, the middle part can contain a time segment, and the last part can use a random or incremental sequence.
+	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom abbreviation defined by the merchant, the middle part can contain a time period, and the latter part can be a random or incremental sequence.
 	//
 	// example:
 	//
@@ -62,6 +70,10 @@ func (s DeepfakeDetectRequest) String() string {
 
 func (s DeepfakeDetectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeepfakeDetectRequest) GetFaceAttributeCheck() *string {
+	return s.FaceAttributeCheck
 }
 
 func (s *DeepfakeDetectRequest) GetFaceBase64() *string {
@@ -78,6 +90,11 @@ func (s *DeepfakeDetectRequest) GetFaceUrl() *string {
 
 func (s *DeepfakeDetectRequest) GetOuterOrderNo() *string {
 	return s.OuterOrderNo
+}
+
+func (s *DeepfakeDetectRequest) SetFaceAttributeCheck(v string) *DeepfakeDetectRequest {
+	s.FaceAttributeCheck = &v
+	return s
 }
 
 func (s *DeepfakeDetectRequest) SetFaceBase64(v string) *DeepfakeDetectRequest {

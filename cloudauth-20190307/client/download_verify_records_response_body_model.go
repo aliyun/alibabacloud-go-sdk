@@ -22,7 +22,7 @@ type DownloadVerifyRecordsResponseBody struct {
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The OSS download link for the file.
+	// The OSS link for downloading the file.
 	//
 	// example:
 	//

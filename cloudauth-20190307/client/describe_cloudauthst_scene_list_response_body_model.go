@@ -78,7 +78,7 @@ type DescribeCloudauthstSceneListResponseBodyItems struct {
 	//
 	// 2023-01-04 19:56:04
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The Alibaba Cloud Marketplace commodity code.
+	// The commodity code in Alibaba Cloud Marketplace.
 	//
 	// example:
 	//
@@ -100,9 +100,9 @@ type DescribeCloudauthstSceneListResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 测试场景
+	// Test scenario
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
-	// Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
+	// Specifies whether to deliver the files generated during verification to the customer\\"s OSS. Valid values:
 	//
 	// - **Y**: Enabled.
 	//

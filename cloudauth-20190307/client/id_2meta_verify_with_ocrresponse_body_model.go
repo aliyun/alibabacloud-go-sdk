@@ -20,23 +20,23 @@ type iId2MetaVerifyWithOCRResponseBody interface {
 }
 
 type Id2MetaVerifyWithOCRResponseBody struct {
-	// The response code. A value of 200 indicates success. Any other value indicates failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// **Important**
 	//
-	// - This parameter indicates only whether the API call was made correctly. For detailed response codes, see error codes.
+	// - This parameter indicates whether the API operation is called successfully. For detailed return code descriptions, see Error codes.
 	//
-	// - Check the fields in ResultObject for the business verification result.
+	// - To view the business verification results, check the fields in ResultObject.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message of the API call.
+	// The message returned for the API call.
 	//
 	// **Important**
 	//
-	// This parameter indicates only whether the API call is abnormal.
+	// This parameter only indicates whether an exception occurs during the API call.
 	//
 	// example:
 	//
@@ -108,21 +108,21 @@ func (s *Id2MetaVerifyWithOCRResponseBody) Validate() error {
 type Id2MetaVerifyWithOCRResponseBodyResultObject struct {
 	// The identity verification result. Valid values:
 	//
-	// - 1: consistent.
+	// - 1: Consistent.
 	//
-	// - 2: inconsistent.
+	// - 2: Inconsistent.
 	//
-	// - 3: no record found.
+	// - 3: No record found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}.
+	// {"address":"Yu*****, Hangzhou, Zhejiang","birthDate":"19901226","certName":"Zhang San","certNo":"1234561990122*****","nationality":"Han","authority":"xxx Public Security Bureau","startDate":"20201130","endDate":"20301130"}
 	//
 	// example:
 	//
-	// OCR读取的身份证信息。
+	// The ID card information read by OCR
 	CardInfo *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
 }
 

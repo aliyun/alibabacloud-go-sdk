@@ -20,13 +20,13 @@ type iVehicleMetaVerifyResponseBody interface {
 }
 
 type VehicleMetaVerifyResponseBody struct {
-	// The return code. **200*	- indicates that the request was successful.
+	// The return code. **200*	- indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The return message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type VehicleMetaVerifyResponseBody struct {
 	//
 	// 8FC3D6AC-9FED-4311-8DA7-C4BF4*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *VehicleMetaVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 

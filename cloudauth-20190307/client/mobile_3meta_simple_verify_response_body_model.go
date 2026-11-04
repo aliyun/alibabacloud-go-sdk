@@ -20,19 +20,19 @@ type iMobile3MetaSimpleVerifyResponseBody interface {
 }
 
 type Mobile3MetaSimpleVerifyResponseBody struct {
-	// Response code: 200 indicates success, other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ func (s *Mobile3MetaSimpleVerifyResponseBody) Validate() error {
 }
 
 type Mobile3MetaSimpleVerifyResponseBodyResultObject struct {
-	// Verification result code:
+	// The verification result code. Valid values:
 	//
-	// - **1**: Verification consistent.
+	// - **1**: The verification is consistent.
 	//
-	// - **2**: Verification inconsistent.
+	// - **2**: The verification is inconsistent.
 	//
-	// - **3**: No record found.
+	// - **3**: No record is found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Carrier name:
+	// The name of the Internet service provider (ISP). Valid values:
 	//
 	// - **CMCC**: China Mobile.
 	//

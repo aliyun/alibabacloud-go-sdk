@@ -42,7 +42,7 @@ type iCredentialVerifyV2Request interface {
 }
 
 type CredentialVerifyV2Request struct {
-	// The certificate number.
+	// The relevant certificate number.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CredentialVerifyV2Request struct {
 	CertNum *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
 	// The credential name. Valid values:
 	//
-	// - 01: personal card or certificate
+	// - 01: personal cards and certificates
 	//
 	//   - 0101: ID card
 	//
@@ -60,17 +60,17 @@ type CredentialVerifyV2Request struct {
 	//
 	//   - 0107: student ID card
 	//
-	// - 02: business scenario
+	// - 02: business scenarios
 	//
 	//   - 0201: storefront photo
 	//
 	//   - 0202: counter photo
 	//
-	//   - 0203: scene photo
+	//   - 0203: scenario photo
 	//
-	// - 03: enterprise qualification
+	// - 03: enterprise qualifications
 	//
-	//   - 0301: business license.
+	//   - 0301: business license
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type CredentialVerifyV2Request struct {
 	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 01: personal card or certificate
+	// - 01: personal cards and certificates
 	//
-	// - 02: business scenario
+	// - 02: business scenarios
 	//
-	// - 03: enterprise qualification.
+	// - 03: enterprise qualifications
 	//
 	// example:
 	//
@@ -94,19 +94,19 @@ type CredentialVerifyV2Request struct {
 	//
 	// 4****************1
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The Base64-encoded image. Specify one of imageUrl, imageFile, or imageContext.
+	// The Base64-encoded image. Specify one of imageUrl, imageFile, and imageContext.
 	//
 	// example:
 	//
-	// 无
+	// None
 	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
-	// The input stream of the image. Specify one of imageUrl, imageFile, or imageContext.
+	// The image input stream. Specify one of imageUrl, imageFile, and imageContext.
 	//
 	// example:
 	//
-	// 无
+	// None
 	ImageFile *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
-	// The URL of the image. Specify one of imageUrl, imageFile, or imageContext.
+	// The image URL. Specify one of imageUrl, imageFile, and imageContext.
 	//
 	// example:
 	//
@@ -114,47 +114,47 @@ type CredentialVerifyV2Request struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// Specifies whether to enable authoritative verification. Valid values:
 	//
-	// - **0**: Disabled.
+	// - ****0****: no
 	//
-	// - **1**: Enabled.
+	// - **1**: yes
 	//
-	// 	Danger: Deprecated.
+	// 	Danger: **[Deprecated]**</danger>
 	//
 	// example:
 	//
 	// 0
 	IsCheck *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
-	// Specifies whether to enable OCR.
+	// Specifies whether to perform OCR.
 	//
-	// 	Danger: Deprecated.
+	// 	Danger: **[Deprecated]**</danger>
 	//
 	// example:
 	//
 	// 0
 	IsOcr *string `json:"IsOcr,omitempty" xml:"IsOcr,omitempty"`
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	MerchantDetail []*CredentialVerifyV2RequestMerchantDetail `json:"MerchantDetail,omitempty" xml:"MerchantDetail,omitempty" type:"Repeated"`
-	// The merchant ID. This parameter is required when CredName is set to 02.
+	// The merchant ID. This field is required when ****CredName***	- is set to **02**.
 	//
 	// example:
 	//
-	// 无。
+	// None
 	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
 	// The call mode. Valid values:
 	//
-	// - ANTI_FAKE_CHECK (default): image anti-forgery detection.
+	// - ANTI_FAKE_CHECK (default): image anti-counterfeiting detection
 	//
 	// example:
 	//
 	// ANTI_FAKE_CHECK
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	//
 	// example:
 	//
 	// -
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type CredentialVerifyV2Request struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -325,13 +325,13 @@ func (s *CredentialVerifyV2Request) Validate() error {
 }
 
 type CredentialVerifyV2RequestMerchantDetail struct {
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	//
 	// example:
 	//
 	// -
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	//
 	// example:
 	//

@@ -48,27 +48,27 @@ type CredentialVerifyRequest struct {
 	CertNum *string `json:"CertNum,omitempty" xml:"CertNum,omitempty"`
 	// The credential name. Valid values:
 	//
-	// - 01: personal card and certificate
+	// - 01: Personal cards and certificates
 	//
 	//   - 0101: ID card
 	//
-	//   - 0102: bank card
+	//   - 0102: Bank card
 	//
-	//   - 0104: teacher qualification certificate
+	//   - 0104: Teacher qualification certificate
 	//
-	//   - 0107: student ID card
+	//   - 0107: Student ID card
 	//
-	// - 02: business scenario
+	// - 02: Business scenarios
 	//
-	//   - 0201: storefront photo
+	//   - 0201: Storefront photo
 	//
-	//   - 0202: counter photo
+	//   - 0202: Counter photo
 	//
-	//   - 0203: scene photo
+	//   - 0203: Scene photo
 	//
-	// - 03: enterprise qualification
+	// - 03: Enterprise qualifications
 	//
-	//   - 0301: business license.
+	//   - 0301: Business license
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type CredentialVerifyRequest struct {
 	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
 	// The credential type. Valid values:
 	//
-	// - 01: personal card and certificate
+	// - 01: Personal cards and certificates.
 	//
-	// - 02: business scenario
+	// - 02: Business scenarios.
 	//
-	// - 03: enterprise qualification.
+	// - 03: Enterprise qualifications.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type CredentialVerifyRequest struct {
 	//
 	// 429001********8211
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The Base64-encoded image. Specify either imageUrl or imageContext.
+	// The Base64-encoded image content. You must specify either imageUrl or imageContext.
 	//
 	// example:
 	//
 	// base64
 	ImageContext *string `json:"ImageContext,omitempty" xml:"ImageContext,omitempty"`
-	// The image URL. Specify either imageUrl or imageContext.
+	// The image URL. You must specify either imageUrl or imageContext.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type CredentialVerifyRequest struct {
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// Specifies whether to enable authoritative verification. Valid values:
 	//
-	// - **0**: Disabled.
+	// - ****0****: No.
 	//
-	// - **1**: Enabled.
+	// - **1**: Yes.
 	//
 	// example:
 	//
@@ -116,35 +116,35 @@ type CredentialVerifyRequest struct {
 	IsCheck *string `json:"IsCheck,omitempty" xml:"IsCheck,omitempty"`
 	// Specifies whether to enable optical character recognition (OCR). Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: No.
 	//
-	// - **1**: Enabled.
+	// - **1**: Yes.
 	//
-	// You can set **isOCR*	- to **1*	- only when **CredType*	- is set to **01**.
+	// You can set this parameter to **1*	- only when **CredType*	- is set to **01**.
 	//
 	// example:
 	//
 	// 1
 	IsOCR *string `json:"IsOCR,omitempty" xml:"IsOCR,omitempty"`
-	// This parameter is required when PromptModel is set to DEFAULT.
+	// The merchant details. This parameter is required when PromptModel is set to DEFAULT.
 	MerchantDetail []*CredentialVerifyRequestMerchantDetail `json:"MerchantDetail,omitempty" xml:"MerchantDetail,omitempty" type:"Repeated"`
-	// The merchant ID. This parameter is required when **CredName*	- is set to **02**.
+	// The merchant ID. This parameter is required when ****CredName***	- is set to **02**.
 	//
 	// example:
 	//
-	// 无。
+	// None
 	MerchantId *string `json:"MerchantId,omitempty" xml:"MerchantId,omitempty"`
 	// The call mode. Valid values:
 	//
-	// 	- ANTI_FAKE_CHECK: image anti-forgery detection.
+	// 	- ANTI_FAKE_CHECK: Image anti-counterfeiting detection.
 	//
-	// 	- ANTI_FAKE_VL: image anti-forgery detection and semantic understanding.
+	// 	- ANTI_FAKE_VL: Image anti-counterfeiting detection and semantic understanding.
 	//
-	// 	- IMAGE_VL_COG: image semantic understanding.
+	// 	- IMAGE_VL_COG: Image semantic understanding.
 	//
 	// Default value: ANTI_FAKE_CHECK.
 	//
-	// ProductCode can be set to ANTI_FAKE_VL or IMAGE_VL_COG only when CredType is set to 02.
+	// You can set this parameter to ANTI_FAKE_VL or IMAGE_VL_COG only when CredType is set to 02.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type CredentialVerifyRequest struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// The method to obtain the prompt for image semantic understanding. Valid values:
 	//
-	// 	- DEFAULT: system default.
+	// 	- DEFAULT: System default.
 	//
-	// 	- CUSTOM: custom.
+	// 	- CUSTOM: Custom.
 	//
 	// Note: This parameter is required when ProductCode is set to ANTI_FAKE_VL or IMAGE_VL_COG.
 	//
@@ -174,7 +174,7 @@ type CredentialVerifyRequest struct {
 	//
 	// example:
 	//
-	// 张*
+	// Zhang*
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -326,17 +326,17 @@ func (s *CredentialVerifyRequest) Validate() error {
 }
 
 type CredentialVerifyRequestMerchantDetail struct {
-	// The replacement keyword key.
+	// The key of the replacement keyword.
 	//
 	// example:
 	//
 	// keyword
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The replacement keyword value.
+	// The value of the replacement keyword.
 	//
 	// example:
 	//
-	// 关键字
+	// Keyword
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

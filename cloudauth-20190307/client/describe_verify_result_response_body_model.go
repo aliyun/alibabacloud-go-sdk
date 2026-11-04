@@ -24,7 +24,7 @@ type iDescribeVerifyResultResponseBody interface {
 }
 
 type DescribeVerifyResultResponseBody struct {
-	// The comparison score between the face photo submitted during verification and the authoritative data. Value range: **0*	- to **100**.
+	// The comparison score between the face photo submitted during the verification process and the authoritative data. Valid values: **0*	- to **100**.
 	//
 	// Confidence threshold reference:
 	//
@@ -36,14 +36,13 @@ type DescribeVerifyResultResponseBody struct {
 	//
 	// - When the false acceptance rate is 1%, the corresponding threshold is 60.
 	//
-	// > This field only indicates the comparison result between the face and the authoritative data and is for reference only. Do not use this value alone as the criterion for determining whether the verification is passed. For the comprehensive verification result, refer to the **VerifyStatus*	- field. The **VerifyStatus*	- result combines the face-to-authoritative-data comparison with multiple other strategies to improve security.
+	// > This field only indicates the comparison result between the face and the authoritative data and is for your reference only. Do not use this value as the sole criterion for determining whether the verification is passed. For the comprehensive verification result, refer to the **VerifyStatus*	- field. The **VerifyStatus*	- result combines the face-to-authoritative-data comparison with various other strategies to improve the security level.
 	//
 	// example:
 	//
 	// 97
 	AuthorityComparisionScore *float32 `json:"AuthorityComparisionScore,omitempty" xml:"AuthorityComparisionScore,omitempty"`
-	// The comparison score between the face photo submitted during verification and the face in the retained face image. Value range: **0*	- to **100**.
-	//
+	// The comparison score between the face photo submitted during the verification process and the face in the retained face photo. Valid values: **0*	- to **100**.
 	//
 	// Confidence threshold reference:
 	//
@@ -59,8 +58,7 @@ type DescribeVerifyResultResponseBody struct {
 	//
 	// 97
 	FaceComparisonScore *float32 `json:"FaceComparisonScore,omitempty" xml:"FaceComparisonScore,omitempty"`
-	// The comparison score between the face photo submitted during verification and the face on the ID card photo. Value range: **0*	- to **100**.
-	//
+	// The comparison score between the face photo submitted during the verification process and the face in the ID card portrait photo. Valid values: **0*	- to **100**.
 	//
 	// Confidence threshold reference:
 	//
@@ -86,11 +84,11 @@ type DescribeVerifyResultResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The verification status. Valid values:
 	//
-	// - **-1**: not verified.
+	// - **-1**: Not verified.
 	//
-	// - **1**: verification passed.
+	// - **1**: Verification passed.
 	//
-	// - **2*	- to **n**: verification failed due to various reasons. For more information, see the verification status description.
+	// - **2*	- to **n**: Verification failed due to various reasons. For detailed descriptions, see the verification status description.
 	//
 	// example:
 	//
@@ -170,17 +168,17 @@ func (s *DescribeVerifyResultResponseBody) Validate() error {
 }
 
 type DescribeVerifyResultResponseBodyMaterial struct {
-	// The global camera image captured by the ID Verification SDK.
+	// The global image captured by the camera and collected by the ID Verification SDK.
 	//
-	// > This parameter takes effect only after configuration. If you need to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
+	// > This parameter takes effect only after it is configured. If you need to use this parameter, submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/face-global-example.jpg
 	FaceGlobalUrl *string `json:"FaceGlobalUrl,omitempty" xml:"FaceGlobalUrl,omitempty"`
-	// The HTTP or HTTPS URL of the face photo. The URL is valid for 5 minutes. Save the image to avoid access issues.
+	// The HTTP or HTTPS URL of the front-facing face photo. The URL is valid for 5 minutes. Store the image to prevent service interruptions.
 	//
-	// > If the HTTP or HTTPS URL of the face photo has expired, call [DescribeVerifyResult](https://help.aliyun.com/document_detail/154606.html) again to obtain a new URL.
+	// > If the HTTP or HTTPS URL of the front-facing face photo expires, you can call [DescribeVerifyResult](https://help.aliyun.com/document_detail/154606.html) again to obtain the URL.
 	//
 	// example:
 	//
@@ -188,37 +186,37 @@ type DescribeVerifyResultResponseBodyMaterial struct {
 	FaceImageUrl *string `json:"FaceImageUrl,omitempty" xml:"FaceImageUrl,omitempty"`
 	// Indicates whether the face is wearing a mask. Valid values:
 	//
-	// - **true**: A mask is detected.
+	// - **true**: A mask is worn.
 	//
-	// - **false**: No mask is detected.
+	// - **false**: No mask is worn.
 	//
 	// example:
 	//
 	// false
 	FaceMask *bool `json:"FaceMask,omitempty" xml:"FaceMask,omitempty"`
-	// The quality of the face photo. Valid values:
+	// The quality of the front-facing face photo. Valid values:
 	//
-	// - **UNQUALIFIED**: poor quality.
+	// - **UNQUALIFIED**: Poor photo quality.
 	//
-	// - **LOW**: low quality.
+	// - **LOW**: Low.
 	//
-	// - **NORMAL**: moderate quality.
+	// - **NORMAL**: Normal.
 	//
-	// - **HIGH**: high quality.
+	// - **HIGH**: High.
 	//
 	// example:
 	//
 	// NORMAL
 	FaceQuality *string `json:"FaceQuality,omitempty" xml:"FaceQuality,omitempty"`
-	// The OCR result of the ID card information.
+	// The optical character recognition (OCR) result of the ID card information.
 	//
-	// > If no front or back image of the ID card is provided during verification, the ID Verification service does not return the OCR result. Even if front and back images are provided, the service does not guarantee that all information on the ID card will be returned. OCR information may be incomplete when the ID card photo is blurry or has lighting issues that prevent character recognition. Do not create a strong dependency on the ID card OCR information in your business logic.
+	// > If the front and back images of the ID card are not provided during the verification process, the ID Verification service does not return the OCR result of the ID card. Even if the front and back images are provided, the service does not guarantee that all information on the ID card is returned. If the OCR fails to recognize certain information due to photo quality issues, the OCR information will be incomplete. Do not strongly rely on the ID card OCR information in your business.
 	IdCardInfo *DescribeVerifyResultResponseBodyMaterialIdCardInfo `json:"IdCardInfo,omitempty" xml:"IdCardInfo,omitempty" type:"Struct"`
-	// The name on the ID card.
+	// The name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	IdCardName *string `json:"IdCardName,omitempty" xml:"IdCardName,omitempty"`
 	// The ID card number.
 	//
@@ -324,17 +322,17 @@ type DescribeVerifyResultResponseBodyMaterialIdCardInfo struct {
 	//
 	// example:
 	//
-	// 浙江省杭州市余杭区文一西路969号
+	// No. 969 Wenyi West Road, Yuhang District, Hangzhou City, Zhejiang Province
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The issuing authority.
 	//
 	// example:
 	//
-	// 杭州市公安局
+	// Hangzhou Municipal Public Security Bureau
 	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
-	// The HTTP or HTTPS URL of the national emblem side of the ID card. The URL is valid for 5 minutes. Save the image to avoid access issues.
+	// The HTTP or HTTPS URL of the ID card back image with the national emblem. The URL is valid for 5 minutes. Store the image to prevent service interruptions.
 	//
-	// > If the HTTP or HTTPS URL has expired, call DescribeVerifyResult again to obtain a new URL.
+	// > If the HTTP or HTTPS URL of the image expires, you can call DescribeVerifyResult again to obtain the URL.
 	//
 	// example:
 	//
@@ -346,31 +344,31 @@ type DescribeVerifyResultResponseBodyMaterialIdCardInfo struct {
 	//
 	// 19900101
 	Birth *string `json:"Birth,omitempty" xml:"Birth,omitempty"`
-	// The expiration date of the ID card. Format: yyyymmdd.
+	// The end date of the validity period of the ID card. Format: yyyymmdd.
 	//
 	// example:
 	//
 	// 20201101
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The HTTP or HTTPS URL of the portrait side of the ID card. The URL is valid for 5 minutes. Save the image to avoid access issues.
+	// The HTTP or HTTPS URL of the ID card portrait image. The URL is valid for 5 minutes. Store the image to prevent service interruptions.
 	//
-	// > If the HTTP or HTTPS URL has expired, call DescribeVerifyResult again to obtain a new URL.
+	// > If the HTTP or HTTPS URL of the image expires, you can call DescribeVerifyResult again to obtain the URL.
 	//
 	// example:
 	//
 	// http://image-demo.img-cn-hangzhou.aliyuncs.com/example2.jpg
 	FrontImageUrl *string `json:"FrontImageUrl,omitempty" xml:"FrontImageUrl,omitempty"`
-	// The name on the ID card.
+	// The name.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ethnicity.
 	//
 	// example:
 	//
-	// 汉
+	// Han
 	Nationality *string `json:"Nationality,omitempty" xml:"Nationality,omitempty"`
 	// The ID card number.
 	//
@@ -378,7 +376,7 @@ type DescribeVerifyResultResponseBodyMaterialIdCardInfo struct {
 	//
 	// 02343218901123****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	// The start date of the ID card validity period. Format: yyyymmdd.
+	// The start date of the validity period of the ID card. Format: yyyymmdd.
 	//
 	// example:
 	//

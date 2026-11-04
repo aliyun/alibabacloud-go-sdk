@@ -16,9 +16,9 @@ type iRemoveWhiteListSettingShrinkRequest interface {
 }
 
 type RemoveWhiteListSettingShrinkRequest struct {
-	// The IDs of the whitelists to delete in batch.
+	// The IDs of the whitelists to delete in batches.
 	IdsShrink *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The ServiceCode of the ID Verification service. Set this parameter to **antcloudauth**.
+	// The service code of the ID Verification service. Valid values: **antcloudauth**.
 	//
 	// example:
 	//

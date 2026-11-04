@@ -26,7 +26,7 @@ type CredentialProductVerifyV2ResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type CredentialProductVerifyV2ResponseBodyResultObject struct {
 	//
 	//  "sameBackgroundDetail": {
 	//
-	//  // 相似背景对于的原始图请求RequestId
+	//  // The request ID of the original image request for the similar background
 	//
-	//  "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****";
+	//  "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****",
 	//
-	//  // 相似背景对于的原始图请求商户ID
+	//  // The merchant ID of the original image request for the similar background
 	//
 	//  "originalMerchantId": "xxxxxxxx"
 	//
@@ -116,13 +116,13 @@ type CredentialProductVerifyV2ResponseBodyResultObject struct {
 	//
 	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// Valid values:
+	// The risk level. Valid values:
 	//
-	// - 0: low risk
+	// - 0: Low risk.
 	//
-	// - 1: high risk
+	// - 1: High risk.
 	//
-	// - 2: suspicious.
+	// - 2: Suspicious.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type CredentialProductVerifyV2ResponseBodyResultObject struct {
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk labels. Multiple labels are separated by commas. Valid values:
+	// The risk tags. Multiple tags are separated by commas. Valid values:
 	//
-	// - PS: image manipulation
+	// - PS: Image manipulation.
 	//
-	// - LOW_QUALITY_PRODUCT: low quality (low clarity)
+	// - LOW_QUALITY_PRODUCT: Low quality (low clarity).
 	//
-	// - SAME_BACKGROUND: similar image.
+	// - SAME_BACKGROUND: Similar image.
 	//
 	// example:
 	//

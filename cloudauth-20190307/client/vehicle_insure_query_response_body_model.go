@@ -20,13 +20,13 @@ type iVehicleInsureQueryResponseBody interface {
 }
 
 type VehicleInsureQueryResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message of the request.
+	// The response message for the request.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type VehicleInsureQueryResponseBody struct {
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F52********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result.
 	ResultObject *VehicleInsureQueryResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -100,9 +100,9 @@ type VehicleInsureQueryResponseBodyResultObject struct {
 	//
 	// >
 	//
-	// > - 1: record found (billable).
+	// > - 1: Found (billable).
 	//
-	// > - 3: no record found (not billable).
+	// > - 3: No record found (not billable).
 	//
 	// example:
 	//

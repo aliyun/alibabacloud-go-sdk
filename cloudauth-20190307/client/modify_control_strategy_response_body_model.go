@@ -26,7 +26,7 @@ type ModifyControlStrategyResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message returned by the operation.
+	// The message returned by the API.
 	//
 	// example:
 	//

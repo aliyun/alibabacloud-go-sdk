@@ -20,7 +20,7 @@ type iMobile2MetaVerifyResponseBody interface {
 }
 
 type Mobile2MetaVerifyResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
@@ -98,23 +98,23 @@ func (s *Mobile2MetaVerifyResponseBody) Validate() error {
 type Mobile2MetaVerifyResponseBodyResultObject struct {
 	// The verification result. Valid values:
 	//
-	// - 1: Consistent.
+	// - 1: consistent
 	//
-	// - 2: Inconsistent.
+	// - 2: inconsistent
 	//
-	// - 3: No record found.
+	// - 3: no record found
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The carrier name. Valid values:
+	// The ISP name. Valid values:
 	//
 	// - CMCC: China Mobile
 	//
 	// - CUCC: China Unicom
 	//
-	// - CTCC: China Telecom.
+	// - CTCC: China Telecom
 	//
 	// example:
 	//

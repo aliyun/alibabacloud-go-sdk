@@ -20,13 +20,13 @@ type iCredentialVerifyResponseBody interface {
 }
 
 type CredentialVerifyResponseBody struct {
-	// The response code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CredentialVerifyResponseBody struct {
 	//
 	// D6163397-15C5-419C-9ACC-B7C83E0B4C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result.
 	ResultObject *CredentialVerifyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialVerifyResponseBody) Validate() error {
 }
 
 type CredentialVerifyResponseBodyResultObject struct {
-	// The additional information in JSON format.
+	// The other information in JSON format.
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	// "sameBackgroundDetail": {
 	//
-	// // 相似背景对于的原始图请求RequestId
+	// // The request ID of the original image for the similar background
 	//
 	// "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****";
 	//
-	// // 相似背景对于的原始图请求商户ID
+	// // The merchant ID of the original image request for the similar background
 	//
 	// "originalMerchantId": "xxxxxxxx"
 	//
@@ -116,7 +116,7 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	// }
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
-	// The OCR recognition result.
+	// The OCR result.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	//    "certNo":"20216*********",
 	//
-	//   "certType":"小学教师资格",
+	//   "certType":"Primary School Teacher Qualification",
 	//
-	//    "gender":"男",
+	//    "gender":"Male",
 	//
-	//    "subject":"美术",
+	//    "subject":"Fine Arts",
 	//
-	//     "name":"李**",
+	//     "name":"Li**",
 	//
 	//     "ext_info":"{}",
 	//
@@ -148,31 +148,31 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	// - **1**: High risk.
 	//
-	// - **2**: Suspicious.
+	// - ****2****: Suspicious.
 	//
 	// example:
 	//
 	// 1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The risk score map.
+	// The map of risk scores.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk tags, separated by commas (,). Valid values:
+	// The risk tags. Multiple tags are separated by commas (,). Valid values:
 	//
-	// - PS: image manipulation.
+	// - PS: The image is photoshopped.
 	//
-	// - SCREEN_PHOTO: screen recapture.
+	// - SCREEN_PHOTO: The image is a photo of a screen.
 	//
-	// - SCREENSHOT: screenshot.
+	// - SCREENSHOT: The image is a screenshot.
 	//
-	// - WATERMARK: watermark.
+	// - WATERMARK: The image contains a watermark.
 	//
-	// - COLOR_PRINT: color print copy.
+	// - COLOR_PRINT: The image is a color print or copy.
 	//
-	// - WEB_IMAGE: web image.
+	// - WEB_IMAGE: The image is a web image.
 	//
-	// - SAME_FACE: similar face.
+	// - SAME_FACE: The face is similar to another face.
 	//
-	// - SAME_BACKGROUND: similar background.
+	// - SAME_BACKGROUND: The background is similar to another background.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type CredentialVerifyResponseBodyResultObject struct {
 	//
 	// *
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
-	// The Qwen interpretation.
+	// The Qwen explanation.
 	VlResult *CredentialVerifyResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
 }
 
@@ -284,7 +284,7 @@ func (s *CredentialVerifyResponseBodyResultObject) Validate() error {
 }
 
 type CredentialVerifyResponseBodyResultObjectVlResult struct {
-	// Indicates whether the Qwen interpretation is successful. Valid values:
+	// Indicates whether the Qwen explanation is successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -294,11 +294,11 @@ type CredentialVerifyResponseBodyResultObjectVlResult struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The Qwen interpretation content.
+	// The content of the Qwen explanation.
 	//
 	// example:
 	//
-	// {\\"这张图有没有明显的PS特征\\":0,\\"图片是否为正常经营照片\\":1,\\"图片中有没有58、美团、大众点评字样\\":0,\\"这张图有没有网站信息\\":0,\\"图片经营的场景是否为酒店\\":0}
+	// {"Does this image have obvious Photoshop features":0,"Is the image a normal business photo":1,"Does the image contain the words 58, Meituan, or Dianping":0,"Does this image contain website information":0,"Is the business scene in the image a hotel":0}
 	VlContent *string `json:"VlContent,omitempty" xml:"VlContent,omitempty"`
 }
 

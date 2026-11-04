@@ -34,13 +34,13 @@ type DescribeFaceGuardRiskRequest struct {
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
 	// The identifier used for subsequent troubleshooting. Ensure that this value is unique within your business.
 	//
-	// The value can contain letters (both uppercase and lowercase) and digits, with a maximum length of 32 characters.
+	// The value can contain uppercase and lowercase letters and digits, and can be up to 32 characters in length.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35xxxx
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// The product code. Set this to FACE_GUARD.
+	// The product code. Set the value to FACE_GUARD.
 	//
 	// example:
 	//

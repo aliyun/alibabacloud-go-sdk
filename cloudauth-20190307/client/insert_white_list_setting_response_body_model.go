@@ -22,13 +22,13 @@ type iInsertWhiteListSettingResponseBody interface {
 }
 
 type InsertWhiteListSettingResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type InsertWhiteListSettingResponseBody struct {
 	//
 	// true
 	ResultObject *bool `json:"ResultObject,omitempty" xml:"ResultObject,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//

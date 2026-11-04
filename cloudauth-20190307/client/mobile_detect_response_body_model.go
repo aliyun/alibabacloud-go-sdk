@@ -20,13 +20,13 @@ type iMobileDetectResponseBody interface {
 }
 
 type MobileDetectResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *MobileDetectResponseBody) Validate() error {
 }
 
 type MobileDetectResponseBodyResultObject struct {
-	// The total number of billing counts in a single request.
+	// The total number of billable calls in a single request.
 	//
 	// example:
 	//
@@ -146,17 +146,17 @@ func (s *MobileDetectResponseBodyResultObject) Validate() error {
 }
 
 type MobileDetectResponseBodyResultObjectItems struct {
-	// The location to which the phone number belongs. This field is available only for plaintext phone numbers.
+	// The phone number location. This field is available only for plaintext phone numbers.
 	//
 	// example:
 	//
-	// 安徽-马**
+	// Anhui-Ma**
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
 	// The verification result. Valid values:
 	//
 	// - 1: Active and available.
 	//
-	// - 2: Not in active and available status.
+	// - 2: Inactive or unavailable.
 	//
 	// - 3: No query results.
 	//
@@ -164,11 +164,11 @@ type MobileDetectResponseBodyResultObjectItems struct {
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The carrier name. Valid values:
+	// The name of the carrier. Valid values:
 	//
-	// - CMCC: China Mobile
+	// - CMCC: China Mobile.
 	//
-	// - CUCC: China Unicom
+	// - CUCC: China Unicom.
 	//
 	// - CTCC: China Telecom.
 	//
@@ -186,13 +186,13 @@ type MobileDetectResponseBodyResultObjectItems struct {
 	//
 	// - 101: Available number.
 	//
-	// - 102: Empty number.
+	// - 102: Non-existent number.
 	//
-	// - 103: Suspended.
+	// - 103: Service suspended.
 	//
-	// - 104: Silent number (inactive secondary number in the past six months, new number, or non-smartphone user).
+	// - 104: Silent number (inactive secondary numbers, new numbers, or non-smartphone users within the last six months).
 	//
-	// - 105: Risky number (user with prolonged shutdown, voice service not activated, or prone to complaints).
+	// - 105: Risky number (powered off for a long time, voice service not activated, or users prone to complaints).
 	//
 	// - 301: No record found.
 	//

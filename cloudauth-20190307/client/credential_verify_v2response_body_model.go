@@ -20,13 +20,13 @@ type iCredentialVerifyV2ResponseBody interface {
 }
 
 type CredentialVerifyV2ResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CredentialVerifyV2ResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	ResultObject *CredentialVerifyV2ResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *CredentialVerifyV2ResponseBody) Validate() error {
 }
 
 type CredentialVerifyV2ResponseBodyResultObject struct {
-	// The additional information in JSON format.
+	// The other information in JSON format.
 	//
 	// example:
 	//
@@ -104,11 +104,11 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	//
 	// "sameBackgroundDetail": {
 	//
-	// // 相似背景对于的原始图请求RequestId
+	// // The request ID of the original image request for the similar background
 	//
 	// "originalRequestId": "130A2C10-B9EE-4D84-88E3-5384FF03****";
 	//
-	// // 相似背景对于的原始图请求商户ID
+	// // The merchant ID of the original image request for the similar background
 	//
 	// "originalMerchantId": "xxxxxxxx"
 	//
@@ -118,7 +118,7 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
 	// The OCR recognition result.
 	//
-	// 	Danger: Deprecated.
+	// 	Danger: **[Deprecated]**</danger>
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	//
 	//    "certNo":"20216*********",
 	//
-	//   "certType":"小学教师资格",
+	//   "certType":"Primary school teacher qualification",
 	//
-	//    "gender":"男",
+	//    "gender":"Male",
 	//
-	//    "subject":"美术",
+	//    "subject":"Art",
 	//
-	//     "name":"李**",
+	//     "name":"Li**",
 	//
 	//     "ext_info":"{}",
 	//
@@ -146,11 +146,11 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	OcrInfo *string `json:"OcrInfo,omitempty" xml:"OcrInfo,omitempty"`
 	// The risk result. Valid values:
 	//
-	// - 0: Low risk.
+	// - 0: low risk
 	//
-	// - 1: High risk.
+	// - 1: high risk
 	//
-	// - 2: Suspicious.
+	// - 2: suspicious
 	//
 	// example:
 	//
@@ -158,19 +158,19 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The risk score map.
 	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
-	// The risk tags, separated by commas (,). Valid values:
+	// The risk tags. Multiple tags are separated by commas (,). Valid values:
 	//
-	// - PS: image manipulation.
+	// - PS: The image is edited by using Photoshop.
 	//
-	// - SCREEN_PHOTO: screen recapture.
+	// - SCREEN_PHOTO: The image is a photo of a screen.
 	//
-	// - SCREENSHOT: screenshot.
+	// - SCREENSHOT: The image is a screenshot.
 	//
-	// - WATERMARK: watermark.
+	// - WATERMARK: The image contains a watermark.
 	//
-	// - SAME_BACKGROUND: similar background.
+	// - SAME_BACKGROUND: The image has a similar background.
 	//
-	// - ORIGINAL_PHOTO: non-original image.
+	// - ORIGINAL_PHOTO: The image is not an original photo.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
 	// The authoritative verification details.
 	//
-	// 	Danger: Deprecated.
+	// 	Danger: **[Deprecated]**</danger>
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type CredentialVerifyV2ResponseBodyResultObject struct {
 	VerifyDetail *string `json:"VerifyDetail,omitempty" xml:"VerifyDetail,omitempty"`
 	// The authoritative verification result.
 	//
-	// 	Danger: Deprecated.
+	// 	Danger: **[Deprecated]**</danger>
 	//
 	// example:
 	//
 	// *
 	VerifyResult *string `json:"VerifyResult,omitempty" xml:"VerifyResult,omitempty"`
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	VlResult *CredentialVerifyV2ResponseBodyResultObjectVlResult `json:"VlResult,omitempty" xml:"VlResult,omitempty" type:"Struct"`
 }
 
@@ -286,13 +286,13 @@ func (s *CredentialVerifyV2ResponseBodyResultObject) Validate() error {
 }
 
 type CredentialVerifyV2ResponseBodyResultObjectVlResult struct {
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	//
 	// example:
 	//
 	// -
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// This feature is offline. This parameter no longer takes effect.
+	// This feature has been retired and the parameter no longer takes effect.
 	//
 	// example:
 	//

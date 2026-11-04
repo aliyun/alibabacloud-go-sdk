@@ -16,7 +16,7 @@ type iQueryControlStrategyRequest interface {
 }
 
 type QueryControlStrategyRequest struct {
-	// The product type. Currently, only ANT_CLOUD_AUTH (financial-grade ID Verification) is supported. All other product types have been discontinued.
+	// The product type. Only ANT_CLOUD_AUTH (Financial-grade ID Verification) is supported. All other product types are retired.
 	//
 	// example:
 	//

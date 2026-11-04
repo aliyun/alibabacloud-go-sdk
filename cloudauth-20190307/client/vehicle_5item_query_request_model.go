@@ -20,9 +20,9 @@ type iVehicle5ItemQueryRequest interface {
 type Vehicle5ItemQueryRequest struct {
 	// The parameter type. Valid values:
 	//
-	// - **normal**: Not encrypted.
+	// - **normal**: no encryption
 	//
-	// - **md5**: MD5-encrypted.
+	// - **md5**: MD5 encryption
 	//
 	// example:
 	//
@@ -30,23 +30,19 @@ type Vehicle5ItemQueryRequest struct {
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The license plate number.
 	//
-	// >
+	// - When paramType is set to normal, enter the plaintext.
 	//
-	// > - If ParamType is set to normal, enter the plaintext value.
-	//
-	// > - If ParamType is set to md5, enter the plaintext of the license plate number excluding the last two characters, concatenated with the MD5-encrypted last two characters (32-bit lowercase MD5).
+	// - When paramType is set to md5, enter the plaintext of the license plate number excluding the last two characters, followed by the 32-bit lowercase MD5 hash of the last two characters.
 	//
 	// example:
 	//
 	// 陕A9****
 	VehicleNum *string `json:"VehicleNum,omitempty" xml:"VehicleNum,omitempty"`
-	// The vehicle type.
+	// The vehicle type. Valid values:
 	//
-	// >
+	// - 02: regular small passenger vehicle
 	//
-	// > - 02: standard passenger car
-	//
-	// > - 52: new energy passenger car.
+	// - 52: new energy small passenger vehicle
 	//
 	// example:
 	//

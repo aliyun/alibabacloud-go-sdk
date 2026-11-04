@@ -20,19 +20,19 @@ type iDeleteControlStrategyRequest interface {
 }
 
 type DeleteControlStrategyRequest struct {
-	// The API name, same as **ProductCode**.
+	// The API name, which is the same as **ProductCode**.
 	//
 	// example:
 	//
 	// ID_PRO
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The security rule ID.
+	// The ID of the security rule.
 	//
 	// example:
 	//
 	// 38
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade real-person authentication) is supported. All other types have been discontinued.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types are discontinued.
 	//
 	// example:
 	//

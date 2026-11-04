@@ -62,7 +62,7 @@ func (s *ModifyBlackListStrategyRequest) Validate() error {
 }
 
 type ModifyBlackListStrategyRequestBlackListStrategy struct {
-	// The blacklist string. Separate multiple entries with commas (,).
+	// The blacklist string. Multiple entries are separated by commas.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type ModifyBlackListStrategyRequestBlackListStrategy struct {
 	BizContent *string `json:"BizContent,omitempty" xml:"BizContent,omitempty"`
 	// The blacklist type. Valid values:
 	//
-	// - **mobile**: mobile number blacklist.
+	// - **mobile**: Mobile phone number blacklist.
 	//
-	// - **ip**: IP blacklist.
+	// - **ip**: IP address blacklist.
 	//
-	// - **identifyNum**: ID card blacklist.
+	// - **identifyNum**: ID IP blacklist.
 	//
-	// - **bankCard**: bank card blacklist.
+	// - **bankCard**: Bank IP blacklist.
 	//
 	// example:
 	//
 	// ip
 	BizKey *string `json:"BizKey,omitempty" xml:"BizKey,omitempty"`
-	// The rule ID. Valid values:
+	// The rule ID:
 	//
-	// - **Empty**: creates a rule.
+	// - **Empty**: Creates a rule.
 	//
-	// - **Not empty**: modifies a rule.
+	// - **Not empty**: Modifies a rule.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type ModifyBlackListStrategyRequestBlackListStrategy struct {
 	//
 	// - **id2meta**: ID card two-element verification.
 	//
-	// - **mobile3Meta**: mobile number element verification.
+	// - **mobile3Meta**: Mobile phone number element verification.
 	//
-	// - **bankcardMeta**: bank card element verification.
+	// - **bankcardMeta**: Bank card element verification.
 	//
 	// example:
 	//

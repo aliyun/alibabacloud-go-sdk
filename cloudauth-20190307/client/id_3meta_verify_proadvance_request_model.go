@@ -31,21 +31,21 @@ type iId3MetaVerifyPROAdvanceRequest interface {
 }
 
 type Id3MetaVerifyPROAdvanceRequest struct {
-	// Specifies whether to allow cropping of the facial photo. By default, cropping is not allowed. Valid values:
+	// Specifies whether to allow cropping the face image. By default, cropping is not allowed.
 	//
 	// - **T**: Cropping is allowed.
 	//
 	// - **F**: Cropping is not allowed.
 	//
-	// > If the requested image is not captured by a standard liveness detection SDK, allow cropping of the facial photo.
+	// > If the requested image is not collected by the standard liveness detection SDK, we recommend that you allow face image cropping.
 	//
-	// After this feature is enabled, the requested image is first cropped and corrected for the face, and then the request is sent to the service.
+	// After this feature is enabled, the requested image is cropped and corrected before the request is processed.
 	//
 	// example:
 	//
 	// T
 	Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	// Specifies whether to allow fallback to a non-public security source. Valid values:
+	// Specifies whether to allow fallback to non-public security sources. Valid values:
 	//
 	// - **N*	- (default): Disabled.
 	//
@@ -55,19 +55,19 @@ type Id3MetaVerifyPROAdvanceRequest struct {
 	//
 	// Y
 	EnableFallback *string `json:"EnableFallback,omitempty" xml:"EnableFallback,omitempty"`
-	// The input stream of the facial photo.
+	// The input stream of the face photo.
 	//
 	// example:
 	//
-	// For the specific integration method, refer to the file upload Advance API configuration
+	// For integration details, refer to the configuration of the Advance file upload API
 	FaceFileObject io.Reader `json:"FaceFile,omitempty" xml:"FaceFile,omitempty"`
-	// The Base64-encoded photo. If you use this method to submit the facial photo, check the photo size and do not submit an excessively large photo.
+	// The Base64-encoded string of the photo. If you use this method to pass the face photo, check the photo size and do not pass an excessively large photo.
 	//
 	// example:
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FacePicture *string `json:"FacePicture,omitempty" xml:"FacePicture,omitempty"`
-	// The URL of the facial photo. The URL must be a publicly accessible HTTP or HTTPS link.
+	// The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
 	//
 	// example:
 	//
@@ -75,12 +75,12 @@ type Id3MetaVerifyPROAdvanceRequest struct {
 	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
 	// The ID card number.
 	//
-	// - If **paramType*	- is set to normal: Enter the ID card number in plaintext.
+	// - If **paramType*	- is set to normal, enter the plaintext ID card number.
 	//
-	// - If **paramType*	- is set to sm2: Enter the encrypted ID card number.
+	// - If **paramType*	- is set to sm2, enter the ciphertext ID card number.
 	//
 	//
-	// > Due to authoritative source limitations, only second-generation resident ID card numbers are supported.
+	// > Due to authoritative source limitations, only the ID card numbers of the second-generation resident identity cards are supported.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type Id3MetaVerifyPROAdvanceRequest struct {
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The name.
 	//
-	// - If **paramType*	- is set to normal: Enter the name in plaintext.
+	// - If **paramType*	- is set to normal, enter the plaintext name.
 	//
-	// - If **paramType*	- is set to sm2: Enter the encrypted name.
+	// - If **paramType*	- is set to sm2, enter the ciphertext name.
 	//
 	// example:
 	//

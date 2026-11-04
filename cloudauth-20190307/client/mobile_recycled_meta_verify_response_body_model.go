@@ -20,19 +20,19 @@ type iMobileRecycledMetaVerifyResponseBody interface {
 }
 
 type MobileRecycledMetaVerifyResponseBody struct {
-	// The response code. A value of 200 indicates success. Any other value indicates failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
-	// > **Important**
+	// Important
 	//
-	// - This parameter indicates whether the API operation is called correctly. For more information about return codes, see error codes.
+	// - This parameter indicates whether the API operation was called successfully. For detailed return code descriptions, see Error codes.
 	//
-	// - Check the business verification result in the fields of ResultObject.
+	// - To view the business verification result, check the fields in ResultObject.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -104,15 +104,15 @@ func (s *MobileRecycledMetaVerifyResponseBody) Validate() error {
 type MobileRecycledMetaVerifyResponseBodyResultObject struct {
 	// The query result. Valid values:
 	//
-	// - 1: A query result is found.
+	// - 1: A query result is returned.
 	//
-	// - 3: No query result is found.
+	// - 3: No query result is returned.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The carrier name. China Mobile: CMCC. China Unicom: CUCC. China Telecom: CTCC.
+	// The ISP name. Valid values: China Mobile - CMCC, China Unicom - CUCC, and China Telecom - CTCC.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type MobileRecycledMetaVerifyResponseBodyResultObject struct {
 	IspName *string `json:"IspName,omitempty" xml:"IspName,omitempty"`
 	// The detailed verification result. Valid values:
 	//
-	// - 101: The registration date is equal to or later than the phone number activation date.
+	// - 101: The registration time is later than or equal to the activation time of the mobile phone number.
 	//
-	// - 102: The registration date is earlier than the phone number activation date.
+	// - 102: The registration time is earlier than the activation time of the mobile phone number.
 	//
-	// - 103: The new subscriber has not been synchronized yet.
+	// - 103: The newly activated user is not synchronized.
 	//
-	// - 301: Data exception or the subscriber has been deactivated.
+	// - 301: Data exception or disconnected user.
 	//
 	// example:
 	//

@@ -26,11 +26,11 @@ type DeleteBlackListStrategyRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The product name. Valid values:
 	//
-	// - **id2meta**: ID card two-element verification.
+	// - **id2meta**: Two-element verification for ID cards.
 	//
-	// - **mobile3Meta**: Mobile number element verification.
+	// - **mobile3Meta**: Element verification for mobile phone numbers.
 	//
-	// - **bankcardMeta**: Bank card element verification.
+	// - **bankcardMeta**: Element verification for bank cards.
 	//
 	// example:
 	//

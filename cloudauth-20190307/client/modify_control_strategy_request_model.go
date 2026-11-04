@@ -20,7 +20,7 @@ type iModifyControlStrategyRequest interface {
 type ModifyControlStrategyRequest struct {
 	// The list of security alert rules.
 	ControlStrategyList []*ModifyControlStrategyRequestControlStrategyList `json:"ControlStrategyList,omitempty" xml:"ControlStrategyList,omitempty" type:"Repeated"`
-	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (Financial-grade ID Verification) is supported. All other types are retired.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ModifyControlStrategyRequest) Validate() error {
 }
 
 type ModifyControlStrategyRequestControlStrategyList struct {
-	// The API name, which is the same as **ProductCode**.
+	// The name of the API operation, which is the same as **ProductCode**.
 	//
 	// example:
 	//
@@ -91,25 +91,25 @@ type ModifyControlStrategyRequestControlStrategyList struct {
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The rule configuration type. Valid values:
 	//
-	// - **QPS**: QPS greater than
+	// - **QPS**: The QPS is greater than the threshold.
 	//
-	// - **SUCCESS_RATE_5_MIN**: success rate in the last 5 minutes less than
+	// - **SUCCESS_RATE_5_MIN**: The success rate in the last 5 minutes is less than the threshold.
 	//
-	// - **RESP_TIME_5_MIN**: average response time in the last 5 minutes greater than
+	// - **RESP_TIME_5_MIN**: The average response time in the last 5 minutes is greater than the threshold.
 	//
-	// - **AMOUNT_RISE**: call volume increase compared to the previous period greater than
+	// - **AMOUNT_RISE**: The period-over-period increase in call volume is greater than the threshold.
 	//
-	// - **AMOUNT_FALL**: call volume decrease compared to the previous period less than
+	// - **AMOUNT_FALL**: The period-over-period decrease in call volume is less than the threshold.
 	//
-	// - **PASSED_RATE_1_HOUR**: verification consistency rate in the last hour less than
+	// - **PASSED_RATE_1_HOUR**: The verification consistency rate in the last hour is less than the threshold.
 	//
-	// - **PARAM_ERROR_RATE_1_HOUR**: parameter error rate in the last hour greater than.
+	// - **PARAM_ERROR_RATE_1_HOUR**: The parameter error rate in the last hour is greater than the threshold.
 	//
 	// example:
 	//
 	// SUCCESS_RATE_5_MIN
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeCloudauthstSceneListRequest interface {
 }
 
 type DescribeCloudauthstSceneListRequest struct {
-	// The commodity code.
+	// The product code.
 	//
 	// example:
 	//

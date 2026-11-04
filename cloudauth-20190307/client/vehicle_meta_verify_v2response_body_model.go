@@ -20,13 +20,13 @@ type iVehicleMetaVerifyV2ResponseBody interface {
 }
 
 type VehicleMetaVerifyV2ResponseBody struct {
-	// The return code. **200*	- indicates that the request was successful.
+	// The return code. **200*	- indicates that the API operation is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -98,17 +98,17 @@ func (s *VehicleMetaVerifyV2ResponseBody) Validate() error {
 type VehicleMetaVerifyV2ResponseBodyResultObject struct {
 	// The verification result code. Valid values:
 	//
-	// - **1**: Consistent.
+	// - **1**: The verification is consistent.
 	//
-	// - **2**: Inconsistent.
+	// - **2**: The verification is inconsistent.
 	//
-	// - **3**: No record found.
+	// - **3**: No record is found.
 	//
 	// example:
 	//
 	// 1
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The vehicle details.
+	// The detailed vehicle information.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type VehicleMetaVerifyV2ResponseBodyResultObject struct {
 	//
 	// 	"backWheelDistance": "1585",
 	//
-	// 	"brand": "雷克萨斯",
+	// 	"brand": "Lexus",
 	//
 	// 	"displacement": "4608",
 	//
@@ -132,7 +132,7 @@ type VehicleMetaVerifyV2ResponseBodyResultObject struct {
 	//
 	// 	"frontWheelDistance": "1585",
 	//
-	// 	"fuelType": "汽油",
+	// 	"fuelType": "Gasoline",
 	//
 	// 	"inspectionDate": "****-**-*	- **:**:**",
 	//
@@ -148,9 +148,9 @@ type VehicleMetaVerifyV2ResponseBodyResultObject struct {
 	//
 	// 	"unladenMass": "2350",
 	//
-	// 	"useProperty": "非营运",
+	// 	"useProperty": "Non-commercial",
 	//
-	// 	"vehicleState": "正常",
+	// 	"vehicleState": "Normal",
 	//
 	// 	"vin": "JT***************",
 	//

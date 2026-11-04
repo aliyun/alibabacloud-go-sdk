@@ -22,31 +22,31 @@ type iMobile3MetaDetailVerifyRequest interface {
 type Mobile3MetaDetailVerifyRequest struct {
 	// The ID card number.
 	//
-	// > Note: Only second-generation resident ID card numbers and Hong Kong, Macao, or Taiwan residence permit numbers are supported.
+	// Note: Only second-generation resident identity cards and residence permits for Hong Kong, Macao, and Taiwan residents are supported.
 	//
-	// - If ParamType is set to normal, pass in the ID card number in plaintext.
+	// - If ParamType is set to normal: enter the plaintext ID card number.
 	//
-	// - If ParamType is set to md5, pass in the ID card number in ciphertext.
+	// - If ParamType is set to md5: enter the ciphertext ID card number.
 	//
 	// example:
 	//
-	// 明文：429001********8211
+	// Plaintext: 429001********8211
 	//
-	// 密文：
+	// Ciphertext:
 	//
 	// 32fa7bcd874161bea8ec8fd98f390ec9
 	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
-	// The phone number.
+	// The mobile phone number.
 	//
-	// - If ParamType is set to normal, pass in the phone number in plaintext.
+	// - If ParamType is set to normal: enter the plaintext mobile phone number.
 	//
-	// - If ParamType is set to md5, pass in the phone number in ciphertext.
+	// - If ParamType is set to md5: enter the ciphertext mobile phone number.
 	//
 	// example:
 	//
-	// 明文：186****2055
+	// Plaintext: 186****2055
 	//
-	// 密文：
+	// Ciphertext:
 	//
 	// 849169cd3b20621c1c78bd61a11a4fc2
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
@@ -54,7 +54,7 @@ type Mobile3MetaDetailVerifyRequest struct {
 	//
 	// - normal: plaintext without encryption
 	//
-	// - md5: MD5 encryption.
+	// - md5: MD5 encryption
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ type Mobile3MetaDetailVerifyRequest struct {
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The name.
 	//
-	// - If ParamType is set to normal, pass in the name in plaintext.
+	// - If ParamType is set to normal: enter the plaintext name.
 	//
-	// - If ParamType is set to md5, pass in the name in ciphertext.
+	// - If ParamType is set to md5: enter the ciphertext name.
 	//
 	// example:
 	//
-	// 明文：张三
+	// Plaintext: Zhang San
 	//
-	// 密文：
+	// Ciphertext:
 	//
 	// 32fa7bcd874161bea8ec8fd98f390ec9
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`

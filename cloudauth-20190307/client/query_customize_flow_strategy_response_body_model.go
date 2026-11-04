@@ -24,7 +24,7 @@ type iQueryCustomizeFlowStrategyResponseBody interface {
 }
 
 type QueryCustomizeFlowStrategyResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QueryCustomizeFlowStrategyResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type QueryCustomizeFlowStrategyResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The processing result.
 	ResultObject []*QueryCustomizeFlowStrategyResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Repeated"`
-	// Indicates whether the response is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type QueryCustomizeFlowStrategyResponseBodyResultObject struct {
 	//
 	// -
 	AccumulateKey *string `json:"AccumulateKey,omitempty" xml:"AccumulateKey,omitempty"`
-	// The rate limiting statistical window. Unit: **minutes**.
+	// The throttling statistics window, in **minutes**.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type QueryCustomizeFlowStrategyResponseBodyResultObject struct {
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The flow type. Valid values:
 	//
-	// - **ACCUMULATE**: repeated occurrence of an ID card number.
+	// - **ACCUMULATE**: Repeated occurrence of ID cards.
 	//
-	// - **PASSED_RATE**: pass rate less than the threshold.
+	// - **PASSED_RATE**: Pass rate is less than.
 	//
-	// - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than the threshold.
+	// - **SUB_CODE_205**: Authentication fails and the proportion of liveness attack 205 is greater than.
 	//
-	// - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than the threshold.
+	// - **SUB_CODE_206**: Authentication fails and the proportion of liveness attack 206 is greater than.
 	//
 	// example:
 	//

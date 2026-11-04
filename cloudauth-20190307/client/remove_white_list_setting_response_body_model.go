@@ -22,13 +22,13 @@ type iRemoveWhiteListSettingResponseBody interface {
 }
 
 type RemoveWhiteListSettingResponseBody struct {
-	// The return code. A value of 200 indicates success. Other values indicate failure.
+	// The return code. A value of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type RemoveWhiteListSettingResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result information.
+	// The returned result information.
 	//
 	// example:
 	//
 	// true
 	ResultObject *bool `json:"ResultObject,omitempty" xml:"ResultObject,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the response is successful.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateSceneConfigRequest interface {
 }
 
 type CreateSceneConfigRequest struct {
-	// The willingness authentication configuration, in JSON string format.
+	// The intent authentication configuration, which is a JSON string.
 	//
 	// This parameter is required.
 	//

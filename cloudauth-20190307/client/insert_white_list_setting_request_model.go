@@ -24,37 +24,37 @@ type iInsertWhiteListSettingRequest interface {
 }
 
 type InsertWhiteListSettingRequest struct {
-	// The certificate number.
+	// The ID number.
 	//
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// The unique identifier of the ID Verification request.
+	// The unique identifier for ID Verification.
 	//
 	// example:
 	//
 	// shsf57a4e0d9981c3bd66dc754f3d3cd
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
-	// The remarks. The maximum length is 32 characters.
+	// The remark. The value must be less than 32 characters in length.
 	//
 	// example:
 	//
 	// xxxxxx
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For information about how to create a verification scenario, see Add a verification scenario.
+	// The ID of the verification scenario. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, see Add a verification scenario.
 	//
 	// example:
 	//
 	// 100000xxxx
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The ServiceCode of the ID Verification cloud service. Set this parameter to **antcloudauth**.
+	// The service code of the ID Verification cloud service. Valid values: **antcloudauth**.
 	//
 	// example:
 	//
 	// antcloudauth
 	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// The number of days the whitelist entry is valid. Valid values: 3, 7, and 30.
+	// The number of days that the whitelist remains valid. Valid values: 3, 7, and 30.
 	//
 	// example:
 	//

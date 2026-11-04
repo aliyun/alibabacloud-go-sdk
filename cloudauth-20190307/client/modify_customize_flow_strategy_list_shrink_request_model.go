@@ -16,13 +16,13 @@ type iModifyCustomizeFlowStrategyListShrinkRequest interface {
 }
 
 type ModifyCustomizeFlowStrategyListShrinkRequest struct {
-	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (financial-grade ID Verification) is supported. All other types have been discontinued.
+	// The product type. Currently, only **ANT_CLOUD_AUTH*	- (Financial-grade ID Verification) is supported. All other product types are retired.
 	//
 	// example:
 	//
 	// ANT_CLOUD_AUTH
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The policy list.
+	// The list of policies.
 	StrategyObjectShrink *string `json:"StrategyObject,omitempty" xml:"StrategyObject,omitempty"`
 }
 

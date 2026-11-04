@@ -28,11 +28,11 @@ type QueryVerifyDownloadTaskResponseBody struct {
 	//
 	// -
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the download task is complete. Valid values:
+	// Indicates whether the download task is completed. Valid values:
 	//
-	// - **true**: Complete.
+	// - **true**: Completed.
 	//
-	// - **false**: Not complete.
+	// - **false**: Not completed.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type QueryVerifyDownloadTaskResponseBody struct {
 	//
 	// 5A6229C0-E156-48E4-B6EC-0F528BDF60D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// - **1**: The file is being generated.
+	// - **1**: File generation is in progress.
 	//
-	// - **2**: The file is generated.
+	// - **2**: File generation is complete.
 	//
-	// - **3**: The file failed to be generated.
+	// - **3**: File generation failed.
 	//
 	// example:
 	//

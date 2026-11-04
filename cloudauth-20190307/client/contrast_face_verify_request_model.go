@@ -54,25 +54,23 @@ type ContrastFaceVerifyRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The certificate number.
+	// The ID document number.
 	//
 	// example:
 	//
 	// 330103xxxxxxxxxxxx
 	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
-	// The certificate type.
-	//
-	// Currently only ID cards are supported. You must set this parameter to IDENTITY_CARD.
+	// The type of the ID document. Only ID cards are supported. Set the value to IDENTITY_CARD.
 	//
 	// example:
 	//
 	// IDENTITY_CARD
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The CertifyId from a previous successful ID Verification. The photo from that verification is used as the comparison photo.
+	// The CertifyId of a previous successful ID Verification. The photo used in the previous verification is used as the comparison photo.
 	//
-	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+	// > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
@@ -80,9 +78,9 @@ type ContrastFaceVerifyRequest struct {
 	CertifyId *string `json:"CertifyId,omitempty" xml:"CertifyId,omitempty"`
 	// Specifies whether to allow cropping of the face image. Valid values:
 	//
-	// - T: Allowed.
+	// - T: Cropping is allowed.
 	//
-	// - F (default): Not allowed.
+	// - F: Cropping is not allowed. This is the default value.
 	//
 	// example:
 	//
@@ -94,7 +92,7 @@ type ContrastFaceVerifyRequest struct {
 	//
 	// McozS1ZWRcRZStlERcZZo_QOytx5jcgZoZJEoRLOxxxxxxx
 	DeviceToken *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	// The encryption type. An empty value indicates no encryption.
+	// The encryption type. An empty value indicates that encryption is not used.
 	//
 	// example:
 	//
@@ -104,7 +102,7 @@ type ContrastFaceVerifyRequest struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	FaceContrastFile *string `json:"FaceContrastFile,omitempty" xml:"FaceContrastFile,omitempty"`
 	// The Base64-encoded photo.
 	//
@@ -112,9 +110,9 @@ type ContrastFaceVerifyRequest struct {
 	//
 	// /9j/4AAQSkZJRgABAQAASxxxxxxx
 	FaceContrastPicture *string `json:"FaceContrastPicture,omitempty" xml:"FaceContrastPicture,omitempty"`
-	// The OSS photo URL. Currently only authorized OSS photo URLs are supported.
+	// The URL of the photo in OSS. Only authorized OSS photo URLs are supported.
 	//
-	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+	// > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
@@ -132,49 +130,47 @@ type ContrastFaceVerifyRequest struct {
 	//
 	// 130xxxxxxxx
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// The liveness detection type.
+	// The type of liveness detection.
 	//
 	// example:
 	//
 	// FRONT_CAMERA_LIVENESS
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The bucket name of the authorized OSS space.
+	// The name of the authorized OSS bucket.
 	//
-	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+	// > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// cn-shanghai-aliyun-cloudauth-xxxxx
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The file name in the authorized OSS space.
+	// The name of the object in the authorized OSS bucket.
 	//
-	// > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
+	// > You can use only one of the following methods to upload the image: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS.
 	//
 	// example:
 	//
 	// verify/xxxxx/xxxxxx.jpeg
 	OssObjectName *string `json:"OssObjectName,omitempty" xml:"OssObjectName,omitempty"`
-	// The unique identifier of the merchant request.
-	//
-	// The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
+	// The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation of the merchant, the middle part can be a period of time, and the last part can be a random or incremental sequence.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	OuterOrderNo *string `json:"OuterOrderNo,omitempty" xml:"OuterOrderNo,omitempty"`
-	// Fixed value: ID_MIN.
+	// The product code. Set the value to ID_MIN.
 	//
 	// example:
 	//
 	// ID_MIN
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The verification scenario ID.
+	// The ID of the authentication scenario.
 	//
 	// example:
 	//
 	// 1000000006
 	SceneId *int64 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The custom user ID defined by the business.
+	// The custom user ID in the customer\\"s business system.
 	//
 	// example:
 	//

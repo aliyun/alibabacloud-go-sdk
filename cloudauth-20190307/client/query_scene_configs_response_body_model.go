@@ -16,13 +16,13 @@ type iQuerySceneConfigsResponseBody interface {
 }
 
 type QuerySceneConfigsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of intent verification configurations.
+	// The list of willingness configurations.
 	SceneConfigs []*QuerySceneConfigsResponseBodySceneConfigs `json:"sceneConfigs,omitempty" xml:"sceneConfigs,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *QuerySceneConfigsResponseBody) Validate() error {
 }
 
 type QuerySceneConfigsResponseBodySceneConfigs struct {
-	// The specific configuration content, in JSON string format.
+	// The specific configuration content, which is a JSON string.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type QuerySceneConfigsResponseBodySceneConfigs struct {
 	//
 	// 607
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The scenario ID.
+	// The scene ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type QuerySceneConfigsResponseBodySceneConfigs struct {
 	//
 	// VOLUNTARY
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The version number of the scenario configuration.
+	// The scene configuration version number.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type MobileDetectRequest struct {
 	Mobiles *string `json:"Mobiles,omitempty" xml:"Mobiles,omitempty"`
 	// The encryption method. Valid values:
 	//
-	// - normal: plaintext without encryption
+	// - normal: Plaintext without encryption.
 	//
 	// - md5: MD5 encryption.
 	//

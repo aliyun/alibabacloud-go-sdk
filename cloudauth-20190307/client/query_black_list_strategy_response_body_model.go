@@ -20,7 +20,7 @@ type iQueryBlackListStrategyResponseBody interface {
 }
 
 type QueryBlackListStrategyResponseBody struct {
-	// The return code. **200*	- indicates that the request was successful.
+	// The return code. **200*	- indicates that the request is successful.
 	//
 	// example:
 	//
@@ -100,21 +100,21 @@ func (s *QueryBlackListStrategyResponseBody) Validate() error {
 }
 
 type QueryBlackListStrategyResponseBodyResultObject struct {
-	// The blacklist string. Multiple blacklist entries are separated by **commas**.
+	// The blacklist string. Items in the blacklist are separated by **commas**.
 	//
 	// example:
 	//
 	// 127.0.0.1,127.0.0.2
 	BizContent *string `json:"BizContent,omitempty" xml:"BizContent,omitempty"`
-	// The blacklist type. Valid values:
+	// The list type. Valid values:
 	//
-	// - mobile: phone number blacklist
+	// - mobile: The mobile phone number blocklist.
 	//
-	// - ip: IP blacklist
+	// - ip: The IP address blocklist.
 	//
-	// - identifyNum: ID card blacklist
+	// - identifyNum: The ID card blocklist.
 	//
-	// - bankCard: bank card blacklist.
+	// - bankCard: The bank card blocklist.
 	//
 	// example:
 	//
@@ -134,11 +134,11 @@ type QueryBlackListStrategyResponseBodyResultObject struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The product name. Valid values:
 	//
-	// - id2meta: ID card two-factor verification.
+	// - id2meta: ID card two-element verification
 	//
-	// - mobile3Meta: Phone number factor verification.
+	// - mobile3Meta: mobile phone number element verification
 	//
-	// - bankcardMeta: Bank card factor verification.
+	// - bankcardMeta: bank card element verification
 	//
 	// example:
 	//
@@ -146,9 +146,9 @@ type QueryBlackListStrategyResponseBodyResultObject struct {
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The status. Valid values:
 	//
-	// - **disabled**: Disabled.
+	// - **disabled**: disabled
 	//
-	// - **normal**: Enabled.
+	// - **normal**: enabled
 	//
 	// example:
 	//

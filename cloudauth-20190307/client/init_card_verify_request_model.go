@@ -32,27 +32,27 @@ type iInitCardVerifyRequest interface {
 }
 
 type InitCardVerifyRequest struct {
-	// The security token used for anti-replay and anti-tampering verification. If you specify this parameter, the CallbackToken field is included in the callback URL.
+	// The security token used for anti-replay and anti-tampering verification. If you specify this parameter, the CallbackToken field is displayed in the callback URL.
 	//
 	// example:
 	//
 	// NMjvQanQgplBSaEI0sL86WnQplB
 	CallbackToken *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
-	// The callback URL for authentication results. The URL must start with https. After the authentication is complete, the system sends a callback to this URL with the certifyId and passed fields automatically appended. Example: https://www.aliyun.com?certifyId=xxxx&passed=T
+	// The callback URL for authentication results. The URL must start with https. After the authentication is completed, the platform calls back this URL and automatically adds the certifyId and passed fields. Example: https://www.aliyun.com?certifyId=xxxx&passed=T.
 	//
-	// > **Warning*	- The callback is triggered only when the authentication is complete. No notification is sent if the authentication is abandoned, interrupted, or not performed. After you receive the callback notification, call the query operation to obtain the authentication details if needed.
+	// Warning: The callback is triggered only when the authentication is completed. If the authentication is abandoned, abnormally interrupted, or not performed, no notification is sent. When you receive the callback notification, call the query API to obtain the authentication details if needed.
 	//
 	// example:
 	//
 	// https://www.aliyun.com
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The number of card pages to be collected by the SDK. Valid values:
+	// The number of pages of the ID document collected by the SDK. Valid values:
 	//
-	// - 1: collects the front side only.
+	// - 1: collects the front side.
 	//
-	// - 2: collects both the front and back sides.
+	// - 2: collects the front and back sides.
 	//
-	// - If the verification type is ID card validity period (VerifyMeta is set to ID_PERIOD), set this parameter to 2.
+	// If the verification type is the validity period of the ID document (VerifyMeta is set to ID_PERIOD), you must set this parameter to 2.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type InitCardVerifyRequest struct {
 	//
 	// 1
 	CardPageNumber *string `json:"CardPageNumber,omitempty" xml:"CardPageNumber,omitempty"`
-	// The document type. Valid values:
+	// The type of the ID document. Valid values:
 	//
-	// - IDENTITY_CARD: resident identity card.
+	// - IDENTITY_CARD: second-generation resident ID card.
 	//
 	// This parameter is required.
 	//
@@ -70,11 +70,11 @@ type InitCardVerifyRequest struct {
 	//
 	// IDENTITY_CARD
 	CardType *string `json:"CardType,omitempty" xml:"CardType,omitempty"`
-	// The photo capture mode (manual or automatic). Valid values:
+	// The photo capture mode. Valid values:
 	//
-	// - shoot: manual capture
+	// - shoot: photo capture.
 	//
-	// - scan: scan mode
+	// - scan: scanning.
 	//
 	// - auto: automatic switchover.
 	//
@@ -82,7 +82,7 @@ type InitCardVerifyRequest struct {
 	//
 	// shoot
 	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
-	// A custom business unique identifier that you define for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Make sure the value is unique.
+	// The custom unique business identifier used for subsequent troubleshooting. The value must be a unique combination of up to 32 letters and digits.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type InitCardVerifyRequest struct {
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c35****
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The MetaInfo environment parameter. Obtain this value by using the client SDK.
+	// The MetaInfo environment parameter, which must be obtained by using the client SDK.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type InitCardVerifyRequest struct {
 	//
 	// {"zimVer":"3.0.0","appVersion": "1","bioMetaInfo": "4.1.0:1150****,0","appName": "com.aliyun.antcloudauth","deviceType": "ios","osVersion": "iOS 10.3.2","apdidToken": "","deviceModel": "iPhone9,1"}
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	// The verification mode. Valid values:
+	// The verification method. Valid values:
 	//
 	// - OCR_VERIFY: OCR recognition and authentication mode.
 	//
@@ -108,13 +108,11 @@ type InitCardVerifyRequest struct {
 	//
 	// OCR_VERIFY
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// Specifies whether to temporarily store images collected by the app. Valid values:
+	// Specifies whether to temporarily store the image information collected by the app. Valid values:
 	//
-	// - Y: Yes.
+	// - Y: yes. If you select this value, the query API can return the image information of the ID document.
 	//
-	// - N: No.
-	//
-	// - If you set this parameter to Y, the query operation returns card image information.
+	// - N: no.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +122,7 @@ type InitCardVerifyRequest struct {
 	PictureSave *string `json:"PictureSave,omitempty" xml:"PictureSave,omitempty"`
 	// The verification type. Valid values:
 	//
-	// - ID_2_META: two-factor identity verification (name + ID card number).
+	// - ID_2_META: two identity elements (name and ID number).
 	//
 	// This parameter is required.
 	//
