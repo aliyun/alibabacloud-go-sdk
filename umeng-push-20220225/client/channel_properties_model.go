@@ -39,6 +39,10 @@ type iChannelProperties interface {
 	GetVivoCategory() *string
 	SetVivoPushMode(v string) *ChannelProperties
 	GetVivoPushMode() *string
+	SetVivoTemplateId(v string) *ChannelProperties
+	GetVivoTemplateId() *string
+	SetVivoTemplateParams(v map[string]interface{}) *ChannelProperties
+	GetVivoTemplateParams() map[string]interface{}
 	SetXiaomiChannelId(v string) *ChannelProperties
 	GetXiaomiChannelId() *string
 }
@@ -68,10 +72,18 @@ type ChannelProperties struct {
 	// example:
 	//
 	// "true",默认"false"
-	VivoAddBadge    *string `json:"vivoAddBadge,omitempty" xml:"vivoAddBadge,omitempty"`
-	VivoCategory    *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
-	VivoPushMode    *string `json:"vivoPushMode,omitempty" xml:"vivoPushMode,omitempty"`
-	XiaomiChannelId *string `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
+	VivoAddBadge *string `json:"vivoAddBadge,omitempty" xml:"vivoAddBadge,omitempty"`
+	VivoCategory *string `json:"vivoCategory,omitempty" xml:"vivoCategory,omitempty"`
+	VivoPushMode *string `json:"vivoPushMode,omitempty" xml:"vivoPushMode,omitempty"`
+	// example:
+	//
+	// 发送模版消息时必填，此时vivoCategory不用填
+	VivoTemplateId *string `json:"vivoTemplateId,omitempty" xml:"vivoTemplateId,omitempty"`
+	// example:
+	//
+	// 格式为{"key1":"v1","key2":"v2"}
+	VivoTemplateParams map[string]interface{} `json:"vivoTemplateParams,omitempty" xml:"vivoTemplateParams,omitempty"`
+	XiaomiChannelId    *string                `json:"xiaomiChannelId,omitempty" xml:"xiaomiChannelId,omitempty"`
 }
 
 func (s ChannelProperties) String() string {
@@ -140,6 +152,14 @@ func (s *ChannelProperties) GetVivoCategory() *string {
 
 func (s *ChannelProperties) GetVivoPushMode() *string {
 	return s.VivoPushMode
+}
+
+func (s *ChannelProperties) GetVivoTemplateId() *string {
+	return s.VivoTemplateId
+}
+
+func (s *ChannelProperties) GetVivoTemplateParams() map[string]interface{} {
+	return s.VivoTemplateParams
 }
 
 func (s *ChannelProperties) GetXiaomiChannelId() *string {
@@ -218,6 +238,16 @@ func (s *ChannelProperties) SetVivoCategory(v string) *ChannelProperties {
 
 func (s *ChannelProperties) SetVivoPushMode(v string) *ChannelProperties {
 	s.VivoPushMode = &v
+	return s
+}
+
+func (s *ChannelProperties) SetVivoTemplateId(v string) *ChannelProperties {
+	s.VivoTemplateId = &v
+	return s
+}
+
+func (s *ChannelProperties) SetVivoTemplateParams(v map[string]interface{}) *ChannelProperties {
+	s.VivoTemplateParams = v
 	return s
 }
 
