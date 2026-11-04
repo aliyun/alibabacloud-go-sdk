@@ -34,23 +34,23 @@ type iAssignRbacUserRoleResponseBody interface {
 }
 
 type AssignRbacUserRoleResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Specifies whether a retry is allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: A retry is not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: A retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type AssignRbacUserRoleResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, used to replace the %s variable in the ErrMessage response parameter.
+	// The dynamic error message, which is used to replace %s in the ErrMessage response parameter.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type AssignRbacUserRoleResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the deletion is successful.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type AssignRbacUserRoleResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The backup parameter.
 	//
 	// example:
 	//

@@ -243,6 +243,10 @@ type GetAppSupabaseInstanceResponseBodyModule struct {
 	//
 	// 1111
 	InstanceCreateStatus *string `json:"InstanceCreateStatus,omitempty" xml:"InstanceCreateStatus,omitempty"`
+	// example:
+	//
+	// tenant_00000000-0000-4000-8000-000000000001_schema
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The service key.
 	//
 	// example:
@@ -267,6 +271,10 @@ type GetAppSupabaseInstanceResponseBodyModule struct {
 	//
 	// 111
 	SupabasePublicUrl *string `json:"SupabasePublicUrl,omitempty" xml:"SupabasePublicUrl,omitempty"`
+	// example:
+	//
+	// schema
+	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
 }
 
 func (s GetAppSupabaseInstanceResponseBodyModule) String() string {
@@ -297,6 +305,10 @@ func (s *GetAppSupabaseInstanceResponseBodyModule) GetInstanceCreateStatus() *st
 	return s.InstanceCreateStatus
 }
 
+func (s *GetAppSupabaseInstanceResponseBodyModule) GetSchemaName() *string {
+	return s.SchemaName
+}
+
 func (s *GetAppSupabaseInstanceResponseBodyModule) GetServiceKey() *string {
 	return s.ServiceKey
 }
@@ -311,6 +323,10 @@ func (s *GetAppSupabaseInstanceResponseBodyModule) GetSupabaseInstanceId() *stri
 
 func (s *GetAppSupabaseInstanceResponseBodyModule) GetSupabasePublicUrl() *string {
 	return s.SupabasePublicUrl
+}
+
+func (s *GetAppSupabaseInstanceResponseBodyModule) GetTenantMode() *string {
+	return s.TenantMode
 }
 
 func (s *GetAppSupabaseInstanceResponseBodyModule) SetAnonKey(v string) *GetAppSupabaseInstanceResponseBodyModule {
@@ -338,6 +354,11 @@ func (s *GetAppSupabaseInstanceResponseBodyModule) SetInstanceCreateStatus(v str
 	return s
 }
 
+func (s *GetAppSupabaseInstanceResponseBodyModule) SetSchemaName(v string) *GetAppSupabaseInstanceResponseBodyModule {
+	s.SchemaName = &v
+	return s
+}
+
 func (s *GetAppSupabaseInstanceResponseBodyModule) SetServiceKey(v string) *GetAppSupabaseInstanceResponseBodyModule {
 	s.ServiceKey = &v
 	return s
@@ -355,6 +376,11 @@ func (s *GetAppSupabaseInstanceResponseBodyModule) SetSupabaseInstanceId(v strin
 
 func (s *GetAppSupabaseInstanceResponseBodyModule) SetSupabasePublicUrl(v string) *GetAppSupabaseInstanceResponseBodyModule {
 	s.SupabasePublicUrl = &v
+	return s
+}
+
+func (s *GetAppSupabaseInstanceResponseBodyModule) SetTenantMode(v string) *GetAppSupabaseInstanceResponseBodyModule {
+	s.TenantMode = &v
 	return s
 }
 

@@ -30,7 +30,7 @@ type QueryRbacRolePermissionsRequest struct {
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type QueryRbacRolePermissionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The organization role ID, including predefined roles and custom roles:
+	// The organization role ID, including preset roles and custom roles:
 	//
-	// - Organization administrator (predefined role): 111111111
+	// - Organization administrator (preset role): 111111111
 	//
-	// - Permission management administrator (predefined role): 111111112
+	// - Permission management administrator (preset role): 111111112
 	//
-	// - Regular user (predefined role): 111111113
+	// - Regular user (preset role): 111111113
 	//
 	// - Custom role: the role ID of the custom role
 	//

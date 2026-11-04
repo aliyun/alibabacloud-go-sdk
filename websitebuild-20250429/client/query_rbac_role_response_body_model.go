@@ -34,23 +34,23 @@ type iQueryRbacRoleResponseBody interface {
 }
 
 type QueryRbacRoleResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type QueryRbacRoleResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QueryRbacRoleResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -88,7 +88,7 @@ type QueryRbacRoleResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -215,7 +215,7 @@ func (s *QueryRbacRoleResponseBody) Validate() error {
 }
 
 type QueryRbacRoleResponseBodyModule struct {
-	// The time when the task was created, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
+	// The time when the task was created, in ISO 8601 format, such as 2024-01-01T00:00:00Z.
 	//
 	// example:
 	//
@@ -227,17 +227,17 @@ type QueryRbacRoleResponseBodyModule struct {
 	//
 	// 16257
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The default status. Valid values:
+	// Indicates whether it is the default. Valid values:
 	//
-	// - 0: not default.
+	// - 0: No.
 	//
-	// - 1: default.
+	// - 1: Yes.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the approval template is system-defined. Valid values:
+	// Specifies whether the approval template is system-defined. Valid values:
 	//
 	// - 1: Yes.
 	//
@@ -253,7 +253,7 @@ type QueryRbacRoleResponseBodyModule struct {
 	//
 	// example:
 	//
-	// 文件名
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -32,7 +32,7 @@ type ListRbacRoleHierarchyRequest struct {
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The number of entries per query.
+	// The number of entries to return per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -40,19 +40,19 @@ type ListRbacRoleHierarchyRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. If no next query is available, this parameter is empty.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort type. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//

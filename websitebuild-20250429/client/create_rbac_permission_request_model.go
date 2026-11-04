@@ -22,7 +22,7 @@ type CreateRbacPermissionRequest struct {
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The permission parameter.
+	// The permission parameters.
 	//
 	// example:
 	//

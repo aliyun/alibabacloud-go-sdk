@@ -34,19 +34,19 @@ type iQueryRbacRolePermissionsResponseBody interface {
 }
 
 type QueryRbacRolePermissionsResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type QueryRbacRolePermissionsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used. Ignore it.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the move is successful.
 	Module *QueryRbacRolePermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -80,13 +80,13 @@ type QueryRbacRolePermissionsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Specifies whether synchronous processing is used.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type QueryRbacRolePermissionsResponseBodyModule struct {
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	// The request result.
 	Data []*QueryRbacRolePermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The next feature ID.
+	// The ID of the next feature.
 	Next *QueryRbacRolePermissionsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
 	// Indicates whether a next page exists.
 	//
@@ -239,7 +239,7 @@ type QueryRbacRolePermissionsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// The server processes up to 1,000 recent records beyond the pagination limit for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ func (s *QueryRbacRolePermissionsResponseBodyModule) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModuleData struct {
-	// The operation that you want to perform. Set the value to **DeleteIntegration**.
+	// The system-defined parameter. Set the value to **DeleteIntegration**.
 	//
 	// example:
 	//
@@ -385,7 +385,7 @@ type QueryRbacRolePermissionsResponseBodyModuleData struct {
 	//
 	// 9953352
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The alert rule name.
+	// The name of the alert rule.
 	//
 	// example:
 	//
@@ -442,7 +442,7 @@ func (s *QueryRbacRolePermissionsResponseBodyModuleData) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModuleNext struct {
-	// The operation that you want to perform. Set the value to **GetCreateCustomerInfomation**.
+	// The system-defined parameter. Set the value to **GetCreateCustomerInfomation**.
 	//
 	// example:
 	//
@@ -462,7 +462,7 @@ type QueryRbacRolePermissionsResponseBodyModuleNext struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The statistical method for the Warn level.
 	//
-	// The value of `Statistics` varies by cloud service. For more information, see [Cloud service monitoring items](https://help.aliyun.com/document_detail/163515.html).
+	// The value of `Statistics` varies with the cloud service. For more information, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//

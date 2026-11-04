@@ -160,7 +160,7 @@ func (client *Client) AllocateSupabaseForAdmin(request *AllocateSupabaseForAdmin
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - AssignRbacUserRoleRequest
 //
@@ -212,7 +212,7 @@ func (client *Client) AssignRbacUserRoleWithOptions(request *AssignRbacUserRoleR
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - AssignRbacUserRoleRequest
 //
@@ -2306,11 +2306,11 @@ func (client *Client) CreateRbacOrgUnit(request *CreateRbacOrgUnitRequest) (_res
 
 // Summary:
 //
-// Creates an RBAC permission.
+// Creates RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session through Wanxiaozhi 2.0.
+// The Wanxiaozhi 2.0 API operation for creating an AI session.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -2358,11 +2358,11 @@ func (client *Client) CreateRbacPermissionWithOptions(request *CreateRbacPermiss
 
 // Summary:
 //
-// Creates an RBAC permission.
+// Creates RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session through Wanxiaozhi 2.0.
+// The Wanxiaozhi 2.0 API operation for creating an AI session.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -3234,11 +3234,11 @@ func (client *Client) DeleteRbacOrgUnit(request *DeleteRbacOrgUnitRequest) (_res
 
 // Summary:
 //
-// Deletes an RBAC permission.
+// Deletes RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session for WanXiaoZhi 2.0.
+// The API operation for creating an AI session in Wanxiaozhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -3286,11 +3286,11 @@ func (client *Client) DeleteRbacPermissionWithOptions(request *DeleteRbacPermiss
 
 // Summary:
 //
-// Deletes an RBAC permission.
+// Deletes RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session for WanXiaoZhi 2.0.
+// The API operation for creating an AI session in Wanxiaozhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -3312,7 +3312,7 @@ func (client *Client) DeleteRbacPermission(request *DeleteRbacPermissionRequest)
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -3364,7 +3364,7 @@ func (client *Client) DeleteRbacRoleWithOptions(request *DeleteRbacRoleRequest, 
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -3684,7 +3684,7 @@ func (client *Client) ExportMaterialFile(request *ExportMaterialFileRequest) (_r
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the Supabase instance configuration for a resource.
 //
 // @param request - ExportRbacConfigRequest
 //
@@ -3732,7 +3732,7 @@ func (client *Client) ExportRbacConfigWithOptions(request *ExportRbacConfigReque
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the Supabase instance configuration for a resource.
 //
 // @param request - ExportRbacConfigRequest
 //
@@ -4326,11 +4326,11 @@ func (client *Client) GetAppInstanceEntitlement(request *GetAppInstanceEntitleme
 
 // Summary:
 //
-// Queries application instance information.
+// Queries the details of application instances.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the details of application instances.
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -4378,11 +4378,11 @@ func (client *Client) GetAppInstanceForAdminWithOptions(request *GetAppInstanceF
 
 // Summary:
 //
-// Queries application instance information.
+// Queries the details of application instances.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the details of application instances.
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -8820,11 +8820,11 @@ func (client *Client) ListRbacOrgTree(request *ListRbacOrgTreeRequest) (_result 
 
 // Summary:
 //
-// Queries the RBAC permission list.
+// Queries the RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session through WanXiaoZhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -8892,11 +8892,11 @@ func (client *Client) ListRbacPermissionsWithOptions(request *ListRbacPermission
 
 // Summary:
 //
-// Queries the RBAC permission list.
+// Queries the RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session through WanXiaoZhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -8918,7 +8918,7 @@ func (client *Client) ListRbacPermissions(request *ListRbacPermissionsRequest) (
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -8990,7 +8990,7 @@ func (client *Client) ListRbacRoleHierarchyWithOptions(request *ListRbacRoleHier
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -9008,11 +9008,11 @@ func (client *Client) ListRbacRoleHierarchy(request *ListRbacRoleHierarchyReques
 
 // Summary:
 //
-// Queries the list of RBAC roles.
+// Queries a list of RBAC roles.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -9080,11 +9080,11 @@ func (client *Client) ListRbacRolesWithOptions(request *ListRbacRolesRequest, ru
 
 // Summary:
 //
-// Queries the list of RBAC roles.
+// Queries a list of RBAC roles.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -11141,7 +11141,7 @@ func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListReques
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the information of an application instance.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -11193,7 +11193,7 @@ func (client *Client) QueryRbacRoleWithOptions(request *QueryRbacRoleRequest, ru
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the information of an application instance.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -11211,11 +11211,11 @@ func (client *Client) QueryRbacRole(request *QueryRbacRoleRequest) (_result *Que
 
 // Summary:
 //
-// Queries the list of role permissions.
+// Queries the role permission list.
 //
 // Description:
 //
-// Creates an AI conversation session for Wan Xiaozhi 2.0.
+// The API operation to create an AI session for Wanxiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -11279,11 +11279,11 @@ func (client *Client) QueryRbacRolePermissionsWithOptions(request *QueryRbacRole
 
 // Summary:
 //
-// Queries the list of role permissions.
+// Queries the role permission list.
 //
 // Description:
 //
-// Creates an AI conversation session for Wan Xiaozhi 2.0.
+// The API operation to create an AI session for Wanxiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -11922,11 +11922,11 @@ func (client *Client) RefundAppInstanceForPartner(request *RefundAppInstanceForP
 
 // Summary:
 //
-// Removes an RBAC role hierarchy.
+// Removes the RBAC role hierarchy.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - RemoveRbacRoleHierarchyRequest
 //
@@ -11978,11 +11978,11 @@ func (client *Client) RemoveRbacRoleHierarchyWithOptions(request *RemoveRbacRole
 
 // Summary:
 //
-// Removes an RBAC role hierarchy.
+// Removes the RBAC role hierarchy.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - RemoveRbacRoleHierarchyRequest
 //
@@ -13146,7 +13146,7 @@ func (client *Client) SetAppDomainCertificate(request *SetAppDomainCertificateRe
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - SetRbacRoleHierarchyRequest
 //
@@ -13202,7 +13202,7 @@ func (client *Client) SetRbacRoleHierarchyWithOptions(request *SetRbacRoleHierar
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - SetRbacRoleHierarchyRequest
 //
@@ -14620,11 +14620,11 @@ func (client *Client) UpdateRbacOrgUnit(request *UpdateRbacOrgUnitRequest) (_res
 
 // Summary:
 //
-// Updates an RBAC role.
+// Updates the RBAC role.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateRbacRoleRequest
 //
@@ -14676,11 +14676,11 @@ func (client *Client) UpdateRbacRoleWithOptions(request *UpdateRbacRoleRequest, 
 
 // Summary:
 //
-// Updates an RBAC role.
+// Updates the RBAC role.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateRbacRoleRequest
 //

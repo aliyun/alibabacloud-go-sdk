@@ -52,19 +52,19 @@ type iListAppInstancesResponseBody interface {
 }
 
 type ListAppInstancesResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request results.
+	// The request result.
 	Data []*AppInstanceAggregate `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The dynamic error code.
 	//
@@ -90,9 +90,9 @@ type ListAppInstancesResponseBody struct {
 	//
 	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/u6qw3gxzu3b7sbj/u6qw3gxzu3b7sbj.diff.zip?Expires=1740975709&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=FP7dDnkrLlOZHmRRORVqbLOtv9c%3D
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The returned error parameters.
+	// The returned error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of results to return for each query.
+	// The maximum number of results returned per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -106,7 +106,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The token that is used to start the next query. This parameter is empty if no subsequent query is required.
+	// The token used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
@@ -130,23 +130,23 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
 	//
 	// example:
 	//
 	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// The error code.
+	// The root error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The root error message.
 	//
 	// example:
 	//
-	// System error
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The start position.
 	//

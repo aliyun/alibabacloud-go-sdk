@@ -38,19 +38,19 @@ type iListRbacOrgTreeResponseBody interface {
 }
 
 type ListRbacOrgTreeResponseBody struct {
-	// The details about the access denial.
+	// The detailed cause of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ type ListRbacOrgTreeResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- return parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of entries per query.
+	// The number of results returned per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -82,7 +82,7 @@ type ListRbacOrgTreeResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The task object.
 	Module *ListRbacOrgTreeResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. This parameter is empty if no subsequent query is available.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ListRbacOrgTreeResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -255,9 +255,9 @@ type ListRbacOrgTreeResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The query results.
+	// The request result.
 	Data []*ListRbacOrgTreeResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The next feature ID.
+	// The ID of the next feature.
 	Next *ListRbacOrgTreeResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
 	// Indicates whether a next page exists.
 	//
@@ -277,7 +277,7 @@ type ListRbacOrgTreeResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to pagination limits, the server processes up to 1,000 recent records for the current query. If the results exceed 1,000 records, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -405,7 +405,7 @@ func (s *ListRbacOrgTreeResponseBodyModule) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModuleData struct {
-	// The creation time. The time is in ISO 8601 format in the UTC (Z) time zone.
+	// The creation time. The time is in the ISO 8601 format and the UTC time zone.
 	//
 	// example:
 	//
@@ -427,7 +427,7 @@ type ListRbacOrgTreeResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// FileName
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The script path.
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
@@ -491,13 +491,13 @@ func (s *ListRbacOrgTreeResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacOrgTreeResponseBodyModuleNext struct {
-	// The creation date. The time is in ISO 8601 format in the UTC (Z) time zone.
+	// The creation date. The date is in the ISO 8601 format and the UTC time zone.
 	//
 	// example:
 	//
 	// 2025-12-15T02:29:22Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The category level. The root category is 1.
+	// The category level. The root category level is 1.
 	//
 	// example:
 	//

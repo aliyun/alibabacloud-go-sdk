@@ -38,13 +38,13 @@ type iListRbacRolesResponseBody interface {
 }
 
 type ListRbacRolesResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -62,17 +62,15 @@ type ListRbacRolesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -80,7 +78,7 @@ type ListRbacRolesResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListRbacRolesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. If there is no next query, this parameter is empty.
 	//
 	// example:
 	//
@@ -98,7 +96,7 @@ type ListRbacRolesResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
@@ -253,11 +251,11 @@ type ListRbacRolesResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The query results.
+	// The request results.
 	Data []*ListRbacRolesResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The decision weight.
 	Next *ListRbacRolesResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Indicates whether a next page exists.
+	// Specifies whether a next page exists.
 	//
 	// example:
 	//
@@ -269,13 +267,13 @@ type ListRbacRolesResponseBodyModule struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether a previous page exists.
+	// Specifies whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Indicates whether the server-side result limit is reached. The server processes up to 1,000 recent records beyond pagination limits. If the results exceed 1,000, **ResultLimit*	- is **true*	- and you must narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -403,7 +401,7 @@ func (s *ListRbacRolesResponseBodyModule) Validate() error {
 }
 
 type ListRbacRolesResponseBodyModuleData struct {
-	// The creation date. The value is in ISO 8601 format with the time zone set to UTC (Z).
+	// The creation date in ISO 8601 format in the UTC time zone.
 	//
 	// example:
 	//
@@ -415,17 +413,17 @@ type ListRbacRolesResponseBodyModuleData struct {
 	//
 	// 9953352
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether this is the default report. Valid values:
+	// Specifies whether the report is the default report. Valid values:
 	//
 	// - **0**: Not the default report.
 	//
-	// - **1**: The default report.
+	// - **1**: Default report.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the approval template is system-defined. Valid values:
+	// Specifies whether the approval template is system-defined. Valid values:
 	//
 	// - 1: Yes.
 	//
@@ -441,7 +439,7 @@ type ListRbacRolesResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// FileName
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -512,7 +510,7 @@ func (s *ListRbacRolesResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacRolesResponseBodyModuleNext struct {
-	// The time when the task was created. The value is in the YYYY-MM-DD HH:mm:ss format.
+	// The task creation time. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -524,13 +522,13 @@ type ListRbacRolesResponseBodyModuleNext struct {
 	//
 	// 1000039405002
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether this is the default dedicated gateway.
+	// Specifies whether the private gateway is the default one.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the approval template is system-defined. Valid values:
+	// Specifies whether the approval template is system-defined. Valid values:
 	//
 	// - 1: Yes.
 	//

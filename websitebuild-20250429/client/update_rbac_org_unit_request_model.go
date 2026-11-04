@@ -24,13 +24,13 @@ type UpdateRbacOrgUnitRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The organization parameters.
+	// The organizational unit parameters.
 	//
 	// example:
 	//
 	// {"name":"xx"}
 	OrgUnitData *string `json:"OrgUnitData,omitempty" xml:"OrgUnitData,omitempty"`
-	// The organization ID.
+	// The organizational unit ID.
 	//
 	// example:
 	//

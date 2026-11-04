@@ -16,7 +16,7 @@ type iCreateRbacRoleRequest interface {
 }
 
 type CreateRbacRoleRequest struct {
-	// The business ID of the customer.
+	// The customer business ID.
 	//
 	// example:
 	//

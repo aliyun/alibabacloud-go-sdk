@@ -86,7 +86,7 @@ func (client *Client) AllocateSupabaseForAdminWithContext(ctx context.Context, r
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - AssignRbacUserRoleRequest
 //
@@ -1714,11 +1714,11 @@ func (client *Client) CreateRbacOrgUnitWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an RBAC permission.
+// Creates RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session through Wanxiaozhi 2.0.
+// The Wanxiaozhi 2.0 API operation for creating an AI session.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -2376,11 +2376,11 @@ func (client *Client) DeleteRbacOrgUnitWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes an RBAC permission.
+// Deletes RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session for WanXiaoZhi 2.0.
+// The API operation for creating an AI session in Wanxiaozhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -2432,7 +2432,7 @@ func (client *Client) DeleteRbacPermissionWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -2710,7 +2710,7 @@ func (client *Client) ExportMaterialFileWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the Supabase instance configuration for a resource.
 //
 // @param request - ExportRbacConfigRequest
 //
@@ -3154,11 +3154,11 @@ func (client *Client) GetAppInstanceEntitlementWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries application instance information.
+// Queries the details of application instances.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the details of application instances.
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -6370,11 +6370,11 @@ func (client *Client) ListRbacOrgTreeWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the RBAC permission list.
+// Queries the RBAC permissions.
 //
 // Description:
 //
-// Creates an AI conversation session through WanXiaoZhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -6446,7 +6446,7 @@ func (client *Client) ListRbacPermissionsWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -6514,11 +6514,11 @@ func (client *Client) ListRbacRoleHierarchyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the list of RBAC roles.
+// Queries a list of RBAC roles.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -8104,7 +8104,7 @@ func (client *Client) QueryMaterialTaskListWithContext(ctx context.Context, tmpR
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the information of an application instance.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -8152,11 +8152,11 @@ func (client *Client) QueryRbacRoleWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// Queries the list of role permissions.
+// Queries the role permission list.
 //
 // Description:
 //
-// Creates an AI conversation session for Wan Xiaozhi 2.0.
+// The API operation to create an AI session for Wanxiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -8695,11 +8695,11 @@ func (client *Client) RefundAppInstanceForPartnerWithContext(ctx context.Context
 
 // Summary:
 //
-// Removes an RBAC role hierarchy.
+// Removes the RBAC role hierarchy.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the application instance information.
 //
 // @param request - RemoveRbacRoleHierarchyRequest
 //
@@ -9601,7 +9601,7 @@ func (client *Client) SetAppDomainCertificateWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - SetRbacRoleHierarchyRequest
 //
@@ -10691,11 +10691,11 @@ func (client *Client) UpdateRbacOrgUnitWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates an RBAC role.
+// Updates the RBAC role.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateRbacRoleRequest
 //

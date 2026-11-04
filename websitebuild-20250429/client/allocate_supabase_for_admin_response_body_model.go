@@ -277,6 +277,10 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	RdsDatabasePassword *string `json:"RdsDatabasePassword,omitempty" xml:"RdsDatabasePassword,omitempty"`
+	// example:
+	//
+	// tenant_00000000-0000-4000-8000-000000000001_schema
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The service key.
 	//
 	// example:
@@ -347,6 +351,10 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// GFCBAMJH-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// schema
+	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
 	// The user ID.
 	//
 	// example:
@@ -407,6 +415,10 @@ func (s *AllocateSupabaseForAdminResponseBodyModule) GetRdsDatabasePassword() *s
 	return s.RdsDatabasePassword
 }
 
+func (s *AllocateSupabaseForAdminResponseBodyModule) GetSchemaName() *string {
+	return s.SchemaName
+}
+
 func (s *AllocateSupabaseForAdminResponseBodyModule) GetServiceKey() *string {
 	return s.ServiceKey
 }
@@ -449,6 +461,10 @@ func (s *AllocateSupabaseForAdminResponseBodyModule) GetSupabasePublicUrl() *str
 
 func (s *AllocateSupabaseForAdminResponseBodyModule) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *AllocateSupabaseForAdminResponseBodyModule) GetTenantMode() *string {
+	return s.TenantMode
 }
 
 func (s *AllocateSupabaseForAdminResponseBodyModule) GetUserId() *string {
@@ -510,6 +526,11 @@ func (s *AllocateSupabaseForAdminResponseBodyModule) SetRdsDatabasePassword(v st
 	return s
 }
 
+func (s *AllocateSupabaseForAdminResponseBodyModule) SetSchemaName(v string) *AllocateSupabaseForAdminResponseBodyModule {
+	s.SchemaName = &v
+	return s
+}
+
 func (s *AllocateSupabaseForAdminResponseBodyModule) SetServiceKey(v string) *AllocateSupabaseForAdminResponseBodyModule {
 	s.ServiceKey = &v
 	return s
@@ -562,6 +583,11 @@ func (s *AllocateSupabaseForAdminResponseBodyModule) SetSupabasePublicUrl(v stri
 
 func (s *AllocateSupabaseForAdminResponseBodyModule) SetTenantId(v string) *AllocateSupabaseForAdminResponseBodyModule {
 	s.TenantId = &v
+	return s
+}
+
+func (s *AllocateSupabaseForAdminResponseBodyModule) SetTenantMode(v string) *AllocateSupabaseForAdminResponseBodyModule {
+	s.TenantMode = &v
 	return s
 }
 

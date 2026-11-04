@@ -38,19 +38,19 @@ type iListRbacPermissionsResponseBody interface {
 }
 
 type ListRbacPermissionsResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListRbacPermissionsResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
+	// The number of entries to return in each query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -78,9 +78,9 @@ type ListRbacPermissionsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response object.
+	// The returned object.
 	Module *ListRbacPermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token that is used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ListRbacPermissionsResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -253,9 +253,9 @@ type ListRbacPermissionsResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The query results.
+	// The request results.
 	Data []*ListRbacPermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The next feature ID.
+	// The ID of the next feature.
 	Next *ListRbacPermissionsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
 	// Indicates whether a next page exists.
 	//
@@ -275,7 +275,7 @@ type ListRbacPermissionsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 entries, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -403,7 +403,7 @@ func (s *ListRbacPermissionsResponseBodyModule) Validate() error {
 }
 
 type ListRbacPermissionsResponseBodyModuleData struct {
-	// The operation that you want to perform. Set the value to **GetDISyncInstanceInfo**.
+	// The system-defined parameter. Set the value to **GetDISyncInstanceInfo**.
 	//
 	// example:
 	//
@@ -478,7 +478,7 @@ func (s *ListRbacPermissionsResponseBodyModuleData) Validate() error {
 }
 
 type ListRbacPermissionsResponseBodyModuleNext struct {
-	// The operation that you want to perform. Set the value to **GetRemind**.
+	// The system-defined parameter. Set the value to **GetRemind**.
 	//
 	// example:
 	//
@@ -500,7 +500,7 @@ type ListRbacPermissionsResponseBodyModuleNext struct {
 	//
 	// **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
 	//
-	// Appendix: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+	// For more information, see [ResourceSchema documentation for Alibaba Cloud International](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions).
 	//
 	// example:
 	//

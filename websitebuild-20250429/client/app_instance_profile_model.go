@@ -74,7 +74,7 @@ type AppInstanceProfile struct {
 	//
 	// example:
 	//
-	// PC Website
+	// PC website
 	ApplicationTypeText *string `json:"ApplicationTypeText,omitempty" xml:"ApplicationTypeText,omitempty"`
 	// The business identifier of the application instance.
 	//
@@ -106,31 +106,31 @@ type AppInstanceProfile struct {
 	//
 	// finish
 	ChatbiTaskStatus *string `json:"ChatbiTaskStatus,omitempty" xml:"ChatbiTaskStatus,omitempty"`
-	// The commodity code used when placing the order.
+	// The commodity code of the order.
 	//
 	// example:
 	//
 	// domain_website_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The customer service contact information or description.
+	// The contact information or instructions for customer service.
 	//
 	// example:
 	//
 	// support@example.com
 	CustomerService *string `json:"CustomerService,omitempty" xml:"CustomerService,omitempty"`
-	// The deployment region code of the application.
+	// The code of the region where the application is deployed.
 	//
 	// example:
 	//
 	// HongKong
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// The ICP filing number bound to the custom domain name. Multiple filing numbers are separated by commas (,).
+	// The ICP filing number of the bound custom domain name. Separate multiple ICP filing numbers with commas (,).
 	//
 	// example:
 	//
 	// 京ICP备12345678号-1
 	IcpbaNo *string `json:"IcpbaNo,omitempty" xml:"IcpbaNo,omitempty"`
-	// The dedicated server information. This field is computed in real time by DescribeAppInstance and is not populated in list API responses.
+	// The independent server information. This information is computed in real time by DescribeAppInstance and is not populated in list operations.
 	IndependentDeployment *AppInstanceProfileIndependentDeployment `json:"IndependentDeployment,omitempty" xml:"IndependentDeployment,omitempty" type:"Struct"`
 	// The ID of the associated Lingxiao instance.
 	//
@@ -138,9 +138,9 @@ type AppInstanceProfile struct {
 	//
 	// lx-1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the current user is included in the ChatBI feature canary release whitelist.
+	// Specifies whether the current user is included in the grayscale whitelist for the ChatBI feature.
 	OpenChatBi *bool `json:"OpenChatBi,omitempty" xml:"OpenChatBi,omitempty"`
-	// The time when the order was placed, in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the order was placed. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type AppInstanceProfile struct {
 	//
 	// order-1
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The time when the payment was made, in the yyyy-MM-dd HH:mm:ss format.
+	// The time when the payment was made. The format is yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type AppInstanceProfile struct {
 	//
 	// https://example.com/preview
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
-	// The SEO site configuration identifier.
+	// The configuration identifier of the SEO site.
 	//
 	// example:
 	//
 	// seo-site-1
 	SeoSite *string `json:"SeoSite,omitempty" xml:"SeoSite,omitempty"`
-	// The switch for the share rendering watermark. A value of 1 indicates enabled, and a value of 0 indicates disabled. This field is empty if not configured.
+	// Specifies whether to enable the watermark for shared rendering. A value of 1 indicates that the feature is enabled, and a value of 0 indicates that the feature is disabled. If this parameter is not configured, it is left empty.
 	//
 	// example:
 	//
@@ -182,11 +182,11 @@ type AppInstanceProfile struct {
 	//
 	// Max_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The display name of the site version, including the deployment region.
+	// The display name of the site version, which includes the deployment region.
 	//
 	// example:
 	//
-	// Flagship Edition [Hong Kong]
+	// Ultimate Edition [Hong Kong]
 	SiteVersionText *string `json:"SiteVersionText,omitempty" xml:"SiteVersionText,omitempty"`
 	// The identifier of the creation or synchronization source.
 	//
@@ -200,12 +200,14 @@ type AppInstanceProfile struct {
 	//
 	// etag-1
 	TemplateEtag *string `json:"TemplateEtag,omitempty" xml:"TemplateEtag,omitempty"`
-	// The template ID used by the current application.
+	// The ID of the template used by the current application.
 	//
 	// example:
 	//
 	// tpl-1
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The upgrade status of the instance. DOING indicates that the upgrade is in progress, SUCC indicates that the upgrade is successful, and FAIL indicates that the upgrade failed.
+	//
 	// example:
 	//
 	// SUCC
@@ -464,59 +466,45 @@ func (s *AppInstanceProfile) Validate() error {
 }
 
 type AppInstanceProfileIndependentDeployment struct {
-	// Specifies whether a retry is allowed after the dedicated server fails to start.
+	// Specifies whether retries are allowed after the independent server fails to be enabled.
 	CanRetry *bool `json:"CanRetry,omitempty" xml:"CanRetry,omitempty"`
-	// The deployment region code of the dedicated server.
+	// The code of the region where the independent server is deployed.
 	//
 	// example:
 	//
 	// HongKong
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// The DNS record type used when binding a domain name to the dedicated IP address.
+	// The type of the DNS record used when an independent IP address is bound to a domain name.
 	//
 	// example:
 	//
 	// A
 	DnsRecordType *string `json:"DnsRecordType,omitempty" xml:"DnsRecordType,omitempty"`
-	// The eligibility status of the dedicated server. Valid values:
-	//
-	// - UPGRADE_REQUIRED: A version upgrade is required.
-	//
-	// - AVAILABLE: The dedicated server can be started.
-	//
-	// - UNAVAILABLE: The dedicated server is currently unavailable.
+	// The eligibility status of the independent server. UPGRADE_REQUIRED indicates that an upgrade is required, AVAILABLE indicates that the feature can be enabled, and UNAVAILABLE indicates that the feature is currently unavailable.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Eligibility *string `json:"Eligibility,omitempty" xml:"Eligibility,omitempty"`
-	// The status of the dedicated server. Valid values:
-	//
-	// - NOT_ENABLED: Not started.
-	//
-	// - ENABLING: Starting.
-	//
-	// - ACTIVE: Started.
-	//
-	// - FAILED: Failed to start.
+	// The status of the independent server. NOT_ENABLED indicates that the feature is not enabled, ENABLING indicates that the feature is being enabled, ACTIVE indicates that the feature is enabled, and FAILED indicates that the feature failed to be enabled.
 	//
 	// example:
 	//
 	// ACTIVE
 	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// The dedicated IP address assigned after the dedicated server is started.
+	// The independent IP address assigned after the independent server is enabled.
 	//
 	// example:
 	//
 	// 203.0.113.10
 	IndependentIp *string `json:"IndependentIp,omitempty" xml:"IndependentIp,omitempty"`
-	// The display specification of the dedicated server. This does not represent the real-time resource usage of the container.
+	// The unified display specification of the independent server, which does not represent the real-time resource usage of the container.
 	//
 	// example:
 	//
-	// 2 vCPUs 2 GB
+	// 2 vCPUs and 2 GB
 	ServerSpec *string `json:"ServerSpec,omitempty" xml:"ServerSpec,omitempty"`
-	// The task ID for starting the dedicated server.
+	// The ID of the task to enable the independent server.
 	//
 	// example:
 	//

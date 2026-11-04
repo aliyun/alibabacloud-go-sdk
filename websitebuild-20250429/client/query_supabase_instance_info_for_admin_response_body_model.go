@@ -279,6 +279,10 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	RdsDatabasePassword *string `json:"RdsDatabasePassword,omitempty" xml:"RdsDatabasePassword,omitempty"`
+	// example:
+	//
+	// tenant_00000000-0000-4000-8000-000000000001_schema
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The service key.
 	//
 	// example:
@@ -345,6 +349,10 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// GFCBAMJH-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// schema
+	TenantMode *string `json:"TenantMode,omitempty" xml:"TenantMode,omitempty"`
 	// The user ID.
 	//
 	// example:
@@ -405,6 +413,10 @@ func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetRdsDatabasePass
 	return s.RdsDatabasePassword
 }
 
+func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetSchemaName() *string {
+	return s.SchemaName
+}
+
 func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetServiceKey() *string {
 	return s.ServiceKey
 }
@@ -447,6 +459,10 @@ func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetSupabasePublicU
 
 func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetTenantMode() *string {
+	return s.TenantMode
 }
 
 func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) GetUserId() *string {
@@ -508,6 +524,11 @@ func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) SetRdsDatabasePass
 	return s
 }
 
+func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) SetSchemaName(v string) *QuerySupabaseInstanceInfoForAdminResponseBodyModule {
+	s.SchemaName = &v
+	return s
+}
+
 func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) SetServiceKey(v string) *QuerySupabaseInstanceInfoForAdminResponseBodyModule {
 	s.ServiceKey = &v
 	return s
@@ -560,6 +581,11 @@ func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) SetSupabasePublicU
 
 func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) SetTenantId(v string) *QuerySupabaseInstanceInfoForAdminResponseBodyModule {
 	s.TenantId = &v
+	return s
+}
+
+func (s *QuerySupabaseInstanceInfoForAdminResponseBodyModule) SetTenantMode(v string) *QuerySupabaseInstanceInfoForAdminResponseBodyModule {
+	s.TenantMode = &v
 	return s
 }
 

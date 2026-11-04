@@ -56,12 +56,14 @@ type CreateAppInstanceRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures request idempotence. You can generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// 210713a117660695309606626a
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The action.
+	//
 	// example:
 	//
 	// OPEN_SUBSCRIPTION
@@ -72,6 +74,8 @@ type CreateAppInstanceRequest struct {
 	//
 	// ChineseMainland
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
+	// The description of the website.
+	//
 	// example:
 	//
 	// go-to-the-docks-for-french-fries
@@ -88,31 +92,25 @@ type CreateAppInstanceRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The name of the website.
+	//
 	// example:
 	//
 	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The payment type.
+	// The payment method.
 	//
 	// example:
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Required. The unit of the subscription period. Valid values:
-	//
-	// - Year: year
-	//
-	// - Month: month
-	//
-	// - Day: day
-	//
-	// - Hour: hour.
+	// Required. The unit of the subscription period. Valid values: Year, Month, Day, and Hour.
 	//
 	// example:
 	//
 	// Year
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// Required. The number of instances to subscribe to.
+	// Required. The number of instances to purchase.
 	//
 	// example:
 	//
@@ -304,13 +302,13 @@ func (s *CreateAppInstanceRequest) Validate() error {
 }
 
 type CreateAppInstanceRequestTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of tag 0.
+	// The value of the tag.
 	//
 	// example:
 	//

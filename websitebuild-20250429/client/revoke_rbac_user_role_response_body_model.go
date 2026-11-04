@@ -34,7 +34,7 @@ type iRevokeRbacUserRoleResponseBody interface {
 }
 
 type RevokeRbacUserRoleResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type RevokeRbacUserRoleResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not in use and can be ignored.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type RevokeRbacUserRoleResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the move succeeded.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type RevokeRbacUserRoleResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

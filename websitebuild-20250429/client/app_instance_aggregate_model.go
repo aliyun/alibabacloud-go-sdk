@@ -82,7 +82,7 @@ type iAppInstanceAggregate interface {
 }
 
 type AppInstanceAggregate struct {
-	// The list of AI agents associated with the application.
+	// The list of AI staff associated with the application.
 	AiStaffList []*AppAiStaff `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
 	// The operation address of the application.
 	AppOperationAddress *AppOperationAddress `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
@@ -112,7 +112,7 @@ type AppInstanceAggregate struct {
 	//
 	// CLOUD_DREAM_SAAS
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// 没有关联会话时为 null。
+	// The associated conversation information. The value is null if no conversation is associated.
 	ConversationInfo *AppInstanceAggregateConversationInfo `json:"ConversationInfo,omitempty" xml:"ConversationInfo,omitempty" type:"Struct"`
 	// The creation time.
 	//
@@ -138,7 +138,7 @@ type AppInstanceAggregate struct {
 	//
 	// WS20250801151731000007
 	DesignSpecBizId *string `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
-	// The design specification ID.
+	// The ID of the design configuration.
 	DesignSpecId *string `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
 	// The primary domain name.
 	//
@@ -164,13 +164,13 @@ type AppInstanceAggregate struct {
 	//
 	// 2025-01-01 00:00:00
 	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The publication time.
+	// The publish time.
 	//
 	// example:
 	//
@@ -638,7 +638,7 @@ func (s *AppInstanceAggregate) Validate() error {
 }
 
 type AppInstanceAggregateConversationInfo struct {
-	// 0 表示存在空会话。
+	// The number of conversation turns. A value of 0 indicates an empty conversation.
 	//
 	// example:
 	//
@@ -741,7 +741,7 @@ type AppInstanceAggregatePartnerDetailBindData struct {
 	//
 	// 1672123722000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
@@ -860,17 +860,13 @@ func (s *AppInstanceAggregatePartnerDetailBindData) Validate() error {
 }
 
 type AppInstanceAggregateTags struct {
-	// The tag key of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, it cannot be an empty string.
-	//
-	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. The value cannot be an empty string. The value can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, it can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. The value can be an empty string. The value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

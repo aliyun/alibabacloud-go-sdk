@@ -32,7 +32,7 @@ type ListRbacPermissionsRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The number of entries per query.
+	// The number of entries to return in each query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -40,7 +40,7 @@ type ListRbacPermissionsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token that is used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListRbacPermissionsRequest struct {
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort type. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//

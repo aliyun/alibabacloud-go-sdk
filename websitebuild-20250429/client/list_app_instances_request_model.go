@@ -66,7 +66,7 @@ type ListAppInstancesRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The maximum number of results to return for each query.
+	// The maximum number of results returned per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -74,7 +74,7 @@ type ListAppInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query. This parameter is empty if no subsequent query is required.
+	// The token used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
