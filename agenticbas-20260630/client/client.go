@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("AgenticBAS")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,7 +66,97 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建渗透测试任务
+// Creates penetration testing tasks for authorized assets of the current account and returns the task IDs. You can specify up to five targets at a time, and one task is created for each target.
+//
+// Description:
+//
+// Creates penetration testing tasks for authorized assets of the current account and returns the task IDs. You can specify up to five targets at a time, and one task is created for each target.
+//
+// Before you call this operation, you must activate the AgenticBAS service or meet the validity period and quota conditions of the trial service. The target assets must meet the ownership verification requirements of the selected asset source. Business parameters are passed in OperationInput. VulnCheckItems and PentestRequirement cannot be empty at the same time. Currently, only IMMEDIATE execution is supported, and scheduled execution is not supported.
+//
+// A successful creation response only indicates that the tasks are created and does not wait for the scan to complete. Save the TaskId in TaskList, query the status and usage by calling DescribePentestTaskList, and then use the same TaskId to query vulnerabilities or reports. Tasks may enter a queue. If a report is not generated, the query response may not contain a download link.
+//
+// Credentials use an object structure of "identity name -> credential configuration". The following are synthetic examples. Replace them with authorized test identities in actual calls.
+//
+// ```json
+//
+// {
+//
+//	"Credentials": {
+//
+//	  "accountUser": {
+//
+//	    "account": {
+//
+//	      "username": "example-user",
+//
+//	      "password": "example-password"
+//
+//	    }
+//
+//	  },
+//
+//	  "cookieUser": {
+//
+//	    "cookies": [
+//
+//	      {
+//
+//	        "name": "session",
+//
+//	        "value": "example-session",
+//
+//	        "domain": "example.com",
+//
+//	        "path": "/",
+//
+//	        "secure": true,
+//
+//	        "httpOnly": true,
+//
+//	        "sameSite": "Lax"
+//
+//	      }
+//
+//	    ]
+//
+//	  },
+//
+//	  "localUser": {
+//
+//	    "localStorage": {
+//
+//	      "access_token": "example-local-token"
+//
+//	    }
+//
+//	  },
+//
+//	  "sessionUser": {
+//
+//	    "sessionStorage": {
+//
+//	      "session_token": "example-session-token"
+//
+//	    }
+//
+//	  },
+//
+//	  "headerUser": {
+//
+//	    "extraHeaders": {
+//
+//	      "Authorization": "Bearer example-token"
+//
+//	    }
+//
+//	  }
+//
+//	}
+//
+// }
+//
+// ```
 //
 // @param tmpReq - CreatePentestTaskRequest
 //
@@ -112,7 +210,97 @@ func (client *Client) CreatePentestTaskWithOptions(tmpReq *CreatePentestTaskRequ
 
 // Summary:
 //
-// 创建渗透测试任务
+// Creates penetration testing tasks for authorized assets of the current account and returns the task IDs. You can specify up to five targets at a time, and one task is created for each target.
+//
+// Description:
+//
+// Creates penetration testing tasks for authorized assets of the current account and returns the task IDs. You can specify up to five targets at a time, and one task is created for each target.
+//
+// Before you call this operation, you must activate the AgenticBAS service or meet the validity period and quota conditions of the trial service. The target assets must meet the ownership verification requirements of the selected asset source. Business parameters are passed in OperationInput. VulnCheckItems and PentestRequirement cannot be empty at the same time. Currently, only IMMEDIATE execution is supported, and scheduled execution is not supported.
+//
+// A successful creation response only indicates that the tasks are created and does not wait for the scan to complete. Save the TaskId in TaskList, query the status and usage by calling DescribePentestTaskList, and then use the same TaskId to query vulnerabilities or reports. Tasks may enter a queue. If a report is not generated, the query response may not contain a download link.
+//
+// Credentials use an object structure of "identity name -> credential configuration". The following are synthetic examples. Replace them with authorized test identities in actual calls.
+//
+// ```json
+//
+// {
+//
+//	"Credentials": {
+//
+//	  "accountUser": {
+//
+//	    "account": {
+//
+//	      "username": "example-user",
+//
+//	      "password": "example-password"
+//
+//	    }
+//
+//	  },
+//
+//	  "cookieUser": {
+//
+//	    "cookies": [
+//
+//	      {
+//
+//	        "name": "session",
+//
+//	        "value": "example-session",
+//
+//	        "domain": "example.com",
+//
+//	        "path": "/",
+//
+//	        "secure": true,
+//
+//	        "httpOnly": true,
+//
+//	        "sameSite": "Lax"
+//
+//	      }
+//
+//	    ]
+//
+//	  },
+//
+//	  "localUser": {
+//
+//	    "localStorage": {
+//
+//	      "access_token": "example-local-token"
+//
+//	    }
+//
+//	  },
+//
+//	  "sessionUser": {
+//
+//	    "sessionStorage": {
+//
+//	      "session_token": "example-session-token"
+//
+//	    }
+//
+//	  },
+//
+//	  "headerUser": {
+//
+//	    "extraHeaders": {
+//
+//	      "Authorization": "Bearer example-token"
+//
+//	    }
+//
+//	  }
+//
+//	}
+//
+// }
+//
+// ```
 //
 // @param request - CreatePentestTaskRequest
 //
@@ -130,7 +318,7 @@ func (client *Client) CreatePentestTask(request *CreatePentestTaskRequest) (_res
 
 // Summary:
 //
-// 查询渗透测试报告内容
+// Queries the PDF report of a specified penetration test task under the current account and returns a temporary OSS download URL and its expiration time. The report content is not returned.
 //
 // @param tmpReq - DescribePentestReportContentRequest
 //
@@ -184,7 +372,7 @@ func (client *Client) DescribePentestReportContentWithOptions(tmpReq *DescribePe
 
 // Summary:
 //
-// 查询渗透测试报告内容
+// Queries the PDF report of a specified penetration test task under the current account and returns a temporary OSS download URL and its expiration time. The report content is not returned.
 //
 // @param request - DescribePentestReportContentRequest
 //
@@ -202,7 +390,15 @@ func (client *Client) DescribePentestReportContent(request *DescribePentestRepor
 
 // Summary:
 //
-// 查询渗透测试任务列表
+// Queries the penetration testing tasks of the current account by using paging and returns the task status, execution duration, Credits usage, time, and vulnerability statistics.
+//
+// Description:
+//
+// Queries the penetration testing tasks of the current account by using paging and returns the task status, execution duration, Credits usage, time, and vulnerability statistics.
+//
+// Use OperationInput to specify query conditions. Paging is implemented by using CurrentPage and PageSize. By default, the first page is queried and each page contains 10 entries. You can filter tasks by task name keyword and task status.
+//
+// The response includes TaskList and PageInfo. Duration indicates the execution duration in seconds. CreditsUsed indicates the used Credits. Tasks that have not started may not have a start time or execution duration, and unfinished tasks may not have a completion time. UNIX timestamps uniformly use UNIX seconds. When displaying, you can convert them to the time zone of the caller.
 //
 // @param tmpReq - DescribePentestTaskListRequest
 //
@@ -256,7 +452,15 @@ func (client *Client) DescribePentestTaskListWithOptions(tmpReq *DescribePentest
 
 // Summary:
 //
-// 查询渗透测试任务列表
+// Queries the penetration testing tasks of the current account by using paging and returns the task status, execution duration, Credits usage, time, and vulnerability statistics.
+//
+// Description:
+//
+// Queries the penetration testing tasks of the current account by using paging and returns the task status, execution duration, Credits usage, time, and vulnerability statistics.
+//
+// Use OperationInput to specify query conditions. Paging is implemented by using CurrentPage and PageSize. By default, the first page is queried and each page contains 10 entries. You can filter tasks by task name keyword and task status.
+//
+// The response includes TaskList and PageInfo. Duration indicates the execution duration in seconds. CreditsUsed indicates the used Credits. Tasks that have not started may not have a start time or execution duration, and unfinished tasks may not have a completion time. UNIX timestamps uniformly use UNIX seconds. When displaying, you can convert them to the time zone of the caller.
 //
 // @param request - DescribePentestTaskListRequest
 //
@@ -274,7 +478,7 @@ func (client *Client) DescribePentestTaskList(request *DescribePentestTaskListRe
 
 // Summary:
 //
-// 查询渗透测试漏洞列表
+// Queries penetration test vulnerabilities for the current account by task ID with paging. Returns vulnerability titles, severity levels, authentication statuses, affected URLs, and discovery times. Supports filtering by severity level.
 //
 // @param tmpReq - DescribePentestVulnListRequest
 //
@@ -328,7 +532,7 @@ func (client *Client) DescribePentestVulnListWithOptions(tmpReq *DescribePentest
 
 // Summary:
 //
-// 查询渗透测试漏洞列表
+// Queries penetration test vulnerabilities for the current account by task ID with paging. Returns vulnerability titles, severity levels, authentication statuses, affected URLs, and discovery times. Supports filtering by severity level.
 //
 // @param request - DescribePentestVulnListRequest
 //
