@@ -16,19 +16,19 @@ type iUpdateCommonSwitchConfigRequest interface {
 }
 
 type UpdateCommonSwitchConfigRequest struct {
-	// Specifies whether to turn on the switch for newly added servers. Valid values:
+	// Specifies whether the switch takes effect by default. Valid values:
 	//
-	// - **add**: yes
+	// - **add**: Takes effect by default for newly added servers.
 	//
-	// - **del**: no
+	// - **del**: Does not take effect by default for newly added servers.
 	//
 	// example:
 	//
 	// add
 	TargetDefault *string `json:"TargetDefault,omitempty" xml:"TargetDefault,omitempty"`
-	// The type of the switch.
+	// The general switch type.
 	//
-	// > You can call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) or [ListSystemClientRules](~~ListSystemClientRules~~) operation to obtain the type from the response parameter SwitchId.
+	// >You can obtain this parameter from the SwitchId response parameter of the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) and [ListSystemClientRules](~~ListSystemClientRules~~) operations.
 	//
 	// example:
 	//

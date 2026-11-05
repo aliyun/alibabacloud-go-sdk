@@ -14,9 +14,9 @@ type iGetCommonSwitchConfigRequest interface {
 }
 
 type GetCommonSwitchConfigRequest struct {
-	// The type of the common switch.
+	// The general switch type.
 	//
-	// >  You can call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) or [ListSystemClientRules](~~ListSystemClientRules~~) operation to obtain the switch type from the response parameter SwitchId.
+	// >You can obtain this parameter from the SwitchId response parameter of the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) and [ListSystemClientRules](~~ListSystemClientRules~~) operations.
 	//
 	// example:
 	//

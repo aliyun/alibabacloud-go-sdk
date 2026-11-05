@@ -16,9 +16,9 @@ type iUpdateClientAlertModeRequest interface {
 }
 
 type UpdateClientAlertModeRequest struct {
-	// The protection mode. Valid values:
+	// Specifies the protection mode. Valid values:
 	//
-	// - **strict**: Strict mode. Defense mode has a risk of false positives. Use Defense mode during critical event protection periods.
+	// - **strict**: Strict mode. Defense mode has a certain risk of false positives and is recommended during critical event protection.
 	//
 	// - **balance**: Balanced mode. Defense mode detects more suspicious risks while reducing false positives.
 	//

@@ -15,6 +15,8 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 	GetDryRun() *bool
 	SetEdrModuleSwitchShrink(v string) *ModifyPostPayModuleSwitchShrinkRequest
 	GetEdrModuleSwitchShrink() *string
+	SetFreeTrial(v bool) *ModifyPostPayModuleSwitchShrinkRequest
+	GetFreeTrial() *bool
 	SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchShrinkRequest
 	GetPostPaidHostAutoBind() *int32
 	SetPostPaidHostAutoBindVersion(v int32) *ModifyPostPayModuleSwitchShrinkRequest
@@ -34,14 +36,20 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - true: Only prechecks the request and does not perform the actual operation.
+	// - **true**: Performs a dry run only and does not perform the actual operation.
 	//
-	// - false: Performs the actual operation.
+	// - **false**: Performs the actual operation.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The switch configuration for the EDR module.
+	// The switch configuration of the EDR module.
 	EdrModuleSwitchShrink *string `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty"`
+	// Specifies whether to enable the free trial. Default value: false. You cannot modify this parameter.
+	//
+	// example:
+	//
+	// false
+	FreeTrial *bool `json:"FreeTrial,omitempty" xml:"FreeTrial,omitempty"`
 	// Specifies whether to automatically bind new assets to the host and container protection feature. Valid values:
 	//
 	// - **0**: disabled
@@ -76,19 +84,19 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// postpay-sas-**
 	PostPayInstanceId *string `json:"PostPayInstanceId,omitempty" xml:"PostPayInstanceId,omitempty"`
-	// The switch status of the pay-as-you-go modules. The value is a JSON string. Valid values:
+	// The switch status of pay-as-you-go modules. The value is a JSON string. Valid values:
 	//
 	// - Key:
 	//
-	//   - **VUL**: Vulnerability fixing module
+	//   - **VUL**: Vulnerability remediation module
 	//
-	//   - **CSPM**: Cloud Security Posture Management module
+	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
 	//
 	//   - **AGENTLESS**: Agentless detection module
 	//
 	//   - **SERVERLESS**: Serverless security module
 	//
-	//   - **CTDR**: Cloud Threat Detection and Response module
+	//   - **CTDR**: Cloud Threat Detection and Response (CTDR) module
 	//
 	//   - **POST_HOST**: Host and container security module
 	//
@@ -98,21 +106,21 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	//   - **CTDR_STORAGE**: Log management module
 	//
-	//   - **ANTI_RANSOMWARE**: Anti-ransomware management
+	//   - **ANTI_RANSOMWARE**: Anti-ransomware module
 	//
 	// - Value: 0 indicates disabled, and 1 indicates enabled.
 	//
 	// > The values of modules that are not specified remain unchanged.
 	//
-	// <notice>This parameter has the same meaning as the PostPayModuleSwitchObj parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+	// <notice>This parameter has the same meaning as the PostPayModuleSwitchObj parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.
 	//
 	// example:
 	//
 	// {"VUL":1,"CSPM":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The switch status of the pay-as-you-go modules.
+	// The switch status of pay-as-you-go modules.
 	//
-	// 	Notice: This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
+	// 	Notice: This parameter has the same meaning as the PostPayModuleSwitch parameter. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.
 	PostPayModuleSwitchObjShrink *string `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty"`
 }
 
@@ -134,6 +142,10 @@ func (s *ModifyPostPayModuleSwitchShrinkRequest) GetDryRun() *bool {
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) GetEdrModuleSwitchShrink() *string {
 	return s.EdrModuleSwitchShrink
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) GetFreeTrial() *bool {
+	return s.FreeTrial
 }
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) GetPostPaidHostAutoBind() *int32 {
@@ -168,6 +180,11 @@ func (s *ModifyPostPayModuleSwitchShrinkRequest) SetDryRun(v bool) *ModifyPostPa
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) SetEdrModuleSwitchShrink(v string) *ModifyPostPayModuleSwitchShrinkRequest {
 	s.EdrModuleSwitchShrink = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) SetFreeTrial(v bool) *ModifyPostPayModuleSwitchShrinkRequest {
+	s.FreeTrial = &v
 	return s
 }
 

@@ -22,7 +22,7 @@ type iListUniBackupRecordRequest interface {
 }
 
 type ListUniBackupRecordRequest struct {
-	// The region where the anti-ransomware backup service is located.
+	// The region where the anti-ransomware backup service is deployed.
 	//
 	// This parameter is required.
 	//
@@ -30,31 +30,31 @@ type ListUniBackupRecordRequest struct {
 	//
 	// cn-shanghai
 	BackupRegionId *string `json:"BackupRegionId,omitempty" xml:"BackupRegionId,omitempty"`
-	// When performing a paginated query, set the page number for the current page. The default value is **1**.
+	// The Settings of the paging page number for the paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The identification information of the server protected by the anti-ransomware policy. You can enter the IP address or instance ID of the server.
+	// The identification information of the server protected by the anti-ransomware policy that you want to query. You can enter the IP address or instance ID of the server.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
-	// The maximum number of data entries to display per page in a paginated query.
+	// The maximum number of entries to return on each page for the paged query. This paging parameter defines the page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Backup status. Values:
+	// The backup status. Valid values:
 	//
-	// - **completed**: Success
+	// - **completed**: Successful.
 	//
-	// - **error**: Failure
+	// - **error**: Failed.
 	//
-	// - **canceled**: Closed
+	// - **canceled**: Canceled.
 	//
 	// example:
 	//

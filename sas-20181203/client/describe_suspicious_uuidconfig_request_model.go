@@ -14,17 +14,17 @@ type iDescribeSuspiciousUUIDConfigRequest interface {
 }
 
 type DescribeSuspiciousUUIDConfigRequest struct {
-	// The type of proactive defense. Valid values:
+	// The defense type of the proactive defense to query. Valid values:
 	//
-	// 	- **auto_breaking**: virus defense
+	// - **auto_breaking**: Anti-virus.
 	//
-	// 	- **ransomware_breaking**: ransomware capture
+	// - **ransomware_breaking**: Anti-ransomware (bait capture).
 	//
-	// 	- **webshell_cloud_breaking**: webshell defense
+	// - **webshell_cloud_breaking**: Web shell connection defense.
 	//
-	// 	- **alinet**: malicious behavior defense
+	// - **alinet**: Malicious network behavior defense.
 	//
-	// 	- **alisecguard**: client protection
+	// - **alisecguard**: Client self-protection.
 	//
 	// This parameter is required.
 	//

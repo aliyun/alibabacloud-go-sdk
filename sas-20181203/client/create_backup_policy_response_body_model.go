@@ -70,9 +70,9 @@ type CreateBackupPolicyResponseBodyBackupPolicy struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The status of the policy. Valid values:
 	//
-	// - **enabled**: Protection is enabled.
+	// - **enabled**: The protection is enabled.
 	//
-	// - **disabled**: Protection is disabled.
+	// - **disabled**: The protection is disabled.
 	//
 	// > By default, the protection is enabled after the policy is created.
 	//

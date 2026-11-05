@@ -24,7 +24,7 @@ type iOperateCommonOverallConfigRequest interface {
 }
 
 type OperateCommonOverallConfigRequest struct {
-	// The client token used to ensure request idempotence. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type OperateCommonOverallConfigRequest struct {
 	//
 	// on
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// Specifies whether to perform only a dry run for this request. Valid values: true: performs only a dry run without executing the actual operation. false: sends the request normally. Default value: false.
+	// Specifies whether to only precheck the request. Valid values: true: Prechecks the request without performing the actual operation. false: Performs the actual operation.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether asset configuration is required. Default value: **false**. Valid values:
+	// Specifies whether assets need to be configured. Default value: **false**. Valid values:
 	//
 	// - **true**: required
 	//
 	// - **false**: not required
 	//
-	// > This value takes effect only when **config*	- is set to **on**.
+	// > This value is valid only when **Config*	- is set to **on**.
 	//
 	// example:
 	//
@@ -68,141 +68,141 @@ type OperateCommonOverallConfigRequest struct {
 	//
 	// - **threat_detect**: adaptive threat detection capability
 	//
-	// - **suspicious_aggregation**: alert correlation
+	// - **suspicious_aggregation**: alerting associate
 	//
 	// - **alidetect**: file detection
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_38857**: Linux entry service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_38857**: high-risk operations executed by Linux entry services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50858**: Linux web service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_50858**: high-risk operations executed by Linux web services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50859**: Linux entry service executes suspicious operations
+	// - **USER-ENABLE-SWITCH-TYPE_50859**: suspicious operations executed by Linux entry services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50862**: Linux Cloud Assistant advanced protection
+	// - **USER-ENABLE-SWITCH-TYPE_50862**: advanced protection for Linux Cloud Assistant
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50867**: Linux implants malicious files
+	// - **USER-ENABLE-SWITCH-TYPE_50867**: malicious file implantation in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50868**: Linux implants suspicious files
+	// - **USER-ENABLE-SWITCH-TYPE_50868**: suspicious file implantation in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_64025**: Linux entry service executes commands [enhanced mode]
+	// - **USER-ENABLE-SWITCH-TYPE_64025**: command execution by Linux entry services [enhanced pattern]
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51229**: Windows browser service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_51229**: high-risk operations executed by Windows browser services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51230**: Windows entry service executes suspicious operations
+	// - **USER-ENABLE-SWITCH-TYPE_51230**: suspicious operations executed by Windows entry services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51232**: Windows system process executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_51232**: high-risk operations executed by Windows system processes
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51233**: Windows Java service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_51233**: high-risk operations executed by Windows Java services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51234**: Windows Office component executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_51234**: high-risk operations executed by Windows Office components
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51235**: Windows web service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_51235**: high-risk operations executed by Windows web services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52820**: Windows implants malicious files
+	// - **USER-ENABLE-SWITCH-TYPE_52820**: malicious file implantation in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52826**: Windows entry service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_52826**: high-risk operations executed by Windows entry services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_55251**: Windows database service executes high-risk operations
+	// - **USER-ENABLE-SWITCH-TYPE_55251**: high-risk operations executed by Windows database services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_63725**: Windows entry service implants suspicious scripts or binary files
+	// - **USER-ENABLE-SWITCH-TYPE_63725**: suspicious script or binary file implantation by Windows entry services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_3277**: Linux suspicious process startup
+	// - **USER-ENABLE-SWITCH-TYPE_3277**: suspicious process startup in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50983**: Linux obfuscation commands
+	// - **USER-ENABLE-SWITCH-TYPE_50983**: command obfuscation in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51200**: Linux command line downloads and runs malicious files
+	// - **USER-ENABLE-SWITCH-TYPE_51200**: downloading and running malicious files via Linux command line
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_71131**: Linux entry service executes suspicious behavior sequences
+	// - **USER-ENABLE-SWITCH-TYPE_71131**: suspicious behavior sequences executed by Linux entry services
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51225**: Windows PowerShell executes high-risk commands
+	// - **USER-ENABLE-SWITCH-TYPE_51225**: high-risk commands executed by Windows PowerShell
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51226**: Windows PowerShell executes suspicious commands
+	// - **USER-ENABLE-SWITCH-TYPE_51226**: suspicious commands executed by Windows PowerShell
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52821**: Windows suspicious process startup
+	// - **USER-ENABLE-SWITCH-TYPE_52821**: suspicious process startup in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_57242**: Windows malicious command execution
+	// - **USER-ENABLE-SWITCH-TYPE_57242**: malicious command execution in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_57340**: Windows command line downloads and runs malicious files
+	// - **USER-ENABLE-SWITCH-TYPE_57340**: downloading and running malicious files via Windows command line
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_39659**: Windows sensitive registry key protection
+	// - **USER-ENABLE-SWITCH-TYPE_39659**: sensitive registry key protection in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52816**: Windows high-risk account manipulation
+	// - **USER-ENABLE-SWITCH-TYPE_52816**: high-risk account manipulation in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54365**: Windows creates service auto-start entry
+	// - **USER-ENABLE-SWITCH-TYPE_54365**: creation of service auto-start items in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54366**: Windows creates high-risk auto-start entry
+	// - **USER-ENABLE-SWITCH-TYPE_54366**: creation of high-risk auto-start items in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54367**: Windows creates scheduled task auto-start entry
+	// - **USER-ENABLE-SWITCH-TYPE_54367**: creation of scheduled node auto-start items in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54368**: Windows creates registry auto-start entry
+	// - **USER-ENABLE-SWITCH-TYPE_54368**: creation of registry auto-start items in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54369**: Windows creates WMI auto-start entry
+	// - **USER-ENABLE-SWITCH-TYPE_54369**: creation of WMI auto-start items in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50869**: Linux unauthorized execution of high-risk commands
+	// - **USER-ENABLE-SWITCH-TYPE_50869**: unauthorized execution of high-risk commands in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_53272**: Linux privilege escalation via kernel vulnerability
+	// - **USER-ENABLE-SWITCH-TYPE_53272**: privilege escalation by exploiting kernel vulnerabilities in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54395**: Linux unauthorized read/write of sensitive files
+	// - **USER-ENABLE-SWITCH-TYPE_54395**: unauthorized reading and writing of sensitive files in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_57897**: Linux suspected privilege escalation behavior
+	// - **USER-ENABLE-SWITCH-TYPE_57897**: suspected privilege escalation in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52825**: Windows unauthorized execution of high-risk commands
+	// - **USER-ENABLE-SWITCH-TYPE_52825**: unauthorized execution of high-risk commands in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_5507**: Linux malicious driver
+	// - **USER-ENABLE-SWITCH-TYPE_5507**: malicious drivers in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50876**: Linux counters security software
+	// - **USER-ENABLE-SWITCH-TYPE_50876**: evasion of security software in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_53168**: Linux process debugging
+	// - **USER-ENABLE-SWITCH-TYPE_53168**: process debugging in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54699**: Linux hijacks dynamic-link library
+	// - **USER-ENABLE-SWITCH-TYPE_54699**: dynamic-link library hijacking in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_62981**: Linux bypasses security monitoring
+	// - **USER-ENABLE-SWITCH-TYPE_62981**: bypassing security monitoring in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52815**: Windows loads high-risk driver
+	// - **USER-ENABLE-SWITCH-TYPE_52815**: loading of high-risk drivers in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52823**: Windows runs high-risk ARK tool
+	// - **USER-ENABLE-SWITCH-TYPE_52823**: running high-risk ARK tools in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54373**: Windows counters security software
+	// - **USER-ENABLE-SWITCH-TYPE_54373**: evasion of security software in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54374**: Windows clears intrusion traces
+	// - **USER-ENABLE-SWITCH-TYPE_54374**: clearing intrusion traces in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54265**: Linux hijacks PAM module
+	// - **USER-ENABLE-SWITCH-TYPE_54265**: PAM module hijacking in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54953**: Linux HashDump attack
+	// - **USER-ENABLE-SWITCH-TYPE_54953**: HashDump attacks in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54383**: Windows MimiKatz credential theft
+	// - **USER-ENABLE-SWITCH-TYPE_54383**: credential theft by Mimikatz in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54384**: Windows HashDump attack
+	// - **USER-ENABLE-SWITCH-TYPE_54384**: HashDump attacks in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50861**: Linux information detection
+	// - **USER-ENABLE-SWITCH-TYPE_50861**: information probing in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52818**: Windows information detection
+	// - **USER-ENABLE-SWITCH-TYPE_52818**: information probing in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_54034**: Linux internal network scan
+	// - **USER-ENABLE-SWITCH-TYPE_54034**: internal network scanning in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51228**: Windows high-risk lateral movement tool
+	// - **USER-ENABLE-SWITCH-TYPE_51228**: high-risk lateral movement tools in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50870**: Linux reverse shell
+	// - **USER-ENABLE-SWITCH-TYPE_50870**: reverse shells in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50873**: WebShell command execution
+	// - **USER-ENABLE-SWITCH-TYPE_50873**: command execution by web shells
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51236**: Windows reverse shell
+	// - **USER-ENABLE-SWITCH-TYPE_51236**: reverse shells in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50877**: Linux malicious program communication
+	// - **USER-ENABLE-SWITCH-TYPE_50877**: malicious program communication in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50884**: Linux suspicious worm script behavior
+	// - **USER-ENABLE-SWITCH-TYPE_50884**: suspicious worm script behavior in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_50885**: Linux malicious script behavior
+	// - **USER-ENABLE-SWITCH-TYPE_50885**: malicious script behavior in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51201**: Linux ransomware
+	// - **USER-ENABLE-SWITCH-TYPE_51201**: ransomware virus in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_51202**: Linux suspected ransomware behavior
+	// - **USER-ENABLE-SWITCH-TYPE_51202**: suspicious ransomware behavior in Linux
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52827**: Windows ransomware
+	// - **USER-ENABLE-SWITCH-TYPE_52827**: ransomware virus in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52828**: Windows suspected ransomware behavior
+	// - **USER-ENABLE-SWITCH-TYPE_52828**: suspicious ransomware behavior in Windows
 	//
-	// - **USER-ENABLE-SWITCH-TYPE_52829**: Windows deletes system backup
+	// - **USER-ENABLE-SWITCH-TYPE_52829**: delete system backups behavior in Windows
 	//
 	// This parameter is required.
 	//

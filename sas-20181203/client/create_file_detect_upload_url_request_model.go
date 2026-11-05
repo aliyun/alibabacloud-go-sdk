@@ -18,29 +18,21 @@ type iCreateFileDetectUploadUrlRequest interface {
 }
 
 type CreateFileDetectUploadUrlRequest struct {
-	// The hash values of files.
+	// The file identifier. Only MD5 is supported. You can specify up to 100 elements in the list.
 	//
-	// > You must specify at least one of the **HashKeyList*	- and **HashKeyContextList*	- parameters.
+	// > **HashKeyList*	- and **HashKeyContextList*	- cannot be empty at the same time.
 	HashKeyContextList []*CreateFileDetectUploadUrlRequestHashKeyContextList `json:"HashKeyContextList,omitempty" xml:"HashKeyContextList,omitempty" type:"Repeated"`
-	// The identifiers of files. Only MD5 hash values are supported.
+	// The unique identifier of the file. You can specify up to 100 elements in the list.
 	//
-	// > You must specify at least one of the **HashKeyList*	- and **HashKeyContextList*	- parameters.
+	// > **HashKeyList*	- and **HashKeyContextList*	- cannot be empty at the same time.
 	//
 	// example:
 	//
 	// CreateFileDetectUploadUrl
 	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
-	// The type of the file. Valid values:
+	// The file type. Valid values:
 	//
-	// 	- **0**: unknown file
-	//
-	// 	- **1**: binary file
-	//
-	// 	- **2**: webshell file
-	//
-	// 	- **4**: script file
-	//
-	// > If you do not know the type of the file, set this parameter to **0**.
+	// - **0**: Uncertain file type.
 	//
 	// This parameter is required.
 	//
@@ -99,13 +91,13 @@ func (s *CreateFileDetectUploadUrlRequest) Validate() error {
 }
 
 type CreateFileDetectUploadUrlRequestHashKeyContextList struct {
-	// The size of the file. Unit: bytes.
+	// The file size. If the file size exceeds the limit, the upload parameters are not returned. Unit: bytes.
 	//
 	// example:
 	//
 	// 2698557
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The hash value of the file.
+	// The file hash value.
 	//
 	// example:
 	//

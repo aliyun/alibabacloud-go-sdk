@@ -40,13 +40,17 @@ type VerifyCheckInstanceResultRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run of the request. Valid values: true: checks the request without performing the actual operation. false: performs the actual operation after the request passes the check. Default value: false.
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - true: Performs a dry run without executing the actual operation.
+	//
+	// - false: Executes the actual operation.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The list of instance IDs of the affected assets for the check item.
+	// The list of instance IDs of the assets affected by the check item.
 	//
 	// Note: This parameter is actually required. If it is not provided, the API returns a 400 error (Code: -101).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The task source. Valid values:
+	// The source of the task. Valid values:
 	//
 	// - **YAO_CHI**: ApsaraDB console.
 	//

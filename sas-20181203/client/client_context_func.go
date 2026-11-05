@@ -134,7 +134,7 @@ func (client *Client) AddBaselineCheckWhiteRecordWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds instances to the whitelist at the instance level for a specific check item in cloud platform configuration checks.
+// Adds instances to the whitelist for a check item in cloud platform configuration checks.
 //
 // @param request - AddCheckInstanceResultWhiteListRequest
 //
@@ -382,7 +382,7 @@ func (client *Client) AddClientUserDefineRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates multi-cloud asset configuration information.
+// Adds multi-cloud asset configuration information.
 //
 // @param request - AddCloudVendorAccountAKRequest
 //
@@ -447,6 +447,10 @@ func (client *Client) AddCloudVendorAccountAKWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.VendorAuthAlias) {
 		query["VendorAuthAlias"] = request.VendorAuthAlias
+	}
+
+	if !dara.IsNil(request.VendorUserName) {
+		query["VendorUserName"] = request.VendorUserName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1994,6 +1998,10 @@ func (client *Client) ChangeAssetRefreshTaskConfigWithContext(ctx context.Contex
 //
 // Modifies the configuration items for cloud platform configuration checks.
 //
+// Description:
+//
+// Modifies the configuration of an existing check policy. This operation only modifies policies and does not create new ones. Breaking change: If any multi-policy field (such as StrategyName, Frequency, or DaysOfMonth) is provided, ConfigId is required. If ConfigId is missing, the system returns IllegalParam (paramName=configId). If ConfigId is not provided and no system default policy exists under the account, the system no longer silently creates a policy and returns success. Instead, it returns NoDefaultStrategy. In this case, use CreateCheckConfig to create a policy. If Frequency is not provided, the current value of the policy is retained. If Frequency is provided, time window parameters must also be provided. The time window supports two sets of parameters: hour-level (StartTime and EndTime) and second-level (StartTimeSeconds and EndTimeSeconds). If both sets are provided, the second-level parameters take precedence. If neither set is provided, the current value of the policy is retained. The frequency of the system default policy (ConfigId=default) is always 6HOURLY and cannot be switched. The system only accepts 6HOURLY and four on-the-hour time windows for requests to the default policy, and will deny requests with multi-policy frequencies or second-level parameters. The ConfigId in the response returns the actual ID of the modified policy. Timed scheduling will execute tasks sequentially by second within the same minute, and the concurrency is 1. During periods of high concurrency, the system may skip and not execute some policies in the current run without makeup runs on the same day. Callers that have strong consistency requirements for the time to execute should avoid peak hours.
+//
 // @param tmpReq - ChangeCheckConfigRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2025,6 +2033,10 @@ func (client *Client) ChangeCheckConfigWithContext(ctx context.Context, tmpReq *
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
 	if !dara.IsNil(request.ConfigRequirementIdsShrink) {
 		query["ConfigRequirementIds"] = request.ConfigRequirementIdsShrink
 	}
@@ -2041,6 +2053,10 @@ func (client *Client) ChangeCheckConfigWithContext(ctx context.Context, tmpReq *
 		query["CycleDays"] = request.CycleDays
 	}
 
+	if !dara.IsNil(request.DaysOfMonth) {
+		query["DaysOfMonth"] = request.DaysOfMonth
+	}
+
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
 	}
@@ -2055,6 +2071,14 @@ func (client *Client) ChangeCheckConfigWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EndTimeSeconds) {
+		query["EndTimeSeconds"] = request.EndTimeSeconds
+	}
+
+	if !dara.IsNil(request.Frequency) {
+		query["Frequency"] = request.Frequency
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -2075,6 +2099,14 @@ func (client *Client) ChangeCheckConfigWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.StartTimeSeconds) {
+		query["StartTimeSeconds"] = request.StartTimeSeconds
+	}
+
+	if !dara.IsNil(request.StrategyName) {
+		query["StrategyName"] = request.StrategyName
 	}
 
 	if !dara.IsNil(request.SystemConfig) {
@@ -2166,7 +2198,7 @@ func (client *Client) ChangeCheckCustomConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the check scope configuration instance.
+// Modifies the instances in a check scope configuration.
 //
 // @param request - ChangeCheckScopeConfigInstanceRequest
 //
@@ -2326,7 +2358,7 @@ func (client *Client) ChangeUserLangWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// Checks whether one or more alerts are generated on a specified server based on alert IDs.
+// Verifies whether one or more alert event IDs belong to a specified server.
 //
 // @param request - CheckSecurityEventIdRequest
 //
@@ -3556,7 +3588,7 @@ func (client *Client) CreateCustomizedDictWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an epoch scan task, including image scans, emergency vulnerability scans, and virus scans.
+// Creates an epoch scan node, including image scans, emergency vulnerability scanning, and virus scans.
 //
 // @param request - CreateCycleTaskRequest
 //
@@ -3700,9 +3732,9 @@ func (client *Client) CreateDynamicDictWithContext(ctx context.Context, request 
 //
 // Initiates deep analysis for a specified file and streams the progress of each analysis phase in real time by using Server-Sent Events (SSE).
 //
-// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial edition verification based on the source.
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the corresponding alert details. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
 //
-// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phases. Valid values for the event name (event):
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phase. Valid values for the event name (event):
 //
 // - accepted: The request is accepted.
 //
@@ -3714,13 +3746,13 @@ func (client *Client) CreateDynamicDictWithContext(ctx context.Context, request 
 //
 // - dispatched: The file is delivered to the detection engine, including the requestId.
 //
-// - result: The analysis result is matched. This parameter is optional and pushed after the asynchronous result is ready.
+// - result: The analysis result is matched. This is optional and pushed after asynchronous processing is complete.
 //
-// - done: The current analysis process is completed.
+// - done: The current analysis process is complete.
 //
 // - error: A processing exception occurs, including the error code and message.
 //
-// The data payload of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
 //
 // @param request - CreateFileDeepAnalyzeRequest
 //
@@ -3741,9 +3773,9 @@ func (client *Client) CreateFileDeepAnalyzeWithSSECtx(ctx context.Context, reque
 //
 // Initiates deep analysis for a specified file and streams the progress of each analysis phase in real time by using Server-Sent Events (SSE).
 //
-// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the details of the corresponding alert. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial edition verification based on the source.
+// [Input parameters] You must provide at least one of the Hash and EventId parameters. If EventId is provided, the file hash is preferentially parsed from the corresponding alert details. Otherwise, the provided Hash (MD5 or SHA-256) is used. The Source parameter identifies the call source and is used for commercial verification based on the source.
 //
-// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phases. Valid values for the event name (event):
+// [Response] The response is of the text/event-stream type. The server pushes events sequentially based on the processing phase. Valid values for the event name (event):
 //
 // - accepted: The request is accepted.
 //
@@ -3755,13 +3787,13 @@ func (client *Client) CreateFileDeepAnalyzeWithSSECtx(ctx context.Context, reque
 //
 // - dispatched: The file is delivered to the detection engine, including the requestId.
 //
-// - result: The analysis result is matched. This parameter is optional and pushed after the asynchronous result is ready.
+// - result: The analysis result is matched. This is optional and pushed after asynchronous processing is complete.
 //
-// - done: The current analysis process is completed.
+// - done: The current analysis process is complete.
 //
 // - error: A processing exception occurs, including the error code and message.
 //
-// The data payload of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
+// The data body of each event is a JSON object in the data field. The fields vary depending on the event type. For more information, see the response structure description.
 //
 // @param request - CreateFileDeepAnalyzeRequest
 //
@@ -3919,15 +3951,21 @@ func (client *Client) CreateFileDetectWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the parameters that are required to upload a file for detection.
+// Retrieves file upload parameters.
 //
 // Description:
 //
-// You can call this operation to query the parameters that are required to upload a file for detection. If the value of the response parameter FileExist is true, the file that you want to upload for detection already exists in the cloud. In this case, you can directly push the file for detection. If the value of the response parameter FileExist is false, you must use the form upload method to upload the file to the specified Object Storage Service (OSS) bucket based on the response parameters of this operation.
+// Retrieves file upload parameters. If the value of FileExist in the response parameters is true, the file to be checked already exists in the cloud and does not need to be uploaded. You can directly push the file for checking. If the value of FileExist is false, you must use the parameters returned by this operation to upload the file to the specified storage location by using form upload.
 //
-// The form upload method is provided by OSS. For more information, see [Form upload](https://help.aliyun.com/document_detail/84788.html).
+// The form upload service is provided by Object Storage Service (OSS). For more information, see [Form upload](https://help.aliyun.com/document_detail/84788.html).
 //
-// The HashKey parameter is included in all API operations that are related to the file detection feature. The parameter specifies the unique identifier of a file. Only MD5 hash values are supported. Before you call this operation, calculate the MD5 hash value of the file.
+// All file check-related operations include the HashKey parameter, which indicates the unique identifier of the file. Only the MD5 or SHA-256 hash value of the complete file content is supported. Calculate this value before you call the operation. Note that the push and query operations for a single file check must use the same HashKey. Otherwise, the check cannot be pushed and the results cannot be queried correctly.
+//
+// You can calculate the MD5 or SHA-256 hash value of the file content by performing the following steps:
+//
+// 1. Use the MD5 or SHA-256 algorithm to encrypt the data and generate a 128-bit or 256-bit hash value. Available tool libraries include the MessageDigest tool in Java and the hashlib library in Python.
+//
+// 2. Encode the generated hash value into a hexadecimal string. Available tool libraries include the Codec tool in Java and the hex function in Python. Make sure that the final string is a combination of digits and lowercase letters. The MD5 string contains 32 characters, and the SHA-256 string contains 64 characters.
 //
 // @param request - CreateFileDetectUploadUrlRequest
 //
@@ -4145,7 +4183,7 @@ func (client *Client) CreateFileProtectRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Specifies the queries per second (QPS) limit on the files uploaded from the client.
+// Sets the maximum QPS for client file uploads.
 //
 // @param request - CreateFileUploadLimitRequest
 //
@@ -5537,11 +5575,11 @@ func (client *Client) CreateOssBucketScanTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a scan policy for detecting malicious files in OSS under the malicious file detection feature.
+// Creates a scan policy for detecting malicious files in Object Storage Service (OSS).
 //
 // Description:
 //
-// Before you call this operation, call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of container images that the image scan task covers and the number of authorizations consumed. Make sure that sufficient authorizations are available for the image scan task to prevent the image scan task from being overwritten due to insufficient authorizations.
+// Before calling this operation, call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of container images covered by the container image security scan and the number of consumed authorizations. Ensure that you have sufficient authorizations to prevent the image scan node from being interrupted due to insufficient authorizations.
 //
 // @param request - CreateOssScanConfigRequest
 //
@@ -5913,13 +5951,13 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, re
 //
 // Description:
 //
-// The **ActionTrail data delivery*	- feature requires Cloud Security Posture Management (CSPM) and security alerting to read ActionTrail data. To use this feature, enable the **ActionTrail data delivery*	- toggle in the Security Center console and authorize the service-linked role **AliyunServiceRoleForSas*	- for Security Center. After authorization, ActionTrail data is delivered to the LogStore of Security Center.
+// The **ActionTrail data delivery*	- feature requires authorization for Cloud Security Posture Management (CSPM) and security alerts to read ActionTrail data. Therefore, you must turn on the **ActionTrail data delivery*	- switch in the Security Center console and authorize the service-linked role for Security Center (**AliyunServiceRoleForSas**) to deliver ActionTrail data to the Logstore of Security Center.
 //
-// For more information about the service-linked role **AliyunServiceRoleForSas*	- for Security Center, see [Service-linked role for Security Center](https://help.aliyun.com/document_detail/460226.html).
+// For more information about the **AliyunServiceRoleForSas*	- service-linked role for Security Center, see [Service-linked role for Security Center](https://help.aliyun.com/document_detail/460226.html).
 //
 // ### Before you begin ###
 //
-// Before calling this operation, enable the **ActionTrail data delivery*	- toggle. For more information, see [Access control](https://help.aliyun.com/document_detail/197302.html).
+// Before you call this operation, make sure that the **ActionTrail data delivery*	- switch is turned on. For more information, see [Access control](https://help.aliyun.com/document_detail/197302.html).
 //
 // @param request - CreateServiceTrailRequest
 //
@@ -8839,7 +8877,7 @@ func (client *Client) DeleteSecurityEventMarkMissListWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes an ActionTrail data delivery configuration.
+// Deletes ActionTrail data delivery.
 //
 // @param request - DeleteServiceTrailRequest
 //
@@ -10503,11 +10541,11 @@ func (client *Client) DescribeBackUpExportInfoWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries servers that have the anti-ransomware client installed in a specified region.
+// Queries the servers on which the anti-ransomware client is installed in a specified region.
 //
 // Description:
 //
-// Queries servers that have the anti-ransomware client installed in a specified region.
+// This operation queries the servers on which the anti-ransomware client is installed in a specified region.
 //
 // @param request - DescribeBackupClientsRequest
 //
@@ -11713,7 +11751,7 @@ func (client *Client) DescribeCheckWarningsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the resource configuration information of a client.
+// Queries the resource configuration information of the client.
 //
 // @param request - DescribeClientConfSetupRequest
 //
@@ -12641,7 +12679,7 @@ func (client *Client) DescribeCommonTargetConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the configured asset information for a specific switch type.
+// Queries the servers configured for a specified switch type.
 //
 // @param request - DescribeCommonTargetResultListRequest
 //
@@ -15893,7 +15931,7 @@ func (client *Client) DescribeHybridProxyClusterListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the list of clients connected to a specified hybrid cloud proxy by paging. This operation is part of the hybrid cloud proxy feature.
+// Queries the list of clients connected to a specified hybrid cloud proxy by using paging. This API operation is part of the hybrid cloud proxy feature.
 //
 // @param request - DescribeHybridProxyLinkedClientListRequest
 //
@@ -16425,7 +16463,7 @@ func (client *Client) DescribeImageBaselineCheckSummaryWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the details of baseline check results for image scanning.
+// Queries the details of image scan baseline check results.
 //
 // @param request - DescribeImageBaselineDetailRequest
 //
@@ -18959,7 +18997,7 @@ func (client *Client) DescribeOfflineMachinesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of client tasks.
+// Queries the list of client tasks.
 //
 // @param request - DescribeOnceTaskRequest
 //
@@ -19107,7 +19145,7 @@ func (client *Client) DescribeOnceTaskLeafRecordPageWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries statistics on the client plug-in installation status.
+// Queries the statistics on the installation status of client plug-ins.
 //
 // @param request - DescribePluginSummaryRequest
 //
@@ -20187,7 +20225,7 @@ func (client *Client) DescribePropertyUsageTopWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the Asset Fingerprints information of account assets on a server.
+// Queries the asset fingerprint information of server accounts.
 //
 // @param request - DescribePropertyUserDetailRequest
 //
@@ -23021,7 +23059,7 @@ func (client *Client) DescribeSuspEventsWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries the configuration of a specified feature.
+// Queries the configuration of proactive defense switches.
 //
 // @param request - DescribeSuspiciousOverallConfigRequest
 //
@@ -23069,7 +23107,7 @@ func (client *Client) DescribeSuspiciousOverallConfigWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the UUIDs of servers on which proactive defense of a specified type takes effect.
+// Queries the UUIDs of assets for which proactive defense is enabled based on the defense type.
 //
 // @param request - DescribeSuspiciousUUIDConfigRequest
 //
@@ -24401,11 +24439,11 @@ func (client *Client) DescribeVulDetailsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the progress of a vulnerability export task.
+// Retrieves the progress of a vulnerability export task.
 //
 // Description:
 //
-// A download link is returned when the export task status is success.
+// Returns a download link when the export task status is success.
 //
 // @param request - DescribeVulExportInfoRequest
 //
@@ -26757,7 +26795,7 @@ func (client *Client) ExportWarningWithContext(ctx context.Context, request *Exp
 
 // Summary:
 //
-// Retrieves information about network connectivity between two nodes.
+// Retrieves the network connectivity information between two nodes.
 //
 // @param tmpReq - FindContainerNetworkConnectRequest
 //
@@ -27239,7 +27277,7 @@ func (client *Client) GetAccountLabelWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the details of a container anti-escape rule.
+// Queries the details of a container escape prevention rule.
 //
 // Description:
 //
@@ -28161,7 +28199,11 @@ func (client *Client) GetCanTrySasWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
-// Retrieves the check item configurations for cloud platform configuration checks.
+// Retrieves the configuration items for cloud platform configuration checks.
+//
+// Description:
+//
+// Queries the check configuration of a specified policy. Behavior change: When the policy corresponding to ConfigId does not exist, IllegalParam is no longer returned. Instead, a success response is returned with empty configuration fields and Exists set to false. Callers must determine whether the policy exists based on Exists. API contract: When ConfigId is not passed (or an empty string or default is passed), only the system default policy configuration is returned. When a specific UUID ConfigId is explicitly passed, the specified policy is returned. Time field description: StartTimeSeconds and EndTimeSeconds are authoritative values in seconds and are directly passed through from the database. StartTime and EndTime on multi-policy rows are derived approximate values obtained by rounding the second-level values and are not active for reverse-engineering the exact window. For the system default policy (Frequency=6HOURLY) row, the second-level output parameters are always null (not 0), and callers must perform null checks. Timed scheduling executes sequentially by second within the same minute with a concurrency of 1. During periods of high concurrency, the current execution of some policies may be skipped without makeup runs on the same day. Callers with strong consistency requirements for execution time should avoid concentrated periods such as the top of the hour.
 //
 // @param request - GetCheckConfigRequest
 //
@@ -28176,6 +28218,10 @@ func (client *Client) GetCheckConfigWithContext(ctx context.Context, request *Ge
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
 		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
@@ -28629,7 +28675,7 @@ func (client *Client) GetCheckSummaryWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Retrieves the time trend pass rate statistics for Cloud Security Posture Management (CSPM) risk items.
+// Retrieves the time-series pass rate statistics for Cloud Security Posture Management (CSPM) risk items.
 //
 // @param request - GetCheckTimeDimensionStatisticRequest
 //
@@ -29177,7 +29223,7 @@ func (client *Client) GetClusterSuspEventStatisticsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the configuration of a common switch.
+// Retrieves the general switch configuration.
 //
 // @param request - GetCommonSwitchConfigRequest
 //
@@ -29269,7 +29315,7 @@ func (client *Client) GetConsoleFuncGrayStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the details of a defense rule for non-image programs.
+// Retrieves the details of a non-image program defense rule.
 //
 // @param request - GetContainerDefenseRuleDetailRequest
 //
@@ -29377,7 +29423,7 @@ func (client *Client) GetDataTrendWithContext(ctx context.Context, request *GetD
 
 // Summary:
 //
-// Queries the rankings of images across different dimensions.
+// Queries the rankings of images across various dimensions.
 //
 // @param request - GetDockerhubImageRiskRankInfoRequest
 //
@@ -29908,7 +29954,7 @@ func (client *Client) GetFileProtectRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the trial eligibility status of a feature.
+// Retrieves the status of feature trial eligibility.
 //
 // @param request - GetFunctionTrialStatusRequest
 //
@@ -31894,7 +31940,7 @@ func (client *Client) GetServerlessAuthSummaryWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the audit trail delivery configuration.
+// Retrieves ActionTrail data delivery.
 //
 // @param request - GetServiceTrailRequest
 //
@@ -33693,7 +33739,7 @@ func (client *Client) ListAgentlessRelateMaliciousWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the list of vulnerable servers detected by agentless detection.
+// Retrieves a list of vulnerable servers detected by agentless detection.
 //
 // @param request - ListAgentlessRiskUuidRequest
 //
@@ -34585,7 +34631,7 @@ func (client *Client) ListBaselineCheckWhiteRecordWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves instances that failed a cloud platform configuration check item.
+// Queries the instances that failed the cloud platform configuration check items.
 //
 // @param request - ListCheckInstanceResultRequest
 //
@@ -35329,7 +35375,7 @@ func (client *Client) ListCheckTypesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the alert settings of assets. The default alert setting for assets is balance mode. Only strict mode returns a detailed asset list.
+// Queries the alert settings of assets. The default alert setting is balance mode. A detailed asset list is returned only in strict mode.
 //
 // @param request - ListClientAlertModeRequest
 //
@@ -38202,11 +38248,11 @@ func (client *Client) ListOpaClusterStrategyNewWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the details of a one-click fix or rollback task for cloud platform configuration checks.
+// Queries the details of a one-click repair or rollback task for cloud platform configuration checks.
 //
 // Description:
 //
-// Only users who have purchased the cloud platform configuration check quota or enabled pay-as-you-go billing for cloud platform configuration checks can call this operation.
+// Only users who have purchased cloud platform configuration check quotas or enabled the pay-as-you-go billing method for cloud platform configuration checks can call this operation.
 //
 // @param request - ListOperationCheckRequest
 //
@@ -39276,7 +39322,7 @@ func (client *Client) ListUnfinishedOnceTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # List Database Backup Records
+// Queries the list of database backup records.
 //
 // @param request - ListUniBackupRecordRequest
 //
@@ -39488,7 +39534,7 @@ func (client *Client) ListUnknownThreatDetectEventWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the list of machines for intelligent behavior analytics.
+// Queries the list of servers for intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectMachineRequest
 //
@@ -41064,7 +41110,7 @@ func (client *Client) ModifyClientConfSetupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies a client configuration policy.
+// Modifies the client configuration policy.
 //
 // @param request - ModifyClientConfStrategyRequest
 //
@@ -41301,6 +41347,10 @@ func (client *Client) ModifyCloudVendorAccountAKWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.VendorAuthAlias) {
 		query["VendorAuthAlias"] = request.VendorAuthAlias
+	}
+
+	if !dara.IsNil(request.VendorUserName) {
+		query["VendorUserName"] = request.VendorUserName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -43041,6 +43091,10 @@ func (client *Client) ModifyPostPayModuleSwitchWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.EdrModuleSwitchShrink) {
 		query["EdrModuleSwitch"] = request.EdrModuleSwitchShrink
+	}
+
+	if !dara.IsNil(request.FreeTrial) {
+		query["FreeTrial"] = request.FreeTrial
 	}
 
 	if !dara.IsNil(request.PostPaidHostAutoBind) {
@@ -45194,7 +45248,7 @@ func (client *Client) OperateBucketScanTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Sets the global switch based on the specified type.
+// Sets a global switch based on the type.
 //
 // @param request - OperateCommonOverallConfigRequest
 //
@@ -45258,7 +45312,7 @@ func (client *Client) OperateCommonOverallConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Configures the general switch for a feature module by type, including image scanning, endpoint engine detection, container network visualization, and container escape prevention.
+// Configures the general switches for feature modules by type, including image scanning, endpoint engine detection, container network visualization, and container escape prevention.
 //
 // @param request - OperateCommonTargetConfigRequest
 //
@@ -45434,7 +45488,7 @@ func (client *Client) OperateImageVulWithContext(ctx context.Context, request *O
 
 // Summary:
 //
-// Sets the global configuration for abnormal events.
+// Configures the global settings for anomaly events.
 //
 // @param request - OperateSuspiciousOverallConfigRequest
 //
@@ -45494,7 +45548,7 @@ func (client *Client) OperateSuspiciousOverallConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Configures the scope on which proactive defense takes effect.
+// Manages the defense scope of proactive defense.
 //
 // @param request - OperateSuspiciousTargetConfigRequest
 //
@@ -48460,6 +48514,10 @@ func (client *Client) StopHoneypotWithContext(ctx context.Context, request *Stop
 //
 // Submits a cloud service configuration check.
 //
+// Description:
+//
+// Commits a cloud service configuration check task. When ScanRange is set to POLICY, you can specify ConfigId to trigger a scan based on a specific check policy: If this parameter is not specified or is set to default, the scan is triggered based on the system default policy. If the system default policy does not exist in the account, NoDefaultStrategy is returned and no policy records are added. If another value is specified, the scan is triggered based on the check items of the specified policy. If the policy does not exist or does not belong to the current account, IllegalParam (paramName=configId) is returned. If the hit policy does not have scheduled scanning enabled (EnableAutoCheck=false), requests from timed scheduling (SCHEDULE) return StrategyAutoCheckDisabled, while requests manually triggered from the console (CONSOLE) are processed normally. When ScanRange is set to FULL or FREE, the behavior is independent of ConfigId and remains unchanged. Note: The scan results in the current phase do not include the policy dimension. The check results and task lists are not categorized by policy. ThrottlingTimeSecond indicates that throttling is triggered, and you must retry after the specified number of seconds.
+//
 // @param request - SubmitCheckRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48473,6 +48531,10 @@ func (client *Client) SubmitCheckWithContext(ctx context.Context, request *Submi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
 		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
@@ -48722,7 +48784,7 @@ func (client *Client) UnbindAegisWithContext(ctx context.Context, request *Unbin
 
 // Summary:
 //
-// Uninstalls the anti-ransomware agent.
+// Uninstalls the anti-ransomware client.
 //
 // @param request - UninstallBackupClientRequest
 //
@@ -49286,7 +49348,7 @@ func (client *Client) UpdateCheckScopeConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the alert settings for servers.
+// Modifies the alert settings for a server.
 //
 // @param request - UpdateClientAlertModeRequest
 //
@@ -49334,7 +49396,7 @@ func (client *Client) UpdateClientAlertModeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates the settings of common switches.
+// Modifies the general switch configuration.
 //
 // @param request - UpdateCommonSwitchConfigRequest
 //
@@ -51256,7 +51318,7 @@ func (client *Client) UpdateSelectionKeyByTypeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the strict mode configuration, including whether to enable alerting in strict mode. This is a full-update operation.
+// Modifies the strict mode configuration to specify whether alerts are enabled in strict mode. This API operation performs a full update.
 //
 // @param request - UpdateStrictEventNameRequest
 //
@@ -51946,7 +52008,7 @@ func (client *Client) VerifyCheckCustomConfigWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Performs instance-level verification for a check item.
+// Validates the instance dimension under a check item.
 //
 // @param request - VerifyCheckInstanceResultRequest
 //

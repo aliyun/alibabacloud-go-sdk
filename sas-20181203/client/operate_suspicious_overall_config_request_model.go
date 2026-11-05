@@ -24,9 +24,9 @@ type iOperateSuspiciousOverallConfigRequest interface {
 type OperateSuspiciousOverallConfigRequest struct {
 	// The switch status. Valid values:
 	//
-	// - **on**: Enable
+	// - **on**: Enabled
 	//
-	// - **off**: Disable
+	// - **off**: Disabled
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type OperateSuspiciousOverallConfigRequest struct {
 	//
 	// off
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// Specifies the language type for requests and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -44,19 +44,19 @@ type OperateSuspiciousOverallConfigRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Specifies whether asset configuration is required. Default value: **false**. Valid values:
+	// Specifies whether to configure assets. Default value: **false**. Valid values:
 	//
-	// - **true**: Required
+	// - **true**: Yes
 	//
-	// - **false**: Not required
+	// - **false**: No
 	//
-	// > This value takes effect only when **config*	- is set to **on**.
+	// > This value is valid only when **config*	- is set to **on**.
 	//
 	// example:
 	//
 	// true
 	NoTargetAsOn *bool `json:"NoTargetAsOn,omitempty" xml:"NoTargetAsOn,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type OperateSuspiciousOverallConfigRequest struct {
 	//
 	// - **ransomware_breaking**: Anti-ransomware (bait capture)
 	//
-	// - **webshell_cloud_breaking**: Website backdoor connection defense
+	// - **webshell_cloud_breaking**: Web shell connection defense
 	//
 	// - **alinet**: Malicious network behavior defense
 	//
-	// - **k8s_log_analysis**: Container K8s threat detection
+	// - **k8s_log_analysis**: Container Kubernetes threat detection
 	//
 	// - **alisecguard**: Client self-protection defense mode
 	//

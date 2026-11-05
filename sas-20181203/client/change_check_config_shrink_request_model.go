@@ -13,6 +13,8 @@ type iChangeCheckConfigShrinkRequest interface {
 	GetAddedCheck() []*ChangeCheckConfigShrinkRequestAddedCheck
 	SetClientToken(v string) *ChangeCheckConfigShrinkRequest
 	GetClientToken() *string
+	SetConfigId(v string) *ChangeCheckConfigShrinkRequest
+	GetConfigId() *string
 	SetConfigRequirementIdsShrink(v string) *ChangeCheckConfigShrinkRequest
 	GetConfigRequirementIdsShrink() *string
 	SetConfigStandardIdsShrink(v string) *ChangeCheckConfigShrinkRequest
@@ -21,6 +23,8 @@ type iChangeCheckConfigShrinkRequest interface {
 	GetConfigure() *string
 	SetCycleDays(v []*int32) *ChangeCheckConfigShrinkRequest
 	GetCycleDays() []*int32
+	SetDaysOfMonth(v []*int32) *ChangeCheckConfigShrinkRequest
+	GetDaysOfMonth() []*int32
 	SetDryRun(v bool) *ChangeCheckConfigShrinkRequest
 	GetDryRun() *bool
 	SetEnableAddCheck(v bool) *ChangeCheckConfigShrinkRequest
@@ -29,6 +33,10 @@ type iChangeCheckConfigShrinkRequest interface {
 	GetEnableAutoCheck() *bool
 	SetEndTime(v int32) *ChangeCheckConfigShrinkRequest
 	GetEndTime() *int32
+	SetEndTimeSeconds(v int32) *ChangeCheckConfigShrinkRequest
+	GetEndTimeSeconds() *int32
+	SetFrequency(v string) *ChangeCheckConfigShrinkRequest
+	GetFrequency() *string
 	SetRegionId(v string) *ChangeCheckConfigShrinkRequest
 	GetRegionId() *string
 	SetRemovedCheck(v []*ChangeCheckConfigShrinkRequestRemovedCheck) *ChangeCheckConfigShrinkRequest
@@ -39,6 +47,10 @@ type iChangeCheckConfigShrinkRequest interface {
 	GetStandardIds() []*int64
 	SetStartTime(v int32) *ChangeCheckConfigShrinkRequest
 	GetStartTime() *int32
+	SetStartTimeSeconds(v int32) *ChangeCheckConfigShrinkRequest
+	GetStartTimeSeconds() *int32
+	SetStrategyName(v string) *ChangeCheckConfigShrinkRequest
+	GetStrategyName() *string
 	SetSystemConfig(v bool) *ChangeCheckConfigShrinkRequest
 	GetSystemConfig() *bool
 	SetVendors(v []*string) *ChangeCheckConfigShrinkRequest
@@ -46,37 +58,51 @@ type iChangeCheckConfigShrinkRequest interface {
 }
 
 type ChangeCheckConfigShrinkRequest struct {
-	// The list of check items to add to the policy.
+	// The list of check items to be added to the policy.
 	//
-	// <notice> If the ConfigStandardIds or ConfigRequirementIds parameter is specified, this parameter does not take effect.
+	// <notice> If the ConfigStandardIds or ConfigRequirementIds parameter is configured, this parameter does not take effect. </notice>
 	AddedCheck []*ChangeCheckConfigShrinkRequestAddedCheck `json:"AddedCheck,omitempty" xml:"AddedCheck,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Configures the check policy by specifying requirement IDs.
+	// The policy ID.
 	//
-	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain requirement IDs. If the ConfigStandardIds parameter is specified, this parameter does not take effect.
+	// example:
+	//
+	// 22222f91-57af-4907-87f1-f9046da*****
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// Configures the check policy by using the IDs of the specified regulations.
+	//
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the regulation IDs. If the ConfigStandardIds parameter is configured, this parameter does not take effect.
 	ConfigRequirementIdsShrink *string `json:"ConfigRequirementIds,omitempty" xml:"ConfigRequirementIds,omitempty"`
-	// Configures the check policy by specifying standard IDs.
+	// Configures the check policy by using the IDs of the specified standards.
 	//
-	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain standard IDs.
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the standard IDs.
 	ConfigStandardIdsShrink *string `json:"ConfigStandardIds,omitempty" xml:"ConfigStandardIds,omitempty"`
 	// The field configuration. Valid values:
 	//
-	// - **all**: adds all check items.
+	// - **all**: Adds all check items.
 	//
 	// example:
 	//
 	// all
 	Configure *string `json:"Configure,omitempty" xml:"Configure,omitempty"`
-	// The periodic check schedule.
+	// The periodic check time.
 	CycleDays []*int32 `json:"CycleDays,omitempty" xml:"CycleDays,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual operation. false: performs the actual request. Default value: false.
+	// The list of days of the month when the policy cycle is monthly.
+	DaysOfMonth []*int32 `json:"DaysOfMonth,omitempty" xml:"DaysOfMonth,omitempty" type:"Repeated"`
+	// Specifies whether to only precheck the request. Valid values:
+	//
+	// - true: Only checks the request without performing the actual operation.
+	//
+	// - false: Executes the request normally.
+	//
+	// Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to automatically check newly added check items in the selected requirements. Valid values:
+	// Specifies whether to check new check items by default when new check items are added to the selected regulations. Valid values:
 	//
-	// - **true:*	- Enabled.
+	// - **true**: Enabled.
 	//
-	// - **false:*	- Disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -84,15 +110,15 @@ type ChangeCheckConfigShrinkRequest struct {
 	EnableAddCheck *bool `json:"EnableAddCheck,omitempty" xml:"EnableAddCheck,omitempty"`
 	// Specifies whether to enable automatic periodic checks. Valid values:
 	//
-	// - **true:*	- Enabled.
+	// - **true**: Enabled.
 	//
-	// - **false:*	- Disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	EnableAutoCheck *bool `json:"EnableAutoCheck,omitempty" xml:"EnableAutoCheck,omitempty"`
-	// The end hour of the check time window, indicating the hour of the day. The start time and end time must fall within one of the following time ranges. Valid values: 6, 12, 18, and 24.
+	// The end time of the check time period, which indicates the hour of the day. The start time and end time must be selected from the following time intervals. Valid values: 6, 12, 18, and 24.
 	//
 	// - **0~6**: If the start time is 0, the end time must be set to 6 on the same day.
 	//
@@ -106,31 +132,51 @@ type ChangeCheckConfigShrinkRequest struct {
 	//
 	// 6
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time of the check, in seconds from 00:00:00 of the current day. Valid values: 1 to 86400, where 86400 indicates 00:00:00 of the next day. This parameter is optional. If this parameter is not provided, the current value of the policy is retained. This parameter must be paired with StartTimeSeconds. If only one of them is provided, the system returns IllegalParam (paramName=scheduleTime). If both this parameter and StartTime/EndTime are provided, the second-level parameters take precedence, and the hour-level parameters are ignored. The time window span must not be less than 60 seconds. This parameter is not accepted for the system default policy (ConfigId=default) and will be rejected if provided.
+	//
+	// example:
+	//
+	// 32399
+	EndTimeSeconds *int32 `json:"EndTimeSeconds,omitempty" xml:"EndTimeSeconds,omitempty"`
+	// The frequency type. Valid values:
+	//
+	// - DAILY: Daily.
+	//
+	// - WEEKLY: Weekly.
+	//
+	// - MONTHLY: Monthly.
+	//
+	// - 6HOURLY: Every 6 hours.
+	//
+	// example:
+	//
+	// DAILY
+	Frequency *string `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	// The region of the Security Center instance. Valid values:
 	//
-	// - **cn-hangzhou:*	- China
+	// - **cn-hangzhou**: Center
 	//
-	// - **ap-southeast-1:*	- Singapore
+	// - **ap-southeast-1**: Singapore
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of check items to remove from the policy.
+	// The list of check items to be removed from the policy.
 	//
-	// <notice> If the ConfigStandardIds or ConfigRequirementIds parameter is specified, this parameter does not take effect.
+	// <notice> If the ConfigStandardIds or ConfigRequirementIds parameter is configured, this parameter does not take effect. </notice>
 	RemovedCheck []*ChangeCheckConfigShrinkRequestRemovedCheck `json:"RemovedCheck,omitempty" xml:"RemovedCheck,omitempty" type:"Repeated"`
-	// The ID of the member account in the resource directory (Alibaba Cloud account).
+	// The ID of the member accounts in the resource folder, which is an Alibaba Cloud account ID.
 	//
-	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// This parameter is deprecated and does not need to be specified.
+	// This parameter is deprecated and can be ignored.
 	StandardIds []*int64 `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
-	// The start hour of the check time window, indicating the hour of the day. The start time and end time must fall within one of the following time ranges. Valid values: 0, 6, 12, and 18.
+	// The start time of the check time period, which indicates the hour of the day. The start time and end time must be selected from the following time intervals. Valid values: 0, 6, 12, and 18.
 	//
 	// - **0~6**: If the start time is 0, the end time must be set to 6 on the same day.
 	//
@@ -144,7 +190,19 @@ type ChangeCheckConfigShrinkRequest struct {
 	//
 	// 0
 	StartTime *int32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Specifies whether to use the system-generated configuration. Valid values:
+	// The start time of the check, in seconds from 00:00:00 of the current day. Valid values: 0 to 86399, which correspond to 00:00:00 to 23:59:59. This parameter is optional. If this parameter is not provided, the current value of the policy is retained. This parameter must be paired with EndTimeSeconds. If only one of them is provided, the system returns IllegalParam (paramName=scheduleTime). If both this parameter and StartTime/EndTime are provided, the second-level parameters take precedence, and the hour-level parameters are ignored. If the two sets of parameters are inconsistent, the server records a WARN log. The time window span must not be less than 60 seconds. The frequency of the system default policy (ConfigId=default) is always 6HOURLY. This parameter is not accepted for the default policy and will be rejected if provided. Under a multi-policy frequency, the actual scan execution time is exactly the second specified by this parameter.
+	//
+	// example:
+	//
+	// 25200
+	StartTimeSeconds *int32 `json:"StartTimeSeconds,omitempty" xml:"StartTimeSeconds,omitempty"`
+	// The policy name.
+	//
+	// example:
+	//
+	// test
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// Specifies whether to use the automatically generated system configuration. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -154,7 +212,7 @@ type ChangeCheckConfigShrinkRequest struct {
 	//
 	// true
 	SystemConfig *bool `json:"SystemConfig,omitempty" xml:"SystemConfig,omitempty"`
-	// The list of cloud service providers.
+	// The list of cloud providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
@@ -174,6 +232,10 @@ func (s *ChangeCheckConfigShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *ChangeCheckConfigShrinkRequest) GetConfigId() *string {
+	return s.ConfigId
+}
+
 func (s *ChangeCheckConfigShrinkRequest) GetConfigRequirementIdsShrink() *string {
 	return s.ConfigRequirementIdsShrink
 }
@@ -190,6 +252,10 @@ func (s *ChangeCheckConfigShrinkRequest) GetCycleDays() []*int32 {
 	return s.CycleDays
 }
 
+func (s *ChangeCheckConfigShrinkRequest) GetDaysOfMonth() []*int32 {
+	return s.DaysOfMonth
+}
+
 func (s *ChangeCheckConfigShrinkRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -204,6 +270,14 @@ func (s *ChangeCheckConfigShrinkRequest) GetEnableAutoCheck() *bool {
 
 func (s *ChangeCheckConfigShrinkRequest) GetEndTime() *int32 {
 	return s.EndTime
+}
+
+func (s *ChangeCheckConfigShrinkRequest) GetEndTimeSeconds() *int32 {
+	return s.EndTimeSeconds
+}
+
+func (s *ChangeCheckConfigShrinkRequest) GetFrequency() *string {
+	return s.Frequency
 }
 
 func (s *ChangeCheckConfigShrinkRequest) GetRegionId() *string {
@@ -226,6 +300,14 @@ func (s *ChangeCheckConfigShrinkRequest) GetStartTime() *int32 {
 	return s.StartTime
 }
 
+func (s *ChangeCheckConfigShrinkRequest) GetStartTimeSeconds() *int32 {
+	return s.StartTimeSeconds
+}
+
+func (s *ChangeCheckConfigShrinkRequest) GetStrategyName() *string {
+	return s.StrategyName
+}
+
 func (s *ChangeCheckConfigShrinkRequest) GetSystemConfig() *bool {
 	return s.SystemConfig
 }
@@ -241,6 +323,11 @@ func (s *ChangeCheckConfigShrinkRequest) SetAddedCheck(v []*ChangeCheckConfigShr
 
 func (s *ChangeCheckConfigShrinkRequest) SetClientToken(v string) *ChangeCheckConfigShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetConfigId(v string) *ChangeCheckConfigShrinkRequest {
+	s.ConfigId = &v
 	return s
 }
 
@@ -264,6 +351,11 @@ func (s *ChangeCheckConfigShrinkRequest) SetCycleDays(v []*int32) *ChangeCheckCo
 	return s
 }
 
+func (s *ChangeCheckConfigShrinkRequest) SetDaysOfMonth(v []*int32) *ChangeCheckConfigShrinkRequest {
+	s.DaysOfMonth = v
+	return s
+}
+
 func (s *ChangeCheckConfigShrinkRequest) SetDryRun(v bool) *ChangeCheckConfigShrinkRequest {
 	s.DryRun = &v
 	return s
@@ -281,6 +373,16 @@ func (s *ChangeCheckConfigShrinkRequest) SetEnableAutoCheck(v bool) *ChangeCheck
 
 func (s *ChangeCheckConfigShrinkRequest) SetEndTime(v int32) *ChangeCheckConfigShrinkRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetEndTimeSeconds(v int32) *ChangeCheckConfigShrinkRequest {
+	s.EndTimeSeconds = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetFrequency(v string) *ChangeCheckConfigShrinkRequest {
+	s.Frequency = &v
 	return s
 }
 
@@ -306,6 +408,16 @@ func (s *ChangeCheckConfigShrinkRequest) SetStandardIds(v []*int64) *ChangeCheck
 
 func (s *ChangeCheckConfigShrinkRequest) SetStartTime(v int32) *ChangeCheckConfigShrinkRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetStartTimeSeconds(v int32) *ChangeCheckConfigShrinkRequest {
+	s.StartTimeSeconds = &v
+	return s
+}
+
+func (s *ChangeCheckConfigShrinkRequest) SetStrategyName(v string) *ChangeCheckConfigShrinkRequest {
+	s.StrategyName = &v
 	return s
 }
 
@@ -344,7 +456,7 @@ func (s *ChangeCheckConfigShrinkRequest) Validate() error {
 type ChangeCheckConfigShrinkRequestAddedCheck struct {
 	// The ID of the check item.
 	//
-	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain check item IDs.
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
 	//
 	// example:
 	//
@@ -391,7 +503,7 @@ func (s *ChangeCheckConfigShrinkRequestAddedCheck) Validate() error {
 type ChangeCheckConfigShrinkRequestRemovedCheck struct {
 	// The ID of the check item.
 	//
-	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain check item IDs.
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
 	//
 	// example:
 	//

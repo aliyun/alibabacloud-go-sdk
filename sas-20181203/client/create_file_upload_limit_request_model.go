@@ -14,7 +14,7 @@ type iCreateFileUploadLimitRequest interface {
 }
 
 type CreateFileUploadLimitRequest struct {
-	// The QPS limit on the files uploaded from the client. Valid values: 100 to 10000.
+	// Sets the QPS limit threshold for client file uploads. Valid values: 100 to 10000.
 	//
 	// This parameter is required.
 	//

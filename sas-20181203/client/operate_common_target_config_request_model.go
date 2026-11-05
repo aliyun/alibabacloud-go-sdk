@@ -26,15 +26,15 @@ type iOperateCommonTargetConfigRequest interface {
 type OperateCommonTargetConfigRequest struct {
 	// The target type of the image switch. Valid values:
 	//
-	// - **repoName**: repository name.
+	// - **repoName**: The name of the repository.
 	//
-	// - **repoNamespace**: repository namespace name.
+	// - **repoNamespace**: The namespace of the repository.
 	//
 	// example:
 	//
 	// repoName
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The repository name or repository namespace name.
+	// The name of the repository or the namespace of the repository.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type OperateCommonTargetConfigRequest struct {
 	//
 	// 182.92.XXX.XXX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The parameters for configuring proactive defense on servers. The following parameters are included:
+	// The parameters for configuring proactive defense for servers, including the following parameters:
 	//
-	// - **targetType**: the dimension of the defense configuration. Currently, only the UUID dimension is supported. Fixed value: **uuid**.
+	// - **targetType**: The dimension of the defense configuration. Currently, only the UUID dimension is supported. Set the value to **uuid**.
 	//
-	// - **target**: the UUID of the server for which you want to configure proactive defense.
+	// - **target**: The UUID of the server for which you want to configure the defense settings.
 	//
-	// - **flag**: specifies whether to enable or disable proactive defense for the server. Valid values: **add*	- (enable) and **del*	- (disable).
+	// - **flag**: Specifies whether to enable or disable proactive defense for the server. Valid values: **add*	- (enable) and **del*	- (disable).
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type OperateCommonTargetConfigRequest struct {
 	//
 	// ]
 	TargetOperations *string `json:"TargetOperations,omitempty" xml:"TargetOperations,omitempty"`
-	// The Asset Type of the target. Valid values:
+	// The target Asset Type. Valid values:
 	//
-	// - **uuid**: server UUID.
+	// - **uuid**: The UUID of the server.
 	//
-	// - **Cluster**: cluster ID.
+	// - **Cluster**: The ID of the cluster.
 	//
-	// - **image_repo**: image repository name.
+	// - **image_repo**: The name of the image repository.
 	//
 	// example:
 	//
@@ -86,27 +86,27 @@ type OperateCommonTargetConfigRequest struct {
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// The switch type. Valid values:
 	//
-	// - **alidetect-scan-enable**: local file detection that performs detection only locally.
+	// - **alidetect-scan-enable**: Local file detection is performed only locally.
 	//
 	// - **ACTION-TRIAL-PERMISSION**: ActionTrail data delivery.
 	//
-	// - **alidetect**: local file detection engine.
+	// - **alidetect**: Local file detection engine.
 	//
-	// - **container_prevent_escape**: container escape prevention.
+	// - **container_prevent_escape**: Container escape prevention.
 	//
-	// - **image_repo**: repository image scanning.
+	// - **image_repo**: Repository image scanning.
 	//
-	// - **proc_filter_switch**: log filtering.
+	// - **proc_filter_switch**: Log filtering.
 	//
-	// - **agentless**: agentless detection.
+	// - **agentless**: Agentless detection.
 	//
-	// - **rasp**: application protection.
+	// - **rasp**: Application defense.
 	//
-	// - **sensitiveFile**: sensitive information scanning.
+	// - **sensitiveFile**: Sensitive information scanning.
 	//
-	// - **aliscriptengine**: deep detection engine.
+	// - **aliscriptengine**: Deep detection engine.
 	//
-	// - **containerNetwork**: container visualization.
+	// - **containerNetwork**: Container visualization.
 	//
 	// This parameter is required.
 	//

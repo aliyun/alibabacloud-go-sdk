@@ -34,7 +34,7 @@ type iListAgentlessRiskUuidRequest interface {
 }
 
 type ListAgentlessRiskUuidRequest struct {
-	// The page number of the current page when using paging.
+	// The page number of the current page for paging in a paged query.
 	//
 	// example:
 	//
@@ -64,49 +64,55 @@ type ListAgentlessRiskUuidRequest struct {
 	//
 	// 172.26.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// 报告语言。取值：zh（中文）、en（英文）。不传或为空时使用 zh。
+	// The language of the report. Valid values:
+	//
+	// - `zh`: Chinese.
+	//
+	// - `en`: English.
+	//
+	// If this parameter is not specified or is left empty, a Chinese report is returned by default.
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// oracle-win-001****
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The maximum number of entries to return per page when using paging.
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether risks exist. Valid values:
+	// Specifies whether a risk exists. Valid values:
 	//
-	// - **true**: Risks exist.
+	// - **true**: A risk exists.
 	//
-	// - **false**: Risks do not exist.
+	// - **false**: No risk exists.
 	//
 	// example:
 	//
 	// true
 	Risk *bool `json:"Risk,omitempty" xml:"Risk,omitempty"`
-	// The name of the detection target.
+	// The name of the scan target.
 	//
 	// example:
 	//
 	// source-test-obj-0****
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The object type of the detection target. Valid values:
+	// The object type of the scan target. Valid values:
 	//
-	// - **1**: host snapshot
+	// - **1**: server snapshot
 	//
-	// - **2**: host image
+	// - **2**: server image
 	//
 	// - **3**: user snapshot
 	//
-	// - **4**: user custom image
+	// - **4**: custom image
 	//
 	// example:
 	//

@@ -28,15 +28,15 @@ type iUpdatePostPaidBindRelRequest interface {
 type UpdatePostPaidBindRelRequest struct {
 	// Specifies whether to enable automatic binding for newly added assets. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Disable.
 	//
-	// - **1**: Enabled.
+	// - **1**: Enable.
 	//
 	// example:
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// The edition to automatically bind to newly added assets. Valid values:
+	// Specifies the protection edition to automatically bind to newly added assets. Valid values:
 	//
 	// - **1**: Free Edition
 	//
@@ -52,7 +52,7 @@ type UpdatePostPaidBindRelRequest struct {
 	//
 	// 3
 	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
-	// The action parameters for the binding operation.
+	// Specifies the action parameters for the binding operation.
 	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -60,9 +60,9 @@ type UpdatePostPaidBindRelRequest struct {
 	//
 	// 02fb3da4-130e-11e9-8e44-0016e04115b
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run for the request. A value of true indicates that only a dry run is performed and no actual operation is executed. A value of false indicates that the request is normally executed. Default value: false.
+	// Specifies whether to perform a dry run on the request. true: performs a dry run and does not perform the actual operation. false: performs the actual operation. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The abbreviation of the cloud service. Valid values:
+	// Specifies the abbreviated name of the cloud service. Valid values:
 	//
 	// - **sas**: Security Center
 	//
@@ -173,15 +173,15 @@ type UpdatePostPaidBindRelRequestBindAction struct {
 	//
 	// true
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
-	// The type of free quota used for the binding operation.
+	// Specifies the type of free quota used for the binding action.
 	//
 	// example:
 	//
 	// freeEnterprise
 	FreeType *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
-	// The UUIDs of the specified servers.
+	// Specifies the list of server UUIDs.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
-	// The Security Center protection edition to bind. Valid values:
+	// Specifies the Security Center protection edition to bind. Valid values:
 	//
 	// - **1**: Free Edition
 	//

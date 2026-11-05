@@ -28,7 +28,7 @@ type iDescribeOnceTaskRequest interface {
 }
 
 type DescribeOnceTaskRequest struct {
-	// The page number of the page to return. Default value: **1**, which indicates the first page.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeOnceTaskRequest struct {
 	//
 	// 1651766520000
 	EndTimeQuery *int64 `json:"EndTimeQuery,omitempty" xml:"EndTimeQuery,omitempty"`
-	// Settings for the number of client tasks on each page in a paged query. Default value: **20**, which indicates that each page contains 20 client tasks.
+	// The number of client tasks per page for paging. Default value: **20**, which indicates that each page contains 20 client tasks.
 	//
 	// example:
 	//
@@ -48,17 +48,19 @@ type DescribeOnceTaskRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The root task ID.
 	//
-	// > **TaskType*	- and **RootTaskId*	- cannot both be empty.
+	// > You can call the [DescribeOnceTask](~~DescribeOnceTask~~) operation and specify TaskType to query the root task list. You can obtain this parameter from TaskManageResponseList[].TaskId in the response.
+	//
+	// > **TaskType*	- and **RootTaskId*	- cannot be empty at the same time. If neither is provided, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//
 	// bb5d657479bba5e1d308b6c9e85c9174
 	RootTaskId *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
-	// The node source. Valid values include but are not limited to:
+	// The source of the task. Valid values include but are not limited to:
 	//
 	// - **schedule**: automatic scheduling of vulnerability scanning
 	//
-	// - **console**: one-click detection from the vulnerability scanning console
+	// - **console**: one-click detection in the vulnerability scanning console
 	//
 	// example:
 	//
@@ -76,19 +78,19 @@ type DescribeOnceTaskRequest struct {
 	//
 	// d7b2acf8d362742123e4a84e1bf8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The node type. Valid values:
+	// The task type. Valid values:
 	//
-	// - **VUL_CHECK_TASK**: vulnerability scanning node
+	// - **VUL_CHECK_TASK**: vulnerability scanning task
 	//
-	// - **CLIENT_PROBLEM_CHECK**: client node
+	// - **CLIENT_PROBLEM_CHECK**: client task
 	//
-	// - **CLIENT_DEV_OPS**: cloud O&M node
+	// - **CLIENT_DEV_OPS**: cloud O&M task
 	//
-	// - **ASSET_SECURITY_CHECK**: asset information collection node
+	// - **ASSET_SECURITY_CHECK**: asset collection task
 	//
-	// - **ASSET_REFRESH_HOST**: host asset synchronization node
+	// - **ASSET_REFRESH_HOST**: host asset synchronization task
 	//
-	// > **TaskType*	- and **RootTaskId*	- cannot both be empty.
+	// > **TaskType*	- and **RootTaskId*	- cannot be empty at the same time. If neither is provided, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//

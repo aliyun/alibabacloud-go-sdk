@@ -16,9 +16,9 @@ type iListClientAlertModeResponseBody interface {
 }
 
 type ListClientAlertModeResponseBody struct {
-	// The data returned by the request.
+	// The data returned in the response.
 	Data *ListClientAlertModeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ListClientAlertModeResponseBody) Validate() error {
 }
 
 type ListClientAlertModeResponseBodyData struct {
-	// The total number of returned entries.
+	// The total number of returned items.
 	//
 	// example:
 	//

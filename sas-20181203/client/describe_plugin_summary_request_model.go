@@ -16,11 +16,11 @@ type iDescribePluginSummaryRequest interface {
 }
 
 type DescribePluginSummaryRequest struct {
-	// The language of the content within the request and response.***	- Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh*	- (default)
+	// - **zh**: Chinese
 	//
-	// 	- **en**
+	// - **en**: English
 	//
 	// example:
 	//
@@ -28,11 +28,17 @@ type DescribePluginSummaryRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The name of the plug-in. Valid values:
 	//
-	// 	- alinet: AliNet.
+	// - alinet: AliNet.
 	//
-	// 	- alisecguard: client protection.
+	// - alisecguard: Self-protection.
 	//
-	// 	- alihips: AliHips.
+	// - alihips: AliHips.
+	//
+	// - alidetect: AliDetect.
+	//
+	// - yundunmonitor: YundunMonitor.
+	//
+	// > This parameter is required. If this parameter is not specified, the API returns HTTP 400 and the error code -101.
 	//
 	// example:
 	//

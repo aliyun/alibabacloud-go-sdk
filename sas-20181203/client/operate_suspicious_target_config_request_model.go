@@ -22,29 +22,29 @@ type iOperateSuspiciousTargetConfigRequest interface {
 }
 
 type OperateSuspiciousTargetConfigRequest struct {
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 1.2.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The configuration of proactive defense for your server. The value includes the following fields:
+	// Specifies the proactive defense parameters for servers. The following parameters are included:
 	//
-	// 	- **targetType**: specifies the dimension from which you manage proactive defense. UUIDs are supported. Set the value to **uuid**.
+	// - **targetType**: the dimension of the defense configuration. Currently, only the UUID dimension is supported. Fixed value: **uuid**.
 	//
-	// 	- **target**: specifies the UUID of the server for which you want to configure proactive defense.
+	// - **target**: the UUID of the server for which you want to configure defense settings.
 	//
-	// 	- **flag**: specifies whether to enable or disable proactive defense for your server. Valid values are **add*	- and **del**. The value add indicates that proactive defense will be enabled for your server. The value del indicates that proactive defense will be disabled for your server.
+	// - **flag**: specifies whether to enable or disable proactive defense for the server. Valid values: **add*	- (enable) and **del*	- (disable).
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type OperateSuspiciousTargetConfigRequest struct {
 	//
 	// "[{"targetType":"uuid","target":"0585f81a-dd84-4ddf-9971-f59d12345678","flag":"add"},{"targetType":"uuid","target":"01acfd9d-e6a4-4e61-b9eb-aae012345678","flag":"add"},{"targetType":"uuid","target":"04a0e735-ad32-4835-b635-045812345678","flag":"add"}]"
 	TargetOperations *string `json:"TargetOperations,omitempty" xml:"TargetOperations,omitempty"`
-	// The dimension from which you manage proactive defense. Only the server UUID dimension is supported.
+	// Specifies the dimension for managing proactive defense. Currently, only the server UUID dimension is supported.
 	//
-	// Set the value to **uuid**.
+	// Valid value: **uuid**.
 	//
 	// This parameter is required.
 	//
@@ -62,17 +62,17 @@ type OperateSuspiciousTargetConfigRequest struct {
 	//
 	// uuid
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The type of proactive defense. Valid Values:
+	// Specifies the type of proactive defense. Valid values:
 	//
-	// 	- **auto_breaking**: automatic blocking
+	// - **auto_breaking**: automatic interception
 	//
-	// 	- **webshell_cloud_breaking**: webshell defense
+	// - **webshell_cloud_breaking**: web shell connection defense
 	//
-	// 	- **alinet**: malicious behavior defense
+	// - **alinet**: malicious network behavior defense
 	//
-	// 	- **ransomware_breaking**: ransomware capture
+	// - **ransomware_breaking**: anti-ransomware (bait capture)
 	//
-	// 	- **alisecguard**: client protection
+	// - **alisecguard**: client self-protection
 	//
 	// This parameter is required.
 	//

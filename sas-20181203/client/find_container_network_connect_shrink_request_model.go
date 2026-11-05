@@ -28,15 +28,17 @@ type iFindContainerNetworkConnectShrinkRequest interface {
 type FindContainerNetworkConnectShrinkRequest struct {
 	// The query type of the element to query. Valid values:
 	//
+	// - **NODE**: node information.
+	//
 	// - **EDGE**: connection information.
 	//
-	// This parameter is required. If this parameter is not specified, the service returns error code -101.
+	// > This parameter is required. If this parameter is not provided, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//
 	// EDGE
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
-	// The page number of the page to return in a paginated query. Default value: **1**, which indicates the first page.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//
@@ -44,19 +46,19 @@ type FindContainerNetworkConnectShrinkRequest struct {
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// The destination node information, which is used to filter destination nodes.
 	//
-	// This parameter is required. If this parameter is not specified, the service returns error code -101.
+	// > Both **SrcNode*	- and **DstNode*	- are required. If either parameter is not provided, the API returns HTTP 400 with the error code -101.
 	DstNodeShrink *string `json:"DstNode,omitempty" xml:"DstNode,omitempty"`
-	// The end time of the network connectivity. Specify a UNIX timestamp in milliseconds.
+	// The end time of the network connectivity. The value is a UNIX timestamp in milliseconds.
 	//
-	// This parameter is required. If this parameter is not specified, the service returns error code -101.
+	// > Both **StartTime*	- and **EndTime*	- are required, and **StartTime*	- must be earlier than **EndTime**. The interval between the two cannot exceed 7 days. If either parameter is not provided or the requirements are not met, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//
 	// 1649260799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries per page when paging is used. Default value: 20. If this parameter is left empty, 20 entries are returned.
+	// The maximum number of entries to return on each page in a paged query. Default value: 20. If this parameter is left empty, 20 entries are returned by default.
 	//
-	// > Do not leave PageSize empty.
+	// > Do not leave this parameter empty.
 	//
 	// example:
 	//
@@ -64,11 +66,11 @@ type FindContainerNetworkConnectShrinkRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The source node information, which is used to filter source nodes.
 	//
-	// This parameter is required. If this parameter is not specified, the service returns error code -101.
+	// > Both **SrcNode*	- and **DstNode*	- are required. If either parameter is not provided, the API returns HTTP 400 with the error code -101.
 	SrcNodeShrink *string `json:"SrcNode,omitempty" xml:"SrcNode,omitempty"`
-	// The start time of the network connectivity. Specify a UNIX timestamp in milliseconds.
+	// The start time of the network connectivity. The value is a UNIX timestamp in milliseconds.
 	//
-	// This parameter is required. If this parameter is not specified, the service returns error code -101.
+	// > Both **StartTime*	- and **EndTime*	- are required, and **StartTime*	- must be earlier than **EndTime**. The interval between the two cannot exceed 7 days. If either parameter is not provided or the requirements are not met, the API returns HTTP 400 with the error code -101.
 	//
 	// example:
 	//

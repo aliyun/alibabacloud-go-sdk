@@ -9,14 +9,22 @@ type iGetCheckConfigRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfigId(v string) *GetCheckConfigRequest
+	GetConfigId() *string
 	SetResourceDirectoryAccountId(v int64) *GetCheckConfigRequest
 	GetResourceDirectoryAccountId() *int64
 }
 
 type GetCheckConfigRequest struct {
-	// The ID of the China account in the resource folder for member accounts.
+	// The policy ID.
 	//
-	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// example:
+	//
+	// 22222f91-57af-4907-87f1-f9046da*****
+	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the resource directory member account belongs.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -32,8 +40,17 @@ func (s GetCheckConfigRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetCheckConfigRequest) GetConfigId() *string {
+	return s.ConfigId
+}
+
 func (s *GetCheckConfigRequest) GetResourceDirectoryAccountId() *int64 {
 	return s.ResourceDirectoryAccountId
+}
+
+func (s *GetCheckConfigRequest) SetConfigId(v string) *GetCheckConfigRequest {
+	s.ConfigId = &v
+	return s
 }
 
 func (s *GetCheckConfigRequest) SetResourceDirectoryAccountId(v int64) *GetCheckConfigRequest {

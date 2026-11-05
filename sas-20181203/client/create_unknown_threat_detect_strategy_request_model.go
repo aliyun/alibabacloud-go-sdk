@@ -28,19 +28,19 @@ type CreateUnknownThreatDetectStrategyRequest struct {
 	//
 	// UNKNOWN_THREAT_DETECT_CONFIG_****
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
-	// The number of days after the model is initially created before the learning phase ends.
+	// The number of days to continue learning after the model is initially created.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterInit *int32 `json:"DurationDaysAfterInit,omitempty" xml:"DurationDaysAfterInit,omitempty"`
-	// The number of days after which the model ends when no new processes are added.
+	// The number of days without new processes before the model stops.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterStop *int32 `json:"DurationDaysAfterStop,omitempty" xml:"DurationDaysAfterStop,omitempty"`
-	// The policy name.
+	// The Policy Name.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type CreateUnknownThreatDetectStrategyRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The whitelist mode. Valid values:
 	//
-	// - **hash**: process hash
+	// - **hash**: The process hash.
 	//
-	// - **path**: process path
+	// - **path**: The process path.
 	//
 	// example:
 	//

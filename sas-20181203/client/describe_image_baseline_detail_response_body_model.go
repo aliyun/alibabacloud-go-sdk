@@ -16,7 +16,7 @@ type iDescribeImageBaselineDetailResponseBody interface {
 }
 
 type DescribeImageBaselineDetailResponseBody struct {
-	// The image baseline details.
+	// The list of image baseline details.
 	BaselineDetail *DescribeImageBaselineDetailResponseBodyBaselineDetail `json:"BaselineDetail,omitempty" xml:"BaselineDetail,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,13 +62,13 @@ func (s *DescribeImageBaselineDetailResponseBody) Validate() error {
 }
 
 type DescribeImageBaselineDetailResponseBodyBaselineDetail struct {
-	// The remediation suggestion for the baseline check risk item.
+	// The hardening suggestions for the baseline check risk items.
 	//
 	// example:
 	//
-	// 删除泄漏的AK信息。
+	// Delete the leaked AccessKey information
 	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
-	// The alias of the baseline classification.
+	// The alias of the baseline main item category.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeImageBaselineDetailResponseBodyBaselineDetail struct {
 	//
 	// example:
 	//
-	// Access Key泄露
+	// AccessKey leak
 	BaselineItemAlias *string `json:"BaselineItemAlias,omitempty" xml:"BaselineItemAlias,omitempty"`
 	// The key of the baseline sub-item.
 	//
@@ -86,37 +86,37 @@ type DescribeImageBaselineDetailResponseBodyBaselineDetail struct {
 	//
 	// ak_leak
 	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
-	// The alias of the baseline name.
+	// The alias of the baseline main item name.
 	//
 	// example:
 	//
-	// Access Key泄露
+	// AccessKey leak
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
 	// The description of the baseline risk item.
 	//
 	// example:
 	//
-	// Access Key泄露，会导致Access Key被冒用的风险。
+	// An AccessKey leak may result in the unauthorized use of the AccessKey
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The risk level of the check item. Valid values:
 	//
-	// - **high**: High risk level.
+	// - **high**: High. Indicates a high risk level.
 	//
-	// - **medium**: Medium risk level.
+	// - **medium**: Medium. Indicates a medium risk level.
 	//
-	// - **low**: Low risk level.
+	// - **low**: Low. Indicates a low risk level.
 	//
 	// example:
 	//
 	// high
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The baseline issue prompt.
+	// The prompt for the baseline issue.
 	//
 	// example:
 	//
 	// /usr/aksk.txt:yourAccessKeyID
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The asynchronous request ID.
+	// The ID of the asynchronous request.
 	//
 	// example:
 	//

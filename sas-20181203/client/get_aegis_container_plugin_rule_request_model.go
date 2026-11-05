@@ -18,13 +18,13 @@ type iGetAegisContainerPluginRuleRequest interface {
 }
 
 type GetAegisContainerPluginRuleRequest struct {
-	// The ID of the container anti-escape rule. You can call [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) to obtain the ID. This parameter is required. If this parameter is not specified, the API returns HTTP 400 with error code -101.
+	// The ID of the container escape prevention rule. You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to obtain the ID. This parameter is required. If this parameter is not specified, the API returns HTTP 400 and the error code -101.
 	//
 	// example:
 	//
 	// 1141****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
 	//
 	// - **zh**: Chinese
@@ -37,9 +37,9 @@ type GetAegisContainerPluginRuleRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The rule type. Valid values:
 	//
-	// - **0**: user-defined
+	// - **0**: Custom
 	//
-	// - **1**: system built-in
+	// - **1**: Built-in
 	//
 	// example:
 	//

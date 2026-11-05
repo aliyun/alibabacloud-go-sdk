@@ -24,6 +24,8 @@ type DescribeVulExportInfoRequest struct {
 	//
 	// 14356
 	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+	// The ID of the resource directory account.
+	//
 	// example:
 	//
 	// 1

@@ -18,19 +18,19 @@ type iAddCheckInstanceResultWhiteListResponseBody interface {
 }
 
 type AddCheckInstanceResultWhiteListResponseBody struct {
-	// **[Deprecated]*	- The result of adding instances to the whitelist. This field is deprecated and can be ignored.
+	// **[Deprecated]*	- The result of adding the instances to the whitelist. This field is deprecated and can be ignored.
 	//
 	// example:
 	//
 	// xxx
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ADE57832-9666-511C-9A80-B87DE2E8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The rule ID of the whitelist.
+	// The ID of the whitelist rule.
 	//
 	// example:
 	//

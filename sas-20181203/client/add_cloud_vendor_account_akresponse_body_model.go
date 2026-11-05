@@ -16,7 +16,7 @@ type iAddCloudVendorAccountAKResponseBody interface {
 }
 
 type AddCloudVendorAccountAKResponseBody struct {
-	// The added AccessKey information.
+	// The added AK information.
 	Data *AddCloudVendorAccountAKResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -62,23 +62,23 @@ func (s *AddCloudVendorAccountAKResponseBody) Validate() error {
 }
 
 type AddCloudVendorAccountAKResponseBodyData struct {
-	// The AccessKey type. Valid values:
+	// The AK type. Valid values:
 	//
-	// - **primary**: Primary account
+	// - **primary**: primary account
 	//
-	// - **sub**: Sub-account
+	// - **sub**: sub-account
 	//
 	// example:
 	//
 	// sub
 	AkType *string `json:"AkType,omitempty" xml:"AkType,omitempty"`
-	// The unique ID of the AccessKey.
+	// The unique ID of the AK.
 	//
 	// example:
 	//
 	// 2158
 	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	// The list of modules associated with the AccessKey.
+	// The list of modules associated with the AK.
 	AuthModules []*AddCloudVendorAccountAKResponseBodyDataAuthModules `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
 	// The account ID.
 	//
@@ -88,33 +88,33 @@ type AddCloudVendorAccountAKResponseBodyData struct {
 	//
 	// azure_demo_1
 	CtdrCloudUserId *string `json:"CtdrCloudUserId,omitempty" xml:"CtdrCloudUserId,omitempty"`
-	// The exception information of the AccessKey.
+	// The exception information of the AK.
 	//
 	// example:
 	//
 	// The IAM user is forbidden in the currently selected region
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The AccessKey ID.
+	// The AK parameter ID.
 	//
 	// example:
 	//
 	// AE6SLd****
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The usage status of the AccessKey. Valid values:
+	// The usage status of the AK. Valid values:
 	//
 	// - **0**: In use
 	//
-	// - **1**: Exception
+	// - **1**: Usage exception
 	//
-	// - **2**: Verifying
+	// - **2**: Validating
 	//
-	// - **3**: Verification timed out
+	// - **3**: Validation timed out
 	//
 	// example:
 	//
 	// 0
 	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	// The AccessKey status. Valid values:
+	// The status of the AK. Valid values:
 	//
 	// - **0**: Enabled
 	//
@@ -160,9 +160,9 @@ type AddCloudVendorAccountAKResponseBodyData struct {
 	//
 	// Tencent
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// The name of the AccessKey account.
+	// The name of the AK account.
 	//
-	// > This parameter is used to identify the account to which the third-party host assets belong.
+	// >This parameter is used to identify the account to which the third-party host assets belong.
 	//
 	// example:
 	//
@@ -318,11 +318,11 @@ type AddCloudVendorAccountAKResponseBodyDataAuthModules struct {
 	//
 	// - **0**: In use
 	//
-	// - **1**: Exception
+	// - **1**: Usage exception
 	//
-	// - **2**: Verifying
+	// - **2**: Validating
 	//
-	// - **3**: Verification timed out
+	// - **3**: Validation timed out
 	//
 	// example:
 	//

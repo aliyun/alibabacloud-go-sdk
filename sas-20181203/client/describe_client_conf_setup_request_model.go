@@ -16,7 +16,7 @@ type iDescribeClientConfSetupRequest interface {
 }
 
 type DescribeClientConfSetupRequest struct {
-	// The resource tag of the client to query.
+	// Specifies the client resource tag to query.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeClientConfSetupRequest struct {
 	//
 	// - advanced
 	//
-	// - basic.
+	// - basic
 	//
 	// This parameter is required.
 	//

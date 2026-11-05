@@ -16,25 +16,25 @@ type iDescribeSuspiciousOverallConfigRequest interface {
 }
 
 type DescribeSuspiciousOverallConfigRequest struct {
-	// The source IP address of the request.
+	// The source IP address.
 	//
 	// example:
 	//
 	// 39.161.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the feature. Valid values:
+	// The switch type. Valid values:
 	//
-	// 	- **auto_breaking**: Anti-Virus
+	// - **auto_breaking**: anti-virus
 	//
-	// 	- **ransomware_breaking**: Anti-ransomware (Bait Capture)
+	// - **ransomware_breaking**: anti-ransomware (decoy capture)
 	//
-	// 	- **webshell_cloud_breaking**: Webshell Protection
+	// - **webshell_cloud_breaking**: web shell connection defense
 	//
-	// 	- **alinet**: Behavior prevention
+	// - **alinet**: malicious network behavior defense
 	//
-	// 	- **k8s_log_analysis**: K8s Threat Detection
+	// - **k8s_log_analysis**: container Kubernetes threat detection
 	//
-	// 	- **alisecguard**: Defense mode for Client Protection
+	// - **alisecguard**: client self-protection mode
 	//
 	// This parameter is required.
 	//

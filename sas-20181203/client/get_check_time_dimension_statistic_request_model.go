@@ -22,33 +22,37 @@ type iGetCheckTimeDimensionStatisticRequest interface {
 }
 
 type GetCheckTimeDimensionStatisticRequest struct {
-	// The end time in timestamp format.
+	// The end time in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 1672285044000
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	// The ID of the Alibaba Cloud account to which the member accounts in the resource folder belong.
+	//
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	//
 	// example:
 	//
 	// 1234567890123456
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The start time in timestamp format.
+	// The start time in UNIX timestamp format.
 	//
 	// example:
 	//
 	// 1672385044000
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" xml:"StartTimeStamp,omitempty"`
-	// The type of data statistics. Valid values:
+	// The data statistics type. Valid values:
 	//
-	// - **CheckPassRate**: Check item pass rate.
+	// - **CheckPassRate**: The pass rate of check items.
 	//
-	// - **AssetPassRate**: Asset pass rate.
+	// - **AssetPassRate**: The pass rate of assets.
 	//
 	// example:
 	//
 	// AssetPassRate
 	StatisticType *string `json:"StatisticType,omitempty" xml:"StatisticType,omitempty"`
-	// The list of cloud service providers.
+	// The list of cloud providers.
 	Vendors []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 

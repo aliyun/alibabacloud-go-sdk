@@ -18,11 +18,11 @@ type iUninstallBackupClientRequest interface {
 }
 
 type UninstallBackupClientRequest struct {
-	// The version of the anti-ransomware policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies. Valid values:
+	// The version of the protection policy. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the version. Valid values:
 	//
-	// 	- **1.0.0**
+	// - **1.0.0**: The version of the protection policy is 1.0.0.
 	//
-	// 	- **2.0.0**
+	// - **2.0.0**: The version of the protection policy is 2.0.0.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type UninstallBackupClientRequest struct {
 	//
 	// 2.0.0
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The UUID of the server from which you want to uninstall the anti-ransomware agent.
+	// The UUID of the server from which you want to uninstall the anti-ransomware client.
 	//
-	// > You must specify at least one of the UuidList and Uuid parameters.
+	// > UuidList.N and UUID cannot both be empty.
 	//
 	// example:
 	//
 	// D0D6E6E4-CB8C-4897-B852-46AEFDA0****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The UUIDs of the servers from which you want to uninstall the anti-ransomware agent.
+	// The list of UUIDs of the servers from which you want to uninstall the anti-ransomware client.
 	//
-	// > You must specify at least one of the UuidList and Uuid parameters.
+	// > UuidList and UUID cannot both be empty.
 	//
 	// example:
 	//

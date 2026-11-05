@@ -20,11 +20,9 @@ type iChangeCheckScopeConfigInstanceRequest interface {
 }
 
 type ChangeCheckScopeConfigInstanceRequest struct {
-	// The list of unique IDs of cloud assets to add.
+	// The UUIDs of the cloud assets to add.
 	AddAssetUuids []*string `json:"AddAssetUuids,omitempty" xml:"AddAssetUuids,omitempty" type:"Repeated"`
-	// The ID of the scan scope configuration.
-	//
-	// >Call the [GetCheckScopeConfig](~~GetCheckScopeConfig~~) operation to obtain this parameter.
+	// The ID of the scan scope configuration. You can call the [GetCheckScopeConfig](~~GetCheckScopeConfig~~) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +30,9 @@ type ChangeCheckScopeConfigInstanceRequest struct {
 	//
 	// 00cfa8161da093089e6804ba6a33****
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The list of unique IDs of cloud assets to delete.
+	// The UUIDs of the cloud assets to delete.
 	DeleteAssetUuids []*string `json:"DeleteAssetUuids,omitempty" xml:"DeleteAssetUuids,omitempty" type:"Repeated"`
-	// The key for cross-page select-all.
+	// The cross-page select-all key.
 	//
 	// example:
 	//

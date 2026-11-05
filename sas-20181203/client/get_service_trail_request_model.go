@@ -14,11 +14,11 @@ type iGetServiceTrailRequest interface {
 }
 
 type GetServiceTrailRequest struct {
-	// The ID of the region in which the instance resides. Valid values:
+	// The ID of the region where the instance to be queried resides. Valid values:
 	//
 	// - **cn-hangzhou**: China (Hangzhou)
 	//
-	// - **ap-southeast-1**: Singapore.
+	// - **ap-southeast-1**: Singapore
 	//
 	// example:
 	//

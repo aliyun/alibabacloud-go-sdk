@@ -84,13 +84,13 @@ func (s *ListUnknownThreatDetectMachineResponseBody) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyData struct {
-	// The number of days the policy has been in effect.
+	// The duration for which the policy has been in effect, in days.
 	//
 	// example:
 	//
 	// 0
 	EffectDays *int64 `json:"EffectDays,omitempty" xml:"EffectDays,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	//
 	// 0
 	NormalEventCount *int64 `json:"NormalEventCount,omitempty" xml:"NormalEventCount,omitempty"`
-	// The plug-in status.
+	// The running status of the intelligent behavior analytics plugin.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	//
 	// 1
 	ProcessCount *int32 `json:"ProcessCount,omitempty" xml:"ProcessCount,omitempty"`
-	// The number of recent deviation behaviors.
+	// The number of recent behavioral deviations.
 	//
 	// example:
 	//
 	// 0
 	RecentDeviationBehaviorCount *int64 `json:"RecentDeviationBehaviorCount,omitempty" xml:"RecentDeviationBehaviorCount,omitempty"`
-	// The machine running status. Valid values:
+	// The running status of the server. Valid values:
 	//
-	// - **monitoring**: warning in progress
+	// - **monitoring**: alerting
 	//
-	// - **blocking**: under control
+	// - **blocking**: blocking
 	//
-	// - **studying**: learning in progress
+	// - **studying**: learning
 	//
 	// example:
 	//
@@ -154,21 +154,21 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The whitelist mode. Valid values:
 	//
-	// - **hash**: process hash
+	// - **hash**: the hash of the process
 	//
-	// - **path**: process path
+	// - **path**: the path of the process
 	//
 	// example:
 	//
 	// hash
 	StudyMode *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
-	// The number of remaining learning days.
+	// The remaining learning time, in days.
 	//
 	// example:
 	//
 	// 0
 	StudyRemainDays *int64 `json:"StudyRemainDays,omitempty" xml:"StudyRemainDays,omitempty"`
-	// The timestamp when learning started.
+	// The timestamp when the learning started.
 	//
 	// example:
 	//
@@ -321,19 +321,19 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyPageInfo struct {
-	// The number of entries displayed on the current page in a paged query.
+	// The number of entries returned on the current page in a paging query.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries to display per page in a paged query.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:
 	//

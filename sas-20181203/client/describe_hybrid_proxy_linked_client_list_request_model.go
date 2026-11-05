@@ -24,25 +24,31 @@ type iDescribeHybridProxyLinkedClientListRequest interface {
 }
 
 type DescribeHybridProxyLinkedClientListRequest struct {
-	// The name of the proxy cluster. You can view the proxy cluster name in the console.
+	// The name of the proxy cluster. You can view the name in the Security Center console.
+	//
+	// > **ProxyUuid*	- and **ClusterName*	- cannot be left empty at the same time. If neither is provided, the API returns an HTTP 400 error with the error code -101.
 	//
 	// example:
 	//
 	// office-proxy
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The page number of the current page when paging is used.
+	// The page number of the current page returned in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page when paging is used.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The UUID of the proxy node. You can call the DescribeHybridProxyList operation to obtain this value.
+	// The UUID of the proxy node.
+	//
+	// > You can call the [DescribeHybridProxyList](~~DescribeHybridProxyList~~) operation to obtain this parameter from the ProxyList[].ProxyUuid field in the response.
+	//
+	// > **ProxyUuid*	- and **ClusterName*	- cannot be left empty at the same time. If neither is provided, the API returns an HTTP 400 error with the error code -101.
 	//
 	// example:
 	//
@@ -54,7 +60,7 @@ type DescribeHybridProxyLinkedClientListRequest struct {
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The unique key of the Security Center agent. You can call an asset query operation to obtain the UUID of the Security Center agent installed on the server.
+	// The unique key of the Security Center client. You can obtain the UUID of the Security Center client installed on a server by querying the asset.
 	//
 	// example:
 	//

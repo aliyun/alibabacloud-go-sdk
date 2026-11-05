@@ -18,15 +18,15 @@ type iUpdateStrictEventNameRequest interface {
 }
 
 type UpdateStrictEventNameRequest struct {
-	// The list of strict mode alerts to operate on. This is a full list. Strict mode alerts not included in this list will have the opposite action applied.
+	// The list of strict mode alerts to be updated. This is a full list. Strict mode alerts not included in this list will be subjected to the opposite operation.
 	//
-	// > Call [DescribeStrictEventName](~~DescribeStrictEventName~~) to obtain the list of all strict mode alerts.
+	// > You can call [DescribeStrictEventName](~~DescribeStrictEventName~~) to obtain the list of all strict mode alerts.
 	//
-	// > -.
+	// > -
 	EventNameList []*string `json:"EventNameList,omitempty" xml:"EventNameList,omitempty" type:"Repeated"`
-	// The language of the request and response. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//
@@ -34,11 +34,11 @@ type UpdateStrictEventNameRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The operator for the rule action. Valid values:
+	// Specifies the action to perform on the alerts. Valid values:
 	//
-	// - *on*: enables alerting
+	// - *on*: enables alerts.
 	//
-	// - *off*: disables alerting.
+	// - *off*: disables alerts.
 	//
 	// This parameter is required.
 	//

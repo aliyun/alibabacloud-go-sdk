@@ -18,11 +18,15 @@ type iDescribeImageBaselineDetailRequest interface {
 }
 
 type DescribeImageBaselineDetailRequest struct {
-	// The baseline data information.
+	// The key of the baseline sub-item.
+	//
+	// > You can call the [DescribeImageBaselineItemList](~~DescribeImageBaselineItemList~~) operation to obtain this parameter from the BaselineItemInfos[].BaselineItemKey field in the response.
+	//
+	// This parameter is required. If it is not provided, the API returns HTTP 400 and the error code -101.
 	//
 	// example:
 	//
-	// 取值包括但不限于以下内容：ak_leak, duplicate_uid,duplicate_pwd_hash,non_pwd_user
+	// Values include but are not limited to: ak_leak, duplicate_uid, duplicate_pwd_hash, and non_pwd_user
 	BaselineItemKey *string `json:"BaselineItemKey,omitempty" xml:"BaselineItemKey,omitempty"`
 	// The UUID of the image.
 	//
@@ -30,11 +34,11 @@ type DescribeImageBaselineDetailRequest struct {
 	//
 	// 06293273b67d19516cfcc712194f****
 	ImageUuid *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
-	// The language type for the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//

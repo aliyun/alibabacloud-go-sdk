@@ -40,7 +40,7 @@ type CreateAgentlessScanTaskRequest struct {
 	//
 	// AGENTLESS_SCAN_ONCE_TASK_1720145******
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
-	// The image retention period, in days. This parameter takes effect only for host detection. It does not take effect for user snapshot detection or user custom image detection.
+	// The retention period of the image, in days. This parameter takes effect only for host detection and does not take effect for user snapshot detection or custom image detection.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreateAgentlessScanTaskRequest struct {
 	//
 	// 66a9c708-d4a4-4fe
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The source of the API call, which is used to collect statistics on scan task volume and scan data volume by source. If this parameter is not specified, the value is empty.
+	// The source of the API call. This parameter is used to collect statistics on the number of scan tasks and the amount of scanned data by source. If this parameter is not specified, it is left empty.
 	//
 	// example:
 	//
 	// image-console
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The region ID, which is usually automatically populated by the gateway.
+	// The region ID. This parameter is usually automatically populated by the gateway.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type CreateAgentlessScanTaskRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable the cost-saving mode. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Enable.
 	//
-	// - **false**: Disabled.
+	// - **false**: Disable.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type CreateAgentlessScanTaskRequest struct {
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
 	// Specifies whether to detect data cloud disks. Valid values:
 	//
-	// - **true**: Detected.
+	// - **true**: Yes.
 	//
-	// - **false**: Not detected.
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type CreateAgentlessScanTaskRequest struct {
 	ScanDataDisk *bool `json:"ScanDataDisk,omitempty" xml:"ScanDataDisk,omitempty"`
 	// The target type. Valid values:
 	//
-	// - **1**: Host detection - detection by snapshot.
+	// - **1**: Host detection by using snapshots.
 	//
-	// - **2**: Host detection - detection by image.
+	// - **2**: Host detection by using images.
 	//
 	// - **3**: User snapshot detection.
 	//
-	// - **2**: User custom image detection.
+	// - **2**: Custom image detection.
 	//
 	// This parameter is required.
 	//
@@ -106,11 +106,11 @@ type CreateAgentlessScanTaskRequest struct {
 	//
 	// 2
 	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The list of targets for image security remediation. Each target specifies the source image, the region, the name of the remediated image, and the vulnerability identifiers to be fixed.
+	// The list of targets for image security remediation. Each target specifies the source image, the region, the name of the remediated image, and the identifiers of the vulnerabilities to be remediated.
 	Targets []*CreateAgentlessScanTaskRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
 	// The UUIDs of the assets to be detected.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
@@ -235,7 +235,7 @@ func (s *CreateAgentlessScanTaskRequest) Validate() error {
 }
 
 type CreateAgentlessScanTaskRequestTargets struct {
-	// The ID of the source ECS custom image to be remediated. The image must be located in the region specified by RegionId of this target.
+	// The ID of the source ECS custom image to be remediated. The image must be located in the region specified by the RegionId parameter of the target.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type CreateAgentlessScanTaskRequestTargets struct {
 	//
 	// source-image
 	OriginImageName *string `json:"OriginImageName,omitempty" xml:"OriginImageName,omitempty"`
-	// The name of the ECS image generated after remediation.
+	// The name of the ECS image generated after the remediation is completed.
 	//
 	// example:
 	//
@@ -259,7 +259,7 @@ type CreateAgentlessScanTaskRequestTargets struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of vulnerability identifiers to be fixed. At least one vulnerability identifier must be specified, and each identifier must be unique and non-empty.
+	// The list of vulnerability identifiers to be remediated in this task. You must specify at least one vulnerability identifier. The identifiers cannot be empty or duplicate.
 	VulnerabilityIds []*string `json:"VulnerabilityIds,omitempty" xml:"VulnerabilityIds,omitempty" type:"Repeated"`
 }
 

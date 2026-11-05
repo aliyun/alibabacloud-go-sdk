@@ -30,35 +30,53 @@ type iListUnknownThreatDetectMachineRequest interface {
 }
 
 type ListUnknownThreatDetectMachineRequest struct {
-	// The page number of the current page in a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The status of the alert event. Valid values:
+	//
+	// - **1**: pending
+	//
+	// - **2**: ignored
+	//
+	// - **4**: confirmed
+	//
+	// - **8**: marked as false positive
+	//
+	// - **16**: processing
+	//
+	// - **32**: handled
+	//
+	// - **64**: expired
+	//
+	// - **604**: marked as false positive by the system
+	//
 	// example:
 	//
 	// 1
 	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
-	// The maximum number of entries to display per page in a paged query.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The server name or IP address.
+	// The name or IP address of the server.
 	//
 	// example:
 	//
 	// test-ecs
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The machine running status. Valid values:
+	// The running status of the server. Valid values:
 	//
-	// - **monitoring**: warning in progress
+	// - **monitoring**: alerting
 	//
-	// - **blocking**: under control
+	// - **blocking**: blocking
 	//
-	// - **studying**: learning in progress
+	// - **studying**: learning
 	//
 	// - **study_finish**: learning completed
 	//
@@ -68,21 +86,21 @@ type ListUnknownThreatDetectMachineRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The whitelist mode. Valid values:
 	//
-	// - **hash**: process hash
+	// - **hash**: the hash of the process
 	//
-	// - **path**: process path
+	// - **path**: the path of the process
 	//
 	// example:
 	//
 	// hash
 	StudyMode *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
-	// The end of the model creation time range. The value is a timestamp in milliseconds.
+	// The end time of the time range when the model was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1768891966346
 	StudyTimeEnd *int64 `json:"StudyTimeEnd,omitempty" xml:"StudyTimeEnd,omitempty"`
-	// The start of the model creation time range. The value is a timestamp in milliseconds.
+	// The start time of the time range when the model was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

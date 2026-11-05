@@ -42,29 +42,23 @@ type AddCheckInstanceResultWhiteListRequest struct {
 	//
 	// 132
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values:
-	//
-	// - true: performs only a dry run without executing the actual operation.
-	//
-	// - false: performs the actual operation.
-	//
-	// Default value: false.
+	// Specifies whether to perform only a dry run. A value of true indicates that only a dry run is performed and the actual operation is not performed. A value of false indicates that the actual operation is performed. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The collection of asset instance IDs.
+	// The instance IDs of the assets.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The collection of asset instance information.
+	// The information about the asset instances.
 	InstanceList []*AddCheckInstanceResultWhiteListRequestInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The remarks. Maximum length: 65,535 bytes.
+	// The remarks. The value can be up to 65,535 bytes in length.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The rule type. Default value: **WHITE**. Valid values:
+	// The type of the rule. Default value: **WHITE**. Valid values:
 	//
-	// - WHITE: whitelist
+	// - WHITE: Adds the instances to the whitelist.
 	//
 	// example:
 	//
@@ -166,9 +160,9 @@ func (s *AddCheckInstanceResultWhiteListRequest) Validate() error {
 }
 
 type AddCheckInstanceResultWhiteListRequestInstanceList struct {
-	// The asset instance ID.
+	// The instance ID of the asset.
 	//
-	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
+	// > Invoke the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
 	//
 	// example:
 	//

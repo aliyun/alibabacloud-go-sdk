@@ -22,19 +22,21 @@ type iGetDataTrendRequest interface {
 }
 
 type GetDataTrendRequest struct {
-	// The type of security data to query. Valid values:
+	// The security data type. Valid values:
 	//
-	// - **HC_NEW**: number of new baseline risks
+	// - **HC_NEW**: the number of new baseline risks
 	//
-	// - **HC_OPERATE**: number of handled baseline risks
+	// - **HC_OPERATE**: the number of handled baseline risks
 	//
-	// - **VUL_NEW**: number of new vulnerability risks
+	// - **VUL_NEW**: the number of new vulnerability risks
 	//
-	// - **VUL_OPERATE**: number of handled vulnerability risks
+	// - **VUL_OPERATE**: the number of handled vulnerability risks
 	//
-	// - **SUSP_NEW**: number of new alert risks
+	// - **SUSP_NEW**: the number of new alerts
 	//
-	// - **SUSP_OPERATE**: number of handled alert risks
+	// - **SUSP_OPERATE**: the number of handled alerts
+	//
+	// > You can specify multiple values separated by commas (,). Example: HC_NEW,VUL_NEW.
 	//
 	// This parameter is required.
 	//
@@ -44,6 +46,8 @@ type GetDataTrendRequest struct {
 	BizTypes *string `json:"BizTypes,omitempty" xml:"BizTypes,omitempty"`
 	// The end timestamp of the query. Unit: milliseconds.
 	//
+	// > The value of StartTimestamp must be earlier than the value of EndTimestamp. Otherwise, the API returns HTTP 400 and the error code -101.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -52,7 +56,7 @@ type GetDataTrendRequest struct {
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The interval for querying data. Unit: milliseconds.
 	//
-	// > Minimum value: 1000.
+	// > The minimum value is 1000. A maximum of 100 data points are returned. Excess data points are not returned.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +64,9 @@ type GetDataTrendRequest struct {
 	//
 	// 86400000
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The Alibaba Cloud account ID of the member accounts in the resource directory.
+	// The Alibaba Cloud account ID of member accounts in the resource folder.
 	//
-	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//

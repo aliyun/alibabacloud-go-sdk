@@ -26,11 +26,11 @@ type iCreateSimilarSecurityEventsQueryTaskRequest interface {
 }
 
 type CreateSimilarSecurityEventsQueryTaskRequest struct {
-	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use different tokens for different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run of the request. Valid values:
+	// Specifies whether to perform a dry run of the request. Valid values:
 	//
-	// - true: performs only a dry run without executing the actual operation.
+	// - true: performs a dry run without performing the actual operation.
 	//
 	// - false: performs the actual operation.
 	//
@@ -46,13 +46,13 @@ type CreateSimilarSecurityEventsQueryTaskRequest struct {
 	//
 	// 14323
 	SecurityEventId *int64 `json:"SecurityEventId,omitempty" xml:"SecurityEventId,omitempty"`
-	// The code of the alerting event that has the same type or rule hits.
+	// The code value of alerting events of the same type or rule hits.
 	//
 	// example:
 	//
 	// default
 	SimilarEventScenarioCode *string `json:"SimilarEventScenarioCode,omitempty" xml:"SimilarEventScenarioCode,omitempty"`
-	// The IP address of the access source.
+	// The source IP address.
 	//
 	// example:
 	//

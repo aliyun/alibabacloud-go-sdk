@@ -35,10 +35,10 @@ type iDescribeVersionConfigResponseBody interface {
 	GetHighestVersion() *int32
 	SetHoneypotCapacity(v int64) *DescribeVersionConfigResponseBody
 	GetHoneypotCapacity() *int64
-	SetHybridPaidGrayStatus(v string) *DescribeVersionConfigResponseBody
-	GetHybridPaidGrayStatus() *string
-	SetHybridPaidModuleSwitchMap(v int32) *DescribeVersionConfigResponseBody
-	GetHybridPaidModuleSwitchMap() *int32
+	SetHybridPaidGrayStatus(v *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) *DescribeVersionConfigResponseBody
+	GetHybridPaidGrayStatus() *DescribeVersionConfigResponseBodyHybridPaidGrayStatus
+	SetHybridPaidModuleSwitchMap(v string) *DescribeVersionConfigResponseBody
+	GetHybridPaidModuleSwitchMap() *string
 	SetHybridPaidStatus(v int32) *DescribeVersionConfigResponseBody
 	GetHybridPaidStatus() *int32
 	SetHybridSwitch(v int32) *DescribeVersionConfigResponseBody
@@ -144,9 +144,9 @@ type iDescribeVersionConfigResponseBody interface {
 }
 
 type DescribeVersionConfigResponseBody struct {
-	// The agentless detection quota.
+	// The number of agentless detection licenses.
 	//
-	// > Agentless detection is not yet available for sale. You can ignore this field.
+	// > Agentless detection is not currently available for purchase. You can ignore this field.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 160
 	AntiRansomwareCapacity *int32 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
-	// Indicates whether the anti-ransomware managed service is enabled. Valid values:
+	// The status of the anti-ransomware managed service. Valid values:
 	//
-	// - **0**: Not enabled.
+	// - **0**: Disabled.
 	//
 	// - **1**: Enabled.
 	//
@@ -178,9 +178,9 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	AntiRansomwareService *int32 `json:"AntiRansomwareService,omitempty" xml:"AntiRansomwareService,omitempty"`
-	// Indicates whether the application whitelist feature is enabled. Valid values:
+	// Indicates whether the application whitelist is enabled. Valid values:
 	//
-	// - **0**: Not enabled.
+	// - **0**: Disabled.
 	//
 	// - **2**: Enabled.
 	//
@@ -188,15 +188,15 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 2
 	AppWhiteList *int32 `json:"AppWhiteList,omitempty" xml:"AppWhiteList,omitempty"`
-	// The number of application whitelist authorizations.
+	// The number of application whitelist licenses.
 	//
-	// > One authorization allows you to apply a whitelist policy to one server. After you enable the application whitelist feature, your account is granted 20 authorizations by default.
+	// > One license allows you to apply a whitelist policy to one server. After you enable the application whitelist feature, your account is granted 20 licenses by default.
 	//
 	// example:
 	//
 	// 20
 	AppWhiteListAuthCount *int64 `json:"AppWhiteListAuthCount,omitempty" xml:"AppWhiteListAuthCount,omitempty"`
-	// The number of purchased server authorizations.
+	// The number of purchased server licenses.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	CanTryPostPaidPackage *int32 `json:"CanTryPostPaidPackage,omitempty" xml:"CanTryPostPaidPackage,omitempty"`
-	// The number of purchased cloud platform configuration check scans. Unit: scans per month.
+	// The number of purchased Cloud Security Posture Management (CSPM) scans. Unit: scans per month.
 	//
 	// example:
 	//
@@ -232,25 +232,25 @@ type DescribeVersionConfigResponseBody struct {
 	CspmInstanceCapacity *int32 `json:"CspmInstanceCapacity,omitempty" xml:"CspmInstanceCapacity,omitempty"`
 	// The highest purchased edition of Security Center. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
-	// - **10**: Value-added services only
+	// - **10**: Value-added service only.
 	//
-	// > If a single edition is purchased, this value indicates the corresponding edition. If multiple editions are purchased, this value indicates the highest edition among the purchased editions of Security Center.
+	// > If a single edition is purchased, this value indicates the corresponding edition. If multiple editions are purchased, this value indicates the highest edition among the purchased Security Center editions.
 	//
 	// example:
 	//
 	// 1
 	HighestVersion *int32 `json:"HighestVersion,omitempty" xml:"HighestVersion,omitempty"`
-	// The number of purchased honeypot authorizations.
+	// The number of purchased honeypot licenses.
 	//
 	// example:
 	//
@@ -261,14 +261,14 @@ type DescribeVersionConfigResponseBody struct {
 	// example:
 	//
 	// {"CSPM_INSTANCE":1}
-	HybridPaidGrayStatus *string `json:"HybridPaidGrayStatus,omitempty" xml:"HybridPaidGrayStatus,omitempty"`
+	HybridPaidGrayStatus *DescribeVersionConfigResponseBodyHybridPaidGrayStatus `json:"HybridPaidGrayStatus,omitempty" xml:"HybridPaidGrayStatus,omitempty" type:"Struct"`
 	// The AI digital human analysis traffic.
 	//
 	// example:
 	//
 	// 100
-	HybridPaidModuleSwitchMap *int32 `json:"HybridPaidModuleSwitchMap,omitempty" xml:"HybridPaidModuleSwitchMap,omitempty"`
-	// The elastic billing switch status.
+	HybridPaidModuleSwitchMap *string `json:"HybridPaidModuleSwitchMap,omitempty" xml:"HybridPaidModuleSwitchMap,omitempty"`
+	// The status of the elastic billing switch.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 100
 	HybridSwitch *int32 `json:"HybridSwitch,omitempty" xml:"HybridSwitch,omitempty"`
-	// The number of purchased image scan authorizations.
+	// The number of purchased image scan licenses.
 	//
 	// example:
 	//
@@ -310,9 +310,9 @@ type DescribeVersionConfigResponseBody struct {
 	IntelligentAnalysisFlow *int32 `json:"IntelligentAnalysisFlow,omitempty" xml:"IntelligentAnalysisFlow,omitempty"`
 	// Indicates whether the instance is the latest Ultimate Edition. Valid values:
 	//
-	// - **true**: The instance is the latest version.
+	// - **true**: Latest version.
 	//
-	// - **false**: The instance is not the latest version.
+	// - **false**: Not the latest version.
 	//
 	// example:
 	//
@@ -320,29 +320,29 @@ type DescribeVersionConfigResponseBody struct {
 	IsNewContainerVersion *bool `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
 	// Indicates whether the instance is the latest multi-edition. Valid values:
 	//
-	// - **true**: The instance is the latest multi-edition.
+	// - **true**: Latest multi-edition.
 	//
-	// - **false**: The instance is not the latest multi-edition.
+	// - **false**: Not the latest multi-edition.
 	//
 	// example:
 	//
 	// true
 	IsNewMultiVersion *bool `json:"IsNewMultiVersion,omitempty" xml:"IsNewMultiVersion,omitempty"`
-	// Indicates whether the number of existing servers exceeds the maximum number of purchased authorizations. Valid values:
+	// Indicates whether the current number of servers exceeds the maximum number of purchased licenses. Valid values:
 	//
 	// - **false**: Not exceeded.
 	//
 	// - **true**: Exceeded.
 	//
-	// 	Notice: **[Deprecated]*	- This parameter is deprecated. You can ignore it.</notice>
+	// 	Notice: **[Deprecated]*	- You can ignore this parameter.</notice>
 	//
 	// example:
 	//
 	// false
 	IsOverBalance *bool `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
-	// Indicates whether the pay-as-you-go billing method is enabled. Valid values:
+	// Indicates whether pay-as-you-go is enabled. Valid values:
 	//
-	// - **false**: Not enabled.
+	// - **false**: Disabled.
 	//
 	// - **true**: Enabled.
 	//
@@ -352,9 +352,9 @@ type DescribeVersionConfigResponseBody struct {
 	IsPostpay *bool `json:"IsPostpay,omitempty" xml:"IsPostpay,omitempty"`
 	// Indicates whether the current Security Center edition is a trial edition. Valid values:
 	//
-	// - **0**: No, it is not a trial edition.
+	// - **0**: Non-trial edition.
 	//
-	// - **1**: Yes, it is a trial edition.
+	// - **1**: Trial edition.
 	//
 	// example:
 	//
@@ -366,13 +366,13 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1603934844000
 	LastTrailEndTime *int64 `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
-	// The total number of authorizations for the multi-edition purchase.
+	// The total number of licenses for the multi-edition purchase.
 	//
 	// example:
 	//
 	// 5000
 	MVAuthCount *int32 `json:"MVAuthCount,omitempty" xml:"MVAuthCount,omitempty"`
-	// The total number of remaining authorizations for the multi-edition purchase.
+	// The total number of remaining licenses for the multi-edition purchase.
 	//
 	// example:
 	//
@@ -380,21 +380,21 @@ type DescribeVersionConfigResponseBody struct {
 	MVUnusedAuthCount *int32 `json:"MVUnusedAuthCount,omitempty" xml:"MVUnusedAuthCount,omitempty"`
 	// The higher protection edition between the subscription and pay-as-you-go services when both are enabled for Security Center host and container security. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
 	// example:
 	//
 	// 7
 	MergedVersion *int32 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
-	// The multi-edition version numbers and authorization usage.
+	// The multi-edition version numbers and license usage.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 100
 	NewPostPaidCspm *int32 `json:"NewPostPaidCspm,omitempty" xml:"NewPostPaidCspm,omitempty"`
-	// Indicates whether the new version of Cloud Threat Detection and Response (CTDR) is enabled. The new version of CTDR supports the purchase of inbound traffic and log storage capacity. Valid values:
+	// Indicates whether the new version of Cloud Threat Detection and Response (CTDR) is enabled. The new version of CTDR supports purchasing inbound traffic and log storage capacity. Valid values:
 	//
 	// - **0**: No.
 	//
@@ -428,19 +428,19 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1657244824669
 	OpenTime *int64 `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-	// The first trial time for the pay-as-you-go billing method.
+	// The first trial time for pay-as-you-go.
 	//
 	// example:
 	//
 	// 1657244824669
 	PostPaidFirstTrialTime *int64 `json:"PostPaidFirstTrialTime,omitempty" xml:"PostPaidFirstTrialTime,omitempty"`
-	// The latest trial time for the pay-as-you-go billing method.
+	// The latest trial time for pay-as-you-go.
 	//
 	// example:
 	//
 	// 1657244824669
 	PostPaidLastTrialTime *int64 `json:"PostPaidLastTrialTime,omitempty" xml:"PostPaidLastTrialTime,omitempty"`
-	// The trial expiration time for the pay-as-you-go billing method.
+	// The trial expiration time for pay-as-you-go.
 	//
 	// example:
 	//
@@ -448,15 +448,15 @@ type DescribeVersionConfigResponseBody struct {
 	PostPaidTrialExpiredTime *int64 `json:"PostPaidTrialExpiredTime,omitempty" xml:"PostPaidTrialExpiredTime,omitempty"`
 	// The highest protection edition for bound assets when the pay-as-you-go service for host and container security is enabled. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
 	// example:
 	//
@@ -472,21 +472,21 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// - Key:
 	//
-	//   - **VUL**: Vulnerability fixing module
+	//   - **VUL**: Vulnerability fixing module.
 	//
-	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
+	//   - **CSPM**: Cloud Security Posture Management (CSPM) module.
 	//
-	//   - **AGENTLESS**: Agentless detection module
+	//   - **AGENTLESS**: Agentless detection module.
 	//
-	//   - **SERVERLESS**: Serverless security module
+	//   - **SERVERLESS**: Serverless security module.
 	//
-	//   - **CTDR**: Cloud Threat Detection and Response (CTDR) module
+	//   - **CTDR**: Cloud Threat Detection and Response (CTDR) module.
 	//
-	//   - **POST_HOST**: Host and container security module
+	//   - **POST_HOST**: Host and container security module.
 	//
-	//   - **SDK**: Malicious file detection SDK module
+	//   - **SDK**: Malicious file detection SDK module.
 	//
-	//   - **RASP**: Application protection module
+	//   - **RASP**: Application protection module.
 	//
 	// - Value: 0 indicates disabled, and 1 indicates enabled.
 	//
@@ -494,7 +494,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// {"VUL":1}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The time when the pay-as-you-go billing method is enabled. The value is a UNIX timestamp. Unit: milliseconds.
+	// The time when pay-as-you-go is enabled. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -510,15 +510,15 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	PostPayStatus *int32 `json:"PostPayStatus,omitempty" xml:"PostPayStatus,omitempty"`
-	// The number of purchased application protection authorizations. Unit: authorizations per month.
+	// The number of purchased application protection licenses. Unit: licenses per month.
 	//
 	// example:
 	//
 	// 10
 	RaspCapacity *int64 `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
-	// The expiration UNIX timestamp of the Security Center instance. Unit: milliseconds.
+	// The UNIX timestamp when the instance expires. Unit: milliseconds.
 	//
-	// > If you do not complete the renewal within 7 days after the instance expires, your paid instance is downgraded to the Free Edition. You cannot continue to use the features of the paid edition, and you cannot view your previous Security Center configuration data and historical alerting data, such as DDoS alerting. In this case, you must repurchase the paid edition of Security Center to enable the service. For more information, see [Purchase Security Center](https://help.aliyun.com/document_detail/42308.html).
+	// > If you do not complete a renewal within 7 days after the instance expires, your paid instance is downgraded to the Free Edition. You will no longer be able to use the paid features, and your previous Security Center configuration data and historical alerting data (such as DDoS alerting) will become inaccessible. In this case, you must repurchase the service to enable the paid edition of Security Center. For more information, see [Purchase Security Center](https://help.aliyun.com/document_detail/42308.html).
 	//
 	// example:
 	//
@@ -530,13 +530,13 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// C2DC96D2-DD2E-49D9-A28E-85590475DF55
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of machines purchased for EDR.
+	// The number of machines purchased for Endpoint Detection and Response (EDR).
 	//
 	// example:
 	//
 	// 10
 	SasEdrClientAuthCount *string `json:"SasEdrClientAuthCount,omitempty" xml:"SasEdrClientAuthCount,omitempty"`
-	// The pay-as-you-go EDR instance ID.
+	// The instance ID of the pay-as-you-go EDR.
 	//
 	// example:
 	//
@@ -560,7 +560,7 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 1
 	SasEdrVersion *string `json:"SasEdrVersion,omitempty" xml:"SasEdrVersion,omitempty"`
-	// Indicates whether the log analysis feature is purchased. Valid values:
+	// Indicates whether log analysis is purchased. Valid values:
 	//
 	// - **0**: Not purchased.
 	//
@@ -580,13 +580,13 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 0
 	SasScreen *int32 `json:"SasScreen,omitempty" xml:"SasScreen,omitempty"`
-	// The canary release status for the pay-as-you-go SDK.
+	// The canary release status of the pay-as-you-go SDK.
 	//
 	// example:
 	//
 	// 1
 	SdkAiPostPaidGray *int32 `json:"SdkAiPostPaidGray,omitempty" xml:"SdkAiPostPaidGray,omitempty"`
-	// The number of malicious file detection SDK authorizations.
+	// The number of malicious file detection SDK licenses.
 	//
 	// example:
 	//
@@ -620,7 +620,7 @@ type DescribeVersionConfigResponseBody struct {
 	TrialVersion *int32 `json:"TrialVersion,omitempty" xml:"TrialVersion,omitempty"`
 	// Indicates whether the custom alert feature is enabled. Valid values:
 	//
-	// - **0**: Not enabled.
+	// - **0**: Disabled.
 	//
 	// - **2**: Enabled.
 	//
@@ -630,31 +630,31 @@ type DescribeVersionConfigResponseBody struct {
 	UserDefinedAlarms *int32 `json:"UserDefinedAlarms,omitempty" xml:"UserDefinedAlarms,omitempty"`
 	// The purchased Security Center edition. Valid values:
 	//
-	// - **1**: Free Edition
+	// - **1**: Free Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Advanced Edition.
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
-	// - **8**: Multi-edition
+	// - **8**: Multi-edition.
 	//
-	// - **10**: Value-added services only
+	// - **10**: Value-added service only.
 	//
 	// example:
 	//
 	// 3
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The number of purchased authorized cores.
+	// The number of purchased licensed cores.
 	//
 	// example:
 	//
 	// 10
 	VmCores *int32 `json:"VmCores,omitempty" xml:"VmCores,omitempty"`
-	// The number of purchased vulnerability fixing quotas. Unit: fixes per month.
+	// The number of purchased vulnerability fixing licenses. Unit: fixes per month.
 	//
 	// example:
 	//
@@ -662,7 +662,7 @@ type DescribeVersionConfigResponseBody struct {
 	VulFixCapacity *int64 `json:"VulFixCapacity,omitempty" xml:"VulFixCapacity,omitempty"`
 	// Indicates whether the web tamper-proofing service is enabled. Valid values:
 	//
-	// - **0**: Not enabled.
+	// - **0**: Disabled.
 	//
 	// - **1**: Enabled.
 	//
@@ -740,11 +740,11 @@ func (s *DescribeVersionConfigResponseBody) GetHoneypotCapacity() *int64 {
 	return s.HoneypotCapacity
 }
 
-func (s *DescribeVersionConfigResponseBody) GetHybridPaidGrayStatus() *string {
+func (s *DescribeVersionConfigResponseBody) GetHybridPaidGrayStatus() *DescribeVersionConfigResponseBodyHybridPaidGrayStatus {
 	return s.HybridPaidGrayStatus
 }
 
-func (s *DescribeVersionConfigResponseBody) GetHybridPaidModuleSwitchMap() *int32 {
+func (s *DescribeVersionConfigResponseBody) GetHybridPaidModuleSwitchMap() *string {
 	return s.HybridPaidModuleSwitchMap
 }
 
@@ -1017,12 +1017,12 @@ func (s *DescribeVersionConfigResponseBody) SetHoneypotCapacity(v int64) *Descri
 	return s
 }
 
-func (s *DescribeVersionConfigResponseBody) SetHybridPaidGrayStatus(v string) *DescribeVersionConfigResponseBody {
-	s.HybridPaidGrayStatus = &v
+func (s *DescribeVersionConfigResponseBody) SetHybridPaidGrayStatus(v *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) *DescribeVersionConfigResponseBody {
+	s.HybridPaidGrayStatus = v
 	return s
 }
 
-func (s *DescribeVersionConfigResponseBody) SetHybridPaidModuleSwitchMap(v int32) *DescribeVersionConfigResponseBody {
+func (s *DescribeVersionConfigResponseBody) SetHybridPaidModuleSwitchMap(v string) *DescribeVersionConfigResponseBody {
 	s.HybridPaidModuleSwitchMap = &v
 	return s
 }
@@ -1283,6 +1283,11 @@ func (s *DescribeVersionConfigResponseBody) SetWebLockAuthCount(v int64) *Descri
 }
 
 func (s *DescribeVersionConfigResponseBody) Validate() error {
+	if s.HybridPaidGrayStatus != nil {
+		if err := s.HybridPaidGrayStatus.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.TrialModuleList != nil {
 		for _, item := range s.TrialModuleList {
 			if item != nil {
@@ -1293,6 +1298,78 @@ func (s *DescribeVersionConfigResponseBody) Validate() error {
 		}
 	}
 	return nil
+}
+
+type DescribeVersionConfigResponseBodyHybridPaidGrayStatus struct {
+	// The canary release status of anti-ransomware elastic protection. Valid values:
+	//
+	// - 1: In canary release.
+	//
+	// - 0: Not in canary release.
+	//
+	// example:
+	//
+	// 1
+	ANTI_RANSOMWARE *int32 `json:"ANTI_RANSOMWARE,omitempty" xml:"ANTI_RANSOMWARE,omitempty"`
+	// The canary release status of Cloud Security Posture Management (CSPM) elastic protection. Valid values:
+	//
+	// - 1: In canary release.
+	//
+	// - 0: Not in canary release.
+	//
+	// example:
+	//
+	// 1
+	CSPM_INSTANCE *int32 `json:"CSPM_INSTANCE,omitempty" xml:"CSPM_INSTANCE,omitempty"`
+	// The canary release status of server elastic protection. Valid values:
+	//
+	// - 1: In canary release.
+	//
+	// - 0: Not in canary release.
+	//
+	// example:
+	//
+	// 1
+	HOST *int32 `json:"HOST,omitempty" xml:"HOST,omitempty"`
+}
+
+func (s DescribeVersionConfigResponseBodyHybridPaidGrayStatus) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeVersionConfigResponseBodyHybridPaidGrayStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) GetANTI_RANSOMWARE() *int32 {
+	return s.ANTI_RANSOMWARE
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) GetCSPM_INSTANCE() *int32 {
+	return s.CSPM_INSTANCE
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) GetHOST() *int32 {
+	return s.HOST
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) SetANTI_RANSOMWARE(v int32) *DescribeVersionConfigResponseBodyHybridPaidGrayStatus {
+	s.ANTI_RANSOMWARE = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) SetCSPM_INSTANCE(v int32) *DescribeVersionConfigResponseBodyHybridPaidGrayStatus {
+	s.CSPM_INSTANCE = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) SetHOST(v int32) *DescribeVersionConfigResponseBodyHybridPaidGrayStatus {
+	s.HOST = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBodyHybridPaidGrayStatus) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeVersionConfigResponseBodyTrialModuleList struct {

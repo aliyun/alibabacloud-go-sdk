@@ -35,18 +35,20 @@ type iAddCloudVendorAccountAKRequest interface {
 	GetVendor() *string
 	SetVendorAuthAlias(v string) *AddCloudVendorAccountAKRequest
 	GetVendorAuthAlias() *string
+	SetVendorUserName(v string) *AddCloudVendorAccountAKRequest
+	GetVendorUserName() *string
 }
 
 type AddCloudVendorAccountAKRequest struct {
-	// The AccessKey type. Valid values:
+	// The AccessKey (AK) type. Valid values:
 	//
-	// - **primary**: Primary account
+	// - **primary**: primary account
 	//
-	// - **sub**: Sub-account
+	// - **sub**: sub-account
 	//
 	// - **ctdr**: Agentic SOC
 	//
-	// 	Warning: When the vendor is **CHAITIN**, **FORTINET**, **THREATBOOK**, or **WIZ**, set this parameter to **ctdr**. When the vendor is **OracleCloud**, **google**, **BaiduCloud**, or **StateCloud**, set this parameter to **sub**.
+	// 	Warning: When the vendor is **CHAITIN**, **FORTINET**, **THREATBOOK**, or **WIZ**, set this parameter to **ctdr**. When the vendor is **OracleCloud**, **google**, **BaiduCloud**, or **StateCloud**, set this parameter to **sub**.</warning>
 	//
 	// This parameter is required.
 	//
@@ -54,13 +56,13 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// primary
 	AkType *string `json:"AkType,omitempty" xml:"AkType,omitempty"`
-	// The list of modules associated with the AccessKey.
+	// The list of modules associated with the AK.
 	//
-	// When AkType is set to ctdr, this parameter is required and at least one module must be provided, such as SIEM, HOST, or CSPM. If this parameter is not provided, the API returns HTTP 400 with the error code -101.
+	// When AkType is set to ctdr, this parameter is required. You must specify at least one module, such as SIEM, HOST, or CSPM. If this parameter is not provided, the API returns HTTP 400 with the error code -101.
 	AuthModules []*string `json:"AuthModules,omitempty" xml:"AuthModules,omitempty" type:"Repeated"`
 	// The account ID.
 	//
-	// > The account ID of the connected cloud vendor. This parameter is required when the permission description includes Cloud Threat Detection and Response.
+	// > The account ID of the connected cloud vendor. This parameter is required when the permission description includes Threat Detection and Response.
 	//
 	// example:
 	//
@@ -80,9 +82,9 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// global
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The extension information.
+	// The extended information.
 	//
-	// > This parameter is used to record the extension information of different vendors.
+	// > This parameter is used to record the extended information of different vendors.
 	//
 	// Google Cloud is accessed through a service account. ExtendInfo stores the JSON-formatted service key file, excluding the private_key_id and zprivate_key fields. The file contains the following fields: type, project_id, client_email, client_id, auth_uri, token_uri, auth_provider_x509_cert_url, client_x509_cert_url, and universe_domain. When the vendor is **OracleCloud**, this parameter contains the **fingerprint*	- key, which indicates the fingerprint.
 	//
@@ -100,53 +102,53 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The list of regions used to verify the AccessKey information. This parameter is valid only when **Vendor*	- is set to **AWS*	- or **OracleCloud**.
+	// The list of regions used for AK information verification. This parameter is valid only when **Vendor*	- is set to **AWS*	- or **OracleCloud**.
 	//
-	// >You can call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to query the regions.
+	// >You can call the [ListCloudVendorRegions](~~ListCloudVendorRegions~~) operation to obtain this parameter.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The AccessKey ID. Valid values:
+	// The AK parameter ID. Valid values:
 	//
-	// - If AkType is set to primary:
+	// - When AkType is set to primary:
 	//
-	//   - **Tencent**: AccessKey ID of the primary account
+	// - - **Tencent**: AccessKey ID of the primary account
 	//
-	//   - **HUAWEICLOUD**: AccessKey ID of the primary account
+	// - - **HUAWEICLOUD**: AccessKey ID of the primary account
 	//
-	//   - **Azure**: Client ID
+	// - - **Azure**: Client ID
 	//
-	//   - **AWS**: AccessKey ID of the primary account
+	// - - **AWS**: AccessKey ID of the primary account
 	//
-	//   - **VOLCENGINE**: AccessKey ID of the primary account
+	// - - **VOLCENGINE**: AccessKey ID of the primary account
 	//
-	//   - **KingsoftCloud**: AccessKey ID of the primary account
+	// - - **KingsoftCloud**: AccessKey ID of the primary account
 	//
-	//   - **UCloud**: AccessKey ID of the primary account
+	// - - **UCloud**: AccessKey ID of the primary account
 	//
-	// - If AkType is set to sub:
+	// - When AkType is set to sub:
 	//
-	//   - **Tencent**: AccessKey ID of the sub-account
+	// - - **Tencent**: AccessKey ID of the sub-account
 	//
-	//   - **HUAWEICLOUD**: AccessKey ID of the sub-account
+	// - - **HUAWEICLOUD**: AccessKey ID of the sub-account
 	//
-	//   - **Azure**: Client ID
+	// - - **Azure**: Client ID
 	//
-	//   - **AWS**: AccessKey ID of the sub-account
+	// - - **AWS**: AccessKey ID of the sub-account
 	//
-	//   - **VOLCENGINE**: AccessKey ID of the sub-account
+	// - - **VOLCENGINE**: AccessKey ID of the sub-account
 	//
-	//   - **google**: private_key_id
+	// - - **google**: private_key_id
 	//
-	//   - **OracleCloud**: OCID of the sub-user
+	// - - **OracleCloud**: OCID of the sub-user
 	//
-	//   - **BaiduCloud**: AccessKey ID of the sub-account
+	// - - **BaiduCloud**: AccessKey ID of the sub-account
 	//
-	//   - **KingsoftCloud**: AccessKey ID of the sub-account
+	// - - **KingsoftCloud**: AccessKey ID of the sub-account
 	//
-	//   - **UCloud**: AccessKey ID of the sub-account
+	// - - **UCloud**: AccessKey ID of the sub-account
 	//
-	//   - **StateCloud**: AccessKey ID of the sub-account
+	// - - **StateCloud**: AccessKey ID of the sub-account
 	//
-	// >If AkType is set to **primary**, this value is the AccessKey ID of the primary account in the third-party cloud. If AkType is set to **sub**, this value is the AccessKey ID of the sub-account in the third-party cloud. For **Azure**, this parameter is not differentiated and the value is the **appId*	- of the authentication information. Google Cloud is accessed through a service account, and AkType defaults to **sub**. The value is obtained from the private_key_id property in the JSON-formatted service key file. If the vendor is **OracleCloud**, this value is the OCID of the sub-user.
+	// >If AkType is set to **primary**, this value is the secret ID of the primary account in the third-party cloud. If AkType is set to **sub**, this value is the AccessKey ID of the sub-account in the third-party cloud. For **Azure**, no distinction is made, and this value is the **appId*	- of the authentication information. Google Cloud is accessed through a service account, AkType defaults to sub, and this value is obtained from the private_key_id property of the JSON-formatted service key file. When the vendor is **OracleCloud**, this value is the OCID of the sub-user.
 	//
 	// This parameter is required.
 	//
@@ -154,47 +156,47 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// 45GLRV4SOT0YFB****
 	SecretId *string `json:"SecretId,omitempty" xml:"SecretId,omitempty"`
-	// The AccessKey secret. Valid values:
+	// The AK parameter secret. Valid values:
 	//
-	// - If AkType is set to primary:
+	// - When AkType is set to primary:
 	//
-	//   - **Tencent**: AccessKey secret of the primary account
+	// - - **Tencent**: SecretAccessKey of the primary account
 	//
-	//   - **HUAWEICLOUD**: AccessKey secret of the primary account
+	// - - **HUAWEICLOUD**: SecretAccessKey of the primary account
 	//
-	//   - **Azure**: Client secret
+	// - - **Azure**: Client secret
 	//
-	//   - **AWS**: AccessKey secret of the primary account
+	// - - **AWS**: SecretAccessKey of the primary account
 	//
-	//   - **VOLCENGINE**: AccessKey secret of the primary account
+	// - - **VOLCENGINE**: SecretAccessKey of the primary account
 	//
-	//   - **KingsoftCloud**: AccessKey secret of the primary account
+	// - - **KingsoftCloud**: SecretAccessKey of the primary account
 	//
-	//   - **UCloud**: AccessKey secret of the primary account
+	// - - **UCloud**: SecretAccessKey of the primary account
 	//
-	// - If AkType is set to sub:
+	// - When AkType is set to sub:
 	//
-	//   - **Tencent**: AccessKey secret of the sub-account
+	// - - **Tencent**: SecretAccessKey of the sub-account
 	//
-	//   - **HUAWEICLOUD**: AccessKey secret of the sub-account
+	// - - **HUAWEICLOUD**: SecretAccessKey of the sub-account
 	//
-	//   - **Azure**: Client secret
+	// - - **Azure**: Client secret
 	//
-	//   - **AWS**: AccessKey secret of the sub-account
+	// - - **AWS**: SecretAccessKey of the sub-account
 	//
-	//   - **google**: private_key
+	// - - **google**: private_key
 	//
-	//   - **OracleCloud**: private_key of the sub-user
+	// - - **OracleCloud**: private_key of the sub-user
 	//
-	//   - **BaiduCloud**: AccessKey secret of the sub-account
+	// - - **BaiduCloud**: SecretAccessKey of the sub-account
 	//
-	//   - **KingsoftCloud**: AccessKey secret of the sub-account
+	// - - **KingsoftCloud**: SecretAccessKey of the sub-account
 	//
-	//   - **UCloud**: AccessKey secret of the sub-account
+	// - - **UCloud**: SecretAccessKey of the sub-account
 	//
-	//   - **StateCloud**: AccessKey secret of the sub-account
+	// - - **StateCloud**: SecretAccessKey of the sub-account
 	//
-	// >If AkType is set to **primary**, this value is the AccessKey secret of the primary account in the third-party cloud. If AkType is set to **sub**, this value is the AccessKey secret of the sub-account in the third-party cloud. For **Azure**, this parameter is not differentiated and the value is the **password*	- of the authentication information. Google Cloud is accessed through a service account, and AkType defaults to **sub**. The value is obtained from the private_key property in the JSON-formatted service key file. For **OracleCloud**, this value is obtained from the content of the corresponding private key file.
+	// >If AkType is set to **primary**, this value is the Secret Access Key of the primary account in the third-party cloud. If AkType is set to **sub**, this value is the Secret Access Key of the sub-account in the third-party cloud. For **Azure**, no distinction is made, and this value is the **password*	- of the authentication information. Google Cloud is accessed through a service account, AkType defaults to sub, and this value is obtained from the private_key property of the JSON-formatted service key file. For **OracleCloud**, this value is obtained from the content of the corresponding private key file.
 	//
 	// This parameter is required.
 	//
@@ -204,11 +206,11 @@ type AddCloudVendorAccountAKRequest struct {
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The list of subscription IDs.
 	//
-	// > This parameter is deprecated.
+	// > **[Deprecated]*	- This parameter is no longer valid.
 	SubscriptionIds []*string `json:"SubscriptionIds,omitempty" xml:"SubscriptionIds,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
-	// > This parameter is valid only when Vendor is set to **Azure*	- or **OracleCloud**.
+	// >This parameter is valid only when Vendor is set to **Azure*	- or **OracleCloud**.
 	//
 	// example:
 	//
@@ -252,14 +254,22 @@ type AddCloudVendorAccountAKRequest struct {
 	//
 	// AWS
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
-	// The name of the AccessKey account.
+	// The name of the AK account.
 	//
-	// > This parameter is used to identify the account to which the third-party host assets belong.
+	// >This parameter is used to identify the account to which the third-party host assets belong.
 	//
 	// example:
 	//
 	// test
 	VendorAuthAlias *string `json:"VendorAuthAlias,omitempty" xml:"VendorAuthAlias,omitempty"`
+	// The account name corresponding to the SecretId.
+	//
+	// > This parameter is required when **Vendor*	- is set to **UCloud**.
+	//
+	// example:
+	//
+	// test
+	VendorUserName *string `json:"VendorUserName,omitempty" xml:"VendorUserName,omitempty"`
 }
 
 func (s AddCloudVendorAccountAKRequest) String() string {
@@ -320,6 +330,10 @@ func (s *AddCloudVendorAccountAKRequest) GetVendor() *string {
 
 func (s *AddCloudVendorAccountAKRequest) GetVendorAuthAlias() *string {
 	return s.VendorAuthAlias
+}
+
+func (s *AddCloudVendorAccountAKRequest) GetVendorUserName() *string {
+	return s.VendorUserName
 }
 
 func (s *AddCloudVendorAccountAKRequest) SetAkType(v string) *AddCloudVendorAccountAKRequest {
@@ -384,6 +398,11 @@ func (s *AddCloudVendorAccountAKRequest) SetVendor(v string) *AddCloudVendorAcco
 
 func (s *AddCloudVendorAccountAKRequest) SetVendorAuthAlias(v string) *AddCloudVendorAccountAKRequest {
 	s.VendorAuthAlias = &v
+	return s
+}
+
+func (s *AddCloudVendorAccountAKRequest) SetVendorUserName(v string) *AddCloudVendorAccountAKRequest {
+	s.VendorUserName = &v
 	return s
 }
 

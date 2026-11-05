@@ -20,7 +20,7 @@ type iChangeCheckScopeConfigInstanceResponseBody interface {
 }
 
 type ChangeCheckScopeConfigInstanceResponseBody struct {
-	// The status code returned by the request.
+	// The status code returned by the operation.
 	//
 	// example:
 	//

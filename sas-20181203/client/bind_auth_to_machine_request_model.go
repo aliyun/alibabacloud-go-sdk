@@ -58,64 +58,64 @@ type BindAuthToMachineRequest struct {
 	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
 	// Specifies whether to enable automatic binding. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Disabled
 	//
-	// - **1**: Enabled.
+	// - **1**: Enabled
 	//
 	// example:
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// The collection of UUIDs to bind.
+	// The set of UUIDs to be bound.
 	//
-	// > **Bind*	- and **UnBind*	- cannot both be empty.
+	// > **Bind*	- and **UnBind*	- cannot be empty at the same time.
 	Bind []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
 	// Specifies whether to bind all assets. Default value: **false**. Valid values:
 	//
-	// - **true**: Bind all assets.
+	// - **true**: Yes
 	//
-	// - **false**: Do not bind all assets.
+	// - **false**: No
 	//
 	// example:
 	//
 	// true
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You must use different tokens for different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The conditions for searching for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
+	// Sets the conditions for searching assets. This parameter is in JSON format. Pay attention to the case sensitivity when you specify this parameter.
 	//
-	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"riskStatus","value":"YES"},{"name":"internetIp","value":"1.2.XX.XX"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// Specifies whether to perform a dry run. Valid values: true: performs a dry run without executing the actual operation. false: performs the actual operation. Default value: false.
+	// Specifies whether to only precheck the request. true: only prechecks the request and does not perform the actual operation. false: performs the request normally. Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether this is a pre-binding operation. Valid values:
+	// Specifies whether the operation is a pre-binding operation. Valid values:
 	//
-	// - **0**: No.
+	// - **0**: No
 	//
-	// - **1**: Yes.
+	// - **1**: Yes
 	//
 	//
-	// > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
+	// > After pre-binding is enabled, the system automatically binds the corresponding number of licenses of the specified version to the specified servers after the purchase is completed.
 	//
 	// example:
 	//
 	// 1
 	IsPreBind *int32 `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
-	// The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
+	// Specifies the logical relationship among multiple search conditions. Default value: **OR**. Valid values:
 	//
-	// - **OR**: The search conditions are evaluated with a logical OR.
+	// - **OR**: Specifies the **OR*	- logical relationship among multiple conditions.
 	//
-	// - **AND**: The search conditions are evaluated with a logical AND.
+	// - **AND**: Specifies the **AND*	- logical relationship among multiple conditions.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The order version associated with the pre-binding. Valid values:
+	// The version of the order associated with the pre-binding operation. Valid values:
 	//
 	// - **level7**: Anti-virus Edition
 	//
@@ -125,30 +125,30 @@ type BindAuthToMachineRequest struct {
 	//
 	// - **level8**: Ultimate Edition
 	//
-	// - **level10**: Value-added service only
+	// - **level10**: Value-added services only
 	//
 	// example:
 	//
 	// level2
 	NtmVersion *string `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
-	// The order ID associated with the pre-binding.
+	// The ID of the order associated with the pre-binding operation.
 	//
 	// example:
 	//
 	// 233016**0482
 	PreBindOrderId *int64  `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
 	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the member account in the resource folder (Alibaba Cloud account).
+	// The ID of the member accounts in the resource folder. The ID is an Alibaba Cloud account ID.
 	//
-	// > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The collection of UUIDs to unbind.
+	// The set of UUIDs to be unbound.
 	//
-	// > **Bind*	- and **UnBind*	- cannot both be empty.
+	// > **Bind*	- and **UnBind*	- cannot be empty at the same time.
 	UnBind []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
 }
 

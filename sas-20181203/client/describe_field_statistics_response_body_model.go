@@ -86,7 +86,7 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 5
 	BaiduInstanceCount *int32 `json:"BaiduInstanceCount,omitempty" xml:"BaiduInstanceCount,omitempty"`
-	// The number of CPU cores of exposed assets.
+	// The number of compute cores for exposed assets.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 10
 	ImportantAssetCount *int32 `json:"ImportantAssetCount,omitempty" xml:"ImportantAssetCount,omitempty"`
-	// The total number of CPU cores of all assets of the specified type. If no asset type is specified, this value is the sum of the CPU cores of all servers and cloud services in your assets.
+	// The total number of compute cores for all assets under the specified asset type. If you do not specify an asset type, this value is the sum of compute cores for all servers and cloud services in your assets.
 	//
 	// example:
 	//
 	// 301
 	InstanceCoreCount *int64 `json:"InstanceCoreCount,omitempty" xml:"InstanceCoreCount,omitempty"`
-	// The total number of assets of the specified type. If no asset type is specified, this value is the sum of all servers and cloud services in your assets.
+	// The total number of assets under the specified asset type. If you do not specify an asset type, this value is the sum of all servers and cloud services in your assets.
 	//
 	// example:
 	//
 	// 100
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The number of tasks for the specified asset type. If no asset type is specified, this value is the sum of tasks for all servers and cloud services in your assets.
+	// The number of tasks under the specified asset type. If you do not specify an asset type, this value is the sum of all servers and cloud services in your assets.
 	//
 	// example:
 	//
@@ -158,13 +158,13 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 5
 	KingsoftInstanceCount *int32 `json:"KingsoftInstanceCount,omitempty" xml:"KingsoftInstanceCount,omitempty"`
-	// The number of CPU cores of newly added servers.
+	// The number of compute cores for new servers.
 	//
 	// example:
 	//
 	// 30
 	NewInstanceCoreCount *int64 `json:"NewInstanceCoreCount,omitempty" xml:"NewInstanceCoreCount,omitempty"`
-	// The number of newly added servers.
+	// The number of new servers.
 	//
 	// example:
 	//
@@ -176,19 +176,19 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 10
 	NoRiskInstanceCount *int32 `json:"NoRiskInstanceCount,omitempty" xml:"NoRiskInstanceCount,omitempty"`
-	// The number of Asset Types that do not attach or have no authorization under the specified asset type.
+	// The number of unauthorized assets under the specified asset type.
 	//
 	// example:
 	//
 	// 10
 	NotBindMachineInstanceCount *int32 `json:"NotBindMachineInstanceCount,omitempty" xml:"NotBindMachineInstanceCount,omitempty"`
-	// The number of CPU cores of stopped servers.
+	// The number of compute cores for servers that are not running or powered on.
 	//
 	// example:
 	//
 	// 30
 	NotRunningStatusCoreCount *int64 `json:"NotRunningStatusCoreCount,omitempty" xml:"NotRunningStatusCoreCount,omitempty"`
-	// The number of stopped servers.
+	// The number of servers that are not running or powered on.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 11
 	RegionCount *int32 `json:"RegionCount,omitempty" xml:"RegionCount,omitempty"`
-	// The number of CPU cores of assets with risks.
+	// The number of compute cores for assets with risks.
 	//
 	// example:
 	//
@@ -272,7 +272,7 @@ type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	//
 	// 1
 	UnKnowStatusInstanceCount *int32 `json:"UnKnowStatusInstanceCount,omitempty" xml:"UnKnowStatusInstanceCount,omitempty"`
-	// The number of CPU cores of unprotected assets.
+	// The number of compute cores for unprotected assets.
 	//
 	// example:
 	//

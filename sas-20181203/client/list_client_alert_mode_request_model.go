@@ -14,11 +14,11 @@ type iListClientAlertModeRequest interface {
 }
 
 type ListClientAlertModeRequest struct {
-	// The protection mode. Valid values:
+	// Specifies the protection mode. Valid values:
 	//
-	// - **strict**: Strict mode. This mode has a certain risk of false positives. Use this mode during critical event protection periods.
+	// - **strict**: Strict mode. Defense mode has a certain risk of false positives and is recommended for use during critical event protection.
 	//
-	// - **balance**: Balanced mode. This mode detects more suspicious risks while reducing false positives.
+	// - **balance**: Balance mode. Defense mode detects more suspicious risks while reducing false positives.
 	//
 	// example:
 	//

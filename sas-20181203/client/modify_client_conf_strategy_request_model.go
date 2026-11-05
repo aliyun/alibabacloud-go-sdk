@@ -50,13 +50,13 @@ type ModifyClientConfStrategyRequest struct {
 	//
 	// advanced
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The UUID of the asset to query. You must specify at least one of the Uuid and Uuids parameters. Otherwise, the API returns a 400 error. The Uuid parameter specifies a single asset.
+	// The UUID of the asset to query. You must specify either the Uuid parameter for a single asset or the Uuids parameter for multiple assets. Otherwise, the API returns a 400 error.
 	//
 	// example:
 	//
 	// 4fe8e1cd-3c37-4851-b9de-124da32c****
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The UUIDs of asset instances. A maximum of 500 UUIDs can be specified at a time. You must specify at least one of the Uuids and Uuid parameters. Otherwise, the API returns a 400 error. The Uuids parameter specifies multiple assets in a batch.
+	// The UUIDs of the asset instances. You can specify up to 500 UUIDs at a time. You must specify either the Uuids parameter for multiple assets or the Uuid parameter for a single asset. Otherwise, the API returns a 400 error.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }
 

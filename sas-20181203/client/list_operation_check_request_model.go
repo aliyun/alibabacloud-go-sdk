@@ -24,17 +24,17 @@ type iListOperationCheckRequest interface {
 }
 
 type ListOperationCheckRequest struct {
-	// The check item ID.
+	// The ID of the check item.
 	//
-	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain this parameter.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to retrieve this parameter.
 	//
-	// This parameter is required. If you do not specify this parameter, the API returns a 400 error.
+	// This parameter is required. If this parameter is not provided, the operation returns the CspmParamIllegal (invalid parameter) error.
 	//
 	// example:
 	//
 	// 23
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The timestamp of the task end time to query. Unit: milliseconds.
+	// The timestamp of the end time of the queried task. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -50,21 +50,25 @@ type ListOperationCheckRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The information about the instances on which the operation is performed.
+	// The information about the instances to be operated.
+	//
+	// > The information about each instance must include Vendor, RegionId, and InstanceId. You must provide at least one instance. If no instance is provided or the value is empty, the operation returns the CspmParamIllegal (invalid parameter) error.
 	//
 	// This parameter is required.
 	OperationTaskInstances []*ListOperationCheckRequestOperationTaskInstances `json:"OperationTaskInstances,omitempty" xml:"OperationTaskInstances,omitempty" type:"Repeated"`
-	// The timestamp of the task start time to query. Unit: milliseconds.
+	// The timestamp of the start time of the queried task. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719923175000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task type. Valid values:
+	// The type of the task. Valid values:
 	//
-	// - **REPAIR**: fix task
+	// - **REPAIR**: repair task
 	//
 	// - **ROLLBACK**: rollback task
+	//
+	// > If the value is invalid, the default value REPAIR is used.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +154,7 @@ func (s *ListOperationCheckRequest) Validate() error {
 }
 
 type ListOperationCheckRequestOperationTaskInstances struct {
-	// The cloud asset instance ID.
+	// The instance ID of the cloud asset.
 	//
 	// example:
 	//
@@ -162,7 +166,7 @@ type ListOperationCheckRequestOperationTaskInstances struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The asset vendor. Valid values:
+	// The vendor of the asset. Valid values:
 	//
 	// - **ALIYUN**: Alibaba Cloud
 	//

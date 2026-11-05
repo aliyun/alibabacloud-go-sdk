@@ -16,7 +16,7 @@ type iCreateUnknownThreatDetectStrategyResponseBody interface {
 }
 
 type CreateUnknownThreatDetectStrategyResponseBody struct {
-	// The policy ID.
+	// The ID of the policy.
 	//
 	// example:
 	//

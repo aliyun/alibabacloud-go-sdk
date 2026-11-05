@@ -54,11 +54,11 @@ type CreateOssScanConfigRequest struct {
 	//
 	// true
 	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
-	// Specifies whether OSS buckets are automatically added to this policy. Valid values:
+	// Specifies whether to add new OSS buckets to this policy by default. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: yes.
 	//
-	// - **false**: Disabled.
+	// - **false**: no.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type CreateOssScanConfigRequest struct {
 	AutoAdd *int32 `json:"AutoAdd,omitempty" xml:"AutoAdd,omitempty"`
 	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
+	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. If the number of files exceeds this value, decompression stops, but the scan of already decompressed files is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression layers when nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops immediately. The scanning of files that have already been decompressed is not affected.
+	// The maximum number of decompression layers for nested archives. Minimum value: 1. Maximum value: 5. If the nesting depth exceeds this value, decompression stops, but the scan of already decompressed files is not affected.
 	//
 	// example:
 	//
@@ -86,19 +86,25 @@ type CreateOssScanConfigRequest struct {
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
 	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values: true: performs only a dry run without performing the actual request. false: performs the actual request. Default value: false.
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - **true**: performs a dry run without executing the actual operation.
+	//
+	// - **false**: executes the actual operation.
+	//
+	// Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable the policy. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: enabled.
 	//
-	// - **0**: Disable.
+	// - **0**: disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The scan stop time, in the HH:mm:ss format.
+	// The end time of the scan, in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -106,9 +112,9 @@ type CreateOssScanConfigRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The file prefix list.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The list of file suffixes to scan.
+	// The list of file name extensions to scan.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
+	// The timestamp after which the files to be scanned were last modified. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -126,9 +132,9 @@ type CreateOssScanConfigRequest struct {
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The scan schedule. The number indicates the day of the week.
+	// The days of the week when the scan is performed, represented by numbers.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
-	// The business source. Valid values:
+	// The source service. Valid values:
 	//
 	// - **OSS**: OSS.
 	//
@@ -138,7 +144,7 @@ type CreateOssScanConfigRequest struct {
 	//
 	// OSS
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The scan start time, in the HH:mm:ss format.
+	// The start time of the scan, in the HH:mm:ss format.
 	//
 	// example:
 	//

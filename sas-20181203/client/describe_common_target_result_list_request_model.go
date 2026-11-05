@@ -16,23 +16,23 @@ type iDescribeCommonTargetResultListRequest interface {
 }
 
 type DescribeCommonTargetResultListRequest struct {
-	// The IP address of the access source to query.
+	// The source IP address to query.
 	//
 	// example:
 	//
 	// 113.57.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The configuration rule type. Valid values:
+	// The type of the configuration rule. Valid values:
 	//
-	// - **webshell_timescan**: web shell scan.
+	// - **webshell_timescan**: Web shell detection and removal.
 	//
-	// - **aliscriptengine**: deep detection engine.
+	// - **aliscriptengine**: Deep inspection engine.
 	//
-	// - **alidetect**: installation scope of the local file detection engine.
+	// - **alidetect**: Installation scope of the local file detection engine.
 	//
-	// - **alidetect-scan-enable**: detection scope of the local file detection engine.
+	// - **alidetect-scan-enable**: Scan scope of the local file detection engine.
 	//
-	// > You can call [ListClientUserDefineRules](~~ListClientUserDefineRules~~) and [ListSystemClientRules](~~ListSystemClientRules~~) to obtain more custom and system-configured rule types.
+	// > You can call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) and [ListSystemClientRules](~~ListSystemClientRules~~) operations to obtain more custom and system-defined rule types.
 	//
 	// This parameter is required.
 	//

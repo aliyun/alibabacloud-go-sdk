@@ -16,17 +16,17 @@ type iCheckSecurityEventIdRequest interface {
 }
 
 type CheckSecurityEventIdRequest struct {
-	// The IDs of alert events. You can specify up to 100 IDs. If you do not specify this parameter, the value of the response parameter **Data*	- is **false**. The value false indicates that no alert events are generated on the server.
+	// The IDs of the alert events to be verified. You can specify up to 100 alert event IDs. If this parameter is left empty, the verification result **Data*	- defaults to **false**, indicating that the events do not belong to the specified server.
 	//
-	// > You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the IDs of alert events.
+	// > Call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to retrieve this parameter.
 	//
 	// example:
 	//
 	// ["1234567","98765432"]
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
-	// The UUID of the server.
+	// The UUID of the server to be verified.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to retrieve this parameter.
 	//
 	// This parameter is required.
 	//

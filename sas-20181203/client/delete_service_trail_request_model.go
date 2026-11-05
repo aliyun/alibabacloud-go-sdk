@@ -16,9 +16,9 @@ type iDeleteServiceTrailRequest interface {
 type DeleteServiceTrailRequest struct {
 	// The region of the Security Center instance. Valid values:
 	//
-	// - **cn-hangzhou:*	- China
+	// - **cn-hangzhou**: Center
 	//
-	// - **ap-southeast-1:*	- Singapore.
+	// - **ap-southeast-1**: Singapore
 	//
 	// example:
 	//

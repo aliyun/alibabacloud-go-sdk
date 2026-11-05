@@ -14,7 +14,7 @@ type iGetDockerhubImageRiskStatisticRequest interface {
 }
 
 type GetDockerhubImageRiskStatisticRequest struct {
-	// The risk types that you want to query.
+	// The image risk types to query. This parameter is required. You must specify at least one valid value. If this parameter is not specified or all specified values are invalid, the API returns HTTP 400 and the error code -101.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
 }
 
