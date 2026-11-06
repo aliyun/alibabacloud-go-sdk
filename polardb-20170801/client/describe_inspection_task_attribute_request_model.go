@@ -16,7 +16,7 @@ type iDescribeInspectionTaskAttributeRequest interface {
 }
 
 type DescribeInspectionTaskAttributeRequest struct {
-	// The ID of the region where the task is located.
+	// The ID of the region where the task resides.
 	//
 	// example:
 	//

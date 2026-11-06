@@ -66,7 +66,7 @@ func (s *DescribeHistoryEventsStatResponseBody) Validate() error {
 }
 
 type DescribeHistoryEventsStatResponseBodyItems struct {
-	// The category of the system event. For example, Exception indicates an exception event.
+	// The system event category. For example, Exception indicates an exception event.
 	//
 	// example:
 	//

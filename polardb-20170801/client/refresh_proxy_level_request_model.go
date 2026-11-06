@@ -48,13 +48,13 @@ type RefreshProxyLevelRequest struct {
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The latest time to start the proxy specification upgrade, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+	// The latest time to execute the proxy specification upgrade. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2022-04-28T14:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to start the proxy specification upgrade, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+	// The earliest time to execute the proxy specification upgrade. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

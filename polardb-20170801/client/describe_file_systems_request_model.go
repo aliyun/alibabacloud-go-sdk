@@ -20,13 +20,13 @@ type iDescribeFileSystemsRequest interface {
 }
 
 type DescribeFileSystemsRequest struct {
-	// The absolute path of the directory to query. If you do not specify this parameter, the default path is used.
+	// The absolute path of the directory to query. If not specified, the default path is used.
 	//
 	// example:
 	//
 	// /test
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The maximum number of records to return for each request.
+	// The maximum number of records to return per request.
 	//
 	// example:
 	//

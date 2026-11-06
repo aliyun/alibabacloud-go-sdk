@@ -44,7 +44,7 @@ type iDescribeDataProcessJobAttributeResponseBody interface {
 }
 
 type DescribeDataProcessJobAttributeResponseBody struct {
-	// The time when the job was created, in RFC 3339 format.
+	// The time when the task was created, in RFC 3339 format.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type DescribeDataProcessJobAttributeResponseBody struct {
 	//
 	// testdb
 	DestinationPath *string `json:"DestinationPath,omitempty" xml:"DestinationPath,omitempty"`
-	// The destination type. Currently, only PolarDB is supported.
+	// The type of the destination. Currently, only PolarDB is supported.
 	//
 	// example:
 	//
 	// PolarDB
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The ID of the data processing job.
+	// The ID of the data processing task.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeDataProcessJobAttributeResponseBody struct {
 	//
 	// Full
 	ProcessingMode *string `json:"ProcessingMode,omitempty" xml:"ProcessingMode,omitempty"`
-	// The ID of the region where the data processing job is located.
+	// The region ID of the region where the data processing task is located.
 	//
 	// example:
 	//
@@ -116,19 +116,19 @@ type DescribeDataProcessJobAttributeResponseBody struct {
 	//
 	// /data/input
 	SourcePath *string `json:"SourcePath,omitempty" xml:"SourcePath,omitempty"`
-	// The data source type. Currently, only PolarFS is supported.
+	// The type of the data source. Currently, only PolarFS is supported.
 	//
 	// example:
 	//
 	// PolarFS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The status of the data processing job.
+	// The status of the data processing task.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the template used by the job.
+	// The ID of the template used by the task.
 	//
 	// example:
 	//

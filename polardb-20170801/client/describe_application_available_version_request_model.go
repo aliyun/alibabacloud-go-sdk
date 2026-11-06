@@ -106,7 +106,7 @@ type DescribeApplicationAvailableVersionRequestComponents struct {
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only by raycluster applications.
+	// The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only for raycluster applications.
 	//
 	// example:
 	//

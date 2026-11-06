@@ -30,7 +30,7 @@ type DescribeInspectionReportListRequest struct {
 	//
 	// 2026-11-04T02:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of the page to return. Pages start from 1. Maximum value: 2147483647. Default value: 1.
+	// The page number. Pages start from 1. Maximum value: 2147483647. Default value: 1.
 	//
 	// example:
 	//

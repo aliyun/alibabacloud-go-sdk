@@ -28,19 +28,19 @@ type iDescribeFileSystemsResponseBody interface {
 }
 
 type DescribeFileSystemsResponseBody struct {
-	// The ID of the bucket.
+	// The bucket ID.
 	//
 	// example:
 	//
 	// bucket-456
 	BucketId *string `json:"BucketId,omitempty" xml:"BucketId,omitempty"`
-	// The total number of files that meet the specified conditions.
+	// The total number of files that match the conditions.
 	//
 	// example:
 	//
 	// 100
 	FileCount *int32 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
-	// The ID of the file system.
+	// The file system ID.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeFileSystemsResponseBody struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The list of files.
 	FileSystems []*DescribeFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
-	// Indicates whether the results are truncated. If the value is true, you can use NextToken to query subsequent results.
+	// Indicates whether the results are truncated. If true, you can use NextToken to retrieve subsequent results.
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
 	// The maximum number of records returned for this request.
 	//
@@ -62,7 +62,7 @@ type DescribeFileSystemsResponseBody struct {
 	//
 	// nextToken456
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -164,19 +164,19 @@ func (s *DescribeFileSystemsResponseBody) Validate() error {
 }
 
 type DescribeFileSystemsResponseBodyFileSystems struct {
-	// The capacity of the file.
+	// The file capacity.
 	//
 	// example:
 	//
 	// 100GB
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// test.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The time when the file was last modified. The time is in the RFC 3339 UTC format.
+	// The last modified time of the file, in RFC 3339 UTC format.
 	//
 	// example:
 	//

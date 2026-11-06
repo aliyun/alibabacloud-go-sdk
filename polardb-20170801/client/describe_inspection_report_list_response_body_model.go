@@ -30,7 +30,7 @@ type DescribeInspectionReportListResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeInspectionReportListResponseBodyReportItems struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether this is the latest inspection report. The value is returned as a string.
+	// Indicates whether the inspection report is the latest report. The value is returned as a string.
 	//
 	// example:
 	//
@@ -319,25 +319,25 @@ func (s *DescribeInspectionReportListResponseBodyReportItems) Validate() error {
 }
 
 type DescribeInspectionReportListResponseBodyReportItemsSubItems struct {
-	// The number of check items at the Critical level.
+	// The number of check items at the critical level.
 	//
 	// example:
 	//
 	// 0
 	Critical *int64 `json:"Critical,omitempty" xml:"Critical,omitempty"`
-	// The number of check items at the Info level.
+	// The number of check items at the info level.
 	//
 	// example:
 	//
 	// 1
 	Info *int64 `json:"Info,omitempty" xml:"Info,omitempty"`
-	// The number of check items at the Normal level.
+	// The number of normal check items.
 	//
 	// example:
 	//
 	// 10
 	Normal *int64 `json:"Normal,omitempty" xml:"Normal,omitempty"`
-	// The number of check items at the Warning level.
+	// The number of check items at the warning level.
 	//
 	// example:
 	//

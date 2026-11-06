@@ -2257,13 +2257,13 @@ func (client *Client) CheckKMSAuthorized(request *CheckKMSAuthorizedRequest) (_r
 
 // Summary:
 //
-// Prechecks a skill.
+// Pre-checks a skill.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation prechecks a skill before it is uploaded to a PolarClaw instance.
+// This operation pre-validates a skill before uploading it to a PolarClaw instance.
 //
 // @param request - CheckPolarClawSkillRequest
 //
@@ -2339,13 +2339,13 @@ func (client *Client) CheckPolarClawSkillWithOptions(request *CheckPolarClawSkil
 
 // Summary:
 //
-// Prechecks a skill.
+// Pre-checks a skill.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation prechecks a skill before it is uploaded to a PolarClaw instance.
+// This operation pre-validates a skill before uploading it to a PolarClaw instance.
 //
 // @param request - CheckPolarClawSkillRequest
 //
@@ -6563,7 +6563,7 @@ func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a task to process data in PolarFS based on a specified template and write it to a PolarDB database.
+// Creates a task to process data in PolarFS based on a specified template and write the data to a PolarDB database.
 //
 // @param request - CreateDataProcessJobRequest
 //
@@ -6655,7 +6655,7 @@ func (client *Client) CreateDataProcessJobWithOptions(request *CreateDataProcess
 
 // Summary:
 //
-// Creates a task to process data in PolarFS based on a specified template and write it to a PolarDB database.
+// Creates a task to process data in PolarFS based on a specified template and write the data to a PolarDB database.
 //
 // @param request - CreateDataProcessJobRequest
 //
@@ -9035,7 +9035,7 @@ func (client *Client) CreatePolarClawCronJob(request *CreatePolarClawCronJobRequ
 
 // Summary:
 //
-// 上传skill
+// Uploads a skill.
 //
 // @param request - CreatePolarClawSkillRequest
 //
@@ -9115,7 +9115,7 @@ func (client *Client) CreatePolarClawSkillWithOptions(request *CreatePolarClawSk
 
 // Summary:
 //
-// 上传skill
+// Uploads a skill.
 //
 // @param request - CreatePolarClawSkillRequest
 //
@@ -17358,7 +17358,7 @@ func (client *Client) DescribeApplicationAvailableModels(request *DescribeApplic
 
 // Summary:
 //
-// Queries the list of versions to which a specified application type can be upgraded.
+// Queries the upgradable versions for a specified application type.
 //
 // @param tmpReq - DescribeApplicationAvailableVersionRequest
 //
@@ -17420,7 +17420,7 @@ func (client *Client) DescribeApplicationAvailableVersionWithOptions(tmpReq *Des
 
 // Summary:
 //
-// Queries the list of versions to which a specified application type can be upgraded.
+// Queries the upgradable versions for a specified application type.
 //
 // @param request - DescribeApplicationAvailableVersionRequest
 //
@@ -17508,7 +17508,7 @@ func (client *Client) DescribeApplicationBackupPolicy(request *DescribeApplicati
 
 // Summary:
 //
-// Queries the backup sets of a specified application by time range and backup status, and returns the backup details in a paginated list.
+// Queries the backup sets of a specified application by time range and backup status, and returns paginated backup details.
 //
 // @param request - DescribeApplicationBackupsRequest
 //
@@ -17580,7 +17580,7 @@ func (client *Client) DescribeApplicationBackupsWithOptions(request *DescribeApp
 
 // Summary:
 //
-// Queries the backup sets of a specified application by time range and backup status, and returns the backup details in a paginated list.
+// Queries the backup sets of a specified application by time range and backup status, and returns paginated backup details.
 //
 // @param request - DescribeApplicationBackupsRequest
 //
@@ -18286,7 +18286,7 @@ func (client *Client) DescribeApplicationSessionIds(request *DescribeApplication
 //
 // Description:
 //
-// Logs for different roles may contain different fields. User messages may include Content. Assistant messages may include the model, token usage, and cost statistics. Tool execution results may include the tool name and execution status. Cost statistics are returned exactly as provided by the log source, and this API operation does not perform currency conversion.
+// The fields included in logs may vary by role. User messages may include content. Assistant messages may include the model, token usage, and cost statistics. Tool execution results may include the tool name and execution status. Cost statistics are returned as-is from the log source, and this operation does not perform currency conversion.
 //
 // @param request - DescribeApplicationSessionLogsRequest
 //
@@ -18382,7 +18382,7 @@ func (client *Client) DescribeApplicationSessionLogsWithOptions(request *Describ
 //
 // Description:
 //
-// Logs for different roles may contain different fields. User messages may include Content. Assistant messages may include the model, token usage, and cost statistics. Tool execution results may include the tool name and execution status. Cost statistics are returned exactly as provided by the log source, and this API operation does not perform currency conversion.
+// The fields included in logs may vary by role. User messages may include content. Assistant messages may include the model, token usage, and cost statistics. Tool execution results may include the tool name and execution status. Cost statistics are returned as-is from the log source, and this operation does not perform currency conversion.
 //
 // @param request - DescribeApplicationSessionLogsRequest
 //
@@ -23730,7 +23730,7 @@ func (client *Client) DescribeDasConfig(request *DescribeDasConfigRequest) (_res
 
 // Summary:
 //
-// Queries the status, data source, destination database, and processing configuration of a specified data processing job.
+// Queries the status, data source, destination database, and processing configuration of a specified data processing task.
 //
 // @param request - DescribeDataProcessJobAttributeRequest
 //
@@ -23778,7 +23778,7 @@ func (client *Client) DescribeDataProcessJobAttributeWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the status, data source, destination database, and processing configuration of a specified data processing job.
+// Queries the status, data source, destination database, and processing configuration of a specified data processing task.
 //
 // @param request - DescribeDataProcessJobAttributeRequest
 //
@@ -23874,7 +23874,7 @@ func (client *Client) DescribeDataProcessJobTemplates(request *DescribeDataProce
 
 // Summary:
 //
-// Queries the data processing jobs of a specified PolarFS instance, with support for filtering by job ID and pagination.
+// Queries the data processing jobs of a specified PolarFS instance. You can filter the jobs by job ID and paginate the results.
 //
 // @param request - DescribeDataProcessJobsRequest
 //
@@ -23934,7 +23934,7 @@ func (client *Client) DescribeDataProcessJobsWithOptions(request *DescribeDataPr
 
 // Summary:
 //
-// Queries the data processing jobs of a specified PolarFS instance, with support for filtering by job ID and pagination.
+// Queries the data processing jobs of a specified PolarFS instance. You can filter the jobs by job ID and paginate the results.
 //
 // @param request - DescribeDataProcessJobsRequest
 //
@@ -25963,7 +25963,7 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
-// Queries a list of reports for a specified inspection task. Supports time-based filtering and pagination.
+// Queries the reports of a specified inspection task. You can filter the reports by time and return the report details in a paginated format.
 //
 // @param request - DescribeInspectionReportListRequest
 //
@@ -26027,7 +26027,7 @@ func (client *Client) DescribeInspectionReportListWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries a list of reports for a specified inspection task. Supports time-based filtering and pagination.
+// Queries the reports of a specified inspection task. You can filter the reports by time and return the report details in a paginated format.
 //
 // @param request - DescribeInspectionReportListRequest
 //
@@ -26111,7 +26111,7 @@ func (client *Client) DescribeInspectionTaskAttribute(request *DescribeInspectio
 
 // Summary:
 //
-// Queries inspection tasks, their execution plans, and associated clusters by paging based on the inspection space.
+// Queries inspection tasks, their execution plans, and associated clusters by paging based on the inspection workspace.
 //
 // @param request - DescribeInspectionTaskListRequest
 //
@@ -26167,7 +26167,7 @@ func (client *Client) DescribeInspectionTaskListWithOptions(request *DescribeIns
 
 // Summary:
 //
-// Queries inspection tasks, their execution plans, and associated clusters by paging based on the inspection space.
+// Queries inspection tasks, their execution plans, and associated clusters by paging based on the inspection workspace.
 //
 // @param request - DescribeInspectionTaskListRequest
 //
@@ -26185,7 +26185,7 @@ func (client *Client) DescribeInspectionTaskList(request *DescribeInspectionTask
 
 // Summary:
 //
-// Queries the overall score, status, and check results of an instance inspection report based on the report ID.
+// Queries the overall score, status, and inspection results of an instance inspection report based on the report ID.
 //
 // @param request - DescribeInstanceReportAttributeRequest
 //
@@ -26233,7 +26233,7 @@ func (client *Client) DescribeInstanceReportAttributeWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the overall score, status, and check results of an instance inspection report based on the report ID.
+// Queries the overall score, status, and inspection results of an instance inspection report based on the report ID.
 //
 // @param request - DescribeInstanceReportAttributeRequest
 //
@@ -29699,7 +29699,7 @@ func (client *Client) DescribePolarClawSkillTemplate(request *DescribePolarClawS
 
 // Summary:
 //
-// Queries PolarClaw skill templates. You can filter the templates by template ID and time range, and the results are paginated.
+// Queries a list of PolarClaw skill templates. You can filter the results by template ID and time range, and the results are returned in pages.
 //
 // @param request - DescribePolarClawSkillTemplatesRequest
 //
@@ -29771,7 +29771,7 @@ func (client *Client) DescribePolarClawSkillTemplatesWithOptions(request *Descri
 
 // Summary:
 //
-// Queries PolarClaw skill templates. You can filter the templates by template ID and time range, and the results are paginated.
+// Queries a list of PolarClaw skill templates. You can filter the results by template ID and time range, and the results are returned in pages.
 //
 // @param request - DescribePolarClawSkillTemplatesRequest
 //
@@ -44579,7 +44579,7 @@ func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStor
 
 // Summary:
 //
-// Modifies the proxy performance level of a specified PolarDB cluster and supports scheduled execution.
+// Modifies the proxy performance level of a specified PolarDB cluster. You can schedule the execution time.
 //
 // @param request - RefreshProxyLevelRequest
 //
@@ -44659,7 +44659,7 @@ func (client *Client) RefreshProxyLevelWithOptions(request *RefreshProxyLevelReq
 
 // Summary:
 //
-// Modifies the proxy performance level of a specified PolarDB cluster and supports scheduled execution.
+// Modifies the proxy performance level of a specified PolarDB cluster. You can schedule the execution time.
 //
 // @param request - RefreshProxyLevelRequest
 //

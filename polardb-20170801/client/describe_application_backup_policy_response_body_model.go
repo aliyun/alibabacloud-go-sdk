@@ -24,7 +24,7 @@ type iDescribeApplicationBackupPolicyResponseBody interface {
 }
 
 type DescribeApplicationBackupPolicyResponseBody struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeApplicationBackupPolicyResponseBody struct {
 	//
 	// 7
 	PreferredBackupRetentionPeriod *int32 `json:"PreferredBackupRetentionPeriod,omitempty" xml:"PreferredBackupRetentionPeriod,omitempty"`
-	// The time window when automatic backups are performed. The time follows the HH:mmZ-HH:mmZ format in UTC.
+	// The time period when automatic backups are performed. The time is in the HH:mmZ-HH:mmZ format and in UTC.
 	//
 	// example:
 	//

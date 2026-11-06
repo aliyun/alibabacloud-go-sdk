@@ -117,7 +117,7 @@ func (s *DescribeDataProcessJobTemplatesResponseBody) Validate() error {
 }
 
 type DescribeDataProcessJobTemplatesResponseBodyItems struct {
-	// Specifies whether it is required to fetch the summary or video synopsis.
+	// Specifies whether it is to fetch the image summary or video synopsis.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type DescribeDataProcessJobTemplatesResponseBodyItems struct {
 	//
 	// 2025-01-01T00:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Specifies whether to convert content into vectors.
+	// Indicates whether content is converted into vectors.
 	//
 	// example:
 	//
 	// true
 	Embedding *bool `json:"Embedding,omitempty" xml:"Embedding,omitempty"`
-	// The output dimension of the vector.
+	// The vector output dimensions.
 	//
 	// example:
 	//

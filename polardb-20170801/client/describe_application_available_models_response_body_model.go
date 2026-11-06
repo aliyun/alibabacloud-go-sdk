@@ -66,7 +66,7 @@ type DescribeApplicationAvailableModelsResponseBody struct {
 	DefaultMemoryType *string `json:"DefaultMemoryType,omitempty" xml:"DefaultMemoryType,omitempty"`
 	// The default reranking model.
 	DefaultRerankModel *DescribeApplicationAvailableModelsResponseBodyDefaultRerankModel `json:"DefaultRerankModel,omitempty" xml:"DefaultRerankModel,omitempty" type:"Struct"`
-	// The default vision-language model.
+	// The default visual language model.
 	DefaultVLModel *DescribeApplicationAvailableModelsResponseBodyDefaultVLModel `json:"DefaultVLModel,omitempty" xml:"DefaultVLModel,omitempty" type:"Struct"`
 	// The default VisualEmbedder model.
 	DefaultVisualEmbedderModel *DescribeApplicationAvailableModelsResponseBodyDefaultVisualEmbedderModel `json:"DefaultVisualEmbedderModel,omitempty" xml:"DefaultVisualEmbedderModel,omitempty" type:"Struct"`
@@ -94,7 +94,7 @@ type DescribeApplicationAvailableModelsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of available reranking models.
 	RerankModels []*DescribeApplicationAvailableModelsResponseBodyRerankModels `json:"RerankModels,omitempty" xml:"RerankModels,omitempty" type:"Repeated"`
-	// The list of available vision-language models.
+	// The list of available visual language models.
 	VLModels []*DescribeApplicationAvailableModelsResponseBodyVLModels `json:"VLModels,omitempty" xml:"VLModels,omitempty" type:"Repeated"`
 	// The list of available VisualEmbedder models.
 	VisualEmbedderModels []*DescribeApplicationAvailableModelsResponseBodyVisualEmbedderModels `json:"VisualEmbedderModels,omitempty" xml:"VisualEmbedderModels,omitempty" type:"Repeated"`

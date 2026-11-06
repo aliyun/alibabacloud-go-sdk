@@ -42,13 +42,13 @@ type DescribeAIDBClusterResourceUsageResponseBody struct {
 	//
 	// AI
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The DPI engine version of the cluster.
+	// The database engine version of the cluster.
 	//
 	// example:
 	//
 	// 3.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The resource usage information of the nodes in the cluster.
+	// The list of resource usage details for the nodes in the cluster.
 	NodeItems []*DescribeAIDBClusterResourceUsageResponseBodyNodeItems `json:"NodeItems,omitempty" xml:"NodeItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -134,13 +134,13 @@ func (s *DescribeAIDBClusterResourceUsageResponseBody) Validate() error {
 }
 
 type DescribeAIDBClusterResourceUsageResponseBodyNodeItems struct {
-	// The total CPU capacity of the node.
+	// The total CPU resources of the node.
 	//
 	// example:
 	//
 	// 4
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The used CPU capacity of the node.
+	// The amount of CPU resources used on the node.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DescribeAIDBClusterResourceUsageResponseBodyNodeItems struct {
 	//
 	// pi-2ze7sztqv1*****
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The total GPU capacity of the node.
+	// The total GPU resources of the node.
 	//
 	// example:
 	//
@@ -164,27 +164,27 @@ type DescribeAIDBClusterResourceUsageResponseBodyNodeItems struct {
 	//
 	// NVIDIA A10
 	GPUModel *string `json:"GPUModel,omitempty" xml:"GPUModel,omitempty"`
-	// The used GPU capacity of the node.
+	// The amount of GPU resources used on the node.
 	//
 	// example:
 	//
 	// 0
 	GPUUsed *string `json:"GPUUsed,omitempty" xml:"GPUUsed,omitempty"`
-	// The total memory capacity of the node.
+	// The total memory of the node.
 	//
 	// example:
 	//
 	// 16Gi
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The used memory capacity of the node.
+	// The amount of memory used on the node.
 	//
 	// example:
 	//
 	// 8Gi
 	MemoryUsed *string `json:"MemoryUsed,omitempty" xml:"MemoryUsed,omitempty"`
-	// The resource information of the pods on the node.
+	// The list of resource information for the pods on the node.
 	PodItems []*DescribeAIDBClusterResourceUsageResponseBodyNodeItemsPodItems `json:"PodItems,omitempty" xml:"PodItems,omitempty" type:"Repeated"`
-	// The ID of the virtual node associated with the database node.
+	// The ID of the virtual node corresponding to the database node.
 	//
 	// example:
 	//
@@ -328,13 +328,13 @@ type DescribeAIDBClusterResourceUsageResponseBodyNodeItemsPodItems struct {
 	//
 	// 10.0.0.12
 	PodIP *string `json:"PodIP,omitempty" xml:"PodIP,omitempty"`
-	// The requested resources of the pod.
+	// The resource configuration requested by the pod.
 	//
 	// example:
 	//
 	// cpu=1,memory=2Gi
 	ResourceRequest *string `json:"ResourceRequest,omitempty" xml:"ResourceRequest,omitempty"`
-	// The status of the pod.
+	// The running status of the pod.
 	//
 	// example:
 	//

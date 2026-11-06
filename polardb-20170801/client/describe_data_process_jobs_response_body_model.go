@@ -42,7 +42,7 @@ type DescribeDataProcessJobsResponseBody struct {
 	//
 	// 2921D843-433A-5FB3-A03B-4EC093B219F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of jobs that meet the query conditions.
+	// The total number of jobs that match the query conditions.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type DescribeDataProcessJobsResponseBodyItems struct {
 	//
 	// testdb
 	DestinationPath *string `json:"DestinationPath,omitempty" xml:"DestinationPath,omitempty"`
-	// The destination type. Currently, only PolarDB is supported.
+	// The type of the destination. Currently, only PolarDB is supported.
 	//
 	// example:
 	//

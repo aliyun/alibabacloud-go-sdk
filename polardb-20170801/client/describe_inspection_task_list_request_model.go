@@ -32,13 +32,13 @@ type DescribeInspectionTaskListRequest struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the task is located.
+	// The region ID of the region where the task is located.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the inspection space used to filter tasks.
+	// The ID of the inspection workspace, which is used to filter tasks.
 	//
 	// example:
 	//

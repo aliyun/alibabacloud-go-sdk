@@ -56,7 +56,7 @@ type DescribeInstanceReportAttributeResponseBody struct {
 	//
 	// Completed
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The check results in the report.
+	// The inspection results for each item in the report.
 	ReportSubItems []*DescribeInstanceReportAttributeResponseBodyReportSubItems `json:"ReportSubItems,omitempty" xml:"ReportSubItems,omitempty" type:"Repeated"`
 	// The overall summary of the inspection report.
 	//
@@ -181,25 +181,25 @@ func (s *DescribeInstanceReportAttributeResponseBody) Validate() error {
 }
 
 type DescribeInstanceReportAttributeResponseBodyReportSubItems struct {
-	// The risk level of the check item.
+	// The risk level of the inspection item.
 	//
 	// example:
 	//
 	// low
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The score of the check item.
+	// The score of the inspection item.
 	//
 	// example:
 	//
 	// 90
 	Score *int64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The name of the inspection skill that generated the check result.
+	// The name of the inspection skill that generated the result.
 	//
 	// example:
 	//
 	// performance
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The result summary of the check item.
+	// The result summary of the inspection item.
 	//
 	// example:
 	//

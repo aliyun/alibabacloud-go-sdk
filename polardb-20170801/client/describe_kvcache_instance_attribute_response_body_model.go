@@ -52,7 +52,7 @@ type DescribeKVCacheInstanceAttributeResponseBody struct {
 	//
 	// 2026-01-01T00:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The time when the instance expires, in ISO 8601 format. An empty character string is returned for pay-as-you-go instances.
+	// The time when the instance expires, in ISO 8601 format. An empty string is returned for pay-as-you-go instances.
 	//
 	// example:
 	//

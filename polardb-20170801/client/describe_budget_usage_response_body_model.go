@@ -72,7 +72,7 @@ type DescribeBudgetUsageResponseBody struct {
 	//
 	// 2025-01-15T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type DescribeBudgetUsageResponseBodyPolicies struct {
 	//
 	// 10000
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
-	// The ID of the budget policy.
+	// The budget policy ID.
 	//
 	// example:
 	//
@@ -278,7 +278,7 @@ type DescribeBudgetUsageResponseBodyPolicies struct {
 	//
 	// 1
 	ResetDayOfMonth *string `json:"ResetDayOfMonth,omitempty" xml:"ResetDayOfMonth,omitempty"`
-	// The status of the budget policy.
+	// The budget policy status.
 	//
 	// example:
 	//

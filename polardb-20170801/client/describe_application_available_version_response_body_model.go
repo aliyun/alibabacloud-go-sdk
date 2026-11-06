@@ -89,7 +89,7 @@ type DescribeApplicationAvailableVersionResponseBodyVersions struct {
 	//
 	// 2019-08-01T00:00:00Z
 	ReleaseDate *string `json:"ReleaseDate,omitempty" xml:"ReleaseDate,omitempty"`
-	// The release notes of the version.
+	// The release notes.
 	//
 	// example:
 	//

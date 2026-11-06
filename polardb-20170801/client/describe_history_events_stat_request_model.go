@@ -22,17 +22,17 @@ type iDescribeHistoryEventsStatRequest interface {
 type DescribeHistoryEventsStatRequest struct {
 	// The archive status of the events. Valid values:
 	//
-	// - Archived: Archived.
+	// - Archived: The events are archived.
 	//
-	// - UnArchived: Unarchived.
+	// - UnArchived: The events are not archived.
 	//
-	// - All: All.
+	// - All: All events.
 	//
 	// example:
 	//
 	// All
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	// The start time of the time range for the task start time. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// The start time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeHistoryEventsStatRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The end time of the time range for the task start time. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// The end time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
 	//
 	// example:
 	//

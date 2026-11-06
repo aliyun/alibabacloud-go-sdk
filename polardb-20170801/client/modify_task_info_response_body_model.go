@@ -38,7 +38,7 @@ type ModifyTaskInfoResponseBody struct {
 	//
 	// 2921D843-433A-5FB3-A03B-4EC093B219F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of tasks that were successfully updated.
+	// The number of successfully updated tasks.
 	//
 	// example:
 	//

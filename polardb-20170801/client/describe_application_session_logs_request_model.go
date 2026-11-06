@@ -38,7 +38,7 @@ type iDescribeApplicationSessionLogsRequest interface {
 }
 
 type DescribeApplicationSessionLogsRequest struct {
-	// The agent name. This parameter must be specified together with the SessionId parameter, or neither of them is specified.
+	// The agent name. This parameter must be specified together with the SessionId parameter, or neither is specified.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ type DescribeApplicationSessionLogsRequest struct {
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The role filter for logs. Valid values: user, assistant, and toolResult.
+	// The role filter for logs. A value of user indicates a user, assistant indicates an assistant, and toolResult indicates a tool execution result.
 	//
 	// example:
 	//
 	// assistant
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The session ID. This parameter must be specified together with the Agent parameter, or neither of them is specified.
+	// The session ID. This parameter must be specified together with the Agent parameter, or neither is specified.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type DescribeApplicationSessionLogsRequest struct {
 	//
 	// 2026-11-04T01:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The log type. This API operation only queries session logs. Set the value to session.
+	// The log type. This operation only queries session logs.
 	//
 	// example:
 	//

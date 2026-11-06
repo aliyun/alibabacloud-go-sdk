@@ -28,7 +28,7 @@ type iDescribeApplicationBackupsRequest interface {
 }
 
 type DescribeApplicationBackupsRequest struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeApplicationBackupsRequest struct {
 	//
 	// polarclaw
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The filter condition for the backup status. A value of Success indicates that the backup is completed, and a value of Failed indicates that the backup failed.
+	// The backup status filter. Valid values: Success: The backup is completed. Failed: The backup failed.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeApplicationBackupsRequest struct {
 	//
 	// 2020-11-16T00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. The value must be an integer greater than 0 and less than or equal to 2147483647. Default value: 1.
+	// The page number. The value must be a positive integer up to 2147483647. Default value: 1.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeApplicationBackupsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the application.
+	// The ID of the region where the application resides.
 	//
 	// example:
 	//

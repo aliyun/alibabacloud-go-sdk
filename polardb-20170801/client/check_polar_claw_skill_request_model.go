@@ -30,7 +30,7 @@ type iCheckPolarClawSkillRequest interface {
 }
 
 type CheckPolarClawSkillRequest struct {
-	// The region ID of the OSS bucket where the skill files are stored.
+	// The region ID of the OSS bucket that stores the skill files.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// UserOwned
 	BucketType *string `json:"BucketType,omitempty" xml:"BucketType,omitempty"`
-	// The name of the OSS bucket to be unbound.
+	// The name of the OSS bucket to be disassociated.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the skill.
+	// The skill name.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// polarclawhub
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
-	// The version number of the skill.
+	// The skill version number.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// example:
 	//
-	// An example for managing PolarDB skills
+	// An example used to manage PolarDB skills
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// The tag details.
 	//

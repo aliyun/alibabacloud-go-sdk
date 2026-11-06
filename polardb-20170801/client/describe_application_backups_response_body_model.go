@@ -36,7 +36,7 @@ type DescribeApplicationBackupsResponseBody struct {
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeApplicationBackupsResponseBodyItems struct {
 	//
 	// 2020-11-15T07:30:20Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	// The backup set ID.
+	// The ID of the backup set.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ type DescribeApplicationBackupsResponseBodyItems struct {
 	//
 	// 2020-11-15T07:30:05Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The backup status. A value of Success indicates that the backup is completed, and a value of Failed indicates that the backup failed.
+	// The backup status. Valid values: Success: The backup is completed. Failed: The backup failed.
 	//
 	// example:
 	//
 	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type. A value of FullBackup indicates a full backup, and a value of IncrementalBackup indicates an incremental backup.
+	// The backup type. Valid values: FullBackup: full backup. IncrementalBackup: incremental backup.
 	//
 	// example:
 	//
 	// FullBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The backup mode. A value of Automated indicates an automatic backup, and a value of Manual indicates a manual backup.
+	// The backup mode. Valid values: Automated: automatic backup. Manual: manual backup.
 	//
 	// example:
 	//

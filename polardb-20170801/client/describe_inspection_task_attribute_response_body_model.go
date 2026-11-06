@@ -34,7 +34,7 @@ type DescribeInspectionTaskAttributeResponseBody struct {
 	//
 	// 2024-06-01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cron expression for scheduling periodic inspections.
+	// The cron expression for periodic inspections.
 	//
 	// example:
 	//

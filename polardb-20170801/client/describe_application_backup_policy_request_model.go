@@ -18,7 +18,7 @@ type iDescribeApplicationBackupPolicyRequest interface {
 }
 
 type DescribeApplicationBackupPolicyRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

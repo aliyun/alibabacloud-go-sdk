@@ -66,19 +66,19 @@ func (s *DescribeInspectionTaskListResponseBody) Validate() error {
 }
 
 type DescribeInspectionTaskListResponseBodyTaskLists struct {
-	// The date when the task was last modified.
+	// The last modification date of the task.
 	//
 	// example:
 	//
 	// 2024-06-01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cron expression for periodic inspections.
+	// The cron expression for periodically executing the inspection.
 	//
 	// example:
 	//
 	// 0 0 2 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The IDs of the PolarDB clusters to be inspected. Separate multiple IDs with commas.
+	// The IDs of the PolarDB clusters to be inspected. Multiple IDs are separated by commas.
 	//
 	// example:
 	//

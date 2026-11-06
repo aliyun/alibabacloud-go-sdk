@@ -16,7 +16,7 @@ type iDescribeInstanceReportAttributeRequest interface {
 }
 
 type DescribeInstanceReportAttributeRequest struct {
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//

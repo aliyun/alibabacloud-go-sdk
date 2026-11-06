@@ -28,9 +28,9 @@ type iCreateDataProcessJobTemplateRequest interface {
 }
 
 type CreateDataProcessJobTemplateRequest struct {
-	// Specifies whether to fetch the image summary or video synopsis. When Settings is set to true, CaptioningPrompt must be specified.
+	// Specifies whether to fetch the image summary or video synopsis. When Settings is true, CaptioningPrompt must be provided.
 	Captioning *bool `json:"Captioning,omitempty" xml:"Captioning,omitempty"`
-	// The prompt used for extracting summaries. This parameter takes effect only when Captioning is set to true.
+	// The prompt used for extracting captions. This parameter takes effect only when Captioning is set to true.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateDataProcessJobTemplateRequest struct {
 	//
 	// template1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The templatetype of the node. Valid values: image.
+	// The templatetype of the node template. Valid value: image.
 	//
 	// This parameter is required.
 	//

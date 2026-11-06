@@ -32,7 +32,7 @@ type DescribeBudgetUsageRequest struct {
 	//
 	// cluster
 	BudgetDimensionType *string `json:"BudgetDimensionType,omitempty" xml:"BudgetDimensionType,omitempty"`
-	// The ID of the gateway instance to query.
+	// The ID of the gateway instance.
 	//
 	// example:
 	//

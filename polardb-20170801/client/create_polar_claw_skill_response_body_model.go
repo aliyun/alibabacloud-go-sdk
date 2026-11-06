@@ -18,14 +18,20 @@ type iCreatePolarClawSkillResponseBody interface {
 }
 
 type CreatePolarClawSkillResponseBody struct {
+	// Used for system scheduled task checks. Modifications are not supported for the current scheduled task.
+	//
 	// example:
 	//
 	// true
 	IsUpdate *string `json:"IsUpdate,omitempty" xml:"IsUpdate,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the skill.
+	//
 	// example:
 	//
 	// polarclawhub

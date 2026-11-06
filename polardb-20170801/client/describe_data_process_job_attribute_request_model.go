@@ -16,7 +16,7 @@ type iDescribeDataProcessJobAttributeRequest interface {
 }
 
 type DescribeDataProcessJobAttributeRequest struct {
-	// The ID of the data processing job to query.
+	// The ID of the data processing task to query.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeDataProcessJobAttributeRequest struct {
 	//
 	// job-123456
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the region where the job is located.
+	// The region ID of the region where the task is located.
 	//
 	// This parameter is required.
 	//

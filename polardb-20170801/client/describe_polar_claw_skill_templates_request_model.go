@@ -36,7 +36,7 @@ type DescribePolarClawSkillTemplatesRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The application type.
 	//
-	// > If this is your first time calling this operation, you do not need to specify this parameter.
+	// > If you are calling this operation for the first time, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribePolarClawSkillTemplatesRequest struct {
 	//
 	// 2022-11-16T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribePolarClawSkillTemplatesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view all available regions for the current account, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type DescribePolarClawSkillTemplatesResponseBody struct {
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The skill templates.
+	// The skill template group.
 	SkillTemplates []*DescribePolarClawSkillTemplatesResponseBodySkillTemplates `json:"SkillTemplates,omitempty" xml:"SkillTemplates,omitempty" type:"Repeated"`
 	// The total number of entries. This parameter is returned only when you query a list.
 	//
