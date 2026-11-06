@@ -22,7 +22,7 @@ type iModifyShareImageRequest interface {
 }
 
 type ModifyShareImageRequest struct {
-	// The IDs of the Alibaba Cloud accounts to share the image with.
+	// The Alibaba Cloud account IDs to add for sharing.
 	AddAccount []*int64 `json:"AddAccount,omitempty" xml:"AddAccount,omitempty" type:"Repeated"`
 	// The business line. Only the Enterprise Edition scenario is supported. Default value: 1.
 	//
@@ -30,19 +30,19 @@ type ModifyShareImageRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The ID of the source image.
+	// The source image ID.
 	//
 	// example:
 	//
 	// img-bp13mu****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The product type, such as Cloud Desktop, cloud application, or workstation.
+	// The product type, such as cloud desktop, cloud application, or workstation.
 	//
 	// example:
 	//
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The IDs of the Alibaba Cloud accounts to remove from the image sharing list.
+	// The Alibaba Cloud account IDs to remove from the share list.
 	RemoveAccount []*int64 `json:"RemoveAccount,omitempty" xml:"RemoveAccount,omitempty" type:"Repeated"`
 }
 

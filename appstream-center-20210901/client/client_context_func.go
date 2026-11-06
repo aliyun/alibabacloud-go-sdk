@@ -372,6 +372,148 @@ func (client *Client) BatchCreateLlmTemplatesWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Creates a custom image based on an existing image and starts an image creation task.
+//
+// Description:
+//
+// Before you call this operation, make sure that the parent image is available and that an available image distribution record exists in the region where the image is to be created.
+//
+// 1. Call ListImage to obtain the parent image ID.
+//
+// 2. Specify the creation mode, disk capacity, and resource type, and then call this operation.
+//
+// 3. Save the returned ImageId, VersionId, and TaskId.
+//
+// 4. Call GetTask to query the creation progress. **A successful request does not indicate that the image creation is complete.**
+//
+// @param tmpReq - BuilderImageByParentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BuilderImageByParentResponse
+func (client *Client) BuilderImageByParentWithContext(ctx context.Context, tmpReq *BuilderImageByParentRequest, runtime *dara.RuntimeOptions) (_result *BuilderImageByParentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BuilderImageByParentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PropertyMap) {
+		request.PropertyMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PropertyMap, dara.String("PropertyMap"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.DataDiskSize) {
+		body["DataDiskSize"] = request.DataDiskSize
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Distro) {
+		body["Distro"] = request.Distro
+	}
+
+	if !dara.IsNil(request.DriverIdList) {
+		body["DriverIdList"] = request.DriverIdList
+	}
+
+	if !dara.IsNil(request.ImageCreateMode) {
+		body["ImageCreateMode"] = request.ImageCreateMode
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.NodeInstanceType) {
+		body["NodeInstanceType"] = request.NodeInstanceType
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		body["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.PackageType) {
+		body["PackageType"] = request.PackageType
+	}
+
+	if !dara.IsNil(request.ParentImageId) {
+		body["ParentImageId"] = request.ParentImageId
+	}
+
+	if !dara.IsNil(request.PerformanceType) {
+		body["PerformanceType"] = request.PerformanceType
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.PropertyMapShrink) {
+		body["PropertyMap"] = request.PropertyMapShrink
+	}
+
+	if !dara.IsNil(request.ResourceList) {
+		body["ResourceList"] = request.ResourceList
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		body["RunMode"] = request.RunMode
+	}
+
+	if !dara.IsNil(request.SourceRegion) {
+		body["SourceRegion"] = request.SourceRegion
+	}
+
+	if !dara.IsNil(request.SystemDiskSize) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !dara.IsNil(request.VSwitchIdList) {
+		body["VSwitchIdList"] = request.VSwitchIdList
+	}
+
+	if !dara.IsNil(request.VersionName) {
+		body["VersionName"] = request.VersionName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BuilderImageByParent"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BuilderImageByParentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the model group for a resource group.
 //
 // Description:
@@ -554,6 +696,80 @@ func (client *Client) ConfigRuntimeModelTemplateWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ConfigRuntimeModelTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an application and binds it to a specified image version.
+//
+// Description:
+//
+// Only custom images and community images that can be managed by the current account are supported. If VersionId is omitted, the current active version of the image is used. If specified, the version must belong to the image specified by ImageId.
+//
+// Call ListImage first to select an image. After the application is created, save the returned AppId, AppVersionId, ImageId, and VersionId. To dissociate the application, call UnbindApp.
+//
+// @param request - CreateAndBindAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAndBindAppResponse
+func (client *Client) CreateAndBindAppWithContext(ctx context.Context, request *CreateAndBindAppRequest, runtime *dara.RuntimeOptions) (_result *CreateAndBindAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppIconUrl) {
+		body["AppIconUrl"] = request.AppIconUrl
+	}
+
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.OriginAppType) {
+		body["OriginAppType"] = request.OriginAppType
+	}
+
+	if !dara.IsNil(request.Port) {
+		body["Port"] = request.Port
+	}
+
+	if !dara.IsNil(request.UrlSuffix) {
+		body["UrlSuffix"] = request.UrlSuffix
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAndBindApp"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAndBindAppResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1443,6 +1659,136 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Deletes a specified application adapter, or dissociates the adapter from a specified image version.
+//
+// Description:
+//
+// *Confirm the deletion scope.**
+//
+// - If both ImageId and VersionId are specified: The adapter is only dissociated from the specified image version.
+//
+// - If ImageId and VersionId are not both specified: The adapter deletion process is initiated. An adapter cannot be deleted if it is still referenced by multiple images. If the application has other adapters, the application cannot be deleted along with the adapter.
+//
+// **AdaptorId, AppVersionId, and AppId must be provided together and correspond to the same application adapter.*	- Verify these identifiers by checking the application and image query results first.
+//
+// @param request - DeleteAdaptorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAdaptorResponse
+func (client *Client) DeleteAdaptorWithContext(ctx context.Context, request *DeleteAdaptorRequest, runtime *dara.RuntimeOptions) (_result *DeleteAdaptorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdaptorId) {
+		body["AdaptorId"] = request.AdaptorId
+	}
+
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppVersionId) {
+		body["AppVersionId"] = request.AppVersionId
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAdaptor"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAdaptorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified application version, or deletes the entire application and its adapters if the version ID is omitted.
+//
+// Description:
+//
+// *You must dissociate all image associations from the target application or version before deletion.**
+//
+// 1. Call ListApp to obtain the AppId and confirm whether the application can be deleted.
+//
+// 2. Use UnbindApp or DeleteAdaptor to dissociate related image associations.
+//
+// 3. Specify AppVersionId to delete a single application version, or omit this parameter to delete the entire application.
+//
+// After an application version is deleted, if the application has no other valid adapters, the application record is also deleted.
+//
+// @param request - DeleteAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppResponse
+func (client *Client) DeleteAppWithContext(ctx context.Context, request *DeleteAppRequest, runtime *dara.RuntimeOptions) (_result *DeleteAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppVersionId) {
+		body["AppVersionId"] = request.AppVersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteApp"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a resource-based pay-as-you-go delivery group.
 //
 // Description:
@@ -1868,6 +2214,114 @@ func (client *Client) DeliverToUserSlsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Performs a paged query for the resource and session events of the current account within the last 30 days. Paging is supported.
+//
+// Description:
+//
+// Queries the resource and session events of the current account. Both StartTime and EndTime must be specified, and the time range is inclusive. The service only retrieves logs from 30 days before the call time to the current time, so events outside this window are not returned. If multiple filter parameters are specified, the intersection of the conditions is applied. The results are returned in descending order of the event log time. For pagination, specify PageSize and PageNumber. The current version does not use MaxResults and NextToken.
+//
+// @param request - DescribeEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEventsResponse
+func (client *Client) DescribeEventsWithContext(ctx context.Context, request *DescribeEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupName) {
+		body["AppInstanceGroupName"] = request.AppInstanceGroupName
+	}
+
+	if !dara.IsNil(request.AppInstanceId) {
+		body["AppInstanceId"] = request.AppInstanceId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventId) {
+		body["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EventType) {
+		body["EventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.MemberEniIp) {
+		body["MemberEniIp"] = request.MemberEniIp
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		body["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEvents"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a development host.
 //
 // @param request - DescribeWuyingServerRequest
@@ -1998,6 +2452,82 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetAppInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the connection authorization code and required resource information for an existing image or application building task.
+//
+// Description:
+//
+// Before calling this operation, you must create a task, and the building or validation resources corresponding to the task must be available.
+//
+// 1. Obtain TaskId and the actual TaskType from the response of the task creation operation or GetTask.
+//
+// 2. Specify ResourceType to obtain the connection information for the building or validation environment.
+//
+// 3. Use the returned authorization code along with the user, resource group, and application identifiers in the same response for connection.
+//
+// The authorization code is a sensitive connection credential. Do not record it in public documents or logs. When specifying AppId, you must also specify the matching AppVersionId.
+//
+// @param request - GetAuthCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAuthCodeResponse
+func (client *Client) GetAuthCodeWithContext(ctx context.Context, request *GetAuthCodeRequest, runtime *dara.RuntimeOptions) (_result *GetAuthCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppVersionId) {
+		body["AppVersionId"] = request.AppVersionId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAuthCode"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAuthCodeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2374,6 +2904,92 @@ func (client *Client) GetOtaTaskByTaskIdWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the pricing and discount information for scaling out a subscription delivery group to a specified total number of nodes.
+//
+// Description:
+//
+// This operation queries the resource scale-out pricing for an existing delivery group. A successful call returns only a quote and does not create an order or add nodes.
+//
+// **Before you call this operation, verify the following conditions:**
+//
+// - The delivery group belongs to the current account and is located in a supported region in the Chinese mainland.
+//
+// - The product type is Wuying Cloud App or Cloud Browser, and the billing method is subscription and purchased by node. This operation does not apply to browser groups that use the pay-as-you-go billing method or are billed by monthly active users (MAU).
+//
+// - The order status of the delivery group is normal, a resource node pool is associated, and no paid but ineffective renewal or scale-in orders exist.
+//
+// - The target total number of nodes is greater than the current number of purchased nodes and does not exceed the node quota for the corresponding region, product, and billing method under the account.
+//
+// **Parameter relationships:**
+//
+// - ProductType, AppInstanceGroupId, and Amount are all required parameters and must be specified together.
+//
+// - ProductType must match the product corresponding to AppInstanceGroupId.
+//
+// - **Amount is the total number of nodes after the scale-out, not the number of nodes added in this operation.*	- The region, node specifications, and billing method are determined by the existing delivery group and do not need to be passed separately.
+//
+// **Call sequence:**
+//
+// 1. First, confirm the target delivery group and the current number of purchased nodes. For Cloud App Common scenarios, you can first invoke [ListAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/ListAppInstanceGroup) to obtain the identity, and then invoke [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query the configuration and NodePool.NodeAmount.
+//
+// 2. Invoke this operation with the same product type, delivery group identity, and target total number of nodes to read the pricing, coupons, and pricing calculation rules.
+//
+// 3. After confirming the quote, if you need to execute the scale-out, you can invoke [ModifyNodePoolAmount](https://api.aliyun.com/document/appstream-center/2021-09-01/ModifyNodePoolAmount) and fill in the target total number in NodePool.NodeAmount as required by the operation. **A successful pricing query does not mean that an order has been created or the scale-out has been completed.**
+//
+// **Example scenario:**
+//
+// If a cloud app delivery group currently has 1 purchased subscription node and the target is to scale out to 2 nodes, set ProductType to CloudApp, AppInstanceGroupId to the ID of the delivery group, and Amount to 2. Replace the masked resource IDs with the actual values under the current account. The example quantities do not represent default values or quota limits. The pricing examples only illustrate the relationship among the original price, discount amount, and discounted price, and do not represent the fixed selling price of the specifications.
+//
+// @param request - GetResourceModifyPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceModifyPriceResponse
+func (client *Client) GetResourceModifyPriceWithContext(ctx context.Context, request *GetResourceModifyPriceRequest, runtime *dara.RuntimeOptions) (_result *GetResourceModifyPriceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Amount) {
+		query["Amount"] = request.Amount
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		query["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetResourceModifyPrice"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetResourceModifyPriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the price information of a resource.
 //
 // @param request - GetResourcePriceRequest
@@ -2436,6 +3052,86 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourcePriceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the maximum quantity quota applicable to the current account for a specified product, resource type, business region, and billing method.
+//
+// Description:
+//
+// This operation queries the maximum quantity quota. It does not query the used quota, remaining quota, or real-time resource inventory.
+//
+// **Parameter relationships:**
+//
+// - `ResourceType` and `ProductType` are required.
+//
+// - `BizRegionId` and `ChargeType` are optional query conditions and can be specified at the same time. They must be consistent with subsequent purchase or authorization operations.
+//
+// - If the region or billing method is omitted, the general quota for the corresponding dimension is queried. The quotas of different regions or billing methods are not added together.
+//
+// - If multiple quotas apply at the same time, the larger limit is returned.
+//
+// **Call sequence:**
+//
+// 1. Select the resource type, product, business region, and billing method of the payer based on subsequent business needs.
+//
+// 2. Invoke this operation to read `Data`. Query `AppInstanceGroup` before creating a delivery group, query `AppAuthUser` before adding an authorized user, and query `PoolNodeAmount` before purchasing or scaling out nodes.
+//
+// 3. Query the current usage in combination with the resources, and then verify the current operation by using subsequent creation, authorization, or scale-out operations. **This query does not reserve quotas or guarantee the success of subsequent purchases.**
+//
+// `Data=2147483647` indicates that no smaller quota limit is obtained in this query. It does not mean that the physical inventory is unlimited.
+//
+// @param request - GetResourceQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceQuotaResponse
+func (client *Client) GetResourceQuotaWithContext(ctx context.Context, request *GetResourceQuotaRequest, runtime *dara.RuntimeOptions) (_result *GetResourceQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetResourceQuota"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetResourceQuotaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2636,6 +3332,184 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the details of a task by task ID, or by resource information and task category.
+//
+// Description:
+//
+// Supports two query methods:
+//
+// - **Query by task ID**: Pass the TaskId parameter. This method takes precedence over querying by resource information.
+//
+// - **Query by resource**: Omit the TaskId parameter, and pass the EntityId, EntityType, and TaskCategory parameters. You can use the EntityVersionId parameter to specify the resource version.
+//
+// The API returns the current task status and recorded step information. Determine the overall task result based on the Status parameter. The success of a single step does not indicate the success of the entire task. You can call the ListTaskStep operation to query the names and categories of image creation and application adaptation steps.
+//
+// @param request - GetTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTaskResponse
+func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRequest, runtime *dara.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EntityId) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !dara.IsNil(request.EntityType) {
+		body["EntityType"] = request.EntityType
+	}
+
+	if !dara.IsNil(request.EntityVersionId) {
+		body["EntityVersionId"] = request.EntityVersionId
+	}
+
+	if !dara.IsNil(request.TaskCategory) {
+		body["TaskCategory"] = request.TaskCategory
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTask"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on the valid applications of the current account based on conditions such as the application ID, name, type, and associated product.
+//
+// Description:
+//
+// When multiple filter conditions are specified simultaneously, they take effect together. AppName supports partial match. When a single-value filter and the corresponding list filter are specified simultaneously, the intersection is used. To avoid empty results, select only one of the formats.
+//
+// If PageSize is omitted, the value is 10. Query pages sequentially starting from PageNumber 1 until the number of retrieved records reaches Count. Before deleting an application, check Deletable.
+//
+// @param tmpReq - ListAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppResponse
+func (client *Client) ListAppWithContext(ctx context.Context, tmpReq *ListAppRequest, runtime *dara.RuntimeOptions) (_result *ListAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAppShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BizTypeList) {
+		request.BizTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizTypeList, dara.String("BizTypeList"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ProductTypeList) {
+		request.ProductTypeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ProductTypeList, dara.String("ProductTypeList"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppName) {
+		body["AppName"] = request.AppName
+	}
+
+	if !dara.IsNil(request.AppType) {
+		body["AppType"] = request.AppType
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.BizTypeListShrink) {
+		body["BizTypeList"] = request.BizTypeListShrink
+	}
+
+	if !dara.IsNil(request.OriginAppType) {
+		body["OriginAppType"] = request.OriginAppType
+	}
+
+	if !dara.IsNil(request.OsType) {
+		body["OsType"] = request.OsType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ProductTypeListShrink) {
+		body["ProductTypeList"] = request.ProductTypeListShrink
+	}
+
+	if !dara.IsNil(request.SubAppType) {
+		body["SubAppType"] = request.SubAppType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApp"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of multiple delivery groups. This operation queries all delivery groups that meet the specified conditions instead of a specific delivery group.
 //
 // @param request - ListAppInstanceGroupRequest
@@ -2724,6 +3598,138 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListAppInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the available session instance types for the current account by paging based on the product, region, operating system, and instance type conditions.
+//
+// Description:
+//
+// This operation is used to select session instance types and does not create resources. The returned results are affected by the available instance types of the account and the business region. An empty result does not indicate a request failure.
+//
+// **Filtering and pagination:**
+//
+// - ProductType is required. Explicitly specify BizRegionId, PageNumber, and PageSize.
+//
+// - If BizRegionId is not provided, the region of the current request is used. You can call [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) to obtain the business region.
+//
+// - AppInstanceType and AppInstanceTypeList can be specified at the same time. In this case, only the instance types that meet both conditions are returned. Neither parameter overrides the other. The list can contain up to 100 items.
+//
+// - Instance type family, CPU, memory, GPU memory, operating system, and category conditions are filtered by intersection. The union is not automatically applied.
+//
+// - PageNumber starts from 1. Use TotalCount, PageSize, and PageNumber to continue pagination until all matching results are read.
+//
+// **Inventory and subsequent calls:**
+//
+// - Inventory is queried only when QueryInventory is set to true. If inventory information is not obtained, do not assume that the inventory is 0.
+//
+// - The inventory reflects the current query result and does not indicate a successful reservation.
+//
+// - After obtaining the AppInstanceType, you can query the price based on the session instance type parameter requirements of [GetResourcePrice](https://api.aliyun.com/document/appstream-center/2021-09-01/GetResourcePrice).
+//
+// - The current query does not use AppCenterImageId to filter instance types. Do not use this parameter to determine the compatibility between images and instance types.
+//
+// Field examples are used to demonstrate how to specify parameters and do not guarantee that the example instance types exist in the selected region or account. The GPU count field does not currently provide values. Use the GPU memory field to understand the instance type.
+//
+// @param request - ListAppInstanceTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppInstanceTypeResponse
+func (client *Client) ListAppInstanceTypeWithContext(ctx context.Context, request *ListAppInstanceTypeRequest, runtime *dara.RuntimeOptions) (_result *ListAppInstanceTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppCenterImageId) {
+		query["AppCenterImageId"] = request.AppCenterImageId
+	}
+
+	if !dara.IsNil(request.AppInstanceType) {
+		query["AppInstanceType"] = request.AppInstanceType
+	}
+
+	if !dara.IsNil(request.AppInstanceTypeFamily) {
+		query["AppInstanceTypeFamily"] = request.AppInstanceTypeFamily
+	}
+
+	if !dara.IsNil(request.AppInstanceTypeList) {
+		query["AppInstanceTypeList"] = request.AppInstanceTypeList
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.Cpu) {
+		query["Cpu"] = request.Cpu
+	}
+
+	if !dara.IsNil(request.GpuMemory) {
+		query["GpuMemory"] = request.GpuMemory
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.Memory) {
+		query["Memory"] = request.Memory
+	}
+
+	if !dara.IsNil(request.OsType) {
+		query["OsType"] = request.OsType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.QueryInventory) {
+		query["QueryInventory"] = request.QueryInventory
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAppInstanceType"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAppInstanceTypeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4661,6 +5667,56 @@ func (client *Client) ListPublishedAppsWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Queries the list of region IDs available for image services under a specified product for the current account.
+//
+// Description:
+//
+// The returned results are affected by the available region configurations of the account and the product type. If ProductType is omitted, the query defaults to CloudApp.
+//
+// This operation returns the regions available for image services. You cannot use this information to determine whether a specific image has been distributed to these regions. Before you create or distribute an image based on a parent image, you must also check the region information of the destination image.
+//
+// @param request - ListRegionIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegionIdResponse
+func (client *Client) ListRegionIdWithContext(ctx context.Context, request *ListRegionIdRequest, runtime *dara.RuntimeOptions) (_result *ListRegionIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRegionId"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRegionIdResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the regions supported by WUYING Cloud Application.
 //
 // Description:
@@ -4878,6 +5934,56 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Queries the step identifiers, step categories, and interaction methods for application adaptation or image creation tasks.
+//
+// Description:
+//
+// Returns application adaptation steps when Type is set to ADAPTOR, and image creation steps when Type is set to IMAGE.
+//
+// This operation returns step definitions, not the actual progress of a specific task. Read the step definitions first, and then combine them with the current step and step status returned by GetTask to display the task progress. The step sets vary across different task types. Do not treat the step index as a completion percentage.
+//
+// @param request - ListTaskStepRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskStepResponse
+func (client *Client) ListTaskStepWithContext(ctx context.Context, request *ListTaskStepRequest, runtime *dara.RuntimeOptions) (_result *ListTaskStepResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTaskStep"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTaskStepResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of workstations.
 //
 // Description:
@@ -4999,6 +6105,62 @@ func (client *Client) ListWuyingServerWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListWuyingServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Wuying Workstation workload templates available for a specified virtual node pool.
+//
+// Description:
+//
+// Queries the workload templates available for a specified virtual node pool. Before calling this operation, call [ListWuyingServer](~~ListWuyingServer~~) to obtain the `VirtualNodePoolId` of the current account. The operation verifies the ownership of the node pool and returns up to 100 records sorted by template configuration order. The template content is Base64-encoded after being encoded in UTF-8. You must decode the Base64 string before use. The current version does not use `MaxResults` and `NextToken` for pagination.
+//
+// @param request - ListWuyingServerWorkloadTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWuyingServerWorkloadTemplateResponse
+func (client *Client) ListWuyingServerWorkloadTemplateWithContext(ctx context.Context, request *ListWuyingServerWorkloadTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListWuyingServerWorkloadTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.VirtualNodePoolId) {
+		query["VirtualNodePoolId"] = request.VirtualNodePoolId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListWuyingServerWorkloadTemplate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListWuyingServerWorkloadTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5233,6 +6395,114 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Con
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyAppInstanceGroupAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Changes the billing method of a specified delivery group to the target billing method and returns the ID of the billing conversion task to be created.
+//
+// Description:
+//
+// This operation performs billing method conversion, which may create orders and trigger subsequent billing changes. **A successful response or a returned task ID does not indicate that the new billing method has taken effect.**
+//
+// **Before you begin:**
+//
+// - The resources belong to the current account, and the product and business region match those in the request. Only one delivery group can be specified per request.
+//
+// - The target billing method must be different from the current one, and the target resource specifications must support the corresponding sales and Billable methods.
+//
+// - Delivery groups that have been added to a valid collection cannot be converted to a different billing method individually.
+//
+// - Multiple delivery groups created in the same batch of orders cannot be converted to different Billable methods separately.
+//
+// **Parameter relationships and call sequence:**
+//
+// 1. Query the resource details first to confirm the product, business region, and current `ChargeType`. You can use [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query cloud application delivery groups.
+//
+// 2. Explicitly specify the target `ChargeType`. If you need to purchase a subscription, specify the purchase duration by combining `Period` and `PeriodUnit`. The period combination must comply with the sales rules currently supported by the resource.
+//
+// 3. Set `AutoPay` based on whether automatic payment is allowed. If auto-renewal is involved, explicitly set `AutoRenew`.
+//
+// 4. After the call, save the returned `AppInstanceGroupModel.TaskId`. If there are unpaid orders, complete the payment first, and then query the resource details again to confirm that the billing method has been changed.
+//
+// This operation does not accept an expiration time parameter. Do not pass the expiration time from other operations into this request. The task examples only illustrate the purpose of the ID and do not define a fixed prefix or length for actual task IDs.
+//
+// @param tmpReq - ModifyAppInstanceGroupChargeTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppInstanceGroupChargeTypeResponse
+func (client *Client) ModifyAppInstanceGroupChargeTypeWithContext(ctx context.Context, tmpReq *ModifyAppInstanceGroupChargeTypeRequest, runtime *dara.RuntimeOptions) (_result *ModifyAppInstanceGroupChargeTypeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ModifyAppInstanceGroupChargeTypeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AppInstanceGroupIds) {
+		request.AppInstanceGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppInstanceGroupIds, dara.String("AppInstanceGroupIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupIdsShrink) {
+		body["AppInstanceGroupIds"] = request.AppInstanceGroupIdsShrink
+	}
+
+	if !dara.IsNil(request.AutoPay) {
+		body["AutoPay"] = request.AutoPay
+	}
+
+	if !dara.IsNil(request.AutoRenew) {
+		body["AutoRenew"] = request.AutoRenew
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ChargeType) {
+		body["ChargeType"] = request.ChargeType
+	}
+
+	if !dara.IsNil(request.Period) {
+		body["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.PeriodUnit) {
+		body["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.PromotionId) {
+		body["PromotionId"] = request.PromotionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAppInstanceGroupChargeType"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAppInstanceGroupChargeTypeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5541,7 +6811,7 @@ func (client *Client) ModifyNodePoolAttributeWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Shares an image with other WUYING users or cancels the sharing of a shared image.
+// Shares an image with other WUYING users or unshares a shared image.
 //
 // @param request - ModifyShareImageRequest
 //
@@ -5751,6 +7021,750 @@ func (client *Client) PageListAppInstanceGroupUserWithContext(ctx context.Contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &PageListAppInstanceGroupUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries app instance group reports by region, app instance group, status, user authorization relationship, or statistical date.
+//
+// Description:
+//
+// Queries the IDs, names, and statuses of app instance groups in app instance group reports. You can call [ListRegions](~~ListRegions~~) to obtain the business regions and then call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the app instance groups. `AppInstanceGroupId` matches the exact ID, and `AppInstanceGroupName` filters by inclusion. If multiple filter conditions are specified at the same time, the intersection is used. When filtering by date, `StatDate` specifies a single day, and `StartDate` and `EndDate` must be specified in pairs to represent a closed interval. If both a single day and an interval are specified, the results must meet both conditions. Before using `EndUserId`, make sure that the user has a valid authorization relationship.
+//
+// @param request - QueryAppInstanceGroupReportListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAppInstanceGroupReportListResponse
+func (client *Client) QueryAppInstanceGroupReportListWithContext(ctx context.Context, request *QueryAppInstanceGroupReportListRequest, runtime *dara.RuntimeOptions) (_result *QueryAppInstanceGroupReportListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.AppInstanceGroupName) {
+		body["AppInstanceGroupName"] = request.AppInstanceGroupName
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.EndUserId) {
+		body["EndUserId"] = request.EndUserId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatDate) {
+		body["StatDate"] = request.StatDate
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAppInstanceGroupReportList"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAppInstanceGroupReportListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of successful connections, the number of failed connections, the success rate, and the average connection duration within a specified time range.
+//
+// Description:
+//
+// Queries connection statistical reports. Before you invoke this operation, you can invoke [ListRegions](~~ListRegions~~) and [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the `BizRegionId` and `AppInstanceGroupId` parameters. The `ProductType`, `StartDate`, and `EndDate` parameters are required for server-side validation. The statistical interval is `[StartDate, EndDate)`, which includes the start time but excludes the end time. Results are returned by page, with a maximum of 1,500 entries per page.
+//
+// @param request - QueryConnectionReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConnectionReportResponse
+func (client *Client) QueryConnectionReportWithContext(ctx context.Context, request *QueryConnectionReportRequest, runtime *dara.RuntimeOptions) (_result *QueryConnectionReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryConnectionReport"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryConnectionReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of daily active users and streaming daily active users by date.
+//
+// Description:
+//
+// Queries the daily active user (DAU) report. StartDate and EndDate are required. The date range is inclusive and cannot exceed 180 days. If ProductType is not specified or is unrecognized, the query defaults to CloudApp. You can use BizRegionId and AppInstanceGroupId to narrow down the scope. If neither is specified, the query returns aggregated data for all business regions. Results are returned in pages, with a maximum of 1,500 records per page.
+//
+// @param request - QueryDauReportDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDauReportDataResponse
+func (client *Client) QueryDauReportDataWithContext(ctx context.Context, request *QueryDauReportDataRequest, runtime *dara.RuntimeOptions) (_result *QueryDauReportDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryDauReportData"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryDauReportDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of monthly active users for each month within a specified time range.
+//
+// Description:
+//
+// Queries the monthly active user (MAU) report. `ProductType`, `StartDate`, and `EndDate` are required for server-side validation, and the time span cannot exceed 60 months. The API returns statistical values by month. To adapt to offline data generated on the next day, the last month in the query range uses the day before `EndDate` as the statistical cutoff date. Results are returned in pages, with a maximum of 1,500 entries per page.
+//
+// @param request - QueryMauReportDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMauReportDataResponse
+func (client *Client) QueryMauReportDataWithContext(ctx context.Context, request *QueryMauReportDataRequest, runtime *dara.RuntimeOptions) (_result *QueryMauReportDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryMauReportData"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryMauReportDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the network RTT and low-RTT user statistics within a specified time range.
+//
+// Description:
+//
+// Queries network round-trip time (RTT) reports. `ProductType`, `StartDate`, and `EndDate` are required for server-side validation. The statistical interval is `[StartDate, EndDate)`. The minimum, maximum, and average RTT values are measured in milliseconds. The low-RTT threshold is determined by the report statistical caliber, and the current API operation does not return this threshold. Results are returned in pages, with a maximum of 1,500 entries per page.
+//
+// @param request - QueryNetworkRttReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryNetworkRttReportResponse
+func (client *Client) QueryNetworkRttReportWithContext(ctx context.Context, request *QueryNetworkRttReportRequest, runtime *dara.RuntimeOptions) (_result *QueryNetworkRttReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryNetworkRttReport"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryNetworkRttReportResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the total number of nodes, the number of subscription nodes, and the number of pay-as-you-go nodes by statistical granularity.
+//
+// Description:
+//
+// Queries node quantity reports. StartDate, EndDate, and StatDateType are required. The query span limit is determined by the statistical granularity: up to 1 day for 1m and 30m, up to 15 days for 6h, and up to 180 days for 1d. Both the start and end boundaries are included in the query range. Results are returned in pages, with a maximum of 1,500 entries per page.
+//
+// @param request - QueryNodeReportDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryNodeReportDataResponse
+func (client *Client) QueryNodeReportDataWithContext(ctx context.Context, request *QueryNodeReportDataRequest, runtime *dara.RuntimeOptions) (_result *QueryNodeReportDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatDateType) {
+		body["StatDateType"] = request.StatDateType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryNodeReportData"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryNodeReportDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the total number of sessions, connected sessions, and streaming sessions by statistical granularity.
+//
+// Description:
+//
+// Queries session quantity reports. `StartDate`, `EndDate`, and `StatDateType` are required. The query span limit is determined by the statistical granularity: up to 1 day for `1m` and `30m`, up to 15 days for `6h`, and up to 180 days for `1d`. Both the start and end boundaries are included in the query range. Results are returned in pages, with a maximum of 1,500 records per page.
+//
+// @param request - QuerySessionReportDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySessionReportDataResponse
+func (client *Client) QuerySessionReportDataWithContext(ctx context.Context, request *QuerySessionReportDataRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionReportDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.StatDateType) {
+		body["StatDateType"] = request.StatDateType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySessionReportData"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySessionReportDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the cumulative duration of application usage by a specified user on an hourly basis and returns the top five applications for each hour.
+//
+// Description:
+//
+// Queries the application usage of a specified user on an hourly basis. StartDate and EndDate use the yyyyMMdd format. If either parameter is not provided, it defaults to yesterday. Both dates must be within the last 90 days, and the start date cannot be later than the end date. The query range includes the start and end dates. UserId must be set to the ID of the user to query. A maximum of the top five applications by usage duration are returned for each hour.
+//
+// @param request - QueryUserAppUsageAggregateByHourRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserAppUsageAggregateByHourResponse
+func (client *Client) QueryUserAppUsageAggregateByHourWithContext(ctx context.Context, request *QueryUserAppUsageAggregateByHourRequest, runtime *dara.RuntimeOptions) (_result *QueryUserAppUsageAggregateByHourResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUserAppUsageAggregateByHour"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUserAppUsageAggregateByHourResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the ranking of cumulative application usage duration for a specified user within a date range.
+//
+// Description:
+//
+// Queries the ranking of application usage duration for a specified user within a statistical range. `StartDate` and `EndDate` use the `yyyyMMdd` format. If either parameter is not provided, it defaults to yesterday. Both dates must be within the last 90 days, and the start date cannot be later than the end date. The query range includes the start and end dates. `UserId` must be set to the ID of the user to be queried. The results are sorted in descending order of cumulative application usage duration.
+//
+// @param request - QueryUserAppUsageTimeRankRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserAppUsageTimeRankResponse
+func (client *Client) QueryUserAppUsageTimeRankWithContext(ctx context.Context, request *QueryUserAppUsageTimeRankRequest, runtime *dara.RuntimeOptions) (_result *QueryUserAppUsageTimeRankResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUserAppUsageTimeRank"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUserAppUsageTimeRankResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the connection status, last connection time, cumulative usage duration, and session persistence duration of users.
+//
+// Description:
+//
+// Queries user usage reports. ProductType, StartDate, and EndDate are required for server-side validation, and the time span cannot exceed 60 months. During the query, the start and end times are converted to `yyyyMMdd` and aggregated by natural days in a closed interval. The results are paginated in descending order of cumulative usage duration, with a maximum of 1,500 records per page. You can combine ConnectionStatus, UserId, BizRegionId, and AppInstanceGroupId for filtering.
+//
+// @param request - QueryUserUsageReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserUsageReportResponse
+func (client *Client) QueryUserUsageReportWithContext(ctx context.Context, request *QueryUserUsageReportRequest, runtime *dara.RuntimeOptions) (_result *QueryUserUsageReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ConnectionStatus) {
+		body["ConnectionStatus"] = request.ConnectionStatus
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UserId) {
+		body["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryUserUsageReport"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryUserUsageReportResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6570,6 +8584,65 @@ func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequ
 
 // Summary:
 //
+// Dissociates multiple applications from a specified image version.
+//
+// Description:
+//
+// This operation supports only custom images and community images that the current account can manage. If you omit VersionId, the current effective version is used. If you specify VersionId, it must belong to the image specified by ImageId. Verify the associations between the applications and the version by querying the image before you submit AppIdList. **Dissociating applications does not directly delete the application records.*	- To delete an application, call DeleteApp.
+//
+// @param request - UnbindAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindAppResponse
+func (client *Client) UnbindAppWithContext(ctx context.Context, request *UnbindAppRequest, runtime *dara.RuntimeOptions) (_result *UnbindAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.AppIdList) {
+		bodyFlat["AppIdList"] = request.AppIdList
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindApp"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindAppResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Unbinds tags from cloud resources in a unified manner.
 //
 // @param request - UntagCloudResourcesRequest
@@ -6722,6 +8795,82 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
+// Modifies the runtime parameters, optimization configurations, and user configurations of a specified application adapter.
+//
+// Description:
+//
+// The AdaptorId must correspond to a valid application adapter manageable by the current account. Pass only the configurations that need to be modified in this request.
+//
+// SilenceParam is used for application startup parameters. UserConfig is used for application runtime configurations. **This operation does not support modifying application scripts or executable file paths through AppScript or ExecuteFileAddress. Do not pass these two parameters.**
+//
+// @param tmpReq - UpdateAdaptorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAdaptorResponse
+func (client *Client) UpdateAdaptorWithContext(ctx context.Context, tmpReq *UpdateAdaptorRequest, runtime *dara.RuntimeOptions) (_result *UpdateAdaptorResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAdaptorShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UserConfig) {
+		request.UserConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserConfig, dara.String("UserConfig"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdaptorId) {
+		body["AdaptorId"] = request.AdaptorId
+	}
+
+	if !dara.IsNil(request.AppScript) {
+		body["AppScript"] = request.AppScript
+	}
+
+	if !dara.IsNil(request.ExecuteFileAddress) {
+		body["ExecuteFileAddress"] = request.ExecuteFileAddress
+	}
+
+	if !dara.IsNil(request.OptimizeParam) {
+		body["OptimizeParam"] = request.OptimizeParam
+	}
+
+	if !dara.IsNil(request.SilenceParam) {
+		body["SilenceParam"] = request.SilenceParam
+	}
+
+	if !dara.IsNil(request.UserConfigShrink) {
+		body["UserConfig"] = request.UserConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAdaptor"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAdaptorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the image of a delivery group.
 //
 // Description:
@@ -6776,6 +8925,156 @@ func (client *Client) UpdateAppInstanceGroupImageWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAppInstanceGroupImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the name, description, version information, and associated application adaptations of an image.
+//
+// Description:
+//
+// You can only modify images that are owned by the current account and allow modifications. Modifying images shared with the current account is not supported.
+//
+// You must provide at least one of ImageId and VersionId. If both are provided, they must point to the same image. If VersionId is omitted, the current effective version of the image is used. Passing a non-empty AdaptorIdList updates the application adaptation relationships of the selected version based on the complete list. Make sure to include the adaptations that you still want to retain.
+//
+// @param request - UpdateImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateImageResponse
+func (client *Client) UpdateImageWithContext(ctx context.Context, request *UpdateImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AdaptorIdList) {
+		body["AdaptorIdList"] = request.AdaptorIdList
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Distro) {
+		body["Distro"] = request.Distro
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.Language) {
+		body["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	if !dara.IsNil(request.VersionName) {
+		body["VersionName"] = request.VersionName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a status update request for an existing image creation task to the corresponding creation resource.
+//
+// Description:
+//
+// The task must exist before you call this operation, and the corresponding creation resource and resource node must be available. TaskType must match the actual type of the task. **This operation does not support modifying the task step, image version, or destination region by using TaskStep, VersionId, or BizRegionId. Do not pass these three parameters.*	- A successful request only indicates that this status update call is completed. To query the final status of the task, call GetTask.
+//
+// @param request - UpdateImageTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateImageTaskResponse
+func (client *Client) UpdateImageTaskWithContext(ctx context.Context, request *UpdateImageTaskRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.Code) {
+		body["Code"] = request.Code
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskStep) {
+		body["TaskStep"] = request.TaskStep
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateImageTask"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateImageTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
