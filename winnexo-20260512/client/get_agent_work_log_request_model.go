@@ -28,7 +28,7 @@ type GetAgentWorkLogRequest struct {
 	//
 	// step_1
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// The page number. Pages start from 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//

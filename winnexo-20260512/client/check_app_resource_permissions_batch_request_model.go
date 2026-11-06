@@ -22,29 +22,29 @@ type iCheckAppResourcePermissionsBatchRequest interface {
 }
 
 type CheckAppResourcePermissionsBatchRequest struct {
-	// The check items.
+	// The check item.
 	//
 	// This parameter is required.
 	Checks []*CheckAppResourcePermissionsBatchRequestChecks `json:"checks,omitempty" xml:"checks,omitempty" type:"Repeated"`
-	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+	// The ID of the target platform user.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// The ID of the target platform user.
+	// The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
 	//
 	// example:
 	//
 	// 10086
 	TargetUserId *int64 `json:"targetUserId,omitempty" xml:"targetUserId,omitempty"`
-	// The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
+	// The check item.
 	//
 	// example:
 	//
 	// 10000
 	TargetUserTenantId *string `json:"targetUserTenantId,omitempty" xml:"targetUserTenantId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The ID of the tenant to which the resource belongs. If this parameter is not specified, the current tenant of the caller is used.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type CheckAppResourcePermissionsBatchRequestChecks struct {
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The dot-separated resource key whose first segment is the APP application key.
+	// The dot-separated resource key whose first segment is the application key.
 	//
 	// This parameter is required.
 	//

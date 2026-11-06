@@ -32,7 +32,7 @@ type BatchCancelTodosResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//

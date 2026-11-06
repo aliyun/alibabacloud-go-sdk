@@ -26,7 +26,7 @@ type CheckAppResourcePermissionsBatchResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message. This field is empty if the request is successful.
+	// The error description. This field is empty if the request is successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CheckAppResourcePermissionsBatchResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The results, returned in the same order as the requested items.
+	// The results in the same order as the request.
 	Results []*CheckAppResourcePermissionsBatchResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -100,7 +100,7 @@ func (s *CheckAppResourcePermissionsBatchResponseBody) Validate() error {
 }
 
 type CheckAppResourcePermissionsBatchResponseBodyResults struct {
-	// Indicates whether the user has the permission.
+	// Indicates whether the user has the required permissions.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type CheckAppResourcePermissionsBatchResponseBodyResults struct {
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The dot-separated resource key whose first segment is the APP application key.
+	// The dot-separated resource key whose first segment is the application key.
 	//
 	// example:
 	//

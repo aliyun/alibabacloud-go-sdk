@@ -20,29 +20,29 @@ type iSetWorkflowTemplateEffectiveVersionRequest interface {
 }
 
 type SetWorkflowTemplateEffectiveVersionRequest struct {
-	// The ID of the collaboration workspace.
+	// The collaboration workspace ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// group_example
+	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The ID of the template.
+	// The template ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// tpl_example
+	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The submitted template version number to be set as effective. The format is a lowercase v followed by a positive integer, such as v1.
+	// The version number of the returned content.
 	//
 	// This parameter is required.
 	//

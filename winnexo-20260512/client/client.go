@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("WinNexo")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -245,11 +253,11 @@ func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (
 
 // Summary:
 //
-// Cancels to-do items in batches.
+// Cancels multiple to-do items.
 //
 // Description:
 //
-// Cancels to-do items in batches based on a set of to-do IDs. No error is reported for completed or non-existent items, ensuring idempotence.
+// Cancels multiple to-do items based on a list of IDs. This operation is idempotent and does not return errors for completed or non-existent items.
 //
 // @param tmpReq - BatchCancelTodosRequest
 //
@@ -308,11 +316,11 @@ func (client *Client) BatchCancelTodosWithOptions(tmpReq *BatchCancelTodosReques
 
 // Summary:
 //
-// Cancels to-do items in batches.
+// Cancels multiple to-do items.
 //
 // Description:
 //
-// Cancels to-do items in batches based on a set of to-do IDs. No error is reported for completed or non-existent items, ensuring idempotence.
+// Cancels multiple to-do items based on a list of IDs. This operation is idempotent and does not return errors for completed or non-existent items.
 //
 // @param request - BatchCancelTodosRequest
 //
@@ -711,11 +719,11 @@ func (client *Client) CheckAppResourcePermission(request *CheckAppResourcePermis
 
 // Summary:
 //
-// Checks resource permissions within applications in batches.
+// Checks the permissions of resources within applications in batches.
 //
 // Description:
 //
-// After authenticating each application in the batch, reuses the constant-time query of the service.
+// Authenticates applications in batches and reuses constant-time service queries.
 //
 // @param tmpReq - CheckAppResourcePermissionsBatchRequest
 //
@@ -786,11 +794,11 @@ func (client *Client) CheckAppResourcePermissionsBatchWithOptions(tmpReq *CheckA
 
 // Summary:
 //
-// Checks resource permissions within applications in batches.
+// Checks the permissions of resources within applications in batches.
 //
 // Description:
 //
-// After authenticating each application in the batch, reuses the constant-time query of the service.
+// Authenticates applications in batches and reuses constant-time service queries.
 //
 // @param request - CheckAppResourcePermissionsBatchRequest
 //
@@ -1550,6 +1558,112 @@ func (client *Client) CreateCustomOrg(request *CreateCustomOrgRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &CreateCustomOrgResponse{}
 	_body, _err := client.CreateCustomOrgWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateFreeExplorationWorkItem
+//
+// Description:
+//
+// 创建与页面一致的自由探索工作项及群话题，配置数字员工和可见范围；不发送消息，不自动执行；非幂等，超时先查询 queryWorkItemFeed
+//
+// @param tmpReq - CreateFreeExplorationWorkItemRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFreeExplorationWorkItemResponse
+func (client *Client) CreateFreeExplorationWorkItemWithOptions(tmpReq *CreateFreeExplorationWorkItemRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateFreeExplorationWorkItemResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateFreeExplorationWorkItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AgentNames) {
+		request.AgentNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AgentNames, dara.String("agentNames"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.MemberUserIds) {
+		request.MemberUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemberUserIds, dara.String("memberUserIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentNamesShrink) {
+		body["agentNames"] = request.AgentNamesShrink
+	}
+
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.MemberUserIdsShrink) {
+		body["memberUserIds"] = request.MemberUserIdsShrink
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		body["visibility"] = request.Visibility
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateFreeExplorationWorkItem"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createFreeExplorationWorkItem"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateFreeExplorationWorkItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateFreeExplorationWorkItem
+//
+// Description:
+//
+// 创建与页面一致的自由探索工作项及群话题，配置数字员工和可见范围；不发送消息，不自动执行；非幂等，超时先查询 queryWorkItemFeed
+//
+// @param request - CreateFreeExplorationWorkItemRequest
+//
+// @return CreateFreeExplorationWorkItemResponse
+func (client *Client) CreateFreeExplorationWorkItem(request *CreateFreeExplorationWorkItemRequest) (_result *CreateFreeExplorationWorkItemResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateFreeExplorationWorkItemResponse{}
+	_body, _err := client.CreateFreeExplorationWorkItemWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6531,7 +6645,7 @@ func (client *Client) CreateWorkflowTemplate(request *CreateWorkflowTemplateRequ
 //
 // Description:
 //
-// Generates a draft version of a workflow template for editing by a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content is performed for content generation of a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently use UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
+// Generates a draft version for editing a workflow template as a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content generation is performed to produce a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently call UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
 //
 // @param request - CreateWorkflowTemplateDraftVersionRequest
 //
@@ -6596,7 +6710,7 @@ func (client *Client) CreateWorkflowTemplateDraftVersionWithOptions(request *Cre
 //
 // Description:
 //
-// Generates a draft version of a workflow template for editing by a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content is performed for content generation of a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently use UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
+// Generates a draft version for editing a workflow template as a storage management administrator. If the selected version is a draft, it is returned as-is (idempotent, no new version is created). If the selected version is committed, replication of its content generation is performed to produce a v(maximum version number + 1) draft. The effective version remains unchanged. You can subsequently call UpdateWorkflowTemplate and pass the returned version to save or commit the draft.
 //
 // @param request - CreateWorkflowTemplateDraftVersionRequest
 //
@@ -6615,11 +6729,11 @@ func (client *Client) CreateWorkflowTemplateDraftVersion(request *CreateWorkflow
 
 // Summary:
 //
-// Deletes multiple resource permissions within an application.
+// Deletes resource permissions within applications in batches.
 //
 // Description:
 //
-// Verifies MANAGE permissions for each application and then calls the original atomic deletion capability.
+// Invokes the original atomic deletion capability after passing MANAGE verification for each application.
 //
 // @param tmpReq - DeleteAppResourcePermissionsRequest
 //
@@ -6682,11 +6796,11 @@ func (client *Client) DeleteAppResourcePermissionsWithOptions(tmpReq *DeleteAppR
 
 // Summary:
 //
-// Deletes multiple resource permissions within an application.
+// Deletes resource permissions within applications in batches.
 //
 // Description:
 //
-// Verifies MANAGE permissions for each application and then calls the original atomic deletion capability.
+// Invokes the original atomic deletion capability after passing MANAGE verification for each application.
 //
 // @param request - DeleteAppResourcePermissionsRequest
 //
@@ -7471,11 +7585,11 @@ func (client *Client) EnableToken(request *EnableTokenRequest) (_result *EnableT
 
 // Summary:
 //
-// Exports a simplified template definition that can be re-imported by valid members.
+// Exports a simplified template definition that can be re-imported.
 //
 // Description:
 //
-// Exports a simplified template definition that can be re-imported by valid members.
+// Exports a simplified template definition that can be re-imported.
 //
 // @param request - ExportWorkflowTemplateRequest
 //
@@ -7536,11 +7650,11 @@ func (client *Client) ExportWorkflowTemplateWithOptions(request *ExportWorkflowT
 
 // Summary:
 //
-// Exports a simplified template definition that can be re-imported by valid members.
+// Exports a simplified template definition that can be re-imported.
 //
 // Description:
 //
-// Exports a simplified template definition that can be re-imported by valid members.
+// Exports a simplified template definition that can be re-imported.
 //
 // @param request - ExportWorkflowTemplateRequest
 //
@@ -7934,6 +8048,90 @@ func (client *Client) GetChatSession(request *GetChatSessionRequest) (_result *G
 	headers := make(map[string]*string)
 	_result = &GetChatSessionResponse{}
 	_body, _err := client.GetChatSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览和下载协作空间对话文件
+//
+// Description:
+//
+// 获取数字员工对话生成文件的正文、预览地址或短期下载地址，支持工作流节点中的USER_OUTPUT_ITEM文件引用。调用者需通过租户、空间成员和文件来源权限校验。无需将文件登记为工作项产物；本接口不接受artifactId。
+//
+// @param request - GetCollaborationGroupOutputItemPreviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCollaborationGroupOutputItemPreviewResponse
+func (client *Client) GetCollaborationGroupOutputItemPreviewWithOptions(request *GetCollaborationGroupOutputItemPreviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetCollaborationGroupOutputItemPreviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.ItemId) {
+		body["itemId"] = request.ItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCollaborationGroupOutputItemPreview"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getCollaborationGroupOutputItemPreview"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCollaborationGroupOutputItemPreviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 预览和下载协作空间对话文件
+//
+// Description:
+//
+// 获取数字员工对话生成文件的正文、预览地址或短期下载地址，支持工作流节点中的USER_OUTPUT_ITEM文件引用。调用者需通过租户、空间成员和文件来源权限校验。无需将文件登记为工作项产物；本接口不接受artifactId。
+//
+// @param request - GetCollaborationGroupOutputItemPreviewRequest
+//
+// @return GetCollaborationGroupOutputItemPreviewResponse
+func (client *Client) GetCollaborationGroupOutputItemPreview(request *GetCollaborationGroupOutputItemPreviewRequest) (_result *GetCollaborationGroupOutputItemPreviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCollaborationGroupOutputItemPreviewResponse{}
+	_body, _err := client.GetCollaborationGroupOutputItemPreviewWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8875,25 +9073,25 @@ func (client *Client) GetScheduledTaskExecutionDetail(request *GetScheduledTaskE
 
 // Summary:
 //
-// Retrieves execution records of scheduled tasks.
+// Retrieves the execution records of scheduled tasks.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation uploads files to an enterprise knowledge base.
+// - This API operation uploads files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this operation.
+// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this API operation.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - When uploading a file, you must provide the OSS persistence address (`filePath`) of the file.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of the file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base folder. Otherwise, the file is bound to the default root folder of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
 //
-// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
+// - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
+// - This operation generates a bill (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionRecordsRequest
 //
@@ -8964,25 +9162,25 @@ func (client *Client) GetScheduledTaskExecutionRecordsWithOptions(request *GetSc
 
 // Summary:
 //
-// Retrieves execution records of scheduled tasks.
+// Retrieves the execution records of scheduled tasks.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation uploads files to an enterprise knowledge base.
+// - This API operation uploads files to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this operation.
+// - You must have the `DEVELOPMENT_KB_MANAGE` feature permission to call this API operation.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - When uploading a file, you must provide the OSS persistence address (`filePath`) of the file.
 //
-// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name of the file to enhance the completeness of the file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base folder. Otherwise, the file is bound to the default root folder of the current digital employee.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
 //
-// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
+// - You can use `sourceTags` to add tags to resources for subsequent management and retrieval.
 //
-// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
+// - This operation generates a bill (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionRecordsRequest
 //
@@ -10704,6 +10902,162 @@ func (client *Client) GetWorkItemAttachmentAccess(request *GetWorkItemAttachment
 
 // Summary:
 //
+// 查询工作项审计记录
+//
+// @param request - GetWorkItemAuditRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkItemAuditResponse
+func (client *Client) GetWorkItemAuditWithOptions(request *GetWorkItemAuditRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkItemAuditResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkItemAudit"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkItemAudit"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkItemAuditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作项审计记录
+//
+// @param request - GetWorkItemAuditRequest
+//
+// @return GetWorkItemAuditResponse
+func (client *Client) GetWorkItemAudit(request *GetWorkItemAuditRequest) (_result *GetWorkItemAuditResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemAuditResponse{}
+	_body, _err := client.GetWorkItemAuditWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作项运行总结
+//
+// @param request - GetWorkItemRunSummariesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkItemRunSummariesResponse
+func (client *Client) GetWorkItemRunSummariesWithOptions(request *GetWorkItemRunSummariesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkItemRunSummariesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.NodeKey) {
+		body["nodeKey"] = request.NodeKey
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkItemRunSummaries"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkItemRunSummaries"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkItemRunSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询工作项运行总结
+//
+// @param request - GetWorkItemRunSummariesRequest
+//
+// @return GetWorkItemRunSummariesResponse
+func (client *Client) GetWorkItemRunSummaries(request *GetWorkItemRunSummariesRequest) (_result *GetWorkItemRunSummariesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkItemRunSummariesResponse{}
+	_body, _err := client.GetWorkItemRunSummariesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the current running, review, and pause statuses of a work item, along with the actual active nodes and execution progress, by using a stable logical instance ID.
 //
 // Description:
@@ -10775,6 +11129,86 @@ func (client *Client) GetWorkflowInstance(request *GetWorkflowInstanceRequest) (
 	headers := make(map[string]*string)
 	_result = &GetWorkflowInstanceResponse{}
 	_body, _err := client.GetWorkflowInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取工作流节点配置
+//
+// @param request - GetWorkflowNodeConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWorkflowNodeConfigurationResponse
+func (client *Client) GetWorkflowNodeConfigurationWithOptions(request *GetWorkflowNodeConfigurationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetWorkflowNodeConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["nodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetWorkflowNodeConfiguration"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getWorkflowNodeConfiguration"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetWorkflowNodeConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 读取工作流节点配置
+//
+// @param request - GetWorkflowNodeConfigurationRequest
+//
+// @return GetWorkflowNodeConfigurationResponse
+func (client *Client) GetWorkflowNodeConfiguration(request *GetWorkflowNodeConfigurationRequest) (_result *GetWorkflowNodeConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetWorkflowNodeConfigurationResponse{}
+	_body, _err := client.GetWorkflowNodeConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11006,11 +11440,11 @@ func (client *Client) GrantAgentUsers(request *GrantAgentUsersRequest) (_result 
 
 // Summary:
 //
-// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
+// Imports a portable template in JSON format and creates a new template regardless of the template name.
 //
 // Description:
 //
-// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
+// Imports a portable template in JSON format and creates a new template regardless of the template name.
 //
 // @param tmpReq - ImportWorkflowTemplateRequest
 //
@@ -11073,11 +11507,11 @@ func (client *Client) ImportWorkflowTemplateWithOptions(tmpReq *ImportWorkflowTe
 
 // Summary:
 //
-// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
+// Imports a portable template in JSON format and creates a new template regardless of the template name.
 //
 // Description:
 //
-// Imports a portable template JSON and creates a new template. A new template is created regardless of whether the name is identical.
+// Imports a portable template in JSON format and creates a new template regardless of the template name.
 //
 // @param request - ImportWorkflowTemplateRequest
 //
@@ -11628,7 +12062,7 @@ func (client *Client) ListAliDingMinutes(request *ListAliDingMinutesRequest) (_r
 //
 // Description:
 //
-// Pages results by secure application prefix after APP/MANAGE authorization.
+// Pages the resource authorization records by secure application prefix after APP/MANAGE authorization.
 //
 // @param tmpReq - ListAppResourcePermissionRecordsRequest
 //
@@ -11723,7 +12157,7 @@ func (client *Client) ListAppResourcePermissionRecordsWithOptions(tmpReq *ListAp
 //
 // Description:
 //
-// Pages results by secure application prefix after APP/MANAGE authorization.
+// Pages the resource authorization records by secure application prefix after APP/MANAGE authorization.
 //
 // @param request - ListAppResourcePermissionRecordsRequest
 //
@@ -11742,11 +12176,11 @@ func (client *Client) ListAppResourcePermissionRecords(request *ListAppResourceP
 
 // Summary:
 //
-// Queries the valid resource permissions of a user within an application.
+// Queries the effective resource permissions of a user within an application.
 //
 // Description:
 //
-// An application prefix is required. The VIEW permission is required to query your own permissions, and the MANAGE permission is required to query permissions on behalf of others.
+// Enforces the application prefix. The VIEW permission is required for querying your own resources, and the MANAGE permission is required for querying resources on behalf of others.
 //
 // @param tmpReq - ListAppResourceUserPermissionsRequest
 //
@@ -11833,11 +12267,11 @@ func (client *Client) ListAppResourceUserPermissionsWithOptions(tmpReq *ListAppR
 
 // Summary:
 //
-// Queries the valid resource permissions of a user within an application.
+// Queries the effective resource permissions of a user within an application.
 //
 // Description:
 //
-// An application prefix is required. The VIEW permission is required to query your own permissions, and the MANAGE permission is required to query permissions on behalf of others.
+// Enforces the application prefix. The VIEW permission is required for querying your own resources, and the MANAGE permission is required for querying resources on behalf of others.
 //
 // @param request - ListAppResourceUserPermissionsRequest
 //
@@ -12403,6 +12837,186 @@ func (client *Client) ListChatSessions(request *ListChatSessionsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListChatSessionsResponse{}
 	_body, _err := client.ListChatSessionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询协作空间成员
+//
+// Description:
+//
+// 分页查询指定空间的有效成员，支持按成员显示名称搜索。调用者必须是当前租户内该空间的有效成员。isActive表示租户账号启用状态，不表示人事在职状态。
+//
+// @param request - ListCollaborationGroupMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCollaborationGroupMembersResponse
+func (client *Client) ListCollaborationGroupMembersWithOptions(request *ListCollaborationGroupMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCollaborationGroupMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCollaborationGroupMembers"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listCollaborationGroupMembers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCollaborationGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询协作空间成员
+//
+// Description:
+//
+// 分页查询指定空间的有效成员，支持按成员显示名称搜索。调用者必须是当前租户内该空间的有效成员。isActive表示租户账号启用状态，不表示人事在职状态。
+//
+// @param request - ListCollaborationGroupMembersRequest
+//
+// @return ListCollaborationGroupMembersResponse
+func (client *Client) ListCollaborationGroupMembers(request *ListCollaborationGroupMembersRequest) (_result *ListCollaborationGroupMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCollaborationGroupMembersResponse{}
+	_body, _err := client.ListCollaborationGroupMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前用户可见的协作空间
+//
+// Description:
+//
+// 分页查询当前调用用户在当前租户中有效加入的协作空间，支持按空间名称搜索。仅返回ACTIVE空间；需要关联平台用户的调用身份，不支持无用户身份的部署凭证。
+//
+// @param request - ListCollaborationGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCollaborationGroupsResponse
+func (client *Client) ListCollaborationGroupsWithOptions(request *ListCollaborationGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListCollaborationGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		body["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.Page) {
+		body["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCollaborationGroups"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listCollaborationGroups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCollaborationGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询当前用户可见的协作空间
+//
+// Description:
+//
+// 分页查询当前调用用户在当前租户中有效加入的协作空间，支持按空间名称搜索。仅返回ACTIVE空间；需要关联平台用户的调用身份，不支持无用户身份的部署凭证。
+//
+// @param request - ListCollaborationGroupsRequest
+//
+// @return ListCollaborationGroupsResponse
+func (client *Client) ListCollaborationGroups(request *ListCollaborationGroupsRequest) (_result *ListCollaborationGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCollaborationGroupsResponse{}
+	_body, _err := client.ListCollaborationGroupsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13206,15 +13820,19 @@ func (client *Client) ListOperatingObjectFavorites(request *ListOperatingObjectF
 
 // Summary:
 //
-// Performs a paged query to retrieve the visible outputs of the current user or a specified collaboration workspace. Supports paging and filtering by session, labels, business ID, and existing output filter conditions.
+// Performs a paged query of the visible outputs and the latest published file versions for the current user or a specified collaboration workspace. Supports filtering by session, label, and business ID. The paging and total count are calculated based on the primary output records.
 //
 // Description:
 //
-// If collaborationGroupId is not provided, queries the personal outputs of the current invoker. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The invoker identity and tenant permissions are determined by the authentication context.
+// If collaborationGroupId is not provided, queries the personal outputs of the current caller. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The caller identity and tenant permissions are determined by the authentication context.
 //
-// sessionId requires an exact match for a regular session, skill session, or node execution session. tags requires all labels to match simultaneously. bizId requires an exact match for the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using AND, and are executed before counting and paging.
+// The sessionId parameter performs an exact match on a regular session, skill session, or node execution session. The tags parameter requires all specified labels to match simultaneously. The bizId parameter performs an exact match on the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using the AND operator, and are executed before counting and paging.
 //
-// Labels and business IDs are derived from file registrations or workflow instance associations. Unregistered labels or business IDs are not inferred from titles. Paging defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
+// Tags and business IDs are derived from file registrations or workflow instance associations. Unregistered tags or business IDs are not inferred from titles. Pagination defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
+//
+// For versioned files, the latest published version is returned by default without expanding historical versions. This API does not currently support querying specific versions. Pagination and the total count are still based on the primary output records, deduplicated by outputId, and are not counted by the number of files or historical versions.
+//
+// For versioned files, fileInfo.path is a time-sensitive download link attached to the published version and content revisions selected during the query. Downloads do not perform an automatic switchover to other versions published later. Invoke this API again to obtain a new link after the current one expires. Historical files that have not yet formed a published version may not return download information.
 //
 // @param tmpReq - ListOutputFilesRequest
 //
@@ -13309,15 +13927,19 @@ func (client *Client) ListOutputFilesWithOptions(tmpReq *ListOutputFilesRequest,
 
 // Summary:
 //
-// Performs a paged query to retrieve the visible outputs of the current user or a specified collaboration workspace. Supports paging and filtering by session, labels, business ID, and existing output filter conditions.
+// Performs a paged query of the visible outputs and the latest published file versions for the current user or a specified collaboration workspace. Supports filtering by session, label, and business ID. The paging and total count are calculated based on the primary output records.
 //
 // Description:
 //
-// If collaborationGroupId is not provided, queries the personal outputs of the current invoker. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The invoker identity and tenant permissions are determined by the authentication context.
+// If collaborationGroupId is not provided, queries the personal outputs of the current caller. If provided, queries the outputs of the specified collaboration workspace and verifies the real-time access permissions of the current workspace members and source resources. The caller identity and tenant permissions are determined by the authentication context.
 //
-// sessionId requires an exact match for a regular session, skill session, or node execution session. tags requires all labels to match simultaneously. bizId requires an exact match for the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using AND, and are executed before counting and paging.
+// The sessionId parameter performs an exact match on a regular session, skill session, or node execution session. The tags parameter requires all specified labels to match simultaneously. The bizId parameter performs an exact match on the business ID of the file registration or associated workflow instance. The new conditions are combined with the existing operatingObjectName, itemType, keyword, and sharedOnly conditions using the AND operator, and are executed before counting and paging.
 //
-// Labels and business IDs are derived from file registrations or workflow instance associations. Unregistered labels or business IDs are not inferred from titles. Paging defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
+// Tags and business IDs are derived from file registrations or workflow instance associations. Unregistered tags or business IDs are not inferred from titles. Pagination defaults to page 1 with 20 items per page, up to a maximum of 100 items, sorted in descending order by update time. The response structure remains compatible with the original API.
+//
+// For versioned files, the latest published version is returned by default without expanding historical versions. This API does not currently support querying specific versions. Pagination and the total count are still based on the primary output records, deduplicated by outputId, and are not counted by the number of files or historical versions.
+//
+// For versioned files, fileInfo.path is a time-sensitive download link attached to the published version and content revisions selected during the query. Downloads do not perform an automatic switchover to other versions published later. Invoke this API again to obtain a new link after the current one expires. Historical files that have not yet formed a published version may not return download information.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -15193,11 +15815,11 @@ func (client *Client) ListWorkflowTemplateVersions(request *ListWorkflowTemplate
 
 // Summary:
 //
-// Queries valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
+// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // Description:
 //
-// Searches for valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
+// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // @param request - ListWorkflowTemplatesRequest
 //
@@ -15270,11 +15892,11 @@ func (client *Client) ListWorkflowTemplatesWithOptions(request *ListWorkflowTemp
 
 // Summary:
 //
-// Queries valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
+// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // Description:
 //
-// Searches for valid templates in the current collaboration space with pagination. Supports both page/pageSize and nextToken/maxResults parameters, with token-based pagination taking precedence.
+// Queries valid templates in the current collaboration space with pagination. If both page/pageSize and nextToken/maxResults are specified, the token takes precedence.
 //
 // @param request - ListWorkflowTemplatesRequest
 //
@@ -15297,7 +15919,7 @@ func (client *Client) ListWorkflowTemplates(request *ListWorkflowTemplatesReques
 //
 // Description:
 //
-// Marks the to-do items of the current user as read. The markAllRead parameter takes precedence over the todoIds parameter. If both parameters are empty, no error is returned.
+// Marks the to-do items of the current user as read. The markAllRead parameter takes precedence over todoIds. No error is reported if both are empty.
 //
 // @param tmpReq - MarkTodosReadRequest
 //
@@ -15364,7 +15986,7 @@ func (client *Client) MarkTodosReadWithOptions(tmpReq *MarkTodosReadRequest, hea
 //
 // Description:
 //
-// Marks the to-do items of the current user as read. The markAllRead parameter takes precedence over the todoIds parameter. If both parameters are empty, no error is returned.
+// Marks the to-do items of the current user as read. The markAllRead parameter takes precedence over todoIds. No error is reported if both are empty.
 //
 // @param request - MarkTodosReadRequest
 //
@@ -16746,11 +17368,11 @@ func (client *Client) RecommendNextActions(request *RecommendNextActionsRequest)
 
 // Summary:
 //
-// Registers in-app resource permissions in bulk.
+// Registers permissions for in-app resources in batches.
 //
 // Description:
 //
-// Checks the MANAGE permission for all applications first, and then performs an atomic batch registration.
+// Checks the MANAGE permissions for all applications and then performs an atomic batch registration.
 //
 // @param tmpReq - RegisterAppResourcePermissionsRequest
 //
@@ -16813,11 +17435,11 @@ func (client *Client) RegisterAppResourcePermissionsWithOptions(tmpReq *Register
 
 // Summary:
 //
-// Registers in-app resource permissions in bulk.
+// Registers permissions for in-app resources in batches.
 //
 // Description:
 //
-// Checks the MANAGE permission for all applications first, and then performs an atomic batch registration.
+// Checks the MANAGE permissions for all applications and then performs an atomic batch registration.
 //
 // @param request - RegisterAppResourcePermissionsRequest
 //
@@ -18078,6 +18700,94 @@ func (client *Client) RerunNodeAI(request *RerunNodeAIRequest) (_result *RerunNo
 
 // Summary:
 //
+// # RerunWorkflowNode
+//
+// Description:
+//
+// 从工作项指定节点重跑；沿用业务权限和状态校验，命令接受不代表异步执行完成
+//
+// @param request - RerunWorkflowNodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RerunWorkflowNodeResponse
+func (client *Client) RerunWorkflowNodeWithOptions(request *RerunWorkflowNodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RerunWorkflowNodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.NodeKey) {
+		body["nodeKey"] = request.NodeKey
+	}
+
+	if !dara.IsNil(request.PlanId) {
+		body["planId"] = request.PlanId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RerunWorkflowNode"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/rerunWorkflowNode"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RerunWorkflowNodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # RerunWorkflowNode
+//
+// Description:
+//
+// 从工作项指定节点重跑；沿用业务权限和状态校验，命令接受不代表异步执行完成
+//
+// @param request - RerunWorkflowNodeRequest
+//
+// @return RerunWorkflowNodeResponse
+func (client *Client) RerunWorkflowNode(request *RerunWorkflowNodeRequest) (_result *RerunWorkflowNodeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RerunWorkflowNodeResponse{}
+	_body, _err := client.RerunWorkflowNodeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets the password of a user.
 //
 // Description:
@@ -18297,6 +19007,90 @@ func (client *Client) ResetToken(request *ResetTokenRequest) (_result *ResetToke
 	headers := make(map[string]*string)
 	_result = &ResetTokenResponse{}
 	_body, _err := client.ResetTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复工作流节点默认配置
+//
+// @param request - ResetWorkflowNodeConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetWorkflowNodeConfigurationResponse
+func (client *Client) ResetWorkflowNodeConfigurationWithOptions(request *ResetWorkflowNodeConfigurationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ResetWorkflowNodeConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["nodeId"] = request.NodeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetWorkflowNodeConfiguration"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/resetWorkflowNodeConfiguration"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetWorkflowNodeConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 恢复工作流节点默认配置
+//
+// @param request - ResetWorkflowNodeConfigurationRequest
+//
+// @return ResetWorkflowNodeConfigurationResponse
+func (client *Client) ResetWorkflowNodeConfiguration(request *ResetWorkflowNodeConfigurationRequest) (_result *ResetWorkflowNodeConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ResetWorkflowNodeConfigurationResponse{}
+	_body, _err := client.ResetWorkflowNodeConfigurationWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20144,17 +20938,17 @@ func (client *Client) SendAsyncChatMessage(request *SendAsyncChatMessageRequest)
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API is used to upload a file to My Resources of a specified digital employee.
 //
-// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+// - The source_type is fixed to FILE, the scope is fixed to PERSONAL, and the platform is fixed to LOCAL.
 //
-// - You must provide an OSS persistent address (`filePath`) for the file. Other information such as the public access URL and original file name is optional.
+// - The file must be provided with an OSS persistence address (filePath). Other information, such as the public access URL and original file name, is optional.
 //
-// - If you do not specify a target folder ID (`directoryId`), the file is automatically attached to the default root folder of the current digital employee. If you specify a folder ID, make sure the folder belongs to the invoker\\"s personal folder.
+// - If the destination folder ID (directoryId) is not specified, the file is automatically attached to the default root folder of the current digital employee. If it is specified, ensure that the folder belongs to the personal folder of the invoker.
 //
-// - Multiple authentication methods (AK, BearerToken, and APP) are supported for security authentication.
+// - Multiple methods to authenticate (such as AK, BearerToken, and APP) are supported for security authentication.
 //
 // - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
@@ -20177,17 +20971,17 @@ func (client *Client) SendChatMessageWithSSE(tmpReq *SendChatMessageRequest, hea
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API is used to upload a file to My Resources of a specified digital employee.
 //
-// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+// - The source_type is fixed to FILE, the scope is fixed to PERSONAL, and the platform is fixed to LOCAL.
 //
-// - You must provide an OSS persistent address (`filePath`) for the file. Other information such as the public access URL and original file name is optional.
+// - The file must be provided with an OSS persistence address (filePath). Other information, such as the public access URL and original file name, is optional.
 //
-// - If you do not specify a target folder ID (`directoryId`), the file is automatically attached to the default root folder of the current digital employee. If you specify a folder ID, make sure the folder belongs to the invoker\\"s personal folder.
+// - If the destination folder ID (directoryId) is not specified, the file is automatically attached to the default root folder of the current digital employee. If it is specified, ensure that the folder belongs to the personal folder of the invoker.
 //
-// - Multiple authentication methods (AK, BearerToken, and APP) are supported for security authentication.
+// - Multiple methods to authenticate (such as AK, BearerToken, and APP) are supported for security authentication.
 //
 // - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
@@ -20304,17 +21098,17 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+// - This API is used to upload a file to My Resources of a specified digital employee.
 //
-// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+// - The source_type is fixed to FILE, the scope is fixed to PERSONAL, and the platform is fixed to LOCAL.
 //
-// - You must provide an OSS persistent address (`filePath`) for the file. Other information such as the public access URL and original file name is optional.
+// - The file must be provided with an OSS persistence address (filePath). Other information, such as the public access URL and original file name, is optional.
 //
-// - If you do not specify a target folder ID (`directoryId`), the file is automatically attached to the default root folder of the current digital employee. If you specify a folder ID, make sure the folder belongs to the invoker\\"s personal folder.
+// - If the destination folder ID (directoryId) is not specified, the file is automatically attached to the default root folder of the current digital employee. If it is specified, ensure that the folder belongs to the personal folder of the invoker.
 //
-// - Multiple authentication methods (AK, BearerToken, and APP) are supported for security authentication.
+// - Multiple methods to authenticate (such as AK, BearerToken, and APP) are supported for security authentication.
 //
 // - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
@@ -20326,6 +21120,98 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &SendChatMessageResponse{}
 	_body, _err := client.SendChatMessageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 向自由探索工作项发送消息
+//
+// Description:
+//
+// 向当前租户、指定协作空间内的已有自由探索会话发送文本消息，立即返回消息提交回执，AI回复在后台异步生成。调用者需关联平台用户并具有话题发送权限。workItemId与conversationId至少传一个，同时传入时必须指向同一会话。不创建新会话，不支持工作流节点话题或Master话题。
+//
+// @param request - SendWorkItemMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendWorkItemMessageResponse
+func (client *Client) SendWorkItemMessageWithOptions(request *SendWorkItemMessageRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SendWorkItemMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.Content) {
+		body["content"] = request.Content
+	}
+
+	if !dara.IsNil(request.ConversationId) {
+		body["conversationId"] = request.ConversationId
+	}
+
+	if !dara.IsNil(request.WorkItemId) {
+		body["workItemId"] = request.WorkItemId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendWorkItemMessage"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/sendWorkItemMessage"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendWorkItemMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 向自由探索工作项发送消息
+//
+// Description:
+//
+// 向当前租户、指定协作空间内的已有自由探索会话发送文本消息，立即返回消息提交回执，AI回复在后台异步生成。调用者需关联平台用户并具有话题发送权限。workItemId与conversationId至少传一个，同时传入时必须指向同一会话。不创建新会话，不支持工作流节点话题或Master话题。
+//
+// @param request - SendWorkItemMessageRequest
+//
+// @return SendWorkItemMessageResponse
+func (client *Client) SendWorkItemMessage(request *SendWorkItemMessageRequest) (_result *SendWorkItemMessageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendWorkItemMessageResponse{}
+	_body, _err := client.SendWorkItemMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20423,11 +21309,11 @@ func (client *Client) SetWorkItemPinned(request *SetWorkItemPinnedRequest) (_res
 
 // Summary:
 //
-// Sets the effective version of a workflow.
+// Sets the Settings of the effective version of a workflow template for the storage management administrator. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
 //
 // Description:
 //
-// The workspace administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before taking effect, the version is re-verified based on the current workspace members, digital workers, capabilities, and storage management. Existing work items use their own execute snapshots and are not affected.
+// The storage management administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
 //
 // @param request - SetWorkflowTemplateEffectiveVersionRequest
 //
@@ -20488,11 +21374,11 @@ func (client *Client) SetWorkflowTemplateEffectiveVersionWithOptions(request *Se
 
 // Summary:
 //
-// Sets the effective version of a workflow.
+// Sets the Settings of the effective version of a workflow template for the storage management administrator. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
 //
 // Description:
 //
-// The workspace administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before taking effect, the version is re-verified based on the current workspace members, digital workers, capabilities, and storage management. Existing work items use their own execute snapshots and are not affected.
+// The storage management administrator configures the Settings for the effective version of a workflow template. Only versions with a commit are allowed, and each template can have only one effective version. Before the version takes effect, it is revalidated against the current workspace members, digital employees, and capabilities. Existing work items use their own execute snapshots and remain unaffected.
 //
 // @param request - SetWorkflowTemplateEffectiveVersionRequest
 //
@@ -20680,11 +21566,11 @@ func (client *Client) StreamChatMessage(messageId *string, request *StreamChatMe
 
 // Summary:
 //
-// Submits answers for a to-do item.
+// Submits the answers for a to-do task.
 //
 // Description:
 //
-// Submits the answers for a to-do item. Repeated submissions by the same user are idempotent and return the initial result. If another user completes the item first, a 409 AlreadyCompleted error is returned.
+// Submits the answers for a to-do task. If the same user submits the answers repeatedly, the operation is idempotent and returns the first result. If another user completes the task first, a 409 AlreadyCompleted error is returned.
 //
 // @param tmpReq - SubmitTodoRequest
 //
@@ -20747,11 +21633,11 @@ func (client *Client) SubmitTodoWithOptions(tmpReq *SubmitTodoRequest, headers m
 
 // Summary:
 //
-// Submits answers for a to-do item.
+// Submits the answers for a to-do task.
 //
 // Description:
 //
-// Submits the answers for a to-do item. Repeated submissions by the same user are idempotent and return the initial result. If another user completes the item first, a 409 AlreadyCompleted error is returned.
+// Submits the answers for a to-do task. If the same user submits the answers repeatedly, the operation is idempotent and returns the first result. If another user completes the task first, a 409 AlreadyCompleted error is returned.
 //
 // @param request - SubmitTodoRequest
 //
@@ -21381,11 +22267,11 @@ func (client *Client) TranscribeChatVoiceAdvance(request *TranscribeChatVoiceAdv
 
 // Summary:
 //
-// Reassigns a to-do task.
+// Transfers a to-do item.
 //
 // Description:
 //
-// Reassigns a to-do task to specified users. The operator is excluded from the target list, and atomic validation is performed for the entire task.
+// Transfers a to-do item to specified users, excludes the operator from the targets, and performs atomic validation for the entire task.
 //
 // @param tmpReq - TransferTodoRequest
 //
@@ -21452,11 +22338,11 @@ func (client *Client) TransferTodoWithOptions(tmpReq *TransferTodoRequest, heade
 
 // Summary:
 //
-// Reassigns a to-do task.
+// Transfers a to-do item.
 //
 // Description:
 //
-// Reassigns a to-do task to specified users. The operator is excluded from the target list, and atomic validation is performed for the entire task.
+// Transfers a to-do item to specified users, excludes the operator from the targets, and performs atomic validation for the entire task.
 //
 // @param request - TransferTodoRequest
 //
@@ -23369,11 +24255,117 @@ func (client *Client) UpdateWorkItem(request *UpdateWorkItemRequest) (_result *U
 
 // Summary:
 //
-// Overwrites and updates a workflow template. The last save takes effect.
+// 编辑工作流节点配置
+//
+// @param tmpReq - UpdateWorkflowNodeConfigurationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWorkflowNodeConfigurationResponse
+func (client *Client) UpdateWorkflowNodeConfigurationWithOptions(tmpReq *UpdateWorkflowNodeConfigurationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateWorkflowNodeConfigurationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateWorkflowNodeConfigurationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Executor) {
+		request.ExecutorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Executor, dara.String("executor"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ResponsibleUserIds) {
+		request.ResponsibleUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResponsibleUserIds, dara.String("responsibleUserIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.ExecutorShrink) {
+		body["executor"] = request.ExecutorShrink
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["expectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["instanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NodeId) {
+		body["nodeId"] = request.NodeId
+	}
+
+	if !dara.IsNil(request.ResponsibleUserIdsShrink) {
+		body["responsibleUserIds"] = request.ResponsibleUserIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateWorkflowNodeConfiguration"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateWorkflowNodeConfiguration"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateWorkflowNodeConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 编辑工作流节点配置
+//
+// @param request - UpdateWorkflowNodeConfigurationRequest
+//
+// @return UpdateWorkflowNodeConfigurationResponse
+func (client *Client) UpdateWorkflowNodeConfiguration(request *UpdateWorkflowNodeConfigurationRequest) (_result *UpdateWorkflowNodeConfigurationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWorkflowNodeConfigurationResponse{}
+	_body, _err := client.UpdateWorkflowNodeConfigurationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a workflow template by overwriting it with valid members. The last save takes effect.
 //
 // Description:
 //
-// Overwrites and updates a workflow template. The last save takes effect.
+// Updates a workflow template by overwriting it with valid members. The last save takes effect.
 //
 // @param tmpReq - UpdateWorkflowTemplateRequest
 //
@@ -23456,11 +24448,11 @@ func (client *Client) UpdateWorkflowTemplateWithOptions(tmpReq *UpdateWorkflowTe
 
 // Summary:
 //
-// Overwrites and updates a workflow template. The last save takes effect.
+// Updates a workflow template by overwriting it with valid members. The last save takes effect.
 //
 // Description:
 //
-// Overwrites and updates a workflow template. The last save takes effect.
+// Updates a workflow template by overwriting it with valid members. The last save takes effect.
 //
 // @param request - UpdateWorkflowTemplateRequest
 //

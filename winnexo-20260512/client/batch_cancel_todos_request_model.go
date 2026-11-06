@@ -16,13 +16,13 @@ type iBatchCancelTodosRequest interface {
 }
 
 type BatchCancelTodosRequest struct {
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The list of to-do item IDs. You can specify 1 to 100 IDs.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The list of to-do IDs. You can specify 1 to 100 IDs.
+	// The list of to-do item IDs. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	//

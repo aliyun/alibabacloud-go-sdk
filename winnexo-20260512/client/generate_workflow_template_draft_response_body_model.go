@@ -30,15 +30,15 @@ type GenerateWorkflowTemplateDraftResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// {\\"schemaVersion\\":2,\\"steps\\":[]}
 	Draft *GenerateWorkflowTemplateDraftResponseBodyDraft `json:"draft,omitempty" xml:"draft,omitempty" type:"Struct"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request tracking ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -104,19 +104,37 @@ type GenerateWorkflowTemplateDraftResponseBodyDraft struct {
 	//
 	// example:
 	//
-	// example
+	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 节点依赖边；每项包含from/to，引用稳定stepId
+	//
+	// example:
+	//
+	// []
+	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
+	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	//
+	// example:
+	//
+	// {"collect":{"x":0,"y":0},"review":{"x":240,"y":0}}
+	Layout map[string]interface{} `json:"layout,omitempty" xml:"layout,omitempty"`
 	// The name of the template.
 	//
 	// example:
 	//
-	// example
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 模板结构版本，当前为2，与业务版本vN独立
+	//
+	// example:
+	//
+	// 2
+	SchemaVersion *int64 `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
 	// The ordered steps.
 	//
 	// example:
 	//
-	// example
+	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
 	Steps []*GenerateWorkflowTemplateDraftResponseBodyDraftSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
@@ -132,8 +150,20 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) GetDescription() *strin
 	return s.Description
 }
 
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) GetEdges() []map[string]interface{} {
+	return s.Edges
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) GetLayout() map[string]interface{} {
+	return s.Layout
+}
+
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) GetName() *string {
 	return s.Name
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) GetSchemaVersion() *int64 {
+	return s.SchemaVersion
 }
 
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) GetSteps() []*GenerateWorkflowTemplateDraftResponseBodyDraftSteps {
@@ -145,8 +175,23 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) SetDescription(v string
 	return s
 }
 
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) SetEdges(v []map[string]interface{}) *GenerateWorkflowTemplateDraftResponseBodyDraft {
+	s.Edges = v
+	return s
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) SetLayout(v map[string]interface{}) *GenerateWorkflowTemplateDraftResponseBodyDraft {
+	s.Layout = v
+	return s
+}
+
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) SetName(v string) *GenerateWorkflowTemplateDraftResponseBodyDraft {
 	s.Name = &v
+	return s
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraft) SetSchemaVersion(v int64) *GenerateWorkflowTemplateDraftResponseBodyDraft {
+	s.SchemaVersion = &v
 	return s
 }
 
@@ -179,15 +224,19 @@ type GenerateWorkflowTemplateDraftResponseBodyDraftSteps struct {
 	//
 	// example:
 	//
-	// example
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the responsible agent.
+	// The name of the agent owner.
 	//
 	// example:
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The type of the owner. Valid values: MEMBER: Human. AGENT: Agent.
+	// The type of the owner. Valid values:
+	//
+	// - MEMBER: human
+	//
+	// - AGENT: agent
 	//
 	// example:
 	//
@@ -199,29 +248,35 @@ type GenerateWorkflowTemplateDraftResponseBodyDraftSteps struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
+	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	//
+	// example:
+	//
+	// false
+	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
 	// The list of user IDs of the reviewers.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// The order of the step.
+	// The sort order of the step.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The processing instructions for the step.
+	// The processing instructions of the step.
 	//
 	// example:
 	//
-	// example
+	// Collect customer information and submit it to the owner for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as returned by the backend.
+	// The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
 	//
 	// example:
 	//
-	// [{"type":"text","content":"Organize input materials"}]
+	// [{\\"type\\":\\"text\\",\\"text\\":\\"收集客户信息\\"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The ID of the step.
 	//
@@ -257,6 +312,10 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetOwnerType() *st
 
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetOwnerUserId() *int64 {
 	return s.OwnerUserId
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetReviewOutput() *bool {
+	return s.ReviewOutput
 }
 
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) GetReviewerUserIds() []*int64 {
@@ -301,6 +360,11 @@ func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) SetOwnerType(v str
 
 func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) SetOwnerUserId(v int64) *GenerateWorkflowTemplateDraftResponseBodyDraftSteps {
 	s.OwnerUserId = &v
+	return s
+}
+
+func (s *GenerateWorkflowTemplateDraftResponseBodyDraftSteps) SetReviewOutput(v bool) *GenerateWorkflowTemplateDraftResponseBodyDraftSteps {
+	s.ReviewOutput = &v
 	return s
 }
 

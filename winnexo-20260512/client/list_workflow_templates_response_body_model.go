@@ -38,7 +38,7 @@ type ListWorkflowTemplatesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Indicates whether more data is available.
+	// Indicates whether more data exists.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type ListWorkflowTemplatesResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// [{\\"id\\":\\"item_9401\\"}]
 	Items []*ListWorkflowTemplatesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page in the current request.
+	// The effective maximum number of entries to return per page for the current request.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type ListWorkflowTemplatesResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. An empty string indicates that no more data is available.
+	// The pagination token for the next page. An empty string indicates that no more data exists.
 	//
 	// example:
 	//
-	// example
+	// tok_9401
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The current page number.
 	//
@@ -74,19 +74,19 @@ type ListWorkflowTemplatesResponseBody struct {
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page in the current request.
+	// The effective number of entries per page.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of visible entries that match the filter conditions.
+	// The total number of visible items under the filter conditions.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ListWorkflowTemplatesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The current effective version number. An empty value indicates that only a draft exists and the template cannot be used for work items.
 	//
@@ -218,11 +218,11 @@ type ListWorkflowTemplatesResponseBodyItems struct {
 	//
 	// v1
 	EffectiveVersion *string `json:"effectiveVersion,omitempty" xml:"effectiveVersion,omitempty"`
-	// The time when the template was last modified. The time is in the ISO 8601 standard.
+	// The time of the last modification. The time follows the ISO 8601 standard.
 	//
 	// example:
 	//
-	// example
+	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The latest version number.
 	//
@@ -232,7 +232,7 @@ type ListWorkflowTemplatesResponseBodyItems struct {
 	LatestVersion *string `json:"latestVersion,omitempty" xml:"latestVersion,omitempty"`
 	// The status of the latest version. Valid values:
 	//
-	// - DRAFT: Draft. The version contains uncommitted edits.
+	// - DRAFT: Draft. Unsubmitted edits exist.
 	//
 	// - SUBMITTED: Submitted.
 	//
@@ -244,9 +244,9 @@ type ListWorkflowTemplatesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of unique owners.
+	// The number of owners.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type ListWorkflowTemplatesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 }
 

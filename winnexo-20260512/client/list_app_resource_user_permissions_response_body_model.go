@@ -34,25 +34,25 @@ type ListAppResourceUserPermissionsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The resources and permissions on the current page.
 	Items []*ListAppResourceUserPermissionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The error description. This parameter is empty if the request is successful.
+	// The error description. This field is empty when the request is successful.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The page number.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page.
+	// The permission filter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListAppResourceUserPermissionsResponseBody) Validate() error {
 }
 
 type ListAppResourceUserPermissionsResponseBodyItems struct {
-	// The stored and valid permission points.
+	// The permission filter.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
 	// The resource key.
 	//
@@ -159,7 +159,7 @@ type ListAppResourceUserPermissionsResponseBodyItems struct {
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// The resource type.
+	// The application key or its subpath.
 	//
 	// example:
 	//

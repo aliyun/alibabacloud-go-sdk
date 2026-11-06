@@ -32,31 +32,31 @@ type iListAppResourcePermissionRecordsRequest interface {
 }
 
 type ListAppResourcePermissionRecordsRequest struct {
-	// The grantee ID filter.
+	// The tenant filter for cross-tenant users.
 	//
 	// example:
 	//
 	// 10086
 	GranteeId *string `json:"granteeId,omitempty" xml:"granteeId,omitempty"`
-	// The tenant ID filter for cross-tenant users.
+	// The permission filter.
 	//
 	// example:
 	//
 	// 10000
 	GranteeTenantId *string `json:"granteeTenantId,omitempty" xml:"granteeTenantId,omitempty"`
-	// The grantee type filter.
+	// The principal ID filter.
 	//
 	// example:
 	//
 	// USER
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
-	// The page number.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page.
+	// The principal type filter.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListAppResourcePermissionRecordsRequest struct {
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The permission filter.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// The application key or its subpath.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type ListAppResourcePermissionRecordsRequest struct {
 	//
 	// app.demo
 	ResourceKeyPrefix *string `json:"resourceKeyPrefix,omitempty" xml:"resourceKeyPrefix,omitempty"`
-	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+	// The resource tenant ID. This parameter is fixed to APP_RESOURCE.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// The resource type. Set this parameter to APP_RESOURCE.
+	// The application key or its subpath.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ListAppResourcePermissionRecordsRequest struct {
 	//
 	// APP_RESOURCE
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
 	//
 	// example:
 	//

@@ -15,18 +15,24 @@ type iGetWorkflowTemplateResponseBody interface {
 	GetCreatedByUserId() *int64
 	SetDescription(v string) *GetWorkflowTemplateResponseBody
 	GetDescription() *string
+	SetEdges(v []map[string]interface{}) *GetWorkflowTemplateResponseBody
+	GetEdges() []map[string]interface{}
 	SetEffectiveVersion(v string) *GetWorkflowTemplateResponseBody
 	GetEffectiveVersion() *string
 	SetGmtCreate(v string) *GetWorkflowTemplateResponseBody
 	GetGmtCreate() *string
 	SetGmtModified(v string) *GetWorkflowTemplateResponseBody
 	GetGmtModified() *string
+	SetLayout(v map[string]interface{}) *GetWorkflowTemplateResponseBody
+	GetLayout() map[string]interface{}
 	SetMessage(v string) *GetWorkflowTemplateResponseBody
 	GetMessage() *string
 	SetName(v string) *GetWorkflowTemplateResponseBody
 	GetName() *string
 	SetRequestId(v string) *GetWorkflowTemplateResponseBody
 	GetRequestId() *string
+	SetSchemaVersion(v int64) *GetWorkflowTemplateResponseBody
+	GetSchemaVersion() *int64
 	SetSteps(v []*GetWorkflowTemplateResponseBodySteps) *GetWorkflowTemplateResponseBody
 	GetSteps() []*GetWorkflowTemplateResponseBodySteps
 	SetTemplateId(v string) *GetWorkflowTemplateResponseBody
@@ -56,8 +62,14 @@ type GetWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 节点依赖边；每项包含from/to，引用稳定stepId；显式空数组表示没有依赖
+	//
+	// example:
+	//
+	// [{"from":"collect","to":"deliver"}]
+	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
 	// The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
 	//
 	// example:
@@ -68,15 +80,21 @@ type GetWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// 2026-11-05T08:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The modification time in ISO 8601 format.
 	//
 	// example:
 	//
-	// example
+	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The error description.
+	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	//
+	// example:
+	//
+	// {"collect":{"x":0,"y":0},"review":{"x":240,"y":0}}
+	Layout map[string]interface{} `json:"layout,omitempty" xml:"layout,omitempty"`
+	// The error message.
 	//
 	// example:
 	//
@@ -86,7 +104,7 @@ type GetWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The request ID.
 	//
@@ -94,25 +112,31 @@ type GetWorkflowTemplateResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 模板结构版本，当前为2，与业务版本vN独立
+	//
+	// example:
+	//
+	// 2
+	SchemaVersion *int64 `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
 	// The ordered steps.
 	//
 	// example:
 	//
-	// example
+	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
 	Steps []*GetWorkflowTemplateResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 	// The ID of the template.
 	//
 	// example:
 	//
-	// tpl_example
+	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// The version number to which the returned content belongs.
+	// The optimistic version number.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The change description for this version. If this field is empty for v1, the template description can be displayed.
+	// The version description.
 	//
 	// example:
 	//
@@ -150,6 +174,10 @@ func (s *GetWorkflowTemplateResponseBody) GetDescription() *string {
 	return s.Description
 }
 
+func (s *GetWorkflowTemplateResponseBody) GetEdges() []map[string]interface{} {
+	return s.Edges
+}
+
 func (s *GetWorkflowTemplateResponseBody) GetEffectiveVersion() *string {
 	return s.EffectiveVersion
 }
@@ -162,6 +190,10 @@ func (s *GetWorkflowTemplateResponseBody) GetGmtModified() *string {
 	return s.GmtModified
 }
 
+func (s *GetWorkflowTemplateResponseBody) GetLayout() map[string]interface{} {
+	return s.Layout
+}
+
 func (s *GetWorkflowTemplateResponseBody) GetMessage() *string {
 	return s.Message
 }
@@ -172,6 +204,10 @@ func (s *GetWorkflowTemplateResponseBody) GetName() *string {
 
 func (s *GetWorkflowTemplateResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetWorkflowTemplateResponseBody) GetSchemaVersion() *int64 {
+	return s.SchemaVersion
 }
 
 func (s *GetWorkflowTemplateResponseBody) GetSteps() []*GetWorkflowTemplateResponseBodySteps {
@@ -209,6 +245,11 @@ func (s *GetWorkflowTemplateResponseBody) SetDescription(v string) *GetWorkflowT
 	return s
 }
 
+func (s *GetWorkflowTemplateResponseBody) SetEdges(v []map[string]interface{}) *GetWorkflowTemplateResponseBody {
+	s.Edges = v
+	return s
+}
+
 func (s *GetWorkflowTemplateResponseBody) SetEffectiveVersion(v string) *GetWorkflowTemplateResponseBody {
 	s.EffectiveVersion = &v
 	return s
@@ -224,6 +265,11 @@ func (s *GetWorkflowTemplateResponseBody) SetGmtModified(v string) *GetWorkflowT
 	return s
 }
 
+func (s *GetWorkflowTemplateResponseBody) SetLayout(v map[string]interface{}) *GetWorkflowTemplateResponseBody {
+	s.Layout = v
+	return s
+}
+
 func (s *GetWorkflowTemplateResponseBody) SetMessage(v string) *GetWorkflowTemplateResponseBody {
 	s.Message = &v
 	return s
@@ -236,6 +282,11 @@ func (s *GetWorkflowTemplateResponseBody) SetName(v string) *GetWorkflowTemplate
 
 func (s *GetWorkflowTemplateResponseBody) SetRequestId(v string) *GetWorkflowTemplateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateResponseBody) SetSchemaVersion(v int64) *GetWorkflowTemplateResponseBody {
+	s.SchemaVersion = &v
 	return s
 }
 
@@ -288,7 +339,7 @@ type GetWorkflowTemplateResponseBodySteps struct {
 	//
 	// example:
 	//
-	// example
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The name of the agent owner.
 	//
@@ -312,13 +363,19 @@ type GetWorkflowTemplateResponseBodySteps struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
+	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	//
+	// example:
+	//
+	// false
+	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
 	// The list of user IDs of the reviewers.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// The order of the step.
+	// The sort order of the step.
 	//
 	// example:
 	//
@@ -328,13 +385,13 @@ type GetWorkflowTemplateResponseBodySteps struct {
 	//
 	// example:
 	//
-	// example
+	// Collect customer information and submit it to the owner for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The array of structured segments for the step instructions. Supported segment types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are preserved exactly as returned by the backend.
+	// The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are preserved exactly as returned by the backend.
 	//
 	// example:
 	//
-	// [{"type":"text","content":"Organize input materials"}]
+	// [{"type":"text","content":"整理输入资料"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The ID of the step.
 	//
@@ -370,6 +427,10 @@ func (s *GetWorkflowTemplateResponseBodySteps) GetOwnerType() *string {
 
 func (s *GetWorkflowTemplateResponseBodySteps) GetOwnerUserId() *int64 {
 	return s.OwnerUserId
+}
+
+func (s *GetWorkflowTemplateResponseBodySteps) GetReviewOutput() *bool {
+	return s.ReviewOutput
 }
 
 func (s *GetWorkflowTemplateResponseBodySteps) GetReviewerUserIds() []*int64 {
@@ -414,6 +475,11 @@ func (s *GetWorkflowTemplateResponseBodySteps) SetOwnerType(v string) *GetWorkfl
 
 func (s *GetWorkflowTemplateResponseBodySteps) SetOwnerUserId(v int64) *GetWorkflowTemplateResponseBodySteps {
 	s.OwnerUserId = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateResponseBodySteps) SetReviewOutput(v bool) *GetWorkflowTemplateResponseBodySteps {
+	s.ReviewOutput = &v
 	return s
 }
 

@@ -20,13 +20,13 @@ type iTransferTodoShrinkRequest interface {
 }
 
 type TransferTodoShrinkRequest struct {
-	// The handover description.
+	// The handover note.
 	//
 	// example:
 	//
 	// Please continue processing
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// The list of target user IDs to whom the task is reassigned. You can specify 1 to 100 user IDs.
+	// The list of target user IDs for the transfer (1 to 100).
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type TransferTodoShrinkRequest struct {
 	//
 	// 43
 	TargetUserIdsShrink *string `json:"targetUserIds,omitempty" xml:"targetUserIds,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The to-do item ID.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The ID of the to-do task.
+	// The list of target user IDs for the transfer (1 to 100).
 	//
 	// This parameter is required.
 	//

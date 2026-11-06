@@ -40,19 +40,19 @@ type ListAppResourcePermissionRecordsResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The page number.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page.
+	// The principal type filter.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -169,25 +169,25 @@ type ListAppResourcePermissionRecordsResponseBodyItems struct {
 	//
 	// 10086
 	GrantedBy *string `json:"grantedBy,omitempty" xml:"grantedBy,omitempty"`
-	// The grantee ID.
+	// The tenant filter for cross-tenant users.
 	//
 	// example:
 	//
 	// 10086
 	GranteeId *string `json:"granteeId,omitempty" xml:"granteeId,omitempty"`
-	// The grantee name.
+	// The principal name.
 	//
 	// example:
 	//
 	// Zhang San
 	GranteeName *string `json:"granteeName,omitempty" xml:"granteeName,omitempty"`
-	// The ID of the tenant to which the cross-tenant user belongs.
+	// The permission filter.
 	//
 	// example:
 	//
 	// 10000
 	GranteeTenantId *string `json:"granteeTenantId,omitempty" xml:"granteeTenantId,omitempty"`
-	// The grantee type.
+	// The principal ID filter.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListAppResourcePermissionRecordsResponseBodyItems struct {
 	//
 	// APP/VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The ID of the permission record.
+	// The permission record ID.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type ListAppResourcePermissionRecordsResponseBodyItems struct {
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// The resource type.
+	// The application key or its subpath.
 	//
 	// example:
 	//

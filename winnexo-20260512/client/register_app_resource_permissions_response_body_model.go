@@ -26,15 +26,15 @@ type RegisterAppResourcePermissionsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message. This parameter is empty if the request is successful.
+	// The error description. Empty if the request is successful.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The newly created or idempotently matched permission records.
+	// The created or idempotently matched permission records.
 	Records []*RegisterAppResourcePermissionsResponseBodyRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
-	// The request tracking ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type RegisterAppResourcePermissionsResponseBodyRecords struct {
 	//
 	// 2026-10-16T10:30:00+08:00
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The expiration time.
+	// The expiration time with a time zone. If omitted, the permissions never expire.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type RegisterAppResourcePermissionsResponseBodyRecords struct {
 	//
 	// 10086
 	GrantedBy *string `json:"grantedBy,omitempty" xml:"grantedBy,omitempty"`
-	// The principal ID.
+	// The principal ID. Omit this parameter for ALL_USERS.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ type RegisterAppResourcePermissionsResponseBodyRecords struct {
 	//
 	// 1001
 	PermissionId *int64 `json:"permissionId,omitempty" xml:"permissionId,omitempty"`
-	// The resource key.
+	// The dot-separated resource key with the first segment as the APP application key.
 	//
 	// example:
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// The resource type.
+	// The resource type. Fixed to APP_RESOURCE.
 	//
 	// example:
 	//

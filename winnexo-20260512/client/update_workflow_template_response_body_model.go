@@ -15,18 +15,24 @@ type iUpdateWorkflowTemplateResponseBody interface {
 	GetCreatedByUserId() *int64
 	SetDescription(v string) *UpdateWorkflowTemplateResponseBody
 	GetDescription() *string
+	SetEdges(v []map[string]interface{}) *UpdateWorkflowTemplateResponseBody
+	GetEdges() []map[string]interface{}
 	SetEffectiveVersion(v string) *UpdateWorkflowTemplateResponseBody
 	GetEffectiveVersion() *string
 	SetGmtCreate(v string) *UpdateWorkflowTemplateResponseBody
 	GetGmtCreate() *string
 	SetGmtModified(v string) *UpdateWorkflowTemplateResponseBody
 	GetGmtModified() *string
+	SetLayout(v map[string]interface{}) *UpdateWorkflowTemplateResponseBody
+	GetLayout() map[string]interface{}
 	SetMessage(v string) *UpdateWorkflowTemplateResponseBody
 	GetMessage() *string
 	SetName(v string) *UpdateWorkflowTemplateResponseBody
 	GetName() *string
 	SetRequestId(v string) *UpdateWorkflowTemplateResponseBody
 	GetRequestId() *string
+	SetSchemaVersion(v int64) *UpdateWorkflowTemplateResponseBody
+	GetSchemaVersion() *int64
 	SetSteps(v []*UpdateWorkflowTemplateResponseBodySteps) *UpdateWorkflowTemplateResponseBody
 	GetSteps() []*UpdateWorkflowTemplateResponseBodySteps
 	SetTemplateId(v string) *UpdateWorkflowTemplateResponseBody
@@ -52,13 +58,19 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// 1
 	CreatedByUserId *int64 `json:"createdByUserId,omitempty" xml:"createdByUserId,omitempty"`
-	// The template description.
+	// The description of the template.
 	//
 	// example:
 	//
-	// example
+	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
+	// 节点依赖边；每项包含from/to，引用稳定stepId；显式空数组表示没有依赖
+	//
+	// example:
+	//
+	// [{"from":"collect","to":"deliver"}]
+	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
+	// The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items.
 	//
 	// example:
 	//
@@ -68,25 +80,31 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// 2026-11-05T08:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The modification time in ISO 8601 format.
 	//
 	// example:
 	//
-	// example
+	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The error description.
+	// 可选画布布局，按stepId索引；只影响展示，不决定依赖
+	//
+	// example:
+	//
+	// {"collect":{"x":0,"y":0},"review":{"x":240,"y":0}}
+	Layout map[string]interface{} `json:"layout,omitempty" xml:"layout,omitempty"`
+	// The error message.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
-	// example
+	// Customer Complaint Handling Process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The request tracking ID.
 	//
@@ -94,29 +112,35 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 模板结构版本，当前为2，与业务版本vN独立
+	//
+	// example:
+	//
+	// 2
+	SchemaVersion *int64 `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
 	// The ordered steps.
 	//
 	// example:
 	//
-	// example
+	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
 	Steps []*UpdateWorkflowTemplateResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
-	// The template ID.
+	// The ID of the template.
 	//
 	// example:
 	//
-	// tpl_example
+	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
-	// The version number to which the returned content belongs.
+	// The version number to which the content belongs.
 	//
 	// example:
 	//
 	// v2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The change description of the version. An empty value indicates that no description is provided.
+	// The change description for this version. An empty value indicates that no description is provided.
 	//
 	// example:
 	//
-	// Add a review step
+	// Added a review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 	// The version status. Valid values:
 	//
@@ -150,6 +174,10 @@ func (s *UpdateWorkflowTemplateResponseBody) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateWorkflowTemplateResponseBody) GetEdges() []map[string]interface{} {
+	return s.Edges
+}
+
 func (s *UpdateWorkflowTemplateResponseBody) GetEffectiveVersion() *string {
 	return s.EffectiveVersion
 }
@@ -162,6 +190,10 @@ func (s *UpdateWorkflowTemplateResponseBody) GetGmtModified() *string {
 	return s.GmtModified
 }
 
+func (s *UpdateWorkflowTemplateResponseBody) GetLayout() map[string]interface{} {
+	return s.Layout
+}
+
 func (s *UpdateWorkflowTemplateResponseBody) GetMessage() *string {
 	return s.Message
 }
@@ -172,6 +204,10 @@ func (s *UpdateWorkflowTemplateResponseBody) GetName() *string {
 
 func (s *UpdateWorkflowTemplateResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *UpdateWorkflowTemplateResponseBody) GetSchemaVersion() *int64 {
+	return s.SchemaVersion
 }
 
 func (s *UpdateWorkflowTemplateResponseBody) GetSteps() []*UpdateWorkflowTemplateResponseBodySteps {
@@ -209,6 +245,11 @@ func (s *UpdateWorkflowTemplateResponseBody) SetDescription(v string) *UpdateWor
 	return s
 }
 
+func (s *UpdateWorkflowTemplateResponseBody) SetEdges(v []map[string]interface{}) *UpdateWorkflowTemplateResponseBody {
+	s.Edges = v
+	return s
+}
+
 func (s *UpdateWorkflowTemplateResponseBody) SetEffectiveVersion(v string) *UpdateWorkflowTemplateResponseBody {
 	s.EffectiveVersion = &v
 	return s
@@ -224,6 +265,11 @@ func (s *UpdateWorkflowTemplateResponseBody) SetGmtModified(v string) *UpdateWor
 	return s
 }
 
+func (s *UpdateWorkflowTemplateResponseBody) SetLayout(v map[string]interface{}) *UpdateWorkflowTemplateResponseBody {
+	s.Layout = v
+	return s
+}
+
 func (s *UpdateWorkflowTemplateResponseBody) SetMessage(v string) *UpdateWorkflowTemplateResponseBody {
 	s.Message = &v
 	return s
@@ -236,6 +282,11 @@ func (s *UpdateWorkflowTemplateResponseBody) SetName(v string) *UpdateWorkflowTe
 
 func (s *UpdateWorkflowTemplateResponseBody) SetRequestId(v string) *UpdateWorkflowTemplateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkflowTemplateResponseBody) SetSchemaVersion(v int64) *UpdateWorkflowTemplateResponseBody {
+	s.SchemaVersion = &v
 	return s
 }
 
@@ -284,21 +335,21 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// standard
 	ModelMode *string `json:"modelMode,omitempty" xml:"modelMode,omitempty"`
-	// The step name.
+	// The name of the step.
 	//
 	// example:
 	//
-	// example
+	// Customer Complaint Handling Process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the responsible agent.
+	// The name of the agent assignee.
 	//
 	// example:
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The owner type. Valid values:
+	// The type of the assignee. Valid values:
 	//
-	// - MEMBER: Human.
+	// - MEMBER: Human user.
 	//
 	// - AGENT: Agent.
 	//
@@ -306,37 +357,43 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// MEMBER
 	OwnerType *string `json:"ownerType,omitempty" xml:"ownerType,omitempty"`
-	// The user ID of the human owner.
+	// The user ID of the human assignee.
 	//
 	// example:
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
+	// 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+	//
+	// example:
+	//
+	// false
+	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
 	// The list of user IDs of the reviewers.
 	//
 	// example:
 	//
 	// example
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
-	// The step order.
+	// The order of the step.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The step processing instructions.
+	// The processing instructions for the step.
 	//
 	// example:
 	//
-	// example
+	// Collect customer information and forward it to the person in charge for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The array of structured segments for the step instructions. Supports text, mention, skill, app, files, and web_search. The fields and nested attachments of each segment are retained as returned by the backend.
+	// The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. Referenced identities and order are preserved.
 	//
 	// example:
 	//
-	// [{"type":"text","content":"Organize input materials"}]
+	// [{\\"type\\":\\"text\\",\\"text\\":\\"收集客户信息\\"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
-	// The step ID.
+	// The ID of the step.
 	//
 	// example:
 	//
@@ -370,6 +427,10 @@ func (s *UpdateWorkflowTemplateResponseBodySteps) GetOwnerType() *string {
 
 func (s *UpdateWorkflowTemplateResponseBodySteps) GetOwnerUserId() *int64 {
 	return s.OwnerUserId
+}
+
+func (s *UpdateWorkflowTemplateResponseBodySteps) GetReviewOutput() *bool {
+	return s.ReviewOutput
 }
 
 func (s *UpdateWorkflowTemplateResponseBodySteps) GetReviewerUserIds() []*int64 {
@@ -414,6 +475,11 @@ func (s *UpdateWorkflowTemplateResponseBodySteps) SetOwnerType(v string) *Update
 
 func (s *UpdateWorkflowTemplateResponseBodySteps) SetOwnerUserId(v int64) *UpdateWorkflowTemplateResponseBodySteps {
 	s.OwnerUserId = &v
+	return s
+}
+
+func (s *UpdateWorkflowTemplateResponseBodySteps) SetReviewOutput(v bool) *UpdateWorkflowTemplateResponseBodySteps {
+	s.ReviewOutput = &v
 	return s
 }
 

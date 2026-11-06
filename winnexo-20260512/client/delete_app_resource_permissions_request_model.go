@@ -18,17 +18,17 @@ type iDeleteAppResourcePermissionsRequest interface {
 }
 
 type DeleteAppResourcePermissionsRequest struct {
-	// The scope of the permissions to be revoked.
+	// The scope of permission revocation.
 	//
 	// This parameter is required.
 	Items []*DeleteAppResourcePermissionsRequestItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+	// The scope of permission revocation.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
 	//
 	// example:
 	//
@@ -87,25 +87,25 @@ func (s *DeleteAppResourcePermissionsRequest) Validate() error {
 type DeleteAppResourcePermissionsRequestItems struct {
 	// The list of grantee principal IDs.
 	GranteeIds []*string `json:"granteeIds,omitempty" xml:"granteeIds,omitempty" type:"Repeated"`
-	// The ID of the tenant to which the grantee user belongs. This parameter is optional if the user and the resource belong to the same tenant, and is required for cross-tenant users.
+	// The tenant to which the grantee user belongs. This parameter can be omitted if the user belongs to the same tenant as the resource, and is required for cross-tenant users.
 	//
 	// example:
 	//
 	// 10000
 	GranteeTenantId *string `json:"granteeTenantId,omitempty" xml:"granteeTenantId,omitempty"`
-	// The grantee principal type.
+	// The type of the grantee principal.
 	//
 	// example:
 	//
 	// USER
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
-	// Specifies whether to include dot-separated descendant resources for the RESOURCE. Default value: false.
+	// Specifies whether the resource includes dot-separated descendant resources. Default value: false.
 	//
 	// example:
 	//
 	// false
 	IncludeDescendants *bool `json:"includeDescendants,omitempty" xml:"includeDescendants,omitempty"`
-	// The dot-separated resource key whose first segment is the application key of the APP.
+	// The dot-separated resource key whose first segment is the APP application key.
 	//
 	// This parameter is required.
 	//
@@ -113,7 +113,7 @@ type DeleteAppResourcePermissionsRequestItems struct {
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// The resource type. Set the value to APP_RESOURCE.
+	// The resource type. Fixed to APP_RESOURCE.
 	//
 	// This parameter is required.
 	//

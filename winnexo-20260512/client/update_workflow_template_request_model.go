@@ -30,9 +30,9 @@ type iUpdateWorkflowTemplateRequest interface {
 type UpdateWorkflowTemplateRequest struct {
 	// The write action. Valid values:
 	//
-	// - SAVE: Saves the template as a draft without taking effect.
+	// - SAVE: Saves the template as a draft. The changes do not take effect. Node names and assignees can be left empty.
 	//
-	// - SUBMIT: Saves and submits the template, setting it as the only effective version.
+	// - SUBMIT: Requires complete nodes. Saves and submits the template as the only effective version.
 	//
 	// Default value: SUBMIT.
 	//
@@ -46,17 +46,17 @@ type UpdateWorkflowTemplateRequest struct {
 	//
 	// example:
 	//
-	// group_example
+	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The complete JSON definition of the template to overwrite the existing one.
+	// The complete JSON definition of the template. This overwrites the existing definition.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// example
+	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
 	Definition map[string]interface{} `json:"definition,omitempty" xml:"definition,omitempty"`
-	// The submitted version number on which the new version is based. This parameter is mutually exclusive with the version parameter. If not specified, the current effective version is used as the fallback.
+	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If you do not specify this parameter, the current effective version is used.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type UpdateWorkflowTemplateRequest struct {
 	//
 	// example:
 	//
-	// tpl_example
+	// tpl_9401
 	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
@@ -76,17 +76,17 @@ type UpdateWorkflowTemplateRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The draft template version number to write. The format is a lowercase v followed by a positive integer, such as v1. Submitted versions cannot be written. If not specified, a new version is generated.
+	// The version number to which the content belongs.
 	//
 	// example:
 	//
 	// v2
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The version description. The maximum length is 500 characters. When writing a draft, if this parameter is not specified or is null, the original value is retained. An empty string clears the value.
+	// The change description for this version. An empty value indicates that no description is provided.
 	//
 	// example:
 	//
-	// Add a review step
+	// Added a review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
 }
 

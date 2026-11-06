@@ -18,17 +18,17 @@ type iRegisterAppResourcePermissionsRequest interface {
 }
 
 type RegisterAppResourcePermissionsRequest struct {
-	// The batch authorization items.
+	// The batch authorization item.
 	//
 	// This parameter is required.
 	Items []*RegisterAppResourcePermissionsRequestItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
+	// The batch authorization item.
 	//
 	// example:
 	//
 	// 10000
 	ResourceTenantId *string `json:"resourceTenantId,omitempty" xml:"resourceTenantId,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The ID of the tenant to which the resource belongs. If omitted, the current tenant of the caller is used.
 	//
 	// example:
 	//
@@ -85,7 +85,7 @@ func (s *RegisterAppResourcePermissionsRequest) Validate() error {
 }
 
 type RegisterAppResourcePermissionsRequestItems struct {
-	// The expiration time with the time zone. If not specified, the permissions never expire.
+	// The expiration time with a time zone. If omitted, the permissions never expire.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type RegisterAppResourcePermissionsRequestItems struct {
 	//
 	// This parameter is required.
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// The dot-separated resource key, where the first segment is the APP application key.
+	// The dot-separated resource key with the first segment as the APP application key.
 	//
 	// This parameter is required.
 	//
@@ -107,7 +107,7 @@ type RegisterAppResourcePermissionsRequestItems struct {
 	//
 	// app.demo.resource_1
 	ResourceKey *string `json:"resourceKey,omitempty" xml:"resourceKey,omitempty"`
-	// The resource type. Set the value to APP_RESOURCE.
+	// The resource type. Fixed to APP_RESOURCE.
 	//
 	// This parameter is required.
 	//

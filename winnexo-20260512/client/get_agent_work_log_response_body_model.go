@@ -44,13 +44,13 @@ type GetAgentWorkLogResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The current page number, starting from 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries per page. Maximum value: 100.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type GetAgentWorkLogResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of filtered operation log entries.
+	// The total number of filtered operation logs.
 	//
 	// example:
 	//
@@ -161,25 +161,25 @@ type GetAgentWorkLogResponseBodyLogs struct {
 	//
 	// REPLY
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The saved raw record content. Tool invocations and artifact metadata are represented as JSON strings.
+	// The saved original record content. Tool invocations and artifact metadata are JSON strings.
 	//
 	// example:
 	//
 	// The data query for the current round is completed
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
-	// The duration of this operation record, in milliseconds. The value is 0 for artifact records.
+	// The time consumed by the operation record, in milliseconds. The value is 0 for artifact records.
 	//
 	// example:
 	//
 	// 1200
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The key of the node to which the record belongs. This is not the session ID.
+	// The optional node key.
 	//
 	// example:
 	//
 	// query.amount
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
-	// The time when the event was recorded, in ISO 8601 format. If the source record has no time, an empty string is returned.
+	// The event time of the record in ISO 8601 format. If the source record has no time, an empty string is returned.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type ExportWorkflowTemplateResponseBody struct {
   // 
   // 200
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // The error description.
+  // The error message.
   // 
   // example:
   // 
   // The requested resource does not exist
   Message *string `json:"message,omitempty" xml:"message,omitempty"`
-  // The request tracking ID.
+  // The request ID.
   // 
   // example:
   // 
@@ -42,7 +42,7 @@ type ExportWorkflowTemplateResponseBody struct {
   // 
   // example:
   // 
-  // example
+  // {\\"name\\":\\"客户投诉处理流程\\",\\"schemaVersion\\":2}
   Template *ExportWorkflowTemplateResponseBodyTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
 }
 
@@ -104,19 +104,37 @@ type ExportWorkflowTemplateResponseBodyTemplate struct {
   // 
   // example:
   // 
-  // example
+  // Standard process for handling customer complaints
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
+  // 节点依赖边；每项包含from/to，引用稳定stepId
+  // 
+  // example:
+  // 
+  // []
+  Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
+  // 可选画布布局，按stepId索引；只影响展示，不决定依赖
+  // 
+  // example:
+  // 
+  // {"collect":{"x":0,"y":0},"review":{"x":240,"y":0}}
+  Layout map[string]interface{} `json:"layout,omitempty" xml:"layout,omitempty"`
   // The template name.
   // 
   // example:
   // 
-  // example
+  // Customer complaint handling process
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
-  // The normalization steps.
+  // 模板结构版本，当前为2，与业务版本vN独立
   // 
   // example:
   // 
-  // example
+  // 2
+  SchemaVersion *int64 `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
+  // The standardized steps.
+  // 
+  // example:
+  // 
+  // [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"收集客户信息\\"}]
   Steps []*ExportWorkflowTemplateResponseBodyTemplateSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 }
 
@@ -132,8 +150,20 @@ func (s *ExportWorkflowTemplateResponseBodyTemplate) GetDescription() *string  {
   return s.Description
 }
 
+func (s *ExportWorkflowTemplateResponseBodyTemplate) GetEdges() []map[string]interface{}  {
+  return s.Edges
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplate) GetLayout() map[string]interface{}  {
+  return s.Layout
+}
+
 func (s *ExportWorkflowTemplateResponseBodyTemplate) GetName() *string  {
   return s.Name
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplate) GetSchemaVersion() *int64  {
+  return s.SchemaVersion
 }
 
 func (s *ExportWorkflowTemplateResponseBodyTemplate) GetSteps() []*ExportWorkflowTemplateResponseBodyTemplateSteps  {
@@ -145,8 +175,23 @@ func (s *ExportWorkflowTemplateResponseBodyTemplate) SetDescription(v string) *E
   return s
 }
 
+func (s *ExportWorkflowTemplateResponseBodyTemplate) SetEdges(v []map[string]interface{}) *ExportWorkflowTemplateResponseBodyTemplate {
+  s.Edges = v
+  return s
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplate) SetLayout(v map[string]interface{}) *ExportWorkflowTemplateResponseBodyTemplate {
+  s.Layout = v
+  return s
+}
+
 func (s *ExportWorkflowTemplateResponseBodyTemplate) SetName(v string) *ExportWorkflowTemplateResponseBodyTemplate {
   s.Name = &v
+  return s
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplate) SetSchemaVersion(v int64) *ExportWorkflowTemplateResponseBodyTemplate {
+  s.SchemaVersion = &v
   return s
 }
 
@@ -179,9 +224,9 @@ type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
   // 
   // example:
   // 
-  // example
+  // Customer complaint handling process
   Name *string `json:"name,omitempty" xml:"name,omitempty"`
-  // The name of the responsible agent.
+  // The name of the agent owner.
   // 
   // example:
   // 
@@ -203,7 +248,13 @@ type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
   // 
   // 1
   OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-  // The list of user IDs of the reviewers.
+  // 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+  // 
+  // example:
+  // 
+  // false
+  ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
+  // The user IDs of the reviewers.
   // 
   // example:
   // 
@@ -215,17 +266,17 @@ type ExportWorkflowTemplateResponseBodyTemplateSteps struct {
   // 
   // 1
   SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-  // The step processing instructions.
+  // The step handling instructions.
   // 
   // example:
   // 
-  // example
+  // Collect customer information and submit it to the owner for review
   Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-  // The array of structured segments for the step instructions. Supported types include text, mention, skill, app, files, and web_search. All segment fields and nested attachments are preserved exactly as returned by the backend.
+  // The ordered array of fragments. Supports text, mention, skill, app, files, and web_search. Preserves referenced identities and order.
   // 
   // example:
   // 
-  // [{"type":"text","content":"Organize input materials"}]
+  // [{"type":"text","content":"整理输入资料"}]
   SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
   // The step ID.
   // 
@@ -261,6 +312,10 @@ func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetOwnerType() *string
 
 func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetOwnerUserId() *int64  {
   return s.OwnerUserId
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetReviewOutput() *bool  {
+  return s.ReviewOutput
 }
 
 func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) GetReviewerUserIds() []*int64  {
@@ -305,6 +360,11 @@ func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) SetOwnerType(v string)
 
 func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) SetOwnerUserId(v int64) *ExportWorkflowTemplateResponseBodyTemplateSteps {
   s.OwnerUserId = &v
+  return s
+}
+
+func (s *ExportWorkflowTemplateResponseBodyTemplateSteps) SetReviewOutput(v bool) *ExportWorkflowTemplateResponseBodyTemplateSteps {
+  s.ReviewOutput = &v
   return s
 }
 

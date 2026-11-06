@@ -32,13 +32,13 @@ type ListWorkflowTemplatesRequest struct {
 	//
 	// example:
 	//
-	// group_example
+	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
 	// The keyword for fuzzy search in the template name or description.
 	//
 	// example:
 	//
-	// example
+	// Weekly report
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// The maximum number of entries to return per page. Valid values: 1 to 100. This parameter takes precedence over pageSize if both are specified.
 	//
@@ -50,7 +50,7 @@ type ListWorkflowTemplatesRequest struct {
 	//
 	// example:
 	//
-	// example
+	// tok_9401
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The page number. This parameter is ignored if nextToken is specified.
 	//

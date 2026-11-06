@@ -26,7 +26,7 @@ type ExportWorkflowTemplateRequest struct {
   // 
   // example:
   // 
-  // group_example
+  // cg_9401
   CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
   // The template ID.
   // 
@@ -34,7 +34,7 @@ type ExportWorkflowTemplateRequest struct {
   // 
   // example:
   // 
-  // tpl_example
+  // tpl_9401
   TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
   // The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
   // 

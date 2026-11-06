@@ -20,7 +20,7 @@ type iDeleteAppResourcePermissionsResponseBody interface {
 }
 
 type DeleteAppResourcePermissionsResponseBody struct {
-	// The business status code. The value 200 indicates success.
+	// The business status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DeleteAppResourcePermissionsResponseBody struct {
 	//
 	// 2
 	DeletedCount *int64 `json:"deletedCount,omitempty" xml:"deletedCount,omitempty"`
-	// The error message. This field is empty if the request is successful.
+	// The error message. Empty if the request is successful.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iGetScheduledTaskExecutionRecordsRequest interface {
 }
 
 type GetScheduledTaskExecutionRecordsRequest struct {
-	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is specified, a group workspace task is created and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
+	// The ID of the collaboration group to which the task belongs, such as cg_101. If you specify this parameter, a group space task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
 	//
 	// example:
 	//
 	// 1112
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The platform user ID of the initiator for filtering. The scope is the executor of the record. For manual execution, this is the user who triggered the execution. For automatic execution, this is the task creator. To view only tasks initiated by yourself, pass the current user ID.
+	// The business status code. A value of 200 indicates success. A failure is indicated by a backend error code, such as ERR.	- or InvalidParameter.*.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetScheduledTaskExecutionRecordsRequest struct {
 	//
 	// example:
 	//
-	// exampleCollaborationGroupId
+	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// The number of records per page.
 	//
@@ -50,33 +50,19 @@ type GetScheduledTaskExecutionRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The execution status filter (lowercase). Valid values:
-	//
-	// - pending: Queued.
-	//
-	// - running: Running.
-	//
-	// - success: Succeeded.
-	//
-	// - failed: Failed.
-	//
-	// - timeout: Timed out.
-	//
-	// - cancelled: Cancelled.
-	//
-	// If this parameter is not specified, no status filtering is applied. If this parameter is specified, future planned items are no longer generated.
+	// The initiator filter based on the platform user ID. The scope is the executor of the record. For manual execution, it is the user who triggers the task. For automatic execution, it is the task creator. To view only the tasks that you initiated, specify the current user ID.
 	//
 	// example:
 	//
 	// failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of a single task for pre-filtering. If this parameter is not specified, execution records of all visible tasks are returned.
+	// The execution status filter in lowercase. Valid values: pending (queued), running (running), success (successful), failed (failed), timeout (timed out), and cancelled (cancelled). If you do not specify this parameter, no filtering is applied. If you specify this parameter, no future plan items are generated.
 	//
 	// example:
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The ID of the effective tenant.
+	// The ID of the active tenant.
 	//
 	// example:
 	//

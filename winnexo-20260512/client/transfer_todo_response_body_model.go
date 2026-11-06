@@ -42,7 +42,7 @@ type TransferTodoResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The processing results for each target.
 	Targets []*TransferTodoResponseBodyTargets `json:"targets,omitempty" xml:"targets,omitempty" type:"Repeated"`
-	// The ID of the to-do task.
+	// The list of target user IDs for the transfer (1 to 100).
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type TransferTodoResponseBodyTargets struct {
 	//
 	// CREATED
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The ID of the target user.
+	// The target user ID.
 	//
 	// example:
 	//

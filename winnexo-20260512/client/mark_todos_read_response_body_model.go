@@ -28,13 +28,13 @@ type MarkTodosReadResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//

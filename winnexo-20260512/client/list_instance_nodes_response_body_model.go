@@ -24,19 +24,19 @@ type iListInstanceNodesResponseBody interface {
 }
 
 type ListInstanceNodesResponseBody struct {
-	// The business status code. A value of 200 indicates success.
+	// The business status code. The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The physical instance ID.
+	// The physical workflow instance ID (planId).
 	//
 	// example:
 	//
 	// plan_example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListInstanceNodesResponseBody struct {
 	//
 	// []
 	Nodes []*ListInstanceNodesResponseBodyNodes `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
-	// The request tracking ID.
+	// The request trace ID.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListInstanceNodesResponseBodyNodes struct {
 	//
 	// 123
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The time when the node was first run. This field is empty for historical or unrun nodes.
+	// The time when the node was first run. This field is empty for historical nodes or nodes that have not run.
 	//
 	// example:
 	//
@@ -166,15 +166,15 @@ type ListInstanceNodesResponseBodyNodes struct {
 	//
 	// example:
 	//
-	// Assistant Customer Success Manager (CSM)
+	// Customer Success Manager (CSM) Assistant
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	// The lane position of the node in the workflow graph.
+	// The lane of the node in the workflow graph.
 	//
 	// example:
 	//
 	// 0
 	Lane *int64 `json:"lane,omitempty" xml:"lane,omitempty"`
-	// The key of the node (nodeKey). This is not the session ID.
+	// The visible nodes arranged in topological order. The number of nodes is determined by the actual dynamic graph.
 	//
 	// example:
 	//
@@ -204,13 +204,13 @@ type ListInstanceNodesResponseBodyNodes struct {
 	//
 	// 2
 	Rank *int64 `json:"rank,omitempty" xml:"rank,omitempty"`
-	// The original running status of the node, such as READY, RUNNING, WAITING, SUCCEEDED, or FAILED.
+	// The original node running status, such as READY, RUNNING, WAITING, SUCCEEDED, or FAILED.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for waiting, such as HUMAN_INPUT, HUMAN_STEP, REVIEW, MANUAL_PAUSE, or UNBLOCK. This field is empty if the node is not waiting.
+	// The wait reason: HUMAN_INPUT, HUMAN_STEP, REVIEW, MANUAL_PAUSE, or UNBLOCK. This field is empty when the node is not waiting.
 	//
 	// example:
 	//

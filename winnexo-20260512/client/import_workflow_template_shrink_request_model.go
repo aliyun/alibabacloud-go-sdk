@@ -18,23 +18,23 @@ type iImportWorkflowTemplateShrinkRequest interface {
 }
 
 type ImportWorkflowTemplateShrinkRequest struct {
-	// The collaboration workspace ID.
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// group_example
+	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The portable template JSON. The stepId and sortOrder fields can be omitted.
+	// The portable template in JSON format. The stepId and sortOrder fields can be omitted.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// example
+	// {"name":"Customer Complaint Handling Process","schemaVersion":2}
 	TemplateShrink *string `json:"template,omitempty" xml:"template,omitempty"`
-	// The tenant ID. This is a common parameter. If omitted, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

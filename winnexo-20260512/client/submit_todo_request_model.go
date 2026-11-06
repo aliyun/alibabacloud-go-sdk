@@ -18,7 +18,7 @@ type iSubmitTodoRequest interface {
 }
 
 type SubmitTodoRequest struct {
-	// The array of answers. The original text of the question must match the to-do question.
+	// The answer array. The original text of the question must align with the to-do question.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type SubmitTodoRequest struct {
 	//
 	// example
 	Answers []*SubmitTodoRequestAnswers `json:"answers,omitempty" xml:"answers,omitempty" type:"Repeated"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The to-do task ID.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The ID of the to-do item.
+	// The answer array. The original text of the question must align with the to-do question.
 	//
 	// This parameter is required.
 	//
@@ -99,7 +99,7 @@ type SubmitTodoRequestAnswers struct {
 	//
 	// example
 	Answer []*string `json:"answer,omitempty" xml:"answer,omitempty" type:"Repeated"`
-	// The original text that corresponds to questions[].question.
+	// The original text corresponding to questions[].question.
 	//
 	// This parameter is required.
 	//

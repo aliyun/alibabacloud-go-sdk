@@ -20,7 +20,13 @@ type iCreateWorkflowTemplateRequest interface {
 }
 
 type CreateWorkflowTemplateRequest struct {
-	// The write action. Valid values: SAVE: Saves the template as a draft without taking effect. SUBMIT: Saves and submits the template and sets it as the only effective version. Default value: SUBMIT.
+	// The write action. Valid values:
+	//
+	// - SAVE: Saves the template as a draft. The draft does not take effect. Node names and assignees can be left empty.
+	//
+	// - SUBMIT: Requires complete nodes. The template is saved and submitted as the only effective version.
+	//
+	// Default value: SUBMIT.
 	//
 	// example:
 	//
@@ -32,7 +38,7 @@ type CreateWorkflowTemplateRequest struct {
 	//
 	// example:
 	//
-	// group_example
+	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
 	// The complete JSON definition of the template, including name, description, and steps.
 	//
@@ -40,9 +46,9 @@ type CreateWorkflowTemplateRequest struct {
 	//
 	// example:
 	//
-	// example
+	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
 	Definition map[string]interface{} `json:"definition,omitempty" xml:"definition,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

@@ -26,19 +26,19 @@ type iSubmitTodoResponseBody interface {
 }
 
 type SubmitTodoResponseBody struct {
-	// The business status code. A value of 200 indicates success.
+	// The array of answer values.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The completion time in ISO 8601 UTC format. Note that this format differs from other time fields formatted in UTC+8.
+	// The completion time in ISO 8601 UTC format. This format differs from other fields formatted in UTC+8.
 	//
 	// example:
 	//
-	// 2026-10-12T02:00:00+00:00
+	// 2026-10-12T02:00:00Z
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// The user ID of the user who completed the item.
+	// The user ID of the user who completed the task.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type SubmitTodoResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The status after submission. This value is always COMPLETED.
+	// The status after submission. The value is always COMPLETED.
 	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the to-do item.
+	// The answer array. The original text of the question must align with the to-do question.
 	//
 	// example:
 	//

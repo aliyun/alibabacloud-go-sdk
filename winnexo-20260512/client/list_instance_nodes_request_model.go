@@ -18,7 +18,7 @@ type iListInstanceNodesRequest interface {
 }
 
 type ListInstanceNodesRequest struct {
-	// The collaboration workspace ID.
+	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
 	//

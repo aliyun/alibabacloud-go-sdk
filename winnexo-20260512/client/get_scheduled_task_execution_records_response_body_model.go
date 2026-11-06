@@ -34,7 +34,7 @@ type GetScheduledTaskExecutionRecordsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Indicates whether more data is available.
+	// Indicates whether more data exists.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type GetScheduledTaskExecutionRecordsResponseBody struct {
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The current page number.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of tasks per page.
+	// The ID of the collaboration group, such as cg_101. If you specify this parameter, the data is returned by group dimension, and the caller must be a valid group member. If you do not specify this parameter, the data is returned by personal dimension, excluding group tasks.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *GetScheduledTaskExecutionRecordsResponseBody) Validate() error {
 }
 
 type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
-	// The ID of the collaboration group to which the task belongs. An empty value indicates a personal task.
+	// The pre-filter for a single task. If you do not specify this parameter, the execution records of all visible tasks are returned.
 	//
 	// example:
 	//
@@ -192,13 +192,7 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The execution model tier. Valid values:
-	//
-	// - flagship: Flagship.
-	//
-	// - standard: Standard.
-	//
-	// - quick: Lightweight.
+	// The execution model tier. Valid values: flagship (flagship), standard (standard), and quick (lightweight).
 	//
 	// example:
 	//
@@ -208,7 +202,7 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The task ID.
 	//
@@ -228,9 +222,9 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasks struct {
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - Manual: Manual execution.
+	// - Manual: manual execution.
 	//
-	// - Cron: Timed scheduling.
+	// - Cron: scheduled trigger.
 	//
 	// example:
 	//
@@ -350,7 +344,7 @@ func (s *GetScheduledTaskExecutionRecordsResponseBodyTasks) Validate() error {
 }
 
 type GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline struct {
-	// The actual hours spent, in hours.
+	// The actual working hours in hours.
 	//
 	// example:
 	//
@@ -374,13 +368,13 @@ type GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline struct {
 	//
 	// exampleExecutionId
 	ExecutionId *string `json:"executionId,omitempty" xml:"executionId,omitempty"`
-	// Indicates whether the execution record has been archived due to expiration.
+	// The time zone.
 	//
 	// example:
 	//
 	// false
 	IsExpired *bool `json:"isExpired,omitempty" xml:"isExpired,omitempty"`
-	// The execution output content (historical records only).
+	// The execution output content (history records only).
 	//
 	// example:
 	//
