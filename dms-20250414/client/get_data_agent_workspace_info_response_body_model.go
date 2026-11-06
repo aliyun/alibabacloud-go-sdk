@@ -36,7 +36,7 @@ type GetDataAgentWorkspaceInfoResponseBody struct {
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,7 +113,13 @@ func (s *GetDataAgentWorkspaceInfoResponseBody) Validate() error {
 }
 
 type GetDataAgentWorkspaceInfoResponseBodyData struct {
-	// The creation time of the workspace. The value is a UNIX timestamp in seconds.
+	// The configuration items of the workspace.
+	//
+	// example:
+	//
+	// {sql_config:null}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time of the session. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -125,7 +131,7 @@ type GetDataAgentWorkspaceInfoResponseBodyData struct {
 	//
 	// 20282*****7591
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether sessions are shared within the workspace.
+	// Indicates whether sessions in the workspace are shared.
 	//
 	// example:
 	//
@@ -155,13 +161,13 @@ type GetDataAgentWorkspaceInfoResponseBodyData struct {
 	//
 	// personal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The description of the workspace.
+	// The description of the collaborative workspace.
 	//
 	// example:
 	//
 	// space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The ID of the workspace.
+	// The ID of the collaborative workspace.
 	//
 	// example:
 	//
@@ -187,6 +193,10 @@ func (s GetDataAgentWorkspaceInfoResponseBodyData) String() string {
 
 func (s GetDataAgentWorkspaceInfoResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetConfig() *string {
+	return s.Config
 }
 
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetCreateTime() *string {
@@ -231,6 +241,11 @@ func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetWorkspaceName() *string {
 
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) GetWorkspaceStatus() *string {
 	return s.WorkspaceStatus
+}
+
+func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetConfig(v string) *GetDataAgentWorkspaceInfoResponseBodyData {
+	s.Config = &v
+	return s
 }
 
 func (s *GetDataAgentWorkspaceInfoResponseBodyData) SetCreateTime(v string) *GetDataAgentWorkspaceInfoResponseBodyData {

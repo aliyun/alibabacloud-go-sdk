@@ -9,6 +9,8 @@ type iTestAgenticDataSourceConnectionRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAdbSparkResourceGroup(v string) *TestAgenticDataSourceConnectionRequest
+	GetAdbSparkResourceGroup() *string
 	SetAlias(v string) *TestAgenticDataSourceConnectionRequest
 	GetAlias() *string
 	SetAuthAccount(v string) *TestAgenticDataSourceConnectionRequest
@@ -56,7 +58,13 @@ type iTestAgenticDataSourceConnectionRequest interface {
 }
 
 type TestAgenticDataSourceConnectionRequest struct {
-	// The alias. You can leave this parameter empty when testing a connection. This parameter does not create or modify a data source.
+	// The name of the AnalyticDB for MySQL Spark resource group. This parameter takes effect only when DbType is set to ADB_MYSQL_SPARK. You must specify a resource group when connecting to this type of data source. This parameter is independent of Schema (database name) and they cannot replace each other.
+	//
+	// example:
+	//
+	// resourceGroup1
+	AdbSparkResourceGroup *string `json:"AdbSparkResourceGroup,omitempty" xml:"AdbSparkResourceGroup,omitempty"`
+	// The alias. You can leave this parameter empty when testing a connection. This operation does not create or modify a data source.
 	//
 	// example:
 	//
@@ -74,25 +82,33 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// P@ss****
 	AuthPassword *string `json:"AuthPassword,omitempty" xml:"AuthPassword,omitempty"`
-	// The authentication type. This parameter is optional. Valid values: -1 (no authentication required), 0 (username and password), 1 (password only), and 2 (password-free).
+	// The authentication type. This parameter is optional. Valid values:
+	//
+	// - -1: No authentication required.
+	//
+	// - 0: Username and password.
+	//
+	// - 1: Password only.
+	//
+	// - 2: Password-free.
 	//
 	// example:
 	//
 	// 0
 	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The catalog name. You can leave this parameter empty when testing a connection. This parameter does not create a metadata catalog.
+	// The catalog name. You can leave this parameter empty when testing a connection. This operation does not create a metadata catalog.
 	//
 	// example:
 	//
 	// demo_catalog
 	CatalogName *string `json:"CatalogName,omitempty" xml:"CatalogName,omitempty"`
-	// The UUID of the data source. This parameter is required when testing an existing data source. If no new password is passed, the saved password is reused. Leave this parameter empty when testing a new data source.
+	// The UUID of the data source. Specify this parameter when testing an existing data source. If no new password is passed, the saved password is reused. Leave this parameter empty when testing a new data source.
 	//
 	// example:
 	//
 	// cn-hangzhou_a1b2c3d4e5f6
 	DataSourceUuid *string `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
-	// The type of the data source. Use uppercase letters. Do not pass numbers. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
+	// The type of the data source. Use uppercase letters for the identifier. Do not pass numbers. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
 	//
 	// This parameter is required.
 	//
@@ -106,13 +122,13 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// product
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The domain name or IP address of the database. Do not include the protocol, path, or port. This parameter is optional. You can leave this parameter empty when you select an existing cloud instance and the endpoint is automatically populated.
+	// The domain name or IP address of the database. Do not include the protocol, path, or port. This parameter is optional. You can leave this parameter empty if you select an existing cloud instance and the address is automatically populated.
 	//
 	// example:
 	//
 	// mysql.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the cloud resource instance. This parameter is required when you select an existing cloud instance. You can leave this parameter empty when you enter a connection endpoint.
+	// The ID of the cloud resource instance. Specify this parameter when you select an existing cloud instance. You can leave this parameter empty when you enter an endpoint.
 	//
 	// example:
 	//
@@ -122,13 +138,13 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// - RDS: ApsaraDB instance.
 	//
-	// - PUBLIC_OWN: self-managed database connected over the Internet.
+	// - PUBLIC_OWN: Self-managed database connected over the Internet.
 	//
-	// - ECS_OWN: self-managed database hosted on an ECS instance.
+	// - ECS_OWN: Self-managed database hosted on an ECS instance.
 	//
-	// - GATEWAY: database connected through Database Gateway.
+	// - GATEWAY: Database connected through Database Gateway.
 	//
-	// - VPC_IDC: database connected over a VPC or data center.
+	// - VPC_IDC: Database connected through a VPC or data center.
 	//
 	// This parameter is required.
 	//
@@ -136,25 +152,25 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// RDS
 	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	// The name of the KMS secret. This parameter is required when you use KMS to manage database credentials. Leave this parameter empty in other scenarios.
+	// The name of the credential managed by Key Management Service (KMS). Specify this parameter when you use KMS to manage database credentials. Leave this parameter empty in other scenarios.
 	//
 	// example:
 	//
 	// datasource-secret
 	KmsSecret *string `json:"KmsSecret,omitempty" xml:"KmsSecret,omitempty"`
-	// The service port of the database. This parameter is optional. You can leave this parameter empty when you select an existing cloud instance and the port is automatically populated.
+	// The service port of the database. This parameter is optional. You can leave this parameter empty if you select an existing cloud instance and the port is automatically populated.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The complete ARN of the RAM role. This parameter is required when you use an Alibaba Cloud RAM role to access the data source. Leave this parameter empty in other scenarios.
+	// The complete ARN of the Resource Access Management (RAM) role. Specify this parameter when you use an Alibaba Cloud RAM role to access the data source. Leave this parameter empty in other scenarios.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/DataSourceRole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The schema name. This parameter is optional. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, enter the database name. For ORACLE, enter the SID or service name, and prefix the service name with a forward slash (/). For POLARDB_ORACLE, enter the SID. For MAXCOMPUTE, enter the project name. Leave this parameter empty for other types.
+	// The schema name. This parameter is optional. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, specify the database name. For ORACLE, specify the SID or service name, and prefix the service name with a forward slash (/). For POLARDB_ORACLE, specify the SID. For MAXCOMPUTE, specify the project name. Leave this parameter empty for other types.
 	//
 	// example:
 	//
@@ -172,7 +188,7 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// WAREHOUSE
 	SnowflakeWarehouse *string `json:"SnowflakeWarehouse,omitempty" xml:"SnowflakeWarehouse,omitempty"`
-	// Specifies whether to synchronize the alias. This parameter is optional when testing a connection. This parameter does not modify the data source name.
+	// Specifies whether to synchronize the alias. This parameter is optional when testing a connection. This operation does not modify the data source name.
 	//
 	// example:
 	//
@@ -184,7 +200,7 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// - 0: Disable.
 	//
-	// - -1: Use the default setting.
+	// - -1: Use default settings.
 	//
 	// SSL is supported only for ADB_MYSQL, CLICKHOUSE, MARIADB, MYSQL, OCEANBASEX, POLARDB, SELECTDB, and STARROCKS. Leave this parameter empty for other types.
 	//
@@ -192,19 +208,19 @@ type TestAgenticDataSourceConnectionRequest struct {
 	//
 	// 1
 	UseSsl *int32 `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
-	// The ID of the vSwitch. This parameter is required when you access MaxCompute over a VPC. Leave this parameter empty in other scenarios.
+	// The ID of the vSwitch. Specify this parameter when you access MaxCompute through a VPC. Leave this parameter empty in other scenarios.
 	//
 	// example:
 	//
 	// vsw-bp1234567890
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC. This parameter is required when you access MaxCompute over a VPC. Leave this parameter empty in other scenarios.
+	// The ID of the VPC. Specify this parameter when you access MaxCompute through a VPC. Leave this parameter empty in other scenarios.
 	//
 	// example:
 	//
 	// vpc-bp1234567890
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone ID. This parameter is required when you access MaxCompute over a VPC. Leave this parameter empty in other scenarios.
+	// The ID of the zone. Specify this parameter when you access MaxCompute through a VPC. Leave this parameter empty in other scenarios.
 	//
 	// example:
 	//
@@ -218,6 +234,10 @@ func (s TestAgenticDataSourceConnectionRequest) String() string {
 
 func (s TestAgenticDataSourceConnectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TestAgenticDataSourceConnectionRequest) GetAdbSparkResourceGroup() *string {
+	return s.AdbSparkResourceGroup
 }
 
 func (s *TestAgenticDataSourceConnectionRequest) GetAlias() *string {
@@ -306,6 +326,11 @@ func (s *TestAgenticDataSourceConnectionRequest) GetVpcId() *string {
 
 func (s *TestAgenticDataSourceConnectionRequest) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *TestAgenticDataSourceConnectionRequest) SetAdbSparkResourceGroup(v string) *TestAgenticDataSourceConnectionRequest {
+	s.AdbSparkResourceGroup = &v
+	return s
 }
 
 func (s *TestAgenticDataSourceConnectionRequest) SetAlias(v string) *TestAgenticDataSourceConnectionRequest {

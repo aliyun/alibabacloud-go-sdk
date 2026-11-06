@@ -13,6 +13,8 @@ type iCreateCustomAgentRequest interface {
 	GetAgentType() *string
 	SetCallbackConfig(v *CreateCustomAgentRequestCallbackConfig) *CreateCustomAgentRequest
 	GetCallbackConfig() *CreateCustomAgentRequestCallbackConfig
+	SetCreateFrom(v string) *CreateCustomAgentRequest
+	GetCreateFrom() *string
 	SetDMSUnit(v string) *CreateCustomAgentRequest
 	GetDMSUnit() *string
 	SetDataJson(v string) *CreateCustomAgentRequest
@@ -52,45 +54,55 @@ type iCreateCustomAgentRequest interface {
 type CreateCustomAgentRequest struct {
 	// The type of the custom agent. Valid values:
 	//
-	// - Default: the system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
+	// - Default: The system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
 	//
-	// - Common: a regular custom agent.
+	// - Common: A common custom agent.
 	//
 	// example:
 	//
 	// Common
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The callback feature configuration.
+	// The callback feature configuration items.
 	CallbackConfig *CreateCustomAgentRequestCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
+	// The creation source. Valid values:
+	//
+	// - Empty (default): Create the agent by using a form.
+	//
+	// - SmartNew: Create the agent by using intelligent development.
+	//
+	// example:
+	//
+	// SmartNew
+	CreateFrom *string `json:"CreateFrom,omitempty" xml:"CreateFrom,omitempty"`
 	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope, in **JSON character string format**.
+	// The specified data scope in **JSON character string format**.
 	//
-	// - General parameter descriptions
+	// - General parameter description:
 	//
-	//   - tableFlag: true specifies the data scope.
+	//   - tableFlag: Set to true to specify the data scope.
 	//
-	//   - scope: personal is a fixed value.
+	//   - scope: Set to personal as a fixed value.
 	//
-	//   - personal: the parameters for file and database types.
+	//   - personal: The parameters for file and database types.
 	//
-	// **File type**: pass parameters in the following format:
+	// **File type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: remote_data_center is a fixed value.
+	// - DataSourceType: Set to remote_data_center as a fixed value.
 	//
-	// - FileId: the file ID.
+	// - FileId: The file ID.
 	//
-	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
+	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: the table names returned by the ListDataCenterTable operation.
+	// - Tables: The table names returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: the table IDs returned by the ListDataCenterTable operation.
+	// - TableIds: The table IDs returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: the current region.
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -128,27 +140,27 @@ type CreateCustomAgentRequest struct {
 	//
 	// ```
 	//
-	// **Database type**: pass parameters in the following format:
+	// **Database type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: database is a fixed value.
+	// - DataSourceType: Set to database as a fixed value.
 	//
-	// - DmsInstanceId: the DMS instance ID returned by the data center API.
+	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: the DMS database ID returned by the data center API.
+	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
 	//
-	// - FileId: the instance name (**[Deprecated]**).
+	// - FileId: The instance name. **[Deprecated]**
 	//
-	// - DbName: the database name returned by the data center API.
+	// - DbName: The database name returned by the data center operation.
 	//
-	// - Database: the database name returned by the data center API.
+	// - Database: The database name returned by the data center operation.
 	//
-	// - Tables: the table names returned by the data center API.
+	// - Tables: The table names returned by the data center operation.
 	//
-	// - TableIds: the table IDs returned by the data center API.
+	// - TableIds: The table IDs returned by the data center operation.
 	//
-	// - Engine: the database engine type, such as mysql or postgresql.
+	// - Engine: The database engine type, such as mysql or postgresql.
 	//
-	// - RegionId: the current region.
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -228,9 +240,9 @@ type CreateCustomAgentRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfig *CreateCustomAgentRequestExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
-	// The instructions.
+	// The instruction.
 	//
-	// - Input limit: up to 10,000 characters.
+	// - Input limit: Up to 10,000 characters.
 	//
 	// example:
 	//
@@ -238,15 +250,15 @@ type CreateCustomAgentRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid daily orders.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
-	// - Input limit: up to 10,000 characters.
+	// - Input limit: Up to 10,000 characters.
 	//
 	// example:
 	//
@@ -254,11 +266,11 @@ type CreateCustomAgentRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid daily orders.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList []*CreateCustomAgentRequestKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -286,7 +298,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// The text report requires that all numbers be written as Chinese numerals instead of Arabic numerals
+	// The text report requires that all numbers be converted to Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -294,7 +306,7 @@ type CreateCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// The web report requires that all numbers be written as Chinese numerals instead of Arabic numerals
+	// The web report requires that all numbers be converted to Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme.
 	//
@@ -324,6 +336,10 @@ func (s *CreateCustomAgentRequest) GetAgentType() *string {
 
 func (s *CreateCustomAgentRequest) GetCallbackConfig() *CreateCustomAgentRequestCallbackConfig {
 	return s.CallbackConfig
+}
+
+func (s *CreateCustomAgentRequest) GetCreateFrom() *string {
+	return s.CreateFrom
 }
 
 func (s *CreateCustomAgentRequest) GetDMSUnit() *string {
@@ -401,6 +417,11 @@ func (s *CreateCustomAgentRequest) SetAgentType(v string) *CreateCustomAgentRequ
 
 func (s *CreateCustomAgentRequest) SetCallbackConfig(v *CreateCustomAgentRequestCallbackConfig) *CreateCustomAgentRequest {
 	s.CallbackConfig = v
+	return s
+}
+
+func (s *CreateCustomAgentRequest) SetCreateFrom(v string) *CreateCustomAgentRequest {
+	s.CreateFrom = &v
 	return s
 }
 
@@ -527,13 +548,13 @@ func (s *CreateCustomAgentRequest) Validate() error {
 }
 
 type CreateCustomAgentRequestCallbackConfig struct {
-	// The parameters to invoke the callback tool.
+	// The parameters used to invoke the callback tool.
 	//
 	// example:
 	//
 	// {"ID":"test"}
 	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
-	// The prompt for generating the parameters to invoke the callback tool.
+	// The prompt for generating parameters to invoke the callback tool.
 	//
 	// example:
 	//
@@ -709,9 +730,9 @@ func (s *CreateCustomAgentRequestExecutionConfig) Validate() error {
 type CreateCustomAgentRequestKnowledgeConfigList struct {
 	// The access type. If you do not specify this parameter, the default value is mcp. Valid values:
 	//
-	// - mcp: access through MCP. You must pass the McpServerId parameter.
+	// - mcp: Access by using MCP. You must pass the McpServerId parameter.
 	//
-	// - dms_kb: access through DMS knowledge base. You must pass the KbUuid parameter.
+	// - dms_kb: Access by using a DMS knowledge base. You must pass the KbUuid parameter.
 	//
 	// example:
 	//
@@ -723,7 +744,7 @@ type CreateCustomAgentRequestKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The MCP server ID.
+	// The ID of the MCP server.
 	//
 	// example:
 	//
@@ -856,7 +877,7 @@ type CreateCustomAgentRequestScheduleTaskConfig struct {
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query for the scheduled task.
+	// The question for the scheduled task.
 	//
 	// example:
 	//

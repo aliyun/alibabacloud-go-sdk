@@ -44,11 +44,7 @@ type ListAgenticGlobalSqlExecutionHistoriesResponseBody struct {
 	//
 	// 34E01EDD-6A16-4CF0-9541-C644D1BE01AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// - true: The request is successful.
-	//
-	// - false: The request fails.
+	// Indicates whether the request is successful. Valid values: true and false.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of entries that meet the conditions.
 	//
@@ -134,19 +130,19 @@ func (s *ListAgenticGlobalSqlExecutionHistoriesResponseBody) Validate() error {
 }
 
 type ListAgenticGlobalSqlExecutionHistoriesResponseBodyData struct {
-	// The ID of the actor. A user ID starts with usr_, and an agent ID starts with agt_.
+	// The ID of the executor. User IDs start with usr_, and agent IDs start with agt_.
 	//
 	// example:
 	//
 	// usr_10001
 	ActorId *string `json:"ActorId,omitempty" xml:"ActorId,omitempty"`
-	// The name of the actor.
+	// The name of the executor.
 	//
 	// example:
 	//
 	// demo-user
 	ActorName *string `json:"ActorName,omitempty" xml:"ActorName,omitempty"`
-	// The type of the actor. A value of HUMAN indicates a user, and a value of AGENT indicates an agent.
+	// The type of the executor. Valid values: HUMAN (user) and AGENT (agent).
 	//
 	// example:
 	//
@@ -164,13 +160,13 @@ type ListAgenticGlobalSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// usr_10001
 	AgentOwnerId *string `json:"AgentOwnerId,omitempty" xml:"AgentOwnerId,omitempty"`
-	// The catalog UUID to which the execution belongs.
+	// The Catalog UUID to which the current execution belongs.
 	//
 	// example:
 	//
 	// mc-HZ-OfjcNc2z***
 	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	// The IP address of the client that initiates the execution, excluding the port. This parameter is empty in workflow scenarios or when the IP address is not recorded.
+	// The IP address of the client that initiates the execution, excluding the port. This parameter is empty in workflow scenarios or when not recorded.
 	//
 	// example:
 	//
@@ -188,31 +184,25 @@ type ListAgenticGlobalSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// demo_db
 	DatabaseSearchName *string `json:"DatabaseSearchName,omitempty" xml:"DatabaseSearchName,omitempty"`
-	// The database UUID to which the execution belongs.
+	// The Database UUID to which the current execution belongs.
 	//
 	// example:
 	//
 	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	// The error message returned when the execution fails.
+	// The error message when the execution fails.
 	//
 	// example:
 	//
 	// syntax error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The actual SQL statement that is executed.
+	// The actually executed SQL statement.
 	//
 	// example:
 	//
 	// SELECT 1
 	ExecutedSql *string `json:"ExecutedSql,omitempty" xml:"ExecutedSql,omitempty"`
-	// The execution status. Valid values:
-	//
-	// - SUCCESS: The execution is successful.
-	//
-	// - FAILED: The execution fails.
-	//
-	// - BLOCKED: The execution is blocked or not actually executed.
+	// The execution status. Valid values: SUCCESS, FAILED, and BLOCKED (intercepted or not actually executed).
 	//
 	// example:
 	//
@@ -224,7 +214,7 @@ type ListAgenticGlobalSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// SELECT 1
 	OriginalSql *string `json:"OriginalSql,omitempty" xml:"OriginalSql,omitempty"`
-	// The query ID of the execution.
+	// The query ID of the current execution.
 	//
 	// example:
 	//
@@ -236,11 +226,7 @@ type ListAgenticGlobalSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// 1
 	ReturnedRows *int64 `json:"ReturnedRows,omitempty" xml:"ReturnedRows,omitempty"`
-	// The execution scenario. Valid values:
-	//
-	// - AGENT_QUERY: The agent directly executes the SQL statement.
-	//
-	// - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
+	// The execution scenario. Valid values: AGENT_QUERY (the agent directly executes the SQL statement) and WORKFLOW_QUERY (the SQL statement is asynchronously executed through a workflow).
 	//
 	// example:
 	//
@@ -252,7 +238,7 @@ type ListAgenticGlobalSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The start time of the execution. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The execution start time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//

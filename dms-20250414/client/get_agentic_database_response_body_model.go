@@ -24,19 +24,19 @@ type iGetAgenticDatabaseResponseBody interface {
 type GetAgenticDatabaseResponseBody struct {
 	// The database details.
 	Data *AgenticDatabase `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned when an exception occurs.
+	// The error code returned when an exception occurs during the request.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned when the API call fails.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

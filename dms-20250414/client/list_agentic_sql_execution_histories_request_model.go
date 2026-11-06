@@ -36,7 +36,7 @@ type iListAgenticSqlExecutionHistoriesRequest interface {
 }
 
 type ListAgenticSqlExecutionHistoriesRequest struct {
-	// The ID of the actor. User IDs start with usr_, and agent IDs start with agt_. If you do not specify this parameter, a user queries their own execution history and the execution history of their agents, while an agent queries only its own execution history. If you specify this parameter, exact matching is performed, and the value must be the ID of the current user or an agent owned by the current user.
+	// The ID of the actor. User IDs start with usr_, and agent IDs start with agt_. If not specified, a user queries their own history and the history of their agents, while an agent queries only its own history. If specified, exact matching is applied, and the value must be the ID of the current user or an agent owned by the current user.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListAgenticSqlExecutionHistoriesRequest struct {
 	//
 	// demo-user
 	ActorName *string `json:"ActorName,omitempty" xml:"ActorName,omitempty"`
-	// The type of the actor for exact matching. Valid values: HUMAN and AGENT.
+	// The type of the actor for exact matching. Valid values: HUMAN, AGENT.
 	//
 	// example:
 	//
@@ -66,25 +66,23 @@ type ListAgenticSqlExecutionHistoriesRequest struct {
 	//
 	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	// The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format. If you do not specify this parameter, the default value is the current time. If the format cannot be parsed or the end time is earlier than the start time, the request fails.
+	// The end time of the query, in the yyyy-MM-dd HH:mm:ss format. If not specified, the default is the current time. If the format cannot be parsed or the end time is earlier than the start time, the request fails.
 	//
 	// example:
 	//
 	// 2026-06-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number. Pages start from 1. Default value: 1.
+	// The page number, starting from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The execution scenario for exact matching. Valid values:
+	// The execution scenario for exact matching. If not specified, both scenarios are queried. Valid values:
 	//
 	// - AGENT_QUERY: The agent directly executes the SQL statement.
 	//
-	// - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
-	//
-	// If you do not specify this parameter, both scenarios are queried.
+	// - WORKFLOW_QUERY: The SQL statement is executed asynchronously through a workflow.
 	//
 	// example:
 	//
@@ -108,7 +106,7 @@ type ListAgenticSqlExecutionHistoriesRequest struct {
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format. If you do not specify this parameter, the default time range is the last 7 days. If the specified time is more than 730 days ago or the format cannot be parsed, the query is performed for the last 730 days.
+	// The start time of the query, in the yyyy-MM-dd HH:mm:ss format. If not specified, the default is the last 7 days. If the time is earlier than 730 days ago or the format cannot be parsed, the query starts from 730 days ago.
 	//
 	// example:
 	//

@@ -10,7 +10,7 @@ import (
 
 // Summary:
 //
-// Creates a data source accessible by the Agent data gateway.
+// Creates a data source that can be accessed by the Agent data gateway.
 //
 // Description:
 //
@@ -29,6 +29,10 @@ func (client *Client) AddAgenticDataSourceWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdbSparkResourceGroup) {
+		query["AdbSparkResourceGroup"] = request.AdbSparkResourceGroup
+	}
+
 	if !dara.IsNil(request.Alias) {
 		query["Alias"] = request.Alias
 	}
@@ -773,6 +777,10 @@ func (client *Client) CreateCustomAgentWithContext(ctx context.Context, tmpReq *
 		query["CallbackConfig"] = request.CallbackConfigShrink
 	}
 
+	if !dara.IsNil(request.CreateFrom) {
+		query["CreateFrom"] = request.CreateFrom
+	}
+
 	if !dara.IsNil(request.DMSUnit) {
 		query["DMSUnit"] = request.DMSUnit
 	}
@@ -1288,7 +1296,7 @@ func (client *Client) CreateDataAgentThemeWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a DataAgent workspace.
+// Creates a DataAgent collaborative workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
 //
@@ -1303,6 +1311,10 @@ func (client *Client) CreateDataAgentWorkspaceWithContext(ctx context.Context, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
 	if !dara.IsNil(request.DMSUnit) {
 		query["DMSUnit"] = request.DMSUnit
 	}
@@ -1420,7 +1432,7 @@ func (client *Client) CreateOneMetaSqlTemplateWithContext(ctx context.Context, r
 //
 // Description:
 //
-// After deletion, the data source cannot establish connections and cannot be restored by calling the enable API operation.
+// After deletion, the data source can no longer establish connections and cannot be recovered by calling the enable API operation.
 //
 // @param request - DeleteAgenticDataSourceRequest
 //
@@ -1454,6 +1466,54 @@ func (client *Client) DeleteAgenticDataSourceWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteAgenticDataSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an asynchronous deletion request for a VPC endpoint and returns the acceptance result.
+//
+// Description:
+//
+// After the reverse endpoint is deleted, the data source can no longer establish connections and cannot be restored by calling the enable API.
+//
+// @param request - DeleteAgenticVpcEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgenticVpcEndpointResponse
+func (client *Client) DeleteAgenticVpcEndpointWithContext(ctx context.Context, request *DeleteAgenticVpcEndpointRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgenticVpcEndpointResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndpointId) {
+		query["EndpointId"] = request.EndpointId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgenticVpcEndpoint"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgenticVpcEndpointResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2444,6 +2504,54 @@ func (client *Client) DescribeDataAgentSessionWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Retrieves the download link for a DataAgent skill.
+//
+// @param request - DescribeDataAgentSkillDownloadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataAgentSkillDownloadResponse
+func (client *Client) DescribeDataAgentSkillDownloadWithContext(ctx context.Context, request *DescribeDataAgentSkillDownloadRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataAgentSkillDownloadResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataAgentSkillDownload"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataAgentSkillDownloadResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Invokes the DescribeDataAgentTheme operation to query the details of a specific DataAgent theme, including the theme name, stage, source, common scenarios, description, and creation and modification time.
 //
 // @param request - DescribeDataAgentThemeRequest
@@ -2880,7 +2988,7 @@ func (client *Client) GetAgenticCatalogWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of a data source by its UUID.
+// Queries the details of a data source by UUID.
 //
 // Description:
 //
@@ -3493,7 +3601,7 @@ func (client *Client) GetDataAgentThemeUploadSignatureWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the details of a workspace.
+// Retrieves the details of a collaborative workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
 //
@@ -3541,7 +3649,7 @@ func (client *Client) GetDataAgentWorkspaceInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the MCP Server connectivity and tool list results by the Session ID returned when the detection was started.
+// Queries the connectivity and tool list results of an MCP server based on the session ID returned when the detection was started.
 //
 // @param request - GetListMcpServerToolsResultRequest
 //
@@ -4387,7 +4495,7 @@ func (client *Client) ListAgenticDatabaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the SQL execution history within the current tenant and returns the results in descending order of execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
+// Queries the SQL execution history within the current tenant, sorted in descending order by execution start time. Only includes AGENT_QUERY and WORKFLOW_QUERY.
 //
 // @param request - ListAgenticGlobalSqlExecutionHistoriesRequest
 //
@@ -4475,15 +4583,15 @@ func (client *Client) ListAgenticGlobalSqlExecutionHistoriesWithContext(ctx cont
 
 // Summary:
 //
-// Queries the user security policy of the current Alibaba Cloud account by page and returns the enabled system default security policy.
+// Queries the user security policy of the current Alibaba Cloud account by using paging and returns the enabled system default security policy.
 //
 // Description:
 //
 // This operation returns the enabled system default policies and the user policies of the current Alibaba Cloud account.
 //
-// - System default policies are placed at the beginning of the list. Only policies in the ON (enabled) state are returned. They are not filtered by PolicyStatus or IncludeArchived.
+// - System default policies are placed at the beginning of the list. Only policies in the ON (enabled) state are returned, and they are not filtered by PolicyStatus or IncludeArchived.
 //
-// - Page and Size are used to paginate user policies. Each call also returns up to Size enabled system default policies. Therefore, the number of items in Data may be greater than Size, and the same system default policies may be repeatedly returned during pagination.
+// - Page and Size are used to paginate user policies. Each call also returns up to Size enabled system default policies. Therefore, the number of entries in Data may be greater than Size, and the same system default policies may be repeatedly returned during pagination.
 //
 // - TotalCount is the sum of the number of all enabled system default policies and the number of user policies that meet the filter conditions.
 //
@@ -4543,7 +4651,7 @@ func (client *Client) ListAgenticSecurityPoliciesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the SQL execution history visible to the current caller, sorted in descending order by execution start time. Only AGENT_QUERY and WORKFLOW_QUERY are included.
+// Queries the SQL execution history visible to the current caller, sorted in descending order by execution start time. Only includes AGENT_QUERY and WORKFLOW_QUERY.
 //
 // @param request - ListAgenticSqlExecutionHistoriesRequest
 //
@@ -7097,13 +7205,13 @@ func (client *Client) SearchAgenticDatabaseWithContext(ctx context.Context, requ
 //
 // ## Request description
 //
-// - `message_type` defaults to `primary`. When you need to append information or cancel a session, set it to `additional` or `cancel`.
+// - The default value of message_type is primary. Set this parameter to additional or cancel when you need to append information or cancel the session.
 //
-// - The `reply_to` field indicates which agent message this message is responding to. The default value is `0`.
+// - The reply_to field specifies the agent message to which this message responds. The default value is 0.
 //
-// - When `message_type` is `additional`, the `question` field is required.
+// - When message_type is set to additional, the question field is required.
 //
-// - `quoted_message` can be used to quote previous user messages.
+// - You can use quoted_message to quote previous user messages.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -7530,6 +7638,10 @@ func (client *Client) TestAgenticDataSourceConnectionWithContext(ctx context.Con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdbSparkResourceGroup) {
+		query["AdbSparkResourceGroup"] = request.AdbSparkResourceGroup
+	}
+
 	if !dara.IsNil(request.Alias) {
 		query["Alias"] = request.Alias
 	}
@@ -7647,7 +7759,7 @@ func (client *Client) TestAgenticDataSourceConnectionWithContext(ctx context.Con
 //
 // Description:
 //
-// Only the parameters passed in the current request are modified. Unspecified parameters remain unchanged. The data source type cannot be modified.
+// Only the parameters passed in the current request are modified. Unpassed parameters remain unchanged. The data source type cannot be modified.
 //
 // @param request - UpdateAgenticDataSourceRequest
 //
@@ -7662,6 +7774,10 @@ func (client *Client) UpdateAgenticDataSourceWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdbSparkResourceGroup) {
+		query["AdbSparkResourceGroup"] = request.AdbSparkResourceGroup
+	}
+
 	if !dara.IsNil(request.Alias) {
 		query["Alias"] = request.Alias
 	}
@@ -7740,6 +7856,18 @@ func (client *Client) UpdateAgenticDataSourceWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.UseSsl) {
 		query["UseSsl"] = request.UseSsl
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8033,7 +8161,7 @@ func (client *Client) UpdateDataAgentMemoryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates workspace information.
+// Updates the information of a workspace.
 //
 // @param request - UpdateDataAgentSpaceInfoRequest
 //
@@ -8048,6 +8176,10 @@ func (client *Client) UpdateDataAgentSpaceInfoWithContext(ctx context.Context, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
 	if !dara.IsNil(request.DMSUnit) {
 		query["DMSUnit"] = request.DMSUnit
 	}

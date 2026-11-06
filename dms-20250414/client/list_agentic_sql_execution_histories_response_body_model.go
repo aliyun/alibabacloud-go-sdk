@@ -26,7 +26,7 @@ type iListAgenticSqlExecutionHistoriesResponseBody interface {
 type ListAgenticSqlExecutionHistoriesResponseBody struct {
 	// The list of SQL execution history.
 	Data []*ListAgenticSqlExecutionHistoriesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code. This parameter is empty when the request is successful.
+	// The error code. This field is empty when the request is successful.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListAgenticSqlExecutionHistoriesResponseBody struct {
 	//
 	// 34E01EDD-6A16-4CF0-9541-C644D1BE01AA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: The request is successful.
 	//
-	// - false: The request failed.
+	// - false: The request fails.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries that meet the query conditions.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -146,7 +146,11 @@ type ListAgenticSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// demo-user
 	ActorName *string `json:"ActorName,omitempty" xml:"ActorName,omitempty"`
-	// The type of the actor. HUMAN indicates a user, and AGENT indicates an agent.
+	// The type of the actor. Valid values:
+	//
+	// - HUMAN: User.
+	//
+	// - AGENT: Agent.
 	//
 	// example:
 	//
@@ -158,19 +162,19 @@ type ListAgenticSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// 0
 	AffectedRows *int64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
-	// The ID of the user to which the agent belongs. The ID starts with usr_.
+	// The ID of the user to whom the agent belongs, starting with usr_.
 	//
 	// example:
 	//
 	// usr_10001
 	AgentOwnerId *string `json:"AgentOwnerId,omitempty" xml:"AgentOwnerId,omitempty"`
-	// The catalog UUID to which the execution belongs.
+	// The catalog UUID to which this execution belongs.
 	//
 	// example:
 	//
 	// mc-HZ-OfjcNc2z***
 	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	// The IP address of the client that initiated the execution, excluding the port. This parameter is empty in workflow scenarios or when the IP address is not recorded.
+	// The IP address of the client that initiated the execution, excluding the port. This field is empty in workflow scenarios or when not recorded.
 	//
 	// example:
 	//
@@ -188,19 +192,19 @@ type ListAgenticSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// demo_db
 	DatabaseSearchName *string `json:"DatabaseSearchName,omitempty" xml:"DatabaseSearchName,omitempty"`
-	// The database UUID to which the execution belongs.
+	// The database UUID to which this execution belongs.
 	//
 	// example:
 	//
 	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	// The error message returned when the execution fails.
+	// The error message when the execution fails.
 	//
 	// example:
 	//
 	// syntax error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The actual SQL statement that was executed.
+	// The actually executed SQL statement.
 	//
 	// example:
 	//
@@ -224,7 +228,7 @@ type ListAgenticSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// SELECT 1
 	OriginalSql *string `json:"OriginalSql,omitempty" xml:"OriginalSql,omitempty"`
-	// The query ID of the execution.
+	// The query ID of this execution.
 	//
 	// example:
 	//
@@ -240,7 +244,7 @@ type ListAgenticSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// - AGENT_QUERY: The agent directly executes the SQL statement.
 	//
-	// - WORKFLOW_QUERY: The SQL statement is asynchronously executed through a workflow.
+	// - WORKFLOW_QUERY: The SQL statement is executed asynchronously through a workflow.
 	//
 	// example:
 	//
@@ -252,13 +256,13 @@ type ListAgenticSqlExecutionHistoriesResponseBodyData struct {
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The start time of the execution. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The execution start time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The workflow ID. This parameter may be empty in non-workflow scenarios.
+	// The workflow ID. This field may be empty in non-workflow scenarios.
 	//
 	// example:
 	//

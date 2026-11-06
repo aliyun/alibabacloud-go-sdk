@@ -18,19 +18,19 @@ type iGetListMcpServerToolsResultRequest interface {
 }
 
 type GetListMcpServerToolsResultRequest struct {
-	// The DMS unit identifier. This value is typically the same as the DMSUnit used in the request that started the tool detection.
+	// The DMS unit identifier. This is typically the same as the DMSUnit used in the request to start tool detection.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The MCP Server ID used when the detection was started. This value must match the detection record associated with the SessionId.
+	// The MCP server ID used when starting the detection. It must match the detection record corresponding to SessionId.
 	//
 	// example:
 	//
 	// 44lg***z65
 	McpServerUuid *string `json:"McpServerUuid,omitempty" xml:"McpServerUuid,omitempty"`
-	// The temporary session ID returned by StartListMcpServerTools. This ID is used to locate the connectivity detection task.
+	// The temporary session ID returned by StartListMcpServerTools, which is used to locate this connectivity detection task.
 	//
 	// example:
 	//

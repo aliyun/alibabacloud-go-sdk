@@ -9,6 +9,8 @@ type iCreateDataAgentWorkspaceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfig(v string) *CreateDataAgentWorkspaceRequest
+	GetConfig() *string
 	SetDMSUnit(v string) *CreateDataAgentWorkspaceRequest
 	GetDMSUnit() *string
 	SetIsSessionShareEnabled(v bool) *CreateDataAgentWorkspaceRequest
@@ -20,25 +22,31 @@ type iCreateDataAgentWorkspaceRequest interface {
 }
 
 type CreateDataAgentWorkspaceRequest struct {
+	// The workspace configurations.
+	//
+	// example:
+	//
+	// {sql_config:null}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// Specifies whether session sharing is enabled within the workspace.
+	// Specifies whether sessions within the workspace are shared.
 	//
 	// example:
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The description of the workspace.
+	// The description of the collaborative workspace.
 	//
 	// example:
 	//
 	// Space for test
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The name of the workspace.
+	// The name of the collaborative workspace.
 	//
 	// example:
 	//
@@ -52,6 +60,10 @@ func (s CreateDataAgentWorkspaceRequest) String() string {
 
 func (s CreateDataAgentWorkspaceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDataAgentWorkspaceRequest) GetConfig() *string {
+	return s.Config
 }
 
 func (s *CreateDataAgentWorkspaceRequest) GetDMSUnit() *string {
@@ -68,6 +80,11 @@ func (s *CreateDataAgentWorkspaceRequest) GetWorkspaceDesc() *string {
 
 func (s *CreateDataAgentWorkspaceRequest) GetWorkspaceName() *string {
 	return s.WorkspaceName
+}
+
+func (s *CreateDataAgentWorkspaceRequest) SetConfig(v string) *CreateDataAgentWorkspaceRequest {
+	s.Config = &v
+	return s
 }
 
 func (s *CreateDataAgentWorkspaceRequest) SetDMSUnit(v string) *CreateDataAgentWorkspaceRequest {

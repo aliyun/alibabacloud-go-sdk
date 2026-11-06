@@ -24,19 +24,19 @@ type iUpdateAgenticDataSourceResponseBody interface {
 type UpdateAgenticDataSourceResponseBody struct {
 	// The updated data source details.
 	Data *UpdateAgenticDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the call fails. This parameter is empty if the call is successful.
+	// The error code returned when the call fails. This parameter is empty when the call is successful.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call fails. This parameter is empty if the call is successful.
+	// The error message returned when the call fails. This parameter is empty when the call is successful.
 	//
 	// example:
 	//
 	// The parameter is invalid
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The request ID used to trace the call.
 	//
 	// example:
 	//
@@ -109,6 +109,12 @@ func (s *UpdateAgenticDataSourceResponseBody) Validate() error {
 }
 
 type UpdateAgenticDataSourceResponseBodyData struct {
+	// The name of the ADB MySQL Spark resource group. This parameter is returned only for data source details where DbType is ADB_MYSQL_SPARK. It is independent of the schema (database name).
+	//
+	// example:
+	//
+	// resourceGroup1
+	AdbSparkResourceGroup *string `json:"AdbSparkResourceGroup,omitempty" xml:"AdbSparkResourceGroup,omitempty"`
 	// The display name of the data source.
 	//
 	// example:
@@ -121,7 +127,7 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	//
 	// db_user
 	AuthAccount *string `json:"AuthAccount,omitempty" xml:"AuthAccount,omitempty"`
-	// The masked value of the password or token. The actual value is not returned.
+	// The masked value of the password or token. The actual content is not returned.
 	//
 	// example:
 	//
@@ -163,7 +169,7 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	//
 	// cn-hangzhou_a1b2c3d4e5f6
 	DataSourceUuid *string `json:"DataSourceUuid,omitempty" xml:"DataSourceUuid,omitempty"`
-	// The type of the data source. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
+	// The data source type. Valid values: MYSQL, POSTGRESQL, ORACLE, SQLSERVER, MARIADB, POLARDB, POLARDB_POSTGRESQL, POLARDB_ORACLE, OCEANBASEX, DRDS, ADB_MYSQL, ADB_POSTGRESQL, CLICKHOUSE, SELECTDB, STARROCKS, HOLOGRES, MAXCOMPUTE, ES_REST, and TRINO.
 	//
 	// example:
 	//
@@ -203,13 +209,13 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	//
 	// - RDS: ApsaraDB instance
 	//
-	// - PUBLIC_OWN: self-managed database on the Internet
+	// - PUBLIC_OWN: self-managed database connected over the Internet
 	//
-	// - ECS_OWN: self-managed database on an ECS instance
+	// - ECS_OWN: self-managed database hosted on an ECS instance
 	//
-	// - GATEWAY: connected through Database Gateway
+	// - GATEWAY: database connected through Database Gateway
 	//
-	// - VPC_IDC: connected through a VPC or IDC
+	// - VPC_IDC: database connected through a VPC or data center
 	//
 	// example:
 	//
@@ -221,7 +227,7 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	//
 	// datasource-secret
 	KmsSecret *string `json:"KmsSecret,omitempty" xml:"KmsSecret,omitempty"`
-	// The ID of the data access security policy in use. This parameter is empty if no policy is configured.
+	// The ID of the data access security policy currently in use. This parameter is empty if no policy is set.
 	//
 	// example:
 	//
@@ -245,7 +251,7 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	//
 	// 123456789012****
 	ResourceAccountId *string `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ARN of the RAM role used to access the data source. This parameter is empty if role authorization is not used.
+	// The ARN of the RAM role used to access the data source. This parameter is empty if role-based authorization is not used.
 	//
 	// example:
 	//
@@ -281,11 +287,11 @@ type UpdateAgenticDataSourceResponseBodyData struct {
 	SyncAlias *int32 `json:"SyncAlias,omitempty" xml:"SyncAlias,omitempty"`
 	// The SSL settings. Valid values:
 	//
-	// - 1: enabled
+	// - 1: enable
 	//
-	// - 0: disabled
+	// - 0: disable
 	//
-	// - -1: default settings
+	// - -1: use default settings
 	//
 	// example:
 	//
@@ -299,6 +305,10 @@ func (s UpdateAgenticDataSourceResponseBodyData) String() string {
 
 func (s UpdateAgenticDataSourceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateAgenticDataSourceResponseBodyData) GetAdbSparkResourceGroup() *string {
+	return s.AdbSparkResourceGroup
 }
 
 func (s *UpdateAgenticDataSourceResponseBodyData) GetAlias() *string {
@@ -395,6 +405,11 @@ func (s *UpdateAgenticDataSourceResponseBodyData) GetSyncAlias() *int32 {
 
 func (s *UpdateAgenticDataSourceResponseBodyData) GetUseSsl() *int32 {
 	return s.UseSsl
+}
+
+func (s *UpdateAgenticDataSourceResponseBodyData) SetAdbSparkResourceGroup(v string) *UpdateAgenticDataSourceResponseBodyData {
+	s.AdbSparkResourceGroup = &v
+	return s
 }
 
 func (s *UpdateAgenticDataSourceResponseBodyData) SetAlias(v string) *UpdateAgenticDataSourceResponseBodyData {

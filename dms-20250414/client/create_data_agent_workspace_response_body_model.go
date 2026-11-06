@@ -42,7 +42,7 @@ type CreateDataAgentWorkspaceResponseBody struct {
 	//
 	// E0D2-*****-A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,13 @@ func (s *CreateDataAgentWorkspaceResponseBody) Validate() error {
 }
 
 type CreateDataAgentWorkspaceResponseBodyData struct {
-	// The creation time of the workspace. This value is a UNIX timestamp in seconds.
+	// The workspace configurations.
+	//
+	// example:
+	//
+	// {sql_config:null}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time of the workspace. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -125,25 +131,25 @@ type CreateDataAgentWorkspaceResponseBodyData struct {
 	//
 	// 20282*****7591
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether session sharing is enabled within the workspace.
+	// Indicates whether session sharing within the workspace is supported.
 	//
 	// example:
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The most recent modification time of the workspace. This value is a UNIX timestamp in seconds.
+	// The last modification time of the workspace. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1765961516
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The role name of the user in the workspace.
+	// The name of the user\\"s role in the workspace.
 	//
 	// example:
 	//
 	// owner
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	// The total number of members in the workspace.
+	// The number of members in the workspace.
 	//
 	// example:
 	//
@@ -151,9 +157,9 @@ type CreateDataAgentWorkspaceResponseBodyData struct {
 	TotalMember *int64 `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
 	// The workspace type. Valid values:
 	//
-	// - personal: personal workspace.
+	// - personal: Personal workspace.
 	//
-	// - common/null: multi-user collaborative workspace.
+	// - common or null: Multi-user collaborative workspace.
 	//
 	// example:
 	//
@@ -191,6 +197,10 @@ func (s CreateDataAgentWorkspaceResponseBodyData) String() string {
 
 func (s CreateDataAgentWorkspaceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDataAgentWorkspaceResponseBodyData) GetConfig() *string {
+	return s.Config
 }
 
 func (s *CreateDataAgentWorkspaceResponseBodyData) GetCreateTime() *int64 {
@@ -235,6 +245,11 @@ func (s *CreateDataAgentWorkspaceResponseBodyData) GetWorkspaceName() *string {
 
 func (s *CreateDataAgentWorkspaceResponseBodyData) GetWorkspaceStatus() *string {
 	return s.WorkspaceStatus
+}
+
+func (s *CreateDataAgentWorkspaceResponseBodyData) SetConfig(v string) *CreateDataAgentWorkspaceResponseBodyData {
+	s.Config = &v
+	return s
 }
 
 func (s *CreateDataAgentWorkspaceResponseBodyData) SetCreateTime(v int64) *CreateDataAgentWorkspaceResponseBodyData {

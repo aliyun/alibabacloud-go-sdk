@@ -40,7 +40,7 @@ type ListDataAgentWorkspaceResponseBody struct {
 	//
 	// Specified parameter is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The maximum number of results per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListDataAgentWorkspaceResponseBody struct {
 	//
 	// no use
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -242,7 +242,13 @@ func (s *ListDataAgentWorkspaceResponseBodyData) Validate() error {
 }
 
 type ListDataAgentWorkspaceResponseBodyDataContent struct {
-	// The creation time of the workspace. The value is a timestamp in milliseconds.
+	// The workspace configuration items.
+	//
+	// example:
+	//
+	// {sql_config:null}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The time when the workspace was created. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -272,19 +278,19 @@ type ListDataAgentWorkspaceResponseBodyDataContent struct {
 	//
 	// space for test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether session sharing is enabled for the workspace.
+	// Indicates whether workspace sessions are shared.
 	//
 	// example:
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The last modification time of the workspace. The value is a timestamp in milliseconds.
+	// The time when the workspace was last modified. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1765961516000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The role name of the user in the workspace.
+	// The name of the user\\"s role in the workspace.
 	//
 	// example:
 	//
@@ -340,6 +346,10 @@ func (s ListDataAgentWorkspaceResponseBodyDataContent) String() string {
 
 func (s ListDataAgentWorkspaceResponseBodyDataContent) GoString() string {
 	return s.String()
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetConfig() *string {
+	return s.Config
 }
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetCreateTime() *int64 {
@@ -400,6 +410,11 @@ func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetWorkspaceName() *stri
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) GetWorkspaceStatus() *string {
 	return s.WorkspaceStatus
+}
+
+func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetConfig(v string) *ListDataAgentWorkspaceResponseBodyDataContent {
+	s.Config = &v
+	return s
 }
 
 func (s *ListDataAgentWorkspaceResponseBodyDataContent) SetCreateTime(v int64) *ListDataAgentWorkspaceResponseBodyDataContent {

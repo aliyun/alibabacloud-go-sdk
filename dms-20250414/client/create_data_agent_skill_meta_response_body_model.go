@@ -153,13 +153,15 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The error message for skill parsing. This message is returned when the skill status is INVALID.
+	// The skill parsing error message.
+	//
+	// - This error message is returned when the skill status is INVALID.
 	//
 	// example:
 	//
@@ -191,11 +193,11 @@ type CreateDataAgentSkillMetaResponseBodyData struct {
 	SkillName *string `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	// The skill status. Valid values:
 	//
-	// - INIT: The skill is not ready.
+	// - INIT: Not ready.
 	//
-	// - ACTIVE: The skill is active.
+	// - ACTIVE: Active.
 	//
-	// - INVALID: The skill is invalid.
+	// - INVALID: Invalid.
 	//
 	// example:
 	//

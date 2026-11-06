@@ -44,7 +44,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The maximum number of results per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListDataAgentWorkspaceRequest struct {
 	//
 	// workspaceTest
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
-	// The workspace type to query.
+	// The workspace type.
 	//
 	// This parameter is required.
 	//

@@ -9,6 +9,8 @@ type iUpdateDataAgentSpaceInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfig(v string) *UpdateDataAgentSpaceInfoRequest
+	GetConfig() *string
 	SetDMSUnit(v string) *UpdateDataAgentSpaceInfoRequest
 	GetDMSUnit() *string
 	SetIsSessionShareEnabled(v bool) *UpdateDataAgentSpaceInfoRequest
@@ -22,31 +24,37 @@ type iUpdateDataAgentSpaceInfoRequest interface {
 }
 
 type UpdateDataAgentSpaceInfoRequest struct {
+	// The workspace configuration items.
+	//
+	// example:
+	//
+	// {sql_config:null}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// Specifies whether to enable session sharing for the workspace. Valid values: true and false.
+	// Specifies whether to enable the session sharing feature for the workspace.
 	//
 	// example:
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The new description for the workspace.
+	// The new description of the workspace.
 	//
 	// example:
 	//
 	// space for test new
 	WorkspaceDesc *string `json:"WorkspaceDesc,omitempty" xml:"WorkspaceDesc,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 20923*****7291
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The new name for the workspace.
+	// The new name of the workspace.
 	//
 	// example:
 	//
@@ -60,6 +68,10 @@ func (s UpdateDataAgentSpaceInfoRequest) String() string {
 
 func (s UpdateDataAgentSpaceInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDataAgentSpaceInfoRequest) GetConfig() *string {
+	return s.Config
 }
 
 func (s *UpdateDataAgentSpaceInfoRequest) GetDMSUnit() *string {
@@ -80,6 +92,11 @@ func (s *UpdateDataAgentSpaceInfoRequest) GetWorkspaceId() *string {
 
 func (s *UpdateDataAgentSpaceInfoRequest) GetWorkspaceName() *string {
 	return s.WorkspaceName
+}
+
+func (s *UpdateDataAgentSpaceInfoRequest) SetConfig(v string) *UpdateDataAgentSpaceInfoRequest {
+	s.Config = &v
+	return s
 }
 
 func (s *UpdateDataAgentSpaceInfoRequest) SetDMSUnit(v string) *UpdateDataAgentSpaceInfoRequest {

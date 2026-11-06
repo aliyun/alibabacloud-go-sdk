@@ -36,7 +36,7 @@ type CreateAgenticSqlExecuteCredentialResponseBody struct {
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type CreateAgenticSqlExecuteCredentialResponseBodyData struct {
 	//
 	// ak_xxxxxxxx
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The AccessKey secret of the credential. This value is returned only once when the credential is created. Keep it secure.
+	// The AccessSecret of the credential. This value is returned only once when the credential is created. Keep it secure.
 	//
 	// example:
 	//

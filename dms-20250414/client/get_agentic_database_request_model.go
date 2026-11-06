@@ -14,7 +14,7 @@ type iGetAgenticDatabaseRequest interface {
 }
 
 type GetAgenticDatabaseRequest struct {
-	// The UUID of the database. You can obtain this value by calling ListAgenticDatabase or SearchAgenticDatabase.
+	// The UUID of the database. You can obtain the UUID by calling ListAgenticDatabase or SearchAgenticDatabase.
 	//
 	// This parameter is required.
 	//

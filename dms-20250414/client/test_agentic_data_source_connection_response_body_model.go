@@ -36,13 +36,13 @@ type TestAgenticDataSourceConnectionResponseBody struct {
 	//
 	// The parameter is invalid
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID, which is used to locate the current call.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// request-1234567890
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the current call is successful.
+	// Indicates whether the call is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -113,9 +113,9 @@ type TestAgenticDataSourceConnectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// Connection timed out. Check the connection endpoint
+	// Connection timed out. Check the endpoint.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the data source is connected.
+	// Indicates whether the data source is connected successfully.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

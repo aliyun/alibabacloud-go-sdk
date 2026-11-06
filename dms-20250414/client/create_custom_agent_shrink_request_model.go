@@ -13,6 +13,8 @@ type iCreateCustomAgentShrinkRequest interface {
 	GetAgentType() *string
 	SetCallbackConfigShrink(v string) *CreateCustomAgentShrinkRequest
 	GetCallbackConfigShrink() *string
+	SetCreateFrom(v string) *CreateCustomAgentShrinkRequest
+	GetCreateFrom() *string
 	SetDMSUnit(v string) *CreateCustomAgentShrinkRequest
 	GetDMSUnit() *string
 	SetDataJson(v string) *CreateCustomAgentShrinkRequest
@@ -52,45 +54,55 @@ type iCreateCustomAgentShrinkRequest interface {
 type CreateCustomAgentShrinkRequest struct {
 	// The type of the custom agent. Valid values:
 	//
-	// - Default: the system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
+	// - Default: The system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
 	//
-	// - Common: a regular custom agent.
+	// - Common: A common custom agent.
 	//
 	// example:
 	//
 	// Common
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The callback feature configuration.
+	// The callback feature configuration items.
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
+	// The creation source. Valid values:
+	//
+	// - Empty (default): Create the agent by using a form.
+	//
+	// - SmartNew: Create the agent by using intelligent development.
+	//
+	// example:
+	//
+	// SmartNew
+	CreateFrom *string `json:"CreateFrom,omitempty" xml:"CreateFrom,omitempty"`
 	// The current DMS unit.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope, in **JSON character string format**.
+	// The specified data scope in **JSON character string format**.
 	//
-	// - General parameter descriptions
+	// - General parameter description:
 	//
-	//   - tableFlag: true specifies the data scope.
+	//   - tableFlag: Set to true to specify the data scope.
 	//
-	//   - scope: personal is a fixed value.
+	//   - scope: Set to personal as a fixed value.
 	//
-	//   - personal: the parameters for file and database types.
+	//   - personal: The parameters for file and database types.
 	//
-	// **File type**: pass parameters in the following format:
+	// **File type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: remote_data_center is a fixed value.
+	// - DataSourceType: Set to remote_data_center as a fixed value.
 	//
-	// - FileId: the file ID.
+	// - FileId: The file ID.
 	//
-	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
+	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: the table names returned by the ListDataCenterTable operation.
+	// - Tables: The table names returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: the table IDs returned by the ListDataCenterTable operation.
+	// - TableIds: The table IDs returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: the current region.
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -128,27 +140,27 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// ```
 	//
-	// **Database type**: pass parameters in the following format:
+	// **Database type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: database is a fixed value.
+	// - DataSourceType: Set to database as a fixed value.
 	//
-	// - DmsInstanceId: the DMS instance ID returned by the data center API.
+	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: the DMS database ID returned by the data center API.
+	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
 	//
-	// - FileId: the instance name (**[Deprecated]**).
+	// - FileId: The instance name. **[Deprecated]**
 	//
-	// - DbName: the database name returned by the data center API.
+	// - DbName: The database name returned by the data center operation.
 	//
-	// - Database: the database name returned by the data center API.
+	// - Database: The database name returned by the data center operation.
 	//
-	// - Tables: the table names returned by the data center API.
+	// - Tables: The table names returned by the data center operation.
 	//
-	// - TableIds: the table IDs returned by the data center API.
+	// - TableIds: The table IDs returned by the data center operation.
 	//
-	// - Engine: the database engine type, such as mysql or postgresql.
+	// - Engine: The database engine type, such as mysql or postgresql.
 	//
-	// - RegionId: the current region.
+	// - RegionId: The current region.
 	//
 	// ```
 	//
@@ -228,9 +240,9 @@ type CreateCustomAgentShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
-	// The instructions.
+	// The instruction.
 	//
-	// - Input limit: up to 10,000 characters.
+	// - Input limit: Up to 10,000 characters.
 	//
 	// example:
 	//
@@ -238,15 +250,15 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid daily orders.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
-	// - Input limit: up to 10,000 characters.
+	// - Input limit: Up to 10,000 characters.
 	//
 	// example:
 	//
@@ -254,11 +266,11 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid daily orders.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigListShrink *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
@@ -286,7 +298,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// The text report requires that all numbers be written as Chinese numerals instead of Arabic numerals
+	// The text report requires that all numbers be converted to Chinese numerals instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
@@ -294,7 +306,7 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// The web report requires that all numbers be written as Chinese numerals instead of Arabic numerals
+	// The web report requires that all numbers be converted to Chinese numerals instead of Arabic numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme.
 	//
@@ -324,6 +336,10 @@ func (s *CreateCustomAgentShrinkRequest) GetAgentType() *string {
 
 func (s *CreateCustomAgentShrinkRequest) GetCallbackConfigShrink() *string {
 	return s.CallbackConfigShrink
+}
+
+func (s *CreateCustomAgentShrinkRequest) GetCreateFrom() *string {
+	return s.CreateFrom
 }
 
 func (s *CreateCustomAgentShrinkRequest) GetDMSUnit() *string {
@@ -401,6 +417,11 @@ func (s *CreateCustomAgentShrinkRequest) SetAgentType(v string) *CreateCustomAge
 
 func (s *CreateCustomAgentShrinkRequest) SetCallbackConfigShrink(v string) *CreateCustomAgentShrinkRequest {
 	s.CallbackConfigShrink = &v
+	return s
+}
+
+func (s *CreateCustomAgentShrinkRequest) SetCreateFrom(v string) *CreateCustomAgentShrinkRequest {
+	s.CreateFrom = &v
 	return s
 }
 

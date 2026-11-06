@@ -22,21 +22,21 @@ type iGetAgenticDataSourceResponseBody interface {
 }
 
 type GetAgenticDataSourceResponseBody struct {
-	// The data source details. This parameter is empty if the data source does not exist.
+	// The data source details. This field is empty if the data source does not exist.
 	Data *GetAgenticDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the call fails. This parameter is empty if the call is successful.
+	// The error code returned when the call fails. This field is empty when the call succeeds.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails. This parameter is empty if the call is successful.
+	// The error message returned when the call fails. This field is empty when the call succeeds.
 	//
 	// example:
 	//
 	// The parameter is invalid
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// The request ID, which is used to locate the call.
 	//
 	// example:
 	//
@@ -109,19 +109,25 @@ func (s *GetAgenticDataSourceResponseBody) Validate() error {
 }
 
 type GetAgenticDataSourceResponseBodyData struct {
+	// The name of the ADB MySQL Spark resource group. This field is returned only for data sources whose DbType is ADB_MYSQL_SPARK and is independent of the Schema (database name).
+	//
+	// example:
+	//
+	// resourceGroup1
+	AdbSparkResourceGroup *string `json:"AdbSparkResourceGroup,omitempty" xml:"AdbSparkResourceGroup,omitempty"`
 	// The display name of the data source.
 	//
 	// example:
 	//
 	// demo_mysql
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The logon username for the data source. This parameter is empty if username authentication is not used.
+	// The logon username for the data source. This field is empty if username authentication is not used.
 	//
 	// example:
 	//
 	// db_user
 	AuthAccount *string `json:"AuthAccount,omitempty" xml:"AuthAccount,omitempty"`
-	// The masked value of the password or token. The actual value is not returned.
+	// The masked value of the password or token. The actual content is not returned.
 	//
 	// example:
 	//
@@ -129,13 +135,13 @@ type GetAgenticDataSourceResponseBodyData struct {
 	AuthPassword *string `json:"AuthPassword,omitempty" xml:"AuthPassword,omitempty"`
 	// The authentication method. Valid values:
 	//
-	// - -1: no authentication required
+	// - -1: No authentication required.
 	//
-	// - 0: username and password
+	// - 0: Username and password.
 	//
-	// - 1: password only
+	// - 1: Password only.
 	//
-	// - 2: password-free
+	// - 2: Password-free.
 	//
 	// example:
 	//
@@ -155,9 +161,9 @@ type GetAgenticDataSourceResponseBodyData struct {
 	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
 	// The method used to register the data source. Valid values:
 	//
-	// - INSTANCE_ID: select an existing cloud instance
+	// - INSTANCE_ID: Select an existing cloud instance.
 	//
-	// - HOST_PORT: register by endpoint and port
+	// - HOST_PORT: Register by endpoint and port.
 	//
 	// example:
 	//
@@ -199,7 +205,7 @@ type GetAgenticDataSourceResponseBodyData struct {
 	//
 	// mysql.example.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the cloud resource instance. This parameter may be empty for data sources registered by endpoint.
+	// The ID of the cloud resource instance. This field may be empty for data sources registered by endpoint.
 	//
 	// example:
 	//
@@ -207,27 +213,27 @@ type GetAgenticDataSourceResponseBodyData struct {
 	InstanceResourceId *string `json:"InstanceResourceId,omitempty" xml:"InstanceResourceId,omitempty"`
 	// The source of the data source. Valid values:
 	//
-	// - RDS: ApsaraDB instance
+	// - RDS: ApsaraDB instance.
 	//
-	// - PUBLIC_OWN: self-managed database on the Internet
+	// - PUBLIC_OWN: Self-managed database on the Internet.
 	//
-	// - ECS_OWN: self-managed database on an ECS instance
+	// - ECS_OWN: Self-managed database on an ECS instance.
 	//
-	// - GATEWAY: connected through Database Gateway
+	// - GATEWAY: Connected through Database Gateway.
 	//
-	// - VPC_IDC: connected through a VPC or IDC
+	// - VPC_IDC: Connected through a VPC or IDC.
 	//
 	// example:
 	//
 	// RDS
 	InstanceSource *string `json:"InstanceSource,omitempty" xml:"InstanceSource,omitempty"`
-	// The name of the KMS-managed credential. This parameter is empty if KMS is not used. This field contains sensitive information.
+	// The name of the KMS-managed credential. This field is empty if KMS is not used and is considered sensitive information.
 	//
 	// example:
 	//
 	// datasource-secret
 	KmsSecret *string `json:"KmsSecret,omitempty" xml:"KmsSecret,omitempty"`
-	// The ID of the data access security policy currently in use. This parameter is empty if no policy is configured.
+	// The ID of the data access security policy currently in use. This field is empty if no policy is configured.
 	//
 	// example:
 	//
@@ -251,25 +257,25 @@ type GetAgenticDataSourceResponseBodyData struct {
 	//
 	// 123456789012****
 	ResourceAccountId *string `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
-	// The ARN of the RAM role used to access the data source. This parameter is empty if role-based authorization is not used.
+	// The ARN of the Alibaba Cloud RAM role used to access the data source. This field is empty if role-based authorization is not used.
 	//
 	// example:
 	//
 	// acs:ram::123456789012****:role/DataSourceRole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this parameter is usually empty.
+	// The name of the connection target. For ADB_POSTGRESQL, DRDS, POSTGRESQL, and POLARDB_POSTGRESQL, this indicates the database name. For ORACLE, this indicates the SID or service name. For POLARDB_ORACLE, this indicates the SID. For MAXCOMPUTE, this indicates the project. For other types, this field is usually empty.
 	//
 	// example:
 	//
 	// postgres
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The name of the Snowflake role. This parameter takes effect only when DbType is set to SNOWFLAKE.
+	// The name of the Snowflake role. This field takes effect only when DbType is SNOWFLAKE.
 	//
 	// example:
 	//
 	// WAREHOUSE
 	SnowflakeRole *string `json:"SnowflakeRole,omitempty" xml:"SnowflakeRole,omitempty"`
-	// The name of the Snowflake compute warehouse. This parameter takes effect only when DbType is set to SNOWFLAKE.
+	// The name of the Snowflake compute warehouse. This field takes effect only when DbType is SNOWFLAKE.
 	//
 	// example:
 	//
@@ -277,11 +283,11 @@ type GetAgenticDataSourceResponseBodyData struct {
 	SnowflakeWarehouse *string `json:"SnowflakeWarehouse,omitempty" xml:"SnowflakeWarehouse,omitempty"`
 	// The status of the data source. Valid values:
 	//
-	// - 0: normal
+	// - 0: Normal.
 	//
-	// - -1: deleted
+	// - -1: Deleted.
 	//
-	// - -2: disabled
+	// - -2: Disabled.
 	//
 	// example:
 	//
@@ -289,9 +295,9 @@ type GetAgenticDataSourceResponseBodyData struct {
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 	// Specifies whether to use the cloud instance name as the data source name. Valid values:
 	//
-	// - 1: yes
+	// - 1: Yes.
 	//
-	// - 0: no
+	// - 0: No.
 	//
 	// example:
 	//
@@ -299,29 +305,29 @@ type GetAgenticDataSourceResponseBodyData struct {
 	SyncAlias *int32 `json:"SyncAlias,omitempty" xml:"SyncAlias,omitempty"`
 	// The SSL settings. Valid values:
 	//
-	// - 1: enabled
+	// - 1: Enabled.
 	//
-	// - 0: disabled
+	// - 0: Disabled.
 	//
-	// - -1: use default settings
+	// - -1: Use default settings.
 	//
 	// example:
 	//
 	// 1
 	UseSsl *int32 `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
-	// The ID of the destination vSwitch used when accessing MaxCompute. This parameter is empty in other scenarios.
+	// The ID of the destination vSwitch used when accessing MaxCompute. This field is empty in other scenarios.
 	//
 	// example:
 	//
 	// vsw-bp1234567890
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the destination VPC used when accessing MaxCompute. This parameter is empty in other scenarios.
+	// The ID of the destination VPC used when accessing MaxCompute. This field is empty in other scenarios.
 	//
 	// example:
 	//
 	// vpc-bp1234567890
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the destination zone used when accessing MaxCompute. This parameter is empty in other scenarios.
+	// The ID of the destination zone used when accessing MaxCompute. This field is empty in other scenarios.
 	//
 	// example:
 	//
@@ -335,6 +341,10 @@ func (s GetAgenticDataSourceResponseBodyData) String() string {
 
 func (s GetAgenticDataSourceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetAgenticDataSourceResponseBodyData) GetAdbSparkResourceGroup() *string {
+	return s.AdbSparkResourceGroup
 }
 
 func (s *GetAgenticDataSourceResponseBodyData) GetAlias() *string {
@@ -455,6 +465,11 @@ func (s *GetAgenticDataSourceResponseBodyData) GetVpcId() *string {
 
 func (s *GetAgenticDataSourceResponseBodyData) GetZoneId() *string {
 	return s.ZoneId
+}
+
+func (s *GetAgenticDataSourceResponseBodyData) SetAdbSparkResourceGroup(v string) *GetAgenticDataSourceResponseBodyData {
+	s.AdbSparkResourceGroup = &v
+	return s
 }
 
 func (s *GetAgenticDataSourceResponseBodyData) SetAlias(v string) *GetAgenticDataSourceResponseBodyData {

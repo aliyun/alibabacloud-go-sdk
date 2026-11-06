@@ -22,15 +22,15 @@ type iUpdateDataAgentSpaceInfoResponseBody interface {
 }
 
 type UpdateDataAgentSpaceInfoResponseBody struct {
-	// The returned data.
+	// The response struct.
 	Data *UpdateDataAgentSpaceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request fails.
+	// The error code returned when a request exception occurs.
 	//
 	// example:
 	//
 	// DMS-DA-40114
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateDataAgentSpaceInfoResponseBody struct {
 	//
 	// 67E910F2-***-695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,37 +113,43 @@ func (s *UpdateDataAgentSpaceInfoResponseBody) Validate() error {
 }
 
 type UpdateDataAgentSpaceInfoResponseBodyData struct {
-	// The time when the workspace was created, specified as a UNIX timestamp in seconds.
+	// The workspace configuration items.
+	//
+	// example:
+	//
+	// {sql_config:null}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The creation time of the session (UNIX timestamp in seconds).
 	//
 	// example:
 	//
 	// 1765960516
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user ID (UID) of the workspace creator.
+	// The UID of the workspace creator.
 	//
 	// example:
 	//
 	// 20282*****7591
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description of the workspace.
+	// The description of the table.
 	//
 	// example:
 	//
 	// space for test new
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether session sharing is enabled in the workspace.
+	// Indicates whether session sharing within the workspace is supported.
 	//
 	// example:
 	//
 	// true
 	IsSessionShareEnabled *bool `json:"IsSessionShareEnabled,omitempty" xml:"IsSessionShareEnabled,omitempty"`
-	// The time when the workspace was last modified, specified as a UNIX timestamp in seconds.
+	// The last modification time of the workspace (UNIX timestamp in seconds).
 	//
 	// example:
 	//
 	// 1765962516
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The user role in the workspace.
+	// The name of the removed user role.
 	//
 	// example:
 	//
@@ -155,7 +161,7 @@ type UpdateDataAgentSpaceInfoResponseBodyData struct {
 	//
 	// 20
 	TotalMember *string `json:"TotalMember,omitempty" xml:"TotalMember,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -181,6 +187,10 @@ func (s UpdateDataAgentSpaceInfoResponseBodyData) String() string {
 
 func (s UpdateDataAgentSpaceInfoResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetConfig() *string {
+	return s.Config
 }
 
 func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetCreateTime() *string {
@@ -221,6 +231,11 @@ func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetWorkspaceName() *string {
 
 func (s *UpdateDataAgentSpaceInfoResponseBodyData) GetWorkspaceStatus() *string {
 	return s.WorkspaceStatus
+}
+
+func (s *UpdateDataAgentSpaceInfoResponseBodyData) SetConfig(v string) *UpdateDataAgentSpaceInfoResponseBodyData {
+	s.Config = &v
+	return s
 }
 
 func (s *UpdateDataAgentSpaceInfoResponseBodyData) SetCreateTime(v string) *UpdateDataAgentSpaceInfoResponseBodyData {

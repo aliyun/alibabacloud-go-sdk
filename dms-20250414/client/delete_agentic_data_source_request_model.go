@@ -14,7 +14,7 @@ type iDeleteAgenticDataSourceRequest interface {
 }
 
 type DeleteAgenticDataSourceRequest struct {
-	// The UUID of the data source to delete. Ensure that no workloads are using the data source before deletion.
+	// The UUID of the data source to delete. Ensure that the data source is no longer in use before deletion.
 	//
 	// This parameter is required.
 	//
