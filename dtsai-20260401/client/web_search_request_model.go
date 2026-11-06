@@ -25,6 +25,10 @@ type iWebSearchRequest interface {
 
 type WebSearchRequest struct {
 	// The agent name.
+	//
+	// example:
+	//
+	// codex
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The maximum number of results to return. Default value: 10. Valid values: 1 to 50.
 	//
@@ -32,7 +36,7 @@ type WebSearchRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The search query statement.
+	// The search query string.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +52,17 @@ type WebSearchRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of domain names.
+	// A comma-separated list of domain names. The total length cannot exceed 20,480 characters, and the list can contain up to 100 entries. Subdomains are included by default.
+	//
+	// example:
+	//
+	// spring.io,docs.spring.io
 	UrlScopeDomains *string `json:"UrlScopeDomains,omitempty" xml:"UrlScopeDomains,omitempty"`
-	// The URL scope mode.
+	// The domain scope mode. Valid values: allowOnly and deny. This parameter must be specified together with UrlScopeDomains, or both must be omitted.
+	//
+	// example:
+	//
+	// allowOnly
 	UrlScopeMode *string `json:"UrlScopeMode,omitempty" xml:"UrlScopeMode,omitempty"`
 }
 

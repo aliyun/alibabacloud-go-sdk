@@ -68,7 +68,7 @@ type DescribeDocParserJobStatusResponseBody struct {
 	//
 	// - **failed**: Failed. The reason is provided in FailureMessage.
 	//
-	// - **cancelled**: Cancelled.
+	// - **cancelled**: Canceled.
 	//
 	// example:
 	//

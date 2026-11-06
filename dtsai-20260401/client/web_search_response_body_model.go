@@ -46,7 +46,7 @@ type WebSearchResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The search query statement.
+	// The search query string.
 	//
 	// example:
 	//

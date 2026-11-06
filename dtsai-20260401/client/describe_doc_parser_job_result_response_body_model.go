@@ -59,8 +59,16 @@ type DescribeDocParserJobResultResponseBody struct {
 	// # Document Title
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The result format.
+	//
+	// example:
+	//
+	// content
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
 	// oss url
+	//
+	// example:
+	//
+	// http://shuanglu-prod.oss-cn-shanghai-finance-1-pub.aliyuncs.com/idrs/24/local/remoteresult?Expires=1764472809&OSSAccessKeyId=****&Signature=****
 	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
 	// Indicates whether the request was successful.
 	//

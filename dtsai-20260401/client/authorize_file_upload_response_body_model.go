@@ -45,7 +45,8 @@ type AuthorizeFileUploadResponseBody struct {
 	// example:
 	//
 	// STS.NV5xxx
-	AccessKeyId    *string                                          `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The list of OSS PostObject direct upload authorizations returned in batch.
 	Authorizations []*AuthorizeFileUploadResponseBodyAuthorizations `json:"Authorizations,omitempty" xml:"Authorizations,omitempty" type:"Repeated"`
 	// The destination OSS bucket.
 	//
@@ -53,7 +54,7 @@ type AuthorizeFileUploadResponseBody struct {
 	//
 	// dts-ai-upload-cn-beijing7500163e0eae09
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The Base64-encoded PostObject policy, which includes the ObjectKey and file size limits.
+	// The Base64-encoded PostObject policy, which includes the object key and file size limits.
 	//
 	// example:
 	//
@@ -77,14 +78,19 @@ type AuthorizeFileUploadResponseBody struct {
 	//
 	// The parameter [Query] is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ExpireTime   *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The business-level HTTP status code.
+	// The expiration time of the OSS PostObject direct upload authorization.
+	//
+	// example:
+	//
+	// 0
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The business semantic status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The object key that must be used as-is for the upload.
+	// The object key that must be used exactly as provided for the upload.
 	//
 	// example:
 	//
@@ -96,7 +102,7 @@ type AuthorizeFileUploadResponseBody struct {
 	//
 	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Security Token Service (STS) temporary security token.
+	// The temporary Security Token Service (STS) token.
 	//
 	// example:
 	//
@@ -108,7 +114,7 @@ type AuthorizeFileUploadResponseBody struct {
 	//
 	// masked-signature
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -264,9 +270,24 @@ func (s *AuthorizeFileUploadResponseBody) Validate() error {
 }
 
 type AuthorizeFileUploadResponseBodyAuthorizations struct {
+	// The Base64-encoded PostObject policy, which includes the object key and file size limits.
+	//
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjo...
 	EncodedPolicy *string `json:"EncodedPolicy,omitempty" xml:"EncodedPolicy,omitempty"`
-	ObjectKey     *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// The object key that must be used exactly as provided for the upload.
+	//
+	// example:
+	//
+	// 0a1b_123456_0123456789abcdef0123456789abcdef
+	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	// The policy signature.
+	//
+	// example:
+	//
+	// masked-signature
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
 func (s AuthorizeFileUploadResponseBodyAuthorizations) String() string {

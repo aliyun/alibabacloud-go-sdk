@@ -50,7 +50,7 @@ type CreateDocParserJobResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The document parsing task ID.
+	// The ID of the document parsing task.
 	//
 	// example:
 	//
@@ -63,14 +63,30 @@ type CreateDocParserJobResponseBody struct {
 	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The result data.
+	//
+	// example:
+	//
+	// # Document Title
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The result type.
+	//
+	// example:
+	//
+	// content
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	// The result URL.
+	// The URL of the result.
+	//
+	// example:
+	//
+	// http://shuanglu-prod.oss-cn-shanghai-finance-1-pub.aliyuncs.com/idrs/24/local/remoteresult?Expires=1764472809&OSSAccessKeyId=****&Signature=****
 	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
 	// The status information.
+	//
+	// example:
+	//
+	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -21,6 +21,10 @@ type iWebFetchRequest interface {
 
 type WebFetchRequest struct {
 	// The agent name.
+	//
+	// example:
+	//
+	// codex
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The output format. Valid values:
 	//
@@ -28,7 +32,7 @@ type WebFetchRequest struct {
 	//
 	// - **html**: HTML format.
 	//
-	// - **text**: Plain text format.
+	// - **text**: plain text format.
 	//
 	// example:
 	//
@@ -42,7 +46,7 @@ type WebFetchRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The URL of the target web page to crawl.
+	// The URL of the target web page to fetch.
 	//
 	// This parameter is required.
 	//

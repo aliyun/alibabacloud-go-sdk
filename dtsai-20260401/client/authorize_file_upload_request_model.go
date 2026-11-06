@@ -20,12 +20,17 @@ type iAuthorizeFileUploadRequest interface {
 }
 
 type AuthorizeFileUploadRequest struct {
-	// The Agent or client source that initiates the call, such as codex, cursor, or openapi. Maximum length: 32 characters. Used only for statistics and does not participate in authentication, throttling, quota, or billing.
+	// The source of the agent or client that initiates the call, such as codex, cursor, or openapi. The maximum length is 32 characters. This parameter is used only for statistics and does not participate in authentication, throttling, quota management, or billing.
 	//
 	// example:
 	//
 	// codex
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The number of OSS PostObject direct upload authorizations returned in this request.
+	//
+	// example:
+	//
+	// 10
 	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// The format of the file to be uploaded.
 	//

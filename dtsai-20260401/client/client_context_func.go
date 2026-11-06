@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Uploads a file directly to the Bucket/ObjectKey specified in the response, and then uses the object URL as OssFileUrl to create a parsing task.
+// Grants OSS PostObject direct upload authorization for callers to upload files directly to the specified bucket and object key, and then use the object URL as OssFileUrl to create a parsing task.
 //
 // @param request - AuthorizeFileUploadRequest
 //
@@ -71,7 +71,7 @@ func (client *Client) AuthorizeFileUploadWithContext(ctx context.Context, reques
 //
 // - Region: Only China (Beijing) is supported.
 //
-// - Fees: The service is free of charge during the public preview period.
+// - Billing: Free to use during the public preview. No fees are charged.
 //
 // @param request - CreateDocParserJobRequest
 //
@@ -104,6 +104,10 @@ func (client *Client) CreateDocParserJobWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.ChunkSummary) {
 		query["ChunkSummary"] = request.ChunkSummary
+	}
+
+	if !dara.IsNil(request.DocumentStructure) {
+		query["DocumentStructure"] = request.DocumentStructure
 	}
 
 	if !dara.IsNil(request.FileFormat) {
@@ -329,13 +333,25 @@ func (client *Client) DescribeDocParserJobStatusWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the content of a web page.
+// Retrieves web page content.
 //
 // Description:
 //
-// - Region: Only China (Beijing) and Singapore regions are supported.
+// - Region: Only China (Beijing) is supported.
 //
-// - Fees: Free of charge during the public preview period.
+// - Fees: The service is free of charge during the public preview period.
+//
+// General notes:
+//
+// - WebFetch and WebSearch are AI-based automated information retrieval tools. Search keywords, target web pages, and content extraction results are automatically generated and processed by DTS based on your instruction intent. Understanding deviations, omissions, or errors may occur.
+//
+// - The information returned by both features is sourced from third-party public networks. DTS does not verify, review, or endorse such content. The content does not represent the views or positions of DTS. The original source is responsible for its authenticity, accuracy, completeness, timeliness, and legality.
+//
+// - DTS makes no express or implied warranties regarding the accuracy, completeness, timeliness, legality, security, or fitness for a particular purpose of the search and retrieval results. DTS does not guarantee that the service is always available, uninterrupted, or error-free.
+//
+// - You are responsible for evaluating and assuming the risks of using the results. Before using the results for decision-making, citation, public release, commercial use, or other scenarios, verify the content independently and comply with applicable laws, regulations, and the terms and intellectual property requirements of third-party websites. You assume all liability for any losses or disputes arising from the use of the results.
+//
+// - The results do not constitute opinions or advice in professional fields such as law, medicine, finance, or investment. For significant matters, consult qualified professionals.
 //
 // @param request - WebFetchRequest
 //
@@ -395,9 +411,23 @@ func (client *Client) WebFetchWithContext(ctx context.Context, request *WebFetch
 //
 // Description:
 //
-// - Region: Only China (Beijing) and Singapore regions are supported.
+// - Region: Only China (Beijing) is supported.
 //
-// - Fees: Free during the public preview period. No fees are charged.
+// - Fees: This feature is free of charge during the public preview period.
+//
+// - SLA: This feature is not covered by the DTS Service Level Agreement (SLA).
+//
+// General notes:
+//
+// - WebFetch and WebSearch are AI-based automated information retrieval tools. Search keywords, target web pages, and content extraction results are automatically generated and processed by DTS based on the intent of your instructions. Understanding deviations, omissions, or errors may occur.
+//
+// - The information returned by both features is sourced from third-party public networks. DTS does not verify, review, or endorse the information. The content does not represent the views or positions of DTS. The original source is responsible for the authenticity, accuracy, completeness, timeliness, and legality of the content.
+//
+// - DTS makes no express or implied warranties regarding the accuracy, completeness, timeliness, legality, security, or fitness for a particular purpose of the search and retrieval results. DTS does not guarantee that the service is always available, uninterrupted, or error-free.
+//
+// - You are responsible for evaluating and assuming the risks of using the results. Before using the results for decision-making, citation, public release, commercial use, or other scenarios, verify the content and comply with applicable laws, regulations, and the terms and intellectual property requirements of third-party websites. You assume all liability for any losses or disputes arising from the use of the results.
+//
+// - The results do not constitute opinions or advice in professional fields such as law, medicine, finance, or investment. For significant matters, consult qualified professionals.
 //
 // @param request - WebSearchRequest
 //

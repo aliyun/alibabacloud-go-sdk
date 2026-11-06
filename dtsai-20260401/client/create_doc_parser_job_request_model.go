@@ -19,6 +19,8 @@ type iCreateDocParserJobRequest interface {
 	GetAudioWindowSeconds() *int32
 	SetChunkSummary(v bool) *CreateDocParserJobRequest
 	GetChunkSummary() *bool
+	SetDocumentStructure(v bool) *CreateDocParserJobRequest
+	GetDocumentStructure() *bool
 	SetFileFormat(v string) *CreateDocParserJobRequest
 	GetFileFormat() *string
 	SetFileName(v string) *CreateDocParserJobRequest
@@ -60,27 +62,49 @@ type iCreateDocParserJobRequest interface {
 }
 
 type CreateDocParserJobRequest struct {
-	// The agent name.
+	// The name of the agent.
+	//
+	// example:
+	//
+	// codex
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// The language type for speech recognition.
+	// The Automatic Speech Recognition (ASR) language hint. Valid values: auto, zh, and en. Default value: auto. If set to auto, the language field in the result is empty.
+	//
+	// example:
+	//
+	// zh
 	AsrLanguage *string `json:"AsrLanguage,omitempty" xml:"AsrLanguage,omitempty"`
-	// The audio clip output.
+	// Specifies whether to output segmented audio clips to OSS. Default value: true.
+	//
+	// example:
+	//
+	// true
 	AudioClipOutput *bool `json:"AudioClipOutput,omitempty" xml:"AudioClipOutput,omitempty"`
-	// The audio window duration in seconds.
+	// The audio chunk window duration in seconds. This parameter takes effect only for pure audio files. Valid values: 10 to 600. If this parameter is passed in a video request, an InvalidParameter error is returned.
+	//
+	// example:
+	//
+	// 200
 	AudioWindowSeconds *int32 `json:"AudioWindowSeconds,omitempty" xml:"AudioWindowSeconds,omitempty"`
-	// The chunk summary information.
+	// Specifies whether to generate a one-sentence summary for each segment. Default value: true.
+	//
+	// example:
+	//
+	// true
 	ChunkSummary *bool `json:"ChunkSummary,omitempty" xml:"ChunkSummary,omitempty"`
+	// Specifies whether to extract the directory and section structure of the document.
+	DocumentStructure *bool `json:"DocumentStructure,omitempty" xml:"DocumentStructure,omitempty"`
 	// The format of the input file. Valid values:
 	//
 	// - **pdf**: PDF file.
 	//
-	// - **docx**: Word file in docx format.
+	// - **docx**: Word file in DOCX format.
 	//
-	// - **doc**: Word file in doc format.
+	// - **doc**: Word file in DOC format.
 	//
-	// - **pptx**: PPT file in pptx format.
+	// - **pptx**: PowerPoint file in PPTX format.
 	//
-	// - **ppt**: PPT file in ppt format.
+	// - **ppt**: PowerPoint file in PPT format.
 	//
 	// - **txt**: Plain text file.
 	//
@@ -98,7 +122,7 @@ type CreateDocParserJobRequest struct {
 	//
 	// pdf
 	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	// The file name, which must include the file name extension.
+	// The name of the file, which must include the file name extension.
 	//
 	// This parameter is required.
 	//
@@ -108,37 +132,77 @@ type CreateDocParserJobRequest struct {
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The HTTP or HTTPS URL of the file to be parsed.
 	//
-	// >SDKs for various programming languages additionally provide a `CreateDocParserJobAdvance` method that supports passing a local file stream directly (such as Java InputStream), without the need to upload the file to OSS and construct a FileUrl in advance. When using the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream). All other request parameters remain unchanged. The SDK automatically performs the following operations:
+	// > SDKs for various programming languages also provide the `CreateDocParserJobAdvance` method, which allows you to pass a local file stream (such as InputStream in Java) directly without uploading the file to OSS and constructing a FileUrl in advance. When you use the Advance method, replace the `FileUrl` parameter (URL string) with the `FileUrlObject` parameter (file stream) and keep other request parameters unchanged. The SDK automatically performs the following operations:
 	//
-	// >1. Obtains temporary OSS upload credentials.
+	// > 1. Obtains temporary OSS upload credentials.
 	//
-	// >2. Uploads the file stream directly to OSS.
+	// > 2. Uploads the file stream directly to OSS.
 	//
-	// >3. Calls the CreateDocParserJob operation using the generated OSS URL.
+	// > 3. Calls the CreateDocParserJob operation by using the generated OSS URL.
 	//
 	// example:
 	//
 	// https://xxx.oss-cn-beijing.aliyuncs.com/document.pdf?Expires=xxx&OSSAccessKeyId=xxx&Signature=xxx
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The frame output result.
+	// Specifies whether to output the original images of keyframes to OSS. This parameter takes effect only for videos. Default value: true. The media references in the result are oss:// protocol addresses, and the caller must have OSS permissions to read them.
+	//
+	// example:
+	//
+	// true
 	FrameOutput *bool `json:"FrameOutput,omitempty" xml:"FrameOutput,omitempty"`
-	// The global summary information.
+	// Specifies whether to generate a global summary for the entire media. Default value: true.
+	//
+	// example:
+	//
+	// true
 	GlobalSummary *bool `json:"GlobalSummary,omitempty" xml:"GlobalSummary,omitempty"`
-	// The image processing format.
+	// The image handling mode. Valid values: ignore, base64, placeholder, and oss. Default value: oss. If set to oss, image links are returned in the body text.
+	//
+	// example:
+	//
+	// ignore
 	ImageMode *string `json:"ImageMode,omitempty" xml:"ImageMode,omitempty"`
-	// The image understanding and analysis setting.
+	// Specifies whether to generate image understanding text. Valid values: full and none. Default value: full.
+	//
+	// example:
+	//
+	// full
 	ImageUnderstanding *string `json:"ImageUnderstanding,omitempty" xml:"ImageUnderstanding,omitempty"`
-	// The media chunk interval in seconds.
+	// The media chunking interval in seconds. This parameter takes effect only for videos and when the chunking strategy is set to interval. Valid values: 5 to 600.
+	//
+	// example:
+	//
+	// 200
 	MediaChunkIntervalSeconds *int32 `json:"MediaChunkIntervalSeconds,omitempty" xml:"MediaChunkIntervalSeconds,omitempty"`
-	// The media chunk strategy.
+	// The chunking strategy. This parameter takes effect only for videos. Valid values: scene and interval. Default value: scene, which chunks the video by scene. If set to interval, the video is chunked by fixed intervals.
+	//
+	// example:
+	//
+	// scene
 	MediaChunkStrategy *string `json:"MediaChunkStrategy,omitempty" xml:"MediaChunkStrategy,omitempty"`
-	// The number of media frames per minute.
+	// The number of media frames extracted per minute. This parameter takes effect only for videos. Valid values: 0 to 30. A value of 0 indicates that the dynamic frame budget is disabled.
+	//
+	// example:
+	//
+	// 200
 	MediaFramesPerMinute *float64 `json:"MediaFramesPerMinute,omitempty" xml:"MediaFramesPerMinute,omitempty"`
-	// The maximum frame budget for media.
+	// The maximum media frame budget. This parameter takes effect only for videos. It specifies the upper limit of the frame budget. Valid values: 1 to 600. If the lower limit is also set, the lower limit must not be greater than the upper limit.
+	//
+	// example:
+	//
+	// 200
 	MediaMaxFrameBudget *int32 `json:"MediaMaxFrameBudget,omitempty" xml:"MediaMaxFrameBudget,omitempty"`
-	// The minimum frame budget for media.
+	// The minimum media frame budget. This parameter takes effect only for videos. It specifies the lower limit of the frame budget. Valid values: 1 to 600. If the upper limit is also set, the lower limit must not be greater than the upper limit.
+	//
+	// example:
+	//
+	// 100
 	MediaMinFrameBudget *int32 `json:"MediaMinFrameBudget,omitempty" xml:"MediaMinFrameBudget,omitempty"`
 	// The OSS file URL.
+	//
+	// example:
+	//
+	// https://pop-file-upload-cn-beijing.oss-cn-beijing.aliyuncs.com/121852226****
 	OssFileUrl *string `json:"OssFileUrl,omitempty" xml:"OssFileUrl,omitempty"`
 	// The output format of the parsing result. Valid values:
 	//
@@ -150,7 +214,11 @@ type CreateDocParserJobRequest struct {
 	//
 	// markdown
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	// The parsing scene.
+	// The parsing scene. This parameter takes effect only for document and image parsing. Valid values: general and formula_ocr. Default value: general. If set to formula_ocr, full-page OCR is performed and formulas are output in LaTeX format.
+	//
+	// example:
+	//
+	// formula_ocr
 	ParseScene *string `json:"ParseScene,omitempty" xml:"ParseScene,omitempty"`
 	// The region ID.
 	//
@@ -160,11 +228,23 @@ type CreateDocParserJobRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The response mode.
+	// The response mode. Valid values: async and sync. Default value: async, which returns only the JobId and requires the caller to poll for the result. If set to sync, the parsing result is returned synchronously within the same request. For more information, see the response description below.
+	//
+	// example:
+	//
+	// sync
 	ResponseMode *string `json:"ResponseMode,omitempty" xml:"ResponseMode,omitempty"`
-	// The result type.
+	// The result return method. Valid values: content and url. Default value: content, which returns the Markdown body text. If set to url, a temporary OSS download URL is returned.
+	//
+	// example:
+	//
+	// content
 	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
-	// The table processing format.
+	// The table format. Valid values: html and markdown. Default value: markdown.
+	//
+	// example:
+	//
+	// html
 	TableFormat *string `json:"TableFormat,omitempty" xml:"TableFormat,omitempty"`
 }
 
@@ -194,6 +274,10 @@ func (s *CreateDocParserJobRequest) GetAudioWindowSeconds() *int32 {
 
 func (s *CreateDocParserJobRequest) GetChunkSummary() *bool {
 	return s.ChunkSummary
+}
+
+func (s *CreateDocParserJobRequest) GetDocumentStructure() *bool {
+	return s.DocumentStructure
 }
 
 func (s *CreateDocParserJobRequest) GetFileFormat() *string {
@@ -294,6 +378,11 @@ func (s *CreateDocParserJobRequest) SetAudioWindowSeconds(v int32) *CreateDocPar
 
 func (s *CreateDocParserJobRequest) SetChunkSummary(v bool) *CreateDocParserJobRequest {
 	s.ChunkSummary = &v
+	return s
+}
+
+func (s *CreateDocParserJobRequest) SetDocumentStructure(v bool) *CreateDocParserJobRequest {
+	s.DocumentStructure = &v
 	return s
 }
 

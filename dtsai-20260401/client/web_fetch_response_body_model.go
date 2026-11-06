@@ -32,7 +32,7 @@ type iWebFetchResponseBody interface {
 }
 
 type WebFetchResponseBody struct {
-	// The content of the web page.
+	// The web page content.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type WebFetchResponseBody struct {
 	//
 	// - **html**: HTML format.
 	//
-	// - **text**: Plain text format.
+	// - **text**: plain text format.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type WebFetchResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The title of the web page.
+	// The web page title.
 	//
 	// example:
 	//
@@ -94,15 +94,15 @@ type WebFetchResponseBody struct {
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// The URL classification result. Valid values:
 	//
-	// - **static_html**: A static HTML page.
+	// - **static_html**: Static HTML page.
 	//
-	// - **dynamic_js**: A single-page application (SPA) page that requires JavaScript rendering.
+	// - **dynamic_js**: Single-page application (SPA) page that requires JavaScript rendering.
 	//
-	// - **audio**: An audio file.
+	// - **audio**: Audio file.
 	//
-	// - **video**: A video file.
+	// - **video**: Video file.
 	//
-	// - **document**: A document file (PDF, Word, PPT, or Excel).
+	// - **document**: Document file (PDF, Word, PPT, or Excel).
 	//
 	// - **unknown**: Unrecognizable.
 	//
