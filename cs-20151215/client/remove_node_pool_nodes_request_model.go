@@ -13,6 +13,8 @@ type iRemoveNodePoolNodesRequest interface {
 	GetConcurrency() *bool
 	SetDrainNode(v bool) *RemoveNodePoolNodesRequest
 	GetDrainNode() *bool
+	SetDrainTimeoutSeconds(v int64) *RemoveNodePoolNodesRequest
+	GetDrainTimeoutSeconds() *int64
 	SetInstanceIds(v []*string) *RemoveNodePoolNodesRequest
 	GetInstanceIds() []*string
 	SetNodes(v []*string) *RemoveNodePoolNodesRequest
@@ -22,11 +24,11 @@ type iRemoveNodePoolNodesRequest interface {
 }
 
 type RemoveNodePoolNodesRequest struct {
-	// Specifies whether to remove the nodes concurrently. Valid values:
+	// Specifies whether to remove nodes concurrently. Valid values:
 	//
-	// - true: removes the nodes from the scaling group concurrently.
+	// - true: Nodes are removed from the scaling group concurrently.
 	//
-	// - false: removes the nodes from the scaling group sequentially.
+	// - false: Nodes are removed from the scaling group sequentially.
 	//
 	// Default value: false.
 	//
@@ -36,31 +38,37 @@ type RemoveNodePoolNodesRequest struct {
 	Concurrency *bool `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
 	// Specifies whether to drain the nodes. Valid values:
 	//
-	// - true: drains the nodes.
+	// - true: Drain the nodes.
 	//
-	// - false: does not drain the nodes.
+	// - false: Do not drain the nodes.
 	//
 	// example:
 	//
 	// true
 	DrainNode *bool `json:"drain_node,omitempty" xml:"drain_node,omitempty"`
-	// The list of instances to remove.
+	// The drain timeout period in seconds. Valid values: (0, 1800]. Default value: 1800. This parameter takes effect only when drain_node is set to true.
+	//
+	// example:
+	//
+	// 600
+	DrainTimeoutSeconds *int64 `json:"drain_timeout_seconds,omitempty" xml:"drain_timeout_seconds,omitempty"`
+	// The list of instances to be removed.
 	InstanceIds []*string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// **[Deprecated]**
 	//
-	// The list of nodes to remove.
+	// The list of nodes to be removed.
 	//
 	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// Specifies whether automatic release the nodes. Valid values:
 	//
-	// - true: releases the nodes.
+	// - true: Release the nodes.
 	//
-	// - false: does not release the nodes.
+	// - false: Do not release the nodes.
 	//
-	// Subscription nodes are not automatically released when you remove them. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1) and then release them in the ECS console.
+	// Removing nodes does not automatically release subscription nodes. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1), and then log on to the ECS console automatic release them.
 	//
 	// example:
 	//
@@ -84,6 +92,10 @@ func (s *RemoveNodePoolNodesRequest) GetDrainNode() *bool {
 	return s.DrainNode
 }
 
+func (s *RemoveNodePoolNodesRequest) GetDrainTimeoutSeconds() *int64 {
+	return s.DrainTimeoutSeconds
+}
+
 func (s *RemoveNodePoolNodesRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -103,6 +115,11 @@ func (s *RemoveNodePoolNodesRequest) SetConcurrency(v bool) *RemoveNodePoolNodes
 
 func (s *RemoveNodePoolNodesRequest) SetDrainNode(v bool) *RemoveNodePoolNodesRequest {
 	s.DrainNode = &v
+	return s
+}
+
+func (s *RemoveNodePoolNodesRequest) SetDrainTimeoutSeconds(v int64) *RemoveNodePoolNodesRequest {
+	s.DrainTimeoutSeconds = &v
 	return s
 }
 

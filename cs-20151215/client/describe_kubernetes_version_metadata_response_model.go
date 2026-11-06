@@ -90,19 +90,21 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// true
 	Creatable *bool `json:"creatable,omitempty" xml:"creatable,omitempty"`
-	// The expiration time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
+	// The expiration time of the Kubernetes version, in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
 	// 2026-01-30T00:00:00Z
 	ExpirationDate *string `json:"expiration_date,omitempty" xml:"expiration_date,omitempty"`
+	// The expiration time of the extended support for the Kubernetes version. An empty value indicates that extended support is not provided for this version.
+	//
 	// example:
 	//
 	// 2026-04-30T00:00:00Z
 	ExtendedExpirationDate *string `json:"extended_expiration_date,omitempty" xml:"extended_expiration_date,omitempty"`
 	// The list of system images.
 	Images []*DescribeKubernetesVersionMetadataResponseBodyImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// The metadata of the Kubernetes version.
+	// The metadata information of the Kubernetes version.
 	//
 	// example:
 	//
@@ -116,7 +118,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// }
 	MetaData map[string]interface{} `json:"meta_data,omitempty" xml:"meta_data,omitempty"`
-	// The release time of the Kubernetes version. The time is in ISO 8601 format and includes time zone information.
+	// The release time of the Kubernetes version, in ISO 8601 format with time zone information.
 	//
 	// example:
 	//
@@ -124,13 +126,21 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	ReleaseDate *string `json:"release_date,omitempty" xml:"release_date,omitempty"`
 	// The container runtime configurations.
 	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
+	// The support policy required to obtain this patch version. The value is case-sensitive. Valid values:
+	//
+	// - Standard: regular patch versions
+	//
+	// - Extended: patch versions exclusive to the extended support period, which include backported CVE and critical bug fixes. Only clusters with extended support enabled can be upgraded to these versions.
+	//
+	// This field always has a value. It shares the same name and value range as the support_policy of the cluster. You can directly compare the policy enabled for the cluster with the policy required for this version.
+	//
 	// example:
 	//
 	// Extended
 	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The list of upgradable versions.
 	UpgradableVersions []*string `json:"upgradable_versions,omitempty" xml:"upgradable_versions,omitempty" type:"Repeated"`
-	// The Kubernetes version released by ACK. For more information about versions, see [Overview of Kubernetes version releases](https://help.aliyun.com/document_detail/185269.html).
+	// The Kubernetes version released by ACK. For more version information, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
@@ -268,39 +278,39 @@ func (s *DescribeKubernetesVersionMetadataResponseBody) Validate() error {
 }
 
 type DescribeKubernetesVersionMetadataResponseBodyImages struct {
-	// The image architecture.
+	// The architecture of the image.
 	//
 	// example:
 	//
 	// x86_64
 	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
-	// The image category. Some valid values:
+	// The category of the image. Valid values:
 	//
-	// - `system`: public images.
+	// - `system`: public images
 	//
-	// - `self`: your custom images.
+	// - `self`: custom images
 	//
-	// - `others`: public images from other users.
+	// - `others`: public images from other users
 	//
-	// - `marketplace`: Alibaba Cloud Marketplace images.
+	// - `marketplace`: marketplace images
 	//
 	// example:
 	//
 	// system
 	ImageCategory *string `json:"image_category,omitempty" xml:"image_category,omitempty"`
-	// The image ID.
+	// The ID of the image.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_alibase_20241218.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The image name.
+	// The name of the image.
 	//
 	// example:
 	//
 	// Alibaba Cloud Linux 3.2104
 	ImageName *string `json:"image_name,omitempty" xml:"image_name,omitempty"`
-	// The operating system distribution type. Use this field to specify the operating system for nodes. Valid values:
+	// The operating system distribution type. Use this field to specify the node operating system. Valid values:
 	//
 	// - `CentOS`
 	//
@@ -324,7 +334,7 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The operating system type. Examples:
+	// The operating system type. Valid values:
 	//
 	// - `Windows`
 	//

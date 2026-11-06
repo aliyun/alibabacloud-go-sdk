@@ -32,7 +32,7 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// - `Kubernetes`: ACK dedicated cluster.
 	//
-	// - `ManagedKubernetes`: ACK managed cluster, including ACK Pro clusters, ACK basic clusters, ACK Serverless Pro clusters, ACK Serverless basic clusters, ACK Edge Pro clusters, and ACK Edge basic clusters.
+	// - `ManagedKubernetes`: ACK managed cluster, including ACK Pro clusters, ACK Basic clusters, ACK Serverless Pro clusters, ACK Serverless Basic clusters, ACK Edge Pro clusters, and ACK Edge Basic clusters.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// Kubernetes
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The Kubernetes version of the cluster. This version is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
+	// The Kubernetes version of the cluster, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
 	//
 	// For more information about the Kubernetes versions supported by ACK, see [Overview of Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
 	//
@@ -50,23 +50,23 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	KubernetesVersion *string `json:"KubernetesVersion,omitempty" xml:"KubernetesVersion,omitempty"`
 	// The query mode. Valid values:
 	//
-	// - `supported`: Supported versions.
+	// - `supported`: queries supported versions.
 	//
-	// - `creatable`: Versions available for cluster creation.
+	// - `creatable`: queries versions available for cluster creation.
 	//
-	// If you specify KubernetesVersion, the system ignores the query mode.
+	// If you specify KubernetesVersion, the query mode is ignored.
 	//
-	// If you do not specify a query mode, the system returns versions available for cluster creation by default.
+	// If you do not specify a query mode, versions available for cluster creation are returned by default.
 	//
 	// example:
 	//
 	// supported
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The cluster profile. Valid values:
+	// The cluster profile used to differentiate cluster scenarios. Valid values:
 	//
-	// - `Default`: cluster for non-edge scenarios.
+	// - `Default`: non-edge cluster.
 	//
-	// - `Edge`: cluster for edge scenarios.
+	// - `Edge`: edge cluster.
 	//
 	// - `Serverless`: ASK cluster.
 	//
@@ -78,9 +78,9 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// Specifies whether to query the upgradable versions of the cluster version. This parameter takes effect only when the KubernetesVersion parameter is specified. Valid values:
 	//
-	// - true: Queries upgradable versions.
+	// - true: queries upgradable versions.
 	//
-	// - false: Does not query upgradable versions.
+	// - false: does not query upgradable versions.
 	//
 	// example:
 	//
@@ -94,11 +94,21 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The version support policy. The value is case-sensitive. Valid values:
+	//
+	// - Standard: standard support. This is the default value.
+	//
+	// - Extended: extended support.
+	//
+	// If you set this parameter to Extended: when Mode is set to `supported`, versions in the extended support period are additionally returned; when Mode is set to `creatable`, the latest extended support patch version of the major version in the extended support period is additionally returned; upgradable_versions returns the extended support patch versions of the major version.
+	//
+	// Extended support applies only to ACK Pro managed clusters (where ClusterSpec is set to `ack.pro.*` and Profile is set to `Default`). Other cluster types (ACK Standard, ACS, ACK Edge managed, and ACK dedicated clusters) do not support extended support. If you specify a version in the extended support period to create or upgrade these clusters, the request will be rejected.
+	//
 	// example:
 	//
 	// Extended
 	SupportPolicy *string `json:"SupportPolicy,omitempty" xml:"SupportPolicy,omitempty"`
-	// The runtime type. You can specify a runtime type to filter system images supported by the runtime. Valid values:
+	// The runtime type. You can specify a runtime type to filter the system images supported by the runtime. Valid values:
 	//
 	// - `docker`: Docker runtime.
 	//
@@ -106,9 +116,9 @@ type DescribeKubernetesVersionMetadataRequest struct {
 	//
 	// - `Sandboxed-Container.runv`: sandboxed container.
 	//
-	// If you specify a runtime type, the system returns the image versions supported by the specified runtime.
+	// If you specify a runtime type, the image versions supported by the specified runtime are returned.
 	//
-	// If you do not specify a runtime type, the system returns all images by default.
+	// If you do not specify a runtime type, all images are returned by default.
 	//
 	// example:
 	//

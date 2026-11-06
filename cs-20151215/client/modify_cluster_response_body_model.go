@@ -24,13 +24,13 @@ type ModifyClusterResponseBody struct {
 	//
 	// cb95aa626a47740afbf6aa09****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

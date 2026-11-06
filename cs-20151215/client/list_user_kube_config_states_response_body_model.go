@@ -18,7 +18,7 @@ type iListUserKubeConfigStatesResponseBody interface {
 type ListUserKubeConfigStatesResponseBody struct {
 	// The pagination parameters.
 	Page *ListUserKubeConfigStatesResponseBodyPage `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
-	// The KubeConfig status details of the user.
+	// The KubeConfig status details for the user.
 	States []*ListUserKubeConfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
 }
 
@@ -79,7 +79,7 @@ type ListUserKubeConfigStatesResponseBodyPage struct {
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ func (s *ListUserKubeConfigStatesResponseBodyPage) Validate() error {
 }
 
 type ListUserKubeConfigStatesResponseBodyStates struct {
-	// The expiration time of the KubeConfig certificate. The time is displayed in UTC and follows the RFC 3339 standard.
+	// The expiration time of the KubeConfig certificate. The time is in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListUserKubeConfigStatesResponseBodyStates struct {
 	//
 	// - Unknown: The status is unknown.
 	//
-	// - Removed: The certificate has been removed (the certificate has an issuance record).
+	// - Removed: The certificate has been removed, but an issuance record exists.
 	//
 	// example:
 	//
