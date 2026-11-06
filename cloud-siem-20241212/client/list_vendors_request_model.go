@@ -28,67 +28,16 @@ type iListVendorsRequest interface {
 }
 
 type ListVendorsRequest struct {
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// Note: Although the schema marks this parameter as optional, it is required when you call this operation. If you do not specify this parameter, the API returns a 400 error.
-	//
-	// example:
-	//
-	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return in this request.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
-	//
-	// example:
-	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the threat analysis data management center resides. Specify the management center region based on the region of your assets. Valid values:
-	//
-	// - cn-hangzhou: The assets reside in the Chinese mainland.
-	//
-	// - ap-southeast-1: The assets reside outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator uses to switch to the perspective of another member.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The list of vendors.
-	VendorIds []*string `json:"VendorIds,omitempty" xml:"VendorIds,omitempty" type:"Repeated"`
-	// The vendor name.
-	//
-	// example:
-	//
-	// 111
-	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
-	// The vendor type. Valid values:
-	//
-	// - preset
-	//
-	// - custom
-	//
-	// example:
-	//
-	// preset
-	VendorType *string `json:"VendorType,omitempty" xml:"VendorType,omitempty"`
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor    *int64    `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	VendorIds  []*string `json:"VendorIds,omitempty" xml:"VendorIds,omitempty" type:"Repeated"`
+	VendorName *string   `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	VendorType *string   `json:"VendorType,omitempty" xml:"VendorType,omitempty"`
 }
 
 func (s ListVendorsRequest) String() string {

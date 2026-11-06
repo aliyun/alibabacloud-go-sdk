@@ -30,73 +30,17 @@ type iListProductsRequest interface {
 }
 
 type ListProductsRequest struct {
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// Note: This parameter is required in actual calls. If this parameter is not specified, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
-	//
-	// example:
-	//
-	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return in this request.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
-	//
-	// example:
-	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of product IDs.
-	ProductIds []*string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty" type:"Repeated"`
-	// The product name.
-	//
-	// example:
-	//
-	// sas
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The product type. Valid values:
-	//
-	// - preset
-	//
-	// - custom
-	//
-	// example:
-	//
-	// preset
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-	//
-	// - cn-hangzhou: The assets are located in the Chinese mainland or Hong Kong (China).
-	//
-	// - ap-southeast-1: The assets are located outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The vendor ID.
-	//
-	// example:
-	//
-	// vd-qlsw5eocx94w9
-	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	MaxResults  *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProductIds  []*string `json:"ProductIds,omitempty" xml:"ProductIds,omitempty" type:"Repeated"`
+	ProductName *string   `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionId    *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor     *int64    `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	VendorId    *string   `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
 func (s ListProductsRequest) String() string {

@@ -14,7 +14,7 @@ type iCreateAutoDisposeConfigResponseBody interface {
 }
 
 type CreateAutoDisposeConfigResponseBody struct {
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

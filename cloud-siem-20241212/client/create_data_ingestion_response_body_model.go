@@ -16,18 +16,8 @@ type iCreateDataIngestionResponseBody interface {
 }
 
 type CreateDataIngestionResponseBody struct {
-	// The data ingestion ID.
-	//
-	// example:
-	//
-	// di-yxtm3l2rwa7fr5uvxtc7
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateDataIngestionResponseBody) String() string {

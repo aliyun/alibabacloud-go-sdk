@@ -52,7 +52,7 @@ type iListDataSourcesRequest interface {
 }
 
 type ListDataSourcesRequest struct {
-	// The data source origin. Valid values:
+	// The source of the data source. Valid values:
 	//
 	// - center
 	//
@@ -64,13 +64,13 @@ type ListDataSourcesRequest struct {
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
 	// The list of data source IDs.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
-	// The data source name.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// alibaba_cloud_waf_alert_log
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The data source status. Valid values:
+	// The status of the data source. Valid values:
 	//
 	// - unconfigured
 	//
@@ -82,7 +82,7 @@ type ListDataSourcesRequest struct {
 	//
 	// unconfigured
 	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
-	// The Logstore status. Valid values:
+	// The status of the Logstore. Valid values:
 	//
 	// - normal
 	//
@@ -94,49 +94,49 @@ type ListDataSourcesRequest struct {
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
 	// The list of data source template IDs.
 	DataSourceTemplateIds []*string `json:"DataSourceTemplateIds,omitempty" xml:"DataSourceTemplateIds,omitempty" type:"Repeated"`
-	// The data source type. Valid values:
+	// The type of the data source. Valid values:
 	//
-	//  - preset
+	// - preset
 	//
-	//  - custom
+	// - custom
 	//
 	// example:
 	//
 	// custom
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
-	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass a language code.
+	// Note: This parameter is required in actual API calls. If you do not specify this parameter, the service returns a 400 error "The specified Lang can not be empty.". Explicitly specify the language code.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The log storage region ID.
+	// The ID of the log storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service Logstore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// audit-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The list of data ingestion user IDs.
+	// The list of user IDs for data ingestion.
 	LogUserIds []*int64 `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of results to return in the current request.
 	//
 	// if can be null:
 	// true
@@ -145,7 +145,7 @@ type ListDataSourcesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The token used to retrieve the next page of results. If this is the first request or no subsequent requests are required, leave this parameter empty. If a subsequent request is required, set this parameter to the value of NextToken returned in the previous API call.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListDataSourcesRequest struct {
 	//
 	// UpdateTime
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -179,17 +179,17 @@ type ListDataSourcesRequest struct {
 	//
 	// 5
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The assets are located in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: The assets are located outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

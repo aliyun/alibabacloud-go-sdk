@@ -22,7 +22,7 @@ type iDeleteNormalizationSchemaRequest interface {
 }
 
 type DeleteNormalizationSchemaRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -32,7 +32,7 @@ type DeleteNormalizationSchemaRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The normalization schema ID.
+	// The ID of the normalization schema.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type DeleteNormalizationSchemaRequest struct {
 	//
 	// PROCESS_QUERY_DNS_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The normalization schema type. Valid values:
+	// The type of the normalization schema. Valid values:
 	//
-	// - log: log.
+	// - log: Log.
 	//
-	// - entity: entity.
+	// - entity: Entity.
 	//
 	// This parameter is required.
 	//
@@ -52,17 +52,17 @@ type DeleteNormalizationSchemaRequest struct {
 	//
 	// log
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
-	// The region where the threat analysis data management center resides. Specify the management center based on the region where your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member to which the administrator switches the view.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

@@ -38,96 +38,19 @@ type iUpdateDataSourceRequest interface {
 }
 
 type UpdateDataSourceRequest struct {
-	// The data source. Valid values:
-	//
-	// - center
-	//
-	// - custom
-	//
-	// example:
-	//
-	// custom
-	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// The data source ID. This parameter is required and specifies the ID of the data source to update. If it is not provided, the API returns a 400 error.
-	//
-	// example:
-	//
-	// ds-014frtpy28m5ct2eoyo1
-	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source name.
-	//
-	// example:
-	//
-	// ActiontrailLog
-	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// Specifies whether to automatically discover new Logstores.
-	//
-	// example:
-	//
-	// true
-	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
-	// The list of Simple Log Service Logstores.
-	DataSourceStores []*UpdateDataSourceRequestDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
-	// The language of the response messages. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English. This parameter is required. If it is not provided, the service returns a 400 error.
-	//
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Simple Log Service project name.
-	//
-	// example:
-	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
-	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The ID of the log storage region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service Logstore name.
-	//
-	// example:
-	//
-	// cn-rds-sqlaudit
-	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The user ID for data ingestion.
-	//
-	// example:
-	//
-	// 173326*******
-	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The field used to sort the rule list. Valid values:
-	//
-	// - GmtModified: Sort by modification time.
-	//
-	// - Id: Sort by rule ID (default).
-	//
-	// example:
-	//
-	// Id
-	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The region where the data management center of the threat analysis service is located. Select the management center region based on the region where your assets reside. Valid values:
-	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
-	//
-	// - ap-southeast-1: Assets are located outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member account that the administrator switches to.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	DataSourceFrom             *string                                    `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
+	DataSourceId               *string                                    `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceName             *string                                    `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	DataSourceRecognizeEnabled *bool                                      `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
+	DataSourceStores           []*UpdateDataSourceRequestDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
+	Lang                       *string                                    `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	LogProjectName             *string                                    `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	LogRegionId                *string                                    `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	LogStoreName               *string                                    `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	LogUserId                  *int64                                     `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
+	OrderField                 *string                                    `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	RegionId                   *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor                    *int64                                     `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s UpdateDataSourceRequest) String() string {
@@ -269,40 +192,11 @@ func (s *UpdateDataSourceRequest) Validate() error {
 }
 
 type UpdateDataSourceRequestDataSourceStores struct {
-	// The data source. Valid values:
-	//
-	// - center
-	//
-	// - custom
-	//
-	// example:
-	//
-	// custom
 	DataSourceStoreFrom *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
-	// The log storage ID.
-	//
-	// example:
-	//
-	// 1
-	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
-	// The Simple Log Service project name.
-	//
-	// example:
-	//
-	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
-	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The ID of the log storage region.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service Logstore name.
-	//
-	// example:
-	//
-	// cn-rds-sqlaudit
-	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	DataSourceStoreId   *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
+	LogProjectName      *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
+	LogRegionId         *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	LogStoreName        *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 }
 
 func (s UpdateDataSourceRequestDataSourceStores) String() string {

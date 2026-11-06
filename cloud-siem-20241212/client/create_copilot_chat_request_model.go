@@ -44,7 +44,7 @@ type iCreateCopilotChatRequest interface {
 }
 
 type CreateCopilotChatRequest struct {
-	// The client conversation ID.
+	// The client session ID.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CreateCopilotChatRequest struct {
 	//
 	// 366932fb-9a83-4a2d-94dd-c925b35f****
 	ClientMessageId *string `json:"ClientMessageId,omitempty" xml:"ClientMessageId,omitempty"`
-	// The conversation ID.
+	// The session ID.
 	//
 	// example:
 	//
 	// 54b6c969-4b75-47be-9f43-71f88aeb****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The conversation creation configuration.
+	// The session creation configuration.
 	CreateConversation *CreateCopilotChatRequestCreateConversation `json:"CreateConversation,omitempty" xml:"CreateConversation,omitempty" type:"Struct"`
-	// The language of the returned messages. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -98,29 +98,29 @@ type CreateCopilotChatRequest struct {
 	//
 	// project-incident-****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region of the data management center for threat analysis. Specify the management center based on the region where your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
+	// - ap-southeast-1: Assets reside outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the conversation turn to replace.
+	// The ID of the replaced conversation turn.
 	//
 	// example:
 	//
 	// dc18b894-19a3-45ee-8768-a59478e0****
 	ReplaceTurnId *string `json:"ReplaceTurnId,omitempty" xml:"ReplaceTurnId,omitempty"`
-	// The route target identifier.
+	// The target route identifier for execution.
 	//
 	// example:
 	//
 	// security-agent-route-****
 	RouteTarget *string `json:"RouteTarget,omitempty" xml:"RouteTarget,omitempty"`
-	// The request source.
+	// The source of the request.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateCopilotChatRequest struct {
 	//
 	// enabled
 	ThinkingMode *string `json:"ThinkingMode,omitempty" xml:"ThinkingMode,omitempty"`
-	// The trace ID, which is used to query specific call information.
+	// The trace ID used to accurately query call information.
 	//
 	// example:
 	//
@@ -341,11 +341,11 @@ type CreateCopilotChatRequestCreateConversation struct {
 	//
 	// enabled
 	ThinkingMode *string `json:"ThinkingMode,omitempty" xml:"ThinkingMode,omitempty"`
-	// The conversation title.
+	// The session title.
 	//
 	// example:
 	//
-	// Security incident investigation
+	// Security event investigation
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -407,13 +407,13 @@ func (s *CreateCopilotChatRequestCreateConversation) Validate() error {
 }
 
 type CreateCopilotChatRequestMessages struct {
-	// The message content.
+	// The content of the message.
 	//
 	// example:
 	//
-	// Investigate abnormal login activities in the last hour
+	// Investigate the abnormal logon activities in the past hour
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The message role.
+	// The role of the message.
 	//
 	// example:
 	//

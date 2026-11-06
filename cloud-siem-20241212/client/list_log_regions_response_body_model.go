@@ -16,7 +16,7 @@ type iListLogRegionsResponseBody interface {
 }
 
 type ListLogRegionsResponseBody struct {
-	// A list of log storage region IDs.
+	// The list of log storage region IDs.
 	LogRegions []*string `json:"LogRegions,omitempty" xml:"LogRegions,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//

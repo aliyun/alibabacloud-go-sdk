@@ -22,35 +22,13 @@ type iListVendorsResponseBody interface {
 }
 
 type ListVendorsResponseBody struct {
-	// The maximum number of entries to return in this request.
-	//
 	// if can be null:
 	// true
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
-	//
-	// example:
-	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
-	//
-	// example:
-	//
-	// 57
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The vendors.
-	Vendors []*ListVendorsResponseBodyVendors `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
+	MaxResults *int32                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vendors    []*ListVendorsResponseBodyVendors `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
 func (s ListVendorsResponseBody) String() string {
@@ -120,39 +98,10 @@ func (s *ListVendorsResponseBody) Validate() error {
 }
 
 type ListVendorsResponseBodyVendors struct {
-	// The creation time. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1733269771123
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The update time. The value is a UNIX timestamp. Unit: milliseconds.
-	//
-	// example:
-	//
-	// 1733269771123
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The vendor ID.
-	//
-	// example:
-	//
-	// vd-qlsw5eocx94w9
-	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
-	// The vendor name.
-	//
-	// example:
-	//
-	// 111
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VendorId   *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
-	// The vendor type. Valid values:
-	//
-	// - preset
-	//
-	// - custom
-	//
-	// example:
-	//
-	// preset
 	VendorType *string `json:"VendorType,omitempty" xml:"VendorType,omitempty"`
 }
 

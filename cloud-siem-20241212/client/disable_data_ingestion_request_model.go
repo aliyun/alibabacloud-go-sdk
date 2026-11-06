@@ -20,40 +20,10 @@ type iDisableDataIngestionRequest interface {
 }
 
 type DisableDataIngestionRequest struct {
-	// The data ingestion ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas_netstat_ingestion_173326*******
 	DataIngestionId *string `json:"DataIngestionId,omitempty" xml:"DataIngestionId,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// Note: This parameter is actually required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
-	//
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region in which the threat analysis data management center resides. Specify this parameter based on the region where your assets reside. Valid values:
-	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
-	//
-	// - ap-southeast-1: Your assets reside outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor         *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s DisableDataIngestionRequest) String() string {

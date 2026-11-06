@@ -18,7 +18,7 @@ type iExecuteAutoDisposeRecordsRequest interface {
 }
 
 type ExecuteAutoDisposeRecordsRequest struct {
-  // The language of the response. Valid values:
+  // The language of the response message. Valid values:
   // 
   // - **zh*	- (default): Chinese.
   // 
@@ -94,7 +94,7 @@ func (s *ExecuteAutoDisposeRecordsRequest) Validate() error {
 }
 
 type ExecuteAutoDisposeRecordsRequestSelectedEntityList struct {
-  // The unique ID of the investigation record.
+  // The unique ID of the analysis record.
   // 
   // example:
   // 
@@ -139,7 +139,7 @@ func (s *ExecuteAutoDisposeRecordsRequestSelectedEntityList) Validate() error {
 }
 
 type ExecuteAutoDisposeRecordsRequestUnSelectedEntityList struct {
-  // The unique ID of the investigation record.
+  // The unique ID of the analysis record.
   // 
   // example:
   // 

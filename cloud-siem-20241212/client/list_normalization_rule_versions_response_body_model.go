@@ -22,32 +22,11 @@ type iListNormalizationRuleVersionsResponseBody interface {
 }
 
 type ListNormalizationRuleVersionsResponseBody struct {
-	// The maximum number of entries to return.
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
-	//
-	// example:
-	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of normalization rule versions.
+	MaxResults                *int32                                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                 *string                                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	NormalizationRuleVersions []*ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions `json:"NormalizationRuleVersions,omitempty" xml:"NormalizationRuleVersions,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
-	//
-	// example:
-	//
-	// 57
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                *int32                                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListNormalizationRuleVersionsResponseBody) String() string {
@@ -117,36 +96,11 @@ func (s *ListNormalizationRuleVersionsResponseBody) Validate() error {
 }
 
 type ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions struct {
-	// The creation time.
-	//
-	// example:
-	//
-	// 1733269771123
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The normalization rule expression.
-	//
-	// example:
-	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
+	CreateTime                  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The normalization rule ID.
-	//
-	// example:
-	//
-	// nr-z0b2ssjteut85uoh9nzp
-	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The normalization rule version.
-	//
-	// example:
-	//
-	// V1
-	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 1733269771123
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	NormalizationRuleId         *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	NormalizationRuleVersion    *int32  `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	UpdateTime                  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListNormalizationRuleVersionsResponseBodyNormalizationRuleVersions) String() string {

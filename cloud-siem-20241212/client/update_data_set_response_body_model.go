@@ -14,11 +14,6 @@ type iUpdateDataSetResponseBody interface {
 }
 
 type UpdateDataSetResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// DE7E77A9-BFAD-5EAA-9B48-A96760E9DF0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

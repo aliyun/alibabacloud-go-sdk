@@ -38,7 +38,7 @@ type iCreateResponseRuleRequest interface {
 }
 
 type CreateResponseRuleRequest struct {
-	// The language of the response messages. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -48,47 +48,47 @@ type CreateResponseRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of data records to read in this request.
+	// The maximum number of data records to return in the current read operation.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the start position of the current read. Leave this parameter empty to start from the beginning.
+	// The token that marks the position from which the current read operation starts. If you leave this parameter empty, the read operation starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the data management center for Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Assets are located in regions outside China.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The action configuration of the automatic response rule.
+	// The action configuration of the automated response rule.
 	//
 	// example:
 	//
 	// [{"actionType":"doPlaybook","playbookName":"block waf IP","playbookUuid":"system_aliyun_waf_whole_process_book","disposeParam":{"period":"7d"}}]
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
-	// The action type of the automatic response rule. Valid values:
+	// The action type of the automated response rule. Valid values:
 	//
-	// - doPlaybook: runs a playbook.
+	// - doPlaybook: Executes a playbook.
 	//
-	// - changeEventStatus: updates the event status.
+	// - changeEventStatus: Updates the event status.
 	//
-	// - changeThreatLevel: updates the threat level of an event.
+	// - changeThreatLevel: Updates the threat level of the event.
 	//
-	// - addEventTag: adds a tag to an event.
+	// - addEventTag: Adds an event tag.
 	//
-	// - deleteEventTag: deletes a tag from an event.
+	// - deleteEventTag: Deletes an event tag.
 	//
-	// - alertWhitelist: adds an alert to the whitelist.
+	// - alertWhitelist: Adds an alert to the whitelist.
 	//
 	// example:
 	//
@@ -100,33 +100,37 @@ type CreateResponseRuleRequest struct {
 	//
 	// [{"left":{"value":"threat_level"},"operator":"equals","right":{"value":"suspicious"}}]
 	ResponseExecutionCondition *string `json:"ResponseExecutionCondition,omitempty" xml:"ResponseExecutionCondition,omitempty"`
-	// The name of the automatic response rule.
+	// The name of the automated response rule.
 	//
 	// example:
 	//
 	// Send Notification When Generating Urgent Incident
 	ResponseRuleName *string `json:"ResponseRuleName,omitempty" xml:"ResponseRuleName,omitempty"`
-	// The execution priority of the automatic response rule.
+	// The execution priority of the automated response rule.
 	//
 	// example:
 	//
 	// 1
 	ResponseRulePriority *string `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	// The remarks for the response rule.
+	// The remarks of the response rule.
+	//
+	// example:
+	//
+	// Automatic notification rule for high-risk alerts
 	ResponseRuleRemark *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
-	// The trigger type of the automatic response rule. Valid values:
+	// The trigger type of the automated response rule. Valid values:
 	//
-	// - event: an event occurs.
+	// - event: An event occurs.
 	//
-	// - event_update: an event is updated.
+	// - event_update: An event is updated.
 	//
-	// - alert: an alert occurs.
+	// - alert: An alert is triggered.
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The user ID that the administrator uses to switch to the view of another member account.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -134,9 +138,9 @@ type CreateResponseRuleRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//

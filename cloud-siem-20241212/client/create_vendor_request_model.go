@@ -20,39 +20,9 @@ type iCreateVendorRequest interface {
 }
 
 type CreateVendorRequest struct {
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// > Note: This parameter is required in practice. If you omit it, the API returns a 400 error: "The specified Lang can not be empty."
-	//
-	// example:
-	//
-	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
-	//
-	// - cn-hangzhou: Your assets belong to the Chinese mainland.
-	//
-	// - ap-southeast-1: Your assets belong to regions outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member account that the administrator switches to.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The vendor name.
-	//
-	// example:
-	//
-	// 111
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor    *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 

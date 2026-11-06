@@ -20,26 +20,10 @@ type iListDataIngestionTemplatesResponseBody interface {
 }
 
 type ListDataIngestionTemplatesResponseBody struct {
-	// The list of data ingestion templates.
 	DataIngestionTemplates []*ListDataIngestionTemplatesResponseBodyDataIngestionTemplates `json:"DataIngestionTemplates,omitempty" xml:"DataIngestionTemplates,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber             *string                                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *string                                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDataIngestionTemplatesResponseBody) String() string {
@@ -100,88 +84,17 @@ func (s *ListDataIngestionTemplatesResponseBody) Validate() error {
 }
 
 type ListDataIngestionTemplatesResponseBodyDataIngestionTemplates struct {
-	// The number of associated security capabilities.
-	//
-	// example:
-	//
-	// 3
-	CapacityCount *string `json:"CapacityCount,omitempty" xml:"CapacityCount,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 1733269771123
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data ingestion mode. Valid values:
-	//
-	// - realtime
-	//
-	// - scan
-	//
-	// example:
-	//
-	// realtime
-	DataIngestionMode *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
-	// The accessed state of data ingestion. Valid values:
-	//
-	// - enabled: Enabled.
-	//
-	// - disabled: Disabled.
-	//
-	// example:
-	//
-	// enabled
-	DataIngestionStatus *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
-	// The data ingestion template ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas_account_snapshot_log
-	DataIngestionTemplateId *string `json:"DataIngestionTemplateId,omitempty" xml:"DataIngestionTemplateId,omitempty"`
-	// The data source template name.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas_account_snapshot_log
-	DataIngestionTemplateName *string `json:"DataIngestionTemplateName,omitempty" xml:"DataIngestionTemplateName,omitempty"`
-	// The status of the data ingestion template. Valid values:
-	//
-	// - pending
-	//
-	// - running
-	//
-	// - success
-	//
-	// - failed
-	//
-	// example:
-	//
-	// running
+	CapacityCount               *string `json:"CapacityCount,omitempty" xml:"CapacityCount,omitempty"`
+	CreateTime                  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataIngestionMode           *string `json:"DataIngestionMode,omitempty" xml:"DataIngestionMode,omitempty"`
+	DataIngestionStatus         *string `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	DataIngestionTemplateId     *string `json:"DataIngestionTemplateId,omitempty" xml:"DataIngestionTemplateId,omitempty"`
+	DataIngestionTemplateName   *string `json:"DataIngestionTemplateName,omitempty" xml:"DataIngestionTemplateName,omitempty"`
 	DataIngestionTemplateStatus *string `json:"DataIngestionTemplateStatus,omitempty" xml:"DataIngestionTemplateStatus,omitempty"`
-	// The data source template ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas_account_snapshot_log_173326*******
-	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
-	// The normalization rule ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_actiontrail_event_rule
-	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The normalization rule name.
-	//
-	// example:
-	//
-	// normalization_rule_ke1RN
-	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 173326*******
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	DataSourceTemplateId        *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
+	NormalizationRuleId         *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	NormalizationRuleName       *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	UpdateTime                  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListDataIngestionTemplatesResponseBodyDataIngestionTemplates) String() string {

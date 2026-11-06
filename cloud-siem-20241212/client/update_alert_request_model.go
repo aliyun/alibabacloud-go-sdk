@@ -30,13 +30,13 @@ type UpdateAlertRequest struct {
 	//
 	// 1
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
-	// The alert ID associated with the event.
+	// The ID of the alert associated with the event.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -46,17 +46,17 @@ type UpdateAlertRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The data management center of the threat analysis feature. Specify this parameter based on the region where your assets reside. Valid values:
+	// The region where the data management center for threat analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: the Chinese mainland and Hong Kong (China).
+	// - cn-hangzhou: Select this value if your assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: regions outside China.
+	// - ap-southeast-1: Select this value if your assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user to which the administrator switches the view.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type UpdateAlertRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account view.
+	// - 0: the view of the current Alibaba Cloud account.
 	//
 	// - 1: the view of all accounts in the enterprise.
 	//

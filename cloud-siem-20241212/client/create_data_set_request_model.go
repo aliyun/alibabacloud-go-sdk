@@ -32,86 +32,19 @@ type iCreateDataSetRequest interface {
 }
 
 type CreateDataSetRequest struct {
-	// The description of the dataset.
-	//
-	// example:
-	//
-	// lmftest contains ip list
 	DataSetDescription *string `json:"DataSetDescription,omitempty" xml:"DataSetDescription,omitempty"`
-	// The unique key name of the dataset.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ip
 	DataSetFieldKeyName *string `json:"DataSetFieldKeyName,omitempty" xml:"DataSetFieldKeyName,omitempty"`
-	// The name of the uploaded dataset file.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// cloudsiem-dataset/1358117679873357_17433*****.csv
 	DataSetFileName *string `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
-	// The name of the dataset.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// lmftest
-	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// The status of the dataset. Valid values:
-	//
-	// - 0: Deleted.
-	//
-	// - 1: Enabled.
-	//
-	// example:
-	//
-	// 1
-	DataSetStatus *int32 `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
-	// The type of the dataset. Valid values:
-	//
-	// - custom: custom.
-	//
-	// - preset: predefined.
-	//
-	// example:
-	//
-	// custom
-	DataSetType *string `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
-	// The list of recognizers.
+	DataSetName            *string                                       `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	DataSetStatus          *int32                                        `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
+	DataSetType            *string                                       `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
 	IpWhitelistRecognizers []*CreateDataSetRequestIpWhitelistRecognizers `json:"IpWhitelistRecognizers,omitempty" xml:"IpWhitelistRecognizers,omitempty" type:"Repeated"`
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
-	//
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
-	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
-	//
-	// - ap-southeast-1: Your assets reside outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
-	//
-	// example:
-	//
-	// 113091674488****
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	Lang                   *string                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RegionId               *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor                *int64                                        `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s CreateDataSetRequest) String() string {
@@ -226,50 +159,9 @@ func (s *CreateDataSetRequest) Validate() error {
 }
 
 type CreateDataSetRequestIpWhitelistRecognizers struct {
-	// The automatic recognition status. Valid values:
-	//
-	// - enabled: Enabled.
-	//
-	// - disabled: Disabled.
-	//
-	// example:
-	//
-	// enabled
-	AutoRecognizeStatus *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
-	// The IP address type identified by the recognizer. Valid values:
-	//
-	// - sas_vulnerability_scanner_ip: IP addresses of the Security Center vulnerability web scanner.
-	//
-	// - waf_back_source_ip: back-to-origin IP addresses of Web Application Firewall (WAF).
-	//
-	// - ddos_back_source_ip: back-to-origin IP addresses of Anti-DDoS.
-	//
-	// - esa_back_source_ip: back-to-origin node IP addresses of Edge secure acceleration (ESA).
-	//
-	// - ecs_public_ip: public IP addresses of Elastic Compute Service (ECS) instances.
-	//
-	// - slb_public_ip: public IP addresses of Server Load Balancer (SLB) instances.
-	//
-	// - vpc_eip: elastic IP addresses (EIPs).
-	//
-	// - cdn_back_source_ip: back-to-origin IP addresses of content delivery network (CDN).
-	//
-	// - ga_back_source_ip: back-to-origin IP addresses of Global Accelerator (GA).
-	//
-	// example:
-	//
-	// waf_back_source_ip
+	AutoRecognizeStatus       *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
 	IpWhitelistRecognizerType *string `json:"IpWhitelistRecognizerType,omitempty" xml:"IpWhitelistRecognizerType,omitempty"`
-	// The recognition scope. Valid values:
-	//
-	// - current_account: the current account only.
-	//
-	// - rd_accounts: multi-account mode enabled.
-	//
-	// example:
-	//
-	// current_account
-	RecognizeScope *string `json:"RecognizeScope,omitempty" xml:"RecognizeScope,omitempty"`
+	RecognizeScope            *string `json:"RecognizeScope,omitempty" xml:"RecognizeScope,omitempty"`
 }
 
 func (s CreateDataSetRequestIpWhitelistRecognizers) String() string {

@@ -16,7 +16,7 @@ type iListLogRegionsRequest interface {
 }
 
 type ListLogRegionsRequest struct {
-	// The language of the response message. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -26,7 +26,7 @@ type ListLogRegionsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The user ID of the member whose perspective the administrator wants to use.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

@@ -16,14 +16,8 @@ type iGetNormalizationRuleVersionResponseBody interface {
 }
 
 type GetNormalizationRuleVersionResponseBody struct {
-	// The version of the normalization rule.
 	NormalizationRuleVersion *GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty" type:"Struct"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId                *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetNormalizationRuleVersionResponseBody) String() string {
@@ -62,110 +56,22 @@ func (s *GetNormalizationRuleVersionResponseBody) Validate() error {
 }
 
 type GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
-	// The creation time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1733269771123
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The category ID of the normalization rule.
-	//
-	// example:
-	//
-	// NETWORK_CATEGORY
-	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The description of the normalization rule.
-	//
-	// example:
-	//
-	// normalization_rule_Z57np
+	CreateTime                   *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	NormalizationCategoryId      *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
-	// The expression of the normalization rule.
-	//
-	// example:
-	//
-	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
-	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The format of the normalization rule.
-	//
-	// example:
-	//
-	// SPL
-	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
-	// The ID of the normalization rule.
-	//
-	// example:
-	//
-	// nr-z0b2ssjteut85uoh9nzp
-	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The name of the normalization rule.
-	//
-	// example:
-	//
-	// normalization_rule_Z57np
-	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The status of the normalization rule.
-	//
-	// example:
-	//
-	// started
-	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
-	// The type of the normalization rule. Valid values:
-	//
-	// - predefined: predefined normalization rule.
-	//
-	// - custom: custom normalization rule.
-	//
-	// example:
-	//
-	// predefined
-	NormalizationRuleType *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
-	// The version of the normalization rule.
-	//
-	// example:
-	//
-	// V1
-	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The version name of the normalization rule.
-	//
-	// example:
-	//
-	// v1
+	NormalizationRuleExpression  *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
+	NormalizationRuleFormat      *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
+	NormalizationRuleId          *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	NormalizationRuleName        *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
+	NormalizationRuleStatus      *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
+	NormalizationRuleType        *string `json:"NormalizationRuleType,omitempty" xml:"NormalizationRuleType,omitempty"`
+	NormalizationRuleVersion     *int32  `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
 	NormalizationRuleVersionName *string `json:"NormalizationRuleVersionName,omitempty" xml:"NormalizationRuleVersionName,omitempty"`
-	// The ID of the normalization schema.
-	//
-	// example:
-	//
-	// HTTP_ACTIVITY
-	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The ID of the product.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
-	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
-	//
-	// - ap-southeast-1: Assets are located outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The update time. The value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1733269771123
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the vendor that corresponds to the normalization rule.
-	//
-	// example:
-	//
-	// alibaba_cloud
-	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	NormalizationSchemaId        *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
+	ProductId                    *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UpdateTime                   *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VendorId                     *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
 }
 
 func (s GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion) String() string {

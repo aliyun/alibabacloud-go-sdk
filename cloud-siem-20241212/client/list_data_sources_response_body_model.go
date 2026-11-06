@@ -28,21 +28,21 @@ type iListDataSourcesResponseBody interface {
 }
 
 type ListDataSourcesResponseBody struct {
-	// The alert source products associated with events.
+	// The products from which event-associated alerts originate.
 	DataSources []*ListDataSourcesResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of results to return in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The token used to retrieve the next page of results. If this is the first request or no subsequent requests are required, leave this parameter empty. If a subsequent request is required, set this parameter to the value of NextToken returned in the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListDataSourcesResponseBody struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ func (s *ListDataSourcesResponseBody) Validate() error {
 }
 
 type ListDataSourcesResponseBodyDataSources struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data source origin. Valid values:
+	// The source of the data source. Valid values:
 	//
 	// - center
 	//
@@ -184,19 +184,19 @@ type ListDataSourcesResponseBodyDataSources struct {
 	//
 	// center
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// ds-scpfegri73oyoknbc90c
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The data source name.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// AD_LOG
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// Indicates whether automatic discovery of new Logstores is enabled.
+	// Specifies whether to automatically discover new Logstores.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ListDataSourcesResponseBodyDataSources struct {
 	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
 	// The list of data ingestion IDs associated with the data source.
 	DataSourceReferences []*ListDataSourcesResponseBodyDataSourcesDataSourceReferences `json:"DataSourceReferences,omitempty" xml:"DataSourceReferences,omitempty" type:"Repeated"`
-	// The data source status. Valid values:
+	// The status of the data source. Valid values:
 	//
 	// - unconfigured
 	//
@@ -222,49 +222,49 @@ type ListDataSourcesResponseBodyDataSources struct {
 	//
 	// unconfigured
 	DataSourceStatus *string `json:"DataSourceStatus,omitempty" xml:"DataSourceStatus,omitempty"`
-	// The list of log services.
+	// The list of Simple Log Service resources.
 	DataSourceStores []*ListDataSourcesResponseBodyDataSourcesDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
-	// The data source template ID.
+	// The ID of the data source template.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas_account_snapshot_log_173326*******
 	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
-	// The data source type. Valid values:
+	// The type of the data source. Valid values:
 	//
-	//  - preset
+	// - preset
 	//
-	//  - custom
+	// - custom
 	//
 	// example:
 	//
 	// custom
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The log storage region ID.
+	// The ID of the log storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service Logstore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// audit-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The data ingestion user ID.
+	// The user ID for data ingestion.
 	//
 	// example:
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -477,19 +477,19 @@ func (s *ListDataSourcesResponseBodyDataSourcesDataSourceReferences) Validate() 
 }
 
 type ListDataSourcesResponseBodyDataSourcesDataSourceStores struct {
-	// The check time.
+	// The check time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CheckTime *int64 `json:"CheckTime,omitempty" xml:"CheckTime,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data source origin. Valid values:
+	// The source of the data source. Valid values:
 	//
 	// - center
 	//
@@ -499,13 +499,13 @@ type ListDataSourcesResponseBodyDataSourcesDataSourceStores struct {
 	//
 	// center
 	DataSourceStoreFrom *string `json:"DataSourceStoreFrom,omitempty" xml:"DataSourceStoreFrom,omitempty"`
-	// The log store ID.
+	// The ID of the log storage.
 	//
 	// example:
 	//
 	// di_xxxx_source_1
 	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
-	// The log store status. Valid values:
+	// The status of the Logstore. Valid values:
 	//
 	// - normal
 	//
@@ -515,31 +515,31 @@ type ListDataSourcesResponseBodyDataSourcesDataSourceStores struct {
 	//
 	// normal
 	DataSourceStoreStatus *string `json:"DataSourceStoreStatus,omitempty" xml:"DataSourceStoreStatus,omitempty"`
-	// The log store status code.
+	// The status code of the Logstore.
 	//
 	// example:
 	//
 	// LogStoreNotExist
 	DataSourceStoreStatusCode *string `json:"DataSourceStoreStatusCode,omitempty" xml:"DataSourceStoreStatusCode,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The log storage region ID.
+	// The ID of the log storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service Logstore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// audit-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

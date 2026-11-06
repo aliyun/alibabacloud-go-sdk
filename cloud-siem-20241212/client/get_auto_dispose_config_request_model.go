@@ -16,7 +16,7 @@ type iGetAutoDisposeConfigRequest interface {
 }
 
 type GetAutoDisposeConfigRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -28,7 +28,7 @@ type GetAutoDisposeConfigRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The code for the cloud product.
+	// The code of the cloud service.
 	//
 	// This parameter is required.
 	//

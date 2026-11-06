@@ -38,29 +38,31 @@ type iListResponseRulesRequest interface {
 }
 
 type ListResponseRulesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
+	// Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error "The specified Lang can not be empty.". Explicitly pass the language code.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of data records to read in this request.
+	// The maximum number of data records to return for the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that marks the current reading position. Leave this parameter empty to read from the beginning.
+	// The position from which to start reading. If you leave this parameter empty, the reading starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAASLVeIxed4466E0LVmGkzwS6hJKd9DGVGMDRM6Lu****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number of the current page.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +70,7 @@ type ListResponseRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// This parameter is required.
 	//
@@ -76,11 +78,11 @@ type ListResponseRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the threat analysis data management center resides. Select the management center based on the region of your assets. Valid values:
+	// The region where the data management center for threat analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets belong to the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: Your assets belong to regions outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -88,17 +90,17 @@ type ListResponseRulesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The action type of the automatic response rule. Valid values:
 	//
-	// - doPlaybook: execute a playbook
+	// - doPlaybook: Execute a playbook.
 	//
-	// - changeEventStatus: update event status
+	// - changeEventStatus: Update the event status.
 	//
-	// - changeThreatLevel: update event threat level
+	// - changeThreatLevel: Update the event threat level.
 	//
-	// - addEventTag: add an event label
+	// - addEventTag: Add an event tag.
 	//
-	// - deleteEventTag: delete an event label
+	// - deleteEventTag: Delete an event tag.
 	//
-	// - alertWhitelist: add alert to whitelist
+	// - alertWhitelist: Add an alert to the whitelist.
 	//
 	// example:
 	//
@@ -112,9 +114,9 @@ type ListResponseRulesRequest struct {
 	ResponseRuleName *string `json:"ResponseRuleName,omitempty" xml:"ResponseRuleName,omitempty"`
 	// The status of the automatic response rule. Valid values:
 	//
-	// - 0: disabled
+	// - 0: Disabled.
 	//
-	// - 100: enabled
+	// - 100: Enabled.
 	//
 	// example:
 	//
@@ -122,9 +124,9 @@ type ListResponseRulesRequest struct {
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
 	// The type of the response rule. Valid values:
 	//
-	// - preset: predefined
+	// - preset: Preset.
 	//
-	// - custom: custom
+	// - custom: Custom.
 	//
 	// example:
 	//
@@ -132,17 +134,17 @@ type ListResponseRulesRequest struct {
 	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
 	// The trigger type of the automatic response rule. Valid values:
 	//
-	// - event: event occurred
+	// - event: Event occurrence.
 	//
-	// - event_update: event updated
+	// - event_update: Event update.
 	//
-	// - alert: alert occurred
+	// - alert: Alert occurrence.
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The user ID that the administrator switches to when viewing from another member\\"s perspective.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -150,9 +152,9 @@ type ListResponseRulesRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the current Alibaba Cloud account view.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//

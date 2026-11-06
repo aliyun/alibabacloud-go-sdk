@@ -24,7 +24,7 @@ type iResumeCopilotTurnStreamShrinkRequest interface {
 }
 
 type ResumeCopilotTurnStreamShrinkRequest struct {
-	// The conversation ID. This parameter is required for the second and subsequent turns in a multi-turn conversation.
+	// The conversation ID. This parameter is required for the second and subsequent turns in a multi-turn conversation scenario.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ResumeCopilotTurnStreamShrinkRequest struct {
 	//
 	// This parameter is required.
 	CursorByRunShrink *string `json:"CursorByRun,omitempty" xml:"CursorByRun,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -46,11 +46,11 @@ type ResumeCopilotTurnStreamShrinkRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the data management center for threat analysis is located. You need to select the management center based on the region of your assets. Valid values:
+	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The asset belongs to the Chinese mainland and China (Hong Kong).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - ap-southeast-1: The asset belongs to a region outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//

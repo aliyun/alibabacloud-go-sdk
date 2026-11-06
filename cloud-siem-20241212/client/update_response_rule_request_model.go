@@ -38,7 +38,7 @@ type iUpdateResponseRuleRequest interface {
 }
 
 type UpdateResponseRuleRequest struct {
-	// The language of the response messages. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -48,23 +48,23 @@ type UpdateResponseRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of data records to read in this request.
+	// The maximum number of data records to read in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the start position of the current read. Leave this parameter empty to start from the beginning.
+	// The token that specifies the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -78,23 +78,23 @@ type UpdateResponseRuleRequest struct {
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
 	// The action type of the automated response rule. Valid values:
 	//
-	// - doPlaybook: runs a playbook.
+	// - doPlaybook: Executes a playbook.
 	//
-	// - changeEventStatus: updates the event status.
+	// - changeEventStatus: Updates the event status.
 	//
-	// - changeThreatLevel: updates the threat level of an event.
+	// - changeThreatLevel: Updates the threat level of the event.
 	//
-	// - addEventTag: adds a label to an event.
+	// - addEventTag: Adds an event tag.
 	//
-	// - deleteEventTag: deletes a label from an event.
+	// - deleteEventTag: Deletes an event tag.
 	//
-	// - alertWhitelist: adds an alert to the whitelist.
+	// - alertWhitelist: Adds an alert to the whitelist.
 	//
 	// example:
 	//
 	// alertWhitelist
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
-	// The trigger condition configuration of the rule.
+	// The rule trigger condition configuration.
 	//
 	// example:
 	//
@@ -118,13 +118,17 @@ type UpdateResponseRuleRequest struct {
 	//
 	// 1
 	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	// The remarks for the response rule.
+	// The remarks of the response rule.
+	//
+	// example:
+	//
+	// Verified as a low-risk alert and scheduled for regular cleanup
 	ResponseRuleRemark *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
 	// The status of the automated response rule. Valid values:
 	//
-	// - 0: disabled.
+	// - 0: Disabled.
 	//
-	// - 100: enabled.
+	// - 100: Enabled.
 	//
 	// example:
 	//
@@ -132,11 +136,11 @@ type UpdateResponseRuleRequest struct {
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
 	// The trigger type of the automated response rule. Valid values:
 	//
-	// - event: an event occurs.
+	// - event: An event occurs.
 	//
-	// - event_update: an event is updated.
+	// - event_update: An event is updated.
 	//
-	// - alert: an alert occurs.
+	// - alert: An alert is triggered.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetAutoDisposeConfigResponseBody interface {
 }
 
 type GetAutoDisposeConfigResponseBody struct {
-	// The automatic response configuration.
+	// The automatic disposal configuration for users.
 	AutoDisposeConfig *GetAutoDisposeConfigResponseBodyAutoDisposeConfig `json:"AutoDisposeConfig,omitempty" xml:"AutoDisposeConfig,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetAutoDisposeConfigResponseBody) Validate() error {
 }
 
 type GetAutoDisposeConfigResponseBodyAutoDisposeConfig struct {
-	// Indicates whether automatic response is enabled. Valid values:
+	// The automatic disposal switch. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -72,7 +72,7 @@ type GetAutoDisposeConfigResponseBodyAutoDisposeConfig struct {
 	//
 	// enabled
 	AutoDecisionStatus *string `json:"AutoDecisionStatus,omitempty" xml:"AutoDecisionStatus,omitempty"`
-	// The code for the cloud product.
+	// The code of the cloud service.
 	//
 	// example:
 	//

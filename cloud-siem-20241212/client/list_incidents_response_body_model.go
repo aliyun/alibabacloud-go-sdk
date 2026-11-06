@@ -28,31 +28,31 @@ type iListIncidentsResponseBody interface {
 type ListIncidentsResponseBody struct {
 	// The list of incidents.
 	Incidents []*ListIncidentsResponseBodyIncidents `json:"Incidents,omitempty" xml:"Incidents,omitempty" type:"Repeated"`
-	// The maximum number of entries to read in this request.
+	// The maximum number of entries to return in this call.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results. Leave this parameter empty for the first request or when there are no more pages. If more pages exist, set this parameter to the NextToken value returned by the previous API call.
+	// The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set this parameter to the value of NextToken returned from the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number for pagination.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to display per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The request message ID.
 	//
 	// example:
 	//
@@ -152,10 +152,18 @@ func (s *ListIncidentsResponseBody) Validate() error {
 
 type ListIncidentsResponseBodyIncidents struct {
 	// The list of associated alert information.
+	//
+	// example:
+	//
+	// [{"alertSrcProd":"aegis_suspicious_event","alertName":"Sample associated alert"}]
 	AlertInfos *string `json:"AlertInfos,omitempty" xml:"AlertInfos,omitempty"`
 	// The list of alert source codes or modules.
 	AlertSources []*string `json:"AlertSources,omitempty" xml:"AlertSources,omitempty" type:"Repeated"`
 	// The list of MITRE ATT&CK tactics.
+	//
+	// example:
+	//
+	// [{"alertNum":3}]
 	AttckTactics *string `json:"AttckTactics,omitempty" xml:"AttckTactics,omitempty"`
 	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
@@ -170,12 +178,24 @@ type ListIncidentsResponseBodyIncidents struct {
 	// dr-qo5ww6ux0uc28*****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
 	// The name of the detection rule.
+	//
+	// example:
+	//
+	// EX Sample rule
 	DetectionRuleName *string `json:"DetectionRuleName,omitempty" xml:"DetectionRuleName,omitempty"`
 	// The list of associated entity information.
+	//
+	// example:
+	//
+	// [{"entityType":"host"}]
 	EntityInfos *string `json:"EntityInfos,omitempty" xml:"EntityInfos,omitempty"`
 	// The description of the incident.
+	//
+	// example:
+	//
+	// Sample incident: At 2026-01-01 00:00:00, an abnormal logon occurred on the sample host 192.0.2.10 with the account example-user
 	IncidentDescription *string `json:"IncidentDescription,omitempty" xml:"IncidentDescription,omitempty"`
-	// The event name.
+	// The name of the incident.
 	//
 	// example:
 	//
@@ -187,21 +207,21 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// remark
 	IncidentRemark *string `json:"IncidentRemark,omitempty" xml:"IncidentRemark,omitempty"`
-	// The event status. Valid values:
+	// The status of the incident. Valid values:
 	//
-	// - 0: Unhandled.
+	// - 0: Unprocessed.
 	//
-	// - 1: Handling.
+	// - 1: Processing.
 	//
-	// - 5: Handling failed.
+	// - 5: Processing failed.
 	//
-	// - 10: Handled.
+	// - 10: Processed.
 	//
 	// example:
 	//
 	// 0
 	IncidentStatus *int32 `json:"IncidentStatus,omitempty" xml:"IncidentStatus,omitempty"`
-	// The event tags.
+	// The tags of the incident.
 	//
 	// example:
 	//
@@ -213,7 +233,7 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// dbb1d7211c9285c862aa89385098****
 	IncidentUuid *string `json:"IncidentUuid,omitempty" xml:"IncidentUuid,omitempty"`
-	// The UID of the account responsible for the event.
+	// The UIDs of the accounts of the incident owners.
 	//
 	// example:
 	//
@@ -237,13 +257,13 @@ type ListIncidentsResponseBodyIncidents struct {
 	//
 	// 4
 	RelateAssetCount *int32 `json:"RelateAssetCount,omitempty" xml:"RelateAssetCount,omitempty"`
-	// The response time, in milliseconds (ms).
+	// The response time in milliseconds.
 	//
 	// example:
 	//
 	// 1603248483000
 	ResponseTime *int64 `json:"ResponseTime,omitempty" xml:"ResponseTime,omitempty"`
-	// The list of response types. Valid values: auto, manual, ai.
+	// The list of response types. Valid values: auto, manual, and ai.
 	ResponseTypes []*string `json:"ResponseTypes,omitempty" xml:"ResponseTypes,omitempty" type:"Repeated"`
 	// The threat level. Valid values:
 	//

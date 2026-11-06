@@ -22,32 +22,11 @@ type iListProductsResponseBody interface {
 }
 
 type ListProductsResponseBody struct {
-	// The maximum number of entries to return in this request.
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. You do not need to specify this parameter for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
-	//
-	// example:
-	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of products.
-	Products []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
-	//
-	// example:
-	//
-	// 57
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Products   []*ListProductsResponseBodyProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListProductsResponseBody) String() string {
@@ -117,98 +96,20 @@ func (s *ListProductsResponseBody) Validate() error {
 }
 
 type ListProductsResponseBodyProducts struct {
-	// The number of abnormal data ingestion entries.
-	//
-	// example:
-	//
-	// 2
-	AbnormalDataIngestionCount *int32 `json:"AbnormalDataIngestionCount,omitempty" xml:"AbnormalDataIngestionCount,omitempty"`
-	// The activation time.
-	//
-	// example:
-	//
-	// 1733269771123
-	ActiveTime *int64 `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
-	// Indicates whether data collection can be added.
-	//
-	// example:
-	//
-	// true
-	AllowAddDataIngestion *bool `json:"AllowAddDataIngestion,omitempty" xml:"AllowAddDataIngestion,omitempty"`
-	// The creation time.
-	//
-	// example:
-	//
-	// 1733269771123
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The accessed state of data ingestion. Valid values:
-	//
-	// - enabled: Enabled.
-	//
-	// - disabled: Disabled.
-	//
-	// example:
-	//
-	// enabled
-	DataIngestionStatus *bool `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
-	// The number of enabled data ingestion entries.
-	//
-	// example:
-	//
-	// 1
-	EnabledDataIngestionCount *int32 `json:"EnabledDataIngestionCount,omitempty" xml:"EnabledDataIngestionCount,omitempty"`
-	// The product alias.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas
-	ProductAlias *string `json:"ProductAlias,omitempty" xml:"ProductAlias,omitempty"`
-	// The product ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
-	//
-	// example:
-	//
-	// sas
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The product type. Valid values:
-	//
-	// - preset
-	//
-	// - custom
-	//
-	// example:
-	//
-	// preset
-	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The total number of data ingestion entries.
-	//
-	// example:
-	//
-	// 10
-	TotalDataIngestionCount *int32 `json:"TotalDataIngestionCount,omitempty" xml:"TotalDataIngestionCount,omitempty"`
-	// The update time.
-	//
-	// example:
-	//
-	// 1733269771123
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The vendor ID.
-	//
-	// example:
-	//
-	// vd-qlsw5eocx94w9
-	VendorId *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
-	// The vendor name.
-	//
-	// example:
-	//
-	// 111
-	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	AbnormalDataIngestionCount *int32  `json:"AbnormalDataIngestionCount,omitempty" xml:"AbnormalDataIngestionCount,omitempty"`
+	ActiveTime                 *int64  `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	AllowAddDataIngestion      *bool   `json:"AllowAddDataIngestion,omitempty" xml:"AllowAddDataIngestion,omitempty"`
+	CreateTime                 *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataIngestionStatus        *bool   `json:"DataIngestionStatus,omitempty" xml:"DataIngestionStatus,omitempty"`
+	EnabledDataIngestionCount  *int32  `json:"EnabledDataIngestionCount,omitempty" xml:"EnabledDataIngestionCount,omitempty"`
+	ProductAlias               *string `json:"ProductAlias,omitempty" xml:"ProductAlias,omitempty"`
+	ProductId                  *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductName                *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductType                *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	TotalDataIngestionCount    *int32  `json:"TotalDataIngestionCount,omitempty" xml:"TotalDataIngestionCount,omitempty"`
+	UpdateTime                 *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	VendorId                   *string `json:"VendorId,omitempty" xml:"VendorId,omitempty"`
+	VendorName                 *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 
 func (s ListProductsResponseBodyProducts) String() string {

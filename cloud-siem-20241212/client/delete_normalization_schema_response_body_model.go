@@ -14,7 +14,7 @@ type iDeleteNormalizationSchemaResponseBody interface {
 }
 
 type DeleteNormalizationSchemaResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

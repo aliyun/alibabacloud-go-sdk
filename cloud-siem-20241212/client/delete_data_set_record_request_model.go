@@ -22,7 +22,7 @@ type iDeleteDataSetRecordRequest interface {
 }
 
 type DeleteDataSetRecordRequest struct {
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteDataSetRecordRequest struct {
 	//
 	// dataset-10iy8mbifnb4gniv****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// A list of dataset record IDs in a JSON array format.
+	// The list of dataset record IDs in JSON array format.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteDataSetRecordRequest struct {
 	//
 	// [1,2,3,4]
 	DataSetRecordIds *string `json:"DataSetRecordIds,omitempty" xml:"DataSetRecordIds,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -48,17 +48,17 @@ type DeleteDataSetRecordRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region of the Data Management center for Threat Analysis. Select a region based on where your assets are located. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets are outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. An administrator can specify this parameter to operate as the member.
+	// The ID of the user whose perspective the administrator assumes.
 	//
 	// example:
 	//

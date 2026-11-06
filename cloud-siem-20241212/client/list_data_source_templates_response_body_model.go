@@ -20,26 +20,10 @@ type iListDataSourceTemplatesResponseBody interface {
 }
 
 type ListDataSourceTemplatesResponseBody struct {
-	// The list of data source templates.
 	DataSourceTemplates []*ListDataSourceTemplatesResponseBodyDataSourceTemplates `json:"DataSourceTemplates,omitempty" xml:"DataSourceTemplates,omitempty" type:"Repeated"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 6276D891-*****-55B2-87B9-74D413F7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	PageNumber          *string                                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListDataSourceTemplatesResponseBody) String() string {
@@ -100,78 +84,18 @@ func (s *ListDataSourceTemplatesResponseBody) Validate() error {
 }
 
 type ListDataSourceTemplatesResponseBodyDataSourceTemplates struct {
-	// Indicates whether automatic discovery of new users is enabled. Valid values:
-	//
-	// - enabled: Enabled.
-	//
-	// - disabled: Disabled.
-	//
-	// example:
-	//
-	// enabled
-	AutoScanNew *string `json:"AutoScanNew,omitempty" xml:"AutoScanNew,omitempty"`
-	// The creation time. This value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1733269771123
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The data source origin. Valid values:
-	//
-	// - center
-	//
-	// - custom
-	//
-	// example:
-	//
-	// custom
-	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// Indicates whether automatic discovery of new data sources is enabled.
-	//
-	// example:
-	//
-	// true
-	DataSourceRecognizeEnabled *bool `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
-	// The data source recognizer.
-	//
-	// example:
-	//
-	// alibaba_cloud_actiontrail_event_ingestion
-	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
-	// The data source template ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_actiontrail_event_ingestion
-	DataSourceTemplateId *string `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
-	// The data source template name.
-	//
-	// example:
-	//
-	// alibaba_cloud_actiontrail_event_ingestion
-	DataSourceTemplateName *string `json:"DataSourceTemplateName,omitempty" xml:"DataSourceTemplateName,omitempty"`
-	// The matching rule for the Simple Log Service project name.
-	//
-	// example:
-	//
-	// aliyun-cloudsiem-data-173326*******
-	LogProjectPattern *string `json:"LogProjectPattern,omitempty" xml:"LogProjectPattern,omitempty"`
-	// The list of log storage region IDs.
-	LogRegionIds []*string `json:"LogRegionIds,omitempty" xml:"LogRegionIds,omitempty" type:"Repeated"`
-	// The matching rule for the Simple Log Service Logstore name.
-	//
-	// example:
-	//
-	// audit-activity
-	LogStorePattern *string `json:"LogStorePattern,omitempty" xml:"LogStorePattern,omitempty"`
-	// The list of user IDs for batch data ingestion.
-	LogUserIds []*string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
-	// The update time. This value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1733269771123
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	AutoScanNew                *string   `json:"AutoScanNew,omitempty" xml:"AutoScanNew,omitempty"`
+	CreateTime                 *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSourceFrom             *string   `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
+	DataSourceRecognizeEnabled *bool     `json:"DataSourceRecognizeEnabled,omitempty" xml:"DataSourceRecognizeEnabled,omitempty"`
+	DataSourceRecognizer       *string   `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
+	DataSourceTemplateId       *string   `json:"DataSourceTemplateId,omitempty" xml:"DataSourceTemplateId,omitempty"`
+	DataSourceTemplateName     *string   `json:"DataSourceTemplateName,omitempty" xml:"DataSourceTemplateName,omitempty"`
+	LogProjectPattern          *string   `json:"LogProjectPattern,omitempty" xml:"LogProjectPattern,omitempty"`
+	LogRegionIds               []*string `json:"LogRegionIds,omitempty" xml:"LogRegionIds,omitempty" type:"Repeated"`
+	LogStorePattern            *string   `json:"LogStorePattern,omitempty" xml:"LogStorePattern,omitempty"`
+	LogUserIds                 []*string `json:"LogUserIds,omitempty" xml:"LogUserIds,omitempty" type:"Repeated"`
+	UpdateTime                 *int64    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListDataSourceTemplatesResponseBodyDataSourceTemplates) String() string {

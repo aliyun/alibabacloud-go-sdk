@@ -28,72 +28,14 @@ type iListDataIngestionTemplatesRequest interface {
 }
 
 type ListDataIngestionTemplatesRequest struct {
-	// The status of the data ingestion template. Valid values:
-	//
-	// - pending
-	//
-	// - running
-	//
-	// - success
-	//
-	// - failed
-	//
-	// example:
-	//
-	// running
 	DataIngestionTemplateStatus *string `json:"DataIngestionTemplateStatus,omitempty" xml:"DataIngestionTemplateStatus,omitempty"`
-	// The list of data source template IDs.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas_account_snapshot_log_173326*******
-	DataSourceTemplateIds *string `json:"DataSourceTemplateIds,omitempty" xml:"DataSourceTemplateIds,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error: "The specified Lang can not be empty." Explicitly pass in a language code.
-	//
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The product ID.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the data management center of threat detection and response resides. Specify the management center based on the region of your assets. Valid values:
-	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
-	//
-	// - ap-southeast-1: Your assets reside outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID used by an administrator to assume the view of another member.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	DataSourceTemplateIds       *string `json:"DataSourceTemplateIds,omitempty" xml:"DataSourceTemplateIds,omitempty"`
+	Lang                        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageNumber                  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductId                   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegionId                    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor                     *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s ListDataIngestionTemplatesRequest) String() string {

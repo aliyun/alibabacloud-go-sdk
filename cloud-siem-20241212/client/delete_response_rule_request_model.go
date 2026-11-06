@@ -32,29 +32,29 @@ type DeleteResponseRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The maximum number of data records to return in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results. If you do not specify this parameter, the service returns the first page of results.
+	// The token that specifies the position to start reading. If this parameter is left empty, the reading starts from the beginning.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the data management center for threat analysis. This must be the region where your assets are located. Valid values:
+	// The region where the data management center for threat analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - `cn-hangzhou`: for assets in the Chinese mainland or Hong Kong (China).
+	// - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
 	//
-	// - `ap-southeast-1`: for assets in international regions.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the automatic response rule to delete.
+	// The ID of the automated response rule.
 	//
 	// example:
 	//

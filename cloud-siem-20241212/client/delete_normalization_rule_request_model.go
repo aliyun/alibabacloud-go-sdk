@@ -20,38 +20,10 @@ type iDeleteNormalizationRuleRequest interface {
 }
 
 type DeleteNormalizationRuleRequest struct {
-	// The language of the response. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the normalization rule.
-	//
-	// example:
-	//
-	// nr-z0b2ssjteut85uoh9nzp
+	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The region of the threat analysis Management Hub. Select the region of the Management Hub based on the region where your assets are located. Valid values:
-	//
-	// - cn-hangzhou: Your assets are in the Chinese mainland.
-	//
-	// - ap-southeast-1: Your assets are in a region outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of a member. An administrator can specify this parameter to operate on behalf of the member.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor             *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s DeleteNormalizationRuleRequest) String() string {

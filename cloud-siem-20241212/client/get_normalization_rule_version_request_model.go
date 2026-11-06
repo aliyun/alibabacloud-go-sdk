@@ -22,46 +22,11 @@ type iGetNormalizationRuleVersionRequest interface {
 }
 
 type GetNormalizationRuleVersionRequest struct {
-	// The language of the response message. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English.
-	//
-	// Note: This parameter is required in actual API calls. If you do not specify this parameter, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly specify the language code.
-	//
-	// example:
-	//
-	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the normalization rule.
-	//
-	// example:
-	//
-	// nr-z0b2ssjteut85uoh9nzp
-	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The version of the normalization rule.
-	//
-	// example:
-	//
-	// 1
-	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
-	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
-	//
-	// - ap-southeast-1: Assets are located outside the Chinese mainland.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user whose perspective the administrator switches to.
-	//
-	// example:
-	//
-	// 173326*******
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	NormalizationRuleId      *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
+	NormalizationRuleVersion *int32  `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor                  *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 }
 
 func (s GetNormalizationRuleVersionRequest) String() string {

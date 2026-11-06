@@ -26,44 +26,13 @@ type iListDataSetsResponseBody interface {
 }
 
 type ListDataSetsResponseBody struct {
-	// The list of datasets.
-	DataSets []*ListDataSetsResponseBodyDataSets `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Repeated"`
-	// The maximum number of results to return when you use the NextToken-based pagination method. Valid values: 1 to 100. Default value: 50.
-	//
-	// example:
-	//
-	// 50
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query.
-	//
-	// example:
-	//
-	// AAAAAUqcj6VO4E3ECWIrFczs****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 157CFBB5-B56F-566F-8991-B3C51799****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
-	//
-	// example:
-	//
-	// 57
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	DataSets   []*ListDataSetsResponseBodyDataSets `json:"DataSets,omitempty" xml:"DataSets,omitempty" type:"Repeated"`
+	MaxResults *int32                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDataSetsResponseBody) String() string {
@@ -151,78 +120,18 @@ func (s *ListDataSetsResponseBody) Validate() error {
 }
 
 type ListDataSetsResponseBodyDataSets struct {
-	// The creation time. This value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1713787368000
-	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The dataset description.
-	//
-	// example:
-	//
-	// lmftest desc
-	DataSetDescription *string `json:"DataSetDescription,omitempty" xml:"DataSetDescription,omitempty"`
-	// The unique key name of the dataset.
-	//
-	// example:
-	//
-	// ip
-	DataSetFieldKeyName *string `json:"DataSetFieldKeyName,omitempty" xml:"DataSetFieldKeyName,omitempty"`
-	// The field names of the dataset.
-	//
-	// example:
-	//
-	// ["ip","region"]
-	DataSetFieldNames *string `json:"DataSetFieldNames,omitempty" xml:"DataSetFieldNames,omitempty"`
-	// The name of the uploaded dataset file.
-	//
-	// example:
-	//
-	// cloudsiem-dataset/1358117679873357_174338773****.csv
-	DataSetFileName *string `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
-	// The dataset ID.
-	//
-	// example:
-	//
-	// dataset-t8ha6p7k61rmniqw****
-	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The dataset name.
-	//
-	// example:
-	//
-	// lmftest
-	DataSetName *string `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
-	// The dataset reference data.
-	DataSetReferences []*ListDataSetsResponseBodyDataSetsDataSetReferences `json:"DataSetReferences,omitempty" xml:"DataSetReferences,omitempty" type:"Repeated"`
-	// The dataset status. Valid values:
-	//
-	// - 0: deleted.
-	//
-	// - 1: enabled.
-	//
-	// example:
-	//
-	// 1
-	DataSetStatus *int32 `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
-	// The dataset type. Valid values:
-	//
-	// - custom: custom dataset.
-	//
-	// - preset: predefined dataset.
-	//
-	// example:
-	//
-	// preset
-	DataSetType *string `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
-	// The list of recognizers.
+	CreateTime             *int64                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSetDescription     *string                                                   `json:"DataSetDescription,omitempty" xml:"DataSetDescription,omitempty"`
+	DataSetFieldKeyName    *string                                                   `json:"DataSetFieldKeyName,omitempty" xml:"DataSetFieldKeyName,omitempty"`
+	DataSetFieldNames      *string                                                   `json:"DataSetFieldNames,omitempty" xml:"DataSetFieldNames,omitempty"`
+	DataSetFileName        *string                                                   `json:"DataSetFileName,omitempty" xml:"DataSetFileName,omitempty"`
+	DataSetId              *string                                                   `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	DataSetName            *string                                                   `json:"DataSetName,omitempty" xml:"DataSetName,omitempty"`
+	DataSetReferences      []*ListDataSetsResponseBodyDataSetsDataSetReferences      `json:"DataSetReferences,omitempty" xml:"DataSetReferences,omitempty" type:"Repeated"`
+	DataSetStatus          *int32                                                    `json:"DataSetStatus,omitempty" xml:"DataSetStatus,omitempty"`
+	DataSetType            *string                                                   `json:"DataSetType,omitempty" xml:"DataSetType,omitempty"`
 	IpWhitelistRecognizers []*ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers `json:"IpWhitelistRecognizers,omitempty" xml:"IpWhitelistRecognizers,omitempty" type:"Repeated"`
-	// The update time. This value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1713787368000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime             *int64                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListDataSetsResponseBodyDataSets) String() string {
@@ -364,33 +273,9 @@ func (s *ListDataSetsResponseBodyDataSets) Validate() error {
 }
 
 type ListDataSetsResponseBodyDataSetsDataSetReferences struct {
-	// The dataset ID.
-	//
-	// example:
-	//
-	// dataset-nhcrmjpx1zsorlaq****
-	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The ID of the rule or playbook associated with the dataset.
-	//
-	// example:
-	//
-	// 456232
-	DataSetReferenceId *string `json:"DataSetReferenceId,omitempty" xml:"DataSetReferenceId,omitempty"`
-	// The name of the rule or playbook associated with the dataset.
-	//
-	// example:
-	//
-	// playbook_name
+	DataSetId            *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
+	DataSetReferenceId   *string `json:"DataSetReferenceId,omitempty" xml:"DataSetReferenceId,omitempty"`
 	DataSetReferenceName *string `json:"DataSetReferenceName,omitempty" xml:"DataSetReferenceName,omitempty"`
-	// The type of service associated with the dataset. Valid values:
-	//
-	// - custom_rule: custom rule.
-	//
-	// - playbook: playbook.
-	//
-	// example:
-	//
-	// playbook
 	DataSetReferenceType *string `json:"DataSetReferenceType,omitempty" xml:"DataSetReferenceType,omitempty"`
 }
 
@@ -443,56 +328,10 @@ func (s *ListDataSetsResponseBodyDataSetsDataSetReferences) Validate() error {
 }
 
 type ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers struct {
-	// The automatic recognition status. Valid values:
-	//
-	// - enabled: enabled.
-	//
-	// - disabled: disabled.
-	//
-	// example:
-	//
-	// enabled
-	AutoRecognizeStatus *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
-	// The IP type identified by the recognizer. Valid values:
-	//
-	// - sas_vulnerability_scanner_ip: IP addresses of the Security Center vulnerability web scanner.
-	//
-	// - waf_back_source_ip: back-to-origin IP addresses of Web Application Firewall (WAF).
-	//
-	// - ddos_back_source_ip: back-to-origin IP addresses of Anti-DDoS.
-	//
-	// - esa_back_source_ip: back-to-origin node IP addresses of Edge Security Acceleration (ESA).
-	//
-	// - ecs_public_ip: public IP addresses of Elastic Compute Service (ECS) instances.
-	//
-	// - slb_public_ip: public IP addresses of Server Load Balancer (SLB) instances.
-	//
-	// - vpc_eip: elastic IP addresses (EIPs).
-	//
-	// - cdn_back_source_ip: back-to-origin IP addresses of Content Delivery Network (CDN).
-	//
-	// - ga_back_source_ip: back-to-origin IP addresses of Global Accelerator (GA).
-	//
-	// example:
-	//
-	// waf_back_source_ip
+	AutoRecognizeStatus       *string `json:"AutoRecognizeStatus,omitempty" xml:"AutoRecognizeStatus,omitempty"`
 	IpWhitelistRecognizerType *string `json:"IpWhitelistRecognizerType,omitempty" xml:"IpWhitelistRecognizerType,omitempty"`
-	// The recognition scope. Valid values:
-	//
-	// - current_account: current account only.
-	//
-	// - rd_accounts: multi-account enabled.
-	//
-	// example:
-	//
-	// current_account
-	RecognizeScope *string `json:"RecognizeScope,omitempty" xml:"RecognizeScope,omitempty"`
-	// The update time. This value is a UNIX timestamp in milliseconds.
-	//
-	// example:
-	//
-	// 1713787368000
-	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	RecognizeScope            *string `json:"RecognizeScope,omitempty" xml:"RecognizeScope,omitempty"`
+	UpdateTime                *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers) String() string {

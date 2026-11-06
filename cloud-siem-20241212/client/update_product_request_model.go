@@ -24,50 +24,12 @@ type iUpdateProductRequest interface {
 }
 
 type UpdateProductRequest struct {
-	// The language of the response messages. Valid values:
-	//
-	// - **zh*	- (default): Chinese.
-	//
-	// - **en**: English. This parameter is required. If not provided, the service returns a 400 error.
-	//
-	// example:
-	//
-	// en
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The product ID. Only products with ProductType set to custom support updates. System preset products (ProductType set to preset) cannot be modified. Calling this operation on a preset product returns a 403 error. To create a custom product, use the CreateProduct API first. This parameter is the resource identifier for the Update operation and is required. Only custom products can be updated. System preset products cannot be updated.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas
-	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The product name.
-	//
-	// example:
-	//
-	// alibaba_cloud_sas
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ProductId   *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
-	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
-	//
-	// - ap-southeast-1: Assets are located outside China.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator uses to switch to another member\\"s view.
-	//
-	// example:
-	//
-	// 1733269771123
-	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The vendor name.
-	//
-	// example:
-	//
-	// 111
-	VendorName *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RoleFor     *int64  `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	VendorName  *string `json:"VendorName,omitempty" xml:"VendorName,omitempty"`
 }
 
 func (s UpdateProductRequest) String() string {

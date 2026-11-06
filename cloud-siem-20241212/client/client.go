@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("cloud-siem")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -226,11 +234,11 @@ func (client *Client) CheckUpgradeItem(request *CheckUpgradeItemRequest) (_resul
 
 // Summary:
 //
-// Creates an auto-dispose configuration.
+// Creates the automatic disposition configuration for users.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. Refer to the helper class in the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java) for configuration examples.
+// The request parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateAutoDisposeConfigRequest
 //
@@ -282,11 +290,11 @@ func (client *Client) CreateAutoDisposeConfigWithOptions(request *CreateAutoDisp
 
 // Summary:
 //
-// Creates an auto-dispose configuration.
+// Creates the automatic disposition configuration for users.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. Refer to the helper class in the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java) for configuration examples.
+// The request parameter JsonConfig is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateAutoDisposeConfigRequest
 //
@@ -304,11 +312,11 @@ func (client *Client) CreateAutoDisposeConfig(request *CreateAutoDisposeConfigRe
 
 // Summary:
 //
-// Sends a message to the security operations Agent and returns an event stream through SSE. The first request can implicitly create a conversation.
+// Sends a security operations agent message and returns an event stream through Server-Sent Events (SSE). A session can be implicitly created in the same request during the first turn.
 //
 // Description:
 //
-// Sends a message to a security operations Agent conversation and returns results as an SSE event stream.
+// Sends a message to a security operations agent session and returns the result as an SSE event stream.
 //
 // @param tmpReq - CreateCopilotChatRequest
 //
@@ -323,11 +331,11 @@ func (client *Client) CreateCopilotChatWithSSE(tmpReq *CreateCopilotChatRequest,
 
 // Summary:
 //
-// Sends a message to the security operations Agent and returns an event stream through SSE. The first request can implicitly create a conversation.
+// Sends a security operations agent message and returns an event stream through Server-Sent Events (SSE). A session can be implicitly created in the same request during the first turn.
 //
 // Description:
 //
-// Sends a message to a security operations Agent conversation and returns results as an SSE event stream.
+// Sends a message to a security operations agent session and returns the result as an SSE event stream.
 //
 // @param tmpReq - CreateCopilotChatRequest
 //
@@ -441,11 +449,11 @@ func (client *Client) CreateCopilotChatWithOptions(tmpReq *CreateCopilotChatRequ
 
 // Summary:
 //
-// Sends a message to the security operations Agent and returns an event stream through SSE. The first request can implicitly create a conversation.
+// Sends a security operations agent message and returns an event stream through Server-Sent Events (SSE). A session can be implicitly created in the same request during the first turn.
 //
 // Description:
 //
-// Sends a message to a security operations Agent conversation and returns results as an SSE event stream.
+// Sends a message to a security operations agent session and returns the result as an SSE event stream.
 //
 // @param request - CreateCopilotChatRequest
 //
@@ -561,17 +569,7 @@ func (client *Client) CreateCopilotConversation(request *CreateCopilotConversati
 
 // Summary:
 //
-// Creates an access policy.
-//
-// Description:
-//
-// Creates an access policy to ingest log data from a data source into threat analysis.
-//
-// Before you begin:
-//
-// 1. Call the CreateDataSource operation to create a data source and obtain the data source ID (DataSourceId).
-//
-// 2. Call the CreateNormalizationRule operation to create a normalization rule and obtain the normalization rule ID (NormalizationRuleId).
+// 创建数据源
 //
 // @param request - CreateDataIngestionRequest
 //
@@ -671,17 +669,7 @@ func (client *Client) CreateDataIngestionWithOptions(request *CreateDataIngestio
 
 // Summary:
 //
-// Creates an access policy.
-//
-// Description:
-//
-// Creates an access policy to ingest log data from a data source into threat analysis.
-//
-// Before you begin:
-//
-// 1. Call the CreateDataSource operation to create a data source and obtain the data source ID (DataSourceId).
-//
-// 2. Call the CreateNormalizationRule operation to create a normalization rule and obtain the normalization rule ID (NormalizationRuleId).
+// 创建数据源
 //
 // @param request - CreateDataIngestionRequest
 //
@@ -699,7 +687,7 @@ func (client *Client) CreateDataIngestion(request *CreateDataIngestionRequest) (
 
 // Summary:
 //
-// Creates a dataset.
+// 创建数据集
 //
 // @param request - CreateDataSetRequest
 //
@@ -782,7 +770,7 @@ func (client *Client) CreateDataSetWithOptions(request *CreateDataSetRequest, ru
 
 // Summary:
 //
-// Creates a dataset.
+// 创建数据集
 //
 // @param request - CreateDataSetRequest
 //
@@ -804,7 +792,7 @@ func (client *Client) CreateDataSet(request *CreateDataSetRequest) (_result *Cre
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON object. For a configuration example, see the supporting tool class in the [demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JSON Configurations input parameter is a complex JSON configuration. A supporting tool is provided to assist with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param tmpReq - CreateDataSourceRequest
 //
@@ -929,7 +917,7 @@ func (client *Client) CreateDataSourceWithOptions(tmpReq *CreateDataSourceReques
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON object. For a configuration example, see the supporting tool class in the [demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JSON Configurations input parameter is a complex JSON configuration. A supporting tool is provided to assist with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateDataSourceRequest
 //
@@ -1685,11 +1673,11 @@ func (client *Client) CreateProduct(request *CreateProductRequest) (_result *Cre
 
 // Summary:
 //
-// Creates an automatic response rule.
+// Creates an automated response rule.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a supporting tool with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateResponseRuleRequest
 //
@@ -1781,11 +1769,11 @@ func (client *Client) CreateResponseRuleWithOptions(request *CreateResponseRuleR
 
 // Summary:
 //
-// Creates an automatic response rule.
+// Creates an automated response rule.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a supporting tool with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - CreateResponseRuleRequest
 //
@@ -1803,13 +1791,7 @@ func (client *Client) CreateResponseRule(request *CreateResponseRuleRequest) (_r
 
 // Summary:
 //
-// Creates a vendor.
-//
-// Description:
-//
-// Creates a vendor.
-//
-// Before you begin: You must have purchased the cloud-siem service and have a valid order before calling this operation. If you have not purchased the service or your order has expired, the API returns "The order doesn\\"t exist or is expired." Purchase or renew the service before calling this operation.
+// 创建厂商
 //
 // @param request - CreateVendorRequest
 //
@@ -1865,13 +1847,7 @@ func (client *Client) CreateVendorWithOptions(request *CreateVendorRequest, runt
 
 // Summary:
 //
-// Creates a vendor.
-//
-// Description:
-//
-// Creates a vendor.
-//
-// Before you begin: You must have purchased the cloud-siem service and have a valid order before calling this operation. If you have not purchased the service or your order has expired, the API returns "The order doesn\\"t exist or is expired." Purchase or renew the service before calling this operation.
+// 创建厂商
 //
 // @param request - CreateVendorRequest
 //
@@ -1889,11 +1865,7 @@ func (client *Client) CreateVendor(request *CreateVendorRequest) (_result *Creat
 
 // Summary:
 //
-// Deletes a data ingestion policy.
-//
-// Description:
-//
-// Notifications are sent only between 08:00 and 20:00. Each user can receive a maximum of two notifications per day.
+// 删除数据接入
 //
 // @param request - DeleteDataIngestionRequest
 //
@@ -1949,11 +1921,7 @@ func (client *Client) DeleteDataIngestionWithOptions(request *DeleteDataIngestio
 
 // Summary:
 //
-// Deletes a data ingestion policy.
-//
-// Description:
-//
-// Notifications are sent only between 08:00 and 20:00. Each user can receive a maximum of two notifications per day.
+// 删除数据接入
 //
 // @param request - DeleteDataIngestionRequest
 //
@@ -1971,7 +1939,7 @@ func (client *Client) DeleteDataIngestion(request *DeleteDataIngestionRequest) (
 
 // Summary:
 //
-// Deletes a dataset.
+// 删除数据集
 //
 // @param request - DeleteDataSetRequest
 //
@@ -2027,7 +1995,7 @@ func (client *Client) DeleteDataSetWithOptions(request *DeleteDataSetRequest, ru
 
 // Summary:
 //
-// Deletes a dataset.
+// 删除数据集
 //
 // @param request - DeleteDataSetRequest
 //
@@ -2123,13 +2091,7 @@ func (client *Client) DeleteDataSetRecord(request *DeleteDataSetRecordRequest) (
 
 // Summary:
 //
-// Deletes a data source.
-//
-// Description:
-//
-// Deletes a specified data source.
-//
-// Before you begin: The calling account must have a valid SIEM data source management value-added feature subscription.
+// 删除数据源
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -2185,13 +2147,7 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 
 // Summary:
 //
-// Deletes a data source.
-//
-// Description:
-//
-// Deletes a specified data source.
-//
-// Before you begin: The calling account must have a valid SIEM data source management value-added feature subscription.
+// 删除数据源
 //
 // @param request - DeleteDataSourceRequest
 //
@@ -2209,7 +2165,7 @@ func (client *Client) DeleteDataSource(request *DeleteDataSourceRequest) (_resul
 
 // Summary:
 //
-// Deletes a detection rule.
+// 删除检测规则
 //
 // @param request - DeleteDetectionRuleRequest
 //
@@ -2265,7 +2221,7 @@ func (client *Client) DeleteDetectionRuleWithOptions(request *DeleteDetectionRul
 
 // Summary:
 //
-// Deletes a detection rule.
+// 删除检测规则
 //
 // @param request - DeleteDetectionRuleRequest
 //
@@ -2377,11 +2333,7 @@ func (client *Client) DeleteLogStore(request *DeleteLogStoreRequest) (_result *D
 
 // Summary:
 //
-// Deletes a normalization rule.
-//
-// Description:
-//
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class that contains configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 删除标准化规则
 //
 // @param request - DeleteNormalizationRuleRequest
 //
@@ -2437,11 +2389,7 @@ func (client *Client) DeleteNormalizationRuleWithOptions(request *DeleteNormaliz
 
 // Summary:
 //
-// Deletes a normalization rule.
-//
-// Description:
-//
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class that contains configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 删除标准化规则
 //
 // @param request - DeleteNormalizationRuleRequest
 //
@@ -2459,11 +2407,7 @@ func (client *Client) DeleteNormalizationRule(request *DeleteNormalizationRuleRe
 
 // Summary:
 //
-// Deletes a normalization rule version.
-//
-// Description:
-//
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class with configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 删除标准化规则版本
 //
 // @param request - DeleteNormalizationRuleVersionRequest
 //
@@ -2523,11 +2467,7 @@ func (client *Client) DeleteNormalizationRuleVersionWithOptions(request *DeleteN
 
 // Summary:
 //
-// Deletes a normalization rule version.
-//
-// Description:
-//
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class with configuration examples is provided. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 删除标准化规则版本
 //
 // @param request - DeleteNormalizationRuleVersionRequest
 //
@@ -2549,7 +2489,7 @@ func (client *Client) DeleteNormalizationRuleVersion(request *DeleteNormalizatio
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - DeleteNormalizationSchemaRequest
 //
@@ -2613,7 +2553,7 @@ func (client *Client) DeleteNormalizationSchemaWithOptions(request *DeleteNormal
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. A utility class is provided to assist with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - DeleteNormalizationSchemaRequest
 //
@@ -2631,11 +2571,7 @@ func (client *Client) DeleteNormalizationSchema(request *DeleteNormalizationSche
 
 // Summary:
 //
-// Deletes a product.
-//
-// Description:
-//
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is provided to help you create the configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 删除产品
 //
 // @param request - DeleteProductRequest
 //
@@ -2691,11 +2627,7 @@ func (client *Client) DeleteProductWithOptions(request *DeleteProductRequest, ru
 
 // Summary:
 //
-// Deletes a product.
-//
-// Description:
-//
-// The JsonConfig request parameter is a complex JSON configuration. A supporting tool class is provided to help you create the configuration. For an example, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 删除产品
 //
 // @param request - DeleteProductRequest
 //
@@ -2713,11 +2645,11 @@ func (client *Client) DeleteProduct(request *DeleteProductRequest) (_result *Del
 
 // Summary:
 //
-// Deletes an automatic response rule.
+// Deletes an automated response rule.
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
 //
 // @param request - DeleteResponseRuleRequest
 //
@@ -2777,11 +2709,11 @@ func (client *Client) DeleteResponseRuleWithOptions(request *DeleteResponseRuleR
 
 // Summary:
 //
-// Deletes an automatic response rule.
+// Deletes an automated response rule.
 //
 // Description:
 //
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00.
+// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
 //
 // @param request - DeleteResponseRuleRequest
 //
@@ -2799,11 +2731,7 @@ func (client *Client) DeleteResponseRule(request *DeleteResponseRuleRequest) (_r
 
 // Summary:
 //
-// Deletes a vendor.
-//
-// Description:
-//
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day. These notifications are sent only between 08:00 and 20:00.
+// 删除厂商
 //
 // @param request - DeleteVendorRequest
 //
@@ -2863,11 +2791,7 @@ func (client *Client) DeleteVendorWithOptions(request *DeleteVendorRequest, runt
 
 // Summary:
 //
-// Deletes a vendor.
-//
-// Description:
-//
-// Notifications are subject to frequency and time limits. Each user can receive a maximum of two notifications per day. These notifications are sent only between 08:00 and 20:00.
+// 删除厂商
 //
 // @param request - DeleteVendorRequest
 //
@@ -2885,13 +2809,7 @@ func (client *Client) DeleteVendor(request *DeleteVendorRequest) (_result *Delet
 
 // Summary:
 //
-// Stops a collection policy.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// 停止数据接入
 //
 // @param request - DisableDataIngestionRequest
 //
@@ -2947,13 +2865,7 @@ func (client *Client) DisableDataIngestionWithOptions(request *DisableDataIngest
 
 // Summary:
 //
-// Stops a collection policy.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// 停止数据接入
 //
 // @param request - DisableDataIngestionRequest
 //
@@ -2971,11 +2883,7 @@ func (client *Client) DisableDataIngestion(request *DisableDataIngestionRequest)
 
 // Summary:
 //
-// Enables the data ingestion policy.
-//
-// Description:
-//
-// Notification frequency is limited to a maximum of two per user per day. Notifications are sent only between 08:00 and 20:00.
+// 启动数据接入
 //
 // @param request - EnableDataIngestionRequest
 //
@@ -3035,11 +2943,7 @@ func (client *Client) EnableDataIngestionWithOptions(request *EnableDataIngestio
 
 // Summary:
 //
-// Enables the data ingestion policy.
-//
-// Description:
-//
-// Notification frequency is limited to a maximum of two per user per day. Notifications are sent only between 08:00 and 20:00.
+// 启动数据接入
 //
 // @param request - EnableDataIngestionRequest
 //
@@ -3057,11 +2961,11 @@ func (client *Client) EnableDataIngestion(request *EnableDataIngestionRequest) (
 
 // Summary:
 //
-// Manually handles alerts. Batch operations are supported.
+// Manually handles alerts in batches.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a highly complex JSON configuration. A supporting utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ExecuteAutoDisposeRecordsRequest
 //
@@ -3116,11 +3020,11 @@ func (client *Client) ExecuteAutoDisposeRecordsWithOptions(request *ExecuteAutoD
 
 // Summary:
 //
-// Manually handles alerts. Batch operations are supported.
+// Manually handles alerts in batches.
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. A utility class is provided to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a highly complex JSON configuration. A supporting utility class is provided to help with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ExecuteAutoDisposeRecordsRequest
 //
@@ -3436,11 +3340,11 @@ func (client *Client) GetAlert(request *GetAlertRequest) (_result *GetAlertRespo
 
 // Summary:
 //
-// Retrieves the automatic response configuration.
+// Retrieves the automatic disposal configuration for users.
 //
 // Description:
 //
-// The `JsonConfig` input parameter uses a complex JSON structure. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java) for a helper utility and configuration examples.
+// The request parameter JsonConfig is a highly complex JSON configuration. To simplify this, we provide a utility class for specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetAutoDisposeConfigRequest
 //
@@ -3488,11 +3392,11 @@ func (client *Client) GetAutoDisposeConfigWithOptions(request *GetAutoDisposeCon
 
 // Summary:
 //
-// Retrieves the automatic response configuration.
+// Retrieves the automatic disposal configuration for users.
 //
 // Description:
 //
-// The `JsonConfig` input parameter uses a complex JSON structure. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java) for a helper utility and configuration examples.
+// The request parameter JsonConfig is a highly complex JSON configuration. To simplify this, we provide a utility class for specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - GetAutoDisposeConfigRequest
 //
@@ -4146,11 +4050,11 @@ func (client *Client) GetIncident(request *GetIncidentRequest) (_result *GetInci
 
 // Summary:
 //
-// Queries the AI investigation details of a specified incident, including the report ID, investigation time, judgment category, summary, conclusion, and report content.
+// Queries the AI investigation details of a specified event, including the report identifiers, investigation time, judgment category, summary, conclusion, and report content.
 //
 // Description:
 //
-// Queries the AI investigation results that have been generated for a specified incident. You can call ListIncidentInvestigations to obtain the report ID or display ID first, and then call this operation to query the details.
+// Queries the generated AI investigation results for a specified event. You can first call ListIncidentInvestigations to obtain the report ID or display ID, and then call this operation to query the details.
 //
 // The query priority is as follows:
 //
@@ -4158,11 +4062,11 @@ func (client *Client) GetIncident(request *GetIncidentRequest) (_result *GetInci
 //
 // 2. If the report ID is not specified but IncidentInvestigationDisplayId is specified, the query is performed by display ID.
 //
-// 3. If neither identifier is specified, the most recent successfully completed investigation result for the incident corresponding to IncidentUuid is returned, selected in descending order of investigation end time.
+// 3. If neither identifier is specified, the most recent successfully completed investigation result for the event corresponding to IncidentUuid is returned, sorted in descending order by investigation end time.
 //
 // If no matching investigation record is found, IncidentInvestigation is empty.
 //
-// IncidentInvestigationStatus indicates the judgment category in the report. Both IncidentInvestigationReport and IncidentInvestigationOutput are JSON-formatted strings that must be parsed before their fields can be used. Internal fields may change across report versions, and callers should handle missing fields gracefully. The examples show only partial report content.
+// IncidentInvestigationStatus indicates the judgment category in the report. Both IncidentInvestigationReport and IncidentInvestigationOutput are JSON-formatted strings. You must parse them in JSON format before using their fields. Internal fields may change with report versions, and callers must be compatible with missing fields. The examples show only part of the report content.
 //
 // @param request - GetIncidentInvestigationRequest
 //
@@ -4226,11 +4130,11 @@ func (client *Client) GetIncidentInvestigationWithOptions(request *GetIncidentIn
 
 // Summary:
 //
-// Queries the AI investigation details of a specified incident, including the report ID, investigation time, judgment category, summary, conclusion, and report content.
+// Queries the AI investigation details of a specified event, including the report identifiers, investigation time, judgment category, summary, conclusion, and report content.
 //
 // Description:
 //
-// Queries the AI investigation results that have been generated for a specified incident. You can call ListIncidentInvestigations to obtain the report ID or display ID first, and then call this operation to query the details.
+// Queries the generated AI investigation results for a specified event. You can first call ListIncidentInvestigations to obtain the report ID or display ID, and then call this operation to query the details.
 //
 // The query priority is as follows:
 //
@@ -4238,11 +4142,11 @@ func (client *Client) GetIncidentInvestigationWithOptions(request *GetIncidentIn
 //
 // 2. If the report ID is not specified but IncidentInvestigationDisplayId is specified, the query is performed by display ID.
 //
-// 3. If neither identifier is specified, the most recent successfully completed investigation result for the incident corresponding to IncidentUuid is returned, selected in descending order of investigation end time.
+// 3. If neither identifier is specified, the most recent successfully completed investigation result for the event corresponding to IncidentUuid is returned, sorted in descending order by investigation end time.
 //
 // If no matching investigation record is found, IncidentInvestigation is empty.
 //
-// IncidentInvestigationStatus indicates the judgment category in the report. Both IncidentInvestigationReport and IncidentInvestigationOutput are JSON-formatted strings that must be parsed before their fields can be used. Internal fields may change across report versions, and callers should handle missing fields gracefully. The examples show only partial report content.
+// IncidentInvestigationStatus indicates the judgment category in the report. Both IncidentInvestigationReport and IncidentInvestigationOutput are JSON-formatted strings. You must parse them in JSON format before using their fields. Internal fields may change with report versions, and callers must be compatible with missing fields. The examples show only part of the report content.
 //
 // @param request - GetIncidentInvestigationRequest
 //
@@ -4428,11 +4332,7 @@ func (client *Client) GetNormalizationRule(request *GetNormalizationRuleRequest)
 
 // Summary:
 //
-// Retrieves normalization rule version information.
-//
-// Description:
-//
-// The JsonConfig request parameter is a highly complex JSON configuration. To help you configure it, we provide a supporting utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 获取标准化规则指定版本信息
 //
 // @param request - GetNormalizationRuleVersionRequest
 //
@@ -4492,11 +4392,7 @@ func (client *Client) GetNormalizationRuleVersionWithOptions(request *GetNormali
 
 // Summary:
 //
-// Retrieves normalization rule version information.
-//
-// Description:
-//
-// The JsonConfig request parameter is a highly complex JSON configuration. To help you configure it, we provide a supporting utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 获取标准化规则指定版本信息
 //
 // @param request - GetNormalizationRuleVersionRequest
 //
@@ -4764,11 +4660,11 @@ func (client *Client) GetUserConfig(request *GetUserConfigRequest) (_result *Get
 
 // Summary:
 //
-// Retrieves the list of alert groups.
+// Queries a list of alert groups.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class and configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListAlertAggregationsRequest
 //
@@ -4860,11 +4756,11 @@ func (client *Client) ListAlertAggregationsWithOptions(request *ListAlertAggrega
 
 // Summary:
 //
-// Retrieves the list of alert groups.
+// Queries a list of alert groups.
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration. We provide a utility class and configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. For more information, see [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListAlertAggregationsRequest
 //
@@ -5346,13 +5242,7 @@ func (client *Client) ListDataConnectors(request *ListDataConnectorsRequest) (_r
 
 // Summary:
 //
-// Queries data ingestion templates.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// 查询接入模板
 //
 // @param request - ListDataIngestionTemplatesRequest
 //
@@ -5424,13 +5314,7 @@ func (client *Client) ListDataIngestionTemplatesWithOptions(request *ListDataIng
 
 // Summary:
 //
-// Queries data ingestion templates.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// 查询接入模板
 //
 // @param request - ListDataIngestionTemplatesRequest
 //
@@ -5666,7 +5550,7 @@ func (client *Client) ListDataSetRecords(request *ListDataSetRecordsRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of datasets.
+// 获取数据集列表
 //
 // @param tmpReq - ListDataSetsRequest
 //
@@ -5768,7 +5652,7 @@ func (client *Client) ListDataSetsWithOptions(tmpReq *ListDataSetsRequest, runti
 
 // Summary:
 //
-// Retrieves a list of datasets.
+// 获取数据集列表
 //
 // @param request - ListDataSetsRequest
 //
@@ -5786,13 +5670,7 @@ func (client *Client) ListDataSets(request *ListDataSetsRequest) (_result *ListD
 
 // Summary:
 //
-// Queries data source templates.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
+// 查询数据源模板
 //
 // @param tmpReq - ListDataSourceTemplatesRequest
 //
@@ -5862,13 +5740,7 @@ func (client *Client) ListDataSourceTemplatesWithOptions(tmpReq *ListDataSourceT
 
 // Summary:
 //
-// Queries data source templates.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
+// 查询数据源模板
 //
 // @param request - ListDataSourceTemplatesRequest
 //
@@ -5890,9 +5762,7 @@ func (client *Client) ListDataSourceTemplates(request *ListDataSourceTemplatesRe
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Notification delivery is subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time frame.
 //
 // @param tmpReq - ListDataSourcesRequest
 //
@@ -6030,9 +5900,7 @@ func (client *Client) ListDataSourcesWithOptions(tmpReq *ListDataSourcesRequest,
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Notification delivery is subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time frame.
 //
 // @param request - ListDataSourcesRequest
 //
@@ -6050,13 +5918,13 @@ func (client *Client) ListDataSources(request *ListDataSourcesRequest) (_result 
 
 // Summary:
 //
-// Retrieves a list of detection rules.
+// Queries the list of detection rules.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
+// Notifications are subject to frequency and time limits.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
 //
 // @param tmpReq - ListDetectionRulesRequest
 //
@@ -6074,6 +5942,10 @@ func (client *Client) ListDetectionRulesWithOptions(tmpReq *ListDetectionRulesRe
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.DetectionRuleIds) {
 		request.DetectionRuleIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DetectionRuleIds, dara.String("DetectionRuleIds"), dara.String("simple"))
+	}
+
+	if !dara.IsNil(tmpReq.LogSchemaIds) {
+		request.LogSchemaIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LogSchemaIds, dara.String("LogSchemaIds"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
@@ -6133,6 +6005,10 @@ func (client *Client) ListDetectionRulesWithOptions(tmpReq *ListDetectionRulesRe
 		body["LogSchemaId"] = request.LogSchemaId
 	}
 
+	if !dara.IsNil(request.LogSchemaIdsShrink) {
+		body["LogSchemaIds"] = request.LogSchemaIdsShrink
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -6190,13 +6066,13 @@ func (client *Client) ListDetectionRulesWithOptions(tmpReq *ListDetectionRulesRe
 
 // Summary:
 //
-// Retrieves a list of detection rules.
+// Queries the list of detection rules.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
+// Notifications are subject to frequency and time limits.
 //
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent at other times.
 //
 // @param request - ListDetectionRulesRequest
 //
@@ -6214,13 +6090,11 @@ func (client *Client) ListDetectionRules(request *ListDetectionRulesRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of events.
+// Retrieves a list of incidents.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Notification delivery is subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time frame.
 //
 // @param tmpReq - ListIncidentsRequest
 //
@@ -6360,13 +6234,11 @@ func (client *Client) ListIncidentsWithOptions(tmpReq *ListIncidentsRequest, run
 
 // Summary:
 //
-// Retrieves a list of events.
+// Retrieves a list of incidents.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Notification delivery is subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time frame.
 //
 // @param request - ListIncidentsRequest
 //
@@ -6482,7 +6354,7 @@ func (client *Client) ListLogProjects(request *ListLogProjectsRequest) (_result 
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The request parameter JsonConfig involves complex JSON configurations. We provide a supporting utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListLogRegionsRequest
 //
@@ -6534,7 +6406,7 @@ func (client *Client) ListLogRegionsWithOptions(request *ListLogRegionsRequest, 
 //
 // Description:
 //
-// The \\`JsonConfig\\` request parameter is a complex JSON configuration. A supporting tool class provides configuration examples. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The request parameter JsonConfig involves complex JSON configurations. We provide a supporting utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListLogRegionsRequest
 //
@@ -6552,13 +6424,11 @@ func (client *Client) ListLogRegions(request *ListLogRegionsRequest) (_result *L
 
 // Summary:
 //
-// Retrieves the list of log stores.
+// Retrieves a list of log stores.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Notification delivery is subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00, and no notifications are sent at other times.
 //
 // @param request - ListLogStoresRequest
 //
@@ -6630,13 +6500,11 @@ func (client *Client) ListLogStoresWithOptions(request *ListLogStoresRequest, ru
 
 // Summary:
 //
-// Retrieves the list of log stores.
+// Retrieves a list of log stores.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time window.
+// Notification delivery is subject to frequency and time limits. Each user can receive a maximum of two notifications per day between 08:00 and 20:00, and no notifications are sent at other times.
 //
 // @param request - ListLogStoresRequest
 //
@@ -6946,11 +6814,7 @@ func (client *Client) ListNormalizationRuleCapacities(request *ListNormalization
 
 // Summary:
 //
-// Retrieves a list of normalization rule versions.
-//
-// Description:
-//
-// The JsonConfig input parameter is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 获取标准化规则版本列表
 //
 // @param request - ListNormalizationRuleVersionsRequest
 //
@@ -7014,11 +6878,7 @@ func (client *Client) ListNormalizationRuleVersionsWithOptions(request *ListNorm
 
 // Summary:
 //
-// Retrieves a list of normalization rule versions.
-//
-// Description:
-//
-// The JsonConfig input parameter is a complex JSON configuration. We provide a utility class to help with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 获取标准化规则版本列表
 //
 // @param request - ListNormalizationRuleVersionsRequest
 //
@@ -7184,7 +7044,7 @@ func (client *Client) ListNormalizationRules(request *ListNormalizationRulesRequ
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The request parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, we provide a utility class. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationSchemasRequest
 //
@@ -7264,7 +7124,7 @@ func (client *Client) ListNormalizationSchemasWithOptions(request *ListNormaliza
 //
 // Description:
 //
-// The input parameter JsonConfig is a complex JSON configuration string. A utility class is provided with specific configuration examples. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The request parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, we provide a utility class. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - ListNormalizationSchemasRequest
 //
@@ -7368,11 +7228,7 @@ func (client *Client) ListNormalizationSecurityDomains(request *ListNormalizatio
 
 // Summary:
 //
-// Retrieves a list of products.
-//
-// Description:
-//
-// The input parameter JsonConfig is a highly complex JSON configuration. A utility class with specific configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 获取产品列表
 //
 // @param tmpReq - ListProductsRequest
 //
@@ -7454,11 +7310,7 @@ func (client *Client) ListProductsWithOptions(tmpReq *ListProductsRequest, runti
 
 // Summary:
 //
-// Retrieves a list of products.
-//
-// Description:
-//
-// The input parameter JsonConfig is a highly complex JSON configuration. A utility class with specific configuration examples is provided. For more information, refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 获取产品列表
 //
 // @param request - ListProductsRequest
 //
@@ -7670,13 +7522,11 @@ func (client *Client) ListResponseRuleFields(request *ListResponseRuleFieldsRequ
 
 // Summary:
 //
-// Queries automatic response rules by paging.
+// Queries automatic response rules by page.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Notification sending is limited by frequency and time. Each user can receive a maximum of two notifications per day between 08:00 and 20:00, and no notifications are sent at other times.
 //
 // @param request - ListResponseRulesRequest
 //
@@ -7768,13 +7618,11 @@ func (client *Client) ListResponseRulesWithOptions(request *ListResponseRulesReq
 
 // Summary:
 //
-// Queries automatic response rules by paging.
+// Queries automatic response rules by page.
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Notification sending is limited by frequency and time. Each user can receive a maximum of two notifications per day between 08:00 and 20:00, and no notifications are sent at other times.
 //
 // @param request - ListResponseRulesRequest
 //
@@ -8092,13 +7940,7 @@ func (client *Client) ListUpgradeItems(request *ListUpgradeItemsRequest) (_resul
 
 // Summary:
 //
-// Retrieves the list of vendors.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// 获取厂商列表
 //
 // @param tmpReq - ListVendorsRequest
 //
@@ -8176,13 +8018,7 @@ func (client *Client) ListVendorsWithOptions(tmpReq *ListVendorsRequest, runtime
 
 // Summary:
 //
-// Retrieves the list of vendors.
-//
-// Description:
-//
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user can receive a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// 获取厂商列表
 //
 // @param request - ListVendorsRequest
 //
@@ -8356,11 +8192,11 @@ func (client *Client) ResetDataStorage(request *ResetDataStorageRequest) (_resul
 
 // Summary:
 //
-// Incrementally resumes the SSE event stream for a specified security operations Agent turn based on the run cursor.
+// Resumes the Server-Sent Events (SSE) event stream for a specified security operations agent turn incrementally based on the run cursor.
 //
 // Description:
 //
-// Resumes the SSE event stream for a security operations Agent conversation turn from a specified cursor.
+// Resumes the event stream for a security operations agent conversation turn from a specified cursor.
 //
 // @param tmpReq - ResumeCopilotTurnStreamRequest
 //
@@ -8375,11 +8211,11 @@ func (client *Client) ResumeCopilotTurnStreamWithSSE(tmpReq *ResumeCopilotTurnSt
 
 // Summary:
 //
-// Incrementally resumes the SSE event stream for a specified security operations Agent turn based on the run cursor.
+// Resumes the Server-Sent Events (SSE) event stream for a specified security operations agent turn incrementally based on the run cursor.
 //
 // Description:
 //
-// Resumes the SSE event stream for a security operations Agent conversation turn from a specified cursor.
+// Resumes the event stream for a security operations agent conversation turn from a specified cursor.
 //
 // @param tmpReq - ResumeCopilotTurnStreamRequest
 //
@@ -8449,11 +8285,11 @@ func (client *Client) ResumeCopilotTurnStreamWithOptions(tmpReq *ResumeCopilotTu
 
 // Summary:
 //
-// Incrementally resumes the SSE event stream for a specified security operations Agent turn based on the run cursor.
+// Resumes the Server-Sent Events (SSE) event stream for a specified security operations agent turn incrementally based on the run cursor.
 //
 // Description:
 //
-// Resumes the SSE event stream for a security operations Agent conversation turn from a specified cursor.
+// Resumes the event stream for a security operations agent conversation turn from a specified cursor.
 //
 // @param request - ResumeCopilotTurnStreamRequest
 //
@@ -8565,9 +8401,7 @@ func (client *Client) SetDefaultNormalizationRuleVersion(request *SetDefaultNorm
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Notification delivery is subject to frequency and time limits. Each user can receive up to two notifications per day between 08:00 and 20:00, and no notifications are sent outside this time frame.
 //
 // @param request - UpdateAlertRequest
 //
@@ -8635,9 +8469,7 @@ func (client *Client) UpdateAlertWithOptions(request *UpdateAlertRequest, runtim
 //
 // Description:
 //
-// Notifications are subject to frequency and time restrictions.
-//
-// Each user receives a maximum of two notifications per day between 08:00 and 20:00. No notifications are sent outside this time range.
+// Notification delivery is subject to frequency and time limits. Each user can receive up to two notifications per day between 08:00 and 20:00, and no notifications are sent outside this time frame.
 //
 // @param request - UpdateAlertRequest
 //
@@ -9033,11 +8865,7 @@ func (client *Client) UpdateDataConnector(request *UpdateDataConnectorRequest) (
 
 // Summary:
 //
-// Updates a data ingestion policy.
-//
-// Description:
-//
-// Notifications are subject to frequency and time limits. A maximum of two notifications are sent to each user per day between 08:00 and 20:00.
+// 更新数据接入信息
 //
 // @param request - UpdateDataIngestionRequest
 //
@@ -9105,11 +8933,7 @@ func (client *Client) UpdateDataIngestionWithOptions(request *UpdateDataIngestio
 
 // Summary:
 //
-// Updates a data ingestion policy.
-//
-// Description:
-//
-// Notifications are subject to frequency and time limits. A maximum of two notifications are sent to each user per day between 08:00 and 20:00.
+// 更新数据接入信息
 //
 // @param request - UpdateDataIngestionRequest
 //
@@ -9127,11 +8951,7 @@ func (client *Client) UpdateDataIngestion(request *UpdateDataIngestionRequest) (
 
 // Summary:
 //
-// Updates a data ingestion template.
-//
-// Description:
-//
-// Frequency and time limits apply to notifications. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside of this time period.
+// 更新接入模板
 //
 // @param request - UpdateDataIngestionTemplateRequest
 //
@@ -9199,11 +9019,7 @@ func (client *Client) UpdateDataIngestionTemplateWithOptions(request *UpdateData
 
 // Summary:
 //
-// Updates a data ingestion template.
-//
-// Description:
-//
-// Frequency and time limits apply to notifications. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside of this time period.
+// 更新接入模板
 //
 // @param request - UpdateDataIngestionTemplateRequest
 //
@@ -9221,11 +9037,7 @@ func (client *Client) UpdateDataIngestionTemplate(request *UpdateDataIngestionTe
 
 // Summary:
 //
-// Updates a dataset.
-//
-// Description:
-//
-// Notifications are limited by frequency and time. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time range.
+// 更新数据集
 //
 // @param request - UpdateDataSetRequest
 //
@@ -9304,11 +9116,7 @@ func (client *Client) UpdateDataSetWithOptions(request *UpdateDataSetRequest, ru
 
 // Summary:
 //
-// Updates a dataset.
-//
-// Description:
-//
-// Notifications are limited by frequency and time. Each user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time range.
+// 更新数据集
 //
 // @param request - UpdateDataSetRequest
 //
@@ -9416,11 +9224,7 @@ func (client *Client) UpdateDataSetRecord(request *UpdateDataSetRecordRequest) (
 
 // Summary:
 //
-// Updates a data source.
-//
-// Description:
-//
-// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 更新数据源
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -9515,11 +9319,7 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 
 // Summary:
 //
-// Updates a data source.
-//
-// Description:
-//
-// The input parameter JsonConfig is a complex JSON configuration. To help you configure it, we provide a utility class with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 更新数据源
 //
 // @param request - UpdateDataSourceRequest
 //
@@ -9537,11 +9337,7 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 
 // Summary:
 //
-// Modifies a data source template.
-//
-// Description:
-//
-// The JsonConfig input parameter accepts a complex JSON configuration. To simplify this process, a supporting tool class is available. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 修改数据源模板
 //
 // @param tmpReq - UpdateDataSourceTemplateRequest
 //
@@ -9633,11 +9429,7 @@ func (client *Client) UpdateDataSourceTemplateWithOptions(tmpReq *UpdateDataSour
 
 // Summary:
 //
-// Modifies a data source template.
-//
-// Description:
-//
-// The JsonConfig input parameter accepts a complex JSON configuration. To simplify this process, a supporting tool class is available. For more information, see the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 修改数据源模板
 //
 // @param request - UpdateDataSourceTemplateRequest
 //
@@ -9655,11 +9447,11 @@ func (client *Client) UpdateDataSourceTemplate(request *UpdateDataSourceTemplate
 
 // Summary:
 //
-// Modifies the log storage region in log management.
+// Updates the log storage region in log management.
 //
 // Description:
 //
-// Updates the log storage region or the global switch for multi-account centralized delivery. Submit these two types of operations separately. Before modifying the global switch, query GetDataStorage first and use the returned ConfigurationVersion and TargetProject. Do not copy the fixed version and account from the examples. The current V2 version does not support the legacy DeliveryStatus global switch. After writing, re-query GetDataStorage to obtain the latest configuration.
+// Updates the log storage region or the global switch for multi-account centralized delivery. Submit these two operations separately. Before modifying the global switch, call GetDataStorage and use the returned ConfigurationVersion and TargetProject values. Do not copy the fixed version and account from the examples. The current V2 version does not support the legacy DeliveryStatus global switch. After the update, call GetDataStorage again to obtain the latest configuration.
 //
 // @param request - UpdateDataStorageRequest
 //
@@ -9731,11 +9523,11 @@ func (client *Client) UpdateDataStorageWithOptions(request *UpdateDataStorageReq
 
 // Summary:
 //
-// Modifies the log storage region in log management.
+// Updates the log storage region in log management.
 //
 // Description:
 //
-// Updates the log storage region or the global switch for multi-account centralized delivery. Submit these two types of operations separately. Before modifying the global switch, query GetDataStorage first and use the returned ConfigurationVersion and TargetProject. Do not copy the fixed version and account from the examples. The current V2 version does not support the legacy DeliveryStatus global switch. After writing, re-query GetDataStorage to obtain the latest configuration.
+// Updates the log storage region or the global switch for multi-account centralized delivery. Submit these two operations separately. Before modifying the global switch, call GetDataStorage and use the returned ConfigurationVersion and TargetProject values. Do not copy the fixed version and account from the examples. The current V2 version does not support the legacy DeliveryStatus global switch. After the update, call GetDataStorage again to obtain the latest configuration.
 //
 // @param request - UpdateDataStorageRequest
 //
@@ -9757,7 +9549,7 @@ func (client *Client) UpdateDataStorage(request *UpdateDataStorageRequest) (_res
 //
 // Description:
 //
-// Before calling this operation, make sure that the Cloud Threat Detection and Response (CTDR) data storage service is activated for your account and that the data storage order has not expired. Call the GetDataStorage operation to check the data storage order status.
+// Before you call this operation, make sure that the Cloud Security Center (Cloud SIEM) data storage service is activated for your account and the data storage order has not expired. You can call the GetDataStorage operation to check the status of the data storage order.
 //
 // @param tmpReq - UpdateDataStorageDeliveryRequest
 //
@@ -9847,7 +9639,7 @@ func (client *Client) UpdateDataStorageDeliveryWithOptions(tmpReq *UpdateDataSto
 //
 // Description:
 //
-// Before calling this operation, make sure that the Cloud Threat Detection and Response (CTDR) data storage service is activated for your account and that the data storage order has not expired. Call the GetDataStorage operation to check the data storage order status.
+// Before you call this operation, make sure that the Cloud Security Center (Cloud SIEM) data storage service is activated for your account and the data storage order has not expired. You can call the GetDataStorage operation to check the status of the data storage order.
 //
 // @param request - UpdateDataStorageDeliveryRequest
 //
@@ -10403,11 +10195,7 @@ func (client *Client) UpdateNormalizationSchema(request *UpdateNormalizationSche
 
 // Summary:
 //
-// Updates a product.
-//
-// Description:
-//
-// The input parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, a utility class is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 更新产品品
 //
 // @param request - UpdateProductRequest
 //
@@ -10471,11 +10259,7 @@ func (client *Client) UpdateProductWithOptions(request *UpdateProductRequest, ru
 
 // Summary:
 //
-// Updates a product.
-//
-// Description:
-//
-// The input parameter JsonConfig is a complex JSON configuration. To help with specific configuration examples, a utility class is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// 更新产品品
 //
 // @param request - UpdateProductRequest
 //
@@ -10497,7 +10281,7 @@ func (client *Client) UpdateProduct(request *UpdateProductRequest) (_result *Upd
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. To help you configure it, a supporting utility class with examples is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a very complex JSON configuration. Therefore, we provide a utility class to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateResponseRuleRequest
 //
@@ -10593,7 +10377,7 @@ func (client *Client) UpdateResponseRuleWithOptions(request *UpdateResponseRuleR
 //
 // Description:
 //
-// The JsonConfig input parameter is a complex JSON configuration. To help you configure it, a supporting utility class with examples is provided. Refer to the [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
+// The JsonConfig request parameter is a very complex JSON configuration. Therefore, we provide a utility class to help with specific configuration examples. Refer to [Demo](https://github.com/aliyun/cloud-siem-client/blob/master/src/main/java/com/aliyun/security/cloudsiem/client/sample/JobBuilderSample.java).
 //
 // @param request - UpdateResponseRuleRequest
 //
@@ -10611,11 +10395,7 @@ func (client *Client) UpdateResponseRule(request *UpdateResponseRuleRequest) (_r
 
 // Summary:
 //
-// Updates a vendor.
-//
-// Description:
-//
-// The delivery of notifications is limited by frequency and time. A user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time period.
+// 更新厂商
 //
 // @param request - UpdateVendorRequest
 //
@@ -10675,11 +10455,7 @@ func (client *Client) UpdateVendorWithOptions(request *UpdateVendorRequest, runt
 
 // Summary:
 //
-// Updates a vendor.
-//
-// Description:
-//
-// The delivery of notifications is limited by frequency and time. A user can receive a maximum of two notifications per day between 08:00 and 20:00. Notifications are not sent outside this time period.
+// 更新厂商
 //
 // @param request - UpdateVendorRequest
 //

@@ -28,19 +28,19 @@ type iListDetectionRulesResponseBody interface {
 type ListDetectionRulesResponseBody struct {
 	// The list of detection rules.
 	DetectionRules []*ListDetectionRulesResponseBodyDetectionRules `json:"DetectionRules,omitempty" xml:"DetectionRules,omitempty" type:"Repeated"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of data entries to return in this request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the current page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ func (s *ListDetectionRulesResponseBody) Validate() error {
 }
 
 type ListDetectionRulesResponseBodyDetectionRules struct {
-	// The alert ATT&CK technique.
+	// The ATT&CK technique of the alert.
 	//
 	// example:
 	//
 	// Discovery
 	AlertAttCk *string `json:"AlertAttCk,omitempty" xml:"AlertAttCk,omitempty"`
-	// The ATT&CK technique mapping.
+	// The MITRE ATT&CK technique mapping.
 	AlertAttCkMapping *string `json:"AlertAttCkMapping,omitempty" xml:"AlertAttCkMapping,omitempty"`
 	// The alert description. You can use $$ to reference query output fields.
 	//
@@ -182,6 +182,10 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	// 1
 	AlertLevel *string `json:"AlertLevel,omitempty" xml:"AlertLevel,omitempty"`
 	// The alert level mapping.
+	//
+	// example:
+	//
+	// 1
 	AlertLevelMapping *string `json:"AlertLevelMapping,omitempty" xml:"AlertLevelMapping,omitempty"`
 	// The alert name. You can use $$ to reference query output fields.
 	//
@@ -189,21 +193,21 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// Detected high-frequency multi-type network attacks from $src_ip$
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The alert template ID of the detection rule. Valid values:
+	// The ID of the alert template for the detection rule. Valid values:
 	//
-	// - ALERT_ACTIVITY: other alerts.
+	// - ALERT_ACTIVITY: other alerts
 	//
-	// - EDR_ALERT_ACTIVITY: endpoint detection and response alerts.
+	// - EDR_ALERT_ACTIVITY: endpoint detection and response alerts
 	//
-	// - FIREWALL_ALERT_ACTIVITY: firewall alerts.
+	// - FIREWALL_ALERT_ACTIVITY: firewall alerts
 	//
-	// - WAF_ALERT_ACTIVITY: web application firewall alerts.
+	// - WAF_ALERT_ACTIVITY: Web Application Firewall alerts
 	//
 	// example:
 	//
 	// ALERT_ACTIVITY
 	AlertSchemaId *string `json:"AlertSchemaId,omitempty" xml:"AlertSchemaId,omitempty"`
-	// The alert tactic phase.
+	// The tactic phase of the alert.
 	//
 	// example:
 	//
@@ -221,7 +225,7 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// alert_type,ip
 	AlertThresholdGroup *string `json:"AlertThresholdGroup,omitempty" xml:"AlertThresholdGroup,omitempty"`
-	// The alert threshold period length.
+	// The length of the alert threshold period.
 	//
 	// example:
 	//
@@ -235,7 +239,7 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The alerting type mapping.
 	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
-	// The creation time. Format: YYYY-MM-DD HH:mm:ss.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -299,11 +303,11 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	DetectionRuleName *string `json:"DetectionRuleName,omitempty" xml:"DetectionRuleName,omitempty"`
 	// The status of the detection rule. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: enabled
 	//
-	// - disabled: Disabled.
+	// - disabled: disabled
 	//
-	// - testing: Testing.
+	// - testing: testing
 	//
 	// example:
 	//
@@ -311,11 +315,11 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	DetectionRuleStatus *string `json:"DetectionRuleStatus,omitempty" xml:"DetectionRuleStatus,omitempty"`
 	// The type of the detection rule. Valid values:
 	//
-	// - preset: preset detection rule.
+	// - preset: preset detection rule
 	//
-	// - custom: custom detection rule.
+	// - custom: custom detection rule
 	//
-	// - custom_template: rule template.
+	// - custom_template: rule template
 	//
 	// example:
 	//
@@ -323,23 +327,23 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	DetectionRuleType *string `json:"DetectionRuleType,omitempty" xml:"DetectionRuleType,omitempty"`
 	// The entity mapping configuration.
 	EntityMappings []*ListDetectionRulesResponseBodyDetectionRulesEntityMappings `json:"EntityMappings,omitempty" xml:"EntityMappings,omitempty" type:"Repeated"`
-	// The event aggregation period configuration.
+	// The incident aggregation period configuration.
 	//
 	// example:
 	//
 	// 5m
 	IncidentAggregationExpression *string `json:"IncidentAggregationExpression,omitempty" xml:"IncidentAggregationExpression,omitempty"`
-	// The event aggregation type. Valid values:
+	// The incident aggregation type. Valid values:
 	//
-	// - none: No event is generated.
+	// - none: no event generated
 	//
-	// - graph_compute: Graph computing (supported by predefined rules).
+	// - graph_compute: graph computing (supported by predefined rules)
 	//
-	// - expert: Expert rule.
+	// - expert: expert rule
 	//
-	// - passthrough: Alerting pass-through (one-to-one).
+	// - passthrough: alerting pass-through (one-to-one)
 	//
-	// - window: Same-type aggregation (window).
+	// - window: similar aggregation (window)
 	//
 	// example:
 	//
@@ -373,19 +377,19 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// }
 	PlaybookParameters *string `json:"PlaybookParameters,omitempty" xml:"PlaybookParameters,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
 	// example:
 	//
 	// dde983ed-eb56-45ea-ac2e-3b12b2a9****
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The scheduling start time (13-digit timestamp).
+	// The start time of the schedule. The value is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1733269771123
 	ScheduleBeginTime *int64 `json:"ScheduleBeginTime,omitempty" xml:"ScheduleBeginTime,omitempty"`
-	// The scheduling cron expression. This parameter is required when ScheduleType is set to cron.
+	// The cron expression for scheduling. This parameter is required when ScheduleType is set to cron.
 	//
 	// example:
 	//
@@ -397,29 +401,29 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// 1
 	ScheduleMaxRetries *int32 `json:"ScheduleMaxRetries,omitempty" xml:"ScheduleMaxRetries,omitempty"`
-	// The maximum timeout period, in seconds. Valid values: 60 to 1800.
+	// The maximum timeout period in seconds. Valid values: 60 to 1800.
 	//
 	// example:
 	//
 	// 60
 	ScheduleMaxTimeout *int32 `json:"ScheduleMaxTimeout,omitempty" xml:"ScheduleMaxTimeout,omitempty"`
-	// The scheduling type. Valid values:
+	// The schedule type. Valid values:
 	//
-	// - fixed_rate: fixed interval.
+	// - fixed_rate: fixed interval
 	//
-	// - cron: cron expression.
+	// - cron: cron expression
 	//
 	// example:
 	//
 	// fixed_rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The scheduling window length.
+	// The length of the schedule window.
 	//
 	// example:
 	//
 	// 5m
 	ScheduleWindow *string `json:"ScheduleWindow,omitempty" xml:"ScheduleWindow,omitempty"`
-	// The update time. Format: YYYY-MM-DD HH:mm:ss.
+	// The update time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -780,7 +784,7 @@ func (s *ListDetectionRulesResponseBodyDetectionRules) Validate() error {
 type ListDetectionRulesResponseBodyDetectionRulesEntityMappings struct {
 	// The entity mapping configuration.
 	NormalizationFieldMappings []*ListDetectionRulesResponseBodyDetectionRulesEntityMappingsNormalizationFieldMappings `json:"NormalizationFieldMappings,omitempty" xml:"NormalizationFieldMappings,omitempty" type:"Repeated"`
-	// The entity type ID.
+	// The ID of the entity type.
 	//
 	// example:
 	//
@@ -828,19 +832,19 @@ func (s *ListDetectionRulesResponseBodyDetectionRulesEntityMappings) Validate() 
 }
 
 type ListDetectionRulesResponseBodyDetectionRulesEntityMappingsNormalizationFieldMappings struct {
-	// The mapping field.
+	// The mapped field.
 	//
 	// example:
 	//
 	// ip
 	MappingFieldName *string `json:"MappingFieldName,omitempty" xml:"MappingFieldName,omitempty"`
-	// The normalized entity field.
+	// The standard field of the entity.
 	//
 	// example:
 	//
 	// src_ip
 	NormalizationFieldName *string `json:"NormalizationFieldName,omitempty" xml:"NormalizationFieldName,omitempty"`
-	// The data type of the normalized entity field.
+	// The data type of the standard field of the entity.
 	//
 	// example:
 	//
@@ -888,7 +892,7 @@ func (s *ListDetectionRulesResponseBodyDetectionRulesEntityMappingsNormalization
 }
 
 type ListDetectionRulesResponseBodyDetectionRulesPlaybook struct {
-	// The input parameter configuration for invoking the playbook.
+	// The input parameter configuration for calling the playbook.
 	//
 	// example:
 	//

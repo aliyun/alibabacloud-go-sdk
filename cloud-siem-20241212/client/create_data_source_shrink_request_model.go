@@ -56,7 +56,7 @@ type CreateDataSourceShrinkRequest struct {
 	//
 	// center
 	DataSourceFrom *string `json:"DataSourceFrom,omitempty" xml:"DataSourceFrom,omitempty"`
-	// A list of data source IDs.
+	// The list of data source IDs.
 	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
 	// The name of the data source.
 	//
@@ -76,7 +76,7 @@ type CreateDataSourceShrinkRequest struct {
 	//
 	// alibaba_cloud_waf_flow_log_1766185894104675
 	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
-	// The IDs of associated data access instances.
+	// The data ingestion IDs associated with the data source.
 	DataSourceReferencesShrink *string `json:"DataSourceReferences,omitempty" xml:"DataSourceReferences,omitempty"`
 	// The list of Simple Log Service projects.
 	DataSourceStores []*CreateDataSourceShrinkRequestDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
@@ -96,7 +96,7 @@ type CreateDataSourceShrinkRequest struct {
 	//
 	// preset
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -124,7 +124,7 @@ type CreateDataSourceShrinkRequest struct {
 	//
 	// mde_raw
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The user ID for data ingestion.
+	// The ID of the user for data ingestion.
 	//
 	// example:
 	//
@@ -132,25 +132,25 @@ type CreateDataSourceShrinkRequest struct {
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - desc: descending.
+	// - desc: Descending order.
 	//
-	// - asc: ascending.
+	// - asc: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets are in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are outside China.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose perspective the administrator assumes.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -349,7 +349,7 @@ type CreateDataSourceShrinkRequestDataSourceStores struct {
 	//
 	// 1
 	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
-	// The status of the log storage. Valid values:
+	// The log storage status. Valid values:
 	//
 	// - normal
 	//

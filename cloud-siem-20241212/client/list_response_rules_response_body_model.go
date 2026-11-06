@@ -26,13 +26,13 @@ type iListResponseRulesResponseBody interface {
 }
 
 type ListResponseRulesResponseBody struct {
-	// The maximum number of records returned in this request.
+	// The maximum number of records returned for the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The position from which the current call starts reading. An empty value indicates that all data has been read.
+	// The position to which the current call has read. An empty value indicates that all data has been read.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type ListResponseRulesResponseBody struct {
 	//
 	// AAAAASLVeIxed4466E0LVmGkzwS6hJKd9DGVGMDRM6Lu****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListResponseRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of automatic response rules.
 	ResponseRules []*ListResponseRulesResponseBodyResponseRules `json:"ResponseRules,omitempty" xml:"ResponseRules,omitempty" type:"Repeated"`
-	// The total number of records that match the request conditions. This parameter is optional and is not returned by default.
+	// The total number of data records that meet the request conditions. This parameter is optional and is not returned by default.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ func (s *ListResponseRulesResponseBody) Validate() error {
 }
 
 type ListResponseRulesResponseBodyResponseRules struct {
-	// The time when the rule was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -167,17 +167,17 @@ type ListResponseRulesResponseBodyResponseRules struct {
 	ResponseActionConfig *string `json:"ResponseActionConfig,omitempty" xml:"ResponseActionConfig,omitempty"`
 	// The action type of the automatic response rule. Valid values:
 	//
-	// - doPlaybook: execute a playbook
+	// - doPlaybook: Execute a playbook.
 	//
-	// - changeEventStatus: update event status
+	// - changeEventStatus: Update the event status.
 	//
-	// - changeThreatLevel: update event threat level
+	// - changeThreatLevel: Update the event threat level.
 	//
-	// - addEventTag: add an event label
+	// - addEventTag: Add an event tag.
 	//
-	// - deleteEventTag: delete an event label
+	// - deleteEventTag: Delete an event tag.
 	//
-	// - alertWhitelist: add alert to whitelist
+	// - alertWhitelist: Add an alert to the whitelist.
 	//
 	// example:
 	//
@@ -206,13 +206,18 @@ type ListResponseRulesResponseBodyResponseRules struct {
 	// example:
 	//
 	// 1
-	ResponseRulePriority *int32  `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	ResponseRuleRemark   *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
+	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
+	// The remarks of the response rule.
+	//
+	// example:
+	//
+	// Send a notification when Security Center detects high-risk or critical malicious process (cloud antivirus) alerts. Only notify, do not take action
+	ResponseRuleRemark *string `json:"ResponseRuleRemark,omitempty" xml:"ResponseRuleRemark,omitempty"`
 	// The status of the automatic response rule. Valid values:
 	//
-	// - 0: disabled
+	// - 0: Disabled.
 	//
-	// - 100: enabled
+	// - 100: Enabled.
 	//
 	// example:
 	//
@@ -220,9 +225,9 @@ type ListResponseRulesResponseBodyResponseRules struct {
 	ResponseRuleStatus *int32 `json:"ResponseRuleStatus,omitempty" xml:"ResponseRuleStatus,omitempty"`
 	// The type of the response rule. Valid values:
 	//
-	// - preset: predefined
+	// - preset: Preset.
 	//
-	// - custom: custom
+	// - custom: Custom.
 	//
 	// example:
 	//
@@ -230,17 +235,17 @@ type ListResponseRulesResponseBodyResponseRules struct {
 	ResponseRuleType *string `json:"ResponseRuleType,omitempty" xml:"ResponseRuleType,omitempty"`
 	// The trigger type of the automatic response rule. Valid values:
 	//
-	// - event: event occurred
+	// - event: Event occurrence.
 	//
-	// - event_update: event updated
+	// - event_update: Event update.
 	//
-	// - alert: alert occurred
+	// - alert: Alert occurrence.
 	//
 	// example:
 	//
 	// event
 	ResponseTriggerType *string `json:"ResponseTriggerType,omitempty" xml:"ResponseTriggerType,omitempty"`
-	// The time when the rule was last updated.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

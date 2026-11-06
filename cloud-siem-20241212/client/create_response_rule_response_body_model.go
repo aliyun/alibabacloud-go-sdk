@@ -22,7 +22,7 @@ type CreateResponseRuleResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the automatic response rule.
+	// The ID of the automated response rule.
 	//
 	// example:
 	//

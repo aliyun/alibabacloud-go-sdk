@@ -22,13 +22,13 @@ type iListNormalizationSchemasResponseBody interface {
 }
 
 type ListNormalizationSchemasResponseBody struct {
-	// The maximum number of entries to return in this request.
+	// The maximum number of entries to return in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. You do not need to specify this parameter for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+	// The token used to retrieve the next page of results. Leave this parameter empty for the first request or when no more results are available. For subsequent requests, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListNormalizationSchemasResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The list of normalization schemas.
 	NormalizationSchemas []*ListNormalizationSchemasResponseBodyNormalizationSchemas `json:"NormalizationSchemas,omitempty" xml:"NormalizationSchemas,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -117,100 +117,97 @@ func (s *ListNormalizationSchemasResponseBody) Validate() error {
 }
 
 type ListNormalizationSchemasResponseBodyNormalizationSchemas struct {
-	// The creation time.
+	// The time when the normalization schema was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1736386610000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The normalization rule category ID.
+	// The ID of the normalization rule category.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The field source. Valid values:
+	// The source of the field. Valid values:
 	//
-	// - normalized: normalized field.
+	// - normalized: Normalized field.
 	//
-	// - native: native field.
+	// - native: Native field.
 	//
 	// example:
 	//
 	// normalized
 	NormalizationFieldSource *string `json:"NormalizationFieldSource,omitempty" xml:"NormalizationFieldSource,omitempty"`
-	// The normalization schema description.
+	// The description of the normalization schema.
 	//
 	// example:
 	//
 	// Network flow log
 	NormalizationSchemaDescription *string `json:"NormalizationSchemaDescription,omitempty" xml:"NormalizationSchemaDescription,omitempty"`
-	// The normalization schema source. Valid values:
-	//
-	// - preset: predefined.
-	//
-	// - custom: custom.
+	// The source of the normalization schema. Valid values: preset and custom.
 	//
 	// example:
 	//
 	// preset
 	NormalizationSchemaFrom *string `json:"NormalizationSchemaFrom,omitempty" xml:"NormalizationSchemaFrom,omitempty"`
-	// The normalization schema ID.
+	// The ID of the normalization schema.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The normalization schema name.
+	// The name of the normalization schema.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationSchemaName *string `json:"NormalizationSchemaName,omitempty" xml:"NormalizationSchemaName,omitempty"`
-	// The LogStore to which the normalization output is written.
+	// The Logstore for normalized output.
 	//
 	// example:
 	//
 	// network-activity
 	NormalizationSchemaTargetLogStore *string `json:"NormalizationSchemaTargetLogStore,omitempty" xml:"NormalizationSchemaTargetLogStore,omitempty"`
-	// The normalization schema type.
+	// The type of the normalization schema.
 	//
 	// example:
 	//
 	// log
 	NormalizationSchemaType *string `json:"NormalizationSchemaType,omitempty" xml:"NormalizationSchemaType,omitempty"`
-	// The security domain ID.
+	// The ID of the security domain.
 	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
 	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
-	// The product ID.
+	// The ID of the product.
 	//
 	// example:
 	//
 	// sas
-	ProductId         *string   `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The list of recommended entities.
 	RecommendEntities []*string `json:"RecommendEntities,omitempty" xml:"RecommendEntities,omitempty" type:"Repeated"`
-	// The Simple Log Service LogStore.
+	// The Logstore of Simple Log Service.
 	//
 	// example:
 	//
 	// network-activity
 	TargetLogStore *string `json:"TargetLogStore,omitempty" xml:"TargetLogStore,omitempty"`
-	// The Simple Log Service StoreView.
+	// The StoreView of Simple Log Service.
 	//
 	// example:
 	//
 	// network-activity
 	TargetStoreView *string `json:"TargetStoreView,omitempty" xml:"TargetStoreView,omitempty"`
-	// The update time.
+	// The time when the normalization schema was updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1736386610000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The vendor ID.
+	// The ID of the vendor.
 	//
 	// example:
 	//
