@@ -22,7 +22,7 @@ type ListExternalAgentsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. You can omit this parameter in the first call. For subsequent calls, use the nextToken value returned in the previous response.
+	// The pagination token. You can leave this parameter empty for the first call. For subsequent calls, use the nextToken value returned in the previous response.
 	//
 	// example:
 	//

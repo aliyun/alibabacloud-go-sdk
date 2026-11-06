@@ -148,13 +148,13 @@ type GetMcpCodePackageUploadUrlResponseBodyData struct {
 	//
 	// 2026-08-23T00:15:00Z
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// The HTTP request headers. The key is the header name, and the value is the header content.
+	// The HTTP request headers, where the key is the header name and the value is the header content.
 	//
 	// example:
 	//
 	// {"Content-Type":"application/zip"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The maximum allowed size of the code package to be uploaded, in bytes.
+	// The maximum allowed size of the code package to upload, in bytes.
 	//
 	// example:
 	//

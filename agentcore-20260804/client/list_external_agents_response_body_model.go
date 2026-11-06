@@ -78,7 +78,7 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that meet the filter conditions.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type ListExternalAgentsResponseBodyItems struct {
 	//
 	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The latest specification version.
+	// The latest specification version number.
 	//
 	// example:
 	//

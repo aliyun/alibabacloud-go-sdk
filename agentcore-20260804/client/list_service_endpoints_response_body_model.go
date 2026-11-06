@@ -191,6 +191,10 @@ type ListServiceEndpointsResponseBodyItems struct {
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// publicAccessEnabled 与工作空间公网入向上限叠加后的结果：二者均允许时为 true。仅表示策略目标，不代表公网入口已发布完成，实际状态以 accessUrls 与 status 为准。
+	EffectivePublicAccessEnabled *bool `json:"effectivePublicAccessEnabled,omitempty" xml:"effectivePublicAccessEnabled,omitempty"`
+	// 仅在服务端点设置过弹性覆盖值时返回，可设置的为 Router 类型服务端点与 GATEWAY_API_WITH_VPC_INGRESS 类型的 DEFAULT 服务端点；未设置覆盖值时不返回该对象，表示继承智能体源配置，不得当作空对象或默认策略。返回时三个字段必全。
+	ElasticityPolicy *ListServiceEndpointsResponseBodyItemsElasticityPolicy `json:"elasticityPolicy,omitempty" xml:"elasticityPolicy,omitempty" type:"Struct"`
 	// The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
 	//
 	// example:
@@ -203,6 +207,8 @@ type ListServiceEndpointsResponseBodyItems struct {
 	//
 	// my-agent-endpoint
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 用户在服务端点上设置的公网入向期望；未设置过的历史服务端点按 true 返回。仅表示配置期望，实际公网地址是否可用以 accessUrls 与 status 为准。
+	PublicAccessEnabled *bool `json:"publicAccessEnabled,omitempty" xml:"publicAccessEnabled,omitempty"`
 	// The ID of the region where the service endpoint resides.
 	//
 	// example:
@@ -263,12 +269,24 @@ func (s *ListServiceEndpointsResponseBodyItems) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
+func (s *ListServiceEndpointsResponseBodyItems) GetEffectivePublicAccessEnabled() *bool {
+	return s.EffectivePublicAccessEnabled
+}
+
+func (s *ListServiceEndpointsResponseBodyItems) GetElasticityPolicy() *ListServiceEndpointsResponseBodyItemsElasticityPolicy {
+	return s.ElasticityPolicy
+}
+
 func (s *ListServiceEndpointsResponseBodyItems) GetEndpointType() *string {
 	return s.EndpointType
 }
 
 func (s *ListServiceEndpointsResponseBodyItems) GetName() *string {
 	return s.Name
+}
+
+func (s *ListServiceEndpointsResponseBodyItems) GetPublicAccessEnabled() *bool {
+	return s.PublicAccessEnabled
 }
 
 func (s *ListServiceEndpointsResponseBodyItems) GetRegionId() *string {
@@ -314,6 +332,16 @@ func (s *ListServiceEndpointsResponseBodyItems) SetCreatedAt(v string) *ListServ
 	return s
 }
 
+func (s *ListServiceEndpointsResponseBodyItems) SetEffectivePublicAccessEnabled(v bool) *ListServiceEndpointsResponseBodyItems {
+	s.EffectivePublicAccessEnabled = &v
+	return s
+}
+
+func (s *ListServiceEndpointsResponseBodyItems) SetElasticityPolicy(v *ListServiceEndpointsResponseBodyItemsElasticityPolicy) *ListServiceEndpointsResponseBodyItems {
+	s.ElasticityPolicy = v
+	return s
+}
+
 func (s *ListServiceEndpointsResponseBodyItems) SetEndpointType(v string) *ListServiceEndpointsResponseBodyItems {
 	s.EndpointType = &v
 	return s
@@ -321,6 +349,11 @@ func (s *ListServiceEndpointsResponseBodyItems) SetEndpointType(v string) *ListS
 
 func (s *ListServiceEndpointsResponseBodyItems) SetName(v string) *ListServiceEndpointsResponseBodyItems {
 	s.Name = &v
+	return s
+}
+
+func (s *ListServiceEndpointsResponseBodyItems) SetPublicAccessEnabled(v bool) *ListServiceEndpointsResponseBodyItems {
+	s.PublicAccessEnabled = &v
 	return s
 }
 
@@ -371,6 +404,11 @@ func (s *ListServiceEndpointsResponseBodyItems) Validate() error {
 	}
 	if s.Authentication != nil {
 		if err := s.Authentication.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElasticityPolicy != nil {
+		if err := s.ElasticityPolicy.Validate(); err != nil {
 			return err
 		}
 	}
@@ -484,6 +522,66 @@ func (s *ListServiceEndpointsResponseBodyItemsAuthentication) SetType(v string) 
 }
 
 func (s *ListServiceEndpointsResponseBodyItemsAuthentication) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListServiceEndpointsResponseBodyItemsElasticityPolicy struct {
+	// 是否开启弹性。
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// 最大实例数，不小于 1。
+	//
+	// example:
+	//
+	// 5
+	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
+	// 最小实例数，不小于 0 且不大于 maxSandboxCount。
+	//
+	// example:
+	//
+	// 1
+	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
+}
+
+func (s ListServiceEndpointsResponseBodyItemsElasticityPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListServiceEndpointsResponseBodyItemsElasticityPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) GetMaxSandboxCount() *int32 {
+	return s.MaxSandboxCount
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) GetMinSandboxCount() *int32 {
+	return s.MinSandboxCount
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) SetEnabled(v bool) *ListServiceEndpointsResponseBodyItemsElasticityPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) SetMaxSandboxCount(v int32) *ListServiceEndpointsResponseBodyItemsElasticityPolicy {
+	s.MaxSandboxCount = &v
+	return s
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) SetMinSandboxCount(v int32) *ListServiceEndpointsResponseBodyItemsElasticityPolicy {
+	s.MinSandboxCount = &v
+	return s
+}
+
+func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) Validate() error {
 	return dara.Validate(s)
 }
 

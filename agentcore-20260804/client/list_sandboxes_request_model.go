@@ -15,6 +15,8 @@ type iListSandboxesRequest interface {
 	GetNextToken() *string
 	SetSearchText(v string) *ListSandboxesRequest
 	GetSearchText() *string
+	SetServiceEndpointId(v string) *ListSandboxesRequest
+	GetServiceEndpointId() *string
 	SetSessionId(v string) *ListSandboxesRequest
 	GetSessionId() *string
 }
@@ -38,6 +40,12 @@ type ListSandboxesRequest struct {
 	//
 	// 2f360
 	SearchText *string `json:"searchText,omitempty" xml:"searchText,omitempty"`
+	// 省略或传空白时查询智能体 latest 运行单元；传入时该服务端点必须属于本智能体且目标类型为 AGENT_VERSION，否则返回 Resource.NotFound。独立运行的服务端点只返回其自身运行单元的 Sandbox；DEFAULT 服务端点尚未接管独立运行时回落到 latest 运行单元；非 DEFAULT 且未独立运行时返回 ServiceEndpointTargetNotReady。运行单元尚未创建时返回空列表且 totalCount 为 0，不报错。
+	//
+	// example:
+	//
+	// se-7f3a92c1
+	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
 	// The fragment of the current valid session ID for a case-insensitive fuzzy search.
 	//
 	// example:
@@ -66,6 +74,10 @@ func (s *ListSandboxesRequest) GetSearchText() *string {
 	return s.SearchText
 }
 
+func (s *ListSandboxesRequest) GetServiceEndpointId() *string {
+	return s.ServiceEndpointId
+}
+
 func (s *ListSandboxesRequest) GetSessionId() *string {
 	return s.SessionId
 }
@@ -82,6 +94,11 @@ func (s *ListSandboxesRequest) SetNextToken(v string) *ListSandboxesRequest {
 
 func (s *ListSandboxesRequest) SetSearchText(v string) *ListSandboxesRequest {
 	s.SearchText = &v
+	return s
+}
+
+func (s *ListSandboxesRequest) SetServiceEndpointId(v string) *ListSandboxesRequest {
+	s.ServiceEndpointId = &v
 	return s
 }
 

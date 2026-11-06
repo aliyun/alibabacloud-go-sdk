@@ -652,6 +652,92 @@ func (client *Client) CreateAgentSpecVersion(workspaceId *string, agentSpecName 
 
 // Summary:
 //
+// 保存智能体版本
+//
+// Description:
+//
+// 将指定托管智能体或自定义智能体当前已生效的配置保存为一个不可变的固定版本，并归档版本模板与制品。仅保存版本，不部署实例。其他类型的智能体（如外部智能体）不支持版本，返回 AgentVersionSubtypeUnsupported。Agent 最新发布必须已生效（latestSpecVersion 等于 effectiveSpecVersion）。系统按 Agent 递增生成版本号 agentVersion（v1、v2……），版本号在 Agent 内唯一且已删除版本的序号不复用，查询、删除版本及服务端点引用版本均使用该版本号。每个 Agent 最多保留 50 个未删除的版本，达到上限时返回 AgentVersionQuotaExceeded，删除不再使用的版本后可继续保存。versionName 相同且发布流水号相同的重复提交返回已有版本（不受上限限制）；versionName 相同但发布流水号不同时返回 AgentVersionAlreadyExists。
+//
+// @param tmpReq - CreateAgentVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgentVersionResponse
+func (client *Client) CreateAgentVersionWithOptions(workspaceId *string, agentId *string, tmpReq *CreateAgentVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAgentVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAgentVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Body) {
+		request.BodyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Body, dara.String("body"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyShrink) {
+		body["body"] = request.BodyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAgentVersion"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/agents/" + dara.PercentEncode(dara.StringValue(agentId)) + "/versions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAgentVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存智能体版本
+//
+// Description:
+//
+// 将指定托管智能体或自定义智能体当前已生效的配置保存为一个不可变的固定版本，并归档版本模板与制品。仅保存版本，不部署实例。其他类型的智能体（如外部智能体）不支持版本，返回 AgentVersionSubtypeUnsupported。Agent 最新发布必须已生效（latestSpecVersion 等于 effectiveSpecVersion）。系统按 Agent 递增生成版本号 agentVersion（v1、v2……），版本号在 Agent 内唯一且已删除版本的序号不复用，查询、删除版本及服务端点引用版本均使用该版本号。每个 Agent 最多保留 50 个未删除的版本，达到上限时返回 AgentVersionQuotaExceeded，删除不再使用的版本后可继续保存。versionName 相同且发布流水号相同的重复提交返回已有版本（不受上限限制）；versionName 相同但发布流水号不同时返回 AgentVersionAlreadyExists。
+//
+// @param request - CreateAgentVersionRequest
+//
+// @return CreateAgentVersionResponse
+func (client *Client) CreateAgentVersion(workspaceId *string, agentId *string, request *CreateAgentVersionRequest) (_result *CreateAgentVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAgentVersionResponse{}
+	_body, _err := client.CreateAgentVersionWithOptions(workspaceId, agentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an apiKey or mcpHeader credential in a workspace for agents or MCP to access external services. The credential content is submitted as a JSON string, and masked results are returned when queried.
 //
 // Description:
@@ -3217,6 +3303,80 @@ func (client *Client) DeleteAgentSpecVersion(workspaceId *string, agentSpecName 
 	headers := make(map[string]*string)
 	_result = &DeleteAgentSpecVersionResponse{}
 	_body, _err := client.DeleteAgentSpecVersionWithOptions(workspaceId, agentSpecName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除智能体版本
+//
+// Description:
+//
+// 删除指定托管智能体或自定义智能体已保存的固定版本。仍被服务端点引用的版本不可删除，系统维护的 latest 版本不可删除。
+//
+// @param request - DeleteAgentVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentVersionResponse
+func (client *Client) DeleteAgentVersionWithOptions(workspaceId *string, agentId *string, agentVersion *string, request *DeleteAgentVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteAgentVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentVersion"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/agents/" + dara.PercentEncode(dara.StringValue(agentId)) + "/versions/" + dara.PercentEncode(dara.StringValue(agentVersion))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除智能体版本
+//
+// Description:
+//
+// 删除指定托管智能体或自定义智能体已保存的固定版本。仍被服务端点引用的版本不可删除，系统维护的 latest 版本不可删除。
+//
+// @param request - DeleteAgentVersionRequest
+//
+// @return DeleteAgentVersionResponse
+func (client *Client) DeleteAgentVersion(workspaceId *string, agentId *string, agentVersion *string, request *DeleteAgentVersionRequest) (_result *DeleteAgentVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAgentVersionResponse{}
+	_body, _err := client.DeleteAgentVersionWithOptions(workspaceId, agentId, agentVersion, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5889,6 +6049,74 @@ func (client *Client) GetAgentSpecVersion(workspaceId *string, agentSpecName *st
 	headers := make(map[string]*string)
 	_result = &GetAgentSpecVersionResponse{}
 	_body, _err := client.GetAgentSpecVersionWithOptions(workspaceId, agentSpecName, agentSpecVersion, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询智能体版本详情
+//
+// Description:
+//
+// 查询指定托管智能体或自定义智能体已保存的固定版本详情，configuration 返回版本保存时的 Agent 配置。
+//
+// @param request - GetAgentVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentVersionResponse
+func (client *Client) GetAgentVersionWithOptions(workspaceId *string, agentId *string, agentVersion *string, request *GetAgentVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetAgentVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentVersion"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/agents/" + dara.PercentEncode(dara.StringValue(agentId)) + "/versions/" + dara.PercentEncode(dara.StringValue(agentVersion))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询智能体版本详情
+//
+// Description:
+//
+// 查询指定托管智能体或自定义智能体已保存的固定版本详情，configuration 返回版本保存时的 Agent 配置。
+//
+// @param request - GetAgentVersionRequest
+//
+// @return GetAgentVersionResponse
+func (client *Client) GetAgentVersion(workspaceId *string, agentId *string, agentVersion *string, request *GetAgentVersionRequest) (_result *GetAgentVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAgentVersionResponse{}
+	_body, _err := client.GetAgentVersionWithOptions(workspaceId, agentId, agentVersion, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9274,6 +9502,84 @@ func (client *Client) ListAgentTeams(workspaceId *string, request *ListAgentTeam
 
 // Summary:
 //
+// 查询智能体版本列表
+//
+// Description:
+//
+// 分页查询指定托管智能体或自定义智能体已保存的固定版本，按创建时间倒序返回，不包含系统维护的 latest 版本。列表项不返回 configuration，需查看配置时调用 GetAgentVersion。
+//
+// @param request - ListAgentVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentVersionsResponse
+func (client *Client) ListAgentVersionsWithOptions(workspaceId *string, agentId *string, request *ListAgentVersionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListAgentVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentVersions"),
+		Version:     dara.String("2026-08-04"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/agents/" + dara.PercentEncode(dara.StringValue(agentId)) + "/versions"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询智能体版本列表
+//
+// Description:
+//
+// 分页查询指定托管智能体或自定义智能体已保存的固定版本，按创建时间倒序返回，不包含系统维护的 latest 版本。列表项不返回 configuration，需查看配置时调用 GetAgentVersion。
+//
+// @param request - ListAgentVersionsRequest
+//
+// @return ListAgentVersionsResponse
+func (client *Client) ListAgentVersions(workspaceId *string, agentId *string, request *ListAgentVersionsRequest) (_result *ListAgentVersionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAgentVersionsResponse{}
+	_body, _err := client.ListAgentVersionsWithOptions(workspaceId, agentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the official and enterprise models available for the enabled QoderCLI connector. The service retrieves models in real time by using the saved API key and organization ID, and deduplicates them by model ID.
 //
 // Description:
@@ -9634,25 +9940,19 @@ func (client *Client) ListCustomAgents(workspaceId *string, request *ListCustomA
 
 // Summary:
 //
-// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
+// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
 //
 // Description:
 //
-// ### Purpose
+// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
 //
-// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
-//
-// ### Related concepts
-//
-// - A managed agent runs in a user-provided runtime environment. The platform is responsible for saving the access and capability configurations. The API uses the technical name ExternalAgent.
-//
-// ### Paging
+// ### Paging query
 //
 // If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
 //
 // ### Response content
 //
-// This operation returns the summary of managed agents. To query the complete models, instructions, tools, skills, and access status, call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
+// This operation returns the summary of managed agents. To query the complete models, instructions, tools, skills, and accessed state, call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
 //
 // @param request - ListExternalAgentsRequest
 //
@@ -9703,25 +10003,19 @@ func (client *Client) ListExternalAgentsWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
+// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
 //
 // Description:
 //
-// ### Purpose
+// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
 //
-// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
-//
-// ### Related concepts
-//
-// - A managed agent runs in a user-provided runtime environment. The platform is responsible for saving the access and capability configurations. The API uses the technical name ExternalAgent.
-//
-// ### Paging
+// ### Paging query
 //
 // If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
 //
 // ### Response content
 //
-// This operation returns the summary of managed agents. To query the complete models, instructions, tools, skills, and access status, call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
+// This operation returns the summary of managed agents. To query the complete models, instructions, tools, skills, and accessed state, call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
 //
 // @param request - ListExternalAgentsRequest
 //
@@ -11489,6 +11783,10 @@ func (client *Client) ListSandboxSessionsWithOptions(workspaceId *string, agentI
 		query["nextToken"] = request.NextToken
 	}
 
+	if !dara.IsNil(request.ServiceEndpointId) {
+		query["serviceEndpointId"] = request.ServiceEndpointId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -11591,6 +11889,10 @@ func (client *Client) ListSandboxesWithOptions(workspaceId *string, agentId *str
 
 	if !dara.IsNil(request.SearchText) {
 		query["searchText"] = request.SearchText
+	}
+
+	if !dara.IsNil(request.ServiceEndpointId) {
+		query["serviceEndpointId"] = request.ServiceEndpointId
 	}
 
 	if !dara.IsNil(request.SessionId) {

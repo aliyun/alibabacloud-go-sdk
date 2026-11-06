@@ -136,6 +136,10 @@ type GetServiceEndpointResponseBodyData struct {
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// publicAccessEnabled 与工作空间公网入向上限叠加后的结果：二者均允许时为 true。仅表示策略目标，不代表公网入口已发布完成，实际状态以 accessUrls 与 status 为准。
+	EffectivePublicAccessEnabled *bool `json:"effectivePublicAccessEnabled,omitempty" xml:"effectivePublicAccessEnabled,omitempty"`
+	// 仅在服务端点设置过弹性覆盖值时返回，可设置的为 Router 类型服务端点与 GATEWAY_API_WITH_VPC_INGRESS 类型的 DEFAULT 服务端点；未设置覆盖值时不返回该对象，表示继承智能体源配置，不得当作空对象或默认策略。返回时三个字段必全。
+	ElasticityPolicy *GetServiceEndpointResponseBodyDataElasticityPolicy `json:"elasticityPolicy,omitempty" xml:"elasticityPolicy,omitempty" type:"Struct"`
 	// The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
 	//
 	// example:
@@ -148,6 +152,8 @@ type GetServiceEndpointResponseBodyData struct {
 	//
 	// my-agent-endpoint
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 用户在服务端点上设置的公网入向期望；未设置过的历史服务端点按 true 返回。仅表示配置期望，实际公网地址是否可用以 accessUrls 与 status 为准。
+	PublicAccessEnabled *bool `json:"publicAccessEnabled,omitempty" xml:"publicAccessEnabled,omitempty"`
 	// The region ID of the service endpoint.
 	//
 	// example:
@@ -208,12 +214,24 @@ func (s *GetServiceEndpointResponseBodyData) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
+func (s *GetServiceEndpointResponseBodyData) GetEffectivePublicAccessEnabled() *bool {
+	return s.EffectivePublicAccessEnabled
+}
+
+func (s *GetServiceEndpointResponseBodyData) GetElasticityPolicy() *GetServiceEndpointResponseBodyDataElasticityPolicy {
+	return s.ElasticityPolicy
+}
+
 func (s *GetServiceEndpointResponseBodyData) GetEndpointType() *string {
 	return s.EndpointType
 }
 
 func (s *GetServiceEndpointResponseBodyData) GetName() *string {
 	return s.Name
+}
+
+func (s *GetServiceEndpointResponseBodyData) GetPublicAccessEnabled() *bool {
+	return s.PublicAccessEnabled
 }
 
 func (s *GetServiceEndpointResponseBodyData) GetRegionId() *string {
@@ -259,6 +277,16 @@ func (s *GetServiceEndpointResponseBodyData) SetCreatedAt(v string) *GetServiceE
 	return s
 }
 
+func (s *GetServiceEndpointResponseBodyData) SetEffectivePublicAccessEnabled(v bool) *GetServiceEndpointResponseBodyData {
+	s.EffectivePublicAccessEnabled = &v
+	return s
+}
+
+func (s *GetServiceEndpointResponseBodyData) SetElasticityPolicy(v *GetServiceEndpointResponseBodyDataElasticityPolicy) *GetServiceEndpointResponseBodyData {
+	s.ElasticityPolicy = v
+	return s
+}
+
 func (s *GetServiceEndpointResponseBodyData) SetEndpointType(v string) *GetServiceEndpointResponseBodyData {
 	s.EndpointType = &v
 	return s
@@ -266,6 +294,11 @@ func (s *GetServiceEndpointResponseBodyData) SetEndpointType(v string) *GetServi
 
 func (s *GetServiceEndpointResponseBodyData) SetName(v string) *GetServiceEndpointResponseBodyData {
 	s.Name = &v
+	return s
+}
+
+func (s *GetServiceEndpointResponseBodyData) SetPublicAccessEnabled(v bool) *GetServiceEndpointResponseBodyData {
+	s.PublicAccessEnabled = &v
 	return s
 }
 
@@ -316,6 +349,11 @@ func (s *GetServiceEndpointResponseBodyData) Validate() error {
 	}
 	if s.Authentication != nil {
 		if err := s.Authentication.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ElasticityPolicy != nil {
+		if err := s.ElasticityPolicy.Validate(); err != nil {
 			return err
 		}
 	}
@@ -429,6 +467,66 @@ func (s *GetServiceEndpointResponseBodyDataAuthentication) SetType(v string) *Ge
 }
 
 func (s *GetServiceEndpointResponseBodyDataAuthentication) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetServiceEndpointResponseBodyDataElasticityPolicy struct {
+	// 是否开启弹性。
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// 最大实例数，不小于 1。
+	//
+	// example:
+	//
+	// 5
+	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
+	// 最小实例数，不小于 0 且不大于 maxSandboxCount。
+	//
+	// example:
+	//
+	// 1
+	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
+}
+
+func (s GetServiceEndpointResponseBodyDataElasticityPolicy) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetServiceEndpointResponseBodyDataElasticityPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) GetEnabled() *bool {
+	return s.Enabled
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) GetMaxSandboxCount() *int32 {
+	return s.MaxSandboxCount
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) GetMinSandboxCount() *int32 {
+	return s.MinSandboxCount
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) SetEnabled(v bool) *GetServiceEndpointResponseBodyDataElasticityPolicy {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) SetMaxSandboxCount(v int32) *GetServiceEndpointResponseBodyDataElasticityPolicy {
+	s.MaxSandboxCount = &v
+	return s
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) SetMinSandboxCount(v int32) *GetServiceEndpointResponseBodyDataElasticityPolicy {
+	s.MinSandboxCount = &v
+	return s
+}
+
+func (s *GetServiceEndpointResponseBodyDataElasticityPolicy) Validate() error {
 	return dara.Validate(s)
 }
 
