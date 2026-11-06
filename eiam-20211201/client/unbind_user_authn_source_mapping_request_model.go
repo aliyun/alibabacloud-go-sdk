@@ -20,7 +20,7 @@ type iUnbindUserAuthnSourceMappingRequest interface {
 }
 
 type UnbindUserAuthnSourceMappingRequest struct {
-	// The ID of the source identity provider.
+	// The source IdP ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UnbindUserAuthnSourceMappingRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The external ID associated with the user.
+	// The external association ID.
 	//
 	// This parameter is required.
 	//

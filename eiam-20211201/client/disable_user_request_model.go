@@ -24,7 +24,7 @@ type DisableUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The account ID.
+	// The user ID.
 	//
 	// This parameter is required.
 	//

@@ -26,19 +26,19 @@ type iListApplicationsForNetworkZoneResponseBody interface {
 type ListApplicationsForNetworkZoneResponseBody struct {
 	// The list of applications.
 	Applications []*ListApplicationsForNetworkZoneResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
-	// The number of entries per page in a paged query.
+	// The number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The next token returned by this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by this call.
+	// The next token returned by this call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListApplicationsForNetworkZoneResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//

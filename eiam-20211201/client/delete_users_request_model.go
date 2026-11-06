@@ -24,7 +24,7 @@ type DeleteUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of account IDs.
+	// The list of account IDs.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iListApplicationsForOrganizationalUnitResponseBody interface {
 }
 
 type ListApplicationsForOrganizationalUnitResponseBody struct {
-	// The list of applications that are authorized for access.
+	// The list of applications that the organization is authorized to access.
 	Applications []*ListApplicationsForOrganizationalUnitResponseBodyApplications `json:"Applications,omitempty" xml:"Applications,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListApplicationsForOrganizationalUnitResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type ListApplicationsForOrganizationalUnitResponseBodyApplications struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The list of application roles.
+	// The list of application roles. No roles are returned for SAML applications.
 	ApplicationRoles []*ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
 }
 
@@ -133,7 +133,7 @@ func (s *ListApplicationsForOrganizationalUnitResponseBodyApplications) Validate
 }
 
 type ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles struct {
-	// The application role ID.
+	// The application role identifier.
 	//
 	// example:
 	//

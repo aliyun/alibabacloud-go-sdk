@@ -16,7 +16,7 @@ type iListNetworkAccessEndpointAvailableRegionsResponseBody interface {
 }
 
 type ListNetworkAccessEndpointAvailableRegionsResponseBody struct {
-	// The collection of available regions.
+	// The list of available regions.
 	Regions []*ListNetworkAccessEndpointAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//

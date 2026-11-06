@@ -20,13 +20,13 @@ type iUpdateNetworkZoneDescriptionRequest interface {
 }
 
 type UpdateNetworkZoneDescriptionRequest struct {
-	// A client token. It is used to ensure the idempotence of the request.
+	// The client token used to ensure idempotence.
 	//
 	// example:
 	//
 	// client-token-examplexxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the network zone.
+	// The network zone description.
 	//
 	// This parameter is required.
 	//

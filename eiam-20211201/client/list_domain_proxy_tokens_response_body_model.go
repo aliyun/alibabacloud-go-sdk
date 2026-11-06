@@ -16,7 +16,7 @@ type iListDomainProxyTokensResponseBody interface {
 }
 
 type ListDomainProxyTokensResponseBody struct {
-	// A list of domain proxy token objects.
+	// The list of proxy tokens for the domain name.
 	DomainProxyTokens []*ListDomainProxyTokensResponseBodyDomainProxyTokens `json:"DomainProxyTokens,omitempty" xml:"DomainProxyTokens,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *ListDomainProxyTokensResponseBody) Validate() error {
 }
 
 type ListDomainProxyTokensResponseBodyDomainProxyTokens struct {
-	// The creation time of the domain proxy token, in Unix timestamp format, in milliseconds.
+	// The creation time of the domain proxy token. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ListDomainProxyTokensResponseBodyDomainProxyTokens struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The most recent usage time of the domain proxy token, in Unix timestamp format, in milliseconds.
+	// The last used time of the domain proxy token. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -104,15 +104,15 @@ type ListDomainProxyTokensResponseBodyDomainProxyTokens struct {
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
 	// The token status. Valid values:
 	//
-	// - enabled: The token is enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: The token is disabled.
+	// - disabled: Disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The most recent update time of the domain proxy token, in Unix timestamp format, in milliseconds.
+	// The last update time of the domain proxy token. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

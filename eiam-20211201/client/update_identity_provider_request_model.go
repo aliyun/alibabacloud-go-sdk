@@ -42,7 +42,7 @@ type UpdateIdentityProviderRequest struct {
 	//
 	// client-examplexxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The DingTalk configuration basic information.
+	// The basic DingTalk configuration information.
 	DingtalkAppConfig *UpdateIdentityProviderRequestDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
 	// The identity provider ID.
 	//
@@ -68,7 +68,7 @@ type UpdateIdentityProviderRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The Lark configuration information.
 	LarkConfig *UpdateIdentityProviderRequestLarkConfig `json:"LarkConfig,omitempty" xml:"LarkConfig,omitempty" type:"Struct"`
-	// The AD/LDAP basic information.
+	// The basic AD/LDAP information.
 	LdapConfig *UpdateIdentityProviderRequestLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
 	// The URL of the application logo.
 	//
@@ -76,7 +76,7 @@ type UpdateIdentityProviderRequest struct {
 	//
 	// idaas-image://idaas_23aqr2ye554csg33dqpch5exxxx/tmp/d17d9adc-a943-45e7-ba0c-2838dddea678xxxx
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The network endpoint ID.
+	// The network access endpoint ID.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type UpdateIdentityProviderRequest struct {
 	OidcConfig *UpdateIdentityProviderRequestOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
 	// The SAML IdP configuration.
 	SamlConfig *UpdateIdentityProviderRequestSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
-	// The WeCom basic information.
+	// The basic WeCom information.
 	WeComConfig *UpdateIdentityProviderRequestWeComConfig `json:"WeComConfig,omitempty" xml:"WeComConfig,omitempty" type:"Struct"`
 }
 
@@ -253,7 +253,7 @@ type UpdateIdentityProviderRequestDingtalkAppConfig struct {
 	//
 	// 86nozWFL2CxgwnhKiXaG8dN4keLPkUNc5xxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The DingTalk QR code login version.
+	// The DingTalk scan-to-logon version.
 	//
 	// example:
 	//
@@ -343,13 +343,13 @@ type UpdateIdentityProviderRequestLarkConfig struct {
 	//
 	// KiiLzh5Dueh4wbLxxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The encryptKey of the custom Lark application.
+	// The EncryptKey of the custom Lark application.
 	//
 	// example:
 	//
 	// VkdWw91mdkrjVFr3ObNwefap21dfbZbKxxxx
 	EncryptKey *string `json:"EncryptKey,omitempty" xml:"EncryptKey,omitempty"`
-	// The verificationToken of the custom Lark application.
+	// The VerificationToken of the custom Lark application.
 	//
 	// example:
 	//
@@ -410,9 +410,9 @@ type UpdateIdentityProviderRequestLdapConfig struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// ExamplePassword123!
 	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
-	// The administrator account.
+	// The administrator username.
 	//
 	// example:
 	//
@@ -448,7 +448,7 @@ type UpdateIdentityProviderRequestLdapConfig struct {
 	//
 	// 636
 	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
-	// Specifies whether StartTLS is enabled. Valid values:
+	// Specifies whether to enable StartTLS. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -571,7 +571,7 @@ type UpdateIdentityProviderRequestOidcConfig struct {
 	//
 	// S256
 	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Specifies whether to use PKCE in the AuthorizationCode grant mode.
+	// Specifies whether to use PKCE in authorization code mode.
 	//
 	// example:
 	//
@@ -729,7 +729,7 @@ type UpdateIdentityProviderRequestOidcConfigEndpointConfig struct {
 	//
 	// https://example.com/oauth/token
 	TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
-	// The OIDC UserInfo endpoint.
+	// The OIDC userinfo endpoint.
 	//
 	// example:
 	//
@@ -795,13 +795,13 @@ func (s *UpdateIdentityProviderRequestOidcConfigEndpointConfig) Validate() error
 }
 
 type UpdateIdentityProviderRequestSamlConfig struct {
-	// The binding type.
+	// The binding method.
 	//
 	// example:
 	//
 	// HTTP-REDIRECT
 	BindingMethod *string `json:"BindingMethod,omitempty" xml:"BindingMethod,omitempty"`
-	// The list of IdP certificates.
+	// The list of certificates for the IdP.
 	Certificates []*UpdateIdentityProviderRequestSamlConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
 	// The EntityId of the IdP.
 	//
@@ -821,19 +821,19 @@ type UpdateIdentityProviderRequestSamlConfig struct {
 	//
 	// 180
 	MaxClockSkew *int64 `json:"MaxClockSkew,omitempty" xml:"MaxClockSkew,omitempty"`
-	// Specifies whether the request must be signed.
+	// Specifies whether to require the request to be signed.
 	//
 	// example:
 	//
 	// true
 	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
-	// Specifies whether the external IdP is required to sign the Assertion.
+	// Specifies whether to require the external IdP to sign the assertion.
 	//
 	// example:
 	//
 	// true
 	WantAssertionsSigned *bool `json:"WantAssertionsSigned,omitempty" xml:"WantAssertionsSigned,omitempty"`
-	// Specifies whether the external IdP is required to sign the Response.
+	// Specifies whether to require the external IdP to sign the response.
 	//
 	// example:
 	//
@@ -935,7 +935,7 @@ func (s *UpdateIdentityProviderRequestSamlConfig) Validate() error {
 }
 
 type UpdateIdentityProviderRequestSamlConfigCertificates struct {
-	// The content of the certificate.
+	// The certificate content.
 	//
 	// example:
 	//
@@ -965,7 +965,7 @@ func (s *UpdateIdentityProviderRequestSamlConfigCertificates) Validate() error {
 }
 
 type UpdateIdentityProviderRequestWeComConfig struct {
-	// The AgentId of the WeCom self-built application.
+	// The AgentId of the WeCom custom application.
 	//
 	// example:
 	//
@@ -983,7 +983,7 @@ type UpdateIdentityProviderRequestWeComConfig struct {
 	//
 	// mPLLiWv-_9witxxxEJCpk1xkF5hOgBzpRt4kBkxxx
 	ContactSecret *string `json:"ContactSecret,omitempty" xml:"ContactSecret,omitempty"`
-	// The CorpSecret of the WeCom self-built application.
+	// The CorpSecret of the WeCom custom application.
 	//
 	// example:
 	//

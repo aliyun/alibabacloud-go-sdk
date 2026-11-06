@@ -38,7 +38,7 @@ type ListGroupsForApplicationRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// A list of group IDs. You can specify up to 100 group IDs in a single operation.
+	// The list of group IDs. You can specify up to 100 group IDs in a single operation.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListGroupsForApplicationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

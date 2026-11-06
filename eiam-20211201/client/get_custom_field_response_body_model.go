@@ -62,7 +62,7 @@ func (s *GetCustomFieldResponseBody) Validate() error {
 }
 
 type GetCustomFieldResponseBodyCustomField struct {
-	// The time when the extended field was created, in UNIX timestamp format. Unit: milliseconds.
+	// The creation time of the extended field. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The entity type to which the field belongs.
+	// The entity type of the field.
 	//
 	// example:
 	//
 	// user
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The field value configuration items.
+	// The configuration items for the field values.
 	FieldDataConfig *GetCustomFieldResponseBodyCustomFieldFieldDataConfig `json:"FieldDataConfig,omitempty" xml:"FieldDataConfig,omitempty" type:"Struct"`
 	// The data type.
 	//
@@ -148,13 +148,13 @@ type GetCustomFieldResponseBodyCustomField struct {
 	//
 	// false
 	Unique *bool `json:"Unique,omitempty" xml:"Unique,omitempty"`
-	// The time when the extended field was last updated, in UNIX timestamp format. Unit: milliseconds.
+	// The last update time of the extended field. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 17642960730
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The user-side (portal-side) permission.
+	// The permissions on the user portal side.
 	//
 	// example:
 	//

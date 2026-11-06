@@ -20,9 +20,9 @@ type iSetForgetPasswordConfigurationRequest interface {
 type SetForgetPasswordConfigurationRequest struct {
 	// The list of authentication channels. Valid values:
 	//
-	// - email: email.
+	// - email: Email.
 	//
-	// - sms: text message.
+	// - sms: SMS.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type SetForgetPasswordConfigurationRequest struct {
 	AuthenticationChannels []*string `json:"AuthenticationChannels,omitempty" xml:"AuthenticationChannels,omitempty" type:"Repeated"`
 	// The forgot password configuration status. Valid values:
 	//
-	// - enabled: enabled.
+	// - enabled: Enabled.
 	//
-	// - disabled: disabled.
+	// - disabled: Disabled.
 	//
 	// This parameter is required.
 	//

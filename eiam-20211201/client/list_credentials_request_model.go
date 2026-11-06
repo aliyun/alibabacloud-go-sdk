@@ -32,11 +32,11 @@ type iListCredentialsRequest interface {
 type ListCredentialsRequest struct {
 	// The external unique identifiers of the credentials.
 	CredentialExternalIds []*string `json:"CredentialExternalIds,omitempty" xml:"CredentialExternalIds,omitempty" type:"Repeated"`
-	// The list of credential IDs.
+	// The credential IDs.
 	CredentialIds []*string `json:"CredentialIds,omitempty" xml:"CredentialIds,omitempty" type:"Repeated"`
-	// The list of credential sharing scopes.
+	// The credential sharing scopes.
 	CredentialSharingScopes []*string `json:"CredentialSharingScopes,omitempty" xml:"CredentialSharingScopes,omitempty" type:"Repeated"`
-	// The list of credential types.
+	// The credential types.
 	CredentialTypes []*string `json:"CredentialTypes,omitempty" xml:"CredentialTypes,omitempty" type:"Repeated"`
 	// The filter conditions.
 	Filter []*ListCredentialsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -48,11 +48,7 @@ type ListCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return on each page.
-	//
-	// - If you do not specify this parameter, the default value is 20.
-	//
-	// - The maximum value is 100.
+	// The maximum number of records per page. Default value: 20. Maximum value: 100.
 	//
 	// example:
 	//
@@ -64,7 +60,7 @@ type ListCredentialsRequest struct {
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of credential statuses.
+	// The credential statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 
@@ -173,13 +169,13 @@ func (s *ListCredentialsRequest) Validate() error {
 type ListCredentialsRequestFilter struct {
 	// The name of the filter field. Valid values:
 	//
-	// - CredentialIdentifier: credential identifier
+	// - CredentialIdentifier: The credential identifier.
 	//
 	// example:
 	//
 	// CredentialIdentifier
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of filter field values.
+	// The values for the filter field.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

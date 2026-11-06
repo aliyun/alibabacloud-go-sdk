@@ -26,7 +26,7 @@ type UpdateNetworkAccessEndpointNameRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the private network access endpoint.
+	// The ID of the dedicated network access endpoint.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateNetworkAccessEndpointNameRequest struct {
 	//
 	// nae_examplexxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The name of the private network access endpoint. The endpoint type must be private.
+	// The name of the dedicated network access endpoint. You can only update the name of a network access endpoint whose NetworkEndpointType is dedicated (private). xx business VPC access endpoint.
 	//
 	// This parameter is required.
 	//

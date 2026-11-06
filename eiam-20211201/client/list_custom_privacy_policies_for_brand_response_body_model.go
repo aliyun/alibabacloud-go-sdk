@@ -26,19 +26,19 @@ type iListCustomPrivacyPoliciesForBrandResponseBody interface {
 type ListCustomPrivacyPoliciesForBrandResponseBody struct {
 	// The list of custom privacy policies associated with the brand.
 	BrandCustomPrivacyPolicies []*ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies `json:"BrandCustomPrivacyPolicies,omitempty" xml:"BrandCustomPrivacyPolicies,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
+	// The maximum number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to retrieve the next page of results.
+	// The pagination token returned for this call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The token to retrieve the previous page of results.
+	// The pagination token returned for this call.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListCustomPrivacyPoliciesForBrandResponseBody) Validate() error {
 }
 
 type ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies struct {
-	// The privacy policy ID.
+	// The custom privacy policy ID.
 	//
 	// example:
 	//

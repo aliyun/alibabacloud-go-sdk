@@ -34,7 +34,7 @@ type AuthorizeApplicationToGroupsRequest struct {
 	//
 	// app_role_mkv7rgt4ds8d8v0qtzev2mxxxx
 	ApplicationRoleId *string `json:"ApplicationRoleId,omitempty" xml:"ApplicationRoleId,omitempty"`
-	// The list of group IDs. You can specify up to 100 group IDs in a single request.
+	// The list of group IDs. You can specify up to 100 group IDs in a single operation.
 	//
 	// This parameter is required.
 	//

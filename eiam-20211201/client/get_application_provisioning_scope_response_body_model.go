@@ -16,9 +16,9 @@ type iGetApplicationProvisioningScopeResponseBody interface {
 }
 
 type GetApplicationProvisioningScopeResponseBody struct {
-	// The scope of account synchronization.
+	// The account synchronization scope.
 	ApplicationProvisioningScope *GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope `json:"ApplicationProvisioningScope,omitempty" xml:"ApplicationProvisioningScope,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,17 +62,17 @@ func (s *GetApplicationProvisioningScopeResponseBody) Validate() error {
 }
 
 type GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope struct {
-	// Synchronize the list of authorized groups.
+	// The list of groups authorized for synchronization.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// Instance Indicates the maximum quota number of authorized agents.
+	// The maximum quota of authorized principals for the tenant.
 	//
 	// example:
 	//
 	// 1000
 	MaxQuota *int32 `json:"MaxQuota,omitempty" xml:"MaxQuota,omitempty"`
-	// The list of organizational units that are authorized for account synchronization.
+	// The list of organizational unit scopes authorized for account synchronization.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// Indicates the quota number of used authorized agents.
+	// The used quota of authorized principals.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iListAuthorizationServersResponseBody interface {
 type ListAuthorizationServersResponseBody struct {
 	// The list of authorization servers.
 	AuthorizationServers []*ListAuthorizationServersResponseBodyAuthorizationServers `json:"AuthorizationServers,omitempty" xml:"AuthorizationServers,omitempty" type:"Repeated"`
-	// The maximum number of entries per page for a paged query.
+	// The number of entries to return per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The next token returned in the current call.
 	//
 	// example:
 	//

@@ -9,7 +9,59 @@ import (
 
 // Summary:
 //
-// Adds an application account for a specified employee under the current application.
+// Activates privileged hosting for a cloud account.
+//
+// @param request - ActivateCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateCloudAccountPrivilegeResponse
+func (client *Client) ActivateCloudAccountPrivilegeWithContext(ctx context.Context, request *ActivateCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *ActivateCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActivateCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActivateCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds an application account for a specified employee in the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -131,7 +183,7 @@ func (client *Client) AddApplicationToAuthorizationRuleWithContext(ctx context.C
 
 // Summary:
 //
-// Adds terms to a brand.
+// Adds custom privacy policies to a brand.
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -315,7 +367,7 @@ func (client *Client) AddUserToAuthorizationRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds a specified EIAM account to multiple EIAM organizations. If the account already exists in an organization, the operation returns a success response directly.
+// Adds a specified EIAM account to multiple EIAM organizations. If the account already belongs to an organization, the operation returns a success response.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -367,7 +419,7 @@ func (client *Client) AddUserToOrganizationalUnitsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Adds multiple Employee Identity and Access Management (EIAM) accounts to a specified EIAM account group.
+// Adds multiple EIAM accounts to a specified EIAM account group.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -419,7 +471,7 @@ func (client *Client) AddUsersToGroupWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Grants multiple EIAM groups access to an application in a batch.
+// Grants multiple EIAM groups access to an application.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -475,7 +527,7 @@ func (client *Client) AuthorizeApplicationToGroupsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Grants access to an application for multiple EIAM organizations in a batch operation.
+// Grants multiple EIAM organizations access to an application.
 //
 // @param request - AuthorizeApplicationToOrganizationalUnitsRequest
 //
@@ -531,7 +583,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithContext(ctx c
 
 // Summary:
 //
-// Grants multiple EIAM accounts access to an application in a batch.
+// Grants multiple EIAM accounts access to an application in batches.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -587,7 +639,7 @@ func (client *Client) AuthorizeApplicationToUsersWithContext(ctx context.Context
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to a Client application.
+// Grants the scope permissions under a specified resource server to a client application.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -643,7 +695,7 @@ func (client *Client) AuthorizeResourceServerScopesToClientWithContext(ctx conte
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to a group.
+// Grants the scope permissions under a specified resource server to a group.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -703,7 +755,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroupWithContext(ctx contex
 
 // Summary:
 //
-// Grants scope permissions under a specified ResourceServer to an organizational unit.
+// Grants the scope permissions of a specified resource server to an organizational unit.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -763,7 +815,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnitWithConte
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to an account.
+// Grants scope permissions of a specified resource server to an account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -875,7 +927,7 @@ func (client *Client) AuthorizeResourceServerToClientWithContext(ctx context.Con
 
 // Summary:
 //
-// Associates a third-party logon account.
+// Binds a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -1027,7 +1079,7 @@ func (client *Client) CheckInstanceForDeleteWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Checks whether an instance has the feature of a specific module.
+// Checks whether an instance has a specific module feature.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1175,7 +1227,7 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for each EIAM application.
+// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for a single EIAM application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1803,6 +1855,82 @@ func (client *Client) CreateCloudAccountRoleWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateCloudAccountRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a permission template.
+//
+// @param request - CreateCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudPermissionTemplateResponse
+func (client *Client) CreateCloudPermissionTemplateWithContext(ctx context.Context, request *CreateCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowRequest) {
+		query["AllowRequest"] = request.AllowRequest
+	}
+
+	if !dara.IsNil(request.ApplicableScope) {
+		query["ApplicableScope"] = request.ApplicableScope
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResources) {
+		query["CloudAccountResources"] = request.CloudAccountResources
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateName) {
+		query["CloudPermissionTemplateName"] = request.CloudPermissionTemplateName
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateUsageType) {
+		query["CloudPermissionTemplateUsageType"] = request.CloudPermissionTemplateUsageType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudPermissionTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3021,7 +3149,7 @@ func (client *Client) CreateTrustedOriginWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an EIAM account in a specified EIAM instance.
+// Creates an EIAM account under a specified EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -3125,6 +3253,58 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
+// Removes privileged access for a cloud account.
+//
+// @param request - DeactivateCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeactivateCloudAccountPrivilegeResponse
+func (client *Client) DeactivateCloudAccountPrivilegeWithContext(ctx context.Context, request *DeactivateCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *DeactivateCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeactivateCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeactivateCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an EIAM application resource.
 //
 // Description:
@@ -3177,7 +3357,7 @@ func (client *Client) DeleteApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a client secret of an EIAM application.
+// Deletes a client secret for an EIAM application.
 //
 // @param request - DeleteApplicationClientSecretRequest
 //
@@ -3689,11 +3869,63 @@ func (client *Client) DeleteCloudAccountRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Deletes a permission template.
+//
+// @param request - DeleteCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudPermissionTemplateResponse
+func (client *Client) DeleteCloudPermissionTemplateWithContext(ctx context.Context, request *DeleteCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a conditional access policy.
 //
 // Description:
 //
-// Before you delete a conditional access policy, make sure that the policy is no longer in use. After the policy is deleted, all configuration data is permanently removed and cannot be recovered.
+// Before deleting a specified conditional access policy, ensure that the policy is no longer in use. After the policy is deleted, all configuration data is deleted and cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -3933,7 +4165,7 @@ func (client *Client) DeleteCustomPrivacyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a custom domain name of a specified Employee Identity and Access Management (EIAM) instance. Deletion of the instance initialization domain name or default domain name is rejected.
+// Deletes a custom domain name of a specified EIAM instance. Deletion of the initial domain name and default domain name of the instance is rejected.
 //
 // @param request - DeleteDomainRequest
 //
@@ -3981,7 +4213,7 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a proxy token for a specified domain name of an EIAM instance. Only proxy tokens in the disabled state can be deleted.
+// Deletes the proxy token for a specified domain name of an EIAM instance. Only disabled proxy tokens can be deleted.
 //
 // @param request - DeleteDomainProxyTokenRequest
 //
@@ -4177,11 +4409,11 @@ func (client *Client) DeleteIdentityProviderWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) instance that you no longer use.
+// Deletes an EIAM instance that is no longer in use.
 //
 // Description:
 //
-// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
+// Ensure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -4321,7 +4553,7 @@ func (client *Client) DeleteNetworkZoneWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a specified EIAM organizational unit. The deletion fails if the organizational unit contains EIAM accounts or child organizational units.
+// Deletes a specified EIAM organization. The deletion fails if the organization contains EIAM accounts or sub-organizations.
 //
 // @param request - DeleteOrganizationalUnitRequest
 //
@@ -4369,7 +4601,7 @@ func (client *Client) DeleteOrganizationalUnitWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes all data of a specified organization. This operation can force delete all accounts and sub-organizations under the specified organization.
+// Deletes all data of a specified organization and can force delete all accounts and sub-organizations under the organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -4525,7 +4757,7 @@ func (client *Client) DeleteTrustedOriginWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a specified EIAM account and purges all information associated with the account.
+// Deletes a specified EIAM account and clears all information related to the account.
 //
 // @param request - DeleteUserRequest
 //
@@ -4573,7 +4805,7 @@ func (client *Client) DeleteUserWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// Deletes multiple accounts in a batch.
+// Deletes multiple accounts.
 //
 // @param request - DeleteUsersRequest
 //
@@ -4621,7 +4853,7 @@ func (client *Client) DeleteUsersWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// Deletes the specified WebAuthn authenticator.
+// Deletes a specified WebAuthn authenticator name.
 //
 // @param request - DeleteWebAuthnAuthenticatorRequest
 //
@@ -4725,7 +4957,7 @@ func (client *Client) DisableApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// Disables the Developer API call feature for an EIAM application.
 //
 // @param request - DisableApplicationApiInvokeRequest
 //
@@ -4825,7 +5057,7 @@ func (client *Client) DisableApplicationClientSecretWithContext(ctx context.Cont
 
 // Summary:
 //
-// Disables a federated identity credential for an application.
+// Disables an application federated credential.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -5021,7 +5253,7 @@ func (client *Client) DisableApplicationResourceServerWithContext(ctx context.Co
 
 // Summary:
 //
-// Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
+// Disables the single sign-on (SSO) feature for an EIAM application. After this feature is disabled, employees cannot use SSO to log on to the application.
 //
 // @param request - DisableApplicationSsoRequest
 //
@@ -5073,7 +5305,7 @@ func (client *Client) DisableApplicationSsoWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
+// When you disable an application, all features of the application, such as SSO and account synchronization, become unavailable. Make sure that you are aware of the risks associated with this operation.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -5283,7 +5515,59 @@ func (client *Client) DisableClientPublicKeyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Disables a cloud role for a specified Alibaba Cloud account.
+// Disables cloud account privileges.
+//
+// @param request - DisableCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCloudAccountPrivilegeResponse
+func (client *Client) DisableCloudAccountPrivilegeWithContext(ctx context.Context, request *DisableCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *DisableCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a cloud role under a specified cloud account.
 //
 // @param request - DisableCloudAccountRoleRequest
 //
@@ -5329,6 +5613,58 @@ func (client *Client) DisableCloudAccountRoleWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DisableCloudAccountRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a permission template.
+//
+// @param request - DisableCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCloudPermissionTemplateResponse
+func (client *Client) DisableCloudPermissionTemplateWithContext(ctx context.Context, request *DisableCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *DisableCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCloudPermissionTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5639,7 +5975,7 @@ func (client *Client) DisableDomainProxyTokenWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Disables a federated credential provider.
+// Disables a federated trust source.
 //
 // @param request - DisableFederatedCredentialProviderRequest
 //
@@ -5879,7 +6215,7 @@ func (client *Client) DisableInitDomainAutoRedirectWithContext(ctx context.Conte
 
 // Summary:
 //
-// Disables an internal authentication source.
+// Disables the internal authentication source.
 //
 // @param request - DisableInternalAuthenticationSourceRequest
 //
@@ -6027,7 +6363,7 @@ func (client *Client) DisableTrustedOriginWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
+// Sets the status of an account to disabled. If the account is already disabled, the operation returns a success response.
 //
 // @param request - DisableUserRequest
 //
@@ -6123,7 +6459,7 @@ func (client *Client) EnableApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// You can call the EnableApplicationApiInvoke operation to enable Developer API calls for an EIAM application.
+// Enables the Developer API invocation feature for an EIAM application.
 //
 // @param request - EnableApplicationApiInvokeRequest
 //
@@ -6171,7 +6507,7 @@ func (client *Client) EnableApplicationApiInvokeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Enables the client key of an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Enables a client secret for an EIAM application.
 //
 // @param request - EnableApplicationClientSecretRequest
 //
@@ -6621,7 +6957,7 @@ func (client *Client) EnableBrandWithContext(ctx context.Context, request *Enabl
 
 // Summary:
 //
-// Enables a specified application ClientPublicKey.
+// Enables the specified application ClientPublicKey.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -6677,7 +7013,59 @@ func (client *Client) EnableClientPublicKeyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Enables a cloud role for a specified Alibaba Cloud account.
+// Enables privileges for a cloud account.
+//
+// @param request - EnableCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCloudAccountPrivilegeResponse
+func (client *Client) EnableCloudAccountPrivilegeWithContext(ctx context.Context, request *EnableCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *EnableCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a cloud role under a specified cloud account.
 //
 // @param request - EnableCloudAccountRoleRequest
 //
@@ -6733,11 +7121,63 @@ func (client *Client) EnableCloudAccountRoleWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Enables a permission template.
+//
+// @param request - EnableCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCloudPermissionTemplateResponse
+func (client *Client) EnableCloudPermissionTemplateWithContext(ctx context.Context, request *EnableCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *EnableCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a conditional access policy.
 //
 // Description:
 //
-// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Confirm that you are aware of the risks that this operation may cause.
+// When a conditional access policy is changed from the enabled state to the disabled state, it no longer intercepts requests. Make sure that you are aware of the potential risks of this operation.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -6939,7 +7379,7 @@ func (client *Client) EnableCustomFieldWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Enables a custom clause.
+// Enables custom terms.
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -6987,7 +7427,7 @@ func (client *Client) EnableCustomPrivacyPolicyWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Enables a domain proxy token for a specified EIAM instance domain name to verify domain security.
+// Enables the domain proxy token of a specified EIAM instance to verify domain security.
 //
 // @param request - EnableDomainProxyTokenRequest
 //
@@ -7139,7 +7579,7 @@ func (client *Client) EnableIdentityProviderAdvancedAbilityWithContext(ctx conte
 //
 // Description:
 //
-// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the risks that this operation may cause.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the potential risks of this operation.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -7327,7 +7767,7 @@ func (client *Client) EnableInternalAuthenticationSourceWithContext(ctx context.
 
 // Summary:
 //
-// Enables the custom subject feature for a specified resource server. After this feature is enabled, the subject of an issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>. The `client.activeSubjectUrn` is set in the attribute mapping of the application\\"s federated identity provider.
+// Enables the custom subject capability for a specified resource server. After the custom subject is enabled, the issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential for the application.
 //
 // @param request - EnableResourceServerCustomSubjectRequest
 //
@@ -7475,7 +7915,7 @@ func (client *Client) EnableUserWithContext(ctx context.Context, request *Enable
 
 // Summary:
 //
-// Parses IdP metadata information.
+// Parses IdP metadata.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -7759,7 +8199,7 @@ func (client *Client) GenerateOauthTokenWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Get Upload Authentication
+// Retrieves upload authentication.
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -8015,7 +8455,7 @@ func (client *Client) GetApplicationFederatedCredentialWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the Developer API authorization scope of an EIAM application.
+// Queries the Developer API authorization scopes of an EIAM application.
 //
 // @param request - GetApplicationGrantScopeRequest
 //
@@ -8063,7 +8503,7 @@ func (client *Client) GetApplicationGrantScopeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieves the account synchronization configuration for an Entity Identity and Access Management (EIAM) application.
+// Queries the account synchronization configuration of an EIAM application.
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -8111,7 +8551,7 @@ func (client *Client) GetApplicationProvisioningConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+// Queries the account synchronization scope of an EIAM application. This scope also defines the accounts that can be queried and managed by the Developer API.
 //
 // @param request - GetApplicationProvisioningScopeRequest
 //
@@ -8207,7 +8647,7 @@ func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnitWit
 
 // Summary:
 //
-// Retrieves application role information.
+// Retrieves the application role information.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -8699,6 +9139,58 @@ func (client *Client) GetCloudAccountRoleWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries a permission template.
+//
+// @param request - GetCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudPermissionTemplateResponse
+func (client *Client) GetCloudPermissionTemplateWithContext(ctx context.Context, request *GetCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a conditional access policy.
 //
 // Description:
@@ -8847,7 +9339,7 @@ func (client *Client) GetCredentialProviderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves the information about an extended field.
+// Retrieves the extended field information.
 //
 // @param request - GetCustomFieldRequest
 //
@@ -8895,7 +9387,7 @@ func (client *Client) GetCustomFieldWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Retrieves a custom privacy policy.
+// Retrieves the custom privacy policy.
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -8991,7 +9483,7 @@ func (client *Client) GetDomainWithContext(ctx context.Context, request *GetDoma
 
 // Summary:
 //
-// Queries the DNS Challenge record for a specified EIAM domain name. This record is used to verify domain ownership.
+// Queries the DNS challenge records of a specified EIAM domain name. The generated records are used to verify the ownership of the domain name.
 //
 // @param request - GetDomainDnsChallengeRequest
 //
@@ -9121,6 +9613,43 @@ func (client *Client) GetForgetPasswordConfigurationWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetForgetPasswordConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全局云账号系统角色权限模板
+//
+// @param request - GetGlobalCloudAccountSystemRolePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGlobalCloudAccountSystemRolePolicyResponse
+func (client *Client) GetGlobalCloudAccountSystemRolePolicyWithContext(ctx context.Context, request *GetGlobalCloudAccountSystemRolePolicyRequest, runtime *dara.RuntimeOptions) (_result *GetGlobalCloudAccountSystemRolePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGlobalCloudAccountSystemRolePolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGlobalCloudAccountSystemRolePolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9607,7 +10136,7 @@ func (client *Client) GetInstanceLicenseWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves all module information under a first-level module.
+// Retrieves information about all modules under a level-1 module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -9795,7 +10324,7 @@ func (client *Client) GetLoginRedirectApplicationForBrandWithContext(ctx context
 
 // Summary:
 //
-// Queries the details of a specified network access endpoint.
+// Queries the details of a specified network endpoint.
 //
 // @param request - GetNetworkAccessEndpointRequest
 //
@@ -9891,7 +10420,7 @@ func (client *Client) GetNetworkZoneWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the information of an EIAM organizational unit.
+// Queries the information of an EIAM organization.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -10167,7 +10696,7 @@ func (client *Client) GetResourceServerScopeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the root organizational unit information of EIAM.
+// Queries the root organization information of EIAM.
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -10683,7 +11212,7 @@ func (client *Client) ListApplicationFederatedCredentialsWithContext(ctx context
 
 // Summary:
 //
-// Queries the list of application federated credentials by federated trust source ID.
+// Queries a list of application federated credentials based on the federated trust source ID.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -11183,7 +11712,7 @@ func (client *Client) ListApplicationsForNetworkAccessEndpointWithContext(ctx co
 
 // Summary:
 //
-// Retrieves the list of applications associated with a network domain.
+// Queries the applications associated with a network zone.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -11243,11 +11772,11 @@ func (client *Client) ListApplicationsForNetworkZoneWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the list of applications accessible to an EIAM organizational unit by paging. The response includes application IDs. To obtain detailed application information, call the GetApplication operation.
+// Performs a paging query for the list of applications accessible to an EIAM organization. The returned results include application IDs. To obtain detailed application information, call the GetApplication operation.
 //
 // Description:
 //
-// This operation queries only the direct permissions of the organizational unit, that is, applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of the organization, which are applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -11371,11 +11900,11 @@ func (client *Client) ListApplicationsForUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Lists authorized resource information.
+// Lists the authorization resources.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, which are applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -11659,7 +12188,7 @@ func (client *Client) ListAuthorizationRulesForUserWithContext(ctx context.Conte
 
 // Summary:
 //
-// Retrieves a list of all authorization servers under an instance.
+// Retrieves a list of all authorization servers for an instance.
 //
 // @param request - ListAuthorizationServersRequest
 //
@@ -11929,6 +12458,78 @@ func (client *Client) ListCloudAccountsWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListCloudAccountsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of one or more permission templates by using a paging query.
+//
+// @param request - ListCloudPermissionTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudPermissionTemplatesResponse
+func (client *Client) ListCloudPermissionTemplatesWithContext(ctx context.Context, request *ListCloudPermissionTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudPermissionTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateNamePrefix) {
+		query["CloudPermissionTemplateNamePrefix"] = request.CloudPermissionTemplateNamePrefix
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateSharingMode) {
+		query["CloudPermissionTemplateSharingMode"] = request.CloudPermissionTemplateSharingMode
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateUsageType) {
+		query["CloudPermissionTemplateUsageType"] = request.CloudPermissionTemplateUsageType
+	}
+
+	if !dara.IsNil(request.CreatorType) {
+		query["CreatorType"] = request.CreatorType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudPermissionTemplates"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudPermissionTemplatesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12215,7 +12816,7 @@ func (client *Client) ListCredentialProvidersWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Performs a paging query to retrieve the information of one or more credentials.
+// Queries the information of one or more credentials by using paging.
 //
 // @param request - ListCredentialsRequest
 //
@@ -12291,7 +12892,7 @@ func (client *Client) ListCredentialsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the list of custom terms.
+// Queries custom privacy policies.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -12351,7 +12952,7 @@ func (client *Client) ListCustomPrivacyPoliciesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the resources of brand-linked instances.
+// Retrieves the resources associated with a brand.
 //
 // @param request - ListCustomPrivacyPoliciesForBrandRequest
 //
@@ -12411,7 +13012,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrandWithContext(ctx context.C
 
 // Summary:
 //
-// Queries a list of domain proxy tokens of an EIAM instance.
+// Lists the proxy tokens for the domain name of an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -12555,7 +13156,7 @@ func (client *Client) ListEiamInstancesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the event list.
+// Lists events.
 //
 // @param request - ListEventTypesRequest
 //
@@ -12735,7 +13336,7 @@ func (client *Client) ListGroupsWithContext(ctx context.Context, request *ListGr
 
 // Summary:
 //
-// Performs a paged query to list the groups authorized to access an application. The response returns the group IDs. To obtain detailed information for a group, you can call the GetGroup operation.
+// Performs a paged query on the list of groups with authorization to access an application. The response includes group IDs and supports paging. To obtain detailed group information, invoke the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -12923,7 +13524,7 @@ func (client *Client) ListGroupsForResourceServerWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the list of account groups to which a specified EIAM account belongs.
+// Queries the groups to which a specified EIAM account belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -13035,7 +13636,7 @@ func (client *Client) ListIdentityProvidersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Retrieves information about Identity Providers (IdPs) for a network endpoint.
+// Retrieves the IdP information for a network access endpoint.
 //
 // @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
 //
@@ -13207,7 +13808,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZonesWithContext(ctx con
 
 // Summary:
 //
-// Queries the list of network access endpoints under an IDaaS EIAM instance.
+// Queries the network access endpoints of an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -13323,7 +13924,7 @@ func (client *Client) ListNetworkAccessPathsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the list of network zone objects.
+// Queries network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -13383,7 +13984,7 @@ func (client *Client) ListNetworkZonesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all ancestor organizations of a specified EIAM organization. The organizations in the result list are sorted in hierarchical order from the top level to the bottom level.
+// Lists all ancestor organizations of a specified EIAM organization. The returned organization list is sorted in hierarchical order from the top level to the bottom level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -13499,7 +14100,7 @@ func (client *Client) ListOrganizationalUnitsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Performs a paged query to list the organizations that are granted access to an application. The response returns the IDs of the organizations. To obtain detailed information about a specific organization, call the GetOrganizationalUnit operation.
+// Performs a paging query for the list of organizational units that an application is authorized to access. The returned result includes the organizational unit IDs. To obtain detailed information about an organizational unit, call the GetOrganizationalUnit operation.
 //
 // @param request - ListOrganizationalUnitsForApplicationRequest
 //
@@ -13937,11 +14538,11 @@ func (client *Client) ListTrustedOriginsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the binding relationships of third-party login accounts.
+// Queries the binding relationships of third-party logon accounts.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, namely the applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -14009,11 +14610,11 @@ func (client *Client) ListUserAuthnSourceMappingsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries EIAM account information by using paging.
+// Performs a paging query of EIAM account information.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organizational unit, which are the applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, which are the applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListUsersRequest
 //
@@ -14117,7 +14718,7 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// Performs a paged query to list the accounts that have been granted access to an application. The response includes account IDs. To retrieve detailed information about an account, call the GetUser operation.
+// Performs a paging query to retrieve the list of accounts authorized to access an application. The response includes account IDs. To obtain detailed account information, call the GetUser operation.
 //
 // @param request - ListUsersForApplicationRequest
 //
@@ -14893,7 +15494,7 @@ func (client *Client) RemoveUserFromOrganizationalUnitsWithContext(ctx context.C
 
 // Summary:
 //
-// Removes Employee Identity and Access Management (EIAM) accounts from an EIAM group of Identity as a Service (IDaaS).
+// Removes multiple EIAM accounts from a specified EIAM account group.
 //
 // @param request - RemoveUsersFromGroupRequest
 //
@@ -14989,7 +15590,7 @@ func (client *Client) RenewFreeLicenseEndTimeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Revokes the permissions of multiple Employee Identity and Access Management (EIAM) groups to access an application in a batch.
+// Revokes application access permissions for multiple EIAM groups.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -15045,7 +15646,7 @@ func (client *Client) RevokeApplicationFromGroupsWithContext(ctx context.Context
 
 // Summary:
 //
-// Revokes application access from multiple EIAM organizations in a batch operation.
+// Revokes access to an application for multiple EIAM organizational units in batches.
 //
 // @param request - RevokeApplicationFromOrganizationalUnitsRequest
 //
@@ -15101,7 +15702,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnitsWithContext(ctx co
 
 // Summary:
 //
-// Revokes the permissions of multiple Enterprise Identity Access Management (EIAM) accounts to access an application in a batch.
+// Revokes access to an application for multiple EIAM accounts.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -15865,7 +16466,7 @@ func (client *Client) SetApplicationSsoConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Sets a specified domain name of an EIAM instance as the default domain name.
+// Sets the specified domain name of an EIAM instance as the default domain name.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -15913,7 +16514,7 @@ func (client *Client) SetDefaultDomainWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Sets the forgot password policy for an EIAM instance.
+// Configures the forgot password policy for EIAM.
 //
 // @param request - SetForgetPasswordConfigurationRequest
 //
@@ -16381,7 +16982,7 @@ func (client *Client) SetPasswordComplexityConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Sets the password expiration policy for a specified Enterprise Identity and Access Management (EIAM) instance.
+// Sets the password expiration policy for a specified EIAM instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -16457,7 +17058,7 @@ func (client *Client) SetPasswordExpirationConfigurationWithContext(ctx context.
 
 // Summary:
 //
-// Sets the password history policy for a specified Enterprise Identity and Access Management (EIAM) instance.
+// Sets the password history policy for a specified EIAM instance.
 //
 // @param request - SetPasswordHistoryConfigurationRequest
 //
@@ -16509,7 +17110,7 @@ func (client *Client) SetPasswordHistoryConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Sets the password initialization policy for a specified EIAM instance.
+// Configures the password initialization policy for a specified EIAM instance.
 //
 // @param request - SetPasswordInitializationConfigurationRequest
 //
@@ -16569,7 +17170,7 @@ func (client *Client) SetPasswordInitializationConfigurationWithContext(ctx cont
 
 // Summary:
 //
-// Sets the specified client public key as the primary key for an application.
+// Sets the specified application ClientPublicKey as preferred.
 //
 // @param request - SetPrimaryClientPublicKeyRequest
 //
@@ -16785,7 +17386,7 @@ func (client *Client) UnbindTotpAuthenticatorWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Unbinds a third-party logon account from a user.
+// Disassociates a third-party logon account.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //
@@ -16889,7 +17490,7 @@ func (client *Client) UnlockUserWithContext(ctx context.Context, request *Unlock
 
 // Summary:
 //
-// Modifies the advanced configuration of an application.
+// Updates the advanced configurations of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -16941,7 +17542,7 @@ func (client *Client) UpdateApplicationAdvancedConfigWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
+// Updates the access authorization type of a specified EIAM application.
 //
 // @param request - UpdateApplicationAuthorizationTypeRequest
 //
@@ -16993,7 +17594,7 @@ func (client *Client) UpdateApplicationAuthorizationTypeWithContext(ctx context.
 
 // Summary:
 //
-// Updates the expiration time of a specified ClientSecret for an application.
+// Updates the expiration time of a specified client secret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -17049,7 +17650,7 @@ func (client *Client) UpdateApplicationClientSecretExpirationTimeWithContext(ctx
 
 // Summary:
 //
-// Modifies the description of an Employee Identity and Access Management (EIAM) application.
+// Updates the description of an EIAM application.
 //
 // @param request - UpdateApplicationDescriptionRequest
 //
@@ -17525,7 +18126,7 @@ func (client *Client) UpdateApplicationTokenExpirationTimeWithContext(ctx contex
 
 // Summary:
 //
-// Updates the basic properties of an authorization rule.
+// Updates the basic information of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -17587,7 +18188,7 @@ func (client *Client) UpdateAuthorizationRuleWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates the properties of the relationship between an authorization rule and an application.
+// Updates the relationship properties between an authorization rule and an application.
 //
 // @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
 //
@@ -17777,7 +18378,7 @@ func (client *Client) UpdateAuthorizationRuleGroupAttachmentWithContext(ctx cont
 
 // Summary:
 //
-// Updates the relationship properties between an authorization rule and an account.
+// Updates the relationship attributes between an authorization rule and an account.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -18191,6 +18792,86 @@ func (client *Client) UpdateCloudAccountRoleDescriptionWithContext(ctx context.C
 
 // Summary:
 //
+// Updates a permission template.
+//
+// Description:
+//
+// Retrieves the list of application templates.
+//
+// @param request - UpdateCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudPermissionTemplateResponse
+func (client *Client) UpdateCloudPermissionTemplateWithContext(ctx context.Context, request *UpdateCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowRequest) {
+		query["AllowRequest"] = request.AllowRequest
+	}
+
+	if !dara.IsNil(request.ApplicableScope) {
+		query["ApplicableScope"] = request.ApplicableScope
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResources) {
+		query["CloudAccountResources"] = request.CloudAccountResources
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateName) {
+		query["CloudPermissionTemplateName"] = request.CloudPermissionTemplateName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a conditional access policy.
 //
 // Description:
@@ -18327,7 +19008,7 @@ func (client *Client) UpdateConditionalAccessPolicyDescriptionWithContext(ctx co
 
 // Summary:
 //
-// Update basic information for a credential.
+// Updates the basic information of a credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -19087,7 +19768,7 @@ func (client *Client) UpdateInstanceDescriptionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the name of a private network access endpoint.
+// Updates the name of a dedicated network access endpoint.
 //
 // @param request - UpdateNetworkAccessEndpointNameRequest
 //
@@ -19207,7 +19888,7 @@ func (client *Client) UpdateNetworkZoneWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the description of a network zone.
+// Updates the description of a network zone object.
 //
 // @param request - UpdateNetworkZoneDescriptionRequest
 //

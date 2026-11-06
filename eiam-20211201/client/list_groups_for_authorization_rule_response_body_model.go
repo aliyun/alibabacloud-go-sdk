@@ -24,13 +24,13 @@ type iListGroupsForAuthorizationRuleResponseBody interface {
 type ListGroupsForAuthorizationRuleResponseBody struct {
 	// The list of groups.
 	Groups []*ListGroupsForAuthorizationRuleResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is returned for the next page.
+	// The next token returned in the current response, which is used to query the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListGroupsForAuthorizationRuleResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListGroupsForAuthorizationRuleResponseBodyGroups struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
-	// The type of the validity period of the relationship. Valid values:
+	// The validity period type of the relationship. Valid values:
 	//
 	// - permanent: permanent
 	//
@@ -197,13 +197,13 @@ func (s *ListGroupsForAuthorizationRuleResponseBodyGroups) Validate() error {
 }
 
 type ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod struct {
-	// The end time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
+	// The effective end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the validity period. The value is a UNIX timestamp. Unit: milliseconds.
+	// The effective start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

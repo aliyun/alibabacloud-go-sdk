@@ -16,7 +16,7 @@ type iSetDefaultDomainRequest interface {
 }
 
 type SetDefaultDomainRequest struct {
-	// The domain name ID.
+	// The domain ID.
 	//
 	// This parameter is required.
 	//

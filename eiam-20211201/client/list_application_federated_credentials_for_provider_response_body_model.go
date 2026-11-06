@@ -26,19 +26,19 @@ type iListApplicationFederatedCredentialsForProviderResponseBody interface {
 type ListApplicationFederatedCredentialsForProviderResponseBody struct {
 	// The list of application federated credentials.
 	ApplicationFederatedCredentials []*ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentials `json:"ApplicationFederatedCredentials,omitempty" xml:"ApplicationFederatedCredentials,omitempty" type:"Repeated"`
-	// The maximum number of entries per page in a paged query.
+	// The maximum number of rows per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of items.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	//
 	// app_asda1dsadxxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the credential was created. The value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the credential was last used. The value is a UNIX timestamp in milliseconds.
+	// The last used time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the credential was last updated. The value is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -212,9 +212,9 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	VerificationCondition *string `json:"VerificationCondition,omitempty" xml:"VerificationCondition,omitempty"`
 	// The verification mode. Valid values:
 	//
-	// - freedom: free mode.
+	// - freedom: free mode
 	//
-	// - structured: structured mode.
+	// - structured: structured mode
 	//
 	// example:
 	//
@@ -488,7 +488,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	//
 	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The Azure resource group name.
+	// The name of the Azure resource group.
 	//
 	// example:
 	//
@@ -555,13 +555,13 @@ func (s *ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFe
 type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentialsOidcVerificationConfigGcpVmConfig struct {
 	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The GCP project ID to which the resource belongs.
+	// The ID of the GCP project to which the resource belongs.
 	//
 	// example:
 	//
 	// turnkey-axiom-475109-xx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The subject (sub) that corresponds to the service account.
+	// The sub claim corresponding to the service account.
 	//
 	// example:
 	//
@@ -639,7 +639,7 @@ func (s *ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFe
 }
 
 type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFederatedCredentialsOidcVerificationConfigKubernetesConfig struct {
-	// The Kubernetes namespace.
+	// The K8s namespace.
 	//
 	// example:
 	//
@@ -651,7 +651,7 @@ type ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFedera
 	//
 	// test-pod
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The Kubernetes service account name.
+	// The name of the K8s service account.
 	//
 	// example:
 	//

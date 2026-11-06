@@ -22,7 +22,7 @@ type GenerateWebAuthnAuthenticatorRegistrationUrlResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Information about the WebAuthn authenticator registration URL.
+	// The WebAuthn authenticator registration URL information.
 	WebAuthnAuthenticatorRegistrationUrl *GenerateWebAuthnAuthenticatorRegistrationUrlResponseBodyWebAuthnAuthenticatorRegistrationUrl `json:"WebAuthnAuthenticatorRegistrationUrl,omitempty" xml:"WebAuthnAuthenticatorRegistrationUrl,omitempty" type:"Struct"`
 }
 
@@ -68,7 +68,7 @@ type GenerateWebAuthnAuthenticatorRegistrationUrlResponseBodyWebAuthnAuthenticat
 	//
 	// https://012cnaliyunidaas..com./login/webauthn/registration
 	RegistrationUrl *string `json:"RegistrationUrl,omitempty" xml:"RegistrationUrl,omitempty"`
-	// The parameters for the WebAuthn authenticator registration URL.
+	// The WebAuthn authenticator registration URL parameters.
 	//
 	// example:
 	//

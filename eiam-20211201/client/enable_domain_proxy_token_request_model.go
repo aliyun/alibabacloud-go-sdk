@@ -18,7 +18,7 @@ type iEnableDomainProxyTokenRequest interface {
 }
 
 type EnableDomainProxyTokenRequest struct {
-  // The domain name ID.
+  // The domain ID.
   // 
   // This parameter is required.
   // 

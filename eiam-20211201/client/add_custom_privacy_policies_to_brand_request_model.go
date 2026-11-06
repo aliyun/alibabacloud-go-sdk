@@ -26,7 +26,7 @@ type AddCustomPrivacyPoliciesToBrandRequest struct {
 	//
 	// brand_xxxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// The list of term IDs.
+	// The IDs of the custom privacy policies.
 	//
 	// This parameter is required.
 	CustomPrivacyPolicyIds []*string `json:"CustomPrivacyPolicyIds,omitempty" xml:"CustomPrivacyPolicyIds,omitempty" type:"Repeated"`

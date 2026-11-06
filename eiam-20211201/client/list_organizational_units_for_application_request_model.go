@@ -32,7 +32,7 @@ type ListOrganizationalUnitsForApplicationRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色ID。
+	// The application role ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListOrganizationalUnitsForApplicationRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organization IDs. A single request can contain up to 100 organization IDs.
+	// The organizational unit IDs. A maximum of 100 organizational unit IDs can be specified in a single operation.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListOrganizationalUnitsForApplicationRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//

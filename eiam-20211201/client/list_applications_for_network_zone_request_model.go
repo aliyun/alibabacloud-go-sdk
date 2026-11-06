@@ -30,13 +30,13 @@ type ListApplicationsForNetworkZoneRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the network zone associated with the application.
+	// The ID of the network zone.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type ListApplicationsForNetworkZoneRequest struct {
 	//
 	// network_11111
 	NetworkZoneId *string `json:"NetworkZoneId,omitempty" xml:"NetworkZoneId,omitempty"`
-	// The pagination token.
+	// The next token.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token for the previous page.
+	// The previous token.
 	//
 	// example:
 	//

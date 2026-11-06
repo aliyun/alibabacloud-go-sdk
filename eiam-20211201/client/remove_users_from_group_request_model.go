@@ -34,7 +34,7 @@ type RemoveUsersFromGroupRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The account IDs. A maximum of 100 accounts can be removed from a group.
+	// The list of account IDs. The list can contain up to 100 elements.
 	//
 	// This parameter is required.
 	//

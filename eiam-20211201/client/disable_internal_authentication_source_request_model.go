@@ -16,7 +16,7 @@ type iDisableInternalAuthenticationSourceRequest interface {
 }
 
 type DisableInternalAuthenticationSourceRequest struct {
-	// The ID of the internal authentication source.
+	// The internal authentication source ID.
 	//
 	// example:
 	//

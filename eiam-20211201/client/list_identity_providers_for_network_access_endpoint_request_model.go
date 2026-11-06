@@ -28,13 +28,13 @@ type ListIdentityProvidersForNetworkAccessEndpointRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries to return on each page.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The network endpoint ID.
+	// The network access endpoint ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListIdentityProvidersForNetworkAccessEndpointRequest struct {
 	//
 	// nae_ms5ewjcjzed3ysaau5t5kxxxxx
 	NetworkAccessEndpointId *string `json:"NetworkAccessEndpointId,omitempty" xml:"NetworkAccessEndpointId,omitempty"`
-	// The query token.
+	// The pagination token.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListOrganizationalUnitsForApplicationResponseBody interface {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBody struct {
-	// The list of organizations.
+	// The list of organizational unit IDs.
 	OrganizationalUnits []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits `json:"OrganizationalUnits,omitempty" xml:"OrganizationalUnits,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,9 +83,9 @@ func (s *ListOrganizationalUnitsForApplicationResponseBody) Validate() error {
 }
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits struct {
-	// The list of application roles.
+	// The application roles.
 	ApplicationRoles []*ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles `json:"ApplicationRoles,omitempty" xml:"ApplicationRoles,omitempty" type:"Repeated"`
-	// The organization ID.
+	// The organizational unit ID.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ func (s *ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits) V
 }
 
 type ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles struct {
-	// The ID of the application role.
+	// The application role ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDeleteConditionalAccessPolicyRequest interface {
 }
 
 type DeleteConditionalAccessPolicyRequest struct {
-	// The ID of the conditional access policy.
+	// The conditional access policy ID.
 	//
 	// This parameter is required.
 	//

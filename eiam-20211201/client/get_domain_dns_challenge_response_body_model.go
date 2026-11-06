@@ -16,7 +16,7 @@ type iGetDomainDnsChallengeResponseBody interface {
 }
 
 type GetDomainDnsChallengeResponseBody struct {
-	// The DNS Challenge record.
+	// The DNS challenge record.
 	DomainDnsChallenge *GetDomainDnsChallengeResponseBodyDomainDnsChallenge `json:"DomainDnsChallenge,omitempty" xml:"DomainDnsChallenge,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *GetDomainDnsChallengeResponseBody) Validate() error {
 }
 
 type GetDomainDnsChallengeResponseBodyDomainDnsChallenge struct {
-	// The name of the DNS Challenge.
+	// The DNS challenge name.
 	//
 	// example:
 	//
 	// _idaas-challenge.login.example.com
 	DnsChallengeName *string `json:"DnsChallengeName,omitempty" xml:"DnsChallengeName,omitempty"`
-	// The value of the DNS Challenge.
+	// The DNS challenge value.
 	//
 	// example:
 	//
 	// yriov8FD/rIGjQTU3/JjqkwxRbo5dyGftHWOtP5xfCI=
 	DnsChallengeValue *string `json:"DnsChallengeValue,omitempty" xml:"DnsChallengeValue,omitempty"`
-	// The type of the DNS record.
+	// The DNS record type.
 	//
 	// example:
 	//

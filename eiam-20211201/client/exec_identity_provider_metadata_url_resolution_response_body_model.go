@@ -16,7 +16,7 @@ type iExecIdentityProviderMetadataUrlResolutionResponseBody interface {
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBody struct {
-  // The metadata of the identity provider.
+  // The identity provider metadata.
   IdentityProviderMetadata *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata `json:"IdentityProviderMetadata,omitempty" xml:"IdentityProviderMetadata,omitempty" type:"Struct"`
   // The request ID.
   // 
@@ -62,9 +62,9 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBody) Validate() error
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadata struct {
-  // The metadata of the OIDC IdP.
+  // The OIDC IdP metadata.
   OidcOpenIdConfiguration *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration `json:"OidcOpenIdConfiguration,omitempty" xml:"OidcOpenIdConfiguration,omitempty" type:"Struct"`
-  // The metadata of the SAML IdP.
+  // The SAML IdP metadata.
   SamlMetadataConfiguration *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration `json:"SamlMetadataConfiguration,omitempty" xml:"SamlMetadataConfiguration,omitempty" type:"Struct"`
 }
 
@@ -109,7 +109,7 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataOidcOpenIdConfiguration struct {
-  // The OAuth2 authorization endpoint.
+  // The OAuth 2.0 authorization endpoint.
   // 
   // example:
   // 
@@ -127,13 +127,13 @@ type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetada
   // 
   // https://demo.com/oauth2/v1/keys
   JwksUri *string `json:"JwksUri,omitempty" xml:"JwksUri,omitempty"`
-  // The OAuth2 token endpoint.
+  // The OAuth 2.0 token endpoint.
   // 
   // example:
   // 
   // https://demo.com/api/bff/v1.2/developer/oidc/token
   TokenEndpoint *string `json:"TokenEndpoint,omitempty" xml:"TokenEndpoint,omitempty"`
-  // The OIDC UserInfo endpoint.
+  // The OIDC userinfo endpoint.
   // 
   // example:
   // 
@@ -199,15 +199,15 @@ func (s *ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMe
 }
 
 type ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfiguration struct {
-  // The list of IdP certificates.
+  // The IdP certificate list.
   Certificates []*ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetadataSamlMetadataConfigurationCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-  // The entity ID of the IdP.
+  // The IdP entity ID.
   // 
   // example:
   // 
   // http://dc.test.com/adfs/services/trust
   IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
-  // The single sign-on URL of the IdP.
+  // The IdP logon URL.
   // 
   // example:
   // 

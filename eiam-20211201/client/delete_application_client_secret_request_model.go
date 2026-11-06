@@ -34,7 +34,7 @@ type DeleteApplicationClientSecretRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The client secret ID of the application.
+	// The ID of the client secret for the application.
 	//
 	// This parameter is required.
 	//

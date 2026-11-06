@@ -40,7 +40,7 @@ type ListGroupsForUserRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The account ID.
+	// The user ID.
 	//
 	// This parameter is required.
 	//

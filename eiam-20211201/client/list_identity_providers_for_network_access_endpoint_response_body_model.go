@@ -20,9 +20,9 @@ type iListIdentityProvidersForNetworkAccessEndpointResponseBody interface {
 }
 
 type ListIdentityProvidersForNetworkAccessEndpointResponseBody struct {
-	// The collection of IdPs for the network endpoint.
+	// The IdPs under the network access endpoint.
 	IdentityProvidersForNetworkAccessEndpoint []*ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProvidersForNetworkAccessEndpoint `json:"IdentityProvidersForNetworkAccessEndpoint,omitempty" xml:"IdentityProvidersForNetworkAccessEndpoint,omitempty" type:"Repeated"`
-	// The token that is returned from the call.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *ListIdentityProvidersForNetworkAccessEndpointResponseBody) Validate() e
 }
 
 type ListIdentityProvidersForNetworkAccessEndpointResponseBodyIdentityProvidersForNetworkAccessEndpoint struct {
-	// The ID of the IdP.
+	// The IdP ID.
 	//
 	// example:
 	//
 	// idp_nbq7i4ylodmm64iy6t5muxxxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// The name of the IdP.
+	// The IdP name.
 	//
 	// example:
 	//

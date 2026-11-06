@@ -18,7 +18,7 @@ type iUpdateApplicationAuthorizationTypeRequest interface {
 }
 
 type UpdateApplicationAuthorizationTypeRequest struct {
-	// The ID of the application that you want to modify.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type UpdateApplicationAuthorizationTypeRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The authorization type of the application. Valid values:
+	// The access authorization type of the application. Valid values:
 	//
-	// 	- authorize_required: Only the user with explicit authorization can access the application.
+	// - authorize_required: Explicit authorization is required for access.
 	//
-	// 	- default_all: By default, all users can access the application.
+	// - default_all: All members have access permissions by default.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateApplicationAuthorizationTypeRequest struct {
 	//
 	// authorize_required
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

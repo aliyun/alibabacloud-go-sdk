@@ -22,9 +22,9 @@ type iListNetworkZonesResponseBody interface {
 }
 
 type ListNetworkZonesResponseBody struct {
-	// The list of network zones.
+	// The network zones.
 	NetworkZones []*ListNetworkZonesResponseBodyNetworkZones `json:"NetworkZones,omitempty" xml:"NetworkZones,omitempty" type:"Repeated"`
-	// The pagination token returned by this call.
+	// The pagination token returned for this call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListNetworkZonesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type ListNetworkZonesResponseBodyNetworkZones struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IPv4 CIDR blocks of the network zone.
+	// The IPv4 CIDR blocks.
 	Ipv4Cidrs []*string `json:"Ipv4Cidrs,omitempty" xml:"Ipv4Cidrs,omitempty" type:"Repeated"`
-	// The IPv6 CIDR blocks of the network zone.
+	// The IPv6 CIDR blocks.
 	Ipv6Cidrs []*string `json:"Ipv6Cidrs,omitempty" xml:"Ipv6Cidrs,omitempty" type:"Repeated"`
 	// The network zone ID.
 	//

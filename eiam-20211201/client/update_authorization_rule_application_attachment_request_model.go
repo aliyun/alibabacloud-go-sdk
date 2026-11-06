@@ -40,7 +40,7 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the parameter value is unique among different requests. The ClientToken can contain only ASCII characters and cannot exceed 64 characters in length. References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type UpdateAuthorizationRuleApplicationAttachmentRequest struct {
 	ValidityPeriod *UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
 	// The validity type of the relationship. Valid values:
 	//
-	// - permanent: The relationship is permanent.
+	// - permanent: permanent
 	//
-	// - time_bound: The relationship is valid for a custom time range.
+	// - time_bound: custom time range
 	//
 	// This parameter is required.
 	//
@@ -144,13 +144,13 @@ func (s *UpdateAuthorizationRuleApplicationAttachmentRequest) Validate() error {
 }
 
 type UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod struct {
-	// The end time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
+	// The end time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1704062061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the validity period. This is a UNIX timestamp. Unit: milliseconds.
+	// The start time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

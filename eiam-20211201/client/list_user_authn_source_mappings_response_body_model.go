@@ -24,19 +24,19 @@ type iListUserAuthnSourceMappingsResponseBody interface {
 }
 
 type ListUserAuthnSourceMappingsResponseBody struct {
-	// The maximum number of rows per page in a paged query.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
 	// NTxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListUserAuthnSourceMappingsResponseBody struct {
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of third-party account login bindings.
+	// The list of third-party account logon bindings.
 	UserAuthnSourceMappings []*ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings `json:"UserAuthnSourceMappings,omitempty" xml:"UserAuthnSourceMappings,omitempty" type:"Repeated"`
 }
 
@@ -134,7 +134,7 @@ func (s *ListUserAuthnSourceMappingsResponseBody) Validate() error {
 }
 
 type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
-	// The authentication source type of the source IdP.
+	// The source IdP authentication source type.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type ListUserAuthnSourceMappingsResponseBodyUserAuthnSourceMappings struct {
 	//
 	// 1762309642177
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The association information of the third-party account.
+	// The third-party account association information.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iListDomainProxyTokensRequest interface {
 }
 
 type ListDomainProxyTokensRequest struct {
-	// The domain ID.
+	// The domain name ID.
 	//
 	// This parameter is required.
 	//

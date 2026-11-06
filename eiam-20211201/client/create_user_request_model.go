@@ -44,37 +44,37 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: How to ensure idempotence.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must ensure that the parameter value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see the References: How to ensure idempotence.
 	//
 	// example:
 	//
 	// client-token-example
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The list of custom fields.
+	// The list of extended fields.
 	//
 	// example:
 	//
 	// description
 	CustomFields []*CreateUserRequestCustomFields `json:"CustomFields,omitempty" xml:"CustomFields,omitempty" type:"Repeated"`
-	// The description. The description can be up to 256 characters in length.
+	// The description. The maximum length is 256 characters.
 	//
 	// example:
 	//
 	// description text
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the account. The display name can be up to 128 characters in length.
+	// The display name of the account. The maximum length is 128 characters.
 	//
 	// example:
 	//
 	// name_001
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The email address. The email prefix can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-). The email address can be up to 128 characters in length.
+	// The email address. The email prefix can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-). The maximum length is 128 characters.
 	//
 	// example:
 	//
 	// example@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Specifies whether the email address is verified as a trusted email address. This parameter is required if Email is specified. If no special business requirement exists, set this parameter to true.
+	// Specifies whether the email address is verified and trusted. If the email address is specified, this parameter is required. If no special business requirements exist, set this parameter to true.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type CreateUserRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organizational unit IDs to which the account belongs. An account can belong to multiple organizational units.
+	// The IDs of the organizational units to which the account belongs. An account can belong to multiple organizational units.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The password. The password must meet the requirements of the password policy.
+	// The password. For specific format requirements, refer to the password policy.
 	//
 	// example:
 	//
@@ -98,19 +98,19 @@ type CreateUserRequest struct {
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The password initialization configuration.
 	PasswordInitializationConfig *CreateUserRequestPasswordInitializationConfig `json:"PasswordInitializationConfig,omitempty" xml:"PasswordInitializationConfig,omitempty" type:"Struct"`
-	// The phone number. The value is a 6 to 15-digit number.
+	// The mobile phone number. It must be 6 to 15 digits in length.
 	//
 	// example:
 	//
 	// 12345678901
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Specifies whether the phone number is verified as a trusted phone number. This parameter is required if PhoneNumber is specified. If no special business requirement exists, set this parameter to true.
+	// Specifies whether the mobile phone number is verified and trusted. If the mobile phone number is specified, this parameter is required. If no special business requirements exist, set this parameter to true.
 	//
 	// example:
 	//
 	// true
 	PhoneNumberVerified *bool `json:"PhoneNumberVerified,omitempty" xml:"PhoneNumberVerified,omitempty"`
-	// The phone region code. The value is a 1 to 6-digit number and does not include a plus sign (+).
+	// The country code for the mobile phone number. It must be 1 to 6 digits in length and cannot contain a plus sign (+).
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type CreateUserRequest struct {
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	PrimaryOrganizationalUnitId *string `json:"PrimaryOrganizationalUnitId,omitempty" xml:"PrimaryOrganizationalUnitId,omitempty"`
-	// The external ID of the account. This parameter is used to associate the account with an external system. The value can be up to 128 characters in length. If this parameter is not specified, the account ID is used by default.
+	// The external ID of the account, which is used to associate the account with an external system. The maximum length is 128 characters. If this parameter is not specified, the account ID is used by default.
 	//
 	// example:
 	//
 	// user_d6sbsuumeta4h66ec3il7yxxxx
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
-	// The username. The username can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-). The username can be up to 256 characters in length.
+	// The username. It can contain letters, digits, and the following special characters: underscores (_), periods (.), at signs (@), and hyphens (-). The maximum length is 256 characters.
 	//
 	// This parameter is required.
 	//
@@ -311,13 +311,13 @@ func (s *CreateUserRequest) Validate() error {
 }
 
 type CreateUserRequestCustomFields struct {
-	// The identifier of the custom field. Create the custom field in advance. For more information, refer to the custom fields module in the console.
+	// The identifier of the extended field. You must create the extended field in advance. For more information, refer to the Extended Fields module in the console.
 	//
 	// example:
 	//
 	// age
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The value of the custom field. The value must comply with the attribute constraints of the corresponding custom field.
+	// The value of the extended field. The value must comply with the attribute limits of the corresponding extended field.
 	//
 	// example:
 	//
@@ -356,21 +356,21 @@ func (s *CreateUserRequestCustomFields) Validate() error {
 }
 
 type CreateUserRequestPasswordInitializationConfig struct {
-	// The forced password change status. By default, this feature is not enabled. Valid values:
+	// Specifies whether to force the user to change the password. By default, this feature is disabled. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: Enables the feature.
 	//
-	// - disabled: Disabled.
+	// - disabled: Disables the feature.
 	//
 	// example:
 	//
 	// enabled
 	PasswordForcedUpdateStatus *string `json:"PasswordForcedUpdateStatus,omitempty" xml:"PasswordForcedUpdateStatus,omitempty"`
-	// The priority of the password initialization policy. By default, this parameter does not take effect. Valid values:
+	// The password initialization policy priority. By default, this parameter does not take effect. Valid values:
 	//
-	// - global: The global policy policy priority. The instance-level password initialization policy is used, and the password initialization policy specified in this request does not take effect. For more information, refer to the password initialization policy in password-related policies.
+	// - global: Global priority. The instance-level password initialization policy is used. The password initialization policy specified in the Settings is invalid. For more information, refer to the password initialization policy in the password-related policies.
 	//
-	// - custom: The custom policy policy priority. The password initialization policy defined in this request is used, including whether to enable forced password change, the password initialization method, and the notification channel.
+	// - custom: Custom priority. The password initialization policy defined in the Settings is used, including whether to force password changes, the password initialization method, and the notification channels.
 	//
 	// example:
 	//
@@ -378,7 +378,7 @@ type CreateUserRequestPasswordInitializationConfig struct {
 	PasswordInitializationPolicyPriority *string `json:"PasswordInitializationPolicyPriority,omitempty" xml:"PasswordInitializationPolicyPriority,omitempty"`
 	// The password initialization method. Valid values:
 	//
-	// - random: random.
+	// - random: Generates a random password.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetOrganizationalUnitResponseBody interface {
 }
 
 type GetOrganizationalUnitResponseBody struct {
-	// Organizational unit data object.
+	// The organizational unit data object.
 	OrganizationalUnit *GetOrganizationalUnitResponseBodyOrganizationalUnit `json:"OrganizationalUnit,omitempty" xml:"OrganizationalUnit,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,81 +62,77 @@ func (s *GetOrganizationalUnitResponseBody) Validate() error {
 }
 
 type GetOrganizationalUnitResponseBodyOrganizationalUnit struct {
-	// The time when the organizational unit was created, in Unix timestamp format, in milliseconds.
+	// The time when the organizational unit was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1652085686179
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Description of the organizational unit.
+	// The description of the organizational unit.
 	//
 	// example:
 	//
 	// Test organization
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the organizational unit is a leaf node. A value of true indicates that the organizational unit has no child nodes, and a value of false indicates that the organizational unit has child nodes.
+	// Specifies whether the organizational unit is a leaf node. A value of true indicates that the organizational unit has no child nodes. A value of false indicates that the organizational unit has child nodes.
 	//
 	// example:
 	//
 	// false
 	Leaf *bool `json:"Leaf,omitempty" xml:"Leaf,omitempty"`
-	// Organizational unit external ID, used for mapping between external data and IDaaS organizational units. The default value is the IDaaS organizational unit ID.
-	//
-	// Note: The external ID is unique within the same source type and source ID.
+	// The external ID of the organizational unit. It is used to map external data to IDaaS organizational units. The default value is the IDaaS organizational unit ID. Note: The external ID must be unique within the same source type and source ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitExternalId *string `json:"OrganizationalUnitExternalId,omitempty" xml:"OrganizationalUnitExternalId,omitempty"`
-	// Organizational unit ID.
+	// The organizational unit ID.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	OrganizationalUnitId *string `json:"OrganizationalUnitId,omitempty" xml:"OrganizationalUnitId,omitempty"`
-	// Organizational unit name.
+	// The name of the organizational unit.
 	//
 	// example:
 	//
 	// test_organizationalUnit_name
 	OrganizationalUnitName *string `json:"OrganizationalUnitName,omitempty" xml:"OrganizationalUnitName,omitempty"`
-	// Organizational unit source ID.
-	//
-	// The default value for the self-built type is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
+	// The source ID of the organizational unit. For self-managed organizational units, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for DingTalk, the value is the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	OrganizationalUnitSourceId *string `json:"OrganizationalUnitSourceId,omitempty" xml:"OrganizationalUnitSourceId,omitempty"`
-	// Account source type. Valid values:
+	// The account source type. Valid values:
 	//
-	// - build_in: self-built.
+	// - build_in: Self-managed.
 	//
-	// - ding_talk: imported from DingTalk.
+	// - ding_talk: Imported from DingTalk.
 	//
-	// - ad: imported from AD.
+	// - ad: Imported from AD.
 	//
-	// - ldap: imported from LDAP.
+	// - ldap: Imported from LDAP.
 	//
-	// - we_com: imported from WeCom.
+	// - we_com: Imported from WeCom.
 	//
 	// example:
 	//
 	// build_in
 	OrganizationalUnitSourceType *string `json:"OrganizationalUnitSourceType,omitempty" xml:"OrganizationalUnitSourceType,omitempty"`
-	// Parent organizational unit ID.
+	// The ID of the parent organizational unit.
 	//
 	// example:
 	//
 	// ou_wovwffm62xifdziem7an7xxxxx
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// The time when the organizational unit was last updated, in Unix timestamp format, in milliseconds.
+	// The time when the organizational unit was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

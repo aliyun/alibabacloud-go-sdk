@@ -18,7 +18,7 @@ type iGenerateUploadAuthRequest interface {
 }
 
 type GenerateUploadAuthRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type GenerateUploadAuthRequest struct {
 	//
 	// idaas_111ccc11xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// File purpose.
+	// The file purpose.
 	//
 	// example:
 	//
 	// user_import
 	Purpose *string `json:"Purpose,omitempty" xml:"Purpose,omitempty"`
-	// File type.
+	// The file type.
 	//
 	// example:
 	//

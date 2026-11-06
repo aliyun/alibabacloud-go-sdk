@@ -32,7 +32,7 @@ type ListUsersForApplicationRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色ID。
+	// The application role ID.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListUsersForApplicationRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of account IDs. A maximum of 100 account IDs are supported in a single request.
+	// The list of account IDs. You can specify up to 100 account IDs in a single operation.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iUpdateApplicationDescriptionRequest interface {
 }
 
 type UpdateApplicationDescriptionRequest struct {
-	// The ID of the application that you want to modify.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateApplicationDescriptionRequest struct {
 	//
 	// Demo application for testing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

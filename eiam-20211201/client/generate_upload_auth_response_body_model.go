@@ -34,37 +34,37 @@ type iGenerateUploadAuthResponseBody interface {
 }
 
 type GenerateUploadAuthResponseBody struct {
-	// Authentication Access ID.
+	// The Access ID for authentication.
 	//
 	// example:
 	//
 	// STS.NYgAmE3cyPoMDxtWgtwG3xxxx
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// Pre-download URL.
+	// The presigned download URL.
 	//
 	// example:
 	//
 	// https://temp.oss.aliyuncs.com/idaas_ly77wa2oexrciw5v672vizxxxx/file_import/68866d21-0ab7-450d-b9e6-5b1eafe06xxxx
 	DownLoadUrl *string `json:"DownLoadUrl,omitempty" xml:"DownLoadUrl,omitempty"`
-	// Encrypted file encryption configuration key of the instance.
+	// The encrypted file encryption configuration key for the instance.
 	//
 	// example:
 	//
 	// eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwia2lkIjoia2V5X3Z1ZWhjbmh2NWppcGhmZGJwcWpqd3dsemFhIn0..YetpxsPdqdLvAy6G.0Zy5meoTzvCuNfA_0w7E9ItY2uGu1v1BxR9i98KeHXv_P-sm9w1q0XPf5Fw.55V_jFq2t2ZHdjg5c7uxxxx
 	EncryptedKey *string `json:"EncryptedKey,omitempty" xml:"EncryptedKey,omitempty"`
-	// Expiration time.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 1766470716
 	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// Bucket address host.
+	// The host address of the bucket.
 	//
 	// example:
 	//
 	// https://temp.oss.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// Authentication key.
+	// The key for authentication.
 	//
 	// example:
 	//
@@ -72,31 +72,31 @@ type GenerateUploadAuthResponseBody struct {
 	//
 	// /file_import/68866d21-0ab7-450d-b9e6-5b1eafxxxx"
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Plaintext key for encryption configuration.
+	// The plaintext key for the encryption configuration.
 	//
 	// example:
 	//
 	// fBLqWEvq3SbCj1cX/rtZoSPDVduOWdloOO2VN2+5Sxxxx
 	PlaintextKey *string `json:"PlaintextKey,omitempty" xml:"PlaintextKey,omitempty"`
-	// Authentication policy.
+	// The policy for authentication.
 	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNS0xMi0yM1QwNjoxODozNi4zNTZaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjBdLHsiYnVja2V0IjoidGVtcC1pZGFhcy1laWFtLWNuLWhhbmd6aG91In0seyJrZXkiOiJpZGFhc19seTc3d2Eyb2V4cmNpdzV2Njcydml6eG12ZS9maWxlX2ltcG9ydC82ODg2NmQyMS0wYWI3LTQ1MGQtYjllNi01YjFlYWZlMDYzZTEifSx7Ingtb3NzLWZvcmJpZC1vdmVyd3JpdGUiOiJ0cnVlIn0seyJ4LW9zcy1vYmplY3QtYWNsIjoicHJpdmF0ZSJxxxx
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// STS authentication access credential.
+	// The STS access credential.
 	//
 	// example:
 	//
 	// CAISzgJ1q6Ft5B2yfSjIr5rSCtfx3rxY562mRl7Fs2che8gfpbLg1zz2IHhMfXVpA+Afv/sxlG5Q7/wdlrp6SJtIXleCZtF94oxN9h2gb4fb4wgFPgjY08/LI3OaLjKm9u2wCryLYbGwU/OpbE++5U0X6LDmdDKkckW4OJmS8/BOZcgWWQ/KBlgvRq0hRG1YpdQdKGHaONu0LxfumRCwNkdzvRdmgm4NgsbWgO/ks0aO0wehm7BO+N6gfcD9NvMBZskvD42Hu8VtbbfE3SJq7BxHybx7lqQs+02c5onEXwALs0zXbLSErIU2dlBjH68hAOtFquPgnPtzt6nJkID62421pmiSr561rumAtyikcIvBXr5RHT3LoP1LA5UhHC1UotFVgGOaCXLbtuArXptaY/JiNL/0hFEpVt7knInNpUbntINy5f5fqzNMlShqKOXTK93xGoABgfahfEFC23BhLp3NnBxnaG/psewhUfRg/wYS9oE268EST0qPq0ZvzmZjsmtbtnFL8takNDOIdutBZeb9nngkEi7tYyVcwoYBnbJ3sopnFEVozB2VO5XuRHLBkOfB+2z1zD91KtoDajJxpT295Qm0ndFALS1tCGI452yRIrCHynggxxxxx
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Authentication signature.
+	// The signature for authentication.
 	//
 	// example:
 	//

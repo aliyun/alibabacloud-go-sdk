@@ -16,7 +16,7 @@ type iGetOrganizationalUnitRequest interface {
 }
 
 type GetOrganizationalUnitRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetOrganizationalUnitRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Organizational unit ID.
+	// The organizational unit ID.
 	//
 	// This parameter is required.
 	//

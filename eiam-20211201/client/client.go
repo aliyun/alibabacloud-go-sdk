@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Eiam")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,7 +66,77 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds an application account for a specified employee under the current application.
+// Activates privileged hosting for a cloud account.
+//
+// @param request - ActivateCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateCloudAccountPrivilegeResponse
+func (client *Client) ActivateCloudAccountPrivilegeWithOptions(request *ActivateCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *ActivateCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ActivateCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ActivateCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Activates privileged hosting for a cloud account.
+//
+// @param request - ActivateCloudAccountPrivilegeRequest
+//
+// @return ActivateCloudAccountPrivilegeResponse
+func (client *Client) ActivateCloudAccountPrivilege(request *ActivateCloudAccountPrivilegeRequest) (_result *ActivateCloudAccountPrivilegeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ActivateCloudAccountPrivilegeResponse{}
+	_body, _err := client.ActivateCloudAccountPrivilegeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds an application account for a specified employee in the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -114,7 +192,7 @@ func (client *Client) AddApplicationAccountToUserWithOptions(request *AddApplica
 
 // Summary:
 //
-// Adds an application account for a specified employee under the current application.
+// Adds an application account for a specified employee in the current application.
 //
 // @param request - AddApplicationAccountToUserRequest
 //
@@ -216,7 +294,7 @@ func (client *Client) AddApplicationToAuthorizationRule(request *AddApplicationT
 
 // Summary:
 //
-// Adds terms to a brand.
+// Adds custom privacy policies to a brand.
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -268,7 +346,7 @@ func (client *Client) AddCustomPrivacyPoliciesToBrandWithOptions(request *AddCus
 
 // Summary:
 //
-// Adds terms to a brand.
+// Adds custom privacy policies to a brand.
 //
 // @param request - AddCustomPrivacyPoliciesToBrandRequest
 //
@@ -454,7 +532,7 @@ func (client *Client) AddUserToAuthorizationRule(request *AddUserToAuthorization
 
 // Summary:
 //
-// Adds a specified EIAM account to multiple EIAM organizations. If the account already exists in an organization, the operation returns a success response directly.
+// Adds a specified EIAM account to multiple EIAM organizations. If the account already belongs to an organization, the operation returns a success response.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -506,7 +584,7 @@ func (client *Client) AddUserToOrganizationalUnitsWithOptions(request *AddUserTo
 
 // Summary:
 //
-// Adds a specified EIAM account to multiple EIAM organizations. If the account already exists in an organization, the operation returns a success response directly.
+// Adds a specified EIAM account to multiple EIAM organizations. If the account already belongs to an organization, the operation returns a success response.
 //
 // @param request - AddUserToOrganizationalUnitsRequest
 //
@@ -524,7 +602,7 @@ func (client *Client) AddUserToOrganizationalUnits(request *AddUserToOrganizatio
 
 // Summary:
 //
-// Adds multiple Employee Identity and Access Management (EIAM) accounts to a specified EIAM account group.
+// Adds multiple EIAM accounts to a specified EIAM account group.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -576,7 +654,7 @@ func (client *Client) AddUsersToGroupWithOptions(request *AddUsersToGroupRequest
 
 // Summary:
 //
-// Adds multiple Employee Identity and Access Management (EIAM) accounts to a specified EIAM account group.
+// Adds multiple EIAM accounts to a specified EIAM account group.
 //
 // @param request - AddUsersToGroupRequest
 //
@@ -594,7 +672,7 @@ func (client *Client) AddUsersToGroup(request *AddUsersToGroupRequest) (_result 
 
 // Summary:
 //
-// Grants multiple EIAM groups access to an application in a batch.
+// Grants multiple EIAM groups access to an application.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -650,7 +728,7 @@ func (client *Client) AuthorizeApplicationToGroupsWithOptions(request *Authorize
 
 // Summary:
 //
-// Grants multiple EIAM groups access to an application in a batch.
+// Grants multiple EIAM groups access to an application.
 //
 // @param request - AuthorizeApplicationToGroupsRequest
 //
@@ -668,7 +746,7 @@ func (client *Client) AuthorizeApplicationToGroups(request *AuthorizeApplication
 
 // Summary:
 //
-// Grants access to an application for multiple EIAM organizations in a batch operation.
+// Grants multiple EIAM organizations access to an application.
 //
 // @param request - AuthorizeApplicationToOrganizationalUnitsRequest
 //
@@ -724,7 +802,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnitsWithOptions(reque
 
 // Summary:
 //
-// Grants access to an application for multiple EIAM organizations in a batch operation.
+// Grants multiple EIAM organizations access to an application.
 //
 // @param request - AuthorizeApplicationToOrganizationalUnitsRequest
 //
@@ -742,7 +820,7 @@ func (client *Client) AuthorizeApplicationToOrganizationalUnits(request *Authori
 
 // Summary:
 //
-// Grants multiple EIAM accounts access to an application in a batch.
+// Grants multiple EIAM accounts access to an application in batches.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -798,7 +876,7 @@ func (client *Client) AuthorizeApplicationToUsersWithOptions(request *AuthorizeA
 
 // Summary:
 //
-// Grants multiple EIAM accounts access to an application in a batch.
+// Grants multiple EIAM accounts access to an application in batches.
 //
 // @param request - AuthorizeApplicationToUsersRequest
 //
@@ -816,7 +894,7 @@ func (client *Client) AuthorizeApplicationToUsers(request *AuthorizeApplicationT
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to a Client application.
+// Grants the scope permissions under a specified resource server to a client application.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -872,7 +950,7 @@ func (client *Client) AuthorizeResourceServerScopesToClientWithOptions(request *
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to a Client application.
+// Grants the scope permissions under a specified resource server to a client application.
 //
 // @param request - AuthorizeResourceServerScopesToClientRequest
 //
@@ -890,7 +968,7 @@ func (client *Client) AuthorizeResourceServerScopesToClient(request *AuthorizeRe
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to a group.
+// Grants the scope permissions under a specified resource server to a group.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -950,7 +1028,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroupWithOptions(request *A
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to a group.
+// Grants the scope permissions under a specified resource server to a group.
 //
 // @param request - AuthorizeResourceServerScopesToGroupRequest
 //
@@ -968,7 +1046,7 @@ func (client *Client) AuthorizeResourceServerScopesToGroup(request *AuthorizeRes
 
 // Summary:
 //
-// Grants scope permissions under a specified ResourceServer to an organizational unit.
+// Grants the scope permissions of a specified resource server to an organizational unit.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -1028,7 +1106,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnitWithOptio
 
 // Summary:
 //
-// Grants scope permissions under a specified ResourceServer to an organizational unit.
+// Grants the scope permissions of a specified resource server to an organizational unit.
 //
 // @param request - AuthorizeResourceServerScopesToOrganizationalUnitRequest
 //
@@ -1046,7 +1124,7 @@ func (client *Client) AuthorizeResourceServerScopesToOrganizationalUnit(request 
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to an account.
+// Grants scope permissions of a specified resource server to an account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -1106,7 +1184,7 @@ func (client *Client) AuthorizeResourceServerScopesToUserWithOptions(request *Au
 
 // Summary:
 //
-// Grants Scope permissions under a specified ResourceServer to an account.
+// Grants scope permissions of a specified resource server to an account.
 //
 // @param request - AuthorizeResourceServerScopesToUserRequest
 //
@@ -1194,7 +1272,7 @@ func (client *Client) AuthorizeResourceServerToClient(request *AuthorizeResource
 
 // Summary:
 //
-// Associates a third-party logon account.
+// Binds a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -1250,7 +1328,7 @@ func (client *Client) BindUserAuthnSourceMappingWithOptions(request *BindUserAut
 
 // Summary:
 //
-// Associates a third-party logon account.
+// Binds a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -1400,7 +1478,7 @@ func (client *Client) CheckInstanceForDelete(request *CheckInstanceForDeleteRequ
 
 // Summary:
 //
-// Checks whether an instance has the feature of a specific module.
+// Checks whether an instance has a specific module feature.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1464,7 +1542,7 @@ func (client *Client) CheckInstanceModuleStatusWithOptions(request *CheckInstanc
 
 // Summary:
 //
-// Checks whether an instance has the feature of a specific module.
+// Checks whether an instance has a specific module feature.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1588,7 +1666,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for each EIAM application.
+// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for a single EIAM application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -1640,7 +1718,7 @@ func (client *Client) CreateApplicationClientSecretWithOptions(request *CreateAp
 
 // Summary:
 //
-// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for each EIAM application.
+// Creates a client secret for an EIAM application. You can create a maximum of two client secrets for a single EIAM application.
 //
 // @param request - CreateApplicationClientSecretRequest
 //
@@ -2403,6 +2481,100 @@ func (client *Client) CreateCloudAccountRole(request *CreateCloudAccountRoleRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateCloudAccountRoleResponse{}
 	_body, _err := client.CreateCloudAccountRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a permission template.
+//
+// @param request - CreateCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudPermissionTemplateResponse
+func (client *Client) CreateCloudPermissionTemplateWithOptions(request *CreateCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowRequest) {
+		query["AllowRequest"] = request.AllowRequest
+	}
+
+	if !dara.IsNil(request.ApplicableScope) {
+		query["ApplicableScope"] = request.ApplicableScope
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResources) {
+		query["CloudAccountResources"] = request.CloudAccountResources
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateName) {
+		query["CloudPermissionTemplateName"] = request.CloudPermissionTemplateName
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateUsageType) {
+		query["CloudPermissionTemplateUsageType"] = request.CloudPermissionTemplateUsageType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a permission template.
+//
+// @param request - CreateCloudPermissionTemplateRequest
+//
+// @return CreateCloudPermissionTemplateResponse
+func (client *Client) CreateCloudPermissionTemplate(request *CreateCloudPermissionTemplateRequest) (_result *CreateCloudPermissionTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCloudPermissionTemplateResponse{}
+	_body, _err := client.CreateCloudPermissionTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3948,7 +4120,7 @@ func (client *Client) CreateTrustedOrigin(request *CreateTrustedOriginRequest) (
 
 // Summary:
 //
-// Creates an EIAM account in a specified EIAM instance.
+// Creates an EIAM account under a specified EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -4052,7 +4224,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 // Summary:
 //
-// Creates an EIAM account in a specified EIAM instance.
+// Creates an EIAM account under a specified EIAM instance.
 //
 // @param request - CreateUserRequest
 //
@@ -4061,6 +4233,76 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateUserResponse{}
 	_body, _err := client.CreateUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes privileged access for a cloud account.
+//
+// @param request - DeactivateCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeactivateCloudAccountPrivilegeResponse
+func (client *Client) DeactivateCloudAccountPrivilegeWithOptions(request *DeactivateCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *DeactivateCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeactivateCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeactivateCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes privileged access for a cloud account.
+//
+// @param request - DeactivateCloudAccountPrivilegeRequest
+//
+// @return DeactivateCloudAccountPrivilegeResponse
+func (client *Client) DeactivateCloudAccountPrivilege(request *DeactivateCloudAccountPrivilegeRequest) (_result *DeactivateCloudAccountPrivilegeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeactivateCloudAccountPrivilegeResponse{}
+	_body, _err := client.DeactivateCloudAccountPrivilegeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4144,7 +4386,7 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 
 // Summary:
 //
-// Deletes a client secret of an EIAM application.
+// Deletes a client secret for an EIAM application.
 //
 // @param request - DeleteApplicationClientSecretRequest
 //
@@ -4196,7 +4438,7 @@ func (client *Client) DeleteApplicationClientSecretWithOptions(request *DeleteAp
 
 // Summary:
 //
-// Deletes a client secret of an EIAM application.
+// Deletes a client secret for an EIAM application.
 //
 // @param request - DeleteApplicationClientSecretRequest
 //
@@ -4840,11 +5082,81 @@ func (client *Client) DeleteCloudAccountRole(request *DeleteCloudAccountRoleRequ
 
 // Summary:
 //
+// Deletes a permission template.
+//
+// @param request - DeleteCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudPermissionTemplateResponse
+func (client *Client) DeleteCloudPermissionTemplateWithOptions(request *DeleteCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a permission template.
+//
+// @param request - DeleteCloudPermissionTemplateRequest
+//
+// @return DeleteCloudPermissionTemplateResponse
+func (client *Client) DeleteCloudPermissionTemplate(request *DeleteCloudPermissionTemplateRequest) (_result *DeleteCloudPermissionTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteCloudPermissionTemplateResponse{}
+	_body, _err := client.DeleteCloudPermissionTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a conditional access policy.
 //
 // Description:
 //
-// Before you delete a conditional access policy, make sure that the policy is no longer in use. After the policy is deleted, all configuration data is permanently removed and cannot be recovered.
+// Before deleting a specified conditional access policy, ensure that the policy is no longer in use. After the policy is deleted, all configuration data is deleted and cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -4896,7 +5208,7 @@ func (client *Client) DeleteConditionalAccessPolicyWithOptions(request *DeleteCo
 //
 // Description:
 //
-// Before you delete a conditional access policy, make sure that the policy is no longer in use. After the policy is deleted, all configuration data is permanently removed and cannot be recovered.
+// Before deleting a specified conditional access policy, ensure that the policy is no longer in use. After the policy is deleted, all configuration data is deleted and cannot be recovered.
 //
 // @param request - DeleteConditionalAccessPolicyRequest
 //
@@ -5178,7 +5490,7 @@ func (client *Client) DeleteCustomPrivacyPolicy(request *DeleteCustomPrivacyPoli
 
 // Summary:
 //
-// Deletes a custom domain name of a specified Employee Identity and Access Management (EIAM) instance. Deletion of the instance initialization domain name or default domain name is rejected.
+// Deletes a custom domain name of a specified EIAM instance. Deletion of the initial domain name and default domain name of the instance is rejected.
 //
 // @param request - DeleteDomainRequest
 //
@@ -5226,7 +5538,7 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 
 // Summary:
 //
-// Deletes a custom domain name of a specified Employee Identity and Access Management (EIAM) instance. Deletion of the instance initialization domain name or default domain name is rejected.
+// Deletes a custom domain name of a specified EIAM instance. Deletion of the initial domain name and default domain name of the instance is rejected.
 //
 // @param request - DeleteDomainRequest
 //
@@ -5244,7 +5556,7 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes a proxy token for a specified domain name of an EIAM instance. Only proxy tokens in the disabled state can be deleted.
+// Deletes the proxy token for a specified domain name of an EIAM instance. Only disabled proxy tokens can be deleted.
 //
 // @param request - DeleteDomainProxyTokenRequest
 //
@@ -5296,7 +5608,7 @@ func (client *Client) DeleteDomainProxyTokenWithOptions(request *DeleteDomainPro
 
 // Summary:
 //
-// Deletes a proxy token for a specified domain name of an EIAM instance. Only proxy tokens in the disabled state can be deleted.
+// Deletes the proxy token for a specified domain name of an EIAM instance. Only disabled proxy tokens can be deleted.
 //
 // @param request - DeleteDomainProxyTokenRequest
 //
@@ -5512,11 +5824,11 @@ func (client *Client) DeleteIdentityProvider(request *DeleteIdentityProviderRequ
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) instance that you no longer use.
+// Deletes an EIAM instance that is no longer in use.
 //
 // Description:
 //
-// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
+// Ensure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -5560,11 +5872,11 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// Deletes an Employee Identity and Access Management (EIAM) instance that you no longer use.
+// Deletes an EIAM instance that is no longer in use.
 //
 // Description:
 //
-// Make sure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
+// Ensure that the instance is no longer in use. After an EIAM instance is deleted, all related data is deleted.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -5714,7 +6026,7 @@ func (client *Client) DeleteNetworkZone(request *DeleteNetworkZoneRequest) (_res
 
 // Summary:
 //
-// Deletes a specified EIAM organizational unit. The deletion fails if the organizational unit contains EIAM accounts or child organizational units.
+// Deletes a specified EIAM organization. The deletion fails if the organization contains EIAM accounts or sub-organizations.
 //
 // @param request - DeleteOrganizationalUnitRequest
 //
@@ -5762,7 +6074,7 @@ func (client *Client) DeleteOrganizationalUnitWithOptions(request *DeleteOrganiz
 
 // Summary:
 //
-// Deletes a specified EIAM organizational unit. The deletion fails if the organizational unit contains EIAM accounts or child organizational units.
+// Deletes a specified EIAM organization. The deletion fails if the organization contains EIAM accounts or sub-organizations.
 //
 // @param request - DeleteOrganizationalUnitRequest
 //
@@ -5780,7 +6092,7 @@ func (client *Client) DeleteOrganizationalUnit(request *DeleteOrganizationalUnit
 
 // Summary:
 //
-// Deletes all data of a specified organization. This operation can force delete all accounts and sub-organizations under the specified organization.
+// Deletes all data of a specified organization and can force delete all accounts and sub-organizations under the organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -5828,7 +6140,7 @@ func (client *Client) DeleteOrganizationalUnitChildrenWithOptions(request *Delet
 
 // Summary:
 //
-// Deletes all data of a specified organization. This operation can force delete all accounts and sub-organizations under the specified organization.
+// Deletes all data of a specified organization and can force delete all accounts and sub-organizations under the organization.
 //
 // @param request - DeleteOrganizationalUnitChildrenRequest
 //
@@ -5994,7 +6306,7 @@ func (client *Client) DeleteTrustedOrigin(request *DeleteTrustedOriginRequest) (
 
 // Summary:
 //
-// Deletes a specified EIAM account and purges all information associated with the account.
+// Deletes a specified EIAM account and clears all information related to the account.
 //
 // @param request - DeleteUserRequest
 //
@@ -6042,7 +6354,7 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 
 // Summary:
 //
-// Deletes a specified EIAM account and purges all information associated with the account.
+// Deletes a specified EIAM account and clears all information related to the account.
 //
 // @param request - DeleteUserRequest
 //
@@ -6060,7 +6372,7 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 
 // Summary:
 //
-// Deletes multiple accounts in a batch.
+// Deletes multiple accounts.
 //
 // @param request - DeleteUsersRequest
 //
@@ -6108,7 +6420,7 @@ func (client *Client) DeleteUsersWithOptions(request *DeleteUsersRequest, runtim
 
 // Summary:
 //
-// Deletes multiple accounts in a batch.
+// Deletes multiple accounts.
 //
 // @param request - DeleteUsersRequest
 //
@@ -6126,7 +6438,7 @@ func (client *Client) DeleteUsers(request *DeleteUsersRequest) (_result *DeleteU
 
 // Summary:
 //
-// Deletes the specified WebAuthn authenticator.
+// Deletes a specified WebAuthn authenticator name.
 //
 // @param request - DeleteWebAuthnAuthenticatorRequest
 //
@@ -6178,7 +6490,7 @@ func (client *Client) DeleteWebAuthnAuthenticatorWithOptions(request *DeleteWebA
 
 // Summary:
 //
-// Deletes the specified WebAuthn authenticator.
+// Deletes a specified WebAuthn authenticator name.
 //
 // @param request - DeleteWebAuthnAuthenticatorRequest
 //
@@ -6270,7 +6582,7 @@ func (client *Client) DisableApplication(request *DisableApplicationRequest) (_r
 
 // Summary:
 //
-// Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// Disables the Developer API call feature for an EIAM application.
 //
 // @param request - DisableApplicationApiInvokeRequest
 //
@@ -6318,7 +6630,7 @@ func (client *Client) DisableApplicationApiInvokeWithOptions(request *DisableApp
 
 // Summary:
 //
-// Disables the Developer API feature for an Employee Identity and Access Management (EIAM) application.
+// Disables the Developer API call feature for an EIAM application.
 //
 // @param request - DisableApplicationApiInvokeRequest
 //
@@ -6406,7 +6718,7 @@ func (client *Client) DisableApplicationClientSecret(request *DisableApplication
 
 // Summary:
 //
-// Disables a federated identity credential for an application.
+// Disables an application federated credential.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -6458,7 +6770,7 @@ func (client *Client) DisableApplicationFederatedCredentialWithOptions(request *
 
 // Summary:
 //
-// Disables a federated identity credential for an application.
+// Disables an application federated credential.
 //
 // @param request - DisableApplicationFederatedCredentialRequest
 //
@@ -6674,7 +6986,7 @@ func (client *Client) DisableApplicationResourceServer(request *DisableApplicati
 
 // Summary:
 //
-// Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
+// Disables the single sign-on (SSO) feature for an EIAM application. After this feature is disabled, employees cannot use SSO to log on to the application.
 //
 // @param request - DisableApplicationSsoRequest
 //
@@ -6722,7 +7034,7 @@ func (client *Client) DisableApplicationSsoWithOptions(request *DisableApplicati
 
 // Summary:
 //
-// Disables the single sign-on (SSO) feature for an Employee Identity and Access Management (EIAM) application. This way, employees cannot log on to the application by using SSO.
+// Disables the single sign-on (SSO) feature for an EIAM application. After this feature is disabled, employees cannot use SSO to log on to the application.
 //
 // @param request - DisableApplicationSsoRequest
 //
@@ -6744,7 +7056,7 @@ func (client *Client) DisableApplicationSso(request *DisableApplicationSsoReques
 //
 // Description:
 //
-// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
+// When you disable an application, all features of the application, such as SSO and account synchronization, become unavailable. Make sure that you are aware of the risks associated with this operation.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -6800,7 +7112,7 @@ func (client *Client) DisableApplicationTokenWithOptions(request *DisableApplica
 //
 // Description:
 //
-// When you change an application from the enabled state to the disabled state, all features of the application become unavailable, such as SSO and account synchronization. Make sure that you are aware of the risks that this operation may cause.
+// When you disable an application, all features of the application, such as SSO and account synchronization, become unavailable. Make sure that you are aware of the risks associated with this operation.
 //
 // @param request - DisableApplicationTokenRequest
 //
@@ -7030,7 +7342,77 @@ func (client *Client) DisableClientPublicKey(request *DisableClientPublicKeyRequ
 
 // Summary:
 //
-// Disables a cloud role for a specified Alibaba Cloud account.
+// Disables cloud account privileges.
+//
+// @param request - DisableCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCloudAccountPrivilegeResponse
+func (client *Client) DisableCloudAccountPrivilegeWithOptions(request *DisableCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *DisableCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables cloud account privileges.
+//
+// @param request - DisableCloudAccountPrivilegeRequest
+//
+// @return DisableCloudAccountPrivilegeResponse
+func (client *Client) DisableCloudAccountPrivilege(request *DisableCloudAccountPrivilegeRequest) (_result *DisableCloudAccountPrivilegeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableCloudAccountPrivilegeResponse{}
+	_body, _err := client.DisableCloudAccountPrivilegeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a cloud role under a specified cloud account.
 //
 // @param request - DisableCloudAccountRoleRequest
 //
@@ -7086,7 +7468,7 @@ func (client *Client) DisableCloudAccountRoleWithOptions(request *DisableCloudAc
 
 // Summary:
 //
-// Disables a cloud role for a specified Alibaba Cloud account.
+// Disables a cloud role under a specified cloud account.
 //
 // @param request - DisableCloudAccountRoleRequest
 //
@@ -7095,6 +7477,76 @@ func (client *Client) DisableCloudAccountRole(request *DisableCloudAccountRoleRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisableCloudAccountRoleResponse{}
 	_body, _err := client.DisableCloudAccountRoleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a permission template.
+//
+// @param request - DisableCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableCloudPermissionTemplateResponse
+func (client *Client) DisableCloudPermissionTemplateWithOptions(request *DisableCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *DisableCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables a permission template.
+//
+// @param request - DisableCloudPermissionTemplateRequest
+//
+// @return DisableCloudPermissionTemplateResponse
+func (client *Client) DisableCloudPermissionTemplate(request *DisableCloudPermissionTemplateRequest) (_result *DisableCloudPermissionTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableCloudPermissionTemplateResponse{}
+	_body, _err := client.DisableCloudPermissionTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7516,7 +7968,7 @@ func (client *Client) DisableDomainProxyToken(request *DisableDomainProxyTokenRe
 
 // Summary:
 //
-// Disables a federated credential provider.
+// Disables a federated trust source.
 //
 // @param request - DisableFederatedCredentialProviderRequest
 //
@@ -7564,7 +8016,7 @@ func (client *Client) DisableFederatedCredentialProviderWithOptions(request *Dis
 
 // Summary:
 //
-// Disables a federated credential provider.
+// Disables a federated trust source.
 //
 // @param request - DisableFederatedCredentialProviderRequest
 //
@@ -7850,7 +8302,7 @@ func (client *Client) DisableInitDomainAutoRedirect(request *DisableInitDomainAu
 
 // Summary:
 //
-// Disables an internal authentication source.
+// Disables the internal authentication source.
 //
 // @param request - DisableInternalAuthenticationSourceRequest
 //
@@ -7898,7 +8350,7 @@ func (client *Client) DisableInternalAuthenticationSourceWithOptions(request *Di
 
 // Summary:
 //
-// Disables an internal authentication source.
+// Disables the internal authentication source.
 //
 // @param request - DisableInternalAuthenticationSourceRequest
 //
@@ -8056,7 +8508,7 @@ func (client *Client) DisableTrustedOrigin(request *DisableTrustedOriginRequest)
 
 // Summary:
 //
-// Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
+// Sets the status of an account to disabled. If the account is already disabled, the operation returns a success response.
 //
 // @param request - DisableUserRequest
 //
@@ -8104,7 +8556,7 @@ func (client *Client) DisableUserWithOptions(request *DisableUserRequest, runtim
 
 // Summary:
 //
-// Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
+// Sets the status of an account to disabled. If the account is already disabled, the operation returns a success response.
 //
 // @param request - DisableUserRequest
 //
@@ -8188,7 +8640,7 @@ func (client *Client) EnableApplication(request *EnableApplicationRequest) (_res
 
 // Summary:
 //
-// You can call the EnableApplicationApiInvoke operation to enable Developer API calls for an EIAM application.
+// Enables the Developer API invocation feature for an EIAM application.
 //
 // @param request - EnableApplicationApiInvokeRequest
 //
@@ -8236,7 +8688,7 @@ func (client *Client) EnableApplicationApiInvokeWithOptions(request *EnableAppli
 
 // Summary:
 //
-// You can call the EnableApplicationApiInvoke operation to enable Developer API calls for an EIAM application.
+// Enables the Developer API invocation feature for an EIAM application.
 //
 // @param request - EnableApplicationApiInvokeRequest
 //
@@ -8254,7 +8706,7 @@ func (client *Client) EnableApplicationApiInvoke(request *EnableApplicationApiIn
 
 // Summary:
 //
-// Enables the client key of an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Enables a client secret for an EIAM application.
 //
 // @param request - EnableApplicationClientSecretRequest
 //
@@ -8306,7 +8758,7 @@ func (client *Client) EnableApplicationClientSecretWithOptions(request *EnableAp
 
 // Summary:
 //
-// Enables the client key of an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
+// Enables a client secret for an EIAM application.
 //
 // @param request - EnableApplicationClientSecretRequest
 //
@@ -8866,7 +9318,7 @@ func (client *Client) EnableBrand(request *EnableBrandRequest) (_result *EnableB
 
 // Summary:
 //
-// Enables a specified application ClientPublicKey.
+// Enables the specified application ClientPublicKey.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -8922,7 +9374,7 @@ func (client *Client) EnableClientPublicKeyWithOptions(request *EnableClientPubl
 
 // Summary:
 //
-// Enables a specified application ClientPublicKey.
+// Enables the specified application ClientPublicKey.
 //
 // @param request - EnableClientPublicKeyRequest
 //
@@ -8940,7 +9392,77 @@ func (client *Client) EnableClientPublicKey(request *EnableClientPublicKeyReques
 
 // Summary:
 //
-// Enables a cloud role for a specified Alibaba Cloud account.
+// Enables privileges for a cloud account.
+//
+// @param request - EnableCloudAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCloudAccountPrivilegeResponse
+func (client *Client) EnableCloudAccountPrivilegeWithOptions(request *EnableCloudAccountPrivilegeRequest, runtime *dara.RuntimeOptions) (_result *EnableCloudAccountPrivilegeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCloudAccountPrivilege"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCloudAccountPrivilegeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables privileges for a cloud account.
+//
+// @param request - EnableCloudAccountPrivilegeRequest
+//
+// @return EnableCloudAccountPrivilegeResponse
+func (client *Client) EnableCloudAccountPrivilege(request *EnableCloudAccountPrivilegeRequest) (_result *EnableCloudAccountPrivilegeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableCloudAccountPrivilegeResponse{}
+	_body, _err := client.EnableCloudAccountPrivilegeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a cloud role under a specified cloud account.
 //
 // @param request - EnableCloudAccountRoleRequest
 //
@@ -8996,7 +9518,7 @@ func (client *Client) EnableCloudAccountRoleWithOptions(request *EnableCloudAcco
 
 // Summary:
 //
-// Enables a cloud role for a specified Alibaba Cloud account.
+// Enables a cloud role under a specified cloud account.
 //
 // @param request - EnableCloudAccountRoleRequest
 //
@@ -9014,11 +9536,81 @@ func (client *Client) EnableCloudAccountRole(request *EnableCloudAccountRoleRequ
 
 // Summary:
 //
+// Enables a permission template.
+//
+// @param request - EnableCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableCloudPermissionTemplateResponse
+func (client *Client) EnableCloudPermissionTemplateWithOptions(request *EnableCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *EnableCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a permission template.
+//
+// @param request - EnableCloudPermissionTemplateRequest
+//
+// @return EnableCloudPermissionTemplateResponse
+func (client *Client) EnableCloudPermissionTemplate(request *EnableCloudPermissionTemplateRequest) (_result *EnableCloudPermissionTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableCloudPermissionTemplateResponse{}
+	_body, _err := client.EnableCloudPermissionTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables a conditional access policy.
 //
 // Description:
 //
-// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Confirm that you are aware of the risks that this operation may cause.
+// When a conditional access policy is changed from the enabled state to the disabled state, it no longer intercepts requests. Make sure that you are aware of the potential risks of this operation.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -9070,7 +9662,7 @@ func (client *Client) EnableConditionalAccessPolicyWithOptions(request *EnableCo
 //
 // Description:
 //
-// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Confirm that you are aware of the risks that this operation may cause.
+// When a conditional access policy is changed from the enabled state to the disabled state, it no longer intercepts requests. Make sure that you are aware of the potential risks of this operation.
 //
 // @param request - EnableConditionalAccessPolicyRequest
 //
@@ -9302,7 +9894,7 @@ func (client *Client) EnableCustomField(request *EnableCustomFieldRequest) (_res
 
 // Summary:
 //
-// Enables a custom clause.
+// Enables custom terms.
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -9350,7 +9942,7 @@ func (client *Client) EnableCustomPrivacyPolicyWithOptions(request *EnableCustom
 
 // Summary:
 //
-// Enables a custom clause.
+// Enables custom terms.
 //
 // @param request - EnableCustomPrivacyPolicyRequest
 //
@@ -9368,7 +9960,7 @@ func (client *Client) EnableCustomPrivacyPolicy(request *EnableCustomPrivacyPoli
 
 // Summary:
 //
-// Enables a domain proxy token for a specified EIAM instance domain name to verify domain security.
+// Enables the domain proxy token of a specified EIAM instance to verify domain security.
 //
 // @param request - EnableDomainProxyTokenRequest
 //
@@ -9420,7 +10012,7 @@ func (client *Client) EnableDomainProxyTokenWithOptions(request *EnableDomainPro
 
 // Summary:
 //
-// Enables a domain proxy token for a specified EIAM instance domain name to verify domain security.
+// Enables the domain proxy token of a specified EIAM instance to verify domain security.
 //
 // @param request - EnableDomainProxyTokenRequest
 //
@@ -9574,7 +10166,7 @@ func (client *Client) EnableIdentityProviderAdvancedAbility(request *EnableIdent
 //
 // Description:
 //
-// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the risks that this operation may cause.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the potential risks of this operation.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -9626,7 +10218,7 @@ func (client *Client) EnableIdentityProviderAuthnWithOptions(request *EnableIden
 //
 // Description:
 //
-// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the risks that this operation may cause.
+// When you change a conditional access policy from enabled to disabled, the policy no longer intercepts requests. Make sure that you are aware of the potential risks of this operation.
 //
 // @param request - EnableIdentityProviderAuthnRequest
 //
@@ -9838,7 +10430,7 @@ func (client *Client) EnableInternalAuthenticationSource(request *EnableInternal
 
 // Summary:
 //
-// Enables the custom subject feature for a specified resource server. After this feature is enabled, the subject of an issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>. The `client.activeSubjectUrn` is set in the attribute mapping of the application\\"s federated identity provider.
+// Enables the custom subject capability for a specified resource server. After the custom subject is enabled, the issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential for the application.
 //
 // @param request - EnableResourceServerCustomSubjectRequest
 //
@@ -9886,7 +10478,7 @@ func (client *Client) EnableResourceServerCustomSubjectWithOptions(request *Enab
 
 // Summary:
 //
-// Enables the custom subject feature for a specified resource server. After this feature is enabled, the subject of an issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>. The `client.activeSubjectUrn` is set in the attribute mapping of the application\\"s federated identity provider.
+// Enables the custom subject capability for a specified resource server. After the custom subject is enabled, the issued access token changes from <clientId> to <clientId>:<client.activeSubjectUrn>, where client.activeSubjectUrn is configured in the attribute mapping of the federated identity credential for the application.
 //
 // @param request - EnableResourceServerCustomSubjectRequest
 //
@@ -10044,7 +10636,7 @@ func (client *Client) EnableUser(request *EnableUserRequest) (_result *EnableUse
 
 // Summary:
 //
-// Parses IdP metadata information.
+// Parses IdP metadata.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -10104,7 +10696,7 @@ func (client *Client) ExecIdentityProviderMetadataUrlResolutionWithOptions(reque
 
 // Summary:
 //
-// Parses IdP metadata information.
+// Parses IdP metadata.
 //
 // @param request - ExecIdentityProviderMetadataUrlResolutionRequest
 //
@@ -10418,7 +11010,7 @@ func (client *Client) GenerateOauthToken(request *GenerateOauthTokenRequest) (_r
 
 // Summary:
 //
-// # Get Upload Authentication
+// Retrieves upload authentication.
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -10470,7 +11062,7 @@ func (client *Client) GenerateUploadAuthWithOptions(request *GenerateUploadAuthR
 
 // Summary:
 //
-// # Get Upload Authentication
+// Retrieves upload authentication.
 //
 // @param request - GenerateUploadAuthRequest
 //
@@ -10768,7 +11360,7 @@ func (client *Client) GetApplicationFederatedCredential(request *GetApplicationF
 
 // Summary:
 //
-// Queries the Developer API authorization scope of an EIAM application.
+// Queries the Developer API authorization scopes of an EIAM application.
 //
 // @param request - GetApplicationGrantScopeRequest
 //
@@ -10816,7 +11408,7 @@ func (client *Client) GetApplicationGrantScopeWithOptions(request *GetApplicatio
 
 // Summary:
 //
-// Queries the Developer API authorization scope of an EIAM application.
+// Queries the Developer API authorization scopes of an EIAM application.
 //
 // @param request - GetApplicationGrantScopeRequest
 //
@@ -10834,7 +11426,7 @@ func (client *Client) GetApplicationGrantScope(request *GetApplicationGrantScope
 
 // Summary:
 //
-// Retrieves the account synchronization configuration for an Entity Identity and Access Management (EIAM) application.
+// Queries the account synchronization configuration of an EIAM application.
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -10882,7 +11474,7 @@ func (client *Client) GetApplicationProvisioningConfigWithOptions(request *GetAp
 
 // Summary:
 //
-// Retrieves the account synchronization configuration for an Entity Identity and Access Management (EIAM) application.
+// Queries the account synchronization configuration of an EIAM application.
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -10900,7 +11492,7 @@ func (client *Client) GetApplicationProvisioningConfig(request *GetApplicationPr
 
 // Summary:
 //
-// Queries the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+// Queries the account synchronization scope of an EIAM application. This scope also defines the accounts that can be queried and managed by the Developer API.
 //
 // @param request - GetApplicationProvisioningScopeRequest
 //
@@ -10948,7 +11540,7 @@ func (client *Client) GetApplicationProvisioningScopeWithOptions(request *GetApp
 
 // Summary:
 //
-// Queries the account synchronization scope of applications in Identity as a Service (IDaaS) Employee IAM (EIAM). This scope is the same as the scope within which developers can call the DeveloperAPI to query and manage accounts.
+// Queries the account synchronization scope of an EIAM application. This scope also defines the accounts that can be queried and managed by the Developer API.
 //
 // @param request - GetApplicationProvisioningScopeRequest
 //
@@ -11032,7 +11624,7 @@ func (client *Client) GetApplicationProvisioningUserPrimaryOrganizationalUnit(re
 
 // Summary:
 //
-// Retrieves application role information.
+// Retrieves the application role information.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -11084,7 +11676,7 @@ func (client *Client) GetApplicationRoleWithOptions(request *GetApplicationRoleR
 
 // Summary:
 //
-// Retrieves application role information.
+// Retrieves the application role information.
 //
 // @param request - GetApplicationRoleRequest
 //
@@ -11704,6 +12296,76 @@ func (client *Client) GetCloudAccountRole(request *GetCloudAccountRoleRequest) (
 
 // Summary:
 //
+// Queries a permission template.
+//
+// @param request - GetCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudPermissionTemplateResponse
+func (client *Client) GetCloudPermissionTemplateWithOptions(request *GetCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *GetCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a permission template.
+//
+// @param request - GetCloudPermissionTemplateRequest
+//
+// @return GetCloudPermissionTemplateResponse
+func (client *Client) GetCloudPermissionTemplate(request *GetCloudPermissionTemplateRequest) (_result *GetCloudPermissionTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCloudPermissionTemplateResponse{}
+	_body, _err := client.GetCloudPermissionTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a conditional access policy.
 //
 // Description:
@@ -11910,7 +12572,7 @@ func (client *Client) GetCredentialProvider(request *GetCredentialProviderReques
 
 // Summary:
 //
-// Retrieves the information about an extended field.
+// Retrieves the extended field information.
 //
 // @param request - GetCustomFieldRequest
 //
@@ -11958,7 +12620,7 @@ func (client *Client) GetCustomFieldWithOptions(request *GetCustomFieldRequest, 
 
 // Summary:
 //
-// Retrieves the information about an extended field.
+// Retrieves the extended field information.
 //
 // @param request - GetCustomFieldRequest
 //
@@ -11976,7 +12638,7 @@ func (client *Client) GetCustomField(request *GetCustomFieldRequest) (_result *G
 
 // Summary:
 //
-// Retrieves a custom privacy policy.
+// Retrieves the custom privacy policy.
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -12024,7 +12686,7 @@ func (client *Client) GetCustomPrivacyPolicyWithOptions(request *GetCustomPrivac
 
 // Summary:
 //
-// Retrieves a custom privacy policy.
+// Retrieves the custom privacy policy.
 //
 // @param request - GetCustomPrivacyPolicyRequest
 //
@@ -12108,7 +12770,7 @@ func (client *Client) GetDomain(request *GetDomainRequest) (_result *GetDomainRe
 
 // Summary:
 //
-// Queries the DNS Challenge record for a specified EIAM domain name. This record is used to verify domain ownership.
+// Queries the DNS challenge records of a specified EIAM domain name. The generated records are used to verify the ownership of the domain name.
 //
 // @param request - GetDomainDnsChallengeRequest
 //
@@ -12156,7 +12818,7 @@ func (client *Client) GetDomainDnsChallengeWithOptions(request *GetDomainDnsChal
 
 // Summary:
 //
-// Queries the DNS Challenge record for a specified EIAM domain name. This record is used to verify domain ownership.
+// Queries the DNS challenge records of a specified EIAM domain name. The generated records are used to verify the ownership of the domain name.
 //
 // @param request - GetDomainDnsChallengeRequest
 //
@@ -12293,6 +12955,61 @@ func (client *Client) GetForgetPasswordConfiguration(request *GetForgetPasswordC
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetForgetPasswordConfigurationResponse{}
 	_body, _err := client.GetForgetPasswordConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全局云账号系统角色权限模板
+//
+// @param request - GetGlobalCloudAccountSystemRolePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGlobalCloudAccountSystemRolePolicyResponse
+func (client *Client) GetGlobalCloudAccountSystemRolePolicyWithOptions(request *GetGlobalCloudAccountSystemRolePolicyRequest, runtime *dara.RuntimeOptions) (_result *GetGlobalCloudAccountSystemRolePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGlobalCloudAccountSystemRolePolicy"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGlobalCloudAccountSystemRolePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询全局云账号系统角色权限模板
+//
+// @param request - GetGlobalCloudAccountSystemRolePolicyRequest
+//
+// @return GetGlobalCloudAccountSystemRolePolicyResponse
+func (client *Client) GetGlobalCloudAccountSystemRolePolicy(request *GetGlobalCloudAccountSystemRolePolicyRequest) (_result *GetGlobalCloudAccountSystemRolePolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetGlobalCloudAccountSystemRolePolicyResponse{}
+	_body, _err := client.GetGlobalCloudAccountSystemRolePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12962,7 +13679,7 @@ func (client *Client) GetInstanceLicense(request *GetInstanceLicenseRequest) (_r
 
 // Summary:
 //
-// Retrieves all module information under a first-level module.
+// Retrieves information about all modules under a level-1 module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -13010,7 +13727,7 @@ func (client *Client) GetInstanceModuleInfoWithOptions(request *GetInstanceModul
 
 // Summary:
 //
-// Retrieves all module information under a first-level module.
+// Retrieves information about all modules under a level-1 module.
 //
 // @param request - GetInstanceModuleInfoRequest
 //
@@ -13222,7 +13939,7 @@ func (client *Client) GetLoginRedirectApplicationForBrand(request *GetLoginRedir
 
 // Summary:
 //
-// Queries the details of a specified network access endpoint.
+// Queries the details of a specified network endpoint.
 //
 // @param request - GetNetworkAccessEndpointRequest
 //
@@ -13270,7 +13987,7 @@ func (client *Client) GetNetworkAccessEndpointWithOptions(request *GetNetworkAcc
 
 // Summary:
 //
-// Queries the details of a specified network access endpoint.
+// Queries the details of a specified network endpoint.
 //
 // @param request - GetNetworkAccessEndpointRequest
 //
@@ -13354,7 +14071,7 @@ func (client *Client) GetNetworkZone(request *GetNetworkZoneRequest) (_result *G
 
 // Summary:
 //
-// Queries the information of an EIAM organizational unit.
+// Queries the information of an EIAM organization.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -13402,7 +14119,7 @@ func (client *Client) GetOrganizationalUnitWithOptions(request *GetOrganizationa
 
 // Summary:
 //
-// Queries the information of an EIAM organizational unit.
+// Queries the information of an EIAM organization.
 //
 // @param request - GetOrganizationalUnitRequest
 //
@@ -13738,7 +14455,7 @@ func (client *Client) GetResourceServerScope(request *GetResourceServerScopeRequ
 
 // Summary:
 //
-// Queries the root organizational unit information of EIAM.
+// Queries the root organization information of EIAM.
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -13782,7 +14499,7 @@ func (client *Client) GetRootOrganizationalUnitWithOptions(request *GetRootOrgan
 
 // Summary:
 //
-// Queries the root organizational unit information of EIAM.
+// Queries the root organization information of EIAM.
 //
 // @param request - GetRootOrganizationalUnitRequest
 //
@@ -14442,7 +15159,7 @@ func (client *Client) ListApplicationFederatedCredentials(request *ListApplicati
 
 // Summary:
 //
-// Queries the list of application federated credentials by federated trust source ID.
+// Queries a list of application federated credentials based on the federated trust source ID.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -14502,7 +15219,7 @@ func (client *Client) ListApplicationFederatedCredentialsForProviderWithOptions(
 
 // Summary:
 //
-// Queries the list of application federated credentials by federated trust source ID.
+// Queries a list of application federated credentials based on the federated trust source ID.
 //
 // @param request - ListApplicationFederatedCredentialsForProviderRequest
 //
@@ -15086,7 +15803,7 @@ func (client *Client) ListApplicationsForNetworkAccessEndpoint(request *ListAppl
 
 // Summary:
 //
-// Retrieves the list of applications associated with a network domain.
+// Queries the applications associated with a network zone.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -15146,7 +15863,7 @@ func (client *Client) ListApplicationsForNetworkZoneWithOptions(request *ListApp
 
 // Summary:
 //
-// Retrieves the list of applications associated with a network domain.
+// Queries the applications associated with a network zone.
 //
 // @param request - ListApplicationsForNetworkZoneRequest
 //
@@ -15164,11 +15881,11 @@ func (client *Client) ListApplicationsForNetworkZone(request *ListApplicationsFo
 
 // Summary:
 //
-// Queries the list of applications accessible to an EIAM organizational unit by paging. The response includes application IDs. To obtain detailed application information, call the GetApplication operation.
+// Performs a paging query for the list of applications accessible to an EIAM organization. The returned results include application IDs. To obtain detailed application information, call the GetApplication operation.
 //
 // Description:
 //
-// This operation queries only the direct permissions of the organizational unit, that is, applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of the organization, which are applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -15228,11 +15945,11 @@ func (client *Client) ListApplicationsForOrganizationalUnitWithOptions(request *
 
 // Summary:
 //
-// Queries the list of applications accessible to an EIAM organizational unit by paging. The response includes application IDs. To obtain detailed application information, call the GetApplication operation.
+// Performs a paging query for the list of applications accessible to an EIAM organization. The returned results include application IDs. To obtain detailed application information, call the GetApplication operation.
 //
 // Description:
 //
-// This operation queries only the direct permissions of the organizational unit, that is, applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of the organization, which are applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListApplicationsForOrganizationalUnitRequest
 //
@@ -15332,11 +16049,11 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 
 // Summary:
 //
-// Lists authorized resource information.
+// Lists the authorization resources.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, which are applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -15396,11 +16113,11 @@ func (client *Client) ListAuthorizationResourcesWithOptions(request *ListAuthori
 
 // Summary:
 //
-// Lists authorized resource information.
+// Lists the authorization resources.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, which are applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -15714,7 +16431,7 @@ func (client *Client) ListAuthorizationRulesForUser(request *ListAuthorizationRu
 
 // Summary:
 //
-// Retrieves a list of all authorization servers under an instance.
+// Retrieves a list of all authorization servers for an instance.
 //
 // @param request - ListAuthorizationServersRequest
 //
@@ -15766,7 +16483,7 @@ func (client *Client) ListAuthorizationServersWithOptions(request *ListAuthoriza
 
 // Summary:
 //
-// Retrieves a list of all authorization servers under an instance.
+// Retrieves a list of all authorization servers for an instance.
 //
 // @param request - ListAuthorizationServersRequest
 //
@@ -16075,6 +16792,96 @@ func (client *Client) ListCloudAccounts(request *ListCloudAccountsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListCloudAccountsResponse{}
 	_body, _err := client.ListCloudAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of one or more permission templates by using a paging query.
+//
+// @param request - ListCloudPermissionTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudPermissionTemplatesResponse
+func (client *Client) ListCloudPermissionTemplatesWithOptions(request *ListCloudPermissionTemplatesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudPermissionTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateNamePrefix) {
+		query["CloudPermissionTemplateNamePrefix"] = request.CloudPermissionTemplateNamePrefix
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateSharingMode) {
+		query["CloudPermissionTemplateSharingMode"] = request.CloudPermissionTemplateSharingMode
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateUsageType) {
+		query["CloudPermissionTemplateUsageType"] = request.CloudPermissionTemplateUsageType
+	}
+
+	if !dara.IsNil(request.CreatorType) {
+		query["CreatorType"] = request.CreatorType
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudPermissionTemplates"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudPermissionTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information of one or more permission templates by using a paging query.
+//
+// @param request - ListCloudPermissionTemplatesRequest
+//
+// @return ListCloudPermissionTemplatesResponse
+func (client *Client) ListCloudPermissionTemplates(request *ListCloudPermissionTemplatesRequest) (_result *ListCloudPermissionTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCloudPermissionTemplatesResponse{}
+	_body, _err := client.ListCloudPermissionTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16458,7 +17265,7 @@ func (client *Client) ListCredentialProviders(request *ListCredentialProvidersRe
 
 // Summary:
 //
-// Performs a paging query to retrieve the information of one or more credentials.
+// Queries the information of one or more credentials by using paging.
 //
 // @param request - ListCredentialsRequest
 //
@@ -16534,7 +17341,7 @@ func (client *Client) ListCredentialsWithOptions(request *ListCredentialsRequest
 
 // Summary:
 //
-// Performs a paging query to retrieve the information of one or more credentials.
+// Queries the information of one or more credentials by using paging.
 //
 // @param request - ListCredentialsRequest
 //
@@ -16552,7 +17359,7 @@ func (client *Client) ListCredentials(request *ListCredentialsRequest) (_result 
 
 // Summary:
 //
-// Queries the list of custom terms.
+// Queries custom privacy policies.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -16612,7 +17419,7 @@ func (client *Client) ListCustomPrivacyPoliciesWithOptions(request *ListCustomPr
 
 // Summary:
 //
-// Queries the list of custom terms.
+// Queries custom privacy policies.
 //
 // @param request - ListCustomPrivacyPoliciesRequest
 //
@@ -16630,7 +17437,7 @@ func (client *Client) ListCustomPrivacyPolicies(request *ListCustomPrivacyPolici
 
 // Summary:
 //
-// Retrieves the resources of brand-linked instances.
+// Retrieves the resources associated with a brand.
 //
 // @param request - ListCustomPrivacyPoliciesForBrandRequest
 //
@@ -16690,7 +17497,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrandWithOptions(request *List
 
 // Summary:
 //
-// Retrieves the resources of brand-linked instances.
+// Retrieves the resources associated with a brand.
 //
 // @param request - ListCustomPrivacyPoliciesForBrandRequest
 //
@@ -16708,7 +17515,7 @@ func (client *Client) ListCustomPrivacyPoliciesForBrand(request *ListCustomPriva
 
 // Summary:
 //
-// Queries a list of domain proxy tokens of an EIAM instance.
+// Lists the proxy tokens for the domain name of an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -16756,7 +17563,7 @@ func (client *Client) ListDomainProxyTokensWithOptions(request *ListDomainProxyT
 
 // Summary:
 //
-// Queries a list of domain proxy tokens of an EIAM instance.
+// Lists the proxy tokens for the domain name of an EIAM instance.
 //
 // @param request - ListDomainProxyTokensRequest
 //
@@ -16951,7 +17758,7 @@ func (client *Client) ListEiamRegions() (_result *ListEiamRegionsResponse, _err 
 
 // Summary:
 //
-// Queries the event list.
+// Lists events.
 //
 // @param request - ListEventTypesRequest
 //
@@ -16999,7 +17806,7 @@ func (client *Client) ListEventTypesWithOptions(request *ListEventTypesRequest, 
 
 // Summary:
 //
-// Queries the event list.
+// Lists events.
 //
 // @param request - ListEventTypesRequest
 //
@@ -17185,7 +17992,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// Performs a paged query to list the groups authorized to access an application. The response returns the group IDs. To obtain detailed information for a group, you can call the GetGroup operation.
+// Performs a paged query on the list of groups with authorization to access an application. The response includes group IDs and supports paging. To obtain detailed group information, invoke the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -17249,7 +18056,7 @@ func (client *Client) ListGroupsForApplicationWithOptions(request *ListGroupsFor
 
 // Summary:
 //
-// Performs a paged query to list the groups authorized to access an application. The response returns the group IDs. To obtain detailed information for a group, you can call the GetGroup operation.
+// Performs a paged query on the list of groups with authorization to access an application. The response includes group IDs and supports paging. To obtain detailed group information, invoke the GetGroup operation.
 //
 // @param request - ListGroupsForApplicationRequest
 //
@@ -17427,7 +18234,7 @@ func (client *Client) ListGroupsForResourceServer(request *ListGroupsForResource
 
 // Summary:
 //
-// Queries the list of account groups to which a specified EIAM account belongs.
+// Queries the groups to which a specified EIAM account belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -17483,7 +18290,7 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 
 // Summary:
 //
-// Queries the list of account groups to which a specified EIAM account belongs.
+// Queries the groups to which a specified EIAM account belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -17575,7 +18382,7 @@ func (client *Client) ListIdentityProviders(request *ListIdentityProvidersReques
 
 // Summary:
 //
-// Retrieves information about Identity Providers (IdPs) for a network endpoint.
+// Retrieves the IdP information for a network access endpoint.
 //
 // @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
 //
@@ -17631,7 +18438,7 @@ func (client *Client) ListIdentityProvidersForNetworkAccessEndpointWithOptions(r
 
 // Summary:
 //
-// Retrieves information about Identity Providers (IdPs) for a network endpoint.
+// Retrieves the IdP information for a network access endpoint.
 //
 // @param request - ListIdentityProvidersForNetworkAccessEndpointRequest
 //
@@ -17739,7 +18546,7 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
-// Lists the available regions for creating network access endpoints in IDaaS EIAM.
+// Queries the list of regions where IDaaS EIAM supports creating network endpoints.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -17768,7 +18575,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableRegionsWithOptions(runti
 
 // Summary:
 //
-// Lists the available regions for creating network access endpoints in IDaaS EIAM.
+// Queries the list of regions where IDaaS EIAM supports creating network endpoints.
 //
 // @return ListNetworkAccessEndpointAvailableRegionsResponse
 func (client *Client) ListNetworkAccessEndpointAvailableRegions() (_result *ListNetworkAccessEndpointAvailableRegionsResponse, _err error) {
@@ -17846,7 +18653,7 @@ func (client *Client) ListNetworkAccessEndpointAvailableZones(request *ListNetwo
 
 // Summary:
 //
-// Queries the list of network access endpoints under an IDaaS EIAM instance.
+// Queries the network access endpoints of an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -17914,7 +18721,7 @@ func (client *Client) ListNetworkAccessEndpointsWithOptions(request *ListNetwork
 
 // Summary:
 //
-// Queries the list of network access endpoints under an IDaaS EIAM instance.
+// Queries the network access endpoints of an IDaaS EIAM instance.
 //
 // @param request - ListNetworkAccessEndpointsRequest
 //
@@ -17998,7 +18805,7 @@ func (client *Client) ListNetworkAccessPaths(request *ListNetworkAccessPathsRequ
 
 // Summary:
 //
-// Queries the list of network zone objects.
+// Queries network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -18058,7 +18865,7 @@ func (client *Client) ListNetworkZonesWithOptions(request *ListNetworkZonesReque
 
 // Summary:
 //
-// Queries the list of network zone objects.
+// Queries network zone objects.
 //
 // @param request - ListNetworkZonesRequest
 //
@@ -18076,7 +18883,7 @@ func (client *Client) ListNetworkZones(request *ListNetworkZonesRequest) (_resul
 
 // Summary:
 //
-// Queries all ancestor organizations of a specified EIAM organization. The organizations in the result list are sorted in hierarchical order from the top level to the bottom level.
+// Lists all ancestor organizations of a specified EIAM organization. The returned organization list is sorted in hierarchical order from the top level to the bottom level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -18124,7 +18931,7 @@ func (client *Client) ListOrganizationalUnitParentsWithOptions(request *ListOrga
 
 // Summary:
 //
-// Queries all ancestor organizations of a specified EIAM organization. The organizations in the result list are sorted in hierarchical order from the top level to the bottom level.
+// Lists all ancestor organizations of a specified EIAM organization. The returned organization list is sorted in hierarchical order from the top level to the bottom level.
 //
 // @param request - ListOrganizationalUnitParentsRequest
 //
@@ -18228,7 +19035,7 @@ func (client *Client) ListOrganizationalUnits(request *ListOrganizationalUnitsRe
 
 // Summary:
 //
-// Performs a paged query to list the organizations that are granted access to an application. The response returns the IDs of the organizations. To obtain detailed information about a specific organization, call the GetOrganizationalUnit operation.
+// Performs a paging query for the list of organizational units that an application is authorized to access. The returned result includes the organizational unit IDs. To obtain detailed information about an organizational unit, call the GetOrganizationalUnit operation.
 //
 // @param request - ListOrganizationalUnitsForApplicationRequest
 //
@@ -18292,7 +19099,7 @@ func (client *Client) ListOrganizationalUnitsForApplicationWithOptions(request *
 
 // Summary:
 //
-// Performs a paged query to list the organizations that are granted access to an application. The response returns the IDs of the organizations. To obtain detailed information about a specific organization, call the GetOrganizationalUnit operation.
+// Performs a paging query for the list of organizational units that an application is authorized to access. The returned result includes the organizational unit IDs. To obtain detailed information about an organizational unit, call the GetOrganizationalUnit operation.
 //
 // @param request - ListOrganizationalUnitsForApplicationRequest
 //
@@ -18833,11 +19640,11 @@ func (client *Client) ListTrustedOrigins(request *ListTrustedOriginsRequest) (_r
 
 // Summary:
 //
-// Queries the binding relationships of third-party login accounts.
+// Queries the binding relationships of third-party logon accounts.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, namely the applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -18905,11 +19712,11 @@ func (client *Client) ListUserAuthnSourceMappingsWithOptions(request *ListUserAu
 
 // Summary:
 //
-// Queries the binding relationships of third-party login accounts.
+// Queries the binding relationships of third-party logon accounts.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, namely the applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListUserAuthnSourceMappingsRequest
 //
@@ -18927,11 +19734,11 @@ func (client *Client) ListUserAuthnSourceMappings(request *ListUserAuthnSourceMa
 
 // Summary:
 //
-// Queries EIAM account information by using paging.
+// Performs a paging query of EIAM account information.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organizational unit, which are the applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, which are the applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListUsersRequest
 //
@@ -19035,11 +19842,11 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *d
 
 // Summary:
 //
-// Queries EIAM account information by using paging.
+// Performs a paging query of EIAM account information.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organizational unit, which are the applications directly assigned to the organizational unit. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, which are the applications directly assigned to the organization. When you call this operation, you can filter applications by using the **ApplicationIds*	- parameter.
 //
 // @param request - ListUsersRequest
 //
@@ -19057,7 +19864,7 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// Performs a paged query to list the accounts that have been granted access to an application. The response includes account IDs. To retrieve detailed information about an account, call the GetUser operation.
+// Performs a paging query to retrieve the list of accounts authorized to access an application. The response includes account IDs. To obtain detailed account information, call the GetUser operation.
 //
 // @param request - ListUsersForApplicationRequest
 //
@@ -19121,7 +19928,7 @@ func (client *Client) ListUsersForApplicationWithOptions(request *ListUsersForAp
 
 // Summary:
 //
-// Performs a paged query to list the accounts that have been granted access to an application. The response includes account IDs. To retrieve detailed information about an account, call the GetUser operation.
+// Performs a paging query to retrieve the list of accounts authorized to access an application. The response includes account IDs. To obtain detailed account information, call the GetUser operation.
 //
 // @param request - ListUsersForApplicationRequest
 //
@@ -20093,7 +20900,7 @@ func (client *Client) RemoveUserFromOrganizationalUnits(request *RemoveUserFromO
 
 // Summary:
 //
-// Removes Employee Identity and Access Management (EIAM) accounts from an EIAM group of Identity as a Service (IDaaS).
+// Removes multiple EIAM accounts from a specified EIAM account group.
 //
 // @param request - RemoveUsersFromGroupRequest
 //
@@ -20145,7 +20952,7 @@ func (client *Client) RemoveUsersFromGroupWithOptions(request *RemoveUsersFromGr
 
 // Summary:
 //
-// Removes Employee Identity and Access Management (EIAM) accounts from an EIAM group of Identity as a Service (IDaaS).
+// Removes multiple EIAM accounts from a specified EIAM account group.
 //
 // @param request - RemoveUsersFromGroupRequest
 //
@@ -20225,7 +21032,7 @@ func (client *Client) RenewFreeLicenseEndTime(request *RenewFreeLicenseEndTimeRe
 
 // Summary:
 //
-// Revokes the permissions of multiple Employee Identity and Access Management (EIAM) groups to access an application in a batch.
+// Revokes application access permissions for multiple EIAM groups.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -20281,7 +21088,7 @@ func (client *Client) RevokeApplicationFromGroupsWithOptions(request *RevokeAppl
 
 // Summary:
 //
-// Revokes the permissions of multiple Employee Identity and Access Management (EIAM) groups to access an application in a batch.
+// Revokes application access permissions for multiple EIAM groups.
 //
 // @param request - RevokeApplicationFromGroupsRequest
 //
@@ -20299,7 +21106,7 @@ func (client *Client) RevokeApplicationFromGroups(request *RevokeApplicationFrom
 
 // Summary:
 //
-// Revokes application access from multiple EIAM organizations in a batch operation.
+// Revokes access to an application for multiple EIAM organizational units in batches.
 //
 // @param request - RevokeApplicationFromOrganizationalUnitsRequest
 //
@@ -20355,7 +21162,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnitsWithOptions(reques
 
 // Summary:
 //
-// Revokes application access from multiple EIAM organizations in a batch operation.
+// Revokes access to an application for multiple EIAM organizational units in batches.
 //
 // @param request - RevokeApplicationFromOrganizationalUnitsRequest
 //
@@ -20373,7 +21180,7 @@ func (client *Client) RevokeApplicationFromOrganizationalUnits(request *RevokeAp
 
 // Summary:
 //
-// Revokes the permissions of multiple Enterprise Identity Access Management (EIAM) accounts to access an application in a batch.
+// Revokes access to an application for multiple EIAM accounts.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -20429,7 +21236,7 @@ func (client *Client) RevokeApplicationFromUsersWithOptions(request *RevokeAppli
 
 // Summary:
 //
-// Revokes the permissions of multiple Enterprise Identity Access Management (EIAM) accounts to access an application in a batch.
+// Revokes access to an application for multiple EIAM accounts.
 //
 // @param request - RevokeApplicationFromUsersRequest
 //
@@ -21375,7 +22182,7 @@ func (client *Client) SetApplicationSsoConfig(request *SetApplicationSsoConfigRe
 
 // Summary:
 //
-// Sets a specified domain name of an EIAM instance as the default domain name.
+// Sets the specified domain name of an EIAM instance as the default domain name.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -21423,7 +22230,7 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 
 // Summary:
 //
-// Sets a specified domain name of an EIAM instance as the default domain name.
+// Sets the specified domain name of an EIAM instance as the default domain name.
 //
 // @param request - SetDefaultDomainRequest
 //
@@ -21441,7 +22248,7 @@ func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_resul
 
 // Summary:
 //
-// Sets the forgot password policy for an EIAM instance.
+// Configures the forgot password policy for EIAM.
 //
 // @param request - SetForgetPasswordConfigurationRequest
 //
@@ -21493,7 +22300,7 @@ func (client *Client) SetForgetPasswordConfigurationWithOptions(request *SetForg
 
 // Summary:
 //
-// Sets the forgot password policy for an EIAM instance.
+// Configures the forgot password policy for EIAM.
 //
 // @param request - SetForgetPasswordConfigurationRequest
 //
@@ -22053,7 +22860,7 @@ func (client *Client) SetPasswordComplexityConfiguration(request *SetPasswordCom
 
 // Summary:
 //
-// Sets the password expiration policy for a specified Enterprise Identity and Access Management (EIAM) instance.
+// Sets the password expiration policy for a specified EIAM instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -22129,7 +22936,7 @@ func (client *Client) SetPasswordExpirationConfigurationWithOptions(request *Set
 
 // Summary:
 //
-// Sets the password expiration policy for a specified Enterprise Identity and Access Management (EIAM) instance.
+// Sets the password expiration policy for a specified EIAM instance.
 //
 // @param request - SetPasswordExpirationConfigurationRequest
 //
@@ -22147,7 +22954,7 @@ func (client *Client) SetPasswordExpirationConfiguration(request *SetPasswordExp
 
 // Summary:
 //
-// Sets the password history policy for a specified Enterprise Identity and Access Management (EIAM) instance.
+// Sets the password history policy for a specified EIAM instance.
 //
 // @param request - SetPasswordHistoryConfigurationRequest
 //
@@ -22199,7 +23006,7 @@ func (client *Client) SetPasswordHistoryConfigurationWithOptions(request *SetPas
 
 // Summary:
 //
-// Sets the password history policy for a specified Enterprise Identity and Access Management (EIAM) instance.
+// Sets the password history policy for a specified EIAM instance.
 //
 // @param request - SetPasswordHistoryConfigurationRequest
 //
@@ -22217,7 +23024,7 @@ func (client *Client) SetPasswordHistoryConfiguration(request *SetPasswordHistor
 
 // Summary:
 //
-// Sets the password initialization policy for a specified EIAM instance.
+// Configures the password initialization policy for a specified EIAM instance.
 //
 // @param request - SetPasswordInitializationConfigurationRequest
 //
@@ -22277,7 +23084,7 @@ func (client *Client) SetPasswordInitializationConfigurationWithOptions(request 
 
 // Summary:
 //
-// Sets the password initialization policy for a specified EIAM instance.
+// Configures the password initialization policy for a specified EIAM instance.
 //
 // @param request - SetPasswordInitializationConfigurationRequest
 //
@@ -22295,7 +23102,7 @@ func (client *Client) SetPasswordInitializationConfiguration(request *SetPasswor
 
 // Summary:
 //
-// Sets the specified client public key as the primary key for an application.
+// Sets the specified application ClientPublicKey as preferred.
 //
 // @param request - SetPrimaryClientPublicKeyRequest
 //
@@ -22351,7 +23158,7 @@ func (client *Client) SetPrimaryClientPublicKeyWithOptions(request *SetPrimaryCl
 
 // Summary:
 //
-// Sets the specified client public key as the primary key for an application.
+// Sets the specified application ClientPublicKey as preferred.
 //
 // @param request - SetPrimaryClientPublicKeyRequest
 //
@@ -22583,7 +23390,7 @@ func (client *Client) UnbindTotpAuthenticator(request *UnbindTotpAuthenticatorRe
 
 // Summary:
 //
-// Unbinds a third-party logon account from a user.
+// Disassociates a third-party logon account.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //
@@ -22639,7 +23446,7 @@ func (client *Client) UnbindUserAuthnSourceMappingWithOptions(request *UnbindUse
 
 // Summary:
 //
-// Unbinds a third-party logon account from a user.
+// Disassociates a third-party logon account.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //
@@ -22723,7 +23530,7 @@ func (client *Client) UnlockUser(request *UnlockUserRequest) (_result *UnlockUse
 
 // Summary:
 //
-// Modifies the advanced configuration of an application.
+// Updates the advanced configurations of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -22775,7 +23582,7 @@ func (client *Client) UpdateApplicationAdvancedConfigWithOptions(request *Update
 
 // Summary:
 //
-// Modifies the advanced configuration of an application.
+// Updates the advanced configurations of an application.
 //
 // @param request - UpdateApplicationAdvancedConfigRequest
 //
@@ -22793,7 +23600,7 @@ func (client *Client) UpdateApplicationAdvancedConfig(request *UpdateApplication
 
 // Summary:
 //
-// Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
+// Updates the access authorization type of a specified EIAM application.
 //
 // @param request - UpdateApplicationAuthorizationTypeRequest
 //
@@ -22845,7 +23652,7 @@ func (client *Client) UpdateApplicationAuthorizationTypeWithOptions(request *Upd
 
 // Summary:
 //
-// Modifies the authorization type of an Employee Identity and Access Management (EIAM) application.
+// Updates the access authorization type of a specified EIAM application.
 //
 // @param request - UpdateApplicationAuthorizationTypeRequest
 //
@@ -22863,7 +23670,7 @@ func (client *Client) UpdateApplicationAuthorizationType(request *UpdateApplicat
 
 // Summary:
 //
-// Updates the expiration time of a specified ClientSecret for an application.
+// Updates the expiration time of a specified client secret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -22919,7 +23726,7 @@ func (client *Client) UpdateApplicationClientSecretExpirationTimeWithOptions(req
 
 // Summary:
 //
-// Updates the expiration time of a specified ClientSecret for an application.
+// Updates the expiration time of a specified client secret for an application.
 //
 // @param request - UpdateApplicationClientSecretExpirationTimeRequest
 //
@@ -22937,7 +23744,7 @@ func (client *Client) UpdateApplicationClientSecretExpirationTime(request *Updat
 
 // Summary:
 //
-// Modifies the description of an Employee Identity and Access Management (EIAM) application.
+// Updates the description of an EIAM application.
 //
 // @param request - UpdateApplicationDescriptionRequest
 //
@@ -22989,7 +23796,7 @@ func (client *Client) UpdateApplicationDescriptionWithOptions(request *UpdateApp
 
 // Summary:
 //
-// Modifies the description of an Employee Identity and Access Management (EIAM) application.
+// Updates the description of an EIAM application.
 //
 // @param request - UpdateApplicationDescriptionRequest
 //
@@ -23561,7 +24368,7 @@ func (client *Client) UpdateApplicationTokenExpirationTime(request *UpdateApplic
 
 // Summary:
 //
-// Updates the basic properties of an authorization rule.
+// Updates the basic information of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -23623,7 +24430,7 @@ func (client *Client) UpdateAuthorizationRuleWithOptions(request *UpdateAuthoriz
 
 // Summary:
 //
-// Updates the basic properties of an authorization rule.
+// Updates the basic information of an authorization rule.
 //
 // @param request - UpdateAuthorizationRuleRequest
 //
@@ -23641,7 +24448,7 @@ func (client *Client) UpdateAuthorizationRule(request *UpdateAuthorizationRuleRe
 
 // Summary:
 //
-// Updates the properties of the relationship between an authorization rule and an application.
+// Updates the relationship properties between an authorization rule and an application.
 //
 // @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
 //
@@ -23707,7 +24514,7 @@ func (client *Client) UpdateAuthorizationRuleApplicationAttachmentWithOptions(re
 
 // Summary:
 //
-// Updates the properties of the relationship between an authorization rule and an application.
+// Updates the relationship properties between an authorization rule and an application.
 //
 // @param request - UpdateAuthorizationRuleApplicationAttachmentRequest
 //
@@ -23885,7 +24692,7 @@ func (client *Client) UpdateAuthorizationRuleGroupAttachment(request *UpdateAuth
 
 // Summary:
 //
-// Updates the relationship properties between an authorization rule and an account.
+// Updates the relationship attributes between an authorization rule and an account.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -23951,7 +24758,7 @@ func (client *Client) UpdateAuthorizationRuleUserAttachmentWithOptions(request *
 
 // Summary:
 //
-// Updates the relationship properties between an authorization rule and an account.
+// Updates the relationship attributes between an authorization rule and an account.
 //
 // @param request - UpdateAuthorizationRuleUserAttachmentRequest
 //
@@ -24425,6 +25232,108 @@ func (client *Client) UpdateCloudAccountRoleDescription(request *UpdateCloudAcco
 
 // Summary:
 //
+// Updates a permission template.
+//
+// Description:
+//
+// Retrieves the list of application templates.
+//
+// @param request - UpdateCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCloudPermissionTemplateResponse
+func (client *Client) UpdateCloudPermissionTemplateWithOptions(request *UpdateCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *UpdateCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowRequest) {
+		query["AllowRequest"] = request.AllowRequest
+	}
+
+	if !dara.IsNil(request.ApplicableScope) {
+		query["ApplicableScope"] = request.ApplicableScope
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResources) {
+		query["CloudAccountResources"] = request.CloudAccountResources
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateName) {
+		query["CloudPermissionTemplateName"] = request.CloudPermissionTemplateName
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a permission template.
+//
+// Description:
+//
+// Retrieves the list of application templates.
+//
+// @param request - UpdateCloudPermissionTemplateRequest
+//
+// @return UpdateCloudPermissionTemplateResponse
+func (client *Client) UpdateCloudPermissionTemplate(request *UpdateCloudPermissionTemplateRequest) (_result *UpdateCloudPermissionTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCloudPermissionTemplateResponse{}
+	_body, _err := client.UpdateCloudPermissionTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a conditional access policy.
 //
 // Description:
@@ -24605,7 +25514,7 @@ func (client *Client) UpdateConditionalAccessPolicyDescription(request *UpdateCo
 
 // Summary:
 //
-// Update basic information for a credential.
+// Updates the basic information of a credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -24665,7 +25574,7 @@ func (client *Client) UpdateCredentialWithOptions(request *UpdateCredentialReque
 
 // Summary:
 //
-// Update basic information for a credential.
+// Updates the basic information of a credential.
 //
 // @param request - UpdateCredentialRequest
 //
@@ -25599,7 +26508,7 @@ func (client *Client) UpdateInstanceDescription(request *UpdateInstanceDescripti
 
 // Summary:
 //
-// Modifies the name of a private network access endpoint.
+// Updates the name of a dedicated network access endpoint.
 //
 // @param request - UpdateNetworkAccessEndpointNameRequest
 //
@@ -25651,7 +26560,7 @@ func (client *Client) UpdateNetworkAccessEndpointNameWithOptions(request *Update
 
 // Summary:
 //
-// Modifies the name of a private network access endpoint.
+// Updates the name of a dedicated network access endpoint.
 //
 // @param request - UpdateNetworkAccessEndpointNameRequest
 //
@@ -25755,7 +26664,7 @@ func (client *Client) UpdateNetworkZone(request *UpdateNetworkZoneRequest) (_res
 
 // Summary:
 //
-// Updates the description of a network zone.
+// Updates the description of a network zone object.
 //
 // @param request - UpdateNetworkZoneDescriptionRequest
 //
@@ -25811,7 +26720,7 @@ func (client *Client) UpdateNetworkZoneDescriptionWithOptions(request *UpdateNet
 
 // Summary:
 //
-// Updates the description of a network zone.
+// Updates the description of a network zone object.
 //
 // @param request - UpdateNetworkZoneDescriptionRequest
 //

@@ -44,7 +44,7 @@ type iListUsersRequest interface {
 }
 
 type ListUsersRequest struct {
-	// The display name prefix. A left-match query is used.
+	// The prefix of the display name. A left-match query is performed.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ListUsersRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for paging.
+	// The number of entries per page for a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token.
+	// The query token.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type ListUsersRequest struct {
 	//
 	// 156xxxxxxx
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The phone region code. Example: The region code for the Chinese mainland is 86, without the 00 or + prefix.
+	// The phone region code. Example: 86 for the Chinese mainland, without 00 or +.
 	//
 	// example:
 	//
 	// 86
 	PhoneRegion *string `json:"PhoneRegion,omitempty" xml:"PhoneRegion,omitempty"`
-	// The account status. Valid values:
+	// The status of the account. Valid values:
 	//
 	// - enabled: Enabled.
 	//
@@ -116,7 +116,7 @@ type ListUsersRequest struct {
 	//
 	// enable
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The external ID, which is used to associate external data with IDaaS accounts.
+	// The external ID, which is used to map external data to IDaaS accounts.
 	//
 	// Note: The external ID must be unique within the same source type and source ID.
 	//
@@ -132,7 +132,7 @@ type ListUsersRequest struct {
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 	// The source ID of the account.
 	//
-	// For self-built accounts, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, the value corresponds to the corpId of the DingTalk enterprise.
+	// For the build-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, for the DingTalk source, the value is the corpId of the DingTalk enterprise.
 	//
 	// example:
 	//
@@ -140,21 +140,21 @@ type ListUsersRequest struct {
 	UserSourceId *string `json:"UserSourceId,omitempty" xml:"UserSourceId,omitempty"`
 	// The source type of the account. Valid values:
 	//
-	// - build_in: self-built.
+	// - build_in: Built-in.
 	//
-	// - ding_talk: imported from DingTalk.
+	// - ding_talk: Imported from DingTalk.
 	//
-	// - ad: imported from AD.
+	// - ad: Imported from AD.
 	//
-	// - ldap: imported from LDAP.
+	// - ldap: Imported from LDAP.
 	//
-	// - we_com: imported from WeCom.
+	// - we_com: Imported from WeCom.
 	//
 	// example:
 	//
 	// build_in
 	UserSourceType *string `json:"UserSourceType,omitempty" xml:"UserSourceType,omitempty"`
-	// The username prefix. A left-match query is used.
+	// The prefix of the username. A left-match query is performed.
 	//
 	// example:
 	//

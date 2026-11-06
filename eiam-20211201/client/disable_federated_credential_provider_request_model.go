@@ -16,7 +16,7 @@ type iDisableFederatedCredentialProviderRequest interface {
 }
 
 type DisableFederatedCredentialProviderRequest struct {
-	// The federated credential provider ID.
+	// The federated trust source ID.
 	//
 	// This parameter is required.
 	//

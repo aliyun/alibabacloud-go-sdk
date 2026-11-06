@@ -68,19 +68,19 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// 1234567
 	CloudAccountExternalId *string `json:"CloudAccountExternalId,omitempty" xml:"CloudAccountExternalId,omitempty"`
-	// The health status of the cloud account. Valid values:
+	// The cloud account health status. Valid values:
 	//
-	// - healthy: The cloud account is healthy.
+	// - healthy: Healthy.
 	//
-	// - unhealthy: The cloud account is unhealthy.
+	// - unhealthy: Unhealthy.
 	//
-	// - unknown: The health status is unknown.
+	// - unknown: Unknown.
 	//
 	// example:
 	//
 	// healthy
 	CloudAccountHealth *string `json:"CloudAccountHealth,omitempty" xml:"CloudAccountHealth,omitempty"`
-	// The health check result of the cloud account.
+	// The cloud account health check result.
 	CloudAccountHealthCheckResult *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult `json:"CloudAccountHealthCheckResult,omitempty" xml:"CloudAccountHealthCheckResult,omitempty" type:"Struct"`
 	// The cloud account ID.
 	//
@@ -88,21 +88,21 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// ca_01kmegjc11qa1txxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The name of the cloud account.
+	// The cloud account name.
 	//
 	// example:
 	//
 	// cloud_accout_xxxx
 	CloudAccountName *string `json:"CloudAccountName,omitempty" xml:"CloudAccountName,omitempty"`
-	// The configuration information of the identity provider.
+	// The identity provider configuration information.
 	CloudAccountProviderConfig *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig `json:"CloudAccountProviderConfig,omitempty" xml:"CloudAccountProviderConfig,omitempty" type:"Struct"`
-	// The name of the identity provider.
+	// The identity provider name.
 	//
 	// example:
 	//
 	// idaas-eiam-oidc-provider
 	CloudAccountProviderName *string `json:"CloudAccountProviderName,omitempty" xml:"CloudAccountProviderName,omitempty"`
-	// The site of the cloud account. Valid values:
+	// The cloud account site. Valid values:
 	//
 	// - china_mainland: The Chinese mainland.
 	//
@@ -112,7 +112,7 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// china_mainland
 	CloudAccountSite *string `json:"CloudAccountSite,omitempty" xml:"CloudAccountSite,omitempty"`
-	// The type of the cloud account. Valid values:
+	// The cloud account type. Valid values:
 	//
 	// - alibaba_cloud: Alibaba Cloud.
 	//
@@ -126,7 +126,7 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// 1649830225000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the cloud account.
+	// The cloud account description.
 	//
 	// example:
 	//
@@ -138,33 +138,33 @@ type GetCloudAccountResponseBodyCloudAccount struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of associated privileged application IDs.
+	// The list of associated privilege application IDs.
 	PrivilegeApplicationIds []*string `json:"PrivilegeApplicationIds,omitempty" xml:"PrivilegeApplicationIds,omitempty" type:"Repeated"`
 	// The cause of the privilege hosting or removal failure.
 	PrivilegeHostingError *GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError `json:"PrivilegeHostingError,omitempty" xml:"PrivilegeHostingError,omitempty" type:"Struct"`
-	// The hosting status of the cloud account. Default value: hosting_unmanaged. Valid values:
+	// The cloud account hosting status. Default value: hosting_unmanaged. Valid values:
 	//
 	// - hosting_unmanaged: Unmanaged. The cloud account has not initiated hosting and is in the initial state.
 	//
-	// - hosting_pending: Hosting. The hosting task has been submitted and is being executed asynchronously. Wait for the hosting process to complete to enter the final state.
+	// - hosting_pending: Hosting. The hosting task is submitted and executed asynchronously. You must wait for the hosting process to complete to enter the final state.
 	//
-	// - hosting_completed: Hosting completed. The cloud account hosting process is executed successfully, and the relevant permission templates and hosting bindings have taken effect.
+	// - hosting_completed: Hosting completed. The hosting process is executed successfully, and the relevant permission templates and hosting bindings take effect.
 	//
-	// - hosting_failed: Hosting failed. The hosting process encounters an exception. You can view the cause of the failure and initiate hosting again.
+	// - hosting_failed: Hosting failed. An exception occurs during the hosting process. You can view the failure cause and initiate hosting again.
 	//
-	// - hosting_removing: Removing. The removal task has been submitted and is being executed asynchronously. Wait for the removal process to complete to enter the final state.
+	// - hosting_removing: Removing. The removal task is submitted and executed asynchronously. You must wait for the removal process to complete to enter the final state.
 	//
-	// - hosting_remove_failed: Removal failed. The removal process encounters an exception. You can view the cause of the failure and initiate removal again.
+	// - hosting_remove_failed: Removal failed. An exception occurs during the removal process. You can view the failure cause and initiate removal again.
 	//
 	// example:
 	//
 	// hosting_unmanaged
 	PrivilegeHostingState *string `json:"PrivilegeHostingState,omitempty" xml:"PrivilegeHostingState,omitempty"`
-	// The status of the privilege switch. Valid values:
+	// The privilege switch status. Valid values:
 	//
-	// - enabled: Enabled. The resource is in the effective state and can be used normally.
+	// - enabled: Enabled. The resource is active and can be used normally.
 	//
-	// - disabled: Disabled. The resource is in the stopped state and no longer takes effect. You can enable it again to restore it.
+	// - disabled: Disabled. The resource is deactivated and no longer takes effect. You can re-enable it to restore the resource.
 	//
 	// example:
 	//
@@ -361,17 +361,17 @@ func (s *GetCloudAccountResponseBodyCloudAccount) Validate() error {
 type GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult struct {
 	// The error reason. This field returns a value when the health check status is unhealthy.
 	ErrorReason *GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason `json:"ErrorReason,omitempty" xml:"ErrorReason,omitempty" type:"Struct"`
-	// The time of the last check. The value is a UNIX timestamp in milliseconds.
+	// The last check time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1649830226000
 	LastCheckTime *int64 `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
-	// The health check result of the cloud account. Valid values:
+	// The cloud account health check result. Valid values:
 	//
-	// - success: The check succeeded.
+	// - success: Success.
 	//
-	// - failed: The check failed.
+	// - failed: Failure.
 	//
 	// example:
 	//
@@ -475,7 +475,7 @@ type GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig struct {
 	//
 	// urn:cloud:idaas:sts:xxx:xxx
 	Audience *string `json:"Audience,omitempty" xml:"Audience,omitempty"`
-	// The ID of the authorization server.
+	// The authorization server ID.
 	//
 	// example:
 	//
@@ -544,13 +544,13 @@ func (s *GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig) Vali
 }
 
 type GetCloudAccountResponseBodyCloudAccountPrivilegeHostingError struct {
-	// The error code of the failure.
+	// The failure error code.
 	//
 	// example:
 	//
 	// Error
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message of the failure.
+	// The failure message.
 	//
 	// example:
 	//

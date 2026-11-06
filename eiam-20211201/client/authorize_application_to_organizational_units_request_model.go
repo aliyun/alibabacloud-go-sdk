@@ -28,7 +28,7 @@ type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色ID。
+	// The application role ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type AuthorizeApplicationToOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk2676xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of organization IDs. You can specify a maximum of 100 organization IDs per operation.
+	// The list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
 	//
 	// This parameter is required.
 	//

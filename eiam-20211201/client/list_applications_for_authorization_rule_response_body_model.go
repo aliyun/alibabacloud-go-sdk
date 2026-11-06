@@ -30,7 +30,7 @@ type ListApplicationsForAuthorizationRuleResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned in this call. Use this token for the next paged query.
+	// The pagination token returned in the response, which is used to query the next page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListApplicationsForAuthorizationRuleResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListApplicationsForAuthorizationRuleResponseBodyApplications struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time range of the validity period. This parameter takes effect only when ValidityType is set to time_bound.
+	// The time range of the validity period. This parameter takes effect only when **ValidityType*	- is set to **time_bound**.
 	ValidityPeriod *ListApplicationsForAuthorizationRuleResponseBodyApplicationsValidityPeriod `json:"ValidityPeriod,omitempty" xml:"ValidityPeriod,omitempty" type:"Struct"`
 	// The validity type of the association. Valid values:
 	//
 	// - permanent: permanent
 	//
-	// - time_bound: custom time range.
+	// - time_bound: custom time range
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ func (s *ListApplicationsForAuthorizationRuleResponseBodyApplications) Validate(
 }
 
 type ListApplicationsForAuthorizationRuleResponseBodyApplicationsValidityPeriod struct {
-	// The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
+	// The end time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1704042061000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
+	// The start time of the validity period. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

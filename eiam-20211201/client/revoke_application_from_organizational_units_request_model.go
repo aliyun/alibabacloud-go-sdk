@@ -28,7 +28,7 @@ type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// 应用角色ID。
+	// The application role ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type RevokeApplicationFromOrganizationalUnitsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
+	// The list of organizational unit IDs. You can specify up to 100 organizational unit IDs in a single request.
 	//
 	// This parameter is required.
 	//

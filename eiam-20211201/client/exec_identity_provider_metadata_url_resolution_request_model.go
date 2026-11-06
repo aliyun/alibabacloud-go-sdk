@@ -22,7 +22,7 @@ type iExecIdentityProviderMetadataUrlResolutionRequest interface {
 }
 
 type ExecIdentityProviderMetadataUrlResolutionRequest struct {
-  // The identity provider ID in IDaaS.
+  // The IDaaS identity provider ID.
   // 
   // example:
   // 
@@ -36,7 +36,7 @@ type ExecIdentityProviderMetadataUrlResolutionRequest struct {
   // 
   // idaas_ue2jvisn35ea5lmthk267xxxxx
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The network endpoint ID.
+  // The network access endpoint ID.
   // 
   // example:
   // 

@@ -18,7 +18,7 @@ type iDisableApplicationFederatedCredentialRequest interface {
 }
 
 type DisableApplicationFederatedCredentialRequest struct {
-	// The application federated identity credential ID.
+	// The application federated credential ID.
 	//
 	// This parameter is required.
 	//
