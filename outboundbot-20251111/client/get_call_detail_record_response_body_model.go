@@ -54,7 +54,7 @@ type GetCallDetailRecordResponseBody struct {
 	//
 	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -155,13 +155,13 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// Test
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
-	// The callee number.
+	// The called number.
 	//
 	// example:
 	//
 	// 13612617599
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
-	// The caller number.
+	// The calling number.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// Normal
 	DispositionReason *string `json:"DispositionReason,omitempty" xml:"DispositionReason,omitempty"`
-	// Indicates whether this is a draft version.
+	// Indicates whether it is a draft version.
 	//
 	// example:
 	//
@@ -197,15 +197,15 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// 1
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end time of the call.
+	// The call end time.
 	//
 	// example:
 	//
 	// 1786960840667
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of labels.
+	// The label list.
 	Labels []*GetCallDetailRecordResponseBodyDataLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The party that initiated the hang-up.
+	// The hang-up initiator.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// job-0b84bf6f-73dc-4462-bd8f-916e3a34c419
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The start time of the call.
+	// The call start time.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type GetCallDetailRecordResponseBodyData struct {
 	//
 	// 1
 	TalkTurns *int64 `json:"TalkTurns,omitempty" xml:"TalkTurns,omitempty"`
-	// Indicates whether the task was completed.
+	// Indicates whether the task is completed.
 	//
 	// example:
 	//
@@ -468,9 +468,9 @@ func (s *GetCallDetailRecordResponseBodyData) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataLabels struct {
-	// The set of preset values for the label.
+	// The candidate values for the label.
 	CandidateValues []*string `json:"CandidateValues,omitempty" xml:"CandidateValues,omitempty" type:"Repeated"`
-	// Indicates whether the label has been collected.
+	// Indicates whether the label is collected.
 	//
 	// example:
 	//
@@ -494,7 +494,7 @@ type GetCallDetailRecordResponseBodyDataLabels struct {
 	//
 	// MemberCollection_20251215_161122_Copy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the label is a system label.
+	// The system label.
 	//
 	// example:
 	//
@@ -569,31 +569,31 @@ func (s *GetCallDetailRecordResponseBodyDataLabels) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataTranscripts struct {
-	// The assistant answer.
+	// The assistant response.
 	//
 	// example:
 	//
 	// Sorry, I cannot find your phone bill
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// Indicates whether the transcript is a backchannel response.
+	// Indicates whether it is a backchannel.
 	//
 	// example:
 	//
 	// false
 	Backchannels *bool `json:"Backchannels,omitempty" xml:"Backchannels,omitempty"`
-	// The begin time.
+	// The start time.
 	//
 	// example:
 	//
 	// 1760667651655
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The list of control parameters.
+	// The control parameter list.
 	//
 	// example:
 	//
 	// {"transferCode":"Transfer02","type":"Transfer"}]
 	ControlParamsList *string `json:"ControlParamsList,omitempty" xml:"ControlParamsList,omitempty"`
-	// The end time of the call.
+	// The call end time.
 	//
 	// example:
 	//
@@ -617,13 +617,13 @@ type GetCallDetailRecordResponseBodyDataTranscripts struct {
 	//
 	// 0
 	InputTokens *int32 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
-	// Indicates whether the response was interrupted.
+	// Indicates whether it was interrupted.
 	//
 	// example:
 	//
 	// false
 	Interrupted *bool `json:"Interrupted,omitempty" xml:"Interrupted,omitempty"`
-	// Indicates whether the transcript is from the legacy version.
+	// Indicates whether it is a legacy version.
 	//
 	// example:
 	//
@@ -641,19 +641,23 @@ type GetCallDetailRecordResponseBodyDataTranscripts struct {
 	//
 	// 0
 	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The playback status.
+	//
 	// example:
 	//
 	// INTERRUPTED
 	PlaybackStatus *string `json:"PlaybackStatus,omitempty" xml:"PlaybackStatus,omitempty"`
+	// The played content.
+	//
 	// example:
 	//
-	// 好的
+	// Okay
 	PlayedAnswer *string `json:"PlayedAnswer,omitempty" xml:"PlayedAnswer,omitempty"`
 	// The played text.
 	//
 	// example:
 	//
-	// Sorry, check
+	// Sorry, checking
 	PlayedWords *string `json:"PlayedWords,omitempty" xml:"PlayedWords,omitempty"`
 	// The role.
 	//

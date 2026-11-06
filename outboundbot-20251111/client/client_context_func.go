@@ -485,6 +485,64 @@ func (client *Client) CreateInstanceWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
+// Creates a language model access configuration.
+//
+// Description:
+//
+// Creates a language model access configuration for a specified instance.
+//
+// @param tmpReq - CreateLlmAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLlmAccessProfileResponse
+func (client *Client) CreateLlmAccessProfileWithContext(ctx context.Context, tmpReq *CreateLlmAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *CreateLlmAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateLlmAccessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Profile) {
+		request.ProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Profile, dara.String("Profile"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProfileShrink) {
+		body["Profile"] = request.ProfileShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLlmAccessProfile"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLlmAccessProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an instance.
 //
 // @param tmpReq - CreateOutboundCallRestrictionRequest
@@ -799,6 +857,62 @@ func (client *Client) DeleteCloneVoiceWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Deletes a tenant number.
+//
+// Description:
+//
+// Deletes a tenant number.
+//
+// @param request - DeleteCorpNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCorpNumberResponse
+func (client *Client) DeleteCorpNumberWithContext(ctx context.Context, request *DeleteCorpNumberRequest, runtime *dara.RuntimeOptions) (_result *DeleteCorpNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Force) {
+		body["Force"] = request.Force
+	}
+
+	if !dara.IsNil(request.Number) {
+		body["Number"] = request.Number
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteCorpNumber"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteCorpNumberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a flash message configuration.
 //
 // @param request - DeleteFlashSmsAccessProfileRequest
@@ -881,6 +995,122 @@ func (client *Client) DeleteInstanceWithContext(ctx context.Context, request *De
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the language model access configuration.
+//
+// Description:
+//
+// Deletes the language model access configuration for a specified instance.
+//
+// @param request - DeleteLlmAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLlmAccessProfileResponse
+func (client *Client) DeleteLlmAccessProfileWithContext(ctx context.Context, request *DeleteLlmAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *DeleteLlmAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessProfileId) {
+		body["AccessProfileId"] = request.AccessProfileId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLlmAccessProfile"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLlmAccessProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the numbers of an instance.
+//
+// Description:
+//
+// Deletes the numbers of a specified instance.
+//
+// @param tmpReq - DeleteNumbersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNumbersResponse
+func (client *Client) DeleteNumbersWithContext(ctx context.Context, tmpReq *DeleteNumbersRequest, runtime *dara.RuntimeOptions) (_result *DeleteNumbersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteNumbersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Numbers) {
+		request.NumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Numbers, dara.String("Numbers"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.NumbersShrink) {
+		body["Numbers"] = request.NumbersShrink
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteNumbers"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteNumbersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1085,7 +1315,7 @@ func (client *Client) DisableSubscriptionWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of a call session.
+// Retrieves the call details.
 //
 // Description:
 //
@@ -1419,6 +1649,50 @@ func (client *Client) GetSubscriptionWithContext(ctx context.Context, request *G
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSubscriptionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of ASR models.
+//
+// @param request - ListAsrModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAsrModelsResponse
+func (client *Client) ListAsrModelsWithContext(ctx context.Context, request *ListAsrModelsRequest, runtime *dara.RuntimeOptions) (_result *ListAsrModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAsrModels"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAsrModelsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1775,6 +2049,70 @@ func (client *Client) ListCloneVoicesWithContext(ctx context.Context, request *L
 
 // Summary:
 //
+// Queries the list of tenant numbers.
+//
+// Description:
+//
+// Queries the list of tenant numbers.
+//
+// @param request - ListCorpNumbersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCorpNumbersResponse
+func (client *Client) ListCorpNumbersWithContext(ctx context.Context, request *ListCorpNumbersRequest, runtime *dara.RuntimeOptions) (_result *ListCorpNumbersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Number) {
+		body["Number"] = request.Number
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SipTrunkId) {
+		body["SipTrunkId"] = request.SipTrunkId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCorpNumbers"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCorpNumbersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of flash SMS configurations.
 //
 // @param request - ListFlashSmsAccessProfilesRequest
@@ -1927,6 +2265,58 @@ func (client *Client) ListFlashSmsTemplatesWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the instances bound to a number.
+//
+// Description:
+//
+// Queries the binding information between a number and instances.
+//
+// @param request - ListInstanceBindingsOfNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceBindingsOfNumberResponse
+func (client *Client) ListInstanceBindingsOfNumberWithContext(ctx context.Context, request *ListInstanceBindingsOfNumberRequest, runtime *dara.RuntimeOptions) (_result *ListInstanceBindingsOfNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Number) {
+		body["Number"] = request.Number
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstanceBindingsOfNumber"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstanceBindingsOfNumberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves instance details.
 //
 // @param request - ListInstancesRequest
@@ -1969,6 +2359,182 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the language model access configurations.
+//
+// Description:
+//
+// Queries the list of language model access configurations of a specified instance by paging.
+//
+// @param request - ListLlmAccessProfilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLlmAccessProfilesResponse
+func (client *Client) ListLlmAccessProfilesWithContext(ctx context.Context, request *ListLlmAccessProfilesRequest, runtime *dara.RuntimeOptions) (_result *ListLlmAccessProfilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListLlmAccessProfiles"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListLlmAccessProfilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of numbers bound to an instance.
+//
+// Description:
+//
+// Queries the binding information between an instance and numbers.
+//
+// @param request - ListNumberBindingsOfInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNumberBindingsOfInstanceResponse
+func (client *Client) ListNumberBindingsOfInstanceWithContext(ctx context.Context, request *ListNumberBindingsOfInstanceRequest, runtime *dara.RuntimeOptions) (_result *ListNumberBindingsOfInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNumberBindingsOfInstance"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNumberBindingsOfInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the phone numbers of an instance.
+//
+// Description:
+//
+// Queries the phone numbers of a specified instance.
+//
+// @param request - ListNumbersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNumbersResponse
+func (client *Client) ListNumbersWithContext(ctx context.Context, request *ListNumbersRequest, runtime *dara.RuntimeOptions) (_result *ListNumbersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Number) {
+		body["Number"] = request.Number
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SipTrunkId) {
+		body["SipTrunkId"] = request.SipTrunkId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNumbers"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNumbersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2677,6 +3243,192 @@ func (client *Client) UpdateInstanceWithContext(ctx context.Context, request *Up
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the instances bound to a number.
+//
+// Description:
+//
+// Updates the binding between a number and instances.
+//
+// @param tmpReq - UpdateInstanceBindingsOfNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceBindingsOfNumberResponse
+func (client *Client) UpdateInstanceBindingsOfNumberWithContext(ctx context.Context, tmpReq *UpdateInstanceBindingsOfNumberRequest, runtime *dara.RuntimeOptions) (_result *UpdateInstanceBindingsOfNumberResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateInstanceBindingsOfNumberShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		body["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !dara.IsNil(request.Number) {
+		body["Number"] = request.Number
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateInstanceBindingsOfNumber"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateInstanceBindingsOfNumberResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the language model access configuration.
+//
+// Description:
+//
+// Updates the language model access configuration for a specified instance.
+//
+// @param tmpReq - UpdateLlmAccessProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLlmAccessProfileResponse
+func (client *Client) UpdateLlmAccessProfileWithContext(ctx context.Context, tmpReq *UpdateLlmAccessProfileRequest, runtime *dara.RuntimeOptions) (_result *UpdateLlmAccessProfileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateLlmAccessProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Profile) {
+		request.ProfileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Profile, dara.String("Profile"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccessProfileId) {
+		body["AccessProfileId"] = request.AccessProfileId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.ProfileShrink) {
+		body["Profile"] = request.ProfileShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateLlmAccessProfile"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateLlmAccessProfileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the phone numbers bound to an instance.
+//
+// Description:
+//
+// Updates the binding relationship between an instance and phone numbers.
+//
+// @param tmpReq - UpdateNumberBindingsOfInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNumberBindingsOfInstanceResponse
+func (client *Client) UpdateNumberBindingsOfInstanceWithContext(ctx context.Context, tmpReq *UpdateNumberBindingsOfInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateNumberBindingsOfInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateNumberBindingsOfInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Numbers) {
+		request.NumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Numbers, dara.String("Numbers"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NumbersShrink) {
+		body["Numbers"] = request.NumbersShrink
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNumberBindingsOfInstance"),
+		Version:     dara.String("2025-11-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNumberBindingsOfInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
