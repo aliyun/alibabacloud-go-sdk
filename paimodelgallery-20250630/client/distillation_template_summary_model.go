@@ -23,6 +23,8 @@ type iDistillationTemplateSummary interface {
 	GetPipelineStages() []*DistillationTemplateSummaryPipelineStages
 	SetTemplateId(v string) *DistillationTemplateSummary
 	GetTemplateId() *string
+	SetTemplateKind(v string) *DistillationTemplateSummary
+	GetTemplateKind() *string
 	SetTemplateName(v string) *DistillationTemplateSummary
 	GetTemplateName() *string
 	SetTrainingOptions(v []*DistillationTemplateSummaryTrainingOptions) *DistillationTemplateSummary
@@ -30,47 +32,36 @@ type iDistillationTemplateSummary interface {
 }
 
 type DistillationTemplateSummary struct {
-	// The list of capability tags, used for scenario card display.
 	CapabilityTags []*string `json:"CapabilityTags,omitempty" xml:"CapabilityTags,omitempty" type:"Repeated"`
-	// The template category. The frontend uses this value to filter scenario cards.
-	//
 	// example:
 	//
 	// reasoning
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The template description, localized based on the language specified in the request. The description specifies applicable scenarios and outputs.
-	//
 	// example:
 	//
-	// Designed for scenarios that require multi-step reasoning, such as math, logic, and code. Produces an SFT dataset
+	// 面向数学、逻辑、代码等需要多步推理的场景，产出 SFT 数据集。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The algorithm job type. The value is the same as TemplateId.
-	//
 	// example:
 	//
 	// advanced_cot_distill
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The display order. A smaller value indicates a higher position.
-	//
 	// example:
 	//
 	// 10
-	OrderNumber *int32 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// The list of pipeline stages. The order of the stages represents the execution order.
+	OrderNumber    *int32                                       `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 	PipelineStages []*DistillationTemplateSummaryPipelineStages `json:"PipelineStages,omitempty" xml:"PipelineStages,omitempty" type:"Repeated"`
-	// The distillation template ID, which is the same as the algorithm job_type. Pass this value as TemplateId when creating a task plan.
-	//
 	// example:
 	//
 	// advanced_cot_distill
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template display name, localized based on the language specified in the request.
-	//
 	// example:
 	//
-	// Chain-of-Thought Reasoning Distillation
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The capability declaration for the second stage, in which the distilled data is used to train the student model. An empty value indicates that the template supports only the distillation stage.
+	// scenario
+	TemplateKind *string `json:"TemplateKind,omitempty" xml:"TemplateKind,omitempty"`
+	// example:
+	//
+	// 思维链推理蒸馏
+	TemplateName    *string                                       `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TrainingOptions []*DistillationTemplateSummaryTrainingOptions `json:"TrainingOptions,omitempty" xml:"TrainingOptions,omitempty" type:"Repeated"`
 }
 
@@ -108,6 +99,10 @@ func (s *DistillationTemplateSummary) GetPipelineStages() []*DistillationTemplat
 
 func (s *DistillationTemplateSummary) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *DistillationTemplateSummary) GetTemplateKind() *string {
+	return s.TemplateKind
 }
 
 func (s *DistillationTemplateSummary) GetTemplateName() *string {
@@ -153,6 +148,11 @@ func (s *DistillationTemplateSummary) SetTemplateId(v string) *DistillationTempl
 	return s
 }
 
+func (s *DistillationTemplateSummary) SetTemplateKind(v string) *DistillationTemplateSummary {
+	s.TemplateKind = &v
+	return s
+}
+
 func (s *DistillationTemplateSummary) SetTemplateName(v string) *DistillationTemplateSummary {
 	s.TemplateName = &v
 	return s
@@ -186,23 +186,17 @@ func (s *DistillationTemplateSummary) Validate() error {
 }
 
 type DistillationTemplateSummaryPipelineStages struct {
-	// The stage description, localized based on the language specified in the request.
-	//
 	// example:
 	//
-	// The teacher model generates reasoning-augmented responses for each question
+	// 由教师模型对每个问题生成带推理过程的回答。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The stage identifier, which corresponds to the pipeline[].stage value in the algorithm configuration.
-	//
 	// example:
 	//
 	// cot_distill
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The stage display name, localized based on the language specified in the request.
-	//
 	// example:
 	//
-	// Generate Chain-of-Thought
+	// 生成思维链
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -246,12 +240,8 @@ func (s *DistillationTemplateSummaryPipelineStages) Validate() error {
 }
 
 type DistillationTemplateSummaryTrainingOptions struct {
-	// The available Model Gallery Task values for the student model.
-	ModelTasks []*string `json:"ModelTasks,omitempty" xml:"ModelTasks,omitempty" type:"Repeated"`
-	// The list of supported training method families.
+	ModelTasks      []*string `json:"ModelTasks,omitempty" xml:"ModelTasks,omitempty" type:"Repeated"`
 	TrainingMethods []*string `json:"TrainingMethods,omitempty" xml:"TrainingMethods,omitempty" type:"Repeated"`
-	// The training type. The frontend uses this value to select the training workflow and display text.
-	//
 	// example:
 	//
 	// sft

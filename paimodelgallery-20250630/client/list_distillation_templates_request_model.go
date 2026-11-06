@@ -19,39 +19,35 @@ type iListDistillationTemplatesRequest interface {
 	GetPageSize() *int32
 	SetTemplateId(v string) *ListDistillationTemplatesRequest
 	GetTemplateId() *string
+	SetTemplateKind(v string) *ListDistillationTemplatesRequest
+	GetTemplateKind() *string
 }
 
 type ListDistillationTemplatesRequest struct {
-	// The template category for scenario-specific template filtering.
-	//
 	// example:
 	//
 	// reasoning
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The search keyword for cross-language substring matching against template names, descriptions, and other text fields. If this parameter is left empty, no keyword filtering is applied.
-	//
 	// example:
 	//
-	// inference
+	// 推理
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number, starting from 1. If this parameter is not specified or is invalid, the default value 1 is used.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. If this parameter is not specified or is invalid, the default value is used. If the value exceeds the upper limit, the upper limit is used.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The template ID for exact filtering. If this parameter is left empty, no filtering by ID is applied.
-	//
 	// example:
 	//
 	// advanced_cot_distill
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// scenario
+	TemplateKind *string `json:"TemplateKind,omitempty" xml:"TemplateKind,omitempty"`
 }
 
 func (s ListDistillationTemplatesRequest) String() string {
@@ -82,6 +78,10 @@ func (s *ListDistillationTemplatesRequest) GetTemplateId() *string {
 	return s.TemplateId
 }
 
+func (s *ListDistillationTemplatesRequest) GetTemplateKind() *string {
+	return s.TemplateKind
+}
+
 func (s *ListDistillationTemplatesRequest) SetCategory(v string) *ListDistillationTemplatesRequest {
 	s.Category = &v
 	return s
@@ -104,6 +104,11 @@ func (s *ListDistillationTemplatesRequest) SetPageSize(v int32) *ListDistillatio
 
 func (s *ListDistillationTemplatesRequest) SetTemplateId(v string) *ListDistillationTemplatesRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *ListDistillationTemplatesRequest) SetTemplateKind(v string) *ListDistillationTemplatesRequest {
+	s.TemplateKind = &v
 	return s
 }
 

@@ -18,24 +18,9 @@ type iListModelGalleryModelsResponseBody interface {
 }
 
 type ListModelGalleryModelsResponseBody struct {
-	// The list of models.
-	//
-	// example:
-	//
-	// [{\\"SupportResponseSchema\\": False, \\"ToolCall\\": False, \\"ModelType\\": \\"LLM\\", \\"SupportReasoning\\": False, \\"Model\\": \\"ds1\\", \\"SupportVision\\": False, \\"MaxModelLength\\": 4096}]
-	Models *ModelGalleryModel `json:"Models,omitempty" xml:"Models,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// B6B54325-C98C-5937-87A3-2F96C07652EC
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of models.
-	//
-	// example:
-	//
-	// 15
-	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Models     *ModelGalleryModel `json:"Models,omitempty" xml:"Models,omitempty"`
+	RequestId  *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListModelGalleryModelsResponseBody) String() string {

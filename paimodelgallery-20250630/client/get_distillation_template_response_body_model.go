@@ -16,14 +16,8 @@ type iGetDistillationTemplateResponseBody interface {
 }
 
 type GetDistillationTemplateResponseBody struct {
-	// The distillation template details.
 	DistillationTemplate *DistillationTemplate `json:"DistillationTemplate,omitempty" xml:"DistillationTemplate,omitempty"`
-	// **Request ID**
-	//
-	// example:
-	//
-	// 40325405-579C-4D82****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId            *string               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetDistillationTemplateResponseBody) String() string {

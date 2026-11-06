@@ -18,20 +18,9 @@ type iListJobPlansResponseBody interface {
 }
 
 type ListJobPlansResponseBody struct {
-	// The list of job plans.
-	JobPlans []*JobPlan `json:"JobPlans,omitempty" xml:"JobPlans,omitempty" type:"Repeated"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 40325405-579C-4D82-9624-EC2B1779848E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
-	//
-	// example:
-	//
-	// 15
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	JobPlans   []*JobPlan `json:"JobPlans,omitempty" xml:"JobPlans,omitempty" type:"Repeated"`
+	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListJobPlansResponseBody) String() string {

@@ -16,14 +16,8 @@ type iUpdateJobPlanRequest interface {
 }
 
 type UpdateJobPlanRequest struct {
-	// The current step of the task plan. Set this parameter to `DatasetSynthesisAndModelTrain` for the full process or `DatasetSynthesisModelTrain` for step-by-step execution.
-	//
-	// example:
-	//
-	// DatasetSynthesisAndModelTrain
-	JobPlanCurrentStep *string `json:"JobPlanCurrentStep,omitempty" xml:"JobPlanCurrentStep,omitempty"`
-	// The list of tags.
-	Tag []*UpdateJobPlanRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	JobPlanCurrentStep *string                    `json:"JobPlanCurrentStep,omitempty" xml:"JobPlanCurrentStep,omitempty"`
+	Tag                []*UpdateJobPlanRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s UpdateJobPlanRequest) String() string {
@@ -66,17 +60,7 @@ func (s *UpdateJobPlanRequest) Validate() error {
 }
 
 type UpdateJobPlanRequestTag struct {
-	// The tag key. If the tag key already exists, the tag is updated. Otherwise, a new tag is added.
-	//
-	// example:
-	//
-	// foo
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag key. If the tag key already exists, the tag is updated. Otherwise, a new tag is added.
-	//
-	// example:
-	//
-	// bar
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

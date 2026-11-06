@@ -66,140 +66,48 @@ type iListModelGalleryModelsShrinkRequest interface {
 }
 
 type ListModelGalleryModelsShrinkRequest struct {
-	// The collection to which the model belongs. The collection for ModelGallery models is QuickStart.
-	//
-	// example:
-	//
-	// QuickStart
-	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
-	// Specifies whether model compression is supported.
-	Compressible *bool `json:"Compressible,omitempty" xml:"Compressible,omitempty"`
-	// The list of conditions.
+	Collections      *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
+	Compressible     *bool   `json:"Compressible,omitempty" xml:"Compressible,omitempty"`
 	ConditionsShrink *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
-	// Specifies whether deep thinking is supported.
-	DeepThink *bool `json:"DeepThink,omitempty" xml:"DeepThink,omitempty"`
-	// Specifies whether online experience is supported.
-	Demonstrable *bool `json:"Demonstrable,omitempty" xml:"Demonstrable,omitempty"`
-	// Specifies whether deployment is supported.
-	Deployable *bool `json:"Deployable,omitempty" xml:"Deployable,omitempty"`
-	// Specifies whether distillation is supported.
-	Distillable *bool `json:"Distillable,omitempty" xml:"Distillable,omitempty"`
-	// The domain used to filter the model list. For example, aigc (generative AI), nlp (natural language processing), or cv (computer vision).
-	//
+	DeepThink        *bool   `json:"DeepThink,omitempty" xml:"DeepThink,omitempty"`
+	Demonstrable     *bool   `json:"Demonstrable,omitempty" xml:"Demonstrable,omitempty"`
+	Deployable       *bool   `json:"Deployable,omitempty" xml:"Deployable,omitempty"`
+	Distillable      *bool   `json:"Distillable,omitempty" xml:"Distillable,omitempty"`
 	// example:
 	//
-	// aigc
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Specifies whether evaluation is supported.
-	Evaluable *bool `json:"Evaluable,omitempty" xml:"Evaluable,omitempty"`
-	// Specifies whether FunctionCall is supported.
-	FunctionCall *bool `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty"`
-	// The model name. By default, fuzzy match is used to filter the model list. Enclose the name in double quotation marks for exact match. For example, "DeepSeek-V3.2" exactly matches the model DeepSeek-V3.2.
-	//
-	// example:
-	//
-	// Qwen3-235B-A22B-Thinking-2507
-	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The model series. For example, PAI Optimized Model, Qwen, Wan-AI, GLM, Baichuan, DeepSeek, Kimi, MiniMax, Yi, InternLM, InternVL, OpenAI, NVIDIA, Gemma, Phi, dots_vlm, Llama, Mistral, Stable Diffusion, FLUX, Byte Dance, StepFun AI, ERNIE Bot, Tencent Hunyuan, or YOLO.
-	//
-	// example:
-	//
-	// Qwen
-	ModelSeries *string `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
-	// The model type.
-	//
-	// example:
-	//
-	// Endpoint
-	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// The sort order for the specified sort field in a paged query. Default value: ASC.
-	//
-	// Valid values:
-	//
-	// - ASC: ascending order.
-	//
-	// - DESC: descending order.
-	//
+	// Distillation
+	Domain       *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Evaluable    *bool   `json:"Evaluable,omitempty" xml:"Evaluable,omitempty"`
+	FunctionCall *bool   `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty"`
+	ModelName    *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	ModelSeries  *string `json:"ModelSeries,omitempty" xml:"ModelSeries,omitempty"`
+	ModelType    *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// example:
 	//
 	// DESC
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The model source used to filter models that belong to a specific community or organization. For example, ModelScope, PAI, or NIM.
-	//
-	// example:
-	//
-	// ModelScope
+	Order  *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The page number of the model list. Minimum value: 1. Default value: 1.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of models to display on each page in a paged query. Default value: 10.
-	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query condition. Fuzzy match is performed across multiple fields such as ModelName, Domain, and Task.
-	//
-	// example:
-	//
-	// Qwen
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The sort field for a paged query. Currently, the GmtCreateTime field is used for sorting. Valid values:
-	//
-	// - GmtCreateTime: the model creation time.
-	//
-	// - GmtLatestVersionModified: the time when the latest model version was updated.
-	//
-	// - OrderNumber: the ordinal number.
-	//
+	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// example:
 	//
 	// GmtCreateTime
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The supported compression resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support compression on GP7V resources are returned.
-	//
-	// example:
-	//
-	// GP7V
-	SupportedCompressionResource *string `json:"SupportedCompressionResource,omitempty" xml:"SupportedCompressionResource,omitempty"`
-	// The supported distillation resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support distillation on GP7V resources are returned.
-	//
-	// example:
-	//
-	// GP7V
+	SortBy                        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SupportedCompressionResource  *string `json:"SupportedCompressionResource,omitempty" xml:"SupportedCompressionResource,omitempty"`
 	SupportedDistillationResource *string `json:"SupportedDistillationResource,omitempty" xml:"SupportedDistillationResource,omitempty"`
-	// The supported evaluation resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support evaluation on GP7V resources are returned.
-	//
-	// example:
-	//
-	// GP7V
-	SupportedEvaluationResource *string `json:"SupportedEvaluationResource,omitempty" xml:"SupportedEvaluationResource,omitempty"`
-	// The supported deployment resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support deployment on GP7V resources are returned.
-	//
-	// example:
-	//
-	// GP7V
-	SupportedInferenceResource *string `json:"SupportedInferenceResource,omitempty" xml:"SupportedInferenceResource,omitempty"`
-	// The supported training resources, such as CPU, GPU, or GP7V. For example, if you specify GP7V, only models that support training on GP7V resources are returned.
-	//
-	// example:
-	//
-	// GP7V
-	SupportedTrainingResource *string `json:"SupportedTrainingResource,omitempty" xml:"SupportedTrainingResource,omitempty"`
-	// The list of labels.
-	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The task. For example, large-language-model (large language model), image-classification (image classification), or embedding.
-	//
-	// example:
-	//
-	// large-language-model
-	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
-	// Specifies whether training is supported.
-	Trainable *bool `json:"Trainable,omitempty" xml:"Trainable,omitempty"`
+	SupportedEvaluationResource   *string `json:"SupportedEvaluationResource,omitempty" xml:"SupportedEvaluationResource,omitempty"`
+	SupportedInferenceResource    *string `json:"SupportedInferenceResource,omitempty" xml:"SupportedInferenceResource,omitempty"`
+	SupportedTrainingResource     *string `json:"SupportedTrainingResource,omitempty" xml:"SupportedTrainingResource,omitempty"`
+	TagShrink                     *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Task                          *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	Trainable                     *bool   `json:"Trainable,omitempty" xml:"Trainable,omitempty"`
 }
 
 func (s ListModelGalleryModelsShrinkRequest) String() string {

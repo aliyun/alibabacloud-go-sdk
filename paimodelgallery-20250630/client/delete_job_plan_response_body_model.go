@@ -14,11 +14,6 @@ type iDeleteJobPlanResponseBody interface {
 }
 
 type DeleteJobPlanResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// 40325405-579C-4D82-9624-EC2B1779848E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

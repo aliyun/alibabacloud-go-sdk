@@ -47,17 +47,13 @@ type JobPlan struct {
 	JobPlanType        *string                `json:"JobPlanType,omitempty" xml:"JobPlanType,omitempty"`
 	OwnerId            *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Tags               []*JobPlanTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The distillation template ID used when creating the task plan. An empty value indicates that this is not a scenario-specific distillation task.
-	//
 	// example:
 	//
 	// advanced_cot_distill
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The display name of the distillation template used, localized based on the language specified in the request.
-	//
 	// example:
 	//
-	// Chain-of-Thought Reasoning Distillation
+	// 思维链推理蒸馏
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`

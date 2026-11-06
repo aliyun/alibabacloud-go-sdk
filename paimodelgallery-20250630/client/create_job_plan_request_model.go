@@ -24,33 +24,14 @@ type iCreateJobPlanRequest interface {
 }
 
 type CreateJobPlanRequest struct {
-	// The name of the job plan.
-	//
-	// example:
-	//
-	// ModelGalleryxxx
-	JobPlanName *string `json:"JobPlanName,omitempty" xml:"JobPlanName,omitempty"`
-	// The steps of the job plan.
+	JobPlanName  *string                             `json:"JobPlanName,omitempty" xml:"JobPlanName,omitempty"`
 	JobPlanSteps []*CreateJobPlanRequestJobPlanSteps `json:"JobPlanSteps,omitempty" xml:"JobPlanSteps,omitempty" type:"Repeated"`
-	// The type of the job plan.
-	//
-	// example:
-	//
-	// Distillation
-	JobPlanType *string `json:"JobPlanType,omitempty" xml:"JobPlanType,omitempty"`
-	// Note: According to the Alibaba Cloud tag system specification, this parameter name is in singular form.
-	Tag []*CreateJobPlanRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the scenario-specific distillation template, obtained from ListDistillationTemplates. If this parameter is not specified, a general-purpose job plan is created.
-	//
+	JobPlanType  *string                             `json:"JobPlanType,omitempty" xml:"JobPlanType,omitempty"`
+	Tag          []*CreateJobPlanRequestTag          `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// advanced_cot_distill
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The workspace ID.
-	//
-	// example:
-	//
-	// 62469
+	TemplateId  *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -139,20 +120,9 @@ func (s *CreateJobPlanRequest) Validate() error {
 }
 
 type CreateJobPlanRequestJobPlanSteps struct {
-	// The name of the job plan step.
-	//
-	// example:
-	//
-	// DatasetSynthesis
-	JobPlanStepName *string `json:"JobPlanStepName,omitempty" xml:"JobPlanStepName,omitempty"`
-	// The detailed configuration of the job plan step.
+	JobPlanStepName *string                `json:"JobPlanStepName,omitempty" xml:"JobPlanStepName,omitempty"`
 	JobPlanStepSpec map[string]interface{} `json:"JobPlanStepSpec,omitempty" xml:"JobPlanStepSpec,omitempty"`
-	// The type of the job plan step.
-	//
-	// example:
-	//
-	// PAIFlow
-	JobPlanStepType *string `json:"JobPlanStepType,omitempty" xml:"JobPlanStepType,omitempty"`
+	JobPlanStepType *string                `json:"JobPlanStepType,omitempty" xml:"JobPlanStepType,omitempty"`
 }
 
 func (s CreateJobPlanRequestJobPlanSteps) String() string {
@@ -195,17 +165,7 @@ func (s *CreateJobPlanRequestJobPlanSteps) Validate() error {
 }
 
 type CreateJobPlanRequestTag struct {
-	// **Key**
-	//
-	// example:
-	//
-	// foo
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// **Value**
-	//
-	// example:
-	//
-	// bar
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

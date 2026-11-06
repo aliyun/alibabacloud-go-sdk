@@ -40,81 +40,37 @@ type iGetJobPlanResponseBody interface {
 }
 
 type GetJobPlanResponseBody struct {
-	// The creation time of the job plan.
-	//
 	// example:
 	//
 	// 2026-09-18 10:00:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modified time of the job plan.
-	//
 	// example:
 	//
 	// 2026-09-18 10:30:00
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The current step.
-	//
-	// example:
-	//
-	// DatasetSynthesis
-	JobPlanCurrentStep *string `json:"JobPlanCurrentStep,omitempty" xml:"JobPlanCurrentStep,omitempty"`
-	// The job plan ID.
-	//
-	// example:
-	//
-	// jp-xxxxxx
-	JobPlanId *string `json:"JobPlanId,omitempty" xml:"JobPlanId,omitempty"`
-	// The job plan name, which is unique within the workspace.
-	//
-	// example:
-	//
-	// ModelGalleryxxx
-	JobPlanName *string `json:"JobPlanName,omitempty" xml:"JobPlanName,omitempty"`
-	// The job plan steps.
-	JobPlanSteps []*GetJobPlanResponseBodyJobPlanSteps `json:"JobPlanSteps,omitempty" xml:"JobPlanSteps,omitempty" type:"Repeated"`
-	// The job plan type.
-	//
-	// example:
-	//
-	// Distillation
-	JobPlanType *string `json:"JobPlanType,omitempty" xml:"JobPlanType,omitempty"`
-	// The Alibaba Cloud account ID that owns the job plan.
-	//
+	GmtModifiedTime    *string                               `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	JobPlanCurrentStep *string                               `json:"JobPlanCurrentStep,omitempty" xml:"JobPlanCurrentStep,omitempty"`
+	JobPlanId          *string                               `json:"JobPlanId,omitempty" xml:"JobPlanId,omitempty"`
+	JobPlanName        *string                               `json:"JobPlanName,omitempty" xml:"JobPlanName,omitempty"`
+	JobPlanSteps       []*GetJobPlanResponseBodyJobPlanSteps `json:"JobPlanSteps,omitempty" xml:"JobPlanSteps,omitempty" type:"Repeated"`
+	JobPlanType        *string                               `json:"JobPlanType,omitempty" xml:"JobPlanType,omitempty"`
 	// example:
 	//
 	// 1234567890123456
-	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 40325405-579C-4D82-9624-EC2B1779848E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tags.
-	Tags []*GetJobPlanResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The distillation template ID used to create the job plan. An empty value indicates that this is not a scenario-based distillation task.
-	//
+	OwnerId   *string                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tags      []*GetJobPlanResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// advanced_cot_distill
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The display name of the distillation template, localized based on the requested language.
-	//
 	// example:
 	//
 	// 思维链推理蒸馏
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The Alibaba Cloud account ID that created the job plan.
-	//
 	// example:
 	//
 	// 1234567890123456
-	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The workspace ID.
-	//
-	// example:
-	//
-	// 62469
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -275,26 +231,10 @@ func (s *GetJobPlanResponseBody) Validate() error {
 }
 
 type GetJobPlanResponseBodyJobPlanSteps struct {
-	// The generated PAIFlow PipelineRunId.
-	//
-	// example:
-	//
-	// pipeline-xxxxx
-	JobPlanStepId *string `json:"JobPlanStepId,omitempty" xml:"JobPlanStepId,omitempty"`
-	// The job plan step name.
-	//
-	// example:
-	//
-	// DistillationDatasetSynthesis
-	JobPlanStepName *string `json:"JobPlanStepName,omitempty" xml:"JobPlanStepName,omitempty"`
-	// The job plan step configuration.
+	JobPlanStepId   *string                `json:"JobPlanStepId,omitempty" xml:"JobPlanStepId,omitempty"`
+	JobPlanStepName *string                `json:"JobPlanStepName,omitempty" xml:"JobPlanStepName,omitempty"`
 	JobPlanStepSpec map[string]interface{} `json:"JobPlanStepSpec,omitempty" xml:"JobPlanStepSpec,omitempty"`
-	// The job plan step type.
-	//
-	// example:
-	//
-	// PAIFlow
-	JobPlanStepType *string `json:"JobPlanStepType,omitempty" xml:"JobPlanStepType,omitempty"`
+	JobPlanStepType *string                `json:"JobPlanStepType,omitempty" xml:"JobPlanStepType,omitempty"`
 }
 
 func (s GetJobPlanResponseBodyJobPlanSteps) String() string {
@@ -346,17 +286,7 @@ func (s *GetJobPlanResponseBodyJobPlanSteps) Validate() error {
 }
 
 type GetJobPlanResponseBodyTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// foo
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// bar
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

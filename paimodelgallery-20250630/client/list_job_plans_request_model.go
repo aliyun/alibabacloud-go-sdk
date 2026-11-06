@@ -32,64 +32,36 @@ type iListJobPlansRequest interface {
 }
 
 type ListJobPlansRequest struct {
-	// Specifies whether to filter by template association. Valid values:
-	//
-	// - true: Returns only scenario-specific job plans that have a template.
-	//
-	// - false: Returns only general-purpose job plans that do not have a template.
-	//
-	// If this parameter is not specified, no filtering is applied. If both this parameter and TemplateId are specified, the value of TemplateId takes precedence.
-	//
 	// example:
 	//
 	// true
-	HasTemplate *bool `json:"HasTemplate,omitempty" xml:"HasTemplate,omitempty"`
-	// The name of the job plan.
-	//
-	// example:
-	//
-	// JobPlan1
+	HasTemplate *bool   `json:"HasTemplate,omitempty" xml:"HasTemplate,omitempty"`
 	JobPlanName *string `json:"JobPlanName,omitempty" xml:"JobPlanName,omitempty"`
-	// The type of the job plan.
-	//
 	// example:
 	//
 	// Distillation
 	JobPlanType *string `json:"JobPlanType,omitempty" xml:"JobPlanType,omitempty"`
-	// The sort order.
-	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number.
-	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
-	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the results.
-	//
 	// example:
 	//
 	// GmtCreateTime
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The list of tags.
-	Tag []*ListJobPlansRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The distillation template ID. Filters results to return only scenario-specific tasks that use the specified template.
-	//
+	SortBy *string                   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Tag    []*ListJobPlansRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// example:
 	//
 	// advanced_cot_distill
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The workspace ID.
-	//
 	// example:
 	//
 	// 32495
@@ -208,17 +180,7 @@ func (s *ListJobPlansRequest) Validate() error {
 }
 
 type ListJobPlansRequestTag struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// key
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// value
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

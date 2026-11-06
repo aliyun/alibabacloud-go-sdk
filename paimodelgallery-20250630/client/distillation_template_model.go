@@ -37,8 +37,12 @@ type iDistillationTemplate interface {
 	GetPipelineStages() []*DistillationTemplatePipelineStages
 	SetPresetConfig(v []*DistillationTemplatePresetConfig) *DistillationTemplate
 	GetPresetConfig() []*DistillationTemplatePresetConfig
+	SetProcessorExampleUri(v string) *DistillationTemplate
+	GetProcessorExampleUri() *string
 	SetTemplateId(v string) *DistillationTemplate
 	GetTemplateId() *string
+	SetTemplateKind(v string) *DistillationTemplate
+	GetTemplateKind() *string
 	SetTemplateName(v string) *DistillationTemplate
 	GetTemplateName() *string
 	SetTrainingOptions(v []*DistillationTemplateTrainingOptions) *DistillationTemplate
@@ -46,83 +50,63 @@ type iDistillationTemplate interface {
 }
 
 type DistillationTemplate struct {
-	// The algorithm name.
-	//
 	// example:
 	//
 	// easydistill
 	AlgorithmName *string `json:"AlgorithmName,omitempty" xml:"AlgorithmName,omitempty"`
-	// The algorithm provider.
-	//
 	// example:
 	//
 	// pai
 	AlgorithmProvider *string `json:"AlgorithmProvider,omitempty" xml:"AlgorithmProvider,omitempty"`
-	// The algorithm version.
-	//
 	// example:
 	//
 	// v2.0.0
-	AlgorithmVersion *string `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
-	// The list of capability tags used for displaying scenario cards.
-	CapabilityTags []*string `json:"CapabilityTags,omitempty" xml:"CapabilityTags,omitempty" type:"Repeated"`
-	// The template category. The frontend uses this value to filter scenario cards.
-	//
+	AlgorithmVersion *string   `json:"AlgorithmVersion,omitempty" xml:"AlgorithmVersion,omitempty"`
+	CapabilityTags   []*string `json:"CapabilityTags,omitempty" xml:"CapabilityTags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// reasoning
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The raw YAML content of the EasyDistill default configurations. The frontend uses this content for rendering the configuration form and supports recovering to default configurations. The model and credential fields are intentionally left empty and are populated by the user in the form upon commit.
-	//
 	// example:
 	//
 	// job_type: advanced_cot_distill
 	DefaultConfig *string `json:"DefaultConfig,omitempty" xml:"DefaultConfig,omitempty"`
-	// The template description, localized based on the requested language. The description specifies the applicable scenarios and outputs.
-	//
 	// example:
 	//
-	// Designed for scenarios that require multi-step reasoning such as math, logic, and code. Produces an SFT dataset
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the input data must be an entire directory. If this parameter is set to true, only a directory can be selected on the form, not a single file. If this parameter is absent or set to false, either a file or a directory can be selected. This value is true when seed files reference other files in the same directory by relative path.
-	InputDatasetMustBeDirectory *bool `json:"InputDatasetMustBeDirectory,omitempty" xml:"InputDatasetMustBeDirectory,omitempty"`
-	// The OSS address of the sample input data, rendered based on the region. Users can download the sample and prepare their own data in the same format. An empty value indicates that the template does not provide a sample.
-	//
+	// 面向数学、逻辑、代码等需要多步推理的场景，产出 SFT 数据集。
+	Description                 *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InputDatasetMustBeDirectory *bool   `json:"InputDatasetMustBeDirectory,omitempty" xml:"InputDatasetMustBeDirectory,omitempty"`
 	// example:
 	//
 	// oss://pai-quickstart-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/public_datasets/distillation_examples/advanced_cot_distill/input.jsonl
 	InputExampleUri *string `json:"InputExampleUri,omitempty" xml:"InputExampleUri,omitempty"`
-	// The algorithm job type. The value is the same as TemplateId.
-	//
 	// example:
 	//
 	// advanced_cot_distill
-	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The list of model slots that require user selection. The frontend uses this list to render the model selection form.
+	JobType    *string                           `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	ModelSlots []*DistillationTemplateModelSlots `json:"ModelSlots,omitempty" xml:"ModelSlots,omitempty" type:"Repeated"`
-	// The display order. A smaller value indicates a higher priority.
-	//
 	// example:
 	//
 	// 10
-	OrderNumber *int32 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
-	// The list of pipeline stages. The order of the stages represents the execution order.
+	OrderNumber    *int32                                `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
 	PipelineStages []*DistillationTemplatePipelineStages `json:"PipelineStages,omitempty" xml:"PipelineStages,omitempty" type:"Repeated"`
-	// The content of the preset configuration card, displayed in order to show the key default configurations of the template.
-	PresetConfig []*DistillationTemplatePresetConfig `json:"PresetConfig,omitempty" xml:"PresetConfig,omitempty" type:"Repeated"`
-	// The distillation template ID, which is the same as the algorithm job_type. Pass this value as TemplateId when creating a task plan.
+	PresetConfig   []*DistillationTemplatePresetConfig   `json:"PresetConfig,omitempty" xml:"PresetConfig,omitempty" type:"Repeated"`
+	// example:
 	//
+	// oss://pai-quickstart-cn-hangzhou.oss-cn-hangzhou-internal.aliyuncs.com/public_datasets/distillation_examples/custom_distill/processor_example.py
+	ProcessorExampleUri *string `json:"ProcessorExampleUri,omitempty" xml:"ProcessorExampleUri,omitempty"`
 	// example:
 	//
 	// advanced_cot_distill
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The template display name, localized based on the requested language.
-	//
 	// example:
 	//
-	// Chain-of-thought reasoning distillation
-	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The capability declaration for the second stage (training the student model with the distilled data). An empty value indicates that the template supports only the distillation stage.
+	// scenario
+	TemplateKind *string `json:"TemplateKind,omitempty" xml:"TemplateKind,omitempty"`
+	// example:
+	//
+	// 思维链推理蒸馏
+	TemplateName    *string                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TrainingOptions []*DistillationTemplateTrainingOptions `json:"TrainingOptions,omitempty" xml:"TrainingOptions,omitempty" type:"Repeated"`
 }
 
@@ -190,8 +174,16 @@ func (s *DistillationTemplate) GetPresetConfig() []*DistillationTemplatePresetCo
 	return s.PresetConfig
 }
 
+func (s *DistillationTemplate) GetProcessorExampleUri() *string {
+	return s.ProcessorExampleUri
+}
+
 func (s *DistillationTemplate) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *DistillationTemplate) GetTemplateKind() *string {
+	return s.TemplateKind
 }
 
 func (s *DistillationTemplate) GetTemplateName() *string {
@@ -272,8 +264,18 @@ func (s *DistillationTemplate) SetPresetConfig(v []*DistillationTemplatePresetCo
 	return s
 }
 
+func (s *DistillationTemplate) SetProcessorExampleUri(v string) *DistillationTemplate {
+	s.ProcessorExampleUri = &v
+	return s
+}
+
 func (s *DistillationTemplate) SetTemplateId(v string) *DistillationTemplate {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *DistillationTemplate) SetTemplateKind(v string) *DistillationTemplate {
+	s.TemplateKind = &v
 	return s
 }
 
@@ -328,28 +330,20 @@ func (s *DistillationTemplate) Validate() error {
 }
 
 type DistillationTemplateModelSlots struct {
-	// The list of model access methods supported by this slot.
 	Backends []*DistillationTemplateModelSlotsBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	// The slot description, localized based on the requested language.
-	//
 	// example:
 	//
-	// The teacher model used to generate distillation data. We recommend selecting a model with strong reasoning capabilities
+	// 用于生成蒸馏数据的教师模型，建议选择推理能力强的模型。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The slot identifier, which corresponds to the backend section name in the submitted configuration.
-	//
 	// example:
 	//
 	// backend
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The slot display name, localized based on the requested language.
-	//
 	// example:
 	//
-	// Teacher model
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether this slot is required. If this parameter is set to false, the user can skip the selection, and the algorithm falls back to other slots.
-	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// 教师模型
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
 }
 
 func (s DistillationTemplateModelSlots) String() string {
@@ -419,14 +413,10 @@ func (s *DistillationTemplateModelSlots) Validate() error {
 }
 
 type DistillationTemplateModelSlotsBackends struct {
-	// The channel name of the PAI-Token gateway. The frontend uses this value to retrieve the list of available models for the channel. This value must be passed back as-is upon submission. This parameter is returned only when Type is pai_token.
-	//
 	// example:
 	//
 	// distillation
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The model access method. pai_token indicates the PAI-Token gateway, where the user selects from the list of available models for the channel. pai_eas indicates the user\\"s own PAI-EAS service instance, which requires the service address and token.
-	//
 	// example:
 	//
 	// pai_token
@@ -464,23 +454,17 @@ func (s *DistillationTemplateModelSlotsBackends) Validate() error {
 }
 
 type DistillationTemplatePipelineStages struct {
-	// The stage description, localized based on the requested language.
-	//
 	// example:
 	//
-	// The teacher model generates responses with reasoning processes for each question
+	// 由教师模型对每个问题生成带推理过程的回答。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The stage identifier, which corresponds to the value of pipeline[].stage in the algorithm configuration.
-	//
 	// example:
 	//
 	// cot_distill
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The stage display name, localized based on the requested language.
-	//
 	// example:
 	//
-	// Generate chain of thought
+	// 生成思维链
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -524,14 +508,10 @@ func (s *DistillationTemplatePipelineStages) Validate() error {
 }
 
 type DistillationTemplatePresetConfig struct {
-	// The configuration item name, localized based on the requested language. Names are matched by position across languages, so the same row can have different names in different languages.
-	//
 	// example:
 	//
-	// Task type
+	// 任务类型
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The configuration item value, localized based on the requested language.
-	//
 	// example:
 	//
 	// advanced_cot_distill
@@ -569,12 +549,8 @@ func (s *DistillationTemplatePresetConfig) Validate() error {
 }
 
 type DistillationTemplateTrainingOptions struct {
-	// The range of Model Gallery tasks available for the student model.
-	ModelTasks []*string `json:"ModelTasks,omitempty" xml:"ModelTasks,omitempty" type:"Repeated"`
-	// The list of supported training method families.
+	ModelTasks      []*string `json:"ModelTasks,omitempty" xml:"ModelTasks,omitempty" type:"Repeated"`
 	TrainingMethods []*string `json:"TrainingMethods,omitempty" xml:"TrainingMethods,omitempty" type:"Repeated"`
-	// The training type. The frontend uses this value to select the training workflow and display text.
-	//
 	// example:
 	//
 	// sft
