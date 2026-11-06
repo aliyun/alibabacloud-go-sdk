@@ -57,6 +57,8 @@ type iService interface {
 	GetRuntimeDetailStatus() *string
 	SetServiceId(v string) *Service
 	GetServiceId() *string
+	SetServiceMetaData(v *ServiceServiceMetaData) *Service
+	GetServiceMetaData() *ServiceServiceMetaData
 	SetSourceType(v string) *Service
 	GetSourceType() *string
 	SetUnhealthyEndpoints(v []*string) *Service
@@ -68,13 +70,13 @@ type iService interface {
 }
 
 type Service struct {
-	// The address information, which is a list of IP addresses or domain names.
+	// The address information, such as IP addresses or domain names.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
-	// The time when the service was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -82,13 +84,13 @@ type Service struct {
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// The list of DNS servers.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	// The execution mode of CloudFlow.
+	// The execution method of CloudFlow.
 	//
 	// example:
 	//
 	// StartExecution
 	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
-	// The instance ID of the gateway.
+	// The gateway instance ID.
 	//
 	// example:
 	//
@@ -102,7 +104,7 @@ type Service struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The health check configuration.
 	HealthCheck *ServiceHealthCheck `json:"healthCheck,omitempty" xml:"healthCheck,omitempty"`
-	// The health check status. Valid values: Healthy and Unhealthy.
+	// The monitoring check status.
 	//
 	// example:
 	//
@@ -134,9 +136,9 @@ type Service struct {
 	//
 	// PUBLIC
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The outlier detection configuration for removing abnormal instances.
+	// The outlier detection configuration.
 	OutlierDetection *ServiceOutlierDetection `json:"outlierDetection,omitempty" xml:"outlierDetection,omitempty" type:"Struct"`
-	// The circuit-broken endpoints.
+	// The ejected endpoints.
 	OutlierEndpoints []*string `json:"outlierEndpoints,omitempty" xml:"outlierEndpoints,omitempty" type:"Repeated"`
 	// The list of port information.
 	Ports []*ServicePorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
@@ -158,7 +160,7 @@ type Service struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The masked error code of the runtime details.
+	// The masked error code in the runtime details.
 	//
 	// example:
 	//
@@ -176,6 +178,8 @@ type Service struct {
 	//
 	// svc-cr6pk4tlhtgm***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The ExtProc reference status in the service list. This field is not returned if the relationship read fails.
+	ServiceMetaData *ServiceServiceMetaData `json:"serviceMetaData,omitempty" xml:"serviceMetaData,omitempty" type:"Struct"`
 	// The source type of the service.
 	//
 	// example:
@@ -184,7 +188,7 @@ type Service struct {
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"unhealthyEndpoints,omitempty" xml:"unhealthyEndpoints,omitempty" type:"Repeated"`
-	// The time when the service was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -296,6 +300,10 @@ func (s *Service) GetRuntimeDetailStatus() *string {
 
 func (s *Service) GetServiceId() *string {
 	return s.ServiceId
+}
+
+func (s *Service) GetServiceMetaData() *ServiceServiceMetaData {
+	return s.ServiceMetaData
 }
 
 func (s *Service) GetSourceType() *string {
@@ -434,6 +442,11 @@ func (s *Service) SetServiceId(v string) *Service {
 	return s
 }
 
+func (s *Service) SetServiceMetaData(v *ServiceServiceMetaData) *Service {
+	s.ServiceMetaData = v
+	return s
+}
+
 func (s *Service) SetSourceType(v string) *Service {
 	s.SourceType = &v
 	return s
@@ -493,6 +506,11 @@ func (s *Service) Validate() error {
 			}
 		}
 	}
+	if s.ServiceMetaData != nil {
+		if err := s.ServiceMetaData.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Versions != nil {
 		for _, item := range s.Versions {
 			if item != nil {
@@ -506,25 +524,25 @@ func (s *Service) Validate() error {
 }
 
 type ServiceOutlierDetection struct {
-	// The base ejection duration in seconds. Valid values: 1 to 3600.
+	// The base ejection time in seconds. Valid values: 1 to 3600.
 	//
 	// example:
 	//
 	// 30
 	BaseEjectionTime *int32 `json:"baseEjectionTime,omitempty" xml:"baseEjectionTime,omitempty"`
-	// Specifies whether to enable outlier detection.
+	// Specifies whether to enable the feature.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The minimum number of hosts. The value must be greater than or equal to 0.
+	// The minimum number of hosts. Valid values: 0 or greater.
 	//
 	// example:
 	//
 	// 1
 	FailurePercentageMinimumHosts *int32 `json:"failurePercentageMinimumHosts,omitempty" xml:"failurePercentageMinimumHosts,omitempty"`
-	// The failure rate threshold in percentage. Valid values: 1 to 100.
+	// The failure percentage threshold. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -608,7 +626,7 @@ type ServicePorts struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Valid values: TCP and UDP.
+	// The protocol.
 	//
 	// example:
 	//
@@ -652,6 +670,43 @@ func (s *ServicePorts) SetProtocol(v string) *ServicePorts {
 }
 
 func (s *ServicePorts) Validate() error {
+	return dara.Validate(s)
+}
+
+type ServiceServiceMetaData struct {
+	// Specifies whether the current service is referenced by an explicit DFP ExtProc binding of the gateway.
+	DfpReferenced *bool `json:"dfpReferenced,omitempty" xml:"dfpReferenced,omitempty"`
+	// Specifies whether the current service is referenced by an ExtProc configuration of the same user and gateway.
+	ExtProc *bool `json:"extProc,omitempty" xml:"extProc,omitempty"`
+}
+
+func (s ServiceServiceMetaData) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ServiceServiceMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceServiceMetaData) GetDfpReferenced() *bool {
+	return s.DfpReferenced
+}
+
+func (s *ServiceServiceMetaData) GetExtProc() *bool {
+	return s.ExtProc
+}
+
+func (s *ServiceServiceMetaData) SetDfpReferenced(v bool) *ServiceServiceMetaData {
+	s.DfpReferenced = &v
+	return s
+}
+
+func (s *ServiceServiceMetaData) SetExtProc(v bool) *ServiceServiceMetaData {
+	s.ExtProc = &v
+	return s
+}
+
+func (s *ServiceServiceMetaData) Validate() error {
 	return dara.Validate(s)
 }
 

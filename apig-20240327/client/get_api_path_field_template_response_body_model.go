@@ -102,7 +102,7 @@ type GetApiPathFieldTemplateResponseBodyData struct {
 	//
 	// OpenAI chat completion API..
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The set of fields defined by the field template, grouped by mapping key. Each group contains a set of template field items.
+	// The set of fields defined by the field template, grouped by mapping key, where each group contains a set of template field items.
 	FieldPaths map[string][]*DataFieldPathsValue `json:"fieldPaths,omitempty" xml:"fieldPaths,omitempty"`
 	// The API request path corresponding to the field template.
 	//

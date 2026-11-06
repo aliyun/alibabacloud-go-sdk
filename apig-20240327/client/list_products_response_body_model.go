@@ -32,7 +32,7 @@ type ListProductsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *ListProductsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries returned for this request.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListProductsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor token for the next page.
+	// The pagination token for querying the next page.
 	//
 	// example:
 	//
@@ -210,51 +210,51 @@ func (s *ListProductsResponseBodyData) Validate() error {
 }
 
 type ListProductsResponseBodyDataContent struct {
-	// The agent-related configurations of the API product. The agentAPIConfig member includes agentProtocols (the list of protocols supported by the agent) and routes (the list of routes).
+	// The agent-related configurations of the API product. The agentAPIConfig member includes agentProtocols (the list of protocols supported by the agent) and routes (the route list).
 	AgentConfig *HiMarketAgentConfig `json:"agentConfig,omitempty" xml:"agentConfig,omitempty"`
-	// Specifies whether subscription requests for the API product are automatically approved. This is the AutoApprove property of the API product resource.
+	// Specifies whether to automatically approve subscription requests for the API product, which is the AutoApprove property of the API product resource Product.
 	AutoApprove *bool `json:"autoApprove,omitempty" xml:"autoApprove,omitempty"`
 	// The list of product categories to which the API product belongs. The list element is named category.
 	Categories []*HiMarketProductCategory `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
-	// The description of the API product, which is the Description property of the API product resource.
+	// The description of the API product, which is the Description property of the API product resource Product.
 	//
 	// example:
 	//
 	// An API product that provides weather query capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The documentation of the API product, which is the Document property of the API product resource.
+	// The documentation of the API product, which is the Document property of the API product resource Product.
 	//
 	// example:
 	//
 	// The invocation methods, parameters, and billing instructions for this product
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// The capability configurations of the API product. Currently, it includes only the modelFeature (model capabilities) member, which contains model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal.
+	// The capability configurations of the API product. Currently, it only includes the modelFeature (model capabilities) member, which contains model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal.
 	Feature *HiMarketProductFeature `json:"feature,omitempty" xml:"feature,omitempty"`
-	// The icon of the API product, which is the Icon property of the API product resource. It consists of two fields: type (the icon type) and value (the icon information).
+	// The icon of the API product, which is the Icon property of the API product resource Product. It consists of two fields: type (the icon type) and value (the icon information).
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
 	// The MCP-related configurations of the API product. The members include mcpServerName (the MCP server name), tools, mcpServerConfig (path and domains), and meta (protocol).
 	McpConfig *HiMarketMcpConfig `json:"mcpConfig,omitempty" xml:"mcpConfig,omitempty"`
-	// The model API-related configurations of the API product. The modelAPIConfig member includes modelCategory (the AI model category), aiProtocols (the list of AI API protocols), and routes (the list of routes).
+	// The model API-related configurations of the API product. The modelAPIConfig member includes modelCategory (the AI model category), aiProtocols (the list of AI API protocols), and routes (the route list).
 	ModelConfig *HiMarketModelConfig `json:"modelConfig,omitempty" xml:"modelConfig,omitempty"`
-	// The name of the API product, which is the Name property of the API product resource.
+	// The name of the API product, which is the Name property of the API product resource Product.
 	//
 	// example:
 	//
 	// weather-query-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the API product, which is the primary ID of the API product resource. You can use it to locate the product in operations such as GetProduct, UpdateProduct, DeleteProduct, PublishProduct, SetProductCategories, and ListProductPublications.
+	// The ID of the API product, which is the primary ID of the API product resource Product. It can be used to locate the product in operations such as GetProduct, UpdateProduct, DeleteProduct, PublishProduct, SetProductCategories, and ListProductPublications.
 	//
 	// example:
 	//
 	// product-xxxxxxxx
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// The status of the API product, which is the Status property of the API product resource. Valid values: Pending, Ready, and Published.
+	// The status of the API product, which is the Status property of the API product resource Product. Valid values: Pending, Ready, and Published.
 	//
 	// example:
 	//
 	// Published
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the API product, which is the Type property of the API product resource. The valid values are not declared in the API definition. Refer to the types displayed in the console.
+	// The type of the API product, which is the Type property of the API product resource Product. The valid values are not declared in the API definition. Refer to the types displayed in the console.
 	//
 	// example:
 	//

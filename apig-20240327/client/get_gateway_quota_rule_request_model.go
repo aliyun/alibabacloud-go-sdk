@@ -36,9 +36,9 @@ type GetGatewayQuotaRuleRequest struct {
 	//
 	// 10
 	ConsumerPageSize *string `json:"consumerPageSize,omitempty" xml:"consumerPageSize,omitempty"`
-	// Specifies whether to return the API consumer list.
+	// Specifies whether to output the consumer list.
 	WithConsumers *bool `json:"withConsumers,omitempty" xml:"withConsumers,omitempty"`
-	// Specifies whether to return the general subject list. This parameter applies to both API consumer and API consumer group rules.
+	// Specifies whether to output the general subject list. This parameter takes effect for both consumer and consumer group rules.
 	WithSubjects *bool `json:"withSubjects,omitempty" xml:"withSubjects,omitempty"`
 }
 

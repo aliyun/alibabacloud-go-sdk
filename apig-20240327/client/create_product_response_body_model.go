@@ -96,7 +96,7 @@ func (s *CreateProductResponseBody) Validate() error {
 }
 
 type CreateProductResponseBodyData struct {
-	// The ID of the newly created API product, which can be used to locate the product in API operations such as GetProduct, UpdateProduct, PublishProduct, and GetProductRef.
+	// The ID of the newly created API product, which can be used to locate the product in operations such as GetProduct, UpdateProduct, PublishProduct, and GetProductRef.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type ListHiMarketConsumersResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. An empty value indicates that the last page has been reached.
+	// The pagination token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListHiMarketConsumersResponseBody) Validate() error {
 }
 
 type ListHiMarketConsumersResponseBodyData struct {
-	// The list of consumers. Each element represents a HiMarket consumer.
+	// The list of consumers. The list element is named consumer, and each element represents a HiMarket consumer.
 	Content []*ListHiMarketConsumersResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -210,13 +210,13 @@ func (s *ListHiMarketConsumersResponseBodyData) Validate() error {
 }
 
 type ListHiMarketConsumersResponseBodyDataContent struct {
-	// The consumer ID. You can use this ID to locate the consumer in operations such as GetHiMarketConsumer, DeleteHiMarketConsumer, GetHiMarketConsumerCredential, and ListHiMarketConsumerSubscriptions.
+	// The consumer ID. You can use this ID to locate the consumer in API operations such as GetHiMarketConsumer, DeleteHiMarketConsumer, GetHiMarketConsumerCredential, and ListHiMarketConsumerSubscriptions.
 	//
 	// example:
 	//
 	// cs-xxxxxxxxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The description of the consumer.
+	// The consumer description.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type ListHiMarketConsumersResponseBodyDataContent struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Indicates whether the consumer is a primary consumer.
 	IsPrimary *bool `json:"isPrimary,omitempty" xml:"isPrimary,omitempty"`
-	// The name of the consumer.
+	// The consumer name.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iListGatewaysShrinkRequest interface {
 }
 
 type ListGatewaysShrinkRequest struct {
-	// The gateway ID for exact match query.
+	// The gateway ID for exact match.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ListGatewaysShrinkRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The keyword for full match search. The search is case-insensitive.
+	// The keyword for case-insensitive full match search.
 	//
 	// example:
 	//
 	// dev
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The gateway name for exact match query.
+	// The gateway name for exact match.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListGatewaysShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource group ID.
+	// The resource group.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListGatewaysShrinkRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of tags.
 	TagShrink *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

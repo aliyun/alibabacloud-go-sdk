@@ -15,6 +15,10 @@ type iUpdateServiceRequest interface {
 	GetAgentServiceConfig() *AgentServiceConfig
 	SetAiServiceConfig(v *AiServiceConfig) *UpdateServiceRequest
 	GetAiServiceConfig() *AiServiceConfig
+	SetApiKeyReferencesToAdd(v []*string) *UpdateServiceRequest
+	GetApiKeyReferencesToAdd() []*string
+	SetApiKeysToAdd(v []*string) *UpdateServiceRequest
+	GetApiKeysToAdd() []*string
 	SetDnsServers(v []*string) *UpdateServiceRequest
 	GetDnsServers() []*string
 	SetHealthCheckConfig(v *UpdateServiceRequestHealthCheckConfig) *UpdateServiceRequest
@@ -32,12 +36,24 @@ type iUpdateServiceRequest interface {
 }
 
 type UpdateServiceRequest struct {
-	// The list of domain names or fixed addresses.
+	// The list of domain names or static addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The agent service configuration.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
+	// The list of KMS reference names to append. This parameter is available only in Reference mode and does not read KMS content.
+	//
+	// example:
+	//
+	// ["my-kms-ref"]
+	ApiKeyReferencesToAdd []*string `json:"apiKeyReferencesToAdd,omitempty" xml:"apiKeyReferencesToAdd,omitempty" type:"Repeated"`
+	// The list of API keys to append. This parameter is available only in the Custom API Key mode for AI services. It must be used with fully masked apiKeys or omitted apiKeys, and does not read or return existing keys.
+	//
+	// example:
+	//
+	// ["sk-xxxxxxxx"]
+	ApiKeysToAdd []*string `json:"apiKeysToAdd,omitempty" xml:"apiKeysToAdd,omitempty" type:"Repeated"`
 	// The DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
 	// The health check configuration of the service.
@@ -54,7 +70,7 @@ type UpdateServiceRequest struct {
 	//
 	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The passive health check parameter settings.
+	// The parameter settings for passive health checks.
 	OutlierDetectionConfig *UpdateServiceRequestOutlierDetectionConfig `json:"outlierDetectionConfig,omitempty" xml:"outlierDetectionConfig,omitempty" type:"Struct"`
 	// The port information.
 	Ports []*UpdateServiceRequestPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
@@ -84,6 +100,14 @@ func (s *UpdateServiceRequest) GetAgentServiceConfig() *AgentServiceConfig {
 
 func (s *UpdateServiceRequest) GetAiServiceConfig() *AiServiceConfig {
 	return s.AiServiceConfig
+}
+
+func (s *UpdateServiceRequest) GetApiKeyReferencesToAdd() []*string {
+	return s.ApiKeyReferencesToAdd
+}
+
+func (s *UpdateServiceRequest) GetApiKeysToAdd() []*string {
+	return s.ApiKeysToAdd
 }
 
 func (s *UpdateServiceRequest) GetDnsServers() []*string {
@@ -126,6 +150,16 @@ func (s *UpdateServiceRequest) SetAgentServiceConfig(v *AgentServiceConfig) *Upd
 
 func (s *UpdateServiceRequest) SetAiServiceConfig(v *AiServiceConfig) *UpdateServiceRequest {
 	s.AiServiceConfig = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetApiKeyReferencesToAdd(v []*string) *UpdateServiceRequest {
+	s.ApiKeyReferencesToAdd = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetApiKeysToAdd(v []*string) *UpdateServiceRequest {
+	s.ApiKeysToAdd = v
 	return s
 }
 
@@ -198,27 +232,27 @@ func (s *UpdateServiceRequest) Validate() error {
 }
 
 type UpdateServiceRequestHealthCheckConfig struct {
-	// Specifies whether to enable health checks for the service.
+	// Specifies whether to enable the health check for the service.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The list of expected normal status codes returned by requests. This parameter is required when the protocol is HTTP.
+	// The list of normal HTTP status codes returned by requests. This parameter is required when the protocol is HTTP.
 	ExpectedStatuses []*string `json:"expectedStatuses,omitempty" xml:"expectedStatuses,omitempty" type:"Repeated"`
-	// The healthy threshold for health checks.
+	// The healthy threshold for the health check.
 	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"healthyThreshold,omitempty" xml:"healthyThreshold,omitempty"`
-	// The domain name for health checks. This parameter is optional and can be configured when the protocol is HTTP.
+	// The domain name for the health check. This parameter is optional and can be configured when the protocol is HTTP.
 	//
 	// example:
 	//
 	// dev.itemcener.com
 	HttpHost *string `json:"httpHost,omitempty" xml:"httpHost,omitempty"`
-	// The request path for health checks. This parameter is required when the protocol is HTTP.
+	// The request path for the health check. This parameter is required when the protocol is HTTP.
 	//
 	// example:
 	//
@@ -230,19 +264,19 @@ type UpdateServiceRequestHealthCheckConfig struct {
 	//
 	// 2
 	Interval *int32 `json:"interval,omitempty" xml:"interval,omitempty"`
-	// The protocol used for health checks.
+	// The protocol for the health check.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The response timeout period for health checks. Unit: seconds.
+	// The response timeout period for the health check. Unit: seconds.
 	//
 	// example:
 	//
 	// 2
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The unhealthy threshold for health checks.
+	// The unhealthy threshold for the health check.
 	//
 	// example:
 	//
@@ -344,7 +378,7 @@ func (s *UpdateServiceRequestHealthCheckConfig) Validate() error {
 }
 
 type UpdateServiceRequestOutlierDetectionConfig struct {
-	// The base ejection time, which is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated by using the following formula: k × base_ejection_time, where k starts at 1. Each ejection increases the isolation time by incrementing k by 1. If consecutive checks are normal, the isolation time is gradually reduced by decrementing k by 1.
+	// The initial isolation duration. This is the initial isolation duration after a node is ejected, such as 30 seconds. The isolation time is calculated by using the following formula: k × base_ejection_time, where the initial value of k is 1. The isolation time is extended each time the node is ejected by incrementing k by 1. If consecutive health checks are normal, the isolation time is gradually reduced by decrementing k by 1.
 	//
 	// example:
 	//
@@ -356,15 +390,13 @@ type UpdateServiceRequestOutlierDetectionConfig struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The panic threshold.
-	//
-	// When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled and requests are sent to all nodes, including ejected nodes.
+	// The panic threshold. If the proportion of healthy nodes in the service is greater than the panic threshold, the health check takes effect normally, and requests are sent only to healthy nodes rather than ejected nodes. If the proportion of healthy nodes in the service is less than or equal to the panic threshold, the health check is equivalent to being disabled, and requests are sent to all nodes, including ejected nodes.
 	//
 	// example:
 	//
 	// 1
 	FailurePercentageMinimumHosts *int32 `json:"failurePercentageMinimumHosts,omitempty" xml:"failurePercentageMinimumHosts,omitempty"`
-	// The failure percentage threshold. When the proportion of failed requests on a node reaches this threshold, the system triggers the ejection mechanism for that node.
+	// The failure rate threshold. When the proportion of failed requests for a node reaches this threshold, the system triggers the ejection mechanism for the node.
 	//
 	// example:
 	//
@@ -442,7 +474,7 @@ type UpdateServiceRequestPorts struct {
 	//
 	// catalog
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The port number.
+	// The port.
 	//
 	// example:
 	//

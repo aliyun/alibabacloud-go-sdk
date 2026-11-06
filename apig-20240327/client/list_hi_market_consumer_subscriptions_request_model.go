@@ -28,13 +28,13 @@ type ListHiMarketConsumerSubscriptionsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination cursor. Pass the nextToken returned in the previous response to retrieve the next page. Do not pass this parameter for the first query.
+	// The pagination token. Pass the token returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
 	//
 	// example:
 	//
 	// token-xxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The page number. Pages start from 1.
+	// The number of the page to return. Pages start from 1.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListHiMarketConsumerSubscriptionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The subscription status used to filter subscriptions. Valid values: PENDING and APPROVED.
+	// The subscription status, which is used to filter subscriptions. Valid values: PENDING and APPROVED.
 	//
 	// example:
 	//

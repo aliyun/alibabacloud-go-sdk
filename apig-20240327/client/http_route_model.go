@@ -19,6 +19,8 @@ type iHttpRoute interface {
 	GetDeployStatus() *string
 	SetDescription(v string) *HttpRoute
 	GetDescription() *string
+	SetDfpConfig(v *HttpRouteDfpConfig) *HttpRoute
+	GetDfpConfig() *HttpRouteDfpConfig
 	SetDomainInfos(v []*HttpRouteDomainInfos) *HttpRoute
 	GetDomainInfos() []*HttpRouteDomainInfos
 	SetEnvironmentInfo(v *HttpRouteEnvironmentInfo) *HttpRoute
@@ -40,7 +42,7 @@ type iHttpRoute interface {
 type HttpRoute struct {
 	// The backend service.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// Indicates whether the route is a system built-in route.
+	// Indicates whether the route is a built-in system route.
 	//
 	// example:
 	//
@@ -62,9 +64,11 @@ type HttpRoute struct {
 	//
 	// example:
 	//
-	// Pre-release route for the product center
+	// 商品中心预发路由
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of domain name information.
+	// The ExtProc service selected for the fixed dynamic forwarding route. This field is not returned when no matching binding exists.
+	DfpConfig *HttpRouteDfpConfig `json:"dfpConfig,omitempty" xml:"dfpConfig,omitempty" type:"Struct"`
+	// The list of domain information.
 	DomainInfos []*HttpRouteDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
 	// The environment context of the routing.
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
@@ -72,7 +76,7 @@ type HttpRoute struct {
 	GatewayStatus map[string]*string `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
 	// The route matching rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// The MCP server information.
+	// The MCP service information.
 	McpServerInfo *HttpRouteMcpServerInfo `json:"mcpServerInfo,omitempty" xml:"mcpServerInfo,omitempty" type:"Struct"`
 	// The route name.
 	//
@@ -80,7 +84,7 @@ type HttpRoute struct {
 	//
 	// itemcenter-pre-route
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The HttpApi route ID.
+	// The HTTP API route ID.
 	//
 	// example:
 	//
@@ -120,6 +124,10 @@ func (s *HttpRoute) GetDeployStatus() *string {
 
 func (s *HttpRoute) GetDescription() *string {
 	return s.Description
+}
+
+func (s *HttpRoute) GetDfpConfig() *HttpRouteDfpConfig {
+	return s.DfpConfig
 }
 
 func (s *HttpRoute) GetDomainInfos() []*HttpRouteDomainInfos {
@@ -179,6 +187,11 @@ func (s *HttpRoute) SetDescription(v string) *HttpRoute {
 	return s
 }
 
+func (s *HttpRoute) SetDfpConfig(v *HttpRouteDfpConfig) *HttpRoute {
+	s.DfpConfig = v
+	return s
+}
+
 func (s *HttpRoute) SetDomainInfos(v []*HttpRouteDomainInfos) *HttpRoute {
 	s.DomainInfos = v
 	return s
@@ -225,6 +238,11 @@ func (s *HttpRoute) Validate() error {
 			return err
 		}
 	}
+	if s.DfpConfig != nil {
+		if err := s.DfpConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DomainInfos != nil {
 		for _, item := range s.DomainInfos {
 			if item != nil {
@@ -252,8 +270,38 @@ func (s *HttpRoute) Validate() error {
 	return nil
 }
 
+type HttpRouteDfpConfig struct {
+	// The ExtProc gRPC service ID.
+	//
+	// example:
+	//
+	// svc-cr8k0udlhtgt80sh7png
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+}
+
+func (s HttpRouteDfpConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s HttpRouteDfpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HttpRouteDfpConfig) GetServiceId() *string {
+	return s.ServiceId
+}
+
+func (s *HttpRouteDfpConfig) SetServiceId(v string) *HttpRouteDfpConfig {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *HttpRouteDfpConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type HttpRouteDomainInfos struct {
-	// The domain name ID.
+	// The domain ID.
 	//
 	// example:
 	//
@@ -313,11 +361,11 @@ func (s *HttpRouteDomainInfos) Validate() error {
 }
 
 type HttpRouteEnvironmentInfo struct {
-	// The environment name alias.
+	// The alias of the environment name.
 	//
 	// example:
 	//
-	// Pre-release environment for the product center
+	// 商品中心预发环境
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
 	// The environment ID.
 	//
@@ -333,7 +381,7 @@ type HttpRouteEnvironmentInfo struct {
 	//
 	// itemcenter-pre
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of default subdomain names for the environment.
+	// The list of default subdomains for the environment.
 	SubDomains []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -409,7 +457,7 @@ func (s *HttpRouteEnvironmentInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoGatewayInfo struct {
-	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, Unknown.
+	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
 	//
 	// example:
 	//
@@ -469,7 +517,7 @@ func (s *HttpRouteEnvironmentInfoGatewayInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoSubDomains struct {
-	// The domain name ID.
+	// The domain ID.
 	//
 	// example:
 	//
@@ -568,7 +616,7 @@ type HttpRouteMcpServerInfo struct {
 	//
 	// default
 	ImportNamespace *string `json:"importNamespace,omitempty" xml:"importNamespace,omitempty"`
-	// The MCP route information.
+	// The MCP routing information.
 	McpRouteConfig *HttpRouteMcpServerInfoMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
 	// The MCP server metadata configuration.
 	//

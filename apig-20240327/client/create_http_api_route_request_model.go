@@ -15,6 +15,8 @@ type iCreateHttpApiRouteRequest interface {
 	GetDeployConfigs() []*HttpApiDeployConfig
 	SetDescription(v string) *CreateHttpApiRouteRequest
 	GetDescription() *string
+	SetDfpConfig(v *CreateHttpApiRouteRequestDfpConfig) *CreateHttpApiRouteRequest
+	GetDfpConfig() *CreateHttpApiRouteRequestDfpConfig
 	SetDomainIds(v []*string) *CreateHttpApiRouteRequest
 	GetDomainIds() []*string
 	SetEnvironmentId(v string) *CreateHttpApiRouteRequest
@@ -30,7 +32,7 @@ type iCreateHttpApiRouteRequest interface {
 }
 
 type CreateHttpApiRouteRequest struct {
-	// The backend service configuration of the route.
+	// The backend service configuration for the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// Deprecated
 	//
@@ -42,6 +44,8 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// User login route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The fixed dynamic forwarding and ExtProc combination configuration. When you use this configuration, specify only serviceId, and do not specify environmentId or backendConfig.
+	DfpConfig *CreateHttpApiRouteRequestDfpConfig `json:"dfpConfig,omitempty" xml:"dfpConfig,omitempty" type:"Struct"`
 	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The environment ID.
@@ -84,6 +88,10 @@ func (s *CreateHttpApiRouteRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateHttpApiRouteRequest) GetDfpConfig() *CreateHttpApiRouteRequestDfpConfig {
+	return s.DfpConfig
+}
+
 func (s *CreateHttpApiRouteRequest) GetDomainIds() []*string {
 	return s.DomainIds
 }
@@ -120,6 +128,11 @@ func (s *CreateHttpApiRouteRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *
 
 func (s *CreateHttpApiRouteRequest) SetDescription(v string) *CreateHttpApiRouteRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetDfpConfig(v *CreateHttpApiRouteRequestDfpConfig) *CreateHttpApiRouteRequest {
+	s.DfpConfig = v
 	return s
 }
 
@@ -168,6 +181,11 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 			}
 		}
 	}
+	if s.DfpConfig != nil {
+		if err := s.DfpConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Match != nil {
 		if err := s.Match.Validate(); err != nil {
 			return err
@@ -195,7 +213,7 @@ type CreateHttpApiRouteRequestBackendConfig struct {
 	//
 	// - SingleService: Single service.
 	//
-	// - MultiServiceByRatio: Multi-service canary release by ratio.
+	// - MultiServiceByRatio: Canary release of multiple services by ratio.
 	//
 	// - Mock: Mock service.
 	//
@@ -249,25 +267,25 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The service group. Used in HTTP-to-Dubbo transcoding scenarios.
+	// The service group. Used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The HTTP-to-Dubbo protocol transcoding configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	// The HTTP-to-Dubbo protocol conversion configuration. This configuration is supported only for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
 	//
 	// example:
 	//
 	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
 	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
-	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The service namespace. Used in HTTP-to-Dubbo transcoding scenarios.
+	// The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
@@ -295,13 +313,13 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service source type. Used in HTTP-to-Dubbo transcoding scenarios.
+	// The service source type. Used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// MSE_NACOS
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The service version. This parameter takes effect only in the by-tag scenario.
+	// The service version. This parameter is valid only in the tag-based scenario.
 	//
 	// example:
 	//
@@ -420,6 +438,36 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateHttpApiRouteRequestDfpConfig struct {
+	// The ID of the imported ExtProc gRPC service.
+	//
+	// example:
+	//
+	// svc-cr8k0udlhtgt80sh7png
+	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+}
+
+func (s CreateHttpApiRouteRequestDfpConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateHttpApiRouteRequestDfpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHttpApiRouteRequestDfpConfig) GetServiceId() *string {
+	return s.ServiceId
+}
+
+func (s *CreateHttpApiRouteRequestDfpConfig) SetServiceId(v string) *CreateHttpApiRouteRequestDfpConfig {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestDfpConfig) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateHttpApiRouteRequestMcpRouteConfig struct {

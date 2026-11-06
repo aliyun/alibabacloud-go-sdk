@@ -96,7 +96,7 @@ func (s *ListPortalPublicationsResponseBody) Validate() error {
 }
 
 type ListPortalPublicationsResponseBodyData struct {
-	// The list of published API products on the portal. The list elements are named portalConfig, and each element represents an API product publication record.
+	// The list of published API products on the portal. The list element is named portalConfig, and each element represents an API product publication record.
 	Content []*ListPortalPublicationsResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -110,7 +110,7 @@ type ListPortalPublicationsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *ListPortalPublicationsResponseBodyData) Validate() error {
 }
 
 type ListPortalPublicationsResponseBodyDataContent struct {
-	// The creation time in ISO 8601 (RFC 3339) format in the UTC time zone, such as 2026-05-15T10:00:00Z.
+	// The creation time. The time is formatted in ISO 8601 (RFC 3339) and in the UTC time zone, such as 2026-05-15T10:00:00Z.
 	//
 	// example:
 	//
@@ -186,27 +186,27 @@ type ListPortalPublicationsResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// API product for model services available to internal developers
+	// An API product for model services that is open to internal developers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The API product ID. This is the primary ID of the Product resource, which identifies the API product associated with this publication record.
+	// The API product ID. It is the primary ID of the API product resource Product and identifies the API product corresponding to this publication record.
 	//
 	// example:
 	//
 	// product-xxxxxxxx
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
-	// The API product name. This is the Name property of the Product resource.
+	// The API product name. It is the Name property of the API product resource Product.
 	//
 	// example:
 	//
 	// model-service
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// The API product type. The valid values are not defined in the API specification. Refer to the types displayed in the console.
+	// The API product type. The valid values are not declared in the API definition. Refer to the types displayed in the console.
 	//
 	// example:
 	//
 	// HTTP_API
 	ProductType *string `json:"productType,omitempty" xml:"productType,omitempty"`
-	// The publication record ID of the API product. This ID is returned when the PublishProduct operation publishes the API product to the portal. You can use it in the /himarket/v1/products/{productId}/publications/{publicationId} path to locate the publication record for the UnpublishProduct operation.
+	// The publication record ID of the API product. It is returned when PublishProduct publishes the API product to the portal. You can use this ID in the /himarket/v1/products/{productId}/publications/{publicationId} path to locate the publication record for UnpublishProduct.
 	//
 	// example:
 	//

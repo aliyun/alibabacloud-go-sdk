@@ -218,6 +218,12 @@ func (s *ListGatewayQuotaRulesResponseBodyData) Validate() error {
 }
 
 type ListGatewayQuotaRulesResponseBodyDataItems struct {
+	// The number of days in a custom period. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural periods.
+	//
+	// example:
+	//
+	// 3
+	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
 	// The period type.
 	//
 	// example:
@@ -254,7 +260,7 @@ type ListGatewayQuotaRulesResponseBodyDataItems struct {
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The time zone for the natural period, in UTC+x format.
+	// The time zone corresponding to the natural period, in UTC+x format.
 	//
 	// example:
 	//
@@ -274,6 +280,10 @@ func (s ListGatewayQuotaRulesResponseBodyDataItems) String() string {
 
 func (s ListGatewayQuotaRulesResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListGatewayQuotaRulesResponseBodyDataItems) GetPeriodMultiplier() *int64 {
+	return s.PeriodMultiplier
 }
 
 func (s *ListGatewayQuotaRulesResponseBodyDataItems) GetPeriodType() *string {
@@ -306,6 +316,11 @@ func (s *ListGatewayQuotaRulesResponseBodyDataItems) GetTimezone() *string {
 
 func (s *ListGatewayQuotaRulesResponseBodyDataItems) GetWindowAlignment() *string {
 	return s.WindowAlignment
+}
+
+func (s *ListGatewayQuotaRulesResponseBodyDataItems) SetPeriodMultiplier(v int64) *ListGatewayQuotaRulesResponseBodyDataItems {
+	s.PeriodMultiplier = &v
+	return s
 }
 
 func (s *ListGatewayQuotaRulesResponseBodyDataItems) SetPeriodType(v string) *ListGatewayQuotaRulesResponseBodyDataItems {

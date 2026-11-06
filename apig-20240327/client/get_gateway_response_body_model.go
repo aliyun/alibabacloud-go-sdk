@@ -98,17 +98,17 @@ func (s *GetGatewayResponseBody) Validate() error {
 type GetGatewayResponseBodyData struct {
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go.
+	// - POSTPAY: Pay-as-you-go.
 	//
-	// - PREPAY: subscription.
+	// - PREPAY: Subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The source from which the gateway was created. Valid values:
+	// The creation source of the gateway. Valid values:
 	//
-	// - Console: Console.
+	// - Console: The console.
 	//
 	// example:
 	//
@@ -120,6 +120,12 @@ type GetGatewayResponseBodyData struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	// Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or a missing value indicates that the status is unknown. This parameter is for query and display purposes only.
+	//
+	// example:
+	//
+	// false
+	ElasticEnabled *bool `json:"elasticEnabled,omitempty" xml:"elasticEnabled,omitempty"`
 	// The list of environments associated with the gateway.
 	Environments []*GetGatewayResponseBodyDataEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	// The expiration timestamp for subscription instances. Unit: milliseconds.
@@ -128,9 +134,9 @@ type GetGatewayResponseBodyData struct {
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The gateway instance edition. Valid values:
+	// The edition of the gateway instance. Valid values:
 	//
-	// - Professional: Standard instance.
+	// - Professional: Professional instance.
 	//
 	// - Serverless: Serverless instance.
 	//
@@ -144,11 +150,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The running mode of AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
-	//
-	// - ENTERPRISE: default.
-	//
-	// - STANDARD: allowed only for AI multi-tenant V2.
+	// The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is applicable only to AI and MultiTenantServerless gateways.
 	//
 	// example:
 	//
@@ -164,13 +166,13 @@ type GetGatewayResponseBodyData struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The type of the network service provider.
+	// The type of the Internet service provider (ISP).
 	//
 	// example:
 	//
 	// BGP
 	Isp *string `json:"isp,omitempty" xml:"isp,omitempty"`
-	// The list of ingress addresses of the gateway.
+	// The list of ingress addresses for the gateway.
 	LoadBalancers []*GetGatewayResponseBodyDataLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
 	// The O&M window.
 	MaintenancePeriod *GetGatewayResponseBodyDataMaintenancePeriod `json:"maintenancePeriod,omitempty" xml:"maintenancePeriod,omitempty" type:"Struct"`
@@ -180,7 +182,11 @@ type GetGatewayResponseBodyData struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of gateway instance nodes.
+	// The network access configuration of the gateway, including the access endpoint type and the security group used by the private endpoint. This parameter is returned only when the gateway is configured with a private endpoint.
+	NetworkAccessConfig *GetGatewayResponseBodyDataNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
+	// The PrivateLink information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
+	PrivateLink *GetGatewayResponseBodyDataPrivateLink `json:"privateLink,omitempty" xml:"privateLink,omitempty" type:"Struct"`
+	// The number of nodes in the gateway instance.
 	//
 	// example:
 	//
@@ -194,9 +200,9 @@ type GetGatewayResponseBodyData struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The security group of the gateway.
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
-	// The gateway specification. Valid values:
+	// The gateway specifications. Valid values:
 	//
-	// - apigw.small.x1: Small specification.
+	// - apigw.small.x1: Small specifications.
 	//
 	// example:
 	//
@@ -204,31 +210,33 @@ type GetGatewayResponseBodyData struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The gateway status. Valid values:
 	//
-	// - Running: Running.
+	// - Running: The gateway is running.
 	//
-	// - Creating: Being created.
+	// - Creating: The gateway is being created.
 	//
-	// - CreateFailed: Creation failed.
+	// - CreateFailed: The gateway failed to be created.
 	//
-	// - Upgrading: Being upgraded.
+	// - Upgrading: The gateway is being upgraded.
 	//
-	// - UpgradeFailed: Upgrade failed.
+	// - UpgradeFailed: The gateway failed to be upgraded.
 	//
-	// - Restarting: Being restarted.
+	// - Restarting: The gateway is being restarted.
 	//
-	// - RestartFailed: Restart failed.
+	// - RestartFailed: The gateway failed to be restarted.
 	//
-	// - Deleting: Being released.
+	// - Deleting: The gateway is being released.
 	//
-	// - DeleteFailed: Release failed.
+	// - DeleteFailed: The gateway failed to be released.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The list of default access domain name information for the gateway. This parameter is not returned if no default domain name information is available.
+	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// The resource tags.
 	Tags []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. If this value differs from version, a version upgrade can be performed.
+	// The target version of the gateway. If this value is different from the current version, you can upgrade the gateway.
 	//
 	// example:
 	//
@@ -280,6 +288,10 @@ func (s *GetGatewayResponseBodyData) GetCreateTimestamp() *int64 {
 	return s.CreateTimestamp
 }
 
+func (s *GetGatewayResponseBodyData) GetElasticEnabled() *bool {
+	return s.ElasticEnabled
+}
+
 func (s *GetGatewayResponseBodyData) GetEnvironments() []*GetGatewayResponseBodyDataEnvironments {
 	return s.Environments
 }
@@ -320,6 +332,14 @@ func (s *GetGatewayResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *GetGatewayResponseBodyData) GetNetworkAccessConfig() *GetGatewayResponseBodyDataNetworkAccessConfig {
+	return s.NetworkAccessConfig
+}
+
+func (s *GetGatewayResponseBodyData) GetPrivateLink() *GetGatewayResponseBodyDataPrivateLink {
+	return s.PrivateLink
+}
+
 func (s *GetGatewayResponseBodyData) GetReplicas() *string {
 	return s.Replicas
 }
@@ -338,6 +358,10 @@ func (s *GetGatewayResponseBodyData) GetSpec() *string {
 
 func (s *GetGatewayResponseBodyData) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetGatewayResponseBodyData) GetSubDomainInfos() []*SubDomainInfo {
+	return s.SubDomainInfos
 }
 
 func (s *GetGatewayResponseBodyData) GetTags() []*GetGatewayResponseBodyDataTags {
@@ -384,6 +408,11 @@ func (s *GetGatewayResponseBodyData) SetCreateFrom(v string) *GetGatewayResponse
 
 func (s *GetGatewayResponseBodyData) SetCreateTimestamp(v int64) *GetGatewayResponseBodyData {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetElasticEnabled(v bool) *GetGatewayResponseBodyData {
+	s.ElasticEnabled = &v
 	return s
 }
 
@@ -437,6 +466,16 @@ func (s *GetGatewayResponseBodyData) SetName(v string) *GetGatewayResponseBodyDa
 	return s
 }
 
+func (s *GetGatewayResponseBodyData) SetNetworkAccessConfig(v *GetGatewayResponseBodyDataNetworkAccessConfig) *GetGatewayResponseBodyData {
+	s.NetworkAccessConfig = v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetPrivateLink(v *GetGatewayResponseBodyDataPrivateLink) *GetGatewayResponseBodyData {
+	s.PrivateLink = v
+	return s
+}
+
 func (s *GetGatewayResponseBodyData) SetReplicas(v string) *GetGatewayResponseBodyData {
 	s.Replicas = &v
 	return s
@@ -459,6 +498,11 @@ func (s *GetGatewayResponseBodyData) SetSpec(v string) *GetGatewayResponseBodyDa
 
 func (s *GetGatewayResponseBodyData) SetStatus(v string) *GetGatewayResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetSubDomainInfos(v []*SubDomainInfo) *GetGatewayResponseBodyData {
+	s.SubDomainInfos = v
 	return s
 }
 
@@ -526,9 +570,28 @@ func (s *GetGatewayResponseBodyData) Validate() error {
 			return err
 		}
 	}
+	if s.NetworkAccessConfig != nil {
+		if err := s.NetworkAccessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateLink != nil {
+		if err := s.PrivateLink.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SecurityGroup != nil {
 		if err := s.SecurityGroup.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.SubDomainInfos != nil {
+		for _, item := range s.SubDomainInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.Tags != nil {
@@ -563,7 +626,7 @@ func (s *GetGatewayResponseBodyData) Validate() error {
 }
 
 type GetGatewayResponseBodyDataEnvironments struct {
-	// The environment alias.
+	// The alias of the environment.
 	//
 	// example:
 	//
@@ -639,9 +702,9 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
-	// The load balancing address type. Valid values:
+	// The type of the load balancing address. Valid values:
 	//
-	// - Internet: Public network.
+	// - Internet: Internet-facing.
 	//
 	// - Intranet: Private network.
 	//
@@ -649,7 +712,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// Internet
 	AddressType *string `json:"addressType,omitempty" xml:"addressType,omitempty"`
-	// Indicates whether this is the default ingress address of the gateway.
+	// Indicates whether the address is the default ingress address for the gateway.
 	//
 	// example:
 	//
@@ -659,13 +722,13 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	Ipv4Addresses []*string `json:"ipv4Addresses,omitempty" xml:"ipv4Addresses,omitempty" type:"Repeated"`
 	// The list of IPv6 addresses.
 	Ipv6Addresses []*string `json:"ipv6Addresses,omitempty" xml:"ipv6Addresses,omitempty" type:"Repeated"`
-	// The load balancing instance ID.
+	// The load balancing ID.
 	//
 	// example:
 	//
 	// nlb-xoh3pghru7c***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// The load balancing mode of the gateway. Valid values:
+	// The load balancing pattern of the gateway. Valid values:
 	//
 	// - Managed: Managed by Cloud-native API Gateway.
 	//
@@ -673,23 +736,23 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// Managed
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The list of listening ports.
+	// The list of listener ports.
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The status of load balancing. Valid values:
+	// The status of the load balancing. Valid values:
 	//
 	// - Ready: Active.
 	//
-	// - NotCreate: No associated instance.
+	// - NotCreate: Not associated with an instance.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The load balancing type. Valid values:
+	// The type of the load balancing. Valid values:
 	//
 	// - NLB: Network Load Balancer (NLB).
 	//
-	// - CLB: Classic Load Balancer (CLB).
+	// - CLB: Classic Load Balancer.
 	//
 	// example:
 	//
@@ -826,9 +889,9 @@ type GetGatewayResponseBodyDataLoadBalancersPorts struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The protocol. Valid values:
 	//
-	// - TCP
+	// - TCP: TCP.
 	//
-	// - UDP
+	// - UDP: UDP.
 	//
 	// example:
 	//
@@ -867,13 +930,13 @@ func (s *GetGatewayResponseBodyDataLoadBalancersPorts) Validate() error {
 }
 
 type GetGatewayResponseBodyDataMaintenancePeriod struct {
-	// The O&M end time (HH:mm).
+	// The end time of the O&M window in the HH:mm format.
 	//
 	// example:
 	//
 	// 06:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The O&M start time (HH:mm).
+	// The start time of the O&M window in the HH:mm format.
 	//
 	// example:
 	//
@@ -911,14 +974,293 @@ func (s *GetGatewayResponseBodyDataMaintenancePeriod) Validate() error {
 	return dara.Validate(s)
 }
 
+type GetGatewayResponseBodyDataNetworkAccessConfig struct {
+	// The ID of the security group configured for the private endpoint. The security group belongs to the VPC selected by the user and is an unmanaged security group.
+	//
+	// example:
+	//
+	// sg-bp1example123456789
+	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
+	// The access endpoint type of the gateway. Valid values:
+	//
+	// - Intranet: Private endpoint only.
+	//
+	// - InternetAndIntranet: Both Internet and private endpoints.
+	//
+	// example:
+	//
+	// InternetAndIntranet
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetGatewayResponseBodyDataNetworkAccessConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetGatewayResponseBodyDataNetworkAccessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayResponseBodyDataNetworkAccessConfig) GetEndpointSecurityGroupId() *string {
+	return s.EndpointSecurityGroupId
+}
+
+func (s *GetGatewayResponseBodyDataNetworkAccessConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *GetGatewayResponseBodyDataNetworkAccessConfig) SetEndpointSecurityGroupId(v string) *GetGatewayResponseBodyDataNetworkAccessConfig {
+	s.EndpointSecurityGroupId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataNetworkAccessConfig) SetType(v string) *GetGatewayResponseBodyDataNetworkAccessConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataNetworkAccessConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetGatewayResponseBodyDataPrivateLink struct {
+	// The connection status between the private endpoint and the endpoint service. A value of Connected indicates that the endpoint is connected.
+	//
+	// example:
+	//
+	// Connected
+	ConnectionStatus *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
+	// The access domain name of the private endpoint, which can be used to access the gateway from the user VPC.
+	//
+	// example:
+	//
+	// ep-bp1example123456789.epsrv-bp1example123456789.cn-hangzhou.privatelink.aliyuncs.com
+	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
+	// The ID of the private endpoint.
+	//
+	// example:
+	//
+	// ep-bp1example123456789
+	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	// The ID of the security group configured for the private endpoint.
+	//
+	// example:
+	//
+	// sg-bp1example123456789
+	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
+	// The status of the private endpoint. A value of Active indicates that the endpoint is available.
+	//
+	// example:
+	//
+	// Active
+	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	// The error code of the most recent error that occurred during the creation or delete operations of the private endpoint. This parameter is not returned if no error message is available.
+	//
+	// example:
+	//
+	// Forbidden.RAM
+	LastErrorCode *string `json:"lastErrorCode,omitempty" xml:"lastErrorCode,omitempty"`
+	// The description of the most recent error that occurred during the creation or delete operations of the private endpoint. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+	//
+	// example:
+	//
+	// private ingress CheckProductOpen failed (Forbidden.RAM)
+	LastErrorMessage *string `json:"lastErrorMessage,omitempty" xml:"lastErrorMessage,omitempty"`
+	// The time when the system last retrieved the status of the private endpoint. The time is in RFC 3339 format. This parameter is not returned if the status has not been retrieved.
+	//
+	// example:
+	//
+	// 2026-11-02T10:00:00Z
+	ObservedAt *string `json:"observedAt,omitempty" xml:"observedAt,omitempty"`
+	// Indicates whether the private endpoint may continue to incur fees. A value of true indicates that the endpoint is created and its release is not confirmed. A value of false indicates that no fee prompt is available. The actual fees are subject to the bill.
+	//
+	// example:
+	//
+	// true
+	ResourceMayBeCharged *bool `json:"resourceMayBeCharged,omitempty" xml:"resourceMayBeCharged,omitempty"`
+	// The current processing stage of the private endpoint. A value of Ready indicates that the private endpoint is ready.
+	//
+	// example:
+	//
+	// Ready
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+	// The list of zone information for the private endpoint.
+	Zones []*GetGatewayResponseBodyDataPrivateLinkZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+}
+
+func (s GetGatewayResponseBodyDataPrivateLink) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetGatewayResponseBodyDataPrivateLink) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetConnectionStatus() *string {
+	return s.ConnectionStatus
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetEndpointDomain() *string {
+	return s.EndpointDomain
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetEndpointId() *string {
+	return s.EndpointId
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetEndpointSecurityGroupId() *string {
+	return s.EndpointSecurityGroupId
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetEndpointStatus() *string {
+	return s.EndpointStatus
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetLastErrorCode() *string {
+	return s.LastErrorCode
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetLastErrorMessage() *string {
+	return s.LastErrorMessage
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetObservedAt() *string {
+	return s.ObservedAt
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetResourceMayBeCharged() *bool {
+	return s.ResourceMayBeCharged
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetStage() *string {
+	return s.Stage
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) GetZones() []*GetGatewayResponseBodyDataPrivateLinkZones {
+	return s.Zones
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetConnectionStatus(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetEndpointDomain(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.EndpointDomain = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetEndpointId(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetEndpointSecurityGroupId(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.EndpointSecurityGroupId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetEndpointStatus(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.EndpointStatus = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetLastErrorCode(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.LastErrorCode = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetLastErrorMessage(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.LastErrorMessage = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetObservedAt(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.ObservedAt = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetResourceMayBeCharged(v bool) *GetGatewayResponseBodyDataPrivateLink {
+	s.ResourceMayBeCharged = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetStage(v string) *GetGatewayResponseBodyDataPrivateLink {
+	s.Stage = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) SetZones(v []*GetGatewayResponseBodyDataPrivateLinkZones) *GetGatewayResponseBodyDataPrivateLink {
+	s.Zones = v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLink) Validate() error {
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetGatewayResponseBodyDataPrivateLinkZones struct {
+	// The connection status of the private endpoint in the zone. A value of Connected indicates that the endpoint is connected.
+	//
+	// example:
+	//
+	// Connected
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The zone ID of the private endpoint.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s GetGatewayResponseBodyDataPrivateLinkZones) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetGatewayResponseBodyDataPrivateLinkZones) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLinkZones) GetStatus() *string {
+	return s.Status
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLinkZones) GetZoneId() *string {
+	return s.ZoneId
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLinkZones) SetStatus(v string) *GetGatewayResponseBodyDataPrivateLinkZones {
+	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLinkZones) SetZoneId(v string) *GetGatewayResponseBodyDataPrivateLinkZones {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyDataPrivateLinkZones) Validate() error {
+	return dara.Validate(s)
+}
+
 type GetGatewayResponseBodyDataSecurityGroup struct {
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
 	// APIG-sg-gw-cq7ke5ll***
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
@@ -1002,13 +1344,13 @@ func (s *GetGatewayResponseBodyDataTags) Validate() error {
 }
 
 type GetGatewayResponseBodyDataVSwitch struct {
-	// The vSwitch name.
+	// The name of the vSwitch.
 	//
 	// example:
 	//
 	// Hangzhou VPC vSwitch
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -1047,13 +1389,13 @@ func (s *GetGatewayResponseBodyDataVSwitch) Validate() error {
 }
 
 type GetGatewayResponseBodyDataVpc struct {
-	// The VPC name.
+	// The name of the VPC.
 	//
 	// example:
 	//
 	// Hangzhou VPC
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -1092,7 +1434,7 @@ func (s *GetGatewayResponseBodyDataVpc) Validate() error {
 }
 
 type GetGatewayResponseBodyDataZones struct {
-	// The zone name.
+	// The name of the zone.
 	//
 	// example:
 	//
@@ -1153,13 +1495,13 @@ func (s *GetGatewayResponseBodyDataZones) Validate() error {
 }
 
 type GetGatewayResponseBodyDataZonesVSwitch struct {
-	// The vSwitch name.
+	// The name of the vSwitch.
 	//
 	// example:
 	//
 	// Hangzhou VPC vSwitch
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

@@ -114,7 +114,7 @@ type GetProductResponseBodyData struct {
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
 	// The capability configurations of the API product. Currently, this includes only the modelFeature member for model capabilities, which contains model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal.
 	Feature *HiMarketProductFeature `json:"feature,omitempty" xml:"feature,omitempty"`
-	// The icon configurations of the API product, which consist of two fields: type for the icon type and value for the icon information.
+	// The icon configurations of the API product, which consist of two fields: the icon type (type) and the icon information (value).
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
 	// The MCP-related configurations of the API product. The members include mcpServerName for the MCP server name, tools, mcpServerConfig for the path and domains, and meta for the protocol.
 	McpConfig *HiMarketMcpConfig `json:"mcpConfig,omitempty" xml:"mcpConfig,omitempty"`

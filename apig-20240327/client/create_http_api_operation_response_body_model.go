@@ -26,7 +26,7 @@ type CreateHttpApiOperationResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The operation information.
+	// The API operation information.
 	Data *CreateHttpApiOperationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,7 +96,7 @@ func (s *CreateHttpApiOperationResponseBody) Validate() error {
 }
 
 type CreateHttpApiOperationResponseBodyData struct {
-	// The operation information.
+	// The API operation information.
 	Operations []*CreateHttpApiOperationResponseBodyDataOperations `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
 }
 
@@ -131,7 +131,7 @@ func (s *CreateHttpApiOperationResponseBodyData) Validate() error {
 }
 
 type CreateHttpApiOperationResponseBodyDataOperations struct {
-	// The operation ID.
+	// The API operation ID.
 	//
 	// example:
 	//

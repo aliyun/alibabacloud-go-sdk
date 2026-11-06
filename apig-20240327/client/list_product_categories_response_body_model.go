@@ -34,7 +34,7 @@ type ListProductCategoriesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListProductCategoriesResponseBody) Validate() error {
 }
 
 type ListProductCategoriesResponseBodyData struct {
-	// The list of product categories. Each element in the list is named category and contains the information about a product category.
+	// The list of product categories. Each element in the list represents a product category.
 	Content []*ListProductCategoriesResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -104,13 +104,13 @@ type ListProductCategoriesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,21 +176,21 @@ func (s *ListProductCategoriesResponseBodyData) Validate() error {
 }
 
 type ListProductCategoriesResponseBodyDataContent struct {
-	// The product category ID. You can use this ID as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory. You can also use it as an element in the categories parameter, which is a set of category IDs, for SetProductCategories and CreateProduct.
+	// The ID of the product category. You can use this ID as the categoryId path parameter in the GetProductCategory, UpdateProductCategory, and DeleteProductCategory operations, or as an element in the categories parameter in the SetProductCategories and CreateProduct operations.
 	//
 	// example:
 	//
 	// category-xxxxxxxx
 	CategoryId *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	// The product category description.
+	// The description of the product category.
 	//
 	// example:
 	//
-	// Product category for AI-related capabilities
+	// Product categories with AI-related capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The product category icon, which consists of the icon type (type) and icon information (value) fields.
+	// The icon of the product category. It consists of two fields: type (the icon type) and value (the icon information).
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
-	// The product category name.
+	// The name of the product category.
 	//
 	// example:
 	//

@@ -44,13 +44,13 @@ type CreateProductRequest struct {
 	//
 	// An API product that provides weather query capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The content of the documentation for the API product.
+	// The documentation content of the API product.
 	//
 	// example:
 	//
 	// The invocation methods, parameters, and billing instructions for this product
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
-	// The capability configuration of the product, which is currently used to describe the invocation capabilities of model-based products (modelFeature).
+	// The product capability configuration, which is currently used to describe the invocation capabilities of model products (modelFeature).
 	Feature *HiMarketProductFeature `json:"feature,omitempty" xml:"feature,omitempty"`
 	// The icon configuration of the API product.
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
@@ -60,7 +60,7 @@ type CreateProductRequest struct {
 	//
 	// weather-query-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the API product. The set of valid values is not declared in the API definition. Refer to the types displayed in the console.
+	// The type of the API product. The valid values are not declared in the API definition. Refer to the types displayed in the console.
 	//
 	// example:
 	//

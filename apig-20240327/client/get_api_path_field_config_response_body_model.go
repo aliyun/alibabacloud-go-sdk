@@ -161,7 +161,7 @@ func (s *GetApiPathFieldConfigResponseBodyData) Validate() error {
 }
 
 type GetApiPathFieldConfigResponseBodyDataPathConfigs struct {
-	// The collection of field configurations under the path, grouped by mapping key, where each group represents a set of field configuration items.
+	// The collection of field configurations under the path, grouped by mapping key. Each group contains a set of field configuration items.
 	FieldPaths map[string][]*DataPathConfigsFieldPathsValue `json:"fieldPaths,omitempty" xml:"fieldPaths,omitempty"`
 	// The request path of the API.
 	//

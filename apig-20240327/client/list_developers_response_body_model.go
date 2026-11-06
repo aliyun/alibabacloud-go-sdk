@@ -32,7 +32,7 @@ type ListDevelopersResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *ListDevelopersResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of entries on the current page.
+	// The maximum number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListDevelopersResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. An empty value indicates that the last page has been reached.
+	// The pagination token for the next page. An empty value indicates that you have reached the last page.
 	//
 	// example:
 	//
@@ -210,19 +210,19 @@ func (s *ListDevelopersResponseBodyData) Validate() error {
 }
 
 type ListDevelopersResponseBodyDataContent struct {
-	// The developer ID. You can use this ID to locate the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+	// The ID of the developer. You can use this ID to identify the developer in operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
 	//
 	// example:
 	//
 	// dev-xxxxxxxx
 	DeveloperId *string `json:"developerId,omitempty" xml:"developerId,omitempty"`
-	// The ID of the portal to which the developer belongs. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+	// The ID of the portal to which the developer belongs. You can use this ID to identify the portal in operations such as GetPortal, UpdatePortal, and DeletePortal.
 	//
 	// example:
 	//
 	// portal-xxxxxxxx
 	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	// The status of the developer. Valid values: PENDING, APPROVED, and REJECTED.
+	// The developer status. Valid values: PENDING, APPROVED, and REJECTED.
 	//
 	// example:
 	//

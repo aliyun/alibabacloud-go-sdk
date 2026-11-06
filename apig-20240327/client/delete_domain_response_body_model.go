@@ -30,7 +30,7 @@ type DeleteDomainResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the API call chain.
+	// The request ID used to trace API calls.
 	//
 	// example:
 	//

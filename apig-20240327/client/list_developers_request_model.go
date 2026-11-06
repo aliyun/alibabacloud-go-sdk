@@ -26,13 +26,13 @@ type iListDevelopersRequest interface {
 }
 
 type ListDevelopersRequest struct {
-	// The maximum number of entries per page. The default value and valid values are not specified in the API definition.
+	// The maximum number of entries to return per page. The default value and valid values are not specified in the API definition.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination cursor. Pass the nextToken value returned in the previous response to retrieve the next page. Do not pass this parameter for the first query.
+	// The pagination token. Pass the nextToken returned in the previous response to retrieve the next page. Do not specify this parameter for the first request.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListDevelopersRequest struct {
 	//
 	// portal-xxxxxxxx
 	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	// The status of the developer used to filter developers. Valid values: PENDING, APPROVED, and REJECTED.
+	// The developer status used to filter developers. Valid values: PENDING, APPROVED, and REJECTED.
 	//
 	// example:
 	//
 	// APPROVED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The logon username of the developer used to filter developers.
+	// The logon username of the developer used to filter developers by username.
 	//
 	// example:
 	//

@@ -157,15 +157,15 @@ func (s *ImportHttpApiResponseBodyData) Validate() error {
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfo struct {
-	// The error messages. If the error messages are not empty, the API cannot be imported.
+	// The error messages. If this field is not empty, the API cannot be imported successfully.
 	ErrorMessages []*string `json:"errorMessages,omitempty" xml:"errorMessages,omitempty" type:"Repeated"`
-	// The information about the existing API. If this field is not empty, the import action will update this API.
+	// The existing API information. If this field is not empty, the import operation will update the API.
 	ExistHttpApiInfo *HttpApiApiInfo `json:"existHttpApiInfo,omitempty" xml:"existHttpApiInfo,omitempty"`
 	// The list of data structures that failed the dry run.
 	FailureComponents []*ImportHttpApiResponseBodyDataDryRunInfoFailureComponents `json:"failureComponents,omitempty" xml:"failureComponents,omitempty" type:"Repeated"`
 	// The list of operations that failed the dry run.
 	FailureOperations []*ImportHttpApiResponseBodyDataDryRunInfoFailureOperations `json:"failureOperations,omitempty" xml:"failureOperations,omitempty" type:"Repeated"`
-	// The list of routes that failed.
+	// The list of failed routes.
 	FailureRoutes []*ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes `json:"failureRoutes,omitempty" xml:"failureRoutes,omitempty" type:"Repeated"`
 	// The MCP tool definition information.
 	//
@@ -177,9 +177,9 @@ type ImportHttpApiResponseBodyDataDryRunInfo struct {
 	SuccessComponents []*ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents `json:"successComponents,omitempty" xml:"successComponents,omitempty" type:"Repeated"`
 	// The list of operations that passed the dry run.
 	SuccessOperations []*ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations `json:"successOperations,omitempty" xml:"successOperations,omitempty" type:"Repeated"`
-	// The list of routes that were imported.
+	// The list of successfully imported routes.
 	SuccessRoutes []*ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes `json:"successRoutes,omitempty" xml:"successRoutes,omitempty" type:"Repeated"`
-	// The warning messages. If the warning messages are not empty, some operations or data structures may fail to be imported.
+	// The warning messages. If this field is not empty, some operations or data structures may fail to be imported.
 	WarningMessages []*string `json:"warningMessages,omitempty" xml:"warningMessages,omitempty" type:"Repeated"`
 }
 
@@ -349,7 +349,7 @@ type ImportHttpApiResponseBodyDataDryRunInfoFailureComponents struct {
 	//
 	// example:
 	//
-	// The data structure definition is invalid
+	// Invalid data structure definition
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// The data structure name.
 	//
@@ -394,7 +394,7 @@ type ImportHttpApiResponseBodyDataDryRunInfoFailureOperations struct {
 	//
 	// example:
 	//
-	// The response definition is missing
+	// Missing response definition
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// The operation method.
 	//
@@ -497,9 +497,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes) Validate() error 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: create.
+	// - Create: create
 	//
-	// - Update: update.
+	// - Update: update
 	//
 	// example:
 	//
@@ -546,9 +546,9 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents) Validate() er
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations struct {
 	// The action to be performed after the dry run. Valid values:
 	//
-	// - Create: create.
+	// - Create: create
 	//
-	// - Update: update.
+	// - Update: update
 	//
 	// example:
 	//
@@ -623,7 +623,7 @@ func (s *ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations) Validate() er
 }
 
 type ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes struct {
-	// The action type.
+	// The operation type.
 	//
 	// example:
 	//

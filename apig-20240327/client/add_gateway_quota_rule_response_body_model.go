@@ -32,13 +32,13 @@ type AddGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *AddGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *AddGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
+	// Indicates whether the semantics of this write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed conflict overwrites.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type AddGatewayQuotaRuleResponseBodyData struct {
 	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	// The conflict preview.
 	ConflictPreview *AddGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
-	// Indicates whether the request is a dry run.
+	// Indicates whether a dry run is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -241,30 +241,38 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer subject. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month respectively.
+	// Deprecated
+	//
+	// The period type of the existing conflicting rule on the consumption subject. If conflictPeriodType is day, week, or month, it indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer subject. A value of calendar indicates that the existing conflicting rule uses a calendar period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+	// The type of the existing conflicting rule on the consumption subject. If conflictType is calendar, it indicates that the existing conflicting rule on the consumption subject is a natural period. If conflictType is epoch, it indicates that the existing conflicting rule is a custom period.
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The conflicting consumer ID. Use subjectId instead.
+	// The ID of the conflicting consumer. You can now use subjectId instead.
 	//
 	// example:
 	//
 	// cs-xxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The conflicting consumer name. Use subjectName instead.
+	// The name of the conflicting consumer. You can now use subjectName instead.
 	//
 	// example:
 	//
 	// consumer-a
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
+	// The period type of the existing conflicting rule. day, week, and month indicate day, week, and month, respectively.
+	//
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
 	// The ID of the conflicting subject.
 	//
 	// example:
@@ -309,6 +317,10 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumerNam
 	return s.ConsumerName
 }
 
+func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetPeriodType() *string {
+	return s.PeriodType
+}
+
 func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetSubjectId() *string {
 	return s.SubjectId
 }
@@ -338,6 +350,11 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerId(
 
 func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerName(v string) *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
 	s.ConsumerName = &v
+	return s
+}
+
+func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetPeriodType(v string) *AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.PeriodType = &v
 	return s
 }
 

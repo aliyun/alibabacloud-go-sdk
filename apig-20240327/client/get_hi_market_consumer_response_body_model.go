@@ -102,15 +102,15 @@ type GetHiMarketConsumerResponseBodyData struct {
 	//
 	// cs-xxxxxxxxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The description of the consumer.
+	// The consumer description.
 	//
 	// example:
 	//
 	// Dedicated test consumer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the consumer is the primary consumer.
+	// Indicates whether the consumer is a primary consumer.
 	IsPrimary *bool `json:"isPrimary,omitempty" xml:"isPrimary,omitempty"`
-	// The name of the consumer.
+	// The consumer name.
 	//
 	// example:
 	//

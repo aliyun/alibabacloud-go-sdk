@@ -176,13 +176,13 @@ func (s *ListPluginAttachmentsResponseBodyData) Validate() error {
 }
 
 type ListPluginAttachmentsResponseBodyDataItems struct {
-	// The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+	// The plugin mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Indicates whether the plug-in is enabled.
+	// Indicates whether the plugin is enabled.
 	//
 	// example:
 	//
@@ -192,21 +192,21 @@ type ListPluginAttachmentsResponseBodyDataItems struct {
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
 	// The parent resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
-	// The plug-in mount ID.
+	// The plugin mount ID.
 	//
 	// example:
 	//
 	// pa-d0j9t5em1hkncrlo51mg
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plug-in class information.
+	// The plugin type information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
-	// The Base64-encoded content of the original plug-in configuration.
+	// The Base64-encoded content of the original plugin configuration.
 	//
 	// example:
 	//
 	// bGltaXRfYnlfaGVhZGVyOiB4LWFwaS1rZXkKbGltaXRfa2V5czoKLSBrZXk6IGV4YW1wbGUta2V5LWEKICBxdWVyeV9wZXJfc2Vjb25kOiAxMAotIGtleTogZXhhbXBsZS1rZXktYgogIHF1ZXJ5X3Blcl9zZWNvbmQ6IDEK
 	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//

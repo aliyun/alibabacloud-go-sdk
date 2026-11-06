@@ -38,13 +38,13 @@ type iListHttpApiOperationsRequest interface {
 }
 
 type ListHttpApiOperationsRequest struct {
-	// The consumer authorization rule ID used to filter the API operation list. When specified, the response includes only authorized API operations.
+	// Filters API operations by a specific consumer authorization rule ID. The response includes only authorized API operations.
 	//
 	// example:
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// Specifies whether to filter by authentication enablement status.
+	// Specifies whether to enable the authentication filter.
 	//
 	// example:
 	//
@@ -56,19 +56,19 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// true
 	ForDeploy *bool `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
-	// The gateway ID used to filter results.
+	// The ID of the gateway used to filter API operations.
 	//
 	// example:
 	//
 	// gw-001
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Lists API operations by HTTP method.
+	// Filters API operations by HTTP method.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// Searches for API operations by exact name match.
+	// Searches for API operations by exact name.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// GetUser
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number to return. Pages start from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -92,25 +92,25 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Searches for API operations by path prefix match.
+	// Searches for API operations by path prefix.
 	//
 	// example:
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// The environment ID. When specified together with withConsumerInfoById, the response includes the authorization rule list of the specified consumer in the specified environment for each API operation.
+	// The ID of the environment. The response includes the list of authorization rules for the specified consumer in this environment for each API operation. You must also specify the withConsumerInfoById parameter.
 	//
 	// example:
 	//
 	// env-xxx
 	WithConsumerInEnvironmentId *string `json:"withConsumerInEnvironmentId,omitempty" xml:"withConsumerInEnvironmentId,omitempty"`
-	// The consumer ID. When specified together with withConsumerInEnvironmentId, the response includes the authorization rule list of the specified consumer in the specified environment for each API operation.
+	// The ID of the consumer. The response includes the list of authorization rules for this consumer in the specified environment for each API operation. You must also specify the withConsumerInEnvironmentId parameter.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// The plug-in ID used to retrieve plug-in deployment information.
+	// The ID of the plugin. Retrieves the plugin release information based on this plugin ID.
 	//
 	// example:
 	//

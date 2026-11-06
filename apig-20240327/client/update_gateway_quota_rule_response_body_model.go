@@ -32,11 +32,11 @@ type UpdateGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *UpdateGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message.
+	// The message.
 	//
 	// example:
 	//
-	// Hello, World!
+	// Hello, world!
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The unique identifier of the request.
 	//
@@ -100,7 +100,7 @@ func (s *UpdateGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type UpdateGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
+	// Specifies whether the semantics of the current write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed overwrites for conflicts.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type UpdateGatewayQuotaRuleResponseBodyData struct {
 	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	// The conflict preview.
 	ConflictPreview *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
-	// Indicates whether the request is a dry run.
+	// Specifies whether a dry run is performed.
 	//
 	// example:
 	//
@@ -241,30 +241,38 @@ func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error
 }
 
 type UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer subject. Valid values: day (daily), week (weekly), and month (monthly).
+	// Deprecated
+	//
+	// The period type of the existing conflicting rule on the consumption subject. A value of day, week, or month indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer subject. A value of calendar indicates a calendar-period rule. A value of epoch indicates a custom-period rule.
+	// The type of the existing conflicting rule on the consumption subject. A value of calendar indicates that the existing conflicting rule on the consumption subject uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The consumer ID. Use subjectId instead.
+	// The consumer ID. You can now uniformly use subjectId instead.
 	//
 	// example:
 	//
 	// cs-d82n1g6m1hkm375xxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer name. Use subjectName instead.
+	// The consumer name. You can now uniformly use subjectName instead.
 	//
 	// example:
 	//
 	// consumer-a
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
+	// The period type of the existing conflicting rule. Valid values: day, week, and month, which indicate day, week, and month, respectively.
+	//
+	// example:
+	//
+	// day
+	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
 	// The ID of the conflicting subject.
 	//
 	// example:
@@ -309,6 +317,10 @@ func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumer
 	return s.ConsumerName
 }
 
+func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetPeriodType() *string {
+	return s.PeriodType
+}
+
 func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetSubjectId() *string {
 	return s.SubjectId
 }
@@ -338,6 +350,11 @@ func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumer
 
 func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerName(v string) *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
 	s.ConsumerName = &v
+	return s
+}
+
+func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetPeriodType(v string) *UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.PeriodType = &v
 	return s
 }
 

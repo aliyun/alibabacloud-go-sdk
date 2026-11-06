@@ -110,7 +110,7 @@ type ListApiPathFieldTemplatesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *ListApiPathFieldTemplatesResponseBodyData) Validate() error {
 }
 
 type ListApiPathFieldTemplatesResponseBodyDataItems struct {
-	// The request path corresponding to the field template.
+	// The API request path corresponding to the field template.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type ListApiPathFieldTemplatesResponseBodyDataItems struct {
 	//
 	// openai
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The ID of the field template.
+	// The field template ID.
 	//
 	// example:
 	//

@@ -42,25 +42,25 @@ type iListHttpApiRoutesRequest interface {
 }
 
 type ListHttpApiRoutesRequest struct {
-	// The backend service name. You can use this parameter to filter routes.
+	// The backend service name used to filter routes.
 	//
 	// example:
 	//
 	// test-svc
 	BackendServiceName *string `json:"backendServiceName,omitempty" xml:"backendServiceName,omitempty"`
-	// Filters the API list by a specific consumer authorization rule ID. The API list in the response contains only authorized APIs.
+	// The consumer authorization rule ID used to filter the API list. The API list in the response includes only authorized APIs.
 	//
 	// example:
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// The deployment status of the route.
+	// The deployment statuses of the routes.
 	//
 	// example:
 	//
 	// NotDeployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	// Filters route information by domain name ID.
+	// The domain name ID used to filter route information.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// true
 	ForDeploy *bool `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
-	// The cloud-native API gateway ID.
+	// The ID of the cloud-native API gateway.
 	//
 	// example:
 	//
@@ -90,13 +90,13 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Performs a fuzzy match by route name.
+	// The keyword for fuzzy match by route name.
 	//
 	// example:
 	//
 	// item
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -108,25 +108,25 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Performs a fuzzy match by route path.
+	// The keyword for fuzzy match by route path.
 	//
 	// example:
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// Includes consumer authorization information in the response.
+	// Specifies whether to include consumer authorization information in the response.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	// Includes the authorization rule list of the specified consumer ID in each route in the response.
+	// Specifies whether to include the list of authorization rules for a specified consumer ID in each route entry in the response.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// Includes the mount information of the specified plug-in ID in each route in the response.
+	// Specifies whether to include the mount information for a specified plugin ID in each route entry in the response.
 	//
 	// example:
 	//

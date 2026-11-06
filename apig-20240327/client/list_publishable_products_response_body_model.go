@@ -96,7 +96,7 @@ func (s *ListPublishableProductsResponseBody) Validate() error {
 }
 
 type ListPublishableProductsResponseBodyData struct {
-	// The list of API products that can be published to the portal. Each element in the list is named productInfo and contains the information about an API product.
+	// The list of API products that can be published to the portal. The list element is named productInfo, and each element contains the information about an API product.
 	Content []*ListPublishableProductsResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,19 +176,19 @@ func (s *ListPublishableProductsResponseBodyData) Validate() error {
 }
 
 type ListPublishableProductsResponseBodyDataContent struct {
-	// The description of the API product. This corresponds to the Description property of the Product resource.
+	// The description of the API product, which is the Description property of the Product resource.
 	//
 	// example:
 	//
 	// An API product that provides weather query capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the API product. This corresponds to the Name property of the Product resource.
+	// The name of the API product, which is the Name property of the Product resource.
 	//
 	// example:
 	//
 	// weather-query-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the API product. This is the primary ID of the Product resource. You can use this ID in the PublishProduct operation at /himarket/v1/products/{productId}/publications to publish the product to the portal. You can also use it to locate the product in operations such as GetProduct and ListProductPublications.
+	// The ID of the API product, which is the primary ID of the Product resource. You can use this ID in the PublishProduct operation at /himarket/v1/products/{productId}/publications to publish the product to the portal. You can also use it to locate the product in operations such as GetProduct and ListProductPublications.
 	//
 	// example:
 	//

@@ -96,7 +96,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBody) Validate() error {
 }
 
 type QueryConsumerAuthorizationRulesResponseBodyData struct {
-	// The list of consumer authorization rules.
+	// The list of consumer rules.
 	Items []*QueryConsumerAuthorizationRulesResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -178,7 +178,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyData) Validate() error {
 type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// The consumer authorization rule ID.
+	// The ID of the consumer authorization rule.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type QueryConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The deployment status of the API in the current environment.
+	// The publish status of the API in the current environment.
 	//
 	// example:
 	//
@@ -469,7 +469,7 @@ func (s *QueryConsumerAuthorizationRulesResponseBodyDataItems) Validate() error 
 type QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo struct {
 	// The API operation information.
 	OperationInfo *HttpApiOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty"`
-	// The routing rule.
+	// The routing rules.
 	Route *HttpRoute `json:"route,omitempty" xml:"route,omitempty"`
 }
 

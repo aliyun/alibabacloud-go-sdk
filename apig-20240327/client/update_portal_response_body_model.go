@@ -96,7 +96,7 @@ func (s *UpdatePortalResponseBody) Validate() error {
 }
 
 type UpdatePortalResponseBodyData struct {
-	// The ID of the updated portal. This is the primary ID of the portal resource specified by the portalId path parameter.
+	// The portal ID. It is the ID of the updated portal, which corresponds to the primary ID of the portal resource specified by the portalId path parameter.
 	//
 	// example:
 	//

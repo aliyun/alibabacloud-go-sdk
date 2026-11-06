@@ -34,7 +34,7 @@ type GetDomainResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the API call chain.
+	// The request ID used to trace the API call chain.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *GetDomainResponseBody) Validate() error {
 }
 
 type GetDomainResponseBodyData struct {
-	// The encryption algorithm name.
+	// The name of the encryption algorithm.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The source from which the domain name was created.
+	// The creation source.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Indicates whether this is the default domain name.
+	// Indicates whether the domain name is the default domain name.
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// Serverless
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
+	// The Settings for the HTTPS Protocol Type and whether forced HTTPS redirection is enabled.
 	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// The HTTP/2 setting.
+	// The HTTP/2 settings.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Alibaba
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// Indicates whether mutual TLS (mTLS) authentication is enabled.
+	// Indicates whether mTLS mutual authentication is enabled.
 	//
 	// example:
 	//
@@ -218,23 +218,23 @@ type GetDomainResponseBodyData struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The certificate expiration time.
+	// The expiration time of the certificate.
 	//
 	// example:
 	//
 	// 1719386834548
 	NotAfterTimstamp *int64 `json:"notAfterTimstamp,omitempty" xml:"notAfterTimstamp,omitempty"`
-	// The certificate effective period.
+	// The effective period of the certificate.
 	//
 	// example:
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The protocol type supported by the domain name.
+	// The protocol types supported by the domain name.
 	//
-	// - HTTP: Only the HTTP protocol is supported.
+	// - HTTP: Supports only the HTTP protocol.
 	//
-	// - HTTPS: Only the HTTPS protocol is supported.
+	// - HTTPS: Supports only the HTTPS protocol.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// rg-aekztduhoagat4y
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// All domain names bound to the certificate.
+	// All the domain names bound to the certificate.
 	//
 	// example:
 	//
@@ -256,13 +256,13 @@ type GetDomainResponseBodyData struct {
 	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
+	// The maximum TLS protocol version. The maximum supported version is TLS 1.3.
 	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
+	// The minimum TLS protocol version. The minimum supported version is TLS 1.0.
 	//
 	// example:
 	//

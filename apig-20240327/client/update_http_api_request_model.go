@@ -48,7 +48,7 @@ type UpdateHttpApiRequest struct {
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The base path of the API. The value must start with a forward slash (/).
+	// The base path of the API, which must start with a forward slash (/).
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type UpdateHttpApiRequest struct {
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The API description.
+	// The description of the API.
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type UpdateHttpApiRequest struct {
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The first byte timeout period. Unit: seconds.
+	// The time to first byte timeout, in seconds.
 	//
 	// example:
 	//
 	// 30
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The configuration of the HTTP Ingress API.
+	// The configuration information of the HTTP Ingress API.
 	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
-	// Specifies whether to only modify the configuration. If this parameter is set to true, only the configuration is modified without triggering redeployment.
+	// Specifies whether to only modify the configuration. A value of true indicates that only the configuration is modified without triggering a redeployment.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type UpdateHttpApiRequest struct {
 	OnlyChangeConfig *bool `json:"onlyChangeConfig,omitempty" xml:"onlyChangeConfig,omitempty"`
 	// The list of API access protocols.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// Specifies whether to remove the base path when forwarding requests.
+	// Specifies whether to remove the base path during forwarding.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type UpdateHttpApiRequest struct {
 	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
 	// The API versioning configuration.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
-	// The idempotency token. If you call this operation for the same HTTP API by using the same clientToken value and request parameters, the result of the first successful call is returned.
+	// The idempotency token. If the same HTTP API is repeatedly called with the same client token and request parameters, the first successful result is returned.
 	//
 	// example:
 	//
 	// update-http-api-client-token-001
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// Specifies whether to perform only a dry run. If this parameter is set to true, all synchronous validations identical to an actual update are performed, but no configurations are updated and no side effects are produced. If this parameter is not specified or is set to false, the behavior is the same as the existing version.
+	// Specifies whether to perform a dry run. If set to true, all synchronization checks consistent with a real update are executed, but no configurations are updated and no side effects are generated. If left empty or set to false, the behavior is consistent with the existing version.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -300,7 +300,7 @@ type UpdateHttpApiRequestIngressConfig struct {
 	//
 	// src-crdddallhtgtr****
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The namespace to listen on.
+	// The namespace to watch.
 	//
 	// example:
 	//

@@ -50,7 +50,7 @@ type ListChatSessionsResponseBody struct {
 	//
 	// token-xxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ListChatSessionsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type ListChatSessionsResponseBodyDataContent struct {
 	//
 	// ses-xxxxxxxx
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The conversation type of the session. Valid values: MODEL and AGENT. These values are defined in the talkType enumeration of the CreateChatSession request parameter, and this response parameter does not have the @enums annotation.
+	// The conversation type of the session. Valid values: MODEL and AGENT. These values are defined in the talkType request parameter of the CreateChatSession operation. This response parameter does not include the @enums annotation.
 	//
 	// example:
 	//

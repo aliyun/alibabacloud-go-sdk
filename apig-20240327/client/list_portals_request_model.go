@@ -28,7 +28,7 @@ type ListPortalsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The portal name, which is the Name property of the portal resource. This corresponds to the name field in the response list items.
+	// The name of the portal. This corresponds to the Name property of the portal resource and matches the name field in the response list items.
 	//
 	// example:
 	//

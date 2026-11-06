@@ -18,7 +18,7 @@ type iListPublishableProductsRequest interface {
 }
 
 type ListPublishableProductsRequest struct {
-	// The name of the API product. This corresponds to the name field in the response list items.
+	// The name of the API product. This is the same field as the name property in the response list items.
 	//
 	// example:
 	//

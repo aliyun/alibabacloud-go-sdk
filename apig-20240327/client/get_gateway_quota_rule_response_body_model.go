@@ -100,21 +100,33 @@ func (s *GetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyData struct {
-	// The period base timestamp.
+	// The base timestamp of the cycle, in UNIX seconds.
 	//
 	// example:
 	//
 	// 1745846400000
 	BaseTimestamp *int64 `json:"baseTimestamp,omitempty" xml:"baseTimestamp,omitempty"`
-	// The number of API consumers associated with the rule.
+	// The number of consumers associated with the rule.
 	//
 	// example:
 	//
 	// 20
 	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
-	// The list of subjects (API consumers) bound to this rule.
+	// The list of subjects (consumers) bound to this rule.
 	Consumers []*GetGatewayQuotaRuleResponseBodyDataConsumers `json:"consumers,omitempty" xml:"consumers,omitempty" type:"Repeated"`
-	// The quota period type.
+	// The reset time of the current cycle, in RFC 3339 format.
+	//
+	// example:
+	//
+	// 2026-10-25T00:00:00Z
+	CurrentCycleResetAt *string `json:"currentCycleResetAt,omitempty" xml:"currentCycleResetAt,omitempty"`
+	// The number of days in the custom cycle. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural cycles.
+	//
+	// example:
+	//
+	// 3
+	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
+	// The quota cycle type.
 	//
 	// example:
 	//
@@ -156,21 +168,21 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// 120
 	SubjectCount *int64 `json:"subjectCount,omitempty" xml:"subjectCount,omitempty"`
-	// The rule subject type. Valid values: consumer and consumer_group.
+	// The subject type of the rule. Valid values: consumer and consumer_group.
 	//
 	// example:
 	//
 	// consumer_group
 	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
-	// The list of general subjects bound to this rule. Returned only when withSubjects is set to true.
+	// The list of general subjects bound to this rule. This parameter is returned only when withSubjects is set to true.
 	Subjects []*GetGatewayQuotaRuleResponseBodyDataSubjects `json:"subjects,omitempty" xml:"subjects,omitempty" type:"Repeated"`
-	// The time zone corresponding to the calendar period, in UTC+x format.
+	// The time zone corresponding to the natural cycle, in UTC+x format.
 	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset period type.
+	// The reset cycle type.
 	//
 	// example:
 	//
@@ -196,6 +208,14 @@ func (s *GetGatewayQuotaRuleResponseBodyData) GetConsumerCount() *int64 {
 
 func (s *GetGatewayQuotaRuleResponseBodyData) GetConsumers() []*GetGatewayQuotaRuleResponseBodyDataConsumers {
 	return s.Consumers
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) GetCurrentCycleResetAt() *string {
+	return s.CurrentCycleResetAt
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) GetPeriodMultiplier() *int64 {
+	return s.PeriodMultiplier
 }
 
 func (s *GetGatewayQuotaRuleResponseBodyData) GetPeriodType() *string {
@@ -254,6 +274,16 @@ func (s *GetGatewayQuotaRuleResponseBodyData) SetConsumerCount(v int64) *GetGate
 
 func (s *GetGatewayQuotaRuleResponseBodyData) SetConsumers(v []*GetGatewayQuotaRuleResponseBodyDataConsumers) *GetGatewayQuotaRuleResponseBodyData {
 	s.Consumers = v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) SetCurrentCycleResetAt(v string) *GetGatewayQuotaRuleResponseBodyData {
+	s.CurrentCycleResetAt = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) SetPeriodMultiplier(v int64) *GetGatewayQuotaRuleResponseBodyData {
+	s.PeriodMultiplier = &v
 	return s
 }
 
@@ -335,13 +365,13 @@ func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
-	// The subject (API consumer) ID.
+	// The ID of the subject (consumer).
 	//
 	// example:
 	//
 	// c-aaa
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The subject (API consumer) name.
+	// The name of the subject (consumer).
 	//
 	// example:
 	//

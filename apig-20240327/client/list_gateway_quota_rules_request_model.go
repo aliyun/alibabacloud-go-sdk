@@ -22,7 +22,7 @@ type iListGatewayQuotaRulesRequest interface {
 }
 
 type ListGatewayQuotaRulesRequest struct {
-	// The rule name keyword for fuzzy match.
+	// The keyword used for fuzzy matching of rule names.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListGatewayQuotaRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

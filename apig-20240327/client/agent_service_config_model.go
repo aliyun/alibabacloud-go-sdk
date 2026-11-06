@@ -25,6 +25,8 @@ type iAgentServiceConfig interface {
 	GetProtocols() []*string
 	SetProvider(v string) *AgentServiceConfig
 	GetProvider() *string
+	SetUpstreamAuthMode(v string) *AgentServiceConfig
+	GetUpstreamAuthMode() *string
 }
 
 type AgentServiceConfig struct {
@@ -36,13 +38,13 @@ type AgentServiceConfig struct {
 	//
 	// https://dashscope.aliyuncs.com/api/v1
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The custom configuration. This parameter is required when provider is set to custom.
+	// The custom configuration. Specify this parameter when provider is set to custom.
 	CustomConfig *AgentServiceConfigCustomConfig `json:"customConfig,omitempty" xml:"customConfig,omitempty" type:"Struct"`
-	// The DashScope service configuration. This parameter is required when provider is set to qwen. The appCredentials parameter cannot be empty, and each entry must have non-empty appId and apiKey values.
+	// The DashScope service configuration. Specify this parameter when provider is set to qwen. The appCredentials parameter cannot be empty, and both appId and apiKey must be specified for each item.
 	DashScopeConfig *AgentServiceConfigDashScopeConfig `json:"dashScopeConfig,omitempty" xml:"dashScopeConfig,omitempty" type:"Struct"`
-	// The Dify service configuration. This parameter is required when provider is set to dify. The botType and apiKey parameters cannot be empty.
+	// The Dify service configuration. Specify this parameter when provider is set to dify. Both botType and apiKey must be specified.
 	DifyConfig *AgentServiceConfigDifyConfig `json:"difyConfig,omitempty" xml:"difyConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable health check.
+	// Specifies whether to enable the health check.
 	//
 	// example:
 	//
@@ -64,6 +66,12 @@ type AgentServiceConfig struct {
 	//
 	// qwen
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
+	// Supported only for custom agents. The value api-key indicates a managed API key, and downstream-auth indicates passing through the complete client Authorization header. If this parameter is omitted or left empty during creation, the historical rule applies. If this parameter is omitted or left empty during an update, the existing mode is retained. When passing through the authorization, you can omit customConfig, and you cannot submit a non-empty key.
+	//
+	// example:
+	//
+	// api-key
+	UpstreamAuthMode *string `json:"upstreamAuthMode,omitempty" xml:"upstreamAuthMode,omitempty"`
 }
 
 func (s AgentServiceConfig) String() string {
@@ -106,6 +114,10 @@ func (s *AgentServiceConfig) GetProvider() *string {
 	return s.Provider
 }
 
+func (s *AgentServiceConfig) GetUpstreamAuthMode() *string {
+	return s.UpstreamAuthMode
+}
+
 func (s *AgentServiceConfig) SetAddress(v string) *AgentServiceConfig {
 	s.Address = &v
 	return s
@@ -143,6 +155,11 @@ func (s *AgentServiceConfig) SetProtocols(v []*string) *AgentServiceConfig {
 
 func (s *AgentServiceConfig) SetProvider(v string) *AgentServiceConfig {
 	s.Provider = &v
+	return s
+}
+
+func (s *AgentServiceConfig) SetUpstreamAuthMode(v string) *AgentServiceConfig {
+	s.UpstreamAuthMode = &v
 	return s
 }
 

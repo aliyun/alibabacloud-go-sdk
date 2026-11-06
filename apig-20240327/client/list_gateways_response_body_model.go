@@ -26,7 +26,7 @@ type ListGatewaysResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The query result of the gateway list.
+	// The gateway list query results.
 	Data *ListGatewaysResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -110,7 +110,7 @@ type ListGatewaysResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of gateways.
+	// The total count.
 	//
 	// example:
 	//
@@ -178,9 +178,9 @@ func (s *ListGatewaysResponseBodyData) Validate() error {
 type ListGatewaysResponseBodyDataItems struct {
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go.
+	// - POSTPAY: Pay-as-you-go.
 	//
-	// - PREPAY: subscription.
+	// - PREPAY: Subscription.
 	//
 	// example:
 	//
@@ -188,27 +188,33 @@ type ListGatewaysResponseBodyDataItems struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The source from which the gateway was created. Valid values:
 	//
-	// - Console: the console.
+	// - Console: Alibaba Cloud Management Console.
 	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
-	// The creation timestamp. Unit: milliseconds.
+	// The timestamp when the gateway was created. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The expiration timestamp for subscription instances. Unit: milliseconds.
+	// Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or a missing value indicates that the status is unknown. This parameter is for query and display purposes only.
+	//
+	// example:
+	//
+	// false
+	ElasticEnabled *bool `json:"elasticEnabled,omitempty" xml:"elasticEnabled,omitempty"`
+	// The expiration timestamp of the subscription gateway. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 172086834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The gateway instance edition. Valid values:
+	// The edition of the gateway instance. Valid values:
 	//
-	// - Professional: standard instance.
+	// - Professional: Regular instance.
 	//
 	// - Serverless: Serverless instance.
 	//
@@ -246,7 +252,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// true
 	Legacy *bool `json:"legacy,omitempty" xml:"legacy,omitempty"`
-	// The list of gateway ingress addresses.
+	// The list of ingress addresses for the gateway.
 	LoadBalancers []*ListGatewaysResponseBodyDataItemsLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
 	// The gateway name.
 	//
@@ -254,7 +260,11 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of gateway instance nodes.
+	// The network access configuration of the gateway, including the access ingress type and the security group used by the internal endpoint. This parameter is returned only when the gateway is configured with an internal ingress.
+	NetworkAccessConfig *ListGatewaysResponseBodyDataItemsNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
+	// The private connection information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
+	PrivateLink *ListGatewaysResponseBodyDataItemsPrivateLink `json:"privateLink,omitempty" xml:"privateLink,omitempty" type:"Struct"`
+	// The number of nodes in the gateway instance.
 	//
 	// example:
 	//
@@ -270,7 +280,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// The gateway specification. Valid values:
 	//
-	// - apigw.small.x1: small specification.
+	// - apigw.small.x1: Small.
 	//
 	// example:
 	//
@@ -278,33 +288,33 @@ type ListGatewaysResponseBodyDataItems struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The gateway status. Valid values:
 	//
-	// - Running: The gateway is running.
+	// - Running: Running.
 	//
-	// - Creating: The gateway is being created.
+	// - Creating: Creating.
 	//
-	// - CreateFailed: The gateway failed to be created.
+	// - CreateFailed: Creation failed.
 	//
-	// - Upgrading: The gateway is being upgraded.
+	// - Upgrading: Upgrading.
 	//
-	// - UpgradeFailed: The gateway failed to be upgraded.
+	// - UpgradeFailed: Upgrade failed.
 	//
-	// - Restarting: The gateway is being restarted.
+	// - Restarting: Restarting.
 	//
-	// - RestartFailed: The gateway failed to be restarted.
+	// - RestartFailed: Restart failed.
 	//
-	// - Deleting: The gateway is being released.
+	// - Deleting: Releasing.
 	//
-	// - DeleteFailed: The gateway failed to be released.
+	// - DeleteFailed: Release failed.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The list of second-level domain names.
+	// The list of subdomains.
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// The list of tags.
 	Tags []*ListGatewaysResponseBodyDataItemsTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. When this value differs from version, a version upgrade can be performed.
+	// The target version of the gateway. If this value differs from the current version, you can upgrade the gateway.
 	//
 	// example:
 	//
@@ -350,6 +360,10 @@ func (s *ListGatewaysResponseBodyDataItems) GetCreateTimestamp() *int64 {
 	return s.CreateTimestamp
 }
 
+func (s *ListGatewaysResponseBodyDataItems) GetElasticEnabled() *bool {
+	return s.ElasticEnabled
+}
+
 func (s *ListGatewaysResponseBodyDataItems) GetExpireTimestamp() *int64 {
 	return s.ExpireTimestamp
 }
@@ -380,6 +394,14 @@ func (s *ListGatewaysResponseBodyDataItems) GetLoadBalancers() []*ListGatewaysRe
 
 func (s *ListGatewaysResponseBodyDataItems) GetName() *string {
 	return s.Name
+}
+
+func (s *ListGatewaysResponseBodyDataItems) GetNetworkAccessConfig() *ListGatewaysResponseBodyDataItemsNetworkAccessConfig {
+	return s.NetworkAccessConfig
+}
+
+func (s *ListGatewaysResponseBodyDataItems) GetPrivateLink() *ListGatewaysResponseBodyDataItemsPrivateLink {
+	return s.PrivateLink
 }
 
 func (s *ListGatewaysResponseBodyDataItems) GetReplicas() *string {
@@ -449,6 +471,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetCreateTimestamp(v int64) *ListGat
 	return s
 }
 
+func (s *ListGatewaysResponseBodyDataItems) SetElasticEnabled(v bool) *ListGatewaysResponseBodyDataItems {
+	s.ElasticEnabled = &v
+	return s
+}
+
 func (s *ListGatewaysResponseBodyDataItems) SetExpireTimestamp(v int64) *ListGatewaysResponseBodyDataItems {
 	s.ExpireTimestamp = &v
 	return s
@@ -486,6 +513,16 @@ func (s *ListGatewaysResponseBodyDataItems) SetLoadBalancers(v []*ListGatewaysRe
 
 func (s *ListGatewaysResponseBodyDataItems) SetName(v string) *ListGatewaysResponseBodyDataItems {
 	s.Name = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetNetworkAccessConfig(v *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) *ListGatewaysResponseBodyDataItems {
+	s.NetworkAccessConfig = v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetPrivateLink(v *ListGatewaysResponseBodyDataItemsPrivateLink) *ListGatewaysResponseBodyDataItems {
+	s.PrivateLink = v
 	return s
 }
 
@@ -564,6 +601,16 @@ func (s *ListGatewaysResponseBodyDataItems) Validate() error {
 			}
 		}
 	}
+	if s.NetworkAccessConfig != nil {
+		if err := s.NetworkAccessConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PrivateLink != nil {
+		if err := s.PrivateLink.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.SecurityGroup != nil {
 		if err := s.SecurityGroup.Validate(); err != nil {
 			return err
@@ -616,7 +663,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	//
 	// nlb-xoh3pghr***.cn-hangzhou.nlb.aliyuncs.com
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
-	// The protocol version. Valid values:
+	// The IP version. Valid values:
 	//
 	// - ipv4: IPv4.
 	//
@@ -628,15 +675,15 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
 	// The load balancing address type. Valid values:
 	//
-	// - Internet: public network.
+	// - Internet: Internet.
 	//
-	// - Intranet: private network.
+	// - Intranet: Private network.
 	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"addressType,omitempty" xml:"addressType,omitempty"`
-	// Indicates whether this is the default ingress address of the gateway.
+	// Indicates whether the address is the default ingress address of the gateway.
 	//
 	// example:
 	//
@@ -646,7 +693,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Ipv4Addresses []*string `json:"ipv4Addresses,omitempty" xml:"ipv4Addresses,omitempty" type:"Repeated"`
 	// The list of IPv6 addresses.
 	Ipv6Addresses []*string `json:"ipv6Addresses,omitempty" xml:"ipv6Addresses,omitempty" type:"Repeated"`
-	// The load balancing instance ID.
+	// The load balancing ID.
 	//
 	// example:
 	//
@@ -654,19 +701,19 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
 	// The load balancing provisioning pattern of the gateway. Valid values:
 	//
-	// - Managed: managed by the cloud-native API gateway.
+	// - Managed: Managed by Cloud-native API Gateway.
 	//
 	// example:
 	//
 	// Managed
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The list of listening ports.
+	// The list of listened ports.
 	Ports []*ListGatewaysResponseBodyDataItemsLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The status of the load balancing instance. Valid values:
+	// The status of the load balancing. Valid values:
 	//
-	// - Ready: active.
+	// - Ready: Active.
 	//
-	// - NotCreate: No instance is associated.
+	// - NotCreate: Not associated with an instance.
 	//
 	// example:
 	//
@@ -674,9 +721,9 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The load balancing type of the gateway. Valid values:
 	//
-	// - NLB: Network Load Balancer (NLB).
+	// - NLB: Network load balancing.
 	//
-	// - CLB: Classic Load Balancer (CLB).
+	// - CLB: Classic load balancing.
 	//
 	// example:
 	//
@@ -850,6 +897,281 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) SetProtocol(v stri
 }
 
 func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListGatewaysResponseBodyDataItemsNetworkAccessConfig struct {
+	// The ID of the security group configured for the internal endpoint. The security group belongs to the VPC selected by the user and is a non-managed security group.
+	//
+	// example:
+	//
+	// sg-bp1example123456789
+	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
+	// The access ingress type of the gateway.
+	//
+	// example:
+	//
+	// UnionSearchMCP
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsNetworkAccessConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsNetworkAccessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) GetEndpointSecurityGroupId() *string {
+	return s.EndpointSecurityGroupId
+}
+
+func (s *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) GetType() *string {
+	return s.Type
+}
+
+func (s *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) SetEndpointSecurityGroupId(v string) *ListGatewaysResponseBodyDataItemsNetworkAccessConfig {
+	s.EndpointSecurityGroupId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) SetType(v string) *ListGatewaysResponseBodyDataItemsNetworkAccessConfig {
+	s.Type = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListGatewaysResponseBodyDataItemsPrivateLink struct {
+	// The connection status between the internal endpoint and the endpoint service.
+	//
+	// example:
+	//
+	// Connected
+	ConnectionStatus *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
+	// The endpoint domain name used for connection configuration.
+	//
+	// example:
+	//
+	// ep-bp1example123456789.epsrv-bp1example123456789.cn-hangzhou.privatelink.aliyuncs.com
+	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
+	// The endpoint ID.
+	//
+	// example:
+	//
+	// ep-bp1example123456789
+	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	// The ID of the security group configured for the internal endpoint.
+	//
+	// example:
+	//
+	// sg-bp1example123456789
+	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
+	// The status of the internal endpoint.
+	//
+	// example:
+	//
+	// Active
+	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
+	// The error code of the most recent fault that occurred during the create or delete procedure of the private network ingress. This parameter is not returned if no error message is available.
+	//
+	// example:
+	//
+	// Forbidden.RAM
+	LastErrorCode *string `json:"lastErrorCode,omitempty" xml:"lastErrorCode,omitempty"`
+	// The description of the most recent fault that occurred during the create or delete procedure of the private network ingress. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+	//
+	// example:
+	//
+	// private ingress CheckProductOpen failed (Forbidden.RAM)
+	LastErrorMessage *string `json:"lastErrorMessage,omitempty" xml:"lastErrorMessage,omitempty"`
+	// The time when the system last obtained the status of the internal endpoint. The time is in RFC 3339 format, such as 2026-11-02T10:00:00Z. This parameter is not returned if the status has not been obtained.
+	//
+	// example:
+	//
+	// 2026-11-02T10:00:00Z
+	ObservedAt *string `json:"observedAt,omitempty" xml:"observedAt,omitempty"`
+	// Indicates whether the internal endpoint may continue to incur charges. A value of true indicates that the endpoint has been created and its release has not been confirmed. A value of false indicates that there is no such charge prompt currently. The actual charges are subject to the bill.
+	//
+	// example:
+	//
+	// true
+	ResourceMayBeCharged *bool `json:"resourceMayBeCharged,omitempty" xml:"resourceMayBeCharged,omitempty"`
+	// The current processing stage of the internal ingress. A value of Ready indicates that the internal ingress is ready.
+	//
+	// example:
+	//
+	// Ready
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+	// The zone names.
+	Zones []*ListGatewaysResponseBodyDataItemsPrivateLinkZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsPrivateLink) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsPrivateLink) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetConnectionStatus() *string {
+	return s.ConnectionStatus
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetEndpointDomain() *string {
+	return s.EndpointDomain
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetEndpointId() *string {
+	return s.EndpointId
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetEndpointSecurityGroupId() *string {
+	return s.EndpointSecurityGroupId
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetEndpointStatus() *string {
+	return s.EndpointStatus
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetLastErrorCode() *string {
+	return s.LastErrorCode
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetLastErrorMessage() *string {
+	return s.LastErrorMessage
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetObservedAt() *string {
+	return s.ObservedAt
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetResourceMayBeCharged() *bool {
+	return s.ResourceMayBeCharged
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetStage() *string {
+	return s.Stage
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) GetZones() []*ListGatewaysResponseBodyDataItemsPrivateLinkZones {
+	return s.Zones
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetConnectionStatus(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetEndpointDomain(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.EndpointDomain = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetEndpointId(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetEndpointSecurityGroupId(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.EndpointSecurityGroupId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetEndpointStatus(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.EndpointStatus = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetLastErrorCode(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.LastErrorCode = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetLastErrorMessage(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.LastErrorMessage = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetObservedAt(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.ObservedAt = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetResourceMayBeCharged(v bool) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.ResourceMayBeCharged = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetStage(v string) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.Stage = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) SetZones(v []*ListGatewaysResponseBodyDataItemsPrivateLinkZones) *ListGatewaysResponseBodyDataItemsPrivateLink {
+	s.Zones = v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLink) Validate() error {
+	if s.Zones != nil {
+		for _, item := range s.Zones {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListGatewaysResponseBodyDataItemsPrivateLinkZones struct {
+	// The status of the endpoint in the zone.
+	//
+	// example:
+	//
+	// 200
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsPrivateLinkZones) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsPrivateLinkZones) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLinkZones) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLinkZones) GetZoneId() *string {
+	return s.ZoneId
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLinkZones) SetStatus(v string) *ListGatewaysResponseBodyDataItemsPrivateLinkZones {
+	s.Status = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLinkZones) SetZoneId(v string) *ListGatewaysResponseBodyDataItemsPrivateLinkZones {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsPrivateLinkZones) Validate() error {
 	return dara.Validate(s)
 }
 

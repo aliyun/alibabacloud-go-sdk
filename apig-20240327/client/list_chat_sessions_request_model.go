@@ -20,13 +20,13 @@ type iListChatSessionsRequest interface {
 }
 
 type ListChatSessionsRequest struct {
-	// The maximum number of entries per page. The default value and value range are not specified in the API definition.
+	// The maximum number of entries per page. The default value and valid values are not specified in the API definition.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Pass the nextToken returned in the previous response to obtain the next page. Do not specify this parameter for the first query.
+	// The pagination token. Pass the nextToken returned in the previous response to retrieve the next page. Do not specify this parameter for the first query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListChatSessionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

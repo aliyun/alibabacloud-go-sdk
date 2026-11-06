@@ -36,7 +36,7 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method. This parameter is required for the Serverless edition and must be set to POSTPAY.
+	// The billing method. This parameter is required for Serverless instances and must be set to POSTPAY.
 	//
 	// example:
 	//
@@ -44,47 +44,47 @@ type CreateGatewayRequest struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The gateway instance edition. Valid values:
 	//
-	// - Professional: standard instance.
+	// - Professional: Standard instance.
 	//
 	// - Serverless: Serverless instance.
 	//
-	// - MultiTenantServerless: multi-tenant Serverless instance.
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
 	//
-	// - Unknown: unknown.
+	// - Unknown: Unknown.
 	//
 	// example:
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when gatewayType is set to AI and gatewayEdition is set to MultiTenantServerless.
+	// The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is only allowed for AI and MultiTenantServerless gateways.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
-	// The gateway type. This parameter must be explicitly set to AI for AI Serverless or multi-tenant editions.
+	// The gateway type. This parameter must be explicitly set to AI for AI Serverless or multi-tenant gateways.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The gateway log configuration.
+	// The log configuration for the gateway.
 	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// The gateway name. This parameter is required for all editions.
+	// The name of the gateway. This parameter is required for all gateway types.
 	//
 	// example:
 	//
 	// test-ceshi
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration. This parameter is required. If this parameter is not specified, the service returns an InvalidParameter.IsEmpty (400) error.
+	// The network access configuration. This parameter is actually required. If it is not provided, the service returns InvalidParameter.IsEmpty (400).
 	NetworkAccessConfig *CreateGatewayRequestNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The node specifications. This parameter is required for the Serverless edition.
+	// The node specifications. This parameter is required for Serverless instances.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type CreateGatewayRequest struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The list of tags.
 	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The virtual private cloud (VPC) ID. This parameter is required for all editions.
+	// The ID of the virtual private cloud (VPC). This parameter is required for all gateway types.
 	//
 	// example:
 	//
 	// vpc-zm0x16tomfiat1mk9f6rs
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone configuration. This parameter is required for all editions.
+	// The zone configuration. This parameter is required for all gateway types.
 	ZoneConfig *CreateGatewayRequestZoneConfig `json:"zoneConfig,omitempty" xml:"zoneConfig,omitempty" type:"Struct"`
 }
 
@@ -247,7 +247,7 @@ func (s *CreateGatewayRequest) Validate() error {
 }
 
 type CreateGatewayRequestLogConfig struct {
-	// The Simple Log Service (SLS) configuration that controls gateway log collection.
+	// The Simple Log Service (SLS) configuration used to control gateway log collection.
 	Sls *CreateGatewayRequestLogConfigSls `json:"sls,omitempty" xml:"sls,omitempty" type:"Struct"`
 }
 
@@ -278,7 +278,7 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Specifies whether to enable SLS log collection.
+	// Specifies whether to enable SLS.
 	//
 	// example:
 	//
@@ -308,6 +308,12 @@ func (s *CreateGatewayRequestLogConfigSls) Validate() error {
 }
 
 type CreateGatewayRequestNetworkAccessConfig struct {
+	// The ID of the endpoint security group. This parameter is required when a multi-tenant API gateway or multi-tenant AI gateway Enterprise Edition uses private network or dual-entry access, and must be a non-managed security group in your VPC. Do not specify this parameter for public network requests.
+	//
+	// example:
+	//
+	// sg-bp1example123456789
+	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
 	// The network access type.
 	//
 	// example:
@@ -324,8 +330,17 @@ func (s CreateGatewayRequestNetworkAccessConfig) GoString() string {
 	return s.String()
 }
 
+func (s *CreateGatewayRequestNetworkAccessConfig) GetEndpointSecurityGroupId() *string {
+	return s.EndpointSecurityGroupId
+}
+
 func (s *CreateGatewayRequestNetworkAccessConfig) GetType() *string {
 	return s.Type
+}
+
+func (s *CreateGatewayRequestNetworkAccessConfig) SetEndpointSecurityGroupId(v string) *CreateGatewayRequestNetworkAccessConfig {
+	s.EndpointSecurityGroupId = &v
+	return s
 }
 
 func (s *CreateGatewayRequestNetworkAccessConfig) SetType(v string) *CreateGatewayRequestNetworkAccessConfig {
@@ -383,13 +398,13 @@ func (s *CreateGatewayRequestTag) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfig struct {
-	// The zone selection option.
+	// The zone option.
 	//
 	// example:
 	//
 	// Manual
 	SelectOption *string `json:"selectOption,omitempty" xml:"selectOption,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -448,7 +463,7 @@ func (s *CreateGatewayRequestZoneConfig) Validate() error {
 }
 
 type CreateGatewayRequestZoneConfigZones struct {
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

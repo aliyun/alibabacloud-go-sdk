@@ -16,7 +16,7 @@ type iCheckCommodityStatusResponseBody interface {
 }
 
 type CheckCommodityStatusResponseBody struct {
-	// The commodity status list. Each item contains the commodity code and indicates whether the commodity capability is enabled for the current account.
+	// The list of commodity statuses. Each item contains the commodity code and indicates whether the commodity capability is enabled for the current account.
 	Commodities []*CheckCommodityStatusResponseBodyCommodities `json:"commodities,omitempty" xml:"commodities,omitempty" type:"Repeated"`
 	// The request ID.
 	//

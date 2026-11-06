@@ -14,7 +14,7 @@ type iGetApiPathFieldTemplateRequest interface {
 }
 
 type GetApiPathFieldTemplateRequest struct {
-	// The gateway type.
+	// The API request path used to query the corresponding field template.
 	//
 	// example:
 	//

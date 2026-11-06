@@ -40,7 +40,7 @@ type iGetConsumerAuthorizationRuleResponseBody interface {
 type GetConsumerAuthorizationRuleResponseBody struct {
 	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// The ID of the consumer authorization rule used to filter the API list. The API list in the response contains only authorized APIs.
+	// Filters the list of APIs by a specific consumer authorization rule ID. The list of APIs in the response includes only authorized APIs.
 	//
 	// example:
 	//
@@ -66,11 +66,7 @@ type GetConsumerAuthorizationRuleResponseBody struct {
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The expiration mode. Valid values:
-	//
-	// - LongTerm: long-term
-	//
-	// - ShortTerm: short-term
+	// The expiration mode. Valid values: LongTerm, ShortTerm.
 	//
 	// example:
 	//

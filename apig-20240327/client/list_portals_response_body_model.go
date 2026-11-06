@@ -130,7 +130,7 @@ func (s *ListPortalsResponseBody) Validate() error {
 }
 
 type ListPortalsResponseBodyData struct {
-	// The list of portals. The list element is named portalConfig, and each element contains the information of a HiMarket developer portal.
+	// The portal list. Each element in the list is named portalConfig and contains information about a HiMarket developer portal.
 	Content []*ListPortalsResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -144,7 +144,7 @@ type ListPortalsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -228,15 +228,15 @@ type ListPortalsResponseBodyDataContent struct {
 	//
 	// developer-portal
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of portal domain configurations. The list element is named domainConfig.
+	// The list of portal domain configurations. The list elements are named domainConfig.
 	PortalDomainConfig []*HiMarketPortalDomainConfig `json:"portalDomainConfig,omitempty" xml:"portalDomainConfig,omitempty" type:"Repeated"`
-	// The portal ID, which is the primary ID of the portal resource. It can be used in GetPortal, UpdatePortal, and DeletePortal to locate the portal at /himarket/v1/portals/{portalId}.
+	// The portal ID. This is the primary ID of the portal resource and can be used to locate the portal in the GetPortal, UpdatePortal, and DeletePortal operations through the /himarket/v1/portals/{portalId} path.
 	//
 	// example:
 	//
 	// portal-xxxxxxxx
 	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	// The portal configuration, including whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
+	// The portal configuration, which specifies whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
 	PortalSettingConfig *HiMarketPortalSettingConfig `json:"portalSettingConfig,omitempty" xml:"portalSettingConfig,omitempty"`
 	// The region ID, which corresponds to the RegionId property of the portal resource.
 	//

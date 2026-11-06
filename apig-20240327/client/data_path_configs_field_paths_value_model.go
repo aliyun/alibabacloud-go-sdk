@@ -38,7 +38,7 @@ type iDataPathConfigsFieldPathsValue interface {
 }
 
 type DataPathConfigsFieldPathsValue struct {
-	// The identity key of the field, which is unique within the same request path, such as input_token.
+	// The identifier key of the field, which is unique within the same request path, such as input_token.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// usage.prompt_tokens
 	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
-	// The value extraction rule for the field.
+	// The value extraction rule of the field.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// true
 	JsonPathRewriteAllowed *bool `json:"jsonPathRewriteAllowed,omitempty" xml:"jsonPathRewriteAllowed,omitempty"`
-	// Indicates whether the field configuration is derived from a field template.
+	// Indicates whether the field configuration is from a field template.
 	//
 	// example:
 	//

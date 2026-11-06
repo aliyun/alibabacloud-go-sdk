@@ -96,7 +96,7 @@ func (s *CreateChatSessionResponseBody) Validate() error {
 }
 
 type CreateChatSessionResponseBodyData struct {
-	// The chat session ID. You can use this ID to locate the session in API operations such as UpdateChatSession and DeleteChatSession.
+	// The ID of the chat session. You can use this ID to locate the session in operations such as UpdateChatSession and DeleteChatSession.
 	//
 	// example:
 	//

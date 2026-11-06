@@ -110,7 +110,7 @@ type ListConsumerAuthorizationRulesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ func (s *ListConsumerAuthorizationRulesResponseBodyData) Validate() error {
 type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	// The API information.
 	ApiInfo *HttpApiApiInfo `json:"apiInfo,omitempty" xml:"apiInfo,omitempty"`
-	// The consumer authorization rule ID.
+	// The ID of the consumer authorization rule.
 	//
 	// example:
 	//
@@ -204,11 +204,7 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
 	// The environment context.
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
-	// The expiration mode. Valid values:
-	//
-	// - LongTerm: long-term
-	//
-	// - ShortTerm: short-term
+	// The expiration mode. Valid values: LongTerm and ShortTerm.
 	//
 	// example:
 	//

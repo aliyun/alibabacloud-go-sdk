@@ -100,29 +100,29 @@ func (s *ListModelCardsResponseBody) Validate() error {
 }
 
 type ListModelCardsResponseBodyData struct {
-	// The list of available paths for the model card. Each element consists of a path and a type member. The API definition does not specify the criteria for determining availability.
+	// The list of available paths for the model card. Each element consists of a path and a type member. The API definition does not specify the criteria for availability.
 	AvailablePaths []*ListModelCardsResponseBodyDataAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	// The feature configuration of the model card in a key-value pair map structure. The set of keys is not specified in the API definition.
+	// The feature configuration of the model card. This is a key-value pair map structure. The key set is not declared in the API definition.
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
-	// The metadata container of the model card. Only the description member is declared in the API definition.
+	// The metadata container for the model card. Only the description member is declared in the API definition.
 	Meta *ListModelCardsResponseBodyDataMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The name of the model.
+	// The model name.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The pricing information of the model card in a key-value pair map structure. The set of keys and billing criteria are not specified in the API definition.
+	// The pricing information of the model card. This is a key-value pair map structure. The key set and billing criteria are not declared in the API definition.
 	Pricing map[string]interface{} `json:"pricing,omitempty" xml:"pricing,omitempty"`
-	// The identifier of the model provider for the model card.
+	// The model provider identifier corresponding to the model card.
 	//
 	// example:
 	//
 	// provider-xxxxxxxx
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The list of snapshots for the model card. Array items are map structures with unspecified members. The API definition does not specify the snapshot content or generation rules.
+	// The list of snapshots for the model card. Array items are map structures with undeclared members. The API definition does not specify the snapshot content or generation rules.
 	Snapshots []map[string]interface{} `json:"snapshots,omitempty" xml:"snapshots,omitempty" type:"Repeated"`
-	// The source identifier of the model card. The valid values are not specified in the API definition.
+	// The source identifier of the model card. The valid values are not declared in the API definition.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListModelCardsResponseBodyDataAvailablePaths struct {
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The type identifier of the available path record. The valid values are not specified in the API definition.
+	// The type identifier of the available path record. The valid values are not declared in the API definition.
 	//
 	// example:
 	//

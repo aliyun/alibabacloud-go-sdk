@@ -52,53 +52,49 @@ type ListHttpApisRequest struct {
 	//
 	// gw-cq2avtllh****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The type of gateway associated with the HTTP API. Valid values:
-	//
-	// - API: cloud-native API gateway.
-	//
-	// - AI: AI gateway.
+	// The type of the gateway associated with the HTTP API. Valid values: API (cloud-native API gateway) and AI (AI gateway).
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The search keyword. Supports fuzzy match by API name or exact search by API ID.
+	// The search keyword. Supports fuzzy search by API name or exact search by API ID.
 	//
 	// example:
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// Searches for an exact match by name.
+	// The name for exact search.
 	//
 	// example:
 	//
 	// login
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The page number, starting from 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 500. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The type of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
+	// The types of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
 	//
 	// - Http
 	//
 	// - Rest
 	//
-	// - WebSocket
+	// - Websocket
 	//
 	// - HttpIngress
 	//
@@ -112,19 +108,19 @@ type ListHttpApisRequest struct {
 	//
 	// true
 	WithAPIsPublishedToEnvironment *bool `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
-	// The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
+	// The environment ID. The response includes consumer authentication policy information for the specified environment in each API entry.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	// Specifies whether the permission authentication policy is enabled.
+	// Specifies whether to include the list of authentication policies.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
-	// The consumer ID. If specified, the response includes the authorization rule list for the specified consumer for each API.
+	// The consumer ID. The response includes the list of authorization rules for the specified consumer in each API entry.
 	//
 	// example:
 	//
@@ -142,13 +138,13 @@ type ListHttpApisRequest struct {
 	//
 	// env-ctovu5mm1hksb4q8ln40
 	WithEnvironmentInfoById *string `json:"withEnvironmentInfoById,omitempty" xml:"withEnvironmentInfoById,omitempty"`
-	// Specifies whether to include ingress information.
+	// Specifies whether to include Ingress information.
 	//
 	// example:
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The plug-in ID. If specified, the response includes plug-in publishing information based on this plug-in ID.
+	// The plugin ID. The response includes plugin release information based on the specified plugin ID.
 	//
 	// example:
 	//

@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("APIG")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -62,23 +70,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// Creates a consumer-based or consumer group-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.21 or later.
+// This operation adds a quota rule based on consumers or consumer groups for an AI gateway. Note that this operation takes effect only for AI gateways of a version later than 2.1.21.
 //
 // >
 //
-// >  Recommended call sequence:
+// > Recommended call logic:
 //
-// > - Step 1: Perform a dry run to check for rule conflicts.
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview that contains the conflictHash value.
+// > - - The response returns a conflict preview containing conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - 2. Formally submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun to false and overwrite to false.
+// > - - If no conflict exists: Set dryRun=false and overwrite=false.
 //
-// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - If a conflict exists and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<value returned in the previous step>.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -177,23 +185,23 @@ func (client *Client) AddGatewayQuotaRuleWithOptions(gatewayId *string, request 
 //
 // Description:
 //
-// Creates a consumer-based or consumer group-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.21 or later.
+// This operation adds a quota rule based on consumers or consumer groups for an AI gateway. Note that this operation takes effect only for AI gateways of a version later than 2.1.21.
 //
 // >
 //
-// >  Recommended call sequence:
+// > Recommended call logic:
 //
-// > - Step 1: Perform a dry run to check for rule conflicts.
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response returns a conflict preview that contains the conflictHash value.
+// > - - The response returns a conflict preview containing conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - 2. Formally submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun to false and overwrite to false.
+// > - - If no conflict exists: Set dryRun=false and overwrite=false.
 //
-// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - If a conflict exists and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<value returned in the previous step>.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -820,7 +828,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Queries the activation status of the API management service.
+// Retrieves the activation status of the API management service.
 //
 // @param request - CheckCommodityStatusRequest
 //
@@ -861,7 +869,7 @@ func (client *Client) CheckCommodityStatusWithOptions(request *CheckCommoditySta
 
 // Summary:
 //
-// Queries the activation status of the API management service.
+// Retrieves the activation status of the API management service.
 //
 // @param request - CheckCommodityStatusRequest
 //
@@ -1588,7 +1596,7 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 
 // Summary:
 //
-// Registers a HiMarket developer account and returns the ID of the new developer.
+// Registers a HiMarket developer account and returns the ID of the newly created developer upon successful creation.
 //
 // @param request - CreateDeveloperRequest
 //
@@ -1639,7 +1647,7 @@ func (client *Client) CreateDeveloperWithOptions(request *CreateDeveloperRequest
 
 // Summary:
 //
-// Registers a HiMarket developer account and returns the ID of the new developer.
+// Registers a HiMarket developer account and returns the ID of the newly created developer upon successful creation.
 //
 // @param request - CreateDeveloperRequest
 //
@@ -2127,7 +2135,7 @@ func (client *Client) CreateHttpApi(request *CreateHttpApiRequest) (_result *Cre
 
 // Summary:
 //
-// Creates operations for an HTTP API.
+// Creates an API operation for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -2174,7 +2182,7 @@ func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, reque
 
 // Summary:
 //
-// Creates operations for an HTTP API.
+// Creates an API operation for an HTTP API.
 //
 // @param request - CreateHttpApiOperationRequest
 //
@@ -2220,6 +2228,10 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DfpConfig) {
+		body["dfpConfig"] = request.DfpConfig
 	}
 
 	if !dara.IsNil(request.DomainIds) {
@@ -3007,7 +3019,7 @@ func (client *Client) CreatePolicyAttachment(request *CreatePolicyAttachmentRequ
 
 // Summary:
 //
-// Creates a HiMarket developer portal and returns the ID of the newly created portal.
+// Creates a HiMarket developer portal and returns the ID of the newly created portal upon success.
 //
 // @param request - CreatePortalRequest
 //
@@ -3064,7 +3076,7 @@ func (client *Client) CreatePortalWithOptions(request *CreatePortalRequest, head
 
 // Summary:
 //
-// Creates a HiMarket developer portal and returns the ID of the newly created portal.
+// Creates a HiMarket developer portal and returns the ID of the newly created portal upon success.
 //
 // @param request - CreatePortalRequest
 //
@@ -3257,7 +3269,7 @@ func (client *Client) CreateProductCategory(request *CreateProductCategoryReques
 
 // Summary:
 //
-// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. The association result can be queried by GetProductRef and removed by DeleteProductRef at the same path.
+// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. You can query the association result by calling GetProductRef or remove the association by calling DeleteProductRef at the same path.
 //
 // @param request - CreateProductRefRequest
 //
@@ -3308,7 +3320,7 @@ func (client *Client) CreateProductRefWithOptions(productId *string, request *Cr
 
 // Summary:
 //
-// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. The association result can be queried by GetProductRef and removed by DeleteProductRef at the same path.
+// Associates an API configuration with a specified API product by submitting the gatewayId and apigRefConfig parameters to the /himarket/v1/products/{productId}/ref endpoint. You can query the association result by calling GetProductRef or remove the association by calling DeleteProductRef at the same path.
 //
 // @param request - CreateProductRefRequest
 //
@@ -3473,7 +3485,7 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 
 // Summary:
 //
-// Creates services.
+// Creates a service.
 //
 // Description:
 //
@@ -3542,7 +3554,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 
 // Summary:
 //
-// Creates services.
+// Creates a service.
 //
 // Description:
 //
@@ -4964,7 +4976,7 @@ func (client *Client) DeleteProductCategory(categoryId *string, request *DeleteP
 
 // Summary:
 //
-// Dissociates an API product from an API by API product ID. This association is established by CreateProductRef on the same resource path and can be queried by GetProductRef.
+// Dissociates an API product from an API by API product ID. The association is established by CreateProductRef on the same resource path and can be queried by GetProductRef.
 //
 // @param request - DeleteProductRefRequest
 //
@@ -5005,7 +5017,7 @@ func (client *Client) DeleteProductRefWithOptions(productId *string, request *De
 
 // Summary:
 //
-// Dissociates an API product from an API by API product ID. This association is established by CreateProductRef on the same resource path and can be queried by GetProductRef.
+// Dissociates an API product from an API by API product ID. The association is established by CreateProductRef on the same resource path and can be queried by GetProductRef.
 //
 // @param request - DeleteProductRefRequest
 //
@@ -5698,7 +5710,7 @@ func (client *Client) GetAiModelProvider(modelProviderId *string, request *GetAi
 
 // Summary:
 //
-// Queries the effective field collection configurations for an HTTP API across each URI of the request in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and whether the configuration is derived from a field template.
+// Queries the effective field collection configurations for each request path of an HTTP API in a specified cloud-native API gateway, including the field source, JSONPath, whether it is collected, whether switching is allowed, and whether it is from a field template.
 //
 // @param request - GetApiPathFieldConfigRequest
 //
@@ -5749,7 +5761,7 @@ func (client *Client) GetApiPathFieldConfigWithOptions(request *GetApiPathFieldC
 
 // Summary:
 //
-// Queries the effective field collection configurations for an HTTP API across each URI of the request in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and whether the configuration is derived from a field template.
+// Queries the effective field collection configurations for each request path of an HTTP API in a specified cloud-native API gateway, including the field source, JSONPath, whether it is collected, whether switching is allowed, and whether it is from a field template.
 //
 // @param request - GetApiPathFieldConfigRequest
 //
@@ -5768,7 +5780,7 @@ func (client *Client) GetApiPathFieldConfig(request *GetApiPathFieldConfigReques
 
 // Summary:
 //
-// Queries the field template corresponding to the API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
+// Queries the field template corresponding to an API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
 //
 // @param request - GetApiPathFieldTemplateRequest
 //
@@ -5815,7 +5827,7 @@ func (client *Client) GetApiPathFieldTemplateWithOptions(request *GetApiPathFiel
 
 // Summary:
 //
-// Queries the field template corresponding to the API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
+// Queries the field template corresponding to an API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
 //
 // @param request - GetApiPathFieldTemplateRequest
 //
@@ -6004,7 +6016,7 @@ func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerRespo
 
 // Summary:
 //
-// Retrieves a consumer authorization rule.
+// Retrieves consumer authorization rules.
 //
 // @param headers - map
 //
@@ -6037,7 +6049,7 @@ func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizat
 
 // Summary:
 //
-// Retrieves a consumer authorization rule.
+// Retrieves consumer authorization rules.
 //
 // @return GetConsumerAuthorizationRuleResponse
 func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
@@ -6419,7 +6431,7 @@ func (client *Client) GetEnvironment(environmentId *string, request *GetEnvironm
 
 // Summary:
 //
-// Retrieves basic information about a gateway, including the VPC, vSwitch, and gateway ingress.
+// Retrieves the basic information of a gateway, such as the associated VPC, vSwitch, and gateway endpoint.
 //
 // @param headers - map
 //
@@ -6452,7 +6464,7 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 
 // Summary:
 //
-// Retrieves basic information about a gateway, including the VPC, vSwitch, and gateway ingress.
+// Retrieves the basic information of a gateway, such as the associated VPC, vSwitch, and gateway endpoint.
 //
 // @return GetGatewayResponse
 func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse, _err error) {
@@ -6460,6 +6472,74 @@ func (client *Client) GetGateway(gatewayId *string) (_result *GetGatewayResponse
 	headers := make(map[string]*string)
 	_result = &GetGatewayResponse{}
 	_body, _err := client.GetGatewayWithOptions(gatewayId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the dynamic forwarding ExtProc service bound to the gateway.
+//
+// Description:
+//
+// Queries the dynamic forwarding ExtProc gRPC service and port currently bound to the specified gateway. If no service is bound, the operation returns bound=false.
+//
+// @param request - GetGatewayDfpExtProcServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayDfpExtProcServiceResponse
+func (client *Client) GetGatewayDfpExtProcServiceWithOptions(gatewayId *string, request *GetGatewayDfpExtProcServiceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayDfpExtProcServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayDfpExtProcService"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/dfp-ext-proc-service"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayDfpExtProcServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the dynamic forwarding ExtProc service bound to the gateway.
+//
+// Description:
+//
+// Queries the dynamic forwarding ExtProc gRPC service and port currently bound to the specified gateway. If no service is bound, the operation returns bound=false.
+//
+// @param request - GetGatewayDfpExtProcServiceRequest
+//
+// @return GetGatewayDfpExtProcServiceResponse
+func (client *Client) GetGatewayDfpExtProcService(gatewayId *string, request *GetGatewayDfpExtProcServiceRequest) (_result *GetGatewayDfpExtProcServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGatewayDfpExtProcServiceResponse{}
+	_body, _err := client.GetGatewayDfpExtProcServiceWithOptions(gatewayId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6533,7 +6613,7 @@ func (client *Client) GetGatewayElasticPolicy(gatewayId *string, request *GetGat
 //
 // Description:
 //
-// Queries a specific API consumer quota rule on an AI gateway.
+// Queries a consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -6596,7 +6676,7 @@ func (client *Client) GetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId *
 //
 // Description:
 //
-// Queries a specific API consumer quota rule on an AI gateway.
+// Queries a consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -6777,7 +6857,7 @@ func (client *Client) GetGatewayResourceQuotaUsage(gatewayId *string, request *G
 
 // Summary:
 //
-// Queries the details of a single HiMarket consumer by consumer ID and returns the consumer ID, name, description, and whether the consumer is the primary consumer.
+// Queries the details of a single HiMarket consumer by consumer ID, including the consumer ID, name, description, and whether the consumer is a primary consumer.
 //
 // @param request - GetHiMarketConsumerRequest
 //
@@ -6818,7 +6898,7 @@ func (client *Client) GetHiMarketConsumerWithOptions(consumerId *string, request
 
 // Summary:
 //
-// Queries the details of a single HiMarket consumer by consumer ID and returns the consumer ID, name, description, and whether the consumer is the primary consumer.
+// Queries the details of a single HiMarket consumer by consumer ID, including the consumer ID, name, description, and whether the consumer is a primary consumer.
 //
 // @param request - GetHiMarketConsumerRequest
 //
@@ -6837,7 +6917,7 @@ func (client *Client) GetHiMarketConsumer(consumerId *string, request *GetHiMark
 
 // Summary:
 //
-// Queries the credential information of a HiMarket consumer by consumer ID. The response includes API key and HMAC credential configurations. The credential members are defined by the common data structures HiMarketApiKeyConfig and HiMarketHmacConfig.
+// Queries the credential information of a HiMarket consumer by consumer ID and returns two types of containers: API key credential configuration and HMAC credential configuration. The credential members are defined by the common data structures HiMarketApiKeyConfig and HiMarketHmacConfig.
 //
 // @param request - GetHiMarketConsumerCredentialRequest
 //
@@ -6878,7 +6958,7 @@ func (client *Client) GetHiMarketConsumerCredentialWithOptions(consumerId *strin
 
 // Summary:
 //
-// Queries the credential information of a HiMarket consumer by consumer ID. The response includes API key and HMAC credential configurations. The credential members are defined by the common data structures HiMarketApiKeyConfig and HiMarketHmacConfig.
+// Queries the credential information of a HiMarket consumer by consumer ID and returns two types of containers: API key credential configuration and HMAC credential configuration. The credential members are defined by the common data structures HiMarketApiKeyConfig and HiMarketHmacConfig.
 //
 // @param request - GetHiMarketConsumerCredentialRequest
 //
@@ -6963,7 +7043,7 @@ func (client *Client) GetHttpApi(httpApiId *string, request *GetHttpApiRequest) 
 
 // Summary:
 //
-// Retrieves operation information.
+// Retrieves API operation information.
 //
 // @param headers - map
 //
@@ -6996,7 +7076,7 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 
 // Summary:
 //
-// Retrieves operation information.
+// Retrieves API operation information.
 //
 // @return GetHttpApiOperationResponse
 func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string) (_result *GetHttpApiOperationResponse, _err error) {
@@ -7241,7 +7321,7 @@ func (client *Client) GetMigrationTask(taskId *string, request *GetMigrationTask
 
 // Summary:
 //
-// Queries a plugin mount.
+// Queries a plugin attachment.
 //
 // @param headers - map
 //
@@ -7274,7 +7354,7 @@ func (client *Client) GetPluginAttachmentWithOptions(pluginAttachmentId *string,
 
 // Summary:
 //
-// Queries a plugin mount.
+// Queries a plugin attachment.
 //
 // @return GetPluginAttachmentResponse
 func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *GetPluginAttachmentResponse, _err error) {
@@ -7511,7 +7591,7 @@ func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *
 
 // Summary:
 //
-// Queries the details of a single HiMarket developer portal by portal ID and returns the portal name, description, region ID, portal settings, and portal domain name configurations.
+// Queries the details of a single HiMarket developer portal by portal ID and returns the portal name, description, region ID, portal settings, and portal domain configurations.
 //
 // @param request - GetPortalRequest
 //
@@ -7552,7 +7632,7 @@ func (client *Client) GetPortalWithOptions(portalId *string, request *GetPortalR
 
 // Summary:
 //
-// Queries the details of a single HiMarket developer portal by portal ID and returns the portal name, description, region ID, portal settings, and portal domain name configurations.
+// Queries the details of a single HiMarket developer portal by portal ID and returns the portal name, description, region ID, portal settings, and portal domain configurations.
 //
 // @param request - GetPortalRequest
 //
@@ -7571,7 +7651,7 @@ func (client *Client) GetPortal(portalId *string, request *GetPortalRequest) (_r
 
 // Summary:
 //
-// Queries the details of a single API product by API product ID and returns information such as the name, description, status, type, documentation, icon, automatic subscription approval setting, MCP, Agent, and model configurations, product capability configurations, and region.
+// Queries the details of a single API product by API product ID and returns information such as the name, description, status, type, documentation, icon, automatic subscription approval status, MCP, Agent, and model configurations, product capability configurations, and the region.
 //
 // @param request - GetProductRequest
 //
@@ -7612,7 +7692,7 @@ func (client *Client) GetProductWithOptions(productId *string, request *GetProdu
 
 // Summary:
 //
-// Queries the details of a single API product by API product ID and returns information such as the name, description, status, type, documentation, icon, automatic subscription approval setting, MCP, Agent, and model configurations, product capability configurations, and region.
+// Queries the details of a single API product by API product ID and returns information such as the name, description, status, type, documentation, icon, automatic subscription approval status, MCP, Agent, and model configurations, product capability configurations, and the region.
 //
 // @param request - GetProductRequest
 //
@@ -7631,7 +7711,7 @@ func (client *Client) GetProduct(productId *string, request *GetProductRequest) 
 
 // Summary:
 //
-// Queries the details of a product category by ID and returns the ID, name, description, and icon of the category.
+// Queries the details of a single product category by category ID and returns the ID, name, description, and icon of the category.
 //
 // @param request - GetProductCategoryRequest
 //
@@ -7672,7 +7752,7 @@ func (client *Client) GetProductCategoryWithOptions(categoryId *string, request 
 
 // Summary:
 //
-// Queries the details of a product category by ID and returns the ID, name, description, and icon of the category.
+// Queries the details of a single product category by category ID and returns the ID, name, description, and icon of the category.
 //
 // @param request - GetProductCategoryRequest
 //
@@ -7691,7 +7771,7 @@ func (client *Client) GetProductCategory(categoryId *string, request *GetProduct
 
 // Summary:
 //
-// Queries the API configurations associated with an API product by API product ID, and returns the ID of the gateway where the association resides and the APIG association configuration.
+// Queries the API configurations associated with an API product by product ID, and returns the gateway ID and APIG association configuration.
 //
 // @param request - GetProductRefRequest
 //
@@ -7732,7 +7812,7 @@ func (client *Client) GetProductRefWithOptions(productId *string, request *GetPr
 
 // Summary:
 //
-// Queries the API configurations associated with an API product by API product ID, and returns the ID of the gateway where the association resides and the APIG association configuration.
+// Queries the API configurations associated with an API product by product ID, and returns the gateway ID and APIG association configuration.
 //
 // @param request - GetProductRefRequest
 //
@@ -8165,7 +8245,7 @@ func (client *Client) GetTraceConfig(gatewayId *string, request *GetTraceConfigR
 
 // Summary:
 //
-// Executes the callback step in the OIDC logon flow by submitting the code and state query parameters via a GET request, and returns the accessToken, tokenType, and expiresIn fields in the response data.
+// Executes the callback step in the OIDC logon flow by submitting the code and state query parameters carried in the callback via a GET request, and returns the accessToken, tokenType, and expiresIn fields in the response data.
 //
 // @param request - HandleOidcCallbackRequest
 //
@@ -8216,7 +8296,7 @@ func (client *Client) HandleOidcCallbackWithOptions(request *HandleOidcCallbackR
 
 // Summary:
 //
-// Executes the callback step in the OIDC logon flow by submitting the code and state query parameters via a GET request, and returns the accessToken, tokenType, and expiresIn fields in the response data.
+// Executes the callback step in the OIDC logon flow by submitting the code and state query parameters carried in the callback via a GET request, and returns the accessToken, tokenType, and expiresIn fields in the response data.
 //
 // @param request - HandleOidcCallbackRequest
 //
@@ -8235,7 +8315,7 @@ func (client *Client) HandleOidcCallback(request *HandleOidcCallbackRequest) (_r
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API and supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -8334,7 +8414,7 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 
 // Summary:
 //
-// Imports an HTTP API. You can import an OpenAPI 2.0 or OpenAPI 3.0.x definition file as a REST API.
+// Imports an HTTP API and supports importing OpenAPI 2.0 and OpenAPI 3.0.x definition files as REST APIs.
 //
 // @param request - ImportHttpApiRequest
 //
@@ -8353,7 +8433,7 @@ func (client *Client) ImportHttpApi(request *ImportHttpApiRequest) (_result *Imp
 
 // Summary:
 //
-// Initiates the Authorize step in the OIDC logon process based on the OIDC provider identifier. The response body defined by the API operation contains only the requestId, code, and message fields, and does not declare the business response parameter data.
+// Initiates the Authorize step in the OpenID Connect (OIDC) logon process based on the OIDC provider identifier. The response body defined by the API operation contains only the requestId, code, and message fields, and does not declare the data business output parameter.
 //
 // @param request - InitiateOidcAuthRequest
 //
@@ -8400,7 +8480,7 @@ func (client *Client) InitiateOidcAuthWithOptions(request *InitiateOidcAuthReque
 
 // Summary:
 //
-// Initiates the Authorize step in the OIDC logon process based on the OIDC provider identifier. The response body defined by the API operation contains only the requestId, code, and message fields, and does not declare the business response parameter data.
+// Initiates the Authorize step in the OpenID Connect (OIDC) logon process based on the OIDC provider identifier. The response body defined by the API operation contains only the requestId, code, and message fields, and does not declare the data business output parameter.
 //
 // @param request - InitiateOidcAuthRequest
 //
@@ -8744,7 +8824,7 @@ func (client *Client) ListAiModelProviders(request *ListAiModelProvidersRequest)
 
 // Summary:
 //
-// Performs a paging query on the field template list and returns the template ID, request path, and applicable protocol for each template record.
+// Queries the list of field templates by using paging and returns the template ID, corresponding API request path, and applicable protocol for each template record.
 //
 // @param request - ListApiPathFieldTemplatesRequest
 //
@@ -8795,7 +8875,7 @@ func (client *Client) ListApiPathFieldTemplatesWithOptions(request *ListApiPathF
 
 // Summary:
 //
-// Performs a paging query on the field template list and returns the template ID, request path, and applicable protocol for each template record.
+// Queries the list of field templates by using paging and returns the template ID, corresponding API request path, and applicable protocol for each template record.
 //
 // @param request - ListApiPathFieldTemplatesRequest
 //
@@ -8908,7 +8988,7 @@ func (client *Client) ListBatchExportTasks(request *ListBatchExportTasksRequest)
 
 // Summary:
 //
-// Performs a paged query on the list of HiMarket chat sessions, returning the session ID, name, conversation type, and associated API products for each session. The response also includes the paging page number, paging size, and total count.
+// Performs a paged query on the list of HiMarket chat sessions. For each session, the response returns the session ID, name, conversation type, and associated API products. The response also returns the paging page number, paging size, and total count.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -8967,7 +9047,7 @@ func (client *Client) ListChatSessionsWithOptions(request *ListChatSessionsReque
 
 // Summary:
 //
-// Performs a paged query on the list of HiMarket chat sessions, returning the session ID, name, conversation type, and associated API products for each session. The response also includes the paging page number, paging size, and total count.
+// Performs a paged query on the list of HiMarket chat sessions. For each session, the response returns the session ID, name, conversation type, and associated API products. The response also returns the paging page number, paging size, and total count.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -9454,7 +9534,7 @@ func (client *Client) ListConsumers(request *ListConsumersRequest) (_result *Lis
 
 // Summary:
 //
-// Performs a paged query on the HiMarket developer list. You can filter the paging results by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
+// Performs a paging query on the HiMarket developer list. You can filter the results by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
 //
 // @param request - ListDevelopersRequest
 //
@@ -9525,7 +9605,7 @@ func (client *Client) ListDevelopersWithOptions(request *ListDevelopersRequest, 
 
 // Summary:
 //
-// Performs a paged query on the HiMarket developer list. You can filter the paging results by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
+// Performs a paging query on the HiMarket developer list. You can filter the results by portal ID, username, and developer status. The response includes the developer ID, portal ID, username, and status.
 //
 // @param request - ListDevelopersRequest
 //
@@ -10175,11 +10255,11 @@ func (client *Client) ListGatewayLoadBalancers(gatewayId *string, request *ListG
 
 // Summary:
 //
-// Queries the list of FinOps quota rules bound to a gateway.
+// Queries the FinOps quota rules associated with a gateway.
 //
 // Description:
 //
-// Queries the list of FinOps quota rules bound to a gateway.
+// This operation queries the FinOps quota rules associated with a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -10242,11 +10322,11 @@ func (client *Client) ListGatewayQuotaRulesWithOptions(gatewayId *string, reques
 
 // Summary:
 //
-// Queries the list of FinOps quota rules bound to a gateway.
+// Queries the FinOps quota rules associated with a gateway.
 //
 // Description:
 //
-// Queries the list of FinOps quota rules bound to a gateway.
+// This operation queries the FinOps quota rules associated with a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -10483,7 +10563,7 @@ func (client *Client) ListGlobalPolicies(request *ListGlobalPoliciesRequest) (_r
 
 // Summary:
 //
-// Performs a paged query to retrieve the API product subscriptions of a specified HiMarket consumer. The paging process allows you to filter subscriptions by status. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
+// Performs a paged query to retrieve the API product subscriptions of a specified HiMarket consumer. You can filter the paging results by status. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
 //
 // @param request - ListHiMarketConsumerSubscriptionsRequest
 //
@@ -10546,7 +10626,7 @@ func (client *Client) ListHiMarketConsumerSubscriptionsWithOptions(consumerId *s
 
 // Summary:
 //
-// Performs a paged query to retrieve the API product subscriptions of a specified HiMarket consumer. The paging process allows you to filter subscriptions by status. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
+// Performs a paged query to retrieve the API product subscriptions of a specified HiMarket consumer. You can filter the paging results by status. Each subscription record includes the subscription ID, the ID, name, and type of the subscribed API product, the consumer ID and name, and the subscription status.
 //
 // @param request - ListHiMarketConsumerSubscriptionsRequest
 //
@@ -10565,7 +10645,7 @@ func (client *Client) ListHiMarketConsumerSubscriptions(consumerId *string, requ
 
 // Summary:
 //
-// Performs a paging query on the HiMarket consumer list. You can filter consumers by name keywords, portal ID, and developer ID. The response includes the ID, name, description, and primary status of each consumer.
+// Performs a paged query on the HiMarket consumer list. You can filter the results by consumer name keyword, portal ID, or developer ID. The paging result includes the consumer ID, name, description, and whether each consumer is a primary consumer.
 //
 // @param request - ListHiMarketConsumersRequest
 //
@@ -10636,7 +10716,7 @@ func (client *Client) ListHiMarketConsumersWithOptions(request *ListHiMarketCons
 
 // Summary:
 //
-// Performs a paging query on the HiMarket consumer list. You can filter consumers by name keywords, portal ID, and developer ID. The response includes the ID, name, description, and primary status of each consumer.
+// Performs a paged query on the HiMarket consumer list. You can filter the results by consumer name keyword, portal ID, or developer ID. The paging result includes the consumer ID, name, description, and whether each consumer is a primary consumer.
 //
 // @param request - ListHiMarketConsumersRequest
 //
@@ -10655,7 +10735,7 @@ func (client *Client) ListHiMarketConsumers(request *ListHiMarketConsumersReques
 
 // Summary:
 //
-// Retrieves a list of API operations.
+// Retrieves the list of API operations.
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -10750,7 +10830,7 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 
 // Summary:
 //
-// Retrieves a list of API operations.
+// Retrieves the list of API operations.
 //
 // @param request - ListHttpApiOperationsRequest
 //
@@ -10769,7 +10849,7 @@ func (client *Client) ListHttpApiOperations(httpApiId *string, request *ListHttp
 
 // Summary:
 //
-// Queries the route list of an HTTP API.
+// Queries the routes of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -10872,7 +10952,7 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 
 // Summary:
 //
-// Queries the route list of an HTTP API.
+// Queries the routes of an HTTP API.
 //
 // @param request - ListHttpApiRoutesRequest
 //
@@ -11161,7 +11241,7 @@ func (client *Client) ListK8sClusterSources(gatewayId *string, request *ListK8sC
 
 // Summary:
 //
-// Queries the details of Model Context Protocol (MCP) tools in an MCP Server API product and returns a list of tools. Each tool includes three text fields (name, title, and description) and four map structures (inputSchema, outputSchema, annotations, and meta).
+// Queries the details of MCP tools included in an API product of the MCP Server type and returns a list of tools. Each tool contains three text members (name, title, and description) and four map structure members (inputSchema, outputSchema, annotations, and meta).
 //
 // @param request - ListMcpProductToolsRequest
 //
@@ -11202,7 +11282,7 @@ func (client *Client) ListMcpProductToolsWithOptions(productId *string, request 
 
 // Summary:
 //
-// Queries the details of Model Context Protocol (MCP) tools in an MCP Server API product and returns a list of tools. Each tool includes three text fields (name, title, and description) and four map structures (inputSchema, outputSchema, annotations, and meta).
+// Queries the details of MCP tools included in an API product of the MCP Server type and returns a list of tools. Each tool contains three text members (name, title, and description) and four map structure members (inputSchema, outputSchema, annotations, and meta).
 //
 // @param request - ListMcpProductToolsRequest
 //
@@ -11389,7 +11469,7 @@ func (client *Client) ListMigrationTasks(request *ListMigrationTasksRequest) (_r
 
 // Summary:
 //
-// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with the features, pricing, meta, availablePaths, and snapshots structures. The only business request parameter is the provider identifier.
+// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with its features, pricing, meta, availablePaths, and snapshots structures. The only request parameter is the provider identifier.
 //
 // @param request - ListModelCardsRequest
 //
@@ -11436,7 +11516,7 @@ func (client *Client) ListModelCardsWithOptions(request *ListModelCardsRequest, 
 
 // Summary:
 //
-// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with the features, pricing, meta, availablePaths, and snapshots structures. The only business request parameter is the provider identifier.
+// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with its features, pricing, meta, availablePaths, and snapshots structures. The only request parameter is the provider identifier.
 //
 // @param request - ListModelCardsRequest
 //
@@ -11515,7 +11595,7 @@ func (client *Client) ListMseNacosSources(gatewayId *string, request *ListMseNac
 
 // Summary:
 //
-// Retrieves the list of plug-in mounts.
+// Retrieves the plugin mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -11594,7 +11674,7 @@ func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttach
 
 // Summary:
 //
-// Retrieves the list of plug-in mounts.
+// Retrieves the plugin mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -12131,7 +12211,7 @@ func (client *Client) ListPolicyClasses(request *ListPolicyClassesRequest) (_res
 
 // Summary:
 //
-// Performs a paged query for the list of published API products on a specified HiMarket developer portal. The paging result contains list items, each returning the publication record ID, API product ID, API product name, and API product type.
+// Performs a paged query to retrieve the list of published API products on a specified HiMarket developer portal. This paging operation returns a list where each item includes the publication record ID, API product ID, API product name, and API product type.
 //
 // @param request - ListPortalPublicationsRequest
 //
@@ -12186,7 +12266,7 @@ func (client *Client) ListPortalPublicationsWithOptions(portalId *string, reques
 
 // Summary:
 //
-// Performs a paged query for the list of published API products on a specified HiMarket developer portal. The paging result contains list items, each returning the publication record ID, API product ID, API product name, and API product type.
+// Performs a paged query to retrieve the list of published API products on a specified HiMarket developer portal. This paging operation returns a list where each item includes the publication record ID, API product ID, API product name, and API product type.
 //
 // @param request - ListPortalPublicationsRequest
 //
@@ -12205,7 +12285,7 @@ func (client *Client) ListPortalPublications(portalId *string, request *ListPort
 
 // Summary:
 //
-// Performs a paged query for the list of HiMarket developer portals under the current tenant. Each list item in the paging result returns the portal ID, portal name, portal description, region ID, portal settings, and portal domain configurations.
+// Queries the list of HiMarket developer portals under the current tenant by using paging. Each list item returns the portal ID, portal name, portal description, region ID, portal configuration, and portal domain configuration.
 //
 // @param request - ListPortalsRequest
 //
@@ -12268,7 +12348,7 @@ func (client *Client) ListPortalsWithOptions(request *ListPortalsRequest, header
 
 // Summary:
 //
-// Performs a paged query for the list of HiMarket developer portals under the current tenant. Each list item in the paging result returns the portal ID, portal name, portal description, region ID, portal settings, and portal domain configurations.
+// Queries the list of HiMarket developer portals under the current tenant by using paging. Each list item returns the portal ID, portal name, portal description, region ID, portal configuration, and portal domain configuration.
 //
 // @param request - ListPortalsRequest
 //
@@ -12287,7 +12367,89 @@ func (client *Client) ListPortals(request *ListPortalsRequest) (_result *ListPor
 
 // Summary:
 //
-// Queries the list of product categories for the current tenant with paging. You can search by category name keywords. Each item in the list includes the category ID, category name, category description, and category icon.
+// Queries the unmanaged security groups available for private endpoints.
+//
+// Description:
+//
+// The API operation supports creating multiple services.
+//
+// @param request - ListPrivateLinkSecurityGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPrivateLinkSecurityGroupsResponse
+func (client *Client) ListPrivateLinkSecurityGroupsWithOptions(request *ListPrivateLinkSecurityGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPrivateLinkSecurityGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["vpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPrivateLinkSecurityGroups"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/private-link-security-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPrivateLinkSecurityGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the unmanaged security groups available for private endpoints.
+//
+// Description:
+//
+// The API operation supports creating multiple services.
+//
+// @param request - ListPrivateLinkSecurityGroupsRequest
+//
+// @return ListPrivateLinkSecurityGroupsResponse
+func (client *Client) ListPrivateLinkSecurityGroups(request *ListPrivateLinkSecurityGroupsRequest) (_result *ListPrivateLinkSecurityGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPrivateLinkSecurityGroupsResponse{}
+	_body, _err := client.ListPrivateLinkSecurityGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query on the product categories under the current tenant. You can search for categories by name keywords. The list items return the category ID, name, description, and icon.
 //
 // @param request - ListProductCategoriesRequest
 //
@@ -12342,7 +12504,7 @@ func (client *Client) ListProductCategoriesWithOptions(request *ListProductCateg
 
 // Summary:
 //
-// Queries the list of product categories for the current tenant with paging. You can search by category name keywords. Each item in the list includes the category ID, category name, category description, and category icon.
+// Performs a paging query on the product categories under the current tenant. You can search for categories by name keywords. The list items return the category ID, name, description, and icon.
 //
 // @param request - ListProductCategoriesRequest
 //
@@ -12361,7 +12523,7 @@ func (client *Client) ListProductCategories(request *ListProductCategoriesReques
 
 // Summary:
 //
-// Performs a paged query on the publication information of a specified API product, which is the list of portal records to which the product is published. The list items include the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can perform a parameter query by portal name and paging parameters.
+// Performs a paged query on the publication information of a specified API product, which is the list of portal records to which the product is published. Each list item includes the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can query the records by portal name and perform a parameter query by using paging parameters.
 //
 // @param request - ListProductPublicationsRequest
 //
@@ -12416,7 +12578,7 @@ func (client *Client) ListProductPublicationsWithOptions(productId *string, requ
 
 // Summary:
 //
-// Performs a paged query on the publication information of a specified API product, which is the list of portal records to which the product is published. The list items include the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can perform a parameter query by portal name and paging parameters.
+// Performs a paged query on the publication information of a specified API product, which is the list of portal records to which the product is published. Each list item includes the publication record ID, portal ID, portal name, API product ID, API product name, and API product type. You can query the records by portal name and perform a parameter query by using paging parameters.
 //
 // @param request - ListProductPublicationsRequest
 //
@@ -12435,7 +12597,7 @@ func (client *Client) ListProductPublications(productId *string, request *ListPr
 
 // Summary:
 //
-// Performs a paged query to retrieve the paging list of subscribe records for a specified API product. The records can be filtered by subscribe status and searched by consumer name keywords. Each record includes the subscribe ID, API product ID and name, API product type, consumer ID and name, and subscribe status.
+// Performs a paging query to retrieve the list of subscription records for a specified API product. The records can be filtered by subscription status and searched by consumer name keywords. Each record includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status.
 //
 // @param request - ListProductSubscriptionsRequest
 //
@@ -12494,7 +12656,7 @@ func (client *Client) ListProductSubscriptionsWithOptions(productId *string, req
 
 // Summary:
 //
-// Performs a paged query to retrieve the paging list of subscribe records for a specified API product. The records can be filtered by subscribe status and searched by consumer name keywords. Each record includes the subscribe ID, API product ID and name, API product type, consumer ID and name, and subscribe status.
+// Performs a paging query to retrieve the list of subscription records for a specified API product. The records can be filtered by subscription status and searched by consumer name keywords. Each record includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status.
 //
 // @param request - ListProductSubscriptionsRequest
 //
@@ -12513,7 +12675,7 @@ func (client *Client) ListProductSubscriptions(productId *string, request *ListP
 
 // Summary:
 //
-// Queries a paginated list of API products under the current tenant. You can specify the product name, product type, product status, product category, and the portal where the product is published in the request parameters. The response includes the product ID, name, description, status, type, documentation, icon, product category, automatic subscription approval status, and the MCP, agent, model, and product capability configurations.
+// Performs a paged query to retrieve the list of API products under the current tenant. Request parameters can specify the product name, product type, product status, product categories, and the portal where the product is published. List items return the product ID, name, description, status, type, plaintext documentation, icon, product categorization, whether to automatically approve subscribe requests, and MCP, agent, model, and product capability configurations.
 //
 // @param request - ListProductsRequest
 //
@@ -12592,7 +12754,7 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 
 // Summary:
 //
-// Queries a paginated list of API products under the current tenant. You can specify the product name, product type, product status, product category, and the portal where the product is published in the request parameters. The response includes the product ID, name, description, status, type, documentation, icon, product category, automatic subscription approval status, and the MCP, agent, model, and product capability configurations.
+// Performs a paged query to retrieve the list of API products under the current tenant. Request parameters can specify the product name, product type, product status, product categories, and the portal where the product is published. List items return the product ID, name, description, status, type, plaintext documentation, icon, product categorization, whether to automatically approve subscribe requests, and MCP, agent, model, and product capability configurations.
 //
 // @param request - ListProductsRequest
 //
@@ -12611,7 +12773,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 
 // Summary:
 //
-// Performs a paged query to retrieve the list of API products that can be published to a specified HiMarket developer portal. The request accepts the portal ID, API product name, and paging parameters. Each item in the response includes the API product ID, name, and description.
+// Performs a paged query to retrieve the list of API products that can be published to a specified HiMarket developer portal. The request accepts the portal ID, API product name, and paging parameters, and the response returns the API product ID, API product name, and API product description for each item.
 //
 // @param request - ListPublishableProductsRequest
 //
@@ -12666,7 +12828,7 @@ func (client *Client) ListPublishableProductsWithOptions(portalId *string, reque
 
 // Summary:
 //
-// Performs a paged query to retrieve the list of API products that can be published to a specified HiMarket developer portal. The request accepts the portal ID, API product name, and paging parameters. Each item in the response includes the API product ID, name, and description.
+// Performs a paged query to retrieve the list of API products that can be published to a specified HiMarket developer portal. The request accepts the portal ID, API product name, and paging parameters, and the response returns the API product ID, API product name, and API product description for each item.
 //
 // @param request - ListPublishableProductsRequest
 //
@@ -13405,7 +13567,7 @@ func (client *Client) ListZones(request *ListZonesRequest) (_result *ListZonesRe
 
 // Summary:
 //
-// Logs in to a HiMarket developer account by using a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
+// Logs in to a HiMarket developer account with a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
 //
 // @param request - LoginDeveloperRequest
 //
@@ -13456,7 +13618,7 @@ func (client *Client) LoginDeveloperWithOptions(request *LoginDeveloperRequest, 
 
 // Summary:
 //
-// Logs in to a HiMarket developer account by using a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
+// Logs in to a HiMarket developer account with a developer username and password, and returns the accessToken and expiresIn fields in the data object of a successful response.
 //
 // @param request - LoginDeveloperRequest
 //
@@ -13475,7 +13637,7 @@ func (client *Client) LoginDeveloper(request *LoginDeveloperRequest) (_result *L
 
 // Summary:
 //
-// Logs a developer out of a HiMarket developer account. This operation takes no business request parameters. A successful response returns only the requestId, code, and message fields.
+// Logs out a HiMarket developer account. This operation has no business request parameters. A successful response returns only the requestId, code, and message fields.
 //
 // @param request - LogoutDeveloperRequest
 //
@@ -13516,7 +13678,7 @@ func (client *Client) LogoutDeveloperWithOptions(request *LogoutDeveloperRequest
 
 // Summary:
 //
-// Logs a developer out of a HiMarket developer account. This operation takes no business request parameters. A successful response returns only the requestId, code, and message fields.
+// Logs out a HiMarket developer account. This operation has no business request parameters. A successful response returns only the requestId, code, and message fields.
 //
 // @param request - LogoutDeveloperRequest
 //
@@ -13601,7 +13763,7 @@ func (client *Client) PublishProduct(productId *string, request *PublishProductR
 
 // Summary:
 //
-// Queries the list of consumer authorization rules.
+// Queries consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -13700,7 +13862,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 
 // Summary:
 //
-// Queries the list of consumer authorization rules.
+// Queries consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -14019,6 +14181,74 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
+// Queries the currently active credentials for an AI service.
+//
+// Description:
+//
+// Queries the currently active credentials for an AI service.
+//
+// @param request - RevealServiceCredentialRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevealServiceCredentialResponse
+func (client *Client) RevealServiceCredentialWithOptions(serviceId *string, request *RevealServiceCredentialRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RevealServiceCredentialResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RevealServiceCredential"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/services/" + dara.PercentEncode(dara.StringValue(serviceId)) + "/reveal-credential"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RevealServiceCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the currently active credentials for an AI service.
+//
+// Description:
+//
+// Queries the currently active credentials for an AI service.
+//
+// @param request - RevealServiceCredentialRequest
+//
+// @return RevealServiceCredentialResponse
+func (client *Client) RevealServiceCredential(serviceId *string, request *RevealServiceCredentialRequest) (_result *RevealServiceCredentialResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RevealServiceCredentialResponse{}
+	_body, _err := client.RevealServiceCredentialWithOptions(serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Runs a pipeline in a plug-in workspace.
 //
 // @param request - RunPluginPipelineRequest
@@ -14079,7 +14309,7 @@ func (client *Client) RunPluginPipeline(workspaceId *string, request *RunPluginP
 
 // Summary:
 //
-// Subscribes to an API product on a specified HiMarket consumer. The path parameter specifies the consumer ID, and the request body specifies the ID of the API product to subscribe to. The response returns the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status of the subscription record.
+// Subscribes to an API product for a specified HiMarket consumer. The path parameter specifies the consumer ID, and the request body specifies the ID of the API product to subscribe to. The response includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status of the subscription record.
 //
 // @param request - SubscribeProductRequest
 //
@@ -14126,7 +14356,7 @@ func (client *Client) SubscribeProductWithOptions(consumerId *string, request *S
 
 // Summary:
 //
-// Subscribes to an API product on a specified HiMarket consumer. The path parameter specifies the consumer ID, and the request body specifies the ID of the API product to subscribe to. The response returns the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status of the subscription record.
+// Subscribes to an API product for a specified HiMarket consumer. The path parameter specifies the consumer ID, and the request body specifies the ID of the API product to subscribe to. The response includes the subscription ID, API product ID and name, API product type, consumer ID and name, and subscription status of the subscription record.
 //
 // @param request - SubscribeProductRequest
 //
@@ -14479,7 +14709,7 @@ func (client *Client) UninstallPlugin(pluginId *string) (_result *UninstallPlugi
 
 // Summary:
 //
-// Unpublishes a publication record of an API product based on the API product ID and the publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is created by the PublishProduct operation and can be queried by the ListProductPublications operation. This operation only manages the publication record and does not delete the API product itself. To delete a product, use DeleteProduct. The response returns only the requestId, code, and message.
+// Takes a publication record of an API product offline based on the API product ID and publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is created by the PublishProduct operation and can be queried by using the ListProductPublications operation. This operation only affects the publication record and does not delete the API product itself. To delete a product, use the DeleteProduct operation. The response returns only the requestId, code, and message.
 //
 // @param request - UnpublishProductRequest
 //
@@ -14520,7 +14750,7 @@ func (client *Client) UnpublishProductWithOptions(productId *string, publication
 
 // Summary:
 //
-// Unpublishes a publication record of an API product based on the API product ID and the publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is created by the PublishProduct operation and can be queried by the ListProductPublications operation. This operation only manages the publication record and does not delete the API product itself. To delete a product, use DeleteProduct. The response returns only the requestId, code, and message.
+// Takes a publication record of an API product offline based on the API product ID and publication record ID. Both identifiers are parameters in the /himarket/v1/products/{productId}/publications/{publicationId} path. The publication record is created by the PublishProduct operation and can be queried by using the ListProductPublications operation. This operation only affects the publication record and does not delete the API product itself. To delete a product, use the DeleteProduct operation. The response returns only the requestId, code, and message.
 //
 // @param request - UnpublishProductRequest
 //
@@ -14939,7 +15169,7 @@ func (client *Client) UpdateAuthorizationRule(consumerAuthorizationRuleId *strin
 
 // Summary:
 //
-// Adds or removes API products in bulk under a specified product category. The path parameter specifies the category ID, the action in the request body specifies the operation direction, and productIds specifies the list of API product IDs to process. The response returns only the requestId, code, and message, and does not return item-by-item processing results.
+// Adds or removes API products in batches under a specified product category. The path parameter specifies the category ID, the action in the request body specifies the operation direction, and productIds specifies the list of API product IDs to process. The response returns only the requestId, code, and message without returning item-by-item processing results.
 //
 // @param request - UpdateCategoryProductsRequest
 //
@@ -14990,7 +15220,7 @@ func (client *Client) UpdateCategoryProductsWithOptions(categoryId *string, requ
 
 // Summary:
 //
-// Adds or removes API products in bulk under a specified product category. The path parameter specifies the category ID, the action in the request body specifies the operation direction, and productIds specifies the list of API product IDs to process. The response returns only the requestId, code, and message, and does not return item-by-item processing results.
+// Adds or removes API products in batches under a specified product category. The path parameter specifies the category ID, the action in the request body specifies the operation direction, and productIds specifies the list of API product IDs to process. The response returns only the requestId, code, and message without returning item-by-item processing results.
 //
 // @param request - UpdateCategoryProductsRequest
 //
@@ -15243,7 +15473,7 @@ func (client *Client) UpdateConsumerGroup(consumerGroupId *string, request *Upda
 
 // Summary:
 //
-// Updates the status of a HiMarket developer by developer ID. The request body specifies the target status and portal ID. A successful response returns only the requestId, code, and message, and does not return the updated developer information.
+// Updates the status of a HiMarket developer by developer ID. The request body specifies the target status and portal ID. A successful response returns only the requestId, code, and message, without returning the updated developer information.
 //
 // @param request - UpdateDeveloperStatusRequest
 //
@@ -15294,7 +15524,7 @@ func (client *Client) UpdateDeveloperStatusWithOptions(developerId *string, requ
 
 // Summary:
 //
-// Updates the status of a HiMarket developer by developer ID. The request body specifies the target status and portal ID. A successful response returns only the requestId, code, and message, and does not return the updated developer information.
+// Updates the status of a HiMarket developer by developer ID. The request body specifies the target status and portal ID. A successful response returns only the requestId, code, and message, without returning the updated developer information.
 //
 // @param request - UpdateDeveloperStatusRequest
 //
@@ -15853,25 +16083,25 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 
 // Summary:
 //
-// Edits a quota throttling rule on a gateway.
+// Updates a quota throttling rule on a gateway.
 //
 // Description:
 //
-// Edits a quota rule on a gateway. This operation takes effect only on AI gateways running version 2.1.21 or later. Editing a rule preserves the historical usage of consumer subjects bound to the rule.
+// This operation updates a quota rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The update retains the historical usage of the consumption subjects on the rule.
 //
-// >  Recommended call logic:
+// > Recommended call logic:
 //
-// > - Step 1: Perform a dry run to check for rule conflicts.
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response contains a conflict preview with a conflictHash value.
+// > - - The response returns a conflict preview containing a conflictHash.
 //
-// > - Step 2: Confirm and submit the request.
+// > - 2. Formally submit the request after confirmation.
 //
-// > - - No conflict: Set dryRun to false and overwrite to false.
+// > - - If no conflicts exist: Set dryRun=false and overwrite=false.
 //
-// > - - Conflict exists and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - If conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -15946,25 +16176,25 @@ func (client *Client) UpdateGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 
 // Summary:
 //
-// Edits a quota throttling rule on a gateway.
+// Updates a quota throttling rule on a gateway.
 //
 // Description:
 //
-// Edits a quota rule on a gateway. This operation takes effect only on AI gateways running version 2.1.21 or later. Editing a rule preserves the historical usage of consumer subjects bound to the rule.
+// This operation updates a quota rule on a gateway. Note that this operation takes effect only on AI gateways of a version later than 2.1.21. The update retains the historical usage of the consumption subjects on the rule.
 //
-// >  Recommended call logic:
+// > Recommended call logic:
 //
-// > - Step 1: Perform a dry run to check for rule conflicts.
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response contains a conflict preview with a conflictHash value.
+// > - - The response returns a conflict preview containing a conflictHash.
 //
-// > - Step 2: Confirm and submit the request.
+// > - 2. Formally submit the request after confirmation.
 //
-// > - - No conflict: Set dryRun to false and overwrite to false.
+// > - - If no conflicts exist: Set dryRun=false and overwrite=false.
 //
-// > - - Conflict exists and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - If conflicts exist and you confirm to overwrite: Set dryRun=false, overwrite=true, and conflictHash=<the value returned in the previous step>.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -16251,7 +16481,7 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 
 // Summary:
 //
-// Updates a route of an HTTP API.
+// Updates a route for an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -16274,6 +16504,10 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 	if !dara.IsNil(request.Description) {
 		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DfpConfig) {
+		body["dfpConfig"] = request.DfpConfig
 	}
 
 	if !dara.IsNil(request.DomainIds) {
@@ -16322,7 +16556,7 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 // Summary:
 //
-// Updates a route of an HTTP API.
+// Updates a route for an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -16847,7 +17081,7 @@ func (client *Client) UpdatePortal(portalId *string, request *UpdatePortalReques
 
 // Summary:
 //
-// Updates the name, description, type, documentation, icon, automatic subscription approval setting, product categories, and capabilities of an API product by API product ID. The request body is in JSON format. A successful response returns only the requestId, code, and message, and does not return the updated product information.
+// Updates the name, description, type, documentation, icon, automatic subscription approval, product category, and product capabilities of an API product by API product ID. The request body is in JSON format. A successful response returns only the requestId, code, and message, and does not return the updated product information.
 //
 // @param request - UpdateProductRequest
 //
@@ -16928,7 +17162,7 @@ func (client *Client) UpdateProductWithOptions(productId *string, request *Updat
 
 // Summary:
 //
-// Updates the name, description, type, documentation, icon, automatic subscription approval setting, product categories, and capabilities of an API product by API product ID. The request body is in JSON format. A successful response returns only the requestId, code, and message, and does not return the updated product information.
+// Updates the name, description, type, documentation, icon, automatic subscription approval, product category, and product capabilities of an API product by API product ID. The request body is in JSON format. A successful response returns only the requestId, code, and message, and does not return the updated product information.
 //
 // @param request - UpdateProductRequest
 //
@@ -16947,7 +17181,7 @@ func (client *Client) UpdateProduct(productId *string, request *UpdateProductReq
 
 // Summary:
 //
-// Updates the name, description, and icon of a product category by category ID. The request body is in JSON format. The response returns only the request ID, response status code, and response message.
+// Updates the name, description, and icon of a product category by ID. The request body is in JSON format, and the response returns only the request ID, status code, and response message.
 //
 // @param request - UpdateProductCategoryRequest
 //
@@ -17002,7 +17236,7 @@ func (client *Client) UpdateProductCategoryWithOptions(categoryId *string, reque
 
 // Summary:
 //
-// Updates the name, description, and icon of a product category by category ID. The request body is in JSON format. The response returns only the request ID, response status code, and response message.
+// Updates the name, description, and icon of a product category by ID. The request body is in JSON format, and the response returns only the request ID, status code, and response message.
 //
 // @param request - UpdateProductCategoryRequest
 //
@@ -17165,7 +17399,7 @@ func (client *Client) UpdateSecret(secretId *string, request *UpdateSecretReques
 
 // Summary:
 //
-// Updates a service. You can update the health check configuration, DNS domain name, and address configuration of fixed addresses for the service.
+// Updates a service. Supports updating the health check configuration, DNS domain names, and static address configurations of the service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -17192,6 +17426,14 @@ func (client *Client) UpdateServiceWithOptions(serviceId *string, request *Updat
 
 	if !dara.IsNil(request.AiServiceConfig) {
 		body["aiServiceConfig"] = request.AiServiceConfig
+	}
+
+	if !dara.IsNil(request.ApiKeyReferencesToAdd) {
+		body["apiKeyReferencesToAdd"] = request.ApiKeyReferencesToAdd
+	}
+
+	if !dara.IsNil(request.ApiKeysToAdd) {
+		body["apiKeysToAdd"] = request.ApiKeysToAdd
 	}
 
 	if !dara.IsNil(request.DnsServers) {
@@ -17248,7 +17490,7 @@ func (client *Client) UpdateServiceWithOptions(serviceId *string, request *Updat
 
 // Summary:
 //
-// Updates a service. You can update the health check configuration, DNS domain name, and address configuration of fixed addresses for the service.
+// Updates a service. Supports updating the health check configuration, DNS domain names, and static address configurations of the service.
 //
 // @param request - UpdateServiceRequest
 //

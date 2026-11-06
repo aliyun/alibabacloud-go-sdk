@@ -48,7 +48,7 @@ type iHttpApiApiInfo interface {
 }
 
 type HttpApiApiInfo struct {
-	// The list of Agent protocols.
+	// The list of agent protocols.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
 	// The list of AI protocols.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
@@ -60,7 +60,7 @@ type HttpApiApiInfo struct {
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The API operation publish status.
+	// The deployment status of the API operation.
 	DeployCntMap map[string]*HttpApiApiInfoDeployCntMapValue `json:"deployCntMap,omitempty" xml:"deployCntMap,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
@@ -70,7 +70,7 @@ type HttpApiApiInfo struct {
 	//
 	// Test API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether authentication is enabled.
+	// Specifies whether authentication is enabled.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type HttpApiApiInfo struct {
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// HTTP API ID。
+	// The HTTP API ID.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type HttpApiApiInfo struct {
 	//
 	// Rest
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The API version control information.
+	// The API versioning information.
 	VersionInfo *HttpApiVersionInfo `json:"versionInfo,omitempty" xml:"versionInfo,omitempty"`
 }
 
@@ -336,7 +336,7 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The publish scenario.
+	// The deployment scenario.
 	//
 	// example:
 	//
@@ -348,9 +348,9 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// Service
 	BackendType *string `json:"backendType,omitempty" xml:"backendType,omitempty"`
-	// The custom domain information published by the user.
+	// The information about the custom domain names published by the user.
 	CustomDomains []*HttpApiDomainInfo `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	// The publish status of the API in the current environment.
+	// The deployment status of the API in the current environment.
 	//
 	// example:
 	//
@@ -362,7 +362,7 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// env-xxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The gateway instance information for the current environment.
+	// The information about the gateway instance to which the current environment belongs.
 	GatewayInfo *HttpApiApiInfoEnvironmentsGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
 	// The environment name.
 	//
@@ -511,7 +511,7 @@ func (s *HttpApiApiInfoEnvironments) Validate() error {
 }
 
 type HttpApiApiInfoEnvironmentsGatewayInfo struct {
-	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
+	// The edition of the gateway instance. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
 	//
 	// example:
 	//
@@ -784,7 +784,7 @@ func (s *HttpApiApiInfoEnvironmentsSubDomains) Validate() error {
 type HttpApiApiInfoIngressInfo struct {
 	// The environment context.
 	EnvironmentInfo *HttpApiApiInfoIngressInfoEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	// The Ingress Class to listen on.
+	// The Ingress class being listened to.
 	//
 	// example:
 	//
@@ -792,7 +792,7 @@ type HttpApiApiInfoIngressInfo struct {
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
 	// The Kubernetes cluster information.
 	K8sClusterInfo *HttpApiApiInfoIngressInfoK8sClusterInfo `json:"k8sClusterInfo,omitempty" xml:"k8sClusterInfo,omitempty" type:"Struct"`
-	// Specifies whether to update the address in the Ingress Status.
+	// Specifies whether to override the IP address in the Ingress status.
 	//
 	// example:
 	//
@@ -804,7 +804,7 @@ type HttpApiApiInfoIngressInfo struct {
 	//
 	// src-xxx
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The namespace to listen on.
+	// The watched namespace.
 	//
 	// example:
 	//

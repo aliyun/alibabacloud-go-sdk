@@ -96,7 +96,7 @@ func (s *CreateHttpApiResponseBody) Validate() error {
 }
 
 type CreateHttpApiResponseBodyData struct {
-	// HTTP API ID。
+	// The HTTP API ID.
 	//
 	// example:
 	//

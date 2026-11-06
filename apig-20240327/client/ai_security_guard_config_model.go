@@ -19,12 +19,18 @@ type iAiSecurityGuardConfig interface {
 	GetCheckResponse() *bool
 	SetCheckResponseImage(v bool) *AiSecurityGuardConfig
 	GetCheckResponseImage() *bool
+	SetConsumerConfigBindings(v []*AiSecurityGuardConfigConsumerConfigBindings) *AiSecurityGuardConfig
+	GetConsumerConfigBindings() []*AiSecurityGuardConfigConsumerConfigBindings
 	SetConsumerRequestCheckService(v []*AiSecurityGuardConfigConsumerRequestCheckService) *AiSecurityGuardConfig
 	GetConsumerRequestCheckService() []*AiSecurityGuardConfigConsumerRequestCheckService
 	SetConsumerResponseCheckService(v []*AiSecurityGuardConfigConsumerResponseCheckService) *AiSecurityGuardConfig
 	GetConsumerResponseCheckService() []*AiSecurityGuardConfigConsumerResponseCheckService
 	SetConsumerRiskLevel(v []*AiSecurityGuardConfigConsumerRiskLevel) *AiSecurityGuardConfig
 	GetConsumerRiskLevel() []*AiSecurityGuardConfigConsumerRiskLevel
+	SetDefaultGenerated(v bool) *AiSecurityGuardConfig
+	GetDefaultGenerated() *bool
+	SetLongTermEnabled(v bool) *AiSecurityGuardConfig
+	GetLongTermEnabled() *bool
 	SetPluginStatus(v *AiPluginStatus) *AiSecurityGuardConfig
 	GetPluginStatus() *AiPluginStatus
 	SetRequestCheckService(v string) *AiSecurityGuardConfig
@@ -44,66 +50,81 @@ type iAiSecurityGuardConfig interface {
 }
 
 type AiSecurityGuardConfig struct {
-	// The response buffer size in KB. Default value: 1000. Valid values: 1 to 1500.
+	// The size of the response buffer in KB. Default value: 1000. Valid values: 1 to 1500.
 	//
 	// example:
 	//
 	// 1000
 	BufferLimit *int32 `json:"bufferLimit,omitempty" xml:"bufferLimit,omitempty"`
-	// Specifies whether to check request content.
+	// Specifies whether to check the request content.
 	//
 	// example:
 	//
 	// true
 	CheckRequest *bool `json:"checkRequest,omitempty" xml:"checkRequest,omitempty"`
-	// Specifies whether to check request images.
+	// Specifies whether to check the request images.
 	//
 	// example:
 	//
 	// false
 	CheckRequestImage *bool `json:"checkRequestImage,omitempty" xml:"checkRequestImage,omitempty"`
-	// Specifies whether to check response content.
+	// Specifies whether to check the response content.
 	//
 	// example:
 	//
 	// true
 	CheckResponse *bool `json:"checkResponse,omitempty" xml:"checkResponse,omitempty"`
-	// Specifies whether to check response images.
+	// Specifies whether to check the response images.
 	//
 	// example:
 	//
 	// false
 	CheckResponseImage *bool `json:"checkResponseImage,omitempty" xml:"checkResponseImage,omitempty"`
-	// The consumer-level request detection service configurations.
+	// The bindings between consumers and security guardrail configurations. An empty array explicitly clears the pending configurations.
+	//
+	// if can be null:
+	// true
+	ConsumerConfigBindings []*AiSecurityGuardConfigConsumerConfigBindings `json:"consumerConfigBindings,omitempty" xml:"consumerConfigBindings,omitempty" type:"Repeated"`
+	// The consumer-level request check service configuration.
 	ConsumerRequestCheckService []*AiSecurityGuardConfigConsumerRequestCheckService `json:"consumerRequestCheckService,omitempty" xml:"consumerRequestCheckService,omitempty" type:"Repeated"`
-	// The consumer-level response detection service configurations.
+	// The consumer-level response check service configuration.
 	ConsumerResponseCheckService []*AiSecurityGuardConfigConsumerResponseCheckService `json:"consumerResponseCheckService,omitempty" xml:"consumerResponseCheckService,omitempty" type:"Repeated"`
-	// The consumer-level risk level configurations.
+	// The consumer-level risk level configuration.
 	ConsumerRiskLevel []*AiSecurityGuardConfigConsumerRiskLevel `json:"consumerRiskLevel,omitempty" xml:"consumerRiskLevel,omitempty" type:"Repeated"`
-	// The plugin running status.
+	// Specifies whether the entire security guardrail policy is populated by default for this query. Returns true only for synthesized policies. For existing policies, returns false or is not returned. This is a read-only field. It is ignored upon submission, is not saved, and does not affect the start or stop status.
+	//
+	// if can be null:
+	// true
+	DefaultGenerated *bool `json:"defaultGenerated,omitempty" xml:"defaultGenerated,omitempty"`
+	// Specifies whether to use the long-term solution. If omitted or set to null, the original value is retained during an update.
+	//
+	// if can be null:
+	// true
+	LongTermEnabled *bool `json:"longTermEnabled,omitempty" xml:"longTermEnabled,omitempty"`
+	// The running status of the plug-in.
 	//
 	// if can be null:
 	// true
 	PluginStatus *AiPluginStatus `json:"pluginStatus,omitempty" xml:"pluginStatus,omitempty"`
-	// The ServiceCode of the request text detection service. The default value is injected by the system.
+	// The ServiceCode of the request text check service. The system injects the default value.
 	//
 	// example:
 	//
 	// query_security_check
 	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
-	// The ServiceCode of the request image detection service. The default value is injected by the system.
+	// The ServiceCode of the request image check service. The system injects the default value.
 	//
 	// example:
 	//
 	// img_query_guard
 	RequestImageCheckService *string `json:"requestImageCheckService,omitempty" xml:"requestImageCheckService,omitempty"`
-	// The ServiceCode of the response text detection service. The default value is injected by the system.
+	// The ServiceCode of the response text check service. The system injects the default value.
 	//
 	// example:
 	//
 	// response_security_check
 	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
-	// The ServiceCode of the response image detection service. The default value is injected by the system.
+	// The ServiceCode of the response image check service. The system injects the default value.
 	//
 	// example:
 	//
@@ -115,9 +136,9 @@ type AiSecurityGuardConfig struct {
 	//
 	// high
 	RiskAlertLevel *string `json:"riskAlertLevel,omitempty" xml:"riskAlertLevel,omitempty"`
-	// The list of risk dimension configurations. The values are injected by the system and generated by normalizing ConsumerRiskLevel.
+	// The list of risk dimension configurations. The system injects this list, which is generated by normalizing ConsumerRiskLevel.
 	RiskConfig []*AiSecurityGuardConfigRiskConfig `json:"riskConfig,omitempty" xml:"riskConfig,omitempty" type:"Repeated"`
-	// The security guardrail service address (green-cip endpoint). Use the VPC internal network address when the gateway and the security guardrail are in the same region.
+	// The address of the security guardrail service, which is the green-cip endpoint. If the gateway and the security guardrail are in the same region, use the VPC internal network address.
 	//
 	// example:
 	//
@@ -153,6 +174,10 @@ func (s *AiSecurityGuardConfig) GetCheckResponseImage() *bool {
 	return s.CheckResponseImage
 }
 
+func (s *AiSecurityGuardConfig) GetConsumerConfigBindings() []*AiSecurityGuardConfigConsumerConfigBindings {
+	return s.ConsumerConfigBindings
+}
+
 func (s *AiSecurityGuardConfig) GetConsumerRequestCheckService() []*AiSecurityGuardConfigConsumerRequestCheckService {
 	return s.ConsumerRequestCheckService
 }
@@ -163,6 +188,14 @@ func (s *AiSecurityGuardConfig) GetConsumerResponseCheckService() []*AiSecurityG
 
 func (s *AiSecurityGuardConfig) GetConsumerRiskLevel() []*AiSecurityGuardConfigConsumerRiskLevel {
 	return s.ConsumerRiskLevel
+}
+
+func (s *AiSecurityGuardConfig) GetDefaultGenerated() *bool {
+	return s.DefaultGenerated
+}
+
+func (s *AiSecurityGuardConfig) GetLongTermEnabled() *bool {
+	return s.LongTermEnabled
 }
 
 func (s *AiSecurityGuardConfig) GetPluginStatus() *AiPluginStatus {
@@ -222,6 +255,11 @@ func (s *AiSecurityGuardConfig) SetCheckResponseImage(v bool) *AiSecurityGuardCo
 	return s
 }
 
+func (s *AiSecurityGuardConfig) SetConsumerConfigBindings(v []*AiSecurityGuardConfigConsumerConfigBindings) *AiSecurityGuardConfig {
+	s.ConsumerConfigBindings = v
+	return s
+}
+
 func (s *AiSecurityGuardConfig) SetConsumerRequestCheckService(v []*AiSecurityGuardConfigConsumerRequestCheckService) *AiSecurityGuardConfig {
 	s.ConsumerRequestCheckService = v
 	return s
@@ -234,6 +272,16 @@ func (s *AiSecurityGuardConfig) SetConsumerResponseCheckService(v []*AiSecurityG
 
 func (s *AiSecurityGuardConfig) SetConsumerRiskLevel(v []*AiSecurityGuardConfigConsumerRiskLevel) *AiSecurityGuardConfig {
 	s.ConsumerRiskLevel = v
+	return s
+}
+
+func (s *AiSecurityGuardConfig) SetDefaultGenerated(v bool) *AiSecurityGuardConfig {
+	s.DefaultGenerated = &v
+	return s
+}
+
+func (s *AiSecurityGuardConfig) SetLongTermEnabled(v bool) *AiSecurityGuardConfig {
+	s.LongTermEnabled = &v
 	return s
 }
 
@@ -278,6 +326,15 @@ func (s *AiSecurityGuardConfig) SetServiceAddress(v string) *AiSecurityGuardConf
 }
 
 func (s *AiSecurityGuardConfig) Validate() error {
+	if s.ConsumerConfigBindings != nil {
+		for _, item := range s.ConsumerConfigBindings {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.ConsumerRequestCheckService != nil {
 		for _, item := range s.ConsumerRequestCheckService {
 			if item != nil {
@@ -322,8 +379,68 @@ func (s *AiSecurityGuardConfig) Validate() error {
 	return nil
 }
 
+type AiSecurityGuardConfigConsumerConfigBindings struct {
+	// The match type for consumer names. Valid values: exact (exact match), prefix (prefix match), regexp (regular expression match), and all (matches any consumer). Rules of the all type must be placed at the end of the binding list.
+	//
+	// example:
+	//
+	// exact
+	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
+	// The match condition for the consumer name. If matchType is exact, enter the full consumer name. If matchType is prefix, enter the name prefix. If matchType is regexp, enter a regular expression. The value cannot be empty for these three types. If matchType is all, the value must be an empty string.
+	//
+	// example:
+	//
+	// example-consumer
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the bound security guardrail configuration. This parameter cannot be empty. You can query the ID by calling the ListAiSecurityGuardConfigs operation and use the returned templateId.
+	//
+	// example:
+	//
+	// apig_0123456789abcdef
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s AiSecurityGuardConfigConsumerConfigBindings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AiSecurityGuardConfigConsumerConfigBindings) GoString() string {
+	return s.String()
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) GetMatchType() *string {
+	return s.MatchType
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) GetName() *string {
+	return s.Name
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) GetTemplateId() *string {
+	return s.TemplateId
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) SetMatchType(v string) *AiSecurityGuardConfigConsumerConfigBindings {
+	s.MatchType = &v
+	return s
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) SetName(v string) *AiSecurityGuardConfigConsumerConfigBindings {
+	s.Name = &v
+	return s
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) SetTemplateId(v string) *AiSecurityGuardConfigConsumerConfigBindings {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *AiSecurityGuardConfigConsumerConfigBindings) Validate() error {
+	return dara.Validate(s)
+}
+
 type AiSecurityGuardConfigConsumerRequestCheckService struct {
-	// The consumer matching method.
+	// The consumer match type.
 	//
 	// example:
 	//
@@ -341,13 +458,13 @@ type AiSecurityGuardConfigConsumerRequestCheckService struct {
 	//
 	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The detection service.
+	// The check service.
 	//
 	// example:
 	//
 	// query_security_check
 	RequestCheckService *string `json:"requestCheckService,omitempty" xml:"requestCheckService,omitempty"`
-	// The image detection service.
+	// The image check service.
 	//
 	// example:
 	//
@@ -413,7 +530,7 @@ func (s *AiSecurityGuardConfigConsumerRequestCheckService) Validate() error {
 }
 
 type AiSecurityGuardConfigConsumerResponseCheckService struct {
-	// The consumer matching method.
+	// The consumer match type.
 	//
 	// example:
 	//
@@ -431,13 +548,13 @@ type AiSecurityGuardConfigConsumerResponseCheckService struct {
 	//
 	// consumer-a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The detection service.
+	// The check service.
 	//
 	// example:
 	//
 	// query_security_check
 	ResponseCheckService *string `json:"responseCheckService,omitempty" xml:"responseCheckService,omitempty"`
-	// The image detection service.
+	// The image check service.
 	//
 	// example:
 	//
@@ -509,7 +626,7 @@ type AiSecurityGuardConfigConsumerRiskLevel struct {
 	//
 	// high
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The consumer matching method.
+	// The consumer match type.
 	//
 	// example:
 	//
@@ -578,7 +695,7 @@ func (s *AiSecurityGuardConfigConsumerRiskLevel) Validate() error {
 }
 
 type AiSecurityGuardConfigRiskConfig struct {
-	// The consumer-level matching rules.
+	// The consumer-level match rules.
 	ConsumerRules *AiSecurityGuardConfigRiskConfigConsumerRules `json:"consumerRules,omitempty" xml:"consumerRules,omitempty" type:"Struct"`
 	// The risk level.
 	//
@@ -639,13 +756,13 @@ func (s *AiSecurityGuardConfigRiskConfig) Validate() error {
 }
 
 type AiSecurityGuardConfigRiskConfigConsumerRules struct {
-	// The matching method.
+	// The match type.
 	//
 	// example:
 	//
 	// Exact
 	MatchType *string `json:"matchType,omitempty" xml:"matchType,omitempty"`
-	// The consumer matching pattern value.
+	// The consumer match pattern value.
 	//
 	// example:
 	//

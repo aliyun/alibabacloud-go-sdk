@@ -96,19 +96,19 @@ func (s *HandleOidcCallbackResponseBody) Validate() error {
 }
 
 type HandleOidcCallbackResponseBodyData struct {
-	// The access token returned for the current OIDC logon. The API definition marks this field as sensitive.
+	// The access token returned for this OIDC logon. The API definition marks this field as a sensitive field.
 	//
 	// example:
 	//
 	// access-token-xxxxxxxx
 	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
-	// The validity period value of the access token. The unit is not specified in the API definition.
+	// The validity period value of the access token (expiresIn, int64). The unit is not declared in the API definition.
 	//
 	// example:
 	//
 	// 3600
 	ExpiresIn *int64 `json:"expiresIn,omitempty" xml:"expiresIn,omitempty"`
-	// The type identifier of the access token. The valid values are not specified in the API definition.
+	// The type identifier of the access token (tokenType). The set of valid values is not declared in the API definition.
 	//
 	// example:
 	//

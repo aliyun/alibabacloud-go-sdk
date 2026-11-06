@@ -96,7 +96,7 @@ func (s *GetPluginAttachmentResponseBody) Validate() error {
 }
 
 type GetPluginAttachmentResponseBodyData struct {
-	// Indicates whether the plugin mount is enabled.
+	// Indicates whether the plugin is enabled.
 	//
 	// example:
 	//
@@ -106,15 +106,15 @@ type GetPluginAttachmentResponseBodyData struct {
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The parent mount resource information.
+	// The parent mounted resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
-	// The plugin mount ID.
+	// The ID of the plugin attachment.
 	//
 	// example:
 	//
 	// pa-d05f1tmm1hku195dd8j0
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plugin type information.
+	// The plugin class information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
 	// The Base64-encoded content of the original plugin configuration.
 	//
@@ -128,7 +128,7 @@ type GetPluginAttachmentResponseBodyData struct {
 	//
 	// pl-cvo8ub6m1hkvgv03r3k0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// The list of mount resource information.
+	// The list of mounted resource information.
 	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
 }
 
