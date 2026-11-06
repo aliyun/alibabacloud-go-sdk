@@ -162,20 +162,16 @@ type ListCustomAgentsResponseBodyPagingInfoAgents struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// **The creation time (UNIX timestamp in milliseconds).**
 	//
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	//
 	// example:
 	//
 	// 1780555634000
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtCreateTime *int64 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
 	// **The last modification time (UNIX timestamp in milliseconds).**
 	//
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
-	//
 	// example:
 	//
 	// 1780555634000
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtModifiedTime *int64 `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// **The last modifier ID.**
 	//
 	// example:
@@ -216,11 +212,11 @@ func (s *ListCustomAgentsResponseBodyPagingInfoAgents) GetDisplayName() *string 
 	return s.DisplayName
 }
 
-func (s *ListCustomAgentsResponseBodyPagingInfoAgents) GetGmtCreateTime() *string {
+func (s *ListCustomAgentsResponseBodyPagingInfoAgents) GetGmtCreateTime() *int64 {
 	return s.GmtCreateTime
 }
 
-func (s *ListCustomAgentsResponseBodyPagingInfoAgents) GetGmtModifiedTime() *string {
+func (s *ListCustomAgentsResponseBodyPagingInfoAgents) GetGmtModifiedTime() *int64 {
 	return s.GmtModifiedTime
 }
 
@@ -251,12 +247,12 @@ func (s *ListCustomAgentsResponseBodyPagingInfoAgents) SetDisplayName(v string) 
 	return s
 }
 
-func (s *ListCustomAgentsResponseBodyPagingInfoAgents) SetGmtCreateTime(v string) *ListCustomAgentsResponseBodyPagingInfoAgents {
+func (s *ListCustomAgentsResponseBodyPagingInfoAgents) SetGmtCreateTime(v int64) *ListCustomAgentsResponseBodyPagingInfoAgents {
 	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *ListCustomAgentsResponseBodyPagingInfoAgents) SetGmtModifiedTime(v string) *ListCustomAgentsResponseBodyPagingInfoAgents {
+func (s *ListCustomAgentsResponseBodyPagingInfoAgents) SetGmtModifiedTime(v int64) *ListCustomAgentsResponseBodyPagingInfoAgents {
 	s.GmtModifiedTime = &v
 	return s
 }

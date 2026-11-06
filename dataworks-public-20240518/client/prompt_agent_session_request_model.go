@@ -18,13 +18,13 @@ type iPromptAgentSessionRequest interface {
 }
 
 type PromptAgentSessionRequest struct {
-	// The ID passed by the requester. The value is returned as is.
+	// The ID passed by the requester, which is echoed back as is.
 	//
 	// example:
 	//
 	// 1021418411
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Set the value to 2.0.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//
@@ -81,7 +81,7 @@ func (s *PromptAgentSessionRequest) Validate() error {
 type PromptAgentSessionRequestParams struct {
 	// The extended metadata.
 	//
-	// 	Notice: If the name of the agent bound to the specified session is dataworks_ai_assistant_agent (AI Assistant), you must provide the instance ID of the AI Assistant in the Context.agent.instanceId field of the extended metadata.</notice>
+	// 	Notice: If the agent name bound to the specified session is dataworks_ai_assistant_agent (AI Assistant Service), you must provide the instance ID of the AI Assistant Service in the Context.agent.instanceId field of the extended metadata.</notice>
 	Meta *PromptAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	// The array of user message content blocks. For more information, see https://agentclientprotocol.com/protocol/content.
 	Prompt []*PromptAgentSessionRequestParamsPrompt `json:"Prompt,omitempty" xml:"Prompt,omitempty" type:"Repeated"`
@@ -147,7 +147,7 @@ func (s *PromptAgentSessionRequestParams) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsMeta struct {
-	// The map-type context. In custom agent scenarios, you can use this value to replace specific placeholder parameters.
+	// A map. In custom agent scenarios, you can use this value to replace specific placeholder parameters.
 	//
 	// example:
 	//
@@ -203,9 +203,9 @@ type PromptAgentSessionRequestParamsPrompt struct {
 	//
 	// Valid when Type is set to resource_link. Example: xxx.csv
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The size of the file. Unit: bytes.
+	// The size of the file, in bytes.
 	//
-	// Valid only when Type is set to resource_link.
+	// Valid only when Type is set to `resource_link`.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type PromptAgentSessionRequestParamsPrompt struct {
 	//
 	// example:
 	//
-	// Valid values: text and resource_link
+	// Currently supported values: text and resource_link
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The URI of the file.
 	//
@@ -336,7 +336,7 @@ func (s *PromptAgentSessionRequestParamsPrompt) Validate() error {
 }
 
 type PromptAgentSessionRequestParamsPromptMeta struct {
-	// Specifies whether to hide the prompt from the user. For example, if a user asks a question in the chat dialog box, such as "Sales amount in the last 7 days", and the calling system retrieves some business domain knowledge through RAG before calling the API operation, the knowledge needs to be added to the agent context but not displayed to the user. In this case, you can set this parameter to true.
+	// Specifies whether to hide the prompt from the user. For example, if a user asks a question in the chat dialog box, such as "Sales amount in the last 7 days", and the calling system retrieves business domain knowledge through RAG before calling the API operation to supplement the agent context without displaying it to the user, set this parameter to true.
 	//
 	// example:
 	//

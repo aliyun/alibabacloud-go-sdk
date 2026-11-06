@@ -20,7 +20,7 @@ type iListDownstreamTasksRequest interface {
 }
 
 type ListDownstreamTasksRequest struct {
-	// The node ID.
+	// The task ID.
 	//
 	// This parameter is required.
 	//

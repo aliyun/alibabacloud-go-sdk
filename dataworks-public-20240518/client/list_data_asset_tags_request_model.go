@@ -20,7 +20,7 @@ type iListDataAssetTagsRequest interface {
 }
 
 type ListDataAssetTagsRequest struct {
-	// The tag type.
+	// The tag category. Valid values:
 	//
 	// - Normal
 	//

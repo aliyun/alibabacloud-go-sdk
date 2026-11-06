@@ -24,7 +24,7 @@ type CreateAgentSessionShrinkRequest struct {
 	//
 	// 4758330557805415712
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. This value is always 2.0.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//

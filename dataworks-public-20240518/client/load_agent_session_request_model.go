@@ -18,13 +18,13 @@ type iLoadAgentSessionRequest interface {
 }
 
 type LoadAgentSessionRequest struct {
-	// The ID provided by the requester. This ID is echoed back as is.
+	// The ID passed by the requester. The value is returned as is.
 	//
 	// example:
 	//
 	// 4as3dasf654a
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed to 2.0.
+	// The JSON-RPC version. The value is fixed to 2.0.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *LoadAgentSessionRequest) Validate() error {
 }
 
 type LoadAgentSessionRequestParams struct {
-	// The ACP extension parameters for DataWorks.
+	// The ACP extension parameters of DataWorks.
 	Meta *LoadAgentSessionRequestParamsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	// The ID of the target session. If the session does not exist, an SSE error frame is returned.
 	//
@@ -125,13 +125,13 @@ func (s *LoadAgentSessionRequestParams) Validate() error {
 }
 
 type LoadAgentSessionRequestParamsMeta struct {
-	// The offset from which to pull subsequent SSE outputs in a resumable transmission scenario.
+	// Pulls the subsequent SSE output from the specified position in a resumable transfer scenario.
 	//
 	// example:
 	//
 	// 10000
 	BeginLogOffset *int64 `json:"BeginLogOffset,omitempty" xml:"BeginLogOffset,omitempty"`
-	// Specifies whether this is a resumable transmission scenario. If the SSE stream is interrupted due to network instability, you can set this flag to repull the SSE response data from the breakpoint.
+	// Specifies whether this is a resumable transfer scenario. In scenarios where the SSE stream is unstable, such as network instability that causes the SSE connection to drop midway, you can use this flag to pull the SSE response data again from the breakpoint.
 	//
 	// example:
 	//

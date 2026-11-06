@@ -26,7 +26,7 @@ type ListTaskInstanceOperationLogsRequest struct {
 	//
 	// 1710239005403
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
-	// The node instance ID.
+	// The task instance ID.
 	//
 	// This parameter is required.
 	//

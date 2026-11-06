@@ -54,7 +54,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// eb870033-74c8-4b1b-9664-04c4e7cc3465
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The name of the general-purpose resource group. It must start with a letter and can contain letters, digits, and underscores (_). It can be up to 128 characters in length.
+	// The name of the general-purpose resource group. The name must start with a letter and can contain letters, digits, and underscores (_). It can be up to 128 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -62,19 +62,19 @@ type CreateResourceGroupRequest struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing duration.
+	// The subscription duration.
 	//
 	// example:
 	//
 	// 1
 	PaymentDuration *int32 `json:"PaymentDuration,omitempty" xml:"PaymentDuration,omitempty"`
-	// The unit of the billing duration. Month indicates months, and Year indicates years.
+	// The unit of the subscription duration. Valid values: Month (monthly subscription) and Year (annual subscription).
 	//
 	// example:
 	//
 	// Month
 	PaymentDurationUnit *string `json:"PaymentDurationUnit,omitempty" xml:"PaymentDurationUnit,omitempty"`
-	// The billing method of the resource group. PrePaid indicates subscription, and PostPaid indicates pay-as-you-go.
+	// The billing method of the resource group. Valid values: PrePaid: subscription. PostPaid: pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -82,19 +82,19 @@ type CreateResourceGroupRequest struct {
 	//
 	// PrePaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The remark of the general-purpose resource group. It can contain letters, Chinese characters, digits, and underscores (_). It can be up to 128 characters in length.
+	// The remark of the general-purpose resource group. The remark can contain letters, Chinese characters, digits, and underscores (_). It can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// Create a serverless resource group for common tasks
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The specifications of the resource group. Unit: CU. This parameter is required when the billing method of the resource group is PrePaid.
+	// The specifications of the resource group. Unit: CU. This parameter is required when the billing method is set to PrePaid.
 	//
 	// example:
 	//
 	// 2
 	Spec *int32 `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The ID of the default VPC.
+	// The ID of the VPC to which the resource group is bound by default.
 	//
 	// This parameter is required.
 	//
@@ -102,7 +102,7 @@ type CreateResourceGroupRequest struct {
 	//
 	// vpc-m2et4f3oc8m****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the default vSwitch.
+	// The ID of the vSwitch to which the resource group is bound by default.
 	//
 	// This parameter is required.
 	//

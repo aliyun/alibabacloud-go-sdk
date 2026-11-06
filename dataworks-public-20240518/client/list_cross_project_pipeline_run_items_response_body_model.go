@@ -18,19 +18,19 @@ type iListCrossProjectPipelineRunItemsResponseBody interface {
 }
 
 type ListCrossProjectPipelineRunItemsResponseBody struct {
-	// The business response.
+	// The response data.
 	//
 	// example:
 	//
 	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23","PageNumber":1,"PageSize":10,"TotalCount":1,"PipelineRunItems":[{"ObjectId":"1","ObjectType":"ODPS_SQL","ObjectName":"object-1","ObjectVersion":"7","ChangeType":"ADD","IsRoot":true,"Status":"Ready"}]}
 	Data *ListCrossProjectPipelineRunItemsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot this API call.
+	// The request ID used to locate and troubleshoot the API call.
 	//
 	// example:
 	//
 	// 735894D1-D5E5-50B8-8A6D-041C90A98B23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -89,13 +89,13 @@ type ListCrossProjectPipelineRunItemsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of publish items for the root objects and their child objects that are fixed in the cross-workspace publish pipeline.
+	// The list of publish items for the root object and its child objects in the cross-workspace publish pipeline.
 	//
 	// example:
 	//
@@ -206,25 +206,25 @@ type ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems struct {
 	//
 	// true
 	IsRoot *bool `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
-	// The ID of the publish object.
+	// The ID of the deployment object.
 	//
 	// example:
 	//
 	// 1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The name of the publish object.
+	// The name of the deployment object.
 	//
 	// example:
 	//
 	// object-1
 	ObjectName *string `json:"ObjectName,omitempty" xml:"ObjectName,omitempty"`
-	// The object type of the publish object.
+	// The deployment object type.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The version of the publish object.
+	// The version of the deployment object.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems struct {
 	//
 	// 1
 	ParentObjectId *string `json:"ParentObjectId,omitempty" xml:"ParentObjectId,omitempty"`
-	// The status of the publish item.
+	// The status of the deployment item.
 	//
 	// example:
 	//

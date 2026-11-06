@@ -16,7 +16,7 @@ type iListDataAssetTagsResponseBody interface {
 }
 
 type ListDataAssetTagsResponseBody struct {
-	// The paginated query results for the tag list.
+	// The paginated query results of the tag list.
 	PagingInfo *ListDataAssetTagsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -142,7 +142,7 @@ func (s *ListDataAssetTagsResponseBodyPagingInfo) Validate() error {
 }
 
 type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
-	// The tag type.
+	// The tag category. Valid values:
 	//
 	// - Normal
 	//
@@ -152,7 +152,7 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The creation time of the tag.
+	// The time when the tag was created.
 	//
 	// The value is a 13-digit number, such as `1735890003000`.
 	//
@@ -160,7 +160,7 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	//
 	// 1735890003000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator of the tag.
+	// The user who created the tag.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type ListDataAssetTagsResponseBodyPagingInfoDataAssetTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The list of tag administrators.
 	Managers []*string `json:"Managers,omitempty" xml:"Managers,omitempty" type:"Repeated"`
-	// The last modification time of the tag.
+	// The time when the tag was last modified.
 	//
 	// The value is a 13-digit number, such as `1735890003000`.
 	//

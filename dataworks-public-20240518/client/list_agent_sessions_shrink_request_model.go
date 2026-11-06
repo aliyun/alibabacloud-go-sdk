@@ -18,13 +18,13 @@ type iListAgentSessionsShrinkRequest interface {
 }
 
 type ListAgentSessionsShrinkRequest struct {
-	// The ID passed by the requester, which is returned as is.
+	// The request ID provided by the caller. This ID is returned as is in the response.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed to 2.0.
+	// The JSON-RPC version, which is fixed to 2.0.
 	//
 	// example:
 	//

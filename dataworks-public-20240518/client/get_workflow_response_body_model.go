@@ -76,7 +76,7 @@ type GetWorkflowResponseBodyWorkflow struct {
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the user who created the node.
+	// The account ID of the user who created the workflow.
 	//
 	// example:
 	//
@@ -90,7 +90,11 @@ type GetWorkflowResponseBodyWorkflow struct {
 	//
 	// Test workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
+	//
+	// - Prod: Production environment.
+	//
+	// - Dev: Development environment.
 	//
 	// example:
 	//
@@ -110,7 +114,7 @@ type GetWorkflowResponseBodyWorkflow struct {
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the user who updated the node.
+	// The account ID of the user who updated the workflow.
 	//
 	// example:
 	//
@@ -144,7 +148,7 @@ type GetWorkflowResponseBodyWorkflow struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The list of tags.
 	Tags []*GetWorkflowResponseBodyWorkflowTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The list of nodes.
+	// The list of tasks.
 	Tasks []*GetWorkflowResponseBodyWorkflowTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The trigger configuration.
 	Trigger *GetWorkflowResponseBodyWorkflowTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
@@ -367,13 +371,13 @@ type GetWorkflowResponseBodyWorkflowDependencies struct {
 	//
 	// Normal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The output identifier of the upstream node. This field is returned when the dependency type is same-cycle dependency and the input content is configured.
+	// The output identifier of the upstream task. This field is returned when the dependency type is same-cycle dependency and the input content is configured.
 	//
 	// example:
 	//
 	// pre.odps_sql_demo_0
 	UpstreamOutput *string `json:"UpstreamOutput,omitempty" xml:"UpstreamOutput,omitempty"`
-	// The ID of the upstream node. This field is returned when the dependency type is cross-cycle dependency on other nodes or same-cycle dependency without input content configured. It is not returned in other cases.
+	// The ID of the upstream task. This field is returned when the dependency type is cross-cycle dependency on other nodes or same-cycle dependency without input content configured. It is not returned in other cases.
 	//
 	// example:
 	//
@@ -421,7 +425,7 @@ func (s *GetWorkflowResponseBodyWorkflowDependencies) Validate() error {
 }
 
 type GetWorkflowResponseBodyWorkflowOutputs struct {
-	// The list of node output definitions.
+	// The list of task output definitions.
 	TaskOutputs []*GetWorkflowResponseBodyWorkflowOutputsTaskOutputs `json:"TaskOutputs,omitempty" xml:"TaskOutputs,omitempty" type:"Repeated"`
 }
 
@@ -537,7 +541,7 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The client unique code of the node, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating the node, the system automatically generates a code and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting the resource, it must be the same as the client unique code used during creation.
+	// The client unique code of the task, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating the task, the system automatically generates a code and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting the resource, it must be the same as the client unique code used during creation.
 	//
 	// example:
 	//
@@ -551,7 +555,7 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the user who created the node.
+	// The account ID of the user who created the task.
 	//
 	// example:
 	//
@@ -565,13 +569,17 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The project environment.
+	// The project environment. Valid values:
+	//
+	// - Prod: Production environment.
+	//
+	// - Dev: Development environment.
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The ID of the node.
+	// The ID of the task.
 	//
 	// example:
 	//
@@ -585,25 +593,25 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the user who updated the node.
+	// The account ID of the user who updated the task.
 	//
 	// example:
 	//
 	// 1000
 	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
-	// The name of the node.
+	// The name of the task.
 	//
 	// example:
 	//
 	// SQL node
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The account ID of the node owner.
+	// The account ID of the task owner.
 	//
 	// example:
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The priority of the node. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
@@ -621,19 +629,19 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// 60
 	RerunInterval *int32 `json:"RerunInterval,omitempty" xml:"RerunInterval,omitempty"`
-	// The configuration that specifies whether the node can be rerun. Valid values:
+	// The configuration that specifies whether the task can be rerun. Valid values:
 	//
-	// - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
+	// - AllDenied: The task cannot be rerun regardless of whether it succeeds or fails.
 	//
-	// - FailureAllowed: The node can be rerun only when it fails.
+	// - FailureAllowed: The task can be rerun only when it fails.
 	//
-	// - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
+	// - AllAllowed: The task can be rerun regardless of whether it succeeds or fails.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of retries. This parameter takes effect only when the node is configured to be rerunnable.
+	// The number of retries. This parameter takes effect only when the task is configured to be rerunnable.
 	//
 	// example:
 	//
@@ -641,7 +649,7 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	RerunTimes *int32 `json:"RerunTimes,omitempty" xml:"RerunTimes,omitempty"`
 	// The runtime environment configuration, such as the resource group information.
 	RuntimeResource *GetWorkflowResponseBodyWorkflowTasksRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The timeout period for node execution, in seconds.
+	// The timeout period for task execution, in seconds.
 	//
 	// example:
 	//
@@ -659,13 +667,13 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The type of the node.
+	// The type of the task.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the workflow to which the node belongs.
+	// The ID of the workflow to which the task belongs.
 	//
 	// example:
 	//
@@ -924,19 +932,19 @@ func (s *GetWorkflowResponseBodyWorkflowTasksDataSource) Validate() error {
 }
 
 type GetWorkflowResponseBodyWorkflowTasksRuntimeResource struct {
-	// The CU consumption configured for node execution.
+	// The CU consumption configured for task execution.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for node execution.
+	// The ID of the image configured for task execution.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The identifier of the schedule resource group configured for node execution.
+	// The identifier of the resource group for scheduling configured for task execution.
 	//
 	// example:
 	//
@@ -1010,9 +1018,9 @@ type GetWorkflowResponseBodyWorkflowTrigger struct {
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The effective period of the epoch trigger. This parameter takes effect only when Type is set to Scheduler.
+	// The time when periodic triggering takes effect. This parameter takes effect only when Type is set to Scheduler.
 	//
-	// The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
+	// The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
 	//
 	// example:
 	//

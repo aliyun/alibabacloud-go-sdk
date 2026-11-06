@@ -18,13 +18,13 @@ type iListAgentSessionsRequest interface {
 }
 
 type ListAgentSessionsRequest struct {
-	// The ID passed by the requester, which is returned as is.
+	// The request ID provided by the caller. This ID is returned as is in the response.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed to 2.0.
+	// The JSON-RPC version, which is fixed to 2.0.
 	//
 	// example:
 	//
@@ -79,17 +79,13 @@ func (s *ListAgentSessionsRequest) Validate() error {
 }
 
 type ListAgentSessionsRequestParams struct {
-	// The exact filter for the **agent name**. You must specify at least one of this parameter and SessionSourceList.
+	// The **agent name*	- for exact match filtering. You must specify at least one of this parameter and `SessionSourceList`.
 	//
 	// example:
 	//
 	// chat_cli_chatbi
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	// Specifies whether to return only archived sessions. Valid values:
-	//
-	// - true: Only archived sessions are returned.
-	//
-	// - false or not specified: Only unarchived sessions are returned.
+	// Specifies whether to query archived sessions. If you set this parameter to true, only archived sessions are returned. If you set this parameter to false or omit it, only unarchived sessions are returned. A value of false does not mean all sessions. To query both types of sessions, send separate requests and handle the pagination for each.
 	Archived *bool `json:"Archived,omitempty" xml:"Archived,omitempty"`
 	// The number of entries per page. Default value: 50.
 	//
@@ -103,21 +99,21 @@ type ListAgentSessionsRequestParams struct {
 	//
 	// 10
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The exact match for the session ID.
+	// The session ID for exact matching.
 	//
 	// example:
 	//
 	// sess_0f12abc34
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The filter for the **session source list**. You must specify at least one of this parameter and AgentName.
+	// The **session source list*	- for filtering. You must specify at least one of this parameter and `AgentName`.
 	SessionSourceList []*string `json:"SessionSourceList,omitempty" xml:"SessionSourceList,omitempty" type:"Repeated"`
-	// The fuzzy filter for the session title.
+	// The session title for fuzzy match filtering.
 	//
 	// example:
 	//
 	// Sales in the last 30 days
 	SessionTitle *string `json:"SessionTitle,omitempty" xml:"SessionTitle,omitempty"`
-	// The filter for the session tag code list.
+	// The session tag code list for filtering.
 	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 

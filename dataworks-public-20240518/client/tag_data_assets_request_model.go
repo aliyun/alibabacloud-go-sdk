@@ -36,9 +36,9 @@ type TagDataAssetsRequest struct {
 	DataAssetIds []*string `json:"DataAssetIds,omitempty" xml:"DataAssetIds,omitempty" type:"Repeated"`
 	// The data asset type. Valid values:
 	//
-	// - DataWorks table (ACS::DataWorks::Table)
+	// - Data table (ACS::DataWorks::Table)
 	//
-	// - DataWorks scheduled task (ACS::DataWorks::Task)
+	// - Scheduling task (ACS::DataWorks::Task)
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type TagDataAssetsRequest struct {
 	DataAssetType *string `json:"DataAssetType,omitempty" xml:"DataAssetType,omitempty"`
 	// The workspace environment to which the data asset belongs. Valid values:
 	//
-	// - Dev (development environment)
+	// - Dev: development environment
 	//
-	// - Prod (production environment)
+	// - Prod: production environment
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type TagDataAssetsRequest struct {
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of data asset tags to attach.
+	// The list of tags to attach to the data assets.
 	//
 	// This parameter is required.
 	Tags []*TagDataAssetsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`

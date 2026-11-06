@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("dataworks-public")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":              dara.String("dataworks.ap-northeast-1.aliyuncs.com"),
@@ -633,6 +641,98 @@ func (client *Client) ApproveProcessInstance(request *ApproveProcessInstanceRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &ApproveProcessInstanceResponse{}
 	_body, _err := client.ApproveProcessInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the archive status of a specified agent session to archived or unarchived. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the destination region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the destination region.
+//
+// Archiving only modifies the archive flag of the session and does not stop or delete the session. If Archived is set to true, the session is archived. If Archived is set to false, the session is unarchived. If this parameter is omitted, the default value true is used. You can use the Archived parameter of ListAgentSessions to query archived and unarchived sessions separately.
+//
+// The caller must have access permissions on the current session and the corresponding OpenAPI action permissions. An HTTP 200 status code does not indicate that the business operation is successful. You must check JsonRpcResponse.Error. The successful result is located in JsonRpcResponse.Result.
+//
+// @param tmpReq - ArchiveAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ArchiveAgentSessionResponse
+func (client *Client) ArchiveAgentSessionWithOptions(tmpReq *ArchiveAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *ArchiveAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ArchiveAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ArchiveAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ArchiveAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the archive status of a specified agent session to archived or unarchived. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the destination region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the destination region.
+//
+// Archiving only modifies the archive flag of the session and does not stop or delete the session. If Archived is set to true, the session is archived. If Archived is set to false, the session is unarchived. If this parameter is omitted, the default value true is used. You can use the Archived parameter of ListAgentSessions to query archived and unarchived sessions separately.
+//
+// The caller must have access permissions on the current session and the corresponding OpenAPI action permissions. An HTTP 200 status code does not indicate that the business operation is successful. You must check JsonRpcResponse.Error. The successful result is located in JsonRpcResponse.Result.
+//
+// @param request - ArchiveAgentSessionRequest
+//
+// @return ArchiveAgentSessionResponse
+func (client *Client) ArchiveAgentSession(request *ArchiveAgentSessionRequest) (_result *ArchiveAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ArchiveAgentSessionResponse{}
+	_body, _err := client.ArchiveAgentSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1465,17 +1565,17 @@ func (client *Client) CloneDataSource(request *CloneDataSourceRequest) (_result 
 //
 // Description:
 //
-// ## Request instructions
+// ## Request description
 //
 // - **Agent name**: Must be unique within the current account.
 //
-// - **Model configuration**: Optional parameter used to specify the model used by the agent and its related settings.
+// - **Model configuration**: Optional. Specifies the model used by the agent and its related settings.
 //
-// - **Visibility level**: Defines who can access the agent. Supports visibility within the account, project, or specific users.
+// - **Visibility level**: Defines who can access the agent. Supports account-wide, project-specific, or user-specific visibility.
 //
-// - **Visibility scope**: When `PROJECT` or `USER` is selected as the visibility level, you must further specify the specific project IDs or user ID lists.
+// - **Visibility scope**: When `PROJECT` or `USER` is selected as the visibility level, you must specify the specific project IDs or user IDs.
 //
-// - **Other parameters**: Display name and description are optional and can be filled in as needed.
+// - **Other parameters**: Parameters such as the display name and description are optional. Specify them as needed.
 //
 // @param tmpReq - CreateAgentRequest
 //
@@ -1601,17 +1701,17 @@ func (client *Client) CreateAgentWithOptions(tmpReq *CreateAgentRequest, runtime
 //
 // Description:
 //
-// ## Request instructions
+// ## Request description
 //
 // - **Agent name**: Must be unique within the current account.
 //
-// - **Model configuration**: Optional parameter used to specify the model used by the agent and its related settings.
+// - **Model configuration**: Optional. Specifies the model used by the agent and its related settings.
 //
-// - **Visibility level**: Defines who can access the agent. Supports visibility within the account, project, or specific users.
+// - **Visibility level**: Defines who can access the agent. Supports account-wide, project-specific, or user-specific visibility.
 //
-// - **Visibility scope**: When `PROJECT` or `USER` is selected as the visibility level, you must further specify the specific project IDs or user ID lists.
+// - **Visibility scope**: When `PROJECT` or `USER` is selected as the visibility level, you must specify the specific project IDs or user IDs.
 //
-// - **Other parameters**: Display name and description are optional and can be filled in as needed.
+// - **Other parameters**: Parameters such as the display name and description are optional. Specify them as needed.
 //
 // @param request - CreateAgentRequest
 //
@@ -1629,15 +1729,15 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates an agent session and returns the session ID.
+// Creates a new agent session and returns the session ID.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation creates an agent session.
+// - This operation creates a new agent session.
 //
-// - You must specify the name of the bound agent by using `_meta.agent.agentName`. This parameter is required.
+// - Specify the name of the bound agent by using `Params.Meta.Agent.AgentName`. This parameter is required.
 //
 //   - dataworks_data_agent: DataWorks built-in agent - Data Agent. It provides AI capabilities for the entire data development lifecycle, including data integration, development, O&M, governance, and analysis.
 //
@@ -1645,9 +1745,11 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 //
 //   - dataworks_ai_assistant_agent: DataWorks built-in agent - AI Assistant. An enterprise-grade AI assistant for DataWorks built on open-source frameworks such as OpenClaw and Hermes Agent.
 //
-// - You can pass through the session source identifier by using `_meta.config.sessionSource` to facilitate subsequent retrieval by source.
+// - You can specify the session source by using `Params.Meta.Config.SessionSource` to facilitate subsequent retrieval by source.
 //
-// - You can pass session tags by using `_meta.config.sessionTags[].sessionTagCode`.
+// - You can pass session tags by using `Params.Meta.Config.SessionTags[].SessionTagCode`.
+//
+// - Set optional initial session configurations by using `Params.Meta.InitialConfigOptions`. Use `Model`, `Mode`, and `ReasoningEffort` for the model, authorization mode, and reasoning configuration, respectively. After the session is created, save the session ID from the response to send prompts or subscribe to session events later.
 //
 // @param tmpReq - CreateAgentSessionRequest
 //
@@ -1705,15 +1807,15 @@ func (client *Client) CreateAgentSessionWithOptions(tmpReq *CreateAgentSessionRe
 
 // Summary:
 //
-// Creates an agent session and returns the session ID.
+// Creates a new agent session and returns the session ID.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation creates an agent session.
+// - This operation creates a new agent session.
 //
-// - You must specify the name of the bound agent by using `_meta.agent.agentName`. This parameter is required.
+// - Specify the name of the bound agent by using `Params.Meta.Agent.AgentName`. This parameter is required.
 //
 //   - dataworks_data_agent: DataWorks built-in agent - Data Agent. It provides AI capabilities for the entire data development lifecycle, including data integration, development, O&M, governance, and analysis.
 //
@@ -1721,9 +1823,11 @@ func (client *Client) CreateAgentSessionWithOptions(tmpReq *CreateAgentSessionRe
 //
 //   - dataworks_ai_assistant_agent: DataWorks built-in agent - AI Assistant. An enterprise-grade AI assistant for DataWorks built on open-source frameworks such as OpenClaw and Hermes Agent.
 //
-// - You can pass through the session source identifier by using `_meta.config.sessionSource` to facilitate subsequent retrieval by source.
+// - You can specify the session source by using `Params.Meta.Config.SessionSource` to facilitate subsequent retrieval by source.
 //
-// - You can pass session tags by using `_meta.config.sessionTags[].sessionTagCode`.
+// - You can pass session tags by using `Params.Meta.Config.SessionTags[].SessionTagCode`.
+//
+// - Set optional initial session configurations by using `Params.Meta.InitialConfigOptions`. Use `Model`, `Mode`, and `ReasoningEffort` for the model, authorization mode, and reasoning configuration, respectively. After the session is created, save the session ID from the response to send prompts or subscribe to session events later.
 //
 // @param request - CreateAgentSessionRequest
 //
@@ -2026,6 +2130,80 @@ func (client *Client) CreateCalendar(request *CreateCalendarRequest) (_result *C
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateCalendarResponse{}
 	_body, _err := client.CreateCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a code review.
+//
+// @param request - CreateCodeReviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCodeReviewResponse
+func (client *Client) CreateCodeReviewWithOptions(request *CreateCodeReviewRequest, runtime *dara.RuntimeOptions) (_result *CreateCodeReviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.PipelineRunId) {
+		body["PipelineRunId"] = request.PipelineRunId
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Reviewers) {
+		body["Reviewers"] = request.Reviewers
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateCodeReview"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateCodeReviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a code review.
+//
+// @param request - CreateCodeReviewRequest
+//
+// @return CreateCodeReviewResponse
+func (client *Client) CreateCodeReview(request *CreateCodeReviewRequest) (_result *CreateCodeReviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateCodeReviewResponse{}
+	_body, _err := client.CreateCodeReviewWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2359,11 +2537,11 @@ func (client *Client) CreateCrawler(request *CreateCrawlerRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a cross-workspace deployment flow.
+// Creates a cross-workspace deployment pipeline.
 //
 // Description:
 //
-// Creates and persists a cross-workspace deployment flow. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Child objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call ListCrossProjectDeploymentCandidates to query candidate objects, call ExecCrossProjectPipelineRun to execute the deployment after creation, and call GetCrossProjectPipelineRun to query the deployment status.
+// Creates and solidifies a cross-project deployment pipeline. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Sub-objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call the ListCrossProjectDeploymentCandidates operation to query candidate objects. After the pipeline is created, call the ExecCrossProjectPipelineRun operation to execute the deployment, and call the GetCrossProjectPipelineRun operation to query the status.
 //
 // @param tmpReq - CreateCrossProjectPipelineRunRequest
 //
@@ -2429,11 +2607,11 @@ func (client *Client) CreateCrossProjectPipelineRunWithOptions(tmpReq *CreateCro
 
 // Summary:
 //
-// Creates a cross-workspace deployment flow.
+// Creates a cross-workspace deployment pipeline.
 //
 // Description:
 //
-// Creates and persists a cross-workspace deployment flow. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Child objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call ListCrossProjectDeploymentCandidates to query candidate objects, call ExecCrossProjectPipelineRun to execute the deployment after creation, and call GetCrossProjectPipelineRun to query the deployment status.
+// Creates and solidifies a cross-project deployment pipeline. The ObjectIds parameter must contain exactly one top-level object ID from the source project. Sub-objects of composite objects such as workflows are automatically included by the system. Passing multiple objects causes parameter validation to fail. You can call the ListCrossProjectDeploymentCandidates operation to query candidate objects. After the pipeline is created, call the ExecCrossProjectPipelineRun operation to execute the deployment, and call the GetCrossProjectPipelineRun operation to query the status.
 //
 // @param request - CreateCrossProjectPipelineRunRequest
 //
@@ -6207,11 +6385,11 @@ func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvan
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or later is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this API operation.
 //
-// 2. **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2680173.html) of DataWorks general-purpose resource groups.**
+// 2. **Before you call this API operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2680173.html) of DataWorks general-purpose resource groups.**
 //
-// 3. **Before you call this operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
+// 3. **Before you call this API operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
 //
 // @param tmpReq - CreateResourceGroupRequest
 //
@@ -6309,11 +6487,11 @@ func (client *Client) CreateResourceGroupWithOptions(tmpReq *CreateResourceGroup
 //
 // Description:
 //
-// 1. DataWorks Basic Edition or later is required.
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this API operation.
 //
-// 2. **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2680173.html) of DataWorks general-purpose resource groups.**
+// 2. **Before you call this API operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2680173.html) of DataWorks general-purpose resource groups.**
 //
-// 3. **Before you call this operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
+// 3. **Before you call this API operation, make sure that you have created the service-linked role AliyunServiceRoleForDataWorks.**
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -7310,6 +7488,98 @@ func (client *Client) DeleteAgent(request *DeleteAgentRequest) (_result *DeleteA
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteAgentResponse{}
 	_body, _err := client.DeleteAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified agent session. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
+//
+// Verify the target session before proceeding. A deleted session cannot be recovered by unarchiving it through ArchiveAgentSession. To temporarily hide a session, use ArchiveAgentSession. To stop the current execution, use CancelAgentSession.
+//
+// The caller must have access permissions for the current session and the corresponding OpenAPI action permissions. An HTTP 200 status code does not indicate a successful business operation. You must check JsonRpcResponse.Error for errors. Successful results are located in JsonRpcResponse.Result.
+//
+// @param tmpReq - DeleteAgentSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentSessionResponse
+func (client *Client) DeleteAgentSessionWithOptions(tmpReq *DeleteAgentSessionRequest, runtime *dara.RuntimeOptions) (_result *DeleteAgentSessionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DeleteAgentSessionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Params) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, dara.String("Params"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Jsonrpc) {
+		body["Jsonrpc"] = request.Jsonrpc
+	}
+
+	if !dara.IsNil(request.ParamsShrink) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteAgentSession"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteAgentSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specified agent session. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the canary release feature is enabled for the current account and the target region.
+//
+// Verify the target session before proceeding. A deleted session cannot be recovered by unarchiving it through ArchiveAgentSession. To temporarily hide a session, use ArchiveAgentSession. To stop the current execution, use CancelAgentSession.
+//
+// The caller must have access permissions for the current session and the corresponding OpenAPI action permissions. An HTTP 200 status code does not indicate a successful business operation. You must check JsonRpcResponse.Error for errors. Successful results are located in JsonRpcResponse.Result.
+//
+// @param request - DeleteAgentSessionRequest
+//
+// @return DeleteAgentSessionResponse
+func (client *Client) DeleteAgentSession(request *DeleteAgentSessionRequest) (_result *DeleteAgentSessionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteAgentSessionResponse{}
+	_body, _err := client.DeleteAgentSessionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10533,7 +10803,7 @@ func (client *Client) DeleteSkill(request *DeleteSkillRequest) (_result *DeleteS
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - DeleteTaskRequest
 //
@@ -10585,7 +10855,7 @@ func (client *Client) DeleteTaskWithOptions(request *DeleteTaskRequest, runtime 
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - DeleteTaskRequest
 //
@@ -11912,9 +12182,9 @@ func (client *Client) FindBestMatchSecurityStrategy(request *FindBestMatchSecuri
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This operation retrieves the detailed configuration information of an agent by its name, including but not limited to model configurations, system prompts, and tool lists. You must provide the exact agent name as a parameter in the request.
+// This API operation retrieves the detailed configuration information of an agent by its name, including but not limited to model configurations, system prompts, and tool lists. You must provide the exact agent name as a parameter in the request.
 //
 // @param request - GetAgentRequest
 //
@@ -11966,9 +12236,9 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dar
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This operation retrieves the detailed configuration information of an agent by its name, including but not limited to model configurations, system prompts, and tool lists. You must provide the exact agent name as a parameter in the request.
+// This API operation retrieves the detailed configuration information of an agent by its name, including but not limited to model configurations, system prompts, and tool lists. You must provide the exact agent name as a parameter in the request.
 //
 // @param request - GetAgentRequest
 //
@@ -12069,6 +12339,129 @@ func (client *Client) GetAgentSessionArtifactMeta(request *GetAgentSessionArtifa
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAgentSessionArtifactMetaResponse{}
 	_body, _err := client.GetAgentSessionArtifactMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Subscribes to real-time Server-Sent Events (SSE) for a specified agent session independently, with support for resumption using a remote cursor. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the corresponding canary release is enabled for your account and the target region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the corresponding canary release is enabled for your account and the target region.
+//
+// This API operation provides a read-only SSE subscription and does not submit questions. Use a GET request and maintain streaming reads. Do not read the response as a standard JSON object at once. For long-running tasks that may exceed the timeout of a single request, establish an independent event subscription before calling PromptAgentSession. After creating a session, set SessionCode to the SessionId and read both streams in parallel. The Events stream displays real-time progress, while the built-in SSE of the Prompt stream is used to read the final state and business errors of the current turn.
+//
+// Events display messages, tool invoke, and execution progress. The establishment of a subscription connection, heartbeats, or an HTTP 200 status code does not indicate task completion. Determine task completion based on the actual final state events and the Prompt invoke results.
+//
+// When resuming after a disconnection, pass the ID of the last consumed remote event as Last-Event-Id. Also, save and pass back the EventEpoch of the same event stream if the server has returned it. When subscribing for the first time without a cursor, omit these two parameters to receive only real-time events after the subscription is established. Explicitly setting Last-Event-Id to 0 attempts to replay from the starting point still in the cache, which does not mean the complete history can be retrieved. Retrieve the complete history by calling LoadAgentSession. Do not generate cursors or epochs yourself, or use local message sequence numbers as replacements.
+//
+// The event cache is bounded. If you receive a resynchronization prompt such as state_resync_required or the cursor is no longer available, restore the history by calling LoadAgentSession and then re-establish the subscription. LoadAgentSession is used for refreshing and exception recovery, and should not be called repeatedly to replace real-time event subscriptions. If the Prompt stream times out or disconnects before receiving the business final state, the result of the current turn is unknown, and you can continue to observe the progress through the Events stream. Avoid automatically resending the Prompt. Closing the Events subscription does not trigger CancelAgentSession.
+//
+// Servers that support epoch information return eventEpoch in the data of the stream_open control frame and provide a mapping between the business sessionId and nativeSessionId. Save the identifiers returned by the server. Do not assume that the business session ID is the same as the native session ID. The cursor and eventEpoch must come from the same event stream epoch of the same native session, and cannot be reused across native sessions or epochs. Do not advance the cursor when the control frame does not have an ID.
+//
+// @param request - GetAgentSessionEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentSessionEventsResponse
+func (client *Client) GetAgentSessionEventsWithSSE(request *GetAgentSessionEventsRequest, runtime *dara.RuntimeOptions, _yield chan *GetAgentSessionEventsResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.getAgentSessionEventsWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Subscribes to real-time Server-Sent Events (SSE) for a specified agent session independently, with support for resumption using a remote cursor. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the corresponding canary release is enabled for your account and the target region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the corresponding canary release is enabled for your account and the target region.
+//
+// This API operation provides a read-only SSE subscription and does not submit questions. Use a GET request and maintain streaming reads. Do not read the response as a standard JSON object at once. For long-running tasks that may exceed the timeout of a single request, establish an independent event subscription before calling PromptAgentSession. After creating a session, set SessionCode to the SessionId and read both streams in parallel. The Events stream displays real-time progress, while the built-in SSE of the Prompt stream is used to read the final state and business errors of the current turn.
+//
+// Events display messages, tool invoke, and execution progress. The establishment of a subscription connection, heartbeats, or an HTTP 200 status code does not indicate task completion. Determine task completion based on the actual final state events and the Prompt invoke results.
+//
+// When resuming after a disconnection, pass the ID of the last consumed remote event as Last-Event-Id. Also, save and pass back the EventEpoch of the same event stream if the server has returned it. When subscribing for the first time without a cursor, omit these two parameters to receive only real-time events after the subscription is established. Explicitly setting Last-Event-Id to 0 attempts to replay from the starting point still in the cache, which does not mean the complete history can be retrieved. Retrieve the complete history by calling LoadAgentSession. Do not generate cursors or epochs yourself, or use local message sequence numbers as replacements.
+//
+// The event cache is bounded. If you receive a resynchronization prompt such as state_resync_required or the cursor is no longer available, restore the history by calling LoadAgentSession and then re-establish the subscription. LoadAgentSession is used for refreshing and exception recovery, and should not be called repeatedly to replace real-time event subscriptions. If the Prompt stream times out or disconnects before receiving the business final state, the result of the current turn is unknown, and you can continue to observe the progress through the Events stream. Avoid automatically resending the Prompt. Closing the Events subscription does not trigger CancelAgentSession.
+//
+// Servers that support epoch information return eventEpoch in the data of the stream_open control frame and provide a mapping between the business sessionId and nativeSessionId. Save the identifiers returned by the server. Do not assume that the business session ID is the same as the native session ID. The cursor and eventEpoch must come from the same event stream epoch of the same native session, and cannot be reused across native sessions or epochs. Do not advance the cursor when the control frame does not have an ID.
+//
+// @param request - GetAgentSessionEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentSessionEventsResponse
+func (client *Client) GetAgentSessionEventsWithOptions(request *GetAgentSessionEventsRequest, runtime *dara.RuntimeOptions) (_result *GetAgentSessionEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventEpoch) {
+		query["EventEpoch"] = request.EventEpoch
+	}
+
+	if !dara.IsNil(request.SessionCode) {
+		query["SessionCode"] = request.SessionCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentSessionEvents"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentSessionEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Subscribes to real-time Server-Sent Events (SSE) for a specified agent session independently, with support for resumption using a remote cursor. This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the corresponding canary release is enabled for your account and the target region.
+//
+// Description:
+//
+// This API operation is available only when the canary release feature is enabled. Before calling this operation, ensure that the corresponding canary release is enabled for your account and the target region.
+//
+// This API operation provides a read-only SSE subscription and does not submit questions. Use a GET request and maintain streaming reads. Do not read the response as a standard JSON object at once. For long-running tasks that may exceed the timeout of a single request, establish an independent event subscription before calling PromptAgentSession. After creating a session, set SessionCode to the SessionId and read both streams in parallel. The Events stream displays real-time progress, while the built-in SSE of the Prompt stream is used to read the final state and business errors of the current turn.
+//
+// Events display messages, tool invoke, and execution progress. The establishment of a subscription connection, heartbeats, or an HTTP 200 status code does not indicate task completion. Determine task completion based on the actual final state events and the Prompt invoke results.
+//
+// When resuming after a disconnection, pass the ID of the last consumed remote event as Last-Event-Id. Also, save and pass back the EventEpoch of the same event stream if the server has returned it. When subscribing for the first time without a cursor, omit these two parameters to receive only real-time events after the subscription is established. Explicitly setting Last-Event-Id to 0 attempts to replay from the starting point still in the cache, which does not mean the complete history can be retrieved. Retrieve the complete history by calling LoadAgentSession. Do not generate cursors or epochs yourself, or use local message sequence numbers as replacements.
+//
+// The event cache is bounded. If you receive a resynchronization prompt such as state_resync_required or the cursor is no longer available, restore the history by calling LoadAgentSession and then re-establish the subscription. LoadAgentSession is used for refreshing and exception recovery, and should not be called repeatedly to replace real-time event subscriptions. If the Prompt stream times out or disconnects before receiving the business final state, the result of the current turn is unknown, and you can continue to observe the progress through the Events stream. Avoid automatically resending the Prompt. Closing the Events subscription does not trigger CancelAgentSession.
+//
+// Servers that support epoch information return eventEpoch in the data of the stream_open control frame and provide a mapping between the business sessionId and nativeSessionId. Save the identifiers returned by the server. Do not assume that the business session ID is the same as the native session ID. The cursor and eventEpoch must come from the same event stream epoch of the same native session, and cannot be reused across native sessions or epochs. Do not advance the cursor when the control frame does not have an ID.
+//
+// @param request - GetAgentSessionEventsRequest
+//
+// @return GetAgentSessionEventsResponse
+func (client *Client) GetAgentSessionEvents(request *GetAgentSessionEventsRequest) (_result *GetAgentSessionEventsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentSessionEventsResponse{}
+	_body, _err := client.GetAgentSessionEventsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12639,6 +13032,72 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetCertificateResponse{}
 	_body, _err := client.GetCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the metadata of a code review.
+//
+// @param request - GetCodeReviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCodeReviewResponse
+func (client *Client) GetCodeReviewWithOptions(request *GetCodeReviewRequest, runtime *dara.RuntimeOptions) (_result *GetCodeReviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCodeReview"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCodeReviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the metadata of a code review.
+//
+// @param request - GetCodeReviewRequest
+//
+// @return GetCodeReviewResponse
+func (client *Client) GetCodeReview(request *GetCodeReviewRequest) (_result *GetCodeReviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCodeReviewResponse{}
+	_body, _err := client.GetCodeReviewWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17221,7 +17680,7 @@ func (client *Client) GetUpdateTaskResult(request *GetUpdateTaskResultRequest) (
 //
 // Description:
 //
-// This feature requires DataWorks Basic Edition or later.
+// This feature requires DataWorks Basic Edition or a higher edition.
 //
 // @param request - GetWorkflowRequest
 //
@@ -17265,7 +17724,7 @@ func (client *Client) GetWorkflowWithOptions(request *GetWorkflowRequest, runtim
 //
 // Description:
 //
-// This feature requires DataWorks Basic Edition or later.
+// This feature requires DataWorks Basic Edition or a higher edition.
 //
 // @param request - GetWorkflowRequest
 //
@@ -17976,17 +18435,15 @@ func (client *Client) ListAgentSessionArtifacts(request *ListAgentSessionArtifac
 //
 // Description:
 //
-// ## Request description
+// ## Request instructions
 //
-// - You must specify at least one of agentName and sessionSourceList.
+// - You must specify at least one of `Params.AgentName` and `Params.SessionSourceList`. You can also filter sessions by `Params.TagList`, `Params.SessionId`, and `Params.SessionTitle`.
 //
-// - You can combine tagList, sessionId, and sessionTitle for filtering.
+// - If `Params.Archived` is set to `true`, only archived sessions are queried. If it is set to `false` or omitted, only unarchived sessions are queried. To query both types of sessions, send separate requests and handle the pagination for each.
 //
-// - The response follows the Alibaba Cloud OpenAPI paging specification, including totalCount, maxResults, nextToken, and sessionList.
+// - The session list is located in `JsonRpcResponse.Result.AgentSessions`. The pagination information is located in `TotalCount`, `MaxResults`, and `NextToken` under the same `Result`.
 //
-// - If nextToken is an invalid string, it is processed as 1 by default.
-//
-// - By default, 50 records are returned per page. You can adjust this by using the maxResults parameter.
+// - The default value of `Params.MaxResults` is 50. For the first page, you can pass `Params.NextToken=1`. For subsequent pages, pass the `NextToken` value from the response as is.
 //
 // @param tmpReq - ListAgentSessionsRequest
 //
@@ -18048,17 +18505,15 @@ func (client *Client) ListAgentSessionsWithOptions(tmpReq *ListAgentSessionsRequ
 //
 // Description:
 //
-// ## Request description
+// ## Request instructions
 //
-// - You must specify at least one of agentName and sessionSourceList.
+// - You must specify at least one of `Params.AgentName` and `Params.SessionSourceList`. You can also filter sessions by `Params.TagList`, `Params.SessionId`, and `Params.SessionTitle`.
 //
-// - You can combine tagList, sessionId, and sessionTitle for filtering.
+// - If `Params.Archived` is set to `true`, only archived sessions are queried. If it is set to `false` or omitted, only unarchived sessions are queried. To query both types of sessions, send separate requests and handle the pagination for each.
 //
-// - The response follows the Alibaba Cloud OpenAPI paging specification, including totalCount, maxResults, nextToken, and sessionList.
+// - The session list is located in `JsonRpcResponse.Result.AgentSessions`. The pagination information is located in `TotalCount`, `MaxResults`, and `NextToken` under the same `Result`.
 //
-// - If nextToken is an invalid string, it is processed as 1 by default.
-//
-// - By default, 50 records are returned per page. You can adjust this by using the maxResults parameter.
+// - The default value of `Params.MaxResults` is 50. For the first page, you can pass `Params.NextToken=1`. For subsequent pages, pass the `NextToken` value from the response as is.
 //
 // @param request - ListAgentSessionsRequest
 //
@@ -18652,6 +19107,88 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 
 // Summary:
 //
+// Performs a paging query of code reviews.
+//
+// @param request - ListCodeReviewsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCodeReviewsResponse
+func (client *Client) ListCodeReviewsWithOptions(request *ListCodeReviewsRequest, runtime *dara.RuntimeOptions) (_result *ListCodeReviewsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Creator) {
+		query["Creator"] = request.Creator
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Reviewer) {
+		query["Reviewer"] = request.Reviewer
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCodeReviews"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCodeReviewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query of code reviews.
+//
+// @param request - ListCodeReviewsRequest
+//
+// @return ListCodeReviewsResponse
+func (client *Client) ListCodeReviews(request *ListCodeReviewsRequest) (_result *ListCodeReviewsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListCodeReviewsResponse{}
+	_body, _err := client.ListCodeReviewsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the columns of a specified table in DataWorks Data Map.
 //
 // Description:
@@ -19223,7 +19760,7 @@ func (client *Client) ListCrawlers(request *ListCrawlersRequest) (_result *ListC
 
 // Summary:
 //
-// Queries cross-workspace deployment candidate objects.
+// Queries cross-workspace deployment candidates.
 //
 // @param request - ListCrossProjectDeploymentCandidatesRequest
 //
@@ -19307,7 +19844,7 @@ func (client *Client) ListCrossProjectDeploymentCandidatesWithOptions(request *L
 
 // Summary:
 //
-// Queries cross-workspace deployment candidate objects.
+// Queries cross-workspace deployment candidates.
 //
 // @param request - ListCrossProjectDeploymentCandidatesRequest
 //
@@ -19395,7 +19932,7 @@ func (client *Client) ListCrossProjectDeploymentEnvironments(request *ListCrossP
 
 // Summary:
 //
-// Queries the publish items of a cross-workspace publish pipeline.
+// Queries the deployment items of a cross-workspace deployment pipeline.
 //
 // @param request - ListCrossProjectPipelineRunItemsRequest
 //
@@ -19451,7 +19988,7 @@ func (client *Client) ListCrossProjectPipelineRunItemsWithOptions(request *ListC
 
 // Summary:
 //
-// Queries the publish items of a cross-workspace publish pipeline.
+// Queries the deployment items of a cross-workspace deployment pipeline.
 //
 // @param request - ListCrossProjectPipelineRunItemsRequest
 //
@@ -20099,7 +20636,7 @@ func (client *Client) ListDIJobs(request *ListDIJobsRequest) (_result *ListDIJob
 //
 // Description:
 //
-// DataWorks Enterprise Edition or a higher edition is required.
+// You must purchase DataWorks Enterprise Edition or higher to use this operation.
 //
 // @param request - ListDataAssetTagsRequest
 //
@@ -20143,7 +20680,7 @@ func (client *Client) ListDataAssetTagsWithOptions(request *ListDataAssetTagsReq
 //
 // Description:
 //
-// DataWorks Enterprise Edition or a higher edition is required.
+// You must purchase DataWorks Enterprise Edition or higher to use this operation.
 //
 // @param request - ListDataAssetTagsRequest
 //
@@ -20396,11 +20933,11 @@ func (client *Client) ListDataQualityEvaluationTaskInstances(request *ListDataQu
 //
 // Summary:
 //
-// Performs a paging query on the data quality monitoring task list.
+// Queries the data quality monitoring task list by page.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this API operation.
 //
 // @param request - ListDataQualityEvaluationTasksRequest
 //
@@ -20442,11 +20979,11 @@ func (client *Client) ListDataQualityEvaluationTasksWithOptions(request *ListDat
 //
 // Summary:
 //
-// Performs a paging query on the data quality monitoring task list.
+// Queries the data quality monitoring task list by page.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this feature.
+// You must purchase DataWorks Basic Edition or a higher edition to use this API operation.
 //
 // @param request - ListDataQualityEvaluationTasksRequest
 //
@@ -21652,11 +22189,11 @@ func (client *Client) ListDownstreamTaskInstances(request *ListDownstreamTaskIns
 
 // Summary:
 //
-// Retrieves a paginated list of downstream nodes for a specified node.
+// Retrieves a paginated list of downstream tasks for a specified task.
 //
 // Description:
 //
-// DataWorks Basic Edition or later is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListDownstreamTasksRequest
 //
@@ -21696,11 +22233,11 @@ func (client *Client) ListDownstreamTasksWithOptions(request *ListDownstreamTask
 
 // Summary:
 //
-// Retrieves a paginated list of downstream nodes for a specified node.
+// Retrieves a paginated list of downstream tasks for a specified task.
 //
 // Description:
 //
-// DataWorks Basic Edition or later is required.
+// You must purchase DataWorks Basic Edition or a higher edition to use this operation.
 //
 // @param request - ListDownstreamTasksRequest
 //
@@ -23668,15 +24205,15 @@ func (client *Client) ListParameters(request *ListParametersRequest) (_result *L
 
 // Summary:
 //
-// Queries the partition list of a specified table in DataWorks Data Map. Currently supports MaxCompute and HMS (EMR cluster) types.
+// Queries the partitions of a specified table in DataWorks Data Map. MaxCompute and HMS (EMR cluster) tables are supported.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
-// 2. Only MaxCompute and HMS (EMR cluster) table types are supported.
+// 2. Currently, only MaxCompute and HMS (EMR cluster) tables are supported.
 //
-// 3. Before calling this API, call ListCrawlers to obtain the MetaEntityId of the metadata crawler, then call ListDatabases to obtain the database ID. For MaxCompute projects with Schema enabled, call ListSchemas to obtain the schema ID. Then call ListTables to obtain the TableId, and pass the returned table ID to this API.
+// 3. Before you call this API operation, call ListCrawlers to obtain the MetaEntityId of the metadata crawler, and then call ListDatabases to obtain the database ID. For MaxCompute projects with the schema feature enabled, call ListSchemas to obtain the schema ID. Then, call ListTables to obtain the TableId, and pass the returned table ID to this API operation.
 //
 // @param request - ListPartitionsRequest
 //
@@ -23716,15 +24253,15 @@ func (client *Client) ListPartitionsWithOptions(request *ListPartitionsRequest, 
 
 // Summary:
 //
-// Queries the partition list of a specified table in DataWorks Data Map. Currently supports MaxCompute and HMS (EMR cluster) types.
+// Queries the partitions of a specified table in DataWorks Data Map. MaxCompute and HMS (EMR cluster) tables are supported.
 //
 // Description:
 //
-// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+// 1. DataWorks Basic Edition or a higher edition is required.
 //
-// 2. Only MaxCompute and HMS (EMR cluster) table types are supported.
+// 2. Currently, only MaxCompute and HMS (EMR cluster) tables are supported.
 //
-// 3. Before calling this API, call ListCrawlers to obtain the MetaEntityId of the metadata crawler, then call ListDatabases to obtain the database ID. For MaxCompute projects with Schema enabled, call ListSchemas to obtain the schema ID. Then call ListTables to obtain the TableId, and pass the returned table ID to this API.
+// 3. Before you call this API operation, call ListCrawlers to obtain the MetaEntityId of the metadata crawler, and then call ListDatabases to obtain the database ID. For MaxCompute projects with the schema feature enabled, call ListSchemas to obtain the schema ID. Then, call ListTables to obtain the TableId, and pass the returned table ID to this API operation.
 //
 // @param request - ListPartitionsRequest
 //
@@ -25764,11 +26301,11 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 
 // Summary:
 //
-// Retrieves a paginated list of operation logs for a specified node instance.
+// Retrieves a paginated list of operation logs for a specified task instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this API.
+// You must purchase DataWorks Basic Edition or a higher edition to use this API.
 //
 // You can only query operation logs generated within the past 31 days.
 //
@@ -25810,11 +26347,11 @@ func (client *Client) ListTaskInstanceOperationLogsWithOptions(request *ListTask
 
 // Summary:
 //
-// Retrieves a paginated list of operation logs for a specified node instance.
+// Retrieves a paginated list of operation logs for a specified task instance.
 //
 // Description:
 //
-// You must purchase DataWorks Basic Edition or later to use this API.
+// You must purchase DataWorks Basic Edition or a higher edition to use this API.
 //
 // You can only query operation logs generated within the past 31 days.
 //
@@ -26630,21 +27167,21 @@ func (client *Client) ListWorkflows(request *ListWorkflowsRequest) (_result *Lis
 
 // Summary:
 //
-// Loads the historical messages of an existing session and returns them in a Server-Sent Events (SSE) stream. If the session does not exist, a JSONRPCResponse.error with a code of 400 is output through SSE. The Content-Type is text/event-stream. This operation applies to session context restoration scenarios.
+// Loads the historical messages of an existing agent session and returns them by using Server-Sent Events (SSE) for page refreshes and history recovery after exceptions.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation is used to recover the details of a specified session and return the agent response in a Server-Sent Events (SSE) stream.
+// - This operation recovers the details of a specified session and returns the agent response in a streaming manner by using Server-Sent Events (SSE).
 //
-// - If the target session does not exist, an error frame with an error code of 400 is returned.
+// - If the target session does not exist, an error frame with the error code 400 is returned.
 //
-// - The response contains process information about how the agent handles the request, such as message chunks, reasoning steps, and tool call status updates.
+// - The response includes processing information about how the agent handles the request, such as message chunks, thinking process, and tool invocation status updates.
 //
-// - The stopReason field indicates the reason why the agent stops the current conversation turn. Valid values include but are not limited to reaching the maximum turn limit and being canceled.
+// - The `stopReason` field indicates the reason why the agent stops the current conversation turn. Valid values include but are not limited to reaching the maximum number of turns and being canceled.
 //
-// - The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
+// - The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
 //
 // @param tmpReq - LoadAgentSessionRequest
 //
@@ -26659,21 +27196,21 @@ func (client *Client) LoadAgentSessionWithSSE(tmpReq *LoadAgentSessionRequest, r
 
 // Summary:
 //
-// Loads the historical messages of an existing session and returns them in a Server-Sent Events (SSE) stream. If the session does not exist, a JSONRPCResponse.error with a code of 400 is output through SSE. The Content-Type is text/event-stream. This operation applies to session context restoration scenarios.
+// Loads the historical messages of an existing agent session and returns them by using Server-Sent Events (SSE) for page refreshes and history recovery after exceptions.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation is used to recover the details of a specified session and return the agent response in a Server-Sent Events (SSE) stream.
+// - This operation recovers the details of a specified session and returns the agent response in a streaming manner by using Server-Sent Events (SSE).
 //
-// - If the target session does not exist, an error frame with an error code of 400 is returned.
+// - If the target session does not exist, an error frame with the error code 400 is returned.
 //
-// - The response contains process information about how the agent handles the request, such as message chunks, reasoning steps, and tool call status updates.
+// - The response includes processing information about how the agent handles the request, such as message chunks, thinking process, and tool invocation status updates.
 //
-// - The stopReason field indicates the reason why the agent stops the current conversation turn. Valid values include but are not limited to reaching the maximum turn limit and being canceled.
+// - The `stopReason` field indicates the reason why the agent stops the current conversation turn. Valid values include but are not limited to reaching the maximum number of turns and being canceled.
 //
-// - The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
+// - The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
 //
 // @param tmpReq - LoadAgentSessionRequest
 //
@@ -26731,21 +27268,21 @@ func (client *Client) LoadAgentSessionWithOptions(tmpReq *LoadAgentSessionReques
 
 // Summary:
 //
-// Loads the historical messages of an existing session and returns them in a Server-Sent Events (SSE) stream. If the session does not exist, a JSONRPCResponse.error with a code of 400 is output through SSE. The Content-Type is text/event-stream. This operation applies to session context restoration scenarios.
+// Loads the historical messages of an existing agent session and returns them by using Server-Sent Events (SSE) for page refreshes and history recovery after exceptions.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation is used to recover the details of a specified session and return the agent response in a Server-Sent Events (SSE) stream.
+// - This operation recovers the details of a specified session and returns the agent response in a streaming manner by using Server-Sent Events (SSE).
 //
-// - If the target session does not exist, an error frame with an error code of 400 is returned.
+// - If the target session does not exist, an error frame with the error code 400 is returned.
 //
-// - The response contains process information about how the agent handles the request, such as message chunks, reasoning steps, and tool call status updates.
+// - The response includes processing information about how the agent handles the request, such as message chunks, thinking process, and tool invocation status updates.
 //
-// - The stopReason field indicates the reason why the agent stops the current conversation turn. Valid values include but are not limited to reaching the maximum turn limit and being canceled.
+// - The `stopReason` field indicates the reason why the agent stops the current conversation turn. Valid values include but are not limited to reaching the maximum number of turns and being canceled.
 //
-// - The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
+// - The returned content complies with the open source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
 //
 // @param request - LoadAgentSessionRequest
 //
@@ -27113,27 +27650,143 @@ func (client *Client) PreviewDatasetVersion(request *PreviewDatasetVersionReques
 
 // Summary:
 //
+// Previews scheduling parameters without creating actual nodes or running instances.
+//
+// Description:
+//
+// Previews the parameter parsing results for each cycle based on the provided script parameters, business date, and scheduling configuration. A task ID is not required.
+//
+// - This operation only performs a simulated preview and does not create or run actual tasks. The simulated cycles returned for weekly and monthly schedules cannot be used as the basis for determining actual trigger dates.
+//
+// - `Bizdate` is the starting business date, normalized to 00:00:00 on that date in the time zone of the service region. `TriggerTime` is the scheduled trigger time for the corresponding simulated cycle.
+//
+// - System identifiers such as `$nodeid` use a simulated context. The preview value of `$nodeid` is `0`, which does not represent an actual task.
+//
+// - The parsing result for each cycle is indicated by `Success`. If the parsing is successful, `Parameters` is returned. If the parsing fails, `ErrorMessage` is returned, and partial parsing results for the cycle are not returned.
+//
+// @param request - PreviewTaskParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreviewTaskParametersResponse
+func (client *Client) PreviewTaskParametersWithOptions(request *PreviewTaskParametersRequest, runtime *dara.RuntimeOptions) (_result *PreviewTaskParametersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Bizdate) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !dara.IsNil(request.Cron) {
+		body["Cron"] = request.Cron
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		body["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.PreviewCount) {
+		body["PreviewCount"] = request.PreviewCount
+	}
+
+	if !dara.IsNil(request.ProjectEnv) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PreviewTaskParameters"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PreviewTaskParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews scheduling parameters without creating actual nodes or running instances.
+//
+// Description:
+//
+// Previews the parameter parsing results for each cycle based on the provided script parameters, business date, and scheduling configuration. A task ID is not required.
+//
+// - This operation only performs a simulated preview and does not create or run actual tasks. The simulated cycles returned for weekly and monthly schedules cannot be used as the basis for determining actual trigger dates.
+//
+// - `Bizdate` is the starting business date, normalized to 00:00:00 on that date in the time zone of the service region. `TriggerTime` is the scheduled trigger time for the corresponding simulated cycle.
+//
+// - System identifiers such as `$nodeid` use a simulated context. The preview value of `$nodeid` is `0`, which does not represent an actual task.
+//
+// - The parsing result for each cycle is indicated by `Success`. If the parsing is successful, `Parameters` is returned. If the parsing fails, `ErrorMessage` is returned, and partial parsing results for the cycle are not returned.
+//
+// @param request - PreviewTaskParametersRequest
+//
+// @return PreviewTaskParametersResponse
+func (client *Client) PreviewTaskParameters(request *PreviewTaskParametersRequest) (_result *PreviewTaskParametersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PreviewTaskParametersResponse{}
+	_body, _err := client.PreviewTaskParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Sends a user prompt to an existing session and streams the agent response.
 //
 // Description:
 //
 // ## Request description
 //
-// - This API operation sends a user prompt to a specified session ID and accepts the response from the agent in a streaming manner by using Server-Sent Events (SSE).
+// - This API operation sends a user prompt to a specified session ID and accepts the agent response as Server-Sent Events (SSE) streams.
 //
-// - The response may include information such as message chunks, thinking procedures, and tool calling status updates.
+// - The response may include message chunks, thinking procedures, and tool invocation status updates.
 //
-// - If the specified session does not exist, a 400 fault is returned in an SSE fault frame.
+// - If the specified session does not exist, a 400 error is returned in an SSE error frame.
 //
-// - The stopReason field indicates the reason why the agent stopped the current conversation.
+// - The `stopReason` field indicates the reason why the agent stopped the current conversation turn.
 //
-// - Multiple types of content blocks are supported as prompt inputs, such as text and OSS file download links.
+// - This operation supports multiple types of content blocks as prompt input, such as text and OSS file download links.
 //
-// - You can optionally provide additional metadata in the Meta field to pass more context to the server.
+// - You can optionally provide additional metadata in `Meta` to pass more context to the server.
 //
 // - The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
 //
-// - **Before you invoke this operation, make sure that you fully understand the billing methods and pricing of the Data Agent product**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
+// - **Before you use this API operation, make sure that you fully understand the billing methods and pricing of Data Agent**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
+//
+// ## Long-running tasks and timeout recovery
+//
+// For long-running tasks that may exceed the single-request timeout, after the GetAgentSessionEvents canary release is enabled for the current account and target region, first establish an Events subscription and then call PromptAgentSession to read both streams in parallel. Use Events to display real-time progress, and use the Prompt stream to read the final state and business errors of the current turn. Each message is displayed only once.
+//
+// If the Prompt stream times out or disconnects before the final business state is received, the result of the current turn is unknown. Continue to observe Events, and call LoadAgentSession when you need to verify the session history. Do not automatically resend the prompt.
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -27154,21 +27807,27 @@ func (client *Client) PromptAgentSessionWithSSE(tmpReq *PromptAgentSessionReques
 //
 // ## Request description
 //
-// - This API operation sends a user prompt to a specified session ID and accepts the response from the agent in a streaming manner by using Server-Sent Events (SSE).
+// - This API operation sends a user prompt to a specified session ID and accepts the agent response as Server-Sent Events (SSE) streams.
 //
-// - The response may include information such as message chunks, thinking procedures, and tool calling status updates.
+// - The response may include message chunks, thinking procedures, and tool invocation status updates.
 //
-// - If the specified session does not exist, a 400 fault is returned in an SSE fault frame.
+// - If the specified session does not exist, a 400 error is returned in an SSE error frame.
 //
-// - The stopReason field indicates the reason why the agent stopped the current conversation.
+// - The `stopReason` field indicates the reason why the agent stopped the current conversation turn.
 //
-// - Multiple types of content blocks are supported as prompt inputs, such as text and OSS file download links.
+// - This operation supports multiple types of content blocks as prompt input, such as text and OSS file download links.
 //
-// - You can optionally provide additional metadata in the Meta field to pass more context to the server.
+// - You can optionally provide additional metadata in `Meta` to pass more context to the server.
 //
 // - The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
 //
-// - **Before you invoke this operation, make sure that you fully understand the billing methods and pricing of the Data Agent product**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
+// - **Before you use this API operation, make sure that you fully understand the billing methods and pricing of Data Agent**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
+//
+// ## Long-running tasks and timeout recovery
+//
+// For long-running tasks that may exceed the single-request timeout, after the GetAgentSessionEvents canary release is enabled for the current account and target region, first establish an Events subscription and then call PromptAgentSession to read both streams in parallel. Use Events to display real-time progress, and use the Prompt stream to read the final state and business errors of the current turn. Each message is displayed only once.
+//
+// If the Prompt stream times out or disconnects before the final business state is received, the result of the current turn is unknown. Continue to observe Events, and call LoadAgentSession when you need to verify the session history. Do not automatically resend the prompt.
 //
 // @param tmpReq - PromptAgentSessionRequest
 //
@@ -27232,21 +27891,27 @@ func (client *Client) PromptAgentSessionWithOptions(tmpReq *PromptAgentSessionRe
 //
 // ## Request description
 //
-// - This API operation sends a user prompt to a specified session ID and accepts the response from the agent in a streaming manner by using Server-Sent Events (SSE).
+// - This API operation sends a user prompt to a specified session ID and accepts the agent response as Server-Sent Events (SSE) streams.
 //
-// - The response may include information such as message chunks, thinking procedures, and tool calling status updates.
+// - The response may include message chunks, thinking procedures, and tool invocation status updates.
 //
-// - If the specified session does not exist, a 400 fault is returned in an SSE fault frame.
+// - If the specified session does not exist, a 400 error is returned in an SSE error frame.
 //
-// - The stopReason field indicates the reason why the agent stopped the current conversation.
+// - The `stopReason` field indicates the reason why the agent stopped the current conversation turn.
 //
-// - Multiple types of content blocks are supported as prompt inputs, such as text and OSS file download links.
+// - This operation supports multiple types of content blocks as prompt input, such as text and OSS file download links.
 //
-// - You can optionally provide additional metadata in the Meta field to pass more context to the server.
+// - You can optionally provide additional metadata in `Meta` to pass more context to the server.
 //
 // - The returned content complies with the open-source Agent Client Protocol (ACP) specification. For more information, see https://agentclientprotocol.com.
 //
-// - **Before you invoke this operation, make sure that you fully understand the billing methods and pricing of the Data Agent product**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
+// - **Before you use this API operation, make sure that you fully understand the billing methods and pricing of Data Agent**: https://www.alibabacloud.com/help/en/dataworks/dataworks-data-agent-agent-billing
+//
+// ## Long-running tasks and timeout recovery
+//
+// For long-running tasks that may exceed the single-request timeout, after the GetAgentSessionEvents canary release is enabled for the current account and target region, first establish an Events subscription and then call PromptAgentSession to read both streams in parallel. Use Events to display real-time progress, and use the Prompt stream to read the final state and business errors of the current turn. Each message is displayed only once.
+//
+// If the Prompt stream times out or disconnects before the final business state is received, the result of the current turn is unknown. Continue to observe Events, and call LoadAgentSession when you need to verify the session history. Do not automatically resend the prompt.
 //
 // @param request - PromptAgentSessionRequest
 //
@@ -29728,7 +30393,7 @@ func (client *Client) SuspendTaskInstances(request *SuspendTaskInstancesRequest)
 //
 // Description:
 //
-// This operation requires DataWorks Enterprise Edition or later.
+// You must purchase DataWorks Enterprise Edition or higher to use this operation.
 //
 // @param tmpReq - TagDataAssetsRequest
 //
@@ -29806,7 +30471,7 @@ func (client *Client) TagDataAssetsWithOptions(tmpReq *TagDataAssetsRequest, run
 //
 // Description:
 //
-// This operation requires DataWorks Enterprise Edition or later.
+// You must purchase DataWorks Enterprise Edition or higher to use this operation.
 //
 // @param request - TagDataAssetsRequest
 //
@@ -30077,6 +30742,174 @@ func (client *Client) UnTagDataAssets(request *UnTagDataAssetsRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &UnTagDataAssetsResponse{}
 	_body, _err := client.UnTagDataAssetsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the definition of a specified agent, increments the definition version, and optionally publishes the agent immediately. This operation is available only when the canary release feature is enabled. Before calling this operation, make sure that the canary release feature is enabled for the current account and the target region.
+//
+// Description:
+//
+// This operation is available only when the canary release feature is enabled. Before calling this operation, make sure that the canary release feature is enabled for the current account and the target region.
+//
+// Updates a custom agent that the current identity has administrative permissions for. The Name parameter is used to locate the target agent and cannot be used to rename the agent. Call the GetAgent operation first to read the current AgentVersion, and then explicitly pass the ExpectedVersion parameter during the update. If a conflict occurs, read the version again and verify the differences instead of blindly overwriting the agent.
+//
+// Omit reference lists that do not need to be modified. The current new backend retains existing references for empty arrays of Tools, Skills, and CallableAgents, but clears references for an empty array of ExpertSuites. A unified empty array clearing rule cannot be used. The Tools parameter already includes Kind and the corresponding tool configurations, and uses the same structure as CreateAgent. Specifying only Name does not constitute a valid tool configuration.
+//
+// For official skills, specify only Source=OFFICIAL and SkillId. For official suites, specify only Source=OFFICIAL and SuiteId. Do not mix in name, version, or artifact fields. The integer Version and VersionSelector parameters for custom resources are mutually exclusive. The version selection capability depends on the deployment of the target server.
+//
+// If PublishImmediately is omitted or set to false, only the definition is saved. If it is set to true, a new draft version is saved first and then a publish request is initiated. Saving and publishing are not atomic operations. If publishing fails, the draft version may have already been incremented. In this case, call GetAgent to read the current version back before deciding whether to retry, to avoid generating duplicate versions.
+//
+// @param tmpReq - UpdateAgentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgentWithOptions(tmpReq *UpdateAgentRequest, runtime *dara.RuntimeOptions) (_result *UpdateAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CallableAgents) {
+		request.CallableAgentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CallableAgents, dara.String("CallableAgents"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ExpertSuites) {
+		request.ExpertSuitesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExpertSuites, dara.String("ExpertSuites"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Metadata) {
+		request.MetadataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metadata, dara.String("Metadata"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Model) {
+		request.ModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Model, dara.String("Model"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Skills) {
+		request.SkillsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Skills, dara.String("Skills"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Tools) {
+		request.ToolsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tools, dara.String("Tools"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibilityScope) {
+		request.VisibilityScopeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibilityScope, dara.String("VisibilityScope"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallableAgentsShrink) {
+		body["CallableAgents"] = request.CallableAgentsShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DisplayName) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.ExpectedVersion) {
+		body["ExpectedVersion"] = request.ExpectedVersion
+	}
+
+	if !dara.IsNil(request.ExpertSuitesShrink) {
+		body["ExpertSuites"] = request.ExpertSuitesShrink
+	}
+
+	if !dara.IsNil(request.MetadataShrink) {
+		body["Metadata"] = request.MetadataShrink
+	}
+
+	if !dara.IsNil(request.ModelShrink) {
+		body["Model"] = request.ModelShrink
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PublishImmediately) {
+		body["PublishImmediately"] = request.PublishImmediately
+	}
+
+	if !dara.IsNil(request.SkillsShrink) {
+		body["Skills"] = request.SkillsShrink
+	}
+
+	if !dara.IsNil(request.SystemPrompt) {
+		body["SystemPrompt"] = request.SystemPrompt
+	}
+
+	if !dara.IsNil(request.ToolsShrink) {
+		body["Tools"] = request.ToolsShrink
+	}
+
+	if !dara.IsNil(request.Visibility) {
+		body["Visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibilityScopeShrink) {
+		body["VisibilityScope"] = request.VisibilityScopeShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAgent"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the definition of a specified agent, increments the definition version, and optionally publishes the agent immediately. This operation is available only when the canary release feature is enabled. Before calling this operation, make sure that the canary release feature is enabled for the current account and the target region.
+//
+// Description:
+//
+// This operation is available only when the canary release feature is enabled. Before calling this operation, make sure that the canary release feature is enabled for the current account and the target region.
+//
+// Updates a custom agent that the current identity has administrative permissions for. The Name parameter is used to locate the target agent and cannot be used to rename the agent. Call the GetAgent operation first to read the current AgentVersion, and then explicitly pass the ExpectedVersion parameter during the update. If a conflict occurs, read the version again and verify the differences instead of blindly overwriting the agent.
+//
+// Omit reference lists that do not need to be modified. The current new backend retains existing references for empty arrays of Tools, Skills, and CallableAgents, but clears references for an empty array of ExpertSuites. A unified empty array clearing rule cannot be used. The Tools parameter already includes Kind and the corresponding tool configurations, and uses the same structure as CreateAgent. Specifying only Name does not constitute a valid tool configuration.
+//
+// For official skills, specify only Source=OFFICIAL and SkillId. For official suites, specify only Source=OFFICIAL and SuiteId. Do not mix in name, version, or artifact fields. The integer Version and VersionSelector parameters for custom resources are mutually exclusive. The version selection capability depends on the deployment of the target server.
+//
+// If PublishImmediately is omitted or set to false, only the definition is saved. If it is set to true, a new draft version is saved first and then a publish request is initiated. Saving and publishing are not atomic operations. If publishing fails, the draft version may have already been incremented. In this case, call GetAgent to read the current version back before deciding whether to retry, to avoid generating duplicate versions.
+//
+// @param request - UpdateAgentRequest
+//
+// @return UpdateAgentResponse
+func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateAgentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAgentResponse{}
+	_body, _err := client.UpdateAgentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30463,6 +31296,76 @@ func (client *Client) UpdateCalendar(request *UpdateCalendarRequest) (_result *U
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateCalendarResponse{}
 	_body, _err := client.UpdateCalendarWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Approves or rejects a code review.
+//
+// @param request - UpdateCodeReviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCodeReviewResponse
+func (client *Client) UpdateCodeReviewWithOptions(request *UpdateCodeReviewRequest, runtime *dara.RuntimeOptions) (_result *UpdateCodeReviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCodeReview"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCodeReviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Approves or rejects a code review.
+//
+// @param request - UpdateCodeReviewRequest
+//
+// @return UpdateCodeReviewResponse
+func (client *Client) UpdateCodeReview(request *UpdateCodeReviewRequest) (_result *UpdateCodeReviewResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateCodeReviewResponse{}
+	_body, _err := client.UpdateCodeReviewWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35331,6 +36234,58 @@ func _postOSSObject_opResponse(response_ *dara.Response) (_result map[string]int
 	_err = dara.Convert(dara.ToMap(respMap), &_result)
 
 	return _result, _err
+}
+
+func (client *Client) getAgentSessionEventsWithSSE_opYieldFunc(_yield chan *GetAgentSessionEventsResponse, _yieldErr chan error, request *GetAgentSessionEventsRequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventEpoch) {
+		query["EventEpoch"] = request.EventEpoch
+	}
+
+	if !dara.IsNil(request.SessionCode) {
+		query["SessionCode"] = request.SessionCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentSessionEvents"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
 
 func (client *Client) loadAgentSessionWithSSE_opYieldFunc(_yield chan *LoadAgentSessionResponse, _yieldErr chan error, tmpReq *LoadAgentSessionRequest, runtime *dara.RuntimeOptions) {

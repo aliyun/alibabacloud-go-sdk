@@ -40,19 +40,19 @@ type ListCrossProjectDeploymentCandidatesRequest struct {
 	//
 	// ADD
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The start of the commit time range. This value is a UNIX timestamp in milliseconds.
+	// The start of the commit time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1788739200000
 	CommitTimeFrom *int64 `json:"CommitTimeFrom,omitempty" xml:"CommitTimeFrom,omitempty"`
-	// The end of the commit time range. This value is a UNIX timestamp in milliseconds.
+	// The end of the commit time range. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1788825599999
 	CommitTimeTo *int64 `json:"CommitTimeTo,omitempty" xml:"CommitTimeTo,omitempty"`
-	// The committer.
+	// The submitter.
 	//
 	// example:
 	//

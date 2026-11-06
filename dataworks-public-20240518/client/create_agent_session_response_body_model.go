@@ -16,9 +16,9 @@ type iCreateAgentSessionResponseBody interface {
 }
 
 type CreateAgentSessionResponseBody struct {
-	// The JSON-RPC response.
+	// The JSON-RPC response result.
 	JsonRpcResponse *CreateAgentSessionResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID for this OpenAPI call. You can use it to troubleshoot issues with the call.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CreateAgentSessionResponseBody) Validate() error {
 }
 
 type CreateAgentSessionResponseBodyJsonRpcResponse struct {
-	// The JSON-RPC error message. This field is not returned if the request is successful.
+	// The JSON-RPC error message. This field is not returned when the request is successful.
 	Error *CreateAgentSessionResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
 	// The ID passed by the requester. The value is returned as is.
 	//
@@ -70,15 +70,15 @@ type CreateAgentSessionResponseBodyJsonRpcResponse struct {
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. This value is always 2.0.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The business data. The value is null if an error occurs.
+	// The business data. The value is null when an error occurs.
 	Result *CreateAgentSessionResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The response time. The value is a UNIX timestamp in milliseconds.
+	// The response time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

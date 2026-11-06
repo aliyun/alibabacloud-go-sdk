@@ -18,19 +18,19 @@ type iListCrossProjectDeploymentCandidatesResponseBody interface {
 }
 
 type ListCrossProjectDeploymentCandidatesResponseBody struct {
-	// The business response.
+	// The response data.
 	//
 	// example:
 	//
 	// {"RequestId":"735894D1-D5E5-50B8-8A6D-041C90A98B23","PageNumber":1,"PageSize":10,"TotalCount":1,"DeploymentCandidates":[{"ObjectId":"1","ObjectType":"ODPS_SQL","ObjectName":"object-1","ObjectVersion":"7","ChangeType":"ADD","CommitUser":"operator","CommitTime":1788739200000}]}
 	Data *ListCrossProjectDeploymentCandidatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot this API call.
+	// The request ID. You can use the ID to locate and troubleshoot the API call.
 	//
 	// example:
 	//
 	// 735894D1-D5E5-50B8-8A6D-041C90A98B23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListCrossProjectDeploymentCandidatesResponseBody) Validate() error {
 }
 
 type ListCrossProjectDeploymentCandidatesResponseBodyData struct {
-	// The list of candidate objects from the source workspace that are available for cross-workspace deployment.
+	// The list of candidate objects in the source workspace that are available for cross-workspace deployment.
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ type ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates st
 	//
 	// ADD
 	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
-	// The commit time. This value is a UNIX timestamp in milliseconds.
+	// The commit time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1788739200000
 	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
-	// The committer.
+	// The submitter.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates st
 	//
 	// 1
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	// The candidate object name.
+	// The name of the candidate object.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates st
 	//
 	// ODPS_SQL
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The candidate object version.
+	// The version of the candidate object.
 	//
 	// example:
 	//

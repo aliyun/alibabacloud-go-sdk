@@ -64,29 +64,25 @@ func (s *CreateAgentResponseBody) Validate() error {
 type CreateAgentResponseBodyAgent struct {
 	// The saved suite references. Official resources return the source and directory ID. The published artifact version is represented by PackageVersion.
 	ExpertSuites []*CreateAgentResponseBodyAgentExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The creation time, in milliseconds.
-	//
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	// The creation time, expressed as a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780555634000
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time, in milliseconds.
-	//
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	GmtCreateTime *int64 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modification time, expressed as a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780555634000
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtModifiedTime *int64 `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// The name of the agent.
 	//
 	// example:
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The saved skill references. For official skills, a fixed PackageVersion is returned after the agent is published.
+	// The saved skill references. Official skills return a fixed PackageVersion after the agent is published.
 	Skills []*CreateAgentResponseBodyAgentSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
 }
 
@@ -102,11 +98,11 @@ func (s *CreateAgentResponseBodyAgent) GetExpertSuites() []*CreateAgentResponseB
 	return s.ExpertSuites
 }
 
-func (s *CreateAgentResponseBodyAgent) GetGmtCreateTime() *string {
+func (s *CreateAgentResponseBodyAgent) GetGmtCreateTime() *int64 {
 	return s.GmtCreateTime
 }
 
-func (s *CreateAgentResponseBodyAgent) GetGmtModifiedTime() *string {
+func (s *CreateAgentResponseBodyAgent) GetGmtModifiedTime() *int64 {
 	return s.GmtModifiedTime
 }
 
@@ -123,12 +119,12 @@ func (s *CreateAgentResponseBodyAgent) SetExpertSuites(v []*CreateAgentResponseB
 	return s
 }
 
-func (s *CreateAgentResponseBodyAgent) SetGmtCreateTime(v string) *CreateAgentResponseBodyAgent {
+func (s *CreateAgentResponseBodyAgent) SetGmtCreateTime(v int64) *CreateAgentResponseBodyAgent {
 	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *CreateAgentResponseBodyAgent) SetGmtModifiedTime(v string) *CreateAgentResponseBodyAgent {
+func (s *CreateAgentResponseBodyAgent) SetGmtModifiedTime(v int64) *CreateAgentResponseBodyAgent {
 	s.GmtModifiedTime = &v
 	return s
 }
@@ -166,7 +162,7 @@ func (s *CreateAgentResponseBodyAgent) Validate() error {
 }
 
 type CreateAgentResponseBodyAgentExpertSuites struct {
-	// This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official suite artifact version.
+	// This field is not returned during creation. Use GetAgent to explicitly query the published version to obtain the fixed official suite artifact version.
 	//
 	// example:
 	//
@@ -190,7 +186,7 @@ type CreateAgentResponseBodyAgentExpertSuites struct {
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+	// The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This field is not returned for official resources.
 	//
 	// example:
 	//
@@ -262,7 +258,7 @@ type CreateAgentResponseBodyAgentSkills struct {
 	//
 	// my-business-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is not returned upon creation. Call GetAgent to explicitly query the published version to obtain the fixed official artifact version.
+	// This field is not returned during creation. Use GetAgent to explicitly query the published version to obtain the fixed official artifact version.
 	//
 	// example:
 	//
@@ -286,7 +282,7 @@ type CreateAgentResponseBodyAgentSkills struct {
 	//
 	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This parameter is not returned for official resources.
+	// The saved version selection strategy is returned only for personal or enterprise resources and is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This field is not returned for official resources.
 	//
 	// example:
 	//

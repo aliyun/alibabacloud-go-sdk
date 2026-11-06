@@ -16,9 +16,9 @@ type iListAgentSessionsResponseBody interface {
 }
 
 type ListAgentSessionsResponseBody struct {
-	// The JSON-RPC response.
+	// The JSON-RPC response result.
 	JsonRpcResponse *ListAgentSessionsResponseBodyJsonRpcResponse `json:"JsonRpcResponse,omitempty" xml:"JsonRpcResponse,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID for this OpenAPI request, which can be used to troubleshoot call failures. This is not a session ID or event cursor.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListAgentSessionsResponseBody) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponse struct {
-	// The JSON-RPC error message. This parameter is returned when the call fails and is not returned when the call succeeds.
+	// The JSON-RPC error information. This field is returned when the call fails and is not returned when the call succeeds.
 	Error *ListAgentSessionsResponseBodyJsonRpcResponseError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The ID passed by the requester, which is returned as is.
+	// The request ID provided by the caller. This ID is returned as is in the response.
 	//
 	// example:
 	//
 	// 29d9a29c-a284-48c1-9eaa-4a42c7c616d5
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. Fixed to 2.0.
+	// The JSON-RPC version, which is fixed to 2.0.
 	//
 	// example:
 	//
 	// 2.0
 	Jsonrpc *string `json:"Jsonrpc,omitempty" xml:"Jsonrpc,omitempty"`
-	// The paginated result set of the session query.
+	// The paginated result set for the session query.
 	Result *ListAgentSessionsResponseBodyJsonRpcResponseResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -294,7 +294,7 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResult) Validate() error {
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions struct {
-	// The session information extended by DataWorks, which is not part of the standard ACP protocol.
+	// The DataWorks extended session information, which is not part of the standard ACP protocol.
 	Meta *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta `json:"Meta,omitempty" xml:"Meta,omitempty" type:"Struct"`
 	// The session creation time.
 	//
@@ -482,7 +482,7 @@ func (s *ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta) Va
 }
 
 type ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList struct {
-	// The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call OpenAPI operations but the calling system has its own account system, you need to filter the session list based on the account ID. In this case, you can pass the account ID of the calling system as this tag.
+	// The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user when calling OpenAPI but the calling system has its own account system, you need to filter the session list based on the account ID. In this case, you can pass the account ID of the calling system as this tag.
 	//
 	// example:
 	//

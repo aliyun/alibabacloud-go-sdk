@@ -26,13 +26,13 @@ type ListCrossProjectPipelineRunItemsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the cross-workspace publish pipeline.
+	// The cross-workspace deployment pipeline ID.
 	//
 	// This parameter is required.
 	//

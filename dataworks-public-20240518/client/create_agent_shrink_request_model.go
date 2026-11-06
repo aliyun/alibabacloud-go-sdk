@@ -56,13 +56,13 @@ type CreateAgentShrinkRequest struct {
 	//
 	// My Assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The released expert suites bound to the agent. For personal or enterprise suites, use SuiteId and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly set Source to OFFICIAL and specify the SuiteId from the official catalog. Do not specify Version or VersionSelector. If this parameter is not specified, an empty list is created, and official suites are not loaded by default.
+	// The published expert suites bound to the agent. For personal or enterprise suites, use SuiteId, and optionally specify a fixed Version or VersionSelector. For official suites, you must explicitly specify Source=OFFICIAL and the SuiteId from the official catalog, and do not specify Version or VersionSelector. If not specified, an empty list is created, and all official suites are not loaded by default.
 	//
 	// example:
 	//
 	// [{"Source":"OFFICIAL","SuiteId":"dataworks-data-analysis-extension"},{"SuiteId":"suite_example","Version":1}]
 	ExpertSuitesShrink *string `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty"`
-	// The extended metadata as key-value pairs.
+	// The extended metadata in key-value pairs.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	//         }
 	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The name of the agent. It must be unique within the current account.
+	// The name of the agent. The name must be unique within the current account.
 	//
 	// This parameter is required.
 	//
@@ -86,13 +86,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to publish the agent immediately after creation. Valid values:
-	//
-	// - true: Publishes the created version.
-	//
-	// - false or omitted: Retains the original behavior of creating a draft only.
-	//
-	// Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Query the agent before retrying to avoid duplicate creation.
+	// Specifies whether to publish the agent immediately after creation. A value of true publishes the created version. A value of false or omitting this parameter maintains the original behavior of creating a draft only. Saving and publishing are not atomic operations. If publishing fails, the draft may already exist. Before retrying, query the agent first to avoid duplicate creation.
 	//
 	// example:
 	//
@@ -128,7 +122,7 @@ type CreateAgentShrinkRequest struct {
 	//
 	// TENANT
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
-	// The visibility scope. The corresponding fields are used based on the Visibility parameter.
+	// The visibility scope. Specify the corresponding fields based on the Visibility value.
 	VisibilityScopeShrink *string `json:"VisibilityScope,omitempty" xml:"VisibilityScope,omitempty"`
 }
 

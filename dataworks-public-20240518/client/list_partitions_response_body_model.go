@@ -26,7 +26,7 @@ type ListPartitionsResponseBody struct {
 	//
 	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ type ListPartitionsResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The partition list of the table.
+	// The list of partitions in the table.
 	PartitionList []*Partition `json:"PartitionList,omitempty" xml:"PartitionList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//

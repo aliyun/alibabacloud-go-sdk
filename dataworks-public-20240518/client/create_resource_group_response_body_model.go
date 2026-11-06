@@ -85,13 +85,13 @@ type CreateResourceGroupResponseBodyResourceGroupOrder struct {
 	//
 	// Serverless_res_group_524257424564736_6831777003XXXXX
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the order.
+	// The ID of the order for the general-purpose resource group.
 	//
 	// example:
 	//
 	// 2391982058XXXXX
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The instance ID of the order.
+	// The instance ID of the order for the general-purpose resource group.
 	//
 	// example:
 	//

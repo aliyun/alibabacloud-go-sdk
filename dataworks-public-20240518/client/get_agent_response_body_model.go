@@ -88,24 +88,20 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// My assistant
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The expert suites associated with the agent definition, including a fixed integer revision number or a version selection strategy. Official resources continue to use PackageVersion to indicate the artifact version.
+	// The expert suites bound to the agent definition, including a fixed integer revision number or a version selection policy. Official resources continue to use PackageVersion to indicate the artifact version.
 	ExpertSuites []*GetAgentResponseBodyAgentExpertSuites `json:"ExpertSuites,omitempty" xml:"ExpertSuites,omitempty" type:"Repeated"`
-	// The creation time (millisecond timestamp).
-	//
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	// The creation time, expressed as a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780555634000
-	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time (millisecond timestamp).
-	//
-	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	GmtCreateTime *int64 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modified time, expressed as a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780555634000
-	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	GmtModifiedTime *int64 `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// **The extended metadata.**
 	//
 	// example:
@@ -126,7 +122,7 @@ type GetAgentResponseBodyAgent struct {
 	//
 	// my-agent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The environment dependencies required for execution.
+	// The environment dependencies required for runtime.
 	RequiredRuntime []*string `json:"RequiredRuntime,omitempty" xml:"RequiredRuntime,omitempty" type:"Repeated"`
 	// The list of skills.
 	Skills []*GetAgentResponseBodyAgentSkills `json:"Skills,omitempty" xml:"Skills,omitempty" type:"Repeated"`
@@ -180,11 +176,11 @@ func (s *GetAgentResponseBodyAgent) GetExpertSuites() []*GetAgentResponseBodyAge
 	return s.ExpertSuites
 }
 
-func (s *GetAgentResponseBodyAgent) GetGmtCreateTime() *string {
+func (s *GetAgentResponseBodyAgent) GetGmtCreateTime() *int64 {
 	return s.GmtCreateTime
 }
 
-func (s *GetAgentResponseBodyAgent) GetGmtModifiedTime() *string {
+func (s *GetAgentResponseBodyAgent) GetGmtModifiedTime() *int64 {
 	return s.GmtModifiedTime
 }
 
@@ -258,12 +254,12 @@ func (s *GetAgentResponseBodyAgent) SetExpertSuites(v []*GetAgentResponseBodyAge
 	return s
 }
 
-func (s *GetAgentResponseBodyAgent) SetGmtCreateTime(v string) *GetAgentResponseBodyAgent {
+func (s *GetAgentResponseBodyAgent) SetGmtCreateTime(v int64) *GetAgentResponseBodyAgent {
 	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *GetAgentResponseBodyAgent) SetGmtModifiedTime(v string) *GetAgentResponseBodyAgent {
+func (s *GetAgentResponseBodyAgent) SetGmtModifiedTime(v int64) *GetAgentResponseBodyAgent {
 	s.GmtModifiedTime = &v
 	return s
 }
@@ -444,7 +440,7 @@ func (s *GetAgentResponseBodyAgentCallableAgents) Validate() error {
 }
 
 type GetAgentResponseBodyAgentExpertSuites struct {
-	// If the suite is deleted, the release snapshot is missing, or the caller does not have permission to view it, the suite summary is not returned, and only the ID and version number are retained.
+	// If the suite is deleted, the published snapshot is missing, or the caller does not have permission to view it, the suite summary is not returned, and only the ID and version number are retained.
 	//
 	// example:
 	//
@@ -462,13 +458,13 @@ type GetAgentResponseBodyAgentExpertSuites struct {
 	//
 	// analysis-suite
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The fixed official artifact version returned when explicitly querying a released version of the agent. This is not returned when querying a draft or a custom suite.
+	// Returns the fixed official artifact version when explicitly querying a published version of the agent. Not returned when querying a draft or a custom suite.
 	//
 	// example:
 	//
 	// 0.1.0.202610211408
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// An optional suite summary field that is not returned by current new DataAgent applications. A default value does not indicate version 0. This cannot be used as the Version for UpdateAgent and must be omitted when writing back references. For the fixed version of official artifacts, read PackageVersion.
+	// An optional suite summary field that is not returned by current new DataAgent applications. A missing value does not indicate version 0. This field cannot be used as the Version for UpdateAgent and must be omitted when writing back references. For the fixed version of official artifacts, read PackageVersion.
 	//
 	// example:
 	//
@@ -480,19 +476,19 @@ type GetAgentResponseBodyAgentExpertSuites struct {
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The expert suite ID.
+	// The ID of the expert suite.
 	//
 	// example:
 	//
 	// suite_example
 	SuiteId *string `json:"SuiteId,omitempty" xml:"SuiteId,omitempty"`
-	// Returned only when a personal or enterprise suite explicitly specifies a fixed integer version in the reference. This is not returned for official suites. An unreturned value is not 0. If the SDK initializes the default integer to 0, it must be omitted when writing back. For official items, only Source and SuiteId are written back, and Version, VersionSelector, SemanticVersion, or PackageVersion are not passed.
+	// Returned only when a personal or enterprise suite explicitly specifies a fixed integer version in the reference. Not returned for official suites. A missing value is not 0. If the SDK initializes a missing integer to 0, it must be omitted when writing back. For official items, only Source and SuiteId are written back, and Version, VersionSelector, SemanticVersion, or PackageVersion are not passed.
 	//
 	// example:
 	//
 	// 3
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+	// Returned only for personal or enterprise resources to indicate the saved version selection policy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. Not returned for official resources.
 	//
 	// example:
 	//
@@ -600,19 +596,19 @@ type GetAgentResponseBodyAgentModel struct {
 	//
 	// {}
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The maximum number of output tokens per generation.
+	// The maximum number of output tokens per request.
 	//
 	// example:
 	//
 	// 8192
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
 	// qwen3-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// Specifies whether streaming output is enabled.
+	// Specifies whether to use streaming output.
 	//
 	// example:
 	//
@@ -624,7 +620,7 @@ type GetAgentResponseBodyAgentModel struct {
 	//
 	// 1
 	Temperature *float64 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
-	// The nucleus sampling Top-P value.
+	// The top-P value for nucleus sampling.
 	//
 	// example:
 	//
@@ -699,19 +695,19 @@ func (s *GetAgentResponseBodyAgentModel) Validate() error {
 }
 
 type GetAgentResponseBodyAgentSkills struct {
-	// The skill name.
+	// The name of the skill.
 	//
 	// example:
 	//
 	// my-skill
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The fixed official artifact version returned when querying a released snapshot with a specified AgentVersion. This is not returned when querying a draft or a custom skill.
+	// Returns the fixed official artifact version when querying a published snapshot with a specified AgentVersion. Not returned when querying a draft or a custom skill.
 	//
 	// example:
 	//
 	// 0.6.0.202608201110
 	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
-	// The official skill ID.
+	// The ID of the official skill.
 	//
 	// example:
 	//
@@ -723,13 +719,13 @@ type GetAgentResponseBodyAgentSkills struct {
 	//
 	// OFFICIAL
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The skill version number.
+	// The version number of the skill.
 	//
 	// example:
 	//
 	// -
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// Returned only for personal or enterprise resources to indicate the saved version selection strategy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. This is not returned for official resources.
+	// Returned only for personal or enterprise resources to indicate the saved version selection policy, which is mutually exclusive with the fixed integer Version. It does not represent the specific revision actually loaded in the session. Not returned for official resources.
 	//
 	// example:
 	//
@@ -804,7 +800,7 @@ func (s *GetAgentResponseBodyAgentSkills) Validate() error {
 }
 
 type GetAgentResponseBodyAgentTools struct {
-	// **The built-in tool name. Valid when Kind is `builtin`.**
+	// **The name of the built-in tool. Valid when Kind is builtin.**
 	//
 	// example:
 	//
@@ -816,9 +812,9 @@ type GetAgentResponseBodyAgentTools struct {
 	//
 	// builtin
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// **The selected MCP tool items. Valid when Kind is `mcp`.**
+	// **The selected MCP tool items. Valid when Kind is mcp.**
 	McpItems []*string `json:"McpItems,omitempty" xml:"McpItems,omitempty" type:"Repeated"`
-	// **The associated MCP server name. Valid when Kind is `mcp`.**
+	// **The name of the associated MCP server. Valid when Kind is mcp.**
 	//
 	// example:
 	//

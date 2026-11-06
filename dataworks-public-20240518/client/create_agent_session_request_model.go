@@ -24,7 +24,7 @@ type CreateAgentSessionRequest struct {
 	//
 	// 4758330557805415712
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-RPC version. This value is always 2.0.
+	// The JSON-RPC version. Fixed to 2.0.
 	//
 	// example:
 	//
@@ -209,13 +209,13 @@ func (s *CreateAgentSessionRequestParamsMetaAgent) Validate() error {
 }
 
 type CreateAgentSessionRequestParamsMetaConfig struct {
-	// The session source identifier, which facilitates retrieval by source. For example, if an agent is used on both Page A and Page B, and you want to display only sessions created on Page A, you can filter sessions based on this parameter. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The session source identifier, which facilitates retrieval by source. For example, if an agent is used on both Page A and Page B, and you want to display only sessions created on Page A when you are on Page A, you can filter sessions based on this parameter. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
 	// openapi_sdk
 	SessionSource *string `json:"SessionSource,omitempty" xml:"SessionSource,omitempty"`
-	// The list of session tags. You can search and filter sessions based on session tags.
+	// The list of session tags. You can search and filter sessions based on session tags later.
 	SessionTags []*CreateAgentSessionRequestParamsMetaConfigSessionTags `json:"SessionTags,omitempty" xml:"SessionTags,omitempty" type:"Repeated"`
 }
 
@@ -259,7 +259,7 @@ func (s *CreateAgentSessionRequestParamsMetaConfig) Validate() error {
 }
 
 type CreateAgentSessionRequestParamsMetaConfigSessionTags struct {
-	// The session tag. You can filter sessions based on session tags. For example, if a fixed RAM user is used to call an API operation but the calling system has its own account system, you need to filter the session list based on the account ID. In this case, you can pass the account ID of the calling system as the session tag. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	// The session tag. You can filter sessions based on session tags. For example, if you use a fixed RAM user to call an API operation but the calling system has its own account system, and you need to filter the session list based on the account ID, you can pass the account ID of the calling system as this tag. The value can be up to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -289,11 +289,17 @@ func (s *CreateAgentSessionRequestParamsMetaConfigSessionTags) Validate() error 
 }
 
 type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
-	// The execution mode. Valid values:
+	// The compute unit (CU) specifications of the session instance. Only 2, 4, 8, and 12 are supported. If this parameter is omitted, the instance CU is not specified, and reuse in shared mode is not constrained by the CU. If this parameter is specified, shared mode reuses only instances with the same CU. If the CU does not match, a new instance is created.
 	//
-	// 	- chat: conversation mode only. This mode is suitable for simple scenarios such as data querying and Q&A. It is fast and consumes fewer tokens, but cannot handle complex problems.
+	// example:
 	//
-	// 	- cli: sandbox mode. This mode is suitable for complex scenarios such as data analytics, data processing, and code writing. It can handle complex problems and allows the model to independently analyze and process problems. However, it is slower and consumes more tokens than conversation mode.
+	// 4
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// Execution mode:
+	//
+	// 	- chat: conversation-only mode, suitable for simple data querying and Q&A scenarios. The advantage is that it is fast and consumes fewer tokens, but the disadvantage is that it cannot handle complex problems.
+	//
+	// 	- cli: sandbox mode, suitable for complex data analytics, data processing, and code writing scenarios. The advantage is that it can handle complex problems, and the model independently analyzes and handles problems. The disadvantage is that the processing speed is slower and token consumption is higher compared to the chat mode.
 	//
 	// example:
 	//
@@ -301,25 +307,25 @@ type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
 	ExecutionLane *string `json:"ExecutionLane,omitempty" xml:"ExecutionLane,omitempty"`
 	// The authorization mode for script execution. OpenAPI currently supports only the yolo mode. Valid values:
 	//
-	// 	- yolo: automatic authorization. No manual intervention is required, and the model can process tasks automatically.
+	// 	- yolo: automatic authorization. No manual intervention is required, and the model can process automatically.
 	//
 	// example:
 	//
 	// yolo
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The model ID. Use the full model identifier supported by the target environment. If this parameter is omitted, the default model is used. If this parameter is specified, the server verifies its availability and applies it before the session is created.
+	// The model ID. Use the full model identifier supported by the target environment. If this parameter is omitted, the default model is used. If this parameter is passed, the server verifies its availability and applies it before the session is created.
 	//
 	// example:
 	//
 	// qwen3.7-max(openai)
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The DataWorks workspace ID. This parameter is used to initialize the project context of the session. If this parameter is omitted, the session is processed without a project context. You can subsequently correct or switch the project context by using PromptAgentSession.
+	// The DataWorks workspace ID. It is used to initialize the session project context. If this parameter is omitted, it is processed as having no project. The project context can be corrected or switched later by the project context of PromptAgentSession.
 	//
 	// example:
 	//
 	// 12345
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The reasoning effort configuration. The value must be supported by the target model. A value of none disables reasoning, and a value of default uses the default configuration of the model. If an unsupported value is specified or the configuration application has failed, the session creation is marked as failed. If this parameter is omitted, the existing reasoning effort configuration is not modified. A successful configuration updates the default value of the daemon workspace and affects not only the current request.
+	// The reasoning configuration. The value must be supported by the target model. A value of none disables reasoning, and default uses the model\\"s default configuration. If an unsupported value is used or the configuration fails to apply, session creation fails. If this parameter is omitted, the existing reasoning configuration is not modified. A successful configuration updates the default value of the daemon workspace, which affects not only the current request.
 	//
 	// example:
 	//
@@ -331,7 +337,7 @@ type CreateAgentSessionRequestParamsMetaInitialConfigOptions struct {
 	//
 	// Serverless_res_group_123123123_564657857
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The names of the custom skills to be loaded. Separate multiple names with commas (,).
+	// The names of the loaded custom skills. Separate multiple names with commas (,).
 	//
 	// example:
 	//
@@ -345,6 +351,10 @@ func (s CreateAgentSessionRequestParamsMetaInitialConfigOptions) String() string
 
 func (s CreateAgentSessionRequestParamsMetaInitialConfigOptions) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetCu() *string {
+	return s.Cu
 }
 
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetExecutionLane() *string {
@@ -373,6 +383,11 @@ func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetResourceGro
 
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) GetSkills() *string {
 	return s.Skills
+}
+
+func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetCu(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {
+	s.Cu = &v
+	return s
 }
 
 func (s *CreateAgentSessionRequestParamsMetaInitialConfigOptions) SetExecutionLane(v string) *CreateAgentSessionRequestParamsMetaInitialConfigOptions {

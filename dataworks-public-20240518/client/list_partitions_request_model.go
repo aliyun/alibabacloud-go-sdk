@@ -24,13 +24,13 @@ type iListPartitionsRequest interface {
 }
 
 type ListPartitionsRequest struct {
-	// The partition name. Fuzzy match is supported. This parameter is valid only for MaxCompute tables.
+	// The name of the partition. Fuzzy match is supported. This parameter is valid only for MaxCompute tables.
 	//
 	// example:
 	//
 	// ds=20250101
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort direction. Default value: Asc. Valid values:
+	// The sort order. Default value: Asc. Valid values:
 	//
 	//
 	// - Asc: ascending order.
@@ -53,14 +53,14 @@ type ListPartitionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the results. Default value: CreateTime. Valid values:
+	// The field used for sorting. Default value: CreateTime. Valid values:
 	//
 	//
 	// - CreateTime: the creation time. Only MaxCompute tables are supported.
 	//
 	// - ModifyTime: the modification time. Only MaxCompute tables are supported.
 	//
-	// - Name: the name. This is the sort method used for HMS tables.
+	// - Name: the name. Used for HMS tables.
 	//
 	// - RecordCount: the number of records. Only MaxCompute tables are supported.
 	//
@@ -70,7 +70,7 @@ type ListPartitionsRequest struct {
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ID of the table. You can obtain this value from the response of the [ListTables](https://help.aliyun.com/document_detail/2880092.html) operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
+	// The ID of the table. You can refer to the response of the ListTables API operation and [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
 	//
 	// This parameter is required.
 	//
