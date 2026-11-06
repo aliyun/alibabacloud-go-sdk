@@ -40,7 +40,7 @@ type DescribeBackupsRequest struct {
 	//
 	// cc-bp1v9kq45u0o80cvh
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. The time is in UTC.
+	// The end time of the backup in UTC.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeBackupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeBackupsRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. The time is in UTC.
+	// The start time of the backup in UTC.
 	//
 	// This parameter is required.
 	//

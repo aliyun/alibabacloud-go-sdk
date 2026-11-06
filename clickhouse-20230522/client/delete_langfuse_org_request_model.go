@@ -26,7 +26,7 @@ type DeleteLangfuseOrgRequest struct {
 	//
 	// lfs-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// This parameter is required.
 	//

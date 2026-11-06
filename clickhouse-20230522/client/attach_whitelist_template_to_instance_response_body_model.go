@@ -18,7 +18,7 @@ type iAttachWhitelistTemplateToInstanceResponseBody interface {
 type AttachWhitelistTemplateToInstanceResponseBody struct {
 	// The returned data.
 	Data *AttachWhitelistTemplateToInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *AttachWhitelistTemplateToInstanceResponseBody) Validate() error {
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyData struct {
-	// Instances that failed to be attached.
+	// The instances that failed to be disassociated.
 	AttachFailList []*AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList `json:"AttachFailList,omitempty" xml:"AttachFailList,omitempty" type:"Repeated"`
-	// Instances to which the template was successfully attached.
+	// The templates that were successfully associated.
 	AttachSuccessedList []*AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList `json:"AttachSuccessedList,omitempty" xml:"AttachSuccessedList,omitempty" type:"Repeated"`
-	// The status of the operation. A value of `ok` indicates success.
+	// The operation status.
 	//
 	// example:
 	//
@@ -132,17 +132,17 @@ func (s *AttachWhitelistTemplateToInstanceResponseBodyData) Validate() error {
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList struct {
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// my-database
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The reason for the attachment failure.
+	// The reason for the disassociation failure.
 	//
 	// example:
 	//
-	// 处理异常
+	// Processing exception
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -177,13 +177,13 @@ func (s *AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList) Valida
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList struct {
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// my-database
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The list of whitelist templates.
+	// The whitelist templates.
 	Templates []*AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
 }
 
@@ -227,21 +227,21 @@ func (s *AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList) V
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates struct {
-	// The list of attached instances.
+	// The associated instances.
 	DbInstances []*AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
-	// The IP address whitelist.
+	// The IP whitelists.
 	//
 	// example:
 	//
 	// 192.168.1.1,10.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The ID of the whitelist template.
+	// The whitelist template ID.
 	//
 	// example:
 	//
 	// g-asdfwem
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the whitelist template.
+	// The whitelist template name.
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ func (s *AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTem
 }
 
 type AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplatesDbInstances struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

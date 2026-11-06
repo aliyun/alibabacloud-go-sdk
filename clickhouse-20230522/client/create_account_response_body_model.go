@@ -16,7 +16,7 @@ type iCreateAccountResponseBody interface {
 }
 
 type CreateAccountResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *CreateAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *CreateAccountResponseBody) Validate() error {
 }
 
 type CreateAccountResponseBodyData struct {
-	// The name of the database account.
+	// The database account.
 	//
 	// example:
 	//

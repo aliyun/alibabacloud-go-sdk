@@ -20,7 +20,7 @@ type iDeleteAccountRequest interface {
 }
 
 type DeleteAccountRequest struct {
-	// The destination database account.
+	// The target database account.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteAccountRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateWhitelistTemplateResponseBody interface {
 type CreateWhitelistTemplateResponseBody struct {
 	// The returned data.
 	Data *CreateWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ func (s *CreateWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type CreateWhitelistTemplateResponseBodyDataTemplates struct {
-	// The list of IP addresses in the whitelist.
+	// The IP whitelist.
 	//
 	// example:
 	//

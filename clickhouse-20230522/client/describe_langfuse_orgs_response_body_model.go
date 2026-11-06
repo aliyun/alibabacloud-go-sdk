@@ -16,7 +16,7 @@ type iDescribeLangfuseOrgsResponseBody interface {
 }
 
 type DescribeLangfuseOrgsResponseBody struct {
-	// The returned result.
+	// The response data.
 	Data *DescribeLangfuseOrgsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DescribeLangfuseOrgsResponseBody) Validate() error {
 }
 
 type DescribeLangfuseOrgsResponseBodyData struct {
-	// The Langfuse organization information.
+	// The Langfuse organizations.
 	Organizations []*DescribeLangfuseOrgsResponseBodyDataOrganizations `json:"Organizations,omitempty" xml:"Organizations,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -70,13 +70,13 @@ type DescribeLangfuseOrgsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,25 +142,25 @@ func (s *DescribeLangfuseOrgsResponseBodyData) Validate() error {
 }
 
 type DescribeLangfuseOrgsResponseBodyDataOrganizations struct {
-	// The time when the Langfuse organization was created.
+	// The time when the Langfuse organization was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-06-11T10:27:23Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The Langfuse organization name.
+	// The name of the Langfuse organization.
 	//
 	// example:
 	//
 	// org_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// example:
 	//
 	// cmrbhzx930005jw2q****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// The time when the Langfuse organization was last updated.
+	// The time when the Langfuse organization was updated. The time follows the YYYY-MM-DDTHH:mm:ss format.
 	//
 	// example:
 	//

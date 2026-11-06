@@ -28,7 +28,7 @@ type CreateLangfuseProjectRequest struct {
 	//
 	// lfs-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The Langfuse project name.
+	// The name of the Langfuse project.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateLangfuseProjectRequest struct {
 	//
 	// project_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The organization ID to which the Langfuse project belongs.
+	// The ID of the organization to which the Langfuse project belongs.
 	//
 	// This parameter is required.
 	//

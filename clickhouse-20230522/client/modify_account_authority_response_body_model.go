@@ -16,7 +16,7 @@ type iModifyAccountAuthorityResponseBody interface {
 }
 
 type ModifyAccountAuthorityResponseBody struct {
-	// The result returned.
+	// The returned result.
 	Data *ModifyAccountAuthorityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *ModifyAccountAuthorityResponseBody) Validate() error {
 }
 
 type ModifyAccountAuthorityResponseBodyData struct {
-	// The name of the database account.
+	// The database account.
 	//
 	// example:
 	//

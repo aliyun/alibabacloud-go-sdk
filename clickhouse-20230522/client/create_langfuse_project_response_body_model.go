@@ -62,25 +62,25 @@ func (s *CreateLangfuseProjectResponseBody) Validate() error {
 }
 
 type CreateLangfuseProjectResponseBodyData struct {
-	// The time when the Langfuse project was created.
+	// The creation time of the Langfuse project. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-06-24T10:14:33Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The Langfuse project name.
+	// The name of the Langfuse project.
 	//
 	// example:
 	//
 	// project_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// example:
 	//
 	// cmrbhzx930005jw2q****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// The Langfuse project ID.
+	// The ID of the Langfuse project.
 	//
 	// example:
 	//

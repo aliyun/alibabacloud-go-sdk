@@ -9,6 +9,8 @@ type iCreateLangfuseUserRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowOrgCreation(v bool) *CreateLangfuseUserRequest
+	GetAllowOrgCreation() *bool
 	SetDBInstanceId(v string) *CreateLangfuseUserRequest
 	GetDBInstanceId() *string
 	SetEmail(v string) *CreateLangfuseUserRequest
@@ -26,6 +28,8 @@ type iCreateLangfuseUserRequest interface {
 }
 
 type CreateLangfuseUserRequest struct {
+	// Specifies whether the user is allowed to create organizations. Default value: false.
+	AllowOrgCreation *bool `json:"AllowOrgCreation,omitempty" xml:"AllowOrgCreation,omitempty"`
 	// The Langfuse instance ID.
 	//
 	// This parameter is required.
@@ -64,11 +68,11 @@ type CreateLangfuseUserRequest struct {
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
 	// The password of the user account. The password must meet the following requirements:
 	//
-	// - Contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - The following special characters are supported: !@#$%^&*()_+-=
+	// - Special characters include !@#$%^&*()_+-=.
 	//
-	// - The password must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -92,6 +96,10 @@ func (s CreateLangfuseUserRequest) String() string {
 
 func (s CreateLangfuseUserRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLangfuseUserRequest) GetAllowOrgCreation() *bool {
+	return s.AllowOrgCreation
 }
 
 func (s *CreateLangfuseUserRequest) GetDBInstanceId() *string {
@@ -120,6 +128,11 @@ func (s *CreateLangfuseUserRequest) GetPassword() *string {
 
 func (s *CreateLangfuseUserRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreateLangfuseUserRequest) SetAllowOrgCreation(v bool) *CreateLangfuseUserRequest {
+	s.AllowOrgCreation = &v
+	return s
 }
 
 func (s *CreateLangfuseUserRequest) SetDBInstanceId(v string) *CreateLangfuseUserRequest {

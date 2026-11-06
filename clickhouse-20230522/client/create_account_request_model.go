@@ -28,7 +28,15 @@ type iCreateAccountRequest interface {
 }
 
 type CreateAccountRequest struct {
-	// The name of the account.
+	// The database account. The account name must meet the following requirements:
+	//
+	// - The name must be unique.
+	//
+	// - The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// - The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +46,9 @@ type CreateAccountRequest struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// - **NormalAccount**: standard account
+	// - **NormalAccount**: Standard account.
 	//
-	// - **SuperAccount**: privileged account
+	// - **SuperAccount**: Privileged account.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +64,19 @@ type CreateAccountRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The description of the account.
+	// The description.
 	//
 	// example:
 	//
-	// For testing
+	// For testing purposes
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about permissions.
+	// The authorization information.
 	DmlAuthSetting *CreateAccountRequestDmlAuthSetting `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty" type:"Struct"`
 	// The password of the database account. The password must meet the following requirements:
 	//
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - The following special characters are supported: ! @ # $ % ^ & \\	- ( ) _ + - =
+	// - Special characters include !@#$%^&*()_+-=.
 	//
 	// - The password must be 8 to 32 characters in length.
 	//
@@ -78,7 +86,7 @@ type CreateAccountRequest struct {
 	//
 	// a1b2c3d4@
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//
@@ -184,27 +192,27 @@ func (s *CreateAccountRequest) Validate() error {
 }
 
 type CreateAccountRequestDmlAuthSetting struct {
-	// The databases on which you want to grant permissions. Separate multiple databases with commas (,).
+	// The list of databases to be authorized. Separate multiple databases with commas (,).
 	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
-	// The dictionaries on which you want to grant permissions. Separate multiple dictionaries with commas (,).
+	// The list of dictionaries to be authorized. Separate multiple dictionaries with commas (,).
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
-	// Specifies whether to grant the DDL permissions to the database account. Valid values:
+	// Specifies whether to grant DDL permissions to the database account. Valid values:
 	//
-	// - **true**: The account has the permissions to execute DDL statements.
+	// - **true**: Allows DDL operations.
 	//
-	// - **false**: The account does not have the permissions to execute DDL statements.
+	// - **false**: Prohibits DDL operations.
 	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// Specifies whether to grant the DML permissions to the database account. Valid values:
+	// Specifies whether to grant DML permissions to the database account. Valid values:
 	//
-	// - **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
+	// - **0**: Allows queries for reading, writing, and changing settings.
 	//
-	// - **1**: The account only has the permissions to read data from the database.
+	// - **1**: Allows only queries for reading data.
 	//
-	// - **2**: The account only has the permissions to read data from the database and modify the settings of the database.
+	// - **2**: Allows queries for reading data and changing settings.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iModifyAccountAuthorityShrinkRequest interface {
 }
 
 type ModifyAccountAuthorityShrinkRequest struct {
-	// The name of the database account.
+	// The database account.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ModifyAccountAuthorityShrinkRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The information about permissions.
+	// The authorization information.
 	//
 	// This parameter is required.
 	DmlAuthSettingShrink *string `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty"`

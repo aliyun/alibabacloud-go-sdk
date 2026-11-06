@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Attaches a whitelist template to instances.
+// Associates a whitelist template with instances.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -61,7 +61,7 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithContext(ctx context.C
 
 // Summary:
 //
-// Changes the resource group of a ClickHouse Enterprise instance.
+// Modifies the resource group of a ClickHouse Enterprise instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -195,7 +195,7 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, tmpReq *Crea
 
 // Summary:
 //
-// Creates a backup policy for a specified ClickHouse Enterprise Edition cluster.
+// Creates a backup policy for a specified ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -311,7 +311,7 @@ func (client *Client) CreateDBWithContext(ctx context.Context, request *CreateDB
 
 // Summary:
 //
-// To create a ClickHouse Enterprise Edition cluster, call the `CreateDBInstance` API.
+// Creates an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -449,7 +449,7 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a public endpoint that provides a public address to access a cluster.
+// Allocates a public endpoint.
 //
 // @param request - CreateEndpointRequest
 //
@@ -696,6 +696,10 @@ func (client *Client) CreateLangfuseUserWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowOrgCreation) {
+		query["AllowOrgCreation"] = request.AllowOrgCreation
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -803,7 +807,7 @@ func (client *Client) CreateWhitelistTemplateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a database account from an ApsaraDB for ClickHouse cluster.
+// Deletes an account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -859,7 +863,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes the backup policy for a ClickHouse Enterprise Edition cluster.
+// Deletes the backup policy of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -907,7 +911,7 @@ func (client *Client) DeleteBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Call this operation to delete a database.
+// Deletes a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -1387,7 +1391,7 @@ func (client *Client) DeleteWhitelistTemplateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Call the DescribeAccountAuthority operation to query the permissions of an account.
+// Queries the permissions of an account.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -1547,7 +1551,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the backup sets of a ClickHouse Enterprise Edition cluster.
+// Queries the backup sets of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -1703,7 +1707,7 @@ func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Queries the parameter configuration records of an instance
+// Queries the parameter settings change records of an instance.
 //
 // @param request - DescribeDBInstanceConfigChangeLogRequest
 //
@@ -1975,7 +1979,7 @@ func (client *Client) DescribeLangfuseEndpointsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the member information of a Langfuse organization.
+// Queries the members of a Langfuse organization.
 //
 // @param request - DescribeLangfuseOrgMembershipsRequest
 //
@@ -2035,7 +2039,7 @@ func (client *Client) DescribeLangfuseOrgMembershipsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the list of organizations for a Langfuse instance.
+// Queries the organizations of a Langfuse instance.
 //
 // @param request - DescribeLangfuseOrgsRequest
 //
@@ -2955,7 +2959,7 @@ func (client *Client) ListWhitelistTemplatesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the permissions of a database account.
+// Modifies the authorization information of an account.
 //
 // @param tmpReq - ModifyAccountAuthorityRequest
 //
@@ -3073,11 +3077,11 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the backup policy of an ApsaraDB for ClickHouse cluster.
+// Modifies the backup policy of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // Description:
 //
-// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
+// > ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -3137,7 +3141,7 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// You can call the ModifyDBInstanceAttribute operation to modify the configuration of a cluster.
+// Modifies the configuration attributes of a cluster.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -3197,7 +3201,7 @@ func (client *Client) ModifyDBInstanceAttributeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the elastic configuration of an ApsaraDB for ClickHouse cluster.
+// Modifies the elastic configuration of a cluster.
 //
 // Description:
 //
@@ -3971,7 +3975,7 @@ func (client *Client) UpdateWhitelistTemplateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse cluster.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - UpgradeMinorVersionRequest
 //

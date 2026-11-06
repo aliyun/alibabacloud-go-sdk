@@ -16,7 +16,7 @@ type iResetLangfuseUserPasswordResponseBody interface {
 }
 
 type ResetLangfuseUserPasswordResponseBody struct {
-	// The response result.
+	// The response data.
 	Data *ResetLangfuseUserPasswordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//

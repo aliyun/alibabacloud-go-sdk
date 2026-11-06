@@ -16,7 +16,7 @@ type iDescribeDBInstanceConfigChangeLogResponseBody interface {
 }
 
 type DescribeDBInstanceConfigChangeLogResponseBody struct {
-	// The result set.
+	// The query result set.
 	Data *DescribeDBInstanceConfigChangeLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -112,11 +112,11 @@ func (s *DescribeDBInstanceConfigChangeLogResponseBodyData) Validate() error {
 }
 
 type DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs struct {
-	// Indicates whether the configuration takes effect:
+	// Indicates whether the configuration has taken effect. Valid values:
 	//
-	// - true: The execution plan takes effect.
+	// - true: The configuration has taken effect.
 	//
-	// - false: The execution plan does not take effect.
+	// - false: The configuration has not taken effect.
 	Applied *bool `json:"Applied,omitempty" xml:"Applied,omitempty"`
 	// The time when the change was created.
 	//
@@ -124,7 +124,7 @@ type DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs struct {
 	//
 	// 2025-06-25 13:46:06
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the change was modified.
+	// The time when the change was last modified.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs struct {
 	//
 	// 1
 	ID *int64 `json:"ID,omitempty" xml:"ID,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//

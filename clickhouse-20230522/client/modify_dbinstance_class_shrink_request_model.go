@@ -34,7 +34,7 @@ type iModifyDBInstanceClassShrinkRequest interface {
 }
 
 type ModifyDBInstanceClassShrinkRequest struct {
-	// The automatic horizontal scaling configuration.
+	// The automatic horizontal elastic configuration.
 	//
 	// if can be null:
 	// true
@@ -79,19 +79,19 @@ type ModifyDBInstanceClassShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum value for serverless elastic scaling.
+	// **[Deprecated]*	- The maximum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value for serverless elastic scaling.
+	// **[Deprecated]*	- The minimum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 8
 	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The pre-purchased storage quota, in GB.
+	// The purchased storage quota. Unit: GB.
 	//
 	// example:
 	//

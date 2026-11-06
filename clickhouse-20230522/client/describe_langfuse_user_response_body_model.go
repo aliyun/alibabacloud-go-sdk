@@ -16,7 +16,7 @@ type iDescribeLangfuseUserResponseBody interface {
 }
 
 type DescribeLangfuseUserResponseBody struct {
-	// The returned result.
+	// The response data.
 	Data *DescribeLangfuseUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,7 +62,9 @@ func (s *DescribeLangfuseUserResponseBody) Validate() error {
 }
 
 type DescribeLangfuseUserResponseBodyData struct {
-	// The time when the user was created.
+	// Indicates whether the user is allowed to create an organization.
+	AllowOrgCreation *bool `json:"AllowOrgCreation,omitempty" xml:"AllowOrgCreation,omitempty"`
+	// The time when the user was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -76,13 +78,13 @@ type DescribeLangfuseUserResponseBodyData struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The role information of the user.
 	Memberships []*DescribeLangfuseUserResponseBodyDataMemberships `json:"Memberships,omitempty" xml:"Memberships,omitempty" type:"Repeated"`
-	// The username.
+	// The name of the user.
 	//
 	// example:
 	//
 	// john
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time when the user was last updated.
+	// The time when the user was updated. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -96,6 +98,10 @@ func (s DescribeLangfuseUserResponseBodyData) String() string {
 
 func (s DescribeLangfuseUserResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeLangfuseUserResponseBodyData) GetAllowOrgCreation() *bool {
+	return s.AllowOrgCreation
 }
 
 func (s *DescribeLangfuseUserResponseBodyData) GetCreatedAt() *string {
@@ -116,6 +122,11 @@ func (s *DescribeLangfuseUserResponseBodyData) GetName() *string {
 
 func (s *DescribeLangfuseUserResponseBodyData) GetUpdatedAt() *string {
 	return s.UpdatedAt
+}
+
+func (s *DescribeLangfuseUserResponseBodyData) SetAllowOrgCreation(v bool) *DescribeLangfuseUserResponseBodyData {
+	s.AllowOrgCreation = &v
+	return s
 }
 
 func (s *DescribeLangfuseUserResponseBodyData) SetCreatedAt(v string) *DescribeLangfuseUserResponseBodyData {
@@ -157,19 +168,19 @@ func (s *DescribeLangfuseUserResponseBodyData) Validate() error {
 }
 
 type DescribeLangfuseUserResponseBodyDataMemberships struct {
-	// The role of the user within the organization.
+	// The role in the organization.
 	//
 	// example:
 	//
 	// ADMIN
 	OrgRole *string `json:"OrgRole,omitempty" xml:"OrgRole,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// example:
 	//
 	// cmrbhzx930005jw2q****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// The Langfuse organization name.
+	// The name of the Langfuse organization.
 	//
 	// example:
 	//
@@ -237,19 +248,19 @@ func (s *DescribeLangfuseUserResponseBodyDataMemberships) Validate() error {
 }
 
 type DescribeLangfuseUserResponseBodyDataMembershipsProjects struct {
-	// The Langfuse project ID.
+	// The ID of the Langfuse project.
 	//
 	// example:
 	//
 	// cmrbhzx930005jw2q****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The Langfuse project name.
+	// The name of the Langfuse project.
 	//
 	// example:
 	//
 	// project_name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The role of the user within the project.
+	// The role in the project.
 	//
 	// example:
 	//

@@ -62,7 +62,9 @@ func (s *CreateLangfuseUserResponseBody) Validate() error {
 }
 
 type CreateLangfuseUserResponseBodyData struct {
-	// The time when the user was created.
+	// Indicates whether the user is allowed to create organizations.
+	AllowOrgCreation *bool `json:"AllowOrgCreation,omitempty" xml:"AllowOrgCreation,omitempty"`
+	// The time when the user was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -74,7 +76,7 @@ type CreateLangfuseUserResponseBodyData struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The role of the user.
+	// The user role.
 	Membership *CreateLangfuseUserResponseBodyDataMembership `json:"Membership,omitempty" xml:"Membership,omitempty" type:"Struct"`
 	// The username.
 	//
@@ -92,6 +94,10 @@ func (s CreateLangfuseUserResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *CreateLangfuseUserResponseBodyData) GetAllowOrgCreation() *bool {
+	return s.AllowOrgCreation
+}
+
 func (s *CreateLangfuseUserResponseBodyData) GetCreatedAt() *string {
 	return s.CreatedAt
 }
@@ -106,6 +112,11 @@ func (s *CreateLangfuseUserResponseBodyData) GetMembership() *CreateLangfuseUser
 
 func (s *CreateLangfuseUserResponseBodyData) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateLangfuseUserResponseBodyData) SetAllowOrgCreation(v bool) *CreateLangfuseUserResponseBodyData {
+	s.AllowOrgCreation = &v
+	return s
 }
 
 func (s *CreateLangfuseUserResponseBodyData) SetCreatedAt(v string) *CreateLangfuseUserResponseBodyData {

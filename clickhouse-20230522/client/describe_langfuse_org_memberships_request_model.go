@@ -30,7 +30,7 @@ type DescribeLangfuseOrgMembershipsRequest struct {
 	//
 	// lfs-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeLangfuseOrgMembershipsRequest struct {
 	//
 	// cmrbhzx930005jw2q****
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
-	// The page number of the page to return.
+	// The page number.
 	//
 	// example:
 	//

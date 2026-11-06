@@ -16,7 +16,7 @@ type iDescribeLangfuseProjectsResponseBody interface {
 }
 
 type DescribeLangfuseProjectsResponseBody struct {
-	// The returned result.
+	// The returned results.
 	Data *DescribeLangfuseProjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -68,7 +68,7 @@ type DescribeLangfuseProjectsResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeLangfuseProjectsResponseBodyData struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of Langfuse projects.
 	Projects []*DescribeLangfuseProjectsResponseBodyDataProjects `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ func (s *DescribeLangfuseProjectsResponseBodyData) Validate() error {
 }
 
 type DescribeLangfuseProjectsResponseBodyDataProjects struct {
-	// The time when the Langfuse project was created.
+	// The time when the Langfuse project was created. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-05-27T08:23:45Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The Langfuse project name.
+	// The name of the Langfuse project.
 	//
 	// example:
 	//
 	// project_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The organization ID to which the Langfuse project belongs.
+	// The ID of the organization to which the Langfuse project belongs.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type DescribeLangfuseProjectsResponseBodyDataProjects struct {
 	//
 	// cmrbhzx930005jw2q****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The time when the Langfuse project was last updated.
+	// The time when the Langfuse project was updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
 	//
 	// example:
 	//

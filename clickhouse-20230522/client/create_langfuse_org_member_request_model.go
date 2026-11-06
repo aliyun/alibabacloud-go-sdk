@@ -38,7 +38,7 @@ type CreateLangfuseOrgMemberRequest struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The Langfuse organization ID.
+	// The ID of the Langfuse organization.
 	//
 	// This parameter is required.
 	//

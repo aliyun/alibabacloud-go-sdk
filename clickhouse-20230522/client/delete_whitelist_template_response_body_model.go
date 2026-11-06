@@ -16,7 +16,7 @@ type iDeleteWhitelistTemplateResponseBody interface {
 }
 
 type DeleteWhitelistTemplateResponseBody struct {
-	// The data returned from the call.
+	// The returned result.
 	Data *DeleteWhitelistTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -97,9 +97,9 @@ func (s *DeleteWhitelistTemplateResponseBodyData) Validate() error {
 }
 
 type DeleteWhitelistTemplateResponseBodyDataTemplates struct {
-	// The instances associated with the template.
+	// The associated instances.
 	DbInstances []*DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
-	// The IP whitelist.
+	// The IP whitelists.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ func (s *DeleteWhitelistTemplateResponseBodyDataTemplates) Validate() error {
 }
 
 type DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

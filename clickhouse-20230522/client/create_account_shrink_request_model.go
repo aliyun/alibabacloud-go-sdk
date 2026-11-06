@@ -28,7 +28,15 @@ type iCreateAccountShrinkRequest interface {
 }
 
 type CreateAccountShrinkRequest struct {
-	// The name of the account.
+	// The database account. The account name must meet the following requirements:
+	//
+	// - The name must be unique.
+	//
+	// - The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// - The name must start with a lowercase letter and end with a lowercase letter or a digit.
+	//
+	// - The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +46,9 @@ type CreateAccountShrinkRequest struct {
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
 	// The type of the database account. Valid values:
 	//
-	// - **NormalAccount**: standard account
+	// - **NormalAccount**: Standard account.
 	//
-	// - **SuperAccount**: privileged account
+	// - **SuperAccount**: Privileged account.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +64,19 @@ type CreateAccountShrinkRequest struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The description of the account.
+	// The description.
 	//
 	// example:
 	//
-	// For testing
+	// For testing purposes
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about permissions.
+	// The authorization information.
 	DmlAuthSettingShrink *string `json:"DmlAuthSetting,omitempty" xml:"DmlAuthSetting,omitempty"`
 	// The password of the database account. The password must meet the following requirements:
 	//
 	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - The following special characters are supported: ! @ # $ % ^ & \\	- ( ) _ + - =
+	// - Special characters include !@#$%^&*()_+-=.
 	//
 	// - The password must be 8 to 32 characters in length.
 	//
@@ -78,7 +86,7 @@ type CreateAccountShrinkRequest struct {
 	//
 	// a1b2c3d4@
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The code of the cloud service.
+	// The product code.
 	//
 	// example:
 	//

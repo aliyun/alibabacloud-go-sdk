@@ -16,7 +16,7 @@ type iDescribeAccountAuthorityResponseBody interface {
 }
 
 type DescribeAccountAuthorityResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *DescribeAccountAuthorityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,9 +68,9 @@ type DescribeAccountAuthorityResponseBodyData struct {
 	//
 	// test1
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// A list of authorized databases.
+	// The list of authorized databases.
 	AllowDatabases []*string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty" type:"Repeated"`
-	// A list of authorized dictionaries.
+	// The list of authorized dictionaries.
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
@@ -78,17 +78,17 @@ type DescribeAccountAuthorityResponseBodyData struct {
 	//
 	// cc-bp100p4q1g9z3****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Indicates whether DDL permissions are granted to the database account. Valid values:
+	// Indicates whether Data Definition Language (DDL) permissions are granted to the database account. Valid values:
 	//
-	// - **true**: DDL operations are allowed.
+	// - **true**: DDL is allowed.
 	//
-	// - **false**: DDL operations are prohibited.
+	// - **false**: DDL is not allowed.
 	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// The DML permissions that are granted to the database account. Valid values:
+	// Indicates whether Data Manipulation Language (DML) permissions are granted to the database account. Valid values:
 	//
 	// - 0: Read, write, and change settings queries are allowed.
 	//
@@ -100,9 +100,9 @@ type DescribeAccountAuthorityResponseBodyData struct {
 	//
 	// 0
 	DmlAuthority *int32 `json:"DmlAuthority,omitempty" xml:"DmlAuthority,omitempty"`
-	// A list of all databases.
+	// The list of all databases.
 	TotalDatabases []*string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty" type:"Repeated"`
-	// The database.
+	// The dictionaries.
 	TotalDictionaries []*string `json:"TotalDictionaries,omitempty" xml:"TotalDictionaries,omitempty" type:"Repeated"`
 }
 

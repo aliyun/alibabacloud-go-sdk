@@ -38,7 +38,7 @@ type DescribeLangfuseUsersRequest struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username.
+	// The name of the user.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeLangfuseUsersRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

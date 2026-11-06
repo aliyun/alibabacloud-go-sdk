@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("clickhouse")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("clickhouse.aliyuncs.com"),
@@ -71,6 +79,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"us-east-1":                   dara.String("clickhouse.aliyuncs.com"),
 		"us-west-1":                   dara.String("clickhouse.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("clickhouse.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("clickhouse.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -105,7 +114,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Attaches a whitelist template to instances.
+// Associates a whitelist template with instances.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -157,7 +166,7 @@ func (client *Client) AttachWhitelistTemplateToInstanceWithOptions(request *Atta
 
 // Summary:
 //
-// Attaches a whitelist template to instances.
+// Associates a whitelist template with instances.
 //
 // @param request - AttachWhitelistTemplateToInstanceRequest
 //
@@ -175,7 +184,7 @@ func (client *Client) AttachWhitelistTemplateToInstance(request *AttachWhitelist
 
 // Summary:
 //
-// Changes the resource group of a ClickHouse Enterprise instance.
+// Modifies the resource group of a ClickHouse Enterprise instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -231,7 +240,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group of a ClickHouse Enterprise instance.
+// Modifies the resource group of a ClickHouse Enterprise instance.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -345,7 +354,7 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a backup policy for a specified ClickHouse Enterprise Edition cluster.
+// Creates a backup policy for a specified ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -405,7 +414,7 @@ func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyR
 
 // Summary:
 //
-// Creates a backup policy for a specified ClickHouse Enterprise Edition cluster.
+// Creates a backup policy for a specified ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -497,7 +506,7 @@ func (client *Client) CreateDB(request *CreateDBRequest) (_result *CreateDBRespo
 
 // Summary:
 //
-// To create a ClickHouse Enterprise Edition cluster, call the `CreateDBInstance` API.
+// Creates an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -635,7 +644,7 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 // Summary:
 //
-// To create a ClickHouse Enterprise Edition cluster, call the `CreateDBInstance` API.
+// Creates an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -653,7 +662,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Creates a public endpoint that provides a public address to access a cluster.
+// Allocates a public endpoint.
 //
 // @param request - CreateEndpointRequest
 //
@@ -713,7 +722,7 @@ func (client *Client) CreateEndpointWithOptions(request *CreateEndpointRequest, 
 
 // Summary:
 //
-// Creates a public endpoint that provides a public address to access a cluster.
+// Allocates a public endpoint.
 //
 // @param request - CreateEndpointRequest
 //
@@ -972,6 +981,10 @@ func (client *Client) CreateLangfuseUserWithOptions(request *CreateLangfuseUserR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowOrgCreation) {
+		query["AllowOrgCreation"] = request.AllowOrgCreation
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -1115,7 +1128,7 @@ func (client *Client) CreateWhitelistTemplate(request *CreateWhitelistTemplateRe
 
 // Summary:
 //
-// Deletes a database account from an ApsaraDB for ClickHouse cluster.
+// Deletes an account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -1171,7 +1184,7 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 // Summary:
 //
-// Deletes a database account from an ApsaraDB for ClickHouse cluster.
+// Deletes an account.
 //
 // @param request - DeleteAccountRequest
 //
@@ -1189,7 +1202,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// Deletes the backup policy for a ClickHouse Enterprise Edition cluster.
+// Deletes the backup policy of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -1237,7 +1250,7 @@ func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyR
 
 // Summary:
 //
-// Deletes the backup policy for a ClickHouse Enterprise Edition cluster.
+// Deletes the backup policy of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -1255,7 +1268,7 @@ func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Call this operation to delete a database.
+// Deletes a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -1307,7 +1320,7 @@ func (client *Client) DeleteDBWithOptions(request *DeleteDBRequest, runtime *dar
 
 // Summary:
 //
-// Call this operation to delete a database.
+// Deletes a database.
 //
 // @param request - DeleteDBRequest
 //
@@ -1897,7 +1910,7 @@ func (client *Client) DeleteWhitelistTemplate(request *DeleteWhitelistTemplateRe
 
 // Summary:
 //
-// Call the DescribeAccountAuthority operation to query the permissions of an account.
+// Queries the permissions of an account.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -1949,7 +1962,7 @@ func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccou
 
 // Summary:
 //
-// Call the DescribeAccountAuthority operation to query the permissions of an account.
+// Queries the permissions of an account.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -2111,7 +2124,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// Queries the backup sets of a ClickHouse Enterprise Edition cluster.
+// Queries the backup sets of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -2179,7 +2192,7 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 
 // Summary:
 //
-// Queries the backup sets of a ClickHouse Enterprise Edition cluster.
+// Queries the backup sets of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -2321,7 +2334,7 @@ func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfig
 
 // Summary:
 //
-// # Queries the parameter configuration records of an instance
+// Queries the parameter settings change records of an instance.
 //
 // @param request - DescribeDBInstanceConfigChangeLogRequest
 //
@@ -2361,7 +2374,7 @@ func (client *Client) DescribeDBInstanceConfigChangeLogWithOptions(request *Desc
 
 // Summary:
 //
-// # Queries the parameter configuration records of an instance
+// Queries the parameter settings change records of an instance.
 //
 // @param request - DescribeDBInstanceConfigChangeLogRequest
 //
@@ -2683,7 +2696,7 @@ func (client *Client) DescribeLangfuseEndpoints(request *DescribeLangfuseEndpoin
 
 // Summary:
 //
-// Queries the member information of a Langfuse organization.
+// Queries the members of a Langfuse organization.
 //
 // @param request - DescribeLangfuseOrgMembershipsRequest
 //
@@ -2743,7 +2756,7 @@ func (client *Client) DescribeLangfuseOrgMembershipsWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the member information of a Langfuse organization.
+// Queries the members of a Langfuse organization.
 //
 // @param request - DescribeLangfuseOrgMembershipsRequest
 //
@@ -2761,7 +2774,7 @@ func (client *Client) DescribeLangfuseOrgMemberships(request *DescribeLangfuseOr
 
 // Summary:
 //
-// Queries the list of organizations for a Langfuse instance.
+// Queries the organizations of a Langfuse instance.
 //
 // @param request - DescribeLangfuseOrgsRequest
 //
@@ -2817,7 +2830,7 @@ func (client *Client) DescribeLangfuseOrgsWithOptions(request *DescribeLangfuseO
 
 // Summary:
 //
-// Queries the list of organizations for a Langfuse instance.
+// Queries the organizations of a Langfuse instance.
 //
 // @param request - DescribeLangfuseOrgsRequest
 //
@@ -3311,7 +3324,7 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 
 // Summary:
 //
-// Returns information about the available regions and zones for ApsaraDB for ClickHouse.
+// Queries the information about all regions and zones of ApsaraDB for ClickHouse Enterprise Edition.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -3340,7 +3353,7 @@ func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (
 
 // Summary:
 //
-// Returns information about the available regions and zones for ApsaraDB for ClickHouse.
+// Queries the information about all regions and zones of ApsaraDB for ClickHouse Enterprise Edition.
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
@@ -4022,7 +4035,7 @@ func (client *Client) ListWhitelistTemplates(request *ListWhitelistTemplatesRequ
 
 // Summary:
 //
-// Modifies the permissions of a database account.
+// Modifies the authorization information of an account.
 //
 // @param tmpReq - ModifyAccountAuthorityRequest
 //
@@ -4084,7 +4097,7 @@ func (client *Client) ModifyAccountAuthorityWithOptions(tmpReq *ModifyAccountAut
 
 // Summary:
 //
-// Modifies the permissions of a database account.
+// Modifies the authorization information of an account.
 //
 // @param request - ModifyAccountAuthorityRequest
 //
@@ -4176,11 +4189,11 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Modifies the backup policy of an ApsaraDB for ClickHouse cluster.
+// Modifies the backup policy of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // Description:
 //
-// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
+// > ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -4240,11 +4253,11 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 // Summary:
 //
-// Modifies the backup policy of an ApsaraDB for ClickHouse cluster.
+// Modifies the backup policy of an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // Description:
 //
-// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
+// > ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -4262,7 +4275,7 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 
 // Summary:
 //
-// You can call the ModifyDBInstanceAttribute operation to modify the configuration of a cluster.
+// Modifies the configuration attributes of a cluster.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -4322,7 +4335,7 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 
 // Summary:
 //
-// You can call the ModifyDBInstanceAttribute operation to modify the configuration of a cluster.
+// Modifies the configuration attributes of a cluster.
 //
 // @param request - ModifyDBInstanceAttributeRequest
 //
@@ -4340,7 +4353,7 @@ func (client *Client) ModifyDBInstanceAttribute(request *ModifyDBInstanceAttribu
 
 // Summary:
 //
-// Modifies the elastic configuration of an ApsaraDB for ClickHouse cluster.
+// Modifies the elastic configuration of a cluster.
 //
 // Description:
 //
@@ -4434,7 +4447,7 @@ func (client *Client) ModifyDBInstanceClassWithOptions(tmpReq *ModifyDBInstanceC
 
 // Summary:
 //
-// Modifies the elastic configuration of an ApsaraDB for ClickHouse cluster.
+// Modifies the elastic configuration of a cluster.
 //
 // Description:
 //
@@ -5352,7 +5365,7 @@ func (client *Client) UpdateWhitelistTemplate(request *UpdateWhitelistTemplateRe
 
 // Summary:
 //
-// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse cluster.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - UpgradeMinorVersionRequest
 //
@@ -5412,7 +5425,7 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 
 // Summary:
 //
-// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse cluster.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - UpgradeMinorVersionRequest
 //

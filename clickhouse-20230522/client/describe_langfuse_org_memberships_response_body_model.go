@@ -76,7 +76,7 @@ type DescribeLangfuseOrgMembershipsResponseBodyData struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *DescribeLangfuseOrgMembershipsResponseBodyData) Validate() error {
 }
 
 type DescribeLangfuseOrgMembershipsResponseBodyDataMemberships struct {
-	// The time when the user was created.
+	// The time when the user was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeLangfuseOrgMembershipsResponseBodyDataMemberships struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username.
+	// The name of the user.
 	//
 	// example:
 	//

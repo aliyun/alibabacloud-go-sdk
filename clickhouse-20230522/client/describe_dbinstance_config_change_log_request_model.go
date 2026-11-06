@@ -32,7 +32,7 @@ type DescribeDBInstanceConfigChangeLogRequest struct {
 	//
 	// cc-uf6lkzf*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time of the query. Format: yyyy-MM-dd hh:mm:ss.
+	// The end of the time range to query. Format: yyyy-MM-dd hh:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type DescribeDBInstanceConfigChangeLogRequest struct {
 	//
 	// 2025-01-01 10:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - **30*	- (default)
 	//
@@ -66,7 +66,7 @@ type DescribeDBInstanceConfigChangeLogRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query. Format: yyyy-MM-dd hh:mm:ss.
+	// The beginning of the time range to query. Format: yyyy-MM-dd hh:mm:ss.
 	//
 	// This parameter is required.
 	//

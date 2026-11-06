@@ -34,7 +34,7 @@ type DeleteWhitelistTemplateRequest struct {
 	//
 	// 98a6d3db05984dca
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the whitelist template.
+	// The whitelist template ID.
 	//
 	// example:
 	//

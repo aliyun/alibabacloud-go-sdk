@@ -44,7 +44,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Monday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup time.
+	// The backup time in UTC. The format is HH:mmZ-HH:mmZ.
 	//
 	// This parameter is required.
 	//

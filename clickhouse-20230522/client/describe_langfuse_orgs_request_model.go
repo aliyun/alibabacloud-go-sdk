@@ -20,7 +20,7 @@ type iDescribeLangfuseOrgsRequest interface {
 }
 
 type DescribeLangfuseOrgsRequest struct {
-	// The Langfuse instance ID.
+	// The instance ID of the Langfuse instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeLangfuseOrgsRequest struct {
 	//
 	// lfs-****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//

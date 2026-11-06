@@ -34,7 +34,7 @@ type iModifyDBInstanceClassRequest interface {
 }
 
 type ModifyDBInstanceClassRequest struct {
-	// The automatic horizontal scaling configuration.
+	// The automatic horizontal elastic configuration.
 	//
 	// if can be null:
 	// true
@@ -79,19 +79,19 @@ type ModifyDBInstanceClassRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The maximum value for serverless elastic scaling.
+	// **[Deprecated]*	- The maximum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value for serverless elastic scaling.
+	// **[Deprecated]*	- The minimum value for serverless elastic scaling.
 	//
 	// example:
 	//
 	// 8
 	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The pre-purchased storage quota, in GB.
+	// The purchased storage quota. Unit: GB.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ func (s *ModifyDBInstanceClassRequest) Validate() error {
 }
 
 type ModifyDBInstanceClassRequestAutoScaleConfig struct {
-	// The number of nodes available for burstable horizontal scaling.
+	// The number of burstable nodes for horizontal elastic scaling.
 	//
 	// example:
 	//
@@ -230,9 +230,9 @@ type ModifyDBInstanceClassRequestAutoScaleConfig struct {
 	BurstNum *int32 `json:"BurstNum,omitempty" xml:"BurstNum,omitempty"`
 	// The configuration status. Valid values:
 	//
-	// - disable: disabled.
+	// - disable: Disabled.
 	//
-	// - enable: enabled.
+	// - enable: Enabled.
 	//
 	// example:
 	//
@@ -291,7 +291,7 @@ func (s *ModifyDBInstanceClassRequestAutoScaleConfig) Validate() error {
 }
 
 type ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos struct {
-	// The vSwitch IDs in the zone.
+	// The vSwitch ID in the zone.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The zone of the hot pool.
 	//

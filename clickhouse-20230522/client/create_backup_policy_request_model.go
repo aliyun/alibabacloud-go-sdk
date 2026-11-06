@@ -22,7 +22,7 @@ type iCreateBackupPolicyRequest interface {
 }
 
 type CreateBackupPolicyRequest struct {
-	// The number of days to retain backups.
+	// The number of days for which backups are retained.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type CreateBackupPolicyRequest struct {
 	//
 	// cc-2ze0eb0w182xh8549
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The backup cycle. Specify the days of the week for backups. Separate multiple days with commas (`,`).
+	// The backup cycle. Specify the days of the week on which backups are performed. Separate multiple days with commas (`,`).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateBackupPolicyRequest struct {
 	//
 	// Monday,Friday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The UTC time range to perform the backup. For example, `12:00Z-13:00Z` means that the backup starts between 12:00 and 13:00 UTC.
+	// The UTC time range during which backups are performed. For example, `12:00Z-13:00Z` indicates that the backup starts between 12:00 and 13:00 UTC.
 	//
 	// This parameter is required.
 	//

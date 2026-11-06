@@ -18,7 +18,7 @@ type iDeleteLangfuseInstanceRequest interface {
 }
 
 type DeleteLangfuseInstanceRequest struct {
-	// The confirmation flag for deleting the AiGateway instance associated with the Langfuse instance.
+	// The confirmation mark for deleting the AI gateway instance associated with the Langfuse instance.
 	ConfirmDeleteAiGateway *bool `json:"ConfirmDeleteAiGateway,omitempty" xml:"ConfirmDeleteAiGateway,omitempty"`
 	// The Langfuse instance ID.
 	//

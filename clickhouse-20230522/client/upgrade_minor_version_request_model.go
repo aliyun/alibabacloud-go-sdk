@@ -40,19 +40,19 @@ type UpgradeMinorVersionRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The specified upgrade time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
-	// > This parameter is required when SwitchTimeMode is set to SpecifyTime.
+	// > If SwitchTimeMode is set to SpecifyTime, you must use this parameter to specify the upgrade time.
 	//
 	// example:
 	//
 	// 2023-01-09T05:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// Specifies when to upgrade. Valid values:
+	// Specifies whether to upgrade the minor engine version immediately. Valid values:
 	//
-	// - **Immediate**: upgrades immediately.
+	// - **Immediate**: Upgrades immediately.
 	//
-	// - **MaintainTime**: upgrades during the O&M window.
+	// - **MaintainTime**: Upgrades within the O&M window.
 	//
-	// - **SpecifyTime**: upgrades at a specified time.
+	// - **SpecifyTime**: Upgrades at a specified time.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type UpgradeMinorVersionRequest struct {
 	SwitchTimeMode *string `json:"SwitchTimeMode,omitempty" xml:"SwitchTimeMode,omitempty"`
 	// The target minor engine version.
 	//
-	// >By default, leave this parameter empty to upgrade to the latest minor engine version.
+	// > By default, this parameter is left empty, and the minor engine version is upgraded to the latest version.
 	//
 	// example:
 	//

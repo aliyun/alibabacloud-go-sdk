@@ -30,7 +30,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeBackupsResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of backups.
+	// The total number of backup sets.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeBackupsResponseBody) Validate() error {
 }
 
 type DescribeBackupsResponseBodyItems struct {
-	// The end time of the backup. The time is in UTC.
+	// The end time of the backup in UTC.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ type DescribeBackupsResponseBodyItems struct {
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The information about the backup set.
+	// The backup set information.
 	//
 	// example:
 	//
 	// {"shard_count": 4}
 	BackupSetInfo *string `json:"BackupSetInfo,omitempty" xml:"BackupSetInfo,omitempty"`
-	// The size of the backup file in MB.
+	// The size of the backup file. Unit: MB.
 	//
 	// example:
 	//
 	// 131072
 	BackupSize *int64 `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	// The start time of the backup.
+	// The start time of the backup. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -159,13 +159,11 @@ type DescribeBackupsResponseBodyItems struct {
 	//
 	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type.
+	// The backup type. Valid values:
 	//
-	// Valid values:
+	// - **FullBackup**: full backup
 	//
-	// - **FullBackup**: full backup.
-	//
-	// - **IncrementalBackup**: incremental backup.
+	// - **IncrementalBackup**: incremental backup
 	//
 	// example:
 	//
@@ -177,7 +175,7 @@ type DescribeBackupsResponseBodyItems struct {
 	//
 	// cc-bp179i5956tih2m93
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The expiration time of the backup set.
+	// The expiration time of the backup set. The time is in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

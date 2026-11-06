@@ -16,7 +16,7 @@ type iDescribeLangfuseUsersResponseBody interface {
 }
 
 type DescribeLangfuseUsersResponseBody struct {
-	// The returned result.
+	// The response data.
 	Data *DescribeLangfuseUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -68,13 +68,13 @@ type DescribeLangfuseUsersResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -142,7 +142,9 @@ func (s *DescribeLangfuseUsersResponseBodyData) Validate() error {
 }
 
 type DescribeLangfuseUsersResponseBodyDataUsers struct {
-	// The time when the user was created.
+	// Indicates whether the user is allowed to create an organization.
+	AllowOrgCreation *bool `json:"AllowOrgCreation,omitempty" xml:"AllowOrgCreation,omitempty"`
+	// The time when the user was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -154,7 +156,7 @@ type DescribeLangfuseUsersResponseBodyDataUsers struct {
 	//
 	// john@company.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The username.
+	// The name of the user.
 	//
 	// example:
 	//
@@ -170,6 +172,10 @@ func (s DescribeLangfuseUsersResponseBodyDataUsers) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeLangfuseUsersResponseBodyDataUsers) GetAllowOrgCreation() *bool {
+	return s.AllowOrgCreation
+}
+
 func (s *DescribeLangfuseUsersResponseBodyDataUsers) GetCreatedAt() *string {
 	return s.CreatedAt
 }
@@ -180,6 +186,11 @@ func (s *DescribeLangfuseUsersResponseBodyDataUsers) GetEmail() *string {
 
 func (s *DescribeLangfuseUsersResponseBodyDataUsers) GetName() *string {
 	return s.Name
+}
+
+func (s *DescribeLangfuseUsersResponseBodyDataUsers) SetAllowOrgCreation(v bool) *DescribeLangfuseUsersResponseBodyDataUsers {
+	s.AllowOrgCreation = &v
+	return s
 }
 
 func (s *DescribeLangfuseUsersResponseBodyDataUsers) SetCreatedAt(v string) *DescribeLangfuseUsersResponseBodyDataUsers {

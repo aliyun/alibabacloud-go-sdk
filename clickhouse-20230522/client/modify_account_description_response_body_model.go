@@ -22,7 +22,7 @@ type ModifyAccountDescriptionResponseBody struct {
 	//
 	// example:
 	//
-	// 7FFC9EBE-5023-5D5D-A5F0-1607E0F2****
+	// xxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -72,7 +72,7 @@ type ModifyAccountDescriptionResponseBodyData struct {
 	//
 	// example:
 	//
-	// cc-bp1anv7jo84t****
+	// cc-xxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
 

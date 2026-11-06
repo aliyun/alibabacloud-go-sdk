@@ -16,7 +16,7 @@ type iDeleteLangfuseOrgResponseBody interface {
 }
 
 type DeleteLangfuseOrgResponseBody struct {
-	// The response result.
+	// The returned result.
 	Data *DeleteLangfuseOrgResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//

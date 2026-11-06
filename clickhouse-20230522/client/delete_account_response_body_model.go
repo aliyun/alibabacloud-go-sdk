@@ -16,7 +16,7 @@ type iDeleteAccountResponseBody interface {
 }
 
 type DeleteAccountResponseBody struct {
-	// The data returned.
+	// The returned result.
 	Data *DeleteAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DeleteAccountResponseBody) Validate() error {
 }
 
 type DeleteAccountResponseBodyData struct {
-	// The name of the account.
+	// The database account.
 	//
 	// example:
 	//
