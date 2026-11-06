@@ -37,6 +37,8 @@ type iDescribeBackupPolicyResponseBody interface {
 	GetCompressType() *string
 	SetEnableBackupLog(v string) *DescribeBackupPolicyResponseBody
 	GetEnableBackupLog() *string
+	SetEnableImmutableBackup(v bool) *DescribeBackupPolicyResponseBody
+	GetEnableImmutableBackup() *bool
 	SetEnableIncrementDataBackup(v bool) *DescribeBackupPolicyResponseBody
 	GetEnableIncrementDataBackup() *bool
 	SetEnablePitrProtection(v bool) *DescribeBackupPolicyResponseBody
@@ -79,22 +81,26 @@ type iDescribeBackupPolicyResponseBody interface {
 
 type DescribeBackupPolicyResponseBody struct {
 	// Indicates whether the advanced backup policy is enabled.
+	//
+	// example:
+	//
+	// false
 	AdvancedBackupPolicyEnabled *bool                                                 `json:"AdvancedBackupPolicyEnabled,omitempty" xml:"AdvancedBackupPolicyEnabled,omitempty"`
 	AdvancedDataPolicies        *DescribeBackupPolicyResponseBodyAdvancedDataPolicies `json:"AdvancedDataPolicies,omitempty" xml:"AdvancedDataPolicies,omitempty" type:"Struct"`
 	AdvancedLogPolicies         *DescribeBackupPolicyResponseBodyAdvancedLogPolicies  `json:"AdvancedLogPolicies,omitempty" xml:"AdvancedLogPolicies,omitempty" type:"Struct"`
-	// The number of archived backups retained for a **MySQL*	- instance.
+	// The number of archived backups retained for an **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// 1
 	ArchiveBackupKeepCount *string `json:"ArchiveBackupKeepCount,omitempty" xml:"ArchiveBackupKeepCount,omitempty"`
-	// The retention period for archived backups of a **MySQL*	- instance.
+	// The retention cycle of archived backups for an **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// ByMonth
 	ArchiveBackupKeepPolicy *string `json:"ArchiveBackupKeepPolicy,omitempty" xml:"ArchiveBackupKeepPolicy,omitempty"`
-	// The number of days for which archived backups of a **MySQL*	- instance are retained.
+	// The number of days for which archived backups are retained for an **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
@@ -102,9 +108,9 @@ type DescribeBackupPolicyResponseBody struct {
 	ArchiveBackupRetentionPeriod *string `json:"ArchiveBackupRetentionPeriod,omitempty" xml:"ArchiveBackupRetentionPeriod,omitempty"`
 	// The backup interval. Unit: minutes.
 	//
-	// 	- For MySQL instances: the [snapshot backup frequency](https://help.aliyun.com/document_detail/98818.html), not the snapshot backup cycle.
+	// 	- For an ApsaraDB RDS for MySQL instance, this parameter indicates the [snapshot backup frequency](https://help.aliyun.com/document_detail/98818.html) rather than the snapshot backup cycle.
 	//
-	// 	- For SQL Server instances: the log backup frequency.
+	// 	- For an ApsaraDB RDS for SQL Server instance, this parameter indicates the log backup frequency.
 	//
 	// example:
 	//
@@ -116,17 +122,17 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 	- **Disabled**: no
 	//
-	// **For SQL Server instances:**
+	// **For an ApsaraDB RDS for SQL Server instance:**
 	//
-	// - **Enable*	- is returned only when instance log backup frequency is **every 5 minutes**.
+	// - **Enable*	- is returned only when instance log backup frequency of the instance is set to **Every 5 Minutes**.
 	//
-	// - **Disabled*	- is returned when instance log backup frequency is **every 30 minutes*	- or **the same as the data backup frequency**. **Refer to the BackupInterval parameter for the actual frequency**.
+	// - **Disabled*	- is returned when instance log backup frequency is set to **Every 30 Minutes*	- or **Same as Data Backup**. **Refer to the value of BackupInterval**.
 	//
 	// example:
 	//
 	// Enable
 	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	// The backup method for **SQL Server instances with cloud disks**. Valid values:
+	// The backup method for an **ApsaraDB RDS for SQL Server instance with cloud disks**. Valid values:
 	//
 	// 	- **Physical**: physical backup
 	//
@@ -136,13 +142,13 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The secondary node backup setting for **SQL Server Enterprise Cluster Edition*	- instances. Valid values:
+	// The secondary node backup setting for an **ApsaraDB RDS for SQL Server Cluster Edition*	- instance. Valid values:
 	//
 	// - **1**: prefer secondary node
 	//
 	// - **2**: force primary node
 	//
-	// > This parameter is returned only when SupportModifyBackupPriority is True.
+	// > This parameter is returned only when SupportModifyBackupPriority is set to True.
 	//
 	// example:
 	//
@@ -154,7 +160,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 7
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// Indicates whether backup within seconds is enabled for **MySQL*	- and **PostgreSQL*	- instances. Valid values:
+	// Indicates whether backup within seconds is enabled for **ApsaraDB RDS for MySQL*	- and **ApsaraDB RDS for PostgreSQL*	- instances. Valid values:
 	//
 	// - **Flash**: enabled
 	//
@@ -174,9 +180,9 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 	- **2**: parallel zlib compression
 	//
-	// 	- **4**: quicklz compression with database and table restoration enabled
+	// 	- **4**: QuickLZ compression with database and table restoration enabled
 	//
-	// 	- **8**: quicklz compression without database and table restoration supported
+	// 	- **8**: QuickLZ compression without database and table restoration supported
 	//
 	// example:
 	//
@@ -188,17 +194,23 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 	- **0**: disabled
 	//
-	// **For SQL Server instances:**
+	// **For an ApsaraDB RDS for SQL Server instance:**
 	//
-	// - **1*	- is returned only when instance log backup frequency is **every 5 minutes**.
+	// - **1*	- is returned only when instance log backup frequency of the instance is set to **Every 5 Minutes**.
 	//
-	// - **0*	- is returned when instance log backup frequency is **every 30 minutes*	- or **the same as the data backup frequency**. **Refer to the BackupInterval parameter for the actual frequency**.
+	// - **0*	- is returned when instance log backup frequency is set to **Every 30 Minutes*	- or **Same as Data Backup**. **Refer to the value of BackupInterval**.
 	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Indicates whether incremental backup is enabled for **SQL Server*	- instances. Valid values:
+	// Indicates whether immutable backup is enabled. This parameter takes effect only when Engine is set to PostgreSQL.
+	//
+	// example:
+	//
+	// False
+	EnableImmutableBackup *bool `json:"EnableImmutableBackup,omitempty" xml:"EnableImmutableBackup,omitempty"`
+	// Indicates whether incremental backup is enabled for an **ApsaraDB RDS for SQL Server*	- instance. Valid values:
 	//
 	// 	- **True**: yes
 	//
@@ -208,7 +220,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// True
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
-	// Indicates whether point-in-time recovery (PITR) is enabled for **MySQL*	- instances. PITR is an upgraded version of log backup. Valid values:
+	// Indicates whether point-in-time recovery (PITR) is enabled for an **ApsaraDB RDS for MySQL*	- instance. PITR is an upgraded version of log backup. Valid values:
 	//
 	// - **True**: yes
 	//
@@ -220,11 +232,11 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// True
 	EnablePitrProtection *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
-	// Indicates whether binary logs are forcibly deleted when the storage usage of a **MySQL*	- instance exceeds 80% or the remaining storage is less than 5 GB. Valid values:
+	// Indicates whether binary logs are forcibly deleted when the storage usage of an **ApsaraDB RDS for MySQL*	- instance exceeds 80% or the remaining storage is less than 5 GB. Valid values:
 	//
-	// 	- **Disable**: does not delete binary logs
+	// 	- **Disable**: no
 	//
-	// 	- **Enable**: deletes binary logs
+	// 	- **Enable**: yes
 	//
 	// example:
 	//
@@ -236,29 +248,29 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 120
 	IncBackupInterval *int32 `json:"IncBackupInterval,omitempty" xml:"IncBackupInterval,omitempty"`
-	// The number of hours for which binary log backups of a **MySQL*	- instance are retained.
+	// The number of hours for which local binary log backups are retained for an **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// 0
 	LocalLogRetentionHours *int32 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum storage usage for binary logs of a **MySQL*	- instance.
+	// The maximum storage usage of binary logs for an **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// 30
 	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	// The log backup frequency for **SQL Server*	- instances. Valid values:
+	// The log backup frequency for an **ApsaraDB RDS for SQL Server*	- instance. Valid values:
 	//
 	// 	- **LogInterval**: every 30 minutes
 	//
-	// 	- Default: the same as the data backup cycle specified by **PreferredBackupPeriod**
+	// 	- Default value: the same as the data backup cycle specified by **PreferredBackupPeriod**.
 	//
 	// example:
 	//
 	// LogInterval
 	LogBackupFrequency *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
-	// The number of local binary logs retained for a **MySQL*	- instance.
+	// The number of local binary logs retained for an **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
@@ -270,7 +282,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 7
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
-	// The number of days for which point-in-time recovery is available for a **MySQL*	- instance.
+	// The number of days to which an **ApsaraDB RDS for MySQL*	- instance can be restored by using PITR.
 	//
 	// example:
 	//
@@ -308,13 +320,13 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 2018-01-19T15:15Z
 	PreferredNextBackupTime *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
-	// The data retention policy for archived backups of deleted **MySQL*	- instances. Valid values:
+	// The data retention policy for archived backups of a deleted **ApsaraDB RDS for MySQL*	- instance. Valid values:
 	//
-	// 	- **None**: no retention
+	// 	- **None**: does not retain archived backups
 	//
-	// 	- **Lastest**: retains the last backup
+	// 	- **Lastest**: retains only the last archived backup
 	//
-	// 	- **All**: retains all backups
+	// 	- **All**: retains all archived backups
 	//
 	// example:
 	//
@@ -326,7 +338,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// B87E2AB3-B7C9-4394-9160-7F639F732031
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the secondary node backup option can be modified for **SQL Server*	- instances. Valid values:
+	// Indicates whether the secondary node backup option can be modified for an **ApsaraDB RDS for SQL Server*	- instance. Valid values:
 	//
 	// - **True**: yes
 	//
@@ -336,13 +348,13 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// False
 	SupportModifyBackupPriority *bool `json:"SupportModifyBackupPriority,omitempty" xml:"SupportModifyBackupPriority,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
 	// 0
 	SupportReleasedKeep *int32 `json:"SupportReleasedKeep,omitempty" xml:"SupportReleasedKeep,omitempty"`
-	// Indicates whether snapshot backup is supported for **SQL Server*	- instances. Valid values:
+	// Indicates whether snapshot backup is supported for an **ApsaraDB RDS for SQL Server*	- instance. Valid values:
 	//
 	// - **1**: yes
 	//
@@ -352,7 +364,7 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// 1
 	SupportVolumeShadowCopy *int32 `json:"SupportVolumeShadowCopy,omitempty" xml:"SupportVolumeShadowCopy,omitempty"`
-	// Indicates whether the [5-minute log backup feature](https://help.aliyun.com/document_detail/95717.html) is supported for **SQL Server*	- instances. Valid values:
+	// Indicates whether the [5-minute log backup feature](https://help.aliyun.com/document_detail/95717.html) is supported for an **ApsaraDB RDS for SQL Server*	- instance. Valid values:
 	//
 	// - **0**: not supported
 	//
@@ -426,6 +438,10 @@ func (s *DescribeBackupPolicyResponseBody) GetCompressType() *string {
 
 func (s *DescribeBackupPolicyResponseBody) GetEnableBackupLog() *string {
 	return s.EnableBackupLog
+}
+
+func (s *DescribeBackupPolicyResponseBody) GetEnableImmutableBackup() *bool {
+	return s.EnableImmutableBackup
 }
 
 func (s *DescribeBackupPolicyResponseBody) GetEnableIncrementDataBackup() *bool {
@@ -571,6 +587,11 @@ func (s *DescribeBackupPolicyResponseBody) SetCompressType(v string) *DescribeBa
 
 func (s *DescribeBackupPolicyResponseBody) SetEnableBackupLog(v string) *DescribeBackupPolicyResponseBody {
 	s.EnableBackupLog = &v
+	return s
+}
+
+func (s *DescribeBackupPolicyResponseBody) SetEnableImmutableBackup(v bool) *DescribeBackupPolicyResponseBody {
+	s.EnableImmutableBackup = &v
 	return s
 }
 

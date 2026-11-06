@@ -22,13 +22,13 @@ type iAddRCInstancesToDeploymentSetRequest interface {
 }
 
 type AddRCInstancesToDeploymentSetRequest struct {
-	// The group number of the instance in the deployment set. This parameter is valid only when the deployment set strategy of the ECS instance to be added or adjusted is AvailabilityGroup. Valid values: 1 to 7.
+	// The group number of the ECS instance in the deployment set. You can specify this parameter when the deployment set policy is the AvailabilityGroup policy. Valid values: 1 to 7.
 	//
 	// example:
 	//
 	// 1
 	DeploymentSetGroupNo *string `json:"DeploymentSetGroupNo,omitempty" xml:"DeploymentSetGroupNo,omitempty"`
-	// The ID of the deployment set.
+	// The deployment set ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type AddRCInstancesToDeploymentSetRequest struct {
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// Specifies whether to forcibly release the running instance. Valid values:
 	//
-	// 	- **true**: yes.
+	// 	- **true**: Yes.
 	//
-	// 	- **false*	- (default): no.
+	// 	- **false*	- (default): No.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AddRCInstancesToDeploymentSetRequest struct {
 	//
 	// rc-aaaa,rc-bbb
 	RCInstanceIds *string `json:"RCInstanceIds,omitempty" xml:"RCInstanceIds,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the region ID.
+	// The region ID. You can call DescribeRegions to query the region ID.
 	//
 	// This parameter is required.
 	//

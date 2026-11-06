@@ -56,15 +56,13 @@ type DescribeRCMetricListRequest struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of records to return on each page for paging in a paged query.
-	//
-	// Default value: 1000.
+	// The number of records to return on each page for paging in a paged query. Default value: 1000.
 	//
 	// example:
 	//
 	// 1000
 	Length *string `json:"Length,omitempty" xml:"Length,omitempty"`
-	// The [monitored metrics](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
+	// The [monitored metric](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
 	//
 	// This parameter is required.
 	//

@@ -128,11 +128,12 @@ func (s *DescribeRCVClusterResponseBody) Validate() error {
 }
 
 type DescribeRCVClusterResponseBodyMysqlOperator struct {
-	DashboardPublicEndpoint *string `json:"DashboardPublicEndpoint,omitempty" xml:"DashboardPublicEndpoint,omitempty"`
-	DashboardUsername       *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
-	DashboardVpcEndpoint    *string `json:"DashboardVpcEndpoint,omitempty" xml:"DashboardVpcEndpoint,omitempty"`
-	DeployTime              *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	DashboardPublicEndpoint           *string `json:"DashboardPublicEndpoint,omitempty" xml:"DashboardPublicEndpoint,omitempty"`
+	DashboardPublicEndpointExpireTime *string `json:"DashboardPublicEndpointExpireTime,omitempty" xml:"DashboardPublicEndpointExpireTime,omitempty"`
+	DashboardUsername                 *string `json:"DashboardUsername,omitempty" xml:"DashboardUsername,omitempty"`
+	DashboardVpcEndpoint              *string `json:"DashboardVpcEndpoint,omitempty" xml:"DashboardVpcEndpoint,omitempty"`
+	DeployTime                        *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
+	Status                            *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRCVClusterResponseBodyMysqlOperator) String() string {
@@ -145,6 +146,10 @@ func (s DescribeRCVClusterResponseBodyMysqlOperator) GoString() string {
 
 func (s *DescribeRCVClusterResponseBodyMysqlOperator) GetDashboardPublicEndpoint() *string {
 	return s.DashboardPublicEndpoint
+}
+
+func (s *DescribeRCVClusterResponseBodyMysqlOperator) GetDashboardPublicEndpointExpireTime() *string {
+	return s.DashboardPublicEndpointExpireTime
 }
 
 func (s *DescribeRCVClusterResponseBodyMysqlOperator) GetDashboardUsername() *string {
@@ -165,6 +170,11 @@ func (s *DescribeRCVClusterResponseBodyMysqlOperator) GetStatus() *string {
 
 func (s *DescribeRCVClusterResponseBodyMysqlOperator) SetDashboardPublicEndpoint(v string) *DescribeRCVClusterResponseBodyMysqlOperator {
 	s.DashboardPublicEndpoint = &v
+	return s
+}
+
+func (s *DescribeRCVClusterResponseBodyMysqlOperator) SetDashboardPublicEndpointExpireTime(v string) *DescribeRCVClusterResponseBodyMysqlOperator {
+	s.DashboardPublicEndpointExpireTime = &v
 	return s
 }
 

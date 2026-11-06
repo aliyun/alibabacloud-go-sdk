@@ -60,7 +60,7 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// Public
 	DBProxyConnectStringNetType *string `json:"DBProxyConnectStringNetType,omitempty" xml:"DBProxyConnectStringNetType,omitempty"`
-	// The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the database proxy endpoint ID.
+	// The ID of the database proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type CreateDBProxyEndpointAddressRequest struct {
 	//
 	// ta9um4****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// The reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter. No configuration is required.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The port of the new database proxy endpoint. Default values:
+	// The port number of the new database proxy endpoint. Default values:
 	//
 	// - MySQL: **3306**
 	//

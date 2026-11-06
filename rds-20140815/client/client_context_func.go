@@ -129,11 +129,11 @@ func (client *Client) ActivateMigrationTargetInstanceWithContext(ctx context.Con
 
 // Summary:
 //
-// Adds instances to a deployment set.
+// Adds an instance to a deployment set.
 //
 // Description:
 //
-// By default, instances with local disks are not allowed to be added to a deployment set, and the UNSUPPORTED_DBINSTANCE_OPERATEION error is returned. To add such an instance, contact the administrator to add your UID to the whitelist. This restriction does not apply to cloud disk instances. Forcibly adding an instance to a deployment set may cause the instance to restart. Proceed with caution.
+// By default, instances with local disks cannot be added to a deployment set, and the UNSUPPORTED_DBINSTANCE_OPERATEION error is returned. To add such an instance, contact the development team and ask the administrator to add the UID to the whitelist. This restriction does not apply to cloud disk instances. Forcibly adding an instance to a deployment set may cause the instance to restart. Proceed with caution.
 //
 // @param request - AddRCInstancesToDeploymentSetRequest
 //
@@ -3613,7 +3613,7 @@ func (client *Client) CreateDBNodesWithContext(ctx context.Context, tmpReq *Crea
 //
 // Description:
 //
-// ### Supported database engines
+// ### Supported DPI engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -3621,7 +3621,7 @@ func (client *Client) CreateDBNodesWithContext(ctx context.Context, tmpReq *Crea
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
+//	Notice: Before you invoke this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and impacts of the operation.</notice>
 //
 // - [Create internal and public database proxy endpoints for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/184921.html)
 //
@@ -4983,11 +4983,11 @@ func (client *Client) CreateRCDeploymentSetWithContext(ctx context.Context, requ
 //
 // - Supported cloud disk types: ultra disk, standard SSD, ESSD, and premium performance disk (default).
 //
-// - When the billing method of the cloud disk is subscription (**Prepaid**), you must specify the instance ID of a subscription instance (**InstanceId**) to which the cloud disk is mounted. The expiration time of the cloud disk is the same as that of the mounted instance.
+// - When the billing method of the cloud disk is subscription (**Prepaid**), you must specify the instance ID (**InstanceId**) of a subscription instance to which this cloud disk is mounted. The expiration time of the cloud disk is the same as that of the mounted instance.
 //
-// - You can create a pay-as-you-go (**Postpaid**) cloud disk separately without mounting it to an instance. You can also mount it to an instance of any billing method when you create it as needed.
+// - You can create a pay-as-you-go (**Postpaid**) cloud disk separately without mounting it to an instance. You can also mount it to an instance of any billing method during creation as needed.
 //
-// - The types and number of cloud disks that can be mounted vary based on the instance type.
+// - The supported cloud disk types and the maximum number of cloud disks that can be mounted vary based on the instance type.
 //
 // @param request - CreateRCDiskRequest
 //
@@ -9399,7 +9399,7 @@ func (client *Client) DescribeBackupDatabaseWithContext(ctx context.Context, req
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -15973,7 +15973,27 @@ func (client *Client) DescribeModifyParameterLogWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询操作权限
+// Queries the authorization information of a service account.
+//
+// Description:
+//
+// ### Supported engines
+//
+// - ApsaraDB RDS for MySQL
+//
+// - ApsaraDB RDS for PostgreSQL
+//
+// - ApsaraDB RDS for SQL Server
+//
+// ### Related documentation
+//
+//	Notice: Before you call this operation, read the related documentation carefully to fully understand the prerequisites and impacts of this operation.
+//
+// - [Grant permissions to a service account for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96102.html)
+//
+// - [Grant permissions to a service account for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/146887.html)
+//
+// - [Grant permissions to a service account for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95693.html)
 //
 // @param request - DescribeOperatorPermissionRequest
 //
@@ -17292,6 +17312,10 @@ func (client *Client) DescribeRCElasticScalingWithContext(ctx context.Context, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcuType) {
+		query["AcuType"] = request.AcuType
+	}
+
 	if !dara.IsNil(request.InstanceChargeType) {
 		query["InstanceChargeType"] = request.InstanceChargeType
 	}
@@ -17377,7 +17401,7 @@ func (client *Client) DescribeRCImageListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of a single RDS Custom instance by calling the DescribeRCInstanceAttribute operation.
+// Queries the details of a single RDS Custom instance.
 //
 // @param request - DescribeRCInstanceAttributeRequest
 //
@@ -23229,7 +23253,7 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -23239,9 +23263,9 @@ func (client *Client) ModifyActiveOperationTasksWithContext(ctx context.Context,
 //
 // - ApsaraDB RDS for MariaDB
 //
-// ### Related documentation
+// ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.</notice>
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
 //
 // - [Configure an automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
 //
@@ -23326,6 +23350,10 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.EnableBackupLog) {
 		query["EnableBackupLog"] = request.EnableBackupLog
+	}
+
+	if !dara.IsNil(request.EnableImmutableBackup) {
+		query["EnableImmutableBackup"] = request.EnableImmutableBackup
 	}
 
 	if !dara.IsNil(request.EnableIncrementDataBackup) {
@@ -23977,19 +24005,23 @@ func (client *Client) ModifyDBInstanceWithContext(ctx context.Context, tmpReq *M
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for PostgreSQL
 //
+// - ApsaraDB RDS for SQL Server
+//
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.</notice>
 //
 // - [Modify the automatic upgrade settings for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96059.html)
 //
 // - [Modify the automatic upgrade settings for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/146895.html)
+//
+// - [Modify the automatic upgrade settings for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/213582.html)
 //
 // @param request - ModifyDBInstanceAutoUpgradeMinorVersionRequest
 //
@@ -25477,13 +25509,13 @@ func (client *Client) ModifyDBInstanceReplicationSwitchWithContext(ctx context.C
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
+//	Notice: Before you call this operation, read the feature documentation to understand the prerequisites and impacts.
 //
-// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96120.html)
+// - [Settings for Secure Sockets Layer (SSL) encryption in ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/96120.html)
 //
-// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/229517.html)
+// - [Settings for Secure Sockets Layer (SSL) encryption in ApsaraDB RDS for PostgreSQL](https://help.aliyun.com/document_detail/229517.html)
 //
-// - [Secure Sockets Layer (SSL) encryption settings for ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95715.html)
+// - [Settings for Secure Sockets Layer (SSL) encryption in ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/95715.html)
 //
 // @param request - ModifyDBInstanceSSLRequest
 //
@@ -26183,17 +26215,17 @@ func (client *Client) ModifyDBNodeWithContext(ctx context.Context, tmpReq *Modif
 //
 // Description:
 //
-// ### Supported engines
+// ### Supported database engines
 //
 // - ApsaraDB RDS for MySQL
 //
 // - ApsaraDB RDS for PostgreSQL
 //
-// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated proxy service with one proxy instance across all units. For details, see [Promotion: ApsaraDB RDS for MySQL Cluster Edition provides a free dedicated proxy service with one proxy instance](https://help.aliyun.com/document_detail/2555466.html).
+// > Starting from October 17, 2023, ApsaraDB RDS for MySQL Cluster Edition gradually provides a free dedicated proxy service with one proxy node in each unit. For details, see [Promotion: Free dedicated proxy service with one proxy node for ApsaraDB RDS for MySQL Cluster Edition](https://help.aliyun.com/document_detail/2555466.html).
 //
 // ### Related feature documentation
 //
-//	Notice: Before you use this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
+//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and the impacts of this operation.
 //
 // - [Enable the database proxy for ApsaraDB RDS for MySQL](https://help.aliyun.com/document_detail/197456.html)
 //
@@ -26311,7 +26343,7 @@ func (client *Client) ModifyDBProxyWithContext(ctx context.Context, tmpReq *Modi
 //
 // Description:
 //
-// ### Supported database engines
+// ### Supported DPI engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -26319,7 +26351,7 @@ func (client *Client) ModifyDBProxyWithContext(ctx context.Context, tmpReq *Modi
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation carefully to fully understand the prerequisites and the impacts of this operation.
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.
 //
 // - [Configure the access policy for a database proxy endpoint of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2621331.html)
 //
@@ -30943,11 +30975,11 @@ func (client *Client) ReleaseReadWriteSplittingConnectionWithContext(ctx context
 
 // Summary:
 //
-// Removes an RDS custom instance from a deployment set.
+// Removes ApsaraDB RDS Custom instances from a deployment set.
 //
 // Description:
 //
-// Removing an RDS custom instance from a deployment set is a non-disruptive operation and does not cause the instance to restart.
+// Removing an instance from a deployment set is a lossless operation and does not cause the instance to restart.
 //
 // @param request - RemoveRCInstancesFromDeploymentSetRequest
 //
@@ -32317,15 +32349,15 @@ func (client *Client) RunRCCommandWithContext(ctx context.Context, tmpReq *RunRC
 
 // Summary:
 //
-// Creates one or more RDS Custom instances by calling the RunRCInstances operation. You can specify parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
+// Creates one or more RDS Custom instances by specifying parameters such as ImageId, InstanceType, VSwitchId, and SecurityGroupId.
 //
 // Description:
 //
-// - Before creating an RDS Custom instance, submit a ticket to request that your Alibaba Cloud account be added to the whitelist.
+// - Before you create an RDS Custom instance, submit a ticket to apply for adding your Alibaba Cloud account to the whitelist.
 //
-// - Only subscription RDS Custom instances can be created.
+// - Only subscription RDS Custom instances are supported.
 //
-// - Supported regions are Beijing, Shanghai, Shenzhen, and Hangzhou.
+// - Supported regions include Beijing, Shanghai, Shenzhen, and Hangzhou.
 //
 // @param tmpReq - RunRCInstancesRequest
 //

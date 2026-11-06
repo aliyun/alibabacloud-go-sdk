@@ -62,27 +62,27 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// 10
 	CausalConsistReadTimeout *string `json:"CausalConsistReadTimeout,omitempty" xml:"CausalConsistReadTimeout,omitempty"`
-	// Specifies the proxy features to be enabled for the proxy endpoint. Separate multiple features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end.
+	// The proxy features to be enabled for the proxy endpoint. Separate multiple features with semicolons (;). Format: `Feature 1:Status;Feature 2:Status;...`. Do not add a semicolon (;) at the end.
 	//
 	// Valid values for features:
 	//
-	// 	- **ReadWriteSpliting**: Read/write splitting.
+	// 	- **ReadWriteSpliting**: read/write splitting
 	//
-	// 	- **ConnectionPersist**: Connection pool.
+	// 	- **ConnectionPersist**: connection pool
 	//
-	// 	- **TransactionReadSqlRouteOptimizeStatus**: Transaction splitting.
+	// 	- **TransactionReadSqlRouteOptimizeStatus**: transaction splitting
 	//
-	// 	- **AZProximityAccess**: Nearest access.
+	// 	- **AZProximityAccess**: nearest access
 	//
-	// 	- **CausalConsistRead**: Read consistency.
+	// 	- **CausalConsistRead**: read consistency
 	//
-	// 	- **HtapFilter**: Automatic request distribution among row store and column store nodes for HTAP.
+	// 	- **HtapFilter**: HTAP automatic request distribution among row store and column store nodes
 	//
-	// Valid values for the status:
+	// Valid values for status:
 	//
-	// 	- **1**: The feature is enabled.
+	// 	- **1**: enabled
 	//
-	// 	- **0**: The feature is disabled.
+	// 	- **0**: disabled
 	//
 	// > - ApsaraDB RDS for PostgreSQL supports only **ReadWriteSpliting**.
 	//
@@ -92,7 +92,7 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// ReadWriteSpliting:1;ConnectionPersist:0
 	ConfigDBProxyFeatures *string `json:"ConfigDBProxyFeatures,omitempty" xml:"ConfigDBProxyFeatures,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the ID.
+	// Instance ID of the instance. You can call the DescribeDBInstances operation to query instance ID.
 	//
 	// This parameter is required.
 	//
@@ -110,19 +110,19 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// gos787jog2wk0y****
 	DBProxyEndpointId *string `json:"DBProxyEndpointId,omitempty" xml:"DBProxyEndpointId,omitempty"`
-	// **[Deprecated]*	- This parameter is deprecated and does not need to be configured.
+	// The database proxy engine type. This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
 	// normal
 	DBProxyEngineType *string `json:"DBProxyEngineType,omitempty" xml:"DBProxyEngineType,omitempty"`
-	// The description of the proxy endpoint.
+	// The description of the proxy terminal.
 	//
 	// example:
 	//
 	// test-proxy
 	DbEndpointAliases *string `json:"DbEndpointAliases,omitempty" xml:"DbEndpointAliases,omitempty"`
-	// The execution cost threshold for SQL statements in automatic request distribution among row store and column store nodes for HTAP.
+	// The execution cost threshold to execute SQL in HTAP automatic request distribution among row store and column store nodes.
 	//
 	// example:
 	//
@@ -136,11 +136,11 @@ type ModifyDBProxyEndpointRequest struct {
 	DbEndpointMinSlaveCount *string `json:"DbEndpointMinSlaveCount,omitempty" xml:"DbEndpointMinSlaveCount,omitempty"`
 	// The operation type. Valid values:
 	//
-	// 	- **Modify**: Modifies the proxy endpoint. This is the default value.
+	// 	- **Modify**: Modifies the proxy terminal. This is the default value.
 	//
-	// 	- **Create**: Creates a proxy endpoint.
+	// 	- **Create**: Creates a proxy terminal.
 	//
-	// 	- **Delete**: Deletes a proxy endpoint.
+	// 	- **Delete**: Deletes a proxy terminal.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ModifyDBProxyEndpointRequest struct {
 	DbEndpointOperator *string `json:"DbEndpointOperator,omitempty" xml:"DbEndpointOperator,omitempty"`
 	// The read/write mode. Valid values:
 	//
-	// 	- **ReadWrite**: Connects to the primary instance and can accept write requests.
+	// 	- **ReadWrite**: Connects to the primary instance and accepts write requests.
 	//
 	// 	- **ReadOnly**: Does not connect to the primary instance and cannot accept write requests. This is the default value.
 	//
@@ -160,7 +160,7 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// ReadWrite
 	DbEndpointReadWriteMode *string `json:"DbEndpointReadWriteMode,omitempty" xml:"DbEndpointReadWriteMode,omitempty"`
-	// The type of the proxy endpoint. This parameter is reserved and does not need to be specified.
+	// The type of the proxy terminal. This parameter is reserved and does not need to be specified.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type ModifyDBProxyEndpointRequest struct {
 	DbEndpointType *string `json:"DbEndpointType,omitempty" xml:"DbEndpointType,omitempty"`
 	// The specific time when the modification takes effect. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
-	// > This parameter is required when **EffectiveTime*	- is set to **SpecificTime**.
+	// >This parameter is required when **EffectiveTime*	- is set to **SpecificTime**.
 	//
 	// example:
 	//
@@ -176,11 +176,11 @@ type ModifyDBProxyEndpointRequest struct {
 	EffectiveSpecificTime *string `json:"EffectiveSpecificTime,omitempty" xml:"EffectiveSpecificTime,omitempty"`
 	// The effective period. Valid values:
 	//
-	// 	- **Immediate**: The modification immediately takes effect.
+	// 	- **Immediate**: Takes effect immediately.
 	//
-	// 	- **MaintainTime**: The modification takes effect within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	// 	- **MaintainTime**: Takes effect within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	//
-	// 	- **SpecificTime**: The modification takes effect at a specified time.
+	// 	- **SpecificTime**: Takes effect at a specified time.
 	//
 	// Default value: **MaintainTime**.
 	//
@@ -191,11 +191,11 @@ type ModifyDBProxyEndpointRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The read weight allocation pattern. Valid values:
 	//
-	// 	- **Standard**: Automatically allocates read weights based on instance specifications. This is the default value.
+	// 	- **Standard**: Automatically allocates weights based on instance specifications. This is the default value.
 	//
-	// 	- **Custom**: Custom allocated weights.
+	// 	- **Custom**: custom weight allocation
 	//
-	// > This parameter is required only when read/write splitting is enabled. For more information about the read weight allocation pattern, see [Read weight distribution](https://help.aliyun.com/document_detail/96076.html) for MySQL and [Enable and configure the database proxy service](https://help.aliyun.com/document_detail/418272.html) for PostgreSQL.
+	// > This parameter is required only when read/write splitting is enabled. For more information about the weight allocation pattern, see [Read weight allocation](https://help.aliyun.com/document_detail/96076.html) for MySQL and [Enable and configure the database proxy service](https://help.aliyun.com/document_detail/418272.html) for PostgreSQL.
 	//
 	// example:
 	//
@@ -205,13 +205,13 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	// > - This parameter is required only when read/write splitting is enabled.
 	//
-	// > - Default value: **30*	- when the read/write attribute is set to Read/Write (read/write splitting), and **-1*	- (disabled) when the read/write attribute is set to Read-only.
+	// > - Default value: **30*	- when the read/write property is set to read/write (read/write splitting), and **-1*	- (shutdown) when the read/write property is set to read-only.
 	//
 	// example:
 	//
 	// 30
 	ReadOnlyInstanceMaxDelayTime *string `json:"ReadOnlyInstanceMaxDelayTime,omitempty" xml:"ReadOnlyInstanceMaxDelayTime,omitempty"`
-	// The custom read weights of the primary and read-only instances. The weight must be a multiple of 100 and cannot exceed 10000. Format:
+	// The custom read weight distribution. You can specify the read request weights for the primary instance and read-only instances. The weight must be a multiple of 100, and the maximum value is 10000. Format:
 	//
 	// - Standard instance: `{"Primary instance ID":"Weight","Read-only instance ID":"Weight"...}`
 	//
@@ -221,13 +221,13 @@ type ModifyDBProxyEndpointRequest struct {
 	//
 	//     Example: `{"rr-tfhfgk5****":"200","DBClusterNode":{"rn-2z****":"0","rn-2z****":"400","rn-2z****":"400"...}}`
 	//
-	//     > **DBClusterNode*	- is a request parameter specific to Cluster Edition instances. It contains the **NodeID*	- and **Weight*	- of the primary and secondary nodes.
+	//     > **DBClusterNode*	- is a request parameter specific to Cluster Edition instances and contains the **NodeID*	- and **Weight*	- of the primary and secondary nodes.
 	//
 	// example:
 	//
 	// {"rm-uf6wjk5****":"500","rr-tfhfgk5xxx":"200"...}
 	ReadOnlyInstanceWeight *string `json:"ReadOnlyInstanceWeight,omitempty" xml:"ReadOnlyInstanceWeight,omitempty"`
-	// The region ID. You can call the DescribeRegions operation to query the ID.
+	// The region ID. You can call the DescribeRegions operation to query the region ID.
 	//
 	// example:
 	//
@@ -235,13 +235,13 @@ type ModifyDBProxyEndpointRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the vSwitch in the zone of the database proxy endpoint. Default value: the ID of the vSwitch that corresponds to the default endpoint of the proxy instance. You can call the DescribeVSwitches operation to query created vSwitches.
+	// The ID of the vSwitch in the zone of the proxy endpoint. The default value is the ID of the vSwitch associated with the default terminal of the proxy instance. You can call the DescribeVSwitches operation to query existing vSwitches.
 	//
 	// example:
 	//
 	// vsw-uf6adz52c2p****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC in the zone of the database proxy endpoint. Default value: the ID of the VPC that corresponds to the default endpoint of the proxy instance. You can call the DescribeDBInstanceAttribute operation to query the default VPC of the instance.
+	// The ID of the VPC in the zone of the proxy endpoint. The default value is the ID of the VPC associated with the default terminal of the proxy instance. You can call the DescribeDBInstanceAttribute operation to query the default VPC of the instance.
 	//
 	// example:
 	//

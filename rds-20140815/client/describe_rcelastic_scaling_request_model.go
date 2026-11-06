@@ -9,6 +9,8 @@ type iDescribeRCElasticScalingRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAcuType(v string) *DescribeRCElasticScalingRequest
+	GetAcuType() *string
 	SetInstanceChargeType(v string) *DescribeRCElasticScalingRequest
 	GetInstanceChargeType() *string
 	SetInstanceId(v string) *DescribeRCElasticScalingRequest
@@ -22,6 +24,7 @@ type iDescribeRCElasticScalingRequest interface {
 }
 
 type DescribeRCElasticScalingRequest struct {
+	AcuType *string `json:"AcuType,omitempty" xml:"AcuType,omitempty"`
 	// example:
 	//
 	// Prepaid
@@ -52,6 +55,10 @@ func (s DescribeRCElasticScalingRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeRCElasticScalingRequest) GetAcuType() *string {
+	return s.AcuType
+}
+
 func (s *DescribeRCElasticScalingRequest) GetInstanceChargeType() *string {
 	return s.InstanceChargeType
 }
@@ -70,6 +77,11 @@ func (s *DescribeRCElasticScalingRequest) GetRegionId() *string {
 
 func (s *DescribeRCElasticScalingRequest) GetSupportCase() *string {
 	return s.SupportCase
+}
+
+func (s *DescribeRCElasticScalingRequest) SetAcuType(v string) *DescribeRCElasticScalingRequest {
+	s.AcuType = &v
+	return s
 }
 
 func (s *DescribeRCElasticScalingRequest) SetInstanceChargeType(v string) *DescribeRCElasticScalingRequest {

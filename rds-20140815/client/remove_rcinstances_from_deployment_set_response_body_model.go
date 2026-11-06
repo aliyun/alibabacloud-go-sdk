@@ -72,11 +72,11 @@ type RemoveRCInstancesFromDeploymentSetResponseBodyResults struct {
 	//
 	// rc-w9htiydssds
 	RCInstanceId *string `json:"RCInstanceId,omitempty" xml:"RCInstanceId,omitempty"`
-	// The node status. Valid values:
+	// The status of the node. Valid values:
 	//
-	// 	- **Success**: successful
+	// 	- **Success**: Successful.
 	//
-	// 	- **Failed**: failed
+	// 	- **Failed**: Failed.
 	//
 	// example:
 	//

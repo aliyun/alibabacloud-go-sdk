@@ -16,7 +16,7 @@ type iAddRCInstancesToDeploymentSetResponseBody interface {
 }
 
 type AddRCInstancesToDeploymentSetResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ func (s *AddRCInstancesToDeploymentSetResponseBody) Validate() error {
 type AddRCInstancesToDeploymentSetResponseBodyResults struct {
 	// The node status. Valid values:
 	//
-	// 	- **activation**: running.
+	// 	- **activation**: The node is running.
 	//
-	// 	- **creating**: creating.
+	// 	- **creating**: The node is being created.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type AddRCInstancesToDeploymentSetResponseBodyResults struct {
 	RCInstanceId *string `json:"RCInstanceId,omitempty" xml:"RCInstanceId,omitempty"`
 	// The node status. Valid values:
 	//
-	// 	- **Success**: succeeded.
+	// 	- **Success**: Successful.
 	//
-	// 	- **Failed**: failed.
+	// 	- **Failed**: Failed.
 	//
 	// example:
 	//

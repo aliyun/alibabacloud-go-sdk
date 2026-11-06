@@ -116,9 +116,9 @@ type iDescribeRCInstanceAttributeResponseBody interface {
 type DescribeRCInstanceAttributeResponseBody struct {
 	// Indicates whether auto-renewal is enabled for the instance. Valid values:
 	//
-	// 	- **true**: Enabled.
+	// 	- **true**: Yes.
 	//
-	// 	- **false**: Disabled.
+	// 	- **false**: No.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the cluster to which the instance belongs.
 	//
-	// >This parameter will be deprecated. For better compatibility, use other parameters.
+	// > This parameter will be deprecated. To ensure compatibility, use other parameters instead.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Indicates whether the instance has joined an ACK cluster. Valid values:
+	// Indicates whether the instance is added to an ACK cluster. Valid values:
 	//
 	// - **1**: Yes.
 	//
@@ -148,24 +148,24 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// 0
 	CreateMode *int32 `json:"CreateMode,omitempty" xml:"CreateMode,omitempty"`
-	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2024-04-22T06:52:23Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The running mode of the burstable instance.
+	// The performance mode of the burstable instance.
 	//
 	// example:
 	//
 	// None
 	CreditSpecification *string                                           `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
 	DataDisks           *DescribeRCInstanceAttributeResponseBodyDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Struct"`
-	// The database type. Valid values:
+	// The database engine type. Valid values:
 	//
-	// - **mssql**: SQL Server
+	// - **mssql**: SQL Server.
 	//
-	// - **mysql**: MySQL
+	// - **mysql**: MySQL.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	// if can be null:
 	// true
 	DedicatedHostAttribute *DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute `json:"DedicatedHostAttribute,omitempty" xml:"DedicatedHostAttribute,omitempty" type:"Struct"`
-	// Indicates whether the release protection feature is enabled. Valid values:
+	// Indicates whether release protection is enabled. Valid values:
 	//
 	// 	- **true**: Enabled.
 	//
@@ -189,13 +189,13 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The deployment set ID.
+	// The ID of the deployment set.
 	//
 	// example:
 	//
 	// ds-uf6c8qerk019bj1l****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
@@ -213,9 +213,9 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// ecs.g6.2xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	// The elastic IP address (EIP) binding information.
+	// The information about the associated elastic IP address (EIP).
 	EipAddress *DescribeRCInstanceAttributeResponseBodyEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Struct"`
-	// Indicates whether the Jumbo frame feature is enabled for the instance. Valid values:
+	// Indicates whether the jumbo frame feature is enabled for the instance. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -225,7 +225,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// false
 	EnableJumboFrame *bool `json:"EnableJumboFrame,omitempty" xml:"EnableJumboFrame,omitempty"`
-	// The expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+	// The expiration time. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format.
 	//
 	// example:
 	//
@@ -254,26 +254,26 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The host storage type. Valid values:
 	//
-	// 	- **dhg_cloud_ssd**: ESSD cloud disk.
+	// 	- **dhg_cloud_ssd**: standard SSD.
 	//
-	// 	- **dhg_local_ssd**: local standard SSD.
+	// 	- **dhg_local_ssd**: local SSD.
 	//
 	// example:
 	//
 	// dhg_cloud_ssd
 	HostType *string `json:"HostType,omitempty" xml:"HostType,omitempty"`
-	// The ID of the image that the instance is running.
+	// The ID of the image that the instance runs.
 	//
 	// example:
 	//
 	// m-2oqiu973jwcxe****
 	ImageId        *string                                                `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	InnerIpAddress *DescribeRCInstanceAttributeResponseBodyInnerIpAddress `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty" type:"Struct"`
-	// The billing method. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- **PrePaid**: subscription
+	// 	- **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// 	- **PostPaid**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// rc-dh2jf9n6j4s14926****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -297,7 +297,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// - **classic**: classic network.
 	//
-	// - **vpc**: VPC.
+	// - **vpc**: virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -313,31 +313,31 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// - **PayByBandwidth**: pay-by-bandwidth.
 	//
-	// - **PayByTraffic**: pay-by-data-transfer.
+	// - **PayByTraffic**: pay-by-traffic.
 	//
-	// > In the **pay-by-data-transfer*	- mode, the peak inbound and outbound bandwidths are both bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidth may be throttled. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In the **pay-by-traffic*	- pattern, the peak inbound and outbound bandwidth values are upper limits and are not guaranteed. During resource contention, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- pattern.
 	//
 	// example:
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum inbound Internet bandwidth. Unit: Mbit/s.
+	// The maximum inbound public bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 1
 	InternetMaxBandwidthIn *int32 `json:"InternetMaxBandwidthIn,omitempty" xml:"InternetMaxBandwidthIn,omitempty"`
-	// The maximum outbound Internet bandwidth. Unit: Mbit/s.
+	// The maximum outbound public bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 5
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Indicates whether the instance is an I/O optimized instance.
+	// Indicates whether the instance is an I/O optimized instance. Valid values:
 	//
-	// - **optimized**: I/O optimization enabled.
+	// - **optimized**: I/O optimization.
 	//
-	// - **none**: not I/O optimized.
+	// - **none**: No I/O optimization.
 	//
 	// example:
 	//
@@ -355,7 +355,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// 8192
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The node type. If **rds_vnode*	- is returned, the node is a container node.
+	// The node type. A value of **rds_vnode*	- indicates that the node is a container node.
 	//
 	// example:
 	//
@@ -375,7 +375,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// EA2D4F34-01A7-46EB-A339-D80882135206
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -388,11 +388,11 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	//
 	// b076f6ff-46d1-4234-a608-4e951ed6****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The bidding strategy for the pay-as-you-go instance. Valid values:
+	// The bidding policy for the pay-as-you-go instance. Valid values:
 	//
-	// - **NoSpot**: a regular pay-as-you-go instance.
+	// - **NoSpot**: The instance is a regular pay-as-you-go instance.
 	//
-	// - **SpotAsPriceGo**: the system automatically bids, following the current market price.
+	// - **SpotAsPriceGo**: The system automatically bids based on the current market price.
 	//
 	// example:
 	//
@@ -400,15 +400,15 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **Pending**: being created.
+	// - **Pending**: The instance is being created.
 	//
-	// - **Running**: running.
+	// - **Running**: The instance is running.
 	//
-	// - **Starting**: starting.
+	// - **Starting**: The instance is starting.
 	//
-	// - **Stopping**: stopping.
+	// - **Stopping**: The instance is pausing.
 	//
-	// - **Stopped**: stopped.
+	// - **Stopped**: The instance is in a pause state.
 	//
 	// example:
 	//
@@ -416,20 +416,20 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the instance continues to be billed after it is stopped. Valid values:
 	//
-	// - **KeepCharging**: The instance continues to be billed after it is stopped. Inventory resources are reserved for the instance.
+	// - **KeepCharging**: The instance continues to be billed after it is stopped, and resources are reserved.
 	//
-	// - **StopCharging**: The instance is not billed after it is stopped. After the instance is stopped, its resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be restarted depends on the available resource inventory in the current region.
+	// - **StopCharging**: The instance is not billed after it is stopped. After the instance is stopped, resources such as vCPUs, memory, and public IP addresses are released. Whether the instance can be successfully restarted depends on resource availability in the current region.
 	//
-	// - **Not-applicable**: The instance does not support the No Fees for Stopped Instances feature.
+	// - **Not-applicable**: The instance does not support the no fees for stopped instances feature.
 	//
 	// example:
 	//
 	// Not-applicable
 	StoppedMode *string `json:"StoppedMode,omitempty" xml:"StoppedMode,omitempty"`
-	// The system cloud disk specifications.
+	// The specifications of the system cloud disk.
 	SystemDisk *DescribeRCInstanceAttributeResponseBodySystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	Tags       *DescribeRCInstanceAttributeResponseBodyTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The custom data of the instance, in Base64-encoded format.
+	// The custom data of the instance, which is a Base64-encoded string.
 	//
 	// > If the instance does not have custom data, an empty string is returned.
 	//
@@ -439,7 +439,7 @@ type DescribeRCInstanceAttributeResponseBody struct {
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// The VLAN ID of the instance.
 	//
-	// > This parameter will be deprecated. For better compatibility, use other parameters.
+	// > This parameter will be deprecated soon. To improve compatibility, use other parameters instead.
 	//
 	// example:
 	//
@@ -1105,7 +1105,7 @@ func (s *DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk) Validate() er
 }
 
 type DescribeRCInstanceAttributeResponseBodyDedicatedHostAttribute struct {
-	// The dedicated host ID.
+	// The ID of the dedicated host.
 	//
 	// example:
 	//
@@ -1162,13 +1162,13 @@ type DescribeRCInstanceAttributeResponseBodyEipAddress struct {
 	//
 	// 5
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The billing method for the public network instance. Valid values:
+	// The billing method for network usage of the instance. Valid values:
 	//
-	// - **paybytraffic**: pay-by-data-transfer.
+	// - **paybytraffic**: pay-by-traffic.
 	//
 	// - **paybybandwidth**: pay-by-bandwidth.
 	//
-	// > In **pay-by-data-transfer*	- mode, the peak inbound and outbound bandwidths are both bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidth may be throttled. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidth values are upper limits and are not guaranteed. During resource contention, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -1373,17 +1373,17 @@ type DescribeRCInstanceAttributeResponseBodySystemDisk struct {
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
 	// Indicates whether the cloud disk is encrypted. Valid values:
 	//
-	// - **true**: Encrypted.
+	// - **true**: Yes.
 	//
-	// - **false**: Not encrypted.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The type of the system cloud disk. Valid values:
+	// The category of the system cloud disk. Valid values:
 	//
-	// - **cloud_efficiency**: ultra cloud disk.
+	// - **cloud_efficiency**: ultra disk.
 	//
 	// - **cloud_ssd**: standard SSD.
 	//
@@ -1395,7 +1395,7 @@ type DescribeRCInstanceAttributeResponseBodySystemDisk struct {
 	//
 	// cloud_essd
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The performance level (PL) of the system cloud disk when it is an ESSD. When the system cloud disk is a standard SSD, this parameter is not returned. Valid values:
+	// The performance level of the system cloud disk when it is an ESSD. Valid values:
 	//
 	// - **PL0**
 	//
@@ -1564,7 +1564,7 @@ func (s *DescribeRCInstanceAttributeResponseBodyTagsTag) Validate() error {
 }
 
 type DescribeRCInstanceAttributeResponseBodyVpcAttributes struct {
-	// The IP address of the cloud service, which is used for network communication between VPC-connected cloud services.
+	// The IP address of the cloud service, which is used for network connectivity between cloud services in a VPC.
 	//
 	// example:
 	//

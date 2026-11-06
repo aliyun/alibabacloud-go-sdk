@@ -20,18 +20,30 @@ type iDescribeOperatorPermissionResponseBody interface {
 }
 
 type DescribeOperatorPermissionResponseBody struct {
+	// The effective period of the authorization. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	//
 	// example:
 	//
 	// 2026-10-12T02:27:04Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The time when the authorization expires. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
 	// example:
 	//
 	// 2030-01-01T11:58:17Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The types of permissions that are granted. Valid values:
+	//
+	// - **Control**: configuration permissions. Allows you to view and modify instance configurations.
+	//
+	// - **Data**: database permissions. Allows you to view table schemas, indexes, and SQL statements.
+	//
 	// example:
 	//
 	// Control,Data
 	Privileges *string `json:"Privileges,omitempty" xml:"Privileges,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4C3535DC-743E-505A-B4F6-ABC***75C3

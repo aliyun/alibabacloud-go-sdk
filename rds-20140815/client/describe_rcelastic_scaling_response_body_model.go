@@ -13,6 +13,10 @@ type iDescribeRCElasticScalingResponseBody interface {
 	GetAcuType() *string
 	SetInstanceId(v string) *DescribeRCElasticScalingResponseBody
 	GetInstanceId() *string
+	SetMaxAcu(v int32) *DescribeRCElasticScalingResponseBody
+	GetMaxAcu() *int32
+	SetMinAcu(v int32) *DescribeRCElasticScalingResponseBody
+	GetMinAcu() *int32
 	SetRequestId(v string) *DescribeRCElasticScalingResponseBody
 	GetRequestId() *string
 	SetScalingEnabled(v bool) *DescribeRCElasticScalingResponseBody
@@ -36,6 +40,8 @@ type DescribeRCElasticScalingResponseBody struct {
 	//
 	// rc-a0e466b01tif2pk
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxAcu     *int32  `json:"MaxAcu,omitempty" xml:"MaxAcu,omitempty"`
+	MinAcu     *int32  `json:"MinAcu,omitempty" xml:"MinAcu,omitempty"`
 	// example:
 	//
 	// 1F7B8B09-36F3-1165-BADB-13E376FE9BD7
@@ -69,6 +75,14 @@ func (s *DescribeRCElasticScalingResponseBody) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeRCElasticScalingResponseBody) GetMaxAcu() *int32 {
+	return s.MaxAcu
+}
+
+func (s *DescribeRCElasticScalingResponseBody) GetMinAcu() *int32 {
+	return s.MinAcu
+}
+
 func (s *DescribeRCElasticScalingResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -100,6 +114,16 @@ func (s *DescribeRCElasticScalingResponseBody) SetAcuType(v string) *DescribeRCE
 
 func (s *DescribeRCElasticScalingResponseBody) SetInstanceId(v string) *DescribeRCElasticScalingResponseBody {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeRCElasticScalingResponseBody) SetMaxAcu(v int32) *DescribeRCElasticScalingResponseBody {
+	s.MaxAcu = &v
+	return s
+}
+
+func (s *DescribeRCElasticScalingResponseBody) SetMinAcu(v int32) *DescribeRCElasticScalingResponseBody {
+	s.MinAcu = &v
 	return s
 }
 

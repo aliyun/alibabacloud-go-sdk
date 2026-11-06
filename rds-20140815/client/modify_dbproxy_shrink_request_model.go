@@ -44,11 +44,11 @@ type iModifyDBProxyShrinkRequest interface {
 type ModifyDBProxyShrinkRequest struct {
 	// Specifies whether to enable or disable the database proxy. Valid values:
 	//
-	// 	- **Startup**: Enables the proxy service.
+	// 	- **Startup**: enables the proxy service.
 	//
-	// 	- **Shutdown**: Disables the proxy service.
+	// 	- **Shutdown**: disables the proxy service.
 	//
-	// 	- **Modify**: Modifies the proxy service.
+	// 	- **Modify**: modifies the proxy service.
 	//
 	// This parameter is required.
 	//
@@ -80,15 +80,15 @@ type ModifyDBProxyShrinkRequest struct {
 	DBProxyInstanceNum *string `json:"DBProxyInstanceNum,omitempty" xml:"DBProxyInstanceNum,omitempty"`
 	// The type of the database proxy instance. Valid values:
 	//
-	// - **common**: General-purpose database proxy.
+	// - **common**: general-purpose database proxy
 	//
-	// - **exclusive**: Dedicated proxy (default).
+	// - **exclusive**: dedicated proxy (default)
 	//
 	// example:
 	//
 	// exclusive
 	DBProxyInstanceType *string `json:"DBProxyInstanceType,omitempty" xml:"DBProxyInstanceType,omitempty"`
-	// The list of proxy nodes.
+	// The proxy nodes.
 	DBProxyNodesShrink *string `json:"DBProxyNodes,omitempty" xml:"DBProxyNodes,omitempty"`
 	// The network type of the instance. Only VPC is supported. Valid value: **VPC**.
 	//
@@ -101,11 +101,11 @@ type ModifyDBProxyShrinkRequest struct {
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to enable connection keep-alive. Valid values:
 	//
-	// - **Enabled**: Enables connection keep-alive.
+	// - **Enabled**: enables connection keep-alive.
 	//
-	// - **Disabled**: Disables connection keep-alive.
+	// - **Disabled**: disables connection keep-alive.
 	//
-	// > - Only ApsaraDB RDS for MySQL supports this parameter.
+	// > - This parameter is supported only for ApsaraDB RDS for MySQL.
 	//
 	// > - When you modify the connection keep-alive status, set **ConfigDBProxyService*	- to **Modify**.
 	//

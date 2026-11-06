@@ -41,6 +41,8 @@ type iModifyBackupPolicyRequest interface {
 	GetEnableAdvancedBackupPolicy() *int32
 	SetEnableBackupLog(v string) *ModifyBackupPolicyRequest
 	GetEnableBackupLog() *string
+	SetEnableImmutableBackup(v bool) *ModifyBackupPolicyRequest
+	GetEnableImmutableBackup() *bool
 	SetEnableIncrementDataBackup(v bool) *ModifyBackupPolicyRequest
 	GetEnableIncrementDataBackup() *bool
 	SetEnablePitrProtection(v bool) *ModifyBackupPolicyRequest
@@ -94,13 +96,13 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 1
 	ArchiveBackupKeepCount *int32 `json:"ArchiveBackupKeepCount,omitempty" xml:"ArchiveBackupKeepCount,omitempty"`
-	// The retention period of archived backups. The number of archived backups that can be retained within this period is determined by **ArchiveBackupKeepCount**. Default value: **0**. Valid values:
+	// The retention period of archived backups. The number of backups that can be retained within this period is determined by **ArchiveBackupKeepCount**. Default value: **0**. Valid values:
 	//
 	// 	- **ByMonth**: month.
 	//
 	// 	- **ByWeek**: week.
 	//
-	// 	- **KeepAll**: all archived backups are retained.
+	// 	- **KeepAll**: all backups are retained.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
 	//
@@ -138,11 +140,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// > 	- This parameter and the **PreferredBackupPeriod*	- parameter determine the backup policy together.
 	//
-	// > 	- The MySQL instance must be a cloud disk instance of MySQL 5.7 or 8.0 **High-availability Edition*	- or **Cluster Edition**.
+	// > 	- The ApsaraDB RDS for MySQL instance must be a cloud disk instance that runs MySQL 5.7 or 8.0 and belongs to the high-availability series or Cluster Edition.
 	//
-	// > 	- The PostgreSQL instance must be a cloud disk instance.
+	// > 	- The ApsaraDB RDS for PostgreSQL instance must be a cloud disk instance.
 	//
-	// > 	- [**Snapshot backup**](https://help.aliyun.com/document_detail/211143.html) must be **enabled*	- for the SQL Server instance.
+	// > 	- [**Snapshot backup**](https://help.aliyun.com/document_detail/211143.html) must be **enabled*	- for the ApsaraDB RDS for SQL Server instance.
 	//
 	// > 	- This parameter does not take effect when **Category*	- is set to **Flash**.
 	//
@@ -158,9 +160,9 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **Disabled**: disables log backup.
 	//
-	// **For ApsaraDB RDS for SQL Server instances**, log backup is enabled by default and cannot be disabled. However, you can change the log backup frequency as follows:
+	// **For an ApsaraDB RDS for SQL Server instance**, log backup is enabled by default and cannot be disabled. However, you can modify the log backup frequency as follows:
 	//
-	// - **Every 5 minutes**: Set BackupLog to Enable and leave LogBackupFrequency empty. For more information, see [5-minute log backup](https://help.aliyun.com/document_detail/2861729.html). **This configuration is not supported when the preferred secondary instance is configured for backup (BackupPriority is set to 1). Otherwise, an error is reported.**
+	// - **Every 5 minutes**: Set BackupLog to Enable and leave LogBackupFrequency empty. For more information, see [5-minute log backup](https://help.aliyun.com/document_detail/2861729.html). **This configuration is not supported when the secondary instance is preferred for backup (BackupPriority is set to 1). Otherwise, an error is reported.**
 	//
 	// - **Every 30 minutes**: Leave BackupLog empty and set LogBackupFrequency to LogInterval.
 	//
@@ -172,7 +174,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Enable
 	BackupLog *string `json:"BackupLog,omitempty" xml:"BackupLog,omitempty"`
-	// The backup method for **ApsaraDB RDS for SQL Server instances with cloud disks**. Valid values:
+	// The backup method for an **ApsaraDB RDS for SQL Server instance with cloud disks**. Valid values:
 	//
 	// 	- **Physical*	- (default): physical backup.
 	//
@@ -184,7 +186,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Physical
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	// The backup type. Valid values:
+	// The backup policy mode. Valid values:
 	//
 	// 	- **DataBackupPolicy**: data backup.
 	//
@@ -194,17 +196,17 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// DataBackupPolicy
 	BackupPolicyMode *string `json:"BackupPolicyMode,omitempty" xml:"BackupPolicyMode,omitempty"`
-	// The backup priority setting for [secondary instance backup](https://help.aliyun.com/document_detail/95717.html) of **ApsaraDB RDS for SQL Server Cluster Edition*	- instances. Valid values:
+	// The backup priority setting for [secondary instance backup](https://help.aliyun.com/document_detail/95717.html) of an **ApsaraDB RDS for SQL Server Cluster Edition*	- instance. Valid values:
 	//
-	// - **1**: prefer secondary instance.
+	// - **1**: prefer the secondary instance.
 	//
-	// - **2**: force primary instance.
+	// - **2**: force the primary instance.
 	//
 	//
 	//
-	// > - This parameter takes effect only when **BackupMethod*	- is set to **Physical**. If **BackupMethod*	- is set to **Snapshot**, backups are forcibly performed on the primary instance for ApsaraDB RDS for SQL Server Cluster Edition instances.
+	// > - This parameter takes effect only when **BackupMethod*	- is set to **Physical**. If **BackupMethod*	- is set to **Snapshot**, backups are forcibly performed on the primary instance for an ApsaraDB RDS for SQL Server Cluster Edition instance.
 	//
-	// > - After you set the backup priority to **prefer secondary instance*	- (BackupPriority is set to 1), the **5-minute log backup*	- policy (BackupLog is set to Enable and LogBackupFrequency is left empty) is **not supported**. Otherwise, an error is reported. Set the log backup frequency to every 30 minutes or the same as the data backup frequency.
+	// > - After you set the backup priority to **prefer the secondary instance*	- (BackupPriority is set to 1), the **5-minute log backup*	- policy (BackupLog is set to Enable and LogBackupFrequency is left empty) is **not supported**. Otherwise, an error is reported. Set the log backup frequency to every 30 minutes or the same as the data backup frequency.
 	//
 	// example:
 	//
@@ -236,13 +238,13 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **0**: no compression.
 	//
-	// 	- **1**: zlib compression. The format is tar.gz.
+	// 	- **1**: zlib compression. The backup file is in the tar.gz format.
 	//
 	// 	- **2**: parallel zlib compression.
 	//
-	// 	- **4**: quicklz compression. The format is xb.gz. This method applies only to MySQL 5.6 and 5.7. You can use this compression method to [restore individual databases and tables](https://help.aliyun.com/document_detail/103175.html).
+	// 	- **4**: QuickLZ compression. The backup file is in the xb.gz format. This compression method is supported only for ApsaraDB RDS for MySQL 5.6 and 5.7 and ApsaraDB RDS for PostgreSQL. You can use this compression method to [restore individual databases and tables](https://help.aliyun.com/document_detail/103175.html).
 	//
-	// 	- **8**: quicklz compression. The format is xb.gz. This method applies only to MySQL 8.0. Restoration of individual databases and tables is not supported.
+	// 	- **8**: QuickLZ compression. The backup file is in the xb.gz format. This compression method is supported only for ApsaraDB RDS for MySQL 8.0. Restoration of individual databases and tables is not supported.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
 	//
@@ -250,7 +252,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 4
 	CompressType *string `json:"CompressType,omitempty" xml:"CompressType,omitempty"`
-	// The instance ID. You can call the DescribeDBInstances operation to query the ID.
+	// The instance ID. You can call the DescribeDBInstances operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -264,21 +266,36 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 1
 	EnableAdvancedBackupPolicy *int32 `json:"EnableAdvancedBackupPolicy,omitempty" xml:"EnableAdvancedBackupPolicy,omitempty"`
-	// Specifies whether to enable log backup for **MySQL**, **PostgreSQL**, and **MariaDB*	- instances. Valid values:
+	// Specifies whether to enable instance log backup for an **ApsaraDB RDS for MySQL**, **ApsaraDB RDS for PostgreSQL**, or **ApsaraDB RDS for MariaDB*	- instance. Valid values:
 	//
-	// 	- **True*	- or **1**: enabled.
+	// 	- **True*	- or **1**: enables instance log backup.
 	//
-	// 	- **False*	- or **0**: shutdown.
+	// 	- **False*	- or **0**: disables instance log backup.
 	//
-	// > - Instance log backup is enabled by default and cannot be shut down for **SQL Server*	- instances. Therefore, you do not need to configure this parameter for SQL Server instances.
+	// > - Log backup is enabled by default and cannot be disabled for an **ApsaraDB RDS for SQL Server*	- instance. Therefore, you do not need to specify this parameter for an ApsaraDB RDS for SQL Server instance.
 	//
-	// > - This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**. It is used to enable or shutdown instance log backup.
+	// > - This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**. It is used to enable or disable log backup.
 	//
 	// example:
 	//
 	// 1
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// Specifies whether to enable incremental backup for **ApsaraDB RDS for SQL Server instances with cloud disks*	- and **ApsaraDB RDS for MySQL instances with local SSDs**. Valid values:
+	// Specifies whether to enable the immutable backup feature. Valid values:
+	//
+	// - true: enables the feature.
+	//
+	// - Limits: This feature is supported only for ApsaraDB RDS for PostgreSQL and takes effect only when EnableAdvancedBackupPolicy is set to 1.
+	//
+	// - **Note: This feature cannot be disabled after it is enabled. Evaluate the impact on your business before you enable this feature.**
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// true
+	EnableImmutableBackup *bool `json:"EnableImmutableBackup,omitempty" xml:"EnableImmutableBackup,omitempty"`
+	// Specifies whether to enable incremental backup for an **ApsaraDB RDS for SQL Server instance with cloud disks*	- or an **ApsaraDB RDS for MySQL instance with local SSDs**. Valid values:
 	//
 	// 	- **False*	- (default): disables incremental backup.
 	//
@@ -290,11 +307,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// False
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
-	// Specifies whether to enable point-in-time recovery (PITR) for **MySQL*	- instances. Valid values:
+	// Specifies whether to enable point-in-time recovery (PITR) for an **ApsaraDB RDS for MySQL*	- instance. Valid values:
 	//
-	// - **True**: enabled.
+	// - **True**: enables PITR.
 	//
-	// - **False**: shutdown.
+	// - **False**: disables PITR.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **DataBackupPolicy*	- and **BackupLog*	- is set to **Enable**. For feature details, see [Settings for point-in-time recovery policy](https://help.aliyun.com/document_detail/2666046.html).
 	//
@@ -302,7 +319,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// True
 	EnablePitrProtection *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
-	// Specifies whether to unconditionally delete binary log files when the storage usage of the **ApsaraDB RDS for MySQL*	- instance exceeds 80% or the remaining storage space is less than 5 GB. Valid values: **Enable*	- and **Disable**. By default, this parameter is not modified.
+	// Specifies whether to unconditionally delete binary log files when the storage usage of an **ApsaraDB RDS for MySQL*	- instance exceeds 80% or the remaining storage space is less than 5 GB. Valid values: **Enable*	- and **Disable**. The default value indicates that the parameter is not modified.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**. In this case, this parameter is required.
 	//
@@ -310,7 +327,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Enable
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The high-frequency incremental backup frequency for **ApsaraDB RDS for MySQL instances with local SSDs**. Valid values:
+	// The high-frequency incremental backup frequency for an **ApsaraDB RDS for MySQL instance with local SSDs**. Valid values:
 	//
 	// 	- **60**: 60 minutes.
 	//
@@ -328,7 +345,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 120
 	IncBackupInterval *int32 `json:"IncBackupInterval,omitempty" xml:"IncBackupInterval,omitempty"`
-	// The number of hours for which instance log backups are retained locally on the **MySQL*	- instance. Valid values: **0*	- to **168*	- (7 × 24). A value of 0 indicates that instance log backups are not retained locally.
+	// The number of hours for which instance log backups are retained on an **ApsaraDB RDS for MySQL*	- instance. Valid values: **0*	- to **168*	- (7 × 24). A value of 0 indicates that instance log backups are not retained.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**. In this case, this parameter is required.
 	//
@@ -336,7 +353,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 18
 	LocalLogRetentionHours *string `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum usage of the local log storage space on the **ApsaraDB RDS for MySQL*	- instance. If the usage exceeds this value, the earliest binary log files are deleted until the usage drops below this value. Valid values: **0*	- to **50**. By default, this parameter is not modified.
+	// The maximum usage of the local log storage space on an **ApsaraDB RDS for MySQL*	- instance. If the usage exceeds this value, the earliest binary log files are deleted until the usage drops below this value. Valid values: **0*	- to **50**. The default value indicates that the parameter is not modified.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**. In this case, this parameter is required.
 	//
@@ -344,11 +361,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 30
 	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	// The log backup frequency for **ApsaraDB RDS for SQL Server*	- instances. Valid values:
+	// The log backup frequency for an **ApsaraDB RDS for SQL Server*	- instance. Valid values:
 	//
 	// 	- **LogInterval**: every 30 minutes.
 	//
-	// 	- **Empty*	- (no value required): every 5 minutes or same as the data backup frequency.
+	// 	- **Empty*	- (no value is required): every 5 minutes or the same as the data backup frequency.
 	//
 	// > This parameter takes effect only when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
 	//
@@ -356,11 +373,11 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// LogInterval
 	LogBackupFrequency *string `json:"LogBackupFrequency,omitempty" xml:"LogBackupFrequency,omitempty"`
-	// The number of binary log files retained locally. Default value: **60**. Valid values: **6*	- to **100**.
+	// The number of local binary log files to retain. Default value: **60**. Valid values: **6*	- to **100**.
 	//
 	// > 	- This parameter takes effect only when **BackupPolicyMode*	- is set to **LogBackupPolicy**.
 	//
-	// > 	- If the instance is an ApsaraDB RDS for MySQL instance, you can set this parameter to -1, which indicates that the number of locally retained binary log files is not limited.
+	// > 	- If the instance is an ApsaraDB RDS for MySQL instance, you can set this parameter to -1, which indicates that the number of local binary log files to retain is not limited.
 	//
 	// example:
 	//
@@ -368,7 +385,7 @@ type ModifyBackupPolicyRequest struct {
 	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
 	// The number of days for which log backups are retained. Valid values: **7*	- to **730**. The value cannot be greater than the number of days for which data backups are retained.
 	//
-	// > 	- When log backup is enabled, you can specify the number of days for which log backup files are retained. This parameter is supported only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
+	// > 	- When log backup is enabled, you can specify the number of days for which log backups are retained. This parameter is supported only for ApsaraDB RDS for MySQL and ApsaraDB RDS for PostgreSQL instances.
 	//
 	// > 	- This parameter takes effect when **BackupPolicyMode*	- is set to **DataBackupPolicy*	- or **LogBackupPolicy**.
 	//
@@ -394,7 +411,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 	- **Sunday**: Sunday.
 	//
-	// > 	- This parameter and the **BackupInterval*	- parameter determine the backup policy together. For example, if you set this parameter to Saturday and Sunday and set **BackupInterval*	- to 30 minutes, a backup is performed every 30 minutes on Saturdays and Sundays.
+	// > 	- This parameter and the **BackupInterval*	- parameter determine the backup policy together. For example, if this parameter is set to Saturday and Sunday, and the **BackupInterval*	- parameter is set to 30, a backup is performed every 30 minutes on Saturdays and Sundays.
 	//
 	// > 	- This parameter is required when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
 	//
@@ -404,7 +421,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Monday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The time period during which the backup task is executed. Specify the time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format. The time must be in UTC.
+	// The time period during which the backup task is executed. Format: <i>HH:mm</i>Z-<i>HH:mm</i>Z (UTC time).
 	//
 	// > 	- This parameter is required when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
 	//
@@ -414,17 +431,17 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 00:00Z-01:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The data retention policy for archived backups of deleted **MySQL*	- instances. Valid values:
+	// The data retention policy for archived backups of a deleted **ApsaraDB RDS for MySQL*	- instance. Valid values:
 	//
-	// 	- **None**: does not retain archived backups.
+	// 	- **None**: no backups are retained.
 	//
-	// 	- **Lastest**: retains the last archived backup.
+	// 	- **Lastest**: the last backup is retained.
 	//
-	// 	- **All**: retains all archived backups.
+	// 	- **All**: all backups are retained.
 	//
 	// > - This parameter takes effect only when **BackupPolicyMode*	- is set to **DataBackupPolicy**.
 	//
-	// > - For ApsaraDB RDS for MySQL cloud disk instances purchased on or after February 1, 2024, the default value of ReleasedKeepPolicy is **Lastest**. For instances with Premium Local SSDs, the default value is **None**. For feature details, see [Backups of deleted instances](https://help.aliyun.com/document_detail/2836955.html).
+	// > - For an ApsaraDB RDS for MySQL cloud disk instance purchased on or after February 1, 2024, the default value of ReleasedKeepPolicy is **Lastest**. For an instance with Premium Local SSDs, the default value is **None**. For feature details, see [Backups of deleted instances](https://help.aliyun.com/document_detail/2836955.html).
 	//
 	// example:
 	//
@@ -504,6 +521,10 @@ func (s *ModifyBackupPolicyRequest) GetEnableAdvancedBackupPolicy() *int32 {
 
 func (s *ModifyBackupPolicyRequest) GetEnableBackupLog() *string {
 	return s.EnableBackupLog
+}
+
+func (s *ModifyBackupPolicyRequest) GetEnableImmutableBackup() *bool {
+	return s.EnableImmutableBackup
 }
 
 func (s *ModifyBackupPolicyRequest) GetEnableIncrementDataBackup() *bool {
@@ -650,6 +671,11 @@ func (s *ModifyBackupPolicyRequest) SetEnableBackupLog(v string) *ModifyBackupPo
 	return s
 }
 
+func (s *ModifyBackupPolicyRequest) SetEnableImmutableBackup(v bool) *ModifyBackupPolicyRequest {
+	s.EnableImmutableBackup = &v
+	return s
+}
+
 func (s *ModifyBackupPolicyRequest) SetEnableIncrementDataBackup(v bool) *ModifyBackupPolicyRequest {
 	s.EnableIncrementDataBackup = &v
 	return s
@@ -753,22 +779,112 @@ func (s *ModifyBackupPolicyRequest) Validate() error {
 }
 
 type ModifyBackupPolicyRequestAdvancedDataPolicies struct {
-	ActionType  *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	BakType     *string `json:"BakType,omitempty" xml:"BakType,omitempty"`
-	DestRegion  *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	DestType    *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
-	FilterKey   *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	FilterType  *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// The operation on the sub-policy. Valid values:
+	//
+	// - CREATE: creates a sub-policy.
+	//
+	// - UPDATE: updates a sub-policy.
+	//
+	//
+	//
+	// - DELETE: deletes a sub-policy.
+	//
+	// example:
+	//
+	// delete/update
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The backup type. Valid values:
+	//
+	// - F: full backup.
+	//
+	// - L: log backup. This value takes effect only when Engine is set to SQL Server.
+	//
+	// example:
+	//
+	// F
+	BakType *string `json:"BakType,omitempty" xml:"BakType,omitempty"`
+	// The region code of the destination region for data backup.
+	//
+	// example:
+	//
+	// ap-northeast-1
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// The type of the destination storage pool. Valid values:
+	//
+	// - level1: level-1 storage.
+	//
+	// - level2Cross: cross-region backup.
+	//
+	// - level2: same-region backup.
+	//
+	// example:
+	//
+	// level1
+	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	// The filter option. Valid values:
+	//
+	// - backupInterval: fixed interval.
+	//
+	// - dayOfWeek: fixed day of the week.
+	//
+	// example:
+	//
+	// dayOfWeek
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// The filter type. Valid value: crontab, which indicates periodic backup.
+	//
+	// example:
+	//
+	// crontab
+	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// The filter condition value for data backup. If the filter option is crontab, enter a cron expression.
+	//
+	// - When FilterKey is set to backupInterval, this value indicates that a backup is performed every x minutes.
+	//
+	// - When FilterKey is set to dayOfWeek, this value indicates that a backup is performed on a fixed day of the week.
+	//
+	// example:
+	//
+	// 0 2 	- 	- 1-5
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
 	// Specifies whether to retain only one data backup per day.
 	OnlyPreserveOneEachDay *bool `json:"OnlyPreserveOneEachDay,omitempty" xml:"OnlyPreserveOneEachDay,omitempty"`
 	// Specifies whether to retain only one data backup per hour.
-	OnlyPreserveOneEachHour *bool   `json:"OnlyPreserveOneEachHour,omitempty" xml:"OnlyPreserveOneEachHour,omitempty"`
-	RetentionType           *string `json:"RetentionType,omitempty" xml:"RetentionType,omitempty"`
-	RetentionValue          *int32  `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
-	SrcRegion               *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	SrcType                 *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	StrategyId              *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	OnlyPreserveOneEachHour *bool `json:"OnlyPreserveOneEachHour,omitempty" xml:"OnlyPreserveOneEachHour,omitempty"`
+	// The retention type. Valid values:
+	//
+	// - delay: fixed retention period.
+	//
+	// - never: long-term retention (LTR).
+	//
+	// example:
+	//
+	// delay
+	RetentionType *string `json:"RetentionType,omitempty" xml:"RetentionType,omitempty"`
+	// The number of days for which data backups are retained. This parameter takes effect only when RetentionType is set to delay.
+	//
+	// example:
+	//
+	// 365
+	RetentionValue *int32 `json:"RetentionValue,omitempty" xml:"RetentionValue,omitempty"`
+	// The region code of the source region for data backup.
+	//
+	// example:
+	//
+	// cn-beijing
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// The type of the source storage pool.
+	//
+	// example:
+	//
+	// db
+	SrcType *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	// The ID of the sub-backup policy.
+	//
+	// example:
+	//
+	// cb875ec7f9809b284f02b88a229061ce
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequestAdvancedDataPolicies) String() string {
@@ -910,17 +1026,98 @@ func (s *ModifyBackupPolicyRequestAdvancedDataPolicies) Validate() error {
 }
 
 type ModifyBackupPolicyRequestAdvancedLogPolicies struct {
-	ActionType        *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	DestRegion        *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	DestType          *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
-	EnableLogBackup   *int32  `json:"EnableLogBackup,omitempty" xml:"EnableLogBackup,omitempty"`
-	FilterKey         *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	FilterValue       *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	LogRetentionType  *string `json:"LogRetentionType,omitempty" xml:"LogRetentionType,omitempty"`
-	LogRetentionValue *int32  `json:"LogRetentionValue,omitempty" xml:"LogRetentionValue,omitempty"`
-	SrcRegion         *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
-	SrcType           *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
-	StrategyId        *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// The operation on the sub-policy. Valid values:
+	//
+	// - CREATE: creates a sub-policy.
+	//
+	// - UPDATE: updates a sub-policy.
+	//
+	//
+	//
+	// - DELETE: deletes a sub-policy.
+	//
+	// example:
+	//
+	// update
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// The region code of the destination region for log backup.
+	//
+	// example:
+	//
+	// ap-northeast-1
+	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
+	// The type of the destination storage pool. Valid values:
+	//
+	// - level1: level-1 storage.
+	//
+	// - level2Cross: cross-region backup.
+	//
+	// - level2: same-region backup.
+	//
+	// example:
+	//
+	// level1
+	DestType *string `json:"DestType,omitempty" xml:"DestType,omitempty"`
+	// The flag that indicates whether log backup is enabled. Pass an integer.
+	//
+	// example:
+	//
+	// 1
+	EnableLogBackup *int32 `json:"EnableLogBackup,omitempty" xml:"EnableLogBackup,omitempty"`
+	// The filter option. Valid values:
+	//
+	// - backupInterval: fixed interval.
+	//
+	// - dayOfWeek: fixed day of the week.
+	//
+	// example:
+	//
+	// dayOfWeek
+	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
+	// The filter condition value for log backup. If the filter option is crontab, enter a cron expression.
+	//
+	// - When FilterKey is set to backupInterval, this value indicates that a backup is performed every x minutes.
+	//
+	// - When FilterKey is set to dayOfWeek, this value indicates that a backup is performed on a fixed day of the week.
+	//
+	// example:
+	//
+	// 0 2 	- 	- 1-5
+	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
+	// The log retention type. Valid values:
+	//
+	// - delay: fixed retention period.
+	//
+	// - never: long-term retention (LTR).
+	//
+	// example:
+	//
+	// delay
+	LogRetentionType *string `json:"LogRetentionType,omitempty" xml:"LogRetentionType,omitempty"`
+	// The number of days for which logs are retained. This parameter takes effect only when LogRetentionType is set to delay.
+	//
+	// example:
+	//
+	// 7
+	LogRetentionValue *int32 `json:"LogRetentionValue,omitempty" xml:"LogRetentionValue,omitempty"`
+	// The region code of the source region for log backup.
+	//
+	// example:
+	//
+	// cn-beijing
+	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
+	// The type of the source storage pool.
+	//
+	// example:
+	//
+	// db
+	SrcType *string `json:"SrcType,omitempty" xml:"SrcType,omitempty"`
+	// The ID of the sub-backup policy.
+	//
+	// example:
+	//
+	// cb875ec7f9809b284f02b88a229061ce
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequestAdvancedLogPolicies) String() string {

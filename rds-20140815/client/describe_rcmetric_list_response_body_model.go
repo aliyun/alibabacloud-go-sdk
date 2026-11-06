@@ -32,7 +32,7 @@ type DescribeRCMetricListResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of monitoring data.
+	// The monitoring data points.
 	//
 	// example:
 	//

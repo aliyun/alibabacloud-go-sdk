@@ -42,9 +42,9 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// 	- **2**: parallel zlib compression.
 	//
-	// 	- **4**: quicklz compression. Database and table restoration is enabled.
+	// 	- **4**: QuickLZ compression. Database and table restoration is enabled.
 	//
-	// 	- **8**: quicklz compression for MySQL 8.0. Database and table restoration is not supported.
+	// 	- **8**: QuickLZ compression for MySQL 8.0. Database and table restoration is not supported.
 	//
 	// example:
 	//
@@ -56,14 +56,14 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	// Indicates whether instance log backup is enabled. Valid values:
+	// Specifies whether instance log backup is enabled. Valid values:
 	//
 	// 	- **1**: enabled.
 	//
-	// 	- **0**: shutdown.
+	// 	- **0**: disabled.
 	//
 	//
-	// > Instance log backup is enabled by default and cannot be shut down for ApsaraDB RDS for SQL Server instances.
+	// > Log backup is enabled by default and cannot be disabled for an ApsaraDB RDS for SQL Server instance.
 	//
 	// example:
 	//
@@ -79,25 +79,25 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// Disable
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The high-frequency incremental backup interval. Unit: minutes. Valid values: 60, 120, 240, 360, and 720.
+	// The high-frequency incremental backup interval, in minutes. Valid values: 60, 120, 240, 360, and 720.
 	//
 	// example:
 	//
 	// 120
 	IncBackupInterval *int32 `json:"IncBackupInterval,omitempty" xml:"IncBackupInterval,omitempty"`
-	// The number of hours for which instance log backups are retained locally on the **MySQL*	- instance.
+	// The number of hours for which local instance log backups are retained on the **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// 18
 	LocalLogRetentionHours *int32 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum loop space usage of the local binary log on the **MySQL*	- instance.
+	// The maximum usage of the local binary log loop space on the **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// 30
 	LocalLogRetentionSpace *string `json:"LocalLogRetentionSpace,omitempty" xml:"LocalLogRetentionSpace,omitempty"`
-	// The number of binary log files retained locally on the **ApsaraDB RDS for MySQL*	- instance.
+	// The number of local binary log files retained on the **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
