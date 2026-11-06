@@ -26,11 +26,11 @@ type iDescribePolarFsMappingResponseBody interface {
 }
 
 type DescribePolarFsMappingResponseBody struct {
-	// The default AccessKey ID at the instance level.
+	// The instance-level default AccessKey ID.
 	//
 	// example:
 	//
-	// xxx
+	// LTAI5tExample1234
 	DefaultAccessKeyId *string `json:"DefaultAccessKeyId,omitempty" xml:"DefaultAccessKeyId,omitempty"`
 	// The page number.
 	//
@@ -38,7 +38,7 @@ type DescribePolarFsMappingResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribePolarFsMappingResponseBody struct {
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -167,9 +167,9 @@ type DescribePolarFsMappingResponseBodyPathMappingItems struct {
 	//
 	// example:
 	//
-	// xxx
+	// LTAI5tExample1234
 	BucketAccessKeyId *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
-	// The mapping path.
+	// The mapped path.
 	//
 	// example:
 	//

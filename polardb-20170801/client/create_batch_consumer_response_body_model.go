@@ -54,7 +54,7 @@ type CreateBatchConsumerResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -165,11 +165,11 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The complete API key. This value is returned only in the current response.
+	// The complete API key. This value is returned only in this response.
 	//
 	// example:
 	//
-	// xxxxxxxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The MD5 hash of the API key.
 	//
@@ -201,7 +201,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	//
 	// 023aacc1effc4b56bb154bfbec6ba9**
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
-	// The used quota.
+	// The used budget.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type CreateBatchConsumerResponseBodyItems struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The expiration time.
 	//
-	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time is in ISO 8601 format and UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

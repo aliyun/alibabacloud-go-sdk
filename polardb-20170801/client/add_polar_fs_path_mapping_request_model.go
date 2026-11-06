@@ -20,7 +20,7 @@ type iAddPolarFsPathMappingRequest interface {
 type AddPolarFsPathMappingRequest struct {
 	// The bucket and corresponding path information.
 	CustomBucketPathList []*AddPolarFsPathMappingRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -87,23 +87,23 @@ func (s *AddPolarFsPathMappingRequest) Validate() error {
 }
 
 type AddPolarFsPathMappingRequestCustomBucketPathList struct {
-	// The bucket name.
+	// The name of the bucket.
 	//
 	// example:
 	//
 	// Bucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The AccessKey ID of the storage bucket.
+	// The AccessKey ID for the bucket.
 	//
 	// example:
 	//
-	// xxx
+	// LTAIExampleBucketAccessKeyId
 	BucketAccessKeyId *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
-	// The AccessKey secret of the storage bucket.
+	// The AccessKey secret for the bucket.
 	//
 	// example:
 	//
-	// xxx
+	// ExampleBucketAccessKeySecret123
 	BucketAccessKeySecret *string `json:"BucketAccessKeySecret,omitempty" xml:"BucketAccessKeySecret,omitempty"`
 	// The custom storage path.
 	//

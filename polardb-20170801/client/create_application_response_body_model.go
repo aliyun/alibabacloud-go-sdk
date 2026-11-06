@@ -26,7 +26,7 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type CreateApplicationResponseBody struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The list of subcomponents.
 	Components []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The application description.
+	// The description of the application.
 	//
 	// example:
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The generated order ID.
+	// The ID of the generated order.
 	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyComponents struct {
-	// The subcomponent ID.
+	// The ID of the subcomponent.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iAddPolarFsPathMappingResponseBody interface {
 }
 
 type AddPolarFsPathMappingResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

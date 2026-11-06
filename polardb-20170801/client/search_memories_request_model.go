@@ -30,7 +30,7 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
-	// The ID of the application. Example value: pa-**************.
+	// The application ID. Example: pa-**************. The application must be of the mem0 type. When creating the application by using CreateApplication, set ApplicationType to mem0. Calling this operation on a non-mem0 application returns the IncorrectDBInstanceEngine (403) error.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type SearchMemoriesRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records to display on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type SearchMemoriesRequest struct {
 	//
 	// who are you
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Specifies the number of top results to return.
+	// The number of top results to return.
 	//
 	// example:
 	//

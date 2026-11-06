@@ -66,11 +66,11 @@ func (s *DescribePolarAgentChatRecordsResponseBody) Validate() error {
 }
 
 type DescribePolarAgentChatRecordsResponseBodyData struct {
-	// The answer.
+	// The reply.
 	//
 	// example:
 	//
-	// xxx
+	// Call DescribeDBClusters and check DBClusterStatus
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
 	// The feedback type.
 	//
@@ -78,11 +78,11 @@ type DescribePolarAgentChatRecordsResponseBodyData struct {
 	//
 	// 0
 	FeedbackType *string `json:"FeedbackType,omitempty" xml:"FeedbackType,omitempty"`
-	// The session query. Obtain this value from the response of the API call to start a digital human.
+	// The session query. You can obtain this value from the response of the API operation that starts a digital human.
 	//
 	// example:
 	//
-	// xxx
+	// How do I query the cluster status?
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The query ID.
 	//

@@ -54,7 +54,7 @@ type DescribeGatewayApikeyListResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -159,11 +159,11 @@ func (s *DescribeGatewayApikeyListResponseBody) Validate() error {
 }
 
 type DescribeGatewayApikeyListResponseBodyItems struct {
-	// The API key in use.
+	// The API key used.
 	//
 	// example:
 	//
-	// xxxxxxxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The user group ID.
 	//
@@ -183,7 +183,7 @@ type DescribeGatewayApikeyListResponseBodyItems struct {
 	//
 	// test
 	ConsumerTag *string `json:"ConsumerTag,omitempty" xml:"ConsumerTag,omitempty"`
-	// The creation time.
+	// The creation time. The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type DescribeGatewayApikeyListResponseBodyItems struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The last modification time.
+	// The last modification time. The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

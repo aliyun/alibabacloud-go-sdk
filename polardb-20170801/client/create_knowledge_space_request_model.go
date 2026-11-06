@@ -48,7 +48,7 @@ type iCreateKnowledgeSpaceRequest interface {
 }
 
 type CreateKnowledgeSpaceRequest struct {
-	// The database engine type.
+	// The type of the database engine.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// text-embedding-v4
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// Specifies whether to enable ACL-based authentication for the knowledge space.
+	// Specifies whether to enforce access control list (ACL) authentication for the knowledge space.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// OSS AK
+	// The AccessKey ID used to access OSS.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ******
+	// LTAI5tExample1234
 	OSSAccessKey *string `json:"OSSAccessKey,omitempty" xml:"OSSAccessKey,omitempty"`
 	// The name of an existing OSS bucket in the same region.
 	//
@@ -112,13 +112,13 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// test-bucket
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-	// OSS SK
+	// The AccessKey secret used to access OSS.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ******
+	// example-oss-secret
 	OSSSecretKey *string `json:"OSSSecretKey,omitempty" xml:"OSSSecretKey,omitempty"`
 	// The region ID.
 	//
@@ -128,13 +128,13 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the reranking model.
+	// The name of the rerank model.
 	//
 	// example:
 	//
 	// qwen3-rerank
 	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// This parameter is required.
 	//
@@ -152,9 +152,9 @@ type CreateKnowledgeSpaceRequest struct {
 	ShardingSize *int32 `json:"ShardingSize,omitempty" xml:"ShardingSize,omitempty"`
 	// The sharding strategy. Valid values:
 	//
-	// - hierarchical (default)
+	// - hierarchical: hierarchical sharding. This is the default value.
 	//
-	// - hybrid
+	// - hybrid: hybrid sharding.
 	//
 	// This parameter is required.
 	//

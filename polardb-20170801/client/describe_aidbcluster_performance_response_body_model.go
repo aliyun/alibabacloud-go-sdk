@@ -34,7 +34,7 @@ type DescribeAIDBClusterPerformanceResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The ID of the database cluster.
 	//
@@ -48,7 +48,7 @@ type DescribeAIDBClusterPerformanceResponseBody struct {
 	//
 	// polardb_ai
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version number of the database AI DPI engine.
+	// The version number of the database AI engine.
 	//
 	//
 	//   -3.0
@@ -57,13 +57,13 @@ type DescribeAIDBClusterPerformanceResponseBody struct {
 	//
 	// 3.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
+	// The end time of the query. The end time must be later than the start time. The format is YYYY-MM-DDThh:mmZ (UTC).
 	//
 	// example:
 	//
 	// 2022-11-16T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The data granularity of performance. Valid values:
+	// The data granularity of the performance data. Valid values:
 	//
 	// - 60
 	//
@@ -81,7 +81,7 @@ type DescribeAIDBClusterPerformanceResponseBody struct {
 	//
 	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The start time of the query. The format is yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -198,13 +198,13 @@ type DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys struct {
 	//
 	// pi-*************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The performance metrics.
+	// The performance metric.
 	//
 	// example:
 	//
 	// PolarDBAIModelCall
 	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
-	// The specific measurement name of the performance metrics.
+	// The name of the specific performance metric.
 	//
 	// example:
 	//
@@ -272,13 +272,13 @@ func (s *DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys) Validate() e
 }
 
 type DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints struct {
-	// The specific time point of the monitoring metric. The format is a UNIX timestamp, and the unit is milliseconds.
+	// The specific time point of the monitoring metric. The format is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1724206183
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The value of the monitoring metric.
+	// The data value of the monitoring metric.
 	//
 	// example:
 	//

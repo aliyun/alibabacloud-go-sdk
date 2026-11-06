@@ -18,7 +18,7 @@ type iDescribeAvailableModelsRequest interface {
 }
 
 type DescribeAvailableModelsRequest struct {
-	// aideploy
+	// The Kubernetes cluster type, such as aideploy.
 	//
 	// example:
 	//

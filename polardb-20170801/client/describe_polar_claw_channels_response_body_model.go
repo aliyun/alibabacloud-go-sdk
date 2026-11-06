@@ -28,7 +28,7 @@ type DescribePolarClawChannelsResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// A list of PolarClaw channel objects.
+	// The list of channels.
 	Channels []*DescribePolarClawChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 	// The returned status code.
 	//
@@ -36,7 +36,7 @@ type DescribePolarClawChannelsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message. A value of `successful` indicates that the request succeeded.
+	// The returned message.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribePolarClawChannelsResponseBody) Validate() error {
 }
 
 type DescribePolarClawChannelsResponseBodyChannels struct {
-	// A list of account objects for the channel.
+	// The list of channel accounts.
 	Accounts []*DescribePolarClawChannelsResponseBodyChannelsAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 	// The channel ID.
 	//
@@ -131,7 +131,7 @@ type DescribePolarClawChannelsResponseBodyChannels struct {
 	//
 	// true
 	Configured *bool `json:"Configured,omitempty" xml:"Configured,omitempty"`
-	// The default account ID for the channel.
+	// The default account ID.
 	//
 	// example:
 	//
@@ -236,15 +236,15 @@ type DescribePolarClawChannelsResponseBodyChannelsAccounts struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// A list of issues related to the account.
+	// The list of account issues.
 	Issues []*string `json:"Issues,omitempty" xml:"Issues,omitempty" type:"Repeated"`
-	// The timestamp (in milliseconds) of the last inbound message.
+	// The timestamp of the last inbound message in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	LastInboundAt *int64 `json:"LastInboundAt,omitempty" xml:"LastInboundAt,omitempty"`
-	// The timestamp (in milliseconds) of the last outbound message.
+	// The timestamp of the last outbound message in milliseconds.
 	//
 	// example:
 	//

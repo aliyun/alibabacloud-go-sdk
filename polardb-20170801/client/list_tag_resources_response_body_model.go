@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// A token to retrieve more results. This parameter is returned if a query does not return all results. You can use the token in a subsequent query to continue retrieving results.
+	// The token used to return more results. This parameter is returned if a single query does not return all results. You can pass the token returned in the previous response to the next query to obtain more results.
 	//
 	// example:
 	//

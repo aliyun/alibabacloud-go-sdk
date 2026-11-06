@@ -154,15 +154,15 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// {"github":{"authAppId":"example-app-id","authAppSecret":"example-secret","trustedDomain":"example.com"}}
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies whether the automatic creation is enabled and whether to attach and associate with an EIP.
+	// Specifies whether an elastic IP address is automatically created and attached.
 	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	// Specifies whether to automatically create a Polarlakebase cold storage edition instance. Valid values:
+	// Specifies whether to enable automatic creation of a Polarlakebase cold storage instance. Valid values:
 	//
-	// 	- false (default): Do not automatically create the instance.
+	// 	- false (default): disables automatic creation.
 	//
-	// 	- true: Automatically create the instance.
+	// 	- true: enables automatic creation.
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ type CreateApplicationShrinkRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// 	- true (default): Use coupons.
+	// - true: uses coupons. This is the default value.
 	//
-	// 	- false: Do not use coupons.
+	// - false: does not use coupons.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type CreateApplicationShrinkRequest struct {
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The list of custom application subcomponents.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	// The ID of the PolarDB instance on which the application depends.
+	// The PolarDB instance ID on which the application depends.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type CreateApplicationShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of expected DNAT entries for NAT mapping. This parameter must be specified together with VpcNatGatewayId. You can leave this parameter empty to indicate that no DNAT entries are created.
 	DnatEntriesShrink *string `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty"`
-	// The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the specified gateway, be in the available state, and the vSwitch where the gateway resides must belong to a primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is associated with the vSwitch where the application resides.
+	// The dedicated NAT IP address allocated for DNAT, which is separate from the SNAT IP address. The IP address must belong to the gateway, be in the available state, and the vSwitch where the gateway resides must belong to the primary CIDR block reachable from the office network. This parameter must be specified together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
 	//
 	// example:
 	//
 	// 10.64.0.10
 	DnatIpAddress *string `json:"DnatIpAddress,omitempty" xml:"DnatIpAddress,omitempty"`
-	// Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, only parameter and resource validations are performed, and no resources are actually created.
+	// Specifies whether to perform a dry run. Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed, and no resources are actually created.
 	//
 	// example:
 	//
@@ -214,9 +214,9 @@ type CreateApplicationShrinkRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The list of custom service endpoints. By default, a VPC endpoint is created.
 	EndpointsShrink *string `json:"Endpoints,omitempty" xml:"Endpoints,omitempty"`
-	// The knowledge application specification. This parameter is required for knowledge applications.
+	// The required specification for knowledge applications.
 	KnowledgeApplicationSpecShrink *string `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty"`
-	// The Mem0 application specification. This parameter is required for mem0 applications.
+	// The required specification for mem0 applications.
 	MemApplicationSpecShrink *string `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty"`
 	// The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
@@ -238,11 +238,11 @@ type CreateApplicationShrinkRequest struct {
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
 	// The source of the model. Valid values:
 	//
-	// 	- bailian: Model Studio model.
+	// - bailian: Model Studio model.
 	//
-	// 	- custom: Custom model.
+	// - custom: Custom model.
 	//
-	// 	- maas: PolarDB model operator.
+	// - maas: PolarDB model operator.
 	//
 	// example:
 	//
@@ -268,9 +268,9 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the Polarlakebase cold storage or high-performance edition instance. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
+	// The Polarlakebase cold storage or high-performance instance ID. Default value: empty. If you specify this parameter, the corresponding storage is mounted to the application.
 	//
-	// Currently, only the following applications support this parameter:
+	// Currently, only the following applications are supported:
 	//
 	// - supabase
 	//
@@ -322,11 +322,11 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// ipv4
 	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	// The skill template ID.
+	// The ID of the skill template.
 	//
 	// example:
 	//
-	// xxx
+	// pst-123456
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
 	// The list of application storages.
 	//
@@ -334,7 +334,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// [{"StorageType":"oss","StorageInstanceId":"pfs-xxxx","EndpointId":"pe-xxxx"}]
 	StoragesShrink *string `json:"Storages,omitempty" xml:"Storages,omitempty"`
-	// The tag.
+	// The tags.
 	Tag []*CreateApplicationShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The target version.
 	//
@@ -360,7 +360,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC NAT gateway ID for NAT mapping. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must reside in the same VPC as the application, be of the private network (intranet) type, and be active.
+	// NAT mapping: the NAT gateway ID of the self-managed VPC NAT gateway. If you specify this parameter, NAT mapping is enabled when the instance is created. The gateway must be in the same VPC as the application, be of the private network type (intranet), and be in the active state.
 	//
 	// example:
 	//

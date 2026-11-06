@@ -40,7 +40,7 @@ type ResizeAIDBClusterModelResponseBody struct {
 	//
 	// pm-2ze4x2mwo81knj08a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the current request performs a capacity dry run only.
+	// Indicates whether the current request only performs a capacity dry run.
 	//
 	// example:
 	//

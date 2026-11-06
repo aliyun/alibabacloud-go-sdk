@@ -100,11 +100,11 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 type DescribeAIDBClusterAttributeResponseBody struct {
 	// The node type. Valid values:
 	//
-	// - vnode: ACK-managed node.
+	// - vnode: ACK-managed.
 	//
-	// - container: container that supports logon.
+	// - container: Logon-enabled container.
 	//
-	// - maas: model service.
+	// - maas: Model service.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// x********
+	// example-api-key-123456
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The startup command currently used by the model service.
 	//
@@ -124,7 +124,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	// The time when the cluster was created.
 	//
-	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// 8000
 	CurrentCapacity *int64 `json:"CurrentCapacity,omitempty" xml:"CurrentCapacity,omitempty"`
-	// The custom Object Storage Service (OSS) path of the model currently used by the instance.
+	// The custom OSS path currently used by the instance.
 	//
 	// example:
 	//
@@ -174,21 +174,21 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The database instance status description. A value of ACTIVATION indicates that the database instance is running.
+	// The description of the database instance status. A value of ACTIVATION indicates that the database instance is running.
 	//
 	// example:
 	//
 	// ACTIVATION
 	DBInstanceStatusDesc *string `json:"DBInstanceStatusDesc,omitempty" xml:"DBInstanceStatusDesc,omitempty"`
-	// The details of the node information.
+	// The detailed node information.
 	DBNodes []*DescribeAIDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The cluster version. Valid values:
 	//
-	// **1.0**
+	// - **1.0**
 	//
-	// **2.0**
+	// - **2.0**
 	//
-	// **3.0**
+	// - **3.0**
 	//
 	// example:
 	//
@@ -202,23 +202,23 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// sg-xxxxxx
 	EcsSecurityGroupId *string `json:"EcsSecurityGroupId,omitempty" xml:"EcsSecurityGroupId,omitempty"`
-	// The list of network endpoint addresses of the instance.
+	// The list of network endpoints for the instance.
 	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
 	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
 	//
-	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-11-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the cluster has expired. Valid values:
+	// Specifies whether the cluster has expired. Valid values:
 	//
-	// - **true**
+	// - **true**: The cluster has expired.
 	//
-	// - **false**
+	// - **false**: The cluster has not expired.
 	//
 	// example:
 	//
@@ -252,9 +252,9 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxxxxxxxxxxxxxxx
+	// ack-example-cluster-id
 	KubeClusterId *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
-	// The lock mode of the instance. A value of **lock*	- indicates that the instance has expired or has an overdue payment.
+	// The instance lock mode. A value of **lock*	- indicates that the instance has automatically expired or has an overdue payment.
 	//
 	// example:
 	//
@@ -292,9 +292,9 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -318,7 +318,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -326,9 +326,9 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The architecture type. Valid values:
 	//
-	// - container: AI container
+	// - container: AI container.
 	//
-	// - ainode: AI node
+	// - ainode: AI node.
 	//
 	// example:
 	//
@@ -356,15 +356,15 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// essdpl1
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The time slice configuration for pay-as-you-go billing.
+	// The configuration of time slices for pay-as-you-go billing.
 	TimeSlicesInfo *DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo `json:"TimeSlicesInfo,omitempty" xml:"TimeSlicesInfo,omitempty" type:"Struct"`
-	// The cycle type of the time slice configuration.
+	// The cycle type of the time slice configuration, such as daily. This field represents the name of the cycle type, not a date or timestamp, and is not subject to time zones or time formats.
 	//
 	// example:
 	//
 	// daily
 	TimeSlicesType *string `json:"TimeSlicesType,omitempty" xml:"TimeSlicesType,omitempty"`
-	// The VPC ID specified for zone switching.
+	// The ID of the virtual private cloud (VPC) specified for zone switchover.
 	//
 	// example:
 	//
@@ -849,13 +849,13 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The time when the node was created.
 	//
-	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2020-08-14T05:58:42Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cluster specifications.
+	// The node specifications.
 	//
 	// example:
 	//
@@ -875,25 +875,25 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The status of the node. Valid values:
 	//
-	// 	- **Creating**: The node is being created.
+	// - **Creating**: The node is being created.
 	//
-	// 	- **Running**: The node is running.
+	// - **Running**: The node is running.
 	//
-	// 	- **Deleting**: The node is being deleted.
+	// - **Deleting**: The node is being deleted.
 	//
-	// 	- **Rebooting**: The node is being restarted.
+	// - **Rebooting**: The node is restarting.
 	//
-	// 	- **DBNodeCreating**: Nodes are being added.
+	// - **DBNodeCreating**: Nodes are being added.
 	//
-	// 	- **DBNodeDeleting**: Nodes are being deleted.
+	// - **DBNodeDeleting**: Nodes are being deleted.
 	//
-	// 	- **ClassChanging**: The node specifications are being changed.
+	// - **ClassChanging**: The node specifications are being changed.
 	//
-	// 	- **MinorVersionUpgrading**: The minor version is being upgraded.
+	// - **MinorVersionUpgrading**: The minor version is being upgraded.
 	//
-	// 	- **Maintaining**: The instance is being maintained.
+	// - **Maintaining**: The instance is being maintained.
 	//
-	// 	- **Switching**: A switchover is in progress.
+	// - **Switching**: A switchover is in progress.
 	//
 	// example:
 	//
@@ -1192,7 +1192,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes struct {
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The size of the cloud disk.
+	// The size of the storage disk.
 	//
 	// example:
 	//
@@ -1345,7 +1345,7 @@ func (s *DescribeAIDBClusterAttributeResponseBodyDBNodesSupportedApis) Validate(
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointList struct {
-	// The list of network information of the instance.
+	// The list of network information for the instance.
 	NetInfoItems []*DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems `json:"NetInfoItems,omitempty" xml:"NetInfoItems,omitempty" type:"Repeated"`
 }
 
@@ -1380,7 +1380,7 @@ func (s *DescribeAIDBClusterAttributeResponseBodyEndpointList) Validate() error 
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
-	// The database connection address.
+	// The database endpoint.
 	//
 	// example:
 	//
@@ -1388,11 +1388,11 @@ type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The network type of the connection string. Valid values:
 	//
-	// 	- **Public**: Public network address.
+	// - **Public**: Public endpoint.
 	//
-	// 	- **Private**: Private network address.
+	// - **Private**: Private endpoint.
 	//
-	// 	- **Inner**: Private network address (classic network).
+	// - **Inner**: Private endpoint in the classic network.
 	//
 	// example:
 	//

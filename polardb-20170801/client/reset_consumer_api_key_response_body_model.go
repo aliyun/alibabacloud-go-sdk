@@ -18,19 +18,19 @@ type iResetConsumerApiKeyResponseBody interface {
 }
 
 type ResetConsumerApiKeyResponseBody struct {
-	// The complete API key, which is returned only in this response.
+	// The complete API key. This value is returned only in the current response.
 	//
 	// example:
 	//
-	// xxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The user ID.
+	// The ID of the consumer.
 	//
 	// example:
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

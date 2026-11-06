@@ -41,6 +41,8 @@ type iDescribeGatewayAttributeResponseBody interface {
 	GetRunningVersion() *string
 	SetSecurityIPArrays(v []*DescribeGatewayAttributeResponseBodySecurityIPArrays) *DescribeGatewayAttributeResponseBody
 	GetSecurityIPArrays() []*DescribeGatewayAttributeResponseBodySecurityIPArrays
+	SetSemanticCacheEnabled(v bool) *DescribeGatewayAttributeResponseBody
+	GetSemanticCacheEnabled() *bool
 	SetStatus(v string) *DescribeGatewayAttributeResponseBody
 	GetStatus() *string
 	SetVSwitchId(v string) *DescribeGatewayAttributeResponseBody
@@ -56,7 +58,9 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// polar.app.g2.medium
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The creation time. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time.
+	//
+	// The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -76,7 +80,11 @@ type DescribeGatewayAttributeResponseBody struct {
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The list of endpoints.
 	Endpoints []*DescribeGatewayAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The expiration time. This parameter is empty when the billing method is pay-as-you-go. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The expiration time.
+	//
+	// This parameter is empty when the billing method is Postpaid.
+	//
+	// The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -110,7 +118,9 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// 2.0.1
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The last modification time. The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The last modification time.
+	//
+	// The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -118,9 +128,9 @@ type DescribeGatewayAttributeResponseBody struct {
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
@@ -146,17 +156,19 @@ type DescribeGatewayAttributeResponseBody struct {
 	RunningVersion *string `json:"RunningVersion,omitempty" xml:"RunningVersion,omitempty"`
 	// The application-level whitelist.
 	SecurityIPArrays []*DescribeGatewayAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
+	// Indicates whether the semantic cache is enabled. If the semantic cache is disabled or has never been enabled, the value is false.
+	SemanticCacheEnabled *bool `json:"SemanticCacheEnabled,omitempty" xml:"SemanticCacheEnabled,omitempty"`
 	// The application status. Valid values:
 	//
-	// - CREATE: Creating.
+	// - CREATE: creating
 	//
-	// - ACTIVATION: Running.
+	// - ACTIVATION: running
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
@@ -240,6 +252,10 @@ func (s *DescribeGatewayAttributeResponseBody) GetRunningVersion() *string {
 
 func (s *DescribeGatewayAttributeResponseBody) GetSecurityIPArrays() []*DescribeGatewayAttributeResponseBodySecurityIPArrays {
 	return s.SecurityIPArrays
+}
+
+func (s *DescribeGatewayAttributeResponseBody) GetSemanticCacheEnabled() *bool {
+	return s.SemanticCacheEnabled
 }
 
 func (s *DescribeGatewayAttributeResponseBody) GetStatus() *string {
@@ -334,6 +350,11 @@ func (s *DescribeGatewayAttributeResponseBody) SetSecurityIPArrays(v []*Describe
 	return s
 }
 
+func (s *DescribeGatewayAttributeResponseBody) SetSemanticCacheEnabled(v bool) *DescribeGatewayAttributeResponseBody {
+	s.SemanticCacheEnabled = &v
+	return s
+}
+
 func (s *DescribeGatewayAttributeResponseBody) SetStatus(v string) *DescribeGatewayAttributeResponseBody {
 	s.Status = &v
 	return s
@@ -378,7 +399,7 @@ type DescribeGatewayAttributeResponseBodyEndpoints struct {
 	//
 	// pg-xxxxx.polardbaigateway.pre.rds.aliyuncs.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint node.
 	//
 	// example:
 	//
@@ -390,11 +411,11 @@ type DescribeGatewayAttributeResponseBodyEndpoints struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The endpoint type. Valid values:
+	// The type of the endpoint address. Valid values:
 	//
-	// - Private: VPC address.
+	// - Private: VPC address
 	//
-	// - Public: Internet address.
+	// - Public: Internet address
 	//
 	// example:
 	//
@@ -496,13 +517,13 @@ func (s *DescribeGatewayAttributeResponseBodyEndpoints) Validate() error {
 }
 
 type DescribeGatewayAttributeResponseBodySecurityIPArrays struct {
-	// The name of the IP address whitelist. Default value: `default`.
+	// The name of the IP address group. Default value: `default`.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The tag of the IP address whitelist.
+	// The tag of the IP address group.
 	//
 	// example:
 	//

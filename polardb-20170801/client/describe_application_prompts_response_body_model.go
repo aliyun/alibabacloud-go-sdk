@@ -22,7 +22,7 @@ type iDescribeApplicationPromptsResponseBody interface {
 }
 
 type DescribeApplicationPromptsResponseBody struct {
-	// A list of Application Prompts.
+	// The list.
 	Items []*DescribeApplicationPromptsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -36,13 +36,13 @@ type DescribeApplicationPromptsResponseBody struct {
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,31 +117,31 @@ func (s *DescribeApplicationPromptsResponseBody) Validate() error {
 }
 
 type DescribeApplicationPromptsResponseBodyItems struct {
-	// Specifies whether the Prompt is enabled. A value of 1 indicates enabled, and 0 indicates disabled.
+	// Indicates whether the prompt is enabled.
 	//
 	// example:
 	//
-	// prompt if enabled
+	// 1
 	PromptEnabled *int32 `json:"PromptEnabled,omitempty" xml:"PromptEnabled,omitempty"`
-	// The Prompt ID.
+	// The prompt ID.
 	//
 	// example:
 	//
 	// papt-58z96zl691otf356o4
 	PromptId *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
-	// The Prompt Name.
+	// The prompt name.
 	//
 	// example:
 	//
 	// prompt name
 	PromptName *string `json:"PromptName,omitempty" xml:"PromptName,omitempty"`
-	// The Prompt Type.
+	// The prompt type.
 	//
 	// example:
 	//
 	// DELETE_RELATIONS_SYSTEM_PROMPT
 	PromptType *string `json:"PromptType,omitempty" xml:"PromptType,omitempty"`
-	// The Prompt Value.
+	// The prompt content.
 	//
 	// example:
 	//

@@ -66,13 +66,13 @@ func (s *DescribeAgenticDBBranchEndpointsResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBBranchEndpointsResponseBodyItems struct {
-	// The account name.
+	// The name of the account.
 	//
 	// example:
 	//
 	// cloud_admin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The compatible connection address. A public endpoint is returned first. If no public endpoint is available, a private endpoint is returned.
+	// The compatible endpoint. The public endpoint is returned preferentially. If no public endpoint is available, the private network endpoint is returned.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeAgenticDBBranchEndpointsResponseBodyItems struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The list of public and private network endpoints.
 	AddressItems []*DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
-	// The compatible connection string. A public connection string is returned first. If no public connection string is available, a private connection string is returned.
+	// The compatible connection string. The public connection string is returned preferentially. If no public connection string is available, the private connection string is returned.
 	//
 	// example:
 	//
 	// postgresql://cloud_admin:******@10.0.1.100:5432/neondb
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type DescribeAgenticDBBranchEndpointsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// ******
+	// ExamplePassw0rd!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The compatible connection port that corresponds to the Address parameter.
+	// The compatible connection port corresponding to the address.
 	//
 	// example:
 	//
@@ -233,11 +233,7 @@ type DescribeAgenticDBBranchEndpointsResponseBodyItemsAddressItems struct {
 	//
 	// postgresql://cloud_admin:******@pe-cedar-cygfzprh775g.polaragentic.pre.rds.aliyuncs.com:5460/neondb
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type. Valid values:
-	//
-	// - Private: private network.
-	//
-	// - Public: public network.
+	// The network type. Valid values: Private and Public.
 	//
 	// example:
 	//

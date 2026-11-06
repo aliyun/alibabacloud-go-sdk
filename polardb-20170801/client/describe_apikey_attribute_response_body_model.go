@@ -18,7 +18,7 @@ type iDescribeApikeyAttributeResponseBody interface {
 type DescribeApikeyAttributeResponseBody struct {
 	// The list of consumer objects.
 	Items []*DescribeApikeyAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type DescribeApikeyAttributeResponseBodyItemsConsumer struct {
 	//
 	// example:
 	//
-	// ***
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// The user group ID.
 	//
@@ -141,7 +141,7 @@ type DescribeApikeyAttributeResponseBodyItemsConsumer struct {
 	//
 	// test
 	ConsumerTag *string `json:"ConsumerTag,omitempty" xml:"ConsumerTag,omitempty"`
-	// The creation time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
+	// The creation time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeApikeyAttributeResponseBodyItemsConsumer struct {
 	//
 	// pg-2ze5n62ef4s165***
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The last modification time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
+	// The last modification time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ type DescribeApikeyAttributeResponseBodyItemsUsageStatistics struct {
 	//
 	// c-xxxxxx
 	DimensionRefId *string `json:"DimensionRefId,omitempty" xml:"DimensionRefId,omitempty"`
-	// The statistical dimension. The value is typically Consumer.
+	// The statistical dimension. Typically, the value is Consumer.
 	//
 	// example:
 	//

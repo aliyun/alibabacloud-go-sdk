@@ -30,7 +30,7 @@ type CreateModelServiceResponseBody struct {
 	//
 	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the model service.
+	// The model status.
 	//
 	// example:
 	//

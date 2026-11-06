@@ -32,7 +32,7 @@ type iCreateKBSyncLinkResponseBody interface {
 }
 
 type CreateKBSyncLinkResponseBody struct {
-	// The client identifier.
+	// The client ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateKBSyncLinkResponseBody struct {
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// The creation time.
 	//
-	// The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateKBSyncLinkResponseBody struct {
 	//
 	// testName
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

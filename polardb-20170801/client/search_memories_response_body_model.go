@@ -30,7 +30,7 @@ type SearchMemoriesResponseBody struct {
 	//
 	// 1
 	Page *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type SearchMemoriesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of results.
 	Results []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The total number of matching records.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 type SearchMemoriesResponseBodyResults struct {
 	// The creation time.
 	//
-	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// example:
 	//
-	// xxx
+	// The user prefers PostgreSQL
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The agent to which the memory belongs.
 	//
@@ -170,7 +170,7 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// example:
 	//
-	// {"tags":"Issue_date_2023-11-30,VD_Valid"}
+	// {\\"tags\\":\\"Issue_date_2023-11-30,VD_Active\\"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The score.
 	//
@@ -180,7 +180,7 @@ type SearchMemoriesResponseBodyResults struct {
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	// The update time.
 	//
-	// The time follows the ISO 8601 standard in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

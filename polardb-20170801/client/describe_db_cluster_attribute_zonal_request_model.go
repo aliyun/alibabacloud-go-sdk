@@ -24,7 +24,7 @@ type iDescribeDbClusterAttributeZonalRequest interface {
 }
 
 type DescribeDbClusterAttributeZonalRequest struct {
-	// The cluster ID.
+	// The ID of the edge cluster. You can call the DescribeDBClustersZonal operation to list available edge clusters and then use the returned DBClusterId to query the attributes. IDs of common clusters are not applicable to this operation.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeDbClusterAttributeZonalRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to retrieve AI-related node information.
+	// Specifies whether to retrieve information about AI nodes.
 	//
 	// example:
 	//

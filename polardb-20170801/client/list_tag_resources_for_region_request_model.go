@@ -26,7 +26,7 @@ type iListTagResourcesForRegionRequest interface {
 }
 
 type ListTagResourcesForRegionRequest struct {
-	// The token that is used to retrieve the next page of results. Optional for the first request. If the query does not return all results, the response contains a token. You can use this token in the next request to continue the query.
+	// The token used to retrieve more results. You do not need to specify this parameter for the first query. If the first query does not return all results, you can pass the token returned in the previous response to retrieve the remaining results.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iApplyApplicationPromptsRequest interface {
 }
 
 type ApplyApplicationPromptsRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type ApplyApplicationPromptsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// An array of prompt IDs to disable.
+	// The list of prompt IDs to disable. You must provide a non-empty list for at least one of EnabledPromptIds and DisabledPromptIds. Otherwise, the InvalidApplicationPromptId.Malformed error is returned.
 	//
 	// example:
 	//
-	// papt-************
+	// ["papt-************"]
 	DisabledPromptIds []*string `json:"DisabledPromptIds,omitempty" xml:"DisabledPromptIds,omitempty" type:"Repeated"`
-	// An array of prompt IDs to enable.
+	// The list of prompt IDs to enable. You must provide a non-empty list for at least one of EnabledPromptIds and DisabledPromptIds. Otherwise, the InvalidApplicationPromptId.Malformed error is returned.
 	//
 	// example:
 	//
-	// papt-************
+	// ["papt-************"]
 	EnabledPromptIds []*string `json:"EnabledPromptIds,omitempty" xml:"EnabledPromptIds,omitempty" type:"Repeated"`
 }
 

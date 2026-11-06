@@ -62,13 +62,13 @@ type iCreatePolarFsRequest interface {
 }
 
 type CreatePolarFsRequest struct {
-	// The acceleration space for the Basic Edition. Unit: GB.
+	// The size of the acceleration space. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the Basic Edition.
 	//
 	// example:
 	//
-	// 500
+	// 5000
 	AccelerateStorageSize *int64 `json:"AccelerateStorageSize,omitempty" xml:"AccelerateStorageSize,omitempty"`
-	// Specifies whether to enable acceleration. Valid values:
+	// The acceleration startup mode. Valid values:
 	//
 	// - **ONLY**: enables acceleration only.
 	//
@@ -88,7 +88,7 @@ type CreatePolarFsRequest struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The list of authorized accounts for the cold storage instance. Separate multiple accounts with commas (`,`).
+	// The list of authorized accounts for the Cold Storage Edition instance, separated by commas (`,`).
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreatePolarFsRequest struct {
 	//
 	// Default value: **false**.
 	//
-	// > This parameter takes effect only when **PayType*	- is set to **Prepaid**.
+	// > This parameter takes effect only when the **PayType*	- parameter is set to **Prepaid**.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreatePolarFsRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - **true**: uses coupons (default).
+	// - **true**: uses coupons. This is the default value.
 	//
 	// - **false**: does not use coupons.
 	//
@@ -118,13 +118,7 @@ type CreatePolarFsRequest struct {
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The edition. Valid values:
-	//
-	// - **basic**: Basic Edition (default).
-	//
-	// - **cold**: cold storage edition.
-	//
-	// - **high_performance**: high-performance edition.
+	// The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the basic edition, you must specify AccelerateSwitch and AccelerateStorageSize. For the high_performance edition, you must specify StorageType (essdpl0 or essdpl1). For the cold edition, StorageType (local_redundancy or city_redundancy) is optional.
 	//
 	// example:
 	//
@@ -154,15 +148,15 @@ type CreatePolarFsRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// LTAIExampleCustomOssKeyId
 	CustomOssAk *string `json:"CustomOssAk,omitempty" xml:"CustomOssAk,omitempty"`
 	// The custom AccessKey secret.
 	//
 	// example:
 	//
-	// xxx
+	// ExampleCustomOssSecret123
 	CustomOssSk *string `json:"CustomOssSk,omitempty" xml:"CustomOssSk,omitempty"`
-	// The cluster ID.
+	// The PolarDB cluster ID. This parameter is required when you call this operation. If this parameter is not specified, the InvalidDBClusterId.Malformed error is returned.
 	//
 	// example:
 	//
@@ -180,25 +174,25 @@ type CreatePolarFsRequest struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// If **PayType*	- is set to **Prepaid**, you must pass parameter. Specifies the upfront cluster as yearly or monthly. Valid values:
+	// If the **PayType*	- parameter is set to **Prepaid**, this parameter is required. Specifies the billing cycle of the upfront cluster. Valid values:
 	//
-	// - **Year**: yearly. When you select subscription, the unit is year.
+	// - **Year**: year.
 	//
-	// - **Month**: monthly. When you select subscription, the unit is month.
+	// - **Month**: month.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The coupon code. If not specified, the default coupon is used.
+	// The coupon code. If this parameter is not specified, the default coupon is used.
 	//
 	// example:
 	//
@@ -206,7 +200,7 @@ type CreatePolarFsRequest struct {
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
-	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -226,31 +220,17 @@ type CreatePolarFsRequest struct {
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type. Valid values for high-performance clusters:
-	//
-	// - **ESSDPL0**
-	//
-	// - **ESSDPL1**
-	//
-	// Valid values for Basic Edition clusters:
-	//
-	// - **city_redundancy*	- (zone redundancy)
-	//
-	// Valid values for cold storage clusters:
-	//
-	// - **city_redundancy*	- (zone redundancy)
-	//
-	// - **local_redundancy*	- (local redundancy)
+	// The storage type. For the high_performance edition, use lowercase essdpl0 or essdpl1. For the cold edition, use local_redundancy or city_redundancy. Select the value based on the edition. The value is case-sensitive.
 	//
 	// example:
 	//
 	// local_redundancy
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The subscription duration. This parameter is required when **PayType*	- is set to **Prepaid**.
+	// This parameter is required when the **PayType*	- parameter is set to **Prepaid**.
 	//
-	// - When **Period*	- is set to **Month**, the value of **UsedTime*	- is an integer ranging from `1` to `9`.
+	// - If the **Period*	- parameter is set to **Month**, the value of **UsedTime*	- must be an integer in the range of `[1-9]`.
 	//
-	// - When **Period*	- is set to **Year**, the value of **UsedTime*	- is an integer ranging from `1` to `3`.
+	// - If the **Period*	- parameter is set to **Year**, the value of **UsedTime*	- must be an integer in the range of `[1-3]`.
 	//
 	// example:
 	//

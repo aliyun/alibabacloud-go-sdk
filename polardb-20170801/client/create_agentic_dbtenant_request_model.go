@@ -32,7 +32,7 @@ type CreateAgenticDBTenantRequest struct {
 	//
 	// example:
 	//
-	// Example tenant
+	// Sample tenant
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The region ID.
 	//
@@ -42,7 +42,7 @@ type CreateAgenticDBTenantRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the tenant. It must be 1 to 64 characters in length, start with a letter, and contain only letters, digits, underscores (_), and hyphens (-).
+	// The tenant name. The name must be 1 to 64 characters in length, start with a letter, and contain only letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//

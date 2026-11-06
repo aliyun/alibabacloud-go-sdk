@@ -24,7 +24,7 @@ type DescribePolarClawPluginsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// A list of plugin IDs. If omitted, all plugins are returned.
+	// The list of plugin IDs to query. If this parameter is empty, all plugins are returned.
 	PluginList []*string `json:"PluginList,omitempty" xml:"PluginList,omitempty" type:"Repeated"`
 }
 

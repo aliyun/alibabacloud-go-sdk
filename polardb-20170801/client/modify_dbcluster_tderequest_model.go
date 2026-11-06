@@ -40,25 +40,25 @@ type ModifyDBClusterTDERequest struct {
 	//
 	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to automatically rotate the TDE key of the instance during the next O\\&M window after a new version of the KMS key is available. This parameter is valid only for custom keys.
+	// Specifies whether to allow the TDE key of the instance to automatically rotate at the nearest maintenance window after the rotation period when a KMS key version change is detected. This parameter is supported only for custom keys. Valid values:
 	//
-	// - **true**
+	// - **true**: Allows automatic rotation.
 	//
-	// - **false**
+	// - **false**: Does not allow automatic rotation.
 	//
-	// > This parameter is supported only when the database engine is compatible with PostgreSQL or Oracle.
+	// > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle-compatible.
 	//
 	// example:
 	//
 	// false
 	EnableAutomaticRotation *string `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	// Specifies whether to automatically encrypt all new tables. Valid values:
+	// Specifies whether to automatically encrypt all newly created tables. Valid values:
 	//
-	// - **ON**
+	// - **ON**: Enables automatic encryption.
 	//
-	// - **OFF**
+	// - **OFF**: Disables automatic encryption.
 	//
-	// > This parameter is valid only when the database engine is compatible with MySQL.
+	// > This parameter takes effect only when the database engine is MySQL-compatible.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ModifyDBClusterTDERequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Global Resource Descriptor of the role. You can use this parameter to specify a role. For more information, see [Overview of RAM roles](https://help.aliyun.com/document_detail/93689.html).
+	// The global resource descriptor of the role, used to specify a specific role. For details, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
 	//
 	// example:
 	//

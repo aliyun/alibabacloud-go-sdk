@@ -42,7 +42,7 @@ type DescribeKnowledgeBaseFileShardsResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBody) Validate() error {
 type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
 	// The list of figure or table captions associated with the shard.
 	Captions []*string `json:"Captions,omitempty" xml:"Captions,omitempty" type:"Repeated"`
-	// The list of structured element references of the source document associated with the shard, which can be used to precisely locate the original elements.
+	// The list of structured element references in the source document associated with the shard, which can be used to precisely locate the original elements.
 	DocItems []*string `json:"DocItems,omitempty" xml:"DocItems,omitempty" type:"Repeated"`
-	// The section heading chain to which the shard belongs.
+	// The chain of section headings to which the shard belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
 	// The list of image resources referenced by the shard.
 	ImageResources []*DescribeKnowledgeBaseFileShardsResponseBodyShardsImageResources `json:"ImageResources,omitempty" xml:"ImageResources,omitempty" type:"Repeated"`
@@ -148,7 +148,7 @@ type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
 	//
 	// example:
 	//
-	// ******
+	// This is sample content for a knowledge base shard
 	ShardContent *string `json:"ShardContent,omitempty" xml:"ShardContent,omitempty"`
 	// The index of the shard.
 	//

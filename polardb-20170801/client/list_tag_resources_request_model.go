@@ -30,7 +30,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// A token to retrieve the next page of results. You do not need to specify this parameter for the first request. If the first request does not return all results, the response returns a token. You can use this token in the next request to continue the query.
+	// The token used to return more results. You do not need to specify this parameter for the first query. If the first query does not return all results, you can pass the token returned in the previous response to the next query to obtain more results.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListTagResourcesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view the available region IDs.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +46,15 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of a cluster. You can specify multiple cluster IDs to query the tags of multiple clusters.
+	// The ID of the target cluster. To query the tags of multiple clusters, click **Add*	- to add more cluster IDs.
 	//
-	// > - You must specify either the `ResourceId.N` parameter or the `Tag.N.Key` parameter.
+	// > 	- You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
 	//
-	// >
-	//
-	// > - If you specify the `ResourceId.N` parameter, you can add up to 50 cluster IDs.
+	// > 	- If you specify the ResourceId.N parameter, you can add up to 50 cluster IDs at a time.
 	//
 	// example:
 	//
-	// pc-****************
+	// ["pc-***************"]
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -175,19 +173,17 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of a tag. You can specify multiple tags to query for resources that have all of the specified tags.
+	// The tag key. To query the details of all target clusters under multiple tags, click **Add*	- to add more tags.
 	//
-	// > - You must specify either the `ResourceId.N` parameter or the `Tag.N.Key` parameter.
+	// >	- You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
 	//
-	// >
-	//
-	// > - If you specify the `Tag.N.Key` parameter, you can add up to 20 tag pairs.
+	// >	- If you specify the Tag.N.Key parameter, you can add up to 20 tag key-value pairs at a time.
 	//
 	// example:
 	//
 	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value that corresponds to the tag key. An empty string is allowed.
+	// The tag value corresponding to the tag key. An empty string is allowed.
 	//
 	// example:
 	//

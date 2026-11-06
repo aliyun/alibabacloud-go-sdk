@@ -38,7 +38,7 @@ type DescribePolarFsRequest struct {
 	//
 	// pc-2ze8u21s03******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum integer value.
+	// The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the Integer data type.
 	//
 	// example:
 	//

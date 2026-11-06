@@ -46,7 +46,7 @@ type DescribePolarFsObjectsResponseBody struct {
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The PolarFs instance ID.
+	// The PolarFS instance ID.
 	//
 	// example:
 	//
@@ -157,17 +157,17 @@ type DescribePolarFsObjectsResponseBodyItems struct {
 	//
 	// 100
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in seconds, and the time zone is UTC.
 	//
 	// example:
 	//
-	// 2025-03-25T09:37:10Z
+	// 1793809871
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The last modified time.
+	// The last modified time. The value is a UNIX timestamp in seconds, and the time zone is UTC.
 	//
 	// example:
 	//
-	// 2025-03-25T09:37:10Z
+	// 1793809534
 	LastModified *int64 `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
 	// The real path of the symbolic link.
 	//
@@ -181,13 +181,13 @@ type DescribePolarFsObjectsResponseBodyItems struct {
 	//
 	// 755
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The number of links.
+	// The number of hard links. The value is an integer. This field may not be returned for some entries.
 	//
 	// example:
 	//
-	// test
+	// 1
 	Nlink *int32 `json:"Nlink,omitempty" xml:"Nlink,omitempty"`
-	// Owner
+	// The owner of the file or directory.
 	//
 	// example:
 	//

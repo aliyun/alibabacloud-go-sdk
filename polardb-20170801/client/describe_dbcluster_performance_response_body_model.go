@@ -26,7 +26,7 @@ type iDescribeDBClusterPerformanceResponseBody interface {
 }
 
 type DescribeDBClusterPerformanceResponseBody struct {
-	// The database cluster ID.
+	// The ID of the database cluster.
 	//
 	// example:
 	//
@@ -44,20 +44,20 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The end of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-09-23T01:01:00Z
 	EndTime         *string                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	PerformanceKeys *DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 35D3E3DA-4650-407A-BFF5-59BFF1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//

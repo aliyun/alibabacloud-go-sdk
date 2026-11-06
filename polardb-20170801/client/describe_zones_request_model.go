@@ -24,7 +24,7 @@ type DescribeZonesRequest struct {
 	//
 	// example:
 	//
-	// POLARDB
+	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The engine extension.
 	//
@@ -34,7 +34,7 @@ type DescribeZonesRequest struct {
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view information about all available regions for your account, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
 	//
 	// example:
 	//

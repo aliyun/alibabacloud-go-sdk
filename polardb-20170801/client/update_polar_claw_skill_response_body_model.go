@@ -52,7 +52,7 @@ type UpdatePolarClawSkillResponseBody struct {
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -154,6 +154,10 @@ type UpdatePolarClawSkillResponseBodyConfig struct {
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The environment variable configuration.
+	//
+	// example:
+	//
+	// {"TOKEN":"my-token"}
 	Env map[string]*string `json:"Env,omitempty" xml:"Env,omitempty"`
 }
 

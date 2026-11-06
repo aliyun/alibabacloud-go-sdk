@@ -14,7 +14,7 @@ type iDeleteAgenticDBTenantResponseBody interface {
 }
 
 type DeleteAgenticDBTenantResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

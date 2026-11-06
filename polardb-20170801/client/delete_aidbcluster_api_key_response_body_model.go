@@ -16,13 +16,13 @@ type iDeleteAIDBClusterApiKeyResponseBody interface {
 }
 
 type DeleteAIDBClusterApiKeyResponseBody struct {
-	// The API key of the model service.
+	// The API key for the model service.
 	//
 	// example:
 	//
-	// xxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

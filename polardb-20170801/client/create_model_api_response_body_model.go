@@ -24,7 +24,7 @@ type CreateModelApiResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// https://model-api.example.com/v1/chat/completions
 	InvokeEndpoint *string `json:"InvokeEndpoint,omitempty" xml:"InvokeEndpoint,omitempty"`
 	// The model API ID.
 	//
@@ -32,7 +32,7 @@ type CreateModelApiResponseBody struct {
 	//
 	// mi-xxxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

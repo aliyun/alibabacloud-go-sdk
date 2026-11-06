@@ -26,7 +26,7 @@ type iDescribeApplicationPerformanceResponseBody interface {
 }
 
 type DescribeApplicationPerformanceResponseBody struct {
-	// The application cluster ID.
+	// The ID of the application cluster.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeApplicationPerformanceResponseBody struct {
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The end of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
+	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and must be in UTC.
 	//
 	// example:
 	//
@@ -51,13 +51,13 @@ type DescribeApplicationPerformanceResponseBody struct {
 	// 60
 	Interval        *string                                                    `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	PerformanceKeys *DescribeApplicationPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
+	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and must be in UTC.
 	//
 	// example:
 	//

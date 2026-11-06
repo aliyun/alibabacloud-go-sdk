@@ -146,7 +146,7 @@ type iDescribeDbClusterAttributeZonalResponseBody interface {
 }
 
 type DescribeDbClusterAttributeZonalResponseBody struct {
-	// The start time of the free AI feature. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the free AI feature. The time is in the YYYY-MM-DDTHH:mm:ssZ format (UTC time).
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// x86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// The minor version update policy. Valid values:
+	// The minor version update method. Valid values:
 	//
 	// - Auto: Automatic update.
 	//
@@ -188,15 +188,15 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// example:
 	//
-	// 7,864,320
+	// 7864320
 	BlktagTotal *int64 `json:"BlktagTotal,omitempty" xml:"BlktagTotal,omitempty"`
-	// The number of used blktags.
+	// The current blktag usage.
 	//
 	// example:
 	//
-	// 5,242,880
+	// 5242880
 	BlktagUsed *int64 `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
-	// Specifies whether I/O performance burst is enabled for ESSD AutoPL cloud disks. Valid values:
+	// Indicates whether I/O performance burst is enabled for the ESSD AutoPL cloud disk. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -208,15 +208,15 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	BurstingEnabled *string `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
 	// The [edition](https://help.aliyun.com/document_detail/183258.html). Valid values:
 	//
-	// 	- **Normal**: Cluster Edition
+	// 	- **Normal**: Cluster Edition.
 	//
-	// 	- **Basic**: Single Node Edition
+	// 	- **Basic**: Single Node Edition.
 	//
-	// 	- **Archive**: X-Engine
+	// 	- **Archive**: X-Engine.
 	//
-	// 	- **NormalMultimaster**: Multi-master Cluster Edition
+	// 	- **NormalMultimaster**: Multi-master Cluster Edition.
 	//
-	// 	- **SENormal**: Standard Edition
+	// 	- **SENormal**: Standard Edition.
 	//
 	// > 	- PolarDB for PostgreSQL 11 does not support the Single Node Edition.
 	//
@@ -278,29 +278,29 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
 	// The cluster status. Valid values:
 	//
-	// - **Creating**: The cluster is being created.
+	// - **Creating**: Creating.
 	//
-	// - **Running**: The cluster is running.
+	// - **Running**: Running.
 	//
-	// - **Deleting**: The cluster is being released.
+	// - **Deleting**: Releasing.
 	//
-	// - **Rebooting**: The cluster is restarting.
+	// - **Rebooting**: Restarting.
 	//
-	// - **DBNodeCreating**: Nodes are being increased.
+	// - **DBNodeCreating**: Increasing nodes.
 	//
-	// - **DBNodeDeleting**: A node is being deleted.
+	// - **DBNodeDeleting**: Deleting nodes.
 	//
-	// - **ClassChanging**: The node specifications are being changed.
+	// - **ClassChanging**: Changing node specifications.
 	//
-	// - **NetAddressCreating**: Network connectivity is being created.
+	// - **NetAddressCreating**: Creating network connectivity.
 	//
-	// - **NetAddressDeleting**: Network connectivity is being deleted.
+	// - **NetAddressDeleting**: Deleting network connectivity.
 	//
-	// - **NetAddressModifying**: Network connectivity is being modified.
+	// - **NetAddressModifying**: Modifying network connectivity.
 	//
-	// - **Deleted**: The cluster is released.
+	// - **Deleted**: Released.
 	//
-	// 	- **ClassChanged**: The upgrade or decrease the quota is completed and resources are being revoked.
+	// 	- **ClassChanged**: Revoking resources after specification upgrade and downgrade.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// 	- **Beta**: The current version is a beta version.
 	//
-	// > 	- For more information about how to upgrade the minor engine version, see [Upgrade minor engine versions](https://help.aliyun.com/document_detail/158572.html).
+	// > 	- For more information about how to upgrade the minor engine version, see [Upgrade the minor engine version](https://help.aliyun.com/document_detail/158572.html).
 	//
 	// > 	- This parameter is returned only when the database engine type (**DBType**) is **MySQL**.
 	//
@@ -372,7 +372,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The expiration time of the cluster.
 	//
-	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). An empty value is returned for clusters whose billing method is **Postpaid*	- (pay-as-you-go). The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// > A specific value is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -386,7 +386,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether to replenish the resources of the new primary database after a cross-zone switch. Valid values:
+	// Indicates whether the resources of the new primary database are supplemented after a cross-zone switch. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -398,9 +398,9 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	HasCompleteStandbyRes *bool `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
 	// Indicates whether the Hot Standby Cluster (and standby compute nodes) is enabled. Valid values:
 	//
-	// - **StandbyClusterON**: Enables the Hot Standby Cluster, or enables both the Hot Standby Cluster and standby compute nodes.
+	// - **StandbyClusterON**: The Hot Standby Cluster is enabled, or both the Hot Standby Cluster and standby compute nodes are enabled.
 	//
-	// - **StandbyClusterOFF**: shutdown the Hot Standby Cluster, or shutdown both the Hot Standby Cluster and standby compute nodes.
+	// - **StandbyClusterOFF**: The Hot Standby Cluster is shut down, or both the Hot Standby Cluster and standby compute nodes are shut down.
 	//
 	// example:
 	//
@@ -430,13 +430,13 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// example:
 	//
-	// 6,291,456
+	// 6291456
 	InodeTotal *int64 `json:"InodeTotal,omitempty" xml:"InodeTotal,omitempty"`
-	// The number of used inodes.
+	// The current inode usage.
 	//
 	// example:
 	//
-	// 4,194,304
+	// 4194304
 	InodeUsed *int64 `json:"InodeUsed,omitempty" xml:"InodeUsed,omitempty"`
 	// Indicates whether the kernel version is the latest. Valid values:
 	//
@@ -460,17 +460,17 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	IsProxyLatestVersion *bool `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: The cluster is not locked.
+	// - **Unlock**: Unlocked.
 	//
-	// - **ManualLock**: The cluster is manually locked.
+	// - **ManualLock**: Manually locked.
 	//
-	// - **LockByExpiration**: The cluster is automatically locked due to expiration.
+	// - **LockByExpiration**: Automatically locked due to cluster expiration.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maintenance window of the cluster. The time follows the ISO 8601 standard in the `HH:mmZ-HH:mmZ` format. The time is displayed in UTC. For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+8).
+	// The maintenance window of the cluster. The time follows the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time is displayed in UTC. For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+8).
 	//
 	// example:
 	//
@@ -496,9 +496,9 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// <p id="p_wyg_t4a_glm" props="china" icmsditafragmentmagic=1>The provisioned read and write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1000 × Capacity - Baseline performance}.</p>
+	// <p id="p_wyg_t4a_glm" props="china" icmsditafragmentmagic=1>The provisioned read and write IOPS for the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}.</p>
 	//
-	// <p id="p_6de_jxy_k2g" props="china" icmsditafragmentmagic=1>Baseline performance = min{1,800 + 50 × Capacity, 50,000}.</p>
+	// <p id="p_6de_jxy_k2g" props="china" icmsditafragmentmagic=1>Baseline performance = min{1,800 + 50 × capacity, 50,000}.</p>
 	//
 	// <note id="note_7kj_j0o_rgs" props="china" icmsditafragmentmagic=1>This parameter is supported only when StorageType is set to ESSDAUTOPL.</note>
 	//
@@ -516,7 +516,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// - AgileServerless: Agile mode, which indicates a serverless cluster.
 	//
-	// - SteadyServerless: Steady mode, which indicates a cluster with defined specifications (a cluster whose billing is subscription or pay-as-you-go).
+	// - SteadyServerless: Steady mode, which indicates a cluster with defined specifications (a cluster whose billing type is subscription or pay-as-you-go).
 	//
 	// example:
 	//
@@ -530,27 +530,27 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	ProxyStandardCpuCores *string `json:"ProxyStandardCpuCores,omitempty" xml:"ProxyStandardCpuCores,omitempty"`
 	// The status of the database proxy. Valid values:
 	//
-	// - **Creating**: The database proxy is being created.
+	// - **Creating**: Creating.
 	//
-	// - **Running**: The database proxy is running.
+	// - **Running**: Running.
 	//
-	// - **Deleting**: The database proxy is being released.
+	// - **Deleting**: Releasing.
 	//
-	// - **Rebooting**: The database proxy is restarting.
+	// - **Rebooting**: Restarting.
 	//
-	// - **DBNodeCreating**: Nodes are being increased.
+	// - **DBNodeCreating**: Increasing nodes.
 	//
-	// - **DBNodeDeleting**: A node is being deleted.
+	// - **DBNodeDeleting**: Deleting nodes.
 	//
-	// - **ClassChanging**: The node specifications are being changed.
+	// - **ClassChanging**: Changing node specifications.
 	//
-	// - **NetAddressCreating**: Network connectivity is being created.
+	// - **NetAddressCreating**: Creating network connectivity.
 	//
-	// - **NetAddressDeleting**: Network connectivity is being deleted.
+	// - **NetAddressDeleting**: Deleting network connectivity.
 	//
-	// - **NetAddressModifying**: Network connectivity is being modified.
+	// - **NetAddressModifying**: Modifying network connectivity.
 	//
-	// - **Deleted**: The database proxy is released.
+	// - **Deleted**: Released.
 	//
 	// example:
 	//
@@ -596,13 +596,13 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	RestoreDataPoint *string `json:"RestoreDataPoint,omitempty" xml:"RestoreDataPoint,omitempty"`
 	// The cluster restoration method. Valid values:
 	//
-	// 	- **RestoreByTime**: Restores the cluster from a level-1 backup to a specific point in time.
+	// 	- **RestoreByTime**: Restores the cluster from a point in time based on a level-1 backup.
 	//
-	// 	- **RestoreByBackupSet**: Restores the cluster from a level-1 backup set.
+	// 	- **RestoreByBackupSet**: Restores the cluster from a backup set based on a level-1 backup.
 	//
-	// 	- **RestoreByTimeOss**: Restores the cluster from a level-2 backup to a specific point in time.
+	// 	- **RestoreByTimeOss**: Restores the cluster from a point in time based on a level-2 backup.
 	//
-	// 	- **RestoreByBackupSetOss**: Restores the cluster from a level-2 backup set.
+	// 	- **RestoreByBackupSetOss**: Restores the cluster from a backup set based on a level-2 backup.
 	//
 	// 	- **CloneFromSourceCluster**: Clones the cluster from the source cluster.
 	//
@@ -612,7 +612,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// RestoreByTime
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// RowCompression
+	// The row compression status.
 	//
 	// example:
 	//
@@ -672,7 +672,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// - **Postpaid**: Pay-as-you-go based on capacity.
 	//
-	// - **Prepaid**: Subscription based on storage space.
+	// - **Prepaid**: Subscription based on space.
 	//
 	// example:
 	//
@@ -684,13 +684,13 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type of the Enterprise Edition. Valid values:
+	// Valid values for the storage type of the Enterprise Edition:
 	//
 	// - **PSL5**
 	//
 	// - **PSL4**
 	//
-	// The storage type of the Standard Edition. Valid values:
+	// Valid values for the storage type of the Standard Edition:
 	//
 	// - **ESSDPL0**
 	//
@@ -706,7 +706,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// ESSDPL0
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The amount of used storage space. Unit: bytes.
+	// The used storage space. Unit: bytes.
 	//
 	// example:
 	//
@@ -724,9 +724,9 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
 	// The specification type of the compute nodes. Valid values:
 	//
-	// 	- **Exclusive**: Dedicated
+	// 	- **Exclusive**: Dedicated.
 	//
-	// 	- **General**: General-purpose
+	// 	- **General**: General-purpose.
 	//
 	// > This parameter is returned only for PolarDB for MySQL Cluster Edition clusters.
 	//
@@ -734,7 +734,7 @@ type DescribeDbClusterAttributeZonalResponseBody struct {
 	//
 	// Exclusive
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	// Indicates whether the failover with hot replica feature compatible with IMCI is supported.
+	// Indicates whether failover with hot replica compatible with In-Memory Column Index (IMCI) is supported.
 	//
 	// example:
 	//
@@ -1396,7 +1396,7 @@ func (s *DescribeDbClusterAttributeZonalResponseBody) Validate() error {
 }
 
 type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
-	// The number of CPU cores added by the automatic scaling of local resources.
+	// The number of CPU cores added by automatically scaling local resources.
 	//
 	// example:
 	//
@@ -1444,37 +1444,37 @@ type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The node status. Valid values:
 	//
-	// 	- **Creating**: The node is being created.
+	// 	- **Creating**: Creating.
 	//
-	// 	- **Running**: The node is running.
+	// 	- **Running**: Running.
 	//
-	// 	- **Deleting**: The node is being deleted.
+	// 	- **Deleting**: Deleting.
 	//
-	// 	- **Rebooting**: The node is restarting.
+	// 	- **Rebooting**: Restarting.
 	//
-	// 	- **DBNodeCreating**: Nodes are being increased.
+	// 	- **DBNodeCreating**: Increasing nodes.
 	//
-	// 	- **DBNodeDeleting**: A node is being deleted.
+	// 	- **DBNodeDeleting**: Deleting nodes.
 	//
-	// 	- **ClassChanging**: The node specifications are being changed.
+	// 	- **ClassChanging**: Changing node specifications.
 	//
-	// 	- **NetAddressCreating**: Network connectivity is being created.
+	// 	- **NetAddressCreating**: Creating network connectivity.
 	//
-	// 	- **NetAddressDeleting**: Network connectivity is being deleted.
+	// 	- **NetAddressDeleting**: Deleting network connectivity.
 	//
-	// 	- **NetAddressModifying**: Network connectivity is being modified.
+	// 	- **NetAddressModifying**: Modifying network connectivity.
 	//
-	// 	- **MinorVersionUpgrading**: The minor version is being upgraded.
+	// 	- **MinorVersionUpgrading**: Minor version upgrade in progress.
 	//
-	// 	- **Maintaining**: The instance is under maintenance.
+	// 	- **Maintaining**: Instance maintenance in progress.
 	//
-	// 	- **Switching**: A switchover is in progress.
+	// 	- **Switching**: Switching.
 	//
 	// example:
 	//
 	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The failover priority. Each node has a failover priority, which determines the probability of the node being elected as the primary node during a failover. A higher value indicates a higher priority.
+	// The failover priority. Each node has a failover priority, which determines the probability of the node being elected as the primary node during a failover. A larger value indicates a higher priority.
 	//
 	// Valid values: 1 to 15.
 	//
@@ -1482,7 +1482,7 @@ type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
 	//
 	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
-	// Indicates whether the hot standby feature is enabled. Valid values:
+	// Indicates whether hot standby is enabled. Valid values:
 	//
 	// - **ON**: Enabled.
 	//
@@ -1492,7 +1492,7 @@ type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
 	//
 	// ON
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+	// Indicates whether the column store index is enabled. Valid values:
 	//
 	// - **ON**: Enabled.
 	//
@@ -1502,7 +1502,7 @@ type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
 	//
 	// ON
 	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
-	// The primary node ID of the Multi-master Cluster Edition.
+	// The ID of the primary node in the Multi-master Cluster Edition.
 	//
 	// example:
 	//
@@ -1526,19 +1526,19 @@ type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
 	//
 	// 8192
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The name of the hot replica corresponding to the node in the hot standby storage and compute architecture.
+	// The name of the hot replica corresponding to the node in the architecture with hot standby storage and hot standby compute enabled.
 	//
 	// example:
 	//
 	// pi-bp18z52mirror*****
 	MirrorInsName *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
-	// MultiMasterLocalStandby
+	// The identifier of the local read-only node in the multi-master architecture.
 	//
 	// example:
 	//
 	// MultiMasterLocalStandby
 	MultiMasterLocalStandby *string `json:"MultiMasterLocalStandby,omitempty" xml:"MultiMasterLocalStandby,omitempty"`
-	// MultiMasterPrimaryNode
+	// The identifier of the primary node in the multi-master architecture.
 	//
 	// example:
 	//
@@ -1590,19 +1590,19 @@ type DescribeDbClusterAttributeZonalResponseBodyDBNodes struct {
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The zone where the node is deployed. This parameter is mainly used for resource symmetry.
+	// Indicates whether the node is in the primary zone or the secondary zone. This is mainly used for resource symmetry.
 	//
 	// Valid values:
 	//
-	// - Primary: The primary zone.
+	// - Primary: Primary zone.
 	//
-	// - Standby: The secondary zone.
+	// - Standby: Secondary zone.
 	//
 	// example:
 	//
 	// Primary
 	SubCluster *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
-	// SubGroupDescription
+	// The description of the node subgroup.
 	//
 	// example:
 	//

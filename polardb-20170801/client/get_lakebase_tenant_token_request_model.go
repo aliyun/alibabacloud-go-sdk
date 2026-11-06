@@ -26,7 +26,7 @@ type GetLakebaseTenantTokenRequest struct {
 	//
 	// pc-xxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The PolarFS instance ID.
+	// The PolarFS instance ID. The CreationCategory of the instance must be basic (Basic Edition). Other categories are not supported by this operation.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetLakebaseTenantTokenRequest struct {
 	//
 	// pfs-xxx
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The mount subdirectory. Specify an absolute path.
+	// The absolute path of the mount subdirectory.
 	//
 	// This parameter is required.
 	//

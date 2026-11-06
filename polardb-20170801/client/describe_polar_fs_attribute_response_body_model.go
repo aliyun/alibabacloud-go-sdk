@@ -156,7 +156,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// bucket-example-001
 	BucketId *string `json:"BucketId,omitempty" xml:"BucketId,omitempty"`
 	// The Polarlakebase edition. Valid values:
 	//
@@ -208,11 +208,11 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The list of endpoints, including endpoint information for types such as NAS and S3 Gateway.
+	// The list of endpoints, including endpoint information such as NAS and S3 Gateway.
 	EndpointItems []*DescribePolarFsAttributeResponseBodyEndpointItems `json:"EndpointItems,omitempty" xml:"EndpointItems,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
+	// > This parameter is returned only for subscription clusters whose billing method is **Prepaid**. For pay-as-you-go clusters whose billing method is **Postpaid**, an empty value is returned.
 	//
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -222,7 +222,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired.
 	//
-	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription).
+	// > This parameter is returned only for subscription clusters whose billing method is **Prepaid**.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// fs-example-001
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The lock mode. Valid values:
 	//
@@ -240,7 +240,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// - **ManualLock**: Manually locked.
 	//
-	// - **LockByExpiration**: Automatically locked due to cluster expiration.
+	// - **LockByExpiration**: Automatically locked due to expiration.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// e6cc1d2e2a6fa292038d999fda6501*****
 	MetaUrl *string `json:"MetaUrl,omitempty" xml:"MetaUrl,omitempty"`
-	// The minor version number of the instance.
+	// The minor version of the instance.
 	//
 	// example:
 	//
@@ -294,7 +294,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The Polarlakebase instance description.
+	// The description of the Polarlakebase instance.
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The Polarlakebase instance status.
+	// The status of the Polarlakebase instance.
 	//
 	// example:
 	//
@@ -340,13 +340,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pc-2zejpr41d9xk3uk34
 	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	// The associated Polarlakebase instance ID.
+	// The ID of the associated Polarlakebase instance.
 	//
 	// example:
 	//
 	// pfs-**********
 	RelativePfsClusterId *string `json:"RelativePfsClusterId,omitempty" xml:"RelativePfsClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -370,15 +370,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 1000
 	StorageSpace *float64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type.
-	//
-	// For High-performance Edition, valid values are:
+	// The storage type. Valid values for High-performance Edition:
 	//
 	// 	- **ESSDPL1**
 	//
 	// 	- **ESSDPL0**
 	//
-	// For Basic Edition, valid values are:
+	// Valid values for Basic Edition:
 	//
 	// 	- **city_redundancy**: Zone-redundant storage.
 	//
@@ -993,7 +991,7 @@ func (s *DescribePolarFsAttributeResponseBodyEndpointItems) Validate() error {
 }
 
 type DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems struct {
-	// The protocol endpoint.
+	// The protocol connection address.
 	//
 	// example:
 	//

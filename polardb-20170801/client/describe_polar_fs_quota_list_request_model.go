@@ -24,7 +24,7 @@ type iDescribePolarFsQuotaListRequest interface {
 }
 
 type DescribePolarFsQuotaListRequest struct {
-	// The instance ID of the PolarDB instance on which the application depends.
+	// The PolarDB instance ID on which the application depends.
 	//
 	// example:
 	//
@@ -36,15 +36,13 @@ type DescribePolarFsQuotaListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 30, 50, and 100.
-	//
-	// Default value: 30.
+	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The PolarFs instance ID.
+	// The PolarFS instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +50,11 @@ type DescribePolarFsQuotaListRequest struct {
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The query mode. Valid values:
-	//
-	// -  **quotaPolicy**: quota rule
-	//
-	// - **quota**: quota
+	// The quota mode. Currently, only quota is supported, which indicates that quota policies are queried.
 	//
 	// example:
 	//
-	// quotaPolicy
+	// quota
 	QuotaMode *string `json:"QuotaMode,omitempty" xml:"QuotaMode,omitempty"`
 	// The region ID.
 	//

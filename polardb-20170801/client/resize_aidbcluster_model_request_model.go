@@ -34,7 +34,7 @@ type ResizeAIDBClusterModelRequest struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID. Requests are routed based on the region to which the instance belongs.
+	// The region ID. Requests are routed to the region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ResizeAIDBClusterModelRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The target total capacity. The abstract capacity unit is 1000, which equals one L20N equivalent card. The value must be a positive integer.
+	// The target total capacity. An abstract capacity unit of 1000 is equivalent to one L20N equivalent card. The value must be a positive integer.
 	//
 	// This parameter is required.
 	//

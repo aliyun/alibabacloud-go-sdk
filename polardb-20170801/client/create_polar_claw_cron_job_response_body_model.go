@@ -52,13 +52,13 @@ type CreatePolarClawCronJobResponseBody struct {
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// Indicates whether the job was executed immediately and successfully.
+	// Indicates whether the job was executed immediately and succeeded.
 	//
 	// example:
 	//
 	// false
 	RanImmediately *bool `json:"RanImmediately,omitempty" xml:"RanImmediately,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type CreatePolarClawCronJobResponseBodyJob struct {
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
-	// The session target. Valid values: main, isolated, current.
+	// The session target. Valid values: main, isolated, and current.
 	//
 	// example:
 	//
 	// main
 	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
-	// The execution status.
+	// The execution state.
 	State *CreatePolarClawCronJobResponseBodyJobState `json:"State,omitempty" xml:"State,omitempty" type:"Struct"`
 	// The update timestamp in milliseconds.
 	//
@@ -217,7 +217,7 @@ type CreatePolarClawCronJobResponseBodyJob struct {
 	//
 	// 1777370572517
 	UpdatedAtMs *int64 `json:"UpdatedAtMs,omitempty" xml:"UpdatedAtMs,omitempty"`
-	// The wake mode. Valid values: now, next-heartbeat.
+	// The wake mode. Valid values: now and next-heartbeat.
 	//
 	// example:
 	//
@@ -411,7 +411,7 @@ func (s *CreatePolarClawCronJobResponseBodyJob) Validate() error {
 }
 
 type CreatePolarClawCronJobResponseBodyJobDelivery struct {
-	// The channel account ID.
+	// The ID of the channel account.
 	//
 	// example:
 	//
@@ -429,7 +429,7 @@ type CreatePolarClawCronJobResponseBodyJobDelivery struct {
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The delivery mode. Valid values: none, announce, webhook.
+	// The delivery mode. Valid values: none, announce, and webhook.
 	//
 	// example:
 	//
@@ -519,7 +519,7 @@ type CreatePolarClawCronJobResponseBodyJobPayload struct {
 	//
 	// false
 	Deliver *bool `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
-	// The payload type. Valid values: agentTurn, systemEvent.
+	// The payload type. Valid values: agentTurn and systemEvent.
 	//
 	// example:
 	//
@@ -672,7 +672,7 @@ type CreatePolarClawCronJobResponseBodyJobRuns struct {
 	//
 	// finished
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Indicates whether the run was delivered.
+	// Indicates whether the job run has been delivered.
 	//
 	// example:
 	//
@@ -702,7 +702,7 @@ type CreatePolarClawCronJobResponseBodyJobRuns struct {
 	//
 	// test
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The model used.
+	// The model used for the execution.
 	//
 	// example:
 	//
@@ -714,7 +714,7 @@ type CreatePolarClawCronJobResponseBodyJobRuns struct {
 	//
 	// 1777424400000
 	NextRunAtMs *int64 `json:"NextRunAtMs,omitempty" xml:"NextRunAtMs,omitempty"`
-	// The model provider.
+	// The provider of the model.
 	//
 	// example:
 	//
@@ -730,7 +730,7 @@ type CreatePolarClawCronJobResponseBodyJobRuns struct {
 	//
 	// example:
 	//
-	// ***
+	// session-123
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The status. Valid values: ok, error, and skipped.
 	//
@@ -738,7 +738,7 @@ type CreatePolarClawCronJobResponseBodyJobRuns struct {
 	//
 	// ok
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The execution summary text.
+	// The text of the execution summary.
 	//
 	// example:
 	//
@@ -750,7 +750,7 @@ type CreatePolarClawCronJobResponseBodyJobRuns struct {
 	//
 	// 1777370572518
 	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
-	// The token usage details.
+	// The details of token usage.
 	Usage *CreatePolarClawCronJobResponseBodyJobRunsUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -991,7 +991,7 @@ type CreatePolarClawCronJobResponseBodyJobSchedule struct {
 	//
 	// 0 9 	- 	- *
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	// The schedule type: cron, every, or at.
+	// The schedule type. Valid values: cron, every, and at.
 	//
 	// example:
 	//

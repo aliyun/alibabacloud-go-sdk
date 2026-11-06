@@ -24,7 +24,7 @@ type DescribePolarFsObjectsRequest struct {
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The PolarFs instance ID.
+	// The PolarFS instance ID.
 	//
 	// This parameter is required.
 	//

@@ -60,9 +60,9 @@ type CreateModelApiRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// Qwen3-32B
 	ForceModel *string `json:"ForceModel,omitempty" xml:"ForceModel,omitempty"`
-	// The gateway instance ID. You can obtain the ID from the GwClusterId returned by CreateGateway.
+	// The gateway instance ID. You can obtain this ID from the GwClusterId parameter returned by the CreateGateway operation.
 	//
 	// This parameter is required.
 	//
@@ -116,13 +116,13 @@ type CreateModelApiRequest struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input tokens.
+	// The number of input points.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output tokens.
+	// The number of output points.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type CreateModelApiRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of routing rules, which is a JSON array string.
+	// The list of routing rules, specified as a JSON array string.
 	//
 	// This parameter is required.
 	//

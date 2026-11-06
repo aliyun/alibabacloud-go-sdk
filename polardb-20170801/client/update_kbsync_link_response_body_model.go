@@ -24,13 +24,13 @@ type UpdateKBSyncLinkResponseBody struct {
 	//
 	// pkbl-xxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scheduling time of the synchronization task.
+	// The scheduled time of the synchronization task.
 	SyncSchedule *string `json:"SyncSchedule,omitempty" xml:"SyncSchedule,omitempty"`
 }
 

@@ -20,7 +20,7 @@ type iCreateKnowledgeSpaceResponseBody interface {
 }
 
 type CreateKnowledgeSpaceResponseBody struct {
-	// The ID of the PolarDB instance created by automatic creation.
+	// The PolarDB instance ID for automatic creation.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateKnowledgeSpaceResponseBody struct {
 	//
 	// 20951253014****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

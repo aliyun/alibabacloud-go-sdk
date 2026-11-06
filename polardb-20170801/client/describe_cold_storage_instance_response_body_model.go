@@ -36,7 +36,7 @@ type iDescribeColdStorageInstanceResponseBody interface {
 }
 
 type DescribeColdStorageInstanceResponseBody struct {
-	// The maximum number of data entries to read in this request. Default value: 10.
+	// The maximum number of data entries to read in the current request. Default value: 10.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeColdStorageInstanceResponseBody struct {
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// Specifies whether OSS storage space is enabled. Valid values:
 	//
-	// - **true**: enabled
+	// - **true**: Enabled.
 	//
-	// - **false**: disabled
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeColdStorageInstanceResponseBody struct {
 	//
 	// C7A8EA8E-A140-5226-90D7-5BCB304D3DB6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the current cluster supports enabling cold storage. For clusters that do not support this feature, the switch is not displayed on the page.
+	// Indicates whether the current cluster supports enabling cold storage. For clusters that do not support this feature, the switch is not displayed on the page.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ func (s *DescribeColdStorageInstanceResponseBody) Validate() error {
 }
 
 type DescribeColdStorageInstanceResponseBodyOssClusterInfoList struct {
-	// The creation time of the cluster. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when the cluster was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type DescribeColdStorageInstanceResponseBodyOssClusterInfoList struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The size of the cold storage table. Unit: GB.
+	// The size of the cold storage table, in GB.
 	//
 	// example:
 	//
@@ -352,7 +352,7 @@ type DescribeColdStorageInstanceResponseBodyTables struct {
 	//
 	// 202509
 	Partion *string `json:"Partion,omitempty" xml:"Partion,omitempty"`
-	// The disk size of the cold storage instance. Unit: GiB.
+	// The disk size of the cold storage instance, in GiB.
 	//
 	// example:
 	//
@@ -490,7 +490,7 @@ func (s *DescribeColdStorageInstanceResponseBodyTables) Validate() error {
 }
 
 type DescribeColdStorageInstanceResponseBodyTablesChildObjects struct {
-	// The object name.
+	// The name of the object.
 	//
 	// example:
 	//
@@ -502,7 +502,7 @@ type DescribeColdStorageInstanceResponseBodyTablesChildObjects struct {
 	//
 	// File
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The disk size. Unit: GiB.
+	// The disk size, in GiB.
 	//
 	// example:
 	//
@@ -510,19 +510,19 @@ type DescribeColdStorageInstanceResponseBodyTablesChildObjects struct {
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **Scheduled**: waiting for execution
+	// 	- **Scheduled**: Pending execution.
 	//
-	// 	- **Running**: running
+	// 	- **Running**: Executing.
 	//
-	// 	- **Succeed**: succeeded
+	// 	- **Succeed**: Executed successfully.
 	//
-	// 	- **Cancelling**: cancelling
+	// 	- **Cancelling**: Terminating.
 	//
-	// 	- **Canceled**: canceled
+	// 	- **Canceled**: Terminated.
 	//
-	// 	- **Waiting**: waiting for the preset time
+	// 	- **Waiting**: Waiting for the scheduled time.
 	//
-	// To query multiple statuses, separate them with commas (,). The default value is empty, which indicates that all statuses are selected.
+	// To query multiple statuses, separate them with commas (,). By default, this parameter is left empty, which indicates all statuses.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iDeleteDBNodesRequest interface {
 }
 
 type DeleteDBNodesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. The client generates this value, which must be unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteDBNodesRequest struct {
 	//
 	// ENS
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,17 @@ type DeleteDBNodesRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The IDs of the nodes to be deleted.
+	// The ID of the node in the cluster.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters in your account, including node IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters under your account, including the node IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pi-************
+	// ["pi-************"]
 	DBNodeId []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
-	// The node type. Valid values:
+	// The type of the node. Valid values:
 	//
 	// - RO
 	//

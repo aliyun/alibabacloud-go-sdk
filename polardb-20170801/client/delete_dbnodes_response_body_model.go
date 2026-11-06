@@ -18,19 +18,19 @@ type iDeleteDBNodesResponseBody interface {
 }
 
 type DeleteDBNodesResponseBody struct {
-	// The database cluster ID.
+	// The ID of the database cluster.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The order ID.
+	// The ID of the order.
 	//
 	// example:
 	//
 	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

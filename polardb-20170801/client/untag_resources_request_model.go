@@ -30,9 +30,15 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to detach all tags. Valid values: **true*	- and **false**. Default value: **false**.
+	// Specifies whether to remove all tags. Valid values:
 	//
-	// > This parameter takes effect only when the `TagKey.n` parameter is empty.
+	// - **true**: Removes all tags.
+	//
+	// - **false**: Does not remove all tags.
+	//
+	// Default value: **false**.
+	//
+	// > This parameter takes effect only when `TagKey.N` is empty.
 	//
 	// example:
 	//
@@ -42,7 +48,7 @@ type UntagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +56,13 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the target cluster.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pc-***************
+	// ["pc-***************"]
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -72,7 +78,7 @@ type UntagResourcesRequest struct {
 	//
 	// example:
 	//
-	// type
+	// ["type"]
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

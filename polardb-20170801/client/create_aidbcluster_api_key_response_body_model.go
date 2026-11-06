@@ -18,7 +18,7 @@ type iCreateAIDBClusterApiKeyResponseBody interface {
 type CreateAIDBClusterApiKeyResponseBody struct {
 	// The API key.
 	ApiKey *CreateAIDBClusterApiKeyResponseBodyApiKey `json:"ApiKey,omitempty" xml:"ApiKey,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *CreateAIDBClusterApiKeyResponseBody) Validate() error {
 }
 
 type CreateAIDBClusterApiKeyResponseBodyApiKey struct {
-	// The API key for model serving.
+	// The API key for the model service.
 	//
 	// example:
 	//
-	// xxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The time when the API key was created.
+	// The creation time.
 	//
-	// The time is in the ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is displayed in ISO 8601 format in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type CreateAIDBClusterApiKeyResponseBodyApiKey struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// id
+	// The API key ID.
 	//
 	// example:
 	//
 	// 393
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The API key status.
+	// The status of the API key.
 	//
 	// example:
 	//

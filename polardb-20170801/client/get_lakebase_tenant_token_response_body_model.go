@@ -30,7 +30,7 @@ type GetLakebaseTenantTokenResponseBody struct {
 	//
 	// pc-xxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetLakebaseTenantTokenResponseBody struct {
 	//
 	// example:
 	//
-	// ***
+	// example-tenant-token-123456
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 

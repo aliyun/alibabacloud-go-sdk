@@ -44,7 +44,7 @@ type DescribeModelServicesRequest struct {
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The model service IDs.
+	// The IDs of the model services.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribePolarClawChannelsRequest interface {
 }
 
 type DescribePolarClawChannelsRequest struct {
-	// The application ID.
+	// The PolarClaw application ID. First call DescribeApplications to filter applications where ApplicationType is polardb_polarclaw and Status is Activated, and then use the returned ApplicationId to query channels.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribePolarClawChannelsRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The channel IDs to query. Leave this parameter empty to return all channels.
+	// The list of channel IDs to query. If this parameter is left empty, all channels are returned.
 	//
 	// example:
 	//

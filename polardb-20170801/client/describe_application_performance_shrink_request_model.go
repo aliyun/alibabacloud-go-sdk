@@ -38,7 +38,7 @@ type iDescribeApplicationPerformanceShrinkRequest interface {
 }
 
 type DescribeApplicationPerformanceShrinkRequest struct {
-	// The application cluster ID.
+	// The ID of the application cluster.
 	//
 	// This parameter is required.
 	//
@@ -46,40 +46,45 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The user.
+	// The consumer.
 	//
 	// example:
 	//
 	// c-xxxxxxx
 	Consumer *string `json:"Consumer,omitempty" xml:"Consumer,omitempty"`
-	// The user group.
+	// The consumer group.
 	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	// The downsampling policy.
+	// The downsampling strategy.
 	//
 	// example:
 	//
 	// raw_sample
 	Downsample *string `json:"Downsample,omitempty" xml:"Downsample,omitempty"`
-	// The end step number.
+	// The end step.
 	//
 	// example:
 	//
 	// 100
 	EndStep *int64 `json:"EndStep,omitempty" xml:"EndStep,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
+	// The end time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2020-09-23T01:00Z
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The optional filter conditions for performance data, represented as a JSON object. If this parameter is not specified, no filtering is applied based on this condition.
+	//
+	// example:
+	//
+	// {}
 	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The data granularity of performance data. Valid values:
+	// The performance data granularity. Valid values:
 	//
 	// - 5
 	//
@@ -101,7 +106,9 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics to query. Separate multiple values with commas (,).
 	//
-	// >  You can specify up to 5 performance metrics.
+	// Note
+	//
+	// You can specify up to 5 performance metrics.
 	//
 	// This parameter is required.
 	//
@@ -109,7 +116,7 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	//
 	// PolarDBSupabaseMemUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The maximum number of data points to return.
+	// The maximum number of points to return.
 	//
 	// example:
 	//
@@ -121,13 +128,13 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	//
 	// ms-xxxxxx
 	ModelService *string `json:"ModelService,omitempty" xml:"ModelService,omitempty"`
-	// The start step number.
+	// The start step.
 	//
 	// example:
 	//
 	// 1
 	StartStep *int64 `json:"StartStep,omitempty" xml:"StartStep,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
+	// The start time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format (UTC).
 	//
 	// This parameter is required.
 	//

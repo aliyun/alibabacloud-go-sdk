@@ -18,7 +18,7 @@ type iDeleteAgenticDBTenantRequest interface {
 }
 
 type DeleteAgenticDBTenantRequest struct {
-	// The ID of the AgenticDB cluster.
+	// The AgenticDB cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteAgenticDBTenantRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//

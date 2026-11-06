@@ -44,7 +44,7 @@ type TagResourcesRequest struct {
 	//
 	// example:
 	//
-	// pc-*****************
+	// ["pc-***************"]
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -156,17 +156,17 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. To add multiple tags to the cluster at once, click **Add*	- to specify multiple tag keys.
+	// The tag key. To add multiple tags to the target cluster at a time, click **Add*	- to add tag keys.
 	//
-	// > You can add a maximum of 20 tag pairs at a time. `Tag.n.Key` corresponds to `Tag.n.Value`.
+	// > You can add up to 20 tags at a time. The value of `Tag.n.Key` corresponds to `Tag.n.Value`.
 	//
 	// example:
 	//
 	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. To add multiple tags to the cluster at once, click **Add*	- to specify multiple tag values.
+	// The tag value. To add multiple tags to the target cluster at a time, click **Add*	- to add tag values.
 	//
-	// > You can add a maximum of 20 tag pairs at a time. `Tag.n.Value` corresponds to `Tag.n.Key`.
+	// > You can add up to 20 tags at a time. The value of `Tag.n.Value` corresponds to `Tag.n.Key`.
 	//
 	// example:
 	//

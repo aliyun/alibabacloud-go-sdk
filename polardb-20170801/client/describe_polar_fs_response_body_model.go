@@ -35,7 +35,7 @@ type DescribePolarFsResponseBody struct {
 	//
 	// 13
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

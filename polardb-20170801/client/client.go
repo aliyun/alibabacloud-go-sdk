@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("polardb")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":                  dara.String("polardb.aliyuncs.com"),
@@ -479,6 +487,10 @@ func (client *Client) AddPolarClawMCPServer(request *AddPolarClawMCPServerReques
 //
 // Adds a transparent acceleration path.
 //
+// Description:
+//
+// Adds a transparent acceleration path for a PolarFS instance. Before you call this operation, make sure that you have a running PolarDB cluster, a valid OSS bucket in the same region, and a PolarFS instance of the basic type with acceleration enabled. The bucket endpoint format is {bucket-name}.oss-{regionId}-internal.aliyuncs.com. This operation is not applicable to instances of the cold type or instances with acceleration disabled. You can call the DescribePolarFs and DescribePolarFsAttribute operations to verify the instance type and acceleration status.
+//
 // @param request - AddPolarFsPathMappingRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -530,6 +542,10 @@ func (client *Client) AddPolarFsPathMappingWithOptions(request *AddPolarFsPathMa
 // Summary:
 //
 // Adds a transparent acceleration path.
+//
+// Description:
+//
+// Adds a transparent acceleration path for a PolarFS instance. Before you call this operation, make sure that you have a running PolarDB cluster, a valid OSS bucket in the same region, and a PolarFS instance of the basic type with acceleration enabled. The bucket endpoint format is {bucket-name}.oss-{regionId}-internal.aliyuncs.com. This operation is not applicable to instances of the cold type or instances with acceleration disabled. You can call the DescribePolarFs and DescribePolarFsAttribute operations to verify the instance type and acceleration status.
 //
 // @param request - AddPolarFsPathMappingRequest
 //
@@ -911,13 +927,11 @@ func (client *Client) AnswerKnowledgeBase(request *AnswerKnowledgeBaseRequest) (
 
 // Summary:
 //
-// Applies prompts to an application instance.
+// Applies a prompt policy to an instance.
 //
 // Description:
 //
-// ## Request
-//
-// - Applies prompts to a specified application instance.
+// Before you begin: This operation applies only to mem0 applications created by calling CreateApplication with MemApplicationSpec specified. Create a mem0 application, call CreateApplicationPrompt to create a prompt, and then call this operation to apply the prompt policy.
 //
 // @param tmpReq - ApplyApplicationPromptsRequest
 //
@@ -979,13 +993,11 @@ func (client *Client) ApplyApplicationPromptsWithOptions(tmpReq *ApplyApplicatio
 
 // Summary:
 //
-// Applies prompts to an application instance.
+// Applies a prompt policy to an instance.
 //
 // Description:
 //
-// ## Request
-//
-// - Applies prompts to a specified application instance.
+// Before you begin: This operation applies only to mem0 applications created by calling CreateApplication with MemApplicationSpec specified. Create a mem0 application, call CreateApplicationPrompt to create a prompt, and then call this operation to apply the prompt policy.
 //
 // @param request - ApplyApplicationPromptsRequest
 //
@@ -2245,6 +2257,112 @@ func (client *Client) CheckKMSAuthorized(request *CheckKMSAuthorizedRequest) (_r
 
 // Summary:
 //
+// Prechecks a skill.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation prechecks a skill before it is uploaded to a PolarClaw instance.
+//
+// @param request - CheckPolarClawSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckPolarClawSkillResponse
+func (client *Client) CheckPolarClawSkillWithOptions(request *CheckPolarClawSkillRequest, runtime *dara.RuntimeOptions) (_result *CheckPolarClawSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketRegionId) {
+		query["BucketRegionId"] = request.BucketRegionId
+	}
+
+	if !dara.IsNil(request.BucketType) {
+		query["BucketType"] = request.BucketType
+	}
+
+	if !dara.IsNil(request.OSSBucket) {
+		query["OSSBucket"] = request.OSSBucket
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.SkillVersion) {
+		query["SkillVersion"] = request.SkillVersion
+	}
+
+	if !dara.IsNil(request.Summary) {
+		query["Summary"] = request.Summary
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CheckPolarClawSkill"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CheckPolarClawSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Prechecks a skill.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation prechecks a skill before it is uploaded to a PolarClaw instance.
+//
+// @param request - CheckPolarClawSkillRequest
+//
+// @return CheckPolarClawSkillResponse
+func (client *Client) CheckPolarClawSkill(request *CheckPolarClawSkillRequest) (_result *CheckPolarClawSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CheckPolarClawSkillResponse{}
+	_body, _err := client.CheckPolarClawSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks the consistency of quota settings in a PolarFS instance.
 //
 // Description:
@@ -2987,7 +3105,7 @@ func (client *Client) CreateAIDBCluster(request *CreateAIDBClusterRequest) (_res
 
 // Summary:
 //
-// Creates a model creation service API key.
+// Creates an API key for the model creation service.
 //
 // @param request - CreateAIDBClusterApiKeyRequest
 //
@@ -3039,7 +3157,7 @@ func (client *Client) CreateAIDBClusterApiKeyWithOptions(request *CreateAIDBClus
 
 // Summary:
 //
-// Creates a model creation service API key.
+// Creates an API key for the model creation service.
 //
 // @param request - CreateAIDBClusterApiKeyRequest
 //
@@ -4371,6 +4489,80 @@ func (client *Client) CreateApplicationAgentRelation(request *CreateApplicationA
 
 // Summary:
 //
+// Creates a backup for a specified PolarDB application and returns the backup job ID and workflow task ID.
+//
+// @param request - CreateApplicationBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationBackupResponse
+func (client *Client) CreateApplicationBackupWithOptions(request *CreateApplicationBackupRequest, runtime *dara.RuntimeOptions) (_result *CreateApplicationBackupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.JobMode) {
+		query["JobMode"] = request.JobMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateApplicationBackup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateApplicationBackupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a backup for a specified PolarDB application and returns the backup job ID and workflow task ID.
+//
+// @param request - CreateApplicationBackupRequest
+//
+// @return CreateApplicationBackupResponse
+func (client *Client) CreateApplicationBackup(request *CreateApplicationBackupRequest) (_result *CreateApplicationBackupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateApplicationBackupResponse{}
+	_body, _err := client.CreateApplicationBackupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a connection address for a specified application.
 //
 // @param request - CreateApplicationEndpointAddressRequest
@@ -4617,15 +4809,11 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 
 // Summary:
 //
-// Creates multiple API keys.
+// Creates API keys in batches.
 //
 // Description:
 //
-// > 	- A maximum of three manually created backups can exist for each cluster at the same time.
-//
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, it indicates that three manually created backups already exist in your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
-//
-// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the task may take a long time to complete.
+// Prerequisites: Call CreateGwConsumerOrder first, providing GatewayId, PackageSpec, KeyCount, RegionId, and ExpireTime to obtain a CreditToken, and then call this operation to create consumers in batches. Before the call, you must also obtain a valid ConsumerGroupId by calling DescribeConsumerGroups with GwClusterId and RegionId, and explicitly pass it in.
 //
 // @param request - CreateBatchConsumerRequest
 //
@@ -4693,15 +4881,11 @@ func (client *Client) CreateBatchConsumerWithOptions(request *CreateBatchConsume
 
 // Summary:
 //
-// Creates multiple API keys.
+// Creates API keys in batches.
 //
 // Description:
 //
-// > 	- A maximum of three manually created backups can exist for each cluster at the same time.
-//
-// > 	- If the error message `Exceeding the daily backup times of this DB cluster` is returned, it indicates that three manually created backups already exist in your cluster. [Delete a backup](https://help.aliyun.com/document_detail/98101.html) before you call this operation.
-//
-// > 	- After you call this operation, a backup task is created in the background. If the data volume is large, the task may take a long time to complete.
+// Prerequisites: Call CreateGwConsumerOrder first, providing GatewayId, PackageSpec, KeyCount, RegionId, and ExpireTime to obtain a CreditToken, and then call this operation to create consumers in batches. Before the call, you must also obtain a valid ConsumerGroupId by calling DescribeConsumerGroups with GwClusterId and RegionId, and explicitly pass it in.
 //
 // @param request - CreateBatchConsumerRequest
 //
@@ -6379,6 +6563,206 @@ func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *Cre
 
 // Summary:
 //
+// Creates a task to process data in PolarFS based on a specified template and write it to a PolarDB database.
+//
+// @param request - CreateDataProcessJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataProcessJobResponse
+func (client *Client) CreateDataProcessJobWithOptions(request *CreateDataProcessJobRequest, runtime *dara.RuntimeOptions) (_result *CreateDataProcessJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DestinationConfig) {
+		query["DestinationConfig"] = request.DestinationConfig
+	}
+
+	if !dara.IsNil(request.DestinationId) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !dara.IsNil(request.DestinationPath) {
+		query["DestinationPath"] = request.DestinationPath
+	}
+
+	if !dara.IsNil(request.DestinationType) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !dara.IsNil(request.ModelName) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !dara.IsNil(request.ProcessingMode) {
+		query["ProcessingMode"] = request.ProcessingMode
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceConfig) {
+		query["SourceConfig"] = request.SourceConfig
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.SourcePath) {
+		query["SourcePath"] = request.SourcePath
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataProcessJob"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataProcessJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a task to process data in PolarFS based on a specified template and write it to a PolarDB database.
+//
+// @param request - CreateDataProcessJobRequest
+//
+// @return CreateDataProcessJobResponse
+func (client *Client) CreateDataProcessJob(request *CreateDataProcessJobRequest) (_result *CreateDataProcessJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataProcessJobResponse{}
+	_body, _err := client.CreateDataProcessJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a task template for image data processing in a specified region.
+//
+// @param request - CreateDataProcessJobTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataProcessJobTemplateResponse
+func (client *Client) CreateDataProcessJobTemplateWithOptions(request *CreateDataProcessJobTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreateDataProcessJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Captioning) {
+		query["Captioning"] = request.Captioning
+	}
+
+	if !dara.IsNil(request.CaptioningPrompt) {
+		query["CaptioningPrompt"] = request.CaptioningPrompt
+	}
+
+	if !dara.IsNil(request.Embedding) {
+		query["Embedding"] = request.Embedding
+	}
+
+	if !dara.IsNil(request.EmbeddingDimension) {
+		query["EmbeddingDimension"] = request.EmbeddingDimension
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateConfig) {
+		query["TemplateConfig"] = request.TemplateConfig
+	}
+
+	if !dara.IsNil(request.TemplateName) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !dara.IsNil(request.TemplateType) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataProcessJobTemplate"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataProcessJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a task template for image data processing in a specified region.
+//
+// @param request - CreateDataProcessJobTemplateRequest
+//
+// @return CreateDataProcessJobTemplateResponse
+func (client *Client) CreateDataProcessJobTemplate(request *CreateDataProcessJobTemplateRequest) (_result *CreateDataProcessJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateDataProcessJobTemplateResponse{}
+	_body, _err := client.CreateDataProcessJobTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a database for a PolarDB cluster.
 //
 // Description:
@@ -7215,6 +7599,88 @@ func (client *Client) CreateGwConsumerOrder(request *CreateGwConsumerOrderReques
 
 // Summary:
 //
+// Creates a periodic inspection task for specified PolarDB clusters.
+//
+// @param request - CreateInspectionTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInspectionTaskResponse
+func (client *Client) CreateInspectionTaskWithOptions(request *CreateInspectionTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateInspectionTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CronExpression) {
+		query["CronExpression"] = request.CronExpression
+	}
+
+	if !dara.IsNil(request.DBClusterList) {
+		query["DBClusterList"] = request.DBClusterList
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SpaceId) {
+		query["SpaceId"] = request.SpaceId
+	}
+
+	if !dara.IsNil(request.TaskDescription) {
+		query["TaskDescription"] = request.TaskDescription
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateInspectionTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateInspectionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a periodic inspection task for specified PolarDB clusters.
+//
+// @param request - CreateInspectionTaskRequest
+//
+// @return CreateInspectionTaskResponse
+func (client *Client) CreateInspectionTask(request *CreateInspectionTaskRequest) (_result *CreateInspectionTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateInspectionTaskResponse{}
+	_body, _err := client.CreateInspectionTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a knowledge base synchronization link.
 //
 // @param request - CreateKBSyncLinkRequest
@@ -7421,6 +7887,10 @@ func (client *Client) CreateKnowledgeBase(request *CreateKnowledgeBaseRequest) (
 //
 // Creates a knowledge space.
 //
+// Description:
+//
+// Prerequisites: Before you call this operation, you must activate the PrivateLink service in your current account. If the service is not activated, the API returns the PrivateLinkService.NotOpen (400) error. You can check the activation status of the service in the PrivateLink console. Before creating a knowledge space, you must also prepare the VpcId, VSwitchId, SecurityGroupId, and OSSBucket parameters. You can query VPCs and vSwitches by calling the DescribeVpcs and DescribeVSwitches operations of VPC, query security groups by calling the DescribeSecurityGroups operation of ECS, and query buckets by calling the ListBuckets operation of OSS. If the resources do not exist, create them in the corresponding services first.
+//
 // @param request - CreateKnowledgeSpaceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7533,6 +8003,10 @@ func (client *Client) CreateKnowledgeSpaceWithOptions(request *CreateKnowledgeSp
 //
 // Creates a knowledge space.
 //
+// Description:
+//
+// Prerequisites: Before you call this operation, you must activate the PrivateLink service in your current account. If the service is not activated, the API returns the PrivateLinkService.NotOpen (400) error. You can check the activation status of the service in the PrivateLink console. Before creating a knowledge space, you must also prepare the VpcId, VSwitchId, SecurityGroupId, and OSSBucket parameters. You can query VPCs and vSwitches by calling the DescribeVpcs and DescribeVSwitches operations of VPC, query security groups by calling the DescribeSecurityGroups operation of ECS, and query buckets by calling the ListBuckets operation of OSS. If the resources do not exist, create them in the corresponding services first.
+//
 // @param request - CreateKnowledgeSpaceRequest
 //
 // @return CreateKnowledgeSpaceResponse
@@ -7540,6 +8014,88 @@ func (client *Client) CreateKnowledgeSpace(request *CreateKnowledgeSpaceRequest)
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateKnowledgeSpaceResponse{}
 	_body, _err := client.CreateKnowledgeSpaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Lakebase parameter template.
+//
+// @param request - CreateLakebaseMountParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLakebaseMountParameterGroupResponse
+func (client *Client) CreateLakebaseMountParameterGroupWithOptions(request *CreateLakebaseMountParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *CreateLakebaseMountParameterGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ParamGroupCategory) {
+		query["ParamGroupCategory"] = request.ParamGroupCategory
+	}
+
+	if !dara.IsNil(request.ParameterGroupDesc) {
+		query["ParameterGroupDesc"] = request.ParameterGroupDesc
+	}
+
+	if !dara.IsNil(request.ParameterGroupName) {
+		query["ParameterGroupName"] = request.ParameterGroupName
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateLakebaseMountParameterGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateLakebaseMountParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a Lakebase parameter template.
+//
+// @param request - CreateLakebaseMountParameterGroupRequest
+//
+// @return CreateLakebaseMountParameterGroupResponse
+func (client *Client) CreateLakebaseMountParameterGroup(request *CreateLakebaseMountParameterGroupRequest) (_result *CreateLakebaseMountParameterGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateLakebaseMountParameterGroupResponse{}
+	_body, _err := client.CreateLakebaseMountParameterGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7729,7 +8285,7 @@ func (client *Client) CreateModelApi(request *CreateModelApiRequest) (_result *C
 
 // Summary:
 //
-// Creates a model service.
+// Creates a model creation service.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -7813,7 +8369,7 @@ func (client *Client) CreateModelServiceWithOptions(request *CreateModelServiceR
 
 // Summary:
 //
-// Creates a model service.
+// Creates a model creation service.
 //
 // @param request - CreateModelServiceRequest
 //
@@ -8337,7 +8893,7 @@ func (client *Client) CreatePolarClawChannel(request *CreatePolarClawChannelRequ
 //
 // ## Request description
 //
-// You can use this API to define and create a scheduled task. The task is triggered periodically based on a specified schedule and carries specific messages or instructions. This API supports advanced options such as custom execution frequency, time zone settings, and failure alert mechanisms. You can also configure details such as message content, target channels, and recipients.
+// This API allows you to define and create a new scheduled task (cron job). The task is triggered periodically based on a given schedule and carries specific messages or instructions. It supports advanced options such as customizing the execution frequency, time zone settings, and alert mechanisms for failures. In addition, you can configure detailed information such as the message content, destination channel, and recipients.
 //
 // @param tmpReq - CreatePolarClawCronJobRequest
 //
@@ -8461,7 +9017,7 @@ func (client *Client) CreatePolarClawCronJobWithOptions(tmpReq *CreatePolarClawC
 //
 // ## Request description
 //
-// You can use this API to define and create a scheduled task. The task is triggered periodically based on a specified schedule and carries specific messages or instructions. This API supports advanced options such as custom execution frequency, time zone settings, and failure alert mechanisms. You can also configure details such as message content, target channels, and recipients.
+// This API allows you to define and create a new scheduled task (cron job). The task is triggered periodically based on a given schedule and carries specific messages or instructions. It supports advanced options such as customizing the execution frequency, time zone settings, and alert mechanisms for failures. In addition, you can configure detailed information such as the message content, destination channel, and recipients.
 //
 // @param request - CreatePolarClawCronJobRequest
 //
@@ -8470,6 +9026,186 @@ func (client *Client) CreatePolarClawCronJob(request *CreatePolarClawCronJobRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreatePolarClawCronJobResponse{}
 	_body, _err := client.CreatePolarClawCronJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传skill
+//
+// @param request - CreatePolarClawSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarClawSkillResponse
+func (client *Client) CreatePolarClawSkillWithOptions(request *CreatePolarClawSkillRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarClawSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BucketRegionId) {
+		query["BucketRegionId"] = request.BucketRegionId
+	}
+
+	if !dara.IsNil(request.BucketType) {
+		query["BucketType"] = request.BucketType
+	}
+
+	if !dara.IsNil(request.OSSBucket) {
+		query["OSSBucket"] = request.OSSBucket
+	}
+
+	if !dara.IsNil(request.OSSPrefix) {
+		query["OSSPrefix"] = request.OSSPrefix
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.SkillVersion) {
+		query["SkillVersion"] = request.SkillVersion
+	}
+
+	if !dara.IsNil(request.Summary) {
+		query["Summary"] = request.Summary
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarClawSkill"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarClawSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传skill
+//
+// @param request - CreatePolarClawSkillRequest
+//
+// @return CreatePolarClawSkillResponse
+func (client *Client) CreatePolarClawSkill(request *CreatePolarClawSkillRequest) (_result *CreatePolarClawSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarClawSkillResponse{}
+	_body, _err := client.CreatePolarClawSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a PolarClaw skill template.
+//
+// @param request - CreatePolarClawSkillTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePolarClawSkillTemplateResponse
+func (client *Client) CreatePolarClawSkillTemplateWithOptions(request *CreatePolarClawSkillTemplateRequest, runtime *dara.RuntimeOptions) (_result *CreatePolarClawSkillTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillTemplateDesc) {
+		query["SkillTemplateDesc"] = request.SkillTemplateDesc
+	}
+
+	if !dara.IsNil(request.SkillTemplateName) {
+		query["SkillTemplateName"] = request.SkillTemplateName
+	}
+
+	if !dara.IsNil(request.SkillTemplateParam) {
+		query["SkillTemplateParam"] = request.SkillTemplateParam
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePolarClawSkillTemplate"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePolarClawSkillTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a PolarClaw skill template.
+//
+// @param request - CreatePolarClawSkillTemplateRequest
+//
+// @return CreatePolarClawSkillTemplateResponse
+func (client *Client) CreatePolarClawSkillTemplate(request *CreatePolarClawSkillTemplateRequest) (_result *CreatePolarClawSkillTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreatePolarClawSkillTemplateResponse{}
+	_body, _err := client.CreatePolarClawSkillTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9165,7 +9901,7 @@ func (client *Client) DeleteAIDBCluster(request *DeleteAIDBClusterRequest) (_res
 
 // Summary:
 //
-// Deletes an API key for a model service.
+// Deletes an API key for the model service.
 //
 // @param request - DeleteAIDBClusterApiKeyRequest
 //
@@ -9217,7 +9953,7 @@ func (client *Client) DeleteAIDBClusterApiKeyWithOptions(request *DeleteAIDBClus
 
 // Summary:
 //
-// Deletes an API key for a model service.
+// Deletes an API key for the model service.
 //
 // @param request - DeleteAIDBClusterApiKeyRequest
 //
@@ -9949,7 +10685,7 @@ func (client *Client) DeleteAgenticDBProject(request *DeleteAgenticDBProjectRequ
 //
 // Description:
 //
-// Only tenants whose projects and branches have been completely cleaned up can be deleted. After a successful deletion, all API keys associated with the tenant become invalid. This operation does not automatically clean up projects, branches, or storage.
+// You can only delete a tenant whose projects and branches have been cleaned up. After the tenant is deleted, all its API keys become invalid. This operation does not automatically clean up projects, branches, or storage.
 //
 // @param request - DeleteAgenticDBTenantRequest
 //
@@ -10005,7 +10741,7 @@ func (client *Client) DeleteAgenticDBTenantWithOptions(request *DeleteAgenticDBT
 //
 // Description:
 //
-// Only tenants whose projects and branches have been completely cleaned up can be deleted. After a successful deletion, all API keys associated with the tenant become invalid. This operation does not automatically clean up projects, branches, or storage.
+// You can only delete a tenant whose projects and branches have been cleaned up. After the tenant is deleted, all its API keys become invalid. This operation does not automatically clean up projects, branches, or storage.
 //
 // @param request - DeleteAgenticDBTenantRequest
 //
@@ -11139,7 +11875,11 @@ func (client *Client) DeleteDBLink(request *DeleteDBLinkRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes read-only nodes from a PolarDB cluster.
+// Deletes a read-only node from a PolarDB cluster.
+//
+// Description:
+//
+// Deletes a read-only node from a PolarDB cluster. Before you call this operation, the cluster must be in the Running state. You can call the DescribeDBClusters operation to query the DBClusterStatus parameter and check the cluster state. If the cluster is in a transitional state such as DBNodeCreating or DBNodeDeleting, wait until the cluster returns to the Running state before you call this operation.
 //
 // @param request - DeleteDBNodesRequest
 //
@@ -11215,7 +11955,11 @@ func (client *Client) DeleteDBNodesWithOptions(request *DeleteDBNodesRequest, ru
 
 // Summary:
 //
-// Deletes read-only nodes from a PolarDB cluster.
+// Deletes a read-only node from a PolarDB cluster.
+//
+// Description:
+//
+// Deletes a read-only node from a PolarDB cluster. Before you call this operation, the cluster must be in the Running state. You can call the DescribeDBClusters operation to query the DBClusterStatus parameter and check the cluster state. If the cluster is in a transitional state such as DBNodeCreating or DBNodeDeleting, wait until the cluster returns to the Running state before you call this operation.
 //
 // @param request - DeleteDBNodesRequest
 //
@@ -11224,6 +11968,72 @@ func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *Del
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteDBNodesResponse{}
 	_body, _err := client.DeleteDBNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data processing task template in a specified region.
+//
+// @param request - DeleteDataProcessJobTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataProcessJobTemplateResponse
+func (client *Client) DeleteDataProcessJobTemplateWithOptions(request *DeleteDataProcessJobTemplateRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataProcessJobTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataProcessJobTemplate"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataProcessJobTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a data processing task template in a specified region.
+//
+// @param request - DeleteDataProcessJobTemplateRequest
+//
+// @return DeleteDataProcessJobTemplateResponse
+func (client *Client) DeleteDataProcessJobTemplate(request *DeleteDataProcessJobTemplateRequest) (_result *DeleteDataProcessJobTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteDataProcessJobTemplateResponse{}
+	_body, _err := client.DeleteDataProcessJobTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12205,6 +13015,76 @@ func (client *Client) DeleteKnowledgeBaseFile(request *DeleteKnowledgeBaseFileRe
 
 // Summary:
 //
+// Deletes a parameter template mounted to Lakebase.
+//
+// @param request - DeleteLakebaseMountParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLakebaseMountParameterGroupResponse
+func (client *Client) DeleteLakebaseMountParameterGroupWithOptions(request *DeleteLakebaseMountParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *DeleteLakebaseMountParameterGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ParameterGroupId) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteLakebaseMountParameterGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteLakebaseMountParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a parameter template mounted to Lakebase.
+//
+// @param request - DeleteLakebaseMountParameterGroupRequest
+//
+// @return DeleteLakebaseMountParameterGroupResponse
+func (client *Client) DeleteLakebaseMountParameterGroup(request *DeleteLakebaseMountParameterGroupRequest) (_result *DeleteLakebaseMountParameterGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteLakebaseMountParameterGroupResponse{}
+	_body, _err := client.DeleteLakebaseMountParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a PolarFS S3 account.
 //
 // @param request - DeleteLakebaseS3AccountRequest
@@ -12943,6 +13823,72 @@ func (client *Client) DeletePolarClawCronJob(request *DeletePolarClawCronJobRequ
 
 // Summary:
 //
+// Deletes a PolarClaw skill.
+//
+// @param request - DeletePolarClawSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePolarClawSkillResponse
+func (client *Client) DeletePolarClawSkillWithOptions(request *DeletePolarClawSkillRequest, runtime *dara.RuntimeOptions) (_result *DeletePolarClawSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeletePolarClawSkill"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeletePolarClawSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a PolarClaw skill.
+//
+// @param request - DeletePolarClawSkillRequest
+//
+// @return DeletePolarClawSkillResponse
+func (client *Client) DeletePolarClawSkill(request *DeletePolarClawSkillRequest) (_result *DeletePolarClawSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeletePolarClawSkillResponse{}
+	_body, _err := client.DeletePolarClawSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Releases a pay-as-you-go PolarFs instance.
 //
 // @param request - DeletePolarFsRequest
@@ -13585,6 +14531,61 @@ func (client *Client) DeleteSQLRateLimitingRules(request *DeleteSQLRateLimitingR
 
 // Summary:
 //
+// Queries the AI assistant order information for the current account, including the order status, version, capacity package, and expiration time.
+//
+// @param request - DescribeAIAgentOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIAgentOrderResponse
+func (client *Client) DescribeAIAgentOrderWithOptions(request *DescribeAIAgentOrderRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIAgentOrderResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIAgentOrder"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIAgentOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AI assistant order information for the current account, including the order status, version, capacity package, and expiration time.
+//
+// @param request - DescribeAIAgentOrderRequest
+//
+// @return DescribeAIAgentOrderResponse
+func (client *Client) DescribeAIAgentOrder(request *DescribeAIAgentOrderRequest) (_result *DescribeAIAgentOrderResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAIAgentOrderResponse{}
+	_body, _err := client.DescribeAIAgentOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the API keys for the model service.
 //
 // @param request - DescribeAIDBClusterApiKeysRequest
@@ -13835,7 +14836,7 @@ func (client *Client) DescribeAIDBClusterDatasets(request *DescribeAIDBClusterDa
 
 // Summary:
 //
-// Retrieves the performance metrics of an AI container.
+// Retrieves AI container performance metrics.
 //
 // @param request - DescribeAIDBClusterPerformanceRequest
 //
@@ -13895,7 +14896,7 @@ func (client *Client) DescribeAIDBClusterPerformanceWithOptions(request *Describ
 
 // Summary:
 //
-// Retrieves the performance metrics of an AI container.
+// Retrieves AI container performance metrics.
 //
 // @param request - DescribeAIDBClusterPerformanceRequest
 //
@@ -13904,6 +14905,88 @@ func (client *Client) DescribeAIDBClusterPerformance(request *DescribeAIDBCluste
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeAIDBClusterPerformanceResponse{}
 	_body, _err := client.DescribeAIDBClusterPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the node resource usage and pod resource requests in an AI database cluster.
+//
+// @param request - DescribeAIDBClusterResourceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAIDBClusterResourceUsageResponse
+func (client *Client) DescribeAIDBClusterResourceUsageWithOptions(request *DescribeAIDBClusterResourceUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeAIDBClusterResourceUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAIDBClusterResourceUsage"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAIDBClusterResourceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the node resource usage and pod resource requests in an AI database cluster.
+//
+// @param request - DescribeAIDBClusterResourceUsageRequest
+//
+// @return DescribeAIDBClusterResourceUsageResponse
+func (client *Client) DescribeAIDBClusterResourceUsage(request *DescribeAIDBClusterResourceUsageRequest) (_result *DescribeAIDBClusterResourceUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAIDBClusterResourceUsageResponse{}
+	_body, _err := client.DescribeAIDBClusterResourceUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14923,6 +16006,108 @@ func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiv
 
 // Summary:
 //
+// Queries the details of pending tasks.
+//
+// @param request - DescribeActiveOperationTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTaskResponse
+func (client *Client) DescribeActiveOperationTaskWithOptions(request *DescribeActiveOperationTaskRequest, runtime *dara.RuntimeOptions) (_result *DescribeActiveOperationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IsHistory) {
+		query["IsHistory"] = request.IsHistory
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductId) {
+		query["ProductId"] = request.ProductId
+	}
+
+	if !dara.IsNil(request.Region) {
+		query["Region"] = request.Region
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeActiveOperationTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeActiveOperationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of pending tasks.
+//
+// @param request - DescribeActiveOperationTaskRequest
+//
+// @return DescribeActiveOperationTaskResponse
+func (client *Client) DescribeActiveOperationTask(request *DescribeActiveOperationTaskRequest) (_result *DescribeActiveOperationTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeActiveOperationTaskResponse{}
+	_body, _err := client.DescribeActiveOperationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries operation and maintenance events for instances.
 //
 // @param request - DescribeActiveOperationTasksRequest
@@ -15119,7 +16304,7 @@ func (client *Client) DescribeAgenticDBBranch(request *DescribeAgenticDBBranchRe
 
 // Summary:
 //
-// Queries the branch connection information of an AgenticDB cluster.
+// Queries the connection information of an AgenticDB branch.
 //
 // @param request - DescribeAgenticDBBranchEndpointsRequest
 //
@@ -15179,7 +16364,7 @@ func (client *Client) DescribeAgenticDBBranchEndpointsWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the branch connection information of an AgenticDB cluster.
+// Queries the connection information of an AgenticDB branch.
 //
 // @param request - DescribeAgenticDBBranchEndpointsRequest
 //
@@ -16107,6 +17292,398 @@ func (client *Client) DescribeApplicationAttribute(request *DescribeApplicationA
 
 // Summary:
 //
+// Queries the available models, default models, and memory capability configurations for a specified region and application type.
+//
+// @param request - DescribeApplicationAvailableModelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationAvailableModelsResponse
+func (client *Client) DescribeApplicationAvailableModelsWithOptions(request *DescribeApplicationAvailableModelsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationAvailableModelsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationAvailableModels"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationAvailableModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the available models, default models, and memory capability configurations for a specified region and application type.
+//
+// @param request - DescribeApplicationAvailableModelsRequest
+//
+// @return DescribeApplicationAvailableModelsResponse
+func (client *Client) DescribeApplicationAvailableModels(request *DescribeApplicationAvailableModelsRequest) (_result *DescribeApplicationAvailableModelsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationAvailableModelsResponse{}
+	_body, _err := client.DescribeApplicationAvailableModelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of versions to which a specified application type can be upgraded.
+//
+// @param tmpReq - DescribeApplicationAvailableVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationAvailableVersionResponse
+func (client *Client) DescribeApplicationAvailableVersionWithOptions(tmpReq *DescribeApplicationAvailableVersionRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationAvailableVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeApplicationAvailableVersionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Components) {
+		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, dara.String("Components"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.ComponentsShrink) {
+		query["Components"] = request.ComponentsShrink
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationAvailableVersion"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationAvailableVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of versions to which a specified application type can be upgraded.
+//
+// @param request - DescribeApplicationAvailableVersionRequest
+//
+// @return DescribeApplicationAvailableVersionResponse
+func (client *Client) DescribeApplicationAvailableVersion(request *DescribeApplicationAvailableVersionRequest) (_result *DescribeApplicationAvailableVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationAvailableVersionResponse{}
+	_body, _err := client.DescribeApplicationAvailableVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the automatic backup cycle, backup time window, and level-1 backup retention period of a specified application.
+//
+// @param request - DescribeApplicationBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationBackupPolicyResponse
+func (client *Client) DescribeApplicationBackupPolicyWithOptions(request *DescribeApplicationBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationBackupPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the automatic backup cycle, backup time window, and level-1 backup retention period of a specified application.
+//
+// @param request - DescribeApplicationBackupPolicyRequest
+//
+// @return DescribeApplicationBackupPolicyResponse
+func (client *Client) DescribeApplicationBackupPolicy(request *DescribeApplicationBackupPolicyRequest) (_result *DescribeApplicationBackupPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationBackupPolicyResponse{}
+	_body, _err := client.DescribeApplicationBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the backup sets of a specified application by time range and backup status, and returns the backup details in a paginated list.
+//
+// @param request - DescribeApplicationBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationBackupsResponse
+func (client *Client) DescribeApplicationBackupsWithOptions(request *DescribeApplicationBackupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationBackupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.BackupStatus) {
+		query["BackupStatus"] = request.BackupStatus
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationBackups"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the backup sets of a specified application by time range and backup status, and returns the backup details in a paginated list.
+//
+// @param request - DescribeApplicationBackupsRequest
+//
+// @return DescribeApplicationBackupsResponse
+func (client *Client) DescribeApplicationBackups(request *DescribeApplicationBackupsRequest) (_result *DescribeApplicationBackupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationBackupsResponse{}
+	_body, _err := client.DescribeApplicationBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the performance metrics and sample data of a specified application component within a specified time range.
+//
+// @param request - DescribeApplicationComponentPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationComponentPerformanceResponse
+func (client *Client) DescribeApplicationComponentPerformanceWithOptions(request *DescribeApplicationComponentPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationComponentPerformanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ComponentId) {
+		query["ComponentId"] = request.ComponentId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationComponentPerformance"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationComponentPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the performance metrics and sample data of a specified application component within a specified time range.
+//
+// @param request - DescribeApplicationComponentPerformanceRequest
+//
+// @return DescribeApplicationComponentPerformanceResponse
+func (client *Client) DescribeApplicationComponentPerformance(request *DescribeApplicationComponentPerformanceRequest) (_result *DescribeApplicationComponentPerformanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationComponentPerformanceResponse{}
+	_body, _err := client.DescribeApplicationComponentPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of AI application logs.
 //
 // @param request - DescribeApplicationLogsRequest
@@ -16293,7 +17870,7 @@ func (client *Client) DescribeApplicationParameters(request *DescribeApplication
 
 // Summary:
 //
-// Queries the performance of a PolarDB AI application.
+// Queries the performance of PolarDB AI applications.
 //
 // @param tmpReq - DescribeApplicationPerformanceRequest
 //
@@ -16391,7 +17968,7 @@ func (client *Client) DescribeApplicationPerformanceWithOptions(tmpReq *Describe
 
 // Summary:
 //
-// Queries the performance of a PolarDB AI application.
+// Queries the performance of PolarDB AI applications.
 //
 // @param request - DescribeApplicationPerformanceRequest
 //
@@ -16409,7 +17986,11 @@ func (client *Client) DescribeApplicationPerformance(request *DescribeApplicatio
 
 // Summary:
 //
-// Lists the Application Prompts for a specific Application.
+// Queries all application prompt policies for the current application.
+//
+// Description:
+//
+// Prerequisites: First, create a PostgreSQL cluster, and then call the CreateApplication operation to create an application with ApplicationType set to mem0. When creating the application, you must prepare a VPC, a vSwitch, and a security group. After obtaining the ApplicationId, call this operation to query application prompts. Call sequence: CreateDBCluster → CreateApplication → DescribeApplicationPrompts.
 //
 // @param request - DescribeApplicationPromptsRequest
 //
@@ -16461,7 +18042,11 @@ func (client *Client) DescribeApplicationPromptsWithOptions(request *DescribeApp
 
 // Summary:
 //
-// Lists the Application Prompts for a specific Application.
+// Queries all application prompt policies for the current application.
+//
+// Description:
+//
+// Prerequisites: First, create a PostgreSQL cluster, and then call the CreateApplication operation to create an application with ApplicationType set to mem0. When creating the application, you must prepare a VPC, a vSwitch, and a security group. After obtaining the ApplicationId, call this operation to query application prompts. Call sequence: CreateDBCluster → CreateApplication → DescribeApplicationPrompts.
 //
 // @param request - DescribeApplicationPromptsRequest
 //
@@ -16688,6 +18273,124 @@ func (client *Client) DescribeApplicationSessionIds(request *DescribeApplication
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeApplicationSessionIdsResponse{}
 	_body, _err := client.DescribeApplicationSessionIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the session logs of a specified application, supports filtering by agent, session, and role, and returns paginated log records.
+//
+// Description:
+//
+// Logs for different roles may contain different fields. User messages may include Content. Assistant messages may include the model, token usage, and cost statistics. Tool execution results may include the tool name and execution status. Cost statistics are returned exactly as provided by the log source, and this API operation does not perform currency conversion.
+//
+// @param request - DescribeApplicationSessionLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationSessionLogsResponse
+func (client *Client) DescribeApplicationSessionLogsWithOptions(request *DescribeApplicationSessionLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationSessionLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Agent) {
+		query["Agent"] = request.Agent
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationSessionLogs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationSessionLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the session logs of a specified application, supports filtering by agent, session, and role, and returns paginated log records.
+//
+// Description:
+//
+// Logs for different roles may contain different fields. User messages may include Content. Assistant messages may include the model, token usage, and cost statistics. Tool execution results may include the tool name and execution status. Cost statistics are returned exactly as provided by the log source, and this API operation does not perform currency conversion.
+//
+// @param request - DescribeApplicationSessionLogsRequest
+//
+// @return DescribeApplicationSessionLogsResponse
+func (client *Client) DescribeApplicationSessionLogs(request *DescribeApplicationSessionLogsRequest) (_result *DescribeApplicationSessionLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeApplicationSessionLogsResponse{}
+	_body, _err := client.DescribeApplicationSessionLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17850,6 +19553,80 @@ func (client *Client) DescribeBudgetPolicies(request *DescribeBudgetPoliciesRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeBudgetPoliciesResponse{}
 	_body, _err := client.DescribeBudgetPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the used quota, statistical window, and associated budget policies for a PolarDB gateway instance by budget dimension.
+//
+// @param request - DescribeBudgetUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBudgetUsageResponse
+func (client *Client) DescribeBudgetUsageWithOptions(request *DescribeBudgetUsageRequest, runtime *dara.RuntimeOptions) (_result *DescribeBudgetUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BudgetDimensionRefId) {
+		query["BudgetDimensionRefId"] = request.BudgetDimensionRefId
+	}
+
+	if !dara.IsNil(request.BudgetDimensionType) {
+		query["BudgetDimensionType"] = request.BudgetDimensionType
+	}
+
+	if !dara.IsNil(request.GwClusterId) {
+		query["GwClusterId"] = request.GwClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeBudgetUsage"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeBudgetUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the used quota, statistical window, and associated budget policies for a PolarDB gateway instance by budget dimension.
+//
+// @param request - DescribeBudgetUsageRequest
+//
+// @return DescribeBudgetUsageResponse
+func (client *Client) DescribeBudgetUsage(request *DescribeBudgetUsageRequest) (_result *DescribeBudgetUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeBudgetUsageResponse{}
+	_body, _err := client.DescribeBudgetUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19509,6 +21286,68 @@ func (client *Client) DescribeDBClusterMigration(request *DescribeDBClusterMigra
 
 // Summary:
 //
+// Queries the model enhancement status and the list of API keys for a specified PolarDB cluster.
+//
+// @param request - DescribeDBClusterModelEnhancementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterModelEnhancementResponse
+func (client *Client) DescribeDBClusterModelEnhancementWithOptions(request *DescribeDBClusterModelEnhancementRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBClusterModelEnhancementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBClusterModelEnhancement"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBClusterModelEnhancementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the model enhancement status and the list of API keys for a specified PolarDB cluster.
+//
+// @param request - DescribeDBClusterModelEnhancementRequest
+//
+// @return DescribeDBClusterModelEnhancementResponse
+func (client *Client) DescribeDBClusterModelEnhancement(request *DescribeDBClusterModelEnhancementRequest) (_result *DescribeDBClusterModelEnhancementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDBClusterModelEnhancementResponse{}
+	_body, _err := client.DescribeDBClusterModelEnhancementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the interval at which the monitoring data of a PolarDB cluster is collected.
 //
 // @param request - DescribeDBClusterMonitorRequest
@@ -19755,29 +21594,29 @@ func (client *Client) DescribeDBClusterParameters(request *DescribeDBClusterPara
 //
 // Description:
 //
-// - If the monitoring frequency is once every 5 seconds:
+// If the monitoring frequency is 5 seconds:
 //
-//   - If the query time range is 1 hour or less, the data granularity is 5 seconds.
+//   - When the query time range is less than or equal to 1 hour, the display granularity is 5 seconds.
 //
-//   - If the query time range is 1 day or less, the data granularity is 1 minute.
+//   - When the query time range is less than or equal to 1 day, the display granularity is 1 minute.
 //
-//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
+//   - When the query time range is less than or equal to 7 days, the display granularity is 10 minutes.
 //
-//   - If the query time range is 30 days or less, the data granularity is 1 hour.
+//   - When the query time range is less than or equal to 30 days, the display granularity is 1 hour.
 //
-//   - If the query time range is more than 30 days, the data granularity is 1 day.
+//   - When the query time range is greater than 30 days, the display granularity is 1 day.
 //
-// - If the monitoring frequency is once every 60 seconds:
+//   - If the monitoring frequency is 60 seconds:
 //
-//   - If the query time range is 1 day or less, the data granularity is 1 minute.
+//   - When the query time range is less than or equal to 1 day, the display granularity is 1 minute.
 //
-//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
+//   - When the query time range is less than or equal to 7 days, the display granularity is 10 minutes.
 //
-//   - If the query time range is 30 days or less, the data granularity is 1 hour.
+//   - When the query time range is less than or equal to 30 days, the display granularity is 1 hour.
 //
-//   - If the query time range is more than 30 days, the data granularity is 1 day.
+//   - When the query time range is greater than 30 days, the display granularity is 1 day.
 //
-// > The default monitoring frequency is once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the frequency to once every 5 seconds.
+// > The default monitoring frequency is 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set it to 5 seconds.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -19849,29 +21688,29 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 //
 // Description:
 //
-// - If the monitoring frequency is once every 5 seconds:
+// If the monitoring frequency is 5 seconds:
 //
-//   - If the query time range is 1 hour or less, the data granularity is 5 seconds.
+//   - When the query time range is less than or equal to 1 hour, the display granularity is 5 seconds.
 //
-//   - If the query time range is 1 day or less, the data granularity is 1 minute.
+//   - When the query time range is less than or equal to 1 day, the display granularity is 1 minute.
 //
-//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
+//   - When the query time range is less than or equal to 7 days, the display granularity is 10 minutes.
 //
-//   - If the query time range is 30 days or less, the data granularity is 1 hour.
+//   - When the query time range is less than or equal to 30 days, the display granularity is 1 hour.
 //
-//   - If the query time range is more than 30 days, the data granularity is 1 day.
+//   - When the query time range is greater than 30 days, the display granularity is 1 day.
 //
-// - If the monitoring frequency is once every 60 seconds:
+//   - If the monitoring frequency is 60 seconds:
 //
-//   - If the query time range is 1 day or less, the data granularity is 1 minute.
+//   - When the query time range is less than or equal to 1 day, the display granularity is 1 minute.
 //
-//   - If the query time range is 7 days or less, the data granularity is 10 minutes.
+//   - When the query time range is less than or equal to 7 days, the display granularity is 10 minutes.
 //
-//   - If the query time range is 30 days or less, the data granularity is 1 hour.
+//   - When the query time range is less than or equal to 30 days, the display granularity is 1 hour.
 //
-//   - If the query time range is more than 30 days, the data granularity is 1 day.
+//   - When the query time range is greater than 30 days, the display granularity is 1 day.
 //
-// > The default monitoring frequency is once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the frequency to once every 5 seconds.
+// > The default monitoring frequency is 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set it to 5 seconds.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -21107,6 +22946,100 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 
 // Summary:
 //
+// Queries the list of instances.
+//
+// @param request - DescribeDBInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstancesResponse
+func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDBInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.InstanceNetworkType) {
+		query["InstanceNetworkType"] = request.InstanceNetworkType
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDBInstances"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDBInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of instances.
+//
+// @param request - DescribeDBInstancesRequest
+//
+// @return DescribeDBInstancesResponse
+func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (_result *DescribeDBInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDBInstancesResponse{}
+	_body, _err := client.DescribeDBInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the database links of a PolarDB for Oracle cluster.
 //
 // Description:
@@ -21797,6 +23730,228 @@ func (client *Client) DescribeDasConfig(request *DescribeDasConfigRequest) (_res
 
 // Summary:
 //
+// Queries the status, data source, destination database, and processing configuration of a specified data processing job.
+//
+// @param request - DescribeDataProcessJobAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataProcessJobAttributeResponse
+func (client *Client) DescribeDataProcessJobAttributeWithOptions(request *DescribeDataProcessJobAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataProcessJobAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataProcessJobAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataProcessJobAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status, data source, destination database, and processing configuration of a specified data processing job.
+//
+// @param request - DescribeDataProcessJobAttributeRequest
+//
+// @return DescribeDataProcessJobAttributeResponse
+func (client *Client) DescribeDataProcessJobAttribute(request *DescribeDataProcessJobAttributeRequest) (_result *DescribeDataProcessJobAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDataProcessJobAttributeResponse{}
+	_body, _err := client.DescribeDataProcessJobAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries data processing task templates by region, template ID, or type, and returns paginated template configurations.
+//
+// @param request - DescribeDataProcessJobTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataProcessJobTemplatesResponse
+func (client *Client) DescribeDataProcessJobTemplatesWithOptions(request *DescribeDataProcessJobTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataProcessJobTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TemplateId) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !dara.IsNil(request.TemplateType) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataProcessJobTemplates"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataProcessJobTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries data processing task templates by region, template ID, or type, and returns paginated template configurations.
+//
+// @param request - DescribeDataProcessJobTemplatesRequest
+//
+// @return DescribeDataProcessJobTemplatesResponse
+func (client *Client) DescribeDataProcessJobTemplates(request *DescribeDataProcessJobTemplatesRequest) (_result *DescribeDataProcessJobTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDataProcessJobTemplatesResponse{}
+	_body, _err := client.DescribeDataProcessJobTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data processing jobs of a specified PolarFS instance, with support for filtering by job ID and pagination.
+//
+// @param request - DescribeDataProcessJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataProcessJobsResponse
+func (client *Client) DescribeDataProcessJobsWithOptions(request *DescribeDataProcessJobsRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataProcessJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["SourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataProcessJobs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataProcessJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the data processing jobs of a specified PolarFS instance, with support for filtering by job ID and pagination.
+//
+// @param request - DescribeDataProcessJobsRequest
+//
+// @return DescribeDataProcessJobsResponse
+func (client *Client) DescribeDataProcessJobs(request *DescribeDataProcessJobsRequest) (_result *DescribeDataProcessJobsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDataProcessJobsResponse{}
+	_body, _err := client.DescribeDataProcessJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries for the details of databases in a specified PolarDB cluster.
 //
 // @param request - DescribeDatabasesRequest
@@ -22189,6 +24344,61 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 
 // Summary:
 //
+// Queries the available edge cloud regions for the current account, including their central control regions and standby edge cloud regions.
+//
+// @param request - DescribeEdgeCloudRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEdgeCloudRegionResponse
+func (client *Client) DescribeEdgeCloudRegionWithOptions(request *DescribeEdgeCloudRegionRequest, runtime *dara.RuntimeOptions) (_result *DescribeEdgeCloudRegionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeEdgeCloudRegion"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeEdgeCloudRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the available edge cloud regions for the current account, including their central control regions and standby edge cloud regions.
+//
+// @param request - DescribeEdgeCloudRegionRequest
+//
+// @return DescribeEdgeCloudRegionResponse
+func (client *Client) DescribeEdgeCloudRegion(request *DescribeEdgeCloudRegionRequest) (_result *DescribeEdgeCloudRegionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeEdgeCloudRegionResponse{}
+	_body, _err := client.DescribeEdgeCloudRegionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of permissions for a database role.
 //
 // @param request - DescribeEncryptionDBRolePrivilegeRequest
@@ -22419,6 +24629,80 @@ func (client *Client) DescribeExtensions(request *DescribeExtensionsRequest) (_r
 
 // Summary:
 //
+// Queries the file information under a specified path of a PolarFS instance and uses a pagination token to retrieve subsequent results.
+//
+// @param request - DescribeFileSystemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFileSystemsResponse
+func (client *Client) DescribeFileSystemsWithOptions(request *DescribeFileSystemsRequest, runtime *dara.RuntimeOptions) (_result *DescribeFileSystemsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFileSystems"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFileSystemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the file information under a specified path of a PolarFS instance and uses a pagination token to retrieve subsequent results.
+//
+// @param request - DescribeFileSystemsRequest
+//
+// @return DescribeFileSystemsResponse
+func (client *Client) DescribeFileSystems(request *DescribeFileSystemsRequest) (_result *DescribeFileSystemsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeFileSystemsResponse{}
+	_body, _err := client.DescribeFileSystemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Describes SQL firewall rules.
 //
 // @param request - DescribeFirewallRulesRequest
@@ -22501,7 +24785,7 @@ func (client *Client) DescribeFirewallRules(request *DescribeFirewallRulesReques
 
 // Summary:
 //
-// Queries all API keys under the current UID.
+// Queries all API keys for the specified UID.
 //
 // @param request - DescribeGatewayApikeyListRequest
 //
@@ -22553,7 +24837,7 @@ func (client *Client) DescribeGatewayApikeyListWithOptions(request *DescribeGate
 
 // Summary:
 //
-// Queries all API keys under the current UID.
+// Queries all API keys for the specified UID.
 //
 // @param request - DescribeGatewayApikeyListRequest
 //
@@ -23247,7 +25531,7 @@ func (client *Client) DescribeHALogs(request *DescribeHALogsRequest) (_result *D
 
 // Summary:
 //
-// Lists the historical events in Event Center.
+// Queries the list of events in Event Center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -23347,7 +25631,7 @@ func (client *Client) DescribeHistoryEventsWithOptions(request *DescribeHistoryE
 
 // Summary:
 //
-// Lists the historical events in Event Center.
+// Queries the list of events in Event Center.
 //
 // @param request - DescribeHistoryEventsRequest
 //
@@ -23356,6 +25640,80 @@ func (client *Client) DescribeHistoryEvents(request *DescribeHistoryEventsReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeHistoryEventsResponse{}
 	_body, _err := client.DescribeHistoryEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of events in the Event Center by event category.
+//
+// @param request - DescribeHistoryEventsStatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHistoryEventsStatResponse
+func (client *Client) DescribeHistoryEventsStatWithOptions(request *DescribeHistoryEventsStatRequest, runtime *dara.RuntimeOptions) (_result *DescribeHistoryEventsStatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArchiveStatus) {
+		query["ArchiveStatus"] = request.ArchiveStatus
+	}
+
+	if !dara.IsNil(request.FromStartTime) {
+		query["FromStartTime"] = request.FromStartTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ToStartTime) {
+		query["ToStartTime"] = request.ToStartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeHistoryEventsStat"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeHistoryEventsStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of events in the Event Center by event category.
+//
+// @param request - DescribeHistoryEventsStatRequest
+//
+// @return DescribeHistoryEventsStatResponse
+func (client *Client) DescribeHistoryEventsStat(request *DescribeHistoryEventsStatRequest) (_result *DescribeHistoryEventsStatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeHistoryEventsStatResponse{}
+	_body, _err := client.DescribeHistoryEventsStatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23605,6 +25963,294 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
+// Queries a list of reports for a specified inspection task. Supports time-based filtering and pagination.
+//
+// @param request - DescribeInspectionReportListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionReportListResponse
+func (client *Client) DescribeInspectionReportListWithOptions(request *DescribeInspectionReportListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionReportListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionReportList"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionReportListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of reports for a specified inspection task. Supports time-based filtering and pagination.
+//
+// @param request - DescribeInspectionReportListRequest
+//
+// @return DescribeInspectionReportListResponse
+func (client *Client) DescribeInspectionReportList(request *DescribeInspectionReportListRequest) (_result *DescribeInspectionReportListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionReportListResponse{}
+	_body, _err := client.DescribeInspectionReportListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution plan, associated clusters, and validity period of a specified inspection task.
+//
+// @param request - DescribeInspectionTaskAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionTaskAttributeResponse
+func (client *Client) DescribeInspectionTaskAttributeWithOptions(request *DescribeInspectionTaskAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionTaskAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionTaskAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionTaskAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution plan, associated clusters, and validity period of a specified inspection task.
+//
+// @param request - DescribeInspectionTaskAttributeRequest
+//
+// @return DescribeInspectionTaskAttributeResponse
+func (client *Client) DescribeInspectionTaskAttribute(request *DescribeInspectionTaskAttributeRequest) (_result *DescribeInspectionTaskAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionTaskAttributeResponse{}
+	_body, _err := client.DescribeInspectionTaskAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries inspection tasks, their execution plans, and associated clusters by paging based on the inspection space.
+//
+// @param request - DescribeInspectionTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInspectionTaskListResponse
+func (client *Client) DescribeInspectionTaskListWithOptions(request *DescribeInspectionTaskListRequest, runtime *dara.RuntimeOptions) (_result *DescribeInspectionTaskListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SpaceId) {
+		query["SpaceId"] = request.SpaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInspectionTaskList"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInspectionTaskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries inspection tasks, their execution plans, and associated clusters by paging based on the inspection space.
+//
+// @param request - DescribeInspectionTaskListRequest
+//
+// @return DescribeInspectionTaskListResponse
+func (client *Client) DescribeInspectionTaskList(request *DescribeInspectionTaskListRequest) (_result *DescribeInspectionTaskListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInspectionTaskListResponse{}
+	_body, _err := client.DescribeInspectionTaskListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the overall score, status, and check results of an instance inspection report based on the report ID.
+//
+// @param request - DescribeInstanceReportAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceReportAttributeResponse
+func (client *Client) DescribeInstanceReportAttributeWithOptions(request *DescribeInstanceReportAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceReportAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ReportId) {
+		query["ReportId"] = request.ReportId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceReportAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceReportAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the overall score, status, and check results of an instance inspection report based on the report ID.
+//
+// @param request - DescribeInstanceReportAttributeRequest
+//
+// @return DescribeInstanceReportAttributeResponse
+func (client *Client) DescribeInstanceReportAttribute(request *DescribeInstanceReportAttributeRequest) (_result *DescribeInstanceReportAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInstanceReportAttributeResponse{}
+	_body, _err := client.DescribeInstanceReportAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a knowledge base synchronization link.
 //
 // @param request - DescribeKBSyncLinkAttributeRequest
@@ -23744,6 +26390,150 @@ func (client *Client) DescribeKBSyncLinks(request *DescribeKBSyncLinksRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeKBSyncLinksResponse{}
 	_body, _err := client.DescribeKBSyncLinksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the region, status, capacity, network, billing method, and expiration information of a specified KVCache instance.
+//
+// @param request - DescribeKVCacheInstanceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKVCacheInstanceAttributeResponse
+func (client *Client) DescribeKVCacheInstanceAttributeWithOptions(request *DescribeKVCacheInstanceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeKVCacheInstanceAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KVCacheInstanceId) {
+		query["KVCacheInstanceId"] = request.KVCacheInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKVCacheInstanceAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKVCacheInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the region, status, capacity, network, billing method, and expiration information of a specified KVCache instance.
+//
+// @param request - DescribeKVCacheInstanceAttributeRequest
+//
+// @return DescribeKVCacheInstanceAttributeResponse
+func (client *Client) DescribeKVCacheInstanceAttribute(request *DescribeKVCacheInstanceAttributeRequest) (_result *DescribeKVCacheInstanceAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeKVCacheInstanceAttributeResponse{}
+	_body, _err := client.DescribeKVCacheInstanceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries KVCache instances filtered by region, associated cluster, or instance ID, and returns paginated instance details.
+//
+// @param request - DescribeKVCacheInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKVCacheInstancesResponse
+func (client *Client) DescribeKVCacheInstancesWithOptions(request *DescribeKVCacheInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeKVCacheInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KVCacheInstanceDescription) {
+		query["KVCacheInstanceDescription"] = request.KVCacheInstanceDescription
+	}
+
+	if !dara.IsNil(request.KVCacheInstanceIds) {
+		query["KVCacheInstanceIds"] = request.KVCacheInstanceIds
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKVCacheInstances"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKVCacheInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries KVCache instances filtered by region, associated cluster, or instance ID, and returns paginated instance details.
+//
+// @param request - DescribeKVCacheInstancesRequest
+//
+// @return DescribeKVCacheInstancesResponse
+func (client *Client) DescribeKVCacheInstances(request *DescribeKVCacheInstancesRequest) (_result *DescribeKVCacheInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeKVCacheInstancesResponse{}
+	_body, _err := client.DescribeKVCacheInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24196,6 +26986,302 @@ func (client *Client) DescribeKnowledgeSpaceAttribute(request *DescribeKnowledge
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeKnowledgeSpaceAttributeResponse{}
 	_body, _err := client.DescribeKnowledgeSpaceAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a parameter template attached to Lakebase.
+//
+// @param request - DescribeLakebaseMountParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLakebaseMountParameterGroupResponse
+func (client *Client) DescribeLakebaseMountParameterGroupWithOptions(request *DescribeLakebaseMountParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *DescribeLakebaseMountParameterGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ParameterGroupId) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLakebaseMountParameterGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLakebaseMountParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a parameter template attached to Lakebase.
+//
+// @param request - DescribeLakebaseMountParameterGroupRequest
+//
+// @return DescribeLakebaseMountParameterGroupResponse
+func (client *Client) DescribeLakebaseMountParameterGroup(request *DescribeLakebaseMountParameterGroupRequest) (_result *DescribeLakebaseMountParameterGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLakebaseMountParameterGroupResponse{}
+	_body, _err := client.DescribeLakebaseMountParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the change history of parameter templates mounted to Lakebase.
+//
+// @param request - DescribeLakebaseMountParameterGroupChangeLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLakebaseMountParameterGroupChangeLogsResponse
+func (client *Client) DescribeLakebaseMountParameterGroupChangeLogsWithOptions(request *DescribeLakebaseMountParameterGroupChangeLogsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLakebaseMountParameterGroupChangeLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ParameterGroupId) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLakebaseMountParameterGroupChangeLogs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLakebaseMountParameterGroupChangeLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the change history of parameter templates mounted to Lakebase.
+//
+// @param request - DescribeLakebaseMountParameterGroupChangeLogsRequest
+//
+// @return DescribeLakebaseMountParameterGroupChangeLogsResponse
+func (client *Client) DescribeLakebaseMountParameterGroupChangeLogs(request *DescribeLakebaseMountParameterGroupChangeLogsRequest) (_result *DescribeLakebaseMountParameterGroupChangeLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLakebaseMountParameterGroupChangeLogsResponse{}
+	_body, _err := client.DescribeLakebaseMountParameterGroupChangeLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of parameter templates associated with Lakebase.
+//
+// @param request - DescribeLakebaseMountParameterGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLakebaseMountParameterGroupsResponse
+func (client *Client) DescribeLakebaseMountParameterGroupsWithOptions(request *DescribeLakebaseMountParameterGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeLakebaseMountParameterGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ParamGroupCategory) {
+		query["ParamGroupCategory"] = request.ParamGroupCategory
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLakebaseMountParameterGroups"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLakebaseMountParameterGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of parameter templates associated with Lakebase.
+//
+// @param request - DescribeLakebaseMountParameterGroupsRequest
+//
+// @return DescribeLakebaseMountParameterGroupsResponse
+func (client *Client) DescribeLakebaseMountParameterGroups(request *DescribeLakebaseMountParameterGroupsRequest) (_result *DescribeLakebaseMountParameterGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLakebaseMountParameterGroupsResponse{}
+	_body, _err := client.DescribeLakebaseMountParameterGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameter dictionary supported by Lakebase mounted parameter templates.
+//
+// @param request - DescribeLakebaseMountParameterTemplateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLakebaseMountParameterTemplateListResponse
+func (client *Client) DescribeLakebaseMountParameterTemplateListWithOptions(request *DescribeLakebaseMountParameterTemplateListRequest, runtime *dara.RuntimeOptions) (_result *DescribeLakebaseMountParameterTemplateListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Engine) {
+		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ParamGroupCategory) {
+		query["ParamGroupCategory"] = request.ParamGroupCategory
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeLakebaseMountParameterTemplateList"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeLakebaseMountParameterTemplateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameter dictionary supported by Lakebase mounted parameter templates.
+//
+// @param request - DescribeLakebaseMountParameterTemplateListRequest
+//
+// @return DescribeLakebaseMountParameterTemplateListResponse
+func (client *Client) DescribeLakebaseMountParameterTemplateList(request *DescribeLakebaseMountParameterTemplateListRequest) (_result *DescribeLakebaseMountParameterTemplateListResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeLakebaseMountParameterTemplateListResponse{}
+	_body, _err := client.DescribeLakebaseMountParameterTemplateListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24885,7 +27971,7 @@ func (client *Client) DescribeModelApis(request *DescribeModelApisRequest) (_res
 
 // Summary:
 //
-// Queries the model service list.
+// Queries the list of model services.
 //
 // @param request - DescribeModelServicesRequest
 //
@@ -24961,7 +28047,7 @@ func (client *Client) DescribeModelServicesWithOptions(request *DescribeModelSer
 
 // Summary:
 //
-// Queries the model service list.
+// Queries the list of model services.
 //
 // @param request - DescribeModelServicesRequest
 //
@@ -25649,7 +28735,11 @@ func (client *Client) DescribePendingMaintenanceActions(request *DescribePending
 
 // Summary:
 //
-// Queries the chat records of a specified session.
+// Queries the details of a specified session.
+//
+// Description:
+//
+// Prerequisites: Use Signature Version 3.0 to call GetPolarAgent to initiate a conversation and obtain the SessionId from the returned stream. Then, call this operation to query the chat history of the session.
 //
 // @param request - DescribePolarAgentChatRecordsRequest
 //
@@ -25697,7 +28787,11 @@ func (client *Client) DescribePolarAgentChatRecordsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the chat records of a specified session.
+// Queries the details of a specified session.
+//
+// Description:
+//
+// Prerequisites: Use Signature Version 3.0 to call GetPolarAgent to initiate a conversation and obtain the SessionId from the returned stream. Then, call this operation to query the chat history of the session.
 //
 // @param request - DescribePolarAgentChatRecordsRequest
 //
@@ -26127,15 +29221,17 @@ func (client *Client) DescribePolarClawChannels(request *DescribePolarClawChanne
 
 // Summary:
 //
-// Query all or specific scheduled tasks in PolarClaw and their details.
+// Queries all or specified scheduled jobs and their details in PolarClaw.
 //
 // Description:
 //
 // ## Request description
 //
-// - You can use this API to retrieve all scheduled tasks in a PolarClaw application or filter specific tasks using the `JobIdList` parameter.
+// - You can use this API operation to retrieve all scheduled jobs in a PolarClaw application, or filter specific jobs by using the JobIdList parameter.
 //
-// - If you do not specify the `JobIdList` parameter, the API returns all scheduled tasks in the application.
+// - If the JobIdList parameter is not provided, all scheduled jobs in the application are returned.
+//
+// Before you begin: Call DescribeApplications to filter applications where ApplicationType is polardb_polarclaw, obtain the ApplicationId, and then call this operation to query scheduled jobs.
 //
 // @param tmpReq - DescribePolarClawCronJobsRequest
 //
@@ -26201,15 +29297,17 @@ func (client *Client) DescribePolarClawCronJobsWithOptions(tmpReq *DescribePolar
 
 // Summary:
 //
-// Query all or specific scheduled tasks in PolarClaw and their details.
+// Queries all or specified scheduled jobs and their details in PolarClaw.
 //
 // Description:
 //
 // ## Request description
 //
-// - You can use this API to retrieve all scheduled tasks in a PolarClaw application or filter specific tasks using the `JobIdList` parameter.
+// - You can use this API operation to retrieve all scheduled jobs in a PolarClaw application, or filter specific jobs by using the JobIdList parameter.
 //
-// - If you do not specify the `JobIdList` parameter, the API returns all scheduled tasks in the application.
+// - If the JobIdList parameter is not provided, all scheduled jobs in the application are returned.
+//
+// Before you begin: Call DescribeApplications to filter applications where ApplicationType is polardb_polarclaw, obtain the ApplicationId, and then call this operation to query scheduled jobs.
 //
 // @param request - DescribePolarClawCronJobsRequest
 //
@@ -26293,15 +29391,15 @@ func (client *Client) DescribePolarClawMCPServers(request *DescribePolarClawMCPS
 
 // Summary:
 //
-// Lists all installed PolarClaw plugins and their status.
+// Lists all installed PolarClaw plugins and their status information.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API gets information about all plugins for a given application, including built-in and user-installed plugins.
+// - Retrieves information about all plugins in a specified application, including built-in and user-installed plugins.
 //
-// - Use the `PluginList` parameter to request information for specific plugins. If you omit this parameter, the API returns details for all plugins.
+// - You can use the PluginList parameter to request information about specific plugins. If this parameter is not provided, details of all plugins are returned.
 //
 // @param request - DescribePolarClawPluginsRequest
 //
@@ -26349,15 +29447,15 @@ func (client *Client) DescribePolarClawPluginsWithOptions(request *DescribePolar
 
 // Summary:
 //
-// Lists all installed PolarClaw plugins and their status.
+// Lists all installed PolarClaw plugins and their status information.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - This API gets information about all plugins for a given application, including built-in and user-installed plugins.
+// - Retrieves information about all plugins in a specified application, including built-in and user-installed plugins.
 //
-// - Use the `PluginList` parameter to request information for specific plugins. If you omit this parameter, the API returns details for all plugins.
+// - You can use the PluginList parameter to request information about specific plugins. If this parameter is not provided, details of all plugins are returned.
 //
 // @param request - DescribePolarClawPluginsRequest
 //
@@ -26366,6 +29464,84 @@ func (client *Client) DescribePolarClawPlugins(request *DescribePolarClawPlugins
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePolarClawPluginsResponse{}
 	_body, _err := client.DescribePolarClawPluginsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a PolarClaw skill security assessment.
+//
+// @param request - DescribePolarClawSkillAssessmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawSkillAssessmentResponse
+func (client *Client) DescribePolarClawSkillAssessmentWithOptions(request *DescribePolarClawSkillAssessmentRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawSkillAssessmentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.SkillVersion) {
+		query["SkillVersion"] = request.SkillVersion
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawSkillAssessment"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawSkillAssessmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a PolarClaw skill security assessment.
+//
+// @param request - DescribePolarClawSkillAssessmentRequest
+//
+// @return DescribePolarClawSkillAssessmentResponse
+func (client *Client) DescribePolarClawSkillAssessment(request *DescribePolarClawSkillAssessmentRequest) (_result *DescribePolarClawSkillAssessmentResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawSkillAssessmentResponse{}
+	_body, _err := client.DescribePolarClawSkillAssessmentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26441,6 +29617,342 @@ func (client *Client) DescribePolarClawSkillDetail(request *DescribePolarClawSki
 
 // Summary:
 //
+// Queries the details of a PolarClaw skill template.
+//
+// Description:
+//
+// Queries the PolarClaw skill templates associated with a specified application. You must provide ApplicationId when calling this operation. If this parameter is not specified, InvalidApplicationId.Malformed is returned. The SkillTemplates field in the response is a list of templates, and Skills is a map of keys to strings. Each string can be parsed into an array of skill details, where each array element contains skillName and version.
+//
+// @param request - DescribePolarClawSkillTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawSkillTemplateResponse
+func (client *Client) DescribePolarClawSkillTemplateWithOptions(request *DescribePolarClawSkillTemplateRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawSkillTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillTemplateId) {
+		query["SkillTemplateId"] = request.SkillTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawSkillTemplate"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawSkillTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a PolarClaw skill template.
+//
+// Description:
+//
+// Queries the PolarClaw skill templates associated with a specified application. You must provide ApplicationId when calling this operation. If this parameter is not specified, InvalidApplicationId.Malformed is returned. The SkillTemplates field in the response is a list of templates, and Skills is a map of keys to strings. Each string can be parsed into an array of skill details, where each array element contains skillName and version.
+//
+// @param request - DescribePolarClawSkillTemplateRequest
+//
+// @return DescribePolarClawSkillTemplateResponse
+func (client *Client) DescribePolarClawSkillTemplate(request *DescribePolarClawSkillTemplateRequest) (_result *DescribePolarClawSkillTemplateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawSkillTemplateResponse{}
+	_body, _err := client.DescribePolarClawSkillTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries PolarClaw skill templates. You can filter the templates by template ID and time range, and the results are paginated.
+//
+// @param request - DescribePolarClawSkillTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawSkillTemplatesResponse
+func (client *Client) DescribePolarClawSkillTemplatesWithOptions(request *DescribePolarClawSkillTemplatesRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawSkillTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillTemplateId) {
+		query["SkillTemplateId"] = request.SkillTemplateId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawSkillTemplates"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawSkillTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries PolarClaw skill templates. You can filter the templates by template ID and time range, and the results are paginated.
+//
+// @param request - DescribePolarClawSkillTemplatesRequest
+//
+// @return DescribePolarClawSkillTemplatesResponse
+func (client *Client) DescribePolarClawSkillTemplates(request *DescribePolarClawSkillTemplatesRequest) (_result *DescribePolarClawSkillTemplatesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawSkillTemplatesResponse{}
+	_body, _err := client.DescribePolarClawSkillTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries PolarClaw skills.
+//
+// @param request - DescribePolarClawSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawSkillsResponse
+func (client *Client) DescribePolarClawSkillsWithOptions(request *DescribePolarClawSkillsRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawSkills"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries PolarClaw skills.
+//
+// @param request - DescribePolarClawSkillsRequest
+//
+// @return DescribePolarClawSkillsResponse
+func (client *Client) DescribePolarClawSkills(request *DescribePolarClawSkillsRequest) (_result *DescribePolarClawSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawSkillsResponse{}
+	_body, _err := client.DescribePolarClawSkillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the PolarClaw skills marketplace.
+//
+// @param request - DescribePolarClawSkillsMarketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarClawSkillsMarketResponse
+func (client *Client) DescribePolarClawSkillsMarketWithOptions(request *DescribePolarClawSkillsMarketRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarClawSkillsMarketResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OrderBy) {
+		query["OrderBy"] = request.OrderBy
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchBySkillName) {
+		query["SearchBySkillName"] = request.SearchBySkillName
+	}
+
+	if !dara.IsNil(request.SearchByTagName) {
+		query["SearchByTagName"] = request.SearchByTagName
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarClawSkillsMarket"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarClawSkillsMarketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the PolarClaw skills marketplace.
+//
+// @param request - DescribePolarClawSkillsMarketRequest
+//
+// @return DescribePolarClawSkillsMarketResponse
+func (client *Client) DescribePolarClawSkillsMarket(request *DescribePolarClawSkillsMarketRequest) (_result *DescribePolarClawSkillsMarketResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarClawSkillsMarketResponse{}
+	_body, _err := client.DescribePolarClawSkillsMarketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the status of a PolarClaw asynchronous task.
 //
 // @param request - DescribePolarClawTaskRequest
@@ -26507,7 +30019,7 @@ func (client *Client) DescribePolarClawTask(request *DescribePolarClawTaskReques
 
 // Summary:
 //
-// Queries the PolarFS information.
+// Queries PolarFS information.
 //
 // @param request - DescribePolarFsRequest
 //
@@ -26587,7 +30099,7 @@ func (client *Client) DescribePolarFsWithOptions(request *DescribePolarFsRequest
 
 // Summary:
 //
-// Queries the PolarFS information.
+// Queries PolarFS information.
 //
 // @param request - DescribePolarFsRequest
 //
@@ -26749,19 +30261,19 @@ func (client *Client) DescribePolarFsMapping(request *DescribePolarFsMappingRequ
 
 // Summary:
 //
-// Lists the files and subdirectories under a specified path.
+// Lists the files and subdirectories in a specified path.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - **Path*	- 参数必须提供一个绝对路径。
+// - The **Path*	- parameter must be an absolute path.
 //
-// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
+// - The **Recursive*	- parameter defaults to `false`. If set to `true`, the contents of all subdirectories are listed recursively.
 //
-// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
+// - The **Depth*	- parameter limits the recursion depth. Default value: `1`.
 //
-// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
+// - The **Filter*	- parameter supports wildcards or regular expressions to filter results.
 //
 // @param request - DescribePolarFsObjectsRequest
 //
@@ -26809,19 +30321,19 @@ func (client *Client) DescribePolarFsObjectsWithOptions(request *DescribePolarFs
 
 // Summary:
 //
-// Lists the files and subdirectories under a specified path.
+// Lists the files and subdirectories in a specified path.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - **Path*	- 参数必须提供一个绝对路径。
+// - The **Path*	- parameter must be an absolute path.
 //
-// - **Recursive*	- 参数默认为 `false`，如果设置为 `true`，则会递归列出所有子目录的内容。
+// - The **Recursive*	- parameter defaults to `false`. If set to `true`, the contents of all subdirectories are listed recursively.
 //
-// - **Depth*	- 参数用于限制递归深度，默认值为 `1`。
+// - The **Depth*	- parameter limits the recursion depth. Default value: `1`.
 //
-// - **Filter*	- 参数支持通配符或正则表达式过滤结果。
+// - The **Filter*	- parameter supports wildcards or regular expressions to filter results.
 //
 // @param request - DescribePolarFsObjectsRequest
 //
@@ -26830,6 +30342,100 @@ func (client *Client) DescribePolarFsObjects(request *DescribePolarFsObjectsRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribePolarFsObjectsResponse{}
 	_body, _err := client.DescribePolarFsObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the performance metrics and sampling data of a specified PolarFS instance within a specified time range.
+//
+// Description:
+//
+// Use Key to specify the metric group to query and Interval to specify the sampling granularity. The end time of the query must not be earlier than the start time, and the start time must not be later than the current time.
+//
+// @param request - DescribePolarFsPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarFsPerformanceResponse
+func (client *Client) DescribePolarFsPerformanceWithOptions(request *DescribePolarFsPerformanceRequest, runtime *dara.RuntimeOptions) (_result *DescribePolarFsPerformanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Interval) {
+		query["Interval"] = request.Interval
+	}
+
+	if !dara.IsNil(request.Key) {
+		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePolarFsPerformance"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePolarFsPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the performance metrics and sampling data of a specified PolarFS instance within a specified time range.
+//
+// Description:
+//
+// Use Key to specify the metric group to query and Interval to specify the sampling granularity. The end time of the query must not be earlier than the start time, and the start time must not be later than the current time.
+//
+// @param request - DescribePolarFsPerformanceRequest
+//
+// @return DescribePolarFsPerformanceResponse
+func (client *Client) DescribePolarFsPerformance(request *DescribePolarFsPerformanceRequest) (_result *DescribePolarFsPerformanceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribePolarFsPerformanceResponse{}
+	_body, _err := client.DescribePolarFsPerformanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26945,7 +30551,7 @@ func (client *Client) DescribePolarFsQuota(request *DescribePolarFsQuotaRequest)
 
 // Summary:
 //
-// Queries the quota list.
+// Queries the list of quotas.
 //
 // @param request - DescribePolarFsQuotaListRequest
 //
@@ -27009,7 +30615,7 @@ func (client *Client) DescribePolarFsQuotaListWithOptions(request *DescribePolar
 
 // Summary:
 //
-// Queries the quota list.
+// Queries the list of quotas.
 //
 // @param request - DescribePolarFsQuotaListRequest
 //
@@ -27437,6 +31043,72 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
+// Queries the replication slots of a specified PolarDB cluster. You can filter the results by the child node name of a distributed instance.
+//
+// @param request - DescribeReplicationSlotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeReplicationSlotsResponse
+func (client *Client) DescribeReplicationSlotsWithOptions(request *DescribeReplicationSlotsRequest, runtime *dara.RuntimeOptions) (_result *DescribeReplicationSlotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.SubGroupName) {
+		query["SubGroupName"] = request.SubGroupName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeReplicationSlots"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeReplicationSlotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the replication slots of a specified PolarDB cluster. You can filter the results by the child node name of a distributed instance.
+//
+// @param request - DescribeReplicationSlotsRequest
+//
+// @return DescribeReplicationSlotsResponse
+func (client *Client) DescribeReplicationSlots(request *DescribeReplicationSlotsRequest) (_result *DescribeReplicationSlotsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeReplicationSlotsResponse{}
+	_body, _err := client.DescribeReplicationSlotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Describes cross-cloud resource plans.
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -27473,6 +31145,170 @@ func (client *Client) DescribeResourcePackages() (_result *DescribeResourcePacka
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeResourcePackagesResponse{}
 	_body, _err := client.DescribeResourcePackagesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether the SQL Explorer feature is enabled for the specified cluster.
+//
+// @param request - DescribeSQLExplorerPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLExplorerPolicyResponse
+func (client *Client) DescribeSQLExplorerPolicyWithOptions(request *DescribeSQLExplorerPolicyRequest, runtime *dara.RuntimeOptions) (_result *DescribeSQLExplorerPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSQLExplorerPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSQLExplorerPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether the SQL Explorer feature is enabled for the specified cluster.
+//
+// @param request - DescribeSQLExplorerPolicyRequest
+//
+// @return DescribeSQLExplorerPolicyResponse
+func (client *Client) DescribeSQLExplorerPolicy(request *DescribeSQLExplorerPolicyRequest) (_result *DescribeSQLExplorerPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSQLExplorerPolicyResponse{}
+	_body, _err := client.DescribeSQLExplorerPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the SQL Explorer log retention period for a PolarDB cluster.
+//
+// @param request - DescribeSQLExplorerRetentionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLExplorerRetentionResponse
+func (client *Client) DescribeSQLExplorerRetentionWithOptions(request *DescribeSQLExplorerRetentionRequest, runtime *dara.RuntimeOptions) (_result *DescribeSQLExplorerRetentionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSQLExplorerRetention"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSQLExplorerRetentionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the SQL Explorer log retention period for a PolarDB cluster.
+//
+// @param request - DescribeSQLExplorerRetentionRequest
+//
+// @return DescribeSQLExplorerRetentionResponse
+func (client *Client) DescribeSQLExplorerRetention(request *DescribeSQLExplorerRetentionRequest) (_result *DescribeSQLExplorerRetentionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSQLExplorerRetentionResponse{}
+	_body, _err := client.DescribeSQLExplorerRetentionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27681,6 +31517,138 @@ func (client *Client) DescribeScheduleTasks(request *DescribeScheduleTasksReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeScheduleTasksResponse{}
 	_body, _err := client.DescribeScheduleTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameter modification history of PolarDB Search.
+//
+// @param request - DescribeSearchModifyParameterLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSearchModifyParameterLogResponse
+func (client *Client) DescribeSearchModifyParameterLogWithOptions(request *DescribeSearchModifyParameterLogRequest, runtime *dara.RuntimeOptions) (_result *DescribeSearchModifyParameterLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSearchModifyParameterLog"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSearchModifyParameterLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameter modification history of PolarDB Search.
+//
+// @param request - DescribeSearchModifyParameterLogRequest
+//
+// @return DescribeSearchModifyParameterLogResponse
+func (client *Client) DescribeSearchModifyParameterLog(request *DescribeSearchModifyParameterLogRequest) (_result *DescribeSearchModifyParameterLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSearchModifyParameterLogResponse{}
+	_body, _err := client.DescribeSearchModifyParameterLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameters of a PolarDB Search cluster.
+//
+// @param request - DescribeSearchParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSearchParametersResponse
+func (client *Client) DescribeSearchParametersWithOptions(request *DescribeSearchParametersRequest, runtime *dara.RuntimeOptions) (_result *DescribeSearchParametersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSearchParameters"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSearchParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the parameters of a PolarDB Search cluster.
+//
+// @param request - DescribeSearchParametersRequest
+//
+// @return DescribeSearchParametersResponse
+func (client *Client) DescribeSearchParameters(request *DescribeSearchParametersRequest) (_result *DescribeSearchParametersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSearchParametersResponse{}
+	_body, _err := client.DescribeSearchParametersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28035,6 +32003,100 @@ func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeSlowLogsResponse{}
 	_body, _err := client.DescribeSlowLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of storage plans.
+//
+// Description:
+//
+// > This operation is supported only in regions where the endpoint is polardb.aliyuncs.com.
+//
+// @param request - DescribeStoragePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStoragePlanResponse
+func (client *Client) DescribeStoragePlanWithOptions(request *DescribeStoragePlanRequest, runtime *dara.RuntimeOptions) (_result *DescribeStoragePlanResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeStoragePlan"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeStoragePlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of storage plans.
+//
+// Description:
+//
+// > This operation is supported only in regions where the endpoint is polardb.aliyuncs.com.
+//
+// @param request - DescribeStoragePlanRequest
+//
+// @return DescribeStoragePlanResponse
+func (client *Client) DescribeStoragePlan(request *DescribeStoragePlanRequest) (_result *DescribeStoragePlanResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeStoragePlanResponse{}
+	_body, _err := client.DescribeStoragePlanWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28676,7 +32738,7 @@ func (client *Client) DescribeVpcs(request *DescribeVpcsRequest) (_result *Descr
 
 // Summary:
 //
-// Queries the available zones.
+// Queries zones.
 //
 // @param request - DescribeZonesRequest
 //
@@ -28732,7 +32794,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 // Summary:
 //
-// Queries the available zones.
+// Queries zones.
 //
 // @param request - DescribeZonesRequest
 //
@@ -28741,6 +32803,130 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
 	_body, _err := client.DescribeZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables the column store table feature for a specified PolarDB cluster.
+//
+// @param request - DisableDBClusterCTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDBClusterCTableResponse
+func (client *Client) DisableDBClusterCTableWithOptions(request *DisableDBClusterCTableRequest, runtime *dara.RuntimeOptions) (_result *DisableDBClusterCTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableDBClusterCTable"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableDBClusterCTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables the column store table feature for a specified PolarDB cluster.
+//
+// @param request - DisableDBClusterCTableRequest
+//
+// @return DisableDBClusterCTableResponse
+func (client *Client) DisableDBClusterCTable(request *DisableDBClusterCTableRequest) (_result *DisableDBClusterCTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableDBClusterCTableResponse{}
+	_body, _err := client.DisableDBClusterCTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables document database support for a specified PolarDB cluster.
+//
+// @param request - DisableDBClusterDocumentDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDBClusterDocumentDBResponse
+func (client *Client) DisableDBClusterDocumentDBWithOptions(request *DisableDBClusterDocumentDBRequest, runtime *dara.RuntimeOptions) (_result *DisableDBClusterDocumentDBResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableDBClusterDocumentDB"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableDBClusterDocumentDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables document database support for a specified PolarDB cluster.
+//
+// @param request - DisableDBClusterDocumentDBRequest
+//
+// @return DisableDBClusterDocumentDBResponse
+func (client *Client) DisableDBClusterDocumentDB(request *DisableDBClusterDocumentDBRequest) (_result *DisableDBClusterDocumentDBResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DisableDBClusterDocumentDBResponse{}
+	_body, _err := client.DisableDBClusterDocumentDBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29197,6 +33383,216 @@ func (client *Client) DisablePolarClawPlugin(request *DisablePolarClawPluginRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DisablePolarClawPluginResponse{}
 	_body, _err := client.DisablePolarClawPluginWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the dataset service for a cold storage instance.
+//
+// @param request - EnableAIDBClusterDatasetServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableAIDBClusterDatasetServiceResponse
+func (client *Client) EnableAIDBClusterDatasetServiceWithOptions(request *EnableAIDBClusterDatasetServiceRequest, runtime *dara.RuntimeOptions) (_result *EnableAIDBClusterDatasetServiceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableAIDBClusterDatasetService"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableAIDBClusterDatasetServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the dataset service for a cold storage instance.
+//
+// @param request - EnableAIDBClusterDatasetServiceRequest
+//
+// @return EnableAIDBClusterDatasetServiceResponse
+func (client *Client) EnableAIDBClusterDatasetService(request *EnableAIDBClusterDatasetServiceRequest) (_result *EnableAIDBClusterDatasetServiceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableAIDBClusterDatasetServiceResponse{}
+	_body, _err := client.EnableAIDBClusterDatasetServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the column store table feature for the specified PolarDB cluster.
+//
+// @param request - EnableDBClusterCTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDBClusterCTableResponse
+func (client *Client) EnableDBClusterCTableWithOptions(request *EnableDBClusterCTableRequest, runtime *dara.RuntimeOptions) (_result *EnableDBClusterCTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableDBClusterCTable"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableDBClusterCTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the column store table feature for the specified PolarDB cluster.
+//
+// @param request - EnableDBClusterCTableRequest
+//
+// @return EnableDBClusterCTableResponse
+func (client *Client) EnableDBClusterCTable(request *EnableDBClusterCTableRequest) (_result *EnableDBClusterCTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableDBClusterCTableResponse{}
+	_body, _err := client.EnableDBClusterCTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables document database support for an instance.
+//
+// @param request - EnableDBClusterDocumentDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDBClusterDocumentDBResponse
+func (client *Client) EnableDBClusterDocumentDBWithOptions(request *EnableDBClusterDocumentDBRequest, runtime *dara.RuntimeOptions) (_result *EnableDBClusterDocumentDBResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableDBClusterDocumentDB"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableDBClusterDocumentDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables document database support for an instance.
+//
+// @param request - EnableDBClusterDocumentDBRequest
+//
+// @return EnableDBClusterDocumentDBResponse
+func (client *Client) EnableDBClusterDocumentDB(request *EnableDBClusterDocumentDBRequest) (_result *EnableDBClusterDocumentDBResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &EnableDBClusterDocumentDBResponse{}
+	_body, _err := client.EnableDBClusterDocumentDBWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30326,6 +34722,10 @@ func (client *Client) GenerateUpgradeReportForSyncClone(request *GenerateUpgrade
 //
 // Retrieves the Lakebase tenant token (SPG tenant mount URL).
 //
+// Description:
+//
+// Retrieves the token required for mounting a Lakebase tenant. Only PolarFS instances whose CreationCategory is basic (Basic Edition) are supported. The server verifies the instance category before calling the backend, and returns OperationDenied.PolarFsCategory for other categories. Before calling this operation, provide PolarFsInstanceId and specify the associated DBClusterId, mount subdirectory, and tenant identifier as needed.
+//
 // @param request - GetLakebaseTenantTokenRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -30381,6 +34781,10 @@ func (client *Client) GetLakebaseTenantTokenWithOptions(request *GetLakebaseTena
 // Summary:
 //
 // Retrieves the Lakebase tenant token (SPG tenant mount URL).
+//
+// Description:
+//
+// Retrieves the token required for mounting a Lakebase tenant. Only PolarFS instances whose CreationCategory is basic (Basic Edition) are supported. The server verifies the instance category before calling the backend, and returns OperationDenied.PolarFsCategory for other categories. Before calling this operation, provide PolarFsInstanceId and specify the associated DBClusterId, mount subdirectory, and tenant identifier as needed.
 //
 // @param request - GetLakebaseTenantTokenRequest
 //
@@ -30544,6 +34948,92 @@ func (client *Client) GetPolarClawConfig(request *GetPolarClawConfigRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetPolarClawConfigResponse{}
 	_body, _err := client.GetPolarClawConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the central bucket for polarClawSkill.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation sets file quota rules for specific directories in a Polarlakebase instance. By configuring the `FilePathQuotas` parameter, you can specify the directories to which the quota rules apply and their related attributes. Note that when you use `FilePathId` to specify a directory, ensure that the path is an absolute path starting from the root directory rather than a mount point path. Additionally, you can use the `Strategy` parameter to control how the rules take effect on existing files. By default, the rules take effect only when no rules exist.
+//
+// ### Important notes
+//
+// - The maximum length of the `FilePathQuotas` list is 21.
+//
+// - To apply rules to multi-level subdirectories under `FilePathId`, set the `MaxDepth` parameter. To traverse to the deepest level, set this value to 0.
+//
+// @param request - GetPolarClawSkillRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPolarClawSkillRegionResponse
+func (client *Client) GetPolarClawSkillRegionWithOptions(request *GetPolarClawSkillRegionRequest, runtime *dara.RuntimeOptions) (_result *GetPolarClawSkillRegionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPolarClawSkillRegion"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPolarClawSkillRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the central bucket for polarClawSkill.
+//
+// Description:
+//
+// ## Request description
+//
+// This operation sets file quota rules for specific directories in a Polarlakebase instance. By configuring the `FilePathQuotas` parameter, you can specify the directories to which the quota rules apply and their related attributes. Note that when you use `FilePathId` to specify a directory, ensure that the path is an absolute path starting from the root directory rather than a mount point path. Additionally, you can use the `Strategy` parameter to control how the rules take effect on existing files. By default, the rules take effect only when no rules exist.
+//
+// ### Important notes
+//
+// - The maximum length of the `FilePathQuotas` list is 21.
+//
+// - To apply rules to multi-level subdirectories under `FilePathId`, set the `MaxDepth` parameter. To traverse to the deepest level, set this value to 0.
+//
+// @param request - GetPolarClawSkillRegionRequest
+//
+// @return GetPolarClawSkillRegionResponse
+func (client *Client) GetPolarClawSkillRegion(request *GetPolarClawSkillRegionRequest) (_result *GetPolarClawSkillRegionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetPolarClawSkillRegionResponse{}
+	_body, _err := client.GetPolarClawSkillRegionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31247,7 +35737,7 @@ func (client *Client) ListPolarClawDevicePairs(request *ListPolarClawDevicePairs
 
 // Summary:
 //
-// Queries the tags that are attached to one or more PolarDB clusters, or the PolarDB clusters that are attached to one or more tags.
+// Queries the tags bound to one or more PolarDB clusters, or the PolarDB clusters bound to one or more tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -31323,7 +35813,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are attached to one or more PolarDB clusters, or the PolarDB clusters that are attached to one or more tags.
+// Queries the tags bound to one or more PolarDB clusters, or the PolarDB clusters bound to one or more tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -31341,7 +35831,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the tags that are attached to resources in a specified region.
+// Queries the resource tags in a region.
 //
 // @param request - ListTagResourcesForRegionRequest
 //
@@ -31409,7 +35899,7 @@ func (client *Client) ListTagResourcesForRegionWithOptions(request *ListTagResou
 
 // Summary:
 //
-// Queries the tags that are attached to resources in a specified region.
+// Queries the resource tags in a region.
 //
 // @param request - ListTagResourcesForRegionRequest
 //
@@ -31734,6 +36224,96 @@ func (client *Client) ModifyAIDBClusterModel(request *ModifyAIDBClusterModelRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyAIDBClusterModelResponse{}
 	_body, _err := client.ModifyAIDBClusterModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a task.
+//
+// @param request - ModifyAIDBClusterTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAIDBClusterTaskResponse
+func (client *Client) ModifyAIDBClusterTaskWithOptions(request *ModifyAIDBClusterTaskRequest, runtime *dara.RuntimeOptions) (_result *ModifyAIDBClusterTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.ModifyMode) {
+		query["ModifyMode"] = request.ModifyMode
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RelativeDBClusterId) {
+		query["RelativeDBClusterId"] = request.RelativeDBClusterId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAIDBClusterTask"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAIDBClusterTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a task.
+//
+// @param request - ModifyAIDBClusterTaskRequest
+//
+// @return ModifyAIDBClusterTaskResponse
+func (client *Client) ModifyAIDBClusterTask(request *ModifyAIDBClusterTaskRequest) (_result *ModifyAIDBClusterTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyAIDBClusterTaskResponse{}
+	_body, _err := client.ModifyAIDBClusterTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32397,7 +36977,7 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 
 // Summary:
 //
-// Modifies the history retention window of an AgenticDB project.
+// Modifies the history retention window for an AgenticDB project.
 //
 // @param request - ModifyAgenticDBProjectHistoryRetentionRequest
 //
@@ -32457,7 +37037,7 @@ func (client *Client) ModifyAgenticDBProjectHistoryRetentionWithOptions(request 
 
 // Summary:
 //
-// Modifies the history retention window of an AgenticDB project.
+// Modifies the history retention window for an AgenticDB project.
 //
 // @param request - ModifyAgenticDBProjectHistoryRetentionRequest
 //
@@ -32466,6 +37046,88 @@ func (client *Client) ModifyAgenticDBProjectHistoryRetention(request *ModifyAgen
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyAgenticDBProjectHistoryRetentionResponse{}
 	_body, _err := client.ModifyAgenticDBProjectHistoryRetentionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the automatic backup cycle, backup time window, and level-1 backup retention period of a specified application.
+//
+// @param request - ModifyApplicationBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApplicationBackupPolicyResponse
+func (client *Client) ModifyApplicationBackupPolicyWithOptions(request *ModifyApplicationBackupPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyApplicationBackupPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.PreferredBackupPeriod) {
+		query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	}
+
+	if !dara.IsNil(request.PreferredBackupRetentionPeriod) {
+		query["PreferredBackupRetentionPeriod"] = request.PreferredBackupRetentionPeriod
+	}
+
+	if !dara.IsNil(request.PreferredBackupTime) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyApplicationBackupPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyApplicationBackupPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the automatic backup cycle, backup time window, and level-1 backup retention period of a specified application.
+//
+// @param request - ModifyApplicationBackupPolicyRequest
+//
+// @return ModifyApplicationBackupPolicyResponse
+func (client *Client) ModifyApplicationBackupPolicy(request *ModifyApplicationBackupPolicyRequest) (_result *ModifyApplicationBackupPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyApplicationBackupPolicyResponse{}
+	_body, _err := client.ModifyApplicationBackupPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34189,6 +38851,72 @@ func (client *Client) ModifyDBClusterAuditLogCollector(request *ModifyDBClusterA
 
 // Summary:
 //
+// Modifies the minor engine version update policy for a specified PolarDB cluster.
+//
+// @param request - ModifyDBClusterAutoUpgradeMinorVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterAutoUpgradeMinorVersionResponse
+func (client *Client) ModifyDBClusterAutoUpgradeMinorVersionWithOptions(request *ModifyDBClusterAutoUpgradeMinorVersionRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBClusterAutoUpgradeMinorVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoUpgradeMinorVersion) {
+		query["AutoUpgradeMinorVersion"] = request.AutoUpgradeMinorVersion
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBClusterAutoUpgradeMinorVersion"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBClusterAutoUpgradeMinorVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the minor engine version update policy for a specified PolarDB cluster.
+//
+// @param request - ModifyDBClusterAutoUpgradeMinorVersionRequest
+//
+// @return ModifyDBClusterAutoUpgradeMinorVersionResponse
+func (client *Client) ModifyDBClusterAutoUpgradeMinorVersion(request *ModifyDBClusterAutoUpgradeMinorVersionRequest) (_result *ModifyDBClusterAutoUpgradeMinorVersionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyDBClusterAutoUpgradeMinorVersionResponse{}
+	_body, _err := client.ModifyDBClusterAutoUpgradeMinorVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enables or disables the cluster lock.
 //
 // @param request - ModifyDBClusterDeletionRequest
@@ -35397,7 +40125,7 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 
 // Summary:
 //
-// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or performs a shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -35485,7 +40213,7 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 
 // Summary:
 //
-// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or performs a shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -35857,15 +40585,15 @@ func (client *Client) ModifyDBClusterStorageSpace(request *ModifyDBClusterStorag
 
 // Summary:
 //
-// # ModifyDBClusterTDE
+// Enables Transparent Data Encryption (TDE) for a specified PolarDB cluster. You must activate Key Management Service (KMS) before you enable TDE. TDE cannot be disabled after it is enabled.
 //
 // Description:
 //
-// > - You must activate Key Management Service (KMS) before you perform this operation. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
+// >	- You must activate KMS before you perform this operation. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
 //
-// >
+// >	- TDE cannot be disabled after it is enabled.
 //
-// > - You cannot disable transparent data encryption (TDE) after you enable it.
+// Before you call this operation, call the OpenKmsService operation of KMS (version 2016-01-20) to activate KMS, and then call this operation to enable TDE for the cluster.
 //
 // @param request - ModifyDBClusterTDERequest
 //
@@ -35945,15 +40673,15 @@ func (client *Client) ModifyDBClusterTDEWithOptions(request *ModifyDBClusterTDER
 
 // Summary:
 //
-// # ModifyDBClusterTDE
+// Enables Transparent Data Encryption (TDE) for a specified PolarDB cluster. You must activate Key Management Service (KMS) before you enable TDE. TDE cannot be disabled after it is enabled.
 //
 // Description:
 //
-// > - You must activate Key Management Service (KMS) before you perform this operation. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
+// >	- You must activate KMS before you perform this operation. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
 //
-// >
+// >	- TDE cannot be disabled after it is enabled.
 //
-// > - You cannot disable transparent data encryption (TDE) after you enable it.
+// Before you call this operation, call the OpenKmsService operation of KMS (version 2016-01-20) to activate KMS, and then call this operation to enable TDE for the cluster.
 //
 // @param request - ModifyDBClusterTDERequest
 //
@@ -36718,6 +41446,92 @@ func (client *Client) ModifyDBNodeHotReplicaMode(request *ModifyDBNodeHotReplica
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyDBNodeHotReplicaModeResponse{}
 	_body, _err := client.ModifyDBNodeHotReplicaModeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the routing access weights of nodes.
+//
+// @param request - ModifyDBNodeRouterWeightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBNodeRouterWeightResponse
+func (client *Client) ModifyDBNodeRouterWeightWithOptions(request *ModifyDBNodeRouterWeightRequest, runtime *dara.RuntimeOptions) (_result *ModifyDBNodeRouterWeightResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.DBNodeWeights) {
+		query["DBNodeWeights"] = request.DBNodeWeights
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDBNodeRouterWeight"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDBNodeRouterWeightResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the routing access weights of nodes.
+//
+// @param request - ModifyDBNodeRouterWeightRequest
+//
+// @return ModifyDBNodeRouterWeightResponse
+func (client *Client) ModifyDBNodeRouterWeight(request *ModifyDBNodeRouterWeightRequest) (_result *ModifyDBNodeRouterWeightResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyDBNodeRouterWeightResponse{}
+	_body, _err := client.ModifyDBNodeRouterWeightWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37675,6 +42489,162 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalS
 
 // Summary:
 //
+// Modifies a mounted parameter template for Lakebase.
+//
+// @param request - ModifyLakebaseMountParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLakebaseMountParameterGroupResponse
+func (client *Client) ModifyLakebaseMountParameterGroupWithOptions(request *ModifyLakebaseMountParameterGroupRequest, runtime *dara.RuntimeOptions) (_result *ModifyLakebaseMountParameterGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteParameters) {
+		query["DeleteParameters"] = request.DeleteParameters
+	}
+
+	if !dara.IsNil(request.ParameterGroupId) {
+		query["ParameterGroupId"] = request.ParameterGroupId
+	}
+
+	if !dara.IsNil(request.ParameterGroupName) {
+		query["ParameterGroupName"] = request.ParameterGroupName
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLakebaseMountParameterGroup"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLakebaseMountParameterGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a mounted parameter template for Lakebase.
+//
+// @param request - ModifyLakebaseMountParameterGroupRequest
+//
+// @return ModifyLakebaseMountParameterGroupResponse
+func (client *Client) ModifyLakebaseMountParameterGroup(request *ModifyLakebaseMountParameterGroupRequest) (_result *ModifyLakebaseMountParameterGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyLakebaseMountParameterGroupResponse{}
+	_body, _err := client.ModifyLakebaseMountParameterGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the PolarFS S3 account policy.
+//
+// @param request - ModifyLakebaseS3AccountPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLakebaseS3AccountPolicyResponse
+func (client *Client) ModifyLakebaseS3AccountPolicyWithOptions(request *ModifyLakebaseS3AccountPolicyRequest, runtime *dara.RuntimeOptions) (_result *ModifyLakebaseS3AccountPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PfsInstanceId) {
+		query["PfsInstanceId"] = request.PfsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.UserAccAk) {
+		query["UserAccAk"] = request.UserAccAk
+	}
+
+	if !dara.IsNil(request.UserAccPolicy) {
+		query["UserAccPolicy"] = request.UserAccPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyLakebaseS3AccountPolicy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyLakebaseS3AccountPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the PolarFS S3 account policy.
+//
+// @param request - ModifyLakebaseS3AccountPolicyRequest
+//
+// @return ModifyLakebaseS3AccountPolicyResponse
+func (client *Client) ModifyLakebaseS3AccountPolicy(request *ModifyLakebaseS3AccountPolicyRequest) (_result *ModifyLakebaseS3AccountPolicyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyLakebaseS3AccountPolicyResponse{}
+	_body, _err := client.ModifyLakebaseS3AccountPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the log backup retention policy of a PolarDB cluster.
 //
 // @param tmpReq - ModifyLogBackupPolicyRequest
@@ -38154,6 +43124,244 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	runtime := &dara.RuntimeOptions{}
 	_result = &ModifyPendingMaintenanceActionResponse{}
 	_body, _err := client.ModifyPendingMaintenanceActionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a PolarClaw skill.
+//
+// Description:
+//
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
+//
+// @param request - ModifyPolarClawSkillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolarClawSkillResponse
+func (client *Client) ModifyPolarClawSkillWithOptions(request *ModifyPolarClawSkillRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolarClawSkillResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ModifyType) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["Path"] = request.Path
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.SkillVersion) {
+		query["SkillVersion"] = request.SkillVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPolarClawSkill"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPolarClawSkillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a PolarClaw skill.
+//
+// Description:
+//
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
+//
+// @param request - ModifyPolarClawSkillRequest
+//
+// @return ModifyPolarClawSkillResponse
+func (client *Client) ModifyPolarClawSkill(request *ModifyPolarClawSkillRequest) (_result *ModifyPolarClawSkillResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyPolarClawSkillResponse{}
+	_body, _err := client.ModifyPolarClawSkillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the PolarFs configuration.
+//
+// @param request - ModifyPolarFsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolarFsResponse
+func (client *Client) ModifyPolarFsWithOptions(request *ModifyPolarFsRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolarFsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CustomOssAk) {
+		query["CustomOssAk"] = request.CustomOssAk
+	}
+
+	if !dara.IsNil(request.CustomOssSk) {
+		query["CustomOssSk"] = request.CustomOssSk
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPolarFs"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPolarFsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the PolarFs configuration.
+//
+// @param request - ModifyPolarFsRequest
+//
+// @return ModifyPolarFsResponse
+func (client *Client) ModifyPolarFs(request *ModifyPolarFsRequest) (_result *ModifyPolarFsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyPolarFsResponse{}
+	_body, _err := client.ModifyPolarFsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the description of a PolarFS instance.
+//
+// @param request - ModifyPolarFsInstanceDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPolarFsInstanceDescriptionResponse
+func (client *Client) ModifyPolarFsInstanceDescriptionWithOptions(request *ModifyPolarFsInstanceDescriptionRequest, runtime *dara.RuntimeOptions) (_result *ModifyPolarFsInstanceDescriptionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceDescription) {
+		query["PolarFsInstanceDescription"] = request.PolarFsInstanceDescription
+	}
+
+	if !dara.IsNil(request.PolarFsInstanceId) {
+		query["PolarFsInstanceId"] = request.PolarFsInstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPolarFsInstanceDescription"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPolarFsInstanceDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the description of a PolarFS instance.
+//
+// @param request - ModifyPolarFsInstanceDescriptionRequest
+//
+// @return ModifyPolarFsInstanceDescriptionResponse
+func (client *Client) ModifyPolarFsInstanceDescription(request *ModifyPolarFsInstanceDescriptionRequest) (_result *ModifyPolarFsInstanceDescriptionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyPolarFsInstanceDescriptionResponse{}
+	_body, _err := client.ModifyPolarFsInstanceDescriptionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38679,6 +43887,252 @@ func (client *Client) ModifyScheduleTask(request *ModifyScheduleTaskRequest) (_r
 
 // Summary:
 //
+// Modifies the parameters of a PolarDB Search cluster.
+//
+// @param request - ModifySearchParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySearchParametersResponse
+func (client *Client) ModifySearchParametersWithOptions(request *ModifySearchParametersRequest, runtime *dara.RuntimeOptions) (_result *ModifySearchParametersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.Parameters) {
+		query["Parameters"] = request.Parameters
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySearchParameters"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySearchParametersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the parameters of a PolarDB Search cluster.
+//
+// @param request - ModifySearchParametersRequest
+//
+// @return ModifySearchParametersResponse
+func (client *Client) ModifySearchParameters(request *ModifySearchParametersRequest) (_result *ModifySearchParametersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySearchParametersResponse{}
+	_body, _err := client.ModifySearchParametersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the IP address whitelist of a specified PolarDB cluster.
+//
+// @param request - ModifySecurityIpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySecurityIpsResponse
+func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsRequest, runtime *dara.RuntimeOptions) (_result *ModifySecurityIpsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterIPArrayAttribute) {
+		query["DBClusterIPArrayAttribute"] = request.DBClusterIPArrayAttribute
+	}
+
+	if !dara.IsNil(request.DBClusterIPArrayName) {
+		query["DBClusterIPArrayName"] = request.DBClusterIPArrayName
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityIps) {
+		query["SecurityIps"] = request.SecurityIps
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifySecurityIps"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifySecurityIpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the IP address whitelist of a specified PolarDB cluster.
+//
+// @param request - ModifySecurityIpsRequest
+//
+// @return ModifySecurityIpsResponse
+func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_result *ModifySecurityIpsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifySecurityIpsResponse{}
+	_body, _err := client.ModifySecurityIpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates task information in the task center.
+//
+// @param request - ModifyTaskInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTaskInfoResponse
+func (client *Client) ModifyTaskInfoWithOptions(request *ModifyTaskInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyTaskInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionParams) {
+		query["ActionParams"] = request.ActionParams
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.SecurityToken) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !dara.IsNil(request.StepName) {
+		query["StepName"] = request.StepName
+	}
+
+	if !dara.IsNil(request.TaskAction) {
+		query["TaskAction"] = request.TaskAction
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyTaskInfo"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyTaskInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates task information in the task center.
+//
+// @param request - ModifyTaskInfoRequest
+//
+// @return ModifyTaskInfoResponse
+func (client *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (_result *ModifyTaskInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyTaskInfoResponse{}
+	_body, _err := client.ModifyTaskInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Renames or moves files in a PolarFs instance.
 //
 // @param request - MovePolarFsObjectsRequest
@@ -39116,6 +44570,104 @@ func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStor
 	runtime := &dara.RuntimeOptions{}
 	_result = &RefreshDBClusterStorageUsageResponse{}
 	_body, _err := client.RefreshDBClusterStorageUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the proxy performance level of a specified PolarDB cluster and supports scheduled execution.
+//
+// @param request - RefreshProxyLevelRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshProxyLevelResponse
+func (client *Client) RefreshProxyLevelWithOptions(request *RefreshProxyLevelRequest, runtime *dara.RuntimeOptions) (_result *RefreshProxyLevelResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FromTimeService) {
+		query["FromTimeService"] = request.FromTimeService
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PlannedEndTime) {
+		query["PlannedEndTime"] = request.PlannedEndTime
+	}
+
+	if !dara.IsNil(request.PlannedStartTime) {
+		query["PlannedStartTime"] = request.PlannedStartTime
+	}
+
+	if !dara.IsNil(request.ProxyTargetClass) {
+		query["ProxyTargetClass"] = request.ProxyTargetClass
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshProxyLevel"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshProxyLevelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the proxy performance level of a specified PolarDB cluster and supports scheduled execution.
+//
+// @param request - RefreshProxyLevelRequest
+//
+// @return RefreshProxyLevelResponse
+func (client *Client) RefreshProxyLevel(request *RefreshProxyLevelRequest) (_result *RefreshProxyLevelResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RefreshProxyLevelResponse{}
+	_body, _err := client.RefreshProxyLevelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40043,6 +45595,88 @@ func (client *Client) ResetAgenticDBTenantApiKey(request *ResetAgenticDBTenantAp
 
 // Summary:
 //
+// Resets the password of an application account.
+//
+// Description:
+//
+// > 	- Only privileged accounts of PolarDB for MySQL clusters can be reset.
+//
+// > 	- If the privileged account encounters issues, such as unexpected permission revocation (REVOKE), you can reset the permissions of the privileged account to restore normal access.
+//
+// @param request - ResetApplicationAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetApplicationAccountPasswordResponse
+func (client *Client) ResetApplicationAccountPasswordWithOptions(request *ResetApplicationAccountPasswordRequest, runtime *dara.RuntimeOptions) (_result *ResetApplicationAccountPasswordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountName) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.NewAccountPassword) {
+		query["NewAccountPassword"] = request.NewAccountPassword
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ResetApplicationAccountPassword"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ResetApplicationAccountPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Resets the password of an application account.
+//
+// Description:
+//
+// > 	- Only privileged accounts of PolarDB for MySQL clusters can be reset.
+//
+// > 	- If the privileged account encounters issues, such as unexpected permission revocation (REVOKE), you can reset the permissions of the privileged account to restore normal access.
+//
+// @param request - ResetApplicationAccountPasswordRequest
+//
+// @return ResetApplicationAccountPasswordResponse
+func (client *Client) ResetApplicationAccountPassword(request *ResetApplicationAccountPasswordRequest) (_result *ResetApplicationAccountPasswordResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ResetApplicationAccountPasswordResponse{}
+	_body, _err := client.ResetApplicationAccountPasswordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Resets an API key.
 //
 // @param request - ResetConsumerApiKeyRequest
@@ -40330,6 +45964,92 @@ func (client *Client) RestartAIDBCluster(request *RestartAIDBClusterRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &RestartAIDBClusterResponse{}
 	_body, _err := client.RestartAIDBClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts a specified PolarDB cluster.
+//
+// @param request - RestartDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDBClusterResponse
+func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterRequest, runtime *dara.RuntimeOptions) (_result *RestartDBClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.OwnerAccount) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !dara.IsNil(request.OwnerId) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceOwnerAccount) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !dara.IsNil(request.ResourceOwnerId) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestartDBCluster"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestartDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restarts a specified PolarDB cluster.
+//
+// @param request - RestartDBClusterRequest
+//
+// @return RestartDBClusterResponse
+func (client *Client) RestartDBCluster(request *RestartDBClusterRequest) (_result *RestartDBClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RestartDBClusterResponse{}
+	_body, _err := client.RestartDBClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40658,6 +46378,80 @@ func (client *Client) RestartPolarClawGateway(request *RestartPolarClawGatewayRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &RestartPolarClawGatewayResponse{}
 	_body, _err := client.RestartPolarClawGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Restores a PolarDB application from a specified backup set.
+//
+// @param request - RestoreApplicationByBackupSetRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreApplicationByBackupSetResponse
+func (client *Client) RestoreApplicationByBackupSetWithOptions(request *RestoreApplicationByBackupSetRequest, runtime *dara.RuntimeOptions) (_result *RestoreApplicationByBackupSetResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
+	if !dara.IsNil(request.BackupSetId) {
+		query["BackupSetId"] = request.BackupSetId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RestoreApplicationByBackupSet"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RestoreApplicationByBackupSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restores a PolarDB application from a specified backup set.
+//
+// @param request - RestoreApplicationByBackupSetRequest
+//
+// @return RestoreApplicationByBackupSetResponse
+func (client *Client) RestoreApplicationByBackupSet(request *RestoreApplicationByBackupSetRequest) (_result *RestoreApplicationByBackupSetResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RestoreApplicationByBackupSetResponse{}
+	_body, _err := client.RestoreApplicationByBackupSetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41535,7 +47329,7 @@ func (client *Client) SwitchOverGlobalDatabaseNetwork(request *SwitchOverGlobalD
 
 // Summary:
 //
-// Adds tags to PolarDB clusters.
+// Adds tags to an instance.
 //
 // @param request - TagResourcesRequest
 //
@@ -41607,7 +47401,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds tags to PolarDB clusters.
+// Adds tags to an instance.
 //
 // @param request - TagResourcesRequest
 //
@@ -42185,7 +47979,105 @@ func (client *Client) UninstallPolarClawPlugin(request *UninstallPolarClawPlugin
 
 // Summary:
 //
-// Detaches tags from a PolarDB cluster.
+// Uninstalls a PolarClaw skill.
+//
+// Description:
+//
+// ## Request description
+//
+// - PolarFsInstanceId is required to identify the Polarlakebase instance to operate.
+//
+// - The FilePathIds parameter is also required. It accepts a list of file path IDs in string format, which correspond to the specific file paths whose quota rules are to be deleted. Ensure that each provided ID is valid and belongs to the specified Polarlakebase instance.
+//
+// - A single API call can process quota deletion requests for multiple file paths. However, control the request size to avoid performance issues.
+//
+// @param request - UninstallPolarClawSkillsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UninstallPolarClawSkillsResponse
+func (client *Client) UninstallPolarClawSkillsWithOptions(request *UninstallPolarClawSkillsRequest, runtime *dara.RuntimeOptions) (_result *UninstallPolarClawSkillsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentId) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Scope) {
+		query["Scope"] = request.Scope
+	}
+
+	if !dara.IsNil(request.UninstallSkillNames) {
+		query["UninstallSkillNames"] = request.UninstallSkillNames
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UninstallPolarClawSkills"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UninstallPolarClawSkillsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uninstalls a PolarClaw skill.
+//
+// Description:
+//
+// ## Request description
+//
+// - PolarFsInstanceId is required to identify the Polarlakebase instance to operate.
+//
+// - The FilePathIds parameter is also required. It accepts a list of file path IDs in string format, which correspond to the specific file paths whose quota rules are to be deleted. Ensure that each provided ID is valid and belongs to the specified Polarlakebase instance.
+//
+// - A single API call can process quota deletion requests for multiple file paths. However, control the request size to avoid performance issues.
+//
+// @param request - UninstallPolarClawSkillsRequest
+//
+// @return UninstallPolarClawSkillsResponse
+func (client *Client) UninstallPolarClawSkills(request *UninstallPolarClawSkillsRequest) (_result *UninstallPolarClawSkillsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UninstallPolarClawSkillsResponse{}
+	_body, _err := client.UninstallPolarClawSkillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags from one or more PolarDB clusters.
 //
 // @param request - UntagResourcesRequest
 //
@@ -42261,7 +48153,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Detaches tags from a PolarDB cluster.
+// Removes tags from one or more PolarDB clusters.
 //
 // @param request - UntagResourcesRequest
 //
@@ -42461,7 +48353,7 @@ func (client *Client) UpdateExtensions(request *UpdateExtensionsRequest) (_resul
 
 // Summary:
 //
-// Updates a knowledge base synchronization link.
+// Updates the synchronization link for a knowledge base.
 //
 // @param request - UpdateKBSyncLinkRequest
 //
@@ -42553,7 +48445,7 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 
 // Summary:
 //
-// Updates a knowledge base synchronization link.
+// Updates the synchronization link for a knowledge base.
 //
 // @param request - UpdateKBSyncLinkRequest
 //

@@ -18,7 +18,7 @@ type iDescribeApplicationPromptsRequest interface {
 }
 
 type DescribeApplicationPromptsRequest struct {
-	// The Application ID.
+	// The application ID. This operation applies only to applications of the mem0 type. If you specify the ID of an application of another type, an error is returned. You can call the DescribeApplications operation to query the application list and filter applications by ApplicationType.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type DescribeApplicationPromptsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
 	// Default value: **30**.
 	//

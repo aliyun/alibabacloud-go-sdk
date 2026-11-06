@@ -22,7 +22,7 @@ type DescribeZonesResponseBody struct {
 	//
 	// E2FDB684-751D-424D-98B9-704BEA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of zones.
+	// The list of zones.
 	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeZonesResponseBody) Validate() error {
 }
 
 type DescribeZonesResponseBodyZones struct {
-	// The enumeration of statuses. Valid values:
+	// The enumeration values for various availability states. Valid values:
 	//
-	// - **UnSet**: The zone is not open for use.
+	// - **UnSet**: not available
 	//
-	// - **SoldOut**: The resources in the zone are sold out.
+	// - **SoldOut**: sold out
 	//
-	// - **WithStock**: The zone has available resources.
+	// - **WithStock**: in stock
 	//
 	// example:
 	//
@@ -84,17 +84,17 @@ type DescribeZonesResponseBodyZones struct {
 	//
 	// 50
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status of the zone. Valid values:
+	// The zone status. Valid values:
 	//
-	// - **ON**: The zone is available.
+	// - **ON**: available
 	//
-	// - **OFF**: The zone is unavailable.
+	// - **OFF**: unavailable
 	//
 	// example:
 	//
 	// ON
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//

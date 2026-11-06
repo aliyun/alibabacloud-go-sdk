@@ -42,7 +42,7 @@ type iCreatePolarClawCronJobRequest interface {
 }
 
 type CreatePolarClawCronJobRequest struct {
-	// The ID of the specified execution agent.
+	// The specified execution agent.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreatePolarClawCronJobRequest struct {
 	//
 	// example:
 	//
-	// {"Kind":"agentTurn","Message":"Generate the daily report."}
+	// {"Kind":"systemEvent","Text":"Generate the daily report."}
 	Payload *CreatePolarClawCronJobRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
 	// Specifies whether to restart the gateway after creation. Default value: true.
 	//
@@ -108,7 +108,7 @@ type CreatePolarClawCronJobRequest struct {
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// Specifies whether to run it once immediately after creation. Default value: false.
+	// Specifies whether to run the task immediately after creation. Default value: false.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type CreatePolarClawCronJobRequest struct {
 	//
 	// agent:main:feishu:direct:***
 	SessionKey *string `json:"SessionKey,omitempty" xml:"SessionKey,omitempty"`
-	// The session target. Valid values: main, isolated, current.
+	// The execution session target. If set to main, it indicates the main session, and Payload.Kind must be systemEvent. If set to isolated or current, it supports agentTurn or systemEvent.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +136,7 @@ type CreatePolarClawCronJobRequest struct {
 	//
 	// main
 	SessionTarget *string `json:"SessionTarget,omitempty" xml:"SessionTarget,omitempty"`
-	// The wake mode. Valid values: now, next-heartbeat.
+	// The wake mode. Valid values: now and next-heartbeat.
 	//
 	// This parameter is required.
 	//
@@ -314,7 +314,7 @@ func (s *CreatePolarClawCronJobRequest) Validate() error {
 }
 
 type CreatePolarClawCronJobRequestDelivery struct {
-	// The channel account ID.
+	// The ID of the channel account.
 	//
 	// example:
 	//
@@ -332,7 +332,7 @@ type CreatePolarClawCronJobRequestDelivery struct {
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The delivery mode. Valid values: none, announce, webhook.
+	// The delivery mode. Valid values: none, announce, and webhook.
 	//
 	// example:
 	//
@@ -404,13 +404,13 @@ func (s *CreatePolarClawCronJobRequestDelivery) Validate() error {
 }
 
 type CreatePolarClawCronJobRequestFailureAlert struct {
-	// The channel account ID.
+	// The ID of the channel account.
 	//
 	// example:
 	//
 	// default
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The number of consecutive failures before an alert is triggered.
+	// The number of consecutive failures after which an alert is triggered.
 	//
 	// example:
 	//
@@ -529,7 +529,7 @@ type CreatePolarClawCronJobRequestPayload struct {
 	Deliver *bool `json:"Deliver,omitempty" xml:"Deliver,omitempty"`
 	// The list of fallback models.
 	Fallbacks []*string `json:"Fallbacks,omitempty" xml:"Fallbacks,omitempty" type:"Repeated"`
-	// The payload type. Valid values: agentTurn, systemEvent.
+	// The payload type. Valid values: agentTurn and systemEvent.
 	//
 	// example:
 	//
@@ -559,7 +559,7 @@ type CreatePolarClawCronJobRequestPayload struct {
 	//
 	// Generate the daily report.
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The thinking level. Valid values: off, minimal, low, medium, high, xhigh.
+	// The thinking level. Valid values: off, minimal, low, medium, high, and xhigh.
 	//
 	// example:
 	//
@@ -724,7 +724,7 @@ type CreatePolarClawCronJobRequestSchedule struct {
 	//
 	// 0 9 	- 	- *
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
-	// The schedule type. Valid values: cron, every, at.
+	// The schedule type. Valid values: cron, every, and at.
 	//
 	// example:
 	//
@@ -736,7 +736,7 @@ type CreatePolarClawCronJobRequestSchedule struct {
 	//
 	// 0
 	StaggerMs *int32 `json:"StaggerMs,omitempty" xml:"StaggerMs,omitempty"`
-	// The IANA time zone.
+	// The time zone.
 	//
 	// example:
 	//

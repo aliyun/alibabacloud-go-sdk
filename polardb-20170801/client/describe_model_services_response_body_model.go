@@ -52,7 +52,7 @@ type DescribeModelServicesResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -146,21 +146,21 @@ type DescribeModelServicesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// xxxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The upstream service endpoint.
+	// The upstream service URL.
 	//
 	// example:
 	//
 	// https://xxxxxx
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
-	// The creation date of the model.
+	// The creation time of the model.
 	//
 	// example:
 	//
 	// 2026-03-31T14:40:48Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The input points.
+	// The input cost in points per million.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type DescribeModelServicesResponseBodyItems struct {
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The model service IDs.
+	// The IDs of the model services.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type DescribeModelServicesResponseBodyItems struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The output points.
+	// The output cost in points per million.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DescribeModelServicesResponseBodyItems struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of requests.
+	// The request cost in points.
 	//
 	// example:
 	//

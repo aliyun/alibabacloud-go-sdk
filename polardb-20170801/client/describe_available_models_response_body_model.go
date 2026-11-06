@@ -44,7 +44,7 @@ type DescribeAvailableModelsResponseBody struct {
 	//
 	// custom
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeAvailableModelsResponseBodyItems struct {
 	//
 	// My Qwen3 32B
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
-	// The time when the registration was last modified.
+	// The last modification time of the registration.
 	//
 	// example:
 	//
@@ -454,13 +454,13 @@ type DescribeAvailableModelsResponseBodyItemsGpuRequired struct {
 	//
 	// example:
 	//
-	// xx
+	// 1
 	GpuMinCount *string `json:"GpuMinCount,omitempty" xml:"GpuMinCount,omitempty"`
 	// The GPU model.
 	//
 	// example:
 	//
-	// xxx
+	// NVIDIA A10
 	GpuModel *string `json:"GpuModel,omitempty" xml:"GpuModel,omitempty"`
 }
 

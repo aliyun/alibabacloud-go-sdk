@@ -16,13 +16,13 @@ type iApplyApplicationPromptsResponseBody interface {
 }
 
 type ApplyApplicationPromptsResponseBody struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

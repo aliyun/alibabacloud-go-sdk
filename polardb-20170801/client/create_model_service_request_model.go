@@ -34,21 +34,21 @@ type iCreateModelServiceRequest interface {
 }
 
 type CreateModelServiceRequest struct {
-	// The API key for the model service.
+	// The API key of the model service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xxxx
+	// 6c4b1f0317cd4fd7a5b446d3503d**
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The URL of the upstream service.
+	// The address of the upstream service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// xxxx
+	// https://example.com/v1
 	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
 	// The gateway instance ID.
 	//
@@ -58,7 +58,7 @@ type CreateModelServiceRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The billing cost for input, measured in points per one million tokens.
+	// The number of input points.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateModelServiceRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The billing cost for output, measured in points per one million tokens.
+	// The number of output points.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ type CreateModelServiceRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The billing cost per request, measured in points.
+	// The number of requests.
 	//
 	// example:
 	//
 	// 10
 	RequestCostPoints *string `json:"RequestCostPoints,omitempty" xml:"RequestCostPoints,omitempty"`
-	// The model service provider. The example value `bailian` is a pinyin-based identifier that corresponds to the product name Model Studio.
+	// The model service provider.
 	//
 	// This parameter is required.
 	//
