@@ -46,7 +46,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// api-xx
 	ApiNameLike *string `json:"apiNameLike,omitempty" xml:"apiNameLike,omitempty"`
-	// The consumer group ID. If you specify this parameter, the authorization rules of the consumer group are queried. You must specify at least one of the following parameters as a query condition: resourceId, parentResourceId, consumerId, and consumerGroupId.
+	// The consumer group ID. If specified, the authorization rules of the consumer group are queried. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// team
 	ConsumerGroupNameLike *string `json:"consumerGroupNameLike,omitempty" xml:"consumerGroupNameLike,omitempty"`
-	// The consumer ID. You must specify at least one of the following parameters as a query condition: resourceId, parentResourceId, consumerId, and consumerGroupId.
+	// The consumer ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// Specifies whether to group the results by API.
+	// Specifies whether to group by API.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The parent resource ID. You must specify at least one of the following parameters as a query condition: resourceId, parentResourceId, consumerId, and consumerGroupId.
+	// The parent resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// ConsumerGroup
 	PrincipalType *string `json:"principalType,omitempty" xml:"principalType,omitempty"`
-	// The resource ID. You must specify at least one of the following parameters as a query condition: resourceId, parentResourceId, consumerId, and consumerGroupId.
+	// The resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type QueryConsumerAuthorizationRulesRequest struct {
 	//
 	// HttpApiRoute
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The service source types.
+	// The service source type.
 	//
 	// example:
 	//

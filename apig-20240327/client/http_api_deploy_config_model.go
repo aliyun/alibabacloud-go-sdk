@@ -58,7 +58,7 @@ type HttpApiDeployConfig struct {
 	//
 	// true
 	AutoDeploy *bool `json:"autoDeploy,omitempty" xml:"autoDeploy,omitempty"`
-	// The deployment scenario.
+	// The publishing scenario.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type HttpApiDeployConfig struct {
 	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
 	// The list of built-in route names.
 	BuiltinRouteNames []*string `json:"builtinRouteNames,omitempty" xml:"builtinRouteNames,omitempty" type:"Repeated"`
-	// The list of custom domain IDs.
+	// The list of custom domain name IDs.
 	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
-	// The list of custom domain content.
+	// The list of custom domain name details.
 	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
-	// The combination of fixed dynamic forwarding and ExtProc. For REST APIs, submit this in the deployConfigs of the operation. For ModelAPIs, submit this in the deployConfigs of the API. When creating either, you must submit both gatewayId and dfpConfig.serviceId in the same configuration item. The server verifies that the gateway and service belong to the same entity and determines the default environment and backend. GetHttpApiOperation, ListHttpApiOperations, GetHttpApi, and ListHttpApis return the entire object only when the corresponding resource is precisely mounted with the plugin bound to the current gateway. This field is not supported for API-level configurations of standard HTTP APIs.
+	// The fixed dynamic forwarding and ExtProc combination. For REST APIs, submit in the deployConfigs of the operation. For ModelAPIs, submit in the deployConfigs of the API. When creating either, you must submit both gatewayId and dfpConfig.serviceId in the same configuration item. The server verifies that the gateway and service belong to the same entity and determines the default environment and backend. GetHttpApiOperation, ListHttpApiOperations, GetHttpApi, and ListHttpApis return the entire object only when the corresponding resource is precisely mounted with the current gateway-bound plugin. This field is not supported for API-level configurations of standard HTTP APIs.
 	DfpConfig *HttpApiDeployConfigDfpConfig `json:"dfpConfig,omitempty" xml:"dfpConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable gateway system models. This takes effect only when the deployment scenario is AiAutoRouter. The default value is false. This field is used for compatibility with legacy clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that none are enabled.
+	// Specifies whether to enable gateway system models. This takes effect only when the publishing scenario is AiAutoRouter. The default value is false. This field is used for compatibility with legacy clients. If systemModelTiers is not submitted, true indicates that all three tiers of system models are enabled, and false indicates that none are enabled.
 	//
 	// example:
 	//
 	// true
 	EnableSystemModels *bool `json:"enableSystemModels,omitempty" xml:"enableSystemModels,omitempty"`
-	// The list of environment domain IDs. If not provided, all environment domains are bound. An empty array indicates that no environment domains are bound.
+	// The list of environment domain name IDs. If not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
 	EnvDomainIds []*string `json:"envDomainIds,omitempty" xml:"envDomainIds,omitempty" type:"Repeated"`
 	// The list of environment domain names.
 	EnvDomainInfos []*HttpApiDeployConfigEnvDomainInfos `json:"envDomainInfos,omitempty" xml:"envDomainInfos,omitempty" type:"Repeated"`
@@ -112,7 +112,7 @@ type HttpApiDeployConfig struct {
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
 	// The list of policy configurations.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
-	// The current online routing mode for REST APIs. ordinary indicates operation-by-operation routing, and compressed indicates a single prefix route for the API. This field is not returned for non-REST APIs.
+	// The current online routing mode for REST APIs. ordinary indicates per-operation routing, and compressed indicates single-prefix routing for the API. This field is not returned for non-REST APIs.
 	//
 	// example:
 	//
@@ -127,7 +127,7 @@ type HttpApiDeployConfig struct {
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 	// The list of subdomains.
 	SubDomains []*HttpApiDeployConfigSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
-	// The set of explicitly enabled gateway system model capability tiers. This takes effect only when the deployment scenario is AiAutoRouter. Valid values: economy, standard, and premium. An explicit empty array indicates that no system models are enabled.
+	// The set of explicitly enabled gateway system model capability tiers. This takes effect only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium. An explicit empty array indicates that no system models are enabled.
 	//
 	// example:
 	//
@@ -393,7 +393,7 @@ func (s *HttpApiDeployConfig) Validate() error {
 }
 
 type HttpApiDeployConfigCustomDomainInfos struct {
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
@@ -453,7 +453,7 @@ func (s *HttpApiDeployConfigCustomDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigDfpConfig struct {
-	// The ID of the imported ExtProc gRPC service. Required when creating a REST operation or ModelAPI. Must match the service currently bound to the resource during updates.
+	// The imported ExtProc gRPC service ID. Required when creating a REST operation or ModelAPI. Must match the service currently bound to the resource during updates.
 	//
 	// example:
 	//
@@ -483,7 +483,7 @@ func (s *HttpApiDeployConfigDfpConfig) Validate() error {
 }
 
 type HttpApiDeployConfigEnvDomainInfos struct {
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
@@ -543,7 +543,7 @@ func (s *HttpApiDeployConfigEnvDomainInfos) Validate() error {
 }
 
 type HttpApiDeployConfigServiceConfigs struct {
-	// The capability tier for intelligent routing candidates. Fill in only when the deployment scenario is AiAutoRouter. Valid values: economy, standard, and premium.
+	// The capability tier for intelligent routing candidates. Fill in only when the publishing scenario is AiAutoRouter. Valid values: economy, standard, and premium.
 	//
 	// example:
 	//
@@ -833,7 +833,7 @@ func (s *HttpApiDeployConfigServiceConfigsObservabilityRouteConfig) Validate() e
 }
 
 type HttpApiDeployConfigSubDomains struct {
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//

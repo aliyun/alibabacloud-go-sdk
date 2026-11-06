@@ -36,23 +36,23 @@ type CreateServiceRequest struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The list of service configurations. At least one service configuration must be included.
 	ServiceConfigs []*CreateServiceRequestServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The service source. Valid values:
+	// The source of the service. Valid values:
 	//
-	// - MSE_NACOS: a service in Microservices Engine (MSE) Nacos.
+	// - MSE_NACOS: services in MSE Nacos.
 	//
-	// - K8S: a service in a Kubernetes cluster of Container Service.
+	// - K8S: services in Container Service for Kubernetes clusters.
 	//
-	// - VIP: a fixed address service.
+	// - VIP: fixed address services.
 	//
-	// - DNS: a DNS domain name service.
+	// - DNS: DNS domain name services.
 	//
-	// - FC3: a service in Function Compute.
+	// - FC3: services in Function Compute.
 	//
-	// - SAE_K8S_SERVICE: a Serverless App Engine (SAE) Kubernetes service.
+	// - SAE_K8S_SERVICE: SAE Kubernetes services.
 	//
-	// - AI: an AI service.
+	// - AI: AI services.
 	//
-	// - AGENT: an agent service.
+	// - AGENT: agent services.
 	//
 	// example:
 	//
@@ -135,9 +135,9 @@ func (s *CreateServiceRequest) Validate() error {
 type CreateServiceRequestServiceConfigs struct {
 	// The list of domain names or fixed addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The agent service configuration. This parameter is required when sourceType is set to AGENT.
+	// The agent service configuration. This parameter is required when the sourceType is AGENT.
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
-	// The AI service configuration. This parameter is required when sourceType is set to AI.
+	// The AI service configuration. This parameter is required when the sourceType is AI.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
 	// The list of DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
@@ -147,7 +147,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// Standard
 	ExpressType *string `json:"expressType,omitempty" xml:"expressType,omitempty"`
-	// The name of the service group. This parameter is required when sourceType is set to MSE_NACOS.
+	// The name of the service group. This parameter is required when the sourceType is MSE_NACOS.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// mp-xxx****
 	ModelProviderId *string `json:"modelProviderId,omitempty" xml:"modelProviderId,omitempty"`
-	// The name of the service. This parameter is required for FC3.
+	// The name of the service. This parameter is required when the sourceType is FC3.
 	//
 	// example:
 	//
 	// user-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace of the service.
+	// The namespace of the service:
 	//
-	// - When sourceType is set to K8S, this parameter specifies the namespace where the Kubernetes service resides.
+	// - When the sourceType is K8S, this parameter specifies the namespace where the Kubernetes service resides.
 	//
-	// - When sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.
+	// - When the sourceType is MSE_NACOS, this parameter specifies the namespace in Nacos.
 	//
-	// This parameter is required when sourceType is set to K8S or MSE_NACOS.
+	// This parameter is required when the sourceType is K8S or MSE_NACOS.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type CreateServiceRequestServiceConfigs struct {
 	//
 	// nacos-instance-001
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The validation options, which include configuration options related to service validation.
+	// The validation options, which are configuration options related to service validation.
 	ValidationOptions *CreateServiceRequestServiceConfigsValidationOptions `json:"validationOptions,omitempty" xml:"validationOptions,omitempty" type:"Struct"`
 }
 

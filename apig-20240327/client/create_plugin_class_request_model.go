@@ -32,13 +32,13 @@ type iCreatePluginClassRequest interface {
 }
 
 type CreatePluginClassRequest struct {
-	// The alias of the plugin class. This parameter is required. If this parameter is not specified, the service returns an InvalidParameter.WithValue error.
+	// The alias of the plug-in. This parameter is required. If it is not provided, the service returns InvalidParameter.WithValue.
 	//
 	// example:
 	//
 	// My Wasm Plugin
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The description of the plugin.
+	// The description of the plug-in.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type CreatePluginClassRequest struct {
 	//
 	// Custom authentication plugin for validating tokens in request headers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The execution priority of the plugin. This parameter is required when executeStage is specified. The default value 0 is invalid. We recommend that you set this parameter to 200.
+	// The execution priority of the plug-in. This parameter is required when executeStage is specified. The default value 0 is invalid. Set this parameter to 200.
 	//
 	// example:
 	//
 	// 100
 	ExecutePriority *int32 `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
-	// The execution stage of the plugin.
+	// The execution stage of the plug-in.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CreatePluginClassRequest struct {
 	//
 	// AUTHN
 	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
-	// The name of the plugin class.
+	// The name of the plug-in class.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type CreatePluginClassRequest struct {
 	//
 	// my-wasm-plugin
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The minimum gateway version that the plugin is compatible with.
+	// The minimum supported gateway version.
 	//
 	// example:
 	//
 	// 2.0.0
 	SupportedMinGatewayVersion *string `json:"supportedMinGatewayVersion,omitempty" xml:"supportedMinGatewayVersion,omitempty"`
-	// The version number of the plugin.
+	// The version number of the plug-in.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreatePluginClassRequest struct {
 	//
 	// Initial version with basic token validation
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
-	// The development language of the WASM plugin. Valid values: TinyGo.
+	// The development language of the WASM plug-in. Valid values: TinyGo.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type CreatePluginClassRequest struct {
 	//
 	// Rust
 	WasmLanguage *string `json:"wasmLanguage,omitempty" xml:"wasmLanguage,omitempty"`
-	// The download URL of the WASM plugin binary file.
+	// The download URL of the WASM plug-in binary file.
 	//
 	// This parameter is required.
 	//

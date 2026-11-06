@@ -22,15 +22,13 @@ type iCreateSourceRequest interface {
 }
 
 type CreateSourceRequest struct {
-	// The gateway ID.
-	//
-	// > Note: This parameter is required. If this parameter is not specified, the API returns a 400 InvalidParameter.IsEmpty error.
+	// The gateway ID. Note: This parameter is required. If it is not provided, the API returns a 400 InvalidParameter.IsEmpty error.
 	//
 	// example:
 	//
 	// gw-cq7l5s5lhtgi6q***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The container service source configuration.
+	// The Container Service source configuration.
 	K8sSourceConfig *CreateSourceRequestK8sSourceConfig `json:"k8sSourceConfig,omitempty" xml:"k8sSourceConfig,omitempty" type:"Struct"`
 	// The MSE Nacos source configuration.
 	NacosSourceConfig *CreateSourceRequestNacosSourceConfig `json:"nacosSourceConfig,omitempty" xml:"nacosSourceConfig,omitempty" type:"Struct"`
@@ -44,7 +42,7 @@ type CreateSourceRequest struct {
 	//
 	// - MSE_NACOS: MSE Nacos.
 	//
-	// - K8S: container service.
+	// - K8S: Container Service.
 	//
 	// example:
 	//
@@ -122,7 +120,7 @@ func (s *CreateSourceRequest) Validate() error {
 type CreateSourceRequestK8sSourceConfig struct {
 	// The list of gateway security group authorization rule configurations.
 	AuthorizeSecurityGroupRules []*CreateSourceRequestK8sSourceConfigAuthorizeSecurityGroupRules `json:"authorizeSecurityGroupRules,omitempty" xml:"authorizeSecurityGroupRules,omitempty" type:"Repeated"`
-	// The container service cluster ID.
+	// The Container Service cluster ID.
 	//
 	// example:
 	//

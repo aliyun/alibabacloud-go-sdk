@@ -18,7 +18,7 @@ type iListProductCategoriesRequest interface {
 }
 
 type ListProductCategoriesRequest struct {
-	// The keyword used to search for product categories by name.
+	// The keyword for the category name. This parameter is used to search for product categories by name.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListProductCategoriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page. Minimum value: 1.
+	// The number of entries per page. The minimum value is 1.
 	//
 	// example:
 	//

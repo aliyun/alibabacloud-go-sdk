@@ -96,7 +96,7 @@ func (s *ListPublishableProductsResponseBody) Validate() error {
 }
 
 type ListPublishableProductsResponseBodyData struct {
-	// The list of API products that can be published to the portal. The list element is named productInfo, and each element contains the information about an API product.
+	// The list of API products that can be published to the portal. Each element in the list is named productInfo and contains the information about an API product.
 	Content []*ListPublishableProductsResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -110,7 +110,7 @@ type ListPublishableProductsResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//

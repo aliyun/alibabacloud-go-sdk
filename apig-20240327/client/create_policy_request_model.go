@@ -20,7 +20,7 @@ type iCreatePolicyRequest interface {
 }
 
 type CreatePolicyRequest struct {
-	// The policy type. Valid values: RateLimit, ConcurrencyLimit, CircuitBreaker, HttpRewrite, HeaderModify, Cors, Authentication, FlowCopy, Timeout, Retry, IpAccessControl, DirectResponse, Redirect, Fallback, ServiceTls, ServiceLb, ServicePortTls, Waf, JWTAuth, OIDCAuth, ExternalZAuth, AiProxy, ModelRouter, AiStatistics, AiSecurityGuard, AiFallback, ModelMapper, AiTokenRateLimit, AiCache, and DynamicRoute.
+	// The type of the policy. Valid values: RateLimit, ConcurrencyLimit, CircuitBreaker, HttpRewrite, HeaderModify, Cors, Authentication, FlowCopy, Timeout, Retry, IpAccessControl, DirectResponse, Redirect, Fallback, ServiceTls, ServiceLb, ServicePortTls, Waf, JWTAuth, OIDCAuth, ExternalZAuth, AiProxy, ModelRouter, AiStatistics, AiSecurityGuard, AiFallback, ModelMapper, AiTokenRateLimit, AiCache, and DynamicRoute.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreatePolicyRequest struct {
 	//
 	// Timeout policy
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The policy name.
+	// The Policy Name.
 	//
 	// This parameter is required.
 	//

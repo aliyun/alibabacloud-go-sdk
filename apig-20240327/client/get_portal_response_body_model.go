@@ -96,35 +96,35 @@ func (s *GetPortalResponseBody) Validate() error {
 }
 
 type GetPortalResponseBodyData struct {
-	// The creation time in ISO 8601 format (RFC 3339) in UTC, such as 2026-05-15T10:00:00Z.
+	// The creation time in ISO 8601 (RFC 3339) format in the UTC time zone, such as 2026-05-15T10:00:00Z.
 	//
 	// example:
 	//
 	// 2026-05-15T10:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The description of the portal, which corresponds to the Description property of the portal resource.
+	// The portal description, which is the Description property of the portal resource.
 	//
 	// example:
 	//
 	// HiMarket portal for internal developers
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the portal, which corresponds to the Name property of the portal resource.
+	// The portal name, which is the Name property of the portal resource.
 	//
 	// example:
 	//
 	// developer-portal
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of portal domain configurations. Each element in the list is named domainConfig.
+	// The list of portal domain name configurations. The list element is named domainConfig.
 	PortalDomainConfig []*HiMarketPortalDomainConfig `json:"portalDomainConfig,omitempty" xml:"portalDomainConfig,omitempty" type:"Repeated"`
-	// The primary ID of the portal resource. This ID points to the same portal as the portalId request parameter.
+	// The portal ID, which is the primary ID of the portal resource and points to the same portal as the portalId request parameter.
 	//
 	// example:
 	//
 	// portal-xxxxxxxx
 	PortalId *string `json:"portalId,omitempty" xml:"portalId,omitempty"`
-	// The portal settings, including whether account and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
+	// The portal settings, which specify whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
 	PortalSettingConfig *HiMarketPortalSettingConfig `json:"portalSettingConfig,omitempty" xml:"portalSettingConfig,omitempty"`
-	// The region ID, which corresponds to the RegionId property of the portal resource.
+	// The region ID, which is the RegionId property of the portal resource.
 	//
 	// example:
 	//

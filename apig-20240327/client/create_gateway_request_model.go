@@ -36,27 +36,27 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method. This parameter is required for Serverless instances and must be set to POSTPAY.
+	// The billing method. This parameter is required for the Serverless edition and must be set to POSTPAY.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The gateway instance edition. Valid values:
+	// The gateway instance edition:
 	//
-	// - Professional: Standard instance.
+	// - Standard instance: Professional
 	//
-	// - Serverless: Serverless instance.
+	// - Serverless: Serverless
 	//
-	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	// - Multi-tenant Serverless: MultiTenantServerless
 	//
-	// - Unknown: Unknown.
+	// - Unknown: Unknown
 	//
 	// example:
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is only allowed for AI and MultiTenantServerless gateways.
+	// The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is only allowed for AI and MultiTenantServerless.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateGatewayRequest struct {
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The log configuration for the gateway.
 	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// The name of the gateway. This parameter is required for all gateway types.
+	// The name of the gateway. This parameter is required for all editions.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreateGatewayRequest struct {
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The node specifications. This parameter is required for Serverless instances.
+	// The node specifications. This parameter is required for the Serverless edition.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type CreateGatewayRequest struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The list of tags.
 	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC). This parameter is required for all gateway types.
+	// The ID of the VPC. This parameter is required for all editions.
 	//
 	// example:
 	//
 	// vpc-zm0x16tomfiat1mk9f6rs
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone configuration. This parameter is required for all gateway types.
+	// The zone configuration. This parameter is required for all editions.
 	ZoneConfig *CreateGatewayRequestZoneConfig `json:"zoneConfig,omitempty" xml:"zoneConfig,omitempty" type:"Struct"`
 }
 
@@ -308,7 +308,7 @@ func (s *CreateGatewayRequestLogConfigSls) Validate() error {
 }
 
 type CreateGatewayRequestNetworkAccessConfig struct {
-	// The ID of the endpoint security group. This parameter is required when a multi-tenant API gateway or multi-tenant AI gateway Enterprise Edition uses private network or dual-entry access, and must be a non-managed security group in your VPC. Do not specify this parameter for public network requests.
+	// The ID of the endpoint security group. This parameter is required when a multi-tenant API gateway or multi-tenant AI gateway Enterprise Edition selects private network or dual-entry access. It must be an unmanaged security group in the user VPC. Do not pass this parameter for public network requests.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateProductRefResponseBody interface {
 }
 
 type CreateProductRefResponseBody struct {
-	// The response status code.
+	// The status code of the response.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateProductRefResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

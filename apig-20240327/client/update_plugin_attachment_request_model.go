@@ -20,7 +20,7 @@ type iUpdatePluginAttachmentRequest interface {
 type UpdatePluginAttachmentRequest struct {
 	// The list of mount point IDs.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// Specifies whether to enable the plugin mount.
+	// Specifies whether the plugin mount is enabled.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type HttpApiInfoByName struct {
 	//
 	// true
 	VersionEnabled *bool `json:"versionEnabled,omitempty" xml:"versionEnabled,omitempty"`
-	// The versioned API version information.
+	// The version information of the versioned APIs.
 	VersionedHttpApis []*HttpApiApiInfo `json:"versionedHttpApis,omitempty" xml:"versionedHttpApis,omitempty" type:"Repeated"`
 }
 

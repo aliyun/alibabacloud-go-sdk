@@ -24,7 +24,7 @@ type UpdateProductCategoryRequest struct {
 	//
 	// Product category for AI-related capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The icon of the product category, which consists of the icon type (type) and icon information (value) fields.
+	// The icon of the product category. It consists of two fields: icon type (type) and icon information (value).
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
 	// The name of the product category. The name can be up to 100 characters in length.
 	//

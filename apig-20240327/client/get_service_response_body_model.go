@@ -26,7 +26,7 @@ type GetServiceResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The service details.
+	// The service details data.
 	Data *Service `json:"data,omitempty" xml:"data,omitempty"`
 	// The response message.
 	//

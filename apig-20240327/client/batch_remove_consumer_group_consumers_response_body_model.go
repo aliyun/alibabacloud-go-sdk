@@ -20,7 +20,7 @@ type iBatchRemoveConsumerGroupConsumersResponseBody interface {
 }
 
 type BatchRemoveConsumerGroupConsumersResponseBody struct {
-	// The response status code. Ok is returned if the request is successful.
+	// The response status code. Returns Ok if the request succeeds.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ func (s *BatchRemoveConsumerGroupConsumersResponseBody) Validate() error {
 type BatchRemoveConsumerGroupConsumersResponseBodyData struct {
 	// The list of consumer IDs that failed to be removed.
 	FailedConsumerIds []*string `json:"failedConsumerIds,omitempty" xml:"failedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs that were skipped because they are not in the consumer group.
+	// The list of consumer IDs that are skipped because they are not in the consumer group.
 	SkippedConsumerIds []*string `json:"skippedConsumerIds,omitempty" xml:"skippedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs that were successfully removed from the consumer group.
+	// The list of consumer IDs that are successfully removed from the consumer group.
 	SuccessConsumerIds []*string `json:"successConsumerIds,omitempty" xml:"successConsumerIds,omitempty" type:"Repeated"`
 }
 

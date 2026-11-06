@@ -38,7 +38,7 @@ type iHttpApiPublishRevisionInfo interface {
 }
 
 type HttpApiPublishRevisionInfo struct {
-	// The API publish scenario.
+	// The API release scenario.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type HttpApiPublishRevisionInfo struct {
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// The list of custom domain names.
 	CustomDomains []*HttpApiDomainInfo `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	// The DNS domain name configuration. In the single-service scenario, only one entry can be configured. In the by-ratio or by-content scenario, multiple entries can be configured.
+	// The DNS domain name configuration. Only one entry can be configured in the single service scenario, and multiple entries can be configured in the by ratio and by content scenarios.
 	DnsConfigs []*HttpApiPublishRevisionInfoDnsConfigs `json:"dnsConfigs,omitempty" xml:"dnsConfigs,omitempty" type:"Repeated"`
 	// The environment context.
 	//
@@ -74,15 +74,15 @@ type HttpApiPublishRevisionInfo struct {
 	//
 	// true
 	IsCurrentVersion *bool `json:"isCurrentVersion,omitempty" xml:"isCurrentVersion,omitempty"`
-	// The list of API operations.
+	// The API operation list.
 	Operations []*HttpApiOperationInfo `json:"operations,omitempty" xml:"operations,omitempty" type:"Repeated"`
-	// The version number of the published API.
+	// The version number of the API release.
 	//
 	// example:
 	//
 	// apr-xxx
 	RevisionId *string `json:"revisionId,omitempty" xml:"revisionId,omitempty"`
-	// The existing service configurations. In a single-service scenario, only one entry can be configured. In proportion-based, content-based, or tag-based scenarios, multiple entries can be configured.
+	// The existing service configuration. Only one entry can be configured in the single service scenario, and multiple entries can be configured in the by ratio, by content, and by tag scenarios.
 	ServiceConfigs []*HttpApiPublishRevisionInfoServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
 	// The list of default domain names for the environment.
 	//
@@ -90,7 +90,7 @@ type HttpApiPublishRevisionInfo struct {
 	//
 	// env-xxx.com
 	SubDomains []*HttpApiDomainInfo `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
-	// The static address configurations. In a single-service scenario, only one entry can be configured. In proportion-based or content-based scenarios, multiple entries can be configured.
+	// The fixed address configuration. Only one entry can be configured in the single service scenario, and multiple entries can be configured in the by ratio and by content scenarios.
 	VipConfigs []*HttpApiPublishRevisionInfoVipConfigs `json:"vipConfigs,omitempty" xml:"vipConfigs,omitempty" type:"Repeated"`
 }
 
@@ -296,7 +296,7 @@ type HttpApiPublishRevisionInfoCloudProductConfig struct {
 	CloudProductType *string `json:"cloudProductType,omitempty" xml:"cloudProductType,omitempty"`
 	// The container service configuration.
 	ContainerServiceConfigs []*HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs `json:"containerServiceConfigs,omitempty" xml:"containerServiceConfigs,omitempty" type:"Repeated"`
-	// The Function Compute (FC) configuration.
+	// The FC configuration.
 	FunctionConfigs []*HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs `json:"functionConfigs,omitempty" xml:"functionConfigs,omitempty" type:"Repeated"`
 	// The MSE Nacos configuration.
 	MseNacosConfigs []*HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs `json:"mseNacosConfigs,omitempty" xml:"mseNacosConfigs,omitempty" type:"Repeated"`
@@ -378,7 +378,7 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfig) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs struct {
-	// The ID of the associated service.
+	// The associated service ID.
 	//
 	// example:
 	//
@@ -404,7 +404,7 @@ type HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs struct 
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol.
+	// The terms of service.
 	//
 	// example:
 	//
@@ -499,7 +499,7 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs) Va
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs struct {
-	// The ID of the associated service.
+	// The associated service ID.
 	//
 	// example:
 	//
@@ -590,7 +590,7 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs) Validate()
 }
 
 type HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs struct {
-	// The ID of the associated service.
+	// The associated service ID.
 	//
 	// example:
 	//
@@ -698,9 +698,9 @@ func (s *HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs) Validate()
 type HttpApiPublishRevisionInfoDnsConfigs struct {
 	// The list of DNS domain names.
 	DnsList []*string `json:"dnsList,omitempty" xml:"dnsList,omitempty" type:"Repeated"`
-	// The match condition. This parameter is valid only in the by-content scenario.
+	// The match condition. This parameter takes effect only in the by content scenario.
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// The weight. Valid values: 1 to 100. This parameter is valid only in the by-ratio scenario.
+	// The weight. Valid values: 1 to 100. This parameter takes effect only in the by ratio scenario.
 	//
 	// example:
 	//
@@ -839,7 +839,7 @@ type HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo struct {
 	//
 	// example:
 	//
-	// Instance1
+	// Instance 1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
@@ -980,11 +980,11 @@ func (s *HttpApiPublishRevisionInfoServiceConfigs) Validate() error {
 }
 
 type HttpApiPublishRevisionInfoVipConfigs struct {
-	// The list of static addresses.
+	// The list of fixed addresses.
 	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
-	// The match condition. This parameter is valid only in the by-content scenario.
+	// The match condition. This parameter takes effect only in the by content scenario.
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
-	// The weight. Valid values: 1 to 100. This parameter is valid only in the by-ratio scenario.
+	// The weight. Valid values: 1 to 100. This parameter takes effect only in the by ratio scenario.
 	//
 	// example:
 	//

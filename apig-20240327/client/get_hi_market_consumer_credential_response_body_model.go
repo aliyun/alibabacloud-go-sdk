@@ -96,9 +96,9 @@ func (s *GetHiMarketConsumerCredentialResponseBody) Validate() error {
 }
 
 type GetHiMarketConsumerCredentialResponseBodyData struct {
-	// The API key consumer credential configuration, which corresponds to the common data structure HiMarketApiKeyConfig. The members include key, source, and the credential list credentials, where each list item contains an apiKey.
+	// The API key credential configuration of the consumer, which corresponds to the common data structure HiMarketApiKeyConfig. The members include key, source, and the credentials list, where each list item contains an apiKey.
 	ApiKeyConfig *HiMarketApiKeyConfig `json:"apiKeyConfig,omitempty" xml:"apiKeyConfig,omitempty"`
-	// The HMAC consumer credential configuration, which corresponds to the common data structure HiMarketHmacConfig. The members include the credential list credentials, where each list item contains ak and sk.
+	// The HMAC credential configuration of the consumer, which corresponds to the common data structure HiMarketHmacConfig. The members include the credentials list, where each list item contains ak and sk.
 	HmacConfig *HiMarketHmacConfig `json:"hmacConfig,omitempty" xml:"hmacConfig,omitempty"`
 }
 

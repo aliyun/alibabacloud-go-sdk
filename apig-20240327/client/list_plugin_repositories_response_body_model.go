@@ -165,7 +165,7 @@ func (s *ListPluginRepositoriesResponseBodyData) Validate() error {
 }
 
 type ListPluginRepositoriesResponseBodyDataRepositories struct {
-	// The Codeup repository ID (numeric string).
+	// The Codeup repository ID, which is a numeric string.
 	//
 	// example:
 	//

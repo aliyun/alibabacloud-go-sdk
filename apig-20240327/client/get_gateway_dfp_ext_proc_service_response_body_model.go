@@ -20,7 +20,7 @@ type iGetGatewayDfpExtProcServiceResponseBody interface {
 }
 
 type GetGatewayDfpExtProcServiceResponseBody struct {
-	// The request result code. The value is Ok if the request succeeds.
+	// The result code of the request. The value is Ok if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetGatewayDfpExtProcServiceResponseBody struct {
 	//
 	// {"bound":true,"serviceId":"svc-cr8k0udlhtgt80sh7png","servicePort":9002}
 	Data *GetGatewayDfpExtProcServiceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The result description. This field contains the fault information if the request fails.
+	// The result message of the request. If the request failed, the message contains the error message of the fault.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID for troubleshooting.
+	// The request ID, which is used for troubleshooting.
 	//
 	// example:
 	//
@@ -106,13 +106,13 @@ type GetGatewayDfpExtProcServiceResponseBodyData struct {
 	//
 	// true
 	Bound *bool `json:"bound,omitempty" xml:"bound,omitempty"`
-	// The ID of the bound ExtProc gRPC service. This field is not returned if no service is bound.
+	// The ID of the bound ExtProc gRPC service. This parameter is not returned if no service is bound.
 	//
 	// example:
 	//
 	// svc-cr8k0udlhtgt80sh7png
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The gRPC port of the bound service. This field is not returned if no service is bound.
+	// The gRPC port of the bound service. This parameter is not returned if no service is bound.
 	//
 	// example:
 	//

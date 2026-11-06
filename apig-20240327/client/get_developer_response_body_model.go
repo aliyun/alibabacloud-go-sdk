@@ -96,13 +96,13 @@ func (s *GetDeveloperResponseBody) Validate() error {
 }
 
 type GetDeveloperResponseBodyData struct {
-	// The developer ID. You can use this ID to locate the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+	// The developer ID. You can use it to identify the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
 	//
 	// example:
 	//
 	// dev-xxxxxxxx
 	DeveloperId *string `json:"developerId,omitempty" xml:"developerId,omitempty"`
-	// The ID of the portal to which the developer belongs. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+	// The ID of the portal to which the developer belongs. You can use it to identify the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
 	//
 	// example:
 	//

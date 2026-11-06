@@ -30,7 +30,7 @@ type ListConsumerAuthorizationRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size. Default value: 10.
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//

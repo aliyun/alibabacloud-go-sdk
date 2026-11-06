@@ -28,13 +28,13 @@ type iCreatePluginAttachmentRequest interface {
 type CreatePluginAttachmentRequest struct {
 	// The list of mount point IDs.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// The resource type to which the plug-in is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+	// The type of the resource to which the plugin is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
 	//
 	// example:
 	//
 	// HttpApi
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// Specifies whether to enable the plug-in. Default value: false.
+	// Specifies whether to enable the plugin. Default value: false.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreatePluginAttachmentRequest struct {
 	//
 	// gw-cq7l5s5lhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The Base64-encoded content of the original plug-in configuration.
+	// The Base64-encoded content of the original plugin configuration.
 	//
 	// example:
 	//
 	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K
 	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//

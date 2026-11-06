@@ -24,13 +24,13 @@ type DeleteGatewayQuotaRuleResponseBody struct {
 	//
 	// 200, 404, 500
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The message content.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

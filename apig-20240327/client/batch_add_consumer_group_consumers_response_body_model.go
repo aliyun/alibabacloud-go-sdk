@@ -20,7 +20,7 @@ type iBatchAddConsumerGroupConsumersResponseBody interface {
 }
 
 type BatchAddConsumerGroupConsumersResponseBody struct {
-	// The response status code. Ok is returned if the request is successful.
+	// The response status code. The value is Ok if the request succeeds.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ func (s *BatchAddConsumerGroupConsumersResponseBody) Validate() error {
 type BatchAddConsumerGroupConsumersResponseBodyData struct {
 	// The list of consumer IDs that failed to be added.
 	FailedConsumerIds []*string `json:"failedConsumerIds,omitempty" xml:"failedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs that already exist in the consumer group and were skipped.
+	// The list of consumer IDs that are already in the consumer group and are skipped in this operation.
 	SkippedConsumerIds []*string `json:"skippedConsumerIds,omitempty" xml:"skippedConsumerIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs that were successfully added to the consumer group.
+	// The list of consumer IDs successfully added to the consumer group.
 	SuccessConsumerIds []*string `json:"successConsumerIds,omitempty" xml:"successConsumerIds,omitempty" type:"Repeated"`
 }
 

@@ -190,13 +190,13 @@ type ListConsumerGroupQuotaRulesResponseBodyDataItems struct {
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The name of the gateway. Falls back to the gateway ID if the name is unavailable.
+	// The name of the gateway. If the name is unavailable, the gateway ID is returned.
 	//
 	// example:
 	//
 	// prod-gateway
 	GatewayName *string `json:"gatewayName,omitempty" xml:"gatewayName,omitempty"`
-	// The period multiplier, which specifies the number of days before the quota resets. A positive integer is returned for custom periods. This field is not returned for calendar-based periods.
+	// The period multiplier, which indicates the interval in days for quota reset. A positive integer is returned for a custom period. This field is not returned for a natural period.
 	//
 	// example:
 	//
@@ -232,11 +232,7 @@ type ListConsumerGroupQuotaRulesResponseBodyDataItems struct {
 	//
 	// daily-token-limit
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
-	// The status of the rule. Valid values:
-	//
-	// - enabled
-	//
-	// - disabled
+	// The status of the rule. Valid values: enabled and disabled.
 	//
 	// example:
 	//
@@ -248,11 +244,7 @@ type ListConsumerGroupQuotaRulesResponseBodyDataItems struct {
 	//
 	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The window alignment type. Valid values:
-	//
-	// - calendar: calendar-based period.
-	//
-	// - epoch: custom period.
+	// The period type. A value of calendar indicates a natural period. A value of epoch indicates a custom period.
 	//
 	// example:
 	//

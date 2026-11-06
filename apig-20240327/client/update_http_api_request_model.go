@@ -48,9 +48,7 @@ type UpdateHttpApiRequest struct {
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
 	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The base path of the API, which must start with a forward slash (/).
-	//
-	// This parameter is required.
+	// The base path of the API. It must start with a forward slash (/).
 	//
 	// example:
 	//
@@ -62,7 +60,7 @@ type UpdateHttpApiRequest struct {
 	//
 	// example:
 	//
-	// Update API description
+	// Updated API description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable authentication.
 	//
@@ -70,7 +68,7 @@ type UpdateHttpApiRequest struct {
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The time to first byte timeout, in seconds.
+	// The first byte timeout period, in seconds.
 	//
 	// example:
 	//
@@ -92,15 +90,15 @@ type UpdateHttpApiRequest struct {
 	//
 	// true
 	RemoveBasePathOnForward *bool `json:"removeBasePathOnForward,omitempty" xml:"removeBasePathOnForward,omitempty"`
-	// The API versioning configuration.
+	// The versioning configuration of the API.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
-	// The idempotency token. If the same HTTP API is repeatedly called with the same client token and request parameters, the first successful result is returned.
+	// The idempotent request token. If you call the same HTTP API with the same client token and request parameters, the result of the first successful call is returned.
 	//
 	// example:
 	//
 	// update-http-api-client-token-001
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// Specifies whether to perform a dry run. If set to true, all synchronization checks consistent with a real update are executed, but no configurations are updated and no side effects are generated. If left empty or set to false, the behavior is consistent with the existing version.
+	// Specifies whether to perform a dry run. If you set this parameter to true, all synchronization checks consistent with a real update are performed, but no configurations are updated and no side effects are generated. If this parameter is left empty or set to false, the behavior remains the same as the existing version.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -288,7 +286,7 @@ type UpdateHttpApiRequestIngressConfig struct {
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// Specifies whether to update the address in the Ingress status.
+	// Specifies whether to update the IP address in the Ingress status.
 	//
 	// example:
 	//

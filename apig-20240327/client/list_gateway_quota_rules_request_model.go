@@ -22,13 +22,13 @@ type iListGatewayQuotaRulesRequest interface {
 }
 
 type ListGatewayQuotaRulesRequest struct {
-	// The keyword used for fuzzy matching of rule names.
+	// The keyword in the rule name for fuzzy match.
 	//
 	// example:
 	//
 	// daily
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of records to retrieve at a time. This parameter is not supported.
+	// The maximum number of records to return in a single request. This parameter is not supported.
 	//
 	// example:
 	//

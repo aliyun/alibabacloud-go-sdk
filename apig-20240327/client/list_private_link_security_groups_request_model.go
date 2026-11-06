@@ -24,13 +24,13 @@ type ListPrivateLinkSecurityGroupsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page.
+	// The next token.
 	//
 	// example:
 	//
 	// next-token-xxxxxxxx
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The ID of the VPC owned by the authorized user. The candidate security groups must belong to this VPC.
+	// The ID of the VPC owned by the currently authorized user. The candidate security groups must belong to this VPC.
 	//
 	// This parameter is required.
 	//

@@ -64,7 +64,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// login
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The policy type.
+	// The policy types.
 	PolicyConfigs []*HttpApiPolicyConfigs `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
 }
 
@@ -213,7 +213,7 @@ type CreateHttpApiRouteRequestBackendConfig struct {
 	//
 	// - SingleService: Single service.
 	//
-	// - MultiServiceByRatio: Canary release of multiple services by ratio.
+	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
 	//
 	// - Mock: Mock service.
 	//
@@ -267,25 +267,25 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The service group. Used in HTTP-to-Dubbo conversion scenarios.
+	// The service group. Used for HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The HTTP-to-Dubbo protocol conversion configuration. This configuration is supported only for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	// The HTTP-to-Dubbo protocol conversion configuration. This configuration only supports SingleService MSE_NACOS DUBBO backends for HTTP APIs.
 	//
 	// example:
 	//
 	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
 	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
-	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+	// The target model name. This field is shared by multiple existing model backend scenarios, and the specific routing or model rewriting semantics are determined by backendConfig.scene. It is required for the SemanticRouter scenario. If not configured for the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
+	// The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
@@ -299,9 +299,9 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - HTTPS
+	// - HTTPS.
 	//
 	// example:
 	//
@@ -313,7 +313,7 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service source type. Used in HTTP-to-Dubbo conversion scenarios.
+	// The service source type. Used for HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
@@ -485,11 +485,11 @@ type CreateHttpApiRouteRequestMcpRouteConfig struct {
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - TCP
+	// - TCP.
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - DUBBO
+	// - DUBBO.
 	//
 	// example:
 	//

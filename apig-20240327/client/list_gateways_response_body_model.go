@@ -188,25 +188,25 @@ type ListGatewaysResponseBodyDataItems struct {
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The source from which the gateway was created. Valid values:
 	//
-	// - Console: Alibaba Cloud Management Console.
+	// - Console: The console.
 	//
 	// example:
 	//
 	// Console
 	CreateFrom *string `json:"createFrom,omitempty" xml:"createFrom,omitempty"`
-	// The timestamp when the gateway was created. Unit: milliseconds.
+	// The creation timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or a missing value indicates that the status is unknown. This parameter is for query and display purposes only.
+	// Indicates whether elastic scaling is enabled. A value of true indicates that elastic scaling is enabled. A value of false indicates that elastic scaling is disabled. A value of null or an empty value indicates that the status is unknown. This parameter is for query and display purposes only.
 	//
 	// example:
 	//
 	// false
 	ElasticEnabled *bool `json:"elasticEnabled,omitempty" xml:"elasticEnabled,omitempty"`
-	// The expiration timestamp of the subscription gateway. Unit: milliseconds.
+	// The expiration timestamp for subscription instances. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration of the gateway, including the access ingress type and the security group used by the internal endpoint. This parameter is returned only when the gateway is configured with an internal ingress.
+	// The network access configuration of the gateway, including the access ingress type and the security group used by the private endpoint. This parameter is returned only when the gateway is configured with a private ingress.
 	NetworkAccessConfig *ListGatewaysResponseBodyDataItemsNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
 	// The private connection information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
 	PrivateLink *ListGatewaysResponseBodyDataItemsPrivateLink `json:"privateLink,omitempty" xml:"privateLink,omitempty" type:"Struct"`
@@ -280,7 +280,7 @@ type ListGatewaysResponseBodyDataItems struct {
 	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// The gateway specification. Valid values:
 	//
-	// - apigw.small.x1: Small.
+	// - apigw.small.x1: Small specification.
 	//
 	// example:
 	//
@@ -709,7 +709,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The list of listened ports.
 	Ports []*ListGatewaysResponseBodyDataItemsLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
-	// The status of the load balancing. Valid values:
+	// The load balancing status. Valid values:
 	//
 	// - Ready: Active.
 	//
@@ -721,7 +721,7 @@ type ListGatewaysResponseBodyDataItemsLoadBalancers struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The load balancing type of the gateway. Valid values:
 	//
-	// - NLB: Network load balancing.
+	// - NLB: Network Load Balancer (NLB) load balancing.
 	//
 	// - CLB: Classic load balancing.
 	//
@@ -860,9 +860,9 @@ type ListGatewaysResponseBodyDataItemsLoadBalancersPorts struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The protocol. Valid values:
 	//
-	// - TCP.
+	// - TCP: TCP.
 	//
-	// - UDP.
+	// - UDP: UDP.
 	//
 	// example:
 	//
@@ -901,13 +901,13 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) Validate() error {
 }
 
 type ListGatewaysResponseBodyDataItemsNetworkAccessConfig struct {
-	// The ID of the security group configured for the internal endpoint. The security group belongs to the VPC selected by the user and is a non-managed security group.
+	// The ID of the security group configured for the private endpoint. The security group belongs to the VPC selected by the user and is a non-managed security group.
 	//
 	// example:
 	//
 	// sg-bp1example123456789
 	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
-	// The access ingress type of the gateway.
+	// The gateway access ingress type.
 	//
 	// example:
 	//
@@ -946,7 +946,7 @@ func (s *ListGatewaysResponseBodyDataItemsNetworkAccessConfig) Validate() error 
 }
 
 type ListGatewaysResponseBodyDataItemsPrivateLink struct {
-	// The connection status between the internal endpoint and the endpoint service.
+	// The connection status between the private endpoint and the endpoint service.
 	//
 	// example:
 	//
@@ -964,43 +964,43 @@ type ListGatewaysResponseBodyDataItemsPrivateLink struct {
 	//
 	// ep-bp1example123456789
 	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
-	// The ID of the security group configured for the internal endpoint.
+	// The ID of the security group configured for the private endpoint.
 	//
 	// example:
 	//
 	// sg-bp1example123456789
 	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
-	// The status of the internal endpoint.
+	// The status of the private endpoint.
 	//
 	// example:
 	//
 	// Active
 	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
-	// The error code of the most recent fault that occurred during the create or delete procedure of the private network ingress. This parameter is not returned if no error message is available.
+	// The error code of the most recent fault that occurred during the private network ingress creation or delete procedure. This parameter is not returned if no error message is available.
 	//
 	// example:
 	//
 	// Forbidden.RAM
 	LastErrorCode *string `json:"lastErrorCode,omitempty" xml:"lastErrorCode,omitempty"`
-	// The description of the most recent fault that occurred during the create or delete procedure of the private network ingress. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+	// The description of the most recent fault that occurred during the private network ingress creation or delete procedure. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
 	//
 	// example:
 	//
 	// private ingress CheckProductOpen failed (Forbidden.RAM)
 	LastErrorMessage *string `json:"lastErrorMessage,omitempty" xml:"lastErrorMessage,omitempty"`
-	// The time when the system last obtained the status of the internal endpoint. The time is in RFC 3339 format, such as 2026-11-02T10:00:00Z. This parameter is not returned if the status has not been obtained.
+	// The time when the system last obtained the status of the private endpoint. The time is in RFC 3339 format, such as 2026-11-02T10:00:00Z. This parameter is not returned if the status has not been obtained.
 	//
 	// example:
 	//
 	// 2026-11-02T10:00:00Z
 	ObservedAt *string `json:"observedAt,omitempty" xml:"observedAt,omitempty"`
-	// Indicates whether the internal endpoint may continue to incur charges. A value of true indicates that the endpoint has been created and its release has not been confirmed. A value of false indicates that there is no such charge prompt currently. The actual charges are subject to the bill.
+	// Indicates whether the private endpoint may continue to incur charges. A value of true indicates that the endpoint has been created and its release has not been confirmed. A value of false indicates that there is no charge prompt. Actual charges are subject to the bill.
 	//
 	// example:
 	//
 	// true
 	ResourceMayBeCharged *bool `json:"resourceMayBeCharged,omitempty" xml:"resourceMayBeCharged,omitempty"`
-	// The current processing stage of the internal ingress. A value of Ready indicates that the internal ingress is ready.
+	// The current processing stage of the private ingress. A value of Ready indicates that the private ingress is ready.
 	//
 	// example:
 	//

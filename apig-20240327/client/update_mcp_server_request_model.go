@@ -36,21 +36,21 @@ type iUpdateMcpServerRequest interface {
 }
 
 type UpdateMcpServerRequest struct {
-	// The list of assembled sources. This parameter is required when type is set to AssemblyMCP.
+	// The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
 	AssembledSources []*UpdateMcpServerRequestAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
-	// The backend service configuration of the route. This parameter is conditionally required. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
+	// The backend service configurations of the route. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.WithValue(400).
 	BackendConfig *UpdateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
-	// - ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP conversion.
+	// - ApiGatewayHttpToMCP: API gateway-hosted HTTP-to-MCP.
 	//
-	// - ApiGatewayProxyMcpHosting: Gateway-managed MCP direct proxy.
+	// - ApiGatewayProxyMcpHosting: API gateway-hosted MCP direct proxy.
 	//
-	// - ApiGatewayAssembly: Gateway MCP assembly.
+	// - ApiGatewayAssembly: API gateway MCP assembly.
 	//
-	// - NacosHttpToMCP: Gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// - NacosHttpToMCP: API gateway-hosted Nacos-synchronized HTTP-to-MCP.
 	//
-	// - NacosMcpHosting: Gateway-managed Nacos-synced MCP direct proxy.
+	// - NacosMcpHosting: API gateway-hosted Nacos-synchronized MCP direct proxy.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type UpdateMcpServerRequest struct {
 	//
 	// example:
 	//
-	// 商品中心服务路由
+	// Product center service route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The domain name ID.
+	// The domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
 	//
@@ -70,11 +70,11 @@ type UpdateMcpServerRequest struct {
 	//
 	// /sse
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// The list of canary release MCP server route configurations.
+	// The list of canary MCP server route configurations.
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rule. This parameter is conditionally required. If this parameter is not specified, the API returns InvalidParameter.IsEmpty(400).
+	// The route match rules. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.IsEmpty(400).
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// The HTTP-to-MCP configuration.
+	// The HTTP-to-MCP configurations.
 	McpServerConfig *UpdateMcpServerRequestMcpServerConfig `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable MCP observability. Default value: false.
 	//
@@ -84,13 +84,13 @@ type UpdateMcpServerRequest struct {
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// - HTTP: HTTP protocol.
+	// - HTTP: HTTP.
 	//
-	// - HTTPS: HTTPS protocol.
+	// - HTTPS: HTTPS.
 	//
-	// - SSE: Server-Sent Events protocol.
+	// - SSE: Server-Sent Events.
 	//
-	// - StreamableHTTP: Streamable HTTP protocol.
+	// - StreamableHTTP: Streaming HTTP.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type UpdateMcpServerRequest struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The MCP server type filter. Valid values: RealMCP, AssemblyMCP.
+	// The MCP server type filter. Valid values: RealMCP and AssemblyMCP.
 	//
 	// This parameter is required.
 	//
@@ -268,7 +268,7 @@ type UpdateMcpServerRequestAssembledSources struct {
 	//
 	// mcp-afaefaefaf
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP server name.
+	// The name of the MCP server.
 	//
 	// example:
 	//
@@ -374,7 +374,7 @@ type UpdateMcpServerRequestBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The Terms of Service. Valid values:
+	// The service protocol. Valid values:
 	//
 	// - TCP.
 	//
@@ -398,7 +398,7 @@ type UpdateMcpServerRequestBackendConfigServices struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The percentage value of the traffic ratio.
+	// The percentage value of the traffic proportion.
 	//
 	// example:
 	//
@@ -464,9 +464,9 @@ func (s *UpdateMcpServerRequestBackendConfigServices) Validate() error {
 }
 
 type UpdateMcpServerRequestGrayMcpServerConfigs struct {
-	// The backend configuration.
+	// The backend configurations.
 	BackendConfig *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The route match rule.
+	// The route match rules.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The route ID.
 	//
@@ -582,7 +582,7 @@ type UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The Terms of Service.
+	// The service protocol.
 	//
 	// example:
 	//
@@ -666,13 +666,13 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Valida
 }
 
 type UpdateMcpServerRequestMcpServerConfig struct {
-	// The MCP server configuration. This parameter is mutually exclusive with swaggerConfig.
+	// The MCP server configurations. This parameter is mutually exclusive with the swaggerConfig parameter.
 	//
 	// example:
 	//
 	// mcp-server-spec-yaml
 	McpServerSpec *string `json:"mcpServerSpec,omitempty" xml:"mcpServerSpec,omitempty"`
-	// The Swagger document for HTTP-to-MCP conversion. The document must comply with the OpenAPI 3.0 specification.
+	// The Swagger document for HTTP-to-MCP. The document must comply with the OpenAPI 3.0 specification.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type GetDomainResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID used to trace the API call chain.
+	// The request ID, which is used to trace the API call chain.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// 8237***-cn-hangzhou
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate detail error code.
+	// The error code for the certificate details.
 	//
 	// example:
 	//
 	// -
 	CertDetailErrorCode *string `json:"certDetailErrorCode,omitempty" xml:"certDetailErrorCode,omitempty"`
-	// The certificate detail error message.
+	// The error message for the certificate details.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The creation source.
+	// The source from which the domain name was created.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Serverless
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// The Settings for the HTTPS Protocol Type and whether forced HTTPS redirection is enabled.
+	// The HTTPS protocol type settings. Specifies whether forced HTTPS redirection is enabled.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// The certification authority.
+	// The certificate issuer.
 	//
 	// example:
 	//
@@ -230,11 +230,11 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
-	// The protocol types supported by the domain name.
+	// The protocol types supported by the domain name. Valid values:
 	//
-	// - HTTP: Supports only the HTTP protocol.
+	// - HTTP: Only the HTTP protocol is supported.
 	//
-	// - HTTPS: Supports only the HTTPS protocol.
+	// - HTTPS: Only the HTTPS protocol is supported.
 	//
 	// example:
 	//
@@ -246,13 +246,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// rg-aekztduhoagat4y
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// All the domain names bound to the certificate.
+	// All domain names bound to the certificate.
 	//
 	// example:
 	//
 	// aliyun.com
 	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
-	// The online resource information.
+	// The production resource information.
 	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`

@@ -44,7 +44,7 @@ type ListHiMarketConsumersResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. An empty value indicates that the last page is reached.
+	// The cursor for the next page. An empty value indicates that the last page has been reached.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListHiMarketConsumersResponseBody) Validate() error {
 }
 
 type ListHiMarketConsumersResponseBodyData struct {
-	// The list of consumers. The list element is named consumer, and each element represents a HiMarket consumer.
+	// The list of consumers. Each element represents a HiMarket consumer.
 	Content []*ListHiMarketConsumersResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,7 +138,7 @@ type ListHiMarketConsumersResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ListHiMarketConsumersResponseBodyData) Validate() error {
 }
 
 type ListHiMarketConsumersResponseBodyDataContent struct {
-	// The consumer ID. You can use this ID to locate the consumer in API operations such as GetHiMarketConsumer, DeleteHiMarketConsumer, GetHiMarketConsumerCredential, and ListHiMarketConsumerSubscriptions.
+	// The consumer ID. You can use this ID to locate the consumer in operations such as GetHiMarketConsumer, DeleteHiMarketConsumer, GetHiMarketConsumerCredential, and ListHiMarketConsumerSubscriptions.
 	//
 	// example:
 	//

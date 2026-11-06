@@ -30,19 +30,19 @@ type iListPluginAttachmentsRequest interface {
 }
 
 type ListPluginAttachmentsRequest struct {
-	// The ID of the mount resource.
+	// The ID of the mounted resource.
 	//
 	// example:
 	//
 	// hr-cv2h58em1hkg7c6vt43g
 	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
-	// The plugin mount point type. This parameter is not enabled.
+	// The type of the plugin mount point. This parameter is not yet enabled.
 	//
 	// example:
 	//
 	// GatewayRoute
 	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
-	// The mount point types. Separate multiple values with commas.
+	// The types of mount points. Separate multiple values with commas.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListPluginAttachmentsRequest struct {
 	//
 	// pl-ct8181um1hkiqns9f6e0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// Specifies whether to return parent resource mounts.	Notice: If this parameter is set to true, it must be used together with a single value of attachResourceTypes, which must be GatewayRoute or Operation.</notice>
+	// Specifies whether to return the mounts of parent resources. <notice>If this parameter is set to true, it must be used together with a single value of attachResourceTypes. Valid values: GatewayRoute and Operation.</notice>
 	//
 	// example:
 	//

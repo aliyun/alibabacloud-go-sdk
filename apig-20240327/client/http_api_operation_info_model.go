@@ -38,7 +38,7 @@ type iHttpApiOperationInfo interface {
 }
 
 type HttpApiOperationInfo struct {
-	// The authentication configuration.
+	// The permission authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
 	// The creation timestamp.
 	//
@@ -46,7 +46,7 @@ type HttpApiOperationInfo struct {
 	//
 	// 1719386834548
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The backend service deployment information for the API operation.
+	// The API operation backend service deployment information.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -54,43 +54,43 @@ type HttpApiOperationInfo struct {
 	//
 	// Retrieve user information
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether authentication is enabled.
+	// Specifies whether authentication is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The HTTP method of the API operation.
+	// The API operation method.
 	//
 	// example:
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// The mock parameter settings for the API operation.
+	// The API operation mock parameter settings.
 	Mock *HttpApiMockContract `json:"mock,omitempty" xml:"mock,omitempty"`
-	// The name of the API operation.
+	// The API operation name.
 	//
 	// example:
 	//
 	// GetUserInfo
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the API operation.
+	// The API operation ID.
 	//
 	// example:
 	//
 	// op-xxx
 	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
-	// The path of the API operation.
+	// The API operation path.
 	//
 	// example:
 	//
 	// /user/123
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The request parameter definition of the API operation.
+	// The API operation request parameter definition.
 	Request *HttpApiRequestContract `json:"request,omitempty" xml:"request,omitempty"`
-	// The response parameter definition of the API operation.
+	// The API operation response parameter definition.
 	Response *HttpApiResponseContract `json:"response,omitempty" xml:"response,omitempty"`
-	// The publish status of the API operation on the gateway.
+	// The publication status of the API operation on the gateway.
 	//
 	// example:
 	//

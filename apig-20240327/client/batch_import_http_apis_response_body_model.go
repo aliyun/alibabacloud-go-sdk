@@ -96,7 +96,7 @@ func (s *BatchImportHttpApisResponseBody) Validate() error {
 }
 
 type BatchImportHttpApisResponseBodyData struct {
-	// The asynchronous task ID. You can call the GetBatchImportTask operation to query the task progress.
+	// The ID of the asynchronous task. You can call the GetBatchImportTask operation to query the task progress.
 	//
 	// example:
 	//

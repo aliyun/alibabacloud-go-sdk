@@ -176,7 +176,7 @@ func (s *ListPluginAttachmentsResponseBodyData) Validate() error {
 }
 
 type ListPluginAttachmentsResponseBodyDataItems struct {
-	// The plugin mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+	// The type of the plugin mount resource. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
 	//
 	// example:
 	//
@@ -192,13 +192,13 @@ type ListPluginAttachmentsResponseBodyDataItems struct {
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
 	// The parent resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
-	// The plugin mount ID.
+	// The ID of the plugin mount.
 	//
 	// example:
 	//
 	// pa-d0j9t5em1hkncrlo51mg
 	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
-	// The plugin type information.
+	// The plugin class information.
 	PluginClassInfo *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
 	// The Base64-encoded content of the original plugin configuration.
 	//
@@ -212,7 +212,7 @@ type ListPluginAttachmentsResponseBodyDataItems struct {
 	//
 	// pl-cvu6r4um1hko3b3ti0a0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// The mount resource information.
+	// The mounted resource information.
 	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
 }
 

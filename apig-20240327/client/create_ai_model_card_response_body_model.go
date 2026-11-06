@@ -26,7 +26,7 @@ type CreateAiModelCardResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The model card information returned after successful creation.
+	// The model card information returned after the model card is created.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateAiModelCardResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *CreateAiModelCardResponseBody) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyData struct {
-	// The list of invocation paths supported by the model.
+	// The list of call paths supported by the model.
 	//
 	// example:
 	//
@@ -124,31 +124,31 @@ type CreateAiModelCardResponseBodyData struct {
 	//
 	// gw-8c13d2b4f8a1
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The token limits and input/output modality information of the model.
+	// The token limits and input and output modality information of the model.
 	//
 	// example:
 	//
 	// {"maxInputTokens":131072,"maxOutputTokens":8192,"maxTokens":131072,"supportedInputModalities":["text","image"],"supportedOutputModalities":["text"]}
 	Meta *CreateAiModelCardResponseBodyDataMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The model card ID.
+	// The ID of the model card.
 	//
 	// example:
 	//
 	// mc-8c13d2b4f8a1
 	ModelCardId *string `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model provider identifier.
+	// The identifier of the model provider.
 	//
 	// example:
 	//
 	// qwen
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
-	// The source of the model card. The current value is user.
+	// The source of the model card. Currently, user is returned.
 	//
 	// example:
 	//
@@ -284,13 +284,13 @@ func (s *CreateAiModelCardResponseBodyData) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyDataAvailablePaths struct {
-	// The model invocation path.
+	// The model call path.
 	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The protocol type of the path.
+	// The protocol type corresponding to the path.
 	//
 	// example:
 	//
@@ -329,25 +329,25 @@ func (s *CreateAiModelCardResponseBodyDataAvailablePaths) Validate() error {
 }
 
 type CreateAiModelCardResponseBodyDataCredit struct {
-	// The cache hit token cost, in Credits per million tokens.
+	// The cost of cache hit tokens, in Credits per million tokens.
 	//
 	// example:
 	//
 	// 0.5
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The input token cost, in Credits per million tokens.
+	// The cost of input tokens, in Credits per million tokens.
 	//
 	// example:
 	//
 	// 1.5
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The output token cost, in Credits per million tokens.
+	// The cost of output tokens, in Credits per million tokens.
 	//
 	// example:
 	//
 	// 3
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	// The billing type. The current value is fixed.
+	// The billing type. Currently, fixed is returned.
 	//
 	// example:
 	//

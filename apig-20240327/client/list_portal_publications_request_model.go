@@ -30,7 +30,7 @@ type ListPortalPublicationsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The API product name. This is the same field as productName in the response list items.
+	// The API product name. This corresponds to the productName field in the response list items.
 	//
 	// example:
 	//

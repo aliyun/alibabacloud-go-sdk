@@ -36,7 +36,7 @@ type ListGatewayQuotaRulesResponseBody struct {
 	//
 	// {"totalSize":100}
 	Data *ListGatewayQuotaRulesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of records to retrieve at a time. This parameter is not supported.
+	// The maximum number of records to return in a single request. This parameter is not supported.
 	//
 	// example:
 	//

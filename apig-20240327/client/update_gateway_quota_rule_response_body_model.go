@@ -32,7 +32,7 @@ type UpdateGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *UpdateGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message.
+	// The message content.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *UpdateGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type UpdateGatewayQuotaRuleResponseBodyData struct {
-	// Specifies whether the semantics of the current write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed overwrites for conflicts.
+	// Indicates whether the write request is accepted by the system. If dryRun=true, a value of true only indicates that the dry run is accepted, not that the configuration is saved. If a formal write request returns false, it indicates that the configuration is not saved due to conflicts, and you should check the conflictPreview. A value of false typically occurs in retryable scenarios, such as when a conflict overwrite is not confirmed.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type UpdateGatewayQuotaRuleResponseBodyData struct {
 	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	// The conflict preview.
 	ConflictPreview *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
-	// Specifies whether a dry run is performed.
+	// Indicates whether the request is a dry run.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *UpdateGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type UpdateGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The conflict hash.
+	// The hash of the conflict.
 	//
 	// example:
 	//
@@ -243,31 +243,31 @@ func (s *UpdateGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error
 type UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	// Deprecated
 	//
-	// The period type of the existing conflicting rule on the consumption subject. A value of day, week, or month indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
+	// The period type of the existing conflicting rule on the consumer. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month, respectively. This is a legacy field. Use the periodType field in the actual response instead. This field is not guaranteed to be returned.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumption subject. A value of calendar indicates that the existing conflicting rule on the consumption subject uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+	// The type of the existing conflicting rule on the consumer. Valid values: calendar, which indicates that the existing conflicting rule uses a natural period, and epoch, which indicates that the existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The consumer ID. You can now uniformly use subjectId instead.
+	// The ID of the consumer. This parameter is replaced by subjectId.
 	//
 	// example:
 	//
 	// cs-d82n1g6m1hkm375xxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer name. You can now uniformly use subjectName instead.
+	// The name of the consumer. This parameter is replaced by subjectName.
 	//
 	// example:
 	//
 	// consumer-a
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
-	// The period type of the existing conflicting rule. Valid values: day, week, and month, which indicate day, week, and month, respectively.
+	// The period type of the existing conflicting rule. Valid values: day, week, and month.
 	//
 	// example:
 	//

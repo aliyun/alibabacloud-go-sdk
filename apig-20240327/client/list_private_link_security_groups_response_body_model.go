@@ -98,13 +98,13 @@ func (s *ListPrivateLinkSecurityGroupsResponseBody) Validate() error {
 type ListPrivateLinkSecurityGroupsResponseBodyData struct {
 	// The source information.
 	Items []*ListPrivateLinkSecurityGroupsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of results returned for this query.
+	// The maximum number of entries returned in this query.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page.
+	// The next token.
 	//
 	// example:
 	//
@@ -175,9 +175,9 @@ type ListPrivateLinkSecurityGroupsResponseBodyDataItems struct {
 	SecurityGroupName *string `json:"securityGroupName,omitempty" xml:"securityGroupName,omitempty"`
 	// Specifies whether the resource is created by a service account. Valid values:
 	//
-	// - 0: The resource is not created by a service account.
+	// - 0: Not created by a service account.
 	//
-	// - 1: The resource is created by a service account.
+	// - 1: Created by a service account.
 	ServiceManaged *bool `json:"serviceManaged,omitempty" xml:"serviceManaged,omitempty"`
 	// The VPC ID.
 	//

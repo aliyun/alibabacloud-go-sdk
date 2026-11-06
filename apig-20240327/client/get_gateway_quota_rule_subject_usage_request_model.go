@@ -34,13 +34,13 @@ type GetGatewayQuotaRuleSubjectUsageRequest struct {
 	//
 	// true
 	FilterFailedRequests *bool `json:"filterFailedRequests,omitempty" xml:"filterFailedRequests,omitempty"`
-	// The page number of the detailed consumption (request) records for the consumer subject within the period.
+	// The page number of the detailed consumption (request) records for the consumption subject within the period.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page for the detailed consumption (request) records of the consumer subject within the period. Maximum value: 10.
+	// The number of entries per page for the detailed consumption (request) records of the consumption subject within the period. Maximum value: 10.
 	//
 	// example:
 	//

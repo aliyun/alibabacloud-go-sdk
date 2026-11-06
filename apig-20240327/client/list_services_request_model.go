@@ -32,7 +32,7 @@ type ListServicesRequest struct {
 	//
 	// gw-cpv4sqdl*****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The service name for exact match queries.
+	// The exact name of the service to query.
 	//
 	// example:
 	//

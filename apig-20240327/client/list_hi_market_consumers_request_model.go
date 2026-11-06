@@ -26,7 +26,7 @@ type iListHiMarketConsumersRequest interface {
 }
 
 type ListHiMarketConsumersRequest struct {
-	// The developer ID. This parameter is used to filter consumers by developer.
+	// The developer ID used to filter consumers.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListHiMarketConsumersRequest struct {
 	//
 	// consumer-1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token. Pass the nextToken value returned in the previous response to retrieve the next page. Do not pass this parameter for the first query.
+	// The pagination cursor. Pass the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first query.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListHiMarketConsumersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The portal ID. This parameter is used to filter consumers by portal.
+	// The portal ID used to filter consumers.
 	//
 	// example:
 	//

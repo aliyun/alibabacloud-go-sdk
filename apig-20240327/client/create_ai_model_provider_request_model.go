@@ -48,7 +48,7 @@ type CreateAiModelProviderRequest struct {
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
 	// The list of service IDs to bind to the provider.
 	ServiceIds []*string `json:"serviceIds,omitempty" xml:"serviceIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that ensures the idempotence of the request.
 	//
 	// example:
 	//

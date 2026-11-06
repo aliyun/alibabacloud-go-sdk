@@ -96,7 +96,7 @@ func (s *GetProductRefResponseBody) Validate() error {
 }
 
 type GetProductRefResponseBodyData struct {
-	// The API configurations currently associated with the API product. The structure is derived from the common struct HiMarketProductRefConfig. This struct contains two members: gatewayId and apigRefConfig. The inner apigRefConfig contains the following members: mcpServerId, mcpRouteId, mcpServerName, agentApiId, agentApiName, modelApiId, and modelApiName.
+	// The API configuration currently associated with the API product. The structure is derived from the common structure HiMarketProductRefConfig. This structure contains two members: gatewayId and apigRefConfig. The inner apigRefConfig contains the following members: mcpServerId, mcpRouteId, mcpServerName, agentApiId, agentApiName, modelApiId, and modelApiName.
 	ApigRefConfig *HiMarketProductRefConfig `json:"apigRefConfig,omitempty" xml:"apigRefConfig,omitempty"`
 	// The ID of the gateway instance where the association configuration of the API product resides.
 	//

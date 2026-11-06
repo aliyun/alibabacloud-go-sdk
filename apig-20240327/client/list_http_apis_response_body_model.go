@@ -26,7 +26,7 @@ type ListHttpApisResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The list of APIs.
+	// The API list.
 	Data *ListHttpApisResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -34,7 +34,7 @@ type ListHttpApisResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

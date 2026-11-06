@@ -169,7 +169,7 @@ func (s *GetGatewayResourceQuotaUsageResponseBodyData) Validate() error {
 }
 
 type GetGatewayResourceQuotaUsageResponseBodyDataItems struct {
-	// Indicates whether quota numerical values are provided.
+	// Specifies whether the quota value is provided.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type GetGatewayResourceQuotaUsageResponseBodyDataItems struct {
 	//
 	// 800
 	Limit *int64 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The scope to which the limit applies.
+	// The applicable scope of the limit.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type GetGatewayResourceQuotaUsageResponseBodyDataItems struct {
 	//
 	// 12
 	Used *int64 `json:"used,omitempty" xml:"used,omitempty"`
-	// The scope for usage statistics.
+	// The scope of usage statistics.
 	//
 	// example:
 	//

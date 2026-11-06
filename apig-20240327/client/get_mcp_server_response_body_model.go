@@ -96,27 +96,27 @@ func (s *GetMcpServerResponseBody) Validate() error {
 }
 
 type GetMcpServerResponseBodyData struct {
-	// API ID。
+	// The API ID.
 	//
 	// example:
 	//
 	// api-xxx
 	ApiId *string `json:"apiId,omitempty" xml:"apiId,omitempty"`
-	// The list of assembled sources. This parameter is required when type is AssemblyMCP.
+	// The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
 	AssembledSources []*GetMcpServerResponseBodyDataAssembledSources `json:"assembledSources,omitempty" xml:"assembledSources,omitempty" type:"Repeated"`
 	// The backend service of the route.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// The creation source type. Valid values:
+	// The creation source type.
 	//
-	// - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+	// ApiGatewayHttpToMCP: Gateway-hosted HTTP-to-MCP conversion
 	//
-	// - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
+	// ApiGatewayMcpHosting: Gateway-hosted direct MCP proxy
 	//
-	// - ApiGatewayAssembly: gateway MCP assembly.
+	// ApiGatewayAssembly: Gateway MCP assembly
 	//
-	// - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+	// NacosHttpToMCP: Gateway-hosted Nacos-synchronized HTTP-to-MCP conversion
 	//
-	// - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
+	// NacosMcpHosting: Gateway-hosted Nacos-synchronized direct MCP proxy
 	//
 	// example:
 	//
@@ -132,19 +132,19 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// Test MCP Server
+	// MCP server dedicated for testing
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of domain name IDs.
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
 	// The list of domain name information.
 	DomainInfos []*GetMcpServerResponseBodyDataDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
-	// The environment ID.
+	// The ID of the environment.
 	//
 	// example:
 	//
 	// env-cq7l5s5lhtgi6qasrdc0
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
+	// The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
 	//
 	// example:
 	//
@@ -156,9 +156,9 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The canary release route configurations.
+	// The canary route configurations.
 	GrayMcpServerConfigs []*GetMcpServerResponseBodyDataGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The route match rule.
+	// The route match rules.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// MCP Server configuration base64
+	// Base64-encoded MCP server configuration
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
-	// The MCP server plugin configuration attachment ID.
+	// The attachment ID of the MCP server plug-in configuration.
 	//
 	// example:
 	//
@@ -182,21 +182,21 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// mcp-adfefz24afg
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP server access path provided by the gateway.
+	// The access path of the MCP server provided by the gateway.
 	//
 	// example:
 	//
 	// /mcp-servers/test-mcp
 	McpServerPath *string `json:"mcpServerPath,omitempty" xml:"mcpServerPath,omitempty"`
-	// Specifies whether MCP observability is enabled. Default value: false.
+	// Specifies whether to enable MCP observability. Default value: false.
 	//
 	// example:
 	//
 	// false
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
-	// The Nacos-synced managed MCP information.
+	// The information about the Nacos-synchronized managed MCP.
 	NacosMcpSyncInfo *GetMcpServerResponseBodyDataNacosMcpSyncInfo `json:"nacosMcpSyncInfo,omitempty" xml:"nacosMcpSyncInfo,omitempty" type:"Struct"`
-	// The MCP server name.
+	// The name of the MCP server.
 	//
 	// example:
 	//
@@ -208,13 +208,13 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The route ID.
+	// The ID of the route.
 	//
 	// example:
 	//
 	// hr-cr82undlhtgrlej***
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
-	// The MCP server type.
+	// The type of the MCP server.
 	//
 	// example:
 	//
@@ -490,7 +490,7 @@ type GetMcpServerResponseBodyDataAssembledSources struct {
 	//
 	// mcp-xdafeafzz
 	McpServerId *string `json:"mcpServerId,omitempty" xml:"mcpServerId,omitempty"`
-	// The MCP server name.
+	// The name of the MCP server.
 	//
 	// example:
 	//
@@ -600,11 +600,11 @@ func (s *GetMcpServerResponseBodyDataDomainInfos) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataGrayMcpServerConfigs struct {
-	// The canary release route backend configuration.
+	// The backend configuration of the canary route.
 	BackendConfig *GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
-	// The canary release route match rule.
+	// The match rules of the canary route.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// The canary release route ID.
+	// The ID of the canary route.
 	//
 	// example:
 	//
@@ -662,7 +662,7 @@ func (s *GetMcpServerResponseBodyDataGrayMcpServerConfigs) Validate() error {
 }
 
 type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig struct {
-	// The backend scene.
+	// The backend scenario.
 	//
 	// example:
 	//
@@ -724,7 +724,7 @@ type GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices struc
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
@@ -808,7 +808,7 @@ type GetMcpServerResponseBodyDataNacosMcpSyncInfo struct {
 	//
 	// mse-xxxxx
 	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
-	// The synced MCP server ID.
+	// The ID of the synchronized MCP server.
 	//
 	// example:
 	//

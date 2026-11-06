@@ -38,7 +38,7 @@ type iDataPathConfigsFieldPathsValue interface {
 }
 
 type DataPathConfigsFieldPathsValue struct {
-	// The identifier key of the field, which is unique within the same request path, such as input_token.
+	// The identity key of the field, which is unique within the same request path, such as input_token.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// usage.prompt_tokens
 	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
-	// The value extraction rule of the field.
+	// The value rule for the field.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// Input token statistics
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The source of the field value, indicating which part of the message the field is read from, such as response_body.
+	// The source of the field value, which indicates the part of the message from which the field is read, such as response_body.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// usage
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The message direction to which the field belongs, indicating whether it is extracted from the request or the response.
+	// The message direction of the field, which indicates whether it is extracted from the request or the response.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// false
 	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	// Indicates whether collection is enabled for the field.
+	// Indicates whether the collection of the field is enabled.
 	//
 	// example:
 	//

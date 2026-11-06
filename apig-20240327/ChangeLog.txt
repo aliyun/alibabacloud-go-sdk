@@ -1,3 +1,6 @@
+2026-11-06 Version: v11.5.2
+- Generated golang 2024-03-27 for APIG.
+
 2026-11-06 Version: v11.5.1
 - Generated golang 2024-03-27 for APIG.
 

@@ -96,7 +96,7 @@ func (s *ListMcpProductToolsResponseBody) Validate() error {
 }
 
 type ListMcpProductToolsResponseBodyData struct {
-	// The list of MCP tools. The list element is named tool, and each element represents an MCP tool.
+	// The list of MCP tools. Each element in the list is named tool and represents an MCP tool.
 	Tools []*ListMcpProductToolsResponseBodyDataTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 }
 
@@ -131,17 +131,17 @@ func (s *ListMcpProductToolsResponseBodyData) Validate() error {
 }
 
 type ListMcpProductToolsResponseBodyDataTools struct {
-	// The annotation information of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and purposes.
+	// The annotations of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and usage.
 	Annotations map[string]interface{} `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	// The description of the tool.
 	//
 	// example:
 	//
-	// The functional description of the sample tool
+	// Functional description of the sample tool
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The input parameter structure definition of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+	// The input parameter schema of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
 	InputSchema map[string]interface{} `json:"inputSchema,omitempty" xml:"inputSchema,omitempty"`
-	// The metadata information of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and purposes.
+	// The metadata of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and usage.
 	Meta map[string]interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
 	// The name of the tool.
 	//
@@ -149,7 +149,7 @@ type ListMcpProductToolsResponseBodyDataTools struct {
 	//
 	// test-tool
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The output result structure definition of the tool in a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+	// The output schema of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
 	OutputSchema map[string]interface{} `json:"outputSchema,omitempty" xml:"outputSchema,omitempty"`
 	// The title of the tool.
 	//

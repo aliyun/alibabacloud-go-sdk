@@ -106,7 +106,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The creation source of the gateway. Valid values:
+	// The source from which the gateway was created. Valid values:
 	//
 	// - Console: The console.
 	//
@@ -134,7 +134,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The edition of the gateway instance. Valid values:
+	// The gateway edition. Valid values:
 	//
 	// - Professional: Professional instance.
 	//
@@ -150,7 +150,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The operation mode for AI multi-tenant V2. The default value is ENTERPRISE. This parameter is applicable only to AI and MultiTenantServerless gateways.
+	// The AI multi-tenant V2 operation mode. The default value is ENTERPRISE. This parameter is allowed only for AI and MultiTenantServerless.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The type of the Internet service provider (ISP).
+	// The network ISP type.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type GetGatewayResponseBodyData struct {
 	//
 	// itemcenter-gateway
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration of the gateway, including the access endpoint type and the security group used by the private endpoint. This parameter is returned only when the gateway is configured with a private endpoint.
+	// The network access configuration of the gateway, including the access endpoint type and the security group used by the internal endpoint. This parameter is returned only when the gateway is configured with an internal endpoint.
 	NetworkAccessConfig *GetGatewayResponseBodyDataNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
 	// The PrivateLink information of the gateway, including the endpoint ID, access domain name, connection status, and zone information.
 	PrivateLink *GetGatewayResponseBodyDataPrivateLink `json:"privateLink,omitempty" xml:"privateLink,omitempty" type:"Struct"`
@@ -202,7 +202,7 @@ type GetGatewayResponseBodyData struct {
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// The gateway specifications. Valid values:
 	//
-	// - apigw.small.x1: Small specifications.
+	// - apigw.small.x1: Small.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type GetGatewayResponseBodyData struct {
 	SubDomainInfos []*SubDomainInfo `json:"subDomainInfos,omitempty" xml:"subDomainInfos,omitempty" type:"Repeated"`
 	// The resource tags.
 	Tags []*GetGatewayResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The target version of the gateway. If this value is different from the current version, you can upgrade the gateway.
+	// The target version of the gateway. You can upgrade the gateway if this value is different from the current version.
 	//
 	// example:
 	//
@@ -626,7 +626,7 @@ func (s *GetGatewayResponseBodyData) Validate() error {
 }
 
 type GetGatewayResponseBodyDataEnvironments struct {
-	// The alias of the environment.
+	// The environment alias.
 	//
 	// example:
 	//
@@ -702,9 +702,9 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
-	// The type of the load balancing address. Valid values:
+	// The load balancing address type. Valid values:
 	//
-	// - Internet: Internet-facing.
+	// - Internet: Internet.
 	//
 	// - Intranet: Private network.
 	//
@@ -728,7 +728,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// nlb-xoh3pghru7c***
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
-	// The load balancing pattern of the gateway. Valid values:
+	// The load balancing provisioning pattern for the gateway. Valid values:
 	//
 	// - Managed: Managed by Cloud-native API Gateway.
 	//
@@ -736,7 +736,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// Managed
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The list of listener ports.
+	// The list of listened ports.
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
 	// The status of the load balancing. Valid values:
 	//
@@ -748,7 +748,7 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The type of the load balancing. Valid values:
+	// The load balancing type. Valid values:
 	//
 	// - NLB: Network Load Balancer (NLB).
 	//
@@ -930,13 +930,13 @@ func (s *GetGatewayResponseBodyDataLoadBalancersPorts) Validate() error {
 }
 
 type GetGatewayResponseBodyDataMaintenancePeriod struct {
-	// The end time of the O&M window in the HH:mm format.
+	// The O&M end time in HH:mm format.
 	//
 	// example:
 	//
 	// 06:00
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The start time of the O&M window in the HH:mm format.
+	// The O&M start time in HH:mm format.
 	//
 	// example:
 	//
@@ -975,7 +975,7 @@ func (s *GetGatewayResponseBodyDataMaintenancePeriod) Validate() error {
 }
 
 type GetGatewayResponseBodyDataNetworkAccessConfig struct {
-	// The ID of the security group configured for the private endpoint. The security group belongs to the VPC selected by the user and is an unmanaged security group.
+	// The ID of the security group configured for the internal endpoint. The security group belongs to the VPC selected by the user and is an unmanaged security group.
 	//
 	// example:
 	//
@@ -983,9 +983,9 @@ type GetGatewayResponseBodyDataNetworkAccessConfig struct {
 	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
 	// The access endpoint type of the gateway. Valid values:
 	//
-	// - Intranet: Private endpoint only.
+	// - Intranet: Internal endpoint only.
 	//
-	// - InternetAndIntranet: Both Internet and private endpoints.
+	// - InternetAndIntranet: Internet and internal endpoints.
 	//
 	// example:
 	//
@@ -1024,43 +1024,43 @@ func (s *GetGatewayResponseBodyDataNetworkAccessConfig) Validate() error {
 }
 
 type GetGatewayResponseBodyDataPrivateLink struct {
-	// The connection status between the private endpoint and the endpoint service. A value of Connected indicates that the endpoint is connected.
+	// The connection status between the internal endpoint and the endpoint service. A value of Connected indicates that the endpoint is connected.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
-	// The access domain name of the private endpoint, which can be used to access the gateway from the user VPC.
+	// The access domain name of the internal endpoint, which can be used to access the gateway from the user VPC.
 	//
 	// example:
 	//
 	// ep-bp1example123456789.epsrv-bp1example123456789.cn-hangzhou.privatelink.aliyuncs.com
 	EndpointDomain *string `json:"endpointDomain,omitempty" xml:"endpointDomain,omitempty"`
-	// The ID of the private endpoint.
+	// The internal endpoint ID.
 	//
 	// example:
 	//
 	// ep-bp1example123456789
 	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
-	// The ID of the security group configured for the private endpoint.
+	// The ID of the security group configured for the internal endpoint.
 	//
 	// example:
 	//
 	// sg-bp1example123456789
 	EndpointSecurityGroupId *string `json:"endpointSecurityGroupId,omitempty" xml:"endpointSecurityGroupId,omitempty"`
-	// The status of the private endpoint. A value of Active indicates that the endpoint is available.
+	// The status of the internal endpoint. A value of Active indicates that the endpoint is available.
 	//
 	// example:
 	//
 	// Active
 	EndpointStatus *string `json:"endpointStatus,omitempty" xml:"endpointStatus,omitempty"`
-	// The error code of the most recent error that occurred during the creation or delete operations of the private endpoint. This parameter is not returned if no error message is available.
+	// The error code of the most recent fault that occurred during the creation or delete procedure of the private network ingress. This parameter is not returned if no error message is available.
 	//
 	// example:
 	//
 	// Forbidden.RAM
 	LastErrorCode *string `json:"lastErrorCode,omitempty" xml:"lastErrorCode,omitempty"`
-	// The description of the most recent error that occurred during the creation or delete operations of the private endpoint. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
+	// The description of the most recent fault that occurred during the creation or delete procedure of the private network ingress. You can use this description along with the error code to troubleshoot the issue. This parameter is not returned if no error message is available.
 	//
 	// example:
 	//
@@ -1072,7 +1072,7 @@ type GetGatewayResponseBodyDataPrivateLink struct {
 	//
 	// 2026-11-02T10:00:00Z
 	ObservedAt *string `json:"observedAt,omitempty" xml:"observedAt,omitempty"`
-	// Indicates whether the private endpoint may continue to incur fees. A value of true indicates that the endpoint is created and its release is not confirmed. A value of false indicates that no fee prompt is available. The actual fees are subject to the bill.
+	// Indicates whether the private endpoint may continue to incur charges. A value of true indicates that the endpoint is created and its release is not confirmed. A value of false indicates that no charge prompt is available. Actual charges are subject to the bill.
 	//
 	// example:
 	//

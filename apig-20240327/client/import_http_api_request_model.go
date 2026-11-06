@@ -42,13 +42,13 @@ type iImportHttpApiRequest interface {
 type ImportHttpApiRequest struct {
 	// The API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The description of the API to be imported. If you do not specify this parameter, the description is extracted from the API definition file. The maximum length is 255 bytes.
+	// The description of the imported API. If you do not specify this parameter, the description is extracted from the API definition. The maximum length is 255 bytes.
 	//
 	// example:
 	//
 	// Test API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to perform a dry run. If you set this parameter to true, the system only checks the definition and does not perform the import operation.
+	// Specifies whether to perform a dry run. If this feature is enabled, the system only checks the Swagger definition and does not perform the import operation.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ImportHttpApiRequest struct {
 	//
 	// xxx
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
-	// The name of the API to be imported. If you do not specify this parameter, the name is extracted from the API definition file. If an API with the same name and versioning configuration already exists, the import operation updates the existing API definition based on the strategy parameter.
+	// The name of the imported API. If you do not specify this parameter, the name is extracted from the API definition file. If an API with the same name and versioning configuration already exists, the import operation updates the existing API definition based on the strategy parameter.
 	//
 	// example:
 	//
@@ -84,11 +84,11 @@ type ImportHttpApiRequest struct {
 	//
 	// b3BlbmFwaTogMy4wLjAKaW5mbzoKICAgIHRpdGxlOiBkZW1vCiAgICBkZXNjcmlwdGlvbjogdGhpc2lzZGVtbwogICAgdmVyc2lvbjogIiIKcGF0aHM6CiAgICAvdXNlci97dXNlcklkfToKICAgICAgICBnZXQ6CiAgICAgICAgICAgIHN1bW1hcnk6IOiOt+WPlueUqOaIt+S/oeaBrwogICAgICAgICAgICBkZXNjcmlwdGlvbjog6I635Y+W55So5oi35L+h5oGvCiAgICAgICAgICAgIG9wZXJhdGlvbklkOiBHZXRVc2VySW5mbwogICAgICAgICAgICByZXNwb25zZXM6CiAgICAgICAgICAgICAgICAiMjAwIjoKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjog5oiQ5YqfCiAgICAgICAgICAgICAgICAgICAgY29udGVudDoKICAgICAgICAgICAgICAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2NoZW1hOiBudWxsCnNlcnZlcnM6CiAgICAtIHVybDogaHR0cDovL2FwaS5leGFtcGxlLmNvbS92MQo=
 	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
-	// The download URL of the API definition file. The file must be downloadable over the Internet or through the internal network of OSS in the same region. The URL must have download permissions. For OSS file links that are not publicly readable, refer to References [Download files by using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Currently, only API definition files stored in OSS are supported.
+	// The download URL of the API definition file. The file must be downloadable over the Internet or through the internal network of OSS in the same region. The URL must have download permissions. For OSS file links that are not publicly readable, see References: [Download objects by using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Currently, only API definition files stored in OSS are supported.
 	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
 	// The OSS configuration.
 	SpecOssConfig *ImportHttpApiRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
-	// The update policy to specify when the imported API name and version management are the same as those of an existing API. Valid values:
+	// Specifies the update policy when the name and version management of the imported API are the same as those of an existing API. Valid values:
 	//
 	// - SpecOnly: The imported file completely overwrites the existing API.
 	//
@@ -96,7 +96,7 @@ type ImportHttpApiRequest struct {
 	//
 	// - ExistFirst: The existing API takes precedence. Only new operations are added, and existing operations are not updated.
 	//
-	// Default value: ExistFirst.
+	// Default policy: ExistFirst.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ImportHttpApiRequest struct {
 	TargetHttpApiId *string `json:"targetHttpApiId,omitempty" xml:"targetHttpApiId,omitempty"`
 	// The API versioning configuration. If versioning is enabled and an API with the same name and version number already exists, the import operation is treated as an update. If versioning is disabled and an API with the same name already exists, the import operation is also treated as an update.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
-	// Specifies whether to import gateway extension information. Set this parameter to true when you import HTTP API gateway extension configurations.
+	// Specifies whether to import gateway extension information.
 	//
 	// example:
 	//

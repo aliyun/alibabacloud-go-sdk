@@ -44,19 +44,19 @@ type iCreateDomainRequest interface {
 }
 
 type CreateDomainRequest struct {
-	// The CA certificate identifier. This parameter is optional for Dedicated with HTTPS. This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+	// The CA certificate identifier. This parameter is optional for Dedicated+HTTPS, not allowed for Serverless, and not verified for Dedicated+HTTP.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CaCertIdentifier *string `json:"caCertIdentifier,omitempty" xml:"caCertIdentifier,omitempty"`
-	// The certificate identifier. This parameter is required for Dedicated with HTTPS and must pass validation. This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+	// The certificate identifier. This parameter is required for Dedicated+HTTPS and must pass the submittable verification. This parameter is not allowed for Serverless and is not verified for Dedicated+HTTP.
 	//
 	// example:
 	//
 	// 1ef1da5f-38ed-69b3-****-037781890265
 	CertIdentifier *string `json:"certIdentifier,omitempty" xml:"certIdentifier,omitempty"`
-	// The client CA certificate. This parameter is conditionally required for Dedicated with HTTPS (required when MTLSEnabled is set to true). This parameter is not allowed for Serverless and is not validated for Dedicated with HTTP.
+	// The client CA certificate. This parameter is conditionally required for Dedicated+HTTPS when MTLSEnabled is set to true. This parameter is not allowed for Serverless and is not verified for Dedicated+HTTP.
 	//
 	// example:
 	//
@@ -70,31 +70,31 @@ type CreateDomainRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The domain name scope. Valid values: Dedicated (dedicated gateway domain name), Serverless (Serverless gateway domain name). Default value: Dedicated.
+	// The scope of the domain name. Valid values: Dedicated (dedicated gateway domain name) and Serverless (serverless gateway domain name). Default value: Dedicated.
 	//
 	// example:
 	//
 	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the protocol type is HTTPS. This parameter is required for Serverless and for Dedicated with HTTPS. This parameter is not validated for Dedicated with HTTP.
+	// Specifies whether to enable forced HTTPS redirection when the HTTPS protocol type is set. This parameter is required for Serverless and Dedicated+HTTPS, and is not verified for Dedicated+HTTP.
 	//
 	// example:
 	//
 	// false
 	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
-	// The gateway type. If not specified, the default value is API.
+	// The gateway type. This parameter is optional. If not specified, the default value is API.
 	//
 	// example:
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The HTTP/2 setting. Valid values: GlobalConfig (follows the global configuration), Open (enabled), Close (disabled). Default value: GlobalConfig. This setting is supported only for HTTPS domain names in the Dedicated scope.
+	// The HTTP/2 settings. Valid values: GlobalConfig (follows the global configuration), Open (enabled), and Close (disabled). Default value: GlobalConfig. This setting is supported only for HTTPS domain names in the Dedicated scope.
 	//
 	// example:
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mTLS mutual authentication. This parameter is optional for Dedicated with HTTPS. If set to true, ClientCACert is required. This parameter is not allowed for Serverless.
+	// Specifies whether to enable mTLS mutual authentication. This parameter is optional for Dedicated+HTTPS. If this parameter is set to true, ClientCACert is required. This parameter is not allowed for Serverless and is not verified for Dedicated+HTTP.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
 	// The domain name. The name must be 1 to 128 characters in length, such as abc.com.
 	//
@@ -104,7 +104,7 @@ type CreateDomainRequest struct {
 	//
 	// abc.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol type used by the domain name. Valid values: HTTP, HTTPS. This parameter is required for the Dedicated scope and is not allowed for the Serverless scope.
+	// The protocol type used by the domain name. Valid values: HTTP and HTTPS. This parameter is required for the Dedicated scope and is not allowed for the Serverless scope.
 	//
 	// example:
 	//
@@ -116,27 +116,27 @@ type CreateDomainRequest struct {
 	//
 	// rg-aekzhiv7derfweq
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The TLS cipher suite configuration, including the configuration type, cipher suite names, and supported TLS versions. This configuration is supported only for HTTPS domain names in the Dedicated scope.
+	// The TLS cipher suite configuration, which includes the configuration type, cipher suite name, and supported TLS versions. This configuration is supported only for HTTPS domain names in the Dedicated scope.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS protocol version. This parameter is optional for Dedicated with HTTPS. If not specified, the value is derived from TlsMin. The value must be greater than or equal to TlsMin. This parameter is not allowed for Serverless.
+	// The maximum TLS protocol version. This parameter is optional for Dedicated+HTTPS. If not specified, it is derived from TlsMin and must be greater than or equal to TlsMin. This parameter is not allowed for Serverless.
 	//
 	// example:
 	//
 	// TLS1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS protocol version. This parameter is optional for Dedicated with HTTPS. If not specified, the default value is TLS 1.0. Valid values range from TLS 1.0 to TLS 1.3, compatible with TLSv1.x. This parameter is not allowed for Serverless.
+	// The minimum TLS protocol version. This parameter is optional for Dedicated+HTTPS. If not specified, the default value is TLS 1.0. TLS 1.0 to 1.3 are allowed, compatible with TLSv1.x. This parameter is not allowed for Serverless.
 	//
 	// example:
 	//
 	// TLS1.0
 	TlsMin *string `json:"tlsMin,omitempty" xml:"tlsMin,omitempty"`
-	// The idempotency token, a globally unique value generated by the caller (UUID recommended). The value can be up to 64 characters in length. Within approximately 24 hours after the first successful request, a duplicate request that carries the same ClientToken and identical request parameters directly returns the domainId created by the first request without creating a duplicate domain name. If the same ClientToken is carried but the request parameters differ, an IdempotentParameterMismatch error is returned. If the first request is still being processed, an IdempotentProcessing error is returned. If this parameter is not specified, idempotency control is not enabled and the behavior is consistent with the existing version.
+	// The idempotency token. The caller generates a globally unique value (UUID is recommended) with a length of up to 64 characters. Within about 24 hours after the first request succeeds, a repeated request with the same ClientToken and identical request parameters directly returns the domainId created in the first request without creating the domain name again. If the same ClientToken is used but the request parameters are different, IdempotentParameterMismatch is returned. If the first request is still being processed, IdempotentProcessing is returned. If this parameter is not specified, idempotency control is not enabled, and the behavior is consistent with the existing version.
 	//
 	// example:
 	//
 	// 5f7a2c1e-9b3d-4e8f-a1c6-0d2b8e4f7a13
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// Specifies whether to perform only a dry run. If set to true, all synchronous validations identical to those of an actual creation are performed, including idempotency checks for existing test domain names, but no domain name is created and no side effects are produced. If not specified or set to false, the behavior is consistent with the existing version.
+	// Specifies whether to perform only a dry run. If this parameter is set to true, all synchronous validations consistent with actual creation (including idempotency checks for existing test domain names) are executed, but no domain name is created and no side effects are generated. If this parameter is not specified or is set to false, the behavior is consistent with the existing version.
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 

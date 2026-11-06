@@ -20,7 +20,7 @@ type iListProductSubscriptionsRequest interface {
 }
 
 type ListProductSubscriptionsRequest struct {
-	// The keyword of the consumer name, which is used to search for subscription records of the API product by consumer name.
+	// The keyword of the consumer name. This parameter is used to search for subscription records of the API product by consumer name.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListProductSubscriptionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The subscription status, which is used to filter subscriptions by status. Valid values:
+	// The subscription status. This parameter is used to filter subscriptions by status. Valid values: PENDING and APPROVED.
 	//
 	// example:
 	//

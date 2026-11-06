@@ -28,7 +28,7 @@ type iUpdateHttpApiRouteRequest interface {
 }
 
 type UpdateHttpApiRouteRequest struct {
-	// The backend service configuration for the route.
+	// The backend service configuration of the route.
 	BackendConfig *UpdateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The route description.
 	//
@@ -218,25 +218,25 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
-	// The service group. Used for HTTP-to-Dubbo conversion scenarios.
+	// The service group. Used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// The HTTP-to-Dubbo protocol conversion configuration. This is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	// The HTTP-to-Dubbo protocol conversion configuration. This configuration is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
 	//
 	// example:
 	//
 	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
 	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
-	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. It must be configured for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+	// The name of the target model. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
+	// The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestDfpConfig struct {
-	// The ID of the ExtProc service mounted to the current route. When updating a fixed DFP route, this value must match the existing service. Service switching is not supported.
+	// The ID of the ExtProc service mounted to the current route. When updating a fixed DFP route, this ID must match the existing service. Service switching is not supported.
 	//
 	// example:
 	//

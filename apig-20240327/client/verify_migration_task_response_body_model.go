@@ -102,13 +102,13 @@ type VerifyMigrationTaskResponseBodyData struct {
 	//
 	// true
 	IsSupported *bool `json:"isSupported,omitempty" xml:"isSupported,omitempty"`
-	// The description of the check result, such as the failure reason or incompatibility summary. This value is from the Istio validation Reason.
+	// The description of the check result, such as the failure cause or incompatibility summary, which is derived from the Istio validation reason.
 	//
 	// example:
 	//
 	// all routes supported
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Indicates whether the check is successful, which means whether the Istiod query link is working properly.
+	// Indicates whether the check is successfully executed, which reflects whether the Istiod query link is functioning properly.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type VerifyMigrationTaskResponseBodyDataUnSupportedRouteRules struct {
 	//
 	// default/my-ingress
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The summary of the incompatible rule, in the format of request URI → destination service.
+	// The summary of the incompatible rule, including the request URI and the destination service.
 	//
 	// example:
 	//

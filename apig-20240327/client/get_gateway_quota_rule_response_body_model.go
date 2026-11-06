@@ -100,7 +100,7 @@ func (s *GetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyData struct {
-	// The base timestamp of the cycle, in UNIX seconds.
+	// The base timestamp of the period.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// 2026-10-25T00:00:00Z
 	CurrentCycleResetAt *string `json:"currentCycleResetAt,omitempty" xml:"currentCycleResetAt,omitempty"`
-	// The number of days in the custom cycle. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural cycles.
+	// The number of days in a custom period. This parameter is returned only when windowAlignment is set to epoch. Valid values: 1 to 106751. This parameter is not returned for natural periods.
 	//
 	// example:
 	//
 	// 3
 	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
-	// The quota cycle type.
+	// The quota period type.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
 	// The list of general subjects bound to this rule. This parameter is returned only when withSubjects is set to true.
 	Subjects []*GetGatewayQuotaRuleResponseBodyDataSubjects `json:"subjects,omitempty" xml:"subjects,omitempty" type:"Repeated"`
-	// The time zone corresponding to the natural cycle, in UTC+x format.
+	// The time zone corresponding to the natural period, in UTC+x format.
 	//
 	// example:
 	//
 	// GMT+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset cycle type.
+	// The reset period type.
 	//
 	// example:
 	//
@@ -365,13 +365,13 @@ func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
-	// The ID of the subject (consumer).
+	// The subject (consumer) ID.
 	//
 	// example:
 	//
 	// c-aaa
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the subject (consumer).
+	// The subject (consumer) name.
 	//
 	// example:
 	//

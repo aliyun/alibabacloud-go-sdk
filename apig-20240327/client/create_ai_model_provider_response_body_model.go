@@ -26,7 +26,7 @@ type CreateAiModelProviderResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response struct.
+	// The response structure.
 	Data *CreateAiModelProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -118,7 +118,7 @@ type CreateAiModelProviderResponseBodyData struct {
 	//
 	// 3
 	ModelCount *int32 `json:"modelCount,omitempty" xml:"modelCount,omitempty"`
-	// The model provider ID.
+	// The ID of the model provider.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ func (s *CreateAiModelProviderResponseBodyData) Validate() error {
 type CreateAiModelProviderResponseBodyDataModelCards struct {
 	// The list of available paths for the model.
 	AvailablePaths []*CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	// The credits consumption configuration of the model.
+	// The credits consumption configuration for the model.
 	Credit *CreateAiModelProviderResponseBodyDataModelCardsCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
 	// The capability features of the model.
 	//
@@ -266,39 +266,39 @@ type CreateAiModelProviderResponseBodyDataModelCards struct {
 	//
 	// {"stream":true,"tools":true}
 	Features map[string]interface{} `json:"features,omitempty" xml:"features,omitempty"`
-	// The instance ID of the gateway to which the model card belongs.
+	// The associated gateway instance ID.
 	//
 	// example:
 	//
 	// gw-ucbx3s2m****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The model metadata.
+	// The metadata of the model.
 	Meta *CreateAiModelProviderResponseBodyDataModelCardsMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The model card ID.
+	// The ID of the model card.
 	//
 	// example:
 	//
 	// mc-xxx****
 	ModelCardId *string `json:"modelCardId,omitempty" xml:"modelCardId,omitempty"`
-	// The model name.
+	// The name of the model.
 	//
 	// example:
 	//
 	// gpt-4
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The identifier of the model provider to which the model card belongs.
+	// The identifier of the associated model provider.
 	//
 	// example:
 	//
 	// openai
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
-	// The model source.
+	// The source of the model.
 	//
 	// example:
 	//
 	// custom
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The URL of the model metadata.
+	// The URL for the model metadata.
 	//
 	// example:
 	//
@@ -488,25 +488,25 @@ func (s *CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths) Validate
 }
 
 type CreateAiModelProviderResponseBodyDataModelCardsCredit struct {
-	// The credits consumption coefficient for cached tokens.
+	// The credit consumption coefficient for cached tokens.
 	//
 	// example:
 	//
 	// 0.015
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The credits consumption coefficient for input tokens.
+	// The credit consumption coefficient for input tokens.
 	//
 	// example:
 	//
 	// 0.03
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The credits consumption coefficient for output tokens.
+	// The credit consumption coefficient for output tokens.
 	//
 	// example:
 	//
 	// 0.06
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	// The credits billing type.
+	// The billing type for credits.
 	//
 	// example:
 	//

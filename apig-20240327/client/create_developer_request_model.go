@@ -22,7 +22,7 @@ type CreateDeveloperRequest struct {
 	//
 	// abcd1234
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The logon username of the developer. The length must not exceed 64 characters.
+	// The logon username of the developer. The length cannot exceed 64 characters.
 	//
 	// example:
 	//

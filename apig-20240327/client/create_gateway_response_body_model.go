@@ -96,7 +96,7 @@ func (s *CreateGatewayResponseBody) Validate() error {
 }
 
 type CreateGatewayResponseBodyData struct {
-	// The gateway ID.
+	// The ID of the gateway.
 	//
 	// example:
 	//

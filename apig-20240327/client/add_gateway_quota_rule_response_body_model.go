@@ -32,7 +32,7 @@ type AddGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *AddGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message.
+	// The message content.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *AddGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the semantics of this write request can be accepted by the system. A value of false typically occurs in retryable scenarios such as unconfirmed conflict overwrites.
+	// Indicates whether the semantics of the write request can be accepted by the system. A value of false typically occurs in retryable scenarios, such as when conflicts are not confirmed for overwriting.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *AddGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The conflict hash.
+	// The hash of the conflicts.
 	//
 	// example:
 	//
@@ -243,31 +243,31 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	// Deprecated
 	//
-	// The period type of the existing conflicting rule on the consumption subject. If conflictPeriodType is day, week, or month, it indicates that the period of the existing conflicting rule on the consumption subject is day, week, or month, respectively.
+	// The period type of the existing conflicting rule on the subject. This is a legacy field. Use periodType in the actual response instead. This field is not guaranteed to be returned. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumption subject. If conflictType is calendar, it indicates that the existing conflicting rule on the consumption subject is a natural period. If conflictType is epoch, it indicates that the existing conflicting rule is a custom period.
+	// The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The ID of the conflicting consumer. You can now use subjectId instead.
+	// The ID of the conflicting consumer. You can use subjectId instead.
 	//
 	// example:
 	//
 	// cs-xxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The name of the conflicting consumer. You can now use subjectName instead.
+	// The name of the conflicting consumer. You can use subjectName instead.
 	//
 	// example:
 	//
 	// consumer-a
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
-	// The period type of the existing conflicting rule. day, week, and month indicate day, week, and month, respectively.
+	// The period type of the existing conflicting rule. Valid values: day, week, and month.
 	//
 	// example:
 	//

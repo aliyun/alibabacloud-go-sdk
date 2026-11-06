@@ -96,7 +96,7 @@ func (s *CreateDeveloperResponseBody) Validate() error {
 }
 
 type CreateDeveloperResponseBodyData struct {
-	// The developer ID. You can use this ID to locate the developer in operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+	// The developer ID. This ID can be used to identify the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
 	//
 	// example:
 	//

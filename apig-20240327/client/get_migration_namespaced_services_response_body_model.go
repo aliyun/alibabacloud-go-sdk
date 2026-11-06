@@ -20,7 +20,7 @@ type iGetMigrationNamespacedServicesResponseBody interface {
 }
 
 type GetMigrationNamespacedServicesResponseBody struct {
-	// The response status code.
+	// The status code of the response.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetMigrationNamespacedServicesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ func (s *GetMigrationNamespacedServicesResponseBodyDataNamespacedServices) Valid
 }
 
 type GetMigrationNamespacedServicesResponseBodyDataNamespacedServicesServices struct {
-	// The service name. After you select a Server Load Balancer (SLB) instance, the frontend populates this value into the serviceName field.
+	// The name of the service. After an SLB instance is selected, the frontend populates this value into the serviceName field.
 	//
 	// example:
 	//

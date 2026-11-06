@@ -50,7 +50,7 @@ type GetDashboardResponseBody struct {
 	//
 	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,25 +130,25 @@ func (s *GetDashboardResponseBody) Validate() error {
 }
 
 type GetDashboardResponseBodyData struct {
-	// The unique ID of the gateway.
+	// The unique identifier of the gateway.
 	//
 	// example:
 	//
 	// gw-co370icmjeu****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The name of the dashboard.
+	// The dashboard name.
 	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The title of the dashboard.
+	// The dashboard title.
 	//
 	// example:
 	//
 	// APIG Plugin
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The URL of the dashboard.
+	// The dashboard URL.
 	//
 	// example:
 	//

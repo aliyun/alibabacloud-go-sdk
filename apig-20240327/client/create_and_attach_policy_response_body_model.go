@@ -26,7 +26,7 @@ type CreateAndAttachPolicyResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response struct.
+	// The response structure.
 	Data *CreateAndAttachPolicyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message.
 	//
@@ -96,7 +96,7 @@ func (s *CreateAndAttachPolicyResponseBody) Validate() error {
 }
 
 type CreateAndAttachPolicyResponseBodyData struct {
-	// The attachment information.
+	// The attachment relationship information.
 	Attachment *Attachment `json:"attachment,omitempty" xml:"attachment,omitempty"`
 	// The ID of the newly created policy.
 	//

@@ -34,7 +34,7 @@ type ListProductCategoriesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *ListProductCategoriesResponseBody) Validate() error {
 }
 
 type ListProductCategoriesResponseBodyData struct {
-	// The list of product categories. Each element in the list represents a product category.
+	// The list of product categories. Each element in the list is named category and contains the information about a product category.
 	Content []*ListProductCategoriesResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -176,21 +176,21 @@ func (s *ListProductCategoriesResponseBodyData) Validate() error {
 }
 
 type ListProductCategoriesResponseBodyDataContent struct {
-	// The ID of the product category. You can use this ID as the categoryId path parameter in the GetProductCategory, UpdateProductCategory, and DeleteProductCategory operations, or as an element in the categories parameter in the SetProductCategories and CreateProduct operations.
+	// The product category ID. You can use this ID as the categoryId path parameter for GetProductCategory, UpdateProductCategory, and DeleteProductCategory. You can also use it as an element in the categories parameter (a set of category IDs) for SetProductCategories and CreateProduct.
 	//
 	// example:
 	//
 	// category-xxxxxxxx
 	CategoryId *string `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
-	// The description of the product category.
+	// The product category description.
 	//
 	// example:
 	//
-	// Product categories with AI-related capabilities
+	// Product category containing AI-related capabilities
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The icon of the product category. It consists of two fields: type (the icon type) and value (the icon information).
+	// The product category icon. It consists of two fields: icon type (type) and icon information (value).
 	Icon *HiMarketIcon `json:"icon,omitempty" xml:"icon,omitempty"`
-	// The name of the product category.
+	// The product category name.
 	//
 	// example:
 	//

@@ -96,7 +96,7 @@ func (s *CreatePluginClassResponseBody) Validate() error {
 }
 
 type CreatePluginClassResponseBodyData struct {
-	// The plugin class ID.
+	// The ID of the plug-in class.
 	//
 	// example:
 	//
