@@ -50,7 +50,7 @@ type ListAppInstanceTypeRequest struct {
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// The session instance type code. An exact match is performed based on the complete code. If this parameter and AppInstanceTypeList are specified at the same time, the results are filtered by intersection. You can first call this operation without this condition, and then select a returned code.
+	// The session instance type code. Exact match is performed based on the complete code. If this parameter and `AppInstanceTypeList` are specified at the same time, the results are filtered by intersection. You can perform a conditional query without this condition first, and then select the returned codes.
 	//
 	// example:
 	//
@@ -62,12 +62,12 @@ type ListAppInstanceTypeRequest struct {
 	//
 	// ecs.g6
 	AppInstanceTypeFamily *string `json:"AppInstanceTypeFamily,omitempty" xml:"AppInstanceTypeFamily,omitempty"`
-	// The list of session instance type codes. A maximum of 100 items can be specified. This parameter takes effect by intersection with other filtering conditions. If this parameter and AppInstanceType are specified at the same time, the results must also match the single code.
+	// The list of session instance type codes. A maximum of 100 items are supported. This parameter takes effect by intersection with other filtering conditions. If this parameter and `AppInstanceType` are specified at the same time, the results must also match the single code.
 	//
 	// if can be null:
 	// true
 	AppInstanceTypeList []*string `json:"AppInstanceTypeList,omitempty" xml:"AppInstanceTypeList,omitempty" type:"Repeated"`
-	// The business region ID. If this parameter is omitted, the region of the current request is used. The available instance types may vary by region and account. You can call [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) to obtain the business region ID.
+	// The business region ID. If this parameter is omitted, the region of the current request is used. The available instance types may vary by region and account. You can call the [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) operation to obtain the business region ID.
 	//
 	// example:
 	//
@@ -75,19 +75,19 @@ type ListAppInstanceTypeRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The instance type category filtering condition. If this parameter is omitted, no category filtering condition is added. Valid values:
 	//
-	// - Cpu: CPU instance type.
+	// - `Cpu`: CPU instance type.
 	//
-	// - Gpu: GPU instance type.
+	// - `Gpu`: GPU instance type.
 	//
 	// example:
 	//
 	// Gpu
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The billing method for filtering available instance types. If this parameter is omitted, no billing method condition is added. Valid values:
+	// The billing method used to filter available instance types. If this parameter is omitted, no billing method condition is added. Valid values:
 	//
-	// - PrePaid: subscription.
+	// - `PrePaid`: subscription.
 	//
-	// - PostPaid: pay-as-you-go.
+	// - `PostPaid`: pay-as-you-go.
 	//
 	// example:
 	//
@@ -107,11 +107,11 @@ type ListAppInstanceTypeRequest struct {
 	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
 	// The language of the instance type name.
 	//
-	// - zh-CN: The Chinese name of the instance type.
+	// - `zh-CN`: Use the Chinese name of the instance type.
 	//
-	// - Other values or omitted: The instance type code is used as the name.
+	// - Other values or omitted: Use the instance type code as the name.
 	//
-	// This parameter only affects the display of InstanceTypeName and does not change the instance type code.
+	// This parameter only affects the display of `InstanceTypeName` and does not change the instance type code.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type ListAppInstanceTypeRequest struct {
 	//
 	// 8192
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The operating system type. For the Wuying Cloud App (CloudApp) scenario, use the following values:
+	// The operating system type. In the Wuying Cloud Application (CloudApp) scenario, set the value to:
 	//
-	// - Windows: Windows operating system.
+	// - `Windows`: Windows operating system.
 	//
 	// If this parameter is omitted, no operating system filtering condition is added.
 	//
@@ -139,7 +139,7 @@ type ListAppInstanceTypeRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of instance types to return on each page. Unit: entries. Default value: 200. Explicitly set a positive integer that meets your business requirements. The default value here does not indicate the maximum value allowed by the service.
+	// The number of instance types returned per page. Unit: entries. Default value: 200. Explicitly set a positive integer that meets your business requirements. The default value here does not represent the maximum value allowed by the service.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListAppInstanceTypeRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The product type. Set the value to the following fixed value when you call this operation:
 	//
-	// - CloudApp: Wuying Cloud App.
+	// - `CloudApp`: Wuying Cloud Application.
 	//
 	// This parameter is required.
 	//
@@ -155,11 +155,11 @@ type ListAppInstanceTypeRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// Specifies whether to query the instance type inventory at the same time. Default value: false.
+	// Specifies whether to query the instance type inventory at the same time. Default value: `false`.
 	//
-	// - true: Queries the inventory and returns InventoryInfo if the inventory information is available.
+	// - `true`: Queries the inventory and returns InventoryInfo when the inventory information is available.
 	//
-	// - false: Queries only the instance types and does not query the inventory.
+	// - `false`: Queries only the instance types and does not query the inventory.
 	//
 	// example:
 	//

@@ -14,11 +14,11 @@ type iListRegionIdRequest interface {
 }
 
 type ListRegionIdRequest struct {
-	// The product type for querying available image regions. If this parameter is omitted, the query defaults to CloudApp. Valid values:
+	// The product type for querying available image regions. If this parameter is omitted, the query is performed based on CloudApp. Valid values:
 	//
 	// - **CloudGame**: cloud gaming
 	//
-	// - **CloudApp**: WUYING Cloud Application
+	// - **CloudApp**: WUYING Cloud App
 	//
 	// - **CloudBrowser**: secure browser
 	//
@@ -34,7 +34,7 @@ type ListRegionIdRequest struct {
 	//
 	// - **AndroidGpuRender**: Android cloud GPU rendering
 	//
-	// - **WuyingServer**: enterprise edition workstation
+	// - **WuyingServer**: Enterprise Edition workstation
 	//
 	// - **GpuProxy**: GPU remote rendering proxy
 	//
@@ -44,11 +44,11 @@ type ListRegionIdRequest struct {
 	//
 	// - **HostedDesktop**: hosted desktop
 	//
-	// - **WuyingWorkstation**: personal edition container workstation
+	// - **WuyingWorkstation**: Personal Edition container workstation
 	//
-	// - **WuyingWorkstationBusiness**: business edition container workstation
+	// - **WuyingWorkstationBusiness**: Business Edition container workstation
 	//
-	// - **WuyingWorkstationTeam**: Linggou container workstation team edition
+	// - **WuyingWorkstationTeam**: Linggou container workstation Team Edition
 	//
 	// example:
 	//

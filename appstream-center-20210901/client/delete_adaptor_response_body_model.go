@@ -22,7 +22,7 @@ type iDeleteAdaptorResponseBody interface {
 }
 
 type DeleteAdaptorResponseBody struct {
-	// The error code. Returned when a request fails. A successful response may not contain this field.
+	// The error code. This field is returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type DeleteAdaptorResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the operation was successful. A value of true indicates that the operation was successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message or result prompt. Used to describe the cause when a request fails. A successful response may not contain this field.
+	// The error message or result prompt. This field describes the cause when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
 	// Internal error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request. You can provide this value for troubleshooting.
+	// The unique identifier of the request. You can provide this value when troubleshooting issues.
 	//
 	// example:
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates that the request was successful. To determine whether an asynchronous task is completed, query the task status separately.
+	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether the asynchronous task is completed, query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

@@ -376,7 +376,7 @@ func (client *Client) BatchCreateLlmTemplatesWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Before you call this operation, make sure that the parent image is available and that an available image distribution record exists in the region where the image is to be created.
+// Before you call this operation, make sure that the parent image is available and an available image distribution record exists in the region where the image is created.
 //
 // 1. Call ListImage to obtain the parent image ID.
 //
@@ -712,7 +712,7 @@ func (client *Client) ConfigRuntimeModelTemplateWithContext(ctx context.Context,
 //
 // Only custom images and community images that can be managed by the current account are supported. If VersionId is omitted, the current active version of the image is used. If specified, the version must belong to the image specified by ImageId.
 //
-// Call ListImage first to select an image. After the application is created, save the returned AppId, AppVersionId, ImageId, and VersionId. To dissociate the application, call UnbindApp.
+// Call ListImage to select an image first. After the application is created, save the returned AppId, AppVersionId, ImageId, and VersionId. To dissociate the application, call UnbindApp.
 //
 // @param request - CreateAndBindAppRequest
 //
@@ -1198,6 +1198,68 @@ func (client *Client) CreateBrowserInstanceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
+// Creates an asynchronous export task to export the WUYING server list, user usage report, cloud browser bookmarks, or URL whitelist.
+//
+// Description:
+//
+// Creates an export task and returns the task ID and initial status. The exported file is not returned synchronously.
+//
+// After the task is created, save the TaskId and call DescribeExportTasks to query the task status and progress. A polling interval of 5 to 10 seconds is recommended. When the status is FINISHED, use the DownloadUrl in the latest query result to download the XLSX file. When the status is FAILED, check the ErrorMsg and stop polling.
+//
+// The task is valid for 24 hours after creation. The download URL has an independent signature validity period of up to 1 hour, which does not exceed the remaining validity period of the task. Query the latest URL before downloading. You cannot obtain a valid download URL after the task expires.
+//
+// Exporting the WUYING server list only accepts the filter fields listed in QueryParamJson. Pagination is controlled by the server, and a single task can export up to 100,000 records. Exporting cloud browser bookmarks and the URL whitelist exports the complete list of the target delivery group, regardless of list search terms or the current page. The system verifies the delivery group ownership and product type before execution. Data is paginated during execution, and no consistent snapshot is provided. A successful creation does not guarantee that subsequent verification, querying, or file generation will succeed.
+//
+// @param request - CreateExportTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateExportTaskResponse
+func (client *Client) CreateExportTaskWithContext(ctx context.Context, request *CreateExportTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateExportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExportFields) {
+		body["ExportFields"] = request.ExportFields
+	}
+
+	if !dara.IsNil(request.QueryParamJson) {
+		body["QueryParamJson"] = request.QueryParamJson
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateExportTask"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateExportTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a custom image from a deployed WUYING instance. You can use the custom image to quickly create more WUYING instances with the same configurations, without having to repeatedly configure the instance environment each time.
 //
 // @param request - CreateImageByInstanceRequest
@@ -1659,17 +1721,17 @@ func (client *Client) CreateWuyingServerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a specified application adapter, or dissociates the adapter from a specified image version.
+// Deletes a specified application adaptation, or dissociates the adaptation from a specified image version.
 //
 // Description:
 //
-// *Confirm the deletion scope.**
+// *Confirm the deletion scope first.**
 //
-// - If both ImageId and VersionId are specified: The adapter is only dissociated from the specified image version.
+// - If both ImageId and VersionId are specified: only the association between the adaptation and the specified image version is dissociated.
 //
-// - If ImageId and VersionId are not both specified: The adapter deletion process is initiated. An adapter cannot be deleted if it is still referenced by multiple images. If the application has other adapters, the application cannot be deleted along with the adapter.
+// - If ImageId and VersionId are not both specified: the adaptation deletion process starts. The adaptation cannot be deleted if it is still referenced by multiple images. If the application still has other adaptations, the application cannot be deleted along with it.
 //
-// **AdaptorId, AppVersionId, and AppId must be provided together and correspond to the same application adapter.*	- Verify these identifiers by checking the application and image query results first.
+// **AdaptorId, AppVersionId, and AppId must be provided together and correspond to the same application adaptation.*	- Verify these identifiers by querying the application and image first.
 //
 // @param request - DeleteAdaptorRequest
 //
@@ -1737,7 +1799,7 @@ func (client *Client) DeleteAdaptorWithContext(ctx context.Context, request *Del
 //
 // 1. Call ListApp to obtain the AppId and confirm whether the application can be deleted.
 //
-// 2. Use UnbindApp or DeleteAdaptor to dissociate related image associations.
+// 2. Use UnbindApp or DeleteAdaptor to dissociate the related image associations.
 //
 // 3. Specify AppVersionId to delete a single application version, or omit this parameter to delete the entire application.
 //
@@ -2322,6 +2384,76 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
+// Queries the execution status, progress, and download URLs of export tasks by using paging.
+//
+// Description:
+//
+// Calls this operation to use paging to query the export tasks under the current Alibaba Cloud account to obtain the task status, execution progress, export file names, and download URLs. Export tasks are created by calling CreateExportTask. This operation only reads task information and does not create, modify, or retry tasks.
+//
+// The query results are returned in descending order of task creation time, with the most recently created tasks listed first. Only tasks in the INIT, RUNNING, FINISHED, and FAILED states are returned. Tasks marked as EXPIRED are not included in the results.
+//
+// When polling a single task by TaskId, set PageNumber to 1 and PageSize to 1, set the polling interval to 5 to 10 seconds, and stop polling after the task enters the FINISHED or FAILED state.
+//
+// A task is valid for 24 hours after creation and is marked as expired by a background task after 25 hours. Therefore, within the 24- to 25-hour window, a FINISHED task may still be queried, but its DownloadUrl is empty. After a task is marked as expired, the query result is an empty array.
+//
+// If the query result is an empty array, it may be because there are no visible tasks under the current account, the task type does not match, the page number is out of bounds, or the tasks have expired. This operation always returns an array structure and does not return an error when the query result is empty.
+//
+// DownloadUrl is an OSS pre-signed URL. The default maximum validity period is 1 hour and does not exceed the remaining validity period of the task. The server automatically refreshes the URL when it is about to expire. Use the URL returned by the most recent query for downloading and do not cache the initially returned URL for a long time.
+//
+// @param request - DescribeExportTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExportTasksResponse
+func (client *Client) DescribeExportTasksWithContext(ctx context.Context, request *DescribeExportTasksRequest, runtime *dara.RuntimeOptions) (_result *DescribeExportTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeExportTasks"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeExportTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a development host.
 //
 // @param request - DescribeWuyingServerRequest
@@ -2414,6 +2546,62 @@ func (client *Client) DescribeWuyingServerEipInfoWithContext(ctx context.Context
 
 // Summary:
 //
+// Queries the statistics of runtimes of a specified type under the current Alibaba Cloud account, grouped by agent platform and agent provider, including the total number of runtimes, the number of runtimes without model configurations, the number of runtimes without channel configurations, the number of risky runtimes, and the number of expired runtimes.
+//
+// @param request - GetAgentRuntimeStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentRuntimeStatisticResponse
+func (client *Client) GetAgentRuntimeStatisticWithContext(ctx context.Context, request *GetAgentRuntimeStatisticRequest, runtime *dara.RuntimeOptions) (_result *GetAgentRuntimeStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.RuntimeType) {
+		query["RuntimeType"] = request.RuntimeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentRuntimeStatistic"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentRuntimeStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a specified delivery group.
 //
 // @param request - GetAppInstanceGroupRequest
@@ -2462,15 +2650,15 @@ func (client *Client) GetAppInstanceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the connection authorization code and required resource information for an existing image or application building task.
+// Retrieves the connection authorization code and required resource information for an existing image or application creation task.
 //
 // Description:
 //
-// Before calling this operation, you must create a task, and the building or validation resources corresponding to the task must be available.
+// Before calling this operation, you must create a task, and the creation or validation resources corresponding to the task must be available.
 //
-// 1. Obtain TaskId and the actual TaskType from the response of the task creation operation or GetTask.
+// 1. Obtain the TaskId and actual TaskType from the response of the task creation operation or GetTask.
 //
-// 2. Specify ResourceType to obtain the connection information for the building or validation environment.
+// 2. Specify ResourceType to obtain the connection information for the creation or validation environment.
 //
 // 3. Use the returned authorization code along with the user, resource group, and application identifiers in the same response for connection.
 //
@@ -2904,41 +3092,97 @@ func (client *Client) GetOtaTaskByTaskIdWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the pricing and discount information for scaling out a subscription delivery group to a specified total number of nodes.
+// Queries the model settings of resource groups.
+//
+// @param request - GetResourceGroupAgentModelSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceGroupAgentModelSettingsResponse
+func (client *Client) GetResourceGroupAgentModelSettingsWithContext(ctx context.Context, request *GetResourceGroupAgentModelSettingsRequest, runtime *dara.RuntimeOptions) (_result *GetResourceGroupAgentModelSettingsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ResourceGroupIds) {
+		query["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetResourceGroupAgentModelSettings"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetResourceGroupAgentModelSettingsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the pricing and discount information required to scale out a subscription delivery group to a specified total number of nodes.
 //
 // Description:
 //
-// This operation queries the resource scale-out pricing for an existing delivery group. A successful call returns only a quote and does not create an order or add nodes.
+// This operation queries the resource scale-out price of an existing delivery group. A successful call returns only a quote and does not create an order or add nodes.
 //
-// **Before you call this operation, verify the following conditions:**
+// **Verify the following conditions before you call this operation:**
 //
 // - The delivery group belongs to the current account and is located in a supported region in the Chinese mainland.
 //
-// - The product type is Wuying Cloud App or Cloud Browser, and the billing method is subscription and purchased by node. This operation does not apply to browser groups that use the pay-as-you-go billing method or are billed by monthly active users (MAU).
+// - The product type is WUYING Cloud App or Cloud Browser, and the billing method is subscription and billed by node. Pay-as-you-go or browser groups billed by monthly active user (MAU) are not supported.
 //
 // - The order status of the delivery group is normal, a resource node pool is associated, and no paid but ineffective renewal or scale-in orders exist.
 //
-// - The target total number of nodes is greater than the current number of purchased nodes and does not exceed the node quota for the corresponding region, product, and billing method under the account.
+// - The target total number of nodes is greater than the current number of purchased nodes and does not exceed the node quota for the account in the corresponding region, product, and billing method.
 //
 // **Parameter relationships:**
 //
-// - ProductType, AppInstanceGroupId, and Amount are all required parameters and must be specified together.
+// - ProductType, AppInstanceGroupId, and Amount are all required and must be specified together.
 //
 // - ProductType must match the product corresponding to AppInstanceGroupId.
 //
-// - **Amount is the total number of nodes after the scale-out, not the number of nodes added in this operation.*	- The region, node specifications, and billing method are determined by the existing delivery group and do not need to be passed separately.
+// - **Amount is the total number of nodes after the scale-out, not the number of nodes added in this operation.*	- The region, node specifications, and billing method are determined by the existing delivery group and do not need to be specified.
 //
-// **Call sequence:**
+// **Procedure:**
 //
-// 1. First, confirm the target delivery group and the current number of purchased nodes. For Cloud App Common scenarios, you can first invoke [ListAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/ListAppInstanceGroup) to obtain the identity, and then invoke [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query the configuration and NodePool.NodeAmount.
+// 1. Confirm the target delivery group and the current number of purchased nodes. For common scenarios of cloud apps, you can first invoke [ListAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/ListAppInstanceGroup) to obtain the identity, and then invoke [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query the configuration and `NodePool.NodeAmount`.
 //
-// 2. Invoke this operation with the same product type, delivery group identity, and target total number of nodes to read the pricing, coupons, and pricing calculation rules.
+// 2. Invoke this operation with the same product type, delivery group identity, and target total number of nodes to read the price, coupons, and pricing rules.
 //
-// 3. After confirming the quote, if you need to execute the scale-out, you can invoke [ModifyNodePoolAmount](https://api.aliyun.com/document/appstream-center/2021-09-01/ModifyNodePoolAmount) and fill in the target total number in NodePool.NodeAmount as required by the operation. **A successful pricing query does not mean that an order has been created or the scale-out has been completed.**
+// 3. After confirming the quote, if you want to execute the scale-out, you can invoke [ModifyNodePoolAmount](https://api.aliyun.com/document/appstream-center/2021-09-01/ModifyNodePoolAmount) and specify the target total number in `NodePool.NodeAmount` as required by the operation. **A successful price inquiry does not mean that an order is created or the scale-out is completed.**
 //
 // **Example scenario:**
 //
-// If a cloud app delivery group currently has 1 purchased subscription node and the target is to scale out to 2 nodes, set ProductType to CloudApp, AppInstanceGroupId to the ID of the delivery group, and Amount to 2. Replace the masked resource IDs with the actual values under the current account. The example quantities do not represent default values or quota limits. The pricing examples only illustrate the relationship among the original price, discount amount, and discounted price, and do not represent the fixed selling price of the specifications.
+// If a cloud app delivery group currently has 1 purchased subscription node and you want to scale out to 2 nodes, specify ProductType=CloudApp, the AppInstanceGroupId of the delivery group, and Amount=2. Replace the masked resource IDs with the actual values under the current account. The example quantities do not represent default values or quota limits. The price examples only illustrate the relationship among the original price, discount amount, and final price, and do not represent the fixed selling price of the specifications.
 //
 // @param request - GetResourceModifyPriceRequest
 //
@@ -3070,9 +3314,9 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 //
 // **Parameter relationships:**
 //
-// - `ResourceType` and `ProductType` are required.
+// - ResourceType and ProductType are required.
 //
-// - `BizRegionId` and `ChargeType` are optional query conditions and can be specified at the same time. They must be consistent with subsequent purchase or authorization operations.
+// - BizRegionId and ChargeType are optional query conditions and can be specified at the same time. They must be consistent with subsequent purchase or authorization operations.
 //
 // - If the region or billing method is omitted, the general quota for the corresponding dimension is queried. The quotas of different regions or billing methods are not added together.
 //
@@ -3080,13 +3324,13 @@ func (client *Client) GetResourcePriceWithContext(ctx context.Context, request *
 //
 // **Call sequence:**
 //
-// 1. Select the resource type, product, business region, and billing method of the payer based on subsequent business needs.
+// 1. Select the resource type, product, business region, and billing method for the payer based on subsequent business needs.
 //
-// 2. Invoke this operation to read `Data`. Query `AppInstanceGroup` before creating a delivery group, query `AppAuthUser` before adding an authorized user, and query `PoolNodeAmount` before purchasing or scaling out nodes.
+// 2. Invoke this operation to read `Data`. Query `AppInstanceGroup` before creating a delivery group, query `AppAuthUser` before authorizing an authorized user, and query `PoolNodeAmount` before purchasing or scaling out nodes.
 //
-// 3. Query the current usage in combination with the resources, and then verify the current operation by using subsequent creation, authorization, or scale-out operations. **This query does not reserve quotas or guarantee the success of subsequent purchases.**
+// 3. Query the current usage in combination with the resources, and then verify the current operation through subsequent creation, authorization, or scale-out operations. **This query does not reserve quotas or guarantee the success of subsequent purchases.**
 //
-// `Data=2147483647` indicates that no smaller quota limit is obtained in this query. It does not mean that the physical inventory is unlimited.
+// Data=2147483647 indicates that no smaller quota limit is obtained in this query. It does not mean that the physical inventory is unlimited.
 //
 // @param request - GetResourceQuotaRequest
 //
@@ -3338,11 +3582,11 @@ func (client *Client) GetRuntimeModelConfigWithContext(ctx context.Context, requ
 //
 // Supports two query methods:
 //
-// - **Query by task ID**: Pass the TaskId parameter. This method takes precedence over querying by resource information.
+// - **By task ID**: Pass the TaskId parameter. This method takes precedence over querying by resource information.
 //
-// - **Query by resource**: Omit the TaskId parameter, and pass the EntityId, EntityType, and TaskCategory parameters. You can use the EntityVersionId parameter to specify the resource version.
+// - **By resource**: Omit the TaskId parameter, and pass the EntityId, EntityType, and TaskCategory parameters at the same time. You can use the EntityVersionId parameter to specify the resource version.
 //
-// The API returns the current task status and recorded step information. Determine the overall task result based on the Status parameter. The success of a single step does not indicate the success of the entire task. You can call the ListTaskStep operation to query the names and categories of image creation and application adaptation steps.
+// The API returns the current task status and recorded step information. Determine the overall task result based on the Status parameter. The success of a single step does not mean the entire task is successful. You can call the ListTaskStep operation to query the names and categories of image creation and application adaptation steps.
 //
 // @param request - GetTaskRequest
 //
@@ -3406,13 +3650,13 @@ func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRe
 
 // Summary:
 //
-// Performs a paging query on the valid applications of the current account based on conditions such as the application ID, name, type, and associated product.
+// Queries the valid applications of the current account by paging based on conditions such as the application ID, name, type, and associated product.
 //
 // Description:
 //
-// When multiple filter conditions are specified simultaneously, they take effect together. AppName supports partial match. When a single-value filter and the corresponding list filter are specified simultaneously, the intersection is used. To avoid empty results, select only one of the formats.
+// When multiple filter conditions are specified at the same time, they take effect together. AppName supports contains matching. When a single-value filter and the corresponding list filter are specified at the same time, the intersection is used. To avoid empty results, specify only one of the forms.
 //
-// If PageSize is omitted, the value is 10. Query pages sequentially starting from PageNumber 1 until the number of retrieved records reaches Count. Before deleting an application, check Deletable.
+// If PageSize is omitted, the value is 10. Start from 1 for PageNumber and query page by page until the number of retrieved records reaches Count. Before deleting an application, check Deletable.
 //
 // @param tmpReq - ListAppRequest
 //
@@ -3612,31 +3856,31 @@ func (client *Client) ListAppInstanceGroupWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// This operation is used to select session instance types and does not create resources. The returned results are affected by the available instance types of the account and the business region. An empty result does not indicate a request failure.
+// This operation is used to select session instance types and does not create resources. The returned results are affected by the available instance types for the account and the business region. An empty result does not indicate a request failure.
 //
 // **Filtering and pagination:**
 //
-// - ProductType is required. Explicitly specify BizRegionId, PageNumber, and PageSize.
+// - `ProductType` is required. Explicitly specify `BizRegionId`, `PageNumber`, and `PageSize`.
 //
-// - If BizRegionId is not provided, the region of the current request is used. You can call [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) to obtain the business region.
+// - If `BizRegionId` is not provided, the region of the current request is used. You can call the [ListRegions](https://api.aliyun.com/document/appstream-center/2021-09-01/ListRegions) operation to obtain the business region.
 //
-// - AppInstanceType and AppInstanceTypeList can be specified at the same time. In this case, only the instance types that meet both conditions are returned. Neither parameter overrides the other. The list can contain up to 100 items.
+// - You can specify both `AppInstanceType` and `AppInstanceTypeList`. In this case, only the instance types that meet both conditions are returned. Neither parameter overrides the other. The list can contain up to 100 items.
 //
-// - Instance type family, CPU, memory, GPU memory, operating system, and category conditions are filtered by intersection. The union is not automatically applied.
+// - The instance type family, CPU, memory, GPU memory, operating system, and category conditions are filtered by intersection. The union is not automatically applied.
 //
-// - PageNumber starts from 1. Use TotalCount, PageSize, and PageNumber to continue pagination until all matching results are read.
+// - Pass `PageNumber` starting from 1. Use `TotalCount`, `PageSize`, and `PageNumber` to continue pagination until all matching results are read.
 //
 // **Inventory and subsequent calls:**
 //
-// - Inventory is queried only when QueryInventory is set to true. If inventory information is not obtained, do not assume that the inventory is 0.
+// - Inventory is queried only when `QueryInventory` is set to `true`. If inventory information is not obtained, do not assume that the inventory is 0.
 //
 // - The inventory reflects the current query result and does not indicate a successful reservation.
 //
-// - After obtaining the AppInstanceType, you can query the price based on the session instance type parameter requirements of [GetResourcePrice](https://api.aliyun.com/document/appstream-center/2021-09-01/GetResourcePrice).
+// - After obtaining the `AppInstanceType`, you can query the price based on the session instance type parameter requirements of [GetResourcePrice](https://api.aliyun.com/document/appstream-center/2021-09-01/GetResourcePrice).
 //
-// - The current query does not use AppCenterImageId to filter instance types. Do not use this parameter to determine the compatibility between images and instance types.
+// - The current query does not use `AppCenterImageId` to filter instance types. Do not use this parameter to determine the compatibility between images and instance types.
 //
-// Field examples are used to demonstrate how to specify parameters and do not guarantee that the example instance types exist in the selected region or account. The GPU count field does not currently provide values. Use the GPU memory field to understand the instance type.
+// Field examples are used to demonstrate how to fill in the fields and do not guarantee that the example instance types exist in the selected region or account. The GPU count field currently does not provide a value. Use the GPU memory field to understand the instance type.
 //
 // @param request - ListAppInstanceTypeRequest
 //
@@ -4509,7 +4753,7 @@ func (client *Client) ListBrowserInstanceGroupWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the list of desktop agent runtimes.
+// Queries a list of desktop Agent runtimes.
 //
 // @param request - ListDesktopAgentRuntimeRequest
 //
@@ -4921,6 +5165,82 @@ func (client *Client) ListModelProviderEndpointsWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListModelProviderEndpointsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available large language model (LLM) codes for a specified model provider. Supports filtering by LLM code, model brand, recommendation level, and recommendation status, and returns model information such as the model name, description, release time, features, inference modality, pricing, credit multiplier, and risk type.
+//
+// @param request - ListModelProviderLlmCodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListModelProviderLlmCodesResponse
+func (client *Client) ListModelProviderLlmCodesWithContext(ctx context.Context, request *ListModelProviderLlmCodesRequest, runtime *dara.RuntimeOptions) (_result *ListModelProviderLlmCodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.LlmCode) {
+		query["LlmCode"] = request.LlmCode
+	}
+
+	if !dara.IsNil(request.ModelBrands) {
+		query["ModelBrands"] = request.ModelBrands
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProviderName) {
+		query["ProviderName"] = request.ProviderName
+	}
+
+	if !dara.IsNil(request.ProviderTemplateId) {
+		query["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	if !dara.IsNil(request.Recommended) {
+		query["Recommended"] = request.Recommended
+	}
+
+	if !dara.IsNil(request.RecommendedLevels) {
+		query["RecommendedLevels"] = request.RecommendedLevels
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListModelProviderLlmCodes"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListModelProviderLlmCodesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5671,7 +5991,7 @@ func (client *Client) ListPublishedAppsWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The returned results are affected by the available region configurations of the account and the product type. If ProductType is omitted, the query defaults to CloudApp.
+// The returned results are affected by the available region configurations of the account and the product type. If ProductType is omitted, the query is performed based on CloudApp.
 //
 // This operation returns the regions available for image services. You cannot use this information to determine whether a specific image has been distributed to these regions. Before you create or distribute an image based on a parent image, you must also check the region information of the destination image.
 //
@@ -5940,7 +6260,7 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 //
 // Returns application adaptation steps when Type is set to ADAPTOR, and image creation steps when Type is set to IMAGE.
 //
-// This operation returns step definitions, not the actual progress of a specific task. Read the step definitions first, and then combine them with the current step and step status returned by GetTask to display the task progress. The step sets vary across different task types. Do not treat the step index as a completion percentage.
+// This operation returns step definitions, not the actual progress of a specific task. Read the step definitions first, and then combine them with the current step and step status returned by GetTask to display the task progress. The step sets vary across different task types. Do not use the step index as the completion percentage.
 //
 // @param request - ListTaskStepRequest
 //
@@ -6405,33 +6725,33 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// Changes the billing method of a specified delivery group to the target billing method and returns the ID of the billing conversion task to be created.
+// Changes the billing method of a specified delivery group to a target billing method and returns the ID of the billing conversion task to be created.
 //
 // Description:
 //
 // This operation performs billing method conversion, which may create orders and trigger subsequent billing changes. **A successful response or a returned task ID does not indicate that the new billing method has taken effect.**
 //
-// **Before you begin:**
+// **Prerequisites:**
 //
-// - The resources belong to the current account, and the product and business region match those in the request. Only one delivery group can be specified per request.
+// - The resources belong to the current account, and the product and business region match the request. Only one delivery group can be specified per request.
 //
-// - The target billing method must be different from the current one, and the target resource specifications must support the corresponding sales and Billable methods.
+// - The target billing method must be different from the current billing method, and the target resource specifications must support the corresponding sales and Billable methods.
 //
-// - Delivery groups that have been added to a valid collection cannot be converted to a different billing method individually.
+// - Delivery groups that have been added to a valid collection cannot have their Billable methods converted individually.
 //
-// - Multiple delivery groups created in the same batch of orders cannot be converted to different Billable methods separately.
+// - Multiple delivery groups created in the same batch of orders cannot have their Billable methods converted separately.
 //
 // **Parameter relationships and call sequence:**
 //
-// 1. Query the resource details first to confirm the product, business region, and current `ChargeType`. You can use [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query cloud application delivery groups.
+// 1. Query the resource details first to confirm the product, business region, and current ChargeType. You can use [GetAppInstanceGroup](https://api.aliyun.com/document/appstream-center/2021-09-01/GetAppInstanceGroup) to query cloud application delivery groups.
 //
-// 2. Explicitly specify the target `ChargeType`. If you need to purchase a subscription, specify the purchase duration by combining `Period` and `PeriodUnit`. The period combination must comply with the sales rules currently supported by the resource.
+// 2. Explicitly specify the target ChargeType. If you need to purchase a subscription, specify the purchase duration by combining Period and PeriodUnit. The period combination must comply with the sales rules currently supported by the resource.
 //
-// 3. Set `AutoPay` based on whether automatic payment is allowed. If auto-renewal is involved, explicitly set `AutoRenew`.
+// 3. Set AutoPay based on whether automatic payment is allowed. If auto-renewal is involved, explicitly set AutoRenew.
 //
-// 4. After the call, save the returned `AppInstanceGroupModel.TaskId`. If there are unpaid orders, complete the payment first, and then query the resource details again to confirm that the billing method has been changed.
+// 4. After the call, save the returned AppInstanceGroupModel.TaskId. If there are unpaid orders, complete the payment first, and then query the resource details again to confirm that the billing method has been changed.
 //
-// This operation does not accept an expiration time parameter. Do not pass the expiration time from other operations into this request. The task examples only illustrate the purpose of the ID and do not define a fixed prefix or length for actual task IDs.
+// This operation does not accept an expiration time parameter. Do not pass the expiration time from other operations into this request. The task examples only illustrate the purpose of the ID and do not define a fixed prefix or length for real task IDs.
 //
 // @param tmpReq - ModifyAppInstanceGroupChargeTypeRequest
 //
@@ -8584,11 +8904,11 @@ func (client *Client) UnbindWithContext(ctx context.Context, request *UnbindRequ
 
 // Summary:
 //
-// Dissociates multiple applications from a specified image version.
+// Dissociates applications from a specified image version in batches.
 //
 // Description:
 //
-// This operation supports only custom images and community images that the current account can manage. If you omit VersionId, the current effective version is used. If you specify VersionId, it must belong to the image specified by ImageId. Verify the associations between the applications and the version by querying the image before you submit AppIdList. **Dissociating applications does not directly delete the application records.*	- To delete an application, call DeleteApp.
+// Only custom images and community images manageable by the current account are supported. If VersionId is omitted, the current active version is used. If specified, the version must belong to the image specified by ImageId. Verify the association between the applications and the version through the image query results before submitting AppIdList. **Dissociating applications does not directly delete application records.*	- To delete applications, call DeleteApp separately.
 //
 // @param request - UnbindAppRequest
 //
@@ -8935,13 +9255,13 @@ func (client *Client) UpdateAppInstanceGroupImageWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the name, description, version information, and associated application adaptations of an image.
+// Modifies the name, description, version information, and associated application adapters of an image.
 //
 // Description:
 //
-// You can only modify images that are owned by the current account and allow modifications. Modifying images shared with the current account is not supported.
+// You can only modify images that are owned by the current account and allow modifications. Images shared with the current account cannot be modified.
 //
-// You must provide at least one of ImageId and VersionId. If both are provided, they must point to the same image. If VersionId is omitted, the current effective version of the image is used. Passing a non-empty AdaptorIdList updates the application adaptation relationships of the selected version based on the complete list. Make sure to include the adaptations that you still want to retain.
+// You must provide at least one of ImageId and VersionId. If both are provided, they must point to the same image. If VersionId is omitted, the current effective version of the image is used. Passing a non-empty AdaptorIdList updates the application adapter associations for the selected version based on the complete list. Make sure to include the adapters that you still want to retain.
 //
 // @param request - UpdateImageRequest
 //
@@ -9017,7 +9337,9 @@ func (client *Client) UpdateImageWithContext(ctx context.Context, request *Updat
 //
 // Description:
 //
-// The task must exist before you call this operation, and the corresponding creation resource and resource node must be available. TaskType must match the actual type of the task. **This operation does not support modifying the task step, image version, or destination region by using TaskStep, VersionId, or BizRegionId. Do not pass these three parameters.*	- A successful request only indicates that this status update call is completed. To query the final status of the task, call GetTask.
+// The task must exist before you call this operation, and the corresponding creation resource and resource node must be available. The TaskType must match the actual type of the task.
+//
+// **This operation does not support modifying the task step, image version, or destination region by using TaskStep, VersionId, or BizRegionId. Do not pass these three parameters.*	- A successful request only indicates that the status update call is completed. To query the final status of the task, call GetTask.
 //
 // @param request - UpdateImageTaskRequest
 //

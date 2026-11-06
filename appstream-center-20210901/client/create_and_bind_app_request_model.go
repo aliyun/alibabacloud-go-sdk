@@ -26,7 +26,7 @@ type iCreateAndBindAppRequest interface {
 }
 
 type CreateAndBindAppRequest struct {
-	// The URL of the application icon. Specify an accessible icon URL when a custom icon needs to be displayed.
+	// The URL of the application icon. Specify an accessible icon URL to display a custom icon.
 	//
 	// example:
 	//
@@ -48,29 +48,29 @@ type CreateAndBindAppRequest struct {
 	//
 	// imgc-bp1example****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The application form. If omitted, the default value is CLIENT_BASE. Valid values:
+	// The application type. If omitted, the default value is CLIENT_BASE. Valid values:
 	//
-	// - **CLIENT_BASE**: client application
+	// - **CLIENT_BASE**: Client application.
 	//
-	// - **WEB_BASE**: browser application
+	// - **WEB_BASE**: Browser application.
 	//
-	// - **CLOUD_NATIVE_BASE**: cloud-native application
+	// - **CLOUD_NATIVE_BASE**: Cloud-native application.
 	//
-	// - **PORT_SERVICE_BASE**: port service application
+	// - **PORT_SERVICE_BASE**: Port service application.
 	//
-	// - **AGENT_SERVICE_BASE**: agent application
+	// - **AGENT_SERVICE_BASE**: Agent application.
 	//
 	// example:
 	//
 	// PORT_SERVICE_BASE
 	OriginAppType *string `json:"OriginAppType,omitempty" xml:"OriginAppType,omitempty"`
-	// The service port of the application. For applications that require port-based access, specify the actual port number that the application listens on.
+	// The application service port. For applications that require port-based access, specify the actual port number that the application listens on.
 	//
 	// example:
 	//
 	// 8080
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The path suffix of the application access URL, which describes the access entry point together with the application service port.
+	// The path suffix of the application access URL, which is used together with the application service port to describe the access entry point.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iListTaskStepRequest interface {
 type ListTaskStepRequest struct {
 	// The task type to which the step belongs. Valid values:
 	//
-	// - **ADAPTOR**: application adaptation steps
+	// - **ADAPTOR**: Application adaptation steps.
 	//
-	// - **IMAGE**: image creation steps
+	// - **IMAGE**: Image creation steps.
 	//
 	// This parameter is required.
 	//

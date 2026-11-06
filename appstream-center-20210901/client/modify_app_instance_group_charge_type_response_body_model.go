@@ -16,9 +16,9 @@ type iModifyAppInstanceGroupChargeTypeResponseBody interface {
 }
 
 type ModifyAppInstanceGroupChargeTypeResponseBody struct {
-	// The task information for the billing method conversion.
+	// The task information for this billing method conversion.
 	AppInstanceGroupModel *ModifyAppInstanceGroupChargeTypeResponseBodyAppInstanceGroupModel `json:"AppInstanceGroupModel,omitempty" xml:"AppInstanceGroupModel,omitempty" type:"Struct"`
-	// The unique ID of the request. You can use the ID to troubleshoot request issues.
+	// The unique ID of the request, which can be used to troubleshoot request issues.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *ModifyAppInstanceGroupChargeTypeResponseBody) Validate() error {
 }
 
 type ModifyAppInstanceGroupChargeTypeResponseBodyAppInstanceGroupModel struct {
-	// The ID of the billing conversion order task, used to associate with the current conversion. It is returned only when a related order task is required and created. It does not indicate that the payment is completed or the new billing method has taken effect.
+	// The ID of the billing conversion order task, used to associate with this conversion. It is returned only when a related order task is required and created. It does not indicate that the payment is completed or the new billing method has taken effect.
 	//
 	// example:
 	//

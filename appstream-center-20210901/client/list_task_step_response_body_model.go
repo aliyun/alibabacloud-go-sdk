@@ -24,7 +24,7 @@ type ListTaskStepResponseBody struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The list of step definitions for the selected task type.
+	// The list of step definitions for the specified task type.
 	Data []*ListTaskStepResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The unique identifier of the request. You can provide this value for troubleshooting.
 	//
@@ -87,7 +87,7 @@ type ListTaskStepResponseBodyData struct {
 	//
 	// - **prompt**: Displays step prompts.
 	//
-	// - **connection**: Provides connection operations to enter the build or validation environment.
+	// - **connection**: Provides connection operations to enter the builder or validation environment.
 	//
 	// - **prompt_connection**: Provides both prompts and connection operations.
 	//
@@ -95,7 +95,7 @@ type ListTaskStepResponseBodyData struct {
 	//
 	// connection
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The Chinese name of the phase to which the step belongs, such as build environment preparation or test validation.
+	// The Chinese name of the phase to which the step belongs, such as builder environment preparation or test validation.
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type ListTaskStepResponseBodyData struct {
 	//
 	// Builder Environment Preparation
 	CategoryEn *string `json:"CategoryEn,omitempty" xml:"CategoryEn,omitempty"`
-	// The numeric index of the step definition, which is used to identify the step and its sequence. Do not treat this value as a completion percentage.
+	// The numeric index of the step definition, which is used to identify the step and its sequence. Do not use this value as the completion percentage.
 	//
 	// example:
 	//
@@ -117,61 +117,61 @@ type ListTaskStepResponseBodyData struct {
 	//
 	// Steps when Type is set to IMAGE:
 	//
-	// - **INIT**: Initializes the task.
+	// - **INIT**: Initialize the task.
 	//
-	// - **CREATE_BUILDER_ENV**: Creates the build environment.
+	// - **CREATE_BUILDER_ENV**: Create the builder environment.
 	//
-	// - **DEPLOY_BUILDER_ENV**: Deploys the build environment.
+	// - **DEPLOY_BUILDER_ENV**: Deploy the builder environment.
 	//
-	// - **INIT_BUILDER**: Initializes the build tool.
+	// - **INIT_BUILDER**: Initialize the builder tool.
 	//
-	// - **DOWNLOAD_APP**: Downloads application resources.
+	// - **DOWNLOAD_APP**: Download application resources.
 	//
-	// - **START_BUILD**: Starts image creation.
+	// - **START_BUILD**: Start image creation.
 	//
-	// - **COMPLETE_INSTALL**: Completes application installation and configuration.
+	// - **COMPLETE_INSTALL**: Complete application installation and configuration.
 	//
-	// - **CREATE_VALIDATE_ENV**: Creates the validation environment.
+	// - **CREATE_VALIDATE_ENV**: Create the validation environment.
 	//
-	// - **DEPLOY_VALIDATE_ENV**: Deploys the validation environment.
+	// - **DEPLOY_VALIDATE_ENV**: Deploy the validation environment.
 	//
-	// - **COMPLETE_VALIDATE**: Completes image validation.
+	// - **COMPLETE_VALIDATE**: Complete image validation.
 	//
-	// - **ARCHIVE_DATA**: Archives image data.
+	// - **ARCHIVE_DATA**: Archive image data.
 	//
-	// - **CREATE_IMAGE**: Generates the image.
+	// - **CREATE_IMAGE**: Generate the image.
 	//
-	// - **FINISH_ADAPT**: Ends the creation process.
+	// - **FINISH_ADAPT**: End the creation process.
 	//
 	// Steps when Type is set to ADAPTOR:
 	//
-	// - **INIT**: Initializes the task.
+	// - **INIT**: Initialize the task.
 	//
-	// - **CREATE_BUILDER_ENV**: Creates the build environment.
+	// - **CREATE_BUILDER_ENV**: Create the builder environment.
 	//
-	// - **DEPLOY_BUILDER_ENV**: Deploys the build environment.
+	// - **DEPLOY_BUILDER_ENV**: Deploy the builder environment.
 	//
-	// - **INIT_BUILDER**: Initializes the build tool.
+	// - **INIT_BUILDER**: Initialize the builder tool.
 	//
-	// - **DOWNLOAD_APP**: Downloads application resources.
+	// - **DOWNLOAD_APP**: Download application resources.
 	//
-	// - **START_VHD**: Starts application recording.
+	// - **START_VHD**: Start application recording.
 	//
-	// - **BUILD_VHD**: Generates the application VHD.
+	// - **BUILD_VHD**: Generate the application VHD.
 	//
-	// - **UPLOAD_VHD**: Uploads the application VHD.
+	// - **UPLOAD_VHD**: Upload the application VHD.
 	//
-	// - **COMPLETE_BUILDER**: Completes application creation.
+	// - **COMPLETE_BUILDER**: Complete application creation.
 	//
-	// - **CREATE_VALIDATE_ENV**: Creates the validation environment.
+	// - **CREATE_VALIDATE_ENV**: Create the validation environment.
 	//
-	// - **DEPLOY_VALIDATE_ENV**: Deploys the validation environment.
+	// - **DEPLOY_VALIDATE_ENV**: Deploy the validation environment.
 	//
-	// - **COMPLETE_VALIDATE**: Completes application validation.
+	// - **COMPLETE_VALIDATE**: Complete application validation.
 	//
-	// - **CREATE_IMAGE**: Generates the application image.
+	// - **CREATE_IMAGE**: Generate the application image.
 	//
-	// - **FINISH_ADAPT**: Ends the application adaptation process.
+	// - **FINISH_ADAPT**: End the application adaptation process.
 	//
 	// example:
 	//

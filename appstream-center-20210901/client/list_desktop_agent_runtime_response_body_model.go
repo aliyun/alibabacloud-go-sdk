@@ -30,7 +30,7 @@ type ListDesktopAgentRuntimeResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDesktopAgentRuntimeResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -137,25 +137,25 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// ecd-xxxx
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The agent runtime name.
+	// The Agent runtime name.
 	//
 	// example:
 	//
 	// Agent-001
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The Cloud Desktop status.
+	// The cloud desktop status.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// Indicates whether there is an authorized user with authorization.
+	// Indicates whether users are authorized.
 	//
 	// example:
 	//
 	// true
 	HasAuthUser *bool `json:"HasAuthUser,omitempty" xml:"HasAuthUser,omitempty"`
-	// The management status list, parsed from the managementStatus combined value.
+	// The list of management statuses parsed from the aggregated managementStatus value.
 	ManagementStatuses []*string `json:"ManagementStatuses,omitempty" xml:"ManagementStatuses,omitempty" type:"Repeated"`
 	// Indicates whether a model is configured for the agent runtime.
 	//
@@ -163,13 +163,13 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// true
 	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
-	// The active model template ID. This parameter is returned only when modelConfigure is set to true.
+	// The ID of the effective model template. This parameter is returned only when modelConfigure is set to true.
 	//
 	// example:
 	//
 	// mt-xxxx
 	ModelTemplateId *string `json:"ModelTemplateId,omitempty" xml:"ModelTemplateId,omitempty"`
-	// The active model template name. This parameter is returned only when modelConfigure is set to true.
+	// The name of the effective model template. This parameter is returned only when modelConfigure is set to true.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The list of channel codes in QR code configuration.
+	// The list of channel codes in the QR code configuration.
 	QrCodeConfiguringList []*string `json:"QrCodeConfiguringList,omitempty" xml:"QrCodeConfiguringList,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -189,7 +189,7 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region location (the Chinese mainland or outside the Chinese mainland).
+	// The region location (mainland China or overseas).
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ type ListDesktopAgentRuntimeResponseBodyData struct {
 	RegionLocation *string `json:"RegionLocation,omitempty" xml:"RegionLocation,omitempty"`
 	// The resource group information.
 	ResourceGroup *ListDesktopAgentRuntimeResponseBodyDataResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
-	// The resource ID, which is the Cloud Desktop ID.
+	// The resource ID, which is the cloud desktop ID.
 	//
 	// example:
 	//
 	// ecd-xxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The risk information. This parameter is returned only when the request parameter IncludeRiskInfo is set to true. Otherwise, null is returned.
+	// The risk information. This parameter is returned only when the IncludeRiskInfo request parameter is set to true. Otherwise, null is returned.
 	RiskInfo *ListDesktopAgentRuntimeResponseBodyDataRiskInfo `json:"RiskInfo,omitempty" xml:"RiskInfo,omitempty" type:"Struct"`
 }
 
@@ -424,7 +424,7 @@ func (s *ListDesktopAgentRuntimeResponseBodyData) Validate() error {
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataAgentImInfo struct {
-	// The agent IM online status (Online/Offline). Default value: Offline.
+	// The online status of the agent IM. Valid values: Online and Offline. Default value: Offline.
 	//
 	// example:
 	//
@@ -496,7 +496,7 @@ type ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList struct {
 	//
 	// 2026.3.13
 	AgentInstanceVersion *string `json:"AgentInstanceVersion,omitempty" xml:"AgentInstanceVersion,omitempty"`
-	// The agent platform.
+	// The Agent platform.
 	//
 	// example:
 	//
@@ -508,7 +508,7 @@ type ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList struct {
 	//
 	// AgenticComputer
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// Indicates whether the agent instance has a third-party channel configured.
+	// Indicates whether a third-party channel is configured for the agent instance.
 	//
 	// example:
 	//
@@ -522,13 +522,19 @@ type ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList struct {
 	//
 	// Admin
 	DeploymentSource *string `json:"DeploymentSource,omitempty" xml:"DeploymentSource,omitempty"`
-	// Indicates whether the agent instance has a model configured.
+	// The latest reported MindCenter version in the instance properties. This value is null if the version is not reported.
+	//
+	// example:
+	//
+	// v0.3.20-D-20261105.181002
+	MindCenterVersion *string `json:"MindCenterVersion,omitempty" xml:"MindCenterVersion,omitempty"`
+	// Indicates whether a model is configured for the agent instance.
 	//
 	// example:
 	//
 	// true
 	ModelConfigure *bool `json:"ModelConfigure,omitempty" xml:"ModelConfigure,omitempty"`
-	// The configured model group ID.
+	// The ID of the configured model group.
 	//
 	// example:
 	//
@@ -570,6 +576,10 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetChanne
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetDeploymentSource() *string {
 	return s.DeploymentSource
+}
+
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetMindCenterVersion() *string {
+	return s.MindCenterVersion
 }
 
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) GetModelConfigure() *bool {
@@ -615,6 +625,11 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetDeploy
 	return s
 }
 
+func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetMindCenterVersion(v string) *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList {
+	s.MindCenterVersion = &v
+	return s
+}
+
 func (s *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList) SetModelConfigure(v bool) *ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList {
 	s.ModelConfigure = &v
 	return s
@@ -636,7 +651,7 @@ type ListDesktopAgentRuntimeResponseBodyDataResourceGroup struct {
 	//
 	// rg-xxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
@@ -675,19 +690,19 @@ func (s *ListDesktopAgentRuntimeResponseBodyDataResourceGroup) Validate() error 
 }
 
 type ListDesktopAgentRuntimeResponseBodyDataRiskInfo struct {
-	// Indicates whether the agent has been uninstalled.
+	// Indicates whether the agent is uninstalled.
 	//
 	// example:
 	//
 	// true
 	AgentUninstalled *bool `json:"AgentUninstalled,omitempty" xml:"AgentUninstalled,omitempty"`
-	// Indicates whether the third-party channel configuration has been modified (inconsistent with the configuration distributed by the administrator).
+	// Indicates whether the third-party channel configuration is modified and inconsistent with the configuration delivered by the administrator.
 	//
 	// example:
 	//
 	// true
 	ChannelModified *bool `json:"ChannelModified,omitempty" xml:"ChannelModified,omitempty"`
-	// Indicates whether the model configuration has been modified (inconsistent with the configuration distributed by the administrator).
+	// Indicates whether the model configuration is modified and inconsistent with the configuration delivered by the administrator.
 	//
 	// example:
 	//

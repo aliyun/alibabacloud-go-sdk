@@ -16,7 +16,7 @@ type iGetResourceModifyPriceResponseBody interface {
 }
 
 type GetResourceModifyPriceResponseBody struct {
-	// The quote for the resource scale-out of the delivery group, which includes the pricing details and pricing calculation rules.
+	// The quote for the resource scale-out of the delivery group, which includes the price details and pricing rules.
 	Data *GetResourceModifyPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The unique ID of the request, which is used to locate and troubleshoot request issues.
 	//
@@ -62,9 +62,9 @@ func (s *GetResourceModifyPriceResponseBody) Validate() error {
 }
 
 type GetResourceModifyPriceResponseBodyData struct {
-	// The pricing details of the scale-out. For the currency of the amounts, see Currency. For the coupon selection status, see Promotions.
+	// The price details of the scale-out. For the currency, see Currency. For the coupon selection status, see Promotions.
 	Price *GetResourceModifyPriceResponseBodyDataPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The list of pricing calculation rules for the quote, which is used to describe the applicable pricing or discount rules.
+	// The list of pricing rules for the quote, which describes the applicable pricing or discount rules.
 	Rules []*GetResourceModifyPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -113,31 +113,31 @@ func (s *GetResourceModifyPriceResponseBodyData) Validate() error {
 }
 
 type GetResourceModifyPriceResponseBodyDataPrice struct {
-	// The currency code of the price amount. CNY indicates Chinese Yuan. Refer to this field to understand the amounts of OriginalPrice, DiscountPrice, and TradePrice.
+	// The currency code of the price amount. CNY indicates Chinese Yuan. Use this field to interpret the amounts in OriginalPrice, DiscountPrice, and TradePrice.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount amount that can be deducted from the scale-out price, not the discount percentage.
+	// The discount amount for the scale-out, not the discount percentage.
 	//
-	// The discounted price TradePrice is obtained by subtracting this field from the original price OriginalPrice. For the currency of the amount, see Currency.
+	// The final price TradePrice is obtained by subtracting this value from the original price OriginalPrice. For the currency, see Currency.
 	//
 	// example:
 	//
 	// 1.00
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The original price of the scale-out, which is the amount before discounts. For the currency of the amount, see Currency.
+	// The original price of the scale-out, which is the amount before discounts. For the currency, see Currency.
 	//
 	// example:
 	//
 	// 11.00
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The list of optional coupons returned in the quote. Each item includes the coupon ID, name, description, and selection status.
+	// The list of available coupons returned in the quote. Each item includes the coupon ID, name, description, and selection status.
 	Promotions []*GetResourceModifyPriceResponseBodyDataPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The discounted price of the scale-out.
+	// The final price of the scale-out after discounts.
 	//
-	// Calculation relationship: TradePrice = OriginalPrice - DiscountPrice. For the currency of the amount, see Currency. This operation returns only a quote and does not execute payment.
+	// Calculation formula: TradePrice = OriginalPrice - DiscountPrice. For the currency, see Currency. This operation returns only a quote and does not execute payment.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type GetResourceModifyPriceResponseBodyDataPricePromotions struct {
 	//
 	// coupon****
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The description of the coupon, which is used to display the information about the discount.
+	// The description of the coupon, which is used to display information about the discount.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type GetResourceModifyPriceResponseBodyDataPricePromotions struct {
 	//
 	// 17440009****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The name of the coupon, which is used to display the optional discount in the current quote.
+	// The name of the coupon, which is used to display the available discount in the quote.
 	//
 	// example:
 	//
@@ -306,13 +306,13 @@ func (s *GetResourceModifyPriceResponseBodyDataPricePromotions) Validate() error
 }
 
 type GetResourceModifyPriceResponseBodyDataRules struct {
-	// The description of the pricing calculation rule, such as the user discount applicable to the current quote.
+	// The description of the pricing rule, such as the user discount applicable to the quote.
 	//
 	// example:
 	//
 	// User discount
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the pricing calculation rule, which is used to identify the rule applied in the quote.
+	// The ID of the pricing rule, which is used to identify the rule applied in the quote.
 	//
 	// example:
 	//

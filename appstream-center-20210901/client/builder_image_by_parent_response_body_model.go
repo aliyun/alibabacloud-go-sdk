@@ -28,7 +28,7 @@ type BuilderImageByParentResponseBody struct {
 	//
 	// ExceedBuilderQuota
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The business data returned by the operation.
+	// The business data returned by this operation.
 	Data *BuilderImageByParentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this parameter.
 	//
@@ -42,7 +42,7 @@ type BuilderImageByParentResponseBody struct {
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether the asynchronous task is complete, you must query the task status separately.
+	// Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To check whether the asynchronous task is completed, you must query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -109,19 +109,19 @@ func (s *BuilderImageByParentResponseBody) Validate() error {
 }
 
 type BuilderImageByParentResponseBodyData struct {
-	// The ID of the image, which is used to query or modify the image later.
+	// The image ID, which is used for subsequent queries or modifications of the image.
 	//
 	// example:
 	//
 	// imgc-bp1example****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the task, which can be used to call GetTask to query the task status.
+	// The task ID, which can be used to call GetTask to query the task status.
 	//
 	// example:
 	//
 	// tid-bp1example****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the image version, which is used to query or operate on the specified version of the image.
+	// The image version ID, which is used to query or manage the specified version of the image.
 	//
 	// example:
 	//

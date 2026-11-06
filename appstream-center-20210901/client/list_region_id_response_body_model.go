@@ -24,7 +24,7 @@ type iListRegionIdResponseBody interface {
 }
 
 type ListRegionIdResponseBody struct {
-	// The error code. This field is returned when the request fails. A successful response may not contain this field.
+	// The error code. This parameter is returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListRegionIdResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of region IDs available for image services under the selected product for the current account.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
+	// The error or result message. This parameter describes the cause when a request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListRegionIdResponseBody struct {
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Specifies whether the request was processed successfully. A value of true indicates that the request was processed successfully. To determine whether an asynchronous task is completed, you must query the task status separately.
+	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, you must query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

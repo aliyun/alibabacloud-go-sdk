@@ -22,13 +22,13 @@ type iDeleteAppResponseBody interface {
 }
 
 type DeleteAppResponseBody struct {
-	// The error code. Returned when the request fails. A successful response may not contain this field.
+	// The error code. This field is returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
 	// InternalError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
+	// Indicates whether the operation was successful. A value of true indicates that the operation was successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
 	//
@@ -36,13 +36,13 @@ type DeleteAppResponseBody struct {
 	//
 	// Internal error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request. You can provide this value when you troubleshoot issues.
+	// The unique identifier of the request. You can provide this value for troubleshooting.
 	//
 	// example:
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. A value of true indicates that the request is successful. For asynchronous tasks, you must query the task status separately to check whether the task is completed.
+	// Indicates whether the request was successful. A value of true indicates that the request was successful. To check whether an asynchronous task is completed, you must query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

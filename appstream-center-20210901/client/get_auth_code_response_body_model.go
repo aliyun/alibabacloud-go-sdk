@@ -22,7 +22,7 @@ type iGetAuthCodeResponseBody interface {
 }
 
 type GetAuthCodeResponseBody struct {
-	// The error code. This field is returned when the request fails. A successful response may not contain this field.
+	// The error code. It is returned when the request fails. A success response may not contain this field.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetAuthCodeResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The business data returned by the operation.
 	Data *GetAuthCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+	// The error or result message. It describes the cause when the request fails. A success response may not contain this field.
 	//
 	// example:
 	//
@@ -111,8 +111,6 @@ func (s *GetAuthCodeResponseBody) Validate() error {
 type GetAuthCodeResponseBodyData struct {
 	// The network access type supported by the connection resource.
 	//
-	// Valid values:
-	//
 	// - **INTERNET**: Supports Internet access.
 	//
 	// - **VPC**: Supports virtual private cloud (VPC) access.
@@ -129,7 +127,7 @@ type GetAuthCodeResponseBodyData struct {
 	//
 	// app-bp1example****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The delivery group ID of the building or validation resource. This ID is used together with the user and application information in the current response during connection.
+	// The delivery group ID of the creation or validation resource. It is used together with the user and application information in this response during connection.
 	//
 	// example:
 	//
@@ -141,33 +139,31 @@ type GetAuthCodeResponseBodyData struct {
 	//
 	// apv-bp1example****
 	AppVersionId *string `json:"AppVersionId,omitempty" xml:"AppVersionId,omitempty"`
-	// The authorization code used to connect to the current building or validation resource. **The validity period is 180 seconds (3 minutes) from the time of issuance. Use it promptly after obtaining it.*	- Use this code together with the user, delivery group, and application information in the same response, and keep it confidential as a connection credential.
+	// The authorization code used to connect to the creation or validation resource. **The validity period is 180 seconds (3 minutes) from the time of issuance. Use it promptly after obtaining it.*	- Use it together with the user, delivery group, and application information in the same response, and keep it confidential as a connection credential.
 	//
-	// Do not reuse the authorization code after it is successfully redeemed. If the code has been used or has expired, call this operation again to obtain a new one.
+	// Do not reuse the authorization code after it is redeemed. If it has been used or expired, call this operation again to obtain a new one.
 	//
 	// example:
 	//
 	// e4e169bea1cc48e8afac53**********
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The usage type of the connection resource.
+	// The purpose type of the connection resource.
 	//
-	// Valid values:
+	// - **ImageBuilder**: Image or application creation resource.
 	//
-	// - **ImageBuilder**: image or application building resource
-	//
-	// - **ImageValidate**: image or application validation resource
+	// - **ImageValidate**: Image or application validation resource.
 	//
 	// example:
 	//
 	// ImageBuilder
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region ID in the current response.
+	// The region ID in this response.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID used when connecting to the building or validation environment. Use the value returned in the current response.
+	// The user ID used when connecting to the creation or validation environment. Use the value returned in this response.
 	//
 	// example:
 	//

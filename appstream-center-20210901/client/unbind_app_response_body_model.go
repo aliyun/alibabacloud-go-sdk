@@ -20,13 +20,13 @@ type iUnbindAppResponseBody interface {
 }
 
 type UnbindAppResponseBody struct {
-	// The error code. Returned when the request fails. A successful response may not contain this field.
+	// The error code. This field is returned when the request fails and may not be included in a successful response.
 	//
 	// example:
 	//
 	// InternalError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error or result message. Used to describe the cause when the request fails. A successful response may not contain this field.
+	// The error or result message. This field describes the cause of a failed request and may not be included in a successful response.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UnbindAppResponseBody struct {
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether the asynchronous task is completed, query the task status separately.
+	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

@@ -22,7 +22,7 @@ type iUpdateAdaptorResponseBody interface {
 }
 
 type UpdateAdaptorResponseBody struct {
-	// The error code. This field is returned when the request fails. A successful response may not contain this field.
+	// The error code. This parameter is returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateAdaptorResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the operation was processed successfully. A value of true indicates that the operation was successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+	// The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//

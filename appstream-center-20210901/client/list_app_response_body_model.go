@@ -42,31 +42,31 @@ type ListAppResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The application records on the current page.
 	Data []*ListAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+	// The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
 	// Internal error.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the current query. The name of this response field is PageNmuber.
+	// The page number of this query. The name of this response field is PageNmuber.
 	//
 	// example:
 	//
 	// 1
 	PageNmuber *int32 `json:"PageNmuber,omitempty" xml:"PageNmuber,omitempty"`
-	// The number of records per page in the paged query.
+	// The number of records per page in this paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the request. You can provide this value when troubleshooting issues.
+	// The unique identifier of the request. You can provide this value for troubleshooting.
 	//
 	// example:
 	//
 	// 01A1A962-5503-107B-AC8F-EBA85DF905AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates that the current request was processed successfully. To check whether an asynchronous task is completed, you must query the task status separately.
+	// Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, query the task status separately.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -176,7 +176,7 @@ type ListAppResponseBodyData struct {
 	//
 	// https://example.com/apps/business/icon.png
 	AppIconUrl *string `json:"AppIconUrl,omitempty" xml:"AppIconUrl,omitempty"`
-	// The application ID, which is used for subsequent application queries or unbinding the image.
+	// The application ID, which is used to query the application or unbind an image later.
 	//
 	// example:
 	//
@@ -196,11 +196,11 @@ type ListAppResponseBodyData struct {
 	AppThemeColor *string `json:"AppThemeColor,omitempty" xml:"AppThemeColor,omitempty"`
 	// The source type of the application. Valid values:
 	//
-	// - **USER_APP**: user-created application
+	// - **USER_APP**: User-created applications.
 	//
-	// - **SYS_APP**: system-provided application
+	// - **SYS_APP**: System-provided applications.
 	//
-	// - **VIRTUAL_APP**: virtual application
+	// - **VIRTUAL_APP**: Virtual applications.
 	//
 	// example:
 	//
@@ -208,25 +208,25 @@ type ListAppResponseBodyData struct {
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The business type to which the application belongs. Valid values:
 	//
-	// - **1**: basic product
+	// - **1**: Basic products.
 	//
-	// - **2**: personal cloud
+	// - **2**: Personal cloud.
 	//
-	// - **3**: cloud office
+	// - **3**: Cloud office.
 	//
-	// - **4**: cloud flow
+	// - **4**: Cloud Flow.
 	//
-	// - **10**: personal edition
+	// - **10**: Personal Edition.
 	//
-	// - **20**: business edition
+	// - **20**: Business Edition.
 	//
-	// - **60**: Linggou team edition
+	// - **60**: Linggou Team Edition.
 	//
 	// example:
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// Indicates whether the current application is not referenced by any image. A value of true indicates that no image references the application. A value of false indicates that the application is still referenced by an image, and the reference must be removed before deletion.
+	// Indicates whether the current application is not referenced by any image. A value of true indicates that no image references the application. A value of false indicates that the application is still referenced by an image. You must remove the reference before deleting the application.
 	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
 	// The path of the executable file saved when the application is created or modified. This field is returned only if the path is configured for the application. An example is the installation path of a Windows business application.
 	//
@@ -248,29 +248,29 @@ type ListAppResponseBodyData struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The form of the application. Valid values:
 	//
-	// - **CLIENT_BASE**: client application
+	// - **CLIENT_BASE**: Client applications.
 	//
-	// - **WEB_BASE**: browser application
+	// - **WEB_BASE**: Browser applications.
 	//
-	// - **CLOUD_NATIVE_BASE**: cloud-native application
+	// - **CLOUD_NATIVE_BASE**: Cloud-native applications.
 	//
-	// - **PORT_SERVICE_BASE**: port service application
+	// - **PORT_SERVICE_BASE**: Port service applications.
 	//
-	// - **AGENT_SERVICE_BASE**: agent application
+	// - **AGENT_SERVICE_BASE**: Agent applications.
 	//
 	// example:
 	//
 	// WEB_BASE
 	OriginAppType *string `json:"OriginAppType,omitempty" xml:"OriginAppType,omitempty"`
-	// The type of the operating system used by the application. Valid values:
+	// The type of operating system used by the application. Valid values:
 	//
-	// - **Unknown**: unknown operating system
+	// - **Unknown**: The operating system is unknown.
 	//
-	// - **Windows**: Windows operating system
+	// - **Windows**: Windows operating system.
 	//
-	// - **Linux**: Linux operating system
+	// - **Linux**: Linux operating system.
 	//
-	// - **Android**: Android operating system
+	// - **Android**: Android operating system.
 	//
 	// example:
 	//
@@ -278,39 +278,39 @@ type ListAppResponseBodyData struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The product to which the resource belongs. Valid values:
 	//
-	// - **CloudGame**: cloud game
+	// - **CloudGame**: Cloud game.
 	//
-	// - **CloudApp**: Wuying cloud application
+	// - **CloudApp**: Wuying cloud application.
 	//
-	// - **CloudBrowser**: secure browser
+	// - **CloudBrowser**: Secure browser.
 	//
-	// - **CloudDesktop**: Wuying cloud computer
+	// - **CloudDesktop**: Wuying cloud desktop.
 	//
-	// - **ImageBuilder**: image building resource
+	// - **ImageBuilder**: Image builder resources.
 	//
-	// - **ImageValidate**: image validation resource
+	// - **ImageValidate**: Image validation resources.
 	//
-	// - **AndroidCloud**: Android cloud
+	// - **AndroidCloud**: Android cloud.
 	//
-	// - **GpuRender**: GPU rendering
+	// - **GpuRender**: GPU rendering.
 	//
-	// - **AndroidGpuRender**: Android cloud GPU rendering
+	// - **AndroidGpuRender**: Android cloud GPU rendering.
 	//
-	// - **WuyingServer**: enterprise edition workstation
+	// - **WuyingServer**: Enterprise Edition workstation.
 	//
-	// - **GpuProxy**: GPU remote rendering proxy
+	// - **GpuProxy**: GPU remote rendering proxy.
 	//
-	// - **GpuCache**: GPU remote rendering cache
+	// - **GpuCache**: GPU remote rendering cache.
 	//
-	// - **AIAgent**: AI agent service
+	// - **AIAgent**: AI Agent service.
 	//
-	// - **HostedDesktop**: hosted computer
+	// - **HostedDesktop**: Hosted desktop.
 	//
-	// - **WuyingWorkstation**: personal edition container workstation
+	// - **WuyingWorkstation**: Personal Edition container workstation.
 	//
-	// - **WuyingWorkstationBusiness**: business edition container workstation
+	// - **WuyingWorkstationBusiness**: Business Edition container workstation.
 	//
-	// - **WuyingWorkstationTeam**: Linggou team edition container workstation
+	// - **WuyingWorkstationTeam**: Linggou Team Edition container workstation.
 	//
 	// example:
 	//
@@ -330,13 +330,13 @@ type ListAppResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The subtype of the application. Valid values:
 	//
-	// - **PWA**: progressive web application
+	// - **PWA**: Progressive web applications.
 	//
-	// - **SAAS**: software as a service (SaaS) application
+	// - **SAAS**: Software as a Service (SaaS) applications.
 	//
-	// - **SANDBOX**: sandbox application
+	// - **SANDBOX**: Sandbox applications.
 	//
-	// - **CONTAINER**: container application
+	// - **CONTAINER**: Container applications.
 	//
 	// example:
 	//

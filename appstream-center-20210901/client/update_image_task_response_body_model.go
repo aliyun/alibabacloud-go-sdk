@@ -22,7 +22,7 @@ type iUpdateImageTaskResponseBody interface {
 }
 
 type UpdateImageTaskResponseBody struct {
-	// The error code. This parameter is returned when the request fails. A successful response may not contain this parameter.
+	// The error code. Returned when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateImageTaskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this parameter.
+	// The error or result message. Used to describe the cause when the request fails. A successful response may not contain this field.
 	//
 	// example:
 	//

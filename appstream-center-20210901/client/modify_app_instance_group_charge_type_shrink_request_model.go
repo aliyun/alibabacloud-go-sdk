@@ -30,25 +30,25 @@ type iModifyAppInstanceGroupChargeTypeShrinkRequest interface {
 }
 
 type ModifyAppInstanceGroupChargeTypeShrinkRequest struct {
-	// The list of delivery group IDs to be modified, in JSON array format. **You must and can only specify one item per request**. The resources must belong to the current account, the specified product, and the business region.
+	// The list of delivery group IDs to be modified, in JSON array format. **You must and can only specify one item at a time**. The resource must belong to the current account, the specified product, and the business region.
 	//
 	// This parameter is required.
 	AppInstanceGroupIdsShrink *string `json:"AppInstanceGroupIds,omitempty" xml:"AppInstanceGroupIds,omitempty"`
-	// Specifies whether to allow automatic payment for the conversion order. Default value: `false`. Valid values:
+	// Specifies whether to allow automatic payment for this conversion order. Default value: false. Valid values:
 	//
-	// - `true`: Automatic payment is allowed.
+	// - true: allows automatic payment for the conversion order.
 	//
-	// - `false`: Automatic payment is not allowed. If an unpaid order is generated, you must complete the payment separately.
+	// - false: does not allow automatic payment. If an unpaid order is generated, you must complete the payment separately.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal for the order. We recommend that you explicitly specify this parameter for subscription orders to determine whether to enable auto-renewal. Valid values:
+	// Specifies whether to enable auto-renewal for this order. Explicitly specify this parameter for subscription orders to determine whether to enable auto-renewal. Valid values:
 	//
-	// - `true`: Auto-renewal is enabled.
+	// - true: enables auto-renewal.
 	//
-	// - `false`: Auto-renewal is not enabled.
+	// - false: disables auto-renewal.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type ModifyAppInstanceGroupChargeTypeShrinkRequest struct {
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The target billing method after conversion. It must be different from the current billing method. Valid values:
 	//
-	// - `PrePaid`: subscription
+	// - PrePaid: subscription.
 	//
-	// - `PostPaid`: pay-as-you-go
+	// - PostPaid: pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -74,33 +74,33 @@ type ModifyAppInstanceGroupChargeTypeShrinkRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The numeric part of the purchase duration, used together with `PeriodUnit`. When converting to subscription and a purchase duration is required, specify both parameters. For example, `1` and `Month` indicate a purchase duration of one month. The available purchase durations are determined by the sales rules of the target resource.
+	// The numeric part of the purchase duration, used together with PeriodUnit. Specify this parameter along with PeriodUnit when converting to subscription and a purchase duration is required. For example, 1 and Month indicate a purchase duration of one month. The specific available purchase durations are determined by the sales rules of the target resource.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the purchase duration, used together with `Period`. This parameter is case-sensitive. Valid values:
+	// The unit of the purchase duration, used together with Period. This parameter is case-sensitive. Valid values:
 	//
-	// - `Hour`: hour
+	// - Hour: hour.
 	//
-	// - `Day`: day
+	// - Day: day.
 	//
-	// - `Week`: week
+	// - Week: week.
 	//
-	// - `Month`: month
+	// - Month: month.
 	//
-	// - `Year`: year
+	// - Year: year.
 	//
-	// These units do not mean that any combination is available for every product. When converting to subscription, select a period supported by the target resource. For example, for a resource that supports monthly purchase, you can set `Period` to `1` and `PeriodUnit` to `Month`.
+	// These units do not mean that every product supports any combination. When converting to subscription, select a period supported by the target resource. For example, for a resource that supports monthly purchase, you can set Period=1 and PeriodUnit=Month.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The product type. Set this parameter to the following fixed value when you call the operation:
+	// The product type. Set this parameter to one of the following values when you call the operation:
 	//
-	// - `CloudApp`: WUYING Cloud Application.
+	// - CloudApp: Wuying Cloud Application.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type ModifyAppInstanceGroupChargeTypeShrinkRequest struct {
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the promotion used for the conversion order. It takes effect only when an order is created and the promotion is applicable. If omitted, no specific coupon is specified. The availability of the promotion is subject to the order result.
+	// The ID of the promotion used for this conversion order. It takes effect only when an order is created and the promotion is applicable. If omitted, no specific coupon is specified. The availability of the promotion is subject to the order result.
 	//
 	// example:
 	//
