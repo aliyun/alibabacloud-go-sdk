@@ -17,6 +17,8 @@ type iBackupFileRequest interface {
 	GetBackupFileName() *string
 	SetBackupFilePath(v string) *BackupFileRequest
 	GetBackupFilePath() *string
+	SetCustomScripts(v []*BackupFileRequestCustomScripts) *BackupFileRequest
+	GetCustomScripts() []*BackupFileRequestCustomScripts
 	SetDescription(v string) *BackupFileRequest
 	GetDescription() *string
 	SetExcludeAppList(v []*string) *BackupFileRequest
@@ -56,6 +58,10 @@ type BackupFileRequest struct {
 	//
 	// This parameter is required.
 	BackupFilePath *string `json:"BackupFilePath,omitempty" xml:"BackupFilePath,omitempty"`
+	// example:
+	//
+	// [{"OssBucket":"my-bucket","OssObjectKey":"script/backup.sh","OssEndpoint":"oss-cn-hangzhou-internal.aliyuncs.com","OssRegion":"cn-hangzhou"}]
+	CustomScripts []*BackupFileRequestCustomScripts `json:"CustomScripts,omitempty" xml:"CustomScripts,omitempty" type:"Repeated"`
 	// The description of the backup file.
 	//
 	// example:
@@ -110,6 +116,10 @@ func (s *BackupFileRequest) GetBackupFilePath() *string {
 	return s.BackupFilePath
 }
 
+func (s *BackupFileRequest) GetCustomScripts() []*BackupFileRequestCustomScripts {
+	return s.CustomScripts
+}
+
 func (s *BackupFileRequest) GetDescription() *string {
 	return s.Description
 }
@@ -158,6 +168,11 @@ func (s *BackupFileRequest) SetBackupFilePath(v string) *BackupFileRequest {
 	return s
 }
 
+func (s *BackupFileRequest) SetCustomScripts(v []*BackupFileRequestCustomScripts) *BackupFileRequest {
+	s.CustomScripts = v
+	return s
+}
+
 func (s *BackupFileRequest) SetDescription(v string) *BackupFileRequest {
 	s.Description = &v
 	return s
@@ -194,5 +209,94 @@ func (s *BackupFileRequest) SetUploadType(v string) *BackupFileRequest {
 }
 
 func (s *BackupFileRequest) Validate() error {
+	if s.CustomScripts != nil {
+		for _, item := range s.CustomScripts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type BackupFileRequestCustomScripts struct {
+	// example:
+	//
+	// my-bucket
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// example:
+	//
+	// oss-cn-hangzhou-internal.aliyuncs.com
+	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// example:
+	//
+	// script/backup.sh
+	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	OssRegion *string `json:"OssRegion,omitempty" xml:"OssRegion,omitempty"`
+	// example:
+	//
+	// ["acp-0n4k52uiyon472rq0"]
+	TestInstanceIds []*string `json:"TestInstanceIds,omitempty" xml:"TestInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s BackupFileRequestCustomScripts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s BackupFileRequestCustomScripts) GoString() string {
+	return s.String()
+}
+
+func (s *BackupFileRequestCustomScripts) GetOssBucket() *string {
+	return s.OssBucket
+}
+
+func (s *BackupFileRequestCustomScripts) GetOssEndpoint() *string {
+	return s.OssEndpoint
+}
+
+func (s *BackupFileRequestCustomScripts) GetOssObjectKey() *string {
+	return s.OssObjectKey
+}
+
+func (s *BackupFileRequestCustomScripts) GetOssRegion() *string {
+	return s.OssRegion
+}
+
+func (s *BackupFileRequestCustomScripts) GetTestInstanceIds() []*string {
+	return s.TestInstanceIds
+}
+
+func (s *BackupFileRequestCustomScripts) SetOssBucket(v string) *BackupFileRequestCustomScripts {
+	s.OssBucket = &v
+	return s
+}
+
+func (s *BackupFileRequestCustomScripts) SetOssEndpoint(v string) *BackupFileRequestCustomScripts {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *BackupFileRequestCustomScripts) SetOssObjectKey(v string) *BackupFileRequestCustomScripts {
+	s.OssObjectKey = &v
+	return s
+}
+
+func (s *BackupFileRequestCustomScripts) SetOssRegion(v string) *BackupFileRequestCustomScripts {
+	s.OssRegion = &v
+	return s
+}
+
+func (s *BackupFileRequestCustomScripts) SetTestInstanceIds(v []*string) *BackupFileRequestCustomScripts {
+	s.TestInstanceIds = v
+	return s
+}
+
+func (s *BackupFileRequestCustomScripts) Validate() error {
 	return dara.Validate(s)
 }

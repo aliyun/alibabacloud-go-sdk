@@ -24,15 +24,15 @@ type iDescribeJVSInstanceResponseBody interface {
 }
 
 type DescribeJVSInstanceResponseBody struct {
-	// The returned result object.
+	// The response object.
 	Data []*DescribeJVSInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The maximum number of results returned in the current request.
+	// The maximum number of data entries returned in the current request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the starting position for the query. An empty value indicates that the query starts from the beginning.
+	// The token that specifies the starting position for the current query. If this parameter is left empty, the query starts from the beginning.
 	//
 	// example:
 	//
@@ -136,15 +136,15 @@ func (s *DescribeJVSInstanceResponseBody) Validate() error {
 type DescribeJVSInstanceResponseBodyData struct {
 	// The AI Engine version and upgrade status.
 	AgentVersion *DescribeJVSInstanceResponseBodyDataAgentVersion `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty" type:"Struct"`
-	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard.
+	// The creation time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2026-04-10T01:31:32Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The credit limit configuration. Subsequent quota configurations overwrite previous configurations.
+	// The credit limit configuration. Subsequent quota configurations overwrite previous ones.
 	CreditConfig []*DescribeJVSInstanceResponseBodyDataCreditConfig `json:"CreditConfig,omitempty" xml:"CreditConfig,omitempty" type:"Repeated"`
-	// The expiration time. The time is displayed in UTC and follows the ISO 8601 standard.
+	// The expiration time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -158,13 +158,19 @@ type DescribeJVSInstanceResponseBodyData struct {
 	//
 	// acp-uto81vfd8t8z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// InstanceName
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// This parameter is not supported.
 	//
 	// example:
 	//
 	// null
 	JvsPackageId *string `json:"JvsPackageId,omitempty" xml:"JvsPackageId,omitempty"`
-	// The modification time. The time is displayed in UTC and follows the ISO 8601 standard.
+	// The modification time. The time is in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -212,6 +218,10 @@ func (s *DescribeJVSInstanceResponseBodyData) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *DescribeJVSInstanceResponseBodyData) GetInstanceName() *string {
+	return s.InstanceName
+}
+
 func (s *DescribeJVSInstanceResponseBodyData) GetJvsPackageId() *string {
 	return s.JvsPackageId
 }
@@ -255,6 +265,11 @@ func (s *DescribeJVSInstanceResponseBodyData) SetInstalledSkills(v []*DescribeJV
 
 func (s *DescribeJVSInstanceResponseBodyData) SetInstanceId(v string) *DescribeJVSInstanceResponseBodyData {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeJVSInstanceResponseBodyData) SetInstanceName(v string) *DescribeJVSInstanceResponseBodyData {
+	s.InstanceName = &v
 	return s
 }
 
@@ -366,7 +381,7 @@ type DescribeJVSInstanceResponseBodyDataCreditConfig struct {
 	//
 	// -1
 	CreditLimit *int64 `json:"CreditLimit,omitempty" xml:"CreditLimit,omitempty"`
-	// The credit limit period.
+	// The limit period.
 	//
 	// example:
 	//
@@ -516,7 +531,7 @@ type DescribeJVSInstanceResponseBodyDataUsedCredit struct {
 	//
 	// 5
 	Credit *int64 `json:"Credit,omitempty" xml:"Credit,omitempty"`
-	// The dimension of the current credit.
+	// The period of the current credit.
 	//
 	// example:
 	//

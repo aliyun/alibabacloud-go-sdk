@@ -20,7 +20,7 @@ type iDescribeJVSInstanceRequest interface {
 type DescribeJVSInstanceRequest struct {
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The page size.
+	// The maximum number of results per page.
 	//
 	// example:
 	//
