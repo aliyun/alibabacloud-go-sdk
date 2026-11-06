@@ -18,7 +18,7 @@ type iBatchDeleteModelsShrinkRequest interface {
 type BatchDeleteModelsShrinkRequest struct {
 	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token used for idempotence. This parameter is not currently supported.
+	// The client token used to ensure idempotence. This parameter is not supported.
 	//
 	// example:
 	//

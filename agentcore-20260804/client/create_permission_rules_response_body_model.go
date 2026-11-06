@@ -171,7 +171,7 @@ type CreatePermissionRulesResponseBodyDataRules struct {
 	//
 	// example:
 	//
-	// ALLOW
+	// PERMIT
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
 	// The rule enforcement mode.
 	//
@@ -225,7 +225,7 @@ type CreatePermissionRulesResponseBodyDataRules struct {
 	//
 	// example:
 	//
-	// OpenAPI
+	// EXPLICIT
 	SourceDetail *string `json:"sourceDetail,omitempty" xml:"sourceDetail,omitempty"`
 	// The target scope.
 	//

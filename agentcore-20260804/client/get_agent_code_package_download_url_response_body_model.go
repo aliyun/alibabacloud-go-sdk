@@ -132,7 +132,7 @@ type GetAgentCodePackageDownloadUrlResponseBodyData struct {
 	//
 	// 456
 	Crc64 *string `json:"crc64,omitempty" xml:"crc64,omitempty"`
-	// The time-limited, read-only download URL for the code package.
+	// The time-limited read-only download URL for the code package.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetAgentCodePackageDownloadUrlResponseBodyData struct {
 	//
 	// main.zip
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The compressed size of the code package.
+	// The compressed file size of the code package, in bytes.
 	//
 	// example:
 	//

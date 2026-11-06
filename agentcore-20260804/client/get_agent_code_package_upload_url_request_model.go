@@ -47,7 +47,7 @@ func (s *GetAgentCodePackageUploadUrlRequest) Validate() error {
 }
 
 type GetAgentCodePackageUploadUrlRequestBody struct {
-	// The filename of the code package.
+	// The name of the code package file.
 	//
 	// This parameter is required.
 	//

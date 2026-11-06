@@ -14,7 +14,7 @@ type iConvertMcpToFreeEditRequest interface {
 }
 
 type ConvertMcpToFreeEditRequest struct {
-	// The client token that is used to ensure request idempotence.
+	// The reserved query request identifier. The current console backend does not read this parameter and does not provide idempotency guarantees for deduplication or recovery of the original processing result based on this identifier.
 	//
 	// example:
 	//

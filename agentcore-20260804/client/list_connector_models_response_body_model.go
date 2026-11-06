@@ -44,7 +44,7 @@ type ListConnectorModelsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of available models.
 	Items []*ListConnectorModelsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The number of models returned in this request.
+	// The number of models returned in this response.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListConnectorModelsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The next page token. This field is not returned in the current version.
+	// The next token. This field is not returned in the current version.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListConnectorModelsResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ type ListConnectorModelsResponseBodyItems struct {
 	//
 	// Qwen3 Max
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The associated Connector Key ID. This field is not returned in the current version.
+	// The associated connector key ID. This field is not returned in the current version.
 	//
 	// example:
 	//
 	// ckey-xxxx
 	KeyId *string `json:"keyId,omitempty" xml:"keyId,omitempty"`
-	// The associated Connector Key name. This field is not returned in the current version.
+	// The name of the associated connector key. This field is not returned in the current version.
 	//
 	// example:
 	//

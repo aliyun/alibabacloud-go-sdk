@@ -62,7 +62,7 @@ func (s *CreatePermissionRulesRequest) Validate() error {
 }
 
 type CreatePermissionRulesRequestBody struct {
-	// The list of permission rules to create.
+	// The list of permission rules to be created.
 	//
 	// This parameter is required.
 	Rules []*CreatePermissionRulesRequestBodyRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
@@ -105,7 +105,7 @@ type CreatePermissionRulesRequestBodyRules struct {
 	//
 	// example:
 	//
-	// ALLOW
+	// PERMIT
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
 	// The rule enforcement mode.
 	//

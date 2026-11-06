@@ -49,7 +49,7 @@ func (s *SearchMemoriesRequest) Validate() error {
 type SearchMemoriesRequestBody struct {
 	// Specifies whether to enable reranking. Default value: true.
 	EnableRerank *bool `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
-	// The string key-value metadata for exact match. You can specify up to 16 keys. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
+	// The string key-value metadata for exact match. A maximum of 16 keys are supported. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The minimum relevance score. Valid values: 0 to 1. Default value: 0.2. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
 	//
@@ -73,7 +73,7 @@ type SearchMemoriesRequestBody struct {
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The retrieval scope. UserId, AgentId, and SessionId are all optional.
 	Scope *SearchMemoriesRequestBodyScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The number of results to return.
+	// The number of returned results.
 	//
 	// example:
 	//
@@ -162,19 +162,19 @@ func (s *SearchMemoriesRequestBody) Validate() error {
 }
 
 type SearchMemoriesRequestBodyScope struct {
-	// The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain a forward slash (/) or an asterisk (*). If the memory is not associated with an agent ID, this field is not returned.
+	// The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with an agent ID, this field is not returned.
 	//
 	// example:
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain a forward slash (/) or an asterisk (*). If the memory is not associated with a session ID, this field is not returned.
+	// The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a session ID, this field is not returned.
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain a forward slash (/) or an asterisk (*). If the memory is not associated with a user ID, this field is not returned.
+	// The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a user ID, this field is not returned.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iUpdateModelResponseBody interface {
 }
 
 type UpdateModelResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type UpdateModelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The updated model information.
 	Data *UpdateModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The time when the resource was created. The time is in RFC 3339 UTC format.
+	// The time when the resource was created. The time is displayed in the RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The maximum number of output tokens supported for a single generation of the model.
+	// The maximum number of output tokens supported by the model in a single generation.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The time when the resource was last updated. The time is in RFC 3339 UTC format.
+	// The time when the resource was last updated. The time is displayed in the RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -296,7 +296,7 @@ type UpdateModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model is able to invoke tool calling multiple times in a single response.
+	// Indicates whether the model is able to invoke multiple tool calling in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`

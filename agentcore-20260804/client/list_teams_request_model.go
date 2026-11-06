@@ -30,7 +30,7 @@ type ListTeamsRequest struct {
 	//
 	// team
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The pagination token for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned from the previous call.
+	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
 	//
 	// example:
 	//

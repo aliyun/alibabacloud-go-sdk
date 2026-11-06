@@ -32,7 +32,7 @@ type RetryImageCacheResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The retry image cache result.
+	// The result of retrying image cache creation.
 	//
 	// This parameter is required.
 	Data *RetryImageCacheResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -60,7 +60,7 @@ type RetryImageCacheResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. This does not mean that the cache production is complete.
+	// Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
 	//
 	// This parameter is required.
 	//
@@ -142,7 +142,7 @@ func (s *RetryImageCacheResponseBody) Validate() error {
 }
 
 type RetryImageCacheResponseBodyData struct {
-	// The source ACR Enterprise instance ID.
+	// The ID of the source ACR instance.
 	//
 	// This parameter is required.
 	//
@@ -150,7 +150,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// cri-example
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The deduplicated number of agents in the current workspace that have useImageCache set to true and are associated with this logical resource. The value is greater than or equal to 0. This uses the same set as the imageCacheId filter in ListAllAgents. Agents with the feature disabled are not counted, regardless of the number of occupied instances.
+	// The number of agents that use the cache.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +158,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// 0
 	AgentCount *int64 `json:"agentCount,omitempty" xml:"agentCount,omitempty"`
-	// The actual cache size in bytes. Known values are greater than or equal to 0. If unknown, the value is null. The compressed size of the source image cannot be used as a substitute.
+	// The size of the cache in bytes.
 	//
 	// This parameter is required.
 	//
@@ -169,7 +169,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// 1073741824
 	CacheSizeBytes *int64 `json:"cacheSizeBytes,omitempty" xml:"cacheSizeBytes,omitempty"`
-	// Indicates whether deletion is allowed. The value is true when the current workspace has no configuration references with the switch enabled, no valid instances are occupying the resource, and the resource is not being deleted. If the reference status is unknown, the query fails instead of allowing deletion by default.
+	// Indicates whether the cache can be deleted.
 	//
 	// This parameter is required.
 	//
@@ -177,7 +177,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The creation time of the logical resource in the current workspace, in RFC3339 format with time zone. Content updates for the "latest" tag do not refresh this time.
+	// The time when the resource was created. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -185,7 +185,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// 2026-10-10T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The reason why deletion is blocked. The value is null when canDelete is true. Otherwise, the value is returned based on the priority of DELETING, AGENT_ENABLED, and INSTANCES_RELEASING. Old instances may still occupy the resource even if the agent count is 0.
+	// The reason why the cache cannot be deleted.
 	//
 	// This parameter is required.
 	//
@@ -196,7 +196,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// INSTANCES_RELEASING
 	DeleteBlockReason *string `json:"deleteBlockReason,omitempty" xml:"deleteBlockReason,omitempty"`
-	// The current content digest in the sha256: format followed by a 64-character lowercase hexadecimal string. It only describes the currently registered content and does not prove that old instances have been switched.
+	// The current content digest.
 	//
 	// This parameter is required.
 	//
@@ -204,14 +204,14 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	Digest *string `json:"digest,omitempty" xml:"digest,omitempty"`
-	// The reason for cache failure. This is a non-empty object when the status is FAILED, and null for other statuses. It only describes the current content and the current production round.
+	// The reason for the cache failure.
 	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// true
 	Error *RetryImageCacheResponseBodyDataError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	// The logical resource ID manageable by the current workspace, not the shared physical cache ID.
+	// The image cache ID.
 	//
 	// This parameter is required.
 	//
@@ -219,7 +219,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// img-example
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	// The source image domain name, excluding the protocol, path, and credentials.
+	// The domain name of the source image.
 	//
 	// This parameter is required.
 	//
@@ -227,7 +227,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// example-registry.cn-hangzhou.cr.aliyuncs.com
 	Registry *string `json:"registry,omitempty" xml:"registry,omitempty"`
-	// The source image repository path in the namespace/repository format, which includes the namespace.
+	// The path of the source image repository.
 	//
 	// This parameter is required.
 	//
@@ -235,15 +235,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// team/app
 	Repository *string `json:"repository,omitempty" xml:"repository,omitempty"`
-	// The image cache status. Valid values:
-	//
-	// - PENDING: The cache is being created.
-	//
-	// - READY: The cache is available.
-	//
-	// - FAILED: An exception occurred.
-	//
-	// - DELETING: The cache is being deleted in the current workspace.
+	// The cache status.
 	//
 	// This parameter is required.
 	//
@@ -251,7 +243,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The source image tag with case preserved. Regular tags cannot be registered with different digests, except for the exact lowercase "latest" tag.
+	// The tag of the source image.
 	//
 	// This parameter is required.
 	//
@@ -259,7 +251,7 @@ type RetryImageCacheResponseBodyData struct {
 	//
 	// v1
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The workspace ID, which is consistent with the requested workspace. Resources with the same content from other workspaces are not returned.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -413,7 +405,7 @@ func (s *RetryImageCacheResponseBodyData) Validate() error {
 }
 
 type RetryImageCacheResponseBodyDataError struct {
-	// The secure and non-empty error code for the current production failure.
+	// The error code for the creation failure.
 	//
 	// This parameter is required.
 	//
@@ -421,13 +413,13 @@ type RetryImageCacheResponseBodyDataError struct {
 	//
 	// ACSCacheBuildFailed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The secure and non-empty display reason for the production failure, excluding credentials, internal addresses, or stack traces.
+	// The description of the creation failure.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Image cache production failed. Please retry
+	// The image cache creation failed. Please retry
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

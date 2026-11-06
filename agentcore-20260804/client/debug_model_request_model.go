@@ -45,7 +45,7 @@ func (s *DebugModelRequest) Validate() error {
 }
 
 type DebugModelRequestBody struct {
-	// The prompt used to verify the model call chain.
+	// The prompt used to verify the model invocation pipeline.
 	//
 	// This parameter is required.
 	//

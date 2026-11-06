@@ -50,7 +50,7 @@ type VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBody struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBody) Validate() e
 }
 
 type VerifyWorkspaceAgenticFsMountRamAuthorizationResponseBodyData struct {
-	// The authorization status. A value of AUTHORIZED does not indicate that the actual mount was successful.
+	// The authorization status. A value of AUTHORIZED does not indicate that the actual mount is successful.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iUpdateTeamRequest interface {
 }
 
 type UpdateTeamRequest struct {
-	// The request body for updating a team.
+	// The request body for updating the team.
 	Body *UpdateTeamRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 	// Not supported.
 	//
@@ -62,15 +62,15 @@ func (s *UpdateTeamRequest) Validate() error {
 }
 
 type UpdateTeamRequestBody struct {
-	// The new list of agent members. The existing agent members are replaced based on full overwrite semantics. If this parameter is not specified, the existing agent members remain unchanged.
+	// The new list of agent members. This list replaces the existing agent members based on full overwrite semantics. If not specified, the existing list remains unchanged.
 	Agents []*UpdateTeamRequestBodyAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// The new team description. If this parameter is not specified, the existing description remains unchanged.
+	// The new team description. If not specified, the existing description remains unchanged.
 	//
 	// example:
 	//
 	// Team responsible for intelligent customer service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The new list of user members. The existing user members are replaced based on full overwrite semantics. If this parameter is specified, it must contain exactly one member with the ADMIN role. If this parameter is not specified, the existing user members remain unchanged.
+	// The new list of user members. This list replaces the existing user members based on full overwrite semantics. If this parameter is specified, it must contain exactly one member with the ADMIN role. If not specified, the existing list remains unchanged.
 	Users []*UpdateTeamRequestBodyUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 

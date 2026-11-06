@@ -138,25 +138,25 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The desensitized result of the credential content. If credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
+	// The masked result of the credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header names are returned, and the values are not returned.
 	//
 	// example:
 	//
 	// {"apiKey":"****************"}
 	CredentialMetadata *string `json:"credentialMetadata,omitempty" xml:"credentialMetadata,omitempty"`
-	// The credential type. Currently, only apiKey is supported.
+	// The credential type. Valid values: apiKey (API key) and mcpHeader (MCP request header).
 	//
 	// example:
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description, which can be up to 256 characters in length.
+	// The credential description. The description can be up to 256 characters in length.
 	//
 	// example:
 	//
-	// API key used to call model services in the production environment
+	// API key used to call the model service in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace, can only contain letters, digits, periods (.), underscores (_), and hyphens (-), must be 3 to 128 characters in length, and cannot be a runtime reserved name.
+	// The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Each item includes resourceType, resourceId, and resourceName. resourceName is empty if the resource is deleted.
+	// The list of MCP services to which the credential applies.
 	ResourceRefs []*UpdateCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The application scope of the credential resources.
+	// The application scope of the credential. ALL indicates all scopes, and SPECIFIED indicates the specified MCP services.
 	//
 	// example:
 	//
@@ -311,23 +311,23 @@ func (s *UpdateCredentialResponseBodyData) Validate() error {
 }
 
 type UpdateCredentialResponseBodyDataResourceRefs struct {
-	// The unique identifier of the resource.
+	// The ID of the applicable MCP service.
 	//
 	// example:
 	//
-	// agent-xxxx
+	// mcp-example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. This parameter is empty if the resource is deleted.
+	// The resource name. This field is empty if the resource has been deleted.
 	//
 	// example:
 	//
-	// my-agent
+	// my-mcp-service
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The resource type, such as agent.
+	// The resource type. Currently, the value is mcpServer, which indicates an MCP service.
 	//
 	// example:
 	//
-	// agent
+	// mcpServer
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

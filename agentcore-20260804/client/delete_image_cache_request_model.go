@@ -16,7 +16,7 @@ type iDeleteImageCacheRequest interface {
 }
 
 type DeleteImageCacheRequest struct {
-	// The product entry region, which is determined by the selected regional endpoint.
+	// The region ID. It is passed as a query parameter and must match the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteImageCacheRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The current routed workspace. The server verifies the account, region, and resource ownership. This parameter cannot be omitted or used to access other workspaces.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

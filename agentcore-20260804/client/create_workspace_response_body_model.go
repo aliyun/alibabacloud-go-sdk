@@ -130,7 +130,7 @@ func (s *CreateWorkspaceResponseBody) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyData struct {
-	// The AI Registry namespace ID. This value is returned after related resources are bound and may be empty during initialization.
+	// The AI Registry namespace ID. This value is returned after the related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -151,7 +151,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The CloudMonitor workspace ID. This value is returned after related resources are bound and may be empty during initialization.
+	// The CloudMonitor workspace ID. This value is returned after the related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -160,7 +160,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// cms-ws-0123456789abcdef
 	CmsWorkspaceId *string `json:"cmsWorkspaceId,omitempty" xml:"cmsWorkspaceId,omitempty"`
-	// The time when the workspace was created. The time follows the ISO 8601 standard.
+	// The time when the workspace was created. The time is displayed in the ISO 8601 format.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +176,7 @@ type CreateWorkspaceResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The ID of the region where the workspace resides.
+	// The ID of the region where the workspace is located.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// tenant-123456
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ func (s *CreateWorkspaceResponseBodyData) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+	// Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
 	//
 	// example:
 	//

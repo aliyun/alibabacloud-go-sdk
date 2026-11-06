@@ -14,7 +14,7 @@ type iUpdateIdentityProviderSCIMRequest interface {
 }
 
 type UpdateIdentityProviderSCIMRequest struct {
-	// Submits the business parameters as described in this API. The body parameters of the public API are mapped to the backend wrapper by the gateway. Do not mix them with the backend direct connection body wrapper.
+	// The business parameters submitted in the request body. The body parameters of public APIs are mapped to backend wrappers by the gateway and must not be mixed with direct backend body wrappers.
 	//
 	// This parameter is required.
 	Body *UpdateIdentityProviderSCIMRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
@@ -47,7 +47,7 @@ func (s *UpdateIdentityProviderSCIMRequest) Validate() error {
 }
 
 type UpdateIdentityProviderSCIMRequestBody struct {
-	// Specifies whether to enable synchronization. Do not set this parameter to true during CustomSSO initialization. You can only update this parameter by calling UpdateIdentityProviderSCIM later. Determine the result based on the operationStatus field.
+	// Specifies whether to enable SCIM synchronization. Do not set this parameter to true during CustomSSO initialization. You can update this parameter only by calling UpdateIdentityProviderSCIM. Check the operationStatus field to determine the result.
 	//
 	// This parameter is required.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`

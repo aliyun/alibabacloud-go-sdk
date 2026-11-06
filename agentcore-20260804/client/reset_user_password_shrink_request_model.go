@@ -14,7 +14,7 @@ type iResetUserPasswordShrinkRequest interface {
 }
 
 type ResetUserPasswordShrinkRequest struct {
-	// The request body for resetting the user password.
+	// The request body for resetting a user password.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

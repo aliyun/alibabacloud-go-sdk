@@ -42,7 +42,7 @@ type ListConnectorsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of connectors.
+	// The connector list.
 	Items []*ListConnectorsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The number of connectors returned in this request.
 	//
@@ -56,7 +56,7 @@ type ListConnectorsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The next page token. The current version does not return this field.
+	// The next token. This field is not returned in the current version.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListConnectorsResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ type ListConnectorsResponseBodyItems struct {
 	//
 	// 3
 	BoundAgentCount *int64 `json:"boundAgentCount,omitempty" xml:"boundAgentCount,omitempty"`
-	// The time when the connector was enabled.
+	// The activation time.
 	//
 	// example:
 	//
 	// 2026-09-01T08:00:00Z
 	EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-	// The connector configuration JSON string. After the connector is enabled, this string may contain sensitive credentials.
+	// The JSON string of the connector configuration. It may contain sensitive credentials after being enabled.
 	//
 	// example:
 	//

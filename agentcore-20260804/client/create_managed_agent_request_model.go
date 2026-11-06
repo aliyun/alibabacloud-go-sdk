@@ -18,7 +18,7 @@ type iCreateManagedAgentRequest interface {
 type CreateManagedAgentRequest struct {
 	// The request body.
 	Body *CreateManagedAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved idempotency token. The backend does not provide idempotency guarantees in the current phase.
+	// A reserved query parameter. The backend currently does not provide idempotency guarantees for deduplication or recovering original acceptance results based on this token.
 	//
 	// example:
 	//
@@ -74,29 +74,29 @@ type CreateManagedAgentRequestBody struct {
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The list of AgenticFS mounts. If omitted or set to an empty array during creation, no AgenticFS mounts are configured. A null value is rejected. The total number of AgenticFS and OSS mounts cannot exceed 10.
+	// The NAS storage mount configurations. Currently, only the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. This is the list of AgenticFS directory mounts. The total number of AgenticFS mounts and OSS mounts cannot exceed 10. If you omit this parameter or set it to [] during creation, no mounts are configured. If you omit this parameter during an update, the existing mounts are retained. If you set it to [], the mounts are cleared. Null values are not accepted.
 	AgenticFsMounts []*CreateManagedAgentRequestBodyAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
-	// The description of the managed agent.
+	// The description of the managed Harness agent.
 	//
 	// example:
 	//
 	// Agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The environment configuration.
+	// The environment configurations.
 	Environment *CreateManagedAgentRequestBodyEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
-	// The agent runtime framework.
+	// The runtime framework object. If omitted, the default value is qwenpaw. Supported values are qwenpaw and qodercli. The type cannot be changed after creation.
 	Harness *CreateManagedAgentRequestBodyHarness `json:"harness,omitempty" xml:"harness,omitempty" type:"Struct"`
-	// The agent instruction used to guide the behavior of the agent.
+	// The agent instructions, which are used to guide the behavior of the agent.
 	//
 	// example:
 	//
 	// You are a code review assistant
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	// The model configuration.
+	// The model configurations.
 	//
 	// This parameter is required.
 	Model *CreateManagedAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The name of the managed agent.
+	// The name of the managed Harness agent.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ type CreateManagedAgentRequestBody struct {
 	//
 	// my-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network configuration.
+	// The runtime network configurations. If you provide this parameter, you must specify both accessInternet.enabled and accessVpc.enabled. Actual access is restricted by the workspace network.
 	Network *CreateManagedAgentRequestBodyNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The list of OSS mounts. A maximum of 10 items are allowed.
+	// The list of OSS directory mounts. The total number of OSS mounts and AgenticFS mounts cannot exceed 10. During an update, this list is replaced entirely. Pass [] to clear the list.
 	OssMounts []*CreateManagedAgentRequestBodyOssMounts `json:"ossMounts,omitempty" xml:"ossMounts,omitempty" type:"Repeated"`
 	// The prompt variable declarations.
 	PromptVariables []*CreateManagedAgentRequestBodyPromptVariables `json:"promptVariables,omitempty" xml:"promptVariables,omitempty" type:"Repeated"`
-	// The runtime configuration.
+	// The runtime configuration. You must provide both compute and sessionPolicy. Omitted fields in hpa use default values.
 	//
 	// This parameter is required.
 	Runtime *CreateManagedAgentRequestBodyRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
@@ -374,25 +374,25 @@ func (s *CreateManagedAgentRequestBody) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyAgenticFsMounts struct {
-	// The subdirectory under /mnt/agenticfs/ in the container. This parameter is required and validated by the backend for each mount item. Mount targets must not be duplicated or overlap in parent-child relationships.
+	// The absolute mount path in the container, such as /data/train. Mount targets cannot be duplicated or form parent-child directory overwrites, and must avoid platform-reserved directories.
 	//
 	// example:
 	//
 	// /mnt/agenticfs/data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The existing non-empty relative directory under the access point. This parameter is required and validated by the backend for each mount item. Root directories, absolute paths, and parent directory segments are not allowed.
+	// The existing non-empty relative directory under the access point. This parameter is required for each mount item and validated by the backend. Root directories, absolute paths, and parent directory segments are not allowed.
 	//
 	// example:
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. If omitted, the default value is false. This parameter does not represent a read-only policy for a RAM role.
+	// Specifies whether to mount the directory in read-only mode. If omitted, the default value is false. This parameter does not represent a RAM role read-only policy.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The domain name of the access point. This parameter is required and validated by the backend for each mount item. Do not include the protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
+	// The access point domain name. This parameter is required for each mount item and validated by the backend. The domain name cannot contain a protocol, port, or path. Use the DomainName value from the NAS ListAccessPoints response.
 	//
 	// example:
 	//
@@ -585,9 +585,9 @@ func (s *CreateManagedAgentRequestBodyEnvironmentVariables) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyHarness struct {
-	// The runtime framework configuration.
+	// The runtime framework configurations.
 	Configuration *CreateManagedAgentRequestBodyHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The type of the runtime framework.
+	// The runtime framework type. This parameter is required when you provide the harness parameter. Valid values: qwenpaw and qodercli.
 	//
 	// example:
 	//
@@ -631,13 +631,13 @@ func (s *CreateManagedAgentRequestBodyHarness) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyHarnessConfiguration struct {
-	// The connector service account key.
+	// The account key record ID in the qodercli connector. You can query this ID by using ListConnectors. This is not the original key. You can omit this parameter if only one record exists. If multiple records exist, you must specify this parameter. Do not specify this parameter for qwenpaw.
 	//
 	// example:
 	//
-	// key-xxxx
+	// key-example
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// The connector service account name.
+	// The connector account name bound to qodercli. Do not specify this parameter for qwenpaw.
 	//
 	// example:
 	//
@@ -676,7 +676,7 @@ func (s *CreateManagedAgentRequestBodyHarnessConfiguration) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyModel struct {
-	// The model connection ID.
+	// For qwenpaw, use the workspace model connection ID. For qodercli, use the available model identifier returned by ListConnectorModels.
 	//
 	// This parameter is required.
 	//
@@ -684,13 +684,13 @@ type CreateManagedAgentRequestBodyModel struct {
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
-	// The name of the upstream model.
+	// For qwenpaw, use the name of the upstream model created under the model connection. This parameter is required. For qodercli, you can omit this parameter.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration. If this parameter is not passed, no quota is configured.
+	// The model token quota configurations. If you do not pass this parameter, no quota is configured.
 	Quota *CreateManagedAgentRequestBodyModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
 }
 
@@ -739,7 +739,7 @@ func (s *CreateManagedAgentRequestBodyModel) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyModelQuota struct {
-	// Specifies whether to enable the token quota. If not specified, the default value is true. A value of false disables the quota and deletes existing quota rules.
+	// Specifies whether to enable the token quota. If not specified, the default value is true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
 	//
 	// example:
 	//
@@ -751,13 +751,13 @@ type CreateManagedAgentRequestBodyModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The statistical period for the quota. This parameter is required and validated by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
+	// The quota statistical period. This parameter is required and validated by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens allowed to be consumed in a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
+	// The maximum number of tokens that can be consumed in a single period. This parameter is required and validated by the backend when the quota is enabled. The value must be greater than 0.
 	//
 	// example:
 	//
@@ -814,9 +814,9 @@ func (s *CreateManagedAgentRequestBodyModelQuota) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyNetwork struct {
-	// The public network access configuration.
+	// The public network access configurations.
 	AccessInternet *CreateManagedAgentRequestBodyNetworkAccessInternet `json:"accessInternet,omitempty" xml:"accessInternet,omitempty" type:"Struct"`
-	// The VPC access configuration.
+	// The VPC access configurations.
 	AccessVpc *CreateManagedAgentRequestBodyNetworkAccessVpc `json:"accessVpc,omitempty" xml:"accessVpc,omitempty" type:"Struct"`
 }
 
@@ -921,25 +921,25 @@ func (s *CreateManagedAgentRequestBodyNetworkAccessVpc) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyOssMounts struct {
-	// The name of the OSS bucket. This parameter is required and validated by the backend for each mount item.
+	// The name of the OSS bucket. This parameter is required for each mount item and validated by the backend.
 	//
 	// example:
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The absolute mount path in the container. This parameter is required and validated by the backend for each mount item.
+	// The absolute mount path in the container, such as /data/train. Mount targets cannot be duplicated or form parent-child directory overwrites, and must avoid platform-reserved directories.
 	//
 	// example:
 	//
 	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The relative object prefix in the bucket. If not specified, the entire bucket is mounted.
+	// The non-empty relative object directory prefix in the bucket. This parameter is required for each mount item.
 	//
 	// example:
 	//
 	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. If not specified, the default value is false.
+	// Specifies whether to mount the directory in read-only mode. If not specified, the default value is false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -998,13 +998,13 @@ type CreateManagedAgentRequestBodyPromptVariables struct {
 	//
 	// default
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// The description of the variable.
+	// The variable description.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -1056,7 +1056,7 @@ type CreateManagedAgentRequestBodyRuntime struct {
 	//
 	// This parameter is required.
 	Compute *CreateManagedAgentRequestBodyRuntimeCompute `json:"compute,omitempty" xml:"compute,omitempty" type:"Struct"`
-	// The sandbox auto-scaling and session configuration.
+	// The elastic scaling and session configuration. Omitted fields use default values. To retain the original policy during an update, submit the complete hpa or omit the entire runtime.
 	Hpa *CreateManagedAgentRequestBodyRuntimeHpa `json:"hpa,omitempty" xml:"hpa,omitempty" type:"Struct"`
 	// The session policy configuration.
 	//
@@ -1119,7 +1119,7 @@ func (s *CreateManagedAgentRequestBodyRuntime) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyRuntimeCompute struct {
-	// The compute class.
+	// The compute specifications.
 	//
 	// This parameter is required.
 	//
@@ -1151,27 +1151,27 @@ func (s *CreateManagedAgentRequestBodyRuntimeCompute) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyRuntimeHpa struct {
-	// Specifies whether to enable auto-scaling. This parameter is required and validated by the backend when HPA is specified.
+	// Specifies whether to enable elastic scaling. Default value: false.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The maximum number of active sessions per sandbox. This parameter is required and validated by the backend when HPA is specified.
+	// The maximum number of concurrent sessions allowed per instance. Valid values: 1 to 20. Default value: 20.
 	//
 	// example:
 	//
-	// 5
+	// 20
 	MaxConcurrentSessionsPerSandbox *int32 `json:"maxConcurrentSessionsPerSandbox,omitempty" xml:"maxConcurrentSessionsPerSandbox,omitempty"`
-	// The maximum number of sandboxes. This parameter is required when HPA is enabled and must not be less than the minimum value.
+	// The maximum number of instances. Valid values: 0 to 100. Default value: 10. The value cannot be less than minSandboxCount.
 	//
 	// example:
 	//
 	// 3
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// The minimum number of sandboxes. This parameter is required when HPA is enabled.
+	// The minimum number of instances. Valid values: 0 to 100. Default value: 1. The value cannot be greater than maxSandboxCount.
 	//
 	// example:
 	//
 	// 1
 	MinSandboxCount *int32 `json:"minSandboxCount,omitempty" xml:"minSandboxCount,omitempty"`
-	// The idle timeout period for a session before it is reclaimed, in seconds. This parameter is required and validated by the backend when HPA is specified.
+	// The maximum idle time for a session, in seconds. Valid values: 60 to 86400. Default value: 600.
 	//
 	// example:
 	//
@@ -1237,7 +1237,7 @@ func (s *CreateManagedAgentRequestBodyRuntimeHpa) Validate() error {
 }
 
 type CreateManagedAgentRequestBodyRuntimeSessionPolicy struct {
-	// The name of the HTTP header used for session affinity. This parameter takes effect when sessionPolicy.type is set to ISOLATED_HEADER_FIELD.
+	// The name of the request header used for session identification. This parameter is required when type is set to ISOLATED_HEADER_FIELD and must be a valid HTTP request header name. Do not specify this parameter for other policy types.
 	//
 	// example:
 	//
@@ -1292,23 +1292,19 @@ type CreateManagedAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. Valid values:
-	//
-	// - REFERENCE: references the AI Registry
-	//
-	// - STATIC: statically provided with the package
+	// The skill source type.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The skill version.
+	// The skill version field for backward compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this parameter together with sourceType.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The referenced version selector. If omitted, the default value is LABEL/latest. Currently, only LABEL/latest is supported.
+	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *CreateManagedAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -1366,17 +1362,13 @@ func (s *CreateManagedAgentRequestBodySkills) Validate() error {
 }
 
 type CreateManagedAgentRequestBodySkillsVersionSelector struct {
-	// The version selector type. Valid values:
-	//
-	// - LABEL: selects by label
-	//
-	// - VERSION: selects by specific version
+	// The version selector type.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The selector value. When the type is LABEL, this value is the label name, such as latest. When the type is VERSION, this value is the specific version number.
+	// The selector value. When the type is LABEL, this is the tag name, such as latest. When the type is VERSION, this is the specific version number.
 	//
 	// example:
 	//

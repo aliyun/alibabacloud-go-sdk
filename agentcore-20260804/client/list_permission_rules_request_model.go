@@ -82,7 +82,7 @@ type ListPermissionRulesRequest struct {
 	//
 	// AgentCore
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The rule target.
+	// The target of the rule.
 	//
 	// example:
 	//

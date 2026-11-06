@@ -14,7 +14,7 @@ type iCreateIdentityProviderShrinkRequest interface {
 }
 
 type CreateIdentityProviderShrinkRequest struct {
-	// The request content for binding an external identity provider.
+	// The request body for binding an external identity provider.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

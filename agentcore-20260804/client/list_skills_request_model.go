@@ -30,25 +30,25 @@ type iListSkillsRequest interface {
 }
 
 type ListSkillsRequest struct {
-	// The maximum number of entries per page.
+	// The maximum number of items to return per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// next-page-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The field by which to sort results. The value download_count is supported. Default value: gmt_modified.
+	// The sort field. Valid value: download_count. Default value: gmt_modified.
 	//
 	// example:
 	//
 	// download_count
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// Filters results by owner.
+	// Filters the skills by owner.
 	//
 	// example:
 	//
@@ -60,27 +60,19 @@ type ListSkillsRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
-	// The number of entries per page. Default value: 10. Maximum value: 50.
+	// The number of items per page. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters results by visibility. Valid values:
-	//
-	// - PUBLIC
-	//
-	// - PRIVATE
+	// Filters the skills by visibility. Valid values: PUBLIC and PRIVATE.
 	//
 	// example:
 	//
 	// PUBLIC
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The search mode. Valid values:
-	//
-	// - accurate: exact match.
-	//
-	// - blur: fuzzy match.
+	// The search mode. Valid values: accurate (exact match) and blur (fuzzy match).
 	//
 	// example:
 	//

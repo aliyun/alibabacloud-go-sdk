@@ -16,7 +16,7 @@ type iUpdateUserShrinkRequest interface {
 }
 
 type UpdateUserShrinkRequest struct {
-	// The request body for updating a user.
+	// The request body for updating the user.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 	// Not supported.
 	//

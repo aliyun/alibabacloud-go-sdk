@@ -30,7 +30,7 @@ type VerifyConnectorResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The validation result.
+	// The verification result.
 	Data *VerifyConnectorResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type VerifyConnectorResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ func (s *VerifyConnectorResponseBody) Validate() error {
 }
 
 type VerifyConnectorResponseBodyData struct {
-	// The list of Service Account Key labels that failed validation or returned indeterminate results.
+	// The list of service account key labels that failed the verification or have uncertain verification results.
 	//
 	// example:
 	//
 	// default
 	InvalidServiceAccountKeys []*string `json:"invalidServiceAccountKeys,omitempty" xml:"invalidServiceAccountKeys,omitempty" type:"Repeated"`
-	// Indicates whether all validated Service Account Keys are valid.
+	// Indicates whether all verified service account keys are valid.
 	//
 	// example:
 	//

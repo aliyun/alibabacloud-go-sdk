@@ -22,7 +22,7 @@ type iListCredentialsRequest interface {
 }
 
 type ListCredentialsRequest struct {
-	// Filters by credential type. Currently, only apiKey is supported.
+	// The credential type used for filtering. Valid values: apiKey and mcpHeader.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListCredentialsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Filters by credential name.
+	// The credential name used for filtering.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListCredentialsRequest struct {
 	//
 	// model
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The cursor used to query the next page. Do not specify this parameter in the first call. For subsequent calls, specify the nextToken returned in the previous response.
+	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
 	//
 	// example:
 	//

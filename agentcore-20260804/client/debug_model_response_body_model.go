@@ -24,7 +24,7 @@ type iDebugModelResponseBody interface {
 }
 
 type DebugModelResponseBody struct {
-	// The business status code. The value SUCCESS indicates success.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DebugModelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The model debugging result.
 	Data *DebugModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value 200 indicates success.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DebugModelResponseBody struct {
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -132,7 +132,7 @@ type DebugModelResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// Indicates whether the model debugging was successful.
+	// Indicates whether the model debugging is successful.
 	DebugSuccess *bool `json:"debugSuccess,omitempty" xml:"debugSuccess,omitempty"`
 	// The error code returned when debugging fails.
 	//
@@ -140,7 +140,7 @@ type DebugModelResponseBodyData struct {
 	//
 	// UPSTREAM_MODEL_ERROR
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message returned when debugging fails.
+	// The error description returned when debugging fails.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DebugModelResponseBodyData struct {
 	//
 	// 3
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
-	// The time consumed by this model debugging call, in milliseconds.
+	// The duration of this model debugging invocation, in milliseconds.
 	//
 	// example:
 	//
@@ -170,13 +170,13 @@ type DebugModelResponseBodyData struct {
 	//
 	// 2
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
-	// The text response returned by the model when debugging succeeds. This value is empty when debugging fails.
+	// The text response returned by the model when model debugging succeeds. This field is empty if debugging fails.
 	//
 	// example:
 	//
 	// ok
 	Response *string `json:"response,omitempty" xml:"response,omitempty"`
-	// The debug result status.
+	// The debugging result status.
 	//
 	// example:
 	//

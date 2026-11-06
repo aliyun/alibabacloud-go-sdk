@@ -22,7 +22,7 @@ type ListAgentCodeRuntimesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The token for the next page.
+	// The next page token.
 	//
 	// example:
 	//

@@ -24,33 +24,33 @@ type iUpdateIdentityProviderSCIMResponseBody interface {
 }
 
 type UpdateIdentityProviderSCIMResponseBody struct {
-	// The business result code. If the request fails, handle the error based on the HTTP status code and the message.
+	// If the call fails, troubleshoot the issue based on the HTTP status code and the message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The original binding details and new SCIM status. The original fields and the meaning of the status field are retained. The new scimStatus field corresponds to the data.status field in the query API. The operationStatus field retains the status of the most recent SCIM task.
+	// The original fields and the meaning of the status field are retained. The new scimStatus field corresponds to the data.status field in the query operation. The operationStatus field retains the status of the most recent SCIM task.
 	Data *UpdateIdentityProviderSCIMResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code of the current request. It indicates the processing status of the request and is not equivalent to the final result of the background task.
+	// The processing status of the current request. This status is not equivalent to the final result of the background task.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// Task result message. It indicates the request acceptance or error message. You must check task result of an asynchronous task by calling the corresponding query API.
+	// The message about request acceptance or errors. For an asynchronous task, verify the result by calling the corresponding query operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID. It is used to associate the current call with troubleshooting. Retain this ID if the request fails.
+	// The request ID. You can use this ID to associate the call with troubleshooting. Retain this ID if the call fails.
 	//
 	// example:
 	//
 	// request-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task result.
+	// Indicates whether the current request was processed successfully. A value of true indicates success. For asynchronous writes, you must continue to query the task result.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,71 +126,71 @@ func (s *UpdateIdentityProviderSCIMResponseBody) Validate() error {
 }
 
 type UpdateIdentityProviderSCIMResponseBodyData struct {
-	// The actual upstream configuration. The actual SAML configuration is read back on demand only by calling GetIdentityProvider. The SCIM query and preparation operations return the actual receiving status and URL.
+	// The actual SAML configuration is read back on demand only by GetIdentityProvider. The SCIM query and preparation operations return the actual receiving status and URL.
 	Configuration *UpdateIdentityProviderSCIMResponseBodyDataConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The time when the record was created on the server.
+	// The creation time recorded on the server.
 	//
 	// example:
 	//
 	// 2026-10-26T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The event callback URL for SAML. CustomSSO returns an empty string. You can obtain the SCIM receiving address by calling the SCIM query or preparation API. The example shows an empty JSON string "". The actual value does not contain double quotes.
+	// For CustomSSO, an empty string is returned. You must obtain the SCIM receiving URL by calling the SCIM query or preparation operation. The example shows an empty JSON string. The actual value does not contain double quotation marks.
 	//
 	// example:
 	//
 	// ""
 	EventSubscriptionCallbackUrl *string `json:"eventSubscriptionCallbackUrl,omitempty" xml:"eventSubscriptionCallbackUrl,omitempty"`
-	// The type of the identity provider. Common CRUD operations support DingTalk, Feishu, and CustomSSO. The SP query operation supports only CustomSSO. The SCIM path uses the CustomSSO shared pool.
+	// The type of the identity provider. General CRUD operations support DingTalk, Feishu, and CustomSSO. Service provider (SP) queries support only CustomSSO. The SCIM path uses the CustomSSO shared pool.
 	//
 	// example:
 	//
 	// CustomSSO
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// The callback URL for SAML. CustomSSO returns an empty string. You can obtain the Assertion Consumer Service (ACS) URL of SAML by calling the SP query API. The example shows an empty JSON string "". The actual value does not contain double quotes.
+	// For CustomSSO, an empty string is returned. You must obtain the Assertion Consumer Service (ACS) URL for SAML by calling the SP query operation. The example shows an empty JSON string. The actual value does not contain double quotation marks.
 	//
 	// example:
 	//
 	// ""
 	LoginCallbackUrl *string `json:"loginCallbackUrl,omitempty" xml:"loginCallbackUrl,omitempty"`
-	// Specifies whether logon is enabled. Do not set this parameter to true during CustomSSO initialization. You must save a valid SAML configuration before enabling logon. Disabling logon does not delete the configuration. If an asynchronous failure occurs, this expected value does not indicate that the upstream configuration has taken effect.
+	// Specifies whether logon is enabled. Do not set this parameter to true during CustomSSO initialization. You must save a valid SAML configuration before enabling logon. Disabling logon does not delete the configuration. If an asynchronous task fails, this expected value does not indicate that the change has taken effect on the upstream side.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The standard IdP metadata. Vendor parameters are used for DingTalk and Feishu. CustomSSO updates use the protocol and saml fields and do not accept this field. The returned value does not contain vendor keys.
+	// Vendor parameters are used for DingTalk and Feishu. CustomSSO updates use the protocol and saml fields and do not accept this field. The return value does not contain vendor keys.
 	Metadata *UpdateIdentityProviderSCIMResponseBodyDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The status of the most recent SCIM operation. When the status is PENDING or RUNNING, poll the GetIdentityProviderSCIM API. This field retains the facts of failure, pause, and cancellation, and does not indicate the SAML status.
+	// The original status of the most recent independent SCIM operation task. An empty string ("") is returned if no historical tasks exist.
 	//
 	// example:
 	//
 	// PENDING
 	OperationStatus *string `json:"operationStatus,omitempty" xml:"operationStatus,omitempty"`
-	// The logon protocol. Only SAML is supported. This field may not be returned if no valid configuration is saved. You cannot use OIDC as a placeholder for initialization.
+	// Only SAML is supported. This field may not be returned if no valid configuration is saved. Initialization with an OIDC placeholder is not supported.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The SAML logon configuration. You can enter an XML file or manually enter the complete configuration. The query operation returns the standardized configuration and does not echo the original XML. This field can be omitted if it is not configured.
+	// You can specify either XML or manual fields for the input. The query returns a standardized configuration and does not return the original XML. This field can be omitted if it is not configured.
 	Saml *UpdateIdentityProviderSCIMResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
-	// The independent SCIM configuration status. This field does not change the meaning of shared resources and logon configurations in the original status field. It corresponds to the data.status field in the query API.
+	// The independent SCIM status. This field does not change the meaning of shared resources and logon configurations in the original status field. This field corresponds to the data.status field in the query operation.
 	//
 	// example:
 	//
 	// UPDATING
 	ScimStatus *string `json:"scimStatus,omitempty" xml:"scimStatus,omitempty"`
-	// The operation status of shared resources and logon configurations. It indicates the user pool lifecycle and logon configuration task status of CustomSSO, and does not indicate the SCIM operation result. You can query the SCIM switch result by using the operationStatus field returned by GetIdentityProviderSCIM. You cannot use this field to determine whether all protocols are configured.
+	// The lifecycle of the CustomSSO user pool and the task status of the logon configuration. This field does not indicate the SCIM operation result. You can query the SCIM switch result by checking the operationStatus field returned by GetIdentityProviderSCIM. You cannot use this field to determine whether all protocols are configured.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies whether to enable synchronization. Do not set this parameter to true during CustomSSO initialization. You can only update this parameter by calling UpdateIdentityProviderSCIM later. Determine the result based on the operationStatus field.
+	// Specifies whether to enable SCIM synchronization. Do not set this parameter to true during CustomSSO initialization. You can update this parameter only by calling UpdateIdentityProviderSCIM. Check the operationStatus field to determine the result.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// The time when the record was last updated on the server.
+	// The most recent update time recorded on the server.
 	//
 	// example:
 	//
 	// 2026-10-26T00:00:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The ID of the target workspace. This parameter is required. The request region must be the same as the region of the target workspace.
+	// Required. The ID of the destination workspace. The region of the request must be the same as the region of the destination workspace.
 	//
 	// example:
 	//
@@ -361,25 +361,25 @@ func (s *UpdateIdentityProviderSCIMResponseBodyData) Validate() error {
 }
 
 type UpdateIdentityProviderSCIMResponseBodyDataConfiguration struct {
-	// The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required when you manually enter the configuration. The query operation returns the short name.
+	// The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. Required when manually specified. The query returns the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// The entity ID of the IdP. This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. You cannot change the entity ID if it is already configured. This ID is different from the entity ID of the service provider (SP) returned by the query operation.
+	// Required when manually specified. The value must be non-empty and up to 2,048 characters in length. You cannot change this value after it is configured. This value is different from the local entity ID queried by the SP.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The logon URL of the IdP. This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually specified. The value must be an absolute HTTPS URL and must not contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The actual SSO logon status of AgentIdentity. Valid values: Enabled and Disabled. This value is not equivalent to the expected value of loginEnabled saved in AC.
+	// The actual switch value, which is Enabled or Disabled. This value is not equivalent to the expected value of loginEnabled saved by AgentCore.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ func (s *UpdateIdentityProviderSCIMResponseBodyDataConfiguration) Validate() err
 }
 
 type UpdateIdentityProviderSCIMResponseBodyDataMetadata struct {
-	// The SAML binding URI in the historical metadata snapshot. To update CustomSSO, use the saml.bindingType field.
+	// The SAML binding URI in the historical metadata snapshot. For CustomSSO updates, use the saml.bindingType field.
 	//
 	// example:
 	//
@@ -448,13 +448,13 @@ type UpdateIdentityProviderSCIMResponseBodyDataMetadata struct {
 	//
 	// MIICwDCCAaigAwIBAgIULlsHLfcADyBax5ZtFlj+YGzZVo0wDQYJKoZIhvcNAQELBQAwGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMB4XDTI2MDEwMTAwMDAwMFoXDTM2MDEwMTAwMDAwMFowGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAto0DN0W1CrPRzK9QZ9A1aApb4Lg8oGlp2c0PbN3LokXe/HzwxCMXx65IDnrenttxzTwp9BgUnUN/3LRzWaOL2UQ/vNYNW9LFLkI1T64UPyI7eyi28YlALhb41xkYhEp7rz+MjqifBzVZeTDUxBYtbK2hAhbYEL1+udwsXEx0KB7xuQ/rbI2OKeqAEAD1tfYg7T/SM2wrXNYhx+o1HtchM4/0I8Okkk27JQ4y3ofzC5sTySmFF1Y7XcpSd+5WSyazedhkAieo8AB01DkJV6nnKfH8sH0EBsnH3FP8FhqCLrIeEkjX9B9OcIRLGjiZqx4u/ryW1QhMldnv+pFfNjWy/wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQC1hSQG8AwtGOoX2gKBK4Hi5XBrBreij8WlLTUWld0FINQ0Rg84f/27CjDthywj6wgxCesCuOVFhpxQa1UacsP/Gcai1aKABtLWImcaWECRYK5gDkwhTMFKM9mXA26hH1l4v/UR2iTpEK9H78egC4W7bs2LDTpPryuaNKTqP2O0tMbNkAHB8yecz5LxHXnxadL9Egow25g2RClvpifWqDnuS9TSbKkIWLcPLjocJj2K9ILpBwhXiXi/BiSgyYTLiYvVvih9vX4s+hKGZNJc0j92YLiOHDF0XH1oxgdVjfTmRiedeb2VZJZElptD92z0AqFR7z2d5B+OqpPA2gjuMLV5
 	Certificates *string `json:"certificates,omitempty" xml:"certificates,omitempty"`
-	// The entity ID of the IdP. This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. You cannot change the entity ID if it is already configured. This ID is different from the entity ID of the service provider (SP) returned by the query operation.
+	// Required when manually specified. The value must be non-empty and up to 2,048 characters in length. You cannot change this value after it is configured. This value is different from the local entity ID queried by the SP.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The logon URL of the IdP. This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually specified. The value must be an absolute HTTPS URL and must not contain user credentials or fragments.
 	//
 	// example:
 	//
@@ -511,25 +511,25 @@ func (s *UpdateIdentityProviderSCIMResponseBodyDataMetadata) Validate() error {
 }
 
 type UpdateIdentityProviderSCIMResponseBodyDataSaml struct {
-	// The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required when you manually enter the configuration. The query operation returns the short name.
+	// The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. Required when manually specified. The query returns the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// The entity ID of the IdP. This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. You cannot change the entity ID if it is already configured. This ID is different from the entity ID of the service provider (SP) returned by the query operation.
+	// Required when manually specified. The value must be non-empty and up to 2,048 characters in length. You cannot change this value after it is configured. This value is different from the local entity ID queried by the SP.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The logon URL of the IdP. This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually specified. The value must be an absolute HTTPS URL and must not contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The list of IdP signing certificates. This parameter is required when you manually enter the configuration. It must be a non-empty array and use PEM X.509 certificate text. The system verifies the current validity period. A maximum of two certificates are allowed after deduplication.
+	// Required when manually specified. The value must be a non-empty array of PEM X.509 certificate texts. The system verifies the current validity period. A maximum of two certificates are allowed after deduplication.
 	//
 	// example:
 	//

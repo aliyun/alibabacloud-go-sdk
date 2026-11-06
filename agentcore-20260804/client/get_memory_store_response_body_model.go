@@ -126,7 +126,7 @@ func (s *GetMemoryStoreResponseBody) Validate() error {
 }
 
 type GetMemoryStoreResponseBodyData struct {
-	// The creation time.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetMemoryStoreResponseBodyData struct {
 	//
 	// Extract only long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The MemoryStore ID.
+	// The MemoryStore identifier.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type GetMemoryStoreResponseBodyData struct {
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last updated time.
+	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//

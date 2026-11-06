@@ -24,7 +24,7 @@ type iGetModelConnectionResponseBody interface {
 }
 
 type GetModelConnectionResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. The value is SUCCESS when the operation is successful.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type GetModelConnectionResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The detailed information about the model connection.
 	Data *GetModelConnectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
+	// The name of the model connection. The name is 1 to 128 non-whitespace characters in length.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol used to invoke the model. Currently, only OpenAI/v1 is supported. If no Settings are specified during model creation, this default value is used.
+	// The protocol to invoke the model. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The failure summary returned when the model connection fails to be published, or when deletion fails but the resource remains in the deleting state. This field is empty in other states.
+	// The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
 	//
 	// example:
 	//

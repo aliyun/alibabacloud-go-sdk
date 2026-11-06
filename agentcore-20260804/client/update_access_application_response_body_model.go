@@ -38,7 +38,7 @@ type UpdateAccessApplicationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request result message.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type UpdateAccessApplicationResponseBodyData struct {
 	//
 	// example:
 	//
-	// RAM
+	// LOCAL
 	UserSource *string `json:"userSource,omitempty" xml:"userSource,omitempty"`
 	// The workspace ID.
 	//

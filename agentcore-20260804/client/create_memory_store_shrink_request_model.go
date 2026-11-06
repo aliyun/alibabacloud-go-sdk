@@ -20,7 +20,7 @@ type CreateMemoryStoreShrinkRequest struct {
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token.
+	// The client request token.
 	//
 	// example:
 	//

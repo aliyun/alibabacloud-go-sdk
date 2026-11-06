@@ -44,7 +44,7 @@ type ListCredentialsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The credential list.
 	Items []*ListCredentialsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that takes effect in this query.
+	// The maximum number of records per page that takes effect in the current query.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListCredentialsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. It is empty if there is no next page.
+	// The cursor for the next page. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -199,25 +199,25 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked credential content. When credentialType is apiKey, the apiKey value is returned as asterisks (*) of the same length.
+	// The desensitized credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header name is returned, and the value is not returned.
 	//
 	// example:
 	//
 	// {"apiKey":"****************"}
 	CredentialMetadata *string `json:"credentialMetadata,omitempty" xml:"credentialMetadata,omitempty"`
-	// The credential type. Currently, only apiKey is supported.
+	// The credential type. Valid values: apiKey (API key) and mcpHeader (MCP request header).
 	//
 	// example:
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description, which cannot exceed 256 characters in length.
+	// The credential description. The description can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// API key used to call model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 128 characters in length. Runtime reserved names cannot be used.
+	// The credential name. The name must be unique within the workspace, can contain only letters, digits, periods, underscores, and hyphens, and must be 3 to 99 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
@@ -229,9 +229,9 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The list of resources to which the credential can be applied.
+	// The list of MCP services to which the credential applies.
 	ResourceRefs []*ListCredentialsResponseBodyItemsResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The application scope of the credential resource.
+	// The application scope of the credential. ALL indicates all scopes. SPECIFIED indicates specified MCP services.
 	//
 	// example:
 	//
@@ -381,23 +381,23 @@ func (s *ListCredentialsResponseBodyItems) Validate() error {
 }
 
 type ListCredentialsResponseBodyItemsResourceRefs struct {
-	// The unique identifier of the resource.
+	// The ID of the applicable MCP service.
 	//
 	// example:
 	//
-	// agent-xxxx
+	// mcp-example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. It is empty if the resource has been deleted.
+	// The resource name. This parameter is empty if the resource is deleted.
 	//
 	// example:
 	//
-	// my-agent
+	// my-mcp-service
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The resource type, such as agent.
+	// The resource type. Currently, the value is mcpServer, which indicates an MCP service.
 	//
 	// example:
 	//
-	// agent
+	// mcpServer
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

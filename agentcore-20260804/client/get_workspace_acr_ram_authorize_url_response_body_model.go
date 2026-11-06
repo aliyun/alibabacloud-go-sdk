@@ -166,7 +166,7 @@ type GetWorkspaceAcrRamAuthorizeUrlResponseBodyData struct {
 	//
 	// AliyunAgentCoreWorkspace-ws-1234567890abcdef12345
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	// The source of the shared role. This does not indicate that authorization is complete.
+	// The source of the shared role. This does not indicate that the authorization is complete.
 	//
 	// This parameter is required.
 	//

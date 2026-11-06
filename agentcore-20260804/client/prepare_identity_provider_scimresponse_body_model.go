@@ -24,33 +24,33 @@ type iPrepareIdentityProviderSCIMResponseBody interface {
 }
 
 type PrepareIdentityProviderSCIMResponseBody struct {
-	// The business result code. If the request fails, handle the error based on the HTTP status code and the message.
+	// The business result code. If the call fails, handle the error based on the HTTP status code and the message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The operation result. For the result structure, see the response fields of this API. For asynchronous write APIs, the response indicates that the request is accepted, but does not guarantee that the background task is completed.
+	// The operation result. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is completed.
 	Data *PrepareIdentityProviderSCIMResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The processing status of the current request. This status is not equivalent to the final result of the background task.
+	// The processing status of the current request. This status does not indicate the final result of the background task.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request acceptance or error message. For asynchronous tasks, you must check the task result by using the corresponding query API.
+	// The request acceptance or error message. For asynchronous tasks, you must check the task result by calling the corresponding query operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID. It is used to associate the current call with troubleshooting. Retain this ID if the request fails.
+	// The request ID. You can use this ID to associate the current call with troubleshooting. Keep the ID if the call fails.
 	//
 	// example:
 	//
 	// request-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the current request is processed successfully. A value of true indicates success. For asynchronous write operations, you must continue to query the task result.
+	// Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task result.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,11 +126,11 @@ func (s *PrepareIdentityProviderSCIMResponseBody) Validate() error {
 }
 
 type PrepareIdentityProviderSCIMResponseBodyData struct {
-	// The actual SAML configuration is read on demand only by using GetIdentityProvider. SCIM query and prepare operations return the actual receiving status and URL.
+	// The actual SAML configuration is read on demand only by calling GetIdentityProvider. SCIM query and preparation operations return the actual receiving status and URL.
 	Configuration *PrepareIdentityProviderSCIMResponseBodyDataConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The current credential summary, which includes the credentialId, status, createTime, and expireTime fields. This summary does not include the token.
+	// The current credential summary, including credentialId, status, createTime, and expireTime. The token is not included because it cannot be repeatedly obtained.
 	Credential *PrepareIdentityProviderSCIMResponseBodyDataCredential `json:"credential,omitempty" xml:"credential,omitempty" type:"Struct"`
-	// The plaintext token is returned only when a new credential is created. If the prepare operation reuses a valid credential, this field is null. The token cannot be retrieved again from the list. If the response is lost, query the list first instead of automatically reissuing the token. Do not write the token to logs or persist it in frontend caches.
+	// The plaintext of the newly issued SCIM token. The plaintext is returned only in the current response. If an existing valid credential is reused, an empty string ("") is returned. In this case, use the saved token.
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ func (s *PrepareIdentityProviderSCIMResponseBodyData) Validate() error {
 }
 
 type PrepareIdentityProviderSCIMResponseBodyDataConfiguration struct {
-	// The URL configured for the external provisioning system. The presence of a URL does not indicate that the external configuration is completed or that access control synchronization is enabled.
+	// The URL configured for the external provisioning system. The presence of a URL does not indicate that the external configuration is completed or AgentCore synchronization is enabled.
 	//
 	// example:
 	//
 	// https://example.com/scim/v2
 	BaseUrl *string `json:"baseUrl,omitempty" xml:"baseUrl,omitempty"`
-	// The receiving status of AgentIdentity. Enabled indicates that SCIM receiving is enabled, and Disabled indicates that it is disabled. This status is not equivalent to the expected value of syncEnabled for access control.
+	// The receiving status of AgentIdentity. A value of Enabled indicates that SCIM receiving is enabled. A value of Disabled indicates that SCIM receiving is disabled. This status is not equivalent to the expected value of syncEnabled in AgentCore.
 	//
 	// example:
 	//
@@ -239,19 +239,19 @@ type PrepareIdentityProviderSCIMResponseBodyDataCredential struct {
 	//
 	// 2026-10-26T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The credential ID. This parameter is required and cannot be empty when you delete a credential. Use the ID returned in the credential list, not the plaintext token.
+	// The credential ID. This parameter is required when you delete a credential. Use the ID returned in the credential list, not the plaintext of the token.
 	//
 	// example:
 	//
 	// credential-example
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The expiration time returned by AgentIdentity. Only credentials that are in the Enabled state and have not expired are considered available.
+	// The expiration time returned by AgentIdentity. Only credentials with the status of Enabled that have not expired are considered available.
 	//
 	// example:
 	//
 	// 2027-10-26T00:00:00Z
 	ExpireTime *string `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
-	// The credential status of AgentIdentity. Only credentials that are in the Enabled state and have not expired are considered available. This field is not the operationStatus of a SCIM task.
+	// The credential status of AgentIdentity. Only credentials with the status of Enabled that have not expired are considered available. This field is not the operationStatus of the SCIM task.
 	//
 	// example:
 	//

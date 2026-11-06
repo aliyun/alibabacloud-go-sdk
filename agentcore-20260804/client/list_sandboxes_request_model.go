@@ -20,25 +20,25 @@ type iListSandboxesRequest interface {
 }
 
 type ListSandboxesRequest struct {
-	// The maximum number of records per page. Default value: 20.
+	// The maximum number of entries to return per page. Default value: 20. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for querying the next page. When paginating, keep workspaceId, agentId, searchText, sessionId, and maxResults unchanged.
+	// The cursor for querying the next page. When paginating, keep `workspaceId`, `agentId`, `searchText`, `sessionId`, and `maxResults` unchanged.
 	//
 	// example:
 	//
 	// next-token-1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Performs a case-insensitive fuzzy search by sandbox ID fragment.
+	// The fragment of the Sandbox ID for a case-insensitive fuzzy search.
 	//
 	// example:
 	//
 	// 2f360
 	SearchText *string `json:"searchText,omitempty" xml:"searchText,omitempty"`
-	// Performs a case-insensitive fuzzy search by active session ID fragment.
+	// The fragment of the current valid session ID for a case-insensitive fuzzy search.
 	//
 	// example:
 	//

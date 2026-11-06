@@ -18,7 +18,7 @@ type iUpdateWorkspaceShrinkRequest interface {
 type UpdateWorkspaceShrinkRequest struct {
 	// The request body for updating a workspace.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token used to ensure idempotence.
+	// The client idempotency token.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iListAgentSpecsRequest interface {
 }
 
 type ListAgentSpecsRequest struct {
-	// The AgentSpec name used as a search keyword. This parameter is used together with the search parameter.
+	// The name of the AgentSpec, used as a search keyword in combination with the search parameter.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ListAgentSpecsRequest struct {
 	//
 	// ai
 	BizTag *string `json:"bizTag,omitempty" xml:"bizTag,omitempty"`
-	// The field by which to sort the results. Set the value to download_count to sort by download count. By default, results are sorted by update time.
+	// The field by which to sort the results. Supports download_count. By default, the results are sorted by update time.
 	//
 	// example:
 	//
 	// download_count
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// The owner used to filter the results.
+	// The owner filter.
 	//
 	// example:
 	//
@@ -66,29 +66,19 @@ type ListAgentSpecsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The visibility scope used to filter the results. Valid values:
-	//
-	// - PUBLIC
-	//
-	// - PRIVATE
+	// The visibility scope filter. Valid values: PUBLIC and PRIVATE.
 	//
 	// example:
 	//
 	// PUBLIC
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The search mode. Valid values:
-	//
-	// - accurate: exact match.
-	//
-	// - blur: fuzzy match.
-	//
-	// Default value: blur.
+	// The search mode. Valid values: accurate (exact match) and blur (fuzzy match). Default value: blur.
 	//
 	// example:
 	//
 	// blur
 	Search *string `json:"search,omitempty" xml:"search,omitempty"`
-	// Specifies whether to return the Skills and McpServers lists. Default value: false.
+	// Specifies whether to return the lists of skills and MCP servers. Default value: false.
 	//
 	// example:
 	//

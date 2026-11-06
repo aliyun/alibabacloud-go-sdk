@@ -28,7 +28,7 @@ type ListMcpMarketItemsRequest struct {
 	//
 	// Knowledge
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of records to return in this query.
+	// The maximum number of records to return for this query.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListMcpMarketItemsRequest struct {
 	//
 	// CODE_PACKAGE
 	McpType *string `json:"mcpType,omitempty" xml:"mcpType,omitempty"`
-	// The pagination token used to retrieve the next page of results.
+	// The pagination token used to query the next page.
 	//
 	// example:
 	//

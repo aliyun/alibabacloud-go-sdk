@@ -44,7 +44,7 @@ type ListMcpMarketItemsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of query results.
 	Items []*ListMcpMarketItemsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records to return in this query.
+	// The maximum number of records to return for this query.
 	//
 	// example:
 	//
@@ -56,21 +56,21 @@ type ListMcpMarketItemsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token used to retrieve the next page of results.
+	// The pagination token used to query the next page.
 	//
 	// example:
 	//
 	// 20
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID used to locate and troubleshoot the request.
 	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the specified conditions.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//
@@ -191,11 +191,11 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// An MCP service for querying knowledge bases
+	// MCP service for querying knowledge bases
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display metadata of the template.
 	DisplayMetadata map[string]interface{} `json:"displayMetadata,omitempty" xml:"displayMetadata,omitempty"`
-	// The multilingual display content organized by BCP-47 language tags. Falls back to default fields if the specified language is not matched.
+	// The multilingual display content organized by BCP-47 language tags. If a language is not matched, the system falls back to the default fields.
 	I18n map[string]*ItemsI18nValue `json:"i18n,omitempty" xml:"i18n,omitempty"`
 	// The icon URL of the MCP marketplace template.
 	//
@@ -251,7 +251,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// 1.0
 	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	// The template input schema, represented as a JSON Schema string.
+	// The input schema of the template, represented as a JSON Schema string.
 	//
 	// example:
 	//

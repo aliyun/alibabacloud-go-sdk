@@ -30,7 +30,7 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary of the custom agent whose deletion is accepted. The runtime resources are subsequently cleaned up in the background.
+	// The summary of the custom code or image agent whose deletion is accepted. Runtime resources are subsequently cleaned up in the background.
 	Data *DeleteCustomAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code of the request. The value is 200 if the request is successful.
 	//
@@ -44,13 +44,13 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the request. You can use this ID to locate and troubleshoot issues.
+	// The unique identifier of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operations are complete.
+	// Indicates whether the request was successful. A value of true indicates that the request was successful. A successful creation, update, or deletion does not mean that the background operations are complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -138,35 +138,35 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The unique identifier of the custom agent. You can obtain it from the response of CreateCustomAgent or ListCustomAgents.
+	// The unique identifier of the custom code or image agent. You can obtain this value from the response of CreateCustomAgent or ListCustomAgents.
 	//
 	// example:
 	//
 	// agent-550e8400e29b41d4a716446655440000
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The creation mode of the agent. The value is CUSTOM for custom agents.
+	// The creation mode of the agent. The value is CUSTOM for custom code or image agents.
 	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was created. The time is in ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment mode of the agent. Custom agents are deployed and managed by the platform, so the value is MANAGED.
+	// The deployment mode of the agent. The value is MANAGED for custom code or image agents because they are deployed and managed by the platform.
 	//
 	// example:
 	//
 	// MANAGED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the agent.
+	// The description of the agent\\"s purpose.
 	//
 	// example:
 	//
-	// Custom agent that provides conversation services
+	// Custom agent providing conversation services
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
 	//
@@ -174,13 +174,13 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The name of the custom agent.
+	// The name of the custom code or image agent.
 	//
 	// example:
 	//
 	// my-custom-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
+	// The compute specification of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
 	//
 	// example:
 	//
@@ -206,13 +206,13 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was last updated. The time is in ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The ID of the workspace to which the custom agent belongs.
+	// The ID of the workspace to which the custom code or image agent belongs.
 	//
 	// example:
 	//

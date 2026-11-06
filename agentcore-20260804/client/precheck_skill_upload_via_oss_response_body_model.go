@@ -16,7 +16,7 @@ type iPrecheckSkillUploadViaOssResponseBody interface {
 }
 
 type PrecheckSkillUploadViaOssResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data []*PrecheckSkillUploadViaOssResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *PrecheckSkillUploadViaOssResponseBody) Validate() error {
 }
 
 type PrecheckSkillUploadViaOssResponseBodyData struct {
-	// The draft mode: HEAD or VERSIONED, determined by the server.
+	// The draft mode. Valid values: HEAD and VERSIONED. The value is determined by the server.
 	//
 	// example:
 	//
@@ -78,21 +78,21 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	//
 	// 1.0.0
 	EditingVersion *string `json:"editingVersion,omitempty" xml:"editingVersion,omitempty"`
-	// The entry path of the Skill package.
+	// The entry path of the skill package.
 	//
 	// example:
 	//
 	// SKILL.md
 	EntryPath *string `json:"entryPath,omitempty" xml:"entryPath,omitempty"`
-	// Indicates whether the Skill already exists.
+	// Indicates whether the skill already exists.
 	Exists *bool `json:"exists,omitempty" xml:"exists,omitempty"`
-	// The content revision identifier of the persistent draft, used to determine whether the local cache has expired. Returned only in HEAD draft mode.
+	// The content revision identifier of the persistent draft, which is used to determine whether the local cache has expired. This parameter is returned only in HEAD draft mode.
 	//
 	// example:
 	//
 	// rev-1a2b3c4d
 	HeadRevision *string `json:"headRevision,omitempty" xml:"headRevision,omitempty"`
-	// The status of the persistent draft: draft, reviewing, or reviewed. Returned only in HEAD draft mode.
+	// The status of the persistent draft. Valid values: draft, reviewing, and reviewed. This parameter is returned only in HEAD draft mode.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	//
 	// 1.0.0
 	ParsedVersion *string `json:"parsedVersion,omitempty" xml:"parsedVersion,omitempty"`
-	// The dry run result code.
+	// The precheck result code. HEAD_EXISTS indicates that the upload will overwrite the existing persistent draft and requires secondary confirmation. HEAD_LOCKED indicates that the draft is under review and cannot be overwritten. You must withdraw the review first.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	//
 	// 1.0.0
 	ReviewingVersion *string `json:"reviewingVersion,omitempty" xml:"reviewingVersion,omitempty"`
-	// The Skill name.
+	// The skill name.
 	//
 	// example:
 	//

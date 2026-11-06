@@ -16,7 +16,7 @@ type iSubmitSkillVersionResponseBody interface {
 }
 
 type SubmitSkillVersionResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iListPredefinedModelsResponseBody interface {
 }
 
 type ListPredefinedModelsResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. The value is SUCCESS if the request succeeds.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type ListPredefinedModelsResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The list of predefined models.
 	Data []*ListPredefinedModelsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. The value is 200 if the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message indicating the request processing result.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ListPredefinedModelsResponseBodyData struct {
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The maximum number of output tokens supported by the model in a single generation.
+	// The maximum number of output tokens supported by the model per generation.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type ListPredefinedModelsResponseBodyData struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The release date of the model. The format is YYYY-MM-DD.
+	// The release date of the model, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type ListPredefinedModelsResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Specifies whether the model is able to invoke multiple tool calling in a single response.
+	// Specifies whether the model is able to invoke multiple tool calling operations in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`

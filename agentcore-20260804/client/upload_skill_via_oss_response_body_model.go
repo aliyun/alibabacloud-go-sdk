@@ -16,7 +16,7 @@ type iUploadSkillViaOssResponseBody interface {
 }
 
 type UploadSkillViaOssResponseBody struct {
-	// The response data.
+	// The returned data.
 	//
 	// example:
 	//

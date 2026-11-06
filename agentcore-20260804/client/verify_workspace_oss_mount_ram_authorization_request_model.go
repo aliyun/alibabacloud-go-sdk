@@ -14,7 +14,7 @@ type iVerifyWorkspaceOssMountRamAuthorizationRequest interface {
 }
 
 type VerifyWorkspaceOssMountRamAuthorizationRequest struct {
-	// The OSS bucket name.
+	// The name of the OSS bucket.
 	//
 	// example:
 	//

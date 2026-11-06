@@ -68,9 +68,9 @@ type CreateTeamRequestBody struct {
 	//
 	// example:
 	//
-	// A team responsible for intelligent customer service
+	// Team responsible for intelligent customer service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The team name. The name can only contain lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+	// The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
 	// This parameter is required.
 	//

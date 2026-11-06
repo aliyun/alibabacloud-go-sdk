@@ -14,7 +14,7 @@ type iDeletePermissionRuleRequest interface {
 }
 
 type DeletePermissionRuleRequest struct {
-	// The client token that ensures the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//

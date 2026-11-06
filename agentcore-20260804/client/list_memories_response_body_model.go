@@ -166,7 +166,7 @@ func (s *ListMemoriesResponseBody) Validate() error {
 type ListMemoriesResponseBodyItems struct {
 	// The memory content.
 	Content *ListMemoriesResponseBodyItemsContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListMemoriesResponseBodyItems struct {
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The memory scope.
 	Scope *ListMemoriesResponseBodyItemsScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The last update time.
+	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -297,19 +297,19 @@ func (s *ListMemoriesResponseBodyItemsContent) Validate() error {
 }
 
 type ListMemoriesResponseBodyItemsScope struct {
-	// The agent ID. The value must be 1 to 128 bytes in length and encoded in UTF-8. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
+	// The agent ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with an agent ID.
 	//
 	// example:
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The session ID. The value must be 1 to 128 bytes in length and encoded in UTF-8. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
+	// The session ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with a session ID.
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. The value must be 1 to 128 bytes in length and encoded in UTF-8. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
+	// The user ID. The value must be 1 to 128 UTF-8 bytes in length and cannot contain slashes (/) or asterisks (*). This field is not returned if the memory is not associated with a user ID.
 	//
 	// example:
 	//

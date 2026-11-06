@@ -18,7 +18,7 @@ type iListConnectorModelsRequest interface {
 }
 
 type ListConnectorModelsRequest struct {
-	// The Connector Key ID. This parameter is not supported in the current version.
+	// The connector key ID. This parameter is not supported in the current version.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListConnectorModelsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The next page token. This parameter is not supported in the current version.
+	// The next token. This parameter is not supported in the current version.
 	//
 	// example:
 	//

@@ -50,7 +50,7 @@ type GetServiceEndpointResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,23 +126,23 @@ func (s *GetServiceEndpointResponseBody) Validate() error {
 }
 
 type GetServiceEndpointResponseBodyData struct {
-	// The list of access URLs for the service endpoint.
+	// The list of access addresses for the service endpoint.
 	AccessUrls []*GetServiceEndpointResponseBodyDataAccessUrls `json:"accessUrls,omitempty" xml:"accessUrls,omitempty" type:"Repeated"`
 	// The authentication configuration of the service endpoint.
 	Authentication *GetServiceEndpointResponseBodyDataAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
+	// The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
 	//
 	// example:
 	//
 	// NAMED
 	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	// The service endpoint name. The name must be unique within the workspace and can be 1 to 128 characters in length.
+	// The service endpoint name. It must be unique within the workspace and is 1 to 128 characters in length.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type GetServiceEndpointResponseBodyData struct {
 	//
 	// se-123456
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, DELETING.
+	// The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
 	//
 	// example:
 	//
@@ -172,9 +172,9 @@ type GetServiceEndpointResponseBodyData struct {
 	//
 	// ServiceEndpoint.Provider.Unavailable: no provider for the target type
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The target routing configuration of the service endpoint.
+	// The target route configuration of the service endpoint.
 	Target *GetServiceEndpointResponseBodyDataTarget `json:"target,omitempty" xml:"target,omitempty" type:"Struct"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The last modification time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -328,25 +328,25 @@ func (s *GetServiceEndpointResponseBodyData) Validate() error {
 }
 
 type GetServiceEndpointResponseBodyDataAccessUrls struct {
-	// The access URL type. Valid values: INTERNET, VPC.
+	// The access address type. Valid values: INTERNET and VPC.
 	//
 	// example:
 	//
 	// INTERNET
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The access URL status. Valid values: CREATING, READY, DEGRADED.
+	// The access address status. Valid values: CREATING, READY, and DEGRADED.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the access URL status. A specific reason is returned when the status is abnormal.
+	// The reason for the access address status. A specific reason is returned when the status is abnormal.
 	//
 	// example:
 	//
 	// ServiceEndpoint.Provider.Unavailable: no provider for the target type
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The access URL.
+	// The access address.
 	//
 	// example:
 	//
@@ -403,7 +403,7 @@ func (s *GetServiceEndpointResponseBodyDataAccessUrls) Validate() error {
 }
 
 type GetServiceEndpointResponseBodyDataAuthentication struct {
-	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that an API key is passed through the x-api-key request header for authentication.
+	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the x-api-key request header.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ type GetServiceEndpointResponseBodyDataTarget struct {
 	//
 	// wrb-123456
 	ResourceBindingId *string `json:"resourceBindingId,omitempty" xml:"resourceBindingId,omitempty"`
-	// The target type. Valid values: AGENT_VERSION, TEAM_COLLABORATION.
+	// The target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
 	//
 	// example:
 	//

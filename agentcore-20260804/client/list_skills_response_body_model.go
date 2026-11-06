@@ -22,13 +22,13 @@ type iListSkillsResponseBody interface {
 type ListSkillsResponseBody struct {
 	// The returned data.
 	Data *ListSkillsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of entries per page.
+	// The maximum number of items to return per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ func (s *ListSkillsResponseBodyData) Validate() error {
 }
 
 type ListSkillsResponseBodyDataPageItems struct {
-	// The business tags as a JSON array string.
+	// The business tags in a JSON array string.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// example:
 	//
-	// A sample description that explains the purpose of the resource
+	// Sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The total number of downloads.
 	//
@@ -194,25 +194,21 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The draft mode. Valid values:
-	//
-	// - HEAD: The Skill has a persistent draft.
-	//
-	// - VERSIONED: Each edit creates a versioned draft.
-	//
-	// The value is determined by the server. The caller uses this value to render the status column.
+	// The draft mode. Valid values: HEAD (the skill has a persistent draft) and VERSIONED (each edit creates a versioned draft). This is determined by the server and used by the caller to render the status column.
 	//
 	// example:
 	//
 	// HEAD
 	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
-	// The version that is being edited. In HEAD draft mode, the value is HEAD.
+	// Indicates whether the page item is editable.
+	Editable *bool `json:"editable,omitempty" xml:"editable,omitempty"`
+	// The version being edited. The value is HEAD in HEAD draft mode.
 	//
 	// example:
 	//
 	// 1.0.0
 	EditingVersion *string `json:"editingVersion,omitempty" xml:"editingVersion,omitempty"`
-	// Indicates whether the Skill is enabled.
+	// Indicates whether the skill is enabled.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The source tag.
 	//
@@ -240,7 +236,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// alice
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The version that is under review. In HEAD draft mode, the value is HEAD.
+	// The version under review. The value is HEAD in HEAD draft mode.
 	//
 	// example:
 	//
@@ -252,7 +248,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The update time. This value is a UNIX timestamp in milliseconds.
+	// The update time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -290,6 +286,10 @@ func (s *ListSkillsResponseBodyDataPageItems) GetDownloadCount() *int64 {
 
 func (s *ListSkillsResponseBodyDataPageItems) GetDraftMode() *string {
 	return s.DraftMode
+}
+
+func (s *ListSkillsResponseBodyDataPageItems) GetEditable() *bool {
+	return s.Editable
 }
 
 func (s *ListSkillsResponseBodyDataPageItems) GetEditingVersion() *string {
@@ -357,6 +357,11 @@ func (s *ListSkillsResponseBodyDataPageItems) SetDownloadCount(v int64) *ListSki
 
 func (s *ListSkillsResponseBodyDataPageItems) SetDraftMode(v string) *ListSkillsResponseBodyDataPageItems {
 	s.DraftMode = &v
+	return s
+}
+
+func (s *ListSkillsResponseBodyDataPageItems) SetEditable(v bool) *ListSkillsResponseBodyDataPageItems {
+	s.Editable = &v
 	return s
 }
 

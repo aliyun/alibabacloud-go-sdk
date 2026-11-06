@@ -50,7 +50,7 @@ type GetTeamResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -128,19 +128,19 @@ func (s *GetTeamResponseBody) Validate() error {
 type GetTeamResponseBodyData struct {
 	// The list of agent members in the team.
 	Agents []*GetTeamResponseBodyDataAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The team description.
+	// The description of the team.
 	//
 	// example:
 	//
-	// A team responsible for intelligent customer service operations
+	// Team responsible for AI customer service operations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The team name. The name can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 128 characters in length.
+	// The name of the team. The name must be 1 to 128 characters in length and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type GetTeamResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
+	// The status of the team. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type GetTeamResponseBodyData struct {
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The time of the last update in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -307,29 +307,29 @@ type GetTeamResponseBodyDataAgents struct {
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The creation mode of the agent. CUSTOM indicates custom creation. TEMPLATE indicates creation from a template.
+	// The creation method of the agent. A value of CUSTOM indicates custom creation, and a value of TEMPLATE indicates creation from a template.
 	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment type of the agent. MANAGED indicates platform-managed deployment. SELF_HOSTED indicates self-hosted deployment.
+	// The deployment method of the agent. A value of MANAGED indicates platform-managed deployment, and a value of SELF_HOSTED indicates self-hosted deployment.
 	//
 	// example:
 	//
 	// MANAGED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The agent description.
+	// The description of the agent.
 	//
 	// example:
 	//
-	// An agent that handles after-sales inquiries
+	// Agent for handling after-sales inquiries
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The latest configuration version number of the agent.
 	//
@@ -337,7 +337,7 @@ type GetTeamResponseBodyDataAgents struct {
 	//
 	// 2
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The agent name.
+	// The name of the agent.
 	//
 	// example:
 	//
@@ -349,7 +349,7 @@ type GetTeamResponseBodyDataAgents struct {
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The agent status. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+	// The status of the agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
 	//
 	// example:
 	//
@@ -361,7 +361,7 @@ type GetTeamResponseBodyDataAgents struct {
 	//
 	// WORKER
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The time of the last update in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -496,13 +496,13 @@ func (s *GetTeamResponseBodyDataAgents) Validate() error {
 }
 
 type GetTeamResponseBodyDataUsers struct {
-	// The authentication method of the user. password indicates local password authentication in the workspace. dingtalk and feishu indicate synchronization and authentication by the corresponding external identity provider.
+	// The authentication method of the user. A value of password indicates local password authentication in the workspace. A value of dingtalk or feishu indicates synchronization and authentication by the corresponding external identity provider.
 	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The creation time in UTC, formatted in RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -512,7 +512,7 @@ type GetTeamResponseBodyDataUsers struct {
 	//
 	// example:
 	//
-	// John Doe
+	// Zhang San
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The email address of the user. The address can be up to 256 characters in length.
 	//
@@ -520,25 +520,25 @@ type GetTeamResponseBodyDataUsers struct {
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The initial password of the user. If a password was specified during creation, that password is returned. If no password was specified, a random password generated by the server is returned.
+	// The initial password of the user. If a password is specified during creation, the specified password is returned. Otherwise, a random password generated by the server is returned.
 	//
 	// example:
 	//
 	// Example@2026
 	InitialPassword *string `json:"initialPassword,omitempty" xml:"initialPassword,omitempty"`
-	// The username. The name must be unique within the workspace. It can contain only lowercase letters, digits, and hyphens (-). It must start and end with a lowercase letter or digit. The name must be 1 to 32 characters in length.
+	// The name of the user. The name must be unique within the workspace, 1 to 32 characters in length, and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The user note. The note can be up to 1024 characters in length.
+	// The note for the user. The note can be up to 1,024 characters in length.
 	//
 	// example:
 	//
-	// Member of the agent operations group
+	// Member of the agent operations team
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
-	// The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
+	// The status of the user. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
 	//
 	// example:
 	//
@@ -550,7 +550,7 @@ type GetTeamResponseBodyDataUsers struct {
 	//
 	// ADMIN
 	TeamRole *string `json:"teamRole,omitempty" xml:"teamRole,omitempty"`
-	// The time of the last modification in UTC, formatted in RFC 3339.
+	// The time of the last update in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//

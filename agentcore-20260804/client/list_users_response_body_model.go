@@ -42,7 +42,7 @@ type ListUsersResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of users.
+	// The user list.
 	Items []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page that takes effect in this query.
 	//
@@ -193,35 +193,35 @@ type ListUsersResponseBodyItems struct {
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The creation time in UTC format based on RFC 3339.
+	// The creation time. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The display name of the user. The name must be 1 to 32 characters in length.
+	// The display name of the user. The value must be 1 to 32 characters in length.
 	//
 	// example:
 	//
 	// Zhang San
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The email address of the user. The email address can be up to 256 characters in length.
+	// The email address of the user. The value can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The user name. The name must be unique within the workspace, contain only lowercase letters, digits, and hyphens, start and end with a lowercase letter or a digit, and be 1 to 32 characters in length.
+	// The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The user remarks. The remarks can be up to 1,024 characters in length.
+	// The remarks of the user. The value can be up to 1,024 characters in length.
 	//
 	// example:
 	//
-	// Member of the agent operations team
+	// Agent operations team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
 	// The region ID of the resource.
 	//
@@ -235,7 +235,7 @@ type ListUsersResponseBodyItems struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last modification time in UTC format based on RFC 3339.
+	// The time of the last modification. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//

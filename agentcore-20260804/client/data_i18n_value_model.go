@@ -18,23 +18,23 @@ type iDataI18nValue interface {
 }
 
 type DataI18nValue struct {
-	// The MCP service description in the corresponding language.
+	// The MCP service description in this language.
 	//
 	// example:
 	//
-	// An MCP service for querying knowledge bases
+	// MCP service for querying knowledge bases
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The MCP marketplace template name in the corresponding language.
+	// The MCP marketplace template name in this language.
 	//
 	// example:
 	//
-	// Knowledge Base
+	// Knowledge base
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The MCP marketplace template usage instructions in the corresponding language.
+	// The MCP marketplace template instructions in this language.
 	//
 	// example:
 	//
-	// # Knowledge Base\\nKnowledge base query service
+	// # Knowledge base\\nKnowledge base query service
 	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
 }
 

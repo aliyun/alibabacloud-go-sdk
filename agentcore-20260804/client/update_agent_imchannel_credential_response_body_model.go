@@ -24,7 +24,7 @@ type iUpdateAgentIMChannelCredentialResponseBody interface {
 }
 
 type UpdateAgentIMChannelCredentialResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type UpdateAgentIMChannelCredentialResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The summary of the updated IM channel credentials.
 	Data *UpdateAgentIMChannelCredentialResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message indicating the request processing result.
+	// The message about the request processing result.
 	//
 	// example:
 	//

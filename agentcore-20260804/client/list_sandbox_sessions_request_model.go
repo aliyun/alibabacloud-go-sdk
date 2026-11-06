@@ -16,13 +16,13 @@ type iListSandboxSessionsRequest interface {
 }
 
 type ListSandboxSessionsRequest struct {
-	// The maximum number of records per page. Default value: 20.
+	// The maximum number of entries to return per page. Default value: 20. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for querying the next page.
+	// The token for the next page. Omit this parameter in the first request. For subsequent requests, use the returned token as is, and keep the workspace, agent, instance, and maxResults unchanged. An empty value indicates that no more pages are available.
 	//
 	// example:
 	//

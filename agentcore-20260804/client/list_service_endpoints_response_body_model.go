@@ -44,7 +44,7 @@ type ListServiceEndpointsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of service endpoints.
 	Items []*ListServiceEndpointsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that takes effect in this query.
+	// The maximum number of entries returned on a single page for this query.
 	//
 	// example:
 	//
@@ -191,31 +191,31 @@ type ListServiceEndpointsResponseBodyItems struct {
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The service endpoint type. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by a user.
+	// The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
 	//
 	// example:
 	//
 	// NAMED
 	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	// The service endpoint name. The name must be unique within the workspace and 1 to 128 characters in length.
+	// The name of the service endpoint. The name must be unique within the workspace and be 1 to 128 characters in length.
 	//
 	// example:
 	//
 	// my-agent-endpoint
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The region ID of the service endpoint.
+	// The ID of the region where the service endpoint resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The service endpoint ID.
+	// The ID of the service endpoint.
 	//
 	// example:
 	//
 	// se-123456
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
+	// The status of the service endpoint. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The target routing configuration of the service endpoint.
 	Target *ListServiceEndpointsResponseBodyItemsTarget `json:"target,omitempty" xml:"target,omitempty" type:"Struct"`
-	// The last update time in UTC format compliant with RFC 3339.
+	// The time of the last modification in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -383,13 +383,13 @@ func (s *ListServiceEndpointsResponseBodyItems) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsAccessUrls struct {
-	// The access URL type. Valid values: INTERNET and VPC.
+	// The type of the access URL. Valid values: INTERNET and VPC.
 	//
 	// example:
 	//
 	// INTERNET
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The access URL status. Valid values: CREATING, READY, and DEGRADED.
+	// The status of the access URL. Valid values: CREATING, READY, and DEGRADED.
 	//
 	// example:
 	//
@@ -458,7 +458,7 @@ func (s *ListServiceEndpointsResponseBodyItemsAccessUrls) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsAuthentication struct {
-	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the x-api-key request header.
+	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the `x-api-key` request header.
 	//
 	// example:
 	//
@@ -488,19 +488,19 @@ func (s *ListServiceEndpointsResponseBodyItemsAuthentication) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsTarget struct {
-	// The target agent ID. This parameter is returned when the target type is AGENT_VERSION.
+	// The ID of the target agent. This parameter is returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The target agent version. This parameter is returned when the target type is AGENT_VERSION.
+	// The version of the target agent. This parameter is returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// The collaboration component type. This parameter is returned when the target type is TEAM_COLLABORATION.
+	// The type of the collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//

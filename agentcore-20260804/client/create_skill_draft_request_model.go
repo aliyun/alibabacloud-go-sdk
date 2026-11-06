@@ -45,7 +45,7 @@ func (s *CreateSkillDraftRequest) Validate() error {
 }
 
 type CreateSkillDraftRequestBody struct {
-	// The version from which to fork the draft. If not specified, a new Skill is created.
+	// The version to fork from. If you do not specify this parameter, a new skill is created.
 	//
 	// example:
 	//
@@ -57,13 +57,13 @@ type CreateSkillDraftRequestBody struct {
 	//
 	// Initial version
 	CommitMsg *string `json:"commitMsg,omitempty" xml:"commitMsg,omitempty"`
-	// The Skill card JSON string that contains the complete Skill information.
+	// The JSON string of the skill card, which contains the complete skill information.
 	//
 	// example:
 	//
 	// {"name":"customer-service-skill","description":"..."}
 	SkillCard *string `json:"skillCard,omitempty" xml:"skillCard,omitempty"`
-	// The Skill name.
+	// The skill name.
 	//
 	// This parameter is required.
 	//
@@ -71,7 +71,7 @@ type CreateSkillDraftRequestBody struct {
 	//
 	// customer-service-skill
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// The draft version number. If not specified, the version number is automatically incremented.
+	// Specifies the draft version number. If not specified, the version number automatically increments.
 	//
 	// example:
 	//

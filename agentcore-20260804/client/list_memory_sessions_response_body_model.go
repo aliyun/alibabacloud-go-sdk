@@ -40,7 +40,7 @@ type ListMemorySessionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of sessions.
+	// The session list.
 	Items []*ListMemorySessionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page.
 	//
@@ -170,7 +170,7 @@ type ListMemorySessionsResponseBodyItems struct {
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// Session ID
+	// The session ID.
 	//
 	// example:
 	//

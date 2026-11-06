@@ -126,13 +126,13 @@ func (s *ValidateAgentCodePackageFromOssResponseBody) Validate() error {
 }
 
 type ValidateAgentCodePackageFromOssResponseBodyData struct {
-	// The original file name of the code package.
+	// The file name of the original code package.
 	//
 	// example:
 	//
 	// main.zip
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The compressed size of the code package.
+	// The compressed file size of the code package, in bytes.
 	//
 	// example:
 	//

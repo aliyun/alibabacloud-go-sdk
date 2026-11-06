@@ -26,7 +26,7 @@ type ListSkillReferencesRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
-	// The number of entries per page. If not specified, the default value on the server is used.
+	// The number of entries per page. If not specified, the server default value is used.
 	//
 	// example:
 	//

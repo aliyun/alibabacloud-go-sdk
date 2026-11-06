@@ -50,13 +50,13 @@ type ListPermissionRulesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The next page token.
+	// The token for the next page.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListPermissionRulesResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of rules that meet the specified conditions.
+	// The total number of rules that meet the conditions.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ListPermissionRulesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// ALLOW
+	// PERMIT
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
 	// The rule enforcement mode.
 	//
@@ -245,7 +245,7 @@ type ListPermissionRulesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// OpenAPI
+	// EXPLICIT
 	SourceDetail *string `json:"sourceDetail,omitempty" xml:"sourceDetail,omitempty"`
 	// The target scope.
 	//
@@ -253,7 +253,7 @@ type ListPermissionRulesResponseBodyItems struct {
 	//
 	// SPECIFIED
 	TargetScope *string `json:"targetScope,omitempty" xml:"targetScope,omitempty"`
-	// The list of rule targets.
+	// The list of targets to which the rule applies.
 	Targets []*string `json:"targets,omitempty" xml:"targets,omitempty" type:"Repeated"`
 	// The update time in RFC 3339 format.
 	//

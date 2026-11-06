@@ -132,13 +132,13 @@ type GetUserResponseBodyData struct {
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
-	// The authentication method of the user. A value of password indicates that local password authentication of the workspace is used. Values of dingtalk and feishu indicate that the user is synchronized and authenticated by the corresponding external identity provider.
+	// The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
 	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The creation time in UTC format that complies with RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -156,13 +156,13 @@ type GetUserResponseBodyData struct {
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The username. The name must be unique within the workspace, contain only lowercase letters, digits, and hyphens, start and end with a lowercase letter or digit, and be 1 to 32 characters in length.
+	// The username. The name must be unique within the workspace, contain only lowercase letters, digits, and hyphens, start and end with a lowercase letter or a digit, and be 1 to 32 characters in length.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The notes for the user. The notes can be up to 1,024 characters in length.
+	// The note for the user. The note can be up to 1,024 characters in length.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type GetUserResponseBodyData struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time of the last update in UTC format that complies with RFC 3339.
+	// The time of the last modification in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//

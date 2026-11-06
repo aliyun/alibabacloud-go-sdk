@@ -190,7 +190,13 @@ type ConvertMcpToFreeEditResponseBodyData struct {
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The bound template version and input schema of the MCP.
 	Template *ConvertMcpToFreeEditResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The MCP type. Valid values: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), and CODE_PACKAGE (code deployment).
+	// The MCP type. Valid values:
+	//
+	// - DIRECT_PROXY: Direct proxy.
+	//
+	// - HTTP_TO_MCP: HTTP to MCP.
+	//
+	// - CODE_PACKAGE: Code deployment.
 	//
 	// example:
 	//
@@ -376,7 +382,11 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfig struct {
 	AccessControl *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAccessControl `json:"accessControl,omitempty" xml:"accessControl,omitempty" type:"Struct"`
 	// The agent identity configuration.
 	AgentIdentityConfiguration *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAgentIdentityConfiguration `json:"agentIdentityConfiguration,omitempty" xml:"agentIdentityConfiguration,omitempty" type:"Struct"`
-	// The artifact type. A value of Code indicates a ZIP code package, and a value of Container indicates a custom container.
+	// The artifact type. Valid values:
+	//
+	// - Code: ZIP code package.
+	//
+	// - Container: Custom container.
 	//
 	// example:
 	//
@@ -398,7 +408,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfig struct {
 	NetworkConfiguration *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
 	// The OSS mount configuration.
 	OssMountConfiguration *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigOssMountConfiguration `json:"ossMountConfiguration,omitempty" xml:"ossMountConfiguration,omitempty" type:"Struct"`
-	// The configuration for parameter transformation and result enhancement.
+	// The parameter transformation and result enhancement configuration.
 	ParameterTransformConfiguration *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigParameterTransformConfiguration `json:"parameterTransformConfiguration,omitempty" xml:"parameterTransformConfiguration,omitempty" type:"Struct"`
 	// The MCP proxy configuration.
 	ProxyConfiguration *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration `json:"proxyConfiguration,omitempty" xml:"proxyConfiguration,omitempty" type:"Struct"`
@@ -610,15 +620,15 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfig) Validate() error 
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAccessControl struct {
-	// The ID of the AgentCore credential that is referenced when the mode is CREDENTIAL.
+	// The ID of the access credential. References an AgentCore credential when the mode is set to CREDENTIAL.
 	//
 	// example:
 	//
 	// credential-id
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// Specifies whether to enable entry access control.
+	// Specifies whether entry access control is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The access control mode. A value of ANONYMOUS indicates anonymous access. A value of CREDENTIAL indicates access by using AgentCore credentials.
+	// The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates that AgentCore access credentials are used.
 	//
 	// example:
 	//
@@ -811,13 +821,13 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfiguration 
 	//
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
-	// The MCP runtime mode. Custom containers must currently expose the standard MCP by themselves. The value is SELF_HOSTED.
+	// The MCP runtime mode. Custom containers must expose the standard MCP themselves. Valid value: SELF_HOSTED.
 	//
 	// example:
 	//
 	// SELF_HOSTED
 	McpRuntimeMode *string `json:"mcpRuntimeMode,omitempty" xml:"mcpRuntimeMode,omitempty"`
-	// The container source type. The value is fixed as CONTAINER_IMAGE.
+	// The container source type. The value is fixed to CONTAINER_IMAGE.
 	//
 	// example:
 	//
@@ -901,7 +911,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfigurat
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfiguration struct {
-	// Executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
+	// The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
 	Hooks []*ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
@@ -946,11 +956,11 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks 
 	//
 	// example:
 	//
-	// Record MCP tool calls
+	// Log MCP tool invocations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether the hook is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The event of the hook.
+	// The event that triggers the hook.
 	//
 	// example:
 	//
@@ -1052,7 +1062,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigLogConfiguration struct
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	// Specifies whether to collect request metrics.
 	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// The start rule for log splitting in Function Compute.
+	// The start rule for splitting Function Compute logs.
 	//
 	// example:
 	//
@@ -1130,25 +1140,25 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigLogConfiguration) V
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration struct {
-	// The MCP endpoint path, such as /mcp or /sse.
+	// Example: /mcp or /sse.
 	//
 	// example:
 	//
 	// /mcp
 	EndpointPath *string `json:"endpointPath,omitempty" xml:"endpointPath,omitempty"`
-	// The session concurrency per instance. This value is currently fixed at 1.
+	// The value is fixed to 1.
 	//
 	// example:
 	//
 	// 1
 	SessionConcurrencyPerInstance *int32 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	// The session idle timeout in seconds. Default value: 1800.
+	// The idle timeout period, in seconds. Default value: 1800.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// The maximum session lifetime in seconds. Default value: 21600.
+	// The maximum lifetime, in seconds. Default value: 21600.
 	//
 	// example:
 	//
@@ -1205,13 +1215,13 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) V
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfiguration struct {
-	// The group ID.
+	// The user group ID.
 	//
 	// example:
 	//
 	// 1000
 	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The list of NAS mount points.
+	// The list of NAS mount targets.
 	MountPoints []*ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfigurationMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -1278,7 +1288,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfigurationMountPo
 	//
 	// /mnt/data
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	// The NAS server address.
+	// The NAS service address.
 	//
 	// example:
 	//
@@ -1332,7 +1342,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNetworkConfiguration st
 	//
 	// PUBLIC
 	NetworkMode *string `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -1340,7 +1350,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNetworkConfiguration st
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -1397,7 +1407,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNetworkConfiguratio
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigOssMountConfiguration struct {
-	// The list of OSS mount points.
+	// The list of OSS mount targets.
 	MountPoints []*ConvertMcpToFreeEditResponseBodyDataDeploymentConfigOssMountConfigurationMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
 }
 
@@ -1456,7 +1466,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigOssMountConfigurationMo
 	//
 	// /mnt/data
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	// Specifies whether the mount point is read-only.
+	// Specifies whether the mount target is read-only.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1520,7 +1530,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigOssMountConfigurati
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigParameterTransformConfiguration struct {
 	// Specifies whether parameter transformation and result enhancement are enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The reserved reference to the rule set for parameter transformation and result enhancement.
+	// The reserved reference to the parameter transformation and result enhancement rule set.
 	//
 	// example:
 	//
@@ -1574,7 +1584,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigParameterTransformC
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration struct {
-	// Specifies whether to enable the MCP proxy.
+	// Specifies whether the MCP proxy is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1600,7 +1610,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration)
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration struct {
-	// The CPU specification, in cores. Default value: 0.25.
+	// The CPU specifications, in cores. Default value: 0.25.
 	//
 	// example:
 	//
@@ -1614,31 +1624,31 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
 	//
 	// example:
 	//
 	// acs:ram::1234567890123456:role/agentcore-mcp-execution
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// The instance concurrency. Default value: 200.
+	// Default value: 200.
 	//
 	// example:
 	//
 	// 200
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The memory specification, in MB. Default value: 512.
+	// The memory size, in MB. Default value: 512.
 	//
 	// example:
 	//
 	// 512
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The service port. Default value: 9000.
+	// Default value: 9000.
 	//
 	// example:
 	//
 	// 9000
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The function timeout period, in seconds. Default value: 300.
+	// The timeout period, in seconds. Default value: 300.
 	//
 	// example:
 	//
@@ -1773,19 +1783,19 @@ type ConvertMcpToFreeEditResponseBodyDataTemplate struct {
 	//
 	// 1.1.0
 	LatestTemplateVersion *string `json:"latestTemplateVersion,omitempty" xml:"latestTemplateVersion,omitempty"`
-	// The schema version of the template.
+	// The template schema version.
 	//
 	// example:
 	//
 	// 1.0
 	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	// The input schema of the template, represented as a JSON Schema string.
+	// The template input schema, represented as a JSON Schema string.
 	//
 	// example:
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// Specifies whether an updated template version is available.
+	// Indicates whether an updated template version is available.
 	UpdateAvailable *bool `json:"updateAvailable,omitempty" xml:"updateAvailable,omitempty"`
 }
 

@@ -46,7 +46,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The records on the current page. An empty array is returned if no matching items are found.
+	// The records on the current page. If no matching items are found, an empty array is returned.
 	//
 	// This parameter is required.
 	Items []*ListImageCachesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
@@ -66,7 +66,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The opaque cursor for the next page. An empty string indicates that no more pages are available.
+	// The opaque cursor for the next page. An empty string indicates that there are no more pages.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. A value of true does not indicate that the cache creation is complete.
+	// Indicates whether the request is successful. A successful request does not indicate that the cache creation is complete.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the current filter conditions. Do not use this value to determine whether all pages have been returned.
+	// The total number of records that match the current filter conditions. Do not use this value to determine whether the traversal is complete.
 	//
 	// This parameter is required.
 	//
@@ -203,7 +203,7 @@ func (s *ListImageCachesResponseBody) Validate() error {
 }
 
 type ListImageCachesResponseBodyItems struct {
-	// The ID of the source ACR Enterprise instance.
+	// The ID of the source ACR instance.
 	//
 	// This parameter is required.
 	//
@@ -211,7 +211,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// cri-example
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The deduplicated number of agents in the current workspace that have useImageCache set to true and are associated with this logical resource. The value is greater than or equal to 0. This matches the set filtered by imageCacheId in ListAllAgents. Disabled agents are not counted, and this value is independent of the number of occupied instances.
+	// The number of agents that use the cache.
 	//
 	// This parameter is required.
 	//
@@ -219,7 +219,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// 0
 	AgentCount *int64 `json:"agentCount,omitempty" xml:"agentCount,omitempty"`
-	// The actual cache size in bytes. The value is greater than or equal to 0 if known, or null if unknown. The compressed size of the source image cannot be used as a substitute.
+	// The size of the cache in bytes.
 	//
 	// This parameter is required.
 	//
@@ -230,7 +230,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// 1073741824
 	CacheSizeBytes *int64 `json:"cacheSizeBytes,omitempty" xml:"cacheSizeBytes,omitempty"`
-	// Indicates whether the resource can be deleted. The value is true if no configuration references with the switch enabled exist in the current workspace, no valid instances are occupying the resource, and the resource is not being deleted. If the reference status is unknown, the query fails instead of defaulting to true.
+	// Indicates whether deletion is allowed.
 	//
 	// This parameter is required.
 	//
@@ -238,7 +238,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The creation time of the logical resource in the current workspace, in RFC 3339 format with the time zone. Content updates for the latest tag do not refresh this time.
+	// The time when the resource was created. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -246,7 +246,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// 2026-10-10T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The reason why deletion is blocked. The value is null if canDelete is true. Otherwise, the value is returned based on the priority of DELETING, AGENT_ENABLED, and INSTANCES_RELEASING. Old instances may still occupy the resource even if the agent count is 0.
+	// The reason why deletion is blocked.
 	//
 	// This parameter is required.
 	//
@@ -257,7 +257,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// INSTANCES_RELEASING
 	DeleteBlockReason *string `json:"deleteBlockReason,omitempty" xml:"deleteBlockReason,omitempty"`
-	// The digest in the sha256: format followed by a 64-character lowercase hexadecimal string. It only describes the currently registered content and does not indicate whether old instances have been switched.
+	// The current content digest.
 	//
 	// This parameter is required.
 	//
@@ -265,14 +265,14 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	Digest *string `json:"digest,omitempty" xml:"digest,omitempty"`
-	// The cache failure details. It is a non-null object when the status is FAILED, and null for other statuses. It only describes the current content and the current creation attempt.
+	// The reason for the cache failure.
 	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// true
 	Error *ListImageCachesResponseBodyItemsError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	// The logical resource ID that can be managed in the current workspace. This is not the shared physical cache ID.
+	// The ID of the image cache.
 	//
 	// This parameter is required.
 	//
@@ -280,7 +280,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// img-example
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	// The domain name of the source image. It does not include the protocol, path, or credentials.
+	// The domain name of the source image.
 	//
 	// This parameter is required.
 	//
@@ -288,7 +288,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// example-registry.cn-hangzhou.cr.aliyuncs.com
 	Registry *string `json:"registry,omitempty" xml:"registry,omitempty"`
-	// The path of the source image repository in the namespace/repository format. The namespace is included.
+	// The repository path of the source image.
 	//
 	// This parameter is required.
 	//
@@ -296,7 +296,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// team/app
 	Repository *string `json:"repository,omitempty" xml:"repository,omitempty"`
-	// The status of the image cache. Valid values: PENDING (creating), READY (available), FAILED (abnormal), and DELETING (deleting in the current workspace).
+	// The cache status.
 	//
 	// This parameter is required.
 	//
@@ -304,7 +304,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the source image. It is case-sensitive. Regular tags cannot be registered with different digests, except for the exact lowercase \\"latest\\".
+	// The tag of the source image.
 	//
 	// This parameter is required.
 	//
@@ -312,7 +312,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// v1
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The workspace ID. It must be consistent with the requested workspace. Resources with the same content from other workspaces must not be returned.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -466,7 +466,7 @@ func (s *ListImageCachesResponseBodyItems) Validate() error {
 }
 
 type ListImageCachesResponseBodyItemsError struct {
-	// The secure and non-empty error code for the current creation attempt.
+	// The error code for the creation failure.
 	//
 	// This parameter is required.
 	//
@@ -474,13 +474,13 @@ type ListImageCachesResponseBodyItemsError struct {
 	//
 	// ACSCacheBuildFailed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The secure and non-empty description of the failure. It does not contain credentials, internal addresses, or stack traces.
+	// The description of the creation failure.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Failed to create the image cache. Please try again
+	// Image cache creation failed. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

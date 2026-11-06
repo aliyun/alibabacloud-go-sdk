@@ -126,7 +126,7 @@ func (s *CreateModelConnectionResponseBody) Validate() error {
 }
 
 type CreateModelConnectionResponseBodyData struct {
-	// The number of API keys configured for the model connection.
+	// The number of API keys configured in the model connection.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type CreateModelConnectionResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The time when the resource was created. The time is in RFC 3339 UTC format.
+	// The time when the resource was created. The time is in the RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -158,13 +158,13 @@ type CreateModelConnectionResponseBodyData struct {
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
+	// The name of the model connection. It must be 1 to 128 non-whitespace characters in length.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified in Settings during model creation, this default value is used.
 	//
 	// example:
 	//
@@ -182,13 +182,13 @@ type CreateModelConnectionResponseBodyData struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the Deleting state. This field is empty in other states.
+	// The failure summary returned when the model connection fails to be published, or when the deletion fails but the connection remains in the Deleting state. This field is empty in other states.
 	//
 	// example:
 	//
 	// GatewayOperationException
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The time when the resource was last updated. The time is in RFC 3339 UTC format.
+	// The time when the resource was last updated. The time is in the RFC 3339 UTC format.
 	//
 	// example:
 	//

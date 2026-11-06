@@ -14,7 +14,7 @@ type iGetAgentSpecImportFileUrlRequest interface {
 }
 
 type GetAgentSpecImportFileUrlRequest struct {
-	// The Content-Type of the uploaded file. The client must use the same value in the PUT request as the one returned in the response.
+	// The Content-Type of the file to upload. The client must use the same value in the PUT request as the one returned in the response.
 	//
 	// example:
 	//

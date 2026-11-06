@@ -30,13 +30,13 @@ type iListSandboxSessionsResponseBody interface {
 }
 
 type ListSandboxSessionsResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request was successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value 200 is returned if the request was successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListSandboxSessionsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of active sessions in the sandbox.
 	Items []*ListSandboxSessionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page for this query.
+	// The maximum number of records per page for the current query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. The value success is returned if the request was successful.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -68,13 +68,9 @@ type ListSandboxSessionsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true: The request was successful.
-	//
-	// - false: The request failed.
+	// Indicates whether the request is successful. A value of true indicates that the request is successful. A value of false indicates that the request fails.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that meet the query conditions.
 	//
 	// example:
 	//
@@ -185,7 +181,7 @@ func (s *ListSandboxSessionsResponseBody) Validate() error {
 }
 
 type ListSandboxSessionsResponseBodyItems struct {
-	// The external channel type, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
+	// The type of the external channel, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
 	//
 	// example:
 	//
@@ -197,15 +193,7 @@ type ListSandboxSessionsResponseBodyItems struct {
 	//
 	// sess-2
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session source type. Valid values:
-	//
-	// - API: API call.
-	//
-	// - CONSOLE_DEBUG: Console debugging.
-	//
-	// - EXTERNAL_CHANNEL: External channel.
-	//
-	// - UNKNOWN: Unknown source.
+	// The source type of the session. A value of API indicates an API call. A value of CONSOLE_DEBUG indicates console debugging. A value of EXTERNAL_CHANNEL indicates an external channel. A value of UNKNOWN indicates an unknown source.
 	//
 	// example:
 	//

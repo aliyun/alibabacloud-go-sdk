@@ -42,11 +42,11 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of external agents.
+	// The list of managed agents.
 	//
 	// example:
 	//
-	// [{"agentId":"agent-1","workspaceId":"ws-1","name":"my-external-agent","description":"Code review agent running in the user environment","status":"Running","latestSpecVersion":1,"effectiveSpecVersion":1,"createMode":"CUSTOM","runtime":"qwenpaw","deployType":"SELF_HOSTED","createdAt":"2026-01-01T00:00:00Z","updatedAt":"2026-01-01T00:00:00Z"}]
+	// [{"agentId":"agent-1","workspaceId":"ws-1","name":"my-external-agent","description":"运行在用户环境中的代码评审智能体","status":"Running","latestSpecVersion":1,"effectiveSpecVersion":1,"createMode":"CUSTOM","runtime":"qwenpaw","deployType":"SELF_HOSTED","createdAt":"2026-01-01T00:00:00Z","updatedAt":"2026-01-01T00:00:00Z"}]
 	Items []*ListExternalAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned per page for this request.
 	//
@@ -78,7 +78,7 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that meet the conditions.
+	// The total number of records that meet the filter conditions.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ func (s *ListExternalAgentsResponseBody) Validate() error {
 }
 
 type ListExternalAgentsResponseBodyItems struct {
-	// The ID of the external agent.
+	// The ID of the managed agent.
 	//
 	// example:
 	//
@@ -213,31 +213,31 @@ type ListExternalAgentsResponseBodyItems struct {
 	//
 	// SELF_HOSTED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the external agent.
+	// The description of the managed agent.
 	//
 	// example:
 	//
 	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The latest specification version number.
+	// The latest specification version.
 	//
 	// example:
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The name of the external agent.
+	// The name of the managed agent.
 	//
 	// example:
 	//
 	// my-external-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The runtime type reported by the external agent.
+	// The runtime type reported by the managed agent.
 	//
 	// example:
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+	// The status of the managed agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
 	//
 	// example:
 	//

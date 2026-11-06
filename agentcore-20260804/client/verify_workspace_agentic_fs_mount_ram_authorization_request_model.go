@@ -14,7 +14,7 @@ type iVerifyWorkspaceAgenticFsMountRamAuthorizationRequest interface {
 }
 
 type VerifyWorkspaceAgenticFsMountRamAuthorizationRequest struct {
-	// The domain name of the target AccessPoint, obtained from the DomainName field of NAS ListAccessPoints. Do not include the protocol, port, or path.
+	// The domain name of the target access point. Obtain the value from the DomainName parameter of the NAS ListAccessPoints operation. Do not include the protocol, port, or path.
 	//
 	// This parameter is required.
 	//

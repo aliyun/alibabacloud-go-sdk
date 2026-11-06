@@ -14,7 +14,7 @@ type iEnableConnectorShrinkRequest interface {
 }
 
 type EnableConnectorShrinkRequest struct {
-  // The enable request body.
+  // The request body for enabling the connector.
   // 
   // This parameter is required.
   BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`

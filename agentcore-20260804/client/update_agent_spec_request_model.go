@@ -57,11 +57,7 @@ type UpdateAgentSpecRequestBody struct {
 	//
 	// {"latest":"0.0.1"}
 	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The visibility scope. Valid values:
-	//
-	// - PUBLIC
-	//
-	// - PRIVATE
+	// The visibility scope. Valid values: PUBLIC and PRIVATE.
 	//
 	// example:
 	//

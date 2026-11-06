@@ -24,7 +24,7 @@ type iGetAgentIMChannelResponseBody interface {
 }
 
 type GetAgentIMChannelResponseBody struct {
-	// The business status code. The value is SUCCESS if the request succeeds.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetAgentIMChannelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The IM channel details.
 	Data *GetAgentIMChannelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request succeeds.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The result message of the request.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -148,9 +148,9 @@ type GetAgentIMChannelResponseBodyData struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
 	CredentialSummary *GetAgentIMChannelResponseBodyDataCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
-	// Specifies whether the IM channel is enabled. The default value is true upon creation.
+	// Indicates whether the IM channel is enabled. Default value: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The public network access URL of the attached service endpoint.
+	// The public network access URL of the attached ServiceEndpoint.
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ type GetAgentIMChannelResponseBodyData struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint URL.
+	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public address.
 	//
 	// example:
 	//
 	// se-1
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), and DELETE_FAILED (Deletion failed).
+	// The IM channel status. Valid values: CREATING (creating), READY (ready), UPDATING (updating), FAILED (failed), DELETING (deleting), and DELETE_FAILED (deletion failed).
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DeleteExternalAgentResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary information of the deleted external agent.
+	// The summary information of the deleted managed agent.
 	Data *DeleteExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code. The value is 200 when the request is successful.
 	//
@@ -38,7 +38,7 @@ type DeleteExternalAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The external agent ID.
+	// The managed agent ID.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// SELF_HOSTED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the external agent.
+	// The description of the managed agent.
 	//
 	// example:
 	//
@@ -174,19 +174,19 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The name of the external agent.
+	// The name of the managed agent.
 	//
 	// example:
 	//
 	// my-external-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The runtime type reported by the external agent.
+	// The runtime type reported by the managed agent.
 	//
 	// example:
 	//
 	// qwenpaw
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the external agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
+	// The status of the managed agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted.
 	//
 	// example:
 	//

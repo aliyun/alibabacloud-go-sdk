@@ -38,7 +38,7 @@ type GetModelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message indicating the request processing result.
 	//
 	// example:
 	//
@@ -134,19 +134,19 @@ type GetModelResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The context window size of the model, in tokens. It must be a positive integer.
+	// The context window size of the model, in tokens. The value must be a positive integer.
 	//
 	// example:
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The time when the resource was created, in RFC 3339 UTC format.
+	// The creation time of the resource, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The description of the model, up to 255 characters in length.
+	// The model description. The maximum length is 255 characters.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type GetModelResponseBodyData struct {
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The name of the upstream model.
+	// The upstream model name.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type GetModelResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The time when the resource was last updated, in RFC 3339 UTC format.
+	// The last update time of the resource, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -311,11 +311,11 @@ type GetModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model supports tool calling and is able to invoke multiple tools in a single response.
+	// Indicates whether the model is able to invoke multiple tool calling operations in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Indicates whether the model supports tool calling and is able to invoke tools in a streaming manner.
+	// Indicates whether the model supports streaming tool calling.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
 	// Indicates whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`

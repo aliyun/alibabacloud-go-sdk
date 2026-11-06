@@ -30,25 +30,25 @@ type iListManagedAgentsResponseBody interface {
 }
 
 type ListManagedAgentsResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of managed agents.
+	// The list of managed Harness agents.
 	//
 	// example:
 	//
 	// [{"agentId":"agent-xxxxxx","workspaceId":"ws-xxxxxx","agentName":"demo-agent","status":"Running","template":{"templateId":"tpl-xxxxxx","templateVersion":"v1.0.0"},"spec":{"replicas":1,"cpu":"2","memory":"4Gi"},"createTime":"2026-01-01T00:00:00Z","updateTime":"2026-01-01T00:00:00Z"}]
 	Items []*ListManagedAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of results returned for this request.
+	// The maximum number of results returned for the current request.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListManagedAgentsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates that the last page is reached.
+	// The token for the next page. An empty value indicates that the end of the list is reached.
 	//
 	// example:
 	//
@@ -189,19 +189,19 @@ func (s *ListManagedAgentsResponseBody) Validate() error {
 }
 
 type ListManagedAgentsResponseBodyItems struct {
-	// API_KEY 表示使用 API Key；USER 表示使用用户身份。
+	// The inbound access method.
 	//
 	// example:
 	//
 	// API_KEY
 	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
-	// 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+	// The user access scope.
 	//
 	// example:
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The ID of the managed agent.
+	// The ID of the managed Harness agent.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// Managed
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the managed agent.
+	// The description of the managed Harness agent.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The name of the managed agent.
+	// The name of the managed Harness agent.
 	//
 	// example:
 	//
@@ -251,7 +251,7 @@ type ListManagedAgentsResponseBodyItems struct {
 	//
 	// Managed
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the managed agent.
+	// The status of the managed Harness agent.
 	//
 	// example:
 	//
@@ -461,13 +461,13 @@ func (s *ListManagedAgentsResponseBodyItemsHarness) Validate() error {
 }
 
 type ListManagedAgentsResponseBodyItemsHarnessConfiguration struct {
-	// Connector Service Account Key
+	// The ID of the connector account key record bound to qodercli, not the original service account key.
 	//
 	// example:
 	//
 	// key-xxxx
 	ConnectorServiceAccountKey *string `json:"connectorServiceAccountKey,omitempty" xml:"connectorServiceAccountKey,omitempty"`
-	// Connector Service Account Name
+	// The name of the connector account bound to qodercli.
 	//
 	// example:
 	//

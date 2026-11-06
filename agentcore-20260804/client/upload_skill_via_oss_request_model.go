@@ -51,7 +51,7 @@ type UploadSkillViaOssRequestBody struct {
 	//
 	// Update documentation
 	CommitMsg *string `json:"commitMsg,omitempty" xml:"commitMsg,omitempty"`
-	// The OSS object name (path).
+	// The name or path of the OSS object.
 	//
 	// This parameter is required.
 	//
@@ -59,13 +59,13 @@ type UploadSkillViaOssRequestBody struct {
 	//
 	// imports/example.zip
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	// Specifies whether to overwrite an existing Skill. Default value: false.
+	// Specifies whether to overwrite an existing skill. Default value: false.
 	//
 	// example:
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// The target upload version number. This parameter is optional and serves as a fallback when the ZIP package does not contain version information.
+	// The target version to upload. This parameter is optional and serves as a fallback when no version information is included in the ZIP package.
 	//
 	// example:
 	//

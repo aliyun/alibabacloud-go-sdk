@@ -44,7 +44,7 @@ type ListWorkspacesResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The workspace list.
 	Items []*ListWorkspacesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page used for this request.
+	// The maximum number of records per page used in the current request.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. This parameter is empty if there is no next page.
+	// The cursor for the next page. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListWorkspacesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of workspaces that meet the query conditions.
+	// The total number of workspaces that match the query conditions.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItems struct {
-	// The creation time.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -306,13 +306,13 @@ func (s *ListWorkspacesResponseBodyItems) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsNetworkConfiguration struct {
-	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This setting only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
+	// Indicates whether public egress access from the platform is allowed. The value returned is the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. This setting only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this setting is disabled, the public network ingress for all agent endpoints in the workspace is closed. After it is re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+	// Indicates whether public ingress access is allowed. The value returned is the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. If disabled, the public ingress for all agent endpoints in the workspace is closed. If re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
 	//
 	// example:
 	//

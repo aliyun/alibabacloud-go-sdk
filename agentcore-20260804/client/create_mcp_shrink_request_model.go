@@ -18,7 +18,7 @@ type iCreateMcpShrinkRequest interface {
 type CreateMcpShrinkRequest struct {
 	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token that is used to ensure the idempotency of the request.
+	// The reserved query request identifier. The console backend currently does not read this parameter and does not provide idempotency guarantees for deduplication or restoring the original processing result based on this identifier.
 	//
 	// example:
 	//

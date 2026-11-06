@@ -42,7 +42,7 @@ type ListAgentCodeRuntimesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of supported code runtime environments.
+	// The supported code runtime environments.
 	Items []*ListAgentCodeRuntimesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The actual page size.
 	//
@@ -56,7 +56,7 @@ type ListAgentCodeRuntimesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page.
+	// The next page token.
 	//
 	// example:
 	//

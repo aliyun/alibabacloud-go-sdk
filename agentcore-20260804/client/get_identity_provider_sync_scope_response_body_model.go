@@ -30,13 +30,13 @@ type GetIdentityProviderSyncScopeResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The business data returned by the request.
+	// The business data returned in the response.
 	//
 	// example:
 	//
-	// {"syncScope":{"mode":"SelectedDepartments","departmentIds":["10001"]},"selectedDepartments":[{"id":"10001","name":"R&D Department","exists":true}],"estimateStatus":"Ready","expandedDepartmentCount":2,"estimatedUserCount":12}
+	// {"syncScope":{"mode":"SelectedDepartments","departmentIds":["10001"]},"selectedDepartments":[{"id":"10001","name":"研发部","exists":true}],"estimateStatus":"Ready","expandedDepartmentCount":2,"estimatedUserCount":12}
 	Data *GetIdentityProviderSyncScopeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code of the API request. It does not indicate the execution result of the asynchronous task.
+	// The HTTP status code of the API request. This code does not indicate the execution result of the asynchronous task.
 	//
 	// example:
 	//
@@ -134,31 +134,31 @@ func (s *GetIdentityProviderSyncScopeResponseBody) Validate() error {
 }
 
 type GetIdentityProviderSyncScopeResponseBodyData struct {
-	// The estimation status of the user count for the synchronization scope. The count is available only when the status is Ready. A missing count in other states cannot be considered as 0.
+	// The estimation status of the user count for the synchronization scope. The counts are available only when the status is Ready. Missing counts in other states must not be treated as 0.
 	//
 	// example:
 	//
 	// Ready
 	EstimateStatus *string `json:"estimateStatus,omitempty" xml:"estimateStatus,omitempty"`
-	// The estimated number of users in the saved synchronization scope. This parameter is returned only when estimateStatus is Ready and the downstream system provides the value. It does not represent the number of users that have been synchronized.
+	// The estimated number of users in the saved synchronization scope. This value is returned only when estimateStatus is Ready and the downstream system provides the value. It does not represent the number of users that have already been synchronized.
 	//
 	// example:
 	//
 	// 12
 	EstimatedUserCount *int64 `json:"estimatedUserCount,omitempty" xml:"estimatedUserCount,omitempty"`
-	// The estimated number of departments including sub-departments. This parameter is returned only when estimateStatus is Ready and the downstream system provides the value.
+	// The estimated number of departments, including child departments. This value is returned only when estimateStatus is Ready and the downstream system provides the value.
 	//
 	// example:
 	//
 	// 2
 	ExpandedDepartmentCount *int64 `json:"expandedDepartmentCount,omitempty" xml:"expandedDepartmentCount,omitempty"`
-	// The names and validity of the saved selected departments. This parameter can be an empty array when the mode is AllAuthorized. An empty array does not indicate that the organization has no departments.
+	// The names and validity of the saved selected departments. This can be an empty array when the mode is AllAuthorized. An empty array does not indicate that the organization has no departments.
 	//
 	// example:
 	//
-	// [{"id":"10001","name":"R&D Department","exists":true}]
+	// [{"id":"10001","name":"研发部","exists":true}]
 	SelectedDepartments []*GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments `json:"selectedDepartments,omitempty" xml:"selectedDepartments,omitempty" type:"Repeated"`
-	// The saved synchronization scope downstream. AllAuthorized indicates the address book scope authorized for the application.
+	// The saved synchronization scope of the downstream system. AllAuthorized indicates the address book scope authorized for the application.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments struct {
 	//
 	// true
 	Exists *bool `json:"exists,omitempty" xml:"exists,omitempty"`
-	// The unique identifier of the department returned by the identity provider. When querying the sub-departments of this node, use this value as parentDepartmentId.
+	// The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as parentDepartmentId.
 	//
 	// example:
 	//
@@ -298,13 +298,13 @@ func (s *GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments) Valida
 }
 
 type GetIdentityProviderSyncScopeResponseBodyDataSyncScope struct {
-	// When the mode is SelectedDepartments, this parameter contains at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+	// When the mode is SelectedDepartments, the list must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
 	//
 	// example:
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// The scope mode. Valid values: AllAuthorized (the entire authorized scope, limited by the application\\"s address book authorization) and SelectedDepartments (the selected departments and all their sub-departments). When explicitly submitting syncScope, a valid mode must be provided and verified by the backend.
+	// AllAuthorized: the full authorized scope, which is restricted by the application\\"s address book authorization. SelectedDepartments: the selected departments and all their child departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
 	//
 	// example:
 	//

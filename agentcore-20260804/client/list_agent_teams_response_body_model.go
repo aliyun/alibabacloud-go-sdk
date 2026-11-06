@@ -50,13 +50,13 @@ type ListAgentTeamsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. Returns an error description when the request fails.
+	// The response message. Returns an error description if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor used to retrieve the next page. An empty value indicates that no more data is available.
+	// The cursor used to obtain the next page. An empty value indicates that no more data is available.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAgentTeamsResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//

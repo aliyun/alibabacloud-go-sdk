@@ -30,19 +30,19 @@ type iListSandboxesResponseBody interface {
 }
 
 type ListSandboxesResponseBody struct {
-	// The business status code. The value SUCCESS is returned if the request was successful.
+	// The business status code. The value is SUCCESS when the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value 200 is returned if the request was successful.
+	// The HTTP status code. The value is 200 when the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of sandboxes that match the filter conditions.
+	// The list of sandboxes that meet the filter conditions.
 	Items []*ListSandboxesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page for this query.
 	//
@@ -50,7 +50,7 @@ type ListSandboxesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. The value success is returned if the request was successful.
+	// The response message. The value is success when the request is successful.
 	//
 	// example:
 	//
@@ -68,13 +68,9 @@ type ListSandboxesResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true: The request was successful.
-	//
-	// - false: The request failed.
+	// Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the query conditions.
+	// The total number of records that meet the query conditions.
 	//
 	// example:
 	//
@@ -185,31 +181,31 @@ func (s *ListSandboxesResponseBody) Validate() error {
 }
 
 type ListSandboxesResponseBodyItems struct {
-	// The number of active sessions for this sandbox.
+	// The number of active sessions in the sandbox.
 	//
 	// example:
 	//
 	// 1
 	ActiveSessionCount *int32 `json:"activeSessionCount,omitempty" xml:"activeSessionCount,omitempty"`
-	// The time when the sandbox was created, in RFC 3339 UTC format.
+	// The time when the sandbox was created. The time is in the RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-29T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The time of the last activity on the sandbox, in RFC 3339 UTC format.
+	// The time of the last activity of the sandbox. The time is in the RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-29T00:02:00Z
 	LastActiveAt *string `json:"lastActiveAt,omitempty" xml:"lastActiveAt,omitempty"`
-	// The time of the last heartbeat from the sandbox, in RFC 3339 UTC format.
+	// The time of the last heartbeat of the sandbox. The time is in the RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-29T00:01:00Z
 	LastHeartbeatAt *string `json:"lastHeartbeatAt,omitempty" xml:"lastHeartbeatAt,omitempty"`
-	// The maximum number of concurrent sessions allowed for this sandbox, derived from the auto scaling configuration in effect at runtime. This value is empty if auto scaling is not enabled or the configuration is unavailable.
+	// The maximum number of concurrent sessions allowed for the sandbox. This value is obtained from the auto-scaling configuration that takes effect at runtime. If auto-scaling is disabled or the configuration is unavailable, this value is empty.
 	//
 	// example:
 	//
@@ -221,7 +217,7 @@ type ListSandboxesResponseBodyItems struct {
 	//
 	// RUNNING
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// The sandbox ID. You can call the ListSandboxes operation to query sandbox IDs.
+	// The sandbox ID, which can be queried by calling ListSandboxes.
 	//
 	// example:
 	//

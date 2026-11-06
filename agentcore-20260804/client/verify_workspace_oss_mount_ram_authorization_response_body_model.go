@@ -50,7 +50,7 @@ type VerifyWorkspaceOssMountRamAuthorizationResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,7 +126,7 @@ func (s *VerifyWorkspaceOssMountRamAuthorizationResponseBody) Validate() error {
 }
 
 type VerifyWorkspaceOssMountRamAuthorizationResponseBodyData struct {
-	// The OSS storage authorization status.
+	// The authorization status of the OSS storage.
 	//
 	// example:
 	//

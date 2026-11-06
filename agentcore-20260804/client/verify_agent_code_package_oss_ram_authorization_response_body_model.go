@@ -30,7 +30,7 @@ type VerifyAgentCodePackageOssRamAuthorizationResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *VerifyAgentCodePackageOssRamAuthorizationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//

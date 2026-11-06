@@ -28,25 +28,25 @@ type ListUsersRequest struct {
 	//
 	// xxx@xxx.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The maximum number of records to return per page. Valid values: 1 to 100. If this parameter is not specified, 10 records are returned by default.
+	// The maximum number of records to return per page. Valid values: 1 to 100. If you do not specify this parameter, 10 records are returned by default.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The filter condition for exact match on the user name.
+	// The filter condition for exact match on the username.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The filter condition for fuzzy match on the user name. The value can be up to 128 characters in length.
+	// The filter condition for fuzzy match on the username. The value can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// user
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The cursor for querying the next page. Do not specify this parameter in the first call. In subsequent calls, specify the nextToken value returned in the previous call.
+	// The cursor for querying the next page. Do not specify this parameter in the first call. Specify the nextToken value returned in the previous call for subsequent calls.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type InstallWorkspacePluginResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The details of the plugin installation operation.
+	// The details of the component installation operation.
 	Data *InstallWorkspacePluginResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type InstallWorkspacePluginResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. Returns an error description when the request fails.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *InstallWorkspacePluginResponseBody) Validate() error {
 }
 
 type InstallWorkspacePluginResponseBodyData struct {
-	// Indicates whether the plugin is enabled.
+	// Indicates whether the component is enabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The plugin name.
+	// The component name.
 	//
 	// example:
 	//
 	// collaboration
 	PluginName *string `json:"pluginName,omitempty" xml:"pluginName,omitempty"`
-	// The plugin status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
+	// The component status. Valid values: DISABLED, ENABLING, ENABLED, ENABLE_FAILED, DISABLING, and DISABLE_FAILED.
 	//
 	// example:
 	//

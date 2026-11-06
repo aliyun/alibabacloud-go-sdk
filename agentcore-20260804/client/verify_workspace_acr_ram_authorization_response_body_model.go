@@ -150,7 +150,7 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	//
 	// cri-1234567890abcdef
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The current attachment status of the policy for the target repository.
+	// The mount status of the policy for the current target repository.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +158,7 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	//
 	// UNAUTHORIZED
 	AuthorizationStatus *string `json:"authorizationStatus,omitempty" xml:"authorizationStatus,omitempty"`
-	// The access prerequisite status, which does not indicate Secret Ready.
+	// The onboarding prerequisite, which is not Secret Ready.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +166,7 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	//
 	// ELIGIBLE
 	EligibilityStatus *string `json:"eligibilityStatus,omitempty" xml:"eligibilityStatus,omitempty"`
-	// The stable reason code for unauthorized or unmet conditions. This field is omitted if no reason exists.
+	// The stable reason code for unauthorized or unmet conditions. This field is omitted when no reason is available.
 	//
 	// if can be null:
 	// true
@@ -175,7 +175,7 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	//
 	// AcrRamUnauthorized
 	ReasonCode *string `json:"reasonCode,omitempty" xml:"reasonCode,omitempty"`
-	// The user-readable reason. This field is omitted if no reason exists.
+	// The user-readable reason. This field is omitted when no reason is available.
 	//
 	// if can be null:
 	// true
@@ -192,7 +192,7 @@ type VerifyWorkspaceAcrRamAuthorizationResponseBodyData struct {
 	//
 	// AliyunAgentCoreWorkspace-ws-1234567890abcdef12345
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	// The source of the shared role. This does not indicate that authorization is complete.
+	// The source of the shared role. This does not indicate that the authorization is complete.
 	//
 	// This parameter is required.
 	//

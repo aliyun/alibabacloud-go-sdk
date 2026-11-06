@@ -30,7 +30,7 @@ type GetCustomAgentImagePreparationResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The preparation query result. Refer to the phase for the asynchronous execution status.
+	// The preparation query result. For the asynchronous execution status, see phase.
 	Data *GetCustomAgentImagePreparationResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -136,21 +136,21 @@ type GetCustomAgentImagePreparationResponseBodyData struct {
 	//
 	// agent-example
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The error information. This field is returned only when the task fails. Otherwise, the value is null.
+	// The error. This parameter is returned only when the task fails. Otherwise, the value is null.
 	Error *GetCustomAgentImagePreparationResponseBodyDataError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	// The failed phase. This field is returned only when the status is FAILED. Otherwise, the value is null.
+	// The phase where the failure occurred. This parameter is returned only when the phase is FAILED. Otherwise, the value is null.
 	//
 	// example:
 	//
 	// COPYING
 	FailedPhase *string `json:"failedPhase,omitempty" xml:"failedPhase,omitempty"`
-	// The current phase. Only SUCCEEDED indicates that the deployment of the target version is successful.
+	// The current phase. Only SUCCEEDED indicates that the target version is deployed successfully.
 	//
 	// example:
 	//
 	// FAILED
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// The console submission task ID.
+	// The Console task ID for the current submission.
 	//
 	// example:
 	//
@@ -221,13 +221,13 @@ func (s *GetCustomAgentImagePreparationResponseBodyData) Validate() error {
 }
 
 type GetCustomAgentImagePreparationResponseBodyDataError struct {
-	// The business error code for image preparation. This code is used to identify the failure type. For the specific cause, refer to the message.
+	// The business error code for image preparation. It is used to identify the failure type. For the specific cause, see message.
 	//
 	// example:
 	//
 	// ImageSyncFailed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The specific cause of the failure. This may include underlying errors such as image not found, authentication failure, network timeout, or certificate verification error. Passwords, tokens, or authentication headers are not returned. If the underlying system does not provide a cause, a general description is returned.
+	// The specific cause of the failure. It may include underlying errors such as image not found, authentication failure, network timeout, or certificate verification error. Passwords, tokens, or authentication headers are not returned. If the underlying system does not provide a cause, a general description is returned.
 	//
 	// example:
 	//

@@ -45,17 +45,13 @@ func (s *OnlineSkillRequest) Validate() error {
 }
 
 type OnlineSkillRequestBody struct {
-	// The operation scope. Valid values:
-	//
-	// - skill: the entire Skill.
-	//
-	// - version: a specified version.
+	// The operation scope. Valid values: skill (the entire skill) and version (a specified version).
 	//
 	// example:
 	//
 	// version
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The Skill version number.
+	// The skill version number.
 	//
 	// example:
 	//

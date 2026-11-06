@@ -128,7 +128,7 @@ func (s *UpdateMemoryResponseBody) Validate() error {
 type UpdateMemoryResponseBodyData struct {
 	// The memory content.
 	Content *UpdateMemoryResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type UpdateMemoryResponseBodyData struct {
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The memory scope.
 	Scope *UpdateMemoryResponseBodyDataScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The last update time.
+	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//

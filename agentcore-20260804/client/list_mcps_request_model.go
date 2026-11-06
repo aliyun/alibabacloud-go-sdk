@@ -26,19 +26,19 @@ type iListMcpsRequest interface {
 }
 
 type ListMcpsRequest struct {
-	// Filters results by custom tag. The tag must be an exact match.
+	// Filters the results by custom tags. An exact match with the tags is required.
 	//
 	// example:
 	//
-	// KnowledgeBase
+	// Knowledge base
 	CustomTag *string `json:"customTag,omitempty" xml:"customTag,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The MCP service name or service ID. Used together with SearchType.
+	// The service name or ID of the MCP service. This parameter is used in conjunction with SearchType.
 	//
 	// example:
 	//
@@ -50,17 +50,17 @@ type ListMcpsRequest struct {
 	//
 	// next-page-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters results by official usage tag.
+	// Filters the results by official usage tags.
 	//
 	// example:
 	//
 	// KNOWLEDGE_BASE
 	OfficialTag *string `json:"officialTag,omitempty" xml:"officialTag,omitempty"`
-	// The name matching method. Takes effect only when Name is specified. Valid values:
+	// The name matching mode. This parameter takes effect only when Name is specified. Valid values:
 	//
-	// - accurate: exact match.
+	// - accurate: Exact match.
 	//
-	// - blur: fuzzy match.
+	// - blur: Fuzzy match.
 	//
 	// Default value: blur.
 	//
@@ -68,7 +68,7 @@ type ListMcpsRequest struct {
 	//
 	// blur
 	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
-	// Specifies whether the service is still bound by the official template usage.
+	// Specifies whether the service is still subject to official template usage constraints.
 	UsageActive *bool `json:"usageActive,omitempty" xml:"usageActive,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type UpdateConnectorResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The Connector details.
+	// The connector details.
 	Data *UpdateConnectorResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -50,7 +50,7 @@ type UpdateConnectorResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -136,25 +136,25 @@ type UpdateConnectorResponseBodyData struct {
 	//
 	// 3
 	BoundAgentCount *int64 `json:"boundAgentCount,omitempty" xml:"boundAgentCount,omitempty"`
-	// The time when the Connector was enabled.
+	// The time when the connector was enabled.
 	//
 	// example:
 	//
 	// 2026-09-01T08:00:00Z
 	EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-	// The updated Connector configuration JSON string. This is sensitive information.
+	// The updated JSON string for the connector configuration. This is sensitive information.
 	//
 	// example:
 	//
 	// {"site":"global","organizationId":"org-xxxx"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The Connector name. Currently, the value is qodercli.
+	// The name of the connector. Currently, the value is qodercli.
 	//
 	// example:
 	//
 	// qodercli
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The Connector status.
+	// The status of the connector.
 	//
 	// example:
 	//

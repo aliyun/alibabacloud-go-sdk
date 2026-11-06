@@ -20,9 +20,9 @@ type iRetryImageCacheRequest interface {
 }
 
 type RetryImageCacheRequest struct {
-	// The request body is a fixed empty object {}. WorkspaceId is passed as a query parameter. Do not pass the Pool, role, Digest, or network parameters.
+	// The request body for retrying image cache creation.
 	Body *RetryImageCacheRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// This parameter is required and cannot be empty. It is reserved to keep the API compatible. This field does not currently deduplicate requests or recover the original result. If a timeout occurs or the result is not confirmed, query the query cache status first before deciding whether to commit again.
+	// The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication or recovery of the original acceptance result based on this token.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type RetryImageCacheRequest struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The product entry region, which is determined by the selected region endpoint.
+	// The product entry region. This parameter is passed as a query parameter and must be consistent with the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type RetryImageCacheRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The current routed workspace. The server verifies the account, region, and resource ownership. You cannot omit this parameter or use it to access other workspaces.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

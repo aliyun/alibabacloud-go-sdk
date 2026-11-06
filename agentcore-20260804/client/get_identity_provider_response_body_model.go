@@ -38,7 +38,7 @@ type GetIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. If the request fails, an error description is returned.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ func (s *GetIdentityProviderResponseBody) Validate() error {
 type GetIdentityProviderResponseBodyData struct {
 	// The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
 	Configuration *GetIdentityProviderResponseBodyDataConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The creation time in UTC format based on RFC 3339.
+	// The creation time in UTC format compliant with RFC 3339.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetIdentityProviderResponseBodyData struct {
 	//
 	// http://auth.cn-hangzhou.agentteams.aliyuncs.com/roa/dingtalk/event/up-123456
 	EventSubscriptionCallbackUrl *string `json:"eventSubscriptionCallbackUrl,omitempty" xml:"eventSubscriptionCallbackUrl,omitempty"`
-	// The external identity provider type. Valid values: DingTalk and Feishu.
+	// The type of the external identity provider. Valid values: DingTalk and Feishu.
 	//
 	// example:
 	//
@@ -156,21 +156,21 @@ type GetIdentityProviderResponseBodyData struct {
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
 	// The application configuration of the external identity provider. Application secret configurations are not returned.
 	Metadata *GetIdentityProviderResponseBodyDataMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// The logon protocol. Only SAML is currently supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
+	// Only SAML is currently supported. This parameter may not be returned if no valid configuration is saved. Placeholder initialization with OIDC is not supported.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The SAML logon configuration. The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This field can be omitted if it is not configured.
+	// The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted if it is not configured.
 	Saml *GetIdentityProviderResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
 	// The status. Valid values:
 	//
-	// - CONFIGURED: The configuration is accepted and the system is waiting for the user pool to be activated.
+	// - CONFIGURED: The configuration is accepted and waiting for user pool activation.
 	//
 	// - SYNCING: Organization members are being synchronized.
 	//
-	// - SYNCED: Organization members are synchronized.
+	// - SYNCED: Organization member synchronization is complete.
 	//
 	// - READY: The binding is in effect.
 	//
@@ -180,19 +180,19 @@ type GetIdentityProviderResponseBodyData struct {
 	//
 	// - UPDATE_FAILED: Configuration update failed.
 	//
-	// - DISCONNECTING: The binding is being removed.
+	// - DISCONNECTING: The binding is being disconnected.
 	//
-	// - DISCONNECT_FAILED: Binding removal failed.
+	// - DISCONNECT_FAILED: Disconnection failed.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Specifies whether organization member synchronization is enabled. After it is enabled, organization members are synchronized as workspace users by the external identity provider.
+	// Specifies whether to enable organization member synchronization. If enabled, organization members are synchronized as workspace users by the external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// The configured synchronization scope, which follows the synchronization scope definition by department. If omitted during creation, the default value is AllAuthorized, and the first vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
+	// Follows the synchronization scope definition by department. If omitted during creation, the default value is AllAuthorized, and the first vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating the saved scope does not automatically trigger full synchronization.
 	SyncScope *GetIdentityProviderResponseBodyDataSyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
-	// The time of the last modification in UTC format based on RFC 3339.
+	// The time when the binding was last modified, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -365,25 +365,25 @@ func (s *GetIdentityProviderResponseBodyData) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyDataConfiguration struct {
-	// The SAML binding type, which is HTTP-Redirect or HTTP-POST. Required for manual entry. Queries return the short name.
+	// HTTP-Redirect or HTTP-POST. This parameter is required for manual entry. Queries return the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// The IdP entity ID. Required for manual entry. Must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be changed. This is different from the entity ID of the service provider (SP) returned in queries.
+	// This parameter is required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be replaced. This is different from the Entity ID of the service provider (SP) returned in queries.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The IdP logon URL. Required for manual entry. Must be an absolute HTTPS URL without user credentials or fragments.
+	// This parameter is required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected loginEnabled value saved in AC.
+	// The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected loginEnabled value saved in the access configuration (AC).
 	//
 	// example:
 	//
@@ -440,19 +440,19 @@ func (s *GetIdentityProviderResponseBodyDataConfiguration) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyDataMetadata struct {
-	// The App ID of the Lark application. Required when the binding type is Feishu.
+	// The App ID of the Lark application. This parameter is required when the binding type is Feishu.
 	//
 	// example:
 	//
 	// cli_exampleappid01
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The AppKey of the DingTalk application. Required when the binding type is DingTalk.
+	// The AppKey of the DingTalk application. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// The SAML binding URI in the historical metadata snapshot. To update CustomSSO, use saml.bindingType.
+	// The SAML Binding URI in the historical metadata snapshot. To update CustomSSO, use saml.bindingType.
 	//
 	// example:
 	//
@@ -464,19 +464,19 @@ type GetIdentityProviderResponseBodyDataMetadata struct {
 	//
 	// MIICwDCCAaigAwIBAgIULlsHLfcADyBax5ZtFlj+YGzZVo0wDQYJKoZIhvcNAQELBQAwGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMB4XDTI2MDEwMTAwMDAwMFoXDTM2MDEwMTAwMDAwMFowGjEYMBYGA1UEAwwPaWRwLmV4YW1wbGUuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAto0DN0W1CrPRzK9QZ9A1aApb4Lg8oGlp2c0PbN3LokXe/HzwxCMXx65IDnrenttxzTwp9BgUnUN/3LRzWaOL2UQ/vNYNW9LFLkI1T64UPyI7eyi28YlALhb41xkYhEp7rz+MjqifBzVZeTDUxBYtbK2hAhbYEL1+udwsXEx0KB7xuQ/rbI2OKeqAEAD1tfYg7T/SM2wrXNYhx+o1HtchM4/0I8Okkk27JQ4y3ofzC5sTySmFF1Y7XcpSd+5WSyazedhkAieo8AB01DkJV6nnKfH8sH0EBsnH3FP8FhqCLrIeEkjX9B9OcIRLGjiZqx4u/ryW1QhMldnv+pFfNjWy/wIDAQABMA0GCSqGSIb3DQEBCwUAA4IBAQC1hSQG8AwtGOoX2gKBK4Hi5XBrBreij8WlLTUWld0FINQ0Rg84f/27CjDthywj6wgxCesCuOVFhpxQa1UacsP/Gcai1aKABtLWImcaWECRYK5gDkwhTMFKM9mXA26hH1l4v/UR2iTpEK9H78egC4W7bs2LDTpPryuaNKTqP2O0tMbNkAHB8yecz5LxHXnxadL9Egow25g2RClvpifWqDnuS9TSbKkIWLcPLjocJj2K9ILpBwhXiXi/BiSgyYTLiYvVvih9vX4s+hKGZNJc0j92YLiOHDF0XH1oxgdVjfTmRiedeb2VZJZElptD92z0AqFR7z2d5B+OqpPA2gjuMLV5
 	Certificates *string `json:"certificates,omitempty" xml:"certificates,omitempty"`
-	// The CorpId of the DingTalk enterprise. Required when the binding type is DingTalk.
+	// The CorpId of the DingTalk enterprise. This parameter is required when the binding type is DingTalk.
 	//
 	// example:
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// The IdP entity ID. Required for manual entry. Must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be changed. This is different from the entity ID of the service provider (SP) returned in queries.
+	// This parameter is required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be replaced. This is different from the Entity ID of the service provider (SP) returned in queries.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The IdP logon URL. Required for manual entry. Must be an absolute HTTPS URL without user credentials or fragments.
+	// This parameter is required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
@@ -560,25 +560,25 @@ func (s *GetIdentityProviderResponseBodyDataMetadata) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyDataSaml struct {
-	// The SAML binding type, which is HTTP-Redirect or HTTP-POST. Required for manual entry. Queries return the short name.
+	// HTTP-Redirect or HTTP-POST. This parameter is required for manual entry. Queries return the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// The IdP entity ID. Required for manual entry. Must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be changed. This is different from the entity ID of the service provider (SP) returned in queries.
+	// This parameter is required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. Existing configurations cannot be replaced. This is different from the Entity ID of the service provider (SP) returned in queries.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The IdP logon URL. Required for manual entry. Must be an absolute HTTPS URL without user credentials or fragments.
+	// This parameter is required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The list of IdP signing certificates. Required for manual entry. Must be a non-empty array using PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
+	// A non-empty array is required for manual entry. Use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
 	//
 	// example:
 	//
@@ -635,13 +635,13 @@ func (s *GetIdentityProviderResponseBodyDataSaml) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyDataSyncScope struct {
-	// The list of department IDs. When the mode is SelectedDepartments, at least one non-empty department ID must be included, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this field.
+	// When the mode is SelectedDepartments, this parameter must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
 	//
 	// example:
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// The scope mode. Valid values:
+	// Valid values:
 	//
 	// - AllAuthorized: All authorized scopes, subject to the application address book authorization limits.
 	//

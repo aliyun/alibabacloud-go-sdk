@@ -30,25 +30,25 @@ type iListIdentityProviderDepartmentsResponseBody interface {
 }
 
 type ListIdentityProviderDepartmentsResponseBody struct {
-	// The business status code of the API request. SUCCESS indicates that the request is successful, but does not indicate that the asynchronous synchronization task is completed.
+	// The business status code of the API request. SUCCESS indicates that the current request is successful, but does not indicate that the asynchronous synchronization task is completed.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code of the API request, which does not indicate the execution result of the asynchronous task.
+	// The HTTP status code of the API request. This does not indicate the execution result of an asynchronous task.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The direct child departments on the current page under the current parent department. You must make another query to obtain the details of the child departments.
+	// The direct child departments on the current page under the current parent department. For details about the child departments, query them separately.
 	//
 	// example:
 	//
-	// [{"id":"10001","name":"R&D Department","parentId":"1","memberCount":12,"hasChildren":true}]
+	// [{"id":"10001","name":"研发部","parentId":"1","memberCount":12,"hasChildren":true}]
 	Items []*ListIdentityProviderDepartmentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The number of items per page used for this query.
+	// The number of entries per page used for the current query.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListIdentityProviderDepartmentsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty or missing value indicates that there are no subsequent pages at the current hierarchy level of the parent department, but does not indicate that the entire department tree has been returned.
+	// The token for the next page. An empty value or no return value indicates that there are no subsequent pages at the current level of the parent department, which does not mean that the entire department tree has been returned.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListIdentityProviderDepartmentsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of departments. This operation does not provide this statistic and may not return this field. Do not treat a missing value as 0.
+	// The total number of departments. This operation does not calculate the total number of departments. Currently, JSON null is actually returned. To determine whether pagination has ended, check whether nextToken is an empty string.
 	//
 	// example:
 	//
@@ -189,19 +189,19 @@ func (s *ListIdentityProviderDepartmentsResponseBody) Validate() error {
 }
 
 type ListIdentityProviderDepartmentsResponseBodyItems struct {
-	// Indicates whether the department has child departments. A value of true indicates that the department has child departments and an expansion entry can be displayed accordingly. A value of false indicates a leaf node. If this field is not returned, the status is unknown. You must use the ID of the current node to make another query to obtain the details of the child departments.
+	// Indicates whether the department has child departments. A value of true indicates that the department has child departments, and an expansion entry can be displayed based on this value. A value of false indicates a leaf node. If this parameter is not returned, the value is unknown. To obtain details about the child departments, use the ID of the current node to query them separately.
 	//
 	// example:
 	//
 	// true
 	HasChildren *bool `json:"hasChildren,omitempty" xml:"hasChildren,omitempty"`
-	// The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as the parentDepartmentId.
+	// The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as parentDepartmentId.
 	//
 	// example:
 	//
 	// 10001
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The number of members in the department returned by the identity provider. This field is not returned when the number is unknown. Do not treat a missing value as 0.
+	// The number of department members returned by the identity provider. This parameter is not returned when the value is unknown. Do not treat a missing value as 0.
 	//
 	// example:
 	//

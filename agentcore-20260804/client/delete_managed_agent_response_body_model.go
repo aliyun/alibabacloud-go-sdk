@@ -30,7 +30,7 @@ type DeleteManagedAgentResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary information of the deleted managed agent.
+	// The summary information of the managed Harness agent after deletion.
 	Data *DeleteManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code. The value is 200 if the request is successful.
 	//
@@ -38,7 +38,7 @@ type DeleteManagedAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -130,19 +130,19 @@ func (s *DeleteManagedAgentResponseBody) Validate() error {
 }
 
 type DeleteManagedAgentResponseBodyData struct {
-	// API_KEY 表示使用 API Key；USER 表示使用用户身份。
+	// The inbound access mode.
 	//
 	// example:
 	//
 	// API_KEY
 	AccessMode *string `json:"accessMode,omitempty" xml:"accessMode,omitempty"`
-	// 仅 accessMode 为 USER 时返回：ALL 表示全部用户，SPECIFIED 表示指定用户。
+	// The user access scope.
 	//
 	// example:
 	//
 	// SPECIFIED
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The managed agent ID.
+	// The ID of the managed Harness agent.
 	//
 	// example:
 	//
@@ -166,19 +166,19 @@ type DeleteManagedAgentResponseBodyData struct {
 	//
 	// Managed
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the managed agent.
+	// The description of the managed Harness agent.
 	//
 	// example:
 	//
 	// Agent for code review
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The latest specification version.
+	// The latest specification version number.
 	//
 	// example:
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The name of the managed agent.
+	// The name of the managed Harness agent.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DeleteManagedAgentResponseBodyData struct {
 	//
 	// Managed
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The status of the managed agent.
+	// The status of the managed Harness agent.
 	//
 	// example:
 	//

@@ -20,11 +20,11 @@ type iCreateImageCacheShrinkRequest interface {
 }
 
 type CreateImageCacheShrinkRequest struct {
-	// The business parameters for creating an image cache.
+	// The request body for creating an image cache.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// This parameter is required and cannot be empty. It is reserved to be compatible with the API. Currently, it does not provide the ability to deduplicate requests or recover the original result based on this field. If a timeout occurs or the result is unconfirmed, query the query cache status first before deciding whether to recommit.
+	// The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication by this token or recovery of the original acceptance result.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateImageCacheShrinkRequest struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The product entry region, which is determined by the selected region endpoint.
+	// The product entry region, passed as a query parameter. It must match the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateImageCacheShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The current routed workspace. The server verifies the account, region, and resource ownership. This parameter cannot be omitted or used to access other workspaces.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

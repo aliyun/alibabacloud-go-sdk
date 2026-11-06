@@ -24,33 +24,33 @@ type iUpdateIdentityProviderResponseBody interface {
 }
 
 type UpdateIdentityProviderResponseBody struct {
-	// The business status code for this API request. A value of SUCCESS indicates that the request succeeded, but does not indicate that the asynchronous configuration or synchronization task is complete.
+	// Handle failures by combining the HTTP status code and the message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The currently saved identity provider binding information, including the expected configuration and resource status. The actual update may still be executing in the background.
+	// The result structure is described in the response fields of this operation. For asynchronous write operations, the response indicates that the request is accepted, but does not guarantee that the background task is completed.
 	Data *UpdateIdentityProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code for this API request. This does not indicate the execution result of the background task.
+	// The processing status of the current request, which is not equivalent to the final result of the background task.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message for this API request. An error description is returned if the request fails.
+	// The request acceptance or error message. You must verify the result of the asynchronous task by calling the corresponding query operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier for this request. Provide this value when you troubleshoot issues.
+	// Used to associate the current call with troubleshooting. Keep it when a failure occurs.
 	//
 	// example:
 	//
-	// request-123456
+	// request-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether this API request succeeded. To check whether the background configuration has taken effect, you must query the identity provider status separately.
+	// A value of true indicates that the current request is processed successfully. For asynchronous write operations, you must continue to query the task result.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,59 +126,39 @@ func (s *UpdateIdentityProviderResponseBody) Validate() error {
 }
 
 type UpdateIdentityProviderResponseBodyData struct {
-	// The actual SAML configuration read back from the upstream. This update API does not perform this read-back and usually does not return this field. Use GetIdentityProvider to obtain it.
+	// The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
 	Configuration *UpdateIdentityProviderResponseBodyDataConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The type of the identity provider. DingTalk indicates DingTalk. Feishu indicates Feishu. CustomSSO indicates a custom enterprise identity provider connected through SAML. The value must be the same as the type of the identity provider bound to the current workspace.
+	// General CRUD operations support DingTalk, Feishu, and CustomSSO. SP queries support only CustomSSO. The SCIM path uses the CustomSSO shared pool.
 	//
 	// example:
 	//
-	// DingTalk
+	// CustomSSO
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// The currently saved expected value for the logon switch. This alone does not prove that the upstream logon configuration has taken effect.
+	// Do not set this parameter to true during CustomSSO initialization. A valid SAML configuration must be saved before you enable logon. Disabling logon does not delete the configuration. If an asynchronous failure occurs, this expected value does not mean that the change has taken effect upstream.
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
-	// The currently saved logon protocol for CustomSSO. The value is SAML when configured. This field is not returned for DingTalk or Lark.
+	// The logon protocol for CustomSSO. Currently, only SAML is supported. You can pass SAML when saving the SAML configuration. You can omit this parameter if you only modify loginEnabled. DingTalk and Feishu do not accept this field.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The saved standardized SAML configuration for CustomSSO. The original metadata XML is not echoed. This field is not returned if no valid configuration is saved or if the identity provider is DingTalk or Lark. This value is the locally saved configuration and is not equivalent to the actual upstream configuration.
+	// The SAML configuration for CustomSSO. Choose between metadataXml and the four manually entered fields: entityId, loginUrl, bindingType, and x509Certificates. If not submitted, the existing configuration is retained. DingTalk and Feishu do not accept this field.
 	Saml *UpdateIdentityProviderResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
-	// The status of the identity provider resource and logon configuration. Valid values:
-	//
-	// - CONFIGURED: The configuration is accepted.
-	//
-	// - UPDATING: The configuration is being updated.
-	//
-	// - SYNCING: Synchronization is in progress.
-	//
-	// - SYNCED: The synchronization phase is complete.
-	//
-	// - READY: The resource is ready.
-	//
-	// - SYNC_FAILED: Synchronization failed.
-	//
-	// - UPDATE_FAILED: The update failed.
-	//
-	// - DISCONNECTING: Unbinding is in progress.
-	//
-	// - DISCONNECT_FAILED: Unbinding failed.
-	//
-	// A value of READY does not alone indicate that users are imported. Query the SCIM operation results for CustomSSO separately.
+	// For a CustomSSO shared pool, READY does not mean that SAML is configured. The SCIM operation result is queried independently through operationStatus.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The currently saved expected value for the synchronization switch. For DingTalk and Lark, this is used for subsequent address book change events. For CustomSSO, the SCIM switch is managed by using UpdateIdentityProviderSCIM, and the operation results are queried by using GetIdentityProviderSCIM.
+	// Do not set this parameter to true during CustomSSO initialization. It can only be updated later by calling UpdateIdentityProviderSCIM, and the result is determined in combination with operationStatus.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// The saved synchronization scope for DingTalk and Lark. The default value for valid historical configurations is AllAuthorized. This field may not be returned for corrupted historical configurations. This field is not returned for CustomSSO.
+	// Uses the definition of the department-based synchronization scope. If omitted during creation, the default value is AllAuthorized. The initial vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically execute a full synchronization.
 	SyncScope *UpdateIdentityProviderResponseBodyDataSyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
-	// The ID of the workspace to which the identity provider belongs.
+	// Required. The ID of the destination workspace. The region of the request must be the same as the region of the destination workspace.
 	//
 	// example:
 	//
-	// ws-123456
+	// ws-example
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -291,25 +271,25 @@ func (s *UpdateIdentityProviderResponseBodyData) Validate() error {
 }
 
 type UpdateIdentityProviderResponseBodyDataConfiguration struct {
-	// The actual SAML binding type saved upstream, which is HTTP-Redirect or HTTP-POST.
+	// HTTP-Redirect or HTTP-POST. Required for manual entry. The query returns the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// The actual enterprise IdP entity ID saved upstream.
+	// Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. The existing configuration does not support replacement. It is different from our Entity ID returned by the SP query.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The actual enterprise IdP SSO logon URL saved upstream.
+	// Required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The actual SSO logon status upstream. Enabled indicates that it is turned on, and Disabled indicates that it is turned off. This should be evaluated separately from the expected value of loginEnabled.
+	// The actual switch value is Enabled or Disabled, which is not equivalent to the expected loginEnabled value saved in AC.
 	//
 	// example:
 	//
@@ -366,25 +346,25 @@ func (s *UpdateIdentityProviderResponseBodyDataConfiguration) Validate() error {
 }
 
 type UpdateIdentityProviderResponseBodyDataSaml struct {
-	// The saved SAML binding type, which is HTTP-Redirect or HTTP-POST.
+	// HTTP-Redirect or HTTP-POST. Required for manual entry. The query returns the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// The saved enterprise IdP entity ID, which is different from the entity ID of the service provider (SP).
+	// Required for manual entry. It must be non-empty and contain a maximum of 2,048 characters. The existing configuration does not support replacement. It is different from our Entity ID returned by the SP query.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The saved enterprise IdP SSO logon URL.
+	// Required for manual entry. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The list of saved enterprise IdP X.509 signing certificates.
+	// Required for manual entry. It must be a non-empty array and use PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
 	//
 	// example:
 	//
@@ -441,13 +421,13 @@ func (s *UpdateIdentityProviderResponseBodyDataSaml) Validate() error {
 }
 
 type UpdateIdentityProviderResponseBodyDataSyncScope struct {
-	// The list of department IDs in the synchronization scope, which are obtained from ListIdentityProviderDepartments. In SelectedDepartments mode, you must provide at least one non-empty department ID. In AllAuthorized mode, this field should be omitted or an empty array should be passed.
+	// When the mode is SelectedDepartments, it must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
 	//
 	// example:
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// The synchronization scope mode. Valid values: AllAuthorized and SelectedDepartments. AllAuthorized indicates all members within the authorization scope of the application address book. SelectedDepartments indicates the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode.
+	// AllAuthorized: the full authorization scope, which is subject to the application directory authorization limits. SelectedDepartments: the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
 	//
 	// example:
 	//

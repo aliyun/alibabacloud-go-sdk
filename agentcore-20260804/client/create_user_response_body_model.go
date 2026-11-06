@@ -132,13 +132,13 @@ type CreateUserResponseBodyData struct {
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
-	// The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
+	// The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider (IdP).
 	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The time when the user was created. The time is displayed in UTC and follows the RFC 3339 format.
+	// The creation time. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
@@ -168,11 +168,11 @@ type CreateUserResponseBodyData struct {
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The note for the user. The note can be up to 1,024 characters in length.
+	// The remarks for the user. The remarks can be up to 1,024 characters in length.
 	//
 	// example:
 	//
-	// Agent operations team member
+	// Agent operation team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
 	// The region ID of the resource.
 	//
@@ -186,7 +186,7 @@ type CreateUserResponseBodyData struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the user was last modified. The time is displayed in UTC and follows the RFC 3339 format.
+	// The time of the last update. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//

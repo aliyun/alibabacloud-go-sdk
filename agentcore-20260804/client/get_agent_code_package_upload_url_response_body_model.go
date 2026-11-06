@@ -30,7 +30,7 @@ type GetAgentCodePackageUploadUrlResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *GetAgentCodePackageUploadUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -132,7 +132,7 @@ type GetAgentCodePackageUploadUrlResponseBodyData struct {
 	//
 	// 2026-10-22T00:10:00Z
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// The HTTP headers that must be included in the direct upload request.
+	// The required HTTP request headers for direct upload.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The maximum compressed size of the code package.
 	//
@@ -140,7 +140,7 @@ type GetAgentCodePackageUploadUrlResponseBodyData struct {
 	//
 	// 500000000
 	MaxSize *int64 `json:"maxSize,omitempty" xml:"maxSize,omitempty"`
-	// The temporary Object Storage Service (OSS) URI of the code package.
+	// The OSS URI of the temporary code package.
 	//
 	// example:
 	//

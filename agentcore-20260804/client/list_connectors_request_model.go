@@ -16,13 +16,13 @@ type iListConnectorsRequest interface {
 }
 
 type ListConnectorsRequest struct {
-	// The page size. The current version does not support this parameter.
+	// The page size. This parameter is not supported in the current version.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The next page token. The current version does not support this parameter.
+	// The next token. This parameter is not supported in the current version.
 	//
 	// example:
 	//

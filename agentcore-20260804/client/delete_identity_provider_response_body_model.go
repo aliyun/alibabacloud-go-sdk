@@ -30,7 +30,7 @@ type DeleteIdentityProviderResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The external identity provider binding information after the disconnection operation is accepted.
+	// The binding information of the external identity provider after the disconnection operation is accepted.
 	Data *DeleteIdentityProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,13 +38,13 @@ type DeleteIdentityProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned if the request fails.
+	// The response message. An error description is returned when the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *DeleteIdentityProviderResponseBody) Validate() error {
 }
 
 type DeleteIdentityProviderResponseBodyData struct {
-	// The actual SAML configuration is read back on demand only in GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
+	// The actual SAML configuration is read back on demand only by GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
 	Configuration *DeleteIdentityProviderResponseBodyDataConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
 	// The type of the external identity provider. Valid values: DingTalk and Feishu.
 	//
@@ -134,21 +134,21 @@ type DeleteIdentityProviderResponseBodyData struct {
 	//
 	// DingTalk
 	IdentityProviderType *string `json:"identityProviderType,omitempty" xml:"identityProviderType,omitempty"`
-	// Only SAML is currently supported. This parameter may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
+	// Only SAML is currently supported. This field may not be returned if no valid configuration is saved. OIDC placeholder initialization is not supported.
 	//
 	// example:
 	//
 	// SAML
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This parameter can be omitted if it is not configured.
+	// The input supports either XML or complete manual entry. Queries return the standardized configuration and do not echo the original XML. This field can be omitted if it is not configured.
 	Saml *DeleteIdentityProviderResponseBodyDataSaml `json:"saml,omitempty" xml:"saml,omitempty" type:"Struct"`
-	// The status. Valid values: CONFIGURED (the configuration is accepted and the system is waiting to activate the user pool), SYNCING (synchronizing organization members), SYNCED (organization member synchronization is complete), READY (the binding has taken effect), SYNC_FAILED (organization member synchronization failed), UPDATING (updating the configuration), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
+	// The status. Valid values: CONFIGURED (the configuration is accepted and the system is waiting to activate the user pool), SYNCING (organization members are being synchronized), SYNCED (organization member synchronization is complete), READY (the binding is in effect), SYNC_FAILED (organization member synchronization failed), UPDATING (the configuration is being updated), UPDATE_FAILED (configuration update failed), DISCONNECTING (disconnecting), and DISCONNECT_FAILED (disconnection failed).
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
@@ -233,25 +233,25 @@ func (s *DeleteIdentityProviderResponseBodyData) Validate() error {
 }
 
 type DeleteIdentityProviderResponseBodyDataConfiguration struct {
-	// HTTP-Redirect or HTTP-POST. This parameter is required when you manually enter the configuration. Queries return the short name.
+	// HTTP-Redirect or HTTP-POST. Required when manually specified. Queries return the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. Existing configurations cannot be replaced. This is different from the entity ID of the service provider (SP) queried on our side.
+	// Required when manually specified. It must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be replaced. This is different from the local Entity ID returned by SP queries.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually specified. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected value of loginEnabled saved in AC.
+	// The actual switch value, which is Enabled or Disabled. This is not equivalent to the expected loginEnabled value saved by AC.
 	//
 	// example:
 	//
@@ -308,25 +308,25 @@ func (s *DeleteIdentityProviderResponseBodyDataConfiguration) Validate() error {
 }
 
 type DeleteIdentityProviderResponseBodyDataSaml struct {
-	// HTTP-Redirect or HTTP-POST. This parameter is required when you manually enter the configuration. Queries return the short name.
+	// HTTP-Redirect or HTTP-POST. Required when manually specified. Queries return the short name.
 	//
 	// example:
 	//
 	// HTTP-Redirect
 	BindingType *string `json:"bindingType,omitempty" xml:"bindingType,omitempty"`
-	// This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. Existing configurations cannot be replaced. This is different from the entity ID of the service provider (SP) queried on our side.
+	// Required when manually specified. It must be non-empty and no more than 2,048 characters in length. Existing configurations cannot be replaced. This is different from the local Entity ID returned by SP queries.
 	//
 	// example:
 	//
 	// https://idp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+	// Required when manually specified. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
 	//
 	// example:
 	//
 	// https://idp.example.com/sso
 	LoginUrl *string `json:"loginUrl,omitempty" xml:"loginUrl,omitempty"`
-	// This parameter is required when you manually enter the configuration. It must be a non-empty array and use PEM X.509 certificate text. The system verifies the current validity period. A maximum of two certificates are allowed after deduplication.
+	// Required when manually specified. It must be a non-empty array using PEM X.509 certificate text. The current validity period is verified. A maximum of two certificates are allowed after deduplication.
 	//
 	// example:
 	//

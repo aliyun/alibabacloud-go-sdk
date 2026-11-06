@@ -128,7 +128,7 @@ func (s *GetCredentialResponseBody) Validate() error {
 type GetCredentialResponseBodyData struct {
 	// The list of agents bound to the credential.
 	BoundAgents []*GetCredentialResponseBodyDataBoundAgents `json:"boundAgents,omitempty" xml:"boundAgents,omitempty" type:"Repeated"`
-	// The creation time in UTC format compliant with RFC 3339.
+	// The creation time in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -140,25 +140,25 @@ type GetCredentialResponseBodyData struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The masked result of the credential content. When credentialType is apiKey, the value of apiKey is returned as asterisks (*) of the same length.
+	// The masked result of the credential content. For the apiKey type, the key mask is returned. For the mcpHeader type, only the header name is returned without the value.
 	//
 	// example:
 	//
 	// {"apiKey":"****************"}
 	CredentialMetadata *string `json:"credentialMetadata,omitempty" xml:"credentialMetadata,omitempty"`
-	// The credential type. Currently, only apiKey is supported.
+	// The credential type. Valid values: apiKey (API key) and mcpHeader (MCP request header).
 	//
 	// example:
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The credential description, which cannot exceed 256 characters in length.
+	// The credential description. The length cannot exceed 256 characters.
 	//
 	// example:
 	//
-	// API key used for calling model services in the production environment
+	// API key used to call the model service in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. It must be unique within the workspace, contain only letters, digits, periods (.), underscores (_), and hyphens (-), be 3 to 128 characters in length, and cannot use runtime reserved names.
+	// The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
@@ -170,15 +170,15 @@ type GetCredentialResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// Each item includes resourceType, resourceId, and resourceName. If the resource is deleted, resourceName is empty.
+	// The list of MCP services to which the credential applies.
 	ResourceRefs []*GetCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The application scope of the credential resource.
+	// The application scope of the credential. ALL indicates all scopes, and SPECIFIED indicates specified MCP services.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time of the last modification in UTC format compliant with RFC 3339.
+	// The time of the last modification in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -376,23 +376,23 @@ func (s *GetCredentialResponseBodyDataBoundAgents) Validate() error {
 }
 
 type GetCredentialResponseBodyDataResourceRefs struct {
-	// The unique identifier of the resource.
+	// The ID of the applicable MCP service.
 	//
 	// example:
 	//
-	// agent-xxxx
+	// mcp-example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource name. This field is empty if the resource is deleted.
 	//
 	// example:
 	//
-	// my-agent
+	// my-mcp-service
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The resource type, such as agent.
+	// The resource type. Currently, the value is mcpServer, which indicates an MCP service.
 	//
 	// example:
 	//
-	// agent
+	// mcpServer
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 }
 

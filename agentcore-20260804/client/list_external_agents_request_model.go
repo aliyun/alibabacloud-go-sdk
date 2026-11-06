@@ -16,13 +16,13 @@ type iListExternalAgentsRequest interface {
 }
 
 type ListExternalAgentsRequest struct {
-	// The maximum number of entries to return per page. Default value: 20. Valid values: 1 to 100.
+	// The maximum number of entries to return per page. Valid values: 0 to 100. If this parameter is omitted or set to 0, the default value is 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. You do not need to specify this parameter for the first call. For subsequent calls, use the nextToken value returned in the previous response.
+	// The pagination token. You can omit this parameter in the first call. For subsequent calls, use the nextToken value returned in the previous response.
 	//
 	// example:
 	//

@@ -132,13 +132,13 @@ type UpdateUserResponseBodyData struct {
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
-	// The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
+	// The authentication method of the user. A value of password indicates that the user is authenticated by using the local password of the workspace. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
 	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The creation time, in UTC and RFC 3339 format.
+	// The creation time. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type UpdateUserResponseBodyData struct {
 	//
 	// example:
 	//
-	// Zhang San
+	// John Doe
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The email address of the user. The email address can be up to 256 characters in length.
 	//
@@ -156,7 +156,7 @@ type UpdateUserResponseBodyData struct {
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The username. The username must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
+	// The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type UpdateUserResponseBodyData struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time of the last update, in UTC and RFC 3339 format.
+	// The time when the user was last modified. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//

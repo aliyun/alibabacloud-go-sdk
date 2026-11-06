@@ -18,9 +18,9 @@ type iUpdateMcpTemplateConfigShrinkRequest interface {
 }
 
 type UpdateMcpTemplateConfigShrinkRequest struct {
-	// The MCP configuration to update by the specified template version. The configuration must conform to the input schema of the template.
+	// The MCP configuration updated based on the specified template version, which must comply with the input schema of the template.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client token that is used to ensure the idempotency of the request.
+	// The reserved query request identifier. The current console backend does not read this parameter and does not provide idempotency guarantees such as deduplication or restoring the original processing result based on this identifier.
 	//
 	// example:
 	//

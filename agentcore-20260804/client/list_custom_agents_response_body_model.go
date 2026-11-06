@@ -36,41 +36,41 @@ type ListCustomAgentsResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code of the current request. The value is 200 if the request is successful.
+	// The HTTP status code of the request. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of custom agent summaries on the current page. To query the complete configuration and the execution result of the latest version, call the GetCustomAgent operation.
+	// The list of summaries for custom code or image agents on the current page. To query the complete configuration and the execution results of the latest version, call the GetCustomAgent operation.
 	Items []*ListCustomAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of items to return per page in this query.
+	// The maximum number of results to return per page for the current query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The processing result message for this request. The value is success if the request succeeds.
+	// The message that describes the processing result of the request. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The opaque token used to query the next page. An empty value indicates that no more pages are available. Pass this token as is in subsequent requests.
+	// The opaque token used to retrieve the next page of results. An empty value indicates that there are no more pages. Pass this token as-is in subsequent requests.
 	//
 	// example:
 	//
 	// djE6YWdlbnRjb3JlLmFnZW50Lmxpc3QuY3VzdG9tOjIw
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The unique identifier of the request, used to locate and troubleshoot issues.
+	// The unique identifier of the request, which is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
 	// 550E8400-E29B-41D4-A716-446655440000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was processed successfully. A value of true indicates success. A successful creation, update, or deletion does not mean that the background operation is complete.
+	// Indicates whether the request was processed successfully. true indicates that the request was successful. A successful creation, update, or deletion response does not mean that the background operation is complete.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of custom agents that meet the query conditions in the specified workspace.
+	// The total number of custom code or image agents that match the query conditions in the specified workspace.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ func (s *ListCustomAgentsResponseBody) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItems struct {
-	// The inbound access mode.
+	// The inbound access method.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type ListCustomAgentsResponseBodyItems struct {
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The unique identifier of the custom agent. You can obtain this ID from the response of the CreateCustomAgent or ListCustomAgents operation.
+	// The unique identifier of the custom code or image agent. You can obtain this ID from the response of the CreateCustomAgent or ListCustomAgents operation.
 	//
 	// example:
 	//
@@ -203,19 +203,19 @@ type ListCustomAgentsResponseBodyItems struct {
 	Artifact *ListCustomAgentsResponseBodyItemsArtifact `json:"artifact,omitempty" xml:"artifact,omitempty" type:"Struct"`
 	// The currently saved code package information.
 	CodePackageInfo *ListCustomAgentsResponseBodyItemsCodePackageInfo `json:"codePackageInfo,omitempty" xml:"codePackageInfo,omitempty" type:"Struct"`
-	// The creation mode of the agent. The value is CUSTOM for custom agents.
+	// The creation method of the agent. The value is CUSTOM for custom code or image agents.
 	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was created. The time is in ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment mode of the agent. Custom agents are deployed and managed by the platform. The value is MANAGED for custom agents.
+	// The deployment method of the agent. Custom code or image agents are deployed and managed by the platform. The value is MANAGED.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type ListCustomAgentsResponseBodyItems struct {
 	//
 	// 1
 	LatestSpecVersion *int64 `json:"latestSpecVersion,omitempty" xml:"latestSpecVersion,omitempty"`
-	// The name of the custom agent.
+	// The name of the custom code or image agent.
 	//
 	// example:
 	//
@@ -247,33 +247,19 @@ type ListCustomAgentsResponseBodyItems struct {
 	//
 	// STANDARD
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The overall status of the agent. Valid values:
-	//
-	// - Creating: The agent is being created.
-	//
-	// - Running: The agent is running.
-	//
-	// - Failed: The agent failed.
-	//
-	// - Updating: The agent is being updated.
-	//
-	// - Deleting: The agent is being deleted.
-	//
-	// - Deleted: The agent is deleted.
-	//
-	// To query the execution progress of the latest configuration, call the GetCustomAgent operation.
+	// The overall status of the agent. Valid values: Creating, Running, Failed, Updating, Deleting, and Deleted. To query the latest configuration execution progress, call GetCustomAgent.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the agent was last updated. The time follows the ISO 8601 format. The trailing Z indicates the UTC time zone. Fractional seconds are supported.
+	// The time when the agent was last updated. The time is in the ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds are supported.
 	//
 	// example:
 	//
 	// 2026-10-10T06:05:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// The ID of the workspace to which the custom agent belongs.
+	// The ID of the workspace to which the custom code or image agents belong.
 	//
 	// example:
 	//
@@ -529,7 +515,7 @@ type ListCustomAgentsResponseBodyItemsArtifactCode struct {
 	//
 	// python main.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The identifier of the code runtime environment in the currently saved configuration. The runtime image uses the saved snapshot. Adding a new version to the directory does not automatically change the existing configuration.
+	// The identifier of the code runtime environment in the currently saved configuration. The runtime image uses the saved snapshot. Adding a new version to the catalog does not automatically change the existing configuration.
 	//
 	// This parameter is required.
 	//
@@ -593,13 +579,13 @@ type ListCustomAgentsResponseBodyItemsArtifactContainer struct {
 	//
 	// python main.py
 	Entrypoint *string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty"`
-	// The ID of the ACR Enterprise instance.
+	// The ID of the ACR Enterprise Edition instance.
 	//
 	// example:
 	//
 	// cri-example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The namespace of Container Registry.
+	// The Container Registry namespace.
 	//
 	// example:
 	//
@@ -617,7 +603,7 @@ type ListCustomAgentsResponseBodyItemsArtifactContainer struct {
 	//
 	// v1
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	// The source type of the container image.
+	// The image source type. A value of acr indicates a Container Registry image. A value of custom indicates a custom image source. For the corresponding source configurations, refer to the descriptions of artifact.container and customImage.
 	//
 	// This parameter is required.
 	//
@@ -788,13 +774,7 @@ type ListCustomAgentsResponseBodyItemsProtocol struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The list of API paths corresponding to the current protocol.
 	Paths []*ListCustomAgentsResponseBodyItemsProtocolPaths `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The invoke Protocol Type. Valid values:
-	//
-	// - agui: AG-UI protocol.
-	//
-	// - openai-chat-completion: OpenAI Chat Completions compatible protocol.
-	//
-	// - custom: Custom protocol.
+	// The invocation protocol type. agui indicates the AG-UI protocol. openai-chat-completion indicates the OpenAI Chat Completions compatible protocol. custom indicates a custom protocol.
 	//
 	// This parameter is required.
 	//
@@ -853,7 +833,7 @@ func (s *ListCustomAgentsResponseBodyItemsProtocol) Validate() error {
 }
 
 type ListCustomAgentsResponseBodyItemsProtocolPaths struct {
-	// The description of the purpose for the current API path.
+	// The purpose description of the current API path.
 	//
 	// example:
 	//

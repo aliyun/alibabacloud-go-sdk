@@ -24,15 +24,15 @@ type iGetExternalAgentBootstrapOptionsResponseBody interface {
 }
 
 type GetExternalAgentBootstrapOptionsResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The access network information available for the external agent.
+	// The available access network information for the managed agent.
 	Data *GetExternalAgentBootstrapOptionsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *GetExternalAgentBootstrapOptionsResponseBody) Validate() error {
 }
 
 type GetExternalAgentBootstrapOptionsResponseBodyData struct {
-	// The external agent ID.
+	// The ID of the managed agent.
 	//
 	// example:
 	//

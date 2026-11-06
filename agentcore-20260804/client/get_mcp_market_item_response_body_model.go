@@ -44,13 +44,13 @@ type GetMcpMarketItemResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID used to locate and troubleshoot the request.
 	//
 	// example:
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -136,11 +136,11 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// example:
 	//
-	// An MCP service for querying knowledge bases
+	// MCP service for querying knowledge bases
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The template display metadata.
 	DisplayMetadata map[string]interface{} `json:"displayMetadata,omitempty" xml:"displayMetadata,omitempty"`
-	// The multilingual display content, organized by BCP-47 language tags. Falls back to default fields when the specified language is not matched.
+	// The multilingual display content organized by BCP-47 language tags. If a language is not matched, the default fields are used.
 	I18n map[string]*DataI18nValue `json:"i18n,omitempty" xml:"i18n,omitempty"`
 	// The icon URL of the MCP marketplace template.
 	//
@@ -148,7 +148,7 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// https://example.com/mcp-icon.png
 	IconUrl *string `json:"iconUrl,omitempty" xml:"iconUrl,omitempty"`
-	// The number of times the template has been installed.
+	// The template installation count.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// StreamableHTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The usage instructions for the MCP marketplace template.
+	// The MCP marketplace template instructions.
 	//
 	// example:
 	//

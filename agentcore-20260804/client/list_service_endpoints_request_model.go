@@ -28,49 +28,49 @@ type iListServiceEndpointsRequest interface {
 }
 
 type ListServiceEndpointsRequest struct {
-	// Filters the results by target agent ID.
+	// The ID of the target agent used to filter the results.
 	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// Filters the results by target agent version.
+	// The version of the target agent used to filter the results.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// Filters the results by collaboration component type. Valid values: MATRIX_CLIENT, MATRIX_FEDERATION, and ELEMENT_WEB.
+	// The collaboration component type used to filter the results. Valid values: MATRIX_CLIENT, MATRIX_FEDERATION, and ELEMENT_WEB.
 	//
 	// example:
 	//
 	// ELEMENT_WEB
 	CollaborationComponent *string `json:"collaborationComponent,omitempty" xml:"collaborationComponent,omitempty"`
-	// The maximum number of records to return per page. Valid values: 1 to 100. Default value: 20.
+	// The maximum number of entries to return on a single page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
+	// The cursor used to query the next page. Do not specify this parameter in the first call. For subsequent calls, specify the `nextToken` value returned in the previous call.
 	//
 	// example:
 	//
 	// djE6YWdlbnRjb3JlLnNlcnZpY2UtZW5kcG9pbnQubGlzdDoyMA
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// Filters the results by the workspace resource binding ID of the target collaboration component.
+	// The workspace resource binding ID of the target collaboration component used to filter the results.
 	//
 	// example:
 	//
 	// wrb-123456
 	ResourceBindingId *string `json:"resourceBindingId,omitempty" xml:"resourceBindingId,omitempty"`
-	// Filters the results by service endpoint status. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
+	// The service endpoint status used to filter the results. Valid values: CREATING, READY, UPDATING, DEGRADED, DISABLED, and DELETING.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Filters the results by target type. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
+	// The target type used to filter the results. Valid values: AGENT_VERSION and TEAM_COLLABORATION.
 	//
 	// example:
 	//

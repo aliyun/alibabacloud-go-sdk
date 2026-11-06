@@ -16,7 +16,7 @@ type iGetSkillVersionDetailResponseBody interface {
 }
 
 type GetSkillVersionDetailResponseBody struct {
-	// The response data.
+	// The returned data.
 	Data *GetSkillVersionDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ type GetSkillVersionDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// A sample description that explains the purpose of the resource
+	// Sample description to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name.
 	//
@@ -74,15 +74,15 @@ type GetSkillVersionDetailResponseBodyData struct {
 	//
 	// skill-example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The resource mapping in which the key is the resource name.
+	// The resource mapping, where the key is the resource name.
 	Resource map[string]*DataResourceValue `json:"resource,omitempty" xml:"resource,omitempty"`
-	// The Skill card content (SKILL.md).
+	// The skill card content (SKILL.md).
 	//
 	// example:
 	//
-	// # Sample Skill
+	// # Sample skill
 	//
-	// Used to demonstrate Skill document content
+	// Used to demonstrate skill document content
 	SkillMd *string `json:"skillMd,omitempty" xml:"skillMd,omitempty"`
 	// The workspace ID.
 	//

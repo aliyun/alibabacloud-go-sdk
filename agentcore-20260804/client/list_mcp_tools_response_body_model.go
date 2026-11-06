@@ -44,7 +44,7 @@ type ListMcpToolsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list data.
 	Items []*ListMcpToolsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of results per page.
+	// The maximum number of entries returned per page.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListMcpToolsResponseBody struct {
 	//
 	// A1B2C3D4-E5F6-47A8-90AB-CDEF12345678
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// The total number of records.
 	//

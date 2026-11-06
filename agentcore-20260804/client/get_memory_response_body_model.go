@@ -50,7 +50,7 @@ type GetMemoryResponseBody struct {
 	//
 	// 01A00000-0000-0000-0000-000000000001
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -128,7 +128,7 @@ func (s *GetMemoryResponseBody) Validate() error {
 type GetMemoryResponseBodyData struct {
 	// The memory content.
 	Content *GetMemoryResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type GetMemoryResponseBodyData struct {
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The memory scope.
 	Scope *GetMemoryResponseBodyDataScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The last update time.
+	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -259,19 +259,19 @@ func (s *GetMemoryResponseBodyDataContent) Validate() error {
 }
 
 type GetMemoryResponseBodyDataScope struct {
-	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes, and it must not contain / or *. This field is not returned if the memory is not associated with an agent ID.
+	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes. Slashes (/) and asterisks (*) are not allowed. This field is not returned if the memory is not associated with an agent ID.
 	//
 	// example:
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The session ID. The length is limited to 1 to 128 UTF-8 bytes, and it must not contain / or *. This field is not returned if the memory is not associated with a session ID.
+	// The session ID. The length is limited to 1 to 128 UTF-8 bytes. Slashes (/) and asterisks (*) are not allowed. This field is not returned if the memory is not associated with a session ID.
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. The length is limited to 1 to 128 UTF-8 bytes, and it must not contain / or *. This field is not returned if the memory is not associated with a user ID.
+	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. Slashes (/) and asterisks (*) are not allowed. This field is not returned if the memory is not associated with a user ID.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type UpdateWorkspaceResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The details of the updated workspace.
+	// The updated workspace details.
 	Data *UpdateWorkspaceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -44,7 +44,7 @@ type UpdateWorkspaceResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *UpdateWorkspaceResponseBody) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyData struct {
-	// The authorization status of OSS storage.
+	// The OSS storage authorization status.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type UpdateWorkspaceResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *UpdateWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The ID of the region where the workspace resides.
+	// The region ID of the workspace.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type UpdateWorkspaceResponseBodyData struct {
 	//
 	// tenant-123456
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -281,13 +281,13 @@ func (s *UpdateWorkspaceResponseBodyData) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this feature is disabled, the public ingress for all agent endpoints in the workspace is closed. After this feature is re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress for all agent endpoints in the workspace is closed, and the original public network ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected, and collaboration and Element Web ingress are not controlled by this parameter.
 	//
 	// example:
 	//
@@ -342,7 +342,7 @@ func (s *UpdateWorkspaceResponseBodyDataNetworkConfiguration) Validate() error {
 }
 
 type UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
-	// Specifies whether to enable the VPC network.
+	// Specifies whether to enable VPC networking.
 	//
 	// example:
 	//

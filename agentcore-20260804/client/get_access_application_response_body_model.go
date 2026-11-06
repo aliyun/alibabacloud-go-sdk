@@ -38,7 +38,7 @@ type GetAccessApplicationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAccessApplicationResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -168,7 +168,7 @@ type GetAccessApplicationResponseBodyData struct {
 	//
 	// example:
 	//
-	// RAM
+	// LOCAL
 	UserSource *string `json:"userSource,omitempty" xml:"userSource,omitempty"`
 	// The workspace ID.
 	//

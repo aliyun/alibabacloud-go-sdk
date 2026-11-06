@@ -16,7 +16,7 @@ type iListSkillReferencesResponseBody interface {
 }
 
 type ListSkillReferencesResponseBody struct {
-	// The skill reference relationship data returned by the paging query.
+	// The skill reference data returned in the paging query.
 	Data *ListSkillReferencesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID used for troubleshooting.
 	//
@@ -64,19 +64,19 @@ func (s *ListSkillReferencesResponseBody) Validate() error {
 type ListSkillReferencesResponseBodyData struct {
 	// The list of skill reference relationships on the current page.
 	PageItems []*ListSkillReferencesResponseBodyDataPageItems `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
-	// The current page number, starting from 1.
+	// The current page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The total number of available pages.
+	// The total number of pages.
 	//
 	// example:
 	//
 	// 5
 	PagesAvailable *int32 `json:"pagesAvailable,omitempty" xml:"pagesAvailable,omitempty"`
-	// The total number of reference relationships that meet the conditions.
+	// The total number of reference relationships that meet the specified conditions.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ func (s *ListSkillReferencesResponseBodyData) Validate() error {
 }
 
 type ListSkillReferencesResponseBodyDataPageItems struct {
-	// The ID of the referencing entity, which is the identifier of the agent or agent spec.
+	// The ID of the referencing entity, which is the identifier of the agent or AgentSpec.
 	//
 	// example:
 	//

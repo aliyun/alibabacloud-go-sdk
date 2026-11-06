@@ -45,7 +45,7 @@ func (s *UpdateSkillScopeRequest) Validate() error {
 }
 
 type UpdateSkillScopeRequestBody struct {
-	// The visibility.
+	// The visibility scope.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iInstallWorkspacePluginShrinkRequest interface {
 }
 
 type InstallWorkspacePluginShrinkRequest struct {
-	// The request body for installing a plugin.
+	// The request body for installing the component.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The client idempotency token.
 	//

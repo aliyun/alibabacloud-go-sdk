@@ -14,7 +14,7 @@ type iCreateIdentityProviderRequest interface {
 }
 
 type CreateIdentityProviderRequest struct {
-	// The request content for binding an external identity provider.
+	// The request body for binding an external identity provider.
 	Body *CreateIdentityProviderRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
 }
 
@@ -57,11 +57,11 @@ type CreateIdentityProviderRequestBody struct {
 	LoginEnabled *bool `json:"loginEnabled,omitempty" xml:"loginEnabled,omitempty"`
 	// The application configuration of the external identity provider. When you bind DingTalk, you must provide appKey, appSecret, and corpId. When you bind Lark, you must provide appId and appSecret.
 	Metadata *CreateIdentityProviderRequestBodyMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// Specifies whether to enable organization member synchronization. If enabled, the external identity provider synchronizes organization members as workspace users.
+	// Specifies whether to enable organization member synchronization. When enabled, organization members are synchronized as workspace users by the external identity provider.
 	SyncEnabled *bool `json:"syncEnabled,omitempty" xml:"syncEnabled,omitempty"`
-	// Controls the first synchronization when DingTalk or Lark is bound. If omitted or set to null, the default value is true. If set to false, only the configuration is saved, and synchronization is explicitly triggered later. CustomSSO does not use the vendor pull link.
+	// Controls the initial synchronization when DingTalk or Feishu is bound. If this parameter is omitted or set to null, the default value is true. If this parameter is set to false, only the configuration is saved, and synchronization must be explicitly triggered later. CustomSSO does not use the provider pull channel.
 	SyncOnBind *bool `json:"syncOnBind,omitempty" xml:"syncOnBind,omitempty"`
-	// Retains the department-based synchronization scope definition. If omitted during creation, the default value is AllAuthorized. The first vendor synchronization is determined by syncOnBind. If omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically perform full synchronization.
+	// Uses the department-based synchronization scope definition. If this parameter is omitted during creation, the default value is AllAuthorized. The initial provider synchronization is determined by syncOnBind. If this parameter is omitted or set to null during an update, the original value is retained. Updating and saving the scope does not automatically trigger full synchronization.
 	SyncScope *CreateIdentityProviderRequestBodySyncScope `json:"syncScope,omitempty" xml:"syncScope,omitempty" type:"Struct"`
 }
 
@@ -154,7 +154,7 @@ type CreateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexampleappkey01
 	AppKey *string `json:"appKey,omitempty" xml:"appKey,omitempty"`
-	// Required. The secret of the external identity provider application. This parameter is used only for writing and is not returned by query API operations.
+	// Required. The secret of the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type CreateIdentityProviderRequestBodyMetadata struct {
 	//
 	// dingexamplecorpid01
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by query API operations.
+	// The data encryption key for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
 	//
 	// example:
 	//
 	// example-encrypt-key
 	EncryptKey *string `json:"encryptKey,omitempty" xml:"encryptKey,omitempty"`
-	// The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for writing and is not returned by query API operations.
+	// The verification token for event subscription. The value must be the same as the one configured in the external identity provider application. This parameter is used only for write operations and is not returned by query operations.
 	//
 	// example:
 	//
@@ -247,13 +247,13 @@ func (s *CreateIdentityProviderRequestBodyMetadata) Validate() error {
 }
 
 type CreateIdentityProviderRequestBodySyncScope struct {
-	// When the mode is SelectedDepartments, the list must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
+	// When the mode is SelectedDepartments, this parameter must contain at least one non-empty department ID, which should be obtained from ListIdentityProviderDepartments. When the mode is AllAuthorized, pass an empty array or omit this parameter.
 	//
 	// example:
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// AllAuthorized: the full authorization scope, which is limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
+	// AllAuthorized: the entire authorized scope, which is limited by the application address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When you explicitly submit syncScope, you must provide a valid mode, which is verified by the backend.
 	//
 	// example:
 	//

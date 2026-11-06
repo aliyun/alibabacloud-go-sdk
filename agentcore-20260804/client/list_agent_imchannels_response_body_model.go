@@ -30,19 +30,19 @@ type iListAgentIMChannelsResponseBody interface {
 }
 
 type ListAgentIMChannelsResponseBody struct {
-	// The business status code. The value SUCCESS indicates a successful request.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value 200 indicates a successful request.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of IM channels.
+	// The IM channels.
 	Items []*ListAgentIMChannelsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned per page for this request.
 	//
@@ -50,13 +50,13 @@ type ListAgentIMChannelsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The request processing result message.
+	// The result message of the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates that the last page has been reached.
+	// The token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type ListAgentIMChannelsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the specified conditions.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//
@@ -189,13 +189,7 @@ type ListAgentIMChannelsResponseBodyItems struct {
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// The channel behavior configuration.
 	ChannelConfig *ListAgentIMChannelsResponseBodyItemsChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// The IM channel type. Valid values:
-	//
-	// - DINGTALK: DingTalk.
-	//
-	// - FEISHU: Lark.
-	//
-	// - WECOM: WeCom.
+	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
 	//
 	// example:
 	//
@@ -207,11 +201,11 @@ type ListAgentIMChannelsResponseBodyItems struct {
 	//
 	// 2026-01-01T00:00:00Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The channel credential summary. Only non-sensitive fields and the names of configured secret fields are returned. Secret values are not returned.
+	// The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
 	CredentialSummary *ListAgentIMChannelsResponseBodyItemsCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
-	// Indicates whether the IM channel is enabled. Default value upon creation: true.
+	// Specifies whether the IM channel is enabled. Default value: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The public network access URL of the attached ServiceEndpoint.
+	// The public network access address of the attached ServiceEndpoint.
 	//
 	// example:
 	//
@@ -223,25 +217,13 @@ type ListAgentIMChannelsResponseBodyItems struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public access URL.
+	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint URL.
 	//
 	// example:
 	//
 	// se-1
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The IM channel status. Valid values:
-	//
-	// - CREATING: The channel is being created.
-	//
-	// - READY: The channel is ready.
-	//
-	// - UPDATING: The channel is being updated.
-	//
-	// - FAILED: The channel creation or update failed.
-	//
-	// - DELETING: The channel is being deleted.
-	//
-	// - DELETE_FAILED: The channel deletion failed.
+	// The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), and DELETE_FAILED (Delete failed).
 	//
 	// example:
 	//
