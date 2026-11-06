@@ -28,15 +28,15 @@ type GetJobSanityCheckResultRequest struct {
 	SanityCheckNumber *int32 `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
 	// The phase of the computing power health check. Valid values:
 	//
-	// - CheckInit: environment preparation.
+	// - CheckInit: environment preparation
 	//
-	// - DeviceCheck: single-device computing power check.
+	// - DeviceCheck: single-device computing power check
 	//
-	// - SingleNodeCommCheck: intra-node communication check.
+	// - SingleNodeCommCheck: intra-node communication check
 	//
-	// - TwoNodeCommCheck: inter-node communication check between two nodes.
+	// - TwoNodeCommCheck: inter-node communication check between two nodes
 	//
-	// - AllNodeCommCheck: communication check across all nodes.
+	// - AllNodeCommCheck: all-node communication check
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iGetWebTerminalRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetContainerName(v string) *GetWebTerminalRequest
+	GetContainerName() *string
 	SetIsShared(v bool) *GetWebTerminalRequest
 	GetIsShared() *bool
 	SetPodUid(v string) *GetWebTerminalRequest
@@ -16,17 +18,23 @@ type iGetWebTerminalRequest interface {
 }
 
 type GetWebTerminalRequest struct {
-	// Specifies whether to create a shared link for accessing the container. Valid values:
+	// The name of the container. If this parameter is not specified, the WebTerminal of the primary container is accessed.
 	//
-	// - true: Returns a shared link for accessing the container. The link expires after 30 seconds and can be used only once. After someone accesses the container through this link, subsequent requests using the same link are invalid.
+	// example:
 	//
-	// - false: Returns a regular link for accessing the container. Alibaba Cloud identity authentication is required when using this link. The link expires after 30 seconds.
+	// sidecar-test
+	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	// Specifies whether to create a shareable link for accessing the container. Valid values:
+	//
+	// - true: Returns a shareable link for accessing the container. The link expires after 30 seconds and can be used only once. After the container is accessed through this link, subsequent requests to access the container by using the same link become invalid.
+	//
+	// - false: Returns a regular link for accessing the container. Alibaba Cloud identity verification is required when you use the link. The link expires after 30 seconds.
 	//
 	// example:
 	//
 	// true
 	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// Pod UID。
+	// The Pod UID.
 	//
 	// example:
 	//
@@ -42,12 +50,21 @@ func (s GetWebTerminalRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetWebTerminalRequest) GetContainerName() *string {
+	return s.ContainerName
+}
+
 func (s *GetWebTerminalRequest) GetIsShared() *bool {
 	return s.IsShared
 }
 
 func (s *GetWebTerminalRequest) GetPodUid() *string {
 	return s.PodUid
+}
+
+func (s *GetWebTerminalRequest) SetContainerName(v string) *GetWebTerminalRequest {
+	s.ContainerName = &v
+	return s
 }
 
 func (s *GetWebTerminalRequest) SetIsShared(v bool) *GetWebTerminalRequest {

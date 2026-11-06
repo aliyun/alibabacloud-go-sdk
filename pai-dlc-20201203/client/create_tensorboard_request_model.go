@@ -110,7 +110,7 @@ type CreateTensorboardRequest struct {
 	//
 	// 1000
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The extension field of custom dataset, in JSON format. Currently, only MountPath is supported, which specifies the custom mount path of custom dataset.
+	// The extended fields of custom dataset in JSON format. Currently, MountPath is supported, which specifies the custom mount path of custom dataset.
 	//
 	// example:
 	//
@@ -128,9 +128,9 @@ type CreateTensorboardRequest struct {
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The resource quota ID. This parameter is required when you create a TensorBoard job by using resources from a resource quota. <props="china">For more information about how to obtain the resource quota ID, see [ListQuotas](https://help.aliyun.com/document_detail/2628071.html).
 	//
-	// <props="china">Released only on the China site.
+	// <props="china">Available only on the China site.
 	//
-	// Currently, only whitelisted users can create TensorBoard jobs by using resources from a resource quota. To use this feature, contact us.
+	// Currently, only whitelisted users can use resource quota resources to create TensorBoard jobs. To use this feature, contact us.
 	//
 	// example:
 	//
@@ -162,9 +162,9 @@ type CreateTensorboardRequest struct {
 	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
 	// The list of dataset configurations mounted to the TensorBoard job.
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	// The pay-as-you-go configuration information of the TensorBoard instance, which is used to create a TensorBoard job that uses pay-as-you-go resources.
+	// The pay-as-you-go configuration information of TensorBoard, which is used to create a TensorBoard job that uses pay-as-you-go resources.
 	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	// The URI of the dataset:
+	// The URI of the dataset.
 	//
 	// - If DataSourceType is set to OSS, the format is `oss://[oss-bucket].[endpoint]/[path]`.
 	//

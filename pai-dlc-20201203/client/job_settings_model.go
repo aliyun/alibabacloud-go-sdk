@@ -33,6 +33,8 @@ type iJobSettings interface {
 	GetEnableDSWDev() *bool
 	SetEnableErrorMonitoringInAIMaster(v bool) *JobSettings
 	GetEnableErrorMonitoringInAIMaster() *bool
+	SetEnableIntraJobSSH(v bool) *JobSettings
+	GetEnableIntraJobSSH() *bool
 	SetEnableOssAppend(v bool) *JobSettings
 	GetEnableOssAppend() *bool
 	SetEnableRDMA(v bool) *JobSettings
@@ -66,9 +68,9 @@ type iJobSettings interface {
 type JobSettings struct {
 	// The additional advanced parameter settings.
 	AdvancedSettings map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
-	// Specifies whether to allocate all RDMA NICs.
+	// Specifies whether to mount all RDMA NICs.
 	AllocateAllRDMADevices *bool `json:"AllocateAllRDMADevices,omitempty" xml:"AllocateAllRDMADevices,omitempty"`
-	// Specifies whether to allow jobs to be scheduled to nodes that are marked as unschedulable or are in the workspace blacklist. If enabled, node status checks are skipped and the corresponding bypass configurations are applied.
+	// Specifies whether to allow the job to be scheduled to nodes that are marked as unschedulable or included in the workspace blacklist. If enabled, node status checks are skipped and corresponding bypass configurations are applied.
 	AllowUnschedulableNodes *bool `json:"AllowUnschedulableNodes,omitempty" xml:"AllowUnschedulableNodes,omitempty"`
 	// The ID of the user associated with the job.
 	//
@@ -84,7 +86,7 @@ type JobSettings struct {
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
 	// The DataJuicer job configuration.
 	DataJuicerConfig *DataJuicerConfig `json:"DataJuicerConfig,omitempty" xml:"DataJuicerConfig,omitempty"`
-	// Specifies whether to skip the ECS inventory check. Valid values:
+	// Specifies whether to skip the inventory check. Valid values:
 	//
 	// - true
 	//
@@ -106,7 +108,7 @@ type JobSettings struct {
 	//
 	// 5
 	ElasticSpotJobMaxRestartTimes *int32 `json:"ElasticSpotJobMaxRestartTimes,omitempty" xml:"ElasticSpotJobMaxRestartTimes,omitempty"`
-	// The CPU affinity settings. These settings take effect only when general-purpose computing subscription resources are used.
+	// The CPU affinity settings. This setting takes effect only when general-purpose computing subscription resources are used.
 	//
 	// example:
 	//
@@ -124,7 +126,17 @@ type JobSettings struct {
 	//
 	// false
 	EnableErrorMonitoringInAIMaster *bool `json:"EnableErrorMonitoringInAIMaster,omitempty" xml:"EnableErrorMonitoringInAIMaster,omitempty"`
-	// Specifies whether to allow OSS append writes. Valid values:
+	// Specifies whether to allow job nodes to communicate with each other over SSH. The image must have SSHD built-in. This parameter takes effect only for PyTorch jobs that use self-managed computing resources. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	EnableIntraJobSSH *bool `json:"EnableIntraJobSSH,omitempty" xml:"EnableIntraJobSSH,omitempty"`
+	// Specifies whether to allow OSS append operations. Valid values:
 	//
 	// - true
 	//
@@ -144,7 +156,7 @@ type JobSettings struct {
 	//
 	// true
 	EnableRDMA *bool `json:"EnableRDMA,omitempty" xml:"EnableRDMA,omitempty"`
-	// Specifies whether to enable computing power health checks for the job. Valid values:
+	// Specifies whether to enable the computing power health check for the job. Valid values:
 	//
 	// - true
 	//
@@ -154,7 +166,7 @@ type JobSettings struct {
 	//
 	// true
 	EnableSanityCheck *bool `json:"EnableSanityCheck,omitempty" xml:"EnableSanityCheck,omitempty"`
-	// Specifies whether to allow the job to use tide resources. Valid values:
+	// Specifies whether to allow the job to use tidal resources. Valid values:
 	//
 	// - true
 	//
@@ -164,7 +176,7 @@ type JobSettings struct {
 	//
 	// true
 	EnableTideResource *bool `json:"EnableTideResource,omitempty" xml:"EnableTideResource,omitempty"`
-	// The configuration parameters for fault tolerance monitoring when it is enabled, such as specifying whether to enable log hang-based detection.
+	// The configuration parameters for fault tolerance monitoring after it is enabled, such as specifying whether to enable log hang-based detection.
 	//
 	// example:
 	//
@@ -190,19 +202,19 @@ type JobSettings struct {
 	//
 	// AcceptQuotaOverSold
 	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
-	// The workflow ID.
+	// The pipeline ID.
 	//
 	// example:
 	//
 	// pid-12****
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The configuration parameters for computing power health checks.
+	// The configuration parameters for the computing power health check.
 	//
 	// example:
 	//
 	// --sanity-check-timing=AfterJobFaultTolerant --sanity-check-timeout-ops=MarkJobFail
 	SanityCheckArgs *string `json:"SanityCheckArgs,omitempty" xml:"SanityCheckArgs,omitempty"`
-	// The shell used to execute job commands. Valid values: /bin/sh and /bin/bash.
+	// The shell used to execute job commands, such as /bin/sh or /bin/bash.
 	//
 	// example:
 	//
@@ -272,6 +284,10 @@ func (s *JobSettings) GetEnableDSWDev() *bool {
 
 func (s *JobSettings) GetEnableErrorMonitoringInAIMaster() *bool {
 	return s.EnableErrorMonitoringInAIMaster
+}
+
+func (s *JobSettings) GetEnableIntraJobSSH() *bool {
+	return s.EnableIntraJobSSH
 }
 
 func (s *JobSettings) GetEnableOssAppend() *bool {
@@ -387,6 +403,11 @@ func (s *JobSettings) SetEnableDSWDev(v bool) *JobSettings {
 
 func (s *JobSettings) SetEnableErrorMonitoringInAIMaster(v bool) *JobSettings {
 	s.EnableErrorMonitoringInAIMaster = &v
+	return s
+}
+
+func (s *JobSettings) SetEnableIntraJobSSH(v bool) *JobSettings {
+	s.EnableIntraJobSSH = &v
 	return s
 }
 

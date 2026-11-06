@@ -36,7 +36,7 @@ type UpdateJobTemplateResponseBody struct {
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// The ID of the request, used for diagnostics and troubleshooting.
+	// The ID of the request, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type UpdateJobTemplateResponseBody struct {
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// Indicates whether a new version was created.
+	// Indicates whether a new version is created.
 	//
 	// example:
 	//

@@ -26,25 +26,25 @@ type iUpdateJobTemplateRequest interface {
 }
 
 type UpdateJobTemplateRequest struct {
-	// The field constraint rules. The key is a JSONPath expression and the value is the constraint type: locked (cannot be overridden), overridable (can be overridden), or required (mandatory). Must be provided together with Content. You cannot update this field independently.
+	// The field constraint rules. The key is a JSONPath expression, and the value is the constraint type: locked (cannot be overridden), overridable (can be overridden), or required (required). This parameter must be provided together with Content and cannot be updated separately.
 	//
 	// example:
 	//
 	// {\\"JobSpecs[0].Image\\":\\"locked\\",\\"UserCommand\\":\\"locked\\",\\"JobType\\":\\"locked\\"}
 	Constraints map[string]interface{} `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// The configuration content of the task template. Supports all parameter fields of the CreateJob operation, passed in JSON format. Providing this field creates a new version.
+	// The configuration content of the job template. It supports all parameter fields of the CreateJob operation and must be passed in JSON format. A new version is created when this parameter is provided.
 	//
 	// example:
 	//
 	// {\\"WorkspaceId\\":\\"15****05\\",\\"JobType\\":\\"PyTorchJob\\",\\"UserCommand\\":\\"echo hello\\",\\"JobSpecs\\":[{\\"Type\\":\\"Worker\\",\\"PodCount\\":1,\\"Image\\":\\"dsw-registry-vpc.cn-hangzhou.cr.aliyuncs.com/pai/pytorch:2.8.0-gpu-py313-cu129-ubuntu22.04-3995b779-1764361782\\",\\"EcsSpec\\":\\"ecs.gn7i-c8g1.2xlarge\\"}],\\"ResourceType\\":\\"ECS\\",\\"_ResourcePaymentType\\":\\"PostPaid\\",\\"CredentialConfig\\":{\\"EnableCredentialInject\\":false},\\"Accessibility\\":\\"PRIVATE\\",\\"Settings\\":{\\"JobReservedMinutes\\":0,\\"Tags\\":{}}}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The description of the task template.
+	// The description of the job template.
 	//
 	// example:
 	//
 	// Template description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user-defined key-value pair metadata.
+	// The user-defined key-value metadata.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type UpdateJobTemplateRequest struct {
 	//
 	// true
 	SetAsDefault *bool `json:"SetAsDefault,omitempty" xml:"SetAsDefault,omitempty"`
-	// The name of the task template.
+	// The name of the job template.
 	//
 	// example:
 	//
 	// job-template-example-1778047****
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// Invalid field.
+	// The invalid field.
 	//
 	// example:
 	//

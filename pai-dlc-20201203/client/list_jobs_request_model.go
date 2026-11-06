@@ -114,7 +114,7 @@ type ListJobsRequest struct {
 	//
 	// This is a training job
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The job name. Fuzzy match is supported. The match is case-insensitive and does not support wildcards. For example, if you enter test, it can match test-job1, job-test, job-test2, or job-Test, but cannot match job-t1. Default value: empty, which indicates any job name.
+	// The job name. Supports fuzzy match. The match is case-insensitive and does not support wildcards. For example, if you enter test, it can match test-job1, job-test, job-test2, or job-Test, but it cannot match job-t1. Default value: empty, which indicates any job name.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ListJobsRequest struct {
 	//
 	// wildcard
 	DisplayNameSearchMode *string `json:"DisplayNameSearchMode,omitempty" xml:"DisplayNameSearchMode,omitempty"`
-	// Specifies whether to filter jobs that run on specified nodes.
+	// Specifies whether to filter jobs that are configured to run on specified nodes.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ type ListJobsRequest struct {
 	//
 	// 2025-04-16T07:26:41Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to retrieve jobs across workspaces. This parameter must be used together with ShowOwn=true to query the jobs recently submitted by the current user.
+	// Specifies whether to retrieve the job list across workspaces. This parameter must be used together with the ShowOwn=true parameter to query the jobs recently submitted by the current user.
 	//
 	// example:
 	//
 	// false
 	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
-	// Uses the full-text index to retrieve data in the images field. Chinese and English tokenization are supported.
+	// Retrieves data from the full-text index in the image (images) field. Chinese and English tokenization is supported.
 	//
 	// example:
 	//
@@ -178,19 +178,19 @@ type ListJobsRequest struct {
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The field name for numeric range filtering. This parameter must be used together with NumericRangeMin and NumericRangeMax.
+	// The field name used for numeric range filtering. This parameter must be used together with NumericRangeMin and NumericRangeMax.
 	//
 	// example:
 	//
 	// RequestGPU
 	NumericRangeField *string `json:"NumericRangeField,omitempty" xml:"NumericRangeField,omitempty"`
-	// The maximum value for numeric range filtering, inclusive. This parameter must be used together with NumericRangeField.
+	// The maximum value (inclusive) for numeric range filtering. This parameter must be used together with NumericRangeField.
 	//
 	// example:
 	//
 	// 8
 	NumericRangeMax *int64 `json:"NumericRangeMax,omitempty" xml:"NumericRangeMax,omitempty"`
-	// The minimum value for numeric range filtering, inclusive. This parameter must be used together with NumericRangeField.
+	// The minimum value (inclusive) for numeric range filtering. This parameter must be used together with NumericRangeField.
 	//
 	// example:
 	//
@@ -206,13 +206,13 @@ type ListJobsRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The idle resource information. Valid values:
+	// The off-peak resource information. Valid values:
 	//
 	// - ForbiddenQuotaOverSold
 	//
 	// - ForceQuotaOverSold
 	//
-	// - AcceptQuotaOverSold-true: true indicates that the job actually used idle resources.
+	// - AcceptQuotaOverSold-true: true indicates that the job actually used off-peak resources.
 	//
 	// - AcceptQuotaOverSold-false: false indicates that the job actually used guaranteed resources.
 	//
@@ -220,13 +220,13 @@ type ListJobsRequest struct {
 	//
 	// ForbiddenQuotaOverSold
 	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
-	// The page number for paging in a paged query. The start value is 1. Default value: 1.
+	// The page number for paging in a paged query. The starting value is 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of jobs to return on each page.
+	// The number of jobs to return per page.
 	//
 	// example:
 	//
@@ -244,13 +244,13 @@ type ListJobsRequest struct {
 	//
 	// PostPaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The pipeline ID used to filter jobs.
+	// The pipeline ID. Only jobs created by this pipeline are returned.
 	//
 	// example:
 	//
 	// flow-*******
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// Uses the full-text index to retrieve data in the reason field of the failed node. Chinese and English tokenization are supported.
+	// Retrieves data from the full-text index in the failed node reason field. Chinese and English tokenization is supported.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type ListJobsRequest struct {
 	//
 	// true
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// The field by which to sort. Valid values:
+	// The field used for sorting. Valid values:
 	//
 	// - DisplayName
 	//
@@ -304,7 +304,7 @@ type ListJobsRequest struct {
 	//
 	// - Queuing
 	//
-	// - Bidding (currently limited to Lingjun spot jobs)
+	// - Bidding (currently only available for Lingjun spot jobs)
 	//
 	// - EnvPreparing
 	//
@@ -332,7 +332,7 @@ type ListJobsRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags used for filtering.
 	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The template ID used to filter jobs created by the specified template.
+	// The template ID used to filter jobs created by a specified template.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ type ListJobsRequest struct {
 	//
 	// GmtFinishTime
 	TimeRangeField *string `json:"TimeRangeField,omitempty" xml:"TimeRangeField,omitempty"`
-	// Uses the full-text index to retrieve data in the user_command field. Chinese and English tokenization are supported.
+	// Retrieves data from the full-text index in the user command (user_command) field. Chinese and English tokenization is supported.
 	//
 	// example:
 	//

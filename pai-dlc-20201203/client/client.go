@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("pai-dlc")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("pai-dlc.aliyuncs.com"),
@@ -103,13 +111,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates a job to run in a cluster. You can specify configurations such as datasource config, code sources, startup commands, and compute resources for each node where the job runs.
+// Creates a job to run in a cluster. You can specify the data source configuration, code source configuration, startup command, and compute resource configuration for each node where the job runs.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before you call this operation.
 //
-//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
+//	Notice: The total length of the parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -260,13 +268,13 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// Creates a job to run in a cluster. You can specify configurations such as datasource config, code sources, startup commands, and compute resources for each node where the job runs.
+// Creates a job to run in a cluster. You can specify the data source configuration, code source configuration, startup command, and compute resource configuration for each node where the job runs.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC before you call this operation.
 //
-//	Notice: The total length of the CreateJob operation parameters, including system-generated parameters, cannot exceed 65,536 bytes.
+//	Notice: The total length of the parameters for the CreateJob operation, including system-generated parameters, cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -563,7 +571,7 @@ func (client *Client) CreateSignal(JobId *string, request *CreateSignalRequest) 
 
 // Summary:
 //
-// Creates a TensorBoard instance by using a node or a specified datasource config.
+// Creates a TensorBoard instance by using a node or specifying a datasource config.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -686,7 +694,7 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 
 // Summary:
 //
-// Creates a TensorBoard instance by using a node or a specified datasource config.
+// Creates a TensorBoard instance by using a node or specifying a datasource config.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -883,7 +891,7 @@ func (client *Client) DeleteRayHistoryServer(RayHistoryServerId *string, request
 
 // Summary:
 //
-// Deletes a stopped TensorBoard.
+// Deletes a stopped Tensorboard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -930,7 +938,7 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 
 // Summary:
 //
-// Deletes a stopped TensorBoard.
+// Deletes a stopped Tensorboard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -1253,7 +1261,7 @@ func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest
 
 // Summary:
 //
-// Retrieves a specific computing power health check result for a DLC job.
+// Retrieves the results of a specific computing power health check for a DLC job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -1308,7 +1316,7 @@ func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request 
 
 // Summary:
 //
-// Retrieves a specific computing power health check result for a DLC job.
+// Retrieves the results of a specific computing power health check for a DLC job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -1919,7 +1927,7 @@ func (client *Client) GetSignal(JobId *string, SignalId *string, request *GetSig
 
 // Summary:
 //
-// Retrieves the details of a TensorBoard.
+// Retrieves the details of a Tensorboard.
 //
 // @param request - GetTensorboardRequest
 //
@@ -1974,7 +1982,7 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 
 // Summary:
 //
-// Retrieves the details of a TensorBoard.
+// Retrieves the details of a Tensorboard.
 //
 // @param request - GetTensorboardRequest
 //
@@ -2137,7 +2145,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// Provides the method and steps to obtain an HTTP link for accessing a container.
+// Provides the methods and steps to obtain the HTTP link for container access.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -2154,6 +2162,10 @@ func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ContainerName) {
+		query["ContainerName"] = request.ContainerName
+	}
+
 	if !dara.IsNil(request.IsShared) {
 		query["IsShared"] = request.IsShared
 	}
@@ -2188,7 +2200,7 @@ func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, re
 
 // Summary:
 //
-// Provides the method and steps to obtain an HTTP link for accessing a container.
+// Provides the methods and steps to obtain the HTTP link for container access.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -2461,7 +2473,7 @@ func (client *Client) ListJobTemplates(request *ListJobTemplatesRequest) (_resul
 
 // Summary:
 //
-// Queries a list of jobs with support for pagination, sorting, and conditional filtering.
+// Queries a list of jobs, with support for pagination, sorting, and conditional filtering.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -2658,7 +2670,7 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 // Summary:
 //
-// Queries a list of jobs with support for pagination, sorting, and conditional filtering.
+// Queries a list of jobs, with support for pagination, sorting, and conditional filtering.
 //
 // @param request - ListJobsRequest
 //
@@ -3703,7 +3715,7 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 
 // Summary:
 //
-// Updates a task template.
+// Updates a job template.
 //
 // @param request - UpdateJobTemplateRequest
 //
@@ -3774,7 +3786,7 @@ func (client *Client) UpdateJobTemplateWithOptions(TemplateId *string, request *
 
 // Summary:
 //
-// Updates a task template.
+// Updates a job template.
 //
 // @param request - UpdateJobTemplateRequest
 //

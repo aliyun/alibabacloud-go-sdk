@@ -144,7 +144,7 @@ type Tensorboard struct {
 	//
 	// 1000
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The extended fields of the dataset in JSON format. Currently, MountPath is supported, which specifies the mount path for a custom dataset.
+	// The extended fields of the dataset in JSON format. Currently, MountPath is supported to specify the mount path for a custom dataset.
 	//
 	// example:
 	//
@@ -238,7 +238,7 @@ type Tensorboard struct {
 	//
 	// tensorboard.pai
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// The workspace ID.
+	// The workspace.
 	//
 	// example:
 	//
