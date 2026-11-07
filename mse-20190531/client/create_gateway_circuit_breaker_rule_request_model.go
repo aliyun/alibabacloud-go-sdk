@@ -46,88 +46,138 @@ type iCreateGatewayCircuitBreakerRuleRequest interface {
 }
 
 type CreateGatewayCircuitBreakerRuleRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The type of the web fallback behavior.
+	//
+	// 0: returns the specified content.
+	//
+	// 1: redirects to the specified page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: plain text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// 0: disables the rule.
+	//
+	// 1: enables the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-c9bc5afd61014165bd58f621b491*****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The threshold in slow call proportion mode.
+	//
 	// example:
 	//
 	// 10
 	MaxAllowedMs *int32 `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The circuit breaking timeout period.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12
 	RecoveryTimeoutSec *int32 `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	// The HTTP text to be returned.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirection URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The route ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 645
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The route name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// routeName
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The statistical duration for triggering circuit breaking.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11
 	StatDurationSec *int32 `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	// The type of the threshold.
+	//
+	// 0: slow call proportion
+	//
+	// 1: failure proportion
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The request percentage that triggers circuit breaking.
+	//
 	// This parameter is required.
 	//
 	// example:

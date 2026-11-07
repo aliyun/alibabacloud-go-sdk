@@ -18,27 +18,27 @@ type iListClusterVersionsRequest interface {
 }
 
 type ListClusterVersionsRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+	// The cluster type. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The instance edition. Valid values:
+	// Valid values:
 	//
-	// 	- `mse_dev`: Developer Edition.
+	// - `mse_dev`: Developer Edition.
 	//
-	// 	- `mse_pro`: Professional Edition. This is the default value.
+	// - `mse_pro`: Professional Edition (default).
 	//
 	// example:
 	//

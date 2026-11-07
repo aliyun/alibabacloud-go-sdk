@@ -30,35 +30,56 @@ type iGetGatewayConfigResponseBody interface {
 }
 
 type GetGatewayConfigResponseBody struct {
+	// The code used to synchronize with the success field.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data overview.
 	Data *GetGatewayConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// This field is not used. Ignore this field.
+	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// This field is not used. Ignore this field.
+	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F6092602-C357-4750-89D9-E572FBEA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result. Valid values:
+	//
+	// - `true`: The request is successful.
+	//
+	// - `false`: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -164,113 +185,186 @@ func (s *GetGatewayConfigResponseBody) Validate() error {
 }
 
 type GetGatewayConfigResponseBodyData struct {
+	// The custom log format.
+	//
 	// example:
 	//
 	// {"requestMetadata":[],"responseHeaders":[],"requestHeaders":["x-test"],"responseMetadata":[]}
 	AccessLogHeader *string `json:"AccessLogHeader,omitempty" xml:"AccessLogHeader,omitempty"`
+	// The buffer size for a single gateway connection. Configuring this parameter affects throughput and gateway memory usage. Unit: bytes.
+	//
 	// example:
 	//
 	// 32768
 	DownstreamConnectionBufferLimits *int32 `json:"DownstreamConnectionBufferLimits,omitempty" xml:"DownstreamConnectionBufferLimits,omitempty"`
+	// The maximum number of concurrent streams on a single connection when the client uses HTTP/2. This parameter takes effect at the request level.
+	//
 	// example:
 	//
 	// 100
 	DownstreamHttp2MaxConcurrentStream *int32 `json:"DownstreamHttp2MaxConcurrentStream,omitempty" xml:"DownstreamHttp2MaxConcurrentStream,omitempty"`
+	// The idle timeout period for connections from the client to the gateway. Unit: seconds. If no request is received within the specified period, the gateway disconnects the connection. Valid values: 0 to 600.
+	//
 	// example:
 	//
 	// 180
 	DownstreamIdleTime *int32 `json:"DownstreamIdleTime,omitempty" xml:"DownstreamIdleTime,omitempty"`
+	// Specifies whether to enable custom authentication configuration push for self-managed authentication services. When enabled, changes to authentication rules do not cause connection interruptions. This feature is applicable to WebSocket and online business scenarios.
+	//
 	// example:
 	//
 	// false
 	EnableCustomAuthConfigPush *string `json:"EnableCustomAuthConfigPush,omitempty" xml:"EnableCustomAuthConfigPush,omitempty"`
+	// Specifies whether to generate a request ID in the request header for request tracking. This parameter takes effect at the request level.
+	//
 	// example:
 	//
 	// true
 	EnableGenerateRequestId *bool `json:"EnableGenerateRequestId,omitempty" xml:"EnableGenerateRequestId,omitempty"`
+	// Specifies whether to enable Gzip compression for requests and responses. Enabling this feature reduces gateway traffic but increases gateway CPU consumption.
+	//
 	// example:
 	//
 	// false
-	EnableGzip                   *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
+	EnableGzip *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
+	// Specifies whether to enable Gzip hardware acceleration.
 	EnableGzipHardwareAccelerate *bool `json:"EnableGzipHardwareAccelerate,omitempty" xml:"EnableGzipHardwareAccelerate,omitempty"`
+	// Specifies whether to enable hardware acceleration. This configuration fails if the region does not support hardware acceleration at the underlying layer or if hardware acceleration was not specified during purchase.
+	//
 	// example:
 	//
 	// true
 	EnableHardwareAccelerate *bool `json:"EnableHardwareAccelerate,omitempty" xml:"EnableHardwareAccelerate,omitempty"`
+	// Specifies whether to use HTTP/2 during negotiation between the server and the client. This parameter takes effect at the request level. Changes take effect after 1 to 2 minutes.
+	//
 	// example:
 	//
 	// false
 	EnableHttp2 *bool `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// Specifies whether the HTTP/3 protocol is supported.
+	//
 	// example:
 	//
 	// false
-	EnableHttp3                   *bool                                                          `json:"EnableHttp3,omitempty" xml:"EnableHttp3,omitempty"`
+	EnableHttp3 *bool `json:"EnableHttp3,omitempty" xml:"EnableHttp3,omitempty"`
+	// The tag filtering configuration for Kubernetes service source workloads.
 	EnableK8sSourceWorkloadFilter *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter `json:"EnableK8sSourceWorkloadFilter,omitempty" xml:"EnableK8sSourceWorkloadFilter,omitempty" type:"Struct"`
+	// Specifies whether to enable the PROXY protocol. If the gateway ingress traffic is routed through a Network Load Balancer (NLB) and this feature is disabled, the real IP address of the client cannot be obtained. Enabling this feature does not affect non-PROXY protocol requests.
+	//
 	// example:
 	//
 	// true
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
+	// Specifies whether to merge consecutive slashes in a request URL. For example, if this feature is enabled, the extra slash in `www.a.com//b` is merged, making it equivalent to `www.a.com/b`. This parameter takes effect at the request level.
+	//
 	// example:
 	//
 	// true
 	EnableSlashMerge *bool `json:"EnableSlashMerge,omitempty" xml:"EnableSlashMerge,omitempty"`
+	// Specifies whether WAF is enabled.
+	//
 	// example:
 	//
 	// true
-	EnableWaf             *bool                                                  `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	// The configuration for trusted X-Forwarded-For source CIDR blocks.
 	EnableXffTrustedCidrs *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs `json:"EnableXffTrustedCidrs,omitempty" xml:"EnableXffTrustedCidrs,omitempty" type:"Struct"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-61f465fa2dd044069e2208c4912*****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The initial connection-level window size negotiated between the gateway and the client when HTTP/2 is used. Unit: bytes. This parameter takes effect at the request level.
+	//
 	// example:
 	//
 	// 1048576
 	InitialConnectionWindowSize *int32 `json:"InitialConnectionWindowSize,omitempty" xml:"InitialConnectionWindowSize,omitempty"`
+	// The initial stream window size negotiated between the gateway and the client when HTTP/2 is used. Unit: bytes. This parameter takes effect at the request level.
+	//
 	// example:
 	//
 	// 65535
 	InitialStreamWindowSize *int32 `json:"InitialStreamWindowSize,omitempty" xml:"InitialStreamWindowSize,omitempty"`
+	// The keep-alive time in the Keep-Alive response header. Unit: seconds. If this parameter is set to 0, the response header is not returned.
+	//
 	// example:
 	//
 	// 0
 	KeepaliveHeaderTimeout *int32 `json:"KeepaliveHeaderTimeout,omitempty" xml:"KeepaliveHeaderTimeout,omitempty"`
-	LiteMetrics            *bool  `json:"LiteMetrics,omitempty" xml:"LiteMetrics,omitempty"`
+	// Indicates whether lightweight metric collection is enabled.
+	LiteMetrics *bool `json:"LiteMetrics,omitempty" xml:"LiteMetrics,omitempty"`
+	// Not available for use.
+	//
 	// example:
 	//
 	// ""
 	LogFilterConfig *string `json:"LogFilterConfig,omitempty" xml:"LogFilterConfig,omitempty"`
+	// The log collection configuration for request and response headers and bodies. The content is a JSON string.
+	//
+	// example:
+	//
+	// {"request":{"headers":{"enabled":true}}}
+	LogRequestResponseConfig *string `json:"LogRequestResponseConfig,omitempty" xml:"LogRequestResponseConfig,omitempty"`
+	// The list of unsupported configurations.
+	//
 	// example:
 	//
 	// "EnableProxyProtocol,EnableCustomAuthConfigPush"
 	NoSupportedConfigList *string `json:"NoSupportedConfigList,omitempty" xml:"NoSupportedConfigList,omitempty"`
+	// The action to take when a URI path contains escaped slashes such as %2F, %2f, %5C, or %5c. Default value: KEEP_UNCHANGED. Valid values:
+	//
+	// - KEEP_UNCHANGED
+	//
+	// - REJECT_REQUEST
+	//
+	// - UNESCAPE_AND_REDIRECT
+	//
+	// - UNESCAPE_AND_FORWARD
+	//
 	// example:
 	//
 	// KEEP_UNCHANGED
-	PathWithEscapedSlashes    *string `json:"PathWithEscapedSlashes,omitempty" xml:"PathWithEscapedSlashes,omitempty"`
-	PreserveExternalRequestID *bool   `json:"PreserveExternalRequestID,omitempty" xml:"PreserveExternalRequestID,omitempty"`
+	PathWithEscapedSlashes *string `json:"PathWithEscapedSlashes,omitempty" xml:"PathWithEscapedSlashes,omitempty"`
+	// Specifies whether to preserve the request ID passed by the client.
+	PreserveExternalRequestID *bool `json:"PreserveExternalRequestID,omitempty" xml:"PreserveExternalRequestID,omitempty"`
+	// Specifies whether to preserve the original case of request and response headers. In HTTP/1.1, headers are case-insensitive. To ensure compatibility with HTTP/2, headers are converted to lowercase by default.
+	//
 	// example:
 	//
 	// true
-	PreserveHeaderFormat *bool                                             `json:"PreserveHeaderFormat,omitempty" xml:"PreserveHeaderFormat,omitempty"`
-	SlsConfigDetails     *GetGatewayConfigResponseBodyDataSlsConfigDetails `json:"SlsConfigDetails,omitempty" xml:"SlsConfigDetails,omitempty" type:"Struct"`
+	PreserveHeaderFormat *bool `json:"PreserveHeaderFormat,omitempty" xml:"PreserveHeaderFormat,omitempty"`
+	// The log delivery information.
+	SlsConfigDetails *GetGatewayConfigResponseBodyDataSlsConfigDetails `json:"SlsConfigDetails,omitempty" xml:"SlsConfigDetails,omitempty" type:"Struct"`
+	// Indicates whether the gateway supports Web Application Firewall (WAF).
+	//
 	// example:
 	//
 	// true
 	SupportWaf *bool `json:"SupportWaf,omitempty" xml:"SupportWaf,omitempty"`
+	// The default idle timeout period for upstream connections.
+	//
 	// example:
 	//
 	// 30
 	UpstreamIdleTimeout *int32 `json:"UpstreamIdleTimeout,omitempty" xml:"UpstreamIdleTimeout,omitempty"`
+	// The keep-alive time maintained for WebSocket connections when connections must be closed during gateway instance upgrades or restarts. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	WebsocketTermGracePeriod *int32 `json:"WebsocketTermGracePeriod,omitempty" xml:"WebsocketTermGracePeriod,omitempty"`
+	// The number of trusted proxies in front of the gateway. This parameter affects whether the gateway uses request headers such as X-Forwarded-For and X-Request-ID generated by the client. This parameter takes effect at the request level.
+	//
 	// example:
 	//
 	// 0
-	XffTrustedNum *int32                                         `json:"XffTrustedNum,omitempty" xml:"XffTrustedNum,omitempty"`
+	XffTrustedNum *int32 `json:"XffTrustedNum,omitempty" xml:"XffTrustedNum,omitempty"`
+	// The Tracing Analysis information.
 	XtraceDetails *GetGatewayConfigResponseBodyDataXtraceDetails `json:"XtraceDetails,omitempty" xml:"XtraceDetails,omitempty" type:"Struct"`
+	// The compression algorithm used when compression is enabled. Valid values: brotli and gzip. If this parameter is set and EnableGzip is disabled, EnableGzip is automatically enabled.
+	//
 	// example:
 	//
 	// ["gzip"]
@@ -371,6 +465,10 @@ func (s *GetGatewayConfigResponseBodyData) GetLiteMetrics() *bool {
 
 func (s *GetGatewayConfigResponseBodyData) GetLogFilterConfig() *string {
 	return s.LogFilterConfig
+}
+
+func (s *GetGatewayConfigResponseBodyData) GetLogRequestResponseConfig() *string {
+	return s.LogRequestResponseConfig
 }
 
 func (s *GetGatewayConfigResponseBodyData) GetNoSupportedConfigList() *string {
@@ -527,6 +625,11 @@ func (s *GetGatewayConfigResponseBodyData) SetLogFilterConfig(v string) *GetGate
 	return s
 }
 
+func (s *GetGatewayConfigResponseBodyData) SetLogRequestResponseConfig(v string) *GetGatewayConfigResponseBodyData {
+	s.LogRequestResponseConfig = &v
+	return s
+}
+
 func (s *GetGatewayConfigResponseBodyData) SetNoSupportedConfigList(v string) *GetGatewayConfigResponseBodyData {
 	s.NoSupportedConfigList = &v
 	return s
@@ -607,9 +710,25 @@ func (s *GetGatewayConfigResponseBodyData) Validate() error {
 }
 
 type GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter struct {
-	Enable     *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	FilterOpt  *string `json:"FilterOpt,omitempty" xml:"FilterOpt,omitempty"`
-	LabelKey   *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// Specifies whether to enable tag filtering for Kubernetes service source workloads.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The tag filtering method. Valid values: EQUAL (matches the specified tag) and NOT_EQUAL (excludes the specified tag).
+	//
+	// example:
+	//
+	// EQUAL
+	FilterOpt *string `json:"FilterOpt,omitempty" xml:"FilterOpt,omitempty"`
+	// The tag key used to filter Kubernetes workloads.
+	//
+	// example:
+	//
+	// key
+	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
+	// The tag value used to filter Kubernetes workloads.
+	//
+	// example:
+	//
+	// value
 	LabelValue *string `json:"LabelValue,omitempty" xml:"LabelValue,omitempty"`
 }
 
@@ -662,7 +781,13 @@ func (s *GetGatewayConfigResponseBodyDataEnableK8sSourceWorkloadFilter) Validate
 }
 
 type GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs struct {
-	Enable        *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Specifies whether to enable the configuration for trusted X-Forwarded-For source CIDR blocks.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The list of trusted source IP addresses or CIDR blocks.
+	//
+	// example:
+	//
+	// 10.0.0.0/8
 	IpListContent *string `json:"IpListContent,omitempty" xml:"IpListContent,omitempty"`
 }
 
@@ -697,38 +822,60 @@ func (s *GetGatewayConfigResponseBodyDataEnableXffTrustedCidrs) Validate() error
 }
 
 type GetGatewayConfigResponseBodyDataSlsConfigDetails struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 500
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-61f465fa2dd044069e2208c4912*****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// Not available for use.
+	//
 	// example:
 	//
 	// ""
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// Not available for use.
+	//
 	// example:
 	//
 	// ""
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// Not available for use.
+	//
 	// example:
 	//
 	// 0
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether log delivery is enabled.
+	//
 	// example:
 	//
 	// true
 	LogOn *bool `json:"LogOn,omitempty" xml:"LogOn,omitempty"`
+	// The destination Logstore for log delivery. Valid values:
+	//
+	// - mse_gw_access_log: Nginx Ingress compatibility is disabled.
+	//
+	// - nginx-ingress: Nginx Ingress compatibility is enabled.
+	//
 	// example:
 	//
 	// mse_gw_access_log
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// Specifies whether Nginx Ingress compatibility is enabled.
+	//
 	// example:
 	//
 	// false
 	NginxCompatible *bool `json:"NginxCompatible,omitempty" xml:"NginxCompatible,omitempty"`
+	// The destination Simple Log Service project for log delivery.
+	//
 	// example:
 	//
 	// test
@@ -829,42 +976,70 @@ func (s *GetGatewayConfigResponseBodyDataSlsConfigDetails) Validate() error {
 }
 
 type GetGatewayConfigResponseBodyDataXtraceDetails struct {
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 500
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-61f465fa2dd044069e2208c4912*****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The time when the Tracing Analysis information was created.
+	//
 	// example:
 	//
 	// 2024-08-12T09:39:07.000+0000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the Tracing Analysis information was modified.
+	//
 	// example:
 	//
 	// 2024-08-12T09:39:07.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the Tracing Analysis information.
+	//
 	// example:
 	//
 	// 255
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The sampling rate (%).
+	//
 	// example:
 	//
 	// 100
 	Sample *int32 `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// The SkyWalking service ID for self-managed SkyWalking.
+	//
 	// example:
 	//
 	// 333
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The SkyWalking service port for self-managed SkyWalking.
+	//
 	// example:
 	//
 	// 8888
 	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// Specifies whether Tracing Analysis is enabled.
+	//
 	// example:
 	//
 	// true
 	TraceOn *bool `json:"TraceOn,omitempty" xml:"TraceOn,omitempty"`
+	// The Tracing Analysis type. Valid values:
+	//
+	// - XTRACE: Managed Service for OpenTelemetry with the Zipkin Tracing Analysis protocol.
+	//
+	// - SKYWALKING: Self-managed SkyWalking.
+	//
+	// - OPENTELEMETRY: Managed Service for OpenTelemetry with the OpenTelemetry Tracing Analysis protocol.
+	//
+	// - OTSKYWALKING: Managed Service for OpenTelemetry with the SkyWalking Tracing Analysis protocol.
+	//
 	// example:
 	//
 	// OPENTELEMETRY

@@ -24,23 +24,42 @@ type iRemoveAuthPolicyResponseBody interface {
 }
 
 type RemoveAuthPolicyResponseBody struct {
+	// Status code.
+	//
 	// example:
 	//
 	// 500
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data overview.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Return message.
+	//
+	// example:
+	//
+	// The request is processed successfully.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 9515ACA4-E94D-440D-989E-C379FCED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Request result, with the following values:
+	//
+	// - `true`: The request is successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// True

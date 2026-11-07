@@ -32,58 +32,75 @@ type iImportServicesRequest interface {
 type ImportServicesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	FcAlias        *string `json:"FcAlias,omitempty" xml:"FcAlias,omitempty"`
-	FcServiceName  *string `json:"FcServiceName,omitempty" xml:"FcServiceName,omitempty"`
-	FcVersion      *string `json:"FcVersion,omitempty" xml:"FcVersion,omitempty"`
+	// The Function Compute service alias. This parameter is required when the service source is Function Compute.
+	//
+	// example:
+	//
+	// test-alias
+	FcAlias *string `json:"FcAlias,omitempty" xml:"FcAlias,omitempty"`
+	// The Function Compute service name. This parameter is required when the service source is Function Compute.
+	//
+	// example:
+	//
+	// guide
+	FcServiceName *string `json:"FcServiceName,omitempty" xml:"FcServiceName,omitempty"`
+	// The Function Compute service version. This parameter is required when the service source is Function Compute.
+	//
+	// example:
+	//
+	// LATEST
+	FcVersion *string `json:"FcVersion,omitempty" xml:"FcVersion,omitempty"`
 	// The unique ID of the gateway.
 	//
 	// example:
 	//
 	// gw-77e1153db6e14c0a8b1fae20bcb89ca5
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The information about services.
+	// The service list.
 	//
 	// example:
 	//
 	// DNS
 	ServiceList []*ImportServicesRequestServiceList `json:"ServiceList,omitempty" xml:"ServiceList,omitempty" type:"Repeated"`
+	// The service source ID. This parameter is used when you add a service from a specified source.
+	//
 	// example:
 	//
 	// 100
 	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The service source. Valid values:
 	//
-	// 	- MSE: MSE Nacos instance
+	// - MSE: Microservices Engine (MSE Nacos).
 	//
-	// 	- K8s: ACK cluster
+	// - K8s: Container Service for Kubernetes (ACK).
 	//
-	// 	- VIP: fixed address
+	// - VIP: Fixed address.
 	//
-	// 	- DNS: DNS domain
+	// - DNS: DNS domain name.
 	//
 	// example:
 	//
 	// DNS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The Transport Layer Security (TLS) settings. Valid values:
+	// The TLS settings.
 	//
-	// 	- mode: TLS mode
+	// - TLS pattern: mode
 	//
-	// 	- certId: certificate ID
+	// - Certificate ID: certId
 	//
-	// 	- caCertId: CA certificate ID
+	// - CA certificate ID: caCertId
 	//
-	// 	- caCertContent: CA certificate public key
+	// - CA certificate public key: caCertContent
 	//
-	// 	- sni: service name identification
+	// - Service name identity: sni
 	//
 	// example:
 	//
@@ -204,16 +221,17 @@ func (s *ImportServicesRequest) Validate() error {
 }
 
 type ImportServicesRequestServiceList struct {
+	// The list of DNS servers (for DNS domain name services only).
 	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
-	// The group.
+	// The group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP addresses of the service.
+	// The list of IP addresses.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
@@ -225,14 +243,19 @@ type ImportServicesRequestServiceList struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	SaeAppId  *string `json:"SaeAppId,omitempty" xml:"SaeAppId,omitempty"`
-	// The port of the service.
+	// The SAE application ID.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
+	SaeAppId *string `json:"SaeAppId,omitempty" xml:"SaeAppId,omitempty"`
+	// The service port.
 	//
 	// example:
 	//
 	// 8080
 	ServicePort *int64 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
-	// The protocol of the service.
+	// The service protocol version.
 	//
 	// example:
 	//

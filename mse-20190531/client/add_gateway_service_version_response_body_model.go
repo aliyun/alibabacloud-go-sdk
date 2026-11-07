@@ -24,41 +24,41 @@ type iAddGatewayServiceVersionResponseBody interface {
 }
 
 type AddGatewayServiceVersionResponseBody struct {
-	// The status code returned. The value 200 indicates that the request is successfully processed.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the gateway service.
+	// The gateway service ID.
 	//
 	// example:
 	//
 	// 330
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 403
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BA4046B6-CFC6-583C-B608-DD75011A590F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type ListAuthPolicyResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data overview.
 	Data *ListAuthPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -39,6 +39,10 @@ type ListAuthPolicyResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -46,11 +50,11 @@ type ListAuthPolicyResponseBody struct {
 	//
 	// 05A5A150-4A5F-5A8C-97D6-710776CC8408
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result, with the following values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -136,13 +140,13 @@ type ListAuthPolicyResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The returned data.
 	Result []*ListAuthPolicyResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -210,7 +214,7 @@ func (s *ListAuthPolicyResponseBodyData) Validate() error {
 }
 
 type ListAuthPolicyResponseBodyDataResult struct {
-	// The ID of the Alibaba Cloud account to which the resource belongs.
+	// The Alibaba Cloud account ID of the resource owner.
 	//
 	// example:
 	//
@@ -228,29 +232,29 @@ type ListAuthPolicyResponseBodyDataResult struct {
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The content of the service authentication rule.
+	// The list of service authentication rules.
 	AuthRule []*ListAuthPolicyResponseBodyDataResultAuthRule `json:"AuthRule,omitempty" xml:"AuthRule,omitempty" type:"Repeated"`
-	// The rule type. Valid values:
+	// The rule type.
 	//
-	// 	- 0: by application
+	// - 0: by application dimension.
 	//
-	// 	- 1: by namespace
+	// - 1: by namespace dimension.
 	//
 	// example:
 	//
 	// 0
 	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// Indicates whether the rule was enabled or disabled. Valid values:
+	// Enable or disable.
 	//
-	// 	- `true`: enabled
+	// - `true`: Enable.
 	//
-	// 	- `false`: disabled
+	// - `false`: disable.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The rule ID.
+	// The ID.
 	//
 	// example:
 	//
@@ -262,7 +266,7 @@ type ListAuthPolicyResponseBodyDataResult struct {
 	//
 	// c19c6c500e1ff4d7abc7bed9b8236***
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	// The name of the authentication rule.
+	// The authentication rule name.
 	//
 	// example:
 	//
@@ -274,13 +278,13 @@ type ListAuthPolicyResponseBodyDataResult struct {
 	//
 	// ced54a95-4e33-4bda-be7e-37e95868***
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The protocol type. Valid values:
+	// The Protocol Type. Valid values:
 	//
-	// 	- **SPRING_CLOUD**
+	// - **SPRING_CLOUD**.
 	//
-	// 	- **DUBBO**
+	// - **DUBBO**.
 	//
-	// 	- **istio**
+	// - **istio**.
 	//
 	// example:
 	//
@@ -292,7 +296,7 @@ type ListAuthPolicyResponseBodyDataResult struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source of the application.
+	// The application source.
 	//
 	// example:
 	//
@@ -454,29 +458,29 @@ func (s *ListAuthPolicyResponseBodyDataResult) Validate() error {
 }
 
 type ListAuthPolicyResponseBodyDataResultAuthRule struct {
-	// The IDs of applications.
+	// The application collection.
 	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
-	// The rule type. Valid values:
+	// The rule type.
 	//
-	// 	- 0: by application
+	// - 0, by application dimension.
 	//
-	// 	- 1: by namespace
+	// - 1, by namespace dimension.
 	//
 	// example:
 	//
 	// 0
 	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// Indicates whether the rule is a blacklist rule.
+	// Indicates whether it is a blacklist.
 	//
 	// example:
 	//
 	// false
 	Black *bool `json:"Black,omitempty" xml:"Black,omitempty"`
-	// The queried namespaces.
+	// The namespace list.
 	K8sNamespaces []*string `json:"K8sNamespaces,omitempty" xml:"K8sNamespaces,omitempty" type:"Repeated"`
 	// The request method.
 	Method *ListAuthPolicyResponseBodyDataResultAuthRuleMethod `json:"Method,omitempty" xml:"Method,omitempty" type:"Struct"`
-	// The service path.
+	// The path.
 	//
 	// example:
 	//
@@ -568,9 +572,9 @@ type ListAuthPolicyResponseBodyDataResultAuthRuleMethod struct {
 	//
 	// hello
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The types of request parameters.
+	// The list of request parameter types.
 	ParameterTypes []*string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty" type:"Repeated"`
-	// The type of the return value.
+	// The return value type.
 	//
 	// example:
 	//
@@ -582,7 +586,7 @@ type ListAuthPolicyResponseBodyDataResultAuthRuleMethod struct {
 	//
 	// spring-cloud-a
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The method version.
+	// The method version number.
 	//
 	// example:
 	//

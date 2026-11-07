@@ -16,10 +16,14 @@ type iCreateNacosMcpServerResponseBody interface {
 }
 
 type CreateNacosMcpServerResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AF21683A-29C7-4853-AC0F-B5ADEE4****

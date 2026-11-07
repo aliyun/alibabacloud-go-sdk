@@ -26,35 +26,35 @@ type iListGatewayServiceRequest interface {
 type ListGatewayServiceRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable sorting.
+	// The sort order.
 	//
 	// example:
 	//
 	// false
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// The parameters that are used to specify filter conditions. The values of the parameters are in the format of {"key1":"value1"}.
+	// The filter conditions in the format of {"key1":"value1"}.
 	FilterParams *ListGatewayServiceRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
-	// The item based on which entries are sorted.
+	// The sort attribute.
 	//
 	// example:
 	//
 	// GmtCreate
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
@@ -140,41 +140,41 @@ type ListGatewayServiceRequestFilterParams struct {
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The group.
+	// The group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace to which the service belongs.
+	// The namespace.
 	//
 	// example:
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The protocol of the service.
+	// The Terms of Service. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
-	// 	- HTTP2
+	// - HTTP2
 	//
-	// 	- GRPC
+	// - GRPC
 	//
-	// 	- DUBBO
+	// - DUBBO
 	//
 	// example:
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The type of the source.
+	// The source type.
 	//
 	// example:
 	//

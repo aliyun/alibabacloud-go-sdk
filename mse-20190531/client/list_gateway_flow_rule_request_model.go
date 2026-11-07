@@ -16,6 +16,8 @@ type iListGatewayFlowRuleRequest interface {
 }
 
 type ListGatewayFlowRuleRequest struct {
+	// The language in which the returned results are displayed. Valid values: zh (default): Chinese, en: English
+	//
 	// example:
 	//
 	// zh

@@ -16,10 +16,14 @@ type iDeleteGatewayFlowRuleResponseBody interface {
 }
 
 type DeleteGatewayFlowRuleResponseBody struct {
+	// The response data.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2B74E7F7-DF54-5AB1-B8F2-67391B83****

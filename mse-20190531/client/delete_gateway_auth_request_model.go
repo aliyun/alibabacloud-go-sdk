@@ -18,14 +18,24 @@ type iDeleteGatewayAuthRequest interface {
 }
 
 type DeleteGatewayAuthRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese. This is the default value.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The authentication ID.
+	//
 	// example:
 	//
 	// 120

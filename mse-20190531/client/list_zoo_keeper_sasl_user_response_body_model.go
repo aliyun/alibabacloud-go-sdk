@@ -16,7 +16,10 @@ type iListZooKeeperSaslUserResponseBody interface {
 }
 
 type ListZooKeeperSaslUserResponseBody struct {
+	// The returned data.
 	Data []*ListZooKeeperSaslUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6C075654-E42F-5F58-914F-E11DA70881B7
@@ -63,15 +66,26 @@ func (s *ListZooKeeperSaslUserResponseBody) Validate() error {
 }
 
 type ListZooKeeperSaslUserResponseBodyData struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 1631001140913
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the SASL user.
+	//
+	// example:
+	//
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The current status of the SASL user.
+	//
 	// example:
 	//
 	// UserAddNeedReload
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The SASL username.
+	//
 	// example:
 	//
 	// test

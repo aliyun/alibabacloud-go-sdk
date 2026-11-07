@@ -24,15 +24,15 @@ type iUpdateGatewayRouteRetryShrinkRequest interface {
 type UpdateGatewayRouteRetryShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateGatewayRouteRetryShrinkRequest struct {
 	//
 	// 508
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The information about the retry policy.
+	// The retry policy.
 	RetryJSONShrink *string `json:"RetryJSON,omitempty" xml:"RetryJSON,omitempty"`
 }
 

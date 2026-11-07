@@ -30,55 +30,55 @@ type iListListenersByConfigResponseBody interface {
 }
 
 type ListListenersByConfigResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The information about listeners.
+	// The listener information.
 	Listeners []*ListListenersByConfigResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The size of the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 75E1442F-11EC-567A-9CF0-5A36F7904F39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -189,29 +189,39 @@ func (s *ListListenersByConfigResponseBody) Validate() error {
 }
 
 type ListListenersByConfigResponseBodyListeners struct {
-	// The IP address.
+	// IP。
 	//
 	// example:
 	//
 	// 1.1.1.1
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The label of the listener.
-	Labels        map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	MatchRuleName *string            `json:"MatchRuleName,omitempty" xml:"MatchRuleName,omitempty"`
-	MatchRuleType *string            `json:"MatchRuleType,omitempty" xml:"MatchRuleType,omitempty"`
-	// The verification string.
+	// The labels of the listener.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The name of the canary release rule matched by the current listener.
+	//
+	// example:
+	//
+	// Name of the matched canary release rule
+	MatchRuleName *string `json:"MatchRuleName,omitempty" xml:"MatchRuleName,omitempty"`
+	// The type of the matched canary release rule.
+	//
+	// example:
+	//
+	// Beta
+	MatchRuleType *string `json:"MatchRuleType,omitempty" xml:"MatchRuleType,omitempty"`
+	// The checksum string.
 	//
 	// example:
 	//
 	// 23sdfdf
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The status.
+	// Indicates whether the push is successful.
 	//
 	// example:
 	//
-	// beta
+	// true
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The current version of the listener. Valid values: gray and normal.
+	// The current version of the listener. Valid values: gray (canary release version) or normal (production version).
 	//
 	// example:
 	//

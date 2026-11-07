@@ -20,18 +20,26 @@ type iDeleteNacosMcpServerRequest interface {
 }
 
 type DeleteNacosMcpServerRequest struct {
+	// The language of the returned results. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// mse_prepaid_public_cn-u0t2xzvxa06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the MCP Server.
+	//
 	// example:
 	//
 	// 5e3c5211-d365-4013-8540-c4106ec2a5dc
 	McpServerId *string `json:"McpServerId,omitempty" xml:"McpServerId,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// fc0f6e40-****-946b-45e3af313707

@@ -42,7 +42,7 @@ type ListAnsServiceClustersResponseBody struct {
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -52,9 +52,9 @@ type ListAnsServiceClustersResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -140,9 +140,9 @@ type ListAnsServiceClustersResponseBodyData struct {
 	Clusters []*ListAnsServiceClustersResponseBodyDataClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// Indicates whether the service is a temporary service. Valid values:
 	//
-	// 	- `true`: yes
+	// - `true`: yes
 	//
-	// 	- `false`: no
+	// - `false`: no
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type ListAnsServiceClustersResponseBodyData struct {
 	SelectorType *string `json:"SelectorType,omitempty" xml:"SelectorType,omitempty"`
 	// The source type of the service. Valid values:
 	//
-	// 	- console: The service was registered in the console.
+	// - console: The service was registered in the console.
 	//
-	// 	- sdk: The service was registered by using the SDK.
+	// - sdk: The service was registered by using the SDK.
 	//
-	// 	- governance: The service was registered on Microservices Governance.
+	// - governance: The service was registered on Microservices Governance.
 	//
 	// example:
 	//
@@ -332,15 +332,15 @@ type ListAnsServiceClustersResponseBodyDataAppDetail struct {
 	CheckTimeout *int32 `json:"CheckTimeout,omitempty" xml:"CheckTimeout,omitempty"`
 	// The type of the health check. Valid values:
 	//
-	// 	- connection: connection status check
+	// - connection: connection status check
 	//
-	// 	- tcp: TCP connection check
+	// - tcp: TCP connection check
 	//
-	// 	- http: HTTP connection check
+	// - http: HTTP connection check
 	//
 	// example:
 	//
-	// connection
+	// tcp
 	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	// The maximum number of health check retries when the instance state changes from unhealthy to healthy.
 	//
@@ -472,7 +472,7 @@ type ListAnsServiceClustersResponseBodyDataClusters struct {
 	//
 	// example:
 	//
-	// Heartbeat Reporting
+	// tcp
 	HealthCheckerType *string `json:"HealthCheckerType,omitempty" xml:"HealthCheckerType,omitempty"`
 	// The metadata of the cluster.
 	//

@@ -30,7 +30,7 @@ type UpdateAuthPolicyResponseBody struct {
 	//
 	// 500
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The returned data.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type UpdateAuthPolicyResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The message that is returned for the request.
+	//
+	// example:
+	//
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -50,7 +54,7 @@ type UpdateAuthPolicyResponseBody struct {
 	//
 	// 83E3909D-D26F-5D97-B73B-407A26***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+	// The result of the request. Valid values: - true: The request is successful. - false: The request failed.
 	//
 	// example:
 	//

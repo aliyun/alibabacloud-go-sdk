@@ -24,7 +24,7 @@ type iQueryGatewayRegionResponseBody interface {
 }
 
 type QueryGatewayRegionResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
@@ -32,29 +32,29 @@ type QueryGatewayRegionResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9e78a671-4b9b-4dd4-99c1-0b9da87d3dec
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

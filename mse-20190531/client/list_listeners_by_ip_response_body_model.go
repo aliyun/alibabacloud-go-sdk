@@ -30,55 +30,55 @@ type iListListenersByIpResponseBody interface {
 }
 
 type ListListenersByIpResponseBody struct {
-	// The error code returned if the request failed.
+	// Error code.
 	//
 	// example:
 	//
 	// MSE-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The information about listeners.
+	// Listener information.
 	Listeners []*ListListenersByIpResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
-	// The message returned.
+	// Response message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// Size of the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 54973C90-F379-4372-9AA5-053A3F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Request result, with the following values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned instances.
+	// Total number of instances.
 	//
 	// example:
 	//
@@ -189,24 +189,29 @@ func (s *ListListenersByIpResponseBody) Validate() error {
 }
 
 type ListListenersByIpResponseBodyListeners struct {
-	// The ID of the data.
+	// Data ID.
 	//
 	// example:
 	//
 	// test.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The group.
+	// Group.
 	//
 	// example:
 	//
 	// default
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The verification string.
+	// Verification string.
 	//
 	// example:
 	//
 	// 23sdfdf
-	Md5         *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	// Namespace ID
+	//
+	// example:
+	//
+	// test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
 

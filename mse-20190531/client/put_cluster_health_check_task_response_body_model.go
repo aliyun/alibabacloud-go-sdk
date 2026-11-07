@@ -30,65 +30,65 @@ type iPutClusterHealthCheckTaskResponseBody interface {
 }
 
 type PutClusterHealthCheckTaskResponseBody struct {
-	// The status code. A value of 200 is returned if the request is successful.
+	// The code that is used only to synchronize with the success parameter.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The execution result information.
 	//
 	// example:
 	//
-	// null
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The dynamic part in the error message.
+	// The placeholder in dynamic error messages.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
-	// 	- If the request is successful, a success message is returned.
+	// - If the request is successful, a success message is returned.
 	//
-	// 	- If the request fails, an error message is returned, such as the "TaskId not found" message.
+	// - If the request fails, the cause of the failure is returned, such as TaskId not found.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5B170A0D-2C5D-4CF8-B808-03966B86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

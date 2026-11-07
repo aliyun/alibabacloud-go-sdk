@@ -24,37 +24,37 @@ type iListGatewaySlbResponseBody interface {
 }
 
 type ListGatewaySlbResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data entries returned.
+	// The returned data.
 	Data []*ListGatewaySlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Succ
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EAB345F4-3AC3-560C-B653-65717703****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -138,19 +138,19 @@ func (s *ListGatewaySlbResponseBody) Validate() error {
 }
 
 type ListGatewaySlbResponseBodyData struct {
-	// Indicates whether the edit operation is supported.
+	// Indicates whether the resource is editable.
 	//
 	// example:
 	//
 	// false
 	EditEnable *bool `json:"EditEnable,omitempty" xml:"EditEnable,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// 1
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The mode of the SLB instance.
+	// The source.
 	//
 	// example:
 	//
@@ -168,25 +168,25 @@ type ListGatewaySlbResponseBodyData struct {
 	//
 	// 2022-01-14 14:39:16
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The port number of the HTTP virtual service group.
+	// The HTTP port (virtual server group).
 	//
 	// example:
 	//
 	// 80
 	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	// The port number of the HTTPS virtual service group.
+	// The HTTPS port (virtual server group).
 	//
 	// example:
 	//
 	// 443
 	HttpsPort *int32 `json:"HttpsPort,omitempty" xml:"HttpsPort,omitempty"`
-	// The ID of the HTTPS virtual service group.
+	// The ID of the HTTPS virtual server group.
 	//
 	// example:
 	//
 	// 353
 	HttpsVServerGroupId *string `json:"HttpsVServerGroupId,omitempty" xml:"HttpsVServerGroupId,omitempty"`
-	// The ID.
+	// ID
 	//
 	// example:
 	//
@@ -198,45 +198,60 @@ type ListGatewaySlbResponseBodyData struct {
 	//
 	// 80
 	ServiceWeight *int32 `json:"ServiceWeight,omitempty" xml:"ServiceWeight,omitempty"`
-	// The ID of the SLB instance.
+	// SLB ID
 	//
 	// example:
 	//
 	// lb-bp1kmnli3hdpreptw2ah3
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The IP address of the SLB instance.
+	// SLB IP
 	//
 	// example:
 	//
 	// 121.199.XX.XX
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The port number of the SLB instance.
+	// The SLB port.
 	//
 	// example:
 	//
 	// 80,443
 	SlbPort *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
+	// The SLB type.
+	//
+	// example:
+	//
+	// CLB
 	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
-	// The description of the status.
+	// The status description.
 	//
 	// example:
 	//
 	// Associating
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// The type.
+	// The network type. Valid values:
+	//
+	// - PUB_NET: Internet.
+	//
+	// - PRIVATE_NET: Private network.
 	//
 	// example:
 	//
 	// PUB_NET
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the HTTP virtual service group.
+	// The ID of the HTTP virtual server group.
 	//
 	// example:
 	//
 	// 353
-	VServerGroupId *string                                       `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	VServiceList   []*ListGatewaySlbResponseBodyDataVServiceList `json:"VServiceList,omitempty" xml:"VServiceList,omitempty" type:"Repeated"`
-	VsMetaInfo     *string                                       `json:"VsMetaInfo,omitempty" xml:"VsMetaInfo,omitempty"`
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The SLB listener information.
+	VServiceList []*ListGatewaySlbResponseBodyDataVServiceList `json:"VServiceList,omitempty" xml:"VServiceList,omitempty" type:"Repeated"`
+	// The metadata of the virtual server group.
+	//
+	// example:
+	//
+	// [{"protocol":"HTTP","vServerGroupName":"k8s/80/****","port":80,"vServerGroupId":"rsp-bp***"},{"protocol":"HTTPS","vServerGroupName":"k8s/443/***","port":443,"vServerGroupId":"rsp-bp*****"}]
+	VsMetaInfo *string `json:"VsMetaInfo,omitempty" xml:"VsMetaInfo,omitempty"`
 }
 
 func (s ListGatewaySlbResponseBodyData) String() string {
@@ -432,9 +447,29 @@ func (s *ListGatewaySlbResponseBodyData) Validate() error {
 }
 
 type ListGatewaySlbResponseBodyDataVServiceList struct {
-	Port             *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	VServerGroupId   *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The port.
+	//
+	// example:
+	//
+	// 443
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// - HTTPS
+	//
+	// - HTTP
+	//
+	// example:
+	//
+	// HTTPS
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The ID of the virtual server group.
+	//
+	// example:
+	//
+	// rsp-bp183l2x70***
+	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
+	// The name of the virtual server group.
 	VServerGroupName *string `json:"VServerGroupName,omitempty" xml:"VServerGroupName,omitempty"`
 }
 

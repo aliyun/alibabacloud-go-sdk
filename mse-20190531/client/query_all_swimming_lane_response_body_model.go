@@ -22,7 +22,7 @@ type iQueryAllSwimmingLaneResponseBody interface {
 }
 
 type QueryAllSwimmingLaneResponseBody struct {
-	// The details of the data.
+	// Data Overview.
 	//
 	// example:
 	//
@@ -32,15 +32,15 @@ type QueryAllSwimmingLaneResponseBody struct {
 	//
 	// example:
 	//
-	// mse-100-000
+	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type QueryAllSwimmingLaneResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -125,16 +125,18 @@ func (s *QueryAllSwimmingLaneResponseBody) Validate() error {
 }
 
 type QueryAllSwimmingLaneResponseBodyData struct {
-	// 是否开启。
+	// Indicates whether the lane is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ingress application rules.
+	// The list of rules for the ingress application.
 	EntryRules []*QueryAllSwimmingLaneResponseBodyDataEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	// 网关路由信息（使用云原生网关为入口时使用）
+	// The information about the gateway route. This parameter is used when a cloud-native gateway or an API Gateway instance is used as the ingress.
 	GatewaySwimmingLaneRoute *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute `json:"GatewaySwimmingLaneRoute,omitempty" xml:"GatewaySwimmingLaneRoute,omitempty" type:"Struct"`
+	// The information about the gateway. This parameter is used when an MSE cloud-native gateway or a cloud-native API Gateway instance is used as the ingress.
+	//
 	// example:
 	//
 	// {\\"GatewayUniqueId\\":\\"gw-cf815503e0a8441b8956d8e349fa8fb5\\",\\"Percentage\\":0,\\"RouteIdList\\":[32295,32298,32297,32309,32307,32294,32303,32292,32299,35278],\\"CanaryModel\\":1,\\"Conditions\\":[]}
@@ -145,19 +147,19 @@ type QueryAllSwimmingLaneResponseBodyData struct {
 	//
 	// 6859
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the lane group.
+	// The lane ID.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The side on which canary release for messaging is implemented.
+	// The side on which canary release for messages is implemented.
 	//
 	// example:
 	//
 	// Client
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
-	// Indicates whether canary release for messaging is enabled.
+	// Indicates whether canary release for messages is enabled.
 	//
 	// example:
 	//
@@ -169,17 +171,19 @@ type QueryAllSwimmingLaneResponseBodyData struct {
 	//
 	// swimmingGroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Microservices Engine (MSE) namespace to which the lane belongs.
+	// The MSE namespace to which the lane belongs.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Indicates whether to set the percentage for each path.
+	//
 	// example:
 	//
 	// true
 	PathIndependentPercentageEnable *bool `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
-	// Indicates whether request details were recorded (metrics of end-to-end canary release).
+	// Indicates whether to record the request details. This is for the observability of end-to-end canary releases.
 	//
 	// example:
 	//
@@ -197,13 +201,13 @@ type QueryAllSwimmingLaneResponseBodyData struct {
 	//
 	// gray
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The user ID of the lane group.
+	// The ID of the user to which the lane belongs.
 	//
 	// example:
 	//
 	// 12345
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Indicates whether the rule is enabled.
+	// Indicates whether rules are enabled.
 	//
 	// example:
 	//
@@ -215,7 +219,7 @@ type QueryAllSwimmingLaneResponseBodyData struct {
 	//
 	// 1683598484000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the lane was updated.
+	// The time when the lane was last updated.
 	//
 	// example:
 	//
@@ -424,9 +428,9 @@ type QueryAllSwimmingLaneResponseBodyDataEntryRules struct {
 	//
 	// /adump/wxb/prod
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The paths.
+	// The list of paths.
 	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The RESTful matching rules.
+	// The list of RESTful matching rules.
 	RestItems []*QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
 }
 
@@ -488,7 +492,7 @@ func (s *QueryAllSwimmingLaneResponseBodyDataEntryRules) Validate() error {
 }
 
 type QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
-	// The matching character.
+	// The matching operator.
 	//
 	// example:
 	//
@@ -506,13 +510,13 @@ type QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
 	//
 	// 10
 	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	// The name of the matching rule.
+	// The name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The matching list.
+	// The list of items to match.
 	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
 	// The operator.
 	//
@@ -649,47 +653,52 @@ func (s *QueryAllSwimmingLaneResponseBodyDataEntryRulesRestItems) Validate() err
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute struct {
-	// 全链路灰度模式：
+	// The mode of the end-to-end canary release. Valid values:
 	//
-	// - 0: 按请求内容路由
+	// - 0: route by the content of the request
 	//
-	// - 1: 按比例路由
+	// - 1: route by proportion
 	//
 	// example:
 	//
 	// 0
 	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// The condition for the canary release.
+	//
 	// example:
 	//
 	// AND、OR
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 匹配条件列表（按内容路由使用）
+	// The list of matching conditions. This parameter is used when you route requests by content.
 	Conditions []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// 网关ID
+	// The gateway ID.
 	//
 	// example:
 	//
 	// 1
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// 网关唯一ID
+	// The unique ID of the gateway.
 	//
 	// example:
 	//
 	// gw-84efde2ee1464260bdb17a5b****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// 流量比例（按比例路由使用，取值0-100）
+	// The traffic proportion. This parameter is used when you route requests by proportion. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 20
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// 路由ID列表
+	// The list of route IDs. This parameter is optional if the canary release is effective at the gateway level.
 	RouteIdList []*int64 `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+	// Indicates whether to independently set the percentage for each path.
+	//
 	// example:
 	//
 	// true
-	RouteIndependentPercentageEnable *string                                                                                       `json:"RouteIndependentPercentageEnable,omitempty" xml:"RouteIndependentPercentageEnable,omitempty"`
-	RouteIndependentPercentageList   []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList `json:"RouteIndependentPercentageList,omitempty" xml:"RouteIndependentPercentageList,omitempty" type:"Repeated"`
+	RouteIndependentPercentageEnable *string `json:"RouteIndependentPercentageEnable,omitempty" xml:"RouteIndependentPercentageEnable,omitempty"`
+	// The list of routes and percentages.
+	RouteIndependentPercentageList []*QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList `json:"RouteIndependentPercentageList,omitempty" xml:"RouteIndependentPercentageList,omitempty" type:"Repeated"`
 }
 
 func (s QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) String() string {
@@ -804,19 +813,19 @@ func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute) Validate(
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions struct {
-	// 条件：
+	// The condition. Valid values:
 	//
-	// - PRE：前缀匹配
+	// - PRE: prefix match
 	//
-	// - EQUAL：精确匹配
+	// - EQUAL: exact match
 	//
-	// - ERGULAR：正则匹配
+	// - REGULAR: regular expression match
 	//
 	// example:
 	//
 	// PRE
 	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
-	// 参数名称
+	// The parameter name.
 	//
 	// example:
 	//
@@ -824,17 +833,17 @@ type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions stru
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// NameList
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
-	// 参数类型：
+	// The parameter type. Valid values:
 	//
-	// - header：Header
+	// - header: Header
 	//
-	// - param：Parameter
+	// - param: Parameter
 	//
 	// example:
 	//
 	// header
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 参数值
+	// The parameter value.
 	//
 	// example:
 	//
@@ -900,10 +909,14 @@ func (s *QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions)
 }
 
 type QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList struct {
+	// The percentage.
+	//
 	// example:
 	//
 	// 60
 	Percentage *string `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// 12345

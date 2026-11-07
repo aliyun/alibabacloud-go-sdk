@@ -22,7 +22,7 @@ type iUpdateFlowRuleResponseBody interface {
 }
 
 type UpdateFlowRuleResponseBody struct {
-	// The response code.
+	// The return value.
 	//
 	// example:
 	//
@@ -30,7 +30,11 @@ type UpdateFlowRuleResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data of the node.
 	Data *UpdateFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
+	//
+	// example:
+	//
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -38,33 +42,7 @@ type UpdateFlowRuleResponseBody struct {
 	//
 	// 52BA6DA6-A702-4362-A32F-DFF79655****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The request was successful.
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The request failed.
-	//
-	//     <!-- -->
+	// The result of the request.
 	//
 	// example:
 	//
@@ -149,55 +127,11 @@ type UpdateFlowRuleResponseBodyData struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The throttling effect.
 	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     fast failure
-	//
-	//     <!-- -->
-	//
-	// 	- 2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     in queue
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	// Indicates whether the rule was enabled.
-	//
-	// Valid value:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
@@ -208,9 +142,14 @@ type UpdateFlowRuleResponseBodyData struct {
 	// example:
 	//
 	// 12
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// Spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
-	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+	// The timeout period for queuing when the ControlBehavior parameter is set to 2. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -222,7 +161,7 @@ type UpdateFlowRuleResponseBodyData struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The name of the API resource.
+	// The interface resource name.
 	//
 	// example:
 	//

@@ -24,37 +24,41 @@ type iGetAppMessageQueueRouteResponseBody interface {
 }
 
 type GetAppMessageQueueRouteResponseBody struct {
-	// The response code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data.
 	Data *GetAppMessageQueueRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
-	// 	- If the request is successful, a success message is returned.
+	// - If the request is successful, a success message is returned.
 	//
-	// 	- If the request fails, an error message is returned.
+	// - If the request fails, the cause of the failure is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4B00BCB0-105F-5A2A-B75B-641C8E9B18FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false. The value true indicates that the request was successful. The value false indicates that the request failed.
+	// The request result. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -134,36 +138,37 @@ func (s *GetAppMessageQueueRouteResponseBody) Validate() error {
 }
 
 type GetAppMessageQueueRouteResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hkhon1po62@54e1f42f37cd65a
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Indicates whether the canary release for messaging feature is enabled.
+	// Indicates whether the feature is enabled. Valid values:
 	//
-	// 	- `true`: enabled
+	// - `true`: Enabled.
 	//
-	// 	- `false`: disabled
+	// - `false`: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The side for message filtering when the canary release for messaging feature is enabled.
+	// The filtering side for message canary release.
 	//
 	// example:
 	//
 	// Server
-	FilterSide   *string   `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	// The list of baseline environment labels for MSMQ grayscale rules.
 	GrayBaseTags []*string `json:"GrayBaseTags,omitempty" xml:"GrayBaseTags,omitempty" type:"Repeated"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The tags used to ignore message consumption for nodes in untagged environments.
+	// The tags that are not consumed by the untagged environments of the application.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

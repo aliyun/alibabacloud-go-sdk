@@ -22,15 +22,15 @@ type iDeleteGatewayAuthConsumerResourceRequest interface {
 type DeleteGatewayAuthConsumerResourceRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The consumer ID.
+	// The ID of the gateway authentication consumer.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteGatewayAuthConsumerResourceRequest struct {
 	//
 	// gw-ubuwqygbq4783gqb2y3f87q****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The IDs of the authorized resources that you want to delete.
+	// The list of authorization IDs to delete.
 	//
 	// This parameter is required.
 	//

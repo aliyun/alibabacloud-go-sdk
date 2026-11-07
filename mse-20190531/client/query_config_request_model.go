@@ -26,9 +26,9 @@ type iQueryConfigRequest interface {
 type QueryConfigRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type QueryConfigRequest struct {
 	//
 	// mse-09k1q11****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// A reserved parameter.
+	// A reserved field.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type QueryConfigRequest struct {
 	//
 	// mse_prepaid_public_cn-st2212****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether runtime configurations are required.
+	// Specifies whether to query the runtime configuration.
 	//
 	// example:
 	//

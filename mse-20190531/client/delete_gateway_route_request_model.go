@@ -20,21 +20,21 @@ type iDeleteGatewayRouteRequest interface {
 type DeleteGatewayRouteRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The unique ID of the gateway.
+	// The unique identifier of the gateway.
 	//
 	// example:
 	//
 	// gw-492af9b04bb4474cae9d645be850e3d7
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the route.
+	// The ID of the route entry.
 	//
 	// example:
 	//

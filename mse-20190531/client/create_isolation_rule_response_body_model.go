@@ -22,19 +22,28 @@ type iCreateIsolationRuleResponseBody interface {
 }
 
 type CreateIsolationRuleResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The rule information.
 	Data *CreateIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -104,35 +113,56 @@ func (s *CreateIsolationRuleResponseBody) Validate() error {
 }
 
 type CreateIsolationRuleResponseBodyData struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// hpn9ac29kz@e31a4b871******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The enabling status of the rule.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// 1
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region where the cluster is deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface to which the rule applies. The name must be the same as the interface name displayed in the interface details on the console.
+	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The concurrency threshold of the isolation rule.
+	//
 	// example:
 	//
 	// 3

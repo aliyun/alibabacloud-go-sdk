@@ -20,15 +20,22 @@ type iGetServiceMethodPageResponseBody interface {
 }
 
 type GetServiceMethodPageResponseBody struct {
+	// The response to the request.
 	Data *GetServiceMethodPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request information.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2DD5A212-C77B-3XXF-9XXE-XXX9XXXE5XX1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
 	// example:
 	//
 	// True
@@ -89,15 +96,22 @@ func (s *GetServiceMethodPageResponseBody) Validate() error {
 }
 
 type GetServiceMethodPageResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*GetServiceMethodPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The method description list.
+	Result []*GetServiceMethodPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of methods.
+	//
 	// example:
 	//
 	// 100
@@ -162,27 +176,42 @@ func (s *GetServiceMethodPageResponseBodyData) Validate() error {
 }
 
 type GetServiceMethodPageResponseBodyDataResult struct {
+	// The full name of the Controller class to which the interface belongs.
+	//
 	// example:
 	//
 	// com.alibabacloud.mse.demo.a.AController
 	MethodController *string `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
+	// The name of the method.
+	//
 	// example:
 	//
 	// aMethod
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The interface description information.
+	//
 	// example:
 	//
-	// 示例接口描述信息。
-	NameDetail           *string                                                           `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
+	// sample description
+	NameDetail *string `json:"NameDetail,omitempty" xml:"NameDetail,omitempty"`
+	// The detailed definition of the parameter.
 	ParameterDefinitions []*GetServiceMethodPageResponseBodyDataResultParameterDefinitions `json:"ParameterDefinitions,omitempty" xml:"ParameterDefinitions,omitempty" type:"Repeated"`
-	ParameterDetails     []*string                                                         `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty" type:"Repeated"`
-	ParameterTypes       []*string                                                         `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty" type:"Repeated"`
-	Paths                []*string                                                         `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
-	RequestMethods       []*string                                                         `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty" type:"Repeated"`
+	// The type of the interface parameter.
+	ParameterDetails []*string `json:"ParameterDetails,omitempty" xml:"ParameterDetails,omitempty" type:"Repeated"`
+	// The parameter types.
+	ParameterTypes []*string `json:"ParameterTypes,omitempty" xml:"ParameterTypes,omitempty" type:"Repeated"`
+	// The list of request paths that correspond to the interface.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The HTTP request method.
+	RequestMethods []*string `json:"RequestMethods,omitempty" xml:"RequestMethods,omitempty" type:"Repeated"`
+	// The type of the return value.
+	//
 	// example:
 	//
 	// java.lang.String
 	ReturnDetails *string `json:"ReturnDetails,omitempty" xml:"ReturnDetails,omitempty"`
+	// The type of the return value.
+	//
 	// example:
 	//
 	// java.lang.String
@@ -301,14 +330,20 @@ func (s *GetServiceMethodPageResponseBodyDataResult) Validate() error {
 }
 
 type GetServiceMethodPageResponseBodyDataResultParameterDefinitions struct {
+	// The description of the parameter.
+	//
 	// example:
 	//
-	// 参数描述示例
+	// sample description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// aParam
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter type.
+	//
 	// example:
 	//
 	// java.lang.String

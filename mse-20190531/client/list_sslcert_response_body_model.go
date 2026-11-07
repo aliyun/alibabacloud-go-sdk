@@ -24,37 +24,37 @@ type iListSSLCertResponseBody interface {
 }
 
 type ListSSLCertResponseBody struct {
-	// The status code returned. A value of 200 indicates that the request is successful.
+	// The status code. A value of 200 indicates that the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data []*ListSSLCertResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CAA9A229-141D-5FBA-AC5C-516C02026A11
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -138,11 +138,11 @@ func (s *ListSSLCertResponseBody) Validate() error {
 }
 
 type ListSSLCertResponseBodyData struct {
-	// The time when the certificate expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the certificate expired. The time was formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 2021-04-01 02:35:12
+	// 1726039184803
 	AfterDate *string `json:"AfterDate,omitempty" xml:"AfterDate,omitempty"`
 	// The algorithm.
 	//
@@ -150,19 +150,19 @@ type ListSSLCertResponseBodyData struct {
 	//
 	// test
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The time when the certificate took effect. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the certificate took effect. The time was formatted as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 2031-03-30 02:35:12
+	// 1694503184803
 	BeforeDate *string `json:"BeforeDate,omitempty" xml:"BeforeDate,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 1234
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The name of the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
@@ -174,19 +174,19 @@ type ListSSLCertResponseBodyData struct {
 	//
 	// *.test.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate expires. This value is a GMT timestamp.
+	// The time when the certificate expired. The time was formatted as a GMT timestamp.
 	//
 	// example:
 	//
-	// 2021-04-01 02:35:12
+	// 2024-09-11T07:19:44.803+0000
 	GmtAfter *string `json:"GmtAfter,omitempty" xml:"GmtAfter,omitempty"`
-	// The time when the certificate took effect. This value is a GMT timestamp.
+	// The time when the certificate took effect. The time was formatted as a GMT timestamp.
 	//
 	// example:
 	//
-	// 2031-03-30 02:35:12
+	// 2023-09-12T07:19:44.803+0000
 	GmtBefore *string `json:"GmtBefore,omitempty" xml:"GmtBefore,omitempty"`
-	// The issuer of the certificate.
+	// The issuer.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iQueryAllSwimmingLaneGroupResponseBody interface {
 }
 
 type QueryAllSwimmingLaneGroupResponseBody struct {
-	// The status code. A value of 200 is returned if the request is successful.
+	// The code is used only to synchronize with success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data returned.
 	//
 	// example:
 	//
@@ -46,29 +46,29 @@ type QueryAllSwimmingLaneGroupResponseBody struct {
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The message that is returned for the request.
 	//
-	// 	- If the request is successful, a success message is returned.
+	// - If the request is successful, a success message is returned.
 	//
-	// 	- If the request fails, an error message is returned.
+	// - If the request fails, an error message is returned.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type QueryAllSwimmingLaneGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -185,9 +185,18 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	// example:
 	//
 	// abcde@abcde,abcde@abcde
-	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	// The type and ID of the ingress application.
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The routing mode for end-to-end canary release:
+	//
+	// - 0: routing based on request content
+	//
+	// - 1: routing based on percentages
+	//
+	// example:
+	//
+	// 0
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// The type of the ingress application and the ID of the ingress application.
 	//
 	// example:
 	//
@@ -199,7 +208,7 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The side at which canary release for messaging was enabled.
+	// The side at which canary release for messaging is enabled.
 	//
 	// example:
 	//
@@ -211,7 +220,7 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	//
 	// true
 	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
-	// The name of the lane group.
+	// The name of a lane group.
 	//
 	// example:
 	//
@@ -223,8 +232,13 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Paths     *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
-	// Indicates whether the request details (metrics of end-to-end canary release) were recorded.
+	// This parameter is deprecated
+	//
+	// example:
+	//
+	// ["/a"]
+	Paths *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// Indicates whether to record the request details (metrics of end-to-end canary release).
 	//
 	// example:
 	//
@@ -235,8 +249,13 @@ type QueryAllSwimmingLaneGroupResponseBodyData struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region      *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	SwimVersion *int32  `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The canary version. Valid values: 0 and 2. Recommended value: 2.
+	//
+	// example:
+	//
+	// 2
+	SwimVersion *int32 `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
 	// The ID of the user to which the lane belongs.
 	//
 	// example:

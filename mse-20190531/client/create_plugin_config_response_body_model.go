@@ -16,7 +16,7 @@ type iCreatePluginConfigResponseBody interface {
 }
 
 type CreatePluginConfigResponseBody struct {
-	// The plug-in configuration ID.
+	// The ID of the plug-in configuration.
 	//
 	// example:
 	//

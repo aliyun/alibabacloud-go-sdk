@@ -24,23 +24,34 @@ type iListGatewayAuthShrinkRequest interface {
 }
 
 type ListGatewayAuthShrinkRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The sort order.
+	//
 	// example:
 	//
 	// false
-	DescSort           *bool   `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
+	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
+	// The filter conditions. Refer to the examples.
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+	// This parameter is not available.
+	//
 	// example:
 	//
 	// {}
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 10

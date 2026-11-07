@@ -24,27 +24,27 @@ type iGatewayBlackWhiteListShrinkRequest interface {
 }
 
 type GatewayBlackWhiteListShrinkRequest struct {
-	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	// The language of the response. Valid values: zh (Chinese, default) and en (English).
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//
 	// ""
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// The filter parameters.
+	// parse from filterParams
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//
 	// ""
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Valid values: integers greater than 0. Default value: 1.
 	//
 	// example:
 	//

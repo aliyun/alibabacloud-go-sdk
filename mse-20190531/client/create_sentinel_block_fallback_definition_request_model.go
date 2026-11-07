@@ -34,48 +34,70 @@ type iCreateSentinelBlockFallbackDefinitionRequest interface {
 }
 
 type CreateSentinelBlockFallbackDefinitionRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh is the default value, which indicates Chinese. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID, which can be omitted.
+	//
 	// example:
 	//
 	// abcde@12345
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The behavior details.
+	//
 	// example:
 	//
 	// {"webFallbackMode":0,"webRespMessage":"{}","webRespStatusCode":429,"webRespContentType":0}
 	FallbackBehavior *string `json:"FallbackBehavior,omitempty" xml:"FallbackBehavior,omitempty"`
+	// The programming language, such as Java or Go.
+	//
 	// example:
 	//
 	// JAVA
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The behavior name.
+	//
 	// example:
 	//
 	// MyFallback
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
+	//
 	// example:
 	//
 	// test
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The target resource type.
+	//
 	// example:
 	//
 	// 1 Web
 	//
 	// 2 Rpc
 	ResourceClassification *int32 `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// The scenario, uniformly fill in default.
+	//
 	// example:
 	//
 	// default
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// Redundant parameter, currently ignored.
+	//
 	// example:
 	//
 	// edasmsc

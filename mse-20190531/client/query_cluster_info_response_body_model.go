@@ -22,35 +22,35 @@ type iQueryClusterInfoResponseBody interface {
 }
 
 type QueryClusterInfoResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data *QueryClusterInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
-	// 	- If the request is successful, a success message is returned.
+	// - If the request is successful, a success message is returned.
 	//
-	// 	- If the request fails, an error message is returned.
+	// - If the request fails, the cause of the failure is returned.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Request processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 415088B3-A7BE-56F6-9CD9-C42DE895CD41
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -121,38 +121,43 @@ func (s *QueryClusterInfoResponseBody) Validate() error {
 }
 
 type QueryClusterInfoResponseBodyData struct {
-	// The public IP address whitelist.
+	// The public network whitelist.
 	//
 	// example:
 	//
 	// ["127.0.0.0/32"]
 	AclEntryList *string `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
-	// The ID of the instance in the public IP address whitelist.
+	// The instance ID of the Internet whitelist.
 	//
 	// example:
 	//
 	// acl-bp144q24cgqvzckmxxxx
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
-	// The version of the instance.
+	// The cluster version number.
 	//
 	// example:
 	//
 	// 2.1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	CanUpdate  *bool   `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
-	// The billing method, such as subscription or pay-as-you-go.
+	// Indicates whether the cluster has a minor version available for upgrade.
+	//
+	// example:
+	//
+	// true
+	CanUpdate *bool `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
+	// The billing method. Valid values: subscription and pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The alias of the instance.
+	// The alias of the cluster.
 	//
 	// example:
 	//
 	// Development environment
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	// The full name of the instance.
+	// The full name of the cluster.
 	//
 	// example:
 	//
@@ -164,87 +169,87 @@ type QueryClusterInfoResponseBodyData struct {
 	//
 	// MSE_SC_2_4_60_c
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	// The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+	// The cluster type. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The version of the order.
+	// The order version.
 	//
 	// example:
 	//
 	// NACOS_2_0_0
 	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	// A deprecated parameter.
+	// The deprecated field.
 	//
 	// example:
 	//
 	// null
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// A deprecated parameter.
+	// The deprecated field.
 	//
 	// example:
 	//
 	// null
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the instance was created.
+	// The time when the cluster was created.
 	//
 	// example:
 	//
 	// 2022-12-15 10:02:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// A deprecated parameter.
+	// The deprecated field.
 	//
 	// example:
 	//
 	// null
 	DiskCapacity *int64 `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	// A deprecated parameter.
+	// The deprecated field.
 	//
 	// example:
 	//
 	// null
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the instance that is associated with the Elastic IP Address (EIP).
+	// The instance ID of the elastic IP address (EIP).
 	//
 	// example:
 	//
 	// eip-bp1uujshd5funmyy8rcl9
 	EipInstanceId *string `json:"EipInstanceId,omitempty" xml:"EipInstanceId,omitempty"`
-	// The time when the subscription instance expires.
+	// The expiration time for subscription instances.
 	//
 	// example:
 	//
 	// 2021-08-01 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The zones to which the current cluster can be distributed.
+	// The list of zones to which the current cluster can be distributed.
 	ExpectZones []*string `json:"ExpectZones,omitempty" xml:"ExpectZones,omitempty" type:"Repeated"`
-	// The status of the instance.
+	// The cluster status.
 	//
 	// example:
 	//
 	// INIT_SUCCESS
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The time that is required to initialize the instance. Unit: milliseconds.
+	// The time taken to initialize the cluster, in milliseconds.
 	//
 	// example:
 	//
 	// 53353
 	InitCostTime *int64 `json:"InitCostTime,omitempty" xml:"InitCostTime,omitempty"`
-	// The initial status of the instance.
+	// The initialization status.
 	//
 	// example:
 	//
 	// INIT_SUCCESS
 	InitStatus *string `json:"InitStatus,omitempty" xml:"InitStatus,omitempty"`
-	// The number of instance nodes.
+	// The number of instances in the cluster.
 	//
 	// example:
 	//
 	// 3
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the instance
+	// The instance ID.
 	//
 	// example:
 	//
@@ -252,57 +257,57 @@ type QueryClusterInfoResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The reserved structure.
 	InstanceModels []*QueryClusterInfoResponseBodyDataInstanceModels `json:"InstanceModels,omitempty" xml:"InstanceModels,omitempty" type:"Repeated"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	// The public endpoint.
+	// The public domain name.
 	//
 	// example:
 	//
 	// mse-xxxxxx-p.nacos-ans.mse.aliyuncs.com
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	// The instance ports that are accessible over the Internet.
+	// The open ports for the Internet cluster.
 	//
 	// example:
 	//
 	// 8848,6443,9848,8761
 	InternetPort *string `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// The internal endpoint.
+	// The internal domain name.
 	//
 	// example:
 	//
 	// mse-xxxxx-nacos-ans.mse.aliyuncs.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	// The instance ports that are accessible over an internal network.
+	// The internal network port opened for the cluster.
 	//
 	// example:
 	//
 	// 8848,6443,9848,8761
 	IntranetPort *string `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
-	// The O\\&M time window.
+	// The O&M time window.
 	MaintenancePeriod *QueryClusterInfoResponseBodyDataMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
-	// A deprecated parameter.
+	// The deprecated field.
 	//
 	// example:
 	//
 	// null
 	MemoryCapacity *int64 `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
-	// The version of the instance.
+	// The cluster version.
 	//
 	// example:
 	//
 	// mse_pro
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// The network connection type of the instance.
+	// The network connectivity type of the cluster.
 	//
 	// example:
 	//
@@ -314,43 +319,51 @@ type QueryClusterInfoResponseBodyData struct {
 	//
 	// Pay-as-you-go
 	PayInfo *string `json:"PayInfo,omitempty" xml:"PayInfo,omitempty"`
-	// The public bandwidth. Unit: Mbit/s.\\
-	//
-	// Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
+	// The Internet bandwidth. Unit: Mbit/s. Valid values: 0 to 5000. A value of 0 indicates that the cluster is not connected to the Internet.
 	//
 	// example:
 	//
 	// 1
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group to which the elastic network interface (ENI) is connected.
+	// The ID of the security group for ENI network access.
 	//
 	// example:
 	//
 	// sg-uf6hgwe067prhg68agfa
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The type of the security group to which the ENI is connected.
+	// The type of the security group for ENI network access.
 	//
 	// example:
 	//
 	// enterprise
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
-	// The tag.
+	// The tags.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1egfakxxxxx
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VersionCode      *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The current version code of the cluster.
+	//
+	// example:
+	//
+	// NACOS_2_1_0_1
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The version lifecycle.
+	//
+	// example:
+	//
+	// STABLE
 	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
-	// The ID of the VPC where the instance resides.
+	// The ID of the VPC where the cluster is deployed.
 	//
 	// example:
 	//
@@ -781,49 +794,49 @@ func (s *QueryClusterInfoResponseBodyData) Validate() error {
 }
 
 type QueryClusterInfoResponseBodyDataInstanceModels struct {
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// null
 	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
@@ -916,13 +929,13 @@ func (s *QueryClusterInfoResponseBodyDataInstanceModels) Validate() error {
 }
 
 type QueryClusterInfoResponseBodyDataMaintenancePeriod struct {
-	// The start time of the O\\&M time window.
+	// The start time of the O&M time window.
 	//
 	// example:
 	//
 	// 02:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end time of the O\\&M time window.
+	// The end time of the O&M time window.
 	//
 	// example:
 	//

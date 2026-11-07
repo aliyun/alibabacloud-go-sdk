@@ -62,90 +62,170 @@ type iUpdateGatewayAuthRequest interface {
 }
 
 type UpdateGatewayAuthRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The YAML configuration for complex mode.
+	//
 	// example:
 	//
 	// \\"\\"
-	AuthResourceConfig *string                                     `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
-	AuthResourceList   []*UpdateGatewayAuthRequestAuthResourceList `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty" type:"Repeated"`
+	AuthResourceConfig *string `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
+	// The list of authorization rules for authentication. Multiple rule conditions have an OR relationship. Multiple matching items within a rule condition have an AND relationship.
+	AuthResourceList []*UpdateGatewayAuthRequestAuthResourceList `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty" type:"Repeated"`
+	// The authorization resource mode. Valid values:
+	//
+	// - 0: simple mode.
+	//
+	// - 1: complex mode.
+	//
 	// example:
 	//
 	// 1
 	AuthResourceMode *int32 `json:"AuthResourceMode,omitempty" xml:"AuthResourceMode,omitempty"`
+	// The application ID registered with the service. This parameter is used for OIDC/IDaaS.
+	//
 	// example:
 	//
 	// app_mnvxaavggw7hcdcnr6usi6***
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The application secret registered with the OIDC authentication service.
+	//
 	// example:
 	//
 	// CS6EYfx3k9yTRR9EtQ2MXWP97P6UAUwFg4teoWJ19Z****
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The cookie domain name. After authentication succeeds, the cookie is sent to the specified domain name to maintain the logon state.
+	//
+	// Example: If you set `Cookie-domain=a.example.com`, the cookie is sent to the domain name `a.example.com`. If you set `Cookie-domain=.example.com`, the cookie is sent to all subdomains of `example.com`.
+	//
 	// example:
 	//
 	// test.com
-	CookieDomain         *string                                    `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
-	DeleteResourceIdList []*int64                                   `json:"DeleteResourceIdList,omitempty" xml:"DeleteResourceIdList,omitempty" type:"Repeated"`
-	ExternalAuthZJSON    *UpdateGatewayAuthRequestExternalAuthZJSON `json:"ExternalAuthZJSON,omitempty" xml:"ExternalAuthZJSON,omitempty" type:"Struct"`
+	CookieDomain *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	// The list of resource record IDs to delete.
+	DeleteResourceIdList []*int64 `json:"DeleteResourceIdList,omitempty" xml:"DeleteResourceIdList,omitempty" type:"Repeated"`
+	// The custom authentication information.
+	ExternalAuthZJSON *UpdateGatewayAuthRequestExternalAuthZJSON `json:"ExternalAuthZJSON,omitempty" xml:"ExternalAuthZJSON,omitempty" type:"Struct"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-9cdcf8e4f58144059e73ff4c5ef9****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The authentication rule ID.
+	//
 	// example:
 	//
 	// 719
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The authorization blacklist/whitelist mode. Valid values:
+	//
+	// - true: whitelist mode. Hosts and paths in the list can be accessed without verification. All others require verification.
+	//
+	// - false: blacklist mode. Hosts and paths in the list require verification. All others can be accessed directly.
+	//
 	// example:
 	//
 	// true
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// Used when the authentication type is JWT or OIDC:
+	//
+	// - JWT: the iss (issuer) in JWT claims, which specifies the token issuer.
+	//
+	// - OIDC: the iss (issuer) in OIDC claims, which specifies the token issuer.
+	//
 	// example:
 	//
 	// test
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The JWT public key. JSON format is supported.
+	//
 	// example:
 	//
 	// {"keys":[{"e":"AQAB","kid":"DHFbpoIUqrY8t2zpA2qXfCmr5VO5ZEr4RzHU_-envvQ","kty":"RSA","n":"xAE7eB6qugXyCAG3yhh7pkDkT65pHymX-P7KfIupjf59vsdo91bSP9C8H07pSAGQO1MV_xFj9VswgsCg4R6otmg5PV2He95lZdHtOcU5DXIg_pbhLdKXbi66GlVeK6ABZOUW3WYtnNHD-91gVuoeJT_DwtGGcp4ignkgXfkiEm4sw-4sfb4qdt5oLbyVpmW6x9cfa7vs2WTfURiCrBoUqgBo_-4WTiULmmHSGZHOjzwa8WtrtOQGsAFjIbno85jp6MnGGGZPYZbDAa_b3y5u-YpW7ypZrvD8BgtKVjgtQgZhLAGezMt0ua3DRrWnKqTZ0BJ_EyxOGuHJrLsn00fnMQ"}]}
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	// The user logon page URL of the IDaaS instance. This parameter is used for IDaaS.
+	//
 	// example:
 	//
 	// https://daxxxxcn.aliyunidaas.com/
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The authentication name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The redirect URL after successful authorization. This parameter is used for OIDC/IDaaS and must be consistent with the redirect URL configured in OIDC/IDaaS.
+	//
 	// example:
 	//
 	// https://test-.com/oauth2/callback
-	RedirectUrl *string   `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
-	ScopesList  []*string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// The OIDC authorization scopes. This parameter is used for OIDC.
+	ScopesList []*string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	// The enabled status. Valid values:
+	//
+	// - false: disabled.
+	//
+	// - true: enabled.
+	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Used when the authentication type is JWT. The sub (subject) in JWT claims, which specifies the principal. Make sure that the value of the sub field in the JWT payload is consistent with the value configured here. If this parameter is not set or is empty, the value defaults to the value of the Issuer parameter.
+	//
 	// example:
 	//
 	// example-app
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// The location where the JWT token is stored.
+	//
+	// The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Authorization
 	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	// The prefix of the JWT token.
+	//
+	// The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Bearer
 	TokenNamePrefix *string `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	// Specifies whether to pass through the token.
+	//
 	// example:
 	//
 	// true
 	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	// The JWT token type. Valid values:
+	//
+	// - HEADER: transmitted through a header.
+	//
+	// The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: Authorization: Bearer token.
+	//
 	// example:
 	//
 	// HEADER
 	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	// The authentication type. Valid values:
+	//
+	// - JWT
+	//
+	// - OIDC
+	//
+	// - IDaaS
+	//
+	// - ExternalAuthZ: a self-managed authentication service.
+	//
 	// example:
 	//
 	// ExternalAuthZ
@@ -404,20 +484,40 @@ func (s *UpdateGatewayAuthRequest) Validate() error {
 }
 
 type UpdateGatewayAuthRequestAuthResourceList struct {
+	// The request headers of the rule. Currently only used for custom authentication.
 	AuthResourceHeaderList []*UpdateGatewayAuthRequestAuthResourceListAuthResourceHeaderList `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty" type:"Repeated"`
+	// The ID of the domain name in the rule.
+	//
 	// example:
 	//
 	// 1765
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	// The resource record ID.
+	//
 	// example:
 	//
 	// 1
-	Id         *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IgnoreCase *bool  `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Specifies whether case sensitivity is enabled for the path. This parameter is used when creating custom authentication. Other authentication types enable case sensitivity by default. Valid values:
+	//
+	// - true: case sensitivity is enabled.
+	//
+	// - false: case sensitivity is disabled.
+	IgnoreCase *bool `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	// The matching type for the request path. Valid values:
+	//
+	// - EQUAL: exact match.
+	//
+	// - PRE: prefix match.
+	//
+	// - ERGULAR: regular expression match.
+	//
 	// example:
 	//
 	// EQUAL
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	// The matching path of the rule.
+	//
 	// example:
 	//
 	// /test
@@ -500,14 +600,38 @@ func (s *UpdateGatewayAuthRequestAuthResourceList) Validate() error {
 }
 
 type UpdateGatewayAuthRequestAuthResourceListAuthResourceHeaderList struct {
+	// The request header name.
+	//
 	// example:
 	//
 	// x-req
 	HeaderKey *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
+	// The matching condition. Valid values:
+	//
+	// - EQUAL: equal to.
+	//
+	// - NOT_EQUAL: not equal to.
+	//
+	// - EXIST: exists.
+	//
+	// - NOT_EXIST: does not exist.
+	//
+	// - INCLUDE: contains.
+	//
+	// - EXCLUDE: does not contain.
+	//
+	// - PREFIX: prefix.
+	//
+	// - SUFFIX: suffix.
+	//
+	// - REGREX: regular expression.
+	//
 	// example:
 	//
 	// EQUAL
 	HeaderMethod *string `json:"HeaderMethod,omitempty" xml:"HeaderMethod,omitempty"`
+	// The value of the request header.
+	//
 	// example:
 	//
 	// 123
@@ -554,36 +678,58 @@ func (s *UpdateGatewayAuthRequestAuthResourceListAuthResourceHeaderList) Validat
 }
 
 type UpdateGatewayAuthRequestExternalAuthZJSON struct {
-	AllowRequestHeaders  []*string `json:"AllowRequestHeaders,omitempty" xml:"AllowRequestHeaders,omitempty" type:"Repeated"`
+	// The allowed request header names.
+	AllowRequestHeaders []*string `json:"AllowRequestHeaders,omitempty" xml:"AllowRequestHeaders,omitempty" type:"Repeated"`
+	// The allowed response header names.
 	AllowUpstreamHeaders []*string `json:"AllowUpstreamHeaders,omitempty" xml:"AllowUpstreamHeaders,omitempty" type:"Repeated"`
+	// The maximum number of bytes for the body.
+	//
 	// example:
 	//
 	// 4000000
 	BodyMaxBytes *int32 `json:"BodyMaxBytes,omitempty" xml:"BodyMaxBytes,omitempty"`
+	// The custom authentication mode. Valid values:
+	//
+	// - true: strict mode. When the authentication service is unavailable (connection establishment fails or a 5xx response is returned), the gateway rejects client requests.
+	//
+	// - false: loose mode. When the authentication service is unavailable (connection establishment fails or a 5xx response is returned), the gateway allows client requests.
+	//
 	// example:
 	//
 	// true
 	IsRestrict *bool `json:"IsRestrict,omitempty" xml:"IsRestrict,omitempty"`
+	// The path of the authentication API provided by the authentication service. The API path must use prefix matching.
+	//
 	// example:
 	//
 	// /auth
 	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The authentication service ID.
+	//
 	// example:
 	//
 	// 37396
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The timeout period of the authentication service. Unit: seconds.
+	//
 	// example:
 	//
 	// 10
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The header in which the token is located in the request message. Common values include Authorization and Cookie.
+	//
 	// example:
 	//
 	// Authorization
 	TokenKey *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	// Specifies whether to re-match routes after authentication is complete.
+	//
 	// example:
 	//
 	// true
 	WithRematchRoute *bool `json:"WithRematchRoute,omitempty" xml:"WithRematchRoute,omitempty"`
+	// Specifies whether to allow carrying the body.
+	//
 	// example:
 	//
 	// true

@@ -32,7 +32,7 @@ type iGetServiceListPageRequest interface {
 }
 
 type GetServiceListPageRequest struct {
-	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+	// The language of the response. Valid values: zh: Chinese, en: English. Default value: zh.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type GetServiceListPageRequest struct {
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The IP address from which the query is initiated.
+	// The IP address to query.
 	//
 	// example:
 	//
 	// 223.5.5.5
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The name of the MSE namespace.
+	// The MSE namespace name.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetServiceListPageRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//

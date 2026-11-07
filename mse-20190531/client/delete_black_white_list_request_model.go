@@ -20,18 +20,26 @@ type iDeleteBlackWhiteListRequest interface {
 }
 
 type DeleteBlackWhiteListRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// 430
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-9cdcf8e4f58144059e73ff4c5ef9****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The ID of the blacklists and whitelists entry.
+	//
 	// example:
 	//
 	// 120

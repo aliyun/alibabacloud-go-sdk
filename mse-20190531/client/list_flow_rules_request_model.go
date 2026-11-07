@@ -28,23 +28,23 @@ type iListFlowRulesRequest interface {
 }
 
 type ListFlowRulesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hkhon1po62@c3df23522******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListFlowRulesRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The page number. Default value: 1.
+	// The target page number. Default value: 1.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListFlowRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the resource.
+	// The resource name.
 	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The keyword that is used for the search.
+	// The search keyword.
 	//
 	// example:
 	//

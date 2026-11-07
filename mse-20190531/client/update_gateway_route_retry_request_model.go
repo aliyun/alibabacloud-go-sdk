@@ -24,15 +24,15 @@ type iUpdateGatewayRouteRetryRequest interface {
 type UpdateGatewayRouteRetryRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateGatewayRouteRetryRequest struct {
 	//
 	// 508
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The information about the retry policy.
+	// The retry policy.
 	RetryJSON *UpdateGatewayRouteRetryRequestRetryJSON `json:"RetryJSON,omitempty" xml:"RetryJSON,omitempty" type:"Struct"`
 }
 
@@ -125,9 +125,9 @@ type UpdateGatewayRouteRetryRequestRetryJSON struct {
 	Attempts *int32 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
 	// The HTTP status codes.
 	HttpCodes []*string `json:"HttpCodes,omitempty" xml:"HttpCodes,omitempty" type:"Repeated"`
-	// The retry conditions.
+	// The conditions that trigger a retry.
 	RetryOn []*string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty" type:"Repeated"`
-	// The status of the policy.
+	// The status of the retry policy.
 	//
 	// example:
 	//

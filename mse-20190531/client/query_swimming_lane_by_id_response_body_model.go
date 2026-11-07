@@ -22,35 +22,35 @@ type iQuerySwimmingLaneByIdResponseBody interface {
 }
 
 type QuerySwimmingLaneByIdResponseBody struct {
-	// The details of the data.
+	// The returned data.
 	//
 	// example:
 	//
 	// {id:102,name:"test"}
 	Data *QuerySwimmingLaneByIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 69AD2AA7-DB47-449B-941B-B14409DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -121,79 +121,81 @@ func (s *QuerySwimmingLaneByIdResponseBody) Validate() error {
 }
 
 type QuerySwimmingLaneByIdResponseBodyData struct {
+	// This parameter is discontinued. This parameter is used to specify whether to enable grayscale by path when Java gateway is used as the entry for the swimming lane group.
+	//
 	// example:
 	//
 	// false
 	PathIndependentPercentageEnable *bool `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
-	// 泳道开关
+	// The swimming lane switch.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// 是否开启规则。
+	// Specifies whether to enable the rule. Valid values:
 	//
 	// example:
 	//
 	// true
 	EnableRules *bool `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
-	// 入口应用规则
+	// The entry application rule.
 	//
 	// example:
 	//
 	// {}
 	EntryRule *string `json:"entryRule,omitempty" xml:"entryRule,omitempty"`
-	// 入口应用规则详情
+	// The details of the entry application rules.
 	EntryRules []*QuerySwimmingLaneByIdResponseBodyDataEntryRules `json:"entryRules,omitempty" xml:"entryRules,omitempty" type:"Repeated"`
-	// MSE网关路由规则
+	// The MSE gateway routing rule.
 	//
 	// example:
 	//
 	// {}
 	GatewaySwimmingLaneRouteJson *string `json:"gatewaySwimmingLaneRouteJson,omitempty" xml:"gatewaySwimmingLaneRouteJson,omitempty"`
-	// 规则创建时间
+	// Rule Created At
 	//
 	// example:
 	//
 	// 1683598484000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 规则修改时间
+	// Rule Modified At
 	//
 	// example:
 	//
 	// 1683598484000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 泳道组Id。
+	// The swimming lane group ID.
 	//
 	// example:
 	//
 	// 8
 	GroupId *int64 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 泳道ID
+	// The swimming lane ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 泳道名称
+	// The swimming lane name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 泳道状态
+	// The swimming lane status.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// 泳道对应的标签。
+	// The tag corresponding to the swimming lane.
 	//
 	// example:
 	//
@@ -349,21 +351,21 @@ func (s *QuerySwimmingLaneByIdResponseBodyData) Validate() error {
 }
 
 type QuerySwimmingLaneByIdResponseBodyDataEntryRules struct {
-	// 条件
+	// The condition.
 	//
 	// example:
 	//
 	// AND
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// 路径
+	// The path.
 	//
 	// example:
 	//
 	// /
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 路径列表
+	// The list of paths.
 	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// Rest匹配规则列表
+	// The Restful matching rules.
 	RestItems []*QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
 }
 
@@ -425,57 +427,57 @@ func (s *QuerySwimmingLaneByIdResponseBodyDataEntryRules) Validate() error {
 }
 
 type QuerySwimmingLaneByIdResponseBodyDataEntryRulesRestItems struct {
-	// 匹配符
+	// The matching character.
 	//
 	// example:
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// 数值
+	// The number.
 	//
 	// example:
 	//
 	// x
 	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
-	// 除数
+	// The divisor.
 	//
 	// example:
 	//
 	// 10
 	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	// 名称
+	// The name.
 	//
 	// example:
 	//
 	// 11111
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 名称列表
+	// The names.
 	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	// 操作符
+	// The filter operator.
 	//
 	// example:
 	//
 	// rawvalue
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// 百分比
+	// The percentage.
 	//
 	// example:
 	//
 	// 30
 	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
-	// 余数
+	// The remainder.
 	//
 	// example:
 	//
 	// 10
 	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	// 匹配类型
+	// The matching type.
 	//
 	// example:
 	//
 	// cookie
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// 值
+	// The value.
 	//
 	// example:
 	//

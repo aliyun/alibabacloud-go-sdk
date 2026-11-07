@@ -30,37 +30,37 @@ type iDeleteGatewayAuthConsumerResourceResponseBody interface {
 }
 
 type DeleteGatewayAuthConsumerResourceResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The code is used only to synchronize with the success status.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// 	- true
+	// - true: The operation succeeded.
 	//
-	// 	- false
+	// - false: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace **%s*	- in the **ErrMessage*	- response parameter.
 	//
-	// > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type DeleteGatewayAuthConsumerResourceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -84,11 +84,11 @@ type DeleteGatewayAuthConsumerResourceResponseBody struct {
 	//
 	// 3369AD10-F1A6-4E6F-B99E-20F51826****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`
+	// - `false`: The request failed.
 	//
 	// example:
 	//

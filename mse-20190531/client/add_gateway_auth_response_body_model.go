@@ -24,41 +24,41 @@ type iAddGatewayAuthResponseBody interface {
 }
 
 type AddGatewayAuthResponseBody struct {
-	// The status code returned.
+	// The code synchronized with the Success parameter. If Success is true, Code is 200.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The ID of the created authentication.
 	//
 	// example:
 	//
-	// 3
+	// 333
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// You are not authorized to perform this operation.
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4279C00F-A5E1-53C6-A43B-751C1C524D0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

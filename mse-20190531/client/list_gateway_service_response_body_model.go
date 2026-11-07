@@ -32,29 +32,29 @@ type ListGatewayServiceResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ListGatewayServiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F46CDBA4-B1EE-5C94-8A48-51C10177****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -134,21 +134,21 @@ func (s *ListGatewayServiceResponseBody) Validate() error {
 }
 
 type ListGatewayServiceResponseBodyData struct {
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Default value: 10.
+	// The maximum number of records per page. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The returned collection.
 	Result []*ListGatewayServiceResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -214,6 +214,7 @@ func (s *ListGatewayServiceResponseBodyData) Validate() error {
 }
 
 type ListGatewayServiceResponseBodyDataResult struct {
+	// The DNS server list (for DNS domain name service only).
 	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
 	// The gateway ID.
 	//
@@ -229,31 +230,31 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The creation time.
+	// The time when the record was created.
 	//
 	// example:
 	//
 	// 2022-01-07 18:07:57
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the record was modified.
 	//
 	// example:
 	//
 	// 2022-01-07 18:07:57
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The group.
+	// The group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The health status.
+	// The health status. Valid values:
 	//
-	// 	- Health
+	// - Health
 	//
-	// 	- Unhealthy
+	// - Unhealthy
 	//
-	// 	- Unknown
+	// - Unknown
 	//
 	// example:
 	//
@@ -265,15 +266,15 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	//
 	// true
 	HealthCheck *bool `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The information about health checks.
+	// The health check information.
 	HealthCheckInfo *ListGatewayServiceResponseBodyDataResultHealthCheckInfo `json:"HealthCheckInfo,omitempty" xml:"HealthCheckInfo,omitempty" type:"Struct"`
-	// The health status.
+	// The health status. Valid values:
 	//
-	// 	- Health
+	// - Health
 	//
-	// 	- Unhealthy
+	// - Unhealthy
 	//
-	// 	- Unknown
+	// - Unknown
 	//
 	// example:
 	//
@@ -285,15 +286,15 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The list of IP addresses.
+	// The IP address list.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The metadata or IP addresses of the service.
+	// The metadata or IP address list.
 	//
 	// example:
 	//
 	// {}
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
@@ -305,28 +306,33 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The port array.
-	Ports       []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	ServiceFQDN *string  `json:"ServiceFQDN,omitempty" xml:"ServiceFQDN,omitempty"`
-	// The name of the service that is registered with the service registry.
+	// The array of ports.
+	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The fully qualified domain name (FQDN) of the service.
+	//
+	// example:
+	//
+	// demo.default.svc.cluster.local
+	ServiceFQDN *string `json:"ServiceFQDN,omitempty" xml:"ServiceFQDN,omitempty"`
+	// The original service name in the registry.
 	//
 	// example:
 	//
 	// test
 	ServiceNameInRegistry *string `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
-	// The service port number.
+	// The service port.
 	//
 	// example:
 	//
 	// 80
 	ServicePort *int64 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
-	// The protocol of the service.
+	// The service protocol.
 	//
 	// example:
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The ID of the service source.
+	// The source ID.
 	//
 	// example:
 	//
@@ -338,9 +344,9 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	//
 	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The array of endpoints of unhealthy instances.
+	// The array of unhealthy endpoints.
 	UnhealthyEndpoints []*string `json:"UnhealthyEndpoints,omitempty" xml:"UnhealthyEndpoints,omitempty" type:"Repeated"`
-	// The service version.
+	// The service versions.
 	Versions []*ListGatewayServiceResponseBodyDataResultVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -603,7 +609,7 @@ func (s *ListGatewayServiceResponseBodyDataResult) Validate() error {
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy struct {
 	// The load balancing settings.
 	LoadBalancerSettings *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettings `json:"LoadBalancerSettings,omitempty" xml:"LoadBalancerSettings,omitempty" type:"Struct"`
-	// The Transport Layer Security (TLS).
+	// The TLS.
 	Tls *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyTls `json:"Tls,omitempty" xml:"Tls,omitempty" type:"Struct"`
 }
 
@@ -648,23 +654,23 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicy) Validate(
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettings struct {
-	// The consistent hashing settings.
+	// The consistent hashing configuration.
 	ConsistentHashLBConfig *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfig `json:"ConsistentHashLBConfig,omitempty" xml:"ConsistentHashLBConfig,omitempty" type:"Struct"`
-	// The load balancing type.
+	// The load balancing policy. Valid values:
 	//
-	// 	- ROUND_ROBIN
+	// - ROUND_ROBIN
 	//
-	// 	- LEAST_CONN
+	// - LEAST_CONN
 	//
-	// 	- RANDOM
+	// - RANDOM
 	//
-	// 	- CONSISTENT_HASH
+	// - CONSISTENT_HASH
 	//
 	// example:
 	//
 	// RANDOM
 	LoadbalancerType *string `json:"LoadbalancerType,omitempty" xml:"LoadbalancerType,omitempty"`
-	// The prefetch time of the least connection load balancing.
+	// The warm-up duration for the minimum number of requests.
 	//
 	// example:
 	//
@@ -717,29 +723,29 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalance
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfig struct {
-	// The type based on which consistent hashing load balancing is performed.
+	// The consistent hashing method. Valid values:
 	//
-	// 	- HEADER
+	// - HEADER
 	//
-	// 	- COOKIE
+	// - COOKIE
 	//
-	// 	- SOURCE_IP
+	// - SOURCE_IP
 	//
-	// 	- QUERY_PARAMETER
+	// - QUERY_PARAMETER
 	//
 	// example:
 	//
 	// HEADER
 	ConsistentHashLBType *string `json:"ConsistentHashLBType,omitempty" xml:"ConsistentHashLBType,omitempty"`
-	// The cookie-based load balancing parameters.
+	// The cookie-based parameter.
 	HttpCookie *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie `json:"HttpCookie,omitempty" xml:"HttpCookie,omitempty" type:"Struct"`
-	// The minimum value of the hash ring.
+	// The minimum size of the hash ring.
 	//
 	// example:
 	//
 	// 10000
 	MinimumRingSize *int64 `json:"MinimumRingSize,omitempty" xml:"MinimumRingSize,omitempty"`
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
@@ -801,19 +807,19 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalance
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalancerSettingsConsistentHashLBConfigHttpCookie struct {
-	// The name of the cookie.
+	// The cookie name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The path of the cookie.
+	// The cookie path.
 	//
 	// example:
 	//
 	// /path
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The lifecycle of the cookie.
+	// The time-to-live (TTL) of the cookie.
 	//
 	// example:
 	//
@@ -861,45 +867,45 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyLoadBalance
 }
 
 type ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyTls struct {
-	// The public key of the CA certificate .
+	// The public key of the CA certificate.
 	//
 	// example:
 	//
 	// content
 	CaCertContent *string `json:"CaCertContent,omitempty" xml:"CaCertContent,omitempty"`
-	// The ID of the certification authority (CA) certificate.
+	// The CA certificate ID.
 	//
 	// example:
 	//
 	// 5******-cn-hangzhou
 	CaCertId *string `json:"CaCertId,omitempty" xml:"CaCertId,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 5******-cn-hangzhou
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The TLS mode.
+	// The TLS mode. Valid values:
 	//
-	// 	- DISABLE
+	// - DISABLE
 	//
-	// 	- SIMPLE
+	// - SIMPLE
 	//
-	// 	- MUTUAL
+	// - MUTUAL
 	//
-	// 	- ISTIO_MUTUAL
+	// - ISTIO_MUTUAL
 	//
 	// example:
 	//
 	// SIMPLE
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The Server Name Indication (SNI) value.
+	// The service name identity.
 	//
 	// example:
 	//
 	// name-sni
 	Sni *string `json:"Sni,omitempty" xml:"Sni,omitempty"`
-	// The array of subject aliases.
+	// The array of subject alternative names.
 	SubjectAltNames []*string `json:"SubjectAltNames,omitempty" xml:"SubjectAltNames,omitempty" type:"Repeated"`
 }
 
@@ -970,27 +976,27 @@ func (s *ListGatewayServiceResponseBodyDataResultGatewayTrafficPolicyTls) Valida
 }
 
 type ListGatewayServiceResponseBodyDataResultHealthCheckInfo struct {
-	// Indicates whether checks are performed.
+	// Indicates whether the check is performed.
 	//
 	// example:
 	//
 	// true
 	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
-	// The expected status of the health check.
+	// The expected HTTP status codes for health checks.
 	ExpectedStatuses []*int32 `json:"ExpectedStatuses,omitempty" xml:"ExpectedStatuses,omitempty" type:"Repeated"`
-	// The threshold for healthy instances.
+	// The healthy threshold.
 	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The endpoint of the HTTP request for the health check.
+	// The HTTP request address for health checks.
 	//
 	// example:
 	//
 	// http://172.168.0.1
 	HttpHost *string `json:"HttpHost,omitempty" xml:"HttpHost,omitempty"`
-	// The path to which the HTTP request for the health check is sent.
+	// The HTTP request path for health checks.
 	//
 	// example:
 	//
@@ -1014,7 +1020,7 @@ type ListGatewayServiceResponseBodyDataResultHealthCheckInfo struct {
 	//
 	// 2
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The threshold for unhealthy instances.
+	// The unhealthy threshold.
 	//
 	// example:
 	//
@@ -1116,7 +1122,7 @@ func (s *ListGatewayServiceResponseBodyDataResultHealthCheckInfo) Validate() err
 }
 
 type ListGatewayServiceResponseBodyDataResultVersions struct {
-	// The version number.
+	// The version name.
 	//
 	// example:
 	//

@@ -24,11 +24,11 @@ type iUpdateGatewayRouteCORSShrinkRequest interface {
 type UpdateGatewayRouteCORSShrinkRequest struct {
 	// The language of the response. In compliance with [RFC 7231](https://tools.ietf.org/html/rfc7231), the backend service must return a response based on the language used by the user.
 	//
-	// 	- No default value.
+	// - No default value.
 	//
-	// 	- zh-CN: Chinese
+	// - zh-CN: Chinese
 	//
-	// 	- en-US: English
+	// - en-US: English
 	//
 	// example:
 	//

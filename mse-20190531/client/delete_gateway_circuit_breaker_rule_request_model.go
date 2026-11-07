@@ -20,22 +20,30 @@ type iDeleteGatewayCircuitBreakerRuleRequest interface {
 }
 
 type DeleteGatewayCircuitBreakerRuleRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-1cef5440bf2d484db419fb264d4f****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The route ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11151
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The ID of the circuit breaking rule.
+	//
 	// This parameter is required.
 	//
 	// example:

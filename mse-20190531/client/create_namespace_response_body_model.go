@@ -22,16 +22,28 @@ type iCreateNamespaceResponseBody interface {
 }
 
 type CreateNamespaceResponseBody struct {
+	// The response data.
 	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// The request is processed successfully.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID
+	//
 	// example:
 	//
 	// D1F1A6F3-7E03-5EAD-B3F1-123456789ABC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful
+	//
 	// example:
 	//
 	// true
@@ -101,10 +113,14 @@ func (s *CreateNamespaceResponseBody) Validate() error {
 }
 
 type CreateNamespaceResponseBodyData struct {
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// myNamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region to which the namespace belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou

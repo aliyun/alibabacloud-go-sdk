@@ -34,22 +34,27 @@ type iListClustersRequest interface {
 type ListClustersRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The alias of the instance. Fuzzy match is supported.
+	// The name of the cluster. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// cluster
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	KeyId            *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The number of the page to return.
+	// The key ID. If the cluster is a Nacos cluster, this parameter is used to query instances bound to the specified key ID.
+	//
+	// example:
+	//
+	// key-hzz67774641bsp21vhj4h
+	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -57,7 +62,7 @@ type ListClustersRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of clusters to return on each page.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +70,7 @@ type ListClustersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by MSE.
+	// The region ID of the cluster. The region must be supported by Microservices Engine (MSE).
 	//
 	// This parameter is required.
 	//
@@ -73,21 +78,26 @@ type ListClustersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameters in JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The ID of the resource group. For more information about resource groups, see the topic "View basic information of a resource group."
+	// The ID of the resource group. For more information, see View basic information of a resource group.
 	//
 	// example:
 	//
 	// rg-acfmxbzafebvvfa
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of tags. A maximum number of 20 tags are supported.
-	Tag   []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VpcId *string                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The list of tags. A maximum of 20 tags can be specified.
+	Tag []*ListClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-bp1t50e045b5g7i3p****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -202,13 +212,13 @@ func (s *ListClustersRequest) Validate() error {
 }
 
 type ListClustersRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

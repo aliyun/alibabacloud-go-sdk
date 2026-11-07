@@ -18,16 +18,20 @@ type iDeleteNamespaceRequest interface {
 }
 
 type DeleteNamespaceRequest struct {
-	// The language in which you want to display the results. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+	// The language in which the response is displayed. Valid values: zh (default): Chinese, en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the MSE namespace to be deleted.
+	//
 	// example:
 	//
 	// prod
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region of the operation.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -93,7 +93,7 @@ func (client *Client) AddAuthPolicyWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// Adds authorization information for a gateway.
+// Creates authorization information for gateway authentication.
 //
 // @param tmpReq - AddAuthResourceRequest
 //
@@ -171,7 +171,7 @@ func (client *Client) AddAuthResourceWithContext(ctx context.Context, tmpReq *Ad
 
 // Summary:
 //
-// Creates a blacklist or a whitelist.
+// Adds blacklists and whitelists.
 //
 // @param request - AddBlackWhiteListRequest
 //
@@ -251,7 +251,7 @@ func (client *Client) AddBlackWhiteListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Adds a gateway.
+// Creates a gateway.
 //
 // @param tmpReq - AddGatewayRequest
 //
@@ -393,7 +393,7 @@ func (client *Client) AddGatewayWithContext(ctx context.Context, tmpReq *AddGate
 
 // Summary:
 //
-// Adds an authentication configuration for a gateway.
+// Creates gateway authentication.
 //
 // @param tmpReq - AddGatewayAuthRequest
 //
@@ -539,7 +539,7 @@ func (client *Client) AddGatewayAuthWithContext(ctx context.Context, tmpReq *Add
 
 // Summary:
 //
-// Adds a consumer on which a gateway performs authentication operations.
+// Creates a gateway authentication consumer.
 //
 // @param request - AddGatewayAuthConsumerRequest
 //
@@ -631,7 +631,7 @@ func (client *Client) AddGatewayAuthConsumerWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Associates a domain name with a gateway.
+// Adds an associated domain to a gateway.
 //
 // @param tmpReq - AddGatewayDomainRequest
 //
@@ -859,7 +859,7 @@ func (client *Client) AddGatewayRouteWithContext(ctx context.Context, tmpReq *Ad
 
 // Summary:
 //
-// Adds a service version for a gateway.
+// Adds a service version.
 //
 // @param request - AddGatewayServiceVersionRequest
 //
@@ -915,7 +915,7 @@ func (client *Client) AddGatewayServiceVersionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Associates a Server Load Balancer (SLB) instance with a gateway.
+// Associates an SLB instance with a gateway.
 //
 // @param tmpReq - AddGatewaySlbRequest
 //
@@ -1001,7 +1001,7 @@ func (client *Client) AddGatewaySlbWithContext(ctx context.Context, tmpReq *AddG
 
 // Summary:
 //
-// # Create a new migration task
+// Creates a migration task.
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -1085,7 +1085,7 @@ func (client *Client) AddMigrationTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a service mocking rule.
+// Creates a mock rule.
 //
 // @param request - AddMockRuleRequest
 //
@@ -1173,7 +1173,7 @@ func (client *Client) AddMockRuleWithContext(ctx context.Context, request *AddMo
 
 // Summary:
 //
-// Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+// Associates a certificate with a gateway domain name. The certificate can be hosted in SSL Certificates Service.
 //
 // @param request - AddSSLCertRequest
 //
@@ -1229,7 +1229,7 @@ func (client *Client) AddSSLCertWithContext(ctx context.Context, request *AddSSL
 
 // Summary:
 //
-// Creates a security group rule for a gateway.
+// Adds a security group rule for a gateway.
 //
 // @param request - AddSecurityGroupRuleRequest
 //
@@ -1289,7 +1289,7 @@ func (client *Client) AddSecurityGroupRuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Adds a Nacos service source.
+// Creates a Nacos service source.
 //
 // @param tmpReq - AddServiceSourceRequest
 //
@@ -1387,7 +1387,7 @@ func (client *Client) AddServiceSourceWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// 增加ZooKeeper Sasl 用户
+// Adds ZooKeeper SASL users.
 //
 // @param tmpReq - AddZooKeeperSaslUserRequest
 //
@@ -1501,7 +1501,7 @@ func (client *Client) ApplyGatewayRouteWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies a tag-based routing rule.
+// Modifies tag-based routing rules.
 //
 // @param tmpReq - ApplyTagPoliciesRequest
 //
@@ -1703,11 +1703,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Copy Nacos Configuration
+// Clones existing Nacos configurations to another namespace.
 //
 // Description:
 //
-// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For information about Nacos-SDK APIs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - CloneNacosConfigRequest
 //
@@ -2025,11 +2025,11 @@ func (client *Client) CreateCircuitBreakerRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Create an MSE registration and configuration center instance
+// Creates a registry and configuration center cluster, such as ZooKeeper or Nacos.
 //
 // Description:
 //
-// Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
+// Make sure that you fully understand the billing methods and pricing of Microservices Engine (MSE) before you call this operation.
 //
 // @param request - CreateClusterRequest
 //
@@ -2935,7 +2935,7 @@ func (client *Client) CreateNacosInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 创建一个MCP Server
+// Creates an MCP server.
 //
 // @param request - CreateNacosMcpServerRequest
 //
@@ -3151,7 +3151,7 @@ func (client *Client) CreateNamespaceWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Creates or updates a lane for end-to-end canary release.
+// Creates or updates an end-to-end canary release lane.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneRequest
 //
@@ -3251,7 +3251,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates or updates a lane group for end-to-end canary release.
+// Creates or updates an end-to-end canary release swimlane group.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -3441,7 +3441,7 @@ func (client *Client) CreatePluginConfigWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 创建行为管理
+// # Creates behavior management definitions
 //
 // @param request - CreateSentinelBlockFallbackDefinitionRequest
 //
@@ -3525,7 +3525,7 @@ func (client *Client) CreateSentinelBlockFallbackDefinitionWithContext(ctx conte
 
 // Summary:
 //
-// Creates a hot parameter protection rule for HTTP requests.
+// Creates a hotspot parameter protection rule for HTTP requests.
 //
 // @param request - CreateWebFlowRuleRequest
 //
@@ -3737,7 +3737,7 @@ func (client *Client) DeleteAuthResourceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除黑白名单
+// Deletes a blacklists and whitelists entry.
 //
 // @param request - DeleteBlackWhiteListRequest
 //
@@ -3903,7 +3903,7 @@ func (client *Client) DeleteClusterWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Deletes a namespace from a Nacos instance.
+// Deletes a Nacos namespace.
 //
 // @param request - DeleteEngineNamespaceRequest
 //
@@ -4073,7 +4073,7 @@ func (client *Client) DeleteGatewayWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除网关认证
+// Deletes gateway authentication.
 //
 // @param request - DeleteGatewayAuthRequest
 //
@@ -4125,7 +4125,7 @@ func (client *Client) DeleteGatewayAuthWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a consumer on which a gateway performs authentication operations.
+// Deletes a gateway authentication consumer.
 //
 // @param request - DeleteGatewayAuthConsumerRequest
 //
@@ -4177,7 +4177,7 @@ func (client *Client) DeleteGatewayAuthConsumerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+// Deletes the authorization for a gateway authentication consumer.
 //
 // @param request - DeleteGatewayAuthConsumerResourceRequest
 //
@@ -4397,7 +4397,7 @@ func (client *Client) DeleteGatewayFlowRuleWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes the gateway concurrency rule.
+// Deletes a gateway concurrency rule.
 //
 // @param request - DeleteGatewayIsolationRuleRequest
 //
@@ -4453,7 +4453,7 @@ func (client *Client) DeleteGatewayIsolationRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a route from a gateway.
+// Deletes a gateway route.
 //
 // @param request - DeleteGatewayRouteRequest
 //
@@ -4677,7 +4677,7 @@ func (client *Client) DeleteGatewaySlbWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes isolation rules.
+// Deletes fencing rules.
 //
 // @param tmpReq - DeleteIsolationRulesRequest
 //
@@ -4859,11 +4859,11 @@ func (client *Client) DeleteNacosConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes multiple Nacos configurations at a time.
+// Deletes multiple Nacos configurations.
 //
 // Description:
 //
-// >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos SDK API. For information about the Nacos SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - DeleteNacosConfigsRequest
 //
@@ -4999,7 +4999,7 @@ func (client *Client) DeleteNacosInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除一个MCP Server
+// Deletes an MCP Server.
 //
 // @param request - DeleteNacosMcpServerRequest
 //
@@ -5119,7 +5119,7 @@ func (client *Client) DeleteNacosServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除MSE命名空间
+// Deletes an MSE namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -5331,7 +5331,7 @@ func (client *Client) DeleteServiceSourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a lane.
+// Deletes an end-to-end traffic lane.
 //
 // @param request - DeleteSwimmingLaneRequest
 //
@@ -5383,7 +5383,7 @@ func (client *Client) DeleteSwimmingLaneWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a lane group.
+// Deletes an end-to-end traffic lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -5439,7 +5439,7 @@ func (client *Client) DeleteSwimmingLaneGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes a hot parameter protection rule for HTTP requests.
+// Deletes hot spot parameter protection rules for HTTP requests.
 //
 // @param request - DeleteWebFlowRulesRequest
 //
@@ -5495,7 +5495,7 @@ func (client *Client) DeleteWebFlowRulesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a ZooKeeper node.
+// Deletes a ZooKeeper data node.
 //
 // @param request - DeleteZnodeRequest
 //
@@ -5603,7 +5603,7 @@ func (client *Client) EnableHttp2WithContext(ctx context.Context, request *Enabl
 
 // Summary:
 //
-// Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
+// Enables the PROXY protocol. If the gateway ingress traffic is connected through NLB, the real IP address of the client cannot be obtained unless this feature is enabled. Enabling this feature does not affect non-PROXY protocol requests.
 //
 // @param request - EnableProxyProtocolRequest
 //
@@ -5731,7 +5731,7 @@ func (client *Client) ExportNacosConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Initiates a task to export ZooKeeper data.
+// Initiates a ZooKeeper data export task.
 //
 // Description:
 //
@@ -5795,11 +5795,11 @@ func (client *Client) ExportZookeeperDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains the rules for graceful start and shutdown.
+// Queries the list of graceful start and shutdown rules.
 //
 // Description:
 //
-// You can call this operation to query the rules for graceful start and shutdown.
+// Calls the FetchLosslessRuleList operation to retrieve the list of configuration rules for graceful start and shutdown.
 //
 // @param request - FetchLosslessRuleListRequest
 //
@@ -5867,7 +5867,7 @@ func (client *Client) FetchLosslessRuleListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of blacklists and whitelists of a gateway.
+// Retrieves the list of gateway blacklists and whitelists.
 //
 // @param tmpReq - GatewayBlackWhiteListRequest
 //
@@ -5937,7 +5937,7 @@ func (client *Client) GatewayBlackWhiteListWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Queries information about canary release for messaging of an application.
+// Retrieves information related to application message canary release.
 //
 // @param request - GetAppMessageQueueRouteRequest
 //
@@ -6069,7 +6069,7 @@ func (client *Client) GetApplicationInstanceListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Obtains the list of applications.
+// Retrieves the list of applications.
 //
 // @param tmpReq - GetApplicationListRequest
 //
@@ -6281,7 +6281,7 @@ func (client *Client) GetEngineNamepaceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+// Retrieves basic information about a gateway, such as the VPC and vSwitch to which the gateway belongs.
 //
 // @param request - GetGatewayRequest
 //
@@ -6381,7 +6381,7 @@ func (client *Client) GetGatewayAuthConsumerDetailWithContext(ctx context.Contex
 
 // Summary:
 //
-// Obtains the authentication details of a gateway.
+// Retrieves the details of gateway authentication.
 //
 // @param request - GetGatewayAuthDetailRequest
 //
@@ -6437,7 +6437,7 @@ func (client *Client) GetGatewayAuthDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Obtains the parameter configurations of a gateway.
+// Retrieves the parameter settings of a gateway.
 //
 // @param request - GetGatewayConfigRequest
 //
@@ -6485,7 +6485,7 @@ func (client *Client) GetGatewayConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the details of a domain name associated with a gateway.
+// Queries the details of a gateway domain name.
 //
 // @param request - GetGatewayDomainDetailRequest
 //
@@ -6537,7 +6537,7 @@ func (client *Client) GetGatewayDomainDetailWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Obtains the global parameters of a gateway.
+// Retrieves the global parameters of a gateway.
 //
 // @param request - GetGatewayOptionRequest
 //
@@ -6589,7 +6589,7 @@ func (client *Client) GetGatewayOptionWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the details of a route for a gateway.
+// Queries the details of a gateway route.
 //
 // @param request - GetGatewayRouteDetailRequest
 //
@@ -6693,7 +6693,7 @@ func (client *Client) GetGatewayServiceDetailWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+// Queries information about a Container Service for Kubernetes (ACK) cluster that has Microservices Governance enabled.
 //
 // @param request - GetGovernanceKubernetesClusterRequest
 //
@@ -6909,7 +6909,7 @@ func (client *Client) GetKubernetesSourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Obtains the Intra-zone Provider First rules.
+// Retrieves the Intra-zone Provider First rules.
 //
 // @param request - GetLocalityRuleRequest
 //
@@ -6973,15 +6973,11 @@ func (client *Client) GetLocalityRuleWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the rules for graceful start and shutdown of an application.
+// Retrieves the graceful start and shutdown rules for a specified application.
 //
 // Description:
 //
-// You can call this operation to query the rules for graceful start and shutdown of an application.
-//
-// You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
-//
-// If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
+// Calls the GetLosslessRuleByApp operation to retrieve the graceful start and shutdown configuration rules for a specified application. The query prioritizes the AppId parameter. If AppId is not specified, the system queries by using RegionId, Namespace, and AppName.
 //
 // @param request - GetLosslessRuleByAppRequest
 //
@@ -7041,7 +7037,7 @@ func (client *Client) GetLosslessRuleByAppWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about the MSE feature switch.
+// Retrieves the MSE feature toggles.
 //
 // @param request - GetMseFeatureSwitchRequest
 //
@@ -7277,7 +7273,7 @@ func (client *Client) GetNacosHistoryConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取MCP Server的详情
+// Retrieves the details of an MCP server.
 //
 // @param request - GetNacosMcpServerRequest
 //
@@ -7337,11 +7333,11 @@ func (client *Client) GetNacosMcpServerWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries overview information about Microservices Governance.
+// Queries the Query Governance overview information.
 //
 // Description:
 //
-// You can call this operation to query overview information about service governance.
+// Queries the service governance overview information.
 //
 // @param request - GetOverviewRequest
 //
@@ -7393,7 +7389,7 @@ func (client *Client) GetOverviewWithContext(ctx context.Context, request *GetOv
 
 // Summary:
 //
-// Obtains plug-in configurations.
+// Retrieves the plug-in configuration.
 //
 // @param request - GetPluginConfigRequest
 //
@@ -7445,7 +7441,7 @@ func (client *Client) GetPluginConfigWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Obtains plug-ins.
+// Queries plugins from the plug-in marketplace.
 //
 // @param request - GetPluginsRequest
 //
@@ -7569,7 +7565,7 @@ func (client *Client) GetServiceListWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the version of a microservices application.
+// Retrieves the service list.
 //
 // @param request - GetServiceListPageRequest
 //
@@ -7837,7 +7833,7 @@ func (client *Client) GetServiceMethodPageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Obtains all tags in the current lane group.
+// Retrieves all tags in the current traffic lane group.
 //
 // @param request - GetTagsBySwimmingLaneGroupIdRequest
 //
@@ -7941,11 +7937,11 @@ func (client *Client) GetZookeeperDataImportUrlWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Imports Nacos configurations as a file.
+// Imports Nacos configurations by using a configuration file.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ImportNacosConfigRequest
 //
@@ -8005,7 +8001,7 @@ func (client *Client) ImportNacosConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Imports services to a gateway.
+// Subscribes to the services imported to the gateway.
 //
 // @param tmpReq - ImportServicesRequest
 //
@@ -8087,11 +8083,11 @@ func (client *Client) ImportServicesWithContext(ctx context.Context, tmpReq *Imp
 
 // Summary:
 //
-// Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+// Initiates a ZooKeeper data import task to import data from the specified URL into the ZooKeeper cluster.
 //
 // Description:
 //
-// *Danger*	- This operation clears existing data. Exercise caution when you call this API operation.
+//	Danger: This operation clears all existing data. Proceed with caution.
 //
 // @param request - ImportZookeeperDataRequest
 //
@@ -8207,11 +8203,11 @@ func (client *Client) InitializeServiceLinkRoleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+// Queries the list of Nacos service instances.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListAnsInstancesRequest
 //
@@ -8371,11 +8367,11 @@ func (client *Client) ListAnsServiceClustersWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries Nacos services.
+// Queries the details of Nacos services.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > This OpenAPI is not a Nacos SDK API. For more information about Nacos SDK APIs, see [the official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListAnsServicesRequest
 //
@@ -8521,7 +8517,7 @@ func (client *Client) ListAppBySwimmingLaneGroupTagWithContext(ctx context.Conte
 
 // Summary:
 //
-// Lists applications by tag in a specified lane group.
+// Retrieves the list of applications with a specified tag in a specified lane group.
 //
 // @param tmpReq - ListAppBySwimmingLaneGroupTagsRequest
 //
@@ -8623,7 +8619,7 @@ func (client *Client) ListApplicationsWithTagRulesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of service authentication rules.
+// Call the ListAuthPolicy API to query the list of service authentication rules.
 //
 // @param request - ListAuthPolicyRequest
 //
@@ -8699,7 +8695,7 @@ func (client *Client) ListAuthPolicyWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries a list of circuit breaking rules.
+// Queries circuit breaker rules.
 //
 // @param request - ListCircuitBreakerRulesRequest
 //
@@ -8771,7 +8767,7 @@ func (client *Client) ListCircuitBreakerRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries available cluster connection types.
+// Queries the supported cluster connection types.
 //
 // @param request - ListClusterConnectionTypesRequest
 //
@@ -8815,7 +8811,7 @@ func (client *Client) ListClusterConnectionTypesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Obtains information about historical health check tasks.
+// Retrieves information about historical health check tasks.
 //
 // @param request - ListClusterHealthCheckTaskRequest
 //
@@ -8879,7 +8875,7 @@ func (client *Client) ListClusterHealthCheckTaskWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the engine types that can be activated.
+// Queries the supported engine types.
 //
 // @param request - ListClusterTypesRequest
 //
@@ -8935,7 +8931,7 @@ func (client *Client) ListClusterTypesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about supported instance versions.
+// Queries information about supported cluster versions.
 //
 // @param request - ListClusterVersionsRequest
 //
@@ -8987,7 +8983,7 @@ func (client *Client) ListClusterVersionsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries Microservices Engine (MSE) instances.
+// Queries a list of Microservices Registry clusters.
 //
 // @param request - ListClustersRequest
 //
@@ -9243,7 +9239,7 @@ func (client *Client) ListEurekaInstancesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries Eureka services.
+// Queries the Eureka service list.
 //
 // @param request - ListEurekaServicesRequest
 //
@@ -9339,7 +9335,7 @@ func (client *Client) ListExportZookeeperDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Obtains a list of throttling rules.
+// Queries the list of flow control rules.
 //
 // @param request - ListFlowRulesRequest
 //
@@ -9411,7 +9407,7 @@ func (client *Client) ListFlowRulesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of gateways.
+// Queries the list of gateways.
 //
 // @param tmpReq - ListGatewayRequest
 //
@@ -9481,7 +9477,7 @@ func (client *Client) ListGatewayWithContext(ctx context.Context, tmpReq *ListGa
 
 // Summary:
 //
-// 查询网关认证
+// Queries the list of gateway authentication rules.
 //
 // @param tmpReq - ListGatewayAuthRequest
 //
@@ -9619,7 +9615,7 @@ func (client *Client) ListGatewayAuthConsumerWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+// Queries the authorization list for gateway authentication consumers.
 //
 // @param request - ListGatewayAuthConsumerResourceRequest
 //
@@ -9687,7 +9683,7 @@ func (client *Client) ListGatewayAuthConsumerResourceWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries a gateway circuit breaking rule.
+// Queries the circuit breaker rules of the gateway.
 //
 // @param request - ListGatewayCircuitBreakerRuleRequest
 //
@@ -9735,7 +9731,7 @@ func (client *Client) ListGatewayCircuitBreakerRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the domain names that are associated with a gateway.
+// Queries the list of associated domains for a gateway.
 //
 // @param request - ListGatewayDomainRequest
 //
@@ -9791,7 +9787,7 @@ func (client *Client) ListGatewayDomainWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries throttling rules of a gateway.
+// Queries the gateway throttle rules.
 //
 // @param request - ListGatewayFlowRuleRequest
 //
@@ -9839,7 +9835,7 @@ func (client *Client) ListGatewayFlowRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the concurrency rule of a gateway.
+// Queries the concurrency rules of the gateway.
 //
 // @param request - ListGatewayIsolationRuleRequest
 //
@@ -9887,7 +9883,7 @@ func (client *Client) ListGatewayIsolationRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the routes of a gateway.
+// Queries the gateway route list.
 //
 // @param tmpReq - ListGatewayRouteRequest
 //
@@ -10009,7 +10005,7 @@ func (client *Client) ListGatewayRouteOnAuthWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries a list of services that are subscribed to by a gateway.
+// Queries the list of services subscribed to by a gateway.
 //
 // @param tmpReq - ListGatewayServiceRequest
 //
@@ -10079,7 +10075,7 @@ func (client *Client) ListGatewayServiceWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+// Queries the gateway ingress SLB.
 //
 // @param request - ListGatewaySlbRequest
 //
@@ -10127,7 +10123,7 @@ func (client *Client) ListGatewaySlbWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Obtains a list of zones where a gateway is available.
+// Queries the available zones for gateways.
 //
 // @param request - ListGatewayZoneRequest
 //
@@ -10231,7 +10227,7 @@ func (client *Client) ListInstanceCountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries isolation rules.
+// Query isolation rules.
 //
 // @param request - ListIsolationRulesRequest
 //
@@ -10307,7 +10303,7 @@ func (client *Client) ListIsolationRulesWithContext(ctx context.Context, request
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For information about Nacos-SDK APIs, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param tmpReq - ListListenersByConfigRequest
 //
@@ -10381,11 +10377,11 @@ func (client *Client) ListListenersByConfigWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Queries the information about listeners based on IP addresses.
+// Queries the listener list based on an IP address.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For more information about the Nacos-SDK API, see [Official Documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListListenersByIpRequest
 //
@@ -10445,7 +10441,7 @@ func (client *Client) ListListenersByIpWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries information about a migration task.
+// This operation queries cloud migration tasks.
 //
 // @param request - ListMigrationTaskRequest
 //
@@ -10505,11 +10501,11 @@ func (client *Client) ListMigrationTaskWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries Nacos configurations.
+// Queries the list of Nacos configurations.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos SDK API. For information about the Nacos SDK API, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListNacosConfigsRequest
 //
@@ -10593,11 +10589,11 @@ func (client *Client) ListNacosConfigsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+// Queries the configuration history of a Nacos instance.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, see [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListNacosHistoryConfigsRequest
 //
@@ -10673,7 +10669,7 @@ func (client *Client) ListNacosHistoryConfigsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取McpServer列表
+// Retrieves a list of MCP servers.
 //
 // @param request - ListNacosMcpServersRequest
 //
@@ -10741,7 +10737,7 @@ func (client *Client) ListNacosMcpServersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Displays the list of namespaces, the number of online nodes in each namespace, and the total number of applications in each namespace. You can also call this operation to perform fuzzy queries based on the namespace name.
+// Displays the namespace list, showing the number of online nodes and total applications in each namespace. This interface also supports fuzzy queries based on namespace names.
 //
 // @param tmpReq - ListNamespacesRequest
 //
@@ -10851,7 +10847,7 @@ func (client *Client) ListNamingTrackWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Obtains a list of gateway certificates.
+// Retrieves a list of gateway certificates.
 //
 // @param request - ListSSLCertRequest
 //
@@ -10951,7 +10947,7 @@ func (client *Client) ListSecurityGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the security group rules of a gateway.
+// Queries the list of gateway security groups.
 //
 // @param request - ListSecurityGroupRuleRequest
 //
@@ -11061,7 +11057,7 @@ func (client *Client) ListSentinelBlockFallbackDefinitionsWithContext(ctx contex
 
 // Summary:
 //
-// Queries a list of associated sources.
+// Queries the list of associated sources.
 //
 // @param request - ListServiceSourceRequest
 //
@@ -11113,7 +11109,7 @@ func (client *Client) ListServiceSourceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries tagged resources.
+// Queries resource tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -11381,7 +11377,7 @@ func (client *Client) ListZnodeChildrenWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 列出所有ZooKeeper sasl用户
+// Lists all ZooKeeper SASL users.
 //
 // @param request - ListZooKeeperSaslUserRequest
 //
@@ -11585,7 +11581,7 @@ func (client *Client) ModifyLosslessRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Disables a route for a gateway.
+// Takes a gateway route offline.
 //
 // @param request - OfflineGatewayRouteRequest
 //
@@ -11757,7 +11753,7 @@ func (client *Client) PreserveHeaderFormatWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries all the microservices of a service source.
+// Queries the information about importable services from a specified source.
 //
 // @param request - PullServicesRequest
 //
@@ -11817,7 +11813,7 @@ func (client *Client) PullServicesWithContext(ctx context.Context, request *Pull
 
 // Summary:
 //
-// Initiates a task to check risk evaluation for an instance.
+// Initiates a risk assessment check task for the current cluster.
 //
 // @param request - PutClusterHealthCheckTaskRequest
 //
@@ -11865,7 +11861,7 @@ func (client *Client) PutClusterHealthCheckTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries all the lanes in a lane group.
+// Queries information about all lanes.
 //
 // @param request - QueryAllSwimmingLaneRequest
 //
@@ -12005,7 +12001,7 @@ func (client *Client) QueryBusinessLocationsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of an instance.
+// Queries the details of a cluster.
 //
 // @param request - QueryClusterDetailRequest
 //
@@ -12109,7 +12105,7 @@ func (client *Client) QueryClusterDiskSpecificationWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the static information of an instance.
+// Queries the static information of a cluster.
 //
 // @param request - QueryClusterInfoRequest
 //
@@ -12177,7 +12173,7 @@ func (client *Client) QueryClusterInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information of supported instance specifications.
+// Queries the list of supported cluster specifications.
 //
 // @param request - QueryClusterSpecificationRequest
 //
@@ -12229,7 +12225,7 @@ func (client *Client) QueryClusterSpecificationWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries configuration information of an instance.
+// Queries the configuration of a cluster.
 //
 // @param request - QueryConfigRequest
 //
@@ -12293,7 +12289,7 @@ func (client *Client) QueryConfigWithContext(ctx context.Context, request *Query
 
 // Summary:
 //
-// Queries the regions supported by a gateway.
+// Queries the regions supported by the gateway.
 //
 // @param request - QueryGatewayRegionRequest
 //
@@ -12381,7 +12377,7 @@ func (client *Client) QueryGatewayTypeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the Kubernetes clusters for which Microservices Governance is activated.
+// Queries a list of Kubernetes clusters for microservice governance.
 //
 // @param request - QueryGovernanceKubernetesClusterRequest
 //
@@ -12573,7 +12569,7 @@ func (client *Client) QueryMonitorWithContext(ctx context.Context, request *Quer
 
 // Summary:
 //
-// Queries canary configurations of a Nacos instance.
+// Queries the grayscale configuration of a Nacos canary release environment.
 //
 // @param request - QueryNacosGrayConfigRequest
 //
@@ -12645,7 +12641,7 @@ func (client *Client) QueryNacosGrayConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 查询MSE命名空间
+// Queries the namespace to which Microservices Governance belongs.
 //
 // @param request - QueryNamespaceRequest
 //
@@ -12737,7 +12733,7 @@ func (client *Client) QuerySlbSpecWithContext(ctx context.Context, request *Quer
 
 // Summary:
 //
-// Queries the information about a lane based on the lane ID.
+// Queries swimming lane information by swimming lane ID.
 //
 // @param request - QuerySwimmingLaneByIdRequest
 //
@@ -12909,7 +12905,7 @@ func (client *Client) RemoveApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes a service authentication rule.
+// Delete service authentication rules using the RemoveAuthPolicy interface.
 //
 // @param request - RemoveAuthPolicyRequest
 //
@@ -12957,7 +12953,7 @@ func (client *Client) RemoveAuthPolicyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除ZooKeeper sasl用户
+// Deletes ZooKeeper SASL users.
 //
 // @param tmpReq - RemoveZooKeeperSaslUserRequest
 //
@@ -13187,7 +13183,7 @@ func (client *Client) SelectGatewaySlbWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Tags a specified resource.
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -13247,7 +13243,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Untags resources.
+// Deletes tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -13311,7 +13307,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Modifies an IP address whitelist.
+// Modifies the whitelist.
 //
 // @param request - UpdateAclRequest
 //
@@ -13367,7 +13363,7 @@ func (client *Client) UpdateAclWithContext(ctx context.Context, request *UpdateA
 
 // Summary:
 //
-// Updates a service authentication rule.
+// Updates service authentication rules through the UpdateAuthPolicy operation.
 //
 // @param request - UpdateAuthPolicyRequest
 //
@@ -13447,7 +13443,7 @@ func (client *Client) UpdateAuthPolicyWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the blacklist or whitelist of a gateway.
+// Updates the blacklists and whitelists of a gateway.
 //
 // @param request - UpdateBlackWhiteListRequest
 //
@@ -13627,7 +13623,7 @@ func (client *Client) UpdateCircuitBreakerRuleWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the information about an instance.
+// Modifies the cluster information.
 //
 // @param request - UpdateClusterRequest
 //
@@ -13691,11 +13687,11 @@ func (client *Client) UpdateClusterWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+// Updates the number of nodes or specifications of a registry and configuration center cluster (supports both pay-as-you-go and subscription).
 //
 // Description:
 //
-// You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
+// Updates the number of nodes or specifications of a registry and configuration center cluster (supports both pay-as-you-go and subscription). Adding nodes or upgrading specifications will incur corresponding fees. For more information, see [Pricing]\\(`~~1806469~~`).
 //
 // @param request - UpdateClusterSpecRequest
 //
@@ -14069,7 +14065,7 @@ func (client *Client) UpdateFlowRuleWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// 更新网关认证
+// Updates gateway authentication.
 //
 // @param tmpReq - UpdateGatewayAuthRequest
 //
@@ -14227,7 +14223,7 @@ func (client *Client) UpdateGatewayAuthWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates the consumer on which a gateway performs authentication operations.
+// Updates a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerRequest
 //
@@ -14315,7 +14311,7 @@ func (client *Client) UpdateGatewayAuthConsumerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+// Updates the authorization list of a gateway authentication consumer.
 //
 // @param tmpReq - UpdateGatewayAuthConsumerResourceRequest
 //
@@ -14377,7 +14373,7 @@ func (client *Client) UpdateGatewayAuthConsumerResourceWithContext(ctx context.C
 
 // Summary:
 //
-// Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+// Updates the authorization status of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerResourceStatusRequest
 //
@@ -14437,7 +14433,7 @@ func (client *Client) UpdateGatewayAuthConsumerResourceStatusWithContext(ctx con
 
 // Summary:
 //
-// Updates the status of the consumer on which a gateway performs authentication operations.
+// Updates the status of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerStatusRequest
 //
@@ -14493,7 +14489,7 @@ func (client *Client) UpdateGatewayAuthConsumerStatusWithContext(ctx context.Con
 
 // Summary:
 //
-// Updates a gateway circuit breaking rule.
+// Updates the circuit breaker rule for the gateway.
 //
 // @param request - UpdateGatewayCircuitBreakerRuleRequest
 //
@@ -14661,7 +14657,7 @@ func (client *Client) UpdateGatewayConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the information about the domain name associated with a gateway.
+// Modifies the associated domain name information.
 //
 // @param tmpReq - UpdateGatewayDomainRequest
 //
@@ -14692,6 +14688,10 @@ func (client *Client) UpdateGatewayDomainWithContext(ctx context.Context, tmpReq
 
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !dara.IsNil(request.EnableWaf) {
+		query["EnableWaf"] = request.EnableWaf
 	}
 
 	if !dara.IsNil(request.GatewayUniqueId) {
@@ -14755,7 +14755,7 @@ func (client *Client) UpdateGatewayDomainWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries throttling rules of a gateway.
+// Updates a throttling rule of a gateway.
 //
 // @param request - UpdateGatewayFlowRuleRequest
 //
@@ -15053,7 +15053,7 @@ func (client *Client) UpdateGatewayOptionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Updates a route for a gateway.
+// Updates a gateway route.
 //
 // @param tmpReq - UpdateGatewayRouteRequest
 //
@@ -15179,7 +15179,7 @@ func (client *Client) UpdateGatewayRouteWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Updates the authentication configurations of a route.
+// Updates the route authentication configuration.
 //
 // @param tmpReq - UpdateGatewayRouteAuthRequest
 //
@@ -15431,7 +15431,7 @@ func (client *Client) UpdateGatewayRouteHeaderOpWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the retry policy of a route.
+// Modifies the retry policy for a gateway route.
 //
 // @param tmpReq - UpdateGatewayRouteRetryRequest
 //
@@ -15619,7 +15619,7 @@ func (client *Client) UpdateGatewayRouteWafStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Updates gateways for fixed address services or DNS services.
+// Edit a gateway service (applicable only to fixed address services or DNS domain name services)
 //
 // @param tmpReq - UpdateGatewayServiceRequest
 //
@@ -16109,7 +16109,7 @@ func (client *Client) UpdateIsolationRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates the Intra-zone Provider First rules.
+// Updates zone affinity routing rules.
 //
 // @param request - UpdateLocalityRuleRequest
 //
@@ -16185,7 +16185,7 @@ func (client *Client) UpdateLocalityRuleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the configuration of a canary release for messaging of an application.
+// Updates the message canary release configuration for an application.
 //
 // @param tmpReq - UpdateMessageQueueRouteRequest
 //
@@ -16533,7 +16533,7 @@ func (client *Client) UpdateNacosConfigWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the canary release settings, which include beta release and tag-based canary release.
+// Updates the canary release settings, including beta release and tag-based canary release.
 //
 // @param request - UpdateNacosGrayConfigRequest
 //
@@ -16799,7 +16799,7 @@ func (client *Client) UpdateNacosServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates plug-in configurations.
+// Updates the configuration of a plug-in.
 //
 // @param tmpReq - UpdatePluginConfigRequest
 //
@@ -17197,7 +17197,7 @@ func (client *Client) UpdateZnodeWithContext(ctx context.Context, request *Updat
 
 // Summary:
 //
-// 修改ZooKeeper sasl 用户信息
+// Updates the SASL user information for ZooKeeper.
 //
 // @param tmpReq - UpdateZooKeeperSaslUserRequest
 //
@@ -17259,7 +17259,7 @@ func (client *Client) UpdateZooKeeperSaslUserWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Upgrades the version of a cluster.
+// Upgrades the cluster version.
 //
 // @param request - UpgradeClusterRequest
 //

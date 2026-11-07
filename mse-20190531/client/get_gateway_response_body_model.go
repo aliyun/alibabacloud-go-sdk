@@ -24,37 +24,37 @@ type iGetGatewayResponseBody interface {
 }
 
 type GetGatewayResponseBody struct {
-	// The status code returned. A value of 200 indicates that the request is successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the gateway.
+	// The gateway information.
 	Data *GetGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The message that indicates whether the request is successful.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9C96CDF8-9E6C-5AB6-B83C-8F87A10117E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -134,35 +134,35 @@ func (s *GetGatewayResponseBody) Validate() error {
 }
 
 type GetGatewayResponseBodyData struct {
-	// The billing method, such as subscription or pay-as-you-go.
+	// The billing method. Valid values: subscription and pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Indicates whether auto scale-out is enabled.
+	// Specifies whether auto-scaling is enabled.
 	//
 	// example:
 	//
 	// true
 	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	// The auto scale-out policy.
+	// The auto-scaling policy.
 	ElasticPolicy *GetGatewayResponseBodyDataElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
-	// The number of replicas that are automatically scaled out.
+	// The number of auto-scaling replicas.
 	//
 	// example:
 	//
 	// 1
 	ElasticReplica *int32 `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
-	// The type of auto scale-out. Valid value:
+	// The auto-scaling type. Valid values:
 	//
-	// 	- CronHPA: scale-out by time
+	// 	- CronHPA: Time-based scaling.
 	//
 	// example:
 	//
 	// CronHPA
 	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	// The time when the gateway expires.
+	// The expiration time of the gateway.
 	//
 	// example:
 	//
@@ -174,25 +174,25 @@ type GetGatewayResponseBodyData struct {
 	//
 	// gw-7ea3da97b96543e19f6c597cd4a9****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The time when the gateway was created. The time is displayed in GMT. The time is the local time of the region in which the gateway resides.
+	// The time when the gateway was created. The time is in GMT and represents the local time of the user.
 	//
 	// example:
 	//
 	// 2022-01-07T10:07:57.000+0000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the gateway was last modified.
+	// The time when the instance was last updated.
 	//
 	// example:
 	//
 	// 2022-01-07T10:07:57.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// 12
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -200,25 +200,25 @@ type GetGatewayResponseBodyData struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The log configuration.
 	LogConfigDetails *GetGatewayResponseBodyDataLogConfigDetails `json:"LogConfigDetails,omitempty" xml:"LogConfigDetails,omitempty" type:"Struct"`
-	// The tag of the resource.
+	// The resource tags.
 	//
 	// example:
 	//
 	// {"TagKey":"TagValue"}
 	MseTag *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
-	// The name of the gateway.
+	// The gateway name.
 	//
 	// example:
 	//
 	// DEFAULT
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Alibaba Cloud account ID of the user who created the gateway.
+	// The ID of the primary user who created the gateway.
 	//
 	// example:
 	//
 	// 1231254
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -228,85 +228,85 @@ type GetGatewayResponseBodyData struct {
 	//
 	// example:
 	//
-	// 2
+	// 1
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfm34x43l*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group.
+	// The security group.
 	//
 	// example:
 	//
 	// sg-bp11ufzqn6mmb8dtzz82
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The specifications of the gateway.
+	// The gateway specifications.
 	//
 	// example:
 	//
 	// MSE_GTW_16_32_200_c
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the gateway. Valid values:
+	// The result status of the data integration synchronization node. Valid values:
 	//
-	// 	- 0: The gateway is being created.
+	// 	- 0: Creating.
 	//
-	// 	- 1: The gateway fails to be created.
+	// 	- 1: Creation failed.
 	//
-	// 	- 2: The gateway is running.
+	// 	- 2: Running.
 	//
-	// 	- 3: The gateway is changing.
+	// 	- 3: Modifying.
 	//
-	// 	- 4: The gateway is scaling in.
+	// 	- 4: Scaling in.
 	//
-	// 	- 6: The gateway is scaling out.
+	// 	- 6: Scaling out.
 	//
-	// 	- 8: The gateway is being deleted.
+	// 	- 8: delete.
 	//
-	// 	- 10: The gateway is restarting.
+	// 	- 10: Restarting.
 	//
-	// 	- 11: The gateway is being rebuilt.
+	// 	- 11: Rebuilding.
 	//
-	// 	- 12: The gateway is updating.
+	// 	- 12: Upgrading.
 	//
-	// 	- 13: The gateway fails to be updated.
+	// 	- 13: Upgrade failed.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the status.
+	// The status description.
 	//
 	// example:
 	//
 	// Restarting
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// The total number of replicas, including the number of replicas that are automatically scaled out.
+	// The total number of replicas, including auto-scaling replicas.
 	//
 	// example:
 	//
 	// 3
 	TotalReplica *int32 `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-bp1328cm01m6uel42b5zb
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch.
 	//
 	// example:
 	//
 	// vsw-bp18zeqxx6mpuq843z4n5
 	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
-	// The ID of the secondary vSwitch.
+	// The secondary vSwitch.
 	//
 	// example:
 	//
 	// vpc-bp1j6ivhav15ve7q54kq2
 	Vswitch2 *string `json:"Vswitch2,omitempty" xml:"Vswitch2,omitempty"`
-	// The details of Tracing Analysis.
+	// The XTrace details.
 	XtraceDetails *GetGatewayResponseBodyDataXtraceDetails `json:"XtraceDetails,omitempty" xml:"XtraceDetails,omitempty" type:"Struct"`
 }
 
@@ -581,21 +581,21 @@ func (s *GetGatewayResponseBodyData) Validate() error {
 }
 
 type GetGatewayResponseBodyDataElasticPolicy struct {
-	// The type of auto scale-out. Valid value:
+	// The auto-scaling type. Valid values:
 	//
-	// 	- CronHPA: scale-out by time
+	// - CronHPA: Time-based scaling.
 	//
 	// example:
 	//
 	// CronHPA
 	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	// The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
+	// The maximum number of instances for auto-scaling, which is used for horizontal scaling.
 	//
 	// example:
 	//
 	// 5
 	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
-	// The policy of scale-out by time.
+	// The time-based scaling policy.
 	TimePolicyList []*GetGatewayResponseBodyDataElasticPolicyTimePolicyList `json:"TimePolicyList,omitempty" xml:"TimePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -648,19 +648,19 @@ func (s *GetGatewayResponseBodyDataElasticPolicy) Validate() error {
 }
 
 type GetGatewayResponseBodyDataElasticPolicyTimePolicyList struct {
-	// The number of expected replicas.
+	// The expected number of replicas.
 	//
 	// example:
 	//
 	// 2
 	DesiredReplica *int32 `json:"DesiredReplica,omitempty" xml:"DesiredReplica,omitempty"`
-	// The end time of auto scale-out.
+	// The end time in the HH:mm format (24-hour clock).
 	//
 	// example:
 	//
 	// 18:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of auto scale-out.
+	// The start time in the HH:mm format (24-hour clock).
 	//
 	// example:
 	//
@@ -708,19 +708,19 @@ func (s *GetGatewayResponseBodyDataElasticPolicyTimePolicyList) Validate() error
 }
 
 type GetGatewayResponseBodyDataLogConfigDetails struct {
-	// Indicates whether Log Service is activated.
+	// Specifies whether log delivery is enabled.
 	//
 	// example:
 	//
 	// true
 	LogEnabled *bool `json:"LogEnabled,omitempty" xml:"LogEnabled,omitempty"`
-	// The name of the Logstore.
+	// The Logstore name.
 	//
 	// example:
 	//
 	// mse_access_log
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The name of the project.
+	// The project name.
 	//
 	// example:
 	//
@@ -768,13 +768,13 @@ func (s *GetGatewayResponseBodyDataLogConfigDetails) Validate() error {
 }
 
 type GetGatewayResponseBodyDataXtraceDetails struct {
-	// The sampling rate of Tracing Analysis.
+	// The XTrace sampling rate.
 	//
 	// example:
 	//
 	// 10
 	Sample *int32 `json:"Sample,omitempty" xml:"Sample,omitempty"`
-	// Indicates whether sampling by using Tracing Analysis is enabled.
+	// Specifies whether XTrace sampling is enabled.
 	//
 	// example:
 	//

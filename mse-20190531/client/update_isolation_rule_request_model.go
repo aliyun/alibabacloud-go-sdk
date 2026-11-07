@@ -28,37 +28,56 @@ type iUpdateIsolationRuleRequest interface {
 }
 
 type UpdateIsolationRuleRequest struct {
+	// The language in which the response is displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// hkhon1po62@c3df23522******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
-	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The concurrency threshold of the isolation rule.
+	//
 	// example:
 	//
 	// 3

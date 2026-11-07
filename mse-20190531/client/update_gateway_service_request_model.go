@@ -32,36 +32,74 @@ type iUpdateGatewayServiceRequest interface {
 }
 
 type UpdateGatewayServiceRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
-	AcceptLanguage *string   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DnsServerList  []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The list of Domain Name System (DNS) servers (for DNS domain name services only).
+	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 501
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-c9bc5afd61014165bd58f621b491*****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// 322
-	Id     *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The address list of fixed address services or domain name list of Domain Name System (DNS) services.
 	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// The service name. This parameter is deprecated and cannot be modified. The value of this parameter must be the same as the current service name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The service port. Specify this parameter for DNS services.
+	//
 	// example:
 	//
 	// 80
 	ServicePort *string `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// The service protocol.
+	//
+	// - HTTP
+	//
+	// - HTTPS
+	//
+	// - HTTP2
+	//
+	// - GRPC
+	//
+	// - DUBBO
+	//
 	// example:
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	// The Transport Layer Security (TLS) settings. Valid values:
+	//
+	// - mode: TLS mode
+	//
+	// - certId: certificate ID
+	//
+	// - caCertId: CA certificate ID
+	//
+	// - caCertContent: CA certificate public key
+	//
+	// - sni: service name identification
+	//
 	// example:
 	//
 	// {

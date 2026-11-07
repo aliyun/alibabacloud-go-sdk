@@ -34,11 +34,11 @@ type iUpdateBlackWhiteListRequest interface {
 }
 
 type UpdateBlackWhiteListRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type UpdateBlackWhiteListRequest struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to enable the whitelist.
+	// Specifies whether the list is a whitelist. Default value: false.
 	//
 	// example:
 	//
@@ -80,25 +80,25 @@ type UpdateBlackWhiteListRequest struct {
 	//
 	// this is a note
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The resource IDs in the JSON format.
+	// The JSON string of the resource ID list.
 	//
 	// example:
 	//
 	// [123]
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
-	// The type of the resource.
+	// The scope of the bound resources.
 	//
 	// example:
 	//
 	// GATEWAY
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Specifies whether to enable the blacklist or whitelist.
+	// Specifies whether it is enabled.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the blacklist or whitelist.
+	// The resource type of blacklists and whitelists.
 	//
 	// example:
 	//

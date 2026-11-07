@@ -26,49 +26,49 @@ type iExportZookeeperDataResponseBody interface {
 }
 
 type ExportZookeeperDataResponseBody struct {
-  // The details of the data.
+  // The data overview.
   Data *ExportZookeeperDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+  // The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
   // 
-  // > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+  // > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
   // 
   // example:
   // 
   // The specified parameter is invalid.
   DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-  // The error code returned if the request failed.
+  // The error code.
   // 
   // example:
   // 
   // mse-100-000
   ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-  // The HTTP status code returned.
+  // The HTTP status code.
   // 
   // example:
   // 
   // 200
   HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-  // The message returned.
+  // The returned message.
   // 
-  // 	- If the request is successful, a success message is returned.
+  // - If the request succeeds, a success message is returned.
   // 
-  // 	- If the request fails, an error message is returned.
+  // - If the request fails, the cause of the failure is returned.
   // 
   // example:
   // 
-  // The request was successfully processed.
+  // Request processed successfully
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
   // 25EA0A83-9007-4E87-808C-637BE1A****
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. Valid values:
+  // The request result. Valid values:
   // 
-  // 	- `true`: The request was successful.
+  // - `true`: The request succeeded.
   // 
-  // 	- `false`: The request failed.
+  // - `false`: The request failed.
   // 
   // example:
   // 
@@ -157,19 +157,19 @@ func (s *ExportZookeeperDataResponseBody) Validate() error {
 }
 
 type ExportZookeeperDataResponseBodyData struct {
-  // The content of a task.
+  // The task content.
   ContentMap map[string]interface{} `json:"ContentMap,omitempty" xml:"ContentMap,omitempty"`
-  // The creation time.
+  // The time when the task was created. The value is a UNIX timestamp in milliseconds.
   // 
   // example:
   // 
   // 1631001140913
   CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-  // The type of the object that is exported. Valid values:
+  // The export type. Valid values:
   // 
-  // 	- transactionLog: transaction logs
+  // - transactionLog: transaction log
   // 
-  // 	- snapshot: snapshots
+  // - snapshot: snapshot file
   // 
   // example:
   // 
@@ -181,41 +181,41 @@ type ExportZookeeperDataResponseBodyData struct {
   // 
   // {}
   Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-  // The ID of the task.
+  // The task ID.
   // 
   // example:
   // 
   // 1
   Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-  // The ID of the instance
+  // The instance ID.
   // 
   // example:
   // 
   // mse-cn-st21ri2****
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The ID of the associated task at the underlying layer. This parameter is used only to troubleshoot failures.
+  // The associated underlying task ID. This parameter is used only for troubleshooting when a task fails.
   // 
   // example:
   // 
   // 10
   KubeoneTaskIds *string `json:"KubeoneTaskIds,omitempty" xml:"KubeoneTaskIds,omitempty"`
-  // The status of the task. Valid values:
+  // The task status. Valid values:
   // 
-  // 	- CREATE: The object is being created.
+  // - CREATE: creating
   // 
-  // 	- RUNNING: The task is running.
+  // - RUNNING: running
   // 
-  // 	- FINISH: The task is completed.
+  // - FINISH: completed
   // 
-  // 	- FAILED: The task fails.
+  // - FAILED: failed
   // 
-  // 	- EXPIRE: The task has expired.
+  // - EXPIRE: expired
   // 
   // example:
   // 
   // FINISH
   Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-  // The last update time.
+  // The time when the task was updated. The value is a UNIX timestamp in milliseconds.
   // 
   // example:
   // 

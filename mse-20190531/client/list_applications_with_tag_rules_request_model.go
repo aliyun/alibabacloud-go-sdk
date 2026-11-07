@@ -28,11 +28,11 @@ type iListApplicationsWithTagRulesRequest interface {
 }
 
 type ListApplicationsWithTagRulesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListApplicationsWithTagRulesRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListApplicationsWithTagRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +74,13 @@ type ListApplicationsWithTagRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The source of the routing rule. Default value: edasmsc.
+	// The data source. Default value: edasmsc.
 	//
 	// example:
 	//

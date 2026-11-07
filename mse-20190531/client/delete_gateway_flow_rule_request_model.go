@@ -20,22 +20,30 @@ type iDeleteGatewayFlowRuleRequest interface {
 }
 
 type DeleteGatewayFlowRuleRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The route ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 11151
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The ID of the throttling rule.
+	//
 	// This parameter is required.
 	//
 	// example:

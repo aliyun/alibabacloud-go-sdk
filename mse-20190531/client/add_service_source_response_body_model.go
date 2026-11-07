@@ -24,37 +24,41 @@ type iAddServiceSourceResponseBody interface {
 }
 
 type AddServiceSourceResponseBody struct {
-	// duplicatedClusterAliasName
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// mse-100-007
+	// The returned data.
 	//
 	// example:
 	//
 	// 63
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// mse-200-105
+	// The returned message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation. Action: mse:AddServiceSource, Resource: acs:mse:cn-hangzhou:1105471854403716:instance/gw-082c943a8c304e48a37a7a29a5ddeda7
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The response data.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D0DB055C-51F2-5BB2-82A6-CD8A3C6EE6BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// duplicated cluster alias name
+	// The request result. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//

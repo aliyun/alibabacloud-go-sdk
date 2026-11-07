@@ -22,35 +22,35 @@ type iGetMseFeatureSwitchResponseBody interface {
 }
 
 type GetMseFeatureSwitchResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6B4653A3-8D9C-5FDC-BB0C-936D40E9794B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	//
 	// example:
 	//
 	// {\\"nacos_config_encrypt\\": False}
 	Result map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iFetchLosslessRuleListResponseBody interface {
 }
 
 type FetchLosslessRuleListResponseBody struct {
-	// The response code returned.
+	// The response code.
 	//
 	// example:
 	//
@@ -34,35 +34,39 @@ type FetchLosslessRuleListResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *FetchLosslessRuleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 56D9E600-6348-4260-B35F-583413F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
-	// True
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -147,13 +151,13 @@ func (s *FetchLosslessRuleListResponseBody) Validate() error {
 }
 
 type FetchLosslessRuleListResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -161,7 +165,7 @@ type FetchLosslessRuleListResponseBodyData struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The returned data.
 	Results []*FetchLosslessRuleListResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -227,19 +231,19 @@ func (s *FetchLosslessRuleListResponseBodyData) Validate() error {
 }
 
 type FetchLosslessRuleListResponseBodyDataResults struct {
-	// Indicates whether service registration is complete before readiness probe.
+	// Specifies whether to enable completing service registration before passing the readiness check.
 	//
 	// example:
 	//
 	// true
 	Aligned *bool `json:"Aligned,omitempty" xml:"Aligned,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
-	// hkhon1po62@24810bf4364aea1
+	// hkhon1po62@24810bf4364a***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -251,47 +255,47 @@ type FetchLosslessRuleListResponseBodyDataResults struct {
 	//
 	// 3
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The registration latency. Unit: seconds.
+	// The delayed registration time in seconds.
 	//
 	// example:
 	//
 	// 60
 	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// Indicates whether graceful start is enabled. Valid values:
+	// The enabling status of graceful start. Valid values:
 	//
-	// 	- `true`: enabled
+	// - `true`: Enabled.
 	//
-	// 	- `false`: disabled
+	// - `false`: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The slope of the prefetching curve.
+	// The slope of the warm-up curve.
 	//
 	// example:
 	//
 	// 2
 	FuncType *int32 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
-	// Indicates whether online and offline processing details are displayed.
+	// Specifies whether to enable the processing details for graceful start and shutdown.
 	//
 	// example:
 	//
 	// false
 	LossLessDetail *bool `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
-	// Indicates whether notification is enabled.
+	// Specifies whether to enable proactive notifications.
 	//
 	// example:
 	//
 	// true
 	Notice *bool `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// Indicates whether service prefetching is complete before readiness probe.
+	// Specifies whether to enable completing service warm-up before passing the readiness check.
 	//
 	// example:
 	//
 	// false
 	Related *bool `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The prefetching duration. Unit: seconds.
+	// The warm-up duration in seconds.
 	//
 	// example:
 	//

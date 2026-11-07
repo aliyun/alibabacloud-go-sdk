@@ -38,27 +38,27 @@ type iGetApplicationListRequest interface {
 type GetApplicationListRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of an application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hkhon1po62@c3df23522b*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of an application.
+	// The application name.
 	//
 	// example:
 	//
 	// rest-container
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The programming language of the application, such as Java and Go.
+	// The programming language, such as Java or Go.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type GetApplicationListRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type GetApplicationListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type GetApplicationListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type GetApplicationListRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Specifies whether to enable the Sentinel-compatible mode.
+	// Specifies whether to enable the Sentinel component.
 	//
 	// example:
 	//
@@ -106,13 +106,14 @@ type GetApplicationListRequest struct {
 	//
 	// edasmsc
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Specifies whether to enable switching.
+	// Specifies whether to enable the switch.
 	//
 	// example:
 	//
 	// true
-	SwitchEnable *bool                            `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
-	Tags         []*GetApplicationListRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SwitchEnable *bool `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	// Alibaba Cloud tags. You can perform filtering by Alibaba Cloud tag.
+	Tags []*GetApplicationListRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetApplicationListRequest) String() string {
@@ -245,7 +246,17 @@ func (s *GetApplicationListRequest) Validate() error {
 }
 
 type GetApplicationListRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The custom tag key. It can contain up to 128 characters and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// tagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -16,10 +16,14 @@ type iRemoveZooKeeperSaslUserResponseBody interface {
 }
 
 type RemoveZooKeeperSaslUserResponseBody struct {
+	// The data overview.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 56D9E600-6348-4260-B35F-583413F****

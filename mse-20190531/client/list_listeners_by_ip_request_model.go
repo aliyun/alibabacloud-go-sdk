@@ -22,17 +22,17 @@ type iListListenersByIpRequest interface {
 }
 
 type ListListenersByIpRequest struct {
-	// The language of the response. Valid values:
+	// Language type of the returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListListenersByIpRequest struct {
 	//
 	// mse_prepaid_public_cn-i7m2cecji09
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IP address of the listener.
+	// Listener IP address.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ListListenersByIpRequest struct {
 	//
 	// 172.22.0.240
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the namespace.
+	// Namespace ID, default is public
 	//
 	// example:
 	//
 	// ea02a522-9482-4255-bb65-dc0636d783f2
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// Extended request parameters in JSON format.
 	//
 	// example:
 	//

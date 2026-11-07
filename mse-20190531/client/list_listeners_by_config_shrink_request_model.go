@@ -28,24 +28,25 @@ type iListListenersByConfigShrinkRequest interface {
 type ListListenersByConfigShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the data.
+	// The data ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zeekr-clueboss.yml
-	DataId             *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The list of additional canary release rules. When performing listener matching, the additional canary release rules are merged with existing rules for matching.
 	ExtGrayRulesShrink *string `json:"ExtGrayRules,omitempty" xml:"ExtGrayRules,omitempty"`
-	// The name of the group.
+	// The group.
 	//
 	// This parameter is required.
 	//
@@ -61,17 +62,17 @@ type ListListenersByConfigShrinkRequest struct {
 	//
 	// mse-cn-m7r1yurp00e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID. Default value: public.
 	//
 	// example:
 	//
 	// aaeb4d28-c9eb-4fa2-85f5-d03ce7ee8df1
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
-	// {\\\\"appGroup\\\\":\\\\"emas-zfive_prehost\\\\",\\\\"appName\\\\":\\\\"emas-zfive\\\\",\\\\"appStage\\\\":\\\\"PRE_PUBLISH\\\\",\\\\"appUnit\\\\":\\\\"\\\\",\\\\"bucId\\\\":\\\\"225902\\\\",\\\\"bucName\\\\":\\\\"Wireless\\\\",\\\\"provider\\\\":\\\\"aliyun\\\\"}
+	// ...
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 

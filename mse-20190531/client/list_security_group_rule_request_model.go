@@ -18,9 +18,9 @@ type iListSecurityGroupRuleRequest interface {
 type ListSecurityGroupRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//

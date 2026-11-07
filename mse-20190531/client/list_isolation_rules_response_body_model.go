@@ -24,23 +24,34 @@ type iListIsolationRulesResponseBody interface {
 }
 
 type ListIsolationRulesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the rule.
 	Data *ListIsolationRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The result of the request.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +130,22 @@ func (s *ListIsolationRulesResponseBody) Validate() error {
 }
 
 type ListIsolationRulesResponseBodyData struct {
+	// The first page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListIsolationRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned results.
+	Result []*ListIsolationRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of rules.
+	//
 	// example:
 	//
 	// 3
@@ -192,39 +210,62 @@ func (s *ListIsolationRulesResponseBodyData) Validate() error {
 }
 
 type ListIsolationRulesResponseBodyDataResult struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// hkhon1po62@c3df23522bXXXXX
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The behavior that was bound to the rule.
+	//
 	// example:
 	//
 	// "{\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}"
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
-	LimitApp       *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region in which the cluster resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface to which the rule applies. The interface name must be the same as the name on the interface details page in the console.
+	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 1
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The concurrency threshold for isolation rules.
+	//
 	// example:
 	//
 	// 3

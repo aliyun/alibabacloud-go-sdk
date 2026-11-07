@@ -32,9 +32,9 @@ type iListNacosHistoryConfigsRequest interface {
 type ListNacosHistoryConfigsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListNacosHistoryConfigsRequest struct {
 	//
 	// fc-dev-cluster-1
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type ListNacosHistoryConfigsRequest struct {
 	//
 	// mse-cn-2r42e3bk20n
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID. Default value: public
 	//
 	// example:
 	//
 	// fc0f6e40-****-946b-45e3af313707
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ListNacosHistoryConfigsRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries to return per page.
 	//
 	// This parameter is required.
 	//
@@ -82,17 +82,17 @@ type ListNacosHistoryConfigsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by MSE.
+	// The region where the cluster is located. MSE supports specific regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameter in the JSON format.
 	//
 	// example:
 	//
-	// {\\\\"appGroup\\\\":\\\\"aliyun-phecda-service-staging\\\\",\\\\"appName\\\\":\\\\"aliyun-phecda-service\\\\",\\\\"appStage\\\\":\\\\"DAILY\\\\",\\\\"appUnit\\\\":\\\\"center\\\\",\\\\"bucId\\\\":\\\\"250858\\\\",\\\\"bucName\\\\":\\\\"Alibaba Cloud\\\\",\\\\"provider\\\\":\\\\"aliyun\\\\"}
+	// {\\"appGroup\\":\\"aliyun-phecda-service-staging\\",\\"appName\\":\\"aliyun-phecda-service\\",\\"appStage\\":\\"DAILY\\",\\"appUnit\\":\\"center\\",\\"bucId\\":\\"250858\\",\\"bucName\\":\\" Alibaba Cloud\\",\\"provider\\":\\"aliyun\\"}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 

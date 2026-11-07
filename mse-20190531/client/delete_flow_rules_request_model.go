@@ -20,11 +20,11 @@ type iDeleteFlowRulesRequest interface {
 }
 
 type DeleteFlowRulesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//

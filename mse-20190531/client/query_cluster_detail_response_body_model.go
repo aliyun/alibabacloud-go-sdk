@@ -22,21 +22,21 @@ type iQueryClusterDetailResponseBody interface {
 }
 
 type QueryClusterDetailResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data *QueryClusterDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Request processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type QueryClusterDetailResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type QueryClusterDetailResponseBodyData struct {
 	//
 	// []
 	AclEntryList *string `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
-	// The ID of the whitelist.
+	// The whitelist ID.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ type QueryClusterDetailResponseBodyData struct {
 	//
 	// 1.2.1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The billing method, such as subscription or pay-as-you-go.
+	// The billing method, including subscription and pay-as-you-go.
 	//
 	// example:
 	//
 	// Pay-as-you-go
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The alias of the instance.
+	// The alias of the cluster.
 	//
 	// example:
 	//
 	// mse-7413****
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	// The name of the instance.
+	// The name of the cluster.
 	//
 	// example:
 	//
@@ -159,157 +159,155 @@ type QueryClusterDetailResponseBodyData struct {
 	//
 	// MSE_SC_1_2_200_c
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	// The type of the instance. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+	// The cluster type, including ZooKeeper, Nacos-Ans, and Eureka.
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The version of the instance.
+	// The cluster version.
 	//
 	// example:
 	//
 	// 1.2.1
 	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	// The network connection type. Valid values:
+	// The network connectivity type. Valid values:
 	//
-	// 	- slb
+	// - slb
 	//
-	// 	- eni
+	// - eni
 	//
 	// example:
 	//
 	// slb
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The number of vCPUs.
+	// The number of CPUs.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the instance was created.
+	// The time when the cluster was created.
 	//
 	// example:
 	//
 	// 2020-07-31 11:36:08
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The capacity of the disk. Unit: GB.
+	// The disk capacity. Unit: GB.
 	//
 	// example:
 	//
 	// 60
 	DiskCapacity *int64 `json:"DiskCapacity,omitempty" xml:"DiskCapacity,omitempty"`
-	// The type of the disk.
+	// The disk type.
 	//
 	// example:
 	//
 	// alicloud-disk-ssd-multi-zone
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The health status of the instance.
+	// The health status of the cluster.
 	//
 	// example:
 	//
 	// RESTART_SUCCESS
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The amount of time taken to create the instance. Unit: milliseconds.
+	// The time taken to create the cluster. Unit: ms.
 	//
 	// example:
 	//
 	// 98408
 	InitCostTime *int64 `json:"InitCostTime,omitempty" xml:"InitCostTime,omitempty"`
-	// The creation status of the instance.
+	// The creation status of the cluster.
 	//
 	// example:
 	//
 	// RESTART_SUCCESS
 	InitStatus *string `json:"InitStatus,omitempty" xml:"InitStatus,omitempty"`
-	// The number of instance nodes.
+	// The number of instances in the cluster.
 	//
 	// example:
 	//
 	// 3
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of instance nodes.
+	// The list of instances.
 	InstanceModels []*QueryClusterDetailResponseBodyDataInstanceModels `json:"InstanceModels,omitempty" xml:"InstanceModels,omitempty" type:"Repeated"`
-	// The public IP address of the instance.
+	// The public endpoint.
 	//
 	// example:
 	//
 	// 47.98.XX.XX
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	// The public endpoint of the instance.
+	// The public domain name.
 	//
 	// example:
 	//
 	// mse-7413****-p.eureka.mse.aliyuncs.com
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	// The private port number.
+	// The private port.
 	//
 	// example:
 	//
 	// 8761
 	InternetPort *string `json:"InternetPort,omitempty" xml:"InternetPort,omitempty"`
-	// The internal IP address.
+	// The private endpoint.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// The internal endpoint of the instance.
+	// The private domain name.
 	//
 	// example:
 	//
 	// mse-7413****-eureka.mse.aliyuncs.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	// The private port number.
+	// The private port.
 	//
 	// example:
 	//
 	// 8761
 	IntranetPort *string `json:"IntranetPort,omitempty" xml:"IntranetPort,omitempty"`
-	// The size of the memory. Unit: GB.
+	// The memory size. Unit: GB.
 	//
 	// example:
 	//
 	// 2
 	MemoryCapacity *int64 `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
-	// The edition of Microservices Engine (MSE).
+	// The MSE version.
 	//
 	// example:
 	//
 	// mse_basic
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// The network type of the instance. Valid values:
+	// The network type. Valid values:
 	//
-	// 	- `privatenet`: VPC
+	// - privatenet: VPC.
 	//
-	// 	- `pubnet`: Internet
+	// - pubnet: Internet.
 	//
 	// example:
 	//
 	// privatenet
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The version number of the original order.
+	// The original order version number.
 	//
 	// example:
 	//
 	// 1.2.0
 	OrderClusterVersion *string `json:"OrderClusterVersion,omitempty" xml:"OrderClusterVersion,omitempty"`
-	// The billing method, such as subscription or pay-as-you-go.
+	// The billing method, including subscription and pay-as-you-go.
 	//
 	// example:
 	//
 	// Pay-as-you-go
 	PayInfo *string `json:"PayInfo,omitempty" xml:"PayInfo,omitempty"`
-	// The public bandwidth. Unit: Mbit/s.\\
-	//
-	// Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
+	// The Internet bandwidth. Unit: Mbit/s. Valid values: 0 to 5000. A value of 0 indicates that the cluster is not connected to the Internet.
 	//
 	// example:
 	//
@@ -321,22 +319,27 @@ type QueryClusterDetailResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2dhgysj*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags that are attached to the instance.
+	// The tags bound to the instance.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-xxx-xxxx
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The version lifecycle.
+	//
+	// example:
+	//
+	// STABLE
 	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -708,7 +711,7 @@ func (s *QueryClusterDetailResponseBodyData) Validate() error {
 }
 
 type QueryClusterDetailResponseBodyDataInstanceModels struct {
-	// The timestamp when the instance was created.
+	// The creation timestamp.
 	//
 	// example:
 	//
@@ -744,13 +747,13 @@ type QueryClusterDetailResponseBodyDataInstanceModels struct {
 	//
 	// Peer
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The single-thread IP address.
+	// The single-tunnel IP address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//

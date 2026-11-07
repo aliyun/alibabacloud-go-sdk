@@ -42,59 +42,98 @@ type iUpdateNacosGrayConfigRequest interface {
 }
 
 type UpdateNacosGrayConfigRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The configuration content.
+	//
 	// example:
 	//
 	// asdf
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The data ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The canary release rule. For a beta release, you can specify one or more client IP addresses for this parameter. You must separate multiple IP addresses with commas (,). For a tag-based canary release, the value is in the format of Tag name=Tag value. You must separate multiple tag values with commas (,).
+	//
 	// example:
 	//
 	// key=value1,value2
-	GrayRule         *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
-	GrayRuleName     *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
-	GrayRulePriority *int32  `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
+	GrayRule *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	// The canary version name.
+	//
+	// example:
+	//
+	// test
+	GrayRuleName *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
+	// The canary version priority.
+	//
+	// example:
+	//
+	// 100
+	GrayRulePriority *int32 `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
+	// The canary release type. Beta release (IP address-based canary release) and tag-based canary release are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Tags
 	GrayType *string `json:"GrayType,omitempty" xml:"GrayType,omitempty"`
+	// The group name. Default value: DEFAULT_GROUP.
+	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mse_prepaid_public_cn-st2212****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace ID. Default value: public.
+	//
 	// example:
 	//
 	// 6cf708a5-****-89f2-3ba62c5ee9ba
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	OpType      *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// The operation type. Valid values: Create (create a canary release configuration) and Update (update an existing canary release configuration).
+	//
+	// example:
+	//
+	// Create
+	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The extended request parameter in the JSON format.
+	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
+	// Specifies whether to stop the canary release.
+	//
 	// example:
 	//
 	// true

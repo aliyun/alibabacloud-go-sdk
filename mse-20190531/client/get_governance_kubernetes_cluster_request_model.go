@@ -20,15 +20,15 @@ type iGetGovernanceKubernetesClusterRequest interface {
 type GetGovernanceKubernetesClusterRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the instance.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type GetGovernanceKubernetesClusterRequest struct {
 	//
 	// cd23228b3c80c4d4f9ad7af1d87cc****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by MSE.
+	// The region where the cluster is located. MSE supports specific regions.
 	//
 	// This parameter is required.
 	//

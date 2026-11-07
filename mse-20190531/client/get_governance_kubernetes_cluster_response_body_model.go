@@ -20,15 +20,15 @@ type iGetGovernanceKubernetesClusterResponseBody interface {
 }
 
 type GetGovernanceKubernetesClusterResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data *GetGovernanceKubernetesClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The information that is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type GetGovernanceKubernetesClusterResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -100,51 +100,61 @@ func (s *GetGovernanceKubernetesClusterResponseBody) Validate() error {
 }
 
 type GetGovernanceKubernetesClusterResponseBodyData struct {
-	// The ID of the instance.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// cd23228b3c80c4d4f9ad7af1d87cc30d5
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the instance.
+	// The cluster name.
 	//
 	// example:
 	//
 	// myCluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The version of Kubernetes.
+	// The Kubernetes version.
 	//
 	// example:
 	//
 	// 1.20.11-aliyun.1
 	K8sVersion *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
-	// The information of the namespace.
+	// The information about namespaces.
 	//
 	// example:
 	//
 	// [{\\"Name\\":\\"ack-onepilot\\",\\"Tags\\":null},{\\"Name\\":\\"default\\",\\"Tags\\":{\\"mse-enable\\":\\"enabled\\"}},{\\"Name\\":\\"kube-node-lease\\",\\"Tags\\":null},{\\"Name\\":\\"kube-public\\",\\"Tags\\":null},{\\"Name\\":\\"kube-system\\",\\"Tags\\":null}]
 	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
-	// The queried namespaces.
+	// The list of namespaces.
 	Namespaces []*GetGovernanceKubernetesClusterResponseBodyDataNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// The time when the pilot component was started.
+	// The Pilot startup time.
 	//
 	// example:
 	//
 	// 2022-01-11T11:50:38.000+0000
 	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
-	PilotVersion   *string `json:"PilotVersion,omitempty" xml:"PilotVersion,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by MSE.
+	// The ack-onepilot component version
+	//
+	// example:
+	//
+	// 4.1.1
+	PilotVersion *string `json:"PilotVersion,omitempty" xml:"PilotVersion,omitempty"`
+	// The region where the cluster is located. MSE supports specific regions.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time of the last modification.
+	// The time when the UDF was last modified.
 	//
 	// example:
 	//
 	// 2022-01-12T05:24:31.000+0000
-	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The version lifecycle.
+	//
+	// example:
+	//
+	// STABLE
 	VersionLifeCycle *string `json:"VersionLifeCycle,omitempty" xml:"VersionLifeCycle,omitempty"`
 }
 
@@ -260,13 +270,13 @@ func (s *GetGovernanceKubernetesClusterResponseBodyData) Validate() error {
 }
 
 type GetGovernanceKubernetesClusterResponseBodyDataNamespaces struct {
-	// The name of the MSE namespace that you want to access.
+	// The corresponding MSE namespace name.
 	//
 	// example:
 	//
 	// default
 	MseNamespace *string `json:"MseNamespace,omitempty" xml:"MseNamespace,omitempty"`
-	// The name of the namespace in the ACK cluster.
+	// The Kubernetes namespace name.
 	//
 	// example:
 	//

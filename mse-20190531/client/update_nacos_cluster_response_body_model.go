@@ -46,7 +46,7 @@ type UpdateNacosClusterResponseBody struct {
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Request succeeded.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//

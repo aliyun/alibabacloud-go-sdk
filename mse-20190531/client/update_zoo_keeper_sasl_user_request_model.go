@@ -20,20 +20,28 @@ type iUpdateZooKeeperSaslUserRequest interface {
 }
 
 type UpdateZooKeeperSaslUserRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mse_prepaid_public_cn-tl327w****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the changes take effect immediately.
+	//
 	// example:
 	//
 	// true
 	Reload *bool `json:"Reload,omitempty" xml:"Reload,omitempty"`
+	// The list of SASL users to update.
+	//
 	// This parameter is required.
 	SaslUser []*UpdateZooKeeperSaslUserRequestSaslUser `json:"SaslUser,omitempty" xml:"SaslUser,omitempty" type:"Repeated"`
 }
@@ -96,18 +104,26 @@ func (s *UpdateZooKeeperSaslUserRequest) Validate() error {
 }
 
 type UpdateZooKeeperSaslUserRequestSaslUser struct {
+	// The description of the user.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The original password. This parameter is required if you want to change the password.
+	//
 	// example:
 	//
 	// origin-password
 	OriginPassword *string `json:"OriginPassword,omitempty" xml:"OriginPassword,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// xxxxxx
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// test

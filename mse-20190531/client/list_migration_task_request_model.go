@@ -24,9 +24,9 @@ type iListMigrationTaskRequest interface {
 type ListMigrationTaskRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type ListMigrationTaskRequest struct {
 	//
 	// whdc
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameters. This parameter is a JSON string.
 	//
 	// example:
 	//

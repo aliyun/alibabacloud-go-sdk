@@ -20,15 +20,15 @@ type iGetApplicationListResponseBody interface {
 }
 
 type GetApplicationListResponseBody struct {
-	// The details of the data.
+	// The data structure.
 	Data *GetApplicationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type GetApplicationListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -100,21 +100,21 @@ func (s *GetApplicationListResponseBody) Validate() error {
 }
 
 type GetApplicationListResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The information about the applications.
 	Result []*GetApplicationListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ func (s *GetApplicationListResponseBodyData) Validate() error {
 }
 
 type GetApplicationListResponseBodyDataResult struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hkhon1po62@5f1b08becb*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type GetApplicationListResponseBodyDataResult struct {
 	//
 	// {}
 	ExtraInfo *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The number of instances.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -233,8 +233,13 @@ type GetApplicationListResponseBodyDataResult struct {
 	// example:
 	//
 	// 0
-	Status *int64                 `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The Alibaba Cloud tags.
+	//
+	// example:
+	//
+	// {"tagKey1":"tagValue1","tagKey2":"tagValue2"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The user ID.
 	//
 	// example:

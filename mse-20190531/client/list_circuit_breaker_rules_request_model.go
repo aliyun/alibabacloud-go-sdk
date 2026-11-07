@@ -28,7 +28,7 @@ type iListCircuitBreakerRulesRequest interface {
 }
 
 type ListCircuitBreakerRulesRequest struct {
-	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
+	// The language in which you want the results to be displayed. Valid values: zh-CN (default value): Chinese. en-US: English
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListCircuitBreakerRulesRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The start page of the returned pages. Default value: 1.
+	// The first page number. Default value: 1.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListCircuitBreakerRulesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is used for exact match of circuit breaking rules.
+	// The interface for which the protection rule is configured.
 	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// This parameter is used for fuzzy match of circuit breaking rules.
+	// The interface keyword in the protection rule.
 	//
 	// example:
 	//

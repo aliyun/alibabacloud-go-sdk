@@ -22,19 +22,28 @@ type iUpdateIsolationRuleResponseBody interface {
 }
 
 type UpdateIsolationRuleResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The rule information.
 	Data *UpdateIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -104,31 +113,50 @@ func (s *UpdateIsolationRuleResponseBody) Validate() error {
 }
 
 type UpdateIsolationRuleResponseBodyData struct {
+	// The ID of the application.
+	//
 	// example:
 	//
 	// hkhon1po62@c3df23522bXXXXX
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether the rule is enabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// 1
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The application resource to which the rule applies. This value must be the same as the API operation name displayed in the API details on the console.
+	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The concurrency threshold of the isolation rule.
+	//
 	// example:
 	//
 	// 3

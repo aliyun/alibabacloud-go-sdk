@@ -24,41 +24,41 @@ type iUpdateClusterRequest interface {
 }
 
 type UpdateClusterRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The alias of the instance.
+	// The alias of the cluster.
 	//
 	// example:
 	//
 	// cluster-1
 	ClusterAliasName *string `json:"ClusterAliasName,omitempty" xml:"ClusterAliasName,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse-cn-78v1l83****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The end time of the O\\&M window.
+	// The end time of the O&M window.
 	//
 	// example:
 	//
 	// 06:00
 	MaintenanceEndTime *string `json:"MaintenanceEndTime,omitempty" xml:"MaintenanceEndTime,omitempty"`
-	// The start time of the O\\&M window.
+	// The start time of the O&M window.
 	//
 	// example:
 	//
 	// 02:00
 	MaintenanceStartTime *string `json:"MaintenanceStartTime,omitempty" xml:"MaintenanceStartTime,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameters in JSON format.
 	//
 	// example:
 	//

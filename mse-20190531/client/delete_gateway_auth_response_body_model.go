@@ -24,23 +24,38 @@ type iDeleteGatewayAuthResponseBody interface {
 }
 
 type DeleteGatewayAuthResponseBody struct {
+	// The code returned in synchronization with the Success parameter. When Success is true, the value is 200.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *DeleteGatewayAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -119,46 +134,76 @@ func (s *DeleteGatewayAuthResponseBody) Validate() error {
 }
 
 type DeleteGatewayAuthResponseBodyData struct {
+	// The application ID registered for the service. This parameter is used for OIDC or IDaaS.
+	//
 	// example:
 	//
 	// example-app
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The application secret registered for the service. This parameter is used for OIDC or IDaaS.
+	//
 	// example:
 	//
 	// xxxxx
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The domain name of the cookie. After authentication, the cookie is sent to the specified domain name to maintain the logon status. This parameter is used for OIDC or IDaaS.
+	//
 	// example:
 	//
 	// test.com
 	CookieDomain *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 399
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-01-07 18:07:57
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2022-01-07 18:07:57
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The authentication ID.
+	//
 	// example:
 	//
 	// 120
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The authorization blacklist and whitelist mode. Valid values:
+	//
+	// - true: whitelist mode. Hosts and paths in the whitelist can be accessed without verification, while all other hosts and paths require verification.
+	//
+	// - false: blacklist mode. Hosts and paths in the blacklist require verification, while all other hosts and paths can be accessed directly.
+	//
 	// example:
 	//
 	// true
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// The issuer used when the authentication type is JWT or OIDC:
+	//
+	// - JWT: the iss (issuer) claim of the JWT, which represents the issuer.
+	//
+	// - OIDC: the iss (issuer) claim of the OIDC, which represents the issuer.
+	//
 	// example:
 	//
 	// https://example.com/auth
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The JWT public key in JSON format.
+	//
 	// example:
 	//
 	// {
@@ -181,39 +226,74 @@ type DeleteGatewayAuthResponseBodyData struct {
 	//
 	// }
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	// The URL of the user logon page for the IDaaS instance. This parameter is used for IDaaS.
+	//
 	// example:
 	//
 	// https://daxxxxcn.aliyunidaas.com/
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The authentication name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The redirect URL after successful authorization. This parameter is used for OIDC or IDaaS and must be consistent with the redirect URL configured in OIDC or IDaaS.
+	//
 	// example:
 	//
 	// https://yourdomain/path
-	RedirectUrl *string   `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
-	ScopesList  []*string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// The OIDC scopes. This parameter is used for OIDC.
+	ScopesList []*string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty" type:"Repeated"`
+	// The enabling status. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false: disabled.
+	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header. Example: `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Authorization
 	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	// The prefix of the JWT token.
+	//
 	// example:
 	//
 	// Bearer
 	TokenNamePrefix *string `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	// Specifies whether to pass through the token.
+	//
 	// example:
 	//
 	// true
 	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	// The position of the JWT token. Valid values:
+	//
+	// - HEADER: transmitted through the header.
+	//
+	// The token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header. Example: `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// HEADER
 	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	// The authentication type. Valid values:
+	//
+	// - JWT
+	//
+	// - OIDC
+	//
+	// - IDaaS
+	//
+	// - ExternalAuthZ: custom authentication service.
+	//
 	// example:
 	//
 	// JWT

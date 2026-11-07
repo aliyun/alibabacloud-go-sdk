@@ -24,21 +24,21 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to delete all tags. This parameter takes effect only when the TagKey.N parameter is not specified. Valid values:
+	// Specifies whether to delete all tags. This parameter takes effect only when TagKey.N is empty. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// Default value: false.
 	//
@@ -46,7 +46,7 @@ type UntagResourcesRequest struct {
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. A maximum of 50 resource IDs can be specified.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- CLUSTER: MSE instance
+	// - CLUSTER: registration and configuration center.
 	//
-	// 	- GATEWAY: cloud-native gateway
+	// - GATEWAY: cloud-native gateway.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type UntagResourcesRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys. A maximum of 20 tag keys are supported.
+	// The tag keys. You can specify up to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

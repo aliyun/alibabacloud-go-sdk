@@ -16,10 +16,13 @@ type iDataToolSpecToolsMetaValue interface {
 }
 
 type DataToolSpecToolsMetaValue struct {
+	// Indicates whether the tool is enabled.
+	//
 	// example:
 	//
 	// true
-	Enabled   *bool                  `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The protocol conversion template configuration.
 	Templates map[string]interface{} `json:"Templates,omitempty" xml:"Templates,omitempty"`
 }
 

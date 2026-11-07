@@ -30,7 +30,11 @@ type CreateFlowRuleResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *CreateFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned.
+	// The returned message.
+	//
+	// example:
+	//
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -38,25 +42,7 @@ type CreateFlowRuleResponseBody struct {
 	//
 	// 69AD2AA7-DB47-449B-941B-B14409DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The result of the request.
 	//
 	// example:
 	//
@@ -133,7 +119,7 @@ type CreateFlowRuleResponseBodyData struct {
 	//
 	// hkhon1po62@54e1f42f3******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -141,55 +127,11 @@ type CreateFlowRuleResponseBodyData struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The throttling effect.
 	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     fast failure
-	//
-	//     <!-- -->
-	//
-	// 	- 2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     in queue
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
 	// Indicates whether the rule is enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -200,9 +142,14 @@ type CreateFlowRuleResponseBodyData struct {
 	// example:
 	//
 	// 12
-	Id       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
-	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+	// The timeout period for queuing when the ControlBehavior parameter is set to 2. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -214,13 +161,13 @@ type CreateFlowRuleResponseBodyData struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region ID.
+	// The region of the gateway.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the API resource.
+	// The interface resource name.
 	//
 	// example:
 	//

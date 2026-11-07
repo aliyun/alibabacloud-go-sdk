@@ -22,9 +22,9 @@ type iListApplicationsWithTagRulesResponseBody interface {
 }
 
 type ListApplicationsWithTagRulesResponseBody struct {
-	// The response parameters.
+	// The data overview.
 	Data *ListApplicationsWithTagRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -32,25 +32,25 @@ type ListApplicationsWithTagRulesResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The returned message.
 	//
-	// 	- If the request is successful, a success message is returned.
+	// - If the request is successful, a success message is returned.
 	//
-	// 	- If the request fails, an error message is returned.
+	// - If the request fails, the cause of the failure is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7466566F-F30F-4A29-965D-3E0AF21D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -121,21 +121,21 @@ func (s *ListApplicationsWithTagRulesResponseBody) Validate() error {
 }
 
 type ListApplicationsWithTagRulesResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned data.
+	// The data structure.
 	Result []*ListApplicationsWithTagRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ func (s *ListApplicationsWithTagRulesResponseBodyData) Validate() error {
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResult struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ type ListApplicationsWithTagRulesResponseBodyDataResult struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The queried rules.
+	// The list of rules.
 	RouteRules []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRules `json:"RouteRules,omitempty" xml:"RouteRules,omitempty" type:"Repeated"`
-	// The route state. Valid values:
+	// The routing status. Valid values:
 	//
-	// 	- 0: disabled
+	// - 0: Disabled.
 	//
-	// 	- 1: enabled
+	// - 1: Enabled.
 	//
 	// example:
 	//
@@ -300,11 +300,11 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) Validate() error {
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
-	// Indicates whether the alert rule is enabled. Valid values:
+	// The enabling status of the alert rule. Valid values:
 	//
-	// 	- `true`
+	// - `true`: Enabled.
 	//
-	// 	- `false`
+	// - `false`: Disabled.
 	//
 	// example:
 	//
@@ -328,13 +328,13 @@ type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
 	//
 	// dubbo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The rate.
+	// The proportion.
 	//
 	// example:
 	//
 	// 10
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The details of the routing rule.
+	// The applicable routes of the rule.
 	//
 	// example:
 	//
@@ -474,7 +474,9 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) Validate(
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules struct {
-	Dubbo       []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo       `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
+	// The Dubbo rule.
+	Dubbo []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
+	// The Spring Cloud rule.
 	Springcloud []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud `json:"springcloud,omitempty" xml:"springcloud,omitempty" type:"Repeated"`
 }
 
@@ -527,16 +529,54 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRules) Vali
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo struct {
-	AppId         *string                                                                                `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// ***@***
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The list of parameter arguments.
 	ArgumentItems []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems `json:"argumentItems,omitempty" xml:"argumentItems,omitempty" type:"Repeated"`
-	Condition     *string                                                                                `json:"condition,omitempty" xml:"condition,omitempty"`
-	Group         *string                                                                                `json:"group,omitempty" xml:"group,omitempty"`
-	MethodName    *string                                                                                `json:"methodName,omitempty" xml:"methodName,omitempty"`
-	ParamTypes    []*string                                                                              `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
-	ServiceName   *string                                                                                `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	Tags          []*string                                                                              `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TriggerPolicy *string                                                                                `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
-	Version       *string                                                                                `json:"version,omitempty" xml:"version,omitempty"`
+	// The logical relationship among the following items. Valid values: AND and OR.
+	//
+	// example:
+	//
+	// AND
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The Dubbo service group.
+	//
+	// example:
+	//
+	// default
+	Group *string `json:"group,omitempty" xml:"group,omitempty"`
+	// The Dubbo service method name.
+	//
+	// example:
+	//
+	// hello
+	MethodName *string `json:"methodName,omitempty" xml:"methodName,omitempty"`
+	// The list of parameter types.
+	ParamTypes []*string `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
+	// The service name (interface).
+	//
+	// example:
+	//
+	// HelloService
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// The list of tags.
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The policy type.
+	//
+	// example:
+	//
+	// CONTENT
+	TriggerPolicy *string `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	// The Dubbo service version.
+	//
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo) String() string {
@@ -651,16 +691,58 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubbo)
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems struct {
-	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
-	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
-	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	Expr      *string   `json:"expr,omitempty" xml:"expr,omitempty"`
-	Index     *int32    `json:"index,omitempty" xml:"index,omitempty"`
-	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
-	Rate      *int32    `json:"rate,omitempty" xml:"rate,omitempty"`
-	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	Value     *string   `json:"value,omitempty" xml:"value,omitempty"`
+	// The comparison operator. Valid values: >=, <=, >, <, and ==.
+	//
+	// example:
+	//
+	// ==
+	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	// The value to be compared for operators such as rawvalue.
+	//
+	// example:
+	//
+	// 30
+	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
+	// The field required for the mod operator, which is the divisor.
+	//
+	// example:
+	//
+	// 30
+	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	// The expression. For more information, see the descriptions of other fields.
+	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
+	// The parameter position, starting from 0.
+	//
+	// example:
+	//
+	// 0
+	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
+	// The list of names.
+	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// The operator. A value of rawvalue indicates direct comparison, mode indicates modulo operation, and list indicates a whitelist.
+	//
+	// example:
+	//
+	// rawvalue
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The proportion rule, where 20% of traffic is routed to the node corresponding to this tag.
+	//
+	// example:
+	//
+	// 10
+	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The field required for the percentage operation, which is the percentage value.
+	//
+	// example:
+	//
+	// 30
+	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The value used for comparison. The value obtained from the expression is compared with this value. If the operator is a list whitelist, separate multiple values with commas (,), such as 1,2,3.
+	//
+	// example:
+	//
+	// 1,2,3
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboArgumentItems) String() string {
@@ -766,15 +848,44 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesDubboA
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud struct {
-	AppId         *string                                                                                  `json:"appId,omitempty" xml:"appId,omitempty"`
-	Condition     *string                                                                                  `json:"condition,omitempty" xml:"condition,omitempty"`
-	Enable        *bool                                                                                    `json:"enable,omitempty" xml:"enable,omitempty"`
-	Path          *string                                                                                  `json:"path,omitempty" xml:"path,omitempty"`
-	Paths         []*string                                                                                `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	Priority      *int32                                                                                   `json:"priority,omitempty" xml:"priority,omitempty"`
-	RestItems     []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
-	Tags          []*string                                                                                `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TriggerPolicy *string                                                                                  `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// ***@***
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// The logical relationship among the following items. Valid values: AND and OR.
+	//
+	// example:
+	//
+	// AND
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// Specifies whether the feature is enabled.
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The path.
+	//
+	// example:
+	//
+	// /hello
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The list of paths.
+	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
+	// The priority.
+	//
+	// example:
+	//
+	// 1
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// The list of matching conditions for REST requests.
+	RestItems []*ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
+	// The list of tags.
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The policy type.
+	//
+	// example:
+	//
+	// CONTENT
+	TriggerPolicy *string `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
 }
 
 func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloud) String() string {
@@ -880,16 +991,62 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpring
 }
 
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems struct {
-	Cond      *string   `json:"cond,omitempty" xml:"cond,omitempty"`
-	Datum     *string   `json:"datum,omitempty" xml:"datum,omitempty"`
-	Divisor   *int32    `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	Name      *string   `json:"name,omitempty" xml:"name,omitempty"`
-	NameList  []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	Operator  *string   `json:"operator,omitempty" xml:"operator,omitempty"`
-	Rate      *int32    `json:"rate,omitempty" xml:"rate,omitempty"`
-	Remainder *int32    `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	Type      *string   `json:"type,omitempty" xml:"type,omitempty"`
-	Value     *string   `json:"value,omitempty" xml:"value,omitempty"`
+	// The comparison operator. Valid values: >=, <=, >, <, and ==.
+	//
+	// example:
+	//
+	// ==
+	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
+	// The value to be compared for operators such as rawvalue.
+	//
+	// example:
+	//
+	// 10
+	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
+	// The field required for the mod operator, which is the divisor.
+	//
+	// example:
+	//
+	// 30
+	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// key
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The field required for the list operator.
+	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// The operator. A value of rawvalue indicates direct comparison, mode indicates modulo operation, and list indicates a whitelist.
+	//
+	// example:
+	//
+	// rawvalue
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The proportion rule, where 20% of traffic is routed to the node corresponding to this tag.
+	//
+	// example:
+	//
+	// 20
+	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
+	// The field required for the percentage operation, which is the percentage value.
+	//
+	// example:
+	//
+	// 30
+	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
+	// The type.
+	//
+	// example:
+	//
+	// test
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s ListApplicationsWithTagRulesResponseBodyDataResultRouteRulesRulesSpringcloudRestItems) String() string {

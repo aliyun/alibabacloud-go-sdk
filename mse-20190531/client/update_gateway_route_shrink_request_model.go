@@ -44,29 +44,31 @@ type iUpdateGatewayRouteShrinkRequest interface {
 }
 
 type UpdateGatewayRouteShrinkRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The description of the route.
+	//
 	// example:
 	//
 	// a route for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination service type.
+	// The type of the destination service.
 	//
 	// example:
 	//
 	// Mock
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The information about service mocking.
+	// The mock content.
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
-	// The associated domain name.
+	// The associated domain names.
 	//
 	// example:
 	//
@@ -74,19 +76,19 @@ type UpdateGatewayRouteShrinkRequest struct {
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to activate Web Application Firewall (WAF).
+	// **[Deprecated]*	- Use UpdateGatewayRouteWafStatus to update the WAF status of the route.
 	//
 	// example:
 	//
 	// false
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
-	// Specifies whether to enable the Fallback service.
+	// Specifies whether to enable the fallback service.
 	//
 	// example:
 	//
 	// true
 	Fallback *bool `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The information about the Fallback service.
+	// The fallback services.
 	FallbackServicesShrink *string `json:"FallbackServices,omitempty" xml:"FallbackServices,omitempty"`
 	// The ID of the gateway.
 	//
@@ -114,17 +116,17 @@ type UpdateGatewayRouteShrinkRequest struct {
 	//
 	// route-web
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The route matching conditions.
+	// The matching conditions of the route.
 	PredicatesShrink *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
-	// The information about redirection.
+	// The redirect configuration.
 	RedirectJSONShrink *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
-	// The sequence number of the route.
+	// The order of the route.
 	//
 	// example:
 	//
 	// 1
 	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	// The information about destination services.
+	// The destination services. Specify this parameter when the route points to a single service, multiple services, or tag-based routing.
 	ServicesShrink *string `json:"Services,omitempty" xml:"Services,omitempty"`
 }
 

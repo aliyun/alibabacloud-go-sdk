@@ -62,90 +62,170 @@ type iUpdateGatewayAuthShrinkRequest interface {
 }
 
 type UpdateGatewayAuthShrinkRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The YAML configuration for complex mode.
+	//
 	// example:
 	//
 	// \\"\\"
-	AuthResourceConfig     *string `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
+	AuthResourceConfig *string `json:"AuthResourceConfig,omitempty" xml:"AuthResourceConfig,omitempty"`
+	// The list of authorization rules for authentication. Multiple rule conditions have an OR relationship. Multiple matching items within a rule condition have an AND relationship.
 	AuthResourceListShrink *string `json:"AuthResourceList,omitempty" xml:"AuthResourceList,omitempty"`
+	// The authorization resource mode. Valid values:
+	//
+	// - 0: simple mode.
+	//
+	// - 1: complex mode.
+	//
 	// example:
 	//
 	// 1
 	AuthResourceMode *int32 `json:"AuthResourceMode,omitempty" xml:"AuthResourceMode,omitempty"`
+	// The application ID registered with the service. This parameter is used for OIDC/IDaaS.
+	//
 	// example:
 	//
 	// app_mnvxaavggw7hcdcnr6usi6***
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The application secret registered with the OIDC authentication service.
+	//
 	// example:
 	//
 	// CS6EYfx3k9yTRR9EtQ2MXWP97P6UAUwFg4teoWJ19Z****
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The cookie domain name. After authentication succeeds, the cookie is sent to the specified domain name to maintain the logon state.
+	//
+	// Example: If you set `Cookie-domain=a.example.com`, the cookie is sent to the domain name `a.example.com`. If you set `Cookie-domain=.example.com`, the cookie is sent to all subdomains of `example.com`.
+	//
 	// example:
 	//
 	// test.com
-	CookieDomain               *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	CookieDomain *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	// The list of resource record IDs to delete.
 	DeleteResourceIdListShrink *string `json:"DeleteResourceIdList,omitempty" xml:"DeleteResourceIdList,omitempty"`
-	ExternalAuthZJSONShrink    *string `json:"ExternalAuthZJSON,omitempty" xml:"ExternalAuthZJSON,omitempty"`
+	// The custom authentication information.
+	ExternalAuthZJSONShrink *string `json:"ExternalAuthZJSON,omitempty" xml:"ExternalAuthZJSON,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-9cdcf8e4f58144059e73ff4c5ef9****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The authentication rule ID.
+	//
 	// example:
 	//
 	// 719
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The authorization blacklist/whitelist mode. Valid values:
+	//
+	// - true: whitelist mode. Hosts and paths in the list can be accessed without verification. All others require verification.
+	//
+	// - false: blacklist mode. Hosts and paths in the list require verification. All others can be accessed directly.
+	//
 	// example:
 	//
 	// true
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// Used when the authentication type is JWT or OIDC:
+	//
+	// - JWT: the iss (issuer) in JWT claims, which specifies the token issuer.
+	//
+	// - OIDC: the iss (issuer) in OIDC claims, which specifies the token issuer.
+	//
 	// example:
 	//
 	// test
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The JWT public key. JSON format is supported.
+	//
 	// example:
 	//
 	// {"keys":[{"e":"AQAB","kid":"DHFbpoIUqrY8t2zpA2qXfCmr5VO5ZEr4RzHU_-envvQ","kty":"RSA","n":"xAE7eB6qugXyCAG3yhh7pkDkT65pHymX-P7KfIupjf59vsdo91bSP9C8H07pSAGQO1MV_xFj9VswgsCg4R6otmg5PV2He95lZdHtOcU5DXIg_pbhLdKXbi66GlVeK6ABZOUW3WYtnNHD-91gVuoeJT_DwtGGcp4ignkgXfkiEm4sw-4sfb4qdt5oLbyVpmW6x9cfa7vs2WTfURiCrBoUqgBo_-4WTiULmmHSGZHOjzwa8WtrtOQGsAFjIbno85jp6MnGGGZPYZbDAa_b3y5u-YpW7ypZrvD8BgtKVjgtQgZhLAGezMt0ua3DRrWnKqTZ0BJ_EyxOGuHJrLsn00fnMQ"}]}
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	// The user logon page URL of the IDaaS instance. This parameter is used for IDaaS.
+	//
 	// example:
 	//
 	// https://daxxxxcn.aliyunidaas.com/
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The authentication name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The redirect URL after successful authorization. This parameter is used for OIDC/IDaaS and must be consistent with the redirect URL configured in OIDC/IDaaS.
+	//
 	// example:
 	//
 	// https://test-.com/oauth2/callback
-	RedirectUrl      *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// The OIDC authorization scopes. This parameter is used for OIDC.
 	ScopesListShrink *string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty"`
+	// The enabled status. Valid values:
+	//
+	// - false: disabled.
+	//
+	// - true: enabled.
+	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Used when the authentication type is JWT. The sub (subject) in JWT claims, which specifies the principal. Make sure that the value of the sub field in the JWT payload is consistent with the value configured here. If this parameter is not set or is empty, the value defaults to the value of the Issuer parameter.
+	//
 	// example:
 	//
 	// example-app
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// The location where the JWT token is stored.
+	//
+	// The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Authorization
 	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	// The prefix of the JWT token.
+	//
+	// The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Bearer
 	TokenNamePrefix *string `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	// Specifies whether to pass through the token.
+	//
 	// example:
 	//
 	// true
 	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	// The JWT token type. Valid values:
+	//
+	// - HEADER: transmitted through a header.
+	//
+	// The token parameter information to be verified. By default, the token is placed in the Authorization header with the Bearer prefix. Example: Authorization: Bearer token.
+	//
 	// example:
 	//
 	// HEADER
 	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	// The authentication type. Valid values:
+	//
+	// - JWT
+	//
+	// - OIDC
+	//
+	// - IDaaS
+	//
+	// - ExternalAuthZ: a self-managed authentication service.
+	//
 	// example:
 	//
 	// ExternalAuthZ

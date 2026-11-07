@@ -22,22 +22,23 @@ type iDeleteSecurityGroupRuleRequest interface {
 type DeleteSecurityGroupRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	CascadingDelete *bool   `json:"CascadingDelete,omitempty" xml:"CascadingDelete,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to perform a cascading delete.
+	CascadingDelete *bool `json:"CascadingDelete,omitempty" xml:"CascadingDelete,omitempty"`
 	// The unique ID of the gateway.
 	//
 	// example:
 	//
 	// gw-83b0ddb569434f82b9fe8e4c60c40f7c
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The destination ID.
+	// The ID of the security group rule.
 	//
 	// example:
 	//

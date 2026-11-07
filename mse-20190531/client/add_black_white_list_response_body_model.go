@@ -24,19 +24,19 @@ type iAddBlackWhiteListResponseBody interface {
 }
 
 type AddBlackWhiteListResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the record.
+	// The record ID.
 	//
 	// example:
 	//
 	// 2
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type AddBlackWhiteListResponseBody struct {
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 966F6CA7-16D0-50AB-AB02-E140934F90C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

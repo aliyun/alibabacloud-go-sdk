@@ -20,7 +20,7 @@ type iGetServiceListPageResponseBody interface {
 }
 
 type GetServiceListPageResponseBody struct {
-	// The response to the request.
+	// The response data.
 	Data *GetServiceListPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request information.
 	//
@@ -34,7 +34,7 @@ type GetServiceListPageResponseBody struct {
 	//
 	// A2F946FB-F2E3-5BF4-8CBE-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *GetServiceListPageResponseBody) Validate() error {
 }
 
 type GetServiceListPageResponseBodyData struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetServiceListPageResponseBodyData struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data on the current page.
 	Result []*GetServiceListPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -188,19 +188,19 @@ type GetServiceListPageResponseBodyDataResult struct {
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the service was last updated.
+	// The last update time of the service.
 	//
 	// example:
 	//
 	// 123456
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// The group to which the service belongs.
+	// The service group.
 	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The number of service nodes.
+	// The number of instances for the service.
 	//
 	// example:
 	//
@@ -212,6 +212,11 @@ type GetServiceListPageResponseBodyDataResult struct {
 	//
 	// sc-A
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service type.
+	//
+	// example:
+	//
+	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The service version.
 	//

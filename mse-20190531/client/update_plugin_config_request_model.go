@@ -34,27 +34,37 @@ type iUpdatePluginConfigRequest interface {
 }
 
 type UpdatePluginConfigRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// zh: Chinese en: English
+	// - zh: Chinese.
+	//
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
+	// The configuration content of the plug-in. Use YAML for Wasm plug-ins and Lua code for Lua plug-ins.
 	//
 	// example:
 	//
-	// \\# Configure a check for the required fields of the plug-in, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
+	// name: John
+	//
+	// age: 18
+	//
+	// friends:
+	//
+	// - David
+	//
+	// - Anne
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The application scope of the plug-in.
+	// The application scope of the plug-in. Valid values:
 	//
-	// 	- 0: global
+	// - 0: Global.
 	//
-	// 	- 1: route
+	// - 1: Route.
 	//
-	// 	- 2: domain name
+	// - 2: Domain name.
 	//
 	// example:
 	//
@@ -107,7 +117,8 @@ type UpdatePluginConfigRequest struct {
 	// example:
 	//
 	// 2
-	PluginId       *int64   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginId *int64 `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// The list of domain name IDs or route IDs, which depends on the value of ConfigLevel.
 	ResourceIdList []*int64 `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty" type:"Repeated"`
 }
 

@@ -26,47 +26,47 @@ type iQueryClusterInfoRequest interface {
 }
 
 type QueryClusterInfoRequest struct {
-	// The language of the response. Valid values:
+	// The language type of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to query the configuration of a public IP address whitelist.
+	// Specifies whether to query the public network whitelist configuration.
 	//
 	// example:
 	//
 	// false
 	AclSwitch *bool `json:"AclSwitch,omitempty" xml:"AclSwitch,omitempty"`
-	// The ID of the instance.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// mse-09k1q11****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse_prepaid_public_cn-7mz2t63ci03
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 20574710974****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameters in JSON format.
 	//
 	// example:
 	//

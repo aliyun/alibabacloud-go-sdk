@@ -20,20 +20,28 @@ type iRemoveZooKeeperSaslUserRequest interface {
 }
 
 type RemoveZooKeeperSaslUserRequest struct {
+	// The language of the returned results. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mse_prepaid_public_cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether the changes take effect immediately.
+	//
 	// example:
 	//
 	// true
 	Reload *bool `json:"Reload,omitempty" xml:"Reload,omitempty"`
+	// The list of usernames to remove.
+	//
 	// This parameter is required.
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }

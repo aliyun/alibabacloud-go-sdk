@@ -22,22 +22,36 @@ type iRemoveApplicationRequest interface {
 }
 
 type RemoveApplicationRequest struct {
+	// The language of the returned results. Valid values:
+	//
+	// - zh: Chinese. This is the default value.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application to delete.
+	//
 	// example:
 	//
 	// abcde@12345
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application to delete.
+	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The microservice namespace.
+	//
 	// example:
 	//
 	// prod
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou

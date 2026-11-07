@@ -22,19 +22,32 @@ type iCreateWebFlowRuleResponseBody interface {
 }
 
 type CreateWebFlowRuleResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *CreateWebFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A73AC37C-C617-4E3A-8049-372CF49C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -104,62 +117,112 @@ func (s *CreateWebFlowRuleResponseBody) Validate() error {
 }
 
 type CreateWebFlowRuleResponseBodyData struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// hkhon1****@c3df23522******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of additional requests allowed for burst requests. The effect is equivalent to the maximum number of tokens of the token bucket algorithm.
+	//
 	// example:
 	//
 	// 0
 	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// The flow control method. Valid values:
+	//
+	// - 0: fast failure
+	//
+	// - 2: wait in queue
+	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// The rule status. Valid values:
+	//
+	// - true: enabled
+	//
+	// - false: disabled
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The timeout period for queuing when the ControlBehavior parameter is set to 2. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 200
 	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The threshold type. Valid values:
+	//
+	// - 1: number of requests
+	//
 	// example:
 	//
 	// 1
 	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The parameter description, which is a JSON string containing the following key-value pairs:
+	//
+	// - parseStrategy: the parameter property (0: client IP address, 1: remote host, 2: header, 3: URL parameter)
+	//
+	// - fieldName: the header name or URL parameter name. You must specify this key only if parseStrategy is set to 2 or 3
+	//
+	// - matchStrategy: the method to match the property value. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched. Valid values: 0 (exact match), 2 (regular expression match), and 3 (substring match)
+	//
+	// - pattern: the match string. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched
+	//
 	// example:
 	//
 	// {"fieldName":"testKey","matchStrategy":2,"parseStrategy":2,"pattern":"testValue"}
 	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource mode
+	//
+	// 0: resource name mode
+	//
 	// example:
 	//
 	// 0
 	ReourceMode *int32 `json:"ReourceMode,omitempty" xml:"ReourceMode,omitempty"`
+	// Interface name: the application resources to which the rule applies. The interface name must be the same as that displayed on the API details page in the console.
+	//
 	// example:
 	//
 	// /flow
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The length of the time window. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold.
+	//
 	// example:
 	//
 	// 20

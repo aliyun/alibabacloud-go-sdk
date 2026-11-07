@@ -30,11 +30,11 @@ type iCreateApplicationRequest interface {
 }
 
 type CreateApplicationRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateApplicationRequest struct {
 	//
 	// JAVA
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// MSE命名空间名字。
+	// The name of the MSE namespace.
 	//
 	// example:
 	//
@@ -68,25 +68,26 @@ type CreateApplicationRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Specifies whether to start the switch.
+	// Specifies whether to enable Sentinel.
 	//
 	// example:
 	//
 	// true
 	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
-	// The service where the application is deployed. A value of ACK indicates Container Service for Kubernetes.
+	// The deployment method of the application. ACK indicates Container Service for Kubernetes (ACK).
 	//
 	// example:
 	//
 	// ACK
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace.
+	// Specifies whether to enable Switch.
 	//
 	// example:
 	//
 	// true
-	SwitchEnable *string                         `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
-	Tags         []*CreateApplicationRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SwitchEnable *string `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+	// The Alibaba Cloud tags.
+	Tags []*CreateApplicationRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -192,7 +193,17 @@ func (s *CreateApplicationRequest) Validate() error {
 }
 
 type CreateApplicationRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The custom tag key entered by the user. It can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// tagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. It can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// tagKey
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

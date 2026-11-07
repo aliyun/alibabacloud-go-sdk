@@ -20,15 +20,25 @@ type iCreateNamespaceShrinkRequest interface {
 }
 
 type CreateNamespaceShrinkRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Describe       *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// The description of the namespace that you want to create for Microservices Governance.
+	//
+	// example:
+	//
+	// Test namespace 1.
+	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// The name of the namespace that you want to create for Microservices Governance.
+	//
 	// example:
 	//
 	// myNamespace
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tag.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

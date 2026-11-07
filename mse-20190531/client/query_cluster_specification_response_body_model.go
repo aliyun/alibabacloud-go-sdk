@@ -32,27 +32,27 @@ type QueryClusterSpecificationResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data overview.
 	Data []*QueryClusterSpecificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// Request processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type QueryClusterSpecificationResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ func (s *QueryClusterSpecificationResponseBody) Validate() error {
 }
 
 type QueryClusterSpecificationResponseBodyData struct {
-	// The engine specifications that can be used.
+	// The available engine specifications.
 	//
 	// example:
 	//
 	// MSE_SC_1_2_200_c
 	ClusterSpecificationName *string `json:"ClusterSpecificationName,omitempty" xml:"ClusterSpecificationName,omitempty"`
-	// The number of vCPUs in the specifications.
+	// The number of CPU cores for this specification.
 	//
 	// example:
 	//
 	// 1
 	CpuCapacity *string `json:"CpuCapacity,omitempty" xml:"CpuCapacity,omitempty"`
-	// The memory size in the specifications. Unit: GB.
+	// The memory size for this specification. Unit: GB.
 	//
 	// example:
 	//

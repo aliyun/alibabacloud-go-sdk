@@ -18,14 +18,20 @@ type iInitializeServiceLinkRoleRequest interface {
 }
 
 type InitializeServiceLinkRoleRequest struct {
+	// The language in which the returned results are displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the server-linked role. Set this parameter to AliyunServiceRoleForMSE
+	//
 	// example:
 	//
 	// AliyunServiceRoleForMSE
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// This parameter is reserved and not in use.
+	//
 	// example:
 	//
 	// ""

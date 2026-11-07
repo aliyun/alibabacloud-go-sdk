@@ -26,7 +26,7 @@ type iAddGatewayRouteResponseBody interface {
 }
 
 type AddGatewayRouteResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
@@ -38,45 +38,47 @@ type AddGatewayRouteResponseBody struct {
 	//
 	// 555
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
-	// 	- InvalidParameter: The parameter is invalid. For example, the parameter is incomplete or the parameter format is invalid.
+	// Valid values:
 	//
-	// 	- IllegalRequest: The request is invalid. Unauthorized access to data initiated by parameters is identified.
+	// - InvalidParameter: Parameter error: missing or invalid format.
 	//
-	// 	- NoPermission: You are not authorized to perform this operation.
+	// - IllegalRequest: Illegal request: unauthorized parameter.
 	//
-	// 	- NotFound: The resource does not exist and error 404 is returned.
+	// - NoPermission: Permission denied.
 	//
-	// 	- InternalError: An internal error occurred.
+	// - NotFound: Resource not found.
+	//
+	// - InternalError: Internal error.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 03A3E2F4-6804-5663-9D5D-2EC47A1*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//

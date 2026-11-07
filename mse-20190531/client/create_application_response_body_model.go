@@ -24,41 +24,41 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The response code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data of the node.
+	// The data.
 	//
 	// example:
 	//
 	// data
 	Data *CreateApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 68D91223-CCE9-5F9C-B538-20F617DA48B1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -138,25 +138,25 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// xxxxxxxx@xxxxxxxxxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1631001140913
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The additional information.
+	// The extra information.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ type CreateApplicationResponseBodyData struct {
 	//
 	// JAVA
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The license key in use.
+	// The license key corresponding to the user.
 	//
 	// example:
 	//
 	// xxxxxxxx@xxxxxxxxxx
 	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
-	// MSE命名空间名字。
+	// The name of the MSE namespace.
 	//
 	// example:
 	//
@@ -186,35 +186,35 @@ type CreateApplicationResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service where the application is deployed. Valid values:
+	// The deployment method of the application. Valid values:
 	//
-	// 	- \\- ACK: Container Service for Kubernetes
+	// - ACK: Container Service for Kubernetes (ACK).
 	//
-	// 	- \\- Normal: another service
+	// - Normal: Other access methods.
 	//
 	// example:
 	//
 	// ACK
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the application. A value of 1 indicates that the application is in a normal state.
+	// The application status. A value of 1 indicates normal.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The update time.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1632979237663
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 1888888888
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// 版本号。
+	// The version number.
 	//
 	// example:
 	//

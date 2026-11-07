@@ -24,26 +24,42 @@ type iUpdateGatewayServiceResponseBody interface {
 }
 
 type UpdateGatewayServiceResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// 322
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AF21683A-29C7-4853-AC0F-B5ADEE4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

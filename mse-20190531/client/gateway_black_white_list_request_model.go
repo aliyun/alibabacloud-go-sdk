@@ -24,27 +24,27 @@ type iGatewayBlackWhiteListRequest interface {
 }
 
 type GatewayBlackWhiteListRequest struct {
-	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	// The language of the response. Valid values: zh (Chinese, default) and en (English).
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//
 	// ""
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// The filter parameters.
+	// parse from filterParams
 	FilterParams *GatewayBlackWhiteListRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//
 	// ""
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Valid values: integers greater than 0. Default value: 1.
 	//
 	// example:
 	//
@@ -136,25 +136,25 @@ type GatewayBlackWhiteListRequestFilterParams struct {
 	//
 	// 81
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The unique ID of the gateway. If this parameter is used together with the GatewayId parameter, the value of the GatewayId parameter is used.
+	// The unique identifier of the gateway. If both GatewayUniqueId and GatewayId are specified, GatewayId takes precedence.
 	//
 	// example:
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//
 	// ""
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//
 	// ""
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The content that you want to query.
+	// The search content.
 	//
 	// example:
 	//
@@ -162,17 +162,17 @@ type GatewayBlackWhiteListRequestFilterParams struct {
 	SearchContent *string `json:"SearchContent,omitempty" xml:"SearchContent,omitempty"`
 	// The query type. Valid values:
 	//
-	// 	- ROUTE: The list is queried by route. If the value of this parameter is ROUTE, set the SearchContent parameter to the route name.
+	// - ROUTE: searches by route. Set SearchContent to the route name.
 	//
-	// 	- DOMAIN: The list is queried by domain name. If the value of this parameter is DOMAIN, set the SearchContent parameter to the domain name.
+	// - DOMAIN: searches by domain name. Set SearchContent to the domain name.
 	//
-	// 	- IP: The list is queried by specified IP address. If the value of this parameter is IP, set the SearchContent parameter to the IP address.
+	// - IP: searches by specified IP address. Set SearchContent to the IP address.
 	//
 	// example:
 	//
 	// IP
 	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
-	// This parameter is unavailable for public use.
+	// This parameter is not available.
 	//
 	// example:
 	//

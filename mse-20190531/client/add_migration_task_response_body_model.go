@@ -22,31 +22,31 @@ type iAddMigrationTaskResponseBody interface {
 }
 
 type AddMigrationTaskResponseBody struct {
-	// Data structure.
+	// The data structure.
 	Data *AddMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Message.
+	// The message.
 	//
 	// example:
 	//
 	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 7466566F-F30F-4A29-965D-3E0AF21D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 请求结果，取值如下：
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - `true`：请求成功。
+	// - true: The request is successful.
 	//
-	// - `false`：请求失败。
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *AddMigrationTaskResponseBody) Validate() error {
 }
 
 type AddMigrationTaskResponseBodyData struct {
-	// Cluster type.
+	// The cluster type. Valid values:
 	//
 	// - Nacos-Ans
 	//
@@ -129,61 +129,61 @@ type AddMigrationTaskResponseBodyData struct {
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 12
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Source instance node address.
+	// The address of the source instance node.
 	//
 	// example:
 	//
 	// 192.168.1.1:8848
 	OriginInstanceAddress *string `json:"OriginInstanceAddress,omitempty" xml:"OriginInstanceAddress,omitempty"`
-	// Source instance name.
+	// The name of the source instance.
 	//
 	// example:
 	//
-	// Source instance
+	// Source cluster
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	// Namespace list, required when the source cluster is Nacos.
+	// The list of namespaces. This parameter is optional when the source cluster is Nacos.
 	//
 	// example:
 	//
 	// namesapceId1,namesapceId2
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
 	// testsdfsdfsd
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	// SyncType
+	// The synchronization type.
 	//
 	// example:
 	//
 	// Service
 	SyncType *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
-	// Target instance name.
+	// The name of the target instance.
 	//
 	// example:
 	//
-	// Destination instance
+	// Target cluster
 	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
-	// Target instance URL.
+	// The URL of the target instance.
 	//
 	// example:
 	//
 	// mse-94d****-nacos-ans.mse.aliyuncs.com:8848
 	TargetClusterUrl *string `json:"TargetClusterUrl,omitempty" xml:"TargetClusterUrl,omitempty"`
-	// Target instance ID.
+	// The instance ID of the target instance.
 	//
 	// example:
 	//
 	// mse-cn-7pp2w*****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// User ID.
+	// The ID of the user.
 	//
 	// example:
 	//

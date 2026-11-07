@@ -30,43 +30,68 @@ type iCreateIsolationRuleRequest interface {
 }
 
 type CreateIsolationRuleRequest struct {
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese. This is the default value.
+	//
+	// - en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// hkhon1po62@c3df23522bXXXXX
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The enabling status of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
-	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region where the cluster is deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface to which the rule applies. The name must be the same as the interface name displayed in the interface details on the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The concurrency threshold of the isolation rule.
+	//
 	// This parameter is required.
 	//
 	// example:

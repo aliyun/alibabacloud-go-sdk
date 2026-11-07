@@ -16,6 +16,8 @@ type iListGatewayIsolationRuleRequest interface {
 }
 
 type ListGatewayIsolationRuleRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh

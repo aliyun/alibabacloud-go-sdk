@@ -26,41 +26,41 @@ type iUpdateClusterSpecResponseBody interface {
 }
 
 type UpdateClusterSpecResponseBody struct {
-	// The response code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// A reserved parameter.
+	// This is a reserved field.
 	//
 	// example:
 	//
 	// null
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Take note of the following items:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request succeeds.
+	// - If the request is successful: The **ErrorCode*	- field is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - If the request fails: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -68,9 +68,9 @@ type UpdateClusterSpecResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//

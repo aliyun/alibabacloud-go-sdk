@@ -28,37 +28,37 @@ type iUpdatePluginConfigResponseBody interface {
 }
 
 type UpdatePluginConfigResponseBody struct {
-	// The status code returned.
+	// The code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the plug-in configuration.
+	// The ID value.
 	//
 	// example:
 	//
 	// 1
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
 	// code
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//
 	// 500
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//

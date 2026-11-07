@@ -24,15 +24,15 @@ type iGetAppMessageQueueRouteRequest interface {
 type GetAppMessageQueueRouteRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -40,29 +40,29 @@ type GetAppMessageQueueRouteRequest struct {
 	//
 	// hkhon1po62@c3df23522baa898
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace.
+	// The MSE namespace name.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region where the instance resides. Examples:
+	// The region where the cluster is deployed, including but not limited to:
 	//
-	// 	- `cn-hangzhou`: China (Hangzhou)
+	// - `cn-hangzhou`: Hangzhou
 	//
-	// 	- `cn-beijing`: China (Beijing)
+	// - `cn-beijing`: Beijing
 	//
-	// 	- `cn-shanghai`: China (Shanghai)
+	// - `cn-shanghai`: Shanghai
 	//
-	// 	- `cn-zhangjiakou`: China (Zhangjiakou)
+	// - `cn-zhangjiakou`: Zhangjiakou
 	//
-	// 	- `cn-shenzhen`: China (Shenzhen)
+	// - `cn-shenzhen`: Shenzhen
 	//
 	// This parameter is required.
 	//

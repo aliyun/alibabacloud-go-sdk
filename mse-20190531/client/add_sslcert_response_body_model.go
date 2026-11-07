@@ -24,19 +24,19 @@ type iAddSSLCertResponseBody interface {
 }
 
 type AddSSLCertResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the association is successful.
+	// The response data structure that indicates whether the association is successful.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type AddSSLCertResponseBody struct {
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// E1CC74F0-5BDE-5220-A031-5CA622D80723
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

@@ -68,7 +68,7 @@ type GetZookeeperDataImportUrlResponseBody struct {
 	//
 	// example:
 	//
-	// The dynamic part in the error message.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//

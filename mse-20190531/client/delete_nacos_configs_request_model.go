@@ -22,15 +22,15 @@ type iDeleteNacosConfigsRequest interface {
 type DeleteNacosConfigsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The IDs of configurations.
+	// The configuration IDs.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteNacosConfigsRequest struct {
 	//
 	// 20024,20025,20026,20027,20034,20104,20394
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteNacosConfigsRequest struct {
 	//
 	// mse_prepaid_public_cn-i7m2e32pd0n
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// This parameter is required.
 	//

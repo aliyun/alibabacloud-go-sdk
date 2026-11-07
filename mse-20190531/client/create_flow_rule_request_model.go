@@ -38,9 +38,9 @@ type iCreateFlowRuleRequest interface {
 type CreateFlowRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -62,44 +62,25 @@ type CreateFlowRuleRequest struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The throttling effect.
 	//
-	// Valid values:
-	//
-	// 	- 0: fast failure
-	//
-	// 	- 2: in queue
-	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
 	// Specifies whether to enable the rule.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
-	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
-	// The timeout period. Unit: milliseconds. This value is required if the ControlBehavior parameter is set to 2.
+	// The timeout period. Unit: milliseconds. This parameter is required if the ControlBehavior parameter is set to 2.
 	//
 	// example:
 	//
@@ -113,21 +94,26 @@ type CreateFlowRuleRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region in which the instance resides.
+	// The region in which the cluster resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the API resource.
+	// The interface resource name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /b
-	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The interface resource type.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The throttling threshold.
 	//
 	// This parameter is required.

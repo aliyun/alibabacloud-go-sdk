@@ -26,15 +26,15 @@ type iListClusterHealthCheckTaskRequest interface {
 type ListClusterHealthCheckTaskRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ListClusterHealthCheckTaskRequest struct {
 	//
 	// example:
 	//
-	// 0
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the instance resides.
+	// The region in which the cluster resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameter in the JSON format.
 	//
 	// example:
 	//

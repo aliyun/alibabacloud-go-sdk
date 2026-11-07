@@ -24,9 +24,9 @@ type iQueryInstancesInfoResponseBody interface {
 }
 
 type QueryInstancesInfoResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data []*QueryInstancesInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
@@ -38,27 +38,27 @@ type QueryInstancesInfoResponseBody struct {
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message that is returned.
+	// The returned message.
 	//
-	// 	- If the request is successful, a success message is returned.
+	// - If the request is successful, a success message is returned.
 	//
-	// 	- If the request fails, an error message is returned.
+	// - If the request fails, the cause of the failure is returned.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 54973C90-F379-4372-9AA5-053A3F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type QueryInstancesInfoResponseBodyData struct {
 	//
 	// 2022-12-15T02:02:15Z
 	CreationTimestamp *string `json:"CreationTimestamp,omitempty" xml:"CreationTimestamp,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type QueryInstancesInfoResponseBodyData struct {
 	//
 	// mse-xxxxx-xxxxx-reg-center-0-1
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ type QueryInstancesInfoResponseBodyData struct {
 	//
 	// 172.16.66.x
 	SingleTunnelVip *string `json:"SingleTunnelVip,omitempty" xml:"SingleTunnelVip,omitempty"`
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//
 	// cn-hangzhou-k
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
-	// Indicates whether all pods in the cluster are distributed in the specified zones.
+	// Indicates whether all pods are distributed across multiple zones.
 	//
 	// example:
 	//

@@ -30,15 +30,15 @@ type iListAnsServicesResponseBody interface {
 }
 
 type ListAnsServicesResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data []*ListAnsServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type ListAnsServicesResponseBody struct {
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of instances displayed per page.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type ListAnsServicesResponseBody struct {
 	//
 	// 52BA6DA6-A702-4362-A32F-DFF79655****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The result of the request. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of instances returned.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -201,13 +201,13 @@ type ListAnsServicesResponseBodyData struct {
 	//
 	// name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The total number of instances with healthy heartbeats.
+	// The total number of service instances with healthy heartbeats.
 	//
 	// example:
 	//
 	// 1
 	HealthyInstanceCount *int32 `json:"HealthyInstanceCount,omitempty" xml:"HealthyInstanceCount,omitempty"`
-	// The total number of instances that are used for the current service.
+	// The total number of instances of the current service.
 	//
 	// example:
 	//
@@ -218,7 +218,18 @@ type ListAnsServicesResponseBodyData struct {
 	// example:
 	//
 	// name
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// - console: registered on the console.
+	//
+	// - sdk: registered using an SDK.
+	//
+	// - governance: registered using service administration.
+	//
+	// example:
+	//
+	// console
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 

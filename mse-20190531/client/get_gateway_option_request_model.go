@@ -20,15 +20,15 @@ type iGetGatewayOptionRequest interface {
 type GetGatewayOptionRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//

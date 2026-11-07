@@ -16,6 +16,8 @@ type iListGatewayCircuitBreakerRuleRequest interface {
 }
 
 type ListGatewayCircuitBreakerRuleRequest struct {
+	// The language in which the returned results are displayed. Valid values: zh (default): Chinese, en: English
+	//
 	// example:
 	//
 	// zh

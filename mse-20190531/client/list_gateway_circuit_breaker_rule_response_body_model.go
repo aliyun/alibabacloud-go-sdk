@@ -16,7 +16,10 @@ type iListGatewayCircuitBreakerRuleResponseBody interface {
 }
 
 type ListGatewayCircuitBreakerRuleResponseBody struct {
+	// The returned data.
 	Data *ListGatewayCircuitBreakerRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DC34E4A3-5F1C-4E40-86EA-02EDF967****
@@ -59,16 +62,24 @@ func (s *ListGatewayCircuitBreakerRuleResponseBody) Validate() error {
 }
 
 type ListGatewayCircuitBreakerRuleResponseBodyData struct {
+	// The page number of the instance list
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page set during input
+	//
 	// example:
 	//
 	// 100
-	PageSize *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListGatewayCircuitBreakerRuleResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Results  []*ListGatewayCircuitBreakerRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned result.
+	Result []*ListGatewayCircuitBreakerRuleResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The returned result collection.
+	Results []*ListGatewayCircuitBreakerRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The total number of instances queried
+	//
 	// example:
 	//
 	// 11
@@ -151,79 +162,140 @@ func (s *ListGatewayCircuitBreakerRuleResponseBodyData) Validate() error {
 }
 
 type ListGatewayCircuitBreakerRuleResponseBodyDataResult struct {
+	// The Web fallback behavior type.
+	//
+	// 0: Return specified content.
+	//
+	// 1: Redirect to a specified page.
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: Plain text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Whether to enable.
+	//
+	// 0: Not enabled.
+	//
+	// 1: Enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 11919
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The circuit breaker rule ID.
+	//
 	// example:
 	//
 	// 467
-	Id     *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The filter rule id
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The threshold conversion mode.
+	//
+	// 0: Single machine.
+	//
+	// 1: Cluster.
+	//
+	// 2: Cluster to single machine.
+	//
 	// example:
 	//
 	// 0
 	LimitMode *int32 `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	// The slow call threshold in slow call pattern.
+	//
 	// example:
 	//
 	// 14
 	MaxAllowedMs *int32 `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking.
+	//
 	// example:
 	//
 	// 10
 	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The circuit breaking recovery duration.
+	//
 	// example:
 	//
 	// 12
 	RecoveryTimeoutSec *int32 `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	// The custom header, input as key-value pairs.
+	//
 	// example:
 	//
 	// key=value
 	ResponseAdditionalHeaders *string `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	// The HTTP response text.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirect URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 204
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// 3091
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The route name.
+	//
 	// example:
 	//
 	// routeName
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The circuit breaking statistics duration.
+	//
 	// example:
 	//
 	// 11
 	StatDurationSec *int32 `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	// The threshold pattern.
+	//
+	// 0: Slow call pattern.
+	//
+	// 1: Exception pattern.
+	//
 	// example:
 	//
 	// 0
 	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The percentage to trigger circuit breaking.
+	//
 	// example:
 	//
 	// 10
@@ -423,79 +495,140 @@ func (s *ListGatewayCircuitBreakerRuleResponseBodyDataResult) Validate() error {
 }
 
 type ListGatewayCircuitBreakerRuleResponseBodyDataResults struct {
+	// The Web fallback behavior type.
+	//
+	// 0: Return specified content
+	//
+	// 1: Redirect to a specified page
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: Plain text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Whether to enable.
+	//
+	// 0: Not enabled.
+	//
+	// 1: Enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 11919
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-1ee34548c68f4778a25c05abd657****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The circuit breaker rule ID.
+	//
 	// example:
 	//
 	// 467
-	Id     *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The filter rule id
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The threshold conversion mode.
+	//
+	// 0: Single machine.
+	//
+	// 1: Cluster.
+	//
+	// 2: Cluster to single machine.
+	//
 	// example:
 	//
 	// 0
 	LimitMode *int32 `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	// The slow call threshold in slow call pattern.
+	//
 	// example:
 	//
 	// 10
 	MaxAllowedMs *int32 `json:"MaxAllowedMs,omitempty" xml:"MaxAllowedMs,omitempty"`
+	// The minimum number of requests to trigger circuit breaking.
+	//
 	// example:
 	//
 	// 10
 	MinRequestAmount *int32 `json:"MinRequestAmount,omitempty" xml:"MinRequestAmount,omitempty"`
+	// The circuit breaking recovery duration.
+	//
 	// example:
 	//
 	// 12
 	RecoveryTimeoutSec *int32 `json:"RecoveryTimeoutSec,omitempty" xml:"RecoveryTimeoutSec,omitempty"`
+	// The custom header, input as key-value pairs.
+	//
 	// example:
 	//
 	// key=value
 	ResponseAdditionalHeaders *string `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	// The HTTP response text.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirect URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 204
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// 3450
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The route name.
+	//
 	// example:
 	//
 	// routeName
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The circuit breaking statistics duration.
+	//
 	// example:
 	//
 	// 11
 	StatDurationSec *int32 `json:"StatDurationSec,omitempty" xml:"StatDurationSec,omitempty"`
+	// The threshold pattern.
+	//
+	// 0: Slow call pattern.
+	//
+	// 1: Exception pattern.
+	//
 	// example:
 	//
 	// 0
 	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The percentage to trigger circuit breaking.
+	//
 	// example:
 	//
 	// 10

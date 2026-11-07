@@ -32,11 +32,11 @@ type iListAnsInstancesRequest interface {
 }
 
 type ListAnsInstancesRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -44,41 +44,37 @@ type ListAnsInstancesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// Deprecated
 	//
-	// The ID of the Nacos instance.
-	//
-	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+	// The cluster ID.	Notice: If this operation includes both InstanceId and ClusterId, you must specify at least one of them.
 	//
 	// example:
 	//
 	// mse-09k1q11****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The alias of the Nacos instance.
+	// The cluster alias.
 	//
 	// example:
 	//
-	// mse-7413****
+	// DEFAULT
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The name of the contact group.
+	// The contact group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the instance.
-	//
-	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+	// The instance ID.	Notice: If this operation includes both InstanceId and ClusterId, you must specify at least one of them.
 	//
 	// example:
 	//
 	// mse_prepaid_public_cn-tl327w****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// 12233****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +82,7 @@ type ListAnsInstancesRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of instances to return on each page.
 	//
 	// This parameter is required.
 	//
@@ -94,13 +90,13 @@ type ListAnsInstancesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameters in JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// This parameter is required.
 	//

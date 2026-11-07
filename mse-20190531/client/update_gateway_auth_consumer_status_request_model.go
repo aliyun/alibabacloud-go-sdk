@@ -20,21 +20,21 @@ type iUpdateGatewayAuthConsumerStatusRequest interface {
 }
 
 type UpdateGatewayAuthConsumerStatusRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The status of the consumer. Valid values:
+	// Specifies whether the authentication consumer is enabled. Valid values:
 	//
-	// 	- true: The consumer is enabled.
+	// - true: Enabled.
 	//
-	// 	- false: The consumer is disabled.
+	// - false: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type UpdateGatewayAuthConsumerStatusRequest struct {
 	//
 	// gw-685f661467b54f48b7b7a76605ce****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The consumer ID.
+	// The ID of the authentication consumer.
 	//
 	// This parameter is required.
 	//

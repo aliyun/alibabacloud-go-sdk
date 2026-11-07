@@ -16,7 +16,10 @@ type iListGatewayIsolationRuleResponseBody interface {
 }
 
 type ListGatewayIsolationRuleResponseBody struct {
+	// The returned data.
 	Data *ListGatewayIsolationRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6F025D43-8632-5716-AE9B-7EDDF16C****
@@ -59,16 +62,24 @@ func (s *ListGatewayIsolationRuleResponseBody) Validate() error {
 }
 
 type ListGatewayIsolationRuleResponseBodyData struct {
+	// The page number of the instance list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
-	PageSize *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListGatewayIsolationRuleResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Results  []*ListGatewayIsolationRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned results.
+	Result []*ListGatewayIsolationRuleResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The returned result collection.
+	Results []*ListGatewayIsolationRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The total number of queried instances.
+	//
 	// example:
 	//
 	// 1
@@ -151,59 +162,106 @@ func (s *ListGatewayIsolationRuleResponseBodyData) Validate() error {
 }
 
 type ListGatewayIsolationRuleResponseBodyDataResult struct {
+	// The web fallback behavior type. Valid values:
+	//
+	// - 0: return specified content.
+	//
+	// - 1: redirect to a specified page.
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type. Valid values:
+	//
+	// - 0: plain text.
+	//
+	// - 1: JSON.
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Specifies whether the rule is enabled. Valid values:
+	//
+	// - 0: disabled.
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The ID of the concurrency rule.
+	//
 	// example:
 	//
 	// 358
-	Id     *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the filter rules.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The threshold conversion mode. Valid values:
+	//
+	// - 0: standalone.
+	//
+	// - 1: cluster.
+	//
+	// - 2: cluster to standalone.
+	//
 	// example:
 	//
 	// 0
 	LimitMode *int32 `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	// The overall concurrency threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The custom headers, specified as key-value pairs.
+	//
 	// example:
 	//
 	// key:value
 	ResponseAdditionalHeaders *string `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	// The HTTP response body.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirect URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The ID of the route.
+	//
 	// example:
 	//
 	// 52853
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// routeName
@@ -358,59 +416,106 @@ func (s *ListGatewayIsolationRuleResponseBodyDataResult) Validate() error {
 }
 
 type ListGatewayIsolationRuleResponseBodyDataResults struct {
+	// The web fallback behavior type. Valid values:
+	//
+	// - 0: return specified content.
+	//
+	// - 1: redirect to a specified page.
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type. Valid values:
+	//
+	// - 0: plain text.
+	//
+	// - 1: JSON.
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Specifies whether the rule is enabled. Valid values:
+	//
+	// - 0: disabled.
+	//
+	// - 1: enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The ID of the concurrency rule.
+	//
 	// example:
 	//
 	// 358
-	Id     *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the filter rules.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The threshold conversion type. Valid values:
+	//
+	// - 0: standalone.
+	//
+	// - 1: cluster.
+	//
+	// - 2: standalone to cluster.
+	//
 	// example:
 	//
 	// 1
 	LimitMode *int32 `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	// The overall concurrency threshold.
+	//
 	// example:
 	//
 	// 100
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The custom headers, specified as key-value pairs.
+	//
 	// example:
 	//
 	// key=value
 	ResponseAdditionalHeaders *string `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	// The HTTP response body.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirect URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The ID of the route.
+	//
 	// example:
 	//
 	// 52853
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The name of the route.
+	//
 	// example:
 	//
 	// routeName

@@ -30,11 +30,11 @@ type iCreateMseServiceApplicationRequest interface {
 }
 
 type CreateMseServiceApplicationRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -60,27 +60,27 @@ type CreateMseServiceApplicationRequest struct {
 	//
 	// JAVA
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The edition of the MSE instance that you want to purchase.
+	// The version of the Microservices Engine (MSE) cluster to be activated. Valid values:
 	//
-	// 	- mse_pro: Professional Edition.
+	// - mse_pro: Professional Edition.
 	//
-	// 	- mse_dev: Developer Edition.
+	// - mse_dev: Developer Edition.
 	//
 	// example:
 	//
 	// mse_pro
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// The ID of the region where the instance resides. Examples:
+	// The region where the cluster is located, including but not limited to:
 	//
-	// 	- cn-hangzhou: China (Hangzhou)
+	// - cn-hangzhou: Hangzhou
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing: Beijing
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai: Shanghai
 	//
-	// 	- cn-zhangjiakou: China (Zhangjiakou)
+	// - cn-zhangjiakou: Zhangjiakou
 	//
-	// 	- cn-shenzhen: China (Shenzhen)
+	// - cn-shenzhen: Shenzhen
 	//
 	// This parameter is required.
 	//
@@ -88,19 +88,19 @@ type CreateMseServiceApplicationRequest struct {
 	//
 	// cn-shenzhen
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Specifies whether to enable the Sentinel-compatible mode.
+	// Specifies whether to enable Sentinel.
 	//
 	// example:
 	//
 	// true
 	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
-	// The service source.
+	// The source.
 	//
 	// example:
 	//
 	// edasmsc
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Specifies whether to enable switching.
+	// Specifies whether to enable Switch.
 	//
 	// example:
 	//

@@ -42,66 +42,116 @@ type iUpdateWebFlowRuleRequest interface {
 }
 
 type UpdateWebFlowRuleRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// hkhon1****@c3df23522******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of additional requests allowed for burst requests. The effect is equivalent to the maximum number of tokens for the token bucket algorithm.
+	//
 	// example:
 	//
 	// 0
 	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// The flow control method. Valid values:
+	//
+	// - 0: fast failure
+	//
+	// - 2: wait in queue
+	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// The rule status. Valid values:
+	//
+	// - true (enabled)
+	//
+	// - false (disabled)
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The timeout period. Unit: milliseconds. This parameter is required if the ControlBehavior parameter is set to 2.
+	//
 	// example:
 	//
 	// 200
 	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The threshold type. Valid values:
+	//
+	// - 1: number of requests
+	//
 	// example:
 	//
 	// 1
 	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The parameter description item, which is a JSON string containing the following key-value pairs:
+	//
+	// - parseStrategy: the parameter property (0: client IP address. 1: remote host. 2: header. 3: URL parameter)
+	//
+	// - fieldName: the header name or URL parameter name. You must specify this key only if parseStrategy is set to 2 or 3
+	//
+	// - matchStrategy: the method to match the property value. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched. Valid values: 0 (exact match), 2 (regular expression match), and 3 (substring match)
+	//
+	// - pattern: the match string. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched
+	//
 	// example:
 	//
 	// {"fieldName":"key","matchStrategy":2,"parseStrategy":2,"pattern":"value"}
 	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource mode. Valid values:
+	//
+	// - 0: resource name mode
+	//
 	// example:
 	//
 	// 0
 	ResourceMode *int32 `json:"ResourceMode,omitempty" xml:"ResourceMode,omitempty"`
+	// The rule ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The length of the time window. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold.
+	//
 	// example:
 	//
 	// 20

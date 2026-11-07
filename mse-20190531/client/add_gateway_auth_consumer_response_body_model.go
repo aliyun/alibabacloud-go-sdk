@@ -30,61 +30,61 @@ type iAddGatewayAuthConsumerResponseBody interface {
 }
 
 type AddGatewayAuthConsumerResponseBody struct {
-	// The status code. A value of 200 is returned if the request is successful.
+	// The code used only to synchronize with the success status.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the consumer.
+	// The ID of the authentication consumer.
 	//
 	// example:
 	//
 	// 2
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in the `ErrMessage` parameter.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the `ErrMessage` error message.
 	//
-	// >  If the return value of the `ErrMessage` parameter is `The Value of Input Parameter %s is not valid` and the return value of the `DynamicMessage` parameter is `DtsJobId`, the specified `DtsJobId` parameter is invalid.
+	// > If `ErrMessage` returns `The Value of Input Parameter %s is not valid` and `DynamicMessage` returns `DtsJobId`, it indicates that the passed request parameter `DtsJobId` is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 69AD2AA7-DB47-449B-941B-B14409DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

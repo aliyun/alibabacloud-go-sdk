@@ -20,16 +20,26 @@ type iCreateNamespaceRequest interface {
 }
 
 type CreateNamespaceRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Describe       *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// The description of the namespace that you want to create for Microservices Governance.
+	//
+	// example:
+	//
+	// Test namespace 1.
+	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// The name of the namespace that you want to create for Microservices Governance.
+	//
 	// example:
 	//
 	// myNamespace
-	Name *string                      `json:"Name,omitempty" xml:"Name,omitempty"`
-	Tag  []*CreateNamespaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tag.
+	Tag []*CreateNamespaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -90,7 +100,17 @@ func (s *CreateNamespaceRequest) Validate() error {
 }
 
 type CreateNamespaceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the resource. You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http\\:// or https\\://.
+	//
+	// example:
+	//
+	// namespaceTagKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// namespaceTagValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

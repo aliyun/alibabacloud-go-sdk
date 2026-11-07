@@ -16,10 +16,14 @@ type iUpdateNacosGrayConfigResponseBody interface {
 }
 
 type UpdateNacosGrayConfigResponseBody struct {
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****

@@ -24,35 +24,35 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token that is required for the next query. If the NextToken parameter is empty, no subsequent query is required.
+	// The token for the next query. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6ng3BeUyo2zbY5wgL1DBa2T
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 92ED7C9C-84A2-595F-87FE-354F84C0F739
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//

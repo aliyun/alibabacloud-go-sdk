@@ -20,29 +20,29 @@ type iQueryClusterDetailRequest interface {
 }
 
 type QueryClusterDetailRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to query access control lists (ACLs).
+	// Specifies whether to query the access control list (ACL).
 	//
 	// example:
 	//
 	// false
 	AclSwitch *bool `json:"AclSwitch,omitempty" xml:"AclSwitch,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//

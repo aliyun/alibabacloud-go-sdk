@@ -16,7 +16,10 @@ type iListNamespacesResponseBody interface {
 }
 
 type ListNamespacesResponseBody struct {
+	// Return results.
 	Data *ListNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D1F1A6F3-7E03-5EAD-B3F1-123456789ABC
@@ -59,16 +62,24 @@ func (s *ListNamespacesResponseBody) Validate() error {
 }
 
 type ListNamespacesResponseBodyData struct {
+	// Result page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size for the query.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListNamespacesResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Results  []*ListNamespacesResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Return results.
+	Result []*ListNamespacesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Result set.
+	Results []*ListNamespacesResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// Total number of query results.
+	//
 	// example:
 	//
 	// 7
@@ -151,36 +162,62 @@ func (s *ListNamespacesResponseBodyData) Validate() error {
 }
 
 type ListNamespacesResponseBodyDataResult struct {
+	// Number of applications.
+	//
 	// example:
 	//
 	// 3
 	AppCount *int32 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-09-02T09:49:48.000+0000
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Describe   *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Namespace description.
+	//
+	// example:
+	//
+	// namespace 1 for testing
+	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// Number of online nodes.
+	//
 	// example:
 	//
 	// 6
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// Namespace.
+	//
 	// example:
 	//
 	// myNamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	Region *string                `json:"Region,omitempty" xml:"Region,omitempty"`
-	Tags   map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Alibaba Cloud tags.
+	//
+	// example:
+	//
+	// {"1":"1","2":"2"}
+	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2024-09-02T09:49:48.000+0000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 178*******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Version. Basic Edition 0, Professional Edition 1, Enterprise Edition 2.
+	//
 	// example:
 	//
 	// 1
@@ -290,35 +327,56 @@ func (s *ListNamespacesResponseBodyDataResult) Validate() error {
 }
 
 type ListNamespacesResponseBodyDataResults struct {
+	// Number of applications.
+	//
 	// example:
 	//
 	// 3
 	AppCount *int32 `json:"AppCount,omitempty" xml:"AppCount,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 2024-09-02T09:49:48.000+0000
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Describe   *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Namespace description.
+	//
+	// example:
+	//
+	// namespace 1 for testing
+	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
+	// Number of online nodes.
+	//
 	// example:
 	//
 	// 6
 	InstanceCount *int64 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// Namespace.
+	//
 	// example:
 	//
 	// myNamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// Region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 2024-09-02T09:49:48.000+0000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 178*******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Version. Basic Edition 0, Professional Edition 1, Enterprise Edition 2.
+	//
 	// example:
 	//
 	// 1

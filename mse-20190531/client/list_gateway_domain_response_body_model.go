@@ -24,37 +24,37 @@ type iListGatewayDomainResponseBody interface {
 }
 
 type ListGatewayDomainResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The node data.
 	Data []*ListGatewayDomainResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3F5D8E93-CA66-57F1-8BCF-A223E11B6B91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *ListGatewayDomainResponseBody) Validate() error {
 }
 
 type ListGatewayDomainResponseBodyData struct {
-	// The time when the certificate expires.
+	// **[Deprecated]*	- The expiration time of the certificate. Go to the domain name details page to view the information.
 	//
 	// example:
 	//
@@ -150,46 +150,49 @@ type ListGatewayDomainResponseBodyData struct {
 	//
 	// 3452-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The route comment. This parameter is returned only in ingress scenarios.
+	// The route remark (Ingress).
 	Comment *ListGatewayDomainResponseBodyDataComment `json:"Comment,omitempty" xml:"Comment,omitempty" type:"Struct"`
+	// Indicates whether WAF protection is enabled for the domain name.
+	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	// The gateway ID.
 	//
 	// example:
 	//
 	// 12
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The time when the domain name was created.
+	// The time when the domain name record was created.
 	//
 	// example:
 	//
 	// 2031-03-30 02:35:12
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the domain name was updated.
+	// The time when the domain name record was updated.
 	//
 	// example:
 	//
 	// 2031-03-30 02:35:12
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether `HTTP/2` is enabled.
+	// Indicates whether HTTP/2 is enabled. Valid values:
 	//
-	// 	- `open`: `HTTP/2` is enabled.
+	// - `open`: HTTP/2 is enabled.
 	//
-	// 	- `close`: `HTTP/2` is disabled.
+	// - `close`: HTTP/2 is disabled.
 	//
-	// 	- `globalConfig`: Global configurations are used.
+	// - `globalConfig`: The global configuration is used.
 	//
 	// example:
 	//
 	// close
 	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	// The ID of the domain name.
+	// The domain name ID.
 	//
 	// example:
 	//
 	// 243
-	Id        *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	IsManaged *bool  `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
-	// Indicates whether HTTPS is forcefully used.
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the domain name is managed.
+	IsManaged *bool `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
+	// Indicates whether HTTPS is forced.
 	//
 	// example:
 	//
@@ -207,42 +210,45 @@ type ListGatewayDomainResponseBodyData struct {
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The state of the domain name. Valid values:
+	// The domain name status. Valid values:
 	//
-	// 	- 0: unpublished
+	// - 0: unpublished
 	//
-	// 	- 2: publishing
+	// - 2: publishing
 	//
-	// 	- 3: published
+	// - 3: published
 	//
-	// 	- 4: editing
+	// - 4: editing
 	//
-	// 	- 5: unpublishing
+	// - 5: taking offline
 	//
-	// 	- 6: unavailable
+	// - 6: unavailable
 	//
 	// example:
 	//
 	// 3
-	Status                *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the gateway supports WAF protection.
+	SupportWaf *bool `json:"SupportWaf,omitempty" xml:"SupportWaf,omitempty"`
+	// The TLS cipher suite configuration, including the configuration type and the list of cipher suite names.
 	TlsCipherSuitesConfig *ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig `json:"TlsCipherSuitesConfig,omitempty" xml:"TlsCipherSuitesConfig,omitempty" type:"Struct"`
-	// The maximum version of Transport Layer Security (TLS).
+	// The maximum TLS version.
 	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"TlsMax,omitempty" xml:"TlsMax,omitempty"`
-	// The minimum version of TLS.
+	// The minimum TLS version.
 	//
 	// example:
 	//
 	// TLS 1.0
 	TlsMin *string `json:"TlsMin,omitempty" xml:"TlsMin,omitempty"`
-	// The type of the domain name source. Valid values:
+	// The source type of the domain name. Valid values:
 	//
-	// 	- Op: console
+	// - Op: created in the console
 	//
-	// 	- Ingress: MSE Ingress
+	// - Ingress: created by MSE Ingress
 	//
 	// example:
 	//
@@ -268,6 +274,10 @@ func (s *ListGatewayDomainResponseBodyData) GetCertIdentifier() *string {
 
 func (s *ListGatewayDomainResponseBodyData) GetComment() *ListGatewayDomainResponseBodyDataComment {
 	return s.Comment
+}
+
+func (s *ListGatewayDomainResponseBodyData) GetEnableWaf() *bool {
+	return s.EnableWaf
 }
 
 func (s *ListGatewayDomainResponseBodyData) GetGatewayId() *int64 {
@@ -310,6 +320,10 @@ func (s *ListGatewayDomainResponseBodyData) GetStatus() *int32 {
 	return s.Status
 }
 
+func (s *ListGatewayDomainResponseBodyData) GetSupportWaf() *bool {
+	return s.SupportWaf
+}
+
 func (s *ListGatewayDomainResponseBodyData) GetTlsCipherSuitesConfig() *ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig {
 	return s.TlsCipherSuitesConfig
 }
@@ -338,6 +352,11 @@ func (s *ListGatewayDomainResponseBodyData) SetCertIdentifier(v string) *ListGat
 
 func (s *ListGatewayDomainResponseBodyData) SetComment(v *ListGatewayDomainResponseBodyDataComment) *ListGatewayDomainResponseBodyData {
 	s.Comment = v
+	return s
+}
+
+func (s *ListGatewayDomainResponseBodyData) SetEnableWaf(v bool) *ListGatewayDomainResponseBodyData {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -391,6 +410,11 @@ func (s *ListGatewayDomainResponseBodyData) SetStatus(v int32) *ListGatewayDomai
 	return s
 }
 
+func (s *ListGatewayDomainResponseBodyData) SetSupportWaf(v bool) *ListGatewayDomainResponseBodyData {
+	s.SupportWaf = &v
+	return s
+}
+
 func (s *ListGatewayDomainResponseBodyData) SetTlsCipherSuitesConfig(v *ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig) *ListGatewayDomainResponseBodyData {
 	s.TlsCipherSuitesConfig = v
 	return s
@@ -426,7 +450,7 @@ func (s *ListGatewayDomainResponseBodyData) Validate() error {
 }
 
 type ListGatewayDomainResponseBodyDataComment struct {
-	// The route status.
+	// The status.
 	//
 	// example:
 	//
@@ -456,7 +480,13 @@ func (s *ListGatewayDomainResponseBodyDataComment) Validate() error {
 }
 
 type ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig struct {
-	ConfigType      *string   `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The TLS encrypt cipher suite configuration type. DEFAULT indicates the default configurations, and CUSTOM indicates a custom configuration.
+	//
+	// example:
+	//
+	// DEFAULT
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The list of TLS cipher suite names.
 	TlsCipherSuites []*string `json:"TlsCipherSuites,omitempty" xml:"TlsCipherSuites,omitempty" type:"Repeated"`
 }
 

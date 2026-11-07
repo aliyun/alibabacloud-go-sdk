@@ -24,13 +24,13 @@ type iListFlowRulesResponseBody interface {
 }
 
 type ListFlowRulesResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The node data.
 	Data *ListFlowRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,11 +38,11 @@ type ListFlowRulesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
-	// OK
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -50,33 +50,7 @@ type ListFlowRulesResponseBody struct {
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The request was successful.
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The request failed.
-	//
-	//     <!-- -->
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -168,7 +142,7 @@ type ListFlowRulesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The returned collection.
 	Result []*ListFlowRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -236,7 +210,7 @@ func (s *ListFlowRulesResponseBodyData) Validate() error {
 }
 
 type ListFlowRulesResponseBodyDataResult struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -248,81 +222,37 @@ type ListFlowRulesResponseBodyDataResult struct {
 	//
 	// finance
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The throttling effect.
-	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     fast failure
-	//
-	//     <!-- -->
-	//
-	// 	- 2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     in queue
-	//
-	//     <!-- -->
+	// The flow control behavior.
 	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
-	// Indicates whether the throttling rule was enabled.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The throttling behavior.
+	// The fallback behavior.
 	//
 	// example:
 	//
 	// "{\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}"
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
-	// Requests source application.
+	// The source application of the request.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
-	// The timeout period for queuing when the value of ControlBehavior is set to 2. Unit: milliseconds.
+	// The timeout period in milliseconds when the flow control behavior is set to queuing.
 	//
 	// example:
 	//
 	// 500
 	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
-	// The statistical dimension. The value 1 indicates that the number of accepted requests is used for statistics.
+	// The statistical dimension. A value of 1 indicates the number of passed requests.
 	//
 	// example:
 	//
@@ -334,19 +264,19 @@ type ListFlowRulesResponseBodyDataResult struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the interface resource.
+	// The API resource name.
 	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// Interface resource type.
+	// The API resource category.
 	//
 	// example:
 	//
@@ -358,13 +288,13 @@ type ListFlowRulesResponseBodyDataResult struct {
 	//
 	// 2
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The throttling threshold.
+	// The threshold of the flow control rule.
 	//
 	// example:
 	//
 	// 10
 	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//

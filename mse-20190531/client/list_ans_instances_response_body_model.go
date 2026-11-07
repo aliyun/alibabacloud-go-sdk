@@ -30,55 +30,55 @@ type iListAnsInstancesResponseBody interface {
 }
 
 type ListAnsInstancesResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data []*ListAnsInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of instances to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 52BA6DA6-A702-4362-A32F-DFF79655****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned instances.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -189,19 +189,19 @@ func (s *ListAnsInstancesResponseBody) Validate() error {
 }
 
 type ListAnsInstancesResponseBodyData struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// app
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// DEFAULT
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The reference key.
+	// The datum key.
 	//
 	// example:
 	//
@@ -213,27 +213,27 @@ type ListAnsInstancesResponseBodyData struct {
 	//
 	// 30.5.XX.XX:unknown
 	DefaultKey *string `json:"DefaultKey,omitempty" xml:"DefaultKey,omitempty"`
-	// The effective status of the instance. Valid values:
+	// Indicates whether the instance is enabled. Valid values:
 	//
-	// 	- `true`: The instance takes effect.
+	// - `true`: Enabled.
 	//
-	// 	- `false`: The instance does not take effect.
+	// - `false`: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Indicates whether the information about the ephemeral node is obtained. Valid values:
+	// Indicates whether the node is ephemeral. Valid values:
 	//
-	// 	- `true`: yes
+	// - `true`: Obtained successfully.
 	//
-	// 	- `false`: no
+	// - `false`: Failed to obtain.
 	//
 	// example:
 	//
 	// true
 	Ephemeral *bool `json:"Ephemeral,omitempty" xml:"Ephemeral,omitempty"`
-	// The number of counted failures.
+	// The failure count.
 	//
 	// example:
 	//
@@ -241,9 +241,9 @@ type ListAnsInstancesResponseBodyData struct {
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
 	// The health status of the instance. Valid values:
 	//
-	// 	- `true`: The instance is healthy.
+	// - `true`: The instance is healthy.
 	//
-	// 	- `false`: The instance is unhealthy.
+	// - `false`: The instance is unhealthy.
 	//
 	// example:
 	//
@@ -255,13 +255,13 @@ type ListAnsInstancesResponseBodyData struct {
 	//
 	// 5000
 	InstanceHeartBeatInterval *int32 `json:"InstanceHeartBeatInterval,omitempty" xml:"InstanceHeartBeatInterval,omitempty"`
-	// The timeout period of the instance heartbeat.
+	// The instance heartbeat timeout.
 	//
 	// example:
 	//
 	// 15000
 	InstanceHeartBeatTimeOut *int32 `json:"InstanceHeartBeatTimeOut,omitempty" xml:"InstanceHeartBeatTimeOut,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -273,23 +273,23 @@ type ListAnsInstancesResponseBodyData struct {
 	//
 	// 30.5.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The timeout period for removing an IP address.
+	// The IP address deletion timeout.
 	//
 	// example:
 	//
 	// 30000
 	IpDeleteTimeout *int32 `json:"IpDeleteTimeout,omitempty" xml:"IpDeleteTimeout,omitempty"`
-	// The last heartbeat time.
+	// The time of the last heartbeat.
 	//
 	// example:
 	//
 	// 20201010
 	LastBeat *int64 `json:"LastBeat,omitempty" xml:"LastBeat,omitempty"`
-	// Indicates whether the instance was marked. Valid values:
+	// Indicates whether the instance is marked. Valid values:
 	//
-	// 	- `true`: The instance marking was successful.
+	// - `true`: Marked successfully.
 	//
-	// 	- `false`: The instance marking failed.
+	// - `false`: Failed to mark.
 	//
 	// example:
 	//
@@ -301,7 +301,7 @@ type ListAnsInstancesResponseBodyData struct {
 	//
 	// [int]
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The number of counted successes.
+	// The success count.
 	//
 	// example:
 	//
@@ -313,7 +313,7 @@ type ListAnsInstancesResponseBodyData struct {
 	//
 	// 8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//

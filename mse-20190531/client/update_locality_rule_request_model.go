@@ -30,39 +30,60 @@ type iUpdateLocalityRuleRequest interface {
 }
 
 type UpdateLocalityRuleRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// hkhon1po62@c3df23522******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Specifies whether to enable zone affinity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The name of the MSE namespace.
+	//
 	// example:
 	//
 	// myNamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Rules  *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The reserved parameter. This parameter is not used.
+	//
+	// example:
+	//
+	// No input required
+	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The source of the rule.
+	//
 	// example:
 	//
 	// edasmsc
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The threshold for zone affinity to take effect. The zone affinity routing feature is enabled for a zone only when the proportion of instances of the current application deployed in the zone exceeds this threshold. That is, when a consumer sends a request to the application, the request is preferentially routed to an instance in the same zone as the consumer.
+	//
 	// example:
 	//
 	// 0.2

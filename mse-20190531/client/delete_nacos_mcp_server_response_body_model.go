@@ -16,10 +16,14 @@ type iDeleteNacosMcpServerResponseBody interface {
 }
 
 type DeleteNacosMcpServerResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D0DB055C-51F2-5BB2-82A6-CD8A3C6EE6BA

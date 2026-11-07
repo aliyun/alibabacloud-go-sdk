@@ -16,10 +16,14 @@ type iGetGatewayConfigRequest interface {
 }
 
 type GetGatewayConfigRequest struct {
+	// The language of the returned results. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:

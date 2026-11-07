@@ -24,23 +24,38 @@ type iDeleteWebFlowRulesResponseBody interface {
 }
 
 type DeleteWebFlowRulesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 354FF159-E9FB-5FBA-BDD5-E99EE440A88D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - `true`: The request is successful.
+	//
+	// - `false`: The request fails.
+	//
 	// example:
 	//
 	// true

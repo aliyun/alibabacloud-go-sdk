@@ -24,15 +24,22 @@ type iDeleteBlackWhiteListResponseBody interface {
 }
 
 type DeleteBlackWhiteListResponseBody struct {
+	// The response code, which is used only to indicate whether the request is successful, similar to the Success parameter.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data structure.
 	Data *DeleteBlackWhiteListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
@@ -43,6 +50,12 @@ type DeleteBlackWhiteListResponseBody struct {
 	//
 	// DC34E4A3-5F1C-4E40-86EA-02EDF967****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -121,46 +134,78 @@ func (s *DeleteBlackWhiteListResponseBody) Validate() error {
 }
 
 type DeleteBlackWhiteListResponseBodyData struct {
+	// The configuration content.
+	//
 	// example:
 	//
 	// 1.1.1.1
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// 430
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-9cdcf8e4f58144059e73ff4c5ef9****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2022-08-10 20:22:34
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2022-08-10 20:22:34
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ID of the blacklists and whitelists entry.
+	//
 	// example:
 	//
 	// 120
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the entry is a whitelist.
+	//
 	// example:
 	//
 	// true
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// Deprecated.
+	//
 	// example:
 	//
 	// 1
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The granularity at which the blacklist or whitelist takes effect. Valid values:
+	//
+	// - GATEWAY: gateway-wide
+	//
+	// - DOMAIN: domain name
+	//
+	// - ROUTE: route
+	//
 	// example:
 	//
 	// GATEWAY
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The enabling status. Valid values:
+	//
+	// - 0: disabled
+	//
+	// - 1: enabled
+	//
 	// example:
 	//
 	// 1
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Deprecated. A fixed value.
+	//
 	// example:
 	//
 	// IP

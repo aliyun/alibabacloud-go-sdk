@@ -26,25 +26,25 @@ type iUpdateMigrationTaskResponseBody interface {
 type UpdateMigrationTaskResponseBody struct {
 	// The data structure.
 	Data *UpdateMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type UpdateMigrationTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,37 +134,37 @@ func (s *UpdateMigrationTaskResponseBody) Validate() error {
 }
 
 type UpdateMigrationTaskResponseBodyData struct {
-	// The type of the instance.
+	// The type of the cluster.
 	//
-	// 	- Nacos-Ans
+	// - Nacos-Ans
 	//
-	// 	- ZooKeeper
+	// - ZooKeeper
 	//
-	// 	- Eureka
+	// - Eureka
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The creation time.
+	// The time when the migration task was created.
 	//
 	// example:
 	//
 	// 2022-01-07T10:07:57.000+0000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The time when the migration task was updated.
 	//
 	// example:
 	//
 	// 2022-01-07T10:07:57.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The address of the source instance node.
+	// The source instance node address.
 	//
 	// example:
 	//
@@ -182,13 +182,18 @@ type UpdateMigrationTaskResponseBodyData struct {
 	//
 	// fsdfsdfdsf
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	// The description.
+	// The description of the task.
 	//
 	// example:
 	//
 	// 1232345
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
+	// The synchronization type
+	//
+	// example:
+	//
+	// All
+	SyncType *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
@@ -207,7 +212,7 @@ type UpdateMigrationTaskResponseBodyData struct {
 	//
 	// mse-cn-zvp2u*****
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

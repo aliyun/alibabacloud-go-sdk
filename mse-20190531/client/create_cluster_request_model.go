@@ -56,47 +56,23 @@ type iCreateClusterRequest interface {
 }
 
 type CreateClusterRequest struct {
-	// The language type of the returned information:
+	// The language of the response. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Billing method, including PREPAY (Subscription) and POSTPAY (Pay-As-You-Go).
-	//
-	// This parameter is ignored for the Serverless edition.
+	// The billing method. Valid values: PREPAY (subscription) and POSTPAY (pay-as-you-go). This parameter is ignored for Serverless Edition.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Engine specifications, with the following values:
-	//
-	// [Professional Edition]
-	//
-	// - `MSE_SC_2_4_60_c`: 2 cores, 4GB
-	//
-	// - `MSE_SC_1_2_60_c`: 1 core, 2GB
-	//
-	// - `MSE_SC_4_8_60_c`: 4 cores, 8GB
-	//
-	// - `MSE_SC_8_16_60_c`: 8 cores, 16GB
-	//
-	// - `MSE_SC_16_32_60_c`: 16 cores, 32GB
-	//
-	// [Developer Edition]
-	//
-	// - `MSE_SC_1_2_60_c`: 1 core, 2GB
-	//
-	// - `MSE_SC_2_4_60_c`: 2 cores, 4GB
-	//
-	// [Serverless Edition]
-	//
-	// Ignore this parameter, or you can fill in `MSE_SC_SERVERLESS`.
+	// The engine specifications. Valid values:
 	//
 	// This parameter is required.
 	//
@@ -104,7 +80,7 @@ type CreateClusterRequest struct {
 	//
 	// MSE_SC_2_4_60_c
 	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	// Cluster type, including ZooKeeper, Nacos-Ans.
+	// The cluster type. Valid values: ZooKeeper and Nacos-Ans.
 	//
 	// This parameter is required.
 	//
@@ -112,25 +88,7 @@ type CreateClusterRequest struct {
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// Cluster version, with the following values:
-	//
-	// [Professional Edition]
-	//
-	// - `NACOS_2_0_0`: indicates Nacos 2.x.x version.
-	//
-	// - `ZooKeeper_3_8_0`: indicates ZooKeeper 3.8.x version.
-	//
-	// [Developer Edition]
-	//
-	// - `NACOS_2_0_0`: indicates Nacos 2.x version.
-	//
-	// - `ZooKeeper_3_8_0`: indicates ZooKeeper 3.8.x version.
-	//
-	// [Serverless Edition]
-	//
-	// - `NACOS_2_0_0`: indicates Nacos 2.x version.
-	//
-	// - `ZooKeeper_3_8_0`: indicates ZooKeeper 3.8.x version.
+	// The cluster version. Valid values:
 	//
 	// This parameter is required.
 	//
@@ -138,7 +96,7 @@ type CreateClusterRequest struct {
 	//
 	// NACOS_2_0_0
 	ClusterVersion *string `json:"ClusterVersion,omitempty" xml:"ClusterVersion,omitempty"`
-	// Network access type, `slb` or `single_eni`; some regions\\" Developer Edition only support the `single_eni` type.
+	// The network access type. Valid values: `slb` and `single_eni`. In some regions, Developer Edition supports only `single_eni`.
 	//
 	// example:
 	//
@@ -146,30 +104,36 @@ type CreateClusterRequest struct {
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
 	// Deprecated
 	//
-	// No longer in use
+	// This parameter is deprecated.
 	//
 	// example:
 	//
 	// alicloud-disk-ssd
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// Valid when `ConnectionType` is `single_eni`, indicating whether to enable public network access (Elastic IP).
+	// Specifies whether to enable public network access by using an elastic IP address (EIP). This parameter takes effect only when ConnectionType is set to `single_eni`.
 	//
 	// if can be null:
 	// false
 	EipEnabled *bool `json:"EipEnabled,omitempty" xml:"EipEnabled,omitempty"`
-	// Number of instance nodes, with a range limit of 1 to 9.
+	// The number of nodes in the instance. Valid values: 1 to 9.
 	//
 	// [Professional Edition]
 	//
-	// - The number of instances must be 3 or more and must be an odd number.
+	// -  `NACOS_2_0_0`: Nacos 2.x.x.
+	//
+	// - `ZooKeeper_3_8_0`: ZooKeeper 3.8.x.
 	//
 	// [Developer Edition]
 	//
-	// - The number of instances can only be 1.
+	// -  `NACOS_2_0_0`: Nacos 2.x.
+	//
+	// - `ZooKeeper_3_8_0`: ZooKeeper 3.8.x.
 	//
 	// [Serverless Edition]
 	//
-	// Ignore this parameter.
+	// -  `NACOS_2_0_0`: Nacos 2.x.
+	//
+	// - `ZooKeeper_3_8_0`: ZooKeeper 3.8.x.
 	//
 	// This parameter is required.
 	//
@@ -177,29 +141,29 @@ type CreateClusterRequest struct {
 	//
 	// 3
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// Custom instance name
+	// The custom name of the instance.
 	//
 	// example:
 	//
 	// tanshuyingtest001
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Required unless under special circumstances, with the following values:
+	// The instance edition. This parameter is required unless otherwise specified. Valid values:
 	//
-	// - `mse_pro`: indicates Professional Edition.
+	// - `mse_pro`: Professional Edition.
 	//
-	// - `mse_dev`: indicates Developer Edition.
+	// - `mse_dev`: Developer Edition.
 	//
-	// - `mse_serverless`: indicates Serverless Edition.
+	// - `mse_serverless`: Serverless Edition.
 	//
 	// example:
 	//
 	// mse_pro
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// Network type, with the following values:
+	// The network type. Valid values:
 	//
-	// - `privatenet`: indicates a private network.
+	// - `privatenet`: virtual private cloud (VPC).
 	//
-	// - `pubnet`: indicates a public network.
+	// - `pubnet`: Internet.
 	//
 	// This parameter is required.
 	//
@@ -209,15 +173,13 @@ type CreateClusterRequest struct {
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// Deprecated
 	//
-	// No longer in use
+	// This parameter is deprecated.
 	//
 	// example:
 	//
 	// slb.s1.small
 	PrivateSlbSpecification *string `json:"PrivateSlbSpecification,omitempty" xml:"PrivateSlbSpecification,omitempty"`
-	// Valid when `ConnectionType` is `slb`. 0 indicates no public network access SLB creation, and values above 1 indicate a fixed bandwidth for public network access SLB; unit: Mbps.
-	//
-	// Value range: 0~5000.
+	// The bandwidth of the Internet-facing Server Load Balancer (SLB) instance. This parameter takes effect only when ConnectionType is set to `slb`. A value of 0 indicates that no Internet-facing SLB instance is created. A value greater than 1 indicates the fixed bandwidth of the Internet-facing SLB instance. Unit: Mbit/s. Valid values: 0 to 5000.
 	//
 	// example:
 	//
@@ -225,55 +187,55 @@ type CreateClusterRequest struct {
 	PubNetworkFlow *string `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	// Deprecated
 	//
-	// No longer in use
+	// This parameter is deprecated.
 	//
 	// example:
 	//
 	// slb.s1.small
 	PubSlbSpecification *string `json:"PubSlbSpecification,omitempty" xml:"PubSlbSpecification,omitempty"`
-	// The region where the cluster is located, including but not limited to the following regions:
+	// The region where the cluster is deployed. Valid values include but are not limited to:
 	//
-	// - `cn-hangzhou`: Hangzhou
+	// - `cn-hangzhou`: China (Hangzhou)
 	//
-	// - `cn-beijing`: Beijing
+	// - `cn-beijing`: China (Beijing)
 	//
-	// - `cn-shanghai`: Shanghai
+	// - `cn-shanghai`: China (Shanghai)
 	//
-	// - `cn-zhangjiakou`: Zhangjiakou
+	// - `cn-zhangjiakou`: China (Zhangjiakou)
 	//
-	// - `cn-shenzhen`: Shenzhen
+	// - `cn-shenzhen`: China (Shenzhen)
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Extended request parameters, in JSON format.
+	// The extended request parameters in JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// Resource group ID. For more details about the resource group, see [Basic Information of Resource Group](https://help.aliyun.com/document_detail/457230.html).
+	// The resource group ID. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/457230.html).
 	//
 	// example:
 	//
 	// rg-aekzcqmoay3dlyq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Valid when `ConnectionType` is `single_eni`, indicating the security group type of the instance.
+	// The type of the security group to which the instance belongs. This parameter takes effect only when ConnectionType is set to `single_eni`. Valid values:
 	//
 	// example:
 	//
 	// enterprise
 	SecurityGroupType *string `json:"SecurityGroupType,omitempty" xml:"SecurityGroupType,omitempty"`
-	// List of tags to be added. Contains up to 20 items.
+	// The tags to be added. You can add up to 20 tags.
 	Tag []*CreateClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Switch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp17opt4v18sto39k****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -501,13 +463,13 @@ func (s *CreateClusterRequest) Validate() error {
 }
 
 type CreateClusterRequestTag struct {
-	// Tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag value.
+	// The tag value.
 	//
 	// example:
 	//

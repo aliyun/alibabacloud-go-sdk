@@ -18,15 +18,15 @@ type iQueryAllSwimmingLaneGroupRequest interface {
 type QueryAllSwimmingLaneGroupRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace that you want to query.
+	// The name of the MSE namespace to query.
 	//
 	// example:
 	//

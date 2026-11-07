@@ -34,56 +34,92 @@ type iAddAuthPolicyRequest interface {
 }
 
 type AddAuthPolicyRequest struct {
+	// The language of the response. Valid values: zh-CN (Chinese, default) and en-US (English).
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// e9clba2xlc@***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The content of the service authentication rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"all":true,"black":false,"appIds":["dez4qt7weh@***"]}]
 	AuthRule *string `json:"AuthRule,omitempty" xml:"AuthRule,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// - 0: application dimension.
+	//
+	// - 1: namespace dimension.
+	//
 	// example:
 	//
 	// 0
 	AuthType *int32 `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// Specifies whether the authentication rule is enabled. Valid values:
+	//
+	// - `true`: Enabled.
+	//
+	// - `false`: Disabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the namespace in the Kubernetes cluster.
+	//
 	// example:
 	//
 	// c19c6c500e1ff4d7abc7***
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
+	// The name of the rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The MSE namespace to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The protocol type. Valid values:
+	//
+	// - **SPRING_CLOUD**
+	//
+	// - **DUBBO**
+	//
+	// - **istio**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SPRING_CLOUD
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The source. Valid values: edasmsc.
+	//
 	// This parameter is required.
 	//
 	// example:

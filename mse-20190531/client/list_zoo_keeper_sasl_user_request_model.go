@@ -16,10 +16,14 @@ type iListZooKeeperSaslUserRequest interface {
 }
 
 type ListZooKeeperSaslUserRequest struct {
+	// The language of the returned results. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,22 +20,30 @@ type iDeleteWebFlowRulesRequest interface {
 }
 
 type DeleteWebFlowRulesRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IDs of the rules to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [1, 2, 3]
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// The name of the MSE namespace.
+	//
 	// This parameter is required.
 	//
 	// example:

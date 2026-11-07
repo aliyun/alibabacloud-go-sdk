@@ -16,7 +16,10 @@ type iQueryNacosGrayConfigResponseBody interface {
 }
 
 type QueryNacosGrayConfigResponseBody struct {
+	// The returned data.
 	Data *QueryNacosGrayConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE5C32A1-BC0E-4B79-817C-103E4EDF****
@@ -59,42 +62,62 @@ func (s *QueryNacosGrayConfigResponseBody) Validate() error {
 }
 
 type QueryNacosGrayConfigResponseBodyData struct {
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The configuration content.
+	//
 	// example:
 	//
 	// text
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The DataId of the configuration.
+	//
 	// example:
 	//
 	// test.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The canary release rule.
+	//
 	// example:
 	//
 	// nacos.config.gray.label=test
 	GrayRule *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	// The name of the canary release version.
+	//
 	// example:
 	//
 	// Beta(IP)
 	GrayRuleName *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
+	// The priority of the canary release version.
+	//
 	// example:
 	//
 	// 100
 	GrayRulePriority *string `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
+	// The canary release type. Valid values: Beta or Tag.
+	//
 	// example:
 	//
 	// Tags
 	GrayType *string `json:"GrayType,omitempty" xml:"GrayType,omitempty"`
+	// The configuration group.
+	//
 	// example:
 	//
 	// dubbo
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The last modification time of the configuration.
+	//
 	// example:
 	//
 	// 1742277568000
 	LastModified *string `json:"LastModified,omitempty" xml:"LastModified,omitempty"`
+	// The MD5 hash of the configuration content.
+	//
 	// example:
 	//
 	// 87d14faf58a103ac8840b9c5f1c2a0fe

@@ -28,38 +28,54 @@ type iListIsolationRulesRequest interface {
 }
 
 type ListIsolationRulesRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// hkhon1po62@c3df23522bXXXXX
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The first page. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The page size. Default value: 6.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Find protection rules for specified interface.
+	//
 	// example:
 	//
 	// /a
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// Find protection rules that contain the interface keyword.
+	//
 	// example:
 	//
 	// a

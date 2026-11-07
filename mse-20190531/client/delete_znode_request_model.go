@@ -22,15 +22,15 @@ type iDeleteZnodeRequest interface {
 type DeleteZnodeRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the instance.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteZnodeRequest struct {
 	//
 	// mse-09k1q11****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The path of the node.
+	// The node path.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DeleteZnodeRequest struct {
 	//
 	// /zookeeper
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameters in JSON format.
 	//
 	// example:
 	//

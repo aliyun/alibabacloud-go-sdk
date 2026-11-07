@@ -24,23 +24,38 @@ type iCreateSentinelBlockFallbackDefinitionResponseBody interface {
 }
 
 type CreateSentinelBlockFallbackDefinitionResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *CreateSentinelBlockFallbackDefinitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ADDD8AB7-8D1C-4697-A83E-410D2607****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,30 +134,44 @@ func (s *CreateSentinelBlockFallbackDefinitionResponseBody) Validate() error {
 }
 
 type CreateSentinelBlockFallbackDefinitionResponseBodyData struct {
+	// The name of the application.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The behavior details.
+	//
 	// example:
 	//
 	// {"webRespStatusCode":429,"webRespMessage":"test","webFallbackMode":0,"webRespContentType":0}
 	FallbackBehavior *string `json:"FallbackBehavior,omitempty" xml:"FallbackBehavior,omitempty"`
+	// The behavior ID.
+	//
 	// example:
 	//
 	// 34726
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The behavior name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The microservice namespace to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The target resource type.
+	//
 	// example:
 	//
 	// 1
 	ResourceClassification *int32 `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 123456

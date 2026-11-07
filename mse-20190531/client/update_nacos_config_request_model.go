@@ -64,7 +64,7 @@ type UpdateNacosConfigRequest struct {
 	//
 	// example:
 	//
-	// attribute1=1221111\\r\\nattribute2=Chinese\\r\\nattribute3=abc11\\r\\nattribute4=1.00111
+	// test
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the configuration.
 	//
@@ -78,7 +78,7 @@ type UpdateNacosConfigRequest struct {
 	//
 	// example:
 	//
-	// Basic configurations
+	// Base configuration
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The encryption key.
 	//

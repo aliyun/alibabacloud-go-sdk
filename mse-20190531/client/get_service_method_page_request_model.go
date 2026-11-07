@@ -42,59 +42,92 @@ type iGetServiceMethodPageRequest interface {
 }
 
 type GetServiceMethodPageRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// hkhonxxxxx@f3f75ed8ffxxxxx
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The IP address of the service provider.
+	//
 	// example:
 	//
 	// 223.5.5.5
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The full name of the Controller class to which the interface belongs.
+	//
 	// example:
 	//
 	// com.alibabacloud.mse.demo.a.AController
 	MethodController *string `json:"MethodController,omitempty" xml:"MethodController,omitempty"`
+	// The method name.
+	//
 	// example:
 	//
 	// aMethod
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Microservices Engine (MSE) namespace to which the application belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request path that corresponds to the interface.
+	//
 	// example:
 	//
 	// /a
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The group to which the service belongs.
+	//
+	// example:
+	//
+	// ALIYUN
 	ServiceGroup *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
+	// The name of the service.
+	//
 	// example:
 	//
 	// sc-A
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The engine type.
+	//
 	// example:
 	//
 	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1.0.0

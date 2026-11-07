@@ -24,19 +24,19 @@ type iExportZookeeperDataRequest interface {
 type ExportZookeeperDataRequest struct {
   // The language of the response. Valid values:
   // 
-  // 	- zh: Chinese
+  // - zh: Chinese
   // 
-  // 	- en: English
+  // - en: English
   // 
   // example:
   // 
   // zh
   AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-  // The type of the object that is exported. Valid values:
+  // The export type. Valid values:
   // 
-  // 	- transactionLog: transaction logs
+  // - transactionLog: transaction log
   // 
-  // 	- snapshot: snapshots
+  // - snapshot: snapshot file
   // 
   // example:
   // 
@@ -48,13 +48,13 @@ type ExportZookeeperDataRequest struct {
   // 
   // mse-cn-78v1l83****
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-  // The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+  // The region where the cluster is deployed. Specify a region supported by Microservices Engine (MSE).
   // 
   // example:
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The extended request parameters in the JSON format.
+  // The extended request parameters in JSON format.
   // 
   // example:
   // 

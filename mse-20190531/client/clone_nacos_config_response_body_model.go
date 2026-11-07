@@ -28,51 +28,51 @@ type iCloneNacosConfigResponseBody interface {
 }
 
 type CloneNacosConfigResponseBody struct {
-	// Response code.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data overview.
+	// The data overview.
 	Data *CloneNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Dynamic error message, used to replace the **%s*	- in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it indicates that the input request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Response message.
+	// The response message.
 	//
 	// example:
 	//
 	// Clone Completed Successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6678DBA9-5600-5948-ACF8-ED3105B288A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Request result, with the following values:
+	// The request result. Valid values:
 	//
-	// - `true`: Request succeeded.
+	// - `true`: The request was successful.
 	//
-	// - `false`: Request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -170,17 +170,17 @@ func (s *CloneNacosConfigResponseBody) Validate() error {
 }
 
 type CloneNacosConfigResponseBodyData struct {
-	// Failed configuration information.
+	// The failed configuration information.
 	FailData []*CloneNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
-	// Number of skips.
+	// The number of skipped configurations.
 	//
 	// example:
 	//
 	// 1
 	SkipCount *int32 `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
-	// Skipped configuration information.
+	// The skipped configuration information.
 	SkipData []*CloneNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
-	// Number of successes.
+	// The number of successful configurations.
 	//
 	// example:
 	//
@@ -255,23 +255,23 @@ func (s *CloneNacosConfigResponseBodyData) Validate() error {
 }
 
 type CloneNacosConfigResponseBodyDataFailData struct {
-	// Data ID.
+	// The data ID.
 	//
 	// example:
 	//
 	// test2.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Group ID.
+	// The group ID.
 	//
 	// example:
 	//
 	// test
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The reason for the current operation.
+	// The error reason.
 	//
 	// example:
 	//
-	// param not support
+	// The current import configuration format is invalid.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -315,13 +315,13 @@ func (s *CloneNacosConfigResponseBodyDataFailData) Validate() error {
 }
 
 type CloneNacosConfigResponseBodyDataSkipData struct {
-	// Data ID.
+	// The data ID.
 	//
 	// example:
 	//
 	// test.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// Group ID.
+	// The group ID.
 	//
 	// example:
 	//

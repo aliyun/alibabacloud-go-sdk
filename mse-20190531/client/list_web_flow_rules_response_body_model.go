@@ -24,23 +24,38 @@ type iListWebFlowRulesResponseBody interface {
 }
 
 type ListWebFlowRulesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *ListWebFlowRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4AE73569-304C-5AA9-AE11-C1D99C7D1689
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -119,15 +134,22 @@ func (s *ListWebFlowRulesResponseBody) Validate() error {
 }
 
 type ListWebFlowRulesResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListWebFlowRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned results.
+	Result []*ListWebFlowRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of queried rules.
+	//
 	// example:
 	//
 	// 36
@@ -192,70 +214,130 @@ func (s *ListWebFlowRulesResponseBodyData) Validate() error {
 }
 
 type ListWebFlowRulesResponseBodyDataResult struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// hkhon1XXXX@c3df23522bXXXXX
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of additional requests allowed for burst requests. The effect is equivalent to the maximum number of tokens for the token bucket algorithm.
+	//
 	// example:
 	//
 	// 0
 	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// The flow control method. Valid values:
+	//
+	// - 0: fast failure
+	//
+	// - 2: wait in queue
+	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// Indicates whether the rule is enabled or disabled.
+	//
+	// - `true`: enabled.
+	//
+	// - `false`: disabled.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The behavior that was bound to the rule.
+	//
 	// example:
 	//
 	// {\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}
 	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	// The timeout period for queuing when the ControlBehavior parameter is set to 2. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 200
 	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// The threshold type. Valid values:
+	//
+	// - 1: number of requests
+	//
 	// example:
 	//
 	// 1
 	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The parameter description item, which is a JSON string containing the following key-value pairs:
+	//
+	// - parseStrategy: the parameter property (0: client IP address. 1: remote host. 2: header. 3: URL parameter)
+	//
+	// - fieldName: the header name or URL parameter name. You must specify this key only if parseStrategy is set to 2 or 3
+	//
+	// - matchStrategy: the method to match the property value. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched. Valid values: 0 (exact match), 2 (regular expression match), and 3 (substring match)
+	//
+	// - pattern: the match string. You must specify this key only if parseStrategy is set to 2 or 3 and the property value is matched
+	//
 	// example:
 	//
 	// {"fieldName":"testKey","matchStrategy":2,"parseStrategy":2,"pattern":"testValue"}
 	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the interface resource.
+	//
 	// example:
 	//
 	// /flow
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The resource mode. Valid values:
+	//
+	// - 0: resource name mode
+	//
 	// example:
 	//
 	// 0
 	ResourceMode *int32 `json:"ResourceMode,omitempty" xml:"ResourceMode,omitempty"`
+	// The resource type
+	//
+	// - 0: custom interface
+	//
+	// - 1: WEB
+	//
+	// - 2: RPC
+	//
 	// example:
 	//
 	// 1
 	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 1
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The length of the time window. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1000
 	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// The threshold.
+	//
 	// example:
 	//
 	// 20

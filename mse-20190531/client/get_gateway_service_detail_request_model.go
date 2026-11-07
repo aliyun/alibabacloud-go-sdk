@@ -18,11 +18,11 @@ type iGetGatewayServiceDetailRequest interface {
 }
 
 type GetGatewayServiceDetailRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetGatewayServiceDetailRequest struct {
 	//
 	// gw-f4c960ad071a48a790b36324394c****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//

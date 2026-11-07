@@ -16,10 +16,14 @@ type iCreateGatewayIsolationRuleResponseBody interface {
 }
 
 type CreateGatewayIsolationRuleResponseBody struct {
+	// The ID of the circuit breaking rule that you create.
+	//
 	// example:
 	//
 	// 608
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 94B12406-E44D-57C9-BF93-A8B35BFF****

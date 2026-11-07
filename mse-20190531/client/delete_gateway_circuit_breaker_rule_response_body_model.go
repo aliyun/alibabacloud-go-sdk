@@ -16,10 +16,14 @@ type iDeleteGatewayCircuitBreakerRuleResponseBody interface {
 }
 
 type DeleteGatewayCircuitBreakerRuleResponseBody struct {
+	// The response data.
+	//
 	// example:
 	//
 	// True
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 52BA6DA6-A702-4362-A32F-DFF79655****

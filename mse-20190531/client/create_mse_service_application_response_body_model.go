@@ -22,11 +22,11 @@ type iCreateMseServiceApplicationResponseBody interface {
 type CreateMseServiceApplicationResponseBody struct {
 	// The data structure.
 	Data *CreateMseServiceApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -34,11 +34,11 @@ type CreateMseServiceApplicationResponseBody struct {
 	//
 	// 904F6C04-1284-****-8ED2-FFC57E507A72
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *CreateMseServiceApplicationResponseBody) Validate() error {
 }
 
 type CreateMseServiceApplicationResponseBodyData struct {
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type CreateMseServiceApplicationResponseBodyData struct {
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type CreateMseServiceApplicationResponseBodyData struct {
 	//
 	// JAVA
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The license key in use.
+	// The license key of the user.
 	//
 	// example:
 	//
 	// xxxxxxxx@xxxxxxxxxx
 	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type CreateMseServiceApplicationResponseBodyData struct {
 	//
 	// edasmsc
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status. Valid values: 1: available; 2: deleted.
+	// The status. A value of 1 indicates the available state, and a value of 2 indicates the deleted state.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last modification time.
+	// The last update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

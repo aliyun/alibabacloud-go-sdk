@@ -20,17 +20,17 @@ type iUpdateGatewayAuthConsumerResourceRequest interface {
 }
 
 type UpdateGatewayAuthConsumerResourceRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The gateway authentication consumer ID.
+	// The ID of the gateway authentication consumer.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateGatewayAuthConsumerResourceRequest struct {
 	//
 	// 2
 	ConsumerId *int64 `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The unique ID of the gateway.
+	// UpdateGatewayAuthConsumerResource
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateGatewayAuthConsumerResourceRequest struct {
 	//
 	// gw-3f97e2989c344f35ab3fd62b19f1****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The gateway authentication consumer ID.
+	// The list of resources.
 	ResourceList []*UpdateGatewayAuthConsumerResourceRequestResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 }
 
@@ -114,7 +114,7 @@ type UpdateGatewayAuthConsumerResourceRequestResourceList struct {
 	//
 	// 7816
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// example:
 	//

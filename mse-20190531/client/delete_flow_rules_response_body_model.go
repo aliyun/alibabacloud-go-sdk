@@ -24,13 +24,13 @@ type iDeleteFlowRulesResponseBody interface {
 }
 
 type DeleteFlowRulesResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The IDs of the rules that were deleted.
+	// The IDs of the deleted rules.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -38,7 +38,7 @@ type DeleteFlowRulesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DeleteFlowRulesResponseBody struct {
 	//
 	// FAF577DD-8E8E-5BE6-80CC-380E19******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//

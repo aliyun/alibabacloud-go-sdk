@@ -30,16 +30,21 @@ type iUpdateClusterSpecRequest interface {
 type UpdateClusterSpecRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AutoPay        *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The ID of the cluster.
+	// Specifies whether to automatically pay after placing an order. If this value is false, this interface will return a payment URL for the order, which you can manually confirm to pay
+	//
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -57,7 +62,7 @@ type UpdateClusterSpecRequest struct {
 	//
 	// 3
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -70,8 +75,13 @@ type UpdateClusterSpecRequest struct {
 	// example:
 	//
 	// mse_pro
-	MseVersion     *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	PubNetworkFlow *int32  `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
+	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
+	// Internet bandwidth
+	//
+	// example:
+	//
+	// 1
+	PubNetworkFlow *int32 `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 }
 
 func (s UpdateClusterSpecRequest) String() string {

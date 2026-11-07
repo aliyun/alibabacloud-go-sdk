@@ -24,22 +24,38 @@ type iListGatewayAuthResponseBody interface {
 }
 
 type ListGatewayAuthResponseBody struct {
+	// The status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListGatewayAuthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Request processed successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// EC1EED4A-B147-597B-B949-FD3131AB4298
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -118,15 +134,22 @@ func (s *ListGatewayAuthResponseBody) Validate() error {
 }
 
 type ListGatewayAuthResponseBodyData struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListGatewayAuthResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned results.
+	Result []*ListGatewayAuthResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 9
@@ -191,95 +214,174 @@ func (s *ListGatewayAuthResponseBodyData) Validate() error {
 }
 
 type ListGatewayAuthResponseBodyDataResult struct {
+	// The authorization resource mode. Valid values:
+	//
+	// - 0: simple mode.
+	//
+	// - 1: complex mode.
+	//
 	// example:
 	//
 	// 0
 	AuthResourceMode *int32 `json:"AuthResourceMode,omitempty" xml:"AuthResourceMode,omitempty"`
+	// The application ID registered in the service. This parameter is used for OIDC or IDaaS.
+	//
 	// example:
 	//
 	// app_mnvxaavggw7hcdcnr6usi6***
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The application secret registered in the service. This parameter is used for OIDC or IDaaS.
+	//
 	// example:
 	//
 	// CS6EYfx3k9yTRR9EtQ2MXWP97P6UAUwFg4teoWJ19Z****
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The domain name of the cookie. After authentication, the cookie is sent to the specified domain name to maintain the logon status. This parameter is used for OIDC or IDaaS.
+	//
 	// example:
 	//
 	// test.com
-	CookieDomain  *string                                             `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	CookieDomain *string `json:"CookieDomain,omitempty" xml:"CookieDomain,omitempty"`
+	// The custom authentication information.
 	ExternalAuthZ *ListGatewayAuthResponseBodyDataResultExternalAuthZ `json:"ExternalAuthZ,omitempty" xml:"ExternalAuthZ,omitempty" type:"Struct"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 1
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-09-13 19:24:23
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 2021-09-13 19:24:23
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The authentication ID.
+	//
 	// example:
 	//
 	// 549
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The authorization blacklists and whitelists mode. Valid values:
+	//
+	// - true: whitelist mode. Hosts and paths in the whitelist can be accessed without verification, while all other hosts and paths require verification.
+	//
+	// - false: blacklist mode. Hosts and paths in the blacklist require verification, while all other hosts and paths can be accessed directly.
+	//
 	// example:
 	//
 	// true
 	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// Used when the authentication type is JWT or OIDC:
+	//
+	// - JWT: the iss (issuer) claim in the JWT, which represents the issuer.
+	//
+	// - OIDC: the iss (issuer) claim in the OIDC token, which represents the issuer.
+	//
 	// example:
 	//
 	// https://example.com/auth
 	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// The JWT public key in JSON format.
+	//
 	// example:
 	//
 	// {\\"keys\\":[{\\"kty\\":\\"oct\\",\\"k\\":\\"9V9lpiuAQsME1efQChI0kEQz6fdVlJbDRFFa1lvEB_A\\",\\"alg\\":\\"HS256\\"}]}
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
+	// The URL of the user logon page for the IDaaS instance. This parameter is used for IDaaS.
+	//
 	// example:
 	//
 	// https://daxxxxcn.aliyunidaas.com/
 	LoginUrl *string `json:"LoginUrl,omitempty" xml:"LoginUrl,omitempty"`
+	// The name of the authentication rule.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The redirect URL after successful authorization. This parameter is used for OIDC or IDaaS and must be consistent with the redirect URL configured in OIDC or IDaaS.
+	//
 	// example:
 	//
 	// http://test.com/oauth2/callback
 	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
+	// The OIDC authorization scopes. This parameter is used for OIDC.
+	//
 	// example:
 	//
 	// ["openid"]
 	ScopesList *string `json:"ScopesList,omitempty" xml:"ScopesList,omitempty"`
+	// The enabling status. Valid values:
+	//
+	// - false: disabled.
+	//
+	// - true: enabled.
+	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Used when the authentication type is JWT. The sub (subject) claim in the JWT, which represents the subject.
+	//
 	// example:
 	//
 	// example-app
 	Sub *string `json:"Sub,omitempty" xml:"Sub,omitempty"`
+	// The location where the JWT token is stored.
+	//
+	// By default, the token to be verified is prefixed with Bearer and placed in the Authorization header, for example, `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Authorization
 	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
+	// The prefix of the JWT token.
+	//
+	// By default, the token to be verified is prefixed with Bearer and placed in the Authorization header, for example, `Authorization: Bearer token`.
+	//
 	// example:
 	//
 	// Bearer
 	TokenNamePrefix *string `json:"TokenNamePrefix,omitempty" xml:"TokenNamePrefix,omitempty"`
+	// Specifies whether to pass through the token.
+	//
 	// example:
 	//
 	// true
 	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
+	// The JWT token position. Valid values:
+	//
+	// - HEADER: transmitted through the header.
+	//
+	// By default, the token to be verified is prefixed with Bearer and placed in the Authorization header, for example, Authorization: Bearer token.
+	//
 	// example:
 	//
 	// HEADER
 	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
+	// The authentication type. Valid values:
+	//
+	// - JWT
+	//
+	// - OIDC
+	//
+	// - IDaaS
+	//
+	// - ExternalAuthZ: self-managed authentication service
+	//
 	// example:
 	//
 	// JWT
@@ -520,37 +622,60 @@ func (s *ListGatewayAuthResponseBodyDataResult) Validate() error {
 }
 
 type ListGatewayAuthResponseBodyDataResultExternalAuthZ struct {
-	AllowRequestHeaders  []*string `json:"AllowRequestHeaders,omitempty" xml:"AllowRequestHeaders,omitempty" type:"Repeated"`
+	// The names of the allowed request headers.
+	AllowRequestHeaders []*string `json:"AllowRequestHeaders,omitempty" xml:"AllowRequestHeaders,omitempty" type:"Repeated"`
+	// The names of the allowed response headers.
 	AllowUpstreamHeaders []*string `json:"AllowUpstreamHeaders,omitempty" xml:"AllowUpstreamHeaders,omitempty" type:"Repeated"`
+	// The maximum number of bytes for the request body.
+	//
 	// example:
 	//
 	// 1024
 	BodyMaxBytes *int32 `json:"BodyMaxBytes,omitempty" xml:"BodyMaxBytes,omitempty"`
+	// The custom authentication mode. Valid values:
+	//
+	// - true: strict mode. When the authentication service is unavailable (connection establishment fails or a 5xx status code is returned), the gateway rejects the client request.
+	//
+	// - false: loose mode. When the authentication service is unavailable (connection establishment fails or a 5xx status code is returned), the gateway allows the client request.
+	//
 	// example:
 	//
 	// true
 	IsRestrict *bool `json:"IsRestrict,omitempty" xml:"IsRestrict,omitempty"`
+	// The path of the authentication API provided by the authentication service. The API path must be prefix-matched.
+	//
 	// example:
 	//
 	// /auth
-	PrefixPath *string                                                    `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
-	Service    *ListGatewayAuthResponseBodyDataResultExternalAuthZService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	PrefixPath *string `json:"PrefixPath,omitempty" xml:"PrefixPath,omitempty"`
+	// The authentication service information.
+	Service *ListGatewayAuthResponseBodyDataResultExternalAuthZService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	// The ID of the authentication service.
+	//
 	// example:
 	//
 	// 45186
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The timeout period of the authentication service. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// The token location, which indicates the header in the request message where the token is located. Common values include Authorization and Cookie.
+	//
 	// example:
 	//
 	// Authorization
 	TokenKey *string `json:"TokenKey,omitempty" xml:"TokenKey,omitempty"`
+	// Specifies whether to rematch the route after authentication is completed.
+	//
 	// example:
 	//
 	// true
 	WithRematchRoute *bool `json:"WithRematchRoute,omitempty" xml:"WithRematchRoute,omitempty"`
+	// Specifies whether to include the request body.
+	//
 	// example:
 	//
 	// true
@@ -674,18 +799,26 @@ func (s *ListGatewayAuthResponseBodyDataResultExternalAuthZ) Validate() error {
 }
 
 type ListGatewayAuthResponseBodyDataResultExternalAuthZService struct {
+	// The name of the service group.
+	//
 	// example:
 	//
 	// com.mse.console.test.3YXO
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The authentication service name.
+	//
 	// example:
 	//
 	// updatetime
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The source type of the authentication service.
+	//
 	// example:
 	//
 	// MSE

@@ -24,10 +24,14 @@ type iUpdateLocalityRuleResponseBody interface {
 }
 
 type UpdateLocalityRuleResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned result.
+	//
 	// example:
 	//
 	// {
@@ -44,15 +48,30 @@ type UpdateLocalityRuleResponseBody struct {
 	//
 	// }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// The request is processed successfully.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 78F05E89-D387-50CE-8186-2E27A8AB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true

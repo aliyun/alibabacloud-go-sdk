@@ -28,41 +28,41 @@ type iListClusterTypesResponseBody interface {
 }
 
 type ListClusterTypesResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data entries returned.
+	// The returned data.
 	Data []*ListClusterTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- error message.
 	//
-	// > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request was processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type ListClusterTypesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -174,8 +174,13 @@ func (s *ListClusterTypesResponseBody) Validate() error {
 }
 
 type ListClusterTypesResponseBodyData struct {
+	// The code of the engine type.
+	//
+	// example:
+	//
+	// ZooKeeper
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The type of the MSE engine that can be activated.
+	// The Microservices Engine (MSE) engine type that can be activated.
 	//
 	// example:
 	//

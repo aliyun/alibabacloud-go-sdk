@@ -22,7 +22,7 @@ type iListAppBySwimmingLaneGroupTagsResponseBody interface {
 }
 
 type ListAppBySwimmingLaneGroupTagsResponseBody struct {
-	// The returned data.
+	// The data returned in the response.
 	Data map[string][]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error code.
 	//
@@ -30,19 +30,19 @@ type ListAppBySwimmingLaneGroupTagsResponseBody struct {
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The additional request information.
+	// The additional information about the request.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6832e76b-bb5f-4dea-****-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

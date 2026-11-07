@@ -22,7 +22,7 @@ type iDeleteSwimmingLaneGroupResponseBody interface {
 }
 
 type DeleteSwimmingLaneGroupResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	//
 	// example:
 	//
@@ -32,25 +32,25 @@ type DeleteSwimmingLaneGroupResponseBody struct {
 	//
 	// example:
 	//
-	// mse-100-000
+	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 52BA6DA6-A702-4362-A32F-DFF79655****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

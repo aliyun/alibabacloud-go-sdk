@@ -20,21 +20,21 @@ type iApplyTagPoliciesResponseBody interface {
 }
 
 type ApplyTagPoliciesResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data []*ApplyTagPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// The request result.
 	//
 	// example:
 	//
@@ -100,23 +100,23 @@ func (s *ApplyTagPoliciesResponseBody) Validate() error {
 }
 
 type ApplyTagPoliciesResponseBodyData struct {
-	// Indicates whether the field is the primary key.
+	// Indicates whether it is a primary key.
 	//
 	// example:
 	//
 	// true
 	CarryData *bool `json:"CarryData,omitempty" xml:"CarryData,omitempty"`
-	// Indicates whether the rule is enabled. Valid values:
+	// Indicates whether the feature is enabled. Valid values:
 	//
-	// 	- `true`: The rule is enabled.
+	// - `true`: Enabled.
 	//
-	// 	- `false`: The rule is disabled.
+	// - `false`: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the primary key.
+	// The primary key ID.
 	//
 	// example:
 	//
@@ -134,21 +134,21 @@ type ApplyTagPoliciesResponseBodyData struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The rate.
+	// The ratio.
 	//
 	// example:
 	//
 	// 10
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// Indicates whether the routing rule was deleted.
+	// Indicates whether the deletion is successful.
 	Remove *bool `json:"Remove,omitempty" xml:"Remove,omitempty"`
-	// The details of the routing rule.
+	// The tag rules.
 	//
 	// example:
 	//
 	// {\\"_base\\": {\\"rate\\": 100, \\"remove\\": true}, \\"blue\\": {\\"rate\\": 0}}
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The status.
+	// The effective status.
 	//
 	// example:
 	//

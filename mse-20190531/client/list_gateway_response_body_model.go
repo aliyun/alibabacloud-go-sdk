@@ -24,37 +24,37 @@ type iListGatewayResponseBody interface {
 }
 
 type ListGatewayResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned metadata.
 	Data *ListGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation. Action: mse:ListGateway, Resource: acs:mse:cn-hangzhou:102123:*
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 34300B3-52EC-5049-8C96-914098CF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -134,21 +134,21 @@ func (s *ListGatewayResponseBody) Validate() error {
 }
 
 type ListGatewayResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The data returned.
+	// The returned data.
 	Result []*ListGatewayResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -214,19 +214,19 @@ func (s *ListGatewayResponseBodyData) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResult struct {
-	// Indicates whether Application High Availability Service (AHAS) is activated.
+	// Indicates whether AHAS is enabled.
 	//
 	// example:
 	//
 	// false
 	AhasOn *bool `json:"AhasOn,omitempty" xml:"AhasOn,omitempty"`
-	// The version of the application.
+	// The application version.
 	//
 	// example:
 	//
 	// 1.0.1.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Indicates whether Application Real-Time Monitoring Service (ARMS) is activated.
+	// Indicates whether ARMS is enabled.
 	//
 	// example:
 	//
@@ -238,46 +238,47 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The current version of the gateway.
+	// The current version.
 	//
 	// example:
 	//
 	// 0.1.0-mse-gw
 	CurrentVersion *string `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	// Indicates whether auto scale-out is enabled.
+	// Indicates whether auto-scaling is enabled.
 	//
 	// example:
 	//
 	// true
 	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	// The ID of the elastic gateway. This parameter is returned if auto scale-out is used.
+	// The gateway elastic instance ID. This parameter is returned when auto-scaling is used.
 	//
 	// example:
 	//
 	// mse_ingresselastic_public_cn-uqm3d0*****
 	ElasticInstanceId *string `json:"ElasticInstanceId,omitempty" xml:"ElasticInstanceId,omitempty"`
-	// The auto scale-out policy.
+	// The auto-scaling policy.
 	ElasticPolicy *ListGatewayResponseBodyDataResultElasticPolicy `json:"ElasticPolicy,omitempty" xml:"ElasticPolicy,omitempty" type:"Struct"`
-	// The number of replicas that are automatically scaled out.
+	// The number of auto-scaling replicas.
 	//
 	// example:
 	//
 	// 2
 	ElasticReplica *int32 `json:"ElasticReplica,omitempty" xml:"ElasticReplica,omitempty"`
-	// The type of auto scale-out. Valid value:
+	// The auto-scaling type. Valid values:
 	//
-	// 	- CronHPA: scale-out by time
+	// - CronHPA: time-based scaling
 	//
 	// example:
 	//
 	// CronHPA
 	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
-	// The time when the instance expires.
+	// The expiration date.
 	//
 	// example:
 	//
 	// 4792060800000
-	EndDate      *string                                          `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The gateway entry address. This parameter is applicable to standard Professional Edition instances.
 	GatewayEntry []*ListGatewayResponseBodyDataResultGatewayEntry `json:"GatewayEntry,omitempty" xml:"GatewayEntry,omitempty" type:"Repeated"`
 	// The gateway type.
 	//
@@ -291,19 +292,19 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// gw-5017305290e14cebb8ce5cb6a4****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The version of the gateway.
+	// The gateway version.
 	//
 	// example:
 	//
 	// 1.2.9
 	GatewayVersion *string `json:"GatewayVersion,omitempty" xml:"GatewayVersion,omitempty"`
-	// The time when the gateway was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-09-13 19:24:23
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the gateway was modified.
+	// The modification time.
 	//
 	// example:
 	//
@@ -315,7 +316,7 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// 153
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The configurations.
+	// The configuration information.
 	InitConfig *ListGatewayResponseBodyDataResultInitConfig `json:"InitConfig,omitempty" xml:"InitConfig,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -323,23 +324,29 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// mse_ingresspost-cn-0jbvrcex****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The details of the Internet-facing SLB instances.
+	// The Internet SLB.
 	InternetSlb []*ListGatewayResponseBodyDataResultInternetSlb `json:"InternetSlb,omitempty" xml:"InternetSlb,omitempty" type:"Repeated"`
-	// The latest version of the gateway.
+	// The latest version.
 	//
 	// example:
 	//
 	// 0.1.0-mse-gw
-	LatestVersion     *string                                             `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The O&M time window.
 	MaintenancePeriod *ListGatewayResponseBodyDataResultMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
 	// The resource tag.
 	//
 	// example:
 	//
 	// {"tagKey":"tagValue"}
-	MseTag     *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
+	MseTag *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
+	// The cluster version.
+	//
+	// example:
+	//
+	// mse_pro
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// Indicates whether the instance was forcefully upgraded.
+	// The forced upgrade.
 	//
 	// example:
 	//
@@ -357,13 +364,13 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// 18278117654342
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The number of replicas.
+	// The backup.
 	//
 	// example:
 	//
@@ -375,57 +382,57 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// rg-97hg87vi****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether rollbacks are allowed.
+	// Indicates whether rollback is supported.
 	//
 	// example:
 	//
 	// false
 	RollBack *bool `json:"RollBack,omitempty" xml:"RollBack,omitempty"`
-	// The details of Server Load Balancer (SLB) instances.
+	// The SLB list.
 	Slb []*ListGatewayResponseBodyDataResultSlb `json:"Slb,omitempty" xml:"Slb,omitempty" type:"Repeated"`
-	// The specifications of the gateway.
+	// The specification.
 	//
 	// example:
 	//
 	// MSE_GTW_1_2_200_c
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The gateway state. Valid values:
+	// The gateway status. Valid values:
 	//
-	// 	- 0: The gateway is being created.
+	// - 0: creating
 	//
-	// 	- 1: The gateway failed to be created.
+	// - 1: creation failed
 	//
-	// 	- 2: The gateway is running.
+	// - 2: running
 	//
-	// 	- 3: The gateway is being changed.
+	// - 3: modifying
 	//
-	// 	- 4: The gateway is scaling in.
+	// - 4: scaling in
 	//
-	// 	- 6: The gateway is scaling out.
+	// - 6: scaling out
 	//
-	// 	- 8: The gateway is being deleted.
+	// - 8: deleting
 	//
-	// 	- 9: The gateway is suspended and is to be released.
+	// - 9: stopped and pending release
 	//
-	// 	- 10: The gateway is restarting.
+	// - 10: restarting
 	//
-	// 	- 11: The gateway is being rebuilt.
+	// - 11: rebuilding
 	//
-	// 	- 12: The gateway is being upgraded.
+	// - 12: upgrading
 	//
-	// 	- 13: The gateway failed to be upgraded.
+	// - 13: upgrade failed
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The description of the gateway state.
+	// The status description.
 	//
 	// example:
 	//
 	// Restarting
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// Indicates whether WebAssembly (Wasm) is supported.
+	// Indicates whether WASM is supported.
 	//
 	// example:
 	//
@@ -437,26 +444,31 @@ type ListGatewayResponseBodyDataResult struct {
 	//
 	// test
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The total number of replicas, including the number of replicas that are automatically scaled out.
+	// The total number of replicas, including the number of auto-scaling replicas.
 	//
 	// example:
 	//
 	// 4
 	TotalReplica *int32 `json:"TotalReplica,omitempty" xml:"TotalReplica,omitempty"`
-	// Indicates whether the instance was upgraded.
+	// The upgrade.
 	//
 	// example:
 	//
 	// false
-	Upgrade          *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	// The version lifecycle.
+	//
+	// example:
+	//
+	// STABLE
 	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the gateway belongs.
+	// The VPC ID of the gateway.
 	//
 	// example:
 	//
 	// vpc-uf6heojei217tv14*****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the secondary vSwitch.
+	// The second vSwitch.
 	//
 	// example:
 	//
@@ -906,29 +918,31 @@ func (s *ListGatewayResponseBodyDataResult) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicy struct {
-	// Indicates whether auto scale-out is enabled.
+	// Indicates whether auto-scaling is enabled.
 	//
 	// example:
 	//
 	// true
 	Elastic *bool `json:"Elastic,omitempty" xml:"Elastic,omitempty"`
-	// The type of auto scale-out. Valid value:
+	// The auto-scaling type. Valid values:
 	//
-	// 	- CronHPA: scale-out by time
+	// 	- CronHPA: time-based scaling
 	//
 	// example:
 	//
 	// CronHPA
-	ElasticType               *string                                                                    `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	ElasticType *string `json:"ElasticType,omitempty" xml:"ElasticType,omitempty"`
+	// The allowed time periods for scaling in.
 	EnableScaleTimePolicyList []*ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList `json:"EnableScaleTimePolicyList,omitempty" xml:"EnableScaleTimePolicyList,omitempty" type:"Repeated"`
-	LoadWarningThreshold      *bool                                                                      `json:"LoadWarningThreshold,omitempty" xml:"LoadWarningThreshold,omitempty"`
-	// The maximum number of instances that are automatically scaled out. This parameter is used for horizontal scale-out.
+	// Specifies the load-based elastic scaling watermark settings for the gateway. true indicates that the warning watermark is enabled, and false indicates that the safe watermark is enabled.
+	LoadWarningThreshold *bool `json:"LoadWarningThreshold,omitempty" xml:"LoadWarningThreshold,omitempty"`
+	// The maximum number of instances for auto-scaling, used for horizontal scaling.
 	//
 	// example:
 	//
 	// 10
 	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
-	// The time policy list for auto scale-out.
+	// The list of time-based auto-scaling policies.
 	TimePolicyList []*ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList `json:"TimePolicyList,omitempty" xml:"TimePolicyList,omitempty" type:"Repeated"`
 }
 
@@ -1017,7 +1031,17 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicy) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 09:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 07:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1052,19 +1076,19 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicyEnableScaleTimePolicyList
 }
 
 type ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList struct {
-	// The expected number of replicas for auto scale-out.
+	// The expected number of replicas for auto-scaling.
 	//
 	// example:
 	//
 	// 4
 	DesiredReplica *int32 `json:"DesiredReplica,omitempty" xml:"DesiredReplica,omitempty"`
-	// The end time of auto scale-out.
+	// The end time for auto-scaling.
 	//
 	// example:
 	//
 	// 09:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of auto scale-out.
+	// The start time for auto-scaling.
 	//
 	// example:
 	//
@@ -1112,18 +1136,32 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList) Validate(
 }
 
 type ListGatewayResponseBodyDataResultGatewayEntry struct {
+	// The entry domain name.
+	//
 	// example:
 	//
 	// gw-*****5c2cd6144f4bfa1c32289f45ea8.cn-hangzhou.alicloudapi.com
-	EntryDomain *string   `json:"EntryDomain,omitempty" xml:"EntryDomain,omitempty"`
-	HttpPorts   []*int32  `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	HttpsPorts  []*int32  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
-	IpList      []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	Ipv6List    []*string `json:"Ipv6List,omitempty" xml:"Ipv6List,omitempty" type:"Repeated"`
+	EntryDomain *string `json:"EntryDomain,omitempty" xml:"EntryDomain,omitempty"`
+	// The list of HTTP listener ports.
+	HttpPorts []*int32 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
+	// The list of HTTPS listener ports.
+	HttpsPorts []*int32 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	// The list of entry IP addresses.
+	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// The IPv6 address.
+	Ipv6List []*string `json:"Ipv6List,omitempty" xml:"Ipv6List,omitempty" type:"Repeated"`
+	// The entry network type. Valid values:
+	//
+	// - PRIVATE_NET: private network
+	//
+	// - PUB_NET: public network
+	//
 	// example:
 	//
 	// PUB_NET
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The readiness status of the gateway entry.
+	//
 	// example:
 	//
 	// Ready
@@ -1206,7 +1244,7 @@ func (s *ListGatewayResponseBodyDataResultGatewayEntry) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResultInitConfig struct {
-	// Indicates whether Web Application Firewall (WAF) is enabled.
+	// Indicates whether WAF is enabled.
 	//
 	// example:
 	//
@@ -1251,55 +1289,55 @@ func (s *ListGatewayResponseBodyDataResultInitConfig) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResultInternetSlb struct {
-	// The mode of the SLB instance.
+	// The gateway SLB mode.
 	//
 	// example:
 	//
 	// UserHost
 	GatewaySlbMode *string `json:"GatewaySlbMode,omitempty" xml:"GatewaySlbMode,omitempty"`
-	// The state of the SLB instance.
+	// The gateway SLB status.
 	//
 	// example:
 	//
 	// Ready
 	GatewaySlbStatus *string `json:"GatewaySlbStatus,omitempty" xml:"GatewaySlbStatus,omitempty"`
-	// The traffic of the gateway.
+	// The gateway traffic.
 	//
 	// example:
 	//
 	// 20
 	InternetNetworkFlow *string `json:"InternetNetworkFlow,omitempty" xml:"InternetNetworkFlow,omitempty"`
-	// The ID of the SLB instance.
+	// The SLB ID.
 	//
 	// example:
 	//
 	// lb-bp1ut8asdfgucjk****
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The IP address of the SLB instance.
+	// The SLB IP address.
 	//
 	// example:
 	//
 	// 153.12.XX.XX
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The port number of the SLB instance.
+	// The SLB port.
 	//
 	// example:
 	//
 	// slb.s2.small
 	SlbPort *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	// The specifications of the SLB instance.
+	// The SLB specification.
 	//
 	// example:
 	//
 	// slb.s2.small
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The description of the state.
+	// The status description.
 	//
 	// example:
 	//
 	// Creating
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	// The type of the SLB instance.
+	// The type.
 	//
 	// example:
 	//
@@ -1401,9 +1439,24 @@ func (s *ListGatewayResponseBodyDataResultInternetSlb) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResultMaintenancePeriod struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 06:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 02:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TimeZone  *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// The time zone.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s ListGatewayResponseBodyDataResultMaintenancePeriod) String() string {
@@ -1446,43 +1499,43 @@ func (s *ListGatewayResponseBodyDataResultMaintenancePeriod) Validate() error {
 }
 
 type ListGatewayResponseBodyDataResultSlb struct {
-	// The mode of the SLB instance.
+	// The gateway SLB mode.
 	//
 	// example:
 	//
 	// UserHost
 	GatewaySlbMode *string `json:"GatewaySlbMode,omitempty" xml:"GatewaySlbMode,omitempty"`
-	// The state of the SLB instance.
+	// The gateway SLB status.
 	//
 	// example:
 	//
 	// Ready
 	GatewaySlbStatus *string `json:"GatewaySlbStatus,omitempty" xml:"GatewaySlbStatus,omitempty"`
-	// The ID of the SLB instance.
+	// The SLB ID.
 	//
 	// example:
 	//
 	// lb-bp1ut8asdfgucjk****
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The IP address of the SLB instance.
+	// The SLB IP address.
 	//
 	// example:
 	//
 	// 153.12.XX.XX
 	SlbIp *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	// The port number of the SLB instance.
+	// The SLB port.
 	//
 	// example:
 	//
 	// 80
 	SlbPort *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	// The specifications of the SLB instance.
+	// The SLB specification.
 	//
 	// example:
 	//
 	// slb.s2.small
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The description of the state.
+	// The status description.
 	//
 	// example:
 	//
@@ -1490,9 +1543,9 @@ type ListGatewayResponseBodyDataResultSlb struct {
 	StatusDesc *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- PUB_NET
+	// - PUB_NET: public network
 	//
-	// 	- PRIVATE_NET
+	// - PRIVATE_NET: private network
 	//
 	// example:
 	//

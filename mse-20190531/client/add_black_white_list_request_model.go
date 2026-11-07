@@ -34,9 +34,9 @@ type iAddBlackWhiteListRequest interface {
 type AddBlackWhiteListRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AddBlackWhiteListRequest struct {
 	//
 	// gw-0fe488252dc44d55a9dd57875193****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The whitelist. Default value: No.
+	// Specifies whether the list is a whitelist. Default value: false.
 	//
 	// example:
 	//
@@ -66,41 +66,41 @@ type AddBlackWhiteListRequest struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description.
+	// The note.
 	//
 	// example:
 	//
 	// this is a note
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The resource IDs in the JSON format.
+	// The JSON string of the resource ID list.
 	//
 	// example:
 	//
 	// [123]
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
-	// The effective scope of the blacklist or whitelist. Valid values:
+	// The effective granularity. Valid values:
 	//
-	// 	- GATEWAY
+	// - GATEWAY: the entire gateway.
 	//
-	// 	- DOMAIN
+	// - DOMAIN: the domain name.
 	//
-	// 	- ROUTE
+	// - ROUTE: the route.
 	//
 	// example:
 	//
 	// GATEWAY
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the blacklist.
+	// The status of the blacklist. Valid values:
 	//
-	// 	- on: enabled
+	// - on: enabled.
 	//
-	// 	- off: disabled
+	// - off: disabled.
 	//
 	// example:
 	//
 	// off
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of object in the blacklist or whitelist.
+	// The type of blacklists and whitelists.
 	//
 	// example:
 	//

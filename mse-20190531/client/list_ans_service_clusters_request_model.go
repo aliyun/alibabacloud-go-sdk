@@ -32,9 +32,9 @@ type iListAnsServiceClustersRequest interface {
 type ListAnsServiceClustersRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type ListAnsServiceClustersRequest struct {
 	//
 	// The ID of the MSE cluster.
 	//
-	// >  The MSE cluster is different from the cluster of the Nacos service.
+	// > The MSE cluster is different from the cluster of the Nacos service.
 	//
 	// example:
 	//
-	// mse-09k1q110q01
+	// mse-09k1xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The alias of the cluster.
 	//
 	// example:
 	//
-	// mse-7413****
+	// qewr
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The name of the group.
 	//

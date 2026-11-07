@@ -38,33 +38,33 @@ type iUpdateMigrationTaskRequest interface {
 type UpdateMigrationTaskRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The type of the instance. Valid values:
+	// The type of a cluster.
 	//
-	// 	- Nacos-Ans
+	// - Nacos-Ans
 	//
-	// 	- ZooKeeper
+	// - ZooKeeper
 	//
-	// 	- Eureka
+	// - Eureka
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The address of the source instance node.
+	// The source instance node address.
 	//
 	// example:
 	//
@@ -74,32 +74,37 @@ type UpdateMigrationTaskRequest struct {
 	//
 	// example:
 	//
-	// Source instance
+	// Source cluster
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	// The list of namespaces. This parameter is optional if you want to migrate applications from a Nacos instance.
+	// The list of namespaces. This parameter is optional if applications are migrated from a Nacos instance.
 	//
 	// example:
 	//
 	// namesapceId1,namesapceId2
 	OriginInstanceNamespace *string `json:"OriginInstanceNamespace,omitempty" xml:"OriginInstanceNamespace,omitempty"`
-	// The description.
+	// The description of the task.
 	//
 	// example:
 	//
 	// This is a description.
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameter in the JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
+	// The synchronization type
+	//
+	// example:
+	//
+	// All
+	SyncType *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:
 	//
-	// Destination instance
+	// Target cluster
 	TargetClusterName *string `json:"TargetClusterName,omitempty" xml:"TargetClusterName,omitempty"`
 	// The URL of the destination instance.
 	//

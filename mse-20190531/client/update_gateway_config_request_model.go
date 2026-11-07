@@ -20,22 +20,94 @@ type iUpdateGatewayConfigRequest interface {
 }
 
 type UpdateGatewayConfigRequest struct {
+	// The language in which you want to display the results. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The configuration name of the parameter. Valid values:
+	//
+	// - EnableHttp2
+	//
+	// - DownstreamIdleTime
+	//
+	// - PreserveHeaderFormat
+	//
+	// - UpstreamIdleTimeout
+	//
+	// - EnableXffTrustedCidrs
+	//
+	// - EnableK8sSourceWorkloadFilter
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EnableK8sSourceWorkloadFilter
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The configuration value of the parameter. Examples:
+	//
+	// - EnableHttp2
+	//
+	// ```
+	//
+	// true / false
+	//
+	// ```
+	//
+	// - DownstreamIdleTime
+	//
+	// ```
+	//
+	// 15
+	//
+	// ```
+	//
+	// - PreserveHeaderFormat
+	//
+	// ```
+	//
+	// true / false
+	//
+	// ```
+	//
+	// - UpstreamIdleTimeout
+	//
+	// ```
+	//
+	// 60
+	//
+	// ```
+	//
+	// - EnableXffTrustedCidrs
+	//
+	// ```json
+	//
+	// {"enable":true,"ipListContent":"192.168.1.0/24
+	//
+	// 2.2.2.2"}
+	//
+	// ```
+	//
+	// - EnableK8sSourceWorkloadFilter
+	//
+	// ```json
+	//
+	//
+	//
+	// {"enable":true,"filterOpt":"EQUAL","labelKey":"key","labelValue":"value"}
+	//
+	// ```
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"enable":true,"filterOpt":"EQUAL","labelKey":"key","labelValue":"value"}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:

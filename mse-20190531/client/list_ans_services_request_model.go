@@ -38,9 +38,9 @@ type iListAnsServicesRequest interface {
 type ListAnsServicesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -50,13 +50,17 @@ type ListAnsServicesRequest struct {
 	//
 	// The ID of the cluster.
 	//
-	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+	// > You must specify either this parameter or InstanceId.
 	//
 	// example:
 	//
 	// mse-09k1q11****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 查询服务下某个集群的实例列表是所需要的参数
+	// The parameter that is required to query the list of instances in a specific cluster of a service.
+	//
+	// example:
+	//
+	// DEFAULT
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The name of the contact group.
 	//
@@ -64,7 +68,7 @@ type ListAnsServicesRequest struct {
 	//
 	// name
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Specifies whether to query the number of instances that are used for the service.
+	// Specifies whether to query the number of service instances.
 	//
 	// example:
 	//
@@ -72,7 +76,7 @@ type ListAnsServicesRequest struct {
 	HasIpCount *string `json:"HasIpCount,omitempty" xml:"HasIpCount,omitempty"`
 	// The ID of the instance.
 	//
-	// > This operation contains both the InstanceId and ClusterId parameters. You must specify one of them.
+	// > You must specify either this parameter or ClusterId.
 	//
 	// example:
 	//
@@ -84,7 +88,7 @@ type ListAnsServicesRequest struct {
 	//
 	// 12233****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -92,14 +96,19 @@ type ListAnsServicesRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of instances to display on each page.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The extended request parameters in the JSON format.
 	//

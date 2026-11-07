@@ -24,7 +24,7 @@ type iAddGatewayDomainResponseBody interface {
 }
 
 type AddGatewayDomainResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type AddGatewayDomainResponseBody struct {
 	//
 	// 100
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type AddGatewayDomainResponseBody struct {
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Request processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16BA802F-B848-55DF-9F57-CD71B7272D1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

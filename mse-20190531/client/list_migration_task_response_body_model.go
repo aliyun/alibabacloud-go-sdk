@@ -30,33 +30,33 @@ type iListMigrationTaskResponseBody interface {
 }
 
 type ListMigrationTaskResponseBody struct {
-	// The array structure.
+	// The data array.
 	Data []*ListMigrationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type ListMigrationTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -189,37 +189,37 @@ func (s *ListMigrationTaskResponseBody) Validate() error {
 }
 
 type ListMigrationTaskResponseBodyData struct {
-	// The type of the instance.
+	// The type of the cluster. Valid values:
 	//
-	// 	- Nacos-Ans
+	// - Nacos-Ans
 	//
-	// 	- ZooKeeper
+	// - ZooKeeper
 	//
-	// 	- Eureka
+	// - Eureka
 	//
 	// example:
 	//
 	// Nacos-Ans
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The creation time.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 2022-01-07T10:07:57.000+0000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time.
+	// The time when the task was updated.
 	//
 	// example:
 	//
 	// 2021-12-30T06:41:52.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the job.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The address of the source instance node.
+	// The endpoint of the source instance.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type ListMigrationTaskResponseBodyData struct {
 	//
 	// test
 	OriginInstanceName *string `json:"OriginInstanceName,omitempty" xml:"OriginInstanceName,omitempty"`
-	// The list of namespaces. This parameter is optional if applications are migrated from a Nacos instance.
+	// The list of namespaces. This parameter is optional when the source instance is a Nacos instance.
 	//
 	// example:
 	//
@@ -243,7 +243,12 @@ type ListMigrationTaskResponseBodyData struct {
 	//
 	// test
 	ProjectDesc *string `json:"ProjectDesc,omitempty" xml:"ProjectDesc,omitempty"`
-	SyncType    *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
+	// The synchronization type.
+	//
+	// example:
+	//
+	// Service
+	SyncType *string `json:"SyncType,omitempty" xml:"SyncType,omitempty"`
 	// The name of the destination instance.
 	//
 	// example:

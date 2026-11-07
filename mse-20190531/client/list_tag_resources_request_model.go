@@ -26,21 +26,21 @@ type iListTagResourcesRequest interface {
 type ListTagResourcesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The token used to start the next query.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kywps2Ezza3n8HAAzCCqsi
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify a maximum of 50 resource IDs.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- CLUSTER: MSE instance
+	// - CLUSTER: registration configuration center
 	//
-	// 	- GATEWAY: cloud-native gateway
+	// - GATEWAY: cloud-native gateway
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ListTagResourcesRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags. A maximum number of 20 tags are supported.
+	// The tags. You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -142,13 +142,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

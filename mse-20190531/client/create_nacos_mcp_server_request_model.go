@@ -30,35 +30,56 @@ type iCreateNacosMcpServerRequest interface {
 }
 
 type CreateNacosMcpServerRequest struct {
+	// The language of the response. Valid values: zh (Chinese, default) and en (English).
+	//
 	// example:
 	//
 	// zh
-	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	EncryptToolSpec *bool   `json:"EncryptToolSpec,omitempty" xml:"EncryptToolSpec,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to encrypt the MCP tool specification. Valid values:
+	//
+	// - `true`: Encrypts the specification.
+	//
+	// - `false`: Does not encrypt the specification. This is the default value.
+	EncryptToolSpec *bool `json:"EncryptToolSpec,omitempty" xml:"EncryptToolSpec,omitempty"`
+	// The JSON string of the endpoint specification.
+	//
 	// example:
 	//
 	// {"type":"REF","data":{"namespaceId":"public","groupName":"mcp-endpoints","serviceName":"mcp-demo"}}
 	EndpointSpecification *string `json:"EndpointSpecification,omitempty" xml:"EndpointSpecification,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// public
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// mcp-demo
 	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+	// The JSON string of the server specification.
+	//
 	// example:
 	//
 	// {"description":"a mcp demo service","capabilities":[],"allVersions":[{"version":"1.0.0","release_date":"2025-08-13T01:58:42Z","is_latest":true}],"remoteServerConfig":{"exportPath":"/sse"},"enabled":true,"versionDetail":{"version":"1.0.1"},"backendEndpoints":[{"path":"/sse","address":"127.0.0.1","port":8080}],"protocol":"mcp-sse","name":"mcp-demo","frontProtocol":"mcp-sse"}
 	ServerSpecification *string `json:"ServerSpecification,omitempty" xml:"ServerSpecification,omitempty"`
+	// The JSON string of the tool specification.
+	//
 	// example:
 	//
 	// {"tools":[{"name":"demo-tool","description":"a demo tool","inputSchema":{"type":"object","properties":{"name":{"type":"string","description":"name"}}}}],"toolsMeta":{"demo-tool":{"enabled":true}}}
 	ToolSpecification *string `json:"ToolSpecification,omitempty" xml:"ToolSpecification,omitempty"`
+	// The YAML configuration of the AI gateway. This parameter is optional.
+	//
 	// example:
 	//
 	// allowTools:

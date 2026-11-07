@@ -18,16 +18,20 @@ type iQueryNamespaceRequest interface {
 }
 
 type QueryNamespaceRequest struct {
-	// The language of the response. Valid values: zh and en. Default value: zh. The value zh which indicates Chinese, and the value en indicates English.
+	// The language in which you want the results to be displayed. Valid values: zh (default): Chinese. en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The name of the namespace that you want to query.
+	//
 	// example:
 	//
 	// default
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region to which the namespace belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

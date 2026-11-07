@@ -22,19 +22,32 @@ type iInitializeServiceLinkRoleResponseBody interface {
 }
 
 type InitializeServiceLinkRoleResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	Data *InitializeServiceLinkRoleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A5E7D4E3-D30C-56C1-817F-F2B8CE6BXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -104,14 +117,20 @@ func (s *InitializeServiceLinkRoleResponseBody) Validate() error {
 }
 
 type InitializeServiceLinkRoleResponseBodyData struct {
+	// The permission that is granted to the RAM user to call the API operation.
+	//
 	// example:
 	//
 	// ram:CreateServiceLinkedRole
 	RequiredPermission *string `json:"RequiredPermission,omitempty" xml:"RequiredPermission,omitempty"`
+	// The name of the created service-linked role.
+	//
 	// example:
 	//
 	// AliyunServiceRoleForMSE
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The service to which the service-linked role belongs.
+	//
 	// example:
 	//
 	// mse.aliyuncs.com

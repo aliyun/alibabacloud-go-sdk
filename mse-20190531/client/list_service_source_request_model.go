@@ -18,11 +18,11 @@ type iListServiceSourceRequest interface {
 }
 
 type ListServiceSourceRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -34,17 +34,17 @@ type ListServiceSourceRequest struct {
 	//
 	// gw-c51a15c7ee934a4fb945ccf35fe1****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// Specifies the type of the returned service source. If this parameter is not specified, service sources of all types are returned. Valid values:
+	// Specifies the service source type. If this parameter is left empty, all types are returned. Valid values:
 	//
-	// 	- K8s
+	// - K8s: Container Service.
 	//
-	// 	- MSE
+	// - MSE: MSE Nacos.
 	//
-	// 	- MSE_ZK
+	// - MSE_ZK: MSE ZooKeeper.
 	//
-	// 	- SAE
+	// - SAE: SAE registry.
 	//
-	// 	- EDAS
+	// - EDAS: EDAS registry.
 	//
 	// example:
 	//

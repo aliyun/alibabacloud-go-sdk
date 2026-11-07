@@ -20,28 +20,33 @@ type iUpdateAclRequest interface {
 }
 
 type UpdateAclRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The IP addresses or CIDR blocks in the IP address whitelist.
+	// The whitelist.
 	//
 	// example:
 	//
 	// 192.168.0.0/XX,192.168.0.0/XX
 	AclEntryList *string `json:"AclEntryList,omitempty" xml:"AclEntryList,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse-cn-78v1l83****
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The network type to which the access control rule applies. Valid values: Public and Private.
+	//
+	// example:
+	//
+	// Public
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 }
 

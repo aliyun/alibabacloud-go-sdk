@@ -38,16 +38,17 @@ type iAddGatewayDomainShrinkRequest interface {
 type AddGatewayDomainShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese. This is the default value.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
-	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The content of the CA certificate.
 	CaCertIdentifier *string `json:"CaCertIdentifier,omitempty" xml:"CaCertIdentifier,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
@@ -59,19 +60,20 @@ type AddGatewayDomainShrinkRequest struct {
 	//
 	// gw-86575c0bc9f04ecfbacb92b8e392****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// Specifies whether to enable `HTTP/2`.
+	// Specifies whether to enable HTTP/2. Valid values:
 	//
-	// 	- `open`: enables `HTTP/2`
+	// - `open`: Enables HTTP/2.
 	//
-	// 	- `close`: disables `HTTP/2`
+	// - `close`: Disables HTTP/2.
 	//
-	// 	- `globalConfig`: uses global configurations
+	// - `globalConfig`: Uses the global configuration.
 	//
 	// example:
 	//
 	// close
-	Http2       *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
-	MtlsEnabled *bool   `json:"MtlsEnabled,omitempty" xml:"MtlsEnabled,omitempty"`
+	Http2 *string `json:"Http2,omitempty" xml:"Http2,omitempty"`
+	// Specifies whether to enable mTLS.
+	MtlsEnabled *bool `json:"MtlsEnabled,omitempty" xml:"MtlsEnabled,omitempty"`
 	// Specifies whether to enable HTTPS.
 	//
 	// example:
@@ -84,24 +86,25 @@ type AddGatewayDomainShrinkRequest struct {
 	//
 	// test.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the protocol. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- `HTTP`
+	// - `HTTP`
 	//
-	// 	- `HTTPS`
+	// - `HTTPS`
 	//
 	// example:
 	//
 	// HTTP
-	Protocol                        *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The TLS cipher suite configuration.
 	TlsCipherSuitesConfigJSONShrink *string `json:"TlsCipherSuitesConfigJSON,omitempty" xml:"TlsCipherSuitesConfigJSON,omitempty"`
-	// The maximum version of Transport Layer Security (TLS).
+	// The maximum TLS version.
 	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"TlsMax,omitempty" xml:"TlsMax,omitempty"`
-	// The minimum version of TLS.
+	// The minimum TLS version.
 	//
 	// example:
 	//

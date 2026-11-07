@@ -18,11 +18,11 @@ type iOfflineGatewayRouteRequest interface {
 }
 
 type OfflineGatewayRouteRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type OfflineGatewayRouteRequest struct {
 	//
 	// gw-77e1153db6e14c0a8b1fae20bcb89ca5
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the route.
+	// The route entry ID.
 	//
 	// example:
 	//

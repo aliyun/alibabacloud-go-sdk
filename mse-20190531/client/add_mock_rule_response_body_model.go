@@ -24,37 +24,37 @@ type iAddMockRuleResponseBody interface {
 }
 
 type AddMockRuleResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data overview.
 	Data *AddMockRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Succ
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,29 +134,29 @@ func (s *AddMockRuleResponseBody) Validate() error {
 }
 
 type AddMockRuleResponseBodyData struct {
-	// The ID of the Alibaba Cloud account.
+	// The account ID.
 	//
 	// example:
 	//
 	// 178432728867xxxx
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the consumer application.
+	// The ID of the service consumer application.
 	//
 	// example:
 	//
 	// hkhon1po62@a000601b265xxxx
 	ConsumerAppId *string `json:"ConsumerAppId,omitempty" xml:"ConsumerAppId,omitempty"`
-	// The name of the consumer application.
+	// The name of the application to be queried.
 	//
 	// example:
 	//
 	// demo-xxxx
 	ConsumerAppName *string `json:"ConsumerAppName,omitempty" xml:"ConsumerAppName,omitempty"`
-	// Indicates whether the mock rule is enabled.
+	// Indicates whether the rule is enabled. Valid values:
 	//
-	// 	- `true`: enabled
+	// - `true`: Enabled.
 	//
-	// 	- `false`: disabled
+	// - `false`: Disabled.
 	//
 	// example:
 	//
@@ -168,17 +168,17 @@ type AddMockRuleResponseBodyData struct {
 	//
 	// desc
 	ExtraJson *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
 	// 275
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The mock type. Valid values:
+	// The model type. Valid values:
 	//
-	// 	- \\- `[unk]0[unk]`: desktop client
+	// - `[unk]0[unk]`: Desktop model
 	//
-	// 	- \\- `[unk]1[unk]`: mobile client
+	// - `[unk]1[unk]`: Mobile model
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type AddMockRuleResponseBodyData struct {
 	//
 	// mse-bc1a29b0-160230875****-reg-center-0-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -208,19 +208,19 @@ type AddMockRuleResponseBodyData struct {
 	//
 	// demo-xxxx
 	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The HTTP mock rule.
+	// The mock rule for the HTTP protocol.
 	//
 	// example:
 	//
 	// [{"oper":"return+json","Path":"/mock","Value":"{\\n \\"date\\": \\"2021-09-10T07:45:12.357+0000\\",\\n \\"name\\": \\"name\\",\\n \\"id\\": \\"1\\"\\n}","Method":"GET","Condition":"AND","Timeout":1,"ArgumentMockItems":[{"type":"param","name":"id","value":"1","cond":"==","operator":"rawvalue"},{"type":"param","name":"name","value":"aliyun","cond":"==","operator":"rawvalue"}]}]
 	ScMockItemJson *string `json:"ScMockItemJson,omitempty" xml:"ScMockItemJson,omitempty"`
-	// The service source.
+	// The source.
 	//
 	// example:
 	//

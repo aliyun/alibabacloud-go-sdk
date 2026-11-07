@@ -20,17 +20,24 @@ type iDeleteIsolationRulesRequest interface {
 }
 
 type DeleteIsolationRulesRequest struct {
+	// The language in which the response is displayed. Valid values: zh (default): Chinese; en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
-	AppName *string  `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Ids     []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The list of rule IDs to be deleted.
+	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The microservice namespace to which the application belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

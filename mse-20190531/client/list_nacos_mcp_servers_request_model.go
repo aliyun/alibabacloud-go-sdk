@@ -26,30 +26,44 @@ type iListNacosMcpServersRequest interface {
 }
 
 type ListNacosMcpServersRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The MCP server name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// 5e3ee449-b5c0-4aee-b857-32c0acbebf26
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The query pattern.
+	//
 	// example:
 	//
 	// blur

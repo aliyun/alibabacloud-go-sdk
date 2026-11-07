@@ -30,7 +30,7 @@ type iGetPluginConfigResponseBody interface {
 }
 
 type GetPluginConfigResponseBody struct {
-	// The status code returned.
+	// The code.
 	//
 	// example:
 	//
@@ -50,25 +50,25 @@ type GetPluginConfigResponseBody struct {
 	//
 	// message
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 500
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The API message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -181,48 +181,69 @@ func (s *GetPluginConfigResponseBody) Validate() error {
 }
 
 type GetPluginConfigResponseBodyData struct {
-	// The category of the plug-in. Valid values:
+	// The plug-in category. Valid values:
 	//
-	// 0: user-defined
+	// - 0: Custom.
 	//
-	// 1: permission authentication
+	// - 1: Authentication and authorization.
 	//
-	// 2: security protection
+	// - 2: Security protection.
 	//
-	// 3: transmission protocol
+	// - 3: Transport protocol.
 	//
-	// 4: traffic control
+	// - 4: Traffic control.
 	//
-	// 5: traffic observation
+	// - 5: Traffic observation.
 	//
 	// example:
 	//
 	// 0
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The information about the plug-in configuration used for checking.
+	// The configuration validation.
 	//
 	// example:
 	//
-	// \\# The configuration includes the fields required for checking, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
-	ConfigCheck   *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
+	// # Validate required configuration fields. In the following example, the plug-in configuration must contain the "name", "age", and "friends" fields.
+	//
+	// name: John
+	//
+	// age: 18
+	//
+	// friends:
+	//
+	// - David
+	//
+	// - Anne
+	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
+	// The plug-in configuration example.
+	//
+	// example:
+	//
+	// blocked_code: 404
+	//
+	// blocked_message: resource not found
 	ConfigExample *string `json:"ConfigExample,omitempty" xml:"ConfigExample,omitempty"`
+	// The start index of domain-level rules in GatewayConfigList. If no domain-level rules exist, the value is -1.
+	//
 	// example:
 	//
 	// 5
 	DomainConfigStartIndex *int32 `json:"DomainConfigStartIndex,omitempty" xml:"DomainConfigStartIndex,omitempty"`
 	// The list of gateway plug-in configurations.
 	GatewayConfigList []*GetPluginConfigResponseBodyDataGatewayConfigList `json:"GatewayConfigList,omitempty" xml:"GatewayConfigList,omitempty" type:"Repeated"`
+	// The index of instance-level rules in GatewayConfigList. If no instance-level rules exist, the value is -1.
+	//
 	// example:
 	//
 	// 7
 	GatewayConfigStartIndex *int32 `json:"GatewayConfigStartIndex,omitempty" xml:"GatewayConfigStartIndex,omitempty"`
-	// The ID of the plug-in.
+	// The plug-in ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
@@ -234,21 +255,21 @@ type GetPluginConfigResponseBodyData struct {
 	//
 	// 0
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The name of the plug-in.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The execution stage of the plug-in. Valid values:
+	// The plug-in execution phase. Valid values:
 	//
-	// 0: default stage
+	// - 0: Default phase.
 	//
-	// 1: authorization stage
+	// - 1: Authentication phase.
 	//
-	// 2: authentication stage
+	// - 2: Authorization phase.
 	//
-	// 3: statistics stage
+	// - 3: Statistics phase.
 	//
 	// example:
 	//
@@ -260,7 +281,7 @@ type GetPluginConfigResponseBodyData struct {
 	//
 	// 123
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The execution priority of the plug-in. A larger value indicates a higher priority.
+	// The plug-in execution priority. A larger value indicates a higher priority.
 	//
 	// example:
 	//
@@ -272,63 +293,79 @@ type GetPluginConfigResponseBodyData struct {
 	//
 	// 1
 	PublishState *int32 `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
-	// The description of the README file.
+	// The README description.
 	//
 	// example:
 	//
 	// read me
 	Readme *string `json:"Readme,omitempty" xml:"Readme,omitempty"`
-	// The description of the README file that is edited in English.
+	// The README description in English.
 	//
 	// example:
 	//
 	// read me
 	ReadmeEn *string `json:"ReadmeEn,omitempty" xml:"ReadmeEn,omitempty"`
+	// The start index of route-level rules in GatewayConfigList. If no route-level rules exist, the value is -1.
+	//
 	// example:
 	//
 	// 0
 	RouteConfigStartIndex *int32 `json:"RouteConfigStartIndex,omitempty" xml:"RouteConfigStartIndex,omitempty"`
-	// Indicates whether the plug-in is enabled. Valid values:
+	// The enabling status. Valid values:
 	//
-	// 0: disabled
+	// - 0: Disabled.
 	//
-	// 1: enabled
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The summary of the plug-in.
+	// The plug-in summary.
 	//
 	// example:
 	//
-	// This is a plug-in.
-	Summary   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// This is a plug-in
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The plug-in summary in English.
+	//
+	// example:
+	//
+	// Convert request/response headers, request query parameters, and request/response body parameters.
 	SummaryEn *string `json:"SummaryEn,omitempty" xml:"SummaryEn,omitempty"`
-	// The type.
+	// The plug-in type. Valid values:
+	//
+	// - 0: HTTP filter.
+	//
+	// - 1: Network filter.
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The version of the plug-in.
+	// The plug-in version.
 	//
 	// example:
 	//
 	// v1
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The list of gateway plug-in version information.
+	//
+	// example:
+	//
+	// [{"id":1, "version": "1.0.0"}]
 	VersionJson *string `json:"VersionJson,omitempty" xml:"VersionJson,omitempty"`
-	// The WebAssembly language. Valid values:
+	// The WebAssembly (Wasm) implementation language. Valid values:
 	//
-	// 0: C++
+	// - 0: C++.
 	//
-	// 1: TinyGo
+	// - 1: TinyGo.
 	//
-	// 2: Rust
+	// - 2: Rust.
 	//
-	// 3: AssemblyScript
+	// - 3: AssemblyScript.
 	//
-	// 4: Zig
+	// - 4: Zig.
 	//
 	// example:
 	//
@@ -578,15 +615,25 @@ type GetPluginConfigResponseBodyDataGatewayConfigList struct {
 	//
 	// example:
 	//
-	// \\# Configure a check for the required fields of the plug-in, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
+	// # Validate required configuration fields. In the following example, the plug-in configuration must contain the "name", "age", and "friends" fields.
+	//
+	// name: John
+	//
+	// age: 18
+	//
+	// friends:
+	//
+	// - David
+	//
+	// - Anne
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The application scope of the plug-in. Valid values:
+	// The plug-in application scope. Valid values:
 	//
-	// 0: global
+	// - 0: Global.
 	//
-	// 1: domain names
+	// - 1: Domain name.
 	//
-	// 2: routes
+	// - 2: Route.
 	//
 	// example:
 	//
@@ -598,7 +645,7 @@ type GetPluginConfigResponseBodyDataGatewayConfigList struct {
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -622,7 +669,7 @@ type GetPluginConfigResponseBodyDataGatewayConfigList struct {
 	//
 	// 1667309705000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the plug-in configuration.
+	// The plug-in configuration ID.
 	//
 	// example:
 	//
@@ -633,7 +680,8 @@ type GetPluginConfigResponseBodyDataGatewayConfigList struct {
 	// example:
 	//
 	// 1
-	PluginId     *int64                                                          `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	PluginId *int64 `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	// The list of domain name and route resources, distinguished by ConfigLevel.
 	ResourceList []*GetPluginConfigResponseBodyDataGatewayConfigListResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 }
 
@@ -749,7 +797,14 @@ func (s *GetPluginConfigResponseBodyDataGatewayConfigList) Validate() error {
 }
 
 type GetPluginConfigResponseBodyDataGatewayConfigListResourceList struct {
+	// The resource ID.
+	//
+	// example:
+	//
+	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The resource name, which is the domain name or route name.
+	//
 	// example:
 	//
 	// test-route

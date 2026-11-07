@@ -30,57 +30,57 @@ type iListGatewayAuthConsumerResourceResponseBody interface {
 }
 
 type ListGatewayAuthConsumerResourceResponseBody struct {
-	// The status code. A value of 200 is returned if the request is successful.
+	// The code used only to synchronize with the success field.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The returned data.
 	Data *ListGatewayAuthConsumerResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the error message of the **ErrMessage*	- response parameter.
 	//
-	// >  If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code that is returned.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The response message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A73AC37C-C617-4E3A-8049-372CF49C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - true: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -187,13 +187,13 @@ func (s *ListGatewayAuthConsumerResourceResponseBody) Validate() error {
 }
 
 type ListGatewayAuthConsumerResourceResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListGatewayAuthConsumerResourceResponseBodyData struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The data structure.
 	Result []*ListGatewayAuthConsumerResourceResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -267,7 +267,7 @@ func (s *ListGatewayAuthConsumerResourceResponseBodyData) Validate() error {
 }
 
 type ListGatewayAuthConsumerResourceResponseBodyDataResult struct {
-	// The ID of the consumer.
+	// The ID of the gateway authentication consumer.
 	//
 	// example:
 	//
@@ -285,13 +285,13 @@ type ListGatewayAuthConsumerResourceResponseBodyDataResult struct {
 	//
 	// 2022-01-07 18:07:57
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2022-01-07 18:07:57
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the authorized resource for the consumer.
+	// The authorization ID of the gateway authentication consumer.
 	//
 	// example:
 	//
@@ -299,15 +299,15 @@ type ListGatewayAuthConsumerResourceResponseBodyDataResult struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The resource authorization status. Valid values:
 	//
-	// 	- true: enabled
+	// - true: Enabled.
 	//
-	// 	- false: disabled
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	ResourceStatus *bool `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The ID of the route.
+	// The route ID.
 	//
 	// example:
 	//

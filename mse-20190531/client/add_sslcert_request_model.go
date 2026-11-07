@@ -22,21 +22,21 @@ type iAddSSLCertRequest interface {
 type AddSSLCertRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 5213641-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//

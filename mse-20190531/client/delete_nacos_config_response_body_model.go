@@ -46,7 +46,7 @@ type DeleteNacosConfigResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID.
 	//

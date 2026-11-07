@@ -32,11 +32,11 @@ type iAddGatewaySlbShrinkRequest interface {
 }
 
 type AddGatewaySlbShrinkRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type AddGatewaySlbShrinkRequest struct {
 	//
 	// gw-9cdcf8e4f58144059e73ff4c5ef9****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The HTTP port number (virtual service group).
+	// The HTTP port (virtual service group).
 	//
 	// example:
 	//
 	// 80
 	HttpPort *int32 `json:"HttpPort,omitempty" xml:"HttpPort,omitempty"`
-	// The HTTPS port number (virtual service group).
+	// The HTTPS port (virtual service group).
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type AddGatewaySlbShrinkRequest struct {
 	//
 	// 353
 	HttpsVServerGroupId *string `json:"HttpsVServerGroupId,omitempty" xml:"HttpsVServerGroupId,omitempty"`
-	// The service weight.
+	// The weight of the service.
 	//
 	// example:
 	//
 	// 80
 	ServiceWeight *int32 `json:"ServiceWeight,omitempty" xml:"ServiceWeight,omitempty"`
-	// The ID of the SLB instance.
+	// The SLB ID.
 	//
 	// This parameter is required.
 	//
@@ -82,11 +82,11 @@ type AddGatewaySlbShrinkRequest struct {
 	//
 	// lb-bp18t6jjskwxh6wy1****
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The type of the service source. Valid values:
+	// The type. Valid values:
 	//
-	// 	- PUB_NET: Internet
+	// - PUB_NET: Internet.
 	//
-	// 	- PRIVATE_NET: VPC
+	// - PRIVATE_NET: Private network.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type AddGatewaySlbShrinkRequest struct {
 	//
 	// 353
 	VServerGroupId *string `json:"VServerGroupId,omitempty" xml:"VServerGroupId,omitempty"`
-	// The SLB monitoring information.
+	// The SLB listener information.
 	VServiceListShrink *string `json:"VServiceList,omitempty" xml:"VServiceList,omitempty"`
 }
 

@@ -22,11 +22,11 @@ type iQueryGovernanceKubernetesClusterRequest interface {
 }
 
 type QueryGovernanceKubernetesClusterRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryGovernanceKubernetesClusterRequest struct {
 	//
 	// example-cluster
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type QueryGovernanceKubernetesClusterRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of items per page.
 	//
 	// This parameter is required.
 	//

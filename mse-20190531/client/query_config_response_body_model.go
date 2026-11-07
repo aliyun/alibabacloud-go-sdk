@@ -24,15 +24,15 @@ type iQueryConfigResponseBody interface {
 }
 
 type QueryConfigResponseBody struct {
-	// The status code returned.
+	// The result code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data overview.
 	Data *QueryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QueryConfigResponseBody struct {
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -52,9 +52,9 @@ type QueryConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,233 +134,245 @@ func (s *QueryConfigResponseBody) Validate() error {
 }
 
 type QueryConfigResponseBodyData struct {
-	// Indicates whether Simple Authentication and Security Layer (SASL) forced identity authentication is enabled for the ZooKeeper instance.
+	// The switch for ZooKeeper SASL-based forced identity authentication.
+	//
+	// example:
+	//
+	// true
 	AuthEnabled *bool `json:"AuthEnabled,omitempty" xml:"AuthEnabled,omitempty"`
-	// A reserved parameter.
+	// A reserved field.
 	//
 	// example:
 	//
 	// none
 	AutopurgePurgeInterval *string `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
-	// A reserved parameter.
+	// A reserved field.
 	//
 	// example:
 	//
 	// none
 	AutopurgeSnapRetainCount *string `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
-	// The name of the instance.
+	// The name of the cluster.
 	//
 	// example:
 	//
 	// name
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Indicates whether RAM authentication of a configuration center is enabled. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether RAM authentication is enabled for the configuration center. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	ConfigAuthEnabled *bool `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
-	// Indicates whether RAM authentication is supported by a configuration center of the instance. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether the configuration center of the current cluster supports RAM authentication. Valid values:
 	//
-	// 	- `true`: supported.
+	// - `true`: supported
 	//
-	// 	- `false`: not supported.
+	// - `false`: not supported
 	//
 	// example:
 	//
 	// true
 	ConfigAuthSupported *bool `json:"ConfigAuthSupported,omitempty" xml:"ConfigAuthSupported,omitempty"`
-	// The maximum size of contents in a configuration. Unit: KB.
+	// The maximum size of the content of a single configuration. Unit: KB.
 	//
 	// example:
 	//
 	// 100
 	ConfigContentLimit *int64 `json:"ConfigContentLimit,omitempty" xml:"ConfigContentLimit,omitempty"`
-	// Indicates whether configuration encryption of a configuration center is enabled by the instance. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether configuration encryption is enabled for the cluster. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	ConfigSecretEnabled *bool `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
-	// Indicates whether configuration encryption of a configuration center is supported by the instance. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether the cluster supports configuration encryption. Valid values:
 	//
-	// 	- `true`: supported.
+	// - `true`: supported
 	//
-	// 	- `false`: not supported.
+	// - `false`: not supported
 	//
 	// example:
 	//
 	// true
 	ConfigSecretSupported *bool `json:"ConfigSecretSupported,omitempty" xml:"ConfigSecretSupported,omitempty"`
-	// Indicates whether the Nacos open source console is enabled.
+	// Specifies whether to enable the Nacos open source console.
 	//
 	// example:
 	//
 	// true
 	ConsoleUIEnabled *bool `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
-	Enable4lw        *bool `json:"Enable4lw,omitempty" xml:"Enable4lw,omitempty"`
-	// Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
+	// Specifies whether to enable the four-letter words command.
+	//
+	// example:
+	//
+	// true
+	Enable4lw *bool `json:"Enable4lw,omitempty" xml:"Enable4lw,omitempty"`
+	// Specifies whether to enable port 8761 for access to the Eureka protocol. If you disable this port, applications cannot use the Eureka protocol for service registration and discovery.
 	//
 	// example:
 	//
 	// true
 	EurekaSupported *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
-	// Indicates whether the time to live (TTL) configuration is enabled. This parameter is valid for ZooKeeper instances.
+	// The ZooKeeper parameter that specifies whether to enable the TTL configuration.
 	//
 	// example:
 	//
 	// true
 	ExtendedTypesEnable *bool `json:"ExtendedTypesEnable,omitempty" xml:"ExtendedTypesEnable,omitempty"`
-	// The maximum connection duration of the instance. Unit: seconds. This parameter is valid for ZooKeeper instances.
+	// The ZooKeeper configuration. This parameter indicates the maximum connection duration of an instance. Unit: seconds.
 	//
 	// example:
 	//
 	// 100
 	InitLimit *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
-	// The maximum amount of data on each node. This parameter is valid for ZooKeeper instances. Unit: bytes.
+	// The ZooKeeper configuration. This parameter indicates the maximum data size of each node. Unit: bytes.
 	//
 	// example:
 	//
 	// 1
 	JuteMaxbuffer *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
-	// A reserved parameter.
+	// A reserved field.
 	//
 	// example:
 	//
 	// none
 	JvmFlagsCustom *string `json:"JvmFlagsCustom,omitempty" xml:"JvmFlagsCustom,omitempty"`
-	// Indicates whether Mesh Configuration Protocol (MCP) is enabled. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether Mesh Configuration Protocol (MCP) is enabled. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	MCPEnabled *bool `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
-	// Indicates whether MCP is supported. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether MCP is supported. Valid values:
 	//
-	// 	- `true`: supported.
+	// - `true`: supported
 	//
-	// 	- `false`: not supported.
+	// - `false`: not supported
 	//
 	// example:
 	//
 	// true
 	MCPSupported *bool `json:"MCPSupported,omitempty" xml:"MCPSupported,omitempty"`
-	// The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\\
+	// The ZooKeeper configuration. This parameter indicates the number of connections between a client and a server.<br>
 	//
-	// If this parameter is set to 0, no limits are imposed on the number of connections.
+	// If this parameter is set to 0, no limit is imposed.<br>
 	//
 	// example:
 	//
 	// 0
 	MaxClientCnxns *string `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
-	// The maximum timeout period. This parameter is valid for ZooKeeper instances.
+	// The ZooKeeper configuration. This parameter indicates the maximum timeout duration.
 	//
 	// example:
 	//
 	// -1
 	MaxSessionTimeout *string `json:"MaxSessionTimeout,omitempty" xml:"MaxSessionTimeout,omitempty"`
-	// The minimum timeout period. This parameter is valid for ZooKeeper instances.
+	// The ZooKeeper configuration. This parameter indicates the minimum timeout duration.
 	//
 	// example:
 	//
 	// -1
 	MinSessionTimeout *string `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
-	// The runtime configuration of the Nacos instance.
+	// The runtime configuration of Nacos.
 	NacosRunningEnv *QueryConfigResponseBodyDataNacosRunningEnv `json:"NacosRunningEnv,omitempty" xml:"NacosRunningEnv,omitempty" type:"Struct"`
-	// Indicates whether RAM authentication of a registry is enabled. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether RAM authentication is enabled for the service registry. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// false
 	NamingAuthEnabled *bool `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
-	// Indicates whether RAM authentication of services is supported by the instance. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether the cluster supports RAM authentication for services. Valid values:
 	//
-	// 	- `true`: supported.
+	// - `true`: supported
 	//
-	// 	- `false`: not supported.
+	// - `false`: not supported
 	//
 	// example:
 	//
 	// true
 	NamingAuthSupported *bool `json:"NamingAuthSupported,omitempty" xml:"NamingAuthSupported,omitempty"`
-	// Indicates whether service creation is supported for the instance. This parameter is valid for Nacos instances. Valid values:
+	// The Nacos configuration. This parameter indicates whether the cluster supports service creation. Valid values:
 	//
-	// 	- `true`: supported.
+	// - `true`: supported
 	//
-	// 	- `false`: not supported.
+	// - `false`: not supported
 	//
 	// example:
 	//
 	// true
 	NamingCreateServiceSupported *bool `json:"NamingCreateServiceSupported,omitempty" xml:"NamingCreateServiceSupported,omitempty"`
-	// Indicates whether super permissions are enabled. This parameter is valid for ZooKeeper instances. Valid values:
+	// The ZooKeeper configuration. This parameter indicates whether the super permission is enabled. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	OpenSuperAcl *bool `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
-	// The password that corresponds to the username. This parameter is valid only if OpenSuperAcl is set to true.
+	// The password. This parameter is returned only when OpenSuperAcl is set to true.
 	//
 	// example:
 	//
 	// password
-	PassWord                    *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	// example:
+	//
+	// true
 	PrometheusSdProtocolEnabled *string `json:"PrometheusSdProtocolEnabled,omitempty" xml:"PrometheusSdProtocolEnabled,omitempty"`
-	// Indicates whether the instance was restarted and new configurations have taken effect. Valid values:
+	// Indicates whether the cluster is restarted and the new configuration is applied. Valid values:
 	//
-	// 	- `true`: The restart was successful.
+	// - `true`: The cluster is restarted.
 	//
-	// 	- `false`: The restart failed.
+	// - `false`: The cluster fails to be restarted.
 	//
 	// example:
 	//
 	// true
 	RestartFlag *bool `json:"RestartFlag,omitempty" xml:"RestartFlag,omitempty"`
-	// The frequency for generating snapshots. This parameter is valid for ZooKeeper instances.
+	// The ZooKeeper configuration. This parameter indicates the frequency of generating snapshots.
 	//
 	// example:
 	//
 	// 100000
 	SnapshotCount *string `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
-	// The connection timeout period of the instance. This parameter is valid for ZooKeeper instances. Unit: seconds.
+	// The ZooKeeper configuration. This parameter indicates the connection timeout duration of an instance. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	SyncLimit *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
-	// MSE Nacos supports TLS transmission link encryption since version 2.1.2.1. Nacos clients must be upgraded to version 2.2.1 or later. After TLS is enabled, the system performance will decrease by about 10%. You must evaluate the system capacity. For more information about the relevant operations, see Nacos TLS transmission encryption.
+	// MSE Nacos instances of version 2.1.2.1 or later support Transport Layer Security (TLS) encryption. The version of the Nacos client must be 2.2.1 or later. After you enable TLS, the performance may decrease by about 10%. You must evaluate the system capacity. For more information about the operations, see Nacos TLS transport encryption.
 	//
 	// example:
 	//
 	// true
 	TLSEnabled *bool `json:"TLSEnabled,omitempty" xml:"TLSEnabled,omitempty"`
-	// The time unit of the engine. This parameter is valid for ZooKeeper instances. Default value: 2000. Unit: milliseconds.
+	// The ZooKeeper configuration. This parameter indicates a unit of time in the engine. The default value is 2000. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2000
 	TickTime *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
-	// The username of the user. This parameter is valid only if OpenSuperAcl is set to true.
+	// The username. This parameter is returned only when OpenSuperAcl is set to true.
 	//
 	// example:
 	//
@@ -692,7 +704,7 @@ func (s *QueryConfigResponseBodyData) Validate() error {
 }
 
 type QueryConfigResponseBodyDataNacosRunningEnv struct {
-	// Indicates whether empty list protection is enabled.
+	// The switch for push-empty protection.
 	//
 	// example:
 	//
@@ -700,7 +712,10 @@ type QueryConfigResponseBodyDataNacosRunningEnv struct {
 	EmptyProtect *bool                                                  `json:"emptyProtect,omitempty" xml:"emptyProtect,omitempty"`
 	FenceEnabled *bool                                                  `json:"fenceEnabled,omitempty" xml:"fenceEnabled,omitempty"`
 	FencePolicy  *QueryConfigResponseBodyDataNacosRunningEnvFencePolicy `json:"fencePolicy,omitempty" xml:"fencePolicy,omitempty" type:"Struct"`
-	GrayAuth     *string                                                `json:"grayAuth,omitempty" xml:"grayAuth,omitempty"`
+	// example:
+	//
+	// false
+	GrayAuth *string `json:"grayAuth,omitempty" xml:"grayAuth,omitempty"`
 }
 
 func (s QueryConfigResponseBodyDataNacosRunningEnv) String() string {
@@ -759,7 +774,10 @@ func (s *QueryConfigResponseBodyDataNacosRunningEnv) Validate() error {
 type QueryConfigResponseBodyDataNacosRunningEnvFencePolicy struct {
 	EnabledModules  []*string          `json:"enabledModules,omitempty" xml:"enabledModules,omitempty" type:"Repeated"`
 	InterceptPolicy map[string]*string `json:"interceptPolicy,omitempty" xml:"interceptPolicy,omitempty"`
-	ServiceName     *string            `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	// example:
+	//
+	// query_security_check
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s QueryConfigResponseBodyDataNacosRunningEnvFencePolicy) String() string {

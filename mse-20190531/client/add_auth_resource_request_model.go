@@ -30,51 +30,51 @@ type iAddAuthResourceRequest interface {
 type AddAuthResourceRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the authorization record.
+	// The authorization ID.
 	//
 	// example:
 	//
 	// 13
 	AuthId *int64 `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
-	// The authentication resource headers.
+	// The list of authentication resource headers.
 	AuthResourceHeaderList []*AddAuthResourceRequestAuthResourceHeaderList `json:"AuthResourceHeaderList,omitempty" xml:"AuthResourceHeaderList,omitempty" type:"Repeated"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
 	// 128
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The unique ID of the gateway.
+	// The unique gateway ID.
 	//
 	// example:
 	//
 	// gw-86575c0bc9f04ecfbacb92b8e392****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// Specifies whether the matching is not case-sensitive. Default value: true.
+	// Specifies whether to ignore case. Default value: true.
 	//
 	// example:
 	//
 	// true
 	IgnoreCase *bool `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
-	// The matching type. Valid values:
+	// The match type. Valid values:
 	//
-	// 	- EQUAL
+	// - EQUAL: Exact match.
 	//
-	// 	- PRE
+	// - PRE: Prefix match.
 	//
-	// 	- ERGULAR
+	// - ERGULAR: Regular expression match.
 	//
 	// example:
 	//
-	// exact
+	// PRE
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
 	// The path.
 	//
@@ -178,93 +178,19 @@ func (s *AddAuthResourceRequest) Validate() error {
 }
 
 type AddAuthResourceRequestAuthResourceHeaderList struct {
-	// The parameter of the HTTP header.
+	// The HTTP header parameter.
 	//
 	// example:
 	//
 	// Access-Control-Allow-Origin
 	HeaderKey *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
-	// The header matching mode.
-	//
-	// Valid values:
-	//
-	// 	- SUFFIX
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- EXIST
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- PREFIX
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- EQUAL
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- EXCLUDE
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NOT_EQUAL
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NOT_EXIST
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- REGREX
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- INCLUDE
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The header match method.
 	//
 	// example:
 	//
 	// EQUAL
 	HeaderMethod *string `json:"HeaderMethod,omitempty" xml:"HeaderMethod,omitempty"`
-	// The parameter value of the HTTP header.
+	// The value of the HTTP header parameter.
 	//
 	// example:
 	//

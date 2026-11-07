@@ -18,23 +18,23 @@ type iGetOverviewRequest interface {
 }
 
 type GetOverviewRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The query time. Unit: days. For example, if you set this parameter to 30, the governance rules within the last 30 days are queried.
+	// The query period. Unit: days. For example, if you set this parameter to 30, the governance rules within the last 30 days are queried.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// example:
 	//

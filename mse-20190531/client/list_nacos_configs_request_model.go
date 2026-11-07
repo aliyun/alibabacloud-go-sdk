@@ -36,33 +36,33 @@ type iListNacosConfigsRequest interface {
 type ListNacosConfigsRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// fpx-pds-pns
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the data.
+	// The data ID.
 	//
 	// example:
 	//
 	// zeekr-*
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The name of the group. Default value: `default`
+	// The group type. Default value: `default`.
 	//
 	// example:
 	//
 	// crm
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type ListNacosConfigsRequest struct {
 	//
 	// mse-cn-7mz2fj****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// fad732a7-ff1a-4f21-8126-4edd4****
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type ListNacosConfigsRequest struct {
 	//
 	// 5
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -92,17 +92,17 @@ type ListNacosConfigsRequest struct {
 	//
 	// 200
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+	// The region where the cluster is located. Only regions supported by Microservices Engine (MSE) are valid.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The extended request parameters. The JSON format is supported.
+	// The extended request parameters. JSON format is supported.
 	//
 	// example:
 	//
-	// {\\\\"appGroup\\\\":\\\\"sm_zk_asi_na610\\\\",\\\\"appName\\\\":\\\\"sm-zk\\\\",\\\\"appStage\\\\":\\\\"PUBLISH\\\\",\\\\"appUnit\\\\":\\\\"center\\\\",\\\\"bucId\\\\":\\\\"193554\\\\",\\\\"bucName\\\\":\\\\"Alibaba Mobile Business Group-UC\\\\",\\\\"provider\\\\":\\\\"aliyun\\\\"}
+	// {\\"appGroup\\":\\"sm_zk_asi_na610\\",\\"appName\\":\\"sm-zk\\",\\"appStage\\":\\"PUBLISH\\",\\"appUnit\\":\\"center\\",\\"bucId\\":\\"193554\\",\\"bucName\\":\\"Alibaba Mobile Business Group-UC\\",\\"provider\\":\\"aliyun\\"}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 	// The tags.
 	//

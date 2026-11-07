@@ -20,7 +20,7 @@ type iQueryGovernanceKubernetesClusterResponseBody interface {
 }
 
 type QueryGovernanceKubernetesClusterResponseBody struct {
-	// The data returned.
+	// The response data.
 	Data *QueryGovernanceKubernetesClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -28,13 +28,13 @@ type QueryGovernanceKubernetesClusterResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DE34D413-2B79-5E77-9696-36D875E822AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ func (s *QueryGovernanceKubernetesClusterResponseBody) Validate() error {
 }
 
 type QueryGovernanceKubernetesClusterResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The size of the current page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The details of the data.
+	// The data structure.
 	Result []*QueryGovernanceKubernetesClusterResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The total number of clusters.
 	//
@@ -194,25 +194,35 @@ type QueryGovernanceKubernetesClusterResponseBodyDataResult struct {
 	//
 	// 1.22
 	K8sVersion *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
-	// The information about the namespace.
+	// The namespace information.
 	//
 	// example:
 	//
 	// [{"Name":"ack-onepilot","Tags":{"name":"ack-onepilot"}}]
 	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
-	// The time when the pilot component was started.
+	// The start time of Pilot.
 	//
 	// example:
 	//
 	// 2022-05-17T05:39:43.000+0000
 	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
-	PilotVersion   *string `json:"PilotVersion,omitempty" xml:"PilotVersion,omitempty"`
-	// The region where the cluster resides.
+	// The Pilot version.
+	//
+	// example:
+	//
+	// 4.1.1
+	PilotVersion *string `json:"PilotVersion,omitempty" xml:"PilotVersion,omitempty"`
+	// The region where the cluster is deployed.
 	//
 	// example:
 	//
 	// cn-shanghai
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The version lifecycle.
+	//
+	// example:
+	//
+	// STABLE
 	VersionLifeCycle *string `json:"VersionLifeCycle,omitempty" xml:"VersionLifeCycle,omitempty"`
 }
 

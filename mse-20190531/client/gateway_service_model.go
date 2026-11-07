@@ -31,18 +31,46 @@ type GatewayService struct {
 	// The traffic policy of the service.
 	GatewayTrafficPolicy *TrafficPolicy `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
 	// The unique ID of the gateway.
+	//
+	// example:
+	//
+	// gw-913a49bab6c5461187a3305fb8da****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	// The name of the group to which the service belongs.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The ID of the service.
+	//
+	// example:
+	//
+	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metadata of the service.
+	//
+	// example:
+	//
+	// [\\"192.168.0.xxx:80\\"]
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The namespace to which the service belongs.
+	//
+	// example:
+	//
+	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The source type of the service.
+	//
+	// example:
+	//
+	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 

@@ -24,7 +24,7 @@ type iPullServicesResponseBody interface {
 }
 
 type PullServicesResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
@@ -32,29 +32,29 @@ type PullServicesResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*PullServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation. Action: mse:PullServices, Resource: acs:mse:cn-shenzhen:1228932054837788:*
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EC0A99B9-8BA3-5FE3-8FE7-D7C719CF7BD2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *PullServicesResponseBody) Validate() error {
 }
 
 type PullServicesResponseBodyData struct {
-	// The name of the group.
+	// The group.
 	//
 	// example:
 	//
@@ -150,13 +150,13 @@ type PullServicesResponseBodyData struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The alias of the namespace.
+	// The namespace alias.
 	//
 	// example:
 	//
 	// public
 	NamespaceShowName *string `json:"NamespaceShowName,omitempty" xml:"NamespaceShowName,omitempty"`
-	// The information about services.
+	// The list of services.
 	Services []*PullServicesResponseBodyDataServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -218,13 +218,13 @@ func (s *PullServicesResponseBodyData) Validate() error {
 }
 
 type PullServicesResponseBodyDataServices struct {
-	// The name of the group.
+	// The group.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
@@ -236,15 +236,21 @@ type PullServicesResponseBodyDataServices struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	SaeAppId  *string `json:"SaeAppId,omitempty" xml:"SaeAppId,omitempty"`
-	// The ID of the service source.
+	// The SAE application ID.
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
+	SaeAppId *string `json:"SaeAppId,omitempty" xml:"SaeAppId,omitempty"`
+	// The source ID.
 	//
 	// example:
 	//
 	// 1
-	SourceId     *string  `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The list of associated service source IDs.
 	SourceIdList []*int64 `json:"SourceIdList,omitempty" xml:"SourceIdList,omitempty" type:"Repeated"`
-	// The type of the service source.
+	// The source type.
 	//
 	// example:
 	//

@@ -22,9 +22,9 @@ type iListClusterTypesRequest interface {
 type ListClusterTypesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -32,25 +32,25 @@ type ListClusterTypesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- slb
+	// - slb
 	//
-	// 	- eni
+	// - eni
 	//
 	// example:
 	//
 	// slb
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	// The edition of the MSE instance that you want to purchase.
+	// The Microservices Engine (MSE) cluster edition to be activated. Valid values:
 	//
-	// 	- mse_pro: Professional Edition
+	// - mse_pro: Professional Edition.
 	//
-	// 	- mse_dev: Developer Edition
+	// - mse_dev: Developer Edition.
 	//
 	// example:
 	//
 	// mse_pro
 	MseVersion *string `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
-	// The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
+	// The region ID of the cluster. The region must be supported by Microservices Engine (MSE).
 	//
 	// example:
 	//

@@ -24,41 +24,41 @@ type iAddGatewayResponseBody interface {
 }
 
 type AddGatewayResponseBody struct {
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- `true`: The request was successful.
-	//
-	// 	- `false`: The request failed.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The unique ID of the gateway.
+	// The returned data.
 	Data *AddGatewayResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
-	//
-	// 	- If the request is successful, a success message is returned.
-	//
-	// 	- If the request fails, an error message is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request is successfully processed.
+	// The returned message.
+	//
+	// - If the request is successful, a success message is returned.
+	//
+	// - If the request fails, the cause of the failure is returned.
 	//
 	// example:
 	//
-	// The return value.
+	// Succ
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The HTTP status code returned.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2F46B9E7-67EF-5C8A-BA52-D38D5B32AF2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - `true`: The request is successful.
+	//
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ func (s *AddGatewayResponseBody) Validate() error {
 }
 
 type AddGatewayResponseBodyData struct {
-	// code
+	// The unique ID of the gateway.
 	//
 	// example:
 	//

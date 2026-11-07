@@ -30,7 +30,7 @@ type iListAuthPolicyRequest interface {
 }
 
 type ListAuthPolicyRequest struct {
-	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese and the value en-US indicates English.
+	// The language in which the response is displayed. Valid values: zh-CN (default): Chinese, en-US: English
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type ListAuthPolicyRequest struct {
 	//
 	// jgy4cadmqo@***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the authentication rule.
+	// The authentication rule name.
 	//
 	// example:
 	//
 	// auto-rule-**
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace.
+	// The MSE namespace name.
 	//
 	// example:
 	//
@@ -70,19 +70,19 @@ type ListAuthPolicyRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The protocol type. Valid values:
+	// The Protocol Type. Valid values:
 	//
-	// 	- **SPRING_CLOUD**
+	// - **SPRING_CLOUD**.
 	//
-	// 	- **DUBBO**
+	// - **DUBBO**.
 	//
-	// 	- **istio**
+	// - **istio**.
 	//
 	// example:
 	//
 	// SPRING_CLOUD
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The region ID.
+	// Region ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListAuthPolicyRequest struct {
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The service source.
+	// The source.
 	//
 	// This parameter is required.
 	//

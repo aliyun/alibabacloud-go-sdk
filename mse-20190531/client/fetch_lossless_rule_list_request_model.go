@@ -26,23 +26,23 @@ type iFetchLosslessRuleListRequest interface {
 }
 
 type FetchLosslessRuleListRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// 	- zh: Chinese.
 	//
-	// 	- en: English
+	// 	- en: English.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
-	// hyaziyb6sc@86827c61f5ed8fc
+	// hyaziyb6sc@86827c61f5ed***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type FetchLosslessRuleListRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

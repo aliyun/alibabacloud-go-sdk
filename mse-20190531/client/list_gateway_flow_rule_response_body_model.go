@@ -16,7 +16,10 @@ type iListGatewayFlowRuleResponseBody interface {
 }
 
 type ListGatewayFlowRuleResponseBody struct {
+	// The Meta return information.
 	Data *ListGatewayFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0951EBF0-798E-5E0B-8D38-460A14AD****
@@ -59,16 +62,24 @@ func (s *ListGatewayFlowRuleResponseBody) Validate() error {
 }
 
 type ListGatewayFlowRuleResponseBodyData struct {
+	// The page number of the instance list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page set during input.
+	//
 	// example:
 	//
 	// 100
-	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result   []*ListGatewayFlowRuleResponseBodyDataResult  `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Results  []*ListGatewayFlowRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned data.
+	Result []*ListGatewayFlowRuleResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The paged data collection.
+	Results []*ListGatewayFlowRuleResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The total number of instances queried.
+	//
 	// example:
 	//
 	// 1
@@ -151,50 +162,86 @@ func (s *ListGatewayFlowRuleResponseBodyData) Validate() error {
 }
 
 type ListGatewayFlowRuleResponseBodyDataResult struct {
+	// The Web fallback behavior type.
+	//
+	// 0: Return specified content
+	//
+	// 1: Redirect to specified page
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: Plain text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
+	// 0: Disabled.
+	//
+	// 1: Enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique gateway identity ID.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The routing throttle rule ID.
+	//
 	// example:
 	//
 	// 549
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The HTTP response text.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirect URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The routing ID.
+	//
 	// example:
 	//
 	// 48811
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The routing name.
+	//
 	// example:
 	//
 	// routeA
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The overall QPS threshold.
+	//
 	// example:
 	//
 	// 10
@@ -322,63 +369,112 @@ func (s *ListGatewayFlowRuleResponseBodyDataResult) Validate() error {
 }
 
 type ListGatewayFlowRuleResponseBodyDataResults struct {
+	// The Web fallback behavior type.
+	//
+	// 0: Return specified content
+	//
+	// 1: Redirect to specified page
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: Plain text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Indicates whether the rule is enabled.
+	//
+	// 0: Disabled.
+	//
+	// 1: Enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique gateway identity ID.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The routing throttle rule ID.
+	//
 	// example:
 	//
 	// 549
-	Id     *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The filtered rule IDs.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The threshold conversion mode.
+	//
+	// 0: Single machine.
+	//
+	// 1: Cluster.
+	//
+	// 2: Cluster to single machine.
+	//
 	// example:
 	//
 	// 0
 	LimitMode *int32 `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	// The custom headers, entered as key-value pairs.
+	//
 	// example:
 	//
 	// key=value
 	ResponseAdditionalHeaders *string `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	// The HTTP response text.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirect URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The routing ID.
+	//
 	// example:
 	//
 	// 48811
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The routing name.
+	//
 	// example:
 	//
 	// routeA
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The statistics duration.
+	//
 	// example:
 	//
 	// 10
 	StatDurationMs *int32 `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
+	// The overall QPS threshold.
+	//
 	// example:
 	//
 	// 10

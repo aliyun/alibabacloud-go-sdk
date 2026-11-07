@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("mse")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -160,7 +168,7 @@ func (client *Client) AddAuthPolicy(request *AddAuthPolicyRequest) (_result *Add
 
 // Summary:
 //
-// Adds authorization information for a gateway.
+// Creates authorization information for gateway authentication.
 //
 // @param tmpReq - AddAuthResourceRequest
 //
@@ -238,7 +246,7 @@ func (client *Client) AddAuthResourceWithOptions(tmpReq *AddAuthResourceRequest,
 
 // Summary:
 //
-// Adds authorization information for a gateway.
+// Creates authorization information for gateway authentication.
 //
 // @param request - AddAuthResourceRequest
 //
@@ -256,7 +264,7 @@ func (client *Client) AddAuthResource(request *AddAuthResourceRequest) (_result 
 
 // Summary:
 //
-// Creates a blacklist or a whitelist.
+// Adds blacklists and whitelists.
 //
 // @param request - AddBlackWhiteListRequest
 //
@@ -336,7 +344,7 @@ func (client *Client) AddBlackWhiteListWithOptions(request *AddBlackWhiteListReq
 
 // Summary:
 //
-// Creates a blacklist or a whitelist.
+// Adds blacklists and whitelists.
 //
 // @param request - AddBlackWhiteListRequest
 //
@@ -354,7 +362,7 @@ func (client *Client) AddBlackWhiteList(request *AddBlackWhiteListRequest) (_res
 
 // Summary:
 //
-// Adds a gateway.
+// Creates a gateway.
 //
 // @param tmpReq - AddGatewayRequest
 //
@@ -496,7 +504,7 @@ func (client *Client) AddGatewayWithOptions(tmpReq *AddGatewayRequest, runtime *
 
 // Summary:
 //
-// Adds a gateway.
+// Creates a gateway.
 //
 // @param request - AddGatewayRequest
 //
@@ -514,7 +522,7 @@ func (client *Client) AddGateway(request *AddGatewayRequest) (_result *AddGatewa
 
 // Summary:
 //
-// Adds an authentication configuration for a gateway.
+// Creates gateway authentication.
 //
 // @param tmpReq - AddGatewayAuthRequest
 //
@@ -660,7 +668,7 @@ func (client *Client) AddGatewayAuthWithOptions(tmpReq *AddGatewayAuthRequest, r
 
 // Summary:
 //
-// Adds an authentication configuration for a gateway.
+// Creates gateway authentication.
 //
 // @param request - AddGatewayAuthRequest
 //
@@ -678,7 +686,7 @@ func (client *Client) AddGatewayAuth(request *AddGatewayAuthRequest) (_result *A
 
 // Summary:
 //
-// Adds a consumer on which a gateway performs authentication operations.
+// Creates a gateway authentication consumer.
 //
 // @param request - AddGatewayAuthConsumerRequest
 //
@@ -770,7 +778,7 @@ func (client *Client) AddGatewayAuthConsumerWithOptions(request *AddGatewayAuthC
 
 // Summary:
 //
-// Adds a consumer on which a gateway performs authentication operations.
+// Creates a gateway authentication consumer.
 //
 // @param request - AddGatewayAuthConsumerRequest
 //
@@ -788,7 +796,7 @@ func (client *Client) AddGatewayAuthConsumer(request *AddGatewayAuthConsumerRequ
 
 // Summary:
 //
-// Associates a domain name with a gateway.
+// Adds an associated domain to a gateway.
 //
 // @param tmpReq - AddGatewayDomainRequest
 //
@@ -882,7 +890,7 @@ func (client *Client) AddGatewayDomainWithOptions(tmpReq *AddGatewayDomainReques
 
 // Summary:
 //
-// Associates a domain name with a gateway.
+// Adds an associated domain to a gateway.
 //
 // @param request - AddGatewayDomainRequest
 //
@@ -1052,7 +1060,7 @@ func (client *Client) AddGatewayRoute(request *AddGatewayRouteRequest) (_result 
 
 // Summary:
 //
-// Adds a service version for a gateway.
+// Adds a service version.
 //
 // @param request - AddGatewayServiceVersionRequest
 //
@@ -1108,7 +1116,7 @@ func (client *Client) AddGatewayServiceVersionWithOptions(request *AddGatewaySer
 
 // Summary:
 //
-// Adds a service version for a gateway.
+// Adds a service version.
 //
 // @param request - AddGatewayServiceVersionRequest
 //
@@ -1126,7 +1134,7 @@ func (client *Client) AddGatewayServiceVersion(request *AddGatewayServiceVersion
 
 // Summary:
 //
-// Associates a Server Load Balancer (SLB) instance with a gateway.
+// Associates an SLB instance with a gateway.
 //
 // @param tmpReq - AddGatewaySlbRequest
 //
@@ -1212,7 +1220,7 @@ func (client *Client) AddGatewaySlbWithOptions(tmpReq *AddGatewaySlbRequest, run
 
 // Summary:
 //
-// Associates a Server Load Balancer (SLB) instance with a gateway.
+// Associates an SLB instance with a gateway.
 //
 // @param request - AddGatewaySlbRequest
 //
@@ -1230,7 +1238,7 @@ func (client *Client) AddGatewaySlb(request *AddGatewaySlbRequest) (_result *Add
 
 // Summary:
 //
-// # Create a new migration task
+// Creates a migration task.
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -1314,7 +1322,7 @@ func (client *Client) AddMigrationTaskWithOptions(request *AddMigrationTaskReque
 
 // Summary:
 //
-// # Create a new migration task
+// Creates a migration task.
 //
 // @param request - AddMigrationTaskRequest
 //
@@ -1332,7 +1340,7 @@ func (client *Client) AddMigrationTask(request *AddMigrationTaskRequest) (_resul
 
 // Summary:
 //
-// Creates a service mocking rule.
+// Creates a mock rule.
 //
 // @param request - AddMockRuleRequest
 //
@@ -1420,7 +1428,7 @@ func (client *Client) AddMockRuleWithOptions(request *AddMockRuleRequest, runtim
 
 // Summary:
 //
-// Creates a service mocking rule.
+// Creates a mock rule.
 //
 // @param request - AddMockRuleRequest
 //
@@ -1438,7 +1446,7 @@ func (client *Client) AddMockRule(request *AddMockRuleRequest) (_result *AddMock
 
 // Summary:
 //
-// Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+// Associates a certificate with a gateway domain name. The certificate can be hosted in SSL Certificates Service.
 //
 // @param request - AddSSLCertRequest
 //
@@ -1494,7 +1502,7 @@ func (client *Client) AddSSLCertWithOptions(request *AddSSLCertRequest, runtime 
 
 // Summary:
 //
-// Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+// Associates a certificate with a gateway domain name. The certificate can be hosted in SSL Certificates Service.
 //
 // @param request - AddSSLCertRequest
 //
@@ -1512,7 +1520,7 @@ func (client *Client) AddSSLCert(request *AddSSLCertRequest) (_result *AddSSLCer
 
 // Summary:
 //
-// Creates a security group rule for a gateway.
+// Adds a security group rule for a gateway.
 //
 // @param request - AddSecurityGroupRuleRequest
 //
@@ -1572,7 +1580,7 @@ func (client *Client) AddSecurityGroupRuleWithOptions(request *AddSecurityGroupR
 
 // Summary:
 //
-// Creates a security group rule for a gateway.
+// Adds a security group rule for a gateway.
 //
 // @param request - AddSecurityGroupRuleRequest
 //
@@ -1590,7 +1598,7 @@ func (client *Client) AddSecurityGroupRule(request *AddSecurityGroupRuleRequest)
 
 // Summary:
 //
-// Adds a Nacos service source.
+// Creates a Nacos service source.
 //
 // @param tmpReq - AddServiceSourceRequest
 //
@@ -1688,7 +1696,7 @@ func (client *Client) AddServiceSourceWithOptions(tmpReq *AddServiceSourceReques
 
 // Summary:
 //
-// Adds a Nacos service source.
+// Creates a Nacos service source.
 //
 // @param request - AddServiceSourceRequest
 //
@@ -1706,7 +1714,7 @@ func (client *Client) AddServiceSource(request *AddServiceSourceRequest) (_resul
 
 // Summary:
 //
-// 增加ZooKeeper Sasl 用户
+// Adds ZooKeeper SASL users.
 //
 // @param tmpReq - AddZooKeeperSaslUserRequest
 //
@@ -1768,7 +1776,7 @@ func (client *Client) AddZooKeeperSaslUserWithOptions(tmpReq *AddZooKeeperSaslUs
 
 // Summary:
 //
-// 增加ZooKeeper Sasl 用户
+// Adds ZooKeeper SASL users.
 //
 // @param request - AddZooKeeperSaslUserRequest
 //
@@ -1856,7 +1864,7 @@ func (client *Client) ApplyGatewayRoute(request *ApplyGatewayRouteRequest) (_res
 
 // Summary:
 //
-// Modifies a tag-based routing rule.
+// Modifies tag-based routing rules.
 //
 // @param tmpReq - ApplyTagPoliciesRequest
 //
@@ -1934,7 +1942,7 @@ func (client *Client) ApplyTagPoliciesWithOptions(tmpReq *ApplyTagPoliciesReques
 
 // Summary:
 //
-// Modifies a tag-based routing rule.
+// Modifies tag-based routing rules.
 //
 // @param request - ApplyTagPoliciesRequest
 //
@@ -2112,11 +2120,11 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// # Copy Nacos Configuration
+// Clones existing Nacos configurations to another namespace.
 //
 // Description:
 //
-// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For information about Nacos-SDK APIs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - CloneNacosConfigRequest
 //
@@ -2184,11 +2192,11 @@ func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigReque
 
 // Summary:
 //
-// # Copy Nacos Configuration
+// Clones existing Nacos configurations to another namespace.
 //
 // Description:
 //
-// > This OpenAPI is not the Nacos-SDK API. For information related to the Nacos-SDK API, please refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For information about Nacos-SDK APIs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - CloneNacosConfigRequest
 //
@@ -2510,11 +2518,11 @@ func (client *Client) CreateCircuitBreakerRule(request *CreateCircuitBreakerRule
 
 // Summary:
 //
-// # Create an MSE registration and configuration center instance
+// Creates a registry and configuration center cluster, such as ZooKeeper or Nacos.
 //
 // Description:
 //
-// Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
+// Make sure that you fully understand the billing methods and pricing of Microservices Engine (MSE) before you call this operation.
 //
 // @param request - CreateClusterRequest
 //
@@ -2642,11 +2650,11 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 
 // Summary:
 //
-// # Create an MSE registration and configuration center instance
+// Creates a registry and configuration center cluster, such as ZooKeeper or Nacos.
 //
 // Description:
 //
-// Please ensure that you fully understand the billing method and pricing of the MSE (Microservice Engine) product before using this interface.
+// Make sure that you fully understand the billing methods and pricing of Microservices Engine (MSE) before you call this operation.
 //
 // @param request - CreateClusterRequest
 //
@@ -3615,7 +3623,7 @@ func (client *Client) CreateNacosInstance(request *CreateNacosInstanceRequest) (
 
 // Summary:
 //
-// 创建一个MCP Server
+// Creates an MCP server.
 //
 // @param request - CreateNacosMcpServerRequest
 //
@@ -3693,7 +3701,7 @@ func (client *Client) CreateNacosMcpServerWithOptions(request *CreateNacosMcpSer
 
 // Summary:
 //
-// 创建一个MCP Server
+// Creates an MCP server.
 //
 // @param request - CreateNacosMcpServerRequest
 //
@@ -3889,7 +3897,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// Creates or updates a lane for end-to-end canary release.
+// Creates or updates an end-to-end canary release lane.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneRequest
 //
@@ -3989,7 +3997,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(tmpReq *CreateOrUpda
 
 // Summary:
 //
-// Creates or updates a lane for end-to-end canary release.
+// Creates or updates an end-to-end canary release lane.
 //
 // @param request - CreateOrUpdateSwimmingLaneRequest
 //
@@ -4007,7 +4015,7 @@ func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimming
 
 // Summary:
 //
-// Creates or updates a lane group for end-to-end canary release.
+// Creates or updates an end-to-end canary release swimlane group.
 //
 // @param tmpReq - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -4121,7 +4129,7 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(tmpReq *CreateO
 
 // Summary:
 //
-// Creates or updates a lane group for end-to-end canary release.
+// Creates or updates an end-to-end canary release swimlane group.
 //
 // @param request - CreateOrUpdateSwimmingLaneGroupRequest
 //
@@ -4233,7 +4241,7 @@ func (client *Client) CreatePluginConfig(request *CreatePluginConfigRequest) (_r
 
 // Summary:
 //
-// 创建行为管理
+// # Creates behavior management definitions
 //
 // @param request - CreateSentinelBlockFallbackDefinitionRequest
 //
@@ -4317,7 +4325,7 @@ func (client *Client) CreateSentinelBlockFallbackDefinitionWithOptions(request *
 
 // Summary:
 //
-// 创建行为管理
+// # Creates behavior management definitions
 //
 // @param request - CreateSentinelBlockFallbackDefinitionRequest
 //
@@ -4335,7 +4343,7 @@ func (client *Client) CreateSentinelBlockFallbackDefinition(request *CreateSenti
 
 // Summary:
 //
-// Creates a hot parameter protection rule for HTTP requests.
+// Creates a hotspot parameter protection rule for HTTP requests.
 //
 // @param request - CreateWebFlowRuleRequest
 //
@@ -4439,7 +4447,7 @@ func (client *Client) CreateWebFlowRuleWithOptions(request *CreateWebFlowRuleReq
 
 // Summary:
 //
-// Creates a hot parameter protection rule for HTTP requests.
+// Creates a hotspot parameter protection rule for HTTP requests.
 //
 // @param request - CreateWebFlowRuleRequest
 //
@@ -4601,7 +4609,7 @@ func (client *Client) DeleteAuthResource(request *DeleteAuthResourceRequest) (_r
 
 // Summary:
 //
-// 删除黑白名单
+// Deletes a blacklists and whitelists entry.
 //
 // @param request - DeleteBlackWhiteListRequest
 //
@@ -4657,7 +4665,7 @@ func (client *Client) DeleteBlackWhiteListWithOptions(request *DeleteBlackWhiteL
 
 // Summary:
 //
-// 删除黑白名单
+// Deletes a blacklists and whitelists entry.
 //
 // @param request - DeleteBlackWhiteListRequest
 //
@@ -4821,7 +4829,7 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a namespace from a Nacos instance.
+// Deletes a Nacos namespace.
 //
 // @param request - DeleteEngineNamespaceRequest
 //
@@ -4877,7 +4885,7 @@ func (client *Client) DeleteEngineNamespaceWithOptions(request *DeleteEngineName
 
 // Summary:
 //
-// Deletes a namespace from a Nacos instance.
+// Deletes a Nacos namespace.
 //
 // @param request - DeleteEngineNamespaceRequest
 //
@@ -5045,7 +5053,7 @@ func (client *Client) DeleteGateway(request *DeleteGatewayRequest) (_result *Del
 
 // Summary:
 //
-// 删除网关认证
+// Deletes gateway authentication.
 //
 // @param request - DeleteGatewayAuthRequest
 //
@@ -5097,7 +5105,7 @@ func (client *Client) DeleteGatewayAuthWithOptions(request *DeleteGatewayAuthReq
 
 // Summary:
 //
-// 删除网关认证
+// Deletes gateway authentication.
 //
 // @param request - DeleteGatewayAuthRequest
 //
@@ -5115,7 +5123,7 @@ func (client *Client) DeleteGatewayAuth(request *DeleteGatewayAuthRequest) (_res
 
 // Summary:
 //
-// Deletes a consumer on which a gateway performs authentication operations.
+// Deletes a gateway authentication consumer.
 //
 // @param request - DeleteGatewayAuthConsumerRequest
 //
@@ -5167,7 +5175,7 @@ func (client *Client) DeleteGatewayAuthConsumerWithOptions(request *DeleteGatewa
 
 // Summary:
 //
-// Deletes a consumer on which a gateway performs authentication operations.
+// Deletes a gateway authentication consumer.
 //
 // @param request - DeleteGatewayAuthConsumerRequest
 //
@@ -5185,7 +5193,7 @@ func (client *Client) DeleteGatewayAuthConsumer(request *DeleteGatewayAuthConsum
 
 // Summary:
 //
-// Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+// Deletes the authorization for a gateway authentication consumer.
 //
 // @param request - DeleteGatewayAuthConsumerResourceRequest
 //
@@ -5241,7 +5249,7 @@ func (client *Client) DeleteGatewayAuthConsumerResourceWithOptions(request *Dele
 
 // Summary:
 //
-// Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+// Deletes the authorization for a gateway authentication consumer.
 //
 // @param request - DeleteGatewayAuthConsumerResourceRequest
 //
@@ -5477,7 +5485,7 @@ func (client *Client) DeleteGatewayFlowRule(request *DeleteGatewayFlowRuleReques
 
 // Summary:
 //
-// Deletes the gateway concurrency rule.
+// Deletes a gateway concurrency rule.
 //
 // @param request - DeleteGatewayIsolationRuleRequest
 //
@@ -5533,7 +5541,7 @@ func (client *Client) DeleteGatewayIsolationRuleWithOptions(request *DeleteGatew
 
 // Summary:
 //
-// Deletes the gateway concurrency rule.
+// Deletes a gateway concurrency rule.
 //
 // @param request - DeleteGatewayIsolationRuleRequest
 //
@@ -5551,7 +5559,7 @@ func (client *Client) DeleteGatewayIsolationRule(request *DeleteGatewayIsolation
 
 // Summary:
 //
-// Deletes a route from a gateway.
+// Deletes a gateway route.
 //
 // @param request - DeleteGatewayRouteRequest
 //
@@ -5603,7 +5611,7 @@ func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteR
 
 // Summary:
 //
-// Deletes a route from a gateway.
+// Deletes a gateway route.
 //
 // @param request - DeleteGatewayRouteRequest
 //
@@ -5847,7 +5855,7 @@ func (client *Client) DeleteGatewaySlb(request *DeleteGatewaySlbRequest) (_resul
 
 // Summary:
 //
-// Deletes isolation rules.
+// Deletes fencing rules.
 //
 // @param tmpReq - DeleteIsolationRulesRequest
 //
@@ -5909,7 +5917,7 @@ func (client *Client) DeleteIsolationRulesWithOptions(tmpReq *DeleteIsolationRul
 
 // Summary:
 //
-// Deletes isolation rules.
+// Deletes fencing rules.
 //
 // @param request - DeleteIsolationRulesRequest
 //
@@ -6087,11 +6095,11 @@ func (client *Client) DeleteNacosConfig(request *DeleteNacosConfigRequest) (_res
 
 // Summary:
 //
-// Deletes multiple Nacos configurations at a time.
+// Deletes multiple Nacos configurations.
 //
 // Description:
 //
-// >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos SDK API. For information about the Nacos SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - DeleteNacosConfigsRequest
 //
@@ -6147,11 +6155,11 @@ func (client *Client) DeleteNacosConfigsWithOptions(request *DeleteNacosConfigsR
 
 // Summary:
 //
-// Deletes multiple Nacos configurations at a time.
+// Deletes multiple Nacos configurations.
 //
 // Description:
 //
-// >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos SDK API. For information about the Nacos SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - DeleteNacosConfigsRequest
 //
@@ -6271,7 +6279,7 @@ func (client *Client) DeleteNacosInstance(request *DeleteNacosInstanceRequest) (
 
 // Summary:
 //
-// 删除一个MCP Server
+// Deletes an MCP Server.
 //
 // @param request - DeleteNacosMcpServerRequest
 //
@@ -6327,7 +6335,7 @@ func (client *Client) DeleteNacosMcpServerWithOptions(request *DeleteNacosMcpSer
 
 // Summary:
 //
-// 删除一个MCP Server
+// Deletes an MCP Server.
 //
 // @param request - DeleteNacosMcpServerRequest
 //
@@ -6431,7 +6439,7 @@ func (client *Client) DeleteNacosService(request *DeleteNacosServiceRequest) (_r
 
 // Summary:
 //
-// 删除MSE命名空间
+// Deletes an MSE namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -6483,7 +6491,7 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 // Summary:
 //
-// 删除MSE命名空间
+// Deletes an MSE namespace.
 //
 // @param request - DeleteNamespaceRequest
 //
@@ -6715,7 +6723,7 @@ func (client *Client) DeleteServiceSource(request *DeleteServiceSourceRequest) (
 
 // Summary:
 //
-// Deletes a lane.
+// Deletes an end-to-end traffic lane.
 //
 // @param request - DeleteSwimmingLaneRequest
 //
@@ -6767,7 +6775,7 @@ func (client *Client) DeleteSwimmingLaneWithOptions(request *DeleteSwimmingLaneR
 
 // Summary:
 //
-// Deletes a lane.
+// Deletes an end-to-end traffic lane.
 //
 // @param request - DeleteSwimmingLaneRequest
 //
@@ -6785,7 +6793,7 @@ func (client *Client) DeleteSwimmingLane(request *DeleteSwimmingLaneRequest) (_r
 
 // Summary:
 //
-// Deletes a lane group.
+// Deletes an end-to-end traffic lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -6841,7 +6849,7 @@ func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimming
 
 // Summary:
 //
-// Deletes a lane group.
+// Deletes an end-to-end traffic lane group.
 //
 // @param request - DeleteSwimmingLaneGroupRequest
 //
@@ -6859,7 +6867,7 @@ func (client *Client) DeleteSwimmingLaneGroup(request *DeleteSwimmingLaneGroupRe
 
 // Summary:
 //
-// Deletes a hot parameter protection rule for HTTP requests.
+// Deletes hot spot parameter protection rules for HTTP requests.
 //
 // @param request - DeleteWebFlowRulesRequest
 //
@@ -6915,7 +6923,7 @@ func (client *Client) DeleteWebFlowRulesWithOptions(request *DeleteWebFlowRulesR
 
 // Summary:
 //
-// Deletes a hot parameter protection rule for HTTP requests.
+// Deletes hot spot parameter protection rules for HTTP requests.
 //
 // @param request - DeleteWebFlowRulesRequest
 //
@@ -6933,7 +6941,7 @@ func (client *Client) DeleteWebFlowRules(request *DeleteWebFlowRulesRequest) (_r
 
 // Summary:
 //
-// Deletes a ZooKeeper node.
+// Deletes a ZooKeeper data node.
 //
 // @param request - DeleteZnodeRequest
 //
@@ -6989,7 +6997,7 @@ func (client *Client) DeleteZnodeWithOptions(request *DeleteZnodeRequest, runtim
 
 // Summary:
 //
-// Deletes a ZooKeeper node.
+// Deletes a ZooKeeper data node.
 //
 // @param request - DeleteZnodeRequest
 //
@@ -7077,7 +7085,7 @@ func (client *Client) EnableHttp2(request *EnableHttp2Request) (_result *EnableH
 
 // Summary:
 //
-// Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
+// Enables the PROXY protocol. If the gateway ingress traffic is connected through NLB, the real IP address of the client cannot be obtained unless this feature is enabled. Enabling this feature does not affect non-PROXY protocol requests.
 //
 // @param request - EnableProxyProtocolRequest
 //
@@ -7129,7 +7137,7 @@ func (client *Client) EnableProxyProtocolWithOptions(request *EnableProxyProtoco
 
 // Summary:
 //
-// Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
+// Enables the PROXY protocol. If the gateway ingress traffic is connected through NLB, the real IP address of the client cannot be obtained unless this feature is enabled. Enabling this feature does not affect non-PROXY protocol requests.
 //
 // @param request - EnableProxyProtocolRequest
 //
@@ -7245,7 +7253,7 @@ func (client *Client) ExportNacosConfig(request *ExportNacosConfigRequest) (_res
 
 // Summary:
 //
-// Initiates a task to export ZooKeeper data.
+// Initiates a ZooKeeper data export task.
 //
 // Description:
 //
@@ -7309,7 +7317,7 @@ func (client *Client) ExportZookeeperDataWithOptions(request *ExportZookeeperDat
 
 // Summary:
 //
-// Initiates a task to export ZooKeeper data.
+// Initiates a ZooKeeper data export task.
 //
 // Description:
 //
@@ -7331,11 +7339,11 @@ func (client *Client) ExportZookeeperData(request *ExportZookeeperDataRequest) (
 
 // Summary:
 //
-// Obtains the rules for graceful start and shutdown.
+// Queries the list of graceful start and shutdown rules.
 //
 // Description:
 //
-// You can call this operation to query the rules for graceful start and shutdown.
+// Calls the FetchLosslessRuleList operation to retrieve the list of configuration rules for graceful start and shutdown.
 //
 // @param request - FetchLosslessRuleListRequest
 //
@@ -7403,11 +7411,11 @@ func (client *Client) FetchLosslessRuleListWithOptions(request *FetchLosslessRul
 
 // Summary:
 //
-// Obtains the rules for graceful start and shutdown.
+// Queries the list of graceful start and shutdown rules.
 //
 // Description:
 //
-// You can call this operation to query the rules for graceful start and shutdown.
+// Calls the FetchLosslessRuleList operation to retrieve the list of configuration rules for graceful start and shutdown.
 //
 // @param request - FetchLosslessRuleListRequest
 //
@@ -7425,7 +7433,7 @@ func (client *Client) FetchLosslessRuleList(request *FetchLosslessRuleListReques
 
 // Summary:
 //
-// Queries a list of blacklists and whitelists of a gateway.
+// Retrieves the list of gateway blacklists and whitelists.
 //
 // @param tmpReq - GatewayBlackWhiteListRequest
 //
@@ -7495,7 +7503,7 @@ func (client *Client) GatewayBlackWhiteListWithOptions(tmpReq *GatewayBlackWhite
 
 // Summary:
 //
-// Queries a list of blacklists and whitelists of a gateway.
+// Retrieves the list of gateway blacklists and whitelists.
 //
 // @param request - GatewayBlackWhiteListRequest
 //
@@ -7513,7 +7521,7 @@ func (client *Client) GatewayBlackWhiteList(request *GatewayBlackWhiteListReques
 
 // Summary:
 //
-// Queries information about canary release for messaging of an application.
+// Retrieves information related to application message canary release.
 //
 // @param request - GetAppMessageQueueRouteRequest
 //
@@ -7573,7 +7581,7 @@ func (client *Client) GetAppMessageQueueRouteWithOptions(request *GetAppMessageQ
 
 // Summary:
 //
-// Queries information about canary release for messaging of an application.
+// Retrieves information related to application message canary release.
 //
 // @param request - GetAppMessageQueueRouteRequest
 //
@@ -7681,7 +7689,7 @@ func (client *Client) GetApplicationInstanceList(request *GetApplicationInstance
 
 // Summary:
 //
-// Obtains the list of applications.
+// Retrieves the list of applications.
 //
 // @param tmpReq - GetApplicationListRequest
 //
@@ -7775,7 +7783,7 @@ func (client *Client) GetApplicationListWithOptions(tmpReq *GetApplicationListRe
 
 // Summary:
 //
-// Obtains the list of applications.
+// Retrieves the list of applications.
 //
 // @param request - GetApplicationListRequest
 //
@@ -7950,7 +7958,7 @@ func (client *Client) GetEngineNamepace(request *GetEngineNamepaceRequest) (_res
 
 // Summary:
 //
-// Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+// Retrieves basic information about a gateway, such as the VPC and vSwitch to which the gateway belongs.
 //
 // @param request - GetGatewayRequest
 //
@@ -7998,7 +8006,7 @@ func (client *Client) GetGatewayWithOptions(request *GetGatewayRequest, runtime 
 
 // Summary:
 //
-// Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+// Retrieves basic information about a gateway, such as the VPC and vSwitch to which the gateway belongs.
 //
 // @param request - GetGatewayRequest
 //
@@ -8086,7 +8094,7 @@ func (client *Client) GetGatewayAuthConsumerDetail(request *GetGatewayAuthConsum
 
 // Summary:
 //
-// Obtains the authentication details of a gateway.
+// Retrieves the details of gateway authentication.
 //
 // @param request - GetGatewayAuthDetailRequest
 //
@@ -8142,7 +8150,7 @@ func (client *Client) GetGatewayAuthDetailWithOptions(request *GetGatewayAuthDet
 
 // Summary:
 //
-// Obtains the authentication details of a gateway.
+// Retrieves the details of gateway authentication.
 //
 // @param request - GetGatewayAuthDetailRequest
 //
@@ -8160,7 +8168,7 @@ func (client *Client) GetGatewayAuthDetail(request *GetGatewayAuthDetailRequest)
 
 // Summary:
 //
-// Obtains the parameter configurations of a gateway.
+// Retrieves the parameter settings of a gateway.
 //
 // @param request - GetGatewayConfigRequest
 //
@@ -8208,7 +8216,7 @@ func (client *Client) GetGatewayConfigWithOptions(request *GetGatewayConfigReque
 
 // Summary:
 //
-// Obtains the parameter configurations of a gateway.
+// Retrieves the parameter settings of a gateway.
 //
 // @param request - GetGatewayConfigRequest
 //
@@ -8226,7 +8234,7 @@ func (client *Client) GetGatewayConfig(request *GetGatewayConfigRequest) (_resul
 
 // Summary:
 //
-// Queries the details of a domain name associated with a gateway.
+// Queries the details of a gateway domain name.
 //
 // @param request - GetGatewayDomainDetailRequest
 //
@@ -8278,7 +8286,7 @@ func (client *Client) GetGatewayDomainDetailWithOptions(request *GetGatewayDomai
 
 // Summary:
 //
-// Queries the details of a domain name associated with a gateway.
+// Queries the details of a gateway domain name.
 //
 // @param request - GetGatewayDomainDetailRequest
 //
@@ -8296,7 +8304,7 @@ func (client *Client) GetGatewayDomainDetail(request *GetGatewayDomainDetailRequ
 
 // Summary:
 //
-// Obtains the global parameters of a gateway.
+// Retrieves the global parameters of a gateway.
 //
 // @param request - GetGatewayOptionRequest
 //
@@ -8348,7 +8356,7 @@ func (client *Client) GetGatewayOptionWithOptions(request *GetGatewayOptionReque
 
 // Summary:
 //
-// Obtains the global parameters of a gateway.
+// Retrieves the global parameters of a gateway.
 //
 // @param request - GetGatewayOptionRequest
 //
@@ -8366,7 +8374,7 @@ func (client *Client) GetGatewayOption(request *GetGatewayOptionRequest) (_resul
 
 // Summary:
 //
-// Queries the details of a route for a gateway.
+// Queries the details of a gateway route.
 //
 // @param request - GetGatewayRouteDetailRequest
 //
@@ -8418,7 +8426,7 @@ func (client *Client) GetGatewayRouteDetailWithOptions(request *GetGatewayRouteD
 
 // Summary:
 //
-// Queries the details of a route for a gateway.
+// Queries the details of a gateway route.
 //
 // @param request - GetGatewayRouteDetailRequest
 //
@@ -8506,7 +8514,7 @@ func (client *Client) GetGatewayServiceDetail(request *GetGatewayServiceDetailRe
 
 // Summary:
 //
-// Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+// Queries information about a Container Service for Kubernetes (ACK) cluster that has Microservices Governance enabled.
 //
 // @param request - GetGovernanceKubernetesClusterRequest
 //
@@ -8558,7 +8566,7 @@ func (client *Client) GetGovernanceKubernetesClusterWithOptions(request *GetGove
 
 // Summary:
 //
-// Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+// Queries information about a Container Service for Kubernetes (ACK) cluster that has Microservices Governance enabled.
 //
 // @param request - GetGovernanceKubernetesClusterRequest
 //
@@ -8798,7 +8806,7 @@ func (client *Client) GetKubernetesSource(request *GetKubernetesSourceRequest) (
 
 // Summary:
 //
-// Obtains the Intra-zone Provider First rules.
+// Retrieves the Intra-zone Provider First rules.
 //
 // @param request - GetLocalityRuleRequest
 //
@@ -8862,7 +8870,7 @@ func (client *Client) GetLocalityRuleWithOptions(request *GetLocalityRuleRequest
 
 // Summary:
 //
-// Obtains the Intra-zone Provider First rules.
+// Retrieves the Intra-zone Provider First rules.
 //
 // @param request - GetLocalityRuleRequest
 //
@@ -8880,15 +8888,11 @@ func (client *Client) GetLocalityRule(request *GetLocalityRuleRequest) (_result 
 
 // Summary:
 //
-// Queries the rules for graceful start and shutdown of an application.
+// Retrieves the graceful start and shutdown rules for a specified application.
 //
 // Description:
 //
-// You can call this operation to query the rules for graceful start and shutdown of an application.
-//
-// You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
-//
-// If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
+// Calls the GetLosslessRuleByApp operation to retrieve the graceful start and shutdown configuration rules for a specified application. The query prioritizes the AppId parameter. If AppId is not specified, the system queries by using RegionId, Namespace, and AppName.
 //
 // @param request - GetLosslessRuleByAppRequest
 //
@@ -8948,15 +8952,11 @@ func (client *Client) GetLosslessRuleByAppWithOptions(request *GetLosslessRuleBy
 
 // Summary:
 //
-// Queries the rules for graceful start and shutdown of an application.
+// Retrieves the graceful start and shutdown rules for a specified application.
 //
 // Description:
 //
-// You can call this operation to query the rules for graceful start and shutdown of an application.
-//
-// You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
-//
-// If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
+// Calls the GetLosslessRuleByApp operation to retrieve the graceful start and shutdown configuration rules for a specified application. The query prioritizes the AppId parameter. If AppId is not specified, the system queries by using RegionId, Namespace, and AppName.
 //
 // @param request - GetLosslessRuleByAppRequest
 //
@@ -8974,7 +8974,7 @@ func (client *Client) GetLosslessRuleByApp(request *GetLosslessRuleByAppRequest)
 
 // Summary:
 //
-// Queries the information about the MSE feature switch.
+// Retrieves the MSE feature toggles.
 //
 // @param request - GetMseFeatureSwitchRequest
 //
@@ -9018,7 +9018,7 @@ func (client *Client) GetMseFeatureSwitchWithOptions(request *GetMseFeatureSwitc
 
 // Summary:
 //
-// Queries the information about the MSE feature switch.
+// Retrieves the MSE feature toggles.
 //
 // @param request - GetMseFeatureSwitchRequest
 //
@@ -9290,7 +9290,7 @@ func (client *Client) GetNacosHistoryConfig(request *GetNacosHistoryConfigReques
 
 // Summary:
 //
-// 获取MCP Server的详情
+// Retrieves the details of an MCP server.
 //
 // @param request - GetNacosMcpServerRequest
 //
@@ -9350,7 +9350,7 @@ func (client *Client) GetNacosMcpServerWithOptions(request *GetNacosMcpServerReq
 
 // Summary:
 //
-// 获取MCP Server的详情
+// Retrieves the details of an MCP server.
 //
 // @param request - GetNacosMcpServerRequest
 //
@@ -9368,11 +9368,11 @@ func (client *Client) GetNacosMcpServer(request *GetNacosMcpServerRequest) (_res
 
 // Summary:
 //
-// Queries overview information about Microservices Governance.
+// Queries the Query Governance overview information.
 //
 // Description:
 //
-// You can call this operation to query overview information about service governance.
+// Queries the service governance overview information.
 //
 // @param request - GetOverviewRequest
 //
@@ -9424,11 +9424,11 @@ func (client *Client) GetOverviewWithOptions(request *GetOverviewRequest, runtim
 
 // Summary:
 //
-// Queries overview information about Microservices Governance.
+// Queries the Query Governance overview information.
 //
 // Description:
 //
-// You can call this operation to query overview information about service governance.
+// Queries the service governance overview information.
 //
 // @param request - GetOverviewRequest
 //
@@ -9446,7 +9446,7 @@ func (client *Client) GetOverview(request *GetOverviewRequest) (_result *GetOver
 
 // Summary:
 //
-// Obtains plug-in configurations.
+// Retrieves the plug-in configuration.
 //
 // @param request - GetPluginConfigRequest
 //
@@ -9498,7 +9498,7 @@ func (client *Client) GetPluginConfigWithOptions(request *GetPluginConfigRequest
 
 // Summary:
 //
-// Obtains plug-in configurations.
+// Retrieves the plug-in configuration.
 //
 // @param request - GetPluginConfigRequest
 //
@@ -9516,7 +9516,7 @@ func (client *Client) GetPluginConfig(request *GetPluginConfigRequest) (_result 
 
 // Summary:
 //
-// Obtains plug-ins.
+// Queries plugins from the plug-in marketplace.
 //
 // @param request - GetPluginsRequest
 //
@@ -9576,7 +9576,7 @@ func (client *Client) GetPluginsWithOptions(request *GetPluginsRequest, runtime 
 
 // Summary:
 //
-// Obtains plug-ins.
+// Queries plugins from the plug-in marketplace.
 //
 // @param request - GetPluginsRequest
 //
@@ -9676,7 +9676,7 @@ func (client *Client) GetServiceList(request *GetServiceListRequest) (_result *G
 
 // Summary:
 //
-// Queries the version of a microservices application.
+// Retrieves the service list.
 //
 // @param request - GetServiceListPageRequest
 //
@@ -9756,7 +9756,7 @@ func (client *Client) GetServiceListPageWithOptions(request *GetServiceListPageR
 
 // Summary:
 //
-// Queries the version of a microservices application.
+// Retrieves the service list.
 //
 // @param request - GetServiceListPageRequest
 //
@@ -9998,7 +9998,7 @@ func (client *Client) GetServiceMethodPage(request *GetServiceMethodPageRequest)
 
 // Summary:
 //
-// Obtains all tags in the current lane group.
+// Retrieves all tags in the current traffic lane group.
 //
 // @param request - GetTagsBySwimmingLaneGroupIdRequest
 //
@@ -10050,7 +10050,7 @@ func (client *Client) GetTagsBySwimmingLaneGroupIdWithOptions(request *GetTagsBy
 
 // Summary:
 //
-// Obtains all tags in the current lane group.
+// Retrieves all tags in the current traffic lane group.
 //
 // @param request - GetTagsBySwimmingLaneGroupIdRequest
 //
@@ -10138,11 +10138,11 @@ func (client *Client) GetZookeeperDataImportUrl(request *GetZookeeperDataImportU
 
 // Summary:
 //
-// Imports Nacos configurations as a file.
+// Imports Nacos configurations by using a configuration file.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ImportNacosConfigRequest
 //
@@ -10202,11 +10202,11 @@ func (client *Client) ImportNacosConfigWithOptions(request *ImportNacosConfigReq
 
 // Summary:
 //
-// Imports Nacos configurations as a file.
+// Imports Nacos configurations by using a configuration file.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ImportNacosConfigRequest
 //
@@ -10224,7 +10224,7 @@ func (client *Client) ImportNacosConfig(request *ImportNacosConfigRequest) (_res
 
 // Summary:
 //
-// Imports services to a gateway.
+// Subscribes to the services imported to the gateway.
 //
 // @param tmpReq - ImportServicesRequest
 //
@@ -10306,7 +10306,7 @@ func (client *Client) ImportServicesWithOptions(tmpReq *ImportServicesRequest, r
 
 // Summary:
 //
-// Imports services to a gateway.
+// Subscribes to the services imported to the gateway.
 //
 // @param request - ImportServicesRequest
 //
@@ -10324,11 +10324,11 @@ func (client *Client) ImportServices(request *ImportServicesRequest) (_result *I
 
 // Summary:
 //
-// Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+// Initiates a ZooKeeper data import task to import data from the specified URL into the ZooKeeper cluster.
 //
 // Description:
 //
-// *Danger*	- This operation clears existing data. Exercise caution when you call this API operation.
+//	Danger: This operation clears all existing data. Proceed with caution.
 //
 // @param request - ImportZookeeperDataRequest
 //
@@ -10392,11 +10392,11 @@ func (client *Client) ImportZookeeperDataWithOptions(request *ImportZookeeperDat
 
 // Summary:
 //
-// Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+// Initiates a ZooKeeper data import task to import data from the specified URL into the ZooKeeper cluster.
 //
 // Description:
 //
-// *Danger*	- This operation clears existing data. Exercise caution when you call this API operation.
+//	Danger: This operation clears all existing data. Proceed with caution.
 //
 // @param request - ImportZookeeperDataRequest
 //
@@ -10484,11 +10484,11 @@ func (client *Client) InitializeServiceLinkRole(request *InitializeServiceLinkRo
 
 // Summary:
 //
-// Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+// Queries the list of Nacos service instances.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListAnsInstancesRequest
 //
@@ -10568,11 +10568,11 @@ func (client *Client) ListAnsInstancesWithOptions(request *ListAnsInstancesReque
 
 // Summary:
 //
-// Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+// Queries the list of Nacos service instances.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListAnsInstancesRequest
 //
@@ -10692,11 +10692,11 @@ func (client *Client) ListAnsServiceClusters(request *ListAnsServiceClustersRequ
 
 // Summary:
 //
-// Queries Nacos services.
+// Queries the details of Nacos services.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > This OpenAPI is not a Nacos SDK API. For more information about Nacos SDK APIs, see [the official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListAnsServicesRequest
 //
@@ -10784,11 +10784,11 @@ func (client *Client) ListAnsServicesWithOptions(request *ListAnsServicesRequest
 
 // Summary:
 //
-// Queries Nacos services.
+// Queries the details of Nacos services.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > This OpenAPI is not a Nacos SDK API. For more information about Nacos SDK APIs, see [the official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListAnsServicesRequest
 //
@@ -10885,7 +10885,7 @@ func (client *Client) ListAppBySwimmingLaneGroupTag(request *ListAppBySwimmingLa
 
 // Summary:
 //
-// Lists applications by tag in a specified lane group.
+// Retrieves the list of applications with a specified tag in a specified lane group.
 //
 // @param tmpReq - ListAppBySwimmingLaneGroupTagsRequest
 //
@@ -10947,7 +10947,7 @@ func (client *Client) ListAppBySwimmingLaneGroupTagsWithOptions(tmpReq *ListAppB
 
 // Summary:
 //
-// Lists applications by tag in a specified lane group.
+// Retrieves the list of applications with a specified tag in a specified lane group.
 //
 // @param request - ListAppBySwimmingLaneGroupTagsRequest
 //
@@ -11023,7 +11023,7 @@ func (client *Client) ListApplicationsWithTagRules(request *ListApplicationsWith
 
 // Summary:
 //
-// Queries a list of service authentication rules.
+// Call the ListAuthPolicy API to query the list of service authentication rules.
 //
 // @param request - ListAuthPolicyRequest
 //
@@ -11099,7 +11099,7 @@ func (client *Client) ListAuthPolicyWithOptions(request *ListAuthPolicyRequest, 
 
 // Summary:
 //
-// Queries a list of service authentication rules.
+// Call the ListAuthPolicy API to query the list of service authentication rules.
 //
 // @param request - ListAuthPolicyRequest
 //
@@ -11117,7 +11117,7 @@ func (client *Client) ListAuthPolicy(request *ListAuthPolicyRequest) (_result *L
 
 // Summary:
 //
-// Queries a list of circuit breaking rules.
+// Queries circuit breaker rules.
 //
 // @param request - ListCircuitBreakerRulesRequest
 //
@@ -11189,7 +11189,7 @@ func (client *Client) ListCircuitBreakerRulesWithOptions(request *ListCircuitBre
 
 // Summary:
 //
-// Queries a list of circuit breaking rules.
+// Queries circuit breaker rules.
 //
 // @param request - ListCircuitBreakerRulesRequest
 //
@@ -11207,7 +11207,7 @@ func (client *Client) ListCircuitBreakerRules(request *ListCircuitBreakerRulesRe
 
 // Summary:
 //
-// Queries available cluster connection types.
+// Queries the supported cluster connection types.
 //
 // @param request - ListClusterConnectionTypesRequest
 //
@@ -11251,7 +11251,7 @@ func (client *Client) ListClusterConnectionTypesWithOptions(request *ListCluster
 
 // Summary:
 //
-// Queries available cluster connection types.
+// Queries the supported cluster connection types.
 //
 // @param request - ListClusterConnectionTypesRequest
 //
@@ -11269,7 +11269,7 @@ func (client *Client) ListClusterConnectionTypes(request *ListClusterConnectionT
 
 // Summary:
 //
-// Obtains information about historical health check tasks.
+// Retrieves information about historical health check tasks.
 //
 // @param request - ListClusterHealthCheckTaskRequest
 //
@@ -11333,7 +11333,7 @@ func (client *Client) ListClusterHealthCheckTaskWithOptions(request *ListCluster
 
 // Summary:
 //
-// Obtains information about historical health check tasks.
+// Retrieves information about historical health check tasks.
 //
 // @param request - ListClusterHealthCheckTaskRequest
 //
@@ -11351,7 +11351,7 @@ func (client *Client) ListClusterHealthCheckTask(request *ListClusterHealthCheck
 
 // Summary:
 //
-// Queries the engine types that can be activated.
+// Queries the supported engine types.
 //
 // @param request - ListClusterTypesRequest
 //
@@ -11407,7 +11407,7 @@ func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesReque
 
 // Summary:
 //
-// Queries the engine types that can be activated.
+// Queries the supported engine types.
 //
 // @param request - ListClusterTypesRequest
 //
@@ -11425,7 +11425,7 @@ func (client *Client) ListClusterTypes(request *ListClusterTypesRequest) (_resul
 
 // Summary:
 //
-// Queries the information about supported instance versions.
+// Queries information about supported cluster versions.
 //
 // @param request - ListClusterVersionsRequest
 //
@@ -11477,7 +11477,7 @@ func (client *Client) ListClusterVersionsWithOptions(request *ListClusterVersion
 
 // Summary:
 //
-// Queries the information about supported instance versions.
+// Queries information about supported cluster versions.
 //
 // @param request - ListClusterVersionsRequest
 //
@@ -11495,7 +11495,7 @@ func (client *Client) ListClusterVersions(request *ListClusterVersionsRequest) (
 
 // Summary:
 //
-// Queries Microservices Engine (MSE) instances.
+// Queries a list of Microservices Registry clusters.
 //
 // @param request - ListClustersRequest
 //
@@ -11575,7 +11575,7 @@ func (client *Client) ListClustersWithOptions(request *ListClustersRequest, runt
 
 // Summary:
 //
-// Queries Microservices Engine (MSE) instances.
+// Queries a list of Microservices Registry clusters.
 //
 // @param request - ListClustersRequest
 //
@@ -11823,7 +11823,7 @@ func (client *Client) ListEurekaInstances(request *ListEurekaInstancesRequest) (
 
 // Summary:
 //
-// Queries Eureka services.
+// Queries the Eureka service list.
 //
 // @param request - ListEurekaServicesRequest
 //
@@ -11863,7 +11863,7 @@ func (client *Client) ListEurekaServicesWithOptions(request *ListEurekaServicesR
 
 // Summary:
 //
-// Queries Eureka services.
+// Queries the Eureka service list.
 //
 // @param request - ListEurekaServicesRequest
 //
@@ -11955,7 +11955,7 @@ func (client *Client) ListExportZookeeperData(request *ListExportZookeeperDataRe
 
 // Summary:
 //
-// Obtains a list of throttling rules.
+// Queries the list of flow control rules.
 //
 // @param request - ListFlowRulesRequest
 //
@@ -12027,7 +12027,7 @@ func (client *Client) ListFlowRulesWithOptions(request *ListFlowRulesRequest, ru
 
 // Summary:
 //
-// Obtains a list of throttling rules.
+// Queries the list of flow control rules.
 //
 // @param request - ListFlowRulesRequest
 //
@@ -12045,7 +12045,7 @@ func (client *Client) ListFlowRules(request *ListFlowRulesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries a list of gateways.
+// Queries the list of gateways.
 //
 // @param tmpReq - ListGatewayRequest
 //
@@ -12115,7 +12115,7 @@ func (client *Client) ListGatewayWithOptions(tmpReq *ListGatewayRequest, runtime
 
 // Summary:
 //
-// Queries a list of gateways.
+// Queries the list of gateways.
 //
 // @param request - ListGatewayRequest
 //
@@ -12133,7 +12133,7 @@ func (client *Client) ListGateway(request *ListGatewayRequest) (_result *ListGat
 
 // Summary:
 //
-// 查询网关认证
+// Queries the list of gateway authentication rules.
 //
 // @param tmpReq - ListGatewayAuthRequest
 //
@@ -12203,7 +12203,7 @@ func (client *Client) ListGatewayAuthWithOptions(tmpReq *ListGatewayAuthRequest,
 
 // Summary:
 //
-// 查询网关认证
+// Queries the list of gateway authentication rules.
 //
 // @param request - ListGatewayAuthRequest
 //
@@ -12307,7 +12307,7 @@ func (client *Client) ListGatewayAuthConsumer(request *ListGatewayAuthConsumerRe
 
 // Summary:
 //
-// Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+// Queries the authorization list for gateway authentication consumers.
 //
 // @param request - ListGatewayAuthConsumerResourceRequest
 //
@@ -12375,7 +12375,7 @@ func (client *Client) ListGatewayAuthConsumerResourceWithOptions(request *ListGa
 
 // Summary:
 //
-// Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+// Queries the authorization list for gateway authentication consumers.
 //
 // @param request - ListGatewayAuthConsumerResourceRequest
 //
@@ -12393,7 +12393,7 @@ func (client *Client) ListGatewayAuthConsumerResource(request *ListGatewayAuthCo
 
 // Summary:
 //
-// Queries a gateway circuit breaking rule.
+// Queries the circuit breaker rules of the gateway.
 //
 // @param request - ListGatewayCircuitBreakerRuleRequest
 //
@@ -12441,7 +12441,7 @@ func (client *Client) ListGatewayCircuitBreakerRuleWithOptions(request *ListGate
 
 // Summary:
 //
-// Queries a gateway circuit breaking rule.
+// Queries the circuit breaker rules of the gateway.
 //
 // @param request - ListGatewayCircuitBreakerRuleRequest
 //
@@ -12459,7 +12459,7 @@ func (client *Client) ListGatewayCircuitBreakerRule(request *ListGatewayCircuitB
 
 // Summary:
 //
-// Queries the domain names that are associated with a gateway.
+// Queries the list of associated domains for a gateway.
 //
 // @param request - ListGatewayDomainRequest
 //
@@ -12515,7 +12515,7 @@ func (client *Client) ListGatewayDomainWithOptions(request *ListGatewayDomainReq
 
 // Summary:
 //
-// Queries the domain names that are associated with a gateway.
+// Queries the list of associated domains for a gateway.
 //
 // @param request - ListGatewayDomainRequest
 //
@@ -12533,7 +12533,7 @@ func (client *Client) ListGatewayDomain(request *ListGatewayDomainRequest) (_res
 
 // Summary:
 //
-// Queries throttling rules of a gateway.
+// Queries the gateway throttle rules.
 //
 // @param request - ListGatewayFlowRuleRequest
 //
@@ -12581,7 +12581,7 @@ func (client *Client) ListGatewayFlowRuleWithOptions(request *ListGatewayFlowRul
 
 // Summary:
 //
-// Queries throttling rules of a gateway.
+// Queries the gateway throttle rules.
 //
 // @param request - ListGatewayFlowRuleRequest
 //
@@ -12599,7 +12599,7 @@ func (client *Client) ListGatewayFlowRule(request *ListGatewayFlowRuleRequest) (
 
 // Summary:
 //
-// Queries the concurrency rule of a gateway.
+// Queries the concurrency rules of the gateway.
 //
 // @param request - ListGatewayIsolationRuleRequest
 //
@@ -12647,7 +12647,7 @@ func (client *Client) ListGatewayIsolationRuleWithOptions(request *ListGatewayIs
 
 // Summary:
 //
-// Queries the concurrency rule of a gateway.
+// Queries the concurrency rules of the gateway.
 //
 // @param request - ListGatewayIsolationRuleRequest
 //
@@ -12665,7 +12665,7 @@ func (client *Client) ListGatewayIsolationRule(request *ListGatewayIsolationRule
 
 // Summary:
 //
-// Queries the routes of a gateway.
+// Queries the gateway route list.
 //
 // @param tmpReq - ListGatewayRouteRequest
 //
@@ -12735,7 +12735,7 @@ func (client *Client) ListGatewayRouteWithOptions(tmpReq *ListGatewayRouteReques
 
 // Summary:
 //
-// Queries the routes of a gateway.
+// Queries the gateway route list.
 //
 // @param request - ListGatewayRouteRequest
 //
@@ -12823,7 +12823,7 @@ func (client *Client) ListGatewayRouteOnAuth(request *ListGatewayRouteOnAuthRequ
 
 // Summary:
 //
-// Queries a list of services that are subscribed to by a gateway.
+// Queries the list of services subscribed to by a gateway.
 //
 // @param tmpReq - ListGatewayServiceRequest
 //
@@ -12893,7 +12893,7 @@ func (client *Client) ListGatewayServiceWithOptions(tmpReq *ListGatewayServiceRe
 
 // Summary:
 //
-// Queries a list of services that are subscribed to by a gateway.
+// Queries the list of services subscribed to by a gateway.
 //
 // @param request - ListGatewayServiceRequest
 //
@@ -12911,7 +12911,7 @@ func (client *Client) ListGatewayService(request *ListGatewayServiceRequest) (_r
 
 // Summary:
 //
-// Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+// Queries the gateway ingress SLB.
 //
 // @param request - ListGatewaySlbRequest
 //
@@ -12959,7 +12959,7 @@ func (client *Client) ListGatewaySlbWithOptions(request *ListGatewaySlbRequest, 
 
 // Summary:
 //
-// Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+// Queries the gateway ingress SLB.
 //
 // @param request - ListGatewaySlbRequest
 //
@@ -12977,7 +12977,7 @@ func (client *Client) ListGatewaySlb(request *ListGatewaySlbRequest) (_result *L
 
 // Summary:
 //
-// Obtains a list of zones where a gateway is available.
+// Queries the available zones for gateways.
 //
 // @param request - ListGatewayZoneRequest
 //
@@ -13021,7 +13021,7 @@ func (client *Client) ListGatewayZoneWithOptions(request *ListGatewayZoneRequest
 
 // Summary:
 //
-// Obtains a list of zones where a gateway is available.
+// Queries the available zones for gateways.
 //
 // @param request - ListGatewayZoneRequest
 //
@@ -13117,7 +13117,7 @@ func (client *Client) ListInstanceCount(request *ListInstanceCountRequest) (_res
 
 // Summary:
 //
-// Queries isolation rules.
+// Query isolation rules.
 //
 // @param request - ListIsolationRulesRequest
 //
@@ -13189,7 +13189,7 @@ func (client *Client) ListIsolationRulesWithOptions(request *ListIsolationRulesR
 
 // Summary:
 //
-// Queries isolation rules.
+// Query isolation rules.
 //
 // @param request - ListIsolationRulesRequest
 //
@@ -13211,7 +13211,7 @@ func (client *Client) ListIsolationRules(request *ListIsolationRulesRequest) (_r
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For information about Nacos-SDK APIs, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param tmpReq - ListListenersByConfigRequest
 //
@@ -13289,7 +13289,7 @@ func (client *Client) ListListenersByConfigWithOptions(tmpReq *ListListenersByCo
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For information about Nacos-SDK APIs, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListListenersByConfigRequest
 //
@@ -13307,11 +13307,11 @@ func (client *Client) ListListenersByConfig(request *ListListenersByConfigReques
 
 // Summary:
 //
-// Queries the information about listeners based on IP addresses.
+// Queries the listener list based on an IP address.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For more information about the Nacos-SDK API, see [Official Documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListListenersByIpRequest
 //
@@ -13371,11 +13371,11 @@ func (client *Client) ListListenersByIpWithOptions(request *ListListenersByIpReq
 
 // Summary:
 //
-// Queries the information about listeners based on IP addresses.
+// Queries the listener list based on an IP address.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not a Nacos-SDK API. For more information about the Nacos-SDK API, see [Official Documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListListenersByIpRequest
 //
@@ -13393,7 +13393,7 @@ func (client *Client) ListListenersByIp(request *ListListenersByIpRequest) (_res
 
 // Summary:
 //
-// Queries information about a migration task.
+// This operation queries cloud migration tasks.
 //
 // @param request - ListMigrationTaskRequest
 //
@@ -13453,7 +13453,7 @@ func (client *Client) ListMigrationTaskWithOptions(request *ListMigrationTaskReq
 
 // Summary:
 //
-// Queries information about a migration task.
+// This operation queries cloud migration tasks.
 //
 // @param request - ListMigrationTaskRequest
 //
@@ -13471,11 +13471,11 @@ func (client *Client) ListMigrationTask(request *ListMigrationTaskRequest) (_res
 
 // Summary:
 //
-// Queries Nacos configurations.
+// Queries the list of Nacos configurations.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos SDK API. For information about the Nacos SDK API, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListNacosConfigsRequest
 //
@@ -13559,11 +13559,11 @@ func (client *Client) ListNacosConfigsWithOptions(request *ListNacosConfigsReque
 
 // Summary:
 //
-// Queries Nacos configurations.
+// Queries the list of Nacos configurations.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos SDK API. For information about the Nacos SDK API, refer to the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListNacosConfigsRequest
 //
@@ -13581,11 +13581,11 @@ func (client *Client) ListNacosConfigs(request *ListNacosConfigsRequest) (_resul
 
 // Summary:
 //
-// Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+// Queries the configuration history of a Nacos instance.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, see [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListNacosHistoryConfigsRequest
 //
@@ -13661,11 +13661,11 @@ func (client *Client) ListNacosHistoryConfigsWithOptions(request *ListNacosHisto
 
 // Summary:
 //
-// Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+// Queries the configuration history of a Nacos instance.
 //
 // Description:
 //
-// > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+// > The current OpenAPI is not the Nacos-SDK API. For information about the Nacos-SDK API, see [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
 //
 // @param request - ListNacosHistoryConfigsRequest
 //
@@ -13683,7 +13683,7 @@ func (client *Client) ListNacosHistoryConfigs(request *ListNacosHistoryConfigsRe
 
 // Summary:
 //
-// 获取McpServer列表
+// Retrieves a list of MCP servers.
 //
 // @param request - ListNacosMcpServersRequest
 //
@@ -13751,7 +13751,7 @@ func (client *Client) ListNacosMcpServersWithOptions(request *ListNacosMcpServer
 
 // Summary:
 //
-// 获取McpServer列表
+// Retrieves a list of MCP servers.
 //
 // @param request - ListNacosMcpServersRequest
 //
@@ -13769,7 +13769,7 @@ func (client *Client) ListNacosMcpServers(request *ListNacosMcpServersRequest) (
 
 // Summary:
 //
-// Displays the list of namespaces, the number of online nodes in each namespace, and the total number of applications in each namespace. You can also call this operation to perform fuzzy queries based on the namespace name.
+// Displays the namespace list, showing the number of online nodes and total applications in each namespace. This interface also supports fuzzy queries based on namespace names.
 //
 // @param tmpReq - ListNamespacesRequest
 //
@@ -13839,7 +13839,7 @@ func (client *Client) ListNamespacesWithOptions(tmpReq *ListNamespacesRequest, r
 
 // Summary:
 //
-// Displays the list of namespaces, the number of online nodes in each namespace, and the total number of applications in each namespace. You can also call this operation to perform fuzzy queries based on the namespace name.
+// Displays the namespace list, showing the number of online nodes and total applications in each namespace. This interface also supports fuzzy queries based on namespace names.
 //
 // @param request - ListNamespacesRequest
 //
@@ -13915,7 +13915,7 @@ func (client *Client) ListNamingTrack(request *ListNamingTrackRequest) (_result 
 
 // Summary:
 //
-// Obtains a list of gateway certificates.
+// Retrieves a list of gateway certificates.
 //
 // @param request - ListSSLCertRequest
 //
@@ -13967,7 +13967,7 @@ func (client *Client) ListSSLCertWithOptions(request *ListSSLCertRequest, runtim
 
 // Summary:
 //
-// Obtains a list of gateway certificates.
+// Retrieves a list of gateway certificates.
 //
 // @param request - ListSSLCertRequest
 //
@@ -14051,7 +14051,7 @@ func (client *Client) ListSecurityGroup(request *ListSecurityGroupRequest) (_res
 
 // Summary:
 //
-// Queries the security group rules of a gateway.
+// Queries the list of gateway security groups.
 //
 // @param request - ListSecurityGroupRuleRequest
 //
@@ -14099,7 +14099,7 @@ func (client *Client) ListSecurityGroupRuleWithOptions(request *ListSecurityGrou
 
 // Summary:
 //
-// Queries the security group rules of a gateway.
+// Queries the list of gateway security groups.
 //
 // @param request - ListSecurityGroupRuleRequest
 //
@@ -14197,7 +14197,7 @@ func (client *Client) ListSentinelBlockFallbackDefinitions(request *ListSentinel
 
 // Summary:
 //
-// Queries a list of associated sources.
+// Queries the list of associated sources.
 //
 // @param request - ListServiceSourceRequest
 //
@@ -14249,7 +14249,7 @@ func (client *Client) ListServiceSourceWithOptions(request *ListServiceSourceReq
 
 // Summary:
 //
-// Queries a list of associated sources.
+// Queries the list of associated sources.
 //
 // @param request - ListServiceSourceRequest
 //
@@ -14267,7 +14267,7 @@ func (client *Client) ListServiceSource(request *ListServiceSourceRequest) (_res
 
 // Summary:
 //
-// Queries tagged resources.
+// Queries resource tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -14331,7 +14331,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries tagged resources.
+// Queries resource tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -14607,7 +14607,7 @@ func (client *Client) ListZnodeChildren(request *ListZnodeChildrenRequest) (_res
 
 // Summary:
 //
-// 列出所有ZooKeeper sasl用户
+// Lists all ZooKeeper SASL users.
 //
 // @param request - ListZooKeeperSaslUserRequest
 //
@@ -14655,7 +14655,7 @@ func (client *Client) ListZooKeeperSaslUserWithOptions(request *ListZooKeeperSas
 
 // Summary:
 //
-// 列出所有ZooKeeper sasl用户
+// Lists all ZooKeeper SASL users.
 //
 // @param request - ListZooKeeperSaslUserRequest
 //
@@ -14865,7 +14865,7 @@ func (client *Client) ModifyLosslessRule(request *ModifyLosslessRuleRequest) (_r
 
 // Summary:
 //
-// Disables a route for a gateway.
+// Takes a gateway route offline.
 //
 // @param request - OfflineGatewayRouteRequest
 //
@@ -14917,7 +14917,7 @@ func (client *Client) OfflineGatewayRouteWithOptions(request *OfflineGatewayRout
 
 // Summary:
 //
-// Disables a route for a gateway.
+// Takes a gateway route offline.
 //
 // @param request - OfflineGatewayRouteRequest
 //
@@ -15091,7 +15091,7 @@ func (client *Client) PreserveHeaderFormat(request *PreserveHeaderFormatRequest)
 
 // Summary:
 //
-// Queries all the microservices of a service source.
+// Queries the information about importable services from a specified source.
 //
 // @param request - PullServicesRequest
 //
@@ -15151,7 +15151,7 @@ func (client *Client) PullServicesWithOptions(request *PullServicesRequest, runt
 
 // Summary:
 //
-// Queries all the microservices of a service source.
+// Queries the information about importable services from a specified source.
 //
 // @param request - PullServicesRequest
 //
@@ -15169,7 +15169,7 @@ func (client *Client) PullServices(request *PullServicesRequest) (_result *PullS
 
 // Summary:
 //
-// Initiates a task to check risk evaluation for an instance.
+// Initiates a risk assessment check task for the current cluster.
 //
 // @param request - PutClusterHealthCheckTaskRequest
 //
@@ -15217,7 +15217,7 @@ func (client *Client) PutClusterHealthCheckTaskWithOptions(request *PutClusterHe
 
 // Summary:
 //
-// Initiates a task to check risk evaluation for an instance.
+// Initiates a risk assessment check task for the current cluster.
 //
 // @param request - PutClusterHealthCheckTaskRequest
 //
@@ -15235,7 +15235,7 @@ func (client *Client) PutClusterHealthCheckTask(request *PutClusterHealthCheckTa
 
 // Summary:
 //
-// Queries all the lanes in a lane group.
+// Queries information about all lanes.
 //
 // @param request - QueryAllSwimmingLaneRequest
 //
@@ -15287,7 +15287,7 @@ func (client *Client) QueryAllSwimmingLaneWithOptions(request *QueryAllSwimmingL
 
 // Summary:
 //
-// Queries all the lanes in a lane group.
+// Queries information about all lanes.
 //
 // @param request - QueryAllSwimmingLaneRequest
 //
@@ -15429,7 +15429,7 @@ func (client *Client) QueryBusinessLocations(request *QueryBusinessLocationsRequ
 
 // Summary:
 //
-// Queries the details of an instance.
+// Queries the details of a cluster.
 //
 // @param request - QueryClusterDetailRequest
 //
@@ -15485,7 +15485,7 @@ func (client *Client) QueryClusterDetailWithOptions(request *QueryClusterDetailR
 
 // Summary:
 //
-// Queries the details of an instance.
+// Queries the details of a cluster.
 //
 // @param request - QueryClusterDetailRequest
 //
@@ -15569,7 +15569,7 @@ func (client *Client) QueryClusterDiskSpecification(request *QueryClusterDiskSpe
 
 // Summary:
 //
-// Queries the static information of an instance.
+// Queries the static information of a cluster.
 //
 // @param request - QueryClusterInfoRequest
 //
@@ -15637,7 +15637,7 @@ func (client *Client) QueryClusterInfoWithOptions(request *QueryClusterInfoReque
 
 // Summary:
 //
-// Queries the static information of an instance.
+// Queries the static information of a cluster.
 //
 // @param request - QueryClusterInfoRequest
 //
@@ -15655,7 +15655,7 @@ func (client *Client) QueryClusterInfo(request *QueryClusterInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the information of supported instance specifications.
+// Queries the list of supported cluster specifications.
 //
 // @param request - QueryClusterSpecificationRequest
 //
@@ -15707,7 +15707,7 @@ func (client *Client) QueryClusterSpecificationWithOptions(request *QueryCluster
 
 // Summary:
 //
-// Queries the information of supported instance specifications.
+// Queries the list of supported cluster specifications.
 //
 // @param request - QueryClusterSpecificationRequest
 //
@@ -15725,7 +15725,7 @@ func (client *Client) QueryClusterSpecification(request *QueryClusterSpecificati
 
 // Summary:
 //
-// Queries configuration information of an instance.
+// Queries the configuration of a cluster.
 //
 // @param request - QueryConfigRequest
 //
@@ -15789,7 +15789,7 @@ func (client *Client) QueryConfigWithOptions(request *QueryConfigRequest, runtim
 
 // Summary:
 //
-// Queries configuration information of an instance.
+// Queries the configuration of a cluster.
 //
 // @param request - QueryConfigRequest
 //
@@ -15807,7 +15807,7 @@ func (client *Client) QueryConfig(request *QueryConfigRequest) (_result *QueryCo
 
 // Summary:
 //
-// Queries the regions supported by a gateway.
+// Queries the regions supported by the gateway.
 //
 // @param request - QueryGatewayRegionRequest
 //
@@ -15851,7 +15851,7 @@ func (client *Client) QueryGatewayRegionWithOptions(request *QueryGatewayRegionR
 
 // Summary:
 //
-// Queries the regions supported by a gateway.
+// Queries the regions supported by the gateway.
 //
 // @param request - QueryGatewayRegionRequest
 //
@@ -15931,7 +15931,7 @@ func (client *Client) QueryGatewayType(request *QueryGatewayTypeRequest) (_resul
 
 // Summary:
 //
-// Queries the Kubernetes clusters for which Microservices Governance is activated.
+// Queries a list of Kubernetes clusters for microservice governance.
 //
 // @param request - QueryGovernanceKubernetesClusterRequest
 //
@@ -15991,7 +15991,7 @@ func (client *Client) QueryGovernanceKubernetesClusterWithOptions(request *Query
 
 // Summary:
 //
-// Queries the Kubernetes clusters for which Microservices Governance is activated.
+// Queries a list of Kubernetes clusters for microservice governance.
 //
 // @param request - QueryGovernanceKubernetesClusterRequest
 //
@@ -16177,7 +16177,7 @@ func (client *Client) QueryMonitor(request *QueryMonitorRequest) (_result *Query
 
 // Summary:
 //
-// Queries canary configurations of a Nacos instance.
+// Queries the grayscale configuration of a Nacos canary release environment.
 //
 // @param request - QueryNacosGrayConfigRequest
 //
@@ -16249,7 +16249,7 @@ func (client *Client) QueryNacosGrayConfigWithOptions(request *QueryNacosGrayCon
 
 // Summary:
 //
-// Queries canary configurations of a Nacos instance.
+// Queries the grayscale configuration of a Nacos canary release environment.
 //
 // @param request - QueryNacosGrayConfigRequest
 //
@@ -16267,7 +16267,7 @@ func (client *Client) QueryNacosGrayConfig(request *QueryNacosGrayConfigRequest)
 
 // Summary:
 //
-// 查询MSE命名空间
+// Queries the namespace to which Microservices Governance belongs.
 //
 // @param request - QueryNamespaceRequest
 //
@@ -16319,7 +16319,7 @@ func (client *Client) QueryNamespaceWithOptions(request *QueryNamespaceRequest, 
 
 // Summary:
 //
-// 查询MSE命名空间
+// Queries the namespace to which Microservices Governance belongs.
 //
 // @param request - QueryNamespaceRequest
 //
@@ -16395,7 +16395,7 @@ func (client *Client) QuerySlbSpec(request *QuerySlbSpecRequest) (_result *Query
 
 // Summary:
 //
-// Queries the information about a lane based on the lane ID.
+// Queries swimming lane information by swimming lane ID.
 //
 // @param request - QuerySwimmingLaneByIdRequest
 //
@@ -16447,7 +16447,7 @@ func (client *Client) QuerySwimmingLaneByIdWithOptions(request *QuerySwimmingLan
 
 // Summary:
 //
-// Queries the information about a lane based on the lane ID.
+// Queries swimming lane information by swimming lane ID.
 //
 // @param request - QuerySwimmingLaneByIdRequest
 //
@@ -16621,7 +16621,7 @@ func (client *Client) RemoveApplication(request *RemoveApplicationRequest) (_res
 
 // Summary:
 //
-// Deletes a service authentication rule.
+// Delete service authentication rules using the RemoveAuthPolicy interface.
 //
 // @param request - RemoveAuthPolicyRequest
 //
@@ -16669,7 +16669,7 @@ func (client *Client) RemoveAuthPolicyWithOptions(request *RemoveAuthPolicyReque
 
 // Summary:
 //
-// Deletes a service authentication rule.
+// Delete service authentication rules using the RemoveAuthPolicy interface.
 //
 // @param request - RemoveAuthPolicyRequest
 //
@@ -16687,7 +16687,7 @@ func (client *Client) RemoveAuthPolicy(request *RemoveAuthPolicyRequest) (_resul
 
 // Summary:
 //
-// 删除ZooKeeper sasl用户
+// Deletes ZooKeeper SASL users.
 //
 // @param tmpReq - RemoveZooKeeperSaslUserRequest
 //
@@ -16749,7 +16749,7 @@ func (client *Client) RemoveZooKeeperSaslUserWithOptions(tmpReq *RemoveZooKeeper
 
 // Summary:
 //
-// 删除ZooKeeper sasl用户
+// Deletes ZooKeeper SASL users.
 //
 // @param request - RemoveZooKeeperSaslUserRequest
 //
@@ -16989,7 +16989,7 @@ func (client *Client) SelectGatewaySlb(request *SelectGatewaySlbRequest) (_resul
 
 // Summary:
 //
-// Tags a specified resource.
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -17049,7 +17049,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Tags a specified resource.
+// Adds tags to specified resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -17067,7 +17067,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Untags resources.
+// Deletes tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -17131,7 +17131,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Untags resources.
+// Deletes tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -17149,7 +17149,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Modifies an IP address whitelist.
+// Modifies the whitelist.
 //
 // @param request - UpdateAclRequest
 //
@@ -17205,7 +17205,7 @@ func (client *Client) UpdateAclWithOptions(request *UpdateAclRequest, runtime *d
 
 // Summary:
 //
-// Modifies an IP address whitelist.
+// Modifies the whitelist.
 //
 // @param request - UpdateAclRequest
 //
@@ -17223,7 +17223,7 @@ func (client *Client) UpdateAcl(request *UpdateAclRequest) (_result *UpdateAclRe
 
 // Summary:
 //
-// Updates a service authentication rule.
+// Updates service authentication rules through the UpdateAuthPolicy operation.
 //
 // @param request - UpdateAuthPolicyRequest
 //
@@ -17303,7 +17303,7 @@ func (client *Client) UpdateAuthPolicyWithOptions(request *UpdateAuthPolicyReque
 
 // Summary:
 //
-// Updates a service authentication rule.
+// Updates service authentication rules through the UpdateAuthPolicy operation.
 //
 // @param request - UpdateAuthPolicyRequest
 //
@@ -17321,7 +17321,7 @@ func (client *Client) UpdateAuthPolicy(request *UpdateAuthPolicyRequest) (_resul
 
 // Summary:
 //
-// Modifies the blacklist or whitelist of a gateway.
+// Updates the blacklists and whitelists of a gateway.
 //
 // @param request - UpdateBlackWhiteListRequest
 //
@@ -17405,7 +17405,7 @@ func (client *Client) UpdateBlackWhiteListWithOptions(request *UpdateBlackWhiteL
 
 // Summary:
 //
-// Modifies the blacklist or whitelist of a gateway.
+// Updates the blacklists and whitelists of a gateway.
 //
 // @param request - UpdateBlackWhiteListRequest
 //
@@ -17537,7 +17537,7 @@ func (client *Client) UpdateCircuitBreakerRule(request *UpdateCircuitBreakerRule
 
 // Summary:
 //
-// Modifies the information about an instance.
+// Modifies the cluster information.
 //
 // @param request - UpdateClusterRequest
 //
@@ -17601,7 +17601,7 @@ func (client *Client) UpdateClusterWithOptions(request *UpdateClusterRequest, ru
 
 // Summary:
 //
-// Modifies the information about an instance.
+// Modifies the cluster information.
 //
 // @param request - UpdateClusterRequest
 //
@@ -17619,11 +17619,11 @@ func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *Upd
 
 // Summary:
 //
-// Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+// Updates the number of nodes or specifications of a registry and configuration center cluster (supports both pay-as-you-go and subscription).
 //
 // Description:
 //
-// You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
+// Updates the number of nodes or specifications of a registry and configuration center cluster (supports both pay-as-you-go and subscription). Adding nodes or upgrading specifications will incur corresponding fees. For more information, see [Pricing]\\(`~~1806469~~`).
 //
 // @param request - UpdateClusterSpecRequest
 //
@@ -17695,11 +17695,11 @@ func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecReq
 
 // Summary:
 //
-// Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+// Updates the number of nodes or specifications of a registry and configuration center cluster (supports both pay-as-you-go and subscription).
 //
 // Description:
 //
-// You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
+// Updates the number of nodes or specifications of a registry and configuration center cluster (supports both pay-as-you-go and subscription). Adding nodes or upgrading specifications will incur corresponding fees. For more information, see [Pricing]\\(`~~1806469~~`).
 //
 // @param request - UpdateClusterSpecRequest
 //
@@ -18073,7 +18073,7 @@ func (client *Client) UpdateFlowRule(request *UpdateFlowRuleRequest) (_result *U
 
 // Summary:
 //
-// 更新网关认证
+// Updates gateway authentication.
 //
 // @param tmpReq - UpdateGatewayAuthRequest
 //
@@ -18231,7 +18231,7 @@ func (client *Client) UpdateGatewayAuthWithOptions(tmpReq *UpdateGatewayAuthRequ
 
 // Summary:
 //
-// 更新网关认证
+// Updates gateway authentication.
 //
 // @param request - UpdateGatewayAuthRequest
 //
@@ -18249,7 +18249,7 @@ func (client *Client) UpdateGatewayAuth(request *UpdateGatewayAuthRequest) (_res
 
 // Summary:
 //
-// Updates the consumer on which a gateway performs authentication operations.
+// Updates a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerRequest
 //
@@ -18337,7 +18337,7 @@ func (client *Client) UpdateGatewayAuthConsumerWithOptions(request *UpdateGatewa
 
 // Summary:
 //
-// Updates the consumer on which a gateway performs authentication operations.
+// Updates a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerRequest
 //
@@ -18355,7 +18355,7 @@ func (client *Client) UpdateGatewayAuthConsumer(request *UpdateGatewayAuthConsum
 
 // Summary:
 //
-// Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+// Updates the authorization list of a gateway authentication consumer.
 //
 // @param tmpReq - UpdateGatewayAuthConsumerResourceRequest
 //
@@ -18417,7 +18417,7 @@ func (client *Client) UpdateGatewayAuthConsumerResourceWithOptions(tmpReq *Updat
 
 // Summary:
 //
-// Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+// Updates the authorization list of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerResourceRequest
 //
@@ -18435,7 +18435,7 @@ func (client *Client) UpdateGatewayAuthConsumerResource(request *UpdateGatewayAu
 
 // Summary:
 //
-// Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+// Updates the authorization status of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerResourceStatusRequest
 //
@@ -18495,7 +18495,7 @@ func (client *Client) UpdateGatewayAuthConsumerResourceStatusWithOptions(request
 
 // Summary:
 //
-// Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+// Updates the authorization status of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerResourceStatusRequest
 //
@@ -18513,7 +18513,7 @@ func (client *Client) UpdateGatewayAuthConsumerResourceStatus(request *UpdateGat
 
 // Summary:
 //
-// Updates the status of the consumer on which a gateway performs authentication operations.
+// Updates the status of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerStatusRequest
 //
@@ -18569,7 +18569,7 @@ func (client *Client) UpdateGatewayAuthConsumerStatusWithOptions(request *Update
 
 // Summary:
 //
-// Updates the status of the consumer on which a gateway performs authentication operations.
+// Updates the status of a gateway authentication consumer.
 //
 // @param request - UpdateGatewayAuthConsumerStatusRequest
 //
@@ -18587,7 +18587,7 @@ func (client *Client) UpdateGatewayAuthConsumerStatus(request *UpdateGatewayAuth
 
 // Summary:
 //
-// Updates a gateway circuit breaking rule.
+// Updates the circuit breaker rule for the gateway.
 //
 // @param request - UpdateGatewayCircuitBreakerRuleRequest
 //
@@ -18699,7 +18699,7 @@ func (client *Client) UpdateGatewayCircuitBreakerRuleWithOptions(request *Update
 
 // Summary:
 //
-// Updates a gateway circuit breaking rule.
+// Updates the circuit breaker rule for the gateway.
 //
 // @param request - UpdateGatewayCircuitBreakerRuleRequest
 //
@@ -18791,7 +18791,7 @@ func (client *Client) UpdateGatewayConfig(request *UpdateGatewayConfigRequest) (
 
 // Summary:
 //
-// Modifies the information about the domain name associated with a gateway.
+// Modifies the associated domain name information.
 //
 // @param tmpReq - UpdateGatewayDomainRequest
 //
@@ -18822,6 +18822,10 @@ func (client *Client) UpdateGatewayDomainWithOptions(tmpReq *UpdateGatewayDomain
 
 	if !dara.IsNil(request.CertIdentifier) {
 		query["CertIdentifier"] = request.CertIdentifier
+	}
+
+	if !dara.IsNil(request.EnableWaf) {
+		query["EnableWaf"] = request.EnableWaf
 	}
 
 	if !dara.IsNil(request.GatewayUniqueId) {
@@ -18885,7 +18889,7 @@ func (client *Client) UpdateGatewayDomainWithOptions(tmpReq *UpdateGatewayDomain
 
 // Summary:
 //
-// Modifies the information about the domain name associated with a gateway.
+// Modifies the associated domain name information.
 //
 // @param request - UpdateGatewayDomainRequest
 //
@@ -18903,7 +18907,7 @@ func (client *Client) UpdateGatewayDomain(request *UpdateGatewayDomainRequest) (
 
 // Summary:
 //
-// Queries throttling rules of a gateway.
+// Updates a throttling rule of a gateway.
 //
 // @param request - UpdateGatewayFlowRuleRequest
 //
@@ -18995,7 +18999,7 @@ func (client *Client) UpdateGatewayFlowRuleWithOptions(request *UpdateGatewayFlo
 
 // Summary:
 //
-// Queries throttling rules of a gateway.
+// Updates a throttling rule of a gateway.
 //
 // @param request - UpdateGatewayFlowRuleRequest
 //
@@ -19273,7 +19277,7 @@ func (client *Client) UpdateGatewayOption(request *UpdateGatewayOptionRequest) (
 
 // Summary:
 //
-// Updates a route for a gateway.
+// Updates a gateway route.
 //
 // @param tmpReq - UpdateGatewayRouteRequest
 //
@@ -19399,7 +19403,7 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 
 // Summary:
 //
-// Updates a route for a gateway.
+// Updates a gateway route.
 //
 // @param request - UpdateGatewayRouteRequest
 //
@@ -19417,7 +19421,7 @@ func (client *Client) UpdateGatewayRoute(request *UpdateGatewayRouteRequest) (_r
 
 // Summary:
 //
-// Updates the authentication configurations of a route.
+// Updates the route authentication configuration.
 //
 // @param tmpReq - UpdateGatewayRouteAuthRequest
 //
@@ -19483,7 +19487,7 @@ func (client *Client) UpdateGatewayRouteAuthWithOptions(tmpReq *UpdateGatewayRou
 
 // Summary:
 //
-// Updates the authentication configurations of a route.
+// Updates the route authentication configuration.
 //
 // @param request - UpdateGatewayRouteAuthRequest
 //
@@ -19741,7 +19745,7 @@ func (client *Client) UpdateGatewayRouteHeaderOp(request *UpdateGatewayRouteHead
 
 // Summary:
 //
-// Modifies the retry policy of a route.
+// Modifies the retry policy for a gateway route.
 //
 // @param tmpReq - UpdateGatewayRouteRetryRequest
 //
@@ -19807,7 +19811,7 @@ func (client *Client) UpdateGatewayRouteRetryWithOptions(tmpReq *UpdateGatewayRo
 
 // Summary:
 //
-// Modifies the retry policy of a route.
+// Modifies the retry policy for a gateway route.
 //
 // @param request - UpdateGatewayRouteRetryRequest
 //
@@ -19983,7 +19987,7 @@ func (client *Client) UpdateGatewayRouteWafStatus(request *UpdateGatewayRouteWaf
 
 // Summary:
 //
-// Updates gateways for fixed address services or DNS services.
+// Edit a gateway service (applicable only to fixed address services or DNS domain name services)
 //
 // @param tmpReq - UpdateGatewayServiceRequest
 //
@@ -20073,7 +20077,7 @@ func (client *Client) UpdateGatewayServiceWithOptions(tmpReq *UpdateGatewayServi
 
 // Summary:
 //
-// Updates gateways for fixed address services or DNS services.
+// Edit a gateway service (applicable only to fixed address services or DNS domain name services)
 //
 // @param request - UpdateGatewayServiceRequest
 //
@@ -20603,7 +20607,7 @@ func (client *Client) UpdateIsolationRule(request *UpdateIsolationRuleRequest) (
 
 // Summary:
 //
-// Updates the Intra-zone Provider First rules.
+// Updates zone affinity routing rules.
 //
 // @param request - UpdateLocalityRuleRequest
 //
@@ -20679,7 +20683,7 @@ func (client *Client) UpdateLocalityRuleWithOptions(request *UpdateLocalityRuleR
 
 // Summary:
 //
-// Updates the Intra-zone Provider First rules.
+// Updates zone affinity routing rules.
 //
 // @param request - UpdateLocalityRuleRequest
 //
@@ -20697,7 +20701,7 @@ func (client *Client) UpdateLocalityRule(request *UpdateLocalityRuleRequest) (_r
 
 // Summary:
 //
-// Updates the configuration of a canary release for messaging of an application.
+// Updates the message canary release configuration for an application.
 //
 // @param tmpReq - UpdateMessageQueueRouteRequest
 //
@@ -20783,7 +20787,7 @@ func (client *Client) UpdateMessageQueueRouteWithOptions(tmpReq *UpdateMessageQu
 
 // Summary:
 //
-// Updates the configuration of a canary release for messaging of an application.
+// Updates the message canary release configuration for an application.
 //
 // @param request - UpdateMessageQueueRouteRequest
 //
@@ -21121,7 +21125,7 @@ func (client *Client) UpdateNacosConfig(request *UpdateNacosConfigRequest) (_res
 
 // Summary:
 //
-// Updates the canary release settings, which include beta release and tag-based canary release.
+// Updates the canary release settings, including beta release and tag-based canary release.
 //
 // @param request - UpdateNacosGrayConfigRequest
 //
@@ -21221,7 +21225,7 @@ func (client *Client) UpdateNacosGrayConfigWithOptions(request *UpdateNacosGrayC
 
 // Summary:
 //
-// Updates the canary release settings, which include beta release and tag-based canary release.
+// Updates the canary release settings, including beta release and tag-based canary release.
 //
 // @param request - UpdateNacosGrayConfigRequest
 //
@@ -21449,7 +21453,7 @@ func (client *Client) UpdateNacosService(request *UpdateNacosServiceRequest) (_r
 
 // Summary:
 //
-// Updates plug-in configurations.
+// Updates the configuration of a plug-in.
 //
 // @param tmpReq - UpdatePluginConfigRequest
 //
@@ -21541,7 +21545,7 @@ func (client *Client) UpdatePluginConfigWithOptions(tmpReq *UpdatePluginConfigRe
 
 // Summary:
 //
-// Updates plug-in configurations.
+// Updates the configuration of a plug-in.
 //
 // @param request - UpdatePluginConfigRequest
 //
@@ -21937,7 +21941,7 @@ func (client *Client) UpdateZnode(request *UpdateZnodeRequest) (_result *UpdateZ
 
 // Summary:
 //
-// 修改ZooKeeper sasl 用户信息
+// Updates the SASL user information for ZooKeeper.
 //
 // @param tmpReq - UpdateZooKeeperSaslUserRequest
 //
@@ -21999,7 +22003,7 @@ func (client *Client) UpdateZooKeeperSaslUserWithOptions(tmpReq *UpdateZooKeeper
 
 // Summary:
 //
-// 修改ZooKeeper sasl 用户信息
+// Updates the SASL user information for ZooKeeper.
 //
 // @param request - UpdateZooKeeperSaslUserRequest
 //
@@ -22017,7 +22021,7 @@ func (client *Client) UpdateZooKeeperSaslUser(request *UpdateZooKeeperSaslUserRe
 
 // Summary:
 //
-// Upgrades the version of a cluster.
+// Upgrades the cluster version.
 //
 // @param request - UpgradeClusterRequest
 //
@@ -22073,7 +22077,7 @@ func (client *Client) UpgradeClusterWithOptions(request *UpgradeClusterRequest, 
 
 // Summary:
 //
-// Upgrades the version of a cluster.
+// Upgrades the cluster version.
 //
 // @param request - UpgradeClusterRequest
 //

@@ -14,6 +14,8 @@ type iUpdateGatewayConfigResponseBody interface {
 }
 
 type UpdateGatewayConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// AF21683A-29C7-4853-AC0F-B5ADEE4D****

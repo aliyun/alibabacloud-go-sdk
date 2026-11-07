@@ -145,7 +145,7 @@ type GetNacosConfigResponseBodyConfiguration struct {
 	//
 	// example:
 	//
-	// For testing
+	// Testdedicateduse
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// Encrypted key.
 	//

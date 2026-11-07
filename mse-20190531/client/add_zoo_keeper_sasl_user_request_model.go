@@ -20,20 +20,28 @@ type iAddZooKeeperSaslUserRequest interface {
 }
 
 type AddZooKeeperSaslUserRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese, en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to restart the cluster to immediately load the SASL users.
+	//
 	// example:
 	//
 	// true
 	Reload *bool `json:"Reload,omitempty" xml:"Reload,omitempty"`
+	// The list of SASL users to add.
+	//
 	// This parameter is required.
 	SaslUser []*AddZooKeeperSaslUserRequestSaslUser `json:"SaslUser,omitempty" xml:"SaslUser,omitempty" type:"Repeated"`
 }
@@ -96,14 +104,20 @@ func (s *AddZooKeeperSaslUserRequest) Validate() error {
 }
 
 type AddZooKeeperSaslUserRequestSaslUser struct {
+	// The description of the user.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// traaqwrasdf
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// user

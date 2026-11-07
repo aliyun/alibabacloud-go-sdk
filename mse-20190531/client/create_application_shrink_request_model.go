@@ -30,11 +30,11 @@ type iCreateApplicationShrinkRequest interface {
 }
 
 type CreateApplicationShrinkRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// JAVA
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// MSE命名空间名字。
+	// The name of the MSE namespace.
 	//
 	// example:
 	//
@@ -68,25 +68,26 @@ type CreateApplicationShrinkRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Specifies whether to start the switch.
+	// Specifies whether to enable Sentinel.
 	//
 	// example:
 	//
 	// true
 	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
-	// The service where the application is deployed. A value of ACK indicates Container Service for Kubernetes.
+	// The deployment method of the application. ACK indicates Container Service for Kubernetes (ACK).
 	//
 	// example:
 	//
 	// ACK
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace.
+	// Specifies whether to enable Switch.
 	//
 	// example:
 	//
 	// true
 	SwitchEnable *string `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
-	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The Alibaba Cloud tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s CreateApplicationShrinkRequest) String() string {

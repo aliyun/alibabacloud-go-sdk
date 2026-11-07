@@ -24,37 +24,37 @@ type iGetGatewayServiceDetailResponseBody interface {
 }
 
 type GetGatewayServiceDetailResponseBody struct {
-	// The response code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 1
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The data overview.
 	Data *GetGatewayServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// Succ
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9802C54E-5CC5-5706-927B-993DBB6DCF2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -134,14 +134,15 @@ func (s *GetGatewayServiceDetailResponseBody) Validate() error {
 }
 
 type GetGatewayServiceDetailResponseBodyData struct {
+	// The list of DNS servers. This parameter is only used for DNS domain name services.
 	DnsServerList []*string `json:"DnsServerList,omitempty" xml:"DnsServerList,omitempty" type:"Repeated"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
 	// 1
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The traffic policy of the service.
+	// The service traffic policy.
 	//
 	// example:
 	//
@@ -165,41 +166,41 @@ type GetGatewayServiceDetailResponseBodyData struct {
 	//
 	// 2022-01-07T10:07:57.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The name of the group.
+	// The group name.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether the health check is enabled.
+	// Indicates whether health checks are enabled.
 	//
 	// example:
 	//
 	// true
 	HealthCheck *string `json:"HealthCheck,omitempty" xml:"HealthCheck,omitempty"`
-	// The status of the health check. Valid values:
+	// The health check status.
 	//
 	// example:
 	//
 	// true
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP address of the service.
+	// The IP addresses of the service.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The details of the tag.
+	// The label details.
 	LabelDetails []*GetGatewayServiceDetailResponseBodyDataLabelDetails `json:"LabelDetails,omitempty" xml:"LabelDetails,omitempty" type:"Repeated"`
-	// The basic information about the service.
+	// The basic information of the service.
 	//
 	// example:
 	//
 	// {}
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
@@ -211,39 +212,49 @@ type GetGatewayServiceDetailResponseBodyData struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The traffic policy of service ports.
+	// The traffic policies for service ports.
 	PortTrafficPolicyList []*GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList `json:"PortTrafficPolicyList,omitempty" xml:"PortTrafficPolicyList,omitempty" type:"Repeated"`
 	// The array of service ports.
-	Ports       []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	ServiceFQDN *string  `json:"ServiceFQDN,omitempty" xml:"ServiceFQDN,omitempty"`
-	// The name of the service registered with the service registry.
+	Ports []*int32 `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	// The fully qualified domain name (FQDN) of the service.
+	//
+	// example:
+	//
+	// demo.default.svc.cluster.local
+	ServiceFQDN *string `json:"ServiceFQDN,omitempty" xml:"ServiceFQDN,omitempty"`
+	// The name of the service registered in the registry.
 	//
 	// example:
 	//
 	// test
 	ServiceNameInRegistry *string `json:"ServiceNameInRegistry,omitempty" xml:"ServiceNameInRegistry,omitempty"`
-	ServicePort           *int32  `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
-	// The protocol of the service.
+	// The service port.
+	//
+	// example:
+	//
+	// 8080
+	ServicePort *int32 `json:"ServicePort,omitempty" xml:"ServicePort,omitempty"`
+	// The service protocol.
 	//
 	// example:
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	// The ID of the service source.
+	// The source ID.
 	//
 	// example:
 	//
 	// 1
 	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type of the service.
+	// The service source.
 	//
 	// example:
 	//
 	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The details of versions.
+	// The version details.
 	VersionDetails []*GetGatewayServiceDetailResponseBodyDataVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
-	// The service version. This parameter is deprecated.
+	// The service version numbers. **[Deprecated]**
 	Versions []*GetGatewayServiceDetailResponseBodyDataVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -526,13 +537,13 @@ func (s *GetGatewayServiceDetailResponseBodyData) Validate() error {
 }
 
 type GetGatewayServiceDetailResponseBodyDataLabelDetails struct {
-	// The tag.
+	// The label.
 	//
 	// example:
 	//
 	// label
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -585,7 +596,7 @@ type GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList struct {
 	//
 	// 1667460287386
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The port ID.
+	// The port configuration ID.
 	//
 	// example:
 	//
@@ -597,7 +608,7 @@ type GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList struct {
 	//
 	// 1
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service port number.
+	// The service port.
 	//
 	// example:
 	//
@@ -749,9 +760,9 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetails) Validate() error
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion struct {
-	// The tag.
+	// The label.
 	Labels []*GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The version number.
+	// The version name.
 	//
 	// example:
 	//
@@ -799,13 +810,13 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion) Va
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels struct {
-	// The tag.
+	// The label.
 	//
 	// example:
 	//
 	// version
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//
@@ -844,7 +855,7 @@ func (s *GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabe
 }
 
 type GetGatewayServiceDetailResponseBodyDataVersions struct {
-	// The tag.
+	// The label.
 	//
 	// example:
 	//
@@ -856,7 +867,7 @@ type GetGatewayServiceDetailResponseBodyDataVersions struct {
 	//
 	// test
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//

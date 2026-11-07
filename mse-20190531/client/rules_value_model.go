@@ -30,50 +30,6 @@ type iRulesValue interface {
 type RulesValue struct {
 	// The status.
 	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The routing rule does not take effect
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- 1
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The routing rule takes effect
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- 2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     The routing rule is invalid
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
 	// example:
 	//
 	// 0
@@ -84,13 +40,13 @@ type RulesValue struct {
 	//
 	// 10
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// Specifies whether to enable the routing rule.
+	// Specifies whether the rule is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The environment of the routing rule.
+	// The environment of this routing rule.
 	//
 	// example:
 	//
@@ -102,7 +58,7 @@ type RulesValue struct {
 	//
 	// gray
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the routing rule.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -114,7 +70,7 @@ type RulesValue struct {
 	//
 	// 10
 	InstanceNum *int32 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	// The details of the routing rule.
+	// The rule information.
 	Rules *RulesValueRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
 
@@ -208,9 +164,9 @@ func (s *RulesValue) Validate() error {
 }
 
 type RulesValueRules struct {
-	// The rule of the Spring Cloud application.
+	// The Spring Cloud rules.
 	Springcloud []*RulesValueRulesSpringcloud `json:"springcloud,omitempty" xml:"springcloud,omitempty" type:"Repeated"`
-	// The rules of the Dubbo application.
+	// The Dubbo rules.
 	Dubbo []*RulesValueRulesDubbo `json:"dubbo,omitempty" xml:"dubbo,omitempty" type:"Repeated"`
 }
 
@@ -263,38 +219,21 @@ func (s *RulesValueRules) Validate() error {
 }
 
 type RulesValueRulesSpringcloud struct {
-	// The logical operation relationships. Valid values: AND and OR.
+	// The logical operator used between the following items. Valid values: AND and OR.
 	//
 	// example:
 	//
 	// AND
-	Condition *string                                `json:"condition,omitempty" xml:"condition,omitempty"`
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The list of matching conditions for REST requests.
 	RestItems []*RulesValueRulesSpringcloudRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
 	// The policy type.
-	//
-	// Valid values:
-	//
-	// 	- PERCENT
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CONTENT
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
 	// CONTENT
 	TriggerPolicy *string `json:"triggerPolicy,omitempty" xml:"triggerPolicy,omitempty"`
-	// Specifies whether to enable the routing rule.
+	// Specifies whether the rule is enabled.
 	//
 	// example:
 	//
@@ -312,7 +251,7 @@ type RulesValueRulesSpringcloud struct {
 	//
 	// 1
 	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The list of paths.
 	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
@@ -427,19 +366,19 @@ func (s *RulesValueRulesSpringcloud) Validate() error {
 }
 
 type RulesValueRulesSpringcloudRestItems struct {
-	// The value on which operators such as rawvalue are performed.
+	// The value to be compared for operators such as rawvalue.
 	//
 	// example:
 	//
 	// 10
 	Datum *string `json:"datum,omitempty" xml:"datum,omitempty"`
-	// The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
+	// The operator. A value of rawvalue indicates direct comparison. A value of mode indicates a modulo operation. A value of list indicates a whitelist.
 	//
 	// example:
 	//
 	// rawvalue
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// Information about the fields that are required by the list operator.
+	// The field required for the list operator.
 	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
 	// The comparison operator. Valid values: >=, <=, >, <, and ==.
 	//
@@ -447,19 +386,19 @@ type RulesValueRulesSpringcloudRestItems struct {
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// The divisor that is required by the mod operator.
+	// The divisor field required for the mod operator.
 	//
 	// example:
 	//
 	// 30
 	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	// The remainder.
+	// The percentage value field required for the percentage operation.
 	//
 	// example:
 	//
 	// 30
 	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	// The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
+	// The proportion rule. For example, 20% indicates that 20% of the traffic is routed to the node corresponding to the tag.
 	//
 	// example:
 	//
@@ -594,7 +533,7 @@ type RulesValueRulesDubbo struct {
 	//
 	// ***@***
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The policy type.
 	//
@@ -608,33 +547,33 @@ type RulesValueRulesDubbo struct {
 	//
 	// HelloService
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// The group of the Dubbo application.
+	// The Dubbo service group.
 	//
 	// example:
 	//
 	// default
 	Group *string `json:"group,omitempty" xml:"group,omitempty"`
-	// The version of the Dubbo application.
+	// The Dubbo service version.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The method name of the Dubbo application.
+	// The method name of the Dubbo service.
 	//
 	// example:
 	//
 	// hello
 	MethodName *string `json:"methodName,omitempty" xml:"methodName,omitempty"`
-	// The list of parameter data types.
+	// The list of parameter types.
 	ParamTypes []*string `json:"paramTypes,omitempty" xml:"paramTypes,omitempty" type:"Repeated"`
-	// The logical operation relationships. Valid values: AND and OR.
+	// The logical operator used between the following items. Valid values: AND and OR.
 	//
 	// example:
 	//
 	// AND
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The list of parameter contents.
+	// The list of parameter content.
 	ArgumentItems []*RulesValueRulesDubboArgumentItems `json:"argumentItems,omitempty" xml:"argumentItems,omitempty" type:"Repeated"`
 }
 
@@ -750,7 +689,7 @@ func (s *RulesValueRulesDubbo) Validate() error {
 }
 
 type RulesValueRulesDubboArgumentItems struct {
-	// The operator. A value of rawvalue indicates direct comparison. A value of mode indicates the modulo operation. A value of list indicates using a whitelist.
+	// The operator. A value of rawvalue indicates direct comparison. A value of mode indicates a modulo operation. A value of list indicates a whitelist.
 	//
 	// example:
 	//
@@ -758,7 +697,7 @@ type RulesValueRulesDubboArgumentItems struct {
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
 	// The list of names.
 	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
-	// The value on which operators such as rawvalue are performed.
+	// The value to be compared for operators such as rawvalue.
 	//
 	// example:
 	//
@@ -770,33 +709,33 @@ type RulesValueRulesDubboArgumentItems struct {
 	//
 	// ==
 	Cond *string `json:"cond,omitempty" xml:"cond,omitempty"`
-	// The divisor that is required by the mod operator.
+	// The divisor field required for the mod operator.
 	//
 	// example:
 	//
 	// 30
 	Divisor *int32 `json:"divisor,omitempty" xml:"divisor,omitempty"`
-	// The remainder.
+	// The percentage value field required for the percentage operation.
 	//
 	// example:
 	//
 	// 30
 	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	// The rate. A value of 20 indicates that 20% of the traffic is routed to the tagged node.
+	// The proportion rule. For example, 20% indicates that 20% of the traffic is routed to the node corresponding to the tag.
 	//
 	// example:
 	//
 	// 10
 	Rate *int32 `json:"rate,omitempty" xml:"rate,omitempty"`
-	// The position of the parameter, which starts from 0.
+	// The position of the parameter, starting from 0.
 	//
 	// example:
 	//
 	// 0
 	Index *int32 `json:"index,omitempty" xml:"index,omitempty"`
-	// The expression.
+	// The expression. See other field descriptions for details.
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
-	// The value that is used for comparison. The value obtained by the expression is compared with this value. If the list operator is used, data of the value parameter is separated by commas (,). For example, 1,2,3.
+	// The value to compare. The value obtained from the expression is compared with this value. If the operator is a list whitelist, separate values with commas (,), such as 1,2,3.
 	//
 	// example:
 	//

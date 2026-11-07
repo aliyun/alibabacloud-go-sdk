@@ -38,66 +38,104 @@ type iUpdateGatewayIsolationRuleRequest interface {
 }
 
 type UpdateGatewayIsolationRuleRequest struct {
+	// The language in which you want to display the results. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The type of the web fallback behavior.
+	//
+	// 0: The specified content is returned.
+	//
+	// 1: Redirect to the specified page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: plain text
+	//
+	// 1: JSON text
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// 0: disable
+	//
+	// 1: enable
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The ID of the concurrency rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 358
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum number of concurrent requests.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The HTTP text to be returned.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The URL to be redirected to.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The route ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 52853
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The route name.
+	//
 	// This parameter is required.
 	//
 	// example:

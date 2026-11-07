@@ -24,37 +24,37 @@ type iListServiceSourceResponseBody interface {
 }
 
 type ListServiceSourceResponseBody struct {
-	// The status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned results.
 	Data []*ListServiceSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B8C4B0D8-EBB9-5F20-8295-04224FBE5529
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -138,19 +138,19 @@ func (s *ListServiceSourceResponseBody) Validate() error {
 }
 
 type ListServiceSourceResponseBodyData struct {
-	// The ID of the Container Service for Kubernetes (ACK) cluster or the endpoint of the Microservices Engine (MSE) instance.
+	// The ACK ID or the MSE registry address.
 	//
 	// example:
 	//
 	// ***
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Indicates whether the service source is associated with the gateway. The value 1 indicates that the service source is associated with the gateway.
+	// Indicates whether the binding is completed. A value of 1 indicates that the binding is completed.
 	//
 	// example:
 	//
 	// 1
 	BindingWithGateway *int32 `json:"BindingWithGateway,omitempty" xml:"BindingWithGateway,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -182,24 +182,25 @@ type ListServiceSourceResponseBodyData struct {
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The information about the support for Ingresses by applications.
+	// The Ingress support for application routing.
 	IngressOptions *ListServiceSourceResponseBodyDataIngressOptions `json:"IngressOptions,omitempty" xml:"IngressOptions,omitempty" type:"Struct"`
-	Invalid        *bool                                            `json:"Invalid,omitempty" xml:"Invalid,omitempty"`
+	// Indicates whether the source is valid.
+	Invalid *bool `json:"Invalid,omitempty" xml:"Invalid,omitempty"`
 	// The name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The array of root paths of service lists.
+	// The array of root paths for the service list.
 	PathList []*string `json:"PathList,omitempty" xml:"PathList,omitempty" type:"Repeated"`
-	// The type of the service source.
+	// The source type.
 	//
 	// example:
 	//
 	// MSE
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The unique ID of the service source.
+	// The unique identifier of the source.
 	//
 	// example:
 	//
@@ -366,13 +367,13 @@ func (s *ListServiceSourceResponseBodyData) Validate() error {
 }
 
 type ListServiceSourceResponseBodyDataIngressOptions struct {
-	// Indicates whether Ingresses are enabled.
+	// Specifies whether to enable or disable Ingress.
 	//
 	// example:
 	//
 	// true
 	EnableIngress *bool `json:"EnableIngress,omitempty" xml:"EnableIngress,omitempty"`
-	// Indicates whether the Ingress status is updated.
+	// Specifies whether to update IngressStatus.
 	//
 	// example:
 	//
@@ -384,7 +385,7 @@ type ListServiceSourceResponseBodyDataIngressOptions struct {
 	//
 	// com.test.xxx
 	IngressClass *string `json:"IngressClass,omitempty" xml:"IngressClass,omitempty"`
-	// The namespace that you want to monitor.
+	// The monitored namespace.
 	//
 	// example:
 	//

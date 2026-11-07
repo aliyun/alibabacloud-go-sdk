@@ -24,9 +24,9 @@ type iPullServicesRequest interface {
 type PullServicesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -44,15 +44,17 @@ type PullServicesRequest struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The service source ID.
+	//
 	// example:
 	//
 	// 100
 	SourceId *int64 `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the service source.
+	// The service source type.
 	//
 	// example:
 	//
-	// K8s
+	// K8S
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 

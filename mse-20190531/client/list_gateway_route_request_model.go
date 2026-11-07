@@ -24,37 +24,37 @@ type iListGatewayRouteRequest interface {
 }
 
 type ListGatewayRouteRequest struct {
-	// The language of the response. Valid values:
+	// Language type for returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable sorting. This parameter is unavailable.
+	// Sorting. This field is currently unavailable and being deprecated.
 	//
 	// example:
 	//
 	// false
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// The parameters that specify filter conditions. The parameters are in the format of {"key1":"value1"}.
+	// Filter conditions in the format {"key1":"value1"}
 	FilterParams *ListGatewayRouteRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
-	// The item based on which entries are sorted.
+	// Sorting property.
 	//
 	// example:
 	//
 	// GmtCreate
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The number of the page to return.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Number of instances displayed per page (currently not in effect, queries all instances by default).
 	//
 	// example:
 	//
@@ -136,31 +136,31 @@ func (s *ListGatewayRouteRequest) Validate() error {
 type ListGatewayRouteRequestFilterParams struct {
 	// Deprecated
 	//
-	// The default service ID.
+	// Default service ID
 	//
 	// example:
 	//
 	// 1
 	DefaultServiceId *int64 `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
-	// The domain ID.
+	// Domain ID
 	//
 	// example:
 	//
 	// 284
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The associated domain name.
+	// Associated domain
 	//
 	// example:
 	//
 	// *.alites.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the gateway.
+	// Gateway ID
 	//
 	// example:
 	//
 	// 81
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The unique ID of the gateway.
+	// Gateway unique identifier ID
 	//
 	// This parameter is required.
 	//
@@ -168,27 +168,41 @@ type ListGatewayRouteRequestFilterParams struct {
 	//
 	// gw-30a0106924c94bca8712ec4e79fc5acc
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The name of the gateway.
+	// Route name
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Route path
+	//
 	// example:
 	//
 	// /test
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The order.
+	// Order (unused)
 	//
 	// example:
 	//
 	// 1
 	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	// The status.
+	// Route status:
+	//
+	// - Unpublished: 0
+	//
+	// - Publishing: 2
+	//
+	// - Published: 3
+	//
+	// - Editing (updates not published): 4
+	//
+	// - Unpublishing: 5
+	//
+	// - Unavailable: 6
 	//
 	// example:
 	//
-	// 1
+	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

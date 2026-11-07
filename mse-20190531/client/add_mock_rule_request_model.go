@@ -36,17 +36,17 @@ type iAddMockRuleRequest interface {
 }
 
 type AddMockRuleRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the custom application.
+	// The IDs of the custom applications.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type AddMockRuleRequest struct {
 	//
 	// []
 	DubboMockItems *string `json:"DubboMockItems,omitempty" xml:"DubboMockItems,omitempty"`
-	// Specifies whether to enable the alert rule. Valid values:
+	// Specifies whether the alert rule is enabled. Valid values:
 	//
-	// 	- `true`: enables the alert rule.
+	// - `true`: Enabled.
 	//
-	// 	- `false`: disables the alert rule.
+	// - `false`: Disabled.
 	//
 	// example:
 	//
@@ -80,15 +80,15 @@ type AddMockRuleRequest struct {
 	//
 	// {}
 	ExtraJson *string `json:"ExtraJson,omitempty" xml:"ExtraJson,omitempty"`
-	// The response time (RT) threshold of slow calls. Valid values:
+	// The response time (RT) for slow calls. Valid values:
 	//
-	// 	- \\- 15: 15 ms
+	// - 15: 15 ms
 	//
-	// 	- \\- 30: 30 ms
+	// - 30: 30 ms
 	//
-	// 	- \\- 60: 60 ms
+	// - 60: 60 ms
 	//
-	// 	- \\- 120: 120 ms
+	// - 120: 120 ms
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type AddMockRuleRequest struct {
 	//
 	// demo-cartservice
 	ProviderAppName *string `json:"ProviderAppName,omitempty" xml:"ProviderAppName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -122,7 +122,7 @@ type AddMockRuleRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The input parameters. The JSON format is supported.
+	// The input parameters. JSON format is supported.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type AddMockRuleRequest struct {
 	//
 	// []
 	ScMockItems *string `json:"ScMockItems,omitempty" xml:"ScMockItems,omitempty"`
-	// The rule source.
+	// The source of the rule.
 	//
 	// This parameter is required.
 	//

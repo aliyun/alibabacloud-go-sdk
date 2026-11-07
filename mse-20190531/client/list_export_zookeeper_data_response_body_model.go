@@ -52,7 +52,7 @@ type ListExportZookeeperDataResponseBody struct {
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//

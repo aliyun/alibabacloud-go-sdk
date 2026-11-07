@@ -20,29 +20,29 @@ type iAddGatewayServiceVersionRequest interface {
 }
 
 type AddGatewayServiceVersionRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The unique ID of the gateway.
+	// The unique gateway ID.
 	//
 	// example:
 	//
 	// gw-913a49bab6c5461187a3305fb8da****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the service.
+	// The service ID.
 	//
 	// example:
 	//
 	// 33
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The version of the service.
+	// The service version.
 	//
 	// example:
 	//

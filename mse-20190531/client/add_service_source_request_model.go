@@ -32,63 +32,92 @@ type iAddServiceSourceRequest interface {
 }
 
 type AddServiceSourceRequest struct {
-	// The language of the response. Valid values:
+	// The supported languages. Valid values:
 	//
-	// 	- zh-CN (default): Chinese
+	// - zh-CN: Chinese. This is the default value.
 	//
-	// 	- en-US: English
+	// - en-US: English.
 	//
-	// 	- ja: Japanese
+	// - ja: Japanese.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to monitor Ingress classes.
+	// The access address. This parameter is required.
+	//
+	// 	- Container Service: the ID of the Container Service cluster.
+	//
+	// 	- MSE Nacos: the internal endpoint of the instance.
+	//
+	// 	- MSE ZooKeeper: the internal endpoint of the instance.
+	//
+	// 	- SAE registry: the namespace TID.
+	//
+	// 	- EDAS registry: the microservice namespace.
 	//
 	// example:
 	//
-	// c9ad2a0717032427e920754e25b49e3b5
+	// mse-********-nacos-ans.mse.aliyuncs.com:8848
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// Specifies whether to update the Ingress status.
+	// The unique ID of the gateway.
 	//
 	// example:
 	//
 	// gw-c70622ff52fe49beb29bea9a6f52****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The data structure.
-	GroupList []*string `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	// The list of service groups.
+	GroupList []*string `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
+	// The Ingress configurations. This parameter is used when the service source type is K8s.
 	IngressOptionsRequest *AddServiceSourceRequestIngressOptionsRequest `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty" type:"Struct"`
-	// The namespace whose resources you want to monitor.
+	// The name.
+	//
+	//
+	// > Descriptions for different source types.
+	//
+	// - When the type is K8s, the input parameter is the name.
+	//
+	// - When the type is NACOS, the input parameter is the instance ID.
 	//
 	// example:
 	//
-	// istio
+	// nacos
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The HTTP status code returned.
+	// The array of service root paths.
 	PathList []*string `json:"PathList,omitempty" xml:"PathList,omitempty" type:"Repeated"`
-	// The service source.
+	// The service source type:
 	//
-	// 	- K8s: ACK cluster
+	// - Container Service: K8S
 	//
-	// 	- NACOS: MSE Nacos instance
+	// - MSE Nacos: MSE
+	//
+	// - MSE ZooKeeper: MSE_ZK
+	//
+	// - SAE registry: SAE
+	//
+	// - EDAS registry: EDAS
 	//
 	// example:
 	//
-	// K8s,MSE
+	// MSE
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The list of security groups to be authorized. You can specify security groups to allow backend services to access data sources that you create.
+	// The list of security groups to be authorized. This parameter is used to remove security group restrictions for backend services when creating a source.
 	ToAuthorizeSecurityGroups []*AddServiceSourceRequestToAuthorizeSecurityGroups `json:"ToAuthorizeSecurityGroups,omitempty" xml:"ToAuthorizeSecurityGroups,omitempty" type:"Repeated"`
-	// The type of the service source.
+	// The service registration type. Specify the corresponding value based on the source type:
 	//
-	// 	- K8s: Container Service for Kubernetes (ACK) cluster
+	// - Container Service: K8S
 	//
-	// 	- NACOS: Nacos instance
+	// - MSE Nacos: NACOS
+	//
+	// - MSE ZooKeeper: ZOOKEEPER
+	//
+	// - SAE registry: NACOS
+	//
+	// - EDAS registry: NACOS
 	//
 	// example:
 	//
-	// The Ingress configuration.
+	// NACOS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -209,31 +238,25 @@ func (s *AddServiceSourceRequest) Validate() error {
 }
 
 type AddServiceSourceRequestIngressOptionsRequest struct {
-	// The group to which the service belongs.
+	// Specifies whether to enable Ingress.
 	//
 	// example:
 	//
 	// true
 	EnableIngress *bool `json:"EnableIngress,omitempty" xml:"EnableIngress,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// 	- zh-CN: Chinese. This is the default value.
-	//
-	// 	- en-US: English.
-	//
-	// 	- ja: Japanese.
+	// Specifies whether to update the Ingress status.
 	//
 	// example:
 	//
 	// true
 	EnableStatus *bool `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	// An array of service root paths.
+	// The Ingress class to listen on.
 	//
 	// example:
 	//
 	// com.test.xxx
 	IngressClass *string `json:"IngressClass,omitempty" xml:"IngressClass,omitempty"`
-	// The root path of the service.
+	// The target namespace to watch.
 	//
 	// example:
 	//
@@ -296,7 +319,7 @@ type AddServiceSourceRequestToAuthorizeSecurityGroups struct {
 	//
 	// rule for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The authorized port range of the security group. You can select multiple port ranges. Separate each port range with a comma (,).
+	// The authorized port range of the security group. You can specify multiple port ranges separated by commas (,).
 	//
 	// example:
 	//

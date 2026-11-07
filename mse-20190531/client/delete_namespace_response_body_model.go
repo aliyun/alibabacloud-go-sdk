@@ -22,21 +22,32 @@ type iDeleteNamespaceResponseBody interface {
 }
 
 type DeleteNamespaceResponseBody struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// NO_PERMISSION
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Request information for troubleshooting.
+	//
+	// example:
+	//
+	// The request is processed successfully.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// abcde-efg
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation is successful.
+	//
 	// example:
 	//
 	// true

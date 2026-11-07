@@ -24,37 +24,37 @@ type iDeleteZnodeResponseBody interface {
 }
 
 type DeleteZnodeResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data *DeleteZnodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC34E4A3-5F1C-4E40-86EA-02EDF967****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,29 +134,29 @@ func (s *DeleteZnodeResponseBody) Validate() error {
 }
 
 type DeleteZnodeResponseBodyData struct {
-	// The data of the node.
+	// The list of node data.
 	//
 	// example:
 	//
 	// cluster
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Indicates whether the node information was returned. Valid values:
+	// The node list information. Valid values:
 	//
-	// 	- `true`: The node information was returned.
+	// - `true`: The information is returned successfully.
 	//
-	// 	- `false`: The node information failed to be returned.
+	// - `false`: The information fails to be returned.
 	//
 	// example:
 	//
 	// true
 	Dir *bool `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// example:
 	//
 	// mse-bc1a29b0-160230875****-reg-center-0-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The path of the node.
+	// The node path.
 	//
 	// example:
 	//

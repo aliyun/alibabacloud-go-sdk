@@ -24,9 +24,9 @@ type iAddSecurityGroupRuleRequest interface {
 type AddSecurityGroupRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AddSecurityGroupRuleRequest struct {
 	//
 	// gw-c9bc5afd61014165bd58f621b491****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The range of port numbers.
+	// The port range.
 	//
 	// This parameter is required.
 	//

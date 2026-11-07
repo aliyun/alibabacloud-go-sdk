@@ -44,29 +44,31 @@ type iUpdateGatewayRouteRequest interface {
 }
 
 type UpdateGatewayRouteRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The description of the route.
+	//
 	// example:
 	//
 	// a route for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination service type.
+	// The type of the destination service.
 	//
 	// example:
 	//
 	// Mock
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The information about service mocking.
+	// The mock content.
 	DirectResponseJSON *UpdateGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
-	// The associated domain name.
+	// The associated domain names.
 	//
 	// example:
 	//
@@ -74,19 +76,19 @@ type UpdateGatewayRouteRequest struct {
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to activate Web Application Firewall (WAF).
+	// **[Deprecated]*	- Use UpdateGatewayRouteWafStatus to update the WAF status of the route.
 	//
 	// example:
 	//
 	// false
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
-	// Specifies whether to enable the Fallback service.
+	// Specifies whether to enable the fallback service.
 	//
 	// example:
 	//
 	// true
 	Fallback *bool `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The information about the Fallback service.
+	// The fallback services.
 	FallbackServices []*UpdateGatewayRouteRequestFallbackServices `json:"FallbackServices,omitempty" xml:"FallbackServices,omitempty" type:"Repeated"`
 	// The ID of the gateway.
 	//
@@ -114,17 +116,17 @@ type UpdateGatewayRouteRequest struct {
 	//
 	// route-web
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The route matching conditions.
+	// The matching conditions of the route.
 	Predicates *UpdateGatewayRouteRequestPredicates `json:"Predicates,omitempty" xml:"Predicates,omitempty" type:"Struct"`
-	// The information about redirection.
+	// The redirect configuration.
 	RedirectJSON *UpdateGatewayRouteRequestRedirectJSON `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty" type:"Struct"`
-	// The sequence number of the route.
+	// The order of the route.
 	//
 	// example:
 	//
 	// 1
 	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	// The information about destination services.
+	// The destination services. Specify this parameter when the route points to a single service, multiple services, or tag-based routing.
 	Services []*UpdateGatewayRouteRequestServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -318,13 +320,13 @@ func (s *UpdateGatewayRouteRequest) Validate() error {
 }
 
 type UpdateGatewayRouteRequestDirectResponseJSON struct {
-	// The mock return value.
+	// The mock response body.
 	//
 	// example:
 	//
 	// hello
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// The mock return code.
+	// The mock response code.
 	//
 	// example:
 	//
@@ -363,13 +365,13 @@ func (s *UpdateGatewayRouteRequestDirectResponseJSON) Validate() error {
 }
 
 type UpdateGatewayRouteRequestFallbackServices struct {
-	// The type of the protocol. Valid values:
+	// The protocol type.
 	//
 	// example:
 	//
 	// DUBBO
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
-	// The name of the group to which the service belongs.
+	// The name of the service group.
 	//
 	// example:
 	//
@@ -381,13 +383,13 @@ type UpdateGatewayRouteRequestFallbackServices struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace where the service resides.
 	//
 	// example:
 	//
 	// Namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The weight in the form of a percentage value.
+	// The weight percentage.
 	//
 	// example:
 	//
@@ -399,7 +401,7 @@ type UpdateGatewayRouteRequestFallbackServices struct {
 	//
 	// 1
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service port number.
+	// The service port.
 	//
 	// example:
 	//
@@ -411,7 +413,7 @@ type UpdateGatewayRouteRequestFallbackServices struct {
 	//
 	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The version of the service.
+	// The service version.
 	//
 	// example:
 	//
@@ -513,13 +515,13 @@ func (s *UpdateGatewayRouteRequestFallbackServices) Validate() error {
 }
 
 type UpdateGatewayRouteRequestPredicates struct {
-	// The information about header matching.
+	// The request header matching conditions.
 	HeaderPredicates []*UpdateGatewayRouteRequestPredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
-	// The information about method matching.
+	// The method matching conditions.
 	MethodPredicates []*string `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
-	// The information about path matching.
+	// The path matching conditions.
 	PathPredicates *UpdateGatewayRouteRequestPredicatesPathPredicates `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
-	// The information about parameter matching.
+	// The query parameter matching conditions.
 	QueryPredicates []*UpdateGatewayRouteRequestPredicatesQueryPredicates `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
 }
 
@@ -655,13 +657,13 @@ func (s *UpdateGatewayRouteRequestPredicatesHeaderPredicates) Validate() error {
 }
 
 type UpdateGatewayRouteRequestPredicatesPathPredicates struct {
-	// Specifies whether to perform case-insensitive matching.
+	// Specifies whether to ignore case.
 	//
 	// example:
 	//
 	// true
 	IgnoreCase *bool `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
-	// The path used for route matching.
+	// The path of the route.
 	//
 	// example:
 	//
@@ -727,7 +729,7 @@ type UpdateGatewayRouteRequestPredicatesQueryPredicates struct {
 	//
 	// PRE
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the parameter.
+	// The matching value.
 	//
 	// example:
 	//
@@ -775,19 +777,19 @@ func (s *UpdateGatewayRouteRequestPredicatesQueryPredicates) Validate() error {
 }
 
 type UpdateGatewayRouteRequestRedirectJSON struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 302
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The hostname to be redirected to.
+	// The redirect hostname.
 	//
 	// example:
 	//
 	// test.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The path to be redirected to.
+	// The redirect path.
 	//
 	// example:
 	//
@@ -835,19 +837,19 @@ func (s *UpdateGatewayRouteRequestRedirectJSON) Validate() error {
 }
 
 type UpdateGatewayRouteRequestServices struct {
-	// The type of the protocol. Valid values:
+	// The protocol type.
 	//
 	// example:
 	//
 	// DUBBO
 	AgreementType *string `json:"AgreementType,omitempty" xml:"AgreementType,omitempty"`
-	// The name of the group to which the service belongs.
+	// The name of the service group.
 	//
 	// example:
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The transcoder of the Dubbo protocol.
+	// The Dubbo protocol transcoding configuration.
 	HttpDubboTranscoder *UpdateGatewayRouteRequestServicesHttpDubboTranscoder `json:"HttpDubboTranscoder,omitempty" xml:"HttpDubboTranscoder,omitempty" type:"Struct"`
 	// The name.
 	//
@@ -855,13 +857,13 @@ type UpdateGatewayRouteRequestServices struct {
 	//
 	// web
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace in which the service resides.
+	// The namespace where the service resides.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The percentage.
+	// The traffic distribution percentage of the current service or service version. Specify this parameter only when multiple services or tag-based routing is used.
 	//
 	// example:
 	//
@@ -873,7 +875,7 @@ type UpdateGatewayRouteRequestServices struct {
 	//
 	// 1
 	ServiceId *int64 `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The Dubbo port number.
+	// The Dubbo port.
 	//
 	// example:
 	//
@@ -885,7 +887,7 @@ type UpdateGatewayRouteRequestServices struct {
 	//
 	// MSE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The version of the service.
+	// The service version. Specify this parameter only when tag-based routing is used.
 	//
 	// example:
 	//
@@ -1007,7 +1009,7 @@ type UpdateGatewayRouteRequestServicesHttpDubboTranscoder struct {
 	//
 	// service name
 	DubboServiceGroup *string `json:"DubboServiceGroup,omitempty" xml:"DubboServiceGroup,omitempty"`
-	// The name of the Dubbo service.
+	// The Dubbo service name.
 	//
 	// example:
 	//
@@ -1019,7 +1021,7 @@ type UpdateGatewayRouteRequestServicesHttpDubboTranscoder struct {
 	//
 	// 0.0.0
 	DubboServiceVersion *string `json:"DubboServiceVersion,omitempty" xml:"DubboServiceVersion,omitempty"`
-	// The forwarding rules of the Dubbo service.
+	// The list of Dubbo forwarding rules.
 	MothedMapList []*UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList `json:"MothedMapList,omitempty" xml:"MothedMapList,omitempty" type:"Repeated"`
 }
 
@@ -1081,7 +1083,7 @@ func (s *UpdateGatewayRouteRequestServicesHttpDubboTranscoder) Validate() error 
 }
 
 type UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList struct {
-	// The method name of the Dubbo service.
+	// The name of the Dubbo method.
 	//
 	// example:
 	//
@@ -1089,45 +1091,45 @@ type UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList struct {
 	DubboMothedName *string `json:"DubboMothedName,omitempty" xml:"DubboMothedName,omitempty"`
 	// The HTTP method.
 	//
-	// > Valid values:
+	// > Supported HTTP method parameter values:
 	//
-	// 	- ALL_GET
+	// > - ALL_GET
 	//
-	// 	- ALL_POST
+	// > - ALL_POST
 	//
-	// 	- ALL_PUT
+	// > - ALL_PUT
 	//
-	// 	- ALL_DELETE
+	// > - ALL_DELETE
 	//
-	// 	- ALL_PATCH
+	// > - ALL_PATCH
 	//
 	// example:
 	//
 	// ALL_GET
 	HttpMothed *string `json:"HttpMothed,omitempty" xml:"HttpMothed,omitempty"`
-	// The path that is used to match a method.
+	// The matching path of the method.
 	//
 	// example:
 	//
 	// /mytestzbk/sayhello
 	Mothedpath *string `json:"Mothedpath,omitempty" xml:"Mothedpath,omitempty"`
-	// The information of parameter mappings.
+	// The list of parameter mappings.
 	ParamMapsList []*UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapListParamMapsList `json:"ParamMapsList,omitempty" xml:"ParamMapsList,omitempty" type:"Repeated"`
-	// The pass-through type of the header.
+	// The header pass-through type.
 	//
-	// > Valid values:
+	// > Valid values for the pass-through type:
 	//
-	// 	- PASS_ALL: All headers are passed through.
+	// > - PASS_ALL: Passes through all headers.
 	//
-	// 	- PASS_NOT: All headers are not passed through.
+	// > - PASS_NOT: Does not pass through any headers.
 	//
-	// 	- PASS_ASSIGN: Specified headers are passed through.
+	// > - PASS_ASSIGN: Passes through specified headers.
 	//
 	// example:
 	//
 	// PASS_NOT
 	PassThroughAllHeaders *string `json:"PassThroughAllHeaders,omitempty" xml:"PassThroughAllHeaders,omitempty"`
-	// The list of headers to be passed through.
+	// The list of specified headers to pass through.
 	PassThroughList []*string `json:"PassThroughList,omitempty" xml:"PassThroughList,omitempty" type:"Repeated"`
 }
 
@@ -1207,7 +1209,7 @@ func (s *UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapList) Vali
 }
 
 type UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapListParamMapsList struct {
-	// The key extracted from the input parameter.
+	// The key extracted from the input parameter position.
 	//
 	// example:
 	//
@@ -1215,21 +1217,21 @@ type UpdateGatewayRouteRequestServicesHttpDubboTranscoderMothedMapListParamMapsL
 	ExtractKey *string `json:"ExtractKey,omitempty" xml:"ExtractKey,omitempty"`
 	// The position of the input parameter.
 	//
-	// > Valid values:
+	// > Valid values for the position of the input parameter:
 	//
-	// 	- `ALL_QUERY_PARAMETER`: request parameter
+	// > - Request parameter: `ALL_QUERY_PARAMETER`
 	//
-	// 	- `ALL_HEADER`: request header
+	// > - Request header: `ALL_HEADER`
 	//
-	// 	- `ALL_PATH`: request path
+	// > - Request path: `ALL_PATH`
 	//
-	// 	- `ALL_BODY`: request body
+	// > - Request body: `ALL_BODY`
 	//
 	// example:
 	//
 	// ALL_QUERY_PARAMETER
 	ExtractKeySpec *string `json:"ExtractKeySpec,omitempty" xml:"ExtractKeySpec,omitempty"`
-	// The type of the backend service parameter.
+	// The backend parameter type.
 	//
 	// example:
 	//

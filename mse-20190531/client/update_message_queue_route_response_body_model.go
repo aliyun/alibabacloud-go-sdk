@@ -24,25 +24,25 @@ type iUpdateMessageQueueRouteResponseBody interface {
 }
 
 type UpdateMessageQueueRouteResponseBody struct {
-	// The status code returned. The value 200 indicates that the request was successful. Other values indicate that the request failed.
+	// The status code. A status code of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data of the node.
+	// The node data.
 	//
 	// example:
 	//
 	// True
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type UpdateMessageQueueRouteResponseBody struct {
 	//
 	// E3919C62-876A-5926-A0BC-18351A24FA35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

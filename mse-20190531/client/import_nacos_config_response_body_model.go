@@ -28,51 +28,51 @@ type iImportNacosConfigResponseBody interface {
 }
 
 type ImportNacosConfigResponseBody struct {
-	// The error message returned.
+	// The code.
 	//
 	// example:
 	//
 	// 1
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of configurations that are imported.
+	// The data overview.
 	Data *ImportNacosConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The details of the data.
+	// The dynamic error message, which is used to replace **%s*	- in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-100
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the request.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The request is successfully processed.
+	// The returned message.
 	//
 	// example:
 	//
-	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
-	//
-	// >  If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- `true`: The request was successful.
-	//
-	// 	- `false`: The request failed.
+	// The request ID.
 	//
 	// example:
 	//
 	// AF21683A-29C7-4853-AC0F-B5ADEE4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The error code that is returned.
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - `true`: The request was successful.
+	//
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -170,17 +170,17 @@ func (s *ImportNacosConfigResponseBody) Validate() error {
 }
 
 type ImportNacosConfigResponseBodyData struct {
-	// The data structure.
+	// The list of failed imports.
 	FailData []*ImportNacosConfigResponseBodyDataFailData `json:"FailData,omitempty" xml:"FailData,omitempty" type:"Repeated"`
-	// The information about skipped configurations.
+	// The number of skipped messages.
 	//
 	// example:
 	//
 	// 10
 	SkipCount *int32 `json:"SkipCount,omitempty" xml:"SkipCount,omitempty"`
-	// The data structure.
+	// The list of skipped configurations.
 	SkipData []*ImportNacosConfigResponseBodyDataSkipData `json:"SkipData,omitempty" xml:"SkipData,omitempty" type:"Repeated"`
-	// The number of configurations that are skipped.
+	// The number of successfully imported instances.
 	//
 	// example:
 	//
@@ -255,16 +255,23 @@ func (s *ImportNacosConfigResponseBodyData) Validate() error {
 }
 
 type ImportNacosConfigResponseBodyDataFailData struct {
-	// The ID of the group.
+	// The data ID.
 	//
 	// example:
 	//
 	// test2.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
 	// test
-	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The cause of the failure.
+	//
+	// example:
+	//
+	// The import configuration format is incorrect.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -308,13 +315,13 @@ func (s *ImportNacosConfigResponseBodyDataFailData) Validate() error {
 }
 
 type ImportNacosConfigResponseBodyDataSkipData struct {
-	// The ID of the group.
+	// The data ID.
 	//
 	// example:
 	//
 	// test.yaml
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The information about configurations that are failed to be imported.
+	// The group ID.
 	//
 	// example:
 	//

@@ -16,7 +16,10 @@ type iGetNacosMcpServerResponseBody interface {
 }
 
 type GetNacosMcpServerResponseBody struct {
+	// The response data.
 	Data *GetNacosMcpServerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 72FC625E-9629-591B-9C01-3F0BFDAB****
@@ -59,36 +62,62 @@ func (s *GetNacosMcpServerResponseBody) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyData struct {
-	AllVersions      []*GetNacosMcpServerResponseBodyDataAllVersions      `json:"AllVersions,omitempty" xml:"AllVersions,omitempty" type:"Repeated"`
+	// All version information of the current MCP server.
+	AllVersions []*GetNacosMcpServerResponseBodyDataAllVersions `json:"AllVersions,omitempty" xml:"AllVersions,omitempty" type:"Repeated"`
+	// The backend service endpoints.
 	BackendEndpoints []*GetNacosMcpServerResponseBodyDataBackendEndpoints `json:"BackendEndpoints,omitempty" xml:"BackendEndpoints,omitempty" type:"Repeated"`
-	Capabilities     []*string                                            `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
-	Description      *string                                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The capabilities of the current MCP server.
+	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	// The description.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the gateway is enabled.
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The exposed protocol type.
+	//
 	// example:
 	//
 	// mcp-sse
 	FrontProtocol *string `json:"FrontProtocol,omitempty" xml:"FrontProtocol,omitempty"`
-	// ID。
+	// The ID.
 	//
 	// example:
 	//
 	// 5e3c5211-d365-4013-8540-c4106ec2a5dc
-	Id                *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The local MCP server configuration.
 	LocalServerConfig map[string]interface{} `json:"LocalServerConfig,omitempty" xml:"LocalServerConfig,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// mcp-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The protocol.
+	//
 	// example:
 	//
 	// mcp-sse
-	Protocol           *string                                              `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The remote server configuration.
 	RemoteServerConfig *GetNacosMcpServerResponseBodyDataRemoteServerConfig `json:"RemoteServerConfig,omitempty" xml:"RemoteServerConfig,omitempty" type:"Struct"`
-	ToolSpec           *GetNacosMcpServerResponseBodyDataToolSpec           `json:"ToolSpec,omitempty" xml:"ToolSpec,omitempty" type:"Struct"`
-	VersionDetail      *GetNacosMcpServerResponseBodyDataVersionDetail      `json:"VersionDetail,omitempty" xml:"VersionDetail,omitempty" type:"Struct"`
+	// The tool specification.
+	ToolSpec *GetNacosMcpServerResponseBodyDataToolSpec `json:"ToolSpec,omitempty" xml:"ToolSpec,omitempty" type:"Struct"`
+	// The version details.
+	VersionDetail *GetNacosMcpServerResponseBodyDataVersionDetail `json:"VersionDetail,omitempty" xml:"VersionDetail,omitempty" type:"Struct"`
+	// The YAML configuration of the AI gateway.
+	//
 	// example:
 	//
 	// allowTools:
@@ -289,14 +318,20 @@ func (s *GetNacosMcpServerResponseBodyData) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyDataAllVersions struct {
+	// Indicates whether it is the latest version.
+	//
 	// example:
 	//
 	// true
 	IsLatest *bool `json:"Is_latest,omitempty" xml:"Is_latest,omitempty"`
+	// The release date.
+	//
 	// example:
 	//
 	// 2025-07-16
 	ReleaseDate *string `json:"Release_date,omitempty" xml:"Release_date,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1.0.9
@@ -343,14 +378,20 @@ func (s *GetNacosMcpServerResponseBodyDataAllVersions) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyDataBackendEndpoints struct {
+	// The address.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// The path.
+	//
 	// example:
 	//
 	// /sse
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The port number.
+	//
 	// example:
 	//
 	// 80
@@ -397,10 +438,13 @@ func (s *GetNacosMcpServerResponseBodyDataBackendEndpoints) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyDataRemoteServerConfig struct {
+	// The exposed path.
+	//
 	// example:
 	//
 	// /sse
-	ExportPath *string                                                        `json:"ExportPath,omitempty" xml:"ExportPath,omitempty"`
+	ExportPath *string `json:"ExportPath,omitempty" xml:"ExportPath,omitempty"`
+	// The service reference.
 	ServiceRef *GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef `json:"ServiceRef,omitempty" xml:"ServiceRef,omitempty" type:"Struct"`
 }
 
@@ -440,14 +484,20 @@ func (s *GetNacosMcpServerResponseBodyDataRemoteServerConfig) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef struct {
+	// The group to which the service belongs.
+	//
 	// example:
 	//
 	// DEFAULT
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// public
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The service name.
+	//
 	// example:
 	//
 	// mcp-service
@@ -494,11 +544,24 @@ func (s *GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef) Validate
 }
 
 type GetNacosMcpServerResponseBodyDataToolSpec struct {
-	SecuritySchemes   interface{}                                       `json:"SecuritySchemes,omitempty" xml:"SecuritySchemes,omitempty"`
-	SpecificationType *string                                           `json:"SpecificationType,omitempty" xml:"SpecificationType,omitempty"`
-	ToolDecryptStatus *string                                           `json:"ToolDecryptStatus,omitempty" xml:"ToolDecryptStatus,omitempty"`
-	Tools             []*GetNacosMcpServerResponseBodyDataToolSpecTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
-	ToolsMeta         map[string]*DataToolSpecToolsMetaValue            `json:"ToolsMeta,omitempty" xml:"ToolsMeta,omitempty"`
+	// The list of security authentication schemes in the MCP tool definition.
+	SecuritySchemes interface{} `json:"SecuritySchemes,omitempty" xml:"SecuritySchemes,omitempty"`
+	// The storage format type of the MCP tool definition.
+	//
+	// example:
+	//
+	// cipher-kms-256
+	SpecificationType *string `json:"SpecificationType,omitempty" xml:"SpecificationType,omitempty"`
+	// The decryption result status of the MCP tool definition.
+	//
+	// example:
+	//
+	// success
+	ToolDecryptStatus *string `json:"ToolDecryptStatus,omitempty" xml:"ToolDecryptStatus,omitempty"`
+	// The list of tools.
+	Tools []*GetNacosMcpServerResponseBodyDataToolSpecTools `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// The tool metadata map.
+	ToolsMeta map[string]*DataToolSpecToolsMetaValue `json:"ToolsMeta,omitempty" xml:"ToolsMeta,omitempty"`
 }
 
 func (s GetNacosMcpServerResponseBodyDataToolSpec) String() string {
@@ -568,11 +631,16 @@ func (s *GetNacosMcpServerResponseBodyDataToolSpec) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyDataToolSpecTools struct {
+	// The description.
+	//
 	// example:
 	//
 	// a weather query tool
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The input schema of the tool.
 	InputSchema map[string]interface{} `json:"InputSchema,omitempty" xml:"InputSchema,omitempty"`
+	// The tool name.
+	//
 	// example:
 	//
 	// get_weather
@@ -619,14 +687,20 @@ func (s *GetNacosMcpServerResponseBodyDataToolSpecTools) Validate() error {
 }
 
 type GetNacosMcpServerResponseBodyDataVersionDetail struct {
+	// Indicates whether it is the latest version.
+	//
 	// example:
 	//
 	// true
 	IsLatest *bool `json:"IsLatest,omitempty" xml:"IsLatest,omitempty"`
+	// The release date.
+	//
 	// example:
 	//
 	// 2025-07-16
 	ReleaseDate *string `json:"ReleaseDate,omitempty" xml:"ReleaseDate,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1.11.0

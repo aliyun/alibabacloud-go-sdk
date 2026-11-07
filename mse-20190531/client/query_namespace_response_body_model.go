@@ -22,7 +22,7 @@ type iQueryNamespaceResponseBody interface {
 }
 
 type QueryNamespaceResponseBody struct {
-	// The data returned.
+	// The data that is returned.
 	Data []*QueryNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -30,11 +30,20 @@ type QueryNamespaceResponseBody struct {
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error message returned.
+	//
+	// example:
+	//
+	// The request is processed successfully.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// abcde-fg
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

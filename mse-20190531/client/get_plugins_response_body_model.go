@@ -30,15 +30,15 @@ type iGetPluginsResponseBody interface {
 }
 
 type GetPluginsResponseBody struct {
-	// The returned code.
+	// The code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data entries returned.
+	// The returned data.
 	Data []*GetPluginsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
@@ -50,31 +50,31 @@ type GetPluginsResponseBody struct {
 	//
 	// message
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// 500
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 03A3E2F4-6804-5663-9D5D-2EC47A1*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -185,40 +185,58 @@ func (s *GetPluginsResponseBody) Validate() error {
 }
 
 type GetPluginsResponseBodyData struct {
-	// The type of the plug-in. Valid values:
+	// The plug-in type. Valid values:
 	//
-	// 0: custom
+	// - 0: Custom.
 	//
-	// 1: permission authorization
+	// - 1: Authentication and authorization.
 	//
-	// 2: security protection
+	// - 2: Security protection.
 	//
-	// 3: transmission protocol
+	// - 3: Transport protocol.
 	//
-	// 4: traffic control
+	// - 4: Traffic control.
 	//
-	// 5: traffic observation
+	// - 5: Traffic observability.
 	//
 	// example:
 	//
 	// 0
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The information about the plug-in configuration used for checking.
+	// The configuration validation.
 	//
 	// example:
 	//
-	// \\# The configuration includes the fields required for checking, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
+	// # Validate required fields in the configuration. As shown in the following example, the plug-in configuration must contain the "name", "age", and "friends" fields.
+	//
+	// name: John
+	//
+	// age: 18
+	//
+	// friends:
+	//
+	// - David
+	//
+	// - Anne
 	ConfigCheck *string `json:"ConfigCheck,omitempty" xml:"ConfigCheck,omitempty"`
-	// The ID of the plug-in.
+	// The plug-in ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The latest version.
+	//
 	// example:
 	//
 	// 1.0.0
 	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	// The plug-in language. Valid values:
+	//
+	// - 0: Wasm plug-in.
+	//
+	// - 2: Lua plug-in.
+	//
 	// example:
 	//
 	// 0
@@ -229,19 +247,21 @@ type GetPluginsResponseBodyData struct {
 	//
 	// key-auth
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the latest version is being published.
+	//
 	// example:
 	//
 	// false
 	NewVersionPublishingFlag *bool `json:"NewVersionPublishingFlag,omitempty" xml:"NewVersionPublishingFlag,omitempty"`
-	// The execution stage of the plug-in.
+	// The plug-in execution phase. Valid values:
 	//
-	// 	- 0: default stage
+	// - 0: Default phase.
 	//
-	// 	- 1: authorization stage
+	// - 1: Authentication phase.
 	//
-	// 	- 2: authentication stage
+	// - 2: Authorization phase.
 	//
-	// 	- 3: statistics stage
+	// - 3: Statistics phase.
 	//
 	// example:
 	//
@@ -259,48 +279,59 @@ type GetPluginsResponseBodyData struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The publish status.
+	// The publish status. Valid values:
+	//
+	// - 0: Successful.
+	//
+	// - 1: Publishing.
+	//
+	// - 2: Failed.
 	//
 	// example:
 	//
 	// 1
 	PublishState *int32 `json:"PublishState,omitempty" xml:"PublishState,omitempty"`
-	// Indicates whether the plug-in is enabled.
+	// The enabling status. Valid values:
 	//
-	// 	- 0: disabled
+	// - 0: Disabled.
 	//
-	// 	- 1: enabled
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The summary of the plug-in.
+	// The plug-in summary.
 	//
 	// example:
 	//
-	// This is a plug-in.
-	Summary   *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// This is a plug-in
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The English plug-in summary.
+	//
+	// example:
+	//
+	// Authentication based on API Key.
 	SummaryEn *string `json:"SummaryEn,omitempty" xml:"SummaryEn,omitempty"`
-	// The version of the plug-in.
+	// The plug-in version.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The URL of the Object Storage Service (OSS) bucket that stores the WebAssembly plug-in.
+	// The OSS object of the Wasm plug-in.
 	WasmFile *string `json:"WasmFile,omitempty" xml:"WasmFile,omitempty"`
-	// The WebAssembly language. Valid values:
+	// The WebAssembly (Wasm) implementation language. Valid values:
 	//
-	// 	- 0: C++
+	// - 0: C++.
 	//
-	// 	- 1: TinyGo
+	// - 1: TinyGo.
 	//
-	// 	- 2: Rust
+	// - 2: Rust.
 	//
-	// 	- 3: AssemblyScript
+	// - 3: AssemblyScript.
 	//
-	// 	- 4: Zig
+	// - 4: Zig.
 	//
 	// example:
 	//

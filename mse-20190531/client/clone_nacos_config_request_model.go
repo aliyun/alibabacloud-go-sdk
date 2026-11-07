@@ -26,17 +26,17 @@ type iCloneNacosConfigRequest interface {
 }
 
 type CloneNacosConfigRequest struct {
-	// Language type of the returned message:
+	// The language of the response. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Configuration items to be cloned, in the format of dataId+group, with multiple items separated by commas.
+	// The configuration items to clone, in the format of dataId+group. Separate multiple configuration items with commas (,).
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type CloneNacosConfigRequest struct {
 	DataIds *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
 	// Deprecated
 	//
-	// List of configuration IDs.
+	// The list of configuration IDs.
 	//
 	// example:
 	//
 	// 253661,253662
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,19 +58,19 @@ type CloneNacosConfigRequest struct {
 	//
 	// mse_prepaid_public_cn-i7m25igg403
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Source namespace ID.
+	// The source namespace ID.
 	//
 	// example:
 	//
 	// be821963-6d48-4ea5-9910-6057d****
 	OriginNamespaceId *string `json:"OriginNamespaceId,omitempty" xml:"OriginNamespaceId,omitempty"`
-	// The strategy used when a write conflict occurs.
+	// The policy used when a write conflict occurs. Valid values:
 	//
 	// - ABORT
 	//
 	// - SKIP
 	//
-	// - OVERWRITE
+	// - OVERWRITE.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CloneNacosConfigRequest struct {
 	//
 	// OVERWRITE
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Target namespace ID.
+	// The destination namespace ID.
 	//
 	// example:
 	//

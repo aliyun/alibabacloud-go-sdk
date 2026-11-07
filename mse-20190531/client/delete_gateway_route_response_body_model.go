@@ -24,25 +24,25 @@ type iDeleteGatewayRouteResponseBody interface {
 }
 
 type DeleteGatewayRouteResponseBody struct {
-	// The HTTP status code returned.
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DeleteGatewayRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The error message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
@@ -50,11 +50,11 @@ type DeleteGatewayRouteResponseBody struct {
 	//
 	// ADDD8AB7-8D1C-4697-A83E-410D2607****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DeleteGatewayRouteResponseBody) Validate() error {
 }
 
 type DeleteGatewayRouteResponseBodyData struct {
-	// The default service ID.
+	// The ID of the default service.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DeleteGatewayRouteResponseBodyData struct {
 	//
 	// 125
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The unique ID of the gateway.
+	// The unique identifier of the gateway.
 	//
 	// example:
 	//
@@ -182,25 +182,25 @@ type DeleteGatewayRouteResponseBodyData struct {
 	//
 	// {\\"PathPredicates\\":{\\"Path\\":\\"/metas\\",\\"Type\\":\\"PRE\\",\\"IgnoreCase\\":false}}
 	Predicates *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
-	// The sequence number of the route.
+	// The route order.
 	//
 	// example:
 	//
 	// 1
 	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
-	// The status of the route. Valid values:
+	// The route status. Valid values:
 	//
-	// 	- 0: unpublished
+	// - 0: Unpublished.
 	//
-	// 	- 2: publishing
+	// - 2: Publishing.
 	//
-	// 	- 3: published
+	// - 3: Published.
 	//
-	// 	- 4: editing (updated but not published)
+	// - 4: Editing (unpublished updates).
 	//
-	// 	- 5: unpublishing
+	// - 5: Going offline.
 	//
-	// 	- 6: unavailable
+	// - 6: Unavailable.
 	//
 	// example:
 	//

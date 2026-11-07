@@ -30,55 +30,55 @@ type iListEurekaServicesResponseBody interface {
 }
 
 type ListEurekaServicesResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data []*ListEurekaServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of instances to return per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned instances.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -189,15 +189,15 @@ func (s *ListEurekaServicesResponseBody) Validate() error {
 }
 
 type ListEurekaServicesResponseBodyData struct {
-	// The details of the instance.
+	// The instance information.
 	InstancesId []*string `json:"InstancesId,omitempty" xml:"InstancesId,omitempty" type:"Repeated"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// CONTACTINFO
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of service providers. The value is in the following format: Number of healthy instances/Total number of instances.
+	// The number of service providers, in the format of healthy instances/total instances.
 	//
 	// example:
 	//

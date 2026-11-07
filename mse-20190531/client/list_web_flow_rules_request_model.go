@@ -28,36 +28,52 @@ type iListWebFlowRulesRequest interface {
 }
 
 type ListWebFlowRulesRequest struct {
+	// The language in which the returned results are displayed. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// b22qb1****@2f0586be4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The first page to export. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The interface to which the protection rule applies. This parameter is mutually exclusive with the ResourceSearchKey parameter.
+	//
 	// example:
 	//
 	// /flow
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The interface keyword that you can search from protection rules. This parameter is mutually exclusive with the Resource parameter.
+	//
 	// example:
 	//
 	// flow

@@ -18,11 +18,11 @@ type iQueryClusterSpecificationRequest interface {
 }
 
 type QueryClusterSpecificationRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type QueryClusterSpecificationRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// The network type. Valid values:
 	//
-	// 	- slb
+	// - slb
 	//
-	// 	- eni
+	// - eni
 	//
 	// example:
 	//
 	// slb
 	ConnectType *string `json:"ConnectType,omitempty" xml:"ConnectType,omitempty"`
-	// The edition of the MSE instance that you want to purchase.
+	// The Microservices Engine (MSE) cluster version to be activated. Valid values:
 	//
-	// 	- mse_pro: Professional Edition
+	// - mse_pro: Professional Edition.
 	//
-	// 	- mse_dev: Developer Edition
+	// - mse_dev: Developer Edition.
 	//
 	// example:
 	//

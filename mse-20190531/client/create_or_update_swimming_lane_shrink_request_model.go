@@ -38,19 +38,19 @@ type iCreateOrUpdateSwimmingLaneShrinkRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequest struct {
-	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+	// The language in which the results are returned. Valid values: zh (Chinese, default) and en (English).
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable the lane.
+	// Specifies whether the lane is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
+	// Specifies whether to configure routing rules for the lane. Configuration is not required if the ingress is a gateway.
 	//
 	// example:
 	//
@@ -62,25 +62,19 @@ type CreateOrUpdateSwimmingLaneShrinkRequest struct {
 	//
 	// example:
 	//
-	// {}
+	// [{"Priority":1,"Paths":[],"Condition":"AND","RestItems":[{"Type":"param","Name":"name","Value":"xiaoming","Cond":"==","Operator":"rawvalue"}]}]
 	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	// The lane.
+	// The collection of lane rules.
 	EntryRules []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	// The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
+	// The gateway routing information. This parameter is used when a cloud-native gateway is used as the ingress.
 	GatewaySwimmingLaneRouteJsonShrink *string `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty"`
-	// The language of the response. Valid values:****
-	//
-	// 	- **zh-CN**: Chinese
-	//
-	// 	- **en-US**: English
-	//
-	// > Default value: **zh-CN**.
+	// The ID of the lane group to which the lane belongs.
 	//
 	// example:
 	//
 	// 115
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
+	// The primary key ID. A value of -1 indicates that a lane is created. A value greater than 0 indicates that a specified lane is updated.
 	//
 	// example:
 	//
@@ -92,20 +86,27 @@ type CreateOrUpdateSwimmingLaneShrinkRequest struct {
 	//
 	// example:
 	//
-	// Test lane
+	// gray
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the MSE namespace.
+	//
 	// example:
 	//
 	// default
-	Namespace                       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PathIndependentPercentageEnable *bool   `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
-	// The ID of the region.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// **[Deprecated]*	- The Java gateway-related configuration for percentage-based routing by path.
+	//
+	// example:
+	//
+	// false
+	PathIndependentPercentageEnable *bool `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tag.
+	// The identifier.
 	//
 	// example:
 	//
@@ -252,13 +253,13 @@ func (s *CreateOrUpdateSwimmingLaneShrinkRequest) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequestEntryRules struct {
-	// Specifies how RESTful items are combined into the final condition.
+	// Specifies how RestItems are combined to form the final condition.
 	//
 	// example:
 	//
-	// ""
+	// AND
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The paths.
+	// The list of paths.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The priority.
 	//
@@ -266,7 +267,7 @@ type CreateOrUpdateSwimmingLaneShrinkRequestEntryRules struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The matching list.
+	// The list of matching items.
 	RestItems []*CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems `json:"RestItems,omitempty" xml:"RestItems,omitempty" type:"Repeated"`
 }
 
@@ -328,17 +329,17 @@ func (s *CreateOrUpdateSwimmingLaneShrinkRequestEntryRules) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems struct {
-	// The matching character.
+	// The match operator.
 	//
 	// example:
 	//
-	// =
+	// ==
 	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
 	// The value.
 	//
 	// example:
 	//
-	// .params[0]
+	// x
 	Datum *string `json:"Datum,omitempty" xml:"Datum,omitempty"`
 	// The divisor.
 	//
@@ -350,29 +351,29 @@ type CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems struct {
 	//
 	// example:
 	//
-	// ""
+	// x-mse-tag
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The matching list.
+	// The list of matching items.
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
 	// The operator.
 	//
 	// example:
 	//
-	// mod
+	// rawvalue
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The percentage.
 	//
 	// example:
 	//
-	// 10
+	// 30
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The remainder.
 	//
 	// example:
 	//
-	// 3
+	// 10
 	Remainder *int32 `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
-	// The matching type.
+	// The match type.
 	//
 	// example:
 	//
@@ -382,7 +383,7 @@ type CreateOrUpdateSwimmingLaneShrinkRequestEntryRulesRestItems struct {
 	//
 	// example:
 	//
-	// ""
+	// gray
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

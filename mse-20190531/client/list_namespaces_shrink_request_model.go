@@ -24,28 +24,39 @@ type iListNamespacesShrinkRequest interface {
 }
 
 type ListNamespacesShrinkRequest struct {
+	// Language for displaying results. Values: zh (default): Chinese, en: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Namespace name for fuzzy query. If not specified, all namespaces are queried by default.
+	//
 	// example:
 	//
 	// myNamespace
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Page number for paged query.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Number of entries per page for paged queries. The default is 5. To return more data, increase this value.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Alibaba Cloud tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 

@@ -22,39 +22,41 @@ type iGetPluginsRequest interface {
 }
 
 type GetPluginsRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// zh: Chinese en: English
+	// - zh: Chinese.
+	//
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The type of the plug-in. Valid values:
+	// The plug-in type. Valid values:
 	//
-	// 	- 0: custom
+	// - 0: Custom.
 	//
-	// 	- 1: permission authorization
+	// - 1: Authentication and authorization.
 	//
-	// 	- 2: security protection
+	// - 2: Security protection.
 	//
-	// 	- 3: transmission protocol
+	// - 3: Transport protocol.
 	//
-	// 	- 4: traffic control
+	// - 4: Traffic control.
 	//
-	// 	- 5: traffic observation
+	// - 5: Traffic observability.
 	//
 	// example:
 	//
 	// 1
 	Category *int32 `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to enable the plug-in.
+	// Specifies whether the plug-in is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableOnly *bool `json:"EnableOnly,omitempty" xml:"EnableOnly,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// This parameter is required.
 	//

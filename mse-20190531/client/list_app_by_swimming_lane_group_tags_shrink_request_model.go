@@ -20,7 +20,11 @@ type iListAppBySwimmingLaneGroupTagsShrinkRequest interface {
 }
 
 type ListAppBySwimmingLaneGroupTagsShrinkRequest struct {
-	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	// The language of the response. Valid values:
+	//
+	// - zh: Chinese. This is the default value.
+	//
+	// - en: English.
 	//
 	// example:
 	//
@@ -34,7 +38,7 @@ type ListAppBySwimmingLaneGroupTagsShrinkRequest struct {
 	//
 	// 1
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the MSE namespace that you want to query.
+	// The name of the Microservices Engine (MSE) namespace to query.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +46,7 @@ type ListAppBySwimmingLaneGroupTagsShrinkRequest struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The tag based on which you want to list applications.
+	// The tags to query.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

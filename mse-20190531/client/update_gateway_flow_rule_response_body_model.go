@@ -16,7 +16,10 @@ type iUpdateGatewayFlowRuleResponseBody interface {
 }
 
 type UpdateGatewayFlowRuleResponseBody struct {
+	// The response data.
 	Data *UpdateGatewayFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2B74E7F7-DF54-5AB1-B8F2-67391B83****
@@ -59,63 +62,112 @@ func (s *UpdateGatewayFlowRuleResponseBody) Validate() error {
 }
 
 type UpdateGatewayFlowRuleResponseBodyData struct {
+	// The type of the web fallback behavior.
+	//
+	// 0: The specified content is returned.
+	//
+	// 1: The specified page is displayed.
+	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding type.
+	//
+	// 0: plain text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Specifies whether to enable the rule.
+	//
+	// 0: The rule is not enabled.
+	//
+	// 1: The rule is enabled.
+	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The gateway ID.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The ID of the throttling rule.
+	//
 	// example:
 	//
 	// 549
-	Id     *int64   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The IDs of the circuit breaking rules that are used to filter data.
 	IdList []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// The threshold conversion mode.
+	//
+	// 0: standalone.
+	//
+	// 1: cluster.
+	//
+	// 2: cluster-to-standalone.
+	//
 	// example:
 	//
 	// 0
 	LimitMode *int32 `json:"LimitMode,omitempty" xml:"LimitMode,omitempty"`
+	// The custom header. The input is a key-value pair.
+	//
 	// example:
 	//
 	// key=value
 	ResponseAdditionalHeaders *string `json:"ResponseAdditionalHeaders,omitempty" xml:"ResponseAdditionalHeaders,omitempty"`
+	// The HTTP return text.
+	//
 	// example:
 	//
 	// Text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The redirection URL.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The route ID.
+	//
 	// example:
 	//
 	// 48811
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The route name.
+	//
 	// example:
 	//
 	// routeA
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The duration of the statistics.
+	//
 	// example:
 	//
 	// 10
 	StatDurationMs *int32 `json:"StatDurationMs,omitempty" xml:"StatDurationMs,omitempty"`
+	// The overall queries per second (QPS) threshold.
+	//
 	// example:
 	//
 	// 10

@@ -24,7 +24,7 @@ type iListSecurityGroupRuleResponseBody interface {
 }
 
 type ListSecurityGroupRuleResponseBody struct {
-	// The status code returned.
+	// The return code.
 	//
 	// example:
 	//
@@ -32,29 +32,29 @@ type ListSecurityGroupRuleResponseBody struct {
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data []*ListSecurityGroupRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// 9EC7BDBF-3C38-5C9C-95DD-61E298CD43E8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -138,6 +138,7 @@ func (s *ListSecurityGroupRuleResponseBody) Validate() error {
 }
 
 type ListSecurityGroupRuleResponseBodyData struct {
+	// The list of IP address CIDR blocks with authorization to access the gateway.
 	AuthCidrs []*string `json:"AuthCidrs,omitempty" xml:"AuthCidrs,omitempty" type:"Repeated"`
 	// The rule description.
 	//
@@ -145,7 +146,7 @@ type ListSecurityGroupRuleResponseBodyData struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The gateway ID.
+	// The ID of the gateway.
 	//
 	// example:
 	//

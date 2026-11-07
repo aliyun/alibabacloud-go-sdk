@@ -16,10 +16,14 @@ type iRemoveAuthPolicyRequest interface {
 }
 
 type RemoveAuthPolicyRequest struct {
+	// The language in which the returned results are displayed. Values: zh-CN (default): Chinese, en-US: English
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:

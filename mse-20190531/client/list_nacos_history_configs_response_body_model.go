@@ -30,7 +30,7 @@ type iListNacosHistoryConfigsResponseBody interface {
 }
 
 type ListNacosHistoryConfigsResponseBody struct {
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type ListNacosHistoryConfigsResponseBody struct {
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The configuration items.
 	HistoryItems []*ListNacosHistoryConfigsResponseBodyHistoryItems `json:"HistoryItems,omitempty" xml:"HistoryItems,omitempty" type:"Repeated"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The message that is returned for the request.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListNacosHistoryConfigsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type ListNacosHistoryConfigsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ func (s *ListNacosHistoryConfigsResponseBody) Validate() error {
 }
 
 type ListNacosHistoryConfigsResponseBodyHistoryItems struct {
-	// The application tag.
+	// The tags of the application.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type ListNacosHistoryConfigsResponseBodyHistoryItems struct {
 	//
 	// default
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The ID of the configuration.
+	// The configuration ID.
 	//
 	// example:
 	//
@@ -217,14 +217,19 @@ type ListNacosHistoryConfigsResponseBodyHistoryItems struct {
 	//
 	// example:
 	//
-	// 16434400
+	// 1643440066000
 	LastModifiedTime *int64 `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	// The format of the configuration file.
 	//
 	// example:
 	//
 	// yaml
-	OpType  *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	// The user who modified this version
+	//
+	// example:
+	//
+	// test
 	SrcUser *string `json:"SrcUser,omitempty" xml:"SrcUser,omitempty"`
 }
 

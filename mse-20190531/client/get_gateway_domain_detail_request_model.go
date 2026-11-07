@@ -18,11 +18,11 @@ type iGetGatewayDomainDetailRequest interface {
 }
 
 type GetGatewayDomainDetailRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetGatewayDomainDetailRequest struct {
 	//
 	// gw-6d0b23e1d39e41658a968d79a635****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//

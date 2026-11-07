@@ -46,7 +46,7 @@ type ModifyGovernanceKubernetesClusterResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//

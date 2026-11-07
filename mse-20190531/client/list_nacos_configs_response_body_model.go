@@ -32,61 +32,61 @@ type iListNacosConfigsResponseBody interface {
 }
 
 type ListNacosConfigsResponseBody struct {
-	// The status code returned.
+	// The returned code.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configurations.
+	// The list of configurations.
 	Configurations []*ListNacosConfigsResponseBodyConfigurations `json:"Configurations,omitempty" xml:"Configurations,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// Request processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of instances displayed on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4081087F-3429-5873-A1E7-D4B5479D0B84
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned instances.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -206,27 +206,37 @@ func (s *ListNacosConfigsResponseBody) Validate() error {
 }
 
 type ListNacosConfigsResponseBodyConfigurations struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
-	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The tags of the configuration. Multiple tags are separated by commas.
+	//
+	// example:
+	//
+	// tag1,tag2
 	ConfigTags *string `json:"ConfigTags,omitempty" xml:"ConfigTags,omitempty"`
-	// The ID of the configuration.
+	// The configuration ID.
 	//
 	// example:
 	//
 	// log.yaml
-	DataId      *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The description of the configuration item.
+	//
+	// example:
+	//
+	// test-description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the group.
+	// The group ID.
 	//
 	// example:
 	//
 	// public
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//

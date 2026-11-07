@@ -16,9 +16,9 @@ type iListClusterConnectionTypesRequest interface {
 type ListClusterConnectionTypesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//

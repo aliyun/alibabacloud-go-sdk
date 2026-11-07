@@ -24,41 +24,41 @@ type iCreateClusterResponseBody interface {
 }
 
 type CreateClusterResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Return message.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Order ID.
+	// The order ID.
 	//
 	// example:
 	//
 	// 20574710974****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// dc63-465d-8ef5-20dc18af****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Request result, with the following values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - `true`: Request succeeded.
+	// - `true`: The request is successful.
 	//
-	// - `false`: Request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

@@ -30,13 +30,13 @@ type iListClusterHealthCheckTaskResponseBody interface {
 }
 
 type ListClusterHealthCheckTaskResponseBody struct {
-	// The status code. A value of 200 is returned if the request was successful.
+	// Code is only used to synchronize with success
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data returned.
 	Data *ListClusterHealthCheckTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The dynamic part in the error message.
 	//
@@ -44,47 +44,47 @@ type ListClusterHealthCheckTaskResponseBody struct {
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message used to replace \\*\\*%s\\*\\	- in the **ErrMessage*	- parameter.
 	//
-	// > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed. Take note of the following rules:
+	// The error code. Take note of the following items:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned if the request is successful.
+	// - Successful request: The **ErrorCode*	- field is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned if the request fails. For more information, see the **Error codes*	- section in this topic.
+	// - Failed request: The **ErrorCode*	- field is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ func (s *ListClusterHealthCheckTaskResponseBody) Validate() error {
 }
 
 type ListClusterHealthCheckTaskResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number of the list.
 	//
 	// example:
 	//
-	// 0
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -205,7 +205,7 @@ type ListClusterHealthCheckTaskResponseBodyData struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of health check tasks.
 	Result []*ListClusterHealthCheckTaskResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of returned entries.
+	// The total number of queried rules.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The type of the cluster.
+	// The type of the instance.
 	//
 	// example:
 	//
@@ -301,25 +301,25 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	//
 	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// A redundant parameter.
+	// Redundant field.
 	//
 	// example:
 	//
 	// null
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse_ingresspost-cn-0jbvrcex****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the user to which the instance belongs.
+	// The ID of the user to which the cluster belongs.
 	//
 	// example:
 	//
 	// 123456
 	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// The number of nodes in the instance.
+	// The number of nodes in the cluster.
 	//
 	// example:
 	//
@@ -339,13 +339,13 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	//
 	// MSE_SC_2_4_200_c
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the task.
+	// The job states.
 	//
 	// example:
 	//
 	// FINISH
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of check items.
+	// The total number of inspection items.
 	//
 	// example:
 	//
@@ -357,13 +357,13 @@ type ListClusterHealthCheckTaskResponseBodyDataResult struct {
 	//
 	// 3
 	TotalRisk *int32 `json:"TotalRisk,omitempty" xml:"TotalRisk,omitempty"`
-	// A redundant parameter.
+	// Redundant field.
 	//
 	// example:
 	//
 	// null
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last update time.
+	// The time when the instance was last updated.
 	//
 	// example:
 	//
@@ -565,8 +565,13 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	//
 	// example:
 	//
-	// {\\\\"desc\\\\":\\\\"The engine version is outdated and a large number of features are not supported. Upgrade the engine to the latest version at the earliest opportunity. \\\\"}
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// {"desc":"The engine version is outdated and many features are missing. Upgrade to the latest version at the earliest opportunity."}
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The English description of the risk.
+	//
+	// example:
+	//
+	// Upgrade to the latest version to ensure that all features are available!
 	DescriptionEn *string `json:"DescriptionEn,omitempty" xml:"DescriptionEn,omitempty"`
 	// The ID.
 	//
@@ -574,23 +579,23 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	//
 	// 3426
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// A redundant parameter.
+	// Redundant field.
 	//
 	// example:
 	//
 	// null
 	Module *string `json:"Module,omitempty" xml:"Module,omitempty"`
-	// Indicates whether the risk item notification feature is disabled.
+	// Specifies whether to disable the notification feature if the risk item occurs.
 	//
-	// 	- true: disabled
+	// - true: Disables risk item notifications
 	//
-	// 	- false: enabled
+	// - false: Enables risk item notifications
 	//
 	// example:
 	//
 	// false
 	Mute *bool `json:"Mute,omitempty" xml:"Mute,omitempty"`
-	// A redundant parameter.
+	// Redundant field.
 	//
 	// example:
 	//
@@ -608,24 +613,29 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	//
 	// 22020010001
 	RiskCode *string `json:"RiskCode,omitempty" xml:"RiskCode,omitempty"`
-	// The severity of the risk. Valid values:
+	// The risk level. Valid values:
 	//
-	// 	- HIGH: high risk
+	// - HIGH: High risk
 	//
-	// 	- MID: medium risk
+	// - MID: Medium risk
 	//
-	// 	- LOW: low risk
+	// - LOW: Low risk
 	//
 	// example:
 	//
 	// MID
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The name of the risk.
+	// The risk name.
 	//
 	// example:
 	//
-	// The engine version is outdated.
-	RiskName   *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	// Engine version too low
+	RiskName *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	// The English name of the risk.
+	//
+	// example:
+	//
+	// Low engine version
 	RiskNameEn *string `json:"RiskNameEn,omitempty" xml:"RiskNameEn,omitempty"`
 	// The type of the risk.
 	//
@@ -633,19 +643,29 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	//
 	// Version risk
 	RiskType *string `json:"RiskType,omitempty" xml:"RiskType,omitempty"`
-	// The situation.
+	// The current situation.
 	//
 	// example:
 	//
-	// {\\\\"desc\\\\":\\\\"The engine version is outdated and a large number of features are not supported.\\\\",\\\\"links\\\\":[{\\\\"type\\\\":\\\\"url\\\\",\\\\"value\\\\":\\\\"https://xxxx"\\\\",\\\\"desc\\\\":\\\\"Release notes\\\\"}]}
-	Situation   *string `json:"Situation,omitempty" xml:"Situation,omitempty"`
+	// {"desc":"The current engine version is too low with many missing features","links":[{"type":"url","value":"https://xxxx"","desc":"Version notes"}]}
+	Situation *string `json:"Situation,omitempty" xml:"Situation,omitempty"`
+	// The English description of the current situation.
+	//
+	// example:
+	//
+	// The current engine version is low, and there are many missing features
 	SituationEn *string `json:"SituationEn,omitempty" xml:"SituationEn,omitempty"`
 	// The suggestion.
 	//
 	// example:
 	//
-	// {"desc": "Upgrade to the latest version at the earliest opportunity.", "links":[{"type": "upgrade", "desc": "Click to upgrade"}]}
-	Suggestion   *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// {"desc": "Upgrade to the latest version at the earliest opportunity.", "links":[{"type":"upgrade","desc":"Click to upgrade"}]}
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	// The English description of the suggestion.
+	//
+	// example:
+	//
+	// Upgrade to the latest version
 	SuggestionEn *string `json:"SuggestionEn,omitempty" xml:"SuggestionEn,omitempty"`
 	// The ID of the associated parent task.
 	//
@@ -653,13 +673,13 @@ type ListClusterHealthCheckTaskResponseBodyDataResultRiskList struct {
 	//
 	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// A redundant parameter.
+	// Redundant field.
 	//
 	// example:
 	//
 	// null
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// A redundant parameter.
+	// Redundant field.
 	//
 	// example:
 	//

@@ -24,15 +24,15 @@ type iUpdateGatewayRouteAuthShrinkRequest interface {
 type UpdateGatewayRouteAuthShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The authentication configurations.
+	// The authentication configuration.
 	//
 	// This parameter is required.
 	AuthJSONShrink *string `json:"AuthJSON,omitempty" xml:"AuthJSON,omitempty"`

@@ -30,7 +30,7 @@ type iUpdateGatewayRouteAuthResponseBody interface {
 }
 
 type UpdateGatewayRouteAuthResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The code is used only to synchronize with the success field.
 	//
 	// example:
 	//
@@ -42,21 +42,21 @@ type UpdateGatewayRouteAuthResponseBody struct {
 	//
 	// 123
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the specified **DtsJobId*	- parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type UpdateGatewayRouteAuthResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
-	// The request is successfully processed.
+	// The request is processed successfully.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -80,11 +80,11 @@ type UpdateGatewayRouteAuthResponseBody struct {
 	//
 	// 54973C90-F379-4372-9AA5-053A3F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The result of the request. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The request is successful.
 	//
-	// 	- `false`
+	// - `false`: The request fails.
 	//
 	// example:
 	//

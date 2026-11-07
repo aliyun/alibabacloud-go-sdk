@@ -24,23 +24,34 @@ type iDeleteIsolationRulesResponseBody interface {
 }
 
 type DeleteIsolationRulesResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of rule IDs that have been deleted.
 	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request result.
+	//
 	// example:
 	//
 	// true

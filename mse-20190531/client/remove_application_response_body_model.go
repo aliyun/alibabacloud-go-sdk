@@ -22,22 +22,32 @@ type iRemoveApplicationResponseBody interface {
 }
 
 type RemoveApplicationResponseBody struct {
+	// The deletion result.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// abcde-12345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

@@ -28,24 +28,25 @@ type iListListenersByConfigRequest interface {
 type ListListenersByConfigRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the data.
+	// The data ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zeekr-clueboss.yml
-	DataId       *string                                     `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The list of additional canary release rules. When performing listener matching, the additional canary release rules are merged with existing rules for matching.
 	ExtGrayRules []*ListListenersByConfigRequestExtGrayRules `json:"ExtGrayRules,omitempty" xml:"ExtGrayRules,omitempty" type:"Repeated"`
-	// The name of the group.
+	// The group.
 	//
 	// This parameter is required.
 	//
@@ -61,17 +62,17 @@ type ListListenersByConfigRequest struct {
 	//
 	// mse-cn-m7r1yurp00e
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID. Default value: public.
 	//
 	// example:
 	//
 	// aaeb4d28-c9eb-4fa2-85f5-d03ce7ee8df1
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The extended request parameters in the JSON format.
+	// This parameter is deprecated and does not need to be specified.
 	//
 	// example:
 	//
-	// {\\\\"appGroup\\\\":\\\\"emas-zfive_prehost\\\\",\\\\"appName\\\\":\\\\"emas-zfive\\\\",\\\\"appStage\\\\":\\\\"PRE_PUBLISH\\\\",\\\\"appUnit\\\\":\\\\"\\\\",\\\\"bucId\\\\":\\\\"225902\\\\",\\\\"bucName\\\\":\\\\"Wireless\\\\",\\\\"provider\\\\":\\\\"aliyun\\\\"}
+	// ...
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
 }
 
@@ -160,10 +161,30 @@ func (s *ListListenersByConfigRequest) Validate() error {
 }
 
 type ListListenersByConfigRequestExtGrayRules struct {
-	GrayRule         *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
-	GrayRuleName     *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
-	GrayRulePriority *int32  `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
-	GrayRuleType     *string `json:"GrayRuleType,omitempty" xml:"GrayRuleType,omitempty"`
+	// The canary release rule. If it is a Beta canary release, this field contains the IP addresses of the canary release clients, separated by commas. If it is a tag-based canary release, this field contains tag_name=tag_value, with multiple tag values separated by commas.
+	//
+	// example:
+	//
+	// 127.0.0.1
+	GrayRule *string `json:"GrayRule,omitempty" xml:"GrayRule,omitempty"`
+	// The name of the canary release version.
+	//
+	// example:
+	//
+	// test
+	GrayRuleName *string `json:"GrayRuleName,omitempty" xml:"GrayRuleName,omitempty"`
+	// The priority of the canary release version.
+	//
+	// example:
+	//
+	// 100
+	GrayRulePriority *int32 `json:"GrayRulePriority,omitempty" xml:"GrayRulePriority,omitempty"`
+	// The type of the canary release rule.
+	//
+	// example:
+	//
+	// Tags
+	GrayRuleType *string `json:"GrayRuleType,omitempty" xml:"GrayRuleType,omitempty"`
 }
 
 func (s ListListenersByConfigRequestExtGrayRules) String() string {

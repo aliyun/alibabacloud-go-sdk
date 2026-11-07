@@ -26,35 +26,35 @@ type iListGatewayServiceShrinkRequest interface {
 type ListGatewayServiceShrinkRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable sorting.
+	// The sort order.
 	//
 	// example:
 	//
 	// false
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// The parameters that are used to specify filter conditions. The values of the parameters are in the format of {"key1":"value1"}.
+	// The filter conditions in the format of {"key1":"value1"}.
 	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
-	// The item based on which entries are sorted.
+	// The sort attribute.
 	//
 	// example:
 	//
 	// GmtCreate
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//

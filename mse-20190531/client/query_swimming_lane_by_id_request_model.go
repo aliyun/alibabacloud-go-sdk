@@ -20,15 +20,15 @@ type iQuerySwimmingLaneByIdRequest interface {
 type QuerySwimmingLaneByIdRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the lane.
+	// The swimming lane ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type QuerySwimmingLaneByIdRequest struct {
 	//
 	// 250
 	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace.
+	// The name of the MSE namespace.
 	//
 	// example:
 	//

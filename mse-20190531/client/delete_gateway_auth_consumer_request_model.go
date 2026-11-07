@@ -18,11 +18,11 @@ type iDeleteGatewayAuthConsumerRequest interface {
 }
 
 type DeleteGatewayAuthConsumerRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DeleteGatewayAuthConsumerRequest struct {
 	//
 	// gw-c70622ff52fe49beb29bea9a6f52****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the consumer on which the gateway performs authentication operations.
+	// The ID of the gateway authentication consumer.
 	//
 	// This parameter is required.
 	//

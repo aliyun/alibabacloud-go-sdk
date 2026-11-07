@@ -30,21 +30,21 @@ type iGatewayBlackWhiteListResponseBody interface {
 }
 
 type GatewayBlackWhiteListResponseBody struct {
-	// The status code. A value of 200 is returned if the request is successful.
+	// The code that synchronizes with the Success parameter.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GatewayBlackWhiteListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The placeholder in the dynamic error message. This parameter is not returned.
+	// The placeholder in the dynamic error message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not returned.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
@@ -74,11 +74,11 @@ type GatewayBlackWhiteListResponseBody struct {
 	//
 	// 58E06A0A-BD2C-47A0-99C2-B100F353****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The request is successful.
 	//
-	// 	- `false`
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -185,21 +185,21 @@ func (s *GatewayBlackWhiteListResponseBody) Validate() error {
 }
 
 type GatewayBlackWhiteListResponseBodyData struct {
-	// The page number.
+	// The page number of the instance list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page specified in the request.
 	//
 	// example:
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The returned information.
+	// The returned result set.
 	Result []*GatewayBlackWhiteListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The total number of instances returned.
+	// The total number of queried instances.
 	//
 	// example:
 	//
@@ -277,31 +277,31 @@ type GatewayBlackWhiteListResponseBodyDataResult struct {
 	//
 	// 81
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The unique ID of the gateway.
+	// The unique identifier of the gateway.
 	//
 	// example:
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The time when the blacklist or whitelist was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-08-02T02:43:40.000+0000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the rule was modified.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-08-02T02:43:40.000+0000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the blacklist and whitelist.
+	// The ID of the blacklists and whitelists.
 	//
 	// example:
 	//
 	// 549
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether to enable the whitelist feature.
+	// Indicates whether it is a whitelist.
 	//
 	// example:
 	//
@@ -313,7 +313,11 @@ type GatewayBlackWhiteListResponseBodyDataResult struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The comment.
+	// The note.
+	//
+	// example:
+	//
+	// Blocked IP list
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	// The resource ID.
 	//
@@ -321,45 +325,45 @@ type GatewayBlackWhiteListResponseBodyDataResult struct {
 	//
 	// 549
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The list of resource IDs in the JSON format.
+	// The JSON string of the resource ID list.
 	//
-	// 	- If the value of the ResourceType parameter is ROUTE, the value of this parameter is the list of route IDs.
+	// - If ResourceType is set to ROUTE, this parameter is a list of route IDs.
 	//
-	// 	- If the value of the ResourceType parameter is DOMAIN, the value of this parameter is the list of domain names.
+	// - If ResourceType is set to DOMAIN, this parameter is a list of domain name IDs.
 	//
 	// example:
 	//
 	// [234]
 	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
-	// The description of the resource name.
+	// The resource name description.
 	//
 	// example:
 	//
 	// {}
 	ResourceIdNameJson *string `json:"ResourceIdNameJson,omitempty" xml:"ResourceIdNameJson,omitempty"`
-	// The effective scope of the blacklist or whitelist. Valid values:
+	// The effective granularity. Valid values:
 	//
-	// 	- GATEWAY
+	// - GATEWAY: global gateway level.
 	//
-	// 	- DOMAIN
+	// - DOMAIN: domain name level.
 	//
-	// 	- ROUTE
+	// - ROUTE: route level.
 	//
 	// example:
 	//
 	// GATEWAY
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the blacklist or whitelist.
+	// The status of the blacklists and whitelists. Valid values:
 	//
-	// 	- on
+	// - on: enabled.
 	//
-	// 	- off
+	// - off: shutdown.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the blacklist and whitelist. The value is fixed to IP address blacklist and whitelist.
+	// The type of the blacklists and whitelists. The value is fixed to IP blacklists and whitelists.
 	//
 	// example:
 	//

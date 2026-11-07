@@ -38,19 +38,19 @@ type iCreateOrUpdateSwimmingLaneRequest interface {
 }
 
 type CreateOrUpdateSwimmingLaneRequest struct {
-	// The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
+	// The language in which the results are returned. Valid values: zh (Chinese, default) and en (English).
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable the lane.
+	// Specifies whether the lane is enabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// Specifies whether to configure a routing rule for the lane. If an Ingress gateway is used, this parameter is not required.
+	// Specifies whether to configure routing rules for the lane. Configuration is not required if the ingress is a gateway.
 	//
 	// example:
 	//
@@ -62,25 +62,19 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	//
 	// example:
 	//
-	// {}
+	// [{"Priority":1,"Paths":[],"Condition":"AND","RestItems":[{"Type":"param","Name":"name","Value":"xiaoming","Cond":"==","Operator":"rawvalue"}]}]
 	EntryRule *string `json:"EntryRule,omitempty" xml:"EntryRule,omitempty"`
-	// The lane.
+	// The collection of lane rules.
 	EntryRules []*CreateOrUpdateSwimmingLaneRequestEntryRules `json:"EntryRules,omitempty" xml:"EntryRules,omitempty" type:"Repeated"`
-	// The information about the routing rule for the gateway. This parameter is required when a cloud-native gateway is used as the ingress.
+	// The gateway routing information. This parameter is used when a cloud-native gateway is used as the ingress.
 	GatewaySwimmingLaneRouteJson *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson `json:"GatewaySwimmingLaneRouteJson,omitempty" xml:"GatewaySwimmingLaneRouteJson,omitempty" type:"Struct"`
-	// The language of the response. Valid values:****
-	//
-	// 	- **zh-CN**: Chinese
-	//
-	// 	- **en-US**: English
-	//
-	// > Default value: **zh-CN**.
+	// The ID of the lane group to which the lane belongs.
 	//
 	// example:
 	//
 	// 115
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
+	// The primary key ID. A value of -1 indicates that a lane is created. A value greater than 0 indicates that a specified lane is updated.
 	//
 	// example:
 	//
@@ -92,20 +86,27 @@ type CreateOrUpdateSwimmingLaneRequest struct {
 	//
 	// example:
 	//
-	// Test lane
+	// gray
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the MSE namespace.
+	//
 	// example:
 	//
 	// default
-	Namespace                       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PathIndependentPercentageEnable *bool   `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
-	// The ID of the region.
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// **[Deprecated]*	- The Java gateway-related configuration for percentage-based routing by path.
+	//
+	// example:
+	//
+	// false
+	PathIndependentPercentageEnable *bool `json:"PathIndependentPercentageEnable,omitempty" xml:"PathIndependentPercentageEnable,omitempty"`
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tag.
+	// The identifier.
 	//
 	// example:
 	//
@@ -257,13 +258,13 @@ func (s *CreateOrUpdateSwimmingLaneRequest) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestEntryRules struct {
-	// Specifies how RESTful items are combined into the final condition.
+	// Specifies how RestItems are combined to form the final condition.
 	//
 	// example:
 	//
-	// ""
+	// AND
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The paths.
+	// The list of paths.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The priority.
 	//
@@ -271,7 +272,7 @@ type CreateOrUpdateSwimmingLaneRequestEntryRules struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The matching list.
+	// The list of matching items.
 	RestItems []*CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems `json:"RestItems,omitempty" xml:"RestItems,omitempty" type:"Repeated"`
 }
 
@@ -333,17 +334,17 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRules) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
-	// The matching character.
+	// The match operator.
 	//
 	// example:
 	//
-	// =
+	// ==
 	Cond *string `json:"Cond,omitempty" xml:"Cond,omitempty"`
 	// The value.
 	//
 	// example:
 	//
-	// .params[0]
+	// x
 	Datum *string `json:"Datum,omitempty" xml:"Datum,omitempty"`
 	// The divisor.
 	//
@@ -355,29 +356,29 @@ type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
 	//
 	// example:
 	//
-	// ""
+	// x-mse-tag
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The matching list.
+	// The list of matching items.
 	NameList []*string `json:"NameList,omitempty" xml:"NameList,omitempty" type:"Repeated"`
 	// The operator.
 	//
 	// example:
 	//
-	// mod
+	// rawvalue
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The percentage.
 	//
 	// example:
 	//
-	// 10
+	// 30
 	Rate *int32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
 	// The remainder.
 	//
 	// example:
 	//
-	// 3
+	// 10
 	Remainder *int32 `json:"Remainder,omitempty" xml:"Remainder,omitempty"`
-	// The matching type.
+	// The match type.
 	//
 	// example:
 	//
@@ -387,7 +388,7 @@ type CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems struct {
 	//
 	// example:
 	//
-	// ""
+	// gray
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -494,12 +495,23 @@ func (s *CreateOrUpdateSwimmingLaneRequestEntryRulesRestItems) Validate() error 
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson struct {
+	// The end-to-end canary release mode. Valid values:
+	//
+	// - 0: route by request content
+	//
+	// - 1: route by percentage
+	//
 	// example:
 	//
 	// 0
-	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
-	Condition   *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The matching conditions.
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// The canary release condition. Valid values: AND (all conditions must be met) and OR (any condition must be met).
+	//
+	// example:
+	//
+	// AND
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The list of matching conditions.
 	Conditions []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
 	// The ID of the gateway.
 	//
@@ -513,14 +525,18 @@ type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson struct {
 	//
 	// gw-84efde2ee1464260bdb17a5b****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The traffic percentage. This parameter is used for percentage-based routing. Valid values: 0 to 100.
+	//
 	// example:
 	//
-	// 20
+	// 30
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	// The route IDs.
-	RouteIdList                      []*int64                                                                                       `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
-	RouteIndependentPercentageEnable *bool                                                                                          `json:"RouteIndependentPercentageEnable,omitempty" xml:"RouteIndependentPercentageEnable,omitempty"`
-	RouteIndependentPercentageList   []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList `json:"RouteIndependentPercentageList,omitempty" xml:"RouteIndependentPercentageList,omitempty" type:"Repeated"`
+	// The list of route IDs.
+	RouteIdList []*int64 `json:"RouteIdList,omitempty" xml:"RouteIdList,omitempty" type:"Repeated"`
+	// **[Deprecated]*	- This parameter is used to specify the percentage-based routing setting by route when an MSE cloud-native gateway is used as the ingress.
+	RouteIndependentPercentageEnable *bool `json:"RouteIndependentPercentageEnable,omitempty" xml:"RouteIndependentPercentageEnable,omitempty"`
+	// **[Deprecated]*	- The list of routes for independent percentage-based canary releases by route.
+	RouteIndependentPercentageList []*CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList `json:"RouteIndependentPercentageList,omitempty" xml:"RouteIndependentPercentageList,omitempty" type:"Repeated"`
 }
 
 func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) String() string {
@@ -635,13 +651,29 @@ func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson) Validate
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions struct {
-	// The matching condition. Valid values:
+	// If you use the legacy version of end-to-end canary release (swimversion is 0, which uses tag-based routing and canary routing), the following values are supported:
 	//
-	// 	- PRE: prefix matching
+	// - PRE: prefix match
 	//
-	// 	- EQUAL: exact matching
+	// - ERGULAR: regular expression match
 	//
-	// 	- ERGULAR: regular expression matching
+	// - EQUAL: exact match
+	//
+	// If you use the new version of end-to-end canary release (swimversion is 1 or 2, which uses single-service routing), the following values are supported:
+	//
+	// - PRE: prefix match
+	//
+	// - regexp: regular expression match
+	//
+	// - ==: equal to
+	//
+	// - !=: not equal to
+	//
+	// - list: in
+	//
+	// - %: percentage
+	//
+	// The new version of end-to-end canary release provides the same features as the legacy version but delivers better performance and simpler configuration. Migrate to the new version of end-to-end canary release.
 	//
 	// example:
 	//
@@ -655,9 +687,9 @@ type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions str
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the parameter. Valid values:
 	//
-	// 	- header
+	// - header: header
 	//
-	// 	- param
+	// - param: parameter
 	//
 	// example:
 	//
@@ -720,8 +752,18 @@ func (s *CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions
 }
 
 type CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList struct {
+	// The traffic percentage. This parameter is used for percentage-based routing. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 50
 	Percentage *int32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
-	RouteId    *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The route ID.
+	//
+	// example:
+	//
+	// 111
+	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
 }
 
 func (s CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList) String() string {

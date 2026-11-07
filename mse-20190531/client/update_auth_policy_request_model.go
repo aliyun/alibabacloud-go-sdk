@@ -32,7 +32,7 @@ type iUpdateAuthPolicyRequest interface {
 }
 
 type UpdateAuthPolicyRequest struct {
-	// The language of the response. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
+	// The language in which you want the results to be displayed. Valid values: zh-CN and en-US. Default value: zh-CN. The value zh-CN indicates Chinese, and the value en-US indicates English.
 	//
 	// example:
 	//
@@ -64,37 +64,37 @@ type UpdateAuthPolicyRequest struct {
 	//
 	// 432
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the ACK cluster namespace.
+	// The namespace ID of the Kubernetes cluster.
 	//
 	// example:
 	//
 	// c19c6c500e1ff4d7abc7bed9b8236***
 	K8sNamespace *string `json:"K8sNamespace,omitempty" xml:"K8sNamespace,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// demo-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The protocol type. Valid values:
+	// The Protocol Type. Valid values:
 	//
-	// 	- **SPRING_CLOUD**
+	// - **SPRING_CLOUD**.
 	//
-	// 	- **DUBBO**
+	// - **DUBBO**.
 	//
-	// 	- **istio**
+	// - **istio**.
 	//
 	// example:
 	//
 	// SPRING_CLOUD
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The source for application access.
+	// The service source that the application accesses.
 	//
 	// example:
 	//

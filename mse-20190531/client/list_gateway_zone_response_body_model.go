@@ -30,27 +30,27 @@ type iListGatewayZoneResponseBody interface {
 }
 
 type ListGatewayZoneResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The status code. A value of `200` is returned when `Success` is `true`.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried zones.
+	// A list of zones.
 	Data []*ListGatewayZoneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The dynamic part in the error message.
+	// The placeholder in the dynamic error message.
 	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace %s in **ErrMessage**.
+	// The dynamic error message that is used to replace the **%s*	- placeholder in the ErrMessage parameter.
 	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The status code.
+	// The error code returned if the request fails.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListGatewayZoneResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type ListGatewayZoneResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`
 	//
-	// 	- `false`: The request failed.
+	// - `false`
 	//
 	// example:
 	//
@@ -189,13 +189,14 @@ func (s *ListGatewayZoneResponseBody) Validate() error {
 }
 
 type ListGatewayZoneResponseBodyData struct {
-	// The local name of the zone.
+	// The name of the zone.
 	//
 	// example:
 	//
 	// I
-	LocalName  *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	SupportQat *bool   `json:"SupportQat,omitempty" xml:"SupportQat,omitempty"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// Indicates whether the zone supports QAT.
+	SupportQat *bool `json:"SupportQat,omitempty" xml:"SupportQat,omitempty"`
 	// The zone ID.
 	//
 	// example:

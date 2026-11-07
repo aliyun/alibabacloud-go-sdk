@@ -20,17 +20,17 @@ type iDeleteSwimmingLaneGroupRequest interface {
 }
 
 type DeleteSwimmingLaneGroupRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the lane group.
+	// The ID of the end-to-end traffic lane group.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteSwimmingLaneGroupRequest struct {
 	//
 	// example-app
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the Microservices Engine (MSE) namespace.
+	// The name of the MSE namespace.
 	//
 	// example:
 	//

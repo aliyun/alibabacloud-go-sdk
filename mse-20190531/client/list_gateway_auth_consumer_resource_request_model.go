@@ -28,15 +28,15 @@ type iListGatewayAuthConsumerResourceRequest interface {
 type ListGatewayAuthConsumerResourceRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the consumer.
+	// The ID of the gateway authentication consumer.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ListGatewayAuthConsumerResourceRequest struct {
 	//
 	// gw-3f97e2989c344f35ab3fd62b19f1****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListGatewayAuthConsumerResourceRequest struct {
 	//
 	// 1
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// This parameter is required.
 	//
@@ -68,11 +68,11 @@ type ListGatewayAuthConsumerResourceRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource authorization status. Valid values:
+	// The resource status. Valid values:
 	//
-	// 	- true: enabled
+	// - true: Enabled.
 	//
-	// 	- false: disabled
+	// - false: Disabled.
 	//
 	// example:
 	//

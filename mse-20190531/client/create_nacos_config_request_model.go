@@ -60,7 +60,7 @@ type CreateNacosConfigRequest struct {
 	//
 	// example:
 	//
-	// asdf
+	// text
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the data.
 	//
@@ -74,7 +74,7 @@ type CreateNacosConfigRequest struct {
 	//
 	// example:
 	//
-	// Basic module configuration.
+	// Base module configuration
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The ID of the group.
 	//
@@ -102,7 +102,7 @@ type CreateNacosConfigRequest struct {
 	//
 	// example:
 	//
-	// Basic configurations
+	// Basic configuration
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The format of the configuration. Supported formats include TEXT, JSON, and XML.
 	//

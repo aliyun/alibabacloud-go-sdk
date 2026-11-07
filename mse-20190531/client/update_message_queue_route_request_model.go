@@ -30,17 +30,17 @@ type iUpdateMessageQueueRouteRequest interface {
 }
 
 type UpdateMessageQueueRouteRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -48,32 +48,37 @@ type UpdateMessageQueueRouteRequest struct {
 	//
 	// hkhon1po62@c3df23522baa898
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
+	// Specifies whether message canary release is enabled. Valid values:
 	//
-	// 	- `true`: enabled
+	// - `true`: Enabled.
 	//
-	// 	- `false`: disabled
+	// - `false`: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The side for message filtering when the canary release for messaging feature is enabled.
+	// The filtering side for message canary release.
 	//
 	// example:
 	//
 	// Server
-	FilterSide   *string   `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	FilterSide *string `json:"FilterSide,omitempty" xml:"FilterSide,omitempty"`
+	// The list of baseline environment labels for MSMQ grayscale rules.
 	GrayBaseTags []*string `json:"GrayBaseTags,omitempty" xml:"GrayBaseTags,omitempty" type:"Repeated"`
+	// The MSE namespace name.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -81,7 +86,7 @@ type UpdateMessageQueueRouteRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The tag that is negligible for the untagged environment of the application.
+	// The ignored tags for the untagged environments of the application.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

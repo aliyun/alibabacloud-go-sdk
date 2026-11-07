@@ -20,16 +20,18 @@ type iListGatewayDomainRequest interface {
 }
 
 type ListGatewayDomainRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The domain name used for fuzzy search.
+	//
 	// example:
 	//
 	// example.com
@@ -40,7 +42,7 @@ type ListGatewayDomainRequest struct {
 	//
 	// gw-c9bc5afd61014165bd58f621b491****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The type of the domain name.
+	// The domain name type.
 	//
 	// example:
 	//

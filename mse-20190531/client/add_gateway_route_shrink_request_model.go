@@ -48,31 +48,33 @@ type iAddGatewayRouteShrinkRequest interface {
 }
 
 type AddGatewayRouteShrinkRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The route description.
+	//
 	// example:
 	//
 	// a route for xxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the destination service. Valid values:
+	// The destination service type. Valid values:
 	//
-	// 	- Single
+	// - Single: single service
 	//
-	// 	- Multiple
+	// - Multiple: multiple services
 	//
-	// 	- VersionOriented
+	// - VersionOriented: tag-based routing
 	//
-	// 	- Mock
+	// - Mock: mock
 	//
-	// 	- Redirect
+	// - Redirect: redirect
 	//
 	// example:
 	//
@@ -80,13 +82,13 @@ type AddGatewayRouteShrinkRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The mock response configuration.
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
-	// The domain ID.
+	// The domain name ID.
 	//
 	// example:
 	//
 	// 20
 	DomainId *int64 `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The domain IDs.
+	// The domain name list.
 	//
 	// example:
 	//
@@ -94,21 +96,21 @@ type AddGatewayRouteShrinkRequest struct {
 	DomainIdListJSON *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether to activate Web Application Firewall (WAF).
+	// **[Deprecated]*	- Use UpdateGatewayRouteWafStatus to update the WAF status of the route.
 	//
 	// example:
 	//
 	// true
 	EnableWaf *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
-	// Specifies whether to enable the Fallback service.
+	// Specifies whether to enable the fallback service.
 	//
 	// example:
 	//
 	// true
 	Fallback *bool `json:"Fallback,omitempty" xml:"Fallback,omitempty"`
-	// The information about the Fallback service.
+	// The fallback service.
 	FallbackServicesShrink *string `json:"FallbackServices,omitempty" xml:"FallbackServices,omitempty"`
-	// The ID of the gateway.
+	// The gateway ID.
 	//
 	// example:
 	//
@@ -120,23 +122,23 @@ type AddGatewayRouteShrinkRequest struct {
 	//
 	// gw-492af9b04bb4474cae9d645be8*****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The name of the route.
+	// The route name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The routing policy in a JSON string.
+	// The JSON string of the route policy.
 	//
 	// example:
 	//
 	// {"CORS":"{\\"allowMethods\\":\\"GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH\\",\\"allowHeaders\\":\\"*\\",\\"exposeHeaders\\":\\"*\\",\\"unitNum\\":12,\\"allowCredentials\\":true,\\"status\\":\\"off\\",\\"allowOrigins\\":\\"*\\",\\"timeUnit\\":\\"h\\"}","Timeout":"{\\"unitNum\\":10,\\"timeUnit\\":\\"s\\",\\"status\\":\\"off\\"}","Retry":"{\\"attempts\\":2,\\"retryOn\\":[\\"5xx\\"],\\"status\\":\\"off\\"}","HTTPRewrite":"{\\"pathType\\":\\"EQUAL\\",\\"path\\":\\"/o\\",\\"status\\":\\"off\\"}","Waf":"{\\"enabled\\":false}","HeaderOp":"{\\"status\\":\\"off\\",\\"headerOpItems\\":[{\\"directionType\\":\\"Request\\",\\"opType\\":\\"Add\\",\\"key\\":\\"kkk\\",\\"value\\":\\"ll\\"}]}"}
 	Policies *string `json:"Policies,omitempty" xml:"Policies,omitempty"`
-	// The matching rule.
+	// The matching rules.
 	PredicatesShrink *string `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
-	// The configuration of the redirection.
+	// The redirect configuration.
 	RedirectJSONShrink *string `json:"RedirectJSON,omitempty" xml:"RedirectJSON,omitempty"`
-	// The sequence number of the route. (A small value indicates a high priority.)
+	// The route order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -144,13 +146,13 @@ type AddGatewayRouteShrinkRequest struct {
 	RouteOrder *int32 `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
 	// The route type. Valid values:
 	//
-	// Op: Manage routes.
+	// - Op: management and control route
 	//
 	// example:
 	//
 	// Op
 	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The list of services.
+	// The service list. This parameter is required when the route points to a single service, multiple services, or tag-based routing.
 	ServicesShrink *string `json:"Services,omitempty" xml:"Services,omitempty"`
 }
 

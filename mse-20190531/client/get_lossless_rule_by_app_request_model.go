@@ -22,35 +22,35 @@ type iGetLosslessRuleByAppRequest interface {
 }
 
 type GetLosslessRuleByAppRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// 	- zh: Chinese.
 	//
-	// 	- en: English
+	// 	- en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hkhon1po62@c3df23522baa***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the MSE namespace.
+	// The Microservices Engine (MSE) namespace name.
 	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

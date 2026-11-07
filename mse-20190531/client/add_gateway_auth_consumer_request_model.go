@@ -38,17 +38,17 @@ type iAddGatewayAuthConsumerRequest interface {
 }
 
 type AddGatewayAuthConsumerRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The description of the consumer.
+	// The description of the authentication consumer.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type AddGatewayAuthConsumerRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The encryption type. Valid values:
 	//
-	// 	- RSA
+	// - RSA
 	//
-	// 	- OCT
+	// - OCT
 	//
 	// example:
 	//
@@ -72,25 +72,25 @@ type AddGatewayAuthConsumerRequest struct {
 	//
 	// gw-c70622ff52fe49beb29bea9a6f52****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The JWT public key. The JSON format is supported.
+	// The JWT public key in JSON format.
 	//
 	// example:
 	//
 	// {"keys":[{"e":"AQAB","kid":"DHFbpoIUqrY8t2zpA2qXfCmr5VO5ZEr4RzHU_-envvQ","kty":"RSA","n":"xAE7eB6qugXyCAG3yhh7pkDkT65pHymX-P7KfIupjf59vsdo91bSP9C8H07pSAGQO1MV_xFj9VswgsCg4R6otmg5PV2He95lZdHtOcU5DXIg_pbhLdKXbi66GlVeK6ABZOUW3WYtnNHD-91gVuoeJT_DwtGGcp4ignkgXfkiEm4sw-4sfb4qdt5oLbyVpmW6x9cfa7vs2WTfURiCrBoUqgBo_-4WTiULmmHSGZHOjzwa8WtrtOQGsAFjIbno85jp6MnGGGZPYZbDAa_b3y5u-YpW7ypZrvD8BgtKVjgtQgZhLAGezMt0ua3DRrWnKqTZ0BJ_EyxOGuHJrLsn00fnMQ"}]}
 	Jwks *string `json:"Jwks,omitempty" xml:"Jwks,omitempty"`
-	// The name of the key used for JWT-based identity authentication.
+	// The KeyName identity in the JWT.
 	//
 	// example:
 	//
 	// iss
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The value of the key used for JWT-based identity authentication.
+	// The KeyValue identity in the JWT.
 	//
 	// example:
 	//
 	// abcd
 	KeyValue *string `json:"KeyValue,omitempty" xml:"KeyValue,omitempty"`
-	// The name of the consumer.
+	// The name of the authentication consumer.
 	//
 	// This parameter is required.
 	//
@@ -98,25 +98,25 @@ type AddGatewayAuthConsumerRequest struct {
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The names of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
+	// The name of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header, such as `Authorization: Bearer token`.
 	//
 	// example:
 	//
 	// Authorization
 	TokenName *string `json:"TokenName,omitempty" xml:"TokenName,omitempty"`
-	// Specifies whether to enable pass-through.
+	// Specifies whether to pass through the token.
 	//
 	// example:
 	//
 	// true
 	TokenPass *bool `json:"TokenPass,omitempty" xml:"TokenPass,omitempty"`
-	// The positions of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
+	// The position of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header, such as `Authorization: Bearer token`.
 	//
 	// example:
 	//
 	// HEADER
 	TokenPosition *string `json:"TokenPosition,omitempty" xml:"TokenPosition,omitempty"`
-	// The prefixes of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
+	// The prefix of the token parameter to be verified. By default, the token is prefixed with Bearer and placed in the Authorization header, such as `Authorization: Bearer token`.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type AddGatewayAuthConsumerRequest struct {
 	TokenPrefix *string `json:"TokenPrefix,omitempty" xml:"TokenPrefix,omitempty"`
 	// The authentication type. Valid values:
 	//
-	// 	- JWT
+	// - JWT
 	//
 	// This parameter is required.
 	//

@@ -28,7 +28,7 @@ type DataValue struct {
 	//
 	// 12345
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The region where the application resides.
+	// The region where the application is deployed.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type DataValue struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The application name.
+	// The name of the application.
 	//
 	// example:
 	//
 	// example-app-name
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application ID.
+	// The ID of the application.
 	//
 	// example:
 	//

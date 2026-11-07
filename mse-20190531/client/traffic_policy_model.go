@@ -80,6 +80,10 @@ type TrafficPolicyLoadBalancerSettings struct {
 	// RANDOM
 	LoadbalancerType *string `json:"LoadbalancerType,omitempty" xml:"LoadbalancerType,omitempty"`
 	// The prefetch duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 5
 	WarmupDuration *int64 `json:"WarmupDuration,omitempty" xml:"WarmupDuration,omitempty"`
 }
 

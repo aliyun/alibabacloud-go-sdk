@@ -16,7 +16,10 @@ type iListNacosMcpServersResponseBody interface {
 }
 
 type ListNacosMcpServersResponseBody struct {
+	// The returned data structure.
 	Data *ListNacosMcpServersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ADDD8AB7-8D1C-4697-A83E-410D2607****
@@ -59,6 +62,7 @@ func (s *ListNacosMcpServersResponseBody) Validate() error {
 }
 
 type ListNacosMcpServersResponseBodyData struct {
+	// The paginated list of MCP servers.
 	PageItems []*ListNacosMcpServersResponseBodyDataPageItems `json:"PageItems,omitempty" xml:"PageItems,omitempty" type:"Repeated"`
 	// pageNumber.
 	//
@@ -72,6 +76,8 @@ type ListNacosMcpServersResponseBodyData struct {
 	//
 	// 1
 	PagesAvailable *int32 `json:"PagesAvailable,omitempty" xml:"PagesAvailable,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 4
@@ -136,11 +142,16 @@ func (s *ListNacosMcpServersResponseBodyData) Validate() error {
 }
 
 type ListNacosMcpServersResponseBodyDataPageItems struct {
+	// The capabilities of the MCP server.
 	Capabilities []*string `json:"Capabilities,omitempty" xml:"Capabilities,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The frontend protocol type.
+	//
 	// example:
 	//
 	// mcp-sse
@@ -151,18 +162,25 @@ type ListNacosMcpServersResponseBodyDataPageItems struct {
 	//
 	// 2385420b-6176-4a37-aba4-d3d382e4bb84
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the MCP server.
+	//
 	// example:
 	//
 	// stdio
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The current latest version.
+	//
 	// example:
 	//
 	// 1.1.0
-	Version       *string                                                    `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version details.
 	VersionDetail *ListNacosMcpServersResponseBodyDataPageItemsVersionDetail `json:"VersionDetail,omitempty" xml:"VersionDetail,omitempty" type:"Struct"`
 }
 
@@ -256,14 +274,20 @@ func (s *ListNacosMcpServersResponseBodyDataPageItems) Validate() error {
 }
 
 type ListNacosMcpServersResponseBodyDataPageItemsVersionDetail struct {
+	// Indicates whether this is the latest version.
+	//
 	// example:
 	//
 	// true
 	IsLatest *bool `json:"Is_latest,omitempty" xml:"Is_latest,omitempty"`
+	// The release date.
+	//
 	// example:
 	//
 	// 2025-07-16
 	ReleaseDate *string `json:"Release_date,omitempty" xml:"Release_date,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1.0.0

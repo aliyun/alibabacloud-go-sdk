@@ -24,7 +24,7 @@ type iAddAuthResourceResponseBody interface {
 }
 
 type AddAuthResourceResponseBody struct {
-	// The status code returned.
+	// The status code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type AddAuthResourceResponseBody struct {
 	//
 	// 24
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type AddAuthResourceResponseBody struct {
 	//
 	// You are not authorized to perform this operation.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4BBCF560-4DD7-5DBD-B849-CCB135BBBAB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request succeeded.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request failed.
 	//
 	// example:
 	//

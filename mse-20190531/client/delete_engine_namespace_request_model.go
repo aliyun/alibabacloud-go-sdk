@@ -20,29 +20,29 @@ type iDeleteEngineNamespaceRequest interface {
 }
 
 type DeleteEngineNamespaceRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// mse-0c738****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
 	// 678ca857-****-b1bf-d0a98c5ca84b
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

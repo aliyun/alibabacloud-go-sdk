@@ -24,23 +24,23 @@ type iListGatewayRequest interface {
 }
 
 type ListGatewayRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned information. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// Specifies whether to enable the sorting feature. This feature is not available.
+	// The sorting order. This parameter is currently not used.
 	//
 	// example:
 	//
 	// false
 	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	// The details of parameters.
+	// The filter parameters.
 	FilterParams *ListGatewayRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
 	// The order information.
 	//
@@ -48,13 +48,13 @@ type ListGatewayRequest struct {
 	//
 	// {}
 	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of instances per page.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *ListGatewayRequest) Validate() error {
 }
 
 type ListGatewayRequestFilterParams struct {
-	// The type of the gateway.
+	// The gateway type.
 	//
 	// example:
 	//
@@ -146,31 +146,31 @@ type ListGatewayRequestFilterParams struct {
 	//
 	// gw-5017305290e14centbrveca****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse_ingresspre-cn-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The tag of the instance.
+	// The resource tag.
 	//
 	// example:
 	//
 	// [{"key":"tagkey","value":"tagvalue"}]
 	MseTag *string `json:"MseTag,omitempty" xml:"MseTag,omitempty"`
-	// The name of the gateway.
+	// The gateway name.
 	//
 	// example:
 	//
 	// rutain-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-7y2uye*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC.
 	//
 	// example:
 	//

@@ -28,38 +28,54 @@ type iQueryNacosGrayConfigRequest interface {
 }
 
 type QueryNacosGrayConfigRequest struct {
+	// The language of the response. Valid values: zh (default): Chinese. en: English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The DataId of the configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demo-develop
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The name of the canary release rule.
+	//
 	// example:
 	//
 	// test
 	GrayName *string `json:"GrayName,omitempty" xml:"GrayName,omitempty"`
+	// The configuration group.
+	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// 6bafdde3-4fa7-4d67-b3da-a607ab87f7e4
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The region where the cluster resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This field is deprecated.
+	//
 	// example:
 	//
 	// {}

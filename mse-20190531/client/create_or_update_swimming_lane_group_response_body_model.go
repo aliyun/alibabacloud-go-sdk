@@ -22,7 +22,7 @@ type iCreateOrUpdateSwimmingLaneGroupResponseBody interface {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
-	// The response parameters.
+	// The data overview.
 	//
 	// example:
 	//
@@ -32,23 +32,25 @@ type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
 	//
 	// example:
 	//
-	// mse-100-000
+	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// Succ
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE5C32A1-BC0E-4B79-817C-103E4EDF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// true: The request was successful. false: The request failed.
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//
@@ -119,41 +121,54 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
-	// The list of application IDs that are separated by commas (,).
+	// The IDs of the applications, separated by commas (,).
 	//
 	// example:
 	//
 	// abcd1@abcde123,abcd1@abcde124
-	AppIds      *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
-	CanaryModel *int32  `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	AppIds *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// The end-to-end canary release mode. Valid values:
+	//
+	// - 0: Route by request content.
+	//
+	// - 1: Route by proportion.
+	//
+	// example:
+	//
+	// 0
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// Indicates whether canary release is enabled for databases.
+	//
 	// example:
 	//
 	// true
 	DbGrayEnable *string `json:"DbGrayEnable,omitempty" xml:"DbGrayEnable,omitempty"`
-	// The ingress application.
+	// The entry application.
 	//
 	// example:
 	//
 	// mse:abcd1@a2345
 	EntryApp *string `json:"EntryApp,omitempty" xml:"EntryApp,omitempty"`
-	// The ID of the lane group.
+	// The ID of the swimlane group.
 	//
 	// example:
 	//
 	// 2047
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The side for message filtering when the canary release for messaging feature is enabled.
+	// The side where message queue canary release filtering is performed.
 	//
 	// example:
 	//
 	// Client
 	MessageQueueFilterSide *string `json:"MessageQueueFilterSide,omitempty" xml:"MessageQueueFilterSide,omitempty"`
-	// Specifies whether to enable canary release for messaging.
+	// Specifies whether to enable canary release for message queues.
 	//
 	// example:
 	//
 	// true
 	MessageQueueGrayEnable *bool `json:"MessageQueueGrayEnable,omitempty" xml:"MessageQueueGrayEnable,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// example-app
@@ -164,14 +179,19 @@ type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
 	//
 	// prod
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Paths     *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
+	// **[Deprecated]*	- The paths. This parameter is a list of paths when a Java gateway is used as the entry point.
+	//
+	// example:
+	//
+	// ["/a"]
+	Paths *string `json:"Paths,omitempty" xml:"Paths,omitempty"`
 	// Specifies whether to record request details.
 	//
 	// example:
 	//
 	// true
 	RecordCanaryDetail *bool `json:"RecordCanaryDetail,omitempty" xml:"RecordCanaryDetail,omitempty"`
-	// The region where the application resides.
+	// The region to which the application belongs.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type ListCircuitBreakerRulesResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the rule.
+	// The rules.
 	Data *ListCircuitBreakerRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,19 +38,19 @@ type ListCircuitBreakerRulesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 4E9FDCFE-0738-493B-B801-82BDFBCB****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// The result of the request.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListCircuitBreakerRulesResponseBody) Validate() error {
 }
 
 type ListCircuitBreakerRulesResponseBodyData struct {
-	// The page number.
+	// The first page number.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type ListCircuitBreakerRulesResponseBodyDataResult struct {
 	//
 	// spring-cloud-a
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Indicates whether the rule was enabled.
+	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
@@ -264,20 +264,25 @@ type ListCircuitBreakerRulesResponseBodyDataResult struct {
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region in which the instance resides.
+	// The region in which the cluster resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
+	// The name of the interface to which the rule applies. The interface name must be the same as that displayed on the API Details page in the console.
 	//
 	// example:
 	//
 	// /a
-	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The interface resource type.
+	//
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the resources, all requests quickly fail in the configured duration.
 	//
 	// example:
 	//
@@ -296,32 +301,6 @@ type ListCircuitBreakerRulesResponseBodyDataResult struct {
 	// 20000
 	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
 	// The threshold type.
-	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     slow call proportion
-	//
-	//     <!-- -->
-	//
-	// 	- 1
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     abnormal proportion
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

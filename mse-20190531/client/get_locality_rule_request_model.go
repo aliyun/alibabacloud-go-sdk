@@ -24,28 +24,40 @@ type iGetLocalityRuleRequest interface {
 }
 
 type GetLocalityRuleRequest struct {
+	// The language in which you want the results to be displayed. Valid values: zh and en. zh is the default value, which indicates Chinese. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// hgxznfcvbe@be2c0228f******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// example-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the Microservices Engine (MSE) namespace.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The region of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The source of the rule. This field is optional.
+	//
 	// example:
 	//
 	// edasmsc

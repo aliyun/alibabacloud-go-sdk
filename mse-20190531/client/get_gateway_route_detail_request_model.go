@@ -18,23 +18,23 @@ type iGetGatewayRouteDetailRequest interface {
 }
 
 type GetGatewayRouteDetailRequest struct {
-	// The language of the response. Valid values:
+	// Language type of the returned information:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The unique ID of the gateway.
+	// Gateway unique identifier ID.
 	//
 	// example:
 	//
 	// gw-5d3a78a53ec947aa928212d671d400ac
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	// The ID of the route.
+	// Route ID.
 	//
 	// example:
 	//

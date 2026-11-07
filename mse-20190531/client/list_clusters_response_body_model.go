@@ -30,55 +30,55 @@ type iListClustersResponseBody interface {
 }
 
 type ListClustersResponseBody struct {
-	// The details of the data.
+	// The data overview.
 	Data []*ListClustersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 202
 	HttpCode *string `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	// The message returned.
+	// The message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of instances returned on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 69AD2AA7-DB47-449B-941B-B14409DF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned instances.
+	// The total number of instances.
 	//
 	// example:
 	//
@@ -195,17 +195,17 @@ type ListClustersResponseBodyData struct {
 	//
 	// 1.9.3
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// Indicates whether the instance can be upgraded.
+	// Indicates whether the cluster can be upgraded.
 	//
 	// example:
 	//
 	// true
 	CanUpdate *bool `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
-	// The billing method, such as subscription or pay-as-you-go.
+	// The billing method, including subscription and pay-as-you-go.
 	//
 	// example:
 	//
-	// Pay-as-you-go
+	// subscription
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The alias of the cluster.
 	//
@@ -219,7 +219,7 @@ type ListClustersResponseBodyData struct {
 	//
 	// mse-cn-st21ri2****
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The type of the cluster. Valid values: ZooKeeper, Nacos-Ans, and Eureka.
+	// The cluster type, including ZooKeeper, Nacos-Ans, and Eureka.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ type ListClustersResponseBodyData struct {
 	//
 	// 2020-07-31 11:36:08
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the cluster expires.
+	// The expiration time of the cluster.
 	//
 	// example:
 	//
 	// 2021-08-01 00:00:00
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The initialization status of the instance.
+	// The initialization status.
 	//
 	// example:
 	//
@@ -255,30 +255,31 @@ type ListClustersResponseBodyData struct {
 	//
 	// mse-cn-st21ri2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The public IP address.
+	// The public address.
 	//
 	// example:
 	//
 	// 47.98.XX.XX
 	InternetAddress *string `json:"InternetAddress,omitempty" xml:"InternetAddress,omitempty"`
-	// The public endpoint.
+	// The public domain name.
 	//
 	// example:
 	//
 	// mse-7413****-p.eureka.mse.aliyuncs.com
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	// The internal IP address.
+	// The private network address.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	IntranetAddress *string `json:"IntranetAddress,omitempty" xml:"IntranetAddress,omitempty"`
-	// The internal endpoint.
+	// The internal domain name.
 	//
 	// example:
 	//
 	// mse-7413****-eureka.mse.aliyuncs.com
-	IntranetDomain    *string                                        `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// The O&M time window.
 	MaintenancePeriod *ListClustersResponseBodyDataMaintenancePeriod `json:"MaintenancePeriod,omitempty" xml:"MaintenancePeriod,omitempty" type:"Struct"`
 	// The edition of the cluster.
 	//
@@ -292,15 +293,22 @@ type ListClustersResponseBodyData struct {
 	//
 	// rg-acfmv7jiavm4uxa
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags that are attached to the instance.
+	// The tags bound to the instance.
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The version information.
 	//
 	// example:
 	//
 	// EUREKA_1_9_3
-	VersionCode      *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	// The version lifecycle.
+	//
+	// example:
+	//
+	// STABLE
 	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
+	// The ID of the VPC where the cluster is deployed.
+	//
 	// example:
 	//
 	// vpc-bp1hcg467ekqsv0zr****
@@ -523,7 +531,17 @@ func (s *ListClustersResponseBodyData) Validate() error {
 }
 
 type ListClustersResponseBodyDataMaintenancePeriod struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time of the O&M time window.
+	//
+	// example:
+	//
+	// 06:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the O&M time window.
+	//
+	// example:
+	//
+	// 02:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

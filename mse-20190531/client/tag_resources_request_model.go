@@ -24,15 +24,15 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The ID of the region.
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -40,27 +40,35 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance ID.
+	// The resource ID.
 	//
-	// > This parameter specifies the instance ID that is passed. Examples:
+	// - *Registration and configuration center*: the instance ID.
 	//
-	// - ResourceId.0 specifies the first instance ID that is passed.
+	// - *Cloud-native gateway*: the unique ID of the gateway.
 	//
-	// - ResourceId.1 specifies the second instance ID that is passed.
+	// - *Microservice administration application*: the AppID of the microservice administration application. Note that this is not the LicenseKey.
+	//
+	// > The number in the parameter name specifies the index of the instance ID. For example:
+	//
+	// - **ResourceId.0*	- specifies the first instance ID.
+	//
+	// - **ResourceId.1*	- specifies the second instance ID.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resources. Valid values:
+	// The resource type. Valid values:
 	//
-	// 	- CLUSTER: Microservices Engine (MSE) instance
+	// - CLUSTER: a registration and configuration center.
 	//
-	// 	- GATEWAY: cloud-native gateway
+	// - GATEWAY: a cloud-native gateway.
+	//
+	// - GOVERNANCEAPPLICATION: a microservice administration application.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// CLUSTER
+	// CLUSTER、GATEWAY、GOVERNANCEAPPLICATION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags. You can specify a maximum of 20 tags.
+	// A list of tags. You can specify up to 20 tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -133,13 +141,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key must be 1 to 128 characters in length. The tag key cannot start with acs: or aliyun or contain [http:// or https://.](http://https://。)
+	// The tag key. The tag key cannot be an empty string. It can be up to 128 characters in length. The tag key cannot start with \\`aliyun\\` or \\`acs:\\`. The tag key cannot contain \\`http\\://\\` or \\`https\\://\\`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

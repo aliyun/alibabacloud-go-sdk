@@ -26,47 +26,47 @@ type iCreateOrUpdateSwimmingLaneResponseBody interface {
 }
 
 type CreateOrUpdateSwimmingLaneResponseBody struct {
-	// The status code. The value 200 is returned if the request is successful.
+	// The code used only to synchronize with the Success parameter.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data overview.
 	//
 	// example:
 	//
 	// {}
 	Data *CreateOrUpdateSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// example:
 	//
 	// mse-100-000
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
-	// The request was successfully processed.
+	// Succ
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EE5C32A1-BC0E-4B79-817C-103E4EDF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request was successful.
+	// - `true`: The request is successful.
 	//
-	// 	- `false`: The request failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ func (s *CreateOrUpdateSwimmingLaneResponseBody) Validate() error {
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyData struct {
-	// Indicates whether the lane was enabled.
+	// The swimlane switch.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// Indicates whether the rule is enabled.
+	// Specifies whether the rules are enabled.
 	//
 	// example:
 	//
 	// true
 	EnableRules *bool `json:"enableRules,omitempty" xml:"enableRules,omitempty"`
-	// The rule for the ingress application.
+	// The entry application rule.
 	//
 	// example:
 	//
@@ -175,56 +175,61 @@ type CreateOrUpdateSwimmingLaneResponseBodyData struct {
 	EntryRule *string `json:"entryRule,omitempty" xml:"entryRule,omitempty"`
 	// The name.
 	EntryRules []*CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules `json:"entryRules,omitempty" xml:"entryRules,omitempty" type:"Repeated"`
-	// The routing rule for the MSE gateway.
+	// The MSE gateway routing rules.
 	//
 	// example:
 	//
 	// {}
 	GatewaySwimmingLaneRouteJson *string `json:"gatewaySwimmingLaneRouteJson,omitempty" xml:"gatewaySwimmingLaneRouteJson,omitempty"`
-	// The time when the lane was created.
+	// The time when the swimlane was created.
 	//
 	// example:
 	//
 	// 1545726028000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the lane was updated.
+	// The time when the swimlane was updated.
 	//
 	// example:
 	//
 	// 1565701886000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the lane group.
+	// The swimlane group ID.
 	//
 	// example:
 	//
 	// 72586
 	GroupId *int64 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The ID of the lane.
+	// The swimlane ID.
 	//
 	// example:
 	//
 	// 94765
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the lane.
+	// The swimlane name.
 	//
 	// example:
 	//
 	// test
-	Name                            *string `json:"name,omitempty" xml:"name,omitempty"`
-	PathIndependentPercentageEnable *bool   `json:"pathIndependentPercentageEnable,omitempty" xml:"pathIndependentPercentageEnable,omitempty"`
-	// The ID of the region where the application is deployed.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// **[Deprecated]*	- Specifies whether to enable percentage-based canary releases by path when a Java gateway is used as the entry point.
+	//
+	// example:
+	//
+	// false
+	PathIndependentPercentageEnable *bool `json:"pathIndependentPercentageEnable,omitempty" xml:"pathIndependentPercentageEnable,omitempty"`
+	// The region where the application is located.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The status of the lane.
+	// The swimlane status.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the lane.
+	// The tag corresponding to the swimlane.
 	//
 	// example:
 	//
@@ -386,15 +391,15 @@ type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules struct {
 	//
 	// AND
 	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
-	// The path of the code group.
+	// The code group path.
 	//
 	// example:
 	//
 	// /adump/wxb/prod
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The paths.
+	// The list of paths.
 	Paths []*string `json:"paths,omitempty" xml:"paths,omitempty" type:"Repeated"`
-	// The conditions to be met.
+	// The list of REST matching rules.
 	RestItems []*CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems `json:"restItems,omitempty" xml:"restItems,omitempty" type:"Repeated"`
 }
 
@@ -456,7 +461,7 @@ func (s *CreateOrUpdateSwimmingLaneResponseBodyDataEntryRules) Validate() error 
 }
 
 type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
-	// The matching character.
+	// The match operator.
 	//
 	// example:
 	//
@@ -480,7 +485,7 @@ type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The names.
+	// The list of names.
 	NameList []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
 	// The operator.
 	//
@@ -500,7 +505,7 @@ type CreateOrUpdateSwimmingLaneResponseBodyDataEntryRulesRestItems struct {
 	//
 	// 10
 	Remainder *int32 `json:"remainder,omitempty" xml:"remainder,omitempty"`
-	// The matching type.
+	// The match type.
 	//
 	// example:
 	//

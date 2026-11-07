@@ -34,9 +34,9 @@ type iUpdateFlowRuleRequest interface {
 type UpdateFlowRuleRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
@@ -58,62 +58,23 @@ type UpdateFlowRuleRequest struct {
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The throttling effect.
 	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     fast failure
-	//
-	//     <!-- -->
-	//
-	// 	- 2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     in queue
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// 0
 	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
 	// Specifies whether to enable the rule.
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// true
-	Enable   *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The source application of the request.
+	//
+	// example:
+	//
+	// Spring-cloud-a
 	LimitApp *string `json:"LimitApp,omitempty" xml:"LimitApp,omitempty"`
-	// The timeout period. Unit: milliseconds. This parameter is required when the value of ControlBehavior is set to 2.
+	// The timeout period. Unit: milliseconds. This parameter is required if the ControlBehavior parameter is set to 2.
 	//
 	// example:
 	//

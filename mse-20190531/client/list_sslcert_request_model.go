@@ -20,14 +20,16 @@ type iListSSLCertRequest interface {
 type ListSSLCertRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The certificate name that is used for fuzzy search.
+	//
 	// example:
 	//
 	// certabc

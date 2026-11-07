@@ -32,21 +32,21 @@ type GetLosslessRuleByAppResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetLosslessRuleByAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned.
+	// The error code.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The message returned.
+	// The response message.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type GetLosslessRuleByAppResponseBody struct {
 	//
 	// DC34E4A3-5F1C-4E40-86EA-02EDF967****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request succeeded.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ func (s *GetLosslessRuleByAppResponseBody) Validate() error {
 }
 
 type GetLosslessRuleByAppResponseBodyData struct {
-	// Indicates whether service registration is complete before readiness probe.
+	// Indicates whether service registration is completed before the readiness check is passed.
 	//
 	// example:
 	//
 	// true
 	Aligned *bool `json:"Aligned,omitempty" xml:"Aligned,omitempty"`
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// hkhon1po62@24810bf4364a***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -175,47 +175,47 @@ type GetLosslessRuleByAppResponseBodyData struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The registration latency. Unit: seconds.
+	// The delayed registration time in seconds.
 	//
 	// example:
 	//
 	// 60
 	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// Indicates whether graceful start is enabled. Valid values:
+	// The enabling status of graceful start. Valid values:
 	//
-	// 	- `true`: enabled
+	// - `true`: Enabled.
 	//
-	// 	- `false`: disabled
+	// - `false`: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The slope of the prefetching curve.
+	// The slope of the warm-up curve.
 	//
 	// example:
 	//
 	// 2
 	FuncType *int32 `json:"FuncType,omitempty" xml:"FuncType,omitempty"`
-	// Indicates whether online and offline processing details are displayed.
+	// Indicates whether the processing details for graceful start and shutdown are enabled.
 	//
 	// example:
 	//
 	// true
 	LossLessDetail *bool `json:"LossLessDetail,omitempty" xml:"LossLessDetail,omitempty"`
-	// Indicates whether notification is enabled.
+	// Indicates whether proactive notification is enabled.
 	//
 	// example:
 	//
 	// false
 	Notice *bool `json:"Notice,omitempty" xml:"Notice,omitempty"`
-	// Indicates whether service prefetching is complete before readiness probe.
+	// Indicates whether service warm-up is completed before the readiness check is passed.
 	//
 	// example:
 	//
 	// false
 	Related *bool `json:"Related,omitempty" xml:"Related,omitempty"`
-	// The prefetching duration. Unit: seconds.
+	// The warm-up duration in seconds.
 	//
 	// example:
 	//

@@ -24,15 +24,15 @@ type iUpdateGatewayRouteAuthRequest interface {
 type UpdateGatewayRouteAuthRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The authentication configurations.
+	// The authentication configuration.
 	//
 	// This parameter is required.
 	AuthJSON *UpdateGatewayRouteAuthRequestAuthJSON `json:"AuthJSON,omitempty" xml:"AuthJSON,omitempty" type:"Struct"`
@@ -123,9 +123,9 @@ func (s *UpdateGatewayRouteAuthRequest) Validate() error {
 }
 
 type UpdateGatewayRouteAuthRequestAuthJSON struct {
-	// The authentication type. If an empty string is passed, no authentication type is available. Valid values:
+	// The authentication type. An empty string indicates that authentication is disabled. Valid values:
 	//
-	// 	- JWT
+	// - JWT
 	//
 	// example:
 	//

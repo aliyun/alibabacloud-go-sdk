@@ -70,70 +70,79 @@ type iUpdateConfigRequest interface {
 type UpdateConfigRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
-	// 	- en: English
+	// - en: English
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AuthEnabled    *bool   `json:"AuthEnabled,omitempty" xml:"AuthEnabled,omitempty"`
-	// A reserved parameter.
+	// Specifies whether to enable forced Simple Authentication and Security Layer (SASL) authentication. After this feature is enabled, clients that do not perform SASL authentication cannot access the cluster
+	AuthEnabled *bool `json:"AuthEnabled,omitempty" xml:"AuthEnabled,omitempty"`
+	// The reserved field.
 	//
 	// example:
 	//
 	// none
 	AutopurgePurgeInterval *string `json:"AutopurgePurgeInterval,omitempty" xml:"AutopurgePurgeInterval,omitempty"`
-	// A reserved parameter.
+	// The reserved field.
 	//
 	// example:
 	//
 	// none
 	AutopurgeSnapRetainCount *string `json:"AutopurgeSnapRetainCount,omitempty" xml:"AutopurgeSnapRetainCount,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// mse-09k1q11****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable Resource Access Management (RAM) authentication for a configuration center. This parameter is valid for Nacos instances. Valid values:
+	// Specifies whether to enable RAM authentication for the configuration center in Nacos:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigAuthSupported parameter value to check whether the instance supports the RAM authentication feature.
+	// > Before you set this parameter, call the QueryConfig operation to obtain the ConfigAuthSupported parameter to check whether the current cluster supports this feature.
 	//
 	// example:
 	//
 	// true
 	ConfigAuthEnabled *bool `json:"ConfigAuthEnabled,omitempty" xml:"ConfigAuthEnabled,omitempty"`
-	// Specifies whether to enable configuration encryption for a configuration center. This parameter is valid for Nacos instances. Valid values:
+	// Specifies whether to enable the configuration encryption feature for the configuration center in Nacos. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: The request was successful.
 	//
-	// 	- `false`: disabled.
+	// - `false`: The request failed.
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the ConfigSecretSupported parameter value to check whether the instance supports configuration encryption.
+	// > Before you set this parameter, call the QueryConfig operation to obtain the ConfigSecretSupported parameter to check whether the current cluster supports this feature.
 	//
 	// example:
 	//
 	// true
 	ConfigSecretEnabled *bool `json:"ConfigSecretEnabled,omitempty" xml:"ConfigSecretEnabled,omitempty"`
-	// The format of the configuration. Supported formats include TEXT, JSON, XML, and HTML.
+	// The format of the configurations. Supported formats include TEXT, JSON, XML, and HTML.
 	//
 	// example:
 	//
 	// TEXT
-	ConfigType       *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	ConsoleUIEnabled *bool   `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
-	Enable4lw        *bool   `json:"Enable4lw,omitempty" xml:"Enable4lw,omitempty"`
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// Specifies whether to enable the Nacos open-source console
+	//
+	// example:
+	//
+	// true
+	ConsoleUIEnabled *bool `json:"ConsoleUIEnabled,omitempty" xml:"ConsoleUIEnabled,omitempty"`
+	// Specifies whether to enable the four-character command access feature
+	Enable4lw *bool `json:"Enable4lw,omitempty" xml:"Enable4lw,omitempty"`
+	// Specifies whether to enable Eureka protocol support in Nacos
+	//
 	// example:
 	//
 	// true
 	EurekaSupported *bool `json:"EurekaSupported,omitempty" xml:"EurekaSupported,omitempty"`
-	// Specifies whether to enable the time to live (TTL) configuration. This parameter is valid for ZooKeeper instances.
+	// Specifies whether to enable TTL configuration in ZooKeeper parameters.
 	//
 	// example:
 	//
@@ -145,87 +154,87 @@ type UpdateConfigRequest struct {
 	//
 	// 100
 	InitLimit *string `json:"InitLimit,omitempty" xml:"InitLimit,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// mse_prepaid_public_cn-st2212****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum amount of data on each node. This parameter is valid for ZooKeeper instances. The default maximum data amount on each node is 1 megabyte. Unit: bytes.
+	// The maximum amount of data on each node. This parameter is valid for ZooKeeper instances. Unit: bytes.
 	//
 	// example:
 	//
 	// 1048575
 	JuteMaxbuffer *string `json:"JuteMaxbuffer,omitempty" xml:"JuteMaxbuffer,omitempty"`
-	// Specifies whether to enable Mesh Configuration Protocol (MCP). This parameter is valid for Nacos instances. Valid values:
+	// Specifies whether MCP is enabled in Nacos configuration. Valid values:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports MCP.
+	// > Before you set this parameter, call the QueryConfig operation to obtain the MCPSupported parameter to check whether the current cluster supports this feature.
 	//
 	// example:
 	//
 	// true
 	MCPEnabled *bool `json:"MCPEnabled,omitempty" xml:"MCPEnabled,omitempty"`
-	// The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\\
+	// The number of connections between a single client and a single server in ZooKeeper configuration.<br>
 	//
-	// If this parameter is set to 0, no limits are imposed on the number of connections.
+	// If this parameter is set to 0, no limits are imposed on the number of connections.<br>
 	//
 	// example:
 	//
 	// 0
 	MaxClientCnxns *string `json:"MaxClientCnxns,omitempty" xml:"MaxClientCnxns,omitempty"`
-	// The maximum timeout period. This parameter is valid for ZooKeeper instances. Unit: seconds.
+	// The maximum timeout period in ZooKeeper configuration. Unit: seconds.
 	//
 	// example:
 	//
 	// 1000
 	MaxSessionTimeout *string `json:"MaxSessionTimeout,omitempty" xml:"MaxSessionTimeout,omitempty"`
-	// The minimum timeout period. This parameter is valid for ZooKeeper instances. Unit: seconds.
+	// The minimum timeout period in ZooKeeper configuration. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	MinSessionTimeout *string `json:"MinSessionTimeout,omitempty" xml:"MinSessionTimeout,omitempty"`
-	// Specifies whether to enable RAM authentication for a registry. This parameter is valid for Nacos instances. Valid values:
+	// Specifies whether to enable RAM authentication for the Accreditation Centre in Nacos:
 	//
-	// 	- `true`: enabled.
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled.
+	// - `false`: disabled
 	//
-	// > Before you configure this parameter, you must call the QueryConfig operation to obtain the NamingAuthSupporte parameter value to check whether the instance supports the RAM authentication feature.
+	// > Before you set this parameter, call the QueryConfig operation to obtain the NamingAuthSupporte parameter to check whether the current cluster supports this feature.
 	//
 	// example:
 	//
 	// true
 	NamingAuthEnabled *bool `json:"NamingAuthEnabled,omitempty" xml:"NamingAuthEnabled,omitempty"`
-	// Specifies whether to enable super permissions. This parameter is valid for ZooKeeper instances. Valid values:
+	// Specifies whether super permissions are enabled. This parameter is valid for ZooKeeper instances. Valid values:
 	//
-	// 	- `true`: enabled
+	// - `true`: enabled
 	//
-	// 	- `false`: disabled
+	// - `false`: disabled
 	//
 	// example:
 	//
 	// true
 	OpenSuperAcl *string `json:"OpenSuperAcl,omitempty" xml:"OpenSuperAcl,omitempty"`
-	// The password that corresponds to the username.
+	// The password of the account.
 	//
-	// > You must specify this parameter if OpenSuperAcl is set to true.
+	// > This parameter is required when OpenSuperAcl is set to true.
 	//
 	// example:
 	//
 	// password
 	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
-	// The extended request parameters in the JSON format.
+	// The extended request parameter in the JSON format.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The frequency for generating snapshots. This parameter is valid for ZooKeeper instances.
+	// The frequency at which snapshots are generated in ZooKeeper configuration
 	//
 	// example:
 	//
@@ -237,6 +246,8 @@ type UpdateConfigRequest struct {
 	//
 	// 10
 	SyncLimit *string `json:"SyncLimit,omitempty" xml:"SyncLimit,omitempty"`
+	// Specifies whether to enable TLS transmission link encryption in Nacos
+	//
 	// example:
 	//
 	// true
@@ -247,9 +258,9 @@ type UpdateConfigRequest struct {
 	//
 	// 2000
 	TickTime *string `json:"TickTime,omitempty" xml:"TickTime,omitempty"`
-	// The name of the user.
+	// The username of the account.
 	//
-	// > You must specify this parameter if OpenSuperAcl is set to true.
+	// > This parameter is required when OpenSuperAcl is set to true.
 	//
 	// example:
 	//

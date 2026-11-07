@@ -24,23 +24,42 @@ type iAddAuthPolicyResponseBody interface {
 }
 
 type AddAuthPolicyResponseBody struct {
+	// The code, which is used only to synchronize with the Success parameter.
+	//
 	// example:
 	//
 	// 200
-	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data overview.
+	//
+	// example:
+	//
+	// The request is processed successfully.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// dc63-465d-8ef5-20dc18af****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - `true`: The request is successful.
+	//
+	// - `false`: The request failed.
+	//
 	// example:
 	//
 	// true

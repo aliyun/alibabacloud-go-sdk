@@ -62,57 +62,55 @@ type iAddGatewayRequest interface {
 type AddGatewayRequest struct {
 	// The language of the response. Valid values:
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese.
 	//
-	// 	- en: English
+	// - en: English.
 	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method you specify when you purchase an ordinary instance.
-	//
-	// Valid values:
-	//
-	// 	- PREPAY: subscription
-	//
-	// 	- POSTPAY: pay-as-you-go
+	// The billing method. This parameter is specified when you purchase a traditional instance.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The network type of the purchased Classic Load Balancer (CLB) instance that is billed based on LCUs.
+	// The network type of the pay-by-LCU Classic Load Balancer (CLB) to be purchased. Valid values:
 	//
-	// 	- pubnet: Internet
+	// - pubnet: Internet.
 	//
-	// 	- privatenet: private network
+	// - privatenet: Internal network.
 	//
-	// 	- privatepubnet: Internet and private network
+	// - privatepubnet: Internet and internal network.
+	//
+	// > Traditional instance: When you create a traditional instance, you can purchase only one of the following load balancers: an NLB, a pay-by-LCU CLB, or a pay-by-specification CLB.
+	//
+	// > Serverless instance: When you create a Serverless instance, you can purchase only one of the following load balancers: an NLB or a pay-by-LCU CLB.
 	//
 	// example:
 	//
 	// pubnet
 	ClbNetworkType *string `json:"ClbNetworkType,omitempty" xml:"ClbNetworkType,omitempty"`
-	// Specifies whether to activate Tracing Analysis.
+	// Specifies whether to enable hardware acceleration.
 	//
 	// example:
 	//
 	// false
 	EnableHardwareAcceleration *bool `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
-	// The tag of the gateway.
+	// Specifies whether to enable log delivery to Simple Log Service (SLS).
 	//
 	// example:
 	//
 	// false
 	EnableSls *bool `json:"EnableSls,omitempty" xml:"EnableSls,omitempty"`
-	// The sampling rate of Tracing Analysis. Valid values: [1,100].
+	// Specifies whether to enable Tracing Analysis.
 	//
 	// example:
 	//
 	// false
 	EnableXtrace *bool `json:"EnableXtrace,omitempty" xml:"EnableXtrace,omitempty"`
-	// Specifies whether to enable hardware acceleration.
+	// Specifies whether the security group is an advanced security group.
 	//
 	// example:
 	//
@@ -120,69 +118,75 @@ type AddGatewayRequest struct {
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	// Deprecated
 	//
-	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
+	// The specifications of the Internet-facing SLB instance. This parameter is applicable to traditional instances. Valid values:
 	//
-	// 	- slb.s1.small
+	// - Basic (slb.s1.small)
 	//
-	// 	- slb.s2.smal
+	// - Standard 1 (slb.s2.small)
 	//
-	// 	- slb.s2.medium
+	// - Standard I (slb.s2.medium)
 	//
-	// 	- slb.s3.small
+	// - Advanced 1 (slb.s3.small)
 	//
-	// 	- slb.s3.medium
+	// - Advanced I (slb.s3.medium)
 	//
-	// 	- slb.s3.large
+	// - Ultra-high I (slb.s3.large)
+	//
+	// > Traditional instance: When you create a traditional instance, you can purchase only one of the following load balancers: an NLB, a pay-by-LCU CLB, or a pay-by-specification CLB.
+	//
+	// > Serverless instance: When you create a Serverless instance, you can purchase only one of the following load balancers: an NLB or a pay-by-LCU CLB.
 	//
 	// example:
 	//
 	// slb.s2.small
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
+	// The gateway ingress type. This parameter is applicable to the Professional Edition of a standard instance. Valid values:
+	//
+	// - pubnet: Internet.
+	//
+	// - privatenet: Internal network.
+	//
+	// - privatepubnet: Internet and internal network.
+	//
 	// example:
 	//
 	// pubnet
 	ManagedEntryNetworkType *string `json:"ManagedEntryNetworkType,omitempty" xml:"ManagedEntryNetworkType,omitempty"`
-	// The MSE instance type. Valid values:
+	// The gateway product type. Valid values:
 	//
-	// 	- mse_pro: ordinary instance
+	// - mse_premium: Professional Edition of a standard instance.
 	//
-	// 	- mse_serverless: serverless instance
+	// - mse_pro: Standard Edition of a standard instance.
+	//
+	// - mse_serverless: Serverless.
 	//
 	// example:
 	//
 	// mse_pro
 	MserVersion *string `json:"MserVersion,omitempty" xml:"MserVersion,omitempty"`
-	// The ID of the region.
+	// The name of the gateway.
 	//
 	// example:
 	//
 	// test-ceshi
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the Network Load Balancer (NLB) instance you specify when you purchase a serverless instance.
+	// The network type of the Network Load Balancer (NLB) to be purchased. Valid values:
 	//
-	// 	- pubnet: Internet
+	// - pubnet: Internet.
 	//
-	// 	- privatenet: private network
+	// - privatenet: Internal network.
 	//
-	// 	- privatepubnet: Internet and private network
+	// - privatepubnet: Internet and internal network.
+	//
+	// > Traditional instance: When you create a traditional instance, you can purchase only one of the following load balancers: an NLB, a pay-by-LCU Classic Load Balancer (CLB), or a pay-by-specification CLB.
+	//
+	// > Serverless instance: When you create a Serverless instance, you can purchase only one of the following load balancers: an NLB or a pay-by-LCU CLB.
 	//
 	// example:
 	//
 	// pubnet
 	NlbNetworkType *string `json:"NlbNetworkType,omitempty" xml:"NlbNetworkType,omitempty"`
-	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
-	//
-	// 	- slb.s1.small
-	//
-	// 	- slb.s2.small
-	//
-	// 	- slb.s2.medium
-	//
-	// 	- slb.s3.small
-	//
-	// 	- slb.s3.medium
-	//
-	// 	- slb.s3.large
+	// The region.
 	//
 	// This parameter is required.
 	//
@@ -190,23 +194,19 @@ type AddGatewayRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The number of nodes you specify when you purchase an ordinary instance.
+	// The number of nodes. This parameter is specified when you purchase a traditional instance.
 	//
 	// example:
 	//
 	// 2
 	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// The extended field.
+	// The extended fields.
 	//
 	// example:
 	//
 	// {}
 	RequestPars *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-	// The language of the response. Valid values:
-	//
-	// 	- zh: Chinese
-	//
-	// 	- en: English
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -214,39 +214,43 @@ type AddGatewayRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
+	// The specifications of the internal-facing Server Load Balancer (SLB) instance. This parameter is applicable to traditional instances. Valid values:
 	//
-	// 	- slb.s1.small
+	// - Basic (slb.s1.small)
 	//
-	// 	- slb.s2.small
+	// - Standard 1 (slb.s2.small)
 	//
-	// 	- slb.s2.medium
+	// - Standard I (slb.s2.medium)
 	//
-	// 	- slb.s3.small
+	// - Advanced 1 (slb.s3.small)
 	//
-	// 	- slb.s3.medium
+	// - Advanced I (slb.s3.medium)
 	//
-	// 	- slb.s3.large
+	// - Ultra-high I (slb.s3.large)
+	//
+	// > Traditional instance: When you create a traditional instance, you can purchase only one of the following load balancers: an NLB, a pay-by-LCU CLB, or a pay-by-specification CLB.
+	//
+	// > Serverless instance: When you create a Serverless instance, you can purchase only one of the following load balancers: an NLB or a pay-by-LCU CLB.
 	//
 	// example:
 	//
 	// slb.s2.small
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The node specifications you specify when you purchase an ordinary instance. Valid values:
+	// The node specifications. This parameter is specified when you purchase a traditional instance. Valid values:
 	//
-	// 	- MSE_GTW_16_32_200_c(16C32G)
+	// - MSE_GTW_16_32_200_c(16C32G)
 	//
-	// 	- MSE_GTW_2_4_200_c(2C4G)
+	// - MSE_GTW_2_4_200_c(2C4G)
 	//
-	// 	- MSE_GTW_4_8_200_c(4C8G)
+	// - MSE_GTW_4_8_200_c(4C8G)
 	//
-	// 	- MSE_GTW_8_16_200_c(8C16G)
+	// - MSE_GTW_8_16_200_c(8C16G)
 	//
 	// example:
 	//
 	// MSE_GTW_2_4_200_c
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The tag object.
+	// The tags of the gateway.
 	Tag []*AddGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the primary vSwitch.
 	//
@@ -254,13 +258,13 @@ type AddGatewayRequest struct {
 	//
 	// vsw-bp1q8th57frl5khj2li43
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Specifies whether to use an advanced security group.
+	// The ID of the secondary vSwitch.
 	//
 	// example:
 	//
 	// vsw-wz9bu6o5vsvitt5mrxo6s
 	VSwitchId2 *string `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
-	// The ID of the primary vSwitch.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//
@@ -268,13 +272,13 @@ type AddGatewayRequest struct {
 	//
 	// vpc-bp15mncnrtm83uauxd1xb
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-	// Specifies whether to activate Log Service.
+	// The sampling rate for Tracing Analysis. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	XtraceRatio *string `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
-	// The details of the zone.
+	// The zone information.
 	ZoneInfo []*AddGatewayRequestZoneInfo `json:"ZoneInfo,omitempty" xml:"ZoneInfo,omitempty" type:"Repeated"`
 }
 
@@ -525,13 +529,13 @@ func (s *AddGatewayRequest) Validate() error {
 }
 
 type AddGatewayRequestTag struct {
-	// The value of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The ID of the resource group.
+	// The tag value.
 	//
 	// example:
 	//
