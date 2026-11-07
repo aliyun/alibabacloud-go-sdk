@@ -3650,6 +3650,54 @@ func (client *Client) GetTaskWithContext(ctx context.Context, request *GetTaskRe
 
 // Summary:
 //
+// 查询Agent实例版本列表
+//
+// @param request - ListAgentInstanceVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentInstanceVersionsResponse
+func (client *Client) ListAgentInstanceVersionsWithContext(ctx context.Context, request *ListAgentInstanceVersionsRequest, runtime *dara.RuntimeOptions) (_result *ListAgentInstanceVersionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentPlatform) {
+		query["AgentPlatform"] = request.AgentPlatform
+	}
+
+	if !dara.IsNil(request.AgentProvider) {
+		query["AgentProvider"] = request.AgentProvider
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentInstanceVersions"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentInstanceVersionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the valid applications of the current account by paging based on conditions such as the application ID, name, type, and associated product.
 //
 // Description:
@@ -4636,6 +4684,66 @@ func (client *Client) ListBindInfoWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// 分页查询浏览器书签列表
+//
+// @param request - ListBrowserBookmarksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBrowserBookmarksResponse
+func (client *Client) ListBrowserBookmarksWithContext(ctx context.Context, request *ListBrowserBookmarksRequest, runtime *dara.RuntimeOptions) (_result *ListBrowserBookmarksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrowserInstanceGroupId) {
+		query["BrowserInstanceGroupId"] = request.BrowserInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BrowserInstanceGroupSetId) {
+		query["BrowserInstanceGroupSetId"] = request.BrowserInstanceGroupSetId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBrowserBookmarks"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBrowserBookmarksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a paging query of cloud browser groups and their current statuses.
 //
 // Description:
@@ -4743,6 +4851,74 @@ func (client *Client) ListBrowserInstanceGroupWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBrowserInstanceGroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询浏览器白名单列表
+//
+// Description:
+//
+// 调用本接口分页查询云浏览器交付组或交付组集合下配置的访问限制 URL（Restricted URL）列表，用于查看当前访问控制策略中已配置的 URL 明细。
+//
+// BrowserInstanceGroupId 与 BrowserInstanceGroupSetId 必须且只能指定一个：指定 BrowserInstanceGroupId 时查询该交付组的访问限制 URL；指定 BrowserInstanceGroupSetId 时查询该交付组集合的访问限制 URL。两者同时指定或同时不指定都会返回参数错误。
+//
+// 可通过 Keyword 对访问限制 URL 做包含匹配筛选（英文不区分大小写），不传时返回全部。分页由 PageNumber 和 PageSize 控制：PageSize 取值范围 1~200，默认 200；PageNumber 默认 0，传入值小于 1 时按第 1 页处理。响应中的 TotalCount 为满足筛选条件的总记录数，Data 为当前页记录，没有数据时返回空数组。
+//
+// @param request - ListBrowserRestrictedURLsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBrowserRestrictedURLsResponse
+func (client *Client) ListBrowserRestrictedURLsWithContext(ctx context.Context, request *ListBrowserRestrictedURLsRequest, runtime *dara.RuntimeOptions) (_result *ListBrowserRestrictedURLsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BrowserInstanceGroupId) {
+		query["BrowserInstanceGroupId"] = request.BrowserInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BrowserInstanceGroupSetId) {
+		query["BrowserInstanceGroupSetId"] = request.BrowserInstanceGroupSetId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBrowserRestrictedURLs"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBrowserRestrictedURLsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7803,6 +7979,72 @@ func (client *Client) QueryNodeReportDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 离线每天会话趋势图
+//
+// Description:
+//
+// 调用本接口查询当前阿里云账号在指定日期的会话数量趋势数据。数据为离线统计结果，按天组织，返回该日期内各时间点的会话数量。
+//
+// 返回结果按 10 分钟粒度聚合：每条数据由小时（Hh，取值 00-23）和分钟（Mi，取值 00、10、20、30、40、50）标识一个时间点，SessionCntMi 为该时间点所在 10 分钟区间内的会话数量汇总值。结果按小时、分钟升序排列。
+//
+// 可通过 BizRegionId 指定业务地域、通过 AppInstanceGroupId 指定交付组进行过滤；两者均不传时，返回当前账号下所有地域、所有交付组的会话数据汇总。实际用于过滤会话数据的地域以 BizRegionId 为准。
+//
+// StatDate 为统计日期，格式 yyyyMMdd，不传时默认查询昨天，仅支持查询最近 90 天内的日期。当指定日期没有会话数据时返回空列表，且返回码为 NO_DATA。
+//
+// @param request - QuerySessionDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySessionDataResponse
+func (client *Client) QuerySessionDataWithContext(ctx context.Context, request *QuerySessionDataRequest, runtime *dara.RuntimeOptions) (_result *QuerySessionDataResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppInstanceGroupId) {
+		body["AppInstanceGroupId"] = request.AppInstanceGroupId
+	}
+
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.StatDate) {
+		body["StatDate"] = request.StatDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QuerySessionData"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QuerySessionDataResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the total number of sessions, connected sessions, and streaming sessions by statistical granularity.
 //
 // Description:
@@ -9589,6 +9831,54 @@ func (client *Client) UpdateWuyingServerImageWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateWuyingServerImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验LLM模板配置有效性
+//
+// @param request - ValidateLlmTemplateConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateLlmTemplateConfigResponse
+func (client *Client) ValidateLlmTemplateConfigWithContext(ctx context.Context, request *ValidateLlmTemplateConfigRequest, runtime *dara.RuntimeOptions) (_result *ValidateLlmTemplateConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.ProviderTemplateId) {
+		query["ProviderTemplateId"] = request.ProviderTemplateId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ValidateLlmTemplateConfig"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ValidateLlmTemplateConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
