@@ -22,9 +22,9 @@ type iCreateGroupMonitoringAgentProcessResponseBody interface {
 }
 
 type CreateGroupMonitoringAgentProcessResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the call is successful.
+	// > A status code of 200 indicates success.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type CreateGroupMonitoringAgentProcessResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The group process information.
 	Resource *CreateGroupMonitoringAgentProcessResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: The operation was successful.
 	//
-	// - false: The call fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *CreateGroupMonitoringAgentProcessResponseBody) Validate() error {
 }
 
 type CreateGroupMonitoringAgentProcessResponseBodyResource struct {
-	// The ID of the group process.
+	// The group process ID.
 	//
 	// example:
 	//

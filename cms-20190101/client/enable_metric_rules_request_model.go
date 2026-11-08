@@ -9,6 +9,8 @@ type iEnableMetricRulesRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetClientToken(v string) *EnableMetricRulesRequest
+  GetClientToken() *string 
   SetDryRun(v bool) *EnableMetricRulesRequest
   GetDryRun() *bool 
   SetRegionId(v string) *EnableMetricRulesRequest
@@ -18,11 +20,12 @@ type iEnableMetricRulesRequest interface {
 }
 
 type EnableMetricRulesRequest struct {
-  // Specifies whether to perform a dry run only. Valid values:
+  ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+  // Specifies whether to perform a dry run on the request. Valid values:
   // 
-  // - **true**: performs a dry run only and does not bind a security group to the instance. The system checks whether all required parameters are specified, the request format is valid, and the service limits are met. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+  // - **true**: sends a check request and does not associate a security group with the instance. The check items include whether the required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
   // 
-  // - **false*	- (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+  // - **false*	- (default): sends a regular request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
   // 
   // example:
   // 
@@ -51,6 +54,10 @@ func (s EnableMetricRulesRequest) GoString() string {
   return s.String()
 }
 
+func (s *EnableMetricRulesRequest) GetClientToken() *string  {
+  return s.ClientToken
+}
+
 func (s *EnableMetricRulesRequest) GetDryRun() *bool  {
   return s.DryRun
 }
@@ -61,6 +68,11 @@ func (s *EnableMetricRulesRequest) GetRegionId() *string  {
 
 func (s *EnableMetricRulesRequest) GetRuleId() []*string  {
   return s.RuleId
+}
+
+func (s *EnableMetricRulesRequest) SetClientToken(v string) *EnableMetricRulesRequest {
+  s.ClientToken = &v
+  return s
 }
 
 func (s *EnableMetricRulesRequest) SetDryRun(v bool) *EnableMetricRulesRequest {

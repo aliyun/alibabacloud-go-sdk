@@ -42,9 +42,9 @@ type DeleteExporterOutputResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - `true`: success
+	// - `true`: The request was successful.
 	//
-	// - `false`: failure
+	// - `false`: The request failed.
 	//
 	// example:
 	//

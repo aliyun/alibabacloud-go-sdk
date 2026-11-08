@@ -11,6 +11,8 @@ type iPutMonitoringConfigRequest interface {
 	GoString() string
 	SetAutoInstall(v bool) *PutMonitoringConfigRequest
 	GetAutoInstall() *bool
+	SetClientToken(v string) *PutMonitoringConfigRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *PutMonitoringConfigRequest
 	GetDryRun() *bool
 	SetEnableInstallAgentNewECS(v bool) *PutMonitoringConfigRequest
@@ -20,18 +22,28 @@ type iPutMonitoringConfigRequest interface {
 }
 
 type PutMonitoringConfigRequest struct {
-	// This parameter is not required.
+	// Ignore this parameter.
 	//
 	// example:
 	//
 	// true
-	AutoInstall *bool `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
-	DryRun      *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	AutoInstall *bool   `json:"AutoInstall,omitempty" xml:"AutoInstall,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
+	//
+	// - **true**: Sends a dry run request without deleting the endpoint IPAM pool. The system checks whether all required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	//
+	// - **false*	- (default): Sends a normal request and directly deletes the endpoint IPAM pool if the request passes the check.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to automatically install the CloudMonitor agent on newly purchased ECS instances. Valid values:
 	//
-	// - true (default): The CloudMonitor agent is automatically installed on newly purchased ECS instances.
+	// - true (default): Automatically installs the CloudMonitor agent on newly purchased ECS instances.
 	//
-	// - false: The CloudMonitor agent is not automatically installed on newly purchased ECS instances.
+	// - false: Does not automatically install the CloudMonitor agent on newly purchased ECS instances.
 	//
 	// example:
 	//
@@ -52,6 +64,10 @@ func (s *PutMonitoringConfigRequest) GetAutoInstall() *bool {
 	return s.AutoInstall
 }
 
+func (s *PutMonitoringConfigRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *PutMonitoringConfigRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -66,6 +82,11 @@ func (s *PutMonitoringConfigRequest) GetRegionId() *string {
 
 func (s *PutMonitoringConfigRequest) SetAutoInstall(v bool) *PutMonitoringConfigRequest {
 	s.AutoInstall = &v
+	return s
+}
+
+func (s *PutMonitoringConfigRequest) SetClientToken(v string) *PutMonitoringConfigRequest {
+	s.ClientToken = &v
 	return s
 }
 

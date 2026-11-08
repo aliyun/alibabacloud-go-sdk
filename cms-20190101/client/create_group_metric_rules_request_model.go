@@ -20,7 +20,7 @@ type iCreateGroupMetricRulesRequest interface {
 type CreateGroupMetricRulesRequest struct {
 	// The ID of the application group.
 	//
-	// For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+	// For more information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateGroupMetricRulesRequest struct {
 	//
 	// 3607****
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The list of metric-based alert rules for the application group.
+	// The list of metric rules for the application group.
 	GroupMetricRules []*CreateGroupMetricRulesRequestGroupMetricRules `json:"GroupMetricRules,omitempty" xml:"GroupMetricRules,omitempty" type:"Repeated"`
 	RegionId         *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -83,11 +83,11 @@ func (s *CreateGroupMetricRulesRequest) Validate() error {
 
 type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	Escalations *CreateGroupMetricRulesRequestGroupMetricRulesEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// For information about how to obtain the abbreviation, see the `metricCategory` tag in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+	// For more information about how to obtain the abbreviation of a cloud service name, see the `metricCategory` field in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -99,7 +99,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// For information about how to obtain the alert contact group, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
+	// For more information about how to obtain alert contact groups, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
 	//
 	// example:
 	//
@@ -107,7 +107,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
 	// The monitoring dimensions of the specified resource.
 	//
-	// The value is a collection of `key:value` pairs, such as `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
+	// Format: a collection of `key:value` pairs. Examples: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// 05:31-23:59
 	EffectiveInterval *string `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	// The subject of the alert notification email.
+	// The subject of the alert email.
 	//
 	// Valid values of N: 1 to 200.
 	//
@@ -131,21 +131,21 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// Unit: seconds. The default value is the minimum reporting frequency of the metric.
+	// Unit: seconds. The default value is the minimum frequency of the metric.
 	//
-	// > Keep the detection period of the alert rule consistent with the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
+	// > Set the detection period of the alert rule to the same value as the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
 	//
 	// example:
 	//
 	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The tag keys of the alert rule.
+	// The tags of the alert rule.
 	Labels []*CreateGroupMetricRulesRequestGroupMetricRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The name of the metric.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// For information about how to obtain the metric name, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// For more information about how to obtain the name of a metric, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -153,11 +153,11 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the Alibaba Cloud service.
+	// The data namespace of the Alibaba Cloud service.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// For information about how to obtain the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// For more information about how to obtain the data namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -165,13 +165,13 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The processing method when no monitoring data is found. Valid values:
+	// The handling method when no monitoring data is available. Valid values:
 	//
-	// - KEEP_LAST_STATE (default): No action is performed.
+	// - KEEP_LAST_STATE: No action is taken. This is the default value.
 	//
-	// - INSUFFICIENT_DATA: An alert whose content is "Insufficient Data" is triggered.
+	// - INSUFFICIENT_DATA: The alert content indicates that no data is available.
 	//
-	// - OK: The status is considered normal.
+	// - OK: The status is normal.
 	//
 	// Valid values of N: 1 to 200.
 	//
@@ -179,7 +179,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// The time period during which the alert rule is ineffective. Valid values of N: 1 to 200.
+	// The time range during which the alert rule is inactive. Valid values of N: 1 to 200.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	// The advanced settings.
 	//
-	// Format: {"key1":"value1","key2":"value2"}. For example, {"NotSendOK":true} specifies whether to send an alert recovery notification. The key is NotSendOK, and the value is true (do not send) or false (send, which is the default).
+	// Format: `{"key1":"value1","key2":"value2"}`. Example: `{"NotSendOK":true}`, which specifies whether to send alert recovery notifications. The key is NotSendOK, and the value is true (do not send) or false (send, which is the default value).
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The value of `Period` must be 60 or a multiple of 60. Unit: seconds. Default value: 300.
+	// The value of `Period` must be 60 or an integer multiple of 60. Unit: seconds. Default value: 300.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// ECS_Rule1
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The mute period of the alert notification. Valid values of N: 1 to 200.
+	// The mute period for alert notifications. Valid values of N: 1 to 200.
 	//
 	// Unit: seconds. Default value: 86400. Minimum value: 3600.
 	//
@@ -235,9 +235,9 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The callback URL to which an alert notification is sent. Valid values of N: 1 to 200.
+	// The webhook URL that is called when an alert is triggered. Valid values of N: 1 to 200.
 	//
-	// Specify a publicly accessible URL. CloudMonitor sends a POST request to push alert information to this URL. Only the HTTP protocol is supported.
+	// Specify a publicly accessible URL. CloudMonitor pushes alert notifications to this URL by sending POST requests. Only HTTP is supported.
 	//
 	// example:
 	//
@@ -494,7 +494,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalations) Validate() er
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
-	// The comparison operator for Critical-level alerts. Valid values:
+	// The comparison operator for the critical-level threshold. Valid values:
 	//
 	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
@@ -506,21 +506,21 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
 	//
 	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday: greater than the value at the same time yesterday.
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the value at the same time yesterday.
+	// - LessThanYesterday: less than the metric value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the value at the same time last week.
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the value at the same time last week.
+	// - LessThanLastWeek: less than the metric value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the value in the last period.
+	// - GreaterThanLastPeriod: greater than the metric value in the previous period.
 	//
-	// - LessThanLastPeriod: less than the value in the last period.
+	// - LessThanLastPeriod: less than the metric value in the previous period.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -528,33 +528,33 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// The statistical method for Critical-level alerts.
+	// The statistical method for critical-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values, see [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of this parameter are determined by the `Statistics` column that corresponds to the `MetricName` parameter of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For more information about how to obtain the valid values of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold that triggers Critical-level alert notifications.
+	// The threshold for triggering critical-level alert notifications.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of times that the monitoring metric must reach the alert threshold before a Critical-level alert notification is sent.
+	// The number of times that the metric must reach the alert threshold to send a critical-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Settings for at least one of the alert severity levels Critical, Warn (warning), or Info must be specified. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -629,7 +629,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) Valid
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
-	// The comparison operator for Info-level alerts. Valid values:
+	// The comparison operator for the info-level threshold. Valid values:
 	//
 	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
@@ -641,21 +641,21 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
 	//
 	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday: greater than the value at the same time yesterday.
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the value at the same time yesterday.
+	// - LessThanYesterday: less than the metric value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the value at the same time last week.
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the value at the same time last week.
+	// - LessThanLastWeek: less than the metric value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the value in the last period.
+	// - GreaterThanLastPeriod: greater than the metric value in the previous period.
 	//
-	// - LessThanLastPeriod: less than the value in the last period.
+	// - LessThanLastPeriod: less than the metric value in the previous period.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -663,33 +663,33 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// The statistical method for Info-level alerts.
+	// The statistical method for info-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values, see [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of this parameter are determined by the `Statistics` column that corresponds to the `MetricName` parameter of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For more information about how to obtain the valid values of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Info-level alerts.
+	// The threshold for info-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 10
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of times that the monitoring metric must reach the alert threshold before an Info-level alert notification is sent.
+	// The number of times that the metric must reach the alert threshold to send an info-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Settings for at least one of the alert severity levels Critical, Warn (warning), or Info must be specified. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -764,7 +764,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) Validate(
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
-	// The comparison operator for Warn-level alerts. Valid values:
+	// The comparison operator for the warning-level threshold. Valid values:
 	//
 	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
@@ -776,21 +776,21 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
 	//
 	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - GreaterThanYesterday: greater than the value at the same time yesterday.
+	// - GreaterThanYesterday: greater than the metric value at the same time yesterday.
 	//
-	// - LessThanYesterday: less than the value at the same time yesterday.
+	// - LessThanYesterday: less than the metric value at the same time yesterday.
 	//
-	// - GreaterThanLastWeek: greater than the value at the same time last week.
+	// - GreaterThanLastWeek: greater than the metric value at the same time last week.
 	//
-	// - LessThanLastWeek: less than the value at the same time last week.
+	// - LessThanLastWeek: less than the metric value at the same time last week.
 	//
-	// - GreaterThanLastPeriod: greater than the value in the last period.
+	// - GreaterThanLastPeriod: greater than the metric value in the previous period.
 	//
-	// - LessThanLastPeriod: less than the value in the last period.
+	// - LessThanLastPeriod: less than the metric value in the previous period.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -798,33 +798,33 @@ type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *string `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// The statistical method for Warn-level alerts.
+	// The statistical method for warning-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// The valid values of this parameter are determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For information about how to obtain the valid values, see [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of this parameter are determined by the `Statistics` column that corresponds to the `MetricName` parameter of the specified Alibaba Cloud service. Examples: Maximum, Minimum, and Average. For more information about how to obtain the valid values of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Warn-level alerts.
+	// The threshold for warning-level alerts.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Set at least one of the alert severity levels Critical, Warn, or Info. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 20
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of times that the monitoring metric must reach the alert threshold before a Warn-level alert notification is sent.
+	// The number of times that the metric must reach the alert threshold to send a warning-level alert notification.
 	//
 	// Valid values of N: 1 to 200.
 	//
-	// > Settings for at least one of the alert severity levels Critical, Warn (warning), or Info must be specified. For each specified alert severity level, you must set all of the following parameters: Statistics, ComparisonOperator, Threshold, and Times.
+	// > You must specify at least one of the following alert levels: Critical, Warn, and Info. For the specified alert level, you must specify the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -899,7 +899,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) Validate(
 }
 
 type CreateGroupMetricRulesRequestGroupMetricRulesLabels struct {
-	// The tag key of the alert rule. The tag is included in alert notifications.
+	// The tag key of the alert rule. Alert notifications include tags.
 	//
 	// Valid values of N: 1 to 200.
 	//
@@ -907,7 +907,7 @@ type CreateGroupMetricRulesRequestGroupMetricRulesLabels struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the alert rule. The tag is included in alert notifications.
+	// The tag value of the alert rule. Alert notifications include tags.
 	//
 	// Valid values of N: 1 to 200.
 	//

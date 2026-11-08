@@ -20,7 +20,7 @@ type iCreateHybridMonitorNamespaceResponseBody interface {
 }
 
 type CreateHybridMonitorNamespaceResponseBody struct {
-	// The response code.
+	// The call result.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type CreateHybridMonitorNamespaceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The operation was successful.
 	//
-	// - false: Failed.
+	// - false: The operation failed.
 	//
 	// example:
 	//

@@ -345,7 +345,7 @@ func (s *DescribeSiteMonitorAttributeResponseBodyMetricRulesMetricRule) Validate
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitors struct {
-	// The detection address of the monitoring task.
+	// The target address of the monitoring task.
 	//
 	// example:
 	//
@@ -353,15 +353,15 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitors struct {
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	// The type of the detection point. Default value: PC. Valid values:
 	//
-	// - PC: Fixed-line network.
+	// - PC: fixed network
 	//
-	// - MOBILE: Mobile network.
+	// - MOBILE: mobile network
 	//
 	// example:
 	//
 	// PC
 	AgentGroup *string `json:"AgentGroup,omitempty" xml:"AgentGroup,omitempty"`
-	// The custom detection period. You can only select a specific time range from Monday to Sunday for detection.
+	// The custom detection period. You can only select a specific time period from Monday to Sunday for detection.
 	CustomSchedule *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule `json:"CustomSchedule,omitempty" xml:"CustomSchedule,omitempty" type:"Struct"`
 	// The interval of the monitoring task. Unit: minutes. Valid values: 1, 5, 15, 30, and 60.
 	//
@@ -384,7 +384,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitors struct {
 	//
 	// test123
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The status of the monitoring task. Valid values:
+	// The state of the monitoring task. Valid values:
 	//
 	// - 1: Enabled.
 	//
@@ -537,7 +537,7 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitors) Validate() error 
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule struct {
 	Days *DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomScheduleDays `json:"days,omitempty" xml:"days,omitempty" type:"Struct"`
-	// The custom detection end time.
+	// The end time of the custom detection.
 	//
 	// Unit: hours.
 	//
@@ -545,7 +545,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsCustomSchedule struct {
 	//
 	// 18
 	EndHour *int32 `json:"end_hour,omitempty" xml:"end_hour,omitempty"`
-	// The custom detection start time.
+	// The start time of the custom detection.
 	//
 	// Unit: hours.
 	//
@@ -754,9 +754,9 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	BrowserInfo    *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonBrowserInfo    `json:"browser_info,omitempty" xml:"browser_info,omitempty" type:"Struct"`
 	// Specifies whether to ignore certificate errors. Valid values:
 	//
-	// - false: Certificate errors are not ignored.
+	// - false: do not ignore certificate errors
 	//
-	// - true: Certificate errors are ignored.
+	// - true: ignore certificate errors
 	//
 	// example:
 	//
@@ -789,11 +789,11 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// false
 	DiagnosisMtr *bool `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
-	// Specifies whether to enable automatic ping network latency detection after a task fails. Valid values:
+	// Specifies whether to enable automatic PING network latency probing after a task fails. Valid values:
 	//
-	// - false: Automatic ping network latency detection is disabled.
+	// - false: Automatic PING network latency probing is disabled.
 	//
-	// - true: Automatic ping network latency detection is enabled.
+	// - true: Automatic PING network latency probing is enabled.
 	//
 	// example:
 	//
@@ -811,7 +811,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// - DNS_IN: All DNS responses are included in the expected aliases or IP addresses.
 	//
-	// - EQUAL: The DNS response is exactly the same as the expected aliases or IP addresses.
+	// - EQUAL: The DNS response exactly matches the expected aliases or IP addresses.
 	//
 	// - ANY: The DNS response and the expected aliases or IP addresses have an intersection.
 	//
@@ -821,13 +821,13 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	DnsMatchRule *string `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
 	// The IP address of the DNS server.
 	//
-	// > This parameter applies only to DNS monitoring.
+	// > This parameter applies only to the DNS monitoring type.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	DnsServer *string `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	// The DNS record type. This parameter applies only to DNS monitoring. Valid values:
+	// The DNS record type. This parameter applies only to the DNS monitoring type. Valid values:
 	//
 	// - A: Specifies the IP address that corresponds to a hostname or domain name.
 	//
@@ -863,7 +863,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	ExpectNonExistString *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonExpectNonExistString `json:"expect_non_exist_string,omitempty" xml:"expect_non_exist_string,omitempty" type:"Struct"`
 	// The alias or address to be resolved.
 	//
-	// > This parameter applies only to DNS monitoring.
+	// > This parameter applies only to the DNS monitoring type.
 	//
 	// example:
 	//
@@ -871,35 +871,31 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	ExpectValue *string `json:"expect_value,omitempty" xml:"expect_value,omitempty"`
 	// The packet loss rate.
 	//
-	// > This parameter applies only to ping monitoring.
+	// > This parameter applies only to the PING monitoring type.
 	//
 	// example:
 	//
 	// 0.4
 	FailureRate *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	// The HTTP request headers.
+	// The HTTP request header.
 	//
 	// example:
 	//
 	// testKey:testValue
 	Header *string `json:"header,omitempty" xml:"header,omitempty"`
-	// The number of hops for traceroute diagnostics when a ping task fails.
+	// The number of hops for traceroute diagnostics when a PING task fails.
 	//
 	// example:
 	//
 	// 20
 	Hops *int32 `json:"hops,omitempty" xml:"hops,omitempty"`
-	// The custom host for an HTTP task. The format is `ip1,ip2:address`. You can configure multiple lines of mappings. The left side of the colon contains the A records or CNAMEs to which the domain name can be resolved, separated by commas. The right side of the colon is the domain name.
+	// The custom host for an HTTP task. The format is ip1,ip2:address. You can configure multiple lines of mappings. The left side of the colon contains the A records or CNAMEs to which the domain name can be resolved, separated by commas. The right side of the colon is the domain name.
 	//
 	// example:
 	//
 	// 127.0.0.1:www.aliyun.com
 	HostBinding *string `json:"host_binding,omitempty" xml:"host_binding,omitempty"`
-	// The effective method of the custom host. Valid values:
-	//
-	// - 0: Random.
-	//
-	// - 1: Round-robin.
+	// Specifies the effective mode of the custom host. Valid values: 0: random. 1: round-robin.
 	//
 	// example:
 	//
@@ -917,37 +913,29 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// get
 	HttpMethod *string `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	// The timeout period for a single ping in a ping task that uses the ICMP protocol. Unit: milliseconds.
+	// The timeout period for a single PING request in a PING task that uses the ICMP protocol. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3000
 	IcmpTimeoutMillis *int32 `json:"icmp_timeout_millis,omitempty" xml:"icmp_timeout_millis,omitempty"`
-	// The network type of the task. Valid values:
-	//
-	// - v4
-	//
-	// - v6
-	//
-	// - auto
-	//
-	// Default value: v4.
+	// The network type of the task. Valid values: v4, v6, and auto. Default value: v4.
 	//
 	// example:
 	//
 	// v4
 	IpNetwork *string `json:"ip_network,omitempty" xml:"ip_network,omitempty"`
-	// Specifies whether to decode and store the password in Base64. Valid values:
+	// Specifies whether to store the password in Base64 encoding. Valid values:
 	//
-	// - true: The password is decoded and stored in Base64.
+	// - true: The password is stored in Base64 encoding.
 	//
-	// - false: The password is not decoded and stored in Base64.
+	// - false: The password is not stored in Base64 encoding.
 	//
 	// example:
 	//
 	// false
 	IsBase64Encode *string `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
-	// Specifies whether to include alert rules. Valid values:
+	// Specifies whether alert rules are included. Valid values:
 	//
 	// - 0: Yes.
 	//
@@ -963,31 +951,31 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// tlsv1.3
 	MaxTlsVersion *string `json:"max_tls_version,omitempty" xml:"max_tls_version,omitempty"`
-	// The minimum TLS version. By default, TLS 1.2 and later versions are supported. TLS 1.0 and 1.1 are disabled. You can modify the configuration if you still need to support them.
+	// The minimum TLS version. By default, TLS 1.2 and later versions are supported. TLS 1.0 and 1.1 are disabled. You can modify the configuration to enable them if needed.
 	//
 	// example:
 	//
 	// tlsv1.2
 	MinTlsVersion *string `json:"min_tls_version,omitempty" xml:"min_tls_version,omitempty"`
-	// The password for SMTP, POP3, or FTP monitoring.
+	// The password for the SMTP, POP3, or FTP monitoring type.
 	//
 	// example:
 	//
 	// 123****
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The number of pings for ping monitoring.
+	// The heartbeat for the PING monitoring type.
 	//
 	// example:
 	//
 	// 29
 	PingNum *int32 `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	// The ping port. This parameter applies to TCP ping.
+	// The PING port. This parameter applies to TCP PING.
 	//
 	// example:
 	//
 	// 80
 	PingPort *int32 `json:"ping_port,omitempty" xml:"ping_port,omitempty"`
-	// The ping protocol type. Valid values:
+	// The PING protocol type. Valid values:
 	//
 	// - icmp
 	//
@@ -999,13 +987,13 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// icmp
 	PingType *string `json:"ping_type,omitempty" xml:"ping_type,omitempty"`
-	// The port for TCP, UDP, SMTP, or POP3 monitoring.
+	// The port for the TCP, UDP, SMTP, or POP3 monitoring type.
 	//
 	// example:
 	//
 	// 110
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The name of the private certificate file.
+	// The private certificate file name.
 	//
 	// example:
 	//
@@ -1017,7 +1005,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// TCP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// Specifies whether to use the QUIC protocol for browser monitoring. Valid values:
+	// Specifies whether the browser monitoring task uses the QUIC protocol. Valid values:
 	//
 	// - true: The QUIC protocol is used.
 	//
@@ -1030,7 +1018,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// true
 	QuicEnabled *bool                                                                     `json:"quic_enabled,omitempty" xml:"quic_enabled,omitempty"`
 	QuicTarget  *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonQuicTarget `json:"quic_target,omitempty" xml:"quic_target,omitempty" type:"Struct"`
-	// The request content for HTTP monitoring.
+	// The request content for the HTTP monitoring type.
 	//
 	// example:
 	//
@@ -1068,7 +1056,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 0
 	RetryDelay *int32 `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
-	// Applies to SMTP tasks. A value of 1 indicates that a secure connection is used. Default value: 0.
+	// This parameter applies to SMTP tasks. If set to 1, a secure connection is used. Default value: 0.
 	//
 	// example:
 	//
@@ -1080,19 +1068,19 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// false
 	ScreenShot *bool `json:"screen_shot,omitempty" xml:"screen_shot,omitempty"`
-	// Specifies whether to scroll to the bottom of the page after the page is opened in a browser monitoring task.
+	// Specifies whether to scroll to the bottom of the page after it is opened. This parameter applies only to browser monitoring tasks.
 	//
 	// example:
 	//
 	// false
 	ScrollEnd *bool `json:"scroll_end,omitempty" xml:"scroll_end,omitempty"`
-	// The Server Name Indication (SNI).
+	// The server name indication.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	ServerName *string `json:"server_name,omitempty" xml:"server_name,omitempty"`
-	// Specifies whether to enable Server-Sent Events (SSE) monitoring.
+	// Specifies whether to perform SSE probing.
 	Sse   *bool                                                                `json:"sse,omitempty" xml:"sse,omitempty"`
 	Steps *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Struct"`
 	// example:
@@ -1111,13 +1099,13 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// 3
 	TimeOut *int64 `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	// The deployment region of the target application when integrating with the OpenTelemetry edition of Managed Service for Observability.
+	// The deployment region of the target application when integrating with the OpenTelemetry edition of Tracing Analysis.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	TraceRegion *string `json:"trace_region,omitempty" xml:"trace_region,omitempty"`
-	// The tracing protocol used for integration with the OpenTelemetry edition of Tracing Analysis. Valid values:
+	// The tracing protocol used when integrating with the OpenTelemetry edition of Tracing Analysis. Valid values:
 	//
 	// - OpenTelemetry
 	//
@@ -1130,7 +1118,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	// OpenTelemetry
 	TraceType                     *string                                                                                      `json:"trace_type,omitempty" xml:"trace_type,omitempty"`
 	TrafficHijackElementBlacklist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementBlacklist `json:"traffic_hijack_element_blacklist,omitempty" xml:"traffic_hijack_element_blacklist,omitempty" type:"Struct"`
-	// When a redirect occurs, traffic hijacking is detected if the number of resources loaded by the browser exceeds this value. If this value is set to 0, no verification is performed. Default value: 0.
+	// When a redirect occurs, if the number of resources loaded by the browser exceeds this value, traffic hijacking is considered to have occurred. If this value is 0, no verification is performed. Default value: 0.
 	//
 	// example:
 	//
@@ -1139,7 +1127,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	TrafficHijackElementWhitelist *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist `json:"traffic_hijack_element_whitelist,omitempty" xml:"traffic_hijack_element_whitelist,omitempty" type:"Struct"`
 	// Specifies whether to use a private certificate.
 	UsePrivateCrt *bool `json:"use_private_crt,omitempty" xml:"use_private_crt,omitempty"`
-	// Specifies whether to establish an SSL connection when executing a TCP task.
+	// Specifies whether to use an SSL connection when executing a TCP task.
 	//
 	// example:
 	//
@@ -1151,7 +1139,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	//
 	// testUser
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// The additional wait time after a page is opened in a browser probing task.
+	// The additional waiting time after the page is opened in a browser monitoring task.
 	//
 	// example:
 	//
@@ -1920,25 +1908,25 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAssertion
 }
 
 type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo struct {
-	// Supported only in multi-step synthetic monitoring. The AccessKey ID used for Alibaba Cloud authentication. We recommend that you store it in an encrypted format.
+	// Supported only in multi-step monitoring. The AccessKey ID passed when using Alibaba Cloud authentication. Store it in an encrypted format.
 	//
 	// example:
 	//
 	// testAk
 	AccessKeyId *string `json:"access_key_id,omitempty" xml:"access_key_id,omitempty"`
-	// Supported only in multi-step synthetic monitoring. The AccessKey secret used for Alibaba Cloud authentication. We recommend that you store it in an encrypted format.
+	// Supported only in multi-step monitoring. The AccessKey secret passed when using Alibaba Cloud authentication. Store it in an encrypted format.
 	//
 	// example:
 	//
 	// testSk
 	AccessKeySecret *string `json:"access_key_secret,omitempty" xml:"access_key_secret,omitempty"`
-	// Supported only in multi-step synthetic monitoring. The API operation requested when using Alibaba Cloud operations.
+	// Supported only in multi-step monitoring. The requested API operation when using Alibaba Cloud operations.
 	//
 	// example:
 	//
 	// example_api
 	ApiAction *string `json:"api_action,omitempty" xml:"api_action,omitempty"`
-	// Supported only in multi-step synthetic monitoring. The API version requested when using Alibaba Cloud operations.
+	// Supported only in multi-step monitoring. The requested API version when using Alibaba Cloud operations.
 	//
 	// example:
 	//
@@ -1962,7 +1950,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo stru
 	//
 	// client_secret
 	ClientSecret *string `json:"client_secret,omitempty" xml:"client_secret,omitempty"`
-	// The grant type used in OAuth 2.0 authentication. Valid values: client_credentials and password.
+	// The authentication type used in OAuth 2.0 authentication. Valid values: client_credentials and password.
 	//
 	// example:
 	//
@@ -1974,14 +1962,14 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo stru
 	//
 	// test_password
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// Supported only in multi-step synthetic monitoring. The region ID requested when using Alibaba Cloud authentication.
+	// Supported only in multi-step monitoring. The region ID of the request when using Alibaba Cloud authentication.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string                                                                       `json:"region_id,omitempty" xml:"region_id,omitempty"`
 	Scopes   *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfoScopes `json:"scopes,omitempty" xml:"scopes,omitempty" type:"Struct"`
-	// The service name requested when using AWS authentication.
+	// The service name when using AWS authentication.
 	//
 	// example:
 	//
@@ -1993,19 +1981,19 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo stru
 	//
 	// example_token
 	SessionToken *string `json:"session_token,omitempty" xml:"session_token,omitempty"`
-	// The address of the authentication server in OAuth 2.0.
+	// The authentication server address in OAuth 2.0.
 	//
 	// example:
 	//
 	// https://www.example.com
 	TokenUrl *string `json:"token_url,omitempty" xml:"token_url,omitempty"`
-	// The authentication type. Currently, only HTTP Basic Authentication is supported. Valid value: basic.
+	// The authentication type. Currently, HTTP Basic Authentication is supported. Valid value: basic.
 	//
 	// example:
 	//
 	// basic
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Specifies whether the key is stored in the client cookie during digest authentication.
+	// In digest authentication, this parameter specifies whether the key is stored in the cookie of the client.
 	//
 	// example:
 	//
@@ -2017,7 +2005,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonAuthInfo stru
 	//
 	// test_username
 	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// Supported only in multi-step synthetic monitoring. Specifies whether the operation involves additional resources when Alibaba Cloud authentication is used in this step.
+	// Supported only in multi-step monitoring. Specifies whether the operation has additional resources when this step uses Alibaba Cloud authentication.
 	//
 	// example:
 	//
@@ -2878,19 +2866,19 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsVpcConfig struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the security group applied to the internal network probing task.
+	// The ID of the security group associated with the internal network probing task.
 	//
 	// example:
 	//
 	// sg-xxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The ID of the VPC associated with the internal network probing task.
+	// The ID of the VPC to which the internal network probing task is attached.
 	//
 	// example:
 	//
 	// vpc-xxxxxx
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the vSwitch associated with the internal network probing task.
+	// The ID of the vSwitch to which the internal network probing task is attached.
 	//
 	// example:
 	//

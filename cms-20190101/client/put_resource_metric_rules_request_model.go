@@ -9,6 +9,8 @@ type iPutResourceMetricRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *PutResourceMetricRulesRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *PutResourceMetricRulesRequest
 	GetDryRun() *bool
 	SetRules(v []*PutResourceMetricRulesRequestRules) *PutResourceMetricRulesRequest
@@ -16,11 +18,12 @@ type iPutResourceMetricRulesRequest interface {
 }
 
 type PutResourceMetricRulesRequest struct {
-	// Specifies whether to only precheck the request. Valid values:
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to only precheck this request. Valid values:
 	//
-	// - **true**: The system only prechecks the request and does not bind a security group to the instance. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: A check request is sent, and no security group is associated with the instance. Check items include whether required parameters are specified, the request format, and service limits. If the check fails, an error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): The system sends a normal request. After the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): A normal request is sent. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -42,12 +45,21 @@ func (s PutResourceMetricRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PutResourceMetricRulesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *PutResourceMetricRulesRequest) GetDryRun() *bool {
 	return s.DryRun
 }
 
 func (s *PutResourceMetricRulesRequest) GetRules() []*PutResourceMetricRulesRequestRules {
 	return s.Rules
+}
+
+func (s *PutResourceMetricRulesRequest) SetClientToken(v string) *PutResourceMetricRulesRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *PutResourceMetricRulesRequest) SetDryRun(v bool) *PutResourceMetricRulesRequest {
@@ -79,7 +91,7 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > An alert contact group is a group of alert contacts and can contain one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
+	// > An alert contact group contains one or more alert contacts. For more information about how to create an alert contact and an alert contact group, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html).
 	//
 	// This parameter is required.
 	//
@@ -109,7 +121,7 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about how to query the statistical period of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -117,11 +129,11 @@ type PutResourceMetricRulesRequestRules struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The labels that are written to the metric and displayed in the alert notification when the metric meets the alert condition and an alert is triggered.
 	Labels []*PutResourceMetricRulesRequestRulesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The monitoring metric name.
+	// The name of the metric.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// For more information about how to query the monitoring metric name, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For more information about how to query the name of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -139,9 +151,9 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The handling method for alerts when no monitoring data is available. Valid values:
+	// The processing method when no monitoring data is available. Valid values:
 	//
-	// - KEEP_LAST_STATE (default): No operations are performed.
+	// - KEEP_LAST_STATE (default): No action is taken.
 	//
 	// - INSUFFICIENT_DATA: The alert content indicates that no data is available.
 	//
@@ -153,7 +165,7 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// KEEP_LAST_STATE
 	NoDataPolicy *string `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	// The inactive time range of the alert rule.
+	// The time range during which the alert rule does not take effect.
 	//
 	// Valid values of N: 1 to 50.
 	//
@@ -161,13 +173,13 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// 00:00-06:00
 	NoEffectiveInterval *string `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	// The statistical period of the monitoring metric.
+	// The statistical period of the metric.
 	//
-	// Unit: seconds. Default value: the original reporting period of the monitoring metric.
+	// Unit: seconds. Default value: the original reporting period of the metric.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > For more information about how to query the statistical period of a monitoring metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about how to query the statistical period of a metric, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -231,7 +243,7 @@ type PutResourceMetricRulesRequestRules struct {
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The webhook URL to which a POST request is sent when an alert callback is triggered.
+	// The webhook URL to which a POST request is sent when an alert is triggered.
 	//
 	// Valid values of N: 1 to 50.
 	//
@@ -481,19 +493,19 @@ func (s *PutResourceMetricRulesRequestRulesEscalations) Validate() error {
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsCritical struct {
-	// The comparison operator for the Critical-level threshold. Valid values:
+	// The comparison operator for the Critical level. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to.
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold: greater than.
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to.
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold: less than.
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold: not equal to.
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - EqualToThreshold: equal to.
+	// - EqualToThreshold: equal to the threshold.
 	//
 	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
@@ -509,7 +521,7 @@ type PutResourceMetricRulesRequestRulesEscalationsCritical struct {
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -517,34 +529,34 @@ type PutResourceMetricRulesRequestRulesEscalationsCritical struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// The statistical method for Critical-level alerts.
+	// The statistical method for the Critical level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Settings for the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Critical-level alerts.
+	// The alert threshold for the Critical level.
 	//
 	// Valid values of N: 1 to 50.
 	//
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of retries for Critical-level alerts.
+	// The number of alert retries for the Critical level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -619,19 +631,19 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsCritical) Validate() error
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsInfo struct {
-	// The comparison operator for the Info-level threshold. Valid values:
+	// The comparison operator for the Info level. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to.
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold: greater than.
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to.
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold: less than.
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold: not equal to.
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - EqualToThreshold: equal to.
+	// - EqualToThreshold: equal to the threshold.
 	//
 	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
@@ -647,7 +659,7 @@ type PutResourceMetricRulesRequestRulesEscalationsInfo struct {
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -655,31 +667,31 @@ type PutResourceMetricRulesRequestRulesEscalationsInfo struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// The statistical method for Info-level alerts.
+	// The statistical method for the Info level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Settings for the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Info-level alerts.
+	// The alert threshold for the Info level.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of retries for Info-level alerts.
+	// The number of alert retries for the Info level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -754,19 +766,19 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsInfo) Validate() error {
 }
 
 type PutResourceMetricRulesRequestRulesEscalationsWarn struct {
-	// The comparison operator for the Warn-level threshold. Valid values:
+	// The comparison operator for the Warn level. Valid values:
 	//
-	// - GreaterThanOrEqualToThreshold: greater than or equal to.
+	// - GreaterThanOrEqualToThreshold: greater than or equal to the threshold.
 	//
-	// - GreaterThanThreshold: greater than.
+	// - GreaterThanThreshold: greater than the threshold.
 	//
-	// - LessThanOrEqualToThreshold: less than or equal to.
+	// - LessThanOrEqualToThreshold: less than or equal to the threshold.
 	//
-	// - LessThanThreshold: less than.
+	// - LessThanThreshold: less than the threshold.
 	//
-	// - NotEqualToThreshold: not equal to.
+	// - NotEqualToThreshold: not equal to the threshold.
 	//
-	// - EqualToThreshold: equal to.
+	// - EqualToThreshold: equal to the threshold.
 	//
 	// - GreaterThanYesterday: greater than the value at the same time yesterday.
 	//
@@ -782,7 +794,7 @@ type PutResourceMetricRulesRequestRulesEscalationsWarn struct {
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -790,33 +802,33 @@ type PutResourceMetricRulesRequestRulesEscalationsWarn struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	N                  *int32  `json:"N,omitempty" xml:"N,omitempty"`
 	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
-	// The statistical method for Warn-level alerts.
+	// The statistical method for the Warn level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` of the specified Alibaba Cloud service, such as Maximum, Minimum, and Average. For more information about how to obtain the value of this parameter, see [Alibaba Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
-	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn (warning), and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure the Settings for at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Settings for the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The threshold for Warn-level alerts.
+	// The alert threshold for the Warn level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
 	// 90
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// The number of retries for Warn-level alerts.
+	// The number of alert retries for the Warn level.
 	//
 	// Valid values of N: 1 to 50.
 	//
-	// > You must configure at least one of the following alert levels: Critical, Warn, and Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
+	// > You must configure at least one of the following alert levels: Critical, Warn, or Info. For the configured alert level, you must configure the Statistics, ComparisonOperator, Threshold, and Times parameters at the same time.
 	//
 	// example:
 	//
@@ -891,15 +903,15 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) Validate() error {
 }
 
 type PutResourceMetricRulesRequestRulesLabels struct {
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// tagKey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	//
-	// > Tag values support template parameters. The template parameters are replaced with the actual tag values.
+	// > Label values support template parameters. The template parameters are replaced with the actual label values.
 	//
 	// example:
 	//

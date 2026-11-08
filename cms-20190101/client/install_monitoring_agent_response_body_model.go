@@ -22,7 +22,7 @@ type iInstallMonitoringAgentResponseBody interface {
 type InstallMonitoringAgentResponseBody struct {
 	// The status code.
 	//
-	// > A status code of 200 indicates success.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//

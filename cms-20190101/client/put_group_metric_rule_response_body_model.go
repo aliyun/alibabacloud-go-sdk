@@ -119,7 +119,7 @@ func (s *PutGroupMetricRuleResponseBody) Validate() error {
 }
 
 type PutGroupMetricRuleResponseBodyResult struct {
-	// The ID of the alert rule.
+	// The alert rule ID.
 	//
 	// example:
 	//

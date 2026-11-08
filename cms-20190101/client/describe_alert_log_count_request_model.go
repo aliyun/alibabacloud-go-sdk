@@ -60,35 +60,35 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// Unit: milliseconds.
 	//
-	// You can query only the alert history within the last year. If the query time range exceeds one year, the `AlertLogCount` response parameter is empty.
+	// You can only query the alert history within the last year. If the query time range exceeds one year, the return value of the `AlertLogCount` parameter is empty.
 	//
-	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. Both parameters must be specified or left empty at the same time. If neither is specified, the alert history of the last 15 minutes is queried by default.
+	// > The interval between the start time (StartTime) and the end time (EndTime) must be less than or equal to 15 days. You must specify both parameters or neither. If you do not specify these parameters, the alert history within the last 15 minutes is queried by default.
 	//
 	// example:
 	//
 	// 1610074409694
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The alert type. Valid values:
+	// The Alarm Metric. Valid values:
 	//
-	// - TRIGGERED: The alert is triggered.
+	// - TRIGGERED: Alert triggered.
 	//
-	// - RESOLVED: The alert recovers.
+	// - RESOLVED: Alert recovered.
 	//
 	// example:
 	//
 	// TRIGGERED
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// Aggregates data by a spatial dimension, which is equivalent to the Group By clause in SQL. Valid values:
+	// Aggregates data by spatial dimension, which is equivalent to the GROUP BY clause in SQL. Valid values:
 	//
-	// - `product`: aggregates by Alibaba Cloud service.
+	// - `product`: Aggregates by Alibaba Cloud service.
 	//
-	// - `level`: aggregates by alert level.
+	// - `level`: Aggregates by alert level.
 	//
-	// - `groupId`: aggregates by application group.
+	// - `groupId`: Aggregates by application group.
 	//
-	// - `contactGroup`: aggregates by alert contact group.
+	// - `contactGroup`: Aggregates by alert contact group.
 	//
-	// - `product,metricName`: aggregates by Alibaba Cloud service and metric.
+	// - `product,metricName`: Aggregates by Alibaba Cloud service and metric.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +96,13 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// product
 	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	// The application group ID.
+	// The ID of the application group.
 	//
 	// example:
 	//
 	// 7301****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The period for obtaining logs. Unit: minutes.
+	// The time range for retrieving logs. Unit: minutes.
 	//
 	// example:
 	//
@@ -110,29 +110,29 @@ type DescribeAlertLogCountRequest struct {
 	LastMin *string `json:"LastMin,omitempty" xml:"LastMin,omitempty"`
 	// The alert level and notification method. Valid values:
 	//
-	// <props="china">- P2: Phone call + text message + email + DingTalk chatbot.
+	// <props="china">- P2: Phone call, text message, email, and DingTalk chatbot.
 	//
-	// <props="china">- P3: Text message + email + DingTalk chatbot.
+	// <props="china">- P3: Text message, email, and DingTalk chatbot.
 	//
-	// <props="china">- P4: Email + DingTalk chatbot.
+	// <props="china">- P4: Email and DingTalk chatbot.
 	//
-	// <props="china">- OK: No alert.
+	// <props="china">- OK: No alerts.
 	//
-	// <props="intl">- P4: Email + DingTalk chatbot.
+	// <props="intl">- P4: Email and DingTalk chatbot.
 	//
-	// <props="intl">- OK: No alert.
+	// <props="intl">- OK: No alerts.
 	//
-	// <props="partner">- P4: Email + DingTalk chatbot.
+	// <props="partner">- P4: Email and DingTalk chatbot.
 	//
-	// <props="partner">- OK: No alert.
+	// <props="partner">- OK: No alerts.
 	//
 	// example:
 	//
 	// P4
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
-	// > For information about the metrics of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the metrics of Alibaba Cloud services, see [Metrics of Alibaba Cloud services](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeAlertLogCountRequest struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The namespace of the Alibaba Cloud service.
 	//
-	// > For information about the namespaces of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the namespaces of Alibaba Cloud services, see [Metrics of Alibaba Cloud services](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type DescribeAlertLogCountRequest struct {
 	// The ID of the alert rule.
 	//
 	//
-	// For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type DescribeAlertLogCountRequest struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The search keyword for querying alert history statistics.
+	// The search keyword for alert history statistics.
 	//
 	// example:
 	//
@@ -188,21 +188,21 @@ type DescribeAlertLogCountRequest struct {
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The alert status. Valid values:
 	//
-	// - 0: An alert is triggered or the alert recovers to Normal.
+	// - 0: Alert triggered or recovered to Normal.
 	//
-	// - 1: The alert rule is not effective.
+	// - 1: Not in the effective period.
 	//
-	// - 2: The mute period.
+	// - 2: mute for epoch.
 	//
-	// - 3: The host is restarting.
+	// - 3: Host restarting.
 	//
-	// - 4: Alerts are not send.
+	// - 4: Do not send alerts.
 	//
-	// <props="china">When the alert status is 0, if the value of Level is P2, P3, or P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	// <props="china">When the alert status is 0, if the value of Level is P2, P3, or P4, an alert is triggered. If the value of Level is OK, the alert is recovered to Normal.
 	//
-	// <props="intl">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	// <props="intl">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert is recovered to Normal.
 	//
-	// <props="partner">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	// <props="partner">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert is recovered to Normal.
 	//
 	// example:
 	//
@@ -210,19 +210,19 @@ type DescribeAlertLogCountRequest struct {
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated. You can ignore this parameter.
 	//
 	// example:
 	//
-	// 无
+	// None
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The start timestamp for querying alert history.
 	//
 	// Unit: milliseconds.
 	//
-	// You can query only the alert history within the last year. If the query time range exceeds one year, the `AlertLogCount` response parameter is empty.
+	// You can only query the alert history within the last year. If the query time range exceeds one year, the return value of the `AlertLogCount` parameter is empty.
 	//
-	// > The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. Both parameters must be specified or left empty at the same time. If neither is specified, the alert history of the last 15 minutes is queried by default.
+	// > The interval between the start time (StartTime) and the end time (EndTime) must be less than or equal to 15 days. You must specify both parameters or neither. If you do not specify these parameters, the alert history within the last 15 minutes is queried by default.
 	//
 	// example:
 	//

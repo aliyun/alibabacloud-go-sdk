@@ -22,9 +22,9 @@ type iCreateHostAvailabilityResponseBody interface {
 }
 
 type CreateHostAvailabilityResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > A value of 200 indicates success.
+	// > A status code of 200 indicates that the request is successful.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateHostAvailabilityResponseBody struct {
 	//
 	// ACBDBB40-DFB6-4F4C-8957-51FFB233969C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
-	// - false: The operation failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//

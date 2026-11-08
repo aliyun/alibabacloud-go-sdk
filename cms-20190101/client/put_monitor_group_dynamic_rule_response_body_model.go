@@ -22,7 +22,7 @@ type iPutMonitorGroupDynamicRuleResponseBody interface {
 type PutMonitorGroupDynamicRuleResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type PutMonitorGroupDynamicRuleResponseBody struct {
 	//
 	// 3E73F1AB-D195-438A-BCA7-2F4355789C58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: The operation was successful.
 	//
-	// - false
+	// - false: The operation failed.
 	//
 	// example:
 	//

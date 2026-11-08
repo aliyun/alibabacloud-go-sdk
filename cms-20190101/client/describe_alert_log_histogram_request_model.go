@@ -60,9 +60,9 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// Unit: milliseconds.
 	//
-	// > - You can query only the alert history within the last year.
+	// > - You can only query the alert history of the last year.
 	//
-	// > - The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days.
+	// > - The time interval between the start time (`StartTime`) and the end time (`EndTime`) must be less than or equal to 15 days.
 	//
 	// example:
 	//
@@ -78,29 +78,29 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// RESOLVED
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// Aggregates data by spatial dimension, equivalent to Group By in SQL. Valid values:
+	// The dimension for data aggregation, which is equivalent to the GROUP BY clause in SQL. Valid values:
 	//
-	// - `product`: aggregates by Alibaba Cloud service.
+	// - `product`: Aggregates data by cloud service.
 	//
-	// - `level`: aggregates by alert level.
+	// - `level`: Aggregates data by alert level.
 	//
-	// - `groupId`: aggregates by application group.
+	// - `groupId`: Aggregates data by application group.
 	//
-	// - `contactGroup`: aggregates by alert contact group.
+	// - `contactGroup`: Aggregates data by alert contact group.
 	//
-	// - `product,metricName`: aggregates by Alibaba Cloud service and metric.
+	// - `product,metricName`: Aggregates data by cloud service and metric.
 	//
 	// example:
 	//
 	// product
 	GroupBy *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
-	// The application group ID.
+	// The ID of the application group.
 	//
 	// example:
 	//
 	// 7301****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The period for obtaining logs. Unit: minutes.
+	// The period for retrieving logs. Unit: minutes.
 	//
 	// example:
 	//
@@ -108,37 +108,37 @@ type DescribeAlertLogHistogramRequest struct {
 	LastMin *string `json:"LastMin,omitempty" xml:"LastMin,omitempty"`
 	// The alert level and notification method. Valid values:
 	//
-	// <props="china">- P2: phone call + text message + email + DingTalk chatbot.
+	// <props="china">- P2: Phone call + text message + email + DingTalk chatbot.
 	//
-	// <props="china">- P3: text message + email + DingTalk chatbot.
+	// <props="china">- P3: Text message + email + DingTalk chatbot.
 	//
-	// <props="china">- P4: email + DingTalk chatbot.
+	// <props="china">- P4: Email + DingTalk chatbot.
 	//
-	// <props="china">- OK: no alert.
+	// <props="china">- OK: No alert.
 	//
-	// <props="intl">- P4: email + DingTalk chatbot.
+	// <props="intl">- P4: Email + DingTalk chatbot.
 	//
-	// <props="intl">- OK: no alert.
+	// <props="intl">- OK: No alert.
 	//
-	// <props="partner">- P4: email + DingTalk chatbot.
+	// <props="partner">- P4: Email + DingTalk chatbot.
 	//
-	// <props="partner">- OK: no alert.
+	// <props="partner">- OK: No alert.
 	//
 	// example:
 	//
 	// P4
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
-	// > For information about the metrics of Alibaba Cloud services, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the metrics of cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
 	// cpu_total
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the Alibaba Cloud service.
+	// The namespace of the cloud service.
 	//
-	// > For information about the namespaces of Alibaba Cloud services, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// > For more information about the namespaces of cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// Default value: 10.
 	//
@@ -160,29 +160,29 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The abbreviation of the Alibaba Cloud service name.
+	// The abbreviation of the cloud service name.
 	//
 	// example:
 	//
 	// ECS
 	Product  *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The alert rule ID.
+	// The ID of the alert rule.
 	//
 	//
-	// For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	// For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
 	//
 	// example:
 	//
 	// ae06917_75a8c43178ab66****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The alert rule name.
+	// The name of the alert rule.
 	//
 	// example:
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The keyword for searching alert history.
+	// The search keyword for querying alert history.
 	//
 	// example:
 	//
@@ -192,19 +192,19 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// - 0: An alert is triggered or the alert recovers to Normal.
 	//
-	// - 1: The alert is not in the effective period.
+	// - 1: Outside the effective period.
 	//
-	// - 2: The mute for epoch.
+	// - 2: Mute epoch.
 	//
 	// - 3: The host is restarting.
 	//
-	// - 4: Alerts are not send.
+	// - 4: Does not send alert notifications.
 	//
-	// <props="china">When the alert status is 0, if the value of Level is P2, P3, or P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	// <props="china">If the alert status is 0 and the value of Level is P2, P3, or P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
 	//
-	// <props="intl">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	// <props="intl">If the alert status is 0 and the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
 	//
-	// <props="partner">When the alert status is 0, if the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
+	// <props="partner">If the alert status is 0 and the value of Level is P4, an alert is triggered. If the value of Level is OK, the alert recovers to Normal.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeAlertLogHistogramRequest struct {
 	SendStatus *string `json:"SendStatus,omitempty" xml:"SendStatus,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- This parameter is deprecated and does not need to be specified.
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -222,9 +222,9 @@ type DescribeAlertLogHistogramRequest struct {
 	//
 	// Unit: milliseconds.
 	//
-	// > - You can query only the alert history within the last year.
+	// > - You can only query the alert history of the last year.
 	//
-	// > - The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days.
+	// > - The time interval between the start time (`StartTime`) and the end time (`EndTime`) must be less than or equal to 15 days.
 	//
 	// example:
 	//

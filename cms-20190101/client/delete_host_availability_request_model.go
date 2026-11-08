@@ -16,13 +16,9 @@ type iDeleteHostAvailabilityRequest interface {
 }
 
 type DeleteHostAvailabilityRequest struct {
-	// The IDs of the tasks.
+	// The ID of the task.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 12456
 	Id       []*int64 `json:"Id,omitempty" xml:"Id,omitempty" type:"Repeated"`
 	RegionId *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }

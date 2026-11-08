@@ -22,11 +22,11 @@ type iDescribeAlertLogHistogramResponseBody interface {
 }
 
 type DescribeAlertLogHistogramResponseBody struct {
-	// The histogram list of alert history.
+	// The histogram list of the queried alert history.
 	AlertLogHistogramList []*DescribeAlertLogHistogramResponseBodyAlertLogHistogramList `json:"AlertLogHistogramList,omitempty" xml:"AlertLogHistogramList,omitempty" type:"Repeated"`
 	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeAlertLogHistogramResponseBody struct {
 	//
 	// 1C4A3709-BF52-42EE-87B5-7435F0929585
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The operation is successful.
 	//
-	// - false: Failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *DescribeAlertLogHistogramResponseBody) Validate() error {
 }
 
 type DescribeAlertLogHistogramResponseBodyAlertLogHistogramList struct {
-	// The number of alert history entries.
+	// The number of alert history records.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The start timestamp for querying alert history.
+	// The start timestamp of the queried alert history.
 	//
 	// Unit: seconds.
 	//
@@ -137,7 +137,7 @@ type DescribeAlertLogHistogramResponseBodyAlertLogHistogramList struct {
 	//
 	// 1610074791
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
-	// The end timestamp for querying alert history.
+	// The end timestamp of the queried alert history.
 	//
 	// Unit: seconds.
 	//

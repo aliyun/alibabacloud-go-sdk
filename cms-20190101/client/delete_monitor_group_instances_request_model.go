@@ -11,6 +11,8 @@ type iDeleteMonitorGroupInstancesRequest interface {
 	GoString() string
 	SetCategory(v string) *DeleteMonitorGroupInstancesRequest
 	GetCategory() *string
+	SetClientToken(v string) *DeleteMonitorGroupInstancesRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *DeleteMonitorGroupInstancesRequest
 	GetDryRun() *bool
 	SetGroupId(v int64) *DeleteMonitorGroupInstancesRequest
@@ -31,12 +33,13 @@ type DeleteMonitorGroupInstancesRequest struct {
 	// example:
 	//
 	// ecs
-	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Category    *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits, but does not delete the instances. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run and does not delete the VPN connection. The system checks whether required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a normal request. If the request passes the check, the instances are deleted.
+	// - **false*	- (default): sends a normal request. If the request passes the dry run, the VPN connection is deleted.
 	//
 	// example:
 	//
@@ -50,7 +53,7 @@ type DeleteMonitorGroupInstancesRequest struct {
 	//
 	// 123456
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The IDs of the instances to be deleted. Separate multiple instance IDs with commas (,). You can delete up to 20 instances at a time.
+	// The instances to delete. Separate multiple instance IDs with commas (,). You can delete up to 20 instances at a time.
 	//
 	// This parameter is required.
 	//
@@ -73,6 +76,10 @@ func (s *DeleteMonitorGroupInstancesRequest) GetCategory() *string {
 	return s.Category
 }
 
+func (s *DeleteMonitorGroupInstancesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *DeleteMonitorGroupInstancesRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -91,6 +98,11 @@ func (s *DeleteMonitorGroupInstancesRequest) GetRegionId() *string {
 
 func (s *DeleteMonitorGroupInstancesRequest) SetCategory(v string) *DeleteMonitorGroupInstancesRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *DeleteMonitorGroupInstancesRequest) SetClientToken(v string) *DeleteMonitorGroupInstancesRequest {
+	s.ClientToken = &v
 	return s
 }
 

@@ -42,9 +42,9 @@ type DisableMetricRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: Successful.
 	//
-	// - false: The operation fails.
+	// - false: Failed.
 	//
 	// example:
 	//

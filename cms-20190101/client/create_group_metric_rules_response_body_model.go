@@ -22,9 +22,9 @@ type iCreateGroupMetricRulesResponseBody interface {
 }
 
 type CreateGroupMetricRulesResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// >A value of 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -43,9 +43,9 @@ type CreateGroupMetricRulesResponseBody struct {
 	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
 	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources *CreateGroupMetricRulesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: The operation was successful.
 	//
 	// - false: The operation failed.
 	//

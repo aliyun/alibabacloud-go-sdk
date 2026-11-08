@@ -34,7 +34,7 @@ type iCreateMetricRuleBlackListRequest interface {
 }
 
 type CreateMetricRuleBlackListRequest struct {
-	// The category of the cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+	// The category of the Alibaba Cloud service. For example, Redis includes `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/Write Splitting Edition).
 	//
 	// This parameter is required.
 	//
@@ -42,21 +42,21 @@ type CreateMetricRuleBlackListRequest struct {
 	//
 	// ecs
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time range within which the blacklist policy is effective.
+	// The effective period of the alert blacklist policy.
 	//
-	// - If you do not configure this parameter, the blacklist policy is permanently effective.
+	// - If you do not specify this parameter, the alert blacklist policy is permanently valid.
 	//
-	// - If you configure this parameter, the blacklist policy is effective only within the specified time range. Examples:
+	// - If you specify this parameter, the blacklist policy is valid only within the specified time range. This parameter supports the following two formats:
 	//
-	//   - `03:00-04:59`: The blacklist policy is effective from 03:00 to 05:00 local time. 05:00 local time is excluded.
+	//     - `03:00-04:59`: The alert blacklist policy is valid from 03:00 to 04:59 (excluding 05:00) local time.
 	//
-	//   - `03:00-04:59 UTC+0700`: The blacklist policy is effective from 03:00 to 05:00 (UTC+7). 05:00 (UTC+7) is excluded.
+	//     - `03:00-04:59 UTC+0700`: The alert blacklist policy is valid from 03:00 to 04:59 (excluding 05:00) UTC+07:00.
 	//
 	// example:
 	//
 	// 03:00-04:59
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The timestamp when the blacklist policy expires.
+	// The end timestamp when the alert blacklist policy takes effect.
 	//
 	// Unit: milliseconds.
 	//
@@ -64,7 +64,7 @@ type CreateMetricRuleBlackListRequest struct {
 	//
 	// 1640608200000
 	EnableEndTime *string `json:"EnableEndTime,omitempty" xml:"EnableEndTime,omitempty"`
-	// The timestamp when the blacklist policy starts to take effect.
+	// The start timestamp when the alert blacklist policy takes effect.
 	//
 	// Unit: milliseconds.
 	//
@@ -72,17 +72,17 @@ type CreateMetricRuleBlackListRequest struct {
 	//
 	// 1640237400000
 	EnableStartTime *string `json:"EnableStartTime,omitempty" xml:"EnableStartTime,omitempty"`
-	// The IDs of the instances that belong to the specified cloud service.
+	// The list of instances of the specified Alibaba Cloud service in the alert blacklist policy.
 	//
 	// This parameter is required.
 	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The metrics of the instance.
+	// The metrics of the instances.
 	//
-	// - If you do not configure this parameter, the blacklist policy applies to all metrics of the specified cloud service.
+	// - If you do not specify this parameter, the alert blacklist policy applies to all metrics of the specified Alibaba Cloud service.
 	//
-	// - If you configure this parameter, the blacklist policy applies only to the current metric.
+	// - If you specify this parameter, the blacklist policy applies only to the specified metrics.
 	Metrics []*CreateMetricRuleBlackListRequestMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
-	// The name of the blacklist policy.
+	// The name of the alert blacklist policy.
 	//
 	// This parameter is required.
 	//
@@ -90,9 +90,9 @@ type CreateMetricRuleBlackListRequest struct {
 	//
 	// Blacklist-01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace of the cloud service.
+	// The data namespace of the Alibaba Cloud service.
 	//
-	// For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+	// For more information about the namespaces of Alibaba Cloud services, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// This parameter is required.
 	//
@@ -101,19 +101,19 @@ type CreateMetricRuleBlackListRequest struct {
 	// acs_ecs_dashboard
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The effective scope of the blacklist policy. Valid values:
+	// The effective scope of the alert blacklist policy. Valid values:
 	//
-	// - USER (default): The blacklist policy takes effect only for the current Alibaba Cloud account.
+	// - USER: The alert blacklist policy takes effect only within the current Alibaba Cloud account. This is the default value.
 	//
-	// - GROUP: The blacklist policy takes effect only for the specified application group. For information about how to query the IDs of application groups, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+	// - GROUP: The alert blacklist policy takes effect within the specified application group. You must specify an application group. For more information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
 	//
 	// example:
 	//
 	// USER
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The ID of the application group. The value of this parameter is a JSON array.
+	// The list of application group IDs. The value is a JSON array.
 	//
-	// > This parameter must be specified when `ScopeType` is set to `GROUP`.
+	// > This parameter is required only when `ScopeType` is set to `GROUP`.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ func (s *CreateMetricRuleBlackListRequest) Validate() error {
 }
 
 type CreateMetricRuleBlackListRequestMetrics struct {
-	// The metric name.
+	// The name of the metric.
 	//
 	// Valid values of N: 1 to 10.
 	//
@@ -252,7 +252,7 @@ type CreateMetricRuleBlackListRequestMetrics struct {
 	//
 	// disk_utilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The extended dimension of the instance. For example, `{"device":"C:"}` specifies that the blacklist policy is applied to all C disks of the specified Elastic Compute Service (ECS) instance.
+	// The extended dimension information of the instance. For example, `{"device":"C:"}` indicates that the blacklist policy applies to all C drives of the ECS instance.
 	//
 	// Valid values of N: 1 to 10.
 	//

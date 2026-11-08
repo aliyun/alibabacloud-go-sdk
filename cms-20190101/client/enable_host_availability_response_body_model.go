@@ -22,7 +22,7 @@ type iEnableHostAvailabilityResponseBody interface {
 type EnableHostAvailabilityResponseBody struct {
   // The status code.
   // 
-  // > A value of 200 indicates success.
+  // > 200 indicates success.
   // 
   // example:
   // 
@@ -40,7 +40,7 @@ type EnableHostAvailabilityResponseBody struct {
   // 
   // ACBDBB40-DFB6-4F4C-8957-51FFB233969C
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the operation was successful. A value of true indicates success. A value of false indicates failure.
+  // Indicates whether the operation is successful. true indicates success, and false indicates failure.
   Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 

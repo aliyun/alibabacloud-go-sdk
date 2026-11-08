@@ -22,11 +22,11 @@ type iDescribeAlertLogCountResponseBody interface {
 }
 
 type DescribeAlertLogCountResponseBody struct {
-	// The alert history statistics.
+	// The statistics of the alert history count.
 	AlertLogCount []*DescribeAlertLogCountResponseBodyAlertLogCount `json:"AlertLogCount,omitempty" xml:"AlertLogCount,omitempty" type:"Repeated"`
 	// The status code.
 	//
-	// > The value 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeAlertLogCountResponseBody struct {
 	//
 	// 1C4A3709-BF52-42EE-87B5-7435F0929585
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
 	// - true: Successful.
 	//
@@ -123,7 +123,7 @@ func (s *DescribeAlertLogCountResponseBody) Validate() error {
 }
 
 type DescribeAlertLogCountResponseBodyAlertLogCount struct {
-	// The number of alert history statistics.
+	// The number of alert history records.
 	//
 	// example:
 	//

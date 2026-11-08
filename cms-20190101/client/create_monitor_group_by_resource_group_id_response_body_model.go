@@ -22,9 +22,9 @@ type iCreateMonitorGroupByResourceGroupIdResponseBody interface {
 }
 
 type CreateMonitorGroupByResourceGroupIdResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type CreateMonitorGroupByResourceGroupIdResponseBody struct {
 	//
 	// 784CAB3C-F613-5BCE-8469-6DCB29B18A20
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

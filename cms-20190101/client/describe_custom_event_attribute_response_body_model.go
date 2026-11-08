@@ -24,7 +24,7 @@ type iDescribeCustomEventAttributeResponseBody interface {
 type DescribeCustomEventAttributeResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -43,11 +43,11 @@ type DescribeCustomEventAttributeResponseBody struct {
 	//
 	// 60912C8D-B340-4253-ADE7-61ACDFD25CFC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true
+	// - true: Successful.
 	//
-	// - false
+	// - false: Failed.
 	//
 	// example:
 	//

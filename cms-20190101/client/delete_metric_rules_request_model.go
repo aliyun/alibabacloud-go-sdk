@@ -9,6 +9,8 @@ type iDeleteMetricRulesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *DeleteMetricRulesRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *DeleteMetricRulesRequest
 	GetDryRun() *bool
 	SetId(v []*string) *DeleteMetricRulesRequest
@@ -18,11 +20,12 @@ type iDeleteMetricRulesRequest interface {
 }
 
 type DeleteMetricRulesRequest struct {
-	// Specifies whether to perform a dry run of the request. Valid values:
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - **true**: performs a dry run. No actual operation is performed. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the dry run, an error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: A check request is sent, and no security group is bound to the instance. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): A normal request is sent. If the check succeeds, an HTTP 2xx status code is returned and the operation is directly performed.
 	//
 	// example:
 	//
@@ -43,6 +46,10 @@ func (s DeleteMetricRulesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteMetricRulesRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *DeleteMetricRulesRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -53,6 +60,11 @@ func (s *DeleteMetricRulesRequest) GetId() []*string {
 
 func (s *DeleteMetricRulesRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DeleteMetricRulesRequest) SetClientToken(v string) *DeleteMetricRulesRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *DeleteMetricRulesRequest) SetDryRun(v bool) *DeleteMetricRulesRequest {

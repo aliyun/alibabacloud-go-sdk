@@ -24,7 +24,7 @@ type iCreateMetricRuleTemplateResponseBody interface {
 type CreateMetricRuleTemplateResponseBody struct {
 	// The status code.
 	//
-	// > The status code 200 indicates that the request was successful.
+	// > 200 indicates success.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type CreateMetricRuleTemplateResponseBody struct {
 	//
 	// 9763ED1A-4D09-41BF-851E-310421750204
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true
+	// - true: The call was successful.
 	//
-	// - false
+	// - false: The call failed.
 	//
 	// example:
 	//

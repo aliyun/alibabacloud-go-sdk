@@ -9,6 +9,8 @@ type iCreateMonitorGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *CreateMonitorGroupRequest
+	GetClientToken() *string
 	SetContactGroups(v string) *CreateMonitorGroupRequest
 	GetContactGroups() *string
 	SetDryRun(v bool) *CreateMonitorGroupRequest
@@ -20,6 +22,7 @@ type iCreateMonitorGroupRequest interface {
 }
 
 type CreateMonitorGroupRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The alert contact group. Alert notifications for the application group are sent to the alert contacts in this alert contact group.
 	//
 	// > An alert contact group contains one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](~~PutContact~~) and [PutContactGroup](~~PutContactGroup~~).
@@ -28,11 +31,11 @@ type CreateMonitorGroupRequest struct {
 	//
 	// ECS_Alert_Group
 	ContactGroups *string `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	// Specifies whether to perform a dry run on the request. A dry run checks items such as permissions and instance status. Valid values:
+	// Specifies whether to perform a dry run on the request, including checks on permissions and instance status. Valid values:
 	//
-	// - **false*	- (default): Sends a normal request. If the request passes the check, the name and description of the route table are modified.
+	// - **false*	- (default): Sends a regular request. If the request passes the check, the name and description of the route table are modified.
 	//
-	// - **true**: Sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and whether the request format is valid. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
 	//
 	// example:
 	//
@@ -57,6 +60,10 @@ func (s CreateMonitorGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateMonitorGroupRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *CreateMonitorGroupRequest) GetContactGroups() *string {
 	return s.ContactGroups
 }
@@ -71,6 +78,11 @@ func (s *CreateMonitorGroupRequest) GetGroupName() *string {
 
 func (s *CreateMonitorGroupRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreateMonitorGroupRequest) SetClientToken(v string) *CreateMonitorGroupRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *CreateMonitorGroupRequest) SetContactGroups(v string) *CreateMonitorGroupRequest {

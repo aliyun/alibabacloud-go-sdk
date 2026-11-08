@@ -30,9 +30,9 @@ type iDescribeCustomEventAttributeRequest interface {
 }
 
 type DescribeCustomEventAttributeRequest struct {
-	// The end of the time range to query.
+	// The end time.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeCustomEventAttributeRequest struct {
 	//
 	// 123****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// example:
 	//
@@ -69,19 +69,19 @@ type DescribeCustomEventAttributeRequest struct {
 	// 50
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The keywords that are used to search for the event.
+	// The keywords used to search event content.
 	//
-	// - If you need to query the custom event whose content contains a and b, set the value to a and b.
+	// - If the event content contains both A and B, you can search for A and B.
 	//
-	// - If you need to query the custom event whose content contains a or b, set the value to a or b.
+	// - If the event content contains either A or B, you can search for A or B.
 	//
 	// example:
 	//
 	// cms
 	SearchKeywords *string `json:"SearchKeywords,omitempty" xml:"SearchKeywords,omitempty"`
-	// The beginning of the time range to query.
+	// The start time.
 	//
-	// This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The value is a UNIX timestamp that indicates the number of milliseconds that have elapsed since January 1, 1970.
 	//
 	// example:
 	//

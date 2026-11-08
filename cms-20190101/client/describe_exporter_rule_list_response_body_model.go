@@ -28,7 +28,7 @@ type iDescribeExporterRuleListResponseBody interface {
 type DescribeExporterRuleListResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates success. Any other value indicates failure.
+	// > A status code of 200 indicates success. Other values indicate failure.
 	//
 	// example:
 	//
@@ -53,11 +53,11 @@ type DescribeExporterRuleListResponseBody struct {
 	//
 	// 6BA047CA-8BC6-40BC-BC8F-FBECF35F1993
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - `true`: Successful.
+	// - `true`: The request is successful.
 	//
-	// - `false`: Failed.
+	// - `false`: The request fails.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iCreateDynamicTagGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *CreateDynamicTagGroupRequest
+	GetClientToken() *string
 	SetContactGroupList(v []*string) *CreateDynamicTagGroupRequest
 	GetContactGroupList() []*string
 	SetDryRun(v bool) *CreateDynamicTagGroupRequest
@@ -32,6 +34,7 @@ type iCreateDynamicTagGroupRequest interface {
 }
 
 type CreateDynamicTagGroupRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The alert contact groups. Valid values of N: 1 to 100. Alert notifications for the application group are sent to the alert contacts in the alert contact groups.
 	//
 	// An alert contact group contains one or more alert contacts. For more information about how to create alert contacts and alert contact groups, see [PutContact](https://help.aliyun.com/document_detail/114923.html) and [PutContactGroup](https://help.aliyun.com/document_detail/114929.html). For more information about how to query alert contact groups, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
@@ -44,9 +47,9 @@ type CreateDynamicTagGroupRequest struct {
 	ContactGroupList []*string `json:"ContactGroupList,omitempty" xml:"ContactGroupList,omitempty" type:"Repeated"`
 	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - **true**: Performs a dry run without creating the application group. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the dry run, an error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the queue. The system checks whether required parameters are specified, the request format is valid, and business limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code DryRunOperation is returned.
 	//
-	// - **false**: Performs a dry run and sends the actual request. If the request passes the dry run, the application group is created. This is the default value.
+	// - **false**: performs a dry run and creates the queue if the request passes the dry run. This is the default value.
 	//
 	// example:
 	//
@@ -54,33 +57,33 @@ type CreateDynamicTagGroupRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether to enable automatic installation of the CloudMonitor agent for the application group. CloudMonitor automatically installs the CloudMonitor agent on the hosts in the application group. Valid values:
 	//
-	// - true: Enables automatic installation.
+	// - true: enables automatic installation.
 	//
-	// - false: Disables automatic installation. This is the default value.
+	// - false: disables automatic installation. This is the default value.
 	//
 	// example:
 	//
 	// true
 	EnableInstallAgent *bool `json:"EnableInstallAgent,omitempty" xml:"EnableInstallAgent,omitempty"`
-	// Specifies whether to enable automatic subscription to event notifications for the application group. When critical or warning events occur on resources in the application group, CloudMonitor sends alert notifications. Valid values:
+	// Specifies whether to enable automatic subscription to event notifications for the application group. When a critical or warning event occurs on a resource in the application group, CloudMonitor sends an alert notification. Valid values:
 	//
-	// - true: Enables automatic subscription.
+	// - true: enables automatic subscription.
 	//
-	// - false: Disables automatic subscription. This is the default value.
+	// - false: disables automatic subscription. This is the default value.
 	//
 	// example:
 	//
 	// true
 	EnableSubscribeEvent *bool `json:"EnableSubscribeEvent,omitempty" xml:"EnableSubscribeEvent,omitempty"`
-	// The matching expression used to generate the application group based on tags.
+	// The match expression used to generate the application group based on tags.
 	//
 	// This parameter is required.
 	MatchExpress []*CreateDynamicTagGroupRequestMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
 	// The relationship between the conditional expressions of the resource tag values. Valid values:
 	//
-	// - and: Uses the AND logical operator. This is the default value.
+	// - and: AND. This is the default value.
 	//
-	// - or: Uses the OR logical operator.
+	// - or: OR.
 	//
 	// example:
 	//
@@ -97,7 +100,7 @@ type CreateDynamicTagGroupRequest struct {
 	//
 	// ecs_instance
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The region ID of the tag.
+	// The region ID to which the tag belongs.
 	//
 	// example:
 	//
@@ -119,6 +122,10 @@ func (s CreateDynamicTagGroupRequest) String() string {
 
 func (s CreateDynamicTagGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDynamicTagGroupRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateDynamicTagGroupRequest) GetContactGroupList() []*string {
@@ -159,6 +166,11 @@ func (s *CreateDynamicTagGroupRequest) GetTagRegionId() *string {
 
 func (s *CreateDynamicTagGroupRequest) GetTemplateIdList() []*string {
 	return s.TemplateIdList
+}
+
+func (s *CreateDynamicTagGroupRequest) SetClientToken(v string) *CreateDynamicTagGroupRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *CreateDynamicTagGroupRequest) SetContactGroupList(v []*string) *CreateDynamicTagGroupRequest {
@@ -225,35 +237,35 @@ func (s *CreateDynamicTagGroupRequest) Validate() error {
 }
 
 type CreateDynamicTagGroupRequestMatchExpress struct {
-	// The tag key used to create the group. If multiple resources contain this key, the resources that meet the filter conditions are added to the same group based on the same key-value pair.
+	// The tag key used to create the group. If multiple resources contain this key, the matched resources are added to the same group based on the same key-value pair according to the filter conditions.
 	//
 	// example:
 	//
 	// appname
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	// The tag value of the resource. Valid values of N: 1.
+	// The resource tag value. Valid values of N: 1.
 	//
-	// > You must specify both the `MatchExpress.N.TagValueMatchFunction` and `MatchExpress.N.TagValue` parameters.
+	// > You must specify both MatchExpress.N.TagValueMatchFunction and MatchExpress.N.TagValue at the same time.
 	//
 	// example:
 	//
 	// instance
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	// The matching method for the tag value of the resource. Valid values of N: 1. Valid values:
+	// The matching method for the resource tag value. Valid values of N: 1. Valid values:
 	//
-	// - contains: includes the specified value
+	// - contains: includes
 	//
-	// - startWith: starts with the specified value
+	// - startWith: prefix
 	//
-	// - endWith: ends with the specified value
+	// - endWith: suffix
 	//
-	// - notContains: does not include the specified value
+	// - notContains: excludes
 	//
-	// - equals: equals the specified value
+	// - equals: equals
 	//
-	// - all: all values
+	// - all: all
 	//
-	// > You must specify both the `MatchExpress.N.TagValueMatchFunction` and `MatchExpress.N.TagValue` parameters.
+	// > You must specify both MatchExpress.N.TagValueMatchFunction and MatchExpress.N.TagValue at the same time.
 	//
 	// example:
 	//

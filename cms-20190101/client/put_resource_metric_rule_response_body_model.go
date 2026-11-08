@@ -20,9 +20,9 @@ type iPutResourceMetricRuleResponseBody interface {
 }
 
 type PutResourceMetricRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
-	// > A status code of 200 indicates that the request was successful.
+	// > A status code of 200 indicates success.
 	//
 	// example:
 	//

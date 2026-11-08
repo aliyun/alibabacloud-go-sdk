@@ -9,6 +9,8 @@ type iPutMonitorGroupDynamicRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *PutMonitorGroupDynamicRuleRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *PutMonitorGroupDynamicRuleRequest
 	GetDryRun() *bool
 	SetGroupId(v int64) *PutMonitorGroupDynamicRuleRequest
@@ -22,6 +24,16 @@ type iPutMonitorGroupDynamicRuleRequest interface {
 }
 
 type PutMonitorGroupDynamicRuleRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to only precheck this request. Valid values:
+	//
+	// - **true**: sends a check request. No security group is associated with the instance. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	//
+	// - **false*	- (default): sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the operation is directly performed.
+	//
+	// example:
+	//
+	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the application group.
 	//
@@ -35,11 +47,11 @@ type PutMonitorGroupDynamicRuleRequest struct {
 	//
 	// This parameter is required.
 	GroupRules []*PutMonitorGroupDynamicRuleRequestGroupRules `json:"GroupRules,omitempty" xml:"GroupRules,omitempty" type:"Repeated"`
-	// The mode for creating the alert rule. Valid values:
+	// The mode for creating the dynamic matching rule. Valid values:
 	//
-	// - true: creates asynchronously
+	// - true: Asynchronous creation.
 	//
-	// - false (default): creates synchronously
+	// - false (default): Synchronous creation.
 	//
 	// example:
 	//
@@ -54,6 +66,10 @@ func (s PutMonitorGroupDynamicRuleRequest) String() string {
 
 func (s PutMonitorGroupDynamicRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PutMonitorGroupDynamicRuleRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *PutMonitorGroupDynamicRuleRequest) GetDryRun() *bool {
@@ -74,6 +90,11 @@ func (s *PutMonitorGroupDynamicRuleRequest) GetIsAsync() *bool {
 
 func (s *PutMonitorGroupDynamicRuleRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *PutMonitorGroupDynamicRuleRequest) SetClientToken(v string) *PutMonitorGroupDynamicRuleRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *PutMonitorGroupDynamicRuleRequest) SetDryRun(v bool) *PutMonitorGroupDynamicRuleRequest {
@@ -115,13 +136,13 @@ func (s *PutMonitorGroupDynamicRuleRequest) Validate() error {
 }
 
 type PutMonitorGroupDynamicRuleRequestGroupRules struct {
-	// The cloud service to which the alert rule is applied. Valid values of N: 1 to 3. Valid values:
+	// The type of Alibaba Cloud service for the dynamic alert rule. Valid values of N: 1 to 3. Valid values:
 	//
-	// - ecs: Elastic Compute Service (ECS)
+	// - ecs: Elastic Compute Service (ECS) server.
 	//
-	// - rds: ApsaraDB RDS
+	// - rds: relational database.
 	//
-	// - slb: Server Load Balancer (SLB)
+	// - slb: load balancing.
 	//
 	// This parameter is required.
 	//
@@ -129,11 +150,11 @@ type PutMonitorGroupDynamicRuleRequestGroupRules struct {
 	//
 	// ecs
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The logical operator used between conditional expressions in the alert rule. Valid values of N: 1 to 3. Valid values:
+	// The combination condition for dynamic matching rules. Valid values of N: 1 to 3. Valid values:
 	//
-	// - and: The instances that meet all the conditional expressions are automatically added to the application group.
+	// - and: Only instances that meet all matching rules are automatically added to the application group.
 	//
-	// - or: The instances that meet one of the conditional expressions are automatically added to the application group.
+	// - or: Instances that meet any matching rule are automatically added to the application group.
 	//
 	// This parameter is required.
 	//
@@ -196,15 +217,15 @@ func (s *PutMonitorGroupDynamicRuleRequestGroupRules) Validate() error {
 }
 
 type PutMonitorGroupDynamicRuleRequestGroupRulesFilters struct {
-	// The method that is used to filter instances. Valid values of N: 1 to 3. Valid values:
+	// The filter condition for instances. Valid values of N: 1 to 3. Valid values:
 	//
-	// - contains: contains
+	// - contains: Contains.
 	//
-	// - notContains: does not contain
+	// - notContains: Does not contain.
 	//
-	// - startWith: starts with a prefix
+	// - startWith: Prefix.
 	//
-	// - endWith: ends with a suffix
+	// - endWith: Suffix.
 	//
 	// This parameter is required.
 	//
@@ -212,9 +233,9 @@ type PutMonitorGroupDynamicRuleRequestGroupRulesFilters struct {
 	//
 	// contains
 	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
-	// The name of the field based on which instances are filtered. Valid values of N: 1 to 3.
+	// The field name for instance matching. Valid values of N: 1 to 3.
 	//
-	// Only hostnames are supported. Example: hostName.
+	// Currently, only the hostname is supported, such as hostName.
 	//
 	// This parameter is required.
 	//
@@ -222,7 +243,7 @@ type PutMonitorGroupDynamicRuleRequestGroupRulesFilters struct {
 	//
 	// hostName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value to be matched with the specified field. Valid values of N: 1 to 3.
+	// The value that meets the matching condition. Valid values of N: 1 to 3.
 	//
 	// This parameter is required.
 	//

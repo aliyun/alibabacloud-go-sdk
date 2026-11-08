@@ -9,6 +9,8 @@ type iDeleteMonitorGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *DeleteMonitorGroupRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *DeleteMonitorGroupRequest
 	GetDryRun() *bool
 	SetGroupId(v int64) *DeleteMonitorGroupRequest
@@ -18,11 +20,12 @@ type iDeleteMonitorGroupRequest interface {
 }
 
 type DeleteMonitorGroupRequest struct {
-	// Specifies whether to perform a dry run on the request. A dry run includes checks on permissions and instance status. Valid values:
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run on the request. The dry run checks permissions and instance status. Valid values:
 	//
-	// - **false*	- (default): Sends a normal request. If the request passes the check, the name and description of the route table are modified.
+	// - **false*	- (default): sends a normal request. If the request passes the check, the name and description of the route table are modified.
 	//
-	// - **true**: Sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. Check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
+	// - **true**: sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
 	// example:
 	//
@@ -47,6 +50,10 @@ func (s DeleteMonitorGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteMonitorGroupRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *DeleteMonitorGroupRequest) GetDryRun() *bool {
 	return s.DryRun
 }
@@ -57,6 +64,11 @@ func (s *DeleteMonitorGroupRequest) GetGroupId() *int64 {
 
 func (s *DeleteMonitorGroupRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DeleteMonitorGroupRequest) SetClientToken(v string) *DeleteMonitorGroupRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *DeleteMonitorGroupRequest) SetDryRun(v bool) *DeleteMonitorGroupRequest {

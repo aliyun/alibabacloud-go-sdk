@@ -22,9 +22,9 @@ type iPutExporterOutputRequest interface {
 }
 
 type PutExporterOutputRequest struct {
-	// The configuration of the data export. The value is a JSONObject string that must contain the following fields:
+	// The data export configuration. It is a JSON object string that must contain the following fields:
 	//
-	// - endpoint: the domain name that corresponds to the data of Log Service (SLS).
+	// - endpoint: the domain name for Simple Log Service (SLS) data.
 	//
 	// - project: the project.
 	//
@@ -32,7 +32,7 @@ type PutExporterOutputRequest struct {
 	//
 	// - ak: the AccessKey ID.
 	//
-	// - as: the AccessKey secret.
+	// - as: the AccessKey Secret.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type PutExporterOutputRequest struct {
 	//
 	// exporterConfig
 	DestName *string `json:"DestName,omitempty" xml:"DestName,omitempty"`
-	// The product to which the data is exported.
+	// The destination service for the export.
 	//
 	// example:
 	//

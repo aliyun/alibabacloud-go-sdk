@@ -9,6 +9,8 @@ type iInstallMonitoringAgentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *InstallMonitoringAgentRequest
+	GetClientToken() *string
 	SetDryRun(v bool) *InstallMonitoringAgentRequest
 	GetDryRun() *bool
 	SetForce(v bool) *InstallMonitoringAgentRequest
@@ -22,11 +24,12 @@ type iInstallMonitoringAgentRequest interface {
 }
 
 type InstallMonitoringAgentRequest struct {
-	// Specifies whether to perform a dry run on the request. The dry run includes checks on permissions and instance status. Valid values:
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run on the request. A dry run checks permissions and instance status. Valid values:
 	//
 	// - **false*	- (default): Sends a normal request. After the request passes the check, the name and description of the route table are directly modified.
 	//
-	// - **true**: Sends a dry run request. Only checks are performed, and the name and description of the route table are not modified. Check items include whether required parameters are specified and the request format. If the check fails, an error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	// - **true**: Sends a check request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and the request format. If the check fails, a corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
 	// example:
 	//
@@ -44,13 +47,13 @@ type InstallMonitoringAgentRequest struct {
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// Installs the CloudMonitor agent on all Alibaba Cloud hosts within the current Alibaba Cloud account. Valid values:
 	//
-	// - onlyInstallNotHasAgent: Installs the latest version of the agent only on Alibaba Cloud hosts on which the CloudMonitor agent is not installed.
+	// - `onlyInstallNotHasAgent`: Installs the latest version of the agent only on Alibaba Cloud hosts on which the CloudMonitor agent is not installed.
 	//
-	// - onlyUpgradeAgent: Upgrades the agent only on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
+	// - `onlyUpgradeAgent`: Upgrades the agent only on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
 	//
-	// - installAndUpgrade: Installs the latest version of the agent on Alibaba Cloud hosts on which the CloudMonitor agent is not installed, and upgrades the agent on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
+	// - `installAndUpgrade`: Installs the latest version of the agent on Alibaba Cloud hosts on which the CloudMonitor agent is not installed, and upgrades the agent on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
 	//
-	// > If you specify this parameter, the InstanceIds parameter becomes invalid.
+	// > If you specify this parameter, the `InstanceIds` parameter is ignored.
 	//
 	// example:
 	//
@@ -60,7 +63,7 @@ type InstallMonitoringAgentRequest struct {
 	//
 	// Valid values of N: 1 to 10.
 	//
-	// > You must specify either InstallCommand or InstanceIds.
+	// > You must specify either `InstallCommand` or `InstanceIds`.
 	//
 	// example:
 	//
@@ -75,6 +78,10 @@ func (s InstallMonitoringAgentRequest) String() string {
 
 func (s InstallMonitoringAgentRequest) GoString() string {
 	return s.String()
+}
+
+func (s *InstallMonitoringAgentRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *InstallMonitoringAgentRequest) GetDryRun() *bool {
@@ -95,6 +102,11 @@ func (s *InstallMonitoringAgentRequest) GetInstanceIds() []*string {
 
 func (s *InstallMonitoringAgentRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *InstallMonitoringAgentRequest) SetClientToken(v string) *InstallMonitoringAgentRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *InstallMonitoringAgentRequest) SetDryRun(v bool) *InstallMonitoringAgentRequest {

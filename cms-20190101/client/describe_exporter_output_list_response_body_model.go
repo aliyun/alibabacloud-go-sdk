@@ -26,9 +26,9 @@ type iDescribeExporterOutputListResponseBody interface {
 }
 
 type DescribeExporterOutputListResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// > The status code 200 indicates that the call was successful. Other status codes indicate that the call failed.
+	// > A status code of 200 indicates success, and other values indicate failure.
 	//
 	// example:
 	//
@@ -55,15 +55,15 @@ type DescribeExporterOutputListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - `true`: successful
+	// - `true`: The call was successful.
 	//
-	// - `false`: failed
+	// - `false`: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

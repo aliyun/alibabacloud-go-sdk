@@ -20,7 +20,7 @@ type iPutExporterRuleResponseBody interface {
 }
 
 type PutExporterRuleResponseBody struct {
-	// The HTTP status code.
+	// The status code.
 	//
 	// > 200 indicates success.
 	//
@@ -40,11 +40,11 @@ type PutExporterRuleResponseBody struct {
 	//
 	// 461CF2CD-2FC3-4B26-8645-7BD27E7D0F1D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

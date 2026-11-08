@@ -24,13 +24,13 @@ type iCreateMonitorGroupResponseBody interface {
 type CreateMonitorGroupResponseBody struct {
 	// The status code.
 	//
-	// > A value of 200 indicates success.
+	// > 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the application group.
+	// The application group ID.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type CreateMonitorGroupResponseBody struct {
 	//
 	// 83C89BA6-ABD4-4398-A175-83E86C47A001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
-	// - false: The operation failed.
+	// - false: The operation fails.
 	//
 	// example:
 	//

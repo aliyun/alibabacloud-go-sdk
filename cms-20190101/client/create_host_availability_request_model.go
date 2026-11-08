@@ -38,9 +38,9 @@ type CreateHostAvailabilityRequest struct {
 	//
 	// This parameter is required.
 	AlertConfigEscalationList []*CreateHostAvailabilityRequestAlertConfigEscalationList `json:"AlertConfigEscalationList,omitempty" xml:"AlertConfigEscalationList,omitempty" type:"Repeated"`
-	// The alert trigger targets.
+	// The alert targets.
 	AlertConfigTargetList []*CreateHostAvailabilityRequestAlertConfigTargetList `json:"AlertConfigTargetList,omitempty" xml:"AlertConfigTargetList,omitempty" type:"Repeated"`
-	// The application group ID.
+	// The ID of the application group.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type CreateHostAvailabilityRequest struct {
 	//
 	// 123456
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The list of ECS instances that initiate detection. Valid values of N: 1 to 21.
+	// The list of ECS instances that initiate the probes. Valid values of N: 1 to 21.
 	//
-	// > Set this parameter when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
+	// > You must set this parameter when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
 	//
 	// example:
 	//
@@ -65,17 +65,17 @@ type CreateHostAvailabilityRequest struct {
 	//
 	// task1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The detection scope of the availability monitoring task. Valid values:
+	// The probe scope of the availability monitoring task. Valid values:
 	//
-	// - GROUP: uses all ECS instances in the current application group as detection probes.
+	// - GROUP: All ECS instances in the current application group are used as probes for the task.
 	//
-	// - GROUP_SPEC_INSTANCE: uses specified ECS instances in the current application group as detection probes. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set InstanceList to specify the ECS instances that initiate detection.
+	// - GROUP_SPEC_INSTANCE: Specified ECS instances in the current application group are used as probes for the task. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set the InstanceList parameter, which specifies the list of ECS instances that initiate the probes.
 	//
 	// example:
 	//
 	// GROUP
 	TaskScope *string `json:"TaskScope,omitempty" xml:"TaskScope,omitempty"`
-	// The detection type of the availability monitoring task. Valid values:
+	// The probe type of the availability monitoring task. Valid values:
 	//
 	// - PING
 	//
@@ -222,28 +222,28 @@ func (s *CreateHostAvailabilityRequest) Validate() error {
 }
 
 type CreateHostAvailabilityRequestAlertConfig struct {
-	// The end time when the alert takes effect.
+	// The end time of the effective period for alerting.
 	//
-	// The value is an integer in the range of 0 to 23. Unit: hours. The value indicates the hour at which the effective period ends. The actual end point is 00:00:00 of the specified hour. For example, a value of 22 indicates that the effective period ends at 22:00:00. The time zone is UTC+8.
+	// The value is an integer ranging from 0 to 23. Unit: hours. The value indicates the hour when the effective period ends. The actual end time is 00:00:00 of the specified hour. For example, if you set this parameter to 22, the effective period ends at 22:00:00. The time zone is UTC+8.
 	//
-	// > If the current time is not within the effective time window, alert notifications are not sent even if the threshold is exceeded.
+	// > Note: If the current time is not within the effective time window, the system does not send alert notifications even if the threshold is exceeded.
 	//
 	// example:
 	//
 	// 22
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The alert notification type. Valid values:
+	// The alert notification method. Valid values:
 	//
-	// <props="china">- 2: phone call + text message + email + DingTalk chatbot.
+	// <props="china">- 2: phone call, text message, email, and DingTalk chatbot.
 	//
-	// <props="china">- 1: text message + email + DingTalk chatbot.
+	// <props="china">- 1: text message, email, and DingTalk chatbot.
 	//
-	// <props="china">- 0: email + DingTalk chatbot.
+	// <props="china">- 0: email and DingTalk chatbot.
 	//
 	//
-	// <props="intl">0: email + DingTalk chatbot.
+	// <props="intl">0: email and DingTalk chatbot.
 	//
-	// <props="partner">0: email + DingTalk chatbot.
+	// <props="partner">0: email and DingTalk chatbot.
 	//
 	// This parameter is required.
 	//
@@ -257,11 +257,11 @@ type CreateHostAvailabilityRequestAlertConfig struct {
 	//
 	// 86400
 	SilenceTime *int32 `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	// The start time when the alert takes effect.
+	// The start time of the effective period for alerting.
 	//
-	// The value is an integer in the range of 0 to 23. Unit: hours. The value indicates the hour at which the effective period starts. The actual start point is 00:00:00 of the specified hour. For example, a value of 0 indicates that the effective period starts at 00:00:00. The time zone is UTC+8.
+	// The value is an integer ranging from 0 to 23. Unit: hours. The value indicates the hour when the effective period starts. The actual start time is 00:00:00 of the specified hour. For example, if you set this parameter to 0, the effective period starts at 00:00:00. The time zone is UTC+8.
 	//
-	// > If the current time is not within the effective time window, alert notifications are not sent even if the threshold is exceeded.
+	// > Note: If the current time is not within the effective time window, the system does not send alert notifications even if the threshold is exceeded.
 	//
 	// example:
 	//
@@ -333,7 +333,7 @@ func (s *CreateHostAvailabilityRequestAlertConfig) Validate() error {
 }
 
 type CreateHostAvailabilityRequestTaskOption struct {
-	// The header of the HTTP request. The format is `Parameter name:Parameter value`. Separate multiple parameters with line breaks. Example:
+	// The headers of the HTTP request. The format is `Parameter name:Parameter value`. Separate multiple headers with carriage returns. Example:
 	//
 	// ```
 	//
@@ -347,7 +347,7 @@ type CreateHostAvailabilityRequestTaskOption struct {
 	//
 	// token:testTokenValue
 	HttpHeader *string `json:"HttpHeader,omitempty" xml:"HttpHeader,omitempty"`
-	// The method for the detection type. Valid values:
+	// The HTTP method for the probe. Valid values:
 	//
 	// - GET
 	//
@@ -355,31 +355,31 @@ type CreateHostAvailabilityRequestTaskOption struct {
 	//
 	// - HEAD
 	//
-	// > If the detection type is HTTP, set this parameter.
+	// > If the probe type is HTTP, you must set this parameter.
 	//
 	// example:
 	//
 	// GET
 	HttpMethod *string `json:"HttpMethod,omitempty" xml:"HttpMethod,omitempty"`
-	// The alert rule for matching HTTP response content. Valid values:
+	// The alert rule for matching the HTTP response content. Valid values:
 	//
-	// - true: An alert is triggered if the HTTP response content contains the specified alert rule content.
+	// - true: An alert is triggered if the HTTP response content contains the specified string.
 	//
-	// - false: An alert is triggered if the HTTP response content does not contain the specified alert rule content.
+	// - false: An alert is triggered if the HTTP response content does not contain the specified string.
 	//
-	// > This parameter takes effect only when the detection type is HTTP.
+	// > This parameter takes effect only when the probe type is HTTP.
 	//
 	// example:
 	//
 	// true
 	HttpNegative *bool `json:"HttpNegative,omitempty" xml:"HttpNegative,omitempty"`
-	// The POST content of the HTTP detection request.
+	// The POST content of the HTTP probe request.
 	//
 	// example:
 	//
 	// params1=paramsValue1
 	HttpPostContent *string `json:"HttpPostContent,omitempty" xml:"HttpPostContent,omitempty"`
-	// The response character set for HTTP detection.
+	// The response character set for HTTP probes.
 	//
 	// > Only UTF-8 is supported.
 	//
@@ -387,13 +387,13 @@ type CreateHostAvailabilityRequestTaskOption struct {
 	//
 	// UTF-8
 	HttpResponseCharset *string `json:"HttpResponseCharset,omitempty" xml:"HttpResponseCharset,omitempty"`
-	// The content to match in the response.
+	// The content to be matched in the response.
 	//
 	// example:
 	//
 	// ok
 	HttpResponseMatchContent *string `json:"HttpResponseMatchContent,omitempty" xml:"HttpResponseMatchContent,omitempty"`
-	// The URI for HTTP or Telnet detection.
+	// The URI for HTTP or Telnet probes.
 	//
 	// example:
 	//
@@ -401,17 +401,17 @@ type CreateHostAvailabilityRequestTaskOption struct {
 	//
 	// telnet://127.0.0.1:80
 	HttpURI *string `json:"HttpURI,omitempty" xml:"HttpURI,omitempty"`
-	// The detection frequency. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
+	// The probe interval. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
 	//
-	// > Only CloudMonitor agent 3.5.1 or later supports this parameter.
+	// > This parameter is supported only by CloudMonitor agent V3.5.1 or later.
 	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The domain name or address to detect.
+	// The domain name or IP address to be probed.
 	//
-	// > If the detection type is PING, set this parameter.
+	// > If the probe type is PING, you must set this parameter.
 	//
 	// example:
 	//
@@ -513,7 +513,7 @@ func (s *CreateHostAvailabilityRequestTaskOption) Validate() error {
 }
 
 type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
-	// The statistical method for the alert. Valid values of N: 1 to 21. The valid values vary based on the metric:
+	// The statistical method for the alert. Valid values of N: 1 to 21. Valid values vary based on the metric:
 	//
 	// - HttpStatus: Value.
 	//
@@ -525,7 +525,7 @@ type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
 	//
 	// - PingLostRate: Average.
 	//
-	// > The statistical method for status code metrics is the original value (Value). The statistical method for latency or packet loss rate metrics is the average value (Average).
+	// > The statistical method for status codes is the original value (Value), and the statistical method for response time or packet loss rate is the average value (Average).
 	//
 	// example:
 	//
@@ -535,11 +535,11 @@ type CreateHostAvailabilityRequestAlertConfigEscalationList struct {
 	//
 	// - HttpStatus: HTTP status code.
 	//
-	// - HttpLatency: HTTP latency.
+	// - HttpLatency: HTTP response time.
 	//
 	// - TelnetStatus: Telnet status code.
 	//
-	// - TelnetLatency: Telnet latency.
+	// - TelnetLatency: Telnet response time.
 	//
 	// - PingLostRate: Ping packet loss rate.
 	//
@@ -637,21 +637,21 @@ func (s *CreateHostAvailabilityRequestAlertConfigEscalationList) Validate() erro
 }
 
 type CreateHostAvailabilityRequestAlertConfigTargetList struct {
-	// The resource ARN. Format: `acs:{AbbreviatedCloudServiceName}:{regionId}:{userId}:/{ResourceType}/{ResourceName}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. The following list describes the parameters:
+	// The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{service abbreviation}:{regionId}:{userId}:/{resource type}/{resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Parameter description:
 	//
-	// - {AbbreviatedCloudServiceName}: Only Simple Message Queue (formerly MNS) is supported.
+	// - {service abbreviation}: The abbreviation of the cloud service. Only Simple Message Queue (formerly MNS) is supported.
 	//
 	// - {userId}: The Alibaba Cloud account ID.
 	//
 	// - {regionId}: The region where the Simple Message Queue (formerly MNS) queue or topic resides.
 	//
-	// - {ResourceType}: The type of the resource that accepts alerts. Valid values:
+	// - {resource type}: The type of the resource that receives alerts. Valid values:
 	//
 	//   - **queues**: queue.
 	//
 	//   - **topics**: topic.
 	//
-	// - {ResourceName}: The resource name.
+	// - {resource name}: The name of the resource.
 	//
 	//   - If the resource type is **queues**, the resource name is the queue name.
 	//
@@ -661,13 +661,13 @@ type CreateHostAvailabilityRequestAlertConfigTargetList struct {
 	//
 	// acs:mns:cn-hangzhou:120886317861****:/queues/test/message
 	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	// The ID of the alert trigger target.
+	// The ID of the alert target.
 	//
 	// example:
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The JSON-formatted parameters of the alert callback.
+	// The JSON-formatted parameters for the alert callback.
 	//
 	// example:
 	//

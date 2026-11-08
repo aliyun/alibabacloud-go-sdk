@@ -22,9 +22,9 @@ type iApplyMetricRuleTemplateResponseBody interface {
 }
 
 type ApplyMetricRuleTemplateResponseBody struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// >A status code of 200 indicates success.
+	// > A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type ApplyMetricRuleTemplateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resources affected by the alert rule.
 	Resource *ApplyMetricRuleTemplateResponseBodyResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: The operation was successful.
 	//
-	// - false: The operation fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -169,9 +169,9 @@ func (s *ApplyMetricRuleTemplateResponseBodyResource) Validate() error {
 }
 
 type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {
-	// The status code.
+	// The HTTP status code.
 	//
-	// >A status code of 200 indicates success.
+	// > A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -195,11 +195,11 @@ type ApplyMetricRuleTemplateResponseBodyResourceAlertResults struct {
 	//
 	// test123
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: The operation was successful.
 	//
-	// - false: The operation fails.
+	// - false: The operation failed.
 	//
 	// example:
 	//
