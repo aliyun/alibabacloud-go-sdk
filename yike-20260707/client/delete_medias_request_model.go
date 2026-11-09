@@ -20,8 +20,13 @@ type iDeleteMediasRequest interface {
 }
 
 type DeleteMediasRequest struct {
+	// The business configuration. It is a JSON string that can contain ProductionId (the project ID).
+	//
+	// example:
+	//
+	// {"ProductionId":"pd_abc1234567"}
 	BizConfig *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
-	// Specifies whether to delete the physical files at the same time.
+	// Specifies whether to delete physical files at the same time.
 	//
 	// example:
 	//

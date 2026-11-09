@@ -37,7 +37,10 @@ type UpdateMediaRequest struct {
 	// Specifies whether to update the Tags field in append mode.
 	AppendTags *bool   `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
 	BizConfig  *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The cover image URL. This parameter is valid only for video media assets.
 	//
 	// example:

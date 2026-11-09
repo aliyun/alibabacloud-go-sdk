@@ -18,7 +18,7 @@ type iSubmitMediaComprehensionJobResponseBody interface {
 }
 
 type SubmitMediaComprehensionJobResponseBody struct {
-	// The business error code. An empty string is returned when the submission is successful.
+	// The business error code. It is an empty string if the submission is successful.
 	//
 	// example:
 	//

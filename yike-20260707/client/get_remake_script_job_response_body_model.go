@@ -74,35 +74,35 @@ type GetRemakeScriptJobResponseBodyJob struct {
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 68ca759e798b40b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The file URL of the script imitation result. The file content is in JSON format of the creative script.
+	// The URL of the file that contains the script rewriting result. The file content is the creative script in JSON format.
 	//
 	// example:
 	//
 	// http://xxxx.json
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The file status. Valid values:
+	// The status. Valid values:
 	//
-	// - Created: Created.
+	// - Created: The task is created.
 	//
-	// - Executing: Executing.
+	// - Executing: The task is executing.
 	//
-	// - Finished: Finished.
+	// - Finished: The task is finished.
 	//
-	// - Failed: Failed.
+	// - Failed: The task failed.
 	//
-	// - Deleted: Deleted.
+	// - Deleted: The task is deleted.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user-defined parameter, in JSON format string.
+	// The user-defined parameter, which is a string in JSON format.
 	//
 	// example:
 	//

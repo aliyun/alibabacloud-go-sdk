@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Yike")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -140,7 +148,7 @@ func (client *Client) BatchGetMedias(request *BatchGetMediasRequest) (_result *B
 
 // Summary:
 //
-// 取消生成任务接口
+// Cancels an AI generation task.
 //
 // @param request - CancelGenerationJobRequest
 //
@@ -184,7 +192,7 @@ func (client *Client) CancelGenerationJobWithOptions(request *CancelGenerationJo
 
 // Summary:
 //
-// 取消生成任务接口
+// Cancels an AI generation task.
 //
 // @param request - CancelGenerationJobRequest
 //
@@ -1024,13 +1032,13 @@ func (client *Client) GetMedia(request *GetMediaRequest) (_result *GetMediaRespo
 
 // Summary:
 //
-// Queries a media asset content understanding job.
+// Queries media content understanding jobs.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API is used to query a media asset content understanding job.
+// This API operation queries media content understanding jobs.
 //
 // @param request - GetMediaComprehensionJobRequest
 //
@@ -1074,13 +1082,13 @@ func (client *Client) GetMediaComprehensionJobWithOptions(request *GetMediaCompr
 
 // Summary:
 //
-// Queries a media asset content understanding job.
+// Queries media content understanding jobs.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// This API is used to query a media asset content understanding job.
+// This API operation queries media content understanding jobs.
 //
 // @param request - GetMediaComprehensionJobRequest
 //
@@ -1151,6 +1159,68 @@ func (client *Client) GetRemakeScriptJob(request *GetRemakeScriptJobRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetRemakeScriptJobResponse{}
 	_body, _err := client.GetRemakeScriptJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a video creative generation job.
+//
+// @param request - GetVideoCreativeGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoCreativeGenerationJobResponse
+func (client *Client) GetVideoCreativeGenerationJobWithOptions(request *GetVideoCreativeGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoCreativeGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoCreativeGenerationJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoCreativeGenerationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a video creative generation job.
+//
+// @param request - GetVideoCreativeGenerationJobRequest
+//
+// @return GetVideoCreativeGenerationJobResponse
+func (client *Client) GetVideoCreativeGenerationJob(request *GetVideoCreativeGenerationJobRequest) (_result *GetVideoCreativeGenerationJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetVideoCreativeGenerationJobResponse{}
+	_body, _err := client.GetVideoCreativeGenerationJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1296,7 +1366,7 @@ func (client *Client) GetVideoGenerationJob(request *GetVideoGenerationJobReques
 
 // Summary:
 //
-// Submits a video rendering and composition task.
+// Submits a video rendering and compositing task.
 //
 // @param request - GetVideoRenderJobRequest
 //
@@ -1340,7 +1410,7 @@ func (client *Client) GetVideoRenderJobWithOptions(request *GetVideoRenderJobReq
 
 // Summary:
 //
-// Submits a video rendering and composition task.
+// Submits a video rendering and compositing task.
 //
 // @param request - GetVideoRenderJobRequest
 //
@@ -1745,9 +1815,9 @@ func (client *Client) ListAssetCategories(request *ListAssetCategoriesRequest) (
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API is used to query media asset content understanding jobs.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - ListInfiniteCanvasesRequest
 //
@@ -1819,9 +1889,9 @@ func (client *Client) ListInfiniteCanvasesWithOptions(request *ListInfiniteCanva
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API is used to query media asset content understanding jobs.
+// This API operation queries media asset content understanding jobs.
 //
 // @param request - ListInfiniteCanvasesRequest
 //
@@ -1839,7 +1909,7 @@ func (client *Client) ListInfiniteCanvases(request *ListInfiniteCanvasesRequest)
 
 // Summary:
 //
-// Returns media asset information that matches the specified filter conditions.
+// Queries media assets that match the specified parameters.
 //
 // @param request - SearchMediaRequest
 //
@@ -1907,7 +1977,7 @@ func (client *Client) SearchMediaWithOptions(request *SearchMediaRequest, runtim
 
 // Summary:
 //
-// Returns media asset information that matches the specified filter conditions.
+// Queries media assets that match the specified parameters.
 //
 // @param request - SearchMediaRequest
 //
@@ -2007,7 +2077,7 @@ func (client *Client) SubmitAgentJob(request *SubmitAgentJobRequest) (_result *S
 
 // Summary:
 //
-// Submits an image generation task.
+// Submits an image generation request.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -2087,7 +2157,7 @@ func (client *Client) SubmitImageGenerationJobWithOptions(request *SubmitImageGe
 
 // Summary:
 //
-// Submits an image generation task.
+// Submits an image generation request.
 //
 // @param request - SubmitImageGenerationJobRequest
 //
@@ -2109,9 +2179,9 @@ func (client *Client) SubmitImageGenerationJob(request *SubmitImageGenerationJob
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation performs content understanding based on the provided media asset files (such as video URLs). You can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This operation performs content understanding based on the provided media asset files, such as video URLs. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitMediaComprehensionJobRequest
 //
@@ -2171,9 +2241,9 @@ func (client *Client) SubmitMediaComprehensionJobWithOptions(request *SubmitMedi
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API operation performs content understanding based on the provided media asset files (such as video URLs). You can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
+// This operation performs content understanding based on the provided media asset files, such as video URLs. Additionally, you can pass custom parameters through the `UserData` field, which are returned as-is in the callback.
 //
 // @param request - SubmitMediaComprehensionJobRequest
 //
@@ -2195,7 +2265,7 @@ func (client *Client) SubmitMediaComprehensionJob(request *SubmitMediaComprehens
 //
 // Description:
 //
-// This API generates a new voiceover script based on content comprehension results and new product/model information by imitating the style of the original script. You can pass custom parameters through the UserData field, which are returned as-is in the callback.
+// This operation generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in callbacks.
 //
 // @param request - SubmitRemakeScriptJobRequest
 //
@@ -2251,7 +2321,7 @@ func (client *Client) SubmitRemakeScriptJobWithOptions(request *SubmitRemakeScri
 //
 // Description:
 //
-// This API generates a new voiceover script based on content comprehension results and new product/model information by imitating the style of the original script. You can pass custom parameters through the UserData field, which are returned as-is in the callback.
+// This operation generates a new voiceover script based on content understanding results and new product or avatar information. It also supports passing custom parameters through the UserData field, which are returned as-is in callbacks.
 //
 // @param request - SubmitRemakeScriptJobRequest
 //
@@ -2260,6 +2330,100 @@ func (client *Client) SubmitRemakeScriptJob(request *SubmitRemakeScriptJobReques
 	runtime := &dara.RuntimeOptions{}
 	_result = &SubmitRemakeScriptJobResponse{}
 	_body, _err := client.SubmitRemakeScriptJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video creative generation job.
+//
+// @param request - SubmitVideoCreativeGenerationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoCreativeGenerationJobResponse
+func (client *Client) SubmitVideoCreativeGenerationJobWithOptions(request *SubmitVideoCreativeGenerationJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoCreativeGenerationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AspectRatio) {
+		query["AspectRatio"] = request.AspectRatio
+	}
+
+	if !dara.IsNil(request.AvatarData) {
+		query["AvatarData"] = request.AvatarData
+	}
+
+	if !dara.IsNil(request.JobParams) {
+		query["JobParams"] = request.JobParams
+	}
+
+	if !dara.IsNil(request.OutputLanguages) {
+		query["OutputLanguages"] = request.OutputLanguages
+	}
+
+	if !dara.IsNil(request.Resolution) {
+		query["Resolution"] = request.Resolution
+	}
+
+	if !dara.IsNil(request.SceneType) {
+		query["SceneType"] = request.SceneType
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	if !dara.IsNil(request.UserMaterials) {
+		query["UserMaterials"] = request.UserMaterials
+	}
+
+	if !dara.IsNil(request.WithSubtitles) {
+		query["WithSubtitles"] = request.WithSubtitles
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoCreativeGenerationJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoCreativeGenerationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits a video creative generation job.
+//
+// @param request - SubmitVideoCreativeGenerationJobRequest
+//
+// @return SubmitVideoCreativeGenerationJobResponse
+func (client *Client) SubmitVideoCreativeGenerationJob(request *SubmitVideoCreativeGenerationJobRequest) (_result *SubmitVideoCreativeGenerationJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitVideoCreativeGenerationJobResponse{}
+	_body, _err := client.SubmitVideoCreativeGenerationJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2531,11 +2695,11 @@ func (client *Client) SubmitVideoRenderJob(request *SubmitVideoRenderJobRequest)
 
 // Summary:
 //
-// Submits an asynchronous video translation task that supports subtitle translation, voice translation, main subtitle erasure, and on-screen text translation.
+// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle erasure, and on-screen text translation.
 //
 // Description:
 //
-// Submits an asynchronous video translation task. The input supports a media URL or an Intelligent Media Management (IMM) media asset ID. Task parameters specify the source language, target language, and translation capabilities to enable.
+// Submits an asynchronous video translation task. The input supports media URLs or Yike media asset IDs. The task parameters are used to select the source language, target language, and the translation capabilities to enable.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -2607,11 +2771,11 @@ func (client *Client) SubmitVideoTranslationJobWithOptions(request *SubmitVideoT
 
 // Summary:
 //
-// Submits an asynchronous video translation task that supports subtitle translation, voice translation, main subtitle erasure, and on-screen text translation.
+// Submits an asynchronous video translation task that supports subtitle translation, voice translation, primary subtitle erasure, and on-screen text translation.
 //
 // Description:
 //
-// Submits an asynchronous video translation task. The input supports a media URL or an Intelligent Media Management (IMM) media asset ID. Task parameters specify the source language, target language, and translation capabilities to enable.
+// Submits an asynchronous video translation task. The input supports media URLs or Yike media asset IDs. The task parameters are used to select the source language, target language, and the translation capabilities to enable.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //

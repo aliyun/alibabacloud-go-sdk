@@ -123,7 +123,7 @@ type ListInfiniteCanvasesResponseBodyCanvasList struct {
 	//
 	// canvas_xxx
 	CanvasId *string `json:"CanvasId,omitempty" xml:"CanvasId,omitempty"`
-	// The cover URL.
+	// The URL of the cover image.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListInfiniteCanvasesResponseBodyCanvasList struct {
 	//
 	// 2026-03-18T10:03:56Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The thumbnail height, in px.
+	// The height of the thumbnail, in pixels.
 	//
 	// example:
 	//

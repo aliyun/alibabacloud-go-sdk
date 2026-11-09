@@ -14,6 +14,8 @@ type iCancelGenerationJobRequest interface {
 }
 
 type CancelGenerationJobRequest struct {
+	// The task ID. Only queued tasks can be canceled.
+	//
 	// This parameter is required.
 	//
 	// example:

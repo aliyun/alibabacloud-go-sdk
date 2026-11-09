@@ -42,8 +42,11 @@ type iImportMediaRequest interface {
 }
 
 type ImportMediaRequest struct {
-	BizConfig  *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
-	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	BizConfig *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The cover image URL. This parameter is valid only for video media assets.
 	//
 	// example:

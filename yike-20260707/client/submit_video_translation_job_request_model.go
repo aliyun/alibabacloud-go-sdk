@@ -28,19 +28,19 @@ type iSubmitVideoTranslationJobRequest interface {
 }
 
 type SubmitVideoTranslationJobRequest struct {
-	// The user-level idempotency token, up to 40 characters. If the same user submits a request with the same token, the original job is returned.
+	// The user-level idempotency token, which can be up to 40 characters in length. If the same user submits the request repeatedly with the same token, the original task is returned.
 	//
 	// example:
 	//
 	// vt-client-20260820-001
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The job description, used to record business purposes or processing requirements.
+	// The job description, which is used to record the business purpose or processing requirements.
 	//
 	// example:
 	//
-	// Translate a Chinese product introduction video into English
+	// Translate the Chinese product introduction video into English
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The input configuration JSON string. You must specify either Video or VideoMediaId, but not both. You can specify at most one of Audio or AudioMediaId. Subtitle is optional.
+	// The input configuration JSON string. You must specify either Video or VideoMediaId, but not both. You can specify at most one of Audio and AudioMediaId. Subtitle is optional.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// {"VideoMediaId":"media-video-001"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The job parameters JSON string. It must contain at least SourceLanguage and TargetLanguage. You can also configure main subtitle erasure, voice translation, on-screen text translation, and final editing.
+	// The job parameters JSON string. It must include at least SourceLanguage and TargetLanguage. You can also configure primary subtitle erasure, voice translation, on-screen text translation, and final editing.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// {"SourceLanguage":"zh","TargetLanguage":"en","NeedDetext":false,"NeedVisualTranslate":false}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The job type. SubtitleTranslate indicates subtitle translation. VoiceTranslate indicates voice translation.
+	// The job type. SubtitleTranslate indicates subtitle translation, and VoiceTranslate indicates voice translation.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// VoiceTranslate
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The output configuration JSON string. OssUri is an optional customer OSS output directory. If not specified, a signed URL of the service-owned artifact is returned.
+	// The output configuration JSON string. OssUri is the optional customer OSS output directory. If OssUri is not specified, a signed URL for the service-owned output is returned.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// example:
 	//
-	// Product introduction video English translation
+	// English translation of product introduction video
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom user data JSON string. It can contain the asynchronous notification address NotifyAddress.
+	// The user-defined data JSON string. When specifying an MNS queue to receive asynchronous notifications, set `NotifyAddress` to the pure queue name starting with `yike-callback-` instead of the full queue URL. You can optionally set `NotifyMnsEndpoint` to the MNS endpoint of the task account.
 	//
 	// example:
 	//
-	// {"NotifyAddress":"mns://account.mns.cn-shanghai.aliyuncs.com/queues/video-translation-result"}
+	// {"NotifyAddress":"yike-callback-test","NotifyMnsEndpoint":"https://1234567890123456.mns.cn-shanghai.aliyuncs.com"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

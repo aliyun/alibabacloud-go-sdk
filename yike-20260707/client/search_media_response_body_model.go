@@ -24,13 +24,13 @@ type iSearchMediaResponseBody interface {
 }
 
 type SearchMediaResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The collection of media assets that meet the specified criteria.
+	// The collection of media assets that meet the requirements.
 	MediaInfoList []*SearchMediaResponseBodyMediaInfoList `json:"MediaInfoList,omitempty" xml:"MediaInfoList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -38,19 +38,19 @@ type SearchMediaResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The pagination token.
+	// The scroll token.
 	//
 	// example:
 	//
 	// F8C4F642184DBDA5D93907A70AAE****
 	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
 	// True
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of media assets that meet the specified criteria.
+	// The total number of media assets that meet the requirements.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ func (s *SearchMediaResponseBody) Validate() error {
 type SearchMediaResponseBodyMediaInfoList struct {
 	// The list of media files.
 	FileInfoList []*SearchMediaResponseBodyMediaInfoListFileInfoList `json:"FileInfoList,omitempty" xml:"FileInfoList,omitempty" type:"Repeated"`
-	// The basic information of the media asset.
+	// The basic media asset information.
 	MediaBasicInfo *SearchMediaResponseBodyMediaInfoListMediaBasicInfo `json:"MediaBasicInfo,omitempty" xml:"MediaBasicInfo,omitempty" type:"Struct"`
 	// The dynamic data of the media asset.
 	MediaDynamicInfo *SearchMediaResponseBodyMediaInfoListMediaDynamicInfo `json:"MediaDynamicInfo,omitempty" xml:"MediaDynamicInfo,omitempty" type:"Struct"`
@@ -216,7 +216,7 @@ func (s *SearchMediaResponseBodyMediaInfoList) Validate() error {
 }
 
 type SearchMediaResponseBodyMediaInfoListFileInfoList struct {
-	// The basic file information, including duration and size.
+	// The basic file information, including the duration and size.
 	FileBasicInfo *SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 }
 
@@ -271,7 +271,7 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	//
 	// 1642650802***0527050.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
@@ -319,7 +319,7 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	//
 	// 2026-05-01T19:48Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The file storage region.
+	// The storage region of the file.
 	//
 	// example:
 	//

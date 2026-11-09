@@ -24,7 +24,7 @@ type SubmitVideoRenderJobResponseBody struct {
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//

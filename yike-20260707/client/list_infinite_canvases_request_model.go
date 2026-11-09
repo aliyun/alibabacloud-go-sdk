@@ -26,7 +26,7 @@ type iListInfiniteCanvasesRequest interface {
 }
 
 type ListInfiniteCanvasesRequest struct {
-	// The keyword for querying site monitoring tasks. Supports fuzzy match based on task name or task address.
+	// The keyword used to query site monitoring tasks. Note: Fuzzy match is supported based on the task name or task address.
 	//
 	// example:
 	//
@@ -43,7 +43,12 @@ type ListInfiniteCanvasesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// pd_abc1234567
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
 	// The sort field and sort order. Separate multiple values with commas (,).
 	//
@@ -51,20 +56,23 @@ type ListInfiniteCanvasesRequest struct {
 	//
 	// utcCreate:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort direction.
+	// The sort direction. Valid values:
 	//
-	// Valid values:
+	// - Asc: ascending order
 	//
-	// - Asc: Ascending order.
-	//
-	// - Desc: Descending order.
+	// - Desc: descending order
 	//
 	// Default value: Desc.
 	//
 	// example:
 	//
 	// Ascending
-	SortOrder   *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// ws_abc1234567
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

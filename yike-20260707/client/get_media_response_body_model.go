@@ -1276,7 +1276,13 @@ type GetMediaResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// general
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	CategoryId   *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 示例分类
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The cover URL, which is an authenticated access URL.
 	//

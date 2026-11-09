@@ -18,14 +18,20 @@ type iCancelGenerationJobResponseBody interface {
 }
 
 type CancelGenerationJobResponseBody struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// ag_77b5f78b***
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task status. The value is Canceled.
+	//
 	// example:
 	//
 	// Canceled

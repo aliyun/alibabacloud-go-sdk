@@ -16,13 +16,13 @@ type iSubmitVideoTranslationJobResponseBody interface {
 }
 
 type SubmitVideoTranslationJobResponseBody struct {
-	// The video translation job ID, used to call GetVideoTranslationJob to query the job.
+	// The video translation job ID, which is used to call GetVideoTranslationJob to query the task.
 	//
 	// example:
 	//
 	// vtj_0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID, used for Tracing Analysis and troubleshooting.
+	// The request ID, which is used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//

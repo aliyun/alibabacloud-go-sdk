@@ -16,7 +16,7 @@ type iGetVideoRenderJobResponseBody interface {
 }
 
 type GetVideoRenderJobResponseBody struct {
-	// The video rendering and composition task object.
+	// The video rendering and compositing task object.
 	Job *GetVideoRenderJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,59 +62,59 @@ func (s *GetVideoRenderJobResponseBody) Validate() error {
 }
 
 type GetVideoRenderJobResponseBodyJob struct {
-	// The online editing project ID, which can be used for secondary editing of the output video.
+	// The ID of the online editing project, which can be used for secondary editing of the produced video.
 	//
 	// example:
 	//
 	// 8239345231244512***
 	EditingProjectId *string `json:"EditingProjectId,omitempty" xml:"EditingProjectId,omitempty"`
-	// The error code. This parameter is returned when the task is in the Failed state.
+	// The error code. This parameter is returned when the job is in the Failed state.
 	//
 	// example:
 	//
 	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This parameter is returned when the task is in the Failed state.
+	// The error message. This parameter is returned when the job is in the Failed state.
 	//
 	// example:
 	//
 	// The specified product does not exist.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The task ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 68ca759e798b40b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The narration language of the output video.
+	// The voiceover language of the produced video.
 	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The download URL of the rendered and composed video.
+	// The download URL of the rendered and composited video.
 	//
 	// example:
 	//
 	// https://xxxx.mp4
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The task status. Valid values:
+	// The job status. Valid values:
 	//
-	// - Created: The task is created.
+	// - Created: The job is created.
 	//
-	// - Executing: The task is being executed.
+	// - Executing: The job is being executed.
 	//
-	// - Finished: The task is completed.
+	// - Finished: The job is completed.
 	//
-	// - Failed: The task has failed.
+	// - Failed: The job failed.
 	//
-	// - Deleted: The task is deleted.
+	// - Deleted: The job is deleted.
 	//
 	// example:
 	//
 	// Executing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The custom user data in JSON format.
+	// The user-defined parameter, which is a JSON-formatted string.
 	//
 	// example:
 	//
