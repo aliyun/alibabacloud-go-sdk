@@ -16,7 +16,10 @@ type iValidateLlmTemplateConfigResponseBody interface {
 }
 
 type ValidateLlmTemplateConfigResponseBody struct {
+	// The validation result of the LLM template configuration, which includes whether the configuration is valid and a list of validation errors.
 	Data *ValidateLlmTemplateConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -59,7 +62,9 @@ func (s *ValidateLlmTemplateConfigResponseBody) Validate() error {
 }
 
 type ValidateLlmTemplateConfigResponseBodyData struct {
-	Valid            *bool                                                        `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// Indicates whether the configuration is valid. The value is true if all validation items pass.
+	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	// The list of validation errors. This list is empty if Valid is true.
 	ValidationErrors []*ValidateLlmTemplateConfigResponseBodyDataValidationErrors `json:"ValidationErrors,omitempty" xml:"ValidationErrors,omitempty" type:"Repeated"`
 }
 
@@ -103,14 +108,20 @@ func (s *ValidateLlmTemplateConfigResponseBodyData) Validate() error {
 }
 
 type ValidateLlmTemplateConfigResponseBodyDataValidationErrors struct {
+	// The error code, such as MISSING_FIELD, UNKNOWN_FIELD, INVALID_TYPE, or INVALID_JSON.
+	//
 	// example:
 	//
 	// UNKNOWN_FIELD
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the field where the error occurred, such as id, name, or contextWindow.
+	//
 	// example:
 	//
 	// unknownField
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Unknown field "unknownField" is not recognized by Agent and will be ignored.

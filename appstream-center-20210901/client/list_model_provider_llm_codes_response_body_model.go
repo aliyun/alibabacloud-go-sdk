@@ -22,7 +22,7 @@ type iListModelProviderLlmCodesResponseBody interface {
 }
 
 type ListModelProviderLlmCodesResponseBody struct {
-	// The paginated data object that contains the list of LLM information.
+	// The paginated data object that contains a list of LLM information.
 	Data *ListModelProviderLlmCodesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The current page number.
 	//
@@ -113,7 +113,7 @@ func (s *ListModelProviderLlmCodesResponseBody) Validate() error {
 }
 
 type ListModelProviderLlmCodesResponseBodyData struct {
-	// The list of LLM information.
+	// The LLM information list.
 	LlmInfoList []*ListModelProviderLlmCodesResponseBodyDataLlmInfoList `json:"LlmInfoList,omitempty" xml:"LlmInfoList,omitempty" type:"Repeated"`
 }
 
@@ -154,7 +154,7 @@ type ListModelProviderLlmCodesResponseBodyDataLlmInfoList struct {
 	//
 	// example:
 	//
-	// Qwen image generation model that supports text-to-image and image editing capabilities
+	// Qwen image generation model that supports text-to-image generation and image editing
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of model features, such as function-calling, web-search, and structured-outputs.
 	Features []*string `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
@@ -172,7 +172,7 @@ type ListModelProviderLlmCodesResponseBodyDataLlmInfoList struct {
 	//
 	// qwen
 	ModelBrand *string `json:"ModelBrand,omitempty" xml:"ModelBrand,omitempty"`
-	// The model information, such as the context window size and the maximum number of input/output tokens.
+	// The model information, such as context window size and maximum input/output tokens.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type ListModelProviderLlmCodesResponseBodyDataLlmInfoList struct {
 	//
 	// 2026-03-04T06:25:17.000+00:00
 	PublishedTime *string `json:"PublishedTime,omitempty" xml:"PublishedTime,omitempty"`
-	// Indicates whether the model is recommended. Valid values: true (recommended), false (explicitly not recommended), and null (not applicable, such as non-Bailian or unannotated models).
+	// Indicates whether the model is recommended. This is a tri-state value: true indicates that the model is recommended for display, false indicates that the model is explicitly not recommended, and null indicates that the status is not applicable, such as for non-Bailian models or unannotated models.
 	Recommended *bool `json:"Recommended,omitempty" xml:"Recommended,omitempty"`
 	// The model risk type. This parameter is returned only when includeRiskInfo is set to true.
 	//
@@ -357,13 +357,13 @@ func (s *ListModelProviderLlmCodesResponseBodyDataLlmInfoList) Validate() error 
 }
 
 type ListModelProviderLlmCodesResponseBodyDataLlmInfoListCreditMultiplier struct {
-	// The upper limit of the multiplier. An empty value indicates no upper limit. For example, if the minimum multiplier is 1 and the maximum multiplier is empty, it is displayed as starting from 1x.
+	// The upper limit of the multiplier. An empty value indicates no upper limit. For example, if the minimum value is 1 and the maximum value is empty, it is displayed as starting from 1x.
 	//
 	// example:
 	//
 	// 2
 	Max *float32 `json:"Max,omitempty" xml:"Max,omitempty"`
-	// The lower limit of the multiplier. If this value is equal to the maximum multiplier, it is a fixed multiplier. For example, if both the minimum and maximum multipliers are 2, it is displayed as 2x.
+	// The lower limit of the multiplier. If this value is equal to the maximum value, the multiplier is fixed. For example, if both the minimum and maximum values are 2, it is displayed as 2x.
 	//
 	// example:
 	//

@@ -16,12 +16,16 @@ type iValidateLlmTemplateConfigRequest interface {
 }
 
 type ValidateLlmTemplateConfigRequest struct {
+	// The JSON string of the LLM configuration to be validated.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"id":"qwen3-max-2026-01-23","name":"Qwen3 Max","contextWindow":200000,"maxTokens":32768}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the provider template.
+	//
 	// This parameter is required.
 	//
 	// example:

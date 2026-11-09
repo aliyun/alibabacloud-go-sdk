@@ -22,19 +22,28 @@ type iListBrowserBookmarksResponseBody interface {
 }
 
 type ListBrowserBookmarksResponseBody struct {
+	// The list of bookmarks on the current page.
 	Data []*ListBrowserBookmarksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID, which is used to troubleshoot issues.
+	//
 	// example:
 	//
 	// 01A0C2ED-95F2-1A37-9FC6-4A395179****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of bookmarks that meet the filtering conditions.
+	//
 	// example:
 	//
 	// 5
@@ -108,18 +117,26 @@ func (s *ListBrowserBookmarksResponseBody) Validate() error {
 }
 
 type ListBrowserBookmarksResponseBodyData struct {
+	// The bookmark folder.
+	//
 	// example:
 	//
-	// 工作
+	// Work
 	BookmarkFolder *string `json:"BookmarkFolder,omitempty" xml:"BookmarkFolder,omitempty"`
+	// The bookmark ID.
+	//
 	// example:
 	//
 	// bm-0c7loey7fzjq****
 	BookmarkId *string `json:"BookmarkId,omitempty" xml:"BookmarkId,omitempty"`
+	// The bookmark name.
+	//
 	// example:
 	//
-	// 阿里云
+	// Alibaba Cloud
 	BookmarkName *string `json:"BookmarkName,omitempty" xml:"BookmarkName,omitempty"`
+	// The bookmark URL.
+	//
 	// example:
 	//
 	// https://www.aliyun.com

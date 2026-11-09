@@ -18,11 +18,16 @@ type iListAgentInstanceVersionsResponseBody interface {
 }
 
 type ListAgentInstanceVersionsResponseBody struct {
+	// The list of agent instance version numbers, deduplicated and sorted in ascending order by version number.
 	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C5A2E8F-9B3D-4E7A-A1C6-2F8D0E5B7A91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 2

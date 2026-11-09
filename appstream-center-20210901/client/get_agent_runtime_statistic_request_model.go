@@ -20,19 +20,19 @@ type iGetAgentRuntimeStatisticRequest interface {
 }
 
 type GetAgentRuntimeStatisticRequest struct {
-	// The agent platform, which is used to filter the statistical scope, such as ENTERPRISE_AGENTIC_COMPUTER. If this parameter is not specified, all agent platforms are included in the statistics. If an unsupported value is specified, a parameter error is returned.
+	// The agent platform used to filter the statistics scope, such as ENTERPRISE_AGENTIC_COMPUTER. If you do not specify this parameter, statistics for all agent platforms are returned. If you specify an unsupported value, a parameter error is returned.
 	//
 	// example:
 	//
 	// ENTERPRISE_AGENTIC_COMPUTER
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The agent provider, which is used to filter the statistical scope, such as AgenticComputer. If this parameter is not specified, all agent providers are included in the statistics. If an unsupported value is specified, a parameter error is returned.
+	// The agent provider used to filter the statistics scope, such as AgenticComputer. If you do not specify this parameter, statistics for all agent providers are returned. If you specify an unsupported value, a parameter error is returned.
 	//
 	// example:
 	//
 	// AgenticComputer
 	AgentProvider *string `json:"AgentProvider,omitempty" xml:"AgentProvider,omitempty"`
-	// The business type, which is used to filter runtimes of a specified business type.
+	// The business type used to filter runtimes of a specific business type.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetAgentRuntimeStatisticRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The runtime environment type of the runtime resource.
+	// The runtime environment type.
 	//
 	// This parameter is required.
 	//

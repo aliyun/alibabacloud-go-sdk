@@ -20,13 +20,13 @@ type iGetAgentRuntimeStatisticResponseBody interface {
 type GetAgentRuntimeStatisticResponseBody struct {
 	// The list of runtime statistics grouped by agent platform and agent provider. If AgentProvider is specified but no matching runtimes are found, a record with all statistical values set to 0 is returned.
 	Data []*GetAgentRuntimeStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID, which is used to uniquely identify the request.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned statistical records, which is the length of the Data list.
+	// The number of returned statistics records, which is the length of the Data list.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *GetAgentRuntimeStatisticResponseBody) Validate() error {
 }
 
 type GetAgentRuntimeStatisticResponseBodyData struct {
-	// The display name of the agent, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
+	// The agent display name, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
 	//
 	// example:
 	//
