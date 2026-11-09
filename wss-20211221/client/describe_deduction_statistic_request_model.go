@@ -22,13 +22,13 @@ type iDescribeDeductionStatisticRequest interface {
 }
 
 type DescribeDeductionStatisticRequest struct {
-	// The end time (timestamp).
+	// The end time of the query. UNIX timestamp, in milliseconds.
 	//
 	// example:
 	//
-	// 2025-06-06T02:14:00Z
+	// 1749176040000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of instance IDs (JSON array).
+	// The list of instance IDs in JSON array format.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The list of time periods in JSON array format. Each element is a `PeriodParam` object.
 	//
@@ -37,11 +37,11 @@ type DescribeDeductionStatisticRequest struct {
 	Periods []*DescribeDeductionStatisticRequestPeriods `json:"Periods,omitempty" xml:"Periods,omitempty" type:"Repeated"`
 	// The list of resource types in JSON array format.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The start time (timestamp).
+	// The start time of the query. UNIX timestamp, in milliseconds.
 	//
 	// example:
 	//
-	// 2026-03-20T16:00:00Z
+	// 1774022400000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -112,7 +112,7 @@ func (s *DescribeDeductionStatisticRequest) Validate() error {
 }
 
 type DescribeDeductionStatisticRequestPeriods struct {
-	// The base time.
+	// The base time in the YYYY-MM-DD format.
 	//
 	// example:
 	//

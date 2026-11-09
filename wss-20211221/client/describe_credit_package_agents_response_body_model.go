@@ -20,7 +20,7 @@ type iDescribeCreditPackageAgentsResponseBody interface {
 }
 
 type DescribeCreditPackageAgentsResponseBody struct {
-	// The Agent list.
+	// The agent list.
 	Agents []*DescribeCreditPackageAgentsResponseBodyAgents `json:"Agents,omitempty" xml:"Agents,omitempty" type:"Repeated"`
 	// The number of entries per page.
 	//
@@ -106,7 +106,7 @@ type DescribeCreditPackageAgentsResponseBodyAgents struct {
 	//
 	// agent-abc
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// **The instance creation time.**
+	// The time when the instance was created, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeCreditPackageAgentsResponseBodyAgents struct {
 	//
 	// cp-inst-001
 	CreditPackageId *string `json:"CreditPackageId,omitempty" xml:"CreditPackageId,omitempty"`
-	// **The time when the instance expires.**
+	// The time when the instance expires, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeCreditPackageAgentsResponseBodyAgents struct {
 	//
 	// 2000
 	TotalCredit *int64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
-	// **The amount of credits used.**
+	// **The number of credits used.**
 	//
 	// example:
 	//

@@ -38,43 +38,43 @@ type DescribeRunIdDeductionsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the `nextToken` value from the previous response.
+	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the nextToken value returned in the previous response.
 	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page for a paged query.
+	// The Settings for the number of entries per page during paging in a paged query.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The unique identifier of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// 68BD3312-53D8-123E-BB32-1A9F25E07A03
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of core-hour package deduction details in the query result.
+	// The total number of core-hour package deduction details returned.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The total usage duration. Unit: seconds. Do not use this field for AI scenarios.
+	// The total usage duration. Unit: seconds. Do not use this field in AI scenarios.
 	//
 	// example:
 	//
 	// 100000
 	TotalUsedTime *int64 `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
-	// The total credits used that match the specified conditions.
+	// The total used credits that meet the conditions.
 	//
 	// example:
 	//
@@ -185,23 +185,23 @@ func (s *DescribeRunIdDeductionsResponseBody) Validate() error {
 }
 
 type DescribeRunIdDeductionsResponseBodyDeductions struct {
-	// The agent type: `CREDIT_PACKAGE` / `JVS_CLAW` / `OPEN_CLAW` / `JVS_COPILOT`.
+	// The agent type. Valid values: CREDIT_PACKAGE, JVS_CLAW, OPEN_CLAW, and JVS_COPILOT.
 	//
 	// example:
 	//
 	// OpenClaw
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The end time of the period.
+	// The end time of the period. The time is in ISO 8601 format and displayed in UTC.
 	//
 	// example:
 	//
 	// 2024-07-31T03:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The group resource type.
+	// The grouped resource type to which the deduction record belongs.
 	//
 	// example:
 	//
-	// GROUP_CREDIT_PACKAGE、GROUP_BUSINESS_CREDIT_PACKAGE
+	// GROUP_CREDIT_PACKAGE
 	GroupResourceType *string `json:"GroupResourceType,omitempty" xml:"GroupResourceType,omitempty"`
 	// The instance ID.
 	//
@@ -209,8 +209,13 @@ type DescribeRunIdDeductionsResponseBodyDeductions struct {
 	//
 	// jvs-xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Model      *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The credit or plan package ID.
+	// The identifier of the called large language model. This field is used to distinguish the consumption of each model when grouping by model.
+	//
+	// example:
+	//
+	// qwen-3.7
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The ID of the credit or package.
 	//
 	// example:
 	//
@@ -228,13 +233,13 @@ type DescribeRunIdDeductionsResponseBodyDeductions struct {
 	//
 	// CreditPackage、BusinessCreditPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The unique run ID.
+	// The unique ID of the run.
 	//
 	// example:
 	//
 	// run-szwB1fYHCTocjGkFAIf6V8A
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// The start time.
+	// The start time. The time is in ISO 8601 format and displayed in UTC.
 	//
 	// example:
 	//
@@ -244,15 +249,15 @@ type DescribeRunIdDeductionsResponseBodyDeductions struct {
 	//
 	// example:
 	//
-	// How is the weather today
+	// How is the weather today?
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The usage duration. Unit: seconds. Do not use this field for AI scenarios.
+	// The usage duration. Unit: seconds. Do not use this field in AI scenarios.
 	//
 	// example:
 	//
 	// 360000000
 	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The credits used.
+	// The used credits.
 	//
 	// example:
 	//

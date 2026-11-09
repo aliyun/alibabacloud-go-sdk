@@ -16,7 +16,7 @@ type iDescribeMultiPriceResponseBody interface {
 }
 
 type DescribeMultiPriceResponseBody struct {
-	// The price details.
+	// The detailed pricing information.
 	PriceInfo *DescribeMultiPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DescribeMultiPriceResponseBody) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfo struct {
-	// The price information.
+	// The pricing information.
 	Price *DescribeMultiPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
 	// The promotion rule information.
 	Rules []*DescribeMultiPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
@@ -113,13 +113,13 @@ func (s *DescribeMultiPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
-	// The currency unit.
+	// The currency unit. CNY for the China site. USD for the international site.
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount price.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 6800
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The price details.
+	// The pricing details.
 	PriceDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails `json:"PriceDetails,omitempty" xml:"PriceDetails,omitempty" type:"Repeated"`
 	// The promotion information.
 	Promotions []*DescribeMultiPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The unsubscription instance and pricing details.
+	// The unsubscribed instances and pricing details.
 	RefundInstanceIdPriceMap map[string]*float32 `json:"RefundInstanceIdPriceMap,omitempty" xml:"RefundInstanceIdPriceMap,omitempty"`
-	// The unsubscription price.
+	// The refund price.
 	//
 	// example:
 	//
@@ -254,15 +254,15 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) Validate() error {
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails struct {
-	// The pricing module details.
+	// The pricing details of the billing module.
 	ModuleDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
-	// The sort property.
+	// The sorting attribute.
 	//
 	// example:
 	//
 	// 1
 	OrderItem *int32 `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	// The price details.
+	// The pricing details.
 	PriceDetail *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Struct"`
 }
 
@@ -320,7 +320,7 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) Validate() er
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struct {
-	// The discount price.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -336,7 +336,7 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	//
 	// example:
 	//
-	// Enterprise Office-8C32G
+	// Enterprise Office - 8C32G
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The module value.
 	//
@@ -351,6 +351,10 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struc
 	// 10900
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The savings plan discount price.
+	//
+	// example:
+	//
+	// 0
 	SavingPlanDiscountPrice *float32 `json:"SavingPlanDiscountPrice,omitempty" xml:"SavingPlanDiscountPrice,omitempty"`
 	// The actual payment price. The value is the original price minus the discount.
 	//
@@ -436,7 +440,7 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) 
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct {
-	// The discount price.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -455,6 +459,10 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct 
 	// DurationPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The savings plan recommended price.
+	//
+	// example:
+	//
+	// 0
 	SavingPlanRecommendPrice *float32 `json:"SavingPlanRecommendPrice,omitempty" xml:"SavingPlanRecommendPrice,omitempty"`
 	// The actual payment price. The value is the original price minus the discount.
 	//
@@ -522,11 +530,19 @@ func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) Va
 }
 
 type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
-	// The activity ID.
+	// The promotion activity ID.
+	//
+	// example:
+	//
+	// 123456****
 	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// Indicates whether the activity is effective.
+	// Indicates whether the promotion activity is in effect.
 	Effective *bool `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The timestamp when the activity ends.
+	// The end time of the promotion activity. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1790784000000
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The description of the promotion rule.
 	//
@@ -534,9 +550,17 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// new
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The tiered pricing discount value.
+	// The discount amount after the spend-and-save promotion threshold is reached. Unit: CNY. Two decimal places are retained.
+	//
+	// example:
+	//
+	// 10.00
 	PriceBreakReduceValue *string `json:"PriceBreakReduceValue,omitempty" xml:"PriceBreakReduceValue,omitempty"`
-	// The tiered pricing threshold.
+	// The threshold amount for the spend-and-save promotion. Unit: CNY. Two decimal places are retained.
+	//
+	// example:
+	//
+	// 100.00
 	PriceBreakThreshold *string `json:"PriceBreakThreshold,omitempty" xml:"PriceBreakThreshold,omitempty"`
 	// The description of the promotion.
 	//
@@ -562,7 +586,11 @@ type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// true
 	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
-	// The timestamp when the activity starts.
+	// The start time of the promotion activity. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1788192000000
 	StartTimestamp *string `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 }
 
@@ -684,11 +712,11 @@ type DescribeMultiPriceResponseBodyPriceInfoRules struct {
 	//
 	// accounts_suspect_users
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The promotion rule ID.
+	// The pricing rule ID. The value is an integer.
 	//
 	// example:
 	//
-	// hrzdvc
+	// 1001
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 

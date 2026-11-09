@@ -13,6 +13,8 @@ type iDescribeCreditUsageInfoRequest interface {
 	GetBizType() *string
 	SetInstanceIds(v []*string) *DescribeCreditUsageInfoRequest
 	GetInstanceIds() []*string
+	SetSceneType(v string) *DescribeCreditUsageInfoRequest
+	GetSceneType() *string
 	SetUsageType(v string) *DescribeCreditUsageInfoRequest
 	GetUsageType() *string
 }
@@ -24,15 +26,29 @@ type DescribeCreditUsageInfoRequest struct {
 	//
 	// BUSINESS
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The JSON string of instance IDs. This parameter can be omitted when `UsageType=User`. Pass a credit package instance ID when `UsageType=CreditPackage`, or pass an `AgentId` when `UsageType=Agent`.
+	// The JSON string of the instance ID list. This parameter can be omitted when `UsageType` is set to `User`. Set it to the credit package instance ID when `UsageType` is `CreditPackage`, and the agent ID when `UsageType` is `Agent`.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The usage type (UsageType). Valid values:
+	// The operator Scenarios type. Valid values:
 	//
-	// 	- User: Returns the usage, remaining credits, and consumption trends of the current user\\"s active credit packages.
+	// - Not specified or NaturalMonthlyOwn: Natural monthly exclusive.
 	//
-	// 	- CreditPackage: Requires a CreditPackageId. Returns the total and remaining credits of the specified credit package.
+	// - JzYearlyShare: Jz annual shared.
 	//
-	// 	- Agent: Requires an AgentId. Returns the cumulative credit usage, cumulative allocated quota, and their percentages.
+	// - JzYearlyOwn: Jz annual exclusive.
+	//
+	// example:
+	//
+	// JzYearlyShare
+	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
+	// The usage type. Valid values:
+	//
+	// - User: Returns the used amount, remaining amount, and consumption trend of the currently active credit packages for the user.
+	//
+	// - CreditPackage: Requires a credit package ID. Returns the total amount and remaining amount of the specified credit package.
+	//
+	// - Agent: Requires an agent ID. Returns the cumulative credit usage, cumulative allocated quota, and the percentage between the two.
+	//
+	// - EndUser: Requires a Wuying ID. Returns the shared credit usage, pay-as-you-go credit usage, and total credit usage for the current period of the Wuying user.
 	//
 	// example:
 	//
@@ -56,6 +72,10 @@ func (s *DescribeCreditUsageInfoRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
 
+func (s *DescribeCreditUsageInfoRequest) GetSceneType() *string {
+	return s.SceneType
+}
+
 func (s *DescribeCreditUsageInfoRequest) GetUsageType() *string {
 	return s.UsageType
 }
@@ -67,6 +87,11 @@ func (s *DescribeCreditUsageInfoRequest) SetBizType(v string) *DescribeCreditUsa
 
 func (s *DescribeCreditUsageInfoRequest) SetInstanceIds(v []*string) *DescribeCreditUsageInfoRequest {
 	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoRequest) SetSceneType(v string) *DescribeCreditUsageInfoRequest {
+	s.SceneType = &v
 	return s
 }
 

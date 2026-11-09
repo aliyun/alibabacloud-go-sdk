@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,11 +25,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-southeast-1": dara.String("wss.ap-southeast-1.aliyuncs.com"),
-		"cn-shanghai":    dara.String("wss.cn-shanghai.aliyuncs.com"),
+	client.ProductId = dara.String("wss")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
 	}
+
+	client.Spi = gatewayClient
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -62,15 +66,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Places, renews, or modifies orders for specific products of Elastic Desktop Service (EDS) Enterprise Edition, such as monthly duration packages.
+// Creates an order, renews, or modifies the configuration of specific products such as the monthly duration package for Wuying Workspace Enterprise Edition.
 //
 // Description:
 //
-// <props="china">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of EDS.
+// <props="china">Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Wuying Workspace before you call this operation.
 //
-// <props="intl">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560) of EDS.
+// <props="intl">Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560) of Wuying Workspace before you call this operation.
 //
-// If automatic payment is not specified, this operation does not process the payment. You must use the order ID returned by this operation to construct a payment redirect URL and complete the payment before the order takes effect and the resources are provisioned.
+// If automatic payment is not specified, this operation does not process the payment. You must use the order ID returned by this operation to construct a payment redirect URL and complete the payment. The order takes effect and resources are provisioned only after the payment is completed.
 //
 // @param tmpReq - CreateMultiOrderRequest
 //
@@ -136,15 +140,15 @@ func (client *Client) CreateMultiOrderWithOptions(tmpReq *CreateMultiOrderReques
 
 // Summary:
 //
-// Places, renews, or modifies orders for specific products of Elastic Desktop Service (EDS) Enterprise Edition, such as monthly duration packages.
+// Creates an order, renews, or modifies the configuration of specific products such as the monthly duration package for Wuying Workspace Enterprise Edition.
 //
 // Description:
 //
-// <props="china">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of EDS.
+// <props="china">Make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Wuying Workspace before you call this operation.
 //
-// <props="intl">Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560) of EDS.
+// <props="intl">Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/zh/product/cloud-desktop?#J_8623712560) of Wuying Workspace before you call this operation.
 //
-// If automatic payment is not specified, this operation does not process the payment. You must use the order ID returned by this operation to construct a payment redirect URL and complete the payment before the order takes effect and the resources are provisioned.
+// If automatic payment is not specified, this operation does not process the payment. You must use the order ID returned by this operation to construct a payment redirect URL and complete the payment. The order takes effect and resources are provisioned only after the payment is completed.
 //
 // @param request - CreateMultiOrderRequest
 //
@@ -162,17 +166,17 @@ func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_resul
 
 // Summary:
 //
-// Queries the list of Agents and usage summary information under the current username.
+// Queries the list of agents and usage summary information under the current username.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - **Paging support**: Use the `NextToken` and `MaxResults` parameters for paging. Set `NextToken` to an empty character string for the first request.
+// - **Paging**: Use the `NextToken` and `MaxResults` parameters for paging. Set `NextToken` to an empty character string for the first request.
 //
-// - **Filtering**: Use the `AgentType` and `AgentIds` parameters to filter the returned Agent list.
+// - **Filtering**: Use the `AgentType` and `AgentIds` parameters to filter the returned agent list.
 //
-// - **Status filtering**: Use the `Status` parameter to filter Agents by status (0: deleted, 1: active).
+// - **Status filtering**: Use the `Status` parameter to filter agents by status. Valid values: 0 (deleted) and 1 (active).
 //
 // - **Sorting**: Results are sorted by `id` in ascending order by default.
 //
@@ -236,17 +240,17 @@ func (client *Client) DescribeCreditPackageAgentsWithOptions(request *DescribeCr
 
 // Summary:
 //
-// Queries the list of Agents and usage summary information under the current username.
+// Queries the list of agents and usage summary information under the current username.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// - **Paging support**: Use the `NextToken` and `MaxResults` parameters for paging. Set `NextToken` to an empty character string for the first request.
+// - **Paging**: Use the `NextToken` and `MaxResults` parameters for paging. Set `NextToken` to an empty character string for the first request.
 //
-// - **Filtering**: Use the `AgentType` and `AgentIds` parameters to filter the returned Agent list.
+// - **Filtering**: Use the `AgentType` and `AgentIds` parameters to filter the returned agent list.
 //
-// - **Status filtering**: Use the `Status` parameter to filter Agents by status (0: deleted, 1: active).
+// - **Status filtering**: Use the `Status` parameter to filter agents by status. Valid values: 0 (deleted) and 1 (active).
 //
 // - **Sorting**: Results are sorted by `id` in ascending order by default.
 //
@@ -268,27 +272,29 @@ func (client *Client) DescribeCreditPackageAgents(request *DescribeCreditPackage
 
 // Summary:
 //
-// Queries credit usage details by a specified dimension such as user, credit package, or agent.
+// Queries the credit usage of users, credit packages, or agents based on a specified dimension.
 //
 // Description:
 //
 // ## Request description
 //
-// This API queries credit usage details based on the dimension specified by `UsageType` (User / CreditPackage / Agent). The response includes the total credits, remaining credits, used credits, hourly consumption samples, alert thresholds, and period quotas of the current credit package.
+// This API queries credit usage details based on the dimension specified by `UsageType` (User, CreditPackage, Agent, or EndUser). The response includes the total amount, remaining amount, and used amount of the current credit package, hourly consumption samples, alert thresholds, and periodic quotas.
 //
-// - **User**: User dimension. Returns the aggregated usage and remaining credits of all active credit packages for the current user.
+// - **User**: The user dimension. Returns the total used amount and remaining amount of all active credit packages for the current user.
 //
-// - **CreditPackage**: Credit package dimension. Returns the total credits, remaining credits, and consumption samples of a specified credit package instance.
+// - **CreditPackage**: The credit package dimension. Returns the total amount, remaining amount, and consumption samples of a specified credit package instance.
 //
-// - **Agent**: Agent dimension. Returns the cumulative usage, current period usage, quota, and alert information of a specified agent.
+// - **Agent**: The agent dimension. Returns the cumulative used amount, current period used amount, quota, and alerts for a specified agent.
 //
-// **Notes**:
+// - **EndUser**: The Wuying user dimension. Returns the shared credit usage, pay-as-you-go credit usage, and total credit usage for the current period of a Wuying user.
 //
-// - The `InstanceIds` parameter can be omitted when `UsageType=User`. Pass a credit package instance ID when `UsageType=CreditPackage`, or pass an AgentId when `UsageType=Agent`.
+// **Note**:
 //
-// - Anonymous requests support the `FillInstance` parameter. When `InstanceIds` is not explicitly provided and `FillInstance=true`, the server automatically populates the bound `JVS_COPILOT` AgentId based on the current logon `wyId`.
+// - The `InstanceIds` parameter can be omitted when `UsageType` is set to `User`. Set it to the credit package instance ID when `UsageType` is `CreditPackage`, the agent ID when `UsageType` is `Agent`, and the Wuying ID when `UsageType` is `EndUser`.
 //
-// - Time window constants: The `dayUsedCredit` statistics window is `now - ONE_DAY_MILLIS`, and the `weekUsedCredit` statistics window is `now - ONE_WEEK_MILLIS`.
+// - Anonymous requests support the `FillInstance` parameter. If `InstanceIds` is not explicitly provided and `FillInstance` is set to `true`, the server automatically populates the bound `JVS_COPILOT` agent ID based on the currently logged-in `wyId`.
+//
+// - Time window constants: The statistical window for `dayUsedCredit` is `now - ONE_DAY_MILLIS`, and the statistical window for `weekUsedCredit` is `now - ONE_WEEK_MILLIS`.
 //
 // - The consumption samples in `currentCreditConsumeList` are aggregated by hour and may have an asynchronous synchronization delay of up to 5 minutes.
 //
@@ -311,6 +317,10 @@ func (client *Client) DescribeCreditUsageInfoWithOptions(request *DescribeCredit
 
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.SceneType) {
+		query["SceneType"] = request.SceneType
 	}
 
 	if !dara.IsNil(request.UsageType) {
@@ -342,27 +352,29 @@ func (client *Client) DescribeCreditUsageInfoWithOptions(request *DescribeCredit
 
 // Summary:
 //
-// Queries credit usage details by a specified dimension such as user, credit package, or agent.
+// Queries the credit usage of users, credit packages, or agents based on a specified dimension.
 //
 // Description:
 //
 // ## Request description
 //
-// This API queries credit usage details based on the dimension specified by `UsageType` (User / CreditPackage / Agent). The response includes the total credits, remaining credits, used credits, hourly consumption samples, alert thresholds, and period quotas of the current credit package.
+// This API queries credit usage details based on the dimension specified by `UsageType` (User, CreditPackage, Agent, or EndUser). The response includes the total amount, remaining amount, and used amount of the current credit package, hourly consumption samples, alert thresholds, and periodic quotas.
 //
-// - **User**: User dimension. Returns the aggregated usage and remaining credits of all active credit packages for the current user.
+// - **User**: The user dimension. Returns the total used amount and remaining amount of all active credit packages for the current user.
 //
-// - **CreditPackage**: Credit package dimension. Returns the total credits, remaining credits, and consumption samples of a specified credit package instance.
+// - **CreditPackage**: The credit package dimension. Returns the total amount, remaining amount, and consumption samples of a specified credit package instance.
 //
-// - **Agent**: Agent dimension. Returns the cumulative usage, current period usage, quota, and alert information of a specified agent.
+// - **Agent**: The agent dimension. Returns the cumulative used amount, current period used amount, quota, and alerts for a specified agent.
 //
-// **Notes**:
+// - **EndUser**: The Wuying user dimension. Returns the shared credit usage, pay-as-you-go credit usage, and total credit usage for the current period of a Wuying user.
 //
-// - The `InstanceIds` parameter can be omitted when `UsageType=User`. Pass a credit package instance ID when `UsageType=CreditPackage`, or pass an AgentId when `UsageType=Agent`.
+// **Note**:
 //
-// - Anonymous requests support the `FillInstance` parameter. When `InstanceIds` is not explicitly provided and `FillInstance=true`, the server automatically populates the bound `JVS_COPILOT` AgentId based on the current logon `wyId`.
+// - The `InstanceIds` parameter can be omitted when `UsageType` is set to `User`. Set it to the credit package instance ID when `UsageType` is `CreditPackage`, the agent ID when `UsageType` is `Agent`, and the Wuying ID when `UsageType` is `EndUser`.
 //
-// - Time window constants: The `dayUsedCredit` statistics window is `now - ONE_DAY_MILLIS`, and the `weekUsedCredit` statistics window is `now - ONE_WEEK_MILLIS`.
+// - Anonymous requests support the `FillInstance` parameter. If `InstanceIds` is not explicitly provided and `FillInstance` is set to `true`, the server automatically populates the bound `JVS_COPILOT` agent ID based on the currently logged-in `wyId`.
+//
+// - Time window constants: The statistical window for `dayUsedCredit` is `now - ONE_DAY_MILLIS`, and the statistical window for `weekUsedCredit` is `now - ONE_WEEK_MILLIS`.
 //
 // - The consumption samples in `currentCreditConsumeList` are aggregated by hour and may have an asynchronous synchronization delay of up to 5 minutes.
 //
@@ -398,7 +410,7 @@ func (client *Client) DescribeCreditUsageInfo(request *DescribeCreditUsageInfoRe
 //
 // - Pagination parameters include `nextToken`, `maxResults`, `pageNo`, and `pageSize`, which control the number and pagination of returned results.
 //
-// - When the `resourceTypes` parameter contains invalid values or the `periods` parameter fails JSON parsing, a `SalesClientException` exception is thrown.
+// - If the `resourceTypes` parameter contains invalid values or the `periods` parameter fails JSON parsing, a `SalesClientException` exception is thrown.
 //
 // @param request - DescribeDeductionStatisticRequest
 //
@@ -474,7 +486,7 @@ func (client *Client) DescribeDeductionStatisticWithOptions(request *DescribeDed
 //
 // - Pagination parameters include `nextToken`, `maxResults`, `pageNo`, and `pageSize`, which control the number and pagination of returned results.
 //
-// - When the `resourceTypes` parameter contains invalid values or the `periods` parameter fails JSON parsing, a `SalesClientException` exception is thrown.
+// - If the `resourceTypes` parameter contains invalid values or the `periods` parameter fails JSON parsing, a `SalesClientException` exception is thrown.
 //
 // @param request - DescribeDeductionStatisticRequest
 //
@@ -492,7 +504,7 @@ func (client *Client) DescribeDeductionStatistic(request *DescribeDeductionStati
 
 // Summary:
 //
-// Retrieves information about delivery addresses.
+// Queries logistics address information.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -521,7 +533,7 @@ func (client *Client) DescribeDeliveryAddressWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// Retrieves information about delivery addresses.
+// Queries logistics address information.
 //
 // @return DescribeDeliveryAddressResponse
 func (client *Client) DescribeDeliveryAddress() (_result *DescribeDeliveryAddressResponse, _err error) {
@@ -537,11 +549,219 @@ func (client *Client) DescribeDeliveryAddress() (_result *DescribeDeliveryAddres
 
 // Summary:
 //
-// Queries the prices of Elastic Desktop Service products, including prices for new purchases, renewals, specification changes, and unsubscriptions.
+// Queries deduction group information.
 //
 // Description:
 //
-// <props="china">Before you call this operation, make sure that you fully understand the billing of Elastic Desktop Service and its [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws).
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Elastic Desktop Service.
+//
+// @param request - DescribeGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupsResponse
+func (client *Client) DescribeGroupsWithOptions(request *DescribeGroupsRequest, runtime *dara.RuntimeOptions) (_result *DescribeGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GroupResourceTypes) {
+		query["GroupResourceTypes"] = request.GroupResourceTypes
+	}
+
+	if !dara.IsNil(request.GroupType) {
+		query["GroupType"] = request.GroupType
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceIds) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.States) {
+		query["States"] = request.States
+	}
+
+	if !dara.IsNil(request.TimeUsingPeriod) {
+		query["TimeUsingPeriod"] = request.TimeUsingPeriod
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeGroups"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries deduction group information.
+//
+// Description:
+//
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Elastic Desktop Service.
+//
+// @param request - DescribeGroupsRequest
+//
+// @return DescribeGroupsResponse
+func (client *Client) DescribeGroups(request *DescribeGroupsRequest) (_result *DescribeGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeGroupsResponse{}
+	_body, _err := client.DescribeGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the renewal methods.
+//
+// Description:
+//
+// Filters instances by resource type, instance, and region, and uses paging to query the auto-renewal status.
+//
+// @param request - DescribeInstanceAutoRenewalAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAutoRenewalAttributeResponse
+func (client *Client) DescribeInstanceAutoRenewalAttributeWithOptions(request *DescribeInstanceAutoRenewalAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstanceAutoRenewalAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoRenewal) {
+		query["AutoRenewal"] = request.AutoRenewal
+	}
+
+	if !dara.IsNil(request.InstanceIdList) {
+		query["InstanceIdList"] = request.InstanceIdList
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNo) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.ResourceTypeList) {
+		query["ResourceTypeList"] = request.ResourceTypeList
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstanceAutoRenewalAttribute"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstanceAutoRenewalAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the renewal methods.
+//
+// Description:
+//
+// Filters instances by resource type, instance, and region, and uses paging to query the auto-renewal status.
+//
+// @param request - DescribeInstanceAutoRenewalAttributeRequest
+//
+// @return DescribeInstanceAutoRenewalAttributeResponse
+func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInstanceAutoRenewalAttributeRequest) (_result *DescribeInstanceAutoRenewalAttributeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInstanceAutoRenewalAttributeResponse{}
+	_body, _err := client.DescribeInstanceAutoRenewalAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the prices of Elastic Desktop Service products for order types such as new purchases, renewals, configuration changes, and unsubscriptions.
+//
+// Description:
+//
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Elastic Desktop Service.
 //
 // @param request - DescribeMultiPriceRequest
 //
@@ -597,11 +817,11 @@ func (client *Client) DescribeMultiPriceWithOptions(request *DescribeMultiPriceR
 
 // Summary:
 //
-// Queries the prices of Elastic Desktop Service products, including prices for new purchases, renewals, specification changes, and unsubscriptions.
+// Queries the prices of Elastic Desktop Service products for order types such as new purchases, renewals, configuration changes, and unsubscriptions.
 //
 // Description:
 //
-// <props="china">Before you call this operation, make sure that you fully understand the billing of Elastic Desktop Service and its [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws).
+// <props="china">Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?#/gws/detail/gws) of Elastic Desktop Service.
 //
 // @param request - DescribeMultiPriceRequest
 //
@@ -619,7 +839,7 @@ func (client *Client) DescribeMultiPrice(request *DescribeMultiPriceRequest) (_r
 
 // Summary:
 //
-// Queries the deduction details of a core-hour package.
+// Queries the deduction details of core-hour packages.
 //
 // @param request - DescribePackageDeductionsRequest
 //
@@ -634,12 +854,56 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AgentType) {
+		query["AgentType"] = request.AgentType
+	}
+
+	if !dara.IsNil(request.AgentTypes) {
+		query["AgentTypes"] = request.AgentTypes
+	}
+
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ConsumeWyId) {
+		query["ConsumeWyId"] = request.ConsumeWyId
+	}
+
+	if !dara.IsNil(request.ConsumeWyIds) {
+		query["ConsumeWyIds"] = request.ConsumeWyIds
+	}
+
+	if !dara.IsNil(request.DeductionRequestId) {
+		query["DeductionRequestId"] = request.DeductionRequestId
+	}
+
+	if !dara.IsNil(request.DeductionTypes) {
+		query["DeductionTypes"] = request.DeductionTypes
+	}
+
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
 	}
 
+	if !dara.IsNil(request.GroupResourceTypes) {
+		query["GroupResourceTypes"] = request.GroupResourceTypes
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InstanceIdType) {
+		query["InstanceIdType"] = request.InstanceIdType
+	}
+
 	if !dara.IsNil(request.InstanceIds) {
 		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
 	}
 
 	if !dara.IsNil(request.PackageIds) {
@@ -662,8 +926,20 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 		query["ResourceTypes"] = request.ResourceTypes
 	}
 
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.RunIdList) {
+		query["RunIdList"] = request.RunIdList
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WyId) {
+		query["WyId"] = request.WyId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -691,7 +967,7 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 
 // Summary:
 //
-// Queries the deduction details of a core-hour package.
+// Queries the deduction details of core-hour packages.
 //
 // @param request - DescribePackageDeductionsRequest
 //
@@ -713,19 +989,19 @@ func (client *Client) DescribePackageDeductions(request *DescribePackageDeductio
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation supports GET and POST methods.
+// - This operation supports the GET and POST methods.
 //
-// - The `periods` parameter is in JSON array format. Each element is a `PeriodParam` object that contains the `periodUnit` and `baseTime` fields.
+// - The periods parameter is in JSON array format. Each element is a PeriodParam object that contains the periodUnit and baseTime fields.
 //
-// - The `resourceTypes` parameter is in JSON array format and contains multiple resource type strings.
+// - The resourceTypes parameter is in JSON array format and contains multiple resource type strings.
 //
-// - The `startTime` and `endTime` parameters are in timestamp format and specify the time range for the query.
+// - The startTime and endTime parameters are in timestamp format and specify the time range for the query.
 //
-// - Pagination parameters include `nextToken`, `maxResults`, `pageNo`, and `pageSize`, which control the number of returned results and pagination.
+// - The pagination parameters include nextToken, maxResults, pageNo, and pageSize, which are used to control the number of returned results and pagination.
 //
-// - When the `resourceTypes` parameter contains invalid values or the `periods` parameter fails JSON parsing, a `SalesClientException` exception is thrown.
+// - If the resourceTypes parameter contains invalid values or the JSON parsing of the periods parameter fails, a SalesClientException is thrown.
 //
 // @param request - DescribeRunIdDeductionsRequest
 //
@@ -756,6 +1032,18 @@ func (client *Client) DescribeRunIdDeductionsWithOptions(request *DescribeRunIdD
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.ConsumeWyId) {
+		query["ConsumeWyId"] = request.ConsumeWyId
+	}
+
+	if !dara.IsNil(request.ConsumeWyIds) {
+		query["ConsumeWyIds"] = request.ConsumeWyIds
+	}
+
+	if !dara.IsNil(request.DeductionRequestId) {
+		query["DeductionRequestId"] = request.DeductionRequestId
+	}
+
 	if !dara.IsNil(request.DeductionTypes) {
 		query["DeductionTypes"] = request.DeductionTypes
 	}
@@ -776,6 +1064,10 @@ func (client *Client) DescribeRunIdDeductionsWithOptions(request *DescribeRunIdD
 		query["GroupSeparator"] = request.GroupSeparator
 	}
 
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
 	if !dara.IsNil(request.InstanceIdType) {
 		query["InstanceIdType"] = request.InstanceIdType
 	}
@@ -786,6 +1078,10 @@ func (client *Client) DescribeRunIdDeductionsWithOptions(request *DescribeRunIdD
 
 	if !dara.IsNil(request.MaxResults) {
 		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
 	}
 
 	if !dara.IsNil(request.NextToken) {
@@ -810,6 +1106,14 @@ func (client *Client) DescribeRunIdDeductionsWithOptions(request *DescribeRunIdD
 
 	if !dara.IsNil(request.ResourceTypes) {
 		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	if !dara.IsNil(request.RunId) {
+		query["RunId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.RunIdList) {
+		query["RunIdList"] = request.RunIdList
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -849,19 +1153,19 @@ func (client *Client) DescribeRunIdDeductionsWithOptions(request *DescribeRunIdD
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This operation supports GET and POST methods.
+// - This operation supports the GET and POST methods.
 //
-// - The `periods` parameter is in JSON array format. Each element is a `PeriodParam` object that contains the `periodUnit` and `baseTime` fields.
+// - The periods parameter is in JSON array format. Each element is a PeriodParam object that contains the periodUnit and baseTime fields.
 //
-// - The `resourceTypes` parameter is in JSON array format and contains multiple resource type strings.
+// - The resourceTypes parameter is in JSON array format and contains multiple resource type strings.
 //
-// - The `startTime` and `endTime` parameters are in timestamp format and specify the time range for the query.
+// - The startTime and endTime parameters are in timestamp format and specify the time range for the query.
 //
-// - Pagination parameters include `nextToken`, `maxResults`, `pageNo`, and `pageSize`, which control the number of returned results and pagination.
+// - The pagination parameters include nextToken, maxResults, pageNo, and pageSize, which are used to control the number of returned results and pagination.
 //
-// - When the `resourceTypes` parameter contains invalid values or the `periods` parameter fails JSON parsing, a `SalesClientException` exception is thrown.
+// - If the resourceTypes parameter contains invalid values or the JSON parsing of the periods parameter fails, a SalesClientException is thrown.
 //
 // @param request - DescribeRunIdDeductionsRequest
 //
@@ -904,6 +1208,10 @@ func (client *Client) ModifyInstancePropertiesWithOptions(request *ModifyInstanc
 
 	if !dara.IsNil(request.Key) {
 		query["Key"] = request.Key
+	}
+
+	if !dara.IsNil(request.Properties) {
+		query["Properties"] = request.Properties
 	}
 
 	if !dara.IsNil(request.ResourceType) {
@@ -957,21 +1265,21 @@ func (client *Client) ModifyInstanceProperties(request *ModifyInstanceProperties
 
 // Summary:
 //
-// Sets the credit quota for specified Agents.
+// Sets the credit usage quota for a specified Agent.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// This operation sets the credit quota for one or more Agents of a specific type.
+// You can use this API operation to set the credit usage quota for a specific type of Agent. Batch setting of quotas for multiple Agents is supported.
 //
-// ### Usage notes
+// ### Before you begin
 //
-// - The `AgentType` parameter specifies the type of Agent to which the quota applies, such as `JVSClaw` or `OpenClaw`.
+// - The `AgentType` parameter specifies the type of Agent for which you want to set the quota, such as `JVSClaw` or `OpenClaw`.
 //
-// - The `AgentIds` parameter is an array of up to 100 Agent IDs.
+// - The `AgentIds` parameter is an array that can contain up to 100 Agent IDs.
 //
-// - The `CreditQuota` parameter specifies the credit quota for each Agent.
+// - The `CreditQuota` parameter specifies the credit usage quota for each Agent.
 //
 // ### Examples
 //
@@ -1004,6 +1312,10 @@ func (client *Client) SetAgentCreditQuotaWithOptions(request *SetAgentCreditQuot
 		query["CreditQuota"] = request.CreditQuota
 	}
 
+	if !dara.IsNil(request.SceneType) {
+		query["SceneType"] = request.SceneType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1029,21 +1341,21 @@ func (client *Client) SetAgentCreditQuotaWithOptions(request *SetAgentCreditQuot
 
 // Summary:
 //
-// Sets the credit quota for specified Agents.
+// Sets the credit usage quota for a specified Agent.
 //
 // Description:
 //
-// ## Description
+// ## Operation description
 //
-// This operation sets the credit quota for one or more Agents of a specific type.
+// You can use this API operation to set the credit usage quota for a specific type of Agent. Batch setting of quotas for multiple Agents is supported.
 //
-// ### Usage notes
+// ### Before you begin
 //
-// - The `AgentType` parameter specifies the type of Agent to which the quota applies, such as `JVSClaw` or `OpenClaw`.
+// - The `AgentType` parameter specifies the type of Agent for which you want to set the quota, such as `JVSClaw` or `OpenClaw`.
 //
-// - The `AgentIds` parameter is an array of up to 100 Agent IDs.
+// - The `AgentIds` parameter is an array that can contain up to 100 Agent IDs.
 //
-// - The `CreditQuota` parameter specifies the credit quota for each Agent.
+// - The `CreditQuota` parameter specifies the credit usage quota for each Agent.
 //
 // ### Examples
 //

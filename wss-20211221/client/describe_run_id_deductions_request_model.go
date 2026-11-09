@@ -17,6 +17,12 @@ type iDescribeRunIdDeductionsRequest interface {
 	GetAliUid() *int64
 	SetBizType(v string) *DescribeRunIdDeductionsRequest
 	GetBizType() *string
+	SetConsumeWyId(v string) *DescribeRunIdDeductionsRequest
+	GetConsumeWyId() *string
+	SetConsumeWyIds(v []*string) *DescribeRunIdDeductionsRequest
+	GetConsumeWyIds() []*string
+	SetDeductionRequestId(v string) *DescribeRunIdDeductionsRequest
+	GetDeductionRequestId() *string
 	SetDeductionTypes(v []*string) *DescribeRunIdDeductionsRequest
 	GetDeductionTypes() []*string
 	SetEndTime(v int64) *DescribeRunIdDeductionsRequest
@@ -27,12 +33,16 @@ type iDescribeRunIdDeductionsRequest interface {
 	GetGroupResourceTypes() []*string
 	SetGroupSeparator(v bool) *DescribeRunIdDeductionsRequest
 	GetGroupSeparator() *bool
+	SetInstanceId(v string) *DescribeRunIdDeductionsRequest
+	GetInstanceId() *string
 	SetInstanceIdType(v string) *DescribeRunIdDeductionsRequest
 	GetInstanceIdType() *string
 	SetInstanceIds(v []*string) *DescribeRunIdDeductionsRequest
 	GetInstanceIds() []*string
 	SetMaxResults(v int32) *DescribeRunIdDeductionsRequest
 	GetMaxResults() *int32
+	SetModel(v string) *DescribeRunIdDeductionsRequest
+	GetModel() *string
 	SetNextToken(v string) *DescribeRunIdDeductionsRequest
 	GetNextToken() *string
 	SetPackageIds(v []*string) *DescribeRunIdDeductionsRequest
@@ -45,6 +55,10 @@ type iDescribeRunIdDeductionsRequest interface {
 	GetResourceType() *string
 	SetResourceTypes(v []*string) *DescribeRunIdDeductionsRequest
 	GetResourceTypes() []*string
+	SetRunId(v string) *DescribeRunIdDeductionsRequest
+	GetRunId() *string
+	SetRunIdList(v []*string) *DescribeRunIdDeductionsRequest
+	GetRunIdList() []*string
 	SetStartTime(v int64) *DescribeRunIdDeductionsRequest
 	GetStartTime() *int64
 	SetWyId(v string) *DescribeRunIdDeductionsRequest
@@ -52,12 +66,13 @@ type iDescribeRunIdDeductionsRequest interface {
 }
 
 type DescribeRunIdDeductionsRequest struct {
-	// The agent type: `CREDIT_PACKAGE` / `JVS_CLAW` / `OPEN_CLAW` / `JVS_COPILOT`.
+	// The agent type. Valid values: CREDIT_PACKAGE, JVS_CLAW, OPEN_CLAW, and JVS_COPILOT.
 	//
 	// example:
 	//
 	// JVSCopilot、JVSClaw、OpenClaw
-	AgentType  *string   `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The list of agent types.
 	AgentTypes []*string `json:"AgentTypes,omitempty" xml:"AgentTypes,omitempty" type:"Repeated"`
 	// The Alibaba Cloud UID.
 	//
@@ -71,29 +86,51 @@ type DescribeRunIdDeductionsRequest struct {
 	//
 	// ENTERPRISE、BUSINESS
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The deduction types. Do not specify this parameter for non-knowledge base scenarios.
-	DeductionTypes []*string `json:"DeductionTypes,omitempty" xml:"DeductionTypes,omitempty" type:"Repeated"`
-	// The end time of the period.
+	// The consumption WyId.
 	//
 	// example:
 	//
-	// Millisecond timestamp: 1785205179000
-	EndTime            *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	GroupByFields      []*string `json:"GroupByFields,omitempty" xml:"GroupByFields,omitempty" type:"Repeated"`
+	// 2892766fb8521756
+	ConsumeWyId *string `json:"ConsumeWyId,omitempty" xml:"ConsumeWyId,omitempty"`
+	// The Wuying user IDs. You can obtain the IDs by calling the GetLoginToken logon operation. The returned parameter is WyId.
+	ConsumeWyIds []*string `json:"ConsumeWyIds,omitempty" xml:"ConsumeWyIds,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// uuid
+	DeductionRequestId *string `json:"DeductionRequestId,omitempty" xml:"DeductionRequestId,omitempty"`
+	// The deduction types. Do not specify this parameter for non-knowledge base scenarios.
+	DeductionTypes []*string `json:"DeductionTypes,omitempty" xml:"DeductionTypes,omitempty" type:"Repeated"`
+	// The end time of the query. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1785205179000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of additional grouping fields when aggregating by runId, such as model to distinguish between different models.
+	GroupByFields []*string `json:"GroupByFields,omitempty" xml:"GroupByFields,omitempty" type:"Repeated"`
+	// The list of grouped resource types.
 	GroupResourceTypes []*string `json:"GroupResourceTypes,omitempty" xml:"GroupResourceTypes,omitempty" type:"Repeated"`
-	// Specifies whether to group results by deduction type.
+	// Specifies whether to group the results by deduction type.
 	//
 	// example:
 	//
 	// false
 	GroupSeparator *bool `json:"GroupSeparator,omitempty" xml:"GroupSeparator,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// mdp-0c62ayep0nk4v****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance ID type. Do not specify this parameter for non-knowledge base scenarios.
 	//
 	// example:
 	//
 	// KnowledgeSpaceId、AgentId
 	InstanceIdType *string `json:"InstanceIdType,omitempty" xml:"InstanceIdType,omitempty"`
-	// The list of cloud computer IDs. If this field has a value, the `PackageIds` field is required.
+	// The list of cloud computer IDs. If this field is specified, the PackageIds field is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The number of entries per page.
 	//
@@ -101,7 +138,13 @@ type DescribeRunIdDeductionsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the `nextToken` value from the previous response.
+	// The model name.
+	//
+	// example:
+	//
+	// qwen-3.8
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The pagination token. Leave this parameter empty for the first request. For subsequent requests, use the nextToken value returned in the previous response.
 	//
 	// example:
 	//
@@ -109,13 +152,13 @@ type DescribeRunIdDeductionsRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The list of core-hour package IDs in JSON format.
 	PackageIds []*string `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page for a paged query.
+	// The Settings for the number of entries per page during paging in a paged query.
 	//
 	// example:
 	//
@@ -125,17 +168,30 @@ type DescribeRunIdDeductionsRequest struct {
 	//
 	// example:
 	//
-	// Enterprise Edition: CreditPackage, Commercial Edition: BusinessCreditPackage
+	// Enterprise Edition: CreditPackage, Business Edition: BusinessCreditPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The list of resource types in JSON array format.
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The start time.
+	// The run ID.
 	//
 	// example:
 	//
-	// Millisecond timestamp: 1785205179000
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	WyId      *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
+	// t-xxx
+	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// The list of run IDs.
+	RunIdList []*string `json:"RunIdList,omitempty" xml:"RunIdList,omitempty" type:"Repeated"`
+	// The start time of the query. The value is a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1785205179000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The globally unique ID of the Wuying user.
+	//
+	// example:
+	//
+	// wy-123456****
+	WyId *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
 }
 
 func (s DescribeRunIdDeductionsRequest) String() string {
@@ -162,6 +218,18 @@ func (s *DescribeRunIdDeductionsRequest) GetBizType() *string {
 	return s.BizType
 }
 
+func (s *DescribeRunIdDeductionsRequest) GetConsumeWyId() *string {
+	return s.ConsumeWyId
+}
+
+func (s *DescribeRunIdDeductionsRequest) GetConsumeWyIds() []*string {
+	return s.ConsumeWyIds
+}
+
+func (s *DescribeRunIdDeductionsRequest) GetDeductionRequestId() *string {
+	return s.DeductionRequestId
+}
+
 func (s *DescribeRunIdDeductionsRequest) GetDeductionTypes() []*string {
 	return s.DeductionTypes
 }
@@ -182,6 +250,10 @@ func (s *DescribeRunIdDeductionsRequest) GetGroupSeparator() *bool {
 	return s.GroupSeparator
 }
 
+func (s *DescribeRunIdDeductionsRequest) GetInstanceId() *string {
+	return s.InstanceId
+}
+
 func (s *DescribeRunIdDeductionsRequest) GetInstanceIdType() *string {
 	return s.InstanceIdType
 }
@@ -192,6 +264,10 @@ func (s *DescribeRunIdDeductionsRequest) GetInstanceIds() []*string {
 
 func (s *DescribeRunIdDeductionsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *DescribeRunIdDeductionsRequest) GetModel() *string {
+	return s.Model
 }
 
 func (s *DescribeRunIdDeductionsRequest) GetNextToken() *string {
@@ -216,6 +292,14 @@ func (s *DescribeRunIdDeductionsRequest) GetResourceType() *string {
 
 func (s *DescribeRunIdDeductionsRequest) GetResourceTypes() []*string {
 	return s.ResourceTypes
+}
+
+func (s *DescribeRunIdDeductionsRequest) GetRunId() *string {
+	return s.RunId
+}
+
+func (s *DescribeRunIdDeductionsRequest) GetRunIdList() []*string {
+	return s.RunIdList
 }
 
 func (s *DescribeRunIdDeductionsRequest) GetStartTime() *int64 {
@@ -246,6 +330,21 @@ func (s *DescribeRunIdDeductionsRequest) SetBizType(v string) *DescribeRunIdDedu
 	return s
 }
 
+func (s *DescribeRunIdDeductionsRequest) SetConsumeWyId(v string) *DescribeRunIdDeductionsRequest {
+	s.ConsumeWyId = &v
+	return s
+}
+
+func (s *DescribeRunIdDeductionsRequest) SetConsumeWyIds(v []*string) *DescribeRunIdDeductionsRequest {
+	s.ConsumeWyIds = v
+	return s
+}
+
+func (s *DescribeRunIdDeductionsRequest) SetDeductionRequestId(v string) *DescribeRunIdDeductionsRequest {
+	s.DeductionRequestId = &v
+	return s
+}
+
 func (s *DescribeRunIdDeductionsRequest) SetDeductionTypes(v []*string) *DescribeRunIdDeductionsRequest {
 	s.DeductionTypes = v
 	return s
@@ -271,6 +370,11 @@ func (s *DescribeRunIdDeductionsRequest) SetGroupSeparator(v bool) *DescribeRunI
 	return s
 }
 
+func (s *DescribeRunIdDeductionsRequest) SetInstanceId(v string) *DescribeRunIdDeductionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *DescribeRunIdDeductionsRequest) SetInstanceIdType(v string) *DescribeRunIdDeductionsRequest {
 	s.InstanceIdType = &v
 	return s
@@ -283,6 +387,11 @@ func (s *DescribeRunIdDeductionsRequest) SetInstanceIds(v []*string) *DescribeRu
 
 func (s *DescribeRunIdDeductionsRequest) SetMaxResults(v int32) *DescribeRunIdDeductionsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeRunIdDeductionsRequest) SetModel(v string) *DescribeRunIdDeductionsRequest {
+	s.Model = &v
 	return s
 }
 
@@ -313,6 +422,16 @@ func (s *DescribeRunIdDeductionsRequest) SetResourceType(v string) *DescribeRunI
 
 func (s *DescribeRunIdDeductionsRequest) SetResourceTypes(v []*string) *DescribeRunIdDeductionsRequest {
 	s.ResourceTypes = v
+	return s
+}
+
+func (s *DescribeRunIdDeductionsRequest) SetRunId(v string) *DescribeRunIdDeductionsRequest {
+	s.RunId = &v
+	return s
+}
+
+func (s *DescribeRunIdDeductionsRequest) SetRunIdList(v []*string) *DescribeRunIdDeductionsRequest {
+	s.RunIdList = v
 	return s
 }
 

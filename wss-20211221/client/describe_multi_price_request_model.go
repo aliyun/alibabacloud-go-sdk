@@ -28,13 +28,13 @@ type DescribeMultiPriceRequest struct {
 	//
 	// create
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The package code. You do not need to specify this parameter if the product is not a package.
+	// The package code. You do not need to specify this parameter for non-package types.
 	//
 	// example:
 	//
 	// pacakge
 	PackageCode *string `json:"PackageCode,omitempty" xml:"PackageCode,omitempty"`
-	// The user ID of resource ownership in the reselling pattern. You do not need to specify this parameter if the product is not in the reselling pattern.
+	// The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter for non-reseller patterns.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeMultiPriceRequest) Validate() error {
 }
 
 type DescribeMultiPriceRequestOrderItems struct {
-	// The quantity to purchase.
+	// The purchase quantity.
 	//
 	// example:
 	//
@@ -108,23 +108,31 @@ type DescribeMultiPriceRequestOrderItems struct {
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The list of product modules.
 	Components []*DescribeMultiPriceRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The extended properties.
+	// The extended data of the order item, which is passed as a JSON string. The structure varies based on the order scenario. For the billing method change scenario, you can pass the instance and the list of target billing methods. If no extended data is required, you can leave this parameter empty.
+	//
+	// example:
+	//
+	// [{"regionId":"cn-hangzhou","resourceType":"Desktop","chargeType":"POSTPAY","instanceId":"ecd-6wye9optu0kag****"}]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The subscription duration. Valid values:
+	// The subscription period. Valid values:
+	//
+	// - When `PeriodUnit` is set to `Year`: 1, 2, and 3.
+	//
+	// - When `PeriodUnit` is set to `Month`: 1, 2, 3, and 6.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription period.
 	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion.
 	//
 	// example:
 	//
@@ -134,12 +142,24 @@ type DescribeMultiPriceRequestOrderItems struct {
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// The resource type.
 	//
+	// > This parameter is case-sensitive. Make sure that the spelling is correct.
+	//
 	// example:
 	//
 	// DurationPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The period of the savings plan.
+	// The subscription period of the savings plan. For example, 1Year indicates one year.
+	//
+	// example:
+	//
+	// 1Year
 	SavingPlanPeriod *string `json:"SavingPlanPeriod,omitempty" xml:"SavingPlanPeriod,omitempty"`
+	// The unified expiration date, which can be a day from the 1st to the 28th of a month. If you do not specify this parameter, the instance is renewed in the standard way.
+	//
+	// example:
+	//
+	// 15
+	UnifiedExpireDay *int32 `json:"UnifiedExpireDay,omitempty" xml:"UnifiedExpireDay,omitempty"`
 }
 
 func (s DescribeMultiPriceRequestOrderItems) String() string {
@@ -188,6 +208,10 @@ func (s *DescribeMultiPriceRequestOrderItems) GetResourceType() *string {
 
 func (s *DescribeMultiPriceRequestOrderItems) GetSavingPlanPeriod() *string {
 	return s.SavingPlanPeriod
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) GetUnifiedExpireDay() *int32 {
+	return s.UnifiedExpireDay
 }
 
 func (s *DescribeMultiPriceRequestOrderItems) SetAmount(v int32) *DescribeMultiPriceRequestOrderItems {
@@ -240,6 +264,11 @@ func (s *DescribeMultiPriceRequestOrderItems) SetSavingPlanPeriod(v string) *Des
 	return s
 }
 
+func (s *DescribeMultiPriceRequestOrderItems) SetUnifiedExpireDay(v int32) *DescribeMultiPriceRequestOrderItems {
+	s.UnifiedExpireDay = &v
+	return s
+}
+
 func (s *DescribeMultiPriceRequestOrderItems) Validate() error {
 	if s.Components != nil {
 		for _, item := range s.Components {
@@ -261,6 +290,50 @@ type DescribeMultiPriceRequestOrderItemsComponents struct {
 	// RegionId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the module.
+	//
+	// The following section describes the sample values and valid values of each key for the Enterprise Edition monthly package:
+	//
+	// - RegionId: cn-shanghai
+	//
+	// - InstanceType: eds.enterprise_office.4c8g
+	//
+	// - DurationType (hours): Valid values:
+	//
+	//    - 120
+	//
+	//    - 250
+	//
+	// - OsType: Valid values:
+	//
+	//    - Windows
+	//
+	//    - Linux
+	//
+	// - RootDiskSize (GiB): 80
+	//
+	// - RootDiskCategory: Valid values:
+	//
+	//    - cloud_efficiency (ultra cloud disk)
+	//
+	//    - cloud_auto (ESSD AutoPL cloud disk)
+	//
+	//    - cloud_essd (enhanced standard SSD, supported only by specific instance types)
+	//
+	// - RootPerformanceLevel: Valid values:
+	//
+	//    - PL0
+	//
+	//    - PL1
+	//
+	//    - PL2
+	//
+	//    - PL3
+	//
+	// - DataDiskSize (GiB): Same as RootDiskSize.
+	//
+	// - DataDiskCategory: Same as RootDiskCategory.
+	//
+	// - DataPerformanceLevel: Same as RootPerformanceLevel.
 	//
 	// example:
 	//

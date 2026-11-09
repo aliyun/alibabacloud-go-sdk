@@ -18,17 +18,15 @@ type iDescribeDeliveryAddressResponseBody interface {
 }
 
 type DescribeDeliveryAddressResponseBody struct {
-	// The address list.
+	// The list of addresses.
 	Addresses []*DescribeDeliveryAddressResponseBodyAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// The request ID. Alibaba Cloud generates this unique identifier for each request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 72481C12-69AB-5CE1-8A35-A8EFA921****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of addresses.
-	//
-	// > Up to 20 addresses are supported.
+	// The total number of addresses. A maximum of 20 addresses are supported.
 	//
 	// example:
 	//
@@ -85,29 +83,29 @@ func (s *DescribeDeliveryAddressResponseBody) Validate() error {
 }
 
 type DescribeDeliveryAddressResponseBodyAddresses struct {
-	// The area.
+	// The district.
 	Area *DescribeDeliveryAddressResponseBodyAddressesArea `json:"Area,omitempty" xml:"Area,omitempty" type:"Struct"`
 	// The city.
 	City *DescribeDeliveryAddressResponseBodyAddressesCity `json:"City,omitempty" xml:"City,omitempty" type:"Struct"`
-	// The contact name.
+	// The contact.
 	//
 	// example:
 	//
 	// Alice
 	Contacts *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
-	// Indicates whether this is the default address.
+	// Indicates whether the address is the default address.
 	//
 	// example:
 	//
 	// true
 	DefaultAddress *bool `json:"DefaultAddress,omitempty" xml:"DefaultAddress,omitempty"`
-	// The detailed address, which should include the street name and house number.
+	// The detailed address, which must be accurate down to the street and building number.
 	//
 	// example:
 	//
-	// 灯彩街1008号云园区2号楼测试中心
+	// Test Center, Building 2, Cloud Park, No. 1008 Dengcai Street
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The mobile number.
+	// The mobile phone number.
 	//
 	// example:
 	//
@@ -239,17 +237,17 @@ func (s *DescribeDeliveryAddressResponseBodyAddresses) Validate() error {
 }
 
 type DescribeDeliveryAddressResponseBodyAddressesArea struct {
-	// The area ID.
+	// The district ID.
 	//
 	// example:
 	//
 	// 33****
 	AreaId *int64 `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
-	// The area name.
+	// The district name.
 	//
 	// example:
 	//
-	// 西湖区
+	// Xihu District
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
 }
 
@@ -294,7 +292,7 @@ type DescribeDeliveryAddressResponseBodyAddressesCity struct {
 	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 }
 
@@ -329,9 +327,7 @@ func (s *DescribeDeliveryAddressResponseBodyAddressesCity) Validate() error {
 }
 
 type DescribeDeliveryAddressResponseBodyAddressesProvince struct {
-	// The province ID. For more information, see [China regions, countries and territories codes](https://help.aliyun.com/document_detail/167926.html).
-	//
-	// For example, **110000*	- represents Beijing and **120000*	- represents Tianjin.
+	// The province ID. For more information, see [Codes for regions, countries, and areas in China](https://help.aliyun.com/document_detail/167926.html). For example, **110000*	- indicates Beijing, and **120000*	- indicates Tianjin.
 	//
 	// example:
 	//
@@ -341,7 +337,7 @@ type DescribeDeliveryAddressResponseBodyAddressesProvince struct {
 	//
 	// example:
 	//
-	// 浙江省
+	// Zhejiang Province
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 }
 
@@ -386,7 +382,7 @@ type DescribeDeliveryAddressResponseBodyAddressesTown struct {
 	//
 	// example:
 	//
-	// 三墩镇
+	// Sandun Town
 	TownName *string `json:"TownName,omitempty" xml:"TownName,omitempty"`
 }
 

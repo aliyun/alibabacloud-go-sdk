@@ -17,10 +17,12 @@ type iSetAgentCreditQuotaRequest interface {
 	GetBizType() *string
 	SetCreditQuota(v int32) *SetAgentCreditQuotaRequest
 	GetCreditQuota() *int32
+	SetSceneType(v string) *SetAgentCreditQuotaRequest
+	GetSceneType() *string
 }
 
 type SetAgentCreditQuotaRequest struct {
-	// A list of Agent IDs.
+	// The list of Agent IDs.
 	AgentIds []*string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty" type:"Repeated"`
 	// The Agent type.
 	//
@@ -40,6 +42,18 @@ type SetAgentCreditQuotaRequest struct {
 	//
 	// 200
 	CreditQuota *int32 `json:"CreditQuota,omitempty" xml:"CreditQuota,omitempty"`
+	// The operator scenarios type. Valid values:
+	//
+	// - If this parameter is not specified or is set to NaturalMonthlyOwn: calendar month exclusive.
+	//
+	// - JzYearlyShare: Jiaozi yearly shared.
+	//
+	// - JzYearlyOwn: Jiaozi yearly exclusive.
+	//
+	// example:
+	//
+	// NaturalMonthlyOwn
+	SceneType *string `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 }
 
 func (s SetAgentCreditQuotaRequest) String() string {
@@ -66,6 +80,10 @@ func (s *SetAgentCreditQuotaRequest) GetCreditQuota() *int32 {
 	return s.CreditQuota
 }
 
+func (s *SetAgentCreditQuotaRequest) GetSceneType() *string {
+	return s.SceneType
+}
+
 func (s *SetAgentCreditQuotaRequest) SetAgentIds(v []*string) *SetAgentCreditQuotaRequest {
 	s.AgentIds = v
 	return s
@@ -83,6 +101,11 @@ func (s *SetAgentCreditQuotaRequest) SetBizType(v string) *SetAgentCreditQuotaRe
 
 func (s *SetAgentCreditQuotaRequest) SetCreditQuota(v int32) *SetAgentCreditQuotaRequest {
 	s.CreditQuota = &v
+	return s
+}
+
+func (s *SetAgentCreditQuotaRequest) SetSceneType(v string) *SetAgentCreditQuotaRequest {
+	s.SceneType = &v
 	return s
 }
 

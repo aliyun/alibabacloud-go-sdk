@@ -36,7 +36,7 @@ type DescribePackageDeductionsResponseBody struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page in a paged query. Settings the number of rows per page for paging.
+	// The number of entries per page in the Settings for paging during a paged query.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribePackageDeductionsResponseBody struct {
 	//
 	// 833C4D2C-09C7-5CE6-8159-06758B964970
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of deduction detail records returned.
+	// The total number of core-hour package deduction details queried.
 	//
 	// example:
 	//
@@ -66,7 +66,11 @@ type DescribePackageDeductionsResponseBody struct {
 	//
 	// 100000
 	TotalUsedTime *int64 `json:"TotalUsedTime,omitempty" xml:"TotalUsedTime,omitempty"`
-	// The total usage duration in decimal format.
+	// The total usage calculated by using a precision factor, rounded to four decimal places. This field uses the same metering criteria as UsedTimeDecimal in the details.
+	//
+	// example:
+	//
+	// 10.0000
 	TotalUsedTimeDecimal *string `json:"TotalUsedTimeDecimal,omitempty" xml:"TotalUsedTimeDecimal,omitempty"`
 }
 
@@ -164,39 +168,65 @@ func (s *DescribePackageDeductionsResponseBody) Validate() error {
 }
 
 type DescribePackageDeductionsResponseBodyDeductions struct {
+	// The agent type.
+	//
+	// example:
+	//
+	// OpenClaw
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The number of vCPUs.
 	//
 	// example:
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The cloud computer ID.
+	// The request ID.
+	//
+	// example:
+	//
+	// r-xxxx
+	DeductionRequestId *string `json:"DeductionRequestId,omitempty" xml:"DeductionRequestId,omitempty"`
+	// The deduction types.
+	//
+	// example:
+	//
+	// KNOWLEDGE_SPACE/CONVESATION
+	DeductionType *string `json:"DeductionType,omitempty" xml:"DeductionType,omitempty"`
+	// The Cloud Desktop ID.
 	//
 	// example:
 	//
 	// ecd-6wye9optu0kag****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer.
+	// The name of the cloud desktop.
 	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The specifications of the cloud computer.
+	// The specifications of the cloud desktop.
 	//
 	// example:
 	//
 	// eds.enterprise_office.4c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The end time of the period.
+	// The end time of the deduction record in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. For records aggregated by hour, the format can be yyyy-MM-ddTHH:mmZ with seconds omitted.
 	//
 	// example:
 	//
-	// 2024-07-31T03:00Z
+	// 2024-07-31T03:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The group resource type.
+	// The group resource type to which the deduction record belongs.
+	//
+	// example:
+	//
+	// GROUP_CORE_PACKAGE
 	GroupResourceType *string `json:"GroupResourceType,omitempty" xml:"GroupResourceType,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// A specific instance ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The status of the core-hour package.
 	//
@@ -204,41 +234,73 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	//
 	// Deleted
 	InstanceState *string `json:"InstanceState,omitempty" xml:"InstanceState,omitempty"`
-	// The instance type.
+	// The instance specifications for the deduction.
+	//
+	// example:
+	//
+	// ec.agentbay-pc
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The memory size. Unit: MB.
+	// The memory. Unit: MB.
 	//
 	// example:
 	//
 	// 8192
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The operating system type of the cloud computer.
+	// The model.
+	//
+	// example:
+	//
+	// qwen-3.7
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The operating system type of the cloud desktop.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The region ID of the cloud computer.
+	// The ID of the credit package.
+	//
+	// example:
+	//
+	// crp-xxx
+	PackageId *string `json:"PackageId,omitempty" xml:"PackageId,omitempty"`
+	// The region ID of the cloud desktop.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the first resource in the deduction item.
+	//
+	// example:
+	//
+	// ecd-xxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
 	//
 	// example:
 	//
 	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The session ID.
-	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The start time of the period.
+	// The ID of the session associated with the deduction record.
 	//
 	// example:
 	//
-	// 2024-07-31T02:00Z
+	// ai-123456****
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The start time of the deduction record in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. For records aggregated by hour, the format can be yyyy-MM-ddTHH:mmZ with seconds omitted.
+	//
+	// example:
+	//
+	// 2024-07-31T02:00:00Z
 	StaTime *string `json:"StaTime,omitempty" xml:"StaTime,omitempty"`
-	// The number of cores deducted in this period.
+	// The summary.
+	//
+	// example:
+	//
+	// Summary of the AI query
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// The number of cores deducted.
 	//
 	// example:
 	//
@@ -250,9 +312,17 @@ type DescribePackageDeductionsResponseBodyDeductions struct {
 	//
 	// 3600
 	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The usage duration in decimal format.
+	// The usage calculated from UsedTime by using a precision factor, rounded to four decimal places. This field is returned only for applicable resource types and must be read based on the metering criteria of the corresponding resource.
+	//
+	// example:
+	//
+	// 1.0000
 	UsedTimeDecimal *string `json:"UsedTimeDecimal,omitempty" xml:"UsedTimeDecimal,omitempty"`
-	// The usage duration after proportional scaling.
+	// The usage that includes the deduction coefficient. In scenarios where deduction is based on duration, the value is measured in seconds and returned as an integer.
+	//
+	// example:
+	//
+	// 3600
 	UsedTimeWithScale *int64 `json:"UsedTimeWithScale,omitempty" xml:"UsedTimeWithScale,omitempty"`
 }
 
@@ -264,8 +334,20 @@ func (s DescribePackageDeductionsResponseBodyDeductions) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetAgentType() *string {
+	return s.AgentType
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetCpu() *int32 {
 	return s.Cpu
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetDeductionRequestId() *string {
+	return s.DeductionRequestId
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetDeductionType() *string {
+	return s.DeductionType
 }
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetDesktopId() *string {
@@ -304,12 +386,24 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) GetMemory() *int64 {
 	return s.Memory
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetModel() *string {
+	return s.Model
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetOsType() *string {
 	return s.OsType
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetPackageId() *string {
+	return s.PackageId
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetResourceId() *string {
+	return s.ResourceId
 }
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetResourceType() *string {
@@ -322,6 +416,10 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) GetSessionId() *string
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetStaTime() *string {
 	return s.StaTime
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) GetSummary() *string {
+	return s.Summary
 }
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) GetUsedCoreTime() *float32 {
@@ -340,8 +438,23 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) GetUsedTimeWithScale()
 	return s.UsedTimeWithScale
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetAgentType(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.AgentType = &v
+	return s
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetCpu(v int32) *DescribePackageDeductionsResponseBodyDeductions {
 	s.Cpu = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetDeductionRequestId(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.DeductionRequestId = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetDeductionType(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.DeductionType = &v
 	return s
 }
 
@@ -390,13 +503,28 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) SetMemory(v int64) *De
 	return s
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetModel(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.Model = &v
+	return s
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetOsType(v string) *DescribePackageDeductionsResponseBodyDeductions {
 	s.OsType = &v
 	return s
 }
 
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetPackageId(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.PackageId = &v
+	return s
+}
+
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetRegionId(v string) *DescribePackageDeductionsResponseBodyDeductions {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetResourceId(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.ResourceId = &v
 	return s
 }
 
@@ -412,6 +540,11 @@ func (s *DescribePackageDeductionsResponseBodyDeductions) SetSessionId(v string)
 
 func (s *DescribePackageDeductionsResponseBodyDeductions) SetStaTime(v string) *DescribePackageDeductionsResponseBodyDeductions {
 	s.StaTime = &v
+	return s
+}
+
+func (s *DescribePackageDeductionsResponseBodyDeductions) SetSummary(v string) *DescribePackageDeductionsResponseBodyDeductions {
+	s.Summary = &v
 	return s
 }
 

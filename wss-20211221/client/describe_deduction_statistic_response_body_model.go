@@ -66,7 +66,7 @@ type DescribeDeductionStatisticResponseBodyData struct {
 	AvailableCorePackages []*DescribeDeductionStatisticResponseBodyDataAvailableCorePackages `json:"AvailableCorePackages,omitempty" xml:"AvailableCorePackages,omitempty" type:"Repeated"`
 	// The deduction details.
 	Deductions []*DescribeDeductionStatisticResponseBodyDataDeductions `json:"Deductions,omitempty" xml:"Deductions,omitempty" type:"Repeated"`
-	// **The usage list.**
+	// **The list of usage records.**
 	Usages []*DescribeDeductionStatisticResponseBodyDataUsages `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Repeated"`
 }
 
@@ -143,19 +143,19 @@ type DescribeDeductionStatisticResponseBodyDataAvailableCorePackages struct {
 	//
 	// 1568857911493620
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The creation time.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-01-01 00:00:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end time.
+	// The end time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-12-31 23:59:59
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The expiration time.
+	// The expiration time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type DescribeDeductionStatisticResponseBodyDataAvailableCorePackages struct {
 	//
 	// CoreHour
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start time.
+	// The start time in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -364,7 +364,7 @@ type DescribeDeductionStatisticResponseBodyDataDeductions struct {
 	//
 	// 7000
 	ConsumeSecond *int64 `json:"ConsumeSecond,omitempty" xml:"ConsumeSecond,omitempty"`
-	// The deduction date.
+	// The deduction date in the YYYY-MM-DD format.
 	//
 	// example:
 	//

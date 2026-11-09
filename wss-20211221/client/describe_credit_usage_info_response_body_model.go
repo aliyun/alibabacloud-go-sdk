@@ -22,7 +22,7 @@ type DescribeCreditUsageInfoResponseBody struct {
 	//
 	// 68BD3312-53D8-123E-BB32-1A9F25E07A03
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of usage data.
+	// The business data array.
 	UsageInfoList []*DescribeCreditUsageInfoResponseBodyUsageInfoList `json:"UsageInfoList,omitempty" xml:"UsageInfoList,omitempty" type:"Repeated"`
 }
 
@@ -68,7 +68,7 @@ func (s *DescribeCreditUsageInfoResponseBody) Validate() error {
 type DescribeCreditUsageInfoResponseBodyUsageInfoList struct {
 	// The usage data details.
 	UsageInfo *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo `json:"UsageInfo,omitempty" xml:"UsageInfo,omitempty" type:"Struct"`
-	// The usage primary key. When `UsageType=User`, this is the `aliUid`. When `UsageType=CreditPackage`, this is the credit package instance ID. When `UsageType=Agent`, this is the `AgentId`.
+	// The primary key for usage. The value is `aliUid` when `UsageType` is `User`, the credit package instance ID when `UsageType` is `CreditPackage`, and the agent ID when `UsageType` is `Agent`.
 	//
 	// example:
 	//
@@ -112,70 +112,119 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoList) Validate() error {
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
-	AvailableAmount   *int32    `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// The number of currently available instances for the reported resources.
+	//
+	// example:
+	//
+	// 9976.00
+	AvailableAmount *int32 `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
+	// The list of contact group names.
 	ContactGroupNames []*string `json:"ContactGroupNames,omitempty" xml:"ContactGroupNames,omitempty" type:"Repeated"`
 	// The hourly consumption samples of the current credit package.
-	CreditTrendList            []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList `json:"CreditTrendList,omitempty" xml:"CreditTrendList,omitempty" type:"Repeated"`
-	CurrentInstanceExpiredTime *string                                                                     `json:"CurrentInstanceExpiredTime,omitempty" xml:"CurrentInstanceExpiredTime,omitempty"`
-	// The instance ID of the current active credit package.
+	CreditTrendList []*DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList `json:"CreditTrendList,omitempty" xml:"CreditTrendList,omitempty" type:"Repeated"`
+	// The time when the current instance expires, in the `YYYY-MM-DD HH:mm:ss` format.
+	//
+	// example:
+	//
+	// 2026-12-02 00:00:00
+	CurrentInstanceExpiredTime *string `json:"CurrentInstanceExpiredTime,omitempty" xml:"CurrentInstanceExpiredTime,omitempty"`
+	// The instance ID of the currently active credit package.
 	//
 	// example:
 	//
 	// cp-inst-001
 	CurrentInstanceId *string `json:"CurrentInstanceId,omitempty" xml:"CurrentInstanceId,omitempty"`
-	// The remaining credits of the current active credit package.
+	// The remaining amount of the currently active credit package.
 	//
 	// example:
 	//
-	// Current period remaining credits
+	// Remaining credits for the current period
 	CurrentRemainCredit *int64 `json:"CurrentRemainCredit,omitempty" xml:"CurrentRemainCredit,omitempty"`
-	// The total credits of the current active credit package.
+	// The total amount of the currently active credit package.
 	//
 	// example:
 	//
-	// Current period credit quota
+	// Credit quota for the current period
 	CurrentTotalCredit *int64 `json:"CurrentTotalCredit,omitempty" xml:"CurrentTotalCredit,omitempty"`
-	// The used credits of the current active credit package.
+	// The used amount of the currently active credit package.
 	//
 	// example:
 	//
-	// Current period credits consumed
+	// Credits consumed in the current period
 	CurrentUsedCredit *int64 `json:"CurrentUsedCredit,omitempty" xml:"CurrentUsedCredit,omitempty"`
-	// The credit usage in the last 1 day.
+	// The credit usage in the last day.
 	//
 	// example:
 	//
 	// Credits consumed in the last day
-	DayUsedCredit   *int64  `json:"DayUsedCredit,omitempty" xml:"DayUsedCredit,omitempty"`
+	DayUsedCredit *int64 `json:"DayUsedCredit,omitempty" xml:"DayUsedCredit,omitempty"`
+	// The last trigger time.
+	//
+	// example:
+	//
+	// 2026-05-02 10:10:10
 	LastTriggeredAt *string `json:"LastTriggeredAt,omitempty" xml:"LastTriggeredAt,omitempty"`
+	// The credit quota for the current period.
+	//
+	// example:
+	//
+	// 2000
+	PeriodCreditQuota *int64 `json:"PeriodCreditQuota,omitempty" xml:"PeriodCreditQuota,omitempty"`
+	// The pay-as-you-go credits consumed in the current period.
+	//
+	// example:
+	//
+	// 240
+	PeriodPayGoUsedCredit *int64 `json:"PeriodPayGoUsedCredit,omitempty" xml:"PeriodPayGoUsedCredit,omitempty"`
+	// The shared credits consumed in the current period.
+	//
+	// example:
+	//
+	// 120
+	PeriodSharedUsedCredit *int64 `json:"PeriodSharedUsedCredit,omitempty" xml:"PeriodSharedUsedCredit,omitempty"`
 	// The shared credit quota in the current active period.
 	//
 	// example:
 	//
 	// 300
 	PeriodTotalCredit *int64 `json:"PeriodTotalCredit,omitempty" xml:"PeriodTotalCredit,omitempty"`
+	// The total credits consumed in the current period.
+	//
+	// example:
+	//
+	// 360
+	PeriodTotalUsedCredit *int64 `json:"PeriodTotalUsedCredit,omitempty" xml:"PeriodTotalUsedCredit,omitempty"`
 	// The shared credit usage in the current active period.
 	//
 	// example:
 	//
 	// 120
 	PeriodUsedCredit *int64 `json:"PeriodUsedCredit,omitempty" xml:"PeriodUsedCredit,omitempty"`
-	// The cumulative remaining credits.
+	// The cumulative remaining billable credits.
 	//
 	// example:
 	//
 	// Remaining credits
-	RemainCredit     *int64                                                                     `json:"RemainCredit,omitempty" xml:"RemainCredit,omitempty"`
+	RemainCredit *int64 `json:"RemainCredit,omitempty" xml:"RemainCredit,omitempty"`
+	// The remaining credit information.
 	RemainCreditInfo *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo `json:"RemainCreditInfo,omitempty" xml:"RemainCreditInfo,omitempty" type:"Struct"`
-	// The quota used today.
+	// The used quota for today.
+	//
+	// example:
+	//
+	// 200
 	TodayUsed *string `json:"TodayUsed,omitempty" xml:"TodayUsed,omitempty"`
-	// The total cumulative credits.
+	// The cumulative total credits.
 	//
 	// example:
 	//
 	// Credit quota
 	TotalCredit *int64 `json:"TotalCredit,omitempty" xml:"TotalCredit,omitempty"`
 	// The cumulative used quota.
+	//
+	// example:
+	//
+	// 100
 	TotalUsed *string `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
 	// The cumulative credit usage.
 	//
@@ -183,13 +232,13 @@ type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo struct {
 	//
 	// Total credits consumed
 	TotalUsedCredit *int64 `json:"TotalUsedCredit,omitempty" xml:"TotalUsedCredit,omitempty"`
-	// The alert threshold percentage (0–100).
+	// The alert threshold percentage, ranging from 0 to 100.
 	//
 	// example:
 	//
 	// 80
 	WarnPercent *int32 `json:"WarnPercent,omitempty" xml:"WarnPercent,omitempty"`
-	// The credit usage in the last 1 week.
+	// The credit usage in the last week.
 	//
 	// example:
 	//
@@ -245,8 +294,24 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetLastTrigg
 	return s.LastTriggeredAt
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodCreditQuota() *int64 {
+	return s.PeriodCreditQuota
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodPayGoUsedCredit() *int64 {
+	return s.PeriodPayGoUsedCredit
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodSharedUsedCredit() *int64 {
+	return s.PeriodSharedUsedCredit
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodTotalCredit() *int64 {
 	return s.PeriodTotalCredit
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodTotalUsedCredit() *int64 {
+	return s.PeriodTotalUsedCredit
 }
 
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) GetPeriodUsedCredit() *int64 {
@@ -335,8 +400,28 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetLastTrigg
 	return s
 }
 
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodCreditQuota(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.PeriodCreditQuota = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodPayGoUsedCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.PeriodPayGoUsedCredit = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodSharedUsedCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.PeriodSharedUsedCredit = &v
+	return s
+}
+
 func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodTotalCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
 	s.PeriodTotalCredit = &v
+	return s
+}
+
+func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) SetPeriodTotalUsedCredit(v int64) *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo {
+	s.PeriodTotalUsedCredit = &v
 	return s
 }
 
@@ -404,13 +489,13 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo) Validate() e
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList struct {
-	// The time point in the format `yyyy-MM-dd HH` (accurate to the hour).
+	// The time point in the `yyyy-MM-dd HH` format, accurate to the hour.
 	//
 	// example:
 	//
 	// 2026-05-02 10
 	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
-	// The number of credits consumed in this hour.
+	// The number of credits consumed in the hour.
 	//
 	// example:
 	//
@@ -449,8 +534,18 @@ func (s *DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendLis
 }
 
 type DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo struct {
+	// The number of instances being deducted.
+	//
+	// example:
+	//
+	// 23
 	DeductingAmount *int32 `json:"DeductingAmount,omitempty" xml:"DeductingAmount,omitempty"`
-	PendingAmount   *int32 `json:"PendingAmount,omitempty" xml:"PendingAmount,omitempty"`
+	// The number of instances pending to take effect.
+	//
+	// example:
+	//
+	// 24
+	PendingAmount *int32 `json:"PendingAmount,omitempty" xml:"PendingAmount,omitempty"`
 }
 
 func (s DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoRemainCreditInfo) String() string {
