@@ -36,27 +36,27 @@ type DescribeBotRuleLabelsRequest struct {
 	//
 	// waf_v3prepaid_public_cn-53y4******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of bot rule tag to query.
+	// The type of the bot rule label to query.
 	//
 	// example:
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
+	// The number of entries to return per paging in a paged query. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a next page exists, this field returns a value.
+	// The pagination token for the next page. This parameter is returned only if a next page exists.
 	//
-	// > If this parameter returns a value, a next page exists. Use the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter is returned, it indicates that there is a next page. You can use the returned **NextToken*	- as a request parameter to obtain the data of the next page until no value is returned, which indicates that all data is obtained.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -72,7 +72,7 @@ type DescribeBotRuleLabelsRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The bot management protection scenario type.
+	// The type of the bot management protection scenario.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeFlowChartResponseBody interface {
 }
 
 type DescribeFlowChartResponseBody struct {
-	// The traffic statistics.
+	// The traffic statistics information.
 	FlowChart []*DescribeFlowChartResponseBodyFlowChart `json:"FlowChart,omitempty" xml:"FlowChart,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,73 +66,73 @@ func (s *DescribeFlowChartResponseBody) Validate() error {
 }
 
 type DescribeFlowChartResponseBodyFlowChart struct {
-	// The number of requests that are blocked by custom access control list (ACL) rules.
+	// The number of requests blocked by custom ACL rules.
 	//
 	// example:
 	//
 	// 0
 	AclCustomBlockSum *int64 `json:"AclCustomBlockSum,omitempty" xml:"AclCustomBlockSum,omitempty"`
-	// The number of requests that are monitored by custom ACL rules.
+	// The number of monitored hits on custom ACL rules.
 	//
 	// example:
 	//
 	// 0
 	AclCustomReportsSum *int64 `json:"AclCustomReportsSum,omitempty" xml:"AclCustomReportsSum,omitempty"`
-	// The number of requests that are blocked by scan protection rules.
+	// The number of requests blocked by scan protection rules.
 	//
 	// example:
 	//
 	// 0
 	AntiScanBlockSum *int64 `json:"AntiScanBlockSum,omitempty" xml:"AntiScanBlockSum,omitempty"`
-	// The number of requests that are blocked by bot management rules.
+	// The number of requests blocked by bot management rules.
 	//
 	// example:
 	//
 	// 0
 	AntibotBlockSum *int64 `json:"AntibotBlockSum,omitempty" xml:"AntibotBlockSum,omitempty"`
-	// The number of requests that are monitored by bot management rules.
+	// The number of monitored hits on bot management rules.
 	//
 	// example:
 	//
 	// 0
 	AntibotReportSum *string `json:"AntibotReportSum,omitempty" xml:"AntibotReportSum,omitempty"`
-	// The number of requests that are monitored by scan protection rules.
+	// The number of monitored hits on scan protection rules.
 	//
 	// example:
 	//
 	// 0
 	AntiscanReportsSum *int64 `json:"AntiscanReportsSum,omitempty" xml:"AntiscanReportsSum,omitempty"`
-	// The number of requests that are blocked by the IP address blacklist.
+	// The number of requests blocked by the IP blacklist.
 	//
 	// example:
 	//
 	// 0
 	BlacklistBlockSum *string `json:"BlacklistBlockSum,omitempty" xml:"BlacklistBlockSum,omitempty"`
-	// The number of requests that are monitored by the IP address blacklist.
+	// The number of monitored hits on the IP blacklist.
 	//
 	// example:
 	//
 	// 0
 	BlacklistReportsSum *int64 `json:"BlacklistReportsSum,omitempty" xml:"BlacklistReportsSum,omitempty"`
-	// The number of requests that are blocked by custom HTTP flood protection rules.
+	// The number of requests blocked by custom HTTP flood mitigation rules.
 	//
 	// example:
 	//
 	// 0
 	CcCustomBlockSum *int64 `json:"CcCustomBlockSum,omitempty" xml:"CcCustomBlockSum,omitempty"`
-	// The number of requests that are monitored by custom HTTP flood protection rules.
+	// The number of monitored hits on custom HTTP flood mitigation rules.
 	//
 	// example:
 	//
 	// 0
 	CcCustomReportsSum *int64 `json:"CcCustomReportsSum,omitempty" xml:"CcCustomReportsSum,omitempty"`
-	// The number of requests that are blocked by system HTTP flood protection rules.
+	// The number of requests blocked by built-in HTTP flood mitigation rules.
 	//
 	// example:
 	//
 	// 0
 	CcSystemBlocksSum *int64 `json:"CcSystemBlocksSum,omitempty" xml:"CcSystemBlocksSum,omitempty"`
-	// The number of requests that are monitored by system HTTP flood protection rules.
+	// The number of monitored hits on built-in HTTP flood mitigation rules.
 	//
 	// example:
 	//
@@ -144,13 +144,13 @@ type DescribeFlowChartResponseBodyFlowChart struct {
 	//
 	// 2932
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The total volume of inbound traffic. Unit: bytes.
+	// The total inbound traffic to WAF.
 	//
 	// example:
 	//
 	// 121645464
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The time sequence number, sorted in chronological order.
+	// The time index, sorted in chronological order.
 	//
 	// example:
 	//
@@ -162,49 +162,49 @@ type DescribeFlowChartResponseBodyFlowChart struct {
 	//
 	// 2932
 	MaxPv *int64 `json:"MaxPv,omitempty" xml:"MaxPv,omitempty"`
-	// The total volume of outbound traffic. Unit: bytes.
+	// The total outbound traffic from WAF.
 	//
 	// example:
 	//
 	// 1200540464
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The number of requests that are blocked by peak traffic throttling rules.
+	// The number of requests blocked by peak traffic throttling rules.
 	//
 	// example:
 	//
 	// 0
 	RatelimitBlockSum *int64 `json:"RatelimitBlockSum,omitempty" xml:"RatelimitBlockSum,omitempty"`
-	// The number of requests that are monitored by peak traffic throttling rules.
+	// The number of monitored hits on peak traffic throttling rules.
 	//
 	// example:
 	//
 	// 0
 	RatelimitReportSum *int64 `json:"RatelimitReportSum,omitempty" xml:"RatelimitReportSum,omitempty"`
-	// The number of requests that are blocked by Location Blacklist rules.
+	// The number of requests blocked by area blocking rules.
 	//
 	// example:
 	//
 	// 0
 	RegionBlockBlocksSum *int64 `json:"RegionBlockBlocksSum,omitempty" xml:"RegionBlockBlocksSum,omitempty"`
-	// The number of requests that are monitored by Location Blacklist rules.
+	// The number of monitored hits on area blocking rules.
 	//
 	// example:
 	//
 	// 0
 	RegionBlockReportsSum *int64 `json:"RegionBlockReportsSum,omitempty" xml:"RegionBlockReportsSum,omitempty"`
-	// The total number of requests from bots.
+	// The total number of bot requests.
 	//
 	// example:
 	//
 	// 1110
 	RobotCount *int64 `json:"RobotCount,omitempty" xml:"RobotCount,omitempty"`
-	// The number of requests that are blocked by basic protection rules.
+	// The number of requests blocked by basic protection rules.
 	//
 	// example:
 	//
 	// 0
 	WafBlockSum *int64 `json:"WafBlockSum,omitempty" xml:"WafBlockSum,omitempty"`
-	// The number of requests that are monitored by basic protection rules.
+	// The number of monitored hits on basic protection rules.
 	//
 	// example:
 	//

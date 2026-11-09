@@ -22,19 +22,21 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the specified resource groups or members. Valid values:
+	// Specifies whether to remove and delete all tags from the specified resource group or resource directory member. Valid values:
 	//
-	// - false (default)
+	// - false: no.
 	//
-	// - true
+	// - true: yes.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+	// The region where the Web Application Firewall (WAF) instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
 	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -44,11 +46,11 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 50 resource IDs.
+	// The list of resource IDs. You can specify up to 50 items.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	// The resource type. Valid value: ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +58,7 @@ type UntagResourcesRequest struct {
 	//
 	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys. You can specify up to 20 tag keys.
+	// The list of tag keys. You can specify up to 20 items.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

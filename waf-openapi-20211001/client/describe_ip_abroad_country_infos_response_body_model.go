@@ -22,27 +22,27 @@ type iDescribeIpAbroadCountryInfosResponseBody interface {
 }
 
 type DescribeIpAbroadCountryInfosResponseBody struct {
-	// The list of country information outside China.
+	// The list of overseas country information.
 	AbroadInfos []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfos `json:"AbroadInfos,omitempty" xml:"AbroadInfos,omitempty" type:"Repeated"`
-	// The number of entries per page in a paged query. Valid values: 1 to 500. Default value: 20.
+	// The number of entries to return on each page for a paging query. Valid values: 1 to 500. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 66A98669-CC6E-4F3E-80A6-3014697B11AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -123,19 +123,19 @@ type DescribeIpAbroadCountryInfosResponseBodyAbroadInfos struct {
 	//
 	// North America
 	Continent *string `json:"Continent,omitempty" xml:"Continent,omitempty"`
-	// The ID of the country.
+	// The country ID.
 	//
 	// example:
 	//
 	// US
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The name of the country.
+	// The country name.
 	//
 	// example:
 	//
 	// United States
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// The list of region information outside China.
+	// The list of overseas region information.
 	Regions []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 
@@ -197,13 +197,13 @@ func (s *DescribeIpAbroadCountryInfosResponseBodyAbroadInfos) Validate() error {
 }
 
 type DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions struct {
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// US-CA
 	AbroadRegionId *string `json:"AbroadRegionId,omitempty" xml:"AbroadRegionId,omitempty"`
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//

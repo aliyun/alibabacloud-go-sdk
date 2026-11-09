@@ -36,7 +36,7 @@ type iDescribeApisecRulesRequest interface {
 type DescribeApisecRulesRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type DescribeApisecRulesRequest struct {
 	//
 	// waf_elasticity-cn-0x***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the returned rules. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -56,23 +56,23 @@ type DescribeApisecRulesRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The level of the rule.
 	//
-	// For threat detection (risk) and security events (event), valid values are:
+	// For risk detection (risk) and security events (event), valid values:
 	//
-	// - **high**: important
+	// - **high**: High risk.
 	//
-	// - **medium**: medium
+	// - **medium**: Medium risk.
 	//
-	// - **low**: low
+	// - **low**: Low risk.
 	//
-	// For sensitive data (sensitive_word), valid values are:
+	// For sensitive data (sensitive_word), valid values:
 	//
-	// - **S1**: S1
+	// - **S1**: S1 level.
 	//
-	// - **S2**: S2
+	// - **S2**: S2 level.
 	//
-	// - **S3**: S3
+	// - **S3**: S3 level.
 	//
-	// - **S4**: S4
+	// - **S4**: S4 level.
 	//
 	// example:
 	//
@@ -86,37 +86,37 @@ type DescribeApisecRulesRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The source of the rule. Valid values:
 	//
-	// - **custom**: custom
+	// - **custom**: Custom.
 	//
-	// - **default**: built-in
+	// - **default**: Built-in.
 	//
 	// example:
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number to return in a paged query. Default value: **1**, which indicates the first page of paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -124,33 +124,33 @@ type DescribeApisecRulesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The enabling status of the rule. Valid values:
 	//
-	// - **1**: enabled
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled
+	// - **0**: shutdown.
 	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// - **risk**: threat detection
+	// - **risk**: Risk detection.
 	//
-	// - **event**: security event
+	// - **event**: Security events.
 	//
-	// - **sensitive_word**: sensitive data
+	// - **sensitive_word**: Sensitive data.
 	//
-	// - **auth_flag**: authentication credential
+	// - **auth_flag**: Authentication credentials.
 	//
-	// - **api_tag**: business purpose
+	// - **api_tag**: Business purpose.
 	//
-	// - **desensitization**: data masking
+	// - **desensitization**: Data masking.
 	//
-	// - **whitelist**: whitelist
+	// - **whitelist**: Whitelist.
 	//
-	// - **recognition**: API
+	// - **recognition**: API identification.
 	//
-	// - **offline_api**: lifecycle management
+	// - **offline_api**: Lifecycle management.
 	//
 	// This parameter is required.
 	//

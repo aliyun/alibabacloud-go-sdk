@@ -26,15 +26,15 @@ type iDescribeFlowChartRequest interface {
 }
 
 type DescribeFlowChartRequest struct {
-	// The end of the time range to query. This value is a UNIX timestamp. Unit: seconds. If you do not specify this parameter, the current time is used as the end time.
+	// The end time of the query. Unit: seconds. If you do not specify this parameter, the end time is the current time.
 	//
 	// example:
 	//
 	// 1665386280
 	EndTimestamp *string `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -66,13 +66,13 @@ type DescribeFlowChartRequest struct {
 	//
 	// www.aliyundoc.com
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. Unit: seconds.
 	//
 	// This parameter is required.
 	//

@@ -28,7 +28,7 @@ type DescribeChargeResultResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of calculated Credits.
+	// The total number of calculated credits.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *DescribeChargeResultResponseBody) Validate() error {
 }
 
 type DescribeChargeResultResponseBodyModuleDetails struct {
-	// The number of Credits for the pricing module.
+	// The number of credits for the billing module.
 	//
 	// example:
 	//
 	// 0
 	Credit *float64 `json:"Credit,omitempty" xml:"Credit,omitempty"`
-	// The pricing module identifier.
+	// The billing module code.
 	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The number of SeCUs for the pricing module.
+	// The number of SeCUs for the billing module.
 	//
 	// example:
 	//

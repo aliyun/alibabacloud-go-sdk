@@ -22,15 +22,15 @@ type iDescribeBotRuleLabelsResponseBody interface {
 }
 
 type DescribeBotRuleLabelsResponseBody struct {
-	// The number of entries per page in a paged query. Valid values: 1 to 200. Default value: 20.
+	// The number of entries to return per paging in a paged query. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a next page exists, this field returns a value.
+	// The pagination token for the next page. This parameter is returned only if a next page exists.
 	//
-	// > If this parameter returns a value, a next page exists. Use the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter is returned, it indicates that there is a next page. You can use the returned **NextToken*	- as a request parameter to obtain the data of the next page until no value is returned, which indicates that all data is obtained.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type DescribeBotRuleLabelsResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of bot management rule tags.
+	// The list of bot management rule labels.
 	RuleLabels []*DescribeBotRuleLabelsResponseBodyRuleLabels `json:"RuleLabels,omitempty" xml:"RuleLabels,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -119,19 +119,19 @@ func (s *DescribeBotRuleLabelsResponseBody) Validate() error {
 }
 
 type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
-	// The crawler behavior corresponding to the rule tag. Valid values:
+	// The bot behavior corresponding to the rule label.
 	//
-	// - **malicious**: malicious crawler.
+	// - **malicious**: malicious bots.
 	//
-	// - **suspicious**: suspected crawler.
+	// - **suspicious**: suspicious bots.
 	//
-	// - **normal**: normal crawler.
+	// - **normal**: normal bots.
 	//
 	// example:
 	//
 	// malicious
 	BotBehavior *string `json:"BotBehavior,omitempty" xml:"BotBehavior,omitempty"`
-	// The default action. Valid values:
+	// The default action.
 	//
 	// - **block**: block.
 	//
@@ -155,23 +155,23 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// {"crawlerStatusMap":{"360":1,"bytedance":1}}
 	DefaultConfig *string `json:"DefaultConfig,omitempty" xml:"DefaultConfig,omitempty"`
-	// The default status of the tag rule. Valid values:
+	// The default status of the label rule.
 	//
-	// - **1**: enabled.
+	// - **1**: The rule is enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: The rule is disabled.
 	//
 	// example:
 	//
 	// 1
 	DefaultStatus *int32 `json:"DefaultStatus,omitempty" xml:"DefaultStatus,omitempty"`
-	// The bot management rule tag.
+	// The bot management rule label.
 	//
 	// example:
 	//
 	// malicious_crawler_python
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The tag status. Valid values:
+	// The status of the label.
 	//
 	// - **online**: online.
 	//
@@ -181,17 +181,21 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// online
 	LabelStatus *string `json:"LabelStatus,omitempty" xml:"LabelStatus,omitempty"`
-	// The type of the bot rule tag.
+	// The type of the bot rule label.
 	//
 	// example:
 	//
 	// human_machine_challenge
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
-	// The collection of bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
+	// The bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
 	//
-	// - **web**: Web protection scenario.
+	// - **web**: the web protection scenario.
 	//
-	// - **app**: App protection scenario.
+	// - **app**: the app protection scenario.
+	//
+	// - **agentic_web**: the Agentic Web protection scenario.
+	//
+	// - **agentic_app**: the Agentic App protection scenario.
 	//
 	// example:
 	//

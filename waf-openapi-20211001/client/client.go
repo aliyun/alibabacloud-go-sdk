@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("waf-openapi")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":            dara.String("wafopenapi.cn-hangzhou.aliyuncs.com"),
@@ -158,7 +166,7 @@ func (client *Client) AddAddress(request *AddAddressRequest) (_result *AddAddres
 
 // Summary:
 //
-// Modifies the resource group to which a protected object belongs.
+// Modifies the resource group of a protected object.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -218,7 +226,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Modifies the resource group to which a protected object belongs.
+// Modifies the resource group of a protected object.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -758,7 +766,7 @@ func (client *Client) CreateCloudResource(request *CreateCloudResourceRequest) (
 
 // Summary:
 //
-// Adds an extension certificate for a cloud native mode resource.
+// Adds an extension certificate for cloud native mode.
 //
 // @param request - CreateCloudResourceExtensionCertRequest
 //
@@ -818,7 +826,7 @@ func (client *Client) CreateCloudResourceExtensionCertWithOptions(request *Creat
 
 // Summary:
 //
-// Adds an extension certificate for a cloud native mode resource.
+// Adds an extension certificate for cloud native mode.
 //
 // @param request - CreateCloudResourceExtensionCertRequest
 //
@@ -2510,7 +2518,7 @@ func (client *Client) DeleteCloudResource(request *DeleteCloudResourceRequest) (
 
 // Summary:
 //
-// Deletes an extension certificate for a cloud service connected in cloud native mode.
+// Deletes the extended certificate for a resource onboarded in cloud native mode.
 //
 // @param request - DeleteCloudResourceExtensionCertRequest
 //
@@ -2570,7 +2578,7 @@ func (client *Client) DeleteCloudResourceExtensionCertWithOptions(request *Delet
 
 // Summary:
 //
-// Deletes an extension certificate for a cloud service connected in cloud native mode.
+// Deletes the extended certificate for a resource onboarded in cloud native mode.
 //
 // @param request - DeleteCloudResourceExtensionCertRequest
 //
@@ -3478,7 +3486,7 @@ func (client *Client) DeleteMemberAccount(request *DeleteMemberAccountRequest) (
 
 // Summary:
 //
-// Queries abnormal cloud resources added in cloud native mode.
+// Queries abnormal cloud native mode resources.
 //
 // @param request - DescribeAbnormalCloudResourcesRequest
 //
@@ -3530,7 +3538,7 @@ func (client *Client) DescribeAbnormalCloudResourcesWithOptions(request *Describ
 
 // Summary:
 //
-// Queries abnormal cloud resources added in cloud native mode.
+// Queries abnormal cloud native mode resources.
 //
 // @param request - DescribeAbnormalCloudResourcesRequest
 //
@@ -5150,7 +5158,7 @@ func (client *Client) DescribeApisecProtectionResources(request *DescribeApisecP
 
 // Summary:
 //
-// Queries the rules of an API security policy.
+// Queries the configuration rules for API security policies.
 //
 // @param request - DescribeApisecRulesRequest
 //
@@ -5234,7 +5242,7 @@ func (client *Client) DescribeApisecRulesWithOptions(request *DescribeApisecRule
 
 // Summary:
 //
-// Queries the rules of an API security policy.
+// Queries the configuration rules for API security policies.
 //
 // @param request - DescribeApisecRulesRequest
 //
@@ -6022,7 +6030,7 @@ func (client *Client) DescribeBotAppKey(request *DescribeBotAppKeyRequest) (_res
 
 // Summary:
 //
-// Queries the tag information of bot management rules.
+// Queries the bot management rule label information.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -6090,7 +6098,7 @@ func (client *Client) DescribeBotRuleLabelsWithOptions(request *DescribeBotRuleL
 
 // Summary:
 //
-// Queries the tag information of bot management rules.
+// Queries the bot management rule label information.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -6342,7 +6350,7 @@ func (client *Client) DescribeChargeModule(request *DescribeChargeModuleRequest)
 
 // Summary:
 //
-// Queries the pricing results of WAF pricing modules.
+// Queries the billing results of WAF billing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -6406,7 +6414,7 @@ func (client *Client) DescribeChargeResultWithOptions(request *DescribeChargeRes
 
 // Summary:
 //
-// Queries the pricing results of WAF pricing modules.
+// Queries the billing results of WAF billing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -9024,7 +9032,7 @@ func (client *Client) DescribeElasticBills(request *DescribeElasticBillsRequest)
 
 // Summary:
 //
-// Queries the traffic statistics.
+// Queries traffic statistics information.
 //
 // @param request - DescribeFlowChartRequest
 //
@@ -9092,7 +9100,7 @@ func (client *Client) DescribeFlowChartWithOptions(request *DescribeFlowChartReq
 
 // Summary:
 //
-// Queries the traffic statistics.
+// Queries traffic statistics information.
 //
 // @param request - DescribeFlowChartRequest
 //
@@ -9270,7 +9278,7 @@ func (client *Client) DescribeFlowTopUrl(request *DescribeFlowTopUrlRequest) (_r
 
 // Summary:
 //
-// Queries statistics information about assets detected by the basic API security feature.
+// Queries the asset statistics information for basic API security detection.
 //
 // @param request - DescribeFreeUserAssetCountRequest
 //
@@ -9322,7 +9330,7 @@ func (client *Client) DescribeFreeUserAssetCountWithOptions(request *DescribeFre
 
 // Summary:
 //
-// Queries statistics information about assets detected by the basic API security feature.
+// Queries the asset statistics information for basic API security detection.
 //
 // @param request - DescribeFreeUserAssetCountRequest
 //
@@ -9410,7 +9418,7 @@ func (client *Client) DescribeFreeUserEventCount(request *DescribeFreeUserEventC
 
 // Summary:
 //
-// Queries the types of security events for basic API security detection.
+// Queries the security event types for basic API security detection.
 //
 // @param request - DescribeFreeUserEventTypesRequest
 //
@@ -9462,7 +9470,7 @@ func (client *Client) DescribeFreeUserEventTypesWithOptions(request *DescribeFre
 
 // Summary:
 //
-// Queries the types of security events for basic API security detection.
+// Queries the security event types for basic API security detection.
 //
 // @param request - DescribeFreeUserEventTypesRequest
 //
@@ -10980,7 +10988,7 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 
 // Summary:
 //
-// Retrieves supported countries and regions outside China for IP-based region blacklist.
+// Queries the countries and areas outside China supported by the Location Blacklist.
 //
 // @param request - DescribeIpAbroadCountryInfosRequest
 //
@@ -11052,7 +11060,7 @@ func (client *Client) DescribeIpAbroadCountryInfosWithOptions(request *DescribeI
 
 // Summary:
 //
-// Retrieves supported countries and regions outside China for IP-based region blacklist.
+// Queries the countries and areas outside China supported by the Location Blacklist.
 //
 // @param request - DescribeIpAbroadCountryInfosRequest
 //
@@ -12660,7 +12668,7 @@ func (client *Client) DescribeResourcePort(request *DescribeResourcePortRequest)
 
 // Summary:
 //
-// Queries the region IDs of cloud service resources that can be added to Web Application Firewall (WAF) by using the SDK.
+// Queries the region IDs of SDK-integrated resources, primarily for ALB and MSE.
 //
 // @param request - DescribeResourceRegionIdRequest
 //
@@ -12712,7 +12720,7 @@ func (client *Client) DescribeResourceRegionIdWithOptions(request *DescribeResou
 
 // Summary:
 //
-// Queries the region IDs of cloud service resources that can be added to Web Application Firewall (WAF) by using the SDK.
+// Queries the region IDs of SDK-integrated resources, primarily for ALB and MSE.
 //
 // @param request - DescribeResourceRegionIdRequest
 //
@@ -12894,7 +12902,7 @@ func (client *Client) DescribeResponseCodeTrendGraph(request *DescribeResponseCo
 
 // Summary:
 //
-// Queries the authorization status of the service-linked role for Web Application Firewall (WAF).
+// Queries the authorization status.
 //
 // @param request - DescribeRoleAuthStatusRequest
 //
@@ -12942,7 +12950,7 @@ func (client *Client) DescribeRoleAuthStatusWithOptions(request *DescribeRoleAut
 
 // Summary:
 //
-// Queries the authorization status of the service-linked role for Web Application Firewall (WAF).
+// Queries the authorization status.
 //
 // @param request - DescribeRoleAuthStatusRequest
 //
@@ -13304,7 +13312,7 @@ func (client *Client) DescribeRuleHitsTopRuleId(request *DescribeRuleHitsTopRule
 
 // Summary:
 //
-// Queries the top 10 most frequently triggered protection rule types.
+// Queries the top 10 protection types with the most rule hits.
 //
 // @param request - DescribeRuleHitsTopTuleTypeRequest
 //
@@ -13368,7 +13376,7 @@ func (client *Client) DescribeRuleHitsTopTuleTypeWithOptions(request *DescribeRu
 
 // Summary:
 //
-// Queries the top 10 most frequently triggered protection rule types.
+// Queries the top 10 protection types with the most rule hits.
 //
 // @param request - DescribeRuleHitsTopTuleTypeRequest
 //
@@ -15332,7 +15340,7 @@ func (client *Client) DescribeUserAbnormalTrend(request *DescribeUserAbnormalTre
 
 // Summary:
 //
-// Queries user risk types and statistics related to API security in Web Application Firewall (WAF).
+// Queries API security user risk types and statistics.
 //
 // @param request - DescribeUserAbnormalTypeRequest
 //
@@ -15400,7 +15408,7 @@ func (client *Client) DescribeUserAbnormalTypeWithOptions(request *DescribeUserA
 
 // Summary:
 //
-// Queries user risk types and statistics related to API security in Web Application Firewall (WAF).
+// Queries API security user risk types and statistics.
 //
 // @param request - DescribeUserAbnormalTypeRequest
 //
@@ -17416,7 +17424,7 @@ func (client *Client) ModifyCloudResource(request *ModifyCloudResourceRequest) (
 
 // Summary:
 //
-// Modifies the certificate for a cloud native mode resource.
+// Modifies the certificates for cloud native mode.
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -17484,7 +17492,7 @@ func (client *Client) ModifyCloudResourceCertWithOptions(request *ModifyCloudRes
 
 // Summary:
 //
-// Modifies the certificate for a cloud native mode resource.
+// Modifies the certificates for cloud native mode.
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -17502,7 +17510,7 @@ func (client *Client) ModifyCloudResourceCert(request *ModifyCloudResourceCertRe
 
 // Summary:
 //
-// Modifies the default certificate for a cloud native mode resource.
+// Modifies the default certificate for cloud native mode.
 //
 // @param request - ModifyCloudResourceDefaultCertRequest
 //
@@ -17562,7 +17570,7 @@ func (client *Client) ModifyCloudResourceDefaultCertWithOptions(request *ModifyC
 
 // Summary:
 //
-// Modifies the default certificate for a cloud native mode resource.
+// Modifies the default certificate for cloud native mode.
 //
 // @param request - ModifyCloudResourceDefaultCertRequest
 //
@@ -20330,7 +20338,7 @@ func (client *Client) ModifyUserWafLogStatus(request *ModifyUserWafLogStatusRequ
 
 // Summary:
 //
-// Re-connects a cloud service to WAF. This operation is used only when the cloud native mode connection status is protection exception.
+// Re-onboards a cloud service to WAF. This operation is used only when the protection status of the cloud service in cloud native mode is abnormal.
 //
 // @param request - ReCreateCloudResourceRequest
 //
@@ -20398,7 +20406,7 @@ func (client *Client) ReCreateCloudResourceWithOptions(request *ReCreateCloudRes
 
 // Summary:
 //
-// Re-connects a cloud service to WAF. This operation is used only when the cloud native mode connection status is protection exception.
+// Re-onboards a cloud service to WAF. This operation is used only when the protection status of the cloud service in cloud native mode is abnormal.
 //
 // @param request - ReCreateCloudResourceRequest
 //
@@ -20638,7 +20646,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from resources and then deletes the tags.
+// Removes and deletes tags from one or more specified resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -20698,7 +20706,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from resources and then deletes the tags.
+// Removes and deletes tags from one or more specified resources.
 //
 // @param request - UntagResourcesRequest
 //

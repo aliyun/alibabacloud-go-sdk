@@ -20,13 +20,13 @@ type iDescribeApisecRulesResponseBody interface {
 type DescribeApisecRulesResponseBody struct {
 	// The list of rules.
 	Data []*DescribeApisecRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeApisecRulesResponseBodyData struct {
 	//
 	// 34933
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The details of the rule. The value is a string that is converted from a JSON object.
+	// The rule details, formatted as a JSON string constructed from a series of parameters.
 	//
 	// example:
 	//
@@ -111,39 +111,39 @@ type DescribeApisecRulesResponseBodyData struct {
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// - **1**: enabled
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// - **risk**: threat detection
+	// - **risk**: Risk detection.
 	//
-	// - **event**: security event
+	// - **event**: Security events.
 	//
-	// - **sensitive_word**: sensitive data
+	// - **sensitive_word**: Sensitive data.
 	//
-	// - **auth_flag**: authentication credential
+	// - **auth_flag**: Authentication credentials.
 	//
-	// - **api_tag**: business purpose
+	// - **api_tag**: Business purpose.
 	//
-	// - **desensitization**: data masking
+	// - **desensitization**: Data masking.
 	//
-	// - **whitelist**: whitelist
+	// - **whitelist**: Whitelist.
 	//
-	// - **recognition**: API.
+	// - **recognition**: API identification.
 	//
-	// - **offline_api**: lifecycle management
+	// - **offline_api**: Lifecycle management.
 	//
 	// example:
 	//
 	// risk
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the rule was updated. This value is a UNIX timestamp. Unit: seconds.
+	// The update time of the rule. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//

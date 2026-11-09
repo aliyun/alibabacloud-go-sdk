@@ -24,19 +24,19 @@ type iDescribeChargeResultRequest interface {
 }
 
 type DescribeChargeResultRequest struct {
-	// The billing cycle for the calculation. Valid values:
+	// The billing cycle. Valid values:
 	//
-	// - **Year**: Calculates the billing result for one year.
+	// - **Year**: calculates the billing result for one year
 	//
-	// - **Month**: Calculates the billing result for one month.
+	// - **Month**: calculates the billing result for one month
 	//
-	// - **Day**: Calculates the billing result for one day.
+	// - **Day**: calculates the billing result for one day
 	//
 	// example:
 	//
 	// Day
 	ChargeCycle *string `json:"ChargeCycle,omitempty" xml:"ChargeCycle,omitempty"`
-	// The list of billing modules to calculate.
+	// The list of billing modules to be calculated.
 	//
 	// This parameter is required.
 	ChargeModules []*DescribeChargeResultRequestChargeModules `json:"ChargeModules,omitempty" xml:"ChargeModules,omitempty" type:"Repeated"`
@@ -46,9 +46,9 @@ type DescribeChargeResultRequest struct {
 	//
 	// SeCU
 	ChargeUnit *string `json:"ChargeUnit,omitempty" xml:"ChargeUnit,omitempty"`
-	// The billing type of the instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - **POSTPAY**: pay-as-you-go WAF instance.
+	// - **POSTPAY**: pay-as-you-go WAF instances
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type DescribeChargeResultRequest struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
@@ -150,18 +150,24 @@ func (s *DescribeChargeResultRequest) Validate() error {
 }
 
 type DescribeChargeResultRequestChargeModules struct {
-	// The pricing module identifier.
+	// The billing module code.
 	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The usage of the pricing module.
+	// The usage of the billing module.
 	//
 	// example:
 	//
 	// 10
 	Usage *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The usage of the billing module, which supports integers and decimals. If the billing module is log storage capacity, the usage supports up to one decimal place, such as 10.5. This parameter is optional and has no default value. If this parameter is specified, it takes precedence even if the value is 0. If this parameter is not specified, Usage is used.
+	//
+	// example:
+	//
+	// 10.5
+	UsageDecimal *float64 `json:"UsageDecimal,omitempty" xml:"UsageDecimal,omitempty"`
 }
 
 func (s DescribeChargeResultRequestChargeModules) String() string {
@@ -180,6 +186,10 @@ func (s *DescribeChargeResultRequestChargeModules) GetUsage() *int64 {
 	return s.Usage
 }
 
+func (s *DescribeChargeResultRequestChargeModules) GetUsageDecimal() *float64 {
+	return s.UsageDecimal
+}
+
 func (s *DescribeChargeResultRequestChargeModules) SetModuleCode(v string) *DescribeChargeResultRequestChargeModules {
 	s.ModuleCode = &v
 	return s
@@ -187,6 +197,11 @@ func (s *DescribeChargeResultRequestChargeModules) SetModuleCode(v string) *Desc
 
 func (s *DescribeChargeResultRequestChargeModules) SetUsage(v int64) *DescribeChargeResultRequestChargeModules {
 	s.Usage = &v
+	return s
+}
+
+func (s *DescribeChargeResultRequestChargeModules) SetUsageDecimal(v float64) *DescribeChargeResultRequestChargeModules {
+	s.UsageDecimal = &v
 	return s
 }
 

@@ -16,13 +16,13 @@ type iDescribeRuleHitsTopTuleTypeResponseBody interface {
 }
 
 type DescribeRuleHitsTopTuleTypeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 45E377CE-0B04-578E-B653-EEA63CFE****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The top 10 protection rule types that were hit.
+	// The top 10 protection types with the most rule hits.
 	RuleHitsTopTuleType []*DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType `json:"RuleHitsTopTuleType,omitempty" xml:"RuleHitsTopTuleType,omitempty" type:"Repeated"`
 }
 
@@ -72,19 +72,19 @@ type DescribeRuleHitsTopTuleTypeResponseBodyRuleHitsTopTuleType struct {
 	//
 	// 698455
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The type of rule that was hit. This parameter is not returned by default, which indicates that data for all rule types is returned.
+	// The type of the rule hit by the protected object. By default, this parameter is not returned, which indicates that all rules are displayed. Valid values:
 	//
-	// - **waf**: basic protection rules.
+	// - **waf**: basic protection rule.
 	//
-	// - **blacklist**: IP address blacklist.
+	// - **blacklist**: IP blacklist.
 	//
-	// - **custom**: custom rules.
+	// - **custom**: custom rule.
 	//
-	// - **antiscan**: scan protection rules.
+	// - **antiscan**: scan protection rule.
 	//
-	// - **cc_system**: HTTP flood protection rules.
+	// - **cc_system**: HTTP flood protection rule.
 	//
-	// - **region_block**: location blacklist.
+	// - **region_block**: area blocking.
 	//
 	// - **scene**: bot management.
 	//

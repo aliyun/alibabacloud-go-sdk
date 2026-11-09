@@ -26,7 +26,7 @@ type DescribeApisecMatchedHostsResponseBody struct {
 	//
 	// 8D4CA088-F72B-5658-BD5B-ECE8B8F0C7BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//

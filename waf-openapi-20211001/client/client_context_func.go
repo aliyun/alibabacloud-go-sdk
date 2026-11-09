@@ -65,7 +65,7 @@ func (client *Client) AddAddressWithContext(ctx context.Context, request *AddAdd
 
 // Summary:
 //
-// Modifies the resource group to which a protected object belongs.
+// Modifies the resource group of a protected object.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -525,7 +525,7 @@ func (client *Client) CreateCloudResourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Adds an extension certificate for a cloud native mode resource.
+// Adds an extension certificate for cloud native mode.
 //
 // @param request - CreateCloudResourceExtensionCertRequest
 //
@@ -1907,7 +1907,7 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes an extension certificate for a cloud service connected in cloud native mode.
+// Deletes the extended certificate for a resource onboarded in cloud native mode.
 //
 // @param request - DeleteCloudResourceExtensionCertRequest
 //
@@ -2643,7 +2643,7 @@ func (client *Client) DeleteMemberAccountWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries abnormal cloud resources added in cloud native mode.
+// Queries abnormal cloud native mode resources.
 //
 // @param request - DescribeAbnormalCloudResourcesRequest
 //
@@ -3991,7 +3991,7 @@ func (client *Client) DescribeApisecProtectionResourcesWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the rules of an API security policy.
+// Queries the configuration rules for API security policies.
 //
 // @param request - DescribeApisecRulesRequest
 //
@@ -4683,7 +4683,7 @@ func (client *Client) DescribeBotAppKeyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the tag information of bot management rules.
+// Queries the bot management rule label information.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -4931,7 +4931,7 @@ func (client *Client) DescribeChargeModuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the pricing results of WAF pricing modules.
+// Queries the billing results of WAF billing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -7029,7 +7029,7 @@ func (client *Client) DescribeElasticBillsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the traffic statistics.
+// Queries traffic statistics information.
 //
 // @param request - DescribeFlowChartRequest
 //
@@ -7221,7 +7221,7 @@ func (client *Client) DescribeFlowTopUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries statistics information about assets detected by the basic API security feature.
+// Queries the asset statistics information for basic API security detection.
 //
 // @param request - DescribeFreeUserAssetCountRequest
 //
@@ -7325,7 +7325,7 @@ func (client *Client) DescribeFreeUserEventCountWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the types of security events for basic API security detection.
+// Queries the security event types for basic API security detection.
 //
 // @param request - DescribeFreeUserEventTypesRequest
 //
@@ -8513,7 +8513,7 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves supported countries and regions outside China for IP-based region blacklist.
+// Queries the countries and areas outside China supported by the Location Blacklist.
 //
 // @param request - DescribeIpAbroadCountryInfosRequest
 //
@@ -9821,7 +9821,7 @@ func (client *Client) DescribeResourcePortWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the region IDs of cloud service resources that can be added to Web Application Firewall (WAF) by using the SDK.
+// Queries the region IDs of SDK-integrated resources, primarily for ALB and MSE.
 //
 // @param request - DescribeResourceRegionIdRequest
 //
@@ -10001,7 +10001,7 @@ func (client *Client) DescribeResponseCodeTrendGraphWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the authorization status of the service-linked role for Web Application Firewall (WAF).
+// Queries the authorization status.
 //
 // @param request - DescribeRoleAuthStatusRequest
 //
@@ -10321,7 +10321,7 @@ func (client *Client) DescribeRuleHitsTopRuleIdWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the top 10 most frequently triggered protection rule types.
+// Queries the top 10 protection types with the most rule hits.
 //
 // @param request - DescribeRuleHitsTopTuleTypeRequest
 //
@@ -11905,7 +11905,7 @@ func (client *Client) DescribeUserAbnormalTrendWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries user risk types and statistics related to API security in Web Application Firewall (WAF).
+// Queries API security user risk types and statistics.
 //
 // @param request - DescribeUserAbnormalTypeRequest
 //
@@ -13507,7 +13507,7 @@ func (client *Client) ModifyCloudResourceWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Modifies the certificate for a cloud native mode resource.
+// Modifies the certificates for cloud native mode.
 //
 // @param request - ModifyCloudResourceCertRequest
 //
@@ -13575,7 +13575,7 @@ func (client *Client) ModifyCloudResourceCertWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the default certificate for a cloud native mode resource.
+// Modifies the default certificate for cloud native mode.
 //
 // @param request - ModifyCloudResourceDefaultCertRequest
 //
@@ -15779,7 +15779,7 @@ func (client *Client) ModifyUserWafLogStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Re-connects a cloud service to WAF. This operation is used only when the cloud native mode connection status is protection exception.
+// Re-onboards a cloud service to WAF. This operation is used only when the protection status of the cloud service in cloud native mode is abnormal.
 //
 // @param request - ReCreateCloudResourceRequest
 //
@@ -16011,7 +16011,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from resources and then deletes the tags.
+// Removes and deletes tags from one or more specified resources.
 //
 // @param request - UntagResourcesRequest
 //

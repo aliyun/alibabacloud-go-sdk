@@ -16,13 +16,13 @@ type iDescribeResourceRegionIdResponseBody interface {
 }
 
 type DescribeResourceRegionIdResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F5905D3F-F674-5177-9E48-466DD3B8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The region IDs of cloud service resources that can be added to WAF by using the SDK.
+	// The list of region IDs of SDK-integrated resources.
 	ResourceRegionIds []*string `json:"ResourceRegionIds,omitempty" xml:"ResourceRegionIds,omitempty" type:"Repeated"`
 }
 

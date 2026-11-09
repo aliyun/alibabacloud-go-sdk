@@ -16,7 +16,7 @@ type iDescribeFreeUserAssetCountResponseBody interface {
 }
 
 type DescribeFreeUserAssetCountResponseBody struct {
-	// The statistics information about assets detected by the basic API security feature.
+	// The asset statistics information for basic detection.
 	Asset *DescribeFreeUserAssetCountResponseBodyAsset `json:"Asset,omitempty" xml:"Asset,omitempty" type:"Struct"`
 	// The request ID.
 	//

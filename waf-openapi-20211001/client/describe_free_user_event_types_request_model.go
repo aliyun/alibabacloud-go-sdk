@@ -20,7 +20,7 @@ type iDescribeFreeUserEventTypesRequest interface {
 type DescribeFreeUserEventTypesRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeFreeUserEventTypesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-bl0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region to which the WAF instance belongs. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -38,7 +38,7 @@ type DescribeFreeUserEventTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
