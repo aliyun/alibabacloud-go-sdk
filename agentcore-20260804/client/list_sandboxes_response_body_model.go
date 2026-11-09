@@ -30,13 +30,13 @@ type iListSandboxesResponseBody interface {
 }
 
 type ListSandboxesResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListSandboxesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. The value is success when the request is successful.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -187,25 +187,37 @@ type ListSandboxesResponseBodyItems struct {
 	//
 	// 1
 	ActiveSessionCount *int32 `json:"activeSessionCount,omitempty" xml:"activeSessionCount,omitempty"`
-	// The time when the sandbox was created. The time is in the RFC 3339 UTC format.
+	// The time when the sandbox was created, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-29T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The time of the last activity of the sandbox. The time is in the RFC 3339 UTC format.
+	// The tag of the actual observed image of the currently returned instance. This parameter is empty if the tag cannot be parsed.
+	//
+	// example:
+	//
+	// 202611031754
+	HarnessVersion *string `json:"harnessVersion,omitempty" xml:"harnessVersion,omitempty"`
+	// The time of the last activity of the sandbox, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-29T00:02:00Z
 	LastActiveAt *string `json:"lastActiveAt,omitempty" xml:"lastActiveAt,omitempty"`
-	// The time of the last heartbeat of the sandbox. The time is in the RFC 3339 UTC format.
+	// The time of the last heartbeat of the sandbox, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-29T00:01:00Z
 	LastHeartbeatAt *string `json:"lastHeartbeatAt,omitempty" xml:"lastHeartbeatAt,omitempty"`
-	// The maximum number of concurrent sessions allowed for the sandbox. This value is obtained from the auto-scaling configuration that takes effect at runtime. If auto-scaling is disabled or the configuration is unavailable, this value is empty.
+	// Used to continue calling GetSandboxRebuildOperation to query the overall result after a page refresh. This parameter is empty if there is no historical rebuild. Do not use the ID of a subsequently created task instead.
+	//
+	// example:
+	//
+	// 01a19f98-906d-7e82-96aa-8b7ea1d1a29d
+	LastRebuildOperationId *string `json:"lastRebuildOperationId,omitempty" xml:"lastRebuildOperationId,omitempty"`
+	// The maximum number of concurrent sessions allowed for the sandbox, which is obtained from the effective auto-scaling configuration at runtime. This parameter is empty if auto-scaling is disabled or the configuration is unavailable.
 	//
 	// example:
 	//
@@ -223,6 +235,18 @@ type ListSandboxesResponseBodyItems struct {
 	//
 	// sbx-2
 	SandboxId *string `json:"sandboxId,omitempty" xml:"sandboxId,omitempty"`
+	// The server compares the actual image tag of the instance with the pool target image tag. The value is true if the tags are different during the RUNNING, HIBERNATED, or FAILED phase. The value is false if the tags are the same or during other known phases. This parameter is empty if the tag or phase cannot be confirmed, and it cannot be treated as false. The version sequence is not determined by the tag size.
+	//
+	// example:
+	//
+	// true
+	UpdateAvailable *bool `json:"updateAvailable,omitempty" xml:"updateAvailable,omitempty"`
+	// A value of true indicates that the most recent rebuild corresponding to the current instance generation failed as a whole. A value of false indicates that there is no historical rebuild or the rebuild succeeded as a whole. This parameter is empty if the rebuild is in progress, canceled, replaced, the generation does not match, or the result cannot be confirmed.
+	//
+	// example:
+	//
+	// false
+	UpdateFailed *bool `json:"updateFailed,omitempty" xml:"updateFailed,omitempty"`
 }
 
 func (s ListSandboxesResponseBodyItems) String() string {
@@ -241,12 +265,20 @@ func (s *ListSandboxesResponseBodyItems) GetCreatedAt() *string {
 	return s.CreatedAt
 }
 
+func (s *ListSandboxesResponseBodyItems) GetHarnessVersion() *string {
+	return s.HarnessVersion
+}
+
 func (s *ListSandboxesResponseBodyItems) GetLastActiveAt() *string {
 	return s.LastActiveAt
 }
 
 func (s *ListSandboxesResponseBodyItems) GetLastHeartbeatAt() *string {
 	return s.LastHeartbeatAt
+}
+
+func (s *ListSandboxesResponseBodyItems) GetLastRebuildOperationId() *string {
+	return s.LastRebuildOperationId
 }
 
 func (s *ListSandboxesResponseBodyItems) GetMaxConcurrentSessions() *int32 {
@@ -261,6 +293,14 @@ func (s *ListSandboxesResponseBodyItems) GetSandboxId() *string {
 	return s.SandboxId
 }
 
+func (s *ListSandboxesResponseBodyItems) GetUpdateAvailable() *bool {
+	return s.UpdateAvailable
+}
+
+func (s *ListSandboxesResponseBodyItems) GetUpdateFailed() *bool {
+	return s.UpdateFailed
+}
+
 func (s *ListSandboxesResponseBodyItems) SetActiveSessionCount(v int32) *ListSandboxesResponseBodyItems {
 	s.ActiveSessionCount = &v
 	return s
@@ -271,6 +311,11 @@ func (s *ListSandboxesResponseBodyItems) SetCreatedAt(v string) *ListSandboxesRe
 	return s
 }
 
+func (s *ListSandboxesResponseBodyItems) SetHarnessVersion(v string) *ListSandboxesResponseBodyItems {
+	s.HarnessVersion = &v
+	return s
+}
+
 func (s *ListSandboxesResponseBodyItems) SetLastActiveAt(v string) *ListSandboxesResponseBodyItems {
 	s.LastActiveAt = &v
 	return s
@@ -278,6 +323,11 @@ func (s *ListSandboxesResponseBodyItems) SetLastActiveAt(v string) *ListSandboxe
 
 func (s *ListSandboxesResponseBodyItems) SetLastHeartbeatAt(v string) *ListSandboxesResponseBodyItems {
 	s.LastHeartbeatAt = &v
+	return s
+}
+
+func (s *ListSandboxesResponseBodyItems) SetLastRebuildOperationId(v string) *ListSandboxesResponseBodyItems {
+	s.LastRebuildOperationId = &v
 	return s
 }
 
@@ -293,6 +343,16 @@ func (s *ListSandboxesResponseBodyItems) SetPhase(v string) *ListSandboxesRespon
 
 func (s *ListSandboxesResponseBodyItems) SetSandboxId(v string) *ListSandboxesResponseBodyItems {
 	s.SandboxId = &v
+	return s
+}
+
+func (s *ListSandboxesResponseBodyItems) SetUpdateAvailable(v bool) *ListSandboxesResponseBodyItems {
+	s.UpdateAvailable = &v
+	return s
+}
+
+func (s *ListSandboxesResponseBodyItems) SetUpdateFailed(v bool) *ListSandboxesResponseBodyItems {
+	s.UpdateFailed = &v
 	return s
 }
 

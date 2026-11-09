@@ -22,31 +22,31 @@ type iDeleteAgentVersionResponseBody interface {
 }
 
 type DeleteAgentVersionResponseBody struct {
-	// 业务状态码，请求成功时为 SUCCESS，失败时为错误码。
+	// The business status code. The value is SUCCESS if the request is successful, or an error code if the request fails.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// HTTP 状态码。
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// 响应消息，请求成功时为 success，失败时为错误信息。
+	// The response message. The value is success if the request is successful, or an error message if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求 ID，用于定位和排查请求。
+	// The request ID, which is used to locate and troubleshoot requests.
 	//
 	// example:
 	//
 	// 5E8F3C2A-1B4D-4F6E-9A7C-0D2B8E6F4A1C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功。
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

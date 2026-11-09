@@ -44,19 +44,19 @@ type ListServiceEndpointsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of service endpoints.
 	Items []*ListServiceEndpointsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned on a single page for this query.
+	// The maximum number of records per page returned in this query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. An error description is returned when the request fails.
+	// The response message. Returns an error description if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. This parameter is empty if no next page exists.
+	// The cursor for the next page. Empty if there is no next page.
 	//
 	// example:
 	//
@@ -185,29 +185,29 @@ type ListServiceEndpointsResponseBodyItems struct {
 	AccessUrls []*ListServiceEndpointsResponseBodyItemsAccessUrls `json:"accessUrls,omitempty" xml:"accessUrls,omitempty" type:"Repeated"`
 	// The authentication configuration of the service endpoint.
 	Authentication *ListServiceEndpointsResponseBodyItemsAuthentication `json:"authentication,omitempty" xml:"authentication,omitempty" type:"Struct"`
-	// The creation time in UTC format compliant with RFC 3339.
+	// The creation time in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// publicAccessEnabled 与工作空间公网入向上限叠加后的结果：二者均允许时为 true。仅表示策略目标，不代表公网入口已发布完成，实际状态以 accessUrls 与 status 为准。
+	// The result of combining publicAccessEnabled with the workspace public access inbound upper limit. It is true only when both allow it. This only indicates the policy target and does not mean that the public access entry has been published. The actual status is subject to accessUrls and status.
 	EffectivePublicAccessEnabled *bool `json:"effectivePublicAccessEnabled,omitempty" xml:"effectivePublicAccessEnabled,omitempty"`
-	// 仅在服务端点设置过弹性覆盖值时返回，可设置的为 Router 类型服务端点与 GATEWAY_API_WITH_VPC_INGRESS 类型的 DEFAULT 服务端点；未设置覆盖值时不返回该对象，表示继承智能体源配置，不得当作空对象或默认策略。返回时三个字段必全。
+	// Returned only when elastic override values are set for the service endpoint. Can be set for Router-type service endpoints and DEFAULT service endpoints of the GATEWAY_API_WITH_VPC_INGRESS type. If no override values are set, this object is not returned, indicating that the source configuration of the agent is inherited. It must not be treated as an empty object or a default policy. When returned, all three fields are always included.
 	ElasticityPolicy *ListServiceEndpointsResponseBodyItemsElasticityPolicy `json:"elasticityPolicy,omitempty" xml:"elasticityPolicy,omitempty" type:"Struct"`
-	// The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform. NAMED indicates a named endpoint explicitly created by the user.
+	// The type of the service endpoint. DEFAULT indicates a default endpoint created and maintained by the platform, and NAMED indicates a named endpoint explicitly created by a user.
 	//
 	// example:
 	//
 	// NAMED
 	EndpointType *string `json:"endpointType,omitempty" xml:"endpointType,omitempty"`
-	// The name of the service endpoint. The name must be unique within the workspace and be 1 to 128 characters in length.
+	// The name of the service endpoint. It must be unique within the workspace and 1 to 128 characters in length.
 	//
 	// example:
 	//
 	// my-agent-endpoint
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 用户在服务端点上设置的公网入向期望；未设置过的历史服务端点按 true 返回。仅表示配置期望，实际公网地址是否可用以 accessUrls 与 status 为准。
+	// The expected public access inbound setting configured by the user on the service endpoint. For legacy service endpoints where this has not been set, true is returned. This only indicates the configuration expectation. The actual availability of the public access URL is subject to accessUrls and status.
 	PublicAccessEnabled *bool `json:"publicAccessEnabled,omitempty" xml:"publicAccessEnabled,omitempty"`
 	// The ID of the region where the service endpoint resides.
 	//
@@ -227,7 +227,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the service endpoint status. The specific reason is returned when the status is abnormal.
+	// The reason for the service endpoint status. Returns the specific reason when the status is abnormal.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListServiceEndpointsResponseBodyItems struct {
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The target routing configuration of the service endpoint.
 	Target *ListServiceEndpointsResponseBodyItemsTarget `json:"target,omitempty" xml:"target,omitempty" type:"Struct"`
-	// The time of the last modification in UTC format compliant with RFC 3339.
+	// The time of the last modification in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -421,7 +421,7 @@ func (s *ListServiceEndpointsResponseBodyItems) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsAccessUrls struct {
-	// The type of the access URL. Valid values: INTERNET and VPC.
+	// The access URL type. Valid values: INTERNET and VPC.
 	//
 	// example:
 	//
@@ -433,7 +433,7 @@ type ListServiceEndpointsResponseBodyItemsAccessUrls struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason for the access URL status. The specific reason is returned when the status is abnormal.
+	// The reason for the access URL status. Returns the specific reason when the status is abnormal.
 	//
 	// example:
 	//
@@ -496,7 +496,7 @@ func (s *ListServiceEndpointsResponseBodyItemsAccessUrls) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsAuthentication struct {
-	// The authentication method. NONE indicates that no authentication is required. API_KEY indicates that authentication is performed by passing an API key in the `x-api-key` request header.
+	// The authentication method. NONE indicates that no authentication is required, and API_KEY indicates that authentication is performed by passing an API key through the x-api-key request header.
 	//
 	// example:
 	//
@@ -526,19 +526,19 @@ func (s *ListServiceEndpointsResponseBodyItemsAuthentication) Validate() error {
 }
 
 type ListServiceEndpointsResponseBodyItemsElasticityPolicy struct {
-	// 是否开启弹性。
+	// Indicates whether elasticity is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 最大实例数，不小于 1。
+	// The maximum number of instances, which must be no less than 1.
 	//
 	// example:
 	//
 	// 5
 	MaxSandboxCount *int32 `json:"maxSandboxCount,omitempty" xml:"maxSandboxCount,omitempty"`
-	// 最小实例数，不小于 0 且不大于 maxSandboxCount。
+	// The minimum number of instances, which must be no less than 0 and no greater than maxSandboxCount.
 	//
 	// example:
 	//
@@ -586,25 +586,25 @@ func (s *ListServiceEndpointsResponseBodyItemsElasticityPolicy) Validate() error
 }
 
 type ListServiceEndpointsResponseBodyItemsTarget struct {
-	// The ID of the target agent. This parameter is returned when the target type is AGENT_VERSION.
+	// The ID of the target agent. Returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The version of the target agent. This parameter is returned when the target type is AGENT_VERSION.
+	// The version number of the target agent. Returned when the target type is AGENT_VERSION.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// The type of the collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
+	// The type of the collaboration component. Returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//
 	// ELEMENT_WEB
 	CollaborationComponent *string `json:"collaborationComponent,omitempty" xml:"collaborationComponent,omitempty"`
-	// The workspace resource binding ID associated with the target collaboration component. This parameter is returned when the target type is TEAM_COLLABORATION.
+	// The workspace resource binding ID associated with the target collaboration component. Returned when the target type is TEAM_COLLABORATION.
 	//
 	// example:
 	//

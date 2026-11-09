@@ -42,7 +42,7 @@ type ListSandboxSessionsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of active sessions in the sandbox.
+	// The list of active sessions for the sandbox.
 	Items []*ListSandboxSessionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page for the current query.
 	//
@@ -181,7 +181,7 @@ func (s *ListSandboxSessionsResponseBody) Validate() error {
 }
 
 type ListSandboxSessionsResponseBodyItems struct {
-	// The type of the external channel, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
+	// The external channel type, such as DINGTALK, FEISHU, or WECOM. This parameter is empty for non-external channels.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type ListSandboxSessionsResponseBodyItems struct {
 	//
 	// sess-2
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The source type of the session. A value of API indicates an API call. A value of CONSOLE_DEBUG indicates console debugging. A value of EXTERNAL_CHANNEL indicates an external channel. A value of UNKNOWN indicates an unknown source.
+	// The source type of the session. A value of API indicates an API call, CONSOLE_DEBUG indicates console debugging, EXTERNAL_CHANNEL indicates an external channel, and UNKNOWN indicates an unknown source.
 	//
 	// example:
 	//

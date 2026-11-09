@@ -30,13 +30,13 @@ type iListManagedAgentsResponseBody interface {
 }
 
 type ListManagedAgentsResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. A value of SUCCESS indicates success.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -417,12 +417,24 @@ func (s *ListManagedAgentsResponseBodyItems) Validate() error {
 type ListManagedAgentsResponseBodyItemsHarness struct {
 	// The runtime framework configuration.
 	Configuration *ListManagedAgentsResponseBodyItemsHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// Returned only in queries. The server calculates this value based on the complete instance distribution, which is not affected by the pagination and filtering of the instance list. If the image tag is missing, pagination is incomplete, or the value cannot be confirmed, this parameter is empty, which is not equivalent to 0.
+	//
+	// example:
+	//
+	// 2
+	OutdatedInstanceCount *int64 `json:"outdatedInstanceCount,omitempty" xml:"outdatedInstanceCount,omitempty"`
 	// The runtime framework type.
 	//
 	// example:
 	//
 	// qodercli
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Returned only in queries. Currently returns the tag of the pool target image. If the tag cannot be parsed, this parameter is empty and cannot be replaced by the agent configuration version.
+	//
+	// example:
+	//
+	// 202611031754
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListManagedAgentsResponseBodyItemsHarness) String() string {
@@ -437,8 +449,16 @@ func (s *ListManagedAgentsResponseBodyItemsHarness) GetConfiguration() *ListMana
 	return s.Configuration
 }
 
+func (s *ListManagedAgentsResponseBodyItemsHarness) GetOutdatedInstanceCount() *int64 {
+	return s.OutdatedInstanceCount
+}
+
 func (s *ListManagedAgentsResponseBodyItemsHarness) GetType() *string {
 	return s.Type
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) GetVersion() *string {
+	return s.Version
 }
 
 func (s *ListManagedAgentsResponseBodyItemsHarness) SetConfiguration(v *ListManagedAgentsResponseBodyItemsHarnessConfiguration) *ListManagedAgentsResponseBodyItemsHarness {
@@ -446,8 +466,18 @@ func (s *ListManagedAgentsResponseBodyItemsHarness) SetConfiguration(v *ListMana
 	return s
 }
 
+func (s *ListManagedAgentsResponseBodyItemsHarness) SetOutdatedInstanceCount(v int64) *ListManagedAgentsResponseBodyItemsHarness {
+	s.OutdatedInstanceCount = &v
+	return s
+}
+
 func (s *ListManagedAgentsResponseBodyItemsHarness) SetType(v string) *ListManagedAgentsResponseBodyItemsHarness {
 	s.Type = &v
+	return s
+}
+
+func (s *ListManagedAgentsResponseBodyItemsHarness) SetVersion(v string) *ListManagedAgentsResponseBodyItemsHarness {
+	s.Version = &v
 	return s
 }
 
@@ -461,7 +491,7 @@ func (s *ListManagedAgentsResponseBodyItemsHarness) Validate() error {
 }
 
 type ListManagedAgentsResponseBodyItemsHarnessConfiguration struct {
-	// The ID of the connector account key record bound to qodercli, not the original service account key.
+	// The ID of the connector account key record bound to qodercli, which is not the original service account key.
 	//
 	// example:
 	//

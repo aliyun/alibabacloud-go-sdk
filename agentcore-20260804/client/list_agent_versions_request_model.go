@@ -16,13 +16,13 @@ type iListAgentVersionsRequest interface {
 }
 
 type ListAgentVersionsRequest struct {
-	// 单页最大记录数，取值范围 1 至 100，默认 20。
+	// The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 查询下一页时传入上一次 ListAgentVersions 响应返回的 nextToken；首次查询不传。
+	// The token used to query the next page. Pass the nextToken returned in the previous ListAgentVersions response. Do not pass this parameter for the first query.
 	//
 	// example:
 	//

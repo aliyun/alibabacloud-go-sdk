@@ -953,12 +953,24 @@ func (s *GetManagedAgentResponseBodyDataEnvironmentVariables) Validate() error {
 type GetManagedAgentResponseBodyDataHarness struct {
 	// The runtime framework configuration.
 	Configuration *GetManagedAgentResponseBodyDataHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// 仅查询返回。服务端按完整实例分布统计，不受实例列表分页和筛选影响。镜像 tag 缺失、分页不完整或无法确认时为空，不等同于 0。
+	//
+	// example:
+	//
+	// 2
+	OutdatedInstanceCount *int64 `json:"outdatedInstanceCount,omitempty" xml:"outdatedInstanceCount,omitempty"`
 	// The type of the runtime framework.
 	//
 	// example:
 	//
 	// qodercli
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 仅查询返回。当前返回 Pool 目标镜像 tag；无法解析时为空，不能用 Agent 配置版本代替。
+	//
+	// example:
+	//
+	// 202611031754
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetManagedAgentResponseBodyDataHarness) String() string {
@@ -973,8 +985,16 @@ func (s *GetManagedAgentResponseBodyDataHarness) GetConfiguration() *GetManagedA
 	return s.Configuration
 }
 
+func (s *GetManagedAgentResponseBodyDataHarness) GetOutdatedInstanceCount() *int64 {
+	return s.OutdatedInstanceCount
+}
+
 func (s *GetManagedAgentResponseBodyDataHarness) GetType() *string {
 	return s.Type
+}
+
+func (s *GetManagedAgentResponseBodyDataHarness) GetVersion() *string {
+	return s.Version
 }
 
 func (s *GetManagedAgentResponseBodyDataHarness) SetConfiguration(v *GetManagedAgentResponseBodyDataHarnessConfiguration) *GetManagedAgentResponseBodyDataHarness {
@@ -982,8 +1002,18 @@ func (s *GetManagedAgentResponseBodyDataHarness) SetConfiguration(v *GetManagedA
 	return s
 }
 
+func (s *GetManagedAgentResponseBodyDataHarness) SetOutdatedInstanceCount(v int64) *GetManagedAgentResponseBodyDataHarness {
+	s.OutdatedInstanceCount = &v
+	return s
+}
+
 func (s *GetManagedAgentResponseBodyDataHarness) SetType(v string) *GetManagedAgentResponseBodyDataHarness {
 	s.Type = &v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataHarness) SetVersion(v string) *GetManagedAgentResponseBodyDataHarness {
+	s.Version = &v
 	return s
 }
 
@@ -1056,6 +1086,15 @@ type GetManagedAgentResponseBodyDataModel struct {
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
 	// The model token quota configuration and the quota usage status for the current cycle. This field is empty if no quota is configured.
 	Quota *GetManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	// 未配置时表示 default，空字符串、null 或省略均按模型和 Harness 默认行为处理。可选值 off、low、medium、high、xhigh、max。创建未传或 null 时使用 default；更新提交模型配置时，思考强度未传或为 null 均恢复 default。除 off 转为 none 外原样传给运行框架，不校验模型支持情况、不自动降档；模型不支持时请调整强度。
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// high
+	ThinkingLevel *string `json:"thinkingLevel,omitempty" xml:"thinkingLevel,omitempty"`
 }
 
 func (s GetManagedAgentResponseBodyDataModel) String() string {
@@ -1078,6 +1117,10 @@ func (s *GetManagedAgentResponseBodyDataModel) GetQuota() *GetManagedAgentRespon
 	return s.Quota
 }
 
+func (s *GetManagedAgentResponseBodyDataModel) GetThinkingLevel() *string {
+	return s.ThinkingLevel
+}
+
 func (s *GetManagedAgentResponseBodyDataModel) SetModelConnectionId(v string) *GetManagedAgentResponseBodyDataModel {
 	s.ModelConnectionId = &v
 	return s
@@ -1090,6 +1133,11 @@ func (s *GetManagedAgentResponseBodyDataModel) SetModelName(v string) *GetManage
 
 func (s *GetManagedAgentResponseBodyDataModel) SetQuota(v *GetManagedAgentResponseBodyDataModelQuota) *GetManagedAgentResponseBodyDataModel {
 	s.Quota = v
+	return s
+}
+
+func (s *GetManagedAgentResponseBodyDataModel) SetThinkingLevel(v string) *GetManagedAgentResponseBodyDataModel {
+	s.ThinkingLevel = &v
 	return s
 }
 

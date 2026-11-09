@@ -24,33 +24,33 @@ type iGetAgentVersionResponseBody interface {
 }
 
 type GetAgentVersionResponseBody struct {
-	// 业务状态码，请求成功时为 SUCCESS，失败时为错误码。
+	// The business status code. The value is SUCCESS if the request is successful, or an error code if the request fails.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 智能体固定版本详情，configuration 为版本保存时的 Agent 配置。
+	// The details of the fixed agent version. The configuration field contains the agent configuration at the time the version was saved.
 	Data *GetAgentVersionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// HTTP 状态码。
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// 响应消息，请求成功时为 success，失败时为错误信息。
+	// The response message. The value is success if the request is successful, or an error message if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求 ID，用于定位和排查请求。
+	// The request ID, which is used to locate and troubleshoot the request.
 	//
 	// example:
 	//
 	// 5E8F3C2A-1B4D-4F6E-9A7C-0D2B8E6F4A1C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 请求是否成功。
+	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
@@ -126,61 +126,61 @@ func (s *GetAgentVersionResponseBody) Validate() error {
 }
 
 type GetAgentVersionResponseBodyData struct {
-	// 版本所属的托管智能体或自定义智能体 ID。
+	// The ID of the managed or custom agent that owns the version.
 	//
 	// example:
 	//
 	// agent-0123456789abcdef0123456789abcdef
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// 系统按 Agent 递增生成的版本号，例如 v1、v2。查询、删除版本及服务端点引用版本时使用。
+	// The system-generated version number that increments for each agent, such as v1 and v2. This is used when querying or deleting versions, and when referencing versions in service endpoints.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// 仅表示版本模板与制品归档是否完整，不代表部署或运行状态。READY 为完整，INVALID 为归档缺失或不一致。
+	// Indicates only whether the version template and artifact archiving are complete, and does not represent the deployment or running status. A value of READY indicates that the archiving is complete. A value of INVALID indicates that the archiving is missing or inconsistent.
 	//
 	// example:
 	//
 	// READY
 	ArtifactStatus *string `json:"artifactStatus,omitempty" xml:"artifactStatus,omitempty"`
-	// 托管智能体与 GetManagedAgent 的 data 结构一致，自定义智能体与 GetCustomAgent 的 data 结构一致，脱敏规则相同。
+	// For managed agents, the structure is consistent with the data structure of GetManagedAgent. For custom agents, the structure is consistent with the data structure of GetCustomAgent. The desensitization rules are the same.
 	//
 	// example:
 	//
-	// {"agentId":"agent-0123456789abcdef0123456789abcdef","workspaceId":"ws-0123456789abcdef01234","name":"customer-service","description":"客服智能体","status":"Running","latestSpecVersion":2,"instruction":"你是一名客服助手。"}
+	// {"agentId":"agent-0123456789abcdef0123456789abcdef","workspaceId":"ws-0123456789abcdef01234","name":"customer-service","description":"Customer service agent","status":"Running","latestSpecVersion":2,"instruction":"You are a customer service assistant."}
 	Configuration map[string]interface{} `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// 版本保存的时间，采用 ISO 8601 UTC 格式。
+	// The time when the version was saved, in ISO 8601 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-12T01:02:03Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 保存该版本的调用者阿里云账号 UID；RAM 用户调用时为其所属阿里云主账号 UID。
+	// The UID of the Alibaba Cloud account of the caller who saved the version. If the API is called by a RAM user, this value is the UID of the Alibaba Cloud account to which the RAM user belongs.
 	//
 	// example:
 	//
 	// 1234567890123456
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// 保存版本时填写的版本描述，最多 1024 个字符；保存时未填写则为空。
+	// The version description provided when the version was saved. It can contain up to 1,024 characters. If no description was provided when the version was saved, this field is empty.
 	//
 	// example:
 	//
-	// 生产环境稳定版本
+	// Stable version for the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 保存版本时 Agent 已生效的发布流水号，即当时的 effectiveSpecVersion。版本保存后该值不再变化。
+	// The effective release serial number of the agent when the version was saved, which is the effectiveSpecVersion at that time. This value does not change after the version is saved.
 	//
 	// example:
 	//
 	// 2
 	TargetSpecVersion *int64 `json:"targetSpecVersion,omitempty" xml:"targetSpecVersion,omitempty"`
-	// 保存版本时用户指定的展示名称。早期保存且未记录名称的版本返回 agentVersion。
+	// The display name specified by the user when the version was saved. For earlier saved versions that did not record a name, the agentVersion is returned.
 	//
 	// example:
 	//
-	// 生产稳定版 V1.0
+	// Production stable version V1.0
 	VersionName *string `json:"versionName,omitempty" xml:"versionName,omitempty"`
-	// 版本所属智能体所在的 AgentCore 工作空间 ID。
+	// The ID of the AgentCore workspace where the agent that owns the version resides.
 	//
 	// example:
 	//

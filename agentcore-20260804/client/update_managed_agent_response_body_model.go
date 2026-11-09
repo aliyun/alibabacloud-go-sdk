@@ -32,7 +32,7 @@ type UpdateManagedAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The details of the managed Harness agent.
 	Data *UpdateManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. 200 indicates success.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type UpdateManagedAgentResponseBodyData struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The NAS storage mount configuration. Currently, only the AgenticFS type is supported, which is used to mount file directories in access points to agent runtime instances. The total number of NAS mounts and ossMounts cannot exceed 10.
+	// The NAS storage mount configuration. Currently, only the AgenticFS type is supported, which is used to mount file directories in the access point to the agent runtime instance. The total number of NAS mounts and ossMounts cannot exceed 10.
 	AgenticFsMounts []*UpdateManagedAgentResponseBodyDataAgenticFsMounts `json:"agenticFsMounts,omitempty" xml:"agenticFsMounts,omitempty" type:"Repeated"`
 	// The explicitly configured skills.
 	ConfiguredSkills []*UpdateManagedAgentResponseBodyDataConfiguredSkills `json:"configuredSkills,omitempty" xml:"configuredSkills,omitempty" type:"Repeated"`
@@ -220,7 +220,7 @@ type UpdateManagedAgentResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The runtime configuration information.
 	Runtime *UpdateManagedAgentResponseBodyDataRuntime `json:"runtime,omitempty" xml:"runtime,omitempty" type:"Struct"`
-	// The number of managed Harness agent instances grouped by sandbox phase. Current keys: PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed at runtime). Only the phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic mapping and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
+	// The number of managed Harness agent instances by sandbox phase. Current keys: PENDING (creating or initializing), RUNNING (running), HIBERNATING (hibernating), HIBERNATED (hibernated), RESUMING (resuming), TERMINATING (terminating), and FAILED (failed at runtime). Only phases that actually occur are returned. Missing keys are treated as 0. This field is a dynamic map and new keys may be added in the future. The frontend can use FAILED > 0 to determine whether abnormal instances exist.
 	SandboxPhaseCounts map[string]*int64 `json:"sandboxPhaseCounts,omitempty" xml:"sandboxPhaseCounts,omitempty"`
 	// The list of skill configurations.
 	Skills []*UpdateManagedAgentResponseBodyDataSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
@@ -234,7 +234,7 @@ type UpdateManagedAgentResponseBodyData struct {
 	SubAgents []*UpdateManagedAgentResponseBodyDataSubAgents `json:"subAgents,omitempty" xml:"subAgents,omitempty" type:"Repeated"`
 	// The template configuration information.
 	Template *UpdateManagedAgentResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The list of tool configurations.
+	// The tool configuration list.
 	Tools []*UpdateManagedAgentResponseBodyDataTools `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
 	// The update time in RFC 3339 format.
 	//
@@ -623,19 +623,19 @@ type UpdateManagedAgentResponseBodyDataAgenticFsMounts struct {
 	//
 	// /mnt/agenticfs/data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The existing non-empty relative directory under the AccessPoint. This field is required and validated by the backend for each mount item. The root directory, absolute paths, or parent directory segments are not allowed.
+	// The existing non-empty relative directory under the AccessPoint. This field is required and validated by the backend for each mount item. Root directories, absolute paths, and parent directory segments are not allowed.
 	//
 	// example:
 	//
 	// workspace/data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether to mount as read-only. The default value is false if omitted. This is not a RAM role read-only policy.
+	// Specifies whether the mount is read-only. If omitted, the default value is false. This is not a RAM role read-only policy.
 	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
-	// The AccessPoint domain name. This field is required and validated by the backend for each mount item. It does not contain a protocol, port, or path, and takes the DomainName from the NAS ListAccessPoints response.
+	// The AccessPoint domain name. This field is required and validated by the backend for each mount item. It does not include a protocol, port, or path. Use the DomainName from the NAS ListAccessPoints response.
 	//
 	// example:
 	//
@@ -700,19 +700,19 @@ type UpdateManagedAgentResponseBodyDataConfiguredSkills struct {
 	//
 	// web-search
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source type of the skill. REFERENCE indicates that the skill references an AI Registry asset. STATIC indicates that the skill is statically provided with the deployment package.
+	// The skill source type.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The legacy compatibility field. For new requests, use sourceType and versionSelector.
+	// The legacy compatibility field. Use sourceType and versionSelector for new requests.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The version selector for the skill reference. Supports LABEL for tag-based selection and VERSION for specific version selection. If omitted, LABEL/latest is used. Do not specify a selector for STATIC sources.
+	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *UpdateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -770,13 +770,13 @@ func (s *UpdateManagedAgentResponseBodyDataConfiguredSkills) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataConfiguredSkillsVersionSelector struct {
-	// The type of the version selector. Valid values: LABEL (selects by tag) and VERSION (selects by specific version).
+	// The version selector type.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the selector. If the type is LABEL, specify a tag name such as latest. If the type is VERSION, specify a specific version number.
+	// The selector value. When the type is LABEL, this is the tag name, such as latest. When the type is VERSION, this is the specific version number.
 	//
 	// example:
 	//
@@ -902,7 +902,7 @@ func (s *UpdateManagedAgentResponseBodyDataEnvironmentCredentialReferences) Vali
 }
 
 type UpdateManagedAgentResponseBodyDataEnvironmentVariables struct {
-	// The name of the environment variable.
+	// The environment variable name.
 	//
 	// This parameter is required.
 	//
@@ -910,7 +910,7 @@ type UpdateManagedAgentResponseBodyDataEnvironmentVariables struct {
 	//
 	// API_KEY
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The value of the environment variable.
+	// The environment variable value.
 	//
 	// This parameter is required.
 	//
@@ -953,12 +953,24 @@ func (s *UpdateManagedAgentResponseBodyDataEnvironmentVariables) Validate() erro
 type UpdateManagedAgentResponseBodyDataHarness struct {
 	// The runtime framework configuration.
 	Configuration *UpdateManagedAgentResponseBodyDataHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// Returned only in query responses. The server calculates this based on the complete instance distribution, which is not affected by pagination and filtering of the instance list. The value is empty if the image tag is missing, pagination is incomplete, or it cannot be confirmed. An empty value does not equal 0.
+	//
+	// example:
+	//
+	// 2
+	OutdatedInstanceCount *int64 `json:"outdatedInstanceCount,omitempty" xml:"outdatedInstanceCount,omitempty"`
 	// The type of the runtime framework.
 	//
 	// example:
 	//
 	// qodercli
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// Returned only in query responses. Currently returns the tag of the pool target image. The value is empty if it cannot be parsed. Do not use the agent configuration version as a substitute.
+	//
+	// example:
+	//
+	// 202611031754
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s UpdateManagedAgentResponseBodyDataHarness) String() string {
@@ -973,8 +985,16 @@ func (s *UpdateManagedAgentResponseBodyDataHarness) GetConfiguration() *UpdateMa
 	return s.Configuration
 }
 
+func (s *UpdateManagedAgentResponseBodyDataHarness) GetOutdatedInstanceCount() *int64 {
+	return s.OutdatedInstanceCount
+}
+
 func (s *UpdateManagedAgentResponseBodyDataHarness) GetType() *string {
 	return s.Type
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) GetVersion() *string {
+	return s.Version
 }
 
 func (s *UpdateManagedAgentResponseBodyDataHarness) SetConfiguration(v *UpdateManagedAgentResponseBodyDataHarnessConfiguration) *UpdateManagedAgentResponseBodyDataHarness {
@@ -982,8 +1002,18 @@ func (s *UpdateManagedAgentResponseBodyDataHarness) SetConfiguration(v *UpdateMa
 	return s
 }
 
+func (s *UpdateManagedAgentResponseBodyDataHarness) SetOutdatedInstanceCount(v int64) *UpdateManagedAgentResponseBodyDataHarness {
+	s.OutdatedInstanceCount = &v
+	return s
+}
+
 func (s *UpdateManagedAgentResponseBodyDataHarness) SetType(v string) *UpdateManagedAgentResponseBodyDataHarness {
 	s.Type = &v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataHarness) SetVersion(v string) *UpdateManagedAgentResponseBodyDataHarness {
+	s.Version = &v
 	return s
 }
 
@@ -1048,14 +1078,23 @@ type UpdateManagedAgentResponseBodyDataModel struct {
 	//
 	// mc-1
 	ModelConnectionId *string `json:"modelConnectionId,omitempty" xml:"modelConnectionId,omitempty"`
-	// The upstream model name.
+	// The name of the upstream model.
 	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The model token quota configuration and the quota usage status for the current cycle. This field is empty if no quota is configured.
+	// The model token quota configuration and quota usage status for the current cycle. The value is empty if no quota is configured.
 	Quota *UpdateManagedAgentResponseBodyDataModelQuota `json:"quota,omitempty" xml:"quota,omitempty" type:"Struct"`
+	// The thinking level. If not configured, the value defaults to default. Empty strings, null values, or omitted fields are processed according to the default behavior of the model and Harness. Valid values: off, low, medium, high, xhigh, and max. If this parameter is not passed or is null during creation, default is used. When updating the model configuration, if the thinking level is not passed or is null, it reverts to default. Except for off, which is converted to none, the value is passed to the runtime framework as-is without validating model support or automatically downgrading. If the model does not support the specified level, adjust the level accordingly.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// high
+	ThinkingLevel *string `json:"thinkingLevel,omitempty" xml:"thinkingLevel,omitempty"`
 }
 
 func (s UpdateManagedAgentResponseBodyDataModel) String() string {
@@ -1078,6 +1117,10 @@ func (s *UpdateManagedAgentResponseBodyDataModel) GetQuota() *UpdateManagedAgent
 	return s.Quota
 }
 
+func (s *UpdateManagedAgentResponseBodyDataModel) GetThinkingLevel() *string {
+	return s.ThinkingLevel
+}
+
 func (s *UpdateManagedAgentResponseBodyDataModel) SetModelConnectionId(v string) *UpdateManagedAgentResponseBodyDataModel {
 	s.ModelConnectionId = &v
 	return s
@@ -1090,6 +1133,11 @@ func (s *UpdateManagedAgentResponseBodyDataModel) SetModelName(v string) *Update
 
 func (s *UpdateManagedAgentResponseBodyDataModel) SetQuota(v *UpdateManagedAgentResponseBodyDataModelQuota) *UpdateManagedAgentResponseBodyDataModel {
 	s.Quota = v
+	return s
+}
+
+func (s *UpdateManagedAgentResponseBodyDataModel) SetThinkingLevel(v string) *UpdateManagedAgentResponseBodyDataModel {
+	s.ThinkingLevel = &v
 	return s
 }
 
@@ -1115,13 +1163,13 @@ type UpdateManagedAgentResponseBodyDataModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// Indicates whether the quota is exceeded in the current period. This field is read-only and returned by the backend.
+	// Indicates whether the quota is exceeded in the current cycle. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
-	// The statistical period of the quota. Valid values: day and month.
+	// The quota statistical period. A value of day indicates daily, and a value of month indicates monthly.
 	//
 	// example:
 	//
@@ -1133,13 +1181,13 @@ type UpdateManagedAgentResponseBodyDataModelQuota struct {
 	//
 	// ACTIVE
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The maximum number of tokens allowed to be consumed in a single period.
+	// The maximum number of tokens allowed to be consumed in a single cycle.
 	//
 	// example:
 	//
 	// 1000000
 	UsageLimit *int64 `json:"usageLimit,omitempty" xml:"usageLimit,omitempty"`
-	// The number of tokens consumed in the current period. This field is read-only and returned by the backend.
+	// The number of tokens consumed in the current cycle. This field is read-only and returned by the backend.
 	//
 	// example:
 	//
@@ -1270,7 +1318,7 @@ func (s *UpdateManagedAgentResponseBodyDataNetwork) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataNetworkAccessInternet struct {
-	// Specifies whether to allow access to the Internet.
+	// Specifies whether to allow Internet access.
 	//
 	// example:
 	//
@@ -1300,7 +1348,7 @@ func (s *UpdateManagedAgentResponseBodyDataNetworkAccessInternet) Validate() err
 }
 
 type UpdateManagedAgentResponseBodyDataNetworkAccessVpc struct {
-	// Specifies whether to allow access to the VPC.
+	// Specifies whether to allow VPC access.
 	//
 	// example:
 	//
@@ -1330,7 +1378,7 @@ func (s *UpdateManagedAgentResponseBodyDataNetworkAccessVpc) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataOssMounts struct {
-	// The name of the OSS bucket. This parameter is required and validated by the backend for each mount item.
+	// The OSS bucket name. This parameter is required and validated by the backend for each mount item.
 	//
 	// example:
 	//
@@ -1342,13 +1390,13 @@ type UpdateManagedAgentResponseBodyDataOssMounts struct {
 	//
 	// /mnt/oss/datasets
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// The non-empty relative directory prefix in the currently configured bucket.
+	// The non-empty relative directory prefix within the configured bucket.
 	//
 	// example:
 	//
 	// datasets
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Specifies whether the mount is read-only. Default value: false.
+	// Specifies whether to mount the directory in read-only mode. Default value: false.
 	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
@@ -1407,13 +1455,13 @@ type UpdateManagedAgentResponseBodyDataPromptVariables struct {
 	//
 	// default
 	DefaultValue *string `json:"defaultValue,omitempty" xml:"defaultValue,omitempty"`
-	// The description of the variable.
+	// The variable description.
 	//
 	// example:
 	//
 	// desc
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the variable.
+	// The variable name.
 	//
 	// example:
 	//
@@ -1528,7 +1576,7 @@ func (s *UpdateManagedAgentResponseBodyDataRuntime) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataRuntimeCompute struct {
-	// The compute specifications.
+	// The compute specification.
 	//
 	// This parameter is required.
 	//
@@ -1560,7 +1608,7 @@ func (s *UpdateManagedAgentResponseBodyDataRuntimeCompute) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataRuntimeHpa struct {
-	// Specifies whether elastic scaling is enabled in the current configuration.
+	// Indicates whether elastic scaling is enabled in the current configuration.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The maximum number of concurrent sessions per instance in the current configuration.
 	//
@@ -1693,7 +1741,7 @@ func (s *UpdateManagedAgentResponseBodyDataRuntimeSessionPolicy) Validate() erro
 }
 
 type UpdateManagedAgentResponseBodyDataSkills struct {
-	// The applied runtime version. This field is read-only.
+	// The effective version at runtime. This field is read-only.
 	//
 	// example:
 	//
@@ -1705,7 +1753,7 @@ type UpdateManagedAgentResponseBodyDataSkills struct {
 	//
 	// false
 	FromTemplate *bool `json:"fromTemplate,omitempty" xml:"fromTemplate,omitempty"`
-	// The name of the skill.
+	// The skill name.
 	//
 	// example:
 	//
@@ -1717,19 +1765,19 @@ type UpdateManagedAgentResponseBodyDataSkills struct {
 	//
 	// 1.0.0
 	ResolvedVersion *string `json:"resolvedVersion,omitempty" xml:"resolvedVersion,omitempty"`
-	// The source type of the skill. REFERENCE indicates that the skill references an AI Registry asset. STATIC indicates that the skill is statically provided with the deployment package.
+	// The skill source type.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The current target version compatible with legacy clients. New clients use resolvedVersion and determine the applied runtime version based on appliedVersion.
+	// The current target version for compatibility with legacy clients. New clients use resolvedVersion and determine the effective runtime version based on appliedVersion.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The version selector for the skill reference. Supports LABEL for tag-based selection and VERSION for specific version selection. If omitted, LABEL/latest is used. Do not specify a selector for STATIC sources.
+	// The version selector for the skill reference. Supports LABEL for tags and VERSION for specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *UpdateManagedAgentResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -1814,13 +1862,13 @@ func (s *UpdateManagedAgentResponseBodyDataSkills) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataSkillsVersionSelector struct {
-	// The type of the version selector. Valid values: LABEL (selects by tag) and VERSION (selects by specific version).
+	// The version selector type.
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the selector. If the type is LABEL, specify a tag name such as latest. If the type is VERSION, specify a specific version number.
+	// The selector value. When the type is LABEL, this is the tag name, such as latest. When the type is VERSION, this is the specific version number.
 	//
 	// example:
 	//
@@ -1859,15 +1907,15 @@ func (s *UpdateManagedAgentResponseBodyDataSkillsVersionSelector) Validate() err
 }
 
 type UpdateManagedAgentResponseBodyDataSubAgents struct {
-	// The instruction for the sub-agent.
+	// The sub-agent instruction.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Please review the code
+	// Review the code
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
-	// The name of the sub-agent.
+	// The sub-agent name.
 	//
 	// This parameter is required.
 	//
@@ -1875,7 +1923,7 @@ type UpdateManagedAgentResponseBodyDataSubAgents struct {
 	//
 	// reviewer-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of skills for the sub-agent.
+	// The list of sub-agent skills.
 	Skills []*UpdateManagedAgentResponseBodyDataSubAgentsSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
 }
 
@@ -1928,13 +1976,13 @@ func (s *UpdateManagedAgentResponseBodyDataSubAgents) Validate() error {
 }
 
 type UpdateManagedAgentResponseBodyDataSubAgentsSkills struct {
-	// The name of the skill.
+	// The skill name.
 	//
 	// example:
 	//
 	// web-search
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the skill.
+	// The skill version.
 	//
 	// example:
 	//
@@ -2051,7 +2099,7 @@ func (s *UpdateManagedAgentResponseBodyDataTemplateAiRegistry) Validate() error 
 }
 
 type UpdateManagedAgentResponseBodyDataTools struct {
-	// The name of the tool.
+	// The tool name.
 	//
 	// This parameter is required.
 	//
@@ -2059,7 +2107,7 @@ type UpdateManagedAgentResponseBodyDataTools struct {
 	//
 	// code-reviewer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the tool.
+	// The tool type.
 	//
 	// This parameter is required.
 	//
