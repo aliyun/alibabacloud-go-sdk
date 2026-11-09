@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	websocketutils "github.com/alibabacloud-go/darabonba-openapi/v2/websocketUtils"
@@ -25,6 +26,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Green")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":        dara.String("green.ap-southeast-1.aliyuncs.com"),
@@ -84,7 +92,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// The document moderation result.
+// Queries the document moderation results.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -132,7 +140,7 @@ func (client *Client) DescribeFileModerationResultWithOptions(request *DescribeF
 
 // Summary:
 //
-// The document moderation result.
+// Queries the document moderation results.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -1386,11 +1394,11 @@ func (client *Client) MultiModalGuardAsync(request *MultiModalGuardAsyncRequest)
 
 // Summary:
 //
-// Queries the asynchronous results of AI safety guardrail multimodal content moderation, supporting audio and video modalities.
+// Queries the asynchronous moderation results of the AI security guardrail for multimodal content, including audio and video modalities.
 //
 // Description:
 //
-// If the API incurs fees, add the following bold statement as the first sentence: **Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of XXX.**
+// If the API operation involves fees, add the bold text "**Make sure that you fully understand the billing methods and pricing of the XXX service before you call this API operation.**" as the first sentence. Make "pricing" a hyperlink to https://www.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncResultRequest
 //
@@ -1438,11 +1446,11 @@ func (client *Client) MultiModalGuardAsyncResultWithOptions(request *MultiModalG
 
 // Summary:
 //
-// Queries the asynchronous results of AI safety guardrail multimodal content moderation, supporting audio and video modalities.
+// Queries the asynchronous moderation results of the AI security guardrail for multimodal content, including audio and video modalities.
 //
 // Description:
 //
-// If the API incurs fees, add the following bold statement as the first sentence: **Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of XXX.**
+// If the API operation involves fees, add the bold text "**Make sure that you fully understand the billing methods and pricing of the XXX service before you call this API operation.**" as the first sentence. Make "pricing" a hyperlink to https://www.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncResultRequest
 //

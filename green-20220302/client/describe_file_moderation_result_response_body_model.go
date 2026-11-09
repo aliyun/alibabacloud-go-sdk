@@ -26,7 +26,7 @@ type DescribeFileModerationResultResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *DescribeFileModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -96,7 +96,7 @@ func (s *DescribeFileModerationResultResponseBody) Validate() error {
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
-	// The AccountId specified by the caller.
+	// The AccountId provided in the request.
 	//
 	// example:
 	//
@@ -108,12 +108,18 @@ type DescribeFileModerationResultResponseBodyData struct {
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	// The document type. This parameter is optional.
+	// Optional. The document type.
 	//
 	// example:
 	//
 	// doc
 	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The manual review task ID.
+	//
+	// example:
+	//
+	// m_fi_xxx
+	ManualTaskId *string `json:"ManualTaskId,omitempty" xml:"ManualTaskId,omitempty"`
 	// The list of detection results.
 	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
 	// The summary information.
@@ -124,7 +130,13 @@ type DescribeFileModerationResultResponseBodyData struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The URL for downloading the file.
+	// The task ID.
+	//
+	// example:
+	//
+	// fi_xxx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The file download URL.
 	//
 	// example:
 	//
@@ -152,6 +164,10 @@ func (s *DescribeFileModerationResultResponseBodyData) GetDocType() *string {
 	return s.DocType
 }
 
+func (s *DescribeFileModerationResultResponseBodyData) GetManualTaskId() *string {
+	return s.ManualTaskId
+}
+
 func (s *DescribeFileModerationResultResponseBodyData) GetPageResult() []*DescribeFileModerationResultResponseBodyDataPageResult {
 	return s.PageResult
 }
@@ -162,6 +178,10 @@ func (s *DescribeFileModerationResultResponseBodyData) GetPageSummary() *Describ
 
 func (s *DescribeFileModerationResultResponseBodyData) GetRiskLevel() *string {
 	return s.RiskLevel
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) GetTaskId() *string {
+	return s.TaskId
 }
 
 func (s *DescribeFileModerationResultResponseBodyData) GetUrl() *string {
@@ -183,6 +203,11 @@ func (s *DescribeFileModerationResultResponseBodyData) SetDocType(v string) *Des
 	return s
 }
 
+func (s *DescribeFileModerationResultResponseBodyData) SetManualTaskId(v string) *DescribeFileModerationResultResponseBodyData {
+	s.ManualTaskId = &v
+	return s
+}
+
 func (s *DescribeFileModerationResultResponseBodyData) SetPageResult(v []*DescribeFileModerationResultResponseBodyDataPageResult) *DescribeFileModerationResultResponseBodyData {
 	s.PageResult = v
 	return s
@@ -195,6 +220,11 @@ func (s *DescribeFileModerationResultResponseBodyData) SetPageSummary(v *Describ
 
 func (s *DescribeFileModerationResultResponseBodyData) SetRiskLevel(v string) *DescribeFileModerationResultResponseBodyData {
 	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeFileModerationResultResponseBodyData) SetTaskId(v string) *DescribeFileModerationResultResponseBodyData {
+	s.TaskId = &v
 	return s
 }
 
@@ -238,7 +268,7 @@ type DescribeFileModerationResultResponseBodyDataPageResult struct {
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The text moderation results.
 	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
-	// The URL where the text content is stored.
+	// The storage URL for the text content.
 	//
 	// example:
 	//
@@ -338,7 +368,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The invoked service.
+	// The called service.
 	//
 	// example:
 	//
@@ -418,7 +448,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) Vali
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
-	// The risk score.
+	// The confidence score.
 	//
 	// example:
 	//
@@ -490,13 +520,13 @@ type DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation s
 	//
 	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
-	// The X value of the coordinate point.
+	// The X-coordinate of the point.
 	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
-	// The Y value of the coordinate point.
+	// The Y-coordinate of the point.
 	//
 	// example:
 	//
@@ -571,7 +601,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// porn
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The text plus version result.
+	// The generation results of the text plus version.
 	Result []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The risk level.
 	//
@@ -579,13 +609,13 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The hit risk details.
+	// The details of the matched risks.
 	//
 	// example:
 	//
 	// xxx
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	// The hit risk keywords.
+	// The matched risk keywords.
 	//
 	// example:
 	//
@@ -601,7 +631,7 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
 	//
 	// example:
 	//
-	// blah blah
+	// Sample text
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The text segmentation information.
 	//
@@ -723,13 +753,13 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResult) Valid
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultTextResultResult struct {
-	// The label confidence score.
+	// The confidence level of the label.
 	//
 	// example:
 	//
 	// 90.50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The custom vocabulary hit results.
+	// The custom dictionary.
 	CustomizedHit []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
 	// The description corresponding to the label.
 	//
@@ -737,11 +767,11 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResultResult stru
 	//
 	// Pornography
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The text label in page results.
+	// The text labels in the page results.
 	//
 	// example:
 	//
-	// Political sensitivity
+	// Political content
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The risk level.
 	//
@@ -749,13 +779,13 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResultResult stru
 	//
 	// high
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The positions of the violation words.
+	// The positions of the prohibited words.
 	RiskPositions []*DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskPositions `json:"RiskPositions,omitempty" xml:"RiskPositions,omitempty" type:"Repeated"`
-	// The hit violation words.
+	// The matched prohibited words.
 	//
 	// example:
 	//
-	// Popular among everyone
+	// Popular items
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
 }
 
@@ -853,17 +883,17 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultTextResultResult)
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultTextResultResultCustomizedHit struct {
-	// The hit keyword.
+	// The matched keywords.
 	//
 	// example:
 	//
-	// Popular among everyone
+	// Popular items
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	// The vocabulary name.
+	// The name of the dictionary.
 	//
 	// example:
 	//
-	// TestVocabulary22
+	// Test dictionary 22
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
@@ -904,11 +934,11 @@ type DescribeFileModerationResultResponseBodyDataPageResultTextResultResultRiskP
 	//
 	// 21
 	EndPos *int64 `json:"EndPos,omitempty" xml:"EndPos,omitempty"`
-	// The violation word.
+	// The prohibited word.
 	//
 	// example:
 	//
-	// Visit pornographic website
+	// Visit porn websites
 	RiskWord *string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty"`
 	// The start position.
 	//
@@ -1098,7 +1128,7 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLab
 	//
 	// contraband
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The number of times the label appears.
+	// The number of occurrences of the label.
 	//
 	// example:
 	//
@@ -1212,7 +1242,7 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummary) Val
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt struct {
-	// The details of AI-generated or synthetic content detection.
+	// The AI-generated and synthetic content detection details.
 	AigcData *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData `json:"AigcData,omitempty" xml:"AigcData,omitempty" type:"Struct"`
 }
 
@@ -1243,17 +1273,17 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExt) 
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcData struct {
-	// The implicit label information of AI-generated or synthetic content.
+	// The implicit identification information of AI-generated and synthetic content.
 	AIGC *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC `json:"AIGC,omitempty" xml:"AIGC,omitempty" type:"Struct"`
-	// The comprehensive analysis report for forgery detection by the large language model.
+	// The comprehensive forgery detection analysis report generated by the large model.
 	//
 	// example:
 	//
-	// ### Comprehensive Report for Users
+	// ### Comprehensive user-facing report
 	//
-	// #### Quick Image Overview
+	// #### Quick overall image inspection
 	//
-	// - **Image Subject**: A scanned document titled "Letter of Authorization", containing the names of the authorizing and authorized companies and red official seals
+	// - **Image subject**: A scanned document titled "Letter of Authorization", containing the company names of both authorizing parties and a red official seal.
 	Explain *string `json:"Explain,omitempty" xml:"Explain,omitempty"`
 }
 
@@ -1293,13 +1323,13 @@ func (s *DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAi
 }
 
 type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDataAIGC struct {
-	// The content producer code.
+	// The code of the content producer.
 	//
 	// example:
 	//
 	// 00119144030008867405X210001
 	ContentProducer *string `json:"ContentProducer,omitempty" xml:"ContentProducer,omitempty"`
-	// The content propagator code.
+	// The code of the content distributor.
 	//
 	// example:
 	//
@@ -1309,27 +1339,27 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryExtAigcDa
 	//
 	// example:
 	//
-	// AI-generated or synthetic content
+	// Classified as AI-generated and synthetic content
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The content production ID.
+	// The production ID of the content.
 	//
 	// example:
 	//
 	// tos-cn-i-tb4s082cfz/ad88d9b125694f57b2c72235e5c42af1
 	ProduceID *string `json:"ProduceID,omitempty" xml:"ProduceID,omitempty"`
-	// The content propagation ID.
+	// The distribution ID of the content.
 	//
 	// example:
 	//
 	// tos-cn-i-tb4s082cfz/ad88d9b125694f57b2c72235e5c42af1
 	PropagateID *string `json:"PropagateID,omitempty" xml:"PropagateID,omitempty"`
-	// Reserved field 1.
+	// The first reserved field.
 	//
 	// example:
 	//
 	// None
 	ReservedCode1 *string `json:"ReservedCode1,omitempty" xml:"ReservedCode1,omitempty"`
-	// Reserved field 2.
+	// The second reserved field.
 	//
 	// example:
 	//
@@ -1419,7 +1449,7 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryRiskSummaryRiskLabel
 	//
 	// 95.96
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The description of the risk label in Chinese.
+	// The Chinese description of the risk label.
 	//
 	// example:
 	//
@@ -1527,7 +1557,7 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabel
 	//
 	// example:
 	//
-	// No risk detected
+	// No risks detected
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The label.
 	//
@@ -1535,7 +1565,7 @@ type DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabel
 	//
 	// contraband
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The number of times the label appears.
+	// The number of occurrences of the label.
 	//
 	// example:
 	//

@@ -96,9 +96,9 @@ func (s *MultiModalGuardAsyncResultResponseBody) Validate() error {
 }
 
 type MultiModalGuardAsyncResultResponseBodyData struct {
-	// The audio moderation segment results.
+	// The segmented audio moderation results.
 	AudioResult *MultiModalGuardAsyncResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
-	// The value of dataId passed in the API request. This field is not returned if dataId was not specified in the request.
+	// The value of the dataId parameter passed in the API request. If this parameter is not passed in the request, this field is not returned.
 	//
 	// example:
 	//
@@ -112,13 +112,15 @@ type MultiModalGuardAsyncResultResponseBodyData struct {
 	//
 	// liveId
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// The recommended action. Valid values:
+	// The data masking result.
+	RedactResult *MultiModalGuardAsyncResultResponseBodyDataRedactResult `json:"RedactResult,omitempty" xml:"RedactResult,omitempty" type:"Struct"`
+	// The suggestion. Valid values:
 	//
 	// - block: Block the content.
 	//
 	// - pass: Allow the content.
 	//
-	// - watch: Manually review the content.
+	// - watch: Review the content.
 	//
 	// - mask: Mask the content.
 	//
@@ -158,6 +160,10 @@ func (s *MultiModalGuardAsyncResultResponseBodyData) GetLiveId() *string {
 	return s.LiveId
 }
 
+func (s *MultiModalGuardAsyncResultResponseBodyData) GetRedactResult() *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	return s.RedactResult
+}
+
 func (s *MultiModalGuardAsyncResultResponseBodyData) GetSuggestion() *string {
 	return s.Suggestion
 }
@@ -186,6 +192,11 @@ func (s *MultiModalGuardAsyncResultResponseBodyData) SetLiveId(v string) *MultiM
 	return s
 }
 
+func (s *MultiModalGuardAsyncResultResponseBodyData) SetRedactResult(v *MultiModalGuardAsyncResultResponseBodyDataRedactResult) *MultiModalGuardAsyncResultResponseBodyData {
+	s.RedactResult = v
+	return s
+}
+
 func (s *MultiModalGuardAsyncResultResponseBodyData) SetSuggestion(v string) *MultiModalGuardAsyncResultResponseBodyData {
 	s.Suggestion = &v
 	return s
@@ -207,6 +218,11 @@ func (s *MultiModalGuardAsyncResultResponseBodyData) Validate() error {
 			return err
 		}
 	}
+	if s.RedactResult != nil {
+		if err := s.RedactResult.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -219,7 +235,7 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResult struct {
 	//
 	// 2
 	SliceNum *int32 `json:"SliceNum,omitempty" xml:"SliceNum,omitempty"`
-	// The recommended action.
+	// The suggestion.
 	//
 	// example:
 	//
@@ -290,13 +306,13 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The recommended action. Valid values:
+	// The moderation suggestion. Valid values:
 	//
 	// - block: Block the content.
 	//
 	// - pass: Allow the content.
 	//
-	// - watch: Manually review the content.
+	// - watch: Review the content.
 	//
 	// - mask: Mask the content.
 	//
@@ -308,7 +324,7 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails struct {
 	//
 	// example:
 	//
-	// The weather is really nice today.
+	// The weather is really nice today
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The temporary URL of the audio segment file.
 	//
@@ -396,7 +412,7 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetails) Vali
 type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail struct {
 	// The risk level. Valid values:
 	//
-	// - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+	// - high: High risk. If a custom dictionary is hit, the risk level is high by default.
 	//
 	// - medium: Medium risk.
 	//
@@ -410,13 +426,13 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail str
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The list of moderation results.
 	Result []*MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The recommended action. Valid values:
+	// The moderation suggestion. Valid values:
 	//
 	// - block: Block the content.
 	//
 	// - pass: Allow the content.
 	//
-	// - watch: Manually review the content.
+	// - watch: Review the content.
 	//
 	// - mask: Mask the content.
 	//
@@ -426,15 +442,15 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail str
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 	// The moderation type. Valid values:
 	//
-	// - contentModeration: content compliance moderation
+	// - contentModeration: Content compliance moderation.
 	//
-	// - promptAttack: prompt attack detection
+	// - promptAttack: Prompt attack detection.
 	//
-	// - sensitiveData: sensitive content detection
+	// - sensitiveData: Sensitive content detection.
 	//
-	// - modelHallucination: model hallucination detection
+	// - modelHallucination: Model hallucination detection.
 	//
-	// - maliciousFile: malicious file detection
+	// - maliciousFile: Malicious file detection.
 	//
 	// example:
 	//
@@ -500,7 +516,7 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetail
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResult struct {
-	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
+	// The confidence score. Valid values: 0 to 100. The value is accurate to two decimal places.
 	//
 	// example:
 	//
@@ -510,7 +526,7 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResu
 	//
 	// example:
 	//
-	// drugs.
+	// Drugs
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended information of the moderation result.
 	//
@@ -526,7 +542,7 @@ type MultiModalGuardAsyncResultResponseBodyDataAudioResultSliceDetailsDetailResu
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+	// - high: High risk. If a custom dictionary is hit, the risk level is high by default.
 	//
 	// - medium: Medium risk.
 	//
@@ -606,13 +622,13 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResult struct {
 	//
 	// 2
 	SliceNum *int32 `json:"SliceNum,omitempty" xml:"SliceNum,omitempty"`
-	// The recommended action. Valid values:
+	// The moderation suggestion. Valid values:
 	//
 	// - block: Block the content.
 	//
 	// - pass: Allow the content.
 	//
-	// - watch: Manually review the content.
+	// - watch: Review the content.
 	//
 	// - mask: Mask the content.
 	//
@@ -685,19 +701,19 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames struct {
 	//
 	// parameter invalid
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The frame capture position.
+	// The position of the captured frame.
 	//
 	// example:
 	//
 	// 1.5
 	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The recommended action. Valid values:
+	// The moderation suggestion. Valid values:
 	//
 	// - block: Block the content.
 	//
 	// - pass: Allow the content.
 	//
-	// - watch: Manually review the content.
+	// - watch: Review the content.
 	//
 	// - mask: Mask the content.
 	//
@@ -806,7 +822,7 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResultFrames) Validate()
 type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail struct {
 	// The risk level. Valid values:
 	//
-	// - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+	// - high: High risk. If a custom dictionary is hit, the risk level is high by default.
 	//
 	// - medium: Medium risk.
 	//
@@ -820,13 +836,13 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The moderation result.
 	Result []*MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The recommended action. Valid values:
+	// The moderation suggestion. Valid values:
 	//
 	// - block: Block the content.
 	//
 	// - pass: Allow the content.
 	//
-	// - watch: Manually review the content.
+	// - watch: Review the content.
 	//
 	// - mask: Mask the content.
 	//
@@ -836,15 +852,15 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail struct {
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 	// The moderation type. Valid values:
 	//
-	// - contentModeration: content compliance moderation
+	// - contentModeration: Content compliance moderation.
 	//
-	// - promptAttack: prompt attack detection
+	// - promptAttack: Prompt attack detection.
 	//
-	// - sensitiveData: sensitive content detection
+	// - sensitiveData: Sensitive content detection.
 	//
-	// - modelHallucination: model hallucination detection
+	// - modelHallucination: Model hallucination detection.
 	//
-	// - maliciousFile: malicious file detection
+	// - maliciousFile: Malicious file detection.
 	//
 	// example:
 	//
@@ -910,7 +926,7 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetail) Vali
 }
 
 type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult struct {
-	// The confidence score, ranging from 0 to 100, rounded to two decimal places.
+	// The confidence score. Valid values: 0 to 100. The value is accurate to two decimal places.
 	//
 	// example:
 	//
@@ -920,7 +936,7 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult str
 	//
 	// example:
 	//
-	// advertisement.
+	// Advertisement
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended information of the moderation result.
 	//
@@ -936,7 +952,7 @@ type MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult str
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - high: High risk. If a custom keyword library is hit, the risk level defaults to high.
+	// - high: High risk. If a custom dictionary is hit, the risk level is high by default.
 	//
 	// - medium: Medium risk.
 	//
@@ -1004,5 +1020,125 @@ func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult
 }
 
 func (s *MultiModalGuardAsyncResultResponseBodyDataFrameResultFramesDetailResult) Validate() error {
+	return dara.Validate(s)
+}
+
+type MultiModalGuardAsyncResultResponseBodyDataRedactResult struct {
+	// The processing type.
+	//
+	// example:
+	//
+	// faceBlur
+	ProcessType *string `json:"ProcessType,omitempty" xml:"ProcessType,omitempty"`
+	// The name of the OSS bucket that stores the masked object.
+	//
+	// example:
+	//
+	// test_bucket
+	ResultOssBucketName *string `json:"ResultOssBucketName,omitempty" xml:"ResultOssBucketName,omitempty"`
+	// The name of the OSS object for the masked data.
+	//
+	// example:
+	//
+	// video.mp4
+	ResultOssObjectName *string `json:"ResultOssObjectName,omitempty" xml:"ResultOssObjectName,omitempty"`
+	// The region of the masked OSS object.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ResultOssRegionId *string `json:"ResultOssRegionId,omitempty" xml:"ResultOssRegionId,omitempty"`
+	// The temporary URL of the masked object.
+	//
+	// example:
+	//
+	// https://XX
+	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	// The URL of the object before masking.
+	//
+	// example:
+	//
+	// https://XX
+	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
+	// The status.
+	//
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s MultiModalGuardAsyncResultResponseBodyDataRedactResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s MultiModalGuardAsyncResultResponseBodyDataRedactResult) GoString() string {
+	return s.String()
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetProcessType() *string {
+	return s.ProcessType
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetResultOssBucketName() *string {
+	return s.ResultOssBucketName
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetResultOssObjectName() *string {
+	return s.ResultOssObjectName
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetResultOssRegionId() *string {
+	return s.ResultOssRegionId
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetResultUrl() *string {
+	return s.ResultUrl
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetSourceUrl() *string {
+	return s.SourceUrl
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) GetStatus() *string {
+	return s.Status
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetProcessType(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.ProcessType = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetResultOssBucketName(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.ResultOssBucketName = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetResultOssObjectName(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.ResultOssObjectName = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetResultOssRegionId(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.ResultOssRegionId = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetResultUrl(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.ResultUrl = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetSourceUrl(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.SourceUrl = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) SetStatus(v string) *MultiModalGuardAsyncResultResponseBodyDataRedactResult {
+	s.Status = &v
+	return s
+}
+
+func (s *MultiModalGuardAsyncResultResponseBodyDataRedactResult) Validate() error {
 	return dara.Validate(s)
 }

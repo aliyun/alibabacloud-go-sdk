@@ -11,7 +11,7 @@ import (
 
 // Summary:
 //
-// The document moderation result.
+// Queries the document moderation results.
 //
 // @param request - DescribeFileModerationResultRequest
 //
@@ -906,11 +906,11 @@ func (client *Client) MultiModalGuardAsyncWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the asynchronous results of AI safety guardrail multimodal content moderation, supporting audio and video modalities.
+// Queries the asynchronous moderation results of the AI security guardrail for multimodal content, including audio and video modalities.
 //
 // Description:
 //
-// If the API incurs fees, add the following bold statement as the first sentence: **Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of XXX.**
+// If the API operation involves fees, add the bold text "**Make sure that you fully understand the billing methods and pricing of the XXX service before you call this API operation.**" as the first sentence. Make "pricing" a hyperlink to https://www.aliyun.com/price/product#/ecs/detail.
 //
 // @param request - MultiModalGuardAsyncResultRequest
 //
