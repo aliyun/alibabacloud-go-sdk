@@ -115,25 +115,25 @@ func (s *ImageUpscaleResponseBody) Validate() error {
 type ImageUpscaleResponseBodyData struct {
 	// The high-definition upscaling result data.
 	Data *ImageUpscaleResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the call fails, such as InvalidParameter or DownstreamUnavailable.
+	// The error code. Returned upon failure, such as InvalidParameter or DownstreamUnavailable.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message. Returned upon failure.
 	//
 	// example:
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the operation is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the downstream task. This parameter is left empty for synchronous API calls.
+	// The downstream task ID. This parameter is empty for synchronous operations.
 	//
 	// example:
 	//
@@ -226,7 +226,7 @@ type ImageUpscaleResponseBodyDataData struct {
 	//
 	// 4096
 	ImageHeight *int32 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	// The result information of the upscaled single image.
+	// The result information of the high-definition upscaling for a single image.
 	//
 	// example:
 	//

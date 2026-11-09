@@ -1,3 +1,6 @@
+2026-11-09 Version: v5.10.1
+- Generated golang 2026-04-28 for Aidge.
+
 2026-11-03 Version: v5.10.0
 - Support API GenerateProductContent.
 - Support API ImageUpscale.
