@@ -24,7 +24,7 @@ type iDescribeDataAgentSkillDownloadResponseBody interface {
 type DescribeDataAgentSkillDownloadResponseBody struct {
 	// The response struct.
 	Data *DescribeDataAgentSkillDownloadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. This parameter is returned when a request exception occurs.
+	// The error code returned when a request exception occurs.
 	//
 	// example:
 	//

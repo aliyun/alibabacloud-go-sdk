@@ -9445,13 +9445,13 @@ func (client *Client) SearchAgenticDatabase(request *SearchAgenticDatabaseReques
 //
 // ## Request description
 //
-// - The default value of message_type is primary. Set this parameter to additional or cancel when you need to append information or cancel the session.
+// - The default value of `message_type` is `primary`. Set it to `additional` or `cancel` when you need to append information or cancel the session.
 //
-// - The reply_to field specifies the agent message to which this message responds. The default value is 0.
+// - The `reply_to` field specifies the agent message to which this message responds. The default value is `0`.
 //
-// - When message_type is set to additional, the question field is required.
+// - The `question` field is required when `message_type` is set to `additional`.
 //
-// - You can use quoted_message to quote previous user messages.
+// - You can use `quoted_message` to quote previous user messages.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9575,13 +9575,13 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // ## Request description
 //
-// - The default value of message_type is primary. Set this parameter to additional or cancel when you need to append information or cancel the session.
+// - The default value of `message_type` is `primary`. Set it to `additional` or `cancel` when you need to append information or cancel the session.
 //
-// - The reply_to field specifies the agent message to which this message responds. The default value is 0.
+// - The `reply_to` field specifies the agent message to which this message responds. The default value is `0`.
 //
-// - When message_type is set to additional, the question field is required.
+// - The `question` field is required when `message_type` is set to `additional`.
 //
-// - You can use quoted_message to quote previous user messages.
+// - You can use `quoted_message` to quote previous user messages.
 //
 // @param request - SendChatMessageRequest
 //

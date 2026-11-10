@@ -1,3 +1,7 @@
+2026-11-10 Version: v4.4.1
+- Update API SendChatMessage: add request parameters SessionConfig.WorkMode.
+
+
 2026-11-06 Version: v4.4.0
 - Support API DescribeDataAgentSkillDownload.
 
