@@ -166,6 +166,140 @@ func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_resul
 
 // Summary:
 //
+// 查询 AI 调用明细
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于分页查询当前阿里云账号下指定业务版本、地域和时间范围内的AI模型调用明细。
+//
+// - 支持按模型调用请求ID、请求模型和用户ID进行筛选。
+//
+// - 查询结果按调用时间倒序返回。
+//
+// - 默认查询北京时间当日零点至当前时间的数据，查询区间不超过30天且不得早于当前时间向前推算3个自然月。
+//
+// - 调用方仅能查询当前调用身份所属主账号的数据，不能指定其他账号。
+//
+// - `PageNumber`与`PageSize`的乘积不得超过1000000。
+//
+// - `BizType`不传时默认为企业版。
+//
+// - `GatewayRegion`不传时国内站默认上海，国际站默认新加坡。
+//
+// @param request - DescribeAICallDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAICallDetailsResponse
+func (client *Client) DescribeAICallDetailsWithOptions(request *DescribeAICallDetailsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAICallDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GatewayRegion) {
+		query["GatewayRegion"] = request.GatewayRegion
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["ModelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchRequestId) {
+		query["SearchRequestId"] = request.SearchRequestId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.WyIds) {
+		query["WyIds"] = request.WyIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAICallDetails"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAICallDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 AI 调用明细
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口用于分页查询当前阿里云账号下指定业务版本、地域和时间范围内的AI模型调用明细。
+//
+// - 支持按模型调用请求ID、请求模型和用户ID进行筛选。
+//
+// - 查询结果按调用时间倒序返回。
+//
+// - 默认查询北京时间当日零点至当前时间的数据，查询区间不超过30天且不得早于当前时间向前推算3个自然月。
+//
+// - 调用方仅能查询当前调用身份所属主账号的数据，不能指定其他账号。
+//
+// - `PageNumber`与`PageSize`的乘积不得超过1000000。
+//
+// - `BizType`不传时默认为企业版。
+//
+// - `GatewayRegion`不传时国内站默认上海，国际站默认新加坡。
+//
+// @param request - DescribeAICallDetailsRequest
+//
+// @return DescribeAICallDetailsResponse
+func (client *Client) DescribeAICallDetails(request *DescribeAICallDetailsRequest) (_result *DescribeAICallDetailsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeAICallDetailsResponse{}
+	_body, _err := client.DescribeAICallDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of agents and usage summary information under the current username.
 //
 // Description:
