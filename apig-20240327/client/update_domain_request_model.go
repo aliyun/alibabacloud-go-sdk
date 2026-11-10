@@ -66,7 +66,7 @@ type UpdateDomainRequest struct {
 	//
 	// Dedicated
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is set. When the protocol is HTTPS, forceHttps is required.
+	// The Settings for the HTTPS Protocol Type. Specifies whether to enable forced HTTPS redirection. This parameter is required when the protocol is HTTPS.
 	//
 	// example:
 	//
@@ -78,27 +78,27 @@ type UpdateDomainRequest struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// Specifies whether to enable mutual TLS (mTLS) authentication.
+	// Specifies whether to enable mTLS mutual authentication.
 	MTLSEnabled *bool `json:"mTLSEnabled,omitempty" xml:"mTLSEnabled,omitempty"`
-	// The protocol type supported by the domain name.
+	// The protocol types supported by the domain name.
 	//
-	// - HTTP: Only the HTTP protocol is supported.
+	// - HTTP: Supports only the HTTP protocol.
 	//
-	// - HTTPS: Only the HTTPS protocol is supported.
+	// - HTTPS: Supports only the HTTPS protocol.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The cipher suite configuration.
+	// The cipher suite configurations.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`
-	// The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
+	// The maximum TLS protocol version. The maximum supported version is TLS 1.3.
 	//
 	// example:
 	//
 	// TLS 1.3
 	TlsMax *string `json:"tlsMax,omitempty" xml:"tlsMax,omitempty"`
-	// The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
+	// The minimum TLS protocol version. The minimum supported version is TLS 1.0.
 	//
 	// example:
 	//

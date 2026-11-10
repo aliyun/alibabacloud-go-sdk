@@ -34,7 +34,7 @@ type GetDomainResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to trace the API call chain.
+	// The request ID used to trace the API call chain.
 	//
 	// example:
 	//
@@ -112,19 +112,19 @@ type GetDomainResponseBodyData struct {
 	//
 	// example:
 	//
-	// -
+	// 0
 	CertDetailErrorCode *string `json:"certDetailErrorCode,omitempty" xml:"certDetailErrorCode,omitempty"`
 	// The error message for the certificate details.
 	//
 	// example:
 	//
-	// -
+	// Certificate details retrieved successfully
 	CertDetailErrorMessage *string `json:"certDetailErrorMessage,omitempty" xml:"certDetailErrorMessage,omitempty"`
-	// The certificate detail status.
+	// The status of the certificate details.
 	//
 	// example:
 	//
-	// -
+	// success
 	CertDetailStatus *string `json:"certDetailStatus,omitempty" xml:"certDetailStatus,omitempty"`
 	// The certificate identifier.
 	//
@@ -158,7 +158,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// -----END CERTIFICATE-----
 	ClientCACert *string `json:"clientCACert,omitempty" xml:"clientCACert,omitempty"`
-	// The source from which the domain name was created.
+	// The creation source.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// Serverless
 	DomainScope *string `json:"domainScope,omitempty" xml:"domainScope,omitempty"`
-	// The HTTPS protocol type settings. Specifies whether forced HTTPS redirection is enabled.
+	// The settings for the HTTPS protocol type. Indicates whether forced HTTPS redirection is enabled.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type GetDomainResponseBodyData struct {
 	//
 	// Open
 	Http2Option *string `json:"http2Option,omitempty" xml:"http2Option,omitempty"`
-	// The certificate issuer.
+	// The certification authority.
 	//
 	// example:
 	//
 	// Alibaba
 	Issuer *string `json:"issuer,omitempty" xml:"issuer,omitempty"`
-	// Indicates whether mTLS mutual authentication is enabled.
+	// Specifies whether mTLS mutual authentication is enabled.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// 1719386834548
 	NotAfterTimstamp *int64 `json:"notAfterTimstamp,omitempty" xml:"notAfterTimstamp,omitempty"`
-	// The effective period of the certificate.
+	// The effective time of the certificate.
 	//
 	// example:
 	//
@@ -232,9 +232,9 @@ type GetDomainResponseBodyData struct {
 	NotBeforeTimestamp *int64 `json:"notBeforeTimestamp,omitempty" xml:"notBeforeTimestamp,omitempty"`
 	// The protocol types supported by the domain name. Valid values:
 	//
-	// - HTTP: Only the HTTP protocol is supported.
+	// - HTTP: Supports only the HTTP protocol.
 	//
-	// - HTTPS: Only the HTTPS protocol is supported.
+	// - HTTPS: Supports only the HTTPS protocol.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type GetDomainResponseBodyData struct {
 	//
 	// aliyun.com
 	Sans *string `json:"sans,omitempty" xml:"sans,omitempty"`
-	// The production resource information.
+	// The online resource information.
 	StatisticsInfo *GetDomainResponseBodyDataStatisticsInfo `json:"statisticsInfo,omitempty" xml:"statisticsInfo,omitempty" type:"Struct"`
 	// The cipher suite configuration.
 	TlsCipherSuitesConfig *TlsCipherSuitesConfig `json:"tlsCipherSuitesConfig,omitempty" xml:"tlsCipherSuitesConfig,omitempty"`

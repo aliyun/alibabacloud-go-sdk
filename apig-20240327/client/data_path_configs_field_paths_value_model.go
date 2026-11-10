@@ -80,7 +80,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// usage
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The message direction of the field, which indicates whether it is extracted from the request or the response.
+	// The message direction of the field, which indicates whether the field is extracted from the request or the response.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DataPathConfigsFieldPathsValue struct {
 	//
 	// false
 	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	// Indicates whether the collection of the field is enabled.
+	// Indicates whether collection is enabled for the field.
 	//
 	// example:
 	//

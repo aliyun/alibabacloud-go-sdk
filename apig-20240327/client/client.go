@@ -1336,6 +1336,8 @@ func (client *Client) CreateConsumer(request *CreateConsumerRequest) (_result *C
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
 // Creates a consumer authorization rule.
@@ -1399,6 +1401,8 @@ func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *str
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
 // Creates a consumer authorization rule.
@@ -1406,6 +1410,7 @@ func (client *Client) CreateConsumerAuthorizationRuleWithOptions(consumerId *str
 // @param request - CreateConsumerAuthorizationRuleRequest
 //
 // @return CreateConsumerAuthorizationRuleResponse
+// Deprecated
 func (client *Client) CreateConsumerAuthorizationRule(consumerId *string, request *CreateConsumerAuthorizationRuleRequest) (_result *CreateConsumerAuthorizationRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1978,6 +1983,140 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 	headers := make(map[string]*string)
 	_result = &CreateGatewayResponse{}
 	_body, _err := client.CreateGatewayWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关配额限流规则主体用量明细导出任务
+//
+// Description:
+//
+// ## 调用流程
+//
+// 本接口为指定网关配额规则下的一个消费者或消费者组创建消费明细导出任务，导出内容来自网关访问日志。
+//
+// 1. 调用本接口获取 taskId。新任务返回 Pending，表示已提交，文件尚未生成。
+//
+// 2. 使用相同的 gatewayId、ruleId、subjectId 和返回的 taskId 调用 GetGatewayQuotaRuleSubjectUsageExportTask，轮询任务状态。
+//
+// 3. 当轮询状态为 Success 且文件未过期时，通过GetGatewayQuotaRuleSubjectUsageExportTask下载 csv.gz 文件；状态为 Failed 时，根据 errorMessage 排查后重新创建任务。
+//
+// ## 使用条件与限制
+//
+// - 创建任务时，配额规则必须存在，且目标主体已绑定到该规则。消费者规则使用消费者 ID，消费者组规则使用消费者组 ID。
+//
+// - 有效导出时间范围内的明细依赖网关访问日志投递，请先启用日志投递并确认所需时段的日志可查询。
+//
+// - 单次导出时间跨度不得超过一个规则周期。单次最多导出 100000 条明细；后台统计结果超过上限时任务失败，请缩小时间范围后重试。
+//
+// - 同一用户在当前地域对同一网关、规则和主体在最近 10 分钟内已有 Pending 或 Running 任务时，重复创建会被拒绝；最近 10 分钟内创建且仍为 Pending 或 Running 的导出任务总数达到 3 个时也会被拒绝。请等待已有任务结束。相同 clientToken、相同参数的幂等重试可复用已有任务。
+//
+// - 任务自创建起的处理超时为 10 分钟。超时后任务按 Failed 处理；这不是任务必定成功完成的时限承诺。
+//
+// - 创建时确定导出时间范围、计量维度和主体名称，后续查询不会重新计算这些条件。文件成功生成后可在 24 小时内获取下载链接；每次查询生成的签名链接有效期为 10 分钟，具体时间以查询结果为准。
+//
+// @param request - CreateGatewayQuotaRuleSubjectUsageExportTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayQuotaRuleSubjectUsageExportTaskResponse
+func (client *Client) CreateGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatewayId *string, ruleId *string, subjectId *string, request *CreateGatewayQuotaRuleSubjectUsageExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGatewayQuotaRuleSubjectUsageExportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FilterFailedRequests) {
+		body["filterFailedRequests"] = request.FilterFailedRequests
+	}
+
+	if !dara.IsNil(request.Format) {
+		body["format"] = request.Format
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGatewayQuotaRuleSubjectUsageExportTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId)) + "/subjects/" + dara.PercentEncode(dara.StringValue(subjectId)) + "/usage/export-tasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGatewayQuotaRuleSubjectUsageExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建网关配额限流规则主体用量明细导出任务
+//
+// Description:
+//
+// ## 调用流程
+//
+// 本接口为指定网关配额规则下的一个消费者或消费者组创建消费明细导出任务，导出内容来自网关访问日志。
+//
+// 1. 调用本接口获取 taskId。新任务返回 Pending，表示已提交，文件尚未生成。
+//
+// 2. 使用相同的 gatewayId、ruleId、subjectId 和返回的 taskId 调用 GetGatewayQuotaRuleSubjectUsageExportTask，轮询任务状态。
+//
+// 3. 当轮询状态为 Success 且文件未过期时，通过GetGatewayQuotaRuleSubjectUsageExportTask下载 csv.gz 文件；状态为 Failed 时，根据 errorMessage 排查后重新创建任务。
+//
+// ## 使用条件与限制
+//
+// - 创建任务时，配额规则必须存在，且目标主体已绑定到该规则。消费者规则使用消费者 ID，消费者组规则使用消费者组 ID。
+//
+// - 有效导出时间范围内的明细依赖网关访问日志投递，请先启用日志投递并确认所需时段的日志可查询。
+//
+// - 单次导出时间跨度不得超过一个规则周期。单次最多导出 100000 条明细；后台统计结果超过上限时任务失败，请缩小时间范围后重试。
+//
+// - 同一用户在当前地域对同一网关、规则和主体在最近 10 分钟内已有 Pending 或 Running 任务时，重复创建会被拒绝；最近 10 分钟内创建且仍为 Pending 或 Running 的导出任务总数达到 3 个时也会被拒绝。请等待已有任务结束。相同 clientToken、相同参数的幂等重试可复用已有任务。
+//
+// - 任务自创建起的处理超时为 10 分钟。超时后任务按 Failed 处理；这不是任务必定成功完成的时限承诺。
+//
+// - 创建时确定导出时间范围、计量维度和主体名称，后续查询不会重新计算这些条件。文件成功生成后可在 24 小时内获取下载链接；每次查询生成的签名链接有效期为 10 分钟，具体时间以查询结果为准。
+//
+// @param request - CreateGatewayQuotaRuleSubjectUsageExportTaskRequest
+//
+// @return CreateGatewayQuotaRuleSubjectUsageExportTaskResponse
+func (client *Client) CreateGatewayQuotaRuleSubjectUsageExportTask(gatewayId *string, ruleId *string, subjectId *string, request *CreateGatewayQuotaRuleSubjectUsageExportTaskRequest) (_result *CreateGatewayQuotaRuleSubjectUsageExportTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGatewayQuotaRuleSubjectUsageExportTaskResponse{}
+	_body, _err := client.CreateGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatewayId, ruleId, subjectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3485,7 +3624,7 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 //
 // Description:
 //
-// Creates multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -3554,7 +3693,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 //
 // Description:
 //
-// Creates multiple services.
+// This operation supports creating multiple services.
 //
 // @param request - CreateServiceRequest
 //
@@ -3901,9 +4040,11 @@ func (client *Client) DeleteConsumer(consumerId *string) (_result *DeleteConsume
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
-// Deletes an API consumer authorization rule.
+// Deletes a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -3934,11 +4075,14 @@ func (client *Client) DeleteConsumerAuthorizationRuleWithOptions(consumerAuthori
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
-// Deletes an API consumer authorization rule.
+// Deletes a consumer authorization rule.
 //
 // @return DeleteConsumerAuthorizationRuleResponse
+// Deprecated
 func (client *Client) DeleteConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *DeleteConsumerAuthorizationRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5706,7 +5850,7 @@ func (client *Client) GetAiModelProvider(modelProviderId *string, request *GetAi
 
 // Summary:
 //
-// Queries the effective field collection configurations for each request path of an HTTP API under a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
+// Queries the effective field collection configurations for each request path of an HTTP API in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
 //
 // @param request - GetApiPathFieldConfigRequest
 //
@@ -5757,7 +5901,7 @@ func (client *Client) GetApiPathFieldConfigWithOptions(request *GetApiPathFieldC
 
 // Summary:
 //
-// Queries the effective field collection configurations for each request path of an HTTP API under a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
+// Queries the effective field collection configurations for each request path of an HTTP API in a specified cloud-native API gateway, including the field source, JSONPath, collection status, switch permission, and template origin.
 //
 // @param request - GetApiPathFieldConfigRequest
 //
@@ -5776,7 +5920,7 @@ func (client *Client) GetApiPathFieldConfig(request *GetApiPathFieldConfigReques
 
 // Summary:
 //
-// Queries the field template corresponding to a URI of the request and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
+// Queries the field template corresponding to the API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
 //
 // @param request - GetApiPathFieldTemplateRequest
 //
@@ -5823,7 +5967,7 @@ func (client *Client) GetApiPathFieldTemplateWithOptions(request *GetApiPathFiel
 
 // Summary:
 //
-// Queries the field template corresponding to a URI of the request and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
+// Queries the field template corresponding to the API request path and returns the template name, applicable protocol, template description, and the set of fields defined by the template, including field keys, JSONPaths, value sources, and statistical categories.
 //
 // @param request - GetApiPathFieldTemplateRequest
 //
@@ -6010,9 +6154,11 @@ func (client *Client) GetConsumer(consumerId *string) (_result *GetConsumerRespo
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
-// Retrieves a consumer authorization rule.
+// Retrieves consumer authorization rules.
 //
 // @param headers - map
 //
@@ -6043,11 +6189,14 @@ func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizat
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
-// Retrieves a consumer authorization rule.
+// Retrieves consumer authorization rules.
 //
 // @return GetConsumerAuthorizationRuleResponse
+// Deprecated
 func (client *Client) GetConsumerAuthorizationRule(consumerAuthorizationRuleId *string, consumerId *string) (_result *GetConsumerAuthorizationRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6772,6 +6921,114 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsage(gatewayId *string, ruleId 
 	headers := make(map[string]*string)
 	_result = &GetGatewayQuotaRuleSubjectUsageResponse{}
 	_body, _err := client.GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId, ruleId, subjectId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status, processing progress, failure cause, and file download information of an export task for quota rule subject consumption details.
+//
+// Description:
+//
+// ## Call flow
+//
+// First, call CreateGatewayQuotaRuleSubjectUsageExportTask to create a task. Then, use the returned taskId along with the same gatewayId, ruleId, and subjectId to call this operation in the same region.
+//
+// - Pending or Running: The task is not completed. You can query again after a period of time.
+//
+// - Success: Check result.fileExpired and result.downloadUrl. If the file is not expired and a link is returned, you can download the file.
+//
+// - Failed: Troubleshoot the issue based on errorMessage. To re-export, call the create operation and use a new clientToken.
+//
+// ## Download link and file validity period
+//
+// For each successful query where the file is not expired, a signed link with a validity period of 10 minutes is generated. Download the file promptly based on downloadUrlExpiredAt. If the link expires but the file has not reached fileExpiredAt, you can query again to obtain a new link. Querying again does not regenerate the file or extend the 24-hour validity period of the file.
+//
+// After the file reaches fileExpiredAt, this operation no longer issues new links, returns fileExpired=true, and omits downloadUrl and downloadUrlExpiredAt. The task status remains Success. To export again, create a new task.
+//
+// ## Query scope and task progress
+//
+// This operation returns only the export tasks of the current user in the current region that match the gateway, rule, and subject paths. If the paths do not match or the task does not exist, a not found error is returned. Existing tasks are queried based on the information recorded at creation. The export conditions are not recalculated due to subsequent rule resets or subject name changes.
+//
+// If a task remains in the Pending or Running state for more than 10 minutes after creation, the query treats it as a timeout failure. Determine whether the task is completed based on the status, not just totalCount or processedCount.
+//
+// @param request - GetGatewayQuotaRuleSubjectUsageExportTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayQuotaRuleSubjectUsageExportTaskResponse
+func (client *Client) GetGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatewayId *string, ruleId *string, subjectId *string, taskId *string, request *GetGatewayQuotaRuleSubjectUsageExportTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayQuotaRuleSubjectUsageExportTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayQuotaRuleSubjectUsageExportTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/quota-rules/" + dara.PercentEncode(dara.StringValue(ruleId)) + "/subjects/" + dara.PercentEncode(dara.StringValue(subjectId)) + "/usage/export-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayQuotaRuleSubjectUsageExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the status, processing progress, failure cause, and file download information of an export task for quota rule subject consumption details.
+//
+// Description:
+//
+// ## Call flow
+//
+// First, call CreateGatewayQuotaRuleSubjectUsageExportTask to create a task. Then, use the returned taskId along with the same gatewayId, ruleId, and subjectId to call this operation in the same region.
+//
+// - Pending or Running: The task is not completed. You can query again after a period of time.
+//
+// - Success: Check result.fileExpired and result.downloadUrl. If the file is not expired and a link is returned, you can download the file.
+//
+// - Failed: Troubleshoot the issue based on errorMessage. To re-export, call the create operation and use a new clientToken.
+//
+// ## Download link and file validity period
+//
+// For each successful query where the file is not expired, a signed link with a validity period of 10 minutes is generated. Download the file promptly based on downloadUrlExpiredAt. If the link expires but the file has not reached fileExpiredAt, you can query again to obtain a new link. Querying again does not regenerate the file or extend the 24-hour validity period of the file.
+//
+// After the file reaches fileExpiredAt, this operation no longer issues new links, returns fileExpired=true, and omits downloadUrl and downloadUrlExpiredAt. The task status remains Success. To export again, create a new task.
+//
+// ## Query scope and task progress
+//
+// This operation returns only the export tasks of the current user in the current region that match the gateway, rule, and subject paths. If the paths do not match or the task does not exist, a not found error is returned. Existing tasks are queried based on the information recorded at creation. The export conditions are not recalculated due to subsequent rule resets or subject name changes.
+//
+// If a task remains in the Pending or Running state for more than 10 minutes after creation, the query treats it as a timeout failure. Determine whether the task is completed based on the status, not just totalCount or processedCount.
+//
+// @param request - GetGatewayQuotaRuleSubjectUsageExportTaskRequest
+//
+// @return GetGatewayQuotaRuleSubjectUsageExportTaskResponse
+func (client *Client) GetGatewayQuotaRuleSubjectUsageExportTask(gatewayId *string, ruleId *string, subjectId *string, taskId *string, request *GetGatewayQuotaRuleSubjectUsageExportTaskRequest) (_result *GetGatewayQuotaRuleSubjectUsageExportTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetGatewayQuotaRuleSubjectUsageExportTaskResponse{}
+	_body, _err := client.GetGatewayQuotaRuleSubjectUsageExportTaskWithOptions(gatewayId, ruleId, subjectId, taskId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8561,7 +8818,7 @@ func (client *Client) InstallPlugin(request *InstallPluginRequest) (_result *Ins
 
 // Summary:
 //
-// Calls an AI agent.
+// Invokes an AI agent.
 //
 // @param request - InvokeAIAgentRequest
 //
@@ -8578,7 +8835,7 @@ func (client *Client) InvokeAIAgentWithSSE(request *InvokeAIAgentRequest, header
 
 // Summary:
 //
-// Calls an AI agent.
+// Invokes an AI agent.
 //
 // @param request - InvokeAIAgentRequest
 //
@@ -8641,7 +8898,7 @@ func (client *Client) InvokeAIAgentWithOptions(request *InvokeAIAgentRequest, he
 
 // Summary:
 //
-// Calls an AI agent.
+// Invokes an AI agent.
 //
 // @param request - InvokeAIAgentRequest
 //
@@ -9056,6 +9313,8 @@ func (client *Client) ListChatSessions(request *ListChatSessionsRequest) (_resul
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListConsumerAuthorizationRules is deprecated
+//
 // Summary:
 //
 // Retrieves a list of consumer authorization rules.
@@ -9111,6 +9370,8 @@ func (client *Client) ListConsumerAuthorizationRulesWithOptions(consumerId *stri
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ListConsumerAuthorizationRules is deprecated
+//
 // Summary:
 //
 // Retrieves a list of consumer authorization rules.
@@ -9118,6 +9379,7 @@ func (client *Client) ListConsumerAuthorizationRulesWithOptions(consumerId *stri
 // @param request - ListConsumerAuthorizationRulesRequest
 //
 // @return ListConsumerAuthorizationRulesResponse
+// Deprecated
 func (client *Client) ListConsumerAuthorizationRules(consumerId *string, request *ListConsumerAuthorizationRulesRequest) (_result *ListConsumerAuthorizationRulesResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9370,7 +9632,7 @@ func (client *Client) ListConsumerGroups(request *ListConsumerGroupsRequest) (_r
 
 // Summary:
 //
-// Queries the list of quota rules configured for a specific consumer.
+// Queries the list of configured quota rules for a consumer.
 //
 // @param request - ListConsumerQuotaRulesRequest
 //
@@ -9429,7 +9691,7 @@ func (client *Client) ListConsumerQuotaRulesWithOptions(consumerId *string, requ
 
 // Summary:
 //
-// Queries the list of quota rules configured for a specific consumer.
+// Queries the list of configured quota rules for a consumer.
 //
 // @param request - ListConsumerQuotaRulesRequest
 //
@@ -10161,7 +10423,7 @@ func (client *Client) ListGatewayFeatures(gatewayId *string) (_result *ListGatew
 
 // Summary:
 //
-// Retrieves the list of load balancers for a gateway.
+// Retrieves the list of gateway load balancers.
 //
 // @param request - ListGatewayLoadBalancersRequest
 //
@@ -10228,7 +10490,7 @@ func (client *Client) ListGatewayLoadBalancersWithOptions(gatewayId *string, req
 
 // Summary:
 //
-// Retrieves the list of load balancers for a gateway.
+// Retrieves the list of gateway load balancers.
 //
 // @param request - ListGatewayLoadBalancersRequest
 //
@@ -11233,7 +11495,7 @@ func (client *Client) ListK8sClusterSources(gatewayId *string, request *ListK8sC
 
 // Summary:
 //
-// Queries the details of Model Context Protocol (MCP) tools in an API product of the MCP Server type. The response returns a list of tools. Each tool includes three text members (name, title, and description) and four map members (inputSchema, outputSchema, annotations, and meta).
+// Queries the details of Model Context Protocol (MCP) tools in an MCP Server-type API product and returns a list of tools. Each tool contains three text fields: name, title, and description, and four map fields: inputSchema, outputSchema, annotations, and meta.
 //
 // @param request - ListMcpProductToolsRequest
 //
@@ -11274,7 +11536,7 @@ func (client *Client) ListMcpProductToolsWithOptions(productId *string, request 
 
 // Summary:
 //
-// Queries the details of Model Context Protocol (MCP) tools in an API product of the MCP Server type. The response returns a list of tools. Each tool includes three text members (name, title, and description) and four map members (inputSchema, outputSchema, annotations, and meta).
+// Queries the details of Model Context Protocol (MCP) tools in an MCP Server-type API product and returns a list of tools. Each tool contains three text fields: name, title, and description, and four map fields: inputSchema, outputSchema, annotations, and meta.
 //
 // @param request - ListMcpProductToolsRequest
 //
@@ -11461,7 +11723,7 @@ func (client *Client) ListMigrationTasks(request *ListMigrationTasksRequest) (_r
 
 // Summary:
 //
-// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with the features, pricing, meta, availablePaths, and snapshots structures. The only request parameter is the provider identifier.
+// Queries a list of model cards and returns the model name, provider, and source identifier of each card, along with its features, pricing, meta, availablePaths, and snapshots structures. The only business request parameter is the provider identifier.
 //
 // @param request - ListModelCardsRequest
 //
@@ -11508,7 +11770,7 @@ func (client *Client) ListModelCardsWithOptions(request *ListModelCardsRequest, 
 
 // Summary:
 //
-// Queries a list of model cards and returns the model name, provider, and source identifier for each card, along with the features, pricing, meta, availablePaths, and snapshots structures. The only request parameter is the provider identifier.
+// Queries a list of model cards and returns the model name, provider, and source identifier of each card, along with its features, pricing, meta, availablePaths, and snapshots structures. The only business request parameter is the provider identifier.
 //
 // @param request - ListModelCardsRequest
 //
@@ -14173,11 +14435,11 @@ func (client *Client) RestartGateway(gatewayId *string) (_result *RestartGateway
 
 // Summary:
 //
-// Queries the currently active credentials for an AI service.
+// Queries the currently active credentials for the AI service.
 //
 // Description:
 //
-// Queries the currently active credentials for an AI service.
+// Queries the currently active credentials for the AI service.
 //
 // @param request - RevealServiceCredentialRequest
 //
@@ -14218,11 +14480,11 @@ func (client *Client) RevealServiceCredentialWithOptions(serviceId *string, requ
 
 // Summary:
 //
-// Queries the currently active credentials for an AI service.
+// Queries the currently active credentials for the AI service.
 //
 // Description:
 //
-// Queries the currently active credentials for an AI service.
+// Queries the currently active credentials for the AI service.
 //
 // @param request - RevealServiceCredentialRequest
 //
@@ -14449,7 +14711,7 @@ func (client *Client) SyncMCPServers(request *SyncMCPServersRequest) (_result *S
 
 // Summary:
 //
-// Tags resources.
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -14504,7 +14766,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Tags resources.
+// Adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -15311,13 +15573,15 @@ func (client *Client) UpdateConsumer(consumerId *string, request *UpdateConsumer
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
-// Updates consumer authorization rules.
+// Updates the consumer authorization rule.
 //
 // Description:
 //
-// This API operation is replaced by UpdateAuthorizationRule. The new API path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When you call the new API operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
+// This API operation has been replaced by UpdateAuthorizationRule. The new API path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When you call the new API operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -15370,17 +15634,20 @@ func (client *Client) UpdateConsumerAuthorizationRuleWithOptions(consumerId *str
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UpdateConsumerAuthorizationRule is deprecated
+//
 // Summary:
 //
-// Updates consumer authorization rules.
+// Updates the consumer authorization rule.
 //
 // Description:
 //
-// This API operation is replaced by UpdateAuthorizationRule. The new API path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When you call the new API operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
+// This API operation has been replaced by UpdateAuthorizationRule. The new API path is /v1/authorization-rules/{consumerAuthorizationRuleId}. When you call the new API operation, you only need to provide consumerAuthorizationRuleId in the path and the resources array in the request body. The consumerId parameter is no longer required.
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
 // @return UpdateConsumerAuthorizationRuleResponse
+// Deprecated
 func (client *Client) UpdateConsumerAuthorizationRule(consumerId *string, consumerAuthorizationRuleId *string, request *UpdateConsumerAuthorizationRuleRequest) (_result *UpdateConsumerAuthorizationRuleResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15539,7 +15806,7 @@ func (client *Client) UpdateDeveloperStatus(developerId *string, request *Update
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
+// Only sources of the **container service*	- type are allowed to update the listener Ingress configurations.
 //
 // @param request - UpdateDomainRequest
 //
@@ -15630,7 +15897,7 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type can update the listener Ingress configuration.
+// Only sources of the **container service*	- type are allowed to update the listener Ingress configurations.
 //
 // @param request - UpdateDomainRequest
 //

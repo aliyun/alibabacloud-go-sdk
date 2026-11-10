@@ -18,15 +18,15 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The resource IDs. You can specify up to 50 subkeys.
+	// The IDs of the resources. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// The resource type used for the tagging operation. Set this parameter to Gateway.
+	// The resource type used for the tagging operation. Set the value to Gateway.
 	//
 	// example:
 	//
 	// gateway
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The list of labels.
+	// The list of tags.
 	Tag []*TagResourcesRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
 }
 
@@ -79,13 +79,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The label key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The label value.
+	// The tag value.
 	//
 	// example:
 	//

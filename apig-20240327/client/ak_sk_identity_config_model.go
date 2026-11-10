@@ -24,7 +24,7 @@ type AkSkIdentityConfig struct {
 	//
 	// example:
 	//
-	// xxxx
+	// ak-xxxxxxxx
 	Ak *string `json:"ak,omitempty" xml:"ak,omitempty"`
 	// The generation mode.
 	//
@@ -36,7 +36,7 @@ type AkSkIdentityConfig struct {
 	//
 	// example:
 	//
-	// xxxx
+	// sk-xxxxxxxx
 	Sk *string `json:"sk,omitempty" xml:"sk,omitempty"`
 	// The type.
 	//

@@ -26,15 +26,15 @@ type CreateConsumerAuthorizationRuleRequest struct {
 	AuthorizationResourceInfos []*AuthorizationResourceInfo `json:"authorizationResourceInfos,omitempty" xml:"authorizationResourceInfos,omitempty" type:"Repeated"`
 	// The expiration mode. Valid values:
 	//
-	// - LongTerm: long-term
+	// - LongTerm: Long-term.
 	//
-	// - ShortTerm: short-term
+	// - ShortTerm: Short-term.
 	//
 	// example:
 	//
 	// LongTerm
 	ExpireMode *string `json:"expireMode,omitempty" xml:"expireMode,omitempty"`
-	// The expiration time.
+	// The expiration timestamp.
 	//
 	// example:
 	//

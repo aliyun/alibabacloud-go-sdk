@@ -131,7 +131,11 @@ func (s *ListMcpProductToolsResponseBodyData) Validate() error {
 }
 
 type ListMcpProductToolsResponseBodyDataTools struct {
-	// The annotations of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and usage.
+	// The annotation information of the tool. This field is a map structure. The API definition declares it only as map<any> without specifying its members and purposes.
+	//
+	// example:
+	//
+	// {"readOnly":true}
 	Annotations map[string]interface{} `json:"annotations,omitempty" xml:"annotations,omitempty"`
 	// The description of the tool.
 	//
@@ -139,9 +143,17 @@ type ListMcpProductToolsResponseBodyDataTools struct {
 	//
 	// Functional description of the sample tool
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The input parameter schema of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+	// The structure definition of the input parameters for the tool. This field is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+	//
+	// example:
+	//
+	// {"type":"object","properties":{"query":{"type":"string"}}}
 	InputSchema map[string]interface{} `json:"inputSchema,omitempty" xml:"inputSchema,omitempty"`
-	// The metadata of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and usage.
+	// The metadata of the tool. This field is a map structure. The API definition declares it only as map<any> without specifying its members and purposes.
+	//
+	// example:
+	//
+	// {"version":"1.0.0"}
 	Meta map[string]interface{} `json:"meta,omitempty" xml:"meta,omitempty"`
 	// The name of the tool.
 	//
@@ -149,7 +161,11 @@ type ListMcpProductToolsResponseBodyDataTools struct {
 	//
 	// test-tool
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The output schema of the tool. This is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+	// The structure definition of the output results for the tool. This field is a map structure. The API definition declares it only as map<any> without specifying its members and constraints.
+	//
+	// example:
+	//
+	// {"type":"object","properties":{"result":{"type":"string"}}}
 	OutputSchema map[string]interface{} `json:"outputSchema,omitempty" xml:"outputSchema,omitempty"`
 	// The title of the tool.
 	//

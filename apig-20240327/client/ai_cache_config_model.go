@@ -30,7 +30,7 @@ type AiCacheConfig struct {
 	//
 	// example:
 	//
-	// -
+	// default
 	CacheKeyStrategy *string `json:"cacheKeyStrategy,omitempty" xml:"cacheKeyStrategy,omitempty"`
 	// The cache mode.
 	//
@@ -38,7 +38,7 @@ type AiCacheConfig struct {
 	//
 	// exact
 	CacheMode *string `json:"cacheMode,omitempty" xml:"cacheMode,omitempty"`
-	// The cache expiration time, in seconds.
+	// The cache expiration time in seconds.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AiCacheConfig struct {
 	CacheTTL *int32 `json:"cacheTTL,omitempty" xml:"cacheTTL,omitempty"`
 	// The embedding service configuration.
 	EmbeddingConfig *AiCacheConfigEmbeddingConfig `json:"embeddingConfig,omitempty" xml:"embeddingConfig,omitempty" type:"Struct"`
-	// The plugin running status.
+	// The running status of the plugin.
 	//
 	// if can be null:
 	// true
@@ -156,19 +156,19 @@ func (s *AiCacheConfig) Validate() error {
 }
 
 type AiCacheConfigEmbeddingConfig struct {
-	// The embedding model name.
+	// The name of the embedding model.
 	//
 	// example:
 	//
 	// text-embedding-v2
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The embedding service ID.
+	// The ID of the embedding service.
 	//
 	// example:
 	//
 	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The request timeout period, in milliseconds.
+	// The request timeout in milliseconds.
 	//
 	// example:
 	//
@@ -231,19 +231,19 @@ func (s *AiCacheConfigEmbeddingConfig) Validate() error {
 }
 
 type AiCacheConfigVectorConfig struct {
-	// The vector database API key.
+	// The API key for the vector database.
 	//
 	// example:
 	//
 	// sk-xxx
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The vector collection ID.
+	// The ID of the vector collection.
 	//
 	// example:
 	//
 	// col-xxx
 	CollectionId *string `json:"collectionId,omitempty" xml:"collectionId,omitempty"`
-	// The vector database service address.
+	// The vector database service endpoint.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type AiCacheConfigVectorConfig struct {
 	//
 	// 0.95
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	// The request timeout period, in milliseconds.
+	// The request timeout in milliseconds.
 	//
 	// example:
 	//

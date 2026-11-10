@@ -14,7 +14,7 @@ type iGetDomainRequest interface {
 }
 
 type GetDomainRequest struct {
-	// Specifies whether to return production resource information.
+	// Specifies whether to return online resource information.
 	//
 	// example:
 	//

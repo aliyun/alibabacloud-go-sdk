@@ -20,7 +20,7 @@ type iRevealServiceCredentialResponseBody interface {
 }
 
 type RevealServiceCredentialResponseBody struct {
-	// The response code. A value of Ok indicates success.
+	// The response code. The value is Ok if the request is successful.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type RevealServiceCredentialResponseBody struct {
 	//
 	// {"serviceId":"svc-xxxxxxxx","provider":"qwen","credentialType":"apiKey","configRevision":"1","credential":{"apiKeyGenerateMode":"Custom","apiKeys":["sk-xxxxxxxx"]}}
 	Data *RevealServiceCredentialResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message. A value of success indicates success.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *RevealServiceCredentialResponseBody) Validate() error {
 }
 
 type RevealServiceCredentialResponseBodyData struct {
-	// The current configuration revision. For legacy objects, the value is legacy.
+	// The current configuration revision. The value is legacy for historical objects.
 	//
 	// example:
 	//
 	// 1
 	ConfigRevision *string `json:"configRevision,omitempty" xml:"configRevision,omitempty"`
-	// The credential object for the currently active type. Only the fields corresponding to the credentialType are populated.
+	// The credential object of the currently active type. Only the fields corresponding to the credentialType are populated.
 	//
 	// example:
 	//
@@ -201,59 +201,59 @@ type RevealServiceCredentialResponseBodyDataCredential struct {
 	//
 	// Custom
 	ApiKeyGenerateMode *string `json:"apiKeyGenerateMode,omitempty" xml:"apiKeyGenerateMode,omitempty"`
-	// The list of Key Management Service (KMS) reference names. This field is returned only in Reference mode. Reference values are not returned.
+	// The list of Key Management Service (KMS) reference names. This parameter is returned only in Reference mode. The reference values are not returned.
 	//
 	// example:
 	//
 	// ["my-kms-ref"]
 	ApiKeyReferences []*string `json:"apiKeyReferences,omitempty" xml:"apiKeyReferences,omitempty" type:"Repeated"`
-	// The list of custom API keys. This field is returned only when apiKeyGenerateMode is set to Custom. The keys are returned in their original order without deduplication.
+	// The list of custom API keys. This parameter is returned only when apiKeyGenerateMode is set to Custom. The keys are returned in the original order without deduplication.
 	//
 	// example:
 	//
 	// ["sk-xxxxxxxx","sk-yyyyyyyy"]
 	ApiKeys []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	// Bedrock AWS Access Key
+	// The AWS access key ID for Bedrock.
 	//
 	// example:
 	//
 	// AKIAxxxxxxxx
 	AwsAccessKey *string `json:"awsAccessKey,omitempty" xml:"awsAccessKey,omitempty"`
-	// Bedrock AWS Region
+	// The AWS region for Bedrock.
 	//
 	// example:
 	//
 	// us-east-1
 	AwsRegion *string `json:"awsRegion,omitempty" xml:"awsRegion,omitempty"`
-	// Bedrock AWS Secret Key
+	// The AWS secret access key for Bedrock.
 	//
 	// example:
 	//
-	// ********
+	// wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 	AwsSecretKey *string `json:"awsSecretKey,omitempty" xml:"awsSecretKey,omitempty"`
-	// The source of the credential. When backfilled by the PAI-EAS system, the value is pai-eas.
+	// The source of the credential. The value is pai-eas when the credential is backfilled by the PAI-EAS system.
 	//
 	// example:
 	//
 	// pai-eas
 	CredentialSource *string `json:"credentialSource,omitempty" xml:"credentialSource,omitempty"`
-	// The Bedrock endpoint mode. A value of runtime is returned for historical null values.
+	// The Bedrock endpoint mode. The value is runtime for historical null values.
 	//
 	// example:
 	//
 	// runtime
 	EndpointMode *string `json:"endpointMode,omitempty" xml:"endpointMode,omitempty"`
-	// Kling Access Key
+	// The access key ID for Kling.
 	//
 	// example:
 	//
 	// AKxxxxxxxx
 	KlingAccessKey *string `json:"klingAccessKey,omitempty" xml:"klingAccessKey,omitempty"`
-	// Kling Secret Key
+	// The secret access key for Kling.
 	//
 	// example:
 	//
-	// ********
+	// sk-kling-9f2c1d7e
 	KlingSecretKey *string `json:"klingSecretKey,omitempty" xml:"klingSecretKey,omitempty"`
 	// The original JSON text of the Vertex service account. The text is neither parsed nor reordered.
 	//
@@ -261,13 +261,13 @@ type RevealServiceCredentialResponseBodyDataCredential struct {
 	//
 	// {"type":"service_account","private_key":"********"}
 	VertexAuthKey *string `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
-	// Vertex Project ID
+	// The Vertex project ID.
 	//
 	// example:
 	//
 	// my-gcp-project
 	VertexProjectId *string `json:"vertexProjectId,omitempty" xml:"vertexProjectId,omitempty"`
-	// Vertex Region
+	// The region for Vertex.
 	//
 	// example:
 	//

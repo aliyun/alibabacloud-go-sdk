@@ -26,7 +26,7 @@ type ListConsumerQuotaRulesRequest struct {
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The keyword for the rule name, used for fuzzy match.
+	// The keyword in the rule name for fuzzy match.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListConsumerQuotaRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//

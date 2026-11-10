@@ -42,13 +42,13 @@ type iImportHttpApiRequest interface {
 type ImportHttpApiRequest struct {
 	// The API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The description of the imported API. If you do not specify this parameter, the description is extracted from the API definition. The maximum length is 255 bytes.
+	// The description of the API to be imported. If you do not specify this parameter, the description is extracted from the API definition file. The maximum length is 255 bytes.
 	//
 	// example:
 	//
 	// Test API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to perform a dry run. If this feature is enabled, the system only checks the Swagger definition and does not perform the import operation.
+	// Specifies whether to perform a dry run. If you set this parameter to true, the system only checks the Swagger definition without importing the API.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type ImportHttpApiRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// mcp-route-xxxxxxxx
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
-	// The name of the imported API. If you do not specify this parameter, the name is extracted from the API definition file. If an API with the same name and versioning configuration already exists, the import operation updates the existing API definition based on the strategy parameter.
+	// The name of the API to be imported. If you do not specify this parameter, the name is extracted from the API definition file. If an API with the same name and version configuration already exists, the import operation updates the existing API definition based on the strategy parameter.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ImportHttpApiRequest struct {
 	//
 	// rg-aek23nsa353vmra
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The Base64-encoded API definition. Supports OAS 2.0 and OAS 3.0 specifications in YAML and JSON formats. This parameter has a higher priority than the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
+	// The Base64-encoded API definition. Supports OAS 2.0 and OAS 3.0 specifications in YAML or JSON format. This parameter has a higher priority than the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ImportHttpApiRequest struct {
 	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
 	// The OSS configuration.
 	SpecOssConfig *ImportHttpApiRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
-	// Specifies the update policy when the name and version management of the imported API are the same as those of an existing API. Valid values:
+	// The update policy to use when the name and version management configuration of the imported API are the same as those of an existing API. Valid values:
 	//
 	// - SpecOnly: The imported file completely overwrites the existing API.
 	//
@@ -96,13 +96,13 @@ type ImportHttpApiRequest struct {
 	//
 	// - ExistFirst: The existing API takes precedence. Only new operations are added, and existing operations are not updated.
 	//
-	// Default policy: ExistFirst.
+	// Default value: ExistFirst.
 	//
 	// example:
 	//
 	// ExistFirst
 	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
-	// If you specify this parameter, the import operation updates the specified API instead of importing a new API or searching for an existing API based on the API name and version management configuration. The target API must be of the REST type.
+	// The ID of the HTTP API to be overwritten by the import. If you specify this parameter, the import operation updates the specified API instead of importing a new API or searching for an existing API based on the name and version management configuration. The target API must be of the REST type.
 	//
 	// example:
 	//

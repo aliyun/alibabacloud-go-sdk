@@ -34,7 +34,7 @@ type InvokeAIAgentResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,15 +96,19 @@ func (s *InvokeAIAgentResponseBody) Validate() error {
 }
 
 type InvokeAIAgentResponseBodyData struct {
-	// The response body of the debug result.
+	// The response body of the test result.
 	//
 	// example:
 	//
 	// {"choices":[{"delta":{"content":"Analysis result..."}}]}
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 	// The response headers, such as Content-Type: text/event-stream.
+	//
+	// example:
+	//
+	// {"Content-Type":"text/event-stream"}
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The HTTP status code of the debug result.
+	// The HTTP status code of the test result.
 	//
 	// example:
 	//

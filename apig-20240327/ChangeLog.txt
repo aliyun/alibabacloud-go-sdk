@@ -1,3 +1,8 @@
+2026-11-10 Version: v11.6.0
+- Support API CreateGatewayQuotaRuleSubjectUsageExportTask.
+- Support API GetGatewayQuotaRuleSubjectUsageExportTask.
+
+
 2026-11-06 Version: v11.5.2
 - Generated golang 2024-03-27 for APIG.
 

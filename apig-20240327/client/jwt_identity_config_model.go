@@ -32,7 +32,7 @@ type JwtIdentityConfig struct {
 	//
 	// example:
 	//
-	// xxxx
+	// https://example.com/.well-known/jwks.json
 	Jwks *string `json:"jwks,omitempty" xml:"jwks,omitempty"`
 	// The JWT payload configuration.
 	JwtPayloadConfig *JwtIdentityConfigJwtPayloadConfig `json:"jwtPayloadConfig,omitempty" xml:"jwtPayloadConfig,omitempty" type:"Struct"`
@@ -159,13 +159,13 @@ type JwtIdentityConfigClaimsToHeadersConfigs struct {
 	//
 	// sub
 	Claim *string `json:"claim,omitempty" xml:"claim,omitempty"`
-	// The HTTP header name after conversion.
+	// The converted HTTP header name.
 	//
 	// example:
 	//
 	// X-Consumer-Id
 	Header *string `json:"header,omitempty" xml:"header,omitempty"`
-	// Specifies whether to overwrite an existing header with the same name.
+	// Specifies whether to override an existing header with the same name.
 	//
 	// example:
 	//
@@ -258,19 +258,19 @@ func (s *JwtIdentityConfigJwtPayloadConfig) Validate() error {
 }
 
 type JwtIdentityConfigJwtTokenConfig struct {
-	// The key configuration of the JWT.
+	// The JWT key configuration.
 	//
 	// example:
 	//
 	// Authorization
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// Indicates whether the request is passed through.
+	// Specifies whether to pass the token.
 	//
 	// example:
 	//
 	// true
 	Pass *bool `json:"pass,omitempty" xml:"pass,omitempty"`
-	// The position where the JWT is stored.
+	// The JWT storage location.
 	//
 	// example:
 	//

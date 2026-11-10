@@ -22,7 +22,7 @@ type iApiKeyIdentityConfig interface {
 type ApiKeyIdentityConfig struct {
 	// The API key source configuration.
 	ApikeySource *ApiKeyIdentityConfigApikeySource `json:"apikeySource,omitempty" xml:"apikeySource,omitempty" type:"Struct"`
-	// The complete set of API key credential sources. The set contains one to three items. Multiple sources are applicable only to the AI gateway Header mode. Query String and non-AI gateway scenarios allow only a single source. If submitted together with apikeySource, the latter must be consistent with the compatible projection.
+	// The complete collection of API key credential sources. The collection contains one to three items. Multiple sources apply only to the AI gateway header mode. Query string and non-AI gateway modes allow only a single source. If submitted together with apikeySource, the latter must be consistent with the compatible projection.
 	ApikeySources []*ApiKeyIdentityConfigApikeySources `json:"apikeySources,omitempty" xml:"apikeySources,omitempty" type:"Repeated"`
 	// The list of credentials.
 	Credentials []*ApiKeyIdentityConfigCredentials `json:"credentials,omitempty" xml:"credentials,omitempty" type:"Repeated"`
@@ -116,7 +116,7 @@ type ApiKeyIdentityConfigApikeySource struct {
 	//
 	// example:
 	//
-	// xxxx
+	// apikey-xxxxxxxx
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -151,7 +151,7 @@ func (s *ApiKeyIdentityConfigApikeySource) Validate() error {
 }
 
 type ApiKeyIdentityConfigApikeySources struct {
-	// The credential source type.
+	// The credential source category.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ type ApiKeyIdentityConfigCredentials struct {
 	//
 	// example:
 	//
-	// xxxxx
+	// apikey-xxxxxxxx
 	Apikey *string `json:"apikey,omitempty" xml:"apikey,omitempty"`
 	// The generation mode.
 	//

@@ -16,7 +16,7 @@ type iListGatewayErrorAccessLogsResponseBody interface {
 }
 
 type ListGatewayErrorAccessLogsResponseBody struct {
-	// The list of log entries. Each entry is a mapping from field names to field values.
+	// The list of log data. Each entry is a mapping of field names to field values.
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
