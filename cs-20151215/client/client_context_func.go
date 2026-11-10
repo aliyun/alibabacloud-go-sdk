@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -5022,6 +5023,110 @@ func (client *Client) InstallNodePoolComponentsWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 发起智能助手会话运行（AG-UI 协议）
+//
+// Description:
+//
+// 独立的原生 AG-UI 接口，成功建流后返回 text/event-stream。
+//
+// @param request - InvokeAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeAgentResponse
+func (client *Client) InvokeAgentWithSSECtx(ctx context.Context, request *InvokeAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *InvokeAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.invokeAgentWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 发起智能助手会话运行（AG-UI 协议）
+//
+// Description:
+//
+// 独立的原生 AG-UI 接口，成功建流后返回 text/event-stream。
+//
+// @param request - InvokeAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeAgentResponse
+func (client *Client) InvokeAgentWithContext(ctx context.Context, request *InvokeAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokeAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Context) {
+		body["context"] = request.Context
+	}
+
+	if !dara.IsNil(request.ForwardedProps) {
+		body["forwardedProps"] = request.ForwardedProps
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.ParentRunId) {
+		body["parentRunId"] = request.ParentRunId
+	}
+
+	if !dara.IsNil(request.Resume) {
+		body["resume"] = request.Resume
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.State) {
+		body["state"] = request.State
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		body["threadId"] = request.ThreadId
+	}
+
+	if !dara.IsNil(request.Tools) {
+		body["tools"] = request.Tools
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeAgent"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/intelligence/invoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InvokeAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of available components and retrieves detailed component information based on parameters such as the region, cluster type, cluster profile, and cluster version. The detailed information includes whether the component is managed, the schema of supported custom parameters, and compatible operating system architectures.
 //
 // @param request - ListAddonsRequest
@@ -8367,4 +8472,85 @@ func (client *Client) UpgradeClusterNodepoolWithContext(ctx context.Context, Clu
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+func (client *Client) invokeAgentWithSSECtx_opYieldFunc(_yield chan *InvokeAgentResponse, _yieldErr chan error, ctx context.Context, request *InvokeAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Context) {
+		body["context"] = request.Context
+	}
+
+	if !dara.IsNil(request.ForwardedProps) {
+		body["forwardedProps"] = request.ForwardedProps
+	}
+
+	if !dara.IsNil(request.Messages) {
+		body["messages"] = request.Messages
+	}
+
+	if !dara.IsNil(request.ParentRunId) {
+		body["parentRunId"] = request.ParentRunId
+	}
+
+	if !dara.IsNil(request.Resume) {
+		body["resume"] = request.Resume
+	}
+
+	if !dara.IsNil(request.RunId) {
+		body["runId"] = request.RunId
+	}
+
+	if !dara.IsNil(request.State) {
+		body["state"] = request.State
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		body["threadId"] = request.ThreadId
+	}
+
+	if !dara.IsNil(request.Tools) {
+		body["tools"] = request.Tools
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeAgent"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/intelligence/invoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }
