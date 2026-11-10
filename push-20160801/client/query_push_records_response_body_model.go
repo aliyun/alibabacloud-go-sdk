@@ -24,13 +24,13 @@ type iQueryPushRecordsResponseBody interface {
 }
 
 type QueryPushRecordsResponseBody struct {
-	// Deprecated. This parameter is no longer used.
+	// **[Deprecated]*	- This parameter is deprecated and no longer used.
 	//
 	// example:
 	//
 	// i91D***********kXIh/dVBEQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number.
+	// The current page number of the push records.
 	//
 	// example:
 	//

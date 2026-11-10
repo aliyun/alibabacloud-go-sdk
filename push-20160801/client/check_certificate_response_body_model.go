@@ -22,7 +22,7 @@ type iCheckCertificateResponseBody interface {
 }
 
 type CheckCertificateResponseBody struct {
-	// Indicates whether the AppKey belongs to an Android app:
+	// Indicates whether the AppKey represents an Android app:
 	//
 	// - true
 	//
@@ -32,9 +32,9 @@ type CheckCertificateResponseBody struct {
 	//
 	// false
 	Android *bool `json:"Android,omitempty" xml:"Android,omitempty"`
-	// The information about the certificate for the development or sandbox environment.
+	// The certificate information for accessing the development or sandbox environment.
 	DevelopmentCertInfo *CheckCertificateResponseBodyDevelopmentCertInfo `json:"DevelopmentCertInfo,omitempty" xml:"DevelopmentCertInfo,omitempty" type:"Struct"`
-	// Indicates whether the AppKey belongs to an iOS app:
+	// Indicates whether the AppKey represents an iOS app:
 	//
 	// - true
 	//
@@ -44,9 +44,9 @@ type CheckCertificateResponseBody struct {
 	//
 	// true
 	IOS *bool `json:"IOS,omitempty" xml:"IOS,omitempty"`
-	// The information about the certificate for the production environment.
+	// The certificate information for accessing the production environment.
 	ProductionCertInfo *CheckCertificateResponseBodyProductionCertInfo `json:"ProductionCertInfo,omitempty" xml:"ProductionCertInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -128,13 +128,13 @@ type CheckCertificateResponseBodyDevelopmentCertInfo struct {
 	//
 	// 1470024000000
 	ExipreTime *int64 `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// - **EXPIRED**: The certificate is expired.
+	// - **EXPIRED**: The certificate has expired.
 	//
 	// - **NOT_CONFIGURED**: The certificate is not configured.
 	//
-	// - **NO_PASSWORD**: The password for the certificate is not configured.
+	// - **NO_PASSWORD**: The password is not configured.
 	//
 	// - **OK**: The certificate is normal.
 	//
@@ -183,13 +183,13 @@ type CheckCertificateResponseBodyProductionCertInfo struct {
 	//
 	// 1764561600000
 	ExipreTime *int64 `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
-	// The status of the certificate. Valid values:
+	// The certificate status. Valid values:
 	//
-	// - **EXPIRED**: The certificate is expired.
+	// - **EXPIRED**: The certificate has expired.
 	//
 	// - **NOT_CONFIGURED**: The certificate is not configured.
 	//
-	// - **NO_PASSWORD**: The password for the certificate is not configured.
+	// - **NO_PASSWORD**: The password is not configured.
 	//
 	// - **OK**: The certificate is normal.
 	//

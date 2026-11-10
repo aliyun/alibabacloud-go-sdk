@@ -16,13 +16,13 @@ type iContinuouslyPushResponseBody interface {
 }
 
 type ContinuouslyPushResponseBody struct {
-	// The message ID that identifies a push request.
+	// The message ID that identifies a push.
 	//
 	// example:
 	//
 	// 9998B3CC-ED9E-4CB3-A8FB-DCC61296BFBC
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

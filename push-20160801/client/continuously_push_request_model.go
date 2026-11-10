@@ -20,7 +20,7 @@ type iContinuouslyPushRequest interface {
 }
 
 type ContinuouslyPushRequest struct {
-	// AppKey information.
+	// The AppKey information.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type ContinuouslyPushRequest struct {
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// Message ID.
+	// The message ID.
 	//
-	// Obtain this MessageId by calling the Push API with Target set to TBD. It represents a message already saved in the push system.
+	// The MessageId obtained after calling the Push operation and setting Target to TBD. It represents a message that has been saved to the push system.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ContinuouslyPushRequest struct {
 	//
 	// 500131
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// Push target:
+	// The push target:
 	//
-	// - **DEVICE**: Push by device
+	// - **DEVICE**: Push based on devices.
 	//
-	// - **ACCOUNT**: Push by account
+	// - **ACCOUNT**: Push based on accounts.
 	//
-	// - **ALIAS**: Push by alias
+	// - **ALIAS**: Push based on aliases.
 	//
 	// Continuous push supports only these three target types.
 	//
@@ -54,13 +54,13 @@ type ContinuouslyPushRequest struct {
 	//
 	// DEVICE
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	// Specify values based on Target. Separate multiple values with commas. If you exceed the limit, split the push into multiple calls.
+	// Set this parameter based on Target. Separate multiple values with commas. If the limit is exceeded, push the message in multiple batches.
 	//
-	// - Target=DEVICE: values such as `deviceid1,deviceid2` (up to 1,000 supported).
+	// - If Target is set to DEVICE, the value is in the format of `deviceid1,deviceid2`. A maximum of 1,000 devices are supported.
 	//
-	// - Target=ACCOUNT: values such as `account1,account2` (up to 1,000 supported).
+	// - If Target is set to ACCOUNT, the value is in the format of `account1,account2`. A maximum of 1,000 accounts are supported.
 	//
-	// - Target=ALIAS: values such as `alias1,alias2` (up to 1,000 supported).
+	// - If Target is set to ALIAS, the value is in the format of `alias1,alias2`. A maximum of 1,000 aliases are supported.
 	//
 	// This parameter is required.
 	//
