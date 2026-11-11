@@ -84,7 +84,7 @@ type GetTemplateResponseBody struct {
 	//
 	// 13b721e6-8cc8-5df2-af13-80316f7508af
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
-	// The team name.
+	// The name of the team.
 	//
 	// example:
 	//
@@ -238,13 +238,13 @@ func (s *GetTemplateResponseBody) Validate() error {
 }
 
 type GetTemplateResponseBodyResourceTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// project
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

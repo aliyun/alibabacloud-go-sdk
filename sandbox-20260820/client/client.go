@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Sandbox")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1221,7 +1229,7 @@ func (client *Client) ListApiKeys(request *ListApiKeysRequest) (_result *ListApi
 
 // Summary:
 //
-// Performs a paging query on the quota configurations for the current account.
+// Performs a paging query to retrieve the quota configuration list for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -1272,7 +1280,7 @@ func (client *Client) ListQuotaWithOptions(request *ListQuotaRequest, headers ma
 
 // Summary:
 //
-// Performs a paging query on the quota configurations for the current account.
+// Performs a paging query to retrieve the quota configuration list for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -1291,7 +1299,7 @@ func (client *Client) ListQuota(request *ListQuotaRequest) (_result *ListQuotaRe
 
 // Summary:
 //
-// Queries the list of teams by using paging.
+// Queries the team list by using paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -1354,7 +1362,7 @@ func (client *Client) ListTeamsWithOptions(request *ListTeamsRequest, headers ma
 
 // Summary:
 //
-// Queries the list of teams by using paging.
+// Queries the team list by using paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -1373,7 +1381,7 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 
 // Summary:
 //
-// Performs a paging query of template caches.
+// Performs a paged query on template caches with paging support.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1436,7 +1444,7 @@ func (client *Client) ListTemplateCacheWithOptions(request *ListTemplateCacheReq
 
 // Summary:
 //
-// Performs a paging query of template caches.
+// Performs a paged query on template caches with paging support.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1455,7 +1463,7 @@ func (client *Client) ListTemplateCache(request *ListTemplateCacheRequest) (_res
 
 // Summary:
 //
-// Performs a paged query on the template list by using paging.
+// Performs a paged query to retrieve the template list with paging.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1510,7 +1518,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 // Summary:
 //
-// Performs a paged query on the template list by using paging.
+// Performs a paged query to retrieve the template list with paging.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1529,7 +1537,7 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries a list of storage volumes by using paging.
+// Queries the list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1604,7 +1612,7 @@ func (client *Client) ListVolumesWithOptions(request *ListVolumesRequest, header
 
 // Summary:
 //
-// Queries a list of storage volumes by using paging.
+// Queries the list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //

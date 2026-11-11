@@ -30,7 +30,7 @@ type ResetApiKeyResponseBody struct {
 	//
 	// asdfjoY87-9IUHH
 	ApiKey *ApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The response code. A value of 200 indicates success.
+	// The response code. The value is 200 if the request is successful.
 	//
 	// example:
 	//

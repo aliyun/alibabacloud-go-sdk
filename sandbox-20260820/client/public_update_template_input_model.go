@@ -11,6 +11,8 @@ type iPublicUpdateTemplateInput interface {
 	GoString() string
 	SetBuildConfig(v *PublicUpdateTemplateBuildConfig) *PublicUpdateTemplateInput
 	GetBuildConfig() *PublicUpdateTemplateBuildConfig
+	SetPlan(v string) *PublicUpdateTemplateInput
+	GetPlan() *string
 	SetRuntimeConfig(v *PublicUpdateTemplateRuntimeConfig) *PublicUpdateTemplateInput
 	GetRuntimeConfig() *PublicUpdateTemplateRuntimeConfig
 }
@@ -18,6 +20,12 @@ type iPublicUpdateTemplateInput interface {
 type PublicUpdateTemplateInput struct {
 	// The build configuration.
 	BuildConfig *PublicUpdateTemplateBuildConfig `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
+	// The subscription plan for the team. Valid values: eco, std, and pro.
+	//
+	// example:
+	//
+	// pro
+	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
 	// The runtime configuration.
 	RuntimeConfig *PublicUpdateTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
 }
@@ -34,12 +42,21 @@ func (s *PublicUpdateTemplateInput) GetBuildConfig() *PublicUpdateTemplateBuildC
 	return s.BuildConfig
 }
 
+func (s *PublicUpdateTemplateInput) GetPlan() *string {
+	return s.Plan
+}
+
 func (s *PublicUpdateTemplateInput) GetRuntimeConfig() *PublicUpdateTemplateRuntimeConfig {
 	return s.RuntimeConfig
 }
 
 func (s *PublicUpdateTemplateInput) SetBuildConfig(v *PublicUpdateTemplateBuildConfig) *PublicUpdateTemplateInput {
 	s.BuildConfig = v
+	return s
+}
+
+func (s *PublicUpdateTemplateInput) SetPlan(v string) *PublicUpdateTemplateInput {
+	s.Plan = &v
 	return s
 }
 

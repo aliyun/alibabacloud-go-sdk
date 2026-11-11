@@ -34,7 +34,7 @@ type ListTeamsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters teams by plan specifications. Valid values: eco (Economy), std (Standard), pro (Professional), and ent (Enterprise).
+	// Filters teams by plan specification. Valid values: eco (Economy), std (Standard), pro (Professional), and ent (Enterprise).
 	//
 	// example:
 	//

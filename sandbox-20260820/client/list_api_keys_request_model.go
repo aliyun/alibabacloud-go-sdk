@@ -44,23 +44,19 @@ type ListApiKeysRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	// Filters API keys by status. Valid values:
-	//
-	// - active: Enabled.
-	//
-	// - inactive: Disabled.
+	// Filters API keys by status. Valid values: active (enabled), inactive (disabled).
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The ID of the team.
+	// The team ID.
 	//
 	// example:
 	//

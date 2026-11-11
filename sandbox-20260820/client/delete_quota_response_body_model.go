@@ -24,7 +24,7 @@ type DeleteQuotaResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. A value of success indicates a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//

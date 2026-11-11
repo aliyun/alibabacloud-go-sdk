@@ -41,10 +41,14 @@ type iE2BSandbox interface {
   GetNetwork() *E2BNetwork 
   SetResourceGroupID(v string) *E2BSandbox
   GetResourceGroupID() *string 
+  SetResourceTags(v []*E2BSandboxResourceTags) *E2BSandbox
+  GetResourceTags() []*E2BSandboxResourceTags 
   SetRuntime(v *InnerSandboxRuntimeConfig) *E2BSandbox
   GetRuntime() *InnerSandboxRuntimeConfig 
   SetSandboxID(v string) *E2BSandbox
   GetSandboxID() *string 
+  SetSnapshotID(v string) *E2BSandbox
+  GetSnapshotID() *string 
   SetStartedAt(v string) *E2BSandbox
   GetStartedAt() *string 
   SetState(v string) *E2BSandbox
@@ -118,7 +122,7 @@ type E2BSandbox struct {
   // 
   // c-6a9d1501-133e6f48-b3f07782dd47
   FcInstanceID *string `json:"fcInstanceID,omitempty" xml:"fcInstanceID,omitempty"`
-  // The Function Compute session ID corresponding to the sandbox, in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
+  // The Function Compute session ID of the sandbox, in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
   // 
   // example:
   // 
@@ -146,6 +150,8 @@ type E2BSandbox struct {
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The resource tags.
+  ResourceTags []*E2BSandboxResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
   // The runtime configuration.
   Runtime *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
   // The unique identifier of the sandbox.
@@ -154,6 +160,12 @@ type E2BSandbox struct {
   // 
   // sbx-xxxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // The snapshot ID.
+  // 
+  // example:
+  // 
+  // 0d66****b374
+  SnapshotID *string `json:"snapshotID,omitempty" xml:"snapshotID,omitempty"`
   // The start time.
   // 
   // example:
@@ -162,23 +174,23 @@ type E2BSandbox struct {
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
   // The sandbox state. Valid values:
   // 
-  // - running: The sandbox is running.
+  // - running: Running.
   // 
-  // - pausing: The sandbox is pausing.
+  // - pausing: Pausing.
   // 
-  // - paused: The sandbox is paused.
+  // - paused: Paused.
   // 
-  // - resuming: The sandbox is resuming.
+  // - resuming: Resuming.
   // 
-  // - pause_fail: The pause operation failed.
+  // - pause_fail: Pause failed.
   // 
-  // - resume_fail: The resume operation failed.
+  // - resume_fail: Resume failed.
   // 
-  // - snapshotting: A snapshot is being created.
+  // - snapshotting: Snapshotting.
   // 
-  // - snapshot_failed: Snapshot creation failed.
+  // - snapshot_failed: Snapshot failed.
   // 
-  // - terminated: The sandbox is terminated.
+  // - terminated: Terminated.
   // 
   // example:
   // 
@@ -196,7 +208,7 @@ type E2BSandbox struct {
   // 
   // default
   TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
-  // The QoS version.
+  // The QoS edition.
   // 
   // example:
   // 
@@ -296,12 +308,20 @@ func (s *E2BSandbox) GetResourceGroupID() *string  {
   return s.ResourceGroupID
 }
 
+func (s *E2BSandbox) GetResourceTags() []*E2BSandboxResourceTags  {
+  return s.ResourceTags
+}
+
 func (s *E2BSandbox) GetRuntime() *InnerSandboxRuntimeConfig  {
   return s.Runtime
 }
 
 func (s *E2BSandbox) GetSandboxID() *string  {
   return s.SandboxID
+}
+
+func (s *E2BSandbox) GetSnapshotID() *string  {
+  return s.SnapshotID
 }
 
 func (s *E2BSandbox) GetStartedAt() *string  {
@@ -420,6 +440,11 @@ func (s *E2BSandbox) SetResourceGroupID(v string) *E2BSandbox {
   return s
 }
 
+func (s *E2BSandbox) SetResourceTags(v []*E2BSandboxResourceTags) *E2BSandbox {
+  s.ResourceTags = v
+  return s
+}
+
 func (s *E2BSandbox) SetRuntime(v *InnerSandboxRuntimeConfig) *E2BSandbox {
   s.Runtime = v
   return s
@@ -427,6 +452,11 @@ func (s *E2BSandbox) SetRuntime(v *InnerSandboxRuntimeConfig) *E2BSandbox {
 
 func (s *E2BSandbox) SetSandboxID(v string) *E2BSandbox {
   s.SandboxID = &v
+  return s
+}
+
+func (s *E2BSandbox) SetSnapshotID(v string) *E2BSandbox {
+  s.SnapshotID = &v
   return s
 }
 
@@ -481,6 +511,15 @@ func (s *E2BSandbox) Validate() error {
       return err
     }
   }
+  if s.ResourceTags != nil {
+    for _, item := range s.ResourceTags {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
   if s.Runtime != nil {
     if err := s.Runtime.Validate(); err != nil {
       return err
@@ -492,5 +531,50 @@ func (s *E2BSandbox) Validate() error {
     }
   }
   return nil
+}
+
+type E2BSandboxResourceTags struct {
+  // The tag key.
+  // 
+  // example:
+  // 
+  // project
+  TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // The tag value.
+  // 
+  // example:
+  // 
+  // demo
+  TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s E2BSandboxResourceTags) String() string {
+  return dara.Prettify(s)
+}
+
+func (s E2BSandboxResourceTags) GoString() string {
+  return s.String()
+}
+
+func (s *E2BSandboxResourceTags) GetTagKey() *string  {
+  return s.TagKey
+}
+
+func (s *E2BSandboxResourceTags) GetTagValue() *string  {
+  return s.TagValue
+}
+
+func (s *E2BSandboxResourceTags) SetTagKey(v string) *E2BSandboxResourceTags {
+  s.TagKey = &v
+  return s
+}
+
+func (s *E2BSandboxResourceTags) SetTagValue(v string) *E2BSandboxResourceTags {
+  s.TagValue = &v
+  return s
+}
+
+func (s *E2BSandboxResourceTags) Validate() error {
+  return dara.Validate(s)
 }
 

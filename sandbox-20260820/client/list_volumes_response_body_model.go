@@ -30,13 +30,13 @@ type ListVolumesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The maximum number of entries per page used in this query.
+	// The maximum number of entries per page for the current query.
 	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. A value of success indicates a successful request.
+	// The response message. A value of success indicates that the request was successful.
 	//
 	// example:
 	//

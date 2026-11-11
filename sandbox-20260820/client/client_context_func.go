@@ -830,7 +830,7 @@ func (client *Client) ListApiKeysWithContext(ctx context.Context, request *ListA
 
 // Summary:
 //
-// Performs a paging query on the quota configurations for the current account.
+// Performs a paging query to retrieve the quota configuration list for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -881,7 +881,7 @@ func (client *Client) ListQuotaWithContext(ctx context.Context, request *ListQuo
 
 // Summary:
 //
-// Queries the list of teams by using paging.
+// Queries the team list by using paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -944,7 +944,7 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 
 // Summary:
 //
-// Performs a paging query of template caches.
+// Performs a paged query on template caches with paging support.
 //
 // @param request - ListTemplateCacheRequest
 //
@@ -1007,7 +1007,7 @@ func (client *Client) ListTemplateCacheWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Performs a paged query on the template list by using paging.
+// Performs a paged query to retrieve the template list with paging.
 //
 // @param request - ListTemplatesRequest
 //
@@ -1062,7 +1062,7 @@ func (client *Client) ListTemplatesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries a list of storage volumes by using paging.
+// Queries the list of storage volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //

@@ -25,6 +25,10 @@ type iInnerCreateSandboxInput interface {
 	GetRuntime() *InnerSandboxRuntimeConfig
 	SetSecure(v bool) *InnerCreateSandboxInput
 	GetSecure() *bool
+	SetSnapshotID(v string) *InnerCreateSandboxInput
+	GetSnapshotID() *string
+	SetSnapshotName(v string) *InnerCreateSandboxInput
+	GetSnapshotName() *string
 	SetTeamID(v string) *InnerCreateSandboxInput
 	GetTeamID() *string
 	SetTemplateID(v string) *InnerCreateSandboxInput
@@ -42,13 +46,13 @@ type InnerCreateSandboxInput struct {
 	//
 	// true
 	AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
-	// Specifies whether to automatically pause after timeout.
+	// Specifies whether to automatically pause the sandbox after a timeout.
 	//
 	// example:
 	//
 	// true
 	AutoPause *bool `json:"autoPause,omitempty" xml:"autoPause,omitempty"`
-	// Specifies whether to automatically resume.
+	// Specifies whether to automatically resume the sandbox.
 	//
 	// example:
 	//
@@ -68,6 +72,18 @@ type InnerCreateSandboxInput struct {
 	//
 	// true
 	Secure *bool `json:"secure,omitempty" xml:"secure,omitempty"`
+	// The snapshot ID.
+	//
+	// example:
+	//
+	// 0d66****b374
+	SnapshotID *string `json:"snapshotID,omitempty" xml:"snapshotID,omitempty"`
+	// The snapshot name.
+	//
+	// example:
+	//
+	// name
+	SnapshotName *string `json:"snapshotName,omitempty" xml:"snapshotName,omitempty"`
 	// The unique identifier of the team.
 	//
 	// example:
@@ -80,7 +96,7 @@ type InnerCreateSandboxInput struct {
 	//
 	// v9vjyzw64bsu83vw0dgs
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
-	// The timeout period. Unit: seconds.
+	// The timeout period, in seconds.
 	//
 	// example:
 	//
@@ -128,6 +144,14 @@ func (s *InnerCreateSandboxInput) GetRuntime() *InnerSandboxRuntimeConfig {
 
 func (s *InnerCreateSandboxInput) GetSecure() *bool {
 	return s.Secure
+}
+
+func (s *InnerCreateSandboxInput) GetSnapshotID() *string {
+	return s.SnapshotID
+}
+
+func (s *InnerCreateSandboxInput) GetSnapshotName() *string {
+	return s.SnapshotName
 }
 
 func (s *InnerCreateSandboxInput) GetTeamID() *string {
@@ -183,6 +207,16 @@ func (s *InnerCreateSandboxInput) SetRuntime(v *InnerSandboxRuntimeConfig) *Inne
 
 func (s *InnerCreateSandboxInput) SetSecure(v bool) *InnerCreateSandboxInput {
 	s.Secure = &v
+	return s
+}
+
+func (s *InnerCreateSandboxInput) SetSnapshotID(v string) *InnerCreateSandboxInput {
+	s.SnapshotID = &v
+	return s
+}
+
+func (s *InnerCreateSandboxInput) SetSnapshotName(v string) *InnerCreateSandboxInput {
+	s.SnapshotName = &v
 	return s
 }
 

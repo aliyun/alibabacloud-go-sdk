@@ -30,7 +30,7 @@ type ListTemplatesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The maximum number of entries per page returned in the current response.
+	// The maximum number of entries returned per page in the current response.
 	//
 	// example:
 	//

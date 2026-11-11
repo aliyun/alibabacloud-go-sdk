@@ -40,7 +40,7 @@ type DescribeApiKeyResponseBody struct {
 	IpBlacklist []*IPConfig `json:"ipBlacklist" xml:"ipBlacklist" type:"Repeated"`
 	// The list of IP address whitelist rules.
 	IpWhitelist []*IPConfig `json:"ipWhitelist" xml:"ipWhitelist" type:"Repeated"`
-	// The response message. The value is success if the request is successful.
+	// The response message. The value is success for a successful request.
 	//
 	// example:
 	//

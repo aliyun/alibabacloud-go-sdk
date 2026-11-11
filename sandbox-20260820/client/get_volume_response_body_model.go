@@ -26,7 +26,7 @@ type GetVolumeResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. A value of success indicates that the request is successful.
+	// The response message. The value is success for a successful request.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type ListVolumesRequest struct {
 	//
 	// 5
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Leave this parameter empty for the first request. To query the next page, set this parameter to the nextToken value returned in the previous response.
+	// The pagination token. Leave this parameter empty for the first request. To retrieve the next page, set this parameter to the nextToken value returned in the previous response.
 	//
 	// example:
 	//
@@ -46,13 +46,21 @@ type ListVolumesRequest struct {
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	// Filters by storage volume status. Valid values: CREATING (creating), AVAILABLE (available), ERROR (error), and DELETING (deleting).
+	// Filters by storage volume status. Valid values:
+	//
+	// - CREATING: The storage volume is being created.
+	//
+	// - AVAILABLE: The storage volume is available.
+	//
+	// - ERROR: The storage volume is in an error state.
+	//
+	// - DELETING: The storage volume is being deleted.
 	//
 	// example:
 	//
 	// CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// Filters by storage class. Valid values: OSS, AGENTIC_BUCKET, AGENTIC_FS, and JUICE_FS.
+	// Filters storage volumes by storage class. Valid values: OSS, AGENTIC_BUCKET, AGENTIC_FS, and JUICE_FS.
 	//
 	// example:
 	//
@@ -70,7 +78,7 @@ type ListVolumesRequest struct {
 	//
 	// 210000000
 	UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
-	// The name of the storage volume, which is unique within the team.
+	// The name of the storage volume. The name must be unique within the team.
 	//
 	// example:
 	//

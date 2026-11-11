@@ -18,7 +18,7 @@ type iDeleteTemplateCacheResponseBody interface {
 }
 
 type DeleteTemplateCacheResponseBody struct {
-	// The error code. 200 indicates success.
+	// The error code. A value of 200 indicates success.
 	//
 	// example:
 	//

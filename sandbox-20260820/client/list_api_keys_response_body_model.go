@@ -34,7 +34,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. A value of success indicates a successful request.
+	// The response message. The value is success if the request succeeds.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListApiKeysResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

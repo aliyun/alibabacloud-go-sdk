@@ -24,13 +24,13 @@ type iListTemplateCacheResponseBody interface {
 }
 
 type ListTemplateCacheResponseBody struct {
-	// The error code. The value is 200 if the request succeeds.
+	// The error code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The maximum number of entries returned per page in this response.
+	// The maximum number of entries per page returned in this response.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTemplateCacheResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. It is empty if no more results are available.
+	// The pagination token for the next page. This value is empty if no more results are available.
 	//
 	// example:
 	//

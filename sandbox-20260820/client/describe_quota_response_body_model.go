@@ -17,6 +17,8 @@ type iDescribeQuotaResponseBody interface {
 	GetQuota() *Quota
 	SetRequestId(v string) *DescribeQuotaResponseBody
 	GetRequestId() *string
+	SetUsage(v *QuotaUsage) *DescribeQuotaResponseBody
+	GetUsage() *QuotaUsage
 }
 
 type DescribeQuotaResponseBody struct {
@@ -26,7 +28,7 @@ type DescribeQuotaResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. The value is success if the request succeeds.
+	// The response message. The value is success for a successful request.
 	//
 	// example:
 	//
@@ -40,6 +42,12 @@ type DescribeQuotaResponseBody struct {
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Team 当前配额用量。用量不可用时省略；成功查询且无占用时返回三项零值。
+	//
+	// example:
+	//
+	// {"cpuCores":1,"memoryGB":1.5,"instanceCount":1}
+	Usage *QuotaUsage `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 
 func (s DescribeQuotaResponseBody) String() string {
@@ -66,6 +74,10 @@ func (s *DescribeQuotaResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeQuotaResponseBody) GetUsage() *QuotaUsage {
+	return s.Usage
+}
+
 func (s *DescribeQuotaResponseBody) SetCode(v string) *DescribeQuotaResponseBody {
 	s.Code = &v
 	return s
@@ -86,9 +98,19 @@ func (s *DescribeQuotaResponseBody) SetRequestId(v string) *DescribeQuotaRespons
 	return s
 }
 
+func (s *DescribeQuotaResponseBody) SetUsage(v *QuotaUsage) *DescribeQuotaResponseBody {
+	s.Usage = v
+	return s
+}
+
 func (s *DescribeQuotaResponseBody) Validate() error {
 	if s.Quota != nil {
 		if err := s.Quota.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Usage != nil {
+		if err := s.Usage.Validate(); err != nil {
 			return err
 		}
 	}

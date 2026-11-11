@@ -23,8 +23,12 @@ type iE2BListedSandbox interface {
   GetMetadata() map[string]*string 
   SetResourceGroupID(v string) *E2BListedSandbox
   GetResourceGroupID() *string 
+  SetResourceTags(v []*E2BListedSandboxResourceTags) *E2BListedSandbox
+  GetResourceTags() []*E2BListedSandboxResourceTags 
   SetSandboxID(v string) *E2BListedSandbox
   GetSandboxID() *string 
+  SetSnapshotID(v string) *E2BListedSandbox
+  GetSnapshotID() *string 
   SetStartedAt(v string) *E2BListedSandbox
   GetStartedAt() *string 
   SetState(v string) *E2BListedSandbox
@@ -50,7 +54,7 @@ type E2BListedSandbox struct {
   // 
   // 2
   CpuCount *int32 `json:"cpuCount,omitempty" xml:"cpuCount,omitempty"`
-  // The temporary disk specification.
+  // The ephemeral disk size.
   // 
   // example:
   // 
@@ -68,7 +72,7 @@ type E2BListedSandbox struct {
   // 
   // 2
   Generation *int32 `json:"generation,omitempty" xml:"generation,omitempty"`
-  // The memory specification.
+  // The memory size.
   // 
   // example:
   // 
@@ -82,35 +86,43 @@ type E2BListedSandbox struct {
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The resource tags.
+  ResourceTags []*E2BListedSandboxResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
   // The sandbox ID.
   // 
   // example:
   // 
   // sbx-xxxx
   SandboxID *string `json:"sandboxID,omitempty" xml:"sandboxID,omitempty"`
+  // The snapshot ID.
+  // 
+  // example:
+  // 
+  // 0d66****b374
+  SnapshotID *string `json:"snapshotID,omitempty" xml:"snapshotID,omitempty"`
   // The start time.
   // 
   // example:
   // 
   // 2026-09-03T02:05:37.932Z
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-  // The sandbox status. Valid values:
+  // The sandbox state. Valid values:
   // 
   // - running: Running.
   // 
-  // - pausing: Being paused.
+  // - pausing: Pausing.
   // 
   // - paused: Paused.
   // 
-  // - resuming: Being resumed.
+  // - resuming: Resuming.
   // 
-  // - pause_fail: Failed to pause.
+  // - pause_fail: Pause failed.
   // 
-  // - resume_fail: Failed to resume.
+  // - resume_fail: Resume failed.
   // 
   // - snapshotting: Creating a snapshot.
   // 
-  // - snapshot_failed: Failed to create a snapshot.
+  // - snapshot_failed: Snapshot creation failed.
   // 
   // - terminated: Terminated.
   // 
@@ -192,8 +204,16 @@ func (s *E2BListedSandbox) GetResourceGroupID() *string  {
   return s.ResourceGroupID
 }
 
+func (s *E2BListedSandbox) GetResourceTags() []*E2BListedSandboxResourceTags  {
+  return s.ResourceTags
+}
+
 func (s *E2BListedSandbox) GetSandboxID() *string  {
   return s.SandboxID
+}
+
+func (s *E2BListedSandbox) GetSnapshotID() *string  {
+  return s.SnapshotID
 }
 
 func (s *E2BListedSandbox) GetStartedAt() *string  {
@@ -263,8 +283,18 @@ func (s *E2BListedSandbox) SetResourceGroupID(v string) *E2BListedSandbox {
   return s
 }
 
+func (s *E2BListedSandbox) SetResourceTags(v []*E2BListedSandboxResourceTags) *E2BListedSandbox {
+  s.ResourceTags = v
+  return s
+}
+
 func (s *E2BListedSandbox) SetSandboxID(v string) *E2BListedSandbox {
   s.SandboxID = &v
+  return s
+}
+
+func (s *E2BListedSandbox) SetSnapshotID(v string) *E2BListedSandbox {
+  s.SnapshotID = &v
   return s
 }
 
@@ -309,6 +339,60 @@ func (s *E2BListedSandbox) SetUserID(v string) *E2BListedSandbox {
 }
 
 func (s *E2BListedSandbox) Validate() error {
+  if s.ResourceTags != nil {
+    for _, item := range s.ResourceTags {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
+}
+
+type E2BListedSandboxResourceTags struct {
+  // The tag key.
+  // 
+  // example:
+  // 
+  // project
+  TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // The tag value.
+  // 
+  // example:
+  // 
+  // demo
+  TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s E2BListedSandboxResourceTags) String() string {
+  return dara.Prettify(s)
+}
+
+func (s E2BListedSandboxResourceTags) GoString() string {
+  return s.String()
+}
+
+func (s *E2BListedSandboxResourceTags) GetTagKey() *string  {
+  return s.TagKey
+}
+
+func (s *E2BListedSandboxResourceTags) GetTagValue() *string  {
+  return s.TagValue
+}
+
+func (s *E2BListedSandboxResourceTags) SetTagKey(v string) *E2BListedSandboxResourceTags {
+  s.TagKey = &v
+  return s
+}
+
+func (s *E2BListedSandboxResourceTags) SetTagValue(v string) *E2BListedSandboxResourceTags {
+  s.TagValue = &v
+  return s
+}
+
+func (s *E2BListedSandboxResourceTags) Validate() error {
   return dara.Validate(s)
 }
 
