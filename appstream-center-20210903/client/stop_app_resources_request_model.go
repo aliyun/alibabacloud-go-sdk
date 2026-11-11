@@ -38,62 +38,88 @@ type iStopAppResourcesRequest interface {
 }
 
 type StopAppResourcesRequest struct {
+	// The resource group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The business region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The client ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eac19bef-1e45-4190-a03a-4ea74b699ca7
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client IP address.
+	//
 	// example:
 	//
 	// 1.2.3.4
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The client operating system.
+	//
 	// example:
 	//
 	// windows_"Windows 10 Enterprise" 10.0 (Build 19042)
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The client version.
+	//
 	// example:
 	//
 	// 7.2.0-R-20241008.110000
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// testUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The region ID for office network logon.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v12369636c721ba6b3ddb1683341016775c3f63e4d0e78f120f9a0544ed826b7af7daf747c402f0d0730b52f451b70****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The product type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AndroidCloud
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The list of resource IDs.
+	//
 	// This parameter is required.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 597e869d-ea14-4b83-9490-714f68bfe935
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The client UUID.
+	//
 	// example:
 	//
 	// C50973691A6D2BE23F2CDD73B85B****

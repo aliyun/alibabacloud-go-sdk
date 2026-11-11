@@ -64,6 +64,8 @@ type iGetConnectionTicketRequest interface {
 }
 
 type GetConnectionTicketRequest struct {
+	// The access type. If this parameter is not passed, both types are displayed. Valid values: INTERNET (Internet) and VPC (Express Connect circuit).
+	//
 	// if can be null:
 	// true
 	//
@@ -71,86 +73,207 @@ type GetConnectionTicketRequest struct {
 	//
 	// INTERNET
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
+	// The application ID.
+	//
+	// > Required for the first call, and optional for subsequent calls.
+	//
 	// example:
 	//
-	// ca-etn4zizgaezo9gis9
+	// ca-etn4zizga******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The delivery group ID.
+	//
+	// >
+	//
+	// > - When this parameter is passed, an application instance is assigned only from the specified and authorized delivery groups.
+	//
+	// > - When the AppInstanceId parameter is passed, this parameter is required.
+	//
 	// example:
 	//
-	// aig-bw1o1gcwvd3e1ipeu
+	// aig-bw1o1gcwv******
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppPolicyId        *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// The application instance ID.
+	//
+	// >
+	//
+	// > - When this parameter is passed, the system only attempts to assign the specified application instance.
+	//
+	// > - When this parameter is passed, the AppInstanceGroupId parameter must also be passed.
+	//
 	// example:
 	//
-	// 1.0.0.1
-	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AutoConnectInQueue *bool   `json:"AutoConnectInQueue,omitempty" xml:"AutoConnectInQueue,omitempty"`
+	// ai-ij4a6kd4bn2******
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The policy ID.
+	//
+	// example:
+	//
+	// pg-0clfzcy0adpcf****
+	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// The application version number.
+	//
+	// example:
+	//
+	// 1.0.1
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// Specifies whether to automatically connect when the turn is reached.
+	//
+	// > This parameter is not available.
+	//
+	// example:
+	//
+	// true
+	AutoConnectInQueue *bool `json:"AutoConnectInQueue,omitempty" xml:"AutoConnectInQueue,omitempty"`
+	// The region ID.
+	//
+	// > When this parameter is passed, an application instance is assigned only from the delivery groups in the specified region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// The client ID.
+	//
 	// example:
 	//
-	// f2463208-ec89-4309-8e8c-8b17acdcab93
+	// f2463208-ec89-4309-8e8c-8b1******
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client IP address.
+	//
 	// example:
 	//
-	// 22.21.2.21
+	// 22.21.*.*
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The client operating system.
+	//
 	// example:
 	//
 	// windows_"Windows 10 Enterprise LTSC 2019" 10.0 (Build 17763)
-	ClientOS   *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The client type.
+	//
+	// example:
+	//
+	// html5
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The client version.
+	//
 	// example:
 	//
 	// 2.0.1-D-20211008.101607
-	ClientVersion        *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The connection properties in JSON format.
+	//
+	// The following parameters are supported:
+	//
+	// - authMode: the authorization mode, which is determined based on the authorization mode of the delivery group. Valid values: App (application authorization), AppInstanceGroup (delivery group authorization), and Session (persistent session authorization).
+	//
+	// - appInstanceGroupScheduleTags: the delivery group scheduling tags. Multiple tag key-value pairs are supported for filtering. Multiple tag pairs have an AND relationship. The key must have a value, and the value can be empty. Format example: [{"key":"Resolution","value":"720p"},{"key":"Name"}].
+	//
+	// - appInstanceGroupIds: the list of specified delivery group IDs.
+	//
+	// - appInstancePersistentId: the specified persistent session ID.
+	//
+	// - avatarId: the user avatar ID. Default value: default. This parameter is used to support assigning multiple session instances to a single user.
+	//
+	// > Used when connecting to a cloud phone. Pass the fixed value `{"authMode":"Session"}`.
+	//
 	// example:
 	//
-	// test.test
-	EndUserId         *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// {"authMode":"Session"}
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	// The username of the convenience account.
+	//
+	// example:
+	//
+	// alice
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The environment configuration.
+	//
+	// example:
+	//
+	// {"screenWidth":2560,"screenHeight":1564}
 	EnvironmentConfig *string `json:"EnvironmentConfig,omitempty" xml:"EnvironmentConfig,omitempty"`
+	// The logon region ID. When a user logs on to a workspace, this parameter specifies the ID of the region to which the workspace belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// The logon token.
+	//
+	// Obtained by calling the GetLoginToken or GetStsToken API operation.
+	//
+	// The GetLoginToken and GetStsToken API operations belong to the client logon authentication APIs of the 2021-02-20 version of WUYING Cloud App (product code: appstream-center). These two API operations are not provided in the 2021-09-03 version. OpenAPI Explorer links: https://api.aliyun.com/api/appstream-center/2021-02-20/GetLoginToken and https://api.aliyun.com/api/appstream-center/2021-02-20/GetStsToken.
+	//
+	// Note: This parameter is required. If it is not provided, the API returns InvalidParameter.loginToken(400).
+	//
 	// example:
 	//
-	// v1c4e2ef03d620f0f6cb41634196161219054e12d8aa5a13deb9ed14eebb76d674559115ad2e27a57f6820c1fd33e0ca36
+	// v2c4e2ef03d62******
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The application startup parameters.
+	//
 	// example:
 	//
-	// /home/test/test.jpg
+	// /q /n
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// The product type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// Specifies whether UUID validation is required.
+	//
 	// example:
 	//
 	// true
-	RequireUuidValidation *bool   `json:"RequireUuidValidation,omitempty" xml:"RequireUuidValidation,omitempty"`
-	ResourceId            *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	RequireUuidValidation *bool `json:"RequireUuidValidation,omitempty" xml:"RequireUuidValidation,omitempty"`
+	// The resource ID.
+	//
+	// > Used when connecting to a cloud phone. Pass the persistent session ID that corresponds to the cloud phone instance.
+	//
+	// > When connecting to a cloud browser, pass the cloud browser ID.
+	//
+	// > When connecting to a cloud application, pass the application ID for the application authorization scenario, the delivery group ID for the delivery group authorization scenario, or the persistent session ID for the persistent session authorization scenario.
+	//
 	// example:
 	//
-	// 09e2b2e6-3181-4c84-9539-6fc9f1c3199e
+	// p-0cdr5c9kl******
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The logon session ID. Obtained by calling the GetLoginToken or GetStsToken API operation. This parameter is used together with LoginToken.
+	//
+	// The GetLoginToken and GetStsToken API operations belong to the client logon authentication APIs of the 2021-02-20 version of WUYING Cloud App (product code: appstream-center). These two API operations are not provided in the 2021-09-03 version. OpenAPI Explorer links: https://api.aliyun.com/api/appstream-center/2021-02-20/GetLoginToken and https://api.aliyun.com/api/appstream-center/2021-02-20/GetStsToken.
+	//
+	// Note: This parameter is required. If it is not provided, the API returns InvalidParameter.sessionId(400). This parameter must be used together with LoginToken.
+	//
+	// example:
+	//
+	// 09e2b2e6-3181******
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The node ID.
+	//
+	// > Required when you invoke the API not for the first time. Use this parameter query to check the node status and connection credentials.
+	//
 	// example:
 	//
-	// 6f41731b-7091-4954-80c8-1d1e0b3ebb48
+	// 6f41731b-7091-4******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The tenant ID, which is the Alibaba Cloud account UID.
+	//
 	// example:
 	//
-	// 1126819517152528
+	// 1126819517******
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The unique identifier of the logon device.
+	//
 	// example:
 	//
-	// A8B35215993FBF283F28D617975204C4
+	// A8B35215993FBF283F28D61******
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 

@@ -16,12 +16,13 @@ type iListRunningAppsResponseBody interface {
 }
 
 type ListRunningAppsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2DC3521C-3820-5EA5-9A9A-00BB7AF4E8E5
-	RequestId        *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of running cloud applications.
 	RunningCloudApps []*ListRunningAppsResponseBodyRunningCloudApps `json:"RunningCloudApps,omitempty" xml:"RunningCloudApps,omitempty" type:"Repeated"`
 }
 
@@ -65,46 +66,68 @@ func (s *ListRunningAppsResponseBody) Validate() error {
 }
 
 type ListRunningAppsResponseBodyRunningCloudApps struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// ca-dln05y44ze6esfl8x
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The app instance group ID.
+	//
 	// example:
 	//
 	// aig-dk8p95irk9xs5xi6a
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The application instance ID.
+	//
 	// example:
 	//
 	// ai-gc1gemx6vpa6vlync
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// alihealth-keeper
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application version.
+	//
 	// example:
 	//
 	// 11.1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The application version name.
+	//
 	// example:
 	//
 	// test1.0
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
+	// The running duration of the cloud application instance. Unit: seconds.
+	//
 	// example:
 	//
 	// 87
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The URL of the application icon.
+	//
 	// example:
 	//
 	// https://app-icon-shanghai.oss-cn-shanghai.aliyuncs.com/tenant/187465/18_bf1.jpg
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// The operating system type of the instance platform.
+	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The region ID of the cloud application.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. The value is a UNIX timestamp. Unit: seconds.
+	//
 	// example:
 	//
 	// 1642748400

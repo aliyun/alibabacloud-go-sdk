@@ -20,18 +20,26 @@ type iStartAppResourcesResponseBody interface {
 }
 
 type StartAppResourcesResponseBody struct {
+	// The error code returned when an error occurs.
+	//
 	// example:
 	//
 	// InvalidAppInstanceGroup.NotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The app instance group is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

@@ -14,7 +14,7 @@ type iUnbindResponseBody interface {
 }
 
 type UnbindResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

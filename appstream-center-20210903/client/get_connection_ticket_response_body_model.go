@@ -48,32 +48,54 @@ type iGetConnectionTicketResponseBody interface {
 }
 
 type GetConnectionTicketResponseBody struct {
+	// The delivery group ID.
+	//
 	// example:
 	//
-	// aig-53fvrq1oanz6cxzi3
+	// aig-53fvrq1oa******
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// The application instance ID.
+	//
 	// example:
 	//
-	// ai-gc1gemx6vpa6vlync
-	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// ai-gc1gemx6vp******
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// The persistent session ID.
+	//
+	// example:
+	//
+	// p-0cdr5c9kl******
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The user avatar ID.
+	//
 	// example:
 	//
 	// abc
-	AvatarId      *string                                       `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	AvatarId *string `json:"AvatarId,omitempty" xml:"AvatarId,omitempty"`
+	// The queue information.
+	//
+	// > This parameter is not available.
 	BindQueueInfo *GetConnectionTicketResponseBodyBindQueueInfo `json:"BindQueueInfo,omitempty" xml:"BindQueueInfo,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// InternalError.TicketGenInternalError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The logon token.
+	//
 	// example:
 	//
-	// v15418e331d8d068c29411646996786785303b8f61fd880aeaa50c5b584443cd9e65cc7eec72acdaad0a844666a3b26dab
+	// v2c4e2ef03d62******
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// reenter app instance failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The next polling interval, in milliseconds. If this parameter is empty, the value is 1000 ms.
+	//
 	// if can be null:
 	// true
 	//
@@ -81,37 +103,55 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// 500
 	NextPollIntervalMs *int32 `json:"NextPollIntervalMs,omitempty" xml:"NextPollIntervalMs,omitempty"`
+	// The operating system type.
+	//
 	// example:
 	//
 	// Windows
-	OsType *string                                `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The session policy.
 	Policy *GetConnectionTicketResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// The ID of the region to which the delivery group belongs.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
-	// AD2D0761-1FE5-549D-B169-D3F8D19C6CDD
+	// AD2D0761-1FE5-549D-B169******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of retries.
+	//
 	// example:
 	//
 	// 3
 	RetryTimes *int32 `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
-	// f3d1b31c-605e-4d04-a896-015fc9fc03b4
+	// f3d1b31c-605e-******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task status.
+	//
 	// example:
 	//
 	// Running
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The tenant ID, which is the Alibaba Cloud account UID.
+	//
 	// example:
 	//
-	// n7n9bqZlPrvgUOPSJzfdb$89jWwlVISgrchpY0tOfVYGBBcdoPoH39PVHK63fQTEM14kzajQdWAnHTnSicc35W_eI2LbTSGKquKukwcU7opRwmInhtQH*mlmsZQ3ByOLYVmqI*1hFESs0
+	// 1126819517******
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The connection ticket.
+	//
+	// example:
+	//
+	// n7n9bqZlPrvgUOPY0tOfVYGBBcdoPoH3******
 	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
@@ -300,13 +340,48 @@ func (s *GetConnectionTicketResponseBody) Validate() error {
 }
 
 type GetConnectionTicketResponseBodyBindQueueInfo struct {
-	QueueStatus   *string `json:"QueueStatus,omitempty" xml:"QueueStatus,omitempty"`
-	Rank          *int32  `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	ReadyTimeout  *int64  `json:"ReadyTimeout,omitempty" xml:"ReadyTimeout,omitempty"`
-	RemainingTime *int64  `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
-	RequestKey    *string `json:"RequestKey,omitempty" xml:"RequestKey,omitempty"`
-	TargetId      *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	WaitTime      *int64  `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+	// The queue task status.
+	//
+	// example:
+	//
+	// Waiting
+	QueueStatus *string `json:"QueueStatus,omitempty" xml:"QueueStatus,omitempty"`
+	// The ranking information.
+	//
+	// example:
+	//
+	// 1
+	Rank *int32 `json:"Rank,omitempty" xml:"Rank,omitempty"`
+	// The timeout period for manual connection after the turn is reached.
+	//
+	// example:
+	//
+	// 120
+	ReadyTimeout *int64 `json:"ReadyTimeout,omitempty" xml:"ReadyTimeout,omitempty"`
+	// The remaining wait time. Unit: seconds.
+	//
+	// example:
+	//
+	// 100
+	RemainingTime *int64 `json:"RemainingTime,omitempty" xml:"RemainingTime,omitempty"`
+	// The queue request key.
+	//
+	// example:
+	//
+	// alice******
+	RequestKey *string `json:"RequestKey,omitempty" xml:"RequestKey,omitempty"`
+	// The queue ID.
+	//
+	// example:
+	//
+	// aig-53fvrq1oa******
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The time already waited in the queue. Unit: seconds.
+	//
+	// example:
+	//
+	// 100
+	WaitTime *int64 `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBodyBindQueueInfo) String() string {
@@ -385,9 +460,30 @@ func (s *GetConnectionTicketResponseBodyBindQueueInfo) Validate() error {
 }
 
 type GetConnectionTicketResponseBodyPolicy struct {
+	// Specifies whether to use adaptive resolution.
+	//
+	// >
+	//
+	// > - `true`: The session resolution changes with the terminal display area. In this case, `SessionResolutionWidth` and `SessionResolutionHeight` are the maximum values of the resolution change.
+	//
+	// > - `false`: The session resolution does not change with the terminal display area. In this case, the resolution is fixed to the values of `SessionResolutionWidth` and `SessionResolutionHeight`.
+	//
+	// example:
+	//
+	// true
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" xml:"ResolutionAdaptive,omitempty"`
-	ResolutionHeight   *int32  `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	ResolutionWidth    *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// The resolution height, in pixels.
+	//
+	// example:
+	//
+	// 1080
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The resolution width, in pixels.
+	//
+	// example:
+	//
+	// 1920
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBodyPolicy) String() string {

@@ -20,18 +20,26 @@ type iStopAppResourcesResponseBody interface {
 }
 
 type StopAppResourcesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// InvalidAppInstanceGroup.NotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The app instance group is not found.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 829444D6-9FD3-5C65-A570-065975537647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
+	//
 	// example:
 	//
 	// true
