@@ -26,7 +26,7 @@ type iListExperimentRunsResponseBody interface {
 }
 
 type ListExperimentRunsResponseBody struct {
-	// The maximum number of entries returned.
+	// The maximum number of returned entries.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListExperimentRunsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The list of experiment run records.
+	// The list of experiment runs.
 	//
 	// example:
 	//

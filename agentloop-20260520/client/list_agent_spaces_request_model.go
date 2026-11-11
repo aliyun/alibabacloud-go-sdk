@@ -20,13 +20,13 @@ type iListAgentSpacesRequest interface {
 }
 
 type ListAgentSpacesRequest struct {
-	// The AgentSpace name.
+	// The name of the AgentSpace.
 	//
 	// example:
 	//
 	// test-agent-space
 	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
-	// The maximum number of results to return.
+	// The maximum number of results.
 	//
 	// example:
 	//

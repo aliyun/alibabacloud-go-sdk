@@ -18,7 +18,7 @@ type iGetExperimentRunResponseBody interface {
 }
 
 type GetExperimentRunResponseBody struct {
-	// The experiment run record details. Fields with null values are not returned.
+	// The details of the experiment run. Fields with null values are not returned.
 	//
 	// example:
 	//

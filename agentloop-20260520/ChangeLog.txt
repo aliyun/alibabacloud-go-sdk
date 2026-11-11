@@ -1,3 +1,6 @@
+2026-11-11 Version: v2.4.5
+- Generated golang 2026-05-20 for AgentLoop.
+
 2026-11-03 Version: v2.4.4
 - Update API GetContextStore: add response parameters Body.config.auditLogStore.
 - Update API GetContextStore: add response parameters Body.config.runtimeRecallEnabled.

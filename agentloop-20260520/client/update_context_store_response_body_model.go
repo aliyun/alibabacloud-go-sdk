@@ -18,9 +18,9 @@ type iUpdateContextStoreResponseBody interface {
 }
 
 type UpdateContextStoreResponseBody struct {
-	// The configuration properties after the runtime recall switch is updated. This block is not returned for other library update operations.
+	// The configuration properties after updating the runtime recall switch. This block is not returned for other library update operations.
 	Config *UpdateContextStoreResponseBodyConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The request ID, which is used to locate this request during troubleshooting.
+	// The request ID. You can use this ID to locate the request when troubleshooting issues.
 	//
 	// example:
 	//

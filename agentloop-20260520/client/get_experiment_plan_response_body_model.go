@@ -42,13 +42,13 @@ type iGetExperimentPlanResponseBody interface {
 }
 
 type GetExperimentPlanResponseBody struct {
-	// The creation time. The value is a millisecond-level UNIX timestamp.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1782816000000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The associated dataset ID.
+	// The ID of the associated dataset.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// Compare checkout Agent baseline with optimized version
+	// Compare the checkout agent baseline with the optimized version
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of evaluators.
 	//
@@ -66,7 +66,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// [{"evaluatorRef": "Builtin.agent_task_completion"}]
 	Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
-	// The experiment type.
+	// The type of the experiment.
 	//
 	// example:
 	//
@@ -82,17 +82,17 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// {"question": "How do I request a refund?"}
+	// {"question": "How do I get a refund?"}
 	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	// The name of the associated data processing pipeline. This value is empty if no pipeline is associated.
+	// The name of the associated data processing pipeline. This field is empty if no pipeline is associated.
 	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The experiment plan ID.
+	// The ID of the experiment plan.
 	//
 	// example:
 	//
 	// exp-plan-0242d983f5d340fd8479cf2c19eb279e
 	PlanId *string `json:"planId,omitempty" xml:"planId,omitempty"`
-	// The experiment plan name.
+	// The name of the experiment plan.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// ["019ef4d5-a0f0-7114-832d-5542d771cd8c"]
 	SelectedItemIds []*string `json:"selectedItemIds,omitempty" xml:"selectedItemIds,omitempty" type:"Repeated"`
-	// The plan status.
+	// The status of the plan.
 	//
 	// example:
 	//
 	// stopped
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time. The value is a millisecond-level UNIX timestamp.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

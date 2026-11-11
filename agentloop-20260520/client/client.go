@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("AgentLoop")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -228,6 +236,10 @@ func (client *Client) CreateAgentSpaceWithOptions(request *CreateAgentSpaceReque
 		body["mseNamespaceId"] = request.MseNamespaceId
 	}
 
+	if !dara.IsNil(request.TrajectoryEmbeddingEnabled) {
+		body["trajectoryEmbeddingEnabled"] = request.TrajectoryEmbeddingEnabled
+	}
+
 	if !dara.IsNil(request.TrajectoryStoreEnabled) {
 		body["trajectoryStoreEnabled"] = request.TrajectoryStoreEnabled
 	}
@@ -278,7 +290,7 @@ func (client *Client) CreateAgentSpace(request *CreateAgentSpaceRequest) (_resul
 
 // Summary:
 //
-// Creates a context library.
+// Creates a context store.
 //
 // @param request - CreateContextStoreRequest
 //
@@ -343,7 +355,7 @@ func (client *Client) CreateContextStoreWithOptions(agentSpace *string, request 
 
 // Summary:
 //
-// Creates a context library.
+// Creates a context store.
 //
 // @param request - CreateContextStoreRequest
 //
@@ -838,7 +850,7 @@ func (client *Client) CreateEvaluatorSkill(name *string, request *CreateEvaluato
 //
 // Description:
 //
-// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. This operation defines the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start the execution.
+// Creates an experiment plan in a specified AgentSpace. You can use this operation to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to initiate the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -925,7 +937,7 @@ func (client *Client) CreateExperimentPlanWithOptions(agentSpace *string, reques
 //
 // Description:
 //
-// Calls CreateExperimentPlan to create an experiment plan under a specified AgentSpace. This operation defines the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to start the execution.
+// Creates an experiment plan in a specified AgentSpace. You can use this operation to define the configuration for an offline or online experiment, including the data source, optional evaluators, and experiment groups required for online experiments. After the plan is created, call CreateExperimentRun to initiate the execution.
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -2462,8 +2474,14 @@ func (client *Client) GetDatasetWithOptions(agentSpace *string, datasetName *str
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetDataset"),
@@ -2830,11 +2848,11 @@ func (client *Client) GetExperimentPlan(agentSpace *string, planId *string, requ
 
 // Summary:
 //
-// Queries the details of an experiment run record.
+// Queries the details of an experiment run.
 //
 // Description:
 //
-// Calls GetExperimentRun to query the details of a specific experiment run record, including the status, progress, configuration snapshot, and associated evaluation task ID.
+// Calls the GetExperimentRun operation to query the details of an experiment run, including the status, progress, configuration snapshot, and associated evaluation task ID.
 //
 // @param request - GetExperimentRunRequest
 //
@@ -2875,11 +2893,11 @@ func (client *Client) GetExperimentRunWithOptions(agentSpace *string, recordId *
 
 // Summary:
 //
-// Queries the details of an experiment run record.
+// Queries the details of an experiment run.
 //
 // Description:
 //
-// Calls GetExperimentRun to query the details of a specific experiment run record, including the status, progress, configuration snapshot, and associated evaluation task ID.
+// Calls the GetExperimentRun operation to query the details of an experiment run, including the status, progress, configuration snapshot, and associated evaluation task ID.
 //
 // @param request - GetExperimentRunRequest
 //
@@ -3960,11 +3978,11 @@ func (client *Client) ListExperimentPlans(agentSpace *string, request *ListExper
 
 // Summary:
 //
-// Queries a list of experiment run records.
+// Queries a list of experiment runs.
 //
 // Description:
 //
-// Calls ListExperimentRuns to query experiment run records under a specified AgentSpace for the current account. You can filter results by status, dataset, plan name, or experiment name, and use `page`/`pageSize` for pagination.
+// Calls the ListExperimentRuns operation to query the experiment execution records of the current account in a specified AgentSpace. You can filter records by status, dataset, plan name, and experiment name, and paginate results by using page and pageSize.
 //
 // @param request - ListExperimentRunsRequest
 //
@@ -4039,11 +4057,11 @@ func (client *Client) ListExperimentRunsWithOptions(agentSpace *string, request 
 
 // Summary:
 //
-// Queries a list of experiment run records.
+// Queries a list of experiment runs.
 //
 // Description:
 //
-// Calls ListExperimentRuns to query experiment run records under a specified AgentSpace for the current account. You can filter results by status, dataset, plan name, or experiment name, and use `page`/`pageSize` for pagination.
+// Calls the ListExperimentRuns operation to query the experiment execution records of the current account in a specified AgentSpace. You can filter records by status, dataset, plan name, and experiment name, and paginate results by using page and pageSize.
 //
 // @param request - ListExperimentRunsRequest
 //
@@ -5466,7 +5484,7 @@ func (client *Client) UpdateEvaluatorSkill(name *string, skillName *string, requ
 //
 // Description:
 //
-// Updates a specified experiment plan. Fields that are not specified remain unchanged. You can only update plans created by the current account.
+// Updates a specified experiment plan. Unspecified fields remain unchanged. Only plans created by the current account can be updated.
 //
 // @param request - UpdateExperimentPlanRequest
 //
@@ -5557,7 +5575,7 @@ func (client *Client) UpdateExperimentPlanWithOptions(agentSpace *string, planId
 //
 // Description:
 //
-// Updates a specified experiment plan. Fields that are not specified remain unchanged. You can only update plans created by the current account.
+// Updates a specified experiment plan. Unspecified fields remain unchanged. Only plans created by the current account can be updated.
 //
 // @param request - UpdateExperimentPlanRequest
 //

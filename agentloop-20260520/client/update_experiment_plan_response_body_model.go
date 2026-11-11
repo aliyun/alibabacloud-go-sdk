@@ -24,7 +24,7 @@ type UpdateExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// The experiment plan is updated successfully
+	// Experiment plan updated successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The ID of the experiment plan.
 	//

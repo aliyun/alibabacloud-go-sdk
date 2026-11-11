@@ -24,9 +24,9 @@ type CreateExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// Experiment plan created successfully
+	// The experiment plan is created
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The experiment plan ID.
+	// The ID of the experiment plan.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CreateExperimentPlanResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The creation result. The value `created` indicates success.
+	// The creation result. A value of created indicates success.
 	//
 	// example:
 	//

@@ -28,25 +28,25 @@ type iListExperimentRunsRequest interface {
 }
 
 type ListExperimentRunsRequest struct {
-	// Filters results by exact dataset ID.
+	// Filters the results by exact dataset ID.
 	//
 	// example:
 	//
 	// arms_customer_agent_level1
 	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
-	// Filters results by fuzzy match on the experiment configuration name.
+	// Filters the results by using a fuzzy match on the name in the experiment configuration.
 	//
 	// example:
 	//
 	// experimentA
 	ExperimentName *string `json:"experimentName,omitempty" xml:"experimentName,omitempty"`
-	// Optional. Use `page` and `pageSize` for pagination instead.
+	// Optional. For pagination, use page and pageSize.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// Optional. Use `page` and `pageSize` for pagination instead.
+	// Optional. For pagination, use page and pageSize.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type ListExperimentRunsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters results by fuzzy match on the experiment plan name.
+	// Filters the results by using a fuzzy match on the experiment plan name.
 	//
 	// example:
 	//
 	// arms_agent_experiment
 	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
-	// Filters results by status.
+	// Filters the results by status.
 	//
 	// example:
 	//

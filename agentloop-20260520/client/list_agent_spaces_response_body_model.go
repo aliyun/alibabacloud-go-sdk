@@ -22,15 +22,15 @@ type iListAgentSpacesResponseBody interface {
 }
 
 type ListAgentSpacesResponseBody struct {
-	// The AgentSpaces information.
+	// The information about the AgentSpaces.
 	AgentSpaces []*ListAgentSpacesResponseBodyAgentSpaces `json:"agentSpaces,omitempty" xml:"agentSpaces,omitempty" type:"Repeated"`
-	// The maximum number of results returned.
+	// The maximum number of returned results.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. This parameter is empty if no more pages are available.
+	// The pagination token. This parameter is empty if no next page is available.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAgentSpacesResponseBody struct {
 	//
 	// 4E4AC775-2358-5B52-B6FB-171459D7B14B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListAgentSpacesResponseBody) Validate() error {
 }
 
 type ListAgentSpacesResponseBodyAgentSpaces struct {
-	// The AgentSpace name.
+	// The name of the AgentSpace.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListAgentSpacesResponseBodyAgentSpaces struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -257,14 +257,19 @@ func (s *ListAgentSpacesResponseBodyAgentSpaces) Validate() error {
 }
 
 type ListAgentSpacesResponseBodyAgentSpacesMseNamespace struct {
+	// The attach method of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+	//
+	// example:
+	//
+	// AutoCreated
 	BindType *string `json:"bindType,omitempty" xml:"bindType,omitempty"`
-	// The MSE namespace ID.
+	// The ID of the MSE namespace.
 	//
 	// example:
 	//
 	// phoenixcloud-raw-logs
 	NamespaceId *string `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
-	// The MSE namespace name.
+	// The name of the MSE namespace.
 	//
 	// example:
 	//

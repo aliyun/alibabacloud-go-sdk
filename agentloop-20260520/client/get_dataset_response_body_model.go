@@ -32,7 +32,7 @@ type iGetDatasetResponseBody interface {
 }
 
 type GetDatasetResponseBody struct {
-	// The name of the agent space.
+	// The name of the agent workspace.
 	//
 	// example:
 	//
