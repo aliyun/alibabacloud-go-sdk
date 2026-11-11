@@ -3,3 +3,8 @@
 - Support API ListRights.
 
 
+2026-11-11 Version: v1.0.0
+- Support API ActiveRights.
+- Support API ListRights.
+
+
