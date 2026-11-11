@@ -32,13 +32,13 @@ type RevokeClientCertificateResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The website name.
+	// The site name.
 	//
 	// example:
 	//

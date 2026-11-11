@@ -26,7 +26,7 @@ type iListWafRulesetsResponseBody interface {
 }
 
 type ListWafRulesetsResponseBody struct {
-	// The number of WAF rulesets used by the instance in this WAF execution phase.
+	// The number of WAF rulesets used by the instance in the current WAF phase.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ListWafRulesetsResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rulesets, including detailed information about each ruleset.
+	// The list of rulesets, which contains the detailed information about the rulesets.
 	Rulesets []*ListWafRulesetsResponseBodyRulesets `json:"Rulesets,omitempty" xml:"Rulesets,omitempty" type:"Repeated"`
-	// The number of WAF rulesets used by the site in this WAF execution phase.
+	// The number of WAF rulesets used by the site in the current WAF phase.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ func (s *ListWafRulesetsResponseBody) Validate() error {
 type ListWafRulesetsResponseBodyRulesets struct {
 	// The list of match objects.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
-	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
+	// The ID of the WAF ruleset. You can obtain the ruleset ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ruleset name.
+	// The name of the ruleset.
 	//
 	// example:
 	//
@@ -187,13 +187,13 @@ type ListWafRulesetsResponseBodyRulesets struct {
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ruleset status.
+	// The status of the ruleset.
 	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The protection target type in http_bot.
+	// The protection target type for http_bot.
 	//
 	// example:
 	//
@@ -201,9 +201,9 @@ type ListWafRulesetsResponseBodyRulesets struct {
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The list of rule types.
 	Types []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	// The last modification time of the ruleset.
+	// The last update time of the ruleset.
 	//
-	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	// Format: RFC 3339/ISO 8601, UTC time zone (ending with Z).
 	//
 	// Example: 2026-06-10T14:23:45Z
 	//

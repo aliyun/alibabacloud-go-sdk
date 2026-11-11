@@ -18,15 +18,17 @@ type iUpdateOriginProtectionRequest interface {
 }
 
 type UpdateOriginProtectionRequest struct {
+	// Specifies whether to automatically enable the latest list of back-to-origin IP addresses.
+	//
 	// example:
 	//
 	// off
 	AutoConfirmIPList *string `json:"AutoConfirmIPList,omitempty" xml:"AutoConfirmIPList,omitempty"`
-	// The origin fetch convergence switch.
+	// Specifies whether to enable back-to-origin convergence. Valid values:
 	//
-	// - on: Enable origin fetch convergence.
+	// - on: Enables back-to-origin convergence.
 	//
-	// - off: Disable origin fetch convergence.
+	// - off: Disables back-to-origin convergence.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +36,7 @@ type UpdateOriginProtectionRequest struct {
 	//
 	// on
 	OriginConverge *string `json:"OriginConverge,omitempty" xml:"OriginConverge,omitempty"`
-	// The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to get it.
+	// The site ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//

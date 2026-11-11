@@ -20,29 +20,29 @@ type iUpdateCacheReserveSpecRequest interface {
 }
 
 type UpdateCacheReserveSpecRequest struct {
-	// Automatic payment.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Billing type. Valid values:
+	// The billing method. Valid values:
 	//
-	// - PREPAY
+	// - PREPAY: Subscription.
 	//
-	// - POSTPAY
+	// - POSTPAY: Pay-as-you-go.
 	//
 	// example:
 	//
 	// PREPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// esa-cr-9tuv*********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Cache requested size, in GB.
+	// The requested cache size, in GB.
 	//
 	// example:
 	//

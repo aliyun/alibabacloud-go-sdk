@@ -14,7 +14,7 @@ type iDeleteOriginRuleResponseBody interface {
 }
 
 type DeleteOriginRuleResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

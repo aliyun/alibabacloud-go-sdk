@@ -22,33 +22,33 @@ type iUpdateManagedTransformRequest interface {
 }
 
 type UpdateManagedTransformRequest struct {
-	// Specifies whether to add a header that contains visitor geolocation information. Valid values:
+	// Specifies whether to add the visitor geolocation header. Valid values:
 	//
-	// - `on`: Add the header.
+	// - on: Enabled.
 	//
-	// - `off`: Do not add the header.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
-	// Specifies whether to add the `ali-real-client-ip` header, which contains the real client IP. Valid values:
+	// Specifies whether to add the ali-real-client-ip header that contains the real client IP address. Valid values:
 	//
-	// - `on`: Add the header.
+	// - on: Enabled.
 	//
-	// - `off`: Do not add the header.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
-	// The name of the header that contains the real client IP. The name must start with a letter and can contain letters, digits (0-9), and hyphens (-).
+	// The name of the real client IP address header. The name must start with a letter and can contain digits and hyphens (-).
 	//
 	// example:
 	//
 	// test-header
 	RealClientIpHeaderName *string `json:"RealClientIpHeaderName,omitempty" xml:"RealClientIpHeaderName,omitempty"`
-	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+	// The ID of the site. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type UpdateManagedTransformRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version of the site. For sites with version management enabled, this parameter specifies the version to which the configuration applies. Default value: 0.
+	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version to which the configuration applies. Default value: 0.
 	//
 	// example:
 	//

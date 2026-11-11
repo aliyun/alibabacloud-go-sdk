@@ -16,13 +16,13 @@ type iCreateNetworkOptimizationResponseBody interface {
 }
 
 type CreateNetworkOptimizationResponseBody struct {
-	// The configuration ID.
+	// The ID of the configuration.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

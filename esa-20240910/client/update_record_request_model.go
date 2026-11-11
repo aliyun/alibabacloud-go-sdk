@@ -36,27 +36,27 @@ type iUpdateRecordRequest interface {
 }
 
 type UpdateRecordRequest struct {
-	// The origin authentication information of the CNAME record.
+	// The origin server authentication information for a CNAME record.
 	AuthConf *UpdateRecordRequestAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	// The business scenario for record acceleration. This parameter is not required for records without acceleration enabled. Valid values:
+	// The business scenario when record acceleration is enabled. This parameter is not required for records without acceleration enabled. Valid values:
 	//
-	// - **video_image**: video and image.
+	// - **video_image**: Video and image.
 	//
 	// - **api**: API.
 	//
-	// - **web**: web page.
+	// - **web**: Web page.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The comment for the record.
+	// The description of the record.
 	//
 	// example:
 	//
 	// This is a remark.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The DNS information of the record. The content varies depending on the record type. For more information, see <props="china">[documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
+	// The DNS information of the record. The required content for this field varies based on the record type. For more information, see <props="china">[Documentation](https://help.aliyun.com/document_detail/2708761.html)<props="intl">[Documentation](https://www.alibabacloud.com/help/doc-detail/2708761.html).
 	//
 	// This parameter is required.
 	//
@@ -68,29 +68,39 @@ type UpdateRecordRequest struct {
 	//
 	// }
 	Data *UpdateRecordRequestData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The back-to-origin HOST policy. This parameter takes effect when the record type is CNAME. Settings the HOST policy for back-to-origin requests. Valid values:
+	// The back-to-origin host policy. This parameter takes effect when the record type is CNAME and specifies the host header policy for back-to-origin requests. Valid values:
 	//
-	// - **follow_hostname**: follows the host record.
+	// - **follow_hostname**: Follows the host record.
 	//
-	// - **follow_origin_domain**: follows the Origin Domain Name.
+	// - **follow_origin_domain**: Follows the origin domain name.
 	//
 	// example:
 	//
 	// follow_origin_domain
 	HostPolicy *string `json:"HostPolicy,omitempty" xml:"HostPolicy,omitempty"`
-	HttpPorts  *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// The HTTP port. By default, port 80 is supported.
+	//
+	// example:
+	//
+	// 80,2052,2082,2086,2095,8080,8880
+	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// The HTTPS port. By default, port 443 is supported.
+	//
+	// example:
+	//
+	// 443,2053,2083,2087,2096,8443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// Specifies whether to enable proxy acceleration for the record. Only CNAME records and A/AAAA records support proxy acceleration. Valid values:
+	// Specifies whether to enable proxy acceleration for the record. Only CNAME, A, and AAAA records support proxy acceleration. Valid values:
 	//
-	// - **true**: Enable proxy acceleration.
+	// - **true**: Enables proxy acceleration.
 	//
-	// - **false**: Disable proxy acceleration.
+	// - **false**: Disables proxy acceleration.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The ID of the record. You can call [ListRecords](https://help.aliyun.com/document_detail/2850265.html) to obtain the record ID.
+	// The ID of the record. You can obtain the ID by calling the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -98,31 +108,31 @@ type UpdateRecordRequest struct {
 	//
 	// 1234567890123
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The origin server type of the CNAME record. This parameter is required when you add a CNAME record. Valid values:
+	// The origin server type for a CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	//
 	// - **OSS**: OSS origin server.
 	//
 	// - **S3**: S3 origin server.
 	//
-	// - **LB**: load balancing origin server.
+	// - **LB**: Load balancer origin server.
 	//
-	// - **OP**: IPAM pool origin server.
+	// - **OP**: Origin address pool origin server.
 	//
-	// - **Domain**: standard domain name origin server.
+	// - **Domain**: Common domain name origin server.
 	//
-	// If this parameter is not specified or is left empty, the default value is Domain, which indicates a standard domain name origin server type.
+	// If this parameter is not specified or is left empty, the default value is **Domain**, which indicates a common domain name origin server.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The time-to-live (TTL) of the record, in seconds. Valid values: **30 to 86400**, or 1. A value of 1 indicates that the TTL of the record is automatically determined.
+	// The time-to-live (TTL) of the record, in seconds. Valid values: **30*	- to **86400**, or **1**. A value of 1 indicates that the TTL is automatic.
 	//
 	// example:
 	//
 	// 30
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	// The DNS type of the record, such as A/AAAA, CNAME, or TXT.
+	// The DNS record type. Examples include A, AAAA, CNAME, and TXT.
 	//
 	// example:
 	//
@@ -261,43 +271,43 @@ func (s *UpdateRecordRequest) Validate() error {
 }
 
 type UpdateRecordRequestAuthConf struct {
-	// The AccessKey of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the origin authentication type is private cross-account read, or when the origin server type is S3 and the origin authentication type is private read.
+	// The AccessKey of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the authentication type is private cross-account read, or when the origin server type is S3 and the authentication type is private read.
 	//
 	// example:
 	//
 	// VIxuvJSA2S03f******kp208dy5w7
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// The origin authentication type. Different origin server types support different authentication types. The origin server type refers to the SourceType parameter in this operation. When the origin server type is OSS or S3, you must specify the origin authentication type. Valid values:
+	// The origin server authentication type. Supported authentication types vary based on the origin server type, which is specified by the SourceType parameter in this operation. This parameter is required when the origin server type is OSS or S3. Valid values:
 	//
-	// - **public**: public read. Select this value when the origin server type is OSS or S3 and the origin server allows public read access.
+	// - **public**: Public read. Select this value when the origin server type is OSS or S3 and the origin server allows public read access.
 	//
-	// - **private**: private read. Select this value when the origin server type is S3 and the origin server allows only private read access.
+	// - **private**: Private read. Select this value when the origin server type is S3 and the origin server allows private read access.
 	//
-	// - **private_same_account**: private same-account read. Select this value when the origin server type is OSS, the origin server is under the same Alibaba Cloud account, and the origin server allows only private read access.
+	// - **private_same_account**: Private read within the same account. Select this value when the origin server type is OSS, the origin server and the current resource belong to the same Alibaba Cloud account, and the origin server allows private read access.
 	//
 	// example:
 	//
 	// private
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The signature algorithm version. This parameter is required when the origin server type is S3 and the origin authentication type is private read. Valid values:
+	// The signature algorithm version. This parameter is required when the origin server type is S3 and the authentication type is private read. Valid values:
 	//
 	// - **v2**
 	//
 	// - **v4**
 	//
-	// Default value: v4.
+	// If this parameter is not specified, the default value is **v4**.
 	//
 	// example:
 	//
 	// v2
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The SecretKey of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the origin authentication type is private cross-account read, or when the origin server type is S3 and the origin authentication type is private read.
+	// The secret key of the account to which the origin server belongs. This parameter is required when the origin server type is OSS and the authentication type is private cross-account read, or when the origin server type is S3 and the authentication type is private read.
 	//
 	// example:
 	//
 	// u0Nkg5gBK*******QF5wvKMM504JUHt
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The region to which the origin server belongs. This parameter is required when the origin server type is S3. Obtain the region from the official S3 website.
+	// The region to which the origin server belongs. This parameter is required when the origin server type is S3. You can obtain the region of the origin server from the official website of S3.
 	//
 	// example:
 	//
@@ -363,7 +373,7 @@ func (s *UpdateRecordRequestAuthConf) Validate() error {
 }
 
 type UpdateRecordRequestData struct {
-	// The encryption algorithm used by the record. Valid values: **0 to 255**. This parameter is required when you add CERT or SSHFP records.
+	// The encryption algorithm used by the record. Valid values: **0*	- to **255**. This parameter is required when you add CERT or SSHFP records.
 	//
 	// example:
 	//
@@ -375,81 +385,81 @@ type UpdateRecordRequestData struct {
 	//
 	// dGVzdGFkYWxrcw==
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	// The public key fingerprint value of the record. This parameter is required when you add SSHFP records.
+	// The public key fingerprint of the record. This parameter is required when you add an SSHFP record.
 	//
 	// example:
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The flag of the record. The Flag of a CAA record indicates its priority and processing method. Valid values: **0 to 255**. This parameter is required when you add CAA records.
+	// The flag of the record. For a CAA record, the flag indicates its priority and processing method. Valid values: **0*	- to **255**. This parameter is required when you add a CAA record.
 	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The public key identifier of the record. Valid values: **0 to 65535**. This parameter is required when you add CERT records.
+	// The public key tag of the record. Valid values: **0*	- to **65535**. This parameter is required when you add a CERT record.
 	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	// The algorithm policy used by the record for matching or verifying certificates. Valid values: **0 to 255**. This parameter is required when you add SMIMEA or TLSA records.
+	// The algorithm policy used to match or verify the certificate. Valid values: **0*	- to **255**. This parameter is required when you add SMIMEA or TLSA records.
 	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
-	// The port of the record. Valid values: **0 to 65535**. This parameter is required when you add SRV records.
+	// The port of the record. Valid values: **0*	- to **65535**. This parameter is required when you add an SRV record.
 	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the record. Valid values: **0 to 65535**. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, or URI records.
+	// The priority of the record. Valid values: **0*	- to **65535**. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, or URI records.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of certificate or public key used by the record. Valid values: **0 to 255**. This parameter is required when you add SMIMEA or TLSA records.
+	// The type of the certificate or public key used by the record. Valid values: **0*	- to **255**. This parameter is required when you add SMIMEA or TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The tag of the record. The Tag of a CAA record indicates its specific type and purpose. This parameter is required when you add CAA records.
+	// The tag of the record. For a CAA record, the tag indicates its specific type and purpose. This parameter is required when you add a CAA record.
 	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The certificate type of the record (for CERT records) or the public key type (for SSHFP records). This parameter is required when you add CERT or SSHFP records.
+	// The certificate type for a CERT record, or the public key type for an SSHFP record. This parameter is required when you add CERT or SSHFP records.
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage identifier of the record. Valid values: **0 to 255**. This parameter is required when you add SMIMEA or TLSA records.
+	// The usage identifier of the record. Valid values: **0*	- to **255**. This parameter is required when you add SMIMEA or TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The record value or partial content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI records. The meaning varies depending on the record type:
+	// The record value or partial content. This parameter is required when you add A, AAAA, CNAME, NS, MX, TXT, CAA, SRV, or URI records. The meaning of this parameter varies based on the record type:
 	//
-	// - **A/AAAA**: The IP address to which the record points. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
+	// - **A/AAAA**: The destination IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
 	//
-	// - **CNAME**: The target domain name to which the record points.
+	// - **CNAME**: The target domain name.
 	//
-	// - **NS**: The name server for the specified domain name.
+	// - **NS**: The name server of the specified domain name.
 	//
-	// - **MX**: A valid target mail server domain name.
+	// - **MX**: The valid domain name of the target mail server.
 	//
 	// - **TXT**: A valid text string.
 	//
-	// - **CAA**: A valid certification authority domain name.
+	// - **CAA**: The valid domain name of the certificate issuing authority.
 	//
-	// - **SRV**: A valid target host domain name.
+	// - **SRV**: The valid domain name of the target host.
 	//
 	// - **URI**: A valid URI string.
 	//
@@ -457,7 +467,7 @@ type UpdateRecordRequestData struct {
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight of the record. Valid values: **0 to 65535**. This parameter is required when you add SRV or URI records.
+	// The weight of the record. Valid values: **0*	- to **65535**. This parameter is required when you add SRV or URI records.
 	//
 	// example:
 	//

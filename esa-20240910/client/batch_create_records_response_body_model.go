@@ -16,7 +16,7 @@ type iBatchCreateRecordsResponseBody interface {
 }
 
 type BatchCreateRecordsResponseBody struct {
-	// The list of record creation results, including details of successfully and unsuccessfully created records.
+	// The list of record creation results, including the details of successful and failed records.
 	RecordResultList *BatchCreateRecordsResponseBodyRecordResultList `json:"RecordResultList,omitempty" xml:"RecordResultList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *BatchCreateRecordsResponseBody) Validate() error {
 }
 
 type BatchCreateRecordsResponseBodyRecordResultList struct {
-	// The list of records that failed to be created.
+	// The list of failed records.
 	Failed []*BatchCreateRecordsResponseBodyRecordResultListFailed `json:"Failed,omitempty" xml:"Failed,omitempty" type:"Repeated"`
-	// The list of successfully created records.
+	// The list of successful records.
 	Success []*BatchCreateRecordsResponseBodyRecordResultListSuccess `json:"Success,omitempty" xml:"Success,omitempty" type:"Repeated"`
 	// The total number of records in the creation operation.
 	//
@@ -134,17 +134,17 @@ func (s *BatchCreateRecordsResponseBodyRecordResultList) Validate() error {
 type BatchCreateRecordsResponseBodyRecordResultListFailed struct {
 	// The business scenario for record acceleration. Valid values:
 	//
-	// - **image_video**: video and image.
+	// - **image_video**: images and videos.
 	//
-	// - **api**: API.
+	// - **api**: API operations.
 	//
-	// - **web**: web page.
+	// - **web**: web pages.
 	//
 	// example:
 	//
 	// web
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// The DNS information of the record, including record values and related properties for various record types.
+	// The DNS information of the record, including the values and related attributes of various record types.
 	//
 	// example:
 	//
@@ -156,19 +156,29 @@ type BatchCreateRecordsResponseBodyRecordResultListFailed struct {
 	//
 	// The record name is invalid.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HttpPorts   *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	HttpsPorts  *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// Indicates whether proxied acceleration is enabled for the record. Only CNAME records and A/AAAA records support proxied acceleration. Valid values:
+	// The HTTP port. By default, port 80 is supported.
 	//
-	// - **true**: Proxied acceleration is enabled.
+	// example:
 	//
-	// - **false**: Proxied acceleration is disabled.
+	// 80,8080
+	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// The HTTPS port. Port 443 is supported by default.
+	//
+	// example:
+	//
+	// 443,8443
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+	// Specifies whether proxy acceleration is enabled for the record. Only CNAME and A/AAAA records support proxy acceleration. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The record ID.
+	// The ID of the created record.
 	//
 	// example:
 	//
@@ -180,29 +190,29 @@ type BatchCreateRecordsResponseBodyRecordResultListFailed struct {
 	//
 	// a.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The DNS type of the record, such as **A/AAAA, CNAME, or TXT**.
+	// The DNS record type, such as **A/AAAA**, **CNAME**, or **TXT**.
 	//
 	// example:
 	//
 	// A/AAAA
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// The origin type of the CNAME record. This field is empty for other record types. Valid values:
+	// The origin server type for CNAME records. This field is empty for other record types. Valid values:
 	//
-	// - **OSS**: OSS origin.
+	// - **OSS**: OSS origin server.
 	//
-	// - **S3**: S3 origin.
+	// - **S3**: S3 origin server.
 	//
-	// - **LB**: load balancing origin.
+	// - **LB**: Load balancing origin server.
 	//
-	// - **OP**: IPAM pool origin.
+	// - **OP**: Source IPAM pool origin server.
 	//
-	// - **Domain**: common domain name origin.
+	// - **Domain**: Common domain name origin server.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is set to automatic.
+	// The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is automatic.
 	//
 	// example:
 	//
@@ -327,7 +337,7 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListFailed) Validate() error 
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListFailedData struct {
-	// The encryption algorithm used by the record. Value range: **0 to 255**. This parameter applies to CERT and SSHFP records.
+	// The encryption algorithm used by the record. Valid values: **0*	- to **255**. This parameter applies to CERT and SSHFP records.
 	//
 	// example:
 	//
@@ -345,77 +355,77 @@ type BatchCreateRecordsResponseBodyRecordResultListFailedData struct {
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The flag of the record, which indicates its priority and processing method. This parameter applies to CAA records.
+	// The flag of the record. Indicates the priority and processing method. This parameter applies to CAA records.
 	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The public key identifier of the record. Value range: **0 to 65535**. This parameter applies to CERT records.
+	// The public key identifier of the record. Valid values: **0*	- to **65535**. This parameter applies to CERT records.
 	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	// The algorithm policy used to match or verify certificates. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+	// The algorithm policy used by the record to match or verify the certificate. Valid values: **0*	- to **255**. This parameter applies to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
-	// The port number of the record. This parameter applies only to SRV records.
+	// The port number of the record. This parameter is associated with SRV records and applies only to SRV records.
 	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the record. Value range: **0 to 65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
+	// The priority of the record. Valid values: **0*	- to **65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of certificate or public key used by the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+	// The type of the certificate or public key used by the record. Valid values: **0*	- to **255**. This parameter applies to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The tag of the CAA record, which indicates its specific type and purpose, such as issue, issuewild, or iodef.
+	// The tag of the CAA record. Indicates the specific type and purpose, such as issue, issuewild, or iodef.
 	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The certificate type (for CERT records) or public key type (for SSHFP records) of the record.
+	// The certificate type for CERT records or the public key type for SSHFP records.
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage identifier of the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+	// The usage identifier of the record. Valid values: **0*	- to **255**. This parameter applies to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. The meaning varies by record type:
+	// The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It indicates different meanings in different record types:
 	//
-	// - **A/AAAA**: the IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
+	// - **A/AAAA**: The target IP address. Separate multiple IP addresses with half-width commas (,). At least one IPv4 address is required.
 	//
-	// - **CNAME**: the target domain name.
+	// - **CNAME**: The target domain name.
 	//
-	// - **NS**: the name server of the specified domain name.
+	// - **NS**: The name server of the specified domain name.
 	//
-	// - **MX**: a valid target mail server domain name.
+	// - **MX**: The valid domain name of the target mail server.
 	//
-	// - **TXT**: a valid text string.
+	// - **TXT**: The valid text character string.
 	//
-	// - **CAA**: a valid certification authority domain name.
+	// - **CAA**: The valid domain name of the certificate issuing authority.
 	//
-	// - **SRV**: a valid target host domain name.
+	// - **SRV**: The valid domain name of the target host.
 	//
-	// - **URI**: a valid URI string.
+	// - **URI**: The valid URI string.
 	//
 	// example:
 	//
@@ -570,11 +580,11 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListFailedData) Validate() er
 type BatchCreateRecordsResponseBodyRecordResultListSuccess struct {
 	// The business scenario for record acceleration. Valid values:
 	//
-	// - **image_video**: video and image.
+	// - **image_video**: images and videos.
 	//
-	// - **api**: API.
+	// - **api**: API operations.
 	//
-	// - **web**: web page.
+	// - **web**: web pages.
 	//
 	// example:
 	//
@@ -592,13 +602,23 @@ type BatchCreateRecordsResponseBodyRecordResultListSuccess struct {
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	HttpPorts   *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	HttpsPorts  *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// Specifies whether to enable proxied acceleration for the record. Only CNAME records and A/AAAA records support proxied acceleration. Valid values:
+	// The HTTP port. By default, port 80 is supported.
 	//
-	// - **true**: Proxied acceleration is enabled.
+	// example:
 	//
-	// - **false**: Proxied acceleration is disabled.
+	// 80,8080
+	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// The HTTPS port. Port 443 is supported by default.
+	//
+	// example:
+	//
+	// 443,8443
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+	// Specifies whether to enable proxy acceleration for the record. Only CNAME and A/AAAA records can enable proxy acceleration. Valid values:
+	//
+	// - **true**: enables proxy acceleration.
+	//
+	// - **false**: disables proxy acceleration.
 	//
 	// example:
 	//
@@ -616,29 +636,29 @@ type BatchCreateRecordsResponseBodyRecordResultListSuccess struct {
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The DNS type of the record, such as **A/AAAA, CNAME, or TXT**.
+	// The DNS record type, such as **A/AAAA**, **CNAME**, or **TXT**.
 	//
 	// example:
 	//
 	// A/AAAA
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// The origin type of the CNAME record. This field is empty for other record types. Valid values:
+	// The origin server type for CNAME records. This field is empty for other record types. Valid values:
 	//
-	// - **OSS**: OSS origin.
+	// - **OSS**: OSS origin server.
 	//
-	// - **S3**: S3 origin.
+	// - **S3**: S3 origin server.
 	//
-	// - **LB**: load balancing origin.
+	// - **LB**: Load balancing origin server.
 	//
-	// - **OP**: IPAM pool origin.
+	// - **OP**: Source IPAM pool origin server.
 	//
-	// - **Domain**: common domain name origin.
+	// - **Domain**: Common domain name origin server.
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is set to automatic.
+	// The time-to-live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is automatic.
 	//
 	// example:
 	//
@@ -763,7 +783,7 @@ func (s *BatchCreateRecordsResponseBodyRecordResultListSuccess) Validate() error
 }
 
 type BatchCreateRecordsResponseBodyRecordResultListSuccessData struct {
-	// The encryption algorithm used by the record. Value range: **0 to 255**. This parameter applies to CERT and SSHFP records.
+	// The encryption algorithm used by the record. Valid values: **0*	- to **255**. This parameter applies to CERT and SSHFP records.
 	//
 	// example:
 	//
@@ -781,83 +801,83 @@ type BatchCreateRecordsResponseBodyRecordResultListSuccessData struct {
 	//
 	// abcdef1234567890
 	Fingerprint *string `json:"Fingerprint,omitempty" xml:"Fingerprint,omitempty"`
-	// The flag of the record, which indicates its priority and processing method. This parameter applies to CAA records.
+	// The flag of the record. Indicates the priority and processing method. This parameter applies to CAA records.
 	//
 	// example:
 	//
 	// 128
 	Flag *int32 `json:"Flag,omitempty" xml:"Flag,omitempty"`
-	// The public key identifier of the record. Value range: **0 to 65535**. This parameter applies to CERT records.
+	// The public key identifier of the record. Valid values: **0*	- to **65535**. This parameter applies to CERT records.
 	//
 	// example:
 	//
 	// 0
 	KeyTag *int32 `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
-	// The algorithm policy used to match or verify certificates. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+	// The algorithm policy used by the record to match or verify the certificate. Valid values: **0*	- to **255**. This parameter applies to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	MatchingType *int32 `json:"MatchingType,omitempty" xml:"MatchingType,omitempty"`
-	// The port of the record. Value range: **0 to 65535**. This parameter applies only to SRV records.
+	// The port of the record. Valid values: **0*	- to **65535**. This parameter applies only to SRV records.
 	//
 	// example:
 	//
 	// 0
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The priority of the record. Value range: **0 to 65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
+	// The priority of the record. Valid values: **0*	- to **65535**. A smaller value indicates a higher priority. This parameter applies to MX, SRV, and URI records.
 	//
 	// example:
 	//
 	// 10
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The type of certificate or public key used by the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+	// The type of the certificate or public key used by the record. Valid values: **0*	- to **255**. This parameter applies to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Selector *int32 `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	// The tag of the CAA record, which indicates its specific type and purpose, such as issue, issuewild, or iodef.
+	// The tag of the CAA record. Indicates the specific type and purpose, such as issue, issuewild, or iodef.
 	//
 	// example:
 	//
 	// issue
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The certificate type (for CERT records) or public key type (for SSHFP records) of the record.
+	// The certificate type for CERT records or the public key type for SSHFP records.
 	//
 	// example:
 	//
 	// 0
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The usage identifier of the record. Value range: **0 to 255**. This parameter applies to SMIMEA and TLSA records.
+	// The usage identifier of the record. Valid values: **0*	- to **255**. This parameter applies to SMIMEA and TLSA records.
 	//
 	// example:
 	//
 	// 0
 	Usage *int32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
-	// The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. The meaning varies by record type:
+	// The record value or partial content. This parameter is included in A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It indicates different meanings in different record types:
 	//
-	// - **A/AAAA**: the IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
+	// - **A/AAAA**: The IP address. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
 	//
-	// - **CNAME**: the target domain name.
+	// - **CNAME**: The target domain name.
 	//
-	// - **NS**: the name server of the specified domain name.
+	// - **NS**: The name server of the specified domain name.
 	//
-	// - **MX**: a valid target mail server domain name.
+	// - **MX**: The valid domain name of the target mail server.
 	//
-	// - **TXT**: a valid text string.
+	// - **TXT**: The valid text character string.
 	//
-	// - **CAA**: a valid certification authority domain name.
+	// - **CAA**: The valid domain name of the certificate issuing authority.
 	//
-	// - **SRV**: a valid target host domain name.
+	// - **SRV**: The valid domain name of the target host.
 	//
-	// - **URI**: a valid URI string.
+	// - **URI**: The valid URI string.
 	//
 	// example:
 	//
 	// example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// The weight of the record. Value range: **0 to 65535**. This parameter applies to SRV and URI records.
+	// The weight of the record. Valid values: **0*	- to **65535**. This parameter applies to SRV and URI records.
 	//
 	// example:
 	//

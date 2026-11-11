@@ -24,7 +24,7 @@ type iCreateSliderCaptchaPageShrinkRequest interface {
 type CreateSliderCaptchaPageShrinkRequest struct {
 	// The predefined configurations for the custom slider page.
 	ConfigsShrink *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
-	// The custom slider configurations. The value is a JSON string.
+	// The custom slider configuration, in JSON string format.
 	//
 	// example:
 	//

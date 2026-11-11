@@ -28,7 +28,7 @@ type ListWafManagedRulesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListWafManagedRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of managed rules.
 	Rules []*ListWafManagedRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of rules after filtering.
+	// The total number of filtered rules.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ type ListWafManagedRulesResponseBodyRules struct {
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The managed rule ID.
+	// The ID of the managed rule.
 	//
 	// example:
 	//
 	// 100001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The managed rule name.
+	// The name of the managed rule.
 	//
 	// example:
 	//

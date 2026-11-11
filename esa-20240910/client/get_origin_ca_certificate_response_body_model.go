@@ -136,7 +136,7 @@ type GetOriginCaCertificateResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The creation time. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -166,13 +166,13 @@ type GetOriginCaCertificateResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The expiration time of the certificate. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The start time of the certificate validity period. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type GetOriginCaCertificateResponseBodyResult struct {
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// The subject alternative name (SAN) of the certificate.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type GetOriginCaCertificateResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
+	// The update time. The time follows the YYYY-MM-DD HH:MM:SS format and is in the UTC/GMT time zone.
 	//
 	// example:
 	//

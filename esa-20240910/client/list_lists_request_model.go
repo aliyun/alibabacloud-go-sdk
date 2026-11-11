@@ -18,19 +18,19 @@ type iListListsRequest interface {
 }
 
 type ListListsRequest struct {
-	// The page number for paging.
+	// The page number for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameters passed in JSON format, which contain various filter conditions.
+	// The query parameters, passed in JSON format, which include various filter conditions.
 	//
 	// example:
 	//
@@ -89,37 +89,37 @@ type ListListsRequestQueryArgs struct {
 	//
 	// true
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The value used to fuzzy match list descriptions.
+	// The list description for fuzzy match.
 	//
 	// example:
 	//
 	// a custom list
 	DescriptionLike *string `json:"DescriptionLike,omitempty" xml:"DescriptionLike,omitempty"`
-	// The value used to fuzzy match list IDs.
+	// The list ID for fuzzy match.
 	//
 	// example:
 	//
 	// 40000001
 	IdLike *string `json:"IdLike,omitempty" xml:"IdLike,omitempty"`
-	// The value used to fuzzy match list content.
+	// The list content for fuzzy match.
 	//
 	// example:
 	//
 	// 10.1.1.1
 	ItemLike *string `json:"ItemLike,omitempty" xml:"ItemLike,omitempty"`
-	// The kind of the custom list.
+	// The type of the custom list.
 	//
 	// example:
 	//
 	// ip
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The value used to fuzzy match both list content and list names simultaneously.
+	// The list name and content for simultaneous fuzzy match.
 	//
 	// example:
 	//
 	// 10.1.1.1
 	NameItemLike *string `json:"NameItemLike,omitempty" xml:"NameItemLike,omitempty"`
-	// The value used to fuzzy match list names.
+	// The list name for fuzzy match.
 	//
 	// example:
 	//

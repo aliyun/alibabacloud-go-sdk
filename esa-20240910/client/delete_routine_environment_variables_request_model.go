@@ -18,13 +18,11 @@ type iDeleteRoutineEnvironmentVariablesRequest interface {
 }
 
 type DeleteRoutineEnvironmentVariablesRequest struct {
-	// The environment name.
+	// The environment name. Valid values:
 	//
-	// Valid values:
+	// - `staging`: the staging environment.
 	//
-	// - `staging`: staging environment
-	//
-	// - `production`: production environment
+	// - `production`: the production environment.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +30,7 @@ type DeleteRoutineEnvironmentVariablesRequest struct {
 	//
 	// production
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The list of environment variable keys to delete.
+	// The keys of the environment variables to delete.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +38,7 @@ type DeleteRoutineEnvironmentVariablesRequest struct {
 	//
 	// ["LOG_LEVEL"]
 	EnvironmentVariableKeys []*string `json:"EnvironmentVariableKeys,omitempty" xml:"EnvironmentVariableKeys,omitempty" type:"Repeated"`
-	// The name of the Routine function.
+	// The name of the routine.
 	//
 	// This parameter is required.
 	//

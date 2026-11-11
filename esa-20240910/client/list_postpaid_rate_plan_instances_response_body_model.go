@@ -44,7 +44,7 @@ type ListPostpaidRatePlanInstancesResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A123425345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *ListPostpaidRatePlanInstancesResponseBody) Validate() error {
 }
 
 type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
-	// The Billable methods. Valid values:
+	// The billing method. Valid values:
 	//
-	// - dps_month95: monthly 95th percentile billing.
+	// - dps_month95: Monthly 95th percentile billing.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	BillingMethod *string `json:"BillingMethod,omitempty" xml:"BillingMethod,omitempty"`
 	// The billing mode. Valid values:
 	//
-	//  	- POSTPAY: pay-as-you-go.
+	// - POSTPAY: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -152,23 +152,23 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	BillingMode *string `json:"BillingMode,omitempty" xml:"BillingMode,omitempty"`
 	// The acceleration regions for sites that can be bound to the instance. Multiple values are separated by commas (,). Valid values:
 	//
-	// - domestic: the Chinese mainland.
+	// - domestic: The Chinese mainland.
 	//
-	// - overseas: global (excluding the Chinese mainland).
+	// - overseas: Global (excluding the Chinese mainland).
 	//
-	// - global: global (including the Chinese mainland).
+	// - global: Global (including the Chinese mainland).
 	//
 	// example:
 	//
 	// domestic
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the instance was created. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The scheduled time for upgrade or downgrade. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The scheduled time for the specification change. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -180,29 +180,35 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId    *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The English name of the plan.
 	//
 	// example:
 	//
 	// basic
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// The plan name in Chinese.
+	// The Chinese name of the plan.
 	//
 	// example:
 	//
 	// test-plan
 	PlanNameCn *string `json:"PlanNameCn,omitempty" xml:"PlanNameCn,omitempty"`
-	// The plan type corresponding to the plan instance. Valid values:
+	// The plan type of the instance. Valid values:
 	//
-	// - normal: fixed plan.
+	// - normal: Standard plan.
 	//
-	// - enterprise: enterprise plan.
+	// - enterprise: Enterprise plan.
 	//
 	// example:
 	//
 	// normal
-	PlanType  *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// example:
+	//
+	// sharing
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The site quota.
 	//
@@ -388,7 +394,7 @@ type ListPostpaidRatePlanInstancesResponseBodyInstanceInfoSites struct {
 	//
 	// - offline: The site is offline.
 	//
-	// - moved: The site has been replaced.
+	// - moved: The site is replaced.
 	//
 	// example:
 	//

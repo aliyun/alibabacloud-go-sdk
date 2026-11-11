@@ -20,7 +20,7 @@ type iGetDcvDelegationResponseBody interface {
 }
 
 type GetDcvDelegationResponseBody struct {
-	// The DCV managed domain name.
+	// The DCV delegation domain name.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iActivateVersionManagementRequest interface {
 }
 
 type ActivateVersionManagementRequest struct {
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The ID of the site. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
 	//
 	// This parameter is required.
 	//

@@ -18,19 +18,19 @@ type iListListsShrinkRequest interface {
 }
 
 type ListListsShrinkRequest struct {
-	// The page number for paging.
+	// The page number for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameters passed in JSON format, which contain various filter conditions.
+	// The query parameters, passed in JSON format, which include various filter conditions.
 	//
 	// example:
 	//

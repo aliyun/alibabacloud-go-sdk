@@ -18,7 +18,7 @@ type iBatchCreateWafRulesResponseBody interface {
 }
 
 type BatchCreateWafRulesResponseBody struct {
-	// The IDs of the WAF rules. You can call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation to obtain the rule IDs.
+	// The IDs of the WAF rules. You can obtain the rule IDs by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation.
 	Ids []*int64 `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type BatchCreateWafRulesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
+	// The ID of the WAF ruleset. You can obtain the ruleset ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//

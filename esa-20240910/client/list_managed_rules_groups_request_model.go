@@ -16,13 +16,13 @@ type iListManagedRulesGroupsRequest interface {
 }
 
 type ListManagedRulesGroupsRequest struct {
-	// The page number for the paged query.
+	// The page number for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for the paged query.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetImageTransformRequest interface {
 }
 
 type GetImageTransformRequest struct {
-	// The configuration ID. You can call the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) operation to obtain the configuration ID.
+	// The ID of the configuration. You can call the [ListImageTransforms](https://help.aliyun.com/document_detail/2869056.html) operation to query the configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetImageTransformRequest struct {
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// This parameter is required.
 	//

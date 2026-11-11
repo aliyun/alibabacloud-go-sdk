@@ -16,11 +16,11 @@ type iGetCnameFlatteningResponseBody interface {
 }
 
 type GetCnameFlatteningResponseBody struct {
-	// The CNAME flattening mode. Valid values:
+	// The flattening mode. Valid values:
 	//
-	// 	- flatten_all: flattens all CNAMEs.
+	// - flatten_all: Flattens all.
 	//
-	// 	- flatten_all (default): flattens only the root domain.
+	// - flatten_at_root: Flattens only the root domain. This is the default value.
 	//
 	// example:
 	//

@@ -1,3 +1,6 @@
+2026-11-11 Version: v3.14.1
+- Generated golang 2024-09-10 for ESA.
+
 2026-10-20 Version: v3.14.0
 - Support API CreateSliderCaptchaPage.
 - Support API DeleteSliderCaptchaPage.

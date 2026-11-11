@@ -14,7 +14,7 @@ type iCheckSiteNameRequest interface {
 }
 
 type CheckSiteNameRequest struct {
-	// The website name.
+	// The site name.
 	//
 	// This parameter is required.
 	//

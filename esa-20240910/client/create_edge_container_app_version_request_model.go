@@ -22,7 +22,7 @@ type iCreateEdgeContainerAppVersionRequest interface {
 type CreateEdgeContainerAppVersionRequest struct {
 	// The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
 	//
-	// 	Notice: 1) Your account must have an ESA plan with the Edge Container feature enabled. 2) Call CreateEdgeContainerApp first to create an application and obtain the AppId. 3) Complete call chain example: CreateEdgeContainerApp → ListEdgeContainerApps → CreateEdgeContainerAppVersion.</notice>
+	// 	Notice: 1) Your account must be subscribed to an ESA plan that includes the Edge Container feature. 2) You must call CreateEdgeContainerApp to create an application and obtain the AppId. 3) A complete call chain example is provided (CreateEdgeContainerApp → ListEdgeContainerApps → CreateEdgeContainerAppVersion).</notice>
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateEdgeContainerAppVersionRequest struct {
 	//
 	// app-88068867578379****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container group to be deployed for this version, including specific image information. The image information consists of the image address, startup command, parameters, environment variables, and probe rules. Multiple images are supported in a JSON array structure.
+	// The container group to be deployed for this version, which includes specific image information. The image information consists of the image address, startup command, arguments, environment variables, and probe rules. Multiple images are supported and structured as a JSON array.
 	//
 	// This parameter is required.
 	//
@@ -148,13 +148,13 @@ func (s *CreateEdgeContainerAppVersionRequest) Validate() error {
 type CreateEdgeContainerAppVersionRequestContainers struct {
 	// The ACR image information.
 	ACRImageInfo *CreateEdgeContainerAppVersionRequestContainersACRImageInfo `json:"ACRImageInfo,omitempty" xml:"ACRImageInfo,omitempty" type:"Struct"`
-	// The startup parameters. Separate multiple parameters with spaces.
+	// The startup arguments. Separate multiple arguments with spaces.
 	//
 	// example:
 	//
 	// -a
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The startup command. Separate multiple commands with spaces.
+	// The command to run. This indicates the startup command. Separate multiple commands with spaces.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// registry-vpc.cn-shenzhen.aliyuncs.com/lihe****h/ea****ts_serv****am:3.**
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Specifies whether the image is an Alibaba Cloud Container Registry (ACR) image.
+	// Specifies whether the image is an ACR image.
 	//
 	// This parameter is required.
 	//
@@ -190,19 +190,19 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// lxg-demo-er
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The command to execute before the container starts. Separate multiple commands with spaces. This command is executed before the service starts and is typically used for initialization operations.
+	// The command to execute before the container starts. This indicates the command executed before the service starts. Separate multiple parts with spaces. It is generally used for initialization operations.
 	//
 	// example:
 	//
 	// sh poststart.sh "echo hello world"
 	PostStart *string `json:"PostStart,omitempty" xml:"PostStart,omitempty"`
-	// The command to execute before the container stops. Separate multiple commands with spaces. This command is executed before the service exits and is typically used for cleanup operations before exit.
+	// The command to execute before the container stops. This indicates the command executed after startup. Separate multiple parts with spaces. It is executed before the service exits and is generally used for cleanup operations before exit.
 	//
 	// example:
 	//
 	// sh prestop.sh "echo hello world"
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The container health probe content.
+	// The content of the container health probe.
 	//
 	// This parameter is required.
 	//
@@ -214,9 +214,9 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// - **exec**: Command-based.
 	//
-	// - **tcpSocket**: TCP detection-based.
+	// - **tcpSocket**: TCP socket-based.
 	//
-	// - **httpGet**: HTTP access-based.
+	// - **httpGet**: HTTP GET-based.
 	//
 	// This parameter is required.
 	//
@@ -224,7 +224,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// exec
 	ProbeType *string `json:"ProbeType,omitempty" xml:"ProbeType,omitempty"`
-	// The container specifications. Specifies the computing specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
+	// The container specifications. This indicates the computing power specifications. Valid values: 1C2G, 2C4G, 2C8G, 4C8G, 4C16G, 8C16G, and 8C32G.
 	//
 	// This parameter is required.
 	//
@@ -232,7 +232,7 @@ type CreateEdgeContainerAppVersionRequestContainers struct {
 	//
 	// 1C2G
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The storage capacity. Valid values: 0.5G, 10G, 20G, and 30G.
+	// The storage information. This indicates the storage space. Valid values: 0.5G, 10G, 20G, and 30G.
 	//
 	// This parameter is required.
 	//
@@ -382,7 +382,7 @@ func (s *CreateEdgeContainerAppVersionRequestContainers) Validate() error {
 }
 
 type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
-	// The ACR image domain name.
+	// The domain name of the ACR image.
 	//
 	// example:
 	//
@@ -394,13 +394,13 @@ type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
 	//
 	// xcdn-9axbo****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the image is an enterprise-level image.
+	// Specifies whether the image is an enterprise edition image.
 	//
 	// example:
 	//
 	// false
 	IsEnterpriseRegistry *bool `json:"IsEnterpriseRegistry,omitempty" xml:"IsEnterpriseRegistry,omitempty"`
-	// The region list of the ACR instance.
+	// The list of regions for the ACR instance.
 	//
 	// example:
 	//
@@ -412,25 +412,25 @@ type CreateEdgeContainerAppVersionRequestContainersACRImageInfo struct {
 	//
 	// crr-h1ghghu60ct****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The image repository name.
+	// The name of the image repository.
 	//
 	// example:
 	//
 	// test_71
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The namespace of the image repository.
+	// The namespace name of the image repository.
 	//
 	// example:
 	//
 	// safeline
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The ACR image tag.
+	// The tag of the ACR image.
 	//
 	// example:
 	//
 	// 3.40.2
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The ACR image tag URL.
+	// The tag URL of the ACR image.
 	TagUrl *string `json:"TagUrl,omitempty" xml:"TagUrl,omitempty"`
 }
 
@@ -528,13 +528,13 @@ func (s *CreateEdgeContainerAppVersionRequestContainersACRImageInfo) Validate() 
 }
 
 type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
-	// The probe command for exec-type probes.
+	// The probe command for the exec type.
 	//
 	// example:
 	//
 	// echo ok
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
-	// The number of consecutive failed health checks required.
+	// The number of consecutive failed container health checks.
 	//
 	// example:
 	//
@@ -552,7 +552,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// [{\\"Content-Type\\":\\"application/json\\"}]
 	HttpHeaders *string `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty"`
-	// The initial delay time for the container probe. Unit: seconds. For example, 5 indicates that the initial delay time is set to 5 seconds.
+	// The initial delay time for the container probe. Unit: seconds. For example, a value of 5 indicates that the initial delay time is set to 5 seconds.
 	//
 	// example:
 	//
@@ -564,7 +564,7 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// /
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The interval for the container health check. Unit: seconds. For example, 5 indicates that the health check interval is set to 5 seconds.
+	// The interval for the container health check. Unit: seconds. For example, a value of 5 indicates that the health check interval is set to 5 seconds.
 	//
 	// example:
 	//
@@ -582,13 +582,13 @@ type CreateEdgeContainerAppVersionRequestContainersProbeContent struct {
 	//
 	// http
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
-	// The number of consecutive successful health checks required.
+	// The number of consecutive successful health checks.
 	//
 	// example:
 	//
 	// 1
 	SuccessThreshold *int32 `json:"SuccessThreshold,omitempty" xml:"SuccessThreshold,omitempty"`
-	// The timeout period for the container health check. Unit: seconds. For example, 5 indicates that the timeout period is set to 5 seconds.
+	// The timeout period for the container health check. Unit: seconds. For example, a value of 5 indicates that the timeout period is set to 5 seconds.
 	//
 	// example:
 	//

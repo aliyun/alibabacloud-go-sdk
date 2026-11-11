@@ -16,7 +16,7 @@ type iCommitRoutineStagingCodeResponseBody interface {
 }
 
 type CommitRoutineStagingCodeResponseBody struct {
-	// The newly generated code version number.
+	// The version number of the newly generated code.
 	//
 	// example:
 	//

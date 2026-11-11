@@ -24,45 +24,47 @@ type iListOriginPoolsRequest interface {
 }
 
 type ListOriginPoolsRequest struct {
-	// Specifies how to match the origin pool name. The default is `exact`. Valid values:
+	// The match type for name-based queries. Valid values:
 	//
-	// - `fuzzy`: Performs a fuzzy search.
+	// - fuzzy: fuzzy search.
 	//
-	// - `exact`: Performs an exact match.
+	// - exact: exact search.
+	//
+	// Default value: exact.
 	//
 	// example:
 	//
 	// exact
 	MatchType *string `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
-	// The name of the origin pool.
+	// The name of the origin address pool.
 	//
 	// example:
 	//
 	// pool1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies how the results are sorted. By default, results are sorted by ID in descending order. To sort by ID in ascending order, set this parameter to `id`. IDs increase with creation time.
+	// The sort order. Supports ascending or descending order by ID. The ID is positively correlated with the creation time. Default value: descending order by ID. Valid values:
 	//
-	// - id: Sorts by ID in descending order.
+	// - id: descending order by ID.
 	//
-	// - id: Sorts by ID in ascending order.
+	// - id: ascending order by ID.
 	//
 	// example:
 	//
 	// id
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The value must be an integer from 1 to 500. If you specify a value greater than 500, the system uses 500.
+	// The number of entries per page. The value must be a positive integer. Maximum value: 500. If the value exceeds 500, it is reset to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID. To get this ID, call the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

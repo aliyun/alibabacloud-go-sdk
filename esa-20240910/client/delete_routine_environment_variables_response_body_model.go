@@ -18,9 +18,9 @@ type iDeleteRoutineEnvironmentVariablesResponseBody interface {
 }
 
 type DeleteRoutineEnvironmentVariablesResponseBody struct {
-	// The list of environment variable keys that were deleted successfully.
+	// The keys of the successfully deleted environment variables.
 	DeletedKeys []*string `json:"DeletedKeys,omitempty" xml:"DeletedKeys,omitempty" type:"Repeated"`
-	// The list of environment variable keys that failed to be deleted.
+	// The keys of the environment variables that failed to be deleted.
 	FailedKeys []*string `json:"FailedKeys,omitempty" xml:"FailedKeys,omitempty" type:"Repeated"`
 	// Id of the request
 	//

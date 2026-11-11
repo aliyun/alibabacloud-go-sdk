@@ -38,23 +38,23 @@ type ListWafRulesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule execution phase. Valid values:
+	// The execution phase of the WAF rule. Valid values:
 	//
-	// - http_whitelist: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - http_custom: custom rule
+	// - http_custom: custom rules
 	//
-	// - http_managed: managed rule
+	// - http_managed: managed rules
 	//
-	// - http_anti_scan: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - http_ratelimit: frequency control rule
+	// - http_ratelimit: rate limiting rules
 	//
-	// - ip_access_rule: IP access rule
+	// - ip_access_rule: IP access rules
 	//
-	// - http_bot: advanced mode bots
+	// - http_bot: advanced bot management
 	//
-	// - http_security_level_rule: security rule
+	// - http_security_level_rule: security rules
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListWafRulesRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ func (s *ListWafRulesRequest) Validate() error {
 }
 
 type ListWafRulesRequestQueryArgs struct {
-	// The value in IP access control for fuzzy match.
+	// The fuzzy value to search for in IP access control.
 	//
 	// example:
 	//
@@ -183,31 +183,31 @@ type ListWafRulesRequestQueryArgs struct {
 	//
 	// true
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The WAF rule ID for exact match.
+	// The exact WAF rule ID to query.
 	//
 	// example:
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The WAF rule ID or name for fuzzy match.
+	// The fuzzy WAF rule ID or name to query.
 	//
 	// example:
 	//
 	// example
 	IdNameLike *string `json:"IdNameLike,omitempty" xml:"IdNameLike,omitempty"`
-	// The WAF rule name for fuzzy match.
+	// The fuzzy WAF rule name to query.
 	//
 	// example:
 	//
 	// example
 	NameLike *string `json:"NameLike,omitempty" xml:"NameLike,omitempty"`
-	// Sorts the returned list by a specified column.
+	// The column by which to sort the returned list.
 	//
 	// example:
 	//
 	// position
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The WAF rule status for exact match.
+	// The exact WAF rule status to query.
 	//
 	// example:
 	//

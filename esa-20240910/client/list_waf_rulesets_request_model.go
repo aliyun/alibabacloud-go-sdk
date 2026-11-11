@@ -24,13 +24,13 @@ type iListWafRulesetsRequest interface {
 }
 
 type ListWafRulesetsRequest struct {
-	// The page number. Specifies the current page number for paging queries.
+	// The page number. This parameter specifies the current page number for paging in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. Specifies the number of records per page for paging queries.
+	// The page size. This parameter specifies the number of records per page for paging in a paged query.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type ListWafRulesetsRequest struct {
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The query parameters, passed in JSON format, including various filter conditions.
+	// The query parameters. The parameters are passed in JSON format and contain various filter conditions.
 	//
 	// example:
 	//
 	// http_bot
 	QueryArgs *ListWafRulesetsRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ func (s *ListWafRulesetsRequest) Validate() error {
 }
 
 type ListWafRulesetsRequestQueryArgs struct {
-	// The fuzzy match string for the ruleset ID, ruleset name, rule ID, or rule name.
+	// The ruleset ID, ruleset name, rule ID, or rule name for fuzzy match.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type ListWafRulesetsRequestQueryArgs struct {
 	AnyLike *string `json:"AnyLike,omitempty" xml:"AnyLike,omitempty"`
 	// Specifies whether to sort the results in descending order.
 	Desc *bool `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The fuzzy match string for the ruleset name.
+	// The ruleset name for fuzzy match.
 	//
 	// example:
 	//

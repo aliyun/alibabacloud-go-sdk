@@ -22,7 +22,7 @@ type ListWafTemplateRulesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of template rules.
+	// The list of returned template rules.
 	Rules []*ListWafTemplateRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -74,7 +74,7 @@ type ListWafTemplateRulesResponseBodyRules struct {
 	//
 	// HTTP Directory Traversal Rule [Template]
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF running phase.
+	// The WAF phase.
 	//
 	// example:
 	//

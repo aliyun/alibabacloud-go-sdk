@@ -36,21 +36,21 @@ type ListWafManagedRulesRequest struct {
 	//
 	// - SQL injection
 	//
-	// - cross-site scripting (XSS)
+	// - Cross-site scripting (XSS)
 	//
-	// - code execute
+	// - Code execute
 	//
 	// - CRLF
 	//
-	// - local file inclusion (LFI)
+	// - Local file inclusion (LFI)
 	//
-	// - remote file inclusion (RFI)
+	// - Remote file inclusion (RFI)
 	//
 	// - webshell
 	//
-	// - cross-site request forgery
+	// - Cross-site request forgery
 	//
-	// - Others
+	// - Other
 	//
 	// - SEMA
 	//
@@ -82,9 +82,7 @@ type ListWafManagedRulesRequest struct {
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The managed ruleset configuration in JSON string format.
-	//
-	// Contains the AttackType, ProtectionLevel, Action, and ManagedRules subfields. When ProtectionLevel is set to -1 (custom mode), specify the status and action for each rule through the ManagedRules array.
+	// The managed rule set configuration in JSON string format. This parameter includes the AttackType, ProtectionLevel, Action, and ManagedRules sub-fields. If ProtectionLevel is set to -1 (custom mode), you must specify the status and action for each rule in the ManagedRules array.
 	ManagedRuleset *ListWafManagedRulesRequestManagedRuleset `json:"ManagedRuleset,omitempty" xml:"ManagedRuleset,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -92,17 +90,25 @@ type ListWafManagedRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The currently saved protection level, which represents the existing configuration state in the database.
+	// The currently saved protection level, which represents the existing configuration status in the database. Valid values:
 	//
-	// Valid values: -1 (custom mode), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+	// - -1: custom mode.
 	//
-	// Difference from ManagedRuleset.ProtectionLevel: this parameter indicates the currently effective configuration, while ManagedRuleset.ProtectionLevel indicates the target value being passed in.
+	// - 1: loose.
+	//
+	// - 2: medium.
+	//
+	// - 3: strict.
+	//
+	// - 4: super strict.
+	//
+	// Difference from ManagedRuleset.ProtectionLevel: This field indicates the currently effective configuration, whereas ManagedRuleset.ProtectionLevel indicates the target value passed in the request.
 	//
 	// example:
 	//
@@ -235,31 +241,33 @@ func (s *ListWafManagedRulesRequest) Validate() error {
 }
 
 type ListWafManagedRulesRequestManagedRuleset struct {
-	// The unified action when ProtectionLevel is greater than 0. This parameter cannot be empty in this case.
-	//
-	// Common valid values: monitor, deny, js, captcha. The actual available values depend on the instance quota.
+	// The unified action to take when ProtectionLevel is greater than 0. This parameter cannot be empty when ProtectionLevel is greater than 0. Common valid values include monitor, deny, js, and captcha. The actual valid values depend on the instance quota.
 	//
 	// example:
 	//
 	// monitor
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The attack type encoding. The value cannot be 0.
-	//
-	// Example values: 11 (SQL injection), 12 (XSS), 13 (code execute), 14 (CRLF), 15 (local file inclusion (LFI)), 16 (remote file inclusion (RFI)), 17 (WebShell), 22 (command injection), 26 (SSRF), 27 (path traversal), 28 (protocol violation), 31 (scanner behavior).
+	// The attack type encoding. The value cannot be 0. Example values: 11 (SQL injection), 12 (cross-site scripting), 13 (code execute), 14 (CRLF), 15 (local file inclusion (LFI)), 16 (remote file inclusion (RFI)), 17 (WebShell), 22 (command injection), 26 (server-side request forgery), 27 (path traversal), 28 (protocol violation), and 31 (scanner behavior).
 	//
 	// example:
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The rule configuration list in custom mode. This parameter is used only when ProtectionLevel is set to -1.
-	//
-	// Each element contains Id, Status, and Action, which are used to specify the enabled status and action for each managed rule.
+	// The list of rule configurations in custom mode. This parameter is used only when ProtectionLevel is set to -1. Each element includes Id, Status, and Action, which are used to specify the enabled status and action for each managed rule.
 	ManagedRules []*ListWafManagedRulesRequestManagedRulesetManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
-	// The protection level within the ruleset.
+	// The protection level of the rule set. Valid values:
 	//
-	// Valid values: -1 (custom mode, specify each rule through ManagedRules), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+	// - -1: custom mode. Specify rules one by one by using ManagedRules.
 	//
-	// When the value is -1, ManagedRules cannot be empty. When the value is greater than 0, Action cannot be empty.
+	// - 1: loose.
+	//
+	// - 2: medium.
+	//
+	// - 3: strict.
+	//
+	// - 4: super strict.
+	//
+	// If the value is -1, ManagedRules cannot be empty. If the value is greater than 0, Action cannot be empty.
 	//
 	// example:
 	//
@@ -325,9 +333,7 @@ func (s *ListWafManagedRulesRequestManagedRuleset) Validate() error {
 }
 
 type ListWafManagedRulesRequestManagedRulesetManagedRules struct {
-	// The action for a single rule. This parameter takes effect only in custom mode (ProtectionLevel = -1).
-	//
-	// Common valid values: monitor, deny, js, captcha. The actual available values depend on the instance quota.
+	// The action to take for a single rule. This parameter takes effect only in custom mode (ProtectionLevel = -1). Common valid values include monitor, deny, js, and captcha. The actual valid values depend on the instance quota.
 	//
 	// example:
 	//
@@ -339,9 +345,7 @@ type ListWafManagedRulesRequestManagedRulesetManagedRules struct {
 	//
 	// 20611349
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The rule enabled status.
-	//
-	// Valid values:
+	// The enabled status of the rule. Valid values:
 	//
 	// - on: enabled.
 	//
@@ -399,7 +403,7 @@ type ListWafManagedRulesRequestQueryArgs struct {
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// Fuzzy match by rule ID or rule name.
+	// The keyword for fuzzy query of the rule ID or rule name.
 	//
 	// example:
 	//

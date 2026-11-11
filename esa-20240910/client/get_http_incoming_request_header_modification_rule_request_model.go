@@ -16,7 +16,7 @@ type iGetHttpIncomingRequestHeaderModificationRuleRequest interface {
 }
 
 type GetHttpIncomingRequestHeaderModificationRuleRequest struct {
-	// The ID of the configuration. You can call the ListHttpIncomingRequestHeaderModificationRules operation to query the ID.
+	// The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to obtain the configuration ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetHttpIncomingRequestHeaderModificationRuleRequest struct {
 	//
 	// 433045006266368
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

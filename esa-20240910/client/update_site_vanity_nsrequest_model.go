@@ -24,7 +24,7 @@ type UpdateSiteVanityNSRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The list of custom NS names. You can specify 2 to 5 custom NS names, separated by commas (,).
+	// The list of custom NS names. You can specify 2 to 5 custom NS names. Separate multiple names with commas (,).
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type BatchGetExpressionFieldsShrinkRequest struct {
 	//
 	// http_bot
 	ExpressionsShrink *string `json:"Expressions,omitempty" xml:"Expressions,omitempty"`
-	// The plan instance ID.
+	// The instance ID of the plan.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type BatchGetExpressionFieldsShrinkRequest struct {
 	//
 	// http_bot
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The plan name (in English).
+	// The name of the plan in English.
 	//
 	// example:
 	//

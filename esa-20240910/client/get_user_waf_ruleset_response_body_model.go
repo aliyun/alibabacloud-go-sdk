@@ -90,17 +90,17 @@ type GetUserWafRulesetResponseBodyRuleset struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The phase in which the WAF rule runs. Valid values:
+	// The execution phase of the WAF ruleset. Valid values:
 	//
-	// - http_whitelist: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - http_custom: custom rule
+	// - http_custom: custom rules
 	//
-	// - http_managed: managed rule
+	// - http_managed: managed rules
 	//
-	// - http_anti_scan: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - http_ratelimit: frequency control rule
+	// - http_ratelimit: frequency control rules
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type GetUserWafRulesetResponseBodyRuleset struct {
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// The list of rule configurations in the WAF ruleset.
+	// The list of rule configurations under the WAF ruleset.
 	//
 	// example:
 	//
 	// [{}]
 	Rules []*GetUserWafRulesetResponseBodyRulesetRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The shared configuration of the WAF ruleset.
+	// The sharing configuration of the WAF ruleset.
 	//
 	// example:
 	//
@@ -240,21 +240,21 @@ func (s *GetUserWafRulesetResponseBodyRuleset) Validate() error {
 }
 
 type GetUserWafRulesetResponseBodyRulesetRules struct {
-	// The action of the rule. Valid values:
+	// The action corresponding to the rule. Valid values:
 	//
-	// - deny: Block.
+	// - deny: block
 	//
-	// - monitor: Monitor.
+	// - monitor: monitor
 	//
-	// - js: JavaScript Challenge.
+	// - js: JavaScript challenge
 	//
-	// - captcha: Slider challenge.
+	// - captcha: slider challenge
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The list of statistics fields for the WAF rule.
+	// The list of statistical fields for the WAF rule.
 	//
 	// example:
 	//
@@ -294,17 +294,17 @@ type GetUserWafRulesetResponseBodyRulesetRules struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The phase in which the WAF rule runs. Valid values:
+	// The execution phase of the WAF ruleset. Valid values:
 	//
-	// - http_whitelist: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - http_custom: custom rule
+	// - http_custom: custom rules
 	//
-	// - http_managed: managed rule
+	// - http_managed: managed rules
 	//
-	// - http_anti_scan: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - http_ratelimit: frequency control rule
+	// - http_ratelimit: frequency control rules
 	//
 	// example:
 	//
@@ -322,7 +322,7 @@ type GetUserWafRulesetResponseBodyRulesetRules struct {
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
-	// The skip mode of the WAF rule.
+	// The skip method for the WAF rule.
 	//
 	// example:
 	//
@@ -334,7 +334,7 @@ type GetUserWafRulesetResponseBodyRulesetRules struct {
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of phases to skip for the WAF rule.
+	// The list of skip phases for the WAF rule.
 	//
 	// example:
 	//
@@ -346,9 +346,9 @@ type GetUserWafRulesetResponseBodyRulesetRules struct {
 	//
 	// http_ratelimit
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the WAF rule was last updated.
+	// The update time of the WAF rule.
 	//
-	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	// Format: RFC 3339 / ISO 8601, UTC standard time zone (ending with Z).
 	//
 	// Example: 2025-07-07T15:00:00Z
 	//

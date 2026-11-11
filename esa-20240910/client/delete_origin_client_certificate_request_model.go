@@ -16,7 +16,7 @@ type iDeleteOriginClientCertificateRequest interface {
 }
 
 type DeleteOriginClientCertificateRequest struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteOriginClientCertificateRequest struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// This parameter is required.
 	//

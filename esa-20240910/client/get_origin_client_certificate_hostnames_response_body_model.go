@@ -22,7 +22,7 @@ type iGetOriginClientCertificateHostnamesResponseBody interface {
 }
 
 type GetOriginClientCertificateHostnamesResponseBody struct {
-	// The associated hostnames.
+	// The list of bound domain names.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
 	// The certificate ID.
 	//

@@ -22,27 +22,27 @@ type iGetManagedTransformResponseBody interface {
 }
 
 type GetManagedTransformResponseBody struct {
-	// Indicates whether a header that contains the visitor\\"s geolocation is added. Valid values:
+	// Indicates whether the visitor geolocation header is added. Valid values:
 	//
-	// - on: Enables this feature.
+	// - on: Enabled.
 	//
-	// - off: Disables this feature.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AddClientGeolocationHeader *string `json:"AddClientGeolocationHeader,omitempty" xml:"AddClientGeolocationHeader,omitempty"`
-	// Indicates whether the "ali-real-client-ip" header is added to include the real client IP. Valid values:
+	// Indicates whether the ali-real-client-ip header containing the real client IP address is added. Valid values:
 	//
-	// - on: Enables this feature.
+	// - on: Enabled.
 	//
-	// - off: Disables this feature.
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
-	// The real client IP header name.
+	// The name of the real client IP address header.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetManagedTransformResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version of the site for which the configuration is returned.
+	// The site version number. For sites with version management enabled, you can use this parameter to specify the site version to which the configuration applies. Default value: 0.
 	//
 	// example:
 	//

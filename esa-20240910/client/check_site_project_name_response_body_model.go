@@ -20,23 +20,23 @@ type iCheckSiteProjectNameResponseBody interface {
 }
 
 type CheckSiteProjectNameResponseBody struct {
-	// Valid values:
+	// Indicates whether the project name can be added. Valid values:
 	//
-	// - **true**: Can be added.
+	// - **true**: The name can be added.
 	//
-	// - **false**: Cannot be added.
+	// - **false**: The name cannot be added.
 	//
 	// example:
 	//
 	// true
 	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
-	// The result description.
+	// The description of the result.
 	//
 	// example:
 	//
 	// project name pass the check
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The real-time log project name.
+	// The name of the real-time log project.
 	//
 	// example:
 	//

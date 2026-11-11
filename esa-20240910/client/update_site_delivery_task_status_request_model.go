@@ -18,7 +18,7 @@ type iUpdateSiteDeliveryTaskStatusRequest interface {
 }
 
 type UpdateSiteDeliveryTaskStatusRequest struct {
-	// Specifies whether to enable the delivery task.
+	// Specifies whether to enable or disable task delivery.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type UpdateSiteDeliveryTaskStatusRequest struct {
 	//
 	// online
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The website ID.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the delivery task.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//

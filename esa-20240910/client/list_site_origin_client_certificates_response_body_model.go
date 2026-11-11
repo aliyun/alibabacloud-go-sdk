@@ -157,7 +157,7 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// www.example.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
+	// The creation time. Format: YYYY-MM-DD HH:MM:SS, UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// babaabcd****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certification authority.
+	// The certificate issuer.
 	//
 	// example:
 	//
@@ -187,13 +187,13 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// yourCertName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
+	// The expiration time of the certificate. Format: YYYY-MM-DD HH:MM:SS, UTC/GMT time zone.
 	//
 	// example:
 	//
 	// 2024-03-31 02:08:00
 	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
+	// The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, UTC/GMT time zone.
 	//
 	// example:
 	//
@@ -205,13 +205,13 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// RSA
 	PubkeyAlgorithm *string `json:"PubkeyAlgorithm,omitempty" xml:"PubkeyAlgorithm,omitempty"`
-	// The Subject Alternative Name (SAN) of the certificate.
+	// The subject alternative name of the certificate.
 	//
 	// example:
 	//
 	// www.example.com,*.example.com
 	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
-	// The sequence number of the certificate.
+	// The certificate serial number.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListSiteOriginClientCertificatesResponseBodyResult struct {
 	//
 	// upload
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
+	// The update time. Format: YYYY-MM-DD HH:MM:SS, UTC/GMT time zone.
 	//
 	// example:
 	//

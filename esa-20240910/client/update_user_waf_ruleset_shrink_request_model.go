@@ -30,19 +30,19 @@ type iUpdateUserWafRulesetShrinkRequest interface {
 }
 
 type UpdateUserWafRulesetShrinkRequest struct {
-	// The description of the WAF ruleset.
+	// The description of the WAF rule set.
 	//
 	// example:
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expression of the WAF ruleset.
+	// The expression of the WAF rule set.
 	//
 	// example:
 	//
 	// ip.src == 1.1.1.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	// The WAF ruleset ID.
+	// The WAF rule set ID.
 	//
 	// This parameter is required.
 	//
@@ -58,19 +58,19 @@ type UpdateUserWafRulesetShrinkRequest struct {
 	//
 	// esa-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the WAF ruleset.
+	// The name of the WAF rule set.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The position of the WAF ruleset.
+	// The position of the WAF rule set.
 	//
 	// example:
 	//
 	// 1
 	Position *int64 `json:"Position,omitempty" xml:"Position,omitempty"`
-	// A list of rule configurations in the WAF ruleset.
+	// The list of rule configurations in the WAF rule set.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type UpdateUserWafRulesetShrinkRequest struct {
 	//
 	//   }
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The shared configuration of the WAF ruleset.
+	// The sharing configuration of the WAF rule set.
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	// The status of the WAF ruleset.
+	// The status of the WAF rule set.
 	//
 	// example:
 	//

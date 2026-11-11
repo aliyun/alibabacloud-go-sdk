@@ -18,7 +18,7 @@ type iListSliderCaptchaPagesResponseBody interface {
 }
 
 type ListSliderCaptchaPagesResponseBody struct {
-	// The list of custom slider CAPTCHA pages.
+	// The list of custom slider pages.
 	Pages []*ListSliderCaptchaPagesResponseBodyPages `json:"Pages,omitempty" xml:"Pages,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListSliderCaptchaPagesResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListSliderCaptchaPagesResponseBody) Validate() error {
 }
 
 type ListSliderCaptchaPagesResponseBodyPages struct {
-	// The ID of the custom slider CAPTCHA page.
+	// The ID of the custom slider page.
 	//
 	// example:
 	//
 	// 50000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the custom slider CAPTCHA page.
+	// The name of the custom slider page.
 	//
 	// example:
 	//

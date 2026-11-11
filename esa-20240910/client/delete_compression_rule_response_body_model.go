@@ -14,7 +14,7 @@ type iDeleteCompressionRuleResponseBody interface {
 }
 
 type DeleteCompressionRuleResponseBody struct {
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

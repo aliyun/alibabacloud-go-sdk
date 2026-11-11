@@ -26,8 +26,13 @@ type UpdateSiteInstanceRequest struct {
 	//
 	// esa-site-bckh96ri1eyo
 	NewInstanceId *string `json:"NewInstanceId,omitempty" xml:"NewInstanceId,omitempty"`
-	ResourceOwner *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
+	// The UID of the Alibaba Cloud account that owns the new plan instance.
+	//
+	// example:
+	//
+	// 1700594193617909
+	ResourceOwner *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//

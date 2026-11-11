@@ -55,13 +55,13 @@ type ListUserRatePlanInstancesRequest struct {
 	// sp-xcdn-96wblslz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IsShared   *bool   `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// The page number Settings for a paging query. Default value: **1**. Valid values: **1*	- to **100000**.
+	// The page number Settings for paging in a paged query. Default value: **1**. Valid values: **1*	- to **100000**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paging query. Valid values: 1 to 500.
+	// The number of entries per page for paging in a paged query. Valid values: 1 to 500.
 	//
 	// example:
 	//
@@ -83,24 +83,24 @@ type ListUserRatePlanInstancesRequest struct {
 	//
 	// enterprise
 	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
-	// Queries plan instances whose remaining validity period is less than or equal to the specified number of days. The value must be a positive integer. Unit: days.
+	// Queries plan instances whose remaining validity period is within the specified number of days. The value must be a positive integer. Unit: days.
 	//
 	// example:
 	//
 	// 30
 	RemainingExpireDays *int32 `json:"RemainingExpireDays,omitempty" xml:"RemainingExpireDays,omitempty"`
 	ResourceOwner       *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// The field by which to sort the results. By default, the results are sorted by creation time. Valid values:
+	// The sort field. By default, the instances are sorted by creation time. Valid values:
 	//
-	// - **CreateTime**: Sorts by creation time.
+	// - **CreateTime**: The creation time.
 	//
-	// - **ExpireTime**: Sorts by expiration time.
+	// - **ExpireTime**: The expiration time.
 	//
 	// example:
 	//
 	// CreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort order. By default, the results are sorted in descending order. Valid values:
+	// The sort order. By default, the instances are sorted in descending order. Valid values:
 	//
 	// - **asc**: Ascending order.
 	//
@@ -110,15 +110,15 @@ type ListUserRatePlanInstancesRequest struct {
 	//
 	// asc
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The instance status. Valid values:
+	// The instance status of the plan. Valid values:
 	//
-	// - **online**: The instance is in normal service status.
+	// - **online**: The normal service status.
 	//
-	// - **offline**: The instance has expired but is not overdue, and is in an inactive state.
+	// - **offline**: The instance has expired but not overdue, and is in an inactive state.
 	//
-	// - **disable**: The instance is released.
+	// - **disable**: The released status.
 	//
-	// - **overdue**: The instance has an overdue payment.
+	// - **overdue**: The overdue payment status.
 	//
 	// if can be null:
 	// false
@@ -129,17 +129,17 @@ type ListUserRatePlanInstancesRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The subscription type of the plan. Valid values:
 	//
-	// - entranceplan: Free Edition (Chinese mainland)
+	// - entranceplan: Free Edition (Chinese mainland).
 	//
-	// - entranceplan_intl: Free Edition (International)
+	// - entranceplan_intl: Free Edition (International).
 	//
-	// - basicplan: Basic Edition
+	// - basicplan: Basic Edition.
 	//
-	// - standardplan: Standard Edition
+	// - standardplan: Standard Edition.
 	//
-	// - advancedplan: Advanced Edition
+	// - advancedplan: Advanced Edition.
 	//
-	// - enterpriseplan: Enterprise Edition
+	// - enterpriseplan: Enterprise Edition.
 	//
 	// example:
 	//

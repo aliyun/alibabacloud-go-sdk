@@ -24,19 +24,19 @@ type iUpdateEnvironmentRequest interface {
 }
 
 type UpdateEnvironmentRequest struct {
-	// The environment name.
+	// The name of the environment.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 默认环境
+	// Default environment
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
-	// The new environment name.
+	// The new name of the environment.
 	//
 	// example:
 	//
-	// 环境A
+	// Environment A
 	NewName *string `json:"NewName,omitempty" xml:"NewName,omitempty"`
 	// Specifies whether the environment is read-only.
 	//
@@ -54,7 +54,7 @@ type UpdateEnvironmentRequest struct {
 	//
 	// (http.host eq "duduko5.top")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The ID of the site. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateEnvironmentRequest struct {
 	//
 	// 33993121955****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The new site version number. Only the environment with the highest priority can be modified.
+	// The new version number of the site. You can modify this parameter only for the environment with the highest priority.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iCreateSliderCaptchaPageRequest interface {
 type CreateSliderCaptchaPageRequest struct {
 	// The predefined configurations for the custom slider page.
 	Configs *CreateSliderCaptchaPageRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Struct"`
-	// The custom slider configurations. The value is a JSON string.
+	// The custom slider configuration, in JSON string format.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type CreateSliderCaptchaPageRequestConfigsEn struct {
 	//
 	// true
 	ShowRequestId *bool `json:"ShowRequestId,omitempty" xml:"ShowRequestId,omitempty"`
-	// The color of the slider.
+	// The slider color.
 	//
 	// This parameter is required.
 	//
@@ -255,7 +255,7 @@ type CreateSliderCaptchaPageRequestConfigsZh struct {
 	//
 	// false
 	ShowRequestId *bool `json:"ShowRequestId,omitempty" xml:"ShowRequestId,omitempty"`
-	// The color of the slider.
+	// The slider color.
 	//
 	// This parameter is required.
 	//

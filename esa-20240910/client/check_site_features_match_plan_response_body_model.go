@@ -24,7 +24,7 @@ type CheckSiteFeaturesMatchPlanResponseBody struct {
 	//
 	// true
 	IsPassed *bool `json:"IsPassed,omitempty" xml:"IsPassed,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *CheckSiteFeaturesMatchPlanResponseBody) Validate() error {
 }
 
 type CheckSiteFeaturesMatchPlanResponseBodyUnPassedSiteQuotas struct {
-	// The quota value of the current site.
+	// The current quota value of the site.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type CheckSiteFeaturesMatchPlanResponseBodyUnPassedSiteQuotas struct {
 	//
 	// false
 	DestQuotaValue *string `json:"DestQuotaValue,omitempty" xml:"DestQuotaValue,omitempty"`
-	// The quota name.
+	// The name of the quota.
 	//
 	// example:
 	//

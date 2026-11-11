@@ -20,7 +20,7 @@ type iDeleteKeylessServerResponseBody interface {
 }
 
 type DeleteKeylessServerResponseBody struct {
-	// The keyless server ID.
+	// The Keyless server ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iListCiphersRequest interface {
 }
 
 type ListCiphersRequest struct {
-	// The name of the cipher suite group, which can be: all, strict, custom.
+	// The name of the cipher suite group. Valid values: all, strict, and custom.
 	//
 	// This parameter is required.
 	//

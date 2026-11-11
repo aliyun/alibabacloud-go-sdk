@@ -24,17 +24,17 @@ type UpdateSiteDeliveryTaskStatusResponseBody struct {
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the delivery task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **online**
+	// - **online**: Delivering.
 	//
-	// 	- **offline**
+	// - **offline**: Disabled.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
+	// The name of the task.
 	//
 	// example:
 	//

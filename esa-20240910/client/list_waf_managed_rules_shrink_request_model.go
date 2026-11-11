@@ -36,21 +36,21 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// - SQL injection
 	//
-	// - cross-site scripting (XSS)
+	// - Cross-site scripting (XSS)
 	//
-	// - code execute
+	// - Code execute
 	//
 	// - CRLF
 	//
-	// - local file inclusion (LFI)
+	// - Local file inclusion (LFI)
 	//
-	// - remote file inclusion (RFI)
+	// - Remote file inclusion (RFI)
 	//
 	// - webshell
 	//
-	// - cross-site request forgery
+	// - Cross-site request forgery
 	//
-	// - Others
+	// - Other
 	//
 	// - SEMA
 	//
@@ -82,9 +82,7 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The managed ruleset configuration in JSON string format.
-	//
-	// Contains the AttackType, ProtectionLevel, Action, and ManagedRules subfields. When ProtectionLevel is set to -1 (custom mode), specify the status and action for each rule through the ManagedRules array.
+	// The managed rule set configuration in JSON string format. This parameter includes the AttackType, ProtectionLevel, Action, and ManagedRules sub-fields. If ProtectionLevel is set to -1 (custom mode), you must specify the status and action for each rule in the ManagedRules array.
 	ManagedRulesetShrink *string `json:"ManagedRuleset,omitempty" xml:"ManagedRuleset,omitempty"`
 	// The page number.
 	//
@@ -92,17 +90,25 @@ type ListWafManagedRulesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The currently saved protection level, which represents the existing configuration state in the database.
+	// The currently saved protection level, which represents the existing configuration status in the database. Valid values:
 	//
-	// Valid values: -1 (custom mode), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+	// - -1: custom mode.
 	//
-	// Difference from ManagedRuleset.ProtectionLevel: this parameter indicates the currently effective configuration, while ManagedRuleset.ProtectionLevel indicates the target value being passed in.
+	// - 1: loose.
+	//
+	// - 2: medium.
+	//
+	// - 3: strict.
+	//
+	// - 4: super strict.
+	//
+	// Difference from ManagedRuleset.ProtectionLevel: This field indicates the currently effective configuration, whereas ManagedRuleset.ProtectionLevel indicates the target value passed in the request.
 	//
 	// example:
 	//

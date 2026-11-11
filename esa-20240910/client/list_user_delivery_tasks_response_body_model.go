@@ -22,7 +22,7 @@ type iListUserDeliveryTasksResponseBody interface {
 }
 
 type ListUserDeliveryTasksResponseBody struct {
-	// The page number returned.
+	// The current page number.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListUserDeliveryTasksResponseBody struct {
 	//
 	// 1f94c47f-3a1a-4f69-8d6c-bfeee1b49aab
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The delivery tasks.
+	// The list of tasks.
 	Tasks []*ListUserDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of delivery tasks.
+	// The total number of tasks.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListUserDeliveryTasksResponseBody) Validate() error {
 }
 
 type ListUserDeliveryTasksResponseBodyTasks struct {
-	// The log category.
+	// The business type.
 	//
 	// example:
 	//
@@ -125,27 +125,27 @@ type ListUserDeliveryTasksResponseBodyTasks struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// 1.  cn: the Chinese mainland.
+	// - **cn**: The Chinese mainland.
 	//
-	// 2.  sg: outside the Chinese mainland.
+	// - **sg**: Global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The delivery destination.
+	// The delivery type.
 	//
 	// example:
 	//
 	// oss
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The status of the delivery task.
+	// The status.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
+	// The name of the task.
 	//
 	// example:
 	//

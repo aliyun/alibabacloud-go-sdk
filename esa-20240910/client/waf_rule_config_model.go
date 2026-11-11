@@ -48,23 +48,23 @@ type iWafRuleConfig interface {
 }
 
 type WafRuleConfig struct {
-	// The operation to perform after the WAF rule is matched.
+	// The action performed after a WAF rule is matched.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The extended action configurations.
+	// The extended actions.
 	Actions *WafRuleConfigActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Struct"`
-	// The configuration of secondary package detection.
+	// The repackaging detection configuration.
 	AppPackage *WafRuleConfigAppPackage `json:"AppPackage,omitempty" xml:"AppPackage,omitempty" type:"Struct"`
-	// The SDK configuration for apps.
+	// The app SDK configuration.
 	AppSdk *WafRuleConfigAppSdk `json:"AppSdk,omitempty" xml:"AppSdk,omitempty" type:"Struct"`
-	// The match expression.
+	// The matching expression.
 	//
 	// example:
 	//
-	// ip.src eq 1.1.1.1
+	// ip.src eq 10.0.0.1
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The ID of the WAF rule.
 	//
@@ -72,7 +72,7 @@ type WafRuleConfig struct {
 	//
 	// 20000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the managed rule group, which is deprecated.
+	// **[Deprecated]*	- The managed rule group ID.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type WafRuleConfig struct {
 	//
 	// intelligence_crawler
 	ManagedList *string `json:"ManagedList,omitempty" xml:"ManagedList,omitempty"`
-	// The managed rulesets.
+	// The list of managed rulesets.
 	ManagedRulesets []*WafRuleConfigManagedRulesets `json:"ManagedRulesets,omitempty" xml:"ManagedRulesets,omitempty" type:"Repeated"`
 	// The name of the WAF rule.
 	//
@@ -98,7 +98,7 @@ type WafRuleConfig struct {
 	//
 	// example notes
 	Notes *string `json:"Notes,omitempty" xml:"Notes,omitempty"`
-	// The configuration of the rate limiting rule.
+	// The configurations related to the rate limiting rule.
 	RateLimit *WafRuleConfigRateLimit `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
 	// The security level.
 	SecurityLevel *WafRuleConfigSecurityLevel `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty" type:"Struct"`
@@ -112,13 +112,13 @@ type WafRuleConfig struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The timer.
 	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
-	// The name of the WAF rule.
+	// The type of the WAF rule.
 	//
 	// example:
 	//
 	// http_custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Defines whether the IP can access.
+	// The IP access control value.
 	//
 	// example:
 	//
@@ -340,9 +340,9 @@ func (s *WafRuleConfig) Validate() error {
 }
 
 type WafRuleConfigActions struct {
-	// The skip configuration specified by the whitelist rule.
+	// The modules bypassed by the whitelist rule.
 	Bypass *WafRuleConfigActionsBypass `json:"Bypass,omitempty" xml:"Bypass,omitempty" type:"Struct"`
-	// The custom error page.
+	// The custom response page.
 	Response *WafRuleConfigActionsResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 }
 
@@ -387,19 +387,19 @@ func (s *WafRuleConfigActions) Validate() error {
 }
 
 type WafRuleConfigActionsBypass struct {
-	// The IDs of custom rules.
+	// The list of custom rule IDs.
 	CustomRules []*int64 `json:"CustomRules,omitempty" xml:"CustomRules,omitempty" type:"Repeated"`
-	// The IDs of managed rules.
+	// The list of managed rule IDs.
 	RegularRules []*int64 `json:"RegularRules,omitempty" xml:"RegularRules,omitempty" type:"Repeated"`
-	// The types of managed rules.
+	// The list of managed rule types.
 	RegularTypes []*string `json:"RegularTypes,omitempty" xml:"RegularTypes,omitempty" type:"Repeated"`
-	// The skip scope applied when requests match conditions defined in the whitelist rule.
+	// The type of the bypassed module.
 	//
 	// example:
 	//
 	// part
 	Skip *string `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	// The skipped rule categories when requests match conditions defined in the whitelist rule.
+	// The list of bypassed module phases.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -467,7 +467,7 @@ type WafRuleConfigActionsResponse struct {
 	//
 	// 403
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the custom error page, which can be obtained by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	// The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//
@@ -506,7 +506,7 @@ func (s *WafRuleConfigActionsResponse) Validate() error {
 }
 
 type WafRuleConfigAppPackage struct {
-	// The package signatures.
+	// The repackaging detection.
 	PackageSigns []*WafRuleConfigAppPackagePackageSigns `json:"PackageSigns,omitempty" xml:"PackageSigns,omitempty" type:"Repeated"`
 }
 
@@ -541,13 +541,13 @@ func (s *WafRuleConfigAppPackage) Validate() error {
 }
 
 type WafRuleConfigAppPackagePackageSigns struct {
-	// The valid package name.
+	// The specified valid package name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The valid package signature.
+	// The package signature.
 	//
 	// example:
 	//
@@ -588,13 +588,13 @@ func (s *WafRuleConfigAppPackagePackageSigns) Validate() error {
 type WafRuleConfigAppSdk struct {
 	// The custom signature field.
 	CustomSign *WafRuleConfigAppSdkCustomSign `json:"CustomSign,omitempty" xml:"CustomSign,omitempty" type:"Struct"`
-	// Indicates whether to configure the custom signature field.
+	// The custom signature field switch.
 	//
 	// example:
 	//
 	// on
 	CustomSignStatus *string `json:"CustomSignStatus,omitempty" xml:"CustomSignStatus,omitempty"`
-	// The app anomalies.
+	// The app feature anomaly.
 	FeatureAbnormal []*string `json:"FeatureAbnormal,omitempty" xml:"FeatureAbnormal,omitempty" type:"Repeated"`
 }
 
@@ -688,7 +688,7 @@ func (s *WafRuleConfigAppSdkCustomSign) Validate() error {
 }
 
 type WafRuleConfigManagedRulesets struct {
-	// The action.
+	// The action to perform.
 	//
 	// example:
 	//
@@ -700,7 +700,7 @@ type WafRuleConfigManagedRulesets struct {
 	//
 	// 11
 	AttackType *int32 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The managed rules.
+	// The list of managed rules.
 	ManagedRules []*WafRuleConfigManagedRulesetsManagedRules `json:"ManagedRules,omitempty" xml:"ManagedRules,omitempty" type:"Repeated"`
 	// The number of enabled rules.
 	//
@@ -798,13 +798,13 @@ func (s *WafRuleConfigManagedRulesets) Validate() error {
 }
 
 type WafRuleConfigManagedRulesetsManagedRules struct {
-	// The action performed on requests that match the managed rule.
+	// The action of the managed rule.
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The ID of the managed rule.
+	// The managed rule ID.
 	//
 	// example:
 	//
@@ -858,27 +858,27 @@ func (s *WafRuleConfigManagedRulesetsManagedRules) Validate() error {
 }
 
 type WafRuleConfigRateLimit struct {
-	// The statistical objects to which the rule applies.
+	// The specified object for rate statistics.
 	Characteristics *WafRatelimitCharacteristics `json:"Characteristics,omitempty" xml:"Characteristics,omitempty"`
-	// The statistical interval.
+	// The statistical period.
 	//
 	// example:
 	//
 	// 10
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// Indicates whether to apply the rule to requests that hit the cache.
+	// Specifies whether to apply the rule to requests that hit the cache.
 	//
 	// example:
 	//
 	// true
 	OnHit *bool `json:"OnHit,omitempty" xml:"OnHit,omitempty"`
-	// The timeout period for creating the stack.
+	// The timeout period.
 	//
 	// example:
 	//
 	// 10
 	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
-	// The thresholds.
+	// The statistical threshold.
 	Threshold *WafRuleConfigRateLimitThreshold `json:"Threshold,omitempty" xml:"Threshold,omitempty" type:"Struct"`
 }
 
@@ -950,13 +950,13 @@ func (s *WafRuleConfigRateLimit) Validate() error {
 }
 
 type WafRuleConfigRateLimitThreshold struct {
-	// The maximum number of managed rules that are triggered.
+	// The threshold for the number of distinct managed rules.
 	//
 	// example:
 	//
 	// 10
 	DistinctManagedRules *int32 `json:"DistinctManagedRules,omitempty" xml:"DistinctManagedRules,omitempty"`
-	// The maximum number of times that the managed rule is triggered.
+	// The managed rule hit threshold.
 	//
 	// example:
 	//
@@ -968,9 +968,9 @@ type WafRuleConfigRateLimitThreshold struct {
 	//
 	// 10
 	Request *int32 `json:"Request,omitempty" xml:"Request,omitempty"`
-	// The configuration of the status code threshold.
+	// The response code threshold.
 	ResponseStatus *WafRuleConfigRateLimitThresholdResponseStatus `json:"ResponseStatus,omitempty" xml:"ResponseStatus,omitempty" type:"Struct"`
-	// The traffic threshold, which is deprecated.
+	// **[Deprecated]*	- The traffic threshold.
 	//
 	// example:
 	//
@@ -1041,19 +1041,19 @@ func (s *WafRuleConfigRateLimitThreshold) Validate() error {
 }
 
 type WafRuleConfigRateLimitThresholdResponseStatus struct {
-	// The HTTP status code.
+	// The HTTP response code.
 	//
 	// example:
 	//
 	// 404
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The maximum number of times that the status code is returned.
+	// The response code count threshold.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The percentage of the occurrences of the status code to total status codes.
+	// The response code percentage.
 	//
 	// example:
 	//
@@ -1101,19 +1101,19 @@ func (s *WafRuleConfigRateLimitThresholdResponseStatus) Validate() error {
 }
 
 type WafRuleConfigSecurityLevel struct {
-	// Valid value:
+	// The security level value. Valid values:
 	//
-	// 	- off
+	// 	- off: Disabled.
 	//
-	// 	- essentially_off
+	// 	- essentially_off: Essentially disabled.
 	//
-	// 	- low
+	// 	- low: Low.
 	//
-	// 	- medium
+	// 	- medium: Medium.
 	//
-	// 	- high
+	// 	- high: High.
 	//
-	// 	- under_attack
+	// 	- under_attack: Under attack.
 	//
 	// example:
 	//

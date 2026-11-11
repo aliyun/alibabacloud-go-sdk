@@ -14,7 +14,7 @@ type iCreateEdgeContainerAppImageSecretResponseBody interface {
 }
 
 type CreateEdgeContainerAppImageSecretResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -34,91 +34,91 @@ type iGetImageTransformResponseBody interface {
 }
 
 type GetImageTransformResponseBody struct {
-	// Specifies whether to enable adaptive AVIF. Valid values:
+	// Specifies whether adaptive AVIF is enabled. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled
 	//
-	// - off: Disabled.
+	// - off: disabled
 	//
 	// example:
 	//
 	// on
 	AutoAvif *string `json:"AutoAvif,omitempty" xml:"AutoAvif,omitempty"`
-	// Specifies whether to enable adaptive WebP. Valid values:
+	// Specifies whether adaptive WebP is enabled. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled
 	//
-	// - off: Disabled.
+	// - off: disabled
 	//
 	// example:
 	//
 	// on
 	AutoWebp *string `json:"AutoWebp,omitempty" xml:"AutoWebp,omitempty"`
-	// The configuration ID.
+	// The ID of the configuration.
 	//
 	// example:
 	//
 	// 352816096987136
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. Valid values:
+	// The type of the configuration. Valid values:
 	//
-	// - global: global configuration.
+	// - global: global configuration
 	//
-	// - rule: rule configuration.
+	// - rule: rule configuration
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// Specifies whether to enable image transformation. Valid values:
+	// Specifies whether image transform is enabled. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled
 	//
-	// - off: Disabled.
+	// - off: disabled
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The rule content, which uses a conditional expression to match user requests. This parameter does not need to be set when you add a global configuration. Two scenarios are supported:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
 	// example:
 	//
 	// (http.request.uri.path.file_name eq \\"jpg\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// The rule switch. This parameter does not need to be set when you add a global configuration. Valid values:
+	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: Enabled.
+	// - on: enabled
 	//
-	// - off: Disabled.
+	// - off: disabled
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The rule name. This parameter does not need to be set when you add a global configuration.
+	// The name of the rule. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule execution order. A smaller value indicates a higher priority.
+	// The execution sequence of the rule. A smaller value indicates a higher execution priority.
 	//
 	// example:
 	//
 	// 2
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

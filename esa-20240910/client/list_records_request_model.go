@@ -32,62 +32,71 @@ type iListRecordsRequest interface {
 }
 
 type ListRecordsRequest struct {
-	// The business scenario for record acceleration. Used as a filter condition for queries. Valid values:
+	// The business scenario for record acceleration. This parameter is used as a filter condition for the query. Valid values:
 	//
-	// - **image_video**: Image and video.
+	// - **image_video**: images and videos
 	//
-	// - **api**: API.
+	// - **api**: APIs
 	//
-	// - **web**: Web page.
+	// - **web**: web pages
 	//
 	// example:
 	//
 	// web
-	BizName    *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// Specifies whether a custom port is enabled for the record. Valid values:
+	//
+	// - on: enabled
+	//
+	// - off: disabled
+	//
+	// example:
+	//
+	// off
 	CustomPort *string `json:"CustomPort,omitempty" xml:"CustomPort,omitempty"`
-	// The page number for paginated queries. The value must be greater than or equal to 1. Default value: **1**.
+	// The page number for paging. The value must be greater than or equal to 1. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paginated queries. Valid values: 1 to 500. Default value: **500**.
+	// The number of entries per page for paging. Valid values: 1 to 500. Default value: **500**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether proxy acceleration is enabled for the record. Used as a filter condition for queries. Valid values:
+	// Specifies whether proxy acceleration is enabled for the record. This parameter is used as a filter condition for the query. Valid values:
 	//
-	// - **true**: Proxy enabled.
+	// - **true**: Proxy acceleration is enabled.
 	//
-	// - **false**: Proxy acceleration disabled.
+	// - **false**: Proxy acceleration is disabled.
 	//
 	// example:
 	//
 	// true
 	Proxied *bool `json:"Proxied,omitempty" xml:"Proxied,omitempty"`
-	// The search matching mode for record names. Defaults to exact match. Valid values:
+	// The search match mode for the record name. Default value: exact. Valid values:
 	//
-	// - **prefix**: Prefix match.
+	// - **prefix**: prefix match
 	//
-	// - **suffix**: Suffix match.
+	// - **suffix**: suffix match
 	//
-	// - **exact**: Exact match.
+	// - **exact**: exact match
 	//
-	// - **fuzzy**: Fuzzy match.
+	// - **fuzzy**: fuzzy match
 	//
 	// example:
 	//
 	// fuzzy
 	RecordMatchType *string `json:"RecordMatchType,omitempty" xml:"RecordMatchType,omitempty"`
-	// Record name. Used as a filter condition for queries.
+	// The record name. This parameter is used as a filter condition for the query.
 	//
 	// example:
 	//
 	// www.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -95,23 +104,23 @@ type ListRecordsRequest struct {
 	//
 	// 1234567890123
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The origin type of the record. Used as a filter condition for queries (only CNAME records can be filtered by this field). Valid values:
+	// The origin server type of the record. This parameter is used as a filter condition for the query. Only CNAME records can be filtered by this field. Valid values:
 	//
-	// - **OSS**: OSS origin.
+	// - **OSS**: OSS origin server
 	//
-	// - **S3**: S3 origin.
+	// - **S3**: S3 origin server
 	//
-	// - **LB**: Load balancer origin.
+	// - **LB**: load balancing origin server
 	//
-	// - **OP**: Origin pool.
+	// - **OP**: IPAM pool origin server
 	//
-	// - **Domain**: Standard domain origin.
+	// - **Domain**: regular domain name origin server
 	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The DNS record type of the record. Used as a filter condition for queries.
+	// The DNS record type of the record. This parameter is used as a filter condition for the query.
 	//
 	// example:
 	//

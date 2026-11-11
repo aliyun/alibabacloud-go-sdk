@@ -28,7 +28,7 @@ type iUpdateTransportLayerApplicationRequest interface {
 }
 
 type UpdateTransportLayerApplicationRequest struct {
-	// The Layer 4 application ID. You can call the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation to obtain the application ID.
+	// The Layer 4 application ID. You can obtain the ID by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) API operation.
 	//
 	// This parameter is required.
 	//
@@ -36,49 +36,49 @@ type UpdateTransportLayerApplicationRequest struct {
 	//
 	// 165503967****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Specifies whether to enable network access optimization for the Chinese mainland. This feature is disabled by default. Valid values:
+	// Specifies whether to enable network access optimization for the Chinese mainland. Default value: off. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// The IP access rule switch. When enabled, WAF IP access rules take effect for the Layer 4 application. Valid values:
+	// Specifies whether to enable the IP access rule. After this feature is enabled, the IP access rules in WAF take effect for the Layer 4 application. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// The IPv6 switch. Valid values:
+	// Specifies whether to enable IPv6. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	// Specifies whether to enable keep-alive protection. This feature is disabled by default. Valid values:
+	// Specifies whether to enable connection keep-alive protection. Default value: off. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// off
 	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	// The list of forwarding rules. For each rule, all parameters except the comment are required.
+	// The list of forwarding rules. For rule details, all parameters except the comment are required for each rule.
 	Rules []*UpdateTransportLayerApplicationRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can obtain the ID by calling the [ListSites](~~ListSites~~) API operation.
 	//
 	// This parameter is required.
 	//
@@ -86,11 +86,11 @@ type UpdateTransportLayerApplicationRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Specifies whether to enable static IP. This feature is disabled by default. Valid values:
+	// Specifies whether to enable the static IP address feature. Default value: off. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
@@ -192,15 +192,15 @@ func (s *UpdateTransportLayerApplicationRequest) Validate() error {
 }
 
 type UpdateTransportLayerApplicationRequestRules struct {
-	// The client IP pass-through protocol. Valid values:
+	// The client IP address pass-through protocol. Valid values:
 	//
-	// - **off**: disabled.
+	// - **off**: Do not pass through.
 	//
-	// - **PPv1**: PROXY Protocol v1, which supports client IP pass-through for TCP.
+	// - **PPv1**: PROXY protocol v1, which supports client IP address pass-through for the TCP protocol.
 	//
-	// - **PPv2**: PROXY Protocol v2, which supports client IP pass-through for TCP and UDP.
+	// - **PPv2**: PROXY protocol v2, which supports client IP address pass-through for the TCP and UDP protocols.
 	//
-	// - **SPP**: Simple Proxy Protocol, which supports client IP pass-through for UDP.
+	// - **SPP**: Simple Proxy Protocol, which supports client IP address pass-through for the UDP protocol.
 	//
 	// example:
 	//
@@ -218,49 +218,49 @@ type UpdateTransportLayerApplicationRequestRules struct {
 	//
 	// - A port range, such as 81-85, which represents ports 81, 82, 83, 84, and 85.
 	//
-	// - A combination of ports and port ranges separated by commas, such as 80,81-85,90, which represents ports 80, 81, 82, 83, 84, 85, and 90.
+	// - A combination of ports and port ranges, separated by commas, such as 80,81-85,90, which represents ports 80, 81, 82, 83, 84, 85, and 90.
 	//
-	// - Edge ports within a single rule and across multiple rules cannot overlap.
+	// - The edge ports within a single rule and the edge ports across multiple rules must not overlap.
 	//
 	// example:
 	//
 	// 80
 	EdgePort *string `json:"EdgePort,omitempty" xml:"EdgePort,omitempty"`
-	// The forwarding rule protocol. Valid values:
+	// The protocol of the forwarding rule. Valid values:
 	//
-	// - TCP: TCP protocol.
+	// - TCP: TCP.
 	//
-	// - UDP: UDP protocol.
+	// - UDP: UDP.
 	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The specific value of the origin.
+	// The specific value of the origin server.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Origin Server Port. Valid values:
+	// The origin server port. Valid values:
 	//
-	// - A single port. When Origin Server Port is a single port, any valid edge port combination is supported.
+	// - A single port. If the origin server port is a single port, any valid combination of edge ports is supported.
 	//
-	// - A port range. Origin Server Port can be set to a port range only when the edge port is a port range, and the range size must match the edge port range. For example, if the edge port is 90-93, you cannot set Origin Server Port to 81-85 because Origin Server Port range is 5 while the edge port range is 4, which are inconsistent.
+	// - A port range. The origin server port can be set to a port range only when the edge port is a port range, and the range size must be the same as that of the edge port. For example, if the edge port is 90-93, you cannot set the origin server port to 81-85 because the origin server port range is 5 and the edge port range is 3, which are inconsistent.
 	//
 	// example:
 	//
 	// 80
 	SourcePort *string `json:"SourcePort,omitempty" xml:"SourcePort,omitempty"`
-	// The origin type. Valid values:
+	// The origin server type. Valid values:
 	//
 	// - **ip**: IP address.
 	//
-	// - **domain**: domain name.
+	// - **domain**: Domain name.
 	//
-	// - **OP**: origin IPAM pool.
+	// - **OP**: Origin IPAM pool.
 	//
-	// - **LB**: load balancing.
+	// - **LB**: Load balancing.
 	//
 	// example:
 	//

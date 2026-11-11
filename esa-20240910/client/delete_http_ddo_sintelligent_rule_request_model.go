@@ -34,7 +34,7 @@ type DeleteHttpDDoSIntelligentRuleRequest struct {
 	//
 	// 20928021
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The ID of the site. Call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//

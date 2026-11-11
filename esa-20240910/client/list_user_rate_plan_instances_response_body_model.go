@@ -24,7 +24,7 @@ type iListUserRatePlanInstancesResponseBody interface {
 }
 
 type ListUserRatePlanInstancesResponseBody struct {
-	// The plan instances that meet the query conditions under the user.
+	// The plan instances that meet the conditions under the user.
 	InstanceInfo []*ListUserRatePlanInstancesResponseBodyInstanceInfo `json:"InstanceInfo,omitempty" xml:"InstanceInfo,omitempty" type:"Repeated"`
 	// The current page number, which is the same as the PageNumber request parameter.
 	//
@@ -162,7 +162,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	BotRequest *string `json:"BotRequest,omitempty" xml:"BotRequest,omitempty"`
 	// The acceleration regions where the site can be bound. Multiple regions are separated by commas (,). Valid values:
 	//
-	// - **domestic**: Chinese mainland.
+	// - **domestic**: The Chinese mainland.
 	//
 	// - **overseas**: Global (excluding the Chinese mainland).
 	//
@@ -172,7 +172,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// domestic,overseas
 	Coverages *string `json:"Coverages,omitempty" xml:"Coverages,omitempty"`
-	// The creation time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
+	// The creation time of the plan instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -184,13 +184,13 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// 100
 	CrossborderTraffic *string `json:"CrossborderTraffic,omitempty" xml:"CrossborderTraffic,omitempty"`
-	// The specifications of the Anti-DDoS instance in the plan for the Chinese mainland.
+	// The specifications of the Anti-DDoS instance in the Chinese mainland for the plan.
 	//
 	// example:
 	//
 	// cn_300
 	DdosBurstableDomesticProtection *string `json:"DdosBurstableDomesticProtection,omitempty" xml:"DdosBurstableDomesticProtection,omitempty"`
-	// The specifications of the Anti-DDoS instance in the plan for regions outside the Chinese mainland.
+	// The specifications of the Anti-DDoS instance outside the Chinese mainland for the plan.
 	//
 	// example:
 	//
@@ -214,19 +214,19 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// 100
 	EdgeRoutineRquest *string `json:"EdgeRoutineRquest,omitempty" xml:"EdgeRoutineRquest,omitempty"`
-	// The prepaid number of Web Application Firewall (WAF) requests in the plan. Unit: 10,000 requests.
+	// The prepaid number of WAF requests in the plan. Unit: 10,000 requests.
 	//
 	// example:
 	//
 	// 100
 	EdgeWafRequest *string `json:"EdgeWafRequest,omitempty" xml:"EdgeWafRequest,omitempty"`
-	// The expiration time of the plan instance. The time is displayed in UTC and formatted as yyyy-MM-ddTHH:mm:ssZ in accordance with ISO 8601.
+	// The expiration time of the plan instance. The time is displayed in UTC and formatted in accordance with the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-04-19T11:15:20Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The instance ID.
+	// The instance ID of the plan.
 	//
 	// example:
 	//
@@ -244,7 +244,10 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// 100
 	Layer4TrafficIntl *string `json:"Layer4TrafficIntl,omitempty" xml:"Layer4TrafficIntl,omitempty"`
-	OwnerId           *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1234567890123456
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the plan corresponding to the plan instance.
 	//
 	// example:
@@ -287,7 +290,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 	ResourceOwner *int64  `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
 	ShareType     *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The quota for the number of sites under the plan instance.
+	// The site quota under the plan instance.
 	//
 	// example:
 	//
@@ -307,13 +310,13 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfo struct {
 	//
 	// 100
 	StaticRequest *string `json:"StaticRequest,omitempty" xml:"StaticRequest,omitempty"`
-	// The instance status. Valid values:
+	// The instance status of the plan. Valid values:
 	//
-	// - **online**: The instance is in normal service status.
+	// - **online**: The normal service status.
 	//
-	// - **offline**: The instance has expired but is not overdue, and is in an inactive state.
+	// - **offline**: The instance has expired but not overdue, and is in an inactive state.
 	//
-	// - **disable**: The instance is released.
+	// - **disable**: The released status.
 	//
 	// example:
 	//
@@ -651,7 +654,7 @@ type ListUserRatePlanInstancesResponseBodyInstanceInfoSites struct {
 	//
 	// - **offline**: The site is offline.
 	//
-	// - **moved**: The site is replaced.
+	// - **moved**: The site has been replaced.
 	//
 	// example:
 	//

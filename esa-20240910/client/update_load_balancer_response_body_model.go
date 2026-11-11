@@ -14,7 +14,7 @@ type iUpdateLoadBalancerResponseBody interface {
 }
 
 type UpdateLoadBalancerResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

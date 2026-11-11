@@ -42,7 +42,7 @@ type ListManagedRulesGroupsResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records after filtering.
+	// The total number of filtered records.
 	//
 	// example:
 	//

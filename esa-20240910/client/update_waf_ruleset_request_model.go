@@ -20,7 +20,7 @@ type iUpdateWafRulesetRequest interface {
 }
 
 type UpdateWafRulesetRequest struct {
-	// The WAF ruleset ID. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) API.
+	// The ID of the WAF rule set. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the rule set ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type UpdateWafRulesetRequest struct {
 	//
 	// 10000001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// example:
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For a site with configuration version management enabled, this parameter specifies the version to update. The default value is 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The target status of the ruleset.
+	// The target status of the rule set.
 	//
 	// example:
 	//

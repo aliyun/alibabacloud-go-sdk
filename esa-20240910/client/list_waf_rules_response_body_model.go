@@ -50,7 +50,7 @@ type ListWafRulesResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of rules returned.
+	// The returned list of rules.
 	Rules []*ListWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// The site usage.
 	//
@@ -151,25 +151,25 @@ func (s *ListWafRulesResponseBody) Validate() error {
 }
 
 type ListWafRulesResponseBodyRules struct {
-	// The action associated with the rule. Valid values:
+	// The action corresponding to the rule. Valid values:
 	//
-	// - deny: Block.
+	// - deny: block
 	//
-	// - monitor: Monitor.
+	// - monitor: monitor
 	//
-	// - js: JavaScript Challenge.
+	// - js: JavaScript challenge
 	//
-	// - captcha: Slider challenge.
+	// - captcha: slider challenge
 	//
 	// example:
 	//
 	// deny
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The list of statistical objects for frequency control rules.
+	// The list of statistical objects for rate limiting rules.
 	CharacteristicsFields []*string `json:"CharacteristicsFields,omitempty" xml:"CharacteristicsFields,omitempty" type:"Repeated"`
 	// The rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The list of matching fields for the rule.
+	// The list of match fields for the rule.
 	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -183,29 +183,29 @@ type ListWafRulesResponseBodyRules struct {
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The WAF rule execution phase. Valid values:
+	// The execution phase of the WAF rule. Valid values:
 	//
-	// - http_whitelist: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - http_custom: custom rule
+	// - http_custom: custom rules
 	//
-	// - http_managed: managed rule
+	// - http_managed: managed rules
 	//
-	// - http_anti_scan: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - http_ratelimit: frequency control rule
+	// - http_ratelimit: rate limiting rules
 	//
-	// - ip_access_rule: IP access rule
+	// - ip_access_rule: IP access rules
 	//
-	// - http_bot: advanced mode bots
+	// - http_bot: advanced bot management
 	//
-	// - http_security_level_rule: security rule
+	// - http_security_level_rule: security rules
 	//
 	// example:
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The position of the rule in the corresponding ruleset.
+	// The position sequence of the rule in the corresponding ruleset.
 	//
 	// example:
 	//
@@ -229,7 +229,7 @@ type ListWafRulesResponseBodyRules struct {
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of WAF phases to skip for whitelist rules.
+	// The list of skipped WAF phases for whitelist rules.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The effective period configuration of the rule.
 	Timer *WafTimer `json:"Timer,omitempty" xml:"Timer,omitempty"`
@@ -239,9 +239,9 @@ type ListWafRulesResponseBodyRules struct {
 	//
 	// http_custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The last modification time of the rule.
+	// The last update time of the rule.
 	//
-	// Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+	// Format: RFC 3339 or ISO 8601, UTC time zone (ending with Z).
 	//
 	// Example: 2026-06-10T14:23:45Z
 	//

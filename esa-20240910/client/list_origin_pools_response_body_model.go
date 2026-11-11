@@ -24,7 +24,7 @@ type iListOriginPoolsResponseBody interface {
 }
 
 type ListOriginPoolsResponseBody struct {
-	// A list of origin pools.
+	// The list of origin address pools.
 	OriginPools []*ListOriginPoolsResponseBodyOriginPools `json:"OriginPools,omitempty" xml:"OriginPools,omitempty" type:"Repeated"`
 	// The current page number.
 	//
@@ -32,7 +32,7 @@ type ListOriginPoolsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of items returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListOriginPoolsResponseBody struct {
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of origin pools found.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,45 +134,45 @@ func (s *ListOriginPoolsResponseBody) Validate() error {
 }
 
 type ListOriginPoolsResponseBodyOriginPools struct {
-	// Indicates whether the origin pool is enabled.
+	// Indicates whether the origin address pool is enabled. Valid values:
 	//
-	// - `true`: Enabled.
+	// - true: enabled.
 	//
-	// - `false`: Disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the origin pool.
+	// The origin address pool ID.
 	//
 	// example:
 	//
 	// 1038520525196928
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the origin pool. The name must be unique within a site.
+	// The name of the origin address pool. The name must be unique within a site.
 	//
 	// example:
 	//
 	// pool1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The origins in the origin pool.
+	// The origin server information added to the origin address pool.
 	Origins []*ListOriginPoolsResponseBodyOriginPoolsOrigins `json:"Origins,omitempty" xml:"Origins,omitempty" type:"Repeated"`
-	// The domain name assigned to the origin pool. This can be used as the origin address for records within the site.
+	// The domain name allocated to the origin IPAM pool. It can be used as the addresses of the origin server for records under the site.
 	//
 	// example:
 	//
 	// pool1.example.com
 	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
-	// The number of load balancers that reference this origin pool.
+	// The number of load balancing instances that reference this origin IPAM pool.
 	//
 	// example:
 	//
 	// 5
 	ReferenceLBCount *int32 `json:"ReferenceLBCount,omitempty" xml:"ReferenceLBCount,omitempty"`
-	// The resources that reference this origin pool. An origin pool is considered referenced when it is configured as an origin for a load balancer or a record.
+	// The reference information of the origin IPAM pool. An origin IPAM pool is considered referenced when it is configured for load balancing or configured as an origin server in a record.
 	References *ListOriginPoolsResponseBodyOriginPoolsReferences `json:"References,omitempty" xml:"References,omitempty" type:"Struct"`
-	// The ID of the site to which the origin pool belongs.
+	// The ID of the site to which the origin address pool belongs.
 	//
 	// example:
 	//
@@ -279,25 +279,25 @@ func (s *ListOriginPoolsResponseBodyOriginPools) Validate() error {
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsOrigins struct {
-	// The address of the origin, such as `www.example.com`.
+	// The addresses of the origin server, such as www.example.com.
 	//
 	// example:
 	//
 	// www.example.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The authentication configuration. This parameter is required if the origin is an OSS or AWS S3 bucket that requires authentication.
+	// The authentication information. If the origin server is an OSS or S3 origin server that requires authentication, you must provide the authentication configuration information.
 	AuthConf *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf `json:"AuthConf,omitempty" xml:"AuthConf,omitempty" type:"Struct"`
-	// Indicates whether the origin is enabled.
+	// Indicates whether the origin server is enabled. Valid values:
 	//
-	// - `true`: Enabled.
+	// - true: enabled.
 	//
-	// - `false`: Disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The request header to include in origin fetches. Only the `Host` header is supported.
+	// The request header included in back-to-origin requests. Only the Host header is supported.
 	//
 	// example:
 	//
@@ -311,45 +311,45 @@ type ListOriginPoolsResponseBodyOriginPoolsOrigins struct {
 	//
 	//       }
 	Header interface{} `json:"Header,omitempty" xml:"Header,omitempty"`
-	// The ID of the origin.
+	// The origin server ID.
 	//
 	// example:
 	//
 	// 997502094872132
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The IP protocol version used for origin fetch requests. Valid values:
+	// The IP protocol version used for back-to-origin requests. Valid values:
 	//
-	// - `round_robin`: Randomly selects an IPv4 or IPv6 origin.
+	// - round_robin: the default policy. Randomly polls IPv4 or IPv6 origin servers.
 	//
-	// - `ipv4_first`: Prioritizes IPv4 origins.
+	// - ipv4_first: prioritizes IPv4 origin servers.
 	//
-	// - `ipv6_first`: Prioritizes IPv6 origins.
+	// - ipv6_first: prioritizes IPv6 origin servers.
 	//
-	// - `follow`: Follows the IP version used by the client.
+	// - follow: prioritizes the IP version used by the client.
 	//
 	// example:
 	//
 	// round_robin
 	IpVersionPolicy *string `json:"IpVersionPolicy,omitempty" xml:"IpVersionPolicy,omitempty"`
-	// The name of the origin.
+	// The origin server name.
 	//
 	// example:
 	//
 	// origin1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the origin. Valid values:
+	// The origin server type. Valid values:
 	//
-	// - `ip_domain`: An origin with an IP address or domain name.
+	// - ip_domain: an origin server that uses an IP address or a domain name.
 	//
-	// - `OSS`: An Alibaba Cloud Object Storage Service (OSS) origin.
+	// - OSS: an OSS origin server.
 	//
-	// - `S3`: An AWS S3 origin.
+	// - S3: an AWS S3 origin server.
 	//
 	// example:
 	//
 	// S3
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the origin, an integer from 0 to 100.
+	// The weight. The value must be an integer from 0 to 100.
 	//
 	// example:
 	//
@@ -456,7 +456,7 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOrigins) Validate() error {
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
-	// The Access Key ID required for private authentication.
+	// The AccessKey required for private authentication.
 	//
 	// example:
 	//
@@ -464,31 +464,31 @@ type ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf struct {
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The authentication type. Valid values:
 	//
-	// - `public`: Public read/write. Use for OSS or AWS S3 origins that have public access permissions.
+	// - public: public read/write. Used when the origin server is an OSS or S3 origin server with public read/write permissions.
 	//
-	// - `private_same_account`: Private, same account. Use for OSS origins that use private authentication within the same account.
+	// - private_same_account: private within the same account. Used when the origin server is an OSS origin server and the authentication type is private authentication within the same account.
 	//
-	// - `private_cross_account`: Private, cross-account. Use for OSS origins that use private authentication from a different account.
+	// - private_cross_account: private across accounts. Used when the origin server is an OSS origin server and the authentication type is private authentication across accounts.
 	//
-	// - `private`: Private. Use for AWS S3 origins that require private authentication.
+	// - private: private. Used when the origin server is an S3 origin server and the authentication type is private.
 	//
 	// example:
 	//
 	// public
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	// The region of the origin. Required for AWS S3 origins.
+	// The region of the origin server required when the origin server is an AWS S3 origin server.
 	//
 	// example:
 	//
 	// us-east-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The Secret Access Key required for private authentication.
+	// The SecretKey required for private authentication.
 	//
 	// example:
 	//
 	// yourAccessKeySecret
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The signature version. Required for AWS S3 origins.
+	// The signature version required when the origin server is an AWS S3 origin server.
 	//
 	// example:
 	//
@@ -554,11 +554,11 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsOriginsAuthConf) Validate() error
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferences struct {
-	// A list of Layer 7 records that use this origin pool as an origin.
+	// The list of Layer 7 records that use this origin address pool as the origin server.
 	DnsRecords []*ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords `json:"DnsRecords,omitempty" xml:"DnsRecords,omitempty" type:"Repeated"`
-	// A list of Layer 4 records that use this origin pool as an origin.
+	// The list of Layer 4 records that use this origin address pool as the origin server.
 	IPARecords []*ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords `json:"IPARecords,omitempty" xml:"IPARecords,omitempty" type:"Repeated"`
-	// A list of load balancers that use this origin pool.
+	// The list of load balancing instances that use this origin IPAM pool.
 	LoadBalancers []*ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
 }
 
@@ -629,13 +629,13 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferences) Validate() error {
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords struct {
-	// The ID of the record.
+	// The record ID.
 	//
 	// example:
 	//
 	// 1042852886352704
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the record.
+	// The record name.
 	//
 	// example:
 	//
@@ -674,13 +674,13 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesDnsRecords) Validate() 
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords struct {
-	// The ID of the record.
+	// The record ID.
 	//
 	// example:
 	//
 	// 1042852886352704
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the record.
+	// The record name.
 	//
 	// example:
 	//
@@ -719,13 +719,13 @@ func (s *ListOriginPoolsResponseBodyOriginPoolsReferencesIPARecords) Validate() 
 }
 
 type ListOriginPoolsResponseBodyOriginPoolsReferencesLoadBalancers struct {
-	// The ID of the load balancer.
+	// The load balancing instance ID.
 	//
 	// example:
 	//
 	// 998740660522624
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the load balancer.
+	// The name of the load balancing instance.
 	//
 	// example:
 	//

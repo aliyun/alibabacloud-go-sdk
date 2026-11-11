@@ -38,23 +38,23 @@ type ListWafRulesShrinkRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The WAF rule execution phase. Valid values:
+	// The execution phase of the WAF rule. Valid values:
 	//
-	// - http_whitelist: whitelist rule
+	// - http_whitelist: whitelist rules
 	//
-	// - http_custom: custom rule
+	// - http_custom: custom rules
 	//
-	// - http_managed: managed rule
+	// - http_managed: managed rules
 	//
-	// - http_anti_scan: scan protection rule
+	// - http_anti_scan: scan protection rules
 	//
-	// - http_ratelimit: frequency control rule
+	// - http_ratelimit: rate limiting rules
 	//
-	// - ip_access_rule: IP access rule
+	// - ip_access_rule: IP access rules
 	//
-	// - http_bot: advanced mode bots
+	// - http_bot: advanced bot management
 	//
-	// - http_security_level_rule: security rule
+	// - http_security_level_rule: security rules
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListWafRulesShrinkRequest struct {
 	//
 	// 1
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
+	// The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

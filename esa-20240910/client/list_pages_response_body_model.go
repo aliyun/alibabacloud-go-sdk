@@ -156,7 +156,7 @@ type ListPagesResponseBodyPages struct {
 	//
 	// a custom deny page
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the custom response page. You can obtain it by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
+	// The ID of the custom response page. You can obtain the ID by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type ListPagesResponseBodyPages struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The last modification time of the custom response page.
 	//
-	// Format: RFC 3339/ISO 8601, UTC standard time zone (ending with Z).
+	// Format: RFC 3339 / ISO 8601, UTC standard time zone (ending with Z).
 	//
 	// Example: 2026-06-10T14:23:45Z
 	//

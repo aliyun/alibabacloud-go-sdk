@@ -26,19 +26,19 @@ type ListWafTemplateRulesRequest struct {
 	//
 	// esa-site-aud6ftk57ym8
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The WAF running phase for filtering template rules.
+	// The WAF phase used to filter template rules for a specific phase.
 	//
 	// example:
 	//
 	// http_anti_scan
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The query parameters for filtering template rules by criteria such as the rule type.
+	// The query parameters used to filter template rules based on conditions such as the rule type.
 	//
 	// example:
 	//
 	// http_anti_scan
 	QueryArgs *ListWafTemplateRulesRequestQueryArgs `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty" type:"Struct"`
-	// The site ID. To obtain this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *ListWafTemplateRulesRequest) Validate() error {
 }
 
 type ListWafTemplateRulesRequestQueryArgs struct {
-	// A list of template kinds.
+	// The list of template types.
 	Kinds []*string `json:"Kinds,omitempty" xml:"Kinds,omitempty" type:"Repeated"`
 	// The rule type.
 	//

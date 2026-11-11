@@ -26,9 +26,9 @@ type iUpdateUserDeliveryTaskRequest interface {
 type UpdateUserDeliveryTaskRequest struct {
 	// The real-time log type. Valid values:
 	//
-	// - **dcdn_log_access_l1 (default)**: access logs.
+	// - **dcdn_log_access_l1*	- (default): access logs.
 	//
-	// - **dcdn_log_er**: Edge Routine function logs.
+	// - **dcdn_log_er**: Edge Routine logs.
 	//
 	// - **dcdn_log_waf**: security protection logs.
 	//
@@ -38,13 +38,13 @@ type UpdateUserDeliveryTaskRequest struct {
 	//
 	// dcdn_log_er
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The list of ER PODs to configure.
+	// The list of pods configured for Edge Routine.
 	//
 	// example:
 	//
 	// xxx,xxx
 	Details *string `json:"Details,omitempty" xml:"Details,omitempty"`
-	// The discard rate. If not specified, the default value is 0.
+	// The discard rate. If you do not specify this parameter, the default value is 0.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type UpdateUserDeliveryTaskRequest struct {
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
 	// The version of the filter rule.
 	//
-	// > Compatible with legacy filter rules. The default value is v1. Newly created tasks use v2.
+	// > Compatible with earlier versions of filter rules. The default value is v1. For newly created rules, the value is v2.
 	//
 	// example:
 	//

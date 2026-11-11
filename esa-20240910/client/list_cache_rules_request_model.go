@@ -32,37 +32,37 @@ type ListCacheRulesRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
+	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
 	// - global: queries global configurations.
 	//
 	// - rule: queries rule configurations.
 	//
-	// This parameter is optional. If you do not specify this parameter, both global and rule configurations are returned.
+	// This parameter is optional. If you do not specify this parameter, both global and rule configurations are queried.
 	//
 	// example:
 	//
 	// global
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
-	// The page number for a paged query. The value must be greater than or equal to 1.
+	// The page number for paging. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 500.
+	// The number of entries per page for paging. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The rule name. You do not need to set this parameter when you add a global configuration.
+	// The rule name. You do not need to specify this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ListCacheRulesRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
+	// The site version number. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
 	//
 	// example:
 	//

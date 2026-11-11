@@ -28,7 +28,7 @@ type iUpdateTransportLayerApplicationShrinkRequest interface {
 }
 
 type UpdateTransportLayerApplicationShrinkRequest struct {
-	// The Layer 4 application ID. You can call the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation to obtain the application ID.
+	// The Layer 4 application ID. You can obtain the ID by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) API operation.
 	//
 	// This parameter is required.
 	//
@@ -36,49 +36,49 @@ type UpdateTransportLayerApplicationShrinkRequest struct {
 	//
 	// 165503967****
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// Specifies whether to enable network access optimization for the Chinese mainland. This feature is disabled by default. Valid values:
+	// Specifies whether to enable network access optimization for the Chinese mainland. Default value: off. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	CrossBorderOptimization *string `json:"CrossBorderOptimization,omitempty" xml:"CrossBorderOptimization,omitempty"`
-	// The IP access rule switch. When enabled, WAF IP access rules take effect for the Layer 4 application. Valid values:
+	// Specifies whether to enable the IP access rule. After this feature is enabled, the IP access rules in WAF take effect for the Layer 4 application. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	IpAccessRule *string `json:"IpAccessRule,omitempty" xml:"IpAccessRule,omitempty"`
-	// The IPv6 switch. Valid values:
+	// Specifies whether to enable IPv6. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// on
 	Ipv6 *string `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	// Specifies whether to enable keep-alive protection. This feature is disabled by default. Valid values:
+	// Specifies whether to enable connection keep-alive protection. Default value: off. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//
 	// off
 	KeepAliveProtection *string `json:"KeepAliveProtection,omitempty" xml:"KeepAliveProtection,omitempty"`
-	// The list of forwarding rules. For each rule, all parameters except the comment are required.
+	// The list of forwarding rules. For rule details, all parameters except the comment are required for each rule.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can obtain the ID by calling the [ListSites](~~ListSites~~) API operation.
 	//
 	// This parameter is required.
 	//
@@ -86,11 +86,11 @@ type UpdateTransportLayerApplicationShrinkRequest struct {
 	//
 	// 123456****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// Specifies whether to enable static IP. This feature is disabled by default. Valid values:
+	// Specifies whether to enable the static IP address feature. Default value: off. Valid values:
 	//
-	// - on: enabled.
+	// - on: Enable.
 	//
-	// - off: disabled.
+	// - off: Disable.
 	//
 	// example:
 	//

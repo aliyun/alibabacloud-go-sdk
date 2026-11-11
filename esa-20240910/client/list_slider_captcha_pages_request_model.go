@@ -24,7 +24,7 @@ type ListSliderCaptchaPagesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *ListSliderCaptchaPagesRequest) Validate() error {
 }
 
 type ListSliderCaptchaPagesRequestQueryArgs struct {
-	// The fuzzy search keyword for the name.
+	// The fuzzy name search.
 	//
 	// example:
 	//

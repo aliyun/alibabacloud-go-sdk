@@ -16,13 +16,13 @@ type iListWaitingRoomEventsResponseBody interface {
 }
 
 type ListWaitingRoomEventsResponseBody struct {
-	// The request ID, which is used to trace a call.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// f3c3700a-4c0f-4a24-b576-fd7dbf9e7c55
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the waiting room events.
+	// The list of waiting room events, which contains the specific information of each event.
 	WaitingRoomEvents []*ListWaitingRoomEventsResponseBodyWaitingRoomEvents `json:"WaitingRoomEvents,omitempty" xml:"WaitingRoomEvents,omitempty" type:"Repeated"`
 }
 
@@ -66,89 +66,89 @@ func (s *ListWaitingRoomEventsResponseBody) Validate() error {
 }
 
 type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
-	// The content of the custom waiting room page. This parameter is returned when the waiting room type is set to custom. The content is URL-encoded.
+	// The custom content of the waiting room page. This parameter is required when the waiting room type is custom. The content must be URL-encoded.
 	//
 	// example:
 	//
 	// html-yets-maqi1111
 	CustomPageHtml *string `json:"CustomPageHtml,omitempty" xml:"CustomPageHtml,omitempty"`
-	// The event description.
+	// The detailed description of the event.
 	//
 	// example:
 	//
 	// terraform-example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether session renewal is disabled. Valid values:
+	// Specifies whether session renewal is disabled. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// off
 	DisableSessionRenewalEnable *string `json:"DisableSessionRenewalEnable,omitempty" xml:"DisableSessionRenewalEnable,omitempty"`
-	// The event status. Valid values:
+	// The enabled status of the event. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The end time of the event. This value is a UNIX timestamp.
+	// The end time of the event. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1719814497
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether JOSN response is enabled. If JSON response is enabled, a JSON body is returned for requests to the waiting room with the header Accept: application/json. Valid values:
+	// Specifies whether to enable JSON responses. If this feature is enabled and the Accept request header contains "application/json", JSON data is returned. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// off
 	JsonResponseEnable *string `json:"JsonResponseEnable,omitempty" xml:"JsonResponseEnable,omitempty"`
-	// The language of the waiting room page. This parameter is returned when the waiting room type is set to default. Valid values:
+	// The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
 	//
-	// - enus: English.
+	// - **enus**: English.
 	//
-	// - zhcn: Simplified Chinese.
+	// - **zhcn**: Simplified Chinese.
 	//
-	// - zhhk: Traditional Chinese.
+	// - **zhhk**: Traditional Chinese.
 	//
 	// example:
 	//
 	// zhcn
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The custom event name.
+	// The event name, which is a custom event description.
 	//
 	// example:
 	//
 	// test event
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The maximum number of new users per minute.
+	// The number of new users per minute.
 	//
 	// example:
 	//
 	// 11
 	NewUsersPerMinute *string `json:"NewUsersPerMinute,omitempty" xml:"NewUsersPerMinute,omitempty"`
-	// Indicates whether pre-queuing is enabled. Valid values:
+	// Specifies whether to enable pre-queuing. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	PreQueueEnable *string `json:"PreQueueEnable,omitempty" xml:"PreQueueEnable,omitempty"`
-	// The start time for pre-queuing. This value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
+	// The start time of pre-queuing. The value is a UNIX timestamp. This parameter is valid only when pre-queuing is enabled.
 	//
 	// example:
 	//
@@ -156,75 +156,75 @@ type ListWaitingRoomEventsResponseBodyWaitingRoomEvents struct {
 	PreQueueStartTime *string `json:"PreQueueStartTime,omitempty" xml:"PreQueueStartTime,omitempty"`
 	// The queuing method. Valid values:
 	//
-	// - random: Users gain access to the origin randomly, regardless of the arrival time.
+	// - **random**: Random.
 	//
-	// - fifo: Users gain access to the origin in order of arrival.
+	// - **fifo**: First-in, first-out (FIFO).
 	//
-	// - passthrough: Users pass through the waiting room and go straight to the origin.
+	// - **passthrough**: Passthrough.
 	//
-	// - reject-all: Users are blocked from reaching the origin.
+	// - **reject-all**: Reject all.
 	//
 	// example:
 	//
 	// fifo
 	QueuingMethod *string `json:"QueuingMethod,omitempty" xml:"QueuingMethod,omitempty"`
-	// The HTTP status code to return while a user is in the queue. Valid values:
+	// The waiting room status code. Valid values:
 	//
-	// - 200
+	// - **200**
 	//
-	// - 202
+	// - **202**
 	//
-	// - 429
+	// - **429**
 	//
 	// example:
 	//
 	// 200
 	QueuingStatusCode *string `json:"QueuingStatusCode,omitempty" xml:"QueuingStatusCode,omitempty"`
-	// Indicates whether random queuing is enabled. Valid values:
+	// Specifies whether to enable random pre-queuing. Valid values:
 	//
-	// - on
+	// - **on**: Enabled.
 	//
-	// - off
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	RandomPreQueueEnable *string `json:"RandomPreQueueEnable,omitempty" xml:"RandomPreQueueEnable,omitempty"`
-	// The maximum duration for which a session remains valid after a user leaves the origin. Unit: minutes.
+	// The session duration, in minutes.
 	//
 	// example:
 	//
 	// 3
 	SessionDuration *string `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The start time of the event. This value is a UNIX timestamp.
+	// The start time of the event. The value is a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1719814398
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The maximum number of active users.
+	// The total number of active users.
 	//
 	// example:
 	//
 	// 22
 	TotalActiveUsers *string `json:"TotalActiveUsers,omitempty" xml:"TotalActiveUsers,omitempty"`
-	// The unique ID of the waiting room event.
+	// The event ID, which uniquely identifies a waiting room event.
 	//
 	// example:
 	//
 	// 89677721098****
 	WaitingRoomEventId *int64 `json:"WaitingRoomEventId,omitempty" xml:"WaitingRoomEventId,omitempty"`
-	// The ID of the waiting room associated with the event.
+	// The ID of the associated waiting room.
 	//
 	// example:
 	//
 	// 5c938a045c9ca46607163d34966****
 	WaitingRoomId *string `json:"WaitingRoomId,omitempty" xml:"WaitingRoomId,omitempty"`
-	// The type of the waiting room. Valid values:
+	// The waiting room type. Valid values:
 	//
-	// - default
+	// - **default**: Default type.
 	//
-	// - custom
+	// - **custom**: Custom type.
 	//
 	// example:
 	//

@@ -22,43 +22,43 @@ type iCheckSiteNameResponseBody interface {
 }
 
 type CheckSiteNameResponseBody struct {
-	// The description of the verification result. Valid values:
+	// The description of the validation result. Valid values:
 	//
-	// - **success**: The verification is successful.
+	// - **success**: Success.
 	//
-	// - **Site.AlreadyExist**: The website domain name has already been added.
+	// - **Site.AlreadyExist**: The user has already added this site.
 	//
-	// - **Site.InvalidName**: Invalid website domain name.
+	// - **Site.InvalidName**: The site name is invalid.
 	//
-	// - **Site.SubSiteUnavailable**: Subdomains are not allowed.
+	// - **Site.SubSiteUnavailable**: The subsite is unavailable.
 	//
-	// - **Site.InternalError**: An internal error occurs.
+	// - **Site.InternalError**: Other errors.
 	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether a subdomain is specified. Valid values:
+	// Indicates whether the site is a subsite. Valid values:
 	//
-	// - **true**
+	// - **true**: The site is a subsite.
 	//
-	// - **false**
+	// - **false**: The site is not a subsite.
 	//
 	// example:
 	//
 	// false
 	IsSubSite *bool `json:"IsSubSite,omitempty" xml:"IsSubSite,omitempty"`
-	// The verification message.
+	// The validation message.
 	//
 	// example:
 	//
 	// Site name is available.
 	Messeage *string `json:"Messeage,omitempty" xml:"Messeage,omitempty"`
-	// Indicates whether the verification passed.
+	// Indicates whether the validation is passed. Valid values:
 	//
-	// - **true**
+	// - **true**: Passed.
 	//
-	// - **false**
+	// - **false**: Not passed.
 	//
 	// example:
 	//

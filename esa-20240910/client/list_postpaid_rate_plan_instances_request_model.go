@@ -32,7 +32,7 @@ type iListPostpaidRatePlanInstancesRequest interface {
 type ListPostpaidRatePlanInstancesRequest struct {
 	// Specifies whether to check for remaining site quotas. Valid values:
 	//
-	// - true: Queries instances that have remaining site quotas.
+	// - true: Queries instances with remaining site quotas.
 	//
 	// - false: Does not filter by this condition.
 	//
@@ -40,28 +40,28 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	//
 	// true
 	CheckRemainingSiteQuota *string `json:"CheckRemainingSiteQuota,omitempty" xml:"CheckRemainingSiteQuota,omitempty"`
-	// The instance ID, which is used to query a specific instance.
+	// The instance ID, which is used to precisely query a single instance.
 	//
 	// example:
 	//
 	// sp-dps-xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number Settings for paging in a paged query. The value must be greater than or equal to 1.
+	// The page number for paging. The value must be greater than or equal to 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging in a paged query. Valid values: 1 to 500.
+	// The page size for paging. Valid values: 1 to 500.
 	//
 	// example:
 	//
 	// 12
 	PageSize      *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwner *int64 `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
-	// Specifies the field by which to sort the results. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
-	// - CreateTime: sorts by creation time
+	// - CreateTime: Sorts by creation time.
 	//
 	// example:
 	//
@@ -69,9 +69,9 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The sort order. Valid values:
 	//
-	//  	- asc: ascending order
+	// - asc: Ascending order.
 	//
-	//  	- desc: descending order
+	// - desc: Descending order.
 	//
 	// example:
 	//
@@ -79,17 +79,17 @@ type ListPostpaidRatePlanInstancesRequest struct {
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 	// The instance status. Valid values:
 	//
-	//  	- online: normal status
+	// - online: Normal.
 	//
-	//  	- overdue: overdue payment
+	// - overdue: Overdue payment.
 	//
-	//  	- disable: released
+	// - disable: Released.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Specifies whether bot or DDoS protection is added to the instance.
+	// Specifies whether the instance has the Bot Management or Anti-DDoS add-on.
 	//
 	// example:
 	//

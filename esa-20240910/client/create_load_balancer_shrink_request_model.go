@@ -42,13 +42,13 @@ type iCreateLoadBalancerShrinkRequest interface {
 }
 
 type CreateLoadBalancerShrinkRequest struct {
-	// The cross-origin address pool back-to-origin configuration.
+	// The back-to-origin configuration across origin address pools.
 	//
 	// example:
 	//
 	// true
 	AdaptiveRoutingShrink *string `json:"AdaptiveRouting,omitempty" xml:"AdaptiveRouting,omitempty"`
-	// The list of default address pool IDs.
+	// The list of default address pools.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// 123
 	DefaultPoolsShrink *string `json:"DefaultPools,omitempty" xml:"DefaultPools,omitempty"`
-	// The description of the load balancer for management and identification purposes.
+	// The detailed description of the load balancer for easy management and identification.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// - true: Enabled.
 	//
-	// - false: Not enabled.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The fallback address pool ID. Traffic is directed to this pool when all other pools are unavailable.
+	// The ID of the fallback address pool. Traffic is routed to this pool when all other pools are unavailable.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// order
 	MonitorShrink *string `json:"Monitor,omitempty" xml:"Monitor,omitempty"`
-	// The name of the load balancer. The name must be in a valid domain name format and must be a subdomain of the site.
+	// The name of the load balancer. The name must pass the domain name format validation and be a subdomain of the site.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +96,13 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// lb.example.com
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The weighted round-robin configuration that controls the traffic distribution weight across different address pools.
+	// The weighted round-robin configuration used to control the traffic distribution weights of different address pools.
 	//
 	// example:
 	//
 	// 123
 	RandomSteeringShrink *string `json:"RandomSteering,omitempty" xml:"RandomSteering,omitempty"`
-	// The address pools mapped to primary regions.
+	// The address pools corresponding to primary regions.
 	//
 	// example:
 	//
@@ -146,21 +146,21 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// }
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The session persistence mode. Valid values:
+	// The session persistence configuration. Valid values:
 	//
-	// - off: disabled.
+	// - off: Disabled.
 	//
-	// - ip: IP-based session persistence.
+	// - ip: Session persistence based on IP addresses.
 	//
-	// - cookie: cookie-based session persistence.
+	// - cookie: Session persistence based on cookies.
 	//
-	// - http_header: HTTP header-based session persistence.
+	// - http_header: Session persistence based on HTTP headers.
 	//
 	// example:
 	//
 	// ip
 	SessionAffinity *string `json:"SessionAffinity,omitempty" xml:"SessionAffinity,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -170,11 +170,11 @@ type CreateLoadBalancerShrinkRequest struct {
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// The load balancing policy. Valid values:
 	//
-	// - geo: geo-based routing.
+	// - geo: Geolocation-based policy.
 	//
-	// - random: weighted round-robin.
+	// - random: Weighted round-robin.
 	//
-	// - order: primary/secondary mode.
+	// - order: Active/standby mode.
 	//
 	// This parameter is required.
 	//
@@ -182,13 +182,13 @@ type CreateLoadBalancerShrinkRequest struct {
 	//
 	// order
 	SteeringPolicy *string `json:"SteeringPolicy,omitempty" xml:"SteeringPolicy,omitempty"`
-	// The address pools mapped to secondary regions. If multiple secondary regions share the same set of address pools, you can concatenate the secondary region names with commas as the key.
+	// The address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, you can concatenate the secondary regions with commas (,) to use as the key.
 	//
 	// example:
 	//
 	// {"AL,MO": [92298024898****],"CN-SH,CN-SX,CN-SC":[92304347804****,92843536908****]}
 	SubRegionPools interface{} `json:"SubRegionPools,omitempty" xml:"SubRegionPools,omitempty"`
-	// The TTL value, which specifies the time-to-live of the DNS record. Default value: 30 seconds. Valid values: 10 to 600.
+	// The time-to-live (TTL) value of the DNS record. Default value: 30. Unit: seconds. Valid values: 10 to 600.
 	//
 	// example:
 	//

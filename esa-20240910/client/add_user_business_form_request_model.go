@@ -32,7 +32,7 @@ type AddUserBusinessFormRequest struct {
 	//
 	// example:
 	//
-	// xxxx有限公司
+	// xxxx Co., Ltd
 	Company *string `json:"Company,omitempty" xml:"Company,omitempty"`
 	// The email address.
 	//
@@ -56,13 +56,13 @@ type AddUserBusinessFormRequest struct {
 	//
 	// example:
 	//
-	// 经理
+	// Manager
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
 	// Additional remarks.
 	//
 	// example:
 	//
-	// 请尽快联系我们
+	// Please contact us as soon as possible
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The username.
 	//
@@ -70,7 +70,7 @@ type AddUserBusinessFormRequest struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The company website.
 	//

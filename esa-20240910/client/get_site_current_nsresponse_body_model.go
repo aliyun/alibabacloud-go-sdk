@@ -16,7 +16,7 @@ type iGetSiteCurrentNSResponseBody interface {
 }
 
 type GetSiteCurrentNSResponseBody struct {
-	// The nameservers of the website.
+	// The list of current name servers for the site.
 	NSList []*string `json:"NSList,omitempty" xml:"NSList,omitempty" type:"Repeated"`
 	// The request ID.
 	//

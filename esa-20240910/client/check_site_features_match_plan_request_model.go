@@ -24,7 +24,7 @@ type CheckSiteFeaturesMatchPlanRequest struct {
 	//
 	// esa-site-b0bivjxucjk0
 	NewInstanceId *string `json:"NewInstanceId,omitempty" xml:"NewInstanceId,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The ID of the site. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//

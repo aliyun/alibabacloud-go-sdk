@@ -20,7 +20,7 @@ type iDeleteOriginClientCertificateResponseBody interface {
 }
 
 type DeleteOriginClientCertificateResponseBody struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteOriginClientCertificateResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the site.
+	// The site ID.
 	//
 	// example:
 	//
 	// 123456789****
 	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The name of the site.
+	// The site name.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListSiteDeliveryTasksResponseBody interface {
 }
 
 type ListSiteDeliveryTasksResponseBody struct {
-	// The page number. Default value: 0.
+	// The page number. Default value: **0**.
 	//
 	// example:
 	//
 	// 0
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+	// The number of entries per page. Default value: **20**. Valid values: **1 to 500**.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type ListSiteDeliveryTasksResponseBody struct {
 	//
 	// 34DCBC8A-****-****-****-6DAA11D7DDBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The delivery tasks.
+	// The list of tasks.
 	Tasks []*ListSiteDeliveryTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of log delivery tasks.
+	// The total number of real-time log projects.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *ListSiteDeliveryTasksResponseBody) Validate() error {
 }
 
 type ListSiteDeliveryTasksResponseBodyTasks struct {
-	// The log category. Valid values:
+	// The real-time log type. Valid values:
 	//
-	// 	- dcdn_log_access_l1 (default): access logs.
+	// - **dcdn_log_access_l1*	- (default): Access logs.
 	//
-	// 	- dcdn_log_er: Edge Routine logs.
+	// - **dcdn_log_er**: Edge Routine logs.
 	//
-	// 	- dcdn_log_waf: firewall logs.
+	// - **dcdn_log_waf**: Security protection logs.
 	//
-	// 	- dcdn_log_ipa: TCP/UDP proxy logs.
+	// - **dcdn_log_ipa**: Layer 4 acceleration logs.
 	//
 	// example:
 	//
@@ -133,43 +133,43 @@ type ListSiteDeliveryTasksResponseBodyTasks struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The data center. Valid values:
 	//
-	// 	- cn: the Chinese mainland.
+	// - **cn**: The Chinese mainland.
 	//
-	// 	- sg: outside the Chinese mainland.
+	// - **sg**: Global (excluding the Chinese mainland).
 	//
 	// example:
 	//
 	// cn
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The destination of the delivery. Valid values:
+	// The delivery type. Valid values:
 	//
-	// 1.  sls: Alibaba Cloud Simple Log Service (SLS).
+	// - **sls**: Simple Log Service.
 	//
-	// 2.  http: HTTP server.
+	// - **http**: HTTP service.
 	//
-	// 3.  aws3: Amazon Simple Storage Service (S3).
+	// - **aws3**: Amazon S3 service.
 	//
-	// 4.  oss: Alibaba Cloud Object Storage Service (OSS).
+	// - **oss**: Object Storage Service (OSS).
 	//
-	// 5.  kafka: Kafka.
+	// - **kafka**: Kafka service.
 	//
-	// 6.  aws3cmpt: S3-compatible storage service.
+	// - **aws3cmpt**: Amazon S3-compatible service.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The status of the delivery task.
+	// The status. Valid values:
 	//
-	// 	- **online**
+	// - **online**: Pushing.
 	//
-	// 	- **offline**
+	// - **offline**: Paused.
 	//
 	// example:
 	//
 	// online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the delivery task.
+	// The task name.
 	//
 	// example:
 	//

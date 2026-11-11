@@ -16,7 +16,7 @@ type iActivateClientCertificateRequest interface {
 }
 
 type ActivateClientCertificateRequest struct {
-	// The certificate ID, which can be obtained by calling the [ListClientCertificates](https://help.aliyun.com/document_detail/2852848.html) operation.
+	// The certificate ID. You can call the [ListClientCertificates](https://help.aliyun.com/document_detail/2852848.html) operation to obtain the certificate ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ActivateClientCertificateRequest struct {
 	//
 	// babaded901474b9693acf530e0fb****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+	// The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
 	//
 	// This parameter is required.
 	//
