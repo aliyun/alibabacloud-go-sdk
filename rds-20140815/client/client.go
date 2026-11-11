@@ -23480,7 +23480,7 @@ func (client *Client) DescribeRCElasticScaling(request *DescribeRCElasticScaling
 
 // Summary:
 //
-// Queries the custom images available for creating RDS Custom instances.
+// Queries a list of custom images available for creating RDS Custom instances.
 //
 // @param request - DescribeRCImageListRequest
 //
@@ -23520,7 +23520,7 @@ func (client *Client) DescribeRCImageListWithOptions(request *DescribeRCImageLis
 
 // Summary:
 //
-// Queries the custom images available for creating RDS Custom instances.
+// Queries a list of custom images available for creating RDS Custom instances.
 //
 // @param request - DescribeRCImageListRequest
 //
@@ -31387,7 +31387,7 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -31399,15 +31399,15 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95717.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95717.html)
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97147.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97147.html)
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -31583,7 +31583,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 //
 // Description:
 //
-// ### Applicable engines
+// ### Supported engines
 //
 // - ApsaraDB RDS for MySQL
 //
@@ -31595,15 +31595,15 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.</notice>
+//	Notice: Before you call this operation, read the feature documentation to fully understand the prerequisites and impacts.
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html)
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96772.html)
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95717.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95717.html)
 //
-// - [Configure an automatic backup policy for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97147.html)
+// - [Configure the automatic backup policy for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97147.html)
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -31723,13 +31723,13 @@ func (client *Client) ModifyBackupSetExpireTime(request *ModifyBackupSetExpireTi
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
 // [Modify the character set collation and time zone](https://help.aliyun.com/document_detail/95700.html)
 //
@@ -31799,13 +31799,13 @@ func (client *Client) ModifyCollationTimeZoneWithOptions(request *ModifyCollatio
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS SQL Server
+// # ApsaraDB RDS for SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
 //
 // [Modify the character set collation and time zone](https://help.aliyun.com/document_detail/95700.html)
 //
@@ -39779,7 +39779,7 @@ func (client *Client) ModifySecurityGroupConfiguration(request *ModifySecurityGr
 
 // Summary:
 //
-// Modifies the IP address whitelist configuration of a specified ApsaraDB RDS instance. This operation supports three modification modes: overwrite, append, and delete.
+// Modifies the IP whitelist configuration of a specified ApsaraDB RDS instance. This operation supports overwrite, append, and delete modes.
 //
 // Description:
 //
@@ -39795,15 +39795,15 @@ func (client *Client) ModifySecurityGroupConfiguration(request *ModifySecurityGr
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
 //
 // @param request - ModifySecurityIpsRequest
 //
@@ -39818,6 +39818,10 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchMode) {
+		query["BatchMode"] = request.BatchMode
+	}
+
 	if !dara.IsNil(request.DBInstanceIPArrayAttribute) {
 		query["DBInstanceIPArrayAttribute"] = request.DBInstanceIPArrayAttribute
 	}
@@ -39832,6 +39836,10 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 
 	if !dara.IsNil(request.FreshWhiteListReadins) {
 		query["FreshWhiteListReadins"] = request.FreshWhiteListReadins
+	}
+
+	if !dara.IsNil(request.GroupItems) {
+		query["GroupItems"] = request.GroupItems
 	}
 
 	if !dara.IsNil(request.ModifyMode) {
@@ -39879,7 +39887,7 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 
 // Summary:
 //
-// Modifies the IP address whitelist configuration of a specified ApsaraDB RDS instance. This operation supports three modification modes: overwrite, append, and delete.
+// Modifies the IP whitelist configuration of a specified ApsaraDB RDS instance. This operation supports overwrite, append, and delete modes.
 //
 // Description:
 //
@@ -39895,15 +39903,15 @@ func (client *Client) ModifySecurityIpsWithOptions(request *ModifySecurityIpsReq
 //
 // ### Related feature documentation
 //
-//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of this operation.
+//	Notice: Before you call this operation, carefully read the feature documentation to ensure that you fully understand the prerequisites and the impacts of the operation.
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96118.html)
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43187.html)
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/43186.html)
 //
-// - [Configure an IP address whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
+// - [Configure an IP whitelist for an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/90336.html)
 //
 // @param request - ModifySecurityIpsRequest
 //

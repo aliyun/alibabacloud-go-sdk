@@ -24,7 +24,7 @@ type iModifyCollationTimeZoneRequest interface {
 }
 
 type ModifyCollationTimeZoneRequest struct {
-	// The system character set collation. By default, the value is not modified. Valid values:
+	// The system character set collation. By default, this parameter is not modified. Valid values:
 	//
 	// 	- **Chinese_PRC_CI_AS**
 	//
@@ -50,7 +50,7 @@ type ModifyCollationTimeZoneRequest struct {
 	//
 	// > - The default character set collation of the instance is **Chinese_PRC_CI_AS**.
 	//
-	// > - You must specify at least one of **Collation*	- and **Timezone**.
+	// > - You must specify at least one of the **Collation*	- and **Timezone*	- parameters.
 	//
 	// example:
 	//
@@ -67,11 +67,11 @@ type ModifyCollationTimeZoneRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The system time zone. By default, the value is not modified.
+	// The system time zone. By default, this parameter is not modified.
 	//
 	// > - The default time zone of the instance is **China Standard Time**.
 	//
-	// > - You must specify at least one of **Collation*	- and **Timezone**.
+	// > - You must specify at least one of the **Collation*	- and **Timezone*	- parameters.
 	//
 	// example:
 	//

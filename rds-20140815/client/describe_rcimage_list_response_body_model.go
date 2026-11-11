@@ -156,7 +156,7 @@ type DescribeRCImageListResponseBodyImages struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mappings between cloud disks and snapshots included in the image.
+	// The mapping between cloud disks and snapshots included in the image.
 	DiskDeviceMappings []*DescribeRCImageListResponseBodyImagesDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -176,11 +176,11 @@ type DescribeRCImageListResponseBodyImages struct {
 	//
 	// 2
 	ImageVersion *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	// Indicates whether the image is public. Public images include public images provided by Alibaba Cloud and custom images that you have published as community images. Valid values:
+	// Indicates whether the image is a public image. Public images include public images provided by Alibaba Cloud and custom images that you have published as community images. Valid values:
 	//
-	// - **true**: The image is public.
+	// - **true**: The image is a public image.
 	//
-	// - **false**: The image is not public.
+	// - **false**: The image is not a public image.
 	//
 	// example:
 	//
@@ -434,7 +434,7 @@ type DescribeRCImageListResponseBodyImagesDiskDeviceMappings struct {
 	//
 	// 40
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The attribute of the cloud disk. Valid values:
+	// The property of the cloud disk. Valid values:
 	//
 	// - **system**: System cloud disk.
 	//

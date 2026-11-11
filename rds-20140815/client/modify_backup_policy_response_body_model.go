@@ -42,9 +42,9 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// 	- **2**: parallel zlib compression.
 	//
-	// 	- **4**: QuickLZ compression. Database and table restoration is enabled.
+	// 	- **4**: quicklz compression. Database and table restoration is enabled.
 	//
-	// 	- **8**: QuickLZ compression for MySQL 8.0. Database and table restoration is not supported.
+	// 	- **8**: quicklz compression for MySQL 8.0. Database and table restoration is not supported.
 	//
 	// example:
 	//
@@ -56,14 +56,13 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// rm-uf6wjk5****
 	DBInstanceID *string `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
-	// Specifies whether instance log backup is enabled. Valid values:
+	// Indicates whether log backup is enabled. Valid values:
 	//
 	// 	- **1**: enabled.
 	//
 	// 	- **0**: disabled.
 	//
-	//
-	// > Log backup is enabled by default and cannot be disabled for an ApsaraDB RDS for SQL Server instance.
+	// > Log backup is enabled by default and cannot be disabled for ApsaraDB RDS for SQL Server instances.
 	//
 	// example:
 	//
@@ -73,25 +72,25 @@ type ModifyBackupPolicyResponseBody struct {
 	EnableIncrementDataBackup *bool `json:"EnableIncrementDataBackup,omitempty" xml:"EnableIncrementDataBackup,omitempty"`
 	// Indicates whether point-in-time recovery (PITR) is enabled for the ApsaraDB RDS for MySQL instance.
 	EnablePitrProtection *bool `json:"EnablePitrProtection,omitempty" xml:"EnablePitrProtection,omitempty"`
-	// Indicates whether binary log files are unconditionally deleted when the storage usage of the **ApsaraDB RDS for MySQL*	- instance exceeds 80% or the remaining storage space is less than 5 GB.
+	// Indicates whether binary log files are unconditionally deleted when the storage usage of the **ApsaraDB RDS for MySQL*	- instance exceeds 80% or the remaining storage is less than 5 GB.
 	//
 	// example:
 	//
 	// Disable
 	HighSpaceUsageProtection *string `json:"HighSpaceUsageProtection,omitempty" xml:"HighSpaceUsageProtection,omitempty"`
-	// The high-frequency incremental backup interval, in minutes. Valid values: 60, 120, 240, 360, and 720.
+	// The high-frequency incremental backup interval. Unit: minutes. Valid values: 60, 120, 240, 360, and 720.
 	//
 	// example:
 	//
 	// 120
 	IncBackupInterval *int32 `json:"IncBackupInterval,omitempty" xml:"IncBackupInterval,omitempty"`
-	// The number of hours for which local instance log backups are retained on the **ApsaraDB RDS for MySQL*	- instance.
+	// The number of hours for which log backups are retained locally on the **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
 	// 18
 	LocalLogRetentionHours *int32 `json:"LocalLogRetentionHours,omitempty" xml:"LocalLogRetentionHours,omitempty"`
-	// The maximum usage of the local binary log loop space on the **ApsaraDB RDS for MySQL*	- instance.
+	// The maximum usage of the local binary log loop space for the **ApsaraDB RDS for MySQL*	- instance.
 	//
 	// example:
 	//
@@ -103,7 +102,7 @@ type ModifyBackupPolicyResponseBody struct {
 	//
 	// 60
 	LogBackupLocalRetentionNumber *int32 `json:"LogBackupLocalRetentionNumber,omitempty" xml:"LogBackupLocalRetentionNumber,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
