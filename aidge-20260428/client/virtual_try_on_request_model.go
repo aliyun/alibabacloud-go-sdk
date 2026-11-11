@@ -28,7 +28,7 @@ type VirtualTryOnRequest struct {
 	//
 	// https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg
 	ClothImageUrl *string `json:"ClothImageUrl,omitempty" xml:"ClothImageUrl,omitempty"`
-	// The garment type. Valid values: tops, bottoms, dresses, tops_and_bottoms, shoes, and hats. If you do not specify this parameter, the system automatically recognizes the garment type.
+	// The type of the garment. Valid values: tops, bottoms, dresses, tops_and_bottoms, shoes, and hats. If this parameter is not specified, the system automatically recognizes the garment type.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type VirtualTryOnRequest struct {
 	//
 	// https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg
 	ModelImageUrl *string `json:"ModelImageUrl,omitempty" xml:"ModelImageUrl,omitempty"`
-	// Required. The image resolution. Valid values: 1K and 2K.
+	// Required. The resolution of the generated image. Valid values: 1K and 2K.
 	//
 	// This parameter is required.
 	//

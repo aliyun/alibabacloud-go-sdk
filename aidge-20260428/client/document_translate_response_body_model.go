@@ -22,7 +22,7 @@ type iDocumentTranslateResponseBody interface {
 }
 
 type DocumentTranslateResponseBody struct {
-	// The response code. This parameter is not returned when the call is successful.
+	// The response code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DocumentTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The asynchronous task information.
 	Data *DocumentTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, such as "The parameter contains sensitive information. Try another input."
+	// The error message, such as "The parameters contain sensitive information. Try other inputs."
 	//
 	// This parameter is not returned when the call is successful.
 	//
@@ -38,7 +38,7 @@ type DocumentTranslateResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique identifier of the request, used for troubleshooting and tracing analysis.
+	// The unique identity of the request, which is used for troubleshooting and Tracing Analysis.
 	//
 	// example:
 	//
