@@ -23517,13 +23517,13 @@ func (client *Client) ModifyBackupSetExpireTimeWithContext(ctx context.Context, 
 //
 // Description:
 //
-// ### Supported engines
+// ### Applicable engine
 //
-// # ApsaraDB RDS for SQL Server
+// # RDS SQL Server
 //
 // ### Related documentation
 //
-//	Notice: Before you call this operation, read the documentation to understand the prerequisites and impacts.
+//	Notice: Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
 //
 // [Modify the character set collation and time zone](https://help.aliyun.com/document_detail/95700.html)
 //
