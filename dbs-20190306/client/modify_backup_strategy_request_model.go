@@ -26,29 +26,31 @@ type iModifyBackupStrategyRequest interface {
 }
 
 type ModifyBackupStrategyRequest struct {
-	// The interval at which you want to perform incremental log backups. Unit: seconds.
+	// The incremental backup interval in seconds.
 	//
-	// > This parameter takes effect only when physical backups are performed.
+	// > Only physical backups are supported.
 	//
 	// example:
 	//
 	// 1000
 	BackupLogIntervalSeconds *int32 `json:"BackupLogIntervalSeconds,omitempty" xml:"BackupLogIntervalSeconds,omitempty"`
-	// The day of each week when the full backup task runs. Valid values:
+	// The full backup cycle. Valid values:
 	//
-	// - Monday
+	// - Monday: Monday
 	//
-	// - Tuesday
+	// - Tuesday: Tuesday
 	//
-	// - Wednesday
+	// - Wednesday: Wednesday
 	//
-	// - Thursday
+	// - Thursday: Thursday
 	//
-	// - Friday
+	// - Friday: Friday
 	//
-	// - Saturday
+	// - Saturday: Saturday
 	//
-	// - Sunday
+	// - Sunday: Sunday
+	//
+	// > You must specify at least two days of the week for BackupPeriod and separate the days with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -56,7 +58,7 @@ type ModifyBackupStrategyRequest struct {
 	//
 	// Monday,Tuesday,Wednesday
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// This parameter is required.
 	//
@@ -64,17 +66,19 @@ type ModifyBackupStrategyRequest struct {
 	//
 	// dbstooi01XXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The start time of the full backup task. Specify the time in the HH:mm format.
+	// The start time of the full backup. Format: HH:mm.
+	//
+	// > This parameter is required.
 	//
 	// example:
 	//
 	// 14:22
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	// The backup method that you want to use for full backups. Valid values:
+	// The full backup epoch. Valid values:
 	//
-	// - **simple**: scheduled backup. If you specify this value for the BackupStrategyType parameter, you must also specify the BackupPeriod and BackupStartTime parameters.
+	// - **simple**: periodic backup. This value is used together with BackupPeriod and BackupStartTime.
 	//
-	// - **Manual**: manual backup.
+	// - **manual**: manual backup.
 	//
 	// > Default value: **simple**.
 	//
@@ -82,7 +86,7 @@ type ModifyBackupStrategyRequest struct {
 	//
 	// simple
 	BackupStrategyType *string `json:"BackupStrategyType,omitempty" xml:"BackupStrategyType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
 	//
 	// example:
 	//

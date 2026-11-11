@@ -50,7 +50,7 @@ type ModifyBackupSourceEndpointResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether this change triggers a precheck. If this value is true, call StartBackupPlan to restart the backup plan.
+	// Indicates whether the modification triggers a precheck. If this parameter is set to true, you must call the StartBackupPlan operation to start the backup plan.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ModifyBackupSourceEndpointResponseBody struct {
 	//
 	// D6E068C3-25BC-455A-85FE-45F0B22E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The request was successful.
 	//
 	// - **false**: The request failed.
 	//

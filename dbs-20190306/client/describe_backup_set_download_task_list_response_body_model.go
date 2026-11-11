@@ -57,7 +57,7 @@ type DescribeBackupSetDownloadTaskListResponseBody struct {
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -69,17 +69,17 @@ type DescribeBackupSetDownloadTaskListResponseBody struct {
 	//
 	// 6DC3D286-E0E6-5988-A558-2184984B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of download records for backup sets.
+	// The total number of backup set download records.
 	//
 	// example:
 	//

@@ -32,56 +32,57 @@ type iDescribeBackupPlanListResponseBody interface {
 }
 
 type DescribeBackupPlanListResponseBody struct {
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// InvalidParameterValid
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameter %s value is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Items          *DescribeBackupPlanListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// Page number.
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response items.
+	Items *DescribeBackupPlanListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// Number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4F1888AC-1138-4995-B9FE-D2734F61C058
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of backup plans.
+	// The total number of backup plans.
 	//
 	// example:
 	//
 	// 100
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// Total number of pages.
+	// The total number of pages.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDisableBackupLogRequest interface {
 }
 
 type DisableBackupLogRequest struct {
-	// The ID of the backup plan. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to query it.
+	// The ID of the backup plan. To get this ID, call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -28,12 +28,14 @@ type DisableBackupLogRequest struct {
 	//
 	// dbstooi01****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// Ensures idempotence and prevents duplicate requests.
+	// A client token to ensure the idempotence of the request.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCziJZNwH****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to disable only the log backup feature for a physical backup of a MySQL database.
+	//
 	// example:
 	//
 	// false

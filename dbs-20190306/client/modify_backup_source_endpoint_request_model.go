@@ -50,21 +50,21 @@ type iModifyBackupSourceEndpointRequest interface {
 }
 
 type ModifyBackupSourceEndpointRequest struct {
-	// The backup gateway ID. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The backup gateway ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
-	// > You must specify this parameter when **SourceEndpointInstanceType*	- is Agent.
+	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to `Agent`.
 	//
 	// example:
 	//
 	// 21321323213
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The backup objects. This parameter is optional when SourceEndpointInstanceType is Agent. For all other cases, you must specify it. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// Backup objects: This parameter is optional if the database is located on an agent, but required for all other scenarios. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// [{  "DBName":"待备份库名", "SchemaName":"待备份 Schema 名", "TableIncludes":[{ "TableName":"待备份表表名" }],  "TableExcludes":[{"TableName":"待备份库名不需要备份表的表名" }] } ]
 	BackupObjects *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
-	// The backup plan ID. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The backup plan ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
 	// This parameter is required.
 	//
@@ -72,24 +72,26 @@ type ModifyBackupSourceEndpointRequest struct {
 	//
 	// dbs1h****usfa
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// A unique string that ensures idempotence and prevents duplicate requests.
+	// A client-generated token to ensure request idempotence.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The UID of the Alibaba Cloud account used for cross-account backup. Call [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) to get this value.
+	// The UID for cross-account backup.
 	//
 	// example:
 	//
 	// 2xxx7778xxxxxxxxxx
 	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// The RAM role name used for cross-account backup. Call [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) to get this value.
+	// The RAM role name for cross-account backup.
 	//
 	// example:
 	//
 	// test123
 	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
+	// Specifies whether to use an SSL connection to back up the source database.
+	//
 	// example:
 	//
 	// true
@@ -97,43 +99,43 @@ type ModifyBackupSourceEndpointRequest struct {
 	OwnerId                 *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The database name.
 	//
-	// - You must specify this parameter for PostgreSQL or MongoDB databases.
+	// - This parameter is required for PostgreSQL and MongoDB databases.
 	//
-	// - You must specify this parameter for Microsoft SQL Server databases connected through a backup gateway.
+	// - This parameter is also required for Microsoft SQL Server databases when the **SourceEndpointInstanceType*	- parameter is set to \\"Agent\\".
 	//
 	// example:
 	//
 	// test
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
-	// The database endpoint. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The IP address of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
-	// > You must specify this parameter when **SourceEndpointInstanceType*	- is Express, Agent, or Other.
+	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to `Express`, `Agent`, or `Other`.
 	//
 	// example:
 	//
 	// 100.*.*.10:3306
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The database instance ID. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The database instance ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
-	// > You must specify this parameter when **SourceEndpointInstanceType*	- is RDS, ECS, DDS, or Express.
+	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to `RDS`, `ECS`, `DDS`, or `Express`.
 	//
 	// example:
 	//
 	// rm-bp1p8c29479jv****
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The location of the database. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value. Valid values:
+	// The type of the source instance. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value. Valid values:
 	//
-	// - **RDS**
+	// - **RDS**: an RDS instance
 	//
-	// - **ECS**
+	// - **ECS**: a self-managed database on an ECS instance
 	//
-	// - **Express**: A database connected through a leased line, VPN Gateway, or Smart Access Gateway
+	// - **Express**: a database connected over a leased line, VPN Gateway, or Smart Access Gateway
 	//
-	// - **Agent**: A database connected through a backup gateway
+	// - **Agent**: a database connected over a backup gateway
 	//
-	// - **DDS**: A MongoDB instance on Alibaba Cloud
+	// - **DDS**: an ApsaraDB for MongoDB instance
 	//
-	// - **Other**: A database connected directly using an IP address and port
+	// - **Other**: a database connected over an IP address and port
 	//
 	// This parameter is required.
 	//
@@ -141,48 +143,52 @@ type ModifyBackupSourceEndpointRequest struct {
 	//
 	// RDS
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
+	// The Oracle Home path.
+	//
 	// example:
 	//
 	// /home/test
 	SourceEndpointOracleHome *string `json:"SourceEndpointOracleHome,omitempty" xml:"SourceEndpointOracleHome,omitempty"`
-	// The Oracle system ID (SID). You must specify this parameter for Oracle databases.
+	// The Oracle SID. This parameter is required for Oracle databases.
 	//
 	// example:
 	//
 	// test
 	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// The password.
+	// The password for the database account.
 	//
-	// This parameter is optional for Redis databases or for Microsoft SQL Server databases connected through a backup gateway. For all other cases, you must specify it.
+	// This parameter is required for all database engines except for Redis and Microsoft SQL Server (when the **SourceEndpointInstanceType*	- parameter is set to \\"Agent\\").
 	//
 	// example:
 	//
 	// test
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
-	// The database port. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The database port. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
-	// > You must specify this parameter when **SourceEndpointInstanceType*	- is Express, Agent, Other, or ECS.
+	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to `Express`, `Agent`, `Other`, or `ECS`.
 	//
 	// example:
 	//
 	// 3306
 	SourceEndpointPort *int32 `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The region where the database is located. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The database region. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
-	// > You must specify this parameter when **SourceEndpointInstanceType*	- is RDS, ECS, DDS, Express, or Agent.
+	// > This parameter is required if the **SourceEndpointInstanceType*	- parameter is set to `RDS`, `ECS`, `DDS`, `Express`, or `Agent`.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The database account. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The username of the database account. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to get this value.
 	//
-	// This parameter is optional for Redis databases or for Microsoft SQL Server databases connected through a backup gateway. For all other cases, you must specify it.
+	// This parameter is required for all database engines except for Redis and Microsoft SQL Server (when the **SourceEndpointInstanceType*	- parameter is set to \\"Agent\\").
 	//
 	// example:
 	//
 	// test
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	// The PEM certificate for the SSL connection.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----

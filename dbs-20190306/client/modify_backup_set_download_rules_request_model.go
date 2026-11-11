@@ -32,13 +32,13 @@ type iModifyBackupSetDownloadRulesRequest interface {
 }
 
 type ModifyBackupSetDownloadRulesRequest struct {
-	// The ID of the backup gateway that is used to download the backup set.
+	// The ID of the backup gateway used to download the backup set.
 	//
 	// example:
 	//
 	// 23312323
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The ID of the backup schedule.
+	// The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// test
 	BackupSetDownloadDir *string `json:"BackupSetDownloadDir,omitempty" xml:"BackupSetDownloadDir,omitempty"`
-	// The type of the destination server to which the backup set is downloaded.
+	// The target type for downloading the backup set.
 	//
-	// > Set the value to agent, which indicates a server on which a backup gateway is installed.
+	// > Default value: agent. A backup gateway is installed. This is the only supported value.
 	//
 	// example:
 	//
 	// agent
 	BackupSetDownloadTargetType *string `json:"BackupSetDownloadTargetType,omitempty" xml:"BackupSetDownloadTargetType,omitempty"`
-	// The type of the destination directory to which the backup set is downloaded. This parameter is required if the automatic download feature is enabled. Valid values:
+	// The target directory type for downloading the backup set. This parameter is required if automatic download is enabled. Valid values:
 	//
 	// - local
 	//
@@ -76,13 +76,13 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// local
 	BackupSetDownloadTargetTypeLocation *string `json:"BackupSetDownloadTargetTypeLocation,omitempty" xml:"BackupSetDownloadTargetTypeLocation,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request and prevent duplicate request submissions.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The format in which the full backup set is downloaded. Valid values:
+	// The format of the full data downloaded from the backup set. Valid values:
 	//
 	// - Native
 	//
@@ -98,7 +98,7 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// CSV
 	FullDataFormat *string `json:"FullDataFormat,omitempty" xml:"FullDataFormat,omitempty"`
-	// The format in which the incremental backup set is downloaded. Valid values:
+	// The format of the incremental data downloaded from the backup set. Valid values:
 	//
 	// - Native
 	//
@@ -114,7 +114,7 @@ type ModifyBackupSetDownloadRulesRequest struct {
 	//
 	// Native
 	IncrementDataFormat *string `json:"IncrementDataFormat,omitempty" xml:"IncrementDataFormat,omitempty"`
-	// Specifies whether to enable the automatic download feature. Default value: false.
+	// Specifies whether to enable automatic download. Default value: false.
 	//
 	// example:
 	//

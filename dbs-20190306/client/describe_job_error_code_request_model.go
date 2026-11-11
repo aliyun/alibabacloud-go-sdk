@@ -20,7 +20,7 @@ type iDescribeJobErrorCodeRequest interface {
 }
 
 type DescribeJobErrorCodeRequest struct {
-	// A client token. It is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//

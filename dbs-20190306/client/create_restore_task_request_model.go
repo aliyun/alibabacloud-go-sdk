@@ -80,17 +80,27 @@ type iCreateRestoreTaskRequest interface {
 }
 
 type CreateRestoreTaskRequest struct {
-	AutoOpenDatabase     *string `json:"AutoOpenDatabase,omitempty" xml:"AutoOpenDatabase,omitempty"`
-	AutoShutdownDatabase *string `json:"AutoShutdownDatabase,omitempty" xml:"AutoShutdownDatabase,omitempty"`
-	// backup gateway ID.
+	// Specifies whether to automatically start the instance after an Oracle physical backup is restored.
 	//
-	// > This parameter is required when **DestinationEndpointInstanceType*	- is agent.
+	// example:
+	//
+	// true
+	AutoOpenDatabase *string `json:"AutoOpenDatabase,omitempty" xml:"AutoOpenDatabase,omitempty"`
+	// Specifies whether to automatically shut down the instance after an Oracle physical backup is restored.
+	//
+	// example:
+	//
+	// true
+	AutoShutdownDatabase *string `json:"AutoShutdownDatabase,omitempty" xml:"AutoShutdownDatabase,omitempty"`
+	// The ID of the backup gateway.
+	//
+	// > This parameter is required if **DestinationEndpointInstanceType*	- is set to Agent.
 	//
 	// example:
 	//
 	// 4312****
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// backup plan ID.
+	// The ID of the backup plan.
 	//
 	// This parameter is required.
 	//
@@ -98,91 +108,111 @@ type CreateRestoreTaskRequest struct {
 	//
 	// dbs1hvb0ww****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The ID of the full backup set used for restoration. Mutually exclusive with RestoreTime.
+	// The ID of the full backup set used for restoration. This parameter and RestoreTime are mutually exclusive.
 	//
 	// example:
 	//
 	// dbs1hvb0w*****
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// Ensures request idempotence and prevents duplicate submissions.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// UID for cross-Alibaba Cloud account backup.
+	// The UID of the Alibaba Cloud account used for cross-account backup.
 	//
 	// example:
 	//
 	// 2749528728********
 	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// RAM role name for cross-Alibaba Cloud account backup.
+	// The name of the RAM role used for cross-account backup.
 	//
 	// example:
 	//
 	// test123
 	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
+	// The instance specifications of the new database instance to which data is restored.
+	//
 	// example:
 	//
 	// mysql.x4.large.2
-	DestDatabaseInstanceClass           *string `json:"DestDatabaseInstanceClass,omitempty" xml:"DestDatabaseInstanceClass,omitempty"`
+	DestDatabaseInstanceClass *string `json:"DestDatabaseInstanceClass,omitempty" xml:"DestDatabaseInstanceClass,omitempty"`
+	// The database engine version of the new database instance to which data is restored.
+	//
+	// example:
+	//
+	// 8.0
 	DestDatabaseInstanceDatabaseVersion *string `json:"DestDatabaseInstanceDatabaseVersion,omitempty" xml:"DestDatabaseInstanceDatabaseVersion,omitempty"`
+	// The region of the new database instance to which data is restored.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestDatabaseInstanceRegion *string `json:"DestDatabaseInstanceRegion,omitempty" xml:"DestDatabaseInstanceRegion,omitempty"`
+	// The instance storage size of the new database to recover.
+	//
 	// example:
 	//
 	// 500
 	DestDatabaseInstanceStorageSize *string `json:"DestDatabaseInstanceStorageSize,omitempty" xml:"DestDatabaseInstanceStorageSize,omitempty"`
+	// The instance type of the new database to which data is restored.
+	//
 	// example:
 	//
 	// rds
-	DestDatabaseInstanceType    *string `json:"DestDatabaseInstanceType,omitempty" xml:"DestDatabaseInstanceType,omitempty"`
+	DestDatabaseInstanceType *string `json:"DestDatabaseInstanceType,omitempty" xml:"DestDatabaseInstanceType,omitempty"`
+	// The vSwitch of the new database instance to which data is restored.
+	//
+	// example:
+	//
+	// vsw-xx
 	DestDatabaseInstanceVSwitch *string `json:"DestDatabaseInstanceVSwitch,omitempty" xml:"DestDatabaseInstanceVSwitch,omitempty"`
+	// The VPC of the new database instance to which data is restored.
+	//
 	// example:
 	//
 	// vpc-xx
 	DestDatabaseInstanceVpc *string `json:"DestDatabaseInstanceVpc,omitempty" xml:"DestDatabaseInstanceVpc,omitempty"`
-	// database name.
+	// The name of the database.
 	//
-	// > This parameter is required when the database type is PostgreSQL or MongoDB.
+	// > This parameter is required if the database engine is PostgreSQL or MongoDB.
 	//
 	// example:
 	//
 	// test
 	DestinationEndpointDatabaseName *string `json:"DestinationEndpointDatabaseName,omitempty" xml:"DestinationEndpointDatabaseName,omitempty"`
-	// database endpoint.
+	// The database connection address.
 	//
-	// > This parameter is required when **DestinationEndpointInstanceType*	- is express, agent, or other.
+	// > This parameter is required if **DestinationEndpointInstanceType*	- is set to Express, Agent, or Other.
 	//
 	// example:
 	//
 	// rm-bp*****9jv8pxero.mysql.rds.aliyuncs.com
 	DestinationEndpointIP *string `json:"DestinationEndpointIP,omitempty" xml:"DestinationEndpointIP,omitempty"`
-	// database instance ID.
+	// The instance ID of the database.
 	//
-	// > This parameter is required when **DestinationEndpointInstanceType*	- is RDS, ECS, DDS, or Express.
+	// > This parameter is required if **DestinationEndpointInstanceType*	- is set to RDS, ECS, DDS, or Express.
 	//
 	// example:
 	//
 	// rm-bp1p8c29*****
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
-	// database location. Valid values:
+	// The location of the database. Valid values:
 	//
 	// - **RDS**
 	//
 	// - **ECS**
 	//
-	// - **Express**: databases accessed via leased line/VPN Gateway/Smart Gateway
+	// - **Express**: databases connected over Express Connect circuits, VPN gateways, or Smart Access Gateway (SAG)
 	//
-	// - **Agent**: databases accessed via backup gateway
+	// - **Agent**: databases connected over backup gateways
 	//
-	// - **DDS**: Cloud MongoDB
+	// - **DDS**: ApsaraDB for MongoDB
 	//
-	// - **Other**: databases directly connected via IP:Port
+	// - **Other**: databases connected by using IP addresses and port numbers
 	//
-	// - **dg**: self-managed databases without public IP:Port (accessed via Database Gateway DG)
+	// - **dg**: self-managed databases that have no public IP addresses or port numbers and are connected over Database Gateway
 	//
 	// This parameter is required.
 	//
@@ -190,87 +220,98 @@ type CreateRestoreTaskRequest struct {
 	//
 	// RDS
 	DestinationEndpointInstanceType *string `json:"DestinationEndpointInstanceType,omitempty" xml:"DestinationEndpointInstanceType,omitempty"`
-	// Oracle SID name.
+	// The Oracle SID.
 	//
-	// > This parameter is required when the database type is Oracle.
+	// > This parameter is required if the database engine is Oracle.
 	//
 	// example:
 	//
 	// test
 	DestinationEndpointOracleSID *string `json:"DestinationEndpointOracleSID,omitempty" xml:"DestinationEndpointOracleSID,omitempty"`
-	// password.
+	// The password of the database account.
 	//
-	// > This parameter is optional when the database type is Redis, or when the database location is agent and the database type is MSSQL. It is required in all other scenarios.
+	// > This parameter is not required if the database engine is Redis, or if the database is connected over a backup gateway and the database engine is SQL Server. In other scenarios, this parameter is required.
 	//
 	// example:
 	//
 	// Test
 	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
-	// database port.
+	// The port number of the database.
 	//
-	// > This parameter is required when **DestinationEndpointInstanceType*	- is express, agent, other, or ECS.
+	// > This parameter is required if **DestinationEndpointInstanceType*	- is set to Express, Agent, Other, or ECS.
 	//
 	// example:
 	//
 	// 3306
 	DestinationEndpointPort *int32 `json:"DestinationEndpointPort,omitempty" xml:"DestinationEndpointPort,omitempty"`
-	// region of the database instance.
+	// The region of the database instance.
 	//
-	// > This parameter is required when **DestinationEndpointInstanceType*	- is RDS, ECS, DDS, Express, or Agent.
+	// >This parameter is required if **DestinationEndpointInstanceType*	- is set to RDS, ECS, DDS, Express, or Agent.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
-	// database account.
+	// The username of the database account.
 	//
-	// > This parameter is optional when the database type is Redis, or when the database location is agent and the database type is MSSQL. It is required in all other scenarios.
+	// > This parameter is not required if the database engine is Redis, or if the database is connected over a backup gateway and the database engine is SQL Server. In other scenarios, this parameter is required.
 	//
 	// example:
 	//
 	// test
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
-	// Conflict handling for objects with the same name. Currently supports:
+	// The method used to handle conflicts between objects with the same name. Valid values:
 	//
-	// **renamenew**: Rename objects if names conflict.
+	// - **renamenew**: renames the object if an object with the same name exists.
 	//
 	// example:
 	//
 	// renamenew
-	DuplicateConflict            *string `json:"DuplicateConflict,omitempty" xml:"DuplicateConflict,omitempty"`
-	EnableDestinationEndpointSsl *bool   `json:"EnableDestinationEndpointSsl,omitempty" xml:"EnableDestinationEndpointSsl,omitempty"`
-	OwnerId                      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DuplicateConflict *string `json:"DuplicateConflict,omitempty" xml:"DuplicateConflict,omitempty"`
+	// Specifies whether to connect to the destination by using an SSL-encrypted connection.
+	//
 	// example:
 	//
-	// exist_instance
+	// true
+	EnableDestinationEndpointSsl *bool   `json:"EnableDestinationEndpointSsl,omitempty" xml:"EnableDestinationEndpointSsl,omitempty"`
+	OwnerId                      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The method used to restore data to the destination. Valid values:
+	//
+	// - **EXIST_INSTANCE**: restores data to an existing instance.
+	//
+	// - **NEW_INSTANCE**: restores data to a new instance.
+	//
+	// example:
+	//
+	// EXIST_INSTANCE
 	RestoreDestinationMode *string `json:"RestoreDestinationMode,omitempty" xml:"RestoreDestinationMode,omitempty"`
-	// Required when **DestinationEndpointInstanceType*	- is agent and the backup plan is MySQL.
+	// This parameter is required if **DestinationEndpointInstanceType*	- is set to Agent and the backup plan is for MySQL.
 	//
 	// example:
 	//
 	// test
 	RestoreDir *string `json:"RestoreDir,omitempty" xml:"RestoreDir,omitempty"`
-	// database program directory.
+	// The directory of the database program.
 	//
 	// example:
 	//
 	// test
 	RestoreHome *string `json:"RestoreHome,omitempty" xml:"RestoreHome,omitempty"`
-	// restore objects.
+	// The objects to be restored.
 	//
-	// - For details, see the **RestoreObjects*	- parameter definition below. This parameter is optional when the database location is agent, and required in all other scenarios.
+	// - For more information, see the definition of the **RestoreObjects*	- parameter below. This parameter is not required if the database is connected over a backup gateway. In other scenarios, this parameter is required.
 	//
-	// - Input template: `[{ "DBName": "database name to be restored", "NewDBName": "target database name to be restored" }]`
+	// - Template: `[{ "DBName": "Name of the database to be restored", "NewDBName": "Name of the destination database" }]`
 	//
-	// > This API only supports restoring objects at the database level. To configure table-level restoration, use the console. For details, see [Recover databases](https://help.aliyun.com/document_detail/85543.html).
+	// > Restoring objects by calling this API operation only supports restoration at the database level. To restore specific tables, go to the console. For more information, see [Restore a database](https://help.aliyun.com/document_detail/85543.html).
 	//
 	// example:
 	//
-	// MySQL表级别恢复示例如下：
+	// Example of MySQL table-level restoration:
 	//
 	// [{\\"DBName\\":\\"dbname\\", \\"NewDBName\\":\\"dbname1\\"}]
 	RestoreObjects *string `json:"RestoreObjects,omitempty" xml:"RestoreObjects,omitempty"`
-	// restore job name.
+	// The name of the restore task.
 	//
 	// This parameter is required.
 	//
@@ -278,12 +319,14 @@ type CreateRestoreTaskRequest struct {
 	//
 	// test
 	RestoreTaskName *string `json:"RestoreTaskName,omitempty" xml:"RestoreTaskName,omitempty"`
-	// restore time. Value: 1554560477000.
+	// The point in time to which you want to restore the database. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1554560477000
 	RestoreTime *int64 `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	// The credential for the SSL-encrypted connection to the destination.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----

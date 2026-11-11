@@ -57,7 +57,7 @@ type DescribeIncrementBackupListResponseBody struct {
 	//
 	// 0
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -69,9 +69,9 @@ type DescribeIncrementBackupListResponseBody struct {
 	//
 	// A5D52069-E8AA-5056-8C5C-654C3610****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request succeeded.
 	//
 	// - **false**: The request failed.
 	//
@@ -79,7 +79,7 @@ type DescribeIncrementBackupListResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of incremental backup tasks.
+	// The total number of incremental backups.
 	//
 	// example:
 	//

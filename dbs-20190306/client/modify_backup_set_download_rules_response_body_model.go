@@ -24,7 +24,7 @@ type iModifyBackupSetDownloadRulesResponseBody interface {
 }
 
 type ModifyBackupSetDownloadRulesResponseBody struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ModifyBackupSetDownloadRulesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

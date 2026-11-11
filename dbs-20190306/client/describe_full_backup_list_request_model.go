@@ -48,24 +48,26 @@ type DescribeFullBackupListRequest struct {
 	//
 	// 1iukx5h******
 	BackupSetId *string `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
+	// The status of the backup set.
+	//
 	// example:
 	//
 	// finish
 	BackupSetStatus *string `json:"BackupSetStatus,omitempty" xml:"BackupSetStatus,omitempty"`
-	// A token that ensures idempotence and prevents duplicate requests.
+	// The client token that is used to ensure request idempotence and prevent duplicate submissions.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The end time of the backup, in UNIX timestamp format.
+	// The end time of the backup.
 	//
 	// example:
 	//
 	// 1676887128
 	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: integers from 0 to the maximum integer value. Default value: 0.
+	// The page number. The value must be greater than or equal to 0 and less than or equal to the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//
@@ -85,11 +87,13 @@ type DescribeFullBackupListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to display the backup progress.
+	//
 	// example:
 	//
 	// true
 	ShowProgress *string `json:"ShowProgress,omitempty" xml:"ShowProgress,omitempty"`
-	// Specifies whether to return the storage class.
+	// Specifies whether to display the storage type.
 	//
 	// example:
 	//

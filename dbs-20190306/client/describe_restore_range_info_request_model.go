@@ -24,7 +24,7 @@ type iDescribeRestoreRangeInfoRequest interface {
 }
 
 type DescribeRestoreRangeInfoRequest struct {
-	// The ID of the backup plan. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeRestoreRangeInfoRequest struct {
 	//
 	// dbssl67c7mx****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The start timestamp of the restorable time range. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The start time of the recoverable time range to query. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type DescribeRestoreRangeInfoRequest struct {
 	//
 	// 1646674092000
 	BeginTimestampForRestore *int64 `json:"BeginTimestampForRestore,omitempty" xml:"BeginTimestampForRestore,omitempty"`
-	// A client token that ensures the idempotence of requests and prevents duplicate submissions.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The end timestamp of the restorable time range. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to get this value.
+	// The end time of the recoverable time range to query. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type DescribeRestoreRangeInfoRequest struct {
 	// 1646846814000
 	EndTimestampForRestore *int64  `json:"EndTimestampForRestore,omitempty" xml:"EndTimestampForRestore,omitempty"`
 	OwnerId                *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Whether to enable recent restore.
+	// Specifies whether to enable recent restoration.
 	//
 	// example:
 	//

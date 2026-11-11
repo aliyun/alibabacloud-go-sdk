@@ -26,33 +26,33 @@ type iModifyStorageStrategyResponseBody interface {
 }
 
 type ModifyStorageStrategyResponseBody struct {
-	// Backup plan ID.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
 	// dbsqdss5tmh****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// Error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Param.NotFound
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// findValidDBSJob error
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether this modification triggers a precheck. Return values:
+	// Indicates whether the modification triggers a precheck. Valid values:
 	//
-	// - **true**: A precheck is triggered. Manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869818.html) API to start the backup plan.
+	// - **true**: A precheck is triggered. You must manually call the [StartBackupPlan](https://help.aliyun.com/document_detail/2869818.html) operation to start the backup plan.
 	//
 	// - **false**: No precheck is triggered.
 	//
@@ -60,17 +60,17 @@ type ModifyStorageStrategyResponseBody struct {
 	//
 	// false
 	NeedPrecheck *bool `json:"NeedPrecheck,omitempty" xml:"NeedPrecheck,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// E995F91F-6F89-503B-9F7D-502F58FD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Return values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

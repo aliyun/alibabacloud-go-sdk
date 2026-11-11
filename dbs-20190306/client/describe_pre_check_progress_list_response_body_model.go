@@ -47,7 +47,7 @@ type DescribePreCheckProgressListResponseBody struct {
 	// 200
 	HttpStatusCode *int32                                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Items          *DescribePreCheckProgressListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The precheck progress. The value ranges from 0 to 100.
+	// The precheck progress. Valid values: 0 to 100.
 	//
 	// example:
 	//
@@ -61,11 +61,11 @@ type DescribePreCheckProgressListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The precheck status. Valid values:
 	//
-	// - **running**: The precheck is in progress.
+	// - **running**: running
 	//
-	// - **failed**: The precheck failed.
+	// - **failed**: failed
 	//
-	// - **finish**: The precheck is complete.
+	// - **finish**: completed
 	//
 	// example:
 	//

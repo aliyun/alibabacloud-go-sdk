@@ -11,6 +11,8 @@ type iCreateGetDBListFromAgentTaskRequest interface {
 	GoString() string
 	SetBackupGatewayId(v int64) *CreateGetDBListFromAgentTaskRequest
 	GetBackupGatewayId() *int64
+	SetBackupGatewayIdentifier(v string) *CreateGetDBListFromAgentTaskRequest
+	GetBackupGatewayIdentifier() *string
 	SetClientToken(v string) *CreateGetDBListFromAgentTaskRequest
 	GetClientToken() *string
 	SetDatabaseType(v string) *CreateGetDBListFromAgentTaskRequest
@@ -34,7 +36,13 @@ type CreateGetDBListFromAgentTaskRequest struct {
 	//
 	// 160813
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The unique identifier of the backup gateway.
+	//
+	// example:
+	//
+	// 4DF900B7082BC3****489D765C8D2ABE
+	BackupGatewayIdentifier *string `json:"BackupGatewayIdentifier,omitempty" xml:"BackupGatewayIdentifier,omitempty"`
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -63,19 +71,19 @@ type CreateGetDBListFromAgentTaskRequest struct {
 	// MySQL
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The URL that is used to access the database.
+	// The database connection address.
 	//
 	// example:
 	//
 	// 123.0.XX.XX
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The port that is used to connect to the database.
+	// The database connection port.
 	//
 	// example:
 	//
 	// 3306
 	SourceEndpointPort *int32 `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The region in which the backup gateway resides.
+	// The region ID of the backup gateway.
 	//
 	// example:
 	//
@@ -93,6 +101,10 @@ func (s CreateGetDBListFromAgentTaskRequest) GoString() string {
 
 func (s *CreateGetDBListFromAgentTaskRequest) GetBackupGatewayId() *int64 {
 	return s.BackupGatewayId
+}
+
+func (s *CreateGetDBListFromAgentTaskRequest) GetBackupGatewayIdentifier() *string {
+	return s.BackupGatewayIdentifier
 }
 
 func (s *CreateGetDBListFromAgentTaskRequest) GetClientToken() *string {
@@ -121,6 +133,11 @@ func (s *CreateGetDBListFromAgentTaskRequest) GetSourceEndpointRegion() *string 
 
 func (s *CreateGetDBListFromAgentTaskRequest) SetBackupGatewayId(v int64) *CreateGetDBListFromAgentTaskRequest {
 	s.BackupGatewayId = &v
+	return s
+}
+
+func (s *CreateGetDBListFromAgentTaskRequest) SetBackupGatewayIdentifier(v string) *CreateGetDBListFromAgentTaskRequest {
+	s.BackupGatewayIdentifier = &v
 	return s
 }
 

@@ -22,20 +22,20 @@ type iDescribePreCheckProgressListRequest interface {
 type DescribePreCheckProgressListRequest struct {
 	// The ID of the backup plan.
 	//
-	// > Specify either BackupPlanId or RestoreTaskId.
+	// > Specify BackupPlanId or RestoreTaskId.
 	//
 	// example:
 	//
 	// dbsr1l3ro21****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCziJZNwH****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the restore job.
+	// The ID of the restore task.
 	//
 	// example:
 	//

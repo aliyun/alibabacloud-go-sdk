@@ -63,23 +63,23 @@ type DescribeFullBackupListResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 636BC118-6080-4119-A6B5-C199CEC1037D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The operation succeeded.
+	// - **true**: The request was successful.
 	//
-	// - **false**: The operation failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of full backup jobs.
+	// The total number of full backup tasks.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iModifyStorageStrategyRequest interface {
 }
 
 type ModifyStorageStrategyRequest struct {
-	// Backup plan ID. Obtain this parameter\\"s value by calling the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API.
+	// The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type ModifyStorageStrategyRequest struct {
 	//
 	// dbsqdss5tmh****
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// Backup data retention period, in days. Valid values: 0 to 1825.
+	// The retention period of backup data. Unit: days. Valid values: 0 to 1825.
 	//
-	// > Default value: 730 days.
+	// > Default value: 730.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +56,21 @@ type ModifyStorageStrategyRequest struct {
 	//
 	// 730
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// The encryption method for backup data storage.
+	//
 	// example:
 	//
 	// encrypted
 	BackupStorageEncryptMethod *string `json:"BackupStorageEncryptMethod,omitempty" xml:"BackupStorageEncryptMethod,omitempty"`
-	// An arbitrary string used to ensure the idempotence of the request and prevent duplicate submissions.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions.
 	//
 	// example:
 	//
 	// dbstest
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Time to convert to Archive Storage. This value must be less than the backup data retention period (BackupRetentionPeriod parameter). For more information about Archive Storage, see [Storage Type Overview](https://help.aliyun.com/document_detail/51374.html).
+	// The period after which backup data is transitioned to Archive storage. The value must be less than the retention period of backup data (specified by the BackupRetentionPeriod parameter). For more information about Archive storage, see [Storage types](https://help.aliyun.com/document_detail/51374.html).
 	//
-	// > Default value: 365 days.
+	// > Default value: 365.
 	//
 	// This parameter is required.
 	//
@@ -76,9 +78,9 @@ type ModifyStorageStrategyRequest struct {
 	//
 	// 366
 	DuplicationArchivePeriod *int32 `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
-	// Time to convert to Infrequent Access storage. This value must be less than the Archive Storage period (DuplicationArchivePeriod parameter). For more information about Infrequent Access storage, see [Storage Type Overview](https://help.aliyun.com/document_detail/51374.html).
+	// The period after which backup data is transitioned to Infrequent Access storage. The value must be less than the period after which backup data is transitioned to Archive storage (specified by the DuplicationArchivePeriod parameter). For more information about Infrequent Access storage, see [Storage types](https://help.aliyun.com/document_detail/51374.html).
 	//
-	// > Default value: 180 days.
+	// > Default value: 180.
 	//
 	// This parameter is required.
 	//
@@ -86,26 +88,38 @@ type ModifyStorageStrategyRequest struct {
 	//
 	// 190
 	DuplicationInfrequentAccessPeriod *int32 `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
+	// The retention period of incremental backup data.
+	//
 	// example:
 	//
 	// 365
 	IncrementBackupRetentionPeriod *string `json:"IncrementBackupRetentionPeriod,omitempty" xml:"IncrementBackupRetentionPeriod,omitempty"`
+	// The period after which incremental backup data is transitioned to Archive storage.
+	//
 	// example:
 	//
 	// 365
 	IncrementDuplicationArchivePeriod *string `json:"IncrementDuplicationArchivePeriod,omitempty" xml:"IncrementDuplicationArchivePeriod,omitempty"`
+	// The period after which incremental backup data is transitioned to Infrequent Access storage.
+	//
 	// example:
 	//
 	// 365
 	IncrementDuplicationInfrequentAccessPeriod *string `json:"IncrementDuplicationInfrequentAccessPeriod,omitempty" xml:"IncrementDuplicationInfrequentAccessPeriod,omitempty"`
+	// The retention period of log backup data.
+	//
 	// example:
 	//
 	// 365
 	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
+	// The period after which log backup data is transitioned to Infrequent Access storage.
+	//
 	// example:
 	//
 	// 365
 	LogDuplicationArchivePeriod *string `json:"LogDuplicationArchivePeriod,omitempty" xml:"LogDuplicationArchivePeriod,omitempty"`
+	// The period after which log backup data is transitioned to Infrequent Access storage.
+	//
 	// example:
 	//
 	// 365

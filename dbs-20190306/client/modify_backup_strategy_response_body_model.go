@@ -26,7 +26,7 @@ type iModifyBackupStrategyResponseBody interface {
 }
 
 type ModifyBackupStrategyResponseBody struct {
-	// The ID of the backup schedule.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ModifyBackupStrategyResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Indicates whether a precheck is triggered. If the value of this parameter is true, you must start the backup schedule by calling the StartBackupPlan operation.
+	// Indicates whether this modification triggers a precheck. If the value is true, a precheck is required, and you must call the StartBackupPlan operation to start the backup plan.
 	//
 	// example:
 	//

@@ -28,11 +28,11 @@ type iDescribeDLAServiceResponseBody interface {
 }
 
 type DescribeDLAServiceResponseBody struct {
-	// Specifies whether to enable the feature of automatically adding incremental data to a data lake. If this feature is enabled, DBS adds the backup sets that are newly generated to the data lake that is created for the backup schedule. Valid values:
+	// Indicates whether automatic data ingestion into the data lake for incremental data is enabled. If this feature is enabled, the system automatically adds newly generated backup sets to the data lake. Valid values:
 	//
-	// - **true**: enables the feature.
+	// - **true**: Enabled.
 	//
-	// - **false**: disables the feature.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DescribeDLAServiceResponseBody struct {
 	//
 	// The specified parameter %s value is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// Indicates whether a failed DLA task exists in the return result. Valid values:
+	// Indicates whether the response contains failed DLA tasks. Valid values:
 	//
-	// - **true**: A failed DLA task exists.
+	// - **true**: Yes.
 	//
-	// - **false**: No failed DLA task exists.
+	// - **false**: No.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type DescribeDLAServiceResponseBody struct {
 	//
 	// 4F1888AC-1138-4995-B9FE-D2734F61C058
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the DLA service for the backup schedule. Valid values:
+	// The DLA service status of the backup plan. Valid values:
 	//
-	// - **Running**: DLA is running.
+	// - **Running**: The service is running.
 	//
-	// - **Closing**: DLA is being disabled.
+	// - **Closing**: The service is being closed.
 	//
-	// - **Closed**: DLA is disabled.
+	// - **Closed**: The service is closed.
 	//
 	// example:
 	//
 	// Running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -25,7 +25,7 @@ type iGetDBListFromAgentResponseBody interface {
 
 type GetDBListFromAgentResponseBody struct {
 	DbList *GetDBListFromAgentResponseBodyDbList `json:"DbList,omitempty" xml:"DbList,omitempty" type:"Struct"`
-	// The error code.
+	// The error code string.
 	//
 	// example:
 	//

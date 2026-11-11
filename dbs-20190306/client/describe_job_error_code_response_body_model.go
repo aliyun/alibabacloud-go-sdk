@@ -44,7 +44,7 @@ type DescribeJobErrorCodeResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The details of the error code.
 	Item *DescribeJobErrorCodeResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type CreateGetDBListFromAgentTaskResponseBody struct {
 	//
 	// This backupPlan can\\"t support this action
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The HTTP status code returned.
+	// The HTTP status code.
 	//
 	// example:
 	//

@@ -49,9 +49,9 @@ type DescribeRestoreRangeInfoResponseBody struct {
 	//
 	// E2BD9DFC-6760-5F49-97C5-DA739E29****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request succeeded.
+	// - **true**: The request was successful.
 	//
 	// - **false**: The request failed.
 	//

@@ -84,39 +84,39 @@ type iConfigureBackupPlanRequest interface {
 }
 
 type ConfigureBackupPlanRequest struct {
-	// Enable automatic backup. Valid values:
+	// Specifies whether to enable automatic backup. Valid values:
 	//
-	// - **true**: Enable
+	// - **true**: enables automatic backup
 	//
-	// - **false**: Disable
+	// - **false**: disables automatic backup
 	//
 	// example:
 	//
 	// false
 	AutoStartBackup *bool `json:"AutoStartBackup,omitempty" xml:"AutoStartBackup,omitempty"`
-	// The backup gateway ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The ID of the backup gateway. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
-	// > This parameter is required when **SourceEndpointInstanceType*	- is **agent**.
+	// > This parameter is required when **SourceEndpointInstanceType*	- is set to **agent**.
 	//
 	// example:
 	//
 	// 23313123312
 	BackupGatewayId *int64 `json:"BackupGatewayId,omitempty" xml:"BackupGatewayId,omitempty"`
-	// The incremental interval in seconds (s).
+	// The interval for incremental backup, in seconds.
 	//
-	// > Only physical backup is supported.
+	// > This parameter is supported only for physical backup.
 	//
 	// example:
 	//
 	// 1000
 	BackupLogIntervalSeconds *int32 `json:"BackupLogIntervalSeconds,omitempty" xml:"BackupLogIntervalSeconds,omitempty"`
-	// The backup objects. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The objects to be backed up. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
 	// example:
 	//
-	// [     {         "DBName":"待备份库名",         "SchemaName":"待备份 Schema 名",         "TableIncludes":[{             "TableName":"待备份表表名"         }],         "TableExcludes":[{             "TableName":"待备份库名不需要备份表的表名"         }]     } ]
+	// [     {         "DBName":"DatabaseToBackUp",         "SchemaName":"SchemaToBackUp",         "TableIncludes":[{             "TableName":"TableToBackUp"         }],         "TableExcludes":[{             "TableName":"TableToExclude"         }]     } ]
 	BackupObjects *string `json:"BackupObjects,omitempty" xml:"BackupObjects,omitempty"`
-	// The full backup period. Valid values:
+	// The full backup cycle. Valid values:
 	//
 	// - **Monday**: Monday
 	//
@@ -136,7 +136,7 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// Monday
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
-	// The backup plan ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -144,7 +144,7 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// dbstooi0*******
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The custom backup plan name. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The custom name of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -152,53 +152,55 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// dbstooi0*******
 	BackupPlanName *string `json:"BackupPlanName,omitempty" xml:"BackupPlanName,omitempty"`
-	// The network bandwidth throttling in KB/s. The maximum value is 10 GB.
+	// The network bandwidth throttling. Unit: KB/s. Maximum value: 10 GB.
 	//
-	// > This parameter is valid only for MySQL physical backup.
+	// > This parameter takes effect only for MySQL physical backup.
 	//
 	// example:
 	//
 	// 262144
 	BackupRateLimit *int64 `json:"BackupRateLimit,omitempty" xml:"BackupRateLimit,omitempty"`
-	// The retention period for backup data. Valid values: 0 to 1825. Default value: 730 days.
+	// The retention period of backup data. Valid values: 0 to 1825. Default value: 730. Unit: days.
 	//
 	// example:
 	//
 	// 730
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The disk I/O limit in KB/s.
+	// The disk I/O limit. Unit: KB/s.
 	//
-	// > This parameter is valid only for MySQL physical backup.
+	// > This parameter takes effect only for MySQL physical backup.
 	//
 	// example:
 	//
 	// 262144
 	BackupSpeedLimit *int64 `json:"BackupSpeedLimit,omitempty" xml:"BackupSpeedLimit,omitempty"`
-	// The full backup start time in *HH:mm*Z (UTC) format. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The start time of the full backup. The time is in the <i>HH:mm</i>Z format and displayed in UTC. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
 	// example:
 	//
 	// 14:22
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// The encryption method for backup storage.
+	//
 	// example:
 	//
 	// encrypted
 	BackupStorageEncryptMethod *string `json:"BackupStorageEncryptMethod,omitempty" xml:"BackupStorageEncryptMethod,omitempty"`
-	// The built-in storage type:
+	// The built-in storage type. Valid values:
 	//
-	// - Empty (default): Backup data is stored on your OSS.
+	// - Empty string (default): Backup data is stored in your OSS bucket.
 	//
-	// - system: Backup data is stored on the built-in OSS of DBS.
+	// - system: Backup data is stored in the built-in OSS bucket of DBS.
 	//
 	// example:
 	//
-	// 无
+	// None
 	BackupStorageType *string `json:"BackupStorageType,omitempty" xml:"BackupStorageType,omitempty"`
-	// The full backup period. Valid values:
+	// The full backup epoch. Valid values:
 	//
-	// - **simple**: Periodic backup. Use this value with BackupPeriod and BackupStartTime.
+	// - **simple**: periodic backup, which is used together with BackupPeriod and BackupStartTime
 	//
-	// - **manual**: Manual backup.
+	// - **manual**: manual backup
 	//
 	// > Default value: **simple**.
 	//
@@ -206,106 +208,110 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// simple
 	BackupStrategyType *string `json:"BackupStrategyType,omitempty" xml:"BackupStrategyType,omitempty"`
-	// Ensure the idempotence of the request to prevent duplicate submissions. The client generates this parameter value. Ensure its uniqueness across different requests. The maximum length is 64 ASCII characters, and the value cannot contain non-ASCII characters.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, and you must ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
 	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOCzxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The UID for cross-Alibaba Cloud account backup. Call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) API to get this parameter\\"s value.
+	// The UID of the Alibaba Cloud account for cross-account backup. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to query the value of this parameter.
 	//
 	// example:
 	//
 	// 2xxx7778xxxxxxxxxx
 	CrossAliyunId *string `json:"CrossAliyunId,omitempty" xml:"CrossAliyunId,omitempty"`
-	// The RAM role name for cross-Alibaba Cloud account backup. Call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) API to get this parameter\\"s value.
+	// The name of the RAM role for cross-account backup. You can call the [DescribeRestoreTaskList](https://help.aliyun.com/document_detail/2869838.html) operation to query the value of this parameter.
 	//
 	// example:
 	//
 	// test123
 	CrossRoleName *string `json:"CrossRoleName,omitempty" xml:"CrossRoleName,omitempty"`
-	// The period after which data is converted to archive cold storage. Default value: 365 days.
+	// The period after which backup data is transitioned to Archive storage. Default value: 365. Unit: days.
 	//
 	// example:
 	//
 	// 365
 	DuplicationArchivePeriod *int32 `json:"DuplicationArchivePeriod,omitempty" xml:"DuplicationArchivePeriod,omitempty"`
-	// The period after which data is converted to Infrequent Access storage. Default value: 180 days.
+	// The period after which backup data is transitioned to Infrequent Access (IA) storage. Default value: 180. Unit: days.
 	//
 	// example:
 	//
 	// 180
 	DuplicationInfrequentAccessPeriod *int32 `json:"DuplicationInfrequentAccessPeriod,omitempty" xml:"DuplicationInfrequentAccessPeriod,omitempty"`
-	// Enable incremental log backup. Valid values:
+	// Specifies whether to enable incremental log backup. Valid values:
 	//
-	// - **true**: Enable
+	// - **true**: enables incremental log backup
 	//
-	// - **false**: Disable
+	// - **false**: disables incremental log backup
 	//
 	// example:
 	//
 	// true
 	EnableBackupLog *bool `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
+	// Specifies whether to enable log backup for MySQL physical backup.
+	//
 	// example:
 	//
 	// true
 	EnableMysqlPhysicalBackupBinlog *string `json:"EnableMysqlPhysicalBackupBinlog,omitempty" xml:"EnableMysqlPhysicalBackupBinlog,omitempty"`
+	// Specifies whether to enable an SSL-encrypted connection to the source database instance.
+	//
 	// example:
 	//
 	// true
 	EnableSourceEndpointSsl *string `json:"EnableSourceEndpointSsl,omitempty" xml:"EnableSourceEndpointSsl,omitempty"`
-	// The OSS bucket name.
+	// The name of the OSS bucket.
 	//
-	// > The system automatically generates a new name by default.
+	// > By default, the system automatically generates a new name.
 	//
 	// example:
 	//
 	// TestOssBucket
 	OSSBucketName *string `json:"OSSBucketName,omitempty" xml:"OSSBucketName,omitempty"`
 	OwnerId       *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzecovzti****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The database name. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The name of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
-	// > This parameter is required when the database type is **PostgreSQL*	- or **MongoDB**.
+	// > This parameter is required when the database engine is **PostgreSQL*	- or **MongoDB**.
 	//
 	// example:
 	//
 	// testRDS
 	SourceEndpointDatabaseName *string `json:"SourceEndpointDatabaseName,omitempty" xml:"SourceEndpointDatabaseName,omitempty"`
-	// The database endpoint. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The database connection address. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
-	// > This parameter is required when **SourceEndpointInstanceType*	- is **express**, **agent**, or **other**.
+	// > This parameter is required when **SourceEndpointInstanceType*	- is set to **express**, **agent**, or **other**.
 	//
 	// example:
 	//
 	// rm-uf6wjk5*******.mysql.rds.aliyuncs.com
 	SourceEndpointIP *string `json:"SourceEndpointIP,omitempty" xml:"SourceEndpointIP,omitempty"`
-	// The database instance ID. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The database instance ID. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
-	// > This parameter is required when **SourceEndpoint**.**InstanceType*	- is **RDS**, **ECS**, **DDS**, or **Express**.
+	// > This parameter is required when **SourceEndpoint**.**InstanceType*	- is set to **RDS**, **ECS**, **DDS**, or **Express**.
 	//
 	// example:
 	//
 	// rm-uf6wjk5*********
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
-	// The location of the database. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value. Valid values:
+	// The location of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter. Valid values:
 	//
 	// - **RDS**
 	//
 	// - **ECS**
 	//
-	// - **Express**: A database connected through a leased line, VPN Gateway, or Smart Gateway.
+	// - **Express**: databases connected over Express Connect circuits, VPN gateways, or Smart Access Gateway (SAG)
 	//
-	// - **Agent**: A database connected through a backup gateway.
+	// - **Agent**: databases connected over backup gateways
 	//
-	// - **DDS**: Cloud MongoDB.
+	// - **DDS**: ApsaraDB for MongoDB
 	//
-	// - **Other**: A database directly connected through IP:Port.
+	// - **Other**: databases connected by using IP addresses and port numbers
 	//
 	// This parameter is required.
 	//
@@ -313,50 +319,54 @@ type ConfigureBackupPlanRequest struct {
 	//
 	// RDS
 	SourceEndpointInstanceType *string `json:"SourceEndpointInstanceType,omitempty" xml:"SourceEndpointInstanceType,omitempty"`
+	// Oracle Home
+	//
 	// example:
 	//
 	// /home/test
 	SourceEndpointOracleHome *string `json:"SourceEndpointOracleHome,omitempty" xml:"SourceEndpointOracleHome,omitempty"`
-	// The Oracle SID name.
+	// The Oracle system identifier (SID).
 	//
-	// > This parameter is required when the database type is Oracle.
+	// > This parameter is required when the database engine is Oracle.
 	//
 	// example:
 	//
 	// test
 	SourceEndpointOracleSID *string `json:"SourceEndpointOracleSID,omitempty" xml:"SourceEndpointOracleSID,omitempty"`
-	// The password.
+	// The password of the database account.
 	//
-	// > This parameter is optional when the database type is **Redis**, or when the database location is **agent*	- and the database type is **SQL Server**. It is required in other scenarios.
+	// > This parameter is not required when the database engine is **Redis**, or when the database is connected over a backup gateway (**agent**) and the database engine is **SQL Server**. This parameter is required in other scenarios.
 	//
 	// example:
 	//
 	// testPassword
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
-	// The database port. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The port number of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
-	// > This parameter is required when **SourceEndpoint**.**InstanceType*	- is **express**, **agent**, **other**, or **ECS**.
+	// > This parameter is required when **SourceEndpoint**.**InstanceType*	- is set to **express**, **agent**, **other**, or **ECS**.
 	//
 	// example:
 	//
 	// 3306
 	SourceEndpointPort *int32 `json:"SourceEndpointPort,omitempty" xml:"SourceEndpointPort,omitempty"`
-	// The region of the database. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) API to get this parameter\\"s value.
+	// The region of the database. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the value of this parameter.
 	//
-	// > This parameter is required when **SourceEndpointInstanceType*	- is RDS, ECS, DDS, Express, or Agent.
+	// > This parameter is required when **SourceEndpointInstanceType*	- is set to RDS, ECS, DDS, Express, or Agent.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
-	// The database account.
+	// The username of the database account.
 	//
-	// > This parameter is optional when the database type is **Redis**, or when the database location is **agent*	- and the database type is **SQL Server**. It is required in other scenarios.
+	// > This parameter is not required when the database engine is **Redis**, or when the database is connected over a backup gateway (**agent**) and the database engine is **SQL Server**. This parameter is required in other scenarios.
 	//
 	// example:
 	//
 	// testRDS
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	// The PEM certificate for the SSL-encrypted connection to the source database.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- ... -----END CERTIFICATE-----

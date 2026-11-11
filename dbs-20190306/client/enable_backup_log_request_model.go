@@ -20,7 +20,7 @@ type iEnableBackupLogRequest interface {
 }
 
 type EnableBackupLogRequest struct {
-  // The ID of the backup plan. Call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
+  // The backup plan ID. Call [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) to obtain this ID.
   // 
   // This parameter is required.
   // 
@@ -28,12 +28,14 @@ type EnableBackupLogRequest struct {
   // 
   // dbstooi******
   BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-  // Any string value.
+  // A client-generated token that ensures the idempotency of the request.
   // 
   // example:
   // 
   // dbs
   ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+  // Specifies whether to enable log backup for MySQL physical backups. Set the value to `true` to enable this feature.
+  // 
   // example:
   // 
   // true

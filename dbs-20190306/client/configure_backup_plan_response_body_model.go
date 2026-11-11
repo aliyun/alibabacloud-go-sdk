@@ -24,7 +24,7 @@ type iConfigureBackupPlanResponseBody interface {
 }
 
 type ConfigureBackupPlanResponseBody struct {
-	// The backup plan ID.
+	// The ID of the backup plan.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type ConfigureBackupPlanResponseBody struct {
 	//
 	// F1FB49D4-B504-47F1-9F43-D7EAB33F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

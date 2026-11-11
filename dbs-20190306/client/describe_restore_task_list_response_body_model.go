@@ -81,7 +81,7 @@ type DescribeRestoreTaskListResponseBody struct {
 	//
 	// 1
 	TotalElements *int32 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	// The total number of pages.
+	// The total number of pages returned.
 	//
 	// example:
 	//

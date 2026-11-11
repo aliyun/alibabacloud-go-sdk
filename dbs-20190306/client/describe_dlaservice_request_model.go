@@ -18,7 +18,7 @@ type iDescribeDLAServiceRequest interface {
 }
 
 type DescribeDLAServiceRequest struct {
-	// The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to obtain the ID of the backup schedule.
+	// The ID of the backup plan. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/2869825.html) operation to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeDLAServiceRequest struct {
 	//
 	// dbstooi01exXXXX
 	BackupPlanId *string `json:"BackupPlanId,omitempty" xml:"BackupPlanId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A custom string.
 	//
 	// example:
 	//

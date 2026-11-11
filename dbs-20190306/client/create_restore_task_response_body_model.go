@@ -24,37 +24,37 @@ type iCreateRestoreTaskResponseBody interface {
 }
 
 type CreateRestoreTaskResponseBody struct {
-	// error code.
+	// The error code.
 	//
 	// example:
 	//
 	// Param.NotFound
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// error message.
+	// The error message.
 	//
 	// example:
 	//
 	// The specified parameter %s value is not valid.
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 60AF7C5D-EF4D-4D48-8FD5-C0823FDF28AC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// restore job ID.
+	// The ID of the restore task.
 	//
 	// example:
 	//
 	// s102h*****
 	RestoreTaskId *string `json:"RestoreTaskId,omitempty" xml:"RestoreTaskId,omitempty"`
-	// success.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
