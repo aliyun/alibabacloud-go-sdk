@@ -44,68 +44,100 @@ type iInvokeAgentResponseBody interface {
 }
 
 type InvokeAgentResponseBody struct {
+	// The error code for the RUN_ERROR event.
+	//
 	// example:
 	//
 	// InternalError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The tool output text for the TOOL_CALL_RESULT event. The text may be truncated.
+	//
 	// example:
 	//
 	// done
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The incremental fragment of text, reasoning, or tool parameters. Fragments with the same ID are concatenated in order.
+	//
 	// example:
 	//
-	// 你好
+	// Hello
 	Delta *string `json:"delta,omitempty" xml:"delta,omitempty"`
+	// The error description for the RUN_ERROR event.
+	//
 	// example:
 	//
-	// 请求失败
+	// Request failed
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The ID of the message to which the text, reasoning, or tool result belongs.
+	//
 	// example:
 	//
 	// m-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	// The name of the CUSTOM extension event, such as analysis_result.
+	//
 	// example:
 	//
 	// analysis_result
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The completion reason for the RUN_FINISHED event. A value of success indicates normal completion, and interrupt indicates waiting for a response.
+	//
 	// example:
 	//
 	// {"type":"success"}
 	Outcome *InvokeAgentResponseBodyOutcome `json:"outcome,omitempty" xml:"outcome,omitempty" type:"Struct"`
+	// The optional parent message ID for the TOOL_CALL_START event.
+	//
 	// example:
 	//
 	// m-1
 	ParentMessageId *string `json:"parentMessageId,omitempty" xml:"parentMessageId,omitempty"`
+	// The role of the message. The role is assistant for text messages and tool for tool results.
+	//
 	// example:
 	//
 	// assistant
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The run ID of the current run for RUN_STARTED and RUN_FINISHED events.
+	//
 	// example:
 	//
 	// r-1
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
+	// The thread snapshot for the STATE_SNAPSHOT event, including sessionId and requestId.
+	//
 	// example:
 	//
 	// {"sessionId":"abcdef0123456789abcdef0123456789","requestId":"req-1"}
 	Snapshot interface{} `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
+	// The thread ID for RUN_STARTED and RUN_FINISHED events. It is consistent with the request and the thread snapshot.
+	//
 	// example:
 	//
 	// abcdef0123456789abcdef0123456789
 	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// The tool invoke ID. It associates TOOL_CALL_START/ARGS/END/RESULT events with approval interrupts.
+	//
 	// example:
 	//
 	// call-1
 	ToolCallId *string `json:"toolCallId,omitempty" xml:"toolCallId,omitempty"`
+	// The name of the tool for the TOOL_CALL_START event.
+	//
 	// example:
 	//
 	// example_tool
 	ToolCallName *string `json:"toolCallName,omitempty" xml:"toolCallName,omitempty"`
+	// The event type of the SSE data object. For the required fields of each event type, see the response description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RUN_STARTED
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The extension value of the CUSTOM event. It can be any JSON object or null.
+	//
 	// example:
 	//
 	// {"reference":null,"actions":[],"messageId":null}
@@ -274,10 +306,14 @@ func (s *InvokeAgentResponseBody) Validate() error {
 }
 
 type InvokeAgentResponseBodyOutcome struct {
+	// The list of interrupts waiting for a response. This field appears only when outcome.type is interrupt and contains at least one item.
+	//
 	// example:
 	//
 	// [{"id":"i-1","reason":"tool_call_approve","toolCallId":"call-1"}]
 	Interrupts []*InvokeAgentResponseBodyOutcomeInterrupts `json:"interrupts,omitempty" xml:"interrupts,omitempty" type:"Repeated"`
+	// The outcome type. A value of success indicates normal completion. A value of interrupt indicates waiting for a response, in which case the interrupts array contains at least one item.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -326,34 +362,48 @@ func (s *InvokeAgentResponseBodyOutcome) Validate() error {
 }
 
 type InvokeAgentResponseBodyOutcomeInterrupts struct {
+	// The optional expiration time string of the interrupt. This field is not output for current tool approvals.
+	//
 	// example:
 	//
 	// 2026-11-04T00:00:00Z
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
+	// The ID of the interrupt. It is used as resume[].interruptId when resuming the run.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The approval description or follow-up question text displayed to the user.
+	//
 	// example:
 	//
-	// 是否执行？
+	// Proceed with execution?
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The optional extension information of the interrupt. It cannot replace tool events.
+	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// The reason for the interrupt. The value is tool_call_approve for tool approval and ask_human for follow-up questions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tool_call_approve
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// The JSON Schema for the response. Tool approval requires decision=yes/no, and follow-up questions use strings.
+	//
 	// example:
 	//
 	// {"type":"object","properties":{"decision":{"type":"string","enum":["yes","no"]}},"required":["decision"]}
 	ResponseSchema map[string]interface{} `json:"responseSchema,omitempty" xml:"responseSchema,omitempty"`
+	// The optional associated tool invoke ID. It is the same as the toolCallId of the preceding TOOL_CALL_START event.
+	//
 	// example:
 	//
 	// call-1

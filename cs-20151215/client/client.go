@@ -6778,6 +6778,72 @@ func (client *Client) GrantPermissions(uid *string, request *GrantPermissionsReq
 
 // Summary:
 //
+// 集群休眠
+//
+// @param request - HibernateClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HibernateClusterResponse
+func (client *Client) HibernateClusterWithOptions(clusterId *string, request *HibernateClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *HibernateClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("HibernateCluster"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/hibernate"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &HibernateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群休眠
+//
+// @param request - HibernateClusterRequest
+//
+// @return HibernateClusterResponse
+func (client *Client) HibernateCluster(clusterId *string, request *HibernateClusterRequest) (_result *HibernateClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &HibernateClusterResponse{}
+	_body, _err := client.HibernateClusterWithOptions(clusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // To enhance Kubernetes capabilities, ACK clusters support various components, such as managed core components, and application, logging and monitoring, networking, storage, and security components. You can call the InstallClusterAddons operation to install components by specifying the component name and version.
 //
 // @param request - InstallClusterAddonsRequest
@@ -6913,11 +6979,11 @@ func (client *Client) InstallNodePoolComponents(clusterId *string, nodePoolId *s
 
 // Summary:
 //
-// 发起智能助手会话运行（AG-UI 协议）
+// Initiates an intelligent assistant session run over the AG-UI protocol.
 //
 // Description:
 //
-// 独立的原生 AG-UI 接口，成功建流后返回 text/event-stream。
+// The standalone native AG-UI API that returns a text/event-stream response upon successful stream establishment.
 //
 // @param request - InvokeAgentRequest
 //
@@ -6934,11 +7000,11 @@ func (client *Client) InvokeAgentWithSSE(request *InvokeAgentRequest, headers ma
 
 // Summary:
 //
-// 发起智能助手会话运行（AG-UI 协议）
+// Initiates an intelligent assistant session run over the AG-UI protocol.
 //
 // Description:
 //
-// 独立的原生 AG-UI 接口，成功建流后返回 text/event-stream。
+// The standalone native AG-UI API that returns a text/event-stream response upon successful stream establishment.
 //
 // @param request - InvokeAgentRequest
 //
@@ -7017,11 +7083,11 @@ func (client *Client) InvokeAgentWithOptions(request *InvokeAgentRequest, header
 
 // Summary:
 //
-// 发起智能助手会话运行（AG-UI 协议）
+// Initiates an intelligent assistant session run over the AG-UI protocol.
 //
 // Description:
 //
-// 独立的原生 AG-UI 接口，成功建流后返回 text/event-stream。
+// The standalone native AG-UI API that returns a text/event-stream response upon successful stream establishment.
 //
 // @param request - InvokeAgentRequest
 //
@@ -11618,6 +11684,72 @@ func (client *Client) UpgradeClusterNodepool(ClusterId *string, NodepoolId *stri
 	headers := make(map[string]*string)
 	_result = &UpgradeClusterNodepoolResponse{}
 	_body, _err := client.UpgradeClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群唤醒
+//
+// @param request - WakeUpClusterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WakeUpClusterResponse
+func (client *Client) WakeUpClusterWithOptions(clusterId *string, request *WakeUpClusterRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *WakeUpClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("WakeUpCluster"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/wakeUp"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &WakeUpClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 集群唤醒
+//
+// @param request - WakeUpClusterRequest
+//
+// @return WakeUpClusterResponse
+func (client *Client) WakeUpCluster(clusterId *string, request *WakeUpClusterRequest) (_result *WakeUpClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &WakeUpClusterResponse{}
+	_body, _err := client.WakeUpClusterWithOptions(clusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
