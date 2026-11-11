@@ -22,17 +22,17 @@ type iListTransitRouterRouteTablesResponseBody interface {
 }
 
 type ListTransitRouterRouteTablesResponseBody struct {
-	// The number of entries per page when entries are returned by page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query exists.
+	// - If **NextToken*	- is empty, no next query is to be sent.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- returns a value, the value is the token for the next query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListTransitRouterRouteTablesResponseBody struct {
 	//
 	// 82678F4A-C9F7-4CC1-8BF0-D619A63BFC57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *ListTransitRouterRouteTablesResponseBody) Validate() error {
 type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	// The time when the route table was created.
 	//
-	// The time is displayed in UTC in the YYYY-MM-DDThh:mmZ format.
+	// The time is displayed in ISO 8601 standard format in UTC. Format: YYYY-MM-DDThh:mmZ.
 	//
 	// example:
 	//
 	// 2021-03-15T09:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The region ID of the Enterprise Edition transit router instance.
+	// The region ID of the Enterprise Edition transit router.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	RouteTableOptions *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions `json:"RouteTableOptions,omitempty" xml:"RouteTableOptions,omitempty" type:"Struct"`
 	// The list of tags.
 	Tags []*ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The transit router instance ID.
+	// The instance ID of the transit router, which is used to forward routing information.
 	//
 	// example:
 	//
@@ -165,11 +165,11 @@ type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables struct {
 	TransitRouterRouteTableName *string `json:"TransitRouterRouteTableName,omitempty" xml:"TransitRouterRouteTableName,omitempty"`
 	// The status of the route table.
 	//
-	// - **Creating**: being created.
+	// - **Creating**: The route table is being created.
 	//
-	// - **Deleting**: being deleted.
+	// - **Deleting**: The route table is being deleted.
 	//
-	// - **Active**: active.
+	// - **Active**: The route table is available.
 	//
 	// example:
 	//
@@ -304,11 +304,11 @@ func (s *ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTables) Valid
 }
 
 type ListTransitRouterRouteTablesResponseBodyTransitRouterRouteTablesRouteTableOptions struct {
-	// Multi-region equal-cost multi-path (ECMP) routing. Valid values:
+	// The multi-region equal-cost multi-path (ECMP) routing feature. Valid values:
 	//
-	// - **disable**: Disables multi-region ECMP routing. After multi-region ECMP routing is disabled, routes with the same prefix learned from different regions select the transit router (TR) with the smallest Region ID (sorted alphabetically) as the next hop when other route attributes are the same. This changes the traffic latency and bandwidth consumed between different regions. Make sure that you fully evaluate the impact before disabling this feature.
+	// - **disable**: disables multi-region ECMP routing. After you disable this feature, if routes with the same prefix are learned from different regions and have the same route attributes, the transit router with the smallest region ID (in alphabetical order) is preferred as the next hop. This changes the traffic latency and the bandwidth consumed between regions. Make sure that you fully evaluate the impact before you disable this feature.
 	//
-	// - **enable**: Enables multi-region ECMP routing. After multi-region ECMP routing is enabled, routes with the same prefix learned from different regions form ECMP routes when other route attributes are the same. This changes the traffic latency and bandwidth consumed between different regions. Make sure that you fully evaluate the impact before enabling this feature.
+	// - **enable**: enables multi-region ECMP routing. After you enable this feature, if routes with the same prefix are learned from different regions and have the same route attributes, ECMP routing is formed. This changes the traffic latency and the bandwidth consumed between regions. Make sure that you fully evaluate the impact before you enable this feature.
 	//
 	// example:
 	//

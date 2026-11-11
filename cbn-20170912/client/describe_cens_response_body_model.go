@@ -23,13 +23,13 @@ type iDescribeCensResponseBody interface {
 
 type DescribeCensResponseBody struct {
 	Cens *DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Struct"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query.
+	// The number of entries returned per page during paging in a paged query.
 	//
 	// example:
 	//

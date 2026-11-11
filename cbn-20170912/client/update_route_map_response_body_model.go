@@ -14,7 +14,7 @@ type iUpdateRouteMapResponseBody interface {
 }
 
 type UpdateRouteMapResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

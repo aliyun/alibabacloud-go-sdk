@@ -34,7 +34,7 @@ type iResolveAndRouteServiceInCenRequest interface {
 }
 
 type ResolveAndRouteServiceInCenRequest struct {
-	// The list of region IDs that access the cloud service.
+	// The list of region IDs from which the cloud service is accessed.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	//
 	// cn-hangzhou
 	AccessRegionIds []*string `json:"AccessRegionIds,omitempty" xml:"AccessRegionIds,omitempty" type:"Repeated"`
-	// The CEN instance ID.
+	// The instance ID of the CEN.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type ResolveAndRouteServiceInCenRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the cloud service.
 	//
-	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
+	// The description can be empty or 1 to 256 characters in length. It cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IP address or CIDR block of the cloud service.
 	//
-	// > Cloud services typically use multiple IP addresses or CIDR blocks. Call this operation repeatedly to add all IP addresses or CIDR blocks of the cloud service.
+	// > Typically, a cloud service uses multiple IP addresses or CIDR blocks. Call this operation multiple times to add all IP addresses or CIDR blocks of the cloud service.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	//
 	// 100.118.28.0/24
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The region ID of the cloud service.
+	// The ID of the region where the cloud service is deployed.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ResolveAndRouteServiceInCenRequest struct {
 	//
 	// cn-hangzhou
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The VPC-connected instance ID associated with the cloud service.
+	// The instance ID of the VPC-connected instance associated with the cloud service.
 	//
 	// This parameter is required.
 	//

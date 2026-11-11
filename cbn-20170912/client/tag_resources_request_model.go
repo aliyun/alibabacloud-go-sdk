@@ -30,15 +30,13 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource instance.
-	//
-	// This parameter is not required when the resource type is Cen or BandwidthPackage. This parameter is required for all other resource types.
+	// The region ID of the resource. This parameter is not required when the resource type is Cen or BandwidthPackage, but is required for other resource types.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resources.
+	// The list of resources.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +50,7 @@ type TagResourcesRequest struct {
 	//
 	// **Cen**: CEN instance.
 	//
-	// **BandwidthPackage**: bandwidth package instance.
+	// **BandwidthPackage**: bandwidth plan instance.
 	//
 	// **TransitRouter**: transit router instance.
 	//
@@ -60,7 +58,7 @@ type TagResourcesRequest struct {
 	//
 	// **TransitRouterVbrAttachment**: VBR connection instance.
 	//
-	// **TransitRouterPeerAttachment**: inter-region connection instance.
+	// **TransitRouterPeerAttachment**: cross-region connection instance.
 	//
 	// **TransitRouterVpnAttachment**: VPN connection instance.
 	//
@@ -76,7 +74,7 @@ type TagResourcesRequest struct {
 	//
 	// cen
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag list.
+	// The list of tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -176,21 +174,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key.
-	//
-	// You can specify multiple tag keys. Valid values of **N**: **1*	- to **20**.
-	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key. You can specify multiple tag keys. Valid values of **N**: **1*	- to **20**. The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
-	//
-	// Each tag key corresponds to one tag value. Valid values of **N**: **1*	- to **20**.
-	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value. Each tag key corresponds to a tag value. Valid values of **N**: **1*	- to **20**. The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

@@ -28,11 +28,11 @@ type ListRouteMapsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query is available.
+	// - If NextToken is empty, no subsequent query is to be sent.
 	//
-	// - If **NextToken*	- returns a value, the value is the token for the next query.
+	// - If NextToken is returned, the value indicates the token used to start the next query.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type ListRouteMapsResponseBodyRouteMaps struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The direction of the route map. Valid values:
 	//
-	// - Inbound: inbound.
+	// - **Inbound**: inbound.
 	//
-	// - Outbound: outbound.
+	// - **Outbound**: outbound.
 	//
 	// example:
 	//
@@ -173,13 +173,13 @@ type ListRouteMapsResponseBodyRouteMaps struct {
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
 	// The status of the route map. Valid values:
 	//
-	// - **Creating**: The route map is being created.
+	// - **Creating**: creating.
 	//
-	// - **Updating**: The route map is being updated.
+	// - **Updating**: updating.
 	//
-	// - **Active**: The route map is available.
+	// - **Active**: active.
 	//
-	// - **Deleting**: The route map is being deleted.
+	// - **Deleting**: deleting.
 	//
 	// example:
 	//

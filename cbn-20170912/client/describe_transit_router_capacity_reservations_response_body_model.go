@@ -107,13 +107,13 @@ func (s *DescribeTransitRouterCapacityReservationsResponseBody) Validate() error
 }
 
 type DescribeTransitRouterCapacityReservationsResponseBodyDeploymentSets struct {
-	// The instance ID of the deployment set configured in the specified active zone of the transit router, which handles forward and routing tasks.
+	// The instance ID of the deployment set configured in the specified active zone of the transit router for forward routing.
 	//
 	// example:
 	//
 	// ds-badxcs*****
 	DeploymentSetID *string `json:"DeploymentSetID,omitempty" xml:"DeploymentSetID,omitempty"`
-	// The zone for which you want to modify the deployment set of the resource reservation.
+	// The zone for which the deployment set of the resource reservation needs to be modified.
 	//
 	// - To cancel the deployment set, specify the zone and leave the deployment set instance ID empty.
 	//
@@ -154,9 +154,9 @@ func (s *DescribeTransitRouterCapacityReservationsResponseBodyDeploymentSets) Va
 }
 
 type DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacities struct {
-	// The reserved capacity information for the specified zone in the resource reservation.
+	// The reserved capacity information of the specified zone for the resource reservation.
 	DataProcessGbps *DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesDataProcessGbps `json:"DataProcessGbps,omitempty" xml:"DataProcessGbps,omitempty" type:"Struct"`
-	// The status information of the specified zone in the resource reservation.
+	// The status information of the specified zone for the resource reservation.
 	State *DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesState `json:"State,omitempty" xml:"State,omitempty" type:"Struct"`
 	// The ID of the specified zone for the resource reservation.
 	//
@@ -216,19 +216,19 @@ func (s *DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRout
 }
 
 type DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesDataProcessGbps struct {
-	// The effective reserved value for the specified zone in the resource reservation.
+	// The effective reserved value of the specified zone for the resource reservation.
 	//
-	// - The effective reserved value refers to the current billed value for the resource reservation.
+	// - The effective reserved value refers to the current billed value of the resource reservation.
 	//
 	// example:
 	//
 	// 100
 	Effective *int64 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The target reserved value for the specified active zone in the resource reservation.
+	// The target reserved value of the specified zone for the resource reservation.
 	//
-	// - In scenarios where you decrease the quota, the change takes effect in the next month, and the effective reserved value is updated in synchronization.
+	// - When you decrease the quota, the change takes effect in the next month, and the active reserved value is updated in synchronization.
 	//
-	// - Upgrade and initial reservation scenarios require spooling by Alibaba Cloud and take effect immediately after the spooling is complete.
+	// - Upgrades and initial reservations require spooling by Alibaba Cloud and take effect immediately after the spooling is complete.
 	//
 	// example:
 	//
@@ -267,7 +267,7 @@ func (s *DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRout
 }
 
 type DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCapacitiesState struct {
-	// The reason for failure when the reservation status is ProvisionFailed.
+	// The reason for the failure when the reservation status is ProvisionFailed.
 	//
 	// - For example, Reservation.InsufficientCapacity indicates that resources are insufficient to meet the target reserved value.
 	//
@@ -275,9 +275,9 @@ type DescribeTransitRouterCapacityReservationsResponseBodyMinimumTransitRouterCa
 	//
 	// Reservation.InsufficientCapacity
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The resource reservation status. Valid values:
+	// The resource reservation status.
 	//
-	// - Pending: The initial reservation is initiated and is pending processing by Alibaba Cloud.
+	// - Pending: The initial reservation is initiated and is waiting to be processed by Alibaba Cloud.
 	//
 	// - Provisioning: Alibaba Cloud is processing the reservation request.
 	//

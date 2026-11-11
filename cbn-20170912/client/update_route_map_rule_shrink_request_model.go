@@ -30,7 +30,7 @@ type iUpdateRouteMapRuleShrinkRequest interface {
 type UpdateRouteMapRuleShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
@@ -44,13 +44,13 @@ type UpdateRouteMapRuleShrinkRequest struct {
 	//
 	// Matches production prefixes from on-prem and sets a higher local preference.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to precheck only this request. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - **true**: prechecks the request without updating the route map rule. The system checks whether required parameters are set, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: prechecks the request without updating the route map rule. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
 	// - **false*	- (default): sends the request. If the request passes the precheck, the route map rule is updated.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The match conditions of the route map rule. The system performs the actions defined in **SetActions*	- only when a route meets all the match conditions defined in this parameter.
+	// The match conditions of the route map rule. The system executes the actions defined in **SetActions*	- only after a route meets all the match conditions defined in this parameter.
 	//
 	// if can be null:
 	// false
@@ -73,7 +73,7 @@ type UpdateRouteMapRuleShrinkRequest struct {
 	//
 	// rmr-0a1b2c3d4e5f6a7b8
 	RouteMapRuleId *string `json:"RouteMapRuleId,omitempty" xml:"RouteMapRuleId,omitempty"`
-	// The actions to be performed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
+	// The actions to be executed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
 	//
 	// if can be null:
 	// false

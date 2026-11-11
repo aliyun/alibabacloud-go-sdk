@@ -30,7 +30,7 @@ type iCreateRouteMapRuleShrinkRequest interface {
 type CreateRouteMapRuleShrinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can generate the parameter value on your client. Make sure that the token is unique across different requests. The client token supports only ASCII characters.
+	// You can generate the value from your client and ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
@@ -44,17 +44,17 @@ type CreateRouteMapRuleShrinkRequest struct {
 	//
 	// Matches production prefixes from on-prem and sets a higher local preference.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform a dry run of the request. Valid values:
 	//
-	// - **true**: Prechecks the request without creating the route map rule. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without creating the route map rule. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - **false*	- (default): Sends the request. After the request passes the precheck, the route map rule is created.
+	// - **false*	- (default): performs a normal request. If the request passes the dry run, the route map rule is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The match conditions of the route map rule. The system executes the actions defined in **SetActions*	- only when a route meets all the match conditions defined in this parameter.
+	// The match conditions of the route map rule. The system performs the actions defined in **SetActions*	- only when a route meets all the match conditions defined in this parameter.
 	MatchConditionsShrink *string `json:"MatchConditions,omitempty" xml:"MatchConditions,omitempty"`
 	// The name of the rule for easy identification. The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
@@ -78,7 +78,7 @@ type CreateRouteMapRuleShrinkRequest struct {
 	//
 	// rm-0a1b2c3d4e5f6a7b8
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	// The actions to execute for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
+	// The actions to be performed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
 	SetActionsShrink *string `json:"SetActions,omitempty" xml:"SetActions,omitempty"`
 }
 

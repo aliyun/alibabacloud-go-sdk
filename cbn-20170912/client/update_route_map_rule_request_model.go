@@ -30,7 +30,7 @@ type iUpdateRouteMapRuleRequest interface {
 type UpdateRouteMapRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+	// You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
@@ -44,13 +44,13 @@ type UpdateRouteMapRuleRequest struct {
 	//
 	// Matches production prefixes from on-prem and sets a higher local preference.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to precheck only this request. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// - **true**: prechecks the request without updating the route map rule. The system checks whether required parameters are set, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// - **true**: prechecks the request without updating the route map rule. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
 	// - **false*	- (default): sends the request. If the request passes the precheck, the route map rule is updated.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The match conditions of the route map rule. The system performs the actions defined in **SetActions*	- only when a route meets all the match conditions defined in this parameter.
+	// The match conditions of the route map rule. The system executes the actions defined in **SetActions*	- only after a route meets all the match conditions defined in this parameter.
 	//
 	// if can be null:
 	// false
@@ -73,7 +73,7 @@ type UpdateRouteMapRuleRequest struct {
 	//
 	// rmr-0a1b2c3d4e5f6a7b8
 	RouteMapRuleId *string `json:"RouteMapRuleId,omitempty" xml:"RouteMapRuleId,omitempty"`
-	// The actions to be performed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
+	// The actions to be executed for the route map rule. After a route meets all the match conditions defined in **MatchConditions**, the system processes the route based on the actions defined in this parameter.
 	//
 	// if can be null:
 	// false
@@ -175,29 +175,29 @@ func (s *UpdateRouteMapRuleRequest) Validate() error {
 }
 
 type UpdateRouteMapRuleRequestMatchConditions struct {
-	// The route prefix list for fuzzy matching. You can specify up to 64 CIDR blocks.
+	// The route prefix list for fuzzy match. You can enter up to 64 IP address prefixes.
 	//
-	// A match is successful if the route prefix in the match condition contains the route prefix of the route being matched.
+	// A match is successful if the route prefix in the match condition contains the route prefix of the matched route.
 	//
-	// For example, a policy defined with 10.0.0.0/8 can fuzzy match the 10.10.10.0/24 route.
+	// For example, a policy defined with 10.0.0.0/8 can fuzzy match a route with the prefix 10.10.10.0/24.
 	//
-	// The CIDR blocks use the CIDR format and support both IPv4 and IPv6.
+	// IP address prefixes use the CIDR format and support IPv4 and IPv6.
 	//
-	// This parameter is mutually exclusive with **AddressPrefixesMatch**. You cannot specify both parameters at the same time.
+	// This parameter is mutually exclusive with **AddressPrefixesMatch*	- and cannot be specified at the same time.
 	AddressPrefixesInclude []*string `json:"AddressPrefixesInclude,omitempty" xml:"AddressPrefixesInclude,omitempty" type:"Repeated"`
-	// The route prefix list for exact matching. You can specify up to 64 CIDR blocks.
+	// The route prefix list for exact match. You can enter up to 64 IP address prefixes.
 	//
-	// A match is successful only if the route prefix in the match condition is identical to the route prefix of the route being matched.
+	// A match is successful only if the route prefix in the match condition is exactly the same as the route prefix of the matched route.
 	//
-	// For example, a policy defined with 10.0.0.0/8 can exactly match only the 10.0.0.0/8 route.
+	// For example, a policy defined with 10.0.0.0/8 can only exactly match a route with the prefix 10.0.0.0/8.
 	//
-	// The CIDR blocks use the CIDR format and support both IPv4 and IPv6.
+	// IP address prefixes use the CIDR format and support IPv4 and IPv6.
 	//
-	// This parameter is mutually exclusive with **AddressPrefixesInclude**. You cannot specify both parameters at the same time.
+	// This parameter is mutually exclusive with **AddressPrefixesInclude*	- and cannot be specified at the same time.
 	AddressPrefixesMatch []*string `json:"AddressPrefixesMatch,omitempty" xml:"AddressPrefixesMatch,omitempty" type:"Repeated"`
 	// The list of AS paths for fuzzy match. You can enter up to 64 AS numbers.
 	//
-	// A route is considered a match if the AS path in the match condition overlaps with the AS path of the matched route.
+	// A match is successful if the AS path in the match condition overlaps with the AS path of the matched route.
 	//
 	// This parameter is mutually exclusive with **AsPathsMatch*	- and cannot be specified at the same time.
 	//
@@ -205,7 +205,7 @@ type UpdateRouteMapRuleRequestMatchConditions struct {
 	AsPathsInclude []*int64 `json:"AsPathsInclude,omitempty" xml:"AsPathsInclude,omitempty" type:"Repeated"`
 	// The list of AS paths for exact match. You can enter up to 64 AS numbers.
 	//
-	// A route is considered a match only when the AS path in the match condition is exactly the same as the AS path of the matched route.
+	// A match is successful only if the AS path in the match condition is exactly the same as the AS path of the matched route.
 	//
 	// This parameter is mutually exclusive with **AsPathsInclude*	- and cannot be specified at the same time.
 	//
@@ -213,9 +213,9 @@ type UpdateRouteMapRuleRequestMatchConditions struct {
 	AsPathsMatch []*int64 `json:"AsPathsMatch,omitempty" xml:"AsPathsMatch,omitempty" type:"Repeated"`
 	// The community set for fuzzy match. You can enter up to 64 communities.
 	//
-	// A route is considered a match if the community in the match condition overlaps with the community of the matched route.
+	// A match is successful if the community in the match condition overlaps with the community of the matched route.
 	//
-	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
 	//
 	// This parameter is mutually exclusive with **CommunitySetMatch*	- and cannot be specified at the same time.
 	//
@@ -223,29 +223,29 @@ type UpdateRouteMapRuleRequestMatchConditions struct {
 	CommunitySetInclude []*string `json:"CommunitySetInclude,omitempty" xml:"CommunitySetInclude,omitempty" type:"Repeated"`
 	// The community set for exact match. You can enter up to 64 communities.
 	//
-	// A route is considered a match only when the community in the match condition is exactly the same as the community of the matched route.
+	// A match is successful only if the community in the match condition is exactly the same as the community of the matched route.
 	//
-	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
 	//
 	// This parameter is mutually exclusive with **CommunitySetInclude*	- and cannot be specified at the same time.
 	//
 	// > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
 	CommunitySetMatch []*string `json:"CommunitySetMatch,omitempty" xml:"CommunitySetMatch,omitempty" type:"Repeated"`
-	// The list of destination instance IDs to be matched. You can enter the following types of instance IDs:
+	// The list of destination instance IDs to be matched. You can enter instance IDs of the following types:
 	//
-	// - Virtual private cloud (VPC) instance IDs
+	// - Virtual Private Cloud (VPC) instance IDs
 	//
-	// - Virtual border router (VBR) instance IDs
+	// - Virtual Border Router (VBR) instance IDs
 	//
 	// You can enter up to 64 instance IDs.
 	//
 	// > The list of destination instance IDs takes effect only when the direction of the route map is outbound.
 	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to use the exclusion match mode for the list of destination instance IDs. Valid values:
+	// Specifies whether to use the exclude match mode for the list of destination instance IDs. Valid values:
 	//
-	// - **false*	- (default): no. A route is considered a match if the destination instance ID of the route is in **DestinationInstanceIds.N**.
+	// - **false*	- (default): no. A match is successful if the destination instance ID propagated by the route is included in **DestinationInstanceIds.N**.
 	//
-	// - **true**: yes. A route is considered a match if the destination instance ID of the route is not in **DestinationInstanceIds.N**.
+	// - **true**: yes. A match is successful if the destination instance ID propagated by the route is not included in **DestinationInstanceIds.N**.
 	//
 	// example:
 	//
@@ -280,30 +280,30 @@ type UpdateRouteMapRuleRequestMatchConditions struct {
 	//
 	// IPv4
 	MatchAddressType *string `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
-	// The list of route types to match. The following route types are supported:
+	// The list of route types to be matched. The following route types are supported:
 	//
 	// - **System**: system route, which is automatically generated by the system.
 	//
-	// - **Custom**: custom route, which is manually added by users.
+	// - **Custom**: custom route, which is manually added by the user.
 	//
 	// - **BGP**: BGP route, which is propagated through the BGP routable protocol.
 	//
-	// You can specify multiple route types.
+	// You can enter multiple route types.
 	RouteTypes []*string `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Repeated"`
-	// The list of source instance IDs to be matched. You can enter the following types of instance IDs:
+	// The list of source instance IDs to be matched. You can enter instance IDs of the following types:
 	//
-	// - Virtual private cloud (VPC) instance IDs
+	// - Virtual Private Cloud (VPC) instance IDs
 	//
-	// - Virtual border router (VBR) instance IDs
+	// - Virtual Border Router (VBR) instance IDs
 	//
 	//
 	// You can enter up to 64 instance IDs.
 	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to use the exclusion match mode for the list of source instance IDs. Valid values:
+	// Specifies whether to use the exclude match mode for the list of source instance IDs. Valid values:
 	//
-	// - **false*	- (default): no. A route is considered a match if the source instance ID of the route is in **SourceInstanceIds.N**.
+	// - **false*	- (default): no. A match is successful if the source instance ID propagated by the route is included in **SourceInstanceIds.N**.
 	//
-	// - **true**: yes. A route is considered a match if the source instance ID of the route is not in **SourceInstanceIds.N**.
+	// - **true**: yes. A match is successful if the source instance ID propagated by the route is not included in **SourceInstanceIds.N**.
 	//
 	// example:
 	//
@@ -499,41 +499,41 @@ func (s *UpdateRouteMapRuleRequestMatchConditions) Validate() error {
 }
 
 type UpdateRouteMapRuleRequestSetActions struct {
-	// The AS path to prepend when the regional gateway accepts or executes a publish route entry.
+	// The AS path to be prepended when the regional gateway receives or publishes a route.
 	//
-	// This parameter is mutually exclusive with **AsPathReplace**. You cannot specify both parameters at the same time.
+	// This parameter is mutually exclusive with **AsPathReplace*	- and cannot be specified at the same time.
 	//
-	// This parameter specifies the action to execute after a route meets the match conditions.
+	// This parameter specifies the action to be executed after a route passes the match conditions.
 	AsPathPrepend []*int64 `json:"AsPathPrepend,omitempty" xml:"AsPathPrepend,omitempty" type:"Repeated"`
-	// The AS path to use as a replacement when the regional gateway accepts or executes a publish route entry. The original AS path of the route is replaced with the list of AS numbers specified by this parameter.
+	// The AS path to be replaced when the regional gateway receives or publishes a route. The original AS path of the route is replaced with the list of AS numbers specified in this parameter.
 	//
-	// This parameter is mutually exclusive with **AsPathPrepend**. You cannot specify both parameters at the same time.
+	// This parameter is mutually exclusive with **AsPathPrepend*	- and cannot be specified at the same time.
 	//
-	// This parameter specifies the action to execute after a route meets the match conditions.
+	// This parameter specifies the action to be executed after a route passes the match conditions.
 	AsPathReplace []*int64 `json:"AsPathReplace,omitempty" xml:"AsPathReplace,omitempty" type:"Repeated"`
 	// The community set to be added to the route.
 	//
-	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
 	//
 	// This parameter is mutually exclusive with **CommunityReplace*	- and cannot be specified at the same time.
 	//
-	// This parameter specifies the action to be performed after a route meets the match conditions.
+	// This parameter specifies the action to be executed after a route meets the match conditions.
 	//
 	// > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
 	CommunityAdd []*string `json:"CommunityAdd,omitempty" xml:"CommunityAdd,omitempty" type:"Repeated"`
 	// The community set used to replace the original community of the route.
 	//
-	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. The community must comply with RFC 1997. Large communities (RFC 8092) are not supported.
+	// Each community is in the format of n:m, where n and m range from **1*	- to **65535**. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
 	//
 	// This parameter is mutually exclusive with **CommunityAdd*	- and cannot be specified at the same time.
 	//
-	// This parameter specifies the action to be performed after a route meets the match conditions.
+	// This parameter specifies the action to be executed after a route meets the match conditions.
 	//
 	// > Incorrect community configurations may prevent routes from being advertised to the on-premises data center.
 	CommunityReplace []*string `json:"CommunityReplace,omitempty" xml:"CommunityReplace,omitempty" type:"Repeated"`
 	// Policy priority of the associated next route map rule.
 	//
-	// - You can set policy priority of the associated route map rule only when **RouteAction*	- is set to **Permit**. Only the permitted routes continue to match the associated next route map rule.
+	// - You can set policy priority of the associated route map rule only when **RouteAction*	- is set to **Permit**. Only the routes that are permitted can continue to match the associated next route map rule.
 	//
 	// - Policy priority of the associated next route map rule must be lower than that of the current route map rule.
 	//
@@ -541,11 +541,11 @@ type UpdateRouteMapRuleRequestSetActions struct {
 	//
 	// 1
 	NextPriority *int64 `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
-	// The action to be performed after all conditions are met. Valid values:
+	// The policy action after all conditions are met. Valid values:
 	//
-	// - **Permit**: permits the matched route.
+	// - **Permit**: permits the matched routes to pass.
 	//
-	// - **Deny**: denies the matched route.
+	// - **Deny**: denies the matched routes from passing.
 	//
 	// example:
 	//
