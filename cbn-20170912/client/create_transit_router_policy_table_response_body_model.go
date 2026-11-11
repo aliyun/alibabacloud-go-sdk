@@ -16,10 +16,14 @@ type iCreateTransitRouterPolicyTableResponseBody interface {
 }
 
 type CreateTransitRouterPolicyTableResponseBody struct {
+	// The ID of the policy route table.
+	//
 	// example:
 	//
 	// ptbl-44m0p68spvlrqq****
 	PolicyTableId *string `json:"PolicyTableId,omitempty" xml:"PolicyTableId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2BFA6822-240E-4E27-B4C8-AA400EF7474D

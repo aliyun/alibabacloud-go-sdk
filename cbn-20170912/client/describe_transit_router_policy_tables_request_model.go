@@ -15,14 +15,14 @@ type iDescribeTransitRouterPolicyTablesRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *DescribeTransitRouterPolicyTablesRequest
 	GetNextToken() *string
+	SetTag(v []*DescribeTransitRouterPolicyTablesRequestTag) *DescribeTransitRouterPolicyTablesRequest
+	GetTag() []*DescribeTransitRouterPolicyTablesRequestTag
 	SetTransitRouterId(v string) *DescribeTransitRouterPolicyTablesRequest
 	GetTransitRouterId() *string
 }
 
 type DescribeTransitRouterPolicyTablesRequest struct {
-	// The filter conditions.
-	//
-	// You can specify up to 5 filter conditions at a time.
+	// The filter conditions. You can specify up to 5 filter conditions at a time.
 	Filter []*DescribeTransitRouterPolicyTablesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
 	//
@@ -30,16 +30,17 @@ type DescribeTransitRouterPolicyTablesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// - If this is the first query or no subsequent query is required, you do not need to specify this parameter.
+	// If this is your first query or no next query is to be sent, ignore this parameter.
 	//
-	// - If a subsequent query is required, set the value to the NextToken value returned from the previous API call.
+	// If a next query is to be sent, set the value to the NextToken value that is returned from the last API invocation.
 	//
 	// example:
 	//
 	// dd20****
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Tag       []*DescribeTransitRouterPolicyTablesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the Enterprise Edition transit router.
 	//
 	// example:
@@ -68,6 +69,10 @@ func (s *DescribeTransitRouterPolicyTablesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *DescribeTransitRouterPolicyTablesRequest) GetTag() []*DescribeTransitRouterPolicyTablesRequestTag {
+	return s.Tag
+}
+
 func (s *DescribeTransitRouterPolicyTablesRequest) GetTransitRouterId() *string {
 	return s.TransitRouterId
 }
@@ -87,6 +92,11 @@ func (s *DescribeTransitRouterPolicyTablesRequest) SetNextToken(v string) *Descr
 	return s
 }
 
+func (s *DescribeTransitRouterPolicyTablesRequest) SetTag(v []*DescribeTransitRouterPolicyTablesRequestTag) *DescribeTransitRouterPolicyTablesRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeTransitRouterPolicyTablesRequest) SetTransitRouterId(v string) *DescribeTransitRouterPolicyTablesRequest {
 	s.TransitRouterId = &v
 	return s
@@ -102,6 +112,15 @@ func (s *DescribeTransitRouterPolicyTablesRequest) Validate() error {
 			}
 		}
 	}
+	if s.Tag != nil {
+		for _, item := range s.Tag {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -110,7 +129,7 @@ type DescribeTransitRouterPolicyTablesRequestFilter struct {
 	//
 	// PolicyTableId: the ID of the Cloud Enterprise Network (CEN) instance.
 	//
-	// By default, multiple filter conditions are combined with the AND operator. A resource is considered a match only if it meets all the filter conditions.
+	// By default, multiple filter conditions are evaluated by using the AND operator. A result is returned only if all filter conditions are met.
 	//
 	// You can specify up to 5 filter conditions at a time.
 	//
@@ -120,7 +139,7 @@ type DescribeTransitRouterPolicyTablesRequestFilter struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the filter condition.
 	//
-	// Specify the filter value based on the key. You can specify multiple values for a single key. Multiple values are combined with the OR operator. A resource is considered a match if it meets any of the values.
+	// Specify the value based on the key. You can specify multiple values for a key. Multiple values are evaluated by using the OR operator. If one of the values is met, the filter condition is met.
 	//
 	// You can specify up to 5 values for each filter condition.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
@@ -153,5 +172,40 @@ func (s *DescribeTransitRouterPolicyTablesRequestFilter) SetValue(v []*string) *
 }
 
 func (s *DescribeTransitRouterPolicyTablesRequestFilter) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeTransitRouterPolicyTablesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeTransitRouterPolicyTablesRequestTag) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeTransitRouterPolicyTablesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTransitRouterPolicyTablesRequestTag) GetKey() *string {
+	return s.Key
+}
+
+func (s *DescribeTransitRouterPolicyTablesRequestTag) GetValue() *string {
+	return s.Value
+}
+
+func (s *DescribeTransitRouterPolicyTablesRequestTag) SetKey(v string) *DescribeTransitRouterPolicyTablesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeTransitRouterPolicyTablesRequestTag) SetValue(v string) *DescribeTransitRouterPolicyTablesRequestTag {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeTransitRouterPolicyTablesRequestTag) Validate() error {
 	return dara.Validate(s)
 }

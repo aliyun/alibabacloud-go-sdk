@@ -22,15 +22,15 @@ type iDescribeTransitRouterPolicyBasedRoutesResponseBody interface {
 }
 
 type DescribeTransitRouterPolicyBasedRoutesResponseBody struct {
-	// The number of entries returned per page. Default value: **20**.
+	// The number of entries returned on each page. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query is available.
+	// - If **NextToken*	- is empty, no more results are available.
 	//
 	// - If **NextToken*	- returns a value, the value is the token used to start the next query.
 	//
@@ -38,9 +38,9 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBody struct {
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of policy-based route rules.
+	// The policy-based route rules.
 	PolicyBasedRoutes []*DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes `json:"PolicyBasedRoutes,omitempty" xml:"PolicyBasedRoutes,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	//
 	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The description of the policy-based route table.
+	// The description of the policy route table instance.
 	//
 	// example:
 	//
@@ -139,17 +139,17 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port. Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Matches traffic whose port numbers fall within the destination port range. If this parameter is not specified, traffic to any destination port is matched.
+	// Matches traffic whose port number falls within the destination port range. If this parameter is not specified, traffic to any destination port is matched.
 	//
 	// The port range format is described as follows:
 	//
-	// - 80: port 80.
+	// - 80: specifies port 80.
 	//
-	// - 80/80: port 80.
+	// - 80/80: specifies port 80.
 	//
-	// - 1/200: ports 1 to 200.
+	// - 1/200: specifies ports 1 to 200.
 	//
-	// - -1/-1: all ports.
+	// - -1/-1: specifies all ports.
 	//
 	// example:
 	//
@@ -163,11 +163,11 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	DestinationCidr *string `json:"DestinationCidr,omitempty" xml:"DestinationCidr,omitempty"`
 	// The Differentiated Services Code Point (DSCP) value of the traffic packets to match. Valid values: **0*	- to **63**.
 	//
-	// The DSCP value format is described as follows:
+	// The input format is described as follows:
 	//
 	// - 1: matches traffic with a DSCP value of 1.
 	//
-	// - 1/10: matches traffic with DSCP values from 1 to 10.
+	// - 1/10: matches traffic with a DSCP value from 1 to 10.
 	//
 	// - -1/-1: matches traffic with any DSCP value.
 	//
@@ -189,7 +189,7 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	//
 	// pbr-123qwead
 	PolicyBasedRouteId *string `json:"PolicyBasedRouteId,omitempty" xml:"PolicyBasedRouteId,omitempty"`
-	// The instance ID of the policy-based routing table.
+	// The instance ID of the policy routing table.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	PolicyTableId *string `json:"PolicyTableId,omitempty" xml:"PolicyTableId,omitempty"`
 	// The priority of the policy-based route. Valid values: **1*	- to **100**.
 	//
-	// The priority of each policy-based route in a policy-based route table of a transit router must be unique. A smaller value indicates a higher priority.
+	// The priority of each policy-based route in a transit router policy route table must be unique. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -219,17 +219,17 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	SourceCidr *string `json:"SourceCidr,omitempty" xml:"SourceCidr,omitempty"`
 	// The source port. Valid values: **-1*	- or **1*	- to **65535**.
 	//
-	// Matches traffic whose port numbers fall within the source port range. If this parameter is not specified, traffic from any source port is matched.
+	// Matches traffic whose port number falls within the source port range. If this parameter is not specified, traffic from any source port is matched.
 	//
 	// The port range format is described as follows:
 	//
-	// - 80: port 80.
+	// - 80: specifies port 80.
 	//
-	// - 80/80: port 80.
+	// - 80/80: specifies port 80.
 	//
-	// - 1/200: ports 1 to 200.
+	// - 1/200: specifies ports 1 to 200.
 	//
-	// - -1/-1: all ports.
+	// - -1/-1: specifies all ports.
 	//
 	// example:
 	//
@@ -237,17 +237,17 @@ type DescribeTransitRouterPolicyBasedRoutesResponseBodyPolicyBasedRoutes struct 
 	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 	// The status of the policy-based route. Valid values:
 	//
-	// - **Creating**: The policy-based route is being created.
+	// - **Creating**: creating
 	//
-	// - **Active**: The policy-based route is available.
+	// - **Active**: available
 	//
-	// - **Deleting**: The policy-based route is being deleted.
+	// - **Deleting**: deleting
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The destination route table.
+	// The target route table.
 	//
 	// example:
 	//

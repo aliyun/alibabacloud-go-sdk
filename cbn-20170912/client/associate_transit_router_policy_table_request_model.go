@@ -30,7 +30,7 @@ type AssociateTransitRouterPolicyTableRequest struct {
 	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can generate the value from your client. Make sure that the value is unique across different requests. The client token can contain only ASCII characters.
+	// You can generate the value from your client and make sure that the value is unique across different requests. The client token can contain only ASCII characters.
 	//
 	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
@@ -40,9 +40,9 @@ type AssociateTransitRouterPolicyTableRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run on the request. The dry run includes checks on permissions and instance status. Valid values:
 	//
-	// - **false*	- (default): sends a normal request. The system performs the check and directly associates the policy route table if the check passes.
+	// - **false*	- (default): sends a normal request, performs the check, and associates the policy route table if the check passes.
 	//
-	// - **true**: sends a dry run request. The system only performs the check and does not associate the policy route table. Check items include whether required parameters are specified and the request format. If the check fails, an error is returned. If the check passes, the request ID is returned.
+	// - **true**: sends a dry run request, performs only the check, and does not associate the policy route table. The check items include whether required parameters are specified and the request format. If the check fails, an error is returned. If the check passes, the request ID is returned.
 	//
 	// example:
 	//

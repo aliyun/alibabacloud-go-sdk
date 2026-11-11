@@ -28,11 +28,11 @@ type DescribeTransitRouterPolicyTablesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token that is used to retrieve the next page of results. Valid values:
 	//
-	// - If NextToken is empty, no subsequent query is required.
+	// If NextToken is empty, no next query is to be sent.
 	//
-	// - If NextToken is returned, the value indicates the token for the next query.
+	// If NextToken is returned, the value indicates the token that is used to start the next query.
 	//
 	// example:
 	//
@@ -121,11 +121,9 @@ func (s *DescribeTransitRouterPolicyTablesResponseBody) Validate() error {
 }
 
 type DescribeTransitRouterPolicyTablesResponseBodyPolicyTables struct {
-	// The network instance attachments associated with the policy route table.
+	// The attachments associated with the policy route table.
 	Attachments []*string `json:"Attachments,omitempty" xml:"Attachments,omitempty" type:"Repeated"`
-	// The time when the policy route table was created.
-	//
-	// The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+	// The time when the policy route table was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -145,7 +143,7 @@ type DescribeTransitRouterPolicyTablesResponseBodyPolicyTables struct {
 	//
 	// nametest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The policy routing table instance ID.
+	// The ID of the policy route table instance.
 	//
 	// example:
 	//
@@ -169,7 +167,7 @@ type DescribeTransitRouterPolicyTablesResponseBodyPolicyTables struct {
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags added to the policy route table.
+	// The tags that are added to the policy route table.
 	Tags []*DescribeTransitRouterPolicyTablesResponseBodyPolicyTablesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the Enterprise Edition transit router.
 	//

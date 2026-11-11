@@ -24,13 +24,13 @@ type iDescribeTransitRouterPolicyTableAssociationsResponseBody interface {
 type DescribeTransitRouterPolicyTableAssociationsResponseBody struct {
 	// The associate relationships between the policy routing table and network connectivity instances.
 	Associations []*DescribeTransitRouterPolicyTableAssociationsResponseBodyAssociations `json:"Associations,omitempty" xml:"Associations,omitempty" type:"Repeated"`
-	// The number of entries returned per page in a paginated query.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query in a paginated query.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeTransitRouterPolicyTableAssociationsResponseBodyAssociations struct
 	//
 	// tr-attach-123qsrads
 	AttachmentId *string `json:"AttachmentId,omitempty" xml:"AttachmentId,omitempty"`
-	// The instance ID of the policy routing table.
+	// The policy routing table instance ID.
 	//
 	// example:
 	//
@@ -137,11 +137,11 @@ type DescribeTransitRouterPolicyTableAssociationsResponseBodyAssociations struct
 	PolicyTableId *string `json:"PolicyTableId,omitempty" xml:"PolicyTableId,omitempty"`
 	// The status of the association. Valid values:
 	//
-	// - **Active**: Active.
+	// - **Active**: active.
 	//
-	// - **Associating**: Associating.
+	// - **Associating**: associating.
 	//
-	// - **Dissociating**: Dissociating.
+	// - **Dissociating**: dissociating.
 	//
 	// example:
 	//
