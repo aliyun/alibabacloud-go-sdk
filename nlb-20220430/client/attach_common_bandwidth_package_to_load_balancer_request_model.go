@@ -22,7 +22,7 @@ type iAttachCommonBandwidthPackageToLoadBalancerRequest interface {
 }
 
 type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
-	// The ID of the Internet Shared Bandwidth instance.
+	// The ID of the Internet Shared Bandwidth to be associated.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +30,11 @@ type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
 	//
 	// cbwp-bp1pzf0ym72pu3y76****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The client token used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
+	// You can generate the value from your client to ensure that it is unique among different requests. The client token only supports ASCII characters.
 	//
-	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run and does not associate the Internet Shared Bandwidth. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the NLB instance.
+	// The ID of the Network Load Balancer (NLB) instance.
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the Network Load Balancer (NLB) instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query region IDs.
 	//
 	// example:
 	//

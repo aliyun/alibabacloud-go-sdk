@@ -28,17 +28,17 @@ type ListListenerCertificatesResponseBody struct {
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The certificates.
 	Certificates []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The number of entries returned per page. Valid values: **1*	- to **50**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **50**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token for the next query.
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - Leave this parameter empty for the first query or when no subsequent query is required.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - For subsequent queries, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListListenerCertificatesResponseBody struct {
 	//
 	// 2198BD6D-9EBB-5E1C-9C48-E0ABB79CF831
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -134,35 +134,35 @@ func (s *ListListenerCertificatesResponseBody) Validate() error {
 }
 
 type ListListenerCertificatesResponseBodyCertificates struct {
-	// The ID of the certificate. Only one server certificate is supported.
+	// The certificate ID. Only server certificates are supported.
 	//
 	// example:
 	//
 	// 12315790343_166f8204689_1714763408_70998****
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The type of the certificate.
+	// The certificate type.
 	//
 	// example:
 	//
 	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// Indicates whether the certificate is the default certificate of the listener. Valid values:
+	// Specifies whether the certificate is the default certificate for the listener. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The certificate is the default certificate.
 	//
-	// 	- **false**
+	// - **false**: The certificate is an additional certificate.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// Indicates whether the certificate is associated with the listener. Valid values:
+	// The association status between the certificate and the listener. Valid values:
 	//
-	// 	- **Associating**
+	// - **Associating**: The certificate is being associated.
 	//
-	// 	- **Associated**
+	// - **Associated**: The certificate is associated.
 	//
-	// 	- **Diassociating**
+	// - **Diassociating**: The certificate is being dissociated.
 	//
 	// example:
 	//

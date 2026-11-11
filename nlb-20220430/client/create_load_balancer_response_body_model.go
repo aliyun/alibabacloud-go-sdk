@@ -18,19 +18,19 @@ type iCreateLoadBalancerResponseBody interface {
 }
 
 type CreateLoadBalancerResponseBody struct {
-	// The ID of the NLB instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadbalancerId *string `json:"LoadbalancerId,omitempty" xml:"LoadbalancerId,omitempty"`
-	// The ID of the order for the NLB instance.
+	// The order ID of the Network Load Balancing (NLB) instance.
 	//
 	// example:
 	//
 	// 20230000
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

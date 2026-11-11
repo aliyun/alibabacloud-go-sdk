@@ -44,37 +44,37 @@ type iListLoadBalancersRequest interface {
 }
 
 type ListLoadBalancersRequest struct {
-	// The IP version of the NLB instance. Valid values:
+	// The protocol version. Valid values:
 	//
-	// 	- **ipv4**: IPv4
+	// - **ipv4**: IPv4.
 	//
-	// 	- **DualStack**: dual-stack
+	// - **DualStack**: dual-stack.
 	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The type of IPv4 address used by the NLB instance. Valid values:
+	// The IPv4 address type of the NLB instance. Valid values:
 	//
-	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance can be accessed over the Internet.
+	// - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance is accessible over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the VPC where the NLB instance is deployed.
+	// - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance is accessible only within the internal network environment of the VPC where the load balancing instance is deployed.
 	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The domain name of the NLB instance.
+	// The DNS domain name.
 	//
 	// example:
 	//
 	// nlb-wb7r6dlwetvt5j****.cn-hangzhou.nlb.aliyuncs.com
 	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	// The type of IPv6 address used by the NLB instance. Valid values:
+	// The IPv6 address type of the NLB instance. Valid values:
 	//
-	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance can be accessed over the Internet.
+	// - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance is accessible over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the VPC where the NLB instance is deployed.
+	// - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance is accessible only within the internal network environment of the VPC where the load balancing instance is deployed.
 	//
 	// example:
 	//
@@ -82,59 +82,59 @@ type ListLoadBalancersRequest struct {
 	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
 	// The business status of the NLB instance. Valid values:
 	//
-	// 	- **Abnormal**: The NLB instance is not working as expected.
+	// - **Abnormal**: The instance is in an abnormal state.
 	//
-	// 	- **Normal**: The NLB instance is working as expected.
+	// - **Normal**: The instance is in a normal state.
 	//
 	// example:
 	//
 	// Normal
 	LoadBalancerBusinessStatus *string `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
-	// The NLB instance IDs. You can specify up to 20 IDs in each call.
+	// The IDs of the NLB instances. You can query up to 20 instances at a time.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// The names of the NLB instances. You can specify up to 20 names in each call.
+	// The names of the NLB instances. You can query up to 20 instance names at a time.
 	LoadBalancerNames []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
 	// The status of the NLB instance. Valid values:
 	//
-	// 	- **Inactive**: The NLB instance is disabled. Listeners of an NLB instance in the Inactive state do not forward traffic.
+	// - **Inactive**: The instance is stopped. Listeners of the instance no longer forward traffic.
 	//
-	// 	- **Active**: The NLB instance is running.
+	// - **Active**: The instance is running.
 	//
-	// 	- **Provisioning**: The NLB instance is being created.
+	// - **Provisioning**: The instance is being created.
 	//
-	// 	- **Configuring**: The NLB instance is being modified.
+	// - **Configuring**: Upgrade/Downgrade in progress.
 	//
-	// 	- **Deleting**: The NLB instance is being deleted.
+	// - **Deleting**: The instance is being deleted.
 	//
-	// 	- **Deleted**: The NLB instance is deleted.
+	// - **Deleted**: The instance is deleted.
 	//
 	// example:
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The type of the Server Load Balancer (SLB) instances. Set the value to **network**, which specifies NLB.
+	// The type of load balancing. Only **network*	- is returned, which indicates Network Load Balancer (NLB).
 	//
 	// example:
 	//
 	// network
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// The number of entries to return in each call. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token used to specify a particular page of results. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- Leave this parameter empty for the first query or the only query.
+	// - If this is the first request or no next request exists, you do not need to specify this parameter.
 	//
-	// 	- Set this parameter to the value of NextToken obtained from the previous query.
+	// - If a next request exists, set the value to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -142,17 +142,17 @@ type ListLoadBalancersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the NLB instance.
+	// The labels of the NLB instance.
 	Tag []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The IDs of the virtual private clouds (VPCs) where the NLB instances are deployed. You can specify up to 10 VPC IDs in each call.
+	// The VPC ID of the NLB instance. You can query up to 10 VPC IDs at a time.
 	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
-	// The ID of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+	// The zone name. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query zones.
 	//
 	// example:
 	//
@@ -326,17 +326,17 @@ func (s *ListLoadBalancersRequest) Validate() error {
 }
 
 type ListLoadBalancersRequestTag struct {
-	// The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
+	// The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// It must be 1 to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
+	// The tag value of the instance. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

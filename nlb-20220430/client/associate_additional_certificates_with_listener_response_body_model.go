@@ -22,11 +22,11 @@ type AssociateAdditionalCertificatesWithListenerResponseBody struct {
 	//
 	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
-	// 365F4154-92F6-4AE4-93F8-7FF34B540710
+	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

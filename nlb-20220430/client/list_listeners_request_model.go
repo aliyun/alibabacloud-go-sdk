@@ -28,7 +28,7 @@ type iListListenersRequest interface {
 }
 
 type ListListenersRequest struct {
-	// The listener IDs. You can specify up to 20 listeners.
+	// The instance IDs. You can specify up to 20 instance IDs.
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
 	// The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
 	//
@@ -36,43 +36,43 @@ type ListListenersRequest struct {
 	//
 	// TCPSSL
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The IDs of the NLB instances. You can specify up to 20 instances.
+	// The IDs of the Network Load Balancer (NLB) instances. You can specify up to 20 instance IDs.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// The number of entries to return in each call. Valid values: **1*	- to **100**. Default value: **20**
+	// The number of entries to return per page. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token used to specify a particular page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- Leave this parameter empty for the first query or the only query.
+	// - If this is the first query or no next query is required, you do not need to specify this parameter.
 	//
-	// 	- Set this parameter to the value of NextToken obtained from the previous query.
+	// - If a next query is required, the value is the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the Network Load Balancer (NLB) instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable fine-grained monitoring. Valid values:
+	// Specifies whether to enable second-level monitoring. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	SecSensorEnabled *string `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -170,17 +170,17 @@ func (s *ListListenersRequest) Validate() error {
 }
 
 type ListListenersRequestTag struct {
-	// The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
+	// The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// It can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
+	// The tag value of the instance. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// It can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

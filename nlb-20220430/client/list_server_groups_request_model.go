@@ -36,19 +36,19 @@ type ListServerGroupsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- For the first request and last request, you do not need to specify this parameter.
+	// - You do not need to specify this parameter for the first request or if no next query exists.
 	//
-	// 	- You must specify the token obtained from the previous query as the value of NextToken.
+	// - If a next query exists, set the value to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the NLB instance.
+	// The region ID of the Network Load Balancer (NLB) load balancing instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type ListServerGroupsRequest struct {
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The server group IDs. You can specify up to 20 server group IDs in each call.
+	// The server group IDs. You can query up to 20 server group IDs at a time.
 	ServerGroupIds []*string `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
-	// The names of the server groups to be queried. You can specify up to 20 names in each call.
+	// The server group names. You can query up to 20 server group names at a time.
 	ServerGroupNames []*string `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
-	// The type of server group. Valid values:
+	// The type of the server group. Valid values:
 	//
-	// 	- **Instance**: allows you to add servers of the **Ecs**, **Ens**, and **Eci*	- types.
+	// - **Instance**: server type. This type of server group supports adding **Ecs**, **Ens**, and **Eci*	- instances.
 	//
-	// 	- **Ip**: allows you to add servers by specifying IP addresses.
+	// - **Ip**: IP address type. This type of server group supports adding IP addresses directly.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListServerGroupsRequest struct {
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	// The tags.
 	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) in which the server group is deployed.
+	// The ID of the VPC to which the server group belongs.
 	//
 	// example:
 	//
@@ -187,17 +187,17 @@ func (s *ListServerGroupsRequest) Validate() error {
 }
 
 type ListServerGroupsRequestTag struct {
-	// The key of the tag. You can specify up to 10 tag keys.
+	// The tag key. You can specify up to 10 tag keys.
 	//
-	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// Test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 10 tag values.
+	// The tag value. You can specify up to 10 tag values.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` and `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

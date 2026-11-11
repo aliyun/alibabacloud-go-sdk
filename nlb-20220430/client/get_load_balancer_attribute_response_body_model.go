@@ -62,51 +62,49 @@ type iGetLoadBalancerAttributeResponseBody interface {
 type GetLoadBalancerAttributeResponseBody struct {
 	// The protocol version. Valid values:
 	//
-	// 	- **ipv4**: IPv4
+	// - **ipv4**: IPv4.
 	//
-	// 	- **DualStack**: dual stack
+	// - **DualStack**: dual stack.
 	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The IPv4 network type of the NLB instance. Valid values:
+	// The IPv4 network address type of the NLB instance. Valid values:
 	//
-	// 	- **Internet*	- The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance can be accessed over the Internet.
 	//
-	// 	- **Intranet*	- The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC in which the NLB instance is deployed.
+	// - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance can be accessed only within the internal network of the VPC where the load balancing instance is deployed.
 	//
 	// example:
 	//
 	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance associated with the Internet-facing NLB instance.
 	//
 	// example:
 	//
 	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **0*	- to **1000000**.
+	// The maximum number of new connections per second that the NLB instance can process per zone (VIP). Valid values: **0*	- to **1000000**.
 	//
-	// **0*	- indicates that the number of connections is unlimited.
+	// **0*	- indicates that no limit is imposed.
 	//
 	// example:
 	//
 	// 100
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The time when the NLB instance was created. This value is a UNIX timestamp.
-	//
-	// Unit: milliseconds.
+	// The time when the resource was created. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-07-02T02:49:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the NLB instance is accessible across zones. Valid values:
+	// Indicates whether cross-zone is enabled for the NLB instance. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -118,25 +116,25 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// nlb-wb7r6dlwetvt5j****.cn-hangzhou.nlb.aliyuncs.com
 	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	// The configuration of the deletion protection feature.
+	// The deletion protection configuration.
 	DeletionProtectionConfig *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
-	// The IPv6 network type of the NLB instance. Valid values:
+	// The IPv6 address type of the NLB instance. Valid values:
 	//
-	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// - **Internet**: The load balancing instance has a public IP address. The DNS domain name is resolved to the public IP address. Therefore, the instance can be accessed over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. In this case, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
+	// - **Intranet**: The load balancing instance has only a private IP address. The DNS domain name is resolved to the private IP address. Therefore, the instance can be accessed only within the internal network of the VPC where the load balancing instance is deployed.
 	//
 	// example:
 	//
 	// Internet
 	Ipv6AddressType *string `json:"Ipv6AddressType,omitempty" xml:"Ipv6AddressType,omitempty"`
-	// The billing information of the NLB instance.
+	// The billing configuration of the load balancing instance.
 	LoadBalancerBillingConfig *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
-	// The status of workloads on the NLB instance. Valid values:
+	// The business status of the NLB instance. Valid values:
 	//
-	// 	- **Abnormal**
+	// - **Abnormal**: The NLB instance is in an abnormal state.
 	//
-	// 	- **Normal**
+	// - **Normal**: The NLB instance is in a normal state.
 	//
 	// example:
 	//
@@ -148,9 +146,9 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The NLB instance name.
+	// The name of the NLB instance.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter or a Chinese character.
 	//
 	// example:
 	//
@@ -158,29 +156,29 @@ type GetLoadBalancerAttributeResponseBody struct {
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	// The NLB instance status. Valid values:
 	//
-	// 	- **Inactive**: The NLB instance is disabled. The listeners of NLB instances in the Inactive state do not forward traffic.
+	// - **Inactive**: The NLB instance is stopped. The listeners of the instance no longer forward traffic.
 	//
-	// 	- **Active**: The NLB instance is running.
+	// - **Active**: The NLB instance is running.
 	//
-	// 	- **Provisioning**: The NLB instance is being created.
+	// - **Provisioning**: The NLB instance is being created.
 	//
-	// 	- **Configuring**: The NLB instance is being modified.
+	// - **Configuring**: The NLB instance is being reconfigured (Upgrade/Downgrade).
 	//
-	// 	- **CreateFailed**: The system failed to create the NLB instance. In this case, you are not charged for the NLB instance. You can only delete the NLB instance.
+	// - **CreateFailed**: The NLB instance failed to be created. In this case, no fees are incurred, and the instance can only be deleted.
 	//
 	// example:
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
+	// The load balancing type. Only **network*	- is returned, which indicates Network Load Balancer (NLB).
 	//
 	// example:
 	//
 	// network
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// The configuration of the configuration read-only mode.
+	// The modification protection configuration.
 	ModificationProtectionConfig *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig `json:"ModificationProtectionConfig,omitempty" xml:"ModificationProtectionConfig,omitempty" type:"Struct"`
-	// The information about the locked NLB instance. This parameter is returned only when `LoadBalancerBussinessStatus` is **Abnormal**.
+	// The lock state list of the NLB instance. This parameter is returned only when `LoadBalancerBussinessStatus` is **Abnormal**.
 	OperationLocks []*GetLoadBalancerAttributeResponseBodyOperationLocks `json:"OperationLocks,omitempty" xml:"OperationLocks,omitempty" type:"Repeated"`
 	// The region ID of the NLB instance.
 	//
@@ -194,15 +192,15 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group associated with the NLB instance.
+	// The security group IDs associated with the NLB instance.
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// The tags.
+	// The tag list.
 	Tags []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The VPC ID of the NLB instance.
 	//
@@ -210,7 +208,7 @@ type GetLoadBalancerAttributeResponseBody struct {
 	//
 	// vpc-bp1b49rqrybk45nio****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The list of zones and vSwitches in the zones. You must specify 2 to 10 zones.
+	// The mappings between zones and vSwitches. A maximum of 10 zones are returned. If the current region supports two or more zones, at least two zones are returned.
 	ZoneMappings []*GetLoadBalancerAttributeResponseBodyZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -485,27 +483,27 @@ func (s *GetLoadBalancerAttributeResponseBody) Validate() error {
 }
 
 type GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig struct {
-	// Specifies whether to enable deletion protection. Valid values:
+	// The deletion protection status. Valid values:
 	//
-	// 	- **true**: yes
+	// - **true**: enabled.
 	//
-	// 	- **false*	- (default): no
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The time when the deletion protection feature was enabled. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when deletion protection was enabled. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-11-02T02:49:05Z
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
-	// The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+	// The reason for changing the deletion protection status. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter or a Chinese character.
 	//
 	// example:
 	//
-	// create-by-mse-can-not-delete
+	// Instance running.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
@@ -549,7 +547,9 @@ func (s *GetLoadBalancerAttributeResponseBodyDeletionProtectionConfig) Validate(
 }
 
 type GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig struct {
-	// The billing method of the NLB instance. Set the value to **PostPay**, which specifies the pay-as-you-go billing method.
+	// The billing type of the NLB instance.
+	//
+	// Only **PostPay*	- is returned, which indicates the pay-as-you-go billing method.
 	//
 	// example:
 	//
@@ -579,27 +579,27 @@ func (s *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig) Validate
 }
 
 type GetLoadBalancerAttributeResponseBodyModificationProtectionConfig struct {
-	// The time when the modification protection feature was enabled. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time when modification protection was enabled. The time is displayed in UTC in the `yyyy-MM-ddTHH:mm:ssZ` format.
 	//
 	// example:
 	//
 	// 2022-12-02T02:49:05Z
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
-	// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+	// The reason for enabling modification protection. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter or a Chinese character.
 	//
-	// >  This parameter takes effect only if the **Status*	- parameter is set to **ConsoleProtection**.
+	// This parameter is valid and required only when **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
-	// create-by-mse-cannot-modify
+	// Business protection period.
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Specifies whether to enable the configuration read-only mode. Valid values:
+	// The modification protection status of the Network Load Balancer (NLB) instance. Valid values:
 	//
-	// 	- **NonProtection**: does not enable the configuration read-only mode. You cannot set the **Reason*	- parameter. If the **Reason*	- parameter is set, the value is cleared.
+	// - **NonProtection**: Modification protection is disabled. You cannot specify the **Reason*	- parameter. If the **Reason*	- parameter is specified, the value is cleared.
 	//
-	// 	- **ConsoleProtection**: enables the configuration read-only mode. You can set the **Reason*	- parameter.
+	// - **ConsoleProtection**: Console modification protection is enabled. You can specify the **Reason*	- parameter.
 	//
-	// >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	// > If the value is **ConsoleProtection**, you cannot modify the instance configuration in the load balancing console, but you can modify the instance configuration by invoking API operations.
 	//
 	// example:
 	//
@@ -647,21 +647,21 @@ func (s *GetLoadBalancerAttributeResponseBodyModificationProtectionConfig) Valid
 }
 
 type GetLoadBalancerAttributeResponseBodyOperationLocks struct {
-	// The reason why the NLB instance is locked.
+	// The reason for the lock.
 	//
 	// example:
 	//
-	// security
+	// Business exception.
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The type of the lock. Valid values:
 	//
-	// 	- **SecurityLocked**: The NLB instance is locked due to security reasons.
+	// - **SecurityLocked**: The instance is locked due to security reasons.
 	//
-	// 	- **RelatedResourceLocked**: The NLB instance is locked due to other resources associated with the NLB instance.
+	// - **RelatedResourceLocked**: The instance is locked due to associate lock.
 	//
-	// 	- **FinancialLocked**: The NLB instance is locked due to overdue payments.
+	// - **FinancialLocked**: The instance is locked due to overdue payment.
 	//
-	// 	- **ResidualLocked**: The NLB instance is locked because the associated resources have overdue payments and the resources are released.
+	// - **ResidualLocked**: The instance is locked due to residual resources.
 	//
 	// example:
 	//
@@ -700,13 +700,13 @@ func (s *GetLoadBalancerAttributeResponseBodyOperationLocks) Validate() error {
 }
 
 type GetLoadBalancerAttributeResponseBodyTags struct {
-	// The tag key.
+	// The tag key of the instance.
 	//
 	// example:
 	//
 	// KeyTest
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the instance.
 	//
 	// example:
 	//
@@ -745,31 +745,33 @@ func (s *GetLoadBalancerAttributeResponseBodyTags) Validate() error {
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappings struct {
-	// The information about the IP addresses used by the NLB instance.
+	// The Network Load Balancing (NLB) instance address information.
 	LoadBalancerAddresses []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
 	// The zone status. Valid values:
 	//
-	// 	- **Active**: The zone is available.
+	// - **Active**: enabled.
 	//
-	// 	- **Stopped**: The zone is disabled. You can set the zone to this status only by using Cloud Architect Design Tools (CADT).
+	// - **Stopped**: stopped. This status can be set only through the CADT disaster recovery management service invocation.
 	//
-	// 	- **Shifted**: The DNS record is removed.
+	// - **Shifted**: DNS manually removed. You can call the [CancelShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2412000.html) operation to restore the DNS of the zone.
 	//
-	// 	- **Starting**: The zone is being enabled. You can set the zone to this status only by using CADT.
+	// - **AutoShifted**: DNS automatically removed. When a zone encounters an exception, the system automatically removes the IP address of the abnormal zone to ensure that you can access services normally through the NLB domain name. The IP address is automatically restored when the zone recovers. No manual operation is required.
 	//
-	// 	- **Stopping*	- You can set the zone to this status only by using CADT.
+	// - **Starting**: starting. This status can be set only through the CADT disaster recovery management service invocation.
+	//
+	// - **Stopping**: stopping. This status can be set only through the CADT disaster recovery management service invocation.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+	// The vSwitch in the zone. Each zone uses one vSwitch and one subnet by default.
 	//
 	// example:
 	//
 	// vsw-bp1rmcrwg3erh1fh8****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+	// The zone ID. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
 	//
 	// example:
 	//
@@ -835,53 +837,53 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) Validate() error {
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
-	// The ID of the elastic IP address (EIP).
+	// The Elastic IP Address (EIP) instance ID.
 	//
 	// example:
 	//
 	// eip-bp1aedxso6u80u0qf****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The ID of the elastic network interface (ENI).
+	// The ID of the ENI.
 	//
 	// example:
 	//
 	// eni-bp12f1xhs5yal61a****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
+	// The list of IPv4 local addresses. These are the addresses used for communication between the NLB instance and backend servers.
 	Ipv4LocalAddresses []*string `json:"Ipv4LocalAddresses,omitempty" xml:"Ipv4LocalAddresses,omitempty" type:"Repeated"`
-	// The IPv6 address of the NLB instance.
+	// The IPv6 VIP address. The IPv6 address that the NLB instance uses to provide services.
 	//
 	// example:
 	//
 	// 2001:db8:1:1:1:1:1:1
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers.
+	// The list of IPv6 local addresses. These are the addresses used for communication between the NLB instance and backend servers.
 	Ipv6LocalAddresses []*string `json:"Ipv6LocalAddresses,omitempty" xml:"Ipv6LocalAddresses,omitempty" type:"Repeated"`
-	// The private IPv4 address of the NLB instance.
+	// The private IPv4 VIP address. The private IPv4 address that the NLB instance uses to provide services.
 	//
 	// example:
 	//
 	// 192.168.3.32
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// The health status of the private IPv4 address of the NLB instance. Valid values:
+	// The health check status of the private IPv4 address of the NLB instance. Valid values:
 	//
-	// 	- **Healthy**
+	// - **Healthy**: healthy.
 	//
-	// 	- **Unhealthy**
+	// - **Unhealthy**: unhealthy.
 	//
-	// > This parameter is returned only when the **Status*	- of the zone is **Active**.
+	// > This parameter is returned only when the zone status (**Status**) is Active.
 	//
 	// example:
 	//
 	// Healthy
 	PrivateIPv4HcStatus *string `json:"PrivateIPv4HcStatus,omitempty" xml:"PrivateIPv4HcStatus,omitempty"`
-	// The health status of the IPv6 address of the NLB instance. Valid values:
+	// The health check status of the IPv6 address of the NLB instance. Valid values:
 	//
-	// 	- **Healthy**
+	// - **Healthy**: healthy.
 	//
-	// 	- **Unhealthy**
+	// - **Unhealthy**: unhealthy.
 	//
-	// > This parameter is returned only when the **Status*	- of the zone is **Active**.
+	// > This parameter is returned only when the zone status (**Status**) is Active.
 	//
 	// example:
 	//

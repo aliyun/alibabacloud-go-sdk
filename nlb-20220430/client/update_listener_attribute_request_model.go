@@ -50,25 +50,25 @@ type iUpdateListenerAttributeRequest interface {
 type UpdateListenerAttributeRequest struct {
 	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables ALPN.
 	//
-	// 	- **false**
+	// - **false**: disables ALPN.
 	//
 	// example:
 	//
 	// false
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
-	// The name of the ALPN policy. The following are the possible values:
+	// The ALPN policy. Valid values:
 	//
-	// 	- **HTTP1Only**: Negotiate only HTTP/1.\\*. The ALPN preference list is HTTP/1.1, HTTP/1.0.
+	// - **HTTP1Only**: negotiates only HTTP/1.x. The priority is HTTP/1.1 > HTTP/1.0.
 	//
-	// 	- **HTTP2Only**: Negotiate only HTTP/2. The ALPN preference list is HTTP/2.
+	// - **HTTP2Only**: negotiates only HTTP/2.
 	//
-	// 	- **HTTP2Optional**: Prefer HTTP/1.\\	- over HTTP/2. The ALPN preference list is HTTP/1.1, HTTP/1.0, HTTP/2.
+	// - **HTTP2Optional**: prefers HTTP/1.x but also accepts HTTP/2. The priority is HTTP/1.1 > HTTP/1.0 > HTTP/2.
 	//
-	// 	- **HTTP2Preferred**: Prefer HTTP/2 over HTTP/1.\\*. The ALPN preference list is HTTP/2, HTTP/1.1, HTTP/1.0.
+	// - **HTTP2Preferred**: prefers HTTP/2 but also accepts HTTP/1.x. The priority is HTTP/2 > HTTP/1.1 > HTTP/1.0.
 	//
-	// >  This parameter is required if AlpnEnabled is set to true.
+	// > You must configure this parameter after ALPN is enabled.
 	//
 	// if can be null:
 	// true
@@ -77,69 +77,69 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// The CA certificate. You can specify only one CA certificate.
+	// The CA certificates. You can add only one CA certificate.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter takes effect only for TCPSSL listeners.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables mutual authentication.
 	//
-	// 	- **false**
+	// - **false*	- (default): disables mutual authentication.
 	//
 	// example:
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The server certificate. Only one server certificate is supported.
+	// The server certificates. You can add only one server certificate.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter takes effect only for TCPSSL listeners.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The client token used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
+	// The maximum number of new connections per second that the listener can process in each zone (VIP). Valid values: **0*	- to **1000000**. A value of **0*	- indicates that no limit is applied.
 	//
 	// example:
 	//
 	// 10000
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to only precheck the request. Valid values:
 	//
-	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
+	// - **true**: prechecks the request without updating the listener. The system checks whether required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The timeout period for idle connections. Unit: seconds
+	// The idle connection timeout period. Unit: seconds.
 	//
-	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set this parameter to a value ranging from **10*	- to **900**. Default value: **900**
+	// - If the listener is a **TCP*	- or **TCPSSL*	- listener, valid values are **10*	- to **900**. Default value: **900**.
 	//
-	// 	- If the listener uses **UDP**, you can set this parameter to a value ranging from **10*	- to **20**. Default value: **20**
+	// - If the listener is a **UDP*	- listener, valid values are **10*	- to **90**. Default value: **90**.
 	//
 	// example:
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The name of the listener.
+	// The custom name of the listener.
 	//
-	// The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name must be 2 to 256 characters in length, and can contain Chinese characters, English letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// tcpssl_443
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// The listener ID.
+	// The listener instance ID.
 	//
 	// This parameter is required.
 	//
@@ -147,37 +147,37 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// lsn-bp1bpn0kn908w4nbw****@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- indicates that the maximum segment size (MSS) remains unchanged. This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+	// The maximum segment size (MSS) of a TCP packet. Unit: bytes. Valid values: **0*	- to **1500**. A value of **0*	- indicates that the MSS value of user TCP packets is not modified. This parameter is supported only by TCP and TCPSSL listeners.
 	//
 	// example:
 	//
 	// 344
 	Mss *int32 `json:"Mss,omitempty" xml:"Mss,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass the client IP address to the backend server. Valid values:
+	// Specifies whether to use the Proxy Protocol to pass the client source IP address to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
 	// false
 	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
+	// The configuration for passing the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to backend servers by using the Proxy Protocol.
 	ProxyProtocolV2Config *UpdateListenerAttributeRequestProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
-	// The ID of the region where the NLB instance is deployed.
+	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to retrieve the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to enable fine-grained monitoring. Valid values:
+	// Specifies whether to enable second-level monitoring. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables second-level monitoring.
 	//
-	// 	- **false**
+	// - **false**: disables second-level monitoring.
 	//
 	// example:
 	//
@@ -185,21 +185,19 @@ type UpdateListenerAttributeRequest struct {
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The ID of the security policy.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter takes effect only for TCPSSL listeners.
 	//
 	// example:
 	//
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The server group ID.
+	// The ID of the server group.
 	//
-	// >
+	// > - If the listener is a **TCP*	- listener, you can select a server group whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot select a server group whose backend protocol is **UDP**.
 	//
-	// 	- If the listener uses **TCP**, you can specify server groups whose protocol is **TCP*	- or **TCP_UDP**. **UDP*	- server groups are not supported.
+	// > - If the listener is a **UDP*	- listener, you can select a server group whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot select a server group whose backend protocol is **TCP**.
 	//
-	// 	- If the listener uses **UDP**, you can specify server groups whose protocol is **UDP*	- or **TCP_UDP**. **TCP*	- server groups are not supported.
-	//
-	// 	- If the listener uses **TCPSSL**, you can specify server groups whose protocol is **TCP*	- and whose **client IP preservation is disabled**. **TCP*	- server groups for which **client IP preservation is enabled*	- and server groups whose protocol is **UDP*	- or **TCP_UDP*	- are not supported.
+	// > - If the listener is a **TCPSSL*	- listener, you can select a server group whose backend protocol is **TCP*	- and for which **client address preservation is disabled**. You cannot select a server group whose backend protocol is **TCP*	- and for which **client address preservation is enabled**, or a server group whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// example:
 	//
@@ -387,31 +385,41 @@ func (s *UpdateListenerAttributeRequest) Validate() error {
 }
 
 type UpdateListenerAttributeRequestProxyProtocolV2Config struct {
-	// Specifies whether to use the Proxy protocol to pass the PrivateLinkEpId parameter to backend servers. Valid values:
+	// Specifies whether to use the Proxy Protocol to pass the CN-ID to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
+	//
+	// example:
+	//
+	// false
+	Ppv2CnIdEnabled *bool `json:"Ppv2CnIdEnabled,omitempty" xml:"Ppv2CnIdEnabled,omitempty"`
+	// Specifies whether to use the Proxy Protocol to pass the PrivateLinkEpId to backend servers. Valid values:
+	//
+	// - **true**: yes.
+	//
+	// - **false**: no.
 	//
 	// example:
 	//
 	// false
 	Ppv2PrivateLinkEpIdEnabled *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass the PrivateLinkEpsId parameter to backend servers. Valid values:
+	// Specifies whether to use the Proxy Protocol to pass the PrivateLinkEpsId to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
 	// false
 	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass the VpcId parameter to backend servers. Valid values:
+	// Specifies whether to use the Proxy Protocol to pass the VpcId to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
@@ -427,6 +435,10 @@ func (s UpdateListenerAttributeRequestProxyProtocolV2Config) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) GetPpv2CnIdEnabled() *bool {
+	return s.Ppv2CnIdEnabled
+}
+
 func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) GetPpv2PrivateLinkEpIdEnabled() *bool {
 	return s.Ppv2PrivateLinkEpIdEnabled
 }
@@ -437,6 +449,11 @@ func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) GetPpv2PrivateLink
 
 func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) GetPpv2VpcIdEnabled() *bool {
 	return s.Ppv2VpcIdEnabled
+}
+
+func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) SetPpv2CnIdEnabled(v bool) *UpdateListenerAttributeRequestProxyProtocolV2Config {
+	s.Ppv2CnIdEnabled = &v
+	return s
 }
 
 func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) SetPpv2PrivateLinkEpIdEnabled(v bool) *UpdateListenerAttributeRequestProxyProtocolV2Config {

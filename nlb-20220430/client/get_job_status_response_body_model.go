@@ -16,17 +16,17 @@ type iGetJobStatusResponseBody interface {
 }
 
 type GetJobStatusResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 365F4154-92F6-4AE4-92F8-7FF34B540710
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **Succeeded**: The task is successful.
+	// - **Succeeded**: The task succeeded.
 	//
-	// 	- **processing**: The ticket is being executed.
+	// - **Processing**: The task is in progress.
 	//
 	// example:
 	//

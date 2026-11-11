@@ -14,7 +14,7 @@ type iDescribeHdMonitorRegionConfigRequest interface {
 }
 
 type DescribeHdMonitorRegionConfigRequest struct {
-	// The ID of the region where the resources are deployed.
+	// The ID of the region where the resource resides.
 	//
 	// example:
 	//

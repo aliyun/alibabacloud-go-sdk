@@ -24,24 +24,24 @@ type iListListenerCertificatesRequest interface {
 }
 
 type ListListenerCertificatesRequest struct {
-	// The type of the certificate. Valid values:
+	// The certificate type. Valid values:
 	//
-	// 	- **Ca**: CA certificate.
+	// - **Ca**: CA certificate.
 	//
-	// 	- **Server**: server certificate
+	// - **Server**: Server certificate.
 	//
 	// example:
 	//
 	// Ca
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The server certificate. Only one server certificate is supported.
+	// The server certificates. You can add only one server certificate.
 	//
-	// >  This parameter takes effect only for TCP/SSL listeners.
+	// > This parameter takes effect only for TCPSSL listeners.
 	//
 	// if can be null:
 	// true
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The ID of the listener. Specify the ID of a listener that uses SSL over TCP.
+	// The listener ID. This parameter is valid only for TCPSSL listeners.
 	//
 	// This parameter is required.
 	//
@@ -49,25 +49,25 @@ type ListListenerCertificatesRequest struct {
 	//
 	// lsn-j49ht1jxxqyg45****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **20**.
+	// The number of entries to return per page. Valid values: **1*	- to **50**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token for the next query.
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - Leave this parameter empty for the first query or when no subsequent query is required.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - For subsequent queries, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+	// The region ID of the Network Load Balancer (NLB) instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query region IDs.
 	//
 	// example:
 	//

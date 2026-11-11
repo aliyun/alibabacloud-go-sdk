@@ -30,7 +30,7 @@ type UpdateServerGroupAttributeResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The server group ID.
+	// The ID of the server group.
 	//
 	// example:
 	//

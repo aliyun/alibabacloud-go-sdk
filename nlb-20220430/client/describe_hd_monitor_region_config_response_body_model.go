@@ -20,27 +20,25 @@ type iDescribeHdMonitorRegionConfigResponseBody interface {
 }
 
 type DescribeHdMonitorRegionConfigResponseBody struct {
-	// The name of the Log Service project.
+	// The name of the LogProject in Simple Log Service.
 	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-223794579283657556
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
-	// The name of the Metricstore in Simple Log Service.
+	// The name of the MetricStore in Simple Log Service.
 	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-metricStore-1
 	MetricStore *string `json:"MetricStore,omitempty" xml:"MetricStore,omitempty"`
-	// The region ID of the NLB instance.
-	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+	// The ID of the region where the resource resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

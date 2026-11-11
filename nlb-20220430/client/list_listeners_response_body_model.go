@@ -22,7 +22,7 @@ type iListListenersResponseBody interface {
 }
 
 type ListListenersResponseBody struct {
-	// The listeners.
+	// The list of Network Load Balancer (NLB) listeners.
 	Listeners []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -30,23 +30,23 @@ type ListListenersResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, it indicates that no next query is to be sent.
+	// - If **NextToken*	- is empty, no next query is required.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value is the token used for the next query.
+	// - If **NextToken*	- returns a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ func (s *ListListenersResponseBody) Validate() error {
 type ListListenersResponseBodyListeners struct {
 	// Indicates whether Application-Layer Protocol Negotiation (ALPN) is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -133,57 +133,57 @@ type ListListenersResponseBodyListeners struct {
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
 	// The ALPN policy. Valid values:
 	//
-	// 	- **HTTP1Only**
+	// - **HTTP1Only**
 	//
-	// 	- **HTTP2Only**
+	// - **HTTP2Only**
 	//
-	// 	- **HTTP2Preferred**
+	// - **HTTP2Preferred**
 	//
-	// 	- **HTTP2Optional**
+	// - **HTTP2Optional**
 	//
 	// example:
 	//
 	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// A list of CA certificates.
+	// The list of CA certificates.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter takes effect only for TCPSSL listeners.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Indicates whether mutual authentication is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The server certificate.
+	// The list of server certificates.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter takes effect only for TCPSSL listeners.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0*	- to **1000000**. **0*	- indicates that the number of connections is unlimited.
+	// The maximum number of new connections per second that the listener can process in each zone (VIP). Valid values: **0*	- to **1000000**. A value of **0*	- indicates that no limit is applied.
 	//
 	// example:
 	//
 	// 1000
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// The last port in the listener port range.
+	// The end port for all-port listening.
 	//
 	// example:
 	//
 	// 455
 	EndPort *string `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// The timeout period of idle connections. Unit: seconds. Valid values: **1*	- to **900**. Default value: **900**.
+	// The idle timeout period for connections. Unit: seconds.
 	//
 	// example:
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The name of the listener.
+	// The custom name of the listener.
 	//
-	// The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name must be 2 to 256 characters in length and can contain Chinese characters, English letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type ListListenersResponseBodyListeners struct {
 	//
 	// lsn-ga6sjjcll6ou34l1et****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The information about the listener port of your server.
+	// The listener port.
 	//
 	// example:
 	//
@@ -209,63 +209,63 @@ type ListListenersResponseBodyListeners struct {
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
 	// The status of the listener. Valid values:
 	//
-	// 	- **Provisioning**: The listener is being created.
+	// - **Provisioning**: The listener is being created.
 	//
-	// 	- **Running**: The listener is running.
+	// - **Running**: The listener is running.
 	//
-	// 	- **Configuring**: The listener is being configured.
+	// - **Configuring**: The listener is being configured.
 	//
-	// 	- **Stopping**: The listener is being stopped.
+	// - **Stopping**: The listener is being stopped.
 	//
-	// 	- **Stopped**: The listener is stopped.
+	// - **Stopped**: The listener is stopped.
 	//
-	// 	- **Starting**: The listener is being started.
+	// - **Starting**: The listener is being started.
 	//
-	// 	- **Deleting**: The listener is being deleted.
+	// - **Deleting**: The listener is being deleted.
 	//
-	// 	- **Deleted**: The listener is deleted.
+	// - **Deleted**: The listener is deleted.
 	//
 	// example:
 	//
 	// Running
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
-	// The CLB instance ID.
+	// The ID of the Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- indicates that the Mss value of TCP packets remains unchanged.
+	// The maximum segment size (MSS) of TCP packets. Unit: bytes. Valid values: **0*	- to **1500**. A value of **0*	- indicates that the MSS value of user TCP packets is not modified.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter is supported only by TCP and TCPSSL listeners.
 	//
 	// example:
 	//
 	// 200
 	Mss *int32 `json:"Mss,omitempty" xml:"Mss,omitempty"`
-	// Indicates whether the Proxy protocol passes source client IP addresses to backend servers. Valid values:
+	// Indicates whether the Proxy Protocol is enabled to pass the client source IP address to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	// Indicates whether the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
+	// The configuration for passing the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to backend servers by using the Proxy Protocol.
 	ProxyProtocolV2Config *ListListenersResponseBodyListenersProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
-	// The region ID of the NLB instance.
+	// The region ID of the Network Load Balancer (NLB) instance.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether fine-grained monitoring is enabled. Valid values:
+	// Indicates whether second-level monitoring is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -273,25 +273,25 @@ type ListListenersResponseBodyListeners struct {
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
 	// The ID of the security policy.
 	//
-	// >  This parameter takes effect only for listeners that use SSL over TCP.
+	// > This parameter takes effect only for TCPSSL listeners.
 	//
 	// example:
 	//
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The server group ID.
+	// The ID of the server group.
 	//
 	// example:
 	//
 	// sgp-ppdpc14gdm3x4o****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The first port in the listener port range.
+	// The start port for all-port listening.
 	//
 	// example:
 	//
 	// 233
 	StartPort *string `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tags []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -529,31 +529,41 @@ func (s *ListListenersResponseBodyListeners) Validate() error {
 }
 
 type ListListenersResponseBodyListenersProxyProtocolV2Config struct {
-	// Indicates whether the Proxy protocol passes the PrivateLinkEpId parameter to backend servers. Valid values:
+	// Indicates whether the Common Name (CN) field of the client certificate is passed to backend servers by using Proxy Protocol V2. Note: This parameter takes effect only when the listener protocol is TCPSSL, mutual authentication (mTLS) is enabled, and Proxy Protocol V2 is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
+	//
+	// example:
+	//
+	// false
+	Ppv2CnIdEnabled *bool `json:"Ppv2CnIdEnabled,omitempty" xml:"Ppv2CnIdEnabled,omitempty"`
+	// Indicates whether the Proxy Protocol is enabled to pass the PrivateLinkEpId to backend servers. Valid values:
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	Ppv2PrivateLinkEpIdEnabled *bool `json:"Ppv2PrivateLinkEpIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpIdEnabled,omitempty"`
-	// Indicates whether the Proxy protocol passes the PrivateLinkEpsId parameter to backend servers. Valid values:
+	// Indicates whether the Proxy Protocol is enabled to pass the PrivateLinkEpsId to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	Ppv2PrivateLinkEpsIdEnabled *bool `json:"Ppv2PrivateLinkEpsIdEnabled,omitempty" xml:"Ppv2PrivateLinkEpsIdEnabled,omitempty"`
-	// Indicates whether the Proxy protocol passes the VpcId parameter to backend servers. Valid values:
+	// Indicates whether the Proxy Protocol is enabled to pass the VpcId to backend servers. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enabled.
 	//
-	// 	- **false**
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -569,6 +579,10 @@ func (s ListListenersResponseBodyListenersProxyProtocolV2Config) GoString() stri
 	return s.String()
 }
 
+func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) GetPpv2CnIdEnabled() *bool {
+	return s.Ppv2CnIdEnabled
+}
+
 func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) GetPpv2PrivateLinkEpIdEnabled() *bool {
 	return s.Ppv2PrivateLinkEpIdEnabled
 }
@@ -579,6 +593,11 @@ func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) GetPpv2Private
 
 func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) GetPpv2VpcIdEnabled() *bool {
 	return s.Ppv2VpcIdEnabled
+}
+
+func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2CnIdEnabled(v bool) *ListListenersResponseBodyListenersProxyProtocolV2Config {
+	s.Ppv2CnIdEnabled = &v
+	return s
 }
 
 func (s *ListListenersResponseBodyListenersProxyProtocolV2Config) SetPpv2PrivateLinkEpIdEnabled(v bool) *ListListenersResponseBodyListenersProxyProtocolV2Config {

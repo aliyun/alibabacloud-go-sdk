@@ -16,13 +16,13 @@ type iDeleteListenerResponseBody interface {
 }
 
 type DeleteListenerResponseBody struct {
-	// The ID of the asynchronous task.
+	// The asynchronous task ID.
 	//
 	// example:
 	//
 	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

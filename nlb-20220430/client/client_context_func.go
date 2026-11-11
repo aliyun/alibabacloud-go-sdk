@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds backend servers to a specified server group.
+// Adds backend servers to a Network Load Balancer (NLB) server group.
 //
 // @param request - AddServersToServerGroupRequest
 //
@@ -72,15 +72,15 @@ func (client *Client) AddServersToServerGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Associates additional certificates with a listener that uses SSL over TCP.
+// Associates additional certificates with a TCPSSL listener.
 //
 // Description:
 //
-// *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
+// *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. The system returns a request ID, but the additional certificates are not immediately added. The addition task is still running in the background. You can call [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) to query the addition status of the additional certificates:
 //
-//   - If the listener is in the **Associating*	- state, the additional certificates are being associated.
+// - When the TCPSSL listener is in the **Associating*	- state, the additional certificates are being added.
 //
-//   - If the listener is in the **Associated*	- state, the additional certificates are associated.
+// - When the TCPSSL listener is in the **Associated*	- state, the additional certificates are added.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -140,7 +140,7 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithContext(ctx
 
 // Summary:
 //
-// Associates an Internet Shared Bandwidth instance with a Network Load Balancer (NLB) instance.
+// Associates an Internet Shared Bandwidth with a Network Load Balancer (NLB) instance.
 //
 // @param request - AttachCommonBandwidthPackageToLoadBalancerRequest
 //
@@ -200,11 +200,11 @@ func (client *Client) AttachCommonBandwidthPackageToLoadBalancerWithContext(ctx 
 
 // Summary:
 //
-// Adds the elastic IP address (EIP) and virtual IP address (VIP) of a zone to the DNS record.
+// Adds the EIP or VIP of a zone back to DNS resolution.
 //
 // Description:
 //
-// Before you call this operation, the zone of the Network Load Balancer (NLB) instance is removed from the DNS record by using the console or calling the [StartShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2411999.html) API operation.
+// When you call this operation, you must have already removed a zone from the NLB instance by calling the [StartShiftLoadBalancerZones](https://help.aliyun.com/document_detail/2411999.html) operation or in the console.
 //
 // @param request - CancelShiftLoadBalancerZonesRequest
 //
@@ -264,7 +264,7 @@ func (client *Client) CancelShiftLoadBalancerZonesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a TCP or UDP listener, or a listener that uses SSL over TCP for a Network Load Balancer (NLB) instance.
+// Creates a TCP, UDP, or TCPSSL listener on a Network Load Balancer (NLB) instance.
 //
 // @param tmpReq - CreateListenerRequest
 //
@@ -402,17 +402,17 @@ func (client *Client) CreateListenerWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a Network Load Balancer (NLB) instance in a specified region.
+// Creates a Network Load Balancing (NLB) instance.
 //
 // Description:
 //
-//	  When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+// - When you create a Network Load Balancing (NLB) instance, the system automatically creates the AliyunServiceRoleForNlb service-linked role for you.
 //
-//		- **CreateLoadBalancer*	- is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+// - The **CreateLoadBalancer*	- operation is asynchronous. The system returns an instance ID, but the Network Load Balancing (NLB) instance is not yet created and the creation task is still running in the background. You can invoke the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the creation status of the Network Load Balancing (NLB) instance:
 //
-//	    	- If an NLB instance is in the **Provisioning*	- state, the NLB instance is being created.
+//   - If the Network Load Balancing (NLB) instance is in the **Provisioning*	- state, the Network Load Balancing (NLB) instance is being created.
 //
-//	    	- If an NLB instance is in the **Active*	- state, the NLB instance is created.
+//   - If the Network Load Balancing (NLB) instance is in the **Active*	- state, the Network Load Balancing (NLB) instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -515,7 +515,7 @@ func (client *Client) CreateLoadBalancerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a custom security policy for a TCP/SSL listener.
+// Creates a custom security policy for a TCPSSL listener in a specified region.
 //
 // @param request - CreateSecurityPolicyRequest
 //
@@ -587,15 +587,15 @@ func (client *Client) CreateSecurityPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a server group in a region.
+// Creates a server group in a specified region.
 //
 // Description:
 //
-// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
+// The **CreateServerGroup*	- operation is asynchronous. The system returns a request ID, but the server group of the Network Load Balancer (NLB) is not yet created, and the creation task is still running in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the server group:
 //
-//   - If the task is in the **Succeeded*	- status, the server group is created.
+//   - If the task status is **Succeeded**, the server group is created.
 //
-// -    If the task is in the **Processing*	- status, the server group is being created.
+//   - If the task status is **Processing**, the server group is being created. In this state, you can only perform query operations and cannot perform other operations.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -818,7 +818,7 @@ func (client *Client) DeleteLoadBalancerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes a custom TLS security policy from a Network Load Balancer (NLB) instance.
+// Deletes a custom TLS security policy for Network Load Balancer (NLB).
 //
 // @param request - DeleteSecurityPolicyRequest
 //
@@ -874,11 +874,11 @@ func (client *Client) DeleteSecurityPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a Network Load Balancer (NLB) server group.
+// Deletes a server group of a Network Load Balancer (NLB).
 //
 // Description:
 //
-// You can delete server groups that are not associated with listeners.
+// You can delete a server group only when it is not used by any listener.
 //
 // @param request - DeleteServerGroupRequest
 //
@@ -934,7 +934,11 @@ func (client *Client) DeleteServerGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the storage configurations of fine-grained monitoring.
+// Queries the storage configuration for second-level monitoring.
+//
+// Description:
+//
+// Queries the data warehouse configured for second-level monitoring storage in the current region.
 //
 // @param request - DescribeHdMonitorRegionConfigRequest
 //
@@ -978,7 +982,7 @@ func (client *Client) DescribeHdMonitorRegionConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries regions that support Network Load Balancer (NLB) instances.
+// Queries the available regions for NLB.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -1032,7 +1036,7 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the zones of a region in which a Network Load Balancer (NLB) instance is deployed.
+// Queries the zones in a region for Network Load Balancer (NLB).
 //
 // @param request - DescribeZonesRequest
 //
@@ -1088,7 +1092,7 @@ func (client *Client) DescribeZonesWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Disassociates a Network Load Balancer (NLB) instance from an Internet Shared Bandwidth instance.
+// Disassociates an Internet Shared Bandwidth plan from a Network Load Balancer (NLB) instance.
 //
 // @param request - DetachCommonBandwidthPackageFromLoadBalancerRequest
 //
@@ -1148,7 +1152,7 @@ func (client *Client) DetachCommonBandwidthPackageFromLoadBalancerWithContext(ct
 
 // Summary:
 //
-// Changes the public IPv6 address of a dual-stack Network Load Balancer (NLB) instance to a private IPv6 address.
+// Changes the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from public to private.
 //
 // @param request - DisableLoadBalancerIpv6InternetRequest
 //
@@ -1328,7 +1332,7 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the result of an asynchronous operation performed on a Network Load Balancer (NLB) instance.
+// Queries the execution result of an asynchronous task for Network Load Balancer (NLB).
 //
 // @param request - GetJobStatusRequest
 //
@@ -1376,7 +1380,7 @@ func (client *Client) GetJobStatusWithContext(ctx context.Context, request *GetJ
 
 // Summary:
 //
-// Queries the details of a Network Load Balancer (NLB) listener.
+// Queries the details of a listener on a Network Load Balancer (NLB) instance.
 //
 // @param request - GetListenerAttributeRequest
 //
@@ -1480,7 +1484,7 @@ func (client *Client) GetListenerHealthStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details about a Network Load Balancer (NLB) instance.
+// Queries the details of a specified Network Load Balancer (NLB) instance.
 //
 // @param request - GetLoadBalancerAttributeRequest
 //
@@ -1580,7 +1584,7 @@ func (client *Client) ListAsynJobsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the server certificate of a TCP/SSL listener.
+// Queries the server certificates of a TCPSSL listener.
 //
 // @param request - ListListenerCertificatesRequest
 //
@@ -1644,7 +1648,7 @@ func (client *Client) ListListenerCertificatesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries listeners added to a Network Load Balancer (NLB) instance.
+// Queries the list of Network Load Balancer (NLB) listeners.
 //
 // @param request - ListListenersRequest
 //
@@ -1716,7 +1720,7 @@ func (client *Client) ListListenersWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries the basic information about Network Load Balancer (NLB) instances.
+// Queries the basic information about created Network Load Balancer (NLB) instances.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -1954,7 +1958,7 @@ func (client *Client) ListServerGroupServersWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the server groups of a Network Load Balancer (NLB) instance.
+// Queries the server group list of a Network Load Balancer (NLB) load balancing instance.
 //
 // @param request - ListServerGroupsRequest
 //
@@ -2771,7 +2775,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Updates the attributes of a listener, such as the name and the idle connection timeout period.
+// Updates the configuration of a Network Load Balancer (NLB) listener.
 //
 // @param tmpReq - UpdateListenerAttributeRequest
 //
@@ -3033,11 +3037,7 @@ func (client *Client) UpdateLoadBalancerAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Enables or disables the deletion protection feature.
-//
-// Description:
-//
-// > You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the details about deletion protection and the configuration read-only mode.
+// create operation
 //
 // @param request - UpdateLoadBalancerProtectionRequest
 //
@@ -3115,13 +3115,13 @@ func (client *Client) UpdateLoadBalancerProtectionWithContext(ctx context.Contex
 //
 // When you call this operation, make sure that you specify all the zones of the NLB instance, including the existing zones and new zones. If you do not specify the existing zones, the existing zones are removed.
 //
-// Prerequisites
+// # Prerequisites
 //
-//   - An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+// - An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
 //
-//   - You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+// - You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
 //
-//   - **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+// - **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
 //
 //   - If the task is in the **Succeeded*	- state, the zones and zone attributes are modified.
 //
@@ -3253,7 +3253,7 @@ func (client *Client) UpdateSecurityPolicyAttributeWithContext(ctx context.Conte
 
 // Summary:
 //
-// Modifies the configurations of a Network Load Balancer (NLB) server group.
+// Updates the configuration of a Network Load Balancer (NLB) server group.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
@@ -3268,6 +3268,10 @@ func (client *Client) UpdateServerGroupAttributeWithContext(ctx context.Context,
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AddressIPVersion) {
+		body["AddressIPVersion"] = request.AddressIPVersion
+	}
+
 	if !dara.IsNil(request.ClientToken) {
 		body["ClientToken"] = request.ClientToken
 	}

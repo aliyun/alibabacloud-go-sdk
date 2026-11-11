@@ -18,19 +18,19 @@ type iCreateListenerResponseBody interface {
 }
 
 type CreateListenerResponseBody struct {
-	// The asynchronous task ID.
+	// The ID of the asynchronous task.
 	//
 	// example:
 	//
 	// 72dcd26b-f12d-4c27-b3af-18f6aed5****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The listener ID.
+	// The ID of the listener.
 	//
 	// example:
 	//
 	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
