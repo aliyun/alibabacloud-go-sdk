@@ -46,13 +46,13 @@ type UpdateGroupRequest struct {
 	//
 	// true
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
-	// Specifies whether to enable the automatic trigger policy. Valid values: - **true**: enabled. - **false**: disabled.
+	// Specifies whether to enable the automatic trigger policy. Valid values: - **true**: Enabled. - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	AutoTrigger *bool `json:"autoTrigger,omitempty" xml:"autoTrigger,omitempty"`
-	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +60,19 @@ type UpdateGroupRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The group description.
+	// The description of the group.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to forcibly use the group configuration.
+	// Specifies whether to force the use of the group configuration.
 	//
 	// example:
 	//
 	// true
 	ForcedSetting *bool `json:"forcedSetting,omitempty" xml:"forcedSetting,omitempty"`
-	// The group name.
+	// The name of the group.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type UpdateGroupRequest struct {
 	NotifyConfig []*UpdateGroupRequestNotifyConfig `json:"notifyConfig,omitempty" xml:"notifyConfig,omitempty" type:"Repeated"`
 	// The list of notification operation types.
 	NotifyOperationTypes []*string `json:"notifyOperationTypes,omitempty" xml:"notifyOperationTypes,omitempty" type:"Repeated"`
-	// The RAM role (1-128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
+	// The RAM role. Length: 1 to 128 characters. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ type UpdateGroupRequest struct {
 	//
 	// /
 	ReportExportPath *string `json:"reportExportPath,omitempty" xml:"reportExportPath,omitempty"`
-	// The Terraform Provider version. Select a Terraform Provider version. Nodes in the group execute plans based on the specified Terraform Provider version. The version configured on a node takes higher priority.
+	// The Terraform provider version. Select a Terraform provider version. Tasks in the group will execute plans based on this version. The version configured on the task takes precedence.
 	//
 	// example:
 	//
 	// 1.183.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	// The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
+	// The trigger policy. This parameter is required when autoTrigger is set to true.
 	TriggerConfig []*UpdateGroupRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
-	// The resource type that triggers execution. Valid values:
+	// The resource type for trigger execution. Valid values:
 	//
-	// - Task: regular node.
+	// - Task: Regular task.
 	//
-	// - SceneTestingTask: scenario-based testing node.
+	// - SceneTestingTask: Scenario-based testing task.
 	TriggerResourceType []*string `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
 }
 
@@ -316,15 +316,15 @@ func (s *UpdateGroupRequestNotifyConfig) Validate() error {
 type UpdateGroupRequestTriggerConfig struct {
 	// The trigger strategy. Valid values:
 	//
-	// - ProviderNewVersion: triggered when a new Provider version is released.
+	// - ProviderNewVersion: Triggered when a new provider version is released.
 	//
-	// - Cron: triggered on a schedule.
+	// - Cron: Triggered on a schedule.
 	//
 	// example:
 	//
 	// Cron
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
-	// The policy value that must be maintained for scheduled triggers. This value is a cron expression.
+	// The policy value for scheduled triggers. Specify a cron expression.
 	//
 	// example:
 	//

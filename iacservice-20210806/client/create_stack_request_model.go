@@ -19,6 +19,8 @@ type iCreateStackRequest interface {
 	GetParameterSetIds() []*string
 	SetRamRole(v string) *CreateStackRequest
 	GetRamRole() *string
+	SetSkipPropertyValidation(v bool) *CreateStackRequest
+	GetSkipPropertyValidation() *bool
 	SetSource(v string) *CreateStackRequest
 	GetSource() *string
 	SetSourcePath(v string) *CreateStackRequest
@@ -28,7 +30,7 @@ type iCreateStackRequest interface {
 }
 
 type CreateStackRequest struct {
-	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// This parameter is required.
 	//
@@ -36,28 +38,31 @@ type CreateStackRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The description of the resource stack. The value cannot exceed 256 characters.
+	// The description of the stack. The description can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// Stack to create ecs and related resource for multiple enviroments.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The resource stack name. The name must be 2 to 128 characters in length and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+	// The name of the stack. The name must be 2 to 128 characters in length and can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
 	//
 	// example:
 	//
 	// stack-test
-	Name            *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The associated parameter sets.
 	ParameterSetIds []*string `json:"parameterSetIds,omitempty" xml:"parameterSetIds,omitempty" type:"Repeated"`
-	// The RAM role to be assigned to the task. This role is used to automatically continue the execution of scheduled tasks during automatic triggers or offline scenarios.
+	// The RAM role authorized for the task. This role is used to automatically resume the execution of scheduled tasks in auto-triggered or offline scenarios.
 	//
 	// example:
 	//
 	// TestIacRole
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
-	// The creation source. Valid values:
+	// Specifies whether to skip resource property validation for the provider. Default value: false.
+	SkipPropertyValidation *bool `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
+	// The source of the stack. Valid values:
 	//
-	// - OSS: a template from OSS.
+	// - OSS: a template stored in Object Storage Service (OSS).
 	//
 	// - IAC_SERVICE_MODULE: a template created in the automation service console.
 	//
@@ -67,17 +72,17 @@ type CreateStackRequest struct {
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The path of the configuration source. The value cannot exceed 1000 characters.
+	// The path of the source. The value can be up to 1,000 characters in length.
 	//
-	// - If the source is OSS, the value is in the format oss::<file link> and must be a zip file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
+	// - If the source is OSS, the value must be in the oss::<file URL> format and the file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
 	//
-	// - If the source is IAC_SERVICE_MODULE, the value is a template ID. Example: mod-xxxxx
+	// - If the source is IAC_SERVICE_MODULE, the value must be the template ID. Example: mod-xxxxx.
 	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The working directory where the configuration file is located. Enter / if it is in the root directory. Example: config/ or /
+	// The working directory where the configuration file is located. If the file is in the root directory, enter /. Examples: config/ or /.
 	//
 	// example:
 	//
@@ -111,6 +116,10 @@ func (s *CreateStackRequest) GetParameterSetIds() []*string {
 
 func (s *CreateStackRequest) GetRamRole() *string {
 	return s.RamRole
+}
+
+func (s *CreateStackRequest) GetSkipPropertyValidation() *bool {
+	return s.SkipPropertyValidation
 }
 
 func (s *CreateStackRequest) GetSource() *string {
@@ -147,6 +156,11 @@ func (s *CreateStackRequest) SetParameterSetIds(v []*string) *CreateStackRequest
 
 func (s *CreateStackRequest) SetRamRole(v string) *CreateStackRequest {
 	s.RamRole = &v
+	return s
+}
+
+func (s *CreateStackRequest) SetSkipPropertyValidation(v bool) *CreateStackRequest {
+	s.SkipPropertyValidation = &v
 	return s
 }
 

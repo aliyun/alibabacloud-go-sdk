@@ -26,15 +26,13 @@ type iCreateRegistryModuleRequest interface {
 }
 
 type CreateRegistryModuleRequest struct {
-	// The access permission. Valid values:
-	//
-	// - private: private.
+	// The permissions. Valid values: private: Private.
 	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	// The client token used to ensure idempotence. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +52,7 @@ type CreateRegistryModuleRequest struct {
 	//
 	// - The name can contain uppercase and lowercase letters, digits, hyphens (-), and underscores (_), and cannot start or end with a hyphen.
 	//
-	// - The name must be unique within the workspace.
+	// - The name must be unique among the resources in the workspace.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +60,7 @@ type CreateRegistryModuleRequest struct {
 	//
 	// ModuleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -70,17 +68,13 @@ type CreateRegistryModuleRequest struct {
 	//
 	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	// The provider type. Valid values:
-	//
-	// - alicloud: Alibaba Cloud.
+	// The provider type. Valid values: alicloud: Alibaba Cloud.
 	//
 	// example:
 	//
 	// alicloud
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The template type. Valid values:
-	//
-	// - self: custom template.
+	// The template type. Valid values: self: Custom template.
 	//
 	// example:
 	//

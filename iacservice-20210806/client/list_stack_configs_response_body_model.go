@@ -24,13 +24,13 @@ type iListStackConfigsResponseBody interface {
 type ListStackConfigsResponseBody struct {
 	// The list of stack configurations.
 	Configs []*ListStackConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this request.
+	// The maximum number of records returned for the current request.
 	//
 	// example:
 	//
 	// 24
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The position from which the current call starts reading. An empty value indicates that all data has been read.
+	// The token that indicates the position up to which the current call has read. An empty value indicates that all data has been read.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ListStackConfigsResponseBody struct {
 	//
 	// 9BEDBCF8-03BE-5A59-AC93-9263942B37E8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of records that match the request conditions. This parameter is optional and may not be returned by default.
+	// The total number of records that meet the request conditions. This parameter is optional and is not returned by default.
 	//
 	// example:
 	//
@@ -141,38 +141,39 @@ type ListStackConfigsResponseBodyConfigs struct {
 	//
 	// format_version: IaCService/2021-08-06\\ndescription: create ALB\\nupstream_input:\\n  - name: stack_network\\n ...
 	DeploymentContent *string `json:"deploymentContent,omitempty" xml:"deploymentContent,omitempty"`
-	FailedReason      *string `json:"failedReason,omitempty" xml:"failedReason,omitempty"`
-	// The status of the stack configuration.
+	// The error message indicating that the configuration processing failed.
+	FailedReason *string `json:"failedReason,omitempty" xml:"failedReason,omitempty"`
+	// The status of the stack configuration. Valid values:
 	//
 	// | Name | Description |
 	//
-	// |------|------|
+	// |------|-------------|
 	//
-	// | Creating | Being created. |
+	// | Creating | Creating |
 	//
-	// | Created | Created. |
+	// | Created | Created |
 	//
-	// | Waiting | Waiting for deployment. |
+	// | Waiting | Waiting for deployment |
 	//
-	// | Deploying | Being deployed. |
+	// | Deploying | Deploying |
 	//
-	// | Deployed | Deployed. |
+	// | Deployed | Deployed |
 	//
-	// | Errored | Deployment failed. |
+	// | Errored | Deployment failed |
 	//
-	// | Deleting | Being deleted. |
+	// | Deleting | Deleting |
 	//
-	// | Deleted | Deleted. |
+	// | Deleted | Deleted |
 	//
-	// | DeleteFailed | Deletion failed. |
+	// | DeleteFailed | Deletion failed |
 	//
-	// | DetectTriggered | Drift detection triggered. |.
+	// | DetectTriggered | Drift detection triggered successfully |
 	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The configuration version number, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+	// The version number of the configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration is changed.
 	//
 	// example:
 	//
@@ -350,7 +351,7 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfig) Validate() error {
 }
 
 type ListStackConfigsResponseBodyConfigsComponentConfigComponent struct {
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//
@@ -380,25 +381,25 @@ func (s *ListStackConfigsResponseBodyConfigsComponentConfigComponent) Validate()
 }
 
 type ListStackConfigsResponseBodyConfigsComponentConfigOutput struct {
-	// The output description.
+	// The description of the output.
 	//
 	// example:
 	//
 	// the name of sls project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The output name.
+	// The name of the output.
 	//
 	// example:
 	//
 	// project_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The output type.
+	// The type of the output.
 	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The output value.
+	// The value of the output.
 	//
 	// example:
 	//
@@ -467,20 +468,25 @@ type ListStackConfigsResponseBodyConfigsComponentConfigVariable struct {
 	//
 	// region of sls project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The variable name.
+	// The name of the variable.
 	//
 	// example:
 	//
 	// region
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Sensitive *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	// The variable type, such as:
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is sensitive. The values of sensitive parameters are invisible in both the console and API. Valid values:
+	//
+	// - true: The parameter is sensitive.
+	//
+	// - false: The parameter is not sensitive.
+	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	// The type of the variable. Valid values:
 	//
 	// - string
 	//
 	// - list(string)
 	//
-	// - map(string).
+	// - map(string)
 	//
 	// example:
 	//
@@ -621,7 +627,7 @@ func (s *ListStackConfigsResponseBodyConfigsDeploymentConfig) Validate() error {
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment struct {
-	// The deployment name.
+	// The name of the deployment.
 	//
 	// example:
 	//
@@ -651,31 +657,31 @@ func (s *ListStackConfigsResponseBodyConfigsDeploymentConfigDeployment) Validate
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput struct {
-	// The output description.
+	// The description of the output.
 	//
 	// example:
 	//
 	// the name of sls project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The output name.
+	// The name of the output.
 	//
 	// example:
 	//
 	// project_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The actual output value after the stack deployment is complete.
+	// The actual output value after the stack is deployed.
 	//
 	// example:
 	//
 	// log-test
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The output type, such as string or list(string).
+	// The type of the output, such as string or list(string).
 	//
 	// example:
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The original definition of the output value. Currently, string or list(string) is supported. You can reference a deployment output in the format: deployment.{deploymentName}.{deploymentOutputName}.
+	// The original definition of the output value. Currently, string or list(string) is supported. You can reference deployment outputs in the format of deployment.{DeploymentName}.{DeploymentOutputName}.
 	//
 	// example:
 	//
@@ -741,13 +747,13 @@ func (s *ListStackConfigsResponseBodyConfigsDeploymentConfigPublishOutput) Valid
 }
 
 type ListStackConfigsResponseBodyConfigsDeploymentConfigUpstreamInput struct {
-	// The input name.
+	// The name of the input.
 	//
 	// example:
 	//
 	// network
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The input source. Currently, only an upstream stack can be specified. The format is {iacEndpoint}/{accountId}/{upstreamStackName}.
+	// The source of the input. Currently, only upstream stacks are supported. The format is {iacEndpoint}/{accountId}/{upstreamStackName}.
 	//
 	// example:
 	//

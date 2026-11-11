@@ -34,9 +34,9 @@ type ListExplorerRegistryModulesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page of results.
+	// The token used to query the next page of results.
 	//
-	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	// If the total number of entries exceeds the value of `maxResults`, the returned data is truncated. You can use `nextToken` to query the next page.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type ListExplorerRegistryModulesResponseBodyExplorerRegistryModules struct {
 	//
 	// v1
 	LatestVersion *string `json:"latestVersion,omitempty" xml:"latestVersion,omitempty"`
-	// The module name.
+	// The name of the module.
 	//
 	// example:
 	//
 	// terraform-alicloud-modules/mongodb
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

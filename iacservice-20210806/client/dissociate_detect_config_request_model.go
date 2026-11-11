@@ -24,7 +24,7 @@ type DissociateDetectConfigRequest struct {
 	//
 	// dc-xxxx
 	DetectConfigId *string `json:"detectConfigId,omitempty" xml:"detectConfigId,omitempty"`
-	// The ID of the association target. The value is a StackId or TaskId.
+	// The ID of the associated target. The value is a stack ID or a task ID.
 	//
 	// This parameter is required.
 	//
@@ -32,11 +32,11 @@ type DissociateDetectConfigRequest struct {
 	//
 	// stack-xxxx
 	TargetId *string `json:"targetId,omitempty" xml:"targetId,omitempty"`
-	// The type of the association target. Valid values:
+	// The type of the associated target. Valid values:
 	//
-	// - Task: orchestration task.
+	// - Task: orchestration task
 	//
-	// - Stack: resource stack.
+	// - Stack: stack
 	//
 	// This parameter is required.
 	//

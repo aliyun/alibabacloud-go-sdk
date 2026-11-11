@@ -22,13 +22,13 @@ type iListTerraformProviderVersionsResponseBody interface {
 }
 
 type ListTerraformProviderVersionsResponseBody struct {
-	// The maximum number of records retrieved in a single request.
+	// The maximum number of records returned per request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. An empty value indicates that no more pages are available.
+	// The pagination token for the next page. An empty value indicates that there are no more pages.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListTerraformProviderVersionsResponseBody) Validate() error {
 }
 
 type ListTerraformProviderVersionsResponseBodyVersions struct {
-	// The publish time.
+	// The release time in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

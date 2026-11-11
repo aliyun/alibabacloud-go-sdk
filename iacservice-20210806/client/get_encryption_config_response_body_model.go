@@ -86,15 +86,7 @@ type GetEncryptionConfigResponseBodyConfig struct {
 	//
 	// 5f2fe70a-d110-44cc-990f-706eb20fxxxx
 	KeyId *string `json:"keyId,omitempty" xml:"keyId,omitempty"`
-	// The key status. Valid values:
-	//
-	// - Enabled
-	//
-	// - Disabled
-	//
-	// - PendingDeletion
-	//
-	// - PendingImport
+	// The key status. Valid values: Enabled, Disabled, PendingDeletion, and PendingImport.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type ListModuleVersionResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListModuleVersionResponseBody struct {
 	//
 	// 6
 	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
-	// The list of version information.
+	// The list of versions.
 	Versions []*ListModuleVersionResponseBodyVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListModuleVersionResponseBody) Validate() error {
 }
 
 type ListModuleVersionResponseBodyVersions struct {
-	// The time when the version was created.
+	// The time when the version was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListModuleVersionResponseBodyVersions struct {
 	//
 	// versionName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source path of the version.
+	// The path value of the version source.
 	//
 	// example:
 	//

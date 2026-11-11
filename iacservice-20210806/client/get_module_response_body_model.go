@@ -62,7 +62,7 @@ func (s *GetModuleResponseBody) Validate() error {
 }
 
 type GetModuleResponseBodyModule struct {
-	// The time when the template was created.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -100,61 +100,61 @@ type GetModuleResponseBodyModule struct {
 	//
 	// /
 	OutputPath *string `json:"outputPath,omitempty" xml:"outputPath,omitempty"`
-	// The template source. Valid values:
+	// The source of the template. Valid values:
 	//
-	// - OSS: Imported from OSS.
+	// - OSS: imported from OSS
 	//
-	// - Registry: Created from a template in the template center.
+	// - Registry: created by using a template from the template center
 	//
-	// - ExportTask: Exported from a resource export task.
+	// - ExportTask: referenced from a template exported by a resource export task
 	//
-	// - Upload: Uploaded as a file.
+	// - Upload: uploaded as a file
 	//
-	// - Shared: Cloned from a shared template.
+	// - Shared: cloned from a shared template
 	//
-	// - Editor: Created by using the online editor.
+	// - Editor: edited online
 	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The source path of the template.
+	// The path value of the template source.
 	//
-	// - If the source is Registry, the value is in the format of <workspace name>/<module name>:<module version>, such as terraform-alicloud-modules/rds:1.0.0.
+	// - If the source is Registry, the value is in the <Workspace name>/<Module name>:<Module version> format. Example: terraform-alicloud-modules/rds:1.0.0.
 	//
-	// - If the source is OSS, the value is in the format of oss::<file link>, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	// - If the source is OSS, the value is in the oss::<File URL> format. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
 	//
-	// - If the source is ExportTask, the value is in the format of <export task ID>:<exported version>, such as ex-3b6cb9fa4751afff298da723c24ac:v1.
+	// - If the source is ExportTask, the value is in the <Export task ID>:<Exported version> format. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
 	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The path of the state file that corresponds to the template. Currently, only OSS paths are supported. The value is in the format of oss::<file OSS path>/terraform.tfstate.
+	// The path of the state file corresponding to the template. This parameter is applicable only to OSS paths. The value is in the oss::<OSS path of the file>/terraform.tfstate format.
 	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/terraform.tfstate
 	StatePath *string `json:"statePath,omitempty" xml:"statePath,omitempty"`
-	// The template status. Valid values:
+	// The status of the template. Valid values:
 	//
 	// - Creating: The template is being created.
 	//
 	// - Created: The template is created.
 	//
-	// After the template is created, you can publish a version.
+	// You can publish a version after the template is created.
 	//
 	// example:
 	//
 	// Created
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tags of the template.
+	// The list of tags for the template.
 	Tags []*GetModuleResponseBodyModuleTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The version generation strategy. Valid values:
 	//
-	// - Manual: Versions are generated manually. This is the default value.
+	// - Manual: manually generates versions (default)
 	//
-	// - SourcePathUpdated: A new version is generated when the sourcePath is modified.
+	// - SourcePathUpdated: generates a new version when sourcePath is modified
 	//
 	// example:
 	//

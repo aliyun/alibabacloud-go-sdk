@@ -72,7 +72,7 @@ type GetTerraformStateDetectionResponseBodyJob struct {
 	//
 	// planned failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The task identifier. For a Stack task, the value is in the format of <$stackId>:<$deploymentName>. For a Task task, the value is <$TaskId>.
+	// The job identifier. The format is <$stackId>:<$deploymentName> for stack tasks and <$TaskId> for tasks.
 	//
 	// example:
 	//
@@ -80,23 +80,23 @@ type GetTerraformStateDetectionResponseBodyJob struct {
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
 	// The job status. Valid values:
 	//
-	// - Pending: the initial status after the job is created.
+	// - Pending: The initial state after the job is created.
 	//
-	// - PlanQueued: the job is queued because no containers are available after the job is created.
+	// - PlanQueued: The job is queued and waiting because no containers are available after creation.
 	//
-	// - Planning: the resource job is in the Plan execution phase.
+	// - Planning: The resource job is in the plan execution phase.
 	//
-	// - Planned: the resource job has completed the Plan execution.
+	// - Planned: The resource job has completed plan execution.
 	//
-	// - PlannedAndFinished: no differences are found after the Plan execution is complete. The job is in a final status.
+	// - PlannedAndFinished: The job is in the final state because no differences are found after plan execution.
 	//
-	// - Errored: the job execution encountered an error and entered a final status.
+	// - Errored: The job has entered the final state due to an execution error.
 	//
 	// example:
 	//
 	// Errored
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task type.
+	// The job type.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type GetTerraformStateDetectionResponseBodyJobChangedResources struct {
 	//
 	// vpc-axxxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
+	// The identifier of the resource in the Terraform template. The format is <$componetName>:<$resourceName> for stack tasks and <$resourceName> for tasks.
 	//
 	// example:
 	//
@@ -296,7 +296,7 @@ type GetTerraformStateDetectionResponseBodyJobChangedResourcesAttributeChanges s
 	//
 	// test_remote
 	RemoteValue *string `json:"remoteValue,omitempty" xml:"remoteValue,omitempty"`
-	// The template-declared value.
+	// The value declared in the template.
 	//
 	// example:
 	//
@@ -358,7 +358,7 @@ type GetTerraformStateDetectionResponseBodyJobDriftedResources struct {
 	//
 	// vpc-bxxxxx
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The identifier of the resource in the Terraform template. For a Stack task, the value is in the format of <$componetName>:<$resourceName>. For a Task task, the value is <$resourceName>.
+	// The identifier of the resource in the Terraform template. The format is <$componetName>:<$resourceName> for stack tasks and <$resourceName> for tasks.
 	//
 	// example:
 	//

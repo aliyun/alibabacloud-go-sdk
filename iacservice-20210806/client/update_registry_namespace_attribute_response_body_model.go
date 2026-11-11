@@ -16,7 +16,7 @@ type iUpdateRegistryNamespaceAttributeResponseBody interface {
 }
 
 type UpdateRegistryNamespaceAttributeResponseBody struct {
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

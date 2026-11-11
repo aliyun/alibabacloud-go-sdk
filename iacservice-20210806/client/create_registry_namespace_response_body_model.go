@@ -16,7 +16,7 @@ type iCreateRegistryNamespaceResponseBody interface {
 }
 
 type CreateRegistryNamespaceResponseBody struct {
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

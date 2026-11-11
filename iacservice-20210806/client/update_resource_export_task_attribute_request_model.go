@@ -32,7 +32,7 @@ type iUpdateResourceExportTaskAttributeRequest interface {
 }
 
 type UpdateResourceExportTaskAttributeRequest struct {
-	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	// The idempotency token. The format is [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// This parameter is required.
 	//
@@ -40,23 +40,23 @@ type UpdateResourceExportTaskAttributeRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The description of the task.
+	// The task description.
 	//
 	// example:
 	//
 	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Saves the exported template as a module. If this parameter is not set, the template is automatically saved in the registry.
+	// Saves the exported template as a module. If this parameter is not specified, the template is automatically saved in the registry.
 	ExportToModule *UpdateResourceExportTaskAttributeRequestExportToModule `json:"exportToModule,omitempty" xml:"exportToModule,omitempty" type:"Struct"`
-	// The list of include rules used when exporting resources.
+	// The list of inclusion rules used when exporting resources.
 	IncludeRules []*UpdateResourceExportTaskAttributeRequestIncludeRules `json:"includeRules,omitempty" xml:"includeRules,omitempty" type:"Repeated"`
 	// The name of the resource export task. The name must meet the following requirements:
 	//
 	// - The name must be 2 to 128 characters in length.
 	//
-	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
 	//
-	// - The name must be unique among resource export tasks within the current account.
+	// - The name must be unique among the resource export tasks within the current account.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type UpdateResourceExportTaskAttributeRequest struct {
 	//
 	// ramName
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
-	// The Terraform provider version. Call **ListTerraformProviderVersions*	- to view the supported versions. Default value: the latest version.
+	// The Terraform provider version. You can call the **ListTerraformProviderVersions*	- operation to view the supported versions. Default value: the latest version.
 	//
 	// example:
 	//
 	// 1.183.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	// The Terraform version. Call **ListAvailableTerraformVersions*	- to view the supported versions. Default value: 1.5.7.
+	// The Terraform version. You can call the **ListAvailableTerraformVersions*	- operation to view the supported versions. Default value: 1.5.7.
 	//
 	// example:
 	//
@@ -82,9 +82,9 @@ type UpdateResourceExportTaskAttributeRequest struct {
 	TerraformVersion *string `json:"terraformVersion,omitempty" xml:"terraformVersion,omitempty"`
 	// The trigger strategy. Valid values:
 	//
-	// - Auto: triggered automatically when rules are modified or the trigger strategy is changed to Auto.
+	// - Auto: Triggered when a rule is modified or the trigger strategy is changed to Auto.
 	//
-	// - Manual: triggered manually.
+	// - Manual: Manually triggered.
 	//
 	// Default value: Manual.
 	//
@@ -92,7 +92,7 @@ type UpdateResourceExportTaskAttributeRequest struct {
 	//
 	// Manual
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
-	// The list of variables. Sets exported resource parameters as variables.
+	// The list of variables. Sets the parameters of the exported resources as variables.
 	Variables []*UpdateResourceExportTaskAttributeRequestVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
@@ -222,9 +222,9 @@ func (s *UpdateResourceExportTaskAttributeRequest) Validate() error {
 }
 
 type UpdateResourceExportTaskAttributeRequestExportToModule struct {
-	// The module type in which the exported template is saved. Valid values:
+	// The module type for saving the exported template. Valid values:
 	//
-	// - OSS: OSS
+	// - OSS: OSS.
 	//
 	// - Registry: Terraform Registry.
 	//
@@ -232,13 +232,13 @@ type UpdateResourceExportTaskAttributeRequestExportToModule struct {
 	//
 	// Registry
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The path for saving the template content. Set this parameter when source is set to OSS. Format: oss::https://<bucket>.oss-<region>.aliyuncs.com/<path>.zip.
+	// The path for saving the template content. This parameter is required when source is set to OSS. Format: oss::https://<bucket>.oss-<region>.aliyuncs.com/<path>.zip.
 	//
 	// example:
 	//
 	// oss::https://iac-daily.oss-ap-southeast-1.aliyuncs.com/iacservice/vpc.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The path for saving the template state file. Set this parameter when source is set to OSS. Format: oss::https://<bucket>.oss-<region>.aliyuncs.com/<path>/terraform.tfstate.
+	// The path for saving the state file of the template. This parameter is required when source is set to OSS. Format: oss::https://<bucket>.oss-<region>.aliyuncs.com/<path>/terraform.tfstate.
 	//
 	// example:
 	//
@@ -286,25 +286,25 @@ func (s *UpdateResourceExportTaskAttributeRequestExportToModule) Validate() erro
 }
 
 type UpdateResourceExportTaskAttributeRequestIncludeRules struct {
-	// The name of the include rule for resource export. Valid values:
+	// The name of the inclusion rule for resource export. Valid values:
 	//
-	// - ResourceType: required. The resource type. Call **ListResourceTypes*	- to view the supported resources. Example: ALIYUN::VPC::VPC.
+	// - ResourceType: Required. The resource type. You can call the **ListResourceTypes*	- operation to view the supported resources. Example: ALIYUN::VPC::VPC.
 	//
-	// - RegionId: required. The region to which the resource belongs. Only one region is supported. Example: cn-chengdu.
+	// - RegionId: Required. The region to which the resource belongs. Only one region is supported. Example: cn-chengdu.
 	//
-	// - <ResourceType>:Id: the resource ID. Example: ALIYUN::VPC::VPC:Id.
+	// - <ResourceType>:Id: The resource ID. Example: ALIYUN::VPC::VPC:Id.
 	//
-	// - ResourceGroupId: the resource group ID. Example: rg-1234.
+	// - ResourceGroupId: The resource group ID. Example: rg-1234.
 	//
-	// - ZoneId: the zone to which the resource belongs. Only one zone is supported. Example: ap-southeast-1-h.
+	// - ZoneId: The zone to which the resource belongs. Only one zone is supported. Example: cn-hangzhou-h.
 	//
-	// Multiple filter conditions have an AND relationship by default. A resource must meet all filter conditions to be considered a match.
+	// By default, multiple filter conditions use the AND logical operator. A resource matches the filter only when it meets all the conditions.
 	//
 	// example:
 	//
 	// RegionId
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The values of an include rule for resource export.
+	// The values of the inclusion rule for a group of resources to be exported.
 	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
@@ -339,9 +339,9 @@ func (s *UpdateResourceExportTaskAttributeRequestIncludeRules) Validate() error 
 }
 
 type UpdateResourceExportTaskAttributeRequestVariables struct {
-	// The list of Terraform resource properties corresponding to the resource type.
+	// The list of properties for the Terraform resource that corresponds to the resource type.
 	Properties []*string `json:"properties,omitempty" xml:"properties,omitempty" type:"Repeated"`
-	// The resource type. Call **ListResourceTypes*	- to view the supported resources.
+	// The resource type. You can call the **ListResourceTypes*	- operation to view the supported resources.
 	//
 	// example:
 	//

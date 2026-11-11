@@ -36,7 +36,7 @@ type ListGroupResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size, which indicates the maximum number of results returned per page.
+	// The page size, which specifies the maximum number of results returned per page.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListGroupResponseBody) Validate() error {
 }
 
 type ListGroupResponseBodyGroups struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

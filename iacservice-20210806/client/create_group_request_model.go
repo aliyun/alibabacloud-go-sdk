@@ -48,17 +48,13 @@ type CreateGroupRequest struct {
 	//
 	// true
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
-	// Specifies whether to enable the automatic trigger policy. Valid values:
-	//
-	// - **true**: enabled.
-	//
-	// - **false**: disabled.
+	// Specifies whether to enable the automatic trigger policy. Valid values: **true**: Enabled. **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	AutoTrigger *bool `json:"autoTrigger,omitempty" xml:"autoTrigger,omitempty"`
-	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +68,7 @@ type CreateGroupRequest struct {
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to forcibly use the group configuration.
+	// Specifies whether to force the use of the group configuration.
 	//
 	// example:
 	//
@@ -98,11 +94,7 @@ type CreateGroupRequest struct {
 	//
 	// p-433aead7560571a87349d054b4
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The RAM role (1-128 characters).
-	//
-	// The system assumes this role to execute the template when a new job is triggered.
-	//
-	// This parameter is required when the job trigger method is not manual.
+	// The RAM role. Length: 1 to 128 characters. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger method is not manual.
 	//
 	// example:
 	//
@@ -110,31 +102,25 @@ type CreateGroupRequest struct {
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
 	// The list of export fields for the report.
 	ReportExportField []*string `json:"reportExportField,omitempty" xml:"reportExportField,omitempty" type:"Repeated"`
-	// The export address for the execution report. OSS addresses are supported.
-	//
-	// https://<OSS bucket address>/<path>.
+	// The export address for the execution report. OSS addresses are supported. Format: https://<OSS bucket endpoint>/<path>.
 	//
 	// example:
 	//
 	// https://test.oss-cn-hangzhou.aliyuncs.com/test/test
 	ReportExportPath *string `json:"reportExportPath,omitempty" xml:"reportExportPath,omitempty"`
-	// The Terraform Provider version.
-	//
-	// Select a Terraform Provider version. The version configured on the task takes higher priority.
+	// The Terraform provider version. Select a Terraform provider version. The version configured on the task takes precedence.
 	//
 	// example:
 	//
 	// 1.189.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	// The trigger policy.
-	//
-	// This parameter cannot be empty when autoTrigger is set to true.
+	// The trigger policy. This parameter is required when autoTrigger is set to true.
 	TriggerConfig []*CreateGroupRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
 	// The resource type for triggered execution. Valid values:
 	//
-	// - Task: regular task.
+	// - Task: Regular task.
 	//
-	// - SceneTestingTask: scenario-based testing task.
+	// - SceneTestingTask: Scenario-based testing task.
 	TriggerResourceType []*string `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
 }
 
@@ -310,9 +296,7 @@ type CreateGroupRequestNotifyConfig struct {
 	//
 	// /
 	NotifyPath *string `json:"notifyPath,omitempty" xml:"notifyPath,omitempty"`
-	// The notification type:
-	//
-	// DingDing.
+	// The notification type. Valid values: DingDing.
 	//
 	// example:
 	//
@@ -353,15 +337,15 @@ func (s *CreateGroupRequestNotifyConfig) Validate() error {
 type CreateGroupRequestTriggerConfig struct {
 	// The trigger policy. Valid values:
 	//
-	// - ProviderNewVersion: triggered when a new Provider version is released.
+	// - ProviderNewVersion: Triggered when a new provider version is released.
 	//
-	// - Cron: triggered on a schedule.
+	// - Cron: Triggered on a schedule.
 	//
 	// example:
 	//
 	// Cron
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
-	// The policy value to maintain for scheduled triggering. This is a cron expression.
+	// The policy value for scheduled triggers. Specify a cron expression.
 	//
 	// example:
 	//

@@ -30,31 +30,31 @@ type GetStackDeploymentsRequest struct {
 	//
 	// v1
 	ConfigVersion *string `json:"configVersion,omitempty" xml:"configVersion,omitempty"`
-	// The deployment name.
+	// The name of the deployment.
 	//
 	// example:
 	//
 	// production
 	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
-	// The deployment number. The deployment number for each stack starts from 1 and increments each time a deployment is successfully triggered.
+	// The deployment number. The deployment number of each stack starts from 1 and increments each time a deployment is successfully triggered.
 	//
 	// example:
 	//
 	// 1
 	DeploymentNo *string `json:"deploymentNo,omitempty" xml:"deploymentNo,omitempty"`
-	// The page number, starting from 1.
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	// The number of entries to return on each page. Default value: 20. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The deployment status.
+	// The deployment status. Valid values:
 	//
 	// | Name | Description |
 	//
@@ -62,49 +62,49 @@ type GetStackDeploymentsRequest struct {
 	//
 	// | Pending | The initial status after the deployment is created. |
 	//
-	// | PriorityQueued | Priority queuing in progress. |
+	// | PriorityQueued | The deployment is queued with priority. |
 	//
-	// | PlanQueued | The deployment is queuing because no workflow is available after creation. |
+	// | PlanQueued | The deployment is queued and waiting for an available workflow after it is created. |
 	//
-	// | ApplyQueued | The deployment is queuing because no workflow is available during execution. |
+	// | ApplyQueued | The deployment is queued and waiting for an available workflow during execution. |
 	//
-	// | Planning | The resource deployment is in the Plan phase. |
+	// | Planning | The deployment is in the plan phase. |
 	//
-	// | Planned | The resource deployment has completed the Plan phase. |
+	// | Planned | The deployment has completed the plan phase. |
 	//
-	// | ConfigProactiveInProgress | Compliance pre-check in progress. |
+	// | ConfigProactiveInProgress | The compliance precheck is in progress. |
 	//
-	// | ConfigProactiveSuccess | Compliance pre-check succeeded. |
+	// | ConfigProactiveSuccess | The compliance precheck is successful. |
 	//
-	// | DetectInProgress | Drift detection in progress. |
+	// | DetectInProgress | Drift detection is in progress. |
 	//
-	// | ImportQueued | The deployment is queuing because no workflow is available during Import execution. |
+	// | ImportQueued | The deployment is queued and waiting for an available workflow during the import phase. |
 	//
-	// | Importing | The resource deployment is in the Import phase. |
+	// | Importing | The deployment is in the import phase. |
 	//
-	// | Imported | The resource deployment has completed the Import phase. |
+	// | Imported | The deployment has completed the import phase. |
 	//
-	// | StateQueued | The deployment is queuing because no workflow is available during state command execution. |
+	// | StateQueued | The deployment is queued and waiting for an available workflow during the state command execution. |
 	//
-	// | Stating | The resource deployment is executing the state command. |
+	// | Stating | The deployment is executing the state command. |
 	//
-	// | Stated | The resource deployment has completed the state command execution. |
+	// | Stated | The deployment has completed the execution of the state command. |
 	//
-	// | Confirmed | The resource deployment has been confirmed after the Plan phase. |
+	// | Confirmed | The deployment is confirmed after the plan phase. |
 	//
-	// | PlannedAndFinished | No diff was found after the Plan phase. The deployment is in a final status. |
+	// | PlannedAndFinished | The deployment is in the final state because no differences are found after the plan phase. |
 	//
-	// | Applying | The resource deployment is in the Apply phase. |
+	// | Applying | The deployment is in the apply phase. |
 	//
-	// | Applied | The resource deployment has completed the Apply phase. |
+	// | Applied | The deployment has completed the apply phase. |
 	//
-	// | Discarded | The resource deployment has been discarded and is in a final status. |
+	// | Discarded | The deployment is discarded and enters the final state. |
 	//
-	// | Errored | The deployment execution encountered an error and is in a final status. |
+	// | Errored | An error occurred during the deployment execution, and the deployment enters the final state. |
 	//
-	// | ConfigProactiveFailure | Compliance pre-check failed. |
+	// | ConfigProactiveFailure | The compliance precheck failed. |
 	//
-	// | Canceled | The deployment execution has been canceled and is in a final status. |
+	// | Canceled | The deployment execution is canceled, and the deployment enters the final state. |
 	//
 	// example:
 	//

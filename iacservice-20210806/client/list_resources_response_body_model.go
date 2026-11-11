@@ -30,7 +30,7 @@ type ListResourcesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	// The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListResourcesResponseBody) Validate() error {
 }
 
 type ListResourcesResponseBodyResources struct {
-	// The Alibaba Cloud account ID.
+	// The Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 365845
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-05-03T02:22:59Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The dependent resources.
+	// The list of dependent resources.
 	DependsOnResourceIds []*string `json:"dependsOnResourceIds,omitempty" xml:"dependsOnResourceIds,omitempty" type:"Repeated"`
 	// The product code.
 	//
@@ -155,7 +155,7 @@ type ListResourcesResponseBodyResources struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The resource ARN.
+	// The ARN of the resource.
 	//
 	// example:
 	//

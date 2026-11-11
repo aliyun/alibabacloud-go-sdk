@@ -20,10 +20,25 @@ type iGetProviderDocumentResponseBody interface {
 }
 
 type GetProviderDocumentResponseBody struct {
-	Document        *string `json:"document,omitempty" xml:"document,omitempty"`
+	// The Terraform provider resource document.
+	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// The Terraform provider version.
+	//
+	// example:
+	//
+	// 1.206.0
 	ProviderVersion *string `json:"providerVersion,omitempty" xml:"providerVersion,omitempty"`
-	// Id of the request
-	RequestId             *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CD478792-6952-5A1C-9F57-78932BF0FAC6
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The Terraform resource type.
+	//
+	// example:
+	//
+	// alicloud_route_table
 	TerraformResourceType *string `json:"terraformResourceType,omitempty" xml:"terraformResourceType,omitempty"`
 }
 

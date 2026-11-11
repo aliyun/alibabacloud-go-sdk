@@ -16,7 +16,7 @@ type iExecuteTerraformDestroyRequest interface {
 }
 
 type ExecuteTerraformDestroyRequest struct {
-  // The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+  // The idempotency token. The format is [0-9a-zA-Z-]{1,64}. A UUID is recommended.
   // 
   // This parameter is required.
   // 
@@ -24,7 +24,7 @@ type ExecuteTerraformDestroyRequest struct {
   // 
   // a65451293e64979ba7a4b573950217fe
   ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-  // The state file ID.
+  // The ID of the state file.
   // 
   // This parameter is required.
   // 

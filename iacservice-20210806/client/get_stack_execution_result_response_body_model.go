@@ -26,7 +26,7 @@ type GetStackExecutionResultResponseBody struct {
 	//
 	// F2D40488-3F74-568B-87EC-1C04D098DF8B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The execution results of the triggered Stacks.
+	// The execution results of the triggered stack.
 	StackResults []*GetStackExecutionResultResponseBodyStackResults `json:"stackResults,omitempty" xml:"stackResults,omitempty" type:"Repeated"`
 	// The unique ID of the trigger.
 	//
@@ -34,13 +34,7 @@ type GetStackExecutionResultResponseBody struct {
 	//
 	// event-xxx
 	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
-	// The overall execution status of this trigger task. Valid values:
-	//
-	// - Waiting: Processing.
-	//
-	// - Success: Processing succeeded.
-	//
-	// - Errored: Processing failed.
+	// The overall execution status of the current trigger task. Valid values: Waiting (Processing), Success (Succeeded), and Errored (Failed).
 	//
 	// example:
 	//
@@ -106,9 +100,9 @@ func (s *GetStackExecutionResultResponseBody) Validate() error {
 }
 
 type GetStackExecutionResultResponseBodyStackResults struct {
-	// The deployment results of the Stack.
+	// The deployment results of the stack.
 	Deployments []*GetStackExecutionResultResponseBodyStackResultsDeployments `json:"deployments,omitempty" xml:"deployments,omitempty" type:"Repeated"`
-	// Error code of the stack execution
+	// The error code for the stack execution.
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
 	//
@@ -116,19 +110,19 @@ type GetStackExecutionResultResponseBodyStackResults struct {
 	//
 	// No corresponding Stack found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the Stack.
+	// The unique ID of the stack.
 	//
 	// example:
 	//
 	// stack-al181av2bloah5s53hacbp4
 	StackId *string `json:"stackId,omitempty" xml:"stackId,omitempty"`
-	// The Stack name.
+	// The name of the stack.
 	//
 	// example:
 	//
 	// stack-demo
 	StackName *string `json:"stackName,omitempty" xml:"stackName,omitempty"`
-	// The execution status of the Stack.
+	// The execution status of the stack.
 	//
 	// example:
 	//
@@ -212,7 +206,7 @@ func (s *GetStackExecutionResultResponseBodyStackResults) Validate() error {
 }
 
 type GetStackExecutionResultResponseBodyStackResultsDeployments struct {
-	// The deployment name.
+	// The name of the deployment.
 	//
 	// example:
 	//
@@ -224,13 +218,13 @@ type GetStackExecutionResultResponseBodyStackResultsDeployments struct {
 	//
 	// Service returned null result
 	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
-	// The deployment status.
+	// The status of the deployment.
 	//
 	// example:
 	//
 	// Applied
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The URL for viewing deployment details.
+	// The URL to view the deployment details.
 	//
 	// example:
 	//

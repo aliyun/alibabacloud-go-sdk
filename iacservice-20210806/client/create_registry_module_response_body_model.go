@@ -22,7 +22,7 @@ type CreateRegistryModuleResponseBody struct {
 	//
 	// C896FE0A-1BEA-5D01-BFF4-B03B82B9CA3D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The template source, which is a concatenation of \\<namespaceName>/\\<ModuleName>.
+	// The template source, which is concatenated in the \\<namespaceName>/\\<ModuleName> format.
 	//
 	// example:
 	//

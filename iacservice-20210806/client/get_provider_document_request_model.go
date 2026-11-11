@@ -16,8 +16,19 @@ type iGetProviderDocumentRequest interface {
 }
 
 type GetProviderDocumentRequest struct {
+	// The Terraform provider version.
+	//
+	// example:
+	//
+	// 1.248.0
 	ProviderVersion *string `json:"providerVersion,omitempty" xml:"providerVersion,omitempty"`
+	// The Terraform resource type.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// alicloud_route_table
 	TerraformResourceType *string `json:"terraformResourceType,omitempty" xml:"terraformResourceType,omitempty"`
 }
 

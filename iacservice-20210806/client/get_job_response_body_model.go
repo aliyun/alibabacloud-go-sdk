@@ -62,12 +62,13 @@ func (s *GetJobResponseBody) Validate() error {
 }
 
 type GetJobResponseBodyJob struct {
+	// The full set of job parameters, including sensitive and non-sensitive parameters.
 	AllParameters []*GetJobResponseBodyJobAllParameters `json:"allParameters,omitempty" xml:"allParameters,omitempty" type:"Repeated"`
-	// The list of assertion checks. This parameter applies to scenario-based testing tasks.
+	// The list of assertion checks, applicable to scenario-based testing tasks.
 	AssertCheckDetail []*GetJobResponseBodyJobAssertCheckDetail `json:"assertCheckDetail,omitempty" xml:"assertCheckDetail,omitempty" type:"Repeated"`
 	// The job configuration.
 	Config *GetJobResponseBodyJobConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The time when the job was created.
+	// The job creation time.
 	//
 	// example:
 	//
@@ -93,9 +94,9 @@ type GetJobResponseBodyJob struct {
 	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
 	// The execution type. Valid values:
 	//
-	// - Manual: manual execution (default)
+	// - Manual: Manual execution (default).
 	//
-	// - Auto: automatic execution.
+	// - Auto: Automatic execution.
 	//
 	// example:
 	//
@@ -119,11 +120,9 @@ type GetJobResponseBodyJob struct {
 	//
 	// Default
 	JobType *string `json:"jobType,omitempty" xml:"jobType,omitempty"`
-	// The run logs. The following log content (key values) is currently supported:
+	// The runtime logs. Currently, the following log content (that is, the values of the key) can be returned:
 	//
 	// - tf-init.run.error.log
-	//
-	//
 	//
 	// - tf-init.plan.log
 	//
@@ -131,9 +130,7 @@ type GetJobResponseBodyJob struct {
 	//
 	// - tf-apply.run.log
 	//
-	//
-	//
-	// - tf-init.apply.log.
+	// - tf-init.apply.log
 	LogFile map[string]interface{} `json:"logFile,omitempty" xml:"logFile,omitempty"`
 	// The job output.
 	//
@@ -205,39 +202,39 @@ type GetJobResponseBodyJob struct {
 	//
 	// }
 	OutputJsonPlan interface{} `json:"outputJsonPlan,omitempty" xml:"outputJsonPlan,omitempty"`
-	// The collection of parameters.
+	// The parameter collection.
 	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The job status. Valid values:
 	//
-	// - Pending: the initial status after the job is created.
+	// - Pending: The initial state after the job is created.
 	//
-	// - PlanQueued: the job is queued because no available worker is ready after the job is created.
+	// - PlanQueued: The state where the job is queued and waiting because no workflow is available after creation.
 	//
-	// - Planning: the resource job is in the Plan phase.
+	// - Planning: The state where the job is in the Plan phase.
 	//
-	// - ConfigProactiveInProgress: compliance pre-check is in progress. The compliance pre-check feature must be enabled for the account.
+	// - ConfigProactiveInProgress: The state where the compliance pre-check is in progress. This requires the compliance pre-check feature to be enabled for the account.
 	//
-	// - ConfigProactiveSuccess: compliance pre-check succeeded. The compliance pre-check feature must be enabled for the account.
+	// - ConfigProactiveSuccess: The state where the compliance pre-check is successful. This requires the compliance pre-check feature to be enabled for the account.
 	//
-	// - Planned: the resource job has completed the Plan phase.
+	// - Planned: The state where the job has completed the Plan phase.
 	//
-	// - PlannedAndFinished: no diff is found after the Plan phase is completed. This is a final status.
+	// - PlannedAndFinished: The final state where no differences are found after the Plan phase is completed.
 	//
-	// - Confirmed: the resource job is waiting for confirmation after the Plan phase is completed.
+	// - Confirmed: The state where the job is waiting for confirmation after the Plan phase is completed.
 	//
-	// - ApplyQueued: the job is queued because no available worker is ready during execution.
+	// - ApplyQueued: The state where the job is queued and waiting because no workflow is available during execution.
 	//
-	// - Applying: the resource job is in the Apply phase.
+	// - Applying: The state where the job is in the Apply phase.
 	//
-	// - Applied: the resource job has completed the Apply phase. This is a final status.
+	// - Applied: The final state where the job has completed the Apply phase.
 	//
-	// - Errored: the job execution encountered an error. This is a final status.
+	// - Errored: The final state where an error occurs during job execution.
 	//
-	// - Canceled: the job execution was canceled. This is a final status.
+	// - Canceled: The final state where the job execution is canceled.
 	//
-	// - Discarded: the plan of the resource job was discarded. This is a final status.
+	// - Discarded: The final state where the plan of the job is discarded.
 	//
-	// - ConfigProactiveFailure: compliance pre-check failed. The compliance pre-check feature must be enabled for the account.
+	// - ConfigProactiveFailure: The state where the compliance pre-check fails. This requires the compliance pre-check feature to be enabled for the account.
 	//
 	// example:
 	//
@@ -253,9 +250,9 @@ type GetJobResponseBodyJob struct {
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - Task: regular task (default)
+	// - Task: Regular task (default).
 	//
-	// - SceneTestingTask: scenario-based testing task.
+	// - SceneTestingTask: Scenario-based testing task.
 	//
 	// example:
 	//
@@ -485,14 +482,20 @@ func (s *GetJobResponseBodyJob) Validate() error {
 }
 
 type GetJobResponseBodyJobAllParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// regionId
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is confidential. Confidential parameters are hidden in API responses and console displays, and are stored in an encrypted manner.
+	//
 	// example:
 	//
 	// false
 	Secret *bool `json:"secret,omitempty" xml:"secret,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// cn-zhangjiakou
@@ -541,15 +544,15 @@ func (s *GetJobResponseBodyJobAllParameters) Validate() error {
 type GetJobResponseBodyJobAssertCheckDetail struct {
 	// The comparison operator. Valid values:
 	//
-	// - eq: equal to
+	// - eq: Equal to.
 	//
-	// - n_eq: not equal to
+	// - n_eq: Not equal to.
 	//
-	// - ctn: contains
+	// - ctn: Contains.
 	//
-	// - n_ctn: does not contain
+	// - n_ctn: Does not contain.
 	//
-	// - regex: regular expression match.
+	// - regex: Regular expression match.
 	//
 	// example:
 	//
@@ -559,9 +562,9 @@ type GetJobResponseBodyJobAssertCheckDetail struct {
 	//
 	// example:
 	//
-	// 期望值
+	// Expected value
 	ExpectedValue *string `json:"expectedValue,omitempty" xml:"expectedValue,omitempty"`
-	// Indicates whether the assertion check is passed.
+	// Indicates whether the check is passed.
 	//
 	// example:
 	//
@@ -569,11 +572,11 @@ type GetJobResponseBodyJobAssertCheckDetail struct {
 	IsPass *bool `json:"isPass,omitempty" xml:"isPass,omitempty"`
 	// The assertion type. Valid values:
 	//
-	// - state: task status
+	// - state: Task status.
 	//
-	// - result: execution result
+	// - result: Execution result.
 	//
-	// - resourceChange: resource change.
+	// - resourceChange: Resource change.
 	//
 	// example:
 	//
@@ -636,7 +639,7 @@ type GetJobResponseBodyJobConfig struct {
 	//
 	// true
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
-	// Specifies whether compliance pre-check is performed for this job.
+	// Specifies whether this job performs a compliance pre-check.
 	//
 	// example:
 	//
@@ -654,7 +657,7 @@ type GetJobResponseBodyJobConfig struct {
 	//
 	// v1
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	// The resource change content.
+	// The resource changes.
 	//
 	// example:
 	//

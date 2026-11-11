@@ -16,7 +16,7 @@ type iGetRegistryModuleResponseBody interface {
 }
 
 type GetRegistryModuleResponseBody struct {
-	// The Registry module.
+	// The Registry template.
 	RegistryModule *GetRegistryModuleResponseBodyRegistryModule `json:"registryModule,omitempty" xml:"registryModule,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,21 +62,21 @@ func (s *GetRegistryModuleResponseBody) Validate() error {
 }
 
 type GetRegistryModuleResponseBodyRegistryModule struct {
-	// The permission. Valid values:
+	// The permissions. Valid values:
 	//
-	// - private: private.
+	// - private: Private.
 	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The creation time.
+	// The creation time in the YYYY-MM-DD HH:mm:ss format. The returned value does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 2025-05-28 13:39:05
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The module description.
+	// The template description.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type GetRegistryModuleResponseBodyRegistryModule struct {
 	//
 	// 23
 	Downloads *int32 `json:"downloads,omitempty" xml:"downloads,omitempty"`
-	// The module name.
+	// The name of the template.
 	//
 	// example:
 	//
 	// ecs-cluster
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -108,15 +108,15 @@ type GetRegistryModuleResponseBodyRegistryModule struct {
 	//
 	// alicloud
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The list of accounts with which the Registry module is shared.
+	// The list of accounts that share the Registry template.
 	SharedAccounts []*int64 `json:"sharedAccounts,omitempty" xml:"sharedAccounts,omitempty" type:"Repeated"`
-	// The module source, which is a concatenation of <NamespaceName>/<ModuleName>.
+	// The template source, which is concatenated in the <NamespaceName>/<ModuleName> format.
 	//
 	// example:
 	//
 	// namespaceName/ModuleName
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The module source URL.
+	// The URL of the template source.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type GetRegistryModuleResponseBodyRegistryModule struct {
 	SourceUrl *string `json:"sourceUrl,omitempty" xml:"sourceUrl,omitempty"`
 	// The workspace type. Valid values:
 	//
-	// - system: public module
+	// - system: Public module.
 	//
-	// - self: custom module
+	// - self: Custom module.
 	//
-	// - shared: shared module
+	// - shared: Shared module.
 	//
-	// - community: community module.
+	// - community: Community module.
 	//
 	// example:
 	//

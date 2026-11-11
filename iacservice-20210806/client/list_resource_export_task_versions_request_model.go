@@ -28,7 +28,7 @@ type ListResourceExportTaskVersionsRequest struct {
 	//
 	// v1
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
-	// The search keyword. Fuzzy search on export version names is supported.
+	// The search keyword. Fuzzy search is supported for export version names.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListResourceExportTaskVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -48,15 +48,15 @@ type ListResourceExportTaskVersionsRequest struct {
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
 	// The export status. Valid values:
 	//
-	// - Queue: queued
+	// - Queue: Queued.
 	//
-	// - Pending: preparing to run
+	// - Pending: Ready to run.
 	//
-	// - Success: succeeded
+	// - Success: Succeeded.
 	//
-	// - Errored: failed
+	// - Errored: Failed.
 	//
-	// - Canceled: canceled
+	// - Canceled: Canceled.
 	//
 	// example:
 	//

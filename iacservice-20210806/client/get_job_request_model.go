@@ -16,11 +16,11 @@ type iGetJobRequest interface {
 type GetJobRequest struct {
 	// The task type. Valid values:
 	//
-	// - Task: regular task (default)
+	// - Task: Regular task (default).
 	//
-	// - SceneTestingTask: scenario-based testing task
+	// - SceneTestingTask: Scenario-based testing task.
 	//
-	// - Stack: resource stack.
+	// - Stack: Resource stack.
 	//
 	// example:
 	//

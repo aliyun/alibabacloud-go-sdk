@@ -24,11 +24,11 @@ type iManageTerraformStateRequest interface {
 }
 
 type ManageTerraformStateRequest struct {
-	// The action to perform on the state file. Supports import and removal. Valid values:
+	// The modification action for the state file. Valid values:
 	//
 	// - Import
 	//
-	// - StateRemove.
+	// - StateRemove
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type ManageTerraformStateRequest struct {
 	//
 	// Import
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ManageTerraformStateRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The task identifier. For Stack tasks, the format is <$stackId>:<$deploymentName>. For Task tasks, the format is <$TaskId>.
+	// The task identifier. For stack tasks, the format is <$stackId>:<$deploymentName>. For regular tasks, the format is <$TaskId>.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ManageTerraformStateRequest struct {
 	//
 	// stack-as11xxxxxxxxx:developmentA
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
-	// The actual resource ID of the Terraform resource.
+	// The actual ID of the Terraform resource.
 	//
 	// example:
 	//
 	// vsw-xxxxxxxx
 	ImportResourceId *string `json:"importResourceId,omitempty" xml:"importResourceId,omitempty"`
-	// The resource identifier in the Terraform template. For Stack tasks, the format is <$componetName>:<$resourceName>. For Task tasks, the format is <$resourceName>.
+	// The identifier of the resource in the Terraform template. For stack tasks, the format is <$componetName>:<$resourceName>. For regular tasks, the format is <$resourceName>.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type ManageTerraformStateRequest struct {
 	//
 	// - Stack
 	//
-	// - Task.
+	// - Task
 	//
 	// This parameter is required.
 	//

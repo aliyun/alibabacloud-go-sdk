@@ -16,9 +16,18 @@ type iCreateTaskFromResourceImportResponseBody interface {
 }
 
 type CreateTaskFromResourceImportResponseBody struct {
-	// Id of the request
+	// The request ID.
+	//
+	// example:
+	//
+	// CD478792-6952-5A1C-9F57-78932BF0FAC6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TaskId    *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// task-433aead756057fffeaba4828f5195
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
 }
 
 func (s CreateTaskFromResourceImportResponseBody) String() string {

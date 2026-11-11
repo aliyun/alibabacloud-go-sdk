@@ -20,13 +20,13 @@ type iValidateModuleResponseBody interface {
 }
 
 type ValidateModuleResponseBody struct {
-	// The validation message.
+	// The check message.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The validation ID.
+	// The check ID.
 	//
 	// example:
 	//
@@ -38,15 +38,15 @@ type ValidateModuleResponseBody struct {
 	//
 	// BF72A6FB-B071-5F2E-A036-9D62545B962C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The validation result. Valid values:
+	// The check result. Valid values:
 	//
-	// - Initializing: initialization in progress.
+	// - Initializing: The check is being initialized.
 	//
-	// - Validating: validation in progress.
+	// - Validating: The check is in progress.
 	//
-	// - Validated: validation succeeded.
+	// - Validated: The check succeeded.
 	//
-	// - Errored: validation failed.
+	// - Errored: The check failed.
 	//
 	// example:
 	//

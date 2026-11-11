@@ -18,7 +18,7 @@ type iSetEncryptionConfigRequest interface {
 }
 
 type SetEncryptionConfigRequest struct {
-	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type SetEncryptionConfigRequest struct {
 	//
 	// 09d0641c-e96c-495a-925e-9b50xxxxxxxx
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
-	// The region ID of the KMS key.
+	// The ID of the region to which the KMS key belongs.
 	//
 	// example:
 	//

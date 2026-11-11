@@ -18,9 +18,7 @@ type iUpdateRegistryModuleAttributeRequest interface {
 }
 
 type UpdateRegistryModuleAttributeRequest struct {
-	// The access permission. Valid values:
-	//
-	// - private: private.
+	// The permissions. Valid values: private: Private.
 	//
 	// example:
 	//

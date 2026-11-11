@@ -83,7 +83,7 @@ func (s *GetStackDeploymentsResponseBody) Validate() error {
 }
 
 type GetStackDeploymentsResponseBodyDeployments struct {
-	// The configuration item.
+	// The configuration items.
 	Config *GetStackDeploymentsResponseBodyDeploymentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
 	// The configuration version, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
 	//
@@ -91,47 +91,47 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// v1
 	ConfigVersion *string `json:"configVersion,omitempty" xml:"configVersion,omitempty"`
-	// The creation time in UTC, in the format of YYYY-MM-DDTHH:mm:ssZ (ISO 8601).
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2026-04-01T12:10:18Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The deployment name.
+	// The name of the deployment.
 	//
 	// example:
 	//
 	// production
 	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
-	// The deployment number. The deployment number for each stack starts from 1 and increments each time a deployment is successfully triggered.
+	// The deployment number. The deployment number of each stack starts from 1 and increments each time a deployment is successfully triggered.
 	//
 	// example:
 	//
 	// 1
 	DeploymentNo *string `json:"deploymentNo,omitempty" xml:"deploymentNo,omitempty"`
-	// Deprecated field.
+	// **[Deprecated]*	- This field is deprecated.
 	//
 	// example:
 	//
 	// v1
 	DeploymentVersion *string `json:"deploymentVersion,omitempty" xml:"deploymentVersion,omitempty"`
-	// The execution duration, in milliseconds.
+	// The execution duration. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 38000
 	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
-	// The execution type.
+	// The execution type. Valid values:
 	//
-	// Manual: Manual execution (default).
+	// - Manual: manual execution. This is the default value.
 	//
-	// Auto: Automatic execution.
+	// - Auto: automatic execution.
 	//
 	// example:
 	//
 	// Manual
 	ExecuteType *string `json:"executeType,omitempty" xml:"executeType,omitempty"`
-	// The failure reason.
+	// The cause of the failure.
 	//
 	// example:
 	//
@@ -143,15 +143,19 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// job-as154vldqt46mv0ixxxxx
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
-	// OSS object key prefix for deployment logs
+	// The object key prefix of the deployment logs in OSS.
+	//
+	// example:
+	//
+	// 1234567890123456/default/task/task-al1qqm8wpxb0ezntwsqwcz
 	LogOutputPath *string `json:"logOutputPath,omitempty" xml:"logOutputPath,omitempty"`
 	// The outputs.
 	Outputs []*GetStackDeploymentsResponseBodyDeploymentsOutputs `json:"outputs,omitempty" xml:"outputs,omitempty" type:"Repeated"`
-	// The parameter set content.
+	// The content of the parameter set.
 	Parameters []*GetStackDeploymentsResponseBodyDeploymentsParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
-	// The state file output results.
+	// The output results of the state file.
 	PlanOutputs []*GetStackDeploymentsResponseBodyDeploymentsPlanOutputs `json:"planOutputs,omitempty" xml:"planOutputs,omitempty" type:"Repeated"`
-	// The deployment status.
+	// The deployment status. Valid values:
 	//
 	// | Name | Description |
 	//
@@ -159,49 +163,49 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// | Pending | The initial status after the deployment is created. |
 	//
-	// | PriorityQueued | Priority queuing in progress. |
+	// | PriorityQueued | The deployment is queued with priority. |
 	//
-	// | PlanQueued | The deployment is queuing because no workflow is available after creation. |
+	// | PlanQueued | The deployment is queued and waiting for an available workflow after it is created. |
 	//
-	// | ApplyQueued | The deployment is queuing because no workflow is available during execution. |
+	// | ApplyQueued | The deployment is queued and waiting for an available workflow during execution. |
 	//
-	// | Planning | The resource deployment is in the Plan phase. |
+	// | Planning | The deployment is in the plan phase. |
 	//
-	// | Planned | The resource deployment has completed the Plan phase. |
+	// | Planned | The deployment has completed the plan phase. |
 	//
-	// | ConfigProactiveInProgress | Compliance pre-check in progress. |
+	// | ConfigProactiveInProgress | The compliance precheck is in progress. |
 	//
-	// | ConfigProactiveSuccess | Compliance pre-check succeeded. |
+	// | ConfigProactiveSuccess | The compliance precheck is successful. |
 	//
-	// | DetectInProgress | Drift detection in progress. |
+	// | DetectInProgress | Drift detection is in progress. |
 	//
-	// | ImportQueued | The deployment is queuing because no workflow is available during Import execution. |
+	// | ImportQueued | The deployment is queued and waiting for an available workflow during the import phase. |
 	//
-	// | Importing | The resource deployment is in the Import phase. |
+	// | Importing | The deployment is in the import phase. |
 	//
-	// | Imported | The resource deployment has completed the Import phase. |
+	// | Imported | The deployment has completed the import phase. |
 	//
-	// | StateQueued | The deployment is queuing because no workflow is available during state command execution. |
+	// | StateQueued | The deployment is queued and waiting for an available workflow during the state command execution. |
 	//
-	// | Stating | The resource deployment is executing the state command. |
+	// | Stating | The deployment is executing the state command. |
 	//
-	// | Stated | The resource deployment has completed the state command execution. |
+	// | Stated | The deployment has completed the execution of the state command. |
 	//
-	// | Confirmed | The resource deployment has been confirmed after the Plan phase. |
+	// | Confirmed | The deployment is confirmed after the plan phase. |
 	//
-	// | PlannedAndFinished | No diff was found after the Plan phase. The deployment is in a final status. |
+	// | PlannedAndFinished | The deployment is in the final state because no differences are found after the plan phase. |
 	//
-	// | Applying | The resource deployment is in the Apply phase. |
+	// | Applying | The deployment is in the apply phase. |
 	//
-	// | Applied | The resource deployment has completed the Apply phase. |
+	// | Applied | The deployment has completed the apply phase. |
 	//
-	// | Discarded | The resource deployment has been discarded and is in a final status. |
+	// | Discarded | The deployment is discarded and enters the final state. |
 	//
-	// | Errored | The deployment execution encountered an error and is in a final status. |
+	// | Errored | An error occurred during the deployment execution, and the deployment enters the final state. |
 	//
-	// | ConfigProactiveFailure | Compliance pre-check failed. |
+	// | ConfigProactiveFailure | The compliance precheck failed. |
 	//
-	// | Canceled | The deployment execution has been canceled and is in a final status. |
+	// | Canceled | The deployment execution is canceled, and the deployment enters the final state. |
 	//
 	// example:
 	//
@@ -404,17 +408,13 @@ func (s *GetStackDeploymentsResponseBodyDeployments) Validate() error {
 }
 
 type GetStackDeploymentsResponseBodyDeploymentsConfig struct {
-	// Specifies whether to automatically execute the task. Default value: false. Valid values:
-	//
-	// - **false**: No.
-	//
-	// - **true**: Yes.
+	// Specifies whether to automatically execute the task. Default value: **false**. Valid values: **false**: no. **true**: yes.
 	//
 	// example:
 	//
 	// false
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
-	// Indicates whether this is a destroy job.
+	// Specifies whether the job is a destroy job.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type GetStackDeploymentsResponseBodyDeploymentsOutputs struct {
 	//
 	// The name of the SLS log project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The expression that can reference component outputs, in the format: component.{component name}.{component output name}.
+	// The expression. You can reference component outputs in the format of component.{Component name}.{Component output name}.
 	//
 	// example:
 	//
@@ -561,11 +561,11 @@ type GetStackDeploymentsResponseBodyDeploymentsParameters struct {
 	//
 	// region
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether the parameter is sensitive. Sensitive parameter values are not visible in the console or API. Valid values:
+	// Specifies whether the parameter is a sensitive parameter. The values of sensitive parameters are invisible in both the console and API responses. Valid values:
 	//
-	// - true: Sensitive.
+	// - true: The parameter is a sensitive parameter.
 	//
-	// - false: Not sensitive.
+	// - false: The parameter is not a sensitive parameter.
 	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
 	// The parameter type.
 	//
@@ -656,7 +656,7 @@ type GetStackDeploymentsResponseBodyDeploymentsPlanOutputs struct {
 	//
 	// - read: All resource changes in the component are reads.
 	//
-	// - update: Resource changes in the component include two or more types among creation, deletion, and read.
+	// - update: The resource changes in the component include two or more change types, such as creations, deletions, or reads.
 	//
 	// example:
 	//
@@ -737,19 +737,19 @@ func (s *GetStackDeploymentsResponseBodyDeploymentsPlanOutputs) Validate() error
 }
 
 type GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail struct {
-	// The number of resources to be created.
+	// The number of newly created resources.
 	//
 	// example:
 	//
 	// 0
 	Add *int32 `json:"add,omitempty" xml:"add,omitempty"`
-	// The number of resources to be changed.
+	// The number of changed resources.
 	//
 	// example:
 	//
 	// 1
 	Change *int32 `json:"change,omitempty" xml:"change,omitempty"`
-	// The number of resources to be destroyed.
+	// The number of destroyed resources.
 	//
 	// example:
 	//
@@ -797,13 +797,13 @@ func (s *GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail
 }
 
 type GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges struct {
-	// The diff information of the resource change.
+	// The difference information of the resource change.
 	//
 	// example:
 	//
 	// ~ resource \\"alicloud_log_store\\" \\"default\\" {\\n        id                    = \\"alb-log-project-v1-ph-xxxxx:alb-log-store-ph\\"\\n      ~ max_split_shard_count = 64 -> 32\\n        name                  = \\"alb-log-store-ph\\"\\n\\n        # (13 unchanged attributes hidden)\\n    }
 	Change *string `json:"change,omitempty" xml:"change,omitempty"`
-	// The types of resource change actions included in this resource change.
+	// The types of specific resource change actions included in this resource change.
 	ResourceActions []*string `json:"resourceActions,omitempty" xml:"resourceActions,omitempty" type:"Repeated"`
 	// The unique identifier of the resource.
 	//

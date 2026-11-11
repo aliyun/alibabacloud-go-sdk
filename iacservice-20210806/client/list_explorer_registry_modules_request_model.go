@@ -22,7 +22,7 @@ type iListExplorerRegistryModulesRequest interface {
 }
 
 type ListExplorerRegistryModulesRequest struct {
-	// The search keyword for the module name. Fuzzy matching is performed based on `moduleName`.
+	// The search keyword for the module name. A fuzzy match is performed based on `moduleName`.
 	//
 	// example:
 	//
@@ -40,23 +40,23 @@ type ListExplorerRegistryModulesRequest struct {
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The name of the module.
 	//
-	// Note: The module name is not necessarily the same as the product name or resource name.
+	// Note: The module name may differ from the product name or resource name.
 	//
 	// example:
 	//
 	// vpc
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The pagination token for the next page of results.
+	// The token used to query the next page of results.
 	//
-	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	// If the total number of entries exceeds the value of `maxResults`, the returned data is truncated. You can use `nextToken` to query the next page.
 	//
 	// example:
 	//
 	// DxEkv+3w0EDAQgcRFBp8Ep4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The sort order of the returned results. Valid values:
+	// The sorting method for the returned results. Valid values:
 	//
-	// - Normal (default): returns results in normal order.
+	// - Normal: returns results in default order. This is the default value.
 	//
 	// - Top: returns results sorted by popularity.
 	//

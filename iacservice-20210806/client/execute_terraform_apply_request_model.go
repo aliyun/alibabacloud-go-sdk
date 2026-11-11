@@ -18,7 +18,7 @@ type iExecuteTerraformApplyRequest interface {
 }
 
 type ExecuteTerraformApplyRequest struct {
-  // The idempotency token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+  // The idempotency token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
   // 
   // This parameter is required.
   // 
@@ -26,7 +26,7 @@ type ExecuteTerraformApplyRequest struct {
   // 
   // a65451293e64979ba7a4b573950217fe
   ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-  // The Terraform code to execute. If the execution content has not changed, you can specify only stateId.
+  // The Terraform code to execute. If the code remains unchanged, you can specify only the stateId.
   // 
   // example:
   // 
@@ -62,7 +62,7 @@ type ExecuteTerraformApplyRequest struct {
   // 
   // }
   Code *string `json:"code,omitempty" xml:"code,omitempty"`
-  // The state file ID. If this parameter is specified, the Apply command continues execution based on the existing state file.
+  // The ID of the state file. If this parameter is not empty, the Apply command continues to run based on the existing state file.
   // 
   // example:
   // 

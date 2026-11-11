@@ -20,49 +20,49 @@ type iListStackConfigsRequest interface {
 }
 
 type ListStackConfigsRequest struct {
-	// The maximum number of records to read in this request. Default value: 20. Maximum value: 200.
+	// The maximum number of records to return for the current query. Default value: 20. Maximum value: 200.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token that marks the position from which to start reading. Leave empty to start from the beginning.
+	// The token that specifies the starting position for the query. If this parameter is left empty, the query starts from the beginning.
 	//
 	// example:
 	//
 	// s8UVlnE23gZvjCvCwkoZ7Z4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The status of the stack configuration.
+	// The status of the stack configuration. Valid values:
 	//
 	// | Name | Description |
 	//
-	// |------|------|
+	// |------|-------------|
 	//
-	// | Creating | Being created. |
+	// | Creating | Creating |
 	//
-	// | Created | Created. |
+	// | Created | Created |
 	//
-	// | Waiting | Waiting for deployment. |
+	// | Waiting | Waiting for deployment |
 	//
-	// | Deploying | Being deployed. |
+	// | Deploying | Deploying |
 	//
-	// | Deployed | Deployed. |
+	// | Deployed | Deployed |
 	//
-	// | Errored | Deployment failed. |
+	// | Errored | Deployment failed |
 	//
-	// | Deleting | Being deleted. |
+	// | Deleting | Deleting |
 	//
-	// | Deleted | Deleted. |
+	// | Deleted | Deleted |
 	//
-	// | DeleteFailed | Deletion failed. |
+	// | DeleteFailed | Deletion failed |
 	//
-	// | DetectTriggered | Drift detection triggered. |.
+	// | DetectTriggered | Drift detection triggered successfully |
 	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The version number of the stack configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+	// The version number of the stack configuration, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration is changed.
 	//
 	// example:
 	//

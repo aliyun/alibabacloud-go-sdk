@@ -20,13 +20,37 @@ type iCreateTaskFromResourceImportRequest interface {
 }
 
 type CreateTaskFromResourceImportRequest struct {
+	// The client token that is used to ensure the idempotence of the request. The token must be 1 to 64 characters in length and can contain only letters, digits, and hyphens (-). A UUID is recommended.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The ID of the resource export task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ex-a1b2c3d4e5f60718293a4b5cd
 	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
+	// The resource export version.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// v1
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
+	// The name of the task.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// prod-vpc-hangzhou
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
 }
 

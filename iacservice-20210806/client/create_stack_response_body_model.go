@@ -22,7 +22,7 @@ type CreateStackResponseBody struct {
 	//
 	// 79284133-D4BA-56B3-954C-D538256F7EAA
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The stack ID. This is the unique identifier of the stack after it is created.
+	// The stack ID, which is the unique identifier of the stack after it is created.
 	//
 	// example:
 	//

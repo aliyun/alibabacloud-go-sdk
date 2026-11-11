@@ -26,13 +26,13 @@ type iListProductsRequest interface {
 }
 
 type ListProductsRequest struct {
-	// The keyword for searching products. Fuzzy match is supported.
+	// The keyword used to search for products. Fuzzy matching is supported.
 	//
 	// example:
 	//
 	// ECS
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
+	// The maximum number of entries to return on each page. Valid values: 0 to 200. Default value: 100.
 	//
 	// example:
 	//
@@ -44,21 +44,17 @@ type ListProductsRequest struct {
 	//
 	// eyJ0b2tlbiI6IjEwMjM0NTY3ODkwIn0=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The sort order. Valid values:
+	// The sorting method. Valid values:
 	//
-	// - Normal: default sorting (default value)
+	// - Normal: Default sorting. This is the default value.
 	//
-	// - Top: sorted by popularity.
+	// - Top: Sorting by popularity.
 	//
 	// example:
 	//
 	// Normal
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
-	// The status. Valid values:
-	//
-	// - Available
-	//
-	// - Deprecated.
+	// The status. Valid values: Available and Deprecated.
 	//
 	// example:
 	//
@@ -70,7 +66,7 @@ type ListProductsRequest struct {
 	//
 	// true
 	SupportTerraformer *bool `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
-	// The Terraform Provider version. If this parameter is left empty, the latest version is used by default.
+	// The Terraform provider version. If this parameter is left empty, the latest version is used by default.
 	//
 	// example:
 	//

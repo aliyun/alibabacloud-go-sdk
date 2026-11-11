@@ -64,13 +64,13 @@ func (s *GetStackResponseBody) Validate() error {
 type GetStackResponseBodyStack struct {
 	// The stack configuration.
 	Config *GetStackResponseBodyStackConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2025-07-24T02:58:53Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The current configuration version number, such as v1. The initial value is v1. The version number increments each time the stack is updated or refreshed and the configuration changes.
+	// The current configuration version number, such as v1. The initial value is v1. The version number is incremented each time the stack is updated or refreshed and the configuration is changed.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type GetStackResponseBodyStack struct {
 	//
 	// the description of stack
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The stack name.
+	// The name of the stack.
 	//
 	// example:
 	//
@@ -94,63 +94,65 @@ type GetStackResponseBodyStack struct {
 	//
 	// TestIacRole
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
+	// Indicates whether to skip property constraint validation. Default value: false.
+	SkipPropertyValidation *bool `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
 	// The configuration source of the stack. Valid values:
 	//
-	// - OSS: a template stored in Object Storage Service (OSS).
+	// - OSS: templates from OSS.
 	//
-	// - IAC_SERVICE_MODULE: a template created in the automation service console.
+	// - IAC_SERVICE_MODULE: templates created in the IaC service module.
 	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The path value of the configuration source. The value cannot exceed 1000 characters.
+	// The path value of the configuration source, which can be up to 1,000 characters in length.
 	//
-	// - If the source is OSS, the value is in the format of oss::<file link>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	// - If the source is OSS, the value is in the oss::<file URL> format and must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
 	//
-	// - If the source is IAC_SERVICE_MODULE, the value is a template ID. Example: mod-xxxxx.
+	// - If the source is IAC_SERVICE_MODULE, the value is the template ID. Example: mod-xxxxx.
 	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The unique identifier of the stack, which is generated after the stack is created.
+	// The unique identifier of the stack after creation.
 	//
 	// example:
 	//
 	// stack-as1d4vld898ppnqxxxxxx
 	StackId *string `json:"stackId,omitempty" xml:"stackId,omitempty"`
-	// The stack status.
+	// The status of the stack.
 	//
 	// | Name | Description |
 	//
-	// |------|------|
+	// |---|---|
 	//
-	// | Creating | The stack is being created. |
+	// | Creating | Creating |
 	//
-	// | Created | The stack is created. |
+	// | Created | Created |
 	//
-	// | Waiting | The stack is waiting for deployment. |
+	// | Waiting | Waiting for deployment |
 	//
-	// | Deploying | The stack is being deployed. |
+	// | Deploying | Deploying |
 	//
-	// | Deployed | The stack is deployed. |
+	// | Deployed | Deployed |
 	//
-	// | Errored | The deployment failed. |
+	// | Errored | Deployment failed |
 	//
-	// | Deleting | The stack is being deleted. |
+	// | Deleting | Deleting |
 	//
-	// | Deleted | The stack is deleted. |
+	// | Deleted | Deleted |
 	//
-	// | DeleteFailed | The deletion failed. |
+	// | DeleteFailed | Deletion failed |
 	//
-	// | DetectTriggered | Drift detection is triggered. |.
+	// | DetectTriggered | Drift detection triggered successfully |
 	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The deployment trigger method of the stack. This field is not publicly available.
+	// The trigger method for stack deployment. This field is not available to the public. Valid values:
 	//
 	// - SetUpdated: triggered by file changes.
 	//
@@ -158,7 +160,7 @@ type GetStackResponseBodyStack struct {
 	//
 	// SetUpdated
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
-	// The directory where the deployment and component configuration files of the stack are located. Set this parameter to / for the root directory.
+	// The directory where the deployment and component configuration files of the stack are located. The value is / for the root directory.
 	//
 	// example:
 	//
@@ -196,6 +198,10 @@ func (s *GetStackResponseBodyStack) GetName() *string {
 
 func (s *GetStackResponseBodyStack) GetRamRole() *string {
 	return s.RamRole
+}
+
+func (s *GetStackResponseBodyStack) GetSkipPropertyValidation() *bool {
+	return s.SkipPropertyValidation
 }
 
 func (s *GetStackResponseBodyStack) GetSource() *string {
@@ -249,6 +255,11 @@ func (s *GetStackResponseBodyStack) SetName(v string) *GetStackResponseBodyStack
 
 func (s *GetStackResponseBodyStack) SetRamRole(v string) *GetStackResponseBodyStack {
 	s.RamRole = &v
+	return s
+}
+
+func (s *GetStackResponseBodyStack) SetSkipPropertyValidation(v bool) *GetStackResponseBodyStack {
+	s.SkipPropertyValidation = &v
 	return s
 }
 

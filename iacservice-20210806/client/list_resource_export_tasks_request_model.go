@@ -26,7 +26,7 @@ type ListResourceExportTasksRequest struct {
 	//
 	// ex-al1c11jl9g2tbte727otp85
 	ExportTaskId *string `json:"exportTaskId,omitempty" xml:"exportTaskId,omitempty"`
-	// The search keyword. Fuzzy search by task name is supported.
+	// The search keyword. Fuzzy matching is supported for task names.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListResourceExportTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//

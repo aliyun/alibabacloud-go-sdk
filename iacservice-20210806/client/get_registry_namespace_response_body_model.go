@@ -68,7 +68,7 @@ type GetRegistryNamespaceResponseBodyNamespace struct {
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetRegistryNamespaceResponseBodyNamespace struct {
 	//
 	// admin
 	Maintainer *string `json:"maintainer,omitempty" xml:"maintainer,omitempty"`
-	// The number of Registry templates in the workspace.
+	// The number of registry templates in the workspace.
 	//
 	// example:
 	//

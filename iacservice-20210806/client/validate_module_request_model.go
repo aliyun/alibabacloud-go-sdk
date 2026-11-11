@@ -22,19 +22,19 @@ type iValidateModuleRequest interface {
 }
 
 type ValidateModuleRequest struct {
-	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. A UUID is recommended.
 	//
 	// example:
 	//
 	// 2daf4227f747cbf11a5501f18cc5e004
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The template text that is directly passed in when source is set to Upload.
+	// The template text. This parameter is required when source is set to Upload.
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Specifies multiple configuration files to pass in.
+	// The configuration file map. You can pass multiple configuration files.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ValidateModuleRequest struct {
 	CodeMap map[string]interface{} `json:"codeMap,omitempty" xml:"codeMap,omitempty"`
 	// The template source. Valid values:
 	//
-	// Upload: text upload.
+	// - Upload: text upload.
 	//
 	// example:
 	//

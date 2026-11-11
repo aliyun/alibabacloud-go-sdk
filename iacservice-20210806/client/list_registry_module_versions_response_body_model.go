@@ -28,7 +28,7 @@ type ListRegistryModuleVersionsResponseBody struct {
 	//
 	// 21
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
+	// The number of entries to return per page for paging in a paged query. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListRegistryModuleVersionsResponseBody struct {
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The list of template versions.
 	ModuleVersions []*ListRegistryModuleVersionsResponseBodyModuleVersions `json:"moduleVersions,omitempty" xml:"moduleVersions,omitempty" type:"Repeated"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The pagination token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -117,33 +117,31 @@ func (s *ListRegistryModuleVersionsResponseBody) Validate() error {
 }
 
 type ListRegistryModuleVersionsResponseBodyModuleVersions struct {
-	// The creation time.
+	// The creation time. The format is YYYY-MM-DD HH:mm:ss. The returned value does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 2025-05-28 11:15:57
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
 	// ModuleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	// The provider type. Valid values:
-	//
-	// - alicloud: Alibaba Cloud.
+	// The provider type. Valid value: alicloud: Alibaba Cloud.
 	//
 	// example:
 	//
 	// alicloud
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The template source, in the format of namespaceName/ModuleName.
+	// The template source. Format: namespaceName/ModuleName.
 	//
 	// example:
 	//

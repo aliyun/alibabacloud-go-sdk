@@ -28,7 +28,7 @@ type ListRegistryNamespacesResponseBody struct {
 	//
 	// 53
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The maximum number of records returned at a time.
+	// The maximum number of records returned in a single call.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListRegistryNamespacesResponseBodyNamespaces struct {
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListRegistryNamespacesResponseBodyNamespaces struct {
 	//
 	// admin
 	Maintainer *string `json:"maintainer,omitempty" xml:"maintainer,omitempty"`
-	// The number of Registry templates in the workspace.
+	// The number of registry templates in the workspace.
 	//
 	// example:
 	//

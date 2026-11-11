@@ -24,7 +24,7 @@ type iListExplorerRegistryModuleVersionsResponseBody interface {
 type ListExplorerRegistryModuleVersionsResponseBody struct {
 	// The list of Explorer community module versions.
 	ExplorerRegistryModuleVersions []*ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions `json:"explorerRegistryModuleVersions,omitempty" xml:"explorerRegistryModuleVersions,omitempty" type:"Repeated"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return per page.
 	//
 	// Valid values: 0 to 200.
 	//
@@ -34,9 +34,9 @@ type ListExplorerRegistryModuleVersionsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page of results.
+	// The token used to return the next page of query results.
 	//
-	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	// If the total number of entries exceeds the value of maxResults, the returned results are truncated. You can use nextToken to query the next page.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersion
 	//
 	// {}
 	ModuleFile map[string]interface{} `json:"moduleFile,omitempty" xml:"moduleFile,omitempty"`
-	// The module name.
+	// The name of the module.
 	//
 	// example:
 	//
 	// eip-slb-ecs-polardb
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//

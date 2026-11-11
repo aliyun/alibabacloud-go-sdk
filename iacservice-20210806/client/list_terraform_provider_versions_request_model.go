@@ -26,19 +26,19 @@ type ListTerraformProviderVersionsRequest struct {
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of records to retrieve in a single request.
+	// The maximum number of records to return per request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page. A value of null indicates that no more pages are available.
+	// The token for the next page. A null value indicates that there are no more pages.
 	//
 	// example:
 	//
 	// ar9lHbaidqWequN5orMba54dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The usage. Set to Explorer to retrieve meta information.
+	// The purpose. Used to retrieve metadata for display in Explorer.
 	//
 	// example:
 	//

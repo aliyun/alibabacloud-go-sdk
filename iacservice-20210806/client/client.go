@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("IaCService")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-zhangjiakou": dara.String("iac.cn-zhangjiakou.aliyuncs.com"),
@@ -142,11 +150,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds shared accounts.
+// Adds a shared account.
 //
 // Description:
 //
-// Per-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - AddSharedAccountsRequest
 //
@@ -201,11 +209,11 @@ func (client *Client) AddSharedAccountsWithOptions(request *AddSharedAccountsReq
 
 // Summary:
 //
-// Adds shared accounts.
+// Adds a shared account.
 //
 // Description:
 //
-// Per-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - AddSharedAccountsRequest
 //
@@ -376,17 +384,17 @@ func (client *Client) AssociateGroup(groupId *string, request *AssociateGroupReq
 
 // Summary:
 //
-// Associates parameter sets.
+// Associates parameter sets with a resource.
 //
 // Description:
 //
-// After creating a parameter set, you need to associate it with a resource. Valid values for the resource type:
+// After you create a parameter set, you must associate it with a resource. Valid values for the resource type:
 //
 // - Module: template
 //
 // - ModuleVersion: template version
 //
-// - Task: node.
+// - Task: task.
 //
 // @param request - AssociateParameterSetRequest
 //
@@ -441,17 +449,17 @@ func (client *Client) AssociateParameterSetWithOptions(request *AssociateParamet
 
 // Summary:
 //
-// Associates parameter sets.
+// Associates parameter sets with a resource.
 //
 // Description:
 //
-// After creating a parameter set, you need to associate it with a resource. Valid values for the resource type:
+// After you create a parameter set, you must associate it with a resource. Valid values for the resource type:
 //
 // - Module: template
 //
 // - ModuleVersion: template version
 //
-// - Task: node.
+// - Task: task.
 //
 // @param request - AssociateParameterSetRequest
 //
@@ -474,7 +482,7 @@ func (client *Client) AssociateParameterSet(request *AssociateParameterSetReques
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CancelResourceExportTaskRequest
 //
@@ -525,7 +533,7 @@ func (client *Client) CancelResourceExportTaskWithOptions(exportTaskId *string, 
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CancelResourceExportTaskRequest
 //
@@ -784,7 +792,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CreateJobRequest
 //
@@ -847,7 +855,7 @@ func (client *Client) CreateJobWithOptions(taskId *string, request *CreateJobReq
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CreateJobRequest
 //
@@ -866,11 +874,11 @@ func (client *Client) CreateJob(taskId *string, request *CreateJobRequest) (_res
 
 // Summary:
 //
-// Creates a Terraform template. Multiple source methods are supported, such as OSS import, Registry import, file upload, and online editing.
+// Creates a Terraform template by using various source methods such as OSS import, Registry import, file upload, and online editing.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - CreateModuleRequest
 //
@@ -949,11 +957,11 @@ func (client *Client) CreateModuleWithOptions(request *CreateModuleRequest, head
 
 // Summary:
 //
-// Creates a Terraform template. Multiple source methods are supported, such as OSS import, Registry import, file upload, and online editing.
+// Creates a Terraform template by using various source methods such as OSS import, Registry import, file upload, and online editing.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - CreateModuleRequest
 //
@@ -976,9 +984,9 @@ func (client *Client) CreateModule(request *CreateModuleRequest) (_result *Creat
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Use the `clientToken` parameter to ensure idempotence of the request and prevent duplicate submissions caused by network retries.
+// - Use the `clientToken` parameter to ensure the idempotence of the request and prevent duplicate submissions caused by network retries.
 //
 // - Use semantic versioning (such as `v1.0.0`).
 //
@@ -1039,9 +1047,9 @@ func (client *Client) CreateModuleVersionWithOptions(moduleId *string, request *
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Use the `clientToken` parameter to ensure idempotence of the request and prevent duplicate submissions caused by network retries.
+// - Use the `clientToken` parameter to ensure the idempotence of the request and prevent duplicate submissions caused by network retries.
 //
 // - Use semantic versioning (such as `v1.0.0`).
 //
@@ -1246,7 +1254,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 //
 // Description:
 //
-// Per-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CreateRegistryModuleRequest
 //
@@ -1321,7 +1329,7 @@ func (client *Client) CreateRegistryModuleWithOptions(request *CreateRegistryMod
 //
 // Description:
 //
-// Per-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CreateRegistryModuleRequest
 //
@@ -1344,7 +1352,7 @@ func (client *Client) CreateRegistryModule(request *CreateRegistryModuleRequest)
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
 // @param request - CreateRegistryNamespaceRequest
 //
@@ -1411,7 +1419,7 @@ func (client *Client) CreateRegistryNamespaceWithOptions(request *CreateRegistry
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
 // @param request - CreateRegistryNamespaceRequest
 //
@@ -1434,7 +1442,7 @@ func (client *Client) CreateRegistryNamespace(request *CreateRegistryNamespaceRe
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CreateResourceExportTaskRequest
 //
@@ -1521,7 +1529,7 @@ func (client *Client) CreateResourceExportTaskWithOptions(request *CreateResourc
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - CreateResourceExportTaskRequest
 //
@@ -1540,7 +1548,7 @@ func (client *Client) CreateResourceExportTask(request *CreateResourceExportTask
 
 // Summary:
 //
-// Creates a resource stack and triggers deployment.
+// Creates a stack and triggers a deployment.
 //
 // @param request - CreateStackRequest
 //
@@ -1575,6 +1583,10 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, header
 
 	if !dara.IsNil(request.RamRole) {
 		body["ramRole"] = request.RamRole
+	}
+
+	if !dara.IsNil(request.SkipPropertyValidation) {
+		body["skipPropertyValidation"] = request.SkipPropertyValidation
 	}
 
 	if !dara.IsNil(request.Source) {
@@ -1615,7 +1627,7 @@ func (client *Client) CreateStackWithOptions(request *CreateStackRequest, header
 
 // Summary:
 //
-// Creates a resource stack and triggers deployment.
+// Creates a stack and triggers a deployment.
 //
 // @param request - CreateStackRequest
 //
@@ -1780,7 +1792,7 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 
 // Summary:
 //
-// Creates a node from a resource import result.
+// Creates a task from a resource import result.
 //
 // @param request - CreateTaskFromResourceImportRequest
 //
@@ -1839,7 +1851,7 @@ func (client *Client) CreateTaskFromResourceImportWithOptions(request *CreateTas
 
 // Summary:
 //
-// Creates a node from a resource import result.
+// Creates a task from a resource import result.
 //
 // @param request - CreateTaskFromResourceImportRequest
 //
@@ -1858,7 +1870,7 @@ func (client *Client) CreateTaskFromResourceImport(request *CreateTaskFromResour
 
 // Summary:
 //
-// Deletes a bias detection configuration.
+// Deletes the bias detection configuration.
 //
 // @param request - DeleteDetectConfigRequest
 //
@@ -1899,7 +1911,7 @@ func (client *Client) DeleteDetectConfigWithOptions(detectConfigId *string, requ
 
 // Summary:
 //
-// Deletes a bias detection configuration.
+// Deletes the bias detection configuration.
 //
 // @param request - DeleteDetectConfigRequest
 //
@@ -1982,11 +1994,11 @@ func (client *Client) DeleteGroup(groupId *string, request *DeleteGroupRequest) 
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This operation deletes a specified template.
 //
-// - Deletion is irreversible. Proceed with caution.
+// - The deletion operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteModuleRequest
 //
@@ -2031,11 +2043,11 @@ func (client *Client) DeleteModuleWithOptions(moduleId *string, request *DeleteM
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This operation deletes a specified template.
 //
-// - Deletion is irreversible. Proceed with caution.
+// - The deletion operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteModuleRequest
 //
@@ -2054,11 +2066,11 @@ func (client *Client) DeleteModule(moduleId *string, request *DeleteModuleReques
 
 // Summary:
 //
-// Deletes a specified parameter set by parameter set ID.
+// Deletes a specified parameter set by its ID.
 //
 // Description:
 //
-// Deletes a specified parameter set.
+// Deletes a parameter set.
 //
 // @param request - DeleteParameterSetRequest
 //
@@ -2099,11 +2111,11 @@ func (client *Client) DeleteParameterSetWithOptions(parameterSetId *string, requ
 
 // Summary:
 //
-// Deletes a specified parameter set by parameter set ID.
+// Deletes a specified parameter set by its ID.
 //
 // Description:
 //
-// Deletes a specified parameter set.
+// Deletes a parameter set.
 //
 // @param request - DeleteParameterSetRequest
 //
@@ -2186,7 +2198,7 @@ func (client *Client) DeleteProject(projectId *string, request *DeleteProjectReq
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - DeleteRegistryModuleRequest
 //
@@ -2231,7 +2243,7 @@ func (client *Client) DeleteRegistryModuleWithOptions(namespaceName *string, mod
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - DeleteRegistryModuleRequest
 //
@@ -2250,11 +2262,11 @@ func (client *Client) DeleteRegistryModule(namespaceName *string, moduleName *st
 
 // Summary:
 //
-// Deletes a Registry template version.
+// Deletes a registry template version.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
 // @param request - DeleteRegistryModuleVersionRequest
 //
@@ -2295,11 +2307,11 @@ func (client *Client) DeleteRegistryModuleVersionWithOptions(namespaceName *stri
 
 // Summary:
 //
-// Deletes a Registry template version.
+// Deletes a registry template version.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
 // @param request - DeleteRegistryModuleVersionRequest
 //
@@ -2322,7 +2334,7 @@ func (client *Client) DeleteRegistryModuleVersion(namespaceName *string, moduleN
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - DeleteRegistryNamespaceRequest
 //
@@ -2367,7 +2379,7 @@ func (client *Client) DeleteRegistryNamespaceWithOptions(namespaceName *string, 
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - DeleteRegistryNamespaceRequest
 //
@@ -2390,7 +2402,7 @@ func (client *Client) DeleteRegistryNamespace(namespaceName *string, request *De
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The call frequency per user is 100 calls per second.
 //
 // @param request - DeleteResourceExportTaskRequest
 //
@@ -2435,7 +2447,7 @@ func (client *Client) DeleteResourceExportTaskWithOptions(exportTaskId *string, 
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The call frequency per user is 100 calls per second.
 //
 // @param request - DeleteResourceExportTaskRequest
 //
@@ -2520,13 +2532,13 @@ func (client *Client) DeleteStack(stackId *string, request *DeleteStackRequest) 
 
 // Summary:
 //
-// Deletes a node.
+// Deletes a task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
-// Deletes a node. If the node has resources that have not been destroyed, the deletion is not allowed.
+// Deletes a task. If the task has unreleased resources, it cannot be deleted.
 //
 // @param request - DeleteTaskRequest
 //
@@ -2573,13 +2585,13 @@ func (client *Client) DeleteTaskWithOptions(taskId *string, request *DeleteTaskR
 
 // Summary:
 //
-// Deletes a node.
+// Deletes a task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
-// Deletes a node. If the node has resources that have not been destroyed, the deletion is not allowed.
+// Deletes a task. If the task has unreleased resources, it cannot be deleted.
 //
 // @param request - DeleteTaskRequest
 //
@@ -2602,7 +2614,7 @@ func (client *Client) DeleteTask(taskId *string, request *DeleteTaskRequest) (_r
 //
 // Description:
 //
-// This API is used to perform drift detection on the state files of resource orchestration tasks and stack tasks in the automated service desk.
+// This API is primarily used to perform drift detection on the state files of resource orchestration tasks and stack tasks on the automated service desk.
 //
 // @param request - DetectTerraformStateRequest
 //
@@ -2661,7 +2673,7 @@ func (client *Client) DetectTerraformStateWithOptions(request *DetectTerraformSt
 //
 // Description:
 //
-// This API is used to perform drift detection on the state files of resource orchestration tasks and stack tasks in the automated service desk.
+// This API is primarily used to perform drift detection on the state files of resource orchestration tasks and stack tasks on the automated service desk.
 //
 // @param request - DetectTerraformStateRequest
 //
@@ -2754,7 +2766,7 @@ func (client *Client) DissociateDetectConfig(request *DissociateDetectConfigRequ
 
 // Summary:
 //
-// Dissociates a resource group.
+// Dissociates resources from a group.
 //
 // @param request - DissociateGroupRequest
 //
@@ -2809,7 +2821,7 @@ func (client *Client) DissociateGroupWithOptions(projectId *string, groupId *str
 
 // Summary:
 //
-// Dissociates a resource group.
+// Dissociates resources from a group.
 //
 // @param request - DissociateGroupRequest
 //
@@ -2828,7 +2840,7 @@ func (client *Client) DissociateGroup(projectId *string, groupId *string, reques
 
 // Summary:
 //
-// Dissociates a parameter set from other resources.
+// Dissociates parameter sets from other resources.
 //
 // @param request - DissociateParameterSetRequest
 //
@@ -2883,7 +2895,7 @@ func (client *Client) DissociateParameterSetWithOptions(request *DissociateParam
 
 // Summary:
 //
-// Dissociates a parameter set from other resources.
+// Dissociates parameter sets from other resources.
 //
 // @param request - DissociateParameterSetRequest
 //
@@ -2902,11 +2914,11 @@ func (client *Client) DissociateParameterSet(request *DissociateParameterSetRequ
 
 // Summary:
 //
-// Executes a Module officially provided by Alibaba Cloud Terraform.
+// Executes an official Alibaba Cloud Terraform module.
 //
 // Description:
 //
-// This API operation is used to execute Terraform Module code to create or update cloud resources. Before using this API operation, make sure that all required authentication information is correctly configured and that the Terraform code corresponding to the Module meets the expected functional requirements.
+// This API is primarily used to execute Terraform module code to create or update cloud resources. Before using this API, ensure that all necessary authentication information is correctly configured and that the Terraform code for the module meets the expected functional requirements.
 //
 // @param request - ExecuteRegistryModuleRequest
 //
@@ -2957,11 +2969,11 @@ func (client *Client) ExecuteRegistryModuleWithOptions(namespaceName *string, mo
 
 // Summary:
 //
-// Executes a Module officially provided by Alibaba Cloud Terraform.
+// Executes an official Alibaba Cloud Terraform module.
 //
 // Description:
 //
-// This API operation is used to execute Terraform Module code to create or update cloud resources. Before using this API operation, make sure that all required authentication information is correctly configured and that the Terraform code corresponding to the Module meets the expected functional requirements.
+// This API is primarily used to execute Terraform module code to create or update cloud resources. Before using this API, ensure that all necessary authentication information is correctly configured and that the Terraform code for the module meets the expected functional requirements.
 //
 // @param request - ExecuteRegistryModuleRequest
 //
@@ -2980,11 +2992,11 @@ func (client *Client) ExecuteRegistryModule(namespaceName *string, moduleName *s
 
 // Summary:
 //
-// Runs a resource export task.
+// Executes a resource export task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - ExecuteResourceExportTaskRequest
 //
@@ -3031,11 +3043,11 @@ func (client *Client) ExecuteResourceExportTaskWithOptions(exportTaskId *string,
 
 // Summary:
 //
-// Runs a resource export task.
+// Executes a resource export task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - ExecuteResourceExportTaskRequest
 //
@@ -3054,13 +3066,13 @@ func (client *Client) ExecuteResourceExportTask(exportTaskId *string, request *E
 
 // Summary:
 //
-// Executes TerraformApply.
+// Executes Terraform Apply.
 //
 // Description:
 //
-// Executes the Terraform Apply command to create or update cloud resources based on the provided Terraform code. This API can handle complex scenarios such as operations that depend on a previous state.
+// This API executes the Terraform Apply command to create or update cloud resources by using the provided Terraform code. It handles complex scenarios, such as operations that depend on the previous state.
 //
-// Before calling this API, ensure that all required authentication information is properly configured and that the Terraform code meets the expected functional requirements.
+// Before you use this API, ensure that all required authentication information is correctly configured and the Terraform code meets your functional requirements.
 //
 // @param request - ExecuteTerraformApplyRequest
 //
@@ -3115,13 +3127,13 @@ func (client *Client) ExecuteTerraformApplyWithOptions(request *ExecuteTerraform
 
 // Summary:
 //
-// Executes TerraformApply.
+// Executes Terraform Apply.
 //
 // Description:
 //
-// Executes the Terraform Apply command to create or update cloud resources based on the provided Terraform code. This API can handle complex scenarios such as operations that depend on a previous state.
+// This API executes the Terraform Apply command to create or update cloud resources by using the provided Terraform code. It handles complex scenarios, such as operations that depend on the previous state.
 //
-// Before calling this API, ensure that all required authentication information is properly configured and that the Terraform code meets the expected functional requirements.
+// Before you use this API, ensure that all required authentication information is correctly configured and the Terraform code meets your functional requirements.
 //
 // @param request - ExecuteTerraformApplyRequest
 //
@@ -3140,11 +3152,11 @@ func (client *Client) ExecuteTerraformApply(request *ExecuteTerraformApplyReques
 
 // Summary:
 //
-// Executes Terraform Destroy.
+// Executes the Terraform destroy command.
 //
 // Description:
 //
-// Executes the Terraform Destroy command to destroy resources created by Terraform.
+// Executes the Terraform destroy command to destroy resources created by using Terraform.
 //
 // @param request - ExecuteTerraformDestroyRequest
 //
@@ -3195,11 +3207,11 @@ func (client *Client) ExecuteTerraformDestroyWithOptions(request *ExecuteTerrafo
 
 // Summary:
 //
-// Executes Terraform Destroy.
+// Executes the Terraform destroy command.
 //
 // Description:
 //
-// Executes the Terraform Destroy command to destroy resources created by Terraform.
+// Executes the Terraform destroy command to destroy resources created by using Terraform.
 //
 // @param request - ExecuteTerraformDestroyRequest
 //
@@ -3222,9 +3234,9 @@ func (client *Client) ExecuteTerraformDestroy(request *ExecuteTerraformDestroyRe
 //
 // Description:
 //
-// Executes a Terraform Plan command by using the provided Terraform code to create or update cloud resources. This API operation can handle complex scenarios such as operations that depend on a previous state.
+// This API executes the Terraform plan command to create or update cloud resources based on the provided Terraform code. It can also handle complex scenarios, such as operations that depend on the previous state.
 //
-// Before calling this API operation, ensure that all required authentication information is properly configured and that the Terraform code meets the expected functional requirements.
+// Before you call this API, ensure that all required authentication information is correctly configured and that the Terraform code meets your functional requirements.
 //
 // @param request - ExecuteTerraformPlanRequest
 //
@@ -3283,9 +3295,9 @@ func (client *Client) ExecuteTerraformPlanWithOptions(request *ExecuteTerraformP
 //
 // Description:
 //
-// Executes a Terraform Plan command by using the provided Terraform code to create or update cloud resources. This API operation can handle complex scenarios such as operations that depend on a previous state.
+// This API executes the Terraform plan command to create or update cloud resources based on the provided Terraform code. It can also handle complex scenarios, such as operations that depend on the previous state.
 //
-// Before calling this API operation, ensure that all required authentication information is properly configured and that the Terraform code meets the expected functional requirements.
+// Before you call this API, ensure that all required authentication information is correctly configured and that the Terraform code meets your functional requirements.
 //
 // @param request - ExecuteTerraformPlanRequest
 //
@@ -3514,11 +3526,11 @@ func (client *Client) GetEncryptionConfig(request *GetEncryptionConfigRequest) (
 
 // Summary:
 //
-// Retrieves the result of a Terraform run.
+// Retrieves the Terraform execution results.
 //
 // Description:
 //
-// Retrieves the result of a Terraform run.
+// Retrieves the Terraform execution results.
 //
 // @param request - GetExecuteStateRequest
 //
@@ -3559,11 +3571,11 @@ func (client *Client) GetExecuteStateWithOptions(stateId *string, request *GetEx
 
 // Summary:
 //
-// Retrieves the result of a Terraform run.
+// Retrieves the Terraform execution results.
 //
 // Description:
 //
-// Retrieves the result of a Terraform run.
+// Retrieves the Terraform execution results.
 //
 // @param request - GetExecuteStateRequest
 //
@@ -3646,7 +3658,7 @@ func (client *Client) GetGroup(groupId *string, request *GetGroupRequest) (_resu
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
 // @param request - GetJobRequest
 //
@@ -3697,7 +3709,7 @@ func (client *Client) GetJobWithOptions(taskId *string, jobId *string, request *
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit per user: 100 calls per second.
 //
 // @param request - GetJobRequest
 //
@@ -3720,9 +3732,9 @@ func (client *Client) GetJob(taskId *string, jobId *string, request *GetJobReque
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// You can call this operation to query the details of a specified template, including but not limited to the template name, description, source, status, and latest version. You must specify the template ID and include authentication information in the request.
+// This operation retrieves the details of a specified template, including but not limited to the template name, description, source, status, and latest version. The request must include the template ID and authentication information.
 //
 // @param request - GetModuleRequest
 //
@@ -3767,9 +3779,9 @@ func (client *Client) GetModuleWithOptions(moduleId *string, request *GetModuleR
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// You can call this operation to query the details of a specified template, including but not limited to the template name, description, source, status, and latest version. You must specify the template ID and include authentication information in the request.
+// This operation retrieves the details of a specified template, including but not limited to the template name, description, source, status, and latest version. The request must include the template ID and authentication information.
 //
 // @param request - GetModuleRequest
 //
@@ -3792,9 +3804,9 @@ func (client *Client) GetModule(moduleId *string, request *GetModuleRequest) (_r
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// You can call this operation to query the details of a specific version of a specified template, including the version number, description, and release time. Make sure that the template ID and version number are correct.
+// This operation retrieves the details of a specific version of a specified template, including the version number, description, and release time. Make sure that the provided template ID and version number are correct.
 //
 // @param request - GetModuleVersionRequest
 //
@@ -3839,9 +3851,9 @@ func (client *Client) GetModuleVersionWithOptions(moduleId *string, moduleVersio
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// You can call this operation to query the details of a specific version of a specified template, including the version number, description, and release time. Make sure that the template ID and version number are correct.
+// This operation retrieves the details of a specific version of a specified template, including the version number, description, and release time. Make sure that the provided template ID and version number are correct.
 //
 // @param request - GetModuleVersionRequest
 //
@@ -4000,7 +4012,7 @@ func (client *Client) GetProject(projectId *string, request *GetProjectRequest) 
 
 // Summary:
 //
-// Retrieves the resource documentation of a Terraform provider.
+// Retrieves the Terraform provider resource document.
 //
 // @param request - GetProviderDocumentRequest
 //
@@ -4051,7 +4063,7 @@ func (client *Client) GetProviderDocumentWithOptions(request *GetProviderDocumen
 
 // Summary:
 //
-// Retrieves the resource documentation of a Terraform provider.
+// Retrieves the Terraform provider resource document.
 //
 // @param request - GetProviderDocumentRequest
 //
@@ -4070,11 +4082,11 @@ func (client *Client) GetProviderDocument(request *GetProviderDocumentRequest) (
 
 // Summary:
 //
-// Queries a Registry module.
+// Queries a Registry template.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The rate limit per user is 200 calls per second.
 //
 // @param request - GetRegistryModuleRequest
 //
@@ -4115,11 +4127,11 @@ func (client *Client) GetRegistryModuleWithOptions(namespaceName *string, module
 
 // Summary:
 //
-// Queries a Registry module.
+// Queries a Registry template.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The rate limit per user is 200 calls per second.
 //
 // @param request - GetRegistryModuleRequest
 //
@@ -4138,11 +4150,11 @@ func (client *Client) GetRegistryModule(namespaceName *string, moduleName *strin
 
 // Summary:
 //
-// Queries a Registry template version.
+// Queries the registry template version.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The rate limit per user is 200 calls per second.
 //
 // @param request - GetRegistryModuleVersionRequest
 //
@@ -4183,11 +4195,11 @@ func (client *Client) GetRegistryModuleVersionWithOptions(namespaceName *string,
 
 // Summary:
 //
-// Queries a Registry template version.
+// Queries the registry template version.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The rate limit per user is 200 calls per second.
 //
 // @param request - GetRegistryModuleVersionRequest
 //
@@ -4206,11 +4218,11 @@ func (client *Client) GetRegistryModuleVersion(namespaceName *string, moduleName
 
 // Summary:
 //
-// Queries a workspace.
+// Retrieves a workspace.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The rate limit per user is 200 calls per second.
 //
 // @param request - GetRegistryNamespaceRequest
 //
@@ -4251,11 +4263,11 @@ func (client *Client) GetRegistryNamespaceWithOptions(namespaceName *string, req
 
 // Summary:
 //
-// Queries a workspace.
+// Retrieves a workspace.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The rate limit per user is 200 calls per second.
 //
 // @param request - GetRegistryNamespaceRequest
 //
@@ -4278,7 +4290,7 @@ func (client *Client) GetRegistryNamespace(namespaceName *string, request *GetRe
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - GetResourceExportTaskRequest
 //
@@ -4329,7 +4341,7 @@ func (client *Client) GetResourceExportTaskWithOptions(exportTaskId *string, req
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - GetResourceExportTaskRequest
 //
@@ -4432,6 +4444,10 @@ func (client *Client) GetResourceType(resourceType *string, request *GetResource
 //
 // Queries a stack.
 //
+// Description:
+//
+// Retrieves the results of a Terraform run.
+//
 // @param request - GetStackRequest
 //
 // @param headers - map
@@ -4473,6 +4489,10 @@ func (client *Client) GetStackWithOptions(stackId *string, request *GetStackRequ
 //
 // Queries a stack.
 //
+// Description:
+//
+// Retrieves the results of a Terraform run.
+//
 // @param request - GetStackRequest
 //
 // @return GetStackResponse
@@ -4490,7 +4510,7 @@ func (client *Client) GetStack(stackId *string, request *GetStackRequest) (_resu
 
 // Summary:
 //
-// Queries the list of deployments for a stack.
+// Queries the deployments of a stack.
 //
 // @param request - GetStackDeploymentsRequest
 //
@@ -4557,7 +4577,7 @@ func (client *Client) GetStackDeploymentsWithOptions(stackId *string, request *G
 
 // Summary:
 //
-// Queries the list of deployments for a stack.
+// Queries the deployments of a stack.
 //
 // @param request - GetStackDeploymentsRequest
 //
@@ -4576,7 +4596,7 @@ func (client *Client) GetStackDeployments(stackId *string, request *GetStackDepl
 
 // Summary:
 //
-// Retrieves the trigger result of a Stack.
+// Retrieves the stack trigger results.
 //
 // @param request - GetStackExecutionResultRequest
 //
@@ -4617,7 +4637,7 @@ func (client *Client) GetStackExecutionResultWithOptions(triggerId *string, requ
 
 // Summary:
 //
-// Retrieves the trigger result of a Stack.
+// Retrieves the stack trigger results.
 //
 // @param request - GetStackExecutionResultRequest
 //
@@ -4704,11 +4724,11 @@ func (client *Client) GetTask(taskId *string, request *GetTaskRequest) (_result 
 
 // Summary:
 //
-// Retrieves the detection result of a state file.
+// Retrieves the state file detection results.
 //
 // Description:
 //
-// This API is used to retrieve the detection results of state files for resource orchestration tasks and stack tasks on the automation service desk.
+// Retrieves the detection results of state files for resource orchestration tasks and stack tasks on the automated service desk.
 //
 // @param request - GetTerraformStateDetectionRequest
 //
@@ -4749,11 +4769,11 @@ func (client *Client) GetTerraformStateDetectionWithOptions(detectionId *string,
 
 // Summary:
 //
-// Retrieves the detection result of a state file.
+// Retrieves the state file detection results.
 //
 // Description:
 //
-// This API is used to retrieve the detection results of state files for resource orchestration tasks and stack tasks on the automation service desk.
+// Retrieves the detection results of state files for resource orchestration tasks and stack tasks on the automated service desk.
 //
 // @param request - GetTerraformStateDetectionRequest
 //
@@ -4920,29 +4940,29 @@ func (client *Client) ListDetectConfigs(request *ListDetectConfigsRequest) (_res
 
 // Summary:
 //
-// Retrieves the list of official Terraform Module examples.
+// Retrieves the list of official Terraform module examples.
 //
 // Description:
 //
-// This operation queries the example information of Terraform Modules officially provided by Alibaba Cloud.
+// This operation queries example information for Terraform modules officially provided by Alibaba Cloud.
 //
-// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+// You can specify the maxResults parameter to adjust the maximum number of returned entries.
 //
-// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModuleExamples operation to the `nextToken` value returned in the previous response. If the `NextToken` parameter is not specified, the first page of data is returned by default.
+// - If nextToken is not present in the response, no more data is available. Otherwise, more data is available. To query the next page, set the nextToken parameter of the ListExplorerRegistryModuleExamples operation to the nextToken value returned in the previous response. If the NextToken parameter is not specified, the first page of data is returned by default.
 //
-// - You can use keyword, namespaceName, moduleName, moduleVersion, and exampleName as conditional filter settings to narrow down the search scope. Multiple filter conditions have a logical `AND` relationship, and only resources that meet all filter conditions are returned.
+// - You can set keyword, namespaceName, moduleName, moduleVersion, and exampleName as filter conditions to narrow the search scope. Multiple filter conditions are connected by the logical AND operator. Only resources that meet all filter conditions are returned.
 //
-//   - keyword: optional. Searches by keyword and supports fuzzy match on exampleName. For example, if keyword is set to ecs, module examples whose names contain ecs are returned.
+//   - keyword: Optional. Keyword search. Supports fuzzy matching for exampleName. For example, if keyword is set to ecs, the system queries module examples whose names contain ecs.
 //
-//   - namespaceName: optional. Filters module examples by a specific workspace. For example, if namespaceName is set to alibaba, module examples in the alibaba workspace are returned.
+//   - namespaceName: Optional. Filters module examples in a specific workspace. For example, if namespaceName is set to alibaba, the system queries module examples in the alibaba workspace.
 //
-//   - moduleName: optional. Filters module examples by a specific module name. For example, if moduleName is set to ecs, module examples whose module name is ecs are returned.
+//   - moduleName: Optional. Filters module examples with a specific name. For example, if moduleName is set to ecs, the system queries module examples named ecs.
 //
-//   - moduleVersion: optional. Filters module examples by a specific module version. For example, if moduleVersion is set to 1.0.0, module examples whose module version is 1.0.0 are returned.
+//   - moduleVersion: Optional. Filters module examples of a specific version. For example, if moduleVersion is set to 1.0.0, the system queries module examples of version 1.0.0.
 //
-//   - exampleName: optional. Filters module examples by a specific example name. For example, if exampleName is set to ecs, module examples whose example name is ecs are returned.
+//   - exampleName: Optional. Filters module examples with a specific example name. For example, if exampleName is set to ecs, the system queries module examples named ecs.
 //
-// The response contains the request ID, total number of entries, data of the current page, and pagination information, which facilitates processing of query results.
+// The response structure includes the request ID, total number of entries, current page data, and pagination information to facilitate processing the query results.
 //
 // @param request - ListExplorerRegistryModuleExamplesRequest
 //
@@ -5013,29 +5033,29 @@ func (client *Client) ListExplorerRegistryModuleExamplesWithOptions(request *Lis
 
 // Summary:
 //
-// Retrieves the list of official Terraform Module examples.
+// Retrieves the list of official Terraform module examples.
 //
 // Description:
 //
-// This operation queries the example information of Terraform Modules officially provided by Alibaba Cloud.
+// This operation queries example information for Terraform modules officially provided by Alibaba Cloud.
 //
-// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+// You can specify the maxResults parameter to adjust the maximum number of returned entries.
 //
-// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModuleExamples operation to the `nextToken` value returned in the previous response. If the `NextToken` parameter is not specified, the first page of data is returned by default.
+// - If nextToken is not present in the response, no more data is available. Otherwise, more data is available. To query the next page, set the nextToken parameter of the ListExplorerRegistryModuleExamples operation to the nextToken value returned in the previous response. If the NextToken parameter is not specified, the first page of data is returned by default.
 //
-// - You can use keyword, namespaceName, moduleName, moduleVersion, and exampleName as conditional filter settings to narrow down the search scope. Multiple filter conditions have a logical `AND` relationship, and only resources that meet all filter conditions are returned.
+// - You can set keyword, namespaceName, moduleName, moduleVersion, and exampleName as filter conditions to narrow the search scope. Multiple filter conditions are connected by the logical AND operator. Only resources that meet all filter conditions are returned.
 //
-//   - keyword: optional. Searches by keyword and supports fuzzy match on exampleName. For example, if keyword is set to ecs, module examples whose names contain ecs are returned.
+//   - keyword: Optional. Keyword search. Supports fuzzy matching for exampleName. For example, if keyword is set to ecs, the system queries module examples whose names contain ecs.
 //
-//   - namespaceName: optional. Filters module examples by a specific workspace. For example, if namespaceName is set to alibaba, module examples in the alibaba workspace are returned.
+//   - namespaceName: Optional. Filters module examples in a specific workspace. For example, if namespaceName is set to alibaba, the system queries module examples in the alibaba workspace.
 //
-//   - moduleName: optional. Filters module examples by a specific module name. For example, if moduleName is set to ecs, module examples whose module name is ecs are returned.
+//   - moduleName: Optional. Filters module examples with a specific name. For example, if moduleName is set to ecs, the system queries module examples named ecs.
 //
-//   - moduleVersion: optional. Filters module examples by a specific module version. For example, if moduleVersion is set to 1.0.0, module examples whose module version is 1.0.0 are returned.
+//   - moduleVersion: Optional. Filters module examples of a specific version. For example, if moduleVersion is set to 1.0.0, the system queries module examples of version 1.0.0.
 //
-//   - exampleName: optional. Filters module examples by a specific example name. For example, if exampleName is set to ecs, module examples whose example name is ecs are returned.
+//   - exampleName: Optional. Filters module examples with a specific example name. For example, if exampleName is set to ecs, the system queries module examples named ecs.
 //
-// The response contains the request ID, total number of entries, data of the current page, and pagination information, which facilitates processing of query results.
+// The response structure includes the request ID, total number of entries, current page data, and pagination information to facilitate processing the query results.
 //
 // @param request - ListExplorerRegistryModuleExamplesRequest
 //
@@ -5054,27 +5074,27 @@ func (client *Client) ListExplorerRegistryModuleExamples(request *ListExplorerRe
 
 // Summary:
 //
-// Lists the version information of official Terraform modules provided by Alibaba Cloud.
+// Lists the version information of modules officially provided by Alibaba Cloud Terraform.
 //
 // Description:
 //
-// This operation queries the version information of official Terraform modules provided by Alibaba Cloud.
+// This operation queries the version information of modules officially provided by Alibaba Cloud Terraform.
 //
-// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+// You can specify the maxResults parameter to adjust the maximum number of returned entries.
 //
-// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If the `NextToken` parameter is not specified, the first page of data is returned by default.
+// - If nextToken is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the nextToken parameter of the ListExplorerRegistryModules operation to the nextToken value returned in the previous response. If the NextToken parameter is not specified, the first page of data is returned by default.
 //
-// - You can use keyword, namespaceName, moduleName, and moduleVersion as conditional filter Settings to narrow the search scope. Multiple filter conditions have a logical `AND` relationship. Only resources that meet all filter conditions are returned.
+// - By using the Settings of keyword, namespaceName, moduleName, and moduleVersion as conditional filters, you can narrow down the search scope. Multiple conditional filters are connected by the logical AND operator. Only resources that meet all conditional filters are returned.
 //
-//   - keyword: optional. Performs a fuzzy match on the module name. For example, if keyword is set to ecs, modules whose names contain ecs are returned.
+//   - keyword: optional. The keyword for fuzzy matching against the module name. For example, if you set keyword to ecs, the system queries modules whose names contain ecs.
 //
-//   - namespaceName: optional. Filters modules by a specific workspace. For example, if namespaceName is set to alibaba, modules whose workspace is alibaba are returned. When moduleName is specified, namespaceName must also be specified. You can call the ListExplorerRegistryModule operation to obtain the namespaceName information.
+//   - namespaceName: optional. Supports filtering modules in a specific workspace. For example, if you set namespaceName to alibaba, the system queries modules whose workspace is alibaba. If you specify moduleName, you must also specify namespaceName. You can call the ListExplorerRegistryModule operation to obtain the namespaceName.
 //
-//   - moduleName: optional. Filters modules by a specific name. For example, if moduleName is set to ecs, modules whose name is ecs are returned.
+//   - moduleName: optional. Supports filtering modules with a specific name. For example, if you set keyword to ecs, the system queries the module named ecs.
 //
-//   - moduleVersion: optional. Filters modules by a specific version. For example, if moduleVersion is set to 1.0.0, modules whose version is 1.0.0 are returned.
+//   - moduleVersion: optional. Supports filtering modules with a specific version. For example, if you set keyword to 1.0.0, the system queries modules whose version is 1.0.0.
 //
-// The response contains the request ID, total number of entries, data on the current page, and pagination information, which facilitates the processing of query results.
+// The response structure includes the request ID, total number of entries, current page data, and pagination information to facilitate result processing.
 //
 // @param request - ListExplorerRegistryModuleVersionsRequest
 //
@@ -5141,27 +5161,27 @@ func (client *Client) ListExplorerRegistryModuleVersionsWithOptions(request *Lis
 
 // Summary:
 //
-// Lists the version information of official Terraform modules provided by Alibaba Cloud.
+// Lists the version information of modules officially provided by Alibaba Cloud Terraform.
 //
 // Description:
 //
-// This operation queries the version information of official Terraform modules provided by Alibaba Cloud.
+// This operation queries the version information of modules officially provided by Alibaba Cloud Terraform.
 //
-// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+// You can specify the maxResults parameter to adjust the maximum number of returned entries.
 //
-// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If the `NextToken` parameter is not specified, the first page of data is returned by default.
+// - If nextToken is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the nextToken parameter of the ListExplorerRegistryModules operation to the nextToken value returned in the previous response. If the NextToken parameter is not specified, the first page of data is returned by default.
 //
-// - You can use keyword, namespaceName, moduleName, and moduleVersion as conditional filter Settings to narrow the search scope. Multiple filter conditions have a logical `AND` relationship. Only resources that meet all filter conditions are returned.
+// - By using the Settings of keyword, namespaceName, moduleName, and moduleVersion as conditional filters, you can narrow down the search scope. Multiple conditional filters are connected by the logical AND operator. Only resources that meet all conditional filters are returned.
 //
-//   - keyword: optional. Performs a fuzzy match on the module name. For example, if keyword is set to ecs, modules whose names contain ecs are returned.
+//   - keyword: optional. The keyword for fuzzy matching against the module name. For example, if you set keyword to ecs, the system queries modules whose names contain ecs.
 //
-//   - namespaceName: optional. Filters modules by a specific workspace. For example, if namespaceName is set to alibaba, modules whose workspace is alibaba are returned. When moduleName is specified, namespaceName must also be specified. You can call the ListExplorerRegistryModule operation to obtain the namespaceName information.
+//   - namespaceName: optional. Supports filtering modules in a specific workspace. For example, if you set namespaceName to alibaba, the system queries modules whose workspace is alibaba. If you specify moduleName, you must also specify namespaceName. You can call the ListExplorerRegistryModule operation to obtain the namespaceName.
 //
-//   - moduleName: optional. Filters modules by a specific name. For example, if moduleName is set to ecs, modules whose name is ecs are returned.
+//   - moduleName: optional. Supports filtering modules with a specific name. For example, if you set keyword to ecs, the system queries the module named ecs.
 //
-//   - moduleVersion: optional. Filters modules by a specific version. For example, if moduleVersion is set to 1.0.0, modules whose version is 1.0.0 are returned.
+//   - moduleVersion: optional. Supports filtering modules with a specific version. For example, if you set keyword to 1.0.0, the system queries modules whose version is 1.0.0.
 //
-// The response contains the request ID, total number of entries, data on the current page, and pagination information, which facilitates the processing of query results.
+// The response structure includes the request ID, total number of entries, current page data, and pagination information to facilitate result processing.
 //
 // @param request - ListExplorerRegistryModuleVersionsRequest
 //
@@ -5180,23 +5200,23 @@ func (client *Client) ListExplorerRegistryModuleVersions(request *ListExplorerRe
 
 // Summary:
 //
-// Lists information about official Terraform modules provided by Alibaba Cloud.
+// Lists the official Terraform modules provided by Alibaba Cloud.
 //
 // Description:
 //
-// This operation queries information about official Terraform modules provided by Alibaba Cloud.
+// This operation queries the official Terraform modules provided by Alibaba Cloud.
 //
-// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+// You can specify the `maxResults` parameter to adjust the maximum number of entries to return.
 //
-// - If the `nextToken` parameter is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If you do not specify the `NextToken` parameter, the first page of data is returned by default.
+// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If you do not specify the `nextToken` parameter, the first page of data is returned by default.
 //
-// - You can use keyword and moduleName as filter conditions to narrow the search scope. Multiple filter conditions are evaluated by using a logical `AND`. Only resources that meet all filter conditions are returned.
+// - You can set `keyword` and `moduleName` as filter conditions to narrow down the search scope. Multiple filter conditions are connected by the logical `AND` operator. Only resources that meet all filter conditions are returned.
 //
-//   - keyword: optional. Searches by keyword through fuzzy matching against ModuleName. For example, if keyword is set to ecs, modules whose names contain ecs are returned.
+//   - `keyword`: optional. The keyword for search. The system performs a fuzzy match on the module name. For example, if you set this parameter to ecs, the system queries modules whose names contain ecs.
 //
-//   - moduleName: optional. Filters modules by a specific name. For example, if moduleName is set to ecs, only the module whose name is exactly ecs is returned.
+//   - `moduleName`: optional. The name of the module. You can use this parameter to filter modules by a specific name. For example, if you set this parameter to ecs, the system queries the module whose name is ecs.
 //
-// The response contains the request ID, total number of entries, data of the current page, and pagination information, which facilitates the processing of query results.
+// The response structure includes the request ID, total number of entries, data on the current page, and pagination information to help you process the query results.
 //
 // @param request - ListExplorerRegistryModulesRequest
 //
@@ -5259,23 +5279,23 @@ func (client *Client) ListExplorerRegistryModulesWithOptions(request *ListExplor
 
 // Summary:
 //
-// Lists information about official Terraform modules provided by Alibaba Cloud.
+// Lists the official Terraform modules provided by Alibaba Cloud.
 //
 // Description:
 //
-// This operation queries information about official Terraform modules provided by Alibaba Cloud.
+// This operation queries the official Terraform modules provided by Alibaba Cloud.
 //
-// You can use the `maxResults` parameter to adjust the maximum number of entries to return.
+// You can specify the `maxResults` parameter to adjust the maximum number of entries to return.
 //
-// - If the `nextToken` parameter is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If you do not specify the `NextToken` parameter, the first page of data is returned by default.
+// - If `nextToken` is not included in the response, no more data is available. Otherwise, more data is available. To query the next page, set the `nextToken` parameter of the ListExplorerRegistryModules operation to the `nextToken` value returned in the previous response. If you do not specify the `nextToken` parameter, the first page of data is returned by default.
 //
-// - You can use keyword and moduleName as filter conditions to narrow the search scope. Multiple filter conditions are evaluated by using a logical `AND`. Only resources that meet all filter conditions are returned.
+// - You can set `keyword` and `moduleName` as filter conditions to narrow down the search scope. Multiple filter conditions are connected by the logical `AND` operator. Only resources that meet all filter conditions are returned.
 //
-//   - keyword: optional. Searches by keyword through fuzzy matching against ModuleName. For example, if keyword is set to ecs, modules whose names contain ecs are returned.
+//   - `keyword`: optional. The keyword for search. The system performs a fuzzy match on the module name. For example, if you set this parameter to ecs, the system queries modules whose names contain ecs.
 //
-//   - moduleName: optional. Filters modules by a specific name. For example, if moduleName is set to ecs, only the module whose name is exactly ecs is returned.
+//   - `moduleName`: optional. The name of the module. You can use this parameter to filter modules by a specific name. For example, if you set this parameter to ecs, the system queries the module whose name is ecs.
 //
-// The response contains the request ID, total number of entries, data of the current page, and pagination information, which facilitates the processing of query results.
+// The response structure includes the request ID, total number of entries, data on the current page, and pagination information to help you process the query results.
 //
 // @param request - ListExplorerRegistryModulesRequest
 //
@@ -5476,7 +5496,7 @@ func (client *Client) ListJobs(taskId *string, request *ListJobsRequest) (_resul
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - ListModuleVersionRequest
 //
@@ -5535,7 +5555,7 @@ func (client *Client) ListModuleVersionWithOptions(moduleId *string, request *Li
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - ListModuleVersionRequest
 //
@@ -5858,19 +5878,19 @@ func (client *Client) ListParameterSets(request *ListParameterSetsRequest) (_res
 
 // Summary:
 //
-// Queries the list of all products.
+// Lists all products.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - **Keyword search**: Use the `keyword` parameter for fuzzy matching.
+// - **Keyword search**: Uses the `keyword` parameter for fuzzy matching.
 //
-// - **Paged query**: Use `nextToken` for pagination and `maxResults` to specify the maximum number of results per page (default: 100, maximum: 200).
+// - **Paged query**: Uses `nextToken` for pagination and `maxResults` to specify the maximum number of results to return on each page. Default value: 100. Maximum value: 200.
 //
-// - **Terraform Provider version**: The optional `terraformProviderVersion` parameter filters products associated with a specific Provider version.
+// - **Terraform provider version**: The optional `terraformProviderVersion` parameter is used to filter products related to a specific provider version.
 //
-// - **Response structure**: The response contains the request ID, total number of entries, data of the current page, and pagination information for easy processing of query results.
+// - **Response structure**: Includes the request ID, total number of entries, data on the current page, and pagination information to facilitate the processing of query results.
 //
 // @param request - ListProductsRequest
 //
@@ -5941,19 +5961,19 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 
 // Summary:
 //
-// Queries the list of all products.
+// Lists all products.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - **Keyword search**: Use the `keyword` parameter for fuzzy matching.
+// - **Keyword search**: Uses the `keyword` parameter for fuzzy matching.
 //
-// - **Paged query**: Use `nextToken` for pagination and `maxResults` to specify the maximum number of results per page (default: 100, maximum: 200).
+// - **Paged query**: Uses `nextToken` for pagination and `maxResults` to specify the maximum number of results to return on each page. Default value: 100. Maximum value: 200.
 //
-// - **Terraform Provider version**: The optional `terraformProviderVersion` parameter filters products associated with a specific Provider version.
+// - **Terraform provider version**: The optional `terraformProviderVersion` parameter is used to filter products related to a specific provider version.
 //
-// - **Response structure**: The response contains the request ID, total number of entries, data of the current page, and pagination information for easy processing of query results.
+// - **Response structure**: Includes the request ID, total number of entries, data on the current page, and pagination information to facilitate the processing of query results.
 //
 // @param request - ListProductsRequest
 //
@@ -6056,11 +6076,11 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 
 // Summary:
 //
-// Queries the list of Registry template versions.
+// Queries registry template versions.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// Rate limit per user: 200 calls per second.
 //
 // @param request - ListRegistryModuleVersionsRequest
 //
@@ -6119,11 +6139,11 @@ func (client *Client) ListRegistryModuleVersionsWithOptions(request *ListRegistr
 
 // Summary:
 //
-// Queries the list of Registry template versions.
+// Queries registry template versions.
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// Rate limit per user: 200 calls per second.
 //
 // @param request - ListRegistryModuleVersionsRequest
 //
@@ -6240,7 +6260,7 @@ func (client *Client) ListRegistryModules(request *ListRegistryModulesRequest) (
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The maximum call frequency per user is 200 calls per second.
 //
 // @param request - ListRegistryNamespacesRequest
 //
@@ -6303,7 +6323,7 @@ func (client *Client) ListRegistryNamespacesWithOptions(request *ListRegistryNam
 //
 // Description:
 //
-// Single-user call frequency: 200 calls per second.
+// The maximum call frequency per user is 200 calls per second.
 //
 // @param request - ListRegistryNamespacesRequest
 //
@@ -6322,11 +6342,11 @@ func (client *Client) ListRegistryNamespaces(request *ListRegistryNamespacesRequ
 
 // Summary:
 //
-// Retrieves the list of resource export task versions.
+// Retrieves the versions of a resource export task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - ListResourceExportTaskVersionsRequest
 //
@@ -6389,11 +6409,11 @@ func (client *Client) ListResourceExportTaskVersionsWithOptions(exportTaskId *st
 
 // Summary:
 //
-// Retrieves the list of resource export task versions.
+// Retrieves the versions of a resource export task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - ListResourceExportTaskVersionsRequest
 //
@@ -6412,11 +6432,11 @@ func (client *Client) ListResourceExportTaskVersions(exportTaskId *string, reque
 
 // Summary:
 //
-// Queries the list of resource export tasks.
+// Queries a list of resource export tasks.
 //
 // Description:
 //
-// Rate limit per user: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - ListResourceExportTasksRequest
 //
@@ -6475,11 +6495,11 @@ func (client *Client) ListResourceExportTasksWithOptions(request *ListResourceEx
 
 // Summary:
 //
-// Queries the list of resource export tasks.
+// Queries a list of resource export tasks.
 //
 // Description:
 //
-// Rate limit per user: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - ListResourceExportTasksRequest
 //
@@ -6622,7 +6642,7 @@ func (client *Client) ListResourceTypes(request *ListResourceTypesRequest) (_res
 
 // Summary:
 //
-// Retrieves the resources of a node.
+// Retrieves the list of resources for a task.
 //
 // @param request - ListResourcesRequest
 //
@@ -6685,7 +6705,7 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 
 // Summary:
 //
-// Retrieves the resources of a node.
+// Retrieves the list of resources for a task.
 //
 // @param request - ListResourcesRequest
 //
@@ -6704,7 +6724,7 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the list of stack configurations.
+// Queries stack configurations.
 //
 // @param request - ListStackConfigsRequest
 //
@@ -6763,7 +6783,7 @@ func (client *Client) ListStackConfigsWithOptions(stackId *string, request *List
 
 // Summary:
 //
-// Queries the list of stack configurations.
+// Queries stack configurations.
 //
 // @param request - ListStackConfigsRequest
 //
@@ -6988,7 +7008,7 @@ func (client *Client) ListTasks(request *ListTasksRequest) (_result *ListTasksRe
 
 // Summary:
 //
-// Retrieves the list of Terraform provider versions.
+// Retrieves a list of Terraform provider versions.
 //
 // @param request - ListTerraformProviderVersionsRequest
 //
@@ -7047,7 +7067,7 @@ func (client *Client) ListTerraformProviderVersionsWithOptions(request *ListTerr
 
 // Summary:
 //
-// Retrieves the list of Terraform provider versions.
+// Retrieves a list of Terraform provider versions.
 //
 // @param request - ListTerraformProviderVersionsRequest
 //
@@ -7066,13 +7086,13 @@ func (client *Client) ListTerraformProviderVersions(request *ListTerraformProvid
 
 // Summary:
 //
-// Supports resource import and removal for state files.
+// Imports and removes resources from state files.
 //
 // Description:
 //
-// This API is used to manage state files for resource orchestration tasks and stack tasks on the automated service desk.
+// This API is primarily used to manage state files for resource orchestration tasks and stack tasks on the automated service desk.
 //
-// Before using this API, make sure that all required authentication information is correctly configured and that the Terraform code meets the expected functional requirements.
+// Before you use this API, ensure that all required authentication information is correctly configured and that the Terraform code meets the expected functional requirements.
 //
 // @param request - ManageTerraformStateRequest
 //
@@ -7139,13 +7159,13 @@ func (client *Client) ManageTerraformStateWithOptions(request *ManageTerraformSt
 
 // Summary:
 //
-// Supports resource import and removal for state files.
+// Imports and removes resources from state files.
 //
 // Description:
 //
-// This API is used to manage state files for resource orchestration tasks and stack tasks on the automated service desk.
+// This API is primarily used to manage state files for resource orchestration tasks and stack tasks on the automated service desk.
 //
-// Before using this API, make sure that all required authentication information is correctly configured and that the Terraform code meets the expected functional requirements.
+// Before you use this API, ensure that all required authentication information is correctly configured and that the Terraform code meets the expected functional requirements.
 //
 // @param request - ManageTerraformStateRequest
 //
@@ -7164,13 +7184,11 @@ func (client *Client) ManageTerraformState(request *ManageTerraformStateRequest)
 
 // Summary:
 //
-// After a job is created, you can perform the **Cancel*	- operation to stop the job while it is running.
-//
-// After a job reaches the pending confirmation state, you can perform the **Abolish*	- operation to stop the job, or perform the **Execute*	- operation to continue the job execution.
+// Cancels a running job, aborts a job that is waiting for confirmation, or continues the execution of a job.
 //
 // Description:
 //
-// Per-user call frequency: 100 calls per second.
+// The maximum call frequency for a single user is 100 calls per second.
 //
 // @param request - OperateJobRequest
 //
@@ -7221,13 +7239,11 @@ func (client *Client) OperateJobWithOptions(taskId *string, jobId *string, opera
 
 // Summary:
 //
-// After a job is created, you can perform the **Cancel*	- operation to stop the job while it is running.
-//
-// After a job reaches the pending confirmation state, you can perform the **Abolish*	- operation to stop the job, or perform the **Execute*	- operation to continue the job execution.
+// Cancels a running job, aborts a job that is waiting for confirmation, or continues the execution of a job.
 //
 // Description:
 //
-// Per-user call frequency: 100 calls per second.
+// The maximum call frequency for a single user is 100 calls per second.
 //
 // @param request - OperateJobRequest
 //
@@ -7246,11 +7262,11 @@ func (client *Client) OperateJob(taskId *string, jobId *string, operationType *s
 
 // Summary:
 //
-// Publishes a Registry template version.
+// Publishes a registry template version.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit for a single user: 100 calls per second.
 //
 // @param request - PublishRegistryModuleVersionRequest
 //
@@ -7309,11 +7325,11 @@ func (client *Client) PublishRegistryModuleVersionWithOptions(request *PublishRe
 
 // Summary:
 //
-// Publishes a Registry template version.
+// Publishes a registry template version.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Rate limit for a single user: 100 calls per second.
 //
 // @param request - PublishRegistryModuleVersionRequest
 //
@@ -7332,11 +7348,11 @@ func (client *Client) PublishRegistryModuleVersion(request *PublishRegistryModul
 
 // Summary:
 //
-// Removes a shared account.
+// Removes shared accounts.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param tmpReq - RemoveSharedAccountsRequest
 //
@@ -7397,11 +7413,11 @@ func (client *Client) RemoveSharedAccountsWithOptions(tmpReq *RemoveSharedAccoun
 
 // Summary:
 //
-// Removes a shared account.
+// Removes shared accounts.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - RemoveSharedAccountsRequest
 //
@@ -7694,11 +7710,11 @@ func (client *Client) UpdateDetectConfig(detectConfigId *string, request *Update
 
 // Summary:
 //
-// Updates an Explorer template.
+// Updates the Explorer template.
 //
 // Description:
 //
-// Updates an Explorer template.
+// Updates the Explorer template.
 //
 // @param request - UpdateExplorerModuleAttributeRequest
 //
@@ -7753,11 +7769,11 @@ func (client *Client) UpdateExplorerModuleAttributeWithOptions(explorerModuleId 
 
 // Summary:
 //
-// Updates an Explorer template.
+// Updates the Explorer template.
 //
 // Description:
 //
-// Updates an Explorer template.
+// Updates the Explorer template.
 //
 // @param request - UpdateExplorerModuleAttributeRequest
 //
@@ -7904,9 +7920,9 @@ func (client *Client) UpdateGroup(groupId *string, request *UpdateGroupRequest) 
 //
 // - The update operation does not affect the content or version information of the template.
 //
-// - To enable or disable deletion protection, use the deletionProtection parameter.
+// - To enable or disable deletion protection, set the `deletionProtection` parameter.
 //
-// - Use clientToken to ensure the idempotence of the request and avoid duplicate submissions caused by network issues.
+// - Use `clientToken` to ensure the idempotence of the request and prevent duplicate submissions caused by network issues.
 //
 // @param request - UpdateModuleAttributeRequest
 //
@@ -7991,9 +8007,9 @@ func (client *Client) UpdateModuleAttributeWithOptions(moduleId *string, request
 //
 // - The update operation does not affect the content or version information of the template.
 //
-// - To enable or disable deletion protection, use the deletionProtection parameter.
+// - To enable or disable deletion protection, set the `deletionProtection` parameter.
 //
-// - Use clientToken to ensure the idempotence of the request and avoid duplicate submissions caused by network issues.
+// - Use `clientToken` to ensure the idempotence of the request and prevent duplicate submissions caused by network issues.
 //
 // @param request - UpdateModuleAttributeRequest
 //
@@ -8192,7 +8208,7 @@ func (client *Client) UpdateProject(projectId *string, request *UpdateProjectReq
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - UpdateRegistryModuleAttributeRequest
 //
@@ -8251,7 +8267,7 @@ func (client *Client) UpdateRegistryModuleAttributeWithOptions(namespaceName *st
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit per user is 100 calls per second.
 //
 // @param request - UpdateRegistryModuleAttributeRequest
 //
@@ -8270,11 +8286,11 @@ func (client *Client) UpdateRegistryModuleAttribute(namespaceName *string, modul
 
 // Summary:
 //
-// Modifies a workspace.
+// Updates a workspace.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - UpdateRegistryNamespaceAttributeRequest
 //
@@ -8329,11 +8345,11 @@ func (client *Client) UpdateRegistryNamespaceAttributeWithOptions(namespaceName 
 
 // Summary:
 //
-// Modifies a workspace.
+// Updates a workspace.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - UpdateRegistryNamespaceAttributeRequest
 //
@@ -8352,11 +8368,11 @@ func (client *Client) UpdateRegistryNamespaceAttribute(namespaceName *string, re
 
 // Summary:
 //
-// Modifies a resource export task.
+// Updates a resource export task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - UpdateResourceExportTaskAttributeRequest
 //
@@ -8439,11 +8455,11 @@ func (client *Client) UpdateResourceExportTaskAttributeWithOptions(exportTaskId 
 
 // Summary:
 //
-// Modifies a resource export task.
+// Updates a resource export task.
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// The rate limit for a single user is 100 calls per second.
 //
 // @param request - UpdateResourceExportTaskAttributeRequest
 //
@@ -8462,7 +8478,7 @@ func (client *Client) UpdateResourceExportTaskAttribute(exportTaskId *string, re
 
 // Summary:
 //
-// Modifies a stack. When the configuration changes, a stack deployment is triggered.
+// Updates a stack and triggers stack deployment when configuration changes occur.
 //
 // @param request - UpdateStackRequest
 //
@@ -8493,6 +8509,10 @@ func (client *Client) UpdateStackWithOptions(stackId *string, request *UpdateSta
 
 	if !dara.IsNil(request.RamRole) {
 		body["ramRole"] = request.RamRole
+	}
+
+	if !dara.IsNil(request.SkipPropertyValidation) {
+		body["skipPropertyValidation"] = request.SkipPropertyValidation
 	}
 
 	if !dara.IsNil(request.SourcePath) {
@@ -8529,7 +8549,7 @@ func (client *Client) UpdateStackWithOptions(stackId *string, request *UpdateSta
 
 // Summary:
 //
-// Modifies a stack. When the configuration changes, a stack deployment is triggered.
+// Updates a stack and triggers stack deployment when configuration changes occur.
 //
 // @param request - UpdateStackRequest
 //

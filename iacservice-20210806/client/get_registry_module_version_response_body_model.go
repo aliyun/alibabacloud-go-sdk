@@ -62,13 +62,13 @@ func (s *GetRegistryModuleVersionResponseBody) Validate() error {
 }
 
 type GetRegistryModuleVersionResponseBodyModuleVersion struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2025-02-08T02:22:16Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The product page URL.
+	// The URL of the details page.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type GetRegistryModuleVersionResponseBodyModuleVersion struct {
 	//
 	// 24
 	Downloads *string `json:"downloads,omitempty" xml:"downloads,omitempty"`
-	// The template name.
+	// The name of the template.
 	//
 	// example:
 	//
 	// ecs-cluster
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetRegistryModuleVersionResponseBodyModuleVersion struct {
 	//
 	// namespaceName/ModuleName
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The template source URL.
+	// The URL of the template source.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iListExplorerRegistryModuleExamplesRequest interface {
 }
 
 type ListExplorerRegistryModuleExamplesRequest struct {
-	// The example name of the module.
+	// The name of the module example.
 	//
 	// example:
 	//
 	// complete
 	ExampleName *string `json:"exampleName,omitempty" xml:"exampleName,omitempty"`
-	// The search keyword. Supports fuzzy match based on the module name or module example name.
+	// The search keyword. Supports fuzzy matching based on the module name or module example name.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type ListExplorerRegistryModuleExamplesRequest struct {
 	//
 	// 1.11.0
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	// The name of the workspace to which the module belongs.
+	// The name of the workspace where the module is located.
 	//
 	// example:
 	//
 	// alibaba
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	// The pagination token for the next page of results.
+	// The token used to query the next page of results.
 	//
-	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page.
 	//
 	// example:
 	//

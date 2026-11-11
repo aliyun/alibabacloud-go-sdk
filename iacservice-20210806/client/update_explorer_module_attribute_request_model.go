@@ -24,13 +24,13 @@ type UpdateExplorerModuleAttributeRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The template description. Length: 0 to 255 characters.
+	// The description of the template. The length is 0 to 255 characters.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The template name. Length: 1 to 128 characters. The name must be unique.
+	// The name of the template. The length is 1 to 128 characters. The name must be unique.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type GetExecuteStateResponseBody struct {
 	//
 	// Your account does not have enough balance to order postpaid product.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The run log.
+	// The execution log.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetExecuteStateResponseBody struct {
 	//
 	// B4672AE3-C313-5B7A-BB24-45345570D398
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The state file content.
+	// The content of the state file.
 	//
 	// example:
 	//
@@ -48,29 +48,29 @@ type GetExecuteStateResponseBody struct {
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
 	// The status. Valid values:
 	//
-	// - Pending: ready to start.
+	// - Pending: The task is ready.
 	//
-	// - PlanQueued: the plan task has been created but is waiting in the queue because no workflow is available.
+	// - PlanQueued: The plan task is queued and waiting for an available workflow.
 	//
-	// - ApplyQueued: the apply task has been created but is waiting in the queue because no workflow is available.
+	// - ApplyQueued: The apply task is queued and waiting for an available workflow.
 	//
-	// - Planning: the plan phase is being executed.
+	// - Planning: The plan phase is being executed.
 	//
-	// - Planned: the plan execution is complete.
+	// - Planned: The plan execution is completed.
 	//
-	// - Confirmed: the plan has been confirmed after execution.
+	// - Confirmed: The execution is confirmed after the plan phase.
 	//
-	// - PlannedAndFinished: the plan execution is complete and no diff was found. The job is in a terminal state.
+	// - PlannedAndFinished: No differences are found after the plan execution is completed, and the job enters the final state.
 	//
-	// - Applying: the apply phase is being executed.
+	// - Applying: The apply phase is being executed.
 	//
-	// - Applied: the apply execution is complete.
+	// - Applied: The apply execution is completed.
 	//
-	// - Discarded: the task has been discarded. This is a terminal state.
+	// - Discarded: The execution task is discarded and enters the final state.
 	//
-	// - Errored: the execution encountered an error. This is a terminal state.
+	// - Errored: An error occurs during the execution, and the job enters the final state.
 	//
-	// - Canceled: the execution has been canceled. This is a terminal state.
+	// - Canceled: The execution is canceled and enters the final state.
 	//
 	// example:
 	//

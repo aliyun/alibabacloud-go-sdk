@@ -24,13 +24,13 @@ type iListExplorerRegistryModuleVersionsRequest interface {
 }
 
 type ListExplorerRegistryModuleVersionsRequest struct {
-	// The search keyword. Fuzzy match is supported based on the module name.
+	// The search keyword. Fuzzy matching is supported based on the module name.
 	//
 	// example:
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of entries to return per page.
 	//
 	// Valid values: 0 to 200.
 	//
@@ -52,15 +52,15 @@ type ListExplorerRegistryModuleVersionsRequest struct {
 	//
 	// 1.11.0
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	// The name of the workspace to which the module belongs.
+	// The name of the workspace where the module resides.
 	//
 	// example:
 	//
 	// alibaba
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	// The pagination token for the next page of results.
+	// The token used to return the next page of query results.
 	//
-	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	// If the total number of entries exceeds the value of maxResults, the returned results are truncated. You can use nextToken to query the next page.
 	//
 	// example:
 	//

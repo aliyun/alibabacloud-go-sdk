@@ -18,7 +18,7 @@ type iListModuleVersionRequest interface {
 }
 
 type ListModuleVersionRequest struct {
-	// The search keyword. Fuzzy match on version names is supported.
+	// The search keyword, which supports fuzzy search for version names.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListModuleVersionRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results to return per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//

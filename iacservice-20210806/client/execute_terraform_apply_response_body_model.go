@@ -22,7 +22,7 @@ type ExecuteTerraformApplyResponseBody struct {
   // 
   // C896FE0A-1BEA-5D01-BFF4-B03B82B9CA3D
   RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-  // The state file ID.
+  // The ID of the state file.
   // 
   // example:
   // 

@@ -26,17 +26,17 @@ type CreateModuleVersionRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The version description. The description can be up to 256 characters in length.
+	// The version description. The length cannot exceed 256 characters.
 	//
 	// example:
 	//
 	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The template version name. The name must meet the following requirements:
+	// The template version name. It must meet the following requirements:
 	//
-	// - The name must be 2 to 128 characters in length.
+	// - The length is 2 to 128 characters.
 	//
-	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+	// - It can contain uppercase and lowercase letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
 	//
 	// This parameter is required.
 	//

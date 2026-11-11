@@ -32,7 +32,7 @@ type ListProjectRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//

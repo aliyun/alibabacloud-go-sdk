@@ -20,7 +20,7 @@ type iPublishRegistryModuleVersionRequest interface {
 }
 
 type PublishRegistryModuleVersionRequest struct {
-	// The idempotence token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,9 @@ type PublishRegistryModuleVersionRequest struct {
 	//
 	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	// The version number. The value must conform to the [semantic version](http://semver.org/) specification, such as 1.0.1. The initial version is 1.0.0.
+	// The version number. It must comply with the [semantic versioning](http://semver.org/) specification, such as 1.0.1.
+	//
+	// The initial version is 1.0.0.
 	//
 	// This parameter is required.
 	//

@@ -28,13 +28,13 @@ type ListProductsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The maximum number of results per page. Valid values: 0 to 200. Default value: 100.
+	// The maximum number of entries to return on each page. Valid values: 0 to 200. Default value: 100.
 	//
 	// example:
 	//
 	// 30BaZ9ekYWXJdqshYecA++coNg7qT1Zbm3RfLyFIZeY=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The product list.
+	// The list of products.
 	Products []*ListProductsResponseBodyProducts `json:"products,omitempty" xml:"products,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,13 +117,13 @@ func (s *ListProductsResponseBody) Validate() error {
 }
 
 type ListProductsResponseBodyProducts struct {
-	// The first-level category name.
+	// The name of the level-1 category.
 	//
 	// example:
 	//
-	// 企业应用
+	// Enterprise Applications
 	FirstCategoryName *string `json:"firstCategoryName,omitempty" xml:"firstCategoryName,omitempty"`
-	// The first-level category name in English.
+	// The English name of the level-1 category.
 	//
 	// example:
 	//
@@ -139,21 +139,21 @@ type ListProductsResponseBodyProducts struct {
 	//
 	// example:
 	//
-	// 微服务引擎
+	// Microservices Engine
 	ProductName *string `json:"productName,omitempty" xml:"productName,omitempty"`
-	// The product name in English.
+	// The English name of the product.
 	//
 	// example:
 	//
 	// Microservices Engine
 	ProductNameEn *string `json:"productNameEn,omitempty" xml:"productNameEn,omitempty"`
-	// The second-level category name.
+	// The name of the level-2 category.
 	//
 	// example:
 	//
-	// 应用服务
+	// Application Services
 	SecondCategoryName *string `json:"secondCategoryName,omitempty" xml:"secondCategoryName,omitempty"`
-	// The second-level category name in English.
+	// The English name of the level-2 category.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListProductsResponseBodyProducts struct {
 	//
 	// true
 	SupportTerraformer *bool `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
-	// The Terraform Provider version.
+	// The Terraform provider version.
 	//
 	// example:
 	//

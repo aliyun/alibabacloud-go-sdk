@@ -62,7 +62,7 @@ func (s *GetModuleVersionResponseBody) Validate() error {
 }
 
 type GetModuleVersionResponseBodyVersion struct {
-	// The time when the version was created.
+	// The time when the version was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -92,37 +92,37 @@ type GetModuleVersionResponseBodyVersion struct {
 	//
 	// versionName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version source. Valid values:
+	// The source of the version. Valid values:
 	//
-	// - OSS: imported from OSS.
+	// - OSS: imported from OSS
 	//
-	// - Registry: created by using a template from the template center.
+	// - Registry: created by using a template in the template center
 	//
-	// - ExportTask: exported from a resource export task.
+	// - ExportTask: referenced from a template exported by a resource export task
 	//
-	// - Upload: uploaded as a file.
+	// - Upload: uploaded as a file
 	//
-	// - Shared: cloned from a shared source.
+	// - Shared: cloned from a shared template
 	//
-	// - Editor: edited online.
+	// - Editor: edited online
 	//
 	// example:
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The path of the version source.
+	// The path value of the version source.
 	//
-	// - If the source is Registry, the value is in the format of <workspace name>/<module name>:<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
+	// - If the source is Registry, the value is in the <Workspace name>/<Module name>:<Module version> format. Example: terraform-alicloud-modules/rds:1.0.0.
 	//
-	// - If the source is OSS, the value is in the format of oss::<file link>. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	// - If the source is OSS, the value is in the oss::<File URL> format. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
 	//
-	// - If the source is ExportTask, the value is in the format of <export task ID>:<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
+	// - If the source is ExportTask, the value is in the <Export task ID>:<Exported version> format. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
 	//
 	// example:
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The path of the State file that corresponds to the template. Currently, only OSS paths are supported. The value is in the format of oss::<OSS file path>/terraform.tfstate.
+	// The path value of the state file corresponding to the template. Currently, only OSS paths are supported. The value is in the oss::<OSS path of the file>/terraform.tfstate format.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type GetModuleVersionResponseBodyVersion struct {
 	TerraformContext map[string]interface{} `json:"terraformContext,omitempty" xml:"terraformContext,omitempty"`
 	// The version generation strategy. Valid values:
 	//
-	// - Manual: manually generate a version. This is the default value.
+	// - Manual: manually generated version (default)
 	//
-	// - SourcePathUpdated: a new version is generated when the sourcePath is modified.
+	// - SourcePathUpdated: a new version is generated when sourcePath is modified
 	//
 	// example:
 	//

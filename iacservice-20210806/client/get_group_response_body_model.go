@@ -74,7 +74,7 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// true
 	AutoTrigger *bool `json:"autoTrigger,omitempty" xml:"autoTrigger,omitempty"`
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// OK
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the group configuration is forcibly used.
+	// Indicates whether the group configuration is forcibly applied.
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// p-4267dcfbf1b6d126edcadf0e949
 	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	// The RAM role (1 to 128 characters). The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job trigger mode is not manual.
+	// The Resource Access Management (RAM) role. Length: 1 to 128 characters. The system assumes this role to execute the template when a new job is triggered. This parameter is required when the job is not triggered manually.
 	//
 	// example:
 	//
 	// ramRoleName
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
-	// The list of report export field options.
+	// The list of report export fields.
 	ReportExportField []*string `json:"reportExportField,omitempty" xml:"reportExportField,omitempty" type:"Repeated"`
-	// The export address for the execution report. OSS addresses are supported. Format: https://<OSS bucket address>/<path>.
+	// The export path for execution reports. OSS paths are supported, such as https://<OSS bucket endpoint>/<path>.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GetGroupResponseBodyGroup struct {
 	//
 	// 3
 	TaskCnt *int64 `json:"taskCnt,omitempty" xml:"taskCnt,omitempty"`
-	// The Terraform provider version. Select a Terraform provider version. Tasks in the group are executed based on the specified Terraform provider version. The version configured on a task takes higher priority. This version may conflict with the Terraform provider version specified in the module.
+	// The Terraform provider version. Select a Terraform provider version. Tasks in the group execute plans based on the specified Terraform provider version. The version configured on the task takes precedence. This setting may conflict with the Terraform provider version specified in the module.
 	//
 	// example:
 	//
@@ -142,11 +142,11 @@ type GetGroupResponseBodyGroup struct {
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
 	// The trigger policy. This parameter cannot be empty when autoTrigger is set to true.
 	TriggerConfig []*GetGroupResponseBodyGroupTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Repeated"`
-	// The resource type that triggers execution. Valid values:
+	// The resource type for triggered execution. Valid values:
 	//
-	// - Task: regular task
+	// - Task: Regular task.
 	//
-	// - SceneTestingTask: scenario-based testing task.
+	// - SceneTestingTask: Scenario-based testing task.
 	TriggerResourceType []*string `json:"triggerResourceType,omitempty" xml:"triggerResourceType,omitempty" type:"Repeated"`
 }
 
@@ -342,7 +342,7 @@ type GetGroupResponseBodyGroupNotifyConfig struct {
 	NotifyPath *string `json:"notifyPath,omitempty" xml:"notifyPath,omitempty"`
 	// The notification type. Valid values:
 	//
-	// DingDing.
+	// - DingDing
 	//
 	// example:
 	//
@@ -383,15 +383,15 @@ func (s *GetGroupResponseBodyGroupNotifyConfig) Validate() error {
 type GetGroupResponseBodyGroupTriggerConfig struct {
 	// The trigger strategy. Valid values:
 	//
-	// - ProviderNewVersion: triggered when a new provider version is released
+	// - ProviderNewVersion: Triggered when a new provider version is released.
 	//
-	// - Cron: triggered on a schedule.
+	// - Cron: Triggered on a schedule.
 	//
 	// example:
 	//
 	// Cron
 	TriggerStrategy *string `json:"triggerStrategy,omitempty" xml:"triggerStrategy,omitempty"`
-	// The policy value that must be maintained for scheduled triggering. This value is a cron expression.
+	// The policy value for scheduled triggers. Specify a cron expression.
 	//
 	// example:
 	//

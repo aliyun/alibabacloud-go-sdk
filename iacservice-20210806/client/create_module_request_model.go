@@ -30,7 +30,7 @@ type iCreateModuleRequest interface {
 }
 
 type CreateModuleRequest struct {
-	// The idempotency parameter. We recommend that you use a UUID.
+	// The idempotency token. Use a UUID.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type CreateModuleRequest struct {
 	//
 	// - The name must be 2 to 128 characters in length.
 	//
-	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
+	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
 	//
-	// - The name must be unique among all templates under the current account.
+	// - The name must be unique among the template resources within the current account.
 	//
 	// This parameter is required.
 	//
@@ -60,17 +60,17 @@ type CreateModuleRequest struct {
 	//
 	// my-ecs-module
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source from which the template is created. Valid values:
+	// The source of the template. Valid values:
 	//
-	// - OSS: imports from a ZIP file stored in OSS.
+	// - OSS: Imports a template from a ZIP file stored in OSS.
 	//
-	// - Registry: creates from a module in the template registry.
+	// - Registry: Creates a template by using a module from the template center.
 	//
-	// - ExportTask: references a template exported by a resource export task.
+	// - ExportTask: References a template exported by a resource export task.
 	//
-	// - Editor: creates a blank template that supports online editing.
+	// - Editor: Creates a blank template that supports online editing.
 	//
-	// - Upload: uploads a local template file to generate the template.
+	// - Upload: Generates a template by uploading a local template file.
 	//
 	// This parameter is required.
 	//
@@ -78,13 +78,13 @@ type CreateModuleRequest struct {
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The path of the template source. This parameter takes effect when source is set to Registry, OSS, or ExportTask.
+	// The path of the template source. This parameter is valid only when source is set to Registry, OSS, or ExportTask.
 	//
-	// - If source is set to Registry, the value is in the format of \\<workspace name>/\\<module name>:\\<module version>. Example: terraform-alicloud-modules/rds:1.0.0.
+	// - If source is set to Registry, the value is in the <workspace name>/<module name>:<module version> format, such as terraform-alicloud-modules/rds:1.0.0.
 	//
-	// - If source is set to OSS, the value is in the format of oss::<file URL>. The file must be a ZIP file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	// - If source is set to OSS, the value is in the oss::<file URL> format. The file must be a ZIP file, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
 	//
-	// - If source is set to ExportTask, the value is in the format of \\<export task ID>:\\<exported version>. Example: ex-3b6cb9fa4751afff298da723c24ac:v1.
+	// - If source is set to ExportTask, the value is in the <export task ID>:<exported version> format, such as ex-3b6cb9fa4751afff298da723c24ac:v1.
 	//
 	// - If source is set to Editor or Upload, leave this parameter empty.
 	//
@@ -92,9 +92,9 @@ type CreateModuleRequest struct {
 	//
 	// oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	SourcePath *string `json:"sourcePath,omitempty" xml:"sourcePath,omitempty"`
-	// The path of the State file that corresponds to the template. This parameter is valid only when source is set to OSS.
+	// The path of the state file corresponding to the template. This parameter is valid only when source is set to OSS.
 	//
-	// The value is in the format of oss::\\<OSS file path>/terraform.tfstate.
+	// The value is in the oss::<OSS path of the file>/terraform.tfstate format.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type CreateModuleRequest struct {
 	Tags []*CreateModuleRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The version generation strategy. Valid values:
 	//
-	// - Manual: manually generates a version. This is the default value.
+	// - Manual: Manually generates a version. This is the default value.
 	//
-	// - SourcePathUpdated: generates a new version when sourcePath is modified.
+	// - SourcePathUpdated: Generates a new version when sourcePath is modified.
 	//
 	// example:
 	//

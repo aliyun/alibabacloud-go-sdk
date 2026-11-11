@@ -22,9 +22,9 @@ type AddSharedAccountsRequest struct {
 	AccountIds []*int64 `json:"accountIds,omitempty" xml:"accountIds,omitempty" type:"Repeated"`
 	// The ID of the shared resource.
 	//
-	//  - If the type is Namespace, set this parameter to the workspace name.
+	// - If the type is Namespace, the value is the workspace name.
 	//
-	// - If the type is RegistryModule, set this parameter to \\<namespaceName>/\\<ModuleName>.
+	// - If the type is RegistryModule, the value is <namespaceName>/<ModuleName>.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type AddSharedAccountsRequest struct {
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - RegistryModule: Registry template.
+	// - RegistryModule: Registry template
 	//
-	// - Namespace: workspace.
+	// - Namespace: workspace
 	//
 	// example:
 	//

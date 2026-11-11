@@ -34,9 +34,9 @@ type ListExplorerRegistryModuleExamplesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page of results.
+	// The token used to query the next page of results.
 	//
-	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page of data.
+	// If the total number of entries exceeds the maxResults limit, the data is truncated. You can use nextToken to query the next page.
 	//
 	// example:
 	//
@@ -123,13 +123,13 @@ func (s *ListExplorerRegistryModuleExamplesResponseBody) Validate() error {
 }
 
 type ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples struct {
-	// The example name.
+	// The name of the example.
 	//
 	// example:
 	//
 	// 201-use-case-create-actiontrail-trail
 	ExampleName *string `json:"exampleName,omitempty" xml:"exampleName,omitempty"`
-	// The example path.
+	// The path of the example.
 	//
 	// example:
 	//
@@ -141,19 +141,19 @@ type ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExample
 	//
 	// {}
 	ExampleSchema map[string]interface{} `json:"exampleSchema,omitempty" xml:"exampleSchema,omitempty"`
-	// The module name.
+	// The name of the module.
 	//
 	// example:
 	//
 	// iactestname1
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The module version.
+	// The version of the module.
 	//
 	// example:
 	//
 	// 1.11.0
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
