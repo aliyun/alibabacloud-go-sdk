@@ -28,7 +28,7 @@ type ListColumnsResponseBody struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of records returned by the current query.
+	// The list of records returned in the current query.
 	Items []*ListColumnsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned per page in the current query.
 	//
@@ -36,7 +36,7 @@ type ListColumnsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID, which can be used to locate the current API call.
+	// The request ID. You can use the ID to locate this API call.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ListColumnsResponseBody) Validate() error {
 }
 
 type ListColumnsResponseBodyItems struct {
-	// The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+	// The creation time of the data object. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1788566400000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cloud instance identity.
+	// The instance identity of the cloud instance.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type ListColumnsResponseBodyItems struct {
 	//
 	// rm-2ze1abcdefgh****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The compatibility field for the column encryption status. To query column encryption results, call ListDataMaskingColumns.
+	// The compatibility field for the column encryption status. To query the column encryption results, call ListDataMaskingColumns.
 	//
 	// example:
 	//

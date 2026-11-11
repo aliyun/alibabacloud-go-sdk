@@ -24,19 +24,19 @@ type iUpdateDataMaskingEncryptionAlgorithmRequest interface {
 }
 
 type UpdateDataMaskingEncryptionAlgorithmRequest struct {
-	// The name of the instance-level column encryption algorithm. Select an available algorithm from the ListDataMaskingEncryptionAlgorithms operation.
+	// The name of the instance-level column encryption algorithm. Select an available algorithm from ListDataMaskingEncryptionAlgorithms.
 	//
 	// example:
 	//
 	// AES_256_GCM
 	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" xml:"EncryptionAlgorithm,omitempty"`
-	// The KMS key identifier. You can obtain this value from Items[].KeyId in the response of the ListKmsKeys operation. Specify this parameter when you use a KMS key. Do not specify this parameter for local key scenarios.
+	// The identifier of the Key Management Service (KMS) key. You can obtain it from Items[].KeyId in the response of ListKmsKeys. Provide this parameter when using a KMS key. Do not pass this parameter in local key scenarios.
 	//
 	// example:
 	//
 	// 12345678-1234-1234-1234-12345678****
 	EncryptionKeyId *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
-	// The database instance identity. You can obtain this value from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+	// The database instance identity. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
 	//
 	// example:
 	//
@@ -52,21 +52,21 @@ type UpdateDataMaskingEncryptionAlgorithmRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you also specify ProductId, the two values must correspond to each other.
+	// The code of the cloud service. Column encryption supports ApsaraDB RDS, PolarDB, and PolarDB-X 2.0. If ProductId is also provided, the two parameters must match.
 	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The cloud product type identifier. Valid values:
+	// The identifier of the cloud service type. Valid values:
 	//
-	// - 5: RDS.
+	// - 5: ApsaraDB RDS.
 	//
-	// - 8: POLARDB.
+	// - 8: PolarDB.
 	//
-	// - 27: PolarDBX2.
+	// - 27: PolarDB-X 2.0.
 	//
-	// If you specify both ProductId and ProductCode, the values must correspond to each other.
+	// If specified together with ProductCode, the values must match.
 	//
 	// example:
 	//

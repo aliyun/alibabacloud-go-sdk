@@ -14,7 +14,7 @@ type iUpdateDataMaskingEncryptionAlgorithmResponseBody interface {
 }
 
 type UpdateDataMaskingEncryptionAlgorithmResponseBody struct {
-	// The request ID, which can be used to locate this API call.
+	// The ID of the request, which can be used to trace the API call.
 	//
 	// example:
 	//

@@ -23,6 +23,8 @@ type iListColumnsRequest interface {
 	GetLang() *string
 	SetName(v string) *ListColumnsRequest
 	GetName() *string
+	SetOnlyColumnName(v int32) *ListColumnsRequest
+	GetOnlyColumnName() *int32
 	SetPageSize(v int32) *ListColumnsRequest
 	GetPageSize() *int32
 	SetProductCode(v string) *ListColumnsRequest
@@ -44,7 +46,7 @@ type ListColumnsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The cloud database instance identity. Set this parameter to the InstanceId in the instance list.
+	// The instance identity of the cloud database. Set this parameter to the InstanceId in the instance list.
 	//
 	// example:
 	//
@@ -62,13 +64,13 @@ type ListColumnsRequest struct {
 	//
 	// MySQL
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both are specified, DataAssetSourceId is used.
+	// The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both parameters are specified, DataAssetSourceId is used.
 	//
 	// example:
 	//
 	// rm-2ze1abcdefgh****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The language of the response description. Valid values: zh: Chinese; en: English.
+	// The language of the response description. Valid values: zh: Chinese. en: English.
 	//
 	// example:
 	//
@@ -80,6 +82,12 @@ type ListColumnsRequest struct {
 	//
 	// phone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Specifies whether the API operation returns only column names.
+	//
+	// example:
+	//
+	// 1
+	OnlyColumnName *int32 `json:"OnlyColumnName,omitempty" xml:"OnlyColumnName,omitempty"`
 	// The number of entries to return on each page. Keep other filter conditions consistent when querying the next page.
 	//
 	// example:
@@ -92,7 +100,7 @@ type ListColumnsRequest struct {
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The identifier of the sensitivity level. You can obtain this value from the return list of ListRiskLevels.
+	// The identifier of the sensitivity level. You can obtain the value from the return list of ListRiskLevels.
 	//
 	// example:
 	//
@@ -110,7 +118,7 @@ type ListColumnsRequest struct {
 	//
 	// customer
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The identifier of the data classification and grading template. You can obtain this value from Items[].Id returned by ListTemplates. Keep this parameter consistent with the selected sensitivity level and detection model.
+	// The identifier of the data classification template. You can obtain the value from Items[].Id returned by ListTemplates. Keep this parameter consistent with the selected sensitivity level and detection model.
 	//
 	// example:
 	//
@@ -152,6 +160,10 @@ func (s *ListColumnsRequest) GetLang() *string {
 
 func (s *ListColumnsRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *ListColumnsRequest) GetOnlyColumnName() *int32 {
+	return s.OnlyColumnName
 }
 
 func (s *ListColumnsRequest) GetPageSize() *int32 {
@@ -210,6 +222,11 @@ func (s *ListColumnsRequest) SetLang(v string) *ListColumnsRequest {
 
 func (s *ListColumnsRequest) SetName(v string) *ListColumnsRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetOnlyColumnName(v int32) *ListColumnsRequest {
+	s.OnlyColumnName = &v
 	return s
 }
 
