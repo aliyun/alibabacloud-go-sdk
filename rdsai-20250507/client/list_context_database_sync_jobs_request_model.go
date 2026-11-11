@@ -20,13 +20,13 @@ type iListContextDatabaseSyncJobsRequest interface {
 }
 
 type ListContextDatabaseSyncJobsRequest struct {
-	// The ID of the target knowledge base.
+	// The destination knowledge base ID.
 	//
 	// example:
 	//
 	// kb-as1llqmkol****
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The page number. The value starts from 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//

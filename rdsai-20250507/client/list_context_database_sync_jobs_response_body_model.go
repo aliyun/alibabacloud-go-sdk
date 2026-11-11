@@ -38,7 +38,7 @@ type ListContextDatabaseSyncJobsResponseBody struct {
 	//
 	// 1
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message.
+	// The message.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListContextDatabaseSyncJobsResponseBody struct {
 	//
 	// id-001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,13 +126,13 @@ func (s *ListContextDatabaseSyncJobsResponseBody) Validate() error {
 }
 
 type ListContextDatabaseSyncJobsResponseBodyData struct {
-	// The list of import tasks.
+	// The list of import jobs.
 	//
 	// example:
 	//
 	// [{"Id":"job-as1llqmkol****", "SourceId":"src-as1llqmkol****", "TargetId":"tg-as1llqmkol****", "KnowledgeBaseId":"kb-as1llqmkol****"}]
 	Jobs []*ListContextDatabaseSyncJobsResponseBodyDataJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
-	// The page number. The value starts from 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
@@ -210,13 +210,13 @@ func (s *ListContextDatabaseSyncJobsResponseBodyData) Validate() error {
 }
 
 type ListContextDatabaseSyncJobsResponseBodyDataJobs struct {
-	// The reason for automatic pause.
+	// The auto-pause reason.
 	//
 	// example:
 	//
-	// Failed 3 consecutive times
+	// Three consecutive run failures
 	AutoPauseReason *string `json:"AutoPauseReason,omitempty" xml:"AutoPauseReason,omitempty"`
-	// Indicates whether the task is automatically paused.
+	// Indicates whether the job is automatically paused.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type ListContextDatabaseSyncJobsResponseBodyDataJobs struct {
 	//
 	// 3
 	ConfigVersion *int32 `json:"ConfigVersion,omitempty" xml:"ConfigVersion,omitempty"`
-	// Indicates whether the task is enabled.
+	// Indicates whether the job is enabled.
 	//
 	// example:
 	//
@@ -238,15 +238,15 @@ type ListContextDatabaseSyncJobsResponseBodyDataJobs struct {
 	//
 	// example:
 	//
-	// {"include":["/研发文档/**"],"exclude":["/归档文档/**"],"excludedDocumentIds":[],"sizeLimit":2147483648,"typeAllowlist":["docx","pdf"]}
+	// {"include":["/R&D documents/**"],"exclude":["/Archived documents/**"],"excludedDocumentIds":[],"sizeLimit":2147483648,"typeAllowlist":["docx","pdf"]}
 	Filters *ListContextDatabaseSyncJobsResponseBodyDataJobsFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
-	// The task ID, which is a system-generated UUID.
+	// The job ID, which is a system-generated UUID.
 	//
 	// example:
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the target knowledge base.
+	// The destination knowledge base ID.
 	//
 	// example:
 	//
@@ -256,15 +256,15 @@ type ListContextDatabaseSyncJobsResponseBodyDataJobs struct {
 	//
 	// example:
 	//
-	// R&D Team Document Import
+	// R&D team document import
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time of the next run.
+	// The next run time.
 	//
 	// example:
 	//
 	// 2026-09-23T10:00:00+08:00
 	NextRunAt *string `json:"NextRunAt,omitempty" xml:"NextRunAt,omitempty"`
-	// The scheduling type. Valid values: interval, daily-times.
+	// The schedule type. Valid values: interval and daily-times.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ type ListContextDatabaseSyncJobsResponseBodyDataJobs struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The target ID, which is a system-generated UUID.
+	// The destination ID, which is a system-generated UUID.
 	//
 	// example:
 	//
@@ -414,7 +414,7 @@ type ListContextDatabaseSyncJobsResponseBodyDataJobsFilters struct {
 	//
 	// example:
 	//
-	// ["/Archived Documents"]
+	// ["/Archived documents"]
 	Exclude []*string `json:"Exclude,omitempty" xml:"Exclude,omitempty" type:"Repeated"`
 	// The list of excluded document IDs.
 	//
@@ -426,7 +426,7 @@ type ListContextDatabaseSyncJobsResponseBodyDataJobsFilters struct {
 	//
 	// example:
 	//
-	// ["/R&D Documents"]
+	// ["/R&D documents"]
 	Include []*string `json:"Include,omitempty" xml:"Include,omitempty" type:"Repeated"`
 	// The size limit in bytes.
 	//

@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("RdsAi")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-wulanchabu": dara.String("rdsai.aliyuncs.com"),
@@ -1199,11 +1207,17 @@ func (client *Client) CreateContextDatabaseSyncSource(request *CreateContextData
 
 // Summary:
 //
-// Creates a workspace, the first member, and the first API key in a one-time onboarding process.
+// Creates a ContextDB workspace and its first member, and optionally generates an initial API key.
 //
 // Description:
 //
-// Creates a workspace along with the first member and the first API key in a one-time onboarding process. The plaintext API key is returned in the response.
+// Creates a ContextDB workspace and its first member.
+//
+// - GenerateInitialKey defaults to `true`. An initial API key is generated during creation, and the plaintext key is returned only once. Save the returned key. If set to `false`, no initial API key is generated, and the ApiKeyName and ApiKey fields in the response are empty.
+//
+// - You can use ClusterId to specify the cluster to which the workspace belongs.
+//
+// - You can use PermissionMode to select the compatibility mode or the advanced permission mode. The advanced permission mode can only be selected by the Alibaba Cloud account. It takes effect immediately after the workspace is created and cannot be disabled.
 //
 // @param request - CreateContextDatabaseWorkspaceRequest
 //
@@ -1218,8 +1232,20 @@ func (client *Client) CreateContextDatabaseWorkspaceWithOptions(request *CreateC
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.GenerateInitialKey) {
+		query["GenerateInitialKey"] = request.GenerateInitialKey
+	}
+
 	if !dara.IsNil(request.MemberName) {
 		query["MemberName"] = request.MemberName
+	}
+
+	if !dara.IsNil(request.PermissionMode) {
+		query["PermissionMode"] = request.PermissionMode
 	}
 
 	if !dara.IsNil(request.WorkspaceName) {
@@ -1251,11 +1277,17 @@ func (client *Client) CreateContextDatabaseWorkspaceWithOptions(request *CreateC
 
 // Summary:
 //
-// Creates a workspace, the first member, and the first API key in a one-time onboarding process.
+// Creates a ContextDB workspace and its first member, and optionally generates an initial API key.
 //
 // Description:
 //
-// Creates a workspace along with the first member and the first API key in a one-time onboarding process. The plaintext API key is returned in the response.
+// Creates a ContextDB workspace and its first member.
+//
+// - GenerateInitialKey defaults to `true`. An initial API key is generated during creation, and the plaintext key is returned only once. Save the returned key. If set to `false`, no initial API key is generated, and the ApiKeyName and ApiKey fields in the response are empty.
+//
+// - You can use ClusterId to specify the cluster to which the workspace belongs.
+//
+// - You can use PermissionMode to select the compatibility mode or the advanced permission mode. The advanced permission mode can only be selected by the Alibaba Cloud account. It takes effect immediately after the workspace is created and cannot be disabled.
 //
 // @param request - CreateContextDatabaseWorkspaceRequest
 //
@@ -2391,7 +2423,7 @@ func (client *Client) DeleteContextDatabaseSyncSource(request *DeleteContextData
 //
 // Description:
 //
-// Deletes a workspace. This is a hard delete and cannot be recovered. After the workspace is deleted, the local metadata is soft-deleted synchronously. Deleted workspaces no longer count toward the quota.
+// Deletes a workspace. This is a hard deletion and cannot be undone. After the workspace is deleted, local metadata is synchronously soft deleted, and the deleted workspace is no longer counted towards the quota.
 //
 // @param request - DeleteContextDatabaseWorkspaceRequest
 //
@@ -2439,7 +2471,7 @@ func (client *Client) DeleteContextDatabaseWorkspaceWithOptions(request *DeleteC
 //
 // Description:
 //
-// Deletes a workspace. This is a hard delete and cannot be recovered. After the workspace is deleted, the local metadata is soft-deleted synchronously. Deleted workspaces no longer count toward the quota.
+// Deletes a workspace. This is a hard deletion and cannot be undone. After the workspace is deleted, local metadata is synchronously soft deleted, and the deleted workspace is no longer counted towards the quota.
 //
 // @param request - DeleteContextDatabaseWorkspaceRequest
 //
@@ -6168,13 +6200,13 @@ func (client *Client) ListContextDatabaseMembers(request *ListContextDatabaseMem
 
 // Summary:
 //
-// Lists the datasource configurations in a workspace.
+// Lists the data sources in a workspace.
 //
 // Description:
 //
-// The list operation returns paginated results by default. Page and PageSize are optional parameters.
+// By default, the list operation returns paginated results. The Page and PageSize parameters are optional.
 //
-// The Data list field in the response is returned as an array. Total indicates the total number of records that match the specified conditions.
+// The Data field in the response is returned as an array, and Total indicates the total number of matching entries.
 //
 // @param request - ListContextDatabaseSyncConnectionsRequest
 //
@@ -6230,13 +6262,13 @@ func (client *Client) ListContextDatabaseSyncConnectionsWithOptions(request *Lis
 
 // Summary:
 //
-// Lists the datasource configurations in a workspace.
+// Lists the data sources in a workspace.
 //
 // Description:
 //
-// The list operation returns paginated results by default. Page and PageSize are optional parameters.
+// By default, the list operation returns paginated results. The Page and PageSize parameters are optional.
 //
-// The Data list field in the response is returned as an array. Total indicates the total number of records that match the specified conditions.
+// The Data field in the response is returned as an array, and Total indicates the total number of matching entries.
 //
 // @param request - ListContextDatabaseSyncConnectionsRequest
 //
@@ -6414,13 +6446,13 @@ func (client *Client) ListContextDatabaseSyncJobExclusions(request *ListContextD
 
 // Summary:
 //
-// Lists import tasks.
+// Lists import jobs.
 //
 // Description:
 //
-// The list operation returns paginated results by default. Page and PageSize are optional parameters.
+// The list API returns paginated results by default. Page and PageSize are optional parameters.
 //
-// The Data list field in the response is returned as an array. Total indicates the total number of records that match the specified conditions.
+// The Data list field in the response is returned as an array, and Total indicates the total number of matching entries.
 //
 // @param request - ListContextDatabaseSyncJobsRequest
 //
@@ -6476,13 +6508,13 @@ func (client *Client) ListContextDatabaseSyncJobsWithOptions(request *ListContex
 
 // Summary:
 //
-// Lists import tasks.
+// Lists import jobs.
 //
 // Description:
 //
-// The list operation returns paginated results by default. Page and PageSize are optional parameters.
+// The list API returns paginated results by default. Page and PageSize are optional parameters.
 //
-// The Data list field in the response is returned as an array. Total indicates the total number of records that match the specified conditions.
+// The Data list field in the response is returned as an array, and Total indicates the total number of matching entries.
 //
 // @param request - ListContextDatabaseSyncJobsRequest
 //

@@ -20,7 +20,7 @@ type iListContextDatabaseSyncConnectionsRequest interface {
 }
 
 type ListContextDatabaseSyncConnectionsRequest struct {
-	// The page number. Pages start from 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type ListContextDatabaseSyncConnectionsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//
