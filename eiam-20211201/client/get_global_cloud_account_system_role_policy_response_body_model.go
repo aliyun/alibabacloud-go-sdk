@@ -16,13 +16,15 @@ type iGetGlobalCloudAccountSystemRolePolicyResponseBody interface {
 }
 
 type GetGlobalCloudAccountSystemRolePolicyResponseBody struct {
+	// The access policy document for the global cloud account system role (JSON character string).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"Version":"1","Statement":[]}
 	PolicyDocument *string `json:"PolicyDocument,omitempty" xml:"PolicyDocument,omitempty"`
-	// 本次请求的唯一标识。
+	// The unique identifier of the request.
 	//
 	// This parameter is required.
 	//

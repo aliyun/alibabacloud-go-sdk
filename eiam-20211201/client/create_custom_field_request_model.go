@@ -52,7 +52,7 @@ type CreateCustomFieldRequest struct {
 	//
 	// example:
 	//
-	// Field test
+	// 字段测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to encrypt the field.
 	//

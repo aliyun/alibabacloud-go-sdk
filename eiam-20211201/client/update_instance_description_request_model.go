@@ -20,7 +20,7 @@ type UpdateInstanceDescriptionRequest struct {
 	//
 	// example:
 	//
-	// For production use.
+	// 生产环境使用。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID of the instance whose description you want to modify.
 	//
@@ -28,7 +28,7 @@ type UpdateInstanceDescriptionRequest struct {
 	//
 	// example:
 	//
-	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	// eiam-111ccc1111
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 

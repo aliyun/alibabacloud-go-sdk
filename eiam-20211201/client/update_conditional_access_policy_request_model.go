@@ -48,7 +48,7 @@ type UpdateConditionalAccessPolicyRequest struct {
 	//
 	// example:
 	//
-	// My conditional access policy
+	// 我的条件访问策略
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
 	// The condition configuration of the conditional access policy.
 	ConditionsConfig *UpdateConditionalAccessPolicyRequestConditionsConfig `json:"ConditionsConfig,omitempty" xml:"ConditionsConfig,omitempty" type:"Struct"`

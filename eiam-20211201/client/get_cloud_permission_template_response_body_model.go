@@ -18,7 +18,7 @@ type iGetCloudPermissionTemplateResponseBody interface {
 type GetCloudPermissionTemplateResponseBody struct {
 	// The permission template.
 	CloudPermissionTemplate *GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate `json:"CloudPermissionTemplate,omitempty" xml:"CloudPermissionTemplate,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *GetCloudPermissionTemplateResponseBody) Validate() error {
 }
 
 type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate struct {
-	// Specifies whether users are allowed to request the permission.
+	// Specifies whether users are allowed to apply for the permission template.
 	//
 	// example:
 	//
 	// true
 	AllowRequest *bool `json:"AllowRequest,omitempty" xml:"AllowRequest,omitempty"`
-	// The applicable scope of the permission template.
+	// The applicable scope for applying for the permission template.
 	ApplicableScope *GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateApplicableScope `json:"ApplicableScope,omitempty" xml:"ApplicableScope,omitempty" type:"Struct"`
-	// The ID of the cloud account to which the template belongs.
+	// The ID of the cloud account to which the permission template belongs.
 	//
 	// example:
 	//
 	// ca_01kq1us6frlbo3rr8m216vj3bkak2
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The creator information of the permission template.
+	// The information about the creator of the permission template.
 	CloudPermissionTemplateCreator *GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateCreator `json:"CloudPermissionTemplateCreator,omitempty" xml:"CloudPermissionTemplateCreator,omitempty" type:"Struct"`
 	// The unique identifier of the permission template.
 	//
@@ -84,7 +84,7 @@ type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate struct {
 	//
 	// cpt_01l8dagf2iablhigj75l1n99xxxxx
 	CloudPermissionTemplateId *string `json:"CloudPermissionTemplateId,omitempty" xml:"CloudPermissionTemplateId,omitempty"`
-	// The initialization result. This parameter is returned only when the status is init_failed.
+	// The initialization result. This field is returned only when the status is init_failed.
 	CloudPermissionTemplateInitResult *GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateInitResult `json:"CloudPermissionTemplateInitResult,omitempty" xml:"CloudPermissionTemplateInitResult,omitempty" type:"Struct"`
 	// The name of the permission template.
 	//
@@ -92,31 +92,45 @@ type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate struct {
 	//
 	// testName
 	CloudPermissionTemplateName *string `json:"CloudPermissionTemplateName,omitempty" xml:"CloudPermissionTemplateName,omitempty"`
-	// The ID of the application to which the exclusive template belongs. This parameter is empty for shared templates.
+	// The ID of the application that owns the exclusive template. This field is empty for shared templates.
 	//
 	// example:
 	//
 	// user_01kexamplexxxx
 	CloudPermissionTemplateOwnerId *string `json:"CloudPermissionTemplateOwnerId,omitempty" xml:"CloudPermissionTemplateOwnerId,omitempty"`
-	// The owner type of the exclusive template. Valid values: application (M2M applications) and user (human users). This parameter is empty for shared templates.
+	// The owner type of the exclusive template. Valid values:
+	//
+	// - application: M2M application.
+	//
+	// - user: Human user.
+	//
+	// This field is empty for shared templates.
 	//
 	// example:
 	//
 	// user
 	CloudPermissionTemplateOwnerType *string `json:"CloudPermissionTemplateOwnerType,omitempty" xml:"CloudPermissionTemplateOwnerType,omitempty"`
-	// The sharing mode of the permission template. Valid values: shared and exclusive.
+	// The sharing mode of the permission template. Valid values:
+	//
+	// - shared: Shared.
+	//
+	// - exclusive: Exclusive.
 	//
 	// example:
 	//
 	// shared
 	CloudPermissionTemplateSharingMode *string `json:"CloudPermissionTemplateSharingMode,omitempty" xml:"CloudPermissionTemplateSharingMode,omitempty"`
-	// The usage type of the permission template. Valid values: user (privilege escalation for human users) and application (privilege escalation for M2M applications).
+	// The usage type of the permission template. Valid values:
+	//
+	// - user: Privilege escalation for human users.
+	//
+	// - application: Privilege escalation for machine-to-machine (M2M) applications.
 	//
 	// example:
 	//
 	// user
 	CloudPermissionTemplateUsageType *string `json:"CloudPermissionTemplateUsageType,omitempty" xml:"CloudPermissionTemplateUsageType,omitempty"`
-	// The creation time. The value is a UNIX timestamp in milliseconds.
+	// The time when the permission template was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -146,19 +160,27 @@ type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate struct {
 	//
 	// carole_01kmek49aqxxxx
 	PermissionEntityId *string `json:"PermissionEntityId,omitempty" xml:"PermissionEntityId,omitempty"`
-	// The permission entity type. Fixed value: cloud_account_role.
+	// The type of the permission entity. Fixed value: cloud_account_role.
 	//
 	// example:
 	//
 	// cloud_account_role
 	PermissionEntityType *string `json:"PermissionEntityType,omitempty" xml:"PermissionEntityType,omitempty"`
-	// The status of the permission template. Valid values: initializing, init_failed, enabled, and disabled.
+	// The status of the permission template. Valid values:
+	//
+	// - initializing: The template is being initialized.
+	//
+	// - init_failed: The template initialization failed.
+	//
+	// - enabled: The template is enabled.
+	//
+	// - disabled: The template is disabled.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time. The value is a UNIX timestamp in milliseconds.
+	// The time when the permission template was last updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -365,17 +387,21 @@ func (s *GetCloudPermissionTemplateResponseBodyCloudPermissionTemplate) Validate
 }
 
 type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateApplicableScope struct {
-	// The list of specified group IDs. This parameter has a value only when ScopeType is set to custom.
+	// The list of specified group IDs. This field is returned only when ScopeType is set to custom.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The list of specified organizational unit IDs. This parameter has a value only when ScopeType is set to custom.
+	// The list of specified organizational unit IDs. This field is returned only when ScopeType is set to custom.
 	OrganizationalUnitIds []*string `json:"OrganizationalUnitIds,omitempty" xml:"OrganizationalUnitIds,omitempty" type:"Repeated"`
-	// The type of the applicable scope. Valid values: global and custom.
+	// The type of the applicable scope. Valid values:
+	//
+	// - global: Global.
+	//
+	// - custom: Custom.
 	//
 	// example:
 	//
 	// global
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The list of specified user IDs. This parameter has a value only when ScopeType is set to custom.
+	// The list of specified user IDs. This field is returned only when ScopeType is set to custom.
 	UserIds []*string `json:"UserIds,omitempty" xml:"UserIds,omitempty" type:"Repeated"`
 }
 
@@ -440,7 +466,11 @@ type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissio
 	//
 	// root
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The type of the creator. Valid values: idaas_admin and idaas_user.
+	// The type of the creator. Valid values:
+	//
+	// - idaas_admin: IDaaS administrator.
+	//
+	// - idaas_user: IDaaS user.
 	//
 	// example:
 	//
@@ -488,19 +518,23 @@ func (s *GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermi
 }
 
 type GetCloudPermissionTemplateResponseBodyCloudPermissionTemplateCloudPermissionTemplateInitResult struct {
-	// The error code returned when initialization fails.
+	// The error code returned when the initialization fails.
 	//
 	// example:
 	//
 	// CloudPermissionTemplate.AsyncInitError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when initialization fails.
+	// The error message returned when the initialization fails.
 	//
 	// example:
 	//
 	// server error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The initialization result. Valid values: success and failed.
+	// The initialization result. Valid values:
+	//
+	// - success: The initialization succeeded.
+	//
+	// - failed: The initialization failed.
 	//
 	// example:
 	//

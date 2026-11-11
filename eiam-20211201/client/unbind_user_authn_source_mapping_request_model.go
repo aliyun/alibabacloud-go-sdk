@@ -20,7 +20,7 @@ type iUnbindUserAuthnSourceMappingRequest interface {
 }
 
 type UnbindUserAuthnSourceMappingRequest struct {
-	// The source IdP ID.
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UnbindUserAuthnSourceMappingRequest struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// user_123131xxasasa
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// The user ID.
 	//

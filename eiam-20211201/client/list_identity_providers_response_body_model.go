@@ -18,15 +18,15 @@ type iListIdentityProvidersResponseBody interface {
 }
 
 type ListIdentityProvidersResponseBody struct {
-	// List of identity provider information.
+	// The list of identity providers.
 	IdentityProviders []*ListIdentityProvidersResponseBodyIdentityProviders `json:"IdentityProviders,omitempty" xml:"IdentityProviders,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -83,129 +83,127 @@ func (s *ListIdentityProvidersResponseBody) Validate() error {
 }
 
 type ListIdentityProvidersResponseBodyIdentityProviders struct {
-	// Whether the advanced configuration is enabled. Valid values:
+	// Specifies whether the advanced configuration capability is enabled. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled: Disabled.
 	//
-	// - Enabled: enabled
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	AdvancedStatus *string `json:"AdvancedStatus,omitempty" xml:"AdvancedStatus,omitempty"`
-	// The authentication source product, such as Okta, Google, or Azure AD.
+	// The authentication source product, such as Okta, Google, or Azure AD. Valid values:
 	//
-	// Valid values:
+	// - urn:alibaba:idaas:idp:alibaba:dingtalk: DingTalk.
 	//
-	// - DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk
+	// - urn:alibaba:idaas:idp:unknown:ldap: LDAP.
 	//
-	// - LDAP: urn:alibaba:idaas:idp:unknown:ldap
+	// - urn:alibaba:idaas:idp:alibaba:idaas: Alibaba Cloud IDaaS.
 	//
-	// - Alibaba Cloud IDaaS: urn:alibaba:idaas:idp:alibaba:idaas
+	// - urn:alibaba:idaas:idp:tencent:wecom: WeCom.
 	//
-	// - WeCom: urn:alibaba:idaas:idp:tencent:wecom
+	// - urn:alibaba:idaas:idp:bytedance:lark: Lark.
 	//
-	// - Lark: urn:alibaba:idaas:idp:bytedance:lark
+	// - urn:alibaba:idaas:idp:microsoft:ad: Active Directory.
 	//
-	// - Active Directory: urn:alibaba:idaas:idp:microsoft:ad
+	// - urn:alibaba:idaas:idp:microsoft:aad: Azure Active Directory.
 	//
-	// - Azure Active Directory: urn:alibaba:idaas:idp:microsoft:aad
-	//
-	// - Alibaba Cloud SASE: urn:alibaba:idaas:idp:alibaba:sase
+	// - urn:alibaba:idaas:idp:alibaba:sase: Alibaba Cloud SASE.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:idp:bytedance:lark
 	AuthnSourceSupplier *string `json:"AuthnSourceSupplier,omitempty" xml:"AuthnSourceSupplier,omitempty"`
-	// The authentication source type, OIDC or SAML. Valid values:
+	// The authentication method type, which can be OIDC or SAML. Valid values:
 	//
-	// - OIDC: urn:alibaba:idaas:authntype:oidc
+	// - urn:alibaba:idaas:authntype:oidc: OIDC.
 	//
-	// - SAML: urn:alibaba:idaas:authntype:saml2
+	// - urn:alibaba:idaas:authntype:saml2: SAML.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:authntype:oidc
 	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
-	// Whether the corresponding IdP supports authentication. Valid values:
+	// Specifies whether the IdP supports authentication. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled: Disabled.
 	//
-	// - Enabled: enabled
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	AuthnStatus *string `json:"AuthnStatus,omitempty" xml:"AuthnStatus,omitempty"`
-	// The creation time, in Unix timestamp format, measured in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1712561597000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Description of the identity provider.
+	// The description of the identity provider.
 	//
 	// example:
 	//
 	// None
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// External ID of the identity provider.
+	// The external ID of the identity provider.
 	//
 	// example:
 	//
 	// test_123
 	IdentityProviderExternalId *string `json:"IdentityProviderExternalId,omitempty" xml:"IdentityProviderExternalId,omitempty"`
-	// Identity provider ID.
+	// The identity provider ID.
 	//
 	// example:
 	//
 	// idp_m5b5wd5s2hpq4t6iaehhXXX
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Name of the identity provider.
+	// The name of the identity provider.
 	//
 	// example:
 	//
-	// xxxx
+	// test
 	IdentityProviderName *string `json:"IdentityProviderName,omitempty" xml:"IdentityProviderName,omitempty"`
-	// The synchronization type of the identity provider.
+	// The identity provider synchronization type. Valid values:
 	//
-	// - Inbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:pull
+	// - urn:alibaba:idaas:idp:alibaba:dingtalk:pull: Inbound DingTalk.
 	//
-	// - Outbound DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk:push
+	// - urn:alibaba:idaas:idp:alibaba:dingtalk:push: Outbound DingTalk.
 	//
-	// - Inbound WeCom: urn:alibaba:idaas:idp:tencent:wecom:pull
+	// - urn:alibaba:idaas:idp:tencent:wecom:pull: Inbound WeCom.
 	//
-	// - Inbound Lark: urn:alibaba:idaas:idp:bytedance:lark:pull
+	// - urn:alibaba:idaas:idp:bytedance:lark:pull: Inbound Lark.
 	//
-	// - Inbound AD: urn:alibaba:idaas:idp:microsoft:ad:pull
+	// - urn:alibaba:idaas:idp:microsoft:ad:pull: Inbound Active Directory.
 	//
-	// - Inbound LDAP: urn:alibaba:idaas:idp:unknown:ldap:pull
+	// - urn:alibaba:idaas:idp:unknown:ldap:pull: Inbound LDAP.
 	//
-	// - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
+	// - urn:alibaba:idaas:idp:standard:oidc: Standard OIDC.
 	//
-	// - SASE Customized OIDC: urn:alibaba:idaas:idp:alibaba:sase
+	// - urn:alibaba:idaas:idp:alibaba:sase: SASE custom OIDC.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:idp:bytedance:lark:pull
 	IdentityProviderType *string `json:"IdentityProviderType,omitempty" xml:"IdentityProviderType,omitempty"`
-	// The incremental callback status, indicating whether incremental callback data from the IdP is processed. Valid values:
+	// The incremental callback status, which specifies whether to process incremental callback data from the IdP. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled: Disabled.
 	//
-	// - Enabled: enabled
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// enabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_pbf4dth34l2qb7mydpntXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The last status check result. Before synchronization, a sync task can only be triggered when the identity provider status check result is success.
+	// The result of the last status check. A synchronization task can be triggered only when the identity provider status check result is success before synchronization.
 	//
 	// example:
 	//
@@ -223,39 +221,39 @@ type ListIdentityProvidersResponseBodyIdentityProviders struct {
 	//
 	// https://cdn-cn-hangzhou.aliyunidaas.com/xx/logos/xx
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The periodic sync status, indicating whether the data differences between EIAM and the identity provider are periodically checked.
+	// The periodic verification status, which specifies whether to periodically verify data differences between EIAM and the identity provider.
 	//
 	// example:
 	//
 	// disabled
 	PeriodicSyncStatus *string `json:"PeriodicSyncStatus,omitempty" xml:"PeriodicSyncStatus,omitempty"`
-	// Whether the inbound sync feature is supported. Valid values:
+	// Specifies whether the inbound synchronization feature is supported. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled: Disabled.
 	//
-	// - Enabled: enabled
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	UdPullStatus *string `json:"UdPullStatus,omitempty" xml:"UdPullStatus,omitempty"`
-	// The target node for synchronization.
+	// The synchronization target node.
 	//
 	// example:
 	//
 	// ou_2buqmxsa3ltyqkjgpwfijurXXX
 	UdPullTargetScope *string `json:"UdPullTargetScope,omitempty" xml:"UdPullTargetScope,omitempty"`
-	// Whether the outbound sync feature is enabled. Valid values:
+	// Specifies whether the outbound synchronization capability is enabled. Valid values:
 	//
-	// - Disabled: disabled
+	// - disabled: Disabled.
 	//
-	// - Enabled: enabled
+	// - enabled: Enabled.
 	//
 	// example:
 	//
 	// disabled
 	UdPushStatus *string `json:"UdPushStatus,omitempty" xml:"UdPushStatus,omitempty"`
-	// The update time, in Unix timestamp format, measured in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iGetIdentityProviderAdvancedConfigurationResponseBody interface {
 }
 
 type GetIdentityProviderAdvancedConfigurationResponseBody struct {
-	// Advanced configuration information
+	// The advanced configuration information.
 	AdvancedConfiguration *GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfiguration `json:"AdvancedConfiguration,omitempty" xml:"AdvancedConfiguration,omitempty" type:"Struct"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,15 +62,15 @@ func (s *GetIdentityProviderAdvancedConfigurationResponseBody) Validate() error 
 }
 
 type GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfiguration struct {
-	// DingTalk advanced configuration
+	// The DingTalk advanced configuration.
 	DingtalkAdvancedConfig *GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationDingtalkAdvancedConfig `json:"DingtalkAdvancedConfig,omitempty" xml:"DingtalkAdvancedConfig,omitempty" type:"Struct"`
-	// Identity provider ID
+	// The identity provider ID.
 	//
 	// example:
 	//
 	// idp_na2rzpyc67zr7ixdfy35zgrxxx
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
@@ -123,17 +123,17 @@ func (s *GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurati
 }
 
 type GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationDingtalkAdvancedConfig struct {
-	// AppKey of the DingTalk first-party application
+	// The AppKey of the DingTalk first-party application.
 	//
 	// example:
 	//
 	// ding5xo9rg0csw3f6xxx
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// App secret of the DingTalk first-party application
+	// The AppSecret of the DingTalk first-party application.
 	//
 	// example:
 	//
-	// ***
+	// REOQ6Cl55kriOd8NOBeqWYLKpHR4p6fdZxxxx
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
 }
 

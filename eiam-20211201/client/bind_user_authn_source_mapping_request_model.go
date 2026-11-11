@@ -42,7 +42,7 @@ type BindUserAuthnSourceMappingRequest struct {
 	//
 	// example:
 	//
-	// xxxxxx
+	// user_123131xxasasa
 	UserExternalId *string `json:"UserExternalId,omitempty" xml:"UserExternalId,omitempty"`
 	// The user ID.
 	//

@@ -18,7 +18,7 @@ type iDisableCloudPermissionTemplateRequest interface {
 }
 
 type DisableCloudPermissionTemplateRequest struct {
-	// The cloud account ID.
+	// The ID of the cloud account.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DisableCloudPermissionTemplateRequest struct {
 	//
 	// ac_mkv7rgt4d7i4u7zqtzev2mxxxx
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
-	// The permission template ID.
+	// The ID of the permission template.
 	//
 	// This parameter is required.
 	//

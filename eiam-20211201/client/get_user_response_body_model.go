@@ -80,7 +80,7 @@ type GetUserResponseBodyUser struct {
 	//
 	// example:
 	//
-	// Test account
+	// 测试账户
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the account.
 	//

@@ -14,7 +14,7 @@ type iDeleteCloudPermissionTemplateResponseBody interface {
 }
 
 type DeleteCloudPermissionTemplateResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

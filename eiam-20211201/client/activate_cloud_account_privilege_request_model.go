@@ -18,7 +18,7 @@ type iActivateCloudAccountPrivilegeRequest interface {
 }
 
 type ActivateCloudAccountPrivilegeRequest struct {
-	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken supports only ASCII characters and can be up to 64 characters in length.
+	// Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//

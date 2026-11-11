@@ -14,7 +14,7 @@ type iDeactivateCloudAccountPrivilegeResponseBody interface {
 }
 
 type DeactivateCloudAccountPrivilegeResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

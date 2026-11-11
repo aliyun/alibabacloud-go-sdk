@@ -44,7 +44,7 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// example:
 	//
-	// My conditional access policy
+	// 我的条件访问策略
 	ConditionalAccessPolicyName *string `json:"ConditionalAccessPolicyName,omitempty" xml:"ConditionalAccessPolicyName,omitempty"`
 	// Conditional access policy type. Valid values:
 	//
@@ -74,7 +74,7 @@ type CreateConditionalAccessPolicyRequest struct {
 	//
 	// example:
 	//
-	// Test description
+	// 测试描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Conditional access policy evaluation point. Valid values:
 	//

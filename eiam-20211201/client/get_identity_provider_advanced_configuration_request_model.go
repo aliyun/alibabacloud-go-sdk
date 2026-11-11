@@ -16,7 +16,7 @@ type iGetIdentityProviderAdvancedConfigurationRequest interface {
 }
 
 type GetIdentityProviderAdvancedConfigurationRequest struct {
-	// Identity provider ID
+	// The identity provider ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetIdentityProviderAdvancedConfigurationRequest struct {
 	//
 	// idp_11111
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Activates privileged hosting for a cloud account.
+// Activates privileged access hosting for a cloud account.
 //
 // @param request - ActivateCloudAccountPrivilegeRequest
 //
@@ -927,7 +927,7 @@ func (client *Client) AuthorizeResourceServerToClientWithContext(ctx context.Con
 
 // Summary:
 //
-// Binds a third-party logon account.
+// Associates a third-party logon account.
 //
 // @param request - BindUserAuthnSourceMappingRequest
 //
@@ -5515,7 +5515,7 @@ func (client *Client) DisableClientPublicKeyWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Disables cloud account privileges.
+// Disables privileges for a cloud account.
 //
 // @param request - DisableCloudAccountPrivilegeRequest
 //
@@ -9087,6 +9087,58 @@ func (client *Client) GetCloudAccountWithContext(ctx context.Context, request *G
 
 // Summary:
 //
+// Queries the details of a specified cloud account resource.
+//
+// @param request - GetCloudAccountResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCloudAccountResourceResponse
+func (client *Client) GetCloudAccountResourceWithContext(ctx context.Context, request *GetCloudAccountResourceRequest, runtime *dara.RuntimeOptions) (_result *GetCloudAccountResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResourceId) {
+		query["CloudAccountResourceId"] = request.CloudAccountResourceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCloudAccountResource"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCloudAccountResourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the resource information of a cloud role.
 //
 // @param request - GetCloudAccountRoleRequest
@@ -9623,7 +9675,7 @@ func (client *Client) GetForgetPasswordConfigurationWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询全局云账号系统角色权限模板
+// Queries the permission template for the global cloud account system role.
 //
 // @param request - GetGlobalCloudAccountSystemRolePolicyRequest
 //
@@ -9756,7 +9808,7 @@ func (client *Client) GetIdentityProviderWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves advanced configuration information.
+// Retrieves the advanced configuration information.
 //
 // @param request - GetIdentityProviderAdvancedConfigurationRequest
 //
@@ -10266,6 +10318,54 @@ func (client *Client) GetInstanceTrialStatusWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetInstanceTrialStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries resource synchronization tasks.
+//
+// @param request - GetInventorySynchronizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInventorySynchronizationJobResponse
+func (client *Client) GetInventorySynchronizationJobWithContext(ctx context.Context, request *GetInventorySynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *GetInventorySynchronizationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InventorySynchronizationJobId) {
+		query["InventorySynchronizationJobId"] = request.InventorySynchronizationJobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetInventorySynchronizationJob"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetInventorySynchronizationJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12352,6 +12452,138 @@ func (client *Client) ListClientPublicKeysWithContext(ctx context.Context, reque
 
 // Summary:
 //
+// Invokes ListCloudAccountResources to perform a paged query of cloud account resources by using paging.
+//
+// @param request - ListCloudAccountResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAccountResourcesResponse
+func (client *Client) ListCloudAccountResourcesWithContext(ctx context.Context, request *ListCloudAccountResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAccountResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResourceEntityType) {
+		query["CloudAccountResourceEntityType"] = request.CloudAccountResourceEntityType
+	}
+
+	if !dara.IsNil(request.CloudAccountResourceNameContains) {
+		query["CloudAccountResourceNameContains"] = request.CloudAccountResourceNameContains
+	}
+
+	if !dara.IsNil(request.CloudAccountResourceNamePrefix) {
+		query["CloudAccountResourceNamePrefix"] = request.CloudAccountResourceNamePrefix
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAccountResources"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAccountResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Calls ListCloudAccountResourcesForCloudPermissionTemplate to perform a paging query for the list of cloud account resources associated with a specified cloud permission template.
+//
+// @param request - ListCloudAccountResourcesForCloudPermissionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCloudAccountResourcesForCloudPermissionTemplateResponse
+func (client *Client) ListCloudAccountResourcesForCloudPermissionTemplateWithContext(ctx context.Context, request *ListCloudAccountResourcesForCloudPermissionTemplateRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAccountResourcesForCloudPermissionTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CloudAccountId) {
+		query["CloudAccountId"] = request.CloudAccountId
+	}
+
+	if !dara.IsNil(request.CloudAccountResourceEntityType) {
+		query["CloudAccountResourceEntityType"] = request.CloudAccountResourceEntityType
+	}
+
+	if !dara.IsNil(request.CloudPermissionTemplateId) {
+		query["CloudPermissionTemplateId"] = request.CloudPermissionTemplateId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListCloudAccountResourcesForCloudPermissionTemplate"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListCloudAccountResourcesForCloudPermissionTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about one or more cloud roles by using paging.
 //
 // @param request - ListCloudAccountRolesRequest
@@ -12468,7 +12700,7 @@ func (client *Client) ListCloudAccountsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information of one or more permission templates by using a paging query.
+// Queries the information of one or more permission templates by using paging.
 //
 // @param request - ListCloudPermissionTemplatesRequest
 //
@@ -13580,7 +13812,7 @@ func (client *Client) ListGroupsForUserWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query the list of identity providers.
+// Queries the list of identity providers.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -13754,6 +13986,84 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries resource synchronization tasks.
+//
+// Description:
+//
+// You can use one of the following two methods to view the returned data:
+//
+// - Method 1: When paged query the first page, you only need to set MaxResults to limit the number of returned entries. The NextToken value in the response is used as the token to query the next page. When paged query subsequent pages, set the NextToken parameter to the NextToken value obtained from the previous response, and set MaxResults to limit the number of returned entries. If no more pages exist, NextToken is not returned. The maximum value of MaxResults is 100.
+//
+// - Method 2: Set PageSize to specify the number of entries to return per page, and set PageNumber to specify the page number.
+//
+// You can use only one of the two methods. Method 1 is recommended when a large number of entries are returned. If you set the MaxResults or NextToken parameter, the PageSize and PageNumber request parameters become invalid.
+//
+// @param request - ListInventorySynchronizationJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInventorySynchronizationJobsResponse
+func (client *Client) ListInventorySynchronizationJobsWithContext(ctx context.Context, request *ListInventorySynchronizationJobsRequest, runtime *dara.RuntimeOptions) (_result *ListInventorySynchronizationJobsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InventorySourceIds) {
+		query["InventorySourceIds"] = request.InventorySourceIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInventorySynchronizationJobs"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInventorySynchronizationJobsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16034,6 +16344,58 @@ func (client *Client) RevokeResourceServerScopesFromUserWithContext(ctx context.
 
 // Summary:
 //
+// Runs a resource synchronization task.
+//
+// @param request - RunInventorySynchronizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunInventorySynchronizationJobResponse
+func (client *Client) RunInventorySynchronizationJobWithContext(ctx context.Context, request *RunInventorySynchronizationJobRequest, runtime *dara.RuntimeOptions) (_result *RunInventorySynchronizationJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.InventorySourceId) {
+		query["InventorySourceId"] = request.InventorySourceId
+	}
+
+	if !dara.IsNil(request.InventoryTypes) {
+		query["InventoryTypes"] = request.InventoryTypes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunInventorySynchronizationJob"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunInventorySynchronizationJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Runs a synchronization task. This creates a new synchronization task and immediately executes it.
 //
 // @param request - RunSynchronizationJobRequest
@@ -17386,7 +17748,7 @@ func (client *Client) UnbindTotpAuthenticatorWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Disassociates a third-party logon account.
+// Dissociates a third-party logon account.
 //
 // @param request - UnbindUserAuthnSourceMappingRequest
 //

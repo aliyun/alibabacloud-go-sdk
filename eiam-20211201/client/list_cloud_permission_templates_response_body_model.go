@@ -24,13 +24,13 @@ type iListCloudPermissionTemplatesResponseBody interface {
 type ListCloudPermissionTemplatesResponseBody struct {
 	// The list of cloud permission templates.
 	CloudPermissionTemplates []*ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates `json:"CloudPermissionTemplates,omitempty" xml:"CloudPermissionTemplates,omitempty" type:"Repeated"`
-	// The maximum number of items per page for a paged query.
+	// The maximum number of entries per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by the current call for the next query.
+	// The pagination token returned by the current call for subsequent queries.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudPermissionTemplatesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates struct {
 	AllowRequest *bool `json:"AllowRequest,omitempty" xml:"AllowRequest,omitempty"`
 	// The applicable scope of the permission template.
 	ApplicableScope *ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesApplicableScope `json:"ApplicableScope,omitempty" xml:"ApplicableScope,omitempty" type:"Struct"`
-	// The ID of the cloud account to which the template belongs.
+	// The ID of the cloud account to which the resource belongs.
 	//
 	// example:
 	//
@@ -489,7 +489,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermis
 	//
 	// example:
 	//
-	// Zhang San
+	// John Doe
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	// The type of the creator. Valid values: idaas_admin and idaas_user.
 	//
@@ -549,7 +549,7 @@ type ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesCloudPermis
 	//
 	// example:
 	//
-	// Permission template initialization failed. Try again later
+	// Failed to initialize the permission template. Try again later
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The initialization result. Valid values: success and failed.
 	//

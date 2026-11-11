@@ -18,7 +18,7 @@ type iDeleteCloudPermissionTemplateRequest interface {
 }
 
 type DeleteCloudPermissionTemplateRequest struct {
-	// The cloud account ID.
+	// The ID of the cloud account.
 	//
 	// This parameter is required.
 	//
