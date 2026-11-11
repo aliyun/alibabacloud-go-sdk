@@ -28,27 +28,33 @@ type iCreateResourceGroupRequest interface {
 }
 
 type CreateResourceGroupRequest struct {
+	// The agent subtype of the DesktopAgent resource group. Valid values: JVSClaw and HermesAgent.
+	//
+	// example:
+	//
+	// JVSClaw
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
 	// The channel.
 	//
 	// example:
 	//
 	// ENTERPRISE
-	BusinessChannel           *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	EnableAliyunResourceGroup *bool   `json:"EnableAliyunResourceGroup,omitempty" xml:"EnableAliyunResourceGroup,omitempty"`
+	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
+	// Specifies whether to create an Alibaba Cloud resource group at the same time. This is supported only for resource groups in the Default category.
+	EnableAliyunResourceGroup *bool `json:"EnableAliyunResourceGroup,omitempty" xml:"EnableAliyunResourceGroup,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 0
 	IsResourceGroupWithOfficeSite *int64 `json:"IsResourceGroupWithOfficeSite,omitempty" xml:"IsResourceGroupWithOfficeSite,omitempty"`
-	// For Elastic Desktop Service (EDS) Enterprise Edition, set the value to `AliyunConsole`. Other platforms are not supported.
+	// For Elastic Desktop Service Enterprise Edition, set the value to `AliyunConsole`. Other platforms are not supported.
 	//
 	// example:
 	//
 	// AliyunConsole
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The resource category.
+	// The category of the resource.
 	//
 	// example:
 	//

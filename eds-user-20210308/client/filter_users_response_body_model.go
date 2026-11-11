@@ -187,6 +187,12 @@ type FilterUsersResponseBodyUsers struct {
 	SupportLoginIdps []*FilterUsersResponseBodyUsersSupportLoginIdps `json:"SupportLoginIdps,omitempty" xml:"SupportLoginIdps,omitempty" type:"Repeated"`
 	// The collection of user properties.
 	UserSetPropertiesModels []*FilterUsersResponseBodyUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
+	// 用户来源的企业身份源类型，由后端根据企业身份源自定义列的显隐配置决定是否查询。取值：DINGDING（钉钉）、FEISHU（飞书）、WECHAT（企业微信）、ENTRA_ID（Microsoft Entra ID）。列隐藏、未配置或无企业身份源关联时为空。
+	//
+	// example:
+	//
+	// FEISHU
+	UserSource *string `json:"UserSource,omitempty" xml:"UserSource,omitempty"`
 }
 
 func (s FilterUsersResponseBodyUsers) String() string {
@@ -279,6 +285,10 @@ func (s *FilterUsersResponseBodyUsers) GetSupportLoginIdps() []*FilterUsersRespo
 
 func (s *FilterUsersResponseBodyUsers) GetUserSetPropertiesModels() []*FilterUsersResponseBodyUsersUserSetPropertiesModels {
 	return s.UserSetPropertiesModels
+}
+
+func (s *FilterUsersResponseBodyUsers) GetUserSource() *string {
+	return s.UserSource
 }
 
 func (s *FilterUsersResponseBodyUsers) SetAutoLockTime(v string) *FilterUsersResponseBodyUsers {
@@ -383,6 +393,11 @@ func (s *FilterUsersResponseBodyUsers) SetSupportLoginIdps(v []*FilterUsersRespo
 
 func (s *FilterUsersResponseBodyUsers) SetUserSetPropertiesModels(v []*FilterUsersResponseBodyUsersUserSetPropertiesModels) *FilterUsersResponseBodyUsers {
 	s.UserSetPropertiesModels = v
+	return s
+}
+
+func (s *FilterUsersResponseBodyUsers) SetUserSource(v string) *FilterUsersResponseBodyUsers {
+	s.UserSource = &v
 	return s
 }
 

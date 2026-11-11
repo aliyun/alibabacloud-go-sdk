@@ -226,6 +226,12 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 用户来源的企业身份源类型，由后端根据企业身份源自定义列的显隐配置决定是否查询。取值：DINGDING（钉钉）、FEISHU（飞书）、WECHAT（企业微信）、ENTRA_ID（Microsoft Entra ID）。列隐藏、未配置或无企业身份源关联时为空。
+	//
+	// example:
+	//
+	// FEISHU
+	UserSource *string `json:"UserSource,omitempty" xml:"UserSource,omitempty"`
 	// The globally unique ID of the convenience user.
 	//
 	// example:
@@ -328,6 +334,10 @@ func (s *DescribeUsersResponseBodyUsers) GetRemark() *string {
 
 func (s *DescribeUsersResponseBodyUsers) GetStatus() *int64 {
 	return s.Status
+}
+
+func (s *DescribeUsersResponseBodyUsers) GetUserSource() *string {
+	return s.UserSource
 }
 
 func (s *DescribeUsersResponseBodyUsers) GetWyId() *string {
@@ -441,6 +451,11 @@ func (s *DescribeUsersResponseBodyUsers) SetRemark(v string) *DescribeUsersRespo
 
 func (s *DescribeUsersResponseBodyUsers) SetStatus(v int64) *DescribeUsersResponseBodyUsers {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeUsersResponseBodyUsers) SetUserSource(v string) *DescribeUsersResponseBodyUsers {
+	s.UserSource = &v
 	return s
 }
 

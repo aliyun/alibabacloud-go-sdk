@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("eds-user")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -578,6 +586,10 @@ func (client *Client) CreateProperty(request *CreatePropertyRequest) (_result *C
 //
 // Creates a resource group.
 //
+// Description:
+//
+// The number of resource groups in each categorization is subject to the enterprise resource group quota limit. By default, a maximum of 20 resource groups are allowed for each categorization, but the quota limit configured for your enterprise may vary. If the quota limit is reached, the ExceedNumberQuota error is returned. You can invoke the DescribeResourceGroups operation to query the number of existing resource groups in the corresponding categorization.
+//
 // @param request - CreateResourceGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -649,6 +661,10 @@ func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGrou
 // Summary:
 //
 // Creates a resource group.
+//
+// Description:
+//
+// The number of resource groups in each categorization is subject to the enterprise resource group quota limit. By default, a maximum of 20 resource groups are allowed for each categorization, but the quota limit configured for your enterprise may vary. If the quota limit is reached, the ExceedNumberQuota error is returned. You can invoke the DescribeResourceGroups operation to query the number of existing resource groups in the corresponding categorization.
 //
 // @param request - CreateResourceGroupRequest
 //
@@ -1513,6 +1529,76 @@ func (client *Client) DescribeUser(request *DescribeUserRequest) (_result *Descr
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeUserResponse{}
 	_body, _err := client.DescribeUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries logon policies.
+//
+// @param request - DescribeUserLoginPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserLoginPoliciesResponse
+func (client *Client) DescribeUserLoginPoliciesWithOptions(request *DescribeUserLoginPoliciesRequest, runtime *dara.RuntimeOptions) (_result *DescribeUserLoginPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PolicyIds) {
+		query["PolicyIds"] = request.PolicyIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUserLoginPolicies"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUserLoginPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries logon policies.
+//
+// @param request - DescribeUserLoginPoliciesRequest
+//
+// @return DescribeUserLoginPoliciesResponse
+func (client *Client) DescribeUserLoginPolicies(request *DescribeUserLoginPoliciesRequest) (_result *DescribeUserLoginPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeUserLoginPoliciesResponse{}
+	_body, _err := client.DescribeUserLoginPoliciesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2612,6 +2698,76 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 
 // Summary:
 //
+// Modifies the logon policy.
+//
+// @param request - ModifyUserPolicyBasicInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUserPolicyBasicInfoResponse
+func (client *Client) ModifyUserPolicyBasicInfoWithOptions(request *ModifyUserPolicyBasicInfoRequest, runtime *dara.RuntimeOptions) (_result *ModifyUserPolicyBasicInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PolicyId) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyUserPolicyBasicInfo"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyUserPolicyBasicInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the logon policy.
+//
+// @param request - ModifyUserPolicyBasicInfoRequest
+//
+// @return ModifyUserPolicyBasicInfoResponse
+func (client *Client) ModifyUserPolicyBasicInfo(request *ModifyUserPolicyBasicInfoRequest) (_result *ModifyUserPolicyBasicInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyUserPolicyBasicInfoResponse{}
+	_body, _err := client.ModifyUserPolicyBasicInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Moves an organization.
 //
 // @param request - MoveOrgRequest
@@ -3087,6 +3243,72 @@ func (client *Client) RemoveProperty(request *RemovePropertyRequest) (_result *R
 	runtime := &dara.RuntimeOptions{}
 	_result = &RemovePropertyResponse{}
 	_body, _err := client.RemovePropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a logon policy.
+//
+// @param request - RemoveUserLoginPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserLoginPoliciesResponse
+func (client *Client) RemoveUserLoginPoliciesWithOptions(request *RemoveUserLoginPoliciesRequest, runtime *dara.RuntimeOptions) (_result *RemoveUserLoginPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.PolicyIds) {
+		query["PolicyIds"] = request.PolicyIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveUserLoginPolicies"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveUserLoginPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a logon policy.
+//
+// @param request - RemoveUserLoginPoliciesRequest
+//
+// @return RemoveUserLoginPoliciesResponse
+func (client *Client) RemoveUserLoginPolicies(request *RemoveUserLoginPoliciesRequest) (_result *RemoveUserLoginPoliciesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveUserLoginPoliciesResponse{}
+	_body, _err := client.RemoveUserLoginPoliciesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

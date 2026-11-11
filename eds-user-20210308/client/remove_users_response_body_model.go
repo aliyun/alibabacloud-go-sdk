@@ -16,7 +16,7 @@ type iRemoveUsersResponseBody interface {
 }
 
 type RemoveUsersResponseBody struct {
-	// The result of deleting the convenience users.
+	// The result of the convenience user deletion operation.
 	RemoveUsersResult *RemoveUsersResponseBodyRemoveUsersResult `json:"RemoveUsersResult,omitempty" xml:"RemoveUsersResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,11 +62,13 @@ func (s *RemoveUsersResponseBody) Validate() error {
 }
 
 type RemoveUsersResponseBodyRemoveUsersResult struct {
-	// The information about the users that failed to be deleted.
-	FailedUsers     []*RemoveUsersResponseBodyRemoveUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
-	ProcessingUsers []*string                                              `json:"ProcessingUsers,omitempty" xml:"ProcessingUsers,omitempty" type:"Repeated"`
-	// The convenience users that are successfully deleted.
-	RemovedUsers   []*string `json:"RemovedUsers,omitempty" xml:"RemovedUsers,omitempty" type:"Repeated"`
+	// The collection of information about users that failed to be deleted.
+	FailedUsers []*RemoveUsersResponseBodyRemoveUsersResultFailedUsers `json:"FailedUsers,omitempty" xml:"FailedUsers,omitempty" type:"Repeated"`
+	// The list of usernames of convenience users for which asynchronous deletion tasks already exist and have not finished. This request does not create duplicate deletion tasks for these users. The return of this field does not indicate that the users have been deleted.
+	ProcessingUsers []*string `json:"ProcessingUsers,omitempty" xml:"ProcessingUsers,omitempty" type:"Repeated"`
+	// The convenience users that were successfully deleted.
+	RemovedUsers []*string `json:"RemovedUsers,omitempty" xml:"RemovedUsers,omitempty" type:"Repeated"`
+	// The list of usernames of convenience users for which asynchronous deletion tasks have been successfully accepted and created in this request. Asynchronous deletion is used when UnbindDesktops is set to true. Task acceptance does not mean that the convenience users have been deleted.
 	SubmittedUsers []*string `json:"SubmittedUsers,omitempty" xml:"SubmittedUsers,omitempty" type:"Repeated"`
 }
 

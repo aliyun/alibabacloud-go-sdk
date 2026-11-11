@@ -1,3 +1,6 @@
+2026-11-11 Version: v2.3.2
+- Generated golang 2021-03-08 for eds-user.
+
 2026-10-28 Version: v2.3.1
 - Generated golang 2021-03-08 for eds-user.
 
