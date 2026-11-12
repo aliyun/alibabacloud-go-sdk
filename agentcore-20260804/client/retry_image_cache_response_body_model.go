@@ -419,7 +419,7 @@ type RetryImageCacheResponseBodyDataError struct {
 	//
 	// example:
 	//
-	// The image cache creation failed. Please retry
+	// The image cache creation failed. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

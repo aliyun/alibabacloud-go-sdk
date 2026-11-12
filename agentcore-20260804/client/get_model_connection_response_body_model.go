@@ -24,7 +24,7 @@ type iGetModelConnectionResponseBody interface {
 }
 
 type GetModelConnectionResponseBody struct {
-	// The business status code. The value is SUCCESS when the operation is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type GetModelConnectionResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The detailed information about the model connection.
 	Data *GetModelConnectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// 1
 	ApiKeyCount *int32 `json:"apiKeyCount,omitempty" xml:"apiKeyCount,omitempty"`
-	// The list of API keys used to access the upstream model service. The list contains at least one non-empty value.
+	// The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
 	ApiKeys []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
 	// The model connection ID.
 	//
@@ -160,13 +160,13 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the model connection. The name is 1 to 128 non-whitespace characters in length.
+	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocol to invoke the model. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+	// The model invocation protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified when the model connection is created, this default value is used.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// qwen
 	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
-	// The ID of the region to which the resource belongs.
+	// The region ID of the resource.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type GetModelConnectionResponseBodyData struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
+	// The failure summary returned when the model connection fails to be published, or when deletion fails but the status remains Deleting. Empty for other statuses.
 	//
 	// example:
 	//

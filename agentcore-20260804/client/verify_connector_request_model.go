@@ -14,7 +14,7 @@ type iVerifyConnectorRequest interface {
 }
 
 type VerifyConnectorRequest struct {
-	// The verification request body.
+	// The validation request body.
 	//
 	// This parameter is required.
 	Body *VerifyConnectorRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
@@ -47,7 +47,7 @@ func (s *VerifyConnectorRequest) Validate() error {
 }
 
 type VerifyConnectorRequestBody struct {
-	// The JSON string of the connector configuration to be verified. The site value can be global or cn, and serviceAccountKeys must contain at least one item with a serviceAccountKey.
+	// The JSON string of the connector configuration to be validated. Set site to global or cn. The serviceAccountKeys field must contain at least one item with a serviceAccountKey.
 	//
 	// This parameter is required.
 	//

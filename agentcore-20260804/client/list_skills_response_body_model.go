@@ -176,7 +176,7 @@ func (s *ListSkillsResponseBodyData) Validate() error {
 }
 
 type ListSkillsResponseBodyDataPageItems struct {
-	// The business tags in a JSON array string.
+	// The JSON array string of business tags.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The draft mode. Valid values: HEAD (the skill has a persistent draft) and VERSIONED (each edit creates a versioned draft). This is determined by the server and used by the caller to render the status column.
+	// The draft mode. Valid values: HEAD (the skill has a persistent draft) and VERSIONED (a versioned draft is created for each edit). This value is determined by the server and used by the caller to render the status column.
 	//
 	// example:
 	//
 	// HEAD
 	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
-	// Indicates whether the page item is editable.
+	// Specifies whether the page item is editable.
 	Editable *bool `json:"editable,omitempty" xml:"editable,omitempty"`
 	// The version being edited. The value is HEAD in HEAD draft mode.
 	//
@@ -208,7 +208,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// 1.0.0
 	EditingVersion *string `json:"editingVersion,omitempty" xml:"editingVersion,omitempty"`
-	// Indicates whether the skill is enabled.
+	// Specifies whether the skill is enabled.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The source tag.
 	//
@@ -248,7 +248,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The update time. It is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type ListSkillsResponseBodyDataPageItems struct {
 	//
 	// ws-1234567890abcdef
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// Indicates whether the current user has write permissions.
+	// Specifies whether the current user has write permissions.
 	Writeable *bool `json:"writeable,omitempty" xml:"writeable,omitempty"`
 }
 

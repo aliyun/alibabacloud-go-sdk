@@ -187,41 +187,41 @@ type ListUsersResponseBodyItems struct {
 	//
 	// usr-123456
 	AgentCoreUserId *string `json:"agentCoreUserId,omitempty" xml:"agentCoreUserId,omitempty"`
-	// The authentication method of the user. A value of password indicates that local password authentication in the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
+	// The authentication method of the user. A value of password indicates that the local password authentication of the workspace is used. A value of dingtalk or feishu indicates that the user is synchronized and authenticated by the corresponding external identity provider.
 	//
 	// example:
 	//
 	// password
 	AuthMethod *string `json:"authMethod,omitempty" xml:"authMethod,omitempty"`
-	// The creation time. The time is displayed in UTC and follows the RFC 3339 format.
+	// The time when the user was created. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The display name of the user. The value must be 1 to 32 characters in length.
+	// The display name of the user. The name must be 1 to 32 characters in length.
 	//
 	// example:
 	//
 	// Zhang San
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The email address of the user. The value can be up to 256 characters in length.
+	// The email address of the user. The address can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The username. The username must be unique within the workspace and can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length.
+	// The username. The name must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or digit, and must be 1 to 32 characters in length.
 	//
 	// example:
 	//
 	// user-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The remarks of the user. The value can be up to 1,024 characters in length.
+	// The remarks of the user. The remarks can be up to 1,024 characters in length.
 	//
 	// example:
 	//
-	// Agent operations team member
+	// Agent operation team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
 	// The region ID of the resource.
 	//
@@ -229,13 +229,13 @@ type ListUsersResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The user status. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
+	// The status of the user. Valid values: Creating, Active, Updating, Deleting, Failed, and DeleteFailed.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time of the last modification. The time is displayed in UTC and follows the RFC 3339 format.
+	// The time when the user was last modified. The time is displayed in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//

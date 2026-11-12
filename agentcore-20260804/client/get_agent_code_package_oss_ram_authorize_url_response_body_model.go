@@ -30,7 +30,7 @@ type GetAgentCodePackageOssRamAuthorizeUrlResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -126,7 +126,7 @@ func (s *GetAgentCodePackageOssRamAuthorizeUrlResponseBody) Validate() error {
 }
 
 type GetAgentCodePackageOssRamAuthorizeUrlResponseBodyData struct {
-	// The RAM authorization link.
+	// The RAM authorization URL.
 	//
 	// example:
 	//

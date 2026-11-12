@@ -42,7 +42,7 @@ type ListAgentTeamsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of membership relationships between agents and teams.
+	// The list of agent-team membership relationships.
 	Items []*ListAgentTeamsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The number of records returned on the current page.
 	//
@@ -50,13 +50,13 @@ type ListAgentTeamsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. Returns an error description if the request fails.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor used to obtain the next page. An empty value indicates that no more data is available.
+	// The cursor used to retrieve the next page. An empty value indicates that no more data is available.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListAgentTeamsResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that meet the conditions.
+	// The total number of records that meet the query conditions.
 	//
 	// example:
 	//

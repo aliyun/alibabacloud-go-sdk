@@ -14,7 +14,7 @@ type iAddMemoriesShrinkRequest interface {
 }
 
 type AddMemoriesShrinkRequest struct {
-	// The write memory request.
+	// The memory write request.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`

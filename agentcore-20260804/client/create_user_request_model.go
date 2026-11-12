@@ -68,15 +68,15 @@ type CreateUserRequestBody struct {
 	//
 	// example:
 	//
-	// Zhang San
+	// John Doe
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The email address of the user. The email address can be up to 256 characters in length.
+	// The email address of the user. The address can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// user-01@example.com
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
-	// The username. The username must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length. Reserved names such as manager, admin, or any name starting with worker- are not allowed.
+	// The username. The name must be unique within the workspace, can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 32 characters in length. Reserved names such as manager, admin, or any name starting with worker- are not allowed.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type CreateUserRequestBody struct {
 	//
 	// example:
 	//
-	// Agent operation team member
+	// Agent operations team member
 	Note *string `json:"note,omitempty" xml:"note,omitempty"`
 	// The initial password of the user. The password must be 8 to 32 characters in length and must contain uppercase letters, lowercase letters, digits, and special characters. It cannot contain the username. If this parameter is not specified, the server generates a random password and returns it in the initialPassword field of the response.
 	//

@@ -16,11 +16,11 @@ type iUpdateMemoryStoreRequest interface {
 }
 
 type UpdateMemoryStoreRequest struct {
-	// The update MemoryStore request.
+	// The update memory store request.
 	//
 	// This parameter is required.
 	Body *UpdateMemoryStoreRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client request token.
+	// The client token.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ func (s *UpdateMemoryStoreRequest) Validate() error {
 }
 
 type UpdateMemoryStoreRequestBody struct {
-	// The MemoryStore description. The maximum length is 1,024 characters.
+	// The description of the memory store. Maximum length: 1024 characters.
 	//
 	// example:
 	//
-	// Memory store used to save customers\\" long-term preferences
+	// A memory store used to save long-term customer preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The custom memory extraction instructions. The maximum length is 4,096 characters.
+	// The custom memory extraction instructions. Maximum length: 4096 characters.
 	//
 	// example:
 	//

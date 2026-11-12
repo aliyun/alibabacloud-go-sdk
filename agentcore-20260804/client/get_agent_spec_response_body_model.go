@@ -72,7 +72,7 @@ type GetAgentSpecResponseBodyData struct {
 	//
 	// example:
 	//
-	// A sample description used to illustrate the purpose of the resource
+	// Sample description to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -120,7 +120,7 @@ type GetAgentSpecResponseBodyData struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The update time. It is a UNIX timestamp in milliseconds.
+	// The update time, which is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -269,13 +269,13 @@ func (s *GetAgentSpecResponseBodyData) Validate() error {
 }
 
 type GetAgentSpecResponseBodyDataVersions struct {
-	// The author of the version.
+	// The version author.
 	//
 	// example:
 	//
 	// alice
 	Author *string `json:"author,omitempty" xml:"author,omitempty"`
-	// The creation time. It is a UNIX timestamp in milliseconds.
+	// The creation time, which is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -285,7 +285,7 @@ type GetAgentSpecResponseBodyDataVersions struct {
 	//
 	// example:
 	//
-	// A sample description used to illustrate the purpose of the resource
+	// Sample description to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -305,7 +305,7 @@ type GetAgentSpecResponseBodyDataVersions struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time. It is a UNIX timestamp in milliseconds.
+	// The update time, which is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

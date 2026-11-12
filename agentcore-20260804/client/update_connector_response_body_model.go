@@ -142,19 +142,19 @@ type UpdateConnectorResponseBodyData struct {
 	//
 	// 2026-09-01T08:00:00Z
 	EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-	// The updated JSON string for the connector configuration. This is sensitive information.
+	// The updated JSON string of the connector configuration. This is sensitive information.
 	//
 	// example:
 	//
 	// {"site":"global","organizationId":"org-xxxx"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The name of the connector. Currently, the value is qodercli.
+	// The connector name. Currently, the value is qodercli.
 	//
 	// example:
 	//
 	// qodercli
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the connector.
+	// The connector status.
 	//
 	// example:
 	//

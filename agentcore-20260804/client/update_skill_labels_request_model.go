@@ -45,7 +45,7 @@ func (s *UpdateSkillLabelsRequest) Validate() error {
 }
 
 type UpdateSkillLabelsRequestBody struct {
-	// The JSON string for version label mapping.
+	// The version label mapping JSON string.
 	//
 	// This parameter is required.
 	//

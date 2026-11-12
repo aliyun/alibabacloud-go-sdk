@@ -66,7 +66,7 @@ type GetSkillVersionDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// Sample description to illustrate the purpose of the resource
+	// A sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name.
 	//

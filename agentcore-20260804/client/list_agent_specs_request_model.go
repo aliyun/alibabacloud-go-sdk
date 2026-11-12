@@ -30,19 +30,19 @@ type iListAgentSpecsRequest interface {
 }
 
 type ListAgentSpecsRequest struct {
-	// The name of the AgentSpec, used as a search keyword in combination with the search parameter.
+	// The AgentSpec name, used as a search keyword in combination with the search parameter.
 	//
 	// example:
 	//
 	// my-worker
 	AgentSpecName *string `json:"agentSpecName,omitempty" xml:"agentSpecName,omitempty"`
-	// The business tag used for fuzzy filtering.
+	// The business tag for fuzzy filtering.
 	//
 	// example:
 	//
 	// ai
 	BizTag *string `json:"bizTag,omitempty" xml:"bizTag,omitempty"`
-	// The field by which to sort the results. Supports download_count. By default, the results are sorted by update time.
+	// The sort field. Supports download_count. By default, results are sorted by update time.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ListAgentSpecsRequest struct {
 	//
 	// blur
 	Search *string `json:"search,omitempty" xml:"search,omitempty"`
-	// Specifies whether to return the lists of skills and MCP servers. Default value: false.
+	// Specifies whether to return the Skills and McpServers lists. Default value: false.
 	//
 	// example:
 	//

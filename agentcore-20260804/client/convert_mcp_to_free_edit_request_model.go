@@ -14,7 +14,7 @@ type iConvertMcpToFreeEditRequest interface {
 }
 
 type ConvertMcpToFreeEditRequest struct {
-	// The reserved query request identifier. The current console backend does not read this parameter and does not provide idempotency guarantees for deduplication or recovery of the original processing result based on this identifier.
+	// The reserved query request identifier. The console backend does not read this parameter and does not provide idempotency guarantees, such as deduplication or restoration of the original processing result, based on this identifier.
 	//
 	// example:
 	//

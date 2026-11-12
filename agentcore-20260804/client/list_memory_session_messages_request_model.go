@@ -22,7 +22,7 @@ type iListMemorySessionMessagesRequest interface {
 }
 
 type ListMemorySessionMessagesRequest struct {
-	// The agent ID. At least one of Agent ID and User ID must be provided. The length limit is 1 to 128 UTF-8 bytes. The value cannot contain / or *.
+	// The agent ID. At least one of UserId or AgentId must be provided. The length is limited to 1 to 128 UTF-8 bytes. Forward slashes (/) and asterisks (*) are not allowed.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListMemorySessionMessagesRequest struct {
 	//
 	// eyJvZmZzZXQiOjIwMH0=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The session ID. The length limit is 1 to 128 UTF-8 bytes. The value cannot contain / or *.
+	// The session ID. The length is limited to 1 to 128 UTF-8 bytes. Forward slashes (/) and asterisks (*) are not allowed.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListMemorySessionMessagesRequest struct {
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. At least one of User ID and Agent ID must be provided. The length limit is 1 to 128 UTF-8 bytes. The value cannot contain / or *.
+	// The user ID. At least one of UserId or AgentId must be provided. The length is limited to 1 to 128 UTF-8 bytes. Forward slashes (/) and asterisks (*) are not allowed.
 	//
 	// example:
 	//

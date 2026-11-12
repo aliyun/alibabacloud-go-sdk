@@ -24,7 +24,7 @@ type CreateImageCacheShrinkRequest struct {
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication by this token or recovery of the original acceptance result.
+	// The non-empty request identifier passed as a query parameter. The current implementation does not guarantee deduplication based on this identifier or recovery of the original acceptance result.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateImageCacheShrinkRequest struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The product entry region, passed as a query parameter. It must match the selected region endpoint and the workspace region.
+	// The product entry region. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iSearchMemoriesShrinkRequest interface {
 }
 
 type SearchMemoriesShrinkRequest struct {
-	// The semantic retrieval request.
+	// The semantic search request.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`

@@ -34,7 +34,7 @@ type DeleteAccessApplicationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//

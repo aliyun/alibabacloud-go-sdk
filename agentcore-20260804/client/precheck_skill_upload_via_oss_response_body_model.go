@@ -66,7 +66,7 @@ func (s *PrecheckSkillUploadViaOssResponseBody) Validate() error {
 }
 
 type PrecheckSkillUploadViaOssResponseBodyData struct {
-	// The draft mode. Valid values: HEAD and VERSIONED. The value is determined by the server.
+	// The draft mode: HEAD or VERSIONED, determined by the server.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	EntryPath *string `json:"entryPath,omitempty" xml:"entryPath,omitempty"`
 	// Indicates whether the skill already exists.
 	Exists *bool `json:"exists,omitempty" xml:"exists,omitempty"`
-	// The content revision identifier of the persistent draft, which is used to determine whether the local cache has expired. This parameter is returned only in HEAD draft mode.
+	// The content revision identifier of the persistent draft, used to determine whether the local cache is expired, returned only in HEAD draft mode.
 	//
 	// example:
 	//
 	// rev-1a2b3c4d
 	HeadRevision *string `json:"headRevision,omitempty" xml:"headRevision,omitempty"`
-	// The status of the persistent draft. Valid values: draft, reviewing, and reviewed. This parameter is returned only in HEAD draft mode.
+	// The status of the persistent draft: draft, reviewing, or reviewed, returned only in HEAD draft mode.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type PrecheckSkillUploadViaOssResponseBodyData struct {
 	//
 	// 1.0.0
 	ParsedVersion *string `json:"parsedVersion,omitempty" xml:"parsedVersion,omitempty"`
-	// The precheck result code. HEAD_EXISTS indicates that the upload will overwrite the existing persistent draft and requires secondary confirmation. HEAD_LOCKED indicates that the draft is under review and cannot be overwritten. You must withdraw the review first.
+	// The precheck result code.
 	//
 	// example:
 	//
 	// VALIDATION_FAILED
 	PrecheckCode *string `json:"precheckCode,omitempty" xml:"precheckCode,omitempty"`
-	// The reason description.
+	// The reason.
 	//
 	// example:
 	//

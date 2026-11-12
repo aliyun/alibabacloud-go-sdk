@@ -46,11 +46,11 @@ type ListImageCachesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The records on the current page. If no matching items are found, an empty array is returned.
+	// The records on the current page. An empty array is returned if no matching items are found.
 	//
 	// This parameter is required.
 	Items []*ListImageCachesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The actual page size used for this request. This is not the number of items on the current page.
+	// The actual page size used for this request, which is not the number of items on the current page.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The opaque cursor for the next page. An empty string indicates that there are no more pages.
+	// The opaque cursor for the next page. An empty string indicates the end of the list.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// opaque-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID used for troubleshooting.
+	// The request ID, which is used for troubleshooting.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. A successful request does not indicate that the cache creation is complete.
+	// Indicates whether the request is successful. This does not indicate that the cache creation is complete.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type ListImageCachesResponseBody struct {
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of records that match the current filter conditions. Do not use this value to determine whether the traversal is complete.
+	// The total number of records under the current filter conditions. Do not use this value to determine whether the traversal is complete.
 	//
 	// This parameter is required.
 	//
@@ -203,7 +203,7 @@ func (s *ListImageCachesResponseBody) Validate() error {
 }
 
 type ListImageCachesResponseBodyItems struct {
-	// The ID of the source ACR instance.
+	// The source ACR instance ID.
 	//
 	// This parameter is required.
 	//
@@ -211,7 +211,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// cri-example
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
-	// The number of agents that use the cache.
+	// The number of agents using the cache.
 	//
 	// This parameter is required.
 	//
@@ -219,7 +219,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// 0
 	AgentCount *int64 `json:"agentCount,omitempty" xml:"agentCount,omitempty"`
-	// The size of the cache in bytes.
+	// The cache size in bytes.
 	//
 	// This parameter is required.
 	//
@@ -238,7 +238,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The time when the resource was created. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The resource creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -272,7 +272,7 @@ type ListImageCachesResponseBodyItems struct {
 	// if can be null:
 	// true
 	Error *ListImageCachesResponseBodyItemsError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
-	// The ID of the image cache.
+	// The image cache ID.
 	//
 	// This parameter is required.
 	//
@@ -280,7 +280,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// img-example
 	ImageId *string `json:"imageId,omitempty" xml:"imageId,omitempty"`
-	// The domain name of the source image.
+	// The source image domain name.
 	//
 	// This parameter is required.
 	//
@@ -288,7 +288,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// example-registry.cn-hangzhou.cr.aliyuncs.com
 	Registry *string `json:"registry,omitempty" xml:"registry,omitempty"`
-	// The repository path of the source image.
+	// The source image repository path.
 	//
 	// This parameter is required.
 	//
@@ -296,7 +296,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// team/app
 	Repository *string `json:"repository,omitempty" xml:"repository,omitempty"`
-	// The cache status.
+	// The image cache status.
 	//
 	// This parameter is required.
 	//
@@ -304,7 +304,7 @@ type ListImageCachesResponseBodyItems struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The tag of the source image.
+	// The source image tag.
 	//
 	// This parameter is required.
 	//
@@ -480,7 +480,7 @@ type ListImageCachesResponseBodyItemsError struct {
 	//
 	// example:
 	//
-	// Image cache creation failed. Please try again
+	// Image cache creation failed. Try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

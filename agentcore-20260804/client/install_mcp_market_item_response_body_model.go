@@ -44,7 +44,7 @@ type InstallMcpMarketItemResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to locate and troubleshoot requests.
+	// The request ID used to locate and troubleshoot requests.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type InstallMcpMarketItemResponseBodyData struct {
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The custom tags. Multiple tags are supported.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
-	// The deployment configuration for a code-deployed MCP.
+	// The deployment configuration for code-deployed MCP.
 	DeploymentConfig *InstallMcpMarketItemResponseBodyDataDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
 	// The description of the MCP service.
 	//
@@ -138,13 +138,13 @@ type InstallMcpMarketItemResponseBodyData struct {
 	//
 	// MCP service for querying the knowledge base
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The MCP service access endpoint.
+	// The MCP service endpoint.
 	//
 	// example:
 	//
 	// https://example.com/mcp
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the Function Compute function corresponding to the code-deployed MCP.
+	// The Function Compute function name for the code-deployed MCP.
 	//
 	// example:
 	//
@@ -182,21 +182,21 @@ type InstallMcpMarketItemResponseBodyData struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The reason why the MCP service is in the current status.
+	// The reason for the current status of the MCP service.
 	//
 	// example:
 	//
 	// Code package deployment failed
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The template version and input schema bound to the MCP.
+	// The bound template version and input schema of the MCP.
 	Template *InstallMcpMarketItemResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The MCP type. Valid values: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP-to-MCP), and CODE_PACKAGE (code deployment).
+	// The MCP type. Valid values: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), and CODE_PACKAGE (code deployment).
 	//
 	// example:
 	//
 	// CODE_PACKAGE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Indicates whether MCP is still subject to the usage constraints of the official template.
+	// Specifies whether the MCP is still subject to the usage constraints of the official template.
 	UsageActive *bool `json:"usageActive,omitempty" xml:"usageActive,omitempty"`
 }
 
@@ -372,9 +372,9 @@ func (s *InstallMcpMarketItemResponseBodyData) Validate() error {
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfig struct {
-	// The access control for the MCP entry point.
+	// The MCP ingress access control configuration.
 	AccessControl *InstallMcpMarketItemResponseBodyDataDeploymentConfigAccessControl `json:"accessControl,omitempty" xml:"accessControl,omitempty" type:"Struct"`
-	// The Agent Identity configuration.
+	// The agent identity configuration.
 	AgentIdentityConfiguration *InstallMcpMarketItemResponseBodyDataDeploymentConfigAgentIdentityConfiguration `json:"agentIdentityConfiguration,omitempty" xml:"agentIdentityConfiguration,omitempty" type:"Struct"`
 	// The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
 	//
@@ -610,15 +610,15 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfig) Validate() error 
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigAccessControl struct {
-	// The AgentCore credential referenced when the mode is set to CREDENTIAL.
+	// The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
 	//
 	// example:
 	//
 	// credential-id
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// Specifies whether entry point access control is enabled.
+	// Specifies whether to enable ingress access control.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates the use of AgentCore access credentials.
+	// The access control mode. ANONYMOUS indicates anonymous access. CREDENTIAL indicates authentication by using AgentCore credentials.
 	//
 	// example:
 	//
@@ -666,7 +666,7 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigAccessControl) Vali
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigAgentIdentityConfiguration struct {
-	// Specifies whether authorization is enabled.
+	// Specifies whether to enable authorization.
 	AuthorizationEnabled *bool `json:"authorizationEnabled,omitempty" xml:"authorizationEnabled,omitempty"`
 	// The ARN of the credential provider.
 	//
@@ -680,7 +680,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigAgentIdentityConfigurat
 	//
 	// oauth2
 	CredentialProviderType *string `json:"credentialProviderType,omitempty" xml:"credentialProviderType,omitempty"`
-	// Specifies whether Agent Identity is enabled.
+	// Specifies whether to enable agent identity.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -733,7 +733,7 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigAgentIdentityConfig
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigCodeConfiguration struct {
-	// The temporary code package token returned by GetMcpCodePackageUploadUrl. This token is used to create or update a code deployment after the presigned upload is completed.
+	// The temporary code package token returned by GetMcpCodePackageUploadUrl, which is used to create or update a code deployment after the presigned upload is completed.
 	//
 	// example:
 	//
@@ -741,7 +741,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigCodeConfiguration struc
 	CodePackageToken *string `json:"codePackageToken,omitempty" xml:"codePackageToken,omitempty"`
 	// The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
-	// The runtime environment for the code package: python3.13, nodejs22, or java17.
+	// The runtime environment for the code package, such as python3.13, nodejs22, or java17.
 	//
 	// example:
 	//
@@ -797,7 +797,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigContainerConfiguration 
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	// The startup command.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
-	// The container entrypoint parameters.
+	// The entrypoint arguments for the container.
 	Entrypoint []*string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty" type:"Repeated"`
 	// The URL of the container image.
 	//
@@ -805,19 +805,19 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigContainerConfiguration 
 	//
 	// registry.cn-hangzhou.aliyuncs.com/example/mcp:1.0.0
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// The type of the image registry.
+	// The type of the image repository.
 	//
 	// example:
 	//
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
-	// The MCP runtime mode. Custom containers must currently expose the standard MCP themselves. Valid value: SELF_HOSTED.
+	// The MCP runtime mode. Custom containers must currently expose the standard MCP themselves. Set this parameter to SELF_HOSTED.
 	//
 	// example:
 	//
 	// SELF_HOSTED
 	McpRuntimeMode *string `json:"mcpRuntimeMode,omitempty" xml:"mcpRuntimeMode,omitempty"`
-	// The source type of the container. The value is fixed to CONTAINER_IMAGE.
+	// The container source type. Currently, this parameter is fixed to CONTAINER_IMAGE.
 	//
 	// example:
 	//
@@ -901,7 +901,7 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigContainerConfigurat
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigHookConfiguration struct {
-	// Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
+	// The ordered list of hooks. The system executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
 	Hooks []*InstallMcpMarketItemResponseBodyDataDeploymentConfigHookConfigurationHooks `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
@@ -948,7 +948,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigHookConfigurationHooks 
 	//
 	// Records MCP tool calling
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether the hook is enabled.
+	// Specifies whether to enable the hook.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The hook event.
 	//
@@ -958,13 +958,13 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigHookConfigurationHooks 
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
 	// The hook request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The timeout period in milliseconds.
+	// The timeout period of the hook, in milliseconds.
 	//
 	// example:
 	//
 	// 3000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The hook callback URL.
+	// The callback URL of the hook.
 	//
 	// example:
 	//
@@ -1130,25 +1130,25 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigLogConfiguration) V
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigMcpConfiguration struct {
-	// The path of the MCP endpoint, such as /mcp or /sse.
+	// The MCP endpoint path, such as /mcp or /sse.
 	//
 	// example:
 	//
 	// /mcp
 	EndpointPath *string `json:"endpointPath,omitempty" xml:"endpointPath,omitempty"`
-	// The number of concurrent sessions per instance. The value is fixed to 1.
+	// The number of concurrent sessions per instance. Currently, this parameter is fixed to 1.
 	//
 	// example:
 	//
 	// 1
 	SessionConcurrencyPerInstance *int32 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	// The session idle timeout in seconds. Default value: 1800.
+	// The session idle timeout period. Unit: seconds. Default value: 1800.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// The maximum session lifetime in seconds. Default value: 21600.
+	// The maximum session lifetime. Unit: seconds. Default value: 21600.
 	//
 	// example:
 	//
@@ -1205,7 +1205,7 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigMcpConfiguration) V
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigNasConfiguration struct {
-	// The ID of the execution user group.
+	// The group ID.
 	//
 	// example:
 	//
@@ -1213,7 +1213,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigNasConfiguration struct
 	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	// The list of NAS mount points.
 	MountPoints []*InstallMcpMarketItemResponseBodyDataDeploymentConfigNasConfigurationMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
-	// The ID of the execution user.
+	// The user ID.
 	//
 	// example:
 	//
@@ -1444,7 +1444,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigOssMountConfigurationMo
 	//
 	// /data
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	// The OSS service endpoint.
+	// The OSS endpoint.
 	//
 	// example:
 	//
@@ -1520,13 +1520,13 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigOssMountConfigurati
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigParameterTransformConfiguration struct {
 	// Specifies whether to enable parameter transformation and result enhancement.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The reserved reference to the parameter transformation and result enhancement rule set.
+	// The reserved reference for the parameter transformation and result enhancement rule set.
 	//
 	// example:
 	//
 	// rules-1
 	RuleSetId *string `json:"ruleSetId,omitempty" xml:"ruleSetId,omitempty"`
-	// The transformation rule version.
+	// The version of the transformation rule.
 	//
 	// example:
 	//
@@ -1600,13 +1600,13 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigProxyConfiguration)
 }
 
 type InstallMcpMarketItemResponseBodyDataDeploymentConfigRuntimeConfiguration struct {
-	// The CPU specification in cores. Default value: 0.25.
+	// The CPU specifications. Unit: cores. Default value: 0.25.
 	//
 	// example:
 	//
 	// 0.25
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The ephemeral disk size in MB. Valid values: 512 and 10240.
+	// The size of the temporary disk. Unit: MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
@@ -1614,7 +1614,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
 	//
 	// example:
 	//
@@ -1626,7 +1626,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	//
 	// 200
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The memory specification in MB. Default value: 512.
+	// The memory specifications. Unit: MB. Default value: 512.
 	//
 	// example:
 	//
@@ -1638,7 +1638,7 @@ type InstallMcpMarketItemResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	//
 	// 9000
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The function timeout period in seconds. Default value: 300.
+	// The function timeout period. Unit: seconds. Default value: 300.
 	//
 	// example:
 	//
@@ -1731,7 +1731,7 @@ func (s *InstallMcpMarketItemResponseBodyDataDeploymentConfigRuntimeConfiguratio
 }
 
 type InstallMcpMarketItemResponseBodyDataMarketSource struct {
-	// The ID of the MCP marketplace template.
+	// The MCP marketplace template ID.
 	//
 	// example:
 	//
@@ -1779,13 +1779,13 @@ type InstallMcpMarketItemResponseBodyDataTemplate struct {
 	//
 	// 1.0
 	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	// The template input schema, represented as a JSON schema string.
+	// The template input schema, represented as a JSON Schema string.
 	//
 	// example:
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// Specifies whether an updated template version is available.
+	// Indicates whether an updated template version is available.
 	UpdateAvailable *bool `json:"updateAvailable,omitempty" xml:"updateAvailable,omitempty"`
 }
 

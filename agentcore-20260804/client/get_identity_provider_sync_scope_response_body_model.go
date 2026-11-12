@@ -34,7 +34,7 @@ type GetIdentityProviderSyncScopeResponseBody struct {
 	//
 	// example:
 	//
-	// {"syncScope":{"mode":"SelectedDepartments","departmentIds":["10001"]},"selectedDepartments":[{"id":"10001","name":"研发部","exists":true}],"estimateStatus":"Ready","expandedDepartmentCount":2,"estimatedUserCount":12}
+	// {"syncScope":{"mode":"SelectedDepartments","departmentIds":["10001"]},"selectedDepartments":[{"id":"10001","name":"R&D Department","exists":true}],"estimateStatus":"Ready","expandedDepartmentCount":2,"estimatedUserCount":12}
 	Data *GetIdentityProviderSyncScopeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code of the API request. This code does not indicate the execution result of the asynchronous task.
 	//
@@ -48,7 +48,7 @@ type GetIdentityProviderSyncScopeResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the request. Provide this value when troubleshooting issues.
+	// The unique identifier of the request. Provide this value when you troubleshoot issues.
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type GetIdentityProviderSyncScopeResponseBodyData struct {
 	//
 	// Ready
 	EstimateStatus *string `json:"estimateStatus,omitempty" xml:"estimateStatus,omitempty"`
-	// The estimated number of users in the saved synchronization scope. This value is returned only when estimateStatus is Ready and the downstream system provides the value. It does not represent the number of users that have already been synchronized.
+	// The estimated number of users in the saved synchronization scope. This is returned only when estimateStatus is Ready and the downstream system provides the value. This does not represent the number of users that have already been synchronized.
 	//
 	// example:
 	//
 	// 12
 	EstimatedUserCount *int64 `json:"estimatedUserCount,omitempty" xml:"estimatedUserCount,omitempty"`
-	// The estimated number of departments, including child departments. This value is returned only when estimateStatus is Ready and the downstream system provides the value.
+	// The estimated number of departments, including sub-departments. This is returned only when estimateStatus is Ready and the downstream system provides the value.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetIdentityProviderSyncScopeResponseBodyData struct {
 	//
 	// example:
 	//
-	// [{"id":"10001","name":"研发部","exists":true}]
+	// [{"id":"10001","name":"R&D Department","exists":true}]
 	SelectedDepartments []*GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments `json:"selectedDepartments,omitempty" xml:"selectedDepartments,omitempty" type:"Repeated"`
 	// The saved synchronization scope of the downstream system. AllAuthorized indicates the address book scope authorized for the application.
 	//
@@ -244,7 +244,7 @@ type GetIdentityProviderSyncScopeResponseBodyDataSelectedDepartments struct {
 	//
 	// true
 	Exists *bool `json:"exists,omitempty" xml:"exists,omitempty"`
-	// The unique identifier of the department returned by the identity provider. When querying the child departments of this node, use this value as parentDepartmentId.
+	// The unique identifier of the department returned by the identity provider. When querying the sub-departments of this node, use this value as parentDepartmentId.
 	//
 	// example:
 	//
@@ -304,7 +304,7 @@ type GetIdentityProviderSyncScopeResponseBodyDataSyncScope struct {
 	//
 	// ["10001"]
 	DepartmentIds []*string `json:"departmentIds,omitempty" xml:"departmentIds,omitempty" type:"Repeated"`
-	// AllAuthorized: the full authorized scope, which is restricted by the application\\"s address book authorization. SelectedDepartments: the selected departments and all their child departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
+	// AllAuthorized: the full authorized scope, which is restricted by the application\\"s address book authorization. SelectedDepartments: the selected departments and all their sub-departments. When explicitly submitting syncScope, you must provide a valid mode, which is verified by the backend.
 	//
 	// example:
 	//

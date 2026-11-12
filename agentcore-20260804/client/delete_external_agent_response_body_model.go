@@ -24,7 +24,7 @@ type iDeleteExternalAgentResponseBody interface {
 }
 
 type DeleteExternalAgentResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. A value of SUCCESS indicates success.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type DeleteExternalAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The summary information of the deleted managed agent.
 	Data *DeleteExternalAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The request result message.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *DeleteExternalAgentResponseBody) Validate() error {
 }
 
 type DeleteExternalAgentResponseBodyData struct {
-	// The inbound access mode.
+	// The inbound access method.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// ALL
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The managed agent ID.
+	// The ID of the managed agent.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type DeleteExternalAgentResponseBodyData struct {
 	//
 	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The latest specification version number.
+	// The latest specification version.
 	//
 	// example:
 	//

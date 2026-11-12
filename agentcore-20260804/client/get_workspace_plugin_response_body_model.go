@@ -38,7 +38,7 @@ type GetWorkspacePluginResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned when the request fails.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
@@ -266,13 +266,13 @@ type GetWorkspacePluginResponseBodyDataConfigAgentLoop struct {
 	//
 	// agentcore-ws-123456
 	AgentSpaceName *string `json:"agentSpaceName,omitempty" xml:"agentSpaceName,omitempty"`
-	// The creation time of the AgentSpace, in UTC format compliant with RFC 3339.
+	// The creation time of the AgentSpace, in UTC time formatted according to RFC 3339.
 	//
 	// example:
 	//
 	// 2026-08-12T03:04:05Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The region ID where the AgentSpace resides.
+	// The ID of the region where the AgentSpace is located.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ func (s *GetWorkspacePluginResponseBodyDataConfigNetwork) Validate() error {
 }
 
 type GetWorkspacePluginResponseBodyDataConfigNetworkInternet struct {
-	// Specifies whether public network access is enabled.
+	// Indicates whether public network access is enabled.
 	//
 	// example:
 	//
@@ -397,7 +397,7 @@ func (s *GetWorkspacePluginResponseBodyDataConfigNetworkInternet) Validate() err
 }
 
 type GetWorkspacePluginResponseBodyDataConfigNetworkVpc struct {
-	// Indicates whether VPC network access is currently enabled for the collaboration component.
+	// Indicates whether the VPC network is currently enabled for the collaboration component.
 	//
 	// example:
 	//
@@ -405,7 +405,7 @@ type GetWorkspacePluginResponseBodyDataConfigNetworkVpc struct {
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of vSwitch IDs used for component deployment.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID used for component deployment.
+	// The ID of the VPC used for component deployment.
 	//
 	// example:
 	//

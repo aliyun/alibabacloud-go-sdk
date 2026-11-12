@@ -24,7 +24,7 @@ type iCreateExternalAgentBootstrapTokenResponseBody interface {
 }
 
 type CreateExternalAgentBootstrapTokenResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. A value of SUCCESS indicates success.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type CreateExternalAgentBootstrapTokenResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The bootstrap token and CMS configuration required for the managed agent onboarding.
 	Data *CreateExternalAgentBootstrapTokenResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *CreateExternalAgentBootstrapTokenResponseBody) Validate() error {
 }
 
 type CreateExternalAgentBootstrapTokenResponseBodyData struct {
-	// The ID of the managed agent.
+	// The managed agent ID.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type CreateExternalAgentBootstrapTokenResponseBodyData struct {
 	BootstrapToken *string `json:"bootstrapToken,omitempty" xml:"bootstrapToken,omitempty"`
 	// The CMS configuration used for the managed agent onboarding.
 	Cms *CreateExternalAgentBootstrapTokenResponseBodyDataCms `json:"cms,omitempty" xml:"cms,omitempty" type:"Struct"`
-	// The access network type. Valid values: INTRANET (internal network) and INTERNET (Internet).
+	// The network type for access. Valid values: INTRANET (internal network) and INTERNET (Internet).
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type CreateExternalAgentBootstrapTokenResponseBodyDataCms struct {
 	//
 	// license-key
 	LicenseKey *string `json:"licenseKey,omitempty" xml:"licenseKey,omitempty"`
-	// The name of the CMS workspace.
+	// The CMS workspace name.
 	//
 	// example:
 	//

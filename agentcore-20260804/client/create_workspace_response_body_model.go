@@ -130,7 +130,7 @@ func (s *CreateWorkspaceResponseBody) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyData struct {
-	// The AI Registry namespace ID. This value is returned after the related resources are bound and may be empty during initialization.
+	// The AI Registry namespace ID. This parameter is returned after related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -151,7 +151,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// bucket-001
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The CloudMonitor workspace ID. This value is returned after the related resources are bound and may be empty during initialization.
+	// The CloudMonitor workspace ID. This parameter is returned after related resources are bound and may be empty during initialization.
 	//
 	// if can be null:
 	// true
@@ -160,7 +160,7 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// cms-ws-0123456789abcdef
 	CmsWorkspaceId *string `json:"cmsWorkspaceId,omitempty" xml:"cmsWorkspaceId,omitempty"`
-	// The time when the workspace was created. The time is displayed in the ISO 8601 format.
+	// The time when the workspace was created. The time is in the ISO 8601 format.
 	//
 	// This parameter is required.
 	//
@@ -176,13 +176,13 @@ type CreateWorkspaceResponseBodyData struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The network configuration of the workspace.
 	NetworkConfiguration *CreateWorkspaceResponseBodyDataNetworkConfiguration `json:"networkConfiguration,omitempty" xml:"networkConfiguration,omitempty" type:"Struct"`
-	// The ID of the region where the workspace is located.
+	// The region ID of the workspace.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The ID of the resource group to which the workspace belongs. This value may be empty if no resource group is specified.
+	// The ID of the resource group to which the workspace belongs. This parameter may be empty if no resource group is specified.
 	//
 	// if can be null:
 	// true
@@ -191,13 +191,13 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// rg-acfm1234567890
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The status of the workspace.
+	// The workspace status.
 	//
 	// example:
 	//
 	// Initialized
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The supplementary reason for the current status of the workspace. This value is used to display the specific reason when initialization fails or authorization is pending, and may be empty under normal circumstances.
+	// The supplementary reason for the current status of the workspace. This parameter is used to display the specific reason when initialization fails or authorization is pending, and may be empty under normal circumstances.
 	//
 	// if can be null:
 	// true
@@ -212,11 +212,11 @@ type CreateWorkspaceResponseBodyData struct {
 	//
 	// PRIVATE
 	StorageType *string `json:"storageType,omitempty" xml:"storageType,omitempty"`
-	// The list of tags for the workspace. An empty array is returned if no tags are set.
+	// The tags of the workspace. An empty array is returned if no tags are set.
 	//
 	// This parameter is required.
 	Tags []*CreateWorkspaceResponseBodyDataTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The ID of the tenant to which the workspace belongs.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -392,19 +392,19 @@ func (s *CreateWorkspaceResponseBodyData) Validate() error {
 }
 
 type CreateWorkspaceResponseBodyDataNetworkConfiguration struct {
-	// Returns the target configuration value. Updating indicates that the change is still being executed, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+	// Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public egress of the user VPC.
 	//
 	// example:
 	//
 	// true
 	PublicEgressEnabled *bool `json:"publicEgressEnabled,omitempty" xml:"publicEgressEnabled,omitempty"`
-	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. If disabled, the public ingress for all agent endpoints in the workspace is closed, and the original public ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
+	// Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. After this parameter is disabled, the public ingress of all agent endpoints in the workspace is disabled. After it is re-enabled, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
 	//
 	// example:
 	//
 	// true
 	PublicIngressEnabled *bool `json:"publicIngressEnabled,omitempty" xml:"publicIngressEnabled,omitempty"`
-	// The VPC network configuration of the user.
+	// The network configuration of the user VPC.
 	Vpc *CreateWorkspaceResponseBodyDataNetworkConfigurationVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -459,7 +459,7 @@ type CreateWorkspaceResponseBodyDataNetworkConfigurationVpc struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The list of vSwitch IDs.
+	// The vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
 	// The ID of the user VPC.
 	//

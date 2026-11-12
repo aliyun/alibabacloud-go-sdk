@@ -126,7 +126,7 @@ func (s *UpdateModelResponseBody) Validate() error {
 }
 
 type UpdateModelResponseBodyData struct {
-	// The model capability configuration.
+	// The model capability configurations.
 	Capabilities *UpdateModelResponseBodyDataCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
 	// The model connection ID.
 	//
@@ -140,7 +140,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The time when the resource was created. The time is displayed in the RFC 3339 UTC format.
+	// The time when the resource was created, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The maximum number of output tokens supported by the model in a single generation.
+	// The maximum number of output tokens supported for a single generation by the model.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type UpdateModelResponseBodyData struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The time when the resource was last updated. The time is displayed in the RFC 3339 UTC format.
+	// The time when the resource was last updated, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -296,13 +296,13 @@ type UpdateModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model is able to invoke multiple tool calling in a single response.
+	// Indicates whether the model is able to invoke tool calling multiple times in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
 	// Indicates whether the model is able to invoke streaming tool calling.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
-	// Indicates whether the model is able to invoke tool calling.
+	// Indicates whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
 	// Indicates whether the model supports video input.
 	Video *bool `json:"video,omitempty" xml:"video,omitempty"`

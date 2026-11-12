@@ -144,7 +144,7 @@ type GetMemoryStoreResponseBodyData struct {
 	//
 	// Extract only long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The MemoryStore identifier.
+	// The MemoryStore ID.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type GetMemoryStoreResponseBodyData struct {
 	//
 	// customer-memory
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The lifecycle state of the MemoryStore.
+	// The lifecycle status of the MemoryStore.
 	//
 	// example:
 	//

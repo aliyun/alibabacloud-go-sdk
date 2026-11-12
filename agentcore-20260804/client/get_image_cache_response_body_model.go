@@ -32,7 +32,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The query result for the image cache details.
+	// The image cache details.
 	//
 	// This parameter is required.
 	Data *GetImageCacheResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
@@ -52,7 +52,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used for troubleshooting.
+	// The request ID, used for troubleshooting.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type GetImageCacheResponseBody struct {
 	//
 	// req-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. This does not mean that the cache creation is completed.
+	// Indicates whether the request is successful. This does not mean that the cache creation is complete.
 	//
 	// This parameter is required.
 	//
@@ -177,7 +177,7 @@ type GetImageCacheResponseBodyData struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The resource creation time. It uses the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The resource creation time. The format is RFC 3339. The Z at the end of the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -185,7 +185,7 @@ type GetImageCacheResponseBodyData struct {
 	//
 	// 2026-10-10T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The reason why deletion is blocked.
+	// The reason for blocking deletion.
 	//
 	// This parameter is required.
 	//
@@ -204,7 +204,7 @@ type GetImageCacheResponseBodyData struct {
 	//
 	// sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	Digest *string `json:"digest,omitempty" xml:"digest,omitempty"`
-	// The reason for the cache failure.
+	// The cache failure reason.
 	//
 	// This parameter is required.
 	//
@@ -405,7 +405,7 @@ func (s *GetImageCacheResponseBodyData) Validate() error {
 }
 
 type GetImageCacheResponseBodyDataError struct {
-	// The error code for the creation failure.
+	// The error code for creation failure.
 	//
 	// This parameter is required.
 	//

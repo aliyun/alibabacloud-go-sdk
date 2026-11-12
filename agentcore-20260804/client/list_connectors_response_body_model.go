@@ -44,7 +44,7 @@ type ListConnectorsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The connector list.
 	Items []*ListConnectorsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The number of connectors returned in this request.
+	// The number of connectors returned in the current response.
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ type ListConnectorsResponseBodyItems struct {
 	//
 	// 3
 	BoundAgentCount *int64 `json:"boundAgentCount,omitempty" xml:"boundAgentCount,omitempty"`
-	// The activation time.
+	// The time when the connector was enabled.
 	//
 	// example:
 	//
 	// 2026-09-01T08:00:00Z
 	EnabledAt *string `json:"enabledAt,omitempty" xml:"enabledAt,omitempty"`
-	// The JSON string of the connector configuration. It may contain sensitive credentials after being enabled.
+	// The JSON string of the connector configuration, which may contain sensitive credentials after the connector is enabled.
 	//
 	// example:
 	//

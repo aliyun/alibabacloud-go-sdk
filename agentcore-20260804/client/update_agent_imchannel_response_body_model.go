@@ -24,7 +24,7 @@ type iUpdateAgentIMChannelResponseBody interface {
 }
 
 type UpdateAgentIMChannelResponseBody struct {
-	// The business status code. The value is SUCCESS when the request is successful.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type UpdateAgentIMChannelResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The updated IM channel information.
 	Data *UpdateAgentIMChannelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 when the request is successful.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request processing result message.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -134,7 +134,13 @@ type UpdateAgentIMChannelResponseBodyData struct {
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// The channel behavior configuration.
 	ChannelConfig *UpdateAgentIMChannelResponseBodyDataChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
+	// The IM channel type. Valid values:
+	//
+	// - DINGTALK: DingTalk
+	//
+	// - FEISHU: Lark
+	//
+	// - WECOM: WeCom
 	//
 	// example:
 	//
@@ -150,7 +156,7 @@ type UpdateAgentIMChannelResponseBodyData struct {
 	CredentialSummary *UpdateAgentIMChannelResponseBodyDataCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
 	// Specifies whether to enable the IM channel. Default value: true.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The public network access URL of the bound ServiceEndpoint.
+	// The public network access URL of the attached ServiceEndpoint.
 	//
 	// example:
 	//
@@ -162,13 +168,25 @@ type UpdateAgentIMChannelResponseBodyData struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, and must be ready and have a public endpoint.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, and must be ready and have a public IP address.
 	//
 	// example:
 	//
 	// se-1
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), and DELETE_FAILED (Delete failed).
+	// The IM channel status. Valid values:
+	//
+	// - CREATING: Creating
+	//
+	// - READY: Ready
+	//
+	// - UPDATING: Updating
+	//
+	// - FAILED: Failed
+	//
+	// - DELETING: Deleting
+	//
+	// - DELETE_FAILED: Deletion failed
 	//
 	// example:
 	//

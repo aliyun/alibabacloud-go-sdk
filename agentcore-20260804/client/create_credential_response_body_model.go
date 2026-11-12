@@ -126,7 +126,7 @@ func (s *CreateCredentialResponseBody) Validate() error {
 }
 
 type CreateCredentialResponseBodyData struct {
-	// The time when the credential was created. The time is in UTC and follows the RFC 3339 format.
+	// The creation time in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -150,19 +150,19 @@ type CreateCredentialResponseBodyData struct {
 	//
 	// apiKey
 	CredentialType *string `json:"credentialType,omitempty" xml:"credentialType,omitempty"`
-	// The description of the credential. The description can be up to 256 characters in length.
+	// The credential description. It can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// API key used to call the model service in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the credential. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
+	// The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
 	// model-api-key
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the region where the resource resides.
+	// The region ID of the resource.
 	//
 	// example:
 	//
@@ -170,13 +170,13 @@ type CreateCredentialResponseBodyData struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The list of MCP services to which the credential applies.
 	ResourceRefs []*CreateCredentialResponseBodyDataResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The application scope of the credential. ALL indicates all scopes, and SPECIFIED indicates the specified MCP services.
+	// The applicable scope of the credential. ALL indicates all scopes, and SPECIFIED indicates the specified MCP services.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time when the credential was last modified. The time is in UTC and follows the RFC 3339 format.
+	// The last modification time in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -317,13 +317,13 @@ type CreateCredentialResponseBodyDataResourceRefs struct {
 	//
 	// mcp-example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The name of the resource. This parameter is empty if the resource is deleted.
+	// The resource name. This field is empty if the resource is deleted.
 	//
 	// example:
 	//
 	// my-mcp-service
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The type of the resource. Set the value to mcpServer, which indicates an MCP service.
+	// The resource type. Currently, only mcpServer is supported, which indicates an MCP service.
 	//
 	// example:
 	//

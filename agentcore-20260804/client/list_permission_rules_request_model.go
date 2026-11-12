@@ -30,7 +30,7 @@ type iListPermissionRulesRequest interface {
 }
 
 type ListPermissionRulesRequest struct {
-	// The maximum number of entries to return per page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type ListPermissionRulesRequest struct {
 	//
 	// AgentCore
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The target of the rule.
+	// The rule target.
 	//
 	// example:
 	//

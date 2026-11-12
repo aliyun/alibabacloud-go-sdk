@@ -50,7 +50,7 @@ type GetCustomAgentImagePreparationResponseBody struct {
 	//
 	// 123e4567-e89b-12d3-a456-426614174000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the API call is successful.
+	// Indicates whether the current API call is successful.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type GetCustomAgentImagePreparationResponseBodyData struct {
 	//
 	// agent-example
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The error. This parameter is returned only when the task fails. Otherwise, the value is null.
+	// The error details. This parameter is returned only when the task fails. Otherwise, the value is null.
 	Error *GetCustomAgentImagePreparationResponseBodyDataError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
 	// The phase where the failure occurred. This parameter is returned only when the phase is FAILED. Otherwise, the value is null.
 	//
@@ -150,7 +150,7 @@ type GetCustomAgentImagePreparationResponseBodyData struct {
 	//
 	// FAILED
 	Phase *string `json:"phase,omitempty" xml:"phase,omitempty"`
-	// The Console task ID for the current submission.
+	// The console task ID for the current submission.
 	//
 	// example:
 	//

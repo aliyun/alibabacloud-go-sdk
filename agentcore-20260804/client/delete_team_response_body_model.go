@@ -38,7 +38,7 @@ type DeleteTeamResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message. An error description is returned when the request fails.
+	// The response message. Returns an error description when the request fails.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *DeleteTeamResponseBody) Validate() error {
 }
 
 type DeleteTeamResponseBodyData struct {
-	// The team name. The name can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+	// The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
 	// example:
 	//

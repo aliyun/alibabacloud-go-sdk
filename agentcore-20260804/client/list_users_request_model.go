@@ -46,7 +46,7 @@ type ListUsersRequest struct {
 	//
 	// user
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The cursor for querying the next page. Do not specify this parameter in the first call. Specify the nextToken value returned in the previous call for subsequent calls.
+	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned from the previous call.
 	//
 	// example:
 	//

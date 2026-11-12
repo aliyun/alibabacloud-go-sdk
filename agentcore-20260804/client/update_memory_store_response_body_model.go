@@ -30,7 +30,7 @@ type UpdateMemoryStoreResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The MemoryStore details.
+	// The memory store details.
 	Data *UpdateMemoryStoreResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -126,17 +126,17 @@ func (s *UpdateMemoryStoreResponseBody) Validate() error {
 }
 
 type UpdateMemoryStoreResponseBodyData struct {
-	// The creation time. It is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-09-23T10:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The MemoryStore description.
+	// The description of the memory store.
 	//
 	// example:
 	//
-	// Used to save the user\\"s long-term preferences
+	// Used to save long-term user preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The custom extraction instructions.
 	//
@@ -144,25 +144,25 @@ type UpdateMemoryStoreResponseBodyData struct {
 	//
 	// Extract only long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The MemoryStore ID.
+	// The memory store ID.
 	//
 	// example:
 	//
 	// ms-2f5f9c5a8d0e4c3b
 	MemoryStoreId *string `json:"memoryStoreId,omitempty" xml:"memoryStoreId,omitempty"`
-	// The MemoryStore name. It cannot be modified after creation.
+	// The name of the memory store. It cannot be modified after creation.
 	//
 	// example:
 	//
 	// customer-memory
 	MemoryStoreName *string `json:"memoryStoreName,omitempty" xml:"memoryStoreName,omitempty"`
-	// The lifecycle state of the MemoryStore.
+	// The lifecycle state of the memory store.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time. It is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//

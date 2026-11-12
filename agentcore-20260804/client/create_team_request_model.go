@@ -68,7 +68,7 @@ type CreateTeamRequestBody struct {
 	//
 	// example:
 	//
-	// Team responsible for intelligent customer service
+	// Team responsible for intelligent customer service operations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
@@ -78,7 +78,7 @@ type CreateTeamRequestBody struct {
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of user members in the team. The list must contain exactly one member with the ADMIN role.
+	// The list of user members in the team. The list must include exactly one member with the ADMIN role.
 	Users []*CreateTeamRequestBodyUsers `json:"users,omitempty" xml:"users,omitempty" type:"Repeated"`
 }
 
@@ -155,7 +155,7 @@ type CreateTeamRequestBodyAgents struct {
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The role of the agent in the team. Valid values: LEADER and WORKER.
+	// The role of the agent in the team. Valid values: LEADER, WORKER.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ func (s *CreateTeamRequestBodyAgents) Validate() error {
 }
 
 type CreateTeamRequestBodyUsers struct {
-	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
 	//
 	// example:
 	//

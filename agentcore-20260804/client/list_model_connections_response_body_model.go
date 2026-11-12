@@ -44,7 +44,7 @@ type ListModelConnectionsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of model connections.
 	Items []*ListModelConnectionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries to return on each page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
+	// The maximum number of entries to return per page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListModelConnectionsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token. Pass the token returned in the previous query for the current request. An empty response indicates that no more pages are available.
+	// The pagination token. Pass the token returned in the previous response to query the next page. If the response is empty, no more pages are available.
 	//
 	// example:
 	//
@@ -193,7 +193,7 @@ type ListModelConnectionsResponseBodyItems struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The time when the resource was created. The time is displayed in the RFC 3339 UTC format.
+	// The time when the resource was created. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -213,15 +213,15 @@ type ListModelConnectionsResponseBodyItems struct {
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The list of summaries of models associated with the model connection.
+	// The list of model summaries associated with the model connection.
 	Models []*ListModelConnectionsResponseBodyItemsModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
-	// The name of the model connection. The name must be 1 to 128 characters in length and cannot contain whitespace characters.
+	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The model invocation protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified during model connection creation, this default value is used.
+	// The model invocation protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified when you create a model connection, this default value is used.
 	//
 	// example:
 	//
@@ -239,13 +239,13 @@ type ListModelConnectionsResponseBodyItems struct {
 	//
 	// Active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The failure summary returned when the model connection fails to be published, or when deletion fails but the connection remains in the deleting state. This field is empty in other states.
+	// The failure summary returned when the model connection fails to be published, or when deletion fails but the status remains Deleting. This field is empty for other statuses.
 	//
 	// example:
 	//
 	// GatewayOperationException
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
-	// The time when the resource was last updated. The time is displayed in the RFC 3339 UTC format.
+	// The time when the resource was last updated. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//

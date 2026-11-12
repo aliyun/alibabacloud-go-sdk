@@ -152,7 +152,7 @@ type ListAgentSpecsResponseBodyDataPageItems struct {
 	//
 	// example:
 	//
-	// Sample description used to explain the purpose of the resource
+	// A sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -166,7 +166,7 @@ type ListAgentSpecsResponseBodyDataPageItems struct {
 	//
 	// 1.0.0
 	EditingVersion *string `json:"editingVersion,omitempty" xml:"editingVersion,omitempty"`
-	// Indicates whether it is enabled.
+	// Specifies whether it is enabled.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The source.
 	//
@@ -174,9 +174,9 @@ type ListAgentSpecsResponseBodyDataPageItems struct {
 	//
 	// UPLOAD
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
-	// The version labels.
+	// The version tags.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
-	// The list of referenced MCP servers.
+	// The list of MCP service references.
 	McpServers []*ListAgentSpecsResponseBodyDataPageItemsMcpServers `json:"mcpServers,omitempty" xml:"mcpServers,omitempty" type:"Repeated"`
 	// The name.
 	//
@@ -202,9 +202,9 @@ type ListAgentSpecsResponseBodyDataPageItems struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The list of referenced skills.
+	// The list of skill references.
 	Skills []*ListAgentSpecsResponseBodyDataPageItemsSkills `json:"skills,omitempty" xml:"skills,omitempty" type:"Repeated"`
-	// The update time. The value is a UNIX timestamp in milliseconds.
+	// The update time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -405,13 +405,13 @@ type ListAgentSpecsResponseBodyDataPageItemsSkills struct {
 	//
 	// agentspec-example
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The source type of the skill. Valid values: REFERENCE (references the AI Registry) and STATIC (statically provided with the package).
+	// The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The referenced version selector. If omitted, the default value is LABEL/latest.
+	// The referenced version selector. If omitted, the default is LABEL/latest.
 	VersionSelector *ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -460,13 +460,13 @@ func (s *ListAgentSpecsResponseBodyDataPageItemsSkills) Validate() error {
 }
 
 type ListAgentSpecsResponseBodyDataPageItemsSkillsVersionSelector struct {
-	// The type of the version selector. Valid values: LABEL (by label) and VERSION (by specific version).
+	// The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
 	//
 	// example:
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the selector. If the type is LABEL, the value is the label name, such as latest. If the type is VERSION, the value is the specific version number.
+	// The selector value. For LABEL, it is the tag name (such as latest). For VERSION, it is the specific version number.
 	//
 	// example:
 	//

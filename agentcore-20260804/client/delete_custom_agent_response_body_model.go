@@ -30,7 +30,7 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The summary of the custom code or image agent whose deletion is accepted. Runtime resources are subsequently cleaned up in the background.
+	// The summary of the custom code or image agent whose deletion has been accepted. Runtime resources are subsequently cleaned up in the background.
 	Data *DeleteCustomAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code of the request. The value is 200 if the request is successful.
 	//
@@ -38,13 +38,13 @@ type DeleteCustomAgentResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The processing result message of the request. The value is success if the request is successful.
+	// The processing result description of the request. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the request, which is used to locate and troubleshoot issues.
+	// The unique identifier of the request. It is used to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -144,31 +144,31 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// agent-550e8400e29b41d4a716446655440000
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The creation mode of the agent. The value is CUSTOM for custom code or image agents.
+	// The creation method of the agent. The value is CUSTOM for custom code or image agents.
 	//
 	// example:
 	//
 	// CUSTOM
 	CreateMode *string `json:"createMode,omitempty" xml:"createMode,omitempty"`
-	// The time when the agent was created. The time is in ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was created. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//
 	// 2026-10-10T06:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The deployment mode of the agent. The value is MANAGED for custom code or image agents because they are deployed and managed by the platform.
+	// The deployment method of the agent. Custom code or image agents are deployed and managed by the platform, and the value is MANAGED.
 	//
 	// example:
 	//
 	// MANAGED
 	DeployType *string `json:"deployType,omitempty" xml:"deployType,omitempty"`
-	// The description of the agent\\"s purpose.
+	// The description of the agent.
 	//
 	// example:
 	//
-	// Custom agent providing conversation services
+	// Custom agent that provides conversation services
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
+	// The current latest configuration version number. Updates with the same configuration may retain the original version number. This field does not indicate that the configuration has taken effect.
 	//
 	// example:
 	//
@@ -180,33 +180,19 @@ type DeleteCustomAgentResponseBodyData struct {
 	//
 	// my-custom-agent
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The compute specification of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
+	// The compute specifications of the agent. Valid values: INTERACTIVE, STANDARD, and HEAVY.
 	//
 	// example:
 	//
 	// STANDARD
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	// The overall status of the agent. Valid values:
-	//
-	// - Creating: The agent is being created.
-	//
-	// - Running: The agent is running.
-	//
-	// - Failed: The agent failed.
-	//
-	// - Updating: The agent is being updated.
-	//
-	// - Deleting: The agent is being deleted.
-	//
-	// - Deleted: The agent is deleted.
-	//
-	// Call GetCustomAgent to query the execution progress of the latest configuration.
+	// The overall status of the agent. Valid values: Creating (the agent is being created), Running (the agent is running), Failed (the agent failed), Updating (the agent is being updated), Deleting (the agent is being deleted), and Deleted (the agent is deleted). Call GetCustomAgent to query the execution progress of the latest configuration.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the agent was last updated. The time is in ISO 8601 format, with a trailing Z indicating the UTC time zone. Fractional seconds may be included.
+	// The time when the agent was last updated. The time is in ISO 8601 format. A trailing Z indicates the UTC time zone. Fractional seconds may be included.
 	//
 	// example:
 	//

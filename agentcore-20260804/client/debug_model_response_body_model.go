@@ -30,7 +30,7 @@ type DebugModelResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The model debugging result.
+	// The model test result.
 	Data *DebugModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code. The value is 200 if the request is successful.
 	//
@@ -38,7 +38,7 @@ type DebugModelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -132,27 +132,27 @@ type DebugModelResponseBodyData struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// Indicates whether the model debugging is successful.
+	// Indicates whether the model test is successful.
 	DebugSuccess *bool `json:"debugSuccess,omitempty" xml:"debugSuccess,omitempty"`
-	// The error code returned when debugging fails.
+	// The error code for a test failure.
 	//
 	// example:
 	//
 	// UPSTREAM_MODEL_ERROR
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error description returned when debugging fails.
+	// The error description for a test failure.
 	//
 	// example:
 	//
 	// The model endpoint rejected the debug request.
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The number of input tokens consumed by this model debugging request.
+	// The number of input tokens consumed by the model test request.
 	//
 	// example:
 	//
 	// 3
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
-	// The duration of this model debugging invocation, in milliseconds.
+	// The duration of the model test call, in milliseconds.
 	//
 	// example:
 	//
@@ -164,19 +164,19 @@ type DebugModelResponseBodyData struct {
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The number of output tokens consumed by this model debugging response.
+	// The number of output tokens consumed by the model test response.
 	//
 	// example:
 	//
 	// 2
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
-	// The text response returned by the model when model debugging succeeds. This field is empty if debugging fails.
+	// The text response returned by the model when the model test succeeds. This field is empty if the test fails.
 	//
 	// example:
 	//
 	// ok
 	Response *string `json:"response,omitempty" xml:"response,omitempty"`
-	// The debugging result status.
+	// The test result status.
 	//
 	// example:
 	//

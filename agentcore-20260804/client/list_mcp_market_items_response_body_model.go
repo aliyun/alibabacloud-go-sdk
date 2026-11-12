@@ -56,13 +56,13 @@ type ListMcpMarketItemsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token used to query the next page.
+	// The pagination token for querying the next page.
 	//
 	// example:
 	//
 	// 20
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The request ID used to locate and troubleshoot the request.
+	// The request ID, used to locate and troubleshoot the request.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// knowledge
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The description of the MCP service.
+	// The MCP service description.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display metadata of the template.
 	DisplayMetadata map[string]interface{} `json:"displayMetadata,omitempty" xml:"displayMetadata,omitempty"`
-	// The multilingual display content organized by BCP-47 language tags. If a language is not matched, the system falls back to the default fields.
+	// The multilingual display content, organized by BCP-47 language tags. Falls back to default fields if the language is not matched.
 	I18n map[string]*ItemsI18nValue `json:"i18n,omitempty" xml:"i18n,omitempty"`
 	// The icon URL of the MCP marketplace template.
 	//
@@ -209,7 +209,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// 12
 	InstallCount *int64 `json:"installCount,omitempty" xml:"installCount,omitempty"`
-	// The ID of the MCP marketplace template.
+	// The MCP marketplace template ID.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// CODE_PACKAGE
 	McpType *string `json:"mcpType,omitempty" xml:"mcpType,omitempty"`
-	// The name of the MCP marketplace template.
+	// The MCP marketplace template name.
 	//
 	// example:
 	//
@@ -239,25 +239,25 @@ type ListMcpMarketItemsResponseBodyItems struct {
 	//
 	// StreamableHTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The usage instructions of the MCP marketplace template.
+	// The usage instructions for the MCP marketplace template.
 	//
 	// example:
 	//
 	// # Knowledge\\nKnowledge base query service
 	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	// The schema version of the template.
+	// The template schema version.
 	//
 	// example:
 	//
 	// 1.0
 	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	// The input schema of the template, represented as a JSON Schema string.
+	// The template input schema, represented as a JSON Schema string.
 	//
 	// example:
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// The version of the MCP marketplace template.
+	// The MCP marketplace template version.
 	//
 	// example:
 	//

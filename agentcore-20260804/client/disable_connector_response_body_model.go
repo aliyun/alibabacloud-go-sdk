@@ -50,7 +50,7 @@ type DisableConnectorResponseBody struct {
 	//
 	// request-123456
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -148,13 +148,13 @@ type DisableConnectorResponseBodyData struct {
 	//
 	// {"site":"global","organizationId":"org-xxxx"}
 	Metadata *string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The connector name. The current value is qodercli.
+	// The name of the connector. Currently, the value is qodercli.
 	//
 	// example:
 	//
 	// qodercli
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The connector status.
+	// The status of the connector.
 	//
 	// example:
 	//

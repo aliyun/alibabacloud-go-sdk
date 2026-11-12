@@ -30,7 +30,7 @@ type GetMcpMarketItemResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned result.
 	Data *GetMcpMarketItemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -44,7 +44,7 @@ type GetMcpMarketItemResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID used to locate and troubleshoot the request.
+	// The request ID, which is used to locate and troubleshoot the request.
 	//
 	// example:
 	//
@@ -126,21 +126,21 @@ func (s *GetMcpMarketItemResponseBody) Validate() error {
 }
 
 type GetMcpMarketItemResponseBodyData struct {
-	// The MCP marketplace template category.
+	// The category of the MCP marketplace template.
 	//
 	// example:
 	//
 	// knowledge
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The MCP service description.
+	// The description of the MCP service.
 	//
 	// example:
 	//
 	// MCP service for querying knowledge bases
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The template display metadata.
+	// The display metadata of the template.
 	DisplayMetadata map[string]interface{} `json:"displayMetadata,omitempty" xml:"displayMetadata,omitempty"`
-	// The multilingual display content organized by BCP-47 language tags. If a language is not matched, the default fields are used.
+	// The multilingual display content, organized by BCP-47 language tags. If a language is not matched, the system falls back to the default fields.
 	I18n map[string]*DataI18nValue `json:"i18n,omitempty" xml:"i18n,omitempty"`
 	// The icon URL of the MCP marketplace template.
 	//
@@ -148,7 +148,7 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// https://example.com/mcp-icon.png
 	IconUrl *string `json:"iconUrl,omitempty" xml:"iconUrl,omitempty"`
-	// The template installation count.
+	// The number of times the template has been installed.
 	//
 	// example:
 	//
@@ -166,7 +166,7 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// CODE_PACKAGE
 	McpType *string `json:"mcpType,omitempty" xml:"mcpType,omitempty"`
-	// The MCP marketplace template name.
+	// The name of the MCP marketplace template.
 	//
 	// example:
 	//
@@ -184,25 +184,25 @@ type GetMcpMarketItemResponseBodyData struct {
 	//
 	// StreamableHTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The MCP marketplace template instructions.
+	// The instructions for the MCP marketplace template.
 	//
 	// example:
 	//
 	// # Knowledge\\nKnowledge base query service
 	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
-	// The template schema version.
+	// The schema version of the template.
 	//
 	// example:
 	//
 	// 1.0
 	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	// The template input schema, represented as a JSON Schema string.
+	// The input schema of the template, represented as a JSON Schema string.
 	//
 	// example:
 	//
 	// {"type":"object","properties":{"addresses":{"type":"array","items":{"type":"string"}}}}
 	TemplateInputSchema *string `json:"templateInputSchema,omitempty" xml:"templateInputSchema,omitempty"`
-	// The MCP marketplace template version.
+	// The version of the MCP marketplace template.
 	//
 	// example:
 	//

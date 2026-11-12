@@ -14,7 +14,7 @@ type iVerifyConnectorShrinkRequest interface {
 }
 
 type VerifyConnectorShrinkRequest struct {
-	// The verification request body.
+	// The validation request body.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`

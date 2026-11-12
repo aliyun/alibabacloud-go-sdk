@@ -185,7 +185,7 @@ func (s *ListMemoryStoresResponseBody) Validate() error {
 }
 
 type ListMemoryStoresResponseBodyItems struct {
-	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The creation time in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type ListMemoryStoresResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Used to store the long-term preferences of users
+	// Used to store long-term user preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The custom extraction instructions.
 	//
 	// example:
 	//
-	// Extract only the long-term preferences explicitly expressed by the user
+	// Extract only long-term preferences explicitly expressed by users
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
 	// The MemoryStore ID.
 	//
@@ -221,7 +221,7 @@ type ListMemoryStoresResponseBodyItems struct {
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The last update time in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//

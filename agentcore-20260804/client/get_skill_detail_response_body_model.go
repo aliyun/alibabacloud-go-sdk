@@ -16,7 +16,7 @@ type iGetSkillDetailResponseBody interface {
 }
 
 type GetSkillDetailResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *GetSkillDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// Sample description to illustrate the purpose of the resource
+	// Sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The total number of downloads.
 	//
@@ -80,13 +80,13 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The draft pattern. A value of HEAD indicates that the skill has a persistent draft, and a value of VERSIONED indicates that a draft with a version number is created for each edit. This is determined by the server, and the client uses this value to invoke routing for What to do next.
+	// The draft pattern. A value of HEAD indicates that the skill has a persistent draft. A value of VERSIONED indicates that each edit creates a draft with a version number. This pattern is determined by the server, and the client uses it for routing What to do next when they invoke the API.
 	//
 	// example:
 	//
 	// HEAD
 	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
-	// Specifies whether the root data is editable.
+	// Indicates whether the root data is editable.
 	Editable *bool `json:"editable,omitempty" xml:"editable,omitempty"`
 	// The version being edited.
 	//
@@ -94,7 +94,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// 1.0.0
 	EditingVersion *string `json:"editingVersion,omitempty" xml:"editingVersion,omitempty"`
-	// Specifies whether the skill is enabled.
+	// Indicates whether the skill is enabled.
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
 	// The source tag.
 	//
@@ -102,7 +102,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// UPLOAD
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
-	// The label mapping.
+	// The tag mapping.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The name.
 	//
@@ -134,7 +134,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The update time. It is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// ws-1234567890abcdef
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// Specifies whether the current user has write permissions.
+	// Indicates whether the current user has write permissions.
 	Writeable *bool `json:"writeable,omitempty" xml:"writeable,omitempty"`
 }
 
@@ -336,7 +336,7 @@ func (s *GetSkillDetailResponseBodyData) Validate() error {
 }
 
 type GetSkillDetailResponseBodyDataVersions struct {
-	// The version author.
+	// The author of the version.
 	//
 	// example:
 	//
@@ -348,13 +348,13 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// Update documentation
 	CommitMsg *string `json:"commitMsg,omitempty" xml:"commitMsg,omitempty"`
-	// The MD5 checksum of the skill content package for this version, which is used to verify content consistency.
+	// The MD5 checksum of the skill content package for this version, used to verify content consistency.
 	//
 	// example:
 	//
 	// 9e107d9d372bb6826bd81d3542a419d6
 	ContentMd5 *string `json:"contentMd5,omitempty" xml:"contentMd5,omitempty"`
-	// The creation time. It is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -364,7 +364,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// example:
 	//
-	// Sample description to illustrate the purpose of the resource
+	// Sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -372,7 +372,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The publish pipeline information.
+	// The release pipeline information.
 	//
 	// example:
 	//
@@ -384,7 +384,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time. It is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

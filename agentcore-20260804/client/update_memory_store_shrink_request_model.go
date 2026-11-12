@@ -16,11 +16,11 @@ type iUpdateMemoryStoreShrinkRequest interface {
 }
 
 type UpdateMemoryStoreShrinkRequest struct {
-	// The update MemoryStore request.
+	// The update memory store request.
 	//
 	// This parameter is required.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
-	// The client request token.
+	// The client token.
 	//
 	// example:
 	//

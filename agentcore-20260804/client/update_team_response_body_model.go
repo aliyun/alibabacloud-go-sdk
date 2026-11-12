@@ -128,7 +128,7 @@ func (s *UpdateTeamResponseBody) Validate() error {
 type UpdateTeamResponseBodyData struct {
 	// The list of agent members in the team.
 	Agents []*UpdateTeamResponseBodyDataAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// The creation time in RFC 3339 UTC format.
+	// The creation time in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -138,15 +138,15 @@ type UpdateTeamResponseBodyData struct {
 	//
 	// example:
 	//
-	// Team responsible for intelligent customer service
+	// The team responsible for intelligent customer service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The team name. It can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+	// The team name. The name can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
 	// example:
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, Deleted.
+	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type UpdateTeamResponseBodyData struct {
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
-	// The time of the last update in RFC 3339 UTC format.
+	// The time of the last modification in UTC format based on RFC 3339.
 	//
 	// example:
 	//
@@ -292,7 +292,7 @@ type UpdateTeamResponseBodyDataAgents struct {
 	//
 	// agent-123456
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The role of the agent in the team. Valid values: LEADER, WORKER. Each team must have exactly one LEADER.
+	// The role of the agent in the team. Valid values: LEADER and WORKER. Each team must have exactly one LEADER.
 	//
 	// example:
 	//
@@ -331,7 +331,7 @@ func (s *UpdateTeamResponseBodyDataAgents) Validate() error {
 }
 
 type UpdateTeamResponseBodyDataUsers struct {
-	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
+	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
 	//
 	// example:
 	//

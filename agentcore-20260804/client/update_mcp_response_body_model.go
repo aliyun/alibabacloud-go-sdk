@@ -38,7 +38,7 @@ type UpdateMcpResponseBody struct {
 	//
 	// example:
 	//
-	// The request is processed successfully
+	// Request processed successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The request ID.
 	//

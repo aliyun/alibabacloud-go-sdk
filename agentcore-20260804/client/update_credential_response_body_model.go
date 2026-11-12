@@ -156,7 +156,7 @@ type UpdateCredentialResponseBodyData struct {
 	//
 	// API key used to call the model service in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
+	// The credential name. It must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. Runtime reserved names cannot be used.
 	//
 	// example:
 	//
@@ -317,13 +317,13 @@ type UpdateCredentialResponseBodyDataResourceRefs struct {
 	//
 	// mcp-example
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The resource name. This field is empty if the resource has been deleted.
+	// The resource name. This field is empty if the resource is deleted.
 	//
 	// example:
 	//
 	// my-mcp-service
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The resource type. Currently, the value is mcpServer, which indicates an MCP service.
+	// The resource type. The current value is mcpServer, which indicates an MCP service.
 	//
 	// example:
 	//

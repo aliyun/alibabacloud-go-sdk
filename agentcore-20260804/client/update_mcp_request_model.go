@@ -18,7 +18,7 @@ type iUpdateMcpRequest interface {
 type UpdateMcpRequest struct {
 	// The request body.
 	Body *UpdateMcpRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client token that is used to ensure request idempotency. This is a reserved query parameter. The current console backend does not read this parameter and does not provide idempotency guarantees such as deduplication or recovery of the original acceptance result based on this token.
+	// The reserved query request identifier. The current console backend does not read this parameter and does not provide idempotency guarantees for deduplication or restoring the original acceptance result based on this identifier.
 	//
 	// example:
 	//
@@ -64,17 +64,17 @@ func (s *UpdateMcpRequest) Validate() error {
 type UpdateMcpRequestBody struct {
 	// The list of MCP service addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The backend authentication configuration. When enabled is set to true, specify directProxy (name and value) for DIRECT_PROXY, specify the httpToMcp array (each item includes id, type, and credential; apiKey also requires position and name) for HTTP_TO_MCP, and specify codePackage for CODE_PACKAGE. Multiple authentication objects are supported, and the first one serves as the default upstream credential. HTTP_TO_MCP credentials are merged into the securitySchemes of Swagger.
+	// The backend authentication configuration. When enabled is set to true: for DIRECT_PROXY, specify directProxy (name and value); for HTTP_TO_MCP, specify the httpToMcp array (each item includes id, type, and credential, and apiKey also requires position and name). Multiple authentication objects are supported, and the first one is the default upstream credential. HTTP_TO_MCP credentials are merged into the securitySchemes of Swagger.
 	Auth *UpdateMcpRequestBodyAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
-	// The custom tags. Multiple tags are supported. Pass an empty list to clear the tags.
+	// The custom tags. You can specify multiple tags. Pass an empty list to clear the tags.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
-	// The deployment configuration patch for a CODE_PACKAGE MCP. Object fields are merged hierarchically. To retain the current code package, omit CodeConfiguration.CodePackageToken, and the server reuses the deployed code package. To replace the code package, provide a new non-empty token. CodePackageUrl is only supported in CreateMcp and is not supported during updates.
+	// The deployment configuration patch for CODE_PACKAGE MCP. Object fields are merged hierarchically. Omit CodeConfiguration.CodePackageToken to retain the current code package, and the server reuses the currently deployed code package. Provide a new non-empty token to replace the code package. CodePackageUrl is only supported in CreateMcp and is not supported during updates.
 	DeploymentConfig *UpdateMcpRequestBodyDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
 	// The description.
 	//
 	// example:
 	//
-	// A sample description that illustrates the purpose of the resource
+	// A sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The access permission mode. PUBLIC indicates public access. CONTROLLED indicates that access is controlled based on permission rules.
 	//
@@ -176,11 +176,11 @@ func (s *UpdateMcpRequestBody) Validate() error {
 }
 
 type UpdateMcpRequestBodyAuth struct {
-	// The API key authentication configuration for callers of code-deployed MCP services.
+	// The caller API key authentication configuration for code-deployed MCP.
 	CodePackage *UpdateMcpRequestBodyAuthCodePackage `json:"codePackage,omitempty" xml:"codePackage,omitempty" type:"Struct"`
 	// The direct proxy authentication configuration.
 	DirectProxy *UpdateMcpRequestBodyAuthDirectProxy `json:"directProxy,omitempty" xml:"directProxy,omitempty" type:"Struct"`
-	// Specifies whether the configuration is enabled.
+	// Specifies whether to enable the configuration.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The list of HTTP_TO_MCP authentication configurations.
 	HttpToMcp []*UpdateMcpRequestBodyAuthHttpToMcp `json:"httpToMcp,omitempty" xml:"httpToMcp,omitempty" type:"Repeated"`
@@ -254,7 +254,7 @@ func (s *UpdateMcpRequestBodyAuth) Validate() error {
 }
 
 type UpdateMcpRequestBodyAuthCodePackage struct {
-	// The API key used to verify MCP callers.
+	// The API key used to verify the MCP caller.
 	//
 	// example:
 	//
@@ -434,7 +434,7 @@ func (s *UpdateMcpRequestBodyAuthHttpToMcp) Validate() error {
 }
 
 type UpdateMcpRequestBodyDeploymentConfig struct {
-	// The access control for the MCP entry point.
+	// The MCP ingress access control configuration.
 	AccessControl *UpdateMcpRequestBodyDeploymentConfigAccessControl `json:"accessControl,omitempty" xml:"accessControl,omitempty" type:"Struct"`
 	// The agent identity configuration.
 	AgentIdentityConfiguration *UpdateMcpRequestBodyDeploymentConfigAgentIdentityConfiguration `json:"agentIdentityConfiguration,omitempty" xml:"agentIdentityConfiguration,omitempty" type:"Struct"`
@@ -672,15 +672,15 @@ func (s *UpdateMcpRequestBodyDeploymentConfig) Validate() error {
 }
 
 type UpdateMcpRequestBodyDeploymentConfigAccessControl struct {
-	// The AgentCore credential referenced when the mode is CREDENTIAL.
+	// The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
 	//
 	// example:
 	//
 	// credential-id
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// Specifies whether to enable access control for the MCP entry point.
+	// Specifies whether to enable ingress access control.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates the use of AgentCore access credentials.
+	// The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates authentication by using AgentCore access credentials.
 	//
 	// example:
 	//
@@ -728,21 +728,21 @@ func (s *UpdateMcpRequestBodyDeploymentConfigAccessControl) Validate() error {
 }
 
 type UpdateMcpRequestBodyDeploymentConfigAgentIdentityConfiguration struct {
-	// Specifies whether to enable authorization.
+	// Specifies whether authorization is enabled.
 	AuthorizationEnabled *bool `json:"authorizationEnabled,omitempty" xml:"authorizationEnabled,omitempty"`
-	// The ARN of the credential provider.
+	// The credential provider ARN.
 	//
 	// example:
 	//
 	// acs:agentidentity:cn-hangzhou:1234567890123456:provider/example
 	CredentialProviderArn *string `json:"credentialProviderArn,omitempty" xml:"credentialProviderArn,omitempty"`
-	// The type of the credential provider.
+	// The credential provider type.
 	//
 	// example:
 	//
 	// oauth2
 	CredentialProviderType *string `json:"credentialProviderType,omitempty" xml:"credentialProviderType,omitempty"`
-	// Specifies whether to enable agent identity.
+	// Specifies whether agent identity is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -803,7 +803,7 @@ type UpdateMcpRequestBodyDeploymentConfigCodeConfiguration struct {
 	CodePackageToken *string `json:"codePackageToken,omitempty" xml:"codePackageToken,omitempty"`
 	// The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
-	// The code package runtime: python3.13, nodejs22, or java17.
+	// The runtime of the code package. Valid values: python3.13, nodejs22, and java17.
 	//
 	// example:
 	//
@@ -851,7 +851,7 @@ func (s *UpdateMcpRequestBodyDeploymentConfigCodeConfiguration) Validate() error
 }
 
 type UpdateMcpRequestBodyDeploymentConfigContainerConfiguration struct {
-	// The ID of the ACR instance.
+	// The ACR instance ID.
 	//
 	// example:
 	//
@@ -859,27 +859,27 @@ type UpdateMcpRequestBodyDeploymentConfigContainerConfiguration struct {
 	AcrInstanceId *string `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	// The startup command.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
-	// The entrypoint arguments for the container.
+	// The container entrypoint parameters.
 	Entrypoint []*string `json:"entrypoint,omitempty" xml:"entrypoint,omitempty" type:"Repeated"`
-	// The address of the container image.
+	// The container image address.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/example/mcp:1.0.0
 	Image *string `json:"image,omitempty" xml:"image,omitempty"`
-	// The type of the image registry.
+	// The image registry type.
 	//
 	// example:
 	//
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
-	// The MCP runtime mode. Custom containers must expose standard MCP themselves. Set the value to SELF_HOSTED.
+	// The MCP runtime mode. Custom containers must currently expose the standard MCP themselves. Set the value to SELF_HOSTED.
 	//
 	// example:
 	//
 	// SELF_HOSTED
 	McpRuntimeMode *string `json:"mcpRuntimeMode,omitempty" xml:"mcpRuntimeMode,omitempty"`
-	// The source type of the container. Currently, this is fixed to CONTAINER_IMAGE.
+	// The container source type. Currently fixed to CONTAINER_IMAGE.
 	//
 	// example:
 	//
@@ -963,7 +963,7 @@ func (s *UpdateMcpRequestBodyDeploymentConfigContainerConfiguration) Validate() 
 }
 
 type UpdateMcpRequestBodyDeploymentConfigHookConfiguration struct {
-	// The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
+	// The ordered list of hooks. The PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks are executed in the order of the array.
 	Hooks []*UpdateMcpRequestBodyDeploymentConfigHookConfigurationHooks `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
@@ -1008,7 +1008,7 @@ type UpdateMcpRequestBodyDeploymentConfigHookConfigurationHooks struct {
 	//
 	// example:
 	//
-	// Log MCP tool invocations
+	// Log MCP tool invocation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether to enable the hook.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
@@ -1020,13 +1020,13 @@ type UpdateMcpRequestBodyDeploymentConfigHookConfigurationHooks struct {
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
 	// The hook request headers.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The timeout period in milliseconds.
+	// The timeout period of the hook, in milliseconds.
 	//
 	// example:
 	//
 	// 3000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The hook callback URL.
+	// The callback URL of the hook.
 	//
 	// example:
 	//
@@ -1114,7 +1114,7 @@ type UpdateMcpRequestBodyDeploymentConfigLogConfiguration struct {
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	// Specifies whether to collect request metrics.
 	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// The start rule for Function Compute log segmentation.
+	// The start rule for splitting Function Compute logs.
 	//
 	// example:
 	//
@@ -1198,13 +1198,13 @@ type UpdateMcpRequestBodyDeploymentConfigMcpConfiguration struct {
 	//
 	// /mcp
 	EndpointPath *string `json:"endpointPath,omitempty" xml:"endpointPath,omitempty"`
-	// The number of concurrent sessions per instance. This value is currently fixed at 1.
+	// The session concurrency per instance. Currently fixed to 1.
 	//
 	// example:
 	//
 	// 1
 	SessionConcurrencyPerInstance *int32 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	// The session idle timeout in seconds. Default value: 1800.
+	// The session idle timeout period in seconds. Default value: 1800.
 	//
 	// example:
 	//
@@ -1267,7 +1267,7 @@ func (s *UpdateMcpRequestBodyDeploymentConfigMcpConfiguration) Validate() error 
 }
 
 type UpdateMcpRequestBodyDeploymentConfigNasConfiguration struct {
-	// The ID of the user group.
+	// The group ID.
 	//
 	// example:
 	//
@@ -1275,7 +1275,7 @@ type UpdateMcpRequestBodyDeploymentConfigNasConfiguration struct {
 	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	// The list of NAS mount points.
 	MountPoints []*UpdateMcpRequestBodyDeploymentConfigNasConfigurationMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
@@ -1394,7 +1394,7 @@ type UpdateMcpRequestBodyDeploymentConfigNetworkConfiguration struct {
 	//
 	// PUBLIC
 	NetworkMode *string `json:"networkMode,omitempty" xml:"networkMode,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -1402,7 +1402,7 @@ type UpdateMcpRequestBodyDeploymentConfigNetworkConfiguration struct {
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -1580,7 +1580,7 @@ func (s *UpdateMcpRequestBodyDeploymentConfigOssMountConfigurationMountPoints) V
 }
 
 type UpdateMcpRequestBodyDeploymentConfigParameterTransformConfiguration struct {
-	// Specifies whether to enable parameter transformation and result enhancement.
+	// Specifies whether parameter transformation and result enhancement is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The reserved reference to the parameter transformation and result enhancement rule set.
 	//
@@ -1588,7 +1588,7 @@ type UpdateMcpRequestBodyDeploymentConfigParameterTransformConfiguration struct 
 	//
 	// rules-1
 	RuleSetId *string `json:"ruleSetId,omitempty" xml:"ruleSetId,omitempty"`
-	// The version of the transformation rule.
+	// The transformation rule version.
 	//
 	// example:
 	//
@@ -1636,7 +1636,7 @@ func (s *UpdateMcpRequestBodyDeploymentConfigParameterTransformConfiguration) Va
 }
 
 type UpdateMcpRequestBodyDeploymentConfigProxyConfiguration struct {
-	// Specifies whether the MCP proxy is enabled.
+	// Specifies whether to enable the MCP proxy.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1662,13 +1662,13 @@ func (s *UpdateMcpRequestBodyDeploymentConfigProxyConfiguration) Validate() erro
 }
 
 type UpdateMcpRequestBodyDeploymentConfigRuntimeConfiguration struct {
-	// The CPU specification, in cores. Default value: 0.25.
+	// The CPU specifications in cores. Default value: 0.25.
 	//
 	// example:
 	//
 	// 0.25
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The ephemeral disk size, in MB. Valid values: 512 and 10240.
+	// The temporary disk size in MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
@@ -1676,19 +1676,19 @@ type UpdateMcpRequestBodyDeploymentConfigRuntimeConfiguration struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
 	//
 	// example:
 	//
 	// acs:ram::1234567890123456:role/agentcore-mcp-execution
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// The number of concurrent requests per instance. Default value: 200.
+	// The request concurrency per instance. Default value: 200.
 	//
 	// example:
 	//
 	// 200
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The memory specification, in MB. Default value: 512.
+	// The memory specifications in MB. Default value: 512.
 	//
 	// example:
 	//
@@ -1700,7 +1700,7 @@ type UpdateMcpRequestBodyDeploymentConfigRuntimeConfiguration struct {
 	//
 	// 9000
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The function timeout period, in seconds. Default value: 300.
+	// The function timeout period in seconds. Default value: 300.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iAddMemoriesRequest interface {
 }
 
 type AddMemoriesRequest struct {
-	// The write memory request.
+	// The memory write request.
 	//
 	// This parameter is required.
 	Body *AddMemoriesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
@@ -47,11 +47,11 @@ func (s *AddMemoriesRequest) Validate() error {
 }
 
 type AddMemoriesRequestBody struct {
-	// The message list. You must provide either this parameter or Text, but not both. You can specify 1 to 20 messages, and the total size of the content cannot exceed 32,000 UTF-8 bytes.
+	// The message list. You must provide either this parameter or Text, but not both. The list can contain 1 to 20 messages, and the total size of Content cannot exceed 32,000 UTF-8 bytes.
 	Messages []*AddMemoriesRequestBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
 	// The string key-value metadata. You can specify up to 16 keys. The maximum length of a key is 64 characters, and the maximum length of a value is 1,024 characters.
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The time reference point for the batch of messages or text. The value must be in RFC 3339 format with a time zone and support fractional seconds.
+	// The time reference point for this batch of messages or text. The time must be in RFC 3339 format with a time zone and support fractional seconds.
 	//
 	// example:
 	//
@@ -59,9 +59,9 @@ type AddMemoriesRequestBody struct {
 	ReferenceTime *string `json:"referenceTime,omitempty" xml:"referenceTime,omitempty"`
 	// The write scope. UserId, AgentId, and SessionId are all optional.
 	Scope *AddMemoriesRequestBodyScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// Specifies whether to synchronously wait for the memory extraction to complete. Default value: true.
+	// Specifies whether to synchronously wait for memory extraction to complete. Default value: true.
 	Sync *bool `json:"sync,omitempty" xml:"sync,omitempty"`
-	// The text to be written directly. You must provide either this parameter or Messages, but not both. The size cannot exceed 32,000 UTF-8 bytes.
+	// The text to write directly. You must provide either this parameter or Messages, but not both. The size cannot exceed 32,000 UTF-8 bytes.
 	//
 	// example:
 	//
@@ -199,19 +199,19 @@ func (s *AddMemoriesRequestBodyMessages) Validate() error {
 }
 
 type AddMemoriesRequestBodyScope struct {
-	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*).
 	//
 	// example:
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+	// The session ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*).
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. The ID cannot contain a forward slash (/) or an asterisk (*).
 	//
 	// example:
 	//

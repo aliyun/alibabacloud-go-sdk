@@ -126,9 +126,9 @@ func (s *AddMemoriesResponseBody) Validate() error {
 }
 
 type AddMemoriesResponseBodyData struct {
-	// The memory references. This parameter is returned only when sync is set to true. An empty array is allowed. This parameter is not returned together with taskId.
+	// The memory references. This parameter is returned only when sync is set to true, and an empty array is allowed. It is not returned together with taskId.
 	Memories []*AddMemoriesResponseBodyDataMemories `json:"memories,omitempty" xml:"memories,omitempty" type:"Repeated"`
-	// The task ID. This parameter is returned only when sync is set to false. This parameter is not returned together with memories.
+	// The task ID. This parameter is returned only when sync is set to false. It is not returned together with memories.
 	//
 	// example:
 	//

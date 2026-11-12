@@ -44,13 +44,13 @@ type ListPermissionRulesResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of permission rules.
 	Items []*ListPermissionRulesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in the current request.
+	// The maximum number of results returned in this response.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The message about the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListPermissionRulesResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// Indicates whether the request is successful.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// The total number of rules that meet the conditions.
+	// The total number of rules that match the criteria.
 	//
 	// example:
 	//
@@ -253,7 +253,7 @@ type ListPermissionRulesResponseBodyItems struct {
 	//
 	// SPECIFIED
 	TargetScope *string `json:"targetScope,omitempty" xml:"targetScope,omitempty"`
-	// The list of targets to which the rule applies.
+	// The list of rule targets.
 	Targets []*string `json:"targets,omitempty" xml:"targets,omitempty" type:"Repeated"`
 	// The update time in RFC 3339 format.
 	//

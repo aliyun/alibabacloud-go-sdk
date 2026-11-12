@@ -30,13 +30,13 @@ type iListManagedAgentsResponseBody interface {
 }
 
 type ListManagedAgentsResponseBody struct {
-	// The business status code. A value of SUCCESS indicates success.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. A value of 200 indicates success.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListManagedAgentsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The token for the next page. An empty value indicates that the end of the list is reached.
+	// The token for the next page. An empty value indicates that the last page is reached.
 	//
 	// example:
 	//
@@ -417,7 +417,7 @@ func (s *ListManagedAgentsResponseBodyItems) Validate() error {
 type ListManagedAgentsResponseBodyItemsHarness struct {
 	// The runtime framework configuration.
 	Configuration *ListManagedAgentsResponseBodyItemsHarnessConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// Returned only in queries. The server calculates this value based on the complete instance distribution, which is not affected by the pagination and filtering of the instance list. If the image tag is missing, pagination is incomplete, or the value cannot be confirmed, this parameter is empty, which is not equivalent to 0.
+	// The total number of instances that are not aligned with the pool target image tag.
 	//
 	// example:
 	//
@@ -429,7 +429,7 @@ type ListManagedAgentsResponseBodyItemsHarness struct {
 	//
 	// qodercli
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// Returned only in queries. Currently returns the tag of the pool target image. If the tag cannot be parsed, this parameter is empty and cannot be replaced by the agent configuration version.
+	// The Harness version corresponding to the pool target image.
 	//
 	// example:
 	//

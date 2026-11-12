@@ -16,7 +16,7 @@ type iListMcpToolsRequest interface {
 }
 
 type ListMcpToolsRequest struct {
-	// The maximum number of results to return per request. Default value: 10. Maximum value: 100.
+	// The maximum number of results to return in a single request. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//

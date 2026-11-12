@@ -40,13 +40,13 @@ type ListCredentialsRequest struct {
 	//
 	// credentialxxx
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The filter condition for fuzzy matching by credential name.
+	// The keyword used to perform fuzzy matching on credential names.
 	//
 	// example:
 	//
 	// model
 	NameLike *string `json:"nameLike,omitempty" xml:"nameLike,omitempty"`
-	// The cursor for querying the next page. Do not specify this parameter for the first call. For subsequent calls, specify the nextToken value returned in the previous response.
+	// The cursor used to query the next page. Leave this parameter empty in the first call. In subsequent calls, specify the nextToken value returned in the previous response.
 	//
 	// example:
 	//

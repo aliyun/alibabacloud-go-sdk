@@ -14,7 +14,7 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
-	// The semantic retrieval request.
+	// The semantic search request.
 	//
 	// This parameter is required.
 	Body *SearchMemoriesRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
@@ -49,7 +49,7 @@ func (s *SearchMemoriesRequest) Validate() error {
 type SearchMemoriesRequestBody struct {
 	// Specifies whether to enable reranking. Default value: true.
 	EnableRerank *bool `json:"enableRerank,omitempty" xml:"enableRerank,omitempty"`
-	// The string key-value metadata for exact match. A maximum of 16 keys are supported. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
+	// The string key-value metadata for exact matching. You can specify up to 16 keys. The maximum length of a key is 64 characters, and the maximum length of a value is 1,024 characters.
 	Metadata map[string]*string `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The minimum relevance score. Valid values: 0 to 1. Default value: 0.2. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
 	//
@@ -57,13 +57,13 @@ type SearchMemoriesRequestBody struct {
 	//
 	// 0.2
 	MinScore *float32 `json:"minScore,omitempty" xml:"minScore,omitempty"`
-	// The minimum similarity. Valid values: 0 to 1. Default value: 0.3. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
+	// The minimum similarity. Valid values: 0 to 1. Default value: 0.3. If both minSimilarity and minScore are specified, the AND logic is applied for filtering.
 	//
 	// example:
 	//
 	// 0.3
 	MinSimilarity *float32 `json:"minSimilarity,omitempty" xml:"minSimilarity,omitempty"`
-	// The query text. The text can be up to 8,192 characters in length.
+	// The query text. The maximum length is 8,192 characters.
 	//
 	// This parameter is required.
 	//
@@ -71,9 +71,9 @@ type SearchMemoriesRequestBody struct {
 	//
 	// What sports does the user like?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The retrieval scope. UserId, AgentId, and SessionId are all optional.
+	// The search scope. UserId, AgentId, and SessionId are all optional.
 	Scope *SearchMemoriesRequestBodyScope `json:"scope,omitempty" xml:"scope,omitempty" type:"Struct"`
-	// The number of returned results.
+	// The number of results to return.
 	//
 	// example:
 	//
@@ -162,19 +162,19 @@ func (s *SearchMemoriesRequestBody) Validate() error {
 }
 
 type SearchMemoriesRequestBodyScope struct {
-	// The agent ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with an agent ID, this field is not returned.
+	// The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
 	//
 	// example:
 	//
 	// agent-001
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The session ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a session ID, this field is not returned.
+	// The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
 	//
 	// example:
 	//
 	// session-001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user ID. The ID must be 1 to 128 bytes in length and encoded in UTF-8. The ID cannot contain forward slashes (/) or asterisks (*). If the memory is not associated with a user ID, this field is not returned.
+	// The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
 	//
 	// example:
 	//

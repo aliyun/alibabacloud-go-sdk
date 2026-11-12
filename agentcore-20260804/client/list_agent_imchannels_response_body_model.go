@@ -42,15 +42,15 @@ type ListAgentIMChannelsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The IM channels.
+	// The list of IM channels.
 	Items []*ListAgentIMChannelsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page for this request.
+	// The maximum number of entries returned per page for the current request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The result message of the request.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -187,9 +187,9 @@ type ListAgentIMChannelsResponseBodyItems struct {
 	//
 	// agent-1
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The channel behavior configuration.
+	// The behavior configuration of the channel.
 	ChannelConfig *ListAgentIMChannelsResponseBodyItemsChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
+	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), WECOM (WeCom).
 	//
 	// example:
 	//
@@ -203,9 +203,9 @@ type ListAgentIMChannelsResponseBodyItems struct {
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The channel credential summary. Only non-sensitive fields and configured secret field names are returned. Secret values are not returned.
 	CredentialSummary *ListAgentIMChannelsResponseBodyItemsCredentialSummary `json:"credentialSummary,omitempty" xml:"credentialSummary,omitempty" type:"Struct"`
-	// Specifies whether the IM channel is enabled. Default value: true.
+	// Specifies whether the IM channel is enabled. The default value is true upon creation.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The public network access address of the attached ServiceEndpoint.
+	// The public network access URL of the attached ServiceEndpoint.
 	//
 	// example:
 	//
@@ -217,13 +217,13 @@ type ListAgentIMChannelsResponseBodyItems struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public endpoint URL.
+	// The ID of the bound ServiceEndpoint. The endpoint must belong to the specified agent and its current version, be in the Ready state, and have a public network address.
 	//
 	// example:
 	//
 	// se-1
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), and DELETE_FAILED (Delete failed).
+	// The IM channel status. Valid values: CREATING (Creating), READY (Ready), UPDATING (Updating), FAILED (Failed), DELETING (Deleting), DELETE_FAILED (Deletion failed).
 	//
 	// example:
 	//

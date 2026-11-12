@@ -45,13 +45,13 @@ func (s *UpdateAgentSpecRequest) Validate() error {
 }
 
 type UpdateAgentSpecRequestBody struct {
-	// The business tags as a JSON-formatted string.
+	// The business tags in JSON format.
 	//
 	// example:
 	//
 	// ["ai","agent"]
 	BizTags *string `json:"bizTags,omitempty" xml:"bizTags,omitempty"`
-	// The label mapping as a JSON-formatted string.
+	// The label mapping in JSON format.
 	//
 	// example:
 	//

@@ -126,7 +126,7 @@ func (s *InstallWorkspacePluginRequestBodyConfig) Validate() error {
 type InstallWorkspacePluginRequestBodyConfigNetwork struct {
 	// Specifies whether the collaboration component is allowed to access the public network. This configuration only controls the public network access capability and does not expose the component service to the public network.
 	Internet *InstallWorkspacePluginRequestBodyConfigNetworkInternet `json:"internet,omitempty" xml:"internet,omitempty" type:"Struct"`
-	// The user VPC and the list of vSwitches used to deploy the collaboration component. The zones corresponding to the vSwitches are queried by the server. You do not need to pass the Zones parameter.
+	// The user VPC and the list of vSwitches used to deploy the collaboration component. The zones corresponding to the vSwitches are queried by the server, so you do not need to specify the zones.
 	Vpc *InstallWorkspacePluginRequestBodyConfigNetworkVpc `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
 }
 
@@ -171,7 +171,7 @@ func (s *InstallWorkspacePluginRequestBodyConfigNetwork) Validate() error {
 }
 
 type InstallWorkspacePluginRequestBodyConfigNetworkInternet struct {
-	// Specifies whether to enable Internet access. If this parameter is set to true and no VPC is specified, PUB_NET is used. If this parameter is set to true and a VPC is specified, PRIVATE_PUBNET is used. If only a VPC is specified, PRIVATE_NET is used. You must configure at least one of Internet access and VPC access.
+	// If set to true and no VPC is specified, PUB_NET is used. If set to true and a VPC is specified, PRIVATE_PUBNET is used. If only a VPC is specified, PRIVATE_NET is used. You must configure at least one of Internet access and VPC.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ func (s *InstallWorkspacePluginRequestBodyConfigNetworkInternet) Validate() erro
 }
 
 type InstallWorkspacePluginRequestBodyConfigNetworkVpc struct {
-	// Explicitly controls whether the collaboration component uses a VPC network. If this parameter is set to false, vpcId and vSwitchIds are ignored. If this parameter is set to true, you must provide a vpcId and at least two vSwitchIds.
+	// Explicitly specifies whether the collaboration component uses the VPC network. If set to false, vpcId and vSwitchIds are ignored. If set to true, you must provide both vpcId and at least two vSwitchIds.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type InstallWorkspacePluginRequestBodyConfigNetworkVpc struct {
 	//
 	// This parameter is required.
 	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the user VPC.
+	// The user VPC ID.
 	//
 	// This parameter is required.
 	//

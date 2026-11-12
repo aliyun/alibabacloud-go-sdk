@@ -14,7 +14,7 @@ type iListAgentTeamsShrinkRequest interface {
 }
 
 type ListAgentTeamsShrinkRequest struct {
-	// The request parameters for querying the list of agent teams.
+	// The request parameters for querying agent teams.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

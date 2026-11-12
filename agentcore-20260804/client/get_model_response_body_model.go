@@ -38,7 +38,7 @@ type GetModelResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message indicating the request processing result.
+	// The message about the request processing result.
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type GetModelResponseBodyData struct {
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The creation time of the resource, in RFC 3339 UTC format.
+	// The time when the resource was created, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The model description. The maximum length is 255 characters.
+	// The model description, which can be up to 255 characters in length.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type GetModelResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The last update time of the resource, in RFC 3339 UTC format.
+	// The time when the resource was last updated, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -311,7 +311,7 @@ type GetModelResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Indicates whether the model is able to invoke multiple tool calling operations in a single response.
+	// Specifies whether the model is able to invoke multiple tool calling operations in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`

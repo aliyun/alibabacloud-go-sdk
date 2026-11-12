@@ -22,31 +22,31 @@ type iDeleteIdentityProviderSCIMCredentialResponseBody interface {
 }
 
 type DeleteIdentityProviderSCIMCredentialResponseBody struct {
-	// The business result code. If the call fails, use this code in combination with the HTTP status code and message for troubleshooting.
+	// The business result code. If the request fails, use this code together with the HTTP status code and message for troubleshooting.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The processing status of this request. This does not indicate the final result of the background task.
+	// The HTTP status code of the request. This does not indicate the final result of the background task.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request acceptance or error message. Check the asynchronous task result by calling the corresponding query operation.
+	// The message indicating whether the request is accepted or an error message. For asynchronous tasks, check the task result by calling the corresponding query operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID. Used to associate this call with troubleshooting. Retain this ID if the call fails.
+	// The request ID. Retain this ID for troubleshooting if the request fails.
 	//
 	// example:
 	//
 	// request-example
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates that the request was processed successfully. For asynchronous writes, you must continue to query the task result.
+	// Indicates whether the request is successful. A value of true indicates that the request is successful. For asynchronous write operations, you must continue to query the task result.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 

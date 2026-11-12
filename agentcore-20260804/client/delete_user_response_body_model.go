@@ -30,7 +30,7 @@ type DeleteUserResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The information about the deleted user.
+	// The deleted user information.
 	Data *DeleteUserResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//

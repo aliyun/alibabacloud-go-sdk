@@ -30,13 +30,13 @@ type iListModelsResponseBody interface {
 }
 
 type ListModelsResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. A value of SUCCESS indicates success.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListModelsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of models.
 	Items []*ListModelsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value is 10.
+	// The maximum number of entries to return per page. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value is 10.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListModelsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token. Specify the token returned from the previous request to retrieve the next page. An empty response indicates that no more pages are available.
+	// The pagination token. Specify the token returned from the previous query. An empty response indicates that no more pages are available.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type ListModelsResponseBodyItems struct {
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The time when the resource was created. The time is in the RFC 3339 UTC format.
+	// The time when the resource was created, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The model description. The description can be up to 255 characters in length.
+	// The model description, which can be up to 255 characters in length.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type ListModelsResponseBodyItems struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The time when the resource was last updated. The time is in the RFC 3339 UTC format.
+	// The time when the resource was last updated, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -347,21 +347,21 @@ func (s *ListModelsResponseBodyItems) Validate() error {
 }
 
 type ListModelsResponseBodyItemsCapabilities struct {
-	// Specifies whether the model supports audio input or output.
+	// Indicates whether the model supports audio input or output.
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
-	// Specifies whether the model supports document input.
+	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
 	// Specifies whether the model supports multiple tool calls in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
-	// Specifies whether the model supports reasoning capabilities.
+	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Specifies whether the model supports streaming tool calling.
+	// Specifies whether the model supports streaming tool calls.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
-	// Specifies whether the model supports tool calling.
+	// Indicates whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
-	// Specifies whether the model supports video input.
+	// Indicates whether the model supports video input.
 	Video *bool `json:"video,omitempty" xml:"video,omitempty"`
-	// Specifies whether the model supports image input.
+	// Indicates whether the model supports image input.
 	Vision *bool `json:"vision,omitempty" xml:"vision,omitempty"`
 }
 

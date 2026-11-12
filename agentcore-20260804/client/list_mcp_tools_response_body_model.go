@@ -44,7 +44,7 @@ type ListMcpToolsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list data.
 	Items []*ListMcpToolsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries to return per page.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListMcpToolsResponseBody struct {
 	//
 	// example:
 	//
-	// Request processed successfully
+	// The request is processed successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The token for the next page.
 	//

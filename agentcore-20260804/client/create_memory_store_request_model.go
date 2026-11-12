@@ -16,7 +16,7 @@ type iCreateMemoryStoreRequest interface {
 }
 
 type CreateMemoryStoreRequest struct {
-	// The MemoryStore creation request.
+	// The request to create a memory store.
 	//
 	// This parameter is required.
 	Body *CreateMemoryStoreRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
@@ -64,19 +64,19 @@ func (s *CreateMemoryStoreRequest) Validate() error {
 }
 
 type CreateMemoryStoreRequestBody struct {
-	// The description of the MemoryStore, up to 1,024 characters.
+	// The description of the memory store. The description can be up to 1,024 characters in length.
 	//
 	// example:
 	//
-	// Used to save long-term user preferences
+	// Used to store long-term user preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The custom extraction instructions, up to 4,096 characters.
+	// The custom extraction instructions. The instructions can be up to 4,096 characters in length.
 	//
 	// example:
 	//
-	// Extract only explicitly expressed long-term user preferences
+	// Extract only long-term preferences explicitly expressed by the user
 	ExtractInstructions *string `json:"extractInstructions,omitempty" xml:"extractInstructions,omitempty"`
-	// The name of the MemoryStore. The name must be 1 to 64 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot be modified after creation.
+	// The name of the memory store. The name must be 1 to 64 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot be modified after creation.
 	//
 	// This parameter is required.
 	//

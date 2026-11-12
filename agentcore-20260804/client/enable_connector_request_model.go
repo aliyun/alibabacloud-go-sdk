@@ -14,7 +14,7 @@ type iEnableConnectorRequest interface {
 }
 
 type EnableConnectorRequest struct {
-  // The request body for enabling the connector.
+  // The request body for the enable operation.
   // 
   // This parameter is required.
   Body *EnableConnectorRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`

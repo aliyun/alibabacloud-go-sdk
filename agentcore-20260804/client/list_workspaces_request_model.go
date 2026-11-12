@@ -24,7 +24,7 @@ type ListWorkspacesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The cursor for querying the next page.
+	// The cursor used to query the next page.
 	//
 	// example:
 	//

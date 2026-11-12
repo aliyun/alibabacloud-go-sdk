@@ -24,13 +24,13 @@ type iGetIdentityProviderServiceProviderResponseBody interface {
 }
 
 type GetIdentityProviderServiceProviderResponseBody struct {
-	// The business result code. If a failure occurs, handle it based on the HTTP status code and the message.
+	// The business result code. If the request fails, handle the error based on the HTTP status code and the message.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data structure of the result. For details, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not ensure that the background task is completed.
+	// The SP information. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, which does not guarantee that the background task is complete.
 	Data *GetIdentityProviderServiceProviderResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The processing status of the current request. This status is not equivalent to the final result of the background task.
 	//
@@ -38,13 +38,13 @@ type GetIdentityProviderServiceProviderResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The request acceptance or error message. For asynchronous tasks, check the task results by calling the corresponding query operation.
+	// The message about request acceptance or errors. Check the asynchronous task result by calling the corresponding query operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. You can use the ID to associate the call with troubleshooting. Keep the ID when a failure occurs.
+	// The ID of the request. You can use the ID to associate the call with troubleshooting. Keep the ID if the request fails.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ func (s *GetIdentityProviderServiceProviderResponseBody) Validate() error {
 }
 
 type GetIdentityProviderServiceProviderResponseBodyData struct {
-	// The SAML assertion consumer service (ACS) URL of the local SP. Configure it in the external IdP.
+	// The SAML assertion consumer URL of the local SP. Configure it in the external IdP.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type GetIdentityProviderServiceProviderResponseBodyData struct {
 	//
 	// https://sp.example.com/entity
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// The SP metadata XML of the local SP. Import it to the external IdP. You cannot use it as the IdP XML to submit the SAML configuration.
+	// The SP metadata XML of the local SP. Use it for import in the external IdP. Do not submit it as the IdP XML for SAML configuration.
 	//
 	// example:
 	//

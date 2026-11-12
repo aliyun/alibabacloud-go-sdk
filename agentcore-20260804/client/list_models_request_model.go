@@ -26,7 +26,7 @@ type ListModelsRequest struct {
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The number of entries to return on each page. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value is 10.
+	// The maximum number of entries to return per page. Valid values: 0 to 100. If this parameter is not specified or is set to 0, the default value is 10.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListModelsRequest struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The pagination token. Specify the token returned from the previous request to retrieve the next page. An empty response indicates that no more pages are available.
+	// The pagination token. Specify the token returned from the previous query. An empty response indicates that no more pages are available.
 	//
 	// example:
 	//

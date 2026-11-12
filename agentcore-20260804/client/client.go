@@ -66,15 +66,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Writes messages or text to a memory store. If sync is omitted or set to true, the operation synchronously waits for extraction and returns only memories, which can be an empty array. If sync is set to false, the operation returns only a taskId, and you can query the result by calling GetMemoryTask.
+// Writes messages or text to a memory store. By default, sync is set to true, which synchronously waits for extraction and returns only memories (an empty array is allowed). If sync is set to false, it returns only a taskId that can be queried by using GetMemoryTask.
 //
 // Description:
 //
-// Writes messages or text to a memory store to fetch long-term memory to retrieve and use later.
+// Writes messages or text to a memory store to extract long-term memory for subsequent retrieval and use.
 //
-// - If `sync` is omitted or set to `true`: waits for the fetch to complete and returns `memories`. Returns an empty array if no memories are fetched.
+// - sync omitted or set to true: Waits for extraction to complete and returns memories. If no memory is extracted, an empty array is returned.
 //
-// - If `sync` is set to `false`: returns a `taskId`. You can query the fetch progress and results by calling [GetMemoryTask](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMemoryTask).
+// - sync=false: Returns a taskId. You can query the extraction progress and results by using [GetMemoryTask](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMemoryTask).
 //
 // @param tmpReq - AddMemoriesRequest
 //
@@ -127,15 +127,15 @@ func (client *Client) AddMemoriesWithOptions(workspaceId *string, memoryStoreNam
 
 // Summary:
 //
-// Writes messages or text to a memory store. If sync is omitted or set to true, the operation synchronously waits for extraction and returns only memories, which can be an empty array. If sync is set to false, the operation returns only a taskId, and you can query the result by calling GetMemoryTask.
+// Writes messages or text to a memory store. By default, sync is set to true, which synchronously waits for extraction and returns only memories (an empty array is allowed). If sync is set to false, it returns only a taskId that can be queried by using GetMemoryTask.
 //
 // Description:
 //
-// Writes messages or text to a memory store to fetch long-term memory to retrieve and use later.
+// Writes messages or text to a memory store to extract long-term memory for subsequent retrieval and use.
 //
-// - If `sync` is omitted or set to `true`: waits for the fetch to complete and returns `memories`. Returns an empty array if no memories are fetched.
+// - sync omitted or set to true: Waits for extraction to complete and returns memories. If no memory is extracted, an empty array is returned.
 //
-// - If `sync` is set to `false`: returns a `taskId`. You can query the fetch progress and results by calling [GetMemoryTask](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMemoryTask).
+// - sync=false: Returns a taskId. You can query the extraction progress and results by using [GetMemoryTask](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMemoryTask).
 //
 // @param request - AddMemoriesRequest
 //
@@ -154,11 +154,11 @@ func (client *Client) AddMemories(workspaceId *string, memoryStoreName *string, 
 
 // Summary:
 //
-// Deletes multiple models in a specified workspace. If any model is in use, the entire batch request fails.
+// Deletes models from a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // Description:
 //
-// Deletes multiple models in a specified workspace. If any model is in use, the entire batch request fails.
+// Deletes models from a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // @param tmpReq - BatchDeleteModelsRequest
 //
@@ -217,11 +217,11 @@ func (client *Client) BatchDeleteModelsWithOptions(workspaceId *string, tmpReq *
 
 // Summary:
 //
-// Deletes multiple models in a specified workspace. If any model is in use, the entire batch request fails.
+// Deletes models from a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // Description:
 //
-// Deletes multiple models in a specified workspace. If any model is in use, the entire batch request fails.
+// Deletes models from a specified workspace in batches. If any model is in use, the entire batch request fails.
 //
 // @param request - BatchDeleteModelsRequest
 //
@@ -324,11 +324,13 @@ func (client *Client) BatchUploadSkillsViaOss(workspaceId *string, request *Batc
 
 // Summary:
 //
-// Converts an MCP server to free-edit mode.
+// Converts an MCP service to free edit mode.
 //
 // Description:
 //
-// Converts an MCP server installed from a marketplace template to free-edit mode so that you can directly modify the server configuration. After the conversion, the original source and tag information is retained, and the template editing restrictions are removed. The server no longer appears on the use case page associated with the template.
+// Converts an MCP service installed from a marketplace template to free edit mode to allow direct modification of the service configuration.
+//
+// After the conversion, the original source and tag information are retained, and the template editing restrictions are removed. The service no longer appears on the usage page associated with the template.
 //
 // @param request - ConvertMcpToFreeEditRequest
 //
@@ -375,11 +377,13 @@ func (client *Client) ConvertMcpToFreeEditWithOptions(workspaceId *string, mcpSe
 
 // Summary:
 //
-// Converts an MCP server to free-edit mode.
+// Converts an MCP service to free edit mode.
 //
 // Description:
 //
-// Converts an MCP server installed from a marketplace template to free-edit mode so that you can directly modify the server configuration. After the conversion, the original source and tag information is retained, and the template editing restrictions are removed. The server no longer appears on the use case page associated with the template.
+// Converts an MCP service installed from a marketplace template to free edit mode to allow direct modification of the service configuration.
+//
+// After the conversion, the original source and tag information are retained, and the template editing restrictions are removed. The service no longer appears on the usage page associated with the template.
 //
 // @param request - ConvertMcpToFreeEditRequest
 //
@@ -398,13 +402,11 @@ func (client *Client) ConvertMcpToFreeEdit(workspaceId *string, mcpServerId *str
 
 // Summary:
 //
-// Creates an IM channel for a specified agent and binds it to a publicly accessible service endpoint.
+// Creates an instant messaging (IM) channel for a specified agent and binds a publicly accessible ServiceEndpoint.
 //
 // Description:
 //
-// Creates an IM channel for an agent to route messages from instant messaging platforms to the agent.
-//
-// During creation, a publicly accessible service endpoint (`ServiceEndpoint`) is bound to the channel. After the channel is created, you can call [GetAgentIMChannel](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentIMChannel) to query its configuration and status.
+// Creates an IM channel for an agent to route messages from instant messaging platforms to the agent. Binds a publicly accessible service endpoint (`ServiceEndpoint`) during creation. After the channel is created, you can query its configuration and status by calling [GetAgentIMChannel](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentIMChannel).
 //
 // @param tmpReq - CreateAgentIMChannelRequest
 //
@@ -463,13 +465,11 @@ func (client *Client) CreateAgentIMChannelWithOptions(workspaceId *string, agent
 
 // Summary:
 //
-// Creates an IM channel for a specified agent and binds it to a publicly accessible service endpoint.
+// Creates an instant messaging (IM) channel for a specified agent and binds a publicly accessible ServiceEndpoint.
 //
 // Description:
 //
-// Creates an IM channel for an agent to route messages from instant messaging platforms to the agent.
-//
-// During creation, a publicly accessible service endpoint (`ServiceEndpoint`) is bound to the channel. After the channel is created, you can call [GetAgentIMChannel](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentIMChannel) to query its configuration and status.
+// Creates an IM channel for an agent to route messages from instant messaging platforms to the agent. Binds a publicly accessible service endpoint (`ServiceEndpoint`) during creation. After the channel is created, you can query its configuration and status by calling [GetAgentIMChannel](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentIMChannel).
 //
 // @param request - CreateAgentIMChannelRequest
 //
@@ -568,13 +568,13 @@ func (client *Client) CreateAgentSpec(workspaceId *string, request *CreateAgentS
 
 // Summary:
 //
-// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist and must not have a draft currently being edited.
+// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist and cannot have a draft currently being edited.
 //
 // Description:
 //
 // Creates a new draft version for an existing agent template (AgentSpec) to modify and publish the next version of the configuration.
 //
-// The template must already exist and must not have a draft currently being edited.
+// The template must already exist and cannot have a draft currently being edited.
 //
 // @param tmpReq - CreateAgentSpecVersionRequest
 //
@@ -627,13 +627,13 @@ func (client *Client) CreateAgentSpecVersionWithOptions(workspaceId *string, age
 
 // Summary:
 //
-// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist and must not have a draft currently being edited.
+// Creates a new draft version for an existing AgentSpec. The AgentSpec must exist and cannot have a draft currently being edited.
 //
 // Description:
 //
 // Creates a new draft version for an existing agent template (AgentSpec) to modify and publish the next version of the configuration.
 //
-// The template must already exist and must not have a draft currently being edited.
+// The template must already exist and cannot have a draft currently being edited.
 //
 // @param request - CreateAgentSpecVersionRequest
 //
@@ -656,7 +656,7 @@ func (client *Client) CreateAgentSpecVersion(workspaceId *string, agentSpecName 
 //
 // Description:
 //
-// Saves the currently effective configuration of a specified managed or custom agent as an immutable fixed version, and archives the version template and artifacts. This operation only saves the version and does not deploy an instance. Other types of agents, such as external agents, do not support versions and return AgentVersionSubtypeUnsupported. The latest release of the agent must be effective, meaning latestSpecVersion is equal to effectiveSpecVersion. The system generates an incrementing version number, agentVersion, such as v1 and v2, for each agent. The version number is unique within the agent, and the sequence numbers of deleted versions are not reused. This version number is used for querying, deleting, and referencing versions in service endpoints. Each agent can retain up to 50 undeleted versions. If the limit is reached, AgentVersionQuotaExceeded is returned. You can continue to save versions after deleting unused ones. Duplicate submissions with the same versionName and release serial number return the existing version and are not subject to the limit. Submissions with the same versionName but a different release serial number return AgentVersionAlreadyExists.
+// Saves the currently effective configuration of a specified managed or custom agent as an immutable fixed version, and archives the version template and artifacts. This operation only saves the version and does not deploy an instance. Other types of agents, such as external agents, do not support versions and return AgentVersionSubtypeUnsupported. The latest release of the agent must be effective, meaning latestSpecVersion is equal to effectiveSpecVersion. The system generates an incrementing version number, agentVersion, such as v1 and v2, for each agent. The version number is unique within the agent, and the sequence numbers of deleted versions are not reused. This version number is used to query and delete versions, and for server endpoint references. Each agent can retain up to 50 undeleted versions. If the limit is reached, AgentVersionQuotaExceeded is returned. You can continue to save versions after deleting unused ones. Duplicate submissions with the same versionName and release serial number return the existing version and are not subject to the limit. If the versionName is the same but the release serial number is different, AgentVersionAlreadyExists is returned.
 //
 // @param tmpReq - CreateAgentVersionRequest
 //
@@ -719,7 +719,7 @@ func (client *Client) CreateAgentVersionWithOptions(workspaceId *string, agentId
 //
 // Description:
 //
-// Saves the currently effective configuration of a specified managed or custom agent as an immutable fixed version, and archives the version template and artifacts. This operation only saves the version and does not deploy an instance. Other types of agents, such as external agents, do not support versions and return AgentVersionSubtypeUnsupported. The latest release of the agent must be effective, meaning latestSpecVersion is equal to effectiveSpecVersion. The system generates an incrementing version number, agentVersion, such as v1 and v2, for each agent. The version number is unique within the agent, and the sequence numbers of deleted versions are not reused. This version number is used for querying, deleting, and referencing versions in service endpoints. Each agent can retain up to 50 undeleted versions. If the limit is reached, AgentVersionQuotaExceeded is returned. You can continue to save versions after deleting unused ones. Duplicate submissions with the same versionName and release serial number return the existing version and are not subject to the limit. Submissions with the same versionName but a different release serial number return AgentVersionAlreadyExists.
+// Saves the currently effective configuration of a specified managed or custom agent as an immutable fixed version, and archives the version template and artifacts. This operation only saves the version and does not deploy an instance. Other types of agents, such as external agents, do not support versions and return AgentVersionSubtypeUnsupported. The latest release of the agent must be effective, meaning latestSpecVersion is equal to effectiveSpecVersion. The system generates an incrementing version number, agentVersion, such as v1 and v2, for each agent. The version number is unique within the agent, and the sequence numbers of deleted versions are not reused. This version number is used to query and delete versions, and for server endpoint references. Each agent can retain up to 50 undeleted versions. If the limit is reached, AgentVersionQuotaExceeded is returned. You can continue to save versions after deleting unused ones. Duplicate submissions with the same versionName and release serial number return the existing version and are not subject to the limit. If the versionName is the same but the release serial number is different, AgentVersionAlreadyExists is returned.
 //
 // @param request - CreateAgentVersionRequest
 //
@@ -746,21 +746,21 @@ func (client *Client) CreateAgentVersion(workspaceId *string, agentId *string, r
 //
 // ### Credential types
 //
-// - `apiKey`: `credentialMetadata` is a JSON string that contains only a non-empty `apiKey`. Do not submit `resourceScope` and `resourceRefs`.
+// - apiKey: credentialMetadata is a JSON string that contains only a non-empty apiKey. Do not submit resourceScope and resourceRefs.
 //
-// - `mcpHeader`: `credentialMetadata` is a JSON string that contains a non-empty `headers` array. Each item contains a non-empty `name` and `value` to configure MCP request headers.
+// - mcpHeader: credentialMetadata is a JSON string that contains a non-empty headers array. Each item contains a non-empty name and value, which are used to configure MCP request headers.
 //
 // ### MCP header scope
 //
-// You must specify `resourceScope` when creating an `mcpHeader` credential:
+// You must specify resourceScope when creating an mcpHeader credential:
 //
-// - `ALL`: Applies to all MCP services. Omit `resourceRefs`.
+// - ALL: Applies to all MCP services. Omit resourceRefs.
 //
-// - `SPECIFIED`: Applies to specified MCP services. `resourceRefs` must be a non-empty array. For each item, set `resourceType=mcpServer` and specify `resourceId`.
+// - SPECIFIED: Applies to specified MCP services. resourceRefs must be a non-empty array. For each item, set resourceType=mcpServer and specify resourceId.
 //
 // ### Subsequent queries
 //
-// Use [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential) or [ListCredentials](https://api.aliyun.com/document/AgentCore/2026-08-04/ListCredentials) to query credentials. For `apiKey`, a masked value is returned. For `mcpHeader`, only header names are returned, and header values are not returned.
+// Use [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential) or [ListCredentials](https://api.aliyun.com/document/AgentCore/2026-08-04/ListCredentials) to query credentials. For apiKey, a masked value is returned. For mcpHeader, only header names are returned, and header values are not returned.
 //
 // @param tmpReq - CreateCredentialRequest
 //
@@ -827,21 +827,21 @@ func (client *Client) CreateCredentialWithOptions(workspaceId *string, tmpReq *C
 //
 // ### Credential types
 //
-// - `apiKey`: `credentialMetadata` is a JSON string that contains only a non-empty `apiKey`. Do not submit `resourceScope` and `resourceRefs`.
+// - apiKey: credentialMetadata is a JSON string that contains only a non-empty apiKey. Do not submit resourceScope and resourceRefs.
 //
-// - `mcpHeader`: `credentialMetadata` is a JSON string that contains a non-empty `headers` array. Each item contains a non-empty `name` and `value` to configure MCP request headers.
+// - mcpHeader: credentialMetadata is a JSON string that contains a non-empty headers array. Each item contains a non-empty name and value, which are used to configure MCP request headers.
 //
 // ### MCP header scope
 //
-// You must specify `resourceScope` when creating an `mcpHeader` credential:
+// You must specify resourceScope when creating an mcpHeader credential:
 //
-// - `ALL`: Applies to all MCP services. Omit `resourceRefs`.
+// - ALL: Applies to all MCP services. Omit resourceRefs.
 //
-// - `SPECIFIED`: Applies to specified MCP services. `resourceRefs` must be a non-empty array. For each item, set `resourceType=mcpServer` and specify `resourceId`.
+// - SPECIFIED: Applies to specified MCP services. resourceRefs must be a non-empty array. For each item, set resourceType=mcpServer and specify resourceId.
 //
 // ### Subsequent queries
 //
-// Use [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential) or [ListCredentials](https://api.aliyun.com/document/AgentCore/2026-08-04/ListCredentials) to query credentials. For `apiKey`, a masked value is returned. For `mcpHeader`, only header names are returned, and header values are not returned.
+// Use [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential) or [ListCredentials](https://api.aliyun.com/document/AgentCore/2026-08-04/ListCredentials) to query credentials. For apiKey, a masked value is returned. For mcpHeader, only header names are returned, and header values are not returned.
 //
 // @param request - CreateCredentialRequest
 //
@@ -860,43 +860,43 @@ func (client *Client) CreateCredential(workspaceId *string, request *CreateCrede
 
 // Summary:
 //
-// Creates a custom code or image agent in a specified workspace, supports code package, ACR image, and custom image deployments, and executes the deployment asynchronously.
+// Creates a custom code or image agent in a specified workspace. Supports code package, ACR image, and custom image deployments, and executes the deployment asynchronously.
 //
 // Description:
 //
 // Deploys a user-provided code package or container image as an agent in a workspace. This corresponds to the "Custom Code / Image" creation method in the console.
 //
-// ### Preparations
+// ### Before you begin
 //
 // Prepare a writable workspace and submit name, roleArn, artifact, and runtime. In runtime, specify both compute and sessionPolicy. roleArn is the RAM role used by the agent to access your cloud resources.
 //
 // ### Select a deployment method
 //
-// | Deployment method | Required configurations |
+// | Deployment method | Required configuration |
 //
 // | --- | --- |
 //
 // | ACR image | artifact.port, and type=acr, instanceId, namespace, repo, and tag in artifact.container. |
 //
-// | Custom image | artifact.port, artifact.container.type=custom, and the complete customImage. The clientToken query parameter is required. |
+// | Custom image | artifact.port, artifact.container.type=custom, and a complete customImage. The clientToken query parameter is required. |
 //
 // | Code package | artifact.port, and sourceUri, languageRuntime, and entrypoint in artifact.code. |
 //
-// artifact.code and artifact.container are mutually exclusive. The service listening port ranges from 1 to 65535. You can specify a startup command for a container image by using artifact.container.entrypoint. If this parameter is omitted, the default startup method of the image is used.
+// artifact.code and artifact.container are mutually exclusive. The service listening port ranges from 1 to 65535. You can specify a startup command for a container image by using artifact.container.entrypoint. If omitted, the default startup method of the image is used.
 //
 // ### Code package
 //
 // - ZIP and TAR.GZ formats are supported. The compressed package size ranges from 1 to 500,000,000 bytes. Dependencies must be included in the package. The platform does not install dependencies or perform online builds.
 //
-// - Invoke [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes) to query the currently active `languageRuntime`.
+// - Invoke [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes) to query the active languageRuntime values.
 //
-// - For local files, first invoke [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl) and upload the file directly by using the upload method, URL, and request headers returned in the response. Then, commit `sourceUri`.
+// - For local files, first invoke [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl). Upload the file directly by using the upload method, URL, and request headers returned in the response, and then commit sourceUri.
 //
-// - `sourceUri` supports `oss://` URLs or HTTPS object URLs of standard OSS public domain names, including signed URLs. Private OSS objects must allow the workspace role to read them. You can first invoke [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl) to complete the authorization.
+// - sourceUri supports oss:// or HTTPS object URLs with standard OSS public domain names, including signed URLs. Private OSS objects must allow the workspace role to read them. You can invoke [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl) to complete the authorization first.
 //
-// - Read permissions, objects, and sizes are checked upon commit, and a fixed copy is saved. If the transfer failed, the agent configuration is not created. Archive integrity and decompression are checked when the instance starts.
+// - Read permissions, object existence, and size are checked upon commit, and a fixed copy is saved. If the transfer failed, the agent configuration is not created. Archive integrity and decompression are checked when the instance starts.
 //
-// - `entrypoint` is the startup command executed in the `/code` folder, such as `python main.py`. The command does not automatically execute shell pipelines or expand environment variables. For complex startup logic, write a script in the package.
+// - entrypoint is the startup command executed in the /code folder, such as python main.py. The command does not automatically execute shell pipelines or expand environment variables. For complex startup logic, write the logic into a script within the package.
 //
 // Sample request body for a code package (the runtime environment is subject to the query result):
 //
@@ -946,7 +946,7 @@ func (client *Client) CreateCredential(workspaceId *string, request *CreateCrede
 //
 // ### Custom image
 //
-// Specify the complete image address in customImage.image. Tags or digests are supported. Do not include protocols or user information. Configure the image pull network separately in customImage.pullNetwork:
+// For customImage.image, specify the complete image address. Tags or digests are supported. Do not include the protocol or user information. Configure the image pull network separately in customImage.pullNetwork:
 //
 // | Pull method | Configuration |
 //
@@ -958,9 +958,9 @@ func (client *Client) CreateCredential(workspaceId *string, request *CreateCrede
 //
 // If repository authentication is required, specify both customImage.username and customImage.password. For anonymous access, omit both. The password is not returned in the response. The image pull network and the agent runtime network are configured separately.
 //
-// useImageCache=true applies only to ACR images. For custom images and code packages, set this parameter to false or omit it.
+// useImageCache=true applies only to ACR images. For custom images and code packages, use false or omit this field.
 //
-// ### Runtime configurations
+// ### Runtime configuration
 //
 // Omitted fields in runtime.hpa use the following default values:
 //
@@ -976,25 +976,25 @@ func (client *Client) CreateCredential(workspaceId *string, request *CreateCrede
 //
 // | maxConcurrentSessionsPerSandbox | 20 | The maximum number of concurrent sessions per instance. Valid values: 1 to 20. |
 //
-// | sessionTtlSeconds | 600 | The maximum idle time of a session, in seconds. Valid values: 60 to 86400. |
+// | sessionTtlSeconds | 600 | The maximum idle time for a session, in seconds. Valid values: 60 to 86400. |
 //
 // If sessionPolicy.type=ISOLATED_HEADER_FIELD, you must provide a valid HTTP request header name in headerName. Do not specify this field for other policies.
 //
-// If network is omitted, the default access policy on the agent side is used. Actual access is still restricted by the workspace network. When submitting access items, specify the corresponding enabled field.
+// If network is omitted, the default access policy on the agent side is used. Actual access is still subject to the workspace network restrictions. When submitting access items, specify the corresponding enabled value.
 //
-// The total number of items in ossMounts and agenticFsMounts cannot exceed 10. The mount target mountPath must be an absolute path in the container, such as /data/train. It cannot conflict with platform reserved directories, be duplicated, or form parent-child directory overrides.
+// The total number of items in ossMounts and agenticFsMounts cannot exceed 10. The mount target mountPath uses an absolute path within the container, such as /data/train. It cannot conflict with platform reserved directories, and cannot be duplicated or form parent-child directory overrides.
 //
-// File mounts are used to allow the agent to access persistent data. When using AgenticFS, you can call [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl) to complete the access point authorization first.
+// File mounting allows the agent to access persistent data. When using AgenticFS, you can call [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl) to authorize the access point first.
 //
-// The path for an OSS mount must be a non-empty directory prefix in the bucket. The server for an AgenticFS mount is the access point domain name, without a protocol, port, or path. The path must be an existing non-empty relative directory in the access point. You cannot mount the root directory of the access point. If readOnly is omitted, the default value is false.
+// The path for an OSS mount must be a non-empty directory prefix within the bucket. The server for an AgenticFS mount is the AccessPoint domain name, without a protocol, port, or path. The path is an existing non-empty relative directory within the AccessPoint. You cannot mount the root directory of the AccessPoint. If readOnly is omitted, the default value is false.
 //
-// Environment variable names must be non-empty and unique in the list. Values must be strings, and empty strings are allowed. When configuring healthCheck, you must specify port. Omitting the health check means no health check is configured. When configuring logging.sls, specify both non-empty project and logstore.
+// Environment variable names must be non-empty and unique in the list. Values are strings and can be empty strings. When configuring healthCheck, you must specify port. Omitting the health check means no health check is configured. When configuring logging.sls, specify both non-empty project and logstore.
 //
 // ### Query results and retries
 //
-// A successful response indicates that the request is accepted. Save the agentId and call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent). Check latestVersionStatus, latestExecutionError, status, and sandboxPhaseCounts to confirm the configuration processing and instance status.
+// A successful response indicates that the request has been accepted. Save the agentId and call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent). Check latestVersionStatus, latestExecutionError, status, and sandboxPhaseCounts to confirm the configuration processing and instance status.
 //
-// The clientToken query parameter is required for custom image submissions, and optional for ACR image and code package submissions. The token must be 1 to 128 characters in length and can contain letters, digits, periods, underscores, colons, and hyphens. Reuse the original token to retry the same submission. If the parameters are the same, the existing acceptance result is returned. Use a new token for different submission content.
+// You must provide the clientToken query parameter when submitting a custom image. It is optional for ACR image and code package submissions. The token length is 1 to 128 characters. Letters, digits, periods, underscores, colons, and hyphens are allowed. Reuse the original token to retry the same submission. The same parameters return the existing acceptance result. Use a new token for different submission content.
 //
 // @param tmpReq - CreateCustomAgentRequest
 //
@@ -1053,43 +1053,43 @@ func (client *Client) CreateCustomAgentWithOptions(workspaceId *string, tmpReq *
 
 // Summary:
 //
-// Creates a custom code or image agent in a specified workspace, supports code package, ACR image, and custom image deployments, and executes the deployment asynchronously.
+// Creates a custom code or image agent in a specified workspace. Supports code package, ACR image, and custom image deployments, and executes the deployment asynchronously.
 //
 // Description:
 //
 // Deploys a user-provided code package or container image as an agent in a workspace. This corresponds to the "Custom Code / Image" creation method in the console.
 //
-// ### Preparations
+// ### Before you begin
 //
 // Prepare a writable workspace and submit name, roleArn, artifact, and runtime. In runtime, specify both compute and sessionPolicy. roleArn is the RAM role used by the agent to access your cloud resources.
 //
 // ### Select a deployment method
 //
-// | Deployment method | Required configurations |
+// | Deployment method | Required configuration |
 //
 // | --- | --- |
 //
 // | ACR image | artifact.port, and type=acr, instanceId, namespace, repo, and tag in artifact.container. |
 //
-// | Custom image | artifact.port, artifact.container.type=custom, and the complete customImage. The clientToken query parameter is required. |
+// | Custom image | artifact.port, artifact.container.type=custom, and a complete customImage. The clientToken query parameter is required. |
 //
 // | Code package | artifact.port, and sourceUri, languageRuntime, and entrypoint in artifact.code. |
 //
-// artifact.code and artifact.container are mutually exclusive. The service listening port ranges from 1 to 65535. You can specify a startup command for a container image by using artifact.container.entrypoint. If this parameter is omitted, the default startup method of the image is used.
+// artifact.code and artifact.container are mutually exclusive. The service listening port ranges from 1 to 65535. You can specify a startup command for a container image by using artifact.container.entrypoint. If omitted, the default startup method of the image is used.
 //
 // ### Code package
 //
 // - ZIP and TAR.GZ formats are supported. The compressed package size ranges from 1 to 500,000,000 bytes. Dependencies must be included in the package. The platform does not install dependencies or perform online builds.
 //
-// - Invoke [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes) to query the currently active `languageRuntime`.
+// - Invoke [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes) to query the active languageRuntime values.
 //
-// - For local files, first invoke [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl) and upload the file directly by using the upload method, URL, and request headers returned in the response. Then, commit `sourceUri`.
+// - For local files, first invoke [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl). Upload the file directly by using the upload method, URL, and request headers returned in the response, and then commit sourceUri.
 //
-// - `sourceUri` supports `oss://` URLs or HTTPS object URLs of standard OSS public domain names, including signed URLs. Private OSS objects must allow the workspace role to read them. You can first invoke [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl) to complete the authorization.
+// - sourceUri supports oss:// or HTTPS object URLs with standard OSS public domain names, including signed URLs. Private OSS objects must allow the workspace role to read them. You can invoke [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl) to complete the authorization first.
 //
-// - Read permissions, objects, and sizes are checked upon commit, and a fixed copy is saved. If the transfer failed, the agent configuration is not created. Archive integrity and decompression are checked when the instance starts.
+// - Read permissions, object existence, and size are checked upon commit, and a fixed copy is saved. If the transfer failed, the agent configuration is not created. Archive integrity and decompression are checked when the instance starts.
 //
-// - `entrypoint` is the startup command executed in the `/code` folder, such as `python main.py`. The command does not automatically execute shell pipelines or expand environment variables. For complex startup logic, write a script in the package.
+// - entrypoint is the startup command executed in the /code folder, such as python main.py. The command does not automatically execute shell pipelines or expand environment variables. For complex startup logic, write the logic into a script within the package.
 //
 // Sample request body for a code package (the runtime environment is subject to the query result):
 //
@@ -1139,7 +1139,7 @@ func (client *Client) CreateCustomAgentWithOptions(workspaceId *string, tmpReq *
 //
 // ### Custom image
 //
-// Specify the complete image address in customImage.image. Tags or digests are supported. Do not include protocols or user information. Configure the image pull network separately in customImage.pullNetwork:
+// For customImage.image, specify the complete image address. Tags or digests are supported. Do not include the protocol or user information. Configure the image pull network separately in customImage.pullNetwork:
 //
 // | Pull method | Configuration |
 //
@@ -1151,9 +1151,9 @@ func (client *Client) CreateCustomAgentWithOptions(workspaceId *string, tmpReq *
 //
 // If repository authentication is required, specify both customImage.username and customImage.password. For anonymous access, omit both. The password is not returned in the response. The image pull network and the agent runtime network are configured separately.
 //
-// useImageCache=true applies only to ACR images. For custom images and code packages, set this parameter to false or omit it.
+// useImageCache=true applies only to ACR images. For custom images and code packages, use false or omit this field.
 //
-// ### Runtime configurations
+// ### Runtime configuration
 //
 // Omitted fields in runtime.hpa use the following default values:
 //
@@ -1169,25 +1169,25 @@ func (client *Client) CreateCustomAgentWithOptions(workspaceId *string, tmpReq *
 //
 // | maxConcurrentSessionsPerSandbox | 20 | The maximum number of concurrent sessions per instance. Valid values: 1 to 20. |
 //
-// | sessionTtlSeconds | 600 | The maximum idle time of a session, in seconds. Valid values: 60 to 86400. |
+// | sessionTtlSeconds | 600 | The maximum idle time for a session, in seconds. Valid values: 60 to 86400. |
 //
 // If sessionPolicy.type=ISOLATED_HEADER_FIELD, you must provide a valid HTTP request header name in headerName. Do not specify this field for other policies.
 //
-// If network is omitted, the default access policy on the agent side is used. Actual access is still restricted by the workspace network. When submitting access items, specify the corresponding enabled field.
+// If network is omitted, the default access policy on the agent side is used. Actual access is still subject to the workspace network restrictions. When submitting access items, specify the corresponding enabled value.
 //
-// The total number of items in ossMounts and agenticFsMounts cannot exceed 10. The mount target mountPath must be an absolute path in the container, such as /data/train. It cannot conflict with platform reserved directories, be duplicated, or form parent-child directory overrides.
+// The total number of items in ossMounts and agenticFsMounts cannot exceed 10. The mount target mountPath uses an absolute path within the container, such as /data/train. It cannot conflict with platform reserved directories, and cannot be duplicated or form parent-child directory overrides.
 //
-// File mounts are used to allow the agent to access persistent data. When using AgenticFS, you can call [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl) to complete the access point authorization first.
+// File mounting allows the agent to access persistent data. When using AgenticFS, you can call [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl) to authorize the access point first.
 //
-// The path for an OSS mount must be a non-empty directory prefix in the bucket. The server for an AgenticFS mount is the access point domain name, without a protocol, port, or path. The path must be an existing non-empty relative directory in the access point. You cannot mount the root directory of the access point. If readOnly is omitted, the default value is false.
+// The path for an OSS mount must be a non-empty directory prefix within the bucket. The server for an AgenticFS mount is the AccessPoint domain name, without a protocol, port, or path. The path is an existing non-empty relative directory within the AccessPoint. You cannot mount the root directory of the AccessPoint. If readOnly is omitted, the default value is false.
 //
-// Environment variable names must be non-empty and unique in the list. Values must be strings, and empty strings are allowed. When configuring healthCheck, you must specify port. Omitting the health check means no health check is configured. When configuring logging.sls, specify both non-empty project and logstore.
+// Environment variable names must be non-empty and unique in the list. Values are strings and can be empty strings. When configuring healthCheck, you must specify port. Omitting the health check means no health check is configured. When configuring logging.sls, specify both non-empty project and logstore.
 //
 // ### Query results and retries
 //
-// A successful response indicates that the request is accepted. Save the agentId and call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent). Check latestVersionStatus, latestExecutionError, status, and sandboxPhaseCounts to confirm the configuration processing and instance status.
+// A successful response indicates that the request has been accepted. Save the agentId and call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent). Check latestVersionStatus, latestExecutionError, status, and sandboxPhaseCounts to confirm the configuration processing and instance status.
 //
-// The clientToken query parameter is required for custom image submissions, and optional for ACR image and code package submissions. The token must be 1 to 128 characters in length and can contain letters, digits, periods, underscores, colons, and hyphens. Reuse the original token to retry the same submission. If the parameters are the same, the existing acceptance result is returned. Use a new token for different submission content.
+// You must provide the clientToken query parameter when submitting a custom image. It is optional for ACR image and code package submissions. The token length is 1 to 128 characters. Letters, digits, periods, underscores, colons, and hyphens are allowed. Reuse the original token to retry the same submission. The same parameters return the existing acceptance result. Use a new token for different submission content.
 //
 // @param request - CreateCustomAgentRequest
 //
@@ -1206,37 +1206,37 @@ func (client *Client) CreateCustomAgent(workspaceId *string, request *CreateCust
 
 // Summary:
 //
-// Creates an agent that runs in an external environment, saves the configurations for the platform model, instructions, tools, and skills, and asynchronously processes the bootstrap configuration.
+// Creates an agent that runs in an external environment, saves the configurations for the platform model, instructions, tools, and skills, and asynchronously processes the access configuration.
 //
 // Description:
 //
-// Registers an agent hosted in the user\\"s runtime environment, which corresponds to the "Managed Agent" in the console. After registration, you can continue to obtain the bootstrap information and complete the connection.
+// Registers an agent hosted in a user runtime environment, which corresponds to the "Managed Agent" in the console. After registration, you can continue to obtain access information and complete the connection.
 //
 // ### Configure a managed agent
 //
-// Provide name, and select the configuration based on the model source:
+// Provide `name` and select the configuration based on the model source:
 //
-// | modelSource | Model configuration |
+// | `modelSource` | Model configuration |
 //
 // | --- | --- |
 //
-// | PLATFORM | Uses a platform model. Provide model.modelConnectionId and model.modelName. |
+// | `PLATFORM` | Uses a platform model. Provide `model.modelConnectionId` and `model.modelName`. |
 //
-// | RUNTIME | The model is managed by the external runtime environment. Do not submit model. |
+// | `RUNTIME` | The model is managed by an external runtime environment. Do not submit `model`. |
 //
-// If modelSource is omitted but model is provided, it is processed as PLATFORM. If both are omitted, the agent cannot be created.
+// If `modelSource` is omitted but `model` is provided, it is processed as `PLATFORM`. If both are omitted, the agent cannot be created.
 //
-// Configure instructions, MCP tools, and skills through instruction, tools, and skills. You can also reference an agent template through template.aiRegistry. The external process is deployed by the caller. This operation does not create a platform runtime instance.
+// Configure instructions, MCP tools, and skills through `instruction`, `tools`, and `skills`. You can also reference an agent template through `template.aiRegistry`. The external process is deployed by the caller. This operation does not create a platform runtime instance.
 //
-// ### Bootstrap sequence
+// ### Access sequence
 //
-// **Step 1:*	- After creation, save the agentId and call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration processing result.
+// **Step 1:*	- After creation, save the `agentId` and call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration processing result.
 //
-// **Step 2:*	- After the latest configuration takes effect, call [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions) to obtain the available bootstrap networks.
+// **Step 2:*	- After the latest configuration takes effect, call [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions) to obtain the available access networks.
 //
-// **Step 3:*	- Select an available network and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the bootstrap token and CMS configuration. The external process then completes the bootstrap.
+// **Step 3:*	- Select an available network and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the access token and CMS configuration. The external process then completes the access.
 //
-// clientToken is a reserved query parameter and currently does not provide idempotency guarantees.
+// `clientToken` is a reserved query parameter and currently does not provide idempotency guarantees.
 //
 // @param tmpReq - CreateExternalAgentRequest
 //
@@ -1295,37 +1295,37 @@ func (client *Client) CreateExternalAgentWithOptions(workspaceId *string, tmpReq
 
 // Summary:
 //
-// Creates an agent that runs in an external environment, saves the configurations for the platform model, instructions, tools, and skills, and asynchronously processes the bootstrap configuration.
+// Creates an agent that runs in an external environment, saves the configurations for the platform model, instructions, tools, and skills, and asynchronously processes the access configuration.
 //
 // Description:
 //
-// Registers an agent hosted in the user\\"s runtime environment, which corresponds to the "Managed Agent" in the console. After registration, you can continue to obtain the bootstrap information and complete the connection.
+// Registers an agent hosted in a user runtime environment, which corresponds to the "Managed Agent" in the console. After registration, you can continue to obtain access information and complete the connection.
 //
 // ### Configure a managed agent
 //
-// Provide name, and select the configuration based on the model source:
+// Provide `name` and select the configuration based on the model source:
 //
-// | modelSource | Model configuration |
+// | `modelSource` | Model configuration |
 //
 // | --- | --- |
 //
-// | PLATFORM | Uses a platform model. Provide model.modelConnectionId and model.modelName. |
+// | `PLATFORM` | Uses a platform model. Provide `model.modelConnectionId` and `model.modelName`. |
 //
-// | RUNTIME | The model is managed by the external runtime environment. Do not submit model. |
+// | `RUNTIME` | The model is managed by an external runtime environment. Do not submit `model`. |
 //
-// If modelSource is omitted but model is provided, it is processed as PLATFORM. If both are omitted, the agent cannot be created.
+// If `modelSource` is omitted but `model` is provided, it is processed as `PLATFORM`. If both are omitted, the agent cannot be created.
 //
-// Configure instructions, MCP tools, and skills through instruction, tools, and skills. You can also reference an agent template through template.aiRegistry. The external process is deployed by the caller. This operation does not create a platform runtime instance.
+// Configure instructions, MCP tools, and skills through `instruction`, `tools`, and `skills`. You can also reference an agent template through `template.aiRegistry`. The external process is deployed by the caller. This operation does not create a platform runtime instance.
 //
-// ### Bootstrap sequence
+// ### Access sequence
 //
-// **Step 1:*	- After creation, save the agentId and call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration processing result.
+// **Step 1:*	- After creation, save the `agentId` and call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration processing result.
 //
-// **Step 2:*	- After the latest configuration takes effect, call [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions) to obtain the available bootstrap networks.
+// **Step 2:*	- After the latest configuration takes effect, call [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions) to obtain the available access networks.
 //
-// **Step 3:*	- Select an available network and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the bootstrap token and CMS configuration. The external process then completes the bootstrap.
+// **Step 3:*	- Select an available network and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the access token and CMS configuration. The external process then completes the access.
 //
-// clientToken is a reserved query parameter and currently does not provide idempotency guarantees.
+// `clientToken` is a reserved query parameter and currently does not provide idempotency guarantees.
 //
 // @param request - CreateExternalAgentRequest
 //
@@ -1344,21 +1344,21 @@ func (client *Client) CreateExternalAgent(workspaceId *string, request *CreateEx
 
 // Summary:
 //
-// Issues an access token for a specified network to a managed agent with effective configurations and returns the CMS configuration.
+// Issues an access token for a specified network to an active managed agent and returns the CMS configuration.
 //
 // Description:
 //
-// Issues an access token and connection configurations for a registered managed agent whose configurations have taken effect to complete the onboarding in the runtime environment where the agent resides.
+// Issues an access token and connection configurations for a registered and active managed agent to complete the onboarding in the runtime environment where the agent resides.
 //
 // ### Prerequisites and parameters
 //
-// The managed agent must be in the running state, and its latest configurations must have taken effect. Call [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions) first to query available networks.
+// The managed agent must be in the running state and the latest configuration must be in effect. First, query the available networks by calling [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions).
 //
-// The `networkType` parameter is passed as a query parameter. Valid values: `INTRANET` (internal network) and `INTERNET` (Internet). The selected endpoint must be available.
+// networkType is passed as a query parameter. Valid values: INTRANET (internal network) and INTERNET (Internet). The selected endpoint must be available.
 //
 // ### Use the response
 //
-// Pass the `bootstrapToken` to the external runtime process to complete the onboarding. The `tokenFingerprint` is used to identify the token and cannot be used as a substitute for the token. The `cms` field contains the observability reporting configurations for the corresponding network. Configure the endpoint, workspace, and license key as provided in the response.
+// Pass the bootstrapToken to the external runtime process to complete the onboarding. The tokenFingerprint is used to identify the token and cannot be used as a substitute for the token. cms contains the observability reporting configuration for the corresponding network. Configure it based on the endpoint, workspace, and license key provided in the response.
 //
 // @param request - CreateExternalAgentBootstrapTokenRequest
 //
@@ -1405,21 +1405,21 @@ func (client *Client) CreateExternalAgentBootstrapTokenWithOptions(workspaceId *
 
 // Summary:
 //
-// Issues an access token for a specified network to a managed agent with effective configurations and returns the CMS configuration.
+// Issues an access token for a specified network to an active managed agent and returns the CMS configuration.
 //
 // Description:
 //
-// Issues an access token and connection configurations for a registered managed agent whose configurations have taken effect to complete the onboarding in the runtime environment where the agent resides.
+// Issues an access token and connection configurations for a registered and active managed agent to complete the onboarding in the runtime environment where the agent resides.
 //
 // ### Prerequisites and parameters
 //
-// The managed agent must be in the running state, and its latest configurations must have taken effect. Call [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions) first to query available networks.
+// The managed agent must be in the running state and the latest configuration must be in effect. First, query the available networks by calling [GetExternalAgentBootstrapOptions](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgentBootstrapOptions).
 //
-// The `networkType` parameter is passed as a query parameter. Valid values: `INTRANET` (internal network) and `INTERNET` (Internet). The selected endpoint must be available.
+// networkType is passed as a query parameter. Valid values: INTRANET (internal network) and INTERNET (Internet). The selected endpoint must be available.
 //
 // ### Use the response
 //
-// Pass the `bootstrapToken` to the external runtime process to complete the onboarding. The `tokenFingerprint` is used to identify the token and cannot be used as a substitute for the token. The `cms` field contains the observability reporting configurations for the corresponding network. Configure the endpoint, workspace, and license key as provided in the response.
+// Pass the bootstrapToken to the external runtime process to complete the onboarding. The tokenFingerprint is used to identify the token and cannot be used as a substitute for the token. cms contains the observability reporting configuration for the corresponding network. Configure it based on the endpoint, workspace, and license key provided in the response.
 //
 // @param request - CreateExternalAgentBootstrapTokenRequest
 //
@@ -1442,33 +1442,33 @@ func (client *Client) CreateExternalAgentBootstrapToken(workspaceId *string, age
 //
 // Description:
 //
-// Integrates an enterprise identity source with a workspace to allow application users to log on with enterprise accounts, or to synchronize users from the enterprise address book to the workspace.
+// Binds an enterprise identity source to a workspace to allow application users to log on with enterprise accounts or synchronize users from the enterprise address book to the workspace.
 //
-// DingTalk, Lark, and custom identity sources (CustomSSO) are supported. A workspace can be bound to only one identity source. To change the integration method, you must unbind the current identity source first.
+// DingTalk, Lark, and custom identity sources (`CustomSSO`) are supported. A workspace can be bound to only one identity source. To change the access method, you must unbind the current identity source first.
 //
-// ### Select an integration method
+// ### Select an access method
 //
-// | Integration method | Scenario | Task completed by this operation |
+// | Access method | Scenario | Task completed by this operation |
 //
 // | --- | --- | --- |
 //
 // | DingTalk or Lark | The enterprise already uses DingTalk or Lark and wants to integrate enterprise accounts and the address book. | Saves the enterprise application credentials and establishes a binding for subsequent logon and address book synchronization configuration. |
 //
-// | Custom identity source (CustomSSO) | The enterprise wants to integrate its own identity authentication and user management system. | Creates a shared user pool to prepare for subsequent SAML single sign-on (SSO) and SCIM user synchronization configuration. |
+// | Custom identity source (`CustomSSO`) | The enterprise wants to integrate its own identity authentication and user management system. | Creates a shared user pool to prepare for subsequent SAML single sign-on (SSO) and SCIM user synchronization configuration. |
 //
-// A user pool stores application users and identity integration configurations. SAML handles enterprise account logon. SCIM provisions users from the enterprise identity system to the user pool. You can configure these two capabilities separately.
+// A user pool is used to store application users and identity access configurations. SAML handles enterprise account logon, and SCIM handles provisioning users from the enterprise identity system to the user pool. You can configure these two capabilities separately.
 //
 // ### Bind DingTalk or Lark
 //
-// Specify the enterprise application credentials in metadata. DingTalk requires appKey, appSecret, and corpId. Lark requires appId and appSecret.
+// Enter the enterprise application credentials in `metadata`: DingTalk requires `appKey`, `appSecret`, and `corpId`, while Lark requires `appId` and `appSecret`.
 //
-// Logon is enabled by default. A user synchronization task is executed by default upon the first binding. If you want to select departments before synchronization, set syncOnBind to false.
+// Logon is enabled by default. A user synchronization task is executed by default upon the first binding. If you want to select departments before synchronization, set `syncOnBind=false`.
 //
-// Subsequent address book change synchronization is controlled by syncEnabled, which is disabled by default. When enabled, you must also provide encryptKey and verificationToken.
+// Subsequent address book change synchronization is controlled by `syncEnabled` and is disabled by default. When enabled, you must also provide `encryptKey` and `verificationToken`.
 //
 // ### Bind a custom identity source
 //
-// When you create a CustomSSO binding, you only need to specify the identity source type:
+// When you create a `CustomSSO` binding, you only need to specify the identity source type:
 //
 // ```http
 //
@@ -1478,15 +1478,15 @@ func (client *Client) CreateExternalAgentBootstrapToken(workspaceId *string, age
 //
 // ```
 //
-// This call only creates a user pool. Logon and user synchronization are disabled by default. Do not specify metadata, loginEnabled, or syncEnabled during creation.
+// This call only creates a user pool. Logon and user synchronization are disabled by default. Do not fill in `metadata` or enable `loginEnabled` and `syncEnabled` during creation.
 //
-// After creation, call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress. If WAITING_CONFIGURATION is returned, the user pool is created and you can proceed with the integration configuration:
+// After creation, query the progress by calling [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider). A return value of `WAITING_CONFIGURATION` indicates that the user pool is created and you can continue to configure access:
 //
-// - **Integrate enterprise account logon**: Call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the SAML integration information of AgentCore and configure it in the enterprise identity system. Then, call [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to save the SAML configuration of the enterprise identity system and enable logon as needed.
+// - **Integrate enterprise account logon**: Call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the SAML access information of AgentCore and configure it in the enterprise identity system. Then, call [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to save the SAML configuration of the enterprise identity system and enable logon as needed.
 //
 // - **Integrate user synchronization**: Call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to obtain the SCIM receiving endpoint and credentials, and configure them in the enterprise identity system. After the external configuration is complete, call [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM) to enable AgentCore user synchronization.
 //
-// The two processes are independent. You can select one or both based on your business requirements.
+// The two processes are independent of each other. You can select one or both based on your business requirements.
 //
 // @param tmpReq - CreateIdentityProviderRequest
 //
@@ -1543,33 +1543,33 @@ func (client *Client) CreateIdentityProviderWithOptions(workspaceId *string, tmp
 //
 // Description:
 //
-// Integrates an enterprise identity source with a workspace to allow application users to log on with enterprise accounts, or to synchronize users from the enterprise address book to the workspace.
+// Binds an enterprise identity source to a workspace to allow application users to log on with enterprise accounts or synchronize users from the enterprise address book to the workspace.
 //
-// DingTalk, Lark, and custom identity sources (CustomSSO) are supported. A workspace can be bound to only one identity source. To change the integration method, you must unbind the current identity source first.
+// DingTalk, Lark, and custom identity sources (`CustomSSO`) are supported. A workspace can be bound to only one identity source. To change the access method, you must unbind the current identity source first.
 //
-// ### Select an integration method
+// ### Select an access method
 //
-// | Integration method | Scenario | Task completed by this operation |
+// | Access method | Scenario | Task completed by this operation |
 //
 // | --- | --- | --- |
 //
 // | DingTalk or Lark | The enterprise already uses DingTalk or Lark and wants to integrate enterprise accounts and the address book. | Saves the enterprise application credentials and establishes a binding for subsequent logon and address book synchronization configuration. |
 //
-// | Custom identity source (CustomSSO) | The enterprise wants to integrate its own identity authentication and user management system. | Creates a shared user pool to prepare for subsequent SAML single sign-on (SSO) and SCIM user synchronization configuration. |
+// | Custom identity source (`CustomSSO`) | The enterprise wants to integrate its own identity authentication and user management system. | Creates a shared user pool to prepare for subsequent SAML single sign-on (SSO) and SCIM user synchronization configuration. |
 //
-// A user pool stores application users and identity integration configurations. SAML handles enterprise account logon. SCIM provisions users from the enterprise identity system to the user pool. You can configure these two capabilities separately.
+// A user pool is used to store application users and identity access configurations. SAML handles enterprise account logon, and SCIM handles provisioning users from the enterprise identity system to the user pool. You can configure these two capabilities separately.
 //
 // ### Bind DingTalk or Lark
 //
-// Specify the enterprise application credentials in metadata. DingTalk requires appKey, appSecret, and corpId. Lark requires appId and appSecret.
+// Enter the enterprise application credentials in `metadata`: DingTalk requires `appKey`, `appSecret`, and `corpId`, while Lark requires `appId` and `appSecret`.
 //
-// Logon is enabled by default. A user synchronization task is executed by default upon the first binding. If you want to select departments before synchronization, set syncOnBind to false.
+// Logon is enabled by default. A user synchronization task is executed by default upon the first binding. If you want to select departments before synchronization, set `syncOnBind=false`.
 //
-// Subsequent address book change synchronization is controlled by syncEnabled, which is disabled by default. When enabled, you must also provide encryptKey and verificationToken.
+// Subsequent address book change synchronization is controlled by `syncEnabled` and is disabled by default. When enabled, you must also provide `encryptKey` and `verificationToken`.
 //
 // ### Bind a custom identity source
 //
-// When you create a CustomSSO binding, you only need to specify the identity source type:
+// When you create a `CustomSSO` binding, you only need to specify the identity source type:
 //
 // ```http
 //
@@ -1579,15 +1579,15 @@ func (client *Client) CreateIdentityProviderWithOptions(workspaceId *string, tmp
 //
 // ```
 //
-// This call only creates a user pool. Logon and user synchronization are disabled by default. Do not specify metadata, loginEnabled, or syncEnabled during creation.
+// This call only creates a user pool. Logon and user synchronization are disabled by default. Do not fill in `metadata` or enable `loginEnabled` and `syncEnabled` during creation.
 //
-// After creation, call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress. If WAITING_CONFIGURATION is returned, the user pool is created and you can proceed with the integration configuration:
+// After creation, query the progress by calling [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider). A return value of `WAITING_CONFIGURATION` indicates that the user pool is created and you can continue to configure access:
 //
-// - **Integrate enterprise account logon**: Call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the SAML integration information of AgentCore and configure it in the enterprise identity system. Then, call [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to save the SAML configuration of the enterprise identity system and enable logon as needed.
+// - **Integrate enterprise account logon**: Call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the SAML access information of AgentCore and configure it in the enterprise identity system. Then, call [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to save the SAML configuration of the enterprise identity system and enable logon as needed.
 //
 // - **Integrate user synchronization**: Call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to obtain the SCIM receiving endpoint and credentials, and configure them in the enterprise identity system. After the external configuration is complete, call [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM) to enable AgentCore user synchronization.
 //
-// The two processes are independent. You can select one or both based on your business requirements.
+// The two processes are independent of each other. You can select one or both based on your business requirements.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -1606,29 +1606,29 @@ func (client *Client) CreateIdentityProvider(workspaceId *string, request *Creat
 
 // Summary:
 //
-// Explicitly issues a SCIM credential and returns the plaintext token only in the current response. A maximum of two credentials can exist in the same pool. This operation does not automatically revoke old credentials or enable AC user synchronization.
+// Issues a SCIM credential explicitly and returns the plaintext token only in the current response. A maximum of two credentials are allowed per pool. This operation does not automatically revoke old credentials or enable AgentCore user synchronization.
 //
 // Description:
 //
 // Creates a SCIM access token to authorize an enterprise identity system to send user provisioning requests to AgentCore. For example, when you plan to replace the token used by the enterprise identity system, you can create a new token first and revoke the old token after the switchover is complete.
 //
-// SCIM is a user provisioning protocol through which an enterprise identity system sends user information by using a receiving endpoint and an access token.
+// SCIM is a user provisioning protocol. The enterprise identity system sends user information by using the receiving endpoint and access token.
 //
-// ### Before you begin
+// ### Prerequisites
 //
-// A `CustomSSO` binding is created, and the SCIM receiving endpoint is enabled by calling [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM).
+// A CustomSSO binding is created, and the SCIM receiving endpoint is enabled by calling [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM).
 //
 // A maximum of two SCIM credentials can be retained in the same user pool. When the limit is reached, query existing credentials by calling [ListIdentityProviderSCIMCredentials](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderSCIMCredentials) and revoke the credentials that are no longer in use.
 //
-// ### What to do next
+// ### How to use the credential after creation
 //
-// **Step 1:*	- Save the plaintext of the `token` in the response. The token is returned only upon creation. You can only query the credential summary later.
+// **Step 1:*	- Save the plaintext of the token in the response. The token is returned only upon creation. You can only query the credential summary later.
 //
 // **Step 2:*	- Configure the receiving endpoint and the new token in the enterprise identity system.
 //
 // **Step 3:*	- After you confirm that the enterprise identity system uses the new token, revoke the old token by calling [DeleteIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteIdentityProviderSCIMCredential) as needed.
 //
-// If the creation response is lost, query the credential list to verify the creation result to avoid duplicate creation and occupying the credential quota. The user synchronization switch is configured separately by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
+// If the creation response is lost, query the credential list to verify the creation result. This avoids duplicate creation and consuming the credential quota. The user synchronization switch is configured separately by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
 //
 // @param request - CreateIdentityProviderSCIMCredentialRequest
 //
@@ -1669,29 +1669,29 @@ func (client *Client) CreateIdentityProviderSCIMCredentialWithOptions(workspaceI
 
 // Summary:
 //
-// Explicitly issues a SCIM credential and returns the plaintext token only in the current response. A maximum of two credentials can exist in the same pool. This operation does not automatically revoke old credentials or enable AC user synchronization.
+// Issues a SCIM credential explicitly and returns the plaintext token only in the current response. A maximum of two credentials are allowed per pool. This operation does not automatically revoke old credentials or enable AgentCore user synchronization.
 //
 // Description:
 //
 // Creates a SCIM access token to authorize an enterprise identity system to send user provisioning requests to AgentCore. For example, when you plan to replace the token used by the enterprise identity system, you can create a new token first and revoke the old token after the switchover is complete.
 //
-// SCIM is a user provisioning protocol through which an enterprise identity system sends user information by using a receiving endpoint and an access token.
+// SCIM is a user provisioning protocol. The enterprise identity system sends user information by using the receiving endpoint and access token.
 //
-// ### Before you begin
+// ### Prerequisites
 //
-// A `CustomSSO` binding is created, and the SCIM receiving endpoint is enabled by calling [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM).
+// A CustomSSO binding is created, and the SCIM receiving endpoint is enabled by calling [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM).
 //
 // A maximum of two SCIM credentials can be retained in the same user pool. When the limit is reached, query existing credentials by calling [ListIdentityProviderSCIMCredentials](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderSCIMCredentials) and revoke the credentials that are no longer in use.
 //
-// ### What to do next
+// ### How to use the credential after creation
 //
-// **Step 1:*	- Save the plaintext of the `token` in the response. The token is returned only upon creation. You can only query the credential summary later.
+// **Step 1:*	- Save the plaintext of the token in the response. The token is returned only upon creation. You can only query the credential summary later.
 //
 // **Step 2:*	- Configure the receiving endpoint and the new token in the enterprise identity system.
 //
 // **Step 3:*	- After you confirm that the enterprise identity system uses the new token, revoke the old token by calling [DeleteIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteIdentityProviderSCIMCredential) as needed.
 //
-// If the creation response is lost, query the credential list to verify the creation result to avoid duplicate creation and occupying the credential quota. The user synchronization switch is configured separately by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
+// If the creation response is lost, query the credential list to verify the creation result. This avoids duplicate creation and consuming the credential quota. The user synchronization switch is configured separately by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
 //
 // @param request - CreateIdentityProviderSCIMCredentialRequest
 //
@@ -1710,35 +1710,35 @@ func (client *Client) CreateIdentityProviderSCIMCredential(workspaceId *string, 
 
 // Summary:
 //
-// Initiates a manual synchronization for an identity provider.
+// Initiates a manual synchronization of an identity provider.
 //
 // Description:
 //
-// Synchronizes users from an enterprise identity provider to a workspace based on the saved department scope. This is suitable for importing users for the first time or manually updating workspace users after adjusting the synchronization scope.
+// Synchronizes users from an enterprise identity provider to a workspace based on the saved department scope. This operation is suitable for importing users for the first time or manually updating workspace users after adjusting the synchronization scope.
 //
 // ### Prerequisites
 //
-// - The identity provider is configured and its status is `READY`. If the previous synchronization failed and the status is `SYNC_FAILED`, you can also re-initiate it.
+// - The identity provider is configured and its status is `READY`. You can also re-initiate the synchronization if the status is `SYNC_FAILED` after a previous synchronization failure.
 //
-// - The user pool is ready, and no identity provider operations are in progress.
+// - The user pool is ready and no identity provider operations are in progress.
 //
 // - Manual synchronization uses the saved `syncScope`. You do not need to enable `syncEnabled`, which is used for subsequent address book change synchronization.
 //
-// ### Steps for synchronizing by department
+// ### Steps to synchronize by department
 //
-// **Step 1:*	- Query departments by calling [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments) and select the scope to synchronize.
+// **Step 1:*	- Call [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments) to query departments and select the scope to synchronize.
 //
-// **Step 2:*	- Save the `syncScope` by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider), and then call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to wait for the configuration processing to complete.
+// **Step 2:*	- Call [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to save the `syncScope`, and then call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to wait for the configuration processing to complete.
 //
 // **Step 3:*	- Call this operation to initiate the synchronization and save the returned `taskId`.
 //
-// **Step 4:*	- Query the progress by calling [GetIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSyncJob). After the synchronization is complete, view the workspace user list.
+// **Step 4:*	- Call [GetIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSyncJob) to query the progress. After the synchronization is complete, view the workspace user list.
 //
 // If you want to select departments before the initial synchronization, set `syncOnBind=false` when creating the identity provider, and then perform the preceding steps.
 //
 // ### Synchronization results and re-execution
 //
-// Synchronization is subject to the maximum number of users allowed in the workspace. Narrowing the synchronization scope does not actively delete users that have already been synchronized.
+// Synchronization is subject to the maximum number of users allowed in the workspace. Narrowing the synchronization scope does not automatically delete users that have already been synchronized.
 //
 // Each successful initiation creates a new synchronization task. If a request times out or the response is lost, check the identity provider status by calling [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) before deciding whether to resubmit the request.
 //
@@ -1781,35 +1781,35 @@ func (client *Client) CreateIdentityProviderSyncJobWithOptions(workspaceId *stri
 
 // Summary:
 //
-// Initiates a manual synchronization for an identity provider.
+// Initiates a manual synchronization of an identity provider.
 //
 // Description:
 //
-// Synchronizes users from an enterprise identity provider to a workspace based on the saved department scope. This is suitable for importing users for the first time or manually updating workspace users after adjusting the synchronization scope.
+// Synchronizes users from an enterprise identity provider to a workspace based on the saved department scope. This operation is suitable for importing users for the first time or manually updating workspace users after adjusting the synchronization scope.
 //
 // ### Prerequisites
 //
-// - The identity provider is configured and its status is `READY`. If the previous synchronization failed and the status is `SYNC_FAILED`, you can also re-initiate it.
+// - The identity provider is configured and its status is `READY`. You can also re-initiate the synchronization if the status is `SYNC_FAILED` after a previous synchronization failure.
 //
-// - The user pool is ready, and no identity provider operations are in progress.
+// - The user pool is ready and no identity provider operations are in progress.
 //
 // - Manual synchronization uses the saved `syncScope`. You do not need to enable `syncEnabled`, which is used for subsequent address book change synchronization.
 //
-// ### Steps for synchronizing by department
+// ### Steps to synchronize by department
 //
-// **Step 1:*	- Query departments by calling [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments) and select the scope to synchronize.
+// **Step 1:*	- Call [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments) to query departments and select the scope to synchronize.
 //
-// **Step 2:*	- Save the `syncScope` by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider), and then call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to wait for the configuration processing to complete.
+// **Step 2:*	- Call [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to save the `syncScope`, and then call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to wait for the configuration processing to complete.
 //
 // **Step 3:*	- Call this operation to initiate the synchronization and save the returned `taskId`.
 //
-// **Step 4:*	- Query the progress by calling [GetIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSyncJob). After the synchronization is complete, view the workspace user list.
+// **Step 4:*	- Call [GetIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSyncJob) to query the progress. After the synchronization is complete, view the workspace user list.
 //
 // If you want to select departments before the initial synchronization, set `syncOnBind=false` when creating the identity provider, and then perform the preceding steps.
 //
 // ### Synchronization results and re-execution
 //
-// Synchronization is subject to the maximum number of users allowed in the workspace. Narrowing the synchronization scope does not actively delete users that have already been synchronized.
+// Synchronization is subject to the maximum number of users allowed in the workspace. Narrowing the synchronization scope does not automatically delete users that have already been synchronized.
 //
 // Each successful initiation creates a new synchronization task. If a request times out or the response is lost, check the identity provider status by calling [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) before deciding whether to resubmit the request.
 //
@@ -1830,7 +1830,7 @@ func (client *Client) CreateIdentityProviderSyncJob(workspaceId *string, identit
 
 // Summary:
 //
-// Creates or reuses a cache for an ACR Enterprise Edition image in a workspace, and returns the cache status upon acceptance.
+// Creates or reuses an image cache for an ACR Enterprise Edition image in a workspace, and returns the cache status upon acceptance.
 //
 // Description:
 //
@@ -1838,19 +1838,19 @@ func (client *Client) CreateIdentityProviderSyncJob(workspaceId *string, identit
 //
 // ### Request parameters
 //
-// `regionId`, `workspaceId`, and `clientToken` are passed as query parameters. The region must match the entry endpoint and the workspace.
+// regionId, workspaceId, and clientToken are passed as query parameters. The region must match the entry endpoint and the workspace.
 //
-// Specify `acrInstanceId`, `namespace`, `repository`, and `tag` in the JSON request body. For `repository`, specify only the repository name without repeating the namespace. The source repository must have pull authorization for the workspace resource role. You can obtain the authorization URL by calling [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl).
+// The JSON request body provides acrInstanceId, namespace, repository, and tag. For repository, specify only the repository name without repeating the namespace. The source repository must have pull authorization for the workspace resource role. You can obtain the authorization URL by calling [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl).
 //
 // ### Transfer network
 //
-// Both `accessInternet` and `accessVpc` must be provided, and at least one must be set to `true`. The server validates this based on the workspace network conditions. These parameters control the source reading and transfer for the current operation and do not modify the runtime network of the agent.
+// Both accessInternet and accessVpc must be provided, and at least one of them must be set to true. The server validates these parameters based on the network conditions of the workspace. These parameters control the source reading and transfer for the current operation and do not modify the runtime network of the agent.
 //
 // ### Acceptance and readiness
 //
-// A successful response returns the current cache snapshot. `PENDING` indicates that the cache is being prepared, `READY` indicates that the cache is ready, and `FAILED` indicates a failure. For failures, check the `error` field. Save the `imageId` and call [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache) to query subsequent results. If the image digest has not been parsed, `digest` may be empty.
+// A successful response returns the current cache snapshot. PENDING indicates that the cache is being prepared, READY indicates that the cache is ready, and FAILED indicates a failure. For failures, check the error field. Save the imageId and call [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache) to query subsequent results. If the image digest has not been parsed, digest may be empty.
 //
-// Currently, `clientToken` is only validated to ensure it is not empty. It does not guarantee deduplication by identifier or recovery of the original acceptance result. If the result is not confirmed, query the existing cache first.
+// Currently, clientToken is only validated to ensure it is not empty. It does not guarantee deduplication based on this identifier or recovery of the original acceptance result. If the result is not confirmed, query existing caches first.
 //
 // @param tmpReq - CreateImageCacheRequest
 //
@@ -1917,7 +1917,7 @@ func (client *Client) CreateImageCacheWithOptions(tmpReq *CreateImageCacheReques
 
 // Summary:
 //
-// Creates or reuses a cache for an ACR Enterprise Edition image in a workspace, and returns the cache status upon acceptance.
+// Creates or reuses an image cache for an ACR Enterprise Edition image in a workspace, and returns the cache status upon acceptance.
 //
 // Description:
 //
@@ -1925,19 +1925,19 @@ func (client *Client) CreateImageCacheWithOptions(tmpReq *CreateImageCacheReques
 //
 // ### Request parameters
 //
-// `regionId`, `workspaceId`, and `clientToken` are passed as query parameters. The region must match the entry endpoint and the workspace.
+// regionId, workspaceId, and clientToken are passed as query parameters. The region must match the entry endpoint and the workspace.
 //
-// Specify `acrInstanceId`, `namespace`, `repository`, and `tag` in the JSON request body. For `repository`, specify only the repository name without repeating the namespace. The source repository must have pull authorization for the workspace resource role. You can obtain the authorization URL by calling [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl).
+// The JSON request body provides acrInstanceId, namespace, repository, and tag. For repository, specify only the repository name without repeating the namespace. The source repository must have pull authorization for the workspace resource role. You can obtain the authorization URL by calling [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl).
 //
 // ### Transfer network
 //
-// Both `accessInternet` and `accessVpc` must be provided, and at least one must be set to `true`. The server validates this based on the workspace network conditions. These parameters control the source reading and transfer for the current operation and do not modify the runtime network of the agent.
+// Both accessInternet and accessVpc must be provided, and at least one of them must be set to true. The server validates these parameters based on the network conditions of the workspace. These parameters control the source reading and transfer for the current operation and do not modify the runtime network of the agent.
 //
 // ### Acceptance and readiness
 //
-// A successful response returns the current cache snapshot. `PENDING` indicates that the cache is being prepared, `READY` indicates that the cache is ready, and `FAILED` indicates a failure. For failures, check the `error` field. Save the `imageId` and call [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache) to query subsequent results. If the image digest has not been parsed, `digest` may be empty.
+// A successful response returns the current cache snapshot. PENDING indicates that the cache is being prepared, READY indicates that the cache is ready, and FAILED indicates a failure. For failures, check the error field. Save the imageId and call [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache) to query subsequent results. If the image digest has not been parsed, digest may be empty.
 //
-// Currently, `clientToken` is only validated to ensure it is not empty. It does not guarantee deduplication by identifier or recovery of the original acceptance result. If the result is not confirmed, query the existing cache first.
+// Currently, clientToken is only validated to ensure it is not empty. It does not guarantee deduplication based on this identifier or recovery of the original acceptance result. If the result is not confirmed, query existing caches first.
 //
 // @param request - CreateImageCacheRequest
 //
@@ -1956,11 +1956,11 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 
 // Summary:
 //
-// Creates a managed Harness agent in a specified workspace, configures the harness, model, skills, and runtime resources, and deploys the agent asynchronously.
+// Creates a managed Harness agent in a specified workspace, configures the harness, model, skills, and runtime resources, and deploys it asynchronously.
 //
 // Description:
 //
-// Creates an agent by using a platform-managed runtime framework. This corresponds to the "Managed Harness" creation method in the console, where you can configure models, instructions, and skills.
+// Creates an agent by using a platform-managed runtime framework. This corresponds to the "Managed Harness" creation method in the console, where you can configure the model, instructions, and skills.
 //
 // ### Required configurations
 //
@@ -1976,17 +1976,17 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 //
 // | `qodercli` | The qodercli connector must be enabled in the workspace. Set `model.modelConnectionId` to the model identifier returned by [ListConnectorModels](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectorModels). You can omit `model.modelName`. |
 //
-// `harness` is an object, such as `{"type":"qwenpaw"}`. For qodercli, set `harness.configuration.connectorServiceAccountKey` to the account key record ID returned by [ListConnectors](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectors), not the original service account key. You can omit this parameter if only one key record exists. You must specify this parameter if multiple records exist. `connectorServiceAccountName` is the account name. Do not specify these two binding fields for qwenpaw.
+// `harness` is an object, such as `{"type":"qwenpaw"}`. For qodercli, set `harness.configuration.connectorServiceAccountKey` to the account key record ID returned by [ListConnectors](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectors), not the original service account key. You can omit this parameter if only one key record exists. You must specify it if multiple records exist. `connectorServiceAccountName` is the account name. Do not specify these two binding fields for qwenpaw.
 //
 // The harness type cannot be changed after creation.
 //
 // ### Instructions, templates, and skills
 //
-// `skills` uses the skill names in the workspace AI registry. If `sourceType=REFERENCE`, versions are referenced by `versionSelector`: use `LABEL` with a label name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. If `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
+// `skills` uses the skill names in the workspace AI registry. If `sourceType=REFERENCE`, the version is referenced by `versionSelector`: use `LABEL` with a label name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. If `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
 //
-// `template.aiRegistry` specifies the agent template name and an optional version. If you omit the version during creation, the published version is resolved and fixed. When a template is used, `instruction`, `promptVariables`, and `subAgents` are derived from the template, and the corresponding fields in the current request do not take effect. Explicit skills and template skills are recorded separately. You can query the target and effective versions by using `configuredSkills` and `skills`.
+// For `template.aiRegistry`, specify the agent template name and an optional version. If the version is omitted during creation, the published version is resolved and fixed. When a template is used, `instruction`, `promptVariables`, and `subAgents` are derived from the template, and the corresponding fields in the current request do not take effect. Explicit skills and template skills are recorded separately. You can query the target and effective versions by using `configuredSkills` and `skills`.
 //
-// If you do not use a template, you can set instructions by using `instruction`, declare variables by using `promptVariables`, and configure up to 20 sub-agents by using `subAgents`. The name and instruction of a sub-agent cannot be empty. Each sub-agent must have a unique name. Tools currently use `tools[].type=MCP`.
+// If no template is used, you can set instructions by using `instruction`, declare variables by using `promptVariables`, and configure up to 20 sub-agents by using `subAgents`. The name and instruction of a sub-agent cannot be empty. Each sub-agent name must be unique. Tools currently use `tools[].type=MCP`.
 //
 // ### Runtime configurations and mounts
 //
@@ -2008,9 +2008,9 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 //
 // If `sessionPolicy.type=ISOLATED_HEADER_FIELD`, you must provide `headerName`. Do not specify this parameter for other policies.
 //
-// If you provide `network`, you must specify both `accessInternet.enabled` and `accessVpc.enabled`. Actual access is restricted by the workspace network configurations.
+// If `network` is provided, you must specify both `accessInternet.enabled` and `accessVpc.enabled`. Actual access is restricted by the workspace network configurations.
 //
-// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. The mount target `mountPath` uses an absolute path in the container, such as `/data/train`. The path cannot conflict with platform-reserved directories, and mount targets cannot be duplicated or form parent-child directory overwrites.
+// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. The mount target `mountPath` uses an absolute path in the container, such as `/data/train`. It cannot conflict with platform-reserved directories, be duplicated, or form parent-child directory overwrites.
 //
 // File mounts are used to allow the agent to access persistent data. When you use AgenticFS, you can first complete the access point authorization by using [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl).
 //
@@ -2020,7 +2020,7 @@ func (client *Client) CreateImageCache(request *CreateImageCacheRequest) (_resul
 //
 // ### Query deployment results
 //
-// A successful response indicates that the request is accepted. Save the `agentId` and use [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` is a reserved query parameter and does not provide idempotency guarantees.
+// A successful response indicates that the request is accepted. Save the `agentId` and use [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` is a reserved query parameter and currently does not provide idempotency guarantees.
 //
 // @param tmpReq - CreateManagedAgentRequest
 //
@@ -2079,11 +2079,11 @@ func (client *Client) CreateManagedAgentWithOptions(workspaceId *string, tmpReq 
 
 // Summary:
 //
-// Creates a managed Harness agent in a specified workspace, configures the harness, model, skills, and runtime resources, and deploys the agent asynchronously.
+// Creates a managed Harness agent in a specified workspace, configures the harness, model, skills, and runtime resources, and deploys it asynchronously.
 //
 // Description:
 //
-// Creates an agent by using a platform-managed runtime framework. This corresponds to the "Managed Harness" creation method in the console, where you can configure models, instructions, and skills.
+// Creates an agent by using a platform-managed runtime framework. This corresponds to the "Managed Harness" creation method in the console, where you can configure the model, instructions, and skills.
 //
 // ### Required configurations
 //
@@ -2099,17 +2099,17 @@ func (client *Client) CreateManagedAgentWithOptions(workspaceId *string, tmpReq 
 //
 // | `qodercli` | The qodercli connector must be enabled in the workspace. Set `model.modelConnectionId` to the model identifier returned by [ListConnectorModels](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectorModels). You can omit `model.modelName`. |
 //
-// `harness` is an object, such as `{"type":"qwenpaw"}`. For qodercli, set `harness.configuration.connectorServiceAccountKey` to the account key record ID returned by [ListConnectors](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectors), not the original service account key. You can omit this parameter if only one key record exists. You must specify this parameter if multiple records exist. `connectorServiceAccountName` is the account name. Do not specify these two binding fields for qwenpaw.
+// `harness` is an object, such as `{"type":"qwenpaw"}`. For qodercli, set `harness.configuration.connectorServiceAccountKey` to the account key record ID returned by [ListConnectors](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectors), not the original service account key. You can omit this parameter if only one key record exists. You must specify it if multiple records exist. `connectorServiceAccountName` is the account name. Do not specify these two binding fields for qwenpaw.
 //
 // The harness type cannot be changed after creation.
 //
 // ### Instructions, templates, and skills
 //
-// `skills` uses the skill names in the workspace AI registry. If `sourceType=REFERENCE`, versions are referenced by `versionSelector`: use `LABEL` with a label name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. If `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
+// `skills` uses the skill names in the workspace AI registry. If `sourceType=REFERENCE`, the version is referenced by `versionSelector`: use `LABEL` with a label name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. If `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
 //
-// `template.aiRegistry` specifies the agent template name and an optional version. If you omit the version during creation, the published version is resolved and fixed. When a template is used, `instruction`, `promptVariables`, and `subAgents` are derived from the template, and the corresponding fields in the current request do not take effect. Explicit skills and template skills are recorded separately. You can query the target and effective versions by using `configuredSkills` and `skills`.
+// For `template.aiRegistry`, specify the agent template name and an optional version. If the version is omitted during creation, the published version is resolved and fixed. When a template is used, `instruction`, `promptVariables`, and `subAgents` are derived from the template, and the corresponding fields in the current request do not take effect. Explicit skills and template skills are recorded separately. You can query the target and effective versions by using `configuredSkills` and `skills`.
 //
-// If you do not use a template, you can set instructions by using `instruction`, declare variables by using `promptVariables`, and configure up to 20 sub-agents by using `subAgents`. The name and instruction of a sub-agent cannot be empty. Each sub-agent must have a unique name. Tools currently use `tools[].type=MCP`.
+// If no template is used, you can set instructions by using `instruction`, declare variables by using `promptVariables`, and configure up to 20 sub-agents by using `subAgents`. The name and instruction of a sub-agent cannot be empty. Each sub-agent name must be unique. Tools currently use `tools[].type=MCP`.
 //
 // ### Runtime configurations and mounts
 //
@@ -2131,9 +2131,9 @@ func (client *Client) CreateManagedAgentWithOptions(workspaceId *string, tmpReq 
 //
 // If `sessionPolicy.type=ISOLATED_HEADER_FIELD`, you must provide `headerName`. Do not specify this parameter for other policies.
 //
-// If you provide `network`, you must specify both `accessInternet.enabled` and `accessVpc.enabled`. Actual access is restricted by the workspace network configurations.
+// If `network` is provided, you must specify both `accessInternet.enabled` and `accessVpc.enabled`. Actual access is restricted by the workspace network configurations.
 //
-// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. The mount target `mountPath` uses an absolute path in the container, such as `/data/train`. The path cannot conflict with platform-reserved directories, and mount targets cannot be duplicated or form parent-child directory overwrites.
+// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. The mount target `mountPath` uses an absolute path in the container, such as `/data/train`. It cannot conflict with platform-reserved directories, be duplicated, or form parent-child directory overwrites.
 //
 // File mounts are used to allow the agent to access persistent data. When you use AgenticFS, you can first complete the access point authorization by using [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl).
 //
@@ -2143,7 +2143,7 @@ func (client *Client) CreateManagedAgentWithOptions(workspaceId *string, tmpReq 
 //
 // ### Query deployment results
 //
-// A successful response indicates that the request is accepted. Save the `agentId` and use [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` is a reserved query parameter and does not provide idempotency guarantees.
+// A successful response indicates that the request is accepted. Save the `agentId` and use [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` is a reserved query parameter and currently does not provide idempotency guarantees.
 //
 // @param request - CreateManagedAgentRequest
 //
@@ -2162,17 +2162,17 @@ func (client *Client) CreateManagedAgent(workspaceId *string, request *CreateMan
 
 // Summary:
 //
-// Creates an MCP service in a specified workspace. The creation process is asynchronous. You can check whether the service is ready by using the returned status or a query operation.
+// Creates an MCP service in a specified workspace. The creation process is asynchronous. You can check the returned status or call a query operation to verify whether the service is ready.
 //
 // Description:
 //
 // Creates an MCP service in a workspace for agents to use the tools provided by the service.
 //
-// The creation process is executed asynchronously. After you submit the request, call the [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) operation to check whether the service is ready.
+// The creation process is asynchronous. After submission, call [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) to check whether the service is ready.
 //
-// To deploy the service by using a local code package, first call the [GetMcpCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcpCodePackageUploadUrl) operation to obtain the upload URL and upload the file. Then, fill in the returned code package token in the deployment configuration.
+// To deploy using a local code package, first call [GetMcpCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcpCodePackageUploadUrl) to obtain the upload URL and upload the file. Then, fill the returned code package token into the deployment configuration.
 //
-// The `clientToken` parameter does not provide idempotency guarantees. If the request result is not confirmed, query existing services before you decide whether to recreate the service.
+// The `clientToken` parameter does not currently provide idempotency guarantees. If the request result is not confirmed, query existing services before deciding whether to recreate.
 //
 // @param tmpReq - CreateMcpRequest
 //
@@ -2231,17 +2231,17 @@ func (client *Client) CreateMcpWithOptions(workspaceId *string, tmpReq *CreateMc
 
 // Summary:
 //
-// Creates an MCP service in a specified workspace. The creation process is asynchronous. You can check whether the service is ready by using the returned status or a query operation.
+// Creates an MCP service in a specified workspace. The creation process is asynchronous. You can check the returned status or call a query operation to verify whether the service is ready.
 //
 // Description:
 //
 // Creates an MCP service in a workspace for agents to use the tools provided by the service.
 //
-// The creation process is executed asynchronously. After you submit the request, call the [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) operation to check whether the service is ready.
+// The creation process is asynchronous. After submission, call [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) to check whether the service is ready.
 //
-// To deploy the service by using a local code package, first call the [GetMcpCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcpCodePackageUploadUrl) operation to obtain the upload URL and upload the file. Then, fill in the returned code package token in the deployment configuration.
+// To deploy using a local code package, first call [GetMcpCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcpCodePackageUploadUrl) to obtain the upload URL and upload the file. Then, fill the returned code package token into the deployment configuration.
 //
-// The `clientToken` parameter does not provide idempotency guarantees. If the request result is not confirmed, query existing services before you decide whether to recreate the service.
+// The `clientToken` parameter does not currently provide idempotency guarantees. If the request result is not confirmed, query existing services before deciding whether to recreate.
 //
 // @param request - CreateMcpRequest
 //
@@ -2264,9 +2264,9 @@ func (client *Client) CreateMcp(workspaceId *string, request *CreateMcpRequest) 
 //
 // Description:
 //
-// Creates a long-term memory store (MemoryStore) in a workspace to organize the long-term memories of an agent and their source sessions.
+// Creates a long-term memory store (MemoryStore) in a workspace to organize the long-term memory of an agent and its source sessions.
 //
-// After creation, you can write messages or text by using [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories) and retrieve memories by semantics by using [SearchMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/SearchMemories).
+// After the memory store is created, you can use [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories) to write messages or text, and use [SearchMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/SearchMemories) to retrieve memories by semantics.
 //
 // @param tmpReq - CreateMemoryStoreRequest
 //
@@ -2329,9 +2329,9 @@ func (client *Client) CreateMemoryStoreWithOptions(workspaceId *string, tmpReq *
 //
 // Description:
 //
-// Creates a long-term memory store (MemoryStore) in a workspace to organize the long-term memories of an agent and their source sessions.
+// Creates a long-term memory store (MemoryStore) in a workspace to organize the long-term memory of an agent and its source sessions.
 //
-// After creation, you can write messages or text by using [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories) and retrieve memories by semantics by using [SearchMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/SearchMemories).
+// After the memory store is created, you can use [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories) to write messages or text, and use [SearchMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/SearchMemories) to retrieve memories by semantics.
 //
 // @param request - CreateMemoryStoreRequest
 //
@@ -2354,7 +2354,7 @@ func (client *Client) CreateMemoryStore(workspaceId *string, request *CreateMemo
 //
 // Description:
 //
-// Creates a model configuration under a model connection in a workspace for model creation, allowing an agent to select and invoke the model.
+// Creates a model configuration under a model connection in a workspace for model creation, allowing agents to select and invoke the model.
 //
 // @param tmpReq - CreateModelRequest
 //
@@ -2417,7 +2417,7 @@ func (client *Client) CreateModelWithOptions(workspaceId *string, tmpReq *Create
 //
 // Description:
 //
-// Creates a model configuration under a model connection in a workspace for model creation, allowing an agent to select and invoke the model.
+// Creates a model configuration under a model connection in a workspace for model creation, allowing agents to select and invoke the model.
 //
 // @param request - CreateModelRequest
 //
@@ -2436,11 +2436,11 @@ func (client *Client) CreateModel(workspaceId *string, request *CreateModelReque
 
 // Summary:
 //
-// Creates a model connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials for model creation.
+// Initiates model creation for a connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials.
 //
 // Description:
 //
-// Creates a model connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials for model creation.
+// Initiates model creation for a connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials.
 //
 // @param tmpReq - CreateModelConnectionRequest
 //
@@ -2499,11 +2499,11 @@ func (client *Client) CreateModelConnectionWithOptions(workspaceId *string, tmpR
 
 // Summary:
 //
-// Creates a model connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials for model creation.
+// Initiates model creation for a connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials.
 //
 // Description:
 //
-// Creates a model connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials for model creation.
+// Initiates model creation for a connection in a specified workspace and configures the upstream model service address, invoke protocol, and access credentials.
 //
 // @param request - CreateModelConnectionRequest
 //
@@ -2526,7 +2526,7 @@ func (client *Client) CreateModelConnection(workspaceId *string, request *Create
 //
 // Description:
 //
-// Creates access rules in batches for specified resources in a workspace to define which users or agents can or cannot access the resources.
+// Creates access rules in bulk for specified resources in a workspace to define which users or agents can or cannot access the resources.
 //
 // @param tmpReq - CreatePermissionRulesRequest
 //
@@ -2589,7 +2589,7 @@ func (client *Client) CreatePermissionRulesWithOptions(workspaceId *string, tmpR
 //
 // Description:
 //
-// Creates access rules in batches for specified resources in a workspace to define which users or agents can or cannot access the resources.
+// Creates access rules in bulk for specified resources in a workspace to define which users or agents can or cannot access the resources.
 //
 // @param request - CreatePermissionRulesRequest
 //
@@ -2688,11 +2688,11 @@ func (client *Client) CreateSkillDraft(workspaceId *string, request *CreateSkill
 
 // Summary:
 //
-// Creates a team in a specified workspace and configures user members and agent members at the same time. Exactly one user member must have the ADMIN role, and agent members can only have the LEADER or WORKER role.
+// Creates a team in a specified workspace and configures user and agent members. The user members must include exactly one member with the ADMIN role, and the agent members can only have the LEADER or WORKER role.
 //
 // Description:
 //
-// Creates a team in a specified workspace and configures user members and agent members at the same time.
+// Creates a team in a specified workspace and configures user and agent members.
 //
 // @param tmpReq - CreateTeamRequest
 //
@@ -2751,11 +2751,11 @@ func (client *Client) CreateTeamWithOptions(workspaceId *string, tmpReq *CreateT
 
 // Summary:
 //
-// Creates a team in a specified workspace and configures user members and agent members at the same time. Exactly one user member must have the ADMIN role, and agent members can only have the LEADER or WORKER role.
+// Creates a team in a specified workspace and configures user and agent members. The user members must include exactly one member with the ADMIN role, and the agent members can only have the LEADER or WORKER role.
 //
 // Description:
 //
-// Creates a team in a specified workspace and configures user members and agent members at the same time.
+// Creates a team in a specified workspace and configures user and agent members.
 //
 // @param request - CreateTeamRequest
 //
@@ -2778,7 +2778,7 @@ func (client *Client) CreateTeam(workspaceId *string, request *CreateTeamRequest
 //
 // Description:
 //
-// Creates a user in a workspace for member collaboration and application access, which is used when configuring team members and user logons.
+// Creates a user in a workspace for member collaboration and application access, which can be used to configure team members and user logons.
 //
 // @param tmpReq - CreateUserRequest
 //
@@ -2841,7 +2841,7 @@ func (client *Client) CreateUserWithOptions(workspaceId *string, tmpReq *CreateU
 //
 // Description:
 //
-// Creates a user in a workspace for member collaboration and application access, which is used when configuring team members and user logons.
+// Creates a user in a workspace for member collaboration and application access, which can be used to configure team members and user logons.
 //
 // @param request - CreateUserRequest
 //
@@ -2866,7 +2866,7 @@ func (client *Client) CreateUser(workspaceId *string, request *CreateUserRequest
 //
 // Creates an AgentCore workspace as a resource scope for organizing agents, models, Model Context Protocol (MCP) services, and collaboration configurations.
 //
-// After the workspace is created, you can use the returned workspace ID to call [GetWorkspace](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspace) to query the details, and then manage agents and associated resources in the workspace. For network configuration fields and their dependencies, see the request parameters table.
+// After the workspace is created, you can use the returned workspace ID to call [GetWorkspace](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspace) to query details and manage agents and associated resources in the workspace. For network configuration fields and their dependencies, see the request parameters table.
 //
 // @param tmpReq - CreateWorkspaceRequest
 //
@@ -2931,7 +2931,7 @@ func (client *Client) CreateWorkspaceWithOptions(tmpReq *CreateWorkspaceRequest,
 //
 // Creates an AgentCore workspace as a resource scope for organizing agents, models, Model Context Protocol (MCP) services, and collaboration configurations.
 //
-// After the workspace is created, you can use the returned workspace ID to call [GetWorkspace](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspace) to query the details, and then manage agents and associated resources in the workspace. For network configuration fields and their dependencies, see the request parameters table.
+// After the workspace is created, you can use the returned workspace ID to call [GetWorkspace](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspace) to query details and manage agents and associated resources in the workspace. For network configuration fields and their dependencies, see the request parameters table.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -3034,7 +3034,7 @@ func (client *Client) DebugModel(workspaceId *string, modelId *string, request *
 //
 // Description:
 //
-// Deletes a specified access application and removes the access configuration of the application from the workspace.
+// Deletes a specified access application and removes its access configuration from the workspace.
 //
 // @param request - DeleteAccessApplicationRequest
 //
@@ -3079,7 +3079,7 @@ func (client *Client) DeleteAccessApplicationWithOptions(workspaceId *string, ap
 //
 // Description:
 //
-// Deletes a specified access application and removes the access configuration of the application from the workspace.
+// Deletes a specified access application and removes its access configuration from the workspace.
 //
 // @param request - DeleteAccessApplicationRequest
 //
@@ -3172,13 +3172,13 @@ func (client *Client) DeleteAgentIMChannel(workspaceId *string, agentId *string,
 
 // Summary:
 //
-// Deletes the specified AgentSpec and all its versions and metadata. This operation is irreversible.
+// Deletes the specified AgentSpec and all its versions and metadata. The deletion operation is irreversible.
 //
 // Description:
 //
 // Deletes the specified agent template and all its versions and metadata.
 //
-// This operation is irreversible.
+// The deletion operation is irreversible.
 //
 // @param request - DeleteAgentSpecRequest
 //
@@ -3219,13 +3219,13 @@ func (client *Client) DeleteAgentSpecWithOptions(workspaceId *string, agentSpecN
 
 // Summary:
 //
-// Deletes the specified AgentSpec and all its versions and metadata. This operation is irreversible.
+// Deletes the specified AgentSpec and all its versions and metadata. The deletion operation is irreversible.
 //
 // Description:
 //
 // Deletes the specified agent template and all its versions and metadata.
 //
-// This operation is irreversible.
+// The deletion operation is irreversible.
 //
 // @param request - DeleteAgentSpecRequest
 //
@@ -3312,11 +3312,11 @@ func (client *Client) DeleteAgentSpecVersion(workspaceId *string, agentSpecName 
 
 // Summary:
 //
-// Deletes a saved fixed version of a specified managed or custom agent.
+// Deletes an agent version.
 //
 // Description:
 //
-// Deletes a saved fixed version of a specified managed or custom agent. You cannot delete versions that are still referenced by service endpoints or the system-maintained latest version.
+// Deletes a saved fixed version of a specified managed or custom agent. Versions that are still referenced by service endpoints cannot be deleted, and the system-maintained latest version cannot be deleted.
 //
 // @param request - DeleteAgentVersionRequest
 //
@@ -3363,11 +3363,11 @@ func (client *Client) DeleteAgentVersionWithOptions(workspaceId *string, agentId
 
 // Summary:
 //
-// Deletes a saved fixed version of a specified managed or custom agent.
+// Deletes an agent version.
 //
 // Description:
 //
-// Deletes a saved fixed version of a specified managed or custom agent. You cannot delete versions that are still referenced by service endpoints or the system-maintained latest version.
+// Deletes a saved fixed version of a specified managed or custom agent. Versions that are still referenced by service endpoints cannot be deleted, and the system-maintained latest version cannot be deleted.
 //
 // @param request - DeleteAgentVersionRequest
 //
@@ -3386,13 +3386,13 @@ func (client *Client) DeleteAgentVersion(workspaceId *string, agentId *string, a
 
 // Summary:
 //
-// Deletes a credential in a specified workspace and deletes the ciphertext hosted in the credential service. After deletion, agents bound to the credential can no longer obtain the 
+// Deletes a specified credential in a workspace and the ciphertext hosted in the credential service. After the deletion, agents bound to the credential can no longer obtain the 
 //
 // Description:
 //
-// Deletes an access credential that is no longer used in a workspace.
+// Deletes access credentials that are no longer used in a workspace.
 //
-// If the credential is still bound to an MCP service, dissociate it before deletion.
+// If a credential is still bound to an MCP service, dissociate it before deletion.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -3439,13 +3439,13 @@ func (client *Client) DeleteCredentialWithOptions(workspaceId *string, credentia
 
 // Summary:
 //
-// Deletes a credential in a specified workspace and deletes the ciphertext hosted in the credential service. After deletion, agents bound to the credential can no longer obtain the credential content.
+// Deletes a specified credential in a workspace and the ciphertext hosted in the credential service. After the deletion, agents bound to the credential can no longer obtain the credential content.
 //
 // Description:
 //
-// Deletes an access credential that is no longer used in a workspace.
+// Deletes access credentials that are no longer used in a workspace.
 //
-// If the credential is still bound to an MCP service, dissociate it before deletion.
+// If a credential is still bound to an MCP service, dissociate it before deletion.
 //
 // @param request - DeleteCredentialRequest
 //
@@ -3470,15 +3470,15 @@ func (client *Client) DeleteCredential(workspaceId *string, credentialId *string
 //
 // Deletes a custom code or image agent in a specified workspace and asynchronously cleans up its associated platform resources.
 //
-// ### Before you begin
+// ### Prerequisites
 //
 // The workspace must be writable. If the agent is still associated with a team, dissociate it from the team first.
 //
-// ### Deletion result
+// ### Deletion results
 //
-// A successful response indicates that the deletion request is accepted, and the response summary typically returns `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
+// A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
 //
-// Call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent) to query the deletion progress. After the deletion is complete, a detail query returns a resource not found error. Runtime resources are cleaned up in the background.
+// Call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. Runtime resources are cleaned up in the background.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -3525,15 +3525,15 @@ func (client *Client) DeleteCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // Deletes a custom code or image agent in a specified workspace and asynchronously cleans up its associated platform resources.
 //
-// ### Before you begin
+// ### Prerequisites
 //
 // The workspace must be writable. If the agent is still associated with a team, dissociate it from the team first.
 //
-// ### Deletion result
+// ### Deletion results
 //
-// A successful response indicates that the deletion request is accepted, and the response summary typically returns `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
+// A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
 //
-// Call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent) to query the deletion progress. After the deletion is complete, a detail query returns a resource not found error. Runtime resources are cleaned up in the background.
+// Call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. Runtime resources are cleaned up in the background.
 //
 // @param request - DeleteCustomAgentRequest
 //
@@ -3552,11 +3552,11 @@ func (client *Client) DeleteCustomAgent(workspaceId *string, agentId *string, re
 
 // Summary:
 //
-// Deletes a managed agent in a specified workspace and asynchronously cleans up its associated platform resources.
+// Deletes a managed agent from a specified workspace and asynchronously cleans up its associated platform resources.
 //
 // Description:
 //
-// Deletes a managed agent in a specified workspace and asynchronously cleans up its associated platform resources.
+// Deletes a managed agent from a specified workspace and asynchronously cleans up its associated platform resources.
 //
 // ### Prerequisites
 //
@@ -3566,7 +3566,7 @@ func (client *Client) DeleteCustomAgent(workspaceId *string, agentId *string, re
 //
 // A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
 //
-// You can query the deletion progress by calling [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent). After the deletion is complete, a details query returns a resource not found error. The processes and runtime environment of the managed agent are managed by the caller.
+// Call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. The processes and runtime environments of managed agents are managed by the caller.
 //
 // @param request - DeleteExternalAgentRequest
 //
@@ -3607,11 +3607,11 @@ func (client *Client) DeleteExternalAgentWithOptions(workspaceId *string, agentI
 
 // Summary:
 //
-// Deletes a managed agent in a specified workspace and asynchronously cleans up its associated platform resources.
+// Deletes a managed agent from a specified workspace and asynchronously cleans up its associated platform resources.
 //
 // Description:
 //
-// Deletes a managed agent in a specified workspace and asynchronously cleans up its associated platform resources.
+// Deletes a managed agent from a specified workspace and asynchronously cleans up its associated platform resources.
 //
 // ### Prerequisites
 //
@@ -3621,7 +3621,7 @@ func (client *Client) DeleteExternalAgentWithOptions(workspaceId *string, agentI
 //
 // A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
 //
-// You can query the deletion progress by calling [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent). After the deletion is complete, a details query returns a resource not found error. The processes and runtime environment of the managed agent are managed by the caller.
+// Call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. The processes and runtime environments of managed agents are managed by the caller.
 //
 // @param request - DeleteExternalAgentRequest
 //
@@ -3644,23 +3644,23 @@ func (client *Client) DeleteExternalAgent(workspaceId *string, agentId *string, 
 //
 // Description:
 //
-// Disconnects the association between a workspace and an enterprise identity source. This operation is used to terminate identity federation or clear the current attach configuration before you attach another identity source.
+// Disconnects the association between a workspace and an enterprise identity source. This operation is used to terminate identity federation or clear the current configuration before you attach another identity source.
 //
-// Disconnecting clears the AgentCore users and associated configurations imported from the identity source. For `CustomSSO`, it also clears the shared user pool and SAML and SCIM access resources. Applications created by users in the enterprise identity system must still be managed on the enterprise side.
+// Disconnecting removes the AgentCore users and associated configurations imported from the identity source. For CustomSSO, it also clears the shared user pool and SAML and SCIM access resources. Applications created by users in the enterprise identity system must still be managed on the enterprise side.
 //
-// ### Preparations before disconnecting
+// ### Preparations
 //
-// Remove the reference relationships between the related users and collaboration teams first. If teams still reference these users, the API operation rejects the disconnection request.
+// Remove the references between the relevant users and collaboration teams. If any team still references these users, the API operation rejects the disconnection request.
 //
-// If you only want to temporarily disable a specific capability, you can retain the identity source binding. Use [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to disable logon, or use [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM) to disable SCIM synchronization.
+// If you only need to temporarily disable a specific capability, you can retain the identity source binding. You can disable logon by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) or disable SCIM synchronization by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
 //
 // ### Verify the disconnection result
 //
-// The disconnection is executed in the background. After the request is accepted, `DISCONNECTING` is returned. You can query the progress by calling [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider):
+// The disconnection is executed in the background. After the request is accepted, DISCONNECTING is returned. You can call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress:
 //
-// - If the query returns `IdentityProviderNotFound`, the binding has been removed and the disconnection is complete.
+// - If the query returns IdentityProviderNotFound, the binding has been removed and the disconnection is complete.
 //
-// - If `DISCONNECT_FAILED` is returned, the cleanup failed. Some resources may have already been cleared. You can initiate the disconnection again.
+// - If DISCONNECT_FAILED is returned, the cleanup failed. Some resources may have already been cleared. You can initiate the disconnection again.
 //
 // You can bind a new identity source to the workspace only after the disconnection is complete.
 //
@@ -3713,23 +3713,23 @@ func (client *Client) DeleteIdentityProviderWithOptions(workspaceId *string, ide
 //
 // Description:
 //
-// Disconnects the association between a workspace and an enterprise identity source. This operation is used to terminate identity federation or clear the current attach configuration before you attach another identity source.
+// Disconnects the association between a workspace and an enterprise identity source. This operation is used to terminate identity federation or clear the current configuration before you attach another identity source.
 //
-// Disconnecting clears the AgentCore users and associated configurations imported from the identity source. For `CustomSSO`, it also clears the shared user pool and SAML and SCIM access resources. Applications created by users in the enterprise identity system must still be managed on the enterprise side.
+// Disconnecting removes the AgentCore users and associated configurations imported from the identity source. For CustomSSO, it also clears the shared user pool and SAML and SCIM access resources. Applications created by users in the enterprise identity system must still be managed on the enterprise side.
 //
-// ### Preparations before disconnecting
+// ### Preparations
 //
-// Remove the reference relationships between the related users and collaboration teams first. If teams still reference these users, the API operation rejects the disconnection request.
+// Remove the references between the relevant users and collaboration teams. If any team still references these users, the API operation rejects the disconnection request.
 //
-// If you only want to temporarily disable a specific capability, you can retain the identity source binding. Use [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) to disable logon, or use [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM) to disable SCIM synchronization.
+// If you only need to temporarily disable a specific capability, you can retain the identity source binding. You can disable logon by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) or disable SCIM synchronization by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
 //
 // ### Verify the disconnection result
 //
-// The disconnection is executed in the background. After the request is accepted, `DISCONNECTING` is returned. You can query the progress by calling [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider):
+// The disconnection is executed in the background. After the request is accepted, DISCONNECTING is returned. You can call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress:
 //
-// - If the query returns `IdentityProviderNotFound`, the binding has been removed and the disconnection is complete.
+// - If the query returns IdentityProviderNotFound, the binding has been removed and the disconnection is complete.
 //
-// - If `DISCONNECT_FAILED` is returned, the cleanup failed. Some resources may have already been cleared. You can initiate the disconnection again.
+// - If DISCONNECT_FAILED is returned, the cleanup failed. Some resources may have already been cleared. You can initiate the disconnection again.
 //
 // You can bind a new identity source to the workspace only after the disconnection is complete.
 //
@@ -3750,11 +3750,11 @@ func (client *Client) DeleteIdentityProvider(workspaceId *string, identityProvid
 
 // Summary:
 //
-// Revokes a specified SCIM credential. This operation does not trigger automatic creation of a new token, modify the AC synchronization switch, or disable SAML logon.
+// Revokes a specified SCIM credential. This operation does not trigger automatic creation of a new token, modify the access configuration synchronization switch, or disable SAML logon.
 //
 // Description:
 //
-// Revokes a SCIM access token to deactivate an old token or clean up credentials that are no longer in use or have expired.
+// Revokes a SCIM access token to deactivate an old token or clean up unused or expired credentials.
 //
 // SCIM tokens are used to authorize enterprise identity systems to send user provisioning requests to user pools. After revocation, the enterprise identity system can no longer use the token to access the SCIM endpoint.
 //
@@ -3766,7 +3766,7 @@ func (client *Client) DeleteIdentityProvider(workspaceId *string, identityProvid
 //
 // **Step 3:*	- Call this operation to revoke the target credential, and then refresh the list to confirm the result.
 //
-// This operation only revokes the specified token. Synchronized users, other tokens, logon configurations, and the user synchronization switch are retained. To disable user synchronization, use [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
+// This operation only revokes the specified token. Synchronized users, other tokens, logon configurations, and the user synchronization switch are retained. To disable user synchronization, call [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
 //
 // @param request - DeleteIdentityProviderSCIMCredentialRequest
 //
@@ -3807,11 +3807,11 @@ func (client *Client) DeleteIdentityProviderSCIMCredentialWithOptions(workspaceI
 
 // Summary:
 //
-// Revokes a specified SCIM credential. This operation does not trigger automatic creation of a new token, modify the AC synchronization switch, or disable SAML logon.
+// Revokes a specified SCIM credential. This operation does not trigger automatic creation of a new token, modify the access configuration synchronization switch, or disable SAML logon.
 //
 // Description:
 //
-// Revokes a SCIM access token to deactivate an old token or clean up credentials that are no longer in use or have expired.
+// Revokes a SCIM access token to deactivate an old token or clean up unused or expired credentials.
 //
 // SCIM tokens are used to authorize enterprise identity systems to send user provisioning requests to user pools. After revocation, the enterprise identity system can no longer use the token to access the SCIM endpoint.
 //
@@ -3823,7 +3823,7 @@ func (client *Client) DeleteIdentityProviderSCIMCredentialWithOptions(workspaceI
 //
 // **Step 3:*	- Call this operation to revoke the target credential, and then refresh the list to confirm the result.
 //
-// This operation only revokes the specified token. Synchronized users, other tokens, logon configurations, and the user synchronization switch are retained. To disable user synchronization, use [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
+// This operation only revokes the specified token. Synchronized users, other tokens, logon configurations, and the user synchronization switch are retained. To disable user synchronization, call [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM).
 //
 // @param request - DeleteIdentityProviderSCIMCredentialRequest
 //
@@ -3842,11 +3842,11 @@ func (client *Client) DeleteIdentityProviderSCIMCredential(workspaceId *string, 
 
 // Summary:
 //
-// Deletes the image cache association in a workspace and checks for agent references and instance usage before submission.
+// Deletes the image cache association in a workspace and checks agent references and instance usage before submission.
 //
 // Description:
 //
-// Deletes the image cache association in a workspace and checks for agent references and instance usage before submission.
+// Deletes the image cache association in a workspace and checks agent references and instance usage before submission.
 //
 // ### Deletion conditions
 //
@@ -3856,7 +3856,7 @@ func (client *Client) DeleteIdentityProviderSCIMCredential(workspaceId *string, 
 //
 // The `imageId` in the response corresponds to this request. The current implementation of `deletionPending` returns `false`. To confirm whether the cache is still visible, call [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache) or [ListImageCaches](https://api.aliyun.com/document/AgentCore/2026-08-04/ListImageCaches).
 //
-// This operation deletes the cache association in the specified workspace, but does not delete the source ACR repository or the source image.
+// This operation deletes the cache association in the specified workspace. It does not delete the source ACR repository or the source image.
 //
 // @param request - DeleteImageCacheRequest
 //
@@ -3907,11 +3907,11 @@ func (client *Client) DeleteImageCacheWithOptions(imageId *string, request *Dele
 
 // Summary:
 //
-// Deletes the image cache association in a workspace and checks for agent references and instance usage before submission.
+// Deletes the image cache association in a workspace and checks agent references and instance usage before submission.
 //
 // Description:
 //
-// Deletes the image cache association in a workspace and checks for agent references and instance usage before submission.
+// Deletes the image cache association in a workspace and checks agent references and instance usage before submission.
 //
 // ### Deletion conditions
 //
@@ -3921,7 +3921,7 @@ func (client *Client) DeleteImageCacheWithOptions(imageId *string, request *Dele
 //
 // The `imageId` in the response corresponds to this request. The current implementation of `deletionPending` returns `false`. To confirm whether the cache is still visible, call [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache) or [ListImageCaches](https://api.aliyun.com/document/AgentCore/2026-08-04/ListImageCaches).
 //
-// This operation deletes the cache association in the specified workspace, but does not delete the source ACR repository or the source image.
+// This operation deletes the cache association in the specified workspace. It does not delete the source ACR repository or the source image.
 //
 // @param request - DeleteImageCacheRequest
 //
@@ -3946,15 +3946,15 @@ func (client *Client) DeleteImageCache(imageId *string, request *DeleteImageCach
 //
 // Deletes a managed Harness agent in a specified workspace and asynchronously cleans up its platform-associated resources.
 //
-// ### Prerequisites
+// ### Call conditions
 //
 // The workspace must be writable. If the agent is still associated with a team, dissociate it from the team first.
 //
 // ### Deletion results
 //
-// A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
+// A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, subsequent requests return the current summary.
 //
-// You can call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. Runtime resources are cleaned up in the background.
+// Use [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. Runtime resources are cleaned up in the background.
 //
 // @param request - DeleteManagedAgentRequest
 //
@@ -4001,15 +4001,15 @@ func (client *Client) DeleteManagedAgentWithOptions(workspaceId *string, agentId
 //
 // Deletes a managed Harness agent in a specified workspace and asynchronously cleans up its platform-associated resources.
 //
-// ### Prerequisites
+// ### Call conditions
 //
 // The workspace must be writable. If the agent is still associated with a team, dissociate it from the team first.
 //
 // ### Deletion results
 //
-// A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, a subsequent request returns the current summary.
+// A successful response indicates that the deletion request has been accepted, and the response summary is typically `status=Deleting`. If the agent is already being deleted, subsequent requests return the current summary.
 //
-// You can call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. Runtime resources are cleaned up in the background.
+// Use [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query the deletion progress. After the deletion is complete, a details query returns a resource not found error. Runtime resources are cleaned up in the background.
 //
 // @param request - DeleteManagedAgentRequest
 //
@@ -4028,13 +4028,13 @@ func (client *Client) DeleteManagedAgent(workspaceId *string, agentId *string, r
 
 // Summary:
 //
-// Deletes a specified MCP service. The deletion is an asynchronous process. After the deletion is complete, the MCP service is no longer returned.
+// Deletes a specified MCP service. The deletion is an asynchronous process. After the process is complete, the MCP service is no longer returned.
 //
 // Description:
 //
 // Deletes a specified MCP service.
 //
-// The deletion is an asynchronous process. After the deletion is complete, the MCP service is no longer returned.
+// The deletion is an asynchronous process. After the process is complete, the MCP service is no longer returned.
 //
 // @param request - DeleteMcpRequest
 //
@@ -4075,13 +4075,13 @@ func (client *Client) DeleteMcpWithOptions(mcpServerId *string, workspaceId *str
 
 // Summary:
 //
-// Deletes a specified MCP service. The deletion is an asynchronous process. After the deletion is complete, the MCP service is no longer returned.
+// Deletes a specified MCP service. The deletion is an asynchronous process. After the process is complete, the MCP service is no longer returned.
 //
 // Description:
 //
 // Deletes a specified MCP service.
 //
-// The deletion is an asynchronous process. After the deletion is complete, the MCP service is no longer returned.
+// The deletion is an asynchronous process. After the process is complete, the MCP service is no longer returned.
 //
 // @param request - DeleteMcpRequest
 //
@@ -4168,11 +4168,11 @@ func (client *Client) DeleteMemory(workspaceId *string, memoryStoreName *string,
 
 // Summary:
 //
-// Asynchronously deletes a MemoryStore and all its long-term memories.
+// Asynchronously deletes a MemoryStore and all its long-term memory.
 //
 // Description:
 //
-// Asynchronously deletes a specified long-term memory store (MemoryStore) and all its long-term memories.
+// Asynchronously deletes a specified long-term memory store (MemoryStore) and all long-term memories within it.
 //
 // @param request - DeleteMemoryStoreRequest
 //
@@ -4213,11 +4213,11 @@ func (client *Client) DeleteMemoryStoreWithOptions(workspaceId *string, memorySt
 
 // Summary:
 //
-// Asynchronously deletes a MemoryStore and all its long-term memories.
+// Asynchronously deletes a MemoryStore and all its long-term memory.
 //
 // Description:
 //
-// Asynchronously deletes a specified long-term memory store (MemoryStore) and all its long-term memories.
+// Asynchronously deletes a specified long-term memory store (MemoryStore) and all long-term memories within it.
 //
 // @param request - DeleteMemoryStoreRequest
 //
@@ -4388,7 +4388,7 @@ func (client *Client) DeleteModelConnection(workspaceId *string, connectionId *s
 //
 // Description:
 //
-// Deletes an access rule in a workspace and revokes the configuration of the rule. Repeated deletions still return a success response.
+// Deletes an access rule in a workspace and revokes the configuration of the rule. Repeated deletion requests still return a success response.
 //
 // @param request - DeletePermissionRuleRequest
 //
@@ -4439,7 +4439,7 @@ func (client *Client) DeletePermissionRuleWithOptions(workspaceId *string, permi
 //
 // Description:
 //
-// Deletes an access rule in a workspace and revokes the configuration of the rule. Repeated deletions still return a success response.
+// Deletes an access rule in a workspace and revokes the configuration of the rule. Repeated deletion requests still return a success response.
 //
 // @param request - DeletePermissionRuleRequest
 //
@@ -4458,13 +4458,13 @@ func (client *Client) DeletePermissionRule(workspaceId *string, permissionRuleId
 
 // Summary:
 //
-// Deletes a skill and its related version data from the specified workspace. The deletion operation is irreversible.
+// Deletes a skill and its related version data from the specified workspace. This operation is irreversible.
 //
 // Description:
 //
 // Deletes a skill and its related version data from the specified workspace.
 //
-// The deletion operation is irreversible.
+// This operation is irreversible.
 //
 // @param request - DeleteSkillRequest
 //
@@ -4505,13 +4505,13 @@ func (client *Client) DeleteSkillWithOptions(workspaceId *string, skillName *str
 
 // Summary:
 //
-// Deletes a skill and its related version data from the specified workspace. The deletion operation is irreversible.
+// Deletes a skill and its related version data from the specified workspace. This operation is irreversible.
 //
 // Description:
 //
 // Deletes a skill and its related version data from the specified workspace.
 //
-// The deletion operation is irreversible.
+// This operation is irreversible.
 //
 // @param request - DeleteSkillRequest
 //
@@ -4536,7 +4536,7 @@ func (client *Client) DeleteSkill(workspaceId *string, skillName *string, reques
 //
 // Deletes the draft of a skill that is being edited in normal version mode.
 //
-// In `HEAD` mode, a persistent draft is used, and the delete draft operation is not supported. To modify the content, continue editing the draft. To remove the entire skill, use [DeleteSkill](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteSkill).
+// In `HEAD` mode, a persistent draft is used, and draft deletion is not supported. To modify the content, continue editing the draft. To remove the entire skill, use [DeleteSkill](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteSkill).
 //
 // @param request - DeleteSkillDraftRequest
 //
@@ -4583,7 +4583,7 @@ func (client *Client) DeleteSkillDraftWithOptions(workspaceId *string, skillName
 //
 // Deletes the draft of a skill that is being edited in normal version mode.
 //
-// In `HEAD` mode, a persistent draft is used, and the delete draft operation is not supported. To modify the content, continue editing the draft. To remove the entire skill, use [DeleteSkill](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteSkill).
+// In `HEAD` mode, a persistent draft is used, and draft deletion is not supported. To modify the content, continue editing the draft. To remove the entire skill, use [DeleteSkill](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteSkill).
 //
 // @param request - DeleteSkillDraftRequest
 //
@@ -4602,7 +4602,7 @@ func (client *Client) DeleteSkillDraft(workspaceId *string, skillName *string, r
 
 // Summary:
 //
-// Deletes a team in a specified workspace. Deleting a team does not delete the users and agents within it, but only removes the membership associations.
+// Deletes a team in a specified workspace. Deleting a team does not delete the users and agents within it, but only dissociates the members.
 //
 // Description:
 //
@@ -4653,7 +4653,7 @@ func (client *Client) DeleteTeamWithOptions(workspaceId *string, teamId *string,
 
 // Summary:
 //
-// Deletes a team in a specified workspace. Deleting a team does not delete the users and agents within it, but only removes the membership associations.
+// Deletes a team in a specified workspace. Deleting a team does not delete the users and agents within it, but only dissociates the members.
 //
 // Description:
 //
@@ -4754,7 +4754,9 @@ func (client *Client) DeleteUser(workspaceId *string, agentCoreUserId *string, r
 //
 // Description:
 //
-// Deletes a workspace that is no longer in use and ends the management lifecycle of the workspace. The API operation processes repeated deletion requests for the same workspace in the `Deleting` or `Deleted` state based on idempotence.
+// Deletes a workspace that is no longer in use and ends the management lifecycle of the workspace.
+//
+// If you repeatedly delete the same workspace that is in the `Deleting` or `Deleted` state, the API operation processes the request based on idempotence.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -4799,7 +4801,9 @@ func (client *Client) DeleteWorkspaceWithOptions(workspaceId *string, request *D
 //
 // Description:
 //
-// Deletes a workspace that is no longer in use and ends the management lifecycle of the workspace. The API operation processes repeated deletion requests for the same workspace in the `Deleting` or `Deleted` state based on idempotence.
+// Deletes a workspace that is no longer in use and ends the management lifecycle of the workspace.
+//
+// If you repeatedly delete the same workspace that is in the `Deleting` or `Deleted` state, the API operation processes the request based on idempotence.
 //
 // @param request - DeleteWorkspaceRequest
 //
@@ -4818,7 +4822,7 @@ func (client *Client) DeleteWorkspace(workspaceId *string, request *DeleteWorksp
 
 // Summary:
 //
-// Disables the QoderCLI connector in a specified workspace. The connector can be disabled only when no agent is using it. After being disabled, the connector and its service account key configuration are removed.
+// Disables the QoderCLI connector in a specified workspace. The connector can be disabled only if no agents are using it. After the connector is disabled, the connector and its service account key configuration are removed.
 //
 // Description:
 //
@@ -4863,7 +4867,7 @@ func (client *Client) DisableConnectorWithOptions(workspaceId *string, connector
 
 // Summary:
 //
-// Disables the QoderCLI connector in a specified workspace. The connector can be disabled only when no agent is using it. After being disabled, the connector and its service account key configuration are removed.
+// Disables the QoderCLI connector in a specified workspace. The connector can be disabled only if no agents are using it. After the connector is disabled, the connector and its service account key configuration are removed.
 //
 // Description:
 //
@@ -5032,7 +5036,7 @@ func (client *Client) DownloadSkillVersionViaOss(workspaceId *string, skillName 
 //
 // Description:
 //
-// Enables the QoderCLI connector in a workspace. Before enabling, verify the credentials by using [VerifyConnector](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyConnector).
+// Enables the QoderCLI connector in a workspace. Before enabling the connector, verify the credentials by calling [VerifyConnector](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyConnector).
 //
 // @param tmpReq - EnableConnectorRequest
 //
@@ -5089,7 +5093,7 @@ func (client *Client) EnableConnectorWithOptions(workspaceId *string, connectorN
 //
 // Description:
 //
-// Enables the QoderCLI connector in a workspace. Before enabling, verify the credentials by using [VerifyConnector](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyConnector).
+// Enables the QoderCLI connector in a workspace. Before enabling the connector, verify the credentials by calling [VerifyConnector](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyConnector).
 //
 // @param request - EnableConnectorRequest
 //
@@ -5108,17 +5112,17 @@ func (client *Client) EnableConnector(workspaceId *string, connectorName *string
 
 // Summary:
 //
-// Retrieves a custom image preparation task by using a submitted clientToken and queries the current progress.
+// Retrieves a custom image preparation task by using a submitted client token and queries the current progress.
 //
 // Description:
 //
-// Uses the `clientToken` of a create or update request to retrieve a custom image preparation task, which allows you to continue querying the processing progress after a request response is lost.
+// Uses the `clientToken` from a create or update request to retrieve a custom image preparation task, which allows you to continue querying the processing progress if the request response is lost.
 //
 // ### Search scope
 //
 // Pass the `clientToken` used when submitting [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent) as a query parameter, and use the original workspace.
 //
-// The preparation task can be retrieved only if the submission result includes `imagePreparation`. If no corresponding preparation task exists, a resource not found error is returned.
+// The preparation task can be retrieved only if the acceptance result of that submission includes `imagePreparation`. If no corresponding preparation task exists, a resource not found error is returned.
 //
 // ### Query phases
 //
@@ -5134,13 +5138,13 @@ func (client *Client) EnableConnector(workspaceId *string, connectorName *string
 //
 // | `HEALTH_CHECKING` | Waiting for the target version instance to be ready. |
 //
-// | `SUCCEEDED` | The target version deployment succeeded. |
+// | `SUCCEEDED` | The target version is deployed successfully. |
 //
 // | `FAILED` | The preparation or deployment failed. Check `failedPhase` and `error`. |
 //
 // | `CANCELLED` | The target version has been replaced by a subsequent configuration or canceled. |
 //
-// After the task is found, you can use the `preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) to continuously query the progress.
+// After the task is found, you can use the `preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) for continuous queries.
 //
 // @param request - FindCustomAgentImagePreparationRequest
 //
@@ -5187,17 +5191,17 @@ func (client *Client) FindCustomAgentImagePreparationWithOptions(workspaceId *st
 
 // Summary:
 //
-// Retrieves a custom image preparation task by using a submitted clientToken and queries the current progress.
+// Retrieves a custom image preparation task by using a submitted client token and queries the current progress.
 //
 // Description:
 //
-// Uses the `clientToken` of a create or update request to retrieve a custom image preparation task, which allows you to continue querying the processing progress after a request response is lost.
+// Uses the `clientToken` from a create or update request to retrieve a custom image preparation task, which allows you to continue querying the processing progress if the request response is lost.
 //
 // ### Search scope
 //
 // Pass the `clientToken` used when submitting [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent) as a query parameter, and use the original workspace.
 //
-// The preparation task can be retrieved only if the submission result includes `imagePreparation`. If no corresponding preparation task exists, a resource not found error is returned.
+// The preparation task can be retrieved only if the acceptance result of that submission includes `imagePreparation`. If no corresponding preparation task exists, a resource not found error is returned.
 //
 // ### Query phases
 //
@@ -5213,13 +5217,13 @@ func (client *Client) FindCustomAgentImagePreparationWithOptions(workspaceId *st
 //
 // | `HEALTH_CHECKING` | Waiting for the target version instance to be ready. |
 //
-// | `SUCCEEDED` | The target version deployment succeeded. |
+// | `SUCCEEDED` | The target version is deployed successfully. |
 //
 // | `FAILED` | The preparation or deployment failed. Check `failedPhase` and `error`. |
 //
 // | `CANCELLED` | The target version has been replaced by a subsequent configuration or canceled. |
 //
-// After the task is found, you can use the `preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) to continuously query the progress.
+// After the task is found, you can use the `preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) for continuous queries.
 //
 // @param request - FindCustomAgentImagePreparationRequest
 //
@@ -5238,11 +5242,11 @@ func (client *Client) FindCustomAgentImagePreparation(workspaceId *string, reque
 
 // Summary:
 //
-// Forcibly publishes a specified skill version by bypassing the standard review process.
+// Forcibly publishes the specified skill version by bypassing the standard review process.
 //
 // Description:
 //
-// Forcibly publishes a specified skill version by bypassing the standard review process.
+// Forcibly publishes the specified skill version by bypassing the standard review process.
 //
 // @param tmpReq - ForcePublishSkillVersionRequest
 //
@@ -5295,11 +5299,11 @@ func (client *Client) ForcePublishSkillVersionWithOptions(workspaceId *string, s
 
 // Summary:
 //
-// Forcibly publishes a specified skill version by bypassing the standard review process.
+// Forcibly publishes the specified skill version by bypassing the standard review process.
 //
 // Description:
 //
-// Forcibly publishes a specified skill version by bypassing the standard review process.
+// Forcibly publishes the specified skill version by bypassing the standard review process.
 //
 // @param request - ForcePublishSkillVersionRequest
 //
@@ -5400,13 +5404,13 @@ func (client *Client) GetAccessApplication(workspaceId *string, applicationId *s
 //
 // Locates the fixed code package referenced by the currently saved configuration by using `workspaceId` and `agentId`. This applies to code packages uploaded locally or imported from OSS. Arbitrary bucket names, object keys, or historical version parameters are not accepted.
 //
-// The current configuration must be deployed as a code package and the fixed package must be available. You do not need to wait for the running instance to be ready. An error is returned if the object has been changed, is missing, or is unreadable.
+// The current configuration must be deployed as a code package and the fixed package must be available. You do not need to wait for the running instance to be ready. An error is returned if the object has changed, is missing, or is unreadable.
 //
 // ### Use the response
 //
-// Use `downloadUrl` to download the file. The `fileName`, `fileSize`, `format`, `etag`, and `crc64` fields describe the corresponding fixed package. The unit of `fileSize` is bytes. The `resourceVersionId` field identifies the saved configuration version corresponding to this download.
+// Use `downloadUrl` to download the file. The `fileName`, `fileSize`, `format`, `etag`, and `crc64` fields describe the corresponding fixed package. The `fileSize` is measured in bytes. The `resourceVersionId` identifies the saved configuration version corresponding to this download.
 //
-// The URL is valid for up to 10 minutes and does not exceed the validity period of the underlying credentials, subject to `expiresAt`. Retrieve the URL again after it expires.
+// The URL is valid for up to 10 minutes and does not exceed the validity period of the underlying credentials, subject to `expiresAt`. Retrieve a new URL after it expires.
 //
 // @param request - GetAgentCodePackageDownloadUrlRequest
 //
@@ -5457,13 +5461,13 @@ func (client *Client) GetAgentCodePackageDownloadUrlWithOptions(workspaceId *str
 //
 // Locates the fixed code package referenced by the currently saved configuration by using `workspaceId` and `agentId`. This applies to code packages uploaded locally or imported from OSS. Arbitrary bucket names, object keys, or historical version parameters are not accepted.
 //
-// The current configuration must be deployed as a code package and the fixed package must be available. You do not need to wait for the running instance to be ready. An error is returned if the object has been changed, is missing, or is unreadable.
+// The current configuration must be deployed as a code package and the fixed package must be available. You do not need to wait for the running instance to be ready. An error is returned if the object has changed, is missing, or is unreadable.
 //
 // ### Use the response
 //
-// Use `downloadUrl` to download the file. The `fileName`, `fileSize`, `format`, `etag`, and `crc64` fields describe the corresponding fixed package. The unit of `fileSize` is bytes. The `resourceVersionId` field identifies the saved configuration version corresponding to this download.
+// Use `downloadUrl` to download the file. The `fileName`, `fileSize`, `format`, `etag`, and `crc64` fields describe the corresponding fixed package. The `fileSize` is measured in bytes. The `resourceVersionId` identifies the saved configuration version corresponding to this download.
 //
-// The URL is valid for up to 10 minutes and does not exceed the validity period of the underlying credentials, subject to `expiresAt`. Retrieve the URL again after it expires.
+// The URL is valid for up to 10 minutes and does not exceed the validity period of the underlying credentials, subject to `expiresAt`. Retrieve a new URL after it expires.
 //
 // @param request - GetAgentCodePackageDownloadUrlRequest
 //
@@ -5482,17 +5486,17 @@ func (client *Client) GetAgentCodePackageDownloadUrl(workspaceId *string, agentI
 
 // Summary:
 //
-// Generates a RAM authorization link for the specified code package source bucket for the workspace resource role.
+// Generates a RAM authorization URL for a specified code package source bucket for the workspace resource role.
 //
 // Description:
 //
-// Generates an authorization link for the workspace resource role to read the code package source bucket, which is used to complete authorization before deploying an existing OSS code package.
+// Generates an authorization URL for the workspace resource role to read the code package source bucket, which is used to complete authorization before deploying an existing OSS code package.
 //
 // ### Authorization steps
 //
 // **Step 1:*	- Provide the `ossBucketName` to obtain the `authorizeUrl` for the current workspace resource role.
 //
-// **Step 2:*	- Open the returned link and confirm the authorization.
+// **Step 2:*	- Open the returned URL and confirm the authorization.
 //
 // **Step 3:*	- Call [VerifyAgentCodePackageOssRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyAgentCodePackageOssRamAuthorization) to query the policy binding status. To verify a specific code package object, call [ValidateAgentCodePackageFromOss](https://api.aliyun.com/document/AgentCore/2026-08-04/ValidateAgentCodePackageFromOss).
 //
@@ -5500,7 +5504,7 @@ func (client *Client) GetAgentCodePackageDownloadUrl(workspaceId *string, agentI
 //
 // The role is selected by the server and cannot be overridden by the caller. This authorization reuses the `OSSObjectRestoreCustom` template, which includes permissions such as reading, writing, and deleting objects, and is not a read-only authorization. Existing authorizations for the same role and bucket can be reused.
 //
-// Obtaining the link itself does not complete the authorization, transfer the code package, or modify the default OSS binding of the workspace.
+// Obtaining the URL itself does not complete the authorization, transfer the code package, or modify the default OSS binding of the workspace.
 //
 // @param request - GetAgentCodePackageOssRamAuthorizeUrlRequest
 //
@@ -5547,17 +5551,17 @@ func (client *Client) GetAgentCodePackageOssRamAuthorizeUrlWithOptions(workspace
 
 // Summary:
 //
-// Generates a RAM authorization link for the specified code package source bucket for the workspace resource role.
+// Generates a RAM authorization URL for a specified code package source bucket for the workspace resource role.
 //
 // Description:
 //
-// Generates an authorization link for the workspace resource role to read the code package source bucket, which is used to complete authorization before deploying an existing OSS code package.
+// Generates an authorization URL for the workspace resource role to read the code package source bucket, which is used to complete authorization before deploying an existing OSS code package.
 //
 // ### Authorization steps
 //
 // **Step 1:*	- Provide the `ossBucketName` to obtain the `authorizeUrl` for the current workspace resource role.
 //
-// **Step 2:*	- Open the returned link and confirm the authorization.
+// **Step 2:*	- Open the returned URL and confirm the authorization.
 //
 // **Step 3:*	- Call [VerifyAgentCodePackageOssRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyAgentCodePackageOssRamAuthorization) to query the policy binding status. To verify a specific code package object, call [ValidateAgentCodePackageFromOss](https://api.aliyun.com/document/AgentCore/2026-08-04/ValidateAgentCodePackageFromOss).
 //
@@ -5565,7 +5569,7 @@ func (client *Client) GetAgentCodePackageOssRamAuthorizeUrlWithOptions(workspace
 //
 // The role is selected by the server and cannot be overridden by the caller. This authorization reuses the `OSSObjectRestoreCustom` template, which includes permissions such as reading, writing, and deleting objects, and is not a read-only authorization. Existing authorizations for the same role and bucket can be reused.
 //
-// Obtaining the link itself does not complete the authorization, transfer the code package, or modify the default OSS binding of the workspace.
+// Obtaining the URL itself does not complete the authorization, transfer the code package, or modify the default OSS binding of the workspace.
 //
 // @param request - GetAgentCodePackageOssRamAuthorizeUrlRequest
 //
@@ -5584,33 +5588,33 @@ func (client *Client) GetAgentCodePackageOssRamAuthorizeUrl(workspaceId *string,
 
 // Summary:
 //
-// Generates a time-limited upload URL for a local code package, and returns the upload method, request headers, and the sourceUri for subsequent deployment.
+// Generates a time-limited upload URL for a local code package and returns the upload method, request headers, and the sourceUri for subsequent deployment.
 //
 // Description:
 //
-// Retrieves a time-limited direct upload URL and upload requirements for a local code package. After the upload is complete, use the returned `sourceUri` to submit the agent deployment.
+// Obtains a time-limited direct upload URL and upload requirements for a local code package. After the upload is complete, use the returned sourceUri to submit the agent deployment.
 //
-// ### Request requirements
+// ### Request conditions
 //
 // | Field | Requirement |
 //
 // | --- | --- |
 //
-// | `fileName` | The name of the ZIP or TAR.GZ file without the folder. Maximum length: 255 characters. |
+// | fileName | The name of the ZIP or TAR.GZ file without folders. Maximum length: 255 characters. |
 //
-// | `format` | `zip` or `tar.gz`. Must match the file name extension. |
+// | format | zip or tar.gz. Must match the file name extension. |
 //
-// | `fileSize` | The size of the compressed package in bytes. Valid values: 1 to 500000000. |
+// | fileSize | The size of the compressed package in bytes. Valid values: 1 to 500000000. |
 //
 // ### Upload and deployment
 //
-// **Step 1:*	- Use the `uploadMethod`, `uploadUrl`, and `headers` from the response to upload the file directly. This operation only generates the URL and does not upload the file content.
+// **Step 1:*	- Use the uploadMethod, uploadUrl, and headers from the response to upload the file directly. This operation only generates the URL and does not upload the file content.
 //
-// **Step 2:*	- After the upload is complete, specify the `sourceUri` in the `artifact.code.sourceUri` parameter of the [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent) operation. You must also provide the `languageRuntime`, `entrypoint`, and service port.
+// **Step 2:*	- After the upload is complete, specify the sourceUri in the artifact.code.sourceUri parameter of [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent), and provide the languageRuntime, entrypoint, and service port.
 //
 // **Step 3:*	- During creation or update, the actual object and its size are verified again. The configuration is saved after the object is transferred to a fixed replica.
 //
-// The upload URL is valid for up to 10 minutes and does not exceed the expiration time of the underlying temporary credentials. The exact expiration time is subject to the `expiresAt` value. If the URL expires, obtain a new one and use the original link and request headers from the response.
+// The upload URL is valid for up to 10 minutes and does not exceed the expiration time of the underlying temporary credentials. The exact expiration time is subject to expiresAt. If the URL expires, obtain a new one and use the original link and request headers from the response.
 //
 // @param tmpReq - GetAgentCodePackageUploadUrlRequest
 //
@@ -5663,33 +5667,33 @@ func (client *Client) GetAgentCodePackageUploadUrlWithOptions(workspaceId *strin
 
 // Summary:
 //
-// Generates a time-limited upload URL for a local code package, and returns the upload method, request headers, and the sourceUri for subsequent deployment.
+// Generates a time-limited upload URL for a local code package and returns the upload method, request headers, and the sourceUri for subsequent deployment.
 //
 // Description:
 //
-// Retrieves a time-limited direct upload URL and upload requirements for a local code package. After the upload is complete, use the returned `sourceUri` to submit the agent deployment.
+// Obtains a time-limited direct upload URL and upload requirements for a local code package. After the upload is complete, use the returned sourceUri to submit the agent deployment.
 //
-// ### Request requirements
+// ### Request conditions
 //
 // | Field | Requirement |
 //
 // | --- | --- |
 //
-// | `fileName` | The name of the ZIP or TAR.GZ file without the folder. Maximum length: 255 characters. |
+// | fileName | The name of the ZIP or TAR.GZ file without folders. Maximum length: 255 characters. |
 //
-// | `format` | `zip` or `tar.gz`. Must match the file name extension. |
+// | format | zip or tar.gz. Must match the file name extension. |
 //
-// | `fileSize` | The size of the compressed package in bytes. Valid values: 1 to 500000000. |
+// | fileSize | The size of the compressed package in bytes. Valid values: 1 to 500000000. |
 //
 // ### Upload and deployment
 //
-// **Step 1:*	- Use the `uploadMethod`, `uploadUrl`, and `headers` from the response to upload the file directly. This operation only generates the URL and does not upload the file content.
+// **Step 1:*	- Use the uploadMethod, uploadUrl, and headers from the response to upload the file directly. This operation only generates the URL and does not upload the file content.
 //
-// **Step 2:*	- After the upload is complete, specify the `sourceUri` in the `artifact.code.sourceUri` parameter of the [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent) operation. You must also provide the `languageRuntime`, `entrypoint`, and service port.
+// **Step 2:*	- After the upload is complete, specify the sourceUri in the artifact.code.sourceUri parameter of [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent), and provide the languageRuntime, entrypoint, and service port.
 //
 // **Step 3:*	- During creation or update, the actual object and its size are verified again. The configuration is saved after the object is transferred to a fixed replica.
 //
-// The upload URL is valid for up to 10 minutes and does not exceed the expiration time of the underlying temporary credentials. The exact expiration time is subject to the `expiresAt` value. If the URL expires, obtain a new one and use the original link and request headers from the response.
+// The upload URL is valid for up to 10 minutes and does not exceed the expiration time of the underlying temporary credentials. The exact expiration time is subject to expiresAt. If the URL expires, obtain a new one and use the original link and request headers from the response.
 //
 // @param request - GetAgentCodePackageUploadUrlRequest
 //
@@ -5848,9 +5852,9 @@ func (client *Client) GetAgentSpec(workspaceId *string, agentSpecName *string, r
 //
 // Description:
 //
-// Retrieves the upload URL for an agent template (AgentSpec) ZIP package to import templates from local files.
+// Retrieves the upload URL for an agent template (AgentSpec) ZIP package to import the template from a local file.
 //
-// Files are transferred through Object Storage Service (OSS). First, upload the file by using the returned URL, and then call the [UploadAgentSpecViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadAgentSpecViaOss) API operation to complete the import.
+// Files are transferred through Object Storage Service (OSS). First, upload the file by using the returned URL, and then call [UploadAgentSpecViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadAgentSpecViaOss) to complete the import.
 //
 // @param request - GetAgentSpecImportFileUrlRequest
 //
@@ -5901,9 +5905,9 @@ func (client *Client) GetAgentSpecImportFileUrlWithOptions(workspaceId *string, 
 //
 // Description:
 //
-// Retrieves the upload URL for an agent template (AgentSpec) ZIP package to import templates from local files.
+// Retrieves the upload URL for an agent template (AgentSpec) ZIP package to import the template from a local file.
 //
-// Files are transferred through Object Storage Service (OSS). First, upload the file by using the returned URL, and then call the [UploadAgentSpecViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadAgentSpecViaOss) API operation to complete the import.
+// Files are transferred through Object Storage Service (OSS). First, upload the file by using the returned URL, and then call [UploadAgentSpecViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadAgentSpecViaOss) to complete the import.
 //
 // @param request - GetAgentSpecImportFileUrlRequest
 //
@@ -5990,11 +5994,11 @@ func (client *Client) GetAgentSpecLatest(workspaceId *string, agentSpecName *str
 
 // Summary:
 //
-// Queries the full content of a specified AgentSpec version, including the manifest content, resource files, and metadata.
+// Queries the complete content of a specified AgentSpec version, including the manifest content, resource files, and metadata.
 //
 // Description:
 //
-// Queries the full content of a specified agent template version, including the manifest content, resource files, and metadata.
+// Queries the complete content of a specified agent template version, including the manifest content, resource files, and metadata.
 //
 // @param request - GetAgentSpecVersionRequest
 //
@@ -6035,11 +6039,11 @@ func (client *Client) GetAgentSpecVersionWithOptions(workspaceId *string, agentS
 
 // Summary:
 //
-// Queries the full content of a specified AgentSpec version, including the manifest content, resource files, and metadata.
+// Queries the complete content of a specified AgentSpec version, including the manifest content, resource files, and metadata.
 //
 // Description:
 //
-// Queries the full content of a specified agent template version, including the manifest content, resource files, and metadata.
+// Queries the complete content of a specified agent template version, including the manifest content, resource files, and metadata.
 //
 // @param request - GetAgentSpecVersionRequest
 //
@@ -6126,19 +6130,19 @@ func (client *Client) GetAgentVersion(workspaceId *string, agentId *string, agen
 
 // Summary:
 //
-// Queries the details of a specified credential and returns the list of agents bound to the credential. The credential content is returned in a masked format.
+// Queries the details of a specified credential and returns a list of agents bound to the credential. The credential content is returned in a masked format.
 //
 // Description:
 //
-// Queries the details of a specified credential and returns the list of agents bound to the credential.
+// Queries the details of a specified credential and returns a list of agents bound to the credential.
 //
 // ### Response content
 //
-// Queries the credential type, description, application scope, and binding information. Supports two types: `apiKey` and `mcpHeader`.
+// Queries the credential type, description, application scope, and binding information. The `apiKey` and `mcpHeader` types are supported.
 //
 // - `apiKey`: The key value is returned in a masked format.
 //
-// - `mcpHeader`: Returns the configured header name without the header value. The `resourceType` of the applicable resource is `mcpServer`.
+// - `mcpHeader`: The configured header name is returned, but the header value is not returned. The `resourceType` of the applicable resource is `mcpServer`.
 //
 // To modify the configuration, call [UpdateCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCredential).
 //
@@ -6181,19 +6185,19 @@ func (client *Client) GetCredentialWithOptions(workspaceId *string, credentialId
 
 // Summary:
 //
-// Queries the details of a specified credential and returns the list of agents bound to the credential. The credential content is returned in a masked format.
+// Queries the details of a specified credential and returns a list of agents bound to the credential. The credential content is returned in a masked format.
 //
 // Description:
 //
-// Queries the details of a specified credential and returns the list of agents bound to the credential.
+// Queries the details of a specified credential and returns a list of agents bound to the credential.
 //
 // ### Response content
 //
-// Queries the credential type, description, application scope, and binding information. Supports two types: `apiKey` and `mcpHeader`.
+// Queries the credential type, description, application scope, and binding information. The `apiKey` and `mcpHeader` types are supported.
 //
 // - `apiKey`: The key value is returned in a masked format.
 //
-// - `mcpHeader`: Returns the configured header name without the header value. The `resourceType` of the applicable resource is `mcpServer`.
+// - `mcpHeader`: The configured header name is returned, but the header value is not returned. The `resourceType` of the applicable resource is `mcpServer`.
 //
 // To modify the configuration, call [UpdateCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCredential).
 //
@@ -6222,7 +6226,7 @@ func (client *Client) GetCredential(workspaceId *string, credentialId *string, r
 //
 // ### Query configuration processing results
 //
-// After creation or update, you can poll this operation. The returned configuration belongs to the latest submitted version and may not have taken effect yet.
+// After you create or update an agent, you can poll this operation. The returned configuration belongs to the latest submitted version and may not have taken effect.
 //
 // | Field | Description |
 //
@@ -6240,13 +6244,13 @@ func (client *Client) GetCredential(workspaceId *string, credentialId *string, r
 //
 // | `sandboxPhaseCounts` | The snapshot of the number of running instances in each phase. |
 //
-// `pending`, `processing`, and `waiting_retry` indicate that processing is continuing. `succeeded` indicates that the configuration is processed successfully. If the value is `failed`, troubleshoot the issue based on `latestExecutionError`. Instance status and configuration processing status are queried separately.
+// The `pending`, `processing`, and `waiting_retry` values indicate that processing is continuing. The `succeeded` value indicates that the configuration is processed successfully. If the value is `failed`, troubleshoot the issue based on `latestExecutionError`. Instance status and configuration processing status are queried separately.
 //
 // ### Code packages and images
 //
-// In code package mode, `artifact.code.sourceUri` is the saved fixed package address, and `codePackageInfo` provides the package information. To download the current fixed package, call [GetAgentCodePackageDownloadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageDownloadUrl).
+// In code package mode, `artifact.code.sourceUri` is the saved fixed package URL, and `codePackageInfo` provides the package information. To download the current fixed package, call [GetAgentCodePackageDownloadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageDownloadUrl).
 //
-// In image mode, `customImage` is the most recently saved custom source, and `currentImage` is the image source of the effective version. The two may be different. You can use `imagePreparation.preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) to query the preparation and deployment phases of the current custom image. `imageCachePreparation.statusAtAcceptance` only indicates the cache status at the time of acceptance.
+// In image mode, `customImage` is the most recently saved custom source, and `currentImage` is the image source of the effective version. These values may differ. You can use `imagePreparation.preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) to query the preparation and deployment phases of the custom image. The `imageCachePreparation.statusAtAcceptance` parameter only indicates the cache status at the time of acceptance.
 //
 // The response does not return the image repository password. If you query an agent that does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
@@ -6297,7 +6301,7 @@ func (client *Client) GetCustomAgentWithOptions(workspaceId *string, agentId *st
 //
 // ### Query configuration processing results
 //
-// After creation or update, you can poll this operation. The returned configuration belongs to the latest submitted version and may not have taken effect yet.
+// After you create or update an agent, you can poll this operation. The returned configuration belongs to the latest submitted version and may not have taken effect.
 //
 // | Field | Description |
 //
@@ -6315,13 +6319,13 @@ func (client *Client) GetCustomAgentWithOptions(workspaceId *string, agentId *st
 //
 // | `sandboxPhaseCounts` | The snapshot of the number of running instances in each phase. |
 //
-// `pending`, `processing`, and `waiting_retry` indicate that processing is continuing. `succeeded` indicates that the configuration is processed successfully. If the value is `failed`, troubleshoot the issue based on `latestExecutionError`. Instance status and configuration processing status are queried separately.
+// The `pending`, `processing`, and `waiting_retry` values indicate that processing is continuing. The `succeeded` value indicates that the configuration is processed successfully. If the value is `failed`, troubleshoot the issue based on `latestExecutionError`. Instance status and configuration processing status are queried separately.
 //
 // ### Code packages and images
 //
-// In code package mode, `artifact.code.sourceUri` is the saved fixed package address, and `codePackageInfo` provides the package information. To download the current fixed package, call [GetAgentCodePackageDownloadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageDownloadUrl).
+// In code package mode, `artifact.code.sourceUri` is the saved fixed package URL, and `codePackageInfo` provides the package information. To download the current fixed package, call [GetAgentCodePackageDownloadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageDownloadUrl).
 //
-// In image mode, `customImage` is the most recently saved custom source, and `currentImage` is the image source of the effective version. The two may be different. You can use `imagePreparation.preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) to query the preparation and deployment phases of the current custom image. `imageCachePreparation.statusAtAcceptance` only indicates the cache status at the time of acceptance.
+// In image mode, `customImage` is the most recently saved custom source, and `currentImage` is the image source of the effective version. These values may differ. You can use `imagePreparation.preparationId` to call [GetCustomAgentImagePreparation](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgentImagePreparation) to query the preparation and deployment phases of the custom image. The `imageCachePreparation.statusAtAcceptance` parameter only indicates the cache status at the time of acceptance.
 //
 // The response does not return the image repository password. If you query an agent that does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
@@ -6470,11 +6474,11 @@ func (client *Client) GetCustomAgentImagePreparation(workspaceId *string, prepar
 //
 // Description:
 //
-// Queries the platform configuration, version processing status, and external runtime status of a managed agent to verify access and configuration effectiveness.
+// Queries the platform configuration, version processing status, and external runtime status of a managed agent to verify access and configuration application.
 //
 // ### Configuration processing and runtime status
 //
-// `latestSpecVersion` and `latestVersionStatus` indicate the latest submitted configuration and its processing status. `status` represents the platform resource status, and `externalAgentStatus` represents the external runtime status. A successful configuration acceptance does not mean that the external process is connected.
+// `latestSpecVersion` and `latestVersionStatus` indicate the latest submitted configuration and its processing status. `status` indicates the platform resource status, and `externalAgentStatus` indicates the external runtime status. A successfully accepted configuration does not mean that the external process is connected.
 //
 // If `modelSource` is `PLATFORM`, the returned model configuration is used. `RUNTIME` indicates that the model is managed by the external environment. `configuredSkills` indicates explicit skill configurations, and `skills` represents the aggregated skill information.
 //
@@ -6525,11 +6529,11 @@ func (client *Client) GetExternalAgentWithOptions(workspaceId *string, agentId *
 //
 // Description:
 //
-// Queries the platform configuration, version processing status, and external runtime status of a managed agent to verify access and configuration effectiveness.
+// Queries the platform configuration, version processing status, and external runtime status of a managed agent to verify access and configuration application.
 //
 // ### Configuration processing and runtime status
 //
-// `latestSpecVersion` and `latestVersionStatus` indicate the latest submitted configuration and its processing status. `status` represents the platform resource status, and `externalAgentStatus` represents the external runtime status. A successful configuration acceptance does not mean that the external process is connected.
+// `latestSpecVersion` and `latestVersionStatus` indicate the latest submitted configuration and its processing status. `status` indicates the platform resource status, and `externalAgentStatus` indicates the external runtime status. A successfully accepted configuration does not mean that the external process is connected.
 //
 // If `modelSource` is `PLATFORM`, the returned model configuration is used. `RUNTIME` indicates that the model is managed by the external environment. `configuredSkills` indicates explicit skill configurations, and `skills` represents the aggregated skill information.
 //
@@ -6566,7 +6570,7 @@ func (client *Client) GetExternalAgent(workspaceId *string, agentId *string, req
 //
 // ### Select an access network
 //
-// In the response, the `networkType` in `networkOptions` is `INTRANET` or `INTERNET`, and `available` indicates whether the corresponding access endpoint is available. Select a network with `available=true` and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the corresponding access information.
+// In the response, the networkType in networkOptions is INTRANET or INTERNET, and available indicates whether the corresponding access endpoint is available. Select a network with available set to true and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the corresponding access information.
 //
 // @param request - GetExternalAgentBootstrapOptionsRequest
 //
@@ -6619,7 +6623,7 @@ func (client *Client) GetExternalAgentBootstrapOptionsWithOptions(workspaceId *s
 //
 // ### Select an access network
 //
-// In the response, the `networkType` in `networkOptions` is `INTRANET` or `INTERNET`, and `available` indicates whether the corresponding access endpoint is available. Select a network with `available=true` and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the corresponding access information.
+// In the response, the networkType in networkOptions is INTRANET or INTERNET, and available indicates whether the corresponding access endpoint is available. Select a network with available set to true and call [CreateExternalAgentBootstrapToken](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateExternalAgentBootstrapToken) to obtain the corresponding access information.
 //
 // @param request - GetExternalAgentBootstrapOptionsRequest
 //
@@ -6642,7 +6646,7 @@ func (client *Client) GetExternalAgentBootstrapOptions(workspaceId *string, agen
 //
 // Description:
 //
-// Queries the enterprise identity providers bound to a workspace to view the access configuration, logon and user synchronization switches, and configuration processing progress.
+// Queries the enterprise identity providers bound to a workspace to view the access configuration, logon and user synchronization toggles, and configuration processing progress.
 //
 // For a custom identity provider (`CustomSSO`), this API operation also reads the saved SAML logon configuration for viewing or modifying enterprise single sign-on (SSO) settings.
 //
@@ -6652,15 +6656,15 @@ func (client *Client) GetExternalAgentBootstrapOptions(workspaceId *string, agen
 //
 // | --- | --- |
 //
-// | `identityProviderType` | Indicates whether DingTalk, Lark, or a custom identity provider is currently connected. |
+// | `identityProviderType` | Indicates whether DingTalk, Lark, or a custom identity provider is currently integrated. |
 //
 // | `loginEnabled` | Indicates whether enterprise account logon is enabled. |
 //
-// | `saml` | The saved SAML configuration of the enterprise identity system, used for backfilling when editing the configuration. |
+// | `saml` | The saved SAML configuration of the enterprise identity system, used to backfill fields when editing the configuration. |
 //
 // | `configuration` | The actual SAML configuration read from the identity service, used to verify whether the logon configuration has taken effect. |
 //
-// | `status` | The processing progress to attach the identity provider or apply the logon configuration. |
+// | `status` | The processing progress of attaching the identity provider or the logon configuration. |
 //
 // If `CustomSSO` returns `WAITING_CONFIGURATION`, it indicates that the user pool is ready and the SAML logon configuration is pending. In this case, you can call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the access information of AgentCore and continue configuring enterprise single sign-on.
 //
@@ -6668,7 +6672,7 @@ func (client *Client) GetExternalAgentBootstrapOptions(workspaceId *string, agen
 //
 // ### Query user synchronization status
 //
-// SAML logon and SCIM user synchronization are configured separately. SCIM is used to pre-provision users from the enterprise identity system to the user pool. You can call [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM) to query the receiver configuration and synchronization task results.
+// SAML logon and SCIM user synchronization are configured separately. SCIM is used to pre-provision users from the enterprise identity system into the user pool. You can call [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM) to query the receiver configuration and synchronization task results.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -6713,7 +6717,7 @@ func (client *Client) GetIdentityProviderWithOptions(workspaceId *string, identi
 //
 // Description:
 //
-// Queries the enterprise identity providers bound to a workspace to view the access configuration, logon and user synchronization switches, and configuration processing progress.
+// Queries the enterprise identity providers bound to a workspace to view the access configuration, logon and user synchronization toggles, and configuration processing progress.
 //
 // For a custom identity provider (`CustomSSO`), this API operation also reads the saved SAML logon configuration for viewing or modifying enterprise single sign-on (SSO) settings.
 //
@@ -6723,15 +6727,15 @@ func (client *Client) GetIdentityProviderWithOptions(workspaceId *string, identi
 //
 // | --- | --- |
 //
-// | `identityProviderType` | Indicates whether DingTalk, Lark, or a custom identity provider is currently connected. |
+// | `identityProviderType` | Indicates whether DingTalk, Lark, or a custom identity provider is currently integrated. |
 //
 // | `loginEnabled` | Indicates whether enterprise account logon is enabled. |
 //
-// | `saml` | The saved SAML configuration of the enterprise identity system, used for backfilling when editing the configuration. |
+// | `saml` | The saved SAML configuration of the enterprise identity system, used to backfill fields when editing the configuration. |
 //
 // | `configuration` | The actual SAML configuration read from the identity service, used to verify whether the logon configuration has taken effect. |
 //
-// | `status` | The processing progress to attach the identity provider or apply the logon configuration. |
+// | `status` | The processing progress of attaching the identity provider or the logon configuration. |
 //
 // If `CustomSSO` returns `WAITING_CONFIGURATION`, it indicates that the user pool is ready and the SAML logon configuration is pending. In this case, you can call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the access information of AgentCore and continue configuring enterprise single sign-on.
 //
@@ -6739,7 +6743,7 @@ func (client *Client) GetIdentityProviderWithOptions(workspaceId *string, identi
 //
 // ### Query user synchronization status
 //
-// SAML logon and SCIM user synchronization are configured separately. SCIM is used to pre-provision users from the enterprise identity system to the user pool. You can call [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM) to query the receiver configuration and synchronization task results.
+// SAML logon and SCIM user synchronization are configured separately. SCIM is used to pre-provision users from the enterprise identity system into the user pool. You can call [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM) to query the receiver configuration and synchronization task results.
 //
 // @param request - GetIdentityProviderRequest
 //
@@ -6758,7 +6762,7 @@ func (client *Client) GetIdentityProvider(workspaceId *string, identityProviderT
 
 // Summary:
 //
-// Queries the actual SCIM receiving configuration, the expected AgentCore synchronization switch, and the status of the most recent independent SCIM task. SAML configuration is not required beforehand.
+// Queries the actual SCIM receiving configuration, the expected AgentCore synchronization switch, and the status of the most recent independent SCIM task. SAML configuration is not required in advance.
 //
 // Description:
 //
@@ -6772,13 +6776,13 @@ func (client *Client) GetIdentityProvider(workspaceId *string, identityProviderT
 //
 // | --- | --- |
 //
-// | `configuration` | The actual status and receiving URL of the SCIM receiving endpoint. |
+// | `configuration` | The actual status and accept URL of the SCIM accept endpoint. |
 //
 // | `syncEnabled` | The expected switch for AgentCore user synchronization. |
 //
-// | `operationStatus` | The execution result of the most recent operation to enable or disable synchronization. It is an empty string `""` if no historical tasks exist. |
+// | `operationStatus` | The execute result of the most recent operation to enable or disable synchronization. An empty character string `""` is returned if no historical nodes exist. |
 //
-// | `status` | The SCIM access state derived from the receiving endpoint configuration, credentials, and operation results. |
+// | `status` | The SCIM accessed state derived from the accept endpoint configuration, credentials, and operation results. |
 //
 // ### Proceed based on the status
 //
@@ -6794,9 +6798,9 @@ func (client *Client) GetIdentityProvider(workspaceId *string, identityProviderT
 //
 // | `READY` | Synchronization is enabled, the current enabling task is successful, and the receiving end and credentials are still available. | You can view the synchronized workspace users. |
 //
-// | `DISABLED` | Synchronization is disabled. Existing configurations, credentials, and users are retained. | To re-establish access, check and prepare the receiving end first, and then enable synchronization. |
+// | `DISABLED` | Synchronization is disabled. Existing configurations, credentials, and users are retained. | To reconnect, check and prepare the receiving end first, and then enable synchronization. |
 //
-// | `UPDATE_FAILED` | The operation failed, or the configuration and credentials after enabling are no longer available. | Check the operation results and access configuration in combination with `operationStatus`. |
+// | `UPDATE_FAILED` | The operation failed, or the enabled configuration and credentials are no longer available. | Check the operation result and access configuration in combination with `operationStatus`. |
 //
 // This operation queries the SCIM status. The SAML enterprise account logon configuration is queried through [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider). `READY` reflects the result of the current enabling operation. The user assignment and provisioning status in the enterprise identity system must still be verified on the enterprise side.
 //
@@ -6839,7 +6843,7 @@ func (client *Client) GetIdentityProviderSCIMWithOptions(workspaceId *string, re
 
 // Summary:
 //
-// Queries the actual SCIM receiving configuration, the expected AgentCore synchronization switch, and the status of the most recent independent SCIM task. SAML configuration is not required beforehand.
+// Queries the actual SCIM receiving configuration, the expected AgentCore synchronization switch, and the status of the most recent independent SCIM task. SAML configuration is not required in advance.
 //
 // Description:
 //
@@ -6853,13 +6857,13 @@ func (client *Client) GetIdentityProviderSCIMWithOptions(workspaceId *string, re
 //
 // | --- | --- |
 //
-// | `configuration` | The actual status and receiving URL of the SCIM receiving endpoint. |
+// | `configuration` | The actual status and accept URL of the SCIM accept endpoint. |
 //
 // | `syncEnabled` | The expected switch for AgentCore user synchronization. |
 //
-// | `operationStatus` | The execution result of the most recent operation to enable or disable synchronization. It is an empty string `""` if no historical tasks exist. |
+// | `operationStatus` | The execute result of the most recent operation to enable or disable synchronization. An empty character string `""` is returned if no historical nodes exist. |
 //
-// | `status` | The SCIM access state derived from the receiving endpoint configuration, credentials, and operation results. |
+// | `status` | The SCIM accessed state derived from the accept endpoint configuration, credentials, and operation results. |
 //
 // ### Proceed based on the status
 //
@@ -6875,9 +6879,9 @@ func (client *Client) GetIdentityProviderSCIMWithOptions(workspaceId *string, re
 //
 // | `READY` | Synchronization is enabled, the current enabling task is successful, and the receiving end and credentials are still available. | You can view the synchronized workspace users. |
 //
-// | `DISABLED` | Synchronization is disabled. Existing configurations, credentials, and users are retained. | To re-establish access, check and prepare the receiving end first, and then enable synchronization. |
+// | `DISABLED` | Synchronization is disabled. Existing configurations, credentials, and users are retained. | To reconnect, check and prepare the receiving end first, and then enable synchronization. |
 //
-// | `UPDATE_FAILED` | The operation failed, or the configuration and credentials after enabling are no longer available. | Check the operation results and access configuration in combination with `operationStatus`. |
+// | `UPDATE_FAILED` | The operation failed, or the enabled configuration and credentials are no longer available. | Check the operation result and access configuration in combination with `operationStatus`. |
 //
 // This operation queries the SCIM status. The SAML enterprise account logon configuration is queried through [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider). `READY` reflects the result of the current enabling operation. The user assignment and provisioning status in the enterprise identity system must still be verified on the enterprise side.
 //
@@ -6902,7 +6906,7 @@ func (client *Client) GetIdentityProviderSCIM(workspaceId *string, request *GetI
 //
 // Description:
 //
-// Retrieves the SAML service provider (SP) access information of AgentCore to configure single sign-on (SSO) in an enterprise identity provider (IdP).
+// Retrieves the SAML service provider (SP) access information of AgentCore for configuring single sign-on (SSO) in an enterprise identity provider (IdP).
 //
 // An SP is a service provider that receives logon assertions. An IdP is an enterprise identity provider that verifies user identities and issues logon assertions. This operation returns the SP information on the AgentCore side.
 //
@@ -6910,7 +6914,7 @@ func (client *Client) GetIdentityProviderSCIM(workspaceId *string, request *GetI
 //
 // The workspace is bound to CustomSSO, and the shared user pool is initialized. The protocol parameter is required and must be set to SAML.
 //
-// You can call the [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) operation to query the binding information. After the user pool is available, you can obtain the SP information and then complete the SAML configuration.
+// You can call the [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) operation to query the binding information. After the user pool becomes available, you can obtain the SP information and then complete the SAML configuration.
 //
 // ### Request example
 //
@@ -6920,7 +6924,7 @@ func (client *Client) GetIdentityProviderSCIM(workspaceId *string, request *GetI
 //
 // ```
 //
-// ### Response information
+// ### Response elements
 //
 // | Field | Purpose |
 //
@@ -6932,15 +6936,15 @@ func (client *Client) GetIdentityProviderSCIM(workspaceId *string, request *GetI
 //
 // | acsUrl | The URL where AgentCore receives SAML logon assertions. Configure it as the ACS URL in the enterprise IdP. |
 //
-// | metadataXml | The SP metadata XML. Import it to configure the SP in an enterprise IdP that supports metadata import. |
+// | metadataXml | The SP metadata XML. Use it to import the SP configuration in an enterprise IdP that supports metadata import. |
 //
-// ### Configuration flow
+// ### Configuration procedure
 //
-// **Step 1:*	- Call this operation to obtain the SP information, and configure the SP identifier and the URL to accept assertions of AgentCore in the enterprise IdP.
+// **Step 1:*	- Call this operation to obtain the SP information, and configure the SP identifier and assertion receiving URL of AgentCore in the enterprise IdP.
 //
 // **Step 2:*	- Export the metadata XML from the enterprise IdP and save it to AgentCore by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider).
 //
-// **Step 3:*	- After the configuration is complete, enable single sign-on logon by setting loginEnabled as needed.
+// **Step 3:*	- After the configuration is complete, enable single sign-on by using loginEnabled as needed.
 //
 // @param request - GetIdentityProviderServiceProviderRequest
 //
@@ -6991,7 +6995,7 @@ func (client *Client) GetIdentityProviderServiceProviderWithOptions(workspaceId 
 //
 // Description:
 //
-// Retrieves the SAML service provider (SP) access information of AgentCore to configure single sign-on (SSO) in an enterprise identity provider (IdP).
+// Retrieves the SAML service provider (SP) access information of AgentCore for configuring single sign-on (SSO) in an enterprise identity provider (IdP).
 //
 // An SP is a service provider that receives logon assertions. An IdP is an enterprise identity provider that verifies user identities and issues logon assertions. This operation returns the SP information on the AgentCore side.
 //
@@ -6999,7 +7003,7 @@ func (client *Client) GetIdentityProviderServiceProviderWithOptions(workspaceId 
 //
 // The workspace is bound to CustomSSO, and the shared user pool is initialized. The protocol parameter is required and must be set to SAML.
 //
-// You can call the [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) operation to query the binding information. After the user pool is available, you can obtain the SP information and then complete the SAML configuration.
+// You can call the [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) operation to query the binding information. After the user pool becomes available, you can obtain the SP information and then complete the SAML configuration.
 //
 // ### Request example
 //
@@ -7009,7 +7013,7 @@ func (client *Client) GetIdentityProviderServiceProviderWithOptions(workspaceId 
 //
 // ```
 //
-// ### Response information
+// ### Response elements
 //
 // | Field | Purpose |
 //
@@ -7021,15 +7025,15 @@ func (client *Client) GetIdentityProviderServiceProviderWithOptions(workspaceId 
 //
 // | acsUrl | The URL where AgentCore receives SAML logon assertions. Configure it as the ACS URL in the enterprise IdP. |
 //
-// | metadataXml | The SP metadata XML. Import it to configure the SP in an enterprise IdP that supports metadata import. |
+// | metadataXml | The SP metadata XML. Use it to import the SP configuration in an enterprise IdP that supports metadata import. |
 //
-// ### Configuration flow
+// ### Configuration procedure
 //
-// **Step 1:*	- Call this operation to obtain the SP information, and configure the SP identifier and the URL to accept assertions of AgentCore in the enterprise IdP.
+// **Step 1:*	- Call this operation to obtain the SP information, and configure the SP identifier and assertion receiving URL of AgentCore in the enterprise IdP.
 //
 // **Step 2:*	- Export the metadata XML from the enterprise IdP and save it to AgentCore by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider).
 //
-// **Step 3:*	- After the configuration is complete, enable single sign-on logon by setting loginEnabled as needed.
+// **Step 3:*	- After the configuration is complete, enable single sign-on by using loginEnabled as needed.
 //
 // @param request - GetIdentityProviderServiceProviderRequest
 //
@@ -7052,7 +7056,7 @@ func (client *Client) GetIdentityProviderServiceProvider(workspaceId *string, id
 //
 // Description:
 //
-// Queries the progress, number of processed users, and failure causes of a user synchronization task to track whether manual synchronization is complete.
+// Queries the progress, number of processed users, and failure causes of a user synchronization task to track whether a manual synchronization is complete.
 //
 // Use the `taskId` returned by [CreateIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSyncJob) and keep the same workspace and identity provider.
 //
@@ -7062,17 +7066,17 @@ func (client *Client) GetIdentityProviderServiceProvider(workspaceId *string, id
 //
 // | --- | --- |
 //
-// | `PENDING`, `RUNNING` | The node is not yet complete. You can continue to query. |
+// | `PENDING`, `RUNNING` | The node is not yet complete. You can continue to query the status. |
 //
 // | `PAUSED` | The node is paused and has not ended. |
 //
 // | `SUCCESS` | The synchronization is complete. You can view the workspace users. |
 //
-// | `FAILED` | The synchronization failed. Check `failureReason`. |
+// | `FAILED` | The synchronization failed. Check the `failureReason`. |
 //
 // | `CANCELED` | The node is canceled. |
 //
-// `syncedUserCount` is the number of processed users, including updated existing users. It is not the number of newly added users and cannot be directly used as a completion percentage. `null` is returned when the count is not yet available.
+// `syncedUserCount` is the number of processed users, including updated existing users. It is not the number of newly added users and cannot be directly used as a completion percentage. If the count is not yet available, `null` is returned.
 //
 // @param request - GetIdentityProviderSyncJobRequest
 //
@@ -7117,7 +7121,7 @@ func (client *Client) GetIdentityProviderSyncJobWithOptions(workspaceId *string,
 //
 // Description:
 //
-// Queries the progress, number of processed users, and failure causes of a user synchronization task to track whether manual synchronization is complete.
+// Queries the progress, number of processed users, and failure causes of a user synchronization task to track whether a manual synchronization is complete.
 //
 // Use the `taskId` returned by [CreateIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSyncJob) and keep the same workspace and identity provider.
 //
@@ -7127,17 +7131,17 @@ func (client *Client) GetIdentityProviderSyncJobWithOptions(workspaceId *string,
 //
 // | --- | --- |
 //
-// | `PENDING`, `RUNNING` | The node is not yet complete. You can continue to query. |
+// | `PENDING`, `RUNNING` | The node is not yet complete. You can continue to query the status. |
 //
 // | `PAUSED` | The node is paused and has not ended. |
 //
 // | `SUCCESS` | The synchronization is complete. You can view the workspace users. |
 //
-// | `FAILED` | The synchronization failed. Check `failureReason`. |
+// | `FAILED` | The synchronization failed. Check the `failureReason`. |
 //
 // | `CANCELED` | The node is canceled. |
 //
-// `syncedUserCount` is the number of processed users, including updated existing users. It is not the number of newly added users and cannot be directly used as a completion percentage. `null` is returned when the count is not yet available.
+// `syncedUserCount` is the number of processed users, including updated existing users. It is not the number of newly added users and cannot be directly used as a completion percentage. If the count is not yet available, `null` is returned.
 //
 // @param request - GetIdentityProviderSyncJobRequest
 //
@@ -7162,7 +7166,7 @@ func (client *Client) GetIdentityProviderSyncJob(workspaceId *string, identityPr
 //
 // Queries the saved user synchronization scope, checks whether the selected departments are valid, and views the estimated number of departments and users involved. You can use this operation to verify the scope before initiating a manual synchronization.
 //
-// ### View synchronization scope
+// ### View the synchronization scope
 //
 // | `syncScope.mode` | Synchronization scope |
 //
@@ -7172,11 +7176,11 @@ func (client *Client) GetIdentityProviderSyncJob(workspaceId *string, identityPr
 //
 // | `SelectedDepartments` | The saved scope of specified departments. Use `selectedDepartments` to view the selected departments and their validity. |
 //
-// This operation reads the saved configuration. After adjusting the department selection, save the changes by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) before querying the estimated results. To browse the complete department tree, use [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments).
+// This operation reads the saved configurations. After adjusting the department selection, save the changes by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) before querying the estimated results. To browse the complete department tree, use [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments).
 //
 // ### Use user count estimation
 //
-// You can use `expandedDepartmentCount` and `estimatedUserCount` only when `estimateStatus=Ready` and the counts are not `null`. Counts that have not been obtained return `null` and must not be treated as 0.
+// You can use `expandedDepartmentCount` and `estimatedUserCount` only when `estimateStatus` is `Ready` and the counts are not `null`. Counts that have not been obtained return `null` and must not be treated as 0.
 //
 // After confirming the scope, initiate the synchronization by calling [CreateIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSyncJob).
 //
@@ -7225,7 +7229,7 @@ func (client *Client) GetIdentityProviderSyncScopeWithOptions(workspaceId *strin
 //
 // Queries the saved user synchronization scope, checks whether the selected departments are valid, and views the estimated number of departments and users involved. You can use this operation to verify the scope before initiating a manual synchronization.
 //
-// ### View synchronization scope
+// ### View the synchronization scope
 //
 // | `syncScope.mode` | Synchronization scope |
 //
@@ -7235,11 +7239,11 @@ func (client *Client) GetIdentityProviderSyncScopeWithOptions(workspaceId *strin
 //
 // | `SelectedDepartments` | The saved scope of specified departments. Use `selectedDepartments` to view the selected departments and their validity. |
 //
-// This operation reads the saved configuration. After adjusting the department selection, save the changes by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) before querying the estimated results. To browse the complete department tree, use [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments).
+// This operation reads the saved configurations. After adjusting the department selection, save the changes by calling [UpdateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProvider) before querying the estimated results. To browse the complete department tree, use [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments).
 //
 // ### Use user count estimation
 //
-// You can use `expandedDepartmentCount` and `estimatedUserCount` only when `estimateStatus=Ready` and the counts are not `null`. Counts that have not been obtained return `null` and must not be treated as 0.
+// You can use `expandedDepartmentCount` and `estimatedUserCount` only when `estimateStatus` is `Ready` and the counts are not `null`. Counts that have not been obtained return `null` and must not be treated as 0.
 //
 // After confirming the scope, initiate the synchronization by calling [CreateIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSyncJob).
 //
@@ -7268,27 +7272,27 @@ func (client *Client) GetIdentityProviderSyncScope(workspaceId *string, identity
 //
 // ### Cache status
 //
-// | `status` | Meaning |
+// | status | Description |
 //
 // | --- | --- |
 //
-// | `PENDING` | Preparing. Continue to query. |
+// | PENDING | Preparing. Continue querying. |
 //
-// | `READY` | Ready. |
+// | READY | Ready. |
 //
-// | `FAILED` | Preparation failed. Troubleshoot based on the `error` field. |
+// | FAILED | Preparation failed. Troubleshoot based on the error field. |
 //
-// | `DELETING` | Deleting. |
+// | DELETING | Deleting. |
 //
-// | `DISABLED` | Disabled. |
+// | DISABLED | Disabled. |
 //
-// The `digest` is provided after the source resolution is completed. The unit of `cacheSizeBytes` is bytes, and it can be empty when the cache is not yet available.
+// The digest is provided after the source resolution is complete. The unit of cacheSizeBytes is bytes, and it may be empty when the cache is not yet available.
 //
 // ### Usage and deletion
 //
-// `agentCount` indicates the number of agents that have enabled the cache switch and reference this cache. `canDelete` and `deleteBlockReason` indicate whether the cache can be deleted and the reason for blocking deletion. Deletion requests will recheck the usage.
+// agentCount indicates the number of agents that have enabled the cache feature and reference this cache. canDelete and deleteBlockReason indicate whether the cache can be deleted and the reason for blocking deletion. Deletion requests still recheck the usage.
 //
-// The query scope of this operation is determined by `regionId`, `workspaceId`, and `imageId`.
+// The query scope of this operation is determined by regionId, workspaceId, and imageId.
 //
 // @param request - GetImageCacheRequest
 //
@@ -7347,27 +7351,27 @@ func (client *Client) GetImageCacheWithOptions(imageId *string, request *GetImag
 //
 // ### Cache status
 //
-// | `status` | Meaning |
+// | status | Description |
 //
 // | --- | --- |
 //
-// | `PENDING` | Preparing. Continue to query. |
+// | PENDING | Preparing. Continue querying. |
 //
-// | `READY` | Ready. |
+// | READY | Ready. |
 //
-// | `FAILED` | Preparation failed. Troubleshoot based on the `error` field. |
+// | FAILED | Preparation failed. Troubleshoot based on the error field. |
 //
-// | `DELETING` | Deleting. |
+// | DELETING | Deleting. |
 //
-// | `DISABLED` | Disabled. |
+// | DISABLED | Disabled. |
 //
-// The `digest` is provided after the source resolution is completed. The unit of `cacheSizeBytes` is bytes, and it can be empty when the cache is not yet available.
+// The digest is provided after the source resolution is complete. The unit of cacheSizeBytes is bytes, and it may be empty when the cache is not yet available.
 //
 // ### Usage and deletion
 //
-// `agentCount` indicates the number of agents that have enabled the cache switch and reference this cache. `canDelete` and `deleteBlockReason` indicate whether the cache can be deleted and the reason for blocking deletion. Deletion requests will recheck the usage.
+// agentCount indicates the number of agents that have enabled the cache feature and reference this cache. canDelete and deleteBlockReason indicate whether the cache can be deleted and the reason for blocking deletion. Deletion requests still recheck the usage.
 //
-// The query scope of this operation is determined by `regionId`, `workspaceId`, and `imageId`.
+// The query scope of this operation is determined by regionId, workspaceId, and imageId.
 //
 // @param request - GetImageCacheRequest
 //
@@ -7386,7 +7390,7 @@ func (client *Client) GetImageCache(imageId *string, request *GetImageCacheReque
 
 // Summary:
 //
-// Queries the latest configuration, Harness and skill versions, configuration processing status, and running instance statistics of a managed Harness agent.
+// Queries the latest configuration, Harness, skill versions, configuration processing status, and running instance statistics of a managed Harness agent.
 //
 // Description:
 //
@@ -7400,9 +7404,9 @@ func (client *Client) GetImageCache(imageId *string, request *GetImageCacheReque
 //
 // | --- | --- |
 //
-// | `latestSpecVersion` | The latest submitted desired configuration version. |
+// | `latestSpecVersion` | The latest submitted expected configuration version. |
 //
-// | `latestVersionStatus` | The processing status of the desired version. |
+// | `latestVersionStatus` | The processing status of the expected version. |
 //
 // | `status` | The overall status of the agent. |
 //
@@ -7412,11 +7416,11 @@ func (client *Client) GetImageCache(imageId *string, request *GetImageCacheReque
 //
 // ### Harness and skill versions
 //
-// `harness.type` indicates the runtime framework determined at creation. For qodercli, `connectorServiceAccountKey` returns the ID of the bound account key record and does not return the original key.
+// `harness.type` indicates the runtime framework determined at creation. The `connectorServiceAccountKey` of qodercli returns the ID of the bound account key record, not the original key.
 //
-// `configuredSkills` refers to explicitly configured skills. `skills` includes the aggregated results of template and explicit configurations. `resolvedVersion` is the current target version, and `appliedVersion` is the version currently in effect at runtime. These two may differ during an update. `fromTemplate=true` indicates that the skill comes from a template.
+// `configuredSkills` are explicitly configured skills. `skills` contains the aggregated results of templates and explicit configurations. `resolvedVersion` is the current target version, and `appliedVersion` is the version that has taken effect at runtime. These two may differ during an update. `fromTemplate=true` indicates that the skill comes from a template.
 //
-// If you query an agent that does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
+// If the queried agent does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
 // @param request - GetManagedAgentRequest
 //
@@ -7457,7 +7461,7 @@ func (client *Client) GetManagedAgentWithOptions(workspaceId *string, agentId *s
 
 // Summary:
 //
-// Queries the latest configuration, Harness and skill versions, configuration processing status, and running instance statistics of a managed Harness agent.
+// Queries the latest configuration, Harness, skill versions, configuration processing status, and running instance statistics of a managed Harness agent.
 //
 // Description:
 //
@@ -7471,9 +7475,9 @@ func (client *Client) GetManagedAgentWithOptions(workspaceId *string, agentId *s
 //
 // | --- | --- |
 //
-// | `latestSpecVersion` | The latest submitted desired configuration version. |
+// | `latestSpecVersion` | The latest submitted expected configuration version. |
 //
-// | `latestVersionStatus` | The processing status of the desired version. |
+// | `latestVersionStatus` | The processing status of the expected version. |
 //
 // | `status` | The overall status of the agent. |
 //
@@ -7483,11 +7487,11 @@ func (client *Client) GetManagedAgentWithOptions(workspaceId *string, agentId *s
 //
 // ### Harness and skill versions
 //
-// `harness.type` indicates the runtime framework determined at creation. For qodercli, `connectorServiceAccountKey` returns the ID of the bound account key record and does not return the original key.
+// `harness.type` indicates the runtime framework determined at creation. The `connectorServiceAccountKey` of qodercli returns the ID of the bound account key record, not the original key.
 //
-// `configuredSkills` refers to explicitly configured skills. `skills` includes the aggregated results of template and explicit configurations. `resolvedVersion` is the current target version, and `appliedVersion` is the version currently in effect at runtime. These two may differ during an update. `fromTemplate=true` indicates that the skill comes from a template.
+// `configuredSkills` are explicitly configured skills. `skills` contains the aggregated results of templates and explicit configurations. `resolvedVersion` is the current target version, and `appliedVersion` is the version that has taken effect at runtime. These two may differ during an update. `fromTemplate=true` indicates that the skill comes from a template.
 //
-// If you query an agent that does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
+// If the queried agent does not exist, has been deleted, or does not belong to the specified workspace, a resource not found error is returned.
 //
 // @param request - GetManagedAgentRequest
 //
@@ -7574,7 +7578,7 @@ func (client *Client) GetMcp(workspaceId *string, mcpServerId *string, request *
 
 // Summary:
 //
-// Returns a time-limited presigned upload URL and a temporary code package token. After the upload is complete, the token can be used to create or update a code deployment.
+// Returns a time-limited presigned upload URL and a temporary code package token. After the upload is complete, the token can be directly used to create or update a code deployment.
 //
 // Description:
 //
@@ -7582,17 +7586,17 @@ func (client *Client) GetMcp(workspaceId *string, mcpServerId *string, request *
 //
 // ### Upload and deployment steps
 //
-// **Step 1:*	- Prepare a ZIP code package, enter the file name in `fileName`, and call this operation to obtain the upload information.
+// **Step 1:*	- Prepare a ZIP code package, specify the file name in `fileName`, and call this operation to obtain the upload information.
 //
 // **Step 2:*	- Use the returned `uploadMethod`, `uploadUrl`, and `headers` to upload the file content. The package size cannot exceed `maxSize`. The current limit is 50 MiB (52,428,800 bytes).
 //
 // **Step 3:*	- After the upload is complete, submit the `codePackageToken` to the code deployment configuration in [CreateMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateMcp) or [UpdateMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateMcp).
 //
-// **Step 4:*	- After submitting the deployment, query the service status by calling [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp).
+// **Step 4:*	- After submitting the deployment, query the service status through [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp).
 //
 // ### Validity period
 //
-// For the expiration time of the upload URL, see `expiresAt`. For the expiration time of the temporary code package, see `artifactExpiresAt`. Complete the upload and deployment within the corresponding periods. If the upload URL expires, retrieve it again.
+// For the expiration time of the upload URL, see `expiresAt`. For the expiration time of the temporary code package, see `artifactExpiresAt`. Complete the upload and deployment within the corresponding time limits. If the upload URL expires, obtain it again.
 //
 // @param tmpReq - GetMcpCodePackageUploadUrlRequest
 //
@@ -7645,7 +7649,7 @@ func (client *Client) GetMcpCodePackageUploadUrlWithOptions(workspaceId *string,
 
 // Summary:
 //
-// Returns a time-limited presigned upload URL and a temporary code package token. After the upload is complete, the token can be used to create or update a code deployment.
+// Returns a time-limited presigned upload URL and a temporary code package token. After the upload is complete, the token can be directly used to create or update a code deployment.
 //
 // Description:
 //
@@ -7653,17 +7657,17 @@ func (client *Client) GetMcpCodePackageUploadUrlWithOptions(workspaceId *string,
 //
 // ### Upload and deployment steps
 //
-// **Step 1:*	- Prepare a ZIP code package, enter the file name in `fileName`, and call this operation to obtain the upload information.
+// **Step 1:*	- Prepare a ZIP code package, specify the file name in `fileName`, and call this operation to obtain the upload information.
 //
 // **Step 2:*	- Use the returned `uploadMethod`, `uploadUrl`, and `headers` to upload the file content. The package size cannot exceed `maxSize`. The current limit is 50 MiB (52,428,800 bytes).
 //
 // **Step 3:*	- After the upload is complete, submit the `codePackageToken` to the code deployment configuration in [CreateMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateMcp) or [UpdateMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateMcp).
 //
-// **Step 4:*	- After submitting the deployment, query the service status by calling [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp).
+// **Step 4:*	- After submitting the deployment, query the service status through [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp).
 //
 // ### Validity period
 //
-// For the expiration time of the upload URL, see `expiresAt`. For the expiration time of the temporary code package, see `artifactExpiresAt`. Complete the upload and deployment within the corresponding periods. If the upload URL expires, retrieve it again.
+// For the expiration time of the upload URL, see `expiresAt`. For the expiration time of the temporary code package, see `artifactExpiresAt`. Complete the upload and deployment within the corresponding time limits. If the upload URL expires, obtain it again.
 //
 // @param request - GetMcpCodePackageUploadUrlRequest
 //
@@ -7890,11 +7894,11 @@ func (client *Client) GetMemoryStore(workspaceId *string, memoryStoreName *strin
 
 // Summary:
 //
-// Queries the task ID returned by the asynchronous AddMemories operation.
+// Queries the memory extraction task by using the taskId returned by the asynchronous AddMemories operation.
 //
 // Description:
 //
-// Queries the progress and results of a memory extraction task by using the `taskId` returned by the asynchronous [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories) operation.
+// Queries the progress and results of a memory extraction task by using the taskId returned when asynchronously writing data through [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories).
 //
 // @param request - GetMemoryTaskRequest
 //
@@ -7935,11 +7939,11 @@ func (client *Client) GetMemoryTaskWithOptions(workspaceId *string, memoryStoreN
 
 // Summary:
 //
-// Queries the task ID returned by the asynchronous AddMemories operation.
+// Queries the memory extraction task by using the taskId returned by the asynchronous AddMemories operation.
 //
 // Description:
 //
-// Queries the progress and results of a memory extraction task by using the `taskId` returned by the asynchronous [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories) operation.
+// Queries the progress and results of a memory extraction task by using the taskId returned when asynchronously writing data through [AddMemories](https://api.aliyun.com/document/AgentCore/2026-08-04/AddMemories).
 //
 // @param request - GetMemoryTaskRequest
 //
@@ -8098,7 +8102,7 @@ func (client *Client) GetModelConnection(workspaceId *string, connectionId *stri
 //
 // Description:
 //
-// Always use the initial operationId returned by RebuildSandbox for queries. Magic aggregates and returns the rebuildOutcome result from Runtime Manager, so the frontend does not need to track Claim tasks. Only SUCCEEDED indicates overall completion. UNKNOWN, missing fields, or query exceptions must not be treated as success, and the rebuild must not be automatically resubmitted. You can specify the endpoint runtime version by using serviceEndpointId. If omitted, the default latest runtime identity is used.
+// Always use the initial operationId returned by RebuildSandbox for the query. Magic aggregates and returns the rebuildOutcome result from Runtime Manager, so the frontend does not need to track Claim tasks. Only SUCCEEDED indicates overall completion. Do not treat UNKNOWN, missing fields, or query exceptions as success, and do not automatically resubmit the rebuild. You can specify the endpoint runtime version by using serviceEndpointId. If omitted, the default latest runtime identity is used.
 //
 // @param request - GetSandboxRebuildOperationRequest
 //
@@ -8149,7 +8153,7 @@ func (client *Client) GetSandboxRebuildOperationWithOptions(workspaceId *string,
 //
 // Description:
 //
-// Always use the initial operationId returned by RebuildSandbox for queries. Magic aggregates and returns the rebuildOutcome result from Runtime Manager, so the frontend does not need to track Claim tasks. Only SUCCEEDED indicates overall completion. UNKNOWN, missing fields, or query exceptions must not be treated as success, and the rebuild must not be automatically resubmitted. You can specify the endpoint runtime version by using serviceEndpointId. If omitted, the default latest runtime identity is used.
+// Always use the initial operationId returned by RebuildSandbox for the query. Magic aggregates and returns the rebuildOutcome result from Runtime Manager, so the frontend does not need to track Claim tasks. Only SUCCEEDED indicates overall completion. Do not treat UNKNOWN, missing fields, or query exceptions as success, and do not automatically resubmit the rebuild. You can specify the endpoint runtime version by using serviceEndpointId. If omitted, the default latest runtime identity is used.
 //
 // @param request - GetSandboxRebuildOperationRequest
 //
@@ -8168,13 +8172,13 @@ func (client *Client) GetSandboxRebuildOperation(workspaceId *string, agentId *s
 
 // Summary:
 //
-// Queries the details of a specified service endpoint, including the target route, access URLs, authentication configuration, and current status.
+// Queries the details of a specified service endpoint, including the target route, access address, authentication configuration, and current status.
 //
 // Description:
 //
-// Queries the service endpoint of an agent or collaboration component to obtain stable access URLs, authentication configuration, and current status.
+// Queries the service endpoint of an agent or collaboration component to obtain a stable access address, authentication configuration, and current status.
 //
-// A service endpoint associates access URLs with a specified agent version or workspace collaboration component. You can use the target route and URL list in the response to verify the access target.
+// A service endpoint associates an access address with a specified agent version or workspace collaboration component. You can use the target route and address list in the response to verify the access target.
 //
 // @param request - GetServiceEndpointRequest
 //
@@ -8215,13 +8219,13 @@ func (client *Client) GetServiceEndpointWithOptions(workspaceId *string, service
 
 // Summary:
 //
-// Queries the details of a specified service endpoint, including the target route, access URLs, authentication configuration, and current status.
+// Queries the details of a specified service endpoint, including the target route, access address, authentication configuration, and current status.
 //
 // Description:
 //
-// Queries the service endpoint of an agent or collaboration component to obtain stable access URLs, authentication configuration, and current status.
+// Queries the service endpoint of an agent or collaboration component to obtain a stable access address, authentication configuration, and current status.
 //
-// A service endpoint associates access URLs with a specified agent version or workspace collaboration component. You can use the target route and URL list in the response to verify the access target.
+// A service endpoint associates an access address with a specified agent version or workspace collaboration component. You can use the target route and address list in the response to verify the access target.
 //
 // @param request - GetServiceEndpointRequest
 //
@@ -8240,13 +8244,13 @@ func (client *Client) GetServiceEndpoint(workspaceId *string, serviceEndpointId 
 
 // Summary:
 //
-// Queries the active API key and its invocation method for a service endpoint in a specified workspace.
+// Queries the currently effective API key and its invocation method for a service endpoint in a specified workspace.
 //
 // Description:
 //
-// Retrieves the active API key and invocation method of a service endpoint for external applications to access the endpoint.
+// Retrieves the currently effective API key and invocation method for a service endpoint to allow external applications to access the endpoint.
 //
-// The endpoint must have `API_KEY` authentication enabled and access credentials ready. Securely store the returned API key.
+// The endpoint must have API_KEY authentication enabled and access credentials ready. Keep the returned API key secure.
 //
 // @param request - GetServiceEndpointApiKeyRequest
 //
@@ -8287,13 +8291,13 @@ func (client *Client) GetServiceEndpointApiKeyWithOptions(workspaceId *string, s
 
 // Summary:
 //
-// Queries the active API key and its invocation method for a service endpoint in a specified workspace.
+// Queries the currently effective API key and its invocation method for a service endpoint in a specified workspace.
 //
 // Description:
 //
-// Retrieves the active API key and invocation method of a service endpoint for external applications to access the endpoint.
+// Retrieves the currently effective API key and invocation method for a service endpoint to allow external applications to access the endpoint.
 //
-// The endpoint must have `API_KEY` authentication enabled and access credentials ready. Securely store the returned API key.
+// The endpoint must have API_KEY authentication enabled and access credentials ready. Keep the returned API key secure.
 //
 // @param request - GetServiceEndpointApiKeyRequest
 //
@@ -8380,13 +8384,13 @@ func (client *Client) GetSkillDetail(workspaceId *string, skillName *string, req
 
 // Summary:
 //
-// Retrieves the Object Storage Service (OSS) presigned upload URL and object name required to import a skill ZIP package. After the upload is complete, you can call the skill OSS upload API operation to complete the import.
+// Retrieves the OSS presigned upload URL and object name required to import a skill ZIP package. After the upload is complete, call the skill OSS upload API to complete the import.
 //
 // Description:
 //
 // Retrieves the upload URL for a skill ZIP package to import a skill from a local file.
 //
-// Files are transferred through OSS. Upload the file by using the returned URL, and then call [UploadSkillViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadSkillViaOss) to complete the import. To check the package content and conflicts, call [PrecheckSkillUploadViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/PrecheckSkillUploadViaOss) first.
+// Files are transferred through Object Storage Service (OSS): first upload the file using the returned URL, and then call [UploadSkillViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadSkillViaOss) to complete the import. To check the package content and conflicts, call [PrecheckSkillUploadViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/PrecheckSkillUploadViaOss) first.
 //
 // @param request - GetSkillImportFileUrlRequest
 //
@@ -8433,13 +8437,13 @@ func (client *Client) GetSkillImportFileUrlWithOptions(workspaceId *string, requ
 
 // Summary:
 //
-// Retrieves the Object Storage Service (OSS) presigned upload URL and object name required to import a skill ZIP package. After the upload is complete, you can call the skill OSS upload API operation to complete the import.
+// Retrieves the OSS presigned upload URL and object name required to import a skill ZIP package. After the upload is complete, call the skill OSS upload API to complete the import.
 //
 // Description:
 //
 // Retrieves the upload URL for a skill ZIP package to import a skill from a local file.
 //
-// Files are transferred through OSS. Upload the file by using the returned URL, and then call [UploadSkillViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadSkillViaOss) to complete the import. To check the package content and conflicts, call [PrecheckSkillUploadViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/PrecheckSkillUploadViaOss) first.
+// Files are transferred through Object Storage Service (OSS): first upload the file using the returned URL, and then call [UploadSkillViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/UploadSkillViaOss) to complete the import. To check the package content and conflicts, call [PrecheckSkillUploadViaOss](https://api.aliyun.com/document/AgentCore/2026-08-04/PrecheckSkillUploadViaOss) first.
 //
 // @param request - GetSkillImportFileUrlRequest
 //
@@ -8526,11 +8530,11 @@ func (client *Client) GetSkillVersionDetail(workspaceId *string, skillName *stri
 
 // Summary:
 //
-// Queries the details of a specified team, including the complete attributes and team roles of each user and agent member in the team.
+// Queries the details of a specified team. The response also returns the complete attributes and team roles of each user and agent member in the team.
 //
 // Description:
 //
-// Queries the details of a specified team, including the complete attributes and team roles of each user and agent member in the team.
+// Queries the details of a specified team. The response also returns the complete attributes and team roles of each user and agent member in the team.
 //
 // @param request - GetTeamRequest
 //
@@ -8571,11 +8575,11 @@ func (client *Client) GetTeamWithOptions(workspaceId *string, teamId *string, re
 
 // Summary:
 //
-// Queries the details of a specified team, including the complete attributes and team roles of each user and agent member in the team.
+// Queries the details of a specified team. The response also returns the complete attributes and team roles of each user and agent member in the team.
 //
 // Description:
 //
-// Queries the details of a specified team, including the complete attributes and team roles of each user and agent member in the team.
+// Queries the details of a specified team. The response also returns the complete attributes and team roles of each user and agent member in the team.
 //
 // @param request - GetTeamRequest
 //
@@ -8662,13 +8666,13 @@ func (client *Client) GetUser(workspaceId *string, agentCoreUserId *string, requ
 
 // Summary:
 //
-// Queries the details of a workspace by workspace ID, including the lifecycle status, CMS workspace, AI registry namespace, and current network policies.
+// Queries the details of a workspace by workspace ID, including the lifecycle status, CMS workspace, AI Registry namespace, and current network policies.
 //
 // Description:
 //
-// Queries the basic information, associated resources, and network configurations of a workspace for status viewing or configuration verification.
+// Queries the basic information, associated resources, and network configurations of a workspace to view the status or verify configurations.
 //
-// The returned information includes the lifecycle status, associated observability workspace, AI registry namespace, and current network policies.
+// The returned information includes the lifecycle status, associated observability workspace, AI Registry namespace, and current network policies.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -8709,13 +8713,13 @@ func (client *Client) GetWorkspaceWithOptions(workspaceId *string, request *GetW
 
 // Summary:
 //
-// Queries the details of a workspace by workspace ID, including the lifecycle status, CMS workspace, AI registry namespace, and current network policies.
+// Queries the details of a workspace by workspace ID, including the lifecycle status, CMS workspace, AI Registry namespace, and current network policies.
 //
 // Description:
 //
-// Queries the basic information, associated resources, and network configurations of a workspace for status viewing or configuration verification.
+// Queries the basic information, associated resources, and network configurations of a workspace to view the status or verify configurations.
 //
-// The returned information includes the lifecycle status, associated observability workspace, AI registry namespace, and current network policies.
+// The returned information includes the lifecycle status, associated observability workspace, AI Registry namespace, and current network policies.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -8734,19 +8738,19 @@ func (client *Client) GetWorkspace(workspaceId *string, request *GetWorkspaceReq
 
 // Summary:
 //
-// Generates a RAM authorization link for the workspace resource role to pull images from a specified ACR Enterprise Edition repository.
+// Generates a RAM authorization link for a workspace resource role to pull images from a specified ACR Enterprise Edition repository.
 //
 // Description:
 //
-// Generates an authorization link for the workspace resource role to pull images from a specified ACR Enterprise Edition repository, allowing you to complete access authorization before image deployment.
+// Generates an authorization link for a workspace resource role to pull images from a specified ACR Enterprise Edition repository. This link is used to complete access authorization before image deployment.
 //
 // ### Request parameters
 //
-// The `workspaceId` parameter specifies the workspace. The `acrInstanceId`, `namespace`, and `repository` parameters are passed as query parameters. The `repository` parameter specifies the repository name without the namespace.
+// workspaceId identifies the workspace. acrInstanceId, namespace, and repository are passed as query parameters. repository is the repository name without the namespace.
 //
 // ### Complete authorization
 //
-// Open the `authorizeUrl` in the response and confirm the authorization. Then, call [VerifyWorkspaceAcrRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyWorkspaceAcrRamAuthorization) to check the binding status. The role is selected by the server. The `roleName` and `roleSource` parameters indicate the selected role and its source, but do not indicate that the authorization is complete.
+// Open the authorizeUrl in the response and confirm the authorization. Then, call [VerifyWorkspaceAcrRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyWorkspaceAcrRamAuthorization) to check the binding status. The role is selected by the server. roleName and roleSource indicate the selected role and its source, which does not mean that the authorization is complete.
 //
 // This authorization is used for ACR image deployment of custom agents and reading image cache sources. Obtaining the link itself does not pull images or create caches.
 //
@@ -8803,19 +8807,19 @@ func (client *Client) GetWorkspaceAcrRamAuthorizeUrlWithOptions(workspaceId *str
 
 // Summary:
 //
-// Generates a RAM authorization link for the workspace resource role to pull images from a specified ACR Enterprise Edition repository.
+// Generates a RAM authorization link for a workspace resource role to pull images from a specified ACR Enterprise Edition repository.
 //
 // Description:
 //
-// Generates an authorization link for the workspace resource role to pull images from a specified ACR Enterprise Edition repository, allowing you to complete access authorization before image deployment.
+// Generates an authorization link for a workspace resource role to pull images from a specified ACR Enterprise Edition repository. This link is used to complete access authorization before image deployment.
 //
 // ### Request parameters
 //
-// The `workspaceId` parameter specifies the workspace. The `acrInstanceId`, `namespace`, and `repository` parameters are passed as query parameters. The `repository` parameter specifies the repository name without the namespace.
+// workspaceId identifies the workspace. acrInstanceId, namespace, and repository are passed as query parameters. repository is the repository name without the namespace.
 //
 // ### Complete authorization
 //
-// Open the `authorizeUrl` in the response and confirm the authorization. Then, call [VerifyWorkspaceAcrRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyWorkspaceAcrRamAuthorization) to check the binding status. The role is selected by the server. The `roleName` and `roleSource` parameters indicate the selected role and its source, but do not indicate that the authorization is complete.
+// Open the authorizeUrl in the response and confirm the authorization. Then, call [VerifyWorkspaceAcrRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyWorkspaceAcrRamAuthorization) to check the binding status. The role is selected by the server. roleName and roleSource indicate the selected role and its source, which does not mean that the authorization is complete.
 //
 // This authorization is used for ACR image deployment of custom agents and reading image cache sources. Obtaining the link itself does not pull images or create caches.
 //
@@ -8836,15 +8840,15 @@ func (client *Client) GetWorkspaceAcrRamAuthorizeUrl(workspaceId *string, reques
 
 // Summary:
 //
-// Retrieves the RAM authorization page URL to grant the workspace resource role access to a specified AgenticFS access point before configuring NAS storage mounting for an agent.
+// Retrieves the RAM page URL to authorize the workspace resource role to access a specified AgenticFS access point before configuring NAS storage mounting for an agent.
 //
 // Description:
 //
 // Retrieves the AgenticFS mount authorization link to enable agents in the workspace to access a specified file space.
 //
-// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage type of Apsara File Storage NAS designed for AI agents. It can be used to persistently store files used by agents. AgenticSpace is the file space within it, and an access point provides the mount entry.
+// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage class of File Storage NAS designed for AI agents, which can be used to persistently store files used by agents. AgenticSpace is the file space within it, and an access point provides the mount entry.
 //
-// ### Authorization and mounting steps
+// ### Authorization and mount steps
 //
 // **Step 1:*	- Prepare a file system, an AgenticSpace, and an access point in NAS, and obtain the file system ID, access point ID, and domain name.
 //
@@ -8854,7 +8858,7 @@ func (client *Client) GetWorkspaceAcrRamAuthorizeUrl(workspaceId *string, reques
 //
 // **Step 4:*	- Check the authorization status by calling [VerifyWorkspaceAgenticFsMountRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyWorkspaceAgenticFsMountRamAuthorization).
 //
-// **Step 5:*	- When creating or updating a custom code or image agent, or a managed Harness agent, enter the access point domain name, the relative directory `path`, and the container mount path `mountPath` in `agenticFsMounts`.
+// **Step 5:*	- When creating or updating a custom code/image agent or a managed Harness agent, enter the access point domain name, the relative directory `path`, and the container mount path `mountPath` in `agenticFsMounts`.
 //
 // The access point must be located in the VPC associated with the workspace, and VPC access must be enabled for the agent. The mount directory must already exist. Use a non-empty relative directory within the access point for `path`, and use an absolute path within the container for `mountPath`.
 //
@@ -8911,15 +8915,15 @@ func (client *Client) GetWorkspaceAgenticFsMountRamAuthorizeUrlWithOptions(works
 
 // Summary:
 //
-// Retrieves the RAM authorization page URL to grant the workspace resource role access to a specified AgenticFS access point before configuring NAS storage mounting for an agent.
+// Retrieves the RAM page URL to authorize the workspace resource role to access a specified AgenticFS access point before configuring NAS storage mounting for an agent.
 //
 // Description:
 //
 // Retrieves the AgenticFS mount authorization link to enable agents in the workspace to access a specified file space.
 //
-// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage type of Apsara File Storage NAS designed for AI agents. It can be used to persistently store files used by agents. AgenticSpace is the file space within it, and an access point provides the mount entry.
+// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage class of File Storage NAS designed for AI agents, which can be used to persistently store files used by agents. AgenticSpace is the file space within it, and an access point provides the mount entry.
 //
-// ### Authorization and mounting steps
+// ### Authorization and mount steps
 //
 // **Step 1:*	- Prepare a file system, an AgenticSpace, and an access point in NAS, and obtain the file system ID, access point ID, and domain name.
 //
@@ -8929,7 +8933,7 @@ func (client *Client) GetWorkspaceAgenticFsMountRamAuthorizeUrlWithOptions(works
 //
 // **Step 4:*	- Check the authorization status by calling [VerifyWorkspaceAgenticFsMountRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyWorkspaceAgenticFsMountRamAuthorization).
 //
-// **Step 5:*	- When creating or updating a custom code or image agent, or a managed Harness agent, enter the access point domain name, the relative directory `path`, and the container mount path `mountPath` in `agenticFsMounts`.
+// **Step 5:*	- When creating or updating a custom code/image agent or a managed Harness agent, enter the access point domain name, the relative directory `path`, and the container mount path `mountPath` in `agenticFsMounts`.
 //
 // The access point must be located in the VPC associated with the workspace, and VPC access must be enabled for the agent. The mount directory must already exist. Use a non-empty relative directory within the access point for `path`, and use an absolute path within the container for `mountPath`.
 //
@@ -8954,9 +8958,9 @@ func (client *Client) GetWorkspaceAgenticFsMountRamAuthorizeUrl(workspaceId *str
 //
 // Description:
 //
-// Queries the status and configuration of the workspace collaboration component to check whether the component is activated and whether the configuration takes effect.
+// Queries the status and configuration of the collaboration component in a workspace to check whether the component is activated and whether the configuration takes effect.
 //
-// Use `pluginName=collaboration` to specify the collaboration component. To activate the component, call [InstallWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/InstallWorkspacePlugin).
+// To specify the collaboration component, set `pluginName` to `collaboration`. To activate the component, call [InstallWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/InstallWorkspacePlugin).
 //
 // @param request - GetWorkspacePluginRequest
 //
@@ -9001,9 +9005,9 @@ func (client *Client) GetWorkspacePluginWithOptions(workspaceId *string, pluginN
 //
 // Description:
 //
-// Queries the status and configuration of the workspace collaboration component to check whether the component is activated and whether the configuration takes effect.
+// Queries the status and configuration of the collaboration component in a workspace to check whether the component is activated and whether the configuration takes effect.
 //
-// Use `pluginName=collaboration` to specify the collaboration component. To activate the component, call [InstallWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/InstallWorkspacePlugin).
+// To specify the collaboration component, set `pluginName` to `collaboration`. To activate the component, call [InstallWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/InstallWorkspacePlugin).
 //
 // @param request - GetWorkspacePluginRequest
 //
@@ -9116,13 +9120,13 @@ func (client *Client) InstallMcpMarketItem(workspaceId *string, marketItemId *st
 
 // Summary:
 //
-// Enables a component for a workspace. This operation corresponds to enabling the collaboration component in the console. After the component is enabled, you can query the component status and current configurations.
+// Enables a component for a workspace, which corresponds to the operation of enabling the collaboration component in the console. After the component is enabled, you can query its status and current configurations.
 //
 // Description:
 //
 // Enables the collaboration component for a workspace and configures initial settings such as the network.
 //
-// Set pluginName=collaboration to specify the collaboration component. The enabling process is executed asynchronously. After submission, call [GetWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspacePlugin) to check the component status and processing result.
+// Use pluginName=collaboration to specify the collaboration component. The enabling process is executed asynchronously. After submission, use [GetWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspacePlugin) to check the component status and processing result.
 //
 // @param tmpReq - InstallWorkspacePluginRequest
 //
@@ -9181,13 +9185,13 @@ func (client *Client) InstallWorkspacePluginWithOptions(workspaceId *string, plu
 
 // Summary:
 //
-// Enables a component for a workspace. This operation corresponds to enabling the collaboration component in the console. After the component is enabled, you can query the component status and current configurations.
+// Enables a component for a workspace, which corresponds to the operation of enabling the collaboration component in the console. After the component is enabled, you can query its status and current configurations.
 //
 // Description:
 //
 // Enables the collaboration component for a workspace and configures initial settings such as the network.
 //
-// Set pluginName=collaboration to specify the collaboration component. The enabling process is executed asynchronously. After submission, call [GetWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspacePlugin) to check the component status and processing result.
+// Use pluginName=collaboration to specify the collaboration component. The enabling process is executed asynchronously. After submission, use [GetWorkspacePlugin](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspacePlugin) to check the component status and processing result.
 //
 // @param request - InstallWorkspacePluginRequest
 //
@@ -9206,21 +9210,21 @@ func (client *Client) InstallWorkspacePlugin(workspaceId *string, pluginName *st
 
 // Summary:
 //
-// Queries the identity, name, and architecture of language runtime environments currently available for code package deployment by page.
+// Queries the identity, name, and architecture of language runtime environments currently available for code package deployment.
 //
 // Description:
 //
-// Queries the available runtime environments for code package deployment of custom code or image agents, which is used to populate artifact.code.languageRuntime.
+// Queries the available runtime environments for code package deployment of custom code or image agents, which is used to specify `artifact.code.languageRuntime`.
 //
 // ### Select a runtime environment
 //
-// Copy the languageRuntime value from the response exactly as is into the artifact.code.languageRuntime parameter of [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The catalog is dynamically provided by the current platform version, and internal base image addresses are not returned.
+// Pass the `languageRuntime` value from the response exactly as is to the `artifact.code.languageRuntime` parameter in [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The catalog is dynamically provided by the current platform version, and internal base image addresses are not returned.
 //
 // ### Pagination rules
 //
-// If maxResults is omitted or set to 0, the default value is 10. If the value is greater than 100, it is processed as 100. The value cannot be negative. Omit nextToken for the first request. For subsequent requests, use the token returned in the previous response and keep the workspace unchanged. An empty token indicates that the query is complete. If the token becomes invalid due to changes in the runtime environment catalog, restart the query from the first page.
+// If `maxResults` is omitted or set to `0`, the default value is 10. If the value is greater than 100, it is processed as 100. The value cannot be negative. Omit `nextToken` for the first request. For subsequent requests, use the token returned in the previous response and keep the workspace unchanged. An empty token indicates that the query is complete. If the token becomes invalid due to changes in the runtime environment catalog, restart the query from the first page.
 //
-// Regular updates, restarts, and scale-outs of existing agents continue to use their saved runtime images. When you create an agent or switch the language runtime environment, the catalog currently returned by this operation prevails.
+// For regular updates, restarts, and scale-outs of existing agents, their saved runtime images are still used. When you create an agent or switch the language runtime environment, the catalog currently returned by this operation prevails.
 //
 // @param request - ListAgentCodeRuntimesRequest
 //
@@ -9271,21 +9275,21 @@ func (client *Client) ListAgentCodeRuntimesWithOptions(workspaceId *string, requ
 
 // Summary:
 //
-// Queries the identity, name, and architecture of language runtime environments currently available for code package deployment by page.
+// Queries the identity, name, and architecture of language runtime environments currently available for code package deployment.
 //
 // Description:
 //
-// Queries the available runtime environments for code package deployment of custom code or image agents, which is used to populate artifact.code.languageRuntime.
+// Queries the available runtime environments for code package deployment of custom code or image agents, which is used to specify `artifact.code.languageRuntime`.
 //
 // ### Select a runtime environment
 //
-// Copy the languageRuntime value from the response exactly as is into the artifact.code.languageRuntime parameter of [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The catalog is dynamically provided by the current platform version, and internal base image addresses are not returned.
+// Pass the `languageRuntime` value from the response exactly as is to the `artifact.code.languageRuntime` parameter in [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The catalog is dynamically provided by the current platform version, and internal base image addresses are not returned.
 //
 // ### Pagination rules
 //
-// If maxResults is omitted or set to 0, the default value is 10. If the value is greater than 100, it is processed as 100. The value cannot be negative. Omit nextToken for the first request. For subsequent requests, use the token returned in the previous response and keep the workspace unchanged. An empty token indicates that the query is complete. If the token becomes invalid due to changes in the runtime environment catalog, restart the query from the first page.
+// If `maxResults` is omitted or set to `0`, the default value is 10. If the value is greater than 100, it is processed as 100. The value cannot be negative. Omit `nextToken` for the first request. For subsequent requests, use the token returned in the previous response and keep the workspace unchanged. An empty token indicates that the query is complete. If the token becomes invalid due to changes in the runtime environment catalog, restart the query from the first page.
 //
-// Regular updates, restarts, and scale-outs of existing agents continue to use their saved runtime images. When you create an agent or switch the language runtime environment, the catalog currently returned by this operation prevails.
+// For regular updates, restarts, and scale-outs of existing agents, their saved runtime images are still used. When you create an agent or switch the language runtime environment, the catalog currently returned by this operation prevails.
 //
 // @param request - ListAgentCodeRuntimesRequest
 //
@@ -9304,11 +9308,11 @@ func (client *Client) ListAgentCodeRuntimes(workspaceId *string, request *ListAg
 
 // Summary:
 //
-// Queries the IM channels for a specified agent.
+// Queries the IM channels of a specified agent.
 //
 // Description:
 //
-// Queries the IM channels for a specified agent.
+// Queries the IM channels of a specified agent.
 //
 // @param request - ListAgentIMChannelsRequest
 //
@@ -9367,11 +9371,11 @@ func (client *Client) ListAgentIMChannelsWithOptions(workspaceId *string, agentI
 
 // Summary:
 //
-// Queries the IM channels for a specified agent.
+// Queries the IM channels of a specified agent.
 //
 // Description:
 //
-// Queries the IM channels for a specified agent.
+// Queries the IM channels of a specified agent.
 //
 // @param request - ListAgentIMChannelsRequest
 //
@@ -9390,11 +9394,11 @@ func (client *Client) ListAgentIMChannels(workspaceId *string, agentId *string, 
 
 // Summary:
 //
-// Performs a paging query of AgentSpecs in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
+// Performs a paging query for AgentSpecs in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
 //
 // Description:
 //
-// Performs a paging query of Agent templates in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
+// Performs a paging query for agent templates in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
 //
 // @param request - ListAgentSpecsRequest
 //
@@ -9473,11 +9477,11 @@ func (client *Client) ListAgentSpecsWithOptions(workspaceId *string, request *Li
 
 // Summary:
 //
-// Performs a paging query of AgentSpecs in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
+// Performs a paging query for AgentSpecs in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
 //
 // Description:
 //
-// Performs a paging query of Agent templates in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
+// Performs a paging query for agent templates in a specified workspace, and supports name search, sorting, and filtering by owner, visibility scope, and business labels.
 //
 // @param request - ListAgentSpecsRequest
 //
@@ -9496,7 +9500,7 @@ func (client *Client) ListAgentSpecs(workspaceId *string, request *ListAgentSpec
 
 // Summary:
 //
-// Queries the teams to which specified agents belong. Specify the agent IDs to query by using agentIds. The response includes the membership information of each agent in its teams, such as the team ID, team name, and the role of the agent in the team.
+// Queries the teams to which specified agents belong. Specify the agent IDs to query by using agentIds. The operation returns the membership information of each agent in its teams, including the team ID, team name, and the role of the agent in the team.
 //
 // Description:
 //
@@ -9553,7 +9557,7 @@ func (client *Client) ListAgentTeamsWithOptions(workspaceId *string, tmpReq *Lis
 
 // Summary:
 //
-// Queries the teams to which specified agents belong. Specify the agent IDs to query by using agentIds. The response includes the membership information of each agent in its teams, such as the team ID, team name, and the role of the agent in the team.
+// Queries the teams to which specified agents belong. Specify the agent IDs to query by using agentIds. The operation returns the membership information of each agent in its teams, including the team ID, team name, and the role of the agent in the team.
 //
 // Description:
 //
@@ -9576,11 +9580,11 @@ func (client *Client) ListAgentTeams(workspaceId *string, request *ListAgentTeam
 
 // Summary:
 //
-// Queries a list of agent versions.
+// Queries the list of agent versions.
 //
 // Description:
 //
-// Performs a paged query for saved fixed versions of a specified managed or custom agent. The paging results are returned in descending order of creation time and do not include the latest version under system maintenance. List items do not return the configuration. To view the configuration, invoke GetAgentVersion.
+// Queries the saved fixed versions of a specified managed or custom agent by using paging. The results are returned in descending order of creation time and do not include the system-maintained latest version. The list items do not include the configuration. To view the configuration, call GetAgentVersion.
 //
 // @param request - ListAgentVersionsRequest
 //
@@ -9631,11 +9635,11 @@ func (client *Client) ListAgentVersionsWithOptions(workspaceId *string, agentId 
 
 // Summary:
 //
-// Queries a list of agent versions.
+// Queries the list of agent versions.
 //
 // Description:
 //
-// Performs a paged query for saved fixed versions of a specified managed or custom agent. The paging results are returned in descending order of creation time and do not include the latest version under system maintenance. List items do not return the configuration. To view the configuration, invoke GetAgentVersion.
+// Queries the saved fixed versions of a specified managed or custom agent by using paging. The results are returned in descending order of creation time and do not include the system-maintained latest version. The list items do not include the configuration. To view the configuration, call GetAgentVersion.
 //
 // @param request - ListAgentVersionsRequest
 //
@@ -9740,11 +9744,11 @@ func (client *Client) ListConnectorModels(workspaceId *string, connectorName *st
 
 // Summary:
 //
-// Queries the list of connectors supported by a specified workspace, along with their status, the number of bound agents, and configurations. The current version returns the QoderCLI connector.
+// Queries the list of connectors supported by a specified workspace, along with their status, number of bound agents, and configurations. The current version returns the QoderCLI connector.
 //
 // Description:
 //
-// Queries the connectors supported by the workspace to view their activation status, configurations, and the number of bound agents.
+// Queries the connectors supported by a workspace to view their activation status, configurations, and the number of bound agents.
 //
 // @param request - ListConnectorsRequest
 //
@@ -9795,11 +9799,11 @@ func (client *Client) ListConnectorsWithOptions(workspaceId *string, request *Li
 
 // Summary:
 //
-// Queries the list of connectors supported by a specified workspace, along with their status, the number of bound agents, and configurations. The current version returns the QoderCLI connector.
+// Queries the list of connectors supported by a specified workspace, along with their status, number of bound agents, and configurations. The current version returns the QoderCLI connector.
 //
 // Description:
 //
-// Queries the connectors supported by the workspace to view their activation status, configurations, and the number of bound agents.
+// Queries the connectors supported by a workspace to view their activation status, configurations, and the number of bound agents.
 //
 // @param request - ListConnectorsRequest
 //
@@ -9818,17 +9822,17 @@ func (client *Client) ListConnectors(workspaceId *string, request *ListConnector
 
 // Summary:
 //
-// Performs a paged query for credentials in a specified workspace. Filters credentials by type by using credentialType, performs fuzzy filtering by credential name by using nameLike, specifies the maximum number of records per page for paging by using maxResults, and retrieves the next page by using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Queries credentials in a specified workspace with paging. Filters credentials by type using credentialType, performs fuzzy matching on credential names using nameLike, specifies the maximum number of records per page using maxResults, and retrieves the next page using nextToken. If maxResults is not specified, the server returns 10 records by default.
 //
 // Description:
 //
-// Performs a paged query for credentials in a specified workspace.
+// Queries credentials in a specified workspace with paging.
 //
 // ### Query and paging
 //
-// Filters credentials by `apiKey` or `mcpHeader` type by using `credentialType`, and performs fuzzy filtering by name by using `nameLike`.
+// Filter credentials by `apiKey` or `mcpHeader` type using `credentialType`, and perform fuzzy matching on names using `nameLike`.
 //
-// Uses `maxResults` to specify the number of entries per page for paging, and uses `nextToken` in the response to retrieve the next page. The returned credential content is desensitized. To query the details of a single credential, call [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential).
+// Use `maxResults` to specify the number of records per page, and use `nextToken` in the response to retrieve the next page. The returned credential content is masked. To query the details of a single credential, call [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential).
 //
 // @param request - ListCredentialsRequest
 //
@@ -9891,17 +9895,17 @@ func (client *Client) ListCredentialsWithOptions(workspaceId *string, request *L
 
 // Summary:
 //
-// Performs a paged query for credentials in a specified workspace. Filters credentials by type by using credentialType, performs fuzzy filtering by credential name by using nameLike, specifies the maximum number of records per page for paging by using maxResults, and retrieves the next page by using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Queries credentials in a specified workspace with paging. Filters credentials by type using credentialType, performs fuzzy matching on credential names using nameLike, specifies the maximum number of records per page using maxResults, and retrieves the next page using nextToken. If maxResults is not specified, the server returns 10 records by default.
 //
 // Description:
 //
-// Performs a paged query for credentials in a specified workspace.
+// Queries credentials in a specified workspace with paging.
 //
 // ### Query and paging
 //
-// Filters credentials by `apiKey` or `mcpHeader` type by using `credentialType`, and performs fuzzy filtering by name by using `nameLike`.
+// Filter credentials by `apiKey` or `mcpHeader` type using `credentialType`, and perform fuzzy matching on names using `nameLike`.
 //
-// Uses `maxResults` to specify the number of entries per page for paging, and uses `nextToken` in the response to retrieve the next page. The returned credential content is desensitized. To query the details of a single credential, call [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential).
+// Use `maxResults` to specify the number of records per page, and use `nextToken` in the response to retrieve the next page. The returned credential content is masked. To query the details of a single credential, call [GetCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCredential).
 //
 // @param request - ListCredentialsRequest
 //
@@ -9920,19 +9924,19 @@ func (client *Client) ListCredentials(workspaceId *string, request *ListCredenti
 
 // Summary:
 //
-// Performs a paged query to retrieve the identity, deployment method, and status summary of custom code or image agents in a workspace, with paging support.
+// Performs a paging query for the identifiers, deployment methods, and status summaries of custom code or image agents in a workspace.
 //
 // Description:
 //
-// Performs a paged query to retrieve the identity, deployment method, and status summary of custom code or image agents in a workspace, with paging support.
+// Performs a paging query for the identifiers, deployment methods, and status summaries of custom code or image agents in a workspace.
 //
-// ### Paged query
+// ### Paging query
 //
-// If `maxResults` is omitted or set to `0`, the default value is 20 and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates the end of paging.
+// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token from the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that paging is complete.
 //
 // ### Response content
 //
-// This operation returns the summary for the current page. It does not return the complete deployment configurations or errors that occur when you execute the latest configurations. Use `items[].agentId` to invoke [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent) to query code packages, image sources, results after you execute the version, and running instance statuses.
+// This operation returns the summary for the current page and does not return the complete deployment configurations or execution errors of the latest configurations. To query code packages, image sources, version execution results, and running instance statuses, use `items[].agentId` to call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent).
 //
 // @param request - ListCustomAgentsRequest
 //
@@ -9983,19 +9987,19 @@ func (client *Client) ListCustomAgentsWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// Performs a paged query to retrieve the identity, deployment method, and status summary of custom code or image agents in a workspace, with paging support.
+// Performs a paging query for the identifiers, deployment methods, and status summaries of custom code or image agents in a workspace.
 //
 // Description:
 //
-// Performs a paged query to retrieve the identity, deployment method, and status summary of custom code or image agents in a workspace, with paging support.
+// Performs a paging query for the identifiers, deployment methods, and status summaries of custom code or image agents in a workspace.
 //
-// ### Paged query
+// ### Paging query
 //
-// If `maxResults` is omitted or set to `0`, the default value is 20 and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates the end of paging.
+// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token from the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that paging is complete.
 //
 // ### Response content
 //
-// This operation returns the summary for the current page. It does not return the complete deployment configurations or errors that occur when you execute the latest configurations. Use `items[].agentId` to invoke [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent) to query code packages, image sources, results after you execute the version, and running instance statuses.
+// This operation returns the summary for the current page and does not return the complete deployment configurations or execution errors of the latest configurations. To query code packages, image sources, version execution results, and running instance statuses, use `items[].agentId` to call [GetCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetCustomAgent).
 //
 // @param request - ListCustomAgentsRequest
 //
@@ -10014,19 +10018,19 @@ func (client *Client) ListCustomAgents(workspaceId *string, request *ListCustomA
 
 // Summary:
 //
-// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
+// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
 //
 // Description:
 //
-// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
+// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
 //
 // ### Paging query
 //
-// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
+// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that no more pages are available.
 //
 // ### Response content
 //
-// This operation returns the summary of managed agents. To query the complete models, instructions, tools, skills, and accessed state, call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
+// This operation returns the summary of managed agents. You can query the complete models, instructions, tools, skills, and accessed state by calling [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
 //
 // @param request - ListExternalAgentsRequest
 //
@@ -10077,19 +10081,19 @@ func (client *Client) ListExternalAgentsWithOptions(workspaceId *string, request
 
 // Summary:
 //
-// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
+// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
 //
 // Description:
 //
-// Performs a paging query to retrieve the identity, configuration versions, and status summary of managed agents in a workspace.
+// Performs a paging query for the identity, configuration version, and status summary of managed agents in a workspace.
 //
 // ### Paging query
 //
-// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
+// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that no more pages are available.
 //
 // ### Response content
 //
-// This operation returns the summary of managed agents. To query the complete models, instructions, tools, skills, and accessed state, call [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
+// This operation returns the summary of managed agents. You can query the complete models, instructions, tools, skills, and accessed state by calling [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent).
 //
 // @param request - ListExternalAgentsRequest
 //
@@ -10108,29 +10112,29 @@ func (client *Client) ListExternalAgents(workspaceId *string, request *ListExter
 
 // Summary:
 //
-// Queries the departments of an identity provider by paging.
+// Performs a paged query on the departments of an identity provider by using paging.
 //
 // Description:
 //
-// Queries the list of DingTalk or Lark departments by parent department and paging. This is used when selecting or adjusting the user synchronization scope.
+// Performs a paged query on the list of DingTalk or Lark departments by parent department by using paging. This is used when selecting or adjusting the user synchronization scope.
 //
 // ### Before you begin
 //
-// A DingTalk or Lark identity provider is bound to the workspace, and the user pool, application credentials, and authorization to read contacts are prepared.
+// The workspace is bound to a DingTalk or Lark identity provider, and the user pool, application credentials, and address book read authorization are ready.
 //
 // ### Query methods
 //
-// - Omit `parentDepartmentId` to query the root level. Pass a department ID to query its direct child departments.
+// - Omit parentDepartmentId to query the root level. Pass a department ID to query its direct child departments.
 //
-// - `hasChildren` indicates whether a department can be expanded. After expansion, use the department ID to query the next level.
+// - hasChildren indicates whether a department can be expanded. After expanding, use the department ID to query the next level.
 //
-// - `nextToken` is used to continue reading the next page under the same parent department. An empty string indicates that there are no more pages.
+// - nextToken is used to continue reading the next page under the same parent department. An empty string indicates that there are no more pages.
 //
 // ### Total count and pagination
 //
-// This operation does not calculate the total number of departments. Currently, `totalCount` returns JSON `null`, which does not mean the number of departments is 0. Whether to continue pagination depends on `nextToken`.
+// This operation does not calculate the total number of departments. Currently, totalCount returns JSON null, which does not mean the number of departments is 0. Whether to continue pagination depends on nextToken.
 //
-// ### Request examples
+// ### Request example
 //
 // ```http
 //
@@ -10138,9 +10142,9 @@ func (client *Client) ListExternalAgents(workspaceId *string, request *ListExter
 //
 // ```
 //
-// ### Response examples
+// ### Response example
 //
-// The following shows the response structure for an empty directory page. `totalCount` retains the `null` value actually returned by the operation.
+// The following shows the response structure for an empty directory page. totalCount retains the null value actually returned by the operation.
 //
 // ```json
 //
@@ -10225,29 +10229,29 @@ func (client *Client) ListIdentityProviderDepartmentsWithOptions(workspaceId *st
 
 // Summary:
 //
-// Queries the departments of an identity provider by paging.
+// Performs a paged query on the departments of an identity provider by using paging.
 //
 // Description:
 //
-// Queries the list of DingTalk or Lark departments by parent department and paging. This is used when selecting or adjusting the user synchronization scope.
+// Performs a paged query on the list of DingTalk or Lark departments by parent department by using paging. This is used when selecting or adjusting the user synchronization scope.
 //
 // ### Before you begin
 //
-// A DingTalk or Lark identity provider is bound to the workspace, and the user pool, application credentials, and authorization to read contacts are prepared.
+// The workspace is bound to a DingTalk or Lark identity provider, and the user pool, application credentials, and address book read authorization are ready.
 //
 // ### Query methods
 //
-// - Omit `parentDepartmentId` to query the root level. Pass a department ID to query its direct child departments.
+// - Omit parentDepartmentId to query the root level. Pass a department ID to query its direct child departments.
 //
-// - `hasChildren` indicates whether a department can be expanded. After expansion, use the department ID to query the next level.
+// - hasChildren indicates whether a department can be expanded. After expanding, use the department ID to query the next level.
 //
-// - `nextToken` is used to continue reading the next page under the same parent department. An empty string indicates that there are no more pages.
+// - nextToken is used to continue reading the next page under the same parent department. An empty string indicates that there are no more pages.
 //
 // ### Total count and pagination
 //
-// This operation does not calculate the total number of departments. Currently, `totalCount` returns JSON `null`, which does not mean the number of departments is 0. Whether to continue pagination depends on `nextToken`.
+// This operation does not calculate the total number of departments. Currently, totalCount returns JSON null, which does not mean the number of departments is 0. Whether to continue pagination depends on nextToken.
 //
-// ### Request examples
+// ### Request example
 //
 // ```http
 //
@@ -10255,9 +10259,9 @@ func (client *Client) ListIdentityProviderDepartmentsWithOptions(workspaceId *st
 //
 // ```
 //
-// ### Response examples
+// ### Response example
 //
-// The following shows the response structure for an empty directory page. `totalCount` retains the `null` value actually returned by the operation.
+// The following shows the response structure for an empty directory page. totalCount retains the null value actually returned by the operation.
 //
 // ```json
 //
@@ -10306,27 +10310,27 @@ func (client *Client) ListIdentityProviderDepartments(workspaceId *string, ident
 
 // Summary:
 //
-// Queries the complete summary list of up to two SCIM credentials in a shared user pool, without returning plaintext tokens or supporting pagination.
+// Queries the complete summary list of up to two SCIM credentials in a shared user pool. Plaintext tokens are not returned, and pagination is not supported.
 //
 // Description:
 //
 // Queries the list of SCIM access credentials to check which tokens are still valid, when they expire, and to select credentials for revocation.
 //
-// SCIM tokens are used to authorize enterprise identity systems to send user provisioning requests to the user pool. This operation returns credential summaries, including the credential ID, status, creation time, and expiration time. The plaintext token is returned only upon creation.
+// SCIM tokens are used to authorize enterprise identity systems to send user provisioning requests to the user pool. This operation returns credential summaries, including the credential ID, status, creation time, and expiration time. Plaintext tokens are returned only upon creation.
 //
 // ### How to use the query results
 //
-// - Credentials with the Enabled status that have not expired can continue to be used.
+// - Credentials with the `Enabled` status that have not expired can continue to be used.
 //
 // - To obtain a new token, call [CreateIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSCIMCredential).
 //
-// - To revoke a token, pass the target credentialId to [DeleteIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteIdentityProviderSCIMCredential).
+// - To revoke a token, pass the target `credentialId` to [DeleteIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteIdentityProviderSCIMCredential).
 //
 // A single user pool can retain up to two SCIM credentials. The list may include expired or disabled credentials. Clean up unused credentials before creating a new token.
 //
 // ### Return method
 //
-// This operation returns the complete array of credentials at once without using pagination parameters. If no credentials exist, the following is returned:
+// This operation returns the complete array of credentials at once without using pagination parameters. If no credentials exist, the following response is returned:
 //
 // ```json
 //
@@ -10373,27 +10377,27 @@ func (client *Client) ListIdentityProviderSCIMCredentialsWithOptions(workspaceId
 
 // Summary:
 //
-// Queries the complete summary list of up to two SCIM credentials in a shared user pool, without returning plaintext tokens or supporting pagination.
+// Queries the complete summary list of up to two SCIM credentials in a shared user pool. Plaintext tokens are not returned, and pagination is not supported.
 //
 // Description:
 //
 // Queries the list of SCIM access credentials to check which tokens are still valid, when they expire, and to select credentials for revocation.
 //
-// SCIM tokens are used to authorize enterprise identity systems to send user provisioning requests to the user pool. This operation returns credential summaries, including the credential ID, status, creation time, and expiration time. The plaintext token is returned only upon creation.
+// SCIM tokens are used to authorize enterprise identity systems to send user provisioning requests to the user pool. This operation returns credential summaries, including the credential ID, status, creation time, and expiration time. Plaintext tokens are returned only upon creation.
 //
 // ### How to use the query results
 //
-// - Credentials with the Enabled status that have not expired can continue to be used.
+// - Credentials with the `Enabled` status that have not expired can continue to be used.
 //
 // - To obtain a new token, call [CreateIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSCIMCredential).
 //
-// - To revoke a token, pass the target credentialId to [DeleteIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteIdentityProviderSCIMCredential).
+// - To revoke a token, pass the target `credentialId` to [DeleteIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/DeleteIdentityProviderSCIMCredential).
 //
 // A single user pool can retain up to two SCIM credentials. The list may include expired or disabled credentials. Clean up unused credentials before creating a new token.
 //
 // ### Return method
 //
-// This operation returns the complete array of credentials at once without using pagination parameters. If no credentials exist, the following is returned:
+// This operation returns the complete array of credentials at once without using pagination parameters. If no credentials exist, the following response is returned:
 //
 // ```json
 //
@@ -10422,25 +10426,25 @@ func (client *Client) ListIdentityProviderSCIMCredentials(workspaceId *string, r
 //
 // Description:
 //
-// Queries the enterprise identity providers currently connected to a workspace. This operation is used to display the identity provider list or to check whether a binding already exists before configuring a new connection.
+// Queries the enterprise identity providers currently connected to a workspace. This operation is used to display the identity provider list or to check whether a binding already exists before configuring a connection.
 //
-// A workspace can be bound to at most one external identity provider: DingTalk, Lark, or a custom identity provider (`CustomSSO`). If no identity provider is bound, the returned `items` is an empty array.
+// A workspace can be bound to at most one external identity provider at a time: DingTalk, Lark, or a custom identity provider (`CustomSSO`). If no identity provider is bound, the returned `items` is an empty array.
 //
 // ### What you can view in the list
 //
-// The list returns the identity provider type, binding status, and logon and user synchronization switches. When the status of `CustomSSO` is `WAITING_CONFIGURATION`, it indicates that the user pool is ready and you can proceed to complete the integration configuration.
+// The list returns the identity provider type, binding status, and the switches for logon and user synchronization. When the status of `CustomSSO` is `WAITING_CONFIGURATION`, it indicates that the user pool is ready and you can proceed to configure the connection.
 //
-// This operation returns a binding summary. To view specific integration configurations, use the corresponding operations:
+// This operation returns a binding summary. To view specific connection configurations, use the corresponding operations:
 //
-// - [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider): Views the identity provider details and SAML logon configuration.
+// - [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider): Retrieves the identity provider details and SAML logon configuration.
 //
-// - [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider): Retrieves the SAML integration information required to configure AgentCore in the enterprise identity system.
+// - [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider): Retrieves the SAML connection information required to configure AgentCore in the enterprise identity system.
 //
-// - [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM): Views the SCIM endpoint configuration and user synchronization status.
+// - [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM): Retrieves the SCIM receiver configuration and user synchronization status.
 //
 // ### Pagination
 //
-// Currently, at most one binding is returned. `nextToken` should be omitted or passed as an empty string. The default value of `maxResults` is 10. Valid values: 1 to 100.
+// Currently, at most one binding is returned. `nextToken` should be omitted or set to an empty string. The default value of `maxResults` is 10. Valid values: 1 to 100.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -10495,25 +10499,25 @@ func (client *Client) ListIdentityProvidersWithOptions(workspaceId *string, requ
 //
 // Description:
 //
-// Queries the enterprise identity providers currently connected to a workspace. This operation is used to display the identity provider list or to check whether a binding already exists before configuring a new connection.
+// Queries the enterprise identity providers currently connected to a workspace. This operation is used to display the identity provider list or to check whether a binding already exists before configuring a connection.
 //
-// A workspace can be bound to at most one external identity provider: DingTalk, Lark, or a custom identity provider (`CustomSSO`). If no identity provider is bound, the returned `items` is an empty array.
+// A workspace can be bound to at most one external identity provider at a time: DingTalk, Lark, or a custom identity provider (`CustomSSO`). If no identity provider is bound, the returned `items` is an empty array.
 //
 // ### What you can view in the list
 //
-// The list returns the identity provider type, binding status, and logon and user synchronization switches. When the status of `CustomSSO` is `WAITING_CONFIGURATION`, it indicates that the user pool is ready and you can proceed to complete the integration configuration.
+// The list returns the identity provider type, binding status, and the switches for logon and user synchronization. When the status of `CustomSSO` is `WAITING_CONFIGURATION`, it indicates that the user pool is ready and you can proceed to configure the connection.
 //
-// This operation returns a binding summary. To view specific integration configurations, use the corresponding operations:
+// This operation returns a binding summary. To view specific connection configurations, use the corresponding operations:
 //
-// - [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider): Views the identity provider details and SAML logon configuration.
+// - [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider): Retrieves the identity provider details and SAML logon configuration.
 //
-// - [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider): Retrieves the SAML integration information required to configure AgentCore in the enterprise identity system.
+// - [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider): Retrieves the SAML connection information required to configure AgentCore in the enterprise identity system.
 //
-// - [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM): Views the SCIM endpoint configuration and user synchronization status.
+// - [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM): Retrieves the SCIM receiver configuration and user synchronization status.
 //
 // ### Pagination
 //
-// Currently, at most one binding is returned. `nextToken` should be omitted or passed as an empty string. The default value of `maxResults` is 10. Valid values: 1 to 100.
+// Currently, at most one binding is returned. `nextToken` should be omitted or set to an empty string. The default value of `maxResults` is 10. Valid values: 1 to 100.
 //
 // @param request - ListIdentityProvidersRequest
 //
@@ -10532,23 +10536,23 @@ func (client *Client) ListIdentityProviders(workspaceId *string, request *ListId
 
 // Summary:
 //
-// Performs a paged query for image caches in a workspace. Supports paging and filtering by image source and cache status.
+// Performs a paging query on the image caches of a workspace and supports filtering by image source and cache status.
 //
 // Description:
 //
-// Performs a paged query for image caches in a workspace. Supports paging and filtering by image source and cache status.
+// Performs a paging query on the image caches of a workspace and supports filtering by image source and cache status.
 //
 // ### Filter conditions
 //
-// Provide regionId and workspaceId in the query parameters. You can filter by ACR instance, registry, namespace, repository, tag, digest, and status. Use imageRefContains to search for image address fragments.
+// Provide `regionId` and `workspaceId` in the query parameters. You can filter by ACR instance, `registry`, namespace, repository, tag, digest, and status. Use `imageRefContains` to search for image address fragments.
 //
 // ### Pagination rules
 //
-// The default value of maxResults is 20, and the valid values are 1 to 100. Omit nextToken for the first request. For subsequent requests, use the token returned in the response as is, and keep the workspace, region, page size, and all filter conditions unchanged. An empty token indicates that there are no more pages.
+// The default value of `maxResults` is 20, and the valid values are 1 to 100. Omit `nextToken` for the first request. For subsequent requests, use the response token as is, and keep the workspace, region, page size, and all filter conditions unchanged. An empty token indicates that there are no more pages.
 //
 // ### Response content
 //
-// Each item includes imageId, source, digest, status, size, reference count, and deletion conditions. PENDING only indicates that the cache is being prepared. For the cause of failure, see error. You can query a single cache by calling [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache).
+// Each item includes `imageId`, source, digest, status, size, reference count, and deletion conditions. `PENDING` only indicates that the cache is being prepared. For the cause of failure, see `error`. You can query a single cache by calling [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache).
 //
 // @param request - ListImageCachesRequest
 //
@@ -10639,23 +10643,23 @@ func (client *Client) ListImageCachesWithOptions(request *ListImageCachesRequest
 
 // Summary:
 //
-// Performs a paged query for image caches in a workspace. Supports paging and filtering by image source and cache status.
+// Performs a paging query on the image caches of a workspace and supports filtering by image source and cache status.
 //
 // Description:
 //
-// Performs a paged query for image caches in a workspace. Supports paging and filtering by image source and cache status.
+// Performs a paging query on the image caches of a workspace and supports filtering by image source and cache status.
 //
 // ### Filter conditions
 //
-// Provide regionId and workspaceId in the query parameters. You can filter by ACR instance, registry, namespace, repository, tag, digest, and status. Use imageRefContains to search for image address fragments.
+// Provide `regionId` and `workspaceId` in the query parameters. You can filter by ACR instance, `registry`, namespace, repository, tag, digest, and status. Use `imageRefContains` to search for image address fragments.
 //
 // ### Pagination rules
 //
-// The default value of maxResults is 20, and the valid values are 1 to 100. Omit nextToken for the first request. For subsequent requests, use the token returned in the response as is, and keep the workspace, region, page size, and all filter conditions unchanged. An empty token indicates that there are no more pages.
+// The default value of `maxResults` is 20, and the valid values are 1 to 100. Omit `nextToken` for the first request. For subsequent requests, use the response token as is, and keep the workspace, region, page size, and all filter conditions unchanged. An empty token indicates that there are no more pages.
 //
 // ### Response content
 //
-// Each item includes imageId, source, digest, status, size, reference count, and deletion conditions. PENDING only indicates that the cache is being prepared. For the cause of failure, see error. You can query a single cache by calling [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache).
+// Each item includes `imageId`, source, digest, status, size, reference count, and deletion conditions. `PENDING` only indicates that the cache is being prepared. For the cause of failure, see `error`. You can query a single cache by calling [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache).
 //
 // @param request - ListImageCachesRequest
 //
@@ -10674,19 +10678,19 @@ func (client *Client) ListImageCaches(request *ListImageCachesRequest) (_result 
 
 // Summary:
 //
-// Performs a paging query for the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
+// Performs a paging query to retrieve the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
 //
 // Description:
 //
-// Performs a paging query for the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
+// Performs a paging query to retrieve the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
 //
-// ### Paging query
+// ### Paging
 //
-// If maxResults is omitted or set to 0, the default value is 20, and the maximum value is 100. Omit nextToken in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
+// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
 //
 // ### Response content
 //
-// The list returns summary information, where harness.type indicates the runtime framework. For complete configurations, skill targets and effective versions, and instance status statistics, call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent).
+// The list returns summary information, where `harness.type` indicates the runtime framework. To query the complete configuration, skill targets and effective versions, and instance status statistics, call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent).
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -10737,19 +10741,19 @@ func (client *Client) ListManagedAgentsWithOptions(workspaceId *string, request 
 
 // Summary:
 //
-// Performs a paging query for the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
+// Performs a paging query to retrieve the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
 //
 // Description:
 //
-// Performs a paging query for the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
+// Performs a paging query to retrieve the identity, harness, configuration version, and status summary of managed Harness agents in a workspace.
 //
-// ### Paging query
+// ### Paging
 //
-// If maxResults is omitted or set to 0, the default value is 20, and the maximum value is 100. Omit nextToken in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
+// If `maxResults` is omitted or set to `0`, the default value is 20, and the maximum value is 100. Omit `nextToken` in the first request. For subsequent requests, pass the token returned in the previous response as is, and keep the same workspace and filter conditions. An empty token indicates that there are no more pages.
 //
 // ### Response content
 //
-// The list returns summary information, where harness.type indicates the runtime framework. For complete configurations, skill targets and effective versions, and instance status statistics, call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent).
+// The list returns summary information, where `harness.type` indicates the runtime framework. To query the complete configuration, skill targets and effective versions, and instance status statistics, call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent).
 //
 // @param request - ListManagedAgentsRequest
 //
@@ -10772,7 +10776,7 @@ func (client *Client) ListManagedAgents(workspaceId *string, request *ListManage
 //
 // Description:
 //
-// Queries official MCP marketplace templates available for installation to help select required tool services. Supports filtering by keyword, usage tag, and MCP type.
+// Queries installable official MCP marketplace templates for selecting required tool services. Supports filtering by keyword, usage tag, and MCP type.
 //
 // @param request - ListMcpMarketItemsRequest
 //
@@ -10839,7 +10843,7 @@ func (client *Client) ListMcpMarketItemsWithOptions(workspaceId *string, request
 //
 // Description:
 //
-// Queries official MCP marketplace templates available for installation to help select required tool services. Supports filtering by keyword, usage tag, and MCP type.
+// Queries installable official MCP marketplace templates for selecting required tool services. Supports filtering by keyword, usage tag, and MCP type.
 //
 // @param request - ListMcpMarketItemsRequest
 //
@@ -10936,11 +10940,11 @@ func (client *Client) ListMcpTools(workspaceId *string, mcpServerId *string, req
 
 // Summary:
 //
-// Performs a paging query for MCP services and their configurations and status in a specified workspace.
+// Performs a paging query for the MCP services and their configurations and statuses in a specified workspace.
 //
 // Description:
 //
-// Performs a paging query for MCP services and their configurations and status in a specified workspace.
+// Performs a paging query for the MCP services and their configurations and statuses in a specified workspace.
 //
 // @param request - ListMcpsRequest
 //
@@ -11011,11 +11015,11 @@ func (client *Client) ListMcpsWithOptions(workspaceId *string, request *ListMcps
 
 // Summary:
 //
-// Performs a paging query for MCP services and their configurations and status in a specified workspace.
+// Performs a paging query for the MCP services and their configurations and statuses in a specified workspace.
 //
 // Description:
 //
-// Performs a paging query for MCP services and their configurations and status in a specified workspace.
+// Performs a paging query for the MCP services and their configurations and statuses in a specified workspace.
 //
 // @param request - ListMcpsRequest
 //
@@ -11034,11 +11038,11 @@ func (client *Client) ListMcps(workspaceId *string, request *ListMcpsRequest) (_
 
 // Summary:
 //
-// Queries long-term memory with paging and supports independent filtering by UserId, AgentId, and SessionId.
+// Performs a paged query for long-term memory and supports independent paging and filtering by UserId, AgentId, and SessionId.
 //
 // Description:
 //
-// Queries long-term memory with paging and supports filtering by `UserId`, `AgentId`, and `SessionId`.
+// Performs a paged query for long-term memory and supports paging and filtering by `UserId`, `AgentId`, and `SessionId`.
 //
 // @param request - ListMemoriesRequest
 //
@@ -11101,11 +11105,11 @@ func (client *Client) ListMemoriesWithOptions(workspaceId *string, memoryStoreNa
 
 // Summary:
 //
-// Queries long-term memory with paging and supports independent filtering by UserId, AgentId, and SessionId.
+// Performs a paged query for long-term memory and supports independent paging and filtering by UserId, AgentId, and SessionId.
 //
 // Description:
 //
-// Queries long-term memory with paging and supports filtering by `UserId`, `AgentId`, and `SessionId`.
+// Performs a paged query for long-term memory and supports paging and filtering by `UserId`, `AgentId`, and `SessionId`.
 //
 // @param request - ListMemoriesRequest
 //
@@ -11124,13 +11128,11 @@ func (client *Client) ListMemories(workspaceId *string, memoryStoreName *string,
 
 // Summary:
 //
-// Queries raw messages by exact scope with paging. SessionId is required, and at least one of UserId and AgentId must be provided.
+// Performs a paged query of raw messages by exact scope through paging. SessionId is required, and at least one of UserId or AgentId must be provided.
 //
 // Description:
 //
-// Queries raw messages of a specific session in the memory store with paging to view the session content used for generating long-term memory.
-//
-// `SessionId` is required, and at least one of `UserId` and `AgentId` must be provided to identify the target session.
+// Performs a paged query of the raw messages of a specific session in the memory store through paging, allowing you to view the session content used to generate long-term memory. SessionId is required, and at least one of UserId or AgentId must be provided to identify the target session.
 //
 // @param request - ListMemorySessionMessagesRequest
 //
@@ -11193,13 +11195,11 @@ func (client *Client) ListMemorySessionMessagesWithOptions(workspaceId *string, 
 
 // Summary:
 //
-// Queries raw messages by exact scope with paging. SessionId is required, and at least one of UserId and AgentId must be provided.
+// Performs a paged query of raw messages by exact scope through paging. SessionId is required, and at least one of UserId or AgentId must be provided.
 //
 // Description:
 //
-// Queries raw messages of a specific session in the memory store with paging to view the session content used for generating long-term memory.
-//
-// `SessionId` is required, and at least one of `UserId` and `AgentId` must be provided to identify the target session.
+// Performs a paged query of the raw messages of a specific session in the memory store through paging, allowing you to view the session content used to generate long-term memory. SessionId is required, and at least one of UserId or AgentId must be provided to identify the target session.
 //
 // @param request - ListMemorySessionMessagesRequest
 //
@@ -11218,11 +11218,11 @@ func (client *Client) ListMemorySessionMessages(workspaceId *string, memoryStore
 
 // Summary:
 //
-// Performs a paged query for sessions in a MemoryStore, supporting paging and filtering by user ID and agent ID independently.
+// Performs a paging query for sessions in a MemoryStore. You can filter sessions independently by user ID and agent ID.
 //
 // Description:
 //
-// Performs a paged query for source sessions in a long-term memory store (MemoryStore), supporting paging and filtering by user ID and agent ID respectively.
+// Performs a paging query for source sessions in a long-term memory store (MemoryStore). Supports filtering by `UserId` and `AgentId` respectively.
 //
 // @param request - ListMemorySessionsRequest
 //
@@ -11281,11 +11281,11 @@ func (client *Client) ListMemorySessionsWithOptions(workspaceId *string, memoryS
 
 // Summary:
 //
-// Performs a paged query for sessions in a MemoryStore, supporting paging and filtering by user ID and agent ID independently.
+// Performs a paging query for sessions in a MemoryStore. You can filter sessions independently by user ID and agent ID.
 //
 // Description:
 //
-// Performs a paged query for source sessions in a long-term memory store (MemoryStore), supporting paging and filtering by user ID and agent ID respectively.
+// Performs a paging query for source sessions in a long-term memory store (MemoryStore). Supports filtering by `UserId` and `AgentId` respectively.
 //
 // @param request - ListMemorySessionsRequest
 //
@@ -11304,11 +11304,11 @@ func (client *Client) ListMemorySessions(workspaceId *string, memoryStoreName *s
 
 // Summary:
 //
-// Performs a paged query of MemoryStores in a specified workspace by using paging.
+// Queries MemoryStores in a specified workspace by using paging.
 //
 // Description:
 //
-// Performs a paged query of the long-term memory stores (MemoryStores) in a workspace by using paging for selection or management.
+// Queries long-term memory stores (MemoryStores) in a workspace by using paging to select or manage memory stores.
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -11359,11 +11359,11 @@ func (client *Client) ListMemoryStoresWithOptions(workspaceId *string, request *
 
 // Summary:
 //
-// Performs a paged query of MemoryStores in a specified workspace by using paging.
+// Queries MemoryStores in a specified workspace by using paging.
 //
 // Description:
 //
-// Performs a paged query of the long-term memory stores (MemoryStores) in a workspace by using paging for selection or management.
+// Queries long-term memory stores (MemoryStores) in a workspace by using paging to select or manage memory stores.
 //
 // @param request - ListMemoryStoresRequest
 //
@@ -11382,13 +11382,13 @@ func (client *Client) ListMemoryStores(workspaceId *string, request *ListMemoryS
 
 // Summary:
 //
-// Queries model connections in a specified workspace by using paging. Supports filtering by name, provider type, and invocation protocol.
+// Queries model connections in a specified workspace by using paging, and supports filtering by name, provider type, and invocation protocol.
 //
 // Description:
 //
 // Queries model connections in a workspace by using paging to view configured model services.
 //
-// - Use `Name` to filter by name, and `SearchType` to specify exact match or fuzzy match.
+// - Use `Name` to filter by name and `SearchType` to specify exact match or fuzzy match.
 //
 // - You can filter by model provider type and invocation protocol.
 //
@@ -11461,13 +11461,13 @@ func (client *Client) ListModelConnectionsWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// Queries model connections in a specified workspace by using paging. Supports filtering by name, provider type, and invocation protocol.
+// Queries model connections in a specified workspace by using paging, and supports filtering by name, provider type, and invocation protocol.
 //
 // Description:
 //
 // Queries model connections in a workspace by using paging to view configured model services.
 //
-// - Use `Name` to filter by name, and `SearchType` to specify exact match or fuzzy match.
+// - Use `Name` to filter by name and `SearchType` to specify exact match or fuzzy match.
 //
 // - You can filter by model provider type and invocation protocol.
 //
@@ -11578,7 +11578,7 @@ func (client *Client) ListModels(workspaceId *string, request *ListModelsRequest
 //
 // Description:
 //
-// Performs a paged query of access rules by resource, supporting paging to check existing rules and their sources.
+// Performs a paged query of access rules by resource, using paging to check existing rules and their sources.
 //
 // @param request - ListPermissionRulesRequest
 //
@@ -11661,7 +11661,7 @@ func (client *Client) ListPermissionRulesWithOptions(workspaceId *string, reques
 //
 // Description:
 //
-// Performs a paged query of access rules by resource, supporting paging to check existing rules and their sources.
+// Performs a paged query of access rules by resource, using paging to check existing rules and their sources.
 //
 // @param request - ListPermissionRulesRequest
 //
@@ -11680,11 +11680,11 @@ func (client *Client) ListPermissionRules(workspaceId *string, request *ListPerm
 
 // Summary:
 //
-// Queries the providers supported by the built-in model catalog of AgentCore and their default service configurations.
+// Queries the providers supported by the AgentCore built-in model catalog and their default service configurations.
 //
 // Description:
 //
-// Queries the providers supported by the built-in model catalog of AgentCore and their default service configurations.
+// Queries the providers supported by the AgentCore built-in model catalog and their default service configurations.
 //
 // @param request - ListPredefinedModelProvidersRequest
 //
@@ -11725,11 +11725,11 @@ func (client *Client) ListPredefinedModelProvidersWithOptions(request *ListPrede
 
 // Summary:
 //
-// Queries the providers supported by the built-in model catalog of AgentCore and their default service configurations.
+// Queries the providers supported by the AgentCore built-in model catalog and their default service configurations.
 //
 // Description:
 //
-// Queries the providers supported by the built-in model catalog of AgentCore and their default service configurations.
+// Queries the providers supported by the AgentCore built-in model catalog and their default service configurations.
 //
 // @param request - ListPredefinedModelProvidersRequest
 //
@@ -11748,11 +11748,11 @@ func (client *Client) ListPredefinedModelProviders(request *ListPredefinedModelP
 
 // Summary:
 //
-// Queries the models and their capabilities for a specified provider in the AgentCore built-in model catalog.
+// Queries the models and their capabilities in the built-in model catalog of AgentCore for a specified provider.
 //
 // Description:
 //
-// Queries the models and their capabilities for a specified provider in the AgentCore built-in model catalog.
+// Queries the models and their capabilities in the built-in model catalog of AgentCore for a specified provider.
 //
 // @param request - ListPredefinedModelsRequest
 //
@@ -11793,11 +11793,11 @@ func (client *Client) ListPredefinedModelsWithOptions(providerType *string, requ
 
 // Summary:
 //
-// Queries the models and their capabilities for a specified provider in the AgentCore built-in model catalog.
+// Queries the models and their capabilities in the built-in model catalog of AgentCore for a specified provider.
 //
 // Description:
 //
-// Queries the models and their capabilities for a specified provider in the AgentCore built-in model catalog.
+// Queries the models and their capabilities in the built-in model catalog of AgentCore for a specified provider.
 //
 // @param request - ListPredefinedModelsRequest
 //
@@ -11816,7 +11816,7 @@ func (client *Client) ListPredefinedModels(providerType *string, request *ListPr
 
 // Summary:
 //
-// Performs a paging query to retrieve the current active sessions and their sources in a specified agent instance.
+// Queries the current active sessions and their sources in a specified agent instance by using paging.
 //
 // Description:
 //
@@ -11828,7 +11828,7 @@ func (client *Client) ListPredefinedModels(providerType *string, request *ListPr
 //
 // ### Pagination
 //
-// The default value of maxResults is 20. Valid values: 1 to 100. Omit nextToken in the first request. For subsequent requests, use the returned token as is, and keep the workspace, agent, instance, and page size unchanged. An empty token indicates that no more pages are available.
+// The default value of maxResults is 20. Valid values: 1 to 100. Omit nextToken in the first request. For subsequent requests, use the returned token as is and keep the workspace, agent, instance, and page size unchanged. An empty token indicates that no more pages are available.
 //
 // ### Session sources
 //
@@ -11887,7 +11887,7 @@ func (client *Client) ListSandboxSessionsWithOptions(workspaceId *string, agentI
 
 // Summary:
 //
-// Performs a paging query to retrieve the current active sessions and their sources in a specified agent instance.
+// Queries the current active sessions and their sources in a specified agent instance by using paging.
 //
 // Description:
 //
@@ -11899,7 +11899,7 @@ func (client *Client) ListSandboxSessionsWithOptions(workspaceId *string, agentI
 //
 // ### Pagination
 //
-// The default value of maxResults is 20. Valid values: 1 to 100. Omit nextToken in the first request. For subsequent requests, use the returned token as is, and keep the workspace, agent, instance, and page size unchanged. An empty token indicates that no more pages are available.
+// The default value of maxResults is 20. Valid values: 1 to 100. Omit nextToken in the first request. For subsequent requests, use the returned token as is and keep the workspace, agent, instance, and page size unchanged. An empty token indicates that no more pages are available.
 //
 // ### Session sources
 //
@@ -11922,19 +11922,19 @@ func (client *Client) ListSandboxSessions(workspaceId *string, agentId *string, 
 
 // Summary:
 //
-// Performs a paging query on the running instances of an agent, and supports filtering by Sandbox ID and current valid session ID fragments.
+// Performs a paging query on the running instances of an agent and supports filtering by sandbox ID and current valid session ID fragments.
 //
 // Description:
 //
-// Queries the running instances (sandboxes) of an agent to view instance distribution and current running status.
+// Queries the running instances (sandboxes) of an agent to view the instance distribution and current running status.
 //
 // ### Filter instances
 //
-// `searchText` matches Sandbox ID fragments, and `sessionId` matches current valid session ID fragments. Both are case-insensitive. If both are submitted, they are combined for filtering.
+// `searchText` matches sandbox ID fragments, and `sessionId` matches current valid session ID fragments. Both are case-insensitive. If both are submitted, they are combined for filtering.
 //
 // ### Pagination and status
 //
-// The default value of `maxResults` is 20. Valid values: 1 to 100. Omit `nextToken` for the first request. For subsequent requests, use the response token as is, and keep `workspaceId`, `agentId`, filter conditions, and `maxResults` unchanged. An empty token indicates that the query is complete.
+// The default value of `maxResults` is 20, and the valid values are 1 to 100. Omit `nextToken` for the first request. For subsequent requests, use the response token as is, and keep `workspaceId`, `agentId`, filter conditions, and `maxResults` unchanged. An empty token indicates that the query is complete.
 //
 // `phase` indicates the instance phase, `activeSessionCount` indicates the number of current active sessions, and `maxConcurrentSessions` indicates the configured concurrency limit for a single instance. You can query the active sessions of an instance by calling [ListSandboxSessions](https://api.aliyun.com/document/AgentCore/2026-08-04/ListSandboxSessions).
 //
@@ -11999,19 +11999,19 @@ func (client *Client) ListSandboxesWithOptions(workspaceId *string, agentId *str
 
 // Summary:
 //
-// Performs a paging query on the running instances of an agent, and supports filtering by Sandbox ID and current valid session ID fragments.
+// Performs a paging query on the running instances of an agent and supports filtering by sandbox ID and current valid session ID fragments.
 //
 // Description:
 //
-// Queries the running instances (sandboxes) of an agent to view instance distribution and current running status.
+// Queries the running instances (sandboxes) of an agent to view the instance distribution and current running status.
 //
 // ### Filter instances
 //
-// `searchText` matches Sandbox ID fragments, and `sessionId` matches current valid session ID fragments. Both are case-insensitive. If both are submitted, they are combined for filtering.
+// `searchText` matches sandbox ID fragments, and `sessionId` matches current valid session ID fragments. Both are case-insensitive. If both are submitted, they are combined for filtering.
 //
 // ### Pagination and status
 //
-// The default value of `maxResults` is 20. Valid values: 1 to 100. Omit `nextToken` for the first request. For subsequent requests, use the response token as is, and keep `workspaceId`, `agentId`, filter conditions, and `maxResults` unchanged. An empty token indicates that the query is complete.
+// The default value of `maxResults` is 20, and the valid values are 1 to 100. Omit `nextToken` for the first request. For subsequent requests, use the response token as is, and keep `workspaceId`, `agentId`, filter conditions, and `maxResults` unchanged. An empty token indicates that the query is complete.
 //
 // `phase` indicates the instance phase, `activeSessionCount` indicates the number of current active sessions, and `maxConcurrentSessions` indicates the configured concurrency limit for a single instance. You can query the active sessions of an instance by calling [ListSandboxSessions](https://api.aliyun.com/document/AgentCore/2026-08-04/ListSandboxSessions).
 //
@@ -12032,15 +12032,15 @@ func (client *Client) ListSandboxes(workspaceId *string, agentId *string, reques
 
 // Summary:
 //
-// Queries service endpoints in a specified workspace with paging, and supports filtering by target type, agent, collaboration component, and status.
+// Performs a paging query of service endpoints in a specified workspace and supports filtering by target type, agent, collaboration component, and status.
 //
 // Description:
 //
-// Queries service endpoints in a workspace with paging to find the access endpoints for agents or collaboration components.
+// Performs a paging query of service endpoints in a workspace to find the access endpoints of agents or collaboration components.
 //
 // - Use targetType, agentId, agentVersion, resourceBindingId, collaborationComponent, and status to filter the results.
 //
-// - Use maxResults to set the number of entries per page. If omitted, the default value is 20.
+// - Use maxResults to set the page size. If this parameter is not specified, the default value is 20.
 //
 // - Use the returned nextToken to query the next page.
 //
@@ -12117,15 +12117,15 @@ func (client *Client) ListServiceEndpointsWithOptions(workspaceId *string, reque
 
 // Summary:
 //
-// Queries service endpoints in a specified workspace with paging, and supports filtering by target type, agent, collaboration component, and status.
+// Performs a paging query of service endpoints in a specified workspace and supports filtering by target type, agent, collaboration component, and status.
 //
 // Description:
 //
-// Queries service endpoints in a workspace with paging to find the access endpoints for agents or collaboration components.
+// Performs a paging query of service endpoints in a workspace to find the access endpoints of agents or collaboration components.
 //
 // - Use targetType, agentId, agentVersion, resourceBindingId, collaborationComponent, and status to filter the results.
 //
-// - Use maxResults to set the number of entries per page. If omitted, the default value is 20.
+// - Use maxResults to set the page size. If this parameter is not specified, the default value is 20.
 //
 // - Use the returned nextToken to query the next page.
 //
@@ -12232,11 +12232,11 @@ func (client *Client) ListSkillReferences(workspaceId *string, skillName *string
 
 // Summary:
 //
-// Performs a paged query of skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
+// Performs a paged query for skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
 //
 // Description:
 //
-// Performs a paged query of skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
+// Performs a paged query for skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
 //
 // @param request - ListSkillsRequest
 //
@@ -12315,11 +12315,11 @@ func (client *Client) ListSkillsWithOptions(workspaceId *string, request *ListSk
 
 // Summary:
 //
-// Performs a paged query of skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
+// Performs a paged query for skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
 //
 // Description:
 //
-// Performs a paged query of skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
+// Performs a paged query for skills in a specified workspace and returns the basic information, version status, and paging information of the skills.
 //
 // @param request - ListSkillsRequest
 //
@@ -12338,11 +12338,11 @@ func (client *Client) ListSkills(workspaceId *string, request *ListSkillsRequest
 
 // Summary:
 //
-// Performs a paging query of teams in a specified workspace. You can use nameLike to filter teams by fuzzy match on the team name, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. The member information in the list includes only the member ID, name, and team role.
+// Queries teams in a specified workspace with paging. You can use nameLike to filter teams by fuzzy match on the team name, maxResults to specify the maximum number of records per page, and nextToken to obtain the next page. If maxResults is not specified, the server returns 10 records by default. The member information in the list includes only the member identifier, name, and team role.
 //
 // Description:
 //
-// Performs a paging query of teams in a specified workspace.
+// Queries teams in a specified workspace with paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -12397,11 +12397,11 @@ func (client *Client) ListTeamsWithOptions(workspaceId *string, request *ListTea
 
 // Summary:
 //
-// Performs a paging query of teams in a specified workspace. You can use nameLike to filter teams by fuzzy match on the team name, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page. If maxResults is not specified, the server returns 10 records by default. The member information in the list includes only the member ID, name, and team role.
+// Queries teams in a specified workspace with paging. You can use nameLike to filter teams by fuzzy match on the team name, maxResults to specify the maximum number of records per page, and nextToken to obtain the next page. If maxResults is not specified, the server returns 10 records by default. The member information in the list includes only the member identifier, name, and team role.
 //
 // Description:
 //
-// Performs a paging query of teams in a specified workspace.
+// Queries teams in a specified workspace with paging.
 //
 // @param request - ListTeamsRequest
 //
@@ -12420,7 +12420,7 @@ func (client *Client) ListTeams(workspaceId *string, request *ListTeamsRequest) 
 
 // Summary:
 //
-// Performs a paged query for users in a specified workspace. You can filter users by fuzzy match on the username by using nameLike, specify the maximum number of records per paging by using maxResults, and retrieve the next paging by using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Performs a paged query for users in a specified workspace. You can use nameLike to filter users by fuzzy match on the username, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page during paging. If maxResults is not specified, the server returns 10 records by default.
 //
 // Description:
 //
@@ -12487,7 +12487,7 @@ func (client *Client) ListUsersWithOptions(workspaceId *string, request *ListUse
 
 // Summary:
 //
-// Performs a paged query for users in a specified workspace. You can filter users by fuzzy match on the username by using nameLike, specify the maximum number of records per paging by using maxResults, and retrieve the next paging by using nextToken. If maxResults is not specified, the server returns 10 records by default.
+// Performs a paged query for users in a specified workspace. You can use nameLike to filter users by fuzzy match on the username, maxResults to specify the maximum number of records per page, and nextToken to retrieve the next page during paging. If maxResults is not specified, the server returns 10 records by default.
 //
 // Description:
 //
@@ -12510,19 +12510,19 @@ func (client *Client) ListUsers(workspaceId *string, request *ListUsersRequest) 
 
 // Summary:
 //
-// Performs a paged query of workspaces under the current tenant. By default, the list does not return soft-deleted records whose status is Deleted. The server applies stable sorting to the results in chronological order of creation during paging.
+// Performs a paged query of workspaces under the current tenant. By default, the list does not return soft-deleted records with the Deleted status, and the server performs stable sorting of the results by creation order during paging.
 //
 // Description:
 //
 // Performs a paged query of workspaces accessible to the current account for selecting a workspace or viewing a workspace overview.
 //
-// - Use `nameLike` to filter by name using fuzzy match.
+// - Use `nameLike` for fuzzy filtering by name.
 //
 // - Use `maxResults` to configure the Settings for the number of entries per page. If this parameter is omitted or set to `0`, the default value is 20.
 //
 // - Use `nextToken` to query the next page during paging, or use `skip` to skip a specified number of workspaces.
 //
-// The list is sorted in the order of creation. By default, deleted workspaces (with the `Deleted` status) are not returned.
+// The list is arranged by creation order. By default, deleted workspaces with the `Deleted` status are not returned.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -12577,19 +12577,19 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// Performs a paged query of workspaces under the current tenant. By default, the list does not return soft-deleted records whose status is Deleted. The server applies stable sorting to the results in chronological order of creation during paging.
+// Performs a paged query of workspaces under the current tenant. By default, the list does not return soft-deleted records with the Deleted status, and the server performs stable sorting of the results by creation order during paging.
 //
 // Description:
 //
 // Performs a paged query of workspaces accessible to the current account for selecting a workspace or viewing a workspace overview.
 //
-// - Use `nameLike` to filter by name using fuzzy match.
+// - Use `nameLike` for fuzzy filtering by name.
 //
 // - Use `maxResults` to configure the Settings for the number of entries per page. If this parameter is omitted or set to `0`, the default value is 20.
 //
 // - Use `nextToken` to query the next page during paging, or use `skip` to skip a specified number of workspaces.
 //
-// The list is sorted in the order of creation. By default, deleted workspaces (with the `Deleted` status) are not returned.
+// The list is arranged by creation order. By default, deleted workspaces with the `Deleted` status are not returned.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -12852,39 +12852,39 @@ func (client *Client) PrecheckSkillUploadViaOss(workspaceId *string, request *Pr
 
 // Summary:
 //
-// Prepares the SCIM receiving configuration and returns the provisioning URL and credential summary. Issues a token if no available credentials exist and returns the plaintext only in this response, without automatically enabling AgentCore user synchronization.
+// Prepares the SCIM receiving configuration and returns the provisioning URL and credential summary. Issues a token if no available credentials exist and returns the plaintext only in the current response without automatically enabling user synchronization in AgentCore.
 //
 // Description:
 //
-// Prepares the receiving endpoint and access token for integrating an enterprise identity system with SCIM user synchronization. The enterprise identity system uses this information to provision users to the shared user pool of AgentCore.
+// Prepares the receiving endpoint and access token for integrating SCIM user synchronization with an enterprise identity system. The enterprise identity system uses this information to provision users to the shared user pool of AgentCore.
 //
 // SCIM is a user provisioning protocol. The enterprise identity system first sends users to the receiving endpoint, and then AgentCore synchronizes the users from the user pool to the workspace.
 //
 // ### Before you begin
 //
-// A `CustomSSO` binding has been created by using [CreateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProvider), and the shared user pool is ready. SCIM integration can be performed independently of SAML logon configuration.
+// A `CustomSSO` binding has been created by calling [CreateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProvider), and the shared user pool is ready. SCIM integration can be performed independently of SAML logon configuration.
 //
 // ### What this operation prepares
 //
 // This operation enables the SCIM receiving endpoint and returns the receiving URL and credential summary:
 //
-// | Current credential status | Returned result |
+// | Current credential status | Return result |
 //
 // | --- | --- |
 //
 // | An unexpired credential with the status of `Enabled` already exists | Reuses the existing credential. The `token` field returns an empty string `""`. Use the previously saved token. |
 //
-// | No available credentials exist | Creates a new credential. The `token` field returns the plaintext of the new token, which is returned only in this response. |
+// | No available credentials exist | Creates a new credential. The `token` field returns the plaintext of the new token, which is returned only in the current response. |
 //
-// The plaintext of an existing token cannot be queried again. If the token is lost, you can create a new token by calling [CreateIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSCIMCredential). A maximum of two credentials can be retained for the same user pool. When the limit is reached, you must delete unused credentials first.
+// The plaintext of an existing token cannot be queried again. If the token is lost, you can create a new token by calling [CreateIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSCIMCredential). A single user pool can retain a maximum of two credentials. When the limit is reached, you must delete unused credentials first.
 //
-// ### Subsequent configuration
+// ### What to do next
 //
-// 1. Configure the returned receiving URL and valid token in the SCIM user provisioning settings of the enterprise identity system.
+// **Step 1:*	- Configure the returned receiving URL and valid token in the SCIM user provisioning settings of the enterprise identity system.
 //
-// 2. Complete the connection test and user assignment in the enterprise identity system.
+// **Step 2:*	- Complete the connection test and user assignment in the enterprise identity system.
 //
-// 3. Enable AgentCore user synchronization by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM), and then query the synchronization result by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM).
+// **Step 3:*	- Enable AgentCore user synchronization by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM), and then query the synchronization results by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM).
 //
 // @param request - PrepareIdentityProviderSCIMRequest
 //
@@ -12925,39 +12925,39 @@ func (client *Client) PrepareIdentityProviderSCIMWithOptions(workspaceId *string
 
 // Summary:
 //
-// Prepares the SCIM receiving configuration and returns the provisioning URL and credential summary. Issues a token if no available credentials exist and returns the plaintext only in this response, without automatically enabling AgentCore user synchronization.
+// Prepares the SCIM receiving configuration and returns the provisioning URL and credential summary. Issues a token if no available credentials exist and returns the plaintext only in the current response without automatically enabling user synchronization in AgentCore.
 //
 // Description:
 //
-// Prepares the receiving endpoint and access token for integrating an enterprise identity system with SCIM user synchronization. The enterprise identity system uses this information to provision users to the shared user pool of AgentCore.
+// Prepares the receiving endpoint and access token for integrating SCIM user synchronization with an enterprise identity system. The enterprise identity system uses this information to provision users to the shared user pool of AgentCore.
 //
 // SCIM is a user provisioning protocol. The enterprise identity system first sends users to the receiving endpoint, and then AgentCore synchronizes the users from the user pool to the workspace.
 //
 // ### Before you begin
 //
-// A `CustomSSO` binding has been created by using [CreateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProvider), and the shared user pool is ready. SCIM integration can be performed independently of SAML logon configuration.
+// A `CustomSSO` binding has been created by calling [CreateIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProvider), and the shared user pool is ready. SCIM integration can be performed independently of SAML logon configuration.
 //
 // ### What this operation prepares
 //
 // This operation enables the SCIM receiving endpoint and returns the receiving URL and credential summary:
 //
-// | Current credential status | Returned result |
+// | Current credential status | Return result |
 //
 // | --- | --- |
 //
 // | An unexpired credential with the status of `Enabled` already exists | Reuses the existing credential. The `token` field returns an empty string `""`. Use the previously saved token. |
 //
-// | No available credentials exist | Creates a new credential. The `token` field returns the plaintext of the new token, which is returned only in this response. |
+// | No available credentials exist | Creates a new credential. The `token` field returns the plaintext of the new token, which is returned only in the current response. |
 //
-// The plaintext of an existing token cannot be queried again. If the token is lost, you can create a new token by calling [CreateIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSCIMCredential). A maximum of two credentials can be retained for the same user pool. When the limit is reached, you must delete unused credentials first.
+// The plaintext of an existing token cannot be queried again. If the token is lost, you can create a new token by calling [CreateIdentityProviderSCIMCredential](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSCIMCredential). A single user pool can retain a maximum of two credentials. When the limit is reached, you must delete unused credentials first.
 //
-// ### Subsequent configuration
+// ### What to do next
 //
-// 1. Configure the returned receiving URL and valid token in the SCIM user provisioning settings of the enterprise identity system.
+// **Step 1:*	- Configure the returned receiving URL and valid token in the SCIM user provisioning settings of the enterprise identity system.
 //
-// 2. Complete the connection test and user assignment in the enterprise identity system.
+// **Step 2:*	- Complete the connection test and user assignment in the enterprise identity system.
 //
-// 3. Enable AgentCore user synchronization by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM), and then query the synchronization result by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM).
+// **Step 3:*	- Enable AgentCore user synchronization by calling [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM), and then query the synchronization results by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM).
 //
 // @param request - PrepareIdentityProviderSCIMRequest
 //
@@ -12976,11 +12976,11 @@ func (client *Client) PrepareIdentityProviderSCIM(workspaceId *string, request *
 
 // Summary:
 //
-// Publishes a specified skill version and changes its status to published.
+// Publishes a specified skill version and sets its status to published.
 //
 // Description:
 //
-// Publishes a specified skill version and changes its status to published.
+// Publishes a specified skill version and sets its status to published.
 //
 // @param tmpReq - PublishSkillVersionRequest
 //
@@ -13033,11 +13033,11 @@ func (client *Client) PublishSkillVersionWithOptions(workspaceId *string, skillN
 
 // Summary:
 //
-// Publishes a specified skill version and changes its status to published.
+// Publishes a specified skill version and sets its status to published.
 //
 // Description:
 //
-// Publishes a specified skill version and changes its status to published.
+// Publishes a specified skill version and sets its status to published.
 //
 // @param request - PublishSkillVersionRequest
 //
@@ -13060,7 +13060,7 @@ func (client *Client) PublishSkillVersion(workspaceId *string, skillName *string
 //
 // Description:
 //
-// Submits a request to rebuild a single sandbox image for a specified managed agent. Existing sessions may be interrupted. An HTTP 200 response only indicates that the request is successfully submitted and accepted. You must use the returned operationId to call GetSandboxRebuildOperation. Only an overall SUCCEEDED status indicates that the rebuild is complete. Do not automatically resubmit the request if the query times out, returns UNKNOWN, or the result is unclear. You can specify an endpoint runtime version by using serviceEndpointId. If this parameter is omitted, the default latest runtime identity is used.
+// Submits a request to rebuild a single sandbox image for a specified managed agent. Existing sessions may be interrupted. An HTTP 200 response only indicates that the request is successfully submitted and accepted. You must use the returned operationId to call GetSandboxRebuildOperation. Only an overall SUCCEEDED status indicates completion. Do not automatically resubmit the request if the query times out, returns UNKNOWN, or the result is unclear. You can specify the endpoint runtime version by using serviceEndpointId. If this parameter is omitted, the default latest runtime identity is used.
 //
 // @param request - RebuildSandboxRequest
 //
@@ -13111,7 +13111,7 @@ func (client *Client) RebuildSandboxWithOptions(workspaceId *string, agentId *st
 //
 // Description:
 //
-// Submits a request to rebuild a single sandbox image for a specified managed agent. Existing sessions may be interrupted. An HTTP 200 response only indicates that the request is successfully submitted and accepted. You must use the returned operationId to call GetSandboxRebuildOperation. Only an overall SUCCEEDED status indicates that the rebuild is complete. Do not automatically resubmit the request if the query times out, returns UNKNOWN, or the result is unclear. You can specify an endpoint runtime version by using serviceEndpointId. If this parameter is omitted, the default latest runtime identity is used.
+// Submits a request to rebuild a single sandbox image for a specified managed agent. Existing sessions may be interrupted. An HTTP 200 response only indicates that the request is successfully submitted and accepted. You must use the returned operationId to call GetSandboxRebuildOperation. Only an overall SUCCEEDED status indicates completion. Do not automatically resubmit the request if the query times out, returns UNKNOWN, or the result is unclear. You can specify the endpoint runtime version by using serviceEndpointId. If this parameter is omitted, the default latest runtime identity is used.
 //
 // @param request - RebuildSandboxRequest
 //
@@ -13210,7 +13210,7 @@ func (client *Client) RedraftSkillVersion(workspaceId *string, skillName *string
 
 // Summary:
 //
-// Resets the logon password of a specified user. Specify the user by using agentCoreUserId or username. You must specify at least one of them. This operation only supports resetting the passwords of users who use local password authentication for the workspace. If you do not specify the password parameter, the server generates a random password and returns it in the response.
+// Resets the logon password of a specified user. Specify the user by using agentCoreUserId or username. At least one of the two parameters is required. This operation only supports users who use local password authentication in the workspace. If the password parameter is not specified, the server generates a random password and returns it in the response.
 //
 // Description:
 //
@@ -13267,7 +13267,7 @@ func (client *Client) ResetUserPasswordWithOptions(workspaceId *string, tmpReq *
 
 // Summary:
 //
-// Resets the logon password of a specified user. Specify the user by using agentCoreUserId or username. You must specify at least one of them. This operation only supports resetting the passwords of users who use local password authentication for the workspace. If you do not specify the password parameter, the server generates a random password and returns it in the response.
+// Resets the logon password of a specified user. Specify the user by using agentCoreUserId or username. At least one of the two parameters is required. This operation only supports users who use local password authentication in the workspace. If the password parameter is not specified, the server generates a random password and returns it in the response.
 //
 // Description:
 //
@@ -13296,15 +13296,15 @@ func (client *Client) ResetUserPassword(workspaceId *string, request *ResetUserP
 //
 // Resubmits the creation request for an existing image cache to recreate a cache that has not been successfully created.
 //
-// ### Call scope
+// ### Scope
 //
-// Pass `regionId`, `workspaceId`, and `clientToken` as query parameters, and use `imageId` to locate the cache. This operation applies to ACR source caches and re-verifies the source repository authorization before submission.
+// Pass `regionId`, `workspaceId`, and `clientToken` as query parameters, and use `imageId` to locate the cache. This operation applies to ACR-sourced caches and re-verifies the source repository authorization before submission.
 //
 // ### Query retry results
 //
-// A successful response indicates that a retry acceptance snapshot is returned, not that the creation is complete. Query the status through [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache). `READY` indicates that the cache is ready. If the status is `FAILED`, check the `error` field.
+// A successful response indicates that a retry acceptance snapshot is returned, which does not mean that the creation is complete. Query the status by calling [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache). `READY` indicates that the cache is ready. If the status is `FAILED`, check `error`.
 //
-// The `clientToken` parameter currently only verifies that the value is not empty and does not guarantee deduplication or recovery of the original acceptance result based on this identifier.
+// Currently, `clientToken` is only verified to be non-empty and does not guarantee deduplication by this token or restoration of the original acceptance result.
 //
 // @param tmpReq - RetryImageCacheRequest
 //
@@ -13377,15 +13377,15 @@ func (client *Client) RetryImageCacheWithOptions(imageId *string, tmpReq *RetryI
 //
 // Resubmits the creation request for an existing image cache to recreate a cache that has not been successfully created.
 //
-// ### Call scope
+// ### Scope
 //
-// Pass `regionId`, `workspaceId`, and `clientToken` as query parameters, and use `imageId` to locate the cache. This operation applies to ACR source caches and re-verifies the source repository authorization before submission.
+// Pass `regionId`, `workspaceId`, and `clientToken` as query parameters, and use `imageId` to locate the cache. This operation applies to ACR-sourced caches and re-verifies the source repository authorization before submission.
 //
 // ### Query retry results
 //
-// A successful response indicates that a retry acceptance snapshot is returned, not that the creation is complete. Query the status through [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache). `READY` indicates that the cache is ready. If the status is `FAILED`, check the `error` field.
+// A successful response indicates that a retry acceptance snapshot is returned, which does not mean that the creation is complete. Query the status by calling [GetImageCache](https://api.aliyun.com/document/AgentCore/2026-08-04/GetImageCache). `READY` indicates that the cache is ready. If the status is `FAILED`, check `error`.
 //
-// The `clientToken` parameter currently only verifies that the value is not empty and does not guarantee deduplication or recovery of the original acceptance result based on this identifier.
+// Currently, `clientToken` is only verified to be non-empty and does not guarantee deduplication by this token or restoration of the original acceptance result.
 //
 // @param request - RetryImageCacheRequest
 //
@@ -13404,11 +13404,11 @@ func (client *Client) RetryImageCache(imageId *string, request *RetryImageCacheR
 
 // Summary:
 //
-// Retrieves long-term memory from MemoryStore based on semantics.
+// Retrieves long-term memory from a MemoryStore based on semantics.
 //
 // Description:
 //
-// Retrieves relevant memories semantically from the long-term memory store (MemoryStore) to help agents obtain the information required for subsequent tasks.
+// Retrieves relevant memories from a long-term memory store (MemoryStore) based on semantic search, allowing agents to obtain information required for subsequent tasks.
 //
 // @param tmpReq - SearchMemoriesRequest
 //
@@ -13461,11 +13461,11 @@ func (client *Client) SearchMemoriesWithOptions(workspaceId *string, memoryStore
 
 // Summary:
 //
-// Retrieves long-term memory from MemoryStore based on semantics.
+// Retrieves long-term memory from a MemoryStore based on semantics.
 //
 // Description:
 //
-// Retrieves relevant memories semantically from the long-term memory store (MemoryStore) to help agents obtain the information required for subsequent tasks.
+// Retrieves relevant memories from a long-term memory store (MemoryStore) based on semantic search, allowing agents to obtain information required for subsequent tasks.
 //
 // @param request - SearchMemoriesRequest
 //
@@ -13488,9 +13488,7 @@ func (client *Client) SearchMemories(workspaceId *string, memoryStoreName *strin
 //
 // Description:
 //
-// Submits a specified draft version of an agent template for review.
-//
-// If no release pipeline is configured, the version is directly published online.
+// Submits a specified draft version of an agent template for review. If no release pipeline is configured, the version is directly published online.
 //
 // @param tmpReq - SubmitAgentSpecVersionRequest
 //
@@ -13547,9 +13545,7 @@ func (client *Client) SubmitAgentSpecVersionWithOptions(workspaceId *string, age
 //
 // Description:
 //
-// Submits a specified draft version of an agent template for review.
-//
-// If no release pipeline is configured, the version is directly published online.
+// Submits a specified draft version of an agent template for review. If no release pipeline is configured, the version is directly published online.
 //
 // @param request - SubmitAgentSpecVersionRequest
 //
@@ -13728,11 +13724,11 @@ func (client *Client) UpdateAccessApplication(workspaceId *string, applicationId
 
 // Summary:
 //
-// Updates the ServiceEndpoint, enablement status, or channel behavior configuration bound to an IM channel. At least one updatable field must be provided.
+// Updates the ServiceEndpoint, enabling status, or channel behavior configuration bound to an IM channel. At least one updatable field must be provided.
 //
 // Description:
 //
-// Updates the ServiceEndpoint, enablement status, or channel behavior configuration bound to an IM channel.
+// Updates the ServiceEndpoint, enabling status, or channel behavior configuration bound to an IM channel.
 //
 // At least one updatable field must be provided.
 //
@@ -13793,11 +13789,11 @@ func (client *Client) UpdateAgentIMChannelWithOptions(workspaceId *string, agent
 
 // Summary:
 //
-// Updates the ServiceEndpoint, enablement status, or channel behavior configuration bound to an IM channel. At least one updatable field must be provided.
+// Updates the ServiceEndpoint, enabling status, or channel behavior configuration bound to an IM channel. At least one updatable field must be provided.
 //
 // Description:
 //
-// Updates the ServiceEndpoint, enablement status, or channel behavior configuration bound to an IM channel.
+// Updates the ServiceEndpoint, enabling status, or channel behavior configuration bound to an IM channel.
 //
 // At least one updatable field must be provided.
 //
@@ -13818,13 +13814,13 @@ func (client *Client) UpdateAgentIMChannel(workspaceId *string, agentId *string,
 
 // Summary:
 //
-// Fully updates the channel credentials for a specified IM channel. Secrets are not returned in the response.
+// Updates all channel credentials for a specified IM channel. Secrets are not returned in the response.
 //
 // Description:
 //
-// Replaces the access credentials for an IM channel to rotate keys or correct authentication configurations.
+// Replaces all access credentials for an IM channel to rotate keys or correct authentication configurations.
 //
-// Submit the complete new credentials. The response does not return plaintext secrets.
+// Submit complete new credentials. The response does not return secrets in plaintext.
 //
 // @param tmpReq - UpdateAgentIMChannelCredentialRequest
 //
@@ -13883,13 +13879,13 @@ func (client *Client) UpdateAgentIMChannelCredentialWithOptions(workspaceId *str
 
 // Summary:
 //
-// Fully updates the channel credentials for a specified IM channel. Secrets are not returned in the response.
+// Updates all channel credentials for a specified IM channel. Secrets are not returned in the response.
 //
 // Description:
 //
-// Replaces the access credentials for an IM channel to rotate keys or correct authentication configurations.
+// Replaces all access credentials for an IM channel to rotate keys or correct authentication configurations.
 //
-// Submit the complete new credentials. The response does not return plaintext secrets.
+// Submit complete new credentials. The response does not return secrets in plaintext.
 //
 // @param request - UpdateAgentIMChannelCredentialRequest
 //
@@ -13908,11 +13904,11 @@ func (client *Client) UpdateAgentIMChannelCredential(workspaceId *string, agentI
 
 // Summary:
 //
-// Updates the business tags, version tags, and visibility scope of a specified AgentSpec. Fields not provided remain unchanged.
+// Updates the business tags, version tags, and visibility scope of a specified AgentSpec. Fields not passed remain unchanged.
 //
 // Description:
 //
-// Updates the business tags, version tags, and visibility scope of a specified agent template. Fields not provided remain unchanged.
+// Updates the business tags, version tags, and visibility scope of a specified agent template. Fields not passed remain unchanged.
 //
 // @param tmpReq - UpdateAgentSpecRequest
 //
@@ -13965,11 +13961,11 @@ func (client *Client) UpdateAgentSpecWithOptions(workspaceId *string, agentSpecN
 
 // Summary:
 //
-// Updates the business tags, version tags, and visibility scope of a specified AgentSpec. Fields not provided remain unchanged.
+// Updates the business tags, version tags, and visibility scope of a specified AgentSpec. Fields not passed remain unchanged.
 //
 // Description:
 //
-// Updates the business tags, version tags, and visibility scope of a specified agent template. Fields not provided remain unchanged.
+// Updates the business tags, version tags, and visibility scope of a specified agent template. Fields not passed remain unchanged.
 //
 // @param request - UpdateAgentSpecRequest
 //
@@ -13988,13 +13984,13 @@ func (client *Client) UpdateAgentSpec(workspaceId *string, agentSpecName *string
 
 // Summary:
 //
-// Updates the API key or service account key collection for an enabled QoderCLI connector. When serviceAccountKeys is submitted, the service uses it as the complete updated key collection to add, rename, rotate, and delete keys.
+// Updates the API key or service account key collection for an enabled QoderCLI connector. When serviceAccountKeys is submitted, the service treats it as the updated complete key collection to perform additions, renames, rotations, and deletions.
 //
 // Description:
 //
 // Updates the API key or service account key collection for an enabled QoderCLI connector.
 //
-// When updating service account keys, existing keys are matched by their record `id`.
+// When updating service account keys, the service matches existing keys by their id.
 //
 // @param tmpReq - UpdateConnectorRequest
 //
@@ -14047,13 +14043,13 @@ func (client *Client) UpdateConnectorWithOptions(workspaceId *string, connectorN
 
 // Summary:
 //
-// Updates the API key or service account key collection for an enabled QoderCLI connector. When serviceAccountKeys is submitted, the service uses it as the complete updated key collection to add, rename, rotate, and delete keys.
+// Updates the API key or service account key collection for an enabled QoderCLI connector. When serviceAccountKeys is submitted, the service treats it as the updated complete key collection to perform additions, renames, rotations, and deletions.
 //
 // Description:
 //
 // Updates the API key or service account key collection for an enabled QoderCLI connector.
 //
-// When updating service account keys, existing keys are matched by their record `id`.
+// When updating service account keys, the service matches existing keys by their id.
 //
 // @param request - UpdateConnectorRequest
 //
@@ -14080,25 +14076,25 @@ func (client *Client) UpdateConnector(workspaceId *string, connectorName *string
 //
 // ### Update rules
 //
-// You must modify at least one of the credential content, description, or application scope. When modifying only the application scope, you do not need to submit credentialMetadata or description.
+// You must modify at least one of the following: credential content, description, or application scope. If you only modify the application scope, you do not need to submit `credentialMetadata` or `description`.
 //
-// - Omit credentialMetadata: The original credential content is retained. If provided, submit a JSON string according to the original credential type.
+// - Omit `credentialMetadata`: The original credential content is retained. If provided, submit a JSON string according to the original credential type.
 //
-// - Omit description: The original description is retained.
+// - Omit `description`: The original description is retained.
 //
-// - The credential name and credentialType cannot be modified.
+// - The credential name and `credentialType` cannot be modified.
 //
 // ### MCP header application scope
 //
-// Only mcpHeader supports updating the application scope. For apiKey, do not submit resourceScope or resourceRefs.
+// Only `mcpHeader` supports updating the application scope. Do not submit `resourceScope` or `resourceRefs` for `apiKey`.
 //
 // - Omit both the scope and the resource list: The original configuration is retained.
 //
-// - Submit resourceRefs: You must also submit resourceScope.
+// - Submit `resourceRefs`: You must also submit `resourceScope`.
 //
-// - resourceScope=ALL: Omit resourceRefs.
+// - `resourceScope=ALL`: Omit `resourceRefs`.
 //
-// - resourceScope=SPECIFIED: Submit resourceRefs. An empty array [] is allowed during updates. For each item, specify resourceType=mcpServer and resourceId.
+// - `resourceScope=SPECIFIED`: Submit `resourceRefs`. An empty array `[]` is allowed during updates. For each item, specify `resourceType=mcpServer` and `resourceId`.
 //
 // ### Query results
 //
@@ -14169,25 +14165,25 @@ func (client *Client) UpdateCredentialWithOptions(workspaceId *string, credentia
 //
 // ### Update rules
 //
-// You must modify at least one of the credential content, description, or application scope. When modifying only the application scope, you do not need to submit credentialMetadata or description.
+// You must modify at least one of the following: credential content, description, or application scope. If you only modify the application scope, you do not need to submit `credentialMetadata` or `description`.
 //
-// - Omit credentialMetadata: The original credential content is retained. If provided, submit a JSON string according to the original credential type.
+// - Omit `credentialMetadata`: The original credential content is retained. If provided, submit a JSON string according to the original credential type.
 //
-// - Omit description: The original description is retained.
+// - Omit `description`: The original description is retained.
 //
-// - The credential name and credentialType cannot be modified.
+// - The credential name and `credentialType` cannot be modified.
 //
 // ### MCP header application scope
 //
-// Only mcpHeader supports updating the application scope. For apiKey, do not submit resourceScope or resourceRefs.
+// Only `mcpHeader` supports updating the application scope. Do not submit `resourceScope` or `resourceRefs` for `apiKey`.
 //
 // - Omit both the scope and the resource list: The original configuration is retained.
 //
-// - Submit resourceRefs: You must also submit resourceScope.
+// - Submit `resourceRefs`: You must also submit `resourceScope`.
 //
-// - resourceScope=ALL: Omit resourceRefs.
+// - `resourceScope=ALL`: Omit `resourceRefs`.
 //
-// - resourceScope=SPECIFIED: Submit resourceRefs. An empty array [] is allowed during updates. For each item, specify resourceType=mcpServer and resourceId.
+// - `resourceScope=SPECIFIED`: Submit `resourceRefs`. An empty array `[]` is allowed during updates. For each item, specify `resourceType=mcpServer` and `resourceId`.
 //
 // ### Query results
 //
@@ -14210,7 +14206,7 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 
 // Summary:
 //
-// Updates the configuration of a custom code or image agent in a specified workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call GetCustomAgent to query the update result.
+// Updates the configuration of a custom code or image agent in a specified workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call the GetCustomAgent operation to query the update result.
 //
 // Description:
 //
@@ -14226,9 +14222,9 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // | --- | --- |
 //
-// | `name` | Omit to retain the original name. The value cannot be `null` or an empty string. |
+// | `name` | Omitted to retain the original name. It cannot be `null` or a blank string. |
 //
-// | `description` | Omit to retain the original description. Pass `null` to clear the description. |
+// | `description` | Omitted to retain the original description. Pass `null` to clear the description. |
 //
 // | `artifact` | When submitting, specify `port` and the required fields for the selected source. To retain a custom startup command, also specify `entrypoint`. `code` and `container` are mutually exclusive. |
 //
@@ -14246,7 +14242,7 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // ### Deployment artifacts
 //
-// Three deployment methods are supported: code packages, ACR images, and custom images. When updating or switching the deployment method, provide the configuration according to the target method.
+// Supports three deployment methods: code packages, ACR images, and custom images. When updating or switching the deployment method, provide the configuration according to the target method.
 //
 // | Deployment method | Configuration requirements |
 //
@@ -14256,9 +14252,9 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // | Custom image | Set `artifact.container.type=custom`, provide the complete `customImage`, and provide `clientToken` in the query parameters. When switching to this method, also specify `artifact.port`. Do not include ACR instance, namespace, repository, and tag fields in `container`. |
 //
-// | Code package | Provide `artifact.port`, as well as `sourceUri`, `languageRuntime`, and `entrypoint` in `artifact.code`. Do not commit `container` at the same time. |
+// | Code package | Provide `artifact.port`, as well as `sourceUri`, `languageRuntime`, and `entrypoint` in `artifact.code`. Do not submit `container` at the same time. |
 //
-// **Custom image**
+// **Custom images**
 //
 // - `customImage` must include the complete image address `image` and the independent pull network `pullNetwork`. The image address does not include a protocol or user information, and supports addresses with tags or digests.
 //
@@ -14266,21 +14262,21 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // - When repository authentication is required, provide non-empty `username` and `password` at the same time. For anonymous access, omit both. The response does not return the password.
 //
-// - Omitting the entire `customImage` retains the saved image source. Commit the complete object when updating the custom image source. You do not need to resubmit this object when only adjusting the runtime configuration.
+// - Omitting the entire `customImage` retains the saved image source. Submit the complete object when updating the custom image source. You do not need to resubmit this object when only adjusting the runtime configuration.
 //
-// - Custom images and code packages do not support enabling `useImageCache`. The value in the final configuration must be `false`. When this field is omitted for a custom image, it is treated as `false`. When switching to a code package, if the original configuration is `true`, you must explicitly change it to `false`. When updating other sources, omitting this field retains the original value.
+// - Custom images and code packages do not support enabling `useImageCache`. The value of this field in the final configuration must be `false`. When this field is omitted for a custom image, it is treated as `false`. When switching to a code package, if the original configuration is `true`, you must explicitly change it to `false`. When updating other sources, omitting this field retains the original value.
 //
-// **Code package**
+// **Code packages**
 //
-// - Supports ZIP or TAR.GZ. The compressed package size cannot exceed `500000000` bytes. Dependencies are packaged by the invoker. The platform does not execute online builds or install dependencies.
+// - Supports ZIP or TAR.GZ. The compressed package size cannot exceed `500000000` bytes. Dependencies are packaged by the caller. The platform does not perform online building or dependency installation.
 //
-// - Query the active `languageRuntime` values by invoking [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes).
+// - Call [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes) to query the available `languageRuntime`.
 //
-// - `sourceUri` supports `oss://` addresses or HTTPS object addresses of standard OSS public domain name, including signed URLs.
+// - `sourceUri` supports `oss://` addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs.
 //
-// - For local code packages, first invoke [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl), upload the file according to the response information, and then commit the returned `sourceUri`.
+// - For local code packages, first call [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl), upload the file according to the response information, and then submit the returned `sourceUri`.
 //
-// - The new source is verified for read permissions, objects, and size before acceptance, and is transferred to a fixed copy on the platform. If the transfer failed, the current agent configuration is not saved. Common updates can reuse the saved fixed code package address.
+// - The new source verifies read permissions, objects, and sizes before acceptance, and transfers them to a fixed platform copy. If the transfer fails, the current agent configuration is not saved. Common updates can reuse the saved fixed code package address.
 //
 // ### Runtime configuration and elasticity
 //
@@ -14292,7 +14288,7 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // | --- | --- | --- |
 //
-// | `enabled` | `false` | Specifies whether elastic scaling is enabled. |
+// | `enabled` | `false` | Specifies whether to enable elastic scaling. |
 //
 // | `minSandboxCount` | `1` | The minimum number of instances. |
 //
@@ -14302,17 +14298,17 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // | `sessionTtlSeconds` | `600` | The maximum idle time of a session, in seconds. |
 //
-// The upper and lower limits of the number of instances are configuration values. Query the current number of instances through `sandboxPhaseCounts`.
+// The upper and lower limits of the number of instances are configuration values. You can query the current number of instances through `sandboxPhaseCounts`.
 //
 // When `sessionPolicy.type=ISOLATED_HEADER_FIELD`, you must specify a valid HTTP request header name `headerName`. Do not specify `headerName` for other session policies.
 //
 // ### Network and mounts
 //
-// Omitting the entire `network` retains the original configuration. When submitting this object, omitted access items are treated as allowed on the agent side, and actual access is restricted by the workspace network configuration.
+// Omitting the entire `network` retains the original configuration. When submitting this object, omitted access items are treated as allowed on the agent side. Actual access is restricted by the workspace network configuration.
 //
 // To retain the original restrictions, submit both `accessInternet.enabled` and `accessVpc.enabled` at the same time. Do not submit only one of them.
 //
-// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. When updating either list, you must include all mount items that need to be retained in the list. The two lists are updated separately. You can use `agenticFsMounts=[]` to clear AgenticFS mounts, but you cannot use `null` to clear them.
+// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. When updating either list, you must include all mount items that need to be retained in the list. The two lists are updated separately. You can set `agenticFsMounts=[]` to clear AgenticFS mounts. You cannot use `null` to clear them.
 //
 // In this operation, ACR images, custom images, and code packages all use the same user mount target rules: `mountPath` is the absolute path in the container, such as `/data/train`, and must not conflict with platform reserved directories. Mount targets must not be duplicated or form parent-child directory overwrites.
 //
@@ -14330,7 +14326,7 @@ func (client *Client) UpdateCredential(workspaceId *string, credentialId *string
 //
 // Variable names must be non-empty and unique in the list. Variable values must be strings, and empty strings are allowed.
 //
-// ### Health checks and logs
+// ### Health checks and logging
 //
 // Omitting the entire `healthCheck` retains the original configuration. Pass `null` to remove the health check. When submitting this object, you must specify `port`. Other unspecified items use the following default values.
 //
@@ -14433,7 +14429,7 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 
 // Summary:
 //
-// Updates the configuration of a custom code or image agent in a specified workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call GetCustomAgent to query the update result.
+// Updates the configuration of a custom code or image agent in a specified workspace and executes the update asynchronously. Omitted top-level fields retain their original configurations. You can call the GetCustomAgent operation to query the update result.
 //
 // Description:
 //
@@ -14449,9 +14445,9 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // | --- | --- |
 //
-// | `name` | Omit to retain the original name. The value cannot be `null` or an empty string. |
+// | `name` | Omitted to retain the original name. It cannot be `null` or a blank string. |
 //
-// | `description` | Omit to retain the original description. Pass `null` to clear the description. |
+// | `description` | Omitted to retain the original description. Pass `null` to clear the description. |
 //
 // | `artifact` | When submitting, specify `port` and the required fields for the selected source. To retain a custom startup command, also specify `entrypoint`. `code` and `container` are mutually exclusive. |
 //
@@ -14469,7 +14465,7 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // ### Deployment artifacts
 //
-// Three deployment methods are supported: code packages, ACR images, and custom images. When updating or switching the deployment method, provide the configuration according to the target method.
+// Supports three deployment methods: code packages, ACR images, and custom images. When updating or switching the deployment method, provide the configuration according to the target method.
 //
 // | Deployment method | Configuration requirements |
 //
@@ -14479,9 +14475,9 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // | Custom image | Set `artifact.container.type=custom`, provide the complete `customImage`, and provide `clientToken` in the query parameters. When switching to this method, also specify `artifact.port`. Do not include ACR instance, namespace, repository, and tag fields in `container`. |
 //
-// | Code package | Provide `artifact.port`, as well as `sourceUri`, `languageRuntime`, and `entrypoint` in `artifact.code`. Do not commit `container` at the same time. |
+// | Code package | Provide `artifact.port`, as well as `sourceUri`, `languageRuntime`, and `entrypoint` in `artifact.code`. Do not submit `container` at the same time. |
 //
-// **Custom image**
+// **Custom images**
 //
 // - `customImage` must include the complete image address `image` and the independent pull network `pullNetwork`. The image address does not include a protocol or user information, and supports addresses with tags or digests.
 //
@@ -14489,21 +14485,21 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // - When repository authentication is required, provide non-empty `username` and `password` at the same time. For anonymous access, omit both. The response does not return the password.
 //
-// - Omitting the entire `customImage` retains the saved image source. Commit the complete object when updating the custom image source. You do not need to resubmit this object when only adjusting the runtime configuration.
+// - Omitting the entire `customImage` retains the saved image source. Submit the complete object when updating the custom image source. You do not need to resubmit this object when only adjusting the runtime configuration.
 //
-// - Custom images and code packages do not support enabling `useImageCache`. The value in the final configuration must be `false`. When this field is omitted for a custom image, it is treated as `false`. When switching to a code package, if the original configuration is `true`, you must explicitly change it to `false`. When updating other sources, omitting this field retains the original value.
+// - Custom images and code packages do not support enabling `useImageCache`. The value of this field in the final configuration must be `false`. When this field is omitted for a custom image, it is treated as `false`. When switching to a code package, if the original configuration is `true`, you must explicitly change it to `false`. When updating other sources, omitting this field retains the original value.
 //
-// **Code package**
+// **Code packages**
 //
-// - Supports ZIP or TAR.GZ. The compressed package size cannot exceed `500000000` bytes. Dependencies are packaged by the invoker. The platform does not execute online builds or install dependencies.
+// - Supports ZIP or TAR.GZ. The compressed package size cannot exceed `500000000` bytes. Dependencies are packaged by the caller. The platform does not perform online building or dependency installation.
 //
-// - Query the active `languageRuntime` values by invoking [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes).
+// - Call [ListAgentCodeRuntimes](https://api.aliyun.com/document/AgentCore/2026-08-04/ListAgentCodeRuntimes) to query the available `languageRuntime`.
 //
-// - `sourceUri` supports `oss://` addresses or HTTPS object addresses of standard OSS public domain name, including signed URLs.
+// - `sourceUri` supports `oss://` addresses or HTTPS object addresses of standard OSS public domain names, including signed URLs.
 //
-// - For local code packages, first invoke [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl), upload the file according to the response information, and then commit the returned `sourceUri`.
+// - For local code packages, first call [GetAgentCodePackageUploadUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageUploadUrl), upload the file according to the response information, and then submit the returned `sourceUri`.
 //
-// - The new source is verified for read permissions, objects, and size before acceptance, and is transferred to a fixed copy on the platform. If the transfer failed, the current agent configuration is not saved. Common updates can reuse the saved fixed code package address.
+// - The new source verifies read permissions, objects, and sizes before acceptance, and transfers them to a fixed platform copy. If the transfer fails, the current agent configuration is not saved. Common updates can reuse the saved fixed code package address.
 //
 // ### Runtime configuration and elasticity
 //
@@ -14515,7 +14511,7 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // | --- | --- | --- |
 //
-// | `enabled` | `false` | Specifies whether elastic scaling is enabled. |
+// | `enabled` | `false` | Specifies whether to enable elastic scaling. |
 //
 // | `minSandboxCount` | `1` | The minimum number of instances. |
 //
@@ -14525,17 +14521,17 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // | `sessionTtlSeconds` | `600` | The maximum idle time of a session, in seconds. |
 //
-// The upper and lower limits of the number of instances are configuration values. Query the current number of instances through `sandboxPhaseCounts`.
+// The upper and lower limits of the number of instances are configuration values. You can query the current number of instances through `sandboxPhaseCounts`.
 //
 // When `sessionPolicy.type=ISOLATED_HEADER_FIELD`, you must specify a valid HTTP request header name `headerName`. Do not specify `headerName` for other session policies.
 //
 // ### Network and mounts
 //
-// Omitting the entire `network` retains the original configuration. When submitting this object, omitted access items are treated as allowed on the agent side, and actual access is restricted by the workspace network configuration.
+// Omitting the entire `network` retains the original configuration. When submitting this object, omitted access items are treated as allowed on the agent side. Actual access is restricted by the workspace network configuration.
 //
 // To retain the original restrictions, submit both `accessInternet.enabled` and `accessVpc.enabled` at the same time. Do not submit only one of them.
 //
-// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. When updating either list, you must include all mount items that need to be retained in the list. The two lists are updated separately. You can use `agenticFsMounts=[]` to clear AgenticFS mounts, but you cannot use `null` to clear them.
+// The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. When updating either list, you must include all mount items that need to be retained in the list. The two lists are updated separately. You can set `agenticFsMounts=[]` to clear AgenticFS mounts. You cannot use `null` to clear them.
 //
 // In this operation, ACR images, custom images, and code packages all use the same user mount target rules: `mountPath` is the absolute path in the container, such as `/data/train`, and must not conflict with platform reserved directories. Mount targets must not be duplicated or form parent-child directory overwrites.
 //
@@ -14553,7 +14549,7 @@ func (client *Client) UpdateCustomAgentWithOptions(workspaceId *string, agentId 
 //
 // Variable names must be non-empty and unique in the list. Variable values must be strings, and empty strings are allowed.
 //
-// ### Health checks and logs
+// ### Health checks and logging
 //
 // Omitting the entire `healthCheck` retains the original configuration. Pass `null` to remove the health check. When submitting this object, you must specify `port`. Other unspecified items use the following default values.
 //
@@ -14624,15 +14620,15 @@ func (client *Client) UpdateCustomAgent(workspaceId *string, agentId *string, re
 //
 // ### Update rules
 //
-// Provide at least one updatable field. Omitted top-level fields retain their original configurations. You can set description=null to clear the description. The tools and skills fields are replaced as a whole upon submission. You must include the items to be retained, or pass [] to clear the corresponding explicit lists.
+// Provide at least one updatable field. Omitted top-level fields retain their original configurations. You can set description=null to clear the description. The tools and skills fields are replaced as a whole upon submission. You must include the items to be retained, and pass [] to clear the corresponding explicit list.
 //
 // ### Switch model sources
 //
 // - To switch to PLATFORM, provide modelSource=PLATFORM and a valid model configuration, including the model connection ID and model name.
 //
-// - To switch to RUNTIME, change the Settings to modelSource=RUNTIME and do not commit the platform model. The original platform model configuration is removed when the source is switched.
+// - To switch to RUNTIME, update the Settings to modelSource=RUNTIME and do not commit the platform model. The original platform model configuration is removed when the source is switched.
 //
-// When a template is used, configurations belonging to the template such as instructions are read from the template. A successful update indicates that the request is accepted. Invoke [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration version and external accessed state. The clientToken parameter does not provide idempotence guarantees at this time.
+// When a template is used, configurations belonging to the template, such as instructions, are read from the template. A successful update indicates that the request is accepted. Invoke [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration version and external accessed state. The clientToken parameter does not provide idempotence guarantees at this time.
 //
 // @param tmpReq - UpdateExternalAgentRequest
 //
@@ -14699,15 +14695,15 @@ func (client *Client) UpdateExternalAgentWithOptions(workspaceId *string, agentI
 //
 // ### Update rules
 //
-// Provide at least one updatable field. Omitted top-level fields retain their original configurations. You can set description=null to clear the description. The tools and skills fields are replaced as a whole upon submission. You must include the items to be retained, or pass [] to clear the corresponding explicit lists.
+// Provide at least one updatable field. Omitted top-level fields retain their original configurations. You can set description=null to clear the description. The tools and skills fields are replaced as a whole upon submission. You must include the items to be retained, and pass [] to clear the corresponding explicit list.
 //
 // ### Switch model sources
 //
 // - To switch to PLATFORM, provide modelSource=PLATFORM and a valid model configuration, including the model connection ID and model name.
 //
-// - To switch to RUNTIME, change the Settings to modelSource=RUNTIME and do not commit the platform model. The original platform model configuration is removed when the source is switched.
+// - To switch to RUNTIME, update the Settings to modelSource=RUNTIME and do not commit the platform model. The original platform model configuration is removed when the source is switched.
 //
-// When a template is used, configurations belonging to the template such as instructions are read from the template. A successful update indicates that the request is accepted. Invoke [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration version and external accessed state. The clientToken parameter does not provide idempotence guarantees at this time.
+// When a template is used, configurations belonging to the template, such as instructions, are read from the template. A successful update indicates that the request is accepted. Invoke [GetExternalAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetExternalAgent) to query the configuration version and external accessed state. The clientToken parameter does not provide idempotence guarantees at this time.
 //
 // @param request - UpdateExternalAgentRequest
 //
@@ -14726,11 +14722,11 @@ func (client *Client) UpdateExternalAgent(workspaceId *string, agentId *string, 
 
 // Summary:
 //
-// Modifies the logon configuration of a bound identity provider in a specified workspace. DingTalk and Feishu support the logon switch, incremental synchronization switch, application configuration, and synchronization scope. CustomSSO supports SAML configuration and the logon switch. Updates take effect asynchronously. Call GetIdentityProvider to query the status.
+// Modifies the logon configuration of a bound identity provider in a specified workspace. DingTalk and Lark support the logon switch, incremental synchronization switch, application configuration, and synchronization scope. CustomSSO supports SAML configuration and the logon switch. Updates take effect asynchronously. Call GetIdentityProvider to query the status.
 //
 // Description:
 //
-// Modifies the logon or directory configuration of a bound enterprise identity provider to update enterprise application credentials, adjust synchronized departments, or configure custom single sign-on.
+// Modifies the logon or directory configuration of a bound enterprise identity provider to update enterprise application credentials, adjust synchronized departments, or configure custom single sign-on (SSO).
 //
 // ### Select the configuration to modify
 //
@@ -14738,27 +14734,27 @@ func (client *Client) UpdateExternalAgent(workspaceId *string, agentId *string, 
 //
 // | --- | --- |
 //
-// | DingTalk (DingTalk), Feishu (Feishu) | Enterprise application credentials metadata, logon switch loginEnabled, directory change synchronization switch syncEnabled, and synchronization scope syncScope. You must submit at least one item. |
+// | DingTalk (`DingTalk`), Lark (`Feishu`) | Enterprise application credentials `metadata`, logon switch `loginEnabled`, directory change synchronization switch `syncEnabled`, and synchronization scope `syncScope`. You must submit at least one item. |
 //
-// | Custom identity provider (CustomSSO) | SAML protocol protocol, logon configuration saml, and logon switch loginEnabled. SCIM-based user synchronization is configured separately by using [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM). |
+// | Custom identity provider (`CustomSSO`) | SAML protocol `protocol`, logon configuration `saml`, and logon switch `loginEnabled`. SCIM-based user synchronization is configured separately by using [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM). |
 //
-// ### Update DingTalk or Feishu
+// ### Update DingTalk or Lark
 //
-// metadata is updated by field: submit only the fields that need to be modified. Omitted fields and existing keys remain unchanged. Provided values must be non-empty strings. When you enable directory change synchronization, the configuration must include encryptKey and verificationToken.
+// `metadata` is updated by field. You only need to submit the fields that you want to modify. Omitted fields and existing keys remain unchanged. The provided values must be non-empty strings. When you enable directory change synchronization, the configuration must include `encryptKey` and `verificationToken`.
 //
 // To adjust synchronized departments:
 //
 // **Step 1:*	- Call [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments) to query and select departments.
 //
-// **Step 2:*	- Save syncScope by using this operation. If you omit this field or pass null, the current scope is retained.
+// **Step 2:*	- Call this operation to save `syncScope`. If you omit this field or pass `null`, the current scope is retained.
 //
 // **Step 3:*	- Call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to wait for the configuration processing to complete, and then call [CreateIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSyncJob) to synchronize users based on the new scope.
 //
-// Saving the scope does not automatically trigger a full synchronization. syncEnabled controls subsequent directory change events. The initial synchronization and manual synchronization are executed separately.
+// Saving the scope does not automatically trigger a full synchronization. `syncEnabled` controls subsequent directory change events. The initial synchronization and manual synchronization are executed separately.
 //
 // ### Configure custom single sign-on
 //
-// CustomSSO uses the SAML protocol to allow users to log on through the enterprise identity system. First, call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the access information of AgentCore and configure it in the enterprise identity system. Then, fill in the enterprise-side information in saml.
+// `CustomSSO` uses the SAML protocol to allow users to log on through the enterprise identity system. First, call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the access information of AgentCore and configure it in the enterprise identity system. Then, fill in the enterprise-side information in `saml`.
 //
 // Choose one of the following two methods:
 //
@@ -14766,17 +14762,17 @@ func (client *Client) UpdateExternalAgent(workspaceId *string, agentId *string, 
 //
 // | --- | --- |
 //
-// | Import metadata | metadataXml: a single IdP metadata XML text exported from the enterprise identity provider, with a maximum size of 1 MiB. Enter the XML content instead of a download URL or file path. |
+// | Import metadata | `metadataXml`: A single IdP metadata XML text exported from the enterprise identity provider. The maximum size is 1 MiB. Enter the XML content instead of a download URL or file path. |
 //
-// | Manual entry | Provide entityId, loginUrl, bindingType, and x509Certificates at the same time. Use an HTTPS logon URL and a valid signing certificate. Set bindingType to HTTP-Redirect or HTTP-POST. You can provide up to two certificates. |
+// | Manual entry | Provide `entityId`, `loginUrl`, `bindingType`, and `x509Certificates` at the same time. Use an HTTPS logon URL and a signing certificate within its validity period. Set `bindingType` to `HTTP-Redirect` or `HTTP-POST`. You can provide up to two certificates. |
 //
-// The entityId cannot be changed after it is saved. If the XML contains both binding methods, HTTP-POST and its corresponding URL take precedence.
+// The `entityId` cannot be changed after it is saved. If the XML contains both binding methods at the same time, `HTTP-POST` and its corresponding URL are used first.
 //
-// After saving the configuration, set loginEnabled=true to enable logon. You can also enable it when submitting a valid SAML configuration. Setting it to false disables logon and retains the existing configuration.
+// After saving the configuration, set `loginEnabled=true` to enable logon. You can also enable it when submitting a valid SAML configuration. Setting it to `false` disables logon and retains the existing configuration.
 //
 // ### Confirm that the configuration takes effect
 //
-// After the request is accepted, UPDATING is usually returned. Call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress. READY indicates that the configuration processing is complete. If it fails, check the returned status and configuration.
+// After the request is accepted, `UPDATING` is usually returned. Call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress. `READY` indicates that the configuration processing is complete. If it fails, check the returned status and configuration.
 //
 // If the request times out, query the current configuration and processing status first, and then decide whether to retry. Query the SCIM processing result by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM).
 //
@@ -14831,11 +14827,11 @@ func (client *Client) UpdateIdentityProviderWithOptions(workspaceId *string, ide
 
 // Summary:
 //
-// Modifies the logon configuration of a bound identity provider in a specified workspace. DingTalk and Feishu support the logon switch, incremental synchronization switch, application configuration, and synchronization scope. CustomSSO supports SAML configuration and the logon switch. Updates take effect asynchronously. Call GetIdentityProvider to query the status.
+// Modifies the logon configuration of a bound identity provider in a specified workspace. DingTalk and Lark support the logon switch, incremental synchronization switch, application configuration, and synchronization scope. CustomSSO supports SAML configuration and the logon switch. Updates take effect asynchronously. Call GetIdentityProvider to query the status.
 //
 // Description:
 //
-// Modifies the logon or directory configuration of a bound enterprise identity provider to update enterprise application credentials, adjust synchronized departments, or configure custom single sign-on.
+// Modifies the logon or directory configuration of a bound enterprise identity provider to update enterprise application credentials, adjust synchronized departments, or configure custom single sign-on (SSO).
 //
 // ### Select the configuration to modify
 //
@@ -14843,27 +14839,27 @@ func (client *Client) UpdateIdentityProviderWithOptions(workspaceId *string, ide
 //
 // | --- | --- |
 //
-// | DingTalk (DingTalk), Feishu (Feishu) | Enterprise application credentials metadata, logon switch loginEnabled, directory change synchronization switch syncEnabled, and synchronization scope syncScope. You must submit at least one item. |
+// | DingTalk (`DingTalk`), Lark (`Feishu`) | Enterprise application credentials `metadata`, logon switch `loginEnabled`, directory change synchronization switch `syncEnabled`, and synchronization scope `syncScope`. You must submit at least one item. |
 //
-// | Custom identity provider (CustomSSO) | SAML protocol protocol, logon configuration saml, and logon switch loginEnabled. SCIM-based user synchronization is configured separately by using [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM). |
+// | Custom identity provider (`CustomSSO`) | SAML protocol `protocol`, logon configuration `saml`, and logon switch `loginEnabled`. SCIM-based user synchronization is configured separately by using [UpdateIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateIdentityProviderSCIM). |
 //
-// ### Update DingTalk or Feishu
+// ### Update DingTalk or Lark
 //
-// metadata is updated by field: submit only the fields that need to be modified. Omitted fields and existing keys remain unchanged. Provided values must be non-empty strings. When you enable directory change synchronization, the configuration must include encryptKey and verificationToken.
+// `metadata` is updated by field. You only need to submit the fields that you want to modify. Omitted fields and existing keys remain unchanged. The provided values must be non-empty strings. When you enable directory change synchronization, the configuration must include `encryptKey` and `verificationToken`.
 //
 // To adjust synchronized departments:
 //
 // **Step 1:*	- Call [ListIdentityProviderDepartments](https://api.aliyun.com/document/AgentCore/2026-08-04/ListIdentityProviderDepartments) to query and select departments.
 //
-// **Step 2:*	- Save syncScope by using this operation. If you omit this field or pass null, the current scope is retained.
+// **Step 2:*	- Call this operation to save `syncScope`. If you omit this field or pass `null`, the current scope is retained.
 //
 // **Step 3:*	- Call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to wait for the configuration processing to complete, and then call [CreateIdentityProviderSyncJob](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateIdentityProviderSyncJob) to synchronize users based on the new scope.
 //
-// Saving the scope does not automatically trigger a full synchronization. syncEnabled controls subsequent directory change events. The initial synchronization and manual synchronization are executed separately.
+// Saving the scope does not automatically trigger a full synchronization. `syncEnabled` controls subsequent directory change events. The initial synchronization and manual synchronization are executed separately.
 //
 // ### Configure custom single sign-on
 //
-// CustomSSO uses the SAML protocol to allow users to log on through the enterprise identity system. First, call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the access information of AgentCore and configure it in the enterprise identity system. Then, fill in the enterprise-side information in saml.
+// `CustomSSO` uses the SAML protocol to allow users to log on through the enterprise identity system. First, call [GetIdentityProviderServiceProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderServiceProvider) to obtain the access information of AgentCore and configure it in the enterprise identity system. Then, fill in the enterprise-side information in `saml`.
 //
 // Choose one of the following two methods:
 //
@@ -14871,17 +14867,17 @@ func (client *Client) UpdateIdentityProviderWithOptions(workspaceId *string, ide
 //
 // | --- | --- |
 //
-// | Import metadata | metadataXml: a single IdP metadata XML text exported from the enterprise identity provider, with a maximum size of 1 MiB. Enter the XML content instead of a download URL or file path. |
+// | Import metadata | `metadataXml`: A single IdP metadata XML text exported from the enterprise identity provider. The maximum size is 1 MiB. Enter the XML content instead of a download URL or file path. |
 //
-// | Manual entry | Provide entityId, loginUrl, bindingType, and x509Certificates at the same time. Use an HTTPS logon URL and a valid signing certificate. Set bindingType to HTTP-Redirect or HTTP-POST. You can provide up to two certificates. |
+// | Manual entry | Provide `entityId`, `loginUrl`, `bindingType`, and `x509Certificates` at the same time. Use an HTTPS logon URL and a signing certificate within its validity period. Set `bindingType` to `HTTP-Redirect` or `HTTP-POST`. You can provide up to two certificates. |
 //
-// The entityId cannot be changed after it is saved. If the XML contains both binding methods, HTTP-POST and its corresponding URL take precedence.
+// The `entityId` cannot be changed after it is saved. If the XML contains both binding methods at the same time, `HTTP-POST` and its corresponding URL are used first.
 //
-// After saving the configuration, set loginEnabled=true to enable logon. You can also enable it when submitting a valid SAML configuration. Setting it to false disables logon and retains the existing configuration.
+// After saving the configuration, set `loginEnabled=true` to enable logon. You can also enable it when submitting a valid SAML configuration. Setting it to `false` disables logon and retains the existing configuration.
 //
 // ### Confirm that the configuration takes effect
 //
-// After the request is accepted, UPDATING is usually returned. Call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress. READY indicates that the configuration processing is complete. If it fails, check the returned status and configuration.
+// After the request is accepted, `UPDATING` is usually returned. Call [GetIdentityProvider](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProvider) to query the progress. `READY` indicates that the configuration processing is complete. If it fails, check the returned status and configuration.
 //
 // If the request times out, query the current configuration and processing status first, and then decide whether to retry. Query the SCIM processing result by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM).
 //
@@ -14902,19 +14898,19 @@ func (client *Client) UpdateIdentityProvider(workspaceId *string, identityProvid
 
 // Summary:
 //
-// Enables or disables SCIM user synchronization independently. When enabled, an initial full import is executed asynchronously, and the result can be queried by calling GetIdentityProviderSCIM. The SAML logon configuration is retained.
+// Enables or disables SCIM-based user synchronization independently. When enabled, an initial full import is executed asynchronously. You can query the result by calling GetIdentityProviderSCIM. The SAML logon configuration is retained.
 //
 // Description:
 //
-// Enables or disables SCIM user synchronization for AgentCore. When enabled, all existing users in the shared user pool are fully imported into the workspace. Users in the user pool are provisioned by the enterprise identity system through SCIM.
+// Enables or disables SCIM-based user synchronization for AgentCore. When enabled, all existing users in the shared user pool are fully imported into the workspace. Users in the user pool are provisioned by the enterprise identity system through SCIM.
 //
-// ### Preparations
+// ### Preparations before enabling
 //
 // **Step 1:*	- Call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to enable the receiving endpoint and obtain the receiving URL and a valid token.
 //
 // **Step 2:*	- Complete the SCIM configuration, connection test, and user assignment in the enterprise identity system.
 //
-// **Step 3:*	- Call this operation and set syncEnabled to true.
+// **Step 3:*	- Call this operation and set `syncEnabled` to `true`.
 //
 // ```http
 //
@@ -14926,23 +14922,23 @@ func (client *Client) UpdateIdentityProvider(workspaceId *string, identityProvid
 //
 // When the enabling task is executed, the system checks whether the receiving endpoint is enabled and whether valid credentials exist. If no users are provisioned in the enterprise identity system, the initial import may succeed but contain no user records.
 //
-// ### Impact of disabling
+// ### Impact after disabling
 //
-// Setting syncEnabled to false disables user synchronization and the upstream SCIM receiving endpoint, but retains the imported users, existing credentials, and SAML logon configuration.
+// Setting `syncEnabled` to `false` disables user synchronization and the upstream SCIM receiving endpoint. Imported users, existing credentials, and the SAML logon configuration are retained.
 //
-// To re-enable the feature later, call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to prepare the receiving endpoint first, and then enable synchronization.
+// To re-enable synchronization later, call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to prepare the receiving endpoint first, and then enable synchronization.
 //
 // ### Verify the operation result
 //
-// After this operation accepts the request, it executes the enabling or disabling task in the background. Call [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM) to query the progress:
+// After this operation accepts the request, it executes the enabling or disabling task in the background. You can query the progress by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM):
 //
-// - syncEnabled indicates whether synchronization is expected to be enabled or disabled.
+// - `syncEnabled` indicates whether synchronization is expected to be enabled or disabled.
 //
-// - operationStatus indicates the execution result of the most recent operation.
+// - `operationStatus` indicates the execution result of the most recent operation.
 //
-// - The status field in the query operation comprehensively indicates the current stage of SCIM, such as pending configuration, processing, available, or disabled.
+// - The `status` field in the query operation comprehensively indicates the current stage of SCIM, such as pending configuration, processing, available, or disabled.
 //
-// If the operation fails, the saved syncEnabled value is not automatically rolled back. Verify the configuration based on the operation result before deciding on subsequent actions.
+// If the operation fails, the saved `syncEnabled` value is not automatically rolled back. Verify the configuration based on the operation result before deciding on subsequent actions.
 //
 // @param tmpReq - UpdateIdentityProviderSCIMRequest
 //
@@ -14995,19 +14991,19 @@ func (client *Client) UpdateIdentityProviderSCIMWithOptions(workspaceId *string,
 
 // Summary:
 //
-// Enables or disables SCIM user synchronization independently. When enabled, an initial full import is executed asynchronously, and the result can be queried by calling GetIdentityProviderSCIM. The SAML logon configuration is retained.
+// Enables or disables SCIM-based user synchronization independently. When enabled, an initial full import is executed asynchronously. You can query the result by calling GetIdentityProviderSCIM. The SAML logon configuration is retained.
 //
 // Description:
 //
-// Enables or disables SCIM user synchronization for AgentCore. When enabled, all existing users in the shared user pool are fully imported into the workspace. Users in the user pool are provisioned by the enterprise identity system through SCIM.
+// Enables or disables SCIM-based user synchronization for AgentCore. When enabled, all existing users in the shared user pool are fully imported into the workspace. Users in the user pool are provisioned by the enterprise identity system through SCIM.
 //
-// ### Preparations
+// ### Preparations before enabling
 //
 // **Step 1:*	- Call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to enable the receiving endpoint and obtain the receiving URL and a valid token.
 //
 // **Step 2:*	- Complete the SCIM configuration, connection test, and user assignment in the enterprise identity system.
 //
-// **Step 3:*	- Call this operation and set syncEnabled to true.
+// **Step 3:*	- Call this operation and set `syncEnabled` to `true`.
 //
 // ```http
 //
@@ -15019,23 +15015,23 @@ func (client *Client) UpdateIdentityProviderSCIMWithOptions(workspaceId *string,
 //
 // When the enabling task is executed, the system checks whether the receiving endpoint is enabled and whether valid credentials exist. If no users are provisioned in the enterprise identity system, the initial import may succeed but contain no user records.
 //
-// ### Impact of disabling
+// ### Impact after disabling
 //
-// Setting syncEnabled to false disables user synchronization and the upstream SCIM receiving endpoint, but retains the imported users, existing credentials, and SAML logon configuration.
+// Setting `syncEnabled` to `false` disables user synchronization and the upstream SCIM receiving endpoint. Imported users, existing credentials, and the SAML logon configuration are retained.
 //
-// To re-enable the feature later, call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to prepare the receiving endpoint first, and then enable synchronization.
+// To re-enable synchronization later, call [PrepareIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/PrepareIdentityProviderSCIM) to prepare the receiving endpoint first, and then enable synchronization.
 //
 // ### Verify the operation result
 //
-// After this operation accepts the request, it executes the enabling or disabling task in the background. Call [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM) to query the progress:
+// After this operation accepts the request, it executes the enabling or disabling task in the background. You can query the progress by calling [GetIdentityProviderSCIM](https://api.aliyun.com/document/AgentCore/2026-08-04/GetIdentityProviderSCIM):
 //
-// - syncEnabled indicates whether synchronization is expected to be enabled or disabled.
+// - `syncEnabled` indicates whether synchronization is expected to be enabled or disabled.
 //
-// - operationStatus indicates the execution result of the most recent operation.
+// - `operationStatus` indicates the execution result of the most recent operation.
 //
-// - The status field in the query operation comprehensively indicates the current stage of SCIM, such as pending configuration, processing, available, or disabled.
+// - The `status` field in the query operation comprehensively indicates the current stage of SCIM, such as pending configuration, processing, available, or disabled.
 //
-// If the operation fails, the saved syncEnabled value is not automatically rolled back. Verify the configuration based on the operation result before deciding on subsequent actions.
+// If the operation fails, the saved `syncEnabled` value is not automatically rolled back. Verify the configuration based on the operation result before deciding on subsequent actions.
 //
 // @param request - UpdateIdentityProviderSCIMRequest
 //
@@ -15094,7 +15090,7 @@ func (client *Client) UpdateIdentityProviderSCIM(workspaceId *string, request *U
 //
 // `harness` is an object, such as `{"type":"qwenpaw"}`. For qodercli, set `harness.configuration.connectorServiceAccountKey` to the account key record ID returned by [ListConnectors](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectors), not the original service account key. This field can be omitted if there is only one key record, but must be specified if there are multiple records. `connectorServiceAccountName` is the account name. Do not specify these two binding fields for qwenpaw.
 //
-// `skills` uses the skill names in the workspace AI Registry. If `sourceType=REFERENCE`, versions are referenced by `versionSelector`: use `LABEL` with a tag name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. If `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
+// `skills` uses the skill names in the workspace AI Registry. For `sourceType=REFERENCE`, reference the version by `versionSelector`: use `LABEL` with a tag name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. For `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
 //
 // For `template.aiRegistry`, specify the agent template name and an optional version. If the version is omitted during creation, the published version is resolved and fixed. When a template is used, `instruction`, `promptVariables`, and `subAgents` are derived from the template, and the corresponding fields in the current request do not take effect. Explicit skills and template skills are recorded separately. You can query the target and effective versions through `configuredSkills` and `skills`.
 //
@@ -15116,7 +15112,7 @@ func (client *Client) UpdateIdentityProviderSCIM(workspaceId *string, request *U
 //
 // | `sessionTtlSeconds` | `600` | The maximum idle time of a session, in seconds. Valid values: 60 to 86400. |
 //
-// If you only modify instructions, models, or skills, you can omit the entire `runtime` to keep the original runtime configuration unchanged. The minimum and maximum numbers of instances are the configuration border. You can query the actual number through `sandboxPhaseCounts`.
+// If you only modify instructions, models, or skills, you can omit the entire `runtime` to keep the original runtime configuration unchanged. The minimum and maximum numbers of instances are configuration borders. You can query the actual number through `sandboxPhaseCounts`.
 //
 // ### Environment and mounts
 //
@@ -15124,11 +15120,11 @@ func (client *Client) UpdateIdentityProviderSCIM(workspaceId *string, request *U
 //
 // The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. The mount target `mountPath` uses an absolute path in the container, such as `/data/train`. It cannot conflict with platform reserved directories, and cannot be duplicated or form parent-child directory overwrites.
 //
-// The `path` for OSS mounts must be a non-empty directory prefix in the bucket. For AgenticFS mounts, `server` is the AccessPoint domain name, without a protocol, port, or path. `path` is an existing non-empty relative directory in the AccessPoint. You cannot mount the root directory of the AccessPoint. If `readOnly` is omitted, the default value is `false`.
+// The `path` for OSS mounts must be a non-empty directory prefix in the bucket. For AgenticFS mounts, `server` is the access point domain name, without a protocol, port, or path. `path` is an existing non-empty relative directory in the access point. You cannot mount the root directory of the access point. If `readOnly` is omitted, the default value is `false`.
 //
 // ### Query update results
 //
-// A successful response indicates that the update request has been accepted. Call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestSpecVersion`, `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` does not provide idempotence guarantees at this time.
+// A successful response indicates that the update request has been accepted. Call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestSpecVersion`, `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` does not provide idempotency guarantees at this time.
 //
 // @param tmpReq - UpdateManagedAgentRequest
 //
@@ -15227,7 +15223,7 @@ func (client *Client) UpdateManagedAgentWithOptions(workspaceId *string, agentId
 //
 // `harness` is an object, such as `{"type":"qwenpaw"}`. For qodercli, set `harness.configuration.connectorServiceAccountKey` to the account key record ID returned by [ListConnectors](https://api.aliyun.com/document/AgentCore/2026-08-04/ListConnectors), not the original service account key. This field can be omitted if there is only one key record, but must be specified if there are multiple records. `connectorServiceAccountName` is the account name. Do not specify these two binding fields for qwenpaw.
 //
-// `skills` uses the skill names in the workspace AI Registry. If `sourceType=REFERENCE`, versions are referenced by `versionSelector`: use `LABEL` with a tag name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. If `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
+// `skills` uses the skill names in the workspace AI Registry. For `sourceType=REFERENCE`, reference the version by `versionSelector`: use `LABEL` with a tag name, or `VERSION` with a specific version number. If the selector is omitted, `LABEL/latest` is used. For `sourceType=STATIC`, static files bundled with the package are used, and no version selector is provided.
 //
 // For `template.aiRegistry`, specify the agent template name and an optional version. If the version is omitted during creation, the published version is resolved and fixed. When a template is used, `instruction`, `promptVariables`, and `subAgents` are derived from the template, and the corresponding fields in the current request do not take effect. Explicit skills and template skills are recorded separately. You can query the target and effective versions through `configuredSkills` and `skills`.
 //
@@ -15249,7 +15245,7 @@ func (client *Client) UpdateManagedAgentWithOptions(workspaceId *string, agentId
 //
 // | `sessionTtlSeconds` | `600` | The maximum idle time of a session, in seconds. Valid values: 60 to 86400. |
 //
-// If you only modify instructions, models, or skills, you can omit the entire `runtime` to keep the original runtime configuration unchanged. The minimum and maximum numbers of instances are the configuration border. You can query the actual number through `sandboxPhaseCounts`.
+// If you only modify instructions, models, or skills, you can omit the entire `runtime` to keep the original runtime configuration unchanged. The minimum and maximum numbers of instances are configuration borders. You can query the actual number through `sandboxPhaseCounts`.
 //
 // ### Environment and mounts
 //
@@ -15257,11 +15253,11 @@ func (client *Client) UpdateManagedAgentWithOptions(workspaceId *string, agentId
 //
 // The total number of `ossMounts` and `agenticFsMounts` cannot exceed 10. The mount target `mountPath` uses an absolute path in the container, such as `/data/train`. It cannot conflict with platform reserved directories, and cannot be duplicated or form parent-child directory overwrites.
 //
-// The `path` for OSS mounts must be a non-empty directory prefix in the bucket. For AgenticFS mounts, `server` is the AccessPoint domain name, without a protocol, port, or path. `path` is an existing non-empty relative directory in the AccessPoint. You cannot mount the root directory of the AccessPoint. If `readOnly` is omitted, the default value is `false`.
+// The `path` for OSS mounts must be a non-empty directory prefix in the bucket. For AgenticFS mounts, `server` is the access point domain name, without a protocol, port, or path. `path` is an existing non-empty relative directory in the access point. You cannot mount the root directory of the access point. If `readOnly` is omitted, the default value is `false`.
 //
 // ### Query update results
 //
-// A successful response indicates that the update request has been accepted. Call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestSpecVersion`, `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` does not provide idempotence guarantees at this time.
+// A successful response indicates that the update request has been accepted. Call [GetManagedAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/GetManagedAgent) to query `latestSpecVersion`, `latestVersionStatus`, `status`, and `sandboxPhaseCounts` to confirm the configuration processing and instance status. `clientToken` does not provide idempotency guarantees at this time.
 //
 // @param request - UpdateManagedAgentRequest
 //
@@ -15286,7 +15282,7 @@ func (client *Client) UpdateManagedAgent(workspaceId *string, agentId *string, r
 //
 // Updates the address, description, authentication, or Swagger configuration of an MCP service. The service type and protocol cannot be modified after creation.
 //
-// The update process is executed asynchronously. After submission, call [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) to query the processing result. The `clientToken` parameter does not currently provide idempotency guarantees. If the request result is not confirmed, query the current configuration and status first.
+// The update process is executed asynchronously. After submission, you can call the [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) operation to query the processing result. The `clientToken` parameter does not currently provide idempotency guarantees. If the request result is not confirmed, query the current configuration and status first.
 //
 // @param tmpReq - UpdateMcpRequest
 //
@@ -15351,7 +15347,7 @@ func (client *Client) UpdateMcpWithOptions(workspaceId *string, mcpServerId *str
 //
 // Updates the address, description, authentication, or Swagger configuration of an MCP service. The service type and protocol cannot be modified after creation.
 //
-// The update process is executed asynchronously. After submission, call [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) to query the processing result. The `clientToken` parameter does not currently provide idempotency guarantees. If the request result is not confirmed, query the current configuration and status first.
+// The update process is executed asynchronously. After submission, you can call the [GetMcp](https://api.aliyun.com/document/AgentCore/2026-08-04/GetMcp) operation to query the processing result. The `clientToken` parameter does not currently provide idempotency guarantees. If the request result is not confirmed, query the current configuration and status first.
 //
 // @param request - UpdateMcpRequest
 //
@@ -15370,13 +15366,11 @@ func (client *Client) UpdateMcp(workspaceId *string, mcpServerId *string, reques
 
 // Summary:
 //
-// Updates MCP parameters based on a template.
+// Updates the parameters of an MCP service based on a template.
 //
 // Description:
 //
-// Updates parameters based on the marketplace template bound to the MCP service to adjust the configuration of the templated service.
-//
-// Updates the parameters exposed by the schema using the same template version bound during MCP creation, without upgrading the template version.
+// Updates parameters based on the marketplace template bound to the MCP service to adjust the configuration of the templated service. This operation uses the same template version that was bound when the MCP service was created to update the parameters exposed by the schema, without upgrading the template version.
 //
 // @param tmpReq - UpdateMcpTemplateConfigRequest
 //
@@ -15439,13 +15433,11 @@ func (client *Client) UpdateMcpTemplateConfigWithOptions(workspaceId *string, mc
 
 // Summary:
 //
-// Updates MCP parameters based on a template.
+// Updates the parameters of an MCP service based on a template.
 //
 // Description:
 //
-// Updates parameters based on the marketplace template bound to the MCP service to adjust the configuration of the templated service.
-//
-// Updates the parameters exposed by the schema using the same template version bound during MCP creation, without upgrading the template version.
+// Updates parameters based on the marketplace template bound to the MCP service to adjust the configuration of the templated service. This operation uses the same template version that was bound when the MCP service was created to update the parameters exposed by the schema, without upgrading the template version.
 //
 // @param request - UpdateMcpTemplateConfigRequest
 //
@@ -15630,23 +15622,23 @@ func (client *Client) UpdateMemoryStore(workspaceId *string, memoryStoreName *st
 
 // Summary:
 //
-// Updates the description, context token limit, maximum output token count, or capability configuration of a specified model.
+// Updates the description, context token limit, maximum output token count, or capability configurations of a specified model.
 //
 // Description:
 //
-// Updates the description, context length, maximum output length, or capability configuration of a model.
+// Updates the description, context length, maximum output length, or capability configurations of a model.
 //
 // ### Update rules
 //
-// - Provide at least one non-null field among description, contextSize, maxTokens, and capabilities.
+// - Provide at least one non-`null` field among description, contextSize, maxTokens, and capabilities.
 //
-// - Omitted fields or fields passed as null retain their original values.
+// - Omitted fields or fields passed as `null` retain their original values.
 //
-// - The capabilities object is replaced as a whole. Unsubmitted capabilities within the object are treated as false.
+// - The capabilities object is replaced as a whole. Unsubmitted capabilities within the object are treated as `false`.
 //
 // ### Impact on agents
 //
-// After contextSize, maxTokens, or capabilities actually change, the platform asynchronously refreshes the managed Harness agents that reference this model, as well as the managed agents that use platform models (modelSource=PLATFORM). Modifying only the description or repeatedly submitting the same configuration does not trigger a refresh.
+// After contextSize, maxTokens, or capabilities actually change, the platform asynchronously refreshes the managed Harness agents that reference this model, as well as the managed agents that use platform models (`modelSource=PLATFORM`). Modifying only the description or repeatedly submitting the same configuration does not trigger a refresh.
 //
 // A successful response indicates that the model configuration has been saved. Verify the configuration by calling [GetModel](https://api.aliyun.com/document/AgentCore/2026-08-04/GetModel), and then check whether the configuration takes effect by calling the corresponding agent details API operation.
 //
@@ -15707,23 +15699,23 @@ func (client *Client) UpdateModelWithOptions(workspaceId *string, modelId *strin
 
 // Summary:
 //
-// Updates the description, context token limit, maximum output token count, or capability configuration of a specified model.
+// Updates the description, context token limit, maximum output token count, or capability configurations of a specified model.
 //
 // Description:
 //
-// Updates the description, context length, maximum output length, or capability configuration of a model.
+// Updates the description, context length, maximum output length, or capability configurations of a model.
 //
 // ### Update rules
 //
-// - Provide at least one non-null field among description, contextSize, maxTokens, and capabilities.
+// - Provide at least one non-`null` field among description, contextSize, maxTokens, and capabilities.
 //
-// - Omitted fields or fields passed as null retain their original values.
+// - Omitted fields or fields passed as `null` retain their original values.
 //
-// - The capabilities object is replaced as a whole. Unsubmitted capabilities within the object are treated as false.
+// - The capabilities object is replaced as a whole. Unsubmitted capabilities within the object are treated as `false`.
 //
 // ### Impact on agents
 //
-// After contextSize, maxTokens, or capabilities actually change, the platform asynchronously refreshes the managed Harness agents that reference this model, as well as the managed agents that use platform models (modelSource=PLATFORM). Modifying only the description or repeatedly submitting the same configuration does not trigger a refresh.
+// After contextSize, maxTokens, or capabilities actually change, the platform asynchronously refreshes the managed Harness agents that reference this model, as well as the managed agents that use platform models (`modelSource=PLATFORM`). Modifying only the description or repeatedly submitting the same configuration does not trigger a refresh.
 //
 // A successful response indicates that the model configuration has been saved. Verify the configuration by calling [GetModel](https://api.aliyun.com/document/AgentCore/2026-08-04/GetModel), and then check whether the configuration takes effect by calling the corresponding agent details API operation.
 //
@@ -15744,11 +15736,11 @@ func (client *Client) UpdateModel(workspaceId *string, modelId *string, request 
 
 // Summary:
 //
-// Updates the mutable configurations of a specified model connection and resubmits the publishing task. The invocation protocol cannot be modified after creation.
+// Updates the mutable configurations of a specified model connection and resubmits the publish task. The invocation protocol cannot be modified after creation.
 //
 // Description:
 //
-// Updates the mutable configurations of a specified model connection and resubmits the publishing task. The invocation protocol cannot be modified after creation.
+// Updates the mutable configurations of a specified model connection and resubmits the publish task. The invocation protocol cannot be modified after creation.
 //
 // @param tmpReq - UpdateModelConnectionRequest
 //
@@ -15807,11 +15799,11 @@ func (client *Client) UpdateModelConnectionWithOptions(workspaceId *string, conn
 
 // Summary:
 //
-// Updates the mutable configurations of a specified model connection and resubmits the publishing task. The invocation protocol cannot be modified after creation.
+// Updates the mutable configurations of a specified model connection and resubmits the publish task. The invocation protocol cannot be modified after creation.
 //
 // Description:
 //
-// Updates the mutable configurations of a specified model connection and resubmits the publishing task. The invocation protocol cannot be modified after creation.
+// Updates the mutable configurations of a specified model connection and resubmits the publish task. The invocation protocol cannot be modified after creation.
 //
 // @param request - UpdateModelConnectionRequest
 //
@@ -16070,7 +16062,7 @@ func (client *Client) UpdateSkillScope(workspaceId *string, skillName *string, r
 
 // Summary:
 //
-// Updates the description and members of a specified team. When users or agents are provided, the corresponding member lists are replaced based on full overwrite semantics. Member lists that are not provided remain unchanged. The team name cannot be modified after creation.
+// Updates the description and members of a specified team. If users or agents are provided, the corresponding member list is replaced by using full overwrite semantics. Unprovided member lists remain unchanged. The team name cannot be modified after creation.
 //
 // Description:
 //
@@ -16133,7 +16125,7 @@ func (client *Client) UpdateTeamWithOptions(workspaceId *string, teamId *string,
 
 // Summary:
 //
-// Updates the description and members of a specified team. When users or agents are provided, the corresponding member lists are replaced based on full overwrite semantics. Member lists that are not provided remain unchanged. The team name cannot be modified after creation.
+// Updates the description and members of a specified team. If users or agents are provided, the corresponding member list is replaced by using full overwrite semantics. Unprovided member lists remain unchanged. The team name cannot be modified after creation.
 //
 // Description:
 //
@@ -16156,7 +16148,7 @@ func (client *Client) UpdateTeam(workspaceId *string, teamId *string, request *U
 
 // Summary:
 //
-// Updates the display name, email address, or note of a specified user. At least one of displayName, email, and note must be specified. Unspecified properties remain unchanged. The username cannot be modified after creation.
+// Updates the display name, email address, or note of a specified user. You must specify at least one of the displayName, email, and note parameters. Unspecified attributes remain unchanged. The username cannot be modified after creation.
 //
 // Description:
 //
@@ -16219,7 +16211,7 @@ func (client *Client) UpdateUserWithOptions(workspaceId *string, agentCoreUserId
 
 // Summary:
 //
-// Updates the display name, email address, or note of a specified user. At least one of displayName, email, and note must be specified. Unspecified properties remain unchanged. The username cannot be modified after creation.
+// Updates the display name, email address, or note of a specified user. You must specify at least one of the displayName, email, and note parameters. Unspecified attributes remain unchanged. The username cannot be modified after creation.
 //
 // Description:
 //
@@ -16242,13 +16234,11 @@ func (client *Client) UpdateUser(workspaceId *string, agentCoreUserId *string, r
 
 // Summary:
 //
-// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. Status, TenantId, and RegionId are maintained by the server and cannot be modified through this operation.
+// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. The Status, TenantId, and RegionId parameters are maintained by the server and cannot be modified through this operation.
 //
 // Description:
 //
-// Modifies the name or network configuration of a workspace to adjust workspace information and the private network access environment for agents.
-//
-// The workspace must be in the `Initialized` state. To enable VPC networking, set `Enabled` in the network configuration to `true`, and provide both `VpcId` and at least one `VSwitchIds`.
+// Modifies the name or network configuration of a workspace to adjust workspace information and the private network access environment for agents. The workspace must be in the `Initialized` state. To enable VPC networking, set `Enabled` in the network configuration to `true` and provide both `VpcId` and at least one `VSwitchIds`.
 //
 // @param tmpReq - UpdateWorkspaceRequest
 //
@@ -16307,13 +16297,11 @@ func (client *Client) UpdateWorkspaceWithOptions(workspaceId *string, tmpReq *Up
 
 // Summary:
 //
-// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. Status, TenantId, and RegionId are maintained by the server and cannot be modified through this operation.
+// Updates the name or network configuration of a workspace. Only workspaces in the Initialized state can be updated. The Status, TenantId, and RegionId parameters are maintained by the server and cannot be modified through this operation.
 //
 // Description:
 //
-// Modifies the name or network configuration of a workspace to adjust workspace information and the private network access environment for agents.
-//
-// The workspace must be in the `Initialized` state. To enable VPC networking, set `Enabled` in the network configuration to `true`, and provide both `VpcId` and at least one `VSwitchIds`.
+// Modifies the name or network configuration of a workspace to adjust workspace information and the private network access environment for agents. The workspace must be in the `Initialized` state. To enable VPC networking, set `Enabled` in the network configuration to `true` and provide both `VpcId` and at least one `VSwitchIds`.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -16332,11 +16320,11 @@ func (client *Client) UpdateWorkspace(workspaceId *string, request *UpdateWorksp
 
 // Summary:
 //
-// Retrieves an uploaded AgentSpec ZIP package from OSS, parses the package, and imports the AgentSpec into the current workspace.
+// Retrieves an uploaded AgentSpec ZIP package from OSS, parses it, and imports the AgentSpec into the current workspace.
 //
 // Description:
 //
-// Retrieves an uploaded agent template ZIP package from OSS, parses the package, and imports the agent template into the current workspace.
+// Retrieves an uploaded agent template ZIP package from OSS, parses it, and imports the agent template into the current workspace.
 //
 // @param tmpReq - UploadAgentSpecViaOssRequest
 //
@@ -16389,11 +16377,11 @@ func (client *Client) UploadAgentSpecViaOssWithOptions(workspaceId *string, tmpR
 
 // Summary:
 //
-// Retrieves an uploaded AgentSpec ZIP package from OSS, parses the package, and imports the AgentSpec into the current workspace.
+// Retrieves an uploaded AgentSpec ZIP package from OSS, parses it, and imports the AgentSpec into the current workspace.
 //
 // Description:
 //
-// Retrieves an uploaded agent template ZIP package from OSS, parses the package, and imports the agent template into the current workspace.
+// Retrieves an uploaded agent template ZIP package from OSS, parses it, and imports the agent template into the current workspace.
 //
 // @param request - UploadAgentSpecViaOssRequest
 //
@@ -16492,7 +16480,7 @@ func (client *Client) UploadSkillViaOss(workspaceId *string, request *UploadSkil
 
 // Summary:
 //
-// Validates the read conditions of the workspace role for a specified OSS code package object and returns the source URI and package information.
+// Validates the read permissions of the workspace role on a specified OSS code package object, and returns the source URI and package information.
 //
 // Description:
 //
@@ -16506,9 +16494,9 @@ func (client *Client) UploadSkillViaOss(workspaceId *string, request *UploadSkil
 //
 // ### Subsequent deployment
 //
-// Passing the validation indicates that the object check is successful, but does not mean that the archive content is complete or ready to start. Submit the returned `sourceUri` to [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The system will recheck and save a fixed copy upon submission.
+// Passing the validation indicates that the object check is successful, but does not mean that the archive content is complete or ready to start. Submit the returned `sourceUri` to [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The system will recheck the object and save a fixed copy upon submission.
 //
-// This operation is an optional precheck and is not a required step for creation or update.
+// This operation is an optional precheck and is not a required step for creating or updating an agent.
 //
 // @param tmpReq - ValidateAgentCodePackageFromOssRequest
 //
@@ -16561,7 +16549,7 @@ func (client *Client) ValidateAgentCodePackageFromOssWithOptions(workspaceId *st
 
 // Summary:
 //
-// Validates the read conditions of the workspace role for a specified OSS code package object and returns the source URI and package information.
+// Validates the read permissions of the workspace role on a specified OSS code package object, and returns the source URI and package information.
 //
 // Description:
 //
@@ -16575,9 +16563,9 @@ func (client *Client) ValidateAgentCodePackageFromOssWithOptions(workspaceId *st
 //
 // ### Subsequent deployment
 //
-// Passing the validation indicates that the object check is successful, but does not mean that the archive content is complete or ready to start. Submit the returned `sourceUri` to [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The system will recheck and save a fixed copy upon submission.
+// Passing the validation indicates that the object check is successful, but does not mean that the archive content is complete or ready to start. Submit the returned `sourceUri` to [CreateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/CreateCustomAgent) or [UpdateCustomAgent](https://api.aliyun.com/document/AgentCore/2026-08-04/UpdateCustomAgent). The system will recheck the object and save a fixed copy upon submission.
 //
-// This operation is an optional precheck and is not a required step for creation or update.
+// This operation is an optional precheck and is not a required step for creating or updating an agent.
 //
 // @param request - ValidateAgentCodePackageFromOssRequest
 //
@@ -16606,7 +16594,7 @@ func (client *Client) ValidateAgentCodePackageFromOss(workspaceId *string, reque
 //
 // `ossBucketName` is passed as a query parameter. `authorizationStatus=AUTHORIZED` indicates that the policy is bound, and `UNAUTHORIZED` indicates that it is not bound.
 //
-// A bound policy does not mean that a specific code package object definitely exists or is readable. To check the object, call [ValidateAgentCodePackageFromOss](https://api.aliyun.com/document/AgentCore/2026-08-04/ValidateAgentCodePackageFromOss). To obtain the authorization link, call [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl).
+// A bound policy does not mean that a specific code package object definitely exists or is readable. To check an object, call [ValidateAgentCodePackageFromOss](https://api.aliyun.com/document/AgentCore/2026-08-04/ValidateAgentCodePackageFromOss). To obtain an authorization link, call [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl).
 //
 // @param request - VerifyAgentCodePackageOssRamAuthorizationRequest
 //
@@ -16663,7 +16651,7 @@ func (client *Client) VerifyAgentCodePackageOssRamAuthorizationWithOptions(works
 //
 // `ossBucketName` is passed as a query parameter. `authorizationStatus=AUTHORIZED` indicates that the policy is bound, and `UNAUTHORIZED` indicates that it is not bound.
 //
-// A bound policy does not mean that a specific code package object definitely exists or is readable. To check the object, call [ValidateAgentCodePackageFromOss](https://api.aliyun.com/document/AgentCore/2026-08-04/ValidateAgentCodePackageFromOss). To obtain the authorization link, call [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl).
+// A bound policy does not mean that a specific code package object definitely exists or is readable. To check an object, call [ValidateAgentCodePackageFromOss](https://api.aliyun.com/document/AgentCore/2026-08-04/ValidateAgentCodePackageFromOss). To obtain an authorization link, call [GetAgentCodePackageOssRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetAgentCodePackageOssRamAuthorizeUrl).
 //
 // @param request - VerifyAgentCodePackageOssRamAuthorizationRequest
 //
@@ -16682,11 +16670,11 @@ func (client *Client) VerifyAgentCodePackageOssRamAuthorization(workspaceId *str
 
 // Summary:
 //
-// Verifies whether one or more Qoder service account keys are available at a specified site. This operation does not save the keys or modify the connector status.
+// Validates whether one or more Qoder service account keys are available at a specified site. This operation does not save the keys or modify the connector status.
 //
 // Description:
 //
-// Verifies Qoder service account keys for a specified site to check whether the credentials are available before enabling or updating a connector. You can submit multiple keys at the same time. The response returns a list of invalid service account keys.
+// Validates Qoder service account keys at a specified site to check whether the credentials are available before you enable or update a connector. You can submit multiple keys at the same time. The response returns a list of invalid service account keys.
 //
 // @param tmpReq - VerifyConnectorRequest
 //
@@ -16739,11 +16727,11 @@ func (client *Client) VerifyConnectorWithOptions(workspaceId *string, connectorN
 
 // Summary:
 //
-// Verifies whether one or more Qoder service account keys are available at a specified site. This operation does not save the keys or modify the connector status.
+// Validates whether one or more Qoder service account keys are available at a specified site. This operation does not save the keys or modify the connector status.
 //
 // Description:
 //
-// Verifies Qoder service account keys for a specified site to check whether the credentials are available before enabling or updating a connector. You can submit multiple keys at the same time. The response returns a list of invalid service account keys.
+// Validates Qoder service account keys at a specified site to check whether the credentials are available before you enable or update a connector. You can submit multiple keys at the same time. The response returns a list of invalid service account keys.
 //
 // @param request - VerifyConnectorRequest
 //
@@ -16770,11 +16758,11 @@ func (client *Client) VerifyConnector(workspaceId *string, connectorName *string
 //
 // ### Request parameters
 //
-// `acrInstanceId`, `namespace`, and `repository` use query parameters and must be consistent with the targets used when obtaining the authorization URL.
+// The acrInstanceId, namespace, and repository parameters use query parameters and must be consistent with the target used when obtaining the authorization URL.
 //
 // ### Authorization and deployment
 //
-// `authorizationStatus=AUTHORIZED` indicates that the target authorization for the selected role is satisfied, and `UNAUTHORIZED` indicates that it is not yet satisfied. If authorization is required, call [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl) and confirm on the RAM page.
+// authorizationStatus=AUTHORIZED indicates that the target authorization for the selected role is satisfied, and UNAUTHORIZED indicates that it is not yet satisfied. If authorization is required, call [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl) and confirm on the RAM page.
 //
 // The authorization status is checked separately from whether the specific image tag exists and whether the pull network is reachable.
 //
@@ -16839,11 +16827,11 @@ func (client *Client) VerifyWorkspaceAcrRamAuthorizationWithOptions(workspaceId 
 //
 // ### Request parameters
 //
-// `acrInstanceId`, `namespace`, and `repository` use query parameters and must be consistent with the targets used when obtaining the authorization URL.
+// The acrInstanceId, namespace, and repository parameters use query parameters and must be consistent with the target used when obtaining the authorization URL.
 //
 // ### Authorization and deployment
 //
-// `authorizationStatus=AUTHORIZED` indicates that the target authorization for the selected role is satisfied, and `UNAUTHORIZED` indicates that it is not yet satisfied. If authorization is required, call [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl) and confirm on the RAM page.
+// authorizationStatus=AUTHORIZED indicates that the target authorization for the selected role is satisfied, and UNAUTHORIZED indicates that it is not yet satisfied. If authorization is required, call [GetWorkspaceAcrRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAcrRamAuthorizeUrl) and confirm on the RAM page.
 //
 // The authorization status is checked separately from whether the specific image tag exists and whether the pull network is reachable.
 //
@@ -16864,27 +16852,27 @@ func (client *Client) VerifyWorkspaceAcrRamAuthorization(workspaceId *string, re
 
 // Summary:
 //
-// Queries whether the workspace resource role has been granted access to the specified NAS (AgenticFS) access point for subsequent Agent mount configurations.
+// Queries whether the workspace resource role has been granted access to the target NAS (AgenticFS) access point for subsequent Agent mount configurations.
 //
 // Description:
 //
 // Checks whether the workspace has been granted access to the specified AgenticFS access point for subsequent Agent file mount configurations.
 //
-// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage type of File Storage NAS designed for AI agents. Access points provide mount entries for file spaces.
+// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage type of Apsara File Storage NAS designed for AI agents. Access points provide mount entries for file spaces.
 //
 // ### Query and what to do next
 //
-// For the `server` query parameter, specify the access point domain name without the protocol, port, or path. Keep it consistent with the value used when obtaining the authorization link.
+// For the `server` query parameter, enter the access point domain name without the protocol, port, or path. Keep it consistent with the value used when obtaining the authorization link.
 //
 // | `authorizationStatus` | What to do next |
 //
 // | --- | --- |
 //
-// | `AUTHORIZED` | Authorization is complete. You can continue to configure `agenticFsMounts` for the agent. |
+// | `AUTHORIZED` | Authorization is completed. You can continue to configure `agenticFsMounts` for the Agent. |
 //
 // | `UNAUTHORIZED` | Obtain the link through [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl), complete the authorization, and then query again. |
 //
-// After authorization is complete, you must still commit the mount configuration in the agent and check the configuration processing result through the agent details. The mount folder must already exist, the access point must be located in the VPC associated with the workspace, and VPC access must be enabled for the agent.
+// After authorization is completed, you must still commit the mount configuration in the Agent and check the configuration processing result through the Agent details. The mount folder must already exist, the access point must be located in the VPC associated with the workspace, and VPC access must be enabled for the Agent.
 //
 // @param request - VerifyWorkspaceAgenticFsMountRamAuthorizationRequest
 //
@@ -16931,27 +16919,27 @@ func (client *Client) VerifyWorkspaceAgenticFsMountRamAuthorizationWithOptions(w
 
 // Summary:
 //
-// Queries whether the workspace resource role has been granted access to the specified NAS (AgenticFS) access point for subsequent Agent mount configurations.
+// Queries whether the workspace resource role has been granted access to the target NAS (AgenticFS) access point for subsequent Agent mount configurations.
 //
 // Description:
 //
 // Checks whether the workspace has been granted access to the specified AgenticFS access point for subsequent Agent file mount configurations.
 //
-// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage type of File Storage NAS designed for AI agents. Access points provide mount entries for file spaces.
+// [AgenticFS](https://www.alibabacloud.com/help/en/nas/product-overview/agenticfs-overview) is a storage type of Apsara File Storage NAS designed for AI agents. Access points provide mount entries for file spaces.
 //
 // ### Query and what to do next
 //
-// For the `server` query parameter, specify the access point domain name without the protocol, port, or path. Keep it consistent with the value used when obtaining the authorization link.
+// For the `server` query parameter, enter the access point domain name without the protocol, port, or path. Keep it consistent with the value used when obtaining the authorization link.
 //
 // | `authorizationStatus` | What to do next |
 //
 // | --- | --- |
 //
-// | `AUTHORIZED` | Authorization is complete. You can continue to configure `agenticFsMounts` for the agent. |
+// | `AUTHORIZED` | Authorization is completed. You can continue to configure `agenticFsMounts` for the Agent. |
 //
 // | `UNAUTHORIZED` | Obtain the link through [GetWorkspaceAgenticFsMountRamAuthorizeUrl](https://api.aliyun.com/document/AgentCore/2026-08-04/GetWorkspaceAgenticFsMountRamAuthorizeUrl), complete the authorization, and then query again. |
 //
-// After authorization is complete, you must still commit the mount configuration in the agent and check the configuration processing result through the agent details. The mount folder must already exist, the access point must be located in the VPC associated with the workspace, and VPC access must be enabled for the agent.
+// After authorization is completed, you must still commit the mount configuration in the Agent and check the configuration processing result through the Agent details. The mount folder must already exist, the access point must be located in the VPC associated with the workspace, and VPC access must be enabled for the Agent.
 //
 // @param request - VerifyWorkspaceAgenticFsMountRamAuthorizationRequest
 //
@@ -16986,9 +16974,9 @@ func (client *Client) VerifyWorkspaceAgenticFsMountRamAuthorization(workspaceId 
 //
 // | Omitted | Checks the authorization of the default private OSS storage for the workspace and updates its authorization status. |
 //
-// ### Return statuses
+// ### Return status
 //
-// `AUTHORIZED` indicates that authorization is granted, `UNAUTHORIZED` indicates that authorization is not granted, and `NOT_REQUIRED` indicates that authorization is not required. The authorization status does not indicate whether a specific mount directory exists or an instance has completed the mount.
+// `AUTHORIZED` indicates that authorization is granted, `UNAUTHORIZED` indicates that authorization is not granted, and `NOT_REQUIRED` indicates that authorization is not required. The authorization status does not indicate whether the specific mount directory exists or whether the instance has completed the mount.
 //
 // If the goal is to read from a code package source, use [VerifyAgentCodePackageOssRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyAgentCodePackageOssRamAuthorization). Do not mix code package verification with runtime directory mounting.
 //
@@ -17053,9 +17041,9 @@ func (client *Client) VerifyWorkspaceOssMountRamAuthorizationWithOptions(workspa
 //
 // | Omitted | Checks the authorization of the default private OSS storage for the workspace and updates its authorization status. |
 //
-// ### Return statuses
+// ### Return status
 //
-// `AUTHORIZED` indicates that authorization is granted, `UNAUTHORIZED` indicates that authorization is not granted, and `NOT_REQUIRED` indicates that authorization is not required. The authorization status does not indicate whether a specific mount directory exists or an instance has completed the mount.
+// `AUTHORIZED` indicates that authorization is granted, `UNAUTHORIZED` indicates that authorization is not granted, and `NOT_REQUIRED` indicates that authorization is not required. The authorization status does not indicate whether the specific mount directory exists or whether the instance has completed the mount.
 //
 // If the goal is to read from a code package source, use [VerifyAgentCodePackageOssRamAuthorization](https://api.aliyun.com/document/AgentCore/2026-08-04/VerifyAgentCodePackageOssRamAuthorization). Do not mix code package verification with runtime directory mounting.
 //

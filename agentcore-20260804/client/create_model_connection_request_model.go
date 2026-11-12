@@ -80,7 +80,7 @@ type CreateModelConnectionRequestBody struct {
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the model connection. It must be 1 to 128 non-whitespace characters in length.
+	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
 	//
 	// This parameter is required.
 	//
@@ -88,13 +88,13 @@ type CreateModelConnectionRequestBody struct {
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If this parameter is not specified in Settings during model creation, this default value is used.
+	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If the connection Settings are not specified during model creation, this default value is used.
 	//
 	// example:
 	//
 	// OpenAI/v1
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The model provider type.
+	// The type of the model provider.
 	//
 	// This parameter is required.
 	//

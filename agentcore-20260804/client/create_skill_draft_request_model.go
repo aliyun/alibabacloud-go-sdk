@@ -45,7 +45,7 @@ func (s *CreateSkillDraftRequest) Validate() error {
 }
 
 type CreateSkillDraftRequestBody struct {
-	// The version to fork from. If you do not specify this parameter, a new skill is created.
+	// The version from which the draft is derived. If you leave this parameter empty, a new skill is created.
 	//
 	// example:
 	//
@@ -71,7 +71,7 @@ type CreateSkillDraftRequestBody struct {
 	//
 	// customer-service-skill
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// Specifies the draft version number. If not specified, the version number automatically increments.
+	// The target version number of the draft. If you do not specify this parameter, the version number automatically increments.
 	//
 	// example:
 	//

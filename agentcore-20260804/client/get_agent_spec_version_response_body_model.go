@@ -78,7 +78,7 @@ type GetAgentSpecVersionResponseBodyData struct {
 	//
 	// example:
 	//
-	// A sample description used to explain the purpose of the resource
+	// Sample description used to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The name.
 	//

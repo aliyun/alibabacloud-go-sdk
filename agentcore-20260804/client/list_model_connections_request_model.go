@@ -32,19 +32,19 @@ type ListModelConnectionsRequest struct {
 	//
 	// false
 	IncludeModels *bool `json:"includeModels,omitempty" xml:"includeModels,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
+	// The maximum number of entries to return per page. Valid values: 0 to 100. Default value: 10. If this parameter is not specified or is set to 0, the default value is used.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The name of the model connection. The name must be 1 to 128 characters in length and cannot contain whitespace characters.
+	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The pagination token. Pass the token returned in the previous query for the current request. An empty response indicates that no more pages are available.
+	// The pagination token. Pass the token returned in the previous response to query the next page. If the response is empty, no more pages are available.
 	//
 	// example:
 	//

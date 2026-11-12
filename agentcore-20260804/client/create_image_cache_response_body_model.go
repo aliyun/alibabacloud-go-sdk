@@ -177,7 +177,7 @@ type CreateImageCacheResponseBodyData struct {
 	//
 	// false
 	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
-	// The time when the resource was created. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The time when the resource was created. The time follows the RFC 3339 format. The trailing Z in the example indicates the UTC time zone.
 	//
 	// This parameter is required.
 	//
@@ -419,7 +419,7 @@ type CreateImageCacheResponseBodyDataError struct {
 	//
 	// example:
 	//
-	// Image cache creation failed. Try again
+	// The image cache creation failed. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 }
 

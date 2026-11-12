@@ -18,7 +18,7 @@ type iUpdateExternalAgentRequest interface {
 type UpdateExternalAgentRequest struct {
 	// The request body.
 	Body *UpdateExternalAgentRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The reserved query parameter. The backend does not currently provide idempotence guarantees for deduplication or restoring the original acceptance result based on this identifier.
+	// The reserved query parameter. The backend does not provide idempotence guarantees for deduplication or recovery of original acceptance results based on this identifier at this time.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type UpdateExternalAgentRequestBody struct {
 	//
 	// Code review agent running in the user environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The agent instructions used to guide the behavior of the agent.
+	// The agent instruction, which is used to guide the behavior of the agent.
 	//
 	// example:
 	//
@@ -76,7 +76,11 @@ type UpdateExternalAgentRequestBody struct {
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The model configuration. This parameter is available only when modelSource is set to PLATFORM.
 	Model *UpdateExternalAgentRequestBodyModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
-	// The model configuration source. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
+	// The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be passed at the same time. Valid values:
+	//
+	// - PLATFORM: Platform model.
+	//
+	// - RUNTIME: Runtime model.
 	//
 	// example:
 	//
@@ -286,13 +290,17 @@ type UpdateExternalAgentRequestBodyModelQuota struct {
 	//
 	// token
 	LimitType *string `json:"limitType,omitempty" xml:"limitType,omitempty"`
-	// The quota statistical period. This parameter is required and verified by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
+	// The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values:
+	//
+	// - day: Daily.
+	//
+	// - month: Monthly.
 	//
 	// example:
 	//
 	// day
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The maximum number of tokens allowed to be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled, and must be greater than 0.
+	// The maximum number of tokens allowed to be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
 	//
 	// example:
 	//
@@ -357,19 +365,23 @@ type UpdateExternalAgentRequestBodySkills struct {
 	//
 	// code-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
+	// The skill source type. Valid values:
+	//
+	// - REFERENCE: References AI Registry assets.
+	//
+	// - STATIC: Statically provided with deployment artifacts.
 	//
 	// example:
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The skill version field compatible with legacy requests. New requests use sourceType and versionSelector, and this parameter is not submitted in combination with sourceType.
+	// The skill version field for compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this parameter in combination with sourceType.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The skill reference version selector, which supports LABEL tags and specific VERSION numbers. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+	// The skill reference version selector, which supports LABEL tags and VERSION specific versions. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
 	VersionSelector *UpdateExternalAgentRequestBodySkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -427,7 +439,11 @@ func (s *UpdateExternalAgentRequestBodySkills) Validate() error {
 }
 
 type UpdateExternalAgentRequestBodySkillsVersionSelector struct {
-	// The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
+	// The version selector type. Valid values:
+	//
+	// - LABEL: Selects by tag.
+	//
+	// - VERSION: Selects by specific version.
 	//
 	// example:
 	//
@@ -560,7 +576,9 @@ type UpdateExternalAgentRequestBodyTools struct {
 	//
 	// code-reviewer
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The tool type. Valid values: MCP (MCP tool).
+	// The tool type. Valid values:
+	//
+	// - MCP: MCP tool.
 	//
 	// This parameter is required.
 	//

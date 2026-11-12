@@ -78,7 +78,7 @@ type GetAgentSpecLatestResponseBodyData struct {
 	//
 	// example:
 	//
-	// A sample description used to explain the purpose of the resource
+	// A sample description to illustrate the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -286,7 +286,7 @@ type GetAgentSpecLatestResponseBodyDataSkills struct {
 	//
 	// REFERENCE
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The referenced version selector. If omitted, the default is LABEL/latest.
+	// The referenced version selector. If omitted, the default value is LABEL/latest.
 	VersionSelector *GetAgentSpecLatestResponseBodyDataSkillsVersionSelector `json:"versionSelector,omitempty" xml:"versionSelector,omitempty" type:"Struct"`
 }
 
@@ -341,7 +341,7 @@ type GetAgentSpecLatestResponseBodyDataSkillsVersionSelector struct {
 	//
 	// LABEL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The value of the selector. If the type is LABEL, the value is the label name, such as latest. If the type is VERSION, the value is the specific version number.
+	// The value of the selector. When the type is LABEL, this is the label name, such as latest. When the type is VERSION, this is the specific version number.
 	//
 	// example:
 	//

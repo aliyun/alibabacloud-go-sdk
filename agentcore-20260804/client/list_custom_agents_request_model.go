@@ -22,7 +22,7 @@ type ListCustomAgentsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The opaque token used to query the next page. Omit this parameter in the first request. For subsequent requests, use the `nextToken` value returned in the previous response as is, and keep the same workspace. Do not construct this token manually.
+	// The opaque token for querying the next page. Omit this parameter in the first request. For subsequent requests, use the `nextToken` value from the previous response as is and keep the same workspace. Do not construct the token manually.
 	//
 	// example:
 	//

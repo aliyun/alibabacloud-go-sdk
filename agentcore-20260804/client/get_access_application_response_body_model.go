@@ -38,7 +38,7 @@ type GetAccessApplicationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message returned for the request.
+	// The request processing result message.
 	//
 	// example:
 	//

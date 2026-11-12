@@ -42,7 +42,7 @@ type ListTeamsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The list of teams.
+	// The team list.
 	Items []*ListTeamsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The maximum number of records per page that takes effect for this query.
 	//
@@ -50,13 +50,13 @@ type ListTeamsResponseBody struct {
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. An error description is returned when the request fails.
+	// The response message. An error description is returned if the request fails.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The cursor for the next page. This parameter is empty if there is no next page.
+	// The cursor for the next page. This parameter is empty if no next page exists.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ func (s *ListTeamsResponseBody) Validate() error {
 type ListTeamsResponseBodyItems struct {
 	// The list of agent members in the team.
 	Agents []*ListTeamsResponseBodyItemsAgents `json:"agents,omitempty" xml:"agents,omitempty" type:"Repeated"`
-	// The creation time in UTC format compliant with RFC 3339.
+	// The creation time in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -193,15 +193,15 @@ type ListTeamsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// The team responsible for intelligent customer service
+	// Team responsible for intelligent customer service business
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The team name. It can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+	// The team name. The name can contain only lowercase letters, digits, and hyphens. It must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
 	//
 	// example:
 	//
 	// team-01
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, and Deleted.
+	// The team status. Valid values: Creating, Active, Updating, Deleting, Failed, Deleted.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ type ListTeamsResponseBodyItems struct {
 	//
 	// tm-123456
 	TeamId *string `json:"teamId,omitempty" xml:"teamId,omitempty"`
-	// The time of the last modification in UTC format compliant with RFC 3339.
+	// The last modification time in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -353,7 +353,7 @@ type ListTeamsResponseBodyItemsAgents struct {
 	//
 	// agent-01
 	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
-	// The role of the agent in the team. Valid values: LEADER and WORKER.
+	// The role of the agent in the team. Valid values: LEADER, WORKER.
 	//
 	// example:
 	//
@@ -401,7 +401,7 @@ func (s *ListTeamsResponseBodyItemsAgents) Validate() error {
 }
 
 type ListTeamsResponseBodyItemsUsers struct {
-	// The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must have exactly one ADMIN.
+	// The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type ValidateAgentCodePackageFromOssResponseBody struct {
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// The returned data.
 	Data *ValidateAgentCodePackageFromOssResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//

@@ -40,7 +40,7 @@ type DeleteAgentVersionResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID, which is used to locate and troubleshoot requests.
+	// The request ID, which is used to locate and troubleshoot the request.
 	//
 	// example:
 	//

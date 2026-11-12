@@ -130,7 +130,7 @@ func (s *GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBody) Validate() error
 }
 
 type GetWorkspaceAgenticFsMountRamAuthorizeUrlResponseBodyData struct {
-	// The RAM authorization URL. After you open the URL and complete the authorization, call the verification operation.
+	// The RAM authorization URL. Open this URL to complete the authorization, and then call the verification operation.
 	//
 	// example:
 	//

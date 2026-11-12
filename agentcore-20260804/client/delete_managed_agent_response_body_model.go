@@ -24,7 +24,7 @@ type iDeleteManagedAgentResponseBody interface {
 }
 
 type DeleteManagedAgentResponseBody struct {
-	// The business status code. The value is SUCCESS if the request is successful.
+	// The business status code. The value is SUCCESS for a successful request.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type DeleteManagedAgentResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The summary information of the managed Harness agent after deletion.
 	Data *DeleteManagedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. The value is 200 if the request is successful.
+	// The HTTP status code. The value is 200 for a successful request.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *DeleteManagedAgentResponseBody) Validate() error {
 }
 
 type DeleteManagedAgentResponseBodyData struct {
-	// The inbound access mode.
+	// The inbound access method.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DeleteManagedAgentResponseBodyData struct {
 	//
 	// SPECIFIED
 	AccessScope *string `json:"accessScope,omitempty" xml:"accessScope,omitempty"`
-	// The ID of the managed Harness agent.
+	// The managed Harness agent ID.
 	//
 	// example:
 	//

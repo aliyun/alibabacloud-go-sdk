@@ -46,9 +46,9 @@ type ListExternalAgentsResponseBody struct {
 	//
 	// example:
 	//
-	// [{"agentId":"agent-1","workspaceId":"ws-1","name":"my-external-agent","description":"运行在用户环境中的代码评审智能体","status":"Running","latestSpecVersion":1,"effectiveSpecVersion":1,"createMode":"CUSTOM","runtime":"qwenpaw","deployType":"SELF_HOSTED","createdAt":"2026-01-01T00:00:00Z","updatedAt":"2026-01-01T00:00:00Z"}]
+	// [{"agentId":"agent-1","workspaceId":"ws-1","name":"my-external-agent","description":"Code review agent running in the user environment","status":"Running","latestSpecVersion":1,"effectiveSpecVersion":1,"createMode":"CUSTOM","runtime":"qwenpaw","deployType":"SELF_HOSTED","createdAt":"2026-01-01T00:00:00Z","updatedAt":"2026-01-01T00:00:00Z"}]
 	Items []*ListExternalAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page for this request.
+	// The maximum number of entries returned per page for the current request.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ func (s *ListExternalAgentsResponseBody) Validate() error {
 }
 
 type ListExternalAgentsResponseBodyItems struct {
-	// The ID of the managed agent.
+	// The managed agent ID.
 	//
 	// example:
 	//

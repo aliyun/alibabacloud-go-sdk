@@ -126,17 +126,17 @@ func (s *DeleteMemoryStoreResponseBody) Validate() error {
 }
 
 type DeleteMemoryStoreResponseBodyData struct {
-	// The creation time. It follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-09-23T10:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The MemoryStore description.
+	// The description of the MemoryStore.
 	//
 	// example:
 	//
-	// Used to store the long-term preferences of users
+	// Used to store long-term user preferences
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The custom extraction instructions.
 	//
@@ -150,7 +150,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// ms-2f5f9c5a8d0e4c3b
 	MemoryStoreId *string `json:"memoryStoreId,omitempty" xml:"memoryStoreId,omitempty"`
-	// The MemoryStore name. It cannot be modified after creation.
+	// The name of the MemoryStore. It cannot be modified after creation.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type DeleteMemoryStoreResponseBodyData struct {
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last update time. It follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+	// The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
 	//
 	// example:
 	//

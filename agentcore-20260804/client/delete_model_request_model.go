@@ -14,7 +14,7 @@ type iDeleteModelRequest interface {
 }
 
 type DeleteModelRequest struct {
-	// The client token used for idempotence. This parameter is not currently supported.
+	// The client token used for idempotence. This parameter is currently not supported.
 	//
 	// example:
 	//

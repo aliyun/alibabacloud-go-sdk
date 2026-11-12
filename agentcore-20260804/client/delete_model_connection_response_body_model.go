@@ -24,21 +24,21 @@ type iDeleteModelConnectionResponseBody interface {
 }
 
 type DeleteModelConnectionResponseBody struct {
-	// The business status code. A value of SUCCESS indicates success.
+	// The business status code. The value is SUCCESS if the request succeeds.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The identifier of the model connection for which the deletion task has been accepted.
+	// The ID of the model connection for which the deletion request is accepted.
 	Data *DeleteModelConnectionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The HTTP status code. A value of 200 indicates success.
+	// The HTTP status code. The value is 200 if the request succeeds.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message indicating the request processing result.
+	// The message about the request processing result.
 	//
 	// example:
 	//

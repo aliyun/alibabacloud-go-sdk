@@ -22,7 +22,7 @@ type iRetryImageCacheRequest interface {
 type RetryImageCacheRequest struct {
 	// The request body for retrying image cache creation.
 	Body *RetryImageCacheRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication or recovery of the original acceptance result based on this token.
+	// The non-empty client token passed as a query parameter. The current implementation does not guarantee deduplication by this token or restoration of the original acceptance result.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type RetryImageCacheRequest struct {
 	//
 	// 550e8400-e29b-41d4-a716-446655440000
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The product entry region. This parameter is passed as a query parameter and must be consistent with the selected region endpoint and the workspace region.
+	// The region ID. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
 	//
 	// This parameter is required.
 	//

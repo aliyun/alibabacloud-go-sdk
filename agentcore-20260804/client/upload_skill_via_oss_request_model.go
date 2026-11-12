@@ -45,13 +45,13 @@ func (s *UploadSkillViaOssRequest) Validate() error {
 }
 
 type UploadSkillViaOssRequestBody struct {
-	// The commit message. This parameter is optional.
+	// The commit message.
 	//
 	// example:
 	//
 	// Update documentation
 	CommitMsg *string `json:"commitMsg,omitempty" xml:"commitMsg,omitempty"`
-	// The name or path of the OSS object.
+	// The name of the OSS object.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type UploadSkillViaOssRequestBody struct {
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// The target version to upload. This parameter is optional and serves as a fallback when no version information is included in the ZIP package.
+	// Specifies the target version number for the upload. This parameter is optional and serves as a fallback when no version information is included in the ZIP package.
 	//
 	// example:
 	//

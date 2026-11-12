@@ -126,25 +126,25 @@ func (s *GetAgentVersionResponseBody) Validate() error {
 }
 
 type GetAgentVersionResponseBodyData struct {
-	// The ID of the managed or custom agent that owns the version.
+	// The ID of the managed or custom agent to which the version belongs.
 	//
 	// example:
 	//
 	// agent-0123456789abcdef0123456789abcdef
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
-	// The system-generated version number that increments for each agent, such as v1 and v2. This is used when querying or deleting versions, and when referencing versions in service endpoints.
+	// The system-generated version number that increments for the agent, such as v1 and v2. This is used when querying or deleting versions, and when server endpoints reference the version.
 	//
 	// example:
 	//
 	// v1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// Indicates only whether the version template and artifact archiving are complete, and does not represent the deployment or running status. A value of READY indicates that the archiving is complete. A value of INVALID indicates that the archiving is missing or inconsistent.
+	// Indicates only whether the version template and artifact archive are complete, and does not represent the deployment or running status. Valid values: READY indicates that the archive is complete. INVALID indicates that the archive is missing or inconsistent.
 	//
 	// example:
 	//
 	// READY
 	ArtifactStatus *string `json:"artifactStatus,omitempty" xml:"artifactStatus,omitempty"`
-	// For managed agents, the structure is consistent with the data structure of GetManagedAgent. For custom agents, the structure is consistent with the data structure of GetCustomAgent. The desensitization rules are the same.
+	// For managed agents, the structure is consistent with the data structure of GetManagedAgent. For custom agents, the structure is consistent with the data structure of GetCustomAgent. The data masking rules are the same.
 	//
 	// example:
 	//
@@ -156,31 +156,31 @@ type GetAgentVersionResponseBodyData struct {
 	//
 	// 2026-08-12T01:02:03Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The UID of the Alibaba Cloud account of the caller who saved the version. If the API is called by a RAM user, this value is the UID of the Alibaba Cloud account to which the RAM user belongs.
+	// The UID of the Alibaba Cloud account of the caller who saved the version. If the API is called by a RAM user, this is the UID of the Alibaba Cloud account to which the RAM user belongs.
 	//
 	// example:
 	//
 	// 1234567890123456
 	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The version description provided when the version was saved. It can contain up to 1,024 characters. If no description was provided when the version was saved, this field is empty.
+	// The version description provided when the version was saved. It can be up to 1,024 characters in length. If no description was provided when the version was saved, this field is empty.
 	//
 	// example:
 	//
 	// Stable version for the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The effective release serial number of the agent when the version was saved, which is the effectiveSpecVersion at that time. This value does not change after the version is saved.
+	// The effective release sequence number of the agent when the version was saved, which is the effectiveSpecVersion at that time. This value does not change after the version is saved.
 	//
 	// example:
 	//
 	// 2
 	TargetSpecVersion *int64 `json:"targetSpecVersion,omitempty" xml:"targetSpecVersion,omitempty"`
-	// The display name specified by the user when the version was saved. For earlier saved versions that did not record a name, the agentVersion is returned.
+	// The display name specified by the user when the version was saved. For earlier saved versions where no name was recorded, the agentVersion is returned.
 	//
 	// example:
 	//
 	// Production stable version V1.0
 	VersionName *string `json:"versionName,omitempty" xml:"versionName,omitempty"`
-	// The ID of the AgentCore workspace where the agent that owns the version resides.
+	// The ID of the AgentCore workspace where the agent that owns this version resides.
 	//
 	// example:
 	//

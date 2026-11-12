@@ -38,7 +38,7 @@ type DeleteMcpResponseBody struct {
 	//
 	// example:
 	//
-	// The request is processed successfully
+	// The request was processed successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The request ID.
 	//

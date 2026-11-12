@@ -18,7 +18,7 @@ type iUpdateModelConnectionRequest interface {
 type UpdateModelConnectionRequest struct {
 	// The request body.
 	Body *UpdateModelConnectionRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
-	// The client token used for idempotence. This parameter is not supported.
+	// The client token used to ensure idempotence. This parameter is currently not supported.
 	//
 	// example:
 	//
@@ -64,25 +64,25 @@ func (s *UpdateModelConnectionRequest) Validate() error {
 type UpdateModelConnectionRequestBody struct {
 	// The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
 	ApiKeys []*string `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
-	// The description of the model connection, which can be up to 255 characters in length.
+	// The description of the model connection. The description can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The absolute HTTP or HTTPS URL of the upstream model service, which can be up to 1,024 characters in length.
+	// The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The name of the model connection, which must be 1 to 128 non-whitespace characters in length.
+	// The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation, this default value is used.
+	// The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation of the connection, this default value is used.
 	//
 	// example:
 	//

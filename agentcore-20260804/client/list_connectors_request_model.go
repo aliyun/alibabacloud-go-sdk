@@ -16,7 +16,7 @@ type iListConnectorsRequest interface {
 }
 
 type ListConnectorsRequest struct {
-	// The page size. This parameter is not supported in the current version.
+	// The maximum number of results to return. This parameter is not supported in the current version.
 	//
 	// example:
 	//

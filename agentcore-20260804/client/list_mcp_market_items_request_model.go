@@ -40,7 +40,7 @@ type ListMcpMarketItemsRequest struct {
 	//
 	// CODE_PACKAGE
 	McpType *string `json:"mcpType,omitempty" xml:"mcpType,omitempty"`
-	// The pagination token used to query the next page.
+	// The pagination token for querying the next page.
 	//
 	// example:
 	//

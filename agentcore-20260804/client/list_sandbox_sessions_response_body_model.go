@@ -44,7 +44,7 @@ type ListSandboxSessionsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list of active sessions for the sandbox.
 	Items []*ListSandboxSessionsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page for the current query.
+	// The maximum number of records per page for this query.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListSandboxSessionsResponseBody struct {
 	//
 	// 1a2b3c4d-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. A value of true indicates that the request is successful. A value of false indicates that the request fails.
+	// Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 	// The total number of records that meet the query conditions.
 	//

@@ -42,9 +42,9 @@ type ListCredentialsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The credential list.
+	// The list of credentials.
 	Items []*ListCredentialsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of records per page that takes effect in the current query.
+	// The actual maximum number of records returned per page in the current query.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// 2
 	BoundAgentsCounts *int32 `json:"boundAgentsCounts,omitempty" xml:"boundAgentsCounts,omitempty"`
-	// The creation time in UTC format compliant with RFC 3339.
+	// The creation time in UTC, formatted according to RFC 3339.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// cred-123456
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// The desensitized credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header name is returned, and the value is not returned.
+	// The masked credential content. For the apiKey type, a key mask is returned. For the mcpHeader type, only the header name is returned, and the header value is not returned.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type ListCredentialsResponseBodyItems struct {
 	//
 	// API key used to call model services in the production environment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The credential name. The name must be unique within the workspace, can contain only letters, digits, periods, underscores, and hyphens, and must be 3 to 99 characters in length. Runtime reserved names cannot be used.
+	// The credential name. The name must be unique within the workspace, contain only letters, digits, periods, underscores, and hyphens, and be 3 to 99 characters in length. You cannot use runtime reserved names.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ type ListCredentialsResponseBodyItems struct {
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	// The list of MCP services to which the credential applies.
 	ResourceRefs []*ListCredentialsResponseBodyItemsResourceRefs `json:"resourceRefs,omitempty" xml:"resourceRefs,omitempty" type:"Repeated"`
-	// The application scope of the credential. ALL indicates all scopes. SPECIFIED indicates specified MCP services.
+	// The applicable scope of the credential. A value of ALL indicates all scopes. A value of SPECIFIED indicates specified MCP services.
 	//
 	// example:
 	//
 	// ALL
 	ResourceScope *string `json:"resourceScope,omitempty" xml:"resourceScope,omitempty"`
-	// The time of the last modification in UTC format compliant with RFC 3339.
+	// The time of the last modification in UTC, formatted according to RFC 3339.
 	//
 	// example:
 	//
@@ -393,7 +393,7 @@ type ListCredentialsResponseBodyItemsResourceRefs struct {
 	//
 	// my-mcp-service
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
-	// The resource type. Currently, the value is mcpServer, which indicates an MCP service.
+	// The resource type. The current value is mcpServer, which indicates an MCP service.
 	//
 	// example:
 	//

@@ -18,23 +18,23 @@ type iItemsI18nValue interface {
 }
 
 type ItemsI18nValue struct {
-	// The description of the MCP service in the language.
+	// The MCP service description in the specified language.
 	//
 	// example:
 	//
 	// MCP service for querying knowledge bases
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the MCP marketplace template in the language.
+	// The MCP marketplace template name in the specified language.
 	//
 	// example:
 	//
-	// Knowledge base
+	// Knowledge Base
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The usage instructions of the MCP marketplace template in the language.
+	// The usage instructions for the MCP marketplace template in the specified language.
 	//
 	// example:
 	//
-	// # Knowledge base\\nKnowledge base query service
+	// # Knowledge Base\\nKnowledge base query service
 	Readme *string `json:"readme,omitempty" xml:"readme,omitempty"`
 }
 

@@ -42,13 +42,13 @@ type ListSkillsRequest struct {
 	//
 	// next-page-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The sort field. Valid value: download_count. Default value: gmt_modified.
+	// The field used for sorting. Supported value: download_count. Default value: gmt_modified.
 	//
 	// example:
 	//
 	// download_count
 	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
-	// Filters the skills by owner.
+	// The owner used to filter results.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListSkillsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters the skills by visibility. Valid values: PUBLIC and PRIVATE.
+	// The visibility used to filter results. Valid values: PUBLIC and PRIVATE.
 	//
 	// example:
 	//

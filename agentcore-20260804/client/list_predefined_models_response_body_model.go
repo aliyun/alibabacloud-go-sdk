@@ -38,7 +38,7 @@ type ListPredefinedModelsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The message about the request processing result.
+	// The request processing result message.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListPredefinedModelsResponseBody) Validate() error {
 }
 
 type ListPredefinedModelsResponseBodyData struct {
-	// The model capability configurations.
+	// The model capability configuration.
 	Capabilities *ListPredefinedModelsResponseBodyDataCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
 	// The context window size of the model, in tokens. The value must be a positive integer.
 	//
@@ -225,11 +225,11 @@ type ListPredefinedModelsResponseBodyDataCapabilities struct {
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
 	// Indicates whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Specifies whether the model is able to invoke multiple tool calling operations in a single response.
+	// Specifies whether the model is able to invoke multiple tools in a single response through tool calling.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
 	// Indicates whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Specifies whether the model is able to invoke streaming tool calling.
+	// Specifies whether the model is able to invoke tools through streaming tool calling.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
 	// Indicates whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`

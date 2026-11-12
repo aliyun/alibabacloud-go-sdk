@@ -134,7 +134,7 @@ type GetAgentIMChannelResponseBodyData struct {
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
 	// The channel behavior configuration.
 	ChannelConfig *GetAgentIMChannelResponseBodyDataChannelConfig `json:"channelConfig,omitempty" xml:"channelConfig,omitempty" type:"Struct"`
-	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), and WECOM (WeCom).
+	// The IM channel type. Valid values: DINGTALK (DingTalk), FEISHU (Lark), WECOM (WeCom).
 	//
 	// example:
 	//
@@ -162,13 +162,13 @@ type GetAgentIMChannelResponseBodyData struct {
 	//
 	// imc-1
 	ImChannelId *string `json:"imChannelId,omitempty" xml:"imChannelId,omitempty"`
-	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be in the ready state, and have a public address.
+	// The ID of the bound service endpoint. The endpoint must belong to the specified agent and its current version, be ready, and have a public network address.
 	//
 	// example:
 	//
 	// se-1
 	ServiceEndpointId *string `json:"serviceEndpointId,omitempty" xml:"serviceEndpointId,omitempty"`
-	// The IM channel status. Valid values: CREATING (creating), READY (ready), UPDATING (updating), FAILED (failed), DELETING (deleting), and DELETE_FAILED (deletion failed).
+	// The IM channel status. Valid values: CREATING (creating), READY (ready), UPDATING (updating), FAILED (failed), DELETING (deleting), DELETE_FAILED (delete failed).
 	//
 	// example:
 	//
@@ -334,9 +334,9 @@ func (s *GetAgentIMChannelResponseBodyData) Validate() error {
 }
 
 type GetAgentIMChannelResponseBodyDataChannelConfig struct {
-	// Specifies whether to display the thinking process in IM messages. Default value: false.
+	// Indicates whether to display the thinking process in IM messages. Default value: false.
 	ShowThinking *bool `json:"showThinking,omitempty" xml:"showThinking,omitempty"`
-	// Specifies whether to display the tool calling process in IM messages. Default value: false.
+	// Indicates whether to display the tool calling process in IM messages. Default value: false.
 	ShowToolCalls *bool `json:"showToolCalls,omitempty" xml:"showToolCalls,omitempty"`
 }
 

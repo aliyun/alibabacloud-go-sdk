@@ -126,7 +126,7 @@ func (s *VerifyWorkspaceOssMountRamAuthorizationResponseBody) Validate() error {
 }
 
 type VerifyWorkspaceOssMountRamAuthorizationResponseBodyData struct {
-	// The authorization status of the OSS storage.
+	// The OSS storage authorization status.
 	//
 	// example:
 	//
