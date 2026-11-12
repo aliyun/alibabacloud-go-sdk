@@ -21,14 +21,20 @@ type iModifyAppInstanceRequest interface {
 	GetInstanceClass() *string
 	SetInstanceName(v string) *ModifyAppInstanceRequest
 	GetInstanceName() *string
+	SetMigrationMode(v string) *ModifyAppInstanceRequest
+	GetMigrationMode() *string
 	SetRegionId(v string) *ModifyAppInstanceRequest
 	GetRegionId() *string
 }
 
 type ModifyAppInstanceRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The client token that is used to ensure idempotence.
+	// The idempotency parameter.
 	//
 	// example:
 	//
@@ -36,11 +42,15 @@ type ModifyAppInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of modules.
 	Components []*ModifyAppInstanceRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The instance ID of the ApsaraDB RDS for PostgreSQL database connected to the AI application.
+	//
+	// <notice>Only **newly purchased empty ApsaraDB RDS for PostgreSQL instances*	- are supported. The major engine version must be **17**, and the minor engine version must be **20250630 or later**.</notice>
+	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The instance type. Currently, only **rdsai.supabase.basic*	- is supported.
+	// The instance type. Only **rdsai.supabase.basic*	- is supported.
 	//
 	// example:
 	//
@@ -52,6 +62,12 @@ type ModifyAppInstanceRequest struct {
 	//
 	// ra-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	MigrationMode *string `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -92,6 +108,10 @@ func (s *ModifyAppInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ModifyAppInstanceRequest) GetMigrationMode() *string {
+	return s.MigrationMode
+}
+
 func (s *ModifyAppInstanceRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -123,6 +143,11 @@ func (s *ModifyAppInstanceRequest) SetInstanceClass(v string) *ModifyAppInstance
 
 func (s *ModifyAppInstanceRequest) SetInstanceName(v string) *ModifyAppInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyAppInstanceRequest) SetMigrationMode(v string) *ModifyAppInstanceRequest {
+	s.MigrationMode = &v
 	return s
 }
 

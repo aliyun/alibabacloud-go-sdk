@@ -17,6 +17,8 @@ type iModifyAppInstanceResponseBody interface {
 	GetInstanceName() *string
 	SetRequestId(v string) *ModifyAppInstanceResponseBody
 	GetRequestId() *string
+	SetTargetInstanceName(v string) *ModifyAppInstanceResponseBody
+	GetTargetInstanceName() *string
 }
 
 type ModifyAppInstanceResponseBody struct {
@@ -40,6 +42,12 @@ type ModifyAppInstanceResponseBody struct {
 	//
 	// FE9C65D7-930F-57A5-A207-8C396329****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
 }
 
 func (s ModifyAppInstanceResponseBody) String() string {
@@ -66,6 +74,10 @@ func (s *ModifyAppInstanceResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ModifyAppInstanceResponseBody) GetTargetInstanceName() *string {
+	return s.TargetInstanceName
+}
+
 func (s *ModifyAppInstanceResponseBody) SetBranchName(v string) *ModifyAppInstanceResponseBody {
 	s.BranchName = &v
 	return s
@@ -83,6 +95,11 @@ func (s *ModifyAppInstanceResponseBody) SetInstanceName(v string) *ModifyAppInst
 
 func (s *ModifyAppInstanceResponseBody) SetRequestId(v string) *ModifyAppInstanceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAppInstanceResponseBody) SetTargetInstanceName(v string) *ModifyAppInstanceResponseBody {
+	s.TargetInstanceName = &v
 	return s
 }
 

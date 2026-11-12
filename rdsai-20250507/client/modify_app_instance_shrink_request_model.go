@@ -21,14 +21,20 @@ type iModifyAppInstanceShrinkRequest interface {
 	GetInstanceClass() *string
 	SetInstanceName(v string) *ModifyAppInstanceShrinkRequest
 	GetInstanceName() *string
+	SetMigrationMode(v string) *ModifyAppInstanceShrinkRequest
+	GetMigrationMode() *string
 	SetRegionId(v string) *ModifyAppInstanceShrinkRequest
 	GetRegionId() *string
 }
 
 type ModifyAppInstanceShrinkRequest struct {
 	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The client token that is used to ensure idempotence.
+	// The idempotency parameter.
 	//
 	// example:
 	//
@@ -36,11 +42,15 @@ type ModifyAppInstanceShrinkRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The list of modules.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	// The instance ID of the ApsaraDB RDS for PostgreSQL database connected to the AI application.
+	//
+	// <notice>Only **newly purchased empty ApsaraDB RDS for PostgreSQL instances*	- are supported. The major engine version must be **17**, and the minor engine version must be **20250630 or later**.</notice>
+	//
 	// example:
 	//
 	// pgm-2ze49qv594vi****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The instance type. Currently, only **rdsai.supabase.basic*	- is supported.
+	// The instance type. Only **rdsai.supabase.basic*	- is supported.
 	//
 	// example:
 	//
@@ -52,6 +62,12 @@ type ModifyAppInstanceShrinkRequest struct {
 	//
 	// ra-8moov5lxba****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The reserved parameter.
+	//
+	// example:
+	//
+	// Reserved parameter
+	MigrationMode *string `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -92,6 +108,10 @@ func (s *ModifyAppInstanceShrinkRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ModifyAppInstanceShrinkRequest) GetMigrationMode() *string {
+	return s.MigrationMode
+}
+
 func (s *ModifyAppInstanceShrinkRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -123,6 +143,11 @@ func (s *ModifyAppInstanceShrinkRequest) SetInstanceClass(v string) *ModifyAppIn
 
 func (s *ModifyAppInstanceShrinkRequest) SetInstanceName(v string) *ModifyAppInstanceShrinkRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyAppInstanceShrinkRequest) SetMigrationMode(v string) *ModifyAppInstanceShrinkRequest {
+	s.MigrationMode = &v
 	return s
 }
 

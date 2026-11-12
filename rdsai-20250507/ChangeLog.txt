@@ -1,3 +1,6 @@
+2026-11-12 Version: v3.10.3
+- Generated golang 2025-05-07 for RdsAi.
+
 2026-11-11 Version: v3.10.2
 - Generated golang 2025-05-07 for RdsAi.
 

@@ -5376,15 +5376,15 @@ func (client *Client) ListSkillWithContext(ctx context.Context, request *ListSki
 
 // Summary:
 //
-// Modifies the modules of an ApsaraDB RDS AI application instance.
+// Modifies the modules of an RDS AI application instance.
 //
 // Description:
 //
-// ### Applicable engine
+// ### Supported engines
 //
-// # RDS PostgreSQL
+// # ApsaraDB RDS for PostgreSQL
 //
-// ### Related documentation
+// ### Related feature documentation
 //
 // [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html)
 //
@@ -5429,6 +5429,10 @@ func (client *Client) ModifyAppInstanceWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.MigrationMode) {
+		query["MigrationMode"] = request.MigrationMode
 	}
 
 	if !dara.IsNil(request.RegionId) {
