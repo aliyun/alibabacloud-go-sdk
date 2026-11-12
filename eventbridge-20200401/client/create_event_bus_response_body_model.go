@@ -42,7 +42,9 @@ type CreateEventBusResponseBody struct {
 	//
 	// A995F07C-E503-5881-9962-9CECA8566876
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true: The call is successful.
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
 	//
 	// example:
 	//

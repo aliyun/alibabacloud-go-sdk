@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("eventbridge")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-wulanchabu":         dara.String("eventbridge-console.cn-wulanchabu.aliyuncs.com"),
@@ -529,8 +537,18 @@ func (client *Client) CreateEventBusWithOptions(request *CreateEventBusRequest, 
 		query["EventBusName"] = request.EventBusName
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Tags) {
+		body["Tags"] = request.Tags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateEventBus"),
@@ -772,13 +790,18 @@ func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreami
 		request.TransformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Transforms, dara.String("Transforms"), dara.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventStreamingName) {
+		query["EventStreamingName"] = request.EventStreamingName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
-	}
-
-	if !dara.IsNil(request.EventStreamingName) {
-		body["EventStreamingName"] = request.EventStreamingName
 	}
 
 	if !dara.IsNil(request.FilterPattern) {
@@ -810,7 +833,8 @@ func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreami
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateEventStreaming"),
@@ -3166,11 +3190,11 @@ func (client *Client) GetDocumentDownloadUrl(request *GetDocumentDownloadUrlRequ
 
 // Summary:
 //
-// Queries the detailed information about an event bus.
+// Retrieves the details of an event bus.
 //
 // Description:
 //
-// You can call this API operation to query the detailed information about an event bus.
+// Retrieves the details of an event bus.
 //
 // @param request - GetEventBusRequest
 //
@@ -3214,11 +3238,11 @@ func (client *Client) GetEventBusWithOptions(request *GetEventBusRequest, runtim
 
 // Summary:
 //
-// Queries the detailed information about an event bus.
+// Retrieves the details of an event bus.
 //
 // Description:
 //
-// You can call this API operation to query the detailed information about an event bus.
+// Retrieves the details of an event bus.
 //
 // @param request - GetEventBusRequest
 //
@@ -4841,7 +4865,7 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 //
 // Description:
 //
-// You can call this API operation to query all event buses.
+// Queries all event buses.
 //
 // @param request - ListEventBusesRequest
 //
@@ -4866,6 +4890,10 @@ func (client *Client) ListEventBusesWithOptions(request *ListEventBusesRequest, 
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4897,7 +4925,7 @@ func (client *Client) ListEventBusesWithOptions(request *ListEventBusesRequest, 
 //
 // Description:
 //
-// You can call this API operation to query all event buses.
+// Queries all event buses.
 //
 // @param request - ListEventBusesRequest
 //
@@ -7873,11 +7901,11 @@ func (client *Client) UpdateConnection(request *UpdateConnectionRequest) (_resul
 
 // Summary:
 //
-// Modifies an event bus.
+// Updates an event bus.
 //
 // Description:
 //
-// Modifies an event bus.
+// Updates an event bus.
 //
 // @param request - UpdateEventBusRequest
 //
@@ -7900,8 +7928,14 @@ func (client *Client) UpdateEventBusWithOptions(request *UpdateEventBusRequest, 
 		query["EventBusName"] = request.EventBusName
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Tags) {
+		body["Tags"] = request.Tags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateEventBus"),
@@ -7925,11 +7959,11 @@ func (client *Client) UpdateEventBusWithOptions(request *UpdateEventBusRequest, 
 
 // Summary:
 //
-// Modifies an event bus.
+// Updates an event bus.
 //
 // Description:
 //
-// Modifies an event bus.
+// Updates an event bus.
 //
 // @param request - UpdateEventBusRequest
 //

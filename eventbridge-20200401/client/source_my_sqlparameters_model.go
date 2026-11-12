@@ -50,7 +50,7 @@ type SourceMySQLParameters struct {
 	//
 	// rm-bp1vxxx.mysql.rds.aliyuncs.com
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// Indicates whether to include schema changes.
+	// Specifies whether database structure schema evolution is included.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type SourceMySQLParameters struct {
 	//
 	// PrivateNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The password for the user.
+	// The password of the database user.
 	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The database server port.
+	// The port of the database server.
 	//
 	// example:
 	//
 	// 80
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the region that contains the data source.
+	// The ID of the region where the data source is located.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type SourceMySQLParameters struct {
 	//
 	// when_needed
 	SnapshotMode *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
-	// The names of tables to synchronize. Separate multiple table names with a comma.
+	// The names of the tables to synchronize. Separate multiple table names with commas.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type SourceMySQLParameters struct {
 	//
 	// example_user
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
-	// The VSwitch IDs. Separate multiple IDs with a comma.
+	// The vSwitch IDs. Separate multiple IDs with commas.
 	//
 	// example:
 	//
 	// [vsw-a1b2c3d4e5f6g7h8i9j0k]
 	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The ID of the VPC.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//

@@ -22,15 +22,15 @@ type iGetEventBusResponseBody interface {
 }
 
 type GetEventBusResponseBody struct {
-	// The response code. The value Success indicates that the request was successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+	// The response code. A value of Success indicates that the request is successful. Other values indicate error codes. For more information, see Error codes.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned result.
 	Data *GetEventBusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message that is returned if the request failed.
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetEventBusResponseBody struct {
 	//
 	// d5bfc188-4452-4ba7-b73a-a9005e522439
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. If the operation was successful, the value true is returned.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *GetEventBusResponseBody) Validate() error {
 }
 
 type GetEventBusResponseBodyData struct {
-	// The timestamp that indicates when the event bus was created.
+	// The creation timestamp.
 	//
 	// example:
 	//
@@ -137,6 +137,14 @@ type GetEventBusResponseBodyData struct {
 	//
 	// MyEventBus
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	// The ID of the resource group to which the event bus belongs.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag information.
+	Tags []*GetEventBusResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetEventBusResponseBodyData) String() string {
@@ -163,6 +171,14 @@ func (s *GetEventBusResponseBodyData) GetEventBusName() *string {
 	return s.EventBusName
 }
 
+func (s *GetEventBusResponseBodyData) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *GetEventBusResponseBodyData) GetTags() []*GetEventBusResponseBodyDataTags {
+	return s.Tags
+}
+
 func (s *GetEventBusResponseBodyData) SetCreateTimestamp(v int64) *GetEventBusResponseBodyData {
 	s.CreateTimestamp = &v
 	return s
@@ -183,6 +199,70 @@ func (s *GetEventBusResponseBodyData) SetEventBusName(v string) *GetEventBusResp
 	return s
 }
 
+func (s *GetEventBusResponseBodyData) SetResourceGroupId(v string) *GetEventBusResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetEventBusResponseBodyData) SetTags(v []*GetEventBusResponseBodyDataTags) *GetEventBusResponseBodyData {
+	s.Tags = v
+	return s
+}
+
 func (s *GetEventBusResponseBodyData) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetEventBusResponseBodyDataTags struct {
+	// The key of the first tag.
+	//
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the first tag.
+	//
+	// example:
+	//
+	// R&D
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventBusResponseBodyDataTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetEventBusResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventBusResponseBodyDataTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *GetEventBusResponseBodyDataTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *GetEventBusResponseBodyDataTags) SetKey(v string) *GetEventBusResponseBodyDataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetEventBusResponseBodyDataTags) SetValue(v string) *GetEventBusResponseBodyDataTags {
+	s.Value = &v
+	return s
+}
+
+func (s *GetEventBusResponseBodyDataTags) Validate() error {
 	return dara.Validate(s)
 }

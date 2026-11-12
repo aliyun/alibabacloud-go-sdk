@@ -17,6 +17,8 @@ type iCreateEventStreamingShrinkRequest interface {
 	GetFilterPattern() *string
 	SetMetadata(v string) *CreateEventStreamingShrinkRequest
 	GetMetadata() *string
+	SetResourceGroupId(v string) *CreateEventStreamingShrinkRequest
+	GetResourceGroupId() *string
 	SetRunOptionsShrink(v string) *CreateEventStreamingShrinkRequest
 	GetRunOptionsShrink() *string
 	SetSinkShrink(v string) *CreateEventStreamingShrinkRequest
@@ -44,7 +46,7 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The event filtering rule. If this parameter is not specified, all events are matched.
+	// The event filtering rule. If you do not specify this parameter, all events are matched.
 	//
 	// example:
 	//
@@ -82,21 +84,27 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	// The common JSON configurations for the event provider. This parameter is mutually exclusive with the Source parameter.
+	// The common JSON configurations for the event provider. This parameter is mutually exclusive with Source.
 	//
 	// example:
 	//
 	// {"key":"value"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The resource group ID. If you do not specify this parameter, the created event stream belongs to the default resource group of the account.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The runtime environment parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must select one and only one sink.
+	// The event target. You must select exactly one type of sink to configure.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider. You must specify exactly one source.
+	// The event provider. You must select exactly one source type and configure its parameters.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The list of tags. You can specify up to 20 tags.
 	Tags []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The transform configurations.
+	// The configuration for transforms.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 
@@ -122,6 +130,10 @@ func (s *CreateEventStreamingShrinkRequest) GetFilterPattern() *string {
 
 func (s *CreateEventStreamingShrinkRequest) GetMetadata() *string {
 	return s.Metadata
+}
+
+func (s *CreateEventStreamingShrinkRequest) GetResourceGroupId() *string {
+	return s.ResourceGroupId
 }
 
 func (s *CreateEventStreamingShrinkRequest) GetRunOptionsShrink() *string {
@@ -161,6 +173,11 @@ func (s *CreateEventStreamingShrinkRequest) SetFilterPattern(v string) *CreateEv
 
 func (s *CreateEventStreamingShrinkRequest) SetMetadata(v string) *CreateEventStreamingShrinkRequest {
 	s.Metadata = &v
+	return s
+}
+
+func (s *CreateEventStreamingShrinkRequest) SetResourceGroupId(v string) *CreateEventStreamingShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 

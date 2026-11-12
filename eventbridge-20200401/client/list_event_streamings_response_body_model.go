@@ -238,6 +238,12 @@ type ListEventStreamingsResponseBodyDataEventStreamings struct {
 	//
 	// {"key":"value"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// 该事件流所属的资源组ID。
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The runtime environment parameters.
 	RunOptions *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions `json:"RunOptions,omitempty" xml:"RunOptions,omitempty" type:"Struct"`
 	// The event target.
@@ -278,6 +284,10 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamings) GetMetadata() *stri
 	return s.Metadata
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamings) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamings) GetRunOptions() *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
 	return s.RunOptions
 }
@@ -315,6 +325,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamings) SetFilterPattern(v 
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamings) SetMetadata(v string) *ListEventStreamingsResponseBodyDataEventStreamings {
 	s.Metadata = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamings) SetResourceGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamings {
+	s.ResourceGroupId = &v
 	return s
 }
 

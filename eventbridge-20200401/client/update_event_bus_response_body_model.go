@@ -22,9 +22,9 @@ type iUpdateEventBusResponseBody interface {
 type UpdateEventBusResponseBody struct {
 	// The return code of the API operation. Valid values:
 	//
-	// - Success: Indicates success.
+	// - Success: indicates success.
 	//
-	// - Other: Indicates an error code. For more information, see Error codes.
+	// - Other values: indicates an error code. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateEventBusResponseBody struct {
 	//
 	// f2099962-1628-45f1-9782-2bf6daad823f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Returns true if the operation is successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

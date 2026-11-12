@@ -350,8 +350,18 @@ func (client *Client) CreateEventBusWithContext(ctx context.Context, request *Cr
 		query["EventBusName"] = request.EventBusName
 	}
 
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Tags) {
+		body["Tags"] = request.Tags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateEventBus"),
@@ -549,13 +559,18 @@ func (client *Client) CreateEventStreamingWithContext(ctx context.Context, tmpRe
 		request.TransformsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Transforms, dara.String("Transforms"), dara.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventStreamingName) {
+		query["EventStreamingName"] = request.EventStreamingName
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
-	}
-
-	if !dara.IsNil(request.EventStreamingName) {
-		body["EventStreamingName"] = request.EventStreamingName
 	}
 
 	if !dara.IsNil(request.FilterPattern) {
@@ -587,7 +602,8 @@ func (client *Client) CreateEventStreamingWithContext(ctx context.Context, tmpRe
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateEventStreaming"),
@@ -2303,11 +2319,11 @@ func (client *Client) GetDocumentDownloadUrlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the detailed information about an event bus.
+// Retrieves the details of an event bus.
 //
 // Description:
 //
-// You can call this API operation to query the detailed information about an event bus.
+// Retrieves the details of an event bus.
 //
 // @param request - GetEventBusRequest
 //
@@ -3499,7 +3515,7 @@ func (client *Client) ListDocumentsWithContext(ctx context.Context, request *Lis
 //
 // Description:
 //
-// You can call this API operation to query all event buses.
+// Queries all event buses.
 //
 // @param request - ListEventBusesRequest
 //
@@ -3524,6 +3540,10 @@ func (client *Client) ListEventBusesWithContext(ctx context.Context, request *Li
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5761,11 +5781,11 @@ func (client *Client) UpdateConnectionWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// Modifies an event bus.
+// Updates an event bus.
 //
 // Description:
 //
-// Modifies an event bus.
+// Updates an event bus.
 //
 // @param request - UpdateEventBusRequest
 //
@@ -5788,8 +5808,14 @@ func (client *Client) UpdateEventBusWithContext(ctx context.Context, request *Up
 		query["EventBusName"] = request.EventBusName
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Tags) {
+		body["Tags"] = request.Tags
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateEventBus"),

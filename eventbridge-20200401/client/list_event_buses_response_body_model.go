@@ -22,11 +22,11 @@ type iListEventBusesResponseBody interface {
 }
 
 type ListEventBusesResponseBody struct {
-	// The response code. Valid values:
+	// The response code:
 	//
-	// 	- Success: The request was successful.
+	// - Success: indicates that the request is successful.
 	//
-	// 	- Other codes: The request failed. For information about error codes, see Error codes.
+	// - Other values: indicate error codes. For more information, see Error codes.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListEventBusesResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ListEventBusesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error message.
+	// The error message.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ListEventBusesResponseBody struct {
 	//
 	// example:
 	//
-	// D1DCF64A-3F2C-5323-ADCB-3F4DF30FAD2D
+	// D1DCF64A-3F2C-5323-ADCB-3F4DF30F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. If the operation was successful, the value true is returned.
+	// Indicates whether the operation is successful. A value of true indicates that the operation is successful.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *ListEventBusesResponseBody) Validate() error {
 }
 
 type ListEventBusesResponseBodyData struct {
-	// The event buses.
+	// The list of queried event buses.
 	EventBuses []*ListEventBusesResponseBodyDataEventBuses `json:"EventBuses,omitempty" xml:"EventBuses,omitempty" type:"Repeated"`
-	// If excess return values exist, this parameter is returned.
+	// The pagination token. This token is returned if more results are available.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *ListEventBusesResponseBodyData) Validate() error {
 }
 
 type ListEventBusesResponseBodyDataEventBuses struct {
-	// The timestamp that indicates when the event bus was created.
+	// The creation timestamp.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type ListEventBusesResponseBodyDataEventBuses struct {
 	//
 	// example:
 	//
-	// acs:eventbridge:cn-hangzhou:123456789098***:eventbus/default
+	// acs:eventbridge:cn-hangzhou:12345678909****:eventbus/default
 	EventBusARN *string `json:"EventBusARN,omitempty" xml:"EventBusARN,omitempty"`
 	// The name of the event bus.
 	//
@@ -206,6 +206,14 @@ type ListEventBusesResponseBodyDataEventBuses struct {
 	//
 	// default
 	EventBusName *string `json:"EventBusName,omitempty" xml:"EventBusName,omitempty"`
+	// The ID of the resource group to which the event bus belongs.
+	//
+	// example:
+	//
+	// rg-acfmxazb4ph6aiy****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag information of the event bus.
+	Tags []*ListEventBusesResponseBodyDataEventBusesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListEventBusesResponseBodyDataEventBuses) String() string {
@@ -232,6 +240,14 @@ func (s *ListEventBusesResponseBodyDataEventBuses) GetEventBusName() *string {
 	return s.EventBusName
 }
 
+func (s *ListEventBusesResponseBodyDataEventBuses) GetResourceGroupId() *string {
+	return s.ResourceGroupId
+}
+
+func (s *ListEventBusesResponseBodyDataEventBuses) GetTags() []*ListEventBusesResponseBodyDataEventBusesTags {
+	return s.Tags
+}
+
 func (s *ListEventBusesResponseBodyDataEventBuses) SetCreateTimestamp(v int64) *ListEventBusesResponseBodyDataEventBuses {
 	s.CreateTimestamp = &v
 	return s
@@ -252,6 +268,70 @@ func (s *ListEventBusesResponseBodyDataEventBuses) SetEventBusName(v string) *Li
 	return s
 }
 
+func (s *ListEventBusesResponseBodyDataEventBuses) SetResourceGroupId(v string) *ListEventBusesResponseBodyDataEventBuses {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListEventBusesResponseBodyDataEventBuses) SetTags(v []*ListEventBusesResponseBodyDataEventBusesTags) *ListEventBusesResponseBodyDataEventBuses {
+	s.Tags = v
+	return s
+}
+
 func (s *ListEventBusesResponseBodyDataEventBuses) Validate() error {
+	if s.Tags != nil {
+		for _, item := range s.Tags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListEventBusesResponseBodyDataEventBusesTags struct {
+	// The key of the event bus tag.
+	//
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the event bus tag.
+	//
+	// example:
+	//
+	// R&D
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventBusesResponseBodyDataEventBusesTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListEventBusesResponseBodyDataEventBusesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventBusesResponseBodyDataEventBusesTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *ListEventBusesResponseBodyDataEventBusesTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListEventBusesResponseBodyDataEventBusesTags) SetKey(v string) *ListEventBusesResponseBodyDataEventBusesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListEventBusesResponseBodyDataEventBusesTags) SetValue(v string) *ListEventBusesResponseBodyDataEventBusesTags {
+	s.Value = &v
+	return s
+}
+
+func (s *ListEventBusesResponseBodyDataEventBusesTags) Validate() error {
 	return dara.Validate(s)
 }
