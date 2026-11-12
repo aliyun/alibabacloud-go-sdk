@@ -34,9 +34,9 @@ type UpdateErrorPagesRedirectRuleRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The error code redirect configuration.
+	// The error code redirect.
 	ErrorPagesRedirect []*UpdateErrorPagesRedirectRuleRequestErrorPagesRedirect `json:"ErrorPagesRedirect,omitempty" xml:"ErrorPagesRedirect,omitempty" type:"Repeated"`
-	// The content of the rule, which uses a conditional expression to match user requests. You do not need to specify this parameter when you add a global configuration. This parameter applies to the following scenarios:
+	// The rule content, which uses conditional expressions to match user requests. You do not need to specify this parameter when adding a global configuration. This parameter applies to the following scenarios:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
@@ -46,7 +46,7 @@ type UpdateErrorPagesRedirectRuleRequest struct {
 	//
 	// (http.host eq \\"video.example.com\\")
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
-	// Specifies whether to enable the rule. You do not need to specify this parameter when you add a global configuration. Valid values:
+	// Specifies whether to enable the rule. You do not need to specify this parameter when adding a global configuration. Valid values:
 	//
 	// - on: Enabled.
 	//
@@ -56,7 +56,7 @@ type UpdateErrorPagesRedirectRuleRequest struct {
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. You do not need to specify this parameter when you add a global configuration.
+	// The rule name. You do not need to specify this parameter when adding a global configuration.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type UpdateErrorPagesRedirectRuleRequest struct {
 	//
 	// 1
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	// The ID of the site. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -163,7 +163,7 @@ func (s *UpdateErrorPagesRedirectRuleRequest) Validate() error {
 }
 
 type UpdateErrorPagesRedirectRuleRequestErrorPagesRedirect struct {
-	// The HTTP status code used by the node when responding to the client with a redirect address. Valid values:
+	// The response status code used by the node when responding to the client with a redirect address. Valid values:
 	//
 	// - 400
 	//
@@ -193,7 +193,7 @@ type UpdateErrorPagesRedirectRuleRequestErrorPagesRedirect struct {
 	//
 	// 400
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The destination URL after the redirect.
+	// The target URL after the redirect.
 	//
 	// This parameter is required.
 	//

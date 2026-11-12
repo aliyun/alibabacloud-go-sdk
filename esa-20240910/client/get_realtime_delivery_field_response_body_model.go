@@ -16,7 +16,7 @@ type iGetRealtimeDeliveryFieldResponseBody interface {
 }
 
 type GetRealtimeDeliveryFieldResponseBody struct {
-	// The fields returned.
+	// The list of response fields.
 	FieldContent map[string]*FieldContentValue `json:"FieldContent,omitempty" xml:"FieldContent,omitempty"`
 	// The request ID.
 	//

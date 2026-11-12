@@ -3252,7 +3252,7 @@ func (client *Client) CreateEnvironment(request *CreateEnvironmentRequest) (_res
 
 // Summary:
 //
-// Creates an error code redirection rule.
+// Creates an error code redirect rule.
 //
 // @param tmpReq - CreateErrorPagesRedirectRuleRequest
 //
@@ -3326,7 +3326,7 @@ func (client *Client) CreateErrorPagesRedirectRuleWithOptions(tmpReq *CreateErro
 
 // Summary:
 //
-// Creates an error code redirection rule.
+// Creates an error code redirect rule.
 //
 // @param request - CreateErrorPagesRedirectRuleRequest
 //
@@ -8441,7 +8441,7 @@ func (client *Client) DeleteEnvironment(request *DeleteEnvironmentRequest) (_res
 
 // Summary:
 //
-// Deletes the error code redirection configuration.
+// Deletes the error code redirect configuration.
 //
 // @param request - DeleteErrorPagesRedirectRuleRequest
 //
@@ -8489,7 +8489,7 @@ func (client *Client) DeleteErrorPagesRedirectRuleWithOptions(request *DeleteErr
 
 // Summary:
 //
-// Deletes the error code redirection configuration.
+// Deletes the error code redirect configuration.
 //
 // @param request - DeleteErrorPagesRedirectRuleRequest
 //
@@ -18334,7 +18334,7 @@ func (client *Client) GetPurgeQuota(request *GetPurgeQuotaRequest) (_result *Get
 
 // Summary:
 //
-// Queries the fields in real-time logs based on the log category.
+// Retrieves the list of fields for real-time logs based on the log business type.
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //
@@ -18374,7 +18374,7 @@ func (client *Client) GetRealtimeDeliveryFieldWithOptions(request *GetRealtimeDe
 
 // Summary:
 //
-// Queries the fields in real-time logs based on the log category.
+// Retrieves the list of fields for real-time logs based on the log business type.
 //
 // @param request - GetRealtimeDeliveryFieldRequest
 //

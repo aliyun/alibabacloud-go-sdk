@@ -32,11 +32,11 @@ type ListErrorPagesRedirectRulesRequest struct {
 	//
 	// 35281609698****
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
+	// The configuration type. You can use this parameter to query global or rule configurations. Valid values:
 	//
-	// - global: queries global configurations.
+	// - global: Global configurations.
 	//
-	// - rule: queries rule configurations.
+	// - rule: Rule configurations.
 	//
 	// example:
 	//

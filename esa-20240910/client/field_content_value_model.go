@@ -16,13 +16,13 @@ type iFieldContentValue interface {
 }
 
 type FieldContentValue struct {
-	// The sequence number of the fields.
+	// The sort order of the fields.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// The fields.
+	// The list of fields.
 	FieldList []*FieldContentValueFieldList `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
 }
 
@@ -72,19 +72,19 @@ type FieldContentValueFieldList struct {
 	//
 	// ClientIp
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The description of the field in English.
+	// The English description of the field.
 	//
 	// example:
 	//
 	// IP address of the client.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The description of the field in Chinese.
+	// The Chinese description of the field.
 	//
 	// example:
 	//
 	// IP
 	DescriptionCn *string `json:"DescriptionCn,omitempty" xml:"DescriptionCn,omitempty"`
-	// The category of the field.
+	// The category to which the field belongs.
 	//
 	// example:
 	//
@@ -96,18 +96,24 @@ type FieldContentValueFieldList struct {
 	//
 	// String
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The sequence number of the field.
+	// The sort order of the field in the response.
 	//
 	// example:
 	//
 	// 1
 	SortOrder *int64 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	// Indicates whether the field is available by default.
+	// Specifies whether the field is provided by default.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// Specifies whether the user plan supports the field.
+	//
+	// example:
+	//
+	// false
+	IsSupported *bool `json:"IsSupported,omitempty" xml:"IsSupported,omitempty"`
 }
 
 func (s FieldContentValueFieldList) String() string {
@@ -146,6 +152,10 @@ func (s *FieldContentValueFieldList) GetIsDefault() *bool {
 	return s.IsDefault
 }
 
+func (s *FieldContentValueFieldList) GetIsSupported() *bool {
+	return s.IsSupported
+}
+
 func (s *FieldContentValueFieldList) SetFieldName(v string) *FieldContentValueFieldList {
 	s.FieldName = &v
 	return s
@@ -178,6 +188,11 @@ func (s *FieldContentValueFieldList) SetSortOrder(v int64) *FieldContentValueFie
 
 func (s *FieldContentValueFieldList) SetIsDefault(v bool) *FieldContentValueFieldList {
 	s.IsDefault = &v
+	return s
+}
+
+func (s *FieldContentValueFieldList) SetIsSupported(v bool) *FieldContentValueFieldList {
+	s.IsSupported = &v
 	return s
 }
 

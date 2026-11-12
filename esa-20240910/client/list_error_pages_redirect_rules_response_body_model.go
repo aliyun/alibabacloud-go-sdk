@@ -142,9 +142,9 @@ type ListErrorPagesRedirectRulesResponseBodyConfigs struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The configuration type. Valid values:
 	//
-	// - global: global configuration.
+	// - global: Global configuration.
 	//
-	// - rule: rule configuration.
+	// - rule: Rule configuration.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type ListErrorPagesRedirectRulesResponseBodyConfigs struct {
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	// The error code redirection.
 	ErrorPagesRedirect []*ListErrorPagesRedirectRulesResponseBodyConfigsErrorPagesRedirect `json:"ErrorPagesRedirect,omitempty" xml:"ErrorPagesRedirect,omitempty" type:"Repeated"`
-	// The rule content. A conditional expression is used to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+	// The rule content. Uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
@@ -164,9 +164,9 @@ type ListErrorPagesRedirectRulesResponseBodyConfigs struct {
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: enables the rule.
+	// - on: Enabled.
 	//
-	// - off: disables the rule.
+	// - off: Disabled.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type ListErrorPagesRedirectRulesResponseBodyConfigs struct {
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution sequence of the rule. A smaller value indicates a higher priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//

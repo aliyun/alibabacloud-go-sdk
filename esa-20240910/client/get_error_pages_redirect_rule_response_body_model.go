@@ -30,7 +30,7 @@ type iGetErrorPagesRedirectRuleResponseBody interface {
 }
 
 type GetErrorPagesRedirectRuleResponseBody struct {
-	// The ID of the configuration. You can call the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) operation to obtain the configuration ID.
+	// The configuration ID. You can obtain the configuration ID by calling the [ListCompressionRules](https://help.aliyun.com/document_detail/2867498.html) operation.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type GetErrorPagesRedirectRuleResponseBody struct {
 	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	// The configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
 	//
-	// - global: queries global configurations
+	// - global: Queries global configurations.
 	//
-	// - rule: queries rule configurations
+	// - rule: Queries rule configurations.
 	//
 	// This parameter is optional. If you do not specify this parameter, global and rule configurations are not distinguished. This parameter takes effect only when the functionName parameter is specified.
 	//
@@ -50,17 +50,17 @@ type GetErrorPagesRedirectRuleResponseBody struct {
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
 	// The error code redirect.
 	ErrorPagesRedirect []*GetErrorPagesRedirectRuleResponseBodyErrorPagesRedirect `json:"ErrorPagesRedirect,omitempty" xml:"ErrorPagesRedirect,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CB1A380B-09F0-41BB-280B-72F8FD6DA2FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+	// The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
 	//
 	// - Match all incoming requests: Set the value to true.
 	//
-	// - Match specific requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
+	// - Match specified requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
 	//
 	// example:
 	//
@@ -68,21 +68,21 @@ type GetErrorPagesRedirectRuleResponseBody struct {
 	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
 	// The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
 	//
-	// - on: enables the rule
+	// - on: Enabled.
 	//
-	// - off: disables the rule
+	// - off: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleEnable *string `json:"RuleEnable,omitempty" xml:"RuleEnable,omitempty"`
-	// The name of the rule. You do not need to set this parameter when adding a global configuration.
+	// The rule name. You do not need to set this parameter when adding a global configuration.
 	//
 	// example:
 	//
 	// rule_example
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The execution sequence of the rule. A smaller value indicates a higher priority.
+	// The execution order of the rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ func (s *GetErrorPagesRedirectRuleResponseBody) Validate() error {
 }
 
 type GetErrorPagesRedirectRuleResponseBodyErrorPagesRedirect struct {
-	// The response status code used by the node when responding to the client with a redirect address. Valid values:
+	// The response status code used when the node responds to the client with a redirect address. Valid values:
 	//
 	// - 400
 	//
@@ -227,7 +227,7 @@ type GetErrorPagesRedirectRuleResponseBodyErrorPagesRedirect struct {
 	//
 	// 400
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The target URL after the redirect.
+	// The target URL after redirection.
 	//
 	// example:
 	//
