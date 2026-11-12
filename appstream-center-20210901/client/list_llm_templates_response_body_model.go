@@ -186,6 +186,10 @@ type ListLlmTemplatesResponseBodyData struct {
 	// llmt-xxxx
 	LlmTemplateId *string `json:"LlmTemplateId,omitempty" xml:"LlmTemplateId,omitempty"`
 	// The model information, such as the context window size and the maximum number of input/output tokens.
+	//
+	// example:
+	//
+	// {"contextWindow":1000000,"maxInputTokens":1048576,"maxOutputTokens":1048576,"maxReasoningTokens":1048576,"reasoningMaxInputTokens":1048576,"reasoningMaxOutputTokens":1048576}
 	ModelInfo map[string]interface{} `json:"ModelInfo,omitempty" xml:"ModelInfo,omitempty"`
 	// The template name.
 	//

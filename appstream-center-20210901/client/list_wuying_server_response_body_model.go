@@ -28,7 +28,7 @@ type ListWuyingServerResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListWuyingServerResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
 	// 15
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of workstation information.
+	// The workstation information list.
 	WuyingServerList []*ListWuyingServerResponseBodyWuyingServerList `json:"WuyingServerList,omitempty" xml:"WuyingServerList,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListWuyingServerResponseBody) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerList struct {
-	// The status of adding the workstation to a virtual node pool.
+	// The status of adding to the virtual node pool.
 	//
 	// example:
 	//
@@ -129,19 +129,19 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// 1234567890123456
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The bandwidth size. Unit: Mbit/s.
+	// The bandwidth, in Mbit/s.
 	//
 	// example:
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The payment method.
+	// The billing method.
 	//
 	// example:
 	//
@@ -189,7 +189,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud Linux 3.2104 LTS 64位
+	// Alibaba Cloud Linux 3.2104 LTS 64-bit
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// The list of workstation instance information.
 	InstanceInfoList []*ListWuyingServerResponseBodyWuyingServerListInstanceInfoList `json:"InstanceInfoList,omitempty" xml:"InstanceInfoList,omitempty" type:"Repeated"`
@@ -217,7 +217,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// exampleOfficeSite
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The network type of the office network.
+	// The network type.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The list of policy group IDs.
 	PolicyGroupIdList []*string `json:"PolicyGroupIdList,omitempty" xml:"PolicyGroupIdList,omitempty" type:"Repeated"`
-	// The set of private IP addresses, including the primary IP address and secondary IP addresses.
+	// The set of private IP addresses, including the primary and secondary IP addresses.
 	PrivateIpSets []*ListWuyingServerResponseBodyWuyingServerListPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Repeated"`
 	// The resource session status.
 	//
@@ -263,31 +263,31 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// true
 	SupportASP *bool `json:"SupportASP,omitempty" xml:"SupportASP,omitempty"`
-	// The system cloud disk type.
+	// The category of the system cloud disk.
 	//
 	// example:
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The system cloud disk ID.
+	// The ID of the system cloud disk.
 	//
 	// example:
 	//
 	// d-bp1234567890abcde
 	SystemDiskId *string `json:"SystemDiskId,omitempty" xml:"SystemDiskId,omitempty"`
-	// The performance level (PL) of the system cloud disk.
+	// The performance level of the system cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The system cloud disk size. Unit: GB.
+	// The size of the system cloud disk in GB.
 	//
 	// example:
 	//
 	// 100
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The timer group ID.
+	// The ID of the scheduled task group.
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// vnp-bp1234567890abcde
 	VirtualNodePoolId *string `json:"VirtualNodePoolId,omitempty" xml:"VirtualNodePoolId,omitempty"`
-	// Indicates whether a VirtualKubelet upgrade is needed.
+	// Indicates whether a Virtual Kubelet upgrade is required.
 	VkUpgradeNeeded *bool `json:"VkUpgradeNeeded,omitempty" xml:"VkUpgradeNeeded,omitempty"`
 	// The Virtual Kubelet version.
 	//
@@ -321,7 +321,7 @@ type ListWuyingServerResponseBodyWuyingServerList struct {
 	//
 	// ws-0byd****8wn2lwi
 	WuyingServerId *string `json:"WuyingServerId,omitempty" xml:"WuyingServerId,omitempty"`
-	// The workstation name.
+	// The name of the workstation.
 	//
 	// example:
 	//
@@ -767,7 +767,7 @@ func (s *ListWuyingServerResponseBodyWuyingServerList) Validate() error {
 }
 
 type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
-	// The type of the data cloud disk.
+	// The category of the data cloud disk.
 	//
 	// example:
 	//
@@ -779,19 +779,19 @@ type ListWuyingServerResponseBodyWuyingServerListDataDisk struct {
 	//
 	// d-bp1234567890abcde
 	DataDiskId *string `json:"DataDiskId,omitempty" xml:"DataDiskId,omitempty"`
-	// The sequence number of the data cloud disk.
+	// The serial number of the data cloud disk.
 	//
 	// example:
 	//
 	// 1
 	DataDiskNo *string `json:"DataDiskNo,omitempty" xml:"DataDiskNo,omitempty"`
-	// The performance level (PL) of the data cloud disk.
+	// The performance level of the data cloud disk.
 	//
 	// example:
 	//
 	// PL0
 	DataDiskPerformanceLevel *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
-	// The size of the data cloud disk. Unit: GB.
+	// The size of the data cloud disk, in GB.
 	//
 	// example:
 	//
@@ -863,7 +863,7 @@ type ListWuyingServerResponseBodyWuyingServerListInstanceInfoList struct {
 	//
 	// p-0ceitx****c5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the network interface controller (NIC).
+	// The ID of the ENI.
 	//
 	// example:
 	//
@@ -902,11 +902,7 @@ func (s *ListWuyingServerResponseBodyWuyingServerListInstanceInfoList) Validate(
 }
 
 type ListWuyingServerResponseBodyWuyingServerListPrivateIpSets struct {
-	// Indicates whether the IP address is the primary private IP address. Valid values:
-	//
-	// - true: The IP address is the primary private IP address.
-	//
-	// - false: The IP address is a secondary private IP address.
+	// Indicates whether the IP address is the primary private IP address. A value of true indicates that it is the primary private IP address. A value of false indicates that it is a secondary private IP address.
 	//
 	// example:
 	//
@@ -963,25 +959,25 @@ type ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo struct {
 	//
 	// 4
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The GPU memory size. Unit: MB.
+	// The GPU memory size in MB.
 	//
 	// example:
 	//
 	// 196,608
 	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The GPU specification description.
+	// The description of the GPU specifications.
 	//
 	// example:
 	//
 	// NVIDIA T4
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The memory size. Unit: MB.
+	// The memory size in MB.
 	//
 	// example:
 	//
 	// 393,216
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The workstation instance type.
+	// The workstation specifications.
 	//
 	// example:
 	//
@@ -1056,7 +1052,7 @@ func (s *ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo) Val
 }
 
 type ListWuyingServerResponseBodyWuyingServerListSessions struct {
-	// The session start time in ISO 8601 format.
+	// The start time of the session in ISO 8601 format.
 	//
 	// example:
 	//

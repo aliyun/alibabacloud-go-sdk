@@ -5881,7 +5881,7 @@ func (client *Client) ListApp(request *ListAppRequest) (_result *ListAppResponse
 
 // Summary:
 //
-// Queries the details of multiple delivery groups. This operation queries all delivery groups that meet the specified conditions instead of a specific delivery group.
+// Queries the details of multiple app instance groups that meet the specified conditions.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -5979,7 +5979,7 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 
 // Summary:
 //
-// Queries the details of multiple delivery groups. This operation queries all delivery groups that meet the specified conditions instead of a specific delivery group.
+// Queries the details of multiple app instance groups that meet the specified conditions.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -9772,11 +9772,11 @@ func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _er
 
 // Summary:
 //
-// Queries a list of workstations.
+// Queries the list of workstations.
 //
 // Description:
 //
-// Retrieves a list of WUYING workstations.
+// Retrieves the list of WUYING workstations.
 //
 // @param request - ListWuyingServerRequest
 //
@@ -9903,11 +9903,11 @@ func (client *Client) ListWuyingServerWithOptions(request *ListWuyingServerReque
 
 // Summary:
 //
-// Queries a list of workstations.
+// Queries the list of workstations.
 //
 // Description:
 //
-// Retrieves a list of WUYING workstations.
+// Retrieves the list of WUYING workstations.
 //
 // @param request - ListWuyingServerRequest
 //

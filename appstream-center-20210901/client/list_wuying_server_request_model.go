@@ -72,31 +72,31 @@ type ListWuyingServerRequest struct {
 	//
 	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The billing type.
+	// The billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The end time of the creation time range, in ISO 8601 format. This time point is exclusive.
+	// The end time of the creation time range. The time is in ISO 8601 format and exclusive.
 	//
 	// example:
 	//
 	// 2026-08-01T00:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The start time of the creation time range, in ISO 8601 format. This time point is inclusive.
+	// The start time of the creation time range. The time is in ISO 8601 format and inclusive.
 	//
 	// example:
 	//
 	// 2026-07-01T00:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// The end time of the expiration time range, in ISO 8601 format. This time point is exclusive.
+	// The end time of the expiration time range. The time is in ISO 8601 format and exclusive.
 	//
 	// example:
 	//
 	// 2026-08-01T00:00:00Z
 	ExpiredTimeEnd *string `json:"ExpiredTimeEnd,omitempty" xml:"ExpiredTimeEnd,omitempty"`
-	// The start time of the expiration time range, in ISO 8601 format. This time point is inclusive.
+	// The start time of the expiration time range. The time is in ISO 8601 format and inclusive.
 	//
 	// example:
 	//
@@ -126,7 +126,7 @@ type ListWuyingServerRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type ListWuyingServerRequest struct {
 	//
 	// wuying_server
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The workstation instance type.
+	// The workstation specifications.
 	//
 	// example:
 	//

@@ -40,54 +40,54 @@ type iListAppInstanceGroupRequest interface {
 }
 
 type ListAppInstanceGroupRequest struct {
-	// The application image ID. You can obtain this value from the Image Management page in the WUYING Workspace console.
+	// The ID of the app image. You can obtain the ID from the Image Management page in the WUYING Cloud App console.
 	//
 	// example:
 	//
 	// img-8z4nztpaqvay4****
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	// The delivery group ID.
+	// The ID of the app instance group.
 	//
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	// The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
+	// The name of the app instance group. Fuzzy match is supported. For example, if you specify `Office App`, app instance groups whose names contain `Office App` are queried, such as `My Office App` and `Office App A`.
 	//
 	// example:
 	//
-	// OfficeApp
+	// Office App
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	// The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+	// The ID of the region to which the app instance group belongs. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The list of excluded authorized user group IDs.
+	// The list of excluded authorization user group IDs.
 	//
 	// if can be null:
 	// true
 	ExcludedUserGroupIds []*string `json:"ExcludedUserGroupIds,omitempty" xml:"ExcludedUserGroupIds,omitempty" type:"Repeated"`
-	// The specification type ID of the purchased resource. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
+	// The ID of the instance type for the purchased resources. You can obtain the ID by calling the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation.
 	//
 	// example:
 	//
 	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hongkong+dir-643067****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The page number of the query results to display.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of query results per page. Maximum value: `100`.
+	// The number of entries to return on each page. The value cannot exceed `100`.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type ListAppInstanceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of delivery group statuses.
+	// The statuses of the app instance groups.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 	// The list of tags.
 	//

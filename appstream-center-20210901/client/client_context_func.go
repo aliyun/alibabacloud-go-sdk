@@ -4340,7 +4340,7 @@ func (client *Client) ListAppWithContext(ctx context.Context, tmpReq *ListAppReq
 
 // Summary:
 //
-// Queries the details of multiple delivery groups. This operation queries all delivery groups that meet the specified conditions instead of a specific delivery group.
+// Queries the details of multiple app instance groups that meet the specified conditions.
 //
 // @param request - ListAppInstanceGroupRequest
 //
@@ -7210,11 +7210,11 @@ func (client *Client) ListTaskStepWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries a list of workstations.
+// Queries the list of workstations.
 //
 // Description:
 //
-// Retrieves a list of WUYING workstations.
+// Retrieves the list of WUYING workstations.
 //
 // @param request - ListWuyingServerRequest
 //
