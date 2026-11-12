@@ -18,14 +18,19 @@ type iGetBusAppConfigResponseBody interface {
 }
 
 type GetBusAppConfigResponseBody struct {
+	// Error code returned. 0 indicates success.
+	//
 	// example:
 	//
 	// 0
 	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// Error message returned. No message is returned if the operation succeeded.
+	//
 	// example:
 	//
 	// 请求异常
-	RetMsg   *string                              `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// Configuration Information (VIP label, shopping guide bar, shopping guide pop-up)
 	RetValue *GetBusAppConfigResponseBodyRetValue `json:"RetValue,omitempty" xml:"RetValue,omitempty" type:"Struct"`
 }
 
@@ -65,19 +70,31 @@ func (s *GetBusAppConfigResponseBody) SetRetValue(v *GetBusAppConfigResponseBody
 }
 
 func (s *GetBusAppConfigResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetValue != nil {
+		if err := s.RetValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBusAppConfigResponseBodyRetValue struct {
+	// Cashier URL
 	Cashier *string `json:"Cashier,omitempty" xml:"Cashier,omitempty"`
+	// Shopping guide bar URL
+	//
 	// example:
 	//
 	// https://******.com/design/******?imageId=xxxxx
 	ShoppingBar *string `json:"ShoppingBar,omitempty" xml:"ShoppingBar,omitempty"`
+	// Shopping guide pop-up URL
+	//
 	// example:
 	//
 	// https://******.com/design/******?imageId=xxxxx
 	ShoppingWindow *string `json:"ShoppingWindow,omitempty" xml:"ShoppingWindow,omitempty"`
+	// VIP label transparency URL
+	//
 	// example:
 	//
 	// https://******.com/design/******?imageId=xxxxx

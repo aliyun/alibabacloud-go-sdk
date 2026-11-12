@@ -20,11 +20,18 @@ type iSendNotificationsShrinkRequest interface {
 }
 
 type SendNotificationsShrinkRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Input parameter object for message push.
+	//
 	// This parameter is required.
 	NotificationUnicastRequestShrink *string `json:"NotificationUnicastRequest,omitempty" xml:"NotificationUnicastRequest,omitempty"`
-	TenantInfoShrink                 *string `json:"TenantInfo,omitempty" xml:"TenantInfo,omitempty"`
+	// Identity information.
+	TenantInfoShrink *string `json:"TenantInfo,omitempty" xml:"TenantInfo,omitempty"`
+	// User Identifier information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

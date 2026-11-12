@@ -18,10 +18,16 @@ type iGetReminderShrinkRequest interface {
 }
 
 type GetReminderShrinkRequest struct {
+	// List of device identity information.
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// Input parameters for the service request.
+	//
 	// This parameter is required.
 	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// List of user identity information.
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

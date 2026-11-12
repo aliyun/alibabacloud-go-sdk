@@ -77,7 +77,12 @@ func (s *ThirdImmediateMsgPushResponseBody) SetSuccess(v bool) *ThirdImmediateMs
 }
 
 func (s *ThirdImmediateMsgPushResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ThirdImmediateMsgPushResponseBodyModel struct {

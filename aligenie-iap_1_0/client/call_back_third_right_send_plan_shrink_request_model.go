@@ -30,38 +30,56 @@ type iCallBackThirdRightSendPlanShrinkRequest interface {
 }
 
 type CallBackThirdRightSendPlanShrinkRequest struct {
+	// device group
+	//
 	// example:
 	//
 	// cc
 	BizGroup *string `json:"BizGroup,omitempty" xml:"BizGroup,omitempty"`
+	// device Type
+	//
 	// example:
 	//
 	// ailabs
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// 1001 daily card, 1002 monthly card, 1003 quarterly card, 1004 annual card
+	//
 	// example:
 	//
 	// 1001
 	CardType *int32 `json:"CardType,omitempty" xml:"CardType,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 领取异常
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Extension fields
+	//
 	// example:
 	//
 	// {}
 	ExtendInfoShrink *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Genie ID
+	//
 	// example:
 	//
 	// 1dsds2FzCXFGVA1ADS
 	GenieOpenId *string `json:"GenieOpenId,omitempty" xml:"GenieOpenId,omitempty"`
+	// redemption status
+	//
 	// example:
 	//
 	// 1
 	ReceiveStatus *int32 `json:"ReceiveStatus,omitempty" xml:"ReceiveStatus,omitempty"`
+	// SN of the device
+	//
 	// example:
 	//
 	// 01000019100307010000600
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// Supplier ID
+	//
 	// example:
 	//
 	// 1

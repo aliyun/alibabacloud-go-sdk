@@ -20,15 +20,22 @@ type iCallBackThirdRightSendPlanResponseBody interface {
 }
 
 type CallBackThirdRightSendPlanResponseBody struct {
+	// fault status code
+	//
 	// example:
 	//
 	// 400
 	RetCode *string `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 系统异常
-	RetMsg   *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
-	RetValue *bool   `json:"RetValue,omitempty" xml:"RetValue,omitempty"`
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// Return Result true/false
+	RetValue *bool `json:"RetValue,omitempty" xml:"RetValue,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 908FA068-529C-0C20-8DB5-63B0EF7CFF1F

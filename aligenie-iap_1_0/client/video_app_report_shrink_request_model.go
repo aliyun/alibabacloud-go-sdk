@@ -18,8 +18,12 @@ type iVideoAppReportShrinkRequest interface {
 }
 
 type VideoAppReportShrinkRequest struct {
+	// Device identity information
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	PayloadShrink    *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// 业务参数
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// 用户标识信息
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

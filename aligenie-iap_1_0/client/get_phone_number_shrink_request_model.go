@@ -16,8 +16,12 @@ type iGetPhoneNumberShrinkRequest interface {
 }
 
 type GetPhoneNumberShrinkRequest struct {
+	// Device identification information
+	//
 	// This parameter is required.
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// User identifier information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

@@ -18,11 +18,24 @@ type iAppUseTimeReportResponseBody interface {
 }
 
 type AppUseTimeReportResponseBody struct {
+	// Error code returned; `0` indicates success.
+	//
 	// example:
 	//
 	// 0
-	RetCode *int32  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	RetMsg  *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// Error message returned; no message is returned upon success.
+	//
+	// example:
+	//
+	// 请求异常
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// Result of invoking the API
+	//
+	// - true indicates success
+	//
+	// - false indicates failure
+	//
 	// example:
 	//
 	// true

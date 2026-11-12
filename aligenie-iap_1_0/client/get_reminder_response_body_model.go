@@ -20,15 +20,22 @@ type iGetReminderResponseBody interface {
 }
 
 type GetReminderResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Detailed description of the error message.
+	//
 	// example:
 	//
 	// 参数不合法。
-	ErrorMsg *string                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	Model    *GetReminderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Reminder information.
+	Model *GetReminderResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// Indicates the result of the API call. true means succeeded, and false means failed.
+	//
 	// example:
 	//
 	// true
@@ -80,10 +87,16 @@ func (s *GetReminderResponseBody) SetSuccess(v bool) *GetReminderResponseBody {
 }
 
 func (s *GetReminderResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Model != nil {
+		if err := s.Model.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetReminderResponseBodyModel struct {
+	// List of reminder information returned by invoking this API.
 	RemindResponses []*GetReminderResponseBodyModelRemindResponses `json:"RemindResponses,omitempty" xml:"RemindResponses,omitempty" type:"Repeated"`
 }
 
@@ -105,31 +118,53 @@ func (s *GetReminderResponseBodyModel) SetRemindResponses(v []*GetReminderRespon
 }
 
 func (s *GetReminderResponseBodyModel) Validate() error {
-	return dara.Validate(s)
+	if s.RemindResponses != nil {
+		for _, item := range s.RemindResponses {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type GetReminderResponseBodyModelRemindResponses struct {
+	// The topic of the action executed by the reminder.
+	//
 	// example:
 	//
 	// 宝宝快去刷牙
 	ActionTopic *string `json:"ActionTopic,omitempty" xml:"ActionTopic,omitempty"`
+	// Description of the trigger condition for the reminder.
+	//
 	// example:
 	//
 	// 每天
-	DayDesc        *string                                                    `json:"DayDesc,omitempty" xml:"DayDesc,omitempty"`
+	DayDesc *string `json:"DayDesc,omitempty" xml:"DayDesc,omitempty"`
+	// Schedule information list, which contains detailed timing information for the reminder.
 	RecurrenceRule *GetReminderResponseBodyModelRemindResponsesRecurrenceRule `json:"RecurrenceRule,omitempty" xml:"RecurrenceRule,omitempty" type:"Struct"`
+	// The ID of the reminder message.
+	//
 	// example:
 	//
 	// 20*****1
 	RemindId *int64 `json:"RemindId,omitempty" xml:"RemindId,omitempty"`
+	// Next reminder time.
+	//
 	// example:
 	//
 	// 1629850800000
 	RemindTime *string `json:"RemindTime,omitempty" xml:"RemindTime,omitempty"`
+	// The number of times the reminder repeats.
+	//
 	// example:
 	//
 	// 1
 	RepeatCount *int32 `json:"RepeatCount,omitempty" xml:"RepeatCount,omitempty"`
+	// The day of the week on which the reminder is triggered, indicating which day of the week the reminder occurs.
+	//
 	// example:
 	//
 	// 周三
@@ -208,44 +243,69 @@ func (s *GetReminderResponseBodyModelRemindResponses) SetWeek(v string) *GetRemi
 }
 
 func (s *GetReminderResponseBodyModelRemindResponses) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceRule != nil {
+		if err := s.RecurrenceRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetReminderResponseBodyModelRemindResponsesRecurrenceRule struct {
+	// The date on which the reminder is triggered.
+	//
 	// example:
 	//
 	// 27
-	Day         *int32   `json:"Day,omitempty" xml:"Day,omitempty"`
+	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// Information for monthly reminders.
 	DaysOfMonth []*int32 `json:"DaysOfMonth,omitempty" xml:"DaysOfMonth,omitempty" type:"Repeated"`
-	DaysOfWeek  []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// Information for weekly reminders.
+	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// The end time when the reminder becomes inactive.
+	//
 	// example:
 	//
 	// 1661598000000
 	EndDateTime *string `json:"EndDateTime,omitempty" xml:"EndDateTime,omitempty"`
+	// The loop epoch of the reminder.
+	//
 	// example:
 	//
 	// WEEKLY
 	Freq *string `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	// The hour of the time when the reminder is triggered.
+	//
 	// example:
 	//
 	// 18
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The minute when the reminder is triggered.
+	//
 	// example:
 	//
 	// 0
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// Month in which the reminder is triggered.
+	//
 	// example:
 	//
 	// 8
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// The second of the time when the reminder is triggered.
+	//
 	// example:
 	//
 	// 0
 	Second *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+	// The start time when the reminder becomes effective.
+	//
 	// example:
 	//
 	// 1630054800000
 	StartDateTime *string `json:"StartDateTime,omitempty" xml:"StartDateTime,omitempty"`
+	// The year when the reminder is triggered.
+	//
 	// example:
 	//
 	// 2021

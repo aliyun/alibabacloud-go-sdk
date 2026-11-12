@@ -22,22 +22,32 @@ type iCheckThirdRightSendPlanRequest interface {
 }
 
 type CheckThirdRightSendPlanRequest struct {
+	// Device group
+	//
 	// example:
 	//
 	// cc
 	BizGroup *string `json:"BizGroup,omitempty" xml:"BizGroup,omitempty"`
+	// Device type
+	//
 	// example:
 	//
 	// ailabs
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// Extension field
+	//
 	// example:
 	//
 	// {}
 	ExtendInfo map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Device SN
+	//
 	// example:
 	//
 	// 01000019100307010000600
 	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// Supplier ID
+	//
 	// example:
 	//
 	// 1

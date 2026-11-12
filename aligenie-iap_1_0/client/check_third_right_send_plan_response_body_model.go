@@ -18,14 +18,19 @@ type iCheckThirdRightSendPlanResponseBody interface {
 }
 
 type CheckThirdRightSendPlanResponseBody struct {
+	// Return code
+	//
 	// example:
 	//
 	// 0
 	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 系统异常
-	RetMsg   *string                                      `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// Result of invoking the API
 	RetValue *CheckThirdRightSendPlanResponseBodyRetValue `json:"RetValue,omitempty" xml:"RetValue,omitempty" type:"Struct"`
 }
 
@@ -65,34 +70,53 @@ func (s *CheckThirdRightSendPlanResponseBody) SetRetValue(v *CheckThirdRightSend
 }
 
 func (s *CheckThirdRightSendPlanResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetValue != nil {
+		if err := s.RetValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CheckThirdRightSendPlanResponseBodyRetValue struct {
+	// Activation time
+	//
 	// example:
 	//
 	// "1713262192005"
 	ActivateDate *string `json:"ActivateDate,omitempty" xml:"ActivateDate,omitempty"`
+	// Card type
+	//
 	// example:
 	//
 	// 1001 日卡 1002 月卡 1003 季卡 1004 年卡
 	CardType *int32 `json:"CardType,omitempty" xml:"CardType,omitempty"`
+	// Channel code
+	//
 	// example:
 	//
 	// TB
 	ChannelCode *string `json:"ChannelCode,omitempty" xml:"ChannelCode,omitempty"`
+	// Channel Name
+	//
 	// example:
 	//
 	// 淘宝
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	// Extension field
+	//
 	// example:
 	//
 	// {}
 	ExtendInfo map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 908FA068-529C-0C20-8DB5-63B0EF7CFF1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Rights expiration time
+	//
 	// example:
 	//
 	// "1713262192005"

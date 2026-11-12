@@ -20,11 +20,18 @@ type iSendNotificationsRequest interface {
 }
 
 type SendNotificationsRequest struct {
+	// Device identity information
+	//
 	// This parameter is required.
 	DeviceInfo *SendNotificationsRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Input parameter object for message push.
+	//
 	// This parameter is required.
 	NotificationUnicastRequest *SendNotificationsRequestNotificationUnicastRequest `json:"NotificationUnicastRequest,omitempty" xml:"NotificationUnicastRequest,omitempty" type:"Struct"`
-	TenantInfo                 *SendNotificationsRequestTenantInfo                 `json:"TenantInfo,omitempty" xml:"TenantInfo,omitempty" type:"Struct"`
+	// Identity information.
+	TenantInfo *SendNotificationsRequestTenantInfo `json:"TenantInfo,omitempty" xml:"TenantInfo,omitempty" type:"Struct"`
+	// User Identifier information
+	//
 	// This parameter is required.
 	UserInfo *SendNotificationsRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -74,34 +81,72 @@ func (s *SendNotificationsRequest) SetUserInfo(v *SendNotificationsRequestUserIn
 }
 
 func (s *SendNotificationsRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.NotificationUnicastRequest != nil {
+		if err := s.NotificationUnicastRequest.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TenantInfo != nil {
+		if err := s.TenantInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendNotificationsRequestDeviceInfo struct {
+	// Value corresponding to the encoding type. If the encoding type is SKILL_ID, the value is the application\\"s Skill ID. If the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID for Maojing, and each method corresponds to a different encoding type:
+	//
+	//  - PACKAGE_NAME: APK package name, used for the Android application customer link
+	//
+	//  - SKILL_ID: Skill ID, used for the cloud link
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID (deviceOpenId or deviceUnionId)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of device ID:
+	//
+	//  - OPEN_ID: Default device ID
+	//
+	//  - UNION_ID: Organization-dimension device ID, available only after an organization has been requested on the Maojing Skill Application Open Platform
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2
@@ -166,20 +211,28 @@ func (s *SendNotificationsRequestDeviceInfo) Validate() error {
 }
 
 type SendNotificationsRequestNotificationUnicastRequest struct {
+	// Debug flag. When the skill application is in the debugging phase, setting this flag determines whether the retrieved skill application information is from the editing state or the online state.
+	//
 	// example:
 	//
 	// false
 	IsDebug *bool `json:"IsDebug,omitempty" xml:"IsDebug,omitempty"`
+	// Message template ID obtained when requesting a message template in the Tmall Genie Application Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2iU81*****G9elJ
 	MessageTemplateId *string `json:"MessageTemplateId,omitempty" xml:"MessageTemplateId,omitempty"`
+	// Placeholder information. For example, for the template ["Hello, {nick}!"], this can be: {"nick":"Xiao Tian Tian"}. Additionally, within the placeholder parameters, you can append parameters to the application launch link to support hyperlinking to a specific address, such as: `{"nick":"Xiao Tian Tian","_URL_SUFFIX_":"xxx"}`. The hyperlink address in the message pop-up will then be: application launch link + `${_URL_SUFFIX_}`. This feature is only effective for applications that have configured a launch link.
+	//
 	// example:
 	//
 	// {"nick":"张三"}
 	PlaceHolder map[string]*string `json:"PlaceHolder,omitempty" xml:"PlaceHolder,omitempty"`
+	// Target information for message push.
+	//
 	// This parameter is required.
 	SendTarget *SendNotificationsRequestNotificationUnicastRequestSendTarget `json:"SendTarget,omitempty" xml:"SendTarget,omitempty" type:"Struct"`
 }
@@ -229,7 +282,12 @@ func (s *SendNotificationsRequestNotificationUnicastRequest) SetSendTarget(v *Se
 }
 
 func (s *SendNotificationsRequestNotificationUnicastRequest) Validate() error {
-	return dara.Validate(s)
+	if s.SendTarget != nil {
+		if err := s.SendTarget.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type SendNotificationsRequestNotificationUnicastRequestSendTarget struct {
@@ -263,30 +321,48 @@ func (s *SendNotificationsRequestTenantInfo) Validate() error {
 }
 
 type SendNotificationsRequestUserInfo struct {
+	// Value corresponding to the encoding type. If the encoding type is SKILL_ID, the value is the application\\"s Skill ID. If the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the Maojing User Identifier, and each method corresponds to a different encoding type:
+	//
+	// - PACKAGE_NAME: APK package name, used for the Android application customer link
+	//
+	// - SKILL_ID: Skill ID, used for the cloud-based link
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier (userOpenId or userUnionId)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the User ID:
+	//
+	// - OPEN_ID: Default User ID identifier
+	//
+	// - UNION_ID: Organization-dimension User ID identifier, available only after an organization has been requested on the Maojing Skill Application Open Platform
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2

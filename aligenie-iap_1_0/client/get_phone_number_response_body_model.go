@@ -14,6 +14,8 @@ type iGetPhoneNumberResponseBody interface {
 }
 
 type GetPhoneNumberResponseBody struct {
+	// User\\"s phone number
+	//
 	// example:
 	//
 	// 137****

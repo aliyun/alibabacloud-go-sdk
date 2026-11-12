@@ -18,11 +18,19 @@ type iGetAccountForAppResponseBody interface {
 }
 
 type GetAccountForAppResponseBody struct {
+	// Error code returned. A value of `0` indicates success.
+	//
 	// example:
 	//
 	// 0
-	RetCode  *int32                                `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	RetMsg   *string                               `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// Error message returned. No message is returned upon success.
+	//
+	// example:
+	//
+	// 请求异常
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// List of result objects returned.
 	RetValue *GetAccountForAppResponseBodyRetValue `json:"RetValue,omitempty" xml:"RetValue,omitempty" type:"Struct"`
 }
 
@@ -62,18 +70,33 @@ func (s *GetAccountForAppResponseBody) SetRetValue(v *GetAccountForAppResponseBo
 }
 
 func (s *GetAccountForAppResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.RetValue != nil {
+		if err := s.RetValue.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetAccountForAppResponseBodyRetValue struct {
+	// Indicates whether the user is an authorized member.
+	//
 	// example:
 	//
 	// true
 	IsVip *bool `json:"IsVip,omitempty" xml:"IsVip,omitempty"`
+	// Membership expiration time.
+	//
 	// example:
 	//
 	// 2022-05-12 15:22:18
 	StrVipExpire *string `json:"StrVipExpire,omitempty" xml:"StrVipExpire,omitempty"`
+	// Millisecond-level UNIX timestamp.
+	//
+	// - If the user has activated membership, returns the membership expiration time.
+	//
+	// - If the user has never activated membership, the value is always `0`.
+	//
 	// example:
 	//
 	// 1652340138347

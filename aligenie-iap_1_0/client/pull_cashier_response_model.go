@@ -59,5 +59,10 @@ func (s *PullCashierResponse) SetBody(v *PullCashierResponseBody) *PullCashierRe
 }
 
 func (s *PullCashierResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -18,11 +18,20 @@ type iPullCashierResponseBody interface {
 }
 
 type PullCashierResponseBody struct {
+	// The returned error code. `0` indicates success.
+	//
 	// example:
 	//
 	// 0
-	RetCode *int32  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	RetMsg  *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// The returned error message. No message is returned upon success.
+	//
+	// example:
+	//
+	// 请求成功
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// The result of pulling up the checkout page. true indicates success, and false indicates failure.
+	//
 	// example:
 	//
 	// true

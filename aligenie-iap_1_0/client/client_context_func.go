@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 应用使用时长上报
+// Used to report application usage duration on Tmall Genie devices.
 //
 // @param tmpReq - AppUseTimeReportRequest
 //
@@ -19,9 +19,11 @@ import (
 //
 // @return AppUseTimeReportResponse
 func (client *Client) AppUseTimeReportWithContext(ctx context.Context, tmpReq *AppUseTimeReportRequest, headers *AppUseTimeReportHeaders, runtime *dara.RuntimeOptions) (_result *AppUseTimeReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &AppUseTimeReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -89,7 +91,7 @@ func (client *Client) AppUseTimeReportWithContext(ctx context.Context, tmpReq *A
 
 // Summary:
 //
-// 三方领取回调接口
+// Third-party membership redemption callback API.
 //
 // @param tmpReq - CallBackThirdRightSendPlanRequest
 //
@@ -99,9 +101,11 @@ func (client *Client) AppUseTimeReportWithContext(ctx context.Context, tmpReq *A
 //
 // @return CallBackThirdRightSendPlanResponse
 func (client *Client) CallBackThirdRightSendPlanWithContext(ctx context.Context, tmpReq *CallBackThirdRightSendPlanRequest, headers *CallBackThirdRightSendPlanHeaders, runtime *dara.RuntimeOptions) (_result *CallBackThirdRightSendPlanResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CallBackThirdRightSendPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -185,7 +189,7 @@ func (client *Client) CallBackThirdRightSendPlanWithContext(ctx context.Context,
 
 // Summary:
 //
-// 商业化移动屏三方app领卡校验
+// Commercial mobile screen third-party app card issuance validation.
 //
 // @param tmpReq - CheckThirdRightSendPlanRequest
 //
@@ -195,9 +199,11 @@ func (client *Client) CallBackThirdRightSendPlanWithContext(ctx context.Context,
 //
 // @return CheckThirdRightSendPlanResponse
 func (client *Client) CheckThirdRightSendPlanWithContext(ctx context.Context, tmpReq *CheckThirdRightSendPlanRequest, headers *CheckThirdRightSendPlanHeaders, runtime *dara.RuntimeOptions) (_result *CheckThirdRightSendPlanResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CheckThirdRightSendPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -265,7 +271,7 @@ func (client *Client) CheckThirdRightSendPlanWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// 创建提醒
+// Used to create a reminder on a Tmall Genie device.
 //
 // @param tmpReq - CreateReminderRequest
 //
@@ -275,9 +281,11 @@ func (client *Client) CheckThirdRightSendPlanWithContext(ctx context.Context, tm
 //
 // @return CreateReminderResponse
 func (client *Client) CreateReminderWithContext(ctx context.Context, tmpReq *CreateReminderRequest, headers *CreateReminderHeaders, runtime *dara.RuntimeOptions) (_result *CreateReminderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &CreateReminderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -345,7 +353,75 @@ func (client *Client) CreateReminderWithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// 删除提醒
+// 携程订单状态变更推送
+//
+// @param request - CtripOrderPushRequest
+//
+// @param headers - CtripOrderPushHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CtripOrderPushResponse
+func (client *Client) CtripOrderPushWithContext(ctx context.Context, request *CtripOrderPushRequest, headers *CtripOrderPushHeaders, runtime *dara.RuntimeOptions) (_result *CtripOrderPushResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JourneyId) {
+		query["JourneyId"] = request.JourneyId
+	}
+
+	if !dara.IsNil(request.ScheduleItem) {
+		query["ScheduleItem"] = request.ScheduleItem
+	}
+
+	if !dara.IsNil(request.Uid) {
+		query["Uid"] = request.Uid
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.XAcsAligenieAccessToken) {
+		realHeaders["x-acs-aligenie-access-token"] = dara.String(dara.ToString(dara.StringValue(headers.XAcsAligenieAccessToken)))
+	}
+
+	if !dara.IsNil(headers.Authorization) {
+		realHeaders["Authorization"] = dara.String(dara.ToString(dara.StringValue(headers.Authorization)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CtripOrderPush"),
+		Version:     dara.String("iap_1.0"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1.0/iap/ctripOrderPush"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CtripOrderPushResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// User deletes a reminder created on a Tmall Genie device.
 //
 // @param tmpReq - DeleteReminderRequest
 //
@@ -355,9 +431,11 @@ func (client *Client) CreateReminderWithContext(ctx context.Context, tmpReq *Cre
 //
 // @return DeleteReminderResponse
 func (client *Client) DeleteReminderWithContext(ctx context.Context, tmpReq *DeleteReminderRequest, headers *DeleteReminderHeaders, runtime *dara.RuntimeOptions) (_result *DeleteReminderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &DeleteReminderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -425,7 +503,7 @@ func (client *Client) DeleteReminderWithContext(ctx context.Context, tmpReq *Del
 
 // Summary:
 //
-// 获取会员信息
+// Used by developers to obtain membership information in business scenarios that depend on CatGenie Membership.
 //
 // @param tmpReq - GetAccountForAppRequest
 //
@@ -435,9 +513,11 @@ func (client *Client) DeleteReminderWithContext(ctx context.Context, tmpReq *Del
 //
 // @return GetAccountForAppResponse
 func (client *Client) GetAccountForAppWithContext(ctx context.Context, tmpReq *GetAccountForAppRequest, headers *GetAccountForAppHeaders, runtime *dara.RuntimeOptions) (_result *GetAccountForAppResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetAccountForAppShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -505,7 +585,7 @@ func (client *Client) GetAccountForAppWithContext(ctx context.Context, tmpReq *G
 
 // Summary:
 //
-// 获取应用配置
+// Obtain application configuration.
 //
 // @param tmpReq - GetBusAppConfigRequest
 //
@@ -515,9 +595,11 @@ func (client *Client) GetAccountForAppWithContext(ctx context.Context, tmpReq *G
 //
 // @return GetBusAppConfigResponse
 func (client *Client) GetBusAppConfigWithContext(ctx context.Context, tmpReq *GetBusAppConfigRequest, headers *GetBusAppConfigHeaders, runtime *dara.RuntimeOptions) (_result *GetBusAppConfigResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetBusAppConfigShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -585,7 +667,7 @@ func (client *Client) GetBusAppConfigWithContext(ctx context.Context, tmpReq *Ge
 
 // Summary:
 //
-// 用户手机号获取
+// Obtain the phone number bound to the user\\"s Maojing device. You must first request this capability on the Maojing Skill Application Platform and obtain user authorization on the device side.
 //
 // @param tmpReq - GetPhoneNumberRequest
 //
@@ -595,9 +677,11 @@ func (client *Client) GetBusAppConfigWithContext(ctx context.Context, tmpReq *Ge
 //
 // @return GetPhoneNumberResponse
 func (client *Client) GetPhoneNumberWithContext(ctx context.Context, tmpReq *GetPhoneNumberRequest, headers *GetPhoneNumberHeaders, runtime *dara.RuntimeOptions) (_result *GetPhoneNumberResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetPhoneNumberShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -657,7 +741,7 @@ func (client *Client) GetPhoneNumberWithContext(ctx context.Context, tmpReq *Get
 
 // Summary:
 //
-// 查询提醒
+// User retrieves reminders created on Tmall Genie devices.
 //
 // @param tmpReq - GetReminderRequest
 //
@@ -667,9 +751,11 @@ func (client *Client) GetPhoneNumberWithContext(ctx context.Context, tmpReq *Get
 //
 // @return GetReminderResponse
 func (client *Client) GetReminderWithContext(ctx context.Context, tmpReq *GetReminderRequest, headers *GetReminderHeaders, runtime *dara.RuntimeOptions) (_result *GetReminderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &GetReminderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -737,7 +823,7 @@ func (client *Client) GetReminderWithContext(ctx context.Context, tmpReq *GetRem
 
 // Summary:
 //
-// 查询提醒列表
+// The User batch retrieves reminders created on Tmall Genie devices.
 //
 // @param tmpReq - ListRemindersRequest
 //
@@ -747,9 +833,11 @@ func (client *Client) GetReminderWithContext(ctx context.Context, tmpReq *GetRem
 //
 // @return ListRemindersResponse
 func (client *Client) ListRemindersWithContext(ctx context.Context, tmpReq *ListRemindersRequest, headers *ListRemindersHeaders, runtime *dara.RuntimeOptions) (_result *ListRemindersResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &ListRemindersShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -817,7 +905,7 @@ func (client *Client) ListRemindersWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 拉取收银台
+// The user launches the checkout page on a Tmall Genie device.
 //
 // @param tmpReq - PullCashierRequest
 //
@@ -827,9 +915,11 @@ func (client *Client) ListRemindersWithContext(ctx context.Context, tmpReq *List
 //
 // @return PullCashierResponse
 func (client *Client) PullCashierWithContext(ctx context.Context, tmpReq *PullCashierRequest, headers *PullCashierHeaders, runtime *dara.RuntimeOptions) (_result *PullCashierResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PullCashierShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -897,7 +987,7 @@ func (client *Client) PullCashierWithContext(ctx context.Context, tmpReq *PullCa
 
 // Summary:
 //
-// 猫精系统消息推送
+// Execute the message push feature of Tmall Genie. You must first request the capability and configure the message template on the Tmall Genie Skill Application Platform.
 //
 // @param tmpReq - PushNotificationsRequest
 //
@@ -907,9 +997,11 @@ func (client *Client) PullCashierWithContext(ctx context.Context, tmpReq *PullCa
 //
 // @return PushNotificationsResponse
 func (client *Client) PushNotificationsWithContext(ctx context.Context, tmpReq *PushNotificationsRequest, headers *PushNotificationsHeaders, runtime *dara.RuntimeOptions) (_result *PushNotificationsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &PushNotificationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -969,7 +1061,7 @@ func (client *Client) PushNotificationsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 消息推送服务（普通版）
+// Execute the message push feature of Tmall Genie. You must first request the capability and configure the message template in the Tmall Genie Skill Application Platform.
 //
 // @param tmpReq - SendNotificationsRequest
 //
@@ -979,9 +1071,11 @@ func (client *Client) PushNotificationsWithContext(ctx context.Context, tmpReq *
 //
 // @return SendNotificationsResponse
 func (client *Client) SendNotificationsWithContext(ctx context.Context, tmpReq *SendNotificationsRequest, headers *SendNotificationsHeaders, runtime *dara.RuntimeOptions) (_result *SendNotificationsResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &SendNotificationsShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1067,9 +1161,11 @@ func (client *Client) SendNotificationsWithContext(ctx context.Context, tmpReq *
 //
 // @return ThirdImmediateMsgPushResponse
 func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, request *ThirdImmediateMsgPushRequest, headers *ThirdImmediateMsgPushHeaders, runtime *dara.RuntimeOptions) (_result *ThirdImmediateMsgPushResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizType) {
@@ -1147,7 +1243,7 @@ func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 更新提醒
+// The user updates a reminder created on a Tmall Genie device.
 //
 // @param tmpReq - UpdateReminderRequest
 //
@@ -1157,9 +1253,11 @@ func (client *Client) ThirdImmediateMsgPushWithContext(ctx context.Context, requ
 //
 // @return UpdateReminderResponse
 func (client *Client) UpdateReminderWithContext(ctx context.Context, tmpReq *UpdateReminderRequest, headers *UpdateReminderHeaders, runtime *dara.RuntimeOptions) (_result *UpdateReminderResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &UpdateReminderShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1227,7 +1325,7 @@ func (client *Client) UpdateReminderWithContext(ctx context.Context, tmpReq *Upd
 
 // Summary:
 //
-// 视频类应用会员信息上报
+// Used by developers to report membership information in scenarios involving membership collaboration with CatGenie.
 //
 // @param tmpReq - VideoAppReportRequest
 //
@@ -1237,9 +1335,11 @@ func (client *Client) UpdateReminderWithContext(ctx context.Context, tmpReq *Upd
 //
 // @return VideoAppReportResponse
 func (client *Client) VideoAppReportWithContext(ctx context.Context, tmpReq *VideoAppReportRequest, headers *VideoAppReportHeaders, runtime *dara.RuntimeOptions) (_result *VideoAppReportResponse, _err error) {
-	_err = tmpReq.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	request := &VideoAppReportShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
@@ -1307,7 +1407,7 @@ func (client *Client) VideoAppReportWithContext(ctx context.Context, tmpReq *Vid
 
 // Summary:
 //
-// 猫精应用唤起
+// On a smart speaker with a screen, proactively launch the MeowGenie screen-display application. You must first request this capability on the MeowGenie skill application platform.
 //
 // @param request - WakeUpAppRequest
 //
@@ -1317,9 +1417,11 @@ func (client *Client) VideoAppReportWithContext(ctx context.Context, tmpReq *Vid
 //
 // @return WakeUpAppResponse
 func (client *Client) WakeUpAppWithContext(ctx context.Context, request *WakeUpAppRequest, headers *WakeUpAppHeaders, runtime *dara.RuntimeOptions) (_result *WakeUpAppResponse, _err error) {
-	_err = request.Validate()
-	if _err != nil {
-		return _result, _err
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
 	}
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.IsDebug) {

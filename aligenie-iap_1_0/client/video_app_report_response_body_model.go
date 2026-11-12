@@ -18,11 +18,24 @@ type iVideoAppReportResponseBody interface {
 }
 
 type VideoAppReportResponseBody struct {
+	// The returned error code. `0` indicates success.
+	//
 	// example:
 	//
 	// 0
-	RetCode *int32  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	RetMsg  *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	// The returned error message. This field is not returned if the operation succeeded.
+	//
+	// example:
+	//
+	// 请求异常
+	RetMsg *string `json:"RetMsg,omitempty" xml:"RetMsg,omitempty"`
+	// The returned invocation result.
+	//
+	// - true indicates success.
+	//
+	// - false indicates failure.
+	//
 	// example:
 	//
 	// true

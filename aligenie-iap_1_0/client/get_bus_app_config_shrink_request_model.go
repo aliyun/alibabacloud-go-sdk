@@ -18,8 +18,12 @@ type iGetBusAppConfigShrinkRequest interface {
 }
 
 type GetBusAppConfigShrinkRequest struct {
+	// Device ID information
 	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
-	PayloadShrink    *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// Business parameters
+	PayloadShrink *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfoShrink *string `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
 }

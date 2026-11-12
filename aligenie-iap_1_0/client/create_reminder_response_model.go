@@ -59,5 +59,10 @@ func (s *CreateReminderResponse) SetBody(v *CreateReminderResponseBody) *CreateR
 }
 
 func (s *CreateReminderResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

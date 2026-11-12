@@ -18,10 +18,16 @@ type iListRemindersRequest interface {
 }
 
 type ListRemindersRequest struct {
+	// List of device identity information.
+	//
 	// This parameter is required.
 	DeviceInfo *ListRemindersRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// Input parameters for the service request.
+	//
 	// This parameter is required.
 	Payload *ListRemindersRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// List of user identity information.
+	//
 	// This parameter is required.
 	UserInfo *ListRemindersRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,34 +68,71 @@ func (s *ListRemindersRequest) SetUserInfo(v *ListRemindersRequestUserInfo) *Lis
 }
 
 func (s *ListRemindersRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ListRemindersRequestDeviceInfo struct {
+	// The value corresponding to the encoding type.
+	//
+	// - When the encoding type is SKILLID, the value is the application\\"s Skill ID.
+	//
+	// - When the encoding type is PACKAGENAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// - PACKAGE_NAME: APK package name, used in the Android application customer flow.
+	//
+	// - SKILL_ID: Skill ID, used in the cloud-based flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID, either deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the device ID.
+	//
+	// - OPEN_ID: The default device ID.
+	//
+	// - UNION_ID: Organization-level device ID. This value is available only after an organization has been requested on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when **IdType*	- is set to **UNION_ID**.
+	//
 	// example:
 	//
 	// 1**2
@@ -154,6 +197,8 @@ func (s *ListRemindersRequestDeviceInfo) Validate() error {
 }
 
 type ListRemindersRequestPayload struct {
+	// Indicates whether this invocation is for debug purposes.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -184,30 +229,52 @@ func (s *ListRemindersRequestPayload) Validate() error {
 }
 
 type ListRemindersRequestUserInfo struct {
+	// The value corresponding to the encoding type:
+	//
+	//  - When the encoding type is SKILLID, the value is the application\\"s Skill ID.
+	//
+	//  - When the encoding type is PACKAGENAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// - PACKAGE_NAME: APK package name, used for the Android application customer ingest endpoint.
+	//
+	// - SKILL_ID: Skill ID, used for the cloud-side ingest endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier, either userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the User ID:
+	//
+	//  - OPEN_ID: The default User ID identity.
+	//
+	//  - UNION_ID: The User ID identity at the organization dimension. This value is available only after an organization has been requested on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is required when **IdType*	- is configured as **UNION_ID**.
+	//
 	// example:
 	//
 	// 1**2

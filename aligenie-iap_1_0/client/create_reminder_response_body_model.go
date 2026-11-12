@@ -20,18 +20,26 @@ type iCreateReminderResponseBody interface {
 }
 
 type CreateReminderResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Detailed description of the error message.
+	//
 	// example:
 	//
 	// 不能设置过去的时间。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The ID of the created reminder.
+	//
 	// example:
 	//
 	// 20****1
 	Model *int64 `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Indicates the result of the API call. true indicates success, and false indicates failure.
+	//
 	// example:
 	//
 	// true

@@ -18,8 +18,12 @@ type iVideoAppReportRequest interface {
 }
 
 type VideoAppReportRequest struct {
+	// Device identity information
 	DeviceInfo *VideoAppReportRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
-	Payload    *VideoAppReportRequestPayload    `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// 业务参数
+	Payload *VideoAppReportRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// 用户标识信息
+	//
 	// This parameter is required.
 	UserInfo *VideoAppReportRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -60,26 +64,63 @@ func (s *VideoAppReportRequest) SetUserInfo(v *VideoAppReportRequestUserInfo) *V
 }
 
 func (s *VideoAppReportRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type VideoAppReportRequestDeviceInfo struct {
+	// 编码类型对应的值
+	//
+	// - 编码类型是SKILL_ID时，其值为应用的Skill ID。
+	//
+	// - 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID from Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// - PACKAGE_NAME: APK package name, used for Android application customer flows.
+	//
+	// - SKILL_ID: Skill ID, used for cloud-based flows.
+	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID, set to either deviceOpenId or deviceUnionId.
+	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the device ID.
+	//
+	// - OPEN_ID: The default device ID.
+	//
+	// - UNION_ID: Organization-level device ID. This value is available only after an organization has been registered on the Tmall Genie Skill Application Open Platform.
+	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required when IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2
@@ -144,42 +185,58 @@ func (s *VideoAppReportRequestDeviceInfo) Validate() error {
 }
 
 type VideoAppReportRequestPayload struct {
+	// 会员的结束时间。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1652337963097
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// 会员是否登录。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsLogin *bool `json:"isLogin,omitempty" xml:"isLogin,omitempty"`
+	// 该账号是否为会员。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsVip *bool `json:"isVip,omitempty" xml:"isVip,omitempty"`
+	// 账号的昵称。
+	//
 	// example:
 	//
 	// test
 	LoginNick *string `json:"loginNick,omitempty" xml:"loginNick,omitempty"`
+	// 明文uuid
+	//
 	// example:
 	//
 	// 731D5F********DC3B
 	OriginUuid *string `json:"originUuid,omitempty" xml:"originUuid,omitempty"`
+	// 账户的手机号码。
+	//
 	// example:
 	//
 	// 188*777
 	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// 应用包名。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// com.***.test
 	PkgName *string `json:"pkgName,omitempty" xml:"pkgName,omitempty"`
+	// 会员的开始时间。
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -273,30 +330,52 @@ func (s *VideoAppReportRequestPayload) Validate() error {
 }
 
 type VideoAppReportRequestUserInfo struct {
+	// 编码类型对应的值
+	//
+	// - 编码类型是SKILL_ID时，其值为应用的Skill ID。
+	//
+	// - 编码类型是PACKAGE_NAME时，其值为对应客户端App的packageName。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// 编码类型，获取天猫精灵的用户标识的途径有多种，不同途径对应不同的编码类型。
+	//
+	// - PACKAGE_NAME：apk包名，Android应用客户链路的编码类型。
+	//
+	// - SKILL_ID：技能ID，云端链路的编码类型。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// 用户标识，设置为userOpenId或userUnionId。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 用户Id的类型
+	//
+	// - OPEN_ID：默认的用户ID标识。
+	//
+	// - UNION_ID: 组织维度的用户ID标识，在天猫精灵技能应用开放平台申请过组织后才会有该值。
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// 组织ID，如果IdType为UNION_ID时必填。
+	//
 	// example:
 	//
 	// 1**2

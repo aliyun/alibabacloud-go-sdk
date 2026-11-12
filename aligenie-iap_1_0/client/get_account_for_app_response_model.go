@@ -59,5 +59,10 @@ func (s *GetAccountForAppResponse) SetBody(v *GetAccountForAppResponseBody) *Get
 }
 
 func (s *GetAccountForAppResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

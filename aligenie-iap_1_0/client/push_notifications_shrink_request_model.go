@@ -16,9 +16,12 @@ type iPushNotificationsShrinkRequest interface {
 }
 
 type PushNotificationsShrinkRequest struct {
+	// Input parameter object for message push.
+	//
 	// This parameter is required.
 	NotificationUnicastRequestShrink *string `json:"NotificationUnicastRequest,omitempty" xml:"NotificationUnicastRequest,omitempty"`
-	TenantInfoShrink                 *string `json:"TenantInfo,omitempty" xml:"TenantInfo,omitempty"`
+	// Identity information.
+	TenantInfoShrink *string `json:"TenantInfo,omitempty" xml:"TenantInfo,omitempty"`
 }
 
 func (s PushNotificationsShrinkRequest) String() string {

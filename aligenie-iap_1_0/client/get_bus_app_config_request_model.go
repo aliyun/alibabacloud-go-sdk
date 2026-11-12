@@ -18,8 +18,12 @@ type iGetBusAppConfigRequest interface {
 }
 
 type GetBusAppConfigRequest struct {
+	// Device ID information
 	DeviceInfo *GetBusAppConfigRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
-	Payload    *GetBusAppConfigRequestPayload    `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Business parameters
+	Payload *GetBusAppConfigRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// User identity information
+	//
 	// This parameter is required.
 	UserInfo *GetBusAppConfigRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -60,26 +64,51 @@ func (s *GetBusAppConfigRequest) SetUserInfo(v *GetBusAppConfigRequestUserInfo) 
 }
 
 func (s *GetBusAppConfigRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type GetBusAppConfigRequestDeviceInfo struct {
+	// Value corresponding to the encoding type. When the encoding type is SKILL_ID, the value is the application\\"s Skill ID. When the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device ID for Maojing, and each method corresponds to a different encoding type: PACKAGE_NAME: APK package name, used for Android application customer journeys; SKILL_ID: skill ID, used for cloud-based journeys.
+	//
 	// example:
 	//
 	// SKILL_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID (deviceOpenId or deviceUnionId)
+	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of device ID: OPEN_ID: default device ID; UNION_ID: organization-dimension device ID, available only after an organization has been requested on the Maojing Skill Application Open Platform.
+	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2
@@ -144,10 +173,14 @@ func (s *GetBusAppConfigRequestDeviceInfo) Validate() error {
 }
 
 type GetBusAppConfigRequestPayload struct {
+	// Plaintext UUID
+	//
 	// example:
 	//
 	// 731D5F********DC3B
 	OriginUuid *string `json:"originUuid,omitempty" xml:"originUuid,omitempty"`
+	// Phone number
+	//
 	// example:
 	//
 	// 136****1111
@@ -185,30 +218,40 @@ func (s *GetBusAppConfigRequestPayload) Validate() error {
 }
 
 type GetBusAppConfigRequestUserInfo struct {
+	// Value corresponding to the encoding type. If the encoding type is SKILL_ID, the value is the application\\"s Skill ID. If the encoding type is PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier for Maojing, and each method corresponds to a different encoding type: PACKAGE_NAME: APK package name, used for Android application customer ingest endpoints; SKILL_ID: skill ID, used for cloud-based ingest endpoints.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SKILL_ID
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User Identifier (UserOpenId or UserUnionId)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of User ID: OPEN_ID: default User ID identity; UNION_ID: organization-dimension User ID identity, available only after an organization has been requested on the Maojing Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. Required if IdType is UNION_ID.
+	//
 	// example:
 	//
 	// 1**2

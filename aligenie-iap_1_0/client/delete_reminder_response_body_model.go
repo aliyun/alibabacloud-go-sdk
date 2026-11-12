@@ -18,14 +18,20 @@ type iDeleteReminderResponseBody interface {
 }
 
 type DeleteReminderResponseBody struct {
+	// error code
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// 参数错误。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// service success indicator
+	//
 	// example:
 	//
 	// true

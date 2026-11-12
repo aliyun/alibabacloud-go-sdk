@@ -20,18 +20,26 @@ type iUpdateReminderResponseBody interface {
 }
 
 type UpdateReminderResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// 400
 	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// 不能设置过去的时间。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// ID of the updated reminder
+	//
 	// example:
 	//
 	// 20****1
 	Model *int64 `json:"Model,omitempty" xml:"Model,omitempty"`
+	// Service success indicator
+	//
 	// example:
 	//
 	// true

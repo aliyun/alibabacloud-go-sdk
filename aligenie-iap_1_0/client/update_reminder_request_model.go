@@ -18,10 +18,16 @@ type iUpdateReminderRequest interface {
 }
 
 type UpdateReminderRequest struct {
+	// Device identity information.
+	//
 	// This parameter is required.
 	DeviceInfo *UpdateReminderRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// The input parameters for this service request.
+	//
 	// This parameter is required.
 	Payload *UpdateReminderRequestPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// User identifier information.
+	//
 	// This parameter is required.
 	UserInfo *UpdateReminderRequestUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 }
@@ -62,34 +68,71 @@ func (s *UpdateReminderRequest) SetUserInfo(v *UpdateReminderRequestUserInfo) *U
 }
 
 func (s *UpdateReminderRequest) Validate() error {
-	return dara.Validate(s)
+	if s.DeviceInfo != nil {
+		if err := s.DeviceInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Payload != nil {
+		if err := s.Payload.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.UserInfo != nil {
+		if err := s.UserInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateReminderRequestDeviceInfo struct {
+	// The value corresponding to the encoding type.
+	//
+	// - When the encoding type is set to SKILL_ID, the value is the application\\"s Skill ID.
+	//
+	// - When the encoding type is set to PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the device identity for Tmall Genie, and each method corresponds to a different encoding type.
+	//
+	// - PACKAGE_NAME: APK package name, used in the Android application customer flow.
+	//
+	// - SKILL_ID: Skill ID, used in the cloud-based flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// Device ID, set to either deviceOpenId or deviceUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DAFE****ce3ej=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of the device ID.
+	//
+	// - OPEN_ID: Default device ID.
+	//
+	// - UNION_ID: Organization-level device ID. This value is available only after an organization has been registered on the Tmall Genie skill application platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is required when **IdType*	- is set to **UNION_ID**.
+	//
 	// example:
 	//
 	// 1**2
@@ -154,24 +197,32 @@ func (s *UpdateReminderRequestDeviceInfo) Validate() error {
 }
 
 type UpdateReminderRequestPayload struct {
+	// The detailed content of the reminder message.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 更新提醒内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The ID of the reminder to update.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20***34
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether this invocation is for debugging.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsDebug *bool `json:"IsDebug,omitempty" xml:"IsDebug,omitempty"`
+	// Scheduling information for the reminder.
+	//
 	// This parameter is required.
 	RecurrenceRule *UpdateReminderRequestPayloadRecurrenceRule `json:"RecurrenceRule,omitempty" xml:"RecurrenceRule,omitempty" type:"Struct"`
 }
@@ -221,52 +272,85 @@ func (s *UpdateReminderRequestPayload) SetRecurrenceRule(v *UpdateReminderReques
 }
 
 func (s *UpdateReminderRequestPayload) Validate() error {
-	return dara.Validate(s)
+	if s.RecurrenceRule != nil {
+		if err := s.RecurrenceRule.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateReminderRequestPayloadRecurrenceRule struct {
+	// The date on which the reminder is triggered.
+	//
 	// example:
 	//
 	// 25
-	Day         *int32   `json:"Day,omitempty" xml:"Day,omitempty"`
+	Day *int32 `json:"Day,omitempty" xml:"Day,omitempty"`
+	// Configure monthly reminders, specifying on which day(s) of each month the reminder is triggered.
 	DaysOfMonth []*int32 `json:"DaysOfMonth,omitempty" xml:"DaysOfMonth,omitempty" type:"Repeated"`
-	DaysOfWeek  []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// Configure weekly reminders, indicating on which days of the week the reminder is triggered.
+	DaysOfWeek []*int32 `json:"DaysOfWeek,omitempty" xml:"DaysOfWeek,omitempty" type:"Repeated"`
+	// The expiration time when the reminder ends, in milliseconds as a UNIX timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1635134700000
 	EndDateTime *int64 `json:"EndDateTime,omitempty" xml:"EndDateTime,omitempty"`
+	// Recurrence type:
+	//
+	// - ONCE: One-time
+	//
+	// - DAILY: Daily
+	//
+	// - WEEKLY: Weekly
+	//
+	// - MONTHLY: Monthly
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ONCE
 	Freq *string `json:"Freq,omitempty" xml:"Freq,omitempty"`
+	// The hour of the time when the reminder is triggered.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12
 	Hour *int32 `json:"Hour,omitempty" xml:"Hour,omitempty"`
+	// The minute of the time when the reminder is triggered.
+	//
 	// example:
 	//
 	// 3
 	Minute *int32 `json:"Minute,omitempty" xml:"Minute,omitempty"`
+	// The month in which the reminder is triggered.
+	//
 	// example:
 	//
 	// 10
 	Month *int32 `json:"Month,omitempty" xml:"Month,omitempty"`
+	// The second of the time when the reminder is triggered.
+	//
 	// example:
 	//
 	// 3
 	Second *int32 `json:"Second,omitempty" xml:"Second,omitempty"`
+	// The effective start time of the reminder, in milliseconds as a UNIX timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1635134400000
 	StartDateTime *int64 `json:"StartDateTime,omitempty" xml:"StartDateTime,omitempty"`
+	// The year of the time when the reminder is triggered.
+	//
 	// example:
 	//
 	// 2021
@@ -385,30 +469,52 @@ func (s *UpdateReminderRequestPayloadRecurrenceRule) Validate() error {
 }
 
 type UpdateReminderRequestUserInfo struct {
+	// Value corresponding to the encoding type.
+	//
+	// - When the encoding type is set to SKILL_ID, the value is the application\\"s Skill ID.
+	//
+	// - When the encoding type is set to PACKAGE_NAME, the value is the packageName of the corresponding client app.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12**45
 	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// Encoding type. There are multiple ways to obtain the user identifier for Maojing, and each method corresponds to a different encoding type.
+	//
+	// - PACKAGE_NAME: APK package name, used in the Android application customer link.
+	//
+	// - SKILL_ID: Skill ID, used in the cloud link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PACKAGE_NAME
 	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// User identifier, set to either userOpenId or userUnionId.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HOFF****my7Iw=
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Type of User ID
+	//
+	// - OPEN_ID: The default User ID identifier.
+	//
+	// - UNION_ID: The organization-dimension User ID identifier. This value is available only after an organization has been requested on the Tmall Genie Skill Application Open Platform.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OPEN_ID
 	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// Organization ID. This parameter is required when **IdType*	- is set to **UNION_ID**.
+	//
 	// example:
 	//
 	// 1**2
