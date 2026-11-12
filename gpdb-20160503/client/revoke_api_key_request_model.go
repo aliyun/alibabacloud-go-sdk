@@ -20,7 +20,7 @@ type iRevokeApiKeyRequest interface {
 }
 
 type RevokeApiKeyRequest struct {
-	// API KEY ID。
+	// The API key ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type RevokeApiKeyRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of service IDs to be authorized.
+	// The list of service IDs to authorize.
 	//
 	// This parameter is required.
 	ServiceIds []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`

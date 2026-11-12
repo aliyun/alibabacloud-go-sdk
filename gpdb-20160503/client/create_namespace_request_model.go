@@ -30,15 +30,15 @@ type iCreateNamespaceRequest interface {
 type CreateNamespaceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to view the details of all instances in the specified region, including instance IDs.
 	//
 	// example:
 	//
 	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the manager account that has the rds_superuser permission.
+	// The name of the administrator account that has the rds_superuser permission.
 	//
-	// >  You can create an account on the Account Management page of the AnalyticDB for PostgreSQL console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+	// > You can create an account in the console by navigating to Account Management, or call the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CreateNamespaceRequest struct {
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-	// The password of the manager account.
+	// The password of the administrator account.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type CreateNamespaceRequest struct {
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// The name of the namespace. After the namespace is created, the system automatically creates an account that has the same name.
+	// The name of the namespace to create, which is used for tenant isolation (the backend performs automatic creation of a user account with the same name).
 	//
-	// >  The name must comply with the naming conventions of PostgreSQL objects.
+	// > The name must comply with PostgreSQL object naming rules.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// The password for the namespace.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +79,7 @@ type CreateNamespaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be left empty at the same time. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//

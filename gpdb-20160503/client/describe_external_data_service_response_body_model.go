@@ -28,13 +28,13 @@ type iDescribeExternalDataServiceResponseBody interface {
 }
 
 type DescribeExternalDataServiceResponseBody struct {
-	// The time when the service was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the service was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeExternalDataServiceResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The description of the service.
+	// The service description.
 	//
 	// example:
 	//
@@ -58,19 +58,27 @@ type DescribeExternalDataServiceResponseBody struct {
 	//
 	// 1
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The name of the service.
+	// The service name.
 	//
 	// example:
 	//
 	// test-pxf
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The specifications of the service. Unit: compute units (CUs).
+	// The service specification (unit: CU).
 	//
 	// example:
 	//
 	// 8
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
-	// The status of the operation.
+	// The service status. Valid values:
+	//
+	// - Init: The service is being initialized.
+	//
+	// - Running: The service is running.
+	//
+	// - Exception: An exception occurred.
+	//
+	// - Paused: The service is paused.
 	//
 	// example:
 	//

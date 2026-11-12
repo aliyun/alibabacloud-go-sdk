@@ -84,7 +84,7 @@ type DescribeSQLLogsV2Request struct {
 	//
 	// example:
 	//
-	// 1
+	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
 	// The maximum amount of time consumed by a slow query. Minimum value: 0. Unit: seconds.
 	//
@@ -130,13 +130,13 @@ type DescribeSQLLogsV2Request struct {
 	//
 	// example:
 	//
-	// 1
+	// 10
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of the page to return. The maximum value is 200.
 	//
 	// example:
 	//
-	// 30
+	// 1
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The keywords of the SQL statement.
 	//
@@ -158,7 +158,7 @@ type DescribeSQLLogsV2Request struct {
 	//
 	// example:
 	//
-	// null
+	// rg-bp67acfmxazb4p****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The source IP address.
 	//

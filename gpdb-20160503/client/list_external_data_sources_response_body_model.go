@@ -146,7 +146,7 @@ type ListExternalDataSourcesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// hdfs
+	// HDFS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	// The Id of external data service
 	//

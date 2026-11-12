@@ -24,24 +24,24 @@ type iDescribeDBVersionInfosRequest interface {
 type DescribeDBVersionInfosRequest struct {
 	// The resource type of the instance. Valid values:
 	//
-	// 	- **StorageElastic**: elastic storage mode.
+	// - **StorageElastic**: storage elastic mode
 	//
-	// 	- **Serverless**: Serverless mode.
+	// - **Serverless**: Serverless mode
 	//
 	// example:
 	//
 	// StorageElastic
 	DBInstanceMode *string `json:"DBInstanceMode,omitempty" xml:"DBInstanceMode,omitempty"`
-	// The minor version number that does not include the prefix.
+	// The kernel version number without a prefix.
 	//
 	// example:
 	//
 	// 6.3.10.20。
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -49,7 +49,7 @@ type DescribeDBVersionInfosRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	// The ID of the resource group to which the instance belongs. For more information about how to obtain a resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//

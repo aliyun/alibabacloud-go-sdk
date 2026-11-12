@@ -22,7 +22,7 @@ type DescribeActiveSQLRecordsResponseBody struct {
 	//
 	// example:
 	//
-	// gp-bp12ga6v69h86****
+	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The queried SQL records.
 	Queries []*DescribeActiveSQLRecordsResponseBodyQueries `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
@@ -111,7 +111,7 @@ type DescribeActiveSQLRecordsResponseBodyQueries struct {
 	//
 	// example:
 	//
-	// 60
+	// 60s
 	QueryDuration *string `json:"QueryDuration,omitempty" xml:"QueryDuration,omitempty"`
 	// The start time of the query.
 	//

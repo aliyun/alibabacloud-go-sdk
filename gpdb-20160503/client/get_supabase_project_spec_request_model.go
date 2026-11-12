@@ -14,7 +14,7 @@ type iGetSupabaseProjectSpecRequest interface {
 }
 
 type GetSupabaseProjectSpecRequest struct {
-	// The region ID.
+	// The region ID. Specifies the region for the query or operation.
 	//
 	// example:
 	//

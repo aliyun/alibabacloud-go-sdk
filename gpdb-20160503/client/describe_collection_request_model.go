@@ -26,9 +26,9 @@ type iDescribeCollectionRequest interface {
 }
 
 type DescribeCollectionRequest struct {
-	// The name of the collection.
+	// The collection name.
 	//
-	// >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query the list.
 	//
 	// This parameter is required.
 	//
@@ -38,21 +38,21 @@ type DescribeCollectionRequest struct {
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// example:
 	//
 	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
-	// >  You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// The password for the namespace.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +69,7 @@ type DescribeCollectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be left empty at the same time. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//

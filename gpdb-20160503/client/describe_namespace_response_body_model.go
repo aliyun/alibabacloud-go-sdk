@@ -38,15 +38,15 @@ type DescribeNamespaceResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The queried namespace.
+	// The namespace information.
 	NamespaceInfo map[string]*string `json:"NamespaceInfo,omitempty" xml:"NamespaceInfo,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type DescribeNamespaceResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The execution fails.
 	//
 	// example:
 	//

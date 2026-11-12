@@ -64,19 +64,19 @@ type iDescribeStreamingJobResponseBody interface {
 }
 
 type DescribeStreamingJobResponseBody struct {
-	// Target database account.
+	// The destination database account.
 	//
 	// example:
 	//
 	// test-account
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// Delivery guarantee.
+	// The delivery guarantee.
 	//
 	// example:
 	//
 	// ATLEAST / EXACTLY
 	Consistency *string `json:"Consistency,omitempty" xml:"Consistency,omitempty"`
-	// Creation time.
+	// The creation time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -84,65 +84,65 @@ type DescribeStreamingJobResponseBody struct {
 	//
 	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Data source ID.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 2
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Data source name.
+	// The data source name.
 	//
 	// example:
 	//
 	// test_kafka
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// Target data table mapping field list.
+	// The list of mapped columns in the destination table.
 	DestColumns []*string `json:"DestColumns,omitempty" xml:"DestColumns,omitempty" type:"Repeated"`
-	// Target database name.
+	// The destination database name.
 	//
 	// example:
 	//
 	// dest-db
 	DestDatabase *string `json:"DestDatabase,omitempty" xml:"DestDatabase,omitempty"`
-	// Target namespace.
+	// The destination namespace.
 	//
 	// example:
 	//
 	// dest-schema
 	DestSchema *string `json:"DestSchema,omitempty" xml:"DestSchema,omitempty"`
-	// Target table name.
+	// The destination table name.
 	//
 	// example:
 	//
 	// dest-table
 	DestTable *string `json:"DestTable,omitempty" xml:"DestTable,omitempty"`
-	// When data in Kafka does not match the ADBPG target table, it can cause write failures. This value represents the number of error rows allowed; if exceeded, the task will fail.
+	// The maximum number of allowed error rows. If data in Kafka does not match the destination AnalyticDB for PostgreSQL table, a write failure occurs. If the number of error rows exceeds this value, the job fails.
 	//
 	// example:
 	//
 	// 5
 	ErrorLimitCount *int32 `json:"ErrorLimitCount,omitempty" xml:"ErrorLimitCount,omitempty"`
-	// Service status information, such as the reason for an exception. It is empty in the normal Running state.
+	// The service status message. For example, if an exception occurs, the cause of the exception is displayed. This parameter is empty when the service is in the Running state.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Fallback offset, which is the fallback position
+	// The fallback offset.
 	//
-	// - The FallbackOffset parameter defines the behavior when the consumer has not requested a specific offset to consume or the requested offset exceeds the current record\\"s offset information in the Kafka cluster. You can choose to start consuming from the earliest (newest) or latest (oldest) offset.
+	// - The FallbackOffset parameter defines the behavior when a consumer does not request a specific offset to consume, or when the requested offset exceeds the offset range recorded in the current Kafka cluster. You can choose to start consuming from the earliest or latest offset.
 	//
 	// example:
 	//
 	// EARLIEST /  LATEST
 	FallbackOffset *string `json:"FallbackOffset,omitempty" xml:"FallbackOffset,omitempty"`
-	// Kafka group name
+	// The Kafka group name.
 	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Job configuration file.
+	// The job configuration file.
 	//
 	// example:
 	//
@@ -386,37 +386,37 @@ type DescribeStreamingJobResponseBody struct {
 	//
 	//     group.id: testgroup
 	JobConfig *string `json:"JobConfig,omitempty" xml:"JobConfig,omitempty"`
-	// Job description.
+	// The job description.
 	//
 	// example:
 	//
 	// test_job
 	JobDescription *string `json:"JobDescription,omitempty" xml:"JobDescription,omitempty"`
-	// Job ID.
+	// The job ID.
 	//
 	// example:
 	//
 	// 1
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Job name.
+	// The job name.
 	//
 	// example:
 	//
 	// test-job
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// Match columns, usually all primary key columns of the target table. If all column values in this configuration are the same, the two rows of data are considered duplicates.
+	// The match columns. Typically, these are all primary key columns of the destination table. If the values of all columns in this configuration are the same, the two rows of data are considered duplicate.
 	MatchColumns []*string `json:"MatchColumns,omitempty" xml:"MatchColumns,omitempty" type:"Repeated"`
-	// Configuration mode
+	// The configuration mode.
 	//
-	// 1. Basic mode requires specifying some configuration fields
+	// 1. basic: requires specific configuration fields.
 	//
-	// 1. Professional mode supports submitting YAML files
+	// 2. professional: supports submitting YAML files.
 	//
 	// example:
 	//
 	// basic/professional
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// Last modified time.
+	// The last modification time.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -424,37 +424,37 @@ type DescribeStreamingJobResponseBody struct {
 	//
 	// 2019-09-08T17:00:00Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Target database password.
+	// The destination database password.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Source field list.
+	// The list of source columns.
 	SrcColumns []*string `json:"SrcColumns,omitempty" xml:"SrcColumns,omitempty" type:"Repeated"`
-	// Service status, with possible values:
+	// The service status. Valid values:
 	//
-	// - Init: Initializing
+	// - Init: initializing.
 	//
-	// - Running: Running
+	// - Running: running.
 	//
-	// - Exception: Exception
+	// - Exception: an exception occurred.
 	//
-	// - Paused: Paused
+	// - Paused: paused.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Update columns, usually all non-primary key columns of the target table. When data duplication is determined through MatchColumns, updating the UpdateColumns column values will result in new data overwriting old data.
+	// The update columns. Typically, these are all non-primary key columns of the destination table. When duplicate data is identified based on the match columns, the values of the update columns are updated so that the new data overwrites the old data.
 	UpdateColumns []*string `json:"UpdateColumns,omitempty" xml:"UpdateColumns,omitempty" type:"Repeated"`
-	// Write mode.
+	// The write mode.
 	//
 	// example:
 	//

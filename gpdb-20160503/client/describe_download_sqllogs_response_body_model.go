@@ -16,9 +16,9 @@ type iDescribeDownloadSQLLogsResponseBody interface {
 }
 
 type DescribeDownloadSQLLogsResponseBody struct {
-	// List of download records.
+	// The list of download records.
 	Records []*DescribeDownloadSQLLogsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,31 +66,31 @@ func (s *DescribeDownloadSQLLogsResponseBody) Validate() error {
 }
 
 type DescribeDownloadSQLLogsResponseBodyRecords struct {
-	// Download record ID.
+	// The ID of the download record.
 	//
 	// example:
 	//
 	// 1150
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	// Download link.
+	// The download URL.
 	//
 	// example:
 	//
 	// https://perth-download-task.oss-cn-beijing.aliyuncs.com/*****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// Error message.
+	// The error message.
 	//
 	// example:
 	//
 	// Error message
 	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
-	// File name.
+	// The file name.
 	//
 	// example:
 	//
 	// 20220509113448-20220509173448.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// Task status, with possible values being:
+	// The task status. Valid values:
 	//
 	// - **running**: Downloading.
 	//

@@ -22,39 +22,39 @@ type iUpsertChunksResponseBody interface {
 }
 
 type UpsertChunksResponseBody struct {
-	// The number of tokens that are consumed during vectorization.
+	// The number of tokens used for vectorization.
 	//
-	// > A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
+	// > A token is the smallest unit into which input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//
 	// 100
 	EmbeddingTokens *string `json:"EmbeddingTokens,omitempty" xml:"EmbeddingTokens,omitempty"`
-	// The job ID. You can use the `GetGraphRAGJob` to view the job status.
+	// The job ID. You can use this ID to call the GetGraphRAGJob operation to query the job status later.
 	//
-	// > This parameter is returned only when the knowledge base is enabled.
+	// > This parameter is returned only when knowledge graph construction is enabled for the knowledge base.
 	//
 	// example:
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//

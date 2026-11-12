@@ -20,7 +20,7 @@ type iCheckHadoopNetConnectionRequest interface {
 }
 
 type CheckHadoopNetConnectionRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,23 +28,23 @@ type CheckHadoopNetConnectionRequest struct {
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// 1. Either DataSourceId or EmrInstanceId must be specified as input, otherwise an error will occur.
+	// 1. You must specify either DataSourceId or EmrInstanceId. Otherwise, an error is returned.
 	//
-	// 2. If both of the above parameters are specified, EmrInstanceId will be used preferentially.
+	// 2. If both parameters are specified, EmrInstanceId takes precedence.
 	//
-	// 3. If the data source specified by DataSourceId is a self-built Hadoop cluster, an error will occur directly.
+	// 3. If the data source specified by DataSourceId is a self-managed Hadoop cluster, an error is returned.
 	//
 	// example:
 	//
 	// 126
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// EMR instance ID.
+	// The EMR instance ID.
 	//
 	// example:
 	//
 	// c-xxx
 	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//

@@ -22,30 +22,30 @@ type iRerankResponseBody interface {
 }
 
 type RerankResponseBody struct {
-	// Detailed information returned by the interface.
+	// The detailed information returned in the response.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Results   *RerankResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	// API execution status, value description:
+	// The execution status of the API operation. Valid values:
 	//
-	// - **success**: Execution succeeded.
+	// - **success**: The operation is successful.
 	//
-	// - **fail**: Execution failed.
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Number of consumed tokens.
+	// The number of tokens consumed.
 	//
 	// example:
 	//

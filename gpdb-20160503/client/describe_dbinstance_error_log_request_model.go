@@ -34,7 +34,7 @@ type iDescribeDBInstanceErrorLogRequest interface {
 type DescribeDBInstanceErrorLogRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,45 +42,45 @@ type DescribeDBInstanceErrorLogRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+	// The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2022-04-25T06:59Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// This parameter is not supported in Alibaba Cloud public cloud.
+	// This parameter is not supported in the public cloud. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// null
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// One or more keywords that are used to query error logs.
+	// The keyword used to search for error logs.
 	//
 	// example:
 	//
 	// error
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	// The level of the logs to query. Valid values:
+	// The log level. Valid values:
 	//
-	// 	- **ALL**: queries all error logs.
+	// - **ALL**: displays logs of all levels.
 	//
-	// 	- **PANIC**: queries only abnormal logs.
+	// - **PANIC**: displays only panic-level logs.
 	//
-	// 	- **FATAL**: queries only critical logs.
+	// - **FATAL**: displays only fatal-level logs.
 	//
-	// 	- **ERROR**: queries only error logs.
+	// - **ERROR**: displays only error-level logs.
 	//
 	// example:
 	//
 	// ALL
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer type. Default value: **1**.
 	//
 	// example:
 	//
@@ -88,11 +88,11 @@ type DescribeDBInstanceErrorLogRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **20**
+	// - **20**
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// Default value: **20**.
 	//
@@ -100,7 +100,7 @@ type DescribeDBInstanceErrorLogRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//

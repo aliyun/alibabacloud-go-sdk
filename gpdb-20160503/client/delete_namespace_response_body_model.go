@@ -22,7 +22,7 @@ type DeleteNamespaceResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

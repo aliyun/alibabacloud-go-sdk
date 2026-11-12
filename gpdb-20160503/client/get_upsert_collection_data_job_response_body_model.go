@@ -20,7 +20,7 @@ type iGetUpsertCollectionDataJobResponseBody interface {
 }
 
 type GetUpsertCollectionDataJobResponseBody struct {
-	// The information about the vector data upload job.
+	// The details of the task for uploading vector data.
 	Job *GetUpsertCollectionDataJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -36,9 +36,9 @@ type GetUpsertCollectionDataJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of the operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//
@@ -100,19 +100,19 @@ func (s *GetUpsertCollectionDataJobResponseBody) Validate() error {
 }
 
 type GetUpsertCollectionDataJobResponseBodyJob struct {
-	// Indicates whether the operation is complete.
+	// Indicates whether the operation is completed.
 	//
 	// example:
 	//
 	// false
 	Completed *bool `json:"Completed,omitempty" xml:"Completed,omitempty"`
-	// The time when the job was created.
+	// The time when the task was created.
 	//
 	// example:
 	//
 	// 2024-01-08 16:52:04.864664
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The error message.
+	// The error message returned when the current operation is abnormal or fails.
 	//
 	// example:
 	//
@@ -124,33 +124,31 @@ type GetUpsertCollectionDataJobResponseBodyJob struct {
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The progress of the vector data upload job. The value of this parameter indicates the number of data entries that have been uploaded.
+	// The upload progress. The value indicates the number of data records that have been uploaded.
 	//
 	// example:
 	//
 	// 1600
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The status of the job.
+	// The task status. Valid values:
 	//
-	// >  Valid values:
+	// > - Success: The task is successful.
 	//
-	// 	- Success
+	// > - Failed: The task fails. You can view the Error field for the cause of the failure.
 	//
-	// 	- Failed (See the Error parameter for failure reasons.)
+	// > - Cancelling: The task is being canceled.
 	//
-	// 	- Cancelling
+	// > - Cancelled: The task is canceled.
 	//
-	// 	- Cancelled
+	// > - Start: The task is started.
 	//
-	// 	- Start
-	//
-	// 	- Running
+	// > - Running: The task is running.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the job was updated.
+	// The time when the task was updated.
 	//
 	// example:
 	//

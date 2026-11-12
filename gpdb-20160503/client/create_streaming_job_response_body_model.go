@@ -16,13 +16,13 @@ type iCreateStreamingJobResponseBody interface {
 }
 
 type CreateStreamingJobResponseBody struct {
-	// Job ID.
+	// The task ID.
 	//
 	// example:
 	//
 	// 1
 	JobId *int32 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

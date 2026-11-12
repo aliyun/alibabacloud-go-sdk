@@ -22,15 +22,15 @@ type iListApiKeysResponseBody interface {
 }
 
 type ListApiKeysResponseBody struct {
-	// The list of API keys.
+	// The list of items.
 	Items []*ListApiKeysResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of records to return in this query.
+	// The maximum number of records to return in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page in a paged query.
+	// The token for the next paging query.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type ListApiKeysResponseBodyItems struct {
 	//
 	// 2021-10-09T04:54:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the API key.
+	// The plugin description.
 	//
 	// example:
 	//

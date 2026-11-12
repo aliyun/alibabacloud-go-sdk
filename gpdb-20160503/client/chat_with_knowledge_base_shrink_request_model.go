@@ -28,7 +28,7 @@ type iChatWithKnowledgeBaseShrinkRequest interface {
 type ChatWithKnowledgeBaseShrinkRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance ID.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,18 +42,18 @@ type ChatWithKnowledgeBaseShrinkRequest struct {
 	//
 	// false
 	IncludeKnowledgeBaseResults *bool `json:"IncludeKnowledgeBaseResults,omitempty" xml:"IncludeKnowledgeBaseResults,omitempty"`
-	// The knowledge retrieval parameter object. If not specified, only chat is performed.
+	// The knowledge retrieval parameter object. If this parameter is not specified, only chat is performed.
 	KnowledgeParamsShrink *string `json:"KnowledgeParams,omitempty" xml:"KnowledgeParams,omitempty"`
-	// The large language model (LLM) invocation parameter object.
+	// The large language model (LLM) call parameter object.
 	//
 	// This parameter is required.
 	ModelParamsShrink *string `json:"ModelParams,omitempty" xml:"ModelParams,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The system prompt template, which must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If not specified, this part does not take effect.
+	// The system prompt template. It must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If this parameter is not specified, this part does not take effect.
 	//
 	// example:
 	//
-	// "参考以下知识回答问题:{{ text_chunks }}"
+	// "Answer the question based on the following knowledge: {{ text_chunks }}"
 	PromptParams *string `json:"PromptParams,omitempty" xml:"PromptParams,omitempty"`
 	// The region ID of the instance.
 	//

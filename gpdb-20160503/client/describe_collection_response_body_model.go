@@ -44,29 +44,27 @@ type DescribeCollectionResponseBody struct {
 	//
 	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The number of vector dimensions.
+	// The vector dimensions.
 	//
 	// example:
 	//
 	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The fields that are used for full-text search. Multiple fields are separated by commas (,).
+	// The full-text index fields. Separate multiple fields with commas (,).
 	//
 	// example:
 	//
 	// title,content
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	// The returned message.
+	// The detailed information returned by the API operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The metadata of vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+	// The metadata of the vector data, which is a JSON string in MAP format. The key represents the field name, and the value represents the data type.
 	//
-	// **
-	//
-	// **Warning*	- Reserved fields such as id, vector, and to_tsvector cannot be used.
+	// 	Warning: The id, vector, and to_tsvector fields are reserved and cannot be used.</warning>
 	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The distance metrics.
 	//
@@ -74,19 +72,19 @@ type DescribeCollectionResponseBody struct {
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The analyzer that is used for full-text search.
+	// The tokenizer used for full-text index.
 	//
 	// example:
 	//
 	// zh_cn
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
@@ -98,23 +96,23 @@ type DescribeCollectionResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The method that is used to create sparse vector indexes.
+	// The method used to build indexes for sparse vectors.
 	//
 	// example:
 	//
 	// ip
 	SparseVectorMetrics *string `json:"SparseVectorMetrics,omitempty" xml:"SparseVectorMetrics,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The execution fails.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether sparse vectors are supported.
+	// Specifies whether sparse vectors are supported.
 	//
 	// example:
 	//

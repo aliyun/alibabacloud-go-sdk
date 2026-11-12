@@ -20,9 +20,9 @@ type iDescribeDBInstanceDataBloatResponseBody interface {
 }
 
 type DescribeDBInstanceDataBloatResponseBody struct {
-	// The queried data bloat.
+	// The list of data bloat details.
 	Items []*DescribeDBInstanceDataBloatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeDBInstanceDataBloatResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of tables. The total number of pages is calculated by dividing this value by the page size.
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ func (s *DescribeDBInstanceDataBloatResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceDataBloatResponseBodyItems struct {
-	// The coefficient of data bloat. It is calculated by using the following formula:
+	// The data bloat coefficient. The bloat coefficient is calculated by using the following formula:
 	//
-	// Bloat coefficient = Number of dead rows/Number of active rows.
+	// Number of dead rows counted by the system / Number of live rows counted by the system.
 	//
 	// example:
 	//
 	// 1.03
 	BloatCeoff *string `json:"BloatCeoff,omitempty" xml:"BloatCeoff,omitempty"`
-	// The bloat size of the table. It indicates the amount of space that can be released.
+	// The size of the bloated data, which indicates the amount of space that can be reclaimed.
 	//
 	// example:
 	//
@@ -120,15 +120,15 @@ type DescribeDBInstanceDataBloatResponseBodyItems struct {
 	//
 	// adbtest
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The expected size of the table.
+	// The expected table size.
 	//
-	// It indicates the size of the table that has no data bloat.
+	// The expected table size is the estimated size of the table when no data bloat occurs.
 	//
 	// example:
 	//
 	// 1MB
 	ExpectTableSize *string `json:"ExpectTableSize,omitempty" xml:"ExpectTableSize,omitempty"`
-	// The actual size of the table.
+	// The actual table size.
 	//
 	// example:
 	//
@@ -148,11 +148,11 @@ type DescribeDBInstanceDataBloatResponseBodyItems struct {
 	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
 	// The storage type of the table. Valid values:
 	//
-	// 	- **Heap Table**
+	// - **Heap Table**: heap table
 	//
-	// 	- **Append-Only Heap Table**
+	// - **Append-Only Heap Table**: append-only heap table
 	//
-	// 	- **Append-Only Columnar Table**
+	// - **Append-Only Columnar Table**: column-oriented table
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeDBInstanceDataBloatResponseBodyItems struct {
 	//
 	// tab1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The time when the table was last deleted, inserted, or updated.
+	// The time when the table was last updated by a DELETE, INSERT, or UPDATE operation.
 	//
 	// example:
 	//

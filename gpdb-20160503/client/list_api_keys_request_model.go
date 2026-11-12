@@ -28,7 +28,7 @@ type ListApiKeysRequest struct {
 	//
 	// my api
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// The maximum number of records to return in this query.
+	// The maximum number of records to return in this request.
 	//
 	// example:
 	//

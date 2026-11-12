@@ -22,20 +22,20 @@ type iListDocumentCollectionsResponseBody interface {
 }
 
 type ListDocumentCollectionsResponseBody struct {
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 10
 	Count *int32                                    `json:"Count,omitempty" xml:"Count,omitempty"`
 	Items *ListDocumentCollectionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -43,9 +43,9 @@ type ListDocumentCollectionsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The creation status. Valid values:
 	//
-	// - **success**: The operation succeeded.
+	// - **success**: Succeeded.
 	//
-	// - **fail**: The operation failed.
+	// - **fail**: Failed.
 	//
 	// example:
 	//

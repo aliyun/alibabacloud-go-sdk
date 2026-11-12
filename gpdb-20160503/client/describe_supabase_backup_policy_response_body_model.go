@@ -26,13 +26,13 @@ type iDescribeSupabaseBackupPolicyResponseBody interface {
 }
 
 type DescribeSupabaseBackupPolicyResponseBody struct {
-	// The interval between automatic recovery points, in minutes. A value greater than 0 indicates that automatic recovery points are enabled. If the feature is disabled, -1 is returned.
+	// The interval for automatic recovery points, in minutes. A value greater than 0 indicates that automatic recovery points are enabled. A value of -1 indicates that automatic recovery points are disabled.
 	//
 	// example:
 	//
 	// -1
 	BackupInterval *int32 `json:"BackupInterval,omitempty" xml:"BackupInterval,omitempty"`
-	// The data backup retention period, in days.
+	// The retention period for data backups, in days.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeSupabaseBackupPolicyResponseBody struct {
 	//
 	// 01:00Z-02:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The interval for the automatic creation of recovery points, in hours. Valid values: 1/6 (10 minutes), 1/2 (30 minutes), 1, 2, 4, and 8. This value is valid only when EnableRecoveryPoint is set to true. If automatic recovery points are shutdown, 0 is returned.
+	// The interval for the automatic creation of recovery points, in hours. Valid values: 1/6 (10 minutes), 1/2 (30 minutes), 1, 2, 4, and 8. This parameter is valid only when EnableRecoveryPoint is set to true. A value of 0 is returned upon shutdown of automatic recovery points.
 	//
 	// example:
 	//

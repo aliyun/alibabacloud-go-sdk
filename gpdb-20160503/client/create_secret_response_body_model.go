@@ -22,7 +22,7 @@ type iCreateSecretResponseBody interface {
 }
 
 type CreateSecretResponseBody struct {
-	// The returned message.
+	// The detailed information returned by the operation.
 	//
 	// example:
 	//
@@ -34,23 +34,25 @@ type CreateSecretResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	// The ARN that uniquely identifies the logon credential and permissions of the Data API account created by the user.
+	//
+	// Format: ```acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}}```
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the access credential.
+	// The name of the credential.
 	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The status of the operation. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The operation failed.
 	//
 	// example:
 	//

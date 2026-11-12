@@ -29,7 +29,7 @@ type iListCollectionsResponseBody interface {
 
 type ListCollectionsResponseBody struct {
 	Collections *ListCollectionsResponseBodyCollections `json:"Collections,omitempty" xml:"Collections,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -47,13 +47,13 @@ type ListCollectionsResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
@@ -65,11 +65,11 @@ type ListCollectionsResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: The operation failed.
 	//
 	// example:
 	//

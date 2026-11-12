@@ -30,11 +30,11 @@ type CancelUploadDocumentJobResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The execution status of the operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//

@@ -34,11 +34,11 @@ type ModifySupabaseBackupPolicyRequest struct {
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// Specifies whether to enable automatic recovery points. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enables automatic recovery points.
 	//
-	// - false: Disabled.
+	// - false: disables automatic recovery points.
 	//
-	// If this parameter is not specified, false is used.
+	// Default value: false.
 	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
 	// The data backup cycle. Separate multiple values with commas (,). Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
 	//
@@ -64,7 +64,7 @@ type ModifySupabaseBackupPolicyRequest struct {
 	//
 	// sbp-263****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The interval for the automatic creation of recovery points. Unit: hours. Valid values: 1/6 (10 minutes), 1/2 (30 minutes), 1, 2, 4, and 8. This parameter takes effect only when EnableRecoveryPoint is set to true. If this parameter is not specified, the default value 1 is used. If EnableRecoveryPoint is set to false, this parameter is ignored.
+	// The interval for the automatic creation of recovery points. Unit: hours. Valid values: 1/6 (10 minutes), 1/2 (30 minutes), 1, 2, 4, and 8. This parameter takes effect only when EnableRecoveryPoint is set to true. If EnableRecoveryPoint is set to true and this parameter is not specified, the default value 1 is used. If EnableRecoveryPoint is set to false, this parameter is ignored.
 	//
 	// example:
 	//

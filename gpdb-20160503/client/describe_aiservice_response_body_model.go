@@ -46,25 +46,25 @@ type DescribeAIServiceResponseBody struct {
 	//
 	// dramatest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The internal endpoint for API debugging.
+	// The internal URL for API debugging.
 	//
 	// example:
 	//
 	// 192.168.0.1/api-docs
 	PrivateApiDevUrl *string `json:"PrivateApiDevUrl,omitempty" xml:"PrivateApiDevUrl,omitempty"`
-	// The internal endpoint of the workbench.
+	// The internal URL of the workbench.
 	//
 	// example:
 	//
 	// 192.168.0.1
 	PrivateWorkbenchUrl *string `json:"PrivateWorkbenchUrl,omitempty" xml:"PrivateWorkbenchUrl,omitempty"`
-	// The public endpoint for API debugging.
+	// The public URL for API debugging.
 	//
 	// example:
 	//
 	// 8.8.8.8/api-docs
 	PublicApiDevUrl *string `json:"PublicApiDevUrl,omitempty" xml:"PublicApiDevUrl,omitempty"`
-	// The public endpoint of the workbench.
+	// The public URL of the workbench.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeAIServiceResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IP addresses in the IP address whitelist group, separated by commas (,).
+	// The list of IP addresses in the IP address whitelist, separated by commas.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type DescribeAIServiceResponseBody struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service status. Valid values:
 	//
-	// - deploying: being deployed.
+	// - deploying: Deploying.
 	//
-	// - active: running.
+	// - active: Running.
 	//
 	// example:
 	//

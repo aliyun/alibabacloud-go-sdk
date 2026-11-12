@@ -42,7 +42,7 @@ type UpsertCollectionDataShrinkRequest struct {
 	//
 	// example:
 	//
-	// gp-bp152460513z****
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace. Default value: public.
 	//

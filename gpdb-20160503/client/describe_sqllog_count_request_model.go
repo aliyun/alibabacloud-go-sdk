@@ -40,7 +40,7 @@ type iDescribeSQLLogCountRequest interface {
 type DescribeSQLLogCountRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type DescribeSQLLogCountRequest struct {
 	//
 	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The end time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
-	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	// > The end time must be later than the start time. The time span between the start time and the end time cannot exceed seven days.
 	//
 	// This parameter is required.
 	//
@@ -64,67 +64,65 @@ type DescribeSQLLogCountRequest struct {
 	//
 	// 2020-12-14T11:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution duration of the SQL statement. Unit: seconds.
+	// The execution duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 100
 	ExecuteCost *string `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution status of the query. Valid values:
+	// The execution state. Valid values:
 	//
-	// 	- 1: successful.
+	// - 1: success
 	//
-	// 	- 0: failed.
+	// - 0: failure
 	//
-	// 	- 0,1 or 1,0: all.
+	// - 0,1 or 1,0: all
 	//
 	// example:
 	//
 	// 1
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	// The maximum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	// The maximum execution duration of slow SQL queries. The value must be greater than or equal to 0. Unit: seconds.
 	//
 	// example:
 	//
 	// 1000
 	MaxExecuteCost *string `json:"MaxExecuteCost,omitempty" xml:"MaxExecuteCost,omitempty"`
-	// The minimum amount of time consumed by a slow query. Unit: seconds. Minimum value: 0.
+	// The minimum execution duration of slow SQL queries. The value must be greater than or equal to 0. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	MinExecuteCost *string `json:"MinExecuteCost,omitempty" xml:"MinExecuteCost,omitempty"`
-	// The type of the query language. Valid values:
+	// The operation class. Valid values:
 	//
-	// 	- **DQL**
+	// - **DQL**
 	//
-	// 	- **DML**
+	// - **DML**
 	//
-	// 	- **DDL**
+	// - **DDL**
 	//
-	// 	- **DCL**
+	// - **DCL**
 	//
-	// 	- **TCL**
+	// - **TCL**
 	//
 	// example:
 	//
 	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	// The type of the SQL statement.
+	// The type of the executed SQL statement.
 	//
-	// >
+	// >- If the **OperationClass*	- parameter is specified, the value of **OperationType*	- must belong to the corresponding language type. For example, if **OperationClass*	- is set to **DQL**, the value of **OperationType*	- must be a DQL-type SQL statement, such as **SELECT**.
 	//
-	// 	- If you specify **OperationClass**, the value of **OperationType*	- must be of the corresponding query language. For example, if you set **OperationClass*	- to **DQL**, the value of **OperationType*	- must be a **DQL*	- statement such as **SELECT**.
+	// >- If the **OperationClass*	- parameter is not specified, the value of **OperationType*	- can be any type of SQL statement.
 	//
-	// 	- If you leave **OperationClass*	- empty, the value of **OperationType*	- can be an SQL statement of any query language.
-	//
-	// 	- If you leave **OperationClass*	- and **OperationType*	- empty, all types of SQL statements are returned.
+	// >- If neither the **OperationClass*	- nor the **OperationType*	- parameter is specified, all types of SQL statements are returned.
 	//
 	// example:
 	//
 	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The keywords that are used to query audit logs.
+	// The query keywords.
 	//
 	// example:
 	//
@@ -136,7 +134,7 @@ type DescribeSQLLogCountRequest struct {
 	//
 	// 10.**.**.13
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -144,7 +142,7 @@ type DescribeSQLLogCountRequest struct {
 	//
 	// 2020-12-12T11:22Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the database account that is used to connect to the database.
+	// The database username.
 	//
 	// example:
 	//

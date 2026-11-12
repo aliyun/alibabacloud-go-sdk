@@ -24,9 +24,9 @@ type iGetSecretValueRequest interface {
 }
 
 type GetSecretValueRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
 	//
 	// example:
 	//
@@ -41,23 +41,23 @@ type GetSecretValueRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	// The Alibaba Cloud Resource Name (ARN) that uniquely specifies the logon credentials and permissions of the Data API account created by the user. Format: ```acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}```
 	//
-	// >  You must specify one of the SecretArn and SecretName parameters.
+	// > Specify either this parameter or the SecretName parameter.
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the access credential.
+	// The name of the user credential.
 	//
-	// >  You must specify one of the SecretArn and SecretName parameters.
+	// > Specify either this parameter or the SecretArn parameter.
 	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be empty at the same time. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//

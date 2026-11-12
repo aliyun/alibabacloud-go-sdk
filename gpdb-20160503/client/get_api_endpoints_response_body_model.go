@@ -22,15 +22,15 @@ type iGetApiEndpointsResponseBody interface {
 }
 
 type GetApiEndpointsResponseBody struct {
-	// The list of parameters.
+	// The list of items.
 	Items []*GetApiEndpointsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of records to return in this query.
+	// The maximum number of records to return for the current query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query during paging. Use this token to start the next query.
+	// The paging token for the next paged query.
 	//
 	// example:
 	//

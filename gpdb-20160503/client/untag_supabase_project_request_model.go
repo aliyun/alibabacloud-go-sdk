@@ -22,7 +22,7 @@ type iUntagSupabaseProjectRequest interface {
 }
 
 type UntagSupabaseProjectRequest struct {
-	// Specifies whether to unbind all tags from the instance. This parameter takes effect only when TagKey.N is not specified in the request. Valid values:
+	// Specifies whether to remove all tags from the instance. This parameter is valid only when TagKey.N is not specified in the request. Valid values:
 	//
 	// - true
 	//
@@ -44,9 +44,9 @@ type UntagSupabaseProjectRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Valid values:
 	//
-	// - `instance`: reserved mode instance.
+	// - `instance`: reserved mode instance
 	//
-	// - `ALIYUN::GPDB::INSTANCE`: elastic mode instance.
+	// - `ALIYUN::GPDB::INSTANCE`: elastic mode instance
 	//
 	// example:
 	//

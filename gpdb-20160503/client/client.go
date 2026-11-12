@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("gpdb")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 dara.String("gpdb.aliyuncs.com"),
@@ -177,17 +185,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds AI nodes to the cluster.
+// Adds an AI node.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Usage notes
 //
-// This operation is used to add an AINode node.
+// This operation adds an AI node.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
+// The default QPS limit for this operation is 1,000 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
+//
+// <props="china">The QPS limit provided in this document is for reference only. For accurate information, see [API rate limits](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
 //
 // @param request - AddAINodeRequest
 //
@@ -239,17 +249,19 @@ func (client *Client) AddAINodeWithOptions(request *AddAINodeRequest, runtime *d
 
 // Summary:
 //
-// Adds AI nodes to the cluster.
+// Adds an AI node.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Usage notes
 //
-// This operation is used to add an AINode node.
+// This operation adds an AI node.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 1,000 times per second per account. Exceeding the limit will trigger API rate limiting, which may impact your business. Please call the API responsibly.
+// The default QPS limit for this operation is 1,000 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
+//
+// <props="china">The QPS limit provided in this document is for reference only. For accurate information, see [API rate limits](https://quotas.console.aliyun.com/flow-control-products/gpdb/quotas).
 //
 // @param request - AddAINodeRequest
 //
@@ -449,7 +461,7 @@ func (client *Client) BindDBResourceGroupWithRole(request *BindDBResourceGroupWi
 
 // Summary:
 //
-// Cancels an index creation job.
+// Cancels an index creation task.
 //
 // @param request - CancelCreateIndexJobRequest
 //
@@ -521,7 +533,7 @@ func (client *Client) CancelCreateIndexJobWithOptions(request *CancelCreateIndex
 
 // Summary:
 //
-// Cancels an index creation job.
+// Cancels an index creation task.
 //
 // @param request - CancelCreateIndexJobRequest
 //
@@ -539,13 +551,13 @@ func (client *Client) CancelCreateIndexJob(request *CancelCreateIndexJobRequest)
 
 // Summary:
 //
-// Cancels an asynchronous document upload job based on the job ID.
+// Cancels an asynchronous document upload task by job ID.
 //
 // Description:
 //
-// This operation is related to the UploadDocumentAsync operation. You can call this operation to cancel a document upload job.
+// This operation is related to UploadDocumentAsync and is used to cancel an upload task.
 //
-// >  If the canceling operation is complete, failed, or is canceled, you cannot call the operation again. The canceling operation only interrupts the document upload job. To remove the uploaded data, you must manually remove it or call the DeleteCollectionData operation. You can also call the document upload operation to overwrite the data by using the same FileName parameter.
+// > You cannot call this operation again if the task has already succeeded, failed, or been canceled. Calling this operation only interrupts the upload task. For the data that has already been written, you must manually delete it, call the DeleteCollectionData operation to delete it, or upload a file with the same FileName to overwrite it.
 //
 // @param request - CancelUploadDocumentJobRequest
 //
@@ -615,13 +627,13 @@ func (client *Client) CancelUploadDocumentJobWithOptions(request *CancelUploadDo
 
 // Summary:
 //
-// Cancels an asynchronous document upload job based on the job ID.
+// Cancels an asynchronous document upload task by job ID.
 //
 // Description:
 //
-// This operation is related to the UploadDocumentAsync operation. You can call this operation to cancel a document upload job.
+// This operation is related to UploadDocumentAsync and is used to cancel an upload task.
 //
-// >  If the canceling operation is complete, failed, or is canceled, you cannot call the operation again. The canceling operation only interrupts the document upload job. To remove the uploaded data, you must manually remove it or call the DeleteCollectionData operation. You can also call the document upload operation to overwrite the data by using the same FileName parameter.
+// > You cannot call this operation again if the task has already succeeded, failed, or been canceled. Calling this operation only interrupts the upload task. For the data that has already been written, you must manually delete it, call the DeleteCollectionData operation to delete it, or upload a file with the same FileName to overwrite it.
 //
 // @param request - CancelUploadDocumentJobRequest
 //
@@ -639,13 +651,13 @@ func (client *Client) CancelUploadDocumentJob(request *CancelUploadDocumentJobRe
 
 // Summary:
 //
-// Cancels an asynchronous vector data upload job by using a job ID.
+// Cancels an asynchronous vector data upload task by job ID.
 //
 // Description:
 //
-// This operation is related to the `UpsertCollectionDataAsync` operation. You can call this operation to cancel an upload job.
+// This operation is related to `UpsertCollectionDataAsync`. It is used to cancel an upload task.
 //
-// >  If the canceling operation is complete, failed, or is canceled, you cannot call the operation again. The canceling operation only interrupts the upload job. To remove the uploaded data, you must manually remove it or call the DeleteCollectionData operation.
+// > You cannot call this operation to cancel a task that has already succeeded, failed, or been canceled. Calling this operation only interrupts the upload task. You must manually delete the data that has already been written or call the DeleteCollectionData operation to delete it.
 //
 // @param request - CancelUpsertCollectionDataJobRequest
 //
@@ -719,13 +731,13 @@ func (client *Client) CancelUpsertCollectionDataJobWithOptions(request *CancelUp
 
 // Summary:
 //
-// Cancels an asynchronous vector data upload job by using a job ID.
+// Cancels an asynchronous vector data upload task by job ID.
 //
 // Description:
 //
-// This operation is related to the `UpsertCollectionDataAsync` operation. You can call this operation to cancel an upload job.
+// This operation is related to `UpsertCollectionDataAsync`. It is used to cancel an upload task.
 //
-// >  If the canceling operation is complete, failed, or is canceled, you cannot call the operation again. The canceling operation only interrupts the upload job. To remove the uploaded data, you must manually remove it or call the DeleteCollectionData operation.
+// > You cannot call this operation to cancel a task that has already succeeded, failed, or been canceled. Calling this operation only interrupts the upload task. You must manually delete the data that has already been written or call the DeleteCollectionData operation to delete it.
 //
 // @param request - CancelUpsertCollectionDataJobRequest
 //
@@ -743,19 +755,19 @@ func (client *Client) CancelUpsertCollectionDataJob(request *CancelUpsertCollect
 
 // Summary:
 //
-// Provides intelligent Q&A services by combining knowledge bases with large models.
+// Provides an AI chat service by combining knowledge bases and large language models.
 //
 // Description:
 //
-// This API allows users to interact with a large model through specified knowledge base collections to obtain answers based on knowledge base content. It supports configuring various parameters to customize requests, including but not limited to database instance ID, knowledge retrieval parameters, model inference parameters, etc. Additionally, it provides a default system prompt template and allows users to customize system prompts.
+// This API allows you to interact with large language models through specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize the request, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided, and you can customize the system prompt.
 //
-// - **DBInstanceId**: Required. Specifies the database instance ID.
+// - **DBInstanceId**: Required. The ID of the database instance.
 //
-// - **KnowledgeParams**: Optional. Contains parameters related to knowledge retrieval, such as retrieval content, merge strategies, etc.
+// - **KnowledgeParams**: Optional. The knowledge retrieval parameters, such as the retrieval content and merge strategy.
 //
-// - **ModelParams**: Required. Contains parameters related to model inference, such as message list, model name, etc.
+// - **ModelParams**: Required. The model inference parameters, such as the message list and the model name.
 //
-// - **PromptTemplate**: Optional. Used to customize the system prompt template.
+// - **PromptTemplate**: Optional. The custom system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseRequest
 //
@@ -833,19 +845,19 @@ func (client *Client) ChatWithKnowledgeBaseWithOptions(tmpReq *ChatWithKnowledge
 
 // Summary:
 //
-// Provides intelligent Q&A services by combining knowledge bases with large models.
+// Provides an AI chat service by combining knowledge bases and large language models.
 //
 // Description:
 //
-// This API allows users to interact with a large model through specified knowledge base collections to obtain answers based on knowledge base content. It supports configuring various parameters to customize requests, including but not limited to database instance ID, knowledge retrieval parameters, model inference parameters, etc. Additionally, it provides a default system prompt template and allows users to customize system prompts.
+// This API allows you to interact with large language models through specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize the request, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. In addition, a default system prompt template is provided, and you can customize the system prompt.
 //
-// - **DBInstanceId**: Required. Specifies the database instance ID.
+// - **DBInstanceId**: Required. The ID of the database instance.
 //
-// - **KnowledgeParams**: Optional. Contains parameters related to knowledge retrieval, such as retrieval content, merge strategies, etc.
+// - **KnowledgeParams**: Optional. The knowledge retrieval parameters, such as the retrieval content and merge strategy.
 //
-// - **ModelParams**: Required. Contains parameters related to model inference, such as message list, model name, etc.
+// - **ModelParams**: Required. The model inference parameters, such as the message list and the model name.
 //
-// - **PromptTemplate**: Optional. Used to customize the system prompt template.
+// - **PromptTemplate**: Optional. The custom system prompt template.
 //
 // @param request - ChatWithKnowledgeBaseRequest
 //
@@ -863,19 +875,19 @@ func (client *Client) ChatWithKnowledgeBase(request *ChatWithKnowledgeBaseReques
 
 // Summary:
 //
-// Provides AI chat services by combining knowledge bases with large language models. This is a streaming API called through SSE or the Java asynchronous SDK.
+// Provides AI chat services by combining knowledge bases and large language models. This streaming API can be invoked by using Server-Sent Events (SSE) or the Java asynchronous SDK.
 //
 // Description:
 //
-// This API allows you to interact with a large language model by using specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. A default system prompt template is provided, and you can also customize the system prompt.
+// This API allows users to interact with large language models through specified knowledge base collections to obtain answers based on knowledge base content. It supports configuring various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. In addition, it provides a default system prompt template and allows users to customize system prompts.
 //
 // - DBInstanceId: Required. Specifies the database instance ID.
 //
-// - KnowledgeParams: Optional. Contains knowledge retrieval parameters such as retrieval content and merge strategy.
+// - KnowledgeParams: Optional. Contains knowledge retrieval parameters, such as retrieval content and merge strategies.
 //
-// - ModelParams: Required. Contains model inference parameters such as the message list and model name.
+// - ModelParams: Required. Contains model inference parameters, such as the message list and the model name.
 //
-// - PromptTemplate: Optional. Specifies a custom system prompt template.
+// - PromptTemplate: Optional. Used to customize the system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -890,19 +902,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithSSE(tmpReq *ChatWithKnowled
 
 // Summary:
 //
-// Provides AI chat services by combining knowledge bases with large language models. This is a streaming API called through SSE or the Java asynchronous SDK.
+// Provides AI chat services by combining knowledge bases and large language models. This streaming API can be invoked by using Server-Sent Events (SSE) or the Java asynchronous SDK.
 //
 // Description:
 //
-// This API allows you to interact with a large language model by using specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. A default system prompt template is provided, and you can also customize the system prompt.
+// This API allows users to interact with large language models through specified knowledge base collections to obtain answers based on knowledge base content. It supports configuring various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. In addition, it provides a default system prompt template and allows users to customize system prompts.
 //
 // - DBInstanceId: Required. Specifies the database instance ID.
 //
-// - KnowledgeParams: Optional. Contains knowledge retrieval parameters such as retrieval content and merge strategy.
+// - KnowledgeParams: Optional. Contains knowledge retrieval parameters, such as retrieval content and merge strategies.
 //
-// - ModelParams: Required. Contains model inference parameters such as the message list and model name.
+// - ModelParams: Required. Contains model inference parameters, such as the message list and the model name.
 //
-// - PromptTemplate: Optional. Specifies a custom system prompt template.
+// - PromptTemplate: Optional. Used to customize the system prompt template.
 //
 // @param tmpReq - ChatWithKnowledgeBaseStreamRequest
 //
@@ -980,19 +992,19 @@ func (client *Client) ChatWithKnowledgeBaseStreamWithOptions(tmpReq *ChatWithKno
 
 // Summary:
 //
-// Provides AI chat services by combining knowledge bases with large language models. This is a streaming API called through SSE or the Java asynchronous SDK.
+// Provides AI chat services by combining knowledge bases and large language models. This streaming API can be invoked by using Server-Sent Events (SSE) or the Java asynchronous SDK.
 //
 // Description:
 //
-// This API allows you to interact with a large language model by using specified knowledge base collections to obtain answers based on knowledge base content. You can configure various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. A default system prompt template is provided, and you can also customize the system prompt.
+// This API allows users to interact with large language models through specified knowledge base collections to obtain answers based on knowledge base content. It supports configuring various parameters to customize requests, including but not limited to the database instance ID, knowledge retrieval parameters, and model inference parameters. In addition, it provides a default system prompt template and allows users to customize system prompts.
 //
 // - DBInstanceId: Required. Specifies the database instance ID.
 //
-// - KnowledgeParams: Optional. Contains knowledge retrieval parameters such as retrieval content and merge strategy.
+// - KnowledgeParams: Optional. Contains knowledge retrieval parameters, such as retrieval content and merge strategies.
 //
-// - ModelParams: Required. Contains model inference parameters such as the message list and model name.
+// - ModelParams: Required. Contains model inference parameters, such as the message list and the model name.
 //
-// - PromptTemplate: Optional. Specifies a custom system prompt template.
+// - PromptTemplate: Optional. Used to customize the system prompt template.
 //
 // @param request - ChatWithKnowledgeBaseStreamRequest
 //
@@ -1010,7 +1022,7 @@ func (client *Client) ChatWithKnowledgeBaseStream(request *ChatWithKnowledgeBase
 
 // Summary:
 //
-// Checks the configurations of a Hadoop data source.
+// Checks the Hadoop datasource config.
 //
 // @param request - CheckHadoopDataSourceRequest
 //
@@ -1066,7 +1078,7 @@ func (client *Client) CheckHadoopDataSourceWithOptions(request *CheckHadoopDataS
 
 // Summary:
 //
-// Checks the configurations of a Hadoop data source.
+// Checks the Hadoop datasource config.
 //
 // @param request - CheckHadoopDataSourceRequest
 //
@@ -1084,7 +1096,7 @@ func (client *Client) CheckHadoopDataSource(request *CheckHadoopDataSourceReques
 
 // Summary:
 //
-// Checks the network connectivity of a Hadoop external data source.
+// Checks the network connectivity of an external Hadoop data source.
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -1140,7 +1152,7 @@ func (client *Client) CheckHadoopNetConnectionWithOptions(request *CheckHadoopNe
 
 // Summary:
 //
-// Checks the network connectivity of a Hadoop external data source.
+// Checks the network connectivity of an external Hadoop data source.
 //
 // @param request - CheckHadoopNetConnectionRequest
 //
@@ -1158,7 +1170,7 @@ func (client *Client) CheckHadoopNetConnection(request *CheckHadoopNetConnection
 
 // Summary:
 //
-// # Check the network connectivity of the JDBC connection string
+// Checks the network connectivity of a JDBC connection string.
 //
 // @param request - CheckJDBCSourceNetConnectionRequest
 //
@@ -1214,7 +1226,7 @@ func (client *Client) CheckJDBCSourceNetConnectionWithOptions(request *CheckJDBC
 
 // Summary:
 //
-// # Check the network connectivity of the JDBC connection string
+// Checks the network connectivity of a JDBC connection string.
 //
 // @param request - CheckJDBCSourceNetConnectionRequest
 //
@@ -1232,11 +1244,11 @@ func (client *Client) CheckJDBCSourceNetConnection(request *CheckJDBCSourceNetCo
 
 // Summary:
 //
-// Checks the available update versions for a SaaS service.
+// Checks for updatable versions of a SaaS service.
 //
 // Description:
 //
-// Checks the available update versions for a SaaS service.
+// Checks for updatable versions of a SaaS service.
 //
 // @param request - CheckSaasServiceVersionRequest
 //
@@ -1284,11 +1296,11 @@ func (client *Client) CheckSaasServiceVersionWithOptions(request *CheckSaasServi
 
 // Summary:
 //
-// Checks the available update versions for a SaaS service.
+// Checks for updatable versions of a SaaS service.
 //
 // Description:
 //
-// Checks the available update versions for a SaaS service.
+// Checks for updatable versions of a SaaS service.
 //
 // @param request - CheckSaasServiceVersionRequest
 //
@@ -1894,7 +1906,7 @@ func (client *Client) CreateBranch(request *CreateBranchRequest) (_result *Creat
 
 // Summary:
 //
-// Create a vector dataset.
+// Creates a vector dataset.
 //
 // @param tmpReq - CreateCollectionRequest
 //
@@ -2032,7 +2044,7 @@ func (client *Client) CreateCollectionWithOptions(tmpReq *CreateCollectionReques
 
 // Summary:
 //
-// Create a vector dataset.
+// Creates a vector dataset.
 //
 // @param request - CreateCollectionRequest
 //
@@ -2300,7 +2312,7 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Adds an IP whitelist group.
+// Creates an IP address whitelist group for an instance.
 //
 // @param tmpReq - CreateDBInstanceIPArrayRequest
 //
@@ -2362,7 +2374,7 @@ func (client *Client) CreateDBInstanceIPArrayWithOptions(tmpReq *CreateDBInstanc
 
 // Summary:
 //
-// Adds an IP whitelist group.
+// Creates an IP address whitelist group for an instance.
 //
 // @param request - CreateDBInstanceIPArrayRequest
 //
@@ -2990,7 +3002,7 @@ func (client *Client) CreateExternalDataService(request *CreateExternalDataServi
 
 // Summary:
 //
-// # Create Hadoop data source configuration
+// Creates a Hadoop datasource config.
 //
 // @param request - CreateHadoopDataSourceRequest
 //
@@ -3082,7 +3094,7 @@ func (client *Client) CreateHadoopDataSourceWithOptions(request *CreateHadoopDat
 
 // Summary:
 //
-// # Create Hadoop data source configuration
+// Creates a Hadoop datasource config.
 //
 // @param request - CreateHadoopDataSourceRequest
 //
@@ -3304,7 +3316,7 @@ func (client *Client) CreateJDBCDataSource(request *CreateJDBCDataSourceRequest)
 
 // Summary:
 //
-// Creates a model creation operator API key.
+// # Create a model operator API key
 //
 // @param request - CreateModelOperatorApiKeyRequest
 //
@@ -3348,7 +3360,7 @@ func (client *Client) CreateModelOperatorApiKeyWithOptions(request *CreateModelO
 
 // Summary:
 //
-// Creates a model creation operator API key.
+// # Create a model operator API key
 //
 // @param request - CreateModelOperatorApiKeyRequest
 //
@@ -3488,7 +3500,7 @@ func (client *Client) CreateModelService(request *CreateModelServiceRequest) (_r
 
 // Summary:
 //
-// Creates a vector namespace.
+// Creates a namespace for vector data.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -3560,7 +3572,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 // Summary:
 //
-// Creates a vector namespace.
+// Creates a namespace for vector data.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -3856,7 +3868,7 @@ func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_resul
 
 // Summary:
 //
-// Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
+// Creates a credential for accessing an instance by using a username and password.
 //
 // @param request - CreateSecretRequest
 //
@@ -3932,7 +3944,7 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, runt
 
 // Summary:
 //
-// Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
+// Creates a credential for accessing an instance by using a username and password.
 //
 // @param request - CreateSecretRequest
 //
@@ -4266,7 +4278,7 @@ func (client *Client) CreateStreamingDataSource(request *CreateStreamingDataSour
 
 // Summary:
 //
-// # Create External Data Source Configuration
+// Creates a real-time data synchronization task.
 //
 // @param tmpReq - CreateStreamingJobRequest
 //
@@ -4412,7 +4424,7 @@ func (client *Client) CreateStreamingJobWithOptions(tmpReq *CreateStreamingJobRe
 
 // Summary:
 //
-// # Create External Data Source Configuration
+// Creates a real-time data synchronization task.
 //
 // @param request - CreateStreamingJobRequest
 //
@@ -4434,7 +4446,7 @@ func (client *Client) CreateStreamingJob(request *CreateStreamingJobRequest) (_r
 //
 // Description:
 //
-// The instance must be in the Running state. After a successful call, you can call ListSupabaseBackupJobs to query the progress of the backup job and call ListSupabaseDataBackups to query backup sets.
+// The instance must be in the running state. After a successful call, you can call ListSupabaseBackupJobs to query the progress of the backup job and call ListSupabaseDataBackups to query backup sets.
 //
 // @param request - CreateSupabaseBackupRequest
 //
@@ -4486,7 +4498,7 @@ func (client *Client) CreateSupabaseBackupWithOptions(request *CreateSupabaseBac
 //
 // Description:
 //
-// The instance must be in the Running state. After a successful call, you can call ListSupabaseBackupJobs to query the progress of the backup job and call ListSupabaseDataBackups to query backup sets.
+// The instance must be in the running state. After a successful call, you can call ListSupabaseBackupJobs to query the progress of the backup job and call ListSupabaseDataBackups to query backup sets.
 //
 // @param request - CreateSupabaseBackupRequest
 //
@@ -5464,7 +5476,7 @@ func (client *Client) DeleteCollection(request *DeleteCollectionRequest) (_resul
 
 // Summary:
 //
-// Deletes vector data.
+// Deletes a vector dataset.
 //
 // @param request - DeleteCollectionDataRequest
 //
@@ -5540,7 +5552,7 @@ func (client *Client) DeleteCollectionDataWithOptions(request *DeleteCollectionD
 
 // Summary:
 //
-// Deletes vector data.
+// Deletes a vector dataset.
 //
 // @param request - DeleteCollectionDataRequest
 //
@@ -5940,7 +5952,7 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 
 // Summary:
 //
-// # Delete Document
+// Deletes a document from a document collection.
 //
 // @param request - DeleteDocumentRequest
 //
@@ -6008,7 +6020,7 @@ func (client *Client) DeleteDocumentWithOptions(request *DeleteDocumentRequest, 
 
 // Summary:
 //
-// # Delete Document
+// Deletes a document from a document collection.
 //
 // @param request - DeleteDocumentRequest
 //
@@ -7078,7 +7090,7 @@ func (client *Client) DeleteStreamingDataService(request *DeleteStreamingDataSer
 
 // Summary:
 //
-// Delete a real-time data source.
+// Deletes a real-time data source.
 //
 // @param request - DeleteStreamingDataSourceRequest
 //
@@ -7130,7 +7142,7 @@ func (client *Client) DeleteStreamingDataSourceWithOptions(request *DeleteStream
 
 // Summary:
 //
-// Delete a real-time data source.
+// Deletes a real-time data source.
 //
 // @param request - DeleteStreamingDataSourceRequest
 //
@@ -7458,12 +7470,6 @@ func (client *Client) DeleteWorkspace(request *DeleteWorkspaceRequest) (_result 
 //
 // Deploy a private RAG service.
 //
-// Description:
-//
-// 1. 部署私有RAG服务前，请先创建初始账号。
-//
-// 2. 私有RAG服务支持向量接口，调用时请配置CA证书。
-//
 // @param request - DeployPrivateRAGServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7515,12 +7521,6 @@ func (client *Client) DeployPrivateRAGServiceWithOptions(request *DeployPrivateR
 // Summary:
 //
 // Deploy a private RAG service.
-//
-// Description:
-//
-// 1. 部署私有RAG服务前，请先创建初始账号。
-//
-// 2. 私有RAG服务支持向量接口，调用时请配置CA证书。
 //
 // @param request - DeployPrivateRAGServiceRequest
 //
@@ -7788,11 +7788,11 @@ func (client *Client) DescribeActiveSQLRecords(request *DescribeActiveSQLRecords
 
 // Summary:
 //
-// Gets the purchasable resources for AnalyticDB for PostgreSQL.
+// Queries the available resources for AnalyticDB for PostgreSQL.
 //
 // Description:
 //
-// Before creating an AnalyticDB for PostgreSQL instance, you can use this operation to query the available instance offerings in a specified availability zone.
+// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources in the destination zone.
 //
 // @param request - DescribeAvailableResourcesRequest
 //
@@ -7844,11 +7844,11 @@ func (client *Client) DescribeAvailableResourcesWithOptions(request *DescribeAva
 
 // Summary:
 //
-// Gets the purchasable resources for AnalyticDB for PostgreSQL.
+// Queries the available resources for AnalyticDB for PostgreSQL.
 //
 // Description:
 //
-// Before creating an AnalyticDB for PostgreSQL instance, you can use this operation to query the available instance offerings in a specified availability zone.
+// When you create an AnalyticDB for PostgreSQL instance, you can call this operation to query the available resources in the destination zone.
 //
 // @param request - DescribeAvailableResourcesRequest
 //
@@ -8084,7 +8084,7 @@ func (client *Client) DescribeBranch(request *DescribeBranchRequest) (_result *D
 
 // Summary:
 //
-// Queries the information about a vector collection.
+// Queries vector dataset information.
 //
 // @param request - DescribeCollectionRequest
 //
@@ -8152,7 +8152,7 @@ func (client *Client) DescribeCollectionWithOptions(request *DescribeCollectionR
 
 // Summary:
 //
-// Queries the information about a vector collection.
+// Queries vector dataset information.
 //
 // @param request - DescribeCollectionRequest
 //
@@ -8170,7 +8170,7 @@ func (client *Client) DescribeCollection(request *DescribeCollectionRequest) (_r
 
 // Summary:
 //
-// Queries the information about an index creation job.
+// Retrieves an index creation task.
 //
 // @param request - DescribeCreateIndexJobRequest
 //
@@ -8242,7 +8242,7 @@ func (client *Client) DescribeCreateIndexJobWithOptions(request *DescribeCreateI
 
 // Summary:
 //
-// Queries the information about an index creation job.
+// Retrieves an index creation task.
 //
 // @param request - DescribeCreateIndexJobRequest
 //
@@ -8346,11 +8346,11 @@ func (client *Client) DescribeDBClusterNode(request *DescribeDBClusterNodeReques
 
 // Summary:
 //
-// View the Performance Monitoring of an AnalyticDB for PostgreSQL instance over a specified time period.
+// Queries the performance monitoring data of an AnalyticDB for PostgreSQL instance within a specified time period.
 //
 // Description:
 //
-// Monitoring information can only be queried for the last 30 days.
+// You can query monitoring information only for the last 30 days.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -8418,11 +8418,11 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 
 // Summary:
 //
-// View the Performance Monitoring of an AnalyticDB for PostgreSQL instance over a specified time period.
+// Queries the performance monitoring data of an AnalyticDB for PostgreSQL instance within a specified time period.
 //
 // Description:
 //
-// Monitoring information can only be queried for the last 30 days.
+// You can query monitoring information only for the last 30 days.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -8534,15 +8534,11 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+// Retrieves the data bloat status of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation queries the data bloat status of an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor engine version of the instance must be V6.3.10.1 or later. For more information about how to view and upgrade the minor engine version, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Upgrade the engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDBInstanceDataBloatRequest
 //
@@ -8602,15 +8598,11 @@ func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDB
 
 // Summary:
 //
-// Queries the information about data bloat for an AnalyticDB for PostgreSQL instance.
+// Retrieves the data bloat status of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// You can call this operation to query the details of data bloat on an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor version of the instance must be V6.3.10.1 or later. For more information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// This operation queries the data bloat status of an AnalyticDB for PostgreSQL instance in elastic storage mode. The minor engine version of the instance must be V6.3.10.1 or later. For more information about how to view and upgrade the minor engine version, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Upgrade the engine version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDBInstanceDataBloatRequest
 //
@@ -8812,15 +8804,7 @@ func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInst
 
 // Summary:
 //
-// Queries the error logs of an AnalyticDB for PostgreSQL instance.
-//
-// Description:
-//
-// You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Retrieves the error logs of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeDBInstanceErrorLogRequest
 //
@@ -8900,15 +8884,7 @@ func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBI
 
 // Summary:
 //
-// Queries the error logs of an AnalyticDB for PostgreSQL instance.
-//
-// Description:
-//
-// You can call this operation to query the error logs of an AnalyticDB for PostgreSQL instance.
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// Retrieves the error logs of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DescribeDBInstanceErrorLogRequest
 //
@@ -9012,13 +8988,13 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 
 // Summary:
 //
-// Queries the index usage of an AnalyticDB for PostgreSQL instance.
+// Retrieves the index usage statistics of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+// Proper use of indexes can improve database query speeds. This operation queries the index usage of an AnalyticDB for PostgreSQL instance.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+// Currently, this feature is supported only for instances in elastic storage mode with a minor engine version of V6.3.10.1 or later. For more information about how to view and upgrade the minor engine version, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Upgrade the Milvus version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDBInstanceIndexUsageRequest
 //
@@ -9078,13 +9054,13 @@ func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the index usage of an AnalyticDB for PostgreSQL instance.
+// Retrieves the index usage statistics of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// Appropriate indexes can accelerate database queries. You can call this operation to query the index usage of an AnalyticDB for PostgreSQL instance.
+// Proper use of indexes can improve database query speeds. This operation queries the index usage of an AnalyticDB for PostgreSQL instance.
 //
-// This operation is available only for instances of V6.3.10.1 or later in elastic storage mode. For information about how to view and update the minor version of an instance, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Update the minor engine version](https://help.aliyun.com/document_detail/139271.html).
+// Currently, this feature is supported only for instances in elastic storage mode with a minor engine version of V6.3.10.1 or later. For more information about how to view and upgrade the minor engine version, see [View the minor engine version](https://help.aliyun.com/document_detail/277424.html) and [Upgrade the Milvus version](https://help.aliyun.com/document_detail/139271.html).
 //
 // @param request - DescribeDBInstanceIndexUsageRequest
 //
@@ -9838,7 +9814,7 @@ func (client *Client) DescribeDBVersion(request *DescribeDBVersionRequest) (_res
 
 // Summary:
 //
-// Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+// Queries the kernel version information.
 //
 // @param request - DescribeDBVersionInfosRequest
 //
@@ -9898,7 +9874,7 @@ func (client *Client) DescribeDBVersionInfosWithOptions(request *DescribeDBVersi
 
 // Summary:
 //
-// Queries the information about minor versions of AnalyticDB for PostgreSQL instances.
+// Queries the kernel version information.
 //
 // @param request - DescribeDBVersionInfosRequest
 //
@@ -10084,11 +10060,11 @@ func (client *Client) DescribeDataReDistributeInfo(request *DescribeDataReDistri
 
 // Summary:
 //
-// Queries the status of data sharing for AnalyticDB for PostgreSQL instances.
+// Queries the status of data sharing.
 //
 // Description:
 //
-// Data sharing is supported only for instances in Serverless mode.
+// Currently, only serverless instances support the data sharing feature.
 //
 // @param request - DescribeDataShareInstancesRequest
 //
@@ -10152,11 +10128,11 @@ func (client *Client) DescribeDataShareInstancesWithOptions(request *DescribeDat
 
 // Summary:
 //
-// Queries the status of data sharing for AnalyticDB for PostgreSQL instances.
+// Queries the status of data sharing.
 //
 // Description:
 //
-// Data sharing is supported only for instances in Serverless mode.
+// Currently, only serverless instances support the data sharing feature.
 //
 // @param request - DescribeDataShareInstancesRequest
 //
@@ -10174,11 +10150,11 @@ func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInsta
 
 // Summary:
 //
-// Queries the performance metrics of data sharing.
+// Retrieves the performance metrics for data sharing.
 //
 // Description:
 //
-// Only serverless instances support the data sharing feature.
+// Currently, only serverless instances support the data sharing feature.
 //
 // @param request - DescribeDataSharePerformanceRequest
 //
@@ -10238,11 +10214,11 @@ func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeD
 
 // Summary:
 //
-// Queries the performance metrics of data sharing.
+// Retrieves the performance metrics for data sharing.
 //
 // Description:
 //
-// Only serverless instances support the data sharing feature.
+// Currently, only serverless instances support the data sharing feature.
 //
 // @param request - DescribeDataSharePerformanceRequest
 //
@@ -10698,7 +10674,7 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 
 // Summary:
 //
-// Queries the information about a document.
+// Retrieves the details of a document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -10766,7 +10742,7 @@ func (client *Client) DescribeDocumentWithOptions(request *DescribeDocumentReque
 
 // Summary:
 //
-// Queries the information about a document.
+// Retrieves the details of a document.
 //
 // @param request - DescribeDocumentRequest
 //
@@ -10862,7 +10838,7 @@ func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRe
 
 // Summary:
 //
-// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+// Retrieves the latest five download records of slow query information for AnalyticDB for PostgreSQL.
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -10906,7 +10882,7 @@ func (client *Client) DescribeDownloadSQLLogsWithOptions(request *DescribeDownlo
 
 // Summary:
 //
-// Queries the last five download records of slow query logs for an AnalyticDB for PostgreSQL instance.
+// Retrieves the latest five download records of slow query information for AnalyticDB for PostgreSQL.
 //
 // @param request - DescribeDownloadSQLLogsRequest
 //
@@ -10994,7 +10970,7 @@ func (client *Client) DescribeExtension(request *DescribeExtensionRequest) (_res
 
 // Summary:
 //
-// Queries the information about an external data service.
+// Retrieves the details of an external data service.
 //
 // @param request - DescribeExternalDataServiceRequest
 //
@@ -11046,7 +11022,7 @@ func (client *Client) DescribeExternalDataServiceWithOptions(request *DescribeEx
 
 // Summary:
 //
-// Queries the information about an external data service.
+// Retrieves the details of an external data service.
 //
 // @param request - DescribeExternalDataServiceRequest
 //
@@ -11978,7 +11954,7 @@ func (client *Client) DescribeModifyParameterLog(request *DescribeModifyParamete
 
 // Summary:
 //
-// Queries the information about a namespace.
+// Queries namespace information.
 //
 // @param request - DescribeNamespaceRequest
 //
@@ -12046,7 +12022,7 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 
 // Summary:
 //
-// Queries the information about a namespace.
+// Queries namespace information.
 //
 // @param request - DescribeNamespaceRequest
 //
@@ -12064,15 +12040,11 @@ func (client *Client) DescribeNamespace(request *DescribeNamespaceRequest) (_res
 
 // Summary:
 //
-// Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+// Retrieves the configuration parameter information of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+// This operation retrieves the configuration parameters and related information only for AnalyticDB for PostgreSQL instances in elastic storage mode and Serverless Edition.
 //
 // @param request - DescribeParametersRequest
 //
@@ -12116,15 +12088,11 @@ func (client *Client) DescribeParametersWithOptions(request *DescribeParametersR
 
 // Summary:
 //
-// Queries the information about configuration parameters for an AnalyticDB for PostgreSQL instance.
+// Retrieves the configuration parameter information of an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// This operation can be called to query the details of parameters in an AnalyticDB for PostgreSQL instance in elastic storage mode or Serverless mode.
-//
-// ## Limits
-//
-// You can call this operation up to 1,000 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered and may affect your business. We recommend that you take note of the limit when you call this operation.
+// This operation retrieves the configuration parameters and related information only for AnalyticDB for PostgreSQL instances in elastic storage mode and Serverless Edition.
 //
 // @param request - DescribeParametersRequest
 //
@@ -12618,11 +12586,11 @@ func (client *Client) DescribeRoles(request *DescribeRolesRequest) (_result *Des
 
 // Summary:
 //
-// Obtain the quantity of audit logs for an AnalyticDB for PostgreSQL instance.
+// Retrieves the number of audit logs for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// This API does not support instances of the storage-reserved type.
+// This operation does not support instances in reserved storage mode.
 //
 // @param request - DescribeSQLLogCountRequest
 //
@@ -12714,11 +12682,11 @@ func (client *Client) DescribeSQLLogCountWithOptions(request *DescribeSQLLogCoun
 
 // Summary:
 //
-// Obtain the quantity of audit logs for an AnalyticDB for PostgreSQL instance.
+// Retrieves the number of audit logs for an AnalyticDB for PostgreSQL instance.
 //
 // Description:
 //
-// This API does not support instances of the storage-reserved type.
+// This operation does not support instances in reserved storage mode.
 //
 // @param request - DescribeSQLLogCountRequest
 //
@@ -12736,11 +12704,11 @@ func (client *Client) DescribeSQLLogCount(request *DescribeSQLLogCountRequest) (
 
 // Summary:
 //
-// Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+// Queries SQL execution records.
 //
 // Description:
 //
-// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
+// > This operation is deprecated. To query SQL execution records, refer to [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html).
 //
 // @param request - DescribeSQLLogsRequest
 //
@@ -12840,11 +12808,11 @@ func (client *Client) DescribeSQLLogsWithOptions(request *DescribeSQLLogsRequest
 
 // Summary:
 //
-// Queries the SQL execution logs of an AnalyticDB for PostgreSQL instance.
+// Queries SQL execution records.
 //
 // Description:
 //
-// > This operation is no longer used. To query SQL execution logs, call the [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html) operation.
+// > This operation is deprecated. To query SQL execution records, refer to [DescribeSQLLogsV2](https://help.aliyun.com/document_detail/453722.html).
 //
 // @param request - DescribeSQLLogsRequest
 //
@@ -13218,7 +13186,7 @@ func (client *Client) DescribeStreamingDataSource(request *DescribeStreamingData
 
 // Summary:
 //
-// Queries a real-time data synchronization job.
+// Queries real-time data synchronization tasks.
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -13270,7 +13238,7 @@ func (client *Client) DescribeStreamingJobWithOptions(request *DescribeStreaming
 
 // Summary:
 //
-// Queries a real-time data synchronization job.
+// Queries real-time data synchronization tasks.
 //
 // @param request - DescribeStreamingJobRequest
 //
@@ -13428,7 +13396,7 @@ func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRe
 
 // Summary:
 //
-// Queries the details of a table.
+// Retrieves the details of a table.
 //
 // @param request - DescribeTableRequest
 //
@@ -13500,7 +13468,7 @@ func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, ru
 
 // Summary:
 //
-// Queries the details of a table.
+// Retrieves the details of a table.
 //
 // @param request - DescribeTableRequest
 //
@@ -14352,7 +14320,7 @@ func (client *Client) DownloadSlowSQLRecords(request *DownloadSlowSQLRecordsRequ
 
 // Summary:
 //
-// Enables knowledge graph construction for the knowledge base.
+// Enables knowledge graph construction for a knowledge base.
 //
 // @param tmpReq - EnableCollectionGraphRAGRequest
 //
@@ -14450,7 +14418,7 @@ func (client *Client) EnableCollectionGraphRAGWithOptions(tmpReq *EnableCollecti
 
 // Summary:
 //
-// Enables knowledge graph construction for the knowledge base.
+// Enables knowledge graph construction for a knowledge base.
 //
 // @param request - EnableCollectionGraphRAGRequest
 //
@@ -15058,6 +15026,92 @@ func (client *Client) GetGraphRAGJob(request *GetGraphRAGJobRequest) (_result *G
 
 // Summary:
 //
+// 查询SaaS DataUnit用量
+//
+// Description:
+//
+// 按场景、项目及UTC小时或天汇总SaaS DataUnit用量。单次最多7天，起点限最近30天；统计依据查询时规则，不是历史实际扣费账单。
+//
+// @param request - GetSaasDataUnitUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSaasDataUnitUsageResponse
+func (client *Client) GetSaasDataUnitUsageWithOptions(request *GetSaasDataUnitUsageRequest, runtime *dara.RuntimeOptions) (_result *GetSaasDataUnitUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.TimeUnit) {
+		query["TimeUnit"] = request.TimeUnit
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSaasDataUnitUsage"),
+		Version:     dara.String("2016-05-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSaasDataUnitUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SaaS DataUnit用量
+//
+// Description:
+//
+// 按场景、项目及UTC小时或天汇总SaaS DataUnit用量。单次最多7天，起点限最近30天；统计依据查询时规则，不是历史实际扣费账单。
+//
+// @param request - GetSaasDataUnitUsageRequest
+//
+// @return GetSaasDataUnitUsageResponse
+func (client *Client) GetSaasDataUnitUsage(request *GetSaasDataUnitUsageRequest) (_result *GetSaasDataUnitUsageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSaasDataUnitUsageResponse{}
+	_body, _err := client.GetSaasDataUnitUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves SaaS service information.
 //
 // Description:
@@ -15132,7 +15186,7 @@ func (client *Client) GetSaasService(request *GetSaasServiceRequest) (_result *G
 
 // Summary:
 //
-// Queries the information about an access credential.
+// Retrieves the details of a credential.
 //
 // @param request - GetSecretValueRequest
 //
@@ -15196,7 +15250,7 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 
 // Summary:
 //
-// Queries the information about an access credential.
+// Retrieves the details of a credential.
 //
 // @param request - GetSecretValueRequest
 //
@@ -15214,17 +15268,17 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 
 // Summary:
 //
-// Retrieves access information for a SaaS service.
+// Retrieves the access information for a SaaS service.
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
-// This operation is used to query information about all model services.
+// This operation queries information about all model services.
 //
 // ## QPS limit
 //
-// The default single-user QPS limit for this operation is 1,000 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
+// The default queries per second (QPS) limit per user for this operation is 1,000. If you exceed the limit, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - GetServiceAccessInfoRequest
 //
@@ -15272,17 +15326,17 @@ func (client *Client) GetServiceAccessInfoWithOptions(request *GetServiceAccessI
 
 // Summary:
 //
-// Retrieves access information for a SaaS service.
+// Retrieves the access information for a SaaS service.
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
-// This operation is used to query information about all model services.
+// This operation queries information about all model services.
 //
 // ## QPS limit
 //
-// The default single-user QPS limit for this operation is 1,000 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
+// The default queries per second (QPS) limit per user for this operation is 1,000. If you exceed the limit, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - GetServiceAccessInfoRequest
 //
@@ -15456,11 +15510,11 @@ func (client *Client) GetSupabaseProject(request *GetSupabaseProjectRequest) (_r
 
 // Summary:
 //
-// Queries the API keys and JWT secrets for a Supabase instance.
+// Queries the API keys and JWT secrets of a Supabase instance.
 //
 // Description:
 //
-// This operation queries the API keys and JWT secrets for a Supabase instance.
+// Queries the API keys and JWT secrets of a Supabase instance.
 //
 // @param request - GetSupabaseProjectApiKeysRequest
 //
@@ -15508,11 +15562,11 @@ func (client *Client) GetSupabaseProjectApiKeysWithOptions(request *GetSupabaseP
 
 // Summary:
 //
-// Queries the API keys and JWT secrets for a Supabase instance.
+// Queries the API keys and JWT secrets of a Supabase instance.
 //
 // Description:
 //
-// This operation queries the API keys and JWT secrets for a Supabase instance.
+// Queries the API keys and JWT secrets of a Supabase instance.
 //
 // @param request - GetSupabaseProjectApiKeysRequest
 //
@@ -15530,11 +15584,11 @@ func (client *Client) GetSupabaseProjectApiKeys(request *GetSupabaseProjectApiKe
 
 // Summary:
 //
-// Retrieves the username and password for the dashboard of a specific Supabase project.
+// Queries the dashboard account information of a Supabase project.
 //
 // Description:
 //
-// # Query Supabase Project Dashboard Account Information
+// Queries the dashboard account information of a Supabase project.
 //
 // @param request - GetSupabaseProjectDashboardAccountRequest
 //
@@ -15582,11 +15636,11 @@ func (client *Client) GetSupabaseProjectDashboardAccountWithOptions(request *Get
 
 // Summary:
 //
-// Retrieves the username and password for the dashboard of a specific Supabase project.
+// Queries the dashboard account information of a Supabase project.
 //
 // Description:
 //
-// # Query Supabase Project Dashboard Account Information
+// Queries the dashboard account information of a Supabase project.
 //
 // @param request - GetSupabaseProjectDashboardAccountRequest
 //
@@ -15608,7 +15662,7 @@ func (client *Client) GetSupabaseProjectDashboardAccount(request *GetSupabasePro
 //
 // Description:
 //
-// Queries the specifications and zones available for creating Supabase projects in a specified region.
+// This operation queries the specifications and zones available for creating Supabase projects in a specified region.
 //
 // @param request - GetSupabaseProjectSpecRequest
 //
@@ -15656,7 +15710,7 @@ func (client *Client) GetSupabaseProjectSpecWithOptions(request *GetSupabaseProj
 //
 // Description:
 //
-// Queries the specifications and zones available for creating Supabase projects in a specified region.
+// This operation queries the specifications and zones available for creating Supabase projects in a specified region.
 //
 // @param request - GetSupabaseProjectSpecRequest
 //
@@ -15674,11 +15728,11 @@ func (client *Client) GetSupabaseProjectSpec(request *GetSupabaseProjectSpecRequ
 
 // Summary:
 //
-// Queries the upgradable versions for a Supabase project.
+// Queries the available upgrade versions for a Supabase project.
 //
 // Description:
 //
-// This operation queries the currently recommended stable version and the latest upgradable version for a specified Supabase project.
+// This operation queries the currently recommended stable version and the latest available upgrade version for a specified Supabase project.
 //
 // @param request - GetSupabaseUpdateVersionRequest
 //
@@ -15726,11 +15780,11 @@ func (client *Client) GetSupabaseUpdateVersionWithOptions(request *GetSupabaseUp
 
 // Summary:
 //
-// Queries the upgradable versions for a Supabase project.
+// Queries the available upgrade versions for a Supabase project.
 //
 // Description:
 //
-// This operation queries the currently recommended stable version and the latest upgradable version for a specified Supabase project.
+// This operation queries the currently recommended stable version and the latest available upgrade version for a specified Supabase project.
 //
 // @param request - GetSupabaseUpdateVersionRequest
 //
@@ -15754,9 +15808,9 @@ func (client *Client) GetSupabaseUpdateVersion(request *GetSupabaseUpdateVersion
 //
 // This operation is related to UploadDocumentAsync. You can call UploadDocumentAsync to create an upload task and obtain a job ID, and then call this operation to view the execution information of the job.
 //
-// > Usage notes
+// > Usage recommendations
 //
-// > - Estimate the timeout based on the document complexity and the number of vector entries after chunking. The timeout generally does not exceed 2 hours.
+// > - Evaluate the timeout period based on the document complexity and the number of vectors after chunking. Generally, the timeout period does not exceed 2 hours.
 //
 // @param request - GetUploadDocumentJobRequest
 //
@@ -15832,9 +15886,9 @@ func (client *Client) GetUploadDocumentJobWithOptions(request *GetUploadDocument
 //
 // This operation is related to UploadDocumentAsync. You can call UploadDocumentAsync to create an upload task and obtain a job ID, and then call this operation to view the execution information of the job.
 //
-// > Usage notes
+// > Usage recommendations
 //
-// > - Estimate the timeout based on the document complexity and the number of vector entries after chunking. The timeout generally does not exceed 2 hours.
+// > - Evaluate the timeout period based on the document complexity and the number of vectors after chunking. Generally, the timeout period does not exceed 2 hours.
 //
 // @param request - GetUploadDocumentJobRequest
 //
@@ -15852,13 +15906,13 @@ func (client *Client) GetUploadDocumentJob(request *GetUploadDocumentJobRequest)
 
 // Summary:
 //
-// Queries the progress and result of an asynchronous vector data upload job by using a job ID.
+// Queries the progress and result of an asynchronous vector data upload task by job ID.
 //
 // Description:
 //
-// This operation is related to the `UpsertCollectionDataAsync` operation. You can call the `UpsertCollectionDataAsync` operation to create an upload job and obtain a job ID, and then call the GetUpsertCollectionDataJob operation to query the execution information of the job.
+// This operation is related to `UpsertCollectionDataAsync`. You can call `UpsertCollectionDataAsync` to create an upload task and obtain a job ID, and then call this operation to query the execution information of the job.
 //
-// >  We recommend that you evaluate the amount of time required for the upload job based on 1,000 data entries every second, and then query the job progress every 5 seconds. The timeout period can be set to 30 minutes after the evaluated amount of time.
+// > Recommendation: Estimate the duration of the upload task based on 1 second per 1,000 vector data records, and then query the task progress every 5 seconds. Set the timeout period to 30 minutes plus the initially estimated duration.
 //
 // @param request - GetUpsertCollectionDataJobRequest
 //
@@ -15932,13 +15986,13 @@ func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCo
 
 // Summary:
 //
-// Queries the progress and result of an asynchronous vector data upload job by using a job ID.
+// Queries the progress and result of an asynchronous vector data upload task by job ID.
 //
 // Description:
 //
-// This operation is related to the `UpsertCollectionDataAsync` operation. You can call the `UpsertCollectionDataAsync` operation to create an upload job and obtain a job ID, and then call the GetUpsertCollectionDataJob operation to query the execution information of the job.
+// This operation is related to `UpsertCollectionDataAsync`. You can call `UpsertCollectionDataAsync` to create an upload task and obtain a job ID, and then call this operation to query the execution information of the job.
 //
-// >  We recommend that you evaluate the amount of time required for the upload job based on 1,000 data entries every second, and then query the job progress every 5 seconds. The timeout period can be set to 30 minutes after the evaluated amount of time.
+// > Recommendation: Estimate the duration of the upload task based on 1 second per 1,000 vector data records, and then query the task progress every 5 seconds. Set the timeout period to 30 minutes plus the initially estimated duration.
 //
 // @param request - GetUpsertCollectionDataJobRequest
 //
@@ -16286,7 +16340,7 @@ func (client *Client) HandleActiveSQLRecord(request *HandleActiveSQLRecordReques
 
 // Summary:
 //
-// Initializes vector databases.
+// Performs initialization for the vector retrieve database.
 //
 // @param request - InitVectorDatabaseRequest
 //
@@ -16350,7 +16404,7 @@ func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseR
 
 // Summary:
 //
-// Initializes vector databases.
+// Performs initialization for the vector retrieve database.
 //
 // @param request - InitVectorDatabaseRequest
 //
@@ -16868,7 +16922,7 @@ func (client *Client) ListChunks(request *ListChunksRequest) (_result *ListChunk
 
 // Summary:
 //
-// Queries a list of vector collections.
+// Queries a list of vector datasets.
 //
 // @param request - ListCollectionsRequest
 //
@@ -16932,7 +16986,7 @@ func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest
 
 // Summary:
 //
-// Queries a list of vector collections.
+// Queries a list of vector datasets.
 //
 // @param request - ListCollectionsRequest
 //
@@ -16950,7 +17004,7 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 
 // Summary:
 //
-// List all extensions installed in the instance.
+// Lists all plug-ins installed on an instance.
 //
 // @param request - ListDatabaseExtensionsRequest
 //
@@ -16998,7 +17052,7 @@ func (client *Client) ListDatabaseExtensionsWithOptions(request *ListDatabaseExt
 
 // Summary:
 //
-// List all extensions installed in the instance.
+// Lists all plug-ins installed on an instance.
 //
 // @param request - ListDatabaseExtensionsRequest
 //
@@ -17016,7 +17070,7 @@ func (client *Client) ListDatabaseExtensions(request *ListDatabaseExtensionsRequ
 
 // Summary:
 //
-// Queries a list of databases.
+// Lists databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -17084,7 +17138,7 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 
 // Summary:
 //
-// Queries a list of databases.
+// Lists databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -17102,7 +17156,7 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 
 // Summary:
 //
-// Lists document collections.
+// Queries the list of collections.
 //
 // @param request - ListDocumentCollectionsRequest
 //
@@ -17162,7 +17216,7 @@ func (client *Client) ListDocumentCollectionsWithOptions(request *ListDocumentCo
 
 // Summary:
 //
-// Lists document collections.
+// Queries the list of collections.
 //
 // @param request - ListDocumentCollectionsRequest
 //
@@ -17180,7 +17234,7 @@ func (client *Client) ListDocumentCollections(request *ListDocumentCollectionsRe
 
 // Summary:
 //
-// Queries a list of documents in a collection.
+// Queries the list of documents in a document collection.
 //
 // @param request - ListDocumentsRequest
 //
@@ -17252,7 +17306,7 @@ func (client *Client) ListDocumentsWithOptions(request *ListDocumentsRequest, ru
 
 // Summary:
 //
-// Queries a list of documents in a collection.
+// Queries the list of documents in a document collection.
 //
 // @param request - ListDocumentsRequest
 //
@@ -17882,7 +17936,7 @@ func (client *Client) ListModelServices(request *ListModelServicesRequest) (_res
 
 // Summary:
 //
-// Queries a list of namespaces.
+// Queries the list of namespaces.
 //
 // @param request - ListNamespacesRequest
 //
@@ -17946,7 +18000,7 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 
 // Summary:
 //
-// Queries a list of namespaces.
+// Queries the list of namespaces.
 //
 // @param request - ListNamespacesRequest
 //
@@ -18214,7 +18268,7 @@ func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSch
 
 // Summary:
 //
-// View the access 
+// Retrieves a list of access credentials.
 //
 // @param request - ListSecretsRequest
 //
@@ -18270,7 +18324,7 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtim
 
 // Summary:
 //
-// View the access credential list.
+// Retrieves a list of access credentials.
 //
 // @param request - ListSecretsRequest
 //
@@ -18616,7 +18670,7 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 
 // Summary:
 //
-// Queries the backup tasks and task progress of a specified Supabase instance.
+// Queries the backup tasks and progress of a specified Supabase instance.
 //
 // @param request - ListSupabaseBackupJobsRequest
 //
@@ -18676,7 +18730,7 @@ func (client *Client) ListSupabaseBackupJobsWithOptions(request *ListSupabaseBac
 
 // Summary:
 //
-// Queries the backup tasks and task progress of a specified Supabase instance.
+// Queries the backup tasks and progress of a specified Supabase instance.
 //
 // @param request - ListSupabaseBackupJobsRequest
 //
@@ -18886,11 +18940,11 @@ func (client *Client) ListSupabaseProjectTags(request *ListSupabaseProjectTagsRe
 
 // Summary:
 //
-// Returns a list of Supabase instances.
+// Queries the list of Supabase instances.
 //
 // Description:
 //
-// - Lists Supabase instances.
+// - This operation queries the list of Supabase instances.
 //
 // @param request - ListSupabaseProjectsRequest
 //
@@ -18966,11 +19020,11 @@ func (client *Client) ListSupabaseProjectsWithOptions(request *ListSupabaseProje
 
 // Summary:
 //
-// Returns a list of Supabase instances.
+// Queries the list of Supabase instances.
 //
 // Description:
 //
-// - Lists Supabase instances.
+// - This operation queries the list of Supabase instances.
 //
 // @param request - ListSupabaseProjectsRequest
 //
@@ -19058,7 +19112,7 @@ func (client *Client) ListSupportModels(request *ListSupportModelsRequest) (_res
 
 // Summary:
 //
-// Queries a list of tables in a database.
+// Lists data tables.
 //
 // @param request - ListTablesRequest
 //
@@ -19134,7 +19188,7 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime 
 
 // Summary:
 //
-// Queries a list of tables in a database.
+// Lists data tables.
 //
 // @param request - ListTablesRequest
 //
@@ -19250,9 +19304,9 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
-// This operation is used to view information about all workspaces.
+// This operation queries the information about all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -19316,9 +19370,9 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 //
 // Description:
 //
-// ## Operation description
+// ## Usage notes
 //
-// This operation is used to view information about all workspaces.
+// This operation queries the information about all workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -19336,7 +19390,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// Modifies the whitelist of an AI service.
+// Modifies the AI service whitelist.
 //
 // @param request - ModifyAIServiceSecurityIpsRequest
 //
@@ -19392,7 +19446,7 @@ func (client *Client) ModifyAIServiceSecurityIpsWithOptions(request *ModifyAISer
 
 // Summary:
 //
-// Modifies the whitelist of an AI service.
+// Modifies the AI service whitelist.
 //
 // @param request - ModifyAIServiceSecurityIpsRequest
 //
@@ -19484,7 +19538,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+// Configures the backup policy for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -19548,7 +19602,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 // Summary:
 //
-// Configures the backup policy of an AnalyticDB for PostgreSQL instance.
+// Configures the backup policy for an AnalyticDB for PostgreSQL instance.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -21666,7 +21720,7 @@ func (client *Client) ModifySupabaseAutoScalePolicy(request *ModifySupabaseAutoS
 //
 // Description:
 //
-// You can call DescribeSupabaseBackupPolicy to query the current backup policy, and then call this operation again to confirm the configurations after the modification.
+// You can call DescribeSupabaseBackupPolicy to query the current backup policy, and then call this operation again to confirm the configurations after modification.
 //
 // @param request - ModifySupabaseBackupPolicyRequest
 //
@@ -21738,7 +21792,7 @@ func (client *Client) ModifySupabaseBackupPolicyWithOptions(request *ModifySupab
 //
 // Description:
 //
-// You can call DescribeSupabaseBackupPolicy to query the current backup policy, and then call this operation again to confirm the configurations after the modification.
+// You can call DescribeSupabaseBackupPolicy to query the current backup policy, and then call this operation again to confirm the configurations after modification.
 //
 // @param request - ModifySupabaseBackupPolicyRequest
 //
@@ -22380,7 +22434,7 @@ func (client *Client) PauseSupabaseProject(request *PauseSupabaseProjectRequest)
 
 // Summary:
 //
-// Retrieving vector data.
+// Retrieves vector data.
 //
 // @param tmpReq - QueryCollectionDataRequest
 //
@@ -22524,7 +22578,7 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 
 // Summary:
 //
-// Retrieving vector data.
+// Retrieves vector data.
 //
 // @param request - QueryCollectionDataRequest
 //
@@ -22831,7 +22885,7 @@ func (client *Client) QueryContentAdvance(request *QueryContentAdvanceRequest, r
 
 // Summary:
 //
-// Retrieves vectors and metadata from multiple specified document collections using natural language statements, merges multi-channel recall results, and returns the combined results.
+// Retrieves vectors and metadata from multiple specified document collections using natural language queries, and returns the merged multi-channel recall results.
 //
 // @param tmpReq - QueryKnowledgeBasesContentRequest
 //
@@ -22925,7 +22979,7 @@ func (client *Client) QueryKnowledgeBasesContentWithOptions(tmpReq *QueryKnowled
 
 // Summary:
 //
-// Retrieves vectors and metadata from multiple specified document collections using natural language statements, merges multi-channel recall results, and returns the combined results.
+// Retrieves vectors and metadata from multiple specified document collections using natural language queries, and returns the merged multi-channel recall results.
 //
 // @param request - QueryKnowledgeBasesContentRequest
 //
@@ -23079,7 +23133,7 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 
 // Summary:
 //
-// The Rerank operation can resolve the issue of inaccurate ranking of vector and full-text search results. It re-scores and reranks the retrieved data through semantic understanding to significantly improve the relevance and accuracy of the results. AnalyticDB for PostgreSQL allows you to rerank search results by using Rerank models, but does not provide models.
+// Reranks the results of vector retrieval and full-text retrieval to address inaccurate sorting by using semantic understanding to rescore and reorder recalled data, which significantly improves result relevance and accuracy. AnalyticDB for PostgreSQL allows you to invoke rerank models to reorder retrieval results, but does not provide the models.
 //
 // @param tmpReq - RerankRequest
 //
@@ -23167,7 +23221,7 @@ func (client *Client) RerankWithOptions(tmpReq *RerankRequest, runtime *dara.Run
 
 // Summary:
 //
-// The Rerank operation can resolve the issue of inaccurate ranking of vector and full-text search results. It re-scores and reranks the retrieved data through semantic understanding to significantly improve the relevance and accuracy of the results. AnalyticDB for PostgreSQL allows you to rerank search results by using Rerank models, but does not provide models.
+// Reranks the results of vector retrieval and full-text retrieval to address inaccurate sorting by using semantic understanding to rescore and reorder recalled data, which significantly improves result relevance and accuracy. AnalyticDB for PostgreSQL allows you to invoke rerank models to reorder retrieval results, but does not provide the models.
 //
 // @param request - RerankRequest
 //
@@ -23259,7 +23313,7 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 //
 // Description:
 //
-// Resets a child branch to the latest data of its parent branch. The main branch, branches without a parent branch, branches with child branches, and protected branches cannot be reset.
+// This operation resets a child branch to the latest data of its parent branch. You cannot reset main branches, branches without a parent branch, branches with child branches, or protected branches.
 //
 // @param request - ResetBranchRequest
 //
@@ -23315,7 +23369,7 @@ func (client *Client) ResetBranchWithOptions(request *ResetBranchRequest, runtim
 //
 // Description:
 //
-// Resets a child branch to the latest data of its parent branch. The main branch, branches without a parent branch, branches with child branches, and protected branches cannot be reset.
+// This operation resets a child branch to the latest data of its parent branch. You cannot reset main branches, branches without a parent branch, branches with child branches, or protected branches.
 //
 // @param request - ResetBranchRequest
 //
@@ -23333,7 +23387,7 @@ func (client *Client) ResetBranch(request *ResetBranchRequest) (_result *ResetBr
 
 // Summary:
 //
-// Resets the IMV statistics.
+// Resets the IMV statistics information.
 //
 // @param request - ResetIMVMonitorDataRequest
 //
@@ -23381,7 +23435,7 @@ func (client *Client) ResetIMVMonitorDataWithOptions(request *ResetIMVMonitorDat
 
 // Summary:
 //
-// Resets the IMV statistics.
+// Resets the IMV statistics information.
 //
 // @param request - ResetIMVMonitorDataRequest
 //
@@ -24133,11 +24187,11 @@ func (client *Client) ResumeSupabaseProject(request *ResumeSupabaseProjectReques
 
 // Summary:
 //
-// Revokes the access permissions of an API key to SaaS services.
+// Revokes the access permissions of an API key pair to SaaS services.
 //
 // Description:
 //
-// Revokes the access permissions of an API key to SaaS services.
+// Revokes the access permissions of an API key pair to SaaS services.
 //
 // @param tmpReq - RevokeApiKeyRequest
 //
@@ -24199,11 +24253,11 @@ func (client *Client) RevokeApiKeyWithOptions(tmpReq *RevokeApiKeyRequest, runti
 
 // Summary:
 //
-// Revokes the access permissions of an API key to SaaS services.
+// Revokes the access permissions of an API key pair to SaaS services.
 //
 // Description:
 //
-// Revokes the access permissions of an API key to SaaS services.
+// Revokes the access permissions of an API key pair to SaaS services.
 //
 // @param request - RevokeApiKeyRequest
 //
@@ -25073,11 +25127,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Unbinds tags from a Supabase instance.
+// Removes tags from a Supabase instance.
 //
 // Description:
 //
-// Queries the details of a Supabase instance.
+// This operation queries the details of a Supabase instance.
 //
 // @param request - UntagSupabaseProjectRequest
 //
@@ -25137,11 +25191,11 @@ func (client *Client) UntagSupabaseProjectWithOptions(request *UntagSupabaseProj
 
 // Summary:
 //
-// Unbinds tags from a Supabase instance.
+// Removes tags from a Supabase instance.
 //
 // Description:
 //
-// Queries the details of a Supabase instance.
+// This operation queries the details of a Supabase instance.
 //
 // @param request - UntagSupabaseProjectRequest
 //
@@ -25553,7 +25607,7 @@ func (client *Client) UpdateSaasServiceVersion(request *UpdateSaasServiceVersion
 //
 // Description:
 //
-// Upgrades a specified Supabase project to a target minor version. You can query the supported target versions by calling GetSupabaseUpdateVersion.
+// This operation upgrades a specified Supabase project to a target minor version. You can query the supported target versions by calling GetSupabaseUpdateVersion.
 //
 // @param request - UpdateSupabaseVersionRequest
 //
@@ -25609,7 +25663,7 @@ func (client *Client) UpdateSupabaseVersionWithOptions(request *UpdateSupabaseVe
 //
 // Description:
 //
-// Upgrades a specified Supabase project to a target minor version. You can query the supported target versions by calling GetSupabaseUpdateVersion.
+// This operation upgrades a specified Supabase project to a target minor version. You can query the supported target versions by calling GetSupabaseUpdateVersion.
 //
 // @param request - UpdateSupabaseVersionRequest
 //
@@ -25855,7 +25909,7 @@ func (client *Client) UpgradeDBVersion(request *UpgradeDBVersionRequest) (_resul
 
 // Summary:
 //
-// Updates extensions.
+// Upgrades plug-ins.
 //
 // @param request - UpgradeExtensionsRequest
 //
@@ -25911,7 +25965,7 @@ func (client *Client) UpgradeExtensionsWithOptions(request *UpgradeExtensionsReq
 
 // Summary:
 //
-// Updates extensions.
+// Upgrades plug-ins.
 //
 // @param request - UpgradeExtensionsRequest
 //
@@ -26210,11 +26264,11 @@ func (client *Client) UploadDocumentAsyncAdvance(request *UploadDocumentAsyncAdv
 
 // Summary:
 //
-// Splits a document into chunks and uploads the vectorized chunks to a document collection.
+// Vectorizes a list of chunked documents and uploads them to a document collection.
 //
 // Description:
 //
-// The vector algorithm that is used for the document is specified when you call the CreateDocumentCollection operation.
+// The vectorization algorithm used for the documents is the one specified in the CreateDocumentCollection operation when the knowledge base is created.
 //
 // @param tmpReq - UpsertChunksRequest
 //
@@ -26302,11 +26356,11 @@ func (client *Client) UpsertChunksWithOptions(tmpReq *UpsertChunksRequest, runti
 
 // Summary:
 //
-// Splits a document into chunks and uploads the vectorized chunks to a document collection.
+// Vectorizes a list of chunked documents and uploads them to a document collection.
 //
 // Description:
 //
-// The vector algorithm that is used for the document is specified when you call the CreateDocumentCollection operation.
+// The vectorization algorithm used for the documents is the one specified in the CreateDocumentCollection operation when the knowledge base is created.
 //
 // @param request - UpsertChunksRequest
 //

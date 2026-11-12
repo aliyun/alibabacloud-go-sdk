@@ -18,7 +18,7 @@ type iCreateCollectionResponseBody interface {
 }
 
 type CreateCollectionResponseBody struct {
-	// The response message.
+	// The detailed information returned by the operation.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CreateCollectionResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The creation status. Valid values:
 	//
-	// - **success**: The operation succeeded.
+	// - **success**: Succeeded.
 	//
-	// - **fail**: The operation failed.
+	// - **fail**: Failed.
 	//
 	// example:
 	//

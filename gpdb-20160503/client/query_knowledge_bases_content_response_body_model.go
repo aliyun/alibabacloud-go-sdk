@@ -30,7 +30,7 @@ type iQueryKnowledgeBasesContentResponseBody interface {
 type QueryKnowledgeBasesContentResponseBody struct {
 	// The number of tokens used during vectorization.
 	//
-	// > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
+	// > A token is the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//
@@ -51,11 +51,11 @@ type QueryKnowledgeBasesContentResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The API execution status. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// - **success**: The execution is successful.
+	// - **success**: The operation is successful.
 	//
-	// - **fail**: The execution failed.
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//
@@ -509,7 +509,7 @@ func (s *QueryKnowledgeBasesContentResponseBodyRelationsRelations) Validate() er
 type QueryKnowledgeBasesContentResponseBodyUsage struct {
 	// The number of entries used during vectorization.
 	//
-	// > An entry refers to the number of items processed during vectorization of text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
+	// > An entry refers to the number of items processed when vectorizing text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
 	//
 	// example:
 	//
@@ -517,7 +517,7 @@ type QueryKnowledgeBasesContentResponseBodyUsage struct {
 	EmbeddingEntries *string `json:"EmbeddingEntries,omitempty" xml:"EmbeddingEntries,omitempty"`
 	// The number of tokens used during vectorization.
 	//
-	// > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
+	// > A token is the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//

@@ -60,19 +60,19 @@ type CreateCollectionRequest struct {
 	//
 	// Valid values:
 	//
-	// - `hnswflat`: (Default) An HNSW index without quantization compression.
+	// - hnswflat: HNSW index without quantization compression (default).
 	//
-	// - `novam`: A graph index without quantization compression. This algorithm is suitable for high-performance scenarios, such as real-time recommendations.
+	// - novam: Graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendation.
 	//
-	// - `novad`: A partitioned index with `rabitq` quantization. This algorithm is suitable for large-scale, low-cost retrieval scenarios.
+	// - novad: Partitioned index with rabitq quantization, suitable for large-scale, low-cost retrieval scenarios.
 	//
 	// example:
 	//
 	// hnswflat
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The name of the collection to create.
+	// The name of the collection to be created.
 	//
-	// > The name must comply with PostgreSQL object naming conventions.
+	// > The name must comply with the PostgreSQL object naming conventions.
 	//
 	// This parameter is required.
 	//
@@ -80,95 +80,77 @@ type CreateCollectionRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The instance ID.
+	// Instance ID of the instance.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query instance IDs of all AnalyticDB for PostgreSQL instances in the target region.
 	//
 	// example:
 	//
 	// gp-bp152460513z****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The vector dimension.
+	// The vector dimensions.
 	//
-	// > If you specify this parameter, a vector index is created. In subsequent calls to the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation, the length of `Rows.Vector` must match this dimension. If you do not specify this parameter, you must call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation to create an index later.
+	// > If you specify this value, an index is built, and the length of Rows.Vector in the subsequent [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation for uploading vector data must be consistent with this value. If you do not specify this value, you can call the [CreateVectorIndex](https://help.aliyun.com/document_detail/2401499.html) operation later to build an index.
 	//
 	// example:
 	//
 	// 1024
 	Dimension *int64 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Specifies whether to use `mmap` to build the HNSW index. The default value is 0. We recommend setting this to 1 if your data does not require deletion and you need high-performance data ingestion.
+	// Specifies whether to use mmap to build the HNSW index. Default value: 0. If the data does not need to be deleted and you have high requirements for the data upload speed, set this parameter to 1.
 	//
 	// Valid values:
 	//
-	// - `0`: (Default) Builds the index by using segmented page storage. This mode can use the `shared_buffer` in PostgreSQL for caching and supports `DELETE` and `UPDATE` operations.
+	// - 0: Build the index by using segment-page storage. This is the default value. In this mode, shared_buffers in PostgreSQL can be used for caching, and operations such as deletion and update are supported.
 	//
-	// - `1`: Builds the index by using `mmap`. This mode does not support `DELETE` or `UPDATE` operations.
+	// - 1: Build the index by using mmap. This mode does not support operations such as deletion and update.
 	//
-	// 	Notice:
-	//
-	// The `ExternalStorage` parameter is available only for AnalyticDB for PostgreSQL v6.0 instances and is not supported in v7.0.
+	// 	Notice: The ExternalStorage parameter is supported only in V6.0. It is not supported in V7.0.</notice>
 	//
 	// example:
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	// The fields to use for full-text search. Use commas (`,`) to separate multiple field names. These fields must be keys defined in the `Metadata` parameter.
+	// The fields used to retrieve data via full-text index. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
 	//
 	// example:
 	//
 	// title,content
 	FullTextRetrievalFields *string `json:"FullTextRetrievalFields,omitempty" xml:"FullTextRetrievalFields,omitempty"`
-	// The size of the candidate set for HNSW index construction. The value must be greater than or equal to `2 	- HnswM`.
+	// The size of the candidate set when building the index by using the HNSW algorithm. The value must be greater than or equal to 2 × HNSW_M.
 	//
-	// > Value range:
+	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL V6.0 instances: 40 to 4000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 40 to 4000.
-	//
-	// >
-	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 4 to 1000. The default value is 64.
+	// >- AnalyticDB for PostgreSQL V7.0 instances: 4 to 1000. Default value: 64.
 	//
 	// example:
 	//
 	// 128
 	HnswEfConstruction *string `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	// The maximum number of neighbors for the HNSW algorithm. You do not typically need to set this parameter, as the system automatically determines a value based on the vector dimension.
+	// The maximum number of neighbors in the HNSW algorithm. The operation automatically sets this value based on the vector dimensions. Typically, you do not need to manually set this value.
 	//
-	// > Value range:
+	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
+	// >- AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. Default value: 16.
 	//
-	// >
+	// > Recommended settings based on vector dimensions:
 	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. The default value is 16.
+	// >- Less than or equal to 384: 16.
 	//
-	// > We recommend that you set this parameter based on the vector dimension:
+	// >- Greater than 384 and less than or equal to 768: 32.
 	//
-	// >
+	// >- Greater than 768 and less than or equal to 1024: 64.
 	//
-	// > - 16 for dimensions less than or equal to 384.
-	//
-	// >
-	//
-	// > - 32 for dimensions greater than 384 and less than or equal to 768.
-	//
-	// >
-	//
-	// > - 64 for dimensions greater than 768 and less than or equal to 1024.
-	//
-	// >
-	//
-	// > - 128 for dimensions greater than 1024.
+	// >- Greater than 1024: 128.
 	//
 	// example:
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	// The name of the management account that has the `rds_superuser` privilege.
+	// The name of the administrator account that has the rds_superuser permission.
 	//
 	// > You can call the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation to create an account.
 	//
@@ -178,7 +160,7 @@ type CreateCollectionRequest struct {
 	//
 	// testaccount
 	ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-	// The password of the management account.
+	// The password of the administrator account.
 	//
 	// This parameter is required.
 	//
@@ -186,21 +168,15 @@ type CreateCollectionRequest struct {
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// A JSON string that defines the metadata schema as a map. The keys are field names, and the values are their corresponding data types.
+	// The metadata of the vector data, which is a JSON string in MAP format. The key represents the field name, and the value represents the data type.
 	//
-	// > Supported data types
+	// > Supported data types:
 	//
-	// >
+	// > - For the list of data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
 	//
-	// > - For a list of supported data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
+	// > - The money data type is not supported.
 	//
-	// >
-	//
-	// > - The `money` data type is not supported.
-	//
-	// 	Warning:
-	//
-	// The field names `id`, `vector`, `to_tsvector`, and `source` are reserved and cannot be used.
+	// 	Warning: The id, vector, to_tsvector, and source fields are reserved fields and cannot be used.</warning>
 	//
 	// This parameter is required.
 	//
@@ -208,7 +184,7 @@ type CreateCollectionRequest struct {
 	//
 	// {"title":"text","content":"text","response":"int"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
-	// The scalar index fields. Separate multiple fields with commas (`,`). The fields must be keys that are defined in `Metadata`.
+	// The scalar index fields. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
 	//
 	// example:
 	//
@@ -216,11 +192,11 @@ type CreateCollectionRequest struct {
 	MetadataIndices *string `json:"MetadataIndices,omitempty" xml:"MetadataIndices,omitempty"`
 	// The distance metric used to build the vector index. Valid values:
 	//
-	// - `l2`: Euclidean distance.
+	// - l2: Euclidean distance.
 	//
-	// - `ip`: dot product.
+	// - ip: Inner product.
 	//
-	// - `cosine`: cosine similarity.
+	// - cosine: Cosine similarity.
 	//
 	// example:
 	//
@@ -228,30 +204,30 @@ type CreateCollectionRequest struct {
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
 	// The namespace.
 	//
-	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace or the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list existing namespaces.
+	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace, and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the namespace list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The parser for full-text search. The default is `zh_cn`.
+	// The tokenizer used to retrieve data via full-text index. Default value: zh_cn.
 	//
 	// example:
 	//
 	// zh_cn
 	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
-	// Specifies whether to enable Product Quantization (PQ) for index acceleration. This is recommended for datasets with more than 500,000 entries. Valid values:
+	// Specifies whether to enable the Product Quantization (PQ) algorithm to accelerate the index. Enable this feature when the data volume exceeds 500,000. Valid values:
 	//
-	// - `0`: Disabled.
+	// - 0: Disable.
 	//
-	// - `1`: (Default) Enabled.
+	// - 1: Enable (default).
 	//
 	// example:
 	//
 	// 1
 	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
-	// The ID of the region where the instance is located.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -259,17 +235,17 @@ type CreateCollectionRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The configuration for the sparse vector index. If specified, a sparse vector index is created.
+	// The sparse vector index configuration. If this parameter is passed, a sparse vector index is created.
 	SparseVectorIndexConfig *CreateCollectionRequestSparseVectorIndexConfig `json:"SparseVectorIndexConfig,omitempty" xml:"SparseVectorIndexConfig,omitempty" type:"Struct"`
-	// Specifies whether to enable support for sparse vectors. The default value is `false`.
+	// Specifies whether to support sparse vectors. Default value: false.
 	//
 	// example:
 	//
 	// true
 	SupportSparse *bool `json:"SupportSparse,omitempty" xml:"SupportSparse,omitempty"`
-	// The configuration for the dense vector index.
+	// The dense vector index configuration.
 	VectorIndexConfig *CreateCollectionRequestVectorIndexConfig `json:"VectorIndexConfig,omitempty" xml:"VectorIndexConfig,omitempty" type:"Struct"`
-	// The ID of the workspace, which contains multiple database instances. You must specify either `WorkspaceId` or `DBInstanceId`. If both are specified, `WorkspaceId` takes precedence.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be empty at the same time. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//
@@ -502,51 +478,39 @@ type CreateCollectionRequestSparseVectorIndexConfig struct {
 	//
 	// Valid values:
 	//
-	// - `hnswflat`: (Default) An HNSW index without quantization compression.
+	// - hnswflat: HNSW index without quantization compression (default).
 	//
-	// - `novam`: A graph index without quantization compression. This algorithm is suitable for high-performance scenarios, such as real-time recommendations.
+	// - novam: Graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendation.
 	//
 	// example:
 	//
 	// hnswflat
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	// The size of the candidate set for HNSW index construction. The value must be an integer from 4 to 1,000. The default is 64.
+	// The size of the candidate set when building the index by using the HNSW algorithm. Valid values: 4 to 1000. Default value: 64.
 	//
-	// > This parameter is required only for AnalyticDB for PostgreSQL V7.0 instances, and its value must be greater than or equal to `2 	- HnswM`.
+	// > This value is required only for AnalyticDB for PostgreSQL V7.0 instances, and the value must be greater than or equal to 2 × HNSW_M.
 	//
 	// example:
 	//
 	// 128
 	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	// The maximum number of neighbors for the HNSW algorithm. You do not typically need to set this parameter, as the system automatically determines a value based on the vector dimension.
+	// The maximum number of neighbors in the HNSW algorithm. The operation automatically sets this value based on the vector dimensions. Typically, you do not need to manually set this value.
 	//
-	// > Value range:
+	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
+	// >- AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. Default value: 16.
 	//
-	// >
+	// > Recommended settings based on vector dimensions:
 	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. The default value is 16.
+	// >- Less than or equal to 384: 16.
 	//
-	// > We recommend that you set this parameter based on the vector dimension:
+	// >- Greater than 384 and less than or equal to 768: 32.
 	//
-	// >
+	// >- Greater than 768 and less than or equal to 1024: 64.
 	//
-	// > - 16 for dimensions less than or equal to 384.
-	//
-	// >
-	//
-	// > - 32 for dimensions greater than 384 and less than or equal to 768.
-	//
-	// >
-	//
-	// > - 64 for dimensions greater than 768 and less than or equal to 1024.
-	//
-	// >
-	//
-	// > - 128 for dimensions greater than 1024.
+	// >- Greater than 1024: 128.
 	//
 	// example:
 	//
@@ -594,13 +558,13 @@ func (s *CreateCollectionRequestSparseVectorIndexConfig) Validate() error {
 }
 
 type CreateCollectionRequestVectorIndexConfig struct {
-	// The number of lists (partitions) for a `novad` index. The value must be an integer from 2 to 1,073,741,824. The default is 256.
+	// The number of Novad lists (partitions). Valid values: [2, 1073741824]. Default value: 256.
 	//
 	// example:
 	//
 	// 256
 	Nlist *int32 `json:"Nlist,omitempty" xml:"Nlist,omitempty"`
-	// The number of bits for `rabitq` compression. The value must be an integer from 1 to 8. The default is 3.
+	// The number of rabitq compression bits. Valid values: [1, 8]. Default value: 3.
 	//
 	// example:
 	//

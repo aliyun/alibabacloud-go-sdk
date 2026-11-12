@@ -20,9 +20,9 @@ type iDescribeDBInstanceErrorLogResponseBody interface {
 }
 
 type DescribeDBInstanceErrorLogResponseBody struct {
-	// The content of the error log.
+	// The list of error logs.
 	Items []*DescribeDBInstanceErrorLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeDBInstanceErrorLogResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeDBInstanceErrorLogResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceErrorLogResponseBodyItems struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -118,19 +118,19 @@ type DescribeDBInstanceErrorLogResponseBodyItems struct {
 	//
 	// unsupported frontend protocol 2689.28208: server supports 1.0 to 3.0
 	LogContext *string `json:"LogContext,omitempty" xml:"LogContext,omitempty"`
-	// The level of the queried log.
+	// The level of the collected log.
 	//
 	// example:
 	//
 	// FATAL
 	LogLevel *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
-	// The time when the log was generated. The time is displayed in UTC.
+	// The time when the log was generated. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-04-24 11:28:14
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The name of the database account.
+	// The username.
 	//
 	// example:
 	//

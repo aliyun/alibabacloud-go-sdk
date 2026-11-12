@@ -30,13 +30,13 @@ type iDescribeTableRequest interface {
 type DescribeTableRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including the instance IDs.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +45,7 @@ type DescribeTableRequest struct {
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance.
+	// The ID of the region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -53,7 +53,7 @@ type DescribeTableRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the schema that contains the table.
+	// The name of the schema where the table resides.
 	//
 	// This parameter is required.
 	//
@@ -61,9 +61,9 @@ type DescribeTableRequest struct {
 	//
 	// public
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The access credential. Created by calling the CreateSecret operation.
+	// The access credential created by calling the CreateSecret operation.
 	//
-	// > When you access this operation by using a RAM user, you must have the UseSecret or GetSecretValue permission on this SecretArn.
+	// > When you call this operation as a RAM user, the RAM user must have the UseSecret or GetSecretValue permission on the SecretArn.
 	//
 	// This parameter is required.
 	//
@@ -71,7 +71,7 @@ type DescribeTableRequest struct {
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The table name.
+	// The name of the table.
 	//
 	// This parameter is required.
 	//
@@ -79,7 +79,7 @@ type DescribeTableRequest struct {
 	//
 	// mytable
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
-	// The ID of the workspace that consists of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both this parameter and DBInstanceId are specified, this parameter takes precedence.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be both empty. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//

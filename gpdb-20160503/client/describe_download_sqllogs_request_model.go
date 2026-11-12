@@ -14,9 +14,9 @@ type iDescribeDownloadSQLLogsRequest interface {
 }
 
 type DescribeDownloadSQLLogsRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specified region, including the instance ID.
 	//
 	// This parameter is required.
 	//

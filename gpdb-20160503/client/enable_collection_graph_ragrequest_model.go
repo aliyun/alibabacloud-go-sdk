@@ -38,7 +38,7 @@ type iEnableCollectionGraphRAGRequest interface {
 type EnableCollectionGraphRAGRequest struct {
   // The name of the document collection.
   // 
-  // > You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+  // > The document collection is created by calling the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to view the created document collections.
   // 
   // This parameter is required.
   // 
@@ -46,9 +46,9 @@ type EnableCollectionGraphRAGRequest struct {
   // 
   // document
   Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-  // The cluster ID.
+  // The instance ID.
   // 
-  // > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+  // > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
   // 
   // This parameter is required.
   // 
@@ -58,7 +58,7 @@ type EnableCollectionGraphRAGRequest struct {
   DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
   // The list of entity types.
   // 
-  // > If the knowledge graph construction is enabled, this parameter is required.
+  // > This parameter is required when knowledge graph construction is enabled.
   // 
   // This parameter is required.
   // 
@@ -66,33 +66,33 @@ type EnableCollectionGraphRAGRequest struct {
   // 
   // Location
   EntityTypes []*string `json:"EntityTypes,omitempty" xml:"EntityTypes,omitempty" type:"Repeated"`
-  // The name of the LLM model.
+  // The name of the large language model (LLM).
   // 
   // > Valid values:
   // 
-  // 	- knowledge-extract-standard: the default value.
+  // > - knowledge-extract-standard: Default value.
   // 
-  // 	- knowledge-extract-mini
+  // > - knowledge-extract-mini
   // 
-  // > This parameter takes effect only when the knowledge graph construction is enabled.
+  // > This parameter takes effect only when knowledge graph construction is enabled.
   // 
   // example:
   // 
   // knowledge-extract-standard
   LLMModel *string `json:"LLMModel,omitempty" xml:"LLMModel,omitempty"`
-  // The language used to build the knowledge graph. Valid values:
+  // The language used to construct the knowledge graph. Valid values:
   // 
-  // 	- Simplified Chinese. The default value.
+  // - Simplified Chinese: Simplified Chinese. Default value.
   // 
-  // 	- English.
+  // - English: English.
   // 
-  // > This parameter takes effect only when the knowledge graph construction is enabled.
+  // > This parameter takes effect only when knowledge graph construction is enabled.
   // 
   // example:
   // 
   // Simplified Chinese
   Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-  // The name of the privileged database account that has the rds_superuser permission.
+  // The name of the administrator account that has the rds_superuser permission.
   // 
   // > You can call the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation to create an account.
   // 
@@ -102,7 +102,7 @@ type EnableCollectionGraphRAGRequest struct {
   // 
   // testaccount
   ManagerAccount *string `json:"ManagerAccount,omitempty" xml:"ManagerAccount,omitempty"`
-  // The password for the privileged database account.
+  // The password of the administrator account.
   // 
   // This parameter is required.
   // 
@@ -110,17 +110,17 @@ type EnableCollectionGraphRAGRequest struct {
   // 
   // testpassword
   ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-  // The name of the namespace. Default value: public.
+  // The namespace. Default value: public.
   // 
-  // > You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
+  // > You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to view the namespace list.
   // 
   // example:
   // 
   // mynamespace
   Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-  // The password of the namespace.
+  // The password for the namespace.
   // 
-  // > The value of this parameter is specified by [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+  // > This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
   // 
   // This parameter is required.
   // 
@@ -129,9 +129,9 @@ type EnableCollectionGraphRAGRequest struct {
   // testpassword
   NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The region ID of the cluster.
+  // The region ID.
   // 
-  // > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+  // > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
   // 
   // This parameter is required.
   // 
@@ -141,7 +141,7 @@ type EnableCollectionGraphRAGRequest struct {
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
   // The list of relationship edge types.
   // 
-  // > If the knowledge graph construction is enabled, this parameter is required.
+  // > This parameter is required when knowledge graph construction is enabled.
   // 
   // This parameter is required.
   // 

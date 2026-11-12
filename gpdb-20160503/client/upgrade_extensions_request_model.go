@@ -22,7 +22,7 @@ type iUpgradeExtensionsRequest interface {
 type UpgradeExtensionsRequest struct {
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// >You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specified region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type UpgradeExtensionsRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// test01
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The extensions that you want to update. Separate multiple extensions with commas (,).
+	// The plug-ins to be upgraded. Separate multiple plug-ins with commas (,).
 	//
 	// This parameter is required.
 	//

@@ -30,7 +30,7 @@ type DescribeAvailableResourcesResponseBody struct {
 	//
 	// 61DC563C-F8E4-593A-8D27-CE**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The available resources.
+	// The information about available resources.
 	Resources []*DescribeAvailableResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +83,7 @@ func (s *DescribeAvailableResourcesResponseBody) Validate() error {
 }
 
 type DescribeAvailableResourcesResponseBodyResources struct {
-	// Details of the supported engines and instance types.
+	// The supported engines and instance specifications.
 	SupportedEngines []*DescribeAvailableResourcesResponseBodyResourcesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 	// The zone ID.
 	//
@@ -135,7 +135,7 @@ func (s *DescribeAvailableResourcesResponseBodyResources) Validate() error {
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEngines struct {
 	// The instance resource type. Valid values:
 	//
-	// - **ecs**: Elastic storage mode.
+	// - **ecs**: elastic storage mode.
 	//
 	// - **serverless**: Serverless mode.
 	//
@@ -143,13 +143,13 @@ type DescribeAvailableResourcesResponseBodyResourcesSupportedEngines struct {
 	//
 	// ecs
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The supported engine version.
+	// The supported DPI engine version.
 	//
 	// example:
 	//
 	// 6.0
 	SupportedEngineVersion *string `json:"SupportedEngineVersion,omitempty" xml:"SupportedEngineVersion,omitempty"`
-	// The supported instance types.
+	// The supported instance classes.
 	SupportedInstanceClasses []*DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses `json:"SupportedInstanceClasses,omitempty" xml:"SupportedInstanceClasses,omitempty" type:"Repeated"`
 }
 
@@ -202,45 +202,45 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEngines) Valida
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses struct {
-	// The instance series. Valid values:
+	// The instance edition. Valid values:
 	//
-	// - **HighAvailability**: High-availability edition.
+	// - **HighAvailability**: High-availability Edition.
 	//
-	// - **Basic**: Basic edition
+	// - **Basic**: Basic Edition.
 	//
 	// example:
 	//
 	// HighAvailability
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the segment node instance type.
+	// The description of the segment node specifications.
 	//
 	// example:
 	//
 	// Single-segment node with 2 cores and 16 GB of memory.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The display name of the segment node instance type.
+	// The display class of the segment specifications.
 	//
 	// example:
 	//
 	// 2C16G
 	DisplayClass *string `json:"DisplayClass,omitempty" xml:"DisplayClass,omitempty"`
-	// The instance type of the segment node.
+	// The display class of the segment specifications.
 	//
 	// example:
 	//
 	// 2C16G
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
-	// Details of the segment nodes.
+	// The information about the segment nodes.
 	NodeCount *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount `json:"NodeCount,omitempty" xml:"NodeCount,omitempty" type:"Struct"`
-	// The Segment storage capacity.
+	// The storage capacity of the segment node.
 	StorageSize *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize `json:"StorageSize,omitempty" xml:"StorageSize,omitempty" type:"Struct"`
 	// The storage type. Valid values:
 	//
-	// - **cloud_essd**: ESSD cloud disk.
+	// - **cloud_essd**: ESSD.
 	//
-	// - **cloud_efficiency**: Standard cloud disk.
+	// - **cloud_efficiency**: ultra cloud disk.
 	//
-	// - **oss**:OSS.
+	// - **oss**: OSS.
 	//
 	// example:
 	//
@@ -334,13 +334,13 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesNodeCount struct {
-	// The maximum number of Segment nodes.
+	// The maximum number of segment nodes.
 	//
 	// example:
 	//
 	// 256
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The minimum number of Segment nodes.
+	// The minimum number of segment nodes.
 	//
 	// example:
 	//
@@ -348,7 +348,7 @@ type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedIns
 	MinCount *string `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
 	// The step size for adding nodes.
 	//
-	// For example, if this parameter is set to 4, the number of nodes added must be a multiple of 4 when adding Segment nodes.
+	// For example, if this parameter is set to 4, the number of segment nodes to be added must be a multiple of 4.
 	//
 	// example:
 	//
@@ -396,19 +396,19 @@ func (s *DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupporte
 }
 
 type DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClassesStorageSize struct {
-	// The maximum Segment storage capacity.
+	// The maximum storage capacity of the segment node.
 	//
 	// example:
 	//
 	// 1000
 	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The minimum Segment storage capacity.
+	// The minimum storage capacity of the segment node.
 	//
 	// example:
 	//
 	// 50
 	MinCount *string `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	// The Segment storage expansion step size.
+	// The step size for storage expansion of the segment node.
 	//
 	// example:
 	//

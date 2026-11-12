@@ -26,27 +26,27 @@ type iListSupabaseProjectsResponseBody interface {
 }
 
 type ListSupabaseProjectsResponseBody struct {
-	// A list of instance details.
+	// The list of instance details.
 	Items []*ListSupabaseProjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
+	// The maximum number of results to return for the current request. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token for retrieving the next page of results. If this parameter is not returned, it indicates that all results have been displayed.
+	// The next token.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListSupabaseProjectsResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -151,37 +151,37 @@ func (s *ListSupabaseProjectsResponseBody) Validate() error {
 }
 
 type ListSupabaseProjectsResponseBodyItems struct {
-	// Indicates if the **auto start and stop*	- feature is enabled.
+	// Specifies whether to enable **auto-start and auto-stop**.
 	//
 	// Valid values:
 	//
-	// - `true`: The feature is enabled. The Supabase instance automatically pauses and resumes based on traffic.
+	// - true: enabled. After this feature is enabled, Supabase automatically pauses and resumes the instance based on traffic.
 	//
-	// - `false`: The auto start and stop feature is disabled.
+	// - false: disabled. After this feature is disabled, the auto-start and auto-stop feature of Supabase is turned off.
 	//
 	// example:
 	//
 	// false
 	AutoScale *string `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
-	// The time when the resource was created.
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2021-10-09T04:54:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The password for the Supabase dashboard. This parameter is reserved.
+	// The password for the Supabase dashboard. This parameter is not used.
 	//
 	// example:
 	//
 	// xxpassword
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
-	// The username for the Supabase dashboard. This parameter is reserved.
+	// The username for the Supabase dashboard. This parameter is not used.
 	//
 	// example:
 	//
 	// null
 	DashboardUserName *string `json:"DashboardUserName,omitempty" xml:"DashboardUserName,omitempty"`
-	// The disk performance level.
+	// The performance level of the cloud disk.
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	//
 	// gpdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine version.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 6.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time.
+	// The time when the instance expires.
 	//
 	// example:
 	//
@@ -211,13 +211,13 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	//
 	// - **Prepaid**: subscription.
 	//
-	// - **Free**: The instance is free of charge.
+	// - **Free**: free of charge.
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The private endpoint for the Supabase dashboard.
+	// The internal network connection string for the Supabase dashboard.
 	//
 	// example:
 	//
@@ -241,13 +241,13 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	//
 	// supabase_project
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The Supabase instance specification.
+	// The specifications of the Supabase instance.
 	//
 	// example:
 	//
 	// 1C1G
 	ProjectSpec *string `json:"ProjectSpec,omitempty" xml:"ProjectSpec,omitempty"`
-	// The public endpoint for the Supabase dashboard.
+	// The public network connection string for the Supabase dashboard.
 	//
 	// example:
 	//
@@ -259,25 +259,25 @@ type ListSupabaseProjectsResponseBodyItems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP whitelist. IP addresses are separated by commas. The following formats are supported:
+	// The IP addresses in the IP whitelist. Separate multiple IP addresses with commas. The following three formats are supported:
 	//
 	// - 0.0.0.0/0
 	//
-	// - 10.23.12.24 (IP)
+	// - 10.23.12.24 (IP address)
 	//
-	// - 10.23.12.24/24 (a Classless Inter-Domain Routing (CIDR) block; the prefix length, which is the number after the `/`, must be an integer from 1 to 32.)
+	// - 10.23.12.24/24 (CIDR block. `/24` specifies the length of the prefix in the IP address. Valid values of the prefix length: 1 to 32.)
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The status of the instance.
+	// The status of the Supabase instance.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage size in GB.
+	// The storage capacity. Unit: GB.
 	//
 	// example:
 	//

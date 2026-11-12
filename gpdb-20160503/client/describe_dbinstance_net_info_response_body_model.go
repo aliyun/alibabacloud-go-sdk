@@ -21,9 +21,9 @@ type DescribeDBInstanceNetInfoResponseBody struct {
 	DBInstanceNetInfos *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Struct"`
 	// The network type of the instance. Valid values:
 	//
-	// 	- Classic: classic network.
+	// - Classic: Classic network.
 	//
-	// 	- VPC: VPC.
+	// - VPC: VPC.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iDescribeDBInstanceIndexUsageResponseBody interface {
 }
 
 type DescribeDBInstanceIndexUsageResponseBody struct {
-	// The queried index usage.
+	// The list of index usage details.
 	Items []*DescribeDBInstanceIndexUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeDBInstanceIndexUsageResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type DescribeDBInstanceIndexUsageResponseBodyItems struct {
 	IndexSize *string `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
 	// Indicates whether the table is a partitioned table. Valid values:
 	//
-	// 	- **true**: The table is a partitioned table.
+	// - **true**: The table is a partitioned table.
 	//
-	// 	- **false**: The table is not a partitioned table.
+	// - **false**: The table is not a partitioned table.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type DescribeDBInstanceIndexUsageResponseBodyItems struct {
 	//
 	// tab1_ptr_2010
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The time when the table was last deleted, inserted, or updated.
+	// The time when the table was last updated by a DELETE, INSERT, or UPDATE operation.
 	//
 	// example:
 	//

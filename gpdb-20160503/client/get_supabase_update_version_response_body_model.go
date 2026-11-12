@@ -20,13 +20,13 @@ type iGetSupabaseUpdateVersionResponseBody interface {
 }
 
 type GetSupabaseUpdateVersionResponseBody struct {
-	// The latest upgradable version.
+	// The latest available upgrade version.
 	//
 	// example:
 	//
 	// 20240731
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The ID of the Supabase project.
+	// The Supabase project ID.
 	//
 	// example:
 	//

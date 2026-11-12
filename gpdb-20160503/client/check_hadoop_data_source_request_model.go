@@ -20,7 +20,7 @@ type iCheckHadoopDataSourceRequest interface {
 }
 
 type CheckHadoopDataSourceRequest struct {
-	// The Hadoop path that you want to check.
+	// The Hadoop path to be checked.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CheckHadoopDataSourceRequest struct {
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//

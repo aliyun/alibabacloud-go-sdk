@@ -32,11 +32,11 @@ type iUpsertChunksShrinkRequest interface {
 }
 
 type UpsertChunksShrinkRequest struct {
-	// Based on the Filter input specified under TextChunks, this parameter controls whether data insertion is allowed when a Filter is provided.
+	// Specifies whether to allow data insertion when a filter is specified. This parameter takes effect only when the Filter parameter in TextChunks is specified.
 	//
-	// If AllowInsertWithFilter = true, the insert operation is performed when the filter does not match any data.
+	// If AllowInsertWithFilter is set to true, an insert operation is performed when the filter does not match any data.
 	//
-	// If AllowInsertWithFilter = false, no action is performed if the filter does not match any data.
+	// If AllowInsertWithFilter is set to false, no operation is performed when the filter does not match any data.
 	//
 	// Default value: true.
 	//
@@ -46,7 +46,7 @@ type UpsertChunksShrinkRequest struct {
 	AllowInsertWithFilter *bool `json:"AllowInsertWithFilter,omitempty" xml:"AllowInsertWithFilter,omitempty"`
 	// The name of the document collection.
 	//
-	// > You can call the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation to create a document collection and call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query a list of document collections.
+	// > The document collection is created by calling the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to view the created document collections.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type UpsertChunksShrinkRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The cluster ID.
+	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -64,25 +64,25 @@ type UpsertChunksShrinkRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The file name of the document.
+	// The file name.
 	//
-	// > When a non-empty filename is specified, the system will decide whether to overwrite the data associated with that filename based on the value of the ShouldReplaceFile parameter. If you leave this parameter empty, the data of chunks is appended to the document collection.
+	// > If this parameter is not empty, the system determines whether to overwrite the data associated with this file name based on the value of the ShouldReplaceFile parameter. If this parameter is empty, the chunk data is directly appended and uploaded to the document collection.
 	//
 	// example:
 	//
 	// mydoc.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The name of the namespace. Default value: public.
+	// The namespace. Default value: public.
 	//
-	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the namespace list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// The password for the namespace.
 	//
-	// > The value of this parameter is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -91,7 +91,7 @@ type UpsertChunksShrinkRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -99,11 +99,11 @@ type UpsertChunksShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to overwrite the data associated with the file name specified by the FileName parameter.
+	// Specifies whether to overwrite the data associated with the specified file name. This parameter takes effect only when the FileName parameter is specified.
 	//
-	// If you set ShouldReplaceFile to true, the system deletes all data associated with the file name and then inserts new data.
+	// If ShouldReplaceFile is set to true, all data associated with the file name is deleted before new data is inserted.
 	//
-	// If you set ShouldReplaceFile to false, the system does not delete the data associated with the file name, but inserts or updates the data of chunks based on the TextChunks parameter.
+	// If ShouldReplaceFile is set to false, the data associated with the file name is not deleted. Instead, chunks are inserted or updated based on the specific TextChunks parameter.
 	//
 	// Default value: true.
 	//
@@ -111,7 +111,7 @@ type UpsertChunksShrinkRequest struct {
 	//
 	// true
 	ShouldReplaceFile *bool `json:"ShouldReplaceFile,omitempty" xml:"ShouldReplaceFile,omitempty"`
-	// List of document chunks after splitting.
+	// The list of chunked documents.
 	TextChunksShrink *string `json:"TextChunks,omitempty" xml:"TextChunks,omitempty"`
 }
 

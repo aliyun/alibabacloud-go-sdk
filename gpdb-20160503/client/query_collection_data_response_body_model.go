@@ -22,9 +22,8 @@ type iQueryCollectionDataResponseBody interface {
 }
 
 type QueryCollectionDataResponseBody struct {
-	// The matched results.
 	Matches *QueryCollectionDataResponseBodyMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Struct"`
-	// Details about the error, returned if the request fails.
+	// The detailed information returned when the request fails.
 	//
 	// example:
 	//
@@ -36,17 +35,17 @@ type QueryCollectionDataResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request. Valid values:
+	// The status. Valid values:
 	//
-	// - **success**: The request was successful.
+	// - **success**: The request is successful.
 	//
-	// - **fail**: The request failed.
+	// - **fail**: The request fails.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of hits for the search. This parameter is returned only when the Offset parameter in the request is not 0.
+	// The total number of hits for the search condition. This parameter is returned only when the Offset parameter in the request is not 0.
 	//
 	// example:
 	//

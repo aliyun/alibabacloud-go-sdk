@@ -46,15 +46,13 @@ type iCreateVectorIndexRequest interface {
 }
 
 type CreateVectorIndexRequest struct {
-	// The vector indexing algorithm.
+	// The vector index algorithm. Valid values:
 	//
-	// Valid values:
+	// - hnswflat: HNSW index without quantization compression (default).
 	//
-	// - `hnswflat`: (Default) An HNSW index that does not use quantization compression.
+	// - novam: graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendation.
 	//
-	// - `novam`: A graph-based index that does not use quantization compression. This algorithm is suitable for high-performance scenarios, such as real-time recommendations.
-	//
-	// - `novad`: A partitioned index that uses rabitq quantization. This algorithm is suitable for large-scale, cost-effective retrieval scenarios.
+	// - novad: partitioned index with RaBitQ quantization, suitable for large-scale, low-cost retrieval scenarios.
 	//
 	// example:
 	//
@@ -62,7 +60,7 @@ type CreateVectorIndexRequest struct {
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	// The collection name.
 	//
-	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to list all collections.
+	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query the list.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +70,7 @@ type CreateVectorIndexRequest struct {
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance ID.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -80,79 +78,63 @@ type CreateVectorIndexRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The vector dimension.
+	// The vector dimensions.
 	//
 	// > - This parameter is required for dense vectors.
 	//
-	// >
-	//
-	// > - This value must match the length of the `Rows.Vector` data provided when calling the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation.
+	// > - The value must be the same as the length of the vector data Rows.Vector in the [UpsertCollectionData](https://help.aliyun.com/document_detail/2401493.html) operation.
 	//
 	// example:
 	//
 	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Specifies whether to use `mmap` to build the HNSW index. The default value is 0. Set this to 1 for high-performance data uploads in scenarios where data deletion is not required.
+	// Specifies whether to use mmap to build the HNSW index. Default value: 0. If data does not need to be deleted and you have high requirements for data upload speed, we recommend that you set this parameter to 1.
 	//
 	// Valid values:
 	//
-	// - `0`: (Default) Builds the index by using segmented page storage. This mode uses the `shared_buffer` in PostgreSQL for caching and supports delete and update operations.
+	// - 0: uses the default segment-page storage to build the index. In this mode, shared_buffer in PostgreSQL can be used for caching, and operations such as deletion and update are supported.
 	//
-	// - `1`: Builds the index by using `mmap`. This mode does not support delete and update operations.
+	// - 1: uses mmap to build the index. This mode does not support operations such as deletion and update.
 	//
-	// 	Notice:
-	//
-	// The `ExternalStorage` parameter is supported only by AnalyticDB for PostgreSQL V6.0.
+	// 	Notice: The ExternalStorage parameter is supported only in V6.0. It is not supported in V7.0.</notice>
 	//
 	// example:
 	//
 	// 0
 	ExternalStorage *int32 `json:"ExternalStorage,omitempty" xml:"ExternalStorage,omitempty"`
-	// The size of the candidate set for the HNSW algorithm during index construction. The value must be in the range of 4 to 1,000. The default value is 64.
+	// The size of the candidate set when the HNSW algorithm builds the index. Valid values: 4 to 1000. Default value: 64.
 	//
-	// > This parameter applies only to AnalyticDB for PostgreSQL V7.0 instances, and its value must be greater than or equal to `2 	- HnswM`.
+	// > This parameter is required only for AnalyticDB for PostgreSQL V7.0 instances, and the value must be greater than or equal to 2 × HNSW_M.
 	//
 	// example:
 	//
 	// 128
 	HnswEfConstruction *int32 `json:"HnswEfConstruction,omitempty" xml:"HnswEfConstruction,omitempty"`
-	// The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. The system automatically sets this value based on the vector dimension. You do not typically need to configure this parameter manually.
+	// The maximum number of neighbors in the HNSW algorithm. The operation automatically sets this value based on the vector dimensions. You do not need to manually set this value in most cases.
 	//
 	// > Valid values:
 	//
-	// >
+	// >- AnalyticDB for PostgreSQL V6.0 instances: 1 to 1000.
 	//
-	// > - For AnalyticDB for PostgreSQL V6.0 instances: 1 to 1,000.
+	// >- AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. Default value: 16.
 	//
-	// >
+	// > Recommended settings based on vector dimensions:
 	//
-	// > - For AnalyticDB for PostgreSQL V7.0 instances: 2 to 100. The default value is 16.
+	// > - 384 or less: 16
 	//
-	// > We recommend the following values based on the vector dimension:
+	// > - Greater than 384 and less than or equal to 768: 32
 	//
-	// >
+	// > - Greater than 768 and less than or equal to 1024: 64
 	//
-	// > - For dimensions of 384 or less: 16
-	//
-	// >
-	//
-	// > - For dimensions from 385 to 768: 32
-	//
-	// >
-	//
-	// > - For dimensions from 769 to 1,024: 64
-	//
-	// >
-	//
-	// > - For dimensions greater than 1,024: 128
+	// > - Greater than 1024: 128
 	//
 	// example:
 	//
 	// 64
 	HnswM *int32 `json:"HnswM,omitempty" xml:"HnswM,omitempty"`
-	// The name of the management account that has `rds_superuser` permissions.
+	// The name of the management account that has the rds_superuser permission.
 	//
-	// > You can create an account on the \\*\\*account management\\*\\	- page in the console or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
+	// > You can create an account in the console by navigating to Account Management, or call the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -170,44 +152,44 @@ type CreateVectorIndexRequest struct {
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The distance metric used to build the vector index. Valid values:
 	//
-	// - `l2`: euclidean distance
+	// - l2: Euclidean distance.
 	//
-	// - `ip`: dot product (inner product)
+	// - ip: inner product.
 	//
-	// - `cosine`: cosine similarity
+	// - cosine: cosine similarity.
 	//
-	// > Sparse vectors support only `ip`.
+	// > Only ip is supported for sparse vectors.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The namespace. The default value is `public`.
+	// The namespace. Default value: public.
 	//
-	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list all namespaces.
+	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The number of lists (partitions) for the Novad algorithm. The value must be in the range of 2 to 1,073,741,824. The default value is 256.
+	// The number of lists (partitions) for Novad. Valid values: 2 to 1073741824. Default value: 256.
 	//
 	// example:
 	//
 	// 256
 	Nlist   *int32 `json:"Nlist,omitempty" xml:"Nlist,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to enable Product Quantization (PQ) to accelerate indexing. Recommended for collections with over 500,000 vectors. Valid values:
+	// Specifies whether to enable product quantization (PQ) algorithm acceleration for the index. We recommend that you enable this feature when the data volume exceeds 500,000. Valid values:
 	//
-	// - `0`: Disabled.
+	// - 0: disabled.
 	//
-	// - `1`: Enabled. (Default)
+	// - 1: enabled (default).
 	//
 	// example:
 	//
 	// 1
 	PqEnable *int32 `json:"PqEnable,omitempty" xml:"PqEnable,omitempty"`
-	// The number of bits for rabitq compression. The valid range is 1 to 8. The default value is 3.
+	// The number of bits for RaBitQ compression. Valid values: 1 to 8. Default value: 3.
 	//
 	// example:
 	//
@@ -223,9 +205,9 @@ type CreateVectorIndexRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The vector type. Valid values:
 	//
-	// - `Dense`: (Default) a dense vector
+	// - Dense: dense vector (default).
 	//
-	// - `Sparse`: a sparse vector
+	// - Sparse: sparse vector.
 	//
 	// example:
 	//

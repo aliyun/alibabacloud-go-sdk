@@ -42,13 +42,13 @@ type ListSupabaseDataBackupsRequest struct {
 	//
 	// 327329803
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup pattern. Valid values: Automated: automatic backup. Manual: manual backup.
+	// The backup mode. Valid values: Automated: automatic backup performed by the system; Manual: manual backup.
 	//
 	// example:
 	//
 	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The status of the backup set. Valid values: Success: the backup is successful; Failed: the backup fails.
+	// The status of the backup set. Valid values: Success: successful; Failed: failed.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListSupabaseDataBackupsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The paging token for paged query. Do not specify this parameter for the first request. For subsequent requests, specify the NextToken value returned by the previous response.
+	// The paging query token. Do not specify this parameter for the first request. For subsequent requests, specify the NextToken value returned by the previous response.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number. The value must be greater than 0 and cannot exceed the maximum value of an integer. Default value: 1.
+	// The page number. The value must be greater than 0 and not exceed the maximum value of an integer. Default value: 1.
 	//
 	// example:
 	//

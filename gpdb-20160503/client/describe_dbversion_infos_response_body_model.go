@@ -22,7 +22,7 @@ type DescribeDBVersionInfosResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried minor versions.
+	// The data structure.
 	VersionDetails *DescribeDBVersionInfosResponseBodyVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeDBVersionInfosResponseBody) Validate() error {
 }
 
 type DescribeDBVersionInfosResponseBodyVersionDetails struct {
-	// The queried minor version information about the instance in Serverless mode.
+	// The kernel version information for the cloud-native mode.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeDBVersionInfosResponseBodyVersionDetails struct {
 	//
 	// ]
 	Serverless interface{} `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The queried minor version information about the instance in elastic storage mode.
+	// The kernel version information for the storage elastic mode.
 	//
 	// example:
 	//

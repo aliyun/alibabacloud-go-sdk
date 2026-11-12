@@ -60,19 +60,19 @@ type ModifyJDBCDataSourceRequest struct {
 	//
 	// example:
 	//
-	// jdbc:mysql://rm-xxx.mysql.rds.aliyuncs.com:3306/testadmin
+	// xxxxxx
 	JDBCConnectionString *string `json:"JDBCConnectionString,omitempty" xml:"JDBCConnectionString,omitempty"`
 	// The password of the database account.
 	//
 	// example:
 	//
-	// testpasswd
+	// xxxxxx
 	JDBCPassword *string `json:"JDBCPassword,omitempty" xml:"JDBCPassword,omitempty"`
 	// The name of the database account.
 	//
 	// example:
 	//
-	// testuser
+	// xxxxxx
 	JDBCUserName *string `json:"JDBCUserName,omitempty" xml:"JDBCUserName,omitempty"`
 	// The region ID of the instance.
 	//

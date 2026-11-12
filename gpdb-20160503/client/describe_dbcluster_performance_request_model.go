@@ -28,7 +28,7 @@ type iDescribeDBClusterPerformanceRequest interface {
 type DescribeDBClusterPerformanceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specified region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
+	// The end time of the query. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
 	//
-	// > The end time must be later than the start time. The maximum time range that can be specified is seven days.
+	// > The end time must be later than the start time, and the time interval between the start time and the end time cannot exceed 7 days.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2021-11-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metric that you want to query. Separate multiple values with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+	// The names of the performance metrics. Separate multiple metrics with commas (,). For more information, see [Performance metric table](https://help.aliyun.com/document_detail/86943.html).
 	//
 	// This parameter is required.
 	//
@@ -56,27 +56,27 @@ type DescribeDBClusterPerformanceRequest struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The node type. Valid values:
 	//
-	// 	- **master**: coordinator node.
+	// - **master**: Master node.
 	//
-	// 	- **segment**: compute node.
+	// - **segment**: Segment node.
 	//
-	// > If you do not specify this parameter, the performance metrics of all nodes are returned.
+	// > If you do not specify this parameter, the monitoring metrics of all nodes are returned.
 	//
 	// example:
 	//
 	// master
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The nodes for which you want to query performance metrics. Separate multiple values with commas (,). Example: `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](https://help.aliyun.com/document_detail/390136.html) operation to query the names of nodes.
+	// The names of the nodes for which you want to query monitoring metrics. Separate multiple node names with commas (,), such as `master-10******1,master-10******2`. You can call the [DescribeDBClusterNode](https://help.aliyun.com/document_detail/390136.html) operation to obtain the node names.
 	//
-	// You can also filter the nodes based on their metric values. Valid values:
+	// You can also filter nodes based on the values of monitoring metrics. Valid values:
 	//
-	// 	- **top10**: the 10 nodes that have the highest metric values.
+	// - **top10**: The top 10 nodes with the highest monitoring metric values.
 	//
-	// 	- **top20**: the 20 nodes that have the highest metric values.
+	// - **top20**: The top 20 nodes with the highest monitoring metric values.
 	//
-	// 	- **bottom10**: the 10 nodes that have the lowest metric values.
+	// - **bottom10**: The bottom 10 nodes with the lowest monitoring metric values.
 	//
-	// 	- **bottom20**: the 20 nodes that have the lowest metric values.
+	// - **bottom20**: The bottom 20 nodes with the lowest monitoring metric values.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// testgroup
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format.
+	// The start time of the query. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
 	//
-	// > You can query monitoring information only within the last 30 days.
+	// > You can query monitoring information only for the last 30 days.
 	//
 	// This parameter is required.
 	//

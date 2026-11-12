@@ -18,19 +18,23 @@ type iDeleteDocumentResponseBody interface {
 }
 
 type DeleteDocumentResponseBody struct {
-	// Detailed information returned by the API.
+	// The detailed information returned by the API operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Creation status, value description: - **success**: Success - **fail**: Fail
+	// The creation status. Valid values:
+	//
+	// - **success**: Successful.
+	//
+	// - **fail**: Failed.
 	//
 	// example:
 	//

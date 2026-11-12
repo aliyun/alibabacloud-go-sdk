@@ -28,13 +28,13 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// gp-bp12ga6v69h86****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+	// The end time of the query in UTC. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
 	//
 	// example:
 	//
 	// 2021-11-03T15:10Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+	// The list of performance metric values for the instance.
 	PerformanceKeys []*DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// 8E8990F0-C81E-4C94-8F51-5F**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time follows the ISO 8601 standard in the `YYYY-MM-DDTHH:mmZ` format. The time is displayed in UTC.
+	// The start time of the query in UTC. Specify the time in the `YYYY-MM-DDTHH:mmZ` format.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *DescribeDBClusterPerformanceResponseBody) Validate() error {
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeys struct {
-	// The name of the performance metric. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/86943.html).
+	// The name of the performance metric. For more information, see [Performance metric table](https://help.aliyun.com/document_detail/86943.html).
 	//
 	// example:
 	//
 	// adbpg_group_cpu_used_percent
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Details of the performance metric of a node.
+	// The collection of performance metrics.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	// The unit of the performance metric.
+	// The unit of the monitoring metrics.
 	//
 	// example:
 	//
@@ -190,17 +190,17 @@ type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// 	- **master**: primary coordinator node
+	// - **master**: Master node.
 	//
-	// 	- **standby**: standby coordinator node
+	// - **standby**: Standby node.
 	//
-	// 	- **segment**: compute node
+	// - **segment**: Compute node.
 	//
 	// example:
 	//
 	// standby
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The value of the performance metric collected at a point in time.
+	// The performance metric values. Each value corresponds to a collection time point.
 	Values []*DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -253,7 +253,7 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeries) Validate
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues struct {
-	// The value of the performance metric and the time when the metric value was collected.
+	// The performance metric value.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 

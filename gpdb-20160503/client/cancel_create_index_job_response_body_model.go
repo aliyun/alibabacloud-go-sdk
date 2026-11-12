@@ -18,23 +18,23 @@ type iCancelCreateIndexJobResponseBody interface {
 }
 
 type CancelCreateIndexJobResponseBody struct {
-	// The returned message.
+	// The detailed information returned in the response.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The execution status of the operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//

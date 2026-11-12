@@ -16,7 +16,7 @@ type iCreateSupabaseBackupResponseBody interface {
 }
 
 type CreateSupabaseBackupResponseBody struct {
-	// The ID of the backup job. You can call ListSupabaseBackupJobs to query the status and progress of the corresponding job.
+	// The ID of the backup job. You can call ListSupabaseBackupJobs to query the status and progress of the job.
 	//
 	// example:
 	//

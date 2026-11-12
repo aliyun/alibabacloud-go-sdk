@@ -28,13 +28,13 @@ type iListWorkspacesResponseBody interface {
 type ListWorkspacesResponseBody struct {
 	// The list of workspace details.
 	Items []*ListWorkspacesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. Default value: 10.
+	// The maximum number of entries to return in this request. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type ListWorkspacesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ func (s *ListWorkspacesResponseBody) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItems struct {
-	// The list of API keys for the workspace.
+	// The list of API keys in the workspace.
 	Apikeys []*ListWorkspacesResponseBodyItemsApikeys `json:"Apikeys,omitempty" xml:"Apikeys,omitempty" type:"Repeated"`
-	// The creation time.
+	// The time when the workspace was created.
 	//
 	// example:
 	//
@@ -161,17 +161,17 @@ type ListWorkspacesResponseBodyItems struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The services in the workspace.
 	Services []*ListWorkspacesResponseBodyItemsServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//
 	// gp-ws-wkb4fp3j9u79ha
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
-	// - Maximum length: 50.
+	// - The maximum length is 50 characters.
 	//
-	// - Must be unique.
+	// - The name must be unique.
 	//
 	// - Special characters are not allowed.
 	//
@@ -259,7 +259,7 @@ func (s *ListWorkspacesResponseBodyItems) Validate() error {
 type ListWorkspacesResponseBodyItemsApikeys struct {
 	// The services authorized for the API key.
 	AuthServices []*ListWorkspacesResponseBodyItemsApikeysAuthServices `json:"AuthServices,omitempty" xml:"AuthServices,omitempty" type:"Repeated"`
-	// The creation time of the API key.
+	// The time when the API key was created.
 	//
 	// example:
 	//
@@ -367,13 +367,13 @@ func (s *ListWorkspacesResponseBodyItemsApikeys) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsApikeysAuthServices struct {
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
 	// agdb-eqxwj5tj5ojx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service type. Valid values:
+	// The type of the service. Valid values:
 	//
 	// - memory
 	//
@@ -417,34 +417,37 @@ func (s *ListWorkspacesResponseBodyItemsApikeysAuthServices) Validate() error {
 
 type ListWorkspacesResponseBodyItemsServices struct {
 	Components []*ListWorkspacesResponseBodyItemsServicesComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The creation time.
+	// The time when the workspace was created.
 	//
 	// example:
 	//
 	// 2026-03-09T02:26:48Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The compute resource.
+	// The compute resources.
 	//
 	// example:
 	//
 	// 1
-	Cu                 *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The expiration time.
 	//
 	// example:
 	//
 	// 2026-01-26T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The billing type. Valid values:
+	// The billing method. Valid values:
 	//
 	// - **POSTPAY**: pay-as-you-go.
 	//
 	// - **PREPAY**: subscription.
 	//
-	// > - If this parameter is not specified, the default value is pay-as-you-go.
+	// > - If this parameter is not specified, the default value is POSTPAY.
 	//
-	// > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select the billing type as needed.
+	// > - In subscription mode, a discount is provided if you purchase a subscription for one year or longer. Select a billing method based on your business requirements.
 	//
 	// example:
 	//
@@ -456,19 +459,19 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// deprecated
 	Plan *string `json:"Plan,omitempty" xml:"Plan,omitempty"`
-	// The service ID.
+	// The ID of the service.
 	//
 	// example:
 	//
 	// agdb-xxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The service name.
+	// The name of the service.
 	//
 	// example:
 	//
 	// agdb-xxxx
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The service type. Valid values:
+	// The type of the service. Valid values:
 	//
 	// - memory
 	//
@@ -478,7 +481,7 @@ type ListWorkspacesResponseBodyItemsServices struct {
 	//
 	// memory
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The service status. Valid values:
+	// The status of the service. Valid values:
 	//
 	// - creating: The service is being created.
 	//
@@ -611,12 +614,30 @@ func (s *ListWorkspacesResponseBodyItemsServices) Validate() error {
 }
 
 type ListWorkspacesResponseBodyItemsServicesComponents struct {
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Cu                 *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	DeletionProtection *bool   `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ComponentId        *string `json:"componentId,omitempty" xml:"componentId,omitempty"`
-	ComponentType      *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
+	// example:
+	//
+	// 2026-03-09T02:26:48Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2
+	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// True
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// example:
+	//
+	// true
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// sas-xxxx
+	ComponentId *string `json:"componentId,omitempty" xml:"componentId,omitempty"`
+	// example:
+	//
+	// game
+	ComponentType *string `json:"componentType,omitempty" xml:"componentType,omitempty"`
 }
 
 func (s ListWorkspacesResponseBodyItemsServicesComponents) String() string {

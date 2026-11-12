@@ -24,13 +24,13 @@ type iChatWithKnowledgeBaseResponseBody interface {
 type ChatWithKnowledgeBaseResponseBody struct {
 	// The model response.
 	ChatCompletion *ChatWithKnowledgeBaseResponseBodyChatCompletion `json:"ChatCompletion,omitempty" xml:"ChatCompletion,omitempty" type:"Struct"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The multi-knowledge base recall information.
+	// The recall information from multiple knowledge bases.
 	MultiCollectionRecallResult *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult `json:"MultiCollectionRecallResult,omitempty" xml:"MultiCollectionRecallResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -40,9 +40,9 @@ type ChatWithKnowledgeBaseResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status. Valid values:
 	//
-	// - **success**: Succeeded.
+	// - **success**: The operation is successful.
 	//
-	// - **fail**: Failed.
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ func (s *ChatWithKnowledgeBaseResponseBody) Validate() error {
 }
 
 type ChatWithKnowledgeBaseResponseBodyChatCompletion struct {
-	// The real-time generated text content.
+	// The text content generated in real time.
 	Choices []*ChatWithKnowledgeBaseResponseBodyChatCompletionChoices `json:"Choices,omitempty" xml:"Choices,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -132,13 +132,13 @@ type ChatWithKnowledgeBaseResponseBodyChatCompletion struct {
 	//
 	// 273e3fc7-8f56-4167-a1bb-d35d2f3b9043
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The model name used.
+	// The name of the model used.
 	//
 	// example:
 	//
 	// qwen-plus
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// The token usage of the large model output.
+	// The number of tokens used for the large language model output.
 	Usage *ChatWithKnowledgeBaseResponseBodyChatCompletionUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -220,13 +220,13 @@ type ChatWithKnowledgeBaseResponseBodyChatCompletionChoices struct {
 	//
 	// finish
 	FinishReason *string `json:"FinishReason,omitempty" xml:"FinishReason,omitempty"`
-	// The reply sequence number.
+	// The reply index.
 	//
 	// example:
 	//
 	// 0
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The large model reply response.
+	// The response message from the large language model.
 	Message *ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage `json:"Message,omitempty" xml:"Message,omitempty" type:"Struct"`
 }
 
@@ -287,7 +287,7 @@ type ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage struct {
 	//
 	// Logical reasoning process
 	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
-	// The message role:
+	// The message role. Valid values:
 	//
 	// - system
 	//
@@ -299,7 +299,7 @@ type ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage struct {
 	//
 	// user
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The tool call response list.
+	// The list of tool invocation responses.
 	ToolCalls []*ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls `json:"ToolCalls,omitempty" xml:"ToolCalls,omitempty" type:"Repeated"`
 }
 
@@ -361,7 +361,7 @@ func (s *ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage) Validate
 }
 
 type ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls struct {
-	// The called function information.
+	// The information about the called function.
 	Function *ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunction `json:"Function,omitempty" xml:"Function,omitempty" type:"Struct"`
 	// The ID.
 	//
@@ -369,7 +369,7 @@ type ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls stru
 	//
 	// "chatcmpl-c1bebafa-cc48-44e2-88c6-1a3572952f8e"
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The tool call sequence number.
+	// The ordinal number of the tool invocation.
 	//
 	// example:
 	//
@@ -422,13 +422,13 @@ func (s *ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls)
 }
 
 type ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunction struct {
-	// The called function parameters.
+	// The arguments of the called function.
 	//
 	// example:
 	//
 	// {"city":"hangzhou"}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// The called function name.
+	// The name of the called function.
 	//
 	// example:
 	//
@@ -467,7 +467,7 @@ func (s *ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsF
 }
 
 type ChatWithKnowledgeBaseResponseBodyChatCompletionUsage struct {
-	// The number of tokens consumed for generating content.
+	// The number of tokens consumed to generate the content.
 	//
 	// example:
 	//
@@ -479,7 +479,7 @@ type ChatWithKnowledgeBaseResponseBodyChatCompletionUsage struct {
 	//
 	// 42
 	PromptTokens *int64 `json:"PromptTokens,omitempty" xml:"PromptTokens,omitempty"`
-	// The prompt token details.
+	// The details of the prompt tokens.
 	PromptTokensDetails *ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails `json:"PromptTokensDetails,omitempty" xml:"PromptTokensDetails,omitempty" type:"Struct"`
 	// The total number of tokens.
 	//
@@ -543,7 +543,7 @@ func (s *ChatWithKnowledgeBaseResponseBodyChatCompletionUsage) Validate() error 
 }
 
 type ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails struct {
-	// The number of tokens that hit the cache.
+	// The number of cached tokens.
 	//
 	// example:
 	//
@@ -575,9 +575,9 @@ func (s *ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails
 type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult struct {
 	// The entity details.
 	Entities []*string `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
-	// The recall items.
+	// The recalled items.
 	Matches []*ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches `json:"Matches,omitempty" xml:"Matches,omitempty" type:"Repeated"`
-	// The relationship edge details.
+	// The file name.
 	Relations []*string `json:"Relations,omitempty" xml:"Relations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -587,9 +587,9 @@ type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The API execution status. Valid values:
 	//
-	// - **success**: Execution succeeded.
+	// - **success**: The execution is successful.
 	//
-	// - **fail**: Execution failed.
+	// - **fail**: The execution fails.
 	//
 	// example:
 	//
@@ -601,7 +601,7 @@ type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult struct {
 	//
 	// 42
 	Tokens *int64 `json:"Tokens,omitempty" xml:"Tokens,omitempty"`
-	// The tokens or items consumed by document understanding or embedding.
+	// The number of tokens or entries consumed for document understanding or embedding.
 	Usage *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 }
 
@@ -707,9 +707,7 @@ type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches struct 
 	//
 	// process_info_19b9df4dc9ad4bf2b30eb2faa4a9a987.txt
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The public URL of the query result image, valid for 2 hours by default.
-	//
-	// You can specify the validity period using the UrlExpiration input parameter.
+	// The public URL of the image in the query result. The default validity period is 2 hours. You can specify the validity period by using the UrlExpiration request parameter.
 	//
 	// example:
 	//
@@ -721,7 +719,7 @@ type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches struct 
 	//
 	// 273e3fc7-8f56-4167-a1bb-d35d2f3b9043
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The metadata information loaded by the document loader.
+	// The metadata generated when the document loader loads the document.
 	//
 	// example:
 	//
@@ -735,13 +733,13 @@ type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches struct 
 	//
 	// 0.1
 	RerankScore *float64 `json:"RerankScore,omitempty" xml:"RerankScore,omitempty"`
-	// The source of the retrieval result. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path recall.
+	// The source of the retrieve results. 1 indicates AISearch, 2 indicates full-text index, and 3 indicates dual-channel recall.
 	//
 	// example:
 	//
 	// 3
 	RetrievalSource *int64 `json:"RetrievalSource,omitempty" xml:"RetrievalSource,omitempty"`
-	// The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when creating the index (l2/ip/cosine).
+	// The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when the index is created, such as l2, ip, or cosine.
 	//
 	// example:
 	//
@@ -856,7 +854,7 @@ func (s *ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches) Va
 type ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage struct {
 	// The number of tokens used for vectorization.
 	//
-	// > A token is the smallest unit into which input text is divided. A token can be a word, a phrase, a punctuation mark, a character, etc.
+	// > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
 	//
 	// example:
 	//

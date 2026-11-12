@@ -30,50 +30,66 @@ type iListSupabaseProjectsRequest interface {
 }
 
 type ListSupabaseProjectsRequest struct {
-	// The maximum number of entries to return. The default value is 10.
+	// The maximum number of results to return for the current request. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token to retrieve the next page of results.
+	// The next token.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The field used for searching. Valid values: ProjectID and ProjectName.
+	//
 	// example:
 	//
 	// ProjectId
 	SearchField *string `json:"SearchField,omitempty" xml:"SearchField,omitempty"`
+	// The search keyword. You can filter instances by instance ID or description.
+	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including the instance IDs and descriptions.
+	//
 	// example:
 	//
 	// gp-bp***************
 	SearchValue *string `json:"SearchValue,omitempty" xml:"SearchValue,omitempty"`
+	// The field used for sorting. Valid values: `gmtCreate` and `gmtModified`. Default value: `gmtCreate`.
+	//
 	// example:
 	//
 	// UpdatedDate
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
+	// The sort order. Default value: DESC.
+	//
+	// Valid values:
+	//
+	// - ASC: ascending order.
+	//
+	// - DESC: descending order.
+	//
 	// example:
 	//
 	// desc

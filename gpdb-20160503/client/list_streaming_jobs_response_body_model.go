@@ -211,7 +211,7 @@ type ListStreamingJobsResponseBodyJobItems struct {
 	//
 	// example:
 	//
-	// basic / professional
+	// Basic / Professional
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The time when the job was last modified.
 	//

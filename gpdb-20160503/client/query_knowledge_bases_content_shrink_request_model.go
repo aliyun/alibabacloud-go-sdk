@@ -42,7 +42,7 @@ type QueryKnowledgeBasesContentShrinkRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -71,23 +71,23 @@ type QueryKnowledgeBasesContentShrinkRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The reranking factor. If this parameter is not empty, the vector retrieval results are reranked. Valid values: 1 < RerankFactor <= 5.
+	// The reranking factor. If this value is not empty, the vector retrieve results are reranked. Valid values: 1 < RerankFactor <= 5.
 	//
 	// > - Reranking is slow when document chunks are sparse.
 	//
-	// > - The recommended reranking count (TopK × Factor, rounded up) should not exceed 50.
+	// > - We recommend that the number of reranked items (TopK × Factor, rounded up) does not exceed 50.
 	//
 	// example:
 	//
 	// 2
 	RerankFactor *float64 `json:"RerankFactor,omitempty" xml:"RerankFactor,omitempty"`
-	// The reranking model parameters for performing an additional reranking on the overall results after multi-channel merging.
+	// The parameters of the reranking model used to rerank the merged multi-channel results.
 	RerankModelShrink *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
-	// The information about the multiple collections to retrieve.
+	// The information about multiple collections to be retrieved.
 	//
 	// This parameter is required.
 	SourceCollectionShrink *string `json:"SourceCollection,omitempty" xml:"SourceCollection,omitempty"`
-	// The number of top results to return after multi-channel recall merging.
+	// The number of top results to return after multi-channel recall results are merged.
 	//
 	// example:
 	//

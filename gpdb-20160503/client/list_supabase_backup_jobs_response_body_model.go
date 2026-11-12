@@ -28,7 +28,7 @@ type ListSupabaseBackupJobsResponseBody struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page, which can be used as the NextToken parameter in the next request.
+	// The pagination token for the next page. You can use this value as the NextToken parameter in the next request.
 	//
 	// example:
 	//
@@ -108,27 +108,27 @@ type ListSupabaseBackupJobsResponseBodyItems struct {
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// 	- **Automated**: automatic backup
+	// 	- **Automated**: automatic backup.
 	//
-	// 	- **Manual**: manual backup
+	// 	- **Manual**: manual backup.
 	//
 	// example:
 	//
 	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The status of the backup task. Valid statuses include: schedule (waiting to be scheduled) and backup (in progress).
+	// The status of the backup task. Known statuses include: schedule (waiting for scheduling) and backup (in progress).
 	//
 	// example:
 	//
 	// backup
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The progress percentage of the backup task, such as 0%. This value may be an empty string when the task is in the schedule (waiting to be scheduled) state.
+	// The progress of the backup task in percentage, such as 0%. This value may be an empty string when the task is in the schedule state.
 	//
 	// example:
 	//
 	// 0%
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	// The start time of the backup task. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format. This value may be an empty string when the task is in the schedule (waiting to be scheduled) state.
+	// The start time of the backup task. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format. This value may be an empty string when the task is in the schedule state.
 	//
 	// example:
 	//

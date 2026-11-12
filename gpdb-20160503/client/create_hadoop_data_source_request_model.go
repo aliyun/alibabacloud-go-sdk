@@ -38,7 +38,7 @@ type iCreateHadoopDataSourceRequest interface {
 }
 
 type CreateHadoopDataSourceRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type CreateHadoopDataSourceRequest struct {
 	//
 	// gp-xxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Service description.
+	// The service description.
 	//
 	// example:
 	//
 	// pxf for hdfs data source
 	DataSourceDescription *string `json:"DataSourceDescription,omitempty" xml:"DataSourceDescription,omitempty"`
-	// Service name.
+	// The service name.
 	//
 	// example:
 	//
 	// hdfs_pxf
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// Type of Hadoop external table to be enabled, with values:
+	// The type of the Hadoop external table to enable. Valid values:
 	//
 	// - HDFS
 	//
@@ -68,13 +68,13 @@ type CreateHadoopDataSourceRequest struct {
 	//
 	// HDFS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// When HadoopCreateType=Emr, this field should contain the EMR instance ID.
+	// The ID of the EMR instance. This parameter is required when HadoopCreateType is set to Emr.
 	//
 	// example:
 	//
 	// c-1234567
 	EmrInstanceId *string `json:"EmrInstanceId,omitempty" xml:"EmrInstanceId,omitempty"`
-	// Content string of the Hadoop hdfs-site.xml file. This field is required when enabling an HDFS external table.
+	// The content string of the Hadoop hdfs-site.xml file. This parameter is required when you enable HDFS external tables.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreateHadoopDataSourceRequest struct {
 	//
 	// </configuration>
 	HDFSConf *string `json:"HDFSConf,omitempty" xml:"HDFSConf,omitempty"`
-	// Content string of the Hadoop core-site.xml file.
+	// The content string of the Hadoop core-site.xml file.
 	//
 	// example:
 	//
@@ -138,17 +138,17 @@ type CreateHadoopDataSourceRequest struct {
 	//
 	// </configuration>
 	HadoopCoreConf *string `json:"HadoopCoreConf,omitempty" xml:"HadoopCoreConf,omitempty"`
-	// External service type:
+	// The external service type. Valid values:
 	//
 	// - emr
 	//
-	// - hadoop: Self-built Hadoop
+	// - hadoop: self-managed Hadoop.
 	//
 	// example:
 	//
 	// emr
 	HadoopCreateType *string `json:"HadoopCreateType,omitempty" xml:"HadoopCreateType,omitempty"`
-	// Address and hostname of the Hadoop cluster\\"s source node in the /etc/hosts file.
+	// The addresses and hostnames of the source nodes in the Hadoop cluster in the /etc/hosts file.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type CreateHadoopDataSourceRequest struct {
 	//
 	// 192.168.220.130 core-1-2.c-xxx.cn-shanghai.emr.aliyuncs.com
 	HadoopHostsAddress *string `json:"HadoopHostsAddress,omitempty" xml:"HadoopHostsAddress,omitempty"`
-	// Content string of the Hadoop hive-site.xml file. This field is required when enabling a HIVE external table.
+	// The content string of the Hadoop hive-site.xml file. This parameter is required when you enable Hive external tables.
 	//
 	// example:
 	//
@@ -186,21 +186,21 @@ type CreateHadoopDataSourceRequest struct {
 	//
 	// </configuration>
 	HiveConf *string `json:"HiveConf,omitempty" xml:"HiveConf,omitempty"`
-	// Content string of the Hadoop mapred-site.xml file. This field is required when enabling an HDFS external table.
+	// The content string of the Hadoop mapred-site.xml file. This parameter is required when you enable HDFS external tables.
 	//
 	// example:
 	//
 	// xxxxxx
 	MapReduceConf *string `json:"MapReduceConf,omitempty" xml:"MapReduceConf,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Content string of the Hadoop yarn-site.xml file. This field is required when enabling an HDFS external table.
+	// The content string of the Hadoop yarn-site.xml file. This parameter is required when you enable HDFS external tables.
 	//
 	// example:
 	//

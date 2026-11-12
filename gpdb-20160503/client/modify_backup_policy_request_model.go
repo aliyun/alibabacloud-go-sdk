@@ -24,7 +24,7 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days for which data backup files are retained. Default value: 7. Maximum value: 7. Valid values: 1 to 7.
+	// The number of days for which data backups are retained. Default value: 7. Maximum value: 7. Valid values: 1 to 7.
 	//
 	// example:
 	//
@@ -32,17 +32,19 @@ type ModifyBackupPolicyRequest struct {
 	BackupRetentionPeriod *int32 `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
 	// The ID of the instance.
 	//
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specified region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-bp***************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Specifies whether to enable automatic point-in-time backup.
+	// Specifies whether to enable automatic recovery point creation. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
 	// Default value: true.
 	//
@@ -50,21 +52,21 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// true
 	EnableRecoveryPoint *bool `json:"EnableRecoveryPoint,omitempty" xml:"EnableRecoveryPoint,omitempty"`
-	// The cycle based on which backups are performed. If more than one day of the week is specified, the days of the week are separated by commas (,). Valid values:
+	// The data backup cycle. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- Monday
+	// - Monday: Monday.
 	//
-	// 	- Tuesday
+	// - Tuesday: Tuesday.
 	//
-	// 	- Wednesday
+	// - Wednesday: Wednesday.
 	//
-	// 	- Thursday
+	// - Thursday: Thursday.
 	//
-	// 	- Friday
+	// - Friday: Friday.
 	//
-	// 	- Saturday
+	// - Saturday: Saturday.
 	//
-	// 	- Sunday
+	// - Sunday: Sunday.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +74,7 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Tuesday,Thursday,Saturday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup window. Specify the backup window in the HH:mmZ-HH:mmZ format. The backup window must be in UTC. Default value: 00:00-01:00.
+	// The data backup time. Default value: 00:00Z-01:00Z. Format: HH:mmZ-HH:mmZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -80,17 +82,17 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// 15:00Z-16:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	// The frequency of point-in-time backup.
+	// The frequency of recovery points. Valid values:
 	//
-	// 	- 1: per hour
+	// - **1**: Every hour.
 	//
-	// 	- 2: per 2 hours
+	// - **2**: Every two hours.
 	//
-	// 	- 4: per 4 hours
+	// - **4**: Every four hours.
 	//
-	// 	- 8: per 8 hours
+	// - **8**: Every eight hours.
 	//
-	// Default value: 8.
+	// Default value: **1**.
 	//
 	// example:
 	//

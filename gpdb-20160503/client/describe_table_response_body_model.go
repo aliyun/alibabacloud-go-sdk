@@ -27,7 +27,7 @@ type DescribeTableResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -35,9 +35,9 @@ type DescribeTableResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The execution status of the API operation. Valid values:
 	//
-	// - **success**: The execution was successful.
+	// - **success**: Execution succeeded.
 	//
-	// - **fail**: The execution failed.
+	// - **fail**: Execution failed.
 	//
 	// example:
 	//

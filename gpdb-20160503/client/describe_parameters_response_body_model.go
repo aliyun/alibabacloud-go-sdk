@@ -16,9 +16,9 @@ type iDescribeParametersResponseBody interface {
 }
 
 type DescribeParametersResponseBody struct {
-	// The queried configuration parameters.
+	// The list of configuration parameters.
 	Parameters []*DescribeParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type DescribeParametersResponseBodyParameters struct {
 	//
 	// 10800000
 	CurrentValue *string `json:"CurrentValue,omitempty" xml:"CurrentValue,omitempty"`
-	// Indicates whether a restart is required for parameter modifications to take effect. Valid values:
+	// Indicates whether the instance must be restarted. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance must be restarted.
 	//
-	// 	- **false**
+	// - **false**: The instance does not need to be restarted.
 	//
 	// example:
 	//
@@ -84,15 +84,15 @@ type DescribeParametersResponseBodyParameters struct {
 	ForceRestartInstance *string `json:"ForceRestartInstance,omitempty" xml:"ForceRestartInstance,omitempty"`
 	// Indicates whether the configuration parameter can be modified. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The parameter can be modified.
 	//
-	// 	- **false**
+	// - **false**: The parameter cannot be modified.
 	//
 	// example:
 	//
 	// true
 	IsChangeableConfig *string `json:"IsChangeableConfig,omitempty" xml:"IsChangeableConfig,omitempty"`
-	// The valid values of the configuration parameter.
+	// The value range of the configuration parameter.
 	//
 	// example:
 	//

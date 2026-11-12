@@ -24,7 +24,7 @@ type iListDocumentCollectionsRequest interface {
 type ListDocumentCollectionsRequest struct {
 	// The ID of the instance.
 	//
-	// > To view details of all AnalyticDB for PostgreSQL instances in a region, including their IDs, call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view the details of all AnalyticDB for PostgreSQL instances in the target region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListDocumentCollectionsRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The namespace. Default value: public.
 	//
-	// > To create a namespace, call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation. To list namespaces, call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
+	// > You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the namespace list.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDocumentCollectionsRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password for the namespace.
 	//
-	// > You set this password when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified when you call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type ListDocumentCollectionsRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

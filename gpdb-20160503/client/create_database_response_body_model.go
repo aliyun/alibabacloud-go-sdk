@@ -14,7 +14,7 @@ type iCreateDatabaseResponseBody interface {
 }
 
 type CreateDatabaseResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

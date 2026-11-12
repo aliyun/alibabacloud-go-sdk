@@ -18,7 +18,7 @@ type iDescribeStreamingJobRequest interface {
 }
 
 type DescribeStreamingJobRequest struct {
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeStreamingJobRequest struct {
 	//
 	// gp-bp10g78o9807yv9h3
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Job ID.
+	// The job ID.
 	//
 	// This parameter is required.
 	//
@@ -34,9 +34,9 @@ type DescribeStreamingJobRequest struct {
 	//
 	// 1
 	JobId *int32 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetServiceAccessInfoRequest interface {
 }
 
 type GetServiceAccessInfoRequest struct {
-	// The region ID where the SaaS service resides.
+	// The region ID of the SaaS service.
 	//
 	// example:
 	//

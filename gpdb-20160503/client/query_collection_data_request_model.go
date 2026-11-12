@@ -54,9 +54,9 @@ type iQueryCollectionDataRequest interface {
 }
 
 type QueryCollectionDataRequest struct {
-	// The name of the collection.
+	// The collection name.
 	//
-	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to list available collections.
+	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to view the list.
 	//
 	// This parameter is required.
 	//
@@ -64,47 +64,47 @@ type QueryCollectionDataRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The content for full-text search. If this parameter is omitted, only vector search is performed. If this parameter is specified, the system performs a hybrid search of vector search and full-text search.
+	// The content used for full-text retrieval. If this parameter is left empty, only vector retrieval is used. If this parameter is specified, both vector and full-text retrieval are used.
 	//
-	// > You must specify one of the Content and Vector parameters.
+	// > This parameter and the Vector parameter cannot be left empty at the same time.
 	//
 	// example:
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query details for all AnalyticDB for PostgreSQL instances in a region, including their instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The filter conditions for data retrieval. It is in the format of a WHERE clause in SQL. This expression returns a boolean value, which can be a simple comparison operator, such as `=`, `<>`, `!=`, `>`, `<`, `>=`, and `<=`, or a more complex expression combined with logical operators, such as `AND`, `OR`, and `NOT`, and keywords such as `IN`, `BETWEEN`, and `LIKE`.
+	// The filter condition for the data to query, in the SQL WHERE clause format. It is an expression that returns a Boolean value (true or false). The condition can be a simple comparison operator, such as equal to (=), not equal to (<> or !=), greater than (>), less than (<), greater than or equal to (>=), or less than or equal to (<=). It can also be a more complex expression combined with logical operators (AND, OR, NOT), or a condition that uses keywords such as IN, BETWEEN, and LIKE.
 	//
-	// > - For more information about the syntax, see [PostgreSQL WHERE](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/).
+	// >
+	//
+	// > - For detailed syntax, refer to https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
 	//
 	// example:
 	//
 	// pipeline_id=\\"1yhpmo0rbn\\" AND (spu=\\"10025667796135\\" AND dept_id=\\"226\\")
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The hybrid search algorithm. If this parameter is empty, the system ranks results by directly comparing the scores from the vector search and the full-text search.
+	// The dual-channel recall algorithm. Default value: empty (which means the vector and full-text scores are directly compared and sorting is applied). Valid values:
 	//
-	// Valid values:
+	// - RRF: reciprocal rank fusion. A parameter k is used to control the fusion effect. For more information, see the HybridSearchArgs configuration.
 	//
-	// - `RRF`: Reciprocal Rank Fusion. This algorithm has a parameter k to control the fusion effect. For more information, see the description of the `HybridSearchArgs` parameter.
+	// - Weight: weighted sorting. A parameter alpha is used to control the weight of the vector and full-text scores before sorting. For more information, see the HybridSearchArgs configuration.
 	//
-	// - `Weight`: weighted sort. This algorithm uses a parameter alpha to control the score ratio of vector search and full-text search, and then sorts the results. For more information about the parameter, see the `HybridSearchArgs` parameter.
-	//
-	// - `Cascaded`: performs a full-text search, and then performs a vector search on the search results.
+	// - Cascaded: full-text retrieval is performed first, and then vector retrieval is performed based on the results.
 	//
 	// example:
 	//
 	// RRF
 	HybridSearch *string `json:"HybridSearch,omitempty" xml:"HybridSearch,omitempty"`
-	// The parameters for the hybrid search algorithm. The following algorithms are supported: RRF and Weight.
+	// The algorithm parameters for hybrid search. RRF and Weight are supported:
 	//
-	// - For RRF, specify the constant k in the scoring algorithm `1/(k+rank_i)`. The value must be a positive integer greater than 1. The format is as follows:
+	// - RRF: specifies the constant k in the score calculation formula `1/(k+rank_i)`. The value must be a positive integer greater than 1. Format:
 	//
 	// ```
 	//
@@ -120,7 +120,7 @@ type QueryCollectionDataRequest struct {
 	//
 	// ```
 	//
-	// - For Weight, in the formula `alpha 	- vector_score + (1-alpha) 	- text_score`, the alpha parameter indicates the score ratio of the vector search to the full-text search. The value ranges from 0 to 1. 0 indicates that only the full-text search is used, and 1 indicates that only the vector search is used.
+	// - Weight: The calculation formula is `alpha 	- vector_score + (1-alpha) 	- text_score`. The parameter alpha represents the weight of the vector and full-text search scores. The value ranges from 0 to 1, where 0 indicates full-text search only and 1 indicates vector search only. Format:
 	//
 	// ```
 	//
@@ -136,7 +136,7 @@ type QueryCollectionDataRequest struct {
 	//
 	// ```
 	HybridSearchArgs map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	// This parameter is left empty by default. It specifies the metadata fields to be returned. You can specify multiple fields and separate them with commas (,).
+	// The metadata fields to return. Default value: empty. Separate multiple fields with commas.
 	//
 	// example:
 	//
@@ -162,23 +162,23 @@ type QueryCollectionDataRequest struct {
 	//
 	// true
 	IncludeValues *bool `json:"IncludeValues,omitempty" xml:"IncludeValues,omitempty"`
-	// The similarity algorithm for search. Valid values:
+	// The similarity algorithm used during search. Valid values:
 	//
-	// - **l2**: the Euclidean distance.
+	// - **l2**: Euclidean distance.
 	//
-	// - **ip**: the dot product distance.
+	// - **ip**: Dot product (inner product) distance.
 	//
-	// - **cosine**: the cosine similarity.
+	// - **cosine**: Cosine similarity.
 	//
-	// > If this parameter is not specified, the algorithm specified when the index is created is used.
+	// > If this parameter is left empty, the algorithm specified when the index is built is used.
 	//
 	// example:
 	//
 	// cosine
 	Metrics *string `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
-	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to list available namespaces.
+	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to view the list.
 	//
 	// example:
 	//
@@ -192,29 +192,29 @@ type QueryCollectionDataRequest struct {
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	// This parameter is left empty by default. It specifies the start position of a paged query. This parameter is not supported in hybrid search.
+	// The retrieval starting point during paged queries. Default value: empty. This parameter is not supported in dual-channel recall scenarios.
 	//
-	// The value must be greater than or equal to 0. When this parameter is not empty, Total in the response indicates the total number of hits. This parameter is used with TopK. For example, if you want to retrieve chunks 0 to 44 with a page size of 20, you must send three requests:
+	// The value must be greater than or equal to 0. If this parameter is specified, the Total parameter is returned to indicate the total number of hits. This parameter is used together with TopK. For example, to retrieve chunks with chunk_id ranging from 0 to 44 with a paging size of 20, you must make three requests:
 	//
-	// - `Offset=0, TopK=20` returns chunks 0 to 19.
+	// - Offset=0, TopK=20 returns chunks with chunk_id ranging from 0 to 19.
 	//
-	// - `Offset=20, TopK=20` returns chunks 20 to 39.
+	// - Offset=20, TopK=20 returns chunks with chunk_id ranging from 20 to 39.
 	//
-	// - `Offset=40, TopK=20` returns chunks 40 to 44.
+	// - Offset=30, TopK=20 returns chunks with chunk_id ranging from 40 to 44.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// This parameter is left empty by default. It specifies the field based on which to sort the results. This parameter is not supported in hybrid search.
+	// The field based on which the results are sorted. Default value: empty. This parameter is not supported in hybrid search scenarios.
 	//
-	// The field must be a metadata field or a default field in the table, such as `id`. The following formats are supported:
+	// The field must belong to the metadata or be a default field in the table, such as id. Supported formats:
 	//
-	// - A single field, such as `chunk_id`.
+	// - A single field, such as chunk_id.
 	//
-	// - Multiple fields separated by commas (,), such as `block_id, chunk_id`.
+	// - Multiple fields separated by commas, such as block_id, chunk_id.
 	//
-	// - Descending order, such as `block_id DESC, chunk_id DESC`.
+	// - Descending order, such as block_id DESC, chunk_id DESC.
 	//
 	// example:
 	//
@@ -229,13 +229,13 @@ type QueryCollectionDataRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Uses another relational table to filter vector data, which is similar to the JOIN operation.
+	// Uses another relational table to filter vector data, similar to the JOIN operation.
 	//
-	// > The data of the relational table can be returned by setting the IncludeMetadataFields parameter. For example, `rds_table_name.id` indicates that the id field of the relational table is returned.
+	// > You can set the IncludeMetadataFields parameter to return data from the relational table. For example, rds_table_name.id indicates that the id field of the relational table is returned.
 	RelationalTableFilter *QueryCollectionDataRequestRelationalTableFilter `json:"RelationalTableFilter,omitempty" xml:"RelationalTableFilter,omitempty" type:"Struct"`
-	// The sparse vector data.
+	// The list of sparse vector data.
 	SparseVector *QueryCollectionDataRequestSparseVector `json:"SparseVector,omitempty" xml:"SparseVector,omitempty" type:"Struct"`
-	// Specifies the number of top results to return.
+	// The number of top results to return.
 	//
 	// This parameter is required.
 	//
@@ -243,15 +243,15 @@ type QueryCollectionDataRequest struct {
 	//
 	// 10
 	TopK *int64 `json:"TopK,omitempty" xml:"TopK,omitempty"`
-	// The vector data. The length of the vector data must be the same as that specified in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
-	//
-	// > - If `SparseVector` is empty, only the dense vector search results are returned.
+	// The vector data. The length must be consistent with the dimension specified in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
 	//
 	// >
 	//
-	// > - If both `Vector` and `SparseVector` are empty, only the full-text search results are returned.
+	// > - If SparseVector is left empty, the system uses it to retrieve only dense vector results.
+	//
+	// > - If both Vector and SparseVector are left empty, the system uses it to retrieve only full-text results.
 	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
-	// The ID of the workspace that consists of multiple database instances. You must specify this parameter or the DBInstanceId parameter. If both this parameter and DBInstanceId are specified, this parameter is used.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be left empty at the same time. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//
@@ -471,19 +471,19 @@ func (s *QueryCollectionDataRequest) Validate() error {
 }
 
 type QueryCollectionDataRequestRelationalTableFilter struct {
-	// The metadata field of the vector collection, which is used to associate with the fields of the vector table.
+	// The metadata field of the vector collection, which is used to join with the fields of the relational table.
 	//
 	// example:
 	//
 	// doc_id
 	CollectionMetadataField *string `json:"CollectionMetadataField,omitempty" xml:"CollectionMetadataField,omitempty"`
-	// The filter conditions for the relational table.
+	// The filter condition for the relational table.
 	//
 	// example:
 	//
 	// tags @> ARRAY[\\"art\\"]
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// The field of the relational table, which is used to associate with the metadata field of the vector collection.
+	// The field of the relational table, which is used to join with the metadata fields of the vector collection.
 	//
 	// example:
 	//
@@ -546,11 +546,11 @@ func (s *QueryCollectionDataRequestRelationalTableFilter) Validate() error {
 }
 
 type QueryCollectionDataRequestSparseVector struct {
-	// The array of indexes.
+	// The index array.
 	//
-	// > The number of elements in the array cannot exceed 4,000.
+	// > The list size cannot exceed 4,000.
 	Indices []*int64 `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
-	// The array of sparse vectors.
+	// The sparse vector array.
 	Values []*float64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

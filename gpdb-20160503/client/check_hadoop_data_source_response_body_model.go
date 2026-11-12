@@ -18,7 +18,7 @@ type iCheckHadoopDataSourceResponseBody interface {
 }
 
 type CheckHadoopDataSourceResponseBody struct {
-	// The returned message. If the service failed, an error message is returned. Otherwise, a pair of double quotation marks ("") is returned.
+	// The message returned by the service. If the service is unavailable, an error message is returned. If the service is available, an empty string is returned.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CheckHadoopDataSourceResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D56DF7AADF5B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the service. Valid values:
+	// The service status. Valid values:
 	//
-	// 	- Running
+	// - Running: The service is available.
 	//
-	// 	- Failed
+	// - Failed: The service is unavailable.
 	//
 	// example:
 	//

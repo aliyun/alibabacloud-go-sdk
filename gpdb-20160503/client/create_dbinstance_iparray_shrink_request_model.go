@@ -20,9 +20,9 @@ type iCreateDBInstanceIPArrayShrinkRequest interface {
 }
 
 type CreateDBInstanceIPArrayShrinkRequest struct {
-	// The cluster ID.
+	// The ID of the instance.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the target region, including instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type CreateDBInstanceIPArrayShrinkRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The attribute of the IP whitelist group.
+	// The attribute value of the IP address whitelist group.
 	//
 	// example:
 	//
 	// taffyFish
 	IPArrayAttribute *string `json:"IPArrayAttribute,omitempty" xml:"IPArrayAttribute,omitempty"`
-	// The name of the IP whitelist group.
+	// The name of the IP address whitelist group.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type CreateDBInstanceIPArrayShrinkRequest struct {
 	//
 	// testarray
 	IPArrayName *string `json:"IPArrayName,omitempty" xml:"IPArrayName,omitempty"`
-	// The IP addresses in the IP whitelist group. A maximum of 1,000 IP addresses or CIDR blocks are allowed.
+	// The IP addresses in the IP address whitelist group. A maximum of 1,000 IP addresses are supported.
 	//
 	// This parameter is required.
 	SecurityIPListShrink *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`

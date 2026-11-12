@@ -42,21 +42,52 @@ type iColumnMetadata interface {
 }
 
 type ColumnMetadata struct {
-	ColumnDefault   *string `json:"ColumnDefault,omitempty" xml:"ColumnDefault,omitempty"`
-	Comment         *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	DataType        *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	IsCaseSensitive *bool   `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
-	IsCurrency      *bool   `json:"IsCurrency,omitempty" xml:"IsCurrency,omitempty"`
-	IsPrimaryKey    *bool   `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
-	IsSigned        *bool   `json:"IsSigned,omitempty" xml:"IsSigned,omitempty"`
-	MaxLength       *int32  `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Nullable        *bool   `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
-	Precision       *int32  `json:"Precision,omitempty" xml:"Precision,omitempty"`
-	Scale           *int32  `json:"Scale,omitempty" xml:"Scale,omitempty"`
-	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName       *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	UdtName         *string `json:"UdtName,omitempty" xml:"UdtName,omitempty"`
+	// The default value.
+	ColumnDefault *string `json:"ColumnDefault,omitempty" xml:"ColumnDefault,omitempty"`
+	// The column description.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The data type.
+	//
+	// example:
+	//
+	// text
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The case sensitivity.
+	IsCaseSensitive *bool `json:"IsCaseSensitive,omitempty" xml:"IsCaseSensitive,omitempty"`
+	// The currency value indicator.
+	IsCurrency *bool `json:"IsCurrency,omitempty" xml:"IsCurrency,omitempty"`
+	// The primary key indicator.
+	IsPrimaryKey *bool `json:"IsPrimaryKey,omitempty" xml:"IsPrimaryKey,omitempty"`
+	// The signed indicator.
+	IsSigned *bool `json:"IsSigned,omitempty" xml:"IsSigned,omitempty"`
+	// The maximum character length.
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// The column name.
+	//
+	// example:
+	//
+	// content
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The nullability.
+	Nullable *bool `json:"Nullable,omitempty" xml:"Nullable,omitempty"`
+	// The precision of the column, which indicates the total number of digits in the integer and fractional parts of a decimal number.
+	Precision *int32 `json:"Precision,omitempty" xml:"Precision,omitempty"`
+	// The scale of the column, which indicates the number of digits in the fractional part of a decimal number.
+	Scale *int32 `json:"Scale,omitempty" xml:"Scale,omitempty"`
+	// The schema name.
+	//
+	// example:
+	//
+	// ns1
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The table name.
+	//
+	// example:
+	//
+	// dc1
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The name of the base data type used by the column.
+	UdtName *string `json:"UdtName,omitempty" xml:"UdtName,omitempty"`
 }
 
 func (s ColumnMetadata) String() string {

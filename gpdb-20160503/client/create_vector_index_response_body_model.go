@@ -18,7 +18,7 @@ type iCreateVectorIndexResponseBody interface {
 }
 
 type CreateVectorIndexResponseBody struct {
-	// The response message.
+	// The detailed information returned by the operation.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CreateVectorIndexResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the request. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// - **success**: The request was successful.
+	// - **success**: The operation is successful.
 	//
-	// - **fail**: The request failed.
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//

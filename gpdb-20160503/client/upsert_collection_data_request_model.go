@@ -42,7 +42,7 @@ type UpsertCollectionDataRequest struct {
 	//
 	// example:
 	//
-	// gp-bp152460513z****
+	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the namespace. Default value: public.
 	//
@@ -181,7 +181,7 @@ type UpsertCollectionDataRequestRows struct {
 	//
 	// example:
 	//
-	// 854c6949-411c-4b47-aec4-e324735f9574
+	// doca-1234
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metadata of the vector data. The key field of this parameter must be the same as the key field of Metadata that is specified when you call the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
 	Metadata map[string]*string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
@@ -190,6 +190,10 @@ type UpsertCollectionDataRequestRows struct {
 	// The vector data. The length of the vector data must be the same as the value of Dimension that is specified when you call the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [1.0123,-0.1234]
 	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
 }
 

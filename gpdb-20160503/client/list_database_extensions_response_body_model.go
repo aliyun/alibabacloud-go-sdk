@@ -16,9 +16,9 @@ type iListDatabaseExtensionsResponseBody interface {
 }
 
 type ListDatabaseExtensionsResponseBody struct {
-	// Extension list.
+	// The list of plug-ins.
 	Extensions []*ListDatabaseExtensionsResponseBodyExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
-	// The unique ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *ListDatabaseExtensionsResponseBody) Validate() error {
 }
 
 type ListDatabaseExtensionsResponseBodyExtensions struct {
-	// The description of the extension.
+	// The plug-in description.
 	//
 	// example:
 	//
 	// zhparser
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extension name.
+	// The plug-in name.
 	//
 	// example:
 	//
 	// zhparser
 	ExtensionName *string `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
-	// The status of the extension.
+	// The plug-in status.
 	//
 	// example:
 	//

@@ -24,20 +24,20 @@ type iListDocumentsResponseBody interface {
 }
 
 type ListDocumentsResponseBody struct {
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	Count *int32                          `json:"Count,omitempty" xml:"Count,omitempty"`
 	Items *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The returned message.
+	// The detailed information returned by the API operation.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The paging token used to start the next paged query. If this parameter is empty, the current page is the last page.
 	//
 	// example:
 	//
@@ -49,11 +49,11 @@ type ListDocumentsResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The operation is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The operation fails.
 	//
 	// example:
 	//

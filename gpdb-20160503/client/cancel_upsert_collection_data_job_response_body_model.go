@@ -30,11 +30,11 @@ type CancelUpsertCollectionDataJobResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The status of the cancellation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The cancellation succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: The cancellation failed.
 	//
 	// example:
 	//

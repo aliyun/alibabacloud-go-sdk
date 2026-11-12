@@ -24,7 +24,7 @@ type iDescribeDBInstanceIndexUsageRequest interface {
 type DescribeDBInstanceIndexUsageRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	//
 	// test
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// order by search condition
+	// The sorting condition.
 	//
 	// example:
 	//
 	// {Field: SchemaName, Type: Desc}
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. Pages start from page 1. Default value: **1**.
+	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer type. Default value: **1**.
 	//
 	// example:
 	//
@@ -52,11 +52,11 @@ type DescribeDBInstanceIndexUsageRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30**
+	// - **30**
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// Default value: **30**.
 	//

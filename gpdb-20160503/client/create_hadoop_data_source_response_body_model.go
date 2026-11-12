@@ -16,13 +16,13 @@ type iCreateHadoopDataSourceResponseBody interface {
 }
 
 type CreateHadoopDataSourceResponseBody struct {
-	// Data source ID.
+	// The data source ID.
 	//
 	// example:
 	//
 	// 123
 	DataSourceId *int32 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

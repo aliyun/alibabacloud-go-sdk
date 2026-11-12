@@ -30,7 +30,7 @@ type iDescribeCreateIndexJobRequest interface {
 type DescribeCreateIndexJobRequest struct {
 	// The name of the collection.
 	//
-	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query the list.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,15 @@ type DescribeCreateIndexJobRequest struct {
 	//
 	// testcollection
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The cluster ID.
+	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the specified region, including instance IDs.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the index creation job, which is returned from the `CreateIndex` operation.
+	// The ID of the index creation task, which is obtained from the CreateIndex operation.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,9 @@ type DescribeCreateIndexJobRequest struct {
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The namespace name.
+	// The namespace.
 	//
-	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+	// > You can call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query the list.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type DescribeCreateIndexJobRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The password for the namespace.
 	//
-	// > The value of this parameter is specified by the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
+	// > This value is specified in the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -75,9 +75,9 @@ type DescribeCreateIndexJobRequest struct {
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// This parameter is required.
 	//
@@ -85,15 +85,7 @@ type DescribeCreateIndexJobRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes precedence.
-	//
-	// Valid values:
-	//
-	// 	- ip
-	//
-	// 	- l2
-	//
-	// 	- cosine
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be both left empty. If both are specified, this parameter takes precedence.
 	//
 	// example:
 	//

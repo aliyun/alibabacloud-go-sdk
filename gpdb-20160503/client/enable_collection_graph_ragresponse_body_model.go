@@ -20,29 +20,29 @@ type iEnableCollectionGraphRAGResponseBody interface {
 }
 
 type EnableCollectionGraphRAGResponseBody struct {
-  // The ID of the job. You can use the `GetGraphRAGJob` to view the job status.
+  // The job ID. You can use this ID to call the GetGraphRAGJob operation to query the job status later.
   // 
   // example:
   // 
   // 231460f8-75dc-405e-a669-0c5204887e91
   JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-  // The response message.
+  // The returned message.
   // 
   // example:
   // 
   // success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The unique ID of the request.
+  // The request ID.
   // 
   // example:
   // 
   // ABB39CC3-4488-4857-905D-2E4A051D0521
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The status of the operation. Valid values:
+  // The status. Valid values:
   // 
-  // 	- **success**
+  // - **success**: Success.
   // 
-  // 	- **fail**
+  // - **fail**: Failure.
   // 
   // example:
   // 

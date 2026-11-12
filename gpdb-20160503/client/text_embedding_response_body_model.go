@@ -37,15 +37,15 @@ type TextEmbeddingResponseBody struct {
 	Results   *TextEmbeddingResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
 	// The API execution status. Valid values:
 	//
-	// - **success**: The execution is successful.
+	// - **success**: Execution succeeded.
 	//
-	// - **fail**: The execution failed.
+	// - **fail**: Execution failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total number of tokens consumed.
+	// The total number of consumed tokens.
 	//
 	// example:
 	//

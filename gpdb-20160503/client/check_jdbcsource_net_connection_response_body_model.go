@@ -18,23 +18,23 @@ type iCheckJDBCSourceNetConnectionResponseBody interface {
 }
 
 type CheckJDBCSourceNetConnectionResponseBody struct {
-	// Return message: Error message returned when the connection fails, otherwise returns an empty string ("").
+	// The response message. If the connection fails, an error message is returned. Otherwise, an empty string is returned.
 	//
 	// example:
 	//
 	// connection timeout
 	ConnectionMessage *string `json:"ConnectionMessage,omitempty" xml:"ConnectionMessage,omitempty"`
-	// Service status:
+	// The connection status. Valid values:
 	//
-	// - Network connected: Success
+	// - Success: The network is connected.
 	//
-	// - Network not connected: Failed
+	// - Failed: The network is disconnected.
 	//
 	// example:
 	//
 	// Success
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

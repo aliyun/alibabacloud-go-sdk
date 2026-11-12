@@ -26,7 +26,7 @@ type iListNamespacesResponseBody interface {
 }
 
 type ListNamespacesResponseBody struct {
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -45,7 +45,7 @@ type ListNamespacesResponseBody struct {
 	// Successful
 	Message    *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	Namespaces *ListNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Struct"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// example:
 	//
@@ -57,11 +57,11 @@ type ListNamespacesResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution is successful.
 	//
-	// 	- **fail**
+	// - **fail**: The execution fails.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListSecretsResponseBody interface {
 }
 
 type ListSecretsResponseBody struct {
-	// The number of access credentials.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 4
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -41,11 +41,11 @@ type ListSecretsResponseBody struct {
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Secrets   *ListSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Struct"`
-	// The status of the operation. Valid values:
+	// The API execution status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//

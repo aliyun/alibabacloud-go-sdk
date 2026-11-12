@@ -20,7 +20,7 @@ type iDeleteCollectionDataResponseBody interface {
 }
 
 type DeleteCollectionDataResponseBody struct {
-	// The number of rows that are affected by the request.
+	// The applied rows.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type DeleteCollectionDataResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Execution succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: Execution failed.
 	//
 	// example:
 	//

@@ -24,12 +24,18 @@ type iField interface {
 }
 
 type Field struct {
-	BlobValue    *string  `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
-	BooleanValue *bool    `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
-	DoubleValue  *float64 `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
-	IsNull       *bool    `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
-	LongValue    *int64   `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
-	StringValue  *string  `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
+	// The Base64-encoded binary.
+	BlobValue *string `json:"BlobValue,omitempty" xml:"BlobValue,omitempty"`
+	// The Boolean value.
+	BooleanValue *bool `json:"BooleanValue,omitempty" xml:"BooleanValue,omitempty"`
+	// The Double value.
+	DoubleValue *float64 `json:"DoubleValue,omitempty" xml:"DoubleValue,omitempty"`
+	// Indicates whether the value is null.
+	IsNull *bool `json:"IsNull,omitempty" xml:"IsNull,omitempty"`
+	// The Long value.
+	LongValue *int64 `json:"LongValue,omitempty" xml:"LongValue,omitempty"`
+	// The string.
+	StringValue *string `json:"StringValue,omitempty" xml:"StringValue,omitempty"`
 }
 
 func (s Field) String() string {

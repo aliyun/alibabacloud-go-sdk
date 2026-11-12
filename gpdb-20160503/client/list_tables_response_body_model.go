@@ -28,7 +28,7 @@ type ListTablesResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The token that is used to start the next query.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ListTablesResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the operation. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Successful.
 	//
-	// 	- **fail**
+	// - **fail**: Failed.
 	//
 	// example:
 	//

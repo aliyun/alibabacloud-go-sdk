@@ -28,9 +28,9 @@ type iGetUpsertCollectionDataJobRequest interface {
 }
 
 type GetUpsertCollectionDataJobRequest struct {
-	// The name of the collection.
+	// The collection name.
 	//
-	// >  You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to query a list of collections.
+	// > You can call the [ListCollections](https://help.aliyun.com/document_detail/2401503.html) operation to view the list.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type GetUpsertCollectionDataJobRequest struct {
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The instance ID.
 	//
-	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the target region, including the instance IDs.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The ID of the vector data upload job. You can call the `UpsertCollectionDataAsync` operation to query the job ID.
+	// The ID of the task for uploading vector data. The ID is returned after you call the `UpsertCollectionDataAsync` operation.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type GetUpsertCollectionDataJobRequest struct {
 	//
 	// 231460f8-75dc-405e-a669-0c5204887e91
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The name of the namespace. Default value: public.
+	// The namespace. Default value: public.
 	//
-	// >  You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query a list of namespaces.
+	// > You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to view the list.
 	//
 	// example:
 	//
 	// mynamespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The password of the namespace.
+	// The password for the namespace.
 	//
-	// >  The value of this parameter is specified when you call the CreateNamespace operation.
+	// > This value is specified when you call the CreateNamespace operation.
 	//
 	// This parameter is required.
 	//
@@ -81,7 +81,7 @@ type GetUpsertCollectionDataJobRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
+	// The ID of the workspace that consists of multiple database instances. This parameter and the DBInstanceId parameter cannot be left empty at the same time. If both parameters are specified, this parameter takes precedence.
 	//
 	// example:
 	//

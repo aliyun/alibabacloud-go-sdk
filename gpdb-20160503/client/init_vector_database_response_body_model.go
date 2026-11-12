@@ -18,7 +18,7 @@ type iInitVectorDatabaseResponseBody interface {
 }
 
 type InitVectorDatabaseResponseBody struct {
-	// The error message returned if the request fails.
+	// The details of the error message.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type InitVectorDatabaseResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **Success**
+	// - **success**: The execution succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//

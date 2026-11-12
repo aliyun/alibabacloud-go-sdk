@@ -26,7 +26,7 @@ type iCreateAIServiceRequest interface {
 type CreateAIServiceRequest struct {
 	// The instance ID.
 	//
-	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
+	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including the instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type CreateAIServiceRequest struct {
 	//
 	// dramatest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of IP addresses in IP address whitelist group. You can specify up to 1,000 IP addresses, separated by commas (,). The value 127.0.0.1 indicates that no external IP addresses are allowed to access the instance. The following formats are supported:
+	// The IP addresses in IP address whitelist. You can add up to 1,000 IP addresses, separated by commas (,). A value of 127.0.0.1 specifies that access from all external IP addresses is denied. Valid formats:
 	//
 	// - 10.23.12.24 (IP address)
 	//
-	// - 10.23.12.24/24 (CIDR block. The value /24 indicates the length of the prefix in the address, which ranges from 1 to 32.)
+	// - 10.23.12.24/24 (CIDR block. /24 specifies the length of the prefix in the IP address. The prefix length ranges from 1 to 32.)
 	//
 	// > After the service is created, you can call the ModifyAIServiceSecurityIps operation to modify IP address whitelist.
 	//
@@ -52,15 +52,15 @@ type CreateAIServiceRequest struct {
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The service account. The following limits apply:
+	// The service account. The account must meet the following requirements:
 	//
-	// - The account name can contain lowercase letters, digits, and underscores (_).
+	// - It can contain lowercase letters, digits, and underscores (_).
 	//
-	// - The account name must start with a lowercase letter and end with a lowercase letter or digit.
+	// - It must start with a lowercase letter and end with a lowercase letter or a digit.
 	//
-	// - The account name cannot start with gp.
+	// - It cannot start with gp.
 	//
-	// - The account name must be 2 to 16 characters in length.
+	// - It must be 2 to 16 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type CreateAIServiceRequest struct {
 	//
 	// dramauser
 	ServiceAccount *string `json:"ServiceAccount,omitempty" xml:"ServiceAccount,omitempty"`
-	// The password of the service account. The following limits apply:
+	// The password of the service account. The password must meet the following requirements:
 	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - Supported special characters: !@#$%^&*()_+-=
 	//
-	// - The password must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//

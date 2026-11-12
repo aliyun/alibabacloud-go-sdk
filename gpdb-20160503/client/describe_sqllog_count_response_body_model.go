@@ -34,7 +34,7 @@ type DescribeSQLLogCountResponseBody struct {
 	//
 	// 2020-12-14T11:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the instance.
+	// The list of returned items.
 	Items []*DescribeSQLLogCountResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,13 +117,13 @@ func (s *DescribeSQLLogCountResponseBody) Validate() error {
 }
 
 type DescribeSQLLogCountResponseBodyItems struct {
-	// The name of the table.
+	// The instance name.
 	//
 	// example:
 	//
 	// gp-xxxxxxxx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Details of the audit logs.
+	// The set of returned values.
 	Series []*DescribeSQLLogCountResponseBodyItemsSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
 }
 
@@ -167,7 +167,7 @@ func (s *DescribeSQLLogCountResponseBodyItems) Validate() error {
 }
 
 type DescribeSQLLogCountResponseBodyItemsSeries struct {
-	// Details of the audit logs.
+	// The returned values.
 	Values []*DescribeSQLLogCountResponseBodyItemsSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -202,7 +202,7 @@ func (s *DescribeSQLLogCountResponseBodyItemsSeries) Validate() error {
 }
 
 type DescribeSQLLogCountResponseBodyItemsSeriesValues struct {
-	// The time when the audit logs were generated and the number of the audit logs.
+	// None.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 

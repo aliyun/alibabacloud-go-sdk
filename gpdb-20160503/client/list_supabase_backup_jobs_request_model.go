@@ -24,11 +24,11 @@ type iListSupabaseBackupJobsRequest interface {
 type ListSupabaseBackupJobsRequest struct {
 	// The backup mode. Valid values:
 	//
-	// - Automated: automatic backup
+	// - Automated: automatic backup.
 	//
-	// - Manual: manual backup
+	// - Manual: manual backup.
 	//
-	// If this parameter is not specified, all backup tasks are returned.
+	// If you do not specify this parameter, all backup tasks are returned.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListSupabaseBackupJobsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The paging token. Do not specify this parameter for the first query. For subsequent queries, specify the NextToken value returned in the previous response.
+	// The paging token for a paged query. Do not specify this parameter for the first request. For subsequent requests, specify the NextToken value returned in the previous response.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Instance ID of the Supabase instance. You can obtain instance ID from the Supabase page in the console.
+	// Instance ID of the Supabase instance. You can obtain instance ID on the Supabase page in the console.
 	//
 	// This parameter is required.
 	//
@@ -54,9 +54,7 @@ type ListSupabaseBackupJobsRequest struct {
 	//
 	// sbp-263****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region ID.
-	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//

@@ -22,13 +22,13 @@ type iListWorkspacesRequest interface {
 }
 
 type ListWorkspacesRequest struct {
-	// The maximum number of entries to return. Default value: 10.
+	// The maximum number of entries to return in this request. Default value: 10.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//

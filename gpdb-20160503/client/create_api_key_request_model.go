@@ -42,7 +42,7 @@ type CreateApiKeyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of service IDs to authorize.
+	// The IDs of the services to be authorized.
 	ServiceIds []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
 	// The workspace ID.
 	//

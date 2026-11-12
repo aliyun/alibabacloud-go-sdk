@@ -116,7 +116,7 @@ type ListExternalDataServicesResponseBodyServiceItems struct {
 	//
 	// example:
 	//
-	// test-pxf
+	// test-adbpgss
 	ServiceDescription *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	// The service ID.
 	//
@@ -128,13 +128,13 @@ type ListExternalDataServicesResponseBodyServiceItems struct {
 	//
 	// example:
 	//
-	// test-pxf
+	// test-adbpgss
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The specifications of the service. Unit: compute units (CUs).
 	//
 	// example:
 	//
-	// 8
+	// 2
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 	// The type of the service. Valid values:
 	//

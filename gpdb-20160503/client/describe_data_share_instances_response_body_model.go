@@ -29,7 +29,7 @@ type DescribeDataShareInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeDataShareInstancesResponseBody struct {
 	//
 	// B4CAF581-2AC7-41AD-8940-D5**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

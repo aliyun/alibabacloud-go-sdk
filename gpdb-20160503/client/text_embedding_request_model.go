@@ -32,17 +32,17 @@ type TextEmbeddingRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The vector dimensions. Default value: the dimensions supported by the embedding model.
+	// The vector dimensions. The default value is the dimension supported by the vectorization algorithm.
 	//
 	// >
 	//
-	// > - text-embedding-v3 supports 1024, 768, and 512 dimensions. Default value: 1024.
+	// > - text-embedding-v3 supports 1024, 768, and 512 dimensions. The default value is 1024.
 	//
 	// example:
 	//
 	// 1024
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The list of text content to vectorize. The list can contain up to 100 entries.
+	// The list of text content to vectorize. The list can contain up to 100 items.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type TextEmbeddingRequest struct {
 	//
 	// - text-embedding-v2: 1536 dimensions
 	//
-	// - text-embedding-v3 (default): 1024, 768, or 512 dimensions
+	// - text-embedding-v3 (default): 1024, 768, and 512 dimensions
 	//
 	// - text2vec (not recommended): 1024 dimensions
 	//

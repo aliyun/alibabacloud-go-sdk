@@ -16,7 +16,7 @@ type iCreateModelOperatorApiKeyResponseBody interface {
 }
 
 type CreateModelOperatorApiKeyResponseBody struct {
-	// API KEY ID。
+	// The API key ID.
 	//
 	// example:
 	//

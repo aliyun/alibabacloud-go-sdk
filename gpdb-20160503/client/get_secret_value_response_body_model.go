@@ -44,7 +44,7 @@ type GetSecretValueResponseBody struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The description of the access credential.
+	// The description.
 	//
 	// example:
 	//
@@ -56,41 +56,41 @@ type GetSecretValueResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The password of the database account.
+	// The password of the target database.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ARN of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	// The ARN that uniquely specifies the logon credentials and permissions of the Data API account created by the user. Format: ```acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}```
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
-	// The name of the access credential.
+	// The name of the credential.
 	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// The status of the operation. Valid values:
+	// The status. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Successful.
 	//
-	// 	- **fail**
+	// - **fail**: Failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the database account.
+	// The username.
 	//
 	// example:
 	//

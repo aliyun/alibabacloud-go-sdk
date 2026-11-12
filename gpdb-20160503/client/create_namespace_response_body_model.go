@@ -18,7 +18,7 @@ type iCreateNamespaceResponseBody interface {
 }
 
 type CreateNamespaceResponseBody struct {
-	// The returned message.
+	// The detailed information returned by the operation.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CreateNamespaceResponseBody struct {
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The execution status of the API operation. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The execution succeeded.
 	//
-	// 	- **fail**
+	// - **fail**: The execution failed.
 	//
 	// example:
 	//

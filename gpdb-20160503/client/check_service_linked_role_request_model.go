@@ -14,7 +14,7 @@ type iCheckServiceLinkedRoleRequest interface {
 }
 
 type CheckServiceLinkedRoleRequest struct {
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
 	//
 	// example:
 	//

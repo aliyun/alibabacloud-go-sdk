@@ -20,15 +20,15 @@ type iDescribeSQLLogsResponseBody interface {
 }
 
 type DescribeSQLLogsResponseBody struct {
-	// The queried SQL execution logs.
+	// The list of results.
 	Items []*DescribeSQLLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number.
+	// The page number of the returned query result.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeSQLLogsResponseBody) Validate() error {
 }
 
 type DescribeSQLLogsResponseBodyItems struct {
-	// The database account that executes the SQL statement.
+	// The database account that executed the SQL statement.
 	//
 	// example:
 	//
@@ -112,47 +112,47 @@ type DescribeSQLLogsResponseBodyItems struct {
 	//
 	// adbpgadmin
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The role of the database.
+	// The database role.
 	//
 	// example:
 	//
 	// master
 	DBRole *string `json:"DBRole,omitempty" xml:"DBRole,omitempty"`
-	// The execution duration of the SQL statement.
+	// The execution duration.
 	//
 	// example:
 	//
 	// 2
 	ExecuteCost *float32 `json:"ExecuteCost,omitempty" xml:"ExecuteCost,omitempty"`
-	// The execution status of the SQL statement. Valid values:
+	// The execution state. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Successful.
 	//
-	// 	- **fail**
+	// - **fail**: Failed.
 	//
 	// example:
 	//
 	// success
 	ExecuteState *string `json:"ExecuteState,omitempty" xml:"ExecuteState,omitempty"`
-	// The type of the query language.
+	// The operation class.
 	//
 	// example:
 	//
 	// DQL
 	OperationClass *string `json:"OperationClass,omitempty" xml:"OperationClass,omitempty"`
-	// The time when the SQL statement was executed.
+	// The execution time.
 	//
 	// example:
 	//
 	// 2021-03-15T17:02:32Z
 	OperationExecuteTime *string `json:"OperationExecuteTime,omitempty" xml:"OperationExecuteTime,omitempty"`
-	// The type of the SQL statement.
+	// The type of the executed SQL statement.
 	//
 	// example:
 	//
 	// SELECT
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The total number of entries returned.
+	// The number of rows returned in the execution result.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type DescribeSQLLogsResponseBodyItems struct {
 	//
 	// ""
 	SQLPlan *string `json:"SQLPlan,omitempty" xml:"SQLPlan,omitempty"`
-	// The SQL statement.
+	// The content of the SQL statement.
 	//
 	// example:
 	//
 	// select 1
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The number of entries scanned.
+	// The number of scanned rows.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type DescribeSQLLogsResponseBodyItems struct {
 	//
 	// 100.**.**.90
 	SourceIP *string `json:"SourceIP,omitempty" xml:"SourceIP,omitempty"`
-	// The number of the source port.
+	// The source port.
 	//
 	// example:
 	//
