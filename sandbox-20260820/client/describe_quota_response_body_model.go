@@ -28,7 +28,7 @@ type DescribeQuotaResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response message. The value is success for a successful request.
+	// The response message. A value of success indicates success.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeQuotaResponseBody struct {
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Team 当前配额用量。用量不可用时省略；成功查询且无占用时返回三项零值。
+	// The current quota usage of the team.
 	//
 	// example:
 	//

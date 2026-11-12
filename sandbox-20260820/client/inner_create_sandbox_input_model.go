@@ -21,6 +21,8 @@ type iInnerCreateSandboxInput interface {
 	GetMetadata() map[string]*string
 	SetNetwork(v *E2BNetwork) *InnerCreateSandboxInput
 	GetNetwork() *E2BNetwork
+	SetResourceTags(v []*InnerCreateSandboxInputResourceTags) *InnerCreateSandboxInput
+	GetResourceTags() []*InnerCreateSandboxInputResourceTags
 	SetRuntime(v *InnerSandboxRuntimeConfig) *InnerCreateSandboxInput
 	GetRuntime() *InnerSandboxRuntimeConfig
 	SetSecure(v bool) *InnerCreateSandboxInput
@@ -59,11 +61,17 @@ type InnerCreateSandboxInput struct {
 	// true
 	AutoResume *bool `json:"autoResume,omitempty" xml:"autoResume,omitempty"`
 	// The environment variable configuration.
+	//
+	// example:
+	//
+	// {"APP_MODE":"demo"}
 	EnvVars map[string]*string `json:"envVars" xml:"envVars"`
 	// The metadata configuration.
 	Metadata map[string]*string `json:"metadata" xml:"metadata"`
 	// The network configuration.
 	Network *E2BNetwork `json:"network,omitempty" xml:"network,omitempty"`
+	// The resource tags.
+	ResourceTags []*InnerCreateSandboxInputResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
 	// The runtime configuration.
 	Runtime *InnerSandboxRuntimeConfig `json:"runtime,omitempty" xml:"runtime,omitempty"`
 	// Specifies whether authentication is required to access the sandbox envd.
@@ -96,7 +104,7 @@ type InnerCreateSandboxInput struct {
 	//
 	// v9vjyzw64bsu83vw0dgs
 	TemplateID *string `json:"templateID,omitempty" xml:"templateID,omitempty"`
-	// The timeout period, in seconds.
+	// The timeout period in seconds.
 	//
 	// example:
 	//
@@ -136,6 +144,10 @@ func (s *InnerCreateSandboxInput) GetMetadata() map[string]*string {
 
 func (s *InnerCreateSandboxInput) GetNetwork() *E2BNetwork {
 	return s.Network
+}
+
+func (s *InnerCreateSandboxInput) GetResourceTags() []*InnerCreateSandboxInputResourceTags {
+	return s.ResourceTags
 }
 
 func (s *InnerCreateSandboxInput) GetRuntime() *InnerSandboxRuntimeConfig {
@@ -200,6 +212,11 @@ func (s *InnerCreateSandboxInput) SetNetwork(v *E2BNetwork) *InnerCreateSandboxI
 	return s
 }
 
+func (s *InnerCreateSandboxInput) SetResourceTags(v []*InnerCreateSandboxInputResourceTags) *InnerCreateSandboxInput {
+	s.ResourceTags = v
+	return s
+}
+
 func (s *InnerCreateSandboxInput) SetRuntime(v *InnerSandboxRuntimeConfig) *InnerCreateSandboxInput {
 	s.Runtime = v
 	return s
@@ -246,6 +263,15 @@ func (s *InnerCreateSandboxInput) Validate() error {
 			return err
 		}
 	}
+	if s.ResourceTags != nil {
+		for _, item := range s.ResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Runtime != nil {
 		if err := s.Runtime.Validate(); err != nil {
 			return err
@@ -257,4 +283,49 @@ func (s *InnerCreateSandboxInput) Validate() error {
 		}
 	}
 	return nil
+}
+
+type InnerCreateSandboxInputResourceTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// project
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// demo
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s InnerCreateSandboxInputResourceTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InnerCreateSandboxInputResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *InnerCreateSandboxInputResourceTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *InnerCreateSandboxInputResourceTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *InnerCreateSandboxInputResourceTags) SetKey(v string) *InnerCreateSandboxInputResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *InnerCreateSandboxInputResourceTags) SetValue(v string) *InnerCreateSandboxInputResourceTags {
+	s.Value = &v
+	return s
+}
+
+func (s *InnerCreateSandboxInputResourceTags) Validate() error {
+	return dara.Validate(s)
 }

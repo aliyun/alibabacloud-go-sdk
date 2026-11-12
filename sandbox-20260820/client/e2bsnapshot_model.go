@@ -21,6 +21,8 @@ type iE2BSnapshot interface {
   GetName() *string 
   SetResourceGroupID(v string) *E2BSnapshot
   GetResourceGroupID() *string 
+  SetResourceTags(v []*E2BSnapshotResourceTags) *E2BSnapshot
+  GetResourceTags() []*E2BSnapshotResourceTags 
   SetSnapshotID(v string) *E2BSnapshot
   GetSnapshotID() *string 
   SetSourceSandboxID(v string) *E2BSnapshot
@@ -74,6 +76,8 @@ type E2BSnapshot struct {
   // 
   // rg-****
   ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+  // The resource tags.
+  ResourceTags []*E2BSnapshotResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
   // The snapshot ID.
   // 
   // example:
@@ -150,6 +154,10 @@ func (s *E2BSnapshot) GetResourceGroupID() *string  {
   return s.ResourceGroupID
 }
 
+func (s *E2BSnapshot) GetResourceTags() []*E2BSnapshotResourceTags  {
+  return s.ResourceTags
+}
+
 func (s *E2BSnapshot) GetSnapshotID() *string  {
   return s.SnapshotID
 }
@@ -208,6 +216,11 @@ func (s *E2BSnapshot) SetResourceGroupID(v string) *E2BSnapshot {
   return s
 }
 
+func (s *E2BSnapshot) SetResourceTags(v []*E2BSnapshotResourceTags) *E2BSnapshot {
+  s.ResourceTags = v
+  return s
+}
+
 func (s *E2BSnapshot) SetSnapshotID(v string) *E2BSnapshot {
   s.SnapshotID = &v
   return s
@@ -244,6 +257,60 @@ func (s *E2BSnapshot) SetUserID(v string) *E2BSnapshot {
 }
 
 func (s *E2BSnapshot) Validate() error {
+  if s.ResourceTags != nil {
+    for _, item := range s.ResourceTags {
+      if item != nil {
+        if err := item.Validate(); err != nil {
+          return err
+        }
+      }
+    }
+  }
+  return nil
+}
+
+type E2BSnapshotResourceTags struct {
+  // The tag key.
+  // 
+  // example:
+  // 
+  // project
+  TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+  // The tag value.
+  // 
+  // example:
+  // 
+  // demo
+  TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s E2BSnapshotResourceTags) String() string {
+  return dara.Prettify(s)
+}
+
+func (s E2BSnapshotResourceTags) GoString() string {
+  return s.String()
+}
+
+func (s *E2BSnapshotResourceTags) GetTagKey() *string  {
+  return s.TagKey
+}
+
+func (s *E2BSnapshotResourceTags) GetTagValue() *string  {
+  return s.TagValue
+}
+
+func (s *E2BSnapshotResourceTags) SetTagKey(v string) *E2BSnapshotResourceTags {
+  s.TagKey = &v
+  return s
+}
+
+func (s *E2BSnapshotResourceTags) SetTagValue(v string) *E2BSnapshotResourceTags {
+  s.TagValue = &v
+  return s
+}
+
+func (s *E2BSnapshotResourceTags) Validate() error {
   return dara.Validate(s)
 }
 

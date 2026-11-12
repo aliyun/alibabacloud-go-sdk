@@ -20,7 +20,7 @@ type PublicUpdateTemplateRegistryAuthConfig struct {
 	//
 	// example:
 	//
-	// ******
+	// Demo****Pass
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
 	// The repository username.
 	//

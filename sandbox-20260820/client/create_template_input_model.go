@@ -13,6 +13,8 @@ type iCreateTemplateInput interface {
 	GetBuildConfig() *CreateTemplateBuildConfig
 	SetName(v string) *CreateTemplateInput
 	GetName() *string
+	SetResourceTags(v []*CreateTemplateInputResourceTags) *CreateTemplateInput
+	GetResourceTags() []*CreateTemplateInputResourceTags
 	SetRuntimeConfig(v *CreateTemplateRuntimeConfig) *CreateTemplateInput
 	GetRuntimeConfig() *CreateTemplateRuntimeConfig
 	SetTeamID(v string) *CreateTemplateInput
@@ -20,17 +22,19 @@ type iCreateTemplateInput interface {
 }
 
 type CreateTemplateInput struct {
-	// The build configuration of the template. The build process is specified in blocks by action. If this parameter is not specified, the service automatically infers the configuration based on the source image: public runtime images are used directly without building, and other images automatically execute copy and envdInject.
+	// The build configuration of the template. This configuration specifies the build process in action-based blocks. If this parameter is not specified, the service automatically derives the configuration based on the source image. Public runtime images are used directly without building. For other images, the copy and envdInject actions are automatically executed.
 	BuildConfig *CreateTemplateBuildConfig `json:"buildConfig,omitempty" xml:"buildConfig,omitempty"`
-	// The template name, which must be unique within the same team.
+	// The name of the template. The name must be unique within the same team.
 	//
 	// example:
 	//
 	// python-data-analysis
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The runtime configuration of the template. This configuration determines the specifications and environment of sandbox instances created from this template.
+	// The resource tags.
+	ResourceTags []*CreateTemplateInputResourceTags `json:"resourceTags" xml:"resourceTags" type:"Repeated"`
+	// The runtime configuration of the template. This configuration determines the specifications and environment of the sandbox instances created from the template.
 	RuntimeConfig *CreateTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
-	// The ID of the team to which the template belongs, in UUID format. If this parameter is not specified, the default team of the current account is used.
+	// The ID of the team to which the template belongs. The ID is in UUID format. If this parameter is not specified, the default team of the current account is used.
 	//
 	// example:
 	//
@@ -54,6 +58,10 @@ func (s *CreateTemplateInput) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateTemplateInput) GetResourceTags() []*CreateTemplateInputResourceTags {
+	return s.ResourceTags
+}
+
 func (s *CreateTemplateInput) GetRuntimeConfig() *CreateTemplateRuntimeConfig {
 	return s.RuntimeConfig
 }
@@ -69,6 +77,11 @@ func (s *CreateTemplateInput) SetBuildConfig(v *CreateTemplateBuildConfig) *Crea
 
 func (s *CreateTemplateInput) SetName(v string) *CreateTemplateInput {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateTemplateInput) SetResourceTags(v []*CreateTemplateInputResourceTags) *CreateTemplateInput {
+	s.ResourceTags = v
 	return s
 }
 
@@ -88,10 +101,64 @@ func (s *CreateTemplateInput) Validate() error {
 			return err
 		}
 	}
+	if s.ResourceTags != nil {
+		for _, item := range s.ResourceTags {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.RuntimeConfig != nil {
 		if err := s.RuntimeConfig.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type CreateTemplateInputResourceTags struct {
+	// The key of the tag.
+	//
+	// example:
+	//
+	// project
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// demo
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateTemplateInputResourceTags) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateTemplateInputResourceTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateInputResourceTags) GetKey() *string {
+	return s.Key
+}
+
+func (s *CreateTemplateInputResourceTags) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateTemplateInputResourceTags) SetKey(v string) *CreateTemplateInputResourceTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTemplateInputResourceTags) SetValue(v string) *CreateTemplateInputResourceTags {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateTemplateInputResourceTags) Validate() error {
+	return dara.Validate(s)
 }

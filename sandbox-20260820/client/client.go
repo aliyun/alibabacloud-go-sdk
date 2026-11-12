@@ -1463,22 +1463,28 @@ func (client *Client) ListTemplateCache(request *ListTemplateCacheRequest) (_res
 
 // Summary:
 //
-// Performs a paged query to retrieve the template list with paging.
+// Performs a paging query on the template list.
 //
-// @param request - ListTemplatesRequest
+// @param tmpReq - ListTemplatesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListTemplatesResponse
-func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
+func (client *Client) ListTemplatesWithOptions(tmpReq *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ResourceTags) {
+		request.ResourceTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceTags, dara.String("resourceTags"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxResults) {
 		query["maxResults"] = request.MaxResults
@@ -1486,6 +1492,10 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceTagsShrink) {
+		query["resourceTags"] = request.ResourceTagsShrink
 	}
 
 	if !dara.IsNil(request.TeamID) {
@@ -1518,7 +1528,7 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, he
 
 // Summary:
 //
-// Performs a paged query to retrieve the template list with paging.
+// Performs a paging query on the template list.
 //
 // @param request - ListTemplatesRequest
 //

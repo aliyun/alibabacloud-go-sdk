@@ -18,19 +18,19 @@ type iQuotaUsage interface {
 }
 
 type QuotaUsage struct {
-	// 已占用的 CPU 配额，单位为 vCPU，不是 CPU 使用率。
+	// The consumed CPU quota in vCPUs, not the CPU utilization.
 	//
 	// example:
 	//
 	// 1
 	CpuCores *float64 `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
-	// 尚未释放的实例授权数量。
+	// The number of unreleased instance authorizations.
 	//
 	// example:
 	//
 	// 1
 	InstanceCount *int64 `json:"instanceCount,omitempty" xml:"instanceCount,omitempty"`
-	// 已占用的内存配额，单位为 GB，不是进程实际内存。
+	// The consumed memory quota in GB, not the actual memory used by processes.
 	//
 	// example:
 	//

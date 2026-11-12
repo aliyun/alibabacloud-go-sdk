@@ -238,13 +238,13 @@ func (s *GetTemplateResponseBody) Validate() error {
 }
 
 type GetTemplateResponseBodyResourceTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// project
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

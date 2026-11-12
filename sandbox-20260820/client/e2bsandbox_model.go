@@ -76,7 +76,7 @@ type E2BSandbox struct {
   // 
   // sbx-xxxx.ap-southeast-1.sandbox.aliyun.com
   AccessEndpoint *string `json:"accessEndpoint,omitempty" xml:"accessEndpoint,omitempty"`
-  // Specifies whether the sandbox is allowed to access the external network.
+  // Specifies whether the sandbox is allowed to access the Internet.
   AllowInternetAccess *bool `json:"allowInternetAccess,omitempty" xml:"allowInternetAccess,omitempty"`
   // The vCPU specifications.
   // 
@@ -103,8 +103,12 @@ type E2BSandbox struct {
   // 2026-09-04T02:03:43.826Z
   EndAt *string `json:"endAt,omitempty" xml:"endAt,omitempty"`
   // The environment variables.
+  // 
+  // example:
+  // 
+  // {"APP_MODE":"demo"}
   EnvVars map[string]*string `json:"envVars" xml:"envVars"`
-  // The authentication token for accessing the envd daemon process in the sandbox, in UUID format. This token is automatically generated only when secure is set to true.
+  // The authentication credential for accessing the envd daemon process in the sandbox in UUID format. This credential is automatically generated only when secure is set to true.
   // 
   // example:
   // 
@@ -122,7 +126,7 @@ type E2BSandbox struct {
   // 
   // c-6a9d1501-133e6f48-b3f07782dd47
   FcInstanceID *string `json:"fcInstanceID,omitempty" xml:"fcInstanceID,omitempty"`
-  // The Function Compute session ID of the sandbox, in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
+  // The Function Compute session ID of the sandbox in UUID format. This ID is used to locate the underlying session when pausing, resuming, or deleting the sandbox.
   // 
   // example:
   // 
@@ -174,23 +178,23 @@ type E2BSandbox struct {
   StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
   // The sandbox state. Valid values:
   // 
-  // - running: Running.
+  // - running: The sandbox is running.
   // 
-  // - pausing: Pausing.
+  // - pausing: The sandbox is being paused.
   // 
-  // - paused: Paused.
+  // - paused: The sandbox is paused.
   // 
-  // - resuming: Resuming.
+  // - resuming: The sandbox is being resumed.
   // 
-  // - pause_fail: Pause failed.
+  // - pause_fail: The pause operation failed.
   // 
-  // - resume_fail: Resume failed.
+  // - resume_fail: The resume operation failed.
   // 
-  // - snapshotting: Snapshotting.
+  // - snapshotting: A snapshot is being created.
   // 
-  // - snapshot_failed: Snapshot failed.
+  // - snapshot_failed: Snapshot creation failed.
   // 
-  // - terminated: Terminated.
+  // - terminated: The sandbox is terminated.
   // 
   // example:
   // 
