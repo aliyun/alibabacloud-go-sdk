@@ -30,15 +30,15 @@ type ListAlertStrategiesResponseBody struct {
 	//
 	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed error message.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field to obtain the detailed fault message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned results.
+	// The returned data.
 	Data []*ListAlertStrategiesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// The maximum number of returned results.
+	// The maximum number of returned records.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type ListAlertStrategiesResponseBody struct {
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If the value of `code` is `Success`, this field is empty.
 	//
-	// - Otherwise, this field contains the request error message.
+	// - Otherwise, this field contains the error message of the request.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListAlertStrategiesResponseBodyData struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether K8s labels are required.
+	// Specifies whether Kubernetes labels are required.
 	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// The policy name.
 	//
@@ -291,12 +291,14 @@ func (s *ListAlertStrategiesResponseBodyData) Validate() error {
 }
 
 type ListAlertStrategiesResponseBodyDataStrategy struct {
-	// The collection of clusters that receive alerts.
+	// The list of clusters that receive alerts.
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
-	// The list of alert contacts and policy destinations.
+	// The alert contacts and the list of policy destinations.
 	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// The list of exception items that receive alerts.
+	// The list of anomaly items that trigger alerts.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The list of alert levels.
+	Levels []*string `json:"levels,omitempty" xml:"levels,omitempty" type:"Repeated"`
 }
 
 func (s ListAlertStrategiesResponseBodyDataStrategy) String() string {
@@ -319,6 +321,10 @@ func (s *ListAlertStrategiesResponseBodyDataStrategy) GetItems() []*string {
 	return s.Items
 }
 
+func (s *ListAlertStrategiesResponseBodyDataStrategy) GetLevels() []*string {
+	return s.Levels
+}
+
 func (s *ListAlertStrategiesResponseBodyDataStrategy) SetClusters(v []*string) *ListAlertStrategiesResponseBodyDataStrategy {
 	s.Clusters = v
 	return s
@@ -331,6 +337,11 @@ func (s *ListAlertStrategiesResponseBodyDataStrategy) SetDestinations(v []*int32
 
 func (s *ListAlertStrategiesResponseBodyDataStrategy) SetItems(v []*string) *ListAlertStrategiesResponseBodyDataStrategy {
 	s.Items = v
+	return s
+}
+
+func (s *ListAlertStrategiesResponseBodyDataStrategy) SetLevels(v []*string) *ListAlertStrategiesResponseBodyDataStrategy {
+	s.Levels = v
 	return s
 }
 

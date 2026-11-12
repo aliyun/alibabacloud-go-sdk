@@ -20,15 +20,26 @@ type iDeleteCopilotSessionResponseBody interface {
 }
 
 type DeleteCopilotSessionResponseBody struct {
+	// The status code.
+	//
+	// - If `code` is `Success`, the authorization is successful.
+	//
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+	//
 	// example:
 	//
 	// Success
-	Code *string                               `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *DeleteCopilotSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message returned when the code is not Success.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID, which can be used for end-to-end diagnostics.
+	//
 	// example:
 	//
 	// 5BC79EF5-798B-5499-9683-4E14EBBBF712
@@ -89,10 +100,14 @@ func (s *DeleteCopilotSessionResponseBody) Validate() error {
 }
 
 type DeleteCopilotSessionResponseBodyData struct {
+	// Indicates whether the session was deleted.
+	//
 	// example:
 	//
 	// true
 	Deleted *bool `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	// The ID of the deleted session.
+	//
 	// example:
 	//
 	// c356bc310e4345c3a602a2912322ad21

@@ -38,9 +38,9 @@ type UpdateAlertStrategyRequest struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The Kubernetes label.
+	// The Kubernetes labels.
 	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
-	// The alert policy name.
+	// The alerting Policy Name.
 	//
 	// This parameter is required.
 	//
@@ -117,12 +117,14 @@ func (s *UpdateAlertStrategyRequest) Validate() error {
 }
 
 type UpdateAlertStrategyRequestStrategy struct {
-	// The collection of clusters that receive alerts.
+	// The list of clusters that receive alerts.
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The alert contacts.
 	Destinations []*int32 `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
-	// The collection of exception items that trigger alerts.
+	// The list of anomaly items that trigger alerts.
 	Items []*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The list of alert severity levels.
+	Levels []*string `json:"levels,omitempty" xml:"levels,omitempty" type:"Repeated"`
 }
 
 func (s UpdateAlertStrategyRequestStrategy) String() string {
@@ -145,6 +147,10 @@ func (s *UpdateAlertStrategyRequestStrategy) GetItems() []*string {
 	return s.Items
 }
 
+func (s *UpdateAlertStrategyRequestStrategy) GetLevels() []*string {
+	return s.Levels
+}
+
 func (s *UpdateAlertStrategyRequestStrategy) SetClusters(v []*string) *UpdateAlertStrategyRequestStrategy {
 	s.Clusters = v
 	return s
@@ -157,6 +163,11 @@ func (s *UpdateAlertStrategyRequestStrategy) SetDestinations(v []*int32) *Update
 
 func (s *UpdateAlertStrategyRequestStrategy) SetItems(v []*string) *UpdateAlertStrategyRequestStrategy {
 	s.Items = v
+	return s
+}
+
+func (s *UpdateAlertStrategyRequestStrategy) SetLevels(v []*string) *UpdateAlertStrategyRequestStrategy {
+	s.Levels = v
 	return s
 }
 

@@ -24,7 +24,7 @@ type GetAlertStrategyResponseBody struct {
 	//
 	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
+	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field to obtain the detailed fault information.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type GetAlertStrategyResponseBodyData struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The Kubernetes label.
+	// The K8s labels.
 	K8sLabel *bool `json:"k8sLabel,omitempty" xml:"k8sLabel,omitempty"`
 	// The policy name.
 	//
@@ -236,7 +236,7 @@ func (s *GetAlertStrategyResponseBodyData) Validate() error {
 }
 
 type GetAlertStrategyResponseBodyDataStrategy struct {
-	// The clusters that receive alerts.
+	// The collection of clusters that receive alerts.
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
 	// The alert contacts.
 	//
@@ -244,12 +244,14 @@ type GetAlertStrategyResponseBodyDataStrategy struct {
 	//
 	// 1
 	Destinations interface{} `json:"destinations,omitempty" xml:"destinations,omitempty"`
-	// The list of anomaly items that trigger alerts.
+	// The list of anomaly items that receive alerts.
 	//
 	// example:
 	//
 	// Node CPU usage detection
 	Items interface{} `json:"items,omitempty" xml:"items,omitempty"`
+	// The collection of alert levels.
+	Levels []*string `json:"levels,omitempty" xml:"levels,omitempty" type:"Repeated"`
 }
 
 func (s GetAlertStrategyResponseBodyDataStrategy) String() string {
@@ -272,6 +274,10 @@ func (s *GetAlertStrategyResponseBodyDataStrategy) GetItems() interface{} {
 	return s.Items
 }
 
+func (s *GetAlertStrategyResponseBodyDataStrategy) GetLevels() []*string {
+	return s.Levels
+}
+
 func (s *GetAlertStrategyResponseBodyDataStrategy) SetClusters(v []*string) *GetAlertStrategyResponseBodyDataStrategy {
 	s.Clusters = v
 	return s
@@ -284,6 +290,11 @@ func (s *GetAlertStrategyResponseBodyDataStrategy) SetDestinations(v interface{}
 
 func (s *GetAlertStrategyResponseBodyDataStrategy) SetItems(v interface{}) *GetAlertStrategyResponseBodyDataStrategy {
 	s.Items = v
+	return s
+}
+
+func (s *GetAlertStrategyResponseBodyDataStrategy) SetLevels(v []*string) *GetAlertStrategyResponseBodyDataStrategy {
+	s.Levels = v
 	return s
 }
 

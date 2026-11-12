@@ -16,10 +16,14 @@ type iDeleteCopilotSessionRequest interface {
 }
 
 type DeleteCopilotSessionRequest struct {
+	// The agent identifier.
+	//
 	// example:
 	//
 	// sre_agent
 	AgentId *string `json:"agentId,omitempty" xml:"agentId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:

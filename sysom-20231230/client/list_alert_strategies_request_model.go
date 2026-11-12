@@ -28,13 +28,13 @@ type ListAlertStrategiesRequest struct {
 	//
 	// 1
 	Current *int32 `json:"current,omitempty" xml:"current,omitempty"`
-	// The maximum number of records to retrieve per request.
+	// The maximum number of records to return in a single request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The Policy Name of the alerting policy.
+	// The alert policy name.
 	//
 	// example:
 	//

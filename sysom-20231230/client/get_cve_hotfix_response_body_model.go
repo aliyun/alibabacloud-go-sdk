@@ -24,7 +24,7 @@ type GetCveHotfixResponseBody struct {
 	//
 	// - If `code == Success`, the authorization is successful.
 	//
-	// - Other status codes indicate that the authorization failed. If the authorization failed, check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
@@ -157,27 +157,27 @@ func (s *GetCveHotfixResponseBodyData) Validate() error {
 }
 
 type GetCveHotfixResponseBodyDataHotfix struct {
-	// The hotfix description.
+	// The description of the hotfix.
 	//
 	// example:
 	//
 	// Fixes the kernel issue corresponding to the CVE
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The hotfix name.
+	// The name of the hotfix.
 	//
 	// example:
 	//
 	// 12345678
 	HotfixName *string `json:"hotfixName,omitempty" xml:"hotfixName,omitempty"`
-	// The hotfix module name.
+	// The module name of the hotfix.
 	//
 	// example:
 	//
 	// kpatch_example
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The list of published packages that meet the kernel requirements.
+	// The list of published packages that meet the kernel conditions.
 	Packages []*GetCveHotfixResponseBodyDataHotfixPackages `json:"packages,omitempty" xml:"packages,omitempty" type:"Repeated"`
-	// The hotfix version.
+	// The version of the hotfix.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ type GetCveHotfixResponseBodyDataHotfixPackages struct {
 	//
 	// x86_64
 	Arch *string `json:"arch,omitempty" xml:"arch,omitempty"`
-	// The distribution. This value is null if the distribution is not registered.
+	// The distribution. The value is null if the distribution is not registered.
 	//
 	// if can be null:
 	// true
@@ -267,7 +267,7 @@ type GetCveHotfixResponseBodyDataHotfixPackages struct {
 	//
 	// alinux3
 	Distro *string `json:"distro,omitempty" xml:"distro,omitempty"`
-	// The compatible full kernel version.
+	// The adapted full kernel version.
 	//
 	// example:
 	//

@@ -24,6 +24,7 @@ type iInstallAgentWithTypeRequest interface {
 }
 
 type InstallAgentWithTypeRequest struct {
+	// The list of tags.
 	Tag []*InstallAgentWithTypeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the component to install.
 	//
@@ -41,7 +42,7 @@ type InstallAgentWithTypeRequest struct {
 	//
 	// 3.4.0-1
 	AgentVersion *string `json:"agentVersion,omitempty" xml:"agentVersion,omitempty"`
-	// The configuration ID of the component to install.
+	// The ID of the component configuration to install.
 	//
 	// example:
 	//
@@ -146,7 +147,17 @@ func (s *InstallAgentWithTypeRequest) Validate() error {
 }
 
 type InstallAgentWithTypeRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// test_tag_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test_tag_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

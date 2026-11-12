@@ -20,15 +20,26 @@ type iGetCopilotSessionResponseBody interface {
 }
 
 type GetCopilotSessionResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *GetCopilotSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error message.
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// ""
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID. You can use it for end-to-end diagnostics.
+	//
 	// example:
 	//
 	// 5BC79EF5-798B-5499-9683-4E14EBBBF712
@@ -89,38 +100,64 @@ func (s *GetCopilotSessionResponseBody) Validate() error {
 }
 
 type GetCopilotSessionResponseBodyData struct {
+	// The execution information of the turn that currently occupies the session.
 	ActiveTurn *GetCopilotSessionResponseBodyDataActiveTurn `json:"activeTurn,omitempty" xml:"activeTurn,omitempty" type:"Struct"`
+	// The time when the session was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-09-09T01:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 十进制事件序号字符串，范围 0..9223372036854775807；避免 JavaScript 精度丢失
+	// The cursor of the latest persisted event in the current session.
 	//
 	// example:
 	//
 	// 12
-	Cursor   *string                                    `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// The information about the most recent execution turn.
 	LastTurn *GetCopilotSessionResponseBodyDataLastTurn `json:"lastTurn,omitempty" xml:"lastTurn,omitempty" type:"Struct"`
+	// The session title.
+	//
 	// example:
 	//
-	// 排查 CPU 负载
+	// Troubleshoot CPU load
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 定时任务触发快照；非定时会话为空
+	// The snapshot information captured when the scheduled task was triggered.
 	ScheduledTask *GetCopilotSessionResponseBodyDataScheduledTask `json:"scheduledTask,omitempty" xml:"scheduledTask,omitempty" type:"Struct"`
+	// The session ID.
+	//
 	// example:
 	//
 	// c356bc310e4345c3a602a2912322ad21
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 会话初始来源：chat、scheduled_task、alert；后续追问不改变来源
+	// The session source. Valid values:
+	//
+	// - openapi: API call.
+	//
+	// - cron: Scheduled task.
+	//
+	// - im_dingtalk: DingTalk.
+	//
+	// - im_feishu: Lark.
+	//
+	// - alert: Alert.
 	//
 	// example:
 	//
 	// openapi
 	SessionType *string `json:"sessionType,omitempty" xml:"sessionType,omitempty"`
+	// The session status. Valid values:
+	//
+	// - active: The session is not archived.
+	//
+	// - archived: The session is archived.
+	//
 	// example:
 	//
 	// active
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the session was last updated, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-09-09T01:02:00Z
@@ -245,34 +282,50 @@ func (s *GetCopilotSessionResponseBodyData) Validate() error {
 }
 
 type GetCopilotSessionResponseBodyDataActiveTurn struct {
+	// The time when the execution turn was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-09-09T01:01:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The time when the execution turn ended, in ISO 8601 format. This field is empty if the execution has not ended.
+	//
 	// example:
 	//
 	// 2026-09-09T01:03:00Z
 	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
+	// The cumulative number of input tokens in this execution turn.
+	//
 	// example:
 	//
 	// 1200
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The cumulative number of output tokens in this execution turn.
+	//
 	// example:
 	//
 	// 80
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The ID of the form that is waiting for user input. It is used when you submit user input. This field is empty if no form needs to be filled out.
+	//
 	// example:
 	//
 	// iso-boot-validation
 	PendingInputId *string `json:"pendingInputId,omitempty" xml:"pendingInputId,omitempty"`
+	// The execution status.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the execution turn. It is used when you submit user input, reconnect, or stop the execution.
+	//
 	// example:
 	//
 	// e499819f351242dba59ab8af31bc8b0f
 	TurnId *string `json:"turnId,omitempty" xml:"turnId,omitempty"`
+	// The time when the execution turn was last updated, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-09-09T01:02:00Z
@@ -364,34 +417,50 @@ func (s *GetCopilotSessionResponseBodyDataActiveTurn) Validate() error {
 }
 
 type GetCopilotSessionResponseBodyDataLastTurn struct {
+	// The time when the execution turn was created, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-09-09T01:01:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The time when the execution turn ended, in ISO 8601 format. This field is empty if the execution has not ended.
+	//
 	// example:
 	//
 	// 2026-09-09T01:03:00Z
 	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
+	// The cumulative number of input tokens in this execution turn.
+	//
 	// example:
 	//
 	// 1200
 	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// The cumulative number of output tokens in this execution turn.
+	//
 	// example:
 	//
 	// 80
 	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// The ID of the form that is waiting for user input. It is used when you submit user input. This field is empty if no form needs to be filled out.
+	//
 	// example:
 	//
 	// iso-boot-validation
 	PendingInputId *string `json:"pendingInputId,omitempty" xml:"pendingInputId,omitempty"`
+	// The execution status.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The ID of the execution turn. It is used when you submit user input, reconnect, or stop the execution.
+	//
 	// example:
 	//
 	// e499819f351242dba59ab8af31bc8b0f
 	TurnId *string `json:"turnId,omitempty" xml:"turnId,omitempty"`
+	// The time when the execution turn was last updated, in ISO 8601 format.
+	//
 	// example:
 	//
 	// 2026-09-09T01:02:00Z
@@ -483,37 +552,37 @@ func (s *GetCopilotSessionResponseBodyDataLastTurn) Validate() error {
 }
 
 type GetCopilotSessionResponseBodyDataScheduledTask struct {
-	// 本次定时执行的 Run ID
+	// The ID of this scheduled execution. It is used to associate with the scheduled execution record. Multiple triggers of the same scheduled task use different runIds.
 	//
 	// example:
 	//
 	// run-example-001
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// 计划触发时间，ISO 8601 含时区偏移
+	// The scheduled trigger time, in ISO 8601 format with a time zone. This field is empty if no record exists.
 	//
 	// example:
 	//
 	// 2026-09-09T01:00:00+00:00
 	ScheduledAt *string `json:"scheduledAt,omitempty" xml:"scheduledAt,omitempty"`
-	// Copilot 开始处理时间，ISO 8601 含时区偏移
+	// The time when the processing of this schedule started, in ISO 8601 format with a time zone.
 	//
 	// example:
 	//
 	// 2026-09-09T01:00:03+00:00
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// 任务 ID；任务删除后仍保留
+	// The ID of the associated scheduled task.
 	//
 	// example:
 	//
 	// 42
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// 触发时的任务名称快照
+	// The name of the scheduled task when this trigger occurred. Subsequent changes to the task name do not change this snapshot.
 	//
 	// example:
 	//
-	// 每日巡检
+	// Daily inspection
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// 任务的 cron 时区
+	// The scheduling time zone of the scheduled task.
 	//
 	// example:
 	//

@@ -22,21 +22,25 @@ type iGetServiceFuncStatusResponseBody interface {
 type GetServiceFuncStatusResponseBody struct {
 	// The status code.
 	//
-	// - `code == Success` indicates that the authorization is successful.
+	// - If `code == Success`, the authorization succeeds.
 	//
-	// - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
+	// - Other status codes indicate that the authorization failed. If the authorization fails, check the `message` field for the detailed fault message.
 	//
 	// example:
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The response data.
+	// The returned results.
 	Data *GetServiceFuncStatusResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The error message.
 	//
-	// - If `code == Success`, this field is empty.
+	// - If code is Success, this field is empty.
 	//
-	// - Otherwise, this field contains the request error information.
+	// - Otherwise, this field contains the request error message.
+	//
+	// example:
+	//
+	// result: code=1 msg=(Request failed, status_code != 200)
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// Id of the request
 	//
@@ -155,7 +159,7 @@ type GetServiceFuncStatusResponseBodyDataArgs struct {
 	//
 	// true
 	Locks *string `json:"locks,omitempty" xml:"locks,omitempty"`
-	// The tracing cycle.
+	// The tracing interval.
 	//
 	// example:
 	//
