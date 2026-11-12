@@ -17,7 +17,7 @@ type iCancelRunHeaders interface {
 
 type CancelRunHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The idempotency key of the request. Use the same value and the same business parameters when retrying the same cancellation request.
+	// The idempotency key for the request. Use the same value and the same business parameters when you retry the same cancellation request.
 	//
 	// example:
 	//

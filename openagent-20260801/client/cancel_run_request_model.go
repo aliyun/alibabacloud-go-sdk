@@ -18,7 +18,7 @@ type CancelRunRequest struct {
 	//
 	// example:
 	//
-	// The user manually canceled this task
+	// The user manually canceled the task
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 

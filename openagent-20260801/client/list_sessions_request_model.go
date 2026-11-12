@@ -16,13 +16,13 @@ type iListSessionsRequest interface {
 }
 
 type ListSessionsRequest struct {
-	// The maximum number of sessions to return per page. The value must be a positive integer.
+	// The maximum number of sessions to return per page. Set this parameter to a positive integer.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Do not specify this parameter for the first request. For subsequent requests, pass the nextToken value returned in the previous response. Do not parse or construct this value.
+	// The pagination token. Do not pass this parameter in the first request. For subsequent requests, pass the nextToken returned in the previous response. Do not parse or construct the token.
 	//
 	// example:
 	//

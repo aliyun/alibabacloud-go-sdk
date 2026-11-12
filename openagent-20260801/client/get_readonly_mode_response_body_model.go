@@ -97,7 +97,7 @@ type GetReadonlyModeResponseBodyData struct {
 	//
 	// 2026-01-01T00:00:00Z
 	GmtUpdate *string `json:"gmtUpdate,omitempty" xml:"gmtUpdate,omitempty"`
-	// The current effective read-only mode, returned as a string. A value of true indicates that the mode is enabled, and a value of false indicates that the mode is disabled. The value is true if not configured.
+	// The current read-only mode in effect, returned as a string. A value of true indicates that the mode is enabled, and a value of false indicates that the mode is disabled. The default value is true if not configured.
 	//
 	// example:
 	//

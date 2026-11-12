@@ -26,7 +26,7 @@ type ListSessionsResponseBody struct {
 	//
 	// 00000000-0000-4000-8000-000000000001
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Specifies whether the request is successful. A value of true indicates success.
+	// Indicates whether the request is successful. A value of true indicates success.
 	//
 	// example:
 	//
@@ -156,27 +156,13 @@ type ListSessionsResponseBodyDataSessions struct {
 	//
 	// run_example_001
 	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
-	// The status of the most recent run. Valid values:
-	//
-	// - `PENDING`: Pending.
-	//
-	// - `RUNNING`: Running.
-	//
-	// - `WAITING_USER`: Waiting for interrupt handling.
-	//
-	// - `COMPLETED`: Completed.
-	//
-	// - `FAILED`: Failed.
-	//
-	// - `CANCELLED`: Cancelled.
-	//
-	// - `REJECTED`: Rejected.
+	// The status of the most recent run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interruption handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
 	//
 	// example:
 	//
 	// COMPLETED
 	LastRunStatus *string `json:"lastRunStatus,omitempty" xml:"lastRunStatus,omitempty"`
-	// Specifies whether the session is pinned.
+	// Indicates whether the session is pinned.
 	//
 	// example:
 	//
@@ -188,19 +174,7 @@ type ListSessionsResponseBodyDataSessions struct {
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status. Valid values:
-	//
-	// - `IDLE`: Idle.
-	//
-	// - `ACTIVE`: Active.
-	//
-	// - `WAITING_USER_INPUT`: Waiting for user input.
-	//
-	// - `WAITING_APPROVAL`: Waiting for user confirmation.
-	//
-	// - `WAITING_OUT_OF_BAND_APPROVAL`: Waiting for out-of-band approval.
-	//
-	// - `CLOSED`: Closed.
+	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
 	//
 	// example:
 	//

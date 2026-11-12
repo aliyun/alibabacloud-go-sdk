@@ -20,7 +20,7 @@ type iUpdateSessionResponseBody interface {
 type UpdateSessionResponseBody struct {
 	// The session information.
 	Data *UpdateSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The ID of the request. You can use the ID to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *UpdateSessionResponseBody) Validate() error {
 }
 
 type UpdateSessionResponseBodyData struct {
-	// The time when the session was created, in RFC 3339 format.
+	// The time when the session was created. The time is in RFC 3339 format.
 	//
 	// example:
 	//
@@ -93,19 +93,19 @@ type UpdateSessionResponseBodyData struct {
 	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
 	// The status of the last run. Valid values:
 	//
-	// - `PENDING`: Pending.
+	// - `PENDING`: pending
 	//
-	// - `RUNNING`: Running.
+	// - `RUNNING`: running
 	//
-	// - `WAITING_USER`: Waiting for interrupt handling.
+	// - `WAITING_USER`: waiting for interrupt handling
 	//
-	// - `COMPLETED`: Completed.
+	// - `COMPLETED`: completed
 	//
-	// - `FAILED`: Failed.
+	// - `FAILED`: failed
 	//
-	// - `CANCELLED`: Cancelled.
+	// - `CANCELLED`: cancelled
 	//
-	// - `REJECTED`: Rejected.
+	// - `REJECTED`: rejected
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ type UpdateSessionResponseBodyData struct {
 	//
 	// false
 	Pinned *bool `json:"pinned,omitempty" xml:"pinned,omitempty"`
-	// The session ID.
+	// The ID of the session.
 	//
 	// example:
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status. Valid values:
+	// The status of the session. Valid values:
 	//
-	// - `IDLE`: Idle.
+	// - `IDLE`: idle
 	//
-	// - `ACTIVE`: Active.
+	// - `ACTIVE`: running
 	//
-	// - `WAITING_USER_INPUT`: Waiting for user input.
+	// - `WAITING_USER_INPUT`: waiting for user input
 	//
-	// - `WAITING_APPROVAL`: Waiting for user confirmation.
+	// - `WAITING_APPROVAL`: waiting for user confirmation
 	//
-	// - `WAITING_OUT_OF_BAND_APPROVAL`: Waiting for out-of-band approval.
+	// - `WAITING_OUT_OF_BAND_APPROVAL`: waiting for out-of-band approval
 	//
-	// - `CLOSED`: Closed.
+	// - `CLOSED`: closed
 	//
 	// example:
 	//
 	// IDLE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The session title.
+	// The title of the session.
 	//
 	// example:
 	//
 	// Cloud resource inspection example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The time when the session was last updated, in RFC 3339 format.
+	// The time when the session was last updated. The time is in RFC 3339 format.
 	//
 	// example:
 	//

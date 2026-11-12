@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("OpenAgent")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -305,7 +313,7 @@ func (client *Client) DeleteSession(sessionId *string, request *DeleteSessionReq
 //
 // Description:
 //
-// Queries the read-only mode switch for the current account. The read-only mode is enabled by default if it is not configured.
+// Queries the read-only mode switch of the current account. It is enabled by default if not configured.
 //
 // @param request - GetReadonlyModeRequest
 //
@@ -350,7 +358,7 @@ func (client *Client) GetReadonlyModeWithOptions(request *GetReadonlyModeRequest
 //
 // Description:
 //
-// Queries the read-only mode switch for the current account. The read-only mode is enabled by default if it is not configured.
+// Queries the read-only mode switch of the current account. It is enabled by default if not configured.
 //
 // @param request - GetReadonlyModeRequest
 //
@@ -441,7 +449,7 @@ func (client *Client) GetRun(sessionId *string, runId *string, request *GetRunRe
 //
 // Description:
 //
-// Queries the title, status, pinning information, and the ID and status of the most recent run of a specified session.
+// Queries the title, status, and pinned state of a specified session, along with the ID and status of its last run.
 //
 // @param request - GetSessionRequest
 //
@@ -486,7 +494,7 @@ func (client *Client) GetSessionWithOptions(sessionId *string, request *GetSessi
 //
 // Description:
 //
-// Queries the title, status, pinning information, and the ID and status of the most recent run of a specified session.
+// Queries the title, status, and pinned state of a specified session, along with the ID and status of its last run.
 //
 // @param request - GetSessionRequest
 //
@@ -509,7 +517,7 @@ func (client *Client) GetSession(sessionId *string, request *GetSessionRequest) 
 //
 // Description:
 //
-// Performs a paging query on the message timeline of a specified session. Use the returned nextToken to retrieve the next page.
+// Queries the message timeline of a specified session in pages. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListMessagesRequest
 //
@@ -568,7 +576,7 @@ func (client *Client) ListMessagesWithOptions(sessionId *string, request *ListMe
 //
 // Description:
 //
-// Performs a paging query on the message timeline of a specified session. Use the returned nextToken to retrieve the next page.
+// Queries the message timeline of a specified session in pages. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListMessagesRequest
 //
@@ -591,7 +599,7 @@ func (client *Client) ListMessages(sessionId *string, request *ListMessagesReque
 //
 // Description:
 //
-// Uses paging to query the list of sessions accessible to the current identity used to invoke. Use the returned nextToken to retrieve the next page.
+// Performs a paging query for the list of sessions accessible to the current invoke identity. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListSessionsRequest
 //
@@ -646,7 +654,7 @@ func (client *Client) ListSessionsWithOptions(request *ListSessionsRequest, head
 //
 // Description:
 //
-// Uses paging to query the list of sessions accessible to the current identity used to invoke. Use the returned nextToken to retrieve the next page.
+// Performs a paging query for the list of sessions accessible to the current invoke identity. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListSessionsRequest
 //
@@ -707,6 +715,10 @@ func (client *Client) SendMessageWithOptions(sessionId *string, request *SendMes
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attachments) {
+		body["attachments"] = request.Attachments
+	}
+
 	if !dara.IsNil(request.Content) {
 		body["content"] = request.Content
 	}
@@ -859,7 +871,7 @@ func (client *Client) UpdateReadonlyMode(request *UpdateReadonlyModeRequest) (_r
 //
 // Description:
 //
-// Updates the title or pinned status of a specified session. Specify at least one of the title and pinned fields. Unspecified fields remain unchanged.
+// Updates the title or pinned status of a specified session. You must specify at least one of the title and pinned parameters. Fields that are not specified remain unchanged.
 //
 // @param request - UpdateSessionRequest
 //
@@ -923,7 +935,7 @@ func (client *Client) UpdateSessionWithOptions(sessionId *string, request *Updat
 //
 // Description:
 //
-// Updates the title or pinned status of a specified session. Specify at least one of the title and pinned fields. Unspecified fields remain unchanged.
+// Updates the title or pinned status of a specified session. You must specify at least one of the title and pinned parameters. Fields that are not specified remain unchanged.
 //
 // @param request - UpdateSessionRequest
 //
@@ -949,6 +961,10 @@ func (client *Client) sendMessageWithSSE_opYieldFunc(_yield chan *SendMessageRes
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attachments) {
+		body["attachments"] = request.Attachments
+	}
+
 	if !dara.IsNil(request.Content) {
 		body["content"] = request.Content
 	}

@@ -188,7 +188,7 @@ func (client *Client) DeleteSessionWithContext(ctx context.Context, sessionId *s
 //
 // Description:
 //
-// Queries the read-only mode switch for the current account. The read-only mode is enabled by default if it is not configured.
+// Queries the read-only mode switch of the current account. It is enabled by default if not configured.
 //
 // @param request - GetReadonlyModeRequest
 //
@@ -278,7 +278,7 @@ func (client *Client) GetRunWithContext(ctx context.Context, sessionId *string, 
 //
 // Description:
 //
-// Queries the title, status, pinning information, and the ID and status of the most recent run of a specified session.
+// Queries the title, status, and pinned state of a specified session, along with the ID and status of its last run.
 //
 // @param request - GetSessionRequest
 //
@@ -323,7 +323,7 @@ func (client *Client) GetSessionWithContext(ctx context.Context, sessionId *stri
 //
 // Description:
 //
-// Performs a paging query on the message timeline of a specified session. Use the returned nextToken to retrieve the next page.
+// Queries the message timeline of a specified session in pages. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListMessagesRequest
 //
@@ -382,7 +382,7 @@ func (client *Client) ListMessagesWithContext(ctx context.Context, sessionId *st
 //
 // Description:
 //
-// Uses paging to query the list of sessions accessible to the current identity used to invoke. Use the returned nextToken to retrieve the next page.
+// Performs a paging query for the list of sessions accessible to the current invoke identity. Use the returned nextToken to retrieve the next page.
 //
 // @param request - ListSessionsRequest
 //
@@ -475,6 +475,10 @@ func (client *Client) SendMessageWithContext(ctx context.Context, sessionId *str
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attachments) {
+		body["attachments"] = request.Attachments
+	}
+
 	if !dara.IsNil(request.Content) {
 		body["content"] = request.Content
 	}
@@ -581,7 +585,7 @@ func (client *Client) UpdateReadonlyModeWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Updates the title or pinned status of a specified session. Specify at least one of the title and pinned fields. Unspecified fields remain unchanged.
+// Updates the title or pinned status of a specified session. You must specify at least one of the title and pinned parameters. Fields that are not specified remain unchanged.
 //
 // @param request - UpdateSessionRequest
 //
@@ -648,6 +652,10 @@ func (client *Client) sendMessageWithSSECtx_opYieldFunc(_yield chan *SendMessage
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Attachments) {
+		body["attachments"] = request.Attachments
+	}
+
 	if !dara.IsNil(request.Content) {
 		body["content"] = request.Content
 	}

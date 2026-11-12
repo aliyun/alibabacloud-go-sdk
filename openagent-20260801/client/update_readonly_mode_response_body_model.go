@@ -18,9 +18,9 @@ type iUpdateReadonlyModeResponseBody interface {
 }
 
 type UpdateReadonlyModeResponseBody struct {
-	// The currently active configuration information.
+	// The current effective configuration information.
 	Data *UpdateReadonlyModeResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The request ID, which is used to locate and troubleshoot issues.
+	// The request ID used to locate and troubleshoot issues.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *UpdateReadonlyModeResponseBody) Validate() error {
 }
 
 type UpdateReadonlyModeResponseBodyData struct {
-	// The name of the configuration. The value is fixed to readonly.
+	// The configuration name. The value is fixed to readonly.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type UpdateReadonlyModeResponseBodyData struct {
 	//
 	// 2026-01-01T00:00:00Z
 	GmtUpdate *string `json:"gmtUpdate,omitempty" xml:"gmtUpdate,omitempty"`
-	// The currently active configuration value, returned as the string true or false.
+	// The current effective configuration value. The value is returned as a string, either true or false.
 	//
 	// example:
 	//
 	// true
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// The type of the configuration value. The value is BOOL for this API operation.
+	// The type of the configuration value. The value is BOOL for this operation.
 	//
 	// example:
 	//

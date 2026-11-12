@@ -26,7 +26,7 @@ type ListMessagesResponseBody struct {
 	//
 	// 00000000-0000-4000-8000-000000000001
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request is successful. A value of true indicates success.
+	// Indicates whether the request was successful. A value of true indicates success.
 	//
 	// example:
 	//
@@ -91,9 +91,9 @@ type ListMessagesResponseBodyData struct {
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The message records returned in a timeline.
+	// The message records returned in chronological order.
 	Timeline []*ListMessagesResponseBodyDataTimeline `json:"timeline,omitempty" xml:"timeline,omitempty" type:"Repeated"`
-	// The number of timeline records on the current page, which is equal to the length of the timeline array.
+	// The number of timeline records on the current page. The value is equal to the length of the timeline array.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ func (s *ListMessagesResponseBodyData) Validate() error {
 }
 
 type ListMessagesResponseBodyDataTimeline struct {
-	// The message object. Different message types are distinguished by role, and each type uses the corresponding fields.
+	// The message object. Message types are distinguished by role, and each type uses its corresponding fields.
 	Message *ListMessagesResponseBodyDataTimelineMessage `json:"message,omitempty" xml:"message,omitempty" type:"Struct"`
 	// The ID of the run to which the message belongs.
 	//
@@ -215,15 +215,15 @@ type ListMessagesResponseBodyDataTimelineMessage struct {
 	//
 	// example:
 	//
-	// Query the status of the sample resource
+	// Check the status of the sample resource
 	Content interface{} `json:"content,omitempty" xml:"content,omitempty"`
-	// The encrypted content. The example is an invalid placeholder value and does not contain real ciphertext.
+	// The encrypted content. The example is an invalid placeholder value and does not contain actual ciphertext.
 	//
 	// example:
 	//
 	// EXAMPLE_ENCRYPTED_VALUE
 	EncryptedValue *string `json:"encryptedValue,omitempty" xml:"encryptedValue,omitempty"`
-	// The error description when tool execution fails.
+	// The error description when the tool execution fails.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListMessagesResponseBodyDataTimelineMessage struct {
 	//
 	// message_example_001
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The result information of historical interrupts.
+	// The result information of the historical interrupt.
 	InterruptOutcome *ListMessagesResponseBodyDataTimelineMessageInterruptOutcome `json:"interruptOutcome,omitempty" xml:"interruptOutcome,omitempty" type:"Struct"`
 	// The extended metadata of the message.
 	//
@@ -257,7 +257,7 @@ type ListMessagesResponseBodyDataTimelineMessage struct {
 	//
 	// user
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The ID of the tool invocation associated with the tool result.
+	// The tool invocation ID associated with the tool result.
 	//
 	// example:
 	//
@@ -409,7 +409,7 @@ func (s *ListMessagesResponseBodyDataTimelineMessage) Validate() error {
 type ListMessagesResponseBodyDataTimelineMessageInterruptOutcome struct {
 	// The list of historical interrupts.
 	Interrupts []*ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterrupts `json:"interrupts,omitempty" xml:"interrupts,omitempty" type:"Repeated"`
-	// The type of the interrupt result. The value is fixed to `interrupt`.
+	// The interrupt result type. The value is fixed to `interrupt`.
 	//
 	// example:
 	//
@@ -495,7 +495,7 @@ type ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterrupts struc
 	//
 	// {"type":"object","properties":{"region":{"type":"string"}},"required":["region"]}
 	ResponseSchema map[string]interface{} `json:"responseSchema,omitempty" xml:"responseSchema,omitempty"`
-	// The ID of the tool invocation associated with the interrupt.
+	// The tool invocation ID associated with the interrupt.
 	//
 	// example:
 	//
@@ -595,13 +595,13 @@ func (s *ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterrupts) 
 type ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterruptsData struct {
 	// The list of API operations that require approval.
 	ApiCalls []*ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterruptsDataApiCalls `json:"apiCalls,omitempty" xml:"apiCalls,omitempty" type:"Repeated"`
-	// The associated approval ID.
+	// The ID of the associated approval request.
 	//
 	// example:
 	//
 	// approval_example_001
 	ApprovalId *string `json:"approvalId,omitempty" xml:"approvalId,omitempty"`
-	// The URL of the approval page. The example URL cannot be used for actual approval.
+	// The URL of the approval page. The example URL cannot be used for actual approvals.
 	//
 	// example:
 	//
@@ -613,13 +613,13 @@ type ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterruptsData s
 	//
 	// true
 	Cancellable *bool `json:"cancellable,omitempty" xml:"cancellable,omitempty"`
-	// The digest identifier of the change pending approval.
+	// The summary identifier of the change pending approval.
 	//
 	// example:
 	//
 	// example-change-digest
 	ChangeDigest *string `json:"changeDigest,omitempty" xml:"changeDigest,omitempty"`
-	// The title of the approval item.
+	// The title of the approval request.
 	//
 	// example:
 	//
@@ -713,7 +713,7 @@ type ListMessagesResponseBodyDataTimelineMessageInterruptOutcomeInterruptsDataAp
 	//
 	// example:
 	//
-	// Execute changes on the sample resource
+	// Modify the sample resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -756,7 +756,7 @@ type ListMessagesResponseBodyDataTimelineMessageResumeInput struct {
 	ResolvedAt *string `json:"resolvedAt,omitempty" xml:"resolvedAt,omitempty"`
 	// The submitted processing results for each interrupt.
 	Resume []*ListMessagesResponseBodyDataTimelineMessageResumeInputResume `json:"resume,omitempty" xml:"resume,omitempty" type:"Repeated"`
-	// The ID of the original run that was resumed.
+	// The ID of the original run that is resumed.
 	//
 	// example:
 	//
@@ -834,13 +834,13 @@ type ListMessagesResponseBodyDataTimelineMessageResumeInputResume struct {
 	//
 	// interrupt_example_001
 	InterruptId *string `json:"interruptId,omitempty" xml:"interruptId,omitempty"`
-	// The processing result for the corresponding interrupt, which must comply with the responseSchema of the interrupt.
+	// The processing result for the corresponding interrupt. The result must comply with the responseSchema of the interrupt.
 	//
 	// example:
 	//
 	// {"region":"cn-hangzhou"}
 	Payload interface{} `json:"payload,omitempty" xml:"payload,omitempty"`
-	// The response method for the current interrupt. Valid values: `resolved` (the answer, confirmation, or tool result required by the interrupt has been submitted, including the `payload`) and `cancelled` (the interrupt has been canceled, excluding the `payload`).
+	// The response method for this interrupt. Valid values: `resolved` (the answer, confirmation, or tool result required by the interrupt has been submitted, which includes the `payload`) and `cancelled` (the interrupt has been canceled, which does not include the `payload`).
 	//
 	// example:
 	//
@@ -888,13 +888,13 @@ func (s *ListMessagesResponseBodyDataTimelineMessageResumeInputResume) Validate(
 }
 
 type ListMessagesResponseBodyDataTimelineMessageToolCalls struct {
-	// The encrypted content of the tool invocation. The example is only a placeholder value.
+	// The encrypted content of the tool invocation. The example is a placeholder value only.
 	//
 	// example:
 	//
 	// EXAMPLE_ENCRYPTED_VALUE
 	EncryptedValue *string `json:"encryptedValue,omitempty" xml:"encryptedValue,omitempty"`
-	// The information about the function to be executed.
+	// The information about the function to execute.
 	Function *ListMessagesResponseBodyDataTimelineMessageToolCallsFunction `json:"function,omitempty" xml:"function,omitempty" type:"Struct"`
 	// The tool invocation ID.
 	//
@@ -908,7 +908,7 @@ type ListMessagesResponseBodyDataTimelineMessageToolCalls struct {
 	//
 	// {}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The type of the tool invocation. The value is fixed to `function`.
+	// The tool invocation type. The value is fixed to `function`.
 	//
 	// example:
 	//
@@ -979,7 +979,7 @@ func (s *ListMessagesResponseBodyDataTimelineMessageToolCalls) Validate() error 
 }
 
 type ListMessagesResponseBodyDataTimelineMessageToolCallsFunction struct {
-	// The tool parameters in the form of a JSON string.
+	// The tool parameters as a JSON string.
 	//
 	// example:
 	//

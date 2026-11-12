@@ -16,13 +16,13 @@ type iUpdateSessionRequest interface {
 }
 
 type UpdateSessionRequest struct {
-	// Specifies whether to pin the session. If you do not specify this parameter, the pinned status remains unchanged.
+	// Specifies whether to pin the session. If this parameter is not specified, the pinned status remains unchanged.
 	//
 	// example:
 	//
 	// true
 	Pinned *bool `json:"pinned,omitempty" xml:"pinned,omitempty"`
-	// The new title of the session. If you do not need to update the title, do not specify this parameter.
+	// The updated title of the session. If you do not need to update the title, you can leave this parameter empty.
 	//
 	// example:
 	//

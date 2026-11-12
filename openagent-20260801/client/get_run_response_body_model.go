@@ -26,7 +26,7 @@ type GetRunResponseBody struct {
 	//
 	// 00000000-0000-4000-8000-000000000001
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *GetRunResponseBody) Validate() error {
 }
 
 type GetRunResponseBodyData struct {
-	// The time when the run was created, in ISO 8601 format.
+	// The run creation time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -99,13 +99,27 @@ type GetRunResponseBodyData struct {
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The run status: `PENDING` (pending execution), `RUNNING` (running), `WAITING_USER` (waiting for interrupt processing), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (canceled), or `REJECTED` (rejected).
+	// The run status. Valid values:
+	//
+	// - `PENDING`: pending execution
+	//
+	// - `RUNNING`: running
+	//
+	// - `WAITING_USER`: waiting for interrupt handling
+	//
+	// - `COMPLETED`: completed
+	//
+	// - `FAILED`: failed
+	//
+	// - `CANCELLED`: canceled
+	//
+	// - `REJECTED`: rejected
 	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the run was last updated, in ISO 8601 format.
+	// The last update time of the run in ISO 8601 format.
 	//
 	// example:
 	//
@@ -185,9 +199,13 @@ func (s *GetRunResponseBodyData) Validate() error {
 }
 
 type GetRunResponseBodyDataOutcome struct {
-	// The list of interrupts.
+	// The interrupt list.
 	Interrupts []*GetRunResponseBodyDataOutcomeInterrupts `json:"interrupts,omitempty" xml:"interrupts,omitempty" type:"Repeated"`
-	// The outcome type: `success` (completed successfully) or `interrupt` (waiting for interrupt processing).
+	// The result type. Valid values:
+	//
+	// - `success`: successfully completed
+	//
+	// - `interrupt`: waiting for interrupt handling
 	//
 	// example:
 	//
@@ -237,7 +255,7 @@ func (s *GetRunResponseBodyDataOutcome) Validate() error {
 type GetRunResponseBodyDataOutcomeInterrupts struct {
 	// The interrupt data.
 	Data *GetRunResponseBodyDataOutcomeInterruptsData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The expiration time of the interrupt, in ISO 8601 format.
+	// The interrupt expiration time in ISO 8601 format.
 	//
 	// example:
 	//
@@ -249,7 +267,7 @@ type GetRunResponseBodyDataOutcomeInterrupts struct {
 	//
 	// interrupt_example_001
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The interrupt prompt.
+	// The interrupt message.
 	//
 	// example:
 	//
@@ -261,19 +279,27 @@ type GetRunResponseBodyDataOutcomeInterrupts struct {
 	//
 	// {}
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// The reason for the interrupt: `tool_call` (tool calling requires processing), `input_required` (user input is required), `confirmation` (confirmation is required), or `out_of_band_approval` (waiting for out-of-band approval).
+	// The interrupt reason. Valid values:
+	//
+	// - `tool_call`: tool invocation requires handling
+	//
+	// - `input_required`: user input is required
+	//
+	// - `confirmation`: confirmation is required
+	//
+	// - `out_of_band_approval`: waiting for out-of-band approval
 	//
 	// example:
 	//
 	// input_required
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
-	// The JSON Schema that the payload must conform to when resuming the interrupt.
+	// The JSON schema that the payload must comply with when resuming this interrupt.
 	//
 	// example:
 	//
 	// {"type":"object","properties":{"region":{"type":"string"}},"required":["region"]}
 	ResponseSchema map[string]interface{} `json:"responseSchema,omitempty" xml:"responseSchema,omitempty"`
-	// The ID used to invoke the tool calling.
+	// The tool invocation ID.
 	//
 	// example:
 	//
@@ -385,13 +411,13 @@ type GetRunResponseBodyDataOutcomeInterruptsData struct {
 	//
 	// https://example.com/approvals/approval_example_001
 	ApprovalUrl *string `json:"approvalUrl,omitempty" xml:"approvalUrl,omitempty"`
-	// Specifies whether the interrupt can be canceled.
+	// Indicates whether it can be canceled.
 	//
 	// example:
 	//
 	// true
 	Cancellable *bool `json:"cancellable,omitempty" xml:"cancellable,omitempty"`
-	// The change digest.
+	// The change summary.
 	//
 	// example:
 	//

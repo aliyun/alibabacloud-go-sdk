@@ -17,7 +17,7 @@ type iUpdateSessionHeaders interface {
 
 type UpdateSessionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// The idempotency key for the request. Use the same value when you retry the same update request.
+	// The idempotency key for the request. Use the same value when retrying the same update request.
 	//
 	// example:
 	//

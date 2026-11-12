@@ -85,13 +85,13 @@ type GetSessionResponseBodyData struct {
 	//
 	// 2026-01-01T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The ID of the most recent run.
+	// The ID of the last run.
 	//
 	// example:
 	//
 	// run_example_001
 	LastRunId *string `json:"lastRunId,omitempty" xml:"lastRunId,omitempty"`
-	// The status of the most recent run. Valid values: `PENDING` (pending execution), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
+	// The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), `REJECTED` (rejected).
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type GetSessionResponseBodyData struct {
 	//
 	// session_example_001
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (active), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
+	// The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), `CLOSED` (closed).
 	//
 	// example:
 	//
