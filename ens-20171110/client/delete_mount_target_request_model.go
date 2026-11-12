@@ -18,7 +18,7 @@ type iDeleteMountTargetRequest interface {
 }
 
 type DeleteMountTargetRequest struct {
-	// The ID of the edge node.
+	// The ID of the edge zone.
 	//
 	// This parameter is required.
 	//

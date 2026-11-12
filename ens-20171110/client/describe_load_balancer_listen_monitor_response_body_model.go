@@ -16,7 +16,7 @@ type iDescribeLoadBalancerListenMonitorResponseBody interface {
 }
 
 type DescribeLoadBalancerListenMonitorResponseBody struct {
-	// The TCP/UDP monitoring data of the ELB instance.
+	// The array of Layer 4 monitoring data for the load balancer.
 	LoadBalancerMonitorListenData []*DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData `json:"LoadBalancerMonitorListenData,omitempty" xml:"LoadBalancerMonitorListenData,omitempty" type:"Repeated"`
 	// Id of the request.
 	//
@@ -90,7 +90,7 @@ type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData 
 	//
 	// 10
 	DropConns *string `json:"DropConns,omitempty" xml:"DropConns,omitempty"`
-	// The ID of the node to which the ELB instance belongs.
+	// The ID of the edge zone.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData 
 	//
 	// 12
 	InPkts *string `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
-	// The number of unavailable servers that are attached to the monitored ELB instance.
+	// The number of unavailable backend servers associated with the listener.
 	//
 	// example:
 	//
 	// 0
 	InValidRsNum *string `json:"InValidRsNum,omitempty" xml:"InValidRsNum,omitempty"`
-	// The ID of the ELB instance.
+	// The load balancing instance.
 	//
 	// example:
 	//
@@ -168,25 +168,25 @@ type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData 
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The VIP port of the ELB instance.
+	// The VIP port of the instance.
 	//
 	// example:
 	//
 	// 80
 	VPort *string `json:"VPort,omitempty" xml:"VPort,omitempty"`
-	// The number of available servers that are attached to the monitored ELB instance.
+	// The number of available backend servers associated with the listener.
 	//
 	// example:
 	//
 	// 2
 	ValidRsNum *string `json:"ValidRsNum,omitempty" xml:"ValidRsNum,omitempty"`
-	// The virtual IP address (VIP) of the instance.
+	// The VIP of the instance.
 	//
 	// example:
 	//
 	// 10.8.****
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The ID of the tunnel.
+	// The tunnel ID.
 	//
 	// example:
 	//

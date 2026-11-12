@@ -32,7 +32,7 @@ type EventMigrateInstanceRequest struct {
   // 
   // - force_transfer: forcible migration of EPS resource.
   // 
-  // - try_transfer: Attempts to migrate data.
+  // - try_transfer: Tries to migrate data.
   // 
   // example:
   // 
@@ -48,9 +48,9 @@ type EventMigrateInstanceRequest struct {
   EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
   // The type of the O&M task. Valid values:
   // 
-  // - immediate: Executes the task immediately.
+  // - immediate: Immediate execution.
   // 
-  // - scheduled: Executes the task at a scheduled time.
+  // - scheduled: Scheduled execution.
   // 
   // This parameter is required.
   // 
@@ -62,15 +62,13 @@ type EventMigrateInstanceRequest struct {
   // 
   // The password must be 8 to 30 characters in length and must contain uppercase letters, lowercase letters, and digits.
   // 
-  // Note: You cannot specify a password when you schedule the execution time.
+  // Note: You cannot specify a password for scheduled execution.
   // 
   // example:
   // 
   // AAaa1234
   Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-  // The scheduled execution time. The value is a timestamp in milliseconds.
-  // 
-  // This parameter is required when OpsType is set to scheduled.
+  // The scheduled execution time. The value is a timestamp in milliseconds. This parameter is required when OpsType is set to scheduled.
   // 
   // example:
   // 

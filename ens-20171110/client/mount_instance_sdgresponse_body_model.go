@@ -62,7 +62,7 @@ func (s *MountInstanceSDGResponseBody) Validate() error {
 }
 
 type MountInstanceSDGResponseBodyData struct {
-	// The response message. The value success is returned if the request is successful.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type MountInstanceSDGResponseBodyData struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The execution result of the synchronous request.
 	Result *MountInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all requests are successful. Valid values:
+	// Indicates whether all requests were successful. Valid values:
 	//
-	// - **true**: All successful.
+	// - **true**: All requests were successful.
 	//
-	// - **false**: Some tasks failed.
+	// - **false**: One or more tasks failed.
 	//
 	// example:
 	//

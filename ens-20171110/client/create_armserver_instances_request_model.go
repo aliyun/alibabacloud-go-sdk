@@ -60,17 +60,25 @@ type CreateARMServerInstancesRequest struct {
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// Specifies whether to enable auto-renewal.
 	//
+	// - true
+	//
+	// - false (default)
+	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to use coupons. Valid values:
+	// Specifies whether to use vouchers. Valid values:
+	//
+	// - true: Uses vouchers.
+	//
+	// - false (default): Does not use vouchers.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The IPv4 CIDR block used by the instance, in CIDR notation.
+	// The IPv4 CIDR block used by the instance.
 	//
 	// example:
 	//
@@ -84,13 +92,13 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// cn-guiyang-12
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// One or more environment variables to set during EAIS instance initialization.
+	// Sets one or more environment variables when the EAIS instance is initialized.
 	//
 	// example:
 	//
 	// [object Object]
 	EnvironmentVar *string `json:"EnvironmentVar,omitempty" xml:"EnvironmentVar,omitempty"`
-	// The refresh rate, in Hz. Valid values: 30 and 60.
+	// The refresh rate. Unit: Hz. Valid values: 30 and 60.
 	//
 	// example:
 	//
@@ -104,17 +112,13 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// yourImage ID
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The instance billing cycle. Valid values:
-	//
-	// - Hour
-	//
-	// - Day
+	// The billing cycle of the instance. Valid values: Hour and Day.
 	//
 	// example:
 	//
 	// Hour
 	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
-	// The instance type of the AIC container instance. Valid values:
+	// The AIC container instance specifications. Valid values:
 	//
 	// - aic.cf52r.c1.np
 	//
@@ -164,7 +168,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// aic.cf53r.c6.np
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The key pair name.
+	// The name of the key pair.
 	//
 	// example:
 	//
@@ -176,7 +180,9 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// pre
 	NameSpace *string `json:"NameSpace,omitempty" xml:"NameSpace,omitempty"`
-	// The billing type. Valid values: **PrePaid*	- (subscription).
+	// The billing method. Valid values: **PrePaid*	- (subscription).
+	//
+	// > Only subscription is currently supported.
 	//
 	// This parameter is required.
 	//
@@ -184,9 +190,9 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The duration for which you want to purchase the resource.
+	// The subscription duration of the resource.
 	//
-	// - If you do not specify PeriodUnit, the resource is purchased on a monthly basis by default. Currently, only Days and Month are supported.
+	// - If you do not specify PeriodUnit, the default billing cycle is month. Only Day and Month are supported.
 	//
 	// - If PeriodUnit is set to Day, Period can only be set to 3.
 	//
@@ -196,7 +202,13 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the purchase duration.
+	// The unit of the subscription duration.
+	//
+	// - If you do not specify PeriodUnit, the default billing cycle is month. Only Day and Month are supported.
+	//
+	// - If PeriodUnit is set to Day, Period can only be set to 3.
+	//
+	// - If PeriodUnit is set to Month, Period can be set to 1 to 9 or 12.
 	//
 	// example:
 	//
@@ -232,7 +244,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// AIC-Server
 	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
-	// The ARM board specification. Valid values:
+	// The ARM board specifications. Valid values:
 	//
 	// - cas.cf53r
 	//

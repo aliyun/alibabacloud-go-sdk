@@ -18,13 +18,13 @@ type iUnloadRegionSDGRequest interface {
 }
 
 type UnloadRegionSDGRequest struct {
-	// The list of destination edge zones.
+	// The list of destination nodes.
 	//
 	// This parameter is required.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
 	// The list of namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// The ID of the SDG from which to delete preloaded data.
+	// The ID of the SDG for which preloaded data is deleted.
 	//
 	// This parameter is required.
 	//

@@ -24,7 +24,7 @@ type iDescribeEnsRegionIdResourceRequest interface {
 }
 
 type DescribeEnsRegionIdResourceRequest struct {
-	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss format. The time must be in UTC+0.
+	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeEnsRegionIdResourceRequest struct {
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The sort order. Valid values: asc (ascending) and desc (descending). Only the following three parameters are supported:
+	// The sorting order. Valid values: asc for ascending order and desc for descending order. Only the following three parameters are supported:
 	//
 	// - InstanceCount: desc.
 	//
@@ -58,19 +58,19 @@ type DescribeEnsRegionIdResourceRequest struct {
 	//
 	// InstanceCount：desc
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The page number of the instance status list. Minimum value: **1**. Default value: **1**.
+	// The page number of the instance status list. Pages start from **1**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: **100**. Default value: **10**.
+	// The number of entries per page in the paging Settings for a paged query. Maximum value: **100**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+	// The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

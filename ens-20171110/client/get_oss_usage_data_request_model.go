@@ -20,13 +20,13 @@ type iGetOssUsageDataRequest interface {
 }
 
 type GetOssUsageDataRequest struct {
-	// The name of the logical Object Storage Service (OSS) bucket.
+	// The name of the OSS logical bucket.
 	//
 	// example:
 	//
 	// ens-sink-bucketzyp1656903494
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The end of the time range to query. The time must be in UTC. Format: 2010-01-21T09:50:23Z.
+	// The end time in UTC. Format: 2010-01-21T09:50:23Z.
 	//
 	// This parameter is required.
 	//
@@ -34,15 +34,13 @@ type GetOssUsageDataRequest struct {
 	//
 	// 2022-01-12T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The aggregation granularity. Unit: minutes.
-	//
-	// Default value: 5. Valid values: 5 to 1440.
+	// The time aggregation granularity. Unit: minutes. Default value: 5. Valid values: 5 to 1440.
 	//
 	// example:
 	//
 	// 10
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The beginning of the time range to query. The time must be in UTC. Format: 2010-01-21T09:50:23Z.
+	// The start time in UTC. Format: 2010-01-21T09:50:23Z.
 	//
 	// This parameter is required.
 	//

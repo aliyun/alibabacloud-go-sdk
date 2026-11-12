@@ -44,13 +44,13 @@ type DescribeMountTargetsRequest struct {
 	//
 	// TestMountPath
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	// The page number. Starting value: 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The number of entries per page. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//

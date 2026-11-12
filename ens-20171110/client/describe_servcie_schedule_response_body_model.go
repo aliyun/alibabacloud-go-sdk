@@ -34,7 +34,7 @@ type DescribeServcieScheduleResponseBody struct {
 	//
 	// 2
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The target instance ID for scheduling.
+	// The ID of the target instance.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeServcieScheduleResponseBody struct {
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the resource has been created.
+	// Indicates whether it has been created.
 	//
 	// example:
 	//
 	// false
 	RequestRepeated *bool `json:"RequestRepeated,omitempty" xml:"RequestRepeated,omitempty"`
-	// The TCP service port range of the scheduled target virtual machine instance or container. Valid values are in the ${from}-${to} format, such as 80-88.
+	// The TCP service port range of the scheduled target virtual machine instance or container. Format: ${from}-${to}. Example: 80-88.
 	//
 	// example:
 	//

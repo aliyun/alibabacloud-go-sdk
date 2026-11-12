@@ -24,7 +24,7 @@ type iListAICPublicKeyDeliveriesRequest interface {
 }
 
 type ListAICPublicKeyDeliveriesRequest struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListAICPublicKeyDeliveriesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to display per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//

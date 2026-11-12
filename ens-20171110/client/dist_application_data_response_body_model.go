@@ -21,14 +21,14 @@ type iDistApplicationDataResponseBody interface {
 
 type DistApplicationDataResponseBody struct {
 	DistInstanceIds *DistApplicationDataResponseBodyDistInstanceIds `json:"DistInstanceIds,omitempty" xml:"DistInstanceIds,omitempty" type:"Struct"`
-	// The total number of ENS instance IDs.
+	// The total number of target edge resource instance IDs.
 	//
 	// example:
 	//
 	// 2
 	DistInstanceTotalCount *int32                                      `json:"DistInstanceTotalCount,omitempty" xml:"DistInstanceTotalCount,omitempty"`
 	DistResults            *DistApplicationDataResponseBodyDistResults `json:"DistResults,omitempty" xml:"DistResults,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

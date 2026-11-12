@@ -20,7 +20,7 @@ type CopySDGShrinkRequest struct {
 	//
 	// This parameter is required.
 	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
-	// The ID of the SDG to copy.
+	// The ID of the SDG to be copied.
 	//
 	// This parameter is required.
 	//

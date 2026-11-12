@@ -9,6 +9,8 @@ type iSetLoadBalancerTCPListenerAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBackendServerPort(v int32) *SetLoadBalancerTCPListenerAttributeRequest
+	GetBackendServerPort() *int32
 	SetDescription(v string) *SetLoadBalancerTCPListenerAttributeRequest
 	GetDescription() *string
 	SetEipTransmit(v string) *SetLoadBalancerTCPListenerAttributeRequest
@@ -44,6 +46,12 @@ type iSetLoadBalancerTCPListenerAttributeRequest interface {
 }
 
 type SetLoadBalancerTCPListenerAttributeRequest struct {
+	// The port used by the backend server of the load balancing instance. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 8080
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The description of the listener. The description must be **1*	- to **80*	- characters in length.
 	//
 	// > The description cannot start with `http://` or `https://`.
@@ -54,9 +62,9 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether to enable EIP pass-through. Valid values:
 	//
-	// - **on**: Enabled.
+	// - **on**: enables EIP pass-through.
 	//
-	// - **off*	- (default): Disabled.
+	// - **off*	- (default): disables EIP pass-through.
 	//
 	// example:
 	//
@@ -68,21 +76,21 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// 500
 	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// The port used for health checks. Valid values: **1*	- to **65535**. If this parameter is not set, the backend service port (BackendServerPort) is used.
+	// The port used for health checks. Valid values: **1*	- to **65535**. If you do not configure the Settings for this parameter, the backend service port (BackendServerPort) is used.
 	//
 	// example:
 	//
 	// 8000
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum amount of time to wait for a response from a health check. If the backend ENS does not respond within the specified time, the health check fails.
+	// The maximum timeout period for a health check response. If a backend ENS instance does not respond within the specified period, the health check fails.
 	//
-	// - Default value: 5 seconds.
+	// - Default value: 5.
 	//
 	// - Valid values: **1*	- to **300**.
 	//
 	// - Unit: seconds.
 	//
-	// > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout becomes invalid and the timeout period is set to the value of HealthCheckInterval.
+	// > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout is ignored and the timeout period is the value of HealthCheckInterval.
 	//
 	// example:
 	//
@@ -94,15 +102,15 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// www.aliyundoc.com
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// The HTTP status code for a Normal health check. Valid values:
+	// The HTTP status codes that indicate a successful health check. Valid values:
 	//
-	// - **http_2xx*	- (default).
+	// - **http_2xx*	- (default)
 	//
-	// - **http_3xx**.
+	// - **http_3xx**
 	//
-	// - **http_4xx**.
+	// - **http_4xx**
 	//
-	// - **http_5xx**.
+	// - **http_5xx**
 	//
 	// example:
 	//
@@ -116,9 +124,9 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
 	// The health check type. Valid values:
 	//
-	// - **tcp*	- (default).
+	// - **tcp*	- (default)
 	//
-	// - **http**.
+	// - **http**
 	//
 	// example:
 	//
@@ -126,19 +134,19 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
 	// The URI used for health checks. The URI must be **1*	- to **80*	- characters in length.
 	//
-	// > The URI cannot be only `/` but must start with `/`.
+	// > The URI cannot be only `/`, but must start with `/`.
 	//
 	// example:
 	//
 	// /aliyundoc/index.html
 	HealthCheckURI *string `json:"HealthCheckURI,omitempty" xml:"HealthCheckURI,omitempty"`
-	// The number of consecutive successful health checks required before the health check status of a backend server changes from fail (unreachable) to success (reachable). Valid values: **2*	- to **10**.
+	// The number of consecutive successful health checks that must occur before the health check status of a backend server changes from fail (unreachable) to success (reachable). Valid values: **2*	- to **10**.
 	//
 	// example:
 	//
 	// 4
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The listener port whose attributes you want to modify. Valid values: **1*	- to **65535**.
+	// The frontend port of the listener whose attributes you want to modify. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -154,9 +162,9 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// lb-5snthcyu1x10g7tywj7iu****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The timeout period of session persistence.
+	// The timeout period for session persistence.
 	//
-	// - Default value: 0, which indicates that session persistence is disabled.
+	// - Default value: 0. This value indicates that session persistence is disabled.
 	//
 	// - Valid values: **0*	- to **3600**.
 	//
@@ -170,19 +178,19 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// - **wrr**: Backend servers with higher weights receive more requests.
 	//
-	// - **wlc**: Requests are distributed based on the weight and actual load (number of connections) of each backend server. When the weights are the same, backend servers with fewer connections receive more requests.
+	// - **wlc**: Requests are distributed based on the weights and actual loads (number of connections) of backend servers. If two backend servers have the same weight, the backend server with fewer connections receives more requests.
 	//
-	// - **rr**: Requests are distributed to backend servers in sequence.
+	// - **rr**: Requests are evenly and sequentially distributed to backend servers.
 	//
 	// - **sch**: Consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// - **tch**: Consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests from the same flow are distributed to the same backend server.
+	// - **tch**: Consistent hashing based on four tuples (source IP address, destination IP address, source port, and destination port). Requests from the same stream are distributed to the same backend server.
 	//
 	// example:
 	//
 	// wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The number of consecutive failed health checks required before the health check status of a backend server changes from success (reachable) to fail (unreachable). Valid values: **2*	- to **10**.
+	// The number of consecutive failed health checks that must occur before the health check status of a backend server changes from success (reachable) to fail (unreachable). Valid values: **2*	- to **10**.
 	//
 	// example:
 	//
@@ -196,6 +204,10 @@ func (s SetLoadBalancerTCPListenerAttributeRequest) String() string {
 
 func (s SetLoadBalancerTCPListenerAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) GetBackendServerPort() *int32 {
+	return s.BackendServerPort
 }
 
 func (s *SetLoadBalancerTCPListenerAttributeRequest) GetDescription() *string {
@@ -260,6 +272,11 @@ func (s *SetLoadBalancerTCPListenerAttributeRequest) GetScheduler() *string {
 
 func (s *SetLoadBalancerTCPListenerAttributeRequest) GetUnhealthyThreshold() *int32 {
 	return s.UnhealthyThreshold
+}
+
+func (s *SetLoadBalancerTCPListenerAttributeRequest) SetBackendServerPort(v int32) *SetLoadBalancerTCPListenerAttributeRequest {
+	s.BackendServerPort = &v
+	return s
 }
 
 func (s *SetLoadBalancerTCPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerTCPListenerAttributeRequest {

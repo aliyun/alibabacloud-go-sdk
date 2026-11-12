@@ -20,7 +20,7 @@ type CopySDGRequest struct {
 	//
 	// This parameter is required.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	// The ID of the SDG to copy.
+	// The ID of the SDG to be copied.
 	//
 	// This parameter is required.
 	//

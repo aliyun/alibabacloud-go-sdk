@@ -16,7 +16,7 @@ type iDetachInstanceSDGResponseBody interface {
 }
 
 type DetachInstanceSDGResponseBody struct {
-	// The returned data object.
+	// The Data object.
 	Data *DetachInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *DetachInstanceSDGResponseBody) Validate() error {
 }
 
 type DetachInstanceSDGResponseBodyData struct {
-	// The response message. Success is returned for a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronization request.
+	// The execution result of the synchronous request.
 	Result *DetachInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all tasks are successful. Valid values:
+	// Specifies whether all requests are successful. Valid values:
 	//
-	// - true: All tasks are successful.
+	// - true: All requests are successful.
 	//
-	// - false: Failed tasks exist.
+	// - false: Some tasks failed.
 	//
 	// example:
 	//
@@ -127,15 +127,15 @@ func (s *DetachInstanceSDGResponseBodyData) Validate() error {
 }
 
 type DetachInstanceSDGResponseBodyDataResult struct {
-	// The number of failed tasks.
+	// The number of failures.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about failed tasks.
+	// The list of failure details.
 	FailedItems []*DetachInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successful tasks.
+	// The number of successes.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DetachInstanceSDGResponseBodyDataResultFailedItems struct {
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCopySDGResponseBody interface {
 }
 
 type CopySDGResponseBody struct {
-	// The returned Data object.
+	// The Data object.
 	Data *CopySDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,19 +62,19 @@ func (s *CopySDGResponseBody) Validate() error {
 }
 
 type CopySDGResponseBodyData struct {
-	// The response message. The value success indicates a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The execution result of the synchronous request.
+	// The execution result of the synchronization request.
 	Result *CopySDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all requests were successful. Valid values:
+	// Indicates whether all requests are successful. Valid values:
 	//
-	// - **true**: All requests were successful.
+	// - **true**: All requests are successful.
 	//
-	// - **false**: Some tasks failed.
+	// - **false**: One or more tasks failed.
 	//
 	// example:
 	//
@@ -133,9 +133,9 @@ type CopySDGResponseBodyDataResult struct {
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The list of failed edge zone details.
+	// The list of details about failed edge zones.
 	FailedItems []*CopySDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successful operations.
+	// The number of successful edge zones.
 	//
 	// example:
 	//

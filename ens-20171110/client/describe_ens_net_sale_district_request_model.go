@@ -16,11 +16,11 @@ type iDescribeEnsNetSaleDistrictRequest interface {
 }
 
 type DescribeEnsNetSaleDistrictRequest struct {
-	// The region code.
+	// The district code.
 	//
-	// - If you do not specify this parameter, only nodes under the area level that is specified by NetLevelCode are queried.
+	// - If this parameter is left empty, only the nodes under the network level specified by NetLevelCode are queried.
 	//
-	// - If you specify this parameter, only child nodes in the area that is specified by NetDistrictCode are queried.
+	// - If this parameter is specified, only the child nodes under the district specified by NetDistrictCode are queried.
 	//
 	// example:
 	//
@@ -28,11 +28,11 @@ type DescribeEnsNetSaleDistrictRequest struct {
 	NetDistrictCode *string `json:"NetDistrictCode,omitempty" xml:"NetDistrictCode,omitempty"`
 	// The network level. Valid values:
 	//
-	// - **Big**: area
+	// - **Big**: Major region.
 	//
-	// - **Middle**: province
+	// - **Middle**: Province.
 	//
-	// - **Small**: city
+	// - **Small**: City.
 	//
 	// This parameter is required.
 	//

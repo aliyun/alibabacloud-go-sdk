@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("Ens")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-beijing":     dara.String("ens.aliyuncs.com"),
@@ -303,7 +311,7 @@ func (client *Client) AddNetworkInterfaceToInstance(request *AddNetworkInterface
 
 // Summary:
 //
-// Adds a public elastic IP address (EIP) to a SNAT rule.
+// Adds a public EIP to a SNAT rule.
 //
 // @param request - AddSnatIpForSnatEntryRequest
 //
@@ -351,7 +359,7 @@ func (client *Client) AddSnatIpForSnatEntryWithOptions(request *AddSnatIpForSnat
 
 // Summary:
 //
-// Adds a public elastic IP address (EIP) to a SNAT rule.
+// Adds a public EIP to a SNAT rule.
 //
 // @param request - AddSnatIpForSnatEntryRequest
 //
@@ -1021,19 +1029,19 @@ func (client *Client) AttachInstancesToNodePool(request *AttachInstancesToNodePo
 
 // Summary:
 //
-// Attaches an SSH key pair to a batch of specified instances. A maximum of 30 instances can be specified in a single call.
+// Attaches an SSH key pair to up to 30 specified instances in a single request.
 //
 // Description:
 //
 // ## Operation description
 //
-// This batch operation attaches a key pair to instances. You can only perform this operation on stopped instances.
+// This batch API operation attaches a key pair to instances. You can only perform this operation on stopped instances.
 //
-// - You can attach the key pair to a maximum of 30 instances in a single call.
+// - A maximum of 30 instances can be specified in a single request.
 //
-// - You must specify at least one of the KeyPairName and KeyPairId parameters.
+// - At least one of key_pair_name and key_pair_id must be specified.
 //
-// - Specify KeyPairId when you call this operation. The KeyPairName parameter will be deprecated.
+// - Pass key_pair_id when you call this operation. The key_pair_name parameter will be deprecated.
 //
 // @param tmpReq - AttachKeyPairRequest
 //
@@ -1091,19 +1099,19 @@ func (client *Client) AttachKeyPairWithOptions(tmpReq *AttachKeyPairRequest, run
 
 // Summary:
 //
-// Attaches an SSH key pair to a batch of specified instances. A maximum of 30 instances can be specified in a single call.
+// Attaches an SSH key pair to up to 30 specified instances in a single request.
 //
 // Description:
 //
 // ## Operation description
 //
-// This batch operation attaches a key pair to instances. You can only perform this operation on stopped instances.
+// This batch API operation attaches a key pair to instances. You can only perform this operation on stopped instances.
 //
-// - You can attach the key pair to a maximum of 30 instances in a single call.
+// - A maximum of 30 instances can be specified in a single request.
 //
-// - You must specify at least one of the KeyPairName and KeyPairId parameters.
+// - At least one of key_pair_name and key_pair_id must be specified.
 //
-// - Specify KeyPairId when you call this operation. The KeyPairName parameter will be deprecated.
+// - Pass key_pair_id when you call this operation. The key_pair_name parameter will be deprecated.
 //
 // @param request - AttachKeyPairRequest
 //
@@ -1701,7 +1709,7 @@ func (client *Client) CleanDistData(request *CleanDistDataRequest) (_result *Cle
 
 // Summary:
 //
-// Copies an SDG across edge zones by calling CopySDG.
+// Copies an SDG across edge zones.
 //
 // @param tmpReq - CopySDGRequest
 //
@@ -1747,7 +1755,7 @@ func (client *Client) CopySDGWithOptions(tmpReq *CopySDGRequest, runtime *dara.R
 
 // Summary:
 //
-// Copies an SDG across edge zones by calling CopySDG.
+// Copies an SDG across edge zones.
 //
 // @param request - CopySDGRequest
 //
@@ -1849,7 +1857,7 @@ func (client *Client) CopySnapshot(request *CopySnapshotRequest) (_result *CopyS
 
 // Summary:
 //
-// Creates ARM board card servers by calling CreateARMServerInstances.
+// Creates ARM board servers.
 //
 // @param request - CreateARMServerInstancesRequest
 //
@@ -1965,7 +1973,7 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 
 // Summary:
 //
-// Creates ARM board card servers by calling CreateARMServerInstances.
+// Creates ARM board servers.
 //
 // @param request - CreateARMServerInstancesRequest
 //
@@ -2049,7 +2057,7 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Creates a classic VPC.
+// Creates a classic virtual private cloud (VPC).
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -2105,7 +2113,7 @@ func (client *Client) CreateClassicNetworkWithOptions(request *CreateClassicNetw
 
 // Summary:
 //
-// Creates a classic VPC.
+// Creates a classic virtual private cloud (VPC).
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -2367,7 +2375,7 @@ func (client *Client) CreateClusterNodePool(request *CreateClusterNodePoolReques
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription data cloud disk by calling CreateDisk.
+// Creates a pay-as-you-go or subscription data cloud disk.
 //
 // @param request - CreateDiskRequest
 //
@@ -2447,7 +2455,7 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription data cloud disk by calling CreateDisk.
+// Creates a pay-as-you-go or subscription data cloud disk.
 //
 // @param request - CreateDiskRequest
 //
@@ -6313,11 +6321,11 @@ func (client *Client) DeleteEpnInstance(request *DeleteEpnInstanceRequest) (_res
 
 // Summary:
 //
-// Calls DeleteFileSystem to delete a NAS service.
+// Deletes a NAS file system.
 //
 // Description:
 //
-// Deletes a NAS file system. Before deleting the file system, call DeleteMountTarget to delete all mount targets of the file system. After DeleteMountTarget succeeds, there is an eventual consistency window. Poll DescribeFileSystems to confirm that MountTargets is empty before calling this API operation.
+// Deletes a NAS file system. Before deletion, you must call DeleteMountTarget to delete all mount targets of the file system. After a successful DeleteMountTarget call, an eventual consistency window exists. Poll DescribeFileSystems to confirm that MountTargets is empty before you call this operation.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -6357,11 +6365,11 @@ func (client *Client) DeleteFileSystemWithOptions(request *DeleteFileSystemReque
 
 // Summary:
 //
-// Calls DeleteFileSystem to delete a NAS service.
+// Deletes a NAS file system.
 //
 // Description:
 //
-// Deletes a NAS file system. Before deleting the file system, call DeleteMountTarget to delete all mount targets of the file system. After DeleteMountTarget succeeds, there is an eventual consistency window. Poll DescribeFileSystems to confirm that MountTargets is empty before calling this API operation.
+// Deletes a NAS file system. Before deletion, you must call DeleteMountTarget to delete all mount targets of the file system. After a successful DeleteMountTarget call, an eventual consistency window exists. Poll DescribeFileSystems to confirm that MountTargets is empty before you call this operation.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -6731,11 +6739,11 @@ func (client *Client) DeleteLoadBalancerListener(request *DeleteLoadBalancerList
 
 // Summary:
 //
-// Deletes a mount target.
+// Deletes an existing mount target.
 //
 // Description:
 //
-// After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+// A deleted mount target cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteMountTargetRequest
 //
@@ -6787,11 +6795,11 @@ func (client *Client) DeleteMountTargetWithOptions(request *DeleteMountTargetReq
 
 // Summary:
 //
-// Deletes a mount target.
+// Deletes an existing mount target.
 //
 // Description:
 //
-// After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+// A deleted mount target cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteMountTargetRequest
 //
@@ -6999,7 +7007,7 @@ func (client *Client) DeleteNetworkAcl(request *DeleteNetworkAclRequest) (_resul
 
 // Summary:
 //
-// Deletes a network access control list (ACL) rule.
+// Invokes the DeleteNetworkAclEntry operation to delete network ACL rules.
 //
 // @param request - DeleteNetworkAclEntryRequest
 //
@@ -7043,7 +7051,7 @@ func (client *Client) DeleteNetworkAclEntryWithOptions(request *DeleteNetworkAcl
 
 // Summary:
 //
-// Deletes a network access control list (ACL) rule.
+// Invokes the DeleteNetworkAclEntry operation to delete network ACL rules.
 //
 // @param request - DeleteNetworkAclEntryRequest
 //
@@ -7061,7 +7069,7 @@ func (client *Client) DeleteNetworkAclEntry(request *DeleteNetworkAclEntryReques
 
 // Summary:
 //
-// Deletes an elastic network interface (ENI).
+// Deletes one or more elastic network interface controllers (NICs).
 //
 // @param tmpReq - DeleteNetworkInterfacesRequest
 //
@@ -7111,7 +7119,7 @@ func (client *Client) DeleteNetworkInterfacesWithOptions(tmpReq *DeleteNetworkIn
 
 // Summary:
 //
-// Deletes an elastic network interface (ENI).
+// Deletes one or more elastic network interface controllers (NICs).
 //
 // @param request - DeleteNetworkInterfacesRequest
 //
@@ -7257,7 +7265,7 @@ func (client *Client) DeleteObject(request *DeleteObjectRequest) (_result *Delet
 
 // Summary:
 //
-// Deletes an SDG by calling DeleteSDG.
+// Deletes an SDG.
 //
 // Description:
 //
@@ -7311,7 +7319,7 @@ func (client *Client) DeleteSDGWithOptions(tmpReq *DeleteSDGRequest, runtime *da
 
 // Summary:
 //
-// Deletes an SDG by calling DeleteSDG.
+// Deletes an SDG.
 //
 // Description:
 //
@@ -9689,7 +9697,7 @@ func (client *Client) DescribeDiskIopsList(request *DescribeDiskIopsListRequest)
 
 // Summary:
 //
-// Queries information about one or more created disks.
+// Queries the details of one or more created cloud disks.
 //
 // @param request - DescribeDisksRequest
 //
@@ -9789,7 +9797,7 @@ func (client *Client) DescribeDisksWithOptions(request *DescribeDisksRequest, ru
 
 // Summary:
 //
-// Queries information about one or more created disks.
+// Queries the details of one or more created cloud disks.
 //
 // @param request - DescribeDisksRequest
 //
@@ -10090,7 +10098,7 @@ func (client *Client) DescribeEnsEipAddresses(request *DescribeEnsEipAddressesRe
 
 // Summary:
 //
-// Invokes the DescribeEnsNetDistrict operation to query the regions where EPS resources can be created.
+// Invokes DescribeEnsNetDistrict to query the regions where EPS resources can be created.
 //
 // @param request - DescribeEnsNetDistrictRequest
 //
@@ -10142,7 +10150,7 @@ func (client *Client) DescribeEnsNetDistrictWithOptions(request *DescribeEnsNetD
 
 // Summary:
 //
-// Invokes the DescribeEnsNetDistrict operation to query the regions where EPS resources can be created.
+// Invokes DescribeEnsNetDistrict to query the regions where EPS resources can be created.
 //
 // @param request - DescribeEnsNetDistrictRequest
 //
@@ -10205,7 +10213,7 @@ func (client *Client) DescribeEnsNetLevel() (_result *DescribeEnsNetLevelRespons
 
 // Summary:
 //
-// Queries the information about ISPs and number of ISPs in an area.
+// Queries the supported districts and ISPs, and their quantities.
 //
 // @param request - DescribeEnsNetSaleDistrictRequest
 //
@@ -10253,7 +10261,7 @@ func (client *Client) DescribeEnsNetSaleDistrictWithOptions(request *DescribeEns
 
 // Summary:
 //
-// Queries the information about ISPs and number of ISPs in an area.
+// Queries the supported districts and ISPs, and their quantities.
 //
 // @param request - DescribeEnsNetSaleDistrictRequest
 //
@@ -10271,7 +10279,7 @@ func (client *Client) DescribeEnsNetSaleDistrict(request *DescribeEnsNetSaleDist
 
 // Summary:
 //
-// Queries whether a node supports IPv6.
+// Queries whether an edge zone supports IPv6.
 //
 // @param request - DescribeEnsRegionIdIpv6InfoRequest
 //
@@ -10315,7 +10323,7 @@ func (client *Client) DescribeEnsRegionIdIpv6InfoWithOptions(request *DescribeEn
 
 // Summary:
 //
-// Queries whether a node supports IPv6.
+// Queries whether an edge zone supports IPv6.
 //
 // @param request - DescribeEnsRegionIdIpv6InfoRequest
 //
@@ -10333,7 +10341,7 @@ func (client *Client) DescribeEnsRegionIdIpv6Info(request *DescribeEnsRegionIdIp
 
 // Summary:
 //
-// Queries edge zone resource information by calling DescribeEnsRegionIdResource.
+// Queries the resource status of edge zones.
 //
 // Description:
 //
@@ -10401,7 +10409,7 @@ func (client *Client) DescribeEnsRegionIdResourceWithOptions(request *DescribeEn
 
 // Summary:
 //
-// Queries edge zone resource information by calling DescribeEnsRegionIdResource.
+// Queries the resource status of edge zones.
 //
 // Description:
 //
@@ -12610,7 +12618,11 @@ func (client *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequ
 //
 // Description:
 //
-// - API call frequency: 800 calls per second.
+// - API rate limit: 800 calls per second.
+//
+// - Per-user rate limit: 100 calls per second.
+//
+// - Request parameters act as filters and are combined with the logical AND operator. If a parameter is left empty, the filter does not take effect. However, if the InstanceIds parameter is an empty JSON array, the filter is considered valid and an empty result is returned.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -12760,7 +12772,11 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 //
 // Description:
 //
-// - API call frequency: 800 calls per second.
+// - API rate limit: 800 calls per second.
+//
+// - Per-user rate limit: 100 calls per second.
+//
+// - Request parameters act as filters and are combined with the logical AND operator. If a parameter is left empty, the filter does not take effect. However, if the InstanceIds parameter is an empty JSON array, the filter is considered valid and an empty result is returned.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -13082,13 +13098,13 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttribute(request *Descri
 
 // Summary:
 //
-// Queries monitoring data of an edge load balancer (ELB) instance.
+// Queries Layer 4 listener-level monitoring data for a load balancer.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -13128,13 +13144,13 @@ func (client *Client) DescribeLoadBalancerListenMonitorWithOptions(request *Desc
 
 // Summary:
 //
-// Queries monitoring data of an edge load balancer (ELB) instance.
+// Queries Layer 4 listener-level monitoring data for a load balancer.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -13580,7 +13596,7 @@ func (client *Client) DescribeMeasurementData(request *DescribeMeasurementDataRe
 
 // Summary:
 //
-// Queries mount target information.
+// Queries the details of mount targets.
 //
 // @param request - DescribeMountTargetsRequest
 //
@@ -13640,7 +13656,7 @@ func (client *Client) DescribeMountTargetsWithOptions(request *DescribeMountTarg
 
 // Summary:
 //
-// Queries mount target information.
+// Queries the details of mount targets.
 //
 // @param request - DescribeMountTargetsRequest
 //
@@ -15300,7 +15316,7 @@ func (client *Client) DescribeSelfImages(request *DescribeSelfImagesRequest) (_r
 
 // Summary:
 //
-// Queries the real-time status of the instance devices or containers that are being scheduled and occupied by the specified UUID.
+// Queries the real-time status of instance devices or containers that are being scheduled for the specified UUID.
 //
 // @param request - DescribeServcieScheduleRequest
 //
@@ -15352,7 +15368,7 @@ func (client *Client) DescribeServcieScheduleWithOptions(request *DescribeServci
 
 // Summary:
 //
-// Queries the real-time status of the instance devices or containers that are being scheduled and occupied by the specified UUID.
+// Queries the real-time status of instance devices or containers that are being scheduled for the specified UUID.
 //
 // @param request - DescribeServcieScheduleRequest
 //
@@ -15501,6 +15517,114 @@ func (client *Client) DescribeServerLoadBalancerMonitor(request *DescribeServerL
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeServerLoadBalancerMonitorResponse{}
 	_body, _err := client.DescribeServerLoadBalancerMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the billing records of shared disks that use SDG.
+//
+// @param tmpReq - DescribeSharedDiskRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSharedDiskRecordsResponse
+func (client *Client) DescribeSharedDiskRecordsWithOptions(tmpReq *DescribeSharedDiskRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSharedDiskRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeSharedDiskRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DiskIds) {
+		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, dara.String("DiskIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Namespaces) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, dara.String("Namespaces"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RegionIds) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, dara.String("RegionIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SdgIds) {
+		request.SdgIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SdgIds, dara.String("SdgIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DiskIdsShrink) {
+		query["DiskIds"] = request.DiskIdsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.NamespacesShrink) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionIdsShrink) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !dara.IsNil(request.SdgIdsShrink) {
+		query["SdgIds"] = request.SdgIdsShrink
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSharedDiskRecords"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSharedDiskRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the billing records of shared disks that use SDG.
+//
+// @param request - DescribeSharedDiskRecordsRequest
+//
+// @return DescribeSharedDiskRecordsResponse
+func (client *Client) DescribeSharedDiskRecords(request *DescribeSharedDiskRecordsRequest) (_result *DescribeSharedDiskRecordsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeSharedDiskRecordsResponse{}
+	_body, _err := client.DescribeSharedDiskRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16192,7 +16316,7 @@ func (client *Client) DetachDisk(request *DetachDiskRequest) (_result *DetachDis
 
 // Summary:
 //
-// Detaches a shared data group (SDG).
+// Unmounts the SDG.
 //
 // @param tmpReq - DetachInstanceSDGRequest
 //
@@ -16246,7 +16370,7 @@ func (client *Client) DetachInstanceSDGWithOptions(tmpReq *DetachInstanceSDGRequ
 
 // Summary:
 //
-// Detaches a shared data group (SDG).
+// Unmounts the SDG.
 //
 // @param request - DetachInstanceSDGRequest
 //
@@ -16454,7 +16578,7 @@ func (client *Client) DetachNetworkInterface(request *DetachNetworkInterfaceRequ
 
 // Summary:
 //
-// Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+// Distributes pre-pushed data to the edge resource instances of an application. The target edge resources support multiple canary release strategies, file extraction, and container restarts.
 //
 // @param request - DistApplicationDataRequest
 //
@@ -16506,7 +16630,7 @@ func (client *Client) DistApplicationDataWithOptions(request *DistApplicationDat
 
 // Summary:
 //
-// Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+// Distributes pre-pushed data to the edge resource instances of an application. The target edge resources support multiple canary release strategies, file extraction, and container restarts.
 //
 // @param request - DistApplicationDataRequest
 //
@@ -16524,7 +16648,7 @@ func (client *Client) DistApplicationData(request *DistApplicationDataRequest) (
 
 // Summary:
 //
-// Migrates an instance across nodes after an O&M event occurs on the instance.
+// Migrates an instance across nodes after an O&M event occurs.
 //
 // Description:
 //
@@ -16596,7 +16720,7 @@ func (client *Client) EventMigrateInstanceWithOptions(request *EventMigrateInsta
 
 // Summary:
 //
-// Migrates an instance across nodes after an O&M event occurs on the instance.
+// Migrates an instance across nodes after an O&M event occurs.
 //
 // Description:
 //
@@ -16704,11 +16828,11 @@ func (client *Client) EventRebootInstance(request *EventRebootInstanceRequest) (
 
 // Summary:
 //
-// Redeploys a specified instance either immediately or at a scheduled time.
+// Redeploys a specified resource immediately or at a scheduled time.
 //
 // Description:
 //
-// - This O\\&M operation supports only the following event types: `Instance:SystemFailure.Redeploy` (redeployment due to a system failure) and `Instance:SystemMaintenance.Redeploy` (redeployment for system maintenance).
+// - This O&M operation currently supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system failures) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
 //
 // @param request - EventRedeployInstanceRequest
 //
@@ -16768,11 +16892,11 @@ func (client *Client) EventRedeployInstanceWithOptions(request *EventRedeployIns
 
 // Summary:
 //
-// Redeploys a specified instance either immediately or at a scheduled time.
+// Redeploys a specified resource immediately or at a scheduled time.
 //
 // Description:
 //
-// - This O\\&M operation supports only the following event types: `Instance:SystemFailure.Redeploy` (redeployment due to a system failure) and `Instance:SystemMaintenance.Redeploy` (redeployment for system maintenance).
+// - This O&M operation currently supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system failures) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
 //
 // @param request - EventRedeployInstanceRequest
 //
@@ -17264,7 +17388,7 @@ func (client *Client) GetClusterAddonInstance(request *GetClusterAddonInstanceRe
 
 // Summary:
 //
-// Queries the storage usage of the previous billing cycle and the cumulative number of calls for the current month by bucket.
+// Queries the storage usage in the previous billing cycle and the cumulative number of calls for the current month.
 //
 // @param request - GetOssStorageAndAccByBucketsRequest
 //
@@ -17304,7 +17428,7 @@ func (client *Client) GetOssStorageAndAccByBucketsWithOptions(request *GetOssSto
 
 // Summary:
 //
-// Queries the storage usage of the previous billing cycle and the cumulative number of calls for the current month by bucket.
+// Queries the storage usage in the previous billing cycle and the cumulative number of calls for the current month.
 //
 // @param request - GetOssStorageAndAccByBucketsRequest
 //
@@ -17322,11 +17446,11 @@ func (client *Client) GetOssStorageAndAccByBuckets(request *GetOssStorageAndAccB
 
 // Summary:
 //
-// Queries the storage and bandwidth usage within a specific time range.
+// Queries the calculated storage and bandwidth usage for a specified time period.
 //
 // Description:
 //
-// The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+// The aggregation granularity for bandwidth and storage usage queries cannot exceed one day. Aggregate data is processed by taking the maximum value of the data points within a specified time period.
 //
 // @param request - GetOssUsageDataRequest
 //
@@ -17366,11 +17490,11 @@ func (client *Client) GetOssUsageDataWithOptions(request *GetOssUsageDataRequest
 
 // Summary:
 //
-// Queries the storage and bandwidth usage within a specific time range.
+// Queries the calculated storage and bandwidth usage for a specified time period.
 //
 // Description:
 //
-// The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+// The aggregation granularity for bandwidth and storage usage queries cannot exceed one day. Aggregate data is processed by taking the maximum value of the data points within a specified time period.
 //
 // @param request - GetOssUsageDataRequest
 //
@@ -18007,7 +18131,7 @@ func (client *Client) LeaveSecurityGroup(request *LeaveSecurityGroupRequest) (_r
 
 // Summary:
 //
-// Queries the list of association information for AIC public keys. Paging is supported.
+// Queries the associate information list of AIC public keys, and supports paging and paged query.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -18071,7 +18195,7 @@ func (client *Client) ListAICPublicKeyDeliveriesWithOptions(request *ListAICPubl
 
 // Summary:
 //
-// Queries the list of association information for AIC public keys. Paging is supported.
+// Queries the associate information list of AIC public keys, and supports paging and paged query.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -18089,7 +18213,7 @@ func (client *Client) ListAICPublicKeyDeliveries(request *ListAICPublicKeyDelive
 
 // Summary:
 //
-// Queries a list of AIC public key information that meets the specified conditions. Paging is supported.
+// Queries a list of AIC public keys that meet the specified conditions and supports paging.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -18149,7 +18273,7 @@ func (client *Client) ListAICPublicKeysWithOptions(request *ListAICPublicKeysReq
 
 // Summary:
 //
-// Queries a list of AIC public key information that meets the specified conditions. Paging is supported.
+// Queries a list of AIC public keys that meet the specified conditions and supports paging.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -19801,13 +19925,13 @@ func (client *Client) ModifyInstanceBootConfiguration(request *ModifyInstanceBoo
 
 // Summary:
 //
-// Invokes ModifyInstanceChargeType to convert the billing method of one or more Edge Node Service (ENS) instances. You can convert between instance-level pay-as-you-go and subscription instances. For instance-level pay-as-you-go instances, you can also convert pay-as-you-go cloud disks created with the instances to subscription cloud disks.
+// Modifies the billing method of one or more Edge Node Service (ENS) instances. You can convert instance-level pay-as-you-go instances to subscription instances and vice versa. For instance-level pay-as-you-go instances, you can also convert the pay-as-you-go cloud disks created with the instances to subscription cloud disks.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of Edge Node Service (ENS).
+// Make sure that you fully understand the billing methods and pricing of ENS before you call this operation.
 //
-// The target instance must be in the Running or Stopped state and must not have an overdue payment before you can change the billing method.
+// The target instance must be in the Running or Stopped state and have no overdue payments before you can change its billing method.
 //
 // @param tmpReq - ModifyInstanceChargeTypeRequest
 //
@@ -19885,13 +20009,13 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(tmpReq *ModifyInstance
 
 // Summary:
 //
-// Invokes ModifyInstanceChargeType to convert the billing method of one or more Edge Node Service (ENS) instances. You can convert between instance-level pay-as-you-go and subscription instances. For instance-level pay-as-you-go instances, you can also convert pay-as-you-go cloud disks created with the instances to subscription cloud disks.
+// Modifies the billing method of one or more Edge Node Service (ENS) instances. You can convert instance-level pay-as-you-go instances to subscription instances and vice versa. For instance-level pay-as-you-go instances, you can also convert the pay-as-you-go cloud disks created with the instances to subscription cloud disks.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of Edge Node Service (ENS).
+// Make sure that you fully understand the billing methods and pricing of ENS before you call this operation.
 //
-// The target instance must be in the Running or Stopped state and must not have an overdue payment before you can change the billing method.
+// The target instance must be in the Running or Stopped state and have no overdue payments before you can change its billing method.
 //
 // @param request - ModifyInstanceChargeTypeRequest
 //
@@ -20647,7 +20771,7 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 
 // Summary:
 //
-// Deploys an SDG that is already attached to an instance to the corresponding AIC.
+// Deploys the attached SDG to the corresponding AIC.
 //
 // @param tmpReq - MountInstanceSDGRequest
 //
@@ -20701,7 +20825,7 @@ func (client *Client) MountInstanceSDGWithOptions(tmpReq *MountInstanceSDGReques
 
 // Summary:
 //
-// Deploys an SDG that is already attached to an instance to the corresponding AIC.
+// Deploys the attached SDG to the corresponding AIC.
 //
 // @param request - MountInstanceSDGRequest
 //
@@ -23625,11 +23749,11 @@ func (client *Client) RunServiceSchedule(request *RunServiceScheduleRequest) (_r
 
 // Summary:
 //
-// Saves the cloud disk of a specified device as a Shared Data Group (SDG).
+// Saves the cloud disk of a specified device as an SDG.
 //
 // Description:
 //
-// Saves a Shared Data Group (SDG). SDGs in the failed status cannot be saved. Before calling this operation, call DescribeSDGs to query the current status.
+// Saves an SDG. You cannot save an SDG that is in the failed state. Before calling this operation, call DescribeSDGs to check the current status.
 //
 // @param request - SaveSDGRequest
 //
@@ -23669,11 +23793,11 @@ func (client *Client) SaveSDGWithOptions(request *SaveSDGRequest, runtime *dara.
 
 // Summary:
 //
-// Saves the cloud disk of a specified device as a Shared Data Group (SDG).
+// Saves the cloud disk of a specified device as an SDG.
 //
 // Description:
 //
-// Saves a Shared Data Group (SDG). SDGs in the failed status cannot be saved. Before calling this operation, call DescribeSDGs to query the current status.
+// Saves an SDG. You cannot save an SDG that is in the failed state. Before calling this operation, call DescribeSDGs to check the current status.
 //
 // @param request - SaveSDGRequest
 //
@@ -24205,13 +24329,13 @@ func (client *Client) SetLoadBalancerStatus(request *SetLoadBalancerStatusReques
 
 // Summary:
 //
-// Modifies the configuration of a TCP listener.
+// Modifies the configurations of a TCP listener.
 //
 // Description:
 //
-// - API call rate limit: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call rate limit: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerTCPListenerAttributeRequest
 //
@@ -24226,6 +24350,10 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackendServerPort) {
+		query["BackendServerPort"] = request.BackendServerPort
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -24315,13 +24443,13 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithOptions(request *Se
 
 // Summary:
 //
-// Modifies the configuration of a TCP listener.
+// Modifies the configurations of a TCP listener.
 //
 // Description:
 //
-// - API call rate limit: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call rate limit: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerTCPListenerAttributeRequest
 //
@@ -24339,13 +24467,13 @@ func (client *Client) SetLoadBalancerTCPListenerAttribute(request *SetLoadBalanc
 
 // Summary:
 //
-// Modifies the configurations of a UDP listener.
+// Modifies the configuration of a UDP listener.
 //
 // Description:
 //
 // - API call rate: 100 calls per second.
 //
-// - Rate limit per user: 10 calls per second.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -24360,6 +24488,10 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackendServerPort) {
+		query["BackendServerPort"] = request.BackendServerPort
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -24437,13 +24569,13 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithOptions(request *Se
 
 // Summary:
 //
-// Modifies the configurations of a UDP listener.
+// Modifies the configuration of a UDP listener.
 //
 // Description:
 //
 // - API call rate: 100 calls per second.
 //
-// - Rate limit per user: 10 calls per second.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -24819,7 +24951,7 @@ func (client *Client) StartLoadBalancerListener(request *StartLoadBalancerListen
 
 // Summary:
 //
-// Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+// Starts the disabled EIP in an SNAT rule.
 //
 // @param request - StartSnatIpForSnatEntryRequest
 //
@@ -24867,7 +24999,7 @@ func (client *Client) StartSnatIpForSnatEntryWithOptions(request *StartSnatIpFor
 
 // Summary:
 //
-// Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+// Starts the disabled EIP in an SNAT rule.
 //
 // @param request - StartSnatIpForSnatEntryRequest
 //
@@ -25183,7 +25315,7 @@ func (client *Client) StopLoadBalancerListener(request *StopLoadBalancerListener
 
 // Summary:
 //
-// Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+// Invokes StopSnatIpForSnatEntry to disable the SnatIp running in an SNAT rule.
 //
 // @param request - StopSnatIpForSnatEntryRequest
 //
@@ -25231,7 +25363,7 @@ func (client *Client) StopSnatIpForSnatEntryWithOptions(request *StopSnatIpForSn
 
 // Summary:
 //
-// Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+// Invokes StopSnatIpForSnatEntry to disable the SnatIp running in an SNAT rule.
 //
 // @param request - StopSnatIpForSnatEntryRequest
 //
@@ -25749,7 +25881,7 @@ func (client *Client) UnassociateNetworkCidrBlock(request *UnassociateNetworkCid
 
 // Summary:
 //
-// Calls UnloadRegionSDG to delete preloaded data.
+// Deletes preloaded data.
 //
 // @param tmpReq - UnloadRegionSDGRequest
 //
@@ -25811,7 +25943,7 @@ func (client *Client) UnloadRegionSDGWithOptions(tmpReq *UnloadRegionSDGRequest,
 
 // Summary:
 //
-// Calls UnloadRegionSDG to delete preloaded data.
+// Deletes preloaded data.
 //
 // @param request - UnloadRegionSDGRequest
 //
@@ -25829,7 +25961,7 @@ func (client *Client) UnloadRegionSDG(request *UnloadRegionSDGRequest) (_result 
 
 // Summary:
 //
-// Unmounts a shared data group (SDG) from instances.
+// Unmounts an SDG from the corresponding instance and restores it to the attached state.
 //
 // @param tmpReq - UnmountInstanceSDGRequest
 //
@@ -25883,7 +26015,7 @@ func (client *Client) UnmountInstanceSDGWithOptions(tmpReq *UnmountInstanceSDGRe
 
 // Summary:
 //
-// Unmounts a shared data group (SDG) from instances.
+// Unmounts an SDG from the corresponding instance and restores it to the attached state.
 //
 // @param request - UnmountInstanceSDGRequest
 //

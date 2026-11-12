@@ -22,13 +22,13 @@ type iListAICPublicKeysResponseBody interface {
 }
 
 type ListAICPublicKeysResponseBody struct {
-	// The current page number in the paginated query.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to display per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAICPublicKeysResponseBody struct {
 	//
 	// xxxsxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

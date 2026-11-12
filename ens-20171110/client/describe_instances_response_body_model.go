@@ -24,7 +24,7 @@ type iDescribeInstancesResponseBody interface {
 }
 
 type DescribeInstancesResponseBody struct {
-	// The business code returned. A value of 0 indicates success.
+	// The returned business code. A value of 0 indicates success.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page that was specified in the request.
+	// The number of entries per page.
 	//
 	// example:
 	//

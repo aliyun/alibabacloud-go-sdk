@@ -14,7 +14,7 @@ type iDeleteNetworkAclEntryRequest interface {
 }
 
 type DeleteNetworkAclEntryRequest struct {
-	// The ID of the network ACL for which you want to delete a rule.
+	// The ID of the network ACL entry to be deleted.
 	//
 	// example:
 	//

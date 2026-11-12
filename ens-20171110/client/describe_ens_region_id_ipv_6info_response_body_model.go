@@ -22,7 +22,7 @@ type DescribeEnsRegionIdIpv6InfoResponseBody struct {
 	//
 	// 3703C4AC-9396-458C-8F25-1D701334D309
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// IPv6 support information.
+	// The IPv6 support information.
 	SupportIpv6Info *DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info `json:"SupportIpv6Info,omitempty" xml:"SupportIpv6Info,omitempty" type:"Struct"`
 }
 
@@ -62,17 +62,17 @@ func (s *DescribeEnsRegionIdIpv6InfoResponseBody) Validate() error {
 }
 
 type DescribeEnsRegionIdIpv6InfoResponseBodySupportIpv6Info struct {
-	// The ID of the node.
+	// The ID of the edge zone.
 	//
 	// example:
 	//
 	// cn-chengdu-****-4
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Specifies whether IPv6 is supported. Valid values:
+	// Indicates whether IPv6 is supported. Valid values:
 	//
-	// - true
+	// - true: Supported.
 	//
-	// - false
+	// - false: Not supported.
 	//
 	// example:
 	//

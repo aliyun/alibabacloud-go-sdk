@@ -177,7 +177,7 @@ func (client *Client) AddNetworkInterfaceToInstanceWithContext(ctx context.Conte
 
 // Summary:
 //
-// Adds a public elastic IP address (EIP) to a SNAT rule.
+// Adds a public EIP to a SNAT rule.
 //
 // @param request - AddSnatIpForSnatEntryRequest
 //
@@ -699,19 +699,19 @@ func (client *Client) AttachInstancesToNodePoolWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Attaches an SSH key pair to a batch of specified instances. A maximum of 30 instances can be specified in a single call.
+// Attaches an SSH key pair to up to 30 specified instances in a single request.
 //
 // Description:
 //
 // ## Operation description
 //
-// This batch operation attaches a key pair to instances. You can only perform this operation on stopped instances.
+// This batch API operation attaches a key pair to instances. You can only perform this operation on stopped instances.
 //
-// - You can attach the key pair to a maximum of 30 instances in a single call.
+// - A maximum of 30 instances can be specified in a single request.
 //
-// - You must specify at least one of the KeyPairName and KeyPairId parameters.
+// - At least one of key_pair_name and key_pair_id must be specified.
 //
-// - Specify KeyPairId when you call this operation. The KeyPairName parameter will be deprecated.
+// - Pass key_pair_id when you call this operation. The key_pair_name parameter will be deprecated.
 //
 // @param tmpReq - AttachKeyPairRequest
 //
@@ -1191,7 +1191,7 @@ func (client *Client) CleanDistDataWithContext(ctx context.Context, request *Cle
 
 // Summary:
 //
-// Copies an SDG across edge zones by calling CopySDG.
+// Copies an SDG across edge zones.
 //
 // @param tmpReq - CopySDGRequest
 //
@@ -1303,7 +1303,7 @@ func (client *Client) CopySnapshotWithContext(ctx context.Context, tmpReq *CopyS
 
 // Summary:
 //
-// Creates ARM board card servers by calling CreateARMServerInstances.
+// Creates ARM board servers.
 //
 // @param request - CreateARMServerInstancesRequest
 //
@@ -1467,7 +1467,7 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a classic VPC.
+// Creates a classic virtual private cloud (VPC).
 //
 // @param request - CreateClassicNetworkRequest
 //
@@ -1719,7 +1719,7 @@ func (client *Client) CreateClusterNodePoolWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Creates a pay-as-you-go or subscription data cloud disk by calling CreateDisk.
+// Creates a pay-as-you-go or subscription data cloud disk.
 //
 // @param request - CreateDiskRequest
 //
@@ -4745,11 +4745,11 @@ func (client *Client) DeleteEpnInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Calls DeleteFileSystem to delete a NAS service.
+// Deletes a NAS file system.
 //
 // Description:
 //
-// Deletes a NAS file system. Before deleting the file system, call DeleteMountTarget to delete all mount targets of the file system. After DeleteMountTarget succeeds, there is an eventual consistency window. Poll DescribeFileSystems to confirm that MountTargets is empty before calling this API operation.
+// Deletes a NAS file system. Before deletion, you must call DeleteMountTarget to delete all mount targets of the file system. After a successful DeleteMountTarget call, an eventual consistency window exists. Poll DescribeFileSystems to confirm that MountTargets is empty before you call this operation.
 //
 // @param request - DeleteFileSystemRequest
 //
@@ -5039,11 +5039,11 @@ func (client *Client) DeleteLoadBalancerListenerWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes a mount target.
+// Deletes an existing mount target.
 //
 // Description:
 //
-// After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+// A deleted mount target cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteMountTargetRequest
 //
@@ -5231,7 +5231,7 @@ func (client *Client) DeleteNetworkAclWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes a network access control list (ACL) rule.
+// Invokes the DeleteNetworkAclEntry operation to delete network ACL rules.
 //
 // @param request - DeleteNetworkAclEntryRequest
 //
@@ -5275,7 +5275,7 @@ func (client *Client) DeleteNetworkAclEntryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes an elastic network interface (ENI).
+// Deletes one or more elastic network interface controllers (NICs).
 //
 // @param tmpReq - DeleteNetworkInterfacesRequest
 //
@@ -5417,7 +5417,7 @@ func (client *Client) DeleteObjectWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes an SDG by calling DeleteSDG.
+// Deletes an SDG.
 //
 // Description:
 //
@@ -7059,7 +7059,7 @@ func (client *Client) DescribeDiskIopsListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries information about one or more created disks.
+// Queries the details of one or more created cloud disks.
 //
 // @param request - DescribeDisksRequest
 //
@@ -7343,7 +7343,7 @@ func (client *Client) DescribeEnsEipAddressesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Invokes the DescribeEnsNetDistrict operation to query the regions where EPS resources can be created.
+// Invokes DescribeEnsNetDistrict to query the regions where EPS resources can be created.
 //
 // @param request - DescribeEnsNetDistrictRequest
 //
@@ -7395,7 +7395,7 @@ func (client *Client) DescribeEnsNetDistrictWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about ISPs and number of ISPs in an area.
+// Queries the supported districts and ISPs, and their quantities.
 //
 // @param request - DescribeEnsNetSaleDistrictRequest
 //
@@ -7443,7 +7443,7 @@ func (client *Client) DescribeEnsNetSaleDistrictWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries whether a node supports IPv6.
+// Queries whether an edge zone supports IPv6.
 //
 // @param request - DescribeEnsRegionIdIpv6InfoRequest
 //
@@ -7487,7 +7487,7 @@ func (client *Client) DescribeEnsRegionIdIpv6InfoWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries edge zone resource information by calling DescribeEnsRegionIdResource.
+// Queries the resource status of edge zones.
 //
 // Description:
 //
@@ -9151,7 +9151,11 @@ func (client *Client) DescribeInstanceVncUrlWithContext(ctx context.Context, req
 //
 // Description:
 //
-// - API call frequency: 800 calls per second.
+// - API rate limit: 800 calls per second.
+//
+// - Per-user rate limit: 100 calls per second.
+//
+// - Request parameters act as filters and are combined with the logical AND operator. If a parameter is left empty, the filter does not take effect. However, if the InstanceIds parameter is an empty JSON array, the filter is considered valid and an empty result is returned.
 //
 // @param tmpReq - DescribeInstancesRequest
 //
@@ -9511,13 +9515,13 @@ func (client *Client) DescribeLoadBalancerHTTPSListenerAttributeWithContext(ctx 
 
 // Summary:
 //
-// Queries monitoring data of an edge load balancer (ELB) instance.
+// Queries Layer 4 listener-level monitoring data for a load balancer.
 //
 // Description:
 //
-// - up to 100 times per second per account.
+// - API call rate: 100 calls per second.
 //
-// - up to 10 times per second per user.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - DescribeLoadBalancerListenMonitorRequest
 //
@@ -9859,7 +9863,7 @@ func (client *Client) DescribeMeasurementDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries mount target information.
+// Queries the details of mount targets.
 //
 // @param request - DescribeMountTargetsRequest
 //
@@ -11099,7 +11103,7 @@ func (client *Client) DescribeSelfImagesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the real-time status of the instance devices or containers that are being scheduled and occupied by the specified UUID.
+// Queries the real-time status of instance devices or containers that are being scheduled for the specified UUID.
 //
 // @param request - DescribeServcieScheduleRequest
 //
@@ -11233,6 +11237,96 @@ func (client *Client) DescribeServerLoadBalancerMonitorWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeServerLoadBalancerMonitorResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the billing records of shared disks that use SDG.
+//
+// @param tmpReq - DescribeSharedDiskRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSharedDiskRecordsResponse
+func (client *Client) DescribeSharedDiskRecordsWithContext(ctx context.Context, tmpReq *DescribeSharedDiskRecordsRequest, runtime *dara.RuntimeOptions) (_result *DescribeSharedDiskRecordsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeSharedDiskRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.DiskIds) {
+		request.DiskIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIds, dara.String("DiskIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Namespaces) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, dara.String("Namespaces"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.RegionIds) {
+		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, dara.String("RegionIds"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SdgIds) {
+		request.SdgIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SdgIds, dara.String("SdgIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DiskIdsShrink) {
+		query["DiskIds"] = request.DiskIdsShrink
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.NamespacesShrink) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionIdsShrink) {
+		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !dara.IsNil(request.SdgIdsShrink) {
+		query["SdgIds"] = request.SdgIdsShrink
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSharedDiskRecords"),
+		Version:     dara.String("2017-11-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSharedDiskRecordsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11763,7 +11857,7 @@ func (client *Client) DetachDiskWithContext(ctx context.Context, request *Detach
 
 // Summary:
 //
-// Detaches a shared data group (SDG).
+// Unmounts the SDG.
 //
 // @param tmpReq - DetachInstanceSDGRequest
 //
@@ -11945,7 +12039,7 @@ func (client *Client) DetachNetworkInterfaceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+// Distributes pre-pushed data to the edge resource instances of an application. The target edge resources support multiple canary release strategies, file extraction, and container restarts.
 //
 // @param request - DistApplicationDataRequest
 //
@@ -11997,7 +12091,7 @@ func (client *Client) DistApplicationDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Migrates an instance across nodes after an O&M event occurs on the instance.
+// Migrates an instance across nodes after an O&M event occurs.
 //
 // Description:
 //
@@ -12133,11 +12227,11 @@ func (client *Client) EventRebootInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Redeploys a specified instance either immediately or at a scheduled time.
+// Redeploys a specified resource immediately or at a scheduled time.
 //
 // Description:
 //
-// - This O\\&M operation supports only the following event types: `Instance:SystemFailure.Redeploy` (redeployment due to a system failure) and `Instance:SystemMaintenance.Redeploy` (redeployment for system maintenance).
+// - This O&M operation currently supports only the following event types: Instance:SystemFailure.Redeploy (instance redeployment due to system failures) and Instance:SystemMaintenance.Redeploy (instance redeployment due to system maintenance).
 //
 // @param request - EventRedeployInstanceRequest
 //
@@ -12541,7 +12635,7 @@ func (client *Client) GetClusterAddonInstanceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the storage usage of the previous billing cycle and the cumulative number of calls for the current month by bucket.
+// Queries the storage usage in the previous billing cycle and the cumulative number of calls for the current month.
 //
 // @param request - GetOssStorageAndAccByBucketsRequest
 //
@@ -12581,11 +12675,11 @@ func (client *Client) GetOssStorageAndAccByBucketsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the storage and bandwidth usage within a specific time range.
+// Queries the calculated storage and bandwidth usage for a specified time period.
 //
 // Description:
 //
-// The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+// The aggregation granularity for bandwidth and storage usage queries cannot exceed one day. Aggregate data is processed by taking the maximum value of the data points within a specified time period.
 //
 // @param request - GetOssUsageDataRequest
 //
@@ -13049,7 +13143,7 @@ func (client *Client) LeaveSecurityGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the list of association information for AIC public keys. Paging is supported.
+// Queries the associate information list of AIC public keys, and supports paging and paged query.
 //
 // @param request - ListAICPublicKeyDeliveriesRequest
 //
@@ -13113,7 +13207,7 @@ func (client *Client) ListAICPublicKeyDeliveriesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of AIC public key information that meets the specified conditions. Paging is supported.
+// Queries a list of AIC public keys that meet the specified conditions and supports paging.
 //
 // @param request - ListAICPublicKeysRequest
 //
@@ -14335,13 +14429,13 @@ func (client *Client) ModifyInstanceBootConfigurationWithContext(ctx context.Con
 
 // Summary:
 //
-// Invokes ModifyInstanceChargeType to convert the billing method of one or more Edge Node Service (ENS) instances. You can convert between instance-level pay-as-you-go and subscription instances. For instance-level pay-as-you-go instances, you can also convert pay-as-you-go cloud disks created with the instances to subscription cloud disks.
+// Modifies the billing method of one or more Edge Node Service (ENS) instances. You can convert instance-level pay-as-you-go instances to subscription instances and vice versa. For instance-level pay-as-you-go instances, you can also convert the pay-as-you-go cloud disks created with the instances to subscription cloud disks.
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of Edge Node Service (ENS).
+// Make sure that you fully understand the billing methods and pricing of ENS before you call this operation.
 //
-// The target instance must be in the Running or Stopped state and must not have an overdue payment before you can change the billing method.
+// The target instance must be in the Running or Stopped state and have no overdue payments before you can change its billing method.
 //
 // @param tmpReq - ModifyInstanceChargeTypeRequest
 //
@@ -14945,7 +15039,7 @@ func (client *Client) ModifyVSwitchAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deploys an SDG that is already attached to an instance to the corresponding AIC.
+// Deploys the attached SDG to the corresponding AIC.
 //
 // @param tmpReq - MountInstanceSDGRequest
 //
@@ -17193,11 +17287,11 @@ func (client *Client) RunServiceScheduleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Saves the cloud disk of a specified device as a Shared Data Group (SDG).
+// Saves the cloud disk of a specified device as an SDG.
 //
 // Description:
 //
-// Saves a Shared Data Group (SDG). SDGs in the failed status cannot be saved. Before calling this operation, call DescribeSDGs to query the current status.
+// Saves an SDG. You cannot save an SDG that is in the failed state. Before calling this operation, call DescribeSDGs to check the current status.
 //
 // @param request - SaveSDGRequest
 //
@@ -17637,13 +17731,13 @@ func (client *Client) SetLoadBalancerStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the configuration of a TCP listener.
+// Modifies the configurations of a TCP listener.
 //
 // Description:
 //
-// - API call rate limit: 100 calls per second.
+// - API rate limit: 100 calls per second.
 //
-// - Per-user call rate limit: 10 calls per second.
+// - Rate limit per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerTCPListenerAttributeRequest
 //
@@ -17658,6 +17752,10 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithContext(ctx context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackendServerPort) {
+		query["BackendServerPort"] = request.BackendServerPort
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -17747,13 +17845,13 @@ func (client *Client) SetLoadBalancerTCPListenerAttributeWithContext(ctx context
 
 // Summary:
 //
-// Modifies the configurations of a UDP listener.
+// Modifies the configuration of a UDP listener.
 //
 // Description:
 //
 // - API call rate: 100 calls per second.
 //
-// - Rate limit per user: 10 calls per second.
+// - Call rate per user: 10 calls per second.
 //
 // @param request - SetLoadBalancerUDPListenerAttributeRequest
 //
@@ -17768,6 +17866,10 @@ func (client *Client) SetLoadBalancerUDPListenerAttributeWithContext(ctx context
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BackendServerPort) {
+		query["BackendServerPort"] = request.BackendServerPort
+	}
+
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
 	}
@@ -18101,7 +18203,7 @@ func (client *Client) StartLoadBalancerListenerWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+// Starts the disabled EIP in an SNAT rule.
 //
 // @param request - StartSnatIpForSnatEntryRequest
 //
@@ -18359,7 +18461,7 @@ func (client *Client) StopLoadBalancerListenerWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+// Invokes StopSnatIpForSnatEntry to disable the SnatIp running in an SNAT rule.
 //
 // @param request - StopSnatIpForSnatEntryRequest
 //
@@ -18769,7 +18871,7 @@ func (client *Client) UnassociateNetworkCidrBlockWithContext(ctx context.Context
 
 // Summary:
 //
-// Calls UnloadRegionSDG to delete preloaded data.
+// Deletes preloaded data.
 //
 // @param tmpReq - UnloadRegionSDGRequest
 //
@@ -18831,7 +18933,7 @@ func (client *Client) UnloadRegionSDGWithContext(ctx context.Context, tmpReq *Un
 
 // Summary:
 //
-// Unmounts a shared data group (SDG) from instances.
+// Unmounts an SDG from the corresponding instance and restores it to the attached state.
 //
 // @param tmpReq - UnmountInstanceSDGRequest
 //

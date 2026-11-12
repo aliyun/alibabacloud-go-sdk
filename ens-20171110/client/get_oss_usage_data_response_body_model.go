@@ -22,7 +22,7 @@ type GetOssUsageDataResponseBody struct {
 	//
 	// 2A8CCD48-14F9-0309-B957-7B1D74A8119D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The array of usage data.
+	// The usage array.
 	UsageList []*GetOssUsageDataResponseBodyUsageList `json:"UsageList,omitempty" xml:"UsageList,omitempty" type:"Repeated"`
 }
 
@@ -66,25 +66,25 @@ func (s *GetOssUsageDataResponseBody) Validate() error {
 }
 
 type GetOssUsageDataResponseBodyUsageList struct {
-	// The inbound bandwidth over the internal network. Unit: bit/s.
+	// The inbound bandwidth over the internal network. Unit: Bps.
 	//
 	// example:
 	//
 	// 37865147
 	LanRxBw *int64 `json:"LanRxBw,omitempty" xml:"LanRxBw,omitempty"`
-	// The outbound bandwidth over the internal network. Unit: bit/s.
+	// The outbound bandwidth over the internal network. Unit: Bps.
 	//
 	// example:
 	//
 	// 22012187890
 	LanTxBw *int64 `json:"LanTxBw,omitempty" xml:"LanTxBw,omitempty"`
-	// The number of time points within a day.
+	// The sequence number of the time point within a day.
 	//
 	// example:
 	//
 	// 144
 	Point *int64 `json:"Point,omitempty" xml:"Point,omitempty"`
-	// The point in time, in UTC. Format: 2010-01-21T09:50:23Z.
+	// The time point in UTC. Format: 2010-01-21T09:50:23Z.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type GetOssUsageDataResponseBodyUsageList struct {
 	//
 	// 85462146217
 	StorageUsageByte *int64 `json:"StorageUsageByte,omitempty" xml:"StorageUsageByte,omitempty"`
-	// The outbound bandwidth over the Internet. Unit: bit/s.
+	// The inbound bandwidth over the Internet. Unit: Bps.
 	//
 	// example:
 	//
 	// 542155715
 	WanRxBw *int64 `json:"WanRxBw,omitempty" xml:"WanRxBw,omitempty"`
-	// The outbound bandwidth over the Internet. Unit: bit/s.
+	// The outbound bandwidth over the Internet. Unit: Bps.
 	//
 	// example:
 	//

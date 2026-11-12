@@ -14,7 +14,7 @@ type iRenewInstanceResponseBody interface {
 }
 
 type RenewInstanceResponseBody struct {
-	// The common parameter. Each request has a unique ID that can be used for troubleshooting and locating issues.
+	// The request ID. This is a common parameter. The ID of each request is unique and can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//

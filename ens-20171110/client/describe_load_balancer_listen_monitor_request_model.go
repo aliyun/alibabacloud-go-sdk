@@ -22,7 +22,7 @@ type iDescribeLoadBalancerListenMonitorRequest interface {
 }
 
 type DescribeLoadBalancerListenMonitorRequest struct {
-	// The end of the time range to query.
+	// The end time.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeLoadBalancerListenMonitorRequest struct {
 	//
 	// 2024-01-30 08:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ELB instance.
+	// The load balancer instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type DescribeLoadBalancerListenMonitorRequest struct {
 	//
 	// lb-5q73cv04zeyh43lh74lp4****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The network protocol, such as tcp or udp.
+	// The network protocol, such as TCP or UDP.
 	//
 	// example:
 	//
 	// tcp
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
-	// The beginning of the time range to query.
+	// The start time.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeLoadBalancerListenMonitorRequest struct {
 	//
 	// 2024-01-15 16:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The virtual IP address (VIP) port of the ELB instance.
+	// The VIP port of the load balancer instance.
 	//
 	// This parameter is required.
 	//

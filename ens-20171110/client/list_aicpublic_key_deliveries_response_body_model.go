@@ -22,13 +22,13 @@ type iListAICPublicKeyDeliveriesResponseBody interface {
 }
 
 type ListAICPublicKeyDeliveriesResponseBody struct {
-	// The current page number in the paginated query.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to display per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type ListAICPublicKeyDeliveriesResponseBody struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of public keys.
 	PublicKeyDeliverInfo []*ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo `json:"PublicKeyDeliverInfo,omitempty" xml:"PublicKeyDeliverInfo,omitempty" type:"Repeated"`
-	// The unique identifier of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// xxxsxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total count.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo struct {
 	//
 	// 2025-10-09T15:13:21+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//

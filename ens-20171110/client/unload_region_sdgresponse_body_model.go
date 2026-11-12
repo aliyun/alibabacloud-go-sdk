@@ -16,7 +16,7 @@ type iUnloadRegionSDGResponseBody interface {
 }
 
 type UnloadRegionSDGResponseBody struct {
-	// The returned Data object.
+	// The Data object.
 	Data *UnloadRegionSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *UnloadRegionSDGResponseBody) Validate() error {
 }
 
 type UnloadRegionSDGResponseBodyData struct {
-	// The response message. A value of success indicates a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type UnloadRegionSDGResponseBodyData struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The execution result of the synchronous request.
 	Result *UnloadRegionSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all requests were successful. Valid values:
+	// Indicates whether all requests are successful. Valid values:
 	//
-	// - true: All requests were successful.
+	// - true: All requests are successful.
 	//
 	// - false: Some requests failed.
 	//
@@ -135,7 +135,7 @@ type UnloadRegionSDGResponseBodyDataResult struct {
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
 	// The list of failure details.
 	FailedItems []*UnloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successes.
+	// The number of successful requests.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ func (s *UnloadRegionSDGResponseBodyDataResult) Validate() error {
 }
 
 type UnloadRegionSDGResponseBodyDataResultFailedItems struct {
-	// The ID of the destination edge zone.
+	// The ID of the destination node.
 	//
 	// example:
 	//

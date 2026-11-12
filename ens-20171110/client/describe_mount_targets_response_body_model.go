@@ -22,13 +22,13 @@ type iDescribeMountTargetsResponseBody interface {
 }
 
 type DescribeMountTargetsResponseBody struct {
-	// The information about the mount targets.
+	// The collection of mount targets.
 	MountTargets []*DescribeMountTargetsResponseBodyMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeMountTargetsResponseBody struct {
 	//
 	// 762DD527-358B-1E48-8005-CCE3ED4EB9E0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type DescribeMountTargetsResponseBodyMountTargets struct {
 	NetWorkId *string `json:"NetWorkId,omitempty" xml:"NetWorkId,omitempty"`
 	// The status of the mount target. Valid values:
 	//
-	// - active: The mount target is available.
+	// - active: Available.
 	//
-	// - inactive: The mount target is unavailable.
+	// - inactive: Unavailable.
 	//
-	// - pending: The task is queued.
+	// - pending: Queuing.
 	//
-	// - deleting: The mount target is being deleted.
+	// - deleting: Deleting.
 	//
 	// example:
 	//

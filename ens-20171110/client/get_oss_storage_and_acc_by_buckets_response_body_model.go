@@ -66,13 +66,13 @@ func (s *GetOssStorageAndAccByBucketsResponseBody) Validate() error {
 }
 
 type GetOssStorageAndAccByBucketsResponseBodyBucketList struct {
-	// The number of access requests.
+	// The number of accesses.
 	//
 	// example:
 	//
 	// 1000
 	Acc *int64 `json:"Acc,omitempty" xml:"Acc,omitempty"`
-	// The OSS bucket name.
+	// The name of the bucket.
 	//
 	// example:
 	//

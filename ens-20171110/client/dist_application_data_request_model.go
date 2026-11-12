@@ -18,7 +18,7 @@ type iDistApplicationDataRequest interface {
 }
 
 type DistApplicationDataRequest struct {
-	// The ID of the application. To obtain the application ID, call the ListApplications operation.
+	// The application ID. To obtain the application ID, see ListApplications.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DistApplicationDataRequest struct {
 	//
 	// e76f8985-7965-41fc-925b-9648bb6bf650
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The list of data files that you want to distribute. The value must be a JSON string.
+	// The list of data files to distribute, formatted as a JSON array string.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DistApplicationDataRequest struct {
 	//
 	// [{\\"name\\":\\"app01\\",        \\"version\\":\\"1.0\\",        \\"destPath\\":\\"/root/installed\\",        \\"decompress\\":true,        \\"targetDirName\\":\\"target01\\",        \\"fileMode\\":755,        \\"timeout\\":1000    },    {        \\"name\\":\\"app02\\",        \\"version\\":\\"1.1\\",        \\"destPath\\":\\"/tmp/test.txt\\",        \\"decompress\\":false    }]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The canary release policy. The value must be a JSON string. You can specify multiple distribution policies. By default, all data files are distributed.
+	// The canary release distribution strategy, formatted as a JSON string. Multiple distribution strategies are supported. Default value: full distribution.
 	//
 	// example:
 	//

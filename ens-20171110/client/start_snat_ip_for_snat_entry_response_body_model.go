@@ -14,7 +14,7 @@ type iStartSnatIpForSnatEntryResponseBody interface {
 }
 
 type StartSnatIpForSnatEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iSetLoadBalancerUDPListenerAttributeRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBackendServerPort(v int32) *SetLoadBalancerUDPListenerAttributeRequest
+	GetBackendServerPort() *int32
 	SetDescription(v string) *SetLoadBalancerUDPListenerAttributeRequest
 	GetDescription() *string
 	SetEipTransmit(v string) *SetLoadBalancerUDPListenerAttributeRequest
@@ -38,6 +40,12 @@ type iSetLoadBalancerUDPListenerAttributeRequest interface {
 }
 
 type SetLoadBalancerUDPListenerAttributeRequest struct {
+	// The port used by the backend server of the load balancing instance. Valid values: 1 to 65535.
+	//
+	// example:
+	//
+	// 8080
+	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The name of the listener. The name must be **1*	- to **80*	- characters in length.
 	//
 	// > The name cannot start with `http://` or `https://`.
@@ -62,7 +70,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// 500
 	EstablishedTimeout *int32 `json:"EstablishedTimeout,omitempty" xml:"EstablishedTimeout,omitempty"`
-	// The port used for health checks. Valid values: **1*	- to **65535**. If no Settings are specified for this parameter, the backend service port (BackendServerPort) is used.
+	// The port used for health checks. Valid values: **1*	- to **65535**. If you do not specify this parameter in the Settings, the backend service port (BackendServerPort) is used.
 	//
 	// example:
 	//
@@ -76,7 +84,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// - Unit: seconds.
 	//
-	// > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout is invalid and the timeout period is the value of HealthCheckInterval.
+	// > If the value of HealthCheckConnectTimeout is less than the value of HealthCheckInterval, HealthCheckConnectTimeout is ignored and the value of HealthCheckInterval is used as the timeout period.
 	//
 	// example:
 	//
@@ -134,9 +142,9 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// - **tch**: Consistent hashing based on quadruples (source IP address, destination IP address, source port, and destination port). Requests from the same stream are distributed to the same backend server.
 	//
-	// - **qch**: Consistent hashing based on QUIC connection IDs. Requests with the same QUIC connection ID are distributed to the same backend server.
+	// - **qch**: Consistent hashing based on QUIC Connection IDs. Requests with the same QUIC Connection ID are distributed to the same backend server.
 	//
-	// - **iqch**: Consistent hashing based on specific three bytes of the iQUIC CID. Requests with the same second to fourth bytes are distributed to the same backend server.
+	// - **iqch**: Consistent hashing based on specific three bytes of the iQUIC CID. Requests with the same 2nd to 4th bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -156,6 +164,10 @@ func (s SetLoadBalancerUDPListenerAttributeRequest) String() string {
 
 func (s SetLoadBalancerUDPListenerAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) GetBackendServerPort() *int32 {
+	return s.BackendServerPort
 }
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) GetDescription() *string {
@@ -208,6 +220,11 @@ func (s *SetLoadBalancerUDPListenerAttributeRequest) GetScheduler() *string {
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) GetUnhealthyThreshold() *int32 {
 	return s.UnhealthyThreshold
+}
+
+func (s *SetLoadBalancerUDPListenerAttributeRequest) SetBackendServerPort(v int32) *SetLoadBalancerUDPListenerAttributeRequest {
+	s.BackendServerPort = &v
+	return s
 }
 
 func (s *SetLoadBalancerUDPListenerAttributeRequest) SetDescription(v string) *SetLoadBalancerUDPListenerAttributeRequest {

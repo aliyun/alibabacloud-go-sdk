@@ -14,7 +14,7 @@ type iDescribeEnsRegionIdIpv6InfoRequest interface {
 }
 
 type DescribeEnsRegionIdIpv6InfoRequest struct {
-	// The ID of the node. You can specify only one node ID in a call.
+	// The ID of the edge zone. Only a single ID is supported.
 	//
 	// This parameter is required.
 	//

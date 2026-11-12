@@ -16,11 +16,11 @@ type iUnmountInstanceSDGShrinkRequest interface {
 }
 
 type UnmountInstanceSDGShrinkRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The ID of the SDG.
+	// The SDG ID.
 	//
 	// This parameter is required.
 	//

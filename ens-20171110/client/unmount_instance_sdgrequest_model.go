@@ -16,11 +16,11 @@ type iUnmountInstanceSDGRequest interface {
 }
 
 type UnmountInstanceSDGRequest struct {
-	// The IDs of the instances.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the SDG.
+	// The SDG ID.
 	//
 	// This parameter is required.
 	//

@@ -58,7 +58,7 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// The list of EIP addresses used to filter instances.
+	// The list of elastic IP addresses used to filter instances.
 	EipAddresses []*string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -66,13 +66,13 @@ type DescribeInstancesRequest struct {
 	//
 	// cn-beijing-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The list of edge zone IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
+	// The list of edge zone IDs. The parameter is a JSON array that contains up to 100 IDs separated by commas (,).
 	//
 	// example:
 	//
 	// ["cn-suzhou-telecom","cn-chengdu-telecom"]
 	EnsRegionIds *string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty"`
-	// The Edge Node Service ID. You can use this ID to query the instances created under the edge service.
+	// The edge service ID. You can use this ID to query instances created under the edge service.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribeInstancesRequest struct {
 	//
 	// i-5iqczfxps7csjrxeca****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The list of instance IDs. This parameter is a formatted JSON array that contains up to 100 IDs separated by commas (,).
+	// The list of instance IDs. The parameter is a JSON array that contains up to 100 IDs separated by commas (,).
 	//
 	// example:
 	//
@@ -102,7 +102,15 @@ type DescribeInstancesRequest struct {
 	//
 	// TestName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The filter type. Valid values:
+	// The resource type used for filtering. Valid values:
+	//
+	// - EnsInstance: Independently purchased instance.
+	//
+	// - EnsService: Edge service instance.
+	//
+	// - BuildMachine: Image builder.
+	//
+	// - EnsPostPaidInstance: Independently purchased pay-as-you-go instance.
 	//
 	// example:
 	//
@@ -126,7 +134,9 @@ type DescribeInstancesRequest struct {
 	//
 	// n-2zeuphj08tt7q3brd****
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The sorting parameter in JSON format.
+	// The sorting parameters in JSON format.
+	//
+	// You can sort instances by name, expiration time, edge zone ID, or creation time. Multiple parameters can be combined.
 	//
 	// example:
 	//
@@ -142,7 +152,9 @@ type DescribeInstancesRequest struct {
 	//
 	// }
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The page number of the instance status list. The value starts from **1**.
+	// The page number of the instance status list. The starting value is **1**.
+	//
+	// Default value: **1**.
 	//
 	// example:
 	//
@@ -150,11 +162,13 @@ type DescribeInstancesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page for a paged query. Maximum value: **100**.
 	//
+	// Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The search keyword. Supports parameters such as **ip**, **InstanceName**, and **InstanceId**.
+	// The search keyword. Supported parameters include **ip**, **InstanceName**, and **InstanceId**.
 	//
 	// example:
 	//
@@ -166,21 +180,21 @@ type DescribeInstancesRequest struct {
 	//
 	// sg-5kyicq2kfcapxrdds6tar7jqb
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The business status of the instance, which does not represent the actual running status of the instance.
+	// The service status of the instance, which does not represent the actual running status of the instance.
 	ServiceStatus []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
 	// The instance status. Valid values:
 	//
-	// - Running: Running.
+	// - Running: The instance is running.
 	//
-	// - Stopped: Stopped.
+	// - Stopped: The instance is stopped.
 	//
-	// - Expired: Expired.
+	// - Expired: The instance has expired.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The resource tags. This operation does not return tag information. Use this parameter in combination with the APIs in the tag category.
+	// The resource tags. This operation does not support returning tag information. You can use it in combination with tag-related operations.
 	Tags []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//

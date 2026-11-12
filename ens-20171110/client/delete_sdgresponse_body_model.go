@@ -16,7 +16,7 @@ type iDeleteSDGResponseBody interface {
 }
 
 type DeleteSDGResponseBody struct {
-	// The returned Data object.
+	// The Data object.
 	Data *DeleteSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ func (s *DeleteSDGResponseBody) Validate() error {
 }
 
 type DeleteSDGResponseBodyData struct {
-	// The response message. A value of success indicates a successful request.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type DeleteSDGResponseBodyData struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The execution result of the synchronous request.
 	Result *DeleteSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// Indicates whether all requests succeeded. Valid values:
+	// Indicates whether all requests are successful. Valid values:
 	//
-	// - true: All succeeded.
+	// - true: All requests are successful.
 	//
 	// - false: Some tasks failed.
 	//
@@ -127,15 +127,15 @@ func (s *DeleteSDGResponseBodyData) Validate() error {
 }
 
 type DeleteSDGResponseBodyDataResult struct {
-	// The number of failures.
+	// The number of failed tasks.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The details of failed tasks.
+	// The details of the failed tasks.
 	FailedItems []*DeleteSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The number of successes.
+	// The number of successful tasks.
 	//
 	// example:
 	//
@@ -198,7 +198,7 @@ type DeleteSDGResponseBodyDataResultFailedItems struct {
 	//
 	// sdg not found
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// The specific information.
+	// The detailed information.
 	Item *DeleteSDGResponseBodyDataResultFailedItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
 }
 
@@ -238,7 +238,7 @@ func (s *DeleteSDGResponseBodyDataResultFailedItems) Validate() error {
 }
 
 type DeleteSDGResponseBodyDataResultFailedItemsItem struct {
-	// The specific ID.
+	// The SDG ID.
 	//
 	// example:
 	//

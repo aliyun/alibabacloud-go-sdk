@@ -18,13 +18,13 @@ type iUnloadRegionSDGShrinkRequest interface {
 }
 
 type UnloadRegionSDGShrinkRequest struct {
-	// The list of destination edge zones.
+	// The list of destination nodes.
 	//
 	// This parameter is required.
 	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
 	// The list of namespaces.
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
-	// The ID of the SDG from which to delete preloaded data.
+	// The ID of the SDG for which preloaded data is deleted.
 	//
 	// This parameter is required.
 	//
