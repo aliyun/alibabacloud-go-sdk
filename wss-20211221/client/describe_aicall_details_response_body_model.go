@@ -26,43 +26,43 @@ type iDescribeAICallDetailsResponseBody interface {
 }
 
 type DescribeAICallDetailsResponseBody struct {
-	// 调用明细列表。
+	// The list of AI invocation details on the current page. If no records exist, an empty array is returned.
 	//
 	// example:
 	//
 	// []
 	CallDetails []*DescribeAICallDetailsResponseBodyCallDetails `json:"CallDetails,omitempty" xml:"CallDetails,omitempty" type:"Repeated"`
-	// 当前页码。
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 当前页大小。
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 实际查询终点。翻页时应复用此值。
+	// The actual end time of the query, in ISO 8601 format and UTC+08:00 time zone. Reuse this value when you turn pages.
 	//
 	// example:
 	//
 	// 2026-11-06T00:00:00+08:00
 	QueryEndTime *string `json:"QueryEndTime,omitempty" xml:"QueryEndTime,omitempty"`
-	// 实际查询起点。翻页时应复用此值。
+	// The actual start time of the query, in ISO 8601 format and UTC+08:00 time zone. Reuse this value when you turn pages.
 	//
 	// example:
 	//
 	// 2026-11-05T00:00:00+08:00
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// POP 请求 ID。
+	// The request ID of the current API operation, which is used to troubleshoot issues.
 	//
 	// example:
 	//
 	// 00000000-0000-4000-8000-000000000001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 满足条件的总记录数。
+	// The total number of invocation records that meet the query conditions, including records that do not match any deducted points.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ func (s *DescribeAICallDetailsResponseBody) Validate() error {
 }
 
 type DescribeAICallDetailsResponseBodyCallDetails struct {
-	// 售卖 deduction 记录中的原始 agent_type；未匹配或 ADB 查询失败时不返回。
+	// The product or agent type associated with the invocation, which retains the original value from the deduction record. If no match is found or the query fails, this parameter is not returned.
 	//
 	// if can be null:
 	// true
@@ -164,19 +164,19 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// AIComputer
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// 调用状态：SUCCESS、RATE_LIMITED、TIMEOUT 或 FAILED。
+	// The invocation status. Valid values: SUCCESS (successful, HTTP 2xx), RATE_LIMITED (throttled, HTTP 429), TIMEOUT (timed out, HTTP 504), and FAILED (other failure statuses).
 	//
 	// example:
 	//
 	// SUCCESS
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
-	// 日志时间，ISO 8601。
+	// The time of the model invocation log, in ISO 8601 format and UTC+08:00 time zone.
 	//
 	// example:
 	//
 	// 2026-11-05T12:30:00+08:00
 	CallTime *string `json:"CallTime,omitempty" xml:"CallTime,omitempty"`
-	// 首包时延，单位毫秒；失败或无首包数据时为空。
+	// The latency of the first token, in milliseconds. If the invocation fails or no first token data exists, this parameter is empty.
 	//
 	// if can be null:
 	// true
@@ -185,13 +185,13 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// 620
 	FirstTokenLatencyMs *int64 `json:"FirstTokenLatencyMs,omitempty" xml:"FirstTokenLatencyMs,omitempty"`
-	// 本条调用日志的实际数据地域，取值为 cn-shanghai、cn-hangzhou、cn-hongkong、ap-southeast-1 或 us-east-1；杭州预发返回 cn-hangzhou。
+	// The actual data region of the invocation log.
 	//
 	// example:
 	//
 	// cn-shanghai
 	GatewayRegion *string `json:"GatewayRegion,omitempty" xml:"GatewayRegion,omitempty"`
-	// AI 网关返回的 HTTP 状态码。
+	// The HTTP status code returned by the AI gateway.
 	//
 	// if can be null:
 	// true
@@ -200,7 +200,7 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// 原始输入 token 数，前端据此转换上下文规模。
+	// The number of original input tokens. If no valid data exists, this parameter is empty.
 	//
 	// if can be null:
 	// true
@@ -209,7 +209,7 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// 1200
 	InputToken *int64 `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
-	// 产品实例 ID。
+	// The instance ID of the product associated with the model invocation.
 	//
 	// if can be null:
 	// true
@@ -218,7 +218,7 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// example-instance-001
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 实际调用模型。
+	// The ID of the actually invoked model. If the actual model is missing, the requested model is used as a fallback.
 	//
 	// if can be null:
 	// true
@@ -227,7 +227,7 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// example-model
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	// 按请求 ID 和输入输出 token 匹配的实际抵扣积分，十进制字符串；积分查询失败或超时时为空。
+	// The actual deducted points matched, returned as a decimal string. A true zero value is returned as 0. If no match is found or the query fails, this parameter is not returned. Do not treat a missing value as zero.
 	//
 	// if can be null:
 	// true
@@ -236,7 +236,7 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// 0.28896
 	Points *string `json:"Points,omitempty" xml:"Points,omitempty"`
-	// 本条调用已匹配抵扣记录的积分构成，与 Points 来自同一条记录。缺少有效明细时不返回此对象；对象存在时完整返回五项积分，五项之和等于 Points，真实零值返回字符串 0。
+	// The point breakdown of the matched deduction record for this invocation, which comes from the same record as Points. If valid details are missing, this object is not returned. If the object exists, all five point types are returned. The sum of the five point types equals Points, and a true zero value is returned as the string 0.
 	//
 	// if can be null:
 	// true
@@ -245,13 +245,13 @@ type DescribeAICallDetailsResponseBodyCallDetails struct {
 	//
 	// {"NormalInput":"0.02","Output":"0.1","ImplicitCacheHit":"0","ExplicitCacheCreation":"0.15","ExplicitCacheHit":"0.01896"}
 	PointsBreakdown *DescribeAICallDetailsResponseBodyCallDetailsPointsBreakdown `json:"PointsBreakdown,omitempty" xml:"PointsBreakdown,omitempty" type:"Struct"`
-	// AI 网关请求 ID，与外层 POP 请求 ID 不同。
+	// The request ID of the AI gateway invocation, which is different from the request ID of the outer API operation.
 	//
 	// example:
 	//
 	// model-call-example-001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 用户 WyId，用户名由前端组装。
+	// The ID of the user who initiated the model invocation. If no valid data exists, this parameter is empty.
 	//
 	// if can be null:
 	// true
@@ -397,31 +397,31 @@ func (s *DescribeAICallDetailsResponseBodyCallDetails) Validate() error {
 }
 
 type DescribeAICallDetailsResponseBodyCallDetailsPointsBreakdown struct {
-	// 显式缓存创建积分，单位为积分，使用十进制字符串表示；真实零值为 0。
+	// The explicit cache creation points, in points, represented as a decimal string. A true zero value is 0.
 	//
 	// example:
 	//
 	// 0.15
 	ExplicitCacheCreation *string `json:"ExplicitCacheCreation,omitempty" xml:"ExplicitCacheCreation,omitempty"`
-	// 显式缓存命中积分，单位为积分，使用十进制字符串表示；真实零值为 0。
+	// The explicit cache hit points, in points, represented as a decimal string. A true zero value is 0.
 	//
 	// example:
 	//
 	// 0.01896
 	ExplicitCacheHit *string `json:"ExplicitCacheHit,omitempty" xml:"ExplicitCacheHit,omitempty"`
-	// 隐式缓存命中积分，单位为积分，使用十进制字符串表示；真实零值为 0。
+	// The implicit cache hit points, in points, represented as a decimal string. A true zero value is 0.
 	//
 	// example:
 	//
 	// 0
 	ImplicitCacheHit *string `json:"ImplicitCacheHit,omitempty" xml:"ImplicitCacheHit,omitempty"`
-	// 普通输入积分，单位为积分，使用十进制字符串表示；真实零值为 0。
+	// The normal input points, in points, represented as a decimal string. A true zero value is 0.
 	//
 	// example:
 	//
 	// 0.02
 	NormalInput *string `json:"NormalInput,omitempty" xml:"NormalInput,omitempty"`
-	// 输出积分，单位为积分，使用十进制字符串表示；真实零值为 0。
+	// The output points, in points, represented as a decimal string. A true zero value is 0.
 	//
 	// example:
 	//

@@ -166,27 +166,27 @@ func (client *Client) CreateMultiOrder(request *CreateMultiOrderRequest) (_resul
 
 // Summary:
 //
-// 查询 AI 调用明细
+// Performs a paging query for AI model invocation records based on specified conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于分页查询当前阿里云账号下指定业务版本、地域和时间范围内的AI模型调用明细。
+// - This operation performs a paging query for AI model invocation details of the current Alibaba Cloud account within a specified business edition, region, and time range.
 //
-// - 支持按模型调用请求ID、请求模型和用户ID进行筛选。
+// - You can filter results by model invocation request ID, requested model, and user ID.
 //
-// - 查询结果按调用时间倒序返回。
+// - Query results are returned in descending order of invocation time.
 //
-// - 默认查询北京时间当日零点至当前时间的数据，查询区间不超过30天且不得早于当前时间向前推算3个自然月。
+// - By default, this operation queries data from 00:00:00 (UTC+8) of the current day to the current time. The query time range cannot exceed 30 days and cannot start earlier than three calendar months before the current time.
 //
-// - 调用方仅能查询当前调用身份所属主账号的数据，不能指定其他账号。
+// - You can only query data for the primary account to which the current caller identity belongs. You cannot specify other accounts.
 //
-// - `PageNumber`与`PageSize`的乘积不得超过1000000。
+// - The product of PageNumber and PageSize cannot exceed 1,000,000.
 //
-// - `BizType`不传时默认为企业版。
+// - If BizType is not specified, the default value is Enterprise Edition.
 //
-// - `GatewayRegion`不传时国内站默认上海，国际站默认新加坡。
+// - If GatewayRegion is not specified, the default value is Shanghai for the China site and Singapore for the international site.
 //
 // @param request - DescribeAICallDetailsRequest
 //
@@ -262,27 +262,27 @@ func (client *Client) DescribeAICallDetailsWithOptions(request *DescribeAICallDe
 
 // Summary:
 //
-// 查询 AI 调用明细
+// Performs a paging query for AI model invocation records based on specified conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于分页查询当前阿里云账号下指定业务版本、地域和时间范围内的AI模型调用明细。
+// - This operation performs a paging query for AI model invocation details of the current Alibaba Cloud account within a specified business edition, region, and time range.
 //
-// - 支持按模型调用请求ID、请求模型和用户ID进行筛选。
+// - You can filter results by model invocation request ID, requested model, and user ID.
 //
-// - 查询结果按调用时间倒序返回。
+// - Query results are returned in descending order of invocation time.
 //
-// - 默认查询北京时间当日零点至当前时间的数据，查询区间不超过30天且不得早于当前时间向前推算3个自然月。
+// - By default, this operation queries data from 00:00:00 (UTC+8) of the current day to the current time. The query time range cannot exceed 30 days and cannot start earlier than three calendar months before the current time.
 //
-// - 调用方仅能查询当前调用身份所属主账号的数据，不能指定其他账号。
+// - You can only query data for the primary account to which the current caller identity belongs. You cannot specify other accounts.
 //
-// - `PageNumber`与`PageSize`的乘积不得超过1000000。
+// - The product of PageNumber and PageSize cannot exceed 1,000,000.
 //
-// - `BizType`不传时默认为企业版。
+// - If BizType is not specified, the default value is Enterprise Edition.
 //
-// - `GatewayRegion`不传时国内站默认上海，国际站默认新加坡。
+// - If GatewayRegion is not specified, the default value is Shanghai for the China site and Singapore for the international site.
 //
 // @param request - DescribeAICallDetailsRequest
 //
@@ -882,6 +882,104 @@ func (client *Client) DescribeInstanceAutoRenewalAttribute(request *DescribeInst
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeInstanceAutoRenewalAttributeResponse{}
 	_body, _err := client.DescribeInstanceAutoRenewalAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries sold instances and their quotas and properties by paging based on resource type, instance ID, business resource ID, and status.
+//
+// Description:
+//
+// Queries sold instances and their quotas and properties by paging based on resource type, instance ID, business resource ID, and status.
+//
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
+func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *dara.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NoResourceId) {
+		query["NoResourceId"] = request.NoResourceId
+	}
+
+	if !dara.IsNil(request.PropertyKeyList) {
+		query["PropertyKeyList"] = request.PropertyKeyList
+	}
+
+	if !dara.IsNil(request.ResourceIds) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.StateList) {
+		query["StateList"] = request.StateList
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeInstances"),
+		Version:     dara.String("2021-12-21"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries sold instances and their quotas and properties by paging based on resource type, instance ID, business resource ID, and status.
+//
+// Description:
+//
+// Queries sold instances and their quotas and properties by paging based on resource type, instance ID, business resource ID, and status.
+//
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
+func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -30,11 +30,7 @@ type iDescribeInstanceAutoRenewalAttributeRequest interface {
 }
 
 type DescribeInstanceAutoRenewalAttributeRequest struct {
-	// The auto-renewal status. Valid values:
-	//
-	// - true: Auto-renewal is enabled.
-	//
-	// - false: Auto-renewal is disabled.
+	// The auto-renewal status. Valid values: true (auto-renewal enabled) and false (auto-renewal disabled).
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The list of instance IDs for which to query the auto-renewal status.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
@@ -62,7 +58,7 @@ type DescribeInstanceAutoRenewalAttributeRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource type. Example: CorePackage indicates a core-hour package.
+	// The resource type. Valid value: CorePackage (core-hour package).
 	//
 	// example:
 	//

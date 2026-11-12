@@ -46,7 +46,7 @@ type DescribeInstanceAutoRenewalAttributeResponseBody struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6k=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the paging query, starting from 1.
+	// The page number for paging, starting from 1.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeInstanceAutoRenewalAttributeResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the request. You can use this ID to troubleshoot issues.
+	// The unique identifier of the request, which can be used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -157,13 +157,9 @@ type DescribeInstanceAutoRenewalAttributeResponseBodyInstanceAttribute struct {
 	//
 	// 123456789012****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The auto-renewal status. Valid values:
-	//
-	// - true: Auto-renewal is enabled.
-	//
-	// - false: Auto-renewal is disabled.
+	// The auto-renewal status. Valid values: true (auto-renewal enabled) and false (auto-renewal disabled).
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The instance ID, which identifies the purchased instance.
+	// The instance ID, which is used to identify the purchased instance.
 	//
 	// example:
 	//
