@@ -26,7 +26,7 @@ type iEnableAIDBClusterDatasetServiceRequest interface {
 }
 
 type EnableAIDBClusterDatasetServiceRequest struct {
-  // The instance ID of the PolarFS cold storage instance attached to the dataset management service.
+  // The instance ID of the PolarFS cold storage instance that you attach to the dataset management service. Instructions to invoke: Note: This parameter is actually required. If it is not provided, the API returns InvalidDBClusterId.Malformed (400). Instructions to invoke: Valid ID format description: specifies the accepted prefix families (such as pcs-xxx), separator conventions (hyphen character vs. underscore character), and the corresponding resource types.
   // 
   // example:
   // 
@@ -40,7 +40,7 @@ type EnableAIDBClusterDatasetServiceRequest struct {
   // 
   // cn-beijing
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The instance ID of the database instance attached to the dataset management service.
+  // The instance ID of the database instance that you attach to the dataset management service.
   // 
   // example:
   // 

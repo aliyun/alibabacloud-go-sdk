@@ -117,31 +117,33 @@ func (s *DescribeAgenticDBComputeClustersResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBComputeClustersResponseBodyItems struct {
-	// The associated branch ID.
+	// The ID of the associated branch.
 	//
 	// example:
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The associated branch name.
+	// The name of the associated branch.
 	//
 	// example:
 	//
 	// feature-analytics
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
-	// The compute instance ID.
+	// The ID of the compute instance.
 	//
 	// example:
 	//
 	// pc-g0lsayq8c5qe
 	ComputeClusterId *string `json:"ComputeClusterId,omitempty" xml:"ComputeClusterId,omitempty"`
-	// The number of compute nodes (fixed to 1 in the first phase).
+	// The number of compute nodes. The value is fixed to 1 in the first phase.
 	//
 	// example:
 	//
 	// 1
 	ComputeNodeCount *int32 `json:"ComputeNodeCount,omitempty" xml:"ComputeNodeCount,omitempty"`
-	// The creation time. The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time.
+	//
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -153,7 +155,7 @@ type DescribeAgenticDBComputeClustersResponseBodyItems struct {
 	//
 	// Compute cluster for analytics
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether it is the default branch.
+	// Specifies whether the branch is the default branch.
 	//
 	// example:
 	//
@@ -161,19 +163,17 @@ type DescribeAgenticDBComputeClustersResponseBodyItems struct {
 	IsDefaultBranch *bool `json:"IsDefaultBranch,omitempty" xml:"IsDefaultBranch,omitempty"`
 	// The last activation time.
 	//
-	// The time is in ISO 8601 format and uses the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
-	//
 	// example:
 	//
 	// 2026-06-10T12:30:00Z
 	LastActivatedAt *string `json:"LastActivatedAt,omitempty" xml:"LastActivatedAt,omitempty"`
-	// The maximum compute unit.
+	// The maximum number of compute units.
 	//
 	// example:
 	//
 	// 2
 	MaxCU *string `json:"MaxCU,omitempty" xml:"MaxCU,omitempty"`
-	// The minimum compute unit.
+	// The minimum number of compute units.
 	//
 	// example:
 	//
@@ -185,25 +185,25 @@ type DescribeAgenticDBComputeClustersResponseBodyItems struct {
 	//
 	// Neon
 	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
-	// The parent branch ID. An empty string indicates the root branch.
+	// The ID of the parent branch. An empty string indicates the root branch.
 	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	ParentBranchId *string `json:"ParentBranchId,omitempty" xml:"ParentBranchId,omitempty"`
-	// The parent branch name. An empty string indicates the root branch.
+	// The name of the parent branch. An empty string indicates the root branch.
 	//
 	// example:
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
-	// The associated project ID.
+	// The ID of the associated project.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The associated project name.
+	// The name of the associated project.
 	//
 	// example:
 	//
@@ -215,19 +215,19 @@ type DescribeAgenticDBComputeClustersResponseBodyItems struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The used data volume (in bytes).
+	// The used storage space in bytes.
 	//
 	// example:
 	//
 	// 1073741824
 	StorageSize *int64 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The associated tenant ID.
+	// The ID of the associated tenant.
 	//
 	// example:
 	//
 	// t-4b83e0da66674951
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The associated tenant name.
+	// The name of the associated tenant.
 	//
 	// example:
 	//

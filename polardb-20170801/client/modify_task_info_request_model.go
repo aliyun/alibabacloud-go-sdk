@@ -28,7 +28,7 @@ type iModifyTaskInfoRequest interface {
 }
 
 type ModifyTaskInfoRequest struct {
-	// The parameters for the task operation.
+	// The operation parameters for the task.
 	//
 	// example:
 	//
@@ -45,19 +45,19 @@ type ModifyTaskInfoRequest struct {
 	ResourceOwnerAccount *int64  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the task step to update.
+	// The name of the task step to modify. Usage note: These two parameters are required in actual calls. If they are not provided, the Param.Invalid error is returned.
 	//
 	// example:
 	//
 	// create_instance
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The name of the API operation associated with the task.
+	// The name of the API operation associated with the task. Usage note: These two parameters are required in actual calls. If they are not provided, the Param.Invalid error is returned. Usage note: Provide a complete list of valid values or instructions on how to obtain them (such as by calling an associated query API), and correct the current invalid example value CreateDBInstance to an actual valid TaskAction value.
 	//
 	// example:
 	//
 	// CreateDBInstance
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The ID of the task to update.
+	// The ID of the task to modify.
 	//
 	// This parameter is required.
 	//

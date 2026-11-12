@@ -20,7 +20,7 @@ type iCreateApplicationPromptRequest interface {
 }
 
 type CreateApplicationPromptRequest struct {
-	// The ID of the Application.
+	// The application ID. You must specify an application with `ApplicationType` set to `mem0`. You can first call the CreateApplication operation with `ApplicationType` set to `mem0` to create an application, and then pass the returned ApplicationId to this operation. This parameter does not apply to other application types such as standard PolarClaw or Supabase.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateApplicationPromptRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The name of the Prompt.
+	// The prompt name.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreateApplicationPromptRequest struct {
 	//
 	// my_prompt
 	PromptName *string `json:"PromptName,omitempty" xml:"PromptName,omitempty"`
-	// The type of the Prompt.
+	// The prompt type.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateApplicationPromptRequest struct {
 	//
 	// DELETE_RELATIONS_SYSTEM_PROMPT
 	PromptType *string `json:"PromptType,omitempty" xml:"PromptType,omitempty"`
-	// The content of the Prompt.
+	// The prompt content.
 	//
 	// This parameter is required.
 	//

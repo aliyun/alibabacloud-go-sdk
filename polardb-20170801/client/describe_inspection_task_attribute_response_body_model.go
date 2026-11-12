@@ -28,13 +28,13 @@ type iDescribeInspectionTaskAttributeResponseBody interface {
 }
 
 type DescribeInspectionTaskAttributeResponseBody struct {
-	// The creation date of the inspection task.
+	// The creation date of the inspection task. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-06-01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cron expression for periodic inspections.
+	// The cron expression for the scheduled inspection.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeInspectionTaskAttributeResponseBody struct {
 	//
 	// pc-001,pc-002
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The expiration date of the inspection task.
+	// The expiration date of the inspection task. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2025-12-31
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The last modification date of the inspection task.
+	// The last modification date of the inspection task. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeInspectionTaskAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// Periodic inspection task
+	// Scheduled inspection task
 	TaskDescription *string `json:"TaskDescription,omitempty" xml:"TaskDescription,omitempty"`
 	// The ID of the inspection task.
 	//

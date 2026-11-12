@@ -42,7 +42,7 @@ type DescribeApplicationComponentPerformanceRequest struct {
 	//
 	// pac-*******************
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
-	// The end time of the query. The end time must be later than or equal to the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
+	// The end time of the query. The end time must not be earlier than the start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type DescribeApplicationComponentPerformanceRequest struct {
 	//
 	// 2020-09-23T01:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the performance data.
+	// The type of performance data. Note: Add the valid values, the meaning of each value, and the correspondence with ApplicationType to the description of the Type parameter, and explicitly specify that this parameter should be omitted in most scenarios.
 	//
 	// example:
 	//

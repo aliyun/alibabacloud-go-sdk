@@ -32,7 +32,7 @@ type DescribeHistoryEventsStatRequest struct {
 	//
 	// All
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	// The start time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+	// The start time of the query time range for the task start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC. This parameter is required. If you do not specify this parameter, the service returns a Param.Invalid (400) error.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeHistoryEventsStatRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The end time of the time range for task start times to query, in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+	// The end time of the query time range for the task start time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time must be in UTC. This parameter is required. If you do not specify this parameter, the service returns a Param.Invalid (400) error.
 	//
 	// example:
 	//

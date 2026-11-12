@@ -30,7 +30,7 @@ type iDescribeActivationCodesRequest interface {
 }
 
 type DescribeActivationCodesRequest struct {
-	// The ID of the Alibaba Cloud order (including virtual orders) used to purchase the activation codes.
+	// The Alibaba Cloud order ID, including virtual orders. Usage note: Append the following to the end of the AliyunOrderId description: If an empty string is passed, all activation codes are returned. This parameter is actually optional.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeActivationCodesRequest struct {
 	//
 	// 2233****445566
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	// Filters the list to return only the activation code matching the specified MAC address.
+	// The MAC address used to filter the activation codes.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeActivationCodesRequest struct {
 	MacAddress   *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Page number
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records to return per page
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeActivationCodesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Filters the list to return only the activation code matching the specified system identifier.
+	// The system identifier used to filter the activation codes.
 	//
 	// example:
 	//

@@ -28,13 +28,13 @@ type iGetPolarAgentResponseBody interface {
 }
 
 type GetPolarAgentResponseBody struct {
-	// Id of the request
+	// The content returned by the agent.
 	//
 	// example:
 	//
 	// QZ-13661677-80
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Indicates whether FunctionCall is supported.
+	// Specifies whether function calling is supported.
 	FunctionCall []*GetPolarAgentResponseBodyFunctionCall `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty" type:"Repeated"`
 	// The cloud product type.
 	//
@@ -48,11 +48,11 @@ type GetPolarAgentResponseBody struct {
 	//
 	// 2548026401648157601743560466154
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
-	// The model\\"s reasoning content.
+	// The reasoning content of the model.
 	//
 	// example:
 	//
-	// xxxx
+	// Extract the key information based on the input content
 	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ type GetPolarAgentResponseBody struct {
 	//
 	// 40315d708f0806903b08813bf4c9db2e
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Indicates whether UiFunctionCall is supported.
+	// Specifies whether UI function calling is supported.
 	UiFunctionCall []*GetPolarAgentResponseBodyUiFunctionCall `json:"UiFunctionCall,omitempty" xml:"UiFunctionCall,omitempty" type:"Repeated"`
 }
 
@@ -173,13 +173,13 @@ func (s *GetPolarAgentResponseBody) Validate() error {
 }
 
 type GetPolarAgentResponseBodyFunctionCall struct {
-	// The operation-related output result.
+	// The output results related to the operation.
 	//
 	// example:
 	//
 	// ---narguments:n  parameters: []n
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	// The quota ID.
+	// The ID of the quota.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type GetPolarAgentResponseBodyFunctionCall struct {
 	//
 	// example:
 	//
-	// xxx
+	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -248,17 +248,17 @@ func (s *GetPolarAgentResponseBodyFunctionCall) Validate() error {
 }
 
 type GetPolarAgentResponseBodyUiFunctionCall struct {
-	// xxx
+	// The JSON text of the tool calling parameters.
 	//
 	// example:
 	//
-	// xxx
+	// {"RegionId":"cn-hangzhou"}
 	ArgsText *string `json:"ArgsText,omitempty" xml:"ArgsText,omitempty"`
-	// The tool command that is invoked.
+	// The command of the called tool.
 	//
 	// example:
 	//
-	// xxx
+	// DescribeDBClusters
 	ToolName *string `json:"ToolName,omitempty" xml:"ToolName,omitempty"`
 }
 

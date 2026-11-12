@@ -28,7 +28,7 @@ type iDescribeAIDBClusterTaskLogFilesRequest interface {
 }
 
 type DescribeAIDBClusterTaskLogFilesRequest struct {
-	// The ID of the model operator instance.
+	// The instance ID of the model operator.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeAIDBClusterTaskLogFilesRequest struct {
 	//
 	// pm-bp10gr***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	// The end time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeAIDBClusterTaskLogFilesRequest struct {
 	//
 	// 2026-01-15T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The log type. Set the value to:
+	// The log type. Valid values:
 	//
 	// - **sls**
 	//
@@ -60,27 +60,25 @@ type DescribeAIDBClusterTaskLogFilesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return on each page. Valid values: **30**, **50**, and **100**.
-	//
-	// The default value is **100**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **100**.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the PolarDB cluster.
+	// The instance ID of the associated PolarDB instance.
 	//
 	// example:
 	//
 	// pc-bp10ze***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Specifies whether to return the results in reverse order. The default value is *false*.
+	// Specifies whether to sort the results in descending order. Default value: *false*.
 	//
 	// example:
 	//
 	// false
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The start of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is displayed in UTC.
+	// The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

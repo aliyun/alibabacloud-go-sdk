@@ -66,7 +66,7 @@ type CreatePolarClawChannelShrinkRequest struct {
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
-	// The channel plugin name.
+	// The name of the channel plugin.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type CreatePolarClawChannelShrinkRequest struct {
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Specifies whether to restart the gateway after creation. Default value: true.
+	// Specifies whether to restart the gateway after creation. Default value: true. Note: &#39;The value must be the string true or false. JSON boolean values are not accepted.&#39; Coordinate to confirm whether the type field should be updated to string accordingly.
 	//
 	// example:
 	//

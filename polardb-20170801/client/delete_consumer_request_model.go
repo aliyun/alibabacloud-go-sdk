@@ -18,7 +18,7 @@ type iDeleteConsumerRequest interface {
 }
 
 type DeleteConsumerRequest struct {
-	// The consumer ID.
+	// The ID of the consumer.
 	//
 	// This parameter is required.
 	//

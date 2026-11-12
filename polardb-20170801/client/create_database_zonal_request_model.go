@@ -50,13 +50,13 @@ type CreateDatabaseZonalRequest struct {
 	//
 	// - ReadOnly: read-only permissions.
 	//
-	// - DMLOnly: DML permissions only.
+	// - DMLOnly: DML-only permissions.
 	//
-	// - DDLOnly: DDL permissions only.
+	// - DDLOnly: DDL-only permissions.
 	//
-	// - ReadIndex: read-only and index permissions.
+	// - ReadIndex: read and index permissions.
 	//
-	// If you do not specify this parameter, the default value is ReadWrite.
+	// Default value: ReadWrite.
 	//
 	// example:
 	//
@@ -70,25 +70,25 @@ type CreateDatabaseZonalRequest struct {
 	//
 	// utf8
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	// A client token to ensure request idempotence. The client generates this token. The token must be unique across requests. It is case-sensitive and can be up to 64 ASCII characters long.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. It can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The locale setting. This specifies the collation for the new database.
+	// The locale setting used to specify the collation of the new database.
 	//
 	// example:
 	//
 	// C
 	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
-	// The locale setting. This specifies the character classification for the database.
+	// The locale setting used to specify the character classification of the database.
 	//
 	// example:
 	//
 	// C
 	Ctype *string `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
-	// The cluster ID.
+	// The ID of the PolarDB on ENS edge cluster. Regular PolarDB cluster IDs are not supported.
 	//
 	// This parameter is required.
 	//
@@ -108,9 +108,9 @@ type CreateDatabaseZonalRequest struct {
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
 	// The name of the database. The name must meet the following requirements:
 	//
-	// - It must consist of lowercase letters, digits, hyphens (-), and underscores (_).
+	// - It can contain lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// - It must start with a letter and end with a letter or a digit. The name can be up to 64 characters long.
+	// - It must start with a letter and end with a letter or digit. It can be up to 64 characters in length.
 	//
 	// This parameter is required.
 	//

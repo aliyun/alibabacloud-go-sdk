@@ -86,7 +86,7 @@ type CreatePolarClawChannelResponseBody struct {
 	//
 	// 2281C6C9-CBAB-1AFD-8400-670750CF6025_2212
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway is restarted.
+	// Indicates whether the gateway has been restarted.
 	//
 	// example:
 	//

@@ -26,29 +26,31 @@ type iModifyDBNodeHotReplicaModeRequest interface {
 }
 
 type ModifyDBNodeHotReplicaModeRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pc-2vc327c2a14a3u858
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the node in the cluster.
+	// The ID of the database cluster node.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// pi-2ze28275h9x5r4wt1
+	// pi-*****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// Specifies whether to enable the hot standby feature. Valid values:
+	// Specifies whether to enable hot standby. Valid values:
 	//
-	// 	- **ON**
+	// - **ON**: Enabled.
 	//
-	// 	- **OFF**
+	// - **OFF**: Disabled.
+	//
+	// Limits: This operation is supported only for non-serverless MySQL clusters. The target node must be a read-only node. Each cluster allows only one node to have HotReplicaMode (ON). Usage notes: Append the following limits to the end of the HotReplicaMode parameter description: this operation is supported only for non-serverless MySQL clusters. The target node must be a read-only node. Each cluster allows only one node to have HotReplicaMode (ON).
 	//
 	// This parameter is required.
 	//

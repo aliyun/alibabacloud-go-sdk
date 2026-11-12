@@ -30,7 +30,7 @@ type DescribeAgenticDBProjectsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAgenticDBProjectsResponseBody struct {
 	//
 	// F6A7B8C9-D0E1-2345-FABC-456789012345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of projects.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *DescribeAgenticDBProjectsResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBProjectsResponseBodyItems struct {
-	// The number of all undeleted branches in the project, including hibernated branches and branches not bound to compute nodes. This parameter is empty if not provided by earlier backend versions, which does not indicate zero branches.
+	// The number of undeleted branches.
 	//
 	// example:
 	//
 	// 3
 	BranchCount *int64 `json:"BranchCount,omitempty" xml:"BranchCount,omitempty"`
-	// The creation time.
+	// The time when the project was created.
 	//
-	// The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is in ISO 8601 format in the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -149,19 +149,19 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
-	// The description.
+	// The description of the project.
 	//
 	// example:
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The retention period of recent records for the project. This parameter may be empty for earlier projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+	// The retention period of historical data, in seconds.
 	//
 	// example:
 	//
 	// 604800
 	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
-	// Project ID
+	// The project ID.
 	//
 	// example:
 	//

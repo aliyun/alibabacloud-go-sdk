@@ -24,7 +24,7 @@ type DescribePolarClawSkillDetailRequest struct {
 	//
 	// pa-xxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The Skill identifier.
+	// The skill identifier.
 	//
 	// This parameter is required.
 	//

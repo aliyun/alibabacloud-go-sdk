@@ -14,7 +14,7 @@ type iCreateResourceControlResponseBody interface {
 }
 
 type CreateResourceControlResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

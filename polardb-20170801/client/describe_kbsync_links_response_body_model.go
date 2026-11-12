@@ -23,20 +23,24 @@ type iDescribeKBSyncLinksResponseBody interface {
 
 type DescribeKBSyncLinksResponseBody struct {
 	// The list of synchronization links.
+	//
+	// example:
+	//
+	// []
 	Items []*DescribeKBSyncLinksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned results.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records returned on each page.
+	// The number of records per page in the returned results.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,7 +121,7 @@ func (s *DescribeKBSyncLinksResponseBody) Validate() error {
 }
 
 type DescribeKBSyncLinksResponseBodyItems struct {
-	// The client identifier.
+	// The client ID.
 	//
 	// example:
 	//
@@ -147,7 +151,7 @@ type DescribeKBSyncLinksResponseBodyItems struct {
 	//
 	// pkbl-xxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
-	// The name of the synchronization link.
+	// The name of the link.
 	//
 	// example:
 	//

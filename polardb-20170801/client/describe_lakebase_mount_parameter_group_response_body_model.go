@@ -30,7 +30,7 @@ type iDescribeLakebaseMountParameterGroupResponseBody interface {
 }
 
 type DescribeLakebaseMountParameterGroupResponseBody struct {
-	// The creation time (UTC).
+	// The creation time in UTC.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type DescribeLakebaseMountParameterGroupResponseBody struct {
 	//
 	// 0
 	IsApply *int32 `json:"IsApply,omitempty" xml:"IsApply,omitempty"`
-	// The modification time (UTC).
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2026-08-10T12:00:00Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The parameter details of the template. An empty array is returned if no data is available.
+	// The details of the parameters in the template. An empty array is returned if no data is available.
 	ParameterDetail []*DescribeLakebaseMountParameterGroupResponseBodyParameterDetail `json:"ParameterDetail,omitempty" xml:"ParameterDetail,omitempty" type:"Repeated"`
 	// The description of the parameter template.
 	//

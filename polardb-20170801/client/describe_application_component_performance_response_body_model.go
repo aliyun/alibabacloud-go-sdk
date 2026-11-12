@@ -65,7 +65,10 @@ type DescribeApplicationComponentPerformanceResponseBody struct {
 	// example:
 	//
 	// 2020-09-23T02:00Z
-	EndTime         *string                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// []
 	PerformanceKeys *DescribeApplicationComponentPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The ID of the request.
 	//

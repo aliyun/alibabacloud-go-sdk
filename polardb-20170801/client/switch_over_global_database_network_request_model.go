@@ -32,25 +32,25 @@ type iSwitchOverGlobalDatabaseNetworkRequest interface {
 }
 
 type SwitchOverGlobalDatabaseNetworkRequest struct {
-	// The ID of the cluster that will become the primary cluster in the GDN.
+	// The ID of the cluster to be switched to the primary cluster in the GDN.
 	//
-	// You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the ID of the cluster in the GDN.
+	// You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the cluster IDs in the GDN.
 	//
 	// example:
 	//
 	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to forcibly switch over the primary and secondary clusters in the GDN. Valid values:
+	// Specifies whether to forcibly switch the primary and secondary clusters in the GDN. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Forcibly switches the primary and secondary clusters in the GDN.
 	//
-	// 	- **false**
+	// - **false**: Does not forcibly switch the primary and secondary clusters in the GDN.
 	//
 	// example:
 	//
 	// false
 	Forced *bool `json:"Forced,omitempty" xml:"Forced,omitempty"`
-	// The ID of the GDN.
+	// The ID of the global database network (GDN).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type SwitchOverGlobalDatabaseNetworkRequest struct {
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// example:
 	//

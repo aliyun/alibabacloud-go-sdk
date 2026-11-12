@@ -30,7 +30,7 @@ type CreateBudgetPolicyResponseBody struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

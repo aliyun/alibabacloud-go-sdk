@@ -30,13 +30,13 @@ type DescribeDBClusterPriceResponseBody struct {
 	//
 	// 	- RENEW: renewal.
 	//
-	// 	- CONVERT: billing method conversion.
+	// 	- CONVERT: billing method change.
 	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The price details.
+	// The pricing details.
 	PriceInfo *DescribeDBClusterPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//

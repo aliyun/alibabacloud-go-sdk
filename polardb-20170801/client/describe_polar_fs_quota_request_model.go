@@ -24,7 +24,7 @@ type iDescribePolarFsQuotaRequest interface {
 type DescribePolarFsQuotaRequest struct {
 	// The cluster ID.
 	//
-	// > Enterprise Edition, Basic Edition, and Data Lakehouse Edition: You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the cluster ID.
+	// > For Enterprise Edition, Basic Edition, and Data Lakehouse Edition: You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query the cluster ID.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribePolarFsQuotaRequest struct {
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The quota type to query.
+	// The type of the quota to query.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribePolarFsQuotaRequest struct {
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view all available regions under the current account, including the region IDs.
 	//
 	// example:
 	//

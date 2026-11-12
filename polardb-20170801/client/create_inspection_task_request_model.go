@@ -24,7 +24,7 @@ type iCreateInspectionTaskRequest interface {
 }
 
 type CreateInspectionTaskRequest struct {
-	// The cron expression for the inspection task, which specifies the periodic execution schedule.
+	// The cron expression of the inspection task, which specifies the periodic execution schedule.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateInspectionTaskRequest struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// The list of clusters associated with the inspection task.
 	DBClusterList []*CreateInspectionTaskRequestDBClusterList `json:"DBClusterList,omitempty" xml:"DBClusterList,omitempty" type:"Repeated"`
-	// The ID of the region where the task is located.
+	// The region ID of the task.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateInspectionTaskRequest struct {
 	//
 	// rg-123
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the inspection workspace.
+	// The ID of the inspection space. This parameter is required. If it is not provided, the API returns InvalidSpaceId.Malformed (HTTP 400).
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type CreateInspectionTaskRequestDBClusterList struct {
 	//
 	// pc-test123456
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the region where the cluster to be inspected is located.
+	// The region ID of the cluster to be inspected.
 	//
 	// example:
 	//

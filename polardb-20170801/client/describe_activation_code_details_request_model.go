@@ -24,7 +24,7 @@ type iDescribeActivationCodeDetailsRequest interface {
 }
 
 type DescribeActivationCodeDetailsRequest struct {
-	// The ID of the activation code.
+	// The activation code ID. This parameter is required. If it is not provided, the API returns a 400 error.
 	//
 	// example:
 	//

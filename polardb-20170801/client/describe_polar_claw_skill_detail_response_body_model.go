@@ -46,15 +46,15 @@ type DescribePolarClawSkillDetailResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The Skill author information.
+	// The skill author information.
 	Owner *DescribePolarClawSkillDetailResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// F45FFACC-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The core information of the Skill.
+	// The core skill information.
 	Skill *DescribePolarClawSkillDetailResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
 }
 
@@ -155,7 +155,7 @@ type DescribePolarClawSkillDetailResponseBodyLatestVersion struct {
 	//
 	// empty
 	Changelog *string `json:"Changelog,omitempty" xml:"Changelog,omitempty"`
-	// The version publish timestamp in Unix milliseconds.
+	// The version release timestamp in Unix milliseconds.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type DescribePolarClawSkillDetailResponseBodyOwner struct {
 	//
 	// steipete
 	Handle *string `json:"Handle,omitempty" xml:"Handle,omitempty"`
-	// The profile picture URL.
+	// The avatar URL.
 	//
 	// example:
 	//
@@ -284,7 +284,7 @@ func (s *DescribePolarClawSkillDetailResponseBodyOwner) Validate() error {
 }
 
 type DescribePolarClawSkillDetailResponseBodySkill struct {
-	// The first publish timestamp in Unix milliseconds.
+	// The initial release timestamp in Unix milliseconds.
 	//
 	// example:
 	//
@@ -296,7 +296,7 @@ type DescribePolarClawSkillDetailResponseBodySkill struct {
 	//
 	// Weather
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The Skill identifier.
+	// The skill identifier.
 	//
 	// example:
 	//
@@ -304,7 +304,7 @@ type DescribePolarClawSkillDetailResponseBodySkill struct {
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
 	// The statistics information.
 	Stats *DescribePolarClawSkillDetailResponseBodySkillStats `json:"Stats,omitempty" xml:"Stats,omitempty" type:"Struct"`
-	// The brief description.
+	// The short description.
 	//
 	// example:
 	//
@@ -320,7 +320,7 @@ type DescribePolarClawSkillDetailResponseBodySkill struct {
 	//
 	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The last update timestamp in Unix milliseconds.
+	// The last updated timestamp in Unix milliseconds.
 	//
 	// example:
 	//
@@ -421,13 +421,13 @@ type DescribePolarClawSkillDetailResponseBodySkillStats struct {
 	//
 	// 155765
 	Downloads *int64 `json:"Downloads,omitempty" xml:"Downloads,omitempty"`
-	// The total number of installations of all time.
+	// The total number of historical installations.
 	//
 	// example:
 	//
 	// 3787
 	InstallsAllTime *int64 `json:"InstallsAllTime,omitempty" xml:"InstallsAllTime,omitempty"`
-	// The current number of installations.
+	// The number of current installations.
 	//
 	// example:
 	//

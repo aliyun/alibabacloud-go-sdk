@@ -20,25 +20,25 @@ type iDescribeBudgetUsageRequest interface {
 }
 
 type DescribeBudgetUsageRequest struct {
-	// The budget dimension reference ID.
+	// The reference ID of the budget dimension. If BudgetDimensionType is set to Global, set this parameter to Global. If BudgetDimensionType is set to Consumer, set this parameter to the consumer ID returned by DescribeBudgetPolicies, such as consumer-xxx. If BudgetDimensionType is set to ConsumerGroup, set this parameter to the consumer group ID, such as cg-xxx.
 	//
 	// example:
 	//
-	// ref-001
+	// Global
 	BudgetDimensionRefId *string `json:"BudgetDimensionRefId,omitempty" xml:"BudgetDimensionRefId,omitempty"`
-	// The budget dimension type.
+	// The budget dimension type. Valid values: Global (global budget), Consumer (consumer budget), and ConsumerGroup (consumer group budget).
 	//
 	// example:
 	//
-	// cluster
+	// Global
 	BudgetDimensionType *string `json:"BudgetDimensionType,omitempty" xml:"BudgetDimensionType,omitempty"`
-	// The ID of the gateway instance.
+	// The ID of the gateway instance to query. This parameter is required. If this parameter is not specified, the API returns InvalidPolarGatewayInstanceId.NotFound (404).
 	//
 	// example:
 	//
 	// pc-123
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The region ID of the gateway instance.
+	// The ID of the region where the gateway instance resides.
 	//
 	// example:
 	//

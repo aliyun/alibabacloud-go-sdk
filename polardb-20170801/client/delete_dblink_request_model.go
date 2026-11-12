@@ -24,9 +24,9 @@ type iDeleteDBLinkRequest interface {
 }
 
 type DeleteDBLinkRequest struct {
-	// The ID of the source cluster that contains the DBLink you want to delete.
+	// The ID of the source cluster from which the database link is to be deleted.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to view the list of PolarDB clusters.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query the list of PolarDB clusters.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteDBLinkRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the DBLink to delete.
+	// The name of the database link to be deleted.
 	//
 	// This parameter is required.
 	//

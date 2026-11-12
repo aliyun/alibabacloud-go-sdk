@@ -22,7 +22,7 @@ type DescribeInstanceReportAttributeRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the instance inspection report to query.
+	// The ID of the instance inspection report.
 	//
 	// example:
 	//

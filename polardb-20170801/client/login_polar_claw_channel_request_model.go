@@ -24,7 +24,7 @@ type LoginPolarClawChannelRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the PolarClaw channel to log into.
+	// The ID of the channel to log on to.
 	//
 	// This parameter is required.
 	//

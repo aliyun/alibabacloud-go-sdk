@@ -36,7 +36,7 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// cn-hangzhou
 	BucketRegionId *string `json:"BucketRegionId,omitempty" xml:"BucketRegionId,omitempty"`
-	// The type of the bucket used for skill files. UserOwned indicates a user-owned bucket. Hosted indicates a hosted bucket. You must have the required permissions to use a hosted bucket.
+	// The type of the bucket used for skill files. UserOwned indicates a user-owned bucket. Hosted indicates a hosted bucket, which requires corresponding permissions. Usage notes: The parameter dependencies for each value specify that OSSBucket is required for UserOwned, and whitelist permissions are required for Hosted.
 	//
 	// example:
 	//
@@ -70,11 +70,11 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// 0.0.0
 	SkillVersion *string `json:"SkillVersion,omitempty" xml:"SkillVersion,omitempty"`
-	// The brief description of the skill.
+	// The brief description of the skill. This parameter is actually required. If it is not provided, the service returns InvalidParam (404).
 	//
 	// example:
 	//
-	// An example used to manage PolarDB skills
+	// Sample for managing PolarDB skills
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	// The tag details.
 	//
@@ -82,7 +82,7 @@ type CheckPolarClawSkillRequest struct {
 	//
 	// [\\"PolarDB\\",\\"programming\\"]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title.
+	// The title. This parameter is actually required. If it is not provided, the service returns InvalidParam (404).
 	//
 	// example:
 	//

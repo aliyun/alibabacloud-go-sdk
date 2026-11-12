@@ -28,13 +28,13 @@ type iDescribeConsumersRequest interface {
 }
 
 type DescribeConsumersRequest struct {
-	// The ID of the consumer group.
+	// The consumer group ID.
 	//
 	// example:
 	//
 	// cg-xxxxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The ID of the consumer.
+	// The consumer ID.
 	//
 	// example:
 	//
@@ -47,6 +47,10 @@ type DescribeConsumersRequest struct {
 	// test
 	ConsumerName *string `json:"ConsumerName,omitempty" xml:"ConsumerName,omitempty"`
 	// The list of names used to filter consumers.
+	//
+	// example:
+	//
+	// ["consumer-a","consumer-b"]
 	ConsumerNameList *string `json:"ConsumerNameList,omitempty" xml:"ConsumerNameList,omitempty"`
 	// The gateway instance ID.
 	//

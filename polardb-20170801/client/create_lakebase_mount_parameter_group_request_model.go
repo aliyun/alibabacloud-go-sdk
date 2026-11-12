@@ -24,7 +24,7 @@ type iCreateLakebaseMountParameterGroupRequest interface {
 }
 
 type CreateLakebaseMountParameterGroupRequest struct {
-	// The instance category. Valid values:
+	// The instance edition. Valid values:
 	//
 	// - basic: Basic Edition.
 	//

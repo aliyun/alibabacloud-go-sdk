@@ -46,9 +46,13 @@ type DescribePolarClawSkillTemplatesResponseBody struct {
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The skill template group.
+	// The skill templates.
+	//
+	// example:
+	//
+	// []
 	SkillTemplates []*DescribePolarClawSkillTemplatesResponseBodySkillTemplates `json:"SkillTemplates,omitempty" xml:"SkillTemplates,omitempty" type:"Repeated"`
-	// The total number of entries. This parameter is returned only when you query a list.
+	// The total number of entries. This parameter is returned only for list queries.
 	//
 	// example:
 	//
@@ -123,7 +127,7 @@ func (s *DescribePolarClawSkillTemplatesResponseBody) Validate() error {
 }
 
 type DescribePolarClawSkillTemplatesResponseBodySkillTemplates struct {
-	// The time when the skill template was created in UTC.
+	// The time when the skill template was created. The time is in UTC.
 	//
 	// example:
 	//
@@ -135,7 +139,7 @@ type DescribePolarClawSkillTemplatesResponseBodySkillTemplates struct {
 	//
 	// 423
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the skill template was last modified in UTC.
+	// The time when the skill template was last modified. The time is in UTC.
 	//
 	// example:
 	//
@@ -165,7 +169,11 @@ type DescribePolarClawSkillTemplatesResponseBodySkillTemplates struct {
 	//
 	// skill-template-test
 	SkillTemplateName *string `json:"SkillTemplateName,omitempty" xml:"SkillTemplateName,omitempty"`
-	// The skill templatetype. Valid values: 0: system template. 1: user template.
+	// The skill templatetype. Valid values:
+	//
+	// - 0: System template.
+	//
+	// - 1: User template.
 	//
 	// example:
 	//

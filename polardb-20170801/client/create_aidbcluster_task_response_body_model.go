@@ -30,7 +30,7 @@ type CreateAIDBClusterTaskResponseBody struct {
 	//
 	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

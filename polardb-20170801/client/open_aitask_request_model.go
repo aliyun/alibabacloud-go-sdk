@@ -32,7 +32,7 @@ type iOpenAITaskRequest interface {
 }
 
 type OpenAITaskRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,7 @@ type OpenAITaskRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The node type. Valid values:
-	//
-	// - **DLNode**: AI node.
-	//
-	// - **SearchNode**: search AI node.
+	// The node type. DLNode indicates an AI node. SearchNode is available only if search AI nodes are already created in the target cluster. Otherwise, the InvalidParameter.NodeType error (HTTP 400) may be returned. You can call DescribeAIDBClusters to check the node types of the cluster before the call. SearchNode is available only if search AI nodes are already created in the cluster. Otherwise, the InvalidParameter.NodeType error is returned.
 	//
 	// example:
 	//
@@ -52,7 +48,7 @@ type OpenAITaskRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password of the database account.
+	// The password of the database account for which you want to enable the PolarDB for AI feature.
 	//
 	// example:
 	//
@@ -66,7 +62,7 @@ type OpenAITaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -74,7 +70,7 @@ type OpenAITaskRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The database account on which to enable the PolarDB for AI feature.
+	// The database account for which you want to enable the PolarDB for AI feature.
 	//
 	// example:
 	//

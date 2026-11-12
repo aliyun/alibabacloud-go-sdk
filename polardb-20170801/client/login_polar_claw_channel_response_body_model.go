@@ -44,7 +44,7 @@ type LoginPolarClawChannelResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the operation.
+	// The operation name.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type LoginPolarClawChannelResponseBody struct {
 	//
 	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The state of the asynchronous task.
+	// The task status.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the asynchronous task.
+	// The asynchronous task ID.
 	//
 	// example:
 	//

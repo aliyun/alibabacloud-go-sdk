@@ -22,7 +22,7 @@ type iDescribeActiveOperationTaskResponseBody interface {
 }
 
 type DescribeActiveOperationTaskResponseBody struct {
-	// The task list.
+	// The list of tasks.
 	Items []*DescribeActiveOperationTaskResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -117,7 +117,7 @@ func (s *DescribeActiveOperationTaskResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTaskResponseBodyItems struct {
-	// The time when the task was created. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+	// The time when the task was created. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// 8.0
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The latest deadline for adjusting the task execution time. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+	// The latest deadline within the adjustable range for task execution time. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// pc-*****************
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The modification time. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+	// The time when the task was modified. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// example:
 	//
 	// 2020-06-09T22:00:42Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The preparation time before the transient disconnection. The time is in the `HH:mm:ss` format.
+	// The preparation time before the transient disconnection. The time is displayed in the `HH:mm:ss` format.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// 1
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The time when the task is executed in the background. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+	// The time when the task is executed in the background. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// example:
 	//
@@ -187,25 +187,25 @@ type DescribeActiveOperationTaskResponseBodyItems struct {
 	//
 	// 	- If you set `IsHistory` to **0**, the details of the pending task status are returned. Valid values:
 	//
-	//     	- **2**: waiting for the user to set the task start time
+	//     	- **2**: Waiting for the user to set the task start time.
 	//
-	//     	- **3**: waiting to be processed
+	//     	- **3**: Waiting to be processed.
 	//
-	//     	- **4**: being processed
+	//     	- **4**: The task is being processed.
 	//
 	// 	- If you set `IsHistory` to **1**, the details of the historical task status are returned. Valid values:
 	//
-	//      	- **5**: task completed and executed successfully
+	//      	- **5**: The task is completed and executed successfully.
 	//
-	//      	- **6**: task completed but execution failed
+	//      	- **6**: The task is completed but failed.
 	//
-	//      	- **7**: task canceled
+	//      	- **7**: The task is canceled.
 	//
 	// example:
 	//
 	// 5
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time of the transient disconnection. The time is in the `yyyy-MM-ddTHH:mmZ` format (UTC).
+	// The time when the transient disconnection occurs. The time is displayed in the `yyyy-MM-ddTHH:mmZ` format (UTC).
 	//
 	// example:
 	//

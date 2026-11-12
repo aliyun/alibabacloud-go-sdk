@@ -28,7 +28,7 @@ type ResizeAIDBClusterModelRequest struct {
 	//
 	// pm-2ze4x2mwo81knj08a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to perform a read-only capacity dry run.
+	// Specifies whether to perform only a read-only capacity dry run.
 	//
 	// example:
 	//

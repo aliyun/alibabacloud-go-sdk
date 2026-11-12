@@ -48,13 +48,13 @@ type CreateRateLimitPolicyRequest struct {
 	//
 	// 10
 	RateLimitTpm *string `json:"RateLimitTpm,omitempty" xml:"RateLimitTpm,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the consumer group or consumer.
+	// The ID of the throttling dimension (ConsumerGroup ID or Consumer ID).
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type CreateRateLimitPolicyRequest struct {
 	//
 	// cg-xxxxxxx
 	ScopeRefId *string `json:"ScopeRefId,omitempty" xml:"ScopeRefId,omitempty"`
-	// The rate limiting dimension. Valid values:
+	// The throttling dimension. Valid values:
 	//
-	// - **ConsumerGroup**: Consumer group
+	// - **ConsumerGroup**: user group
 	//
-	// - **Consumer**: Consumer
+	// - **Consumer**: user
 	//
 	// This parameter is required.
 	//

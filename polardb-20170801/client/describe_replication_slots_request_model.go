@@ -16,7 +16,7 @@ type iDescribeReplicationSlotsRequest interface {
 }
 
 type DescribeReplicationSlotsRequest struct {
-	// The ID of the PolarDB cluster to query.
+	// The ID of the PolarDB cluster to query. This operation is applicable only to PostgreSQL clusters. If you specify the ID of a cluster that uses another database engine, the InvalidDBType.Malformed error is returned.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeReplicationSlotsRequest struct {
 	//
 	// pc-test123456
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The child node name of the distributed instance, which is used to filter replication slots.
+	// The name of the child node of the distributed instance, which is used to filter replication slots.
 	//
 	// example:
 	//

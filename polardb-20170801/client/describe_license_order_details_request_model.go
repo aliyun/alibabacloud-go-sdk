@@ -22,7 +22,7 @@ type iDescribeLicenseOrderDetailsRequest interface {
 }
 
 type DescribeLicenseOrderDetailsRequest struct {
-	// The ID of the Alibaba Cloud order or virtual order.
+	// The Alibaba Cloud order ID or virtual order ID. You can create a virtual order by calling CreateOrGetVirtualLicenseOrder or query existing orders by calling DescribeLicenseOrders to obtain a valid AliyunOrderId. Usage note: To obtain a valid AliyunOrderId, create a virtual order by calling CreateOrGetVirtualLicenseOrder or query existing orders by calling DescribeLicenseOrders.
 	//
 	// This parameter is required.
 	//

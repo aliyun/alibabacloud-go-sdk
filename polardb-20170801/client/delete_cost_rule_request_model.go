@@ -26,7 +26,7 @@ type DeleteCostRuleRequest struct {
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteCostRuleRequest struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

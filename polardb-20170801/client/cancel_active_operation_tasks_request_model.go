@@ -28,13 +28,7 @@ type iCancelActiveOperationTasksRequest interface {
 type CancelActiveOperationTasksRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID.
-	//
-	// >
-	//
-	// 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information about all clusters within a specified account.
-	//
-	// 	- If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+	// The region ID. This parameter is required. You can call the DescribeRegions operation to query the region ID. If you leave this parameter empty, the system queries scheduled tasks in all regions under the current account by default.
 	//
 	// This parameter is required.
 	//
@@ -45,7 +39,7 @@ type CancelActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The IDs of O\\&M events that are canceled at a time. Separate multiple IDs with commas (,).
+	// The IDs of the O&M events to cancel in batches. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

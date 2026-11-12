@@ -26,7 +26,7 @@ type iDescribePolarFsMappingResponseBody interface {
 }
 
 type DescribePolarFsMappingResponseBody struct {
-	// The instance-level default AccessKey ID.
+	// The default AccessKey ID for the instance.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type DescribePolarFsMappingResponseBodyPathMappingItems struct {
 	//
 	// pfs-xxx.oss-[regionId]-internal.aliyuncs.com
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The AccessKey ID of the storage bucket.
+	// The AccessKey ID for the storage bucket.
 	//
 	// example:
 	//

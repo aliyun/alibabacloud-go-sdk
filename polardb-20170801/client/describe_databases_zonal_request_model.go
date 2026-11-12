@@ -32,7 +32,7 @@ type iDescribeDatabasesZonalRequest interface {
 }
 
 type DescribeDatabasesZonalRequest struct {
-	// The cluster ID.
+	// The ID of the edge cluster. Only edge clusters are supported. You can call the DescribeDBClustersZonal operation to obtain a list of valid edge clusters and call the DescribeEdgeCloudRegion operation to query the regions that support edge clusters.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type DescribeDatabasesZonalRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The maximum number of entries to return for the current request.
+	// The maximum number of entries to return in this call.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
+	// The query token. Set the value to the NextToken value returned from the previous API call. If no subsequent query is required, do not specify this parameter.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeDatabasesZonalRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. The default value is 1.
+	// The page number. Valid values: integers greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - 30
 	//
@@ -74,7 +74,7 @@ type DescribeDatabasesZonalRequest struct {
 	//
 	// - 100
 	//
-	// The default value is 30.
+	// Default value: 30.
 	//
 	// example:
 	//

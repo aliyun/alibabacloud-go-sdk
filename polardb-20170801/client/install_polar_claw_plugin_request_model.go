@@ -34,7 +34,7 @@ type InstallPolarClawPluginRequest struct {
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
-	// The plug-in ID.
+	// The plugin identifier.
 	//
 	// This parameter is required.
 	//

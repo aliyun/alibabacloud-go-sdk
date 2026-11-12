@@ -24,7 +24,7 @@ type iCreateAgenticDBTenantApiKeyRequest interface {
 }
 
 type CreateAgenticDBTenantApiKeyRequest struct {
-	// The AgenticDB cluster ID.
+	// The AgenticDB cluster ID, which starts with pagc-. You must first call CreateDBCluster and set AgenticDbType to dedicated and ServerlessType to AgileServerless to create an AgenticDB cluster, and then pass the returned DBClusterId.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The usage description.
+	// The description of the purpose.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreateAgenticDBTenantApiKeyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies the ID of an existing tenant. If you specify this parameter, an API key is created only for the existing tenant in the current cluster. If the tenant does not exist, an error is returned and no tenant is created. If TenantName is also specified, the name must match the name of the tenant.
+	// The ID of the existing tenant.
 	//
 	// example:
 	//
 	// t-4b83e0da66674951
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The name of the tenant. The name must be unique within the cluster and must be 2 to 64 characters in length.
+	// The tenant name. It must be unique within the cluster and be 2 to 64 characters in length.
 	//
 	// example:
 	//

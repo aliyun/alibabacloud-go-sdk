@@ -32,23 +32,23 @@ type iCreateAIDBClusterDatasetRequest interface {
 }
 
 type CreateAIDBClusterDatasetRequest struct {
-	// The ID of the PolarDB database cluster.
+	// The ID of the AI database cluster. The cluster must have DBType set to polardb_ai. This parameter is required. If it is not provided, the service returns InvalidDBClusterId.Malformed (404).
 	//
 	// example:
 	//
 	// pc-2ze88***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// dataset01
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The type of the dataset. Valid values:
+	// The dataset type. Valid values:
 	//
-	// - **train**: training set
+	// 	- **train**: training dataset
 	//
-	// - **eval**: evaluation set
+	// 	- **eval**: evaluation dataset
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type CreateAIDBClusterDatasetRequest struct {
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
 	// The import method. Valid values:
 	//
-	// - **LocalImport**: local import
+	// 	- **LocalImport**: local import
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type CreateAIDBClusterDatasetRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The training mode for the dataset. The dataset format depends on the mode. Valid values:
+	// The training mode for the dataset. Dataset formats vary by mode. Valid values:
 	//
-	// - **sft**: supervised fine-tuning. For training sets only.
+	// 	- **sft**: supervised fine-tuning, dedicated to training datasets
 	//
-	// - **grpo**: reinforcement learning optimization. For training sets only.
+	// 	- **grpo**: reinforcement learning optimization, dedicated to training datasets
 	//
-	// - **text**: text generation. For validation sets only.
+	// 	- **text**: text generation, dedicated to validation datasets
 	//
 	// example:
 	//

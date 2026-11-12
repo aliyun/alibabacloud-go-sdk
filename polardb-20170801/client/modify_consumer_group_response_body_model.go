@@ -22,7 +22,7 @@ type ModifyConsumerGroupResponseBody struct {
 	//
 	// cg-xxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

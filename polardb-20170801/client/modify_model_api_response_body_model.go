@@ -16,13 +16,13 @@ type iModifyModelApiResponseBody interface {
 }
 
 type ModifyModelApiResponseBody struct {
-	// The model API ID.
+	// The ID of the model API.
 	//
 	// example:
 	//
 	// mi-xxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

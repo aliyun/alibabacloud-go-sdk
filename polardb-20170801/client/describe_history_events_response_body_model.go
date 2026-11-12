@@ -22,7 +22,11 @@ type iDescribeHistoryEventsResponseBody interface {
 }
 
 type DescribeHistoryEventsResponseBody struct {
-	// The event list.
+	// The list of events.
+	//
+	// example:
+	//
+	// []
 	Items []*DescribeHistoryEventsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -42,7 +46,7 @@ type DescribeHistoryEventsResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -124,20 +128,24 @@ func (s *DescribeHistoryEventsResponseBody) Validate() error {
 
 type DescribeHistoryEventsResponseBodyItems struct {
 	// The data overview.
+	//
+	// example:
+	//
+	// {}
 	Data *DescribeHistoryEventsResponseBodyItemsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The region ID of the region where the task resides.
+	// The region ID of the region where the task is located.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The event source.
+	// The source of the event.
 	//
 	// example:
 	//
@@ -149,13 +157,13 @@ type DescribeHistoryEventsResponseBodyItems struct {
 	//
 	// 8.0
 	Specversion *string `json:"Specversion,omitempty" xml:"Specversion,omitempty"`
-	// The name of the pending event.
+	// The name of the event to be processed.
 	//
 	// example:
 	//
 	// QiTian
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	// The running time of the query task. Unit: seconds.
+	// The running time of the queried task. Unit: seconds.
 	//
 	// example:
 	//
@@ -261,15 +269,15 @@ func (s *DescribeHistoryEventsResponseBodyItems) Validate() error {
 type DescribeHistoryEventsResponseBodyItemsData struct {
 	// The cloud service type of the application group. Valid values:
 	//
-	// - **web**: Web application.
+	// - **web**: Web applications.
 	//
-	// - **native**: Native application.
+	// - **native**: Native applications.
 	//
 	// example:
 	//
 	// web
 	CmsProduct *string `json:"CmsProduct,omitempty" xml:"CmsProduct,omitempty"`
-	// The database type.
+	// The type of the database.
 	//
 	// example:
 	//
@@ -281,11 +289,11 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 1
 	DetailImpact *string `json:"DetailImpact,omitempty" xml:"DetailImpact,omitempty"`
-	// The instance operation details.
+	// The details of the instance operation.
 	//
 	// example:
 	//
-	// The instance needs to be restarted for system maintenance
+	// The instance needs to be restarted due to system maintenance
 	DetailReason *string `json:"DetailReason,omitempty" xml:"DetailReason,omitempty"`
 	// The end time of the query. The end time must be later than the start time, and the interval between the start time and the end time must be within 24 hours. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC time).
 	//
@@ -293,7 +301,7 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 2025-12-24T02:24:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The system event category. Valid values:
+	// The category of the system event. Valid values:
 	//
 	// - **Exception**: Exception events.
 	//
@@ -319,13 +327,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// The instance will be restarted within the maintenance window
 	EventDetail *string `json:"EventDetail,omitempty" xml:"EventDetail,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
 	// 600324
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event impact overview.
+	// The impact overview of the event.
 	//
 	// example:
 	//
@@ -349,7 +357,7 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// System maintenance
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
 	// - **Inquiring**: Inquiring.
 	//
@@ -371,15 +379,15 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
 	//
-	// - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
+	// - **SystemMaintenance.Redeploy**: Redeployment of the instance due to system maintenance.
 	//
-	// - **SystemFailure.Reboot**: The instance is restarted due to a system failure.
+	// - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
 	//
-	// - **SystemFailure.Redeploy**: The instance is redeployed due to a system failure.
+	// - **SystemFailure.Redeploy**: Redeployment of the instance due to a system fault.
 	//
-	// - **SystemFailure.Delete**: The instance is released due to a creation failure.
+	// - **SystemFailure.Delete**: The instance is released because instance creation failed.
 	//
-	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance failure.
+	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
 	//
 	// - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
 	//
@@ -423,13 +431,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// pc-2ze150h1p29t***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// dhimgsearch
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Indicates whether the event is closed. Valid values:
+	// Indicates whether the item is closed. Valid values:
 	//
 	// - **0**: Closed.
 	//
@@ -439,7 +447,7 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// 1
 	IsClosed *int32 `json:"IsClosed,omitempty" xml:"IsClosed,omitempty"`
-	// The product name.
+	// The name of the product.
 	//
 	// example:
 	//
@@ -451,7 +459,7 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
 	// - **Instance**: Instance resources.
 	//
@@ -463,13 +471,13 @@ type DescribeHistoryEventsResponseBodyItemsData struct {
 	//
 	// Host
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The source data type.
+	// The type of the source data.
 	//
 	// example:
 	//
 	// loanBill
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC time).
+	// The start time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iModifyAIDBClusterTaskRequest interface {
 }
 
 type ModifyAIDBClusterTaskRequest struct {
-	// The task ID.
+	// The task ID. Note: This parameter refers to the training task ID, not the cluster ID. You can obtain a valid value by calling CreateAIDBClusterTask.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ModifyAIDBClusterTaskRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The operation to perform. Valid values:
 	//
-	// 	- **stop**: Stops training. This value takes effect only for tasks that are currently in the training state.
+	// 	- **stop**: Stops the training. This value takes effect only for tasks that are in the training state.
 	//
 	// example:
 	//

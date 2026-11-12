@@ -18,7 +18,11 @@ type iDeletePolarFsPathMappingRequest interface {
 }
 
 type DeletePolarFsPathMappingRequest struct {
-	// The bucket and corresponding path information.
+	// The bucket and corresponding path information. Usage notes: This parameter is required. You must provide at least one element, and each element must include Bucket (the OSS internal endpoint, in the format of {bucket}.oss-{regionId}-internal.aliyuncs.com) and Path. If this parameter is not provided or an empty array is provided, the API returns InvalidPolarFsPathList.Malformed (400).
+	//
+	// example:
+	//
+	// []
 	CustomBucketPathList []*DeletePolarFsPathMappingRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//

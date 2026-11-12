@@ -44,7 +44,7 @@ type DescribeAccountsRequest struct {
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The node type. Required when you query the PolarDB search node account
+	// The node type. This parameter is required when you query the accounts of PolarDB Search nodes. Valid values:
 	//
 	// - Search
 	//
@@ -54,21 +54,21 @@ type DescribeAccountsRequest struct {
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the returned page. The value must be an integer that is larger than 0. The default value is **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
-	// The default value is **30**.
+	// Default value: **30**.
 	//
 	// example:
 	//

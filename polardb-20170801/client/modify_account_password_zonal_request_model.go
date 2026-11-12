@@ -30,7 +30,7 @@ type iModifyAccountPasswordZonalRequest interface {
 }
 
 type ModifyAccountPasswordZonalRequest struct {
-	// The account name.
+	// The name of the account.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ModifyAccountPasswordZonalRequest struct {
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// A client-generated, case-sensitive token that you can use to ensure the idempotence of the request. The token must be unique among different requests and can be up to 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests, case-sensitive, and up to 64 ASCII characters in length.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The cluster ID.
+	// The ID of the edge cluster. This operation applies only to zonal edge clusters. You can obtain a valid ID by calling the DescribeDBClustersZonal operation. Standard PolarDB cluster IDs are not supported. For standard clusters, use the ModifyAccountPassword operation.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ModifyAccountPasswordZonalRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The new password for the account. The password must meet the following requirements:
+	// The new password of the account. The password must meet the following requirements:
 	//
-	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// 	- Contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// - Be 8 to 32 characters in length.
+	// 	- Is 8 to 32 characters in length.
 	//
-	// - The special characters are `!@#$%^&*()_+-=`.
+	// 	- Special characters include `!@#$%^&*()_+-=`.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ModifyAccountPasswordZonalRequest struct {
 	NewAccountPassword *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The password type.
+	// The type of the password.
 	//
 	// example:
 	//

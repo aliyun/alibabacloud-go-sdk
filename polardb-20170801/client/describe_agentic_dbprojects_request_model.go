@@ -26,7 +26,7 @@ type iDescribeAgenticDBProjectsRequest interface {
 }
 
 type DescribeAgenticDBProjectsRequest struct {
-	// The ID of the AgenticDB cluster.
+	// The ID of the AgenticDB cluster. The ID starts with pagc-. You can create the cluster by calling CreateDBCluster and setting AgenticDbType to dedicated.
 	//
 	// This parameter is required.
 	//
@@ -40,19 +40,19 @@ type DescribeAgenticDBProjectsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30. Maximum value: 100.
+	// The number of entries to return on each page. Default value: 30. Maximum value: 100.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The project ID for exact match.
+	// The project ID for exact matching.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name for fuzzy match.
+	// The project name for fuzzy matching.
 	//
 	// example:
 	//

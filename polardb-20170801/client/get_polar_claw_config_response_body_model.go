@@ -38,7 +38,7 @@ type GetPolarClawConfigResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The configuration object.
+	// The configuration.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetPolarClawConfigResponseBody struct {
 	//
 	// }
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The configuration hash.
+	// The configuration hash, which is used as an optimistic lock for subsequent patch operations.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type GetPolarClawConfigResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The version of OpenClaw.
+	// The OpenClaw version.
 	//
 	// example:
 	//

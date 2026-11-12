@@ -14,7 +14,7 @@ type iRestartAIDBClusterRequest interface {
 }
 
 type RestartAIDBClusterRequest struct {
-	// The instance ID.
+	// The instance ID. Usage notes: Add a description of the supported cluster types to the DBClusterId parameter description and clarify the meaning of the example value prefix.
 	//
 	// example:
 	//

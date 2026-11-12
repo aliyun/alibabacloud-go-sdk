@@ -24,13 +24,13 @@ type iDescribeAgenticDBComputeClustersRequest interface {
 }
 
 type DescribeAgenticDBComputeClustersRequest struct {
-	// The compute instance ID for fuzzy matching (pc-xxxx), such as pc-2ze8k.
+	// The compute instance ID used for fuzzy matching. Example: pc-2ze8k.
 	//
 	// example:
 	//
 	// pc-2ze8k
 	ComputeClusterId *string `json:"ComputeClusterId,omitempty" xml:"ComputeClusterId,omitempty"`
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster. The ID must start with pagc-. You can create the cluster by calling CreateDBCluster and setting AgenticDbType to dedicated and ServerlessType to AgileServerless. Standard PolarDB cluster IDs with the pc- prefix are not supported.
 	//
 	// This parameter is required.
 	//

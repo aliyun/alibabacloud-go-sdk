@@ -26,7 +26,7 @@ type iDescribeAgenticDBBranchLineageRequest interface {
 }
 
 type DescribeAgenticDBBranchLineageRequest struct {
-	// The ID of the anchor branch. If this parameter is not specified, the primary branch of the project is used by default.
+	// The ID of the anchor branch. If you do not specify this parameter, the root branch of the project is used by default.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeAgenticDBBranchLineageRequest struct {
 	//
 	// false
 	IncludeDestroying *bool `json:"IncludeDestroying,omitempty" xml:"IncludeDestroying,omitempty"`
-	// The maximum number of levels to return in the view, including the anchor branch itself. Valid values: 1 to 20. Default value: 3. The server automatically allocates the budget for ancestor and descendant levels with a downward bias.
+	// The maximum number of levels for the returned view, including the anchor branch itself. Valid values: 1 to 20. Default value: 3. The server automatically allocates the upward and downward budgets based on a downward bias.
 	//
 	// example:
 	//
 	// 3
 	MaxViewDepth *int32 `json:"MaxViewDepth,omitempty" xml:"MaxViewDepth,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeAgenticDBBranchLineageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//

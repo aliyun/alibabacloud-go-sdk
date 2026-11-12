@@ -24,13 +24,13 @@ type iCreateAIDBClusterDatasetResponseBody interface {
 }
 
 type CreateAIDBClusterDatasetResponseBody struct {
-	// The ID of the PolarDB database cluster.
+	// The instance ID of the PolarDB database for the AI model service.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The dataset management service ID.
+	// The instance ID of the dataset management service.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type CreateAIDBClusterDatasetResponseBody struct {
 	//
 	// pds-2ze88***
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The dataset name.
+	// The name of the dataset.
 	//
 	// example:
 	//
 	// dataset01
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	// The path to the dataset.
+	// The path of the dataset.
 	//
 	// example:
 	//

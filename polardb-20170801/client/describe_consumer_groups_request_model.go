@@ -28,7 +28,7 @@ type DescribeConsumerGroupsRequest struct {
 	//
 	// cg-xxxxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The ID of the gateway instance.
+	// The ID of the gateway instance. Usage note: The description of the GwClusterId parameter in DescribeConsumerGroups is updated to specify that it is the AI gateway instance ID. You can obtain a valid ID by calling the CreateGateway or DescribeGatewayList operation.
 	//
 	// This parameter is required.
 	//
@@ -36,27 +36,27 @@ type DescribeConsumerGroupsRequest struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The page number to return. The default value is 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
-	// The default value is 30.
+	// Default value: 30.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

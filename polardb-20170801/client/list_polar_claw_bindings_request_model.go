@@ -16,7 +16,7 @@ type iListPolarClawBindingsRequest interface {
 }
 
 type ListPolarClawBindingsRequest struct {
-	// A list of agent IDs to filter the bindings.
+	// Filters by a list of agent IDs.
 	//
 	// example:
 	//

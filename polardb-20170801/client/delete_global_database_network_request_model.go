@@ -26,7 +26,7 @@ type iDeleteGlobalDatabaseNetworkRequest interface {
 }
 
 type DeleteGlobalDatabaseNetworkRequest struct {
-	// The ID of the GDN.
+	// The ID of the global database network (GDN).
 	//
 	// This parameter is required.
 	//

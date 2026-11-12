@@ -38,9 +38,13 @@ type iModifyDBClusterAndNodesParametersRequest interface {
 }
 
 type ModifyDBClusterAndNodesParametersRequest struct {
-	// Specifies whether to clear binlog. This parameter is valid only when binlog is disabled.
+	// Specifies whether to clear binlogs. This parameter takes effect only when binlogs are disabled.
+	//
+	// example:
+	//
+	// false
 	ClearBinlog *bool `json:"ClearBinlog,omitempty" xml:"ClearBinlog,omitempty"`
-	// The cluster ID.
+	// The cluster ID. The DBClusterStatus of the target cluster must be Running. You can call the DescribeDBClusters operation to check the current status. Usage notes: The DBClusterStatus of the cluster must be Running. You can call the DescribeDBClusters operation to verify the status.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +52,19 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	//
 	// pc-**********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The IDs of the nodes. By setting this parameter, you can modify the parameters of the cluster and specified nodes. Separate multiple node IDs with commas (,).
+	// The node IDs. You can set this parameter to modify the parameters of the cluster and the specified nodes. Separate multiple node IDs with commas (,).
 	//
-	// > If this parameter is not specified, only the cluster parameters are modified.
+	// > If this parameter is left empty, only the cluster parameters are modified.
 	//
 	// example:
 	//
 	// pi-**********,pi-**********
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	// Specifies whether to immediately or scheduledly modify parameters and restart the cluster. Valid values:
+	// Specifies whether to execute the parameter modification and cluster restart immediately or at a scheduled time. Valid values:
 	//
-	// - **false*	- (default): scheduled execution
+	// - **false**: The task is executed at a scheduled time. This is the default value.
 	//
-	// - **true**: immediate execution
+	// - **true**: The task is executed immediately.
 	//
 	// example:
 	//
@@ -68,37 +72,33 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template.
+	// The parameter template ID.
 	//
 	// example:
 	//
 	// pcpg-**********
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// The JSON string that consists of parameters and their values.
+	// The JSON string of parameters and their values.
 	//
 	// example:
 	//
 	// {"wait_timeout":"86","innodb_old_blocks_time":"10"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The latest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The latest time to start the scheduled task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC.
 	//
-	// > - The latest start time must be 30 minutes or more later than the earliest start time.
+	// > 	- The latest time must be at least 30 minutes later than the start time.
 	//
-	// >
-	//
-	// > - If you specify `PlannedStartTime` but not this parameter, the latest start time of the task is `the earliest start time + 30 minutes` by default. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task will start no later than `2021-01-14T09:30:00Z`.
+	// > 	- If `PlannedStartTime` is specified but this parameter is not, the latest start time defaults to 30 minutes after the start time. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task will start no later than `2021-01-14T09:30:00Z`.
 	//
 	// example:
 	//
 	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The earliest time to start the scheduled task. The time must be in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC.
 	//
-	// > - The start time can be any time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// > 	- The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the allowed start time ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// >
-	//
-	// > - If you leave this parameter empty, the task is immediately executed.
+	// > 	- If this parameter is left empty, the task is executed immediately by default.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ModifyDBClusterAndNodesParametersRequest struct {
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The list of GDN standby clusters to which you want to synchronize the parameter settings.
+	// The list of secondary clusters in the Global Database Network (GDN) that require parameter settings synchronization.
 	//
 	// example:
 	//

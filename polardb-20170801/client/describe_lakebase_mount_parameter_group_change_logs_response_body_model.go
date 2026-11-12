@@ -16,7 +16,7 @@ type iDescribeLakebaseMountParameterGroupChangeLogsResponseBody interface {
 }
 
 type DescribeLakebaseMountParameterGroupChangeLogsResponseBody struct {
-	// The change records, sorted in descending order by CreateTime. An empty array is returned if no data is found.
+	// The change logs, sorted in descending order by CreateTime. An empty array is returned if no data is found.
 	ChangeLogs []*DescribeLakebaseMountParameterGroupChangeLogsResponseBodyChangeLogs `json:"ChangeLogs,omitempty" xml:"ChangeLogs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -84,7 +84,7 @@ type DescribeLakebaseMountParameterGroupChangeLogsResponseBodyChangeLogs struct 
 	//
 	// 123456789
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether the change has been applied. Valid values: 0 (no) and 1 (yes).
+	// Indicates whether the change is applied. Valid values: 0: No. 1: Yes.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type DescribeLakebaseMountParameterGroupChangeLogsResponseBodyChangeLogs struct 
 	//
 	// 2026-08-08T12:00:00Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The new value after the change. This parameter is empty for delete operations.
+	// The new value after the change. This value is empty if the change type is delete.
 	//
 	// example:
 	//
 	// 2
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The old value before the change. This parameter is empty for create operations.
+	// The old value before the change. This value is empty if the change type is create.
 	//
 	// example:
 	//

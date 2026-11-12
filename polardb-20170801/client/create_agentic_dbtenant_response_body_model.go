@@ -22,7 +22,7 @@ type iCreateAgenticDBTenantResponseBody interface {
 }
 
 type CreateAgenticDBTenantResponseBody struct {
-	// The creation time.
+	// The creation time. The time is displayed in the ISO 8601 standard in the UTC time zone. The format is YYYY-MM-DDTHH:mm:ssZ, such as 2026-10-15T08:00:00Z.
 	//
 	// example:
 	//

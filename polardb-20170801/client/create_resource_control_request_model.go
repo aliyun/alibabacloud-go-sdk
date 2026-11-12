@@ -22,7 +22,7 @@ type iCreateResourceControlRequest interface {
 }
 
 type CreateResourceControlRequest struct {
-	// The maximum number of CPU cores that the resource control rule can use. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify exactly one of the MaxCpu and CpuCount parameters.
+	// The maximum number of CPU cores available to the resource control rule. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify either MaxCpu or CpuCount, but not both.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type CreateResourceControlRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The maximum CPU quota percentage that the resource control rule can use. Valid values: 1 to 100. You must specify exactly one of the MaxCpu and CpuCount parameters.
+	// The maximum CPU quota percentage available to the resource control rule. Valid values: 1 to 100. You must specify either MaxCpu or CpuCount, but not both.
 	//
 	// example:
 	//
 	// 20
 	MaxCpu *int32 `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
-	// The region ID of the PolarDB cluster.
+	// The ID of the region where the PolarDB cluster is deployed.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
 	//

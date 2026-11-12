@@ -20,13 +20,13 @@ type iModifyTaskInfoResponseBody interface {
 }
 
 type ModifyTaskInfoResponseBody struct {
-	// The error code returned when the task update fails.
+	// The error code returned when the task modification fails.
 	//
 	// example:
 	//
 	// InvalidParameter
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the task that failed to be updated.
+	// The ID of the task that failed to be modified.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ModifyTaskInfoResponseBody struct {
 	//
 	// 2921D843-433A-5FB3-A03B-4EC093B219F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successfully updated tasks.
+	// The number of successfully modified tasks.
 	//
 	// example:
 	//

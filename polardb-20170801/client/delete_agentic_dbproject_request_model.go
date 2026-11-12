@@ -20,7 +20,7 @@ type iDeleteAgenticDBProjectRequest interface {
 }
 
 type DeleteAgenticDBProjectRequest struct {
-	// The AgenticDB cluster ID.
+	// The ID of the AgenticDB cluster. The ID must start with pagc-. You can obtain the ID by calling the CreateDBCluster operation and setting AgenticDbType to dedicated. Regular cluster IDs that start with pc- are not supported. Usage notes: Append the following format note to the end of the description for the DBClusterId parameter: The ID must be prefixed with pagc-, and regular PolarDB cluster IDs (prefixed with pc-) are not supported by this API operation.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DeleteAgenticDBProjectRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The target project ID.
+	// The ID of the target project. You can obtain the ID after creating a project by calling CreateAgenticDBProject.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeleteAgenticDBProjectRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant. You can obtain the ID after creating a tenant by calling CreateAgenticDBTenant.
 	//
 	// This parameter is required.
 	//

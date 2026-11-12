@@ -26,7 +26,7 @@ type iCreateApplicationResponseBody interface {
 }
 
 type CreateApplicationResponseBody struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type CreateApplicationResponseBody struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The list of subcomponents.
 	Components []*CreateApplicationResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The description of the application.
+	// The application description.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type CreateApplicationResponseBody struct {
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the resources are sufficient. This parameter is returned only when DryRun is set to true.
+	// Indicates whether the resources are sufficient. This parameter is returned only when `DryRun` is set to `true`.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *CreateApplicationResponseBody) Validate() error {
 }
 
 type CreateApplicationResponseBodyComponents struct {
-	// The ID of the subcomponent.
+	// The subcomponent ID.
 	//
 	// example:
 	//

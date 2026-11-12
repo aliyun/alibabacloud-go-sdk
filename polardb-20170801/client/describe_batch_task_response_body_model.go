@@ -46,13 +46,13 @@ type DescribeBatchTaskResponseBody struct {
 	//
 	// pcb-xxx
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 25C70FF3-D49B-594D-BECE-0DE2BA1D8BBB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type DescribeBatchTaskResponseBody struct {
 	//
 	// batch_task_test
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//
 	// polarclaw_install_skills
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The number of entries in the list.
+	// The total number of entries in the list.
 	//
 	// example:
 	//

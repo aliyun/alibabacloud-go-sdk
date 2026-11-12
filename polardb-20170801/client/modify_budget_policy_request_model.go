@@ -24,13 +24,13 @@ type iModifyBudgetPolicyRequest interface {
 }
 
 type ModifyBudgetPolicyRequest struct {
-	// The budget usage percentage that triggers an alert. Valid values: 0 to 100.
+	// The alert threshold percentage. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 80
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
-	// The budget amount in points.
+	// The budget points.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ModifyBudgetPolicyRequest struct {
 	//
 	// 023aacc1effc4b56bb154bfbec6ba9**
 	BudgetPolicyId *string `json:"BudgetPolicyId,omitempty" xml:"BudgetPolicyId,omitempty"`
-	// The ID of the gateway instance.
+	// The instance ID of the gateway instance. Usage note: In the full API reference, the description of the GwClusterId parameter must specify the resource type (gateway instance), how to obtain the instance ID (which Describe or List API to invoke), and the difference between GwClusterId and DBClusterId.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type ModifyBudgetPolicyRequest struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The day of the month when the budget is reset. Valid values: 1 to 28.
+	// The day of the month when the reset occurs. Valid values: 1 to 28.
 	//
 	// example:
 	//

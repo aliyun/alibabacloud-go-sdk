@@ -48,7 +48,7 @@ type DescribePolarClawAgentsResponseBody struct {
 	//
 	// main
 	DefaultId *string `json:"DefaultId,omitempty" xml:"DefaultId,omitempty"`
-	// The primary agent key name.
+	// The main agent key name.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribePolarClawAgentsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -168,15 +168,15 @@ func (s *DescribePolarClawAgentsResponseBody) Validate() error {
 }
 
 type DescribePolarClawAgentsResponseBodyAgents struct {
-	// Indicates whether this is the default agent.
+	// Indicates whether the agent is the default agent.
 	//
 	// example:
 	//
 	// true
 	Default *bool `json:"Default,omitempty" xml:"Default,omitempty"`
-	// The agent file list.
+	// The list of agent files.
 	Files []*DescribePolarClawAgentsResponseBodyAgentsFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// Agent ID
+	// The PolarClaw agent ID.
 	//
 	// example:
 	//
@@ -324,13 +324,13 @@ type DescribePolarClawAgentsResponseBodyAgentsFiles struct {
 	//
 	// /home/node/.openclaw/workspace-work/SOUL.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The file size, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The last updated timestamp, in milliseconds.
+	// The timestamp of the last update in milliseconds.
 	//
 	// example:
 	//
@@ -408,7 +408,7 @@ type DescribePolarClawAgentsResponseBodyAgentsIdentity struct {
 	//
 	// test
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	// The emoji identifier in Unicode format such as U+1F99E, or a direct emoji character.
+	// The emoji identifier, in Unicode format such as U+1F99E or as a direct emoji character.
 	//
 	// example:
 	//
@@ -486,7 +486,7 @@ func (s *DescribePolarClawAgentsResponseBodyAgentsIdentity) Validate() error {
 }
 
 type DescribePolarClawAgentsResponseBodyAgentsModel struct {
-	// The fallback model list.
+	// The list of fallback models.
 	Fallbacks []*string `json:"Fallbacks,omitempty" xml:"Fallbacks,omitempty" type:"Repeated"`
 	// The primary model.
 	//

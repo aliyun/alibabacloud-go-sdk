@@ -24,7 +24,7 @@ type iCreatePolarClawSkillTemplateRequest interface {
 }
 
 type CreatePolarClawSkillTemplateRequest struct {
-	// The application ID.
+	// The application ID. This parameter is required. If this parameter is not provided, an InvalidApplicationId.Malformed (HTTP 400) error is returned.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreatePolarClawSkillTemplateRequest struct {
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view all available regions for the current account, including region IDs.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type CreatePolarClawSkillTemplateRequest struct {
 	//
 	// skill_template_test
 	SkillTemplateName *string `json:"SkillTemplateName,omitempty" xml:"SkillTemplateName,omitempty"`
-	// The skill template parameters.
+	// The skill template parameters. Specify a standard JSON object string with the skill identifier as the key, such as {"skill1":{"skillName":"polarclawhub","version":"0.0.0"}}. JSON arrays or single-quote formats are not accepted.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [{\\"skillName\\":\\"polarclawhub\\",\\"version\\":\\"0.0.0\\"},{\\"skillName\\":\\"github\\",\\"version\\":\\"1.0.0\\"}]
+	// {"skill1":{"skillName":"polarclawhub","version":"0.0.0"}}
 	SkillTemplateParam *string `json:"SkillTemplateParam,omitempty" xml:"SkillTemplateParam,omitempty"`
 }
 

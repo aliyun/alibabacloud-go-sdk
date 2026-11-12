@@ -14,7 +14,7 @@ type iUpgradeDBClusterVersionResponseBody interface {
 }
 
 type UpgradeDBClusterVersionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

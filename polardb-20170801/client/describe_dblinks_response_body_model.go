@@ -18,15 +18,15 @@ type iDescribeDBLinksResponseBody interface {
 }
 
 type DescribeDBLinksResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// pc-a*************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Details about the database links.
+	// The DBLink information set.
 	DBLinkInfos []*DescribeDBLinksResponseBodyDBLinkInfos `json:"DBLinkInfos,omitempty" xml:"DBLinkInfos,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,39 +83,39 @@ func (s *DescribeDBLinksResponseBody) Validate() error {
 }
 
 type DescribeDBLinksResponseBodyDBLinkInfos struct {
-	// The ID of the source cluster that the database link connects.
+	// The ID of the source cluster for the DBLink.
 	//
 	// example:
 	//
 	// pc-a*************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the database link.
+	// The name of the DBLink.
 	//
 	// example:
 	//
 	// dblink_test
 	DBLinkName *string `json:"DBLinkName,omitempty" xml:"DBLinkName,omitempty"`
-	// The name of the source database of the database link.
+	// The name of the source database for the DBLink.
 	//
 	// example:
 	//
 	// testdb1
 	SourceDBName *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
-	// The account of the destination database of the database link.
+	// The target database account for the DBLink.
 	//
 	// example:
 	//
 	// testacc
 	TargetAccount *string `json:"TargetAccount,omitempty" xml:"TargetAccount,omitempty"`
-	// The ID of the destination cluster that the database link connects.
+	// The ID of the target cluster for the DBLink.
 	//
-	// > If the destination cluster is not a PolarDB for Oracle cluster, the returned value is empty.
+	// > If the target is not a PolarDB for PostgreSQL (Compatible with Oracle) cluster, this parameter is empty.
 	//
 	// example:
 	//
 	// pc-b************
 	TargetDBInstanceName *string `json:"TargetDBInstanceName,omitempty" xml:"TargetDBInstanceName,omitempty"`
-	// The name of the destination database of the database link.
+	// The name of the target database for the DBLink.
 	//
 	// example:
 	//

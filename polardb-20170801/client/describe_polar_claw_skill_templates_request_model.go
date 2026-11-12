@@ -28,7 +28,7 @@ type iDescribePolarClawSkillTemplatesRequest interface {
 }
 
 type DescribePolarClawSkillTemplatesRequest struct {
-	// The application ID.
+	// The application ID. You can call the DescribeApplications operation to obtain a valid ApplicationId value. This parameter is conditionally required. If SkillTemplateId is not specified, you must provide a valid ApplicationId.
 	//
 	// example:
 	//
@@ -36,19 +36,19 @@ type DescribePolarClawSkillTemplatesRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The application type.
 	//
-	// > If you are calling this operation for the first time, you do not need to specify this parameter.
+	// > If you call this operation for the first time, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The end time of the query in UTC.
+	// The end time of the query. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-11-16T16:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribePolarClawSkillTemplatesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions for the current account, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions under the current account, including region IDs.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribePolarClawSkillTemplatesRequest struct {
 	//
 	// pcpg-skill-2ze5v8n27o7x92a
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
-	// The start time of the query in UTC.
+	// The start time of the query. The time is in UTC.
 	//
 	// example:
 	//

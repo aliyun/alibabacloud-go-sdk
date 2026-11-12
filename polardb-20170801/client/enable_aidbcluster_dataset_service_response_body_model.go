@@ -22,7 +22,7 @@ type EnableAIDBClusterDatasetServiceResponseBody struct {
   // 
   // pcs-2ze26***
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-  // Id of the request
+  // The request ID.
   // 
   // example:
   // 

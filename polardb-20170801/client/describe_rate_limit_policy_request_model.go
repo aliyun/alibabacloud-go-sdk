@@ -26,7 +26,7 @@ type iDescribeRateLimitPolicyRequest interface {
 }
 
 type DescribeRateLimitPolicyRequest struct {
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeRateLimitPolicyRequest struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The page number to return. The default value is 1.
+	// The page number for paging. Default value: 1.
 	//
 	// example:
 	//
@@ -42,17 +42,19 @@ type DescribeRateLimitPolicyRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**. The default value is **30**.
+	// 	- **100**
+	//
+	// Default value: **30**.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the rate limit policy.
+	// The ID of the throttling policy.
 	//
 	// example:
 	//
@@ -64,17 +66,17 @@ type DescribeRateLimitPolicyRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the target resource, which can be a consumer group or a consumer, depending on the `ScopeType` value.
+	// The ID of the throttling dimension, which is the consumer group ID or consumer ID.
 	//
 	// example:
 	//
 	// cg-xxxxxxxx
 	ScopeRefId *string `json:"ScopeRefId,omitempty" xml:"ScopeRefId,omitempty"`
-	// The scope of the rate limit policy. Valid values:
+	// The throttling dimension. Valid values:
 	//
-	// - **ConsumerGroup**: The policy applies to a consumer group.
+	// - **ConsumerGroup**: consumer group
 	//
-	// - **Consumer**: The policy applies to a specific consumer.
+	// - **Consumer**: consumer
 	//
 	// example:
 	//

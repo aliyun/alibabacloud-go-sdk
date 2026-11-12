@@ -18,19 +18,19 @@ type iAttachApplicationPolarFSResponseBody interface {
 }
 
 type AttachApplicationPolarFSResponseBody struct {
-	// Application ID
+	// The application ID.
 	//
 	// example:
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// PolarLakeBase instance ID
+	// The Polarlakebase instance ID.
 	//
 	// example:
 	//
 	// pcs-**************
 	PolarFSInstanceId *string `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//

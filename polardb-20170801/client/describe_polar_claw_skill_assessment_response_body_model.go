@@ -20,9 +20,9 @@ type DescribePolarClawSkillAssessmentResponseBody struct {
 	//
 	// example:
 	//
-	// {"zhReportContent":"# Skill Security Assessment Report\\n\\n> **Risk Level:*	- ...}
+	// {"zhReportContent":"# Skill Security Assessment Report\\n\\n> **Risk level:*	- ...}
 	AssessmentResult *string `json:"AssessmentResult,omitempty" xml:"AssessmentResult,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

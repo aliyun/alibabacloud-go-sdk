@@ -17,6 +17,8 @@ type iSearchMemoriesRequest interface {
 	GetCreateTimeEnd() *string
 	SetMemoryAgentId(v string) *SearchMemoriesRequest
 	GetMemoryAgentId() *string
+	SetMemoryId(v string) *SearchMemoriesRequest
+	GetMemoryId() *string
 	SetMemoryUserId(v string) *SearchMemoriesRequest
 	GetMemoryUserId() *string
 	SetPage(v int32) *SearchMemoriesRequest
@@ -30,7 +32,7 @@ type iSearchMemoriesRequest interface {
 }
 
 type SearchMemoriesRequest struct {
-	// The application ID. Example: pa-**************. The application must be of the mem0 type. When creating the application by using CreateApplication, set ApplicationType to mem0. Calling this operation on a non-mem0 application returns the IncorrectDBInstanceEngine (403) error.
+	// The application ID. Example: pa-**************. The application must be of the mem0 type. When you create the application by calling CreateApplication, set ApplicationType to mem0. If you call this operation on a non-mem0 application, the IncorrectDBInstanceEngine (403) error is returned.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +58,13 @@ type SearchMemoriesRequest struct {
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
-	// The ID of the memory user.
+	// The memory ID. If you specify this parameter, the complete change history of the memory is queried.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// 4d83591f-******-4efaf8c3
+	MemoryId *string `json:"MemoryId,omitempty" xml:"MemoryId,omitempty"`
+	// The ID of the memory user.
 	//
 	// example:
 	//
@@ -70,7 +76,7 @@ type SearchMemoriesRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of records to display on each page.
 	//
 	// example:
 	//
@@ -114,6 +120,10 @@ func (s *SearchMemoriesRequest) GetMemoryAgentId() *string {
 	return s.MemoryAgentId
 }
 
+func (s *SearchMemoriesRequest) GetMemoryId() *string {
+	return s.MemoryId
+}
+
 func (s *SearchMemoriesRequest) GetMemoryUserId() *string {
 	return s.MemoryUserId
 }
@@ -151,6 +161,11 @@ func (s *SearchMemoriesRequest) SetCreateTimeEnd(v string) *SearchMemoriesReques
 
 func (s *SearchMemoriesRequest) SetMemoryAgentId(v string) *SearchMemoriesRequest {
 	s.MemoryAgentId = &v
+	return s
+}
+
+func (s *SearchMemoriesRequest) SetMemoryId(v string) *SearchMemoriesRequest {
+	s.MemoryId = &v
 	return s
 }
 

@@ -42,7 +42,7 @@ type iDescribeHistoryEventsRequest interface {
 }
 
 type DescribeHistoryEventsRequest struct {
-	// The event archive status. Valid values:
+	// The archive status of the event. Valid values:
 	//
 	// - Archived: The event is archived.
 	//
@@ -54,7 +54,7 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// All
 	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	// The system event category. Valid values:
+	// The category of the system event. Valid values:
 	//
 	// - **Exception**: Exception events.
 	//
@@ -68,7 +68,7 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// Exception
 	EventCategory *string `json:"EventCategory,omitempty" xml:"EventCategory,omitempty"`
-	// The event ID.
+	// The ID of the event.
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// - **WARN**: Warning.
 	//
-	// - **CRITICAL**: Critical.
+	// - **CRITICAL**: Alerting.
 	//
 	// example:
 	//
 	// high
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
 	// - **Inquiring**: Inquiring.
 	//
@@ -110,15 +110,15 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// - **SystemMaintenance.Reboot**: The instance is restarted due to system maintenance.
 	//
-	// - **SystemMaintenance.Redeploy**: The instance is redeployed due to system maintenance.
+	// - **SystemMaintenance.Redeploy**: Redeployment of the instance due to system maintenance.
 	//
-	// - **SystemFailure.Reboot**: The instance is restarted due to a system failure.
+	// - **SystemFailure.Reboot**: The instance is restarted due to a system fault.
 	//
-	// - **SystemFailure.Redeploy**: The instance is redeployed due to a system failure.
+	// - **SystemFailure.Redeploy**: Redeployment of the instance due to a system fault.
 	//
-	// - **SystemFailure.Delete**: The instance is released due to a creation failure.
+	// - **SystemFailure.Delete**: The instance is released because instance creation failed.
 	//
-	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance failure.
+	// - **InstanceFailure.Reboot**: The instance is restarted due to an instance fault.
 	//
 	// - **InstanceExpiration.Stop**: The subscription instance is stopped due to expiration.
 	//
@@ -134,15 +134,15 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// SystemFailure.Reboot
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The start time of the task start time range. This parameter specifies that only tasks whose start time is later than this value are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically changed to 30 days ago.
+	// The start time of the task start time range. This parameter specifies that the start time of the queried tasks must be later than this time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days ago. This parameter is actually required. If it is not provided, the API returns Param.Invalid (HTTP 400). Note: This parameter is required. If it is not provided, the API returns Param.Invalid (HTTP 400).
 	//
 	// example:
 	//
 	// 2025-01-02T11:31:03Z
 	FromStartTime *string `json:"FromStartTime,omitempty" xml:"FromStartTime,omitempty"`
-	// The resource ID. This parameter is used to query tasks of the corresponding resources. Separate multiple IDs with commas (,). You can specify up to 30 IDs. By default, this parameter is left empty, which indicates that no limit is applied.
+	// The ID of the resource. This parameter is used to query tasks for the corresponding resource. You can specify up to 30 IDs and separate them with commas (,). Default value: empty, which indicates no limit.
 	//
-	// > Only cluster IDs are supported.
+	// > Currently, only cluster IDs are supported.
 	//
 	// example:
 	//
@@ -172,13 +172,13 @@ type DescribeHistoryEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-**********
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The resource type. Valid values:
+	// The type of the resource. Valid values:
 	//
 	// - **Instance**: Instance resources.
 	//
@@ -192,15 +192,15 @@ type DescribeHistoryEventsRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The ID of the scheduled task to be canceled.
 	//
-	// > 	- You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the information about all scheduled tasks under the current account, including the task IDs.
+	// > 	- You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the information of all scheduled tasks under the current account, including the task IDs.
 	//
-	// 	- Only tasks in the pending state (the return value of the `Status` parameter is `pending`) can be canceled.
+	// 	- Only tasks in the pending state (where the return value of the `Status` parameter is `pending`) can be canceled.
 	//
 	// example:
 	//
 	// 32077515
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The end time of the task start time range. This parameter specifies that only tasks whose start time is earlier than this value are queried. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	// The end time of the task start time range. This parameter specifies that the start time of the queried tasks must be earlier than this time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iRestartAIDBClusterResponseBody interface {
 }
 
 type RestartAIDBClusterResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iCreateConsumerResponseBody interface {
 }
 
 type CreateConsumerResponseBody struct {
-	// The complete API key. This parameter is returned only in the current response.
+	// The complete API key. This value is returned only in this response.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type CreateConsumerResponseBody struct {
 	//
 	// c-mqveroemc***
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
-	// The key type. Default value: ApiKey. Valid values: ApiKey.
+	// The key type. Default value: ApiKey. Currently, only ApiKey is supported.
 	//
 	// example:
 	//
 	// ApiKey
 	KeyType *string `json:"KeyType,omitempty" xml:"KeyType,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateExtensionsResponseBody interface {
 }
 
 type CreateExtensionsResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

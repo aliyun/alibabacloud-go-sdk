@@ -26,7 +26,7 @@ type iEnableSQLRateLimitingRulesRequest interface {
 }
 
 type EnableSQLRateLimitingRulesRequest struct {
-  // The ID of the cluster.
+  // The cluster ID. Notes on invoking: The SQL throttling feature is supported only for clusters that have the database proxy enabled. Currently, the Oracle-compatible engine is verified to support this feature. For MySQL clusters, confirm whether the database proxy and the SQL throttling feature are enabled.
   // 
   // This parameter is required.
   // 
@@ -36,11 +36,11 @@ type EnableSQLRateLimitingRulesRequest struct {
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
   // Specifies whether to enable or disable the specified SQL throttling rules. Valid values:
   // 
-  // - **true**: Enable.
+  // - **true**: enables the rules.
   // 
-  // - **false**: Disable.
+  // - **false**: disables the rules.
   // 
-  // > This parameter applies only when you specify the **RuleNameList*	- parameter.
+  // > This parameter takes effect only when **RuleNameList*	- is specified.
   // 
   // This parameter is required.
   // 
@@ -52,9 +52,9 @@ type EnableSQLRateLimitingRulesRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
   ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
   ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-  // The names of the SQL throttling rules to enable. To specify multiple rules, separate the names with a comma (,).
+  // The names of the SQL throttling rules to enable or disable. You can specify multiple rule names for batch operations. Separate multiple names with commas (,).
   // 
-  // > You can view all SQL throttling rules and their names on the SQL Firewall tab of the Security Management page for the cluster.
+  // > You can view all SQL throttling rule information, including rule names, on the **SQL Firewall*	- tab of the **Security Management*	- page in the cluster console.
   // 
   // This parameter is required.
   // 

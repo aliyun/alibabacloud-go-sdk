@@ -20,9 +20,7 @@ type iDescribePolarFsMappingRequest interface {
 }
 
 type DescribePolarFsMappingRequest struct {
-	// The cluster ID.
-	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
+	// The cluster ID. This parameter is required. If you do not specify this parameter, the API returns InvalidDBClusterId.Malformed (HTTP 400). You can call the DescribeDBClusters operation to query the cluster IDs within your account.
 	//
 	// example:
 	//

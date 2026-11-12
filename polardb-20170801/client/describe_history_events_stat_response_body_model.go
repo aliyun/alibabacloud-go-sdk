@@ -17,6 +17,10 @@ type iDescribeHistoryEventsStatResponseBody interface {
 
 type DescribeHistoryEventsStatResponseBody struct {
 	// The statistical results summarized by event category.
+	//
+	// example:
+	//
+	// []
 	Items []*DescribeHistoryEventsStatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//

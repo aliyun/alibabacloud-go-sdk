@@ -22,7 +22,7 @@ type iDescribeAgenticDBTenantApiKeysRequest interface {
 }
 
 type DescribeAgenticDBTenantApiKeysRequest struct {
-	// The AgenticDB cluster ID.
+	// The cluster ID. Both pagc- and pc- prefixes are supported. The pagc- prefix indicates an AgenticDB dedicated cluster. The pc- prefix indicates a standard PolarDB cluster that supports AgenticDB tenant capabilities.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeAgenticDBTenantApiKeysRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 30. Maximum value: 100.
+	// The number of entries to return on each page. Default value: 30. Maximum value: 100.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeAgenticDBTenantApiKeysRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Filters results by tenant name.
+	// Filters the results by tenant name.
 	//
 	// example:
 	//

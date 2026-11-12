@@ -40,55 +40,55 @@ type iDescribeLicenseOrderDetailsResponseBody interface {
 }
 
 type DescribeLicenseOrderDetailsResponseBody struct {
-	// The number of activation codes that have been generated.
+	// The number of generated activation codes.
 	//
 	// example:
 	//
 	// 2
 	ActivatedCodeCount *int32 `json:"ActivatedCodeCount,omitempty" xml:"ActivatedCodeCount,omitempty"`
-	// The quota for requesting activation codes.
+	// The quota of activation codes that can be requested.
 	//
 	// example:
 	//
 	// 8
 	ActivationCodeQuota *int32 `json:"ActivationCodeQuota,omitempty" xml:"ActivationCodeQuota,omitempty"`
-	// The ID of the Alibaba Cloud order, including the virtual order ID.
+	// The Alibaba Cloud order ID, including the virtual order ID.
 	//
 	// example:
 	//
 	// 239618016570503
 	AliyunOrderId *string `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
-	// Indicates whether you can leave the System Identifier parameter empty when you generate an activation code.
+	// Specifies whether the System Identifier can be left empty when generating an activation code.
 	//
 	// example:
 	//
 	// false
 	AllowEmptySystemIdentifier *bool `json:"AllowEmptySystemIdentifier,omitempty" xml:"AllowEmptySystemIdentifier,omitempty"`
-	// The database type, such as PG, Oracle, or MySQL.
+	// The database type, such as PostgreSQL, Oracle, or MySQL.
 	//
 	// example:
 	//
 	// PG
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The time when the order was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2021-10-19 01:13:45
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the order was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the order is a virtual order. You can pre-generate activation codes for virtual orders.
+	// Specifies whether the order is a virtual order. Virtual orders allow pre-generation of activation codes.
 	//
 	// example:
 	//
 	// false
 	IsVirtualOrder *bool `json:"IsVirtualOrder,omitempty" xml:"IsVirtualOrder,omitempty"`
-	// Indicates whether the virtual order is frozen. If a virtual order is frozen, you can no longer generate activation codes.
+	// Specifies whether the virtual order is frozen. A frozen virtual order does not allow further generation of activation codes.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ type DescribeLicenseOrderDetailsResponseBody struct {
 	IsVirtualOrderFrozen *bool `json:"IsVirtualOrderFrozen,omitempty" xml:"IsVirtualOrderFrozen,omitempty"`
 	// The package type. Valid values:
 	//
-	// - single_node_subscribe: single-node (subscription)
+	// - single_node_subscribe: single node (subscription)
 	//
-	// - single_node_long_term: single-node (long-term)
+	// - single_node_long_term: single node (long-term)
 	//
-	// - primary_backup_subscribe: primary/standby (subscription)
+	// - primary_backup_subscribe: primary/secondary edition (subscription)
 	//
-	// - primary_backup_long_term: primary/standby (long-term)
+	// - primary_backup_long_term: primary/secondary edition (long-term)
 	//
 	// - pre_generation_long_term: pre-generation (long-term)
 	//
@@ -110,13 +110,13 @@ type DescribeLicenseOrderDetailsResponseBody struct {
 	//
 	// pre_generation_long_term
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
-	// The validity period of the package. The validity period is typically one year or a long-term period of 30 years.
+	// The validity period of the package, which is typically one year or a long-term period of 30 years.
 	//
 	// example:
 	//
 	// 1 year
 	PackageValidity *string `json:"PackageValidity,omitempty" xml:"PackageValidity,omitempty"`
-	// The purchase channel. Valid values: \\`aliyun_market\\` (Alibaba Cloud Marketplace) and \\`aliyun_public\\` (standard purchase page).
+	// The purchase channel. Valid values: aliyun_market (Alibaba Cloud Marketplace) and aliyun_public (regular purchase page).
 	//
 	// example:
 	//

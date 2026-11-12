@@ -14,7 +14,7 @@ type iRefreshProxyLevelResponseBody interface {
 }
 
 type RefreshProxyLevelResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

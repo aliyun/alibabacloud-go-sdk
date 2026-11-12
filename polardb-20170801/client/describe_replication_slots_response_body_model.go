@@ -102,25 +102,25 @@ type DescribeReplicationSlotsResponseBodySlots struct {
 	//
 	// logical
 	SlotType *string `json:"SlotType,omitempty" xml:"SlotType,omitempty"`
-	// The child node name of the distributed instance.
+	// The name of the child node of the distributed instance.
 	//
 	// example:
 	//
 	// testGroup
 	SubGroupName *string `json:"SubGroupName,omitempty" xml:"SubGroupName,omitempty"`
-	// The replay lag value of the subscription.
+	// The replay lag of the subscription.
 	//
 	// example:
 	//
 	// 100
 	SubReplayLag *string `json:"SubReplayLag,omitempty" xml:"SubReplayLag,omitempty"`
-	// Indicates whether the replication slot is temporary. The value is returned as a string: true or false.
+	// Indicates whether the replication slot is temporary. The value is a string: true or false.
 	//
 	// example:
 	//
 	// false
 	Temporary *string `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	// The WAL latency value.
+	// The WAL latency.
 	//
 	// example:
 	//

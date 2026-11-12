@@ -23,6 +23,10 @@ type iCheckPolarClawSkillResponseBody interface {
 
 type CheckPolarClawSkillResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// []
 	Message []*string `json:"Message,omitempty" xml:"Message,omitempty" type:"Repeated"`
 	// The name of the OSS bucket where the skill files are stored.
 	//
@@ -42,7 +46,7 @@ type CheckPolarClawSkillResponseBody struct {
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// The request result. Valid values:
 	//
 	// - **true**: The request is successful.
 	//

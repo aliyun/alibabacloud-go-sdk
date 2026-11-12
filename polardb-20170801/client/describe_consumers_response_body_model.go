@@ -24,7 +24,7 @@ type iDescribeConsumersResponseBody interface {
 }
 
 type DescribeConsumersResponseBody struct {
-	// The list of consumers.
+	// The consumer list.
 	Items []*DescribeConsumersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -44,7 +44,7 @@ type DescribeConsumersResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -144,21 +144,21 @@ type DescribeConsumersResponseBodyItems struct {
 	//
 	// example:
 	//
-	// xxxxxxxx
+	// ak_example_7f3d9c2a
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	// The ID of the consumer group.
+	// The consumer group ID.
 	//
 	// example:
 	//
 	// cg-xxxxxx
 	ConsumerGroupId *string `json:"ConsumerGroupId,omitempty" xml:"ConsumerGroupId,omitempty"`
-	// The name of the consumer group.
+	// The consumer group name.
 	//
 	// example:
 	//
 	// test
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The ID of the consumer.
+	// The consumer ID.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type DescribeConsumersResponseBodyItems struct {
 	//
 	// 10
 	MtdCostCount *int64 `json:"MtdCostCount,omitempty" xml:"MtdCostCount,omitempty"`
-	// The cumulative total cost.
+	// The cumulative cost.
 	//
 	// example:
 	//
 	// 10000
 	MtdTokenCount *int64 `json:"MtdTokenCount,omitempty" xml:"MtdTokenCount,omitempty"`
-	// The name of the consumer.
+	// The consumer name.
 	//
 	// example:
 	//

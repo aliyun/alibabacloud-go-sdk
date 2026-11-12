@@ -33,6 +33,10 @@ type DescribeApplicationAvailableVersionShrinkRequest struct {
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The list of application subcomponents.
+	//
+	// example:
+	//
+	// []
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The region ID.
 	//

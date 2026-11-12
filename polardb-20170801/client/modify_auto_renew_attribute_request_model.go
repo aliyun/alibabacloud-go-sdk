@@ -34,13 +34,13 @@ type iModifyAutoRenewAttributeRequest interface {
 }
 
 type ModifyAutoRenewAttributeRequest struct {
-	// The cloud provider of the cluster.
+	// The cloud service provider to which the instance belongs.
 	//
 	// example:
 	//
 	// ENS
 	CloudProvider *string `json:"CloudProvider,omitempty" xml:"CloudProvider,omitempty"`
-	// The ID of the database cluster.
+	// The IDs of the database clusters. The billing method of the clusters must be subscription. If you call this operation for a pay-as-you-go cluster, the OperationDenied.DBClusterPayType error may be returned. You can first call the TransformDBClusterPayType operation to change the billing method. Usage notes: The billing method of the cluster must be subscription. Calling this operation for a pay-as-you-go cluster returns the OperationDenied.DBClusterPayType error.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,13 @@ type ModifyAutoRenewAttributeRequest struct {
 	//
 	// pc-***************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The auto-renewal period. Valid values:
+	// The auto-renewal duration for the instance. Valid values:
 	//
-	// - When **PeriodUnit*	- is **Month**, the valid values are `[1,2,3,6,12]`.
+	// - If **PeriodUnit*	- is set to **Month**, valid values are `1`, `2`, `3`, `6`, and `12`.
 	//
-	// - When **PeriodUnit*	- is **Year**, the valid values are `[1-3]`.
+	// - If **PeriodUnit*	- is set to **Year**, valid values are `1`, `2`, and `3`.
+	//
+	//
 	//
 	// Default value: **1**.
 	//
@@ -62,11 +64,13 @@ type ModifyAutoRenewAttributeRequest struct {
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The unit of the auto-renewal period. Valid values:
+	// The unit of the renewal duration. Valid values:
 	//
-	// - **Year**
+	// - **Year**: Year.
 	//
-	// - **Month**
+	// - **Month**: Month.
+	//
+	//
 	//
 	// Default value: **Month**.
 	//
@@ -74,7 +78,7 @@ type ModifyAutoRenewAttributeRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID. The ID can be up to 50 characters in length.
+	// The region ID. The value can be up to 50 characters in length.
 	//
 	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2319134.html) operation to query available regions.
 	//
@@ -86,15 +90,15 @@ type ModifyAutoRenewAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The auto-renewal status. Valid values:
 	//
-	// - **AutoRenewal**: Enables auto-renewal.
+	// - **AutoRenewal**: Auto-renewal.
 	//
-	// - **Normal**: Enables manual renewal.
+	// - **Normal**: Manual renewal.
 	//
-	// - **NotRenewal**: Disables renewal.
+	// - **NotRenewal**: No renewal.
 	//
 	// Default value: **AutoRenewal**.
 	//
-	// > When you set this parameter to **NotRenewal**, the system stops sending expiration reminders and sends only a non-renewal notification three days before the expiration date.
+	// > If you set this parameter to **NotRenewal**, the system no longer sends expiration reminders and only sends a non-renewal reminder three days before expiration.
 	//
 	// example:
 	//

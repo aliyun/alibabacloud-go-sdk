@@ -38,13 +38,15 @@ type DescribeEncryptionDBSecretResponseBody struct {
 	EncryptionDBRegion *string `json:"EncryptionDBRegion,omitempty" xml:"EncryptionDBRegion,omitempty"`
 	// Indicates whether encryption is enabled. Valid values:
 	//
-	// Enabled: Encryption is enabled. Disabled: Encryption is disabled.
+	// - Enabled: Encryption is enabled.
+	//
+	// - Disabled: Encryption is disabled.
 	//
 	// example:
 	//
 	// cn-beijing
 	EncryptionDBStatus *string `json:"EncryptionDBStatus,omitempty" xml:"EncryptionDBStatus,omitempty"`
-	// The custom key ID.
+	// The ID of the custom key.
 	//
 	// example:
 	//
@@ -52,9 +54,9 @@ type DescribeEncryptionDBSecretResponseBody struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The status of the key. Valid values:
 	//
-	// - **Enabled**
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//

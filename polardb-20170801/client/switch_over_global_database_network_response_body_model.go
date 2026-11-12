@@ -14,7 +14,7 @@ type iSwitchOverGlobalDatabaseNetworkResponseBody interface {
 }
 
 type SwitchOverGlobalDatabaseNetworkResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

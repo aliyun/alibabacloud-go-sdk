@@ -14,7 +14,7 @@ type iDeleteApplicationResponseBody interface {
 }
 
 type DeleteApplicationResponseBody struct {
-	// The unique identifier for the API request.
+	// The request ID.
 	//
 	// example:
 	//

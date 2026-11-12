@@ -28,7 +28,7 @@ type DescribeSearchParametersResponseBody struct {
 	//
 	// pc-2zex82f527he****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The Search engine version, which is not the MySQL version of the primary cluster.
+	// The Search engine version. This is not the MySQL version of the primary cluster.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeSearchParametersResponseBody struct {
 	//
 	// e3a24663-eee5-4009-b635-2e9e8d052e74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The visible parameters and their modification statuses.
+	// The visible parameters and their modification status.
 	RunningParameters *DescribeSearchParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -148,7 +148,7 @@ func (s *DescribeSearchParametersResponseBodyRunningParameters) Validate() error
 }
 
 type DescribeSearchParametersResponseBodyRunningParametersParameter struct {
-	// The value rule of the template, which can be a numeric range, an enumeration, or a regular expression. This rule must be interpreted in combination with the DataType field.
+	// The value validation rule of the template. The rule can be a numeric range, an enumeration, or a regular expression, and must be interpreted in combination with the data type.
 	//
 	// example:
 	//
@@ -160,25 +160,25 @@ type DescribeSearchParametersResponseBodyRunningParametersParameter struct {
 	//
 	// BOOLEAN
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The default value of the current active template, which is independent of the value modified by the user.
+	// The default value of the current active template. This value is independent of the value modified by the user.
 	//
 	// example:
 	//
 	// false
 	DefaultParameterValue *string `json:"DefaultParameterValue,omitempty" xml:"DefaultParameterValue,omitempty"`
-	// The divisibility factor. If the value is not zero, the numeric value parsed based on the templatetype must be a multiple of this factor.
+	// The divisibility factor. If the value is not zero, the numeric value parsed based on the template type must be a multiple of this factor.
 	//
 	// example:
 	//
 	// 0
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// Specifies whether a restart is required for the modification to take effect. The value is true for static parameters and false for dynamic parameters.
+	// Specifies whether a restart is required for the parameter to take effect. The value is true for static parameters and false for dynamic parameters.
 	//
 	// example:
 	//
 	// false
 	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
-	// Specifies whether the user is allowed to modify the parameter.
+	// Specifies whether the parameter is modifiable.
 	//
 	// example:
 	//

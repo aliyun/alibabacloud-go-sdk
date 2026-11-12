@@ -18,7 +18,7 @@ type iDescribePolarClawAgentFileRequest interface {
 }
 
 type DescribePolarClawAgentFileRequest struct {
-	// Agent ID
+	// The PolarClaw agent ID.
 	//
 	// This parameter is required.
 	//

@@ -42,7 +42,7 @@ type ModifyDBNodesParametersRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The IDs of the nodes. To specify multiple node IDs, separate the IDs with a comma (,).
+	// The node IDs. You can specify multiple node IDs separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,11 @@ type ModifyDBNodesParametersRequest struct {
 	//
 	// pi-****************， pi-****************
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	// Specifies whether to apply the parameter modifications and restart the node. Valid values: \\`false\\` (default): Schedules the task. \\`true\\`: Executes the task immediately.
+	// Specifies whether to execute the parameter modification and restart immediately or at a scheduled time. Valid values:
+	//
+	// - false: executes the task at a scheduled time. This is the default value.
+	//
+	// - true: executes the task immediately.
 	//
 	// example:
 	//
@@ -58,25 +62,25 @@ type ModifyDBNodesParametersRequest struct {
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the parameter template.
+	// The parameter template ID.
 	//
 	// example:
 	//
 	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
-	// A JSON string that contains the parameters and their values.
+	// The JSON string of parameters and their values. Only node-level parameters can be modified. You can call the DescribeDBClusterParameters operation and select parameters where IsNodeAvailable is set to 1 and IsModifiable is set to true. To modify cluster-level parameters, call the ModifyDBClusterParameters operation.
 	//
 	// example:
 	//
-	// {"wait_timeout":"86","innodb_old_blocks_time":"10"}
+	// {"loose_imci_optimize_const_join_memory":"ON"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The latest time to start the scheduled task. The time must be in the \\`YYYY-MM-DDThh:mm:ssZ\\` format and in UTC.
+	// The latest time to start the scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-04-28T14:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest time to start the scheduled task. The time must be in the \\`YYYY-MM-DDThh:mm:ssZ\\` format and in UTC.
+	// The earliest time to execute the scheduled kernel version upgrade task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

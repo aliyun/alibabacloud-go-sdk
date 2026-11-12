@@ -28,7 +28,7 @@ type iDescribeAIDBClusterTaskMetricsRequest interface {
 }
 
 type DescribeAIDBClusterTaskMetricsRequest struct {
-	// The cluster ID.
+	// The cluster ID. Usage note: This parameter accepts only the ID of a training AIDB cluster created by calling CreateAIDBClusterTask. MaaS clusters with RunType set to maas are not supported.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeAIDBClusterTaskMetricsRequest struct {
 	//
 	// pm-2zejpr***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+	// The end time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// This parameter is required.
 	//
@@ -52,45 +52,45 @@ type DescribeAIDBClusterTaskMetricsRequest struct {
 	//
 	// - `eval`
 	//
-	// > The default value is *all*.
+	// > Default value: *all*.
 	//
 	// example:
 	//
 	// all
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The page number of the query result.
+	// The page number of the query results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
-	// The default value is 100.
+	// Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the associated PolarDB instance.
+	// The instance ID of the associated PolarDB.
 	//
 	// example:
 	//
 	// pc-2zejpr***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Specifies whether to sort the results in reverse order. The default value is *false*.
+	// Specifies whether to sort the results in descending order. Default value: *false*.
 	//
 	// example:
 	//
 	// false
 	Reverse *bool `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
-	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+	// The start time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// This parameter is required.
 	//

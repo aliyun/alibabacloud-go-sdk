@@ -31,6 +31,10 @@ type DescribeApplicationAvailableVersionResponseBody struct {
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of versions.
+	//
+	// example:
+	//
+	// []
 	Versions []*DescribeApplicationAvailableVersionResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -83,7 +87,7 @@ func (s *DescribeApplicationAvailableVersionResponseBody) Validate() error {
 }
 
 type DescribeApplicationAvailableVersionResponseBodyVersions struct {
-	// The release date.
+	// The release date in RFC 3339 UTC format.
 	//
 	// example:
 	//

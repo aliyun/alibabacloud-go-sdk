@@ -14,7 +14,7 @@ type iModifyPolarFsMappingAuthResponseBody interface {
 }
 
 type ModifyPolarFsMappingAuthResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

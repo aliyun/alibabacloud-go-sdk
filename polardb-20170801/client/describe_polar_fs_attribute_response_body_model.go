@@ -112,7 +112,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The accelerated storage space. Unit: GB.
+	// The acceleration space. Unit: GB.
 	//
 	// example:
 	//
@@ -120,9 +120,9 @@ type DescribePolarFsAttributeResponseBody struct {
 	AcceleratedStorageSpace *float64 `json:"AcceleratedStorageSpace,omitempty" xml:"AcceleratedStorageSpace,omitempty"`
 	// Indicates whether the acceleration cache is enabled. Valid values:
 	//
-	// - **ON**: Enabled.
+	// - **ON**: enabled
 	//
-	// - **OFF**: Disabled.
+	// - **OFF**: disabled
 	//
 	// example:
 	//
@@ -160,17 +160,17 @@ type DescribePolarFsAttributeResponseBody struct {
 	BucketId *string `json:"BucketId,omitempty" xml:"BucketId,omitempty"`
 	// The Polarlakebase edition. Valid values:
 	//
-	// - **high_performance**: High-performance Edition.
+	// - **high_performance**: high-performance edition
 	//
-	// - **basic**: Basic Edition.
+	// - **basic**: basic edition
 	//
-	// - **cold**: Cold Storage Edition.
+	// - **cold**: cold storage edition
 	//
 	// example:
 	//
 	// high_performance
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The client download URL.
+	// The download URL of the client.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	ClientDownloadPath *string `json:"ClientDownloadPath,omitempty" xml:"ClientDownloadPath,omitempty"`
 	// The creation time.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// xxxxxx-%d.oss-cn-beijing-internal.aliyuncs.com
 	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
-	// The list of custom storage paths.
+	// The custom storage path list.
 	CustomBucketPathList []*DescribePolarFsAttributeResponseBodyCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
 	// The endpoint ID.
 	//
@@ -198,7 +198,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pe-zo1z5qw5nb39s699n
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The database ecosystem type. Valid values:
+	// The database engine type. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -208,13 +208,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The list of endpoints, including endpoint information such as NAS and S3 Gateway.
+	// The endpoint list, including endpoint information such as NAS and S3 gateway.
 	EndpointItems []*DescribePolarFsAttributeResponseBodyEndpointItems `json:"EndpointItems,omitempty" xml:"EndpointItems,omitempty" type:"Repeated"`
 	// The expiration time of the cluster.
 	//
-	// > This parameter is returned only for subscription clusters whose billing method is **Prepaid**. For pay-as-you-go clusters whose billing method is **Postpaid**, an empty value is returned.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired.
 	//
-	// > This parameter is returned only for subscription clusters whose billing method is **Prepaid**.
+	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription).
 	//
 	// example:
 	//
@@ -236,11 +236,11 @@ type DescribePolarFsAttributeResponseBody struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - **Unlock**: Unlocked.
+	// - **Unlock**: The instance is not locked.
 	//
-	// - **ManualLock**: Manually locked.
+	// - **ManualLock**: The instance is manually locked.
 	//
-	// - **LockByExpiration**: Automatically locked due to expiration.
+	// - **LockByExpiration**: The cluster is automatically locked due to expiration.
 	//
 	// example:
 	//
@@ -252,25 +252,25 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pe-cz9inwqec7ifd98c3
 	MaxscaleEndpointId *string `json:"MaxscaleEndpointId,omitempty" xml:"MaxscaleEndpointId,omitempty"`
-	// The metadata service cluster endpoint.
+	// The cluster endpoint of the metadata service.
 	//
 	// example:
 	//
 	// pc-x67w12d2d5t13mt88.pg.polardb.rds.aliyuncs.com
 	MetaConnString *string `json:"MetaConnString,omitempty" xml:"MetaConnString,omitempty"`
-	// The metadata instance name.
+	// The name of the metadata instance.
 	//
 	// example:
 	//
 	// pc-xxxxxxxxxxxxxxxxx
 	MetaInstanceName *string `json:"MetaInstanceName,omitempty" xml:"MetaInstanceName,omitempty"`
-	// The metadata proxy service cluster endpoint.
+	// The cluster endpoint of the metadata proxy service.
 	//
 	// example:
 	//
 	// pc-y3610mp168p3bb740.rwlb.rds.aliyuncs.com
 	MetaMxsConnString *string `json:"MetaMxsConnString,omitempty" xml:"MetaMxsConnString,omitempty"`
-	// The metadata address for FUSE mounting (encrypted).
+	// The metadata endpoint for FUSE mounting (encrypted).
 	//
 	// example:
 	//
@@ -286,9 +286,9 @@ type DescribePolarFsAttributeResponseBody struct {
 	MountInfo *DescribePolarFsAttributeResponseBodyMountInfo `json:"MountInfo,omitempty" xml:"MountInfo,omitempty" type:"Struct"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: Pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: Subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
@@ -306,7 +306,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The status of the Polarlakebase instance.
+	// The Polarlakebase instance status.
 	//
 	// example:
 	//
@@ -314,9 +314,9 @@ type DescribePolarFsAttributeResponseBody struct {
 	PolarFsStatus *string `json:"PolarFsStatus,omitempty" xml:"PolarFsStatus,omitempty"`
 	// The instance version. Valid values:
 	//
-	// - **PolarFS 2.0**: 2.0.
+	// - **PolarFS 2.0**: 2.0
 	//
-	// - **PolarFS 1.0**: 1.0.
+	// - **PolarFS 1.0**: 1.0
 	//
 	// example:
 	//
@@ -340,7 +340,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// pc-2zejpr41d9xk3uk34
 	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	// The ID of the associated Polarlakebase instance.
+	// The associated Polarlakebase instance ID.
 	//
 	// example:
 	//
@@ -358,7 +358,7 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// rg-xxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The managed security group ID.
+	// The ID of the managed security group.
 	//
 	// example:
 	//
@@ -370,15 +370,15 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 1000
 	StorageSpace *float64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type. Valid values for High-performance Edition:
+	// The storage type of the high-performance edition. Valid values:
 	//
 	// 	- **ESSDPL1**
 	//
 	// 	- **ESSDPL0**
 	//
-	// Valid values for Basic Edition:
+	// The storage type of the basic edition. Valid values:
 	//
-	// 	- **city_redundancy**: Zone-redundant storage.
+	// 	- **city_redundancy**: zone-redundant storage
 	//
 	// example:
 	//
@@ -390,13 +390,13 @@ type DescribePolarFsAttributeResponseBody struct {
 	//
 	// 3012558848
 	StorageUsed *float64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
-	// The default user account name for S3 Gateway.
+	// The default user account name for the S3 gateway.
 	//
 	// example:
 	//
 	// lakebase_acc
 	UserDefaultAccName *string `json:"UserDefaultAccName,omitempty" xml:"UserDefaultAccName,omitempty"`
-	// The default user account secret key for S3 Gateway (encrypted ciphertext).
+	// The default user account secret key for the S3 gateway (encrypted ciphertext).
 	//
 	// example:
 	//
@@ -926,7 +926,7 @@ func (s *DescribePolarFsAttributeResponseBodyCustomBucketPathList) Validate() er
 }
 
 type DescribePolarFsAttributeResponseBodyEndpointItems struct {
-	// The list of addresses.
+	// The address list.
 	AddressItems []*DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
 	// The endpoint ID.
 	//
@@ -934,7 +934,7 @@ type DescribePolarFsAttributeResponseBodyEndpointItems struct {
 	//
 	// ep-xxxxxxxxx
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The endpoint type, such as NAS or S3 Gateway.
+	// The endpoint type. Valid values: NAS, S3 gateway, etc.
 	//
 	// example:
 	//
@@ -991,7 +991,7 @@ func (s *DescribePolarFsAttributeResponseBodyEndpointItems) Validate() error {
 }
 
 type DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems struct {
-	// The protocol connection address.
+	// The protocol endpoint.
 	//
 	// example:
 	//
@@ -1005,11 +1005,11 @@ type DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems struct {
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the connection string. Valid values:
 	//
-	// 	- **Public**: Public network address.
+	// 	- **Public**: public endpoint
 	//
-	// 	- **Private**: Private network address.
+	// 	- **Private**: private endpoint
 	//
-	// 	- **Inner**: Private network address (classic network).
+	// 	- **Inner**: private endpoint (classic network)
 	//
 	// example:
 	//
@@ -1108,7 +1108,7 @@ type DescribePolarFsAttributeResponseBodyMountInfo struct {
 	//
 	// TCP://**.**.**.**:3000,TCP://**.**.**.**:3000,TCP://**.**.**.**:3000
 	PolarDbProxy *string `json:"PolarDbProxy,omitempty" xml:"PolarDbProxy,omitempty"`
-	// The file system name.
+	// The name of the file system.
 	//
 	// example:
 	//

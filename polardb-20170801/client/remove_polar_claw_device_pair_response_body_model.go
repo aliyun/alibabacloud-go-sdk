@@ -28,7 +28,7 @@ type RemovePolarClawDevicePairResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The returned status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type RemovePolarClawDevicePairResponseBody struct {
 	//
 	// device-mac-789
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

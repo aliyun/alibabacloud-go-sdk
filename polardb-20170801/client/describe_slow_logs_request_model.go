@@ -48,7 +48,7 @@ type DescribeSlowLogsRequest struct {
 	//
 	// PolarDB_MySQL
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end date of the query. The end date must be later than or equal to the start date. The interval between the start date and the end date cannot exceed 31 days. Format: yyyy-MM-ddZ (UTC).
+	// The end date of the query. The end date cannot be earlier than the start date, and the interval between the start date and the end date cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeSlowLogsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type.
+	// The page number. Valid values: any positive integer up to the maximum value of the Integer type.
 	//
 	// Default value: 1.
 	//
@@ -82,7 +82,7 @@ type DescribeSlowLogsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The start date of the query. The interval between the start date and the current date cannot exceed 31 days. Format: yyyy-MM-ddZ (UTC).
+	// The start date of the query. The interval between the start date and the current date cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

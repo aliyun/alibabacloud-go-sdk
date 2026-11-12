@@ -34,7 +34,7 @@ type DescribeDBClusterAttributeRequest struct {
 	//
 	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to retrieve AI-related node information.
+	// Specifies whether to retrieve information about AI-related nodes.
 	//
 	// example:
 	//

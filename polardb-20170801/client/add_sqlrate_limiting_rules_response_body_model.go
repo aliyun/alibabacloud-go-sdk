@@ -18,9 +18,9 @@ type iAddSQLRateLimitingRulesResponseBody interface {
 }
 
 type AddSQLRateLimitingRulesResponseBody struct {
-	// The response message.
+	// The message returned by the request.
 	//
-	// > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message is returned, such as an error code.
+	// > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type AddSQLRateLimitingRulesResponseBody struct {
 	//
 	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// The request result. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

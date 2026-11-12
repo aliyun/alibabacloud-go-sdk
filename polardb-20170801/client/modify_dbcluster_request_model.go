@@ -60,7 +60,7 @@ type ModifyDBClusterRequest struct {
 	ConnectionResourceQuota *int64 `json:"ConnectionResourceQuota,omitempty" xml:"ConnectionResourceQuota,omitempty"`
 	// The cluster ID.
 	//
-	// > You can call the DescribeDBClusters operation to query all clusters in the specified region, including cluster IDs.
+	// >You can call the DescribeDBClusters operation to query all clusters in the specified region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type ModifyDBClusterRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The list of drill node instance names.
+	// The list of instance names of the nodes to be drilled.
 	//
-	// > Node dimension drills support only a single node. For zone dimension drills, you can omit this parameter or pass all nodes.
+	// > A node-level drill supports only a single node. For a zone-level drill, you can leave this parameter empty or pass all nodes.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type ModifyDBClusterRequest struct {
 	DBNodeCrashList *string `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty"`
 	// The cross-zone data replication mode of the cluster. Valid values:
 	//
-	// - **AsyncSync**: Asynchronous.
+	// - **AsyncSync**: Asynchronous replication.
 	//
-	// - **SemiSync**: Semi-synchronous.
+	// - **SemiSync**: Semi-synchronous replication.
 	//
 	// example:
 	//
@@ -88,21 +88,21 @@ type ModifyDBClusterRequest struct {
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
 	// The fault injection method. Valid values:
 	//
-	// - 0: Instance fault injection based on `Crash SQL`.
+	// - 0: instance fault injection based on `Crash SQL`.
 	//
 	// example:
 	//
-	// 0
+	// CrashSQLInjection
 	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
-	// The fault drill dimension for the cluster. Valid values:
+	// The fault drill dimension of the cluster. Valid values:
 	//
-	// - `0` or `FaultInjection`: Primary zone dimension fault drill.
+	// - `0` or `FaultInjection`: fault drill at the primary zone level.
 	//
-	// - `1`: Node dimension fault drill.
+	// - `1`: fault drill at the node level.
 	//
-	// > - In the **primary zone dimension fault drill*	- scenario, all compute nodes in the primary zone become unavailable, and the disaster recovery switchover in this scenario is lossy.
+	// > - In the **fault drill at the primary zone level*	- scenario, all compute nodes in the primary zone become unavailable, and the disaster recovery switchover in this scenario is lossy.
 	//
-	// > - In the **node dimension fault drill*	- scenario, only a single compute node can be drilled. Pass the desired compute node name through `DBNodeCrashList`.
+	// > - In the **fault drill at the node level*	- scenario, only a single compute node can be drilled. You can pass the desired compute node name through `DBNodeCrashList`.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type ModifyDBClusterRequest struct {
 	FaultSimulateMode *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
 	// The automatic IMCI-based query acceleration feature. Valid values:
 	//
-	// - `ON`: Enabled.
+	// - `ON`: Enables the feature.
 	//
-	// - `OFF`: Disabled.
+	// - `OFF`: Disables the feature.
 	//
-	// > - Only PolarDB for MySQL clusters are supported.
+	// > - This feature is supported only by PolarDB for MySQL clusters.
 	//
-	// > - For cluster version limits, refer to [Automatic IMCI-based query acceleration (AutoIndex)](https://help.aliyun.com/document_detail/2854119.html).
+	// > - For cluster version limits, refer to [Automatic seamless acceleration (AutoIndex)](https://help.aliyun.com/document_detail/2854119.html).
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type ModifyDBClusterRequest struct {
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	// The upper limit for automatic storage scaling of a Standard Edition cluster. Unit: GB.
 	//
-	// > The maximum value is 32000.
+	// > The maximum value is 32,000.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ModifyDBClusterRequest struct {
 	//
 	// ]`.
 	//
-	// > You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to view the details of the database and table names that support restoration, and fill the supported database and table information into the corresponding positions in the preceding example.
+	// > You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to query the details of the database and table names that support restoration, and fill the supported database and table information into the corresponding positions in the preceding example.
 	//
 	// example:
 	//

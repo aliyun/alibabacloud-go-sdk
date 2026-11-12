@@ -13,6 +13,8 @@ type iDescribeDBClusterAccessWhitelistResponseBody interface {
 	GetDBClusterSecurityGroups() *DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups
 	SetItems(v *DescribeDBClusterAccessWhitelistResponseBodyItems) *DescribeDBClusterAccessWhitelistResponseBody
 	GetItems() *DescribeDBClusterAccessWhitelistResponseBodyItems
+	SetProjectItems(v *DescribeDBClusterAccessWhitelistResponseBodyProjectItems) *DescribeDBClusterAccessWhitelistResponseBody
+	GetProjectItems() *DescribeDBClusterAccessWhitelistResponseBodyProjectItems
 	SetRequestId(v string) *DescribeDBClusterAccessWhitelistResponseBody
 	GetRequestId() *string
 }
@@ -20,6 +22,24 @@ type iDescribeDBClusterAccessWhitelistResponseBody interface {
 type DescribeDBClusterAccessWhitelistResponseBody struct {
 	DBClusterSecurityGroups *DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups `json:"DBClusterSecurityGroups,omitempty" xml:"DBClusterSecurityGroups,omitempty" type:"Struct"`
 	Items                   *DescribeDBClusterAccessWhitelistResponseBodyItems                   `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// [
+	//
+	//     {
+	//
+	//       "ProjectId": "proj-xxxxxxxxxxxxxxxxxxxxxxxxxx",
+	//
+	//       "SecurityIps": "192.168.1.1,192.168.2.0/24",
+	//
+	//       "DefaultOpen": false,
+	//
+	//       "Revision": 3
+	//
+	//     }
+	//
+	//   ]
+	ProjectItems *DescribeDBClusterAccessWhitelistResponseBodyProjectItems `json:"ProjectItems,omitempty" xml:"ProjectItems,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -44,6 +64,10 @@ func (s *DescribeDBClusterAccessWhitelistResponseBody) GetItems() *DescribeDBClu
 	return s.Items
 }
 
+func (s *DescribeDBClusterAccessWhitelistResponseBody) GetProjectItems() *DescribeDBClusterAccessWhitelistResponseBodyProjectItems {
+	return s.ProjectItems
+}
+
 func (s *DescribeDBClusterAccessWhitelistResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -55,6 +79,11 @@ func (s *DescribeDBClusterAccessWhitelistResponseBody) SetDBClusterSecurityGroup
 
 func (s *DescribeDBClusterAccessWhitelistResponseBody) SetItems(v *DescribeDBClusterAccessWhitelistResponseBodyItems) *DescribeDBClusterAccessWhitelistResponseBody {
 	s.Items = v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBody) SetProjectItems(v *DescribeDBClusterAccessWhitelistResponseBodyProjectItems) *DescribeDBClusterAccessWhitelistResponseBody {
+	s.ProjectItems = v
 	return s
 }
 
@@ -71,6 +100,11 @@ func (s *DescribeDBClusterAccessWhitelistResponseBody) Validate() error {
 	}
 	if s.Items != nil {
 		if err := s.Items.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ProjectItems != nil {
+		if err := s.ProjectItems.Validate(); err != nil {
 			return err
 		}
 	}
@@ -222,5 +256,94 @@ func (s *DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray) SetS
 }
 
 func (s *DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeDBClusterAccessWhitelistResponseBodyProjectItems struct {
+	DBClusterProjectIPArray []*DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray `json:"DBClusterProjectIPArray,omitempty" xml:"DBClusterProjectIPArray,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBClusterAccessWhitelistResponseBodyProjectItems) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBClusterAccessWhitelistResponseBodyProjectItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItems) GetDBClusterProjectIPArray() []*DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray {
+	return s.DBClusterProjectIPArray
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItems) SetDBClusterProjectIPArray(v []*DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) *DescribeDBClusterAccessWhitelistResponseBodyProjectItems {
+	s.DBClusterProjectIPArray = v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItems) Validate() error {
+	if s.DBClusterProjectIPArray != nil {
+		for _, item := range s.DBClusterProjectIPArray {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray struct {
+	DefaultOpen *bool   `json:"DefaultOpen,omitempty" xml:"DefaultOpen,omitempty"`
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Revision    *int64  `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
+}
+
+func (s DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) GetDefaultOpen() *bool {
+	return s.DefaultOpen
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) GetProjectId() *string {
+	return s.ProjectId
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) GetRevision() *int64 {
+	return s.Revision
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) GetSecurityIps() *string {
+	return s.SecurityIps
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) SetDefaultOpen(v bool) *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray {
+	s.DefaultOpen = &v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) SetProjectId(v string) *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) SetRevision(v int64) *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray {
+	s.Revision = &v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) SetSecurityIps(v string) *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray {
+	s.SecurityIps = &v
+	return s
+}
+
+func (s *DescribeDBClusterAccessWhitelistResponseBodyProjectItemsDBClusterProjectIPArray) Validate() error {
 	return dara.Validate(s)
 }

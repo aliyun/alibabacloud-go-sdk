@@ -92,9 +92,9 @@ type CreateAIDBClusterRequest struct {
 	AckAdmin *string `json:"AckAdmin,omitempty" xml:"AckAdmin,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: enables auto-renewal.
+	// - **true**: enables auto-renewal
 	//
-	// - **false**: disables auto-renewal.
+	// - **false**: disables auto-renewal
 	//
 	// Default value: **false**.
 	//
@@ -104,11 +104,11 @@ type CreateAIDBClusterRequest struct {
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to automatically use coupons. Valid values:
+	// Specifies whether to automatically apply coupons. Valid values:
 	//
-	// 	- true (default): uses coupons.
+	// 	- **true*	- (default): applies coupons
 	//
-	// 	- false: does not use coupons.
+	// 	- **false**: does not apply coupons
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// ON
 	CreatePublicEndpoint *string `json:"CreatePublicEndpoint,omitempty" xml:"CreatePublicEndpoint,omitempty"`
-	// The description of the cluster. Fuzzy match is supported.
+	// The cluster description. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// pc-******************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The node specifications.
+	// The node specifications. Call DescribeAvailableModels to query the specifications supported by the target ModelName, and select a DBNodeClass that is compatible with the model, such as polar.pg.g4.6xlarge.gu4.
 	//
 	// example:
 	//
@@ -162,25 +162,33 @@ type CreateAIDBClusterRequest struct {
 	//
 	// sglang
 	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
-	// The ID of the ACK cluster.
+	// The ACK cluster ID.
 	//
 	// example:
 	//
-	// xxxxxxxxxxxxxxxxxxxxxxx
+	// c1234567890abcdef
 	KubeClusterId *string `json:"KubeClusterId,omitempty" xml:"KubeClusterId,omitempty"`
 	// The Kubernetes configuration.
 	//
 	// example:
 	//
-	// xxx
+	// apiVersion: v1
+	//
+	// clusters: []
+	//
+	// contexts: []
+	//
+	// kind: Config
+	//
+	// users: []
 	KubeConfig *string `json:"KubeConfig,omitempty" xml:"KubeConfig,omitempty"`
-	// The management mode of the Kubernetes cluster.
+	// The Kubernetes cluster management mode.
 	//
 	// example:
 	//
 	// self_k8s
 	KubeManagement *string `json:"KubeManagement,omitempty" xml:"KubeManagement,omitempty"`
-	// aideploy
+	// The deployment type.
 	//
 	// example:
 	//
@@ -190,7 +198,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// {"namespace":"default"}
 	KubernetesConfig *string `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty"`
 	// The management mode.
 	//
@@ -198,7 +206,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// ack
 	ManagementMode *string `json:"ManagementMode,omitempty" xml:"ManagementMode,omitempty"`
-	// The name of the model.
+	// The model name.
 	//
 	// example:
 	//
@@ -216,13 +224,13 @@ type CreateAIDBClusterRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// Example@123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// This parameter is required.
 	//
@@ -230,11 +238,11 @@ type CreateAIDBClusterRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// This parameter is required when the **PayType*	- parameter is set to **Prepaid**. Specifies the billing cycle of the subscription cluster. Valid values:
+	// If the billing method is **Prepaid**, this parameter is required. Specifies the billing cycle of the subscription cluster. Valid values:
 	//
-	// - **Year**: yearly subscription.
+	// - **Year**: yearly. The unit is year when you select the subscription billing method.
 	//
-	// - **Month**: monthly subscription.
+	// - **Month**: monthly. The unit is month when you select the subscription billing method.
 	//
 	// example:
 	//
@@ -256,7 +264,7 @@ type CreateAIDBClusterRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security group.
+	// The security group ID. This parameter is actually required. If it is not provided, the service returns MethodArgumentNotValidException (400). You can call the ECS DescribeSecurityGroups operation to obtain the security group ID.
 	//
 	// example:
 	//
@@ -275,18 +283,22 @@ type CreateAIDBClusterRequest struct {
 	// essdpl0
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The pay-as-you-go time ranges.
+	//
+	// example:
+	//
+	// []
 	TimeSlices []*CreateAIDBClusterRequestTimeSlices `json:"TimeSlices,omitempty" xml:"TimeSlices,omitempty" type:"Repeated"`
-	// The subscription duration. This parameter is required when the **PayType*	- parameter is set to **Prepaid**.
+	// The subscription duration. This parameter is required when the billing method is **Prepaid**.
 	//
-	// - If the **Period*	- parameter is set to **Month**, the value of **UsedTime*	- must be an integer in the range of `[1-9]`.
+	// - If **Period*	- is set to **Month**, the value of **UsedTime*	- is an integer ranging from `1` to `9`.
 	//
-	// - If the **Period*	- parameter is set to **Year**, the value of **UsedTime*	- must be an integer in the range of `[1-3]`.
+	// - If **Period*	- is set to **Year**, the value of **UsedTime*	- is an integer ranging from `1` to `3`.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -294,7 +306,7 @@ type CreateAIDBClusterRequest struct {
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// This parameter is required.
 	//
@@ -662,7 +674,7 @@ type CreateAIDBClusterRequestTimeSlices struct {
 	//
 	// 1758729600
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
+	// The end time. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
 	//
 	// example:
 	//

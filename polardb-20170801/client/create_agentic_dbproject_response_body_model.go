@@ -36,7 +36,9 @@ type CreateAgenticDBProjectResponseBody struct {
 	//
 	// pc-g0lsayq8c5qe
 	BranchComputeClusterId *string `json:"BranchComputeClusterId,omitempty" xml:"BranchComputeClusterId,omitempty"`
-	// The time when the project was created. The time is displayed in ISO 8601 format in UTC (YYYY-MM-DDTHH:mm:ssZ).
+	// The time when the project was created.
+	//
+	// The time follows the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -54,7 +56,7 @@ type CreateAgenticDBProjectResponseBody struct {
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
-	// The retention period for recent records of the project. This parameter may be empty for older projects. To query the current effective value, call DescribeAgenticDBProjectHistoryRetention.
+	// The retention period of historical data, in seconds.
 	//
 	// example:
 	//

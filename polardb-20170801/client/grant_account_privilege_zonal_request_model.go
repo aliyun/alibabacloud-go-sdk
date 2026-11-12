@@ -30,7 +30,7 @@ type iGrantAccountPrivilegeZonalRequest interface {
 }
 
 type GrantAccountPrivilegeZonalRequest struct {
-	// The account name.
+	// The name of the account.
 	//
 	// This parameter is required.
 	//
@@ -38,17 +38,17 @@ type GrantAccountPrivilegeZonalRequest struct {
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The account permissions. Valid values:
+	// The privileges of the account. Valid values:
 	//
-	// - ReadWrite: Read and write permissions.
+	// - ReadWrite: read and write
 	//
-	// - ReadOnly: Read-only permissions.
+	// - ReadOnly: read-only
 	//
-	// - DMLOnly: DML-only permissions.
+	// - DMLOnly: DML only
 	//
-	// - DDLOnly: DDL-only permissions.
+	// - DDLOnly: DDL only
 	//
-	// - ReadIndex: Read-only and index permissions.
+	// - ReadIndex: read-only and index
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type GrantAccountPrivilegeZonalRequest struct {
 	//
 	// ReadWrite,ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// A client-generated token that ensures the idempotence of the request. Make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token is case-sensitive and up to 64 ASCII characters in length.
 	//
 	// example:
 	//
 	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The cluster ID.
+	// The ID of the PolarDB on ENS cluster. This operation applies only to edge clusters. For standard PolarDB clusters, use GrantAccountPrivilege. You can create an edge cluster by calling CreateDBCluster and setting CloudProvider to ENS and specifying EnsRegionId.
 	//
 	// This parameter is required.
 	//
@@ -70,7 +70,7 @@ type GrantAccountPrivilegeZonalRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database for which to grant permissions. To grant permissions for multiple databases, separate the database names with a comma (,).
+	// The name of the database to which privileges are granted. You can grant privileges to one or more databases at a time. Separate multiple database names with commas (,).
 	//
 	// This parameter is required.
 	//

@@ -18,25 +18,25 @@ type iModifyDBNodeHotReplicaModeResponseBody interface {
 }
 
 type ModifyDBNodeHotReplicaModeResponseBody struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters in the target region, including the cluster ID.
 	//
 	// example:
 	//
-	// pc-2vc327c2a14a3u858
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The ID of the generated order.
 	//
 	// example:
 	//
 	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 9F4DDFBF-205C-5A3E-8DC2-C60F3E3FDC38
+	// 9F4DDFBF-205C-5A3E-8DC2-C6**********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

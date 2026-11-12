@@ -46,7 +46,7 @@ type ListPolarClawDevicePairsResponseBody struct {
 	Paired []*ListPolarClawDevicePairsResponseBodyPaired `json:"Paired,omitempty" xml:"Paired,omitempty" type:"Repeated"`
 	// The list of pending pairing requests.
 	Pending []*ListPolarClawDevicePairsResponseBodyPending `json:"Pending,omitempty" xml:"Pending,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ func (s *ListPolarClawDevicePairsResponseBody) Validate() error {
 }
 
 type ListPolarClawDevicePairsResponseBodyPaired struct {
-	// The client identifier.
+	// The client ID.
 	//
 	// example:
 	//
@@ -300,7 +300,7 @@ func (s *ListPolarClawDevicePairsResponseBodyPaired) Validate() error {
 }
 
 type ListPolarClawDevicePairsResponseBodyPending struct {
-	// The client identifier.
+	// The client ID.
 	//
 	// example:
 	//

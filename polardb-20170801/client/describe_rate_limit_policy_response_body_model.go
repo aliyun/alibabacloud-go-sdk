@@ -24,21 +24,21 @@ type iDescribeRateLimitPolicyResponseBody interface {
 }
 
 type DescribeRateLimitPolicyResponseBody struct {
-	// An array of rate limit policy objects.
+	// The list of throttling policies.
 	Items []*DescribeRateLimitPolicyResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The returned page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeRateLimitPolicyResponseBody struct {
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matching entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -140,19 +140,19 @@ type DescribeRateLimitPolicyResponseBodyItems struct {
 	//
 	// 2025-12-01T17:52:05+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2026-01-19T16:47:25+08:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// example:
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The ID of the rate limit policy.
+	// The ID of the throttling policy.
 	//
 	// example:
 	//
@@ -164,39 +164,40 @@ type DescribeRateLimitPolicyResponseBodyItems struct {
 	//
 	// RateLimit
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The maximum requests per minute (RPM).
+	// The limit on the number of requests per minute.
 	//
 	// example:
 	//
 	// 10
 	RateLimitRpm *string `json:"RateLimitRpm,omitempty" xml:"RateLimitRpm,omitempty"`
-	// The maximum tokens per minute (TPM).
+	// The limit on the number of tokens per minute.
 	//
 	// example:
 	//
 	// 10
 	RateLimitTpm *string `json:"RateLimitTpm,omitempty" xml:"RateLimitTpm,omitempty"`
-	// The ID of the object within the policy\\"s scope, such as a consumer group or a consumer.
+	// The ID of the throttling dimension, which is the consumer group ID or consumer ID.
 	//
 	// example:
 	//
 	// cg-xxxxxxx
 	ScopeRefId *string `json:"ScopeRefId,omitempty" xml:"ScopeRefId,omitempty"`
-	// The scope of the policy. Valid values:
+	// The throttling dimension. Valid values:
 	//
-	// - **ConsumerGroup**: The policy applies to a consumer group.
+	// - **ConsumerGroup**: consumer group
 	//
-	// - **Consumer**: The policy applies to a specific consumer.
+	// - **Consumer**: consumer
 	//
 	// example:
 	//
 	// ConsumerGroup
 	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
-	// The status of the policy. Valid values:
+	// The status of the throttling policy. Valid values:
 	//
-	// - **Enabled**: The policy is enabled.
 	//
-	// - **Disabled**: The policy is disabled.
+	// - **Enabled**: enabled
+	//
+	// - **Disabled**: disabled
 	//
 	// example:
 	//

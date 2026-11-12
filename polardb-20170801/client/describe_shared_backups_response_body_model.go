@@ -22,7 +22,7 @@ type iDescribeSharedBackupsResponseBody interface {
 }
 
 type DescribeSharedBackupsResponseBody struct {
-	// A list of shared backup sets.
+	// The list of shared backup sets.
 	Items []*DescribeSharedBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -42,7 +42,7 @@ type DescribeSharedBackupsResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total record count.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeSharedBackupsResponseBody) Validate() error {
 }
 
 type DescribeSharedBackupsResponseBodyItems struct {
-	// The end time of the backup, in UTC.
+	// The end time of the backup. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeSharedBackupsResponseBodyItems struct {
 	//
 	// 111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Only snapshot backup is supported. The value is fixed to **Snapshot**.
+	// The data backup method. Only snapshot backups are supported. The value is fixed as **Snapshot**.
 	//
 	// example:
 	//
@@ -137,21 +137,21 @@ type DescribeSharedBackupsResponseBodyItems struct {
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// - **Automated**: automated backup
+	// 	- **Automated**: automatic backup
 	//
-	// - **Manual**: manual backup
+	// 	- **Manual**: manual backup
 	//
 	// example:
 	//
 	// Manual
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	// The size of the backup set, in bytes.
+	// The size of the backup file. Unit: bytes.
 	//
 	// example:
 	//
 	// 4639948800
 	BackupSetSize *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
-	// The start time of the backup, in UTC.
+	// The start time of the backup. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -159,31 +159,31 @@ type DescribeSharedBackupsResponseBodyItems struct {
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The backup status. Valid values:
 	//
-	// - **Success**: The backup is complete.
+	// 	- **Success**: The backup is completed.
 	//
-	// - **Failed**: The backup failed.
+	// 	- **Failed**: The backup failed.
 	//
 	// example:
 	//
 	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The backup type. Only full backups are supported. The value is fixed to **FullBackup**.
+	// The backup type. Only full backups are supported. The value is fixed as **FullBackup**.
 	//
 	// example:
 	//
 	// FullBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The backup level. Valid values:
+	// The backup set level. Valid values:
 	//
-	// - **Level-1**: Level-1 backup.
+	// 	- **Level-1**: level-1 backup
 	//
-	// - **Level-2**: Level-2 backup.
+	// 	- **Level-2**: level-2 backup
 	//
 	// example:
 	//
 	// Level-2
 	BackupsLevel *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
-	// The UNIX timestamp of the consistent snapshot, in seconds.
+	// The point in time of the consistent snapshot. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -209,9 +209,9 @@ type DescribeSharedBackupsResponseBodyItems struct {
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// 	- **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: prepaid (subscription)
+	// 	- **Prepaid**: subscription
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type DescribeSharedBackupsResponseBodyItems struct {
 	//
 	// cn-hongzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Serverless type. A value of **AgileServerless*	- indicates a Serverless cluster, while an empty value indicates a standard cluster.
+	// The Serverless type. A value of **AgileServerless*	- indicates that the current cluster is a Serverless cluster. An empty value indicates that the current cluster is one of the common clusters.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type DescribeSharedBackupsResponseBodyItems struct {
 	//
 	// ShareIncoming
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	// The UID of the account that shared the backup set.
+	// The UID of the sharer.
 	//
 	// example:
 	//

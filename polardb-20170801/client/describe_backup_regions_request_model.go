@@ -22,7 +22,7 @@ type iDescribeBackupRegionsRequest interface {
 }
 
 type DescribeBackupRegionsRequest struct {
-	// The cluster ID.
+	// The cluster ID. This parameter is required. If you do not specify this parameter, the API returns the InvalidDBClusterId.NotFound error with an HTTP 400 status code. You can call the DescribeDBClusters operation to obtain a valid cluster ID.
 	//
 	// example:
 	//

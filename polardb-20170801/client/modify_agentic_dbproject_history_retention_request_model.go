@@ -22,7 +22,7 @@ type iModifyAgenticDBProjectHistoryRetentionRequest interface {
 }
 
 type ModifyAgenticDBProjectHistoryRetentionRequest struct {
-	// The ID of the AgenticDB cluster.
+	// The AgenticDB cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ModifyAgenticDBProjectHistoryRetentionRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The default valid range is 3,600 to 2,592,000 seconds (1 hour to 30 days), inclusive, subject to the service configuration. Reducing the retention period may clear historical data. Extending the retention period does not restore cleared data.
+	// The retention period for historical data, in seconds.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifyAgenticDBProjectHistoryRetentionRequest struct {
 	//
 	// 604800
 	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
-	// The ID of the target project.
+	// The project ID.
 	//
 	// This parameter is required.
 	//

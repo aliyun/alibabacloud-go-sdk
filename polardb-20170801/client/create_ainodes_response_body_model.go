@@ -26,9 +26,9 @@ type CreateAINodesResponseBody struct {
 	//
 	// pm-xxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The IDs of the created DB nodes.
+	// The list of created DBNode IDs.
 	DBNodeIds []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The ID of the generated order.
 	//
 	// example:
 	//

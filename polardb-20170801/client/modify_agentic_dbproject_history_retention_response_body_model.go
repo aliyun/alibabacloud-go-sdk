@@ -22,19 +22,19 @@ type iModifyAgenticDBProjectHistoryRetentionResponseBody interface {
 }
 
 type ModifyAgenticDBProjectHistoryRetentionResponseBody struct {
-	// DBClusterId
+	// The database cluster ID.
 	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The current effective history retention period for the project. For the actual recoverable range, query the branch recovery window.
+	// The effective retention period for historical data, in seconds.
 	//
 	// example:
 	//
 	// 604800
 	HistoryRetentionSeconds *int64 `json:"HistoryRetentionSeconds,omitempty" xml:"HistoryRetentionSeconds,omitempty"`
-	// ProjectId
+	// The project ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ModifyAgenticDBProjectHistoryRetentionResponseBody struct {
 	//
 	// req-123
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TenantId
+	// The tenant ID.
 	//
 	// example:
 	//

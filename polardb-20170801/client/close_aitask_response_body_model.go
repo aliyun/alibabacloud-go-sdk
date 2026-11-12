@@ -16,13 +16,13 @@ type iCloseAITaskResponseBody interface {
 }
 
 type CloseAITaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 936C7025-27A5-4CB1-BB31-540E1F0CCA12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// example:
 	//

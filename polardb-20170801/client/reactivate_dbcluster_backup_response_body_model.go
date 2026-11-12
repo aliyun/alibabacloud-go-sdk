@@ -24,13 +24,13 @@ type ReactivateDBClusterBackupResponseBody struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the order.
+	// The ID of the generated order.
 	//
 	// example:
 	//
 	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

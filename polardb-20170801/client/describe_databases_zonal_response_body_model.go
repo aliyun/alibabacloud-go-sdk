@@ -26,13 +26,13 @@ type iDescribeDatabasesZonalResponseBody interface {
 type DescribeDatabasesZonalResponseBody struct {
 	// The details of the databases.
 	Databases []*DescribeDatabasesZonalResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	// The maximum number of entries returned for the current request.
+	// The maximum number of entries to return in this call.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
+	// The query token. Set the value to the NextToken value returned from the previous API call. If no subsequent query is required, do not specify this parameter.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeDatabasesZonalResponseBody struct {
 	//
 	// 7
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeDatabasesZonalResponseBodyDatabases struct {
 	//
 	// > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
 	Accounts []*DescribeDatabasesZonalResponseBodyDatabasesAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The character set.
+	// The name of the character set.
 	//
 	// example:
 	//
@@ -158,29 +158,29 @@ type DescribeDatabasesZonalResponseBodyDatabases struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The status of the database. Valid values:
 	//
-	// - **Creating**
+	// - **Creating**: The database is being created.
 	//
-	// - **Running**
+	// - **Running**: The database is running.
 	//
-	// - **Deleting**
+	// - **Deleting**: The database is being deleted.
 	//
 	// example:
 	//
 	// Running
 	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
-	// The database engine type. Valid values:
+	// The type of the database engine. Valid values:
 	//
-	// - **MySQL**
+	// 	- **MySQL**
 	//
-	// - **Oracle**
+	// 	- **Oracle**
 	//
-	// - **PostgreSQL**
+	// 	- **PostgreSQL**
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the primary node that corresponds to the database in a Multi-master Cluster (Database/Table) edition cluster.
+	// The ID of the primary node that corresponds to the database in a Multi-master Cluster (Database/Table) Edition cluster.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ func (s *DescribeDatabasesZonalResponseBodyDatabases) Validate() error {
 }
 
 type DescribeDatabasesZonalResponseBodyDatabasesAccounts struct {
-	// The account name.
+	// The name of the account.
 	//
 	// > If the cluster is a PolarDB for MySQL cluster, privileged accounts are not included.
 	//
@@ -283,15 +283,15 @@ type DescribeDatabasesZonalResponseBodyDatabasesAccounts struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The permissions of the account. Valid values:
 	//
-	// - **ReadWrite**
+	// 	- **ReadWrite**: read and write
 	//
-	// - **ReadOnly**
+	// 	- **ReadOnly**: read-only
 	//
-	// - **DMLOnly**
+	// 	- **DMLOnly**: DML only
 	//
-	// - **DDLOnly**
+	// 	- **DDLOnly**: DDL only
 	//
-	// - **ReadIndex**
+	// 	- **ReadIndex**: read and index
 	//
 	// example:
 	//
@@ -299,11 +299,11 @@ type DescribeDatabasesZonalResponseBodyDatabasesAccounts struct {
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// The status of the account. Valid values:
 	//
-	// - **Creating**
+	// - **Creating**: The account is being created.
 	//
-	// - **Available**
+	// - **Available**: The account is available.
 	//
-	// - **Deleting**
+	// - **Deleting**: The account is being deleted.
 	//
 	// example:
 	//
@@ -311,11 +311,11 @@ type DescribeDatabasesZonalResponseBodyDatabasesAccounts struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The authorization status. Valid values:
 	//
-	// - **Empowering**: Permissions are being granted.
+	// - **Empowering**: The account is being authorized.
 	//
-	// - **Empowered**: Permissions are granted.
+	// - **Empowered**: The account is authorized.
 	//
-	// - **Removing**: Permissions are being revoked.
+	// - **Removing**: The permissions are being revoked.
 	//
 	// example:
 	//

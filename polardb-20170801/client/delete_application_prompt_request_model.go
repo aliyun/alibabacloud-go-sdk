@@ -16,7 +16,7 @@ type iDeleteApplicationPromptRequest interface {
 }
 
 type DeleteApplicationPromptRequest struct {
-	// The Application ID.
+	// The application ID. The ID must point to an application with mem0 capabilities enabled. You can determine this by checking whether the MemApplicationAttribute returned by DescribeApplicationAttribute is not empty. Applications such as polarclaw, supabase, and polarclawsaas that do not have mem0 enabled do not support prompt operations.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteApplicationPromptRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The Prompt ID.
+	// The prompt ID.
 	//
 	// This parameter is required.
 	//

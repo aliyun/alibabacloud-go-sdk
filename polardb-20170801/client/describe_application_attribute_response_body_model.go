@@ -122,7 +122,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 2025-03-25T09:37:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The PolarDB instance ID on which the application depends.
+	// The instance ID of the PolarDB instance that the application depends on.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The NAT mapping: the list of DNAT mapping entries.
+	// The list of DNAT mapping entries for NAT mapping.
 	DnatMappings []*DescribeApplicationAttributeResponseBodyDnatMappings `json:"DnatMappings,omitempty" xml:"DnatMappings,omitempty" type:"Repeated"`
 	// The list of endpoints for the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
@@ -168,9 +168,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - Unlock: unlocked.
+	// - Unlock: Unlocked.
 	//
-	// - Lock: locked.
+	// - Lock: Locked.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// v2026.3.13-1#20260320
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The NAT gateway ID.
+	// The ID of the NAT gateway.
 	//
 	// example:
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The NAT mapping: the SNAT IP address bound to the vSwitch where the application resides. This refers to a customer-managed SNAT entry that is discovered and returned in real time by the control plane, and is unrelated to the SNAT of the Internet NAT gateway.
+	// The SNAT IP address bound to the vSwitch where the application resides. This address is from a customer-managed SNAT entry, which is discovered and returned in real time by the control plane. It is independent of the SNAT configuration of the Internet NAT gateway.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	PolarClawApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute `json:"PolarClawApplicationAttribute,omitempty" xml:"PolarClawApplicationAttribute,omitempty" type:"Struct"`
 	// The PolarClaw SaaS application attributes.
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
-	// The instance ID of the PolarFS Cold Storage Edition or High-performance Edition.
+	// The instance ID of the PolarFS Archive or High-performance Edition.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// The Serverless type. Valid values:
 	//
-	// - 2: Agile.
+	// - 2: Dynamic.
 	//
 	// - 3: Stable.
 	//
@@ -254,7 +254,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 2
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The SNAT status. Valid values: on, off.
+	// The SNAT status. Valid values: on and off.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// - Maintaining: The application is under maintenance.
 	//
-	// - ClassChanging: The application configuration is being changed.
+	// - ClassChanging: The configurations of the application are being changed.
 	//
 	// - Transing: The application is being migrated.
 	//
@@ -294,7 +294,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage resource description.
+	// The storage resources.
 	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
 	// Indicates whether an upgrade is available.
 	//
@@ -302,13 +302,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	UpgradeAvailable *string `json:"UpgradeAvailable,omitempty" xml:"UpgradeAvailable,omitempty"`
-	// VPC ID
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// VSwitch ID
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -320,13 +320,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 1.0.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The NAT mapping: the customer-managed VPC NAT gateway ID.
+	// The customer-managed VPC NAT gateway ID for NAT mapping.
 	//
 	// example:
 	//
 	// ngw-xxx
 	VpcNatGatewayId *string `json:"VpcNatGatewayId,omitempty" xml:"VpcNatGatewayId,omitempty"`
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//
@@ -773,7 +773,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The description of the application subcomponent specifications.
+	// The description of the specifications for the application subcomponent.
 	//
 	// example:
 	//
@@ -1181,7 +1181,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsTopology) Validate() 
 }
 
 type DescribeApplicationAttributeResponseBodyDnatMappings struct {
-	// The access address in the NatIp:FrontPort format, which can be directly used on the office network.
+	// The access address in the NatIp:FrontPort format, which can be directly used in the office network.
 	//
 	// example:
 	//
@@ -1434,13 +1434,13 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// qwen3-max
 	LlmModelName *string `json:"LlmModelName,omitempty" xml:"LlmModelName,omitempty"`
-	// The currently active memory type.
+	// The active memory type.
 	//
 	// example:
 	//
 	// MULTIMODAL_TEXT
 	MemoryType *string `json:"MemoryType,omitempty" xml:"MemoryType,omitempty"`
-	// Indicates whether multimodal capabilities are currently enabled.
+	// Indicates whether multimodal capabilities are enabled.
 	//
 	// example:
 	//
@@ -1452,7 +1452,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The name of the Reranker model.
+	// The name of the reranker model.
 	//
 	// example:
 	//
@@ -1466,7 +1466,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// test-user
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The current VisualEmbedder dimensions.
+	// The current dimensions of the VisualEmbedder.
 	//
 	// example:
 	//
@@ -1632,7 +1632,7 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) Valida
 }
 
 type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore struct {
-	// The account source. Valid values: reuse_vector, existing. This parameter is returned only when the status is ENABLED.
+	// The account source. Valid values: reuse_vector and existing. This parameter is returned only when the status is ENABLED.
 	//
 	// example:
 	//
@@ -1650,7 +1650,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore
 	//
 	// contextdb_example
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The session storage status. Valid values: DISABLED, ENABLING, ENABLED, DISABLING.
+	// The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
 	//
 	// example:
 	//
@@ -1738,13 +1738,13 @@ func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) 
 }
 
 type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding struct {
-	// The effective period of the attachment. The value is a UNIX timestamp.
+	// The attachment effective period (UNIX timestamp).
 	//
 	// example:
 	//
 	// 1788771141
 	ActivatedAt *int64 `json:"ActivatedAt,omitempty" xml:"ActivatedAt,omitempty"`
-	// Langfuse API Key ID
+	// The Langfuse API key ID.
 	//
 	// example:
 	//
@@ -1756,19 +1756,19 @@ type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfu
 	//
 	// 387
 	BindingTaskId *int32 `json:"BindingTaskId,omitempty" xml:"BindingTaskId,omitempty"`
-	// The Langfuse application ID.
+	// The ID of the Langfuse application.
 	//
 	// example:
 	//
 	// pa-xxx
 	LangfuseApplicationId *string `json:"LangfuseApplicationId,omitempty" xml:"LangfuseApplicationId,omitempty"`
-	// The binding phase.
+	// The phase of the binding.
 	//
 	// example:
 	//
 	// ACTIVE
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The Langfuse project ID.
+	// The ID of the Langfuse project.
 	//
 	// example:
 	//
@@ -1851,7 +1851,7 @@ type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute s
 	AuthCallbackURL *string `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
 	// The list of authentication providers for the application.
 	AuthProviders []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
-	// The Supabase cluster identifier.
+	// The identifier of the Supabase cluster.
 	//
 	// example:
 	//

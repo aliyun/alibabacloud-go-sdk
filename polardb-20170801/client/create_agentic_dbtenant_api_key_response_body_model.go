@@ -38,13 +38,13 @@ type CreateAgenticDBTenantApiKeyResponseBody struct {
 	//
 	// ak-xxxxxxxxxxxx
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard in the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time follows the ISO 8601 standard and is displayed in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2026-06-10T08:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The expiration time. If the API key never expires, this value is empty. The time follows the ISO 8601 standard in the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The expiration time. If the API key never expires, this value is empty. The time follows the ISO 8601 standard and is displayed in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//

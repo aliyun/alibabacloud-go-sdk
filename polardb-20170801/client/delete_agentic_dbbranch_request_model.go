@@ -22,7 +22,7 @@ type iDeleteAgenticDBBranchRequest interface {
 }
 
 type DeleteAgenticDBBranchRequest struct {
-	// The branch ID.
+	// The branch ID. You can obtain this ID by calling CreateAgenticDBBranch.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteAgenticDBBranchRequest struct {
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The AgenticDB cluster ID.
+	// The AgenticDB cluster ID. You can obtain this ID by calling CreateDBCluster and setting AgenticDbType to dedicated. The ID starts with pagc-.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteAgenticDBBranchRequest struct {
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The project ID.
+	// The project ID. You can obtain this ID by calling CreateAgenticDBProject.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DeleteAgenticDBBranchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID.
+	// The tenant ID. You can obtain this ID by calling CreateAgenticDBTenant or CreateAgenticDBProject.
 	//
 	// This parameter is required.
 	//

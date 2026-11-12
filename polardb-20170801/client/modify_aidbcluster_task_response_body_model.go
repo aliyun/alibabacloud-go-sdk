@@ -30,7 +30,7 @@ type ModifyAIDBClusterTaskResponseBody struct {
 	//
 	// pc-bp10ze***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

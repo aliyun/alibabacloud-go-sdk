@@ -26,7 +26,7 @@ type iDescribePolarClawAgentFileResponseBody interface {
 }
 
 type DescribePolarClawAgentFileResponseBody struct {
-	// Agent ID
+	// The PolarClaw agent ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribePolarClawAgentFileResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -171,13 +171,13 @@ type DescribePolarClawAgentFileResponseBodyFile struct {
 	//
 	// /home/node/.openclaw/workspace-main/SOUL.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The file size, in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The last updated UNIX timestamp, in milliseconds.
+	// The last updated timestamp in milliseconds.
 	//
 	// example:
 	//

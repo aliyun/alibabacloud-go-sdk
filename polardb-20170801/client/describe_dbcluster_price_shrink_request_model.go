@@ -54,17 +54,7 @@ type iDescribeDBClusterPriceShrinkRequest interface {
 }
 
 type DescribeDBClusterPriceShrinkRequest struct {
-	// The cluster edition. Valid values:
-	//
-	// - Normal: Cluster Edition.
-	//
-	// - Basic: Single Node Edition.
-	//
-	// - ArchiveNormal: Archive Database.
-	//
-	// - SENormal: Standard Edition.
-	//
-	// - NormalMultimaster: Multi-master Cluster.
+	// The cluster edition. Valid values: Normal (Cluster Edition), Basic (Single Node Edition), ArchiveNormal (Archive Database Cluster Edition), SENormal (Standard Edition), and NormalMultimaster (Multi-master Cluster).
 	//
 	// example:
 	//
@@ -86,15 +76,15 @@ type DescribeDBClusterPriceShrinkRequest struct {
 	//
 	// example:
 	//
-	// pi-**************
+	// ["pi-***************"]
 	DBNodeIds []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
-	// The number of nodes. Valid for the BUY scenario. This value includes the read/write node. Minimum value: 1. Default value: 1.
+	// The number of nodes. Valid for the BUY scenario. This number includes read/write nodes. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 2
 	DBNodeNum *int32 `json:"DBNodeNum,omitempty" xml:"DBNodeNum,omitempty"`
-	// The list of heterogeneous specification change nodes. Used for specification change scenarios to specify the target specifications for each node.
+	// The list of nodes for heterogeneous specification changes. Used in specification change scenarios to specify the target specifications for each node.
 	DBNodesShrink *string `json:"DBNodes,omitempty" xml:"DBNodes,omitempty"`
 	// The database engine type. Required for the BUY scenario. Valid values: MySQL, PostgreSQL, and Oracle.
 	//
@@ -108,49 +98,19 @@ type DescribeDBClusterPriceShrinkRequest struct {
 	//
 	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// Specifies whether to enable the hot standby cluster. Valid values:
-	//
-	// - ON: Enable.
-	//
-	// - OFF: Disable.
-	//
-	// Valid for the BUY and specification change scenarios.
+	// Specifies whether to enable the hot standby cluster. Valid values: ON and OFF. Valid for the BUY and specification change scenarios.
 	//
 	// example:
 	//
 	// ON
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
-	// The specification change direction. Valid values:
-	//
-	// - ADD: add nodes.
-	//
-	// - DELETE: remove nodes.
-	//
-	// - UPGRADE: upgrade specifications.
-	//
-	// - DOWNGRADE: downgrade specifications.
-	//
-	// - HOT_STANDBY: hot standby change.
-	//
-	// - STORAGE: storage space change.
-	//
-	// - STORAGE_TYPE: storage type change.
+	// The modification type. Valid values: ADD (add nodes), DELETE (remove nodes), UPGRADE (upgrade), DOWNGRADE (downgrade), HOT_STANDBY (hot standby change), STORAGE (storage space change), and STORAGE_TYPE (storage type change).
 	//
 	// example:
 	//
 	// UPGRADE
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
-	// The order type. Valid values:
-	//
-	// - BUY: new purchase.
-	//
-	// - CONVERT: billing method conversion.
-	//
-	// - RENEW: renewal.
-	//
-	// - UPGRADE: upgrade specifications or add nodes.
-	//
-	// - DOWNGRADE: downgrade specifications or remove nodes.
+	// The order type. Valid values: BUY (new purchase), CONVERT (billing method change), RENEW (renewal), UPGRADE (upgrade or add nodes), and DOWNGRADE (downgrade or remove nodes).
 	//
 	// This parameter is required.
 	//
@@ -158,21 +118,13 @@ type DescribeDBClusterPriceShrinkRequest struct {
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The billing method. Required for the BUY and CONVERT scenarios. Valid values:
-	//
-	// - Prepaid: subscription.
-	//
-	// - Postpaid: pay-as-you-go.
+	// The billing method. Required for the BUY and CONVERT scenarios. Valid values: Prepaid (subscription) and Postpaid (pay-as-you-go).
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription cycle. Valid values:
-	//
-	// - Month: monthly.
-	//
-	// - Year: yearly.
+	// The subscription period. Valid values: Month and Year.
 	//
 	// example:
 	//
@@ -192,55 +144,37 @@ type DescribeDBClusterPriceShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The serverless type. Valid values: AgileServerless.
+	// The Serverless type. Valid value: AgileServerless.
 	//
 	// example:
 	//
 	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The storage billing type. Valid values:
-	//
-	// - Prepaid: subscription.
-	//
-	// - Postpaid: pay-as-you-go.
+	// The storage billing method. Valid values: Prepaid (subscription) and Postpaid (pay-as-you-go).
 	//
 	// example:
 	//
 	// Prepaid
 	StorageChargeType *string `json:"StorageChargeType,omitempty" xml:"StorageChargeType,omitempty"`
-	// The storage space, in GB. Used for prepaid storage or storage specification change scenarios.
+	// The storage space. Unit: GB. Used for prepaid storage or storage specification change scenarios.
 	//
 	// example:
 	//
 	// 50
 	StorageSpace *string `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type. Valid values:
-	//
-	// - PSL5: high performance.
-	//
-	// - PSL4: standard.
-	//
-	// - ESSDPL0
-	//
-	// - ESSDPL1
-	//
-	// - ESSDPL2
-	//
-	// - ESSDPL3
-	//
-	// - ESSDAUTOPL
+	// The storage type. Valid values: PSL5 (premium performance), PSL4 (standard performance), ESSDPL0, ESSDPL1, ESSDPL2, ESSDPL3, and ESSDAUTOPL.
 	//
 	// example:
 	//
 	// PSL5
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The subscription duration. Used together with Period. Valid for the BUY, CONVERT, and RENEW scenarios when the billing method is Prepaid.
+	// The purchase duration. Used in combination with Period. Valid for the BUY, CONVERT, and RENEW scenarios when the billing method is Prepaid.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The zone ID. We recommend that you specify this parameter for the BUY scenario.
+	// The zone ID. Recommended for the BUY scenario.
 	//
 	// example:
 	//

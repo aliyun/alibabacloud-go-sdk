@@ -16,13 +16,13 @@ type iCreateApplicationPromptResponseBody interface {
 }
 
 type CreateApplicationPromptResponseBody struct {
-	// The ID of the Prompt.
+	// The unique identifier of the prompt.
 	//
 	// example:
 	//
 	// papt-f9lajgw765f4fnrzn1
 	PromptId *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

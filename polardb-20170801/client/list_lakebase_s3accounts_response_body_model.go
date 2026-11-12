@@ -40,7 +40,7 @@ type ListLakebaseS3AccountsResponseBody struct {
 	//
 	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of S3 accounts.
+	// The S3 accounts.
 	S3Accounts []*ListLakebaseS3AccountsResponseBodyS3Accounts `json:"S3Accounts,omitempty" xml:"S3Accounts,omitempty" type:"Repeated"`
 	// The total number of accounts.
 	//
@@ -127,13 +127,13 @@ type ListLakebaseS3AccountsResponseBodyS3Accounts struct {
 	//
 	// default
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The access key of the S3 account.
+	// The AccessKey ID of the S3 account.
 	//
 	// example:
 	//
 	// accname
 	UserAccAk *string `json:"UserAccAk,omitempty" xml:"UserAccAk,omitempty"`
-	// The secret key of the S3 account (displayed in masked format).
+	// The AccessKey secret of the S3 account (masked).
 	//
 	// example:
 	//

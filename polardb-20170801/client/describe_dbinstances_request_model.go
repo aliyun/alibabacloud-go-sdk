@@ -42,7 +42,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// - **VPC**: VPC.
 	//
-	// - **Classic**: Classic network.
+	// - **Classic**: classic network.
 	//
 	// > If you do not specify this parameter, instances of all network types are returned.
 	//

@@ -34,7 +34,7 @@ type RegisterAIDBClusterCustomModelResponseBody struct {
 	//
 	// true
 	Created *bool `json:"Created,omitempty" xml:"Created,omitempty"`
-	// The display name and the initial invocation name for clients.
+	// The display name and the initial client invocation name.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type RegisterAIDBClusterCustomModelResponseBody struct {
 	//
 	// Importing
 	ImageImportStatus *string `json:"ImageImportStatus,omitempty" xml:"ImageImportStatus,omitempty"`
-	// The registration ID of the model.
+	// The ID of the model registration.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type RegisterAIDBClusterCustomModelResponseBody struct {
 	//
 	// /my-model-bucket/models/qwen3
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//

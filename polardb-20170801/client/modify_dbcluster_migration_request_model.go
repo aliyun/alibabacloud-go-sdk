@@ -32,9 +32,9 @@ type iModifyDBClusterMigrationRequest interface {
 }
 
 type ModifyDBClusterMigrationRequest struct {
-	// The specific endpoints to be switched. The value is a JSON string that specifies the endpoints to be swapped.
+	// The specific endpoints to be switched. The value is a JSON string that contains the endpoints to be swapped in pairs.
 	//
-	// > This parameter is valid only when SwapConnectionString is set to true.
+	// > This parameter takes effect only when SwapConnectionString is set to true.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type ModifyDBClusterMigrationRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the new instance or cluster. Valid values:
 	//
-	// - Before the switch, enter the PolarDB cluster ID to perform a switch.
+	// 	- Before the switchover, enter the PolarDB cluster ID to perform the switchover.
 	//
-	// - After the switch, enter the RDS instance ID to perform a rollback.
+	// 	- After the switchover, enter the ApsaraDB RDS instance ID to perform a rollback.
 	//
 	// This parameter is required.
 	//
@@ -65,7 +65,7 @@ type ModifyDBClusterMigrationRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The ID of the source RDS instance.
+	// The instance ID of the source ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -73,11 +73,11 @@ type ModifyDBClusterMigrationRequest struct {
 	//
 	// rm-************
 	SourceRDSDBInstanceId *string `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
-	// Specifies whether to switch the endpoint. Valid values:
+	// Specifies whether to switch the endpoints. Valid values:
 	//
-	// - **true**: Switches the endpoint. The application can connect to the database without changing its connection configuration.
+	// - **true**: Switches the endpoints. You do not need to modify the connection configurations of your application.
 	//
-	// - **false**: Does not switch the endpoint. The application must be changed to use the new PolarDB endpoint.
+	// - **false**: Does not switch the endpoints. You must modify the connection configurations of your application to use the new PolarDB endpoints.
 	//
 	// Default value: **false**.
 	//

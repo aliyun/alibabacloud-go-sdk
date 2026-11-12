@@ -30,7 +30,7 @@ type ModifyConsumerGroupRequest struct {
 	//
 	// cg-xxxxxx
 	ConsumerGroupName *string `json:"ConsumerGroupName,omitempty" xml:"ConsumerGroupName,omitempty"`
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifyConsumerGroupRequest struct {
 	//
 	// pg-xxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// Indicates whether the consumer group is the default group. Valid values: `0` (false) and `1` (true).
+	// Specifies whether the group is the default group. Valid values: 0: No. 1: Yes.
 	//
 	// example:
 	//

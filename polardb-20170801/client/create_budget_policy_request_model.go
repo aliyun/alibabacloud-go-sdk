@@ -48,13 +48,13 @@ type CreateBudgetPolicyRequest struct {
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
 	// The budget type. Valid values:
 	//
-	// - **GlobalTotal**: Global total budget.
+	// - **GlobalTotal**: global total budget
 	//
-	// - **ConsumerGroupTotal**: Total budget for a consumer group.
+	// - **ConsumerGroupTotal**: total budget of a consumer group
 	//
-	// - **ConsumerGroupMemberDefault**: Default budget for a consumer group member.
+	// - **ConsumerGroupMemberDefault**: default budget for consumer group members
 	//
-	// - **Consumer**: Budget for a single consumer.
+	// - **Consumer**: budget for a single consumer
 	//
 	// This parameter is required.
 	//

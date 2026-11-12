@@ -60,25 +60,29 @@ type DescribeBudgetUsageResponseBody struct {
 	//
 	// false
 	Exceeded *string `json:"Exceeded,omitempty" xml:"Exceeded,omitempty"`
-	// The creation time of the budget usage record in RFC 3339 UTC format.
+	// The creation time of the budget usage record, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2025-01-01T00:00:00Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The last modification time of the budget usage record in RFC 3339 UTC format.
+	// The time when the budget usage record was last modified, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2025-01-15T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The gateway instance ID.
+	// The ID of the gateway instance.
 	//
 	// example:
 	//
 	// pc-123
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
 	// The list of associated budget policies.
+	//
+	// example:
+	//
+	// []
 	Policies []*DescribeBudgetUsageResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -92,13 +96,13 @@ type DescribeBudgetUsageResponseBody struct {
 	//
 	// 5000
 	UsedPoints *string `json:"UsedPoints,omitempty" xml:"UsedPoints,omitempty"`
-	// The end time of the budget statistical window in RFC 3339 UTC format.
+	// The end time of the budget statistical window, in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2025-01-31T23:59:59Z
 	WindowEndTime *string `json:"WindowEndTime,omitempty" xml:"WindowEndTime,omitempty"`
-	// The start time of the budget statistical window in RFC 3339 UTC format.
+	// The start time of the budget statistical window, in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -242,7 +246,7 @@ type DescribeBudgetUsageResponseBodyPolicies struct {
 	//
 	// 0.8
 	AlertThresholdPct *string `json:"AlertThresholdPct,omitempty" xml:"AlertThresholdPct,omitempty"`
-	// The budget dimension reference ID to which the policy applies.
+	// The reference ID of the budget dimension to which the policy applies.
 	//
 	// example:
 	//
@@ -254,13 +258,13 @@ type DescribeBudgetUsageResponseBodyPolicies struct {
 	//
 	// cluster
 	BudgetDimensionType *string `json:"BudgetDimensionType,omitempty" xml:"BudgetDimensionType,omitempty"`
-	// The number of budget points set by the policy.
+	// The number of budget points configured in the policy.
 	//
 	// example:
 	//
 	// 10000
 	BudgetPoints *string `json:"BudgetPoints,omitempty" xml:"BudgetPoints,omitempty"`
-	// The budget policy ID.
+	// The ID of the budget policy.
 	//
 	// example:
 	//
@@ -272,13 +276,13 @@ type DescribeBudgetUsageResponseBodyPolicies struct {
 	//
 	// token
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
-	// The day of the month when the budget is reset. For example, 1 indicates the first day of each month.
+	// The day of the month on which the budget is reset. For example, 1 indicates the first day of each month.
 	//
 	// example:
 	//
 	// 1
 	ResetDayOfMonth *string `json:"ResetDayOfMonth,omitempty" xml:"ResetDayOfMonth,omitempty"`
-	// The budget policy status.
+	// The status of the budget policy.
 	//
 	// example:
 	//

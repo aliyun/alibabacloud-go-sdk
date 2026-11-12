@@ -30,43 +30,43 @@ type iModifyAIDBClusterModelResponseBody interface {
 }
 
 type ModifyAIDBClusterModelResponseBody struct {
-	// Indicates whether the request is a dry run.
+	// Indicates whether the request is a preview request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The model type of the instance.
+	// The instance model type.
 	//
 	// example:
 	//
 	// custom
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 3AA6E0E4-1234-5678-90AB-1234567890AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parsed target model name.
+	// The resolved target model name.
 	//
 	// example:
 	//
 	// Qwen3-32B
 	TargetModelName *string `json:"TargetModelName,omitempty" xml:"TargetModelName,omitempty"`
-	// The parsed target OSS path.
+	// The resolved target OSS path.
 	//
 	// example:
 	//
 	// /my-model-bucket/models/qwen3
 	TargetOssPath *string `json:"TargetOssPath,omitempty" xml:"TargetOssPath,omitempty"`
-	// The ID of the asynchronous task. This parameter is empty when DryRun is set to true.
+	// The asynchronous task ID. This parameter is empty when DryRun is set to true.
 	//
 	// example:
 	//
 	// 123456
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The total number of modification batches.
+	// The total number of change batches.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ModifyAIDBClusterModelResponseBody struct {
 	//
 	// 2
 	TotalMsds *int64 `json:"TotalMsds,omitempty" xml:"TotalMsds,omitempty"`
-	// The modification warnings returned by the upstream service. The caller must display these warnings.
+	// The change warnings returned by the upstream service. Callers must display these warnings.
 	Warnings []*string `json:"Warnings,omitempty" xml:"Warnings,omitempty" type:"Repeated"`
 }
 

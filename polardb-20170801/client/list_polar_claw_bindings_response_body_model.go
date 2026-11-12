@@ -30,7 +30,7 @@ type ListPolarClawBindingsResponseBody struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The list of bindings.
 	Bindings []*ListPolarClawBindingsResponseBodyBindings `json:"Bindings,omitempty" xml:"Bindings,omitempty" type:"Repeated"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListPolarClawBindingsResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListPolarClawBindingsResponseBody) Validate() error {
 }
 
 type ListPolarClawBindingsResponseBodyBindings struct {
-	// The agent ID.
+	// The PolarClaw agent ID.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListPolarClawBindingsResponseBodyBindings struct {
 	//
 	// feishu
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The account ID.
+	// The channel account ID.
 	//
 	// example:
 	//

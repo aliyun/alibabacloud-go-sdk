@@ -38,7 +38,7 @@ type iRegisterAIDBClusterCustomModelRequest interface {
 }
 
 type RegisterAIDBClusterCustomModelRequest struct {
-	// The startup environment variables of the container. The variable name cannot be empty or contain whitespace, and the variable value can be an empty string.
+	// The startup environment variables of the container. Variable names cannot be empty or contain whitespace. Variable values can be empty strings.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// python -m vllm.entrypoints.openai.api_server
 	DirectCommand *string `json:"DirectCommand,omitempty" xml:"DirectCommand,omitempty"`
-	// The display name in the candidate list and the initial invocation name for clients.
+	// The display name in the candidate list and the initial client invocation name.
 	//
 	// example:
 	//
 	// my-qwen3
 	DisplayModelName *string `json:"DisplayModelName,omitempty" xml:"DisplayModelName,omitempty"`
-	// The full reference of the customer-owned inference image, in the format of registry/repository:tag.
+	// The full reference of the custom inference image, in the format of registry/repository:tag.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// Qwen3-32B
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The startup parameters of the model. The parameter key must start with --.
+	// The startup parameters of the model. Parameter keys must start with --.
 	//
 	// example:
 	//
@@ -112,13 +112,13 @@ type RegisterAIDBClusterCustomModelRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The password or temporary token for the customer\\"s image repository. This parameter is required when ImageName is specified.
+	// The password or temporary token for the image repository. This parameter is required when ImageName is specified.
 	//
 	// example:
 	//
 	// temporary-token
 	RegistryPassword *string `json:"RegistryPassword,omitempty" xml:"RegistryPassword,omitempty"`
-	// The username for the customer\\"s image repository. This parameter is required when ImageName is specified.
+	// The username for the image repository. This parameter is required when ImageName is specified.
 	//
 	// example:
 	//

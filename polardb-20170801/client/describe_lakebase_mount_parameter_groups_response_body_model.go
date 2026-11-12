@@ -72,11 +72,7 @@ type DescribeLakebaseMountParameterGroupsResponseBodyParameterGroups struct {
 	//
 	// 2026-08-07T12:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether the parameter template is applied. Valid values:
-	//
-	// - 0: No.
-	//
-	// - 1: Yes.
+	// Indicates whether the parameter template is applied. Valid values: 0 (no) and 1 (yes).
 	//
 	// example:
 	//
@@ -100,7 +96,7 @@ type DescribeLakebaseMountParameterGroupsResponseBodyParameterGroups struct {
 	//
 	// Default template
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
-	// The ID of the parameter template.
+	// The parameter template ID.
 	//
 	// example:
 	//
@@ -112,11 +108,7 @@ type DescribeLakebaseMountParameterGroupsResponseBodyParameterGroups struct {
 	//
 	// default-template
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
-	// The templatetype. Valid values:
-	//
-	// - 0: System.
-	//
-	// - 1: User.
+	// The templatetype. Valid values: 0 (system) and 1 (user).
 	//
 	// example:
 	//

@@ -36,13 +36,13 @@ type DescribePolarFsQuotaResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 5
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of records per page. Valid values: 5 to 50. Default value: 10.
+	// The number of entries per page. Valid values: 5 to 50. Default value: 10.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ type DescribePolarFsQuotaResponseBody struct {
 	PolicyItems []*DescribePolarFsQuotaResponseBodyPolicyItems `json:"PolicyItems,omitempty" xml:"PolicyItems,omitempty" type:"Repeated"`
 	// The quota information.
 	QuotaItems []*DescribePolarFsQuotaResponseBodyQuotaItems `json:"QuotaItems,omitempty" xml:"QuotaItems,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -190,13 +190,13 @@ func (s *DescribePolarFsQuotaResponseBody) Validate() error {
 }
 
 type DescribePolarFsQuotaResponseBodyPolicyItems struct {
-	// The TTL for access time. Unit: seconds.
+	// The time-to-live (TTL) for the access time. Unit: seconds.
 	//
 	// example:
 	//
 	// 7200
 	AccessTTL *int64 `json:"AccessTTL,omitempty" xml:"AccessTTL,omitempty"`
-	// The TTL for change time. Unit: seconds.
+	// The time-to-live (TTL) for the change time. Unit: seconds.
 	//
 	// example:
 	//
@@ -210,9 +210,9 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether the rule is enabled. Valid values:
 	//
-	// - **true**: The new event takes effect immediately for new transactions. This is the default value.
+	// - **true**: New events take effect immediately on new transactions. This is the default value.
 	//
-	// - **false**: The new event does not take effect for new transactions.
+	// - **false**: New events do not take effect on new transactions.
 	//
 	// example:
 	//
@@ -220,13 +220,13 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The matching rule for excluding specific paths.
 	//
-	// - A path pattern that starts with `/` (supports `*`, `?`, and `**` glob syntax).
+	// - Path patterns starting with `/` (supports glob syntax such as `*`, `?`, and `**`).
 	//
 	// example:
 	//
 	// NULL
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// The file count limit for users in the directory.
+	// The limit on the number of files for users in the directory.
 	//
 	// example:
 	//
@@ -238,9 +238,9 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	//
 	// 73
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The glob pattern for matching paths.
+	// The wildcard pattern for matching paths.
 	//
-	// - A path pattern that starts with `/` (supports `*`, `?`, and `**` glob syntax).
+	// - Path patterns starting with `/` (supports glob syntax such as `*`, `?`, and `**`).
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	//
 	// example:
 	//
-	// xxxxx
+	// File system quota rule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The priority of the quota rule.
 	//
@@ -258,7 +258,7 @@ type DescribePolarFsQuotaResponseBodyPolicyItems struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The total file capacity limit for the directory. Unit: GB.
+	// The total capacity limit for files in the directory. Unit: GB.
 	//
 	// - Note: The value must be at least 1 GB.
 	//
@@ -386,7 +386,7 @@ type DescribePolarFsQuotaResponseBodyQuotaItems struct {
 	//
 	// 1073741824
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// Inodes
+	// The inode quota of the file system.
 	//
 	// example:
 	//

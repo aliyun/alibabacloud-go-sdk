@@ -26,7 +26,7 @@ type DisablePolarClawPluginRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the plugin to disable.
+	// The ID of the plug-in to disable.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DisablePolarClawPluginRequest struct {
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Specifies whether to restart the gateway. Default value: true.
+	// Specifies whether to restart the gateway after the plug-in is disabled. Default value: true.
 	//
 	// example:
 	//

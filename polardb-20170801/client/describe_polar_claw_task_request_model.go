@@ -24,7 +24,7 @@ type DescribePolarClawTaskRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The asynchronous task ID.
+	// The ID of the asynchronous task.
 	//
 	// This parameter is required.
 	//

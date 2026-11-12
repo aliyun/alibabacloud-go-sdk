@@ -22,27 +22,31 @@ type iDescribeActivationCodesResponseBody interface {
 }
 
 type DescribeActivationCodesResponseBody struct {
-	// List of activation codes
+	// The list of activation codes.
+	//
+	// example:
+	//
+	// []
 	Items []*DescribeActivationCodesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// Current page number
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records on the current page
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The unique ID generated for this request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 65D7ACE6-4A61-4B6E-B357-8CB24A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of records
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,55 +121,55 @@ func (s *DescribeActivationCodesResponseBody) Validate() error {
 }
 
 type DescribeActivationCodesResponseBodyItems struct {
-	// Effective period
+	// The effective period.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
-	// Activation code description
+	// The description of the activation code.
 	//
 	// example:
 	//
 	// testCode
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Expiration time
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2054-10-16 16:46:20
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	// Creation time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// Update time
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Activation code ID
+	// The ID of the activation code.
 	//
 	// example:
 	//
 	// 123
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// MAC address
+	// The MAC address.
 	//
 	// example:
 	//
 	// 12:34:56:78:98:00
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// Activation code name
+	// The name of the activation code.
 	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Unique identifier in the database
+	// The unique identifier of the database.
 	//
 	// example:
 	//

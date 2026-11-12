@@ -23,6 +23,10 @@ type DescribeInspectionTaskListResponseBody struct {
 	// 2921D843-433A-5FB3-A03B-4EC093B219F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of inspection tasks.
+	//
+	// example:
+	//
+	// []
 	TaskLists []*DescribeInspectionTaskListResponseBodyTaskLists `json:"TaskLists,omitempty" xml:"TaskLists,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +70,13 @@ func (s *DescribeInspectionTaskListResponseBody) Validate() error {
 }
 
 type DescribeInspectionTaskListResponseBodyTaskLists struct {
-	// The last modification date of the task.
+	// The last modification date of the task, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
 	// 2024-06-01
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The cron expression for periodically executing the inspection.
+	// The cron expression for scheduled inspections.
 	//
 	// example:
 	//
@@ -84,7 +88,7 @@ type DescribeInspectionTaskListResponseBodyTaskLists struct {
 	//
 	// pc-001,pc-002
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The expiration date of the inspection task.
+	// The expiration date of the inspection task, in the YYYY-MM-DD format.
 	//
 	// example:
 	//
@@ -94,7 +98,7 @@ type DescribeInspectionTaskListResponseBodyTaskLists struct {
 	//
 	// example:
 	//
-	// Periodic inspection task
+	// Scheduled inspection task
 	TaskDescription *string `json:"TaskDescription,omitempty" xml:"TaskDescription,omitempty"`
 	// The ID of the inspection task.
 	//

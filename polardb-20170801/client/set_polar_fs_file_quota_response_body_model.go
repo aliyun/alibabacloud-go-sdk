@@ -22,7 +22,7 @@ type SetPolarFsFileQuotaResponseBody struct {
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,7 +18,9 @@ type iDescribeBackupLogDownloadLinksRequest interface {
 }
 
 type DescribeBackupLogDownloadLinksRequest struct {
-	// The IDs of the redo log backups.
+	// The redo log backup IDs.
+	//
+	// > First, invoke DescribeBackupLogs to obtain valid IDs. This parameter is required when you invoke the operation. If omitted, an InvalidArchiveLogIds.Malformed error (HTTP 400) is returned.
 	//
 	// example:
 	//
@@ -26,11 +28,13 @@ type DescribeBackupLogDownloadLinksRequest struct {
 	BackupLogIds *string `json:"BackupLogIds,omitempty" xml:"BackupLogIds,omitempty"`
 	// The cluster ID.
 	//
+	// > This parameter is required for the call. If omitted, an InvalidDBClusterId.Malformed error (HTTP 400) is returned.
+	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The validity period of the download URL in hours. Valid values: 1 to 596523.
+	// The validity period of the download links, in hours. Valid values: 1 to 596523.
 	//
 	// example:
 	//

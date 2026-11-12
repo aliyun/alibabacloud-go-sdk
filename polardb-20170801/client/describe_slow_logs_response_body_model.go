@@ -38,7 +38,7 @@ type DescribeSlowLogsResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end date of the query.
 	//
-	// The date is in UTC. Format: YYYY-MM-DDZ.
+	// The date is in UTC and formatted as YYYY-MM-DDZ.
 	//
 	// example:
 	//
@@ -71,13 +71,13 @@ type DescribeSlowLogsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start date of the query.
 	//
-	// The date is in UTC. Format: YYYY-MM-DDZ.
+	// The date is in UTC and formatted as YYYY-MM-DDZ.
 	//
 	// example:
 	//
 	// 2021-05-01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

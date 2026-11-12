@@ -28,7 +28,7 @@ type iDescribeSQLRateLimitingRulesRequest interface {
 }
 
 type DescribeSQLRateLimitingRulesRequest struct {
-	// The cluster ID.
+	// The cluster ID. Note: The SQL throttling feature is supported only by clusters that use the PostgreSQL or Oracle database engine. Clusters that use the MySQL database engine do not support this feature.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeSQLRateLimitingRulesRequest struct {
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -46,7 +46,7 @@ type DescribeSQLRateLimitingRulesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeSQLRateLimitingRulesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The name of the SQL throttling rule that you want to query. You can specify multiple rule names for a batch query. Separate the rule names with commas (,).
+	// The names of the SQL throttling rules to query. You can specify multiple rule names for a batch query. Separate multiple names with commas (,).
 	//
-	// > Call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all SQL throttling rules for the cluster, including the rule names.
+	// > You can call the [DescribeSQLRateLimitingRules](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all rules in the specified cluster, including the rule names.
 	//
 	// example:
 	//

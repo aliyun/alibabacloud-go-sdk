@@ -24,7 +24,7 @@ type DeleteAIDBClusterTaskResponseBody struct {
 	//
 	// pm-2ze9***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the PolarDB database instance for the AI model service.
+	// The ID of the PolarDB instance for AI model services.
 	//
 	// example:
 	//

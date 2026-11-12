@@ -30,7 +30,7 @@ type iDescribeAIDBClusterTasksRequest interface {
 }
 
 type DescribeAIDBClusterTasksRequest struct {
-	// The type of the model operator.
+	// The model operator type.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type DescribeAIDBClusterTasksRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of items to display on each page.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeAIDBClusterTasksRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The instance ID of the associated PolarDB instance.
+	// The ID of the associated PolarDB cluster. This parameter is required. If you do not specify this parameter, the service returns the InvalidDBClusterId.NotFound (404) error.
 	//
 	// example:
 	//

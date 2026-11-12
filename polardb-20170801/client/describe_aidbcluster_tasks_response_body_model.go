@@ -38,7 +38,7 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -52,25 +52,25 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// 0
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of entries on the current page.
+	// The total number of records on the current page.
 	//
 	// example:
 	//
 	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page.
+	// The number of records to display on each page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the associated PolarDB cluster.
+	// The ID of the PolarDB cluster to which the resource belongs.
 	//
 	// example:
 	//
 	// pc-2ze***
 	RelativeDBClusterId *string `json:"RelativeDBClusterId,omitempty" xml:"RelativeDBClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// train
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ func (s *DescribeAIDBClusterTasksResponseBody) Validate() error {
 type DescribeAIDBClusterTasksResponseBodyItems struct {
 	// The task completion time.
 	//
-	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	CompletedTime *string `json:"CompletedTime,omitempty" xml:"CompletedTime,omitempty"`
 	// The creation time.
 	//
-	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// polardb_ai
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -264,13 +264,13 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// ***
+	// Sample model
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The path.
 	//
 	// example:
 	//
-	// ***
+	// /models/example-model
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
 	// The model source.
 	//
@@ -278,15 +278,15 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// public
 	ModelSource *string `json:"ModelSource,omitempty" xml:"ModelSource,omitempty"`
-	// The runtime parameters.
+	// The number of task executions.
 	//
 	// example:
 	//
-	// xxx
+	// 1
 	RunningTimes *string `json:"RunningTimes,omitempty" xml:"RunningTimes,omitempty"`
 	// The task start time.
 	//
-	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeBackupRegionsResponseBody interface {
 }
 
 type DescribeBackupRegionsResponseBody struct {
-	// The list of regions where the backup sets are stored.
+	// The list of regions where backup sets are located.
 	Regions []*string `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//

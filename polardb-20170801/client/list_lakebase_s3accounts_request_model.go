@@ -42,7 +42,7 @@ type ListLakebaseS3AccountsRequest struct {
 	PfsInstanceId *string `json:"PfsInstanceId,omitempty" xml:"PfsInstanceId,omitempty"`
 	// The region ID.
 	//
-	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view region IDs.
 	//
 	// example:
 	//

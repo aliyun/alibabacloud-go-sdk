@@ -30,7 +30,7 @@ type DescribeAgenticDBTenantApiKeysResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAgenticDBTenantApiKeysResponseBody struct {
 	//
 	// C3D4E5F6-A7B8-9012-CDEF-123456789012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -123,35 +123,31 @@ type DescribeAgenticDBTenantApiKeysResponseBodyItems struct {
 	//
 	// ak-71304e39c7e841a1
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The masked API key value.
+	// The masked API key.
 	//
 	// example:
 	//
 	// pagc_key_cGFnYy1icDFhMmIz****
 	ApiKeyMasked *string `json:"ApiKeyMasked,omitempty" xml:"ApiKeyMasked,omitempty"`
-	// The time when the API key was created.
-	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-06-10T10:30:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the API key.
+	// The description.
 	//
 	// example:
 	//
 	// MCP server token
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the API key expires.
-	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The expiration time. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The status of the API key.
+	// The status.
 	//
 	// example:
 	//

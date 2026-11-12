@@ -28,7 +28,7 @@ type iInstallPolarClawSkillRequest interface {
 }
 
 type InstallPolarClawSkillRequest struct {
-	// The target agent in the workspace. If not specified, the default agent is used.
+	// The target agent in the workspace. If this parameter is not specified, the default agent is used.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type InstallPolarClawSkillRequest struct {
 	//
 	// alibacloud-rds-copilot
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The source. Default value: polarhub.
+	// The source.
 	//
 	// example:
 	//
 	// clawhub
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// URL
+	// The URL for installing the skill. This parameter is not supported. If a value is provided, a 400 InvalidParameters error is returned.
 	//
 	// example:
 	//

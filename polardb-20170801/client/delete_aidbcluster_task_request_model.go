@@ -26,7 +26,7 @@ type iDeleteAIDBClusterTaskRequest interface {
 }
 
 type DeleteAIDBClusterTaskRequest struct {
-	// The task ID.
+	// The task ID. Note: This parameter specifies the ID of the model operator task instance created by calling CreateAIDBClusterTask, which is prefixed with pm-*. It does not refer to the PolarDB cluster ID, which is prefixed with pc-*. You can obtain the task ID by calling DescribeAIDBClusterTasks.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DeleteAIDBClusterTaskRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the PolarDB database instance for the AI model service.
+	// The PolarDB database instance ID for AI model services. Note: When you invoke this operation, this parameter is practically required. If it is not provided, a valid DBClusterId will result in an InvalidDBClusterId.Malformed (400) error. This parameter specifies the parent PolarDB AI cluster (prefixed with pc-*) to which the task belongs.
 	//
 	// example:
 	//

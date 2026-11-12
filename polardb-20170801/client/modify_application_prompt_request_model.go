@@ -20,7 +20,7 @@ type iModifyApplicationPromptRequest interface {
 }
 
 type ModifyApplicationPromptRequest struct {
-	// The ID of the application.
+	// The application ID. Usage note: Only applications of the mem0 type support prompt operations. You can verify this by checking the ApplicationType field by calling DescribeApplicationAttribute.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ModifyApplicationPromptRequest struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the prompt.
+	// The prompt ID. The value is an identifier that starts with papt-.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ModifyApplicationPromptRequest struct {
 	//
 	// papt-f9lajgw765f4fnrzn1
 	PromptId *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
-	// The name of the prompt.
+	// The prompt name.
 	//
 	// example:
 	//
 	// prompt name
 	PromptName *string `json:"PromptName,omitempty" xml:"PromptName,omitempty"`
-	// The content of the prompt.
+	// The prompt content.
 	//
 	// example:
 	//

@@ -20,15 +20,15 @@ type iDescribeAccountsResponseBody interface {
 }
 
 type DescribeAccountsResponseBody struct {
-	// The details of the account.
+	// The details of the account information.
 	Accounts []*DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeAccountsResponseBody) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccounts struct {
-	// The description of the database account.
+	// The description of the account.
 	//
 	// example:
 	//
@@ -116,19 +116,19 @@ type DescribeAccountsResponseBodyAccounts struct {
 	//
 	// UnLock
 	AccountLockState *string `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
-	// The name of the database account.
+	// The name of the account.
 	//
 	// example:
 	//
 	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The validity period of the password.
+	// The validity period of the account password. A value of `undefined` indicates that no validity period is set. A value of `infinity` indicates that the password never expires. A value of `-infinity` indicates that the password has expired. If an expiration time is specified, a UTC time string in the ISO 8601 format (`YYYY-MM-DDThh:mm:ssZ`) is returned instead of a timestamp.
 	//
 	// example:
 	//
 	// undefined
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
-	// The status of the database account. Valid values:
+	// The status of the account. Valid values:
 	//
 	// - **Creating**: The account is being created.
 	//
@@ -142,17 +142,17 @@ type DescribeAccountsResponseBodyAccounts struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The type of the account. Valid values:
 	//
-	// - **Normal**: standard account.
+	// - **Normal**: standard account
 	//
-	// - **Super**: privileged account.
+	// - **Super**: privileged account
 	//
-	// - **ReadOnly**: global read-only account.
+	// - **ReadOnly**: global read-only account
 	//
 	// example:
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The list of database permissions that are granted to the account.
+	// The details of the database permissions owned by the account.
 	DatabasePrivileges []*DescribeAccountsResponseBodyAccountsDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Repeated"`
 }
 
@@ -247,7 +247,7 @@ type DescribeAccountsResponseBodyAccountsDatabasePrivileges struct {
 	//
 	// ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//

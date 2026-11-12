@@ -34,7 +34,7 @@ type InstallPolarClawPluginResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type InstallPolarClawPluginResponseBody struct {
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The ID of the installed plug-in.
+	// The ID of the installed plugin.
 	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway has been restarted.
+	// Indicates whether the gateway was restarted.
 	//
 	// example:
 	//

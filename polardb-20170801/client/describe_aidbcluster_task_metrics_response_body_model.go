@@ -38,13 +38,17 @@ type DescribeAIDBClusterTaskMetricsResponseBody struct {
 	//
 	// pm-2zejpr***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+	// The end time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
 	// 2026-01-15T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The list.
+	//
+	// example:
+	//
+	// {}
 	Items *DescribeAIDBClusterTaskMetricsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The metric type.
 	//
@@ -52,13 +56,13 @@ type DescribeAIDBClusterTaskMetricsResponseBody struct {
 	//
 	// all
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The page number of the returned page. The default value is 1.
+	// The page number of the returned page. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of entries that match the query conditions. This parameter is optional and is not returned by default.
+	// The total number of entries that meet the query conditions. This parameter is optional and is not returned by default.
 	//
 	// example:
 	//
@@ -76,13 +80,13 @@ type DescribeAIDBClusterTaskMetricsResponseBody struct {
 	//
 	// pc-2zejpr***
 	RelativeDbClusterId *string `json:"RelativeDbClusterId,omitempty" xml:"RelativeDbClusterId,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format in UTC.
+	// The start time of the query. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
 	//
 	// example:
 	//
@@ -199,6 +203,10 @@ func (s *DescribeAIDBClusterTaskMetricsResponseBody) Validate() error {
 
 type DescribeAIDBClusterTaskMetricsResponseBodyItems struct {
 	// The list of metrics.
+	//
+	// example:
+	//
+	// []
 	SlsMetricsItems []*DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems `json:"SlsMetricsItems,omitempty" xml:"SlsMetricsItems,omitempty" type:"Repeated"`
 }
 
@@ -245,13 +253,15 @@ type DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems struct {
 	//
 	// 0.23
 	Epoch *float64 `json:"Epoch,omitempty" xml:"Epoch,omitempty"`
-	// The total number of steps.
+	// The global step.
 	//
 	// example:
 	//
 	// 90
 	GlobalStep *int32 `json:"GlobalStep,omitempty" xml:"GlobalStep,omitempty"`
 	// The log time.
+	//
+	// The time is in the ISO 8601 format and the UTC time zone. The seconds part can include a fractional component.
 	//
 	// example:
 	//
@@ -269,7 +279,7 @@ type DescribeAIDBClusterTaskMetricsResponseBodyItemsSlsMetricsItems struct {
 	//
 	// train
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The specific point in time when the monitoring metric was collected. The value is a UNIX timestamp. Unit: seconds.
+	// The specific time point of the monitoring metrics. The format is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

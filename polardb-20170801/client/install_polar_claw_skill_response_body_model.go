@@ -58,13 +58,13 @@ type InstallPolarClawSkillResponseBody struct {
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The operation name. This parameter is returned when Async is set to true.
+	// The name of the operation. This parameter is returned when Async is set to true.
 	//
 	// example:
 	//
 	// InstallPolarClawSkill
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

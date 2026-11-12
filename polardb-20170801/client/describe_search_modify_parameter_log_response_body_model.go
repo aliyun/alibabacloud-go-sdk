@@ -20,19 +20,19 @@ type iDescribeSearchModifyParameterLogResponseBody interface {
 }
 
 type DescribeSearchModifyParameterLogResponseBody struct {
-	// The type of the Search engine.
+	// The type of the search engine.
 	//
 	// example:
 	//
 	// polardb_search
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the Search DPI engine. This is not the MySQL version of the primary cluster.
+	// The database engine version of the Search DPI engine, which is not the MySQL version of the primary cluster.
 	//
 	// example:
 	//
 	// 3.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The parameter modification history. The records are returned in descending order of record IDs.
+	// The parameter modification history, returned in descending order of record ID.
 	Items []*DescribeSearchModifyParameterLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -100,19 +100,19 @@ func (s *DescribeSearchModifyParameterLogResponseBody) Validate() error {
 }
 
 type DescribeSearchModifyParameterLogResponseBodyItems struct {
-	// The time when the parameter was modified. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in UTC.
+	// The time when the parameter was modified. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2026-10-14T07:04:29Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The new value of the parameter.
+	// The parameter value after the modification.
 	//
 	// example:
 	//
 	// 4
 	NewParameterValue *string `json:"NewParameterValue,omitempty" xml:"NewParameterValue,omitempty"`
-	// The original value of the parameter.
+	// The parameter value before the modification.
 	//
 	// example:
 	//
@@ -124,11 +124,7 @@ type DescribeSearchModifyParameterLogResponseBodyItems struct {
 	//
 	// http.compression_level
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The modification status. Valid values:
-	//
-	// - Syncing: The modification has not taken effect.
-	//
-	// - Applied: The modification has taken effect.
+	// The modification status. A value of Syncing indicates that the modification is not in effect. A value of Applied indicates that the modification is in effect.
 	//
 	// example:
 	//

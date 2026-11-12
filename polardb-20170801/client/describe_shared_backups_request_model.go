@@ -56,7 +56,9 @@ type DescribeSharedBackupsRequest struct {
 	//
 	// - **Oracle**
 	//
-	// To specify multiple types, separate them with a comma.
+	// Separate multiple types with commas (,).
+	//
+	// > This parameter is required for the API call. Omitting it will result in an InvalidDBType.Malformed (HTTP 400) error.
 	//
 	// example:
 	//
@@ -70,7 +72,7 @@ type DescribeSharedBackupsRequest struct {
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. Valid values: positive integers up to the maximum value of the Integer type. Default value: **1**.
 	//
 	// example:
 	//
@@ -84,7 +86,9 @@ type DescribeSharedBackupsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions for the target account, including region IDs.
+	//
+	// > This parameter is required for the API call. Omitting it may result in an InternalFailure (HTTP 500) error.
 	//
 	// example:
 	//
@@ -94,9 +98,9 @@ type DescribeSharedBackupsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The share type. Valid values:
 	//
-	// - **ShareIncoming**: backups shared with you.
+	// - **ShareIncoming**: Shared with me.
 	//
-	// - **ShareOutgoing**: backups you shared.
+	// - **ShareOutgoing**: Shared by me.
 	//
 	// This parameter is required.
 	//

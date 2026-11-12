@@ -14,7 +14,7 @@ type iDeleteDBEndpointAddressResponseBody interface {
 }
 
 type DeleteDBEndpointAddressResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

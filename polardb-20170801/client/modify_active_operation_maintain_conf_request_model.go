@@ -38,17 +38,17 @@ type iModifyActiveOperationMaintainConfRequest interface {
 }
 
 type ModifyActiveOperationMaintainConfRequest struct {
-	// The remarks for the operation.
+	// The remark for the operation.
 	//
 	// example:
 	//
 	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time of the cycle.
+	// The cycle time.
 	//
-	// - If CycleType is set to Month, specify the day of the month. Valid values: 1 to 28. Use commas (,) to separate multiple days.
+	// - If CycleType is set to Month, the value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,).
 	//
-	// - If CycleType is set to Week, specify the day of the week. Valid values: 1 to 7. Use commas (,) to separate multiple days.
+	// - If CycleType is set to Week, the value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,).
 	//
 	// This parameter is required.
 	//
@@ -58,9 +58,9 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
 	// The cycle type. Valid values:
 	//
-	// - Month
+	// - Month: Monthly.
 	//
-	// - Week
+	// - Week: Weekly.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+	// The end time of the maintenance window. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC. Note: The format is explicitly declared as HH:mm:ssZ, and example values are updated to actual available formats such as 02:00:00Z and 06:00:00Z.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	//
 	// 12:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the task. The time must be in UTC and in the yyyy-mm-ddThh:mm:ssZ format.
+	// The start time of the task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Note: The format is explicitly declared as HH:mm:ssZ, and example values are updated to actual available formats such as 02:00:00Z and 06:00:00Z.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -103,7 +103,11 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether to enable the configuration. Valid values: 1 (Enable) and 2 (Disable).
+	// Specifies whether the configuration takes effect. Valid values:
+	//
+	// - 1: Yes.
+	//
+	// - 2: No.
 	//
 	// This parameter is required.
 	//

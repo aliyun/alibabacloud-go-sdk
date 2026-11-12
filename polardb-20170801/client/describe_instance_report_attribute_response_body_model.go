@@ -30,7 +30,11 @@ type iDescribeInstanceReportAttributeResponseBody interface {
 }
 
 type DescribeInstanceReportAttributeResponseBody struct {
-	// Indicates whether the report is the latest one.
+	// Indicates whether the report is the latest report.
+	//
+	// example:
+	//
+	// false
 	Latest *bool `json:"Latest,omitempty" xml:"Latest,omitempty"`
 	// The detailed description of the inspection report.
 	//
@@ -57,6 +61,10 @@ type DescribeInstanceReportAttributeResponseBody struct {
 	// Completed
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// The inspection results for each item in the report.
+	//
+	// example:
+	//
+	// []
 	ReportSubItems []*DescribeInstanceReportAttributeResponseBodyReportSubItems `json:"ReportSubItems,omitempty" xml:"ReportSubItems,omitempty" type:"Repeated"`
 	// The overall summary of the inspection report.
 	//
@@ -193,7 +201,7 @@ type DescribeInstanceReportAttributeResponseBodyReportSubItems struct {
 	//
 	// 90
 	Score *int64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The name of the inspection skill that generated the result.
+	// The name of the inspection skill that generated the inspection result.
 	//
 	// example:
 	//

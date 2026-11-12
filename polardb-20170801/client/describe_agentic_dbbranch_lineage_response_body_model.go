@@ -36,37 +36,37 @@ type DescribeAgenticDBBranchLineageResponseBody struct {
 	AnchorBranchId *string `json:"AnchorBranchId,omitempty" xml:"AnchorBranchId,omitempty"`
 	// The list of lineage nodes.
 	Items []*DescribeAgenticDBBranchLineageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The total number of nodes returned.
+	// The total number of returned nodes.
 	//
 	// example:
 	//
 	// 6
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// analytics-prod
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// B2C3D4E5-F6A7-8901-BCDE-2345678901BC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the primary branch.
+	// The ID of the root branch.
 	//
 	// example:
 	//
 	// br-root
 	RootBranchId *string `json:"RootBranchId,omitempty" xml:"RootBranchId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -168,25 +168,25 @@ func (s *DescribeAgenticDBBranchLineageResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBBranchLineageResponseBodyItems struct {
-	// The ID of the compute cluster associated with the branch.
+	// The ID of the compute cluster for the branch.
 	//
 	// example:
 	//
 	// pc-g0lsayq8c5qe
 	BranchComputeClusterId *string `json:"BranchComputeClusterId,omitempty" xml:"BranchComputeClusterId,omitempty"`
-	// The branch description.
+	// The description of the branch.
 	//
 	// example:
 	//
 	// Feature branch for analytics
 	BranchDescription *string `json:"BranchDescription,omitempty" xml:"BranchDescription,omitempty"`
-	// The branch ID.
+	// The ID of the branch.
 	//
 	// example:
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
-	// The branch name.
+	// The name of the branch.
 	//
 	// example:
 	//
@@ -194,13 +194,13 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	BranchName *string `json:"BranchName,omitempty" xml:"BranchName,omitempty"`
 	// The time when the branch was created.
 	//
-	// The time is in the ISO 8601 standard in the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The depth relative to the anchor branch. The anchor branch has a depth of 0. Ancestor branches have negative values, and descendant branches have positive values.
+	// The depth relative to the anchor branch. The depth of the anchor branch is 0. Ancestors have negative values, and descendants have positive values.
 	//
 	// example:
 	//
@@ -212,13 +212,13 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	//
 	// 3
 	DirectChildCount *int32 `json:"DirectChildCount,omitempty" xml:"DirectChildCount,omitempty"`
-	// Indicates whether more ancestor nodes exist but are not returned.
+	// Indicates whether there are more ancestor nodes that are not returned.
 	//
 	// example:
 	//
 	// false
 	HasMoreAncestors *bool `json:"HasMoreAncestors,omitempty" xml:"HasMoreAncestors,omitempty"`
-	// Indicates whether more child nodes exist but are not returned.
+	// Indicates whether there are more child nodes that are not returned.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	//
 	// false
 	IsDefaultBranch *bool `json:"IsDefaultBranch,omitempty" xml:"IsDefaultBranch,omitempty"`
-	// Indicates whether the branch is the primary branch.
+	// Indicates whether the branch is the root branch.
 	//
 	// example:
 	//
@@ -254,11 +254,7 @@ type DescribeAgenticDBBranchLineageResponseBodyItems struct {
 	//
 	// main
 	ParentBranchName *string `json:"ParentBranchName,omitempty" xml:"ParentBranchName,omitempty"`
-	// The branch status. Valid values:
-	//
-	// - Active
-	//
-	// - Destroying
+	// The status of the branch. Valid values: Active and Destroying.
 	//
 	// example:
 	//

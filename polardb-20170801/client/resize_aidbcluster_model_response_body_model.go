@@ -40,7 +40,7 @@ type ResizeAIDBClusterModelResponseBody struct {
 	//
 	// pm-2ze4x2mwo81knj08a
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the current request only performs a capacity dry run.
+	// Indicates whether this request performs only a capacity dry run.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ResizeAIDBClusterModelResponseBody struct {
 	//
 	// 0.75
 	PoolHitRatio *float64 `json:"PoolHitRatio,omitempty" xml:"PoolHitRatio,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

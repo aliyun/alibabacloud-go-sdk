@@ -24,7 +24,11 @@ type iDescribeConsumerGroupsResponseBody interface {
 }
 
 type DescribeConsumerGroupsResponseBody struct {
-	// A list of consumer groups.
+	// The list of consumer groups.
+	//
+	// example:
+	//
+	// []
 	Items []*DescribeConsumerGroupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,13 +36,13 @@ type DescribeConsumerGroupsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on the current page.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of records returned per page. Valid values: 30, 50, and 100. Default value: 30.
+	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
@@ -50,7 +54,7 @@ type DescribeConsumerGroupsResponseBody struct {
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -166,9 +170,10 @@ type DescribeConsumerGroupsResponseBodyItems struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether the consumer group is the default group. Valid values:
 	//
-	// - **0**: No
 	//
-	// - **1**: Yes
+	// - **0**: No.
+	//
+	// - **1**: Yes.
 	//
 	// example:
 	//

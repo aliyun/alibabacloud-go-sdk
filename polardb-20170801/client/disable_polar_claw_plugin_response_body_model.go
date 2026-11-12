@@ -32,7 +32,7 @@ type DisablePolarClawPluginResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type DisablePolarClawPluginResponseBody struct {
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The ID of the disabled plugin.
+	// The ID of the disabled plug-in.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DisablePolarClawPluginResponseBody struct {
 	//
 	// 580EF224-9647-59E7-9950-D9EBFD6A2921
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway was restarted.
+	// Indicates whether the gateway is restarted.
 	//
 	// example:
 	//

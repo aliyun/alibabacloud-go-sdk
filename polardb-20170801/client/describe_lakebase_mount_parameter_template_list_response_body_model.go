@@ -78,27 +78,19 @@ type DescribeLakebaseMountParameterTemplateListResponseBodyParameters struct {
 	//
 	// 1
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Indicates whether the parameter takes effect dynamically. Valid values:
-	//
-	// - 1: Yes.
-	//
-	// - 0: No.
+	// Indicates whether the parameter takes effect dynamically. Valid values: 1 and 0.
 	//
 	// example:
 	//
 	// 1
 	IsDynamic *string `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
-	// Indicates whether users are allowed to modify the parameter. Valid values:
-	//
-	// - 1: Yes.
-	//
-	// - 0: No.
+	// Indicates whether the parameter can be modified by users. Valid values: 1 and 0.
 	//
 	// example:
 	//
 	// 1
 	IsUserChangeable *string `json:"IsUserChangeable,omitempty" xml:"IsUserChangeable,omitempty"`
-	// The value range or enumerated values, such as [0-3600].
+	// The value range or valid values. Example: [0-3600].
 	//
 	// example:
 	//

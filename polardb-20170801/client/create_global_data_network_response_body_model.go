@@ -18,19 +18,19 @@ type iCreateGlobalDataNetworkResponseBody interface {
 }
 
 type CreateGlobalDataNetworkResponseBody struct {
-	// The unique ID of the newly created synchronization channel.
+	// The ID of the synchronization link.
 	//
 	// example:
 	//
 	// gdc-xxx
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The unique ID of the newly created GDN.
+	// The ID of the global database network (GDN).
 	//
 	// example:
 	//
 	// gdn-xxx
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The unique request ID.
+	// The request ID.
 	//
 	// example:
 	//

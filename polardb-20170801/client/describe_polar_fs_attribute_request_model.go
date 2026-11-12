@@ -38,7 +38,7 @@ type DescribePolarFsAttributeRequest struct {
 	//
 	// - **true**: Yes.
 	//
-	// - **false**: No. Default value: false.
+	// - **false**: No. This is the default value.
 	//
 	// example:
 	//

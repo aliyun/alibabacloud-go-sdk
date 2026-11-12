@@ -28,7 +28,7 @@ type DescribePolarClawTaskResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The status code.
+	// The response status code.
 	//
 	// example:
 	//
@@ -47,6 +47,10 @@ type DescribePolarClawTaskResponseBody struct {
 	// C890995A-CF06-4F4D-8DB8-DD26C2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task object.
+	//
+	// example:
+	//
+	// {}
 	Task *DescribePolarClawTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
 }
 
@@ -119,33 +123,37 @@ type DescribePolarClawTaskResponseBodyTask struct {
 	//
 	// 1778564698304
 	CreatedAtMs *int64 `json:"CreatedAtMs,omitempty" xml:"CreatedAtMs,omitempty"`
-	// The error object. This parameter is returned only if the task fails.
+	// The error object. This object is returned when the task fails.
+	//
+	// example:
+	//
+	// {}
 	Error *DescribePolarClawTaskResponseBodyTaskError `json:"Error,omitempty" xml:"Error,omitempty" type:"Struct"`
-	// The operation name.
+	// The name of the operation.
 	//
 	// example:
 	//
 	// LoginPolarClawChannel
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The task result object. This parameter is returned only if the task succeeds. The content of this object varies by operation.
+	// The task result object. This object is returned when the task succeeds. The content varies based on the operation.
 	//
 	// example:
 	//
 	// {}
 	Result map[string]interface{} `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The task state. Valid values: pending, running, succeeded, and failed.
+	// The task status. Valid values: pending, running, succeeded, and failed.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The task ID, which is a universally unique identifier (UUID).
+	// The task ID (UUID).
 	//
 	// example:
 	//
 	// 5956e600-ce6e-4d11-9648-939ef3286e94
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The timestamp when the task was last updated, in milliseconds.
+	// The timestamp when the task was updated, in milliseconds.
 	//
 	// example:
 	//
@@ -240,7 +248,7 @@ type DescribePolarClawTaskResponseBodyTaskError struct {
 	//
 	// INVALID_REQUEST
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message.
+	// The error details.
 	//
 	// example:
 	//

@@ -33,6 +33,10 @@ type DescribeApplicationAvailableVersionRequest struct {
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The list of application subcomponents.
+	//
+	// example:
+	//
+	// []
 	Components []*DescribeApplicationAvailableVersionRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -106,7 +110,7 @@ type DescribeApplicationAvailableVersionRequestComponents struct {
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only for raycluster applications.
+	// The maximum number of application subcomponents of the same specifications. Default value: the value of ComponentReplica. This parameter is supported only by raycluster applications.
 	//
 	// example:
 	//

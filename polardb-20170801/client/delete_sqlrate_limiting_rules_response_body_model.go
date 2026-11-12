@@ -18,9 +18,9 @@ type iDeleteSQLRateLimitingRulesResponseBody interface {
 }
 
 type DeleteSQLRateLimitingRulesResponseBody struct {
-	// The response message.
+	// The message returned for the request.
 	//
-	// > If the request is successful, `Successful` is returned. If the request fails, an error message is returned. The error message can include an error code.
+	// > If the request is successful, `Successful` is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type DeleteSQLRateLimitingRulesResponseBody struct {
 	//
 	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

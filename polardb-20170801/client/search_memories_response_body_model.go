@@ -30,7 +30,7 @@ type SearchMemoriesResponseBody struct {
 	//
 	// 1
 	Page *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type SearchMemoriesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of results.
 	Results []*SearchMemoriesResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// The total number of entries that meet the conditions.
+	// The total number of records that meet the specified conditions.
 	//
 	// example:
 	//
@@ -136,18 +136,26 @@ func (s *SearchMemoriesResponseBody) Validate() error {
 type SearchMemoriesResponseBodyResults struct {
 	// The creation time.
 	//
-	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is in ISO 8601 format and follows the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
 	// 2025-09-26T08:25:44Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The event information.
+	//
+	// example:
+	//
+	// abc
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	// The memory ID.
 	//
 	// example:
 	//
 	// 423
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The first input item in the result list.
+	Input []interface{} `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
 	// The memory content.
 	//
 	// example:
@@ -160,6 +168,12 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// agent1
 	MemoryAgentId *string `json:"MemoryAgentId,omitempty" xml:"MemoryAgentId,omitempty"`
+	// The first memory ID in the result set.
+	//
+	// example:
+	//
+	// abc
+	MemoryId *string `json:"MemoryId,omitempty" xml:"MemoryId,omitempty"`
 	// The user to whom the memory belongs.
 	//
 	// example:
@@ -170,17 +184,35 @@ type SearchMemoriesResponseBodyResults struct {
 	//
 	// example:
 	//
-	// {\\"tags\\":\\"Issue_date_2023-11-30,VD_Active\\"}
+	// {"tags":"Issue_date_2023-11-30,VD_Active"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The first new memory information in the result.
+	//
+	// example:
+	//
+	// abc
+	NewMemory *string `json:"NewMemory,omitempty" xml:"NewMemory,omitempty"`
+	// The first old memory value in the result.
+	//
+	// example:
+	//
+	// abc
+	OldMemory *string `json:"OldMemory,omitempty" xml:"OldMemory,omitempty"`
 	// The score.
 	//
 	// example:
 	//
 	// 12
 	Score *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The number of update records.
+	//
+	// example:
+	//
+	// 1
+	UpdateCount *int32 `json:"UpdateCount,omitempty" xml:"UpdateCount,omitempty"`
 	// The update time.
 	//
-	// The time follows the ISO 8601 standard and is displayed in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time is in ISO 8601 format and follows the UTC time zone (format: YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -200,8 +232,16 @@ func (s *SearchMemoriesResponseBodyResults) GetCreateTime() *string {
 	return s.CreateTime
 }
 
+func (s *SearchMemoriesResponseBodyResults) GetEvent() *string {
+	return s.Event
+}
+
 func (s *SearchMemoriesResponseBodyResults) GetId() *string {
 	return s.Id
+}
+
+func (s *SearchMemoriesResponseBodyResults) GetInput() []interface{} {
+	return s.Input
 }
 
 func (s *SearchMemoriesResponseBodyResults) GetMemory() *string {
@@ -212,6 +252,10 @@ func (s *SearchMemoriesResponseBodyResults) GetMemoryAgentId() *string {
 	return s.MemoryAgentId
 }
 
+func (s *SearchMemoriesResponseBodyResults) GetMemoryId() *string {
+	return s.MemoryId
+}
+
 func (s *SearchMemoriesResponseBodyResults) GetMemoryUserId() *string {
 	return s.MemoryUserId
 }
@@ -220,8 +264,20 @@ func (s *SearchMemoriesResponseBodyResults) GetMetadata() *string {
 	return s.Metadata
 }
 
+func (s *SearchMemoriesResponseBodyResults) GetNewMemory() *string {
+	return s.NewMemory
+}
+
+func (s *SearchMemoriesResponseBodyResults) GetOldMemory() *string {
+	return s.OldMemory
+}
+
 func (s *SearchMemoriesResponseBodyResults) GetScore() *string {
 	return s.Score
+}
+
+func (s *SearchMemoriesResponseBodyResults) GetUpdateCount() *int32 {
+	return s.UpdateCount
 }
 
 func (s *SearchMemoriesResponseBodyResults) GetUpdateTime() *string {
@@ -233,8 +289,18 @@ func (s *SearchMemoriesResponseBodyResults) SetCreateTime(v string) *SearchMemor
 	return s
 }
 
+func (s *SearchMemoriesResponseBodyResults) SetEvent(v string) *SearchMemoriesResponseBodyResults {
+	s.Event = &v
+	return s
+}
+
 func (s *SearchMemoriesResponseBodyResults) SetId(v string) *SearchMemoriesResponseBodyResults {
 	s.Id = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBodyResults) SetInput(v []interface{}) *SearchMemoriesResponseBodyResults {
+	s.Input = v
 	return s
 }
 
@@ -248,6 +314,11 @@ func (s *SearchMemoriesResponseBodyResults) SetMemoryAgentId(v string) *SearchMe
 	return s
 }
 
+func (s *SearchMemoriesResponseBodyResults) SetMemoryId(v string) *SearchMemoriesResponseBodyResults {
+	s.MemoryId = &v
+	return s
+}
+
 func (s *SearchMemoriesResponseBodyResults) SetMemoryUserId(v string) *SearchMemoriesResponseBodyResults {
 	s.MemoryUserId = &v
 	return s
@@ -258,8 +329,23 @@ func (s *SearchMemoriesResponseBodyResults) SetMetadata(v string) *SearchMemorie
 	return s
 }
 
+func (s *SearchMemoriesResponseBodyResults) SetNewMemory(v string) *SearchMemoriesResponseBodyResults {
+	s.NewMemory = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBodyResults) SetOldMemory(v string) *SearchMemoriesResponseBodyResults {
+	s.OldMemory = &v
+	return s
+}
+
 func (s *SearchMemoriesResponseBodyResults) SetScore(v string) *SearchMemoriesResponseBodyResults {
 	s.Score = &v
+	return s
+}
+
+func (s *SearchMemoriesResponseBodyResults) SetUpdateCount(v int32) *SearchMemoriesResponseBodyResults {
+	s.UpdateCount = &v
 	return s
 }
 
