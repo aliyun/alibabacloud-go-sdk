@@ -31,6 +31,10 @@ type ModuleVersionsValue struct {
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// components
+	//
+	// example:
+	//
+	// {}
 	Components map[string]*ModuleVersionsValueComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
 }
 

@@ -220,6 +220,10 @@ type CreateAppAssistantAgentSsoLoginResponseBodyModule struct {
 	// 2025-07-30T16:00Z
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The platform-specific extension fields.
+	//
+	// example:
+	//
+	// {}
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The platform type identifier.
 	//

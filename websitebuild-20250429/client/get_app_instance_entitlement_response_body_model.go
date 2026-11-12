@@ -269,7 +269,7 @@ type GetAppInstanceEntitlementResponseBodyModuleItems struct {
 	//
 	// example:
 	//
-	// on
+	// true
 	Available *bool `json:"Available,omitempty" xml:"Available,omitempty"`
 	// The code of the entitlement item.
 	//
@@ -337,7 +337,7 @@ type GetAppInstanceEntitlementResponseBodyModuleItems struct {
 	//
 	// example:
 	//
-	// 0
+	// true
 	Running *bool `json:"Running,omitempty" xml:"Running,omitempty"`
 	// The entitlement type. Valid values: FEATURE, RESOURCE, and RUNTIME.
 	//

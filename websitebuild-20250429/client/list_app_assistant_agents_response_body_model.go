@@ -240,6 +240,10 @@ type ListAppAssistantAgentsResponseBodyModule struct {
 	// The embedding configuration.
 	EmbedConfig *ListAppAssistantAgentsResponseBodyModuleEmbedConfig `json:"EmbedConfig,omitempty" xml:"EmbedConfig,omitempty" type:"Struct"`
 	// The extension parameters.
+	//
+	// example:
+	//
+	// {}
 	ExtraParams map[string]*string `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
 	// The creation time.
 	//
@@ -423,12 +427,16 @@ type ListAppAssistantAgentsResponseBodyModuleCredential struct {
 	// sk-xxxxxx
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
 	// The extension field.
+	//
+	// example:
+	//
+	// {}
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The password.
 	//
 	// example:
 	//
-	// ***
+	// Demo****2026
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The username.
 	//
@@ -497,6 +505,10 @@ func (s *ListAppAssistantAgentsResponseBodyModuleCredential) Validate() error {
 
 type ListAppAssistantAgentsResponseBodyModuleEmbedConfig struct {
 	// The extension field.
+	//
+	// example:
+	//
+	// {}
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The raw embedding script.
 	RawScript *string `json:"RawScript,omitempty" xml:"RawScript,omitempty"`

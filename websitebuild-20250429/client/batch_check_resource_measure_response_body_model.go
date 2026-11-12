@@ -214,6 +214,10 @@ type BatchCheckResourceMeasureResponseBodyModule struct {
 	// Indicates whether all checks passed.
 	AllPassed *bool `json:"AllPassed,omitempty" xml:"AllPassed,omitempty"`
 	// The check results for each resource, where the key is the resourceCode.
+	//
+	// example:
+	//
+	// {"InspirationTokens":{"Passed":true,"ResourceCode":"InspirationTokens"}}
 	Results map[string]*ModuleResultsValue `json:"Results,omitempty" xml:"Results,omitempty"`
 }
 

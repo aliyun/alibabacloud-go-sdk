@@ -40,13 +40,13 @@ type AllocateSupabaseForAdminRequest struct {
 	//
 	// staging
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The sort column.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC, DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//

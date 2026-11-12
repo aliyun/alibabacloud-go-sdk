@@ -62,7 +62,7 @@ type AuthorizeAppProxyOpsResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// 请求参数不合法。
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
@@ -215,7 +215,7 @@ type AuthorizeAppProxyOpsResponseBodyModule struct {
 	//
 	// example:
 	//
-	// Y
+	// true
 	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
 	// The RAM service role authorization link returned when the service-linked role is not authorized.
 	//

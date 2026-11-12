@@ -60,7 +60,7 @@ type AppServiceAggregate struct {
 	//
 	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The end time. It is in ISO 8601 format and uses the UTC time zone (Z).
+	// The end time in ISO 8601 format in the UTC time zone (Z).
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type AppServiceAggregate struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of flow nodes.
 	NodeList []*TreeNode `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
-	// Uniquely identifies an operation.
+	// The address used to uniquely identify an operation.
 	OperationAddress *AppOperationAddress `json:"OperationAddress,omitempty" xml:"OperationAddress,omitempty"`
 	// The configuration information of the application service.
 	Profile *AppServiceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
@@ -110,7 +110,11 @@ type AppServiceAggregate struct {
 	//
 	// WEBSITE_DESIGN
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The description of the service type.
+	// The service type description.
+	//
+	// example:
+	//
+	// Website design service
 	ServiceTypeText *string `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
 	// The application identifier.
 	//
@@ -118,7 +122,7 @@ type AppServiceAggregate struct {
 	//
 	// inst-001
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time. It is a UNIX timestamp in milliseconds.
+	// The start time as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

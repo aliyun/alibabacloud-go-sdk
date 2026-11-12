@@ -212,6 +212,10 @@ func (s *RenewAppSandboxResponseBody) Validate() error {
 
 type RenewAppSandboxResponseBodyModule struct {
 	// The preview URLs.
+	//
+	// example:
+	//
+	// {}
 	PreviewUrls map[string]*string `json:"PreviewUrls,omitempty" xml:"PreviewUrls,omitempty"`
 }
 

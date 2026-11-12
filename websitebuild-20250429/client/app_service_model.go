@@ -50,7 +50,7 @@ type AppService struct {
 	//
 	// WS20251211153330000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The creation time in ISO 8601 format, in the UTC time zone (Z).
+	// The creation time in ISO 8601 format in the UTC time zone (Z).
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type AppService struct {
 	//
 	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The end time in ISO 8601 format, in the UTC time zone (Z).
+	// The end time in ISO 8601 format in the UTC time zone (Z).
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type AppService struct {
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The update time.
+	// The modification time.
 	//
 	// example:
 	//
@@ -103,6 +103,10 @@ type AppService struct {
 	// WEBSITE_DESIGN
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The service type description.
+	//
+	// example:
+	//
+	// Website design service
 	ServiceTypeText *string `json:"ServiceTypeText,omitempty" xml:"ServiceTypeText,omitempty"`
 	// The application identifier.
 	//
@@ -110,7 +114,7 @@ type AppService struct {
 	//
 	// inst-001
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time, specified as a UNIX timestamp in milliseconds.
+	// The start time as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

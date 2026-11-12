@@ -9,12 +9,20 @@ type iGetTempDownloadUrlRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizId(v string) *GetTempDownloadUrlRequest
+	GetBizId() *string
 	SetOssKey(v string) *GetTempDownloadUrlRequest
 	GetOssKey() *string
 }
 
 type GetTempDownloadUrlRequest struct {
-	// The key of the OSS object.
+	// The business ID.
+	//
+	// example:
+	//
+	// WD20250703155602000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The OSS object key.
 	//
 	// example:
 	//
@@ -30,8 +38,17 @@ func (s GetTempDownloadUrlRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTempDownloadUrlRequest) GetBizId() *string {
+	return s.BizId
+}
+
 func (s *GetTempDownloadUrlRequest) GetOssKey() *string {
 	return s.OssKey
+}
+
+func (s *GetTempDownloadUrlRequest) SetBizId(v string) *GetTempDownloadUrlRequest {
+	s.BizId = &v
+	return s
 }
 
 func (s *GetTempDownloadUrlRequest) SetOssKey(v string) *GetTempDownloadUrlRequest {

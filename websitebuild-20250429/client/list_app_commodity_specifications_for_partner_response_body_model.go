@@ -214,6 +214,10 @@ func (s *ListAppCommoditySpecificationsForPartnerResponseBody) Validate() error 
 
 type ListAppCommoditySpecificationsForPartnerResponseBodyModule struct {
 	// The domain name for container health checks.
+	//
+	// example:
+	//
+	// {}
 	Versions map[string]*ModuleVersionsValue `json:"Versions,omitempty" xml:"Versions,omitempty"`
 }
 

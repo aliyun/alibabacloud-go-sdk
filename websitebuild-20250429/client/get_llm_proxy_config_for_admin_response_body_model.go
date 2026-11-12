@@ -313,13 +313,13 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// example:
 	//
-	// NORMAL
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The reason for suspension.
 	//
 	// example:
 	//
-	// xxx
+	// 服务已暂停。
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
 }
 

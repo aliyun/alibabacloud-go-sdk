@@ -408,6 +408,10 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData struct {
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The default values.
+	//
+	// example:
+	//
+	// {"deploy_area":{"Code":"deploy_area","Name":"部署地区","ModuleAttrStatus":1,"Properties":{"deploy_area":{"Code":"deploy_area","Name":"部署地区","Value":"HongKong","Values":[{"Value":"HongKong","Name":"中国香港"}]}}}}
 	Components map[string]*ModuleDataComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The file name.
 	//
@@ -416,6 +420,10 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData struct {
 	// 文件名
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The duration.
+	//
+	// example:
+	//
+	// {"version":{"Code":"version","Values":[{"Value":"V2.0"}]}}
 	Properties map[string]*ModuleDataPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
 }
 
@@ -475,6 +483,10 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext struct {
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The default values.
+	//
+	// example:
+	//
+	// {"deploy_area":{"Code":"deploy_area","Name":"部署地区","ModuleAttrStatus":1,"Properties":{"deploy_area":{"Code":"deploy_area","Name":"部署地区","Value":"HongKong","Values":[{"Value":"HongKong","Name":"中国香港"}]}}}}
 	Components map[string]*ModuleNextComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The website name.
 	//
@@ -483,6 +495,10 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext struct {
 	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The frame rate.
+	//
+	// example:
+	//
+	// {"version":{"Code":"version","Values":[{"Value":"V2.0"}]}}
 	Properties map[string]*ModuleNextPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
 }
 

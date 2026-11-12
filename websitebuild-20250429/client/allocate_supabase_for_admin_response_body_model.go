@@ -34,7 +34,7 @@ type iAllocateSupabaseForAdminResponseBody interface {
 }
 
 type AllocateSupabaseForAdminResponseBody struct {
-	// The details of the access denial.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the app.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The exception message.
+	// The error message.
 	//
 	// example:
 	//
-	// System exception
+	// System error
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Specifies whether the request is processed synchronously.
 	//
@@ -247,7 +247,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The additional information.
+	// The extra information.
 	//
 	// example:
 	//
@@ -271,12 +271,14 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// false
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The access password of the RDS database.
+	// The access password for the RDS database.
 	//
 	// example:
 	//
 	// 111
 	RdsDatabasePassword *string `json:"RdsDatabasePassword,omitempty" xml:"RdsDatabasePassword,omitempty"`
+	// The read-only business schema name parsed by the Builder trusted binding. This name cannot be used as input for tenant switching.
+	//
 	// example:
 	//
 	// tenant_00000000-0000-4000-8000-000000000001_schema
@@ -287,11 +289,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// - 0: Paused.
-	//
-	// - 1: Running.
+	// The status. Valid values: 0 (Paused) and 1 (Running).
 	//
 	// example:
 	//
@@ -327,19 +325,19 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	SupabaseKongUrl *string `json:"SupabaseKongUrl,omitempty" xml:"SupabaseKongUrl,omitempty"`
-	// The private endpoint of the Supabase instance.
+	// The private network endpoint of the Supabase instance.
 	//
 	// example:
 	//
 	// 1111
 	SupabasePrivateIp *string `json:"SupabasePrivateIp,omitempty" xml:"SupabasePrivateIp,omitempty"`
-	// The public endpoint of the Supabase instance.
+	// The public network connection endpoint of the Supabase instance.
 	//
 	// example:
 	//
 	// 111
 	SupabasePublicIp *string `json:"SupabasePublicIp,omitempty" xml:"SupabasePublicIp,omitempty"`
-	// The public URL of the Supabase instance.
+	// The public URL of Supabase.
 	//
 	// example:
 	//
@@ -351,6 +349,8 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// GFCBAMJH-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The read-only tenant mode: schema indicates the legacy Builder pool, and db or agenticdb indicates the new platform. The history record can be empty.
+	//
 	// example:
 	//
 	// schema

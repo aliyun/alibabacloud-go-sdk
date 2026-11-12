@@ -37,12 +37,16 @@ type ModuleVersionsValueComponentsValue struct {
 	// 组件实例属性配置
 	InstanceProperty []*ModuleVersionsValueComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
 	// 组件实例属性配置
+	//
+	// example:
+	//
+	// {}
 	Properties map[string]*ModuleVersionsValueComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// 模块属性状态
 	//
 	// example:
 	//
-	// attr
+	// 1
 	ModuleAttrStatus *int32 `json:"ModuleAttrStatus,omitempty" xml:"ModuleAttrStatus,omitempty"`
 }
 

@@ -9,6 +9,8 @@ type iListAppInstancesShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetApplicationType(v string) *ListAppInstancesShrinkRequest
+	GetApplicationType() *string
 	SetBizId(v string) *ListAppInstancesShrinkRequest
 	GetBizId() *string
 	SetBizIdsShrink(v string) *ListAppInstancesShrinkRequest
@@ -40,6 +42,18 @@ type iListAppInstancesShrinkRequest interface {
 }
 
 type ListAppInstancesShrinkRequest struct {
+	// The application type. Valid values:
+	//
+	// - PC_WebSite: web application.
+	//
+	// - Mini_Program: mini program.
+	//
+	// If this parameter is not specified or left empty, applications are not filtered by type. For compatibility, historical missing, NULL, or empty types are treated as PC_WebSite.
+	//
+	// example:
+	//
+	// PC_WebSite
+	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The business ID.
 	//
 	// example:
@@ -66,9 +80,7 @@ type ListAppInstancesShrinkRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The maximum number of results returned per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -104,13 +116,15 @@ type ListAppInstancesShrinkRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query parameters.
+	// The query parameter.
 	//
 	// example:
 	//
 	// {\\"RequestId\\":\\"\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The query mode. A value of CONTENT_CREATION indicates a lightweight query for the content creation site selector, which queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
+	// The query mode. Valid values:
+	//
+	// - CONTENT_CREATION: specifies a lightweight query for the content creation site selector. It queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
 	//
 	// example:
 	//
@@ -126,6 +140,10 @@ func (s ListAppInstancesShrinkRequest) String() string {
 
 func (s ListAppInstancesShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListAppInstancesShrinkRequest) GetApplicationType() *string {
+	return s.ApplicationType
 }
 
 func (s *ListAppInstancesShrinkRequest) GetBizId() *string {
@@ -182,6 +200,11 @@ func (s *ListAppInstancesShrinkRequest) GetQueryMode() *string {
 
 func (s *ListAppInstancesShrinkRequest) GetStatusListShrink() *string {
 	return s.StatusListShrink
+}
+
+func (s *ListAppInstancesShrinkRequest) SetApplicationType(v string) *ListAppInstancesShrinkRequest {
+	s.ApplicationType = &v
+	return s
 }
 
 func (s *ListAppInstancesShrinkRequest) SetBizId(v string) *ListAppInstancesShrinkRequest {

@@ -236,6 +236,10 @@ type CreateAppAssistantAgentResponseBodyModule struct {
 	// The embedding configuration.
 	EmbedConfig *CreateAppAssistantAgentResponseBodyModuleEmbedConfig `json:"EmbedConfig,omitempty" xml:"EmbedConfig,omitempty" type:"Struct"`
 	// The extended parameters.
+	//
+	// example:
+	//
+	// {}
 	ExtraParams map[string]*string `json:"ExtraParams,omitempty" xml:"ExtraParams,omitempty"`
 	// The creation time.
 	//
@@ -407,6 +411,10 @@ func (s *CreateAppAssistantAgentResponseBodyModule) Validate() error {
 
 type CreateAppAssistantAgentResponseBodyModuleCredential struct {
 	// The extended field.
+	//
+	// example:
+	//
+	// {}
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The username.
 	//
@@ -448,6 +456,10 @@ func (s *CreateAppAssistantAgentResponseBodyModuleCredential) Validate() error {
 
 type CreateAppAssistantAgentResponseBodyModuleEmbedConfig struct {
 	// The extended field.
+	//
+	// example:
+	//
+	// {}
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The raw embedding script.
 	RawScript *string `json:"RawScript,omitempty" xml:"RawScript,omitempty"`

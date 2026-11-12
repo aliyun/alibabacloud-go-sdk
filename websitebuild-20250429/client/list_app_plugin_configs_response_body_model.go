@@ -278,6 +278,10 @@ type ListAppPluginConfigsResponseBodyModule struct {
 	// True
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The extension information.
+	//
+	// example:
+	//
+	// {}
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The creation time. The time is in ISO 8601 format in UTC (Z).
 	//

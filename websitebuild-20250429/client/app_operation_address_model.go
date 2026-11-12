@@ -35,8 +35,16 @@ type AppOperationAddress struct {
 	// The action button list.
 	Actions []*AppOperateAction `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
 	// The customer service design URL.
+	//
+	// example:
+	//
+	// https://example.com/customer-service/config
 	AiCustomerConfigUrl *string `json:"AiCustomerConfigUrl,omitempty" xml:"AiCustomerConfigUrl,omitempty"`
 	// The AI design URL.
+	//
+	// example:
+	//
+	// https://example.com/ai-design
 	AiDesignUrl *string `json:"AiDesignUrl,omitempty" xml:"AiDesignUrl,omitempty"`
 	// The application publishing URL.
 	//

@@ -64,7 +64,7 @@ type GetAIStaffPreviewUrlResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// DtsJobId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
@@ -214,6 +214,10 @@ func (s *GetAIStaffPreviewUrlResponseBody) Validate() error {
 
 type GetAIStaffPreviewUrlResponseBodyModule struct {
 	// The preview URL information, including fields such as previewUrl and sessionId.
+	//
+	// example:
+	//
+	// {}
 	UrlMap map[string]*string `json:"UrlMap,omitempty" xml:"UrlMap,omitempty"`
 }
 

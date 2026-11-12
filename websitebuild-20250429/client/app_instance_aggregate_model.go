@@ -51,6 +51,8 @@ type iAppInstanceAggregate interface {
 	GetIconUrl() *string
 	SetName(v string) *AppInstanceAggregate
 	GetName() *string
+	SetOffline(v bool) *AppInstanceAggregate
+	GetOffline() *bool
 	SetPartnerDetail(v *AppInstanceAggregatePartnerDetail) *AppInstanceAggregate
 	GetPartnerDetail() *AppInstanceAggregatePartnerDetail
 	SetProfile(v *AppInstanceProfile) *AppInstanceAggregate
@@ -84,7 +86,7 @@ type iAppInstanceAggregate interface {
 type AppInstanceAggregate struct {
 	// The list of AI staff associated with the application.
 	AiStaffList []*AppAiStaff `json:"AiStaffList,omitempty" xml:"AiStaffList,omitempty" type:"Repeated"`
-	// The operation address of the application.
+	// The application operation address.
 	AppOperationAddress *AppOperationAddress `json:"AppOperationAddress,omitempty" xml:"AppOperationAddress,omitempty"`
 	// The list of service instances associated with the application.
 	AppServiceList []*AppServiceAggregate `json:"AppServiceList,omitempty" xml:"AppServiceList,omitempty" type:"Repeated"`
@@ -112,7 +114,7 @@ type AppInstanceAggregate struct {
 	//
 	// CLOUD_DREAM_SAAS
 	BuildType *string `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
-	// The associated conversation information. The value is null if no conversation is associated.
+	// The associated conversation information. This field is null if no associated conversation exists.
 	ConversationInfo *AppInstanceAggregateConversationInfo `json:"ConversationInfo,omitempty" xml:"ConversationInfo,omitempty" type:"Struct"`
 	// The creation time.
 	//
@@ -138,7 +140,7 @@ type AppInstanceAggregate struct {
 	//
 	// WS20250801151731000007
 	DesignSpecBizId *string `json:"DesignSpecBizId,omitempty" xml:"DesignSpecBizId,omitempty"`
-	// The ID of the design configuration.
+	// The ID of the design configuration sheet.
 	DesignSpecId *string `json:"DesignSpecId,omitempty" xml:"DesignSpecId,omitempty"`
 	// The primary domain name.
 	//
@@ -170,7 +172,7 @@ type AppInstanceAggregate struct {
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The publish time.
+	// The publication time.
 	//
 	// example:
 	//
@@ -188,7 +190,9 @@ type AppInstanceAggregate struct {
 	//
 	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The partner details.
+	// The current offline status. A value of true explicitly indicates that the website is currently offline. A value of false indicates that the website is not offline, and historical offline reasons do not determine the current status. If the current status cannot be determined or the legacy response does not contain this field, the caller must not default the unknown status to online.
+	Offline *bool `json:"Offline,omitempty" xml:"Offline,omitempty"`
+	// The details.
 	PartnerDetail *AppInstanceAggregatePartnerDetail `json:"PartnerDetail,omitempty" xml:"PartnerDetail,omitempty" type:"Struct"`
 	// The configuration and runtime information of the application instance.
 	Profile *AppInstanceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
@@ -348,6 +352,10 @@ func (s *AppInstanceAggregate) GetIconUrl() *string {
 
 func (s *AppInstanceAggregate) GetName() *string {
 	return s.Name
+}
+
+func (s *AppInstanceAggregate) GetOffline() *bool {
+	return s.Offline
 }
 
 func (s *AppInstanceAggregate) GetPartnerDetail() *AppInstanceAggregatePartnerDetail {
@@ -511,6 +519,11 @@ func (s *AppInstanceAggregate) SetName(v string) *AppInstanceAggregate {
 	return s
 }
 
+func (s *AppInstanceAggregate) SetOffline(v bool) *AppInstanceAggregate {
+	s.Offline = &v
+	return s
+}
+
 func (s *AppInstanceAggregate) SetPartnerDetail(v *AppInstanceAggregatePartnerDetail) *AppInstanceAggregate {
 	s.PartnerDetail = v
 	return s
@@ -638,7 +651,7 @@ func (s *AppInstanceAggregate) Validate() error {
 }
 
 type AppInstanceAggregateConversationInfo struct {
-	// The number of conversation turns. A value of 0 indicates an empty conversation.
+	// The number of user conversation turns. A value of 0 indicates an empty conversation.
 	//
 	// example:
 	//
@@ -676,7 +689,7 @@ type AppInstanceAggregatePartnerDetail struct {
 	//
 	// 10001
 	PartnerId *string `json:"PartnerId,omitempty" xml:"PartnerId,omitempty"`
-	// The partner binding status. Valid values: BOUND (bound) and UNBOUND (unbound).
+	// The partner binding status. Valid values: BOUND (bound) and UNBOUND (to be bound).
 	//
 	// example:
 	//
@@ -860,13 +873,17 @@ func (s *AppInstanceAggregatePartnerDetailBindData) Validate() error {
 }
 
 type AppInstanceAggregateTags struct {
-	// The tag key of the instance. Valid values of N: **1*	- to **20**. The value cannot be an empty string. The value can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, it cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance. Valid values of N: **1*	- to **20**. The value can be an empty string. The value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, it can be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

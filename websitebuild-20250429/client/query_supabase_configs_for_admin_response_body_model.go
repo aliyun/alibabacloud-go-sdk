@@ -216,6 +216,10 @@ func (s *QuerySupabaseConfigsForAdminResponseBody) Validate() error {
 
 type QuerySupabaseConfigsForAdminResponseBodyModule struct {
 	// The scope. Valid values: subUser and owner.
+	//
+	// example:
+	//
+	// {"SMS_ALIYUN_SIGN_NAME":"示例签名"}
 	Configs map[string]interface{} `json:"Configs,omitempty" xml:"Configs,omitempty"`
 }
 

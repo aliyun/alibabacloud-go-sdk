@@ -43,6 +43,10 @@ type CreateAIStaffChatRequest struct {
 	// The list of conversation messages.
 	Messages []*CreateAIStaffChatRequestMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
 	// The additional information for the conversation.
+	//
+	// example:
+	//
+	// {}
 	MetaData map[string]*string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 }
 
@@ -126,6 +130,10 @@ type CreateAIStaffChatRequestMessages struct {
 	// application/octet-stream
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	// The business extension metadata in Map format. The value must be a JSON string.
+	//
+	// example:
+	//
+	// {}
 	MetaData map[string]*string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The conversation role.
 	//

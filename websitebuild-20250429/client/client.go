@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("WebsiteBuild")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-zhangjiakou": dara.String("websitebuild.aliyuncs.com"),
@@ -62,11 +70,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Performs resource allocation for a Supabase instance.
+// Allocates a Supabase instance to a resource allocation.
 //
 // Description:
 //
-// Queries the information about the Supabase instance associated with a resource.
+// Queries the Supabase instance information of a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -134,11 +142,11 @@ func (client *Client) AllocateSupabaseForAdminWithOptions(request *AllocateSupab
 
 // Summary:
 //
-// Performs resource allocation for a Supabase instance.
+// Allocates a Supabase instance to a resource allocation.
 //
 // Description:
 //
-// Queries the information about the Supabase instance associated with a resource.
+// Queries the Supabase instance information of a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -4326,11 +4334,11 @@ func (client *Client) GetAppInstanceEntitlement(request *GetAppInstanceEntitleme
 
 // Summary:
 //
-// Queries the details of application instances.
+// Queries application instance information.
 //
 // Description:
 //
-// Queries the details of application instances.
+// Queries application instance information.
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -4378,11 +4386,11 @@ func (client *Client) GetAppInstanceForAdminWithOptions(request *GetAppInstanceF
 
 // Summary:
 //
-// Queries the details of application instances.
+// Queries application instance information.
 //
 // Description:
 //
-// Queries the details of application instances.
+// Queries application instance information.
 //
 // @param request - GetAppInstanceForAdminRequest
 //
@@ -4675,6 +4683,108 @@ func (client *Client) GetAppPluginConfig(request *GetAppPluginConfigRequest) (_r
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAppPluginConfigResponse{}
 	_body, _err := client.GetAppPluginConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns an encrypted configuration string.
+//
+// Description:
+//
+// ## Request description
+//
+// - The service design of this operation is exclusively for internal platform services to read the plugin configuration of a specific site by using a service identity.
+//
+// - Authentication relies entirely on gateway RAM control and is available only to trusted internal service accounts.
+//
+// - If the specified plugin is not installed on the site or the request parameters are empty, the operation returns a success status with an empty Module. Clients that invoke the operation should treat this as unconfigured.
+//
+// - The returned `PluginConfig` field contains an AES-encrypted JSON character string. Clients that invoke the operation must perform decryption before use.
+//
+// - To invoke in user mode, continue to use the `GetAppPluginConfig` operation instead of this operation.
+//
+// - The `BizId` and `PluginId` parameters are both required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module. This is a fault-tolerance behavior, and clients that invoke the operation should not rely on it.
+//
+// - This operation supports HTTPS and RPC-style POST requests, with parameters passed through formData.
+//
+// @param request - GetAppPluginConfigForAdminRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppPluginConfigForAdminResponse
+func (client *Client) GetAppPluginConfigForAdminWithOptions(request *GetAppPluginConfigForAdminRequest, runtime *dara.RuntimeOptions) (_result *GetAppPluginConfigForAdminResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		body["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.PluginId) {
+		body["PluginId"] = request.PluginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAppPluginConfigForAdmin"),
+		Version:     dara.String("2025-04-29"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAppPluginConfigForAdminResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns an encrypted configuration string.
+//
+// Description:
+//
+// ## Request description
+//
+// - The service design of this operation is exclusively for internal platform services to read the plugin configuration of a specific site by using a service identity.
+//
+// - Authentication relies entirely on gateway RAM control and is available only to trusted internal service accounts.
+//
+// - If the specified plugin is not installed on the site or the request parameters are empty, the operation returns a success status with an empty Module. Clients that invoke the operation should treat this as unconfigured.
+//
+// - The returned `PluginConfig` field contains an AES-encrypted JSON character string. Clients that invoke the operation must perform decryption before use.
+//
+// - To invoke in user mode, continue to use the `GetAppPluginConfig` operation instead of this operation.
+//
+// - The `BizId` and `PluginId` parameters are both required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module. This is a fault-tolerance behavior, and clients that invoke the operation should not rely on it.
+//
+// - This operation supports HTTPS and RPC-style POST requests, with parameters passed through formData.
+//
+// @param request - GetAppPluginConfigForAdminRequest
+//
+// @return GetAppPluginConfigForAdminResponse
+func (client *Client) GetAppPluginConfigForAdmin(request *GetAppPluginConfigForAdminRequest) (_result *GetAppPluginConfigForAdminResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAppPluginConfigForAdminResponse{}
+	_body, _err := client.GetAppPluginConfigForAdminWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5296,11 +5406,11 @@ func (client *Client) GetAppSupabaseAuthConfig(request *GetAppSupabaseAuthConfig
 
 // Summary:
 //
-// Retrieves information about a Supabase instance.
+// Retrieves the information about a Supabase instance.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the information about an application instance.
 //
 // @param request - GetAppSupabaseInstanceRequest
 //
@@ -5344,11 +5454,11 @@ func (client *Client) GetAppSupabaseInstanceWithOptions(request *GetAppSupabaseI
 
 // Summary:
 //
-// Retrieves information about a Supabase instance.
+// Retrieves the information about a Supabase instance.
 //
 // Description:
 //
-// Queries application instance information.
+// Queries the information about an application instance.
 //
 // @param request - GetAppSupabaseInstanceRequest
 //
@@ -6225,13 +6335,19 @@ func (client *Client) GetTempDownloadUrlWithOptions(request *GetTempDownloadUrlR
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizId) {
+		query["BizId"] = request.BizId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OssKey) {
 		body["OssKey"] = request.OssKey
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetTempDownloadUrl"),
@@ -7468,7 +7584,7 @@ func (client *Client) ListAppInstanceDomains(request *ListAppInstanceDomainsRequ
 
 // Summary:
 //
-// Queries a list of application instances.
+// Queries the list of application instances.
 //
 // @param tmpReq - ListAppInstancesRequest
 //
@@ -7493,6 +7609,10 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationType) {
+		query["ApplicationType"] = request.ApplicationType
+	}
+
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
 	}
@@ -7574,7 +7694,7 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 
 // Summary:
 //
-// Queries a list of application instances.
+// Queries the list of application instances.
 //
 // @param request - ListAppInstancesRequest
 //

@@ -118,7 +118,7 @@ type AppInstanceProfile struct {
 	//
 	// support@example.com
 	CustomerService *string `json:"CustomerService,omitempty" xml:"CustomerService,omitempty"`
-	// The code of the region where the application is deployed.
+	// The code of the application deployment area.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type AppInstanceProfile struct {
 	IcpbaNo *string `json:"IcpbaNo,omitempty" xml:"IcpbaNo,omitempty"`
 	// The independent server information. This information is computed in real time by DescribeAppInstance and is not populated in list operations.
 	IndependentDeployment *AppInstanceProfileIndependentDeployment `json:"IndependentDeployment,omitempty" xml:"IndependentDeployment,omitempty" type:"Struct"`
-	// The ID of the associated Lingxiao instance.
+	// The associated Lingxiao instance ID.
 	//
 	// example:
 	//
 	// lx-1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether the current user is included in the grayscale whitelist for the ChatBI feature.
+	// Specifies whether the current user is included in the canary release whitelist for the ChatBI feature.
 	OpenChatBi *bool `json:"OpenChatBi,omitempty" xml:"OpenChatBi,omitempty"`
 	// The time when the order was placed. The format is yyyy-MM-dd HH:mm:ss.
 	//
@@ -170,7 +170,7 @@ type AppInstanceProfile struct {
 	//
 	// seo-site-1
 	SeoSite *string `json:"SeoSite,omitempty" xml:"SeoSite,omitempty"`
-	// Specifies whether to enable the watermark for shared rendering. A value of 1 indicates that the feature is enabled, and a value of 0 indicates that the feature is disabled. If this parameter is not configured, it is left empty.
+	// Specifies whether to enable the share rendering watermark. Valid values: 1 (enabled) and 0 (disabled). If not configured, this parameter is empty.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type AppInstanceProfile struct {
 	//
 	// Max_Edition
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
-	// The display name of the site version, which includes the deployment region.
+	// The display name of the site version, which includes the deployment area.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type AppInstanceProfile struct {
 	//
 	// tpl-1
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The upgrade status of the instance. DOING indicates that the upgrade is in progress, SUCC indicates that the upgrade is successful, and FAIL indicates that the upgrade failed.
+	// The upgrade status of the instance. Valid values: DOING (upgrading), SUCC (upgraded successfully), and FAIL (upgrade failed).
 	//
 	// example:
 	//
@@ -466,27 +466,27 @@ func (s *AppInstanceProfile) Validate() error {
 }
 
 type AppInstanceProfileIndependentDeployment struct {
-	// Specifies whether retries are allowed after the independent server fails to be enabled.
+	// Specifies whether retries are allowed after the independent server fails to start.
 	CanRetry *bool `json:"CanRetry,omitempty" xml:"CanRetry,omitempty"`
-	// The code of the region where the independent server is deployed.
+	// The code of the deployment area for the independent server.
 	//
 	// example:
 	//
 	// HongKong
 	DeployArea *string `json:"DeployArea,omitempty" xml:"DeployArea,omitempty"`
-	// The type of the DNS record used when an independent IP address is bound to a domain name.
+	// The DNS record type used when binding a domain name to an independent IP address.
 	//
 	// example:
 	//
 	// A
 	DnsRecordType *string `json:"DnsRecordType,omitempty" xml:"DnsRecordType,omitempty"`
-	// The eligibility status of the independent server. UPGRADE_REQUIRED indicates that an upgrade is required, AVAILABLE indicates that the feature can be enabled, and UNAVAILABLE indicates that the feature is currently unavailable.
+	// The eligibility status of the independent server. Valid values: UPGRADE_REQUIRED (an upgrade is required), AVAILABLE (the feature can be enabled), and UNAVAILABLE (the feature is currently unavailable).
 	//
 	// example:
 	//
 	// AVAILABLE
 	Eligibility *string `json:"Eligibility,omitempty" xml:"Eligibility,omitempty"`
-	// The status of the independent server. NOT_ENABLED indicates that the feature is not enabled, ENABLING indicates that the feature is being enabled, ACTIVE indicates that the feature is enabled, and FAILED indicates that the feature failed to be enabled.
+	// The status of the independent server. Valid values: NOT_ENABLED (not enabled), ENABLING (enabling), ACTIVE (enabled), and FAILED (failed to enable).
 	//
 	// example:
 	//

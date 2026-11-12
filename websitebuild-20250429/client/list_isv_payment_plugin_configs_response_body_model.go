@@ -260,6 +260,10 @@ type ListIsvPaymentPluginConfigsResponseBodyModule struct {
 	// WS20250915163734000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// {}
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The creation time. The value is a UNIX timestamp in seconds.
 	//

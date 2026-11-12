@@ -37,12 +37,16 @@ type ModuleDataComponentsValue struct {
 	// Component instance property configuration
 	InstanceProperty []*ModuleDataComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
 	// Component instance property configuration
+	//
+	// example:
+	//
+	// {"deploy_area":{"Code":"deploy_area","Name":"部署地区","Value":"HongKong","Values":[{"Value":"HongKong","Name":"中国香港"}]}}
 	Properties map[string]*ModuleDataComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// Module property status
 	//
 	// example:
 	//
-	// placeholder
+	// 1
 	ModuleAttrStatus *int32 `json:"ModuleAttrStatus,omitempty" xml:"ModuleAttrStatus,omitempty"`
 }
 
