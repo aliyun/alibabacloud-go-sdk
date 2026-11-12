@@ -33,6 +33,8 @@ type iDmsGatewayOrder interface {
 	GetRegion() *string
 	SetState(v string) *DmsGatewayOrder
 	GetState() *string
+	SetTags(v string) *DmsGatewayOrder
+	GetTags() *string
 }
 
 type DmsGatewayOrder struct {
@@ -48,6 +50,7 @@ type DmsGatewayOrder struct {
 	PayNum        *int32  `json:"PayNum,omitempty" xml:"PayNum,omitempty"`
 	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	State         *string `json:"State,omitempty" xml:"State,omitempty"`
+	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DmsGatewayOrder) String() string {
@@ -104,6 +107,10 @@ func (s *DmsGatewayOrder) GetRegion() *string {
 
 func (s *DmsGatewayOrder) GetState() *string {
 	return s.State
+}
+
+func (s *DmsGatewayOrder) GetTags() *string {
+	return s.Tags
 }
 
 func (s *DmsGatewayOrder) SetBizType(v string) *DmsGatewayOrder {
@@ -163,6 +170,11 @@ func (s *DmsGatewayOrder) SetRegion(v string) *DmsGatewayOrder {
 
 func (s *DmsGatewayOrder) SetState(v string) *DmsGatewayOrder {
 	s.State = &v
+	return s
+}
+
+func (s *DmsGatewayOrder) SetTags(v string) *DmsGatewayOrder {
+	s.Tags = &v
 	return s
 }
 

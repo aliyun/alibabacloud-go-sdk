@@ -158,7 +158,7 @@ type WorkspaceActionStatusResponseBodyData struct {
 	//
 	// example:
 	//
-	// {\\"phase\\": \\"Created\\", \\"latestExecError\\": {\\"message\\": \\"\\", \\"code\\": \\"\\", \\"requestId\\": \\"\\", \\"extraInfo\\": \\"\\", \\"title\\": \\"\\"}}
+	// ERROR
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

@@ -384,6 +384,104 @@ func (client *Client) AddUserToDataAgentWorkspace(request *AddUserToDataAgentWor
 
 // Summary:
 //
+// 批量新建湖仓表分区
+//
+// @param tmpReq - BatchCreateDataLakePartitionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateDataLakePartitionsResponse
+func (client *Client) BatchCreateDataLakePartitionsWithOptions(tmpReq *BatchCreateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchCreateDataLakePartitionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PartitionInputs) {
+		request.PartitionInputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PartitionInputs, dara.String("PartitionInputs"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CatalogName) {
+		query["CatalogName"] = request.CatalogName
+	}
+
+	if !dara.IsNil(request.DbName) {
+		query["DbName"] = request.DbName
+	}
+
+	if !dara.IsNil(request.IfNotExists) {
+		query["IfNotExists"] = request.IfNotExists
+	}
+
+	if !dara.IsNil(request.NeedResult) {
+		query["NeedResult"] = request.NeedResult
+	}
+
+	if !dara.IsNil(request.TableName) {
+		query["TableName"] = request.TableName
+	}
+
+	if !dara.IsNil(request.Tid) {
+		query["Tid"] = request.Tid
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PartitionInputsShrink) {
+		body["PartitionInputs"] = request.PartitionInputsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchCreateDataLakePartitions"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchCreateDataLakePartitionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量新建湖仓表分区
+//
+// @param request - BatchCreateDataLakePartitionsRequest
+//
+// @return BatchCreateDataLakePartitionsResponse
+func (client *Client) BatchCreateDataLakePartitions(request *BatchCreateDataLakePartitionsRequest) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BatchCreateDataLakePartitionsResponse{}
+	_body, _err := client.BatchCreateDataLakePartitionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // CheckDataAgentMemoryConfig - Queries the memory generation and usage configuration of a DataAgent.
 //
 // @param request - CheckDataAgentMemoryConfigRequest
@@ -4955,6 +5053,68 @@ func (client *Client) GetListMcpServerToolsResult(request *GetListMcpServerTools
 
 // Summary:
 //
+// Retrieves the OAuth authorization URL required for the current user to bind a Lark account. After the user completes the authorization, the system automatically binds their Lark account.
+//
+// @param request - GetMyAgenticNotificationChannelAuthorizeUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMyAgenticNotificationChannelAuthorizeUrlResponse
+func (client *Client) GetMyAgenticNotificationChannelAuthorizeUrlWithOptions(request *GetMyAgenticNotificationChannelAuthorizeUrlRequest, runtime *dara.RuntimeOptions) (_result *GetMyAgenticNotificationChannelAuthorizeUrlResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMyAgenticNotificationChannelAuthorizeUrl"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMyAgenticNotificationChannelAuthorizeUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the OAuth authorization URL required for the current user to bind a Lark account. After the user completes the authorization, the system automatically binds their Lark account.
+//
+// @param request - GetMyAgenticNotificationChannelAuthorizeUrlRequest
+//
+// @return GetMyAgenticNotificationChannelAuthorizeUrlResponse
+func (client *Client) GetMyAgenticNotificationChannelAuthorizeUrl(request *GetMyAgenticNotificationChannelAuthorizeUrlRequest) (_result *GetMyAgenticNotificationChannelAuthorizeUrlResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetMyAgenticNotificationChannelAuthorizeUrlResponse{}
+	_body, _err := client.GetMyAgenticNotificationChannelAuthorizeUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a task to schedule and run a Notebook file.
 //
 // @param request - GetNotebookAndSubmitTaskRequest
@@ -8203,6 +8363,76 @@ func (client *Client) ListKnowledgeBases(request *ListKnowledgeBasesRequest) (_r
 
 // Summary:
 //
+// Queries the personal notification channel configurations of the current user in the current tenant, including channel status and bound identity information.
+//
+// @param request - ListMyAgenticNotificationChannelConfigsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMyAgenticNotificationChannelConfigsResponse
+func (client *Client) ListMyAgenticNotificationChannelConfigsWithOptions(request *ListMyAgenticNotificationChannelConfigsRequest, runtime *dara.RuntimeOptions) (_result *ListMyAgenticNotificationChannelConfigsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		query["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMyAgenticNotificationChannelConfigs"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMyAgenticNotificationChannelConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the personal notification channel configurations of the current user in the current tenant, including channel status and bound identity information.
+//
+// @param request - ListMyAgenticNotificationChannelConfigsRequest
+//
+// @return ListMyAgenticNotificationChannelConfigsResponse
+func (client *Client) ListMyAgenticNotificationChannelConfigs(request *ListMyAgenticNotificationChannelConfigsRequest) (_result *ListMyAgenticNotificationChannelConfigsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListMyAgenticNotificationChannelConfigsResponse{}
+	_body, _err := client.ListMyAgenticNotificationChannelConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of OSSIE models.
 //
 // @param request - ListOneMetaOssieModelsRequest
@@ -9445,13 +9675,13 @@ func (client *Client) SearchAgenticDatabase(request *SearchAgenticDatabaseReques
 //
 // ## Request description
 //
-// - The default value of `message_type` is `primary`. Set it to `additional` or `cancel` when you need to append information or cancel the session.
+// - The default value of message_type is primary. Set this parameter to additional or cancel when you need to append information or cancel the session.
 //
-// - The `reply_to` field specifies the agent message to which this message responds. The default value is `0`.
+// - The reply_to field specifies the agent message to which this message responds. The default value is 0.
 //
-// - The `question` field is required when `message_type` is set to `additional`.
+// - The question field is required when message_type is set to additional.
 //
-// - You can use `quoted_message` to quote previous user messages.
+// - You can use quoted_message to quote previous messages from the user.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9575,13 +9805,13 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // ## Request description
 //
-// - The default value of `message_type` is `primary`. Set it to `additional` or `cancel` when you need to append information or cancel the session.
+// - The default value of message_type is primary. Set this parameter to additional or cancel when you need to append information or cancel the session.
 //
-// - The `reply_to` field specifies the agent message to which this message responds. The default value is `0`.
+// - The reply_to field specifies the agent message to which this message responds. The default value is 0.
 //
-// - The `question` field is required when `message_type` is set to `additional`.
+// - The question field is required when message_type is set to additional.
 //
-// - You can use `quoted_message` to quote previous user messages.
+// - You can use quoted_message to quote previous messages from the user.
 //
 // @param request - SendChatMessageRequest
 //
@@ -10930,6 +11160,76 @@ func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateKnowledgeBaseResponse{}
 	_body, _err := client.UpdateKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the notification channel switch or Lark account binding information for the current user.
+//
+// @param request - UpdateMyAgenticNotificationChannelConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMyAgenticNotificationChannelConfigResponse
+func (client *Client) UpdateMyAgenticNotificationChannelConfigWithOptions(request *UpdateMyAgenticNotificationChannelConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateMyAgenticNotificationChannelConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Channel) {
+		body["Channel"] = request.Channel
+	}
+
+	if !dara.IsNil(request.Config) {
+		body["Config"] = request.Config
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["Enabled"] = request.Enabled
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMyAgenticNotificationChannelConfig"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMyAgenticNotificationChannelConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the notification channel switch or Lark account binding information for the current user.
+//
+// @param request - UpdateMyAgenticNotificationChannelConfigRequest
+//
+// @return UpdateMyAgenticNotificationChannelConfigResponse
+func (client *Client) UpdateMyAgenticNotificationChannelConfig(request *UpdateMyAgenticNotificationChannelConfigRequest) (_result *UpdateMyAgenticNotificationChannelConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateMyAgenticNotificationChannelConfigResponse{}
+	_body, _err := client.UpdateMyAgenticNotificationChannelConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
