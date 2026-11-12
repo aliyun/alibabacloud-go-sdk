@@ -30,7 +30,21 @@ type GetMqttTicketShrinkRequest struct {
 	//
 	// Windows 10
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The client type. Valid values: 0: hardware terminal; 1: Windows software terminal; 2: macOS software terminal; 3: iOS client; 4: Android client; 5: web client; 6: tenant console.
+	// The client type. Valid values:
+	//
+	// - 0: hardware terminal
+	//
+	// - 1: Windows software terminal
+	//
+	// - 2: macOS software terminal
+	//
+	// - 3: iOS client
+	//
+	// - 4: Android client
+	//
+	// - 5: web client
+	//
+	// - 6: tenant console
 	//
 	// This parameter is required.
 	//
@@ -46,13 +60,13 @@ type GetMqttTicketShrinkRequest struct {
 	//
 	// 1.0.0
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The extended properties of the client, represented as a JSON object where both keys and values are strings. Example: `{"a":"1","b":"2"}`. If this parameter is not specified, it is processed as an empty property set.
+	// The extended properties of the client, represented as a JSON object where both keys and values are strings. Example: `{"a":"1","b":"2"}`. If this parameter is not specified, an empty property set is used.
 	//
 	// example:
 	//
 	// {"a":"1","b":"2"}
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The device UUID.
+	// The UUID of the device.
 	//
 	// This parameter is required.
 	//

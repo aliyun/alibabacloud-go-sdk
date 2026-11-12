@@ -1,3 +1,6 @@
+2026-11-12 Version: v5.13.1
+- Generated golang 2021-09-01 for appstream-center.
+
 2026-11-09 Version: v5.13.0
 - Support API GetMqttTicket.
 

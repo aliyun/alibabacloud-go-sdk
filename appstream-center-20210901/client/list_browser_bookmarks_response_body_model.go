@@ -22,7 +22,7 @@ type iListBrowserBookmarksResponseBody interface {
 }
 
 type ListBrowserBookmarksResponseBody struct {
-	// The list of bookmarks on the current page.
+	// The bookmarks on the current page.
 	Data []*ListBrowserBookmarksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The current page number.
 	//

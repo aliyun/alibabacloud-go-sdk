@@ -30,7 +30,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of delivery groups returned per page. The value is the same as the PageSize request parameter.
+	// The number of delivery groups returned on each page. The value is the same as the PageSize request parameter.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListAuthorizedAppInstanceGroupByUserResponseBody) Validate() error {
 }
 
 type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels struct {
-	// The ID of the application image used by the delivery group.
+	// The ID of the app image used by the delivery group.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// example:
 	//
-	// Office applications
+	// Office apps
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	// The specification type of the delivery group.
 	//
@@ -141,15 +141,15 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// __dynamic__
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	// The list of applications deployed in the delivery group. This list includes all applications deployed in the delivery group image and is not affected by the AppId and AppName request parameters.
+	// The list of apps deployed in the delivery group. This list includes all apps deployed in the delivery group image and is not affected by the AppId and AppName request parameters.
 	Apps []*ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The expiration time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The expiration time of the delivery group. The time is displayed in ISO 8601 format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
 	// 2022-04-27T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The creation time of the delivery group. The time is in ISO 8601 format with milliseconds and a time zone offset of +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The creation time of the delivery group. The time is displayed in ISO 8601 format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
@@ -163,15 +163,15 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the delivery group. Valid values:
 	//
-	// - DEPLOYING: Deploying. The delivery group is creating or starting resources and cannot be connected to.
+	// - DEPLOYING: Deploying. The delivery group is creating or starting resources and cannot be connected.
 	//
 	// - DEPLOYED: Deployed. Resources are ready but the delivery group is not published for external services.
 	//
-	// - PUBLISHED: Published. The delivery group is published and users can connect to it.
+	// - PUBLISHED: Published. The delivery group is published and users can connect to and use it.
 	//
-	// - STOPPING: Unpublishing. The delivery group is stopping services.
+	// - STOPPING: Delisting. The delivery group is stopping services.
 	//
-	// - STOPPED: Unpublished. The delivery group has stopped services and users cannot connect to it.
+	// - STOPPED: Delisted. The delivery group has stopped services and users cannot connect to it.
 	//
 	// - MAINTAINING: Updating. The delivery group is undergoing maintenance or changes.
 	//
@@ -187,7 +187,7 @@ type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels stru
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Specifies whether mixed authorization of users and user groups is supported.
+	// Specifies whether mixed authorization for users and user groups is supported.
 	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
 	// The authorization mode for users and user groups.
 	//
@@ -318,31 +318,31 @@ func (s *ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModels)
 }
 
 type ListAuthorizedAppInstanceGroupByUserResponseBodyAppInstanceGroupModelsApps struct {
-	// The URL of the application icon.
+	// The URL of the app icon.
 	//
 	// example:
 	//
 	// https://app-center-icon-****.png
 	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
-	// The application ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the connection ticket for the application, specify this value.
+	// The app ID. When you call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the connection ticket for the app, specify this value.
 	//
 	// example:
 	//
 	// ca-i87mycyn419nu****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
-	// Office applications
+	// Office apps
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The application version number.
+	// The app version number.
 	//
 	// example:
 	//
 	// 1.0.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The application version name.
+	// The app version name.
 	//
 	// example:
 	//

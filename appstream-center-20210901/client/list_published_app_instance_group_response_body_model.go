@@ -22,7 +22,7 @@ type iListPublishedAppInstanceGroupResponseBody interface {
 }
 
 type ListPublishedAppInstanceGroupResponseBody struct {
-	// The list of published delivery groups on the current page, sorted in descending order of creation time. An empty list is returned if no results match or if the requested page exceeds the result range.
+	// The list of published delivery groups on the current page, sorted in descending order of creation time. If no results match or the requested page exceeds the result range, an empty list is returned.
 	AppInstanceGroupModels []*ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Repeated"`
 	// The page number specified in the current request.
 	//
@@ -30,19 +30,19 @@ type ListPublishedAppInstanceGroupResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of delivery groups per page specified in the request. This value does not represent the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
+	// The number of delivery groups per page specified in the request. Unit: delivery groups. This value does not represent the actual number of entries returned on the current page. The actual number on the current page may be less than this value.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The unique identifier of the request, which can be used to troubleshoot request issues.
+	// The unique identifier of the current request, which can be used to troubleshoot request issues.
 	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of delivery groups that meet all filter conditions. This value is not the number of entries returned on the current page. Each delivery group is counted only once. If no results match, the value is `0`.
+	// The total number of delivery groups that meet all filter conditions. Unit: delivery groups. This value is not the number of entries returned on the current page. Each delivery group is counted only once. If no results match, the value is 0.
 	//
 	// example:
 	//
@@ -141,15 +141,15 @@ type ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// __dynamic__
 	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	// The list of deployed applications in the image of the delivery group. The `AppId` and `AppName` parameters in the request only determine whether the delivery group is selected, and do not restrict this list to the matched applications.
+	// The list of deployed applications in the image of the delivery group. The AppId and AppName parameters in the request only determine whether the delivery group is selected, and do not trim this list to the matched applications.
 	Apps []*ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	// The expiration time of the delivery group. For delivery groups purchased as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery group itself is returned. The time is in ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The expiration time of the delivery group. For delivery groups sold as resources, the expiration time of their resources is returned. For other delivery groups, the expiration time of the delivery group itself is returned. The time is in the ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
 	// 2022-04-27T16:00:00.000+00:00
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The creation time of the delivery group. The time is in ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
+	// The creation time of the delivery group. The time is in the ISO 8601 date and time format, including milliseconds and time zone offset. The returned time zone offset is +00:00. Format: yyyy-MM-ddTHH:mm:ss.SSS+HH:mm.
 	//
 	// example:
 	//
@@ -161,15 +161,15 @@ type ListPublishedAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the delivery group. This operation only returns delivery groups in the following states:
+	// The status of the delivery group. This operation only returns delivery groups in the following status:
 	//
-	// - `PUBLISHED`: The delivery group is published and listed, and can be included in the query results of this operation. This status does not indicate that a specified user has obtained access permissions.
+	// - PUBLISHED: Published and listed. Delivery groups in this status can be included in the query results of this operation. This status does not indicate that a specified user has obtained access permissions.
 	//
 	// example:
 	//
 	// PUBLISHED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether mixed authorization for users and user groups is supported.
+	// Specifies whether mixed authorization for users and user groups is supported.
 	SupportUserGroupMixedAuth *bool `json:"SupportUserGroupMixedAuth,omitempty" xml:"SupportUserGroupMixedAuth,omitempty"`
 	// The authorization mode for users and user groups.
 	//

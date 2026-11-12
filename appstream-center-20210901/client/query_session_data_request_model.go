@@ -32,7 +32,7 @@ type QuerySessionDataRequest struct {
 	//
 	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	// The region ID, which is a common request parameter for the gateway. The actual region used to filter session data in this operation is specified by BizRegionId.
+	// The region ID, which is a common request parameter for the gateway. The region actually used to filter session data in this operation is specified by BizRegionId.
 	//
 	// example:
 	//

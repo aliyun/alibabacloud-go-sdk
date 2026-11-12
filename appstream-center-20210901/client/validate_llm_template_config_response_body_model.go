@@ -16,7 +16,7 @@ type iValidateLlmTemplateConfigResponseBody interface {
 }
 
 type ValidateLlmTemplateConfigResponseBody struct {
-	// The validation result of the LLM template configuration, which includes whether the configuration is valid and a list of validation errors.
+	// The validation result of the LLM template configuration, including whether the configuration is valid and the list of validation errors.
 	Data *ValidateLlmTemplateConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,9 +62,9 @@ func (s *ValidateLlmTemplateConfigResponseBody) Validate() error {
 }
 
 type ValidateLlmTemplateConfigResponseBodyData struct {
-	// Indicates whether the configuration is valid. The value is true if all validation items pass.
+	// Indicates whether the configuration is valid. The value is true if all validation checks pass.
 	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
-	// The list of validation errors. This list is empty if Valid is true.
+	// The list of validation errors. This list is empty when Valid is true.
 	ValidationErrors []*ValidateLlmTemplateConfigResponseBodyDataValidationErrors `json:"ValidationErrors,omitempty" xml:"ValidationErrors,omitempty" type:"Repeated"`
 }
 

@@ -36,13 +36,13 @@ type iGetMqttTicketResponseBody interface {
 }
 
 type GetMqttTicketResponseBody struct {
-	// The error code returned when the request fails. For example, `Client.Forbidden` indicates that the client is forbidden from establishing a connection.
+	// The error code returned when the request fails. For example, Client.Forbidden indicates that the client is forbidden from establishing a connection.
 	//
 	// example:
 	//
 	// Client.Forbidden
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The expiration time of the MQTT connection password. It is returned as a string representing a UNIX timestamp in milliseconds.
+	// The expiration time of the MQTT connection password. It is a UNIX timestamp in milliseconds and is returned as a string.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetMqttTicketResponseBody struct {
 	//
 	// Client forbidden connect
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The access endpoint for the MQTT client. Use the endpoint returned by this operation to establish a connection.
+	// The access endpoint for the MQTT client. Use the endpoint returned in this response to establish a connection.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type GetMqttTicketResponseBody struct {
 	//
 	// post-cn-7mz2****
 	MqttInstanceId *string `json:"MqttInstanceId,omitempty" xml:"MqttInstanceId,omitempty"`
-	// The password used to establish an MQTT connection. It consists of publish and subscribe tokens in the format of `W|PublishToken|R|SubscribeToken`. Use the complete password returned by the operation. The desensitized examples in the documentation cannot be used for connections.
+	// The password used to establish an MQTT connection. It consists of publish and subscribe tokens in the format of W|PublishToken|R|SubscribeToken. Use the complete password returned in the response. The desensitized examples in the documentation cannot be used for connections.
 	//
 	// example:
 	//
 	// W|pubTokenExample****|R|subTokenExample****
 	MqttPassword *string `json:"MqttPassword,omitempty" xml:"MqttPassword,omitempty"`
-	// The username used to establish an MQTT connection. The format is `Token|AccessKeyId|InstanceId`. AccessKeyId and InstanceId are identifiers used by the server to generate credentials. Use the complete username returned by the operation.
+	// The username used to establish an MQTT connection. The format is Token|AccessKeyId|InstanceId. AccessKeyId and InstanceId are identifiers used by the server to generate credentials. Use the complete username returned in the response.
 	//
 	// example:
 	//
 	// Token|LTAI5tExample****|post-cn-7mz2****
 	MqttUsername *string `json:"MqttUsername,omitempty" xml:"MqttUsername,omitempty"`
-	// The VPC access endpoint for MQTT, used by clients that meet the VPC network access requirements.
+	// The VPC access endpoint for MQTT. It is used by clients that meet the VPC network access requirements.
 	//
 	// example:
 	//
@@ -96,13 +96,17 @@ type GetMqttTicketResponseBody struct {
 	//
 	// B9E3F7B2-5B13-4A7B-8C36-6D1B0A8F0000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. `true` indicates success, and `false` indicates failure.
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
 	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The topic list. Each list element contains `topic` (the topic name), `type` (the topic type), and `permission` (the permission). The list returned by this operation includes topics for publishing, tenant subscription, device subscription, and system subscription. The publish permission is `W`, and the subscribe permission is `R`.
+	// The topic list. Each element in the list contains topic (the topic name), type (the topic type), and permission (the permission). The list returned by this operation includes topics for publishing, tenant subscription, device subscription, and system subscription. The publish permission is W, and the subscribe permission is R.
 	//
 	// example:
 	//

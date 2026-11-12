@@ -22,13 +22,19 @@ type iRemoveRuntimeChannelRequest interface {
 }
 
 type RemoveRuntimeChannelRequest struct {
-	// The Agent platform.
+	// The agent platform.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The Agent provider.
+	// The agent provider. The mappings with the agent runtime type are as follows:
+	//
+	// - JVS Computer: Set this parameter to OpenClaw.
+	//
+	// - OpenClaw: Set this parameter to OpenClaw.
+	//
+	// - Hermes Agent: Set this parameter to HermesAgent, and you must also set AgentPlatform to ENTERPRISE_JVS. If AgentPlatform is not specified, the default value is ENTERPRISE, and only OpenClaw is supported in this case.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +50,7 @@ type RemoveRuntimeChannelRequest struct {
 	//
 	// dingtalk-connector
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of Agent runtime IDs.
+	// The list of agent runtime IDs.
 	//
 	// This parameter is required.
 	RuntimeIds []*string `json:"RuntimeIds,omitempty" xml:"RuntimeIds,omitempty" type:"Repeated"`

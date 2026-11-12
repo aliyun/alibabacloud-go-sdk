@@ -3307,6 +3307,68 @@ func (client *Client) DescribeExportTasks(request *DescribeExportTasksRequest) (
 
 // Summary:
 //
+// Retrieves the list of Alibaba Cloud accounts to which the current image is shared.
+//
+// @param request - DescribeShareImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeShareImageResponse
+func (client *Client) DescribeShareImageWithOptions(request *DescribeShareImageRequest, runtime *dara.RuntimeOptions) (_result *DescribeShareImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeShareImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeShareImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of Alibaba Cloud accounts to which the current image is shared.
+//
+// @param request - DescribeShareImageRequest
+//
+// @return DescribeShareImageResponse
+func (client *Client) DescribeShareImage(request *DescribeShareImageRequest) (_result *DescribeShareImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeShareImageResponse{}
+	_body, _err := client.DescribeShareImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a development host.
 //
 // @param request - DescribeWuyingServerRequest
@@ -3426,6 +3488,80 @@ func (client *Client) DescribeWuyingServerEipInfo(request *DescribeWuyingServerE
 	runtime := &dara.RuntimeOptions{}
 	_result = &DescribeWuyingServerEipInfoResponse{}
 	_body, _err := client.DescribeWuyingServerEipInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Confirms the successful verification of the image or application creation process.
+//
+// @param request - FinishValidateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishValidateResponse
+func (client *Client) FinishValidateWithOptions(request *FinishValidateRequest, runtime *dara.RuntimeOptions) (_result *FinishValidateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		body["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.AppVersionId) {
+		body["AppVersionId"] = request.AppVersionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("FinishValidate"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &FinishValidateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Confirms the successful verification of the image or application creation process.
+//
+// @param request - FinishValidateRequest
+//
+// @return FinishValidateResponse
+func (client *Client) FinishValidate(request *FinishValidateRequest) (_result *FinishValidateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &FinishValidateResponse{}
+	_body, _err := client.FinishValidateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3999,6 +4135,100 @@ func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (
 
 // Summary:
 //
+// Queries the effective versions of an image in various regions, along with its applications, distribution configurations, and tags.
+//
+// Description:
+//
+// Queries the effective image versions in various regions by ImageId. If a newer version is configured in the same region, the newer version is returned first. You can specify BizRegionId to limit the query to a specific region. The returned results are also constrained by the product type and the regions visible to the account. To query the details of a specific version, call GetImageById.
+//
+// @param request - GetEffectiveImageByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEffectiveImageByIdResponse
+func (client *Client) GetEffectiveImageByIdWithOptions(request *GetEffectiveImageByIdRequest, runtime *dara.RuntimeOptions) (_result *GetEffectiveImageByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.ContentLocale) {
+		body["ContentLocale"] = request.ContentLocale
+	}
+
+	if !dara.IsNil(request.IgnoreFilter) {
+		body["IgnoreFilter"] = request.IgnoreFilter
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageType) {
+		body["ImageType"] = request.ImageType
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ShowHidden) {
+		body["ShowHidden"] = request.ShowHidden
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEffectiveImageById"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEffectiveImageByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the effective versions of an image in various regions, along with its applications, distribution configurations, and tags.
+//
+// Description:
+//
+// Queries the effective image versions in various regions by ImageId. If a newer version is configured in the same region, the newer version is returned first. You can specify BizRegionId to limit the query to a specific region. The returned results are also constrained by the product type and the regions visible to the account. To query the details of a specific version, call GetImageById.
+//
+// @param request - GetEffectiveImageByIdRequest
+//
+// @return GetEffectiveImageByIdResponse
+func (client *Client) GetEffectiveImageById(request *GetEffectiveImageByIdRequest) (_result *GetEffectiveImageByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetEffectiveImageByIdResponse{}
+	_body, _err := client.GetEffectiveImageByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves file upload information.
 //
 // Description:
@@ -4060,6 +4290,170 @@ func (client *Client) GetFileUploadInfo(request *GetFileUploadInfoRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetFileUploadInfoResponse{}
 	_body, _err := client.GetFileUploadInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the image details, adapted applications, and region distribution information based on the image ID or version ID.
+//
+// Description:
+//
+// You must specify at least one of ImageId and VersionId. If you specify only ImageId, the online version is queried. If you specify VersionId, the specified version is queried. If you specify both parameters, the VersionId must belong to the specified image. To query the effective version in each region, call GetEffectiveImageById.
+//
+// @param request - GetImageByIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageByIdResponse
+func (client *Client) GetImageByIdWithOptions(request *GetImageByIdRequest, runtime *dara.RuntimeOptions) (_result *GetImageByIdResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.IgnoreFilter) {
+		body["IgnoreFilter"] = request.IgnoreFilter
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ShowHidden) {
+		body["ShowHidden"] = request.ShowHidden
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetImageById"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetImageByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the image details, adapted applications, and region distribution information based on the image ID or version ID.
+//
+// Description:
+//
+// You must specify at least one of ImageId and VersionId. If you specify only ImageId, the online version is queried. If you specify VersionId, the specified version is queried. If you specify both parameters, the VersionId must belong to the specified image. To query the effective version in each region, call GetEffectiveImageById.
+//
+// @param request - GetImageByIdRequest
+//
+// @return GetImageByIdResponse
+func (client *Client) GetImageById(request *GetImageByIdRequest) (_result *GetImageByIdResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetImageByIdResponse{}
+	_body, _err := client.GetImageByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the distribution regions, distribution status, and progress of an image version.
+//
+// Description:
+//
+// Queries the region distribution status of an image by ImageId. If VersionId is not specified, the online version is queried. If VersionId is specified, the specified version is queried. Returns the non-deleted region distribution records and the corresponding list of region IDs.
+//
+// @param request - GetImageDistributeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageDistributeInfoResponse
+func (client *Client) GetImageDistributeInfoWithOptions(request *GetImageDistributeInfoRequest, runtime *dara.RuntimeOptions) (_result *GetImageDistributeInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetImageDistributeInfo"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetImageDistributeInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the distribution regions, distribution status, and progress of an image version.
+//
+// Description:
+//
+// Queries the region distribution status of an image by ImageId. If VersionId is not specified, the online version is queried. If VersionId is specified, the specified version is queried. Returns the non-deleted region distribution records and the corresponding list of region IDs.
+//
+// @param request - GetImageDistributeInfoRequest
+//
+// @return GetImageDistributeInfoResponse
+func (client *Client) GetImageDistributeInfo(request *GetImageDistributeInfoRequest) (_result *GetImageDistributeInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetImageDistributeInfoResponse{}
+	_body, _err := client.GetImageDistributeInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4147,17 +4541,17 @@ func (client *Client) GetModelProviderTemplate(request *GetModelProviderTemplate
 //
 // Description:
 //
-// Call this operation to retrieve the credentials and connection information required for a client to establish an MQTT connection.
+// Retrieves the credentials and connection information required for a client to establish an MQTT connection.
 //
-// 1. Use `MqttUsername` and `MqttPassword` as the username and password for the MQTT client connection.
+// 1. Use MqttUsername and MqttPassword as the username and password when connecting the MQTT client.
 //
-// 2. Use `MqttEndpoint` as the connection endpoint. If the VPC network access requirements are met, you can use `MqttVPCEndpoint`. `MqttInstanceId` is used for token authentication, and `MqttGroupId` is used to concatenate the MQTT ClientId.
+// 2. Use MqttEndpoint as the connection endpoint. If the client meets the VPC network access requirements, you can use MqttVPCEndpoint. MqttInstanceId is used for token authentication, and MqttGroupId is used to concatenate the MQTT ClientId.
 //
-// 3. Distinguish between publish and subscribe topics based on the `topic`, `type`, and `permission` of each item in `TopicList`. `W` indicates the publish permission, and `R` indicates the subscribe permission.
+// 3. Distinguish between publish and subscribe topics based on the topic, type, and permission fields of each item in TopicList. W indicates publish permission, and R indicates subscribe permission.
 //
-// 4. `ExpireTimeStamp` is the UNIX timestamp in milliseconds when the password expires. Credentials may be reused. Retrieve new credentials based on the expiration time returned by the operation.
+// 4. ExpireTimeStamp is the UNIX timestamp in milliseconds when the password expires. Credentials may be reused. Retrieve new credentials based on the expiration time returned in the response.
 //
-// The device identity and request IDs in the documentation are demo data. The domain name uses the `example.com` sample domain. Credentials and instance identity are exemplified or desensitized. These examples cannot be used directly for actual connections.
+// The device identity and request IDs in the documentation are demonstration data. The domain name uses the `example.com` sample domain. Credentials and instance identity are exemplified or desensitized. These examples cannot be used directly for actual connections.
 //
 // @param tmpReq - GetMqttTicketRequest
 //
@@ -4227,17 +4621,17 @@ func (client *Client) GetMqttTicketWithOptions(tmpReq *GetMqttTicketRequest, run
 //
 // Description:
 //
-// Call this operation to retrieve the credentials and connection information required for a client to establish an MQTT connection.
+// Retrieves the credentials and connection information required for a client to establish an MQTT connection.
 //
-// 1. Use `MqttUsername` and `MqttPassword` as the username and password for the MQTT client connection.
+// 1. Use MqttUsername and MqttPassword as the username and password when connecting the MQTT client.
 //
-// 2. Use `MqttEndpoint` as the connection endpoint. If the VPC network access requirements are met, you can use `MqttVPCEndpoint`. `MqttInstanceId` is used for token authentication, and `MqttGroupId` is used to concatenate the MQTT ClientId.
+// 2. Use MqttEndpoint as the connection endpoint. If the client meets the VPC network access requirements, you can use MqttVPCEndpoint. MqttInstanceId is used for token authentication, and MqttGroupId is used to concatenate the MQTT ClientId.
 //
-// 3. Distinguish between publish and subscribe topics based on the `topic`, `type`, and `permission` of each item in `TopicList`. `W` indicates the publish permission, and `R` indicates the subscribe permission.
+// 3. Distinguish between publish and subscribe topics based on the topic, type, and permission fields of each item in TopicList. W indicates publish permission, and R indicates subscribe permission.
 //
-// 4. `ExpireTimeStamp` is the UNIX timestamp in milliseconds when the password expires. Credentials may be reused. Retrieve new credentials based on the expiration time returned by the operation.
+// 4. ExpireTimeStamp is the UNIX timestamp in milliseconds when the password expires. Credentials may be reused. Retrieve new credentials based on the expiration time returned in the response.
 //
-// The device identity and request IDs in the documentation are demo data. The domain name uses the `example.com` sample domain. Credentials and instance identity are exemplified or desensitized. These examples cannot be used directly for actual connections.
+// The device identity and request IDs in the documentation are demonstration data. The domain name uses the `example.com` sample domain. Credentials and instance identity are exemplified or desensitized. These examples cannot be used directly for actual connections.
 //
 // @param request - GetMqttTicketRequest
 //
@@ -5097,7 +5491,203 @@ func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse
 
 // Summary:
 //
-// Queries a deduplicated list of version numbers for undeleted agent instances under a specified tenant, aggregated by agent provider and optionally filtered by agent platform. The results are returned in ascending order by version number.
+// Retrieves the Object Storage Service (OSS) endpoint, directory, and Security Token Service (STS) temporary credentials required to upload image task files.
+//
+// Description:
+//
+// Currently, FileType only supports TASK. Use the returned OSS endpoint, bucket, file directory, and temporary credentials to upload files. After the file is uploaded, you can pass the complete OSS object path to ImportImage. Expiration is not supported.
+//
+// @param request - GetUploadInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUploadInfoResponse
+func (client *Client) GetUploadInfoWithOptions(request *GetUploadInfoRequest, runtime *dara.RuntimeOptions) (_result *GetUploadInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.FileType) {
+		body["FileType"] = request.FileType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUploadInfo"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUploadInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the Object Storage Service (OSS) endpoint, directory, and Security Token Service (STS) temporary credentials required to upload image task files.
+//
+// Description:
+//
+// Currently, FileType only supports TASK. Use the returned OSS endpoint, bucket, file directory, and temporary credentials to upload files. After the file is uploaded, you can pass the complete OSS object path to ImportImage. Expiration is not supported.
+//
+// @param request - GetUploadInfoRequest
+//
+// @return GetUploadInfoResponse
+func (client *Client) GetUploadInfo(request *GetUploadInfoRequest) (_result *GetUploadInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUploadInfoResponse{}
+	_body, _err := client.GetUploadInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Imports an image file from Object Storage Service (OSS) as a custom cloud desktop image and returns the image ID and version ID.
+//
+// Description:
+//
+// Currently, only ProductType=CloudDesktop is supported. Upload the image file first, and then pass its OSS object path to initiate the import. You can call GetUploadInfo to obtain upload credentials. After the API returns the image and version IDs, you can call GetImageById or GetImageDistributeInfo to query the creation and distribution status. A successful response indicates that the import request has been accepted, not that the image is already available.
+//
+// @param request - ImportImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportImageResponse
+func (client *Client) ImportImageWithOptions(request *ImportImageRequest, runtime *dara.RuntimeOptions) (_result *ImportImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizRegionId) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.BootMode) {
+		body["BootMode"] = request.BootMode
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableSecurityCheck) {
+		body["EnableSecurityCheck"] = request.EnableSecurityCheck
+	}
+
+	if !dara.IsNil(request.GpuCategory) {
+		body["GpuCategory"] = request.GpuCategory
+	}
+
+	if !dara.IsNil(request.GpuDriverType) {
+		body["GpuDriverType"] = request.GpuDriverType
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.LicenseType) {
+		body["LicenseType"] = request.LicenseType
+	}
+
+	if !dara.IsNil(request.OsType) {
+		body["OsType"] = request.OsType
+	}
+
+	if !dara.IsNil(request.OssObjectPath) {
+		body["OssObjectPath"] = request.OssObjectPath
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ProtocolType) {
+		body["ProtocolType"] = request.ProtocolType
+	}
+
+	if !dara.IsNil(request.SystemDiskSize) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ImportImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ImportImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Imports an image file from Object Storage Service (OSS) as a custom cloud desktop image and returns the image ID and version ID.
+//
+// Description:
+//
+// Currently, only ProductType=CloudDesktop is supported. Upload the image file first, and then pass its OSS object path to initiate the import. You can call GetUploadInfo to obtain upload credentials. After the API returns the image and version IDs, you can call GetImageById or GetImageDistributeInfo to query the creation and distribution status. A successful response indicates that the import request has been accepted, not that the image is already available.
+//
+// @param request - ImportImageRequest
+//
+// @return ImportImageResponse
+func (client *Client) ImportImage(request *ImportImageRequest) (_result *ImportImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ImportImageResponse{}
+	_body, _err := client.ImportImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a deduplicated list of version numbers of undeleted agent instances under a specified tenant, aggregated by agent provider and optionally filtered by agent platform. The results are returned in ascending order of version numbers.
 //
 // @param request - ListAgentInstanceVersionsRequest
 //
@@ -5145,7 +5735,7 @@ func (client *Client) ListAgentInstanceVersionsWithOptions(request *ListAgentIns
 
 // Summary:
 //
-// Queries a deduplicated list of version numbers for undeleted agent instances under a specified tenant, aggregated by agent provider and optionally filtered by agent platform. The results are returned in ascending order by version number.
+// Queries a deduplicated list of version numbers of undeleted agent instances under a specified tenant, aggregated by agent provider and optionally filtered by agent platform. The results are returned in ascending order of version numbers.
 //
 // @param request - ListAgentInstanceVersionsRequest
 //
@@ -5807,19 +6397,19 @@ func (client *Client) ListAppsByAppInstanceGroupId(request *ListAppsByAppInstanc
 
 // Summary:
 //
-// Performs a paging query on the delivery groups for which a specified user has obtained access permissions through delivery group-level authorization, with support for fuzzy filtering by delivery group ID, delivery group name, application ID, and application name.
+// Queries the delivery groups for which a specified user has obtained access permissions through delivery group-level authorization. Supports paging and fuzzy filtering by delivery group ID, delivery group name, app ID, and app name.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation queries the list of delivery groups for which a specified user (EndUserId) has been granted **delivery group-level authorization**. It returns the basic information of each delivery group (such as ID, name, status, region, creation time, and expiration time) and the list of applications deployed in the delivery group.
+// This operation queries the list of delivery groups for which a specified user (EndUserId) has been granted **delivery group-level authorization**. It returns the basic information of each delivery group (such as ID, name, status, region, creation time, and expiration time) and the list of apps deployed in the delivery group.
 //
-// Return scope:
+// Scope of returned results:
 //
-// - Only delivery groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records of individual application authorizations granted through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
+// - Only delivery groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records of individual app authorizations granted through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
 //
-// - Only delivery groups that match the specified ProductType and are not deleted are returned. If no applications are deployed in the delivery group image, the delivery group is not returned.
+// - Only delivery groups whose product type matches ProductType and that are not deleted are returned. If no apps are deployed in the delivery group image, the delivery group is not returned.
 //
 // - Results are sorted in descending order based on the update time of the authorization records. The most recently authorized or modified delivery groups are listed first.
 //
@@ -5829,9 +6419,9 @@ func (client *Client) ListAppsByAppInstanceGroupId(request *ListAppsByAppInstanc
 //
 // ## Metric description
 //
-// - **ProductType and EndUserId are required**. If ProductType is not specified, the `InvalidParameter.ProductType` error code is returned. If EndUserId is not specified, the `InvalidParameter.UserId` error code is returned.
+// - **ProductType and EndUserId are required**. If ProductType is not specified, the error code `InvalidParameter.ProductType` is returned. If EndUserId is not specified, the error code `InvalidParameter.UserId` is returned.
 //
-// - EndUserId uses **exact match*	- based on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName use **fuzzy match*	- (a match is hit if the string is contained). If multiple filter conditions are specified, all conditions must be met.
+// - EndUserId uses **exact match*	- based on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName use **fuzzy match**. A hit occurs if the string is contained. If multiple filter conditions are specified, all conditions must be met.
 //
 // - PageNumber starts from 1. Valid values for PageSize: 1 to 100.
 //
@@ -5841,9 +6431,9 @@ func (client *Client) ListAppsByAppInstanceGroupId(request *ListAppsByAppInstanc
 //
 // 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID, and then call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize the delivery group to the user.
 //
-// 2. Call this operation to query the delivery groups authorized for the user and the applications deployed in the delivery groups.
+// 2. Call this operation to query the delivery groups authorized to the user and the apps deployed in the delivery groups.
 //
-// 3. To obtain the application connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation by using the returned AppInstanceGroupId and the AppId in Apps.
+// 3. To obtain the app connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation based on the returned AppInstanceGroupId and the AppId in Apps.
 //
 // @param request - ListAuthorizedAppInstanceGroupByUserRequest
 //
@@ -5919,19 +6509,19 @@ func (client *Client) ListAuthorizedAppInstanceGroupByUserWithOptions(request *L
 
 // Summary:
 //
-// Performs a paging query on the delivery groups for which a specified user has obtained access permissions through delivery group-level authorization, with support for fuzzy filtering by delivery group ID, delivery group name, application ID, and application name.
+// Queries the delivery groups for which a specified user has obtained access permissions through delivery group-level authorization. Supports paging and fuzzy filtering by delivery group ID, delivery group name, app ID, and app name.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation queries the list of delivery groups for which a specified user (EndUserId) has been granted **delivery group-level authorization**. It returns the basic information of each delivery group (such as ID, name, status, region, creation time, and expiration time) and the list of applications deployed in the delivery group.
+// This operation queries the list of delivery groups for which a specified user (EndUserId) has been granted **delivery group-level authorization**. It returns the basic information of each delivery group (such as ID, name, status, region, creation time, and expiration time) and the list of apps deployed in the delivery group.
 //
-// Return scope:
+// Scope of returned results:
 //
-// - Only delivery groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records of individual application authorizations granted through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
+// - Only delivery groups that are authorized to the user as a whole through the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation are returned. Records of individual app authorizations granted through the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation are not included.
 //
-// - Only delivery groups that match the specified ProductType and are not deleted are returned. If no applications are deployed in the delivery group image, the delivery group is not returned.
+// - Only delivery groups whose product type matches ProductType and that are not deleted are returned. If no apps are deployed in the delivery group image, the delivery group is not returned.
 //
 // - Results are sorted in descending order based on the update time of the authorization records. The most recently authorized or modified delivery groups are listed first.
 //
@@ -5941,9 +6531,9 @@ func (client *Client) ListAuthorizedAppInstanceGroupByUserWithOptions(request *L
 //
 // ## Metric description
 //
-// - **ProductType and EndUserId are required**. If ProductType is not specified, the `InvalidParameter.ProductType` error code is returned. If EndUserId is not specified, the `InvalidParameter.UserId` error code is returned.
+// - **ProductType and EndUserId are required**. If ProductType is not specified, the error code `InvalidParameter.ProductType` is returned. If EndUserId is not specified, the error code `InvalidParameter.UserId` is returned.
 //
-// - EndUserId uses **exact match*	- based on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName use **fuzzy match*	- (a match is hit if the string is contained). If multiple filter conditions are specified, all conditions must be met.
+// - EndUserId uses **exact match*	- based on the username. AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName use **fuzzy match**. A hit occurs if the string is contained. If multiple filter conditions are specified, all conditions must be met.
 //
 // - PageNumber starts from 1. Valid values for PageSize: 1 to 100.
 //
@@ -5953,9 +6543,9 @@ func (client *Client) ListAuthorizedAppInstanceGroupByUserWithOptions(request *L
 //
 // 1. Call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID, and then call the [AuthorizeInstanceGroup](~~AuthorizeInstanceGroup~~) operation to authorize the delivery group to the user.
 //
-// 2. Call this operation to query the delivery groups authorized for the user and the applications deployed in the delivery groups.
+// 2. Call this operation to query the delivery groups authorized to the user and the apps deployed in the delivery groups.
 //
-// 3. To obtain the application connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation by using the returned AppInstanceGroupId and the AppId in Apps.
+// 3. To obtain the app connection ticket for the user, call the [GetConnectionTicket](~~GetConnectionTicket~~) operation based on the returned AppInstanceGroupId and the AppId in Apps.
 //
 // @param request - ListAuthorizedAppInstanceGroupByUserRequest
 //
@@ -6523,7 +7113,7 @@ func (client *Client) ListBindInfo(request *ListBindInfoRequest) (_result *ListB
 
 // Summary:
 //
-// Performs a paging query to retrieve the list of bookmarks in a specified cloud browser group or delivery group set.
+// Performs a paging query to retrieve the list of bookmarks under a specified cloud browser group or delivery group set.
 //
 // @param request - ListBrowserBookmarksRequest
 //
@@ -6583,7 +7173,7 @@ func (client *Client) ListBrowserBookmarksWithOptions(request *ListBrowserBookma
 
 // Summary:
 //
-// Performs a paging query to retrieve the list of bookmarks in a specified cloud browser group or delivery group set.
+// Performs a paging query to retrieve the list of bookmarks under a specified cloud browser group or delivery group set.
 //
 // @param request - ListBrowserBookmarksRequest
 //
@@ -6756,15 +7346,15 @@ func (client *Client) ListBrowserInstanceGroup(request *ListBrowserInstanceGroup
 
 // Summary:
 //
-// Queries the list of access restriction URLs configured for a specified browser delivery group or delivery group set by using paging.
+// Performs a paging query on the list of access restriction URLs configured for a specified browser delivery group or delivery group set.
 //
 // Description:
 //
-// You can call this operation to query the list of access restriction URLs configured for a cloud browser delivery group or delivery group set by using paging to view the details of the URLs configured in the current access control policy.
+// Invoke this operation to perform a paging query on the list of access restriction URLs (Restricted URLs) configured for a cloud browser delivery group or delivery group set to view the details of the URLs configured in the current access control policy.
 //
 // You must specify either BrowserInstanceGroupId or BrowserInstanceGroupSetId, but not both. If you specify BrowserInstanceGroupId, the restricted URLs for the delivery group are queried. If you specify BrowserInstanceGroupSetId, the restricted URLs for the delivery group set are queried. Specifying both or neither returns a parameter error.
 //
-// You can use Keyword to filter restricted URLs by using a contains match. The match is case-insensitive for English characters. If you do not specify this parameter, all restricted URLs are returned. Pagination is controlled by PageNumber and PageSize. Valid values for PageSize: 1 to 200. Default value: 200. Default value for PageNumber: 0. If the value is less than 1, the first page is returned. In the response, TotalCount indicates the total number of records that meet the filter conditions, and Data contains the records on the current page. If no data is found, an empty array is returned.
+// You can use Keyword to filter restricted URLs by using a case-insensitive include match. If this parameter is not specified, all restricted URLs are returned. Pagination is controlled by PageNumber and PageSize. Valid values for PageSize: 1 to 200. Default value: 200. Default value for PageNumber: 0. If the value is less than 1, the first page is returned. In the response, TotalCount indicates the total number of records that meet the filter conditions, and Data contains the records on the current page. If no data is found, an empty array is returned.
 //
 // @param request - ListBrowserRestrictedURLsRequest
 //
@@ -6824,15 +7414,15 @@ func (client *Client) ListBrowserRestrictedURLsWithOptions(request *ListBrowserR
 
 // Summary:
 //
-// Queries the list of access restriction URLs configured for a specified browser delivery group or delivery group set by using paging.
+// Performs a paging query on the list of access restriction URLs configured for a specified browser delivery group or delivery group set.
 //
 // Description:
 //
-// You can call this operation to query the list of access restriction URLs configured for a cloud browser delivery group or delivery group set by using paging to view the details of the URLs configured in the current access control policy.
+// Invoke this operation to perform a paging query on the list of access restriction URLs (Restricted URLs) configured for a cloud browser delivery group or delivery group set to view the details of the URLs configured in the current access control policy.
 //
 // You must specify either BrowserInstanceGroupId or BrowserInstanceGroupSetId, but not both. If you specify BrowserInstanceGroupId, the restricted URLs for the delivery group are queried. If you specify BrowserInstanceGroupSetId, the restricted URLs for the delivery group set are queried. Specifying both or neither returns a parameter error.
 //
-// You can use Keyword to filter restricted URLs by using a contains match. The match is case-insensitive for English characters. If you do not specify this parameter, all restricted URLs are returned. Pagination is controlled by PageNumber and PageSize. Valid values for PageSize: 1 to 200. Default value: 200. Default value for PageNumber: 0. If the value is less than 1, the first page is returned. In the response, TotalCount indicates the total number of records that meet the filter conditions, and Data contains the records on the current page. If no data is found, an empty array is returned.
+// You can use Keyword to filter restricted URLs by using a case-insensitive include match. If this parameter is not specified, all restricted URLs are returned. Pagination is controlled by PageNumber and PageSize. Valid values for PageSize: 1 to 200. Default value: 200. Default value for PageNumber: 0. If the value is less than 1, the first page is returned. In the response, TotalCount indicates the total number of records that meet the filter conditions, and Data contains the records on the current page. If no data is found, an empty array is returned.
 //
 // @param request - ListBrowserRestrictedURLsRequest
 //
@@ -7155,6 +7745,186 @@ func (client *Client) ListImage(request *ListImageRequest) (_result *ListImageRe
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListImageResponse{}
 	_body, _err := client.ListImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the basic information of images by using paging and a paged query, including the image name, type, status, and version identity.
+//
+// Description:
+//
+// Supports filtering by image ID, name, status, type, package type, operating system, business line, product type, and protocol type. Multiple filter conditions take effect simultaneously, and the results are returned in descending order of image creation time. Returns the basic information and version identifiers of images. To obtain specific version and region distribution information, call ListImage.
+//
+// @param request - ListImageBaseInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageBaseInfoResponse
+func (client *Client) ListImageBaseInfoWithOptions(request *ListImageBaseInfoRequest, runtime *dara.RuntimeOptions) (_result *ListImageBaseInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageName) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !dara.IsNil(request.ImageType) {
+		body["ImageType"] = request.ImageType
+	}
+
+	if !dara.IsNil(request.OsType) {
+		body["OsType"] = request.OsType
+	}
+
+	if !dara.IsNil(request.PackageType) {
+		body["PackageType"] = request.PackageType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ProtocolType) {
+		body["ProtocolType"] = request.ProtocolType
+	}
+
+	if !dara.IsNil(request.Status) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImageBaseInfo"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImageBaseInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the basic information of images by using paging and a paged query, including the image name, type, status, and version identity.
+//
+// Description:
+//
+// Supports filtering by image ID, name, status, type, package type, operating system, business line, product type, and protocol type. Multiple filter conditions take effect simultaneously, and the results are returned in descending order of image creation time. Returns the basic information and version identifiers of images. To obtain specific version and region distribution information, call ListImage.
+//
+// @param request - ListImageBaseInfoRequest
+//
+// @return ListImageBaseInfoResponse
+func (client *Client) ListImageBaseInfo(request *ListImageBaseInfoRequest) (_result *ListImageBaseInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListImageBaseInfoResponse{}
+	_body, _err := client.ListImageBaseInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the built-in tags supported by images.
+//
+// @param request - ListImageTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageTagsResponse
+func (client *Client) ListImageTagsWithOptions(request *ListImageTagsRequest, runtime *dara.RuntimeOptions) (_result *ListImageTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImageTags"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImageTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the built-in tags supported by images.
+//
+// @param request - ListImageTagsRequest
+//
+// @return ListImageTagsResponse
+func (client *Client) ListImageTags(request *ListImageTagsRequest) (_result *ListImageTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListImageTagsResponse{}
+	_body, _err := client.ListImageTagsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8114,37 +8884,37 @@ func (client *Client) ListPersistentAppInstances(request *ListPersistentAppInsta
 
 // Summary:
 //
-// Queries the published delivery groups and their application information for a specified product type under the current Alibaba Cloud account by using paging, and supports filtering by delivery group, application, and user authorization status.
+// Performs a paged query to retrieve the published delivery groups and their application information for a specified product type under the current Alibaba Cloud account. Supports filtering by delivery group, application, and user authorization during paging.
 //
 // Description:
 //
 // ## Prerequisites
 //
-// When you call this operation as a RAM user or by using STS credentials, you must have the `appstreaming:ListPublishedAppInstanceGroup` permission.
+// When you call this operation as a RAM user or by using STS credentials, you must have the appstreaming:ListPublishedAppInstanceGroup permission.
 //
 // Only delivery groups that are in the published state and have deployed applications in their images are included in the query results. This operation only queries information. It does not create delivery groups, assign users, or grant application access permissions.
 //
 // ## Query and pagination
 //
-// - **You must explicitly specify `ProductType`, `PageNumber`, and `PageSize`.*	- The page number starts from `1`, and the number of entries per page ranges from `1` to `100`.
+// - **You must explicitly specify ProductType, PageNumber, and PageSize.*	- The page number starts from 1, and the number of entries per page ranges from 1 to 100.
 //
-// - `AppInstanceGroupId`, `AppInstanceGroupName`, `AppId`, and `AppName` all support partial matching. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met. If both `AppId` and `AppName` are specified, they must be met by the same application.
+// - AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName all support fuzzy match. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met. If both AppId and AppName are specified, the same application must meet both conditions.
 //
-// - If an optional filter parameter is not specified or is set to an empty string, the results are not filtered by this condition. The query results are sorted in descending order of the delivery group creation time. A delivery group is not returned multiple times even if it contains multiple matched applications.
+// - If an optional filter parameter is not specified or is set to an empty string, the results are not filtered by this condition. The query results are sorted in descending order of the delivery group creation time. The same delivery group is not returned multiple times even if it contains multiple matched applications.
 //
-// - `ExcludeUserId` is used to exclude delivery groups for which all applications have been directly authorized to a specified user. It cannot be used to determine whether the user has no access permissions at all.
+// - ExcludeUserId is used to exclude delivery groups for which all applications have been directly authorized to a specified user. It cannot be used to determine whether the user has no access permissions at all.
 //
-// - `AppId` and `AppName` only filter delivery groups and **do not restrict the returned `Apps` list to the matched applications**.
+// - AppId and AppName only filter delivery groups and **do not limit the returned Apps list to the matched applications**.
 //
-// ## Invocation sequence
+// ## Call sequence
 //
-// 1. Initiate a query with `PageNumber=1` and the desired `PageSize`. For common scenarios of Wuying Cloud App, set `ProductType` to `CloudApp`.
+// 1. Initiate a query with PageNumber=1 and the desired PageSize. For WUYING Cloud App scenarios, set ProductType=CloudApp.
 //
-// 2. Read `AppInstanceGroupModels`. To retrieve the next page, keep the product type and filter conditions unchanged, and increment `PageNumber`. If no delivery groups match the conditions, the total count is `0` and the list is empty. If the page number exceeds the range of the current results, the list may also be empty, but the total count still represents the total number of all matched delivery groups.
+// 2. Read AppInstanceGroupModels. To retrieve the next page, keep the product type and filter conditions unchanged and increment PageNumber. If no delivery groups match the conditions, the total count is 0 and the list is empty. If the page number exceeds the range of the current results, the list may also be empty, but the total count still represents the total number of all matched delivery groups.
 //
-// 3. To obtain the details of a single delivery group, pass the complete `AppInstanceGroupId` returned and the same `ProductType` to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
+// 3. To obtain the details of a single delivery group, pass the complete AppInstanceGroupId returned and the same ProductType to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
 //
-// The masked identity in the examples is used to demonstrate the format. Replace it with your actual identity when you invoke the operation.
+// The masked identity in the examples is used to demonstrate the format. Replace it with your actual identity when you call the operation.
 //
 // @param request - ListPublishedAppInstanceGroupRequest
 //
@@ -8220,37 +8990,37 @@ func (client *Client) ListPublishedAppInstanceGroupWithOptions(request *ListPubl
 
 // Summary:
 //
-// Queries the published delivery groups and their application information for a specified product type under the current Alibaba Cloud account by using paging, and supports filtering by delivery group, application, and user authorization status.
+// Performs a paged query to retrieve the published delivery groups and their application information for a specified product type under the current Alibaba Cloud account. Supports filtering by delivery group, application, and user authorization during paging.
 //
 // Description:
 //
 // ## Prerequisites
 //
-// When you call this operation as a RAM user or by using STS credentials, you must have the `appstreaming:ListPublishedAppInstanceGroup` permission.
+// When you call this operation as a RAM user or by using STS credentials, you must have the appstreaming:ListPublishedAppInstanceGroup permission.
 //
 // Only delivery groups that are in the published state and have deployed applications in their images are included in the query results. This operation only queries information. It does not create delivery groups, assign users, or grant application access permissions.
 //
 // ## Query and pagination
 //
-// - **You must explicitly specify `ProductType`, `PageNumber`, and `PageSize`.*	- The page number starts from `1`, and the number of entries per page ranges from `1` to `100`.
+// - **You must explicitly specify ProductType, PageNumber, and PageSize.*	- The page number starts from 1, and the number of entries per page ranges from 1 to 100.
 //
-// - `AppInstanceGroupId`, `AppInstanceGroupName`, `AppId`, and `AppName` all support partial matching. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met. If both `AppId` and `AppName` are specified, they must be met by the same application.
+// - AppInstanceGroupId, AppInstanceGroupName, AppId, and AppName all support fuzzy match. You can specify them individually or in combination. If multiple conditions are specified, all conditions must be met. If both AppId and AppName are specified, the same application must meet both conditions.
 //
-// - If an optional filter parameter is not specified or is set to an empty string, the results are not filtered by this condition. The query results are sorted in descending order of the delivery group creation time. A delivery group is not returned multiple times even if it contains multiple matched applications.
+// - If an optional filter parameter is not specified or is set to an empty string, the results are not filtered by this condition. The query results are sorted in descending order of the delivery group creation time. The same delivery group is not returned multiple times even if it contains multiple matched applications.
 //
-// - `ExcludeUserId` is used to exclude delivery groups for which all applications have been directly authorized to a specified user. It cannot be used to determine whether the user has no access permissions at all.
+// - ExcludeUserId is used to exclude delivery groups for which all applications have been directly authorized to a specified user. It cannot be used to determine whether the user has no access permissions at all.
 //
-// - `AppId` and `AppName` only filter delivery groups and **do not restrict the returned `Apps` list to the matched applications**.
+// - AppId and AppName only filter delivery groups and **do not limit the returned Apps list to the matched applications**.
 //
-// ## Invocation sequence
+// ## Call sequence
 //
-// 1. Initiate a query with `PageNumber=1` and the desired `PageSize`. For common scenarios of Wuying Cloud App, set `ProductType` to `CloudApp`.
+// 1. Initiate a query with PageNumber=1 and the desired PageSize. For WUYING Cloud App scenarios, set ProductType=CloudApp.
 //
-// 2. Read `AppInstanceGroupModels`. To retrieve the next page, keep the product type and filter conditions unchanged, and increment `PageNumber`. If no delivery groups match the conditions, the total count is `0` and the list is empty. If the page number exceeds the range of the current results, the list may also be empty, but the total count still represents the total number of all matched delivery groups.
+// 2. Read AppInstanceGroupModels. To retrieve the next page, keep the product type and filter conditions unchanged and increment PageNumber. If no delivery groups match the conditions, the total count is 0 and the list is empty. If the page number exceeds the range of the current results, the list may also be empty, but the total count still represents the total number of all matched delivery groups.
 //
-// 3. To obtain the details of a single delivery group, pass the complete `AppInstanceGroupId` returned and the same `ProductType` to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
+// 3. To obtain the details of a single delivery group, pass the complete AppInstanceGroupId returned and the same ProductType to [GetAppInstanceGroup](~~GetAppInstanceGroup~~).
 //
-// The masked identity in the examples is used to demonstrate the format. Replace it with your actual identity when you invoke the operation.
+// The masked identity in the examples is used to demonstrate the format. Replace it with your actual identity when you call the operation.
 //
 // @param request - ListPublishedAppInstanceGroupRequest
 //
@@ -8561,6 +9331,76 @@ func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListReg
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
 	_body, _err := client.ListRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of associated templates, cloud desktops, and cloud desktop pools.
+//
+// @param request - ListRelatedResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRelatedResourceResponse
+func (client *Client) ListRelatedResourceWithOptions(request *ListRelatedResourceRequest, runtime *dara.RuntimeOptions) (_result *ListRelatedResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRelatedResource"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRelatedResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the number of associated templates, cloud desktops, and cloud desktop pools.
+//
+// @param request - ListRelatedResourceRequest
+//
+// @return ListRelatedResourceResponse
+func (client *Client) ListRelatedResource(request *ListRelatedResourceRequest) (_result *ListRelatedResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListRelatedResourceResponse{}
+	_body, _err := client.ListRelatedResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9285,11 +10125,11 @@ func (client *Client) ListZones(request *ListZonesRequest) (_result *ListZonesRe
 
 // Summary:
 //
-// Logs off all sessions in a pay-as-you-go delivery group that has scheduled auto scaling enabled.
+// Unregisters all sessions in a pay-as-you-go delivery group that has a scheduled auto scaling policy enabled.
 //
 // Description:
 //
-// > This operation applies only to pay-as-you-go resource delivery groups that have scheduled auto scaling enabled. The operation can be called only outside the scaling time periods specified in the scheduled auto scaling policy.
+// > This operation is applicable only to pay-as-you-go resource delivery groups that have a scheduled auto scaling policy enabled. It can be called successfully only outside the scaling time windows specified in the scheduled auto scaling policy.
 //
 // @param request - LogOffAllSessionsInAppInstanceGroupRequest
 //
@@ -9337,11 +10177,11 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithOptions(request *Lo
 
 // Summary:
 //
-// Logs off all sessions in a pay-as-you-go delivery group that has scheduled auto scaling enabled.
+// Unregisters all sessions in a pay-as-you-go delivery group that has a scheduled auto scaling policy enabled.
 //
 // Description:
 //
-// > This operation applies only to pay-as-you-go resource delivery groups that have scheduled auto scaling enabled. The operation can be called only outside the scaling time periods specified in the scheduled auto scaling policy.
+// > This operation is applicable only to pay-as-you-go resource delivery groups that have a scheduled auto scaling policy enabled. It can be called successfully only outside the scaling time windows specified in the scheduled auto scaling policy.
 //
 // @param request - LogOffAllSessionsInAppInstanceGroupRequest
 //
@@ -10901,9 +11741,9 @@ func (client *Client) QueryNodeReportData(request *QueryNodeReportDataRequest) (
 //
 // Call this operation to query the session count trend data for the current Alibaba Cloud account on a specified date. The data is an offline statistical result, organized by day, and returns the session counts at various time points on that date.
 //
-// The returned results are aggregated in 10-minute intervals. Each data point is identified by an hour (Hh, values 00 to 23) and a minute (Mi, values 00, 10, 20, 30, 40, 50) representing a specific time point. SessionCntMi is the total number of sessions within the 10-minute interval of that time point. The results are sorted in ascending order by hour and minute.
+// The returned results are aggregated in 10-minute intervals: each data point is identified by an hour (Hh, values 00-23) and a minute (Mi, values 00, 10, 20, 30, 40, 50) representing a time point, and SessionCntMi is the total number of sessions within the 10-minute interval of that time point. The results are sorted in ascending order by hour and minute.
 //
-// You can specify a business region by using BizRegionId and filter by delivery group by using AppInstanceGroupId. If neither is provided, the summary of session data for all regions and all delivery groups under the current account is returned. The actual region used to filter session data is subject to BizRegionId.
+// You can specify a business region by using BizRegionId and filter session data by delivery group by using AppInstanceGroupId. If neither is provided, the summary of session data for all regions and all delivery groups under the current account is returned. The region actually used to filter session data is subject to BizRegionId.
 //
 // StatDate is the statistical date in the yyyyMMdd format. If not provided, the data for yesterday is queried by default. Only dates within the last 90 days are supported. If there is no session data on the specified date, an empty list is returned, and the return code is NO_DATA.
 //
@@ -10967,9 +11807,9 @@ func (client *Client) QuerySessionDataWithOptions(request *QuerySessionDataReque
 //
 // Call this operation to query the session count trend data for the current Alibaba Cloud account on a specified date. The data is an offline statistical result, organized by day, and returns the session counts at various time points on that date.
 //
-// The returned results are aggregated in 10-minute intervals. Each data point is identified by an hour (Hh, values 00 to 23) and a minute (Mi, values 00, 10, 20, 30, 40, 50) representing a specific time point. SessionCntMi is the total number of sessions within the 10-minute interval of that time point. The results are sorted in ascending order by hour and minute.
+// The returned results are aggregated in 10-minute intervals: each data point is identified by an hour (Hh, values 00-23) and a minute (Mi, values 00, 10, 20, 30, 40, 50) representing a time point, and SessionCntMi is the total number of sessions within the 10-minute interval of that time point. The results are sorted in ascending order by hour and minute.
 //
-// You can specify a business region by using BizRegionId and filter by delivery group by using AppInstanceGroupId. If neither is provided, the summary of session data for all regions and all delivery groups under the current account is returned. The actual region used to filter session data is subject to BizRegionId.
+// You can specify a business region by using BizRegionId and filter session data by delivery group by using AppInstanceGroupId. If neither is provided, the summary of session data for all regions and all delivery groups under the current account is returned. The region actually used to filter session data is subject to BizRegionId.
 //
 // StatDate is the statistical date in the yyyyMMdd format. If not provided, the data for yesterday is queried by default. Only dates within the last 90 days are supported. If there is no session data on the specified date, an empty list is returned, and the return code is NO_DATA.
 //
@@ -11455,13 +12295,23 @@ func (client *Client) RemoveResourceGroupModelTemplate(request *RemoveResourceGr
 
 // Summary:
 //
-// Removes a third-party channel configuration from the Agent runtime.
+// Removes the third-party channel configuration for an agent runtime.
 //
 // Description:
 //
-// You can call this operation to remove a specific third-party channel configuration from Agents such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. After the removal, the Agent cannot use the third-party channel for conversations.
+// You can call this operation to remove the specific third-party channel configuration for agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. After the configuration is removed, the agent cannot use the third-party channel for conversations.
 //
-// Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Make sure that you are fully familiar with the operations and usage of the WUYING Agent Management Center before you call this operation.
+//
+// Before you begin:
+//
+// - The RuntimeIds passed to this operation must be agent runtimes managed by the WUYING Agent Management Center. The cloud desktops that host these runtimes must be created by using API operations such as CreateDesktop of the Elastic Desktop Service (EDS) product. Example of a cross-product call chain: CreateDesktop → ListDesktops → Use the DesktopId as RuntimeIds.
+//
+// - OpenClaw scenario: RuntimeIds are cloud desktop IDs in the format of ecd-xxxx, which are the DesktopId values returned by the ListDesktops operation of the EDS product.
+//
+// - JVS Computer and Hermes Agent scenarios: RuntimeIds are the corresponding JVS IDs in the format of jvs-xxxx. The cloud desktops that host these runtimes are also created by using API operations such as CreateDesktop of the EDS product.
+//
+// - You can call the ListDesktopAgentRuntime operation of this product to query the agent runtimes managed by the WUYING Agent Management Center. If the query result is empty, it indicates that the corresponding cloud desktop is not managed. In this case, you must first call the CreateDesktop operation of the EDS product to create the cloud desktop. The WUYING Agent Management Center automatically manages the cloud desktop after it receives a desktop lifecycle event. After that, you can call this operation.
 //
 // @param request - RemoveRuntimeChannelRequest
 //
@@ -11521,13 +12371,23 @@ func (client *Client) RemoveRuntimeChannelWithOptions(request *RemoveRuntimeChan
 
 // Summary:
 //
-// Removes a third-party channel configuration from the Agent runtime.
+// Removes the third-party channel configuration for an agent runtime.
 //
 // Description:
 //
-// You can call this operation to remove a specific third-party channel configuration from Agents such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. After the removal, the Agent cannot use the third-party channel for conversations.
+// You can call this operation to remove the specific third-party channel configuration for agent runtimes such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. After the configuration is removed, the agent cannot use the third-party channel for conversations.
 //
-// Before calling this operation, make sure that you are familiar with the operations and usage of the Wuying Agent Management Center.
+// Make sure that you are fully familiar with the operations and usage of the WUYING Agent Management Center before you call this operation.
+//
+// Before you begin:
+//
+// - The RuntimeIds passed to this operation must be agent runtimes managed by the WUYING Agent Management Center. The cloud desktops that host these runtimes must be created by using API operations such as CreateDesktop of the Elastic Desktop Service (EDS) product. Example of a cross-product call chain: CreateDesktop → ListDesktops → Use the DesktopId as RuntimeIds.
+//
+// - OpenClaw scenario: RuntimeIds are cloud desktop IDs in the format of ecd-xxxx, which are the DesktopId values returned by the ListDesktops operation of the EDS product.
+//
+// - JVS Computer and Hermes Agent scenarios: RuntimeIds are the corresponding JVS IDs in the format of jvs-xxxx. The cloud desktops that host these runtimes are also created by using API operations such as CreateDesktop of the EDS product.
+//
+// - You can call the ListDesktopAgentRuntime operation of this product to query the agent runtimes managed by the WUYING Agent Management Center. If the query result is empty, it indicates that the corresponding cloud desktop is not managed. In this case, you must first call the CreateDesktop operation of the EDS product to create the cloud desktop. The WUYING Agent Management Center automatically manages the cloud desktop after it receives a desktop lifecycle event. After that, you can call this operation.
 //
 // @param request - RemoveRuntimeChannelRequest
 //
@@ -11545,13 +12405,13 @@ func (client *Client) RemoveRuntimeChannel(request *RemoveRuntimeChannelRequest)
 
 // Summary:
 //
-// Removes a model group from an Agent runtime resource.
+// Removes the model group from an agent runtime resource.
 //
 // Description:
 //
-// You can remove model groups from Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. When an Agent runtime resource needs to switch to a different model group, call this operation first to remove the authorization relationship between the Agent runtime resource and the existing model group.
+// You can remove the model group from agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. When an agent runtime resource needs to change its model group, you must first call this operation to remove the authorization relationship between the agent runtime resource and the original model group.
 //
-// Make sure that you are familiar with the operations and usage of the WUYING Agent Management Center before calling this operation.
+// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you use this operation.
 //
 // @param request - RemoveRuntimeModelTemplateRequest
 //
@@ -11603,13 +12463,13 @@ func (client *Client) RemoveRuntimeModelTemplateWithOptions(request *RemoveRunti
 
 // Summary:
 //
-// Removes a model group from an Agent runtime resource.
+// Removes the model group from an agent runtime resource.
 //
 // Description:
 //
-// You can remove model groups from Agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the WUYING Agent Management Center. When an Agent runtime resource needs to switch to a different model group, call this operation first to remove the authorization relationship between the Agent runtime resource and the existing model group.
+// You can remove the model group from agent runtime resources such as JVS Computer, OpenClaw, and Hermes Agent in the Wuying Agent Management Center. When an agent runtime resource needs to change its model group, you must first call this operation to remove the authorization relationship between the agent runtime resource and the original model group.
 //
-// Make sure that you are familiar with the operations and usage of the WUYING Agent Management Center before calling this operation.
+// Make sure that you are fully familiar with the operations and usage of the Wuying Agent Management Center before you use this operation.
 //
 // @param request - RemoveRuntimeModelTemplateRequest
 //
@@ -11890,6 +12750,116 @@ func (client *Client) RestartWuyingServer(request *RestartWuyingServerRequest) (
 
 // Summary:
 //
+// Starts an image creation task for an existing image version, or resumes an existing creation task.
+//
+// @param request - StartTaskForCreateImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartTaskForCreateImageResponse
+func (client *Client) StartTaskForCreateImageWithOptions(request *StartTaskForCreateImageRequest, runtime *dara.RuntimeOptions) (_result *StartTaskForCreateImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ImageCreateMode) {
+		body["ImageCreateMode"] = request.ImageCreateMode
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.JumpStep) {
+		body["JumpStep"] = request.JumpStep
+	}
+
+	if !dara.IsNil(request.PerformanceType) {
+		body["PerformanceType"] = request.PerformanceType
+	}
+
+	if !dara.IsNil(request.ProductType) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !dara.IsNil(request.ResourceList) {
+		body["ResourceList"] = request.ResourceList
+	}
+
+	if !dara.IsNil(request.RetryType) {
+		body["RetryType"] = request.RetryType
+	}
+
+	if !dara.IsNil(request.RunMode) {
+		body["RunMode"] = request.RunMode
+	}
+
+	if !dara.IsNil(request.SourceRegion) {
+		body["SourceRegion"] = request.SourceRegion
+	}
+
+	if !dara.IsNil(request.SubInstanceId) {
+		body["SubInstanceId"] = request.SubInstanceId
+	}
+
+	if !dara.IsNil(request.SystemDiskSize) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartTaskForCreateImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartTaskForCreateImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts an image creation task for an existing image version, or resumes an existing creation task.
+//
+// @param request - StartTaskForCreateImageRequest
+//
+// @return StartTaskForCreateImageResponse
+func (client *Client) StartTaskForCreateImage(request *StartTaskForCreateImageRequest) (_result *StartTaskForCreateImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &StartTaskForCreateImageResponse{}
+	_body, _err := client.StartTaskForCreateImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Initiates a task to copy an image to other regions.
 //
 // @param request - StartTaskForDistributeImageRequest
@@ -12105,6 +13075,72 @@ func (client *Client) StopWuyingServer(request *StopWuyingServerRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &StopWuyingServerResponse{}
 	_body, _err := client.StopWuyingServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Confirms the completion of image creation.
+//
+// @param request - SubmitImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitImageResponse
+func (client *Client) SubmitImageWithOptions(request *SubmitImageRequest, runtime *dara.RuntimeOptions) (_result *SubmitImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DestinationRegionList) {
+		body["DestinationRegionList"] = request.DestinationRegionList
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitImage"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Confirms the completion of image creation.
+//
+// @param request - SubmitImageRequest
+//
+// @return SubmitImageResponse
+func (client *Client) SubmitImage(request *SubmitImageRequest) (_result *SubmitImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitImageResponse{}
+	_body, _err := client.SubmitImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

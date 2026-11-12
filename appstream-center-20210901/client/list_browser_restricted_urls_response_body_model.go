@@ -24,19 +24,19 @@ type iListBrowserRestrictedURLsResponseBody interface {
 type ListBrowserRestrictedURLsResponseBody struct {
 	// The list of restricted URLs on the current page. Each record contains a restricted URL and its unique identifier. If no restricted URLs are configured under the specified conditions, an empty array is returned.
 	Data []*ListBrowserRestrictedURLsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The actual page number used in this query. This is the echoed value of the PageNumber request parameter.
+	// The actual page number used for this query, which is the echoed value of the PageNumber request parameter.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The actual number of entries returned per page in this query. This is the echoed value of the PageSize request parameter.
+	// The actual number of entries returned per page for this query, which is the echoed value of the PageSize request parameter.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request. You can use the ID to locate call records and troubleshoot issues. The example value is partially masked.
+	// The ID of the request, which is used to locate call records and troubleshoot issues. The example value is partially masked.
 	//
 	// example:
 	//

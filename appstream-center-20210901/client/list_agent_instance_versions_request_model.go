@@ -16,7 +16,7 @@ type iListAgentInstanceVersionsRequest interface {
 }
 
 type ListAgentInstanceVersionsRequest struct {
-	// The agent platform used to filter version numbers by business type. If not specified, the default value is ENTERPRISE.
+	// The agent platform used to filter version numbers by business type. If this parameter is not specified, the default value ENTERPRISE is used.
 	//
 	// example:
 	//
